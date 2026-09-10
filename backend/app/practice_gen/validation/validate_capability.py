@@ -81,6 +81,7 @@ from backend.app.practice_gen.validation._manifest import (
 # The last two are the seam itself -- see the CHECK_PHASE block near the bottom.
 ASSERTIONS = (
     "capability_provenance_6A",
+    "capability_orphan_provider_6A",
     "capability_coverage_6B",
     "capability_provision_6C",
     "capability_generic_formatter_6D",
@@ -143,7 +144,13 @@ CAPABILITY_PROVIDERS: Dict[str, Dict[str, List[Any]]] = {
     # requires an Attester. Per Rule 9 the honest move is to leave the capability unmapped
     # and build the thing, so mat_g3_mg_q1_5 now reports its missing "draw" (Tick F).
     # Do not re-register this without an Attester verdict of PROVIDED on a rendered sample.
-    'draw_lines': {'variants': [('task_type', 'draw_construct')], 'formatters': ['mcq']},
+    #
+    # A sibling entry 'draw_lines' survived that removal, claiming the same variant under
+    # a name NO node requires. Nothing reported it: every §6 check is driven by a node's
+    # `requires`, so an entry nothing requires is never read, never attested and never
+    # contradicted -- while sitting ready to satisfy the first future node whose
+    # competency happens to extract that id. Removed 2026-09-10 together with
+    # `capability_orphan_provider_6A`, the gate that would have named it.
     # Required by mat_g1_na_q1_6 alone. Was a multiplication-table variant that makes no claim
     # about this clause; a blind Attester ruled it NOT_PROVIDED and §6F
     # enforced it as CONTRADICTED. Now points at the artifact that renders
@@ -218,7 +225,6 @@ CAPABILITY_PROVIDERS: Dict[str, Dict[str, List[Any]]] = {
     'area_attribute': {'formatters': ['cloze', 'grid_area', 'mcq'], 'bounds': ['range', 'max_value', 'max_count', 'max_sum', 'max_minuend', 'minuend_max', 'max_product', 'max_result', 'max_total', 'max_subtrahend', 'min_minuend', 'min_subtrahend', 'min_a', 'ordinal_range', 'digit_count', 'operand_digits', 'skip_interval', 'skip_pool', 'denominators', 'table', 'tables', 'max_ordinal', 'factors', 'products', 'minuends', 'subtrahends', 'addends']},
     'area_formula_expression': {'formatters': ['cloze', 'grid_area', 'mcq'], 'bounds': ['range', 'max_value', 'max_count', 'max_sum', 'max_minuend', 'minuend_max', 'max_product', 'max_result', 'max_total', 'max_subtrahend', 'min_minuend', 'min_subtrahend', 'min_a', 'ordinal_range', 'digit_count', 'operand_digits', 'skip_interval', 'skip_pool', 'denominators', 'table', 'tables', 'max_ordinal', 'factors', 'products', 'minuends', 'subtrahends', 'addends']},
     'array': {'formatters': ['array_grid_read', 'array_grid_set', 'cloze', 'error_detect', 'mcq', 'true_false'], 'bounds': ['range', 'max_value', 'max_count', 'max_sum', 'max_minuend', 'minuend_max', 'max_product', 'max_result', 'max_total', 'max_subtrahend', 'min_minuend', 'min_subtrahend', 'min_a', 'ordinal_range', 'digit_count', 'operand_digits', 'skip_interval', 'skip_pool', 'denominators', 'table', 'tables', 'max_ordinal', 'factors', 'products', 'minuends', 'subtrahends', 'addends']},
-    'arts': {'formatters': ['cloze', 'mcq', 'pattern_sequence'], 'bounds': ['range', 'max_value', 'max_count', 'max_sum', 'max_minuend', 'minuend_max', 'max_product', 'max_result', 'max_total', 'max_subtrahend', 'min_minuend', 'min_subtrahend', 'min_a', 'ordinal_range', 'digit_count', 'operand_digits', 'skip_interval', 'skip_pool', 'denominators', 'table', 'tables', 'max_ordinal', 'factors', 'products', 'minuends', 'subtrahends', 'addends']},
     'associative_property': {'formatters': ['cloze', 'emoji_pictorial', 'error_detect', 'mcq', 'number_bond', 'number_line_read', 'number_line_set', 'true_false'], 'bounds': ['range', 'max_value', 'max_count', 'max_sum', 'max_minuend', 'minuend_max', 'max_product', 'max_result', 'max_total', 'max_subtrahend', 'min_minuend', 'min_subtrahend', 'min_a', 'ordinal_range', 'digit_count', 'operand_digits', 'skip_interval', 'skip_pool', 'denominators', 'table', 'tables', 'max_ordinal', 'factors', 'products', 'minuends', 'subtrahends', 'addends']},
     'balance_scale': {'variants': [('unit', 'l')], 'formatters': ['cloze', 'mcq', 'ordering', 'sort_order', 'true_false'], 'bounds': ['range', 'max_value', 'max_count', 'max_sum', 'max_minuend', 'minuend_max', 'max_product', 'max_result', 'max_total', 'max_subtrahend', 'min_minuend', 'min_subtrahend', 'min_a', 'ordinal_range', 'digit_count', 'operand_digits', 'skip_interval', 'skip_pool', 'denominators', 'table', 'tables', 'max_ordinal', 'factors', 'products', 'minuends', 'subtrahends', 'addends']},
     'basic_figures': {'variants': [('concept', 'slide_translation')], 'formatters': ['mcq'], 'bounds': ['range', 'max_value', 'max_count', 'max_sum', 'max_minuend', 'minuend_max', 'max_product', 'max_result', 'max_total', 'max_subtrahend', 'min_minuend', 'min_subtrahend', 'min_a', 'ordinal_range', 'digit_count', 'operand_digits', 'skip_interval', 'skip_pool', 'denominators', 'table', 'tables', 'max_ordinal', 'factors', 'products', 'minuends', 'subtrahends', 'addends']},
@@ -377,7 +383,6 @@ CAPABILITY_PROVIDERS: Dict[str, Dict[str, List[Any]]] = {
     'fraction_tiles': {'formatters': ['cloze', 'fraction_model_read', 'fraction_shade', 'mcq'], 'bounds': ['range', 'max_value', 'max_count', 'max_sum', 'max_minuend', 'minuend_max', 'max_product', 'max_result', 'max_total', 'max_subtrahend', 'min_minuend', 'min_subtrahend', 'min_a', 'ordinal_range', 'digit_count', 'operand_digits', 'skip_interval', 'skip_pool', 'denominators', 'table', 'tables', 'max_ordinal', 'factors', 'products', 'minuends', 'subtrahends', 'addends']},
     'fractions': {'formatters': ['cloze', 'fraction_model_read', 'fraction_shade', 'mcq'], 'bounds': ['range', 'max_value', 'max_count', 'max_sum', 'max_minuend', 'minuend_max', 'max_product', 'max_result', 'max_total', 'max_subtrahend', 'min_minuend', 'min_subtrahend', 'min_a', 'ordinal_range', 'digit_count', 'operand_digits', 'skip_interval', 'skip_pool', 'denominators', 'table', 'tables', 'max_ordinal', 'factors', 'products', 'minuends', 'subtrahends', 'addends']},
     'give': {'formatters': ['calendar_read', 'cloze', 'mcq'], 'bounds': ['range', 'max_value', 'max_count', 'max_sum', 'max_minuend', 'minuend_max', 'max_product', 'max_result', 'max_total', 'max_subtrahend', 'min_minuend', 'min_subtrahend', 'min_a', 'ordinal_range', 'digit_count', 'operand_digits', 'skip_interval', 'skip_pool', 'denominators', 'table', 'tables', 'max_ordinal', 'factors', 'products', 'minuends', 'subtrahends', 'addends']},
-    'given_orally': {'formatters': ['cloze', 'emoji_pictorial', 'error_detect', 'mcq', 'number_bond', 'number_line_read', 'peso_money_build', 'peso_money_read', 'true_false'], 'bounds': ['range', 'max_value', 'max_count', 'max_sum', 'max_minuend', 'minuend_max', 'max_product', 'max_result', 'max_total', 'max_subtrahend', 'min_minuend', 'min_subtrahend', 'min_a', 'ordinal_range', 'digit_count', 'operand_digits', 'skip_interval', 'skip_pool', 'denominators', 'table', 'tables', 'max_ordinal', 'factors', 'products', 'minuends', 'subtrahends', 'addends']},
     'given_place_value': {'formatters': ['cloze', 'mcq', 'place_value_blocks_read', 'place_value_blocks_set', 'true_false'], 'bounds': ['range', 'max_value', 'max_count', 'max_sum', 'max_minuend', 'minuend_max', 'max_product', 'max_result', 'max_total', 'max_subtrahend', 'min_minuend', 'min_subtrahend', 'min_a', 'ordinal_range', 'digit_count', 'operand_digits', 'skip_interval', 'skip_pool', 'denominators', 'table', 'tables', 'max_ordinal', 'factors', 'products', 'minuends', 'subtrahends', 'addends']},
     'grams_kilograms_and_or_milligrams': {'variants': [('unit', 'g'), ('unit', 'l')], 'formatters': ['cloze', 'mcq'], 'bounds': ['range', 'max_value', 'max_count', 'max_sum', 'max_minuend', 'minuend_max', 'max_product', 'max_result', 'max_total', 'max_subtrahend', 'min_minuend', 'min_subtrahend', 'min_a', 'ordinal_range', 'digit_count', 'operand_digits', 'skip_interval', 'skip_pool', 'denominators', 'table', 'tables', 'max_ordinal', 'factors', 'products', 'minuends', 'subtrahends', 'addends']},
     'greater_than_one': {'formatters': ['cloze', 'fraction_model_read', 'fraction_shade', 'mcq'], 'bounds': ['range', 'max_value', 'max_count', 'max_sum', 'max_minuend', 'minuend_max', 'max_product', 'max_result', 'max_total', 'max_subtrahend', 'min_minuend', 'min_subtrahend', 'min_a', 'ordinal_range', 'digit_count', 'operand_digits', 'skip_interval', 'skip_pool', 'denominators', 'table', 'tables', 'max_ordinal', 'factors', 'products', 'minuends', 'subtrahends', 'addends']},
@@ -496,7 +501,6 @@ CAPABILITY_PROVIDERS: Dict[str, Dict[str, List[Any]]] = {
     'one_variable': {'formatters': ['fill_in_table', 'mcq', 'pictograph_read', 'pictograph_set', 'table_read'], 'bounds': ['range', 'max_value', 'max_count', 'max_sum', 'max_minuend', 'minuend_max', 'max_product', 'max_result', 'max_total', 'max_subtrahend', 'min_minuend', 'min_subtrahend', 'min_a', 'ordinal_range', 'digit_count', 'operand_digits', 'skip_interval', 'skip_pool', 'denominators', 'table', 'tables', 'max_ordinal', 'factors', 'products', 'minuends', 'subtrahends', 'addends']},
     'operands_2_1_digit': {'formatters': ['cloze', 'emoji_pictorial', 'error_detect', 'mcq', 'number_bond', 'number_line_read', 'number_line_set', 'true_false'], 'bounds': ['range', 'max_value', 'max_count', 'max_sum', 'max_minuend', 'minuend_max', 'max_product', 'max_result', 'max_total', 'max_subtrahend', 'min_minuend', 'min_subtrahend', 'min_a', 'ordinal_range', 'digit_count', 'operand_digits', 'skip_interval', 'skip_pool', 'denominators', 'table', 'tables', 'max_ordinal', 'factors', 'products', 'minuends', 'subtrahends', 'addends']},
     'operands_2_2_digit': {'formatters': ['cloze', 'emoji_pictorial', 'error_detect', 'mcq', 'number_bond', 'number_line_read', 'number_line_set', 'true_false'], 'bounds': ['range', 'max_value', 'max_count', 'max_sum', 'max_minuend', 'minuend_max', 'max_product', 'max_result', 'max_total', 'max_subtrahend', 'min_minuend', 'min_subtrahend', 'min_a', 'ordinal_range', 'digit_count', 'operand_digits', 'skip_interval', 'skip_pool', 'denominators', 'table', 'tables', 'max_ordinal', 'factors', 'products', 'minuends', 'subtrahends', 'addends']},
-    'orally': {'formatters': ['cloze', 'emoji_pictorial', 'error_detect', 'mcq', 'number_bond', 'number_line_read', 'number_line_set', 'true_false'], 'bounds': ['range', 'max_value', 'max_count', 'max_sum', 'max_minuend', 'minuend_max', 'max_product', 'max_result', 'max_total', 'max_subtrahend', 'min_minuend', 'min_subtrahend', 'min_a', 'ordinal_range', 'digit_count', 'operand_digits', 'skip_interval', 'skip_pool', 'denominators', 'table', 'tables', 'max_ordinal', 'factors', 'products', 'minuends', 'subtrahends', 'addends']},
     'order': {'variants': [('operation', 'order'), ('task_type', 'order_sequence')], 'formatters': ['cloze', 'fraction_model_read', 'fraction_shade', 'mcq', 'ordering', 'sort_order', 'true_false'], 'bounds': ['range', 'max_value', 'max_count', 'max_sum', 'max_minuend', 'minuend_max', 'max_product', 'max_result', 'max_total', 'max_subtrahend', 'min_minuend', 'min_subtrahend', 'min_a', 'ordinal_range', 'digit_count', 'operand_digits', 'skip_interval', 'skip_pool', 'denominators', 'table', 'tables', 'max_ordinal', 'factors', 'products', 'minuends', 'subtrahends', 'addends']},
     'order_numbers': {'formatters': ['cloze', 'mcq', 'ordering', 'sort_order', 'true_false'], 'bounds': ['range', 'max_value', 'max_count', 'max_sum', 'max_minuend', 'minuend_max', 'max_product', 'max_result', 'max_total', 'max_subtrahend', 'min_minuend', 'min_subtrahend', 'min_a', 'ordinal_range', 'digit_count', 'operand_digits', 'skip_interval', 'skip_pool', 'denominators', 'table', 'tables', 'max_ordinal', 'factors', 'products', 'minuends', 'subtrahends', 'addends']},
     'ordinal_numbers': {'variants': [('task_type', 'identify_ordinal')], 'formatters': ['cloze', 'mcq'], 'bounds': ['range', 'max_value', 'max_count', 'max_sum', 'max_minuend', 'minuend_max', 'max_product', 'max_result', 'max_total', 'max_subtrahend', 'min_minuend', 'min_subtrahend', 'min_a', 'ordinal_range', 'digit_count', 'operand_digits', 'skip_interval', 'skip_pool', 'denominators', 'table', 'tables', 'max_ordinal', 'factors', 'products', 'minuends', 'subtrahends', 'addends']},
@@ -558,7 +562,6 @@ CAPABILITY_PROVIDERS: Dict[str, Dict[str, List[Any]]] = {
     'repeating_patterns': {'formatters': ['cloze', 'mcq', 'pattern_sequence'], 'bounds': ['range', 'max_value', 'max_count', 'max_sum', 'max_minuend', 'minuend_max', 'max_product', 'max_result', 'max_total', 'max_subtrahend', 'min_minuend', 'min_subtrahend', 'min_a', 'ordinal_range', 'digit_count', 'operand_digits', 'skip_interval', 'skip_pool', 'denominators', 'table', 'tables', 'max_ordinal', 'factors', 'products', 'minuends', 'subtrahends', 'addends']},
     'repetitions': {'formatters': ['cloze', 'mcq', 'pattern_sequence'], 'bounds': ['range', 'max_value', 'max_count', 'max_sum', 'max_minuend', 'minuend_max', 'max_product', 'max_result', 'max_total', 'max_subtrahend', 'min_minuend', 'min_subtrahend', 'min_a', 'ordinal_range', 'digit_count', 'operand_digits', 'skip_interval', 'skip_pool', 'denominators', 'table', 'tables', 'max_ordinal', 'factors', 'products', 'minuends', 'subtrahends', 'addends']},
     'represent': {'variants': [('task_type', 'model_representation')], 'formatters': ['categorize', 'cloze', 'fraction_model_read', 'fraction_shade', 'mcq', 'number_line_read', 'number_line_set', 'place_value_blocks_read', 'place_value_blocks_set', 'shape_board', 'true_false'], 'bounds': ['range', 'max_value', 'max_count', 'max_sum', 'max_minuend', 'minuend_max', 'max_product', 'max_result', 'max_total', 'max_subtrahend', 'min_minuend', 'min_subtrahend', 'min_a', 'ordinal_range', 'digit_count', 'operand_digits', 'skip_interval', 'skip_pool', 'denominators', 'table', 'tables', 'max_ordinal', 'factors', 'products', 'minuends', 'subtrahends', 'addends']},
-    'rhythmic_properties': {'formatters': ['cloze', 'mcq', 'pattern_sequence'], 'bounds': ['range', 'max_value', 'max_count', 'max_sum', 'max_minuend', 'minuend_max', 'max_product', 'max_result', 'max_total', 'max_subtrahend', 'min_minuend', 'min_subtrahend', 'min_a', 'ordinal_range', 'digit_count', 'operand_digits', 'skip_interval', 'skip_pool', 'denominators', 'table', 'tables', 'max_ordinal', 'factors', 'products', 'minuends', 'subtrahends', 'addends']},
     'rolling_die': {'variants': [('experiment_type', 'die_roll')], 'formatters': ['cloze', 'error_detect', 'mcq', 'true_false'], 'bounds': ['range', 'max_value', 'max_count', 'max_sum', 'max_minuend', 'minuend_max', 'max_product', 'max_result', 'max_total', 'max_subtrahend', 'min_minuend', 'min_subtrahend', 'min_a', 'ordinal_range', 'digit_count', 'operand_digits', 'skip_interval', 'skip_pool', 'denominators', 'table', 'tables', 'max_ordinal', 'factors', 'products', 'minuends', 'subtrahends', 'addends']},
     'round': {'formatters': ['cloze', 'mcq', 'number_line_read'], 'bounds': ['range', 'max_value', 'max_count', 'max_sum', 'max_minuend', 'minuend_max', 'max_product', 'max_result', 'max_total', 'max_subtrahend', 'min_minuend', 'min_subtrahend', 'min_a', 'ordinal_range', 'digit_count', 'operand_digits', 'skip_interval', 'skip_pool', 'denominators', 'table', 'tables', 'max_ordinal', 'factors', 'products', 'minuends', 'subtrahends', 'addends']},
     'ruler': {'formatters': ['cloze', 'mcq', 'ruler_measure'], 'bounds': ['range', 'max_value', 'max_count', 'max_sum', 'max_minuend', 'minuend_max', 'max_product', 'max_result', 'max_total', 'max_subtrahend', 'min_minuend', 'min_subtrahend', 'min_a', 'ordinal_range', 'digit_count', 'operand_digits', 'skip_interval', 'skip_pool', 'denominators', 'table', 'tables', 'max_ordinal', 'factors', 'products', 'minuends', 'subtrahends', 'addends']},
@@ -694,6 +697,41 @@ def _validate_provenance(node_id: str, competency: str, requires: List[Dict]) ->
                 f"the curriculum never states is invention (AGENTS.md Content Rule 4)."
             )
     return errs
+
+
+def _validate_no_orphan_providers(all_requires: Set[str]) -> List[str]:
+    """
+    §6A, the other direction — a provider entry no node requires is unreachable and
+    therefore unchecked.
+
+    Every other §6 check is driven by a node's `requires`: §6C asks whether a required
+    capability has a provider, §6D whether that provider is discriminating, §6F whether
+    a blind Attester agrees it is provided. All of them start from a requirement. An
+    entry nothing requires is read by none of them — never attested, never contradicted,
+    never provision-checked — while sitting in the table ready to satisfy the FIRST
+    future node whose competency extracts that id. It would arrive pre-approved, with no
+    Attester having ever seen a rendered sample of it. That is aimed squarely at the
+    grades that do not exist yet (Scaling Mandate 4).
+
+    Found the day it was written: `draw_lines` claimed `task_type=draw_construct` under a
+    name no node requires, left behind when `draw_line_relationships` was deliberately
+    unregistered on an Attester's NOT_PROVIDED ruling. The registration outlived the
+    requirement by a rename and nothing in the harness could say so.
+
+    Zero findings is the only acceptable state and there is no floor: unlike §6D's
+    `_PROVISION_FLOOR`, an orphan is never a legitimate gap in the pipeline's ability —
+    it is bookkeeping, and deleting the entry always clears it.
+    """
+    orphans = sorted(set(CAPABILITY_PROVIDERS) - all_requires)
+    return [
+        f"CAPABILITY_PROVIDERS declares {cap!r} -> {CAPABILITY_PROVIDERS[cap]}, but no "
+        f"node's `requires` names it (§6A). Every §6 check is driven by a requirement, "
+        f"so an entry nothing requires is never attested, never contradicted and never "
+        f"provision-checked — and it will silently pre-approve the first future node "
+        f"whose competency extracts this id. Delete the entry; re-add it only with a "
+        f"requirement that names it and an Attester verdict behind it."
+        for cap in orphans
+    ]
 
 
 def _validate_coverage(node_id: str, competency: str, requires: List[Dict],
@@ -1574,31 +1612,77 @@ def declaration_sync_failures() -> List[str]:
     in sync at the time, so the drift had never bitten; nothing would have said so if it
     had.
 
+    WIDENED 2026-09-10, because the drift this exists to catch was ON DISK while it
+    passed. It compared two fields -- `requires` and `requires_ignore` -- and the graph
+    checked in at 8cb8dd22 differed from a fresh build of the same skeleton in a THIRD
+    field: 18 nodes carried a cumulative concept (`missing_number`, plus `addition` on
+    one) that the skeleton no longer implies. Cumulative concept lists are the ground
+    truth Content Rule 1 is judged against -- §1D's NOT_YET_KNOWN gating reads them --
+    so a stale one means the vocabulary gate was validating against something nobody
+    wrote, which is this function's own stated failure mode one field over.
+
+    So it now compares the WHOLE artifact: the skeleton is rebuilt in memory and every
+    node record is compared field by field. Two fields chosen by hand is a list that
+    goes stale the moment the builder learns to derive something new; rebuilding is the
+    only comparison that cannot drift from what the builder actually does. (Same
+    reasoning as `_generated_formatter_exclusions.py`: asking the real thing beats
+    modelling it.)
+
     Phase 1: both files are checked into the repo and present on a fresh clone. Neither
-    is an agent-authored artifact.
+    is an agent-authored artifact, and the rebuild reads nothing else.
     """
+    import contextlib
+    import io
+    import tempfile
+
+    from scripts.rebuild_knowledge_graph import rebuild
+
     errs: List[str] = []
     try:
-        source = json.loads(_VOCAB_ANNOTATION_PATH.read_text(encoding="utf-8"))["nodes"]
         built = json.loads(_KNOWLEDGE_GRAPH_PATH.read_text(encoding="utf-8"))["nodes"]
     except (OSError, KeyError, json.JSONDecodeError) as exc:
         return [
-            f"§6 declarations: could not compare the hand-authored declarations with the "
-            f"generated graph ({type(exc).__name__}: {exc}). Until they can be compared, "
-            f"§6 is validating a copy nobody has checked."
+            f"§6 declarations: could not read the generated graph "
+            f"({type(exc).__name__}: {exc}). Until it can be compared with "
+            f"data/skeletons/vocab_annotation.json, §6 is validating a copy nobody has "
+            f"checked."
         ]
 
-    for node_id in sorted(built):
-        for field in ("requires", "requires_ignore"):
-            want = source.get(node_id, {}).get(field)
+    # Built into a temp file rather than over the real one: a validator that rewrites
+    # the artifact it is validating would make the failure disappear on the second run.
+    with tempfile.TemporaryDirectory() as tmp:
+        fresh_path = Path(tmp) / "knowledge_graph_rebuilt.json"
+        with contextlib.redirect_stdout(io.StringIO()):
+            rebuild(str(_VOCAB_ANNOTATION_PATH), str(fresh_path))
+        fresh = json.loads(fresh_path.read_text(encoding="utf-8"))["nodes"]
+
+    rebuild_hint = "Rebuild with: python scripts/rebuild_knowledge_graph.py"
+    for node_id in sorted(set(built) | set(fresh)):
+        if node_id not in fresh:
+            errs.append(
+                f"{node_id}: present in data/knowledge_graph_g1_3.json but a fresh build "
+                f"of data/skeletons/vocab_annotation.json does not produce it. §6 "
+                f"validates the generated copy, so it is checking a node nobody wrote. "
+                f"{rebuild_hint}"
+            )
+            continue
+        if node_id not in built:
+            errs.append(
+                f"{node_id}: data/skeletons/vocab_annotation.json declares it but "
+                f"data/knowledge_graph_g1_3.json does not carry it, so §6 never sees it "
+                f"at all. {rebuild_hint}"
+            )
+            continue
+        for field in sorted(set(built[node_id]) | set(fresh[node_id])):
+            want = fresh[node_id].get(field)
             got = built[node_id].get(field)
             if (want or None) == (got or None):
                 continue
             errs.append(
-                f"{node_id}: '{field}' in data/knowledge_graph_g1_3.json does not match "
-                f"data/skeletons/vocab_annotation.json, which is where it is authored. §6 "
-                f"validates the generated copy, so it is checking something nobody wrote. "
-                f"Rebuild with: python scripts/rebuild_knowledge_graph.py"
+                f"{node_id}: {field!r} in data/knowledge_graph_g1_3.json does not match "
+                f"a fresh build of data/skeletons/vocab_annotation.json, which is where "
+                f"it is authored. §6 validates the generated copy, so it is checking "
+                f"something nobody wrote. {rebuild_hint}"
             )
     return errs
 
@@ -1637,6 +1721,13 @@ def _phase1_findings(node_ids: List[str] | None) -> List[str]:
         errs += _validate_provenance(node_id, competency, requires)
         errs += _validate_coverage(node_id, competency, requires, ignore)
         errs += _validate_provision(node_id, requires)
+    # Tree-wide, and deliberately over EVERY declared node rather than the `node_ids`
+    # subset: "no node requires this" is a statement about the whole tree, so computing
+    # it from a scoped run would report every provider outside the scope as an orphan.
+    all_rows, _ = _declared_nodes(None)
+    errs += _validate_no_orphan_providers(
+        {str(r.get("id")) for _n, _c, reqs, _i in all_rows for r in reqs}
+    )
     # First in the list, because "the declarations you are reading are not the ones an
     # author wrote" invalidates every finding below it.
     return declaration_sync_failures() + errs

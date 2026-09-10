@@ -650,11 +650,6 @@
         },
         {
           "kind": "context",
-          "id": "orally",
-          "clause": "orally"
-        },
-        {
-          "kind": "context",
           "id": "pictures",
           "clause": "pictures"
         },
@@ -674,8 +669,10 @@
         "or",
         "in",
         "involving",
-        "with"
-      ]
+        "with",
+        "orally"
+      ],
+      "requires_ignore_note": "Owner ruling 2026-09-10: 'orally' is dropped from `requires` because '(given orally or in pictures)' is a DISJUNCTION, and the capability extractor flattened it into two independent mandatory requirements. Serving the pictures arm satisfies the competency; this pipeline has no audio channel. The pictures arm is retained in `requires` and must actually render. See validation_reports/HARDENING_EVIDENCE.md, 2026-09-10."
     },
     "mat_g1_na_q2_0": {
       "grade": 1,
@@ -984,11 +981,6 @@
         },
         {
           "kind": "context",
-          "id": "orally",
-          "clause": "orally"
-        },
-        {
-          "kind": "context",
           "id": "pictures",
           "clause": "pictures"
         },
@@ -1009,8 +1001,10 @@
         }
       ],
       "requires_ignore": [
-        "involving"
-      ]
+        "involving",
+        "orally"
+      ],
+      "requires_ignore_note": "Owner ruling 2026-09-10: 'orally' is dropped from `requires` because '(given orally or in pictures)' is a DISJUNCTION, and the capability extractor flattened it into two independent mandatory requirements. Serving the pictures arm satisfies the competency; this pipeline has no audio channel. The pictures arm is retained in `requires` and must actually render. See validation_reports/HARDENING_EVIDENCE.md, 2026-09-10."
     },
     "mat_g1_na_q3_0": {
       "grade": 1,
@@ -1180,11 +1174,6 @@
         },
         {
           "kind": "representation",
-          "id": "given_orally",
-          "clause": "given orally"
-        },
-        {
-          "kind": "representation",
           "id": "in_pictures",
           "clause": "in pictures"
         },
@@ -1197,8 +1186,10 @@
       "requires_ignore": [
         "where",
         "both",
-        "or"
-      ]
+        "or",
+        "orally"
+      ],
+      "requires_ignore_note": "Owner ruling 2026-09-10: 'orally' is dropped from `requires` because '(given orally or in pictures)' is a DISJUNCTION, and the capability extractor flattened it into two independent mandatory requirements. Serving the pictures arm satisfies the competency; this pipeline has no audio channel. The pictures arm is retained in `requires` and must actually render. See validation_reports/HARDENING_EVIDENCE.md, 2026-09-10."
     },
     "mat_g1_na_q3_4": {
       "grade": 1,
@@ -1343,18 +1334,8 @@
         },
         {
           "kind": "property",
-          "id": "rhythmic_properties",
-          "clause": "rhythmic properties"
-        },
-        {
-          "kind": "property",
           "id": "visual_elements",
           "clause": "visual elements"
-        },
-        {
-          "kind": "context",
-          "id": "arts",
-          "clause": "arts"
         },
         {
           "kind": "range",
@@ -1369,8 +1350,12 @@
       ],
       "requires_ignore": [
         "patterns",
-        "could"
-      ]
+        "could",
+        "rhythmic",
+        "properties",
+        "arts"
+      ],
+      "requires_ignore_note": "Owner ruling 2026-09-10: patterns on this node stick to numerical and alphabetical content only. 'rhythmic properties' and 'visual elements in the arts' are dropped from `requires` because this competency presents them as an EXEMPLAR list, not a mandate -- G1 says patterns 'could use' them, G2 prefixes them with 'e.g.', and the worked examples the competency itself prints are numeric and alphabetic ('numbers: 2, 4, 2, 4__, __; letters: a, b, c, a, b, c, a, __, __'). The curriculum still names them; the pipeline is not required to render them. See validation_reports/HARDENING_EVIDENCE.md, 2026-09-10."
     },
     "mat_g1_na_q3_7": {
       "grade": 1,
@@ -1750,11 +1735,6 @@
           "clause": "Solve 1-step problems"
         },
         {
-          "kind": "context",
-          "id": "given_orally",
-          "clause": "given orally"
-        },
-        {
           "kind": "representation",
           "id": "in_pictures",
           "clause": "in pictures"
@@ -1783,8 +1763,10 @@
       "requires_ignore": [
         "involving",
         "where",
-        "both"
-      ]
+        "both",
+        "orally"
+      ],
+      "requires_ignore_note": "Owner ruling 2026-09-10: 'orally' is dropped from `requires` because '(given orally or in pictures)' is a DISJUNCTION, and the capability extractor flattened it into two independent mandatory requirements. Serving the pictures arm satisfies the competency; this pipeline has no audio channel. The pictures arm is retained in `requires` and must actually render. See validation_reports/HARDENING_EVIDENCE.md, 2026-09-10."
     },
     "mat_g1_mg_q1_0": {
       "grade": 1,
@@ -3379,11 +3361,6 @@
           "clause": "Solve problems"
         },
         {
-          "kind": "context",
-          "id": "given_orally",
-          "clause": "given orally"
-        },
-        {
           "kind": "representation",
           "id": "in_pictures",
           "clause": "in pictures"
@@ -3405,8 +3382,10 @@
         }
       ],
       "requires_ignore": [
-        "where"
-      ]
+        "where",
+        "orally"
+      ],
+      "requires_ignore_note": "Owner ruling 2026-09-10: 'orally' is dropped from `requires` because '(given orally or in pictures)' is a DISJUNCTION, and the capability extractor flattened it into two independent mandatory requirements. Serving the pictures arm satisfies the competency; this pipeline has no audio channel. The pictures arm is retained in `requires` and must actually render. See validation_reports/HARDENING_EVIDENCE.md, 2026-09-10."
     },
     "mat_g2_na_q2_6": {
       "grade": 2,
@@ -3543,19 +3522,9 @@
           "clause": "letters"
         },
         {
-          "kind": "property",
-          "id": "rhythmic_properties",
-          "clause": "rhythmic properties"
-        },
-        {
           "kind": "object",
           "id": "visual_elements",
           "clause": "visual elements"
-        },
-        {
-          "kind": "context",
-          "id": "arts",
-          "clause": "arts"
         },
         {
           "kind": "property",
@@ -3563,7 +3532,12 @@
           "clause": "repetitions"
         }
       ],
-      "requires_ignore": []
+      "requires_ignore": [
+        "rhythmic",
+        "properties",
+        "arts"
+      ],
+      "requires_ignore_note": "Owner ruling 2026-09-10: patterns on this node stick to numerical and alphabetical content only. 'rhythmic properties' and 'visual elements in the arts' are dropped from `requires` because this competency presents them as an EXEMPLAR list, not a mandate -- G1 says patterns 'could use' them, G2 prefixes them with 'e.g.', and the worked examples the competency itself prints are numeric and alphabetic ('numbers: 2, 4, 2, 4__, __; letters: a, b, c, a, b, c, a, __, __'). The curriculum still names them; the pipeline is not required to render them. See validation_reports/HARDENING_EVIDENCE.md, 2026-09-10."
     },
     "mat_g2_na_q2_9": {
       "grade": 2,

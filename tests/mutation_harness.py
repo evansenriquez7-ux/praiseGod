@@ -299,6 +299,15 @@ def _plant_stale_review() -> Dict[Path, str]:
 
 _STALE_ANSWER_NODE = "mat_g1_dp_q3_2"
 
+# A capability id no node's `requires` names. `draw_lines` held exactly this shape on
+# disk until 2026-09-10 -- a live registration orphaned by a rename -- so re-adding it
+# reproduces the real defect rather than an invented one.
+_ORPHAN_PROVIDER = "draw_lines"
+
+# A node whose generated record carries a `cumulative_concepts` list to drift. The real
+# drift found on 2026-09-10 spanned 18 nodes; one is enough to prove the comparison.
+_STALE_GRAPH_NODE = "mat_g1_na_q3_6"
+
 # The three §6F fixtures below are PINNED to named nodes, not scanned for, and each
 # raises loudly if its node stops satisfying the precondition. §6F's queue is red (220
 # findings), so a scanned plant would land on a record that is already reported and the
@@ -813,6 +822,23 @@ MUTATIONS: List[Mutation] = [
         expected_check="§6F (blind Attester verdict contradicted by the table)",
         expect_output_contains=["CONTRADICTED && draw_line_relationships"],
         baseline_must_not_contain=["CONTRADICTED && draw_line_relationships"],
+    ),
+    Mutation(
+        name="orphan_provider",
+        asserts=['capability_orphan_provider_6A'],
+        description=(
+            "Register a capability no node requires. Every §6 check is driven by a "
+            "node's `requires`, so nothing read such an entry at all -- it was never "
+            "attested, never contradicted and never provision-checked, while standing "
+            "ready to pre-approve the first future node whose competency extracts that "
+            "id, with no Attester having seen a rendered sample of it."
+        ),
+        edits={},
+        apply_fn=lambda: _plant_orphan_provider(),
+        command=["backend.app.practice_gen.validation.validate_capability", "--phase", "1"],
+        expected_check="§6A (a provider entry no requirement reaches)",
+        expect_output_contains=[f"{_ORPHAN_PROVIDER} && but no node's `requires` names it"],
+        baseline_must_not_contain=[f"{_ORPHAN_PROVIDER} && but no node's `requires` names it"],
     ),
     Mutation(
         name="stale_attestation",
@@ -1952,6 +1978,25 @@ MUTATIONS: List[Mutation] = [
         baseline_must_not_contain=["does not match"],
     ),
     Mutation(
+        name="stale_generated_graph",
+        asserts=["capability_declarations_in_sync_6"],
+        description=(
+            "Drift the generated graph from a fresh build of its skeleton in a field the "
+            "sync gate did not compare. It checked `requires` and `requires_ignore` only, "
+            "and the graph on disk at 8cb8dd22 differed in `cumulative_concepts` on 18 "
+            "nodes -- the ground truth §1D's NOT_YET_KNOWN gating is judged against. The "
+            "gate now rebuilds the skeleton in memory and compares every field, because a "
+            "hand-picked field list goes stale the moment the builder derives something "
+            "new."
+        ),
+        edits={},
+        apply_fn=lambda: _plant_stale_generated_graph(),
+        command=["backend.app.practice_gen.validation.validate_capability", "--phase", "1"],
+        expected_check="§6 (the generated graph matches a fresh build, in every field)",
+        expect_output_contains=[f"{_STALE_GRAPH_NODE} && 'cumulative_concepts'"],
+        baseline_must_not_contain=[f"{_STALE_GRAPH_NODE} && 'cumulative_concepts'"],
+    ),
+    Mutation(
         name="clause_not_in_competency",
         asserts=["capability_provenance_6A"],
         description=(
@@ -2440,6 +2485,68 @@ def _plant_contradicted_entry(capability: str) -> Dict[Path, str]:
         )
     injected = marker + f"    '{capability}': {{'variants': [('task_type', 'draw_construct')]}},\n"
     path.write_text(text.replace(marker, injected, 1), encoding="utf-8")
+    return {path: text}
+
+
+def _plant_stale_generated_graph() -> Dict[Path, str]:
+    """
+    Drift the GENERATED graph away from a fresh build of its skeleton, in a field that
+    is neither `requires` nor `requires_ignore`.
+
+    Until 2026-09-10 the sync gate compared those two fields alone, and the graph
+    checked in at 8cb8dd22 differed from a fresh build in `cumulative_concepts` on 18
+    nodes -- the ground truth §1D's NOT_YET_KNOWN gating reads. The gate's own stated
+    failure mode ("§6 validates a stale copy, silently and indefinitely") was live on
+    disk, one field over from where it was looking.
+
+    Plants a concept the skeleton does not imply, which is the shape the real drift had.
+    """
+    import json
+
+    path = REPO_ROOT / "data" / "knowledge_graph_g1_3.json"
+    text = path.read_text(encoding="utf-8")
+    data = json.loads(text)
+    node = data["nodes"].get(_STALE_GRAPH_NODE)
+    if node is None or not isinstance(node.get("cumulative_concepts"), list):
+        raise ValueError(
+            f"mutation 'stale_generated_graph': {_STALE_GRAPH_NODE} carries no "
+            f"'cumulative_concepts' list to drift. Repoint the mutation; do not narrow "
+            f"the comparison back to two fields."
+        )
+    node["cumulative_concepts"] = sorted(
+        set(node["cumulative_concepts"]) | {"planted_stale_concept"})
+    path.write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
+    return {path: text}
+
+
+def _plant_orphan_provider() -> Dict[Path, str]:
+    """
+    Re-add a provider entry under a capability id NO node requires.
+
+    Every other §6 check starts from a node's `requires`, so an orphan entry is read by
+    none of them -- never attested, never contradicted, never provision-checked -- while
+    sitting ready to pre-approve the first future node whose competency extracts that id.
+    `draw_lines` was in exactly this state until 2026-09-10, left behind when
+    `draw_line_relationships` was unregistered on an Attester's NOT_PROVIDED ruling.
+    """
+    path = REPO_ROOT / "backend/app/practice_gen/validation/validate_capability.py"
+    text = path.read_text(encoding="utf-8")
+    m = re.search(r"^CAPABILITY_PROVIDERS[^\n=]*=\s*\{\n", text, re.MULTILINE)
+    if not m:
+        raise ValueError(
+            "mutation 'orphan_provider': could not locate the CAPABILITY_PROVIDERS table "
+            "opening. The module moved; repoint the mutation."
+        )
+    if f"'{_ORPHAN_PROVIDER}':" in text:
+        raise ValueError(
+            f"mutation 'orphan_provider': {_ORPHAN_PROVIDER!r} is already registered, so "
+            f"re-adding it proves nothing. This mutation requires the entry to be absent."
+        )
+    injected = m.group(0) + (
+        f"    '{_ORPHAN_PROVIDER}': "
+        f"{{'variants': [('task_type', 'draw_construct')], 'formatters': ['mcq']}},\n"
+    )
+    path.write_text(text.replace(m.group(0), injected, 1), encoding="utf-8")
     return {path: text}
 
 

@@ -66,7 +66,11 @@ CENSUS_FLOORS = {
     # (two branches in one plant), and a record that does not carry the options it was
     # shown. `capability_stale_attestation_6F` is now proven by three mutations and
     # nothing but this floor notices if two of them are deleted.
-    "mutations": 68,
+    # 70 registered 2026-09-10 (was 68): +1 for §6A's orphan-provider direction, added in
+    # the commit that drove its count to zero (Scaling Mandate 5), and +1 for the WIDENED
+    # declaration-sync gate -- `capability_declarations_in_sync_6` is now proven by two
+    # mutations (one per field family), so this floor is the only guard on the pair.
+    "mutations": 70,
     # 983 observed 2026-09-08. How many (variant, value) pairs the blind-review packets
     # will actually demonstrate across the tree.
     #

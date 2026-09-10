@@ -9176,3 +9176,136 @@ $ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_
 
 No seed is cited for a failure fixed here because no generator was changed: every change in
 this commit is to the harness, the packet builder, or documentation.
+
+---
+
+## 2026-09-10 — §5a: the nine out-of-medium clauses, and two gates the deletion exposed
+
+### The ground-truth correction (Protocol 5 — reported, not silent)
+
+Nine `requires` entries removed from `data/skeletons/vocab_annotation.json` on the owner's
+2026-09-10 ruling. Every one is recorded here with the clause text and the reason, because a
+deletion from ground truth is the one edit Protocol 5 makes mandatory to report.
+
+**Group 1 — patterns stay numerical and alphabetical.**
+
+| node | capability | kind | clause removed |
+|---|---|---|---|
+| `mat_g1_na_q3_6` | `rhythmic_properties` | property | `rhythmic properties` |
+| `mat_g1_na_q3_6` | `arts` | context | `arts` |
+| `mat_g2_na_q2_8` | `rhythmic_properties` | property | `rhythmic properties` |
+| `mat_g2_na_q2_8` | `arts` | context | `arts` |
+
+Justification: both competencies present these as an EXEMPLAR list, not a mandate. G1 reads
+"patterns **could use** rhythmic properties, visual elements in the arts, …"; G2 prefixes them
+with "**e.g.**, numbers, letters and rhythmic properties…". The worked examples the competencies
+themselves print are numeric and alphabetic — G1 spells out "numbers: 2, 4, 2, 4__, __; letters:
+a, b, c, a, b, c, a, __, __". The curriculum names these media; it does not require them.
+
+**Group 2 — "given orally or in pictures" is a disjunction, and it was flattened.**
+
+| node | capability | kind | clause removed |
+|---|---|---|---|
+| `mat_g1_na_q1_9` | `orally` | context | `orally` |
+| `mat_g1_na_q2_6` | `orally` | context | `orally` |
+| `mat_g1_na_q3_3` | `given_orally` | representation | `given orally` |
+| `mat_g1_na_q4_6` | `given_orally` | context | `given orally` |
+| `mat_g2_na_q2_5` | `given_orally` | context | `given orally` |
+
+Justification: "(given orally **or** in pictures)" is one requirement with two arms, and the
+capability extractor turned it into two independent mandatory ones. Serving either satisfies the
+competency; this pipeline has no audio channel. The `pictures` / `in_pictures` arm is RETAINED on
+all five and must actually render — which on `mat_g1_na_q4_6` it does not (0 of 100 seeds), still
+open as §5c.
+
+**The record is not lost.** The brief warned that deleting from `requires` destroys the trace that
+MATATAG named these things, leaving the evidence log as the only witness. It does not have to:
+§6B immediately failed all seven nodes for competency words now covered by no clause, which is
+§6B working exactly as designed. Those words are recorded in each node's `requires_ignore`, and a
+new `requires_ignore_note` on the same node carries the ruling, the reason and this log's date, in
+the ground-truth file itself. **That note is not validated by anything** (Mandate 6) — nothing
+requires an ignored word to have a reason, and the existing `requires_ignore` lists are function
+words with none.
+
+**One clause deliberately NOT deleted, and it needs an owner ruling.** `visual_elements` on
+`mat_g1_na_q3_6` and `mat_g2_na_q2_8` comes from the same phrase as `arts` — "visual elements in
+the arts" — and the owner's quoted words name it ("ignore 'rhythmic properties' and 'visual
+elements in the arts'"), but the enumerated table in the brief lists six entries and omits it. Its
+two CONTRADICTED verdicts are therefore still live and are not clearable under the ruling as
+written: fixing them means building arts-flavoured pattern visuals, which the ruling forbids.
+Deleting further from ground truth than an explicit enumeration is not a call to make silently.
+
+### Gate 1 (new): a provider entry no node requires — `capability_orphan_provider_6A`
+
+Deleting the nine requirements left four `CAPABILITY_PROVIDERS` entries that nothing requires. A
+fifth, `draw_lines`, was ALREADY in that state at `8cb8dd22` and nothing in the harness could say
+so: every §6 check is driven by a node's `requires`, so an entry no requirement reaches is never
+provision-checked, never attested, never contradicted — while standing ready to satisfy the FIRST
+future node whose competency extracts that id, arriving pre-approved with no Attester having seen
+a rendered sample of it. It was orphaned by a rename, when `draw_line_relationships` was
+deliberately unregistered on an Attester's NOT_PROVIDED ruling.
+
+Built in the commit that drives its count to zero (Scaling Mandate 5). No floor: an orphan is
+never a legitimate gap in the pipeline's ability, only bookkeeping.
+
+### Gate 2 (widened): the sync check was looking one field away from live drift
+
+`declaration_sync_failures` compared `requires` and `requires_ignore` and passed. Rebuilding the
+skeleton at `8cb8dd22` **with no edit of mine** produced a graph differing from the committed one:
+
+```
+$ git stash && PYTHONPATH=. .venv/bin/python scripts/rebuild_knowledge_graph.py
+  data/knowledge_graph_g1_3.json | 19 -------------------
+  18 x  -"missing_number"     (cumulative_concepts)
+   1 x  -"addition"           (cumulative_concepts)
+```
+
+`cumulative_concepts` is the ground truth Content Rule 1 is judged against — §1D's NOT_YET_KNOWN
+gating reads it — so for those 18 nodes the vocabulary gate was validating against something
+nobody wrote. That is this function's own stated failure mode ("§6 validates a stale copy,
+silently and indefinitely"), live on disk, one field over from where it was looking.
+
+It now rebuilds the skeleton into a temp file and compares EVERY field of every node, plus the
+node set in both directions. A hand-picked field list goes stale the moment the builder learns to
+derive something new; rebuilding is the only comparison that cannot drift from what the builder
+does — the same reasoning `_generated_formatter_exclusions.py` is built on.
+
+### Every finding accounted for
+
+```
+§6 Phase 2   220 -> 211
+    -9 CONTRADICTED, exactly the nine deleted requirements (78 -> 69).
+       No verdict was edited, re-filed or deleted; the requirement they were about is gone,
+       so §6F has nothing to compare them against. The records remain on disk.
+§6 Phase 1     5 -> 5, floor 5, all `draw*` — unchanged.
+       It passed through 21 (declaration sync caught the un-rebuilt graph) and 12 (§6B caught
+       the now-uncovered competency words) before reaching 5. Both were the gates working.
+§8   63/102 -> 64/103 proven; allowlist unchanged at 39 (it may only shrink).
+```
+
+### Evidence
+
+```
+$ PYTHONPATH=. .venv/bin/python tests/mutation_harness.py --only orphan_provider
+  PASS  orphan_provider          §6A (a provider entry no requirement reaches)
+$ ... --only stale_generated_graph
+  PASS  stale_generated_graph    §6 (the generated graph matches a fresh build, in every field)
+$ ... --only declarations_out_of_sync
+  PASS  declarations_out_of_sync §6 (the declarations validated are the ones an author wrote)
+
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_capability --phase 1
+  Capability contract: 5 failure(s) (5 Phase 1 / artifact-free, floor 5; 0 Phase 2)
+
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_capability --phase 2
+  Capability contract: 211 failure(s) (0 Phase 1, floor 5; 211 Phase 2 / attestation)
+
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_census
+  PASS census: nodes=151 · unit_tests=424 (floor 419) · mutations=70 (floor 70)
+  PASS census: variant_candidates=975 (floor 975)
+
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_coverage
+  PASS assertion_coverage_8: 64/103 harness assertions proven, 39 knowingly unproven
+```
+
+No seed accompanies these: no generator was changed. `mat_g1_na_q4_6` renders 0 visuals at every
+one of seeds 1-150, which is §5c's open defect, not a failure introduced here.
