@@ -231,6 +231,38 @@ def _normalize(text: Any) -> str:
     return " ".join(str(text or "").split())
 
 
+# What a sample carries when it records no answer at all. A distinct sentinel rather
+# than "" because "" is a value `correct_answer` can legitimately hold.
+_NO_ANSWER = "<no answer recorded>"
+
+
+def _answer_value(raw: Any) -> str:
+    """
+    An answer field reduced for comparison, WITHOUT `_normalize`'s falsy collapse.
+
+    `_normalize` is `str(x or "")`, which is right for a stem and wrong for an answer:
+    it maps `False`, `0`, `[]` and `None` all to the empty string. `true_false` items
+    key a bool, and a record that stored the string 'False' compares against a live
+    render of `False` -- identical content -- while `_normalize` reads the recorded
+    side as 'False' and the live side as '', reporting drift that did not happen.
+
+    That is not hypothetical and it is not §5-only: `docs/pgen_contract.md` carried
+    "b11_mat_g2_na_q3_5 seed 11 was attested against a key of False and now renders an
+    empty key" as the motivating example for closing §6F's answer blind spot. Rendered
+    2026-09-10, that seed still keys `False`; the "empty key" was `_normalize(False)`
+    reporting on itself. Measured the same day, using this helper instead changes ZERO
+    §5 findings on the current tree (the falsy shape does not occur in the review
+    corpus) and removes 10 would-be false positives from §6F's answer comparison,
+    where `true_false` is common.
+
+    The inverse direction matters as much: `None` and `False` must not compare equal,
+    or an item that stops producing an answer reads as unchanged.
+    """
+    if raw is None:
+        return _NO_ANSWER
+    return " ".join(str(raw).split())
+
+
 def _validate_freshness(node_id: str, data: Dict[str, Any]) -> List[str]:
     """
     Re-render every seed the review cites and assert the review is still about
@@ -364,8 +396,8 @@ def _validate_freshness(node_id: str, data: Dict[str, Any]) -> List[str]:
         # which is why an MCQ reviewed without its options is a named failure above
         # rather than a comparison made on a guess.
         if reviewed_keyed != current_keyed:
-            reviewed_answer = _normalize(s.get("correct_answer"))
-            current_answer = _normalize(current.get("correct_answer"))
+            reviewed_answer = _answer_value(s.get("correct_answer"))
+            current_answer = _answer_value(current.get("correct_answer"))
         if reviewed_answer != current_answer:
             errs.append(
                 f"{node_id}: STALE review — seed {seed} keeps its wording but no longer keys the "
@@ -398,9 +430,9 @@ def _option_values(sample: Dict[str, Any]) -> Optional[List[str]]:
     values: List[str] = []
     for o in opts:
         if isinstance(o, dict) and "value" in o:
-            values.append(_normalize(o["value"]))
+            values.append(_answer_value(o["value"]))
         else:
-            values.append(_normalize(o))
+            values.append(_answer_value(o))
     return sorted(values)
 
 
@@ -442,13 +474,13 @@ def _resolved_answer(sample: Dict[str, Any]) -> tuple:
     quieter). It is pinned by `test_judgment_answer_resolution.py` in both directions
     instead, which is what that file is for.
     """
-    raw = _normalize(sample.get("correct_answer"))
+    raw = _answer_value(sample.get("correct_answer"))
     opts = sample.get("options")
     if not isinstance(opts, list):
         return raw, False
     for o in opts:
-        if isinstance(o, dict) and _normalize(o.get("key")) == raw and "value" in o:
-            return _normalize(o["value"]), True
+        if isinstance(o, dict) and _answer_value(o.get("key")) == raw and "value" in o:
+            return _answer_value(o["value"]), True
     return raw, False
 
 
@@ -465,20 +497,24 @@ def _answer_display(sample: Dict[str, Any]) -> str:
     ZERO are shuffle-only. So the finding is right in every case and only its wording
     was wrong.
 
-    This is display only. The comparison in `_validate_freshness` is unchanged and still
-    runs on the raw field: resolving the key before comparing would make those 88 real
-    findings look spurious, which is the "measure values, not proxies" failure in
-    reverse. The resolution is best-effort by construction -- an answer that is not a
-    key of this sample's own option table is shown as-is -- because a message helper may
-    never be the thing that decides whether a review passes.
+    This is display only, and its resolution is best-effort by construction -- an answer
+    that is not a key of this sample's own option table is shown as-is -- because a
+    message helper may never be the thing that decides whether a review passes. The
+    paragraph that stood here until 2026-09-10 said "the comparison in
+    `_validate_freshness` is unchanged and still runs on the raw field", which stopped
+    being true in the same commit that wrote it: `_resolved_answer` now decides the
+    comparison, and the re-rendered pair above ("now keys B='2:10'") was the
+    one-step-removed reading `_resolved_answer`'s own docstring corrects to B='2:15'.
+    Both errors are left visible here because a docstring that quietly self-heals is
+    how the next reader stops checking.
     """
-    raw = _normalize(sample.get("correct_answer"))
+    raw = _answer_value(sample.get("correct_answer"))
     opts = sample.get("options")
     if not isinstance(opts, list):
         return repr(raw)
     for o in opts:
-        if isinstance(o, dict) and _normalize(o.get("key")) == raw and "value" in o:
-            return f"{raw!r} (= {_normalize(o['value'])!r})"
+        if isinstance(o, dict) and _answer_value(o.get("key")) == raw and "value" in o:
+            return f"{raw!r} (= {_answer_value(o['value'])!r})"
     return repr(raw)
 
 

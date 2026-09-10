@@ -88,6 +88,7 @@ ASSERTIONS = (
     "capability_unattested_6F",
     "capability_contradicted_6F",
     "capability_stale_attestation_6F",
+    "capability_attestation_options_recorded_6F",
     "attester_reasoning_skeleton_6G",
     "attester_evidence_6G",
     "attester_plurality_6H",
@@ -1032,32 +1033,63 @@ def _attestation_staleness(records: List[Dict[str, Any]]) -> List[str]:
     because this harness is the foundation the remaining MATATAG grade levels get built
     on, and a gate that certifies stale evidence certifies it for every grade.
 
-    KNOWN LIMITATION, measured (Scaling Mandate 6). **This compares the STEM and nothing
-    else.** §5, which asks the same question of the same kind of artifact, compares the
-    stem, the keyed value AND the offered options -- so the two freshness gates are not
-    the same strength, and §6F is the weaker one. Measured 2026-09-10 across the 151 live
-    records on this tree:
+    Brought to §5 PARITY on 2026-09-10. It compares, in this order and per seed, the
+    same four things `_validate_freshness` compares, using §5's own helpers rather than
+    a second copy of the rule (a re-derived copy is how two gates that must agree drift
+    apart):
 
-        already STALE on the stem (what this checks) :  8
-        stem byte-identical, ANSWER KEY changed      : 50   <-- invisible here
+        1. the stem;
+        2. that a record carries the `options` it was shown, when the live render
+           offers some -- otherwise nothing below can be adjudicated at all;
+        3. the keyed VALUE, resolved through the record's own option table so an A-D
+           slot moving is not read as content drift;
+        4. the offered option multiset.
 
-    Fifty live records, a third of the corpus, hold evidence that has partly expired with
-    nothing reporting it. That is not hypothetical: `b11_mat_g2_na_q3_5` seed 11 was
-    attested against a key of 'False' and now renders an empty key. It was found the day
-    a blind reviewer caught ordinal_numbers keying a symbol to a stem that asks for a
-    word -- a defect that changes the ANSWER and leaves the stem untouched, so §5 would
-    have expired the review and §6F kept the attestation.
+    Before that it compared the STEM ONLY, and the cost was measured across the 151 live
+    records the day it was closed:
 
-    Deliberately NOT closed in the commit that measured it, and the reason is Scaling
-    Mandate 5 rather than effort: this queue is already red (86 findings), so 50 more
-    could not be told from the backlog they landed in, and the mutation proving the gate
-    would score INVALID for the same reason. The design is settled and cheap when the
-    queue is clean: compare `correct_answer` as §5's `_resolved_answer` does -- through
-    the packet's own recorded `options`, so an A-D key resolves to its VALUE and the ~40
-    of those 50 that are placement-only do not read as drift. Attester packets already
-    carry `options`, so nothing new has to be recorded first.
+        stale on the stem (all this used to see)               :   8
+        stem identical, NO recorded options while the live
+          render offers some -- answer unresolvable, option
+          drift uncheckable                                    : 134
+        of those, samples whose raw answer field also moved    : 167 samples
+
+    134 of 151, not the 50 that were predicted. The prediction assumed "Attester packets
+    already carry `options`, so nothing new has to be recorded first". They do not, and
+    that was the root defect: `tests/attester_packets._render` computes the option table
+    and `render_prompt_block` prints it to the Attester, but the RECORD SKELETON the
+    builder writes copied only seed/question_text/correct_answer/formatter. Measured
+    before the fix: 0 of 1790 recorded samples carried `options`. The builder is fixed in
+    the same commit, so records filed from now on are adjudicable; the 134 already on
+    disk are not, and each must be re-attested. They may not be repaired in place -- the
+    options that were shown are simply not recorded, and editing a record is forbidden.
+
+    One correction to the record, since it was the stated motivation for this work.
+    `docs/pgen_contract.md` and the campaign brief both cited "`b11_mat_g2_na_q3_5` seed
+    11 was attested against a key of `False` and now renders an empty key". Re-rendered
+    2026-09-10, that seed still keys `False`. The "empty key" was `_normalize(False)`
+    returning "" -- the falsy collapse `_answer_value` exists to stop -- so the example
+    was an artifact of the measurement, not a drift. Ten such would-be false positives
+    were in that population.
+
+    KNOWN LIMITATION, unchanged and named (Scaling Mandate 6): like §5, this does not
+    compare the VISUAL PAYLOAD, and a capability clause about a medium is exactly the
+    kind an attestation is filed for. A ShapeBoard can change from squares to hexagons
+    under a byte-identical stem, answer and option set and still read fresh here.
+
+    SECOND LIMITATION, measured rather than assumed: the packet builder renders with
+    `is_student_path=True` and this re-renders through `_render_sample`, which does not.
+    Across all 1510 recorded samples on 2026-09-10 the two paths agreed on stem, answer
+    and option presence in every case, so the comparison is sound today -- but nothing
+    enforces that they stay the same path, and if they diverge this gate reports drift
+    that is really a path difference.
     """
     from backend.app.practice_gen.validation.judgment_packets import _render_sample
+    from backend.app.practice_gen.validation.validate_judgment import (
+        _answer_value,
+        _option_values,
+        _resolved_answer,
+    )
 
     # A record that no longer supplies a single winning verdict is not evidence for
     # anything, and re-rendering its seeds asks whether content still matches a ruling
@@ -1096,6 +1128,17 @@ def _attestation_staleness(records: List[Dict[str, Any]]) -> List[str]:
                 f"packet builder and re-attest."
             )
             continue
+        # One finding per record, first problem wins: a record is re-attested whole, so
+        # a second reason to re-attest the same batch is not a second unit of work. The
+        # order below is the order §5 uses and is load-bearing -- an answer cannot be
+        # resolved without the option table, so the adjudicability check must precede
+        # the answer comparison or a structurally uncheckable record is reported as an
+        # answer-drift symptom instead.
+        rebuild = (
+            f"Rebuild the packet with: python tests/attester_packets.py --node {node_id} "
+            f"--packets <f> --key <f> --record <f>, dispatch a blind Attester, and file "
+            f"the replacement. Do not edit the record."
+        )
         for sample in judged:
             seed = sample.get("seed")
             if seed is None:
@@ -1109,6 +1152,59 @@ def _attestation_staleness(records: List[Dict[str, Any]]) -> List[str]:
                     f"The Attester judged {was[:90]!r} but the pipeline now renders "
                     f"{now[:90]!r}. Every verdict in this batch is about content that no "
                     f"longer exists -- re-attest the batch. Do not edit the record."
+                )
+                break
+
+            rec_opts = _option_values(sample)
+            cur_opts = _option_values(current)
+
+            # Whether an item is a choice item is decided by the LIVE RENDER, never by a
+            # formatter name -- a grade-7 formatter that does not exist yet may carry an
+            # option table too (Scaling Mandate 4).
+            if cur_opts is not None and rec_opts is None:
+                errs.append(
+                    f"{node_id}: attestation batch {batch!r} records no 'options' at seed "
+                    f"{seed}, but the live render of that seed offers {len(cur_opts)}: "
+                    f"{cur_opts}. The Attester was shown those options by "
+                    f"render_prompt_block, so its verdict rests on them -- but the record "
+                    f"does not carry them, so option drift cannot be checked at all and on "
+                    f"a key-valued formatter the answer cannot be resolved either. "
+                    f"{rebuild}"
+                )
+                break
+            if rec_opts is not None and cur_opts is None:
+                errs.append(
+                    f"{node_id}: attestation batch {batch!r} is STALE (§6F) at seed {seed} — "
+                    f"it was attested as a choice item offering {rec_opts}, but the live "
+                    f"render offers no options at all. The item stopped being a selection "
+                    f"task after the attestation was filed. {rebuild}"
+                )
+                break
+
+            rec_ans, rec_keyed = _resolved_answer(sample)
+            cur_ans, cur_keyed = _resolved_answer(current)
+            # Only compare resolved values when BOTH sides resolved through their own
+            # option table. When either did not, the raw field is all there is.
+            if rec_keyed != cur_keyed:
+                rec_ans = _answer_value(sample.get("correct_answer"))
+                cur_ans = _answer_value(current.get("correct_answer"))
+            if rec_ans != cur_ans:
+                errs.append(
+                    f"{node_id}: attestation batch {batch!r} is STALE (§6F) at seed {seed} — "
+                    f"the stem is unchanged but the item no longer keys the same answer. "
+                    f"Attested: {rec_ans!r}; now keys: {cur_ans!r}. A capability verdict is "
+                    f"about what the rendered item asks and answers, and the answer moved "
+                    f"under it. {rebuild}"
+                )
+                break
+
+            if rec_opts is not None and cur_opts is not None and rec_opts != cur_opts:
+                errs.append(
+                    f"{node_id}: attestation batch {batch!r} is STALE (§6F) at seed {seed} — "
+                    f"the stem is unchanged but the item is no longer offered the same "
+                    f"options. Attested: {rec_opts}; now offers: {cur_opts}. What a clause "
+                    f"is exhibited by is judged off the whole item, options included. "
+                    f"{rebuild}"
                 )
                 break
     return errs

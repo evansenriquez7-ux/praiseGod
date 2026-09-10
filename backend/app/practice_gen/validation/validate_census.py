@@ -41,7 +41,10 @@ CENSUS_FLOORS = {
     # which pins the half of §5's answer comparison that NARROWS -- a narrowing cannot be
     # proven by a mutation, because the harness scores a plant by making the validator
     # fail and a narrowing makes it quieter. Ratcheted to the real number less churn.
-    "unit_tests": 408,
+    # 423 collected 2026-09-10 (was 412), +11 from test_attestation_freshness.py, which
+    # pins §6F's branch ORDER and the half of its answer comparison that NARROWS -- the
+    # same reason test_judgment_answer_resolution.py exists, one gate over.
+    "unit_tests": 419,
     # 56 registered 2026-09-09 (was 51, 50, 48, 37). Four prove §8's own directions, one
     # §2C at (node, formatter) granularity, two the §6 phase seam, one that every contract
     # check declares the phase it runs in, four the §6 Phase 1 band (§6A/§6B/§6C/§6E, which
@@ -58,7 +61,12 @@ CENSUS_FLOORS = {
     # see a gap"). §8 counts assertions, not mutations, and `judgment_review_freshness_5`
     # is now proven by two of them -- so this floor is the only thing that notices if one
     # of that pair is deleted.
-    "mutations": 65,
+    # 68 registered 2026-09-10 (was 65). Three prove §6F's freshness branches beyond the
+    # stem, which is all it compared until that day: the keyed VALUE, the offered options
+    # (two branches in one plant), and a record that does not carry the options it was
+    # shown. `capability_stale_attestation_6F` is now proven by three mutations and
+    # nothing but this floor notices if two of them are deleted.
+    "mutations": 68,
     # 983 observed 2026-09-08. How many (variant, value) pairs the blind-review packets
     # will actually demonstrate across the tree.
     #

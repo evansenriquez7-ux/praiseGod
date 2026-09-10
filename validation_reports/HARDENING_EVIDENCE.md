@@ -9015,3 +9015,164 @@ scoreable against a red baseline. One is recorded as a contract breach: it ran
 is explicit that a record may not be edited and may not be deleted. Those three were already
 superseded and no verdict depended on them; they have NOT been recreated, because recreating an
 attestation means retyping an Attester's text, and a retyped attestation is fabricated evidence.
+
+---
+
+## 2026-09-10 — §6F reaches §5 parity, and the blind spot was 137 records, not 50
+
+### What this closed
+
+`_attestation_staleness` compared the STEM and nothing else. §5, which asks the same question
+of the same kind of artifact, compares stem + recorded options + keyed value + option multiset.
+The two gates were not the same strength and the weaker one guarded the larger surface. It now
+compares the same four things, in the same order, using §5's own helpers rather than a second
+copy of the rule — a re-derived copy is how two gates that must agree drift apart.
+
+Order matters and is pinned by test: an answer cannot be resolved without its option table, so
+a record that carries no options is reported as UNADJUDICABLE rather than as an answer-drift
+symptom.
+
+### The prediction this campaign was built on was wrong, and the correction is the finding
+
+The brief (and `docs/pgen_contract.md` row 43) said: *50 records have a byte-identical stem and
+a changed answer key; the fix is cheap because "Attester packets already carry `options`, so
+nothing new has to be recorded first."*
+
+Measured on this tree before changing anything:
+
+```
+recorded attestation samples carrying `options` :    0  of 1790
+live records unadjudicable on that basis        :  134  of 151
+```
+
+They do not carry options. `tests/attester_packets._render` computes the option table and
+`render_prompt_block` PRINTS it to the Attester under every sample — so every verdict on a
+choice item rests on options — but the record skeleton the builder wrote copied four fields
+(`seed`, `question_text`, `correct_answer`, `formatter`) and dropped it. That is the root
+defect. It is fixed in this commit (the skeleton now copies every field `_render` produces, so
+the next field added cannot go unrecorded the same way), and verified by building a record:
+
+```
+$ PYTHONPATH=. .venv/bin/python tests/attester_packets.py --node mat_g2_na_q2_8 \
+      --packets local_only/scratch/t_pk.json --key local_only/scratch/t_key.json \
+      --record local_only/scratch/t_rec.json
+  keys: ['seed', 'formatter', 'question_text', 'correct_answer', 'options']
+```
+
+The 137 records already on disk cannot be repaired. What was shown is not written down, and a
+record may not be edited. Each must be re-attested.
+
+### Second correction: the motivating example was a measurement artifact
+
+Both the brief and contract row 43 cited *"`b11_mat_g2_na_q3_5` seed 11 was attested against a
+key of `False` and now renders an empty key"*. Rendered:
+
+```
+seed 11  recorded 'False'  ->  live False   | _normalize equal? False | str equal? True
+```
+
+The seed still keys `False`. The "empty key" was `_normalize` — `str(x or "")` — mapping the
+bool `False` to `""`. `_answer_value` (new, in `validate_judgment`) stops the falsy collapse
+while keeping `None` distinct from `False`, and is used by both gates. Measured: it changes
+**zero** §5 findings on this tree (the shape does not occur in the review corpus) and removes
+10 would-be false positives from §6F, where `true_false` is common. Contract rows 21 and 43
+are corrected in this commit; the old wording is quoted in the docstrings so the error stays
+visible rather than quietly healing.
+
+### Every finding accounted for, one by one
+
+```
+§6 Phase 2   86 -> 220
+   78 CONTRADICTED      unchanged, none touched
+    8 STALE (stem)  ->   5 STALE (stem) + 3 reported earlier in the same record
+                         for a structurally prior reason (no recorded options at an
+                         earlier seed). Verified by name, all three still reported:
+                           batch025B03_mat_g2_na_q2_2   -> unadjudicable at seed 11
+                           batch025B05_mat_g1_na_q1_8   -> unadjudicable at seed 11
+                           batch026B14_mat_g3_na_q3_1   -> unadjudicable at seed 11
+    0            ->  137 UNADJUDICABLE (134 previously-clean records + those 3)
+    0 answer-drift and 0 option-drift findings appear, because the adjudicability
+      branch precedes them and every record on disk trips it first. The 3 records
+      carrying a genuine resolvable value drift (ordinal '8th' -> 'eighth' on
+      batch072B01_mat_g1_na_q1_5 and batch072B02_mat_g2_na_q1_5) are inside the 137.
+§5 1013 -> 1013   (the `_answer_value` change is a pure strengthening here)
+```
+
+`run_all`'s Phase 2 rollup line said "78 CONTRADICTED, 0 UNATTESTED and 5 STALE" above 220
+findings — a whole class invisible in the summary. It now tallies UNADJUDICABLE explicitly and
+counts anything it cannot name as `other`, so the breakdown always sums to the total.
+
+### Proven, by name, against a red baseline
+
+Three new mutations, each pinned to a named fixture node with a `"<node> && <message>"`
+conjunction marker and a loud raise if the node stops satisfying its precondition (Scaling
+Mandate 5 — §6F's queue is red, so a scanned plant would score INVALID):
+
+```
+$ PYTHONPATH=. .venv/bin/python tests/mutation_harness.py --only attestation_answer_drift
+  PASS  attestation_answer_drift   §6F freshness (the keyed value, not just the stem)
+$ ... --only attestation_option_drift
+  PASS  attestation_option_drift   §6F freshness (the offered options, as §5 compares them)
+$ ... --only attestation_drops_options
+  PASS  attestation_drops_options  §6F adjudicability (must carry the choices it was shown)
+$ ... --only stale_attestation        PASS   (unchanged, re-verified)
+$ ... --only stale_answer_same_key    PASS   (unchanged, re-verified)
+```
+
+`attestation_drops_options` is planted in the GENERATOR (`fmt_true_false` starts emitting an
+option table) rather than in a record, because that is how the state actually arises: a record
+cannot be repaired into carrying options it never recorded, so the only honest signal is the
+live render growing them.
+
+The resolution-through-options half is a NARROWING and cannot be proven by a mutation — the
+runner scores a plant by making the validator FAIL. `tests/unit/test_attestation_freshness.py`
+(12 tests) pins it in both directions plus the branch ORDER and the falsy collapse, the way
+`test_judgment_answer_resolution.py` does one gate over.
+
+### Blind spots left open, named (Scaling Mandate 6)
+
+1. **The visual payload is still not compared**, by either gate — and a medium clause is
+   exactly what an attestation gets filed for. A ShapeBoard can change squares to hexagons
+   under a byte-identical stem, answer and option set and still read fresh.
+2. **The two sides render through different paths.** The packet builder uses
+   `is_student_path=True`; §6F re-renders through `_render_sample`, which does not. Measured
+   across all 1510 recorded samples: the paths agreed on stem, answer and option presence in
+   every case, so the comparison is sound today — but nothing enforces that they stay the same
+   path, and a divergence would surface as drift that is really a path difference.
+3. **§5 freshness still re-renders only the seeds a review already cites** (32 of 151 reviews
+   are missing a variant-coverage seed the current builder emits). Unchanged by this commit.
+4. **§8 still proves by DECLARATION, not execution** — `proven_assertions()` reads
+   `Mutation.asserts` and never learns whether a mutation was DETECTED. Unchanged.
+
+### Evidence
+
+```
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.run_all --phase 2
+  FAIL judgment_reviews (1014 problem(s) — non-PASS verdicts or incomplete reviews)
+       [1013 from validate_judgment + 1 rollup line for the CONCERN/FAIL verdict summary]
+  FAIL capability_contract (Phase 2, 220 problem(s): 78 CONTRADICTED, 0 UNATTESTED,
+       5 STALE (§6F), 137 UNADJUDICABLE (no recorded options))
+  PASS contract_doc_matches_registry
+  PASS operator_doc_covers_registry (35/35 refs, floor 12)
+  PASS two_direction_contract_match
+
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_judgment --all
+  Verdicts over 151 reviewed nodes: PASS=140 CONCERN=7 FAIL=4 UNKNOWN=0
+  Judgment review validation: 1013 problem(s) found.        (unchanged from baseline)
+
+$ PYTHONPATH=. .venv/bin/python -m pytest tests/unit -q
+  423 passed, 1 skipped, 2 deselected, 1 warning in 87.26s
+
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_census
+  PASS census: nodes=151 (floor 151)
+  PASS census: unit_tests=424 (floor 419)
+  PASS census: mutations=68 (floor 68)
+  PASS census: variant_candidates=975 (floor 975)
+
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_coverage
+  PASS assertion_coverage_8: 63/102 harness assertions proven (38 discovered in
+  validate_matrix, 64 declared across 12 modules), 39 knowingly unproven
+```
+
+No seed is cited for a failure fixed here because no generator was changed: every change in
+this commit is to the harness, the packet builder, or documentation.

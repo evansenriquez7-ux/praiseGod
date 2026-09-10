@@ -268,10 +268,20 @@ def main() -> int:
                        "sampling": "is_student_path=True",
                        "node_id": nodes[0] if len(nodes) == 1 else "<one node per record>",
                        "seeds": SAMPLE_SEEDS,
+                       # `options` is recorded because the Attester SEES it --
+                       # render_prompt_block prints the option list under every
+                       # sample -- so a verdict rests on it, and §6F freshness cannot
+                       # check option drift or resolve an A-D key without it. This
+                       # skeleton omitted the field until 2026-09-10 while `_render`
+                       # above computed it: measured that day, 0 of 1790 recorded
+                       # samples carried options, which left 137 of 151 live records
+                       # unadjudicable and un-repairable (a record may not be edited;
+                       # what was shown is simply not written down). Copy every field
+                       # `_render` produces rather than a hand-listed subset, so the
+                       # next field added to a packet cannot go unrecorded the same
+                       # way.
                        "samples_judged": [
-                           {"seed": s["seed"], "question_text": s["question_text"],
-                            "correct_answer": s["correct_answer"], "formatter": s["formatter"]}
-                           for s in (packets[0]["samples"] if packets else [])
+                           dict(s) for s in (packets[0]["samples"] if packets else [])
                        ]},
             "verdicts": [{"capability_id": key[p["item"]]["capability_id"],
                           "node_id": key[p["item"]]["node_id"],

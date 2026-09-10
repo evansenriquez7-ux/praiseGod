@@ -446,10 +446,20 @@ def run_all(fail_fast: bool = False, phase: Optional[int] = None) -> int:
             unattested = [e for e in attestation_errors if "UNATTESTED" in e]
             contradicted = [e for e in attestation_errors if "CONTRADICTED" in e]
             stale = [e for e in attestation_errors if "is STALE" in e]
+            unadjudicable = [e for e in attestation_errors if "records no 'options'" in e]
+            # The tally must add up to the total, or a whole class of finding can be
+            # invisible in the summary line while sitting in the list below it: when
+            # §6F reached §5 parity on 2026-09-10 this line read "78 CONTRADICTED, 0
+            # UNATTESTED and 5 STALE" above 220 findings, and the 137 unadjudicable
+            # records it had just started reporting appeared nowhere. Anything this
+            # breakdown does not name is counted as `other` rather than dropped.
+            named = len(unattested) + len(contradicted) + len(stale) + len(unadjudicable)
+            other = len(attestation_errors) - named
             print(
                 f"  FAIL capability_contract (Phase 2, {len(attestation_errors)} problem(s): "
-                f"{len(contradicted)} CONTRADICTED, {len(unattested)} UNATTESTED and "
-                f"{len(stale)} STALE (§6F)):"
+                f"{len(contradicted)} CONTRADICTED, {len(unattested)} UNATTESTED, "
+                f"{len(stale)} STALE (§6F), {len(unadjudicable)} UNADJUDICABLE "
+                f"(no recorded options){f', {other} other' if other else ''}):"
             )
             # UNATTESTED dominates by volume while the backlog is open and would bury the
             # findings that name a defect. Show the ones that name a real problem first.

@@ -299,6 +299,16 @@ def _plant_stale_review() -> Dict[Path, str]:
 
 _STALE_ANSWER_NODE = "mat_g1_dp_q3_2"
 
+# The three §6F fixtures below are PINNED to named nodes, not scanned for, and each
+# raises loudly if its node stops satisfying the precondition. §6F's queue is red (220
+# findings), so a scanned plant would land on a record that is already reported and the
+# run would score INVALID on the baseline guard -- see Scaling Mandate 5. Every marker
+# is a "<node> && <message>" conjunction for the same reason.
+_ATTEST_ANSWER_NODE = "mat_g1_na_q1_4"          # clean record, no options either side
+_ATTEST_OPTION_DRIFT_NODE = "mat_g2_na_q2_8"    # live render offers options
+_ATTEST_CHOICE_LOST_NODE = "mat_g2_na_q1_4"     # clean record, live render offers none
+_ATTEST_UNADJUDICABLE_NODE = "mat_g2_na_q3_8"   # clean record, true_false on every seed
+
 
 def _plant_stale_answer_same_key() -> Dict[Path, str]:
     """
@@ -819,6 +829,82 @@ MUTATIONS: List[Mutation] = [
         expected_check="§6F freshness (attestation is about content that still exists)",
         expect_output_contains=["STALE && planted drift"],
         baseline_must_not_contain=["planted drift"],
+    ),
+    Mutation(
+        name="attestation_answer_drift",
+        asserts=['capability_stale_attestation_6F'],
+        description=(
+            "Move the answer an attestation was filed against while its stem stays "
+            "byte-identical. Until 2026-09-10 §6F compared the stem and nothing else, so "
+            "a capability verdict outlived the answer changing under it -- the drift "
+            "shape §5 has expired reviews for since `stale_answer_same_key`."
+        ),
+        edits={},
+        apply_fn=lambda: _plant_attestation_answer_drift(),
+        command=["backend.app.practice_gen.validation.validate_capability"],
+        expected_check="§6F freshness (the keyed value, not just the stem)",
+        expect_output_contains=[f"{_ATTEST_ANSWER_NODE} && no longer keys the same answer"],
+        baseline_must_not_contain=[f"{_ATTEST_ANSWER_NODE} && no longer keys the same answer"],
+    ),
+    Mutation(
+        name="attestation_option_drift",
+        asserts=['capability_stale_attestation_6F'],
+        description=(
+            "Move one offered distractor under an unchanged stem and key, and separately "
+            "turn a non-choice item into a choice item -- the two branches of §6F's "
+            "option comparison, planted together so one run says whether both fire. The "
+            "Attester is shown the option list under every sample, so its verdict rests "
+            "on options §6F did not compare at all before 2026-09-10."
+        ),
+        edits={},
+        apply_fn=lambda: _plant_attestation_option_drift(),
+        command=["backend.app.practice_gen.validation.validate_capability"],
+        expected_check="§6F freshness (the offered options, as §5 compares them)",
+        expect_output_contains=[
+            f"{_ATTEST_OPTION_DRIFT_NODE} && no longer offered the same options",
+            f"{_ATTEST_CHOICE_LOST_NODE} && stopped being a selection task",
+        ],
+        baseline_must_not_contain=[
+            f"{_ATTEST_OPTION_DRIFT_NODE} && no longer offered the same options",
+            f"{_ATTEST_CHOICE_LOST_NODE} && stopped being a selection task",
+        ],
+    ),
+    Mutation(
+        name="attestation_drops_options",
+        asserts=['capability_attestation_options_recorded_6F'],
+        description=(
+            "Make a formatter start emitting an option table on a node whose filed "
+            "attestation carries none -- the exact state 137 of 151 live records were "
+            "found in, because the record skeleton in tests/attester_packets.py copied "
+            "four fields and dropped the `options` the Attester was actually shown. "
+            "Planted in the GENERATOR rather than the record because that is how the "
+            "state arises: a record cannot be repaired into carrying options it never "
+            "recorded, so the only honest signal is the live render growing them."
+        ),
+        edits={
+            "backend/app/practice_gen/formatters/textual/fmt_true_false.py": (
+                '    format_data = {\n'
+                '        "statement": statement,\n'
+                '        "is_true": is_true,\n'
+                '        "correct_answer": is_true,\n'
+                '    }\n',
+                '    format_data = {\n'
+                '        "statement": statement,\n'
+                '        "is_true": is_true,\n'
+                '        "correct_answer": is_true,\n'
+                '        "options": [\n'
+                '            {"key": "A", "value": True, "is_correct": is_true},\n'
+                '            {"key": "B", "value": False, "is_correct": not is_true},\n'
+                '        ],\n'
+                '    }\n',
+            ),
+        },
+        command=["backend.app.practice_gen.validation.validate_capability"],
+        expected_check="§6F adjudicability (an attestation must carry the choices it was shown)",
+        expect_output_contains=[
+            f"{_ATTEST_UNADJUDICABLE_NODE} && records no 'options' at seed"],
+        baseline_must_not_contain=[
+            f"{_ATTEST_UNADJUDICABLE_NODE} && records no 'options' at seed"],
     ),
     Mutation(
         name="template_review",
@@ -2224,6 +2310,109 @@ def _drift_attested_content() -> Dict[Path, str]:
     target_data["packet"]["samples_judged"][0]["question_text"] = "planted drift: a stem the pipeline never rendered"
     target.write_text(json.dumps(target_data, indent=2, ensure_ascii=False), encoding="utf-8")
     return {target: original_text}
+
+
+def _attestation_record_for(node_id: str, mutation: str):
+    """The live record whose packet is for `node_id`, plus its parsed data."""
+    import json
+
+    d = REPO_ROOT / "validation_reports" / "attestation"
+    for path in sorted(d.glob("*.json")):
+        data = json.loads(path.read_text(encoding="utf-8"))
+        if (data.get("packet") or {}).get("node_id") == node_id:
+            return path, data
+    raise ValueError(
+        f"mutation {mutation!r}: no attestation record on disk carries a packet for "
+        f"{node_id}. The fixture moved; repoint the mutation rather than scanning for "
+        f"any record, which would land on the red part of the queue and score INVALID."
+    )
+
+
+def _plant_attestation_answer_drift() -> Dict[Path, str]:
+    """
+    Move the answer an attestation was filed against, leaving its stem byte-identical.
+
+    Until 2026-09-10 §6F compared the STEM ONLY, so a verdict about what an item asks
+    and answers survived the answer changing under it -- the shape §5 has expired
+    reviews for since `stale_answer_same_key` was written.
+    """
+    import json
+
+    from backend.app.practice_gen.validation.judgment_packets import _render_sample
+
+    path, data = _attestation_record_for(_ATTEST_ANSWER_NODE, "attestation_answer_drift")
+    sample = data["packet"]["samples_judged"][0]
+    current = _render_sample(_ATTEST_ANSWER_NODE, sample["seed"])
+    if current.get("options") is not None:
+        raise ValueError(
+            f"mutation 'attestation_answer_drift': {_ATTEST_ANSWER_NODE} seed "
+            f"{sample['seed']} now renders options, so §6F reports it unadjudicable "
+            f"before ever comparing the answer. Repoint the fixture; do not reorder "
+            f"the check."
+        )
+    text = path.read_text(encoding="utf-8")
+    sample["correct_answer"] = "planted answer drift: an answer the pipeline never keyed"
+    path.write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
+    return {path: text}
+
+
+def _plant_attestation_option_drift() -> Dict[Path, str]:
+    """
+    Two branches of §6F's option comparison, planted together so one run says whether
+    both fire: an item whose offered options MOVED, and an item that stopped being a
+    choice item at all. The Attester is shown the option list under every sample by
+    `render_prompt_block`, so a verdict rests on it.
+    """
+    import json
+
+    from backend.app.practice_gen.validation.judgment_packets import _render_sample
+
+    originals: Dict[Path, str] = {}
+
+    drift_path, drift_data = _attestation_record_for(
+        _ATTEST_OPTION_DRIFT_NODE, "attestation_option_drift")
+    sample = drift_data["packet"]["samples_judged"][0]
+    current = _render_sample(_ATTEST_OPTION_DRIFT_NODE, sample["seed"])
+    live = current.get("options")
+    if not isinstance(live, list) or not live:
+        raise ValueError(
+            f"mutation 'attestation_option_drift': {_ATTEST_OPTION_DRIFT_NODE} seed "
+            f"{sample['seed']} no longer renders an option table, so option drift "
+            f"cannot be planted there. Repoint the fixture."
+        )
+    # Copy the LIVE table and move one DISTRACTOR only. The keyed value is untouched,
+    # so the answer comparison (which runs first) passes and the multiset comparison
+    # is what has to catch this.
+    planted = [dict(o) for o in live]
+    victim = next((o for o in planted if not o.get("is_correct")), None)
+    if victim is None:
+        raise ValueError(
+            f"mutation 'attestation_option_drift': {_ATTEST_OPTION_DRIFT_NODE} seed "
+            f"{sample['seed']} offers no distractor to move without moving the key."
+        )
+    victim["value"] = "planted option drift"
+    victim["text"] = "planted option drift"
+    originals[drift_path] = drift_path.read_text(encoding="utf-8")
+    sample["options"] = planted
+    drift_path.write_text(json.dumps(drift_data, indent=2, ensure_ascii=False), encoding="utf-8")
+
+    lost_path, lost_data = _attestation_record_for(
+        _ATTEST_CHOICE_LOST_NODE, "attestation_option_drift")
+    lost_sample = lost_data["packet"]["samples_judged"][0]
+    lost_current = _render_sample(_ATTEST_CHOICE_LOST_NODE, lost_sample["seed"])
+    if lost_current.get("options") is not None:
+        raise ValueError(
+            f"mutation 'attestation_option_drift': {_ATTEST_CHOICE_LOST_NODE} seed "
+            f"{lost_sample['seed']} now renders options, so it cannot demonstrate an "
+            f"item that STOPPED being a choice item. Repoint the fixture."
+        )
+    originals[lost_path] = lost_path.read_text(encoding="utf-8")
+    lost_sample["options"] = [
+        {"key": "A", "value": "planted choice item", "is_correct": True},
+        {"key": "B", "value": "planted distractor", "is_correct": False},
+    ]
+    lost_path.write_text(json.dumps(lost_data, indent=2, ensure_ascii=False), encoding="utf-8")
+    return originals
 
 
 def _plant_contradicted_entry(capability: str) -> Dict[Path, str]:
