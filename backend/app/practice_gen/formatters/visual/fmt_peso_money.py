@@ -199,9 +199,77 @@ def format_peso_money(
     answer_collection "fill_in_blank":
         Student types the peso total as an integer.
     """
+    # A "given ... in pictures" word problem: the DNA supplies the amounts the problem
+    # hands the pupil, and both the picture and the stem below depend on knowing that
+    # this is a problem to solve rather than a pile to count.
+    is_word_problem = bool(
+        ctx.values
+        and ctx.values.get("context") == "word_problem"
+        and ctx.values.get("amounts")
+    )
+
     # ── 1. Resolve visual_params ───────────────────────────────────────────────
     if ctx.visual_params and "total" in ctx.visual_params:
         vp = ctx.visual_params.copy()
+    elif is_word_problem:
+        # A WORD PROBLEM "given ... in pictures" -- draw the money the problem HANDS
+        # the pupil, never the money it asks them to work out.
+        #
+        # mat_g1_na_q4_6 ("Solve 1-step problems (given orally or in pictures)
+        # involving addition of money ... or subtraction of money ...") rendered a
+        # visual on 0 of 150 seeds before 2026-09-10. Cause: the registry pins the node
+        # to context='word_problem' because its competency says "Solve 1-step problems",
+        # while FORMATTER_VARIANT_SUPPORT restricted both peso formatters to
+        # context='pure' under the comment "visual peso formatters don't handle word
+        # problems". So the only two visual providers this node has could never route,
+        # and it served NEITHER arm of "orally or in pictures".
+        #
+        # Which amounts are drawn depends on the operation, and this is the whole
+        # pedagogical point:
+        #   ADDITION  -- draw every amount. "P5 in one pocket and P50 in another" is
+        #                depicted by a P5 coin and a P50 note; the pupil still has to
+        #                add them. Depicting the operands IS the task, not a leak.
+        #   SUBTRACTION/CHANGE -- draw only the FIRST amount, the money held before
+        #                anything is spent. Drawing both would picture cash that the
+        #                problem then takes away, which is a different problem.
+        amounts = list(ctx.values["amounts"])
+        operation = str(ctx.values.get("operation") or "")
+        subtractive = "change" in operation or "subtract" in operation
+        shown = amounts[:1] if subtractive else amounts
+        coin_faces, bill_faces = _grade_denominations(ctx.grade)
+        from collections import Counter
+        coin_counts: Counter = Counter()
+        bill_counts: Counter = Counter()
+        for amount in shown:
+            # Decompose EACH amount separately rather than the sum: "P50 and P1" must
+            # read as a P50 note beside a P1 coin, not as whatever greedy makes of P51.
+            part_coins, part_bills = _greedy(amount, coin_faces, bill_faces)
+            if part_coins is None:
+                raise ValueError(
+                    f"peso_money: cannot render P{amount} for node {ctx.node_id!r} "
+                    f"(seed {ctx.seed}) using real denominations -- coins {coin_faces}, "
+                    f"bills {bill_faces}. The word problem hands the pupil an amount no "
+                    f"combination of real currency can show; fix the DNA's amounts "
+                    f"rather than drawing money that does not exist."
+                )
+            coin_counts.update(part_coins)
+            bill_counts.update(part_bills)
+        diff_profile = ctx.difficulty_profile or {}
+        diff_level = min(len(diff_profile) + 1, 4) if diff_profile else 2
+        drawn_total = sum(shown)
+        vp = {
+            "coins": [{"denomination": d, "count": c} for d, c in sorted(coin_counts.items())],
+            "bills": [{"denomination": d, "count": c} for d, c in sorted(bill_counts.items())],
+            # The total of what is DRAWN, which for a subtraction item is the starting
+            # amount and not the answer. `target_ans` below comes from the DNA's own
+            # `answer`/`result`, so nothing downstream reads this as the key.
+            "total": drawn_total,
+            "target_amount": drawn_total,
+            "exclude_centavos": True,
+            "coin_faces": coin_faces,
+            "bill_faces": bill_faces,
+            "require_fewest": diff_level >= 3,
+        }
     elif ctx.values and "amounts" in ctx.values:
         amounts = ctx.values["amounts"]
         total = ctx.values["total"]
@@ -311,8 +379,15 @@ def format_peso_money(
     # ── 2. Question text ──────────────────────────────────────────────────────
     if dna_question:
         question_text = dna_question
-    elif interaction_mode == "read":
-        question_text = "Count the coins and bills shown. What is the total amount?"
+    elif is_word_problem and ctx.question_text:
+        # The word problem IS the item. Falling through to the counting stem below
+        # replaced "Lola Ising had P20 and used P5 ... how much is left?" with "Count
+        # the coins and bills shown. What is the total amount?" while still keying the
+        # DNA's answer of 15 -- a stem asking for 25 against a key of 15. The item
+        # stopped being a 1-step problem and stopped being correct in the same move,
+        # and it only became reachable at all when this formatter was allowed onto
+        # word-problem nodes, so it is fixed in that commit rather than after it.
+        question_text = ctx.question_text
     else:
         stem = f"Use coins and bills to make exactly ₱{total}."
         if vp.get("require_fewest"):

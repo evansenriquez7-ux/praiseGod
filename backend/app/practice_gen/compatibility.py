@@ -1114,8 +1114,18 @@ FORMATTER_VARIANT_SUPPORT: Dict[str, Dict[str, Dict[str, List[str]]]] = {
     "money_peso": {
         "denomination_type": ["coins", "bills", "mixed"],
         "operation": ["add", "subtract"],
-        # visual peso formatters don't handle word problems
-        "peso_money_read": {"task_type": ["count_total"], "context": ["pure"]},
+        # `peso_money_read` handles word problems since 2026-09-10; `peso_money_build`
+        # still does not. The comment here used to read "visual peso formatters don't
+        # handle word problems", and the cost was mat_g1_na_q4_6: its competency says
+        # "Solve 1-step problems (given orally or in pictures)", so the registry pins it
+        # to context='word_problem', so its only two visual providers could never route
+        # and it rendered a visual on 0 of 150 seeds -- serving NEITHER arm of the
+        # disjunction MATATAG offers. `read` now draws the money the problem hands the
+        # pupil (see fmt_peso_money's word_problem branch). `build` is left `pure`
+        # deliberately: it asks the pupil to CONSTRUCT `target_amount`, which on a word
+        # problem would have to be the answer, and handing over the answer as the thing
+        # to build is a different task from solving the problem.
+        "peso_money_read": {"task_type": ["count_total"], "context": ["pure", "word_problem"]},
         "peso_money_build": {"task_type": ["count_total", "make_change"], "context": ["pure"]},
     },
 

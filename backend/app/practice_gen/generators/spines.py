@@ -802,6 +802,18 @@ ALL_SPINES: List[Spine] = [
 # SELECT SPINE
 # ═══════════════════════════════════════════════════════════════════════════════
 
+# DNA concepts whose spines are ABOUT a specific real-world domain, so a render
+# computed by one of them may only be narrated by a spine that names it. Lifted to
+# module scope on 2026-09-10 so `select_spine`'s node-level filter and
+# base_generator's per-render `require_domain` read the SAME list -- two copies of a
+# rule that must agree is how they stop agreeing.
+NARRATIVE_DOMAIN_DNAS = {
+    "length_measurement", "pictographs", "bar_graphs", "money_peso", "area",
+    "time_reading", "fractions", "mass_measurement", "capacity_measurement",
+    "comparing_ordering",
+}
+
+
 def select_spine(
     node_cumulative_concepts: Set[str],
     grade: int,
@@ -811,6 +823,7 @@ def select_spine(
     required_blank_target: Optional[str] = None,
     current_operation: Optional[str] = None,
     node_own_concepts: Optional[Set[str]] = None,
+    require_domain: Optional[str] = None,
 ) -> Optional[Spine]:
     """
     Choose the best narrative Spine for the current problem context.
@@ -843,6 +856,20 @@ def select_spine(
             co-mapped to both). When given, spines are preferred that also
             relate to one of these -- not just whichever DNA happens to be
             active for this particular render.
+        require_domain: A specialised domain the NARRATIVE must actually be
+            about, because the DNA computing this problem is that domain.
+            `node_own_concepts` describes the node; this describes the render.
+            On a node co-mapped to `addition` and `money_peso`, the rotation
+            below deliberately alternates between the co-concept and the
+            standard domain so "addition ... INCLUDING problems involving
+            money" shows both sub-cases -- but it rotated the NARRATIVE
+            independently of which DNA had produced the values, so a
+            money_peso render could be narrated by a generic spine. Measured
+            2026-09-10 on mat_g2_na_q2_2 with the money DNA forced: 53 of 120
+            stems were not about money at all ("Moses collected 1 prayer
+            journal and 601 song lyrics card"), while the DNA had computed
+            peso amounts. Harmless-looking as text, and actively wrong the
+            moment a peso picture is drawn beside it.
 
     Returns:
         The selected Spine, or None if no eligible spine exists.
@@ -874,14 +901,19 @@ def select_spine(
         if op_matched:
             eligible = op_matched
 
+    if require_domain is not None:
+        # Applied BEFORE the node-level rotation below, so the rotation can only
+        # ever choose among narratives that are about what was computed. A render
+        # with no matching spine falls through to `None` and the caller's plain
+        # arithmetic stem -- correct content without a story, never a story about
+        # the wrong things.
+        domain_matched = [s for s in eligible if require_domain in s.required_concepts]
+        eligible = domain_matched
+
     if node_own_concepts:
         # A spine whose template requires slots/keys from other domains (like length_measurement, pictographs, comparing_ordering)
         # must only be considered if the node itself belongs to that domain.
-        known_dna_domains = {
-            "length_measurement", "pictographs", "bar_graphs", "money_peso", "area",
-            "time_reading", "fractions", "mass_measurement", "capacity_measurement",
-            "comparing_ordering",
-        }
+        known_dna_domains = NARRATIVE_DOMAIN_DNAS
         eligible = [
             s for s in eligible
             if not (s.required_concepts & known_dna_domains - node_own_concepts)

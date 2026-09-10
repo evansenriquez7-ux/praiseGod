@@ -9410,3 +9410,128 @@ $ mat_g2_na_q2_8, 300 seeds
   74 alphabetic runs / 33 repeating cycles / 14 distinct run sequences
   'q r s t u v'  't u v w x y'  'u t s r q p'  'z y x w v u'  'p q r s t u'  'x w v u t s'
 ```
+
+---
+
+## 2026-09-10 — §5c: the picture arm on `mat_g1_na_q4_6`, and two defects behind it
+
+### The node served NEITHER arm of the disjunction MATATAG offers
+
+```
+mat_g1_na_q4_6  "Solve 1-step problems (GIVEN ORALLY OR IN PICTURES) involving addition
+                 of money where the sum is up to P100, or subtraction of money where
+                 both amounts are less than P100."
+```
+
+Measured before: **0 visuals in 150 rendered student-path seeds** — `visual_type` was `None`
+on every one. With the `orally` arm deleted by the owner's ruling (§5a), the node served
+neither medium the competency names.
+
+**Root cause, found by rendering rather than by reading.** The registry pins the node to
+`context='word_problem'` because its competency says "Solve 1-step problems".
+`FORMATTER_VARIANT_SUPPORT["money_peso"]` restricted both peso formatters to
+`context: ["pure"]`, under the comment *"visual peso formatters don't handle word problems"*.
+So the node's only two visual providers could never route, and the empirically-derived
+`_generated_formatter_exclusions.py` had correctly recorded them as refused at all 12 probe
+seeds — the exclusion file was reporting the restriction, not causing it.
+
+```
+$ PYTHONPATH=. .venv/bin/python -c "run('mat_g1_na_q4_6', seed=11, formatter='peso_money_read')"
+  ValueError: Formatter 'peso_money_read' is not supported by any DNA for node 'mat_g1_na_q4_6'
+```
+
+### What was built
+
+`peso_money_read` now handles word problems and draws **the money the problem hands the pupil,
+never the money it asks them to work out**:
+
+* **addition** — draw every amount. "P5 in one pocket and P50 in another" is depicted by a P5
+  coin beside a P50 note, and the pupil still has to add them. Depicting the operands IS the
+  task; it is not a leak.
+* **subtraction / change** — draw only the first amount, the money held before anything is
+  spent. Drawing both would picture cash the problem then takes away.
+
+Each amount is decomposed into real denominations SEPARATELY, so "P50 and P1" reads as a note
+beside a coin rather than as whatever greedy makes of P51, and it raises rather than inventing
+currency that does not exist.
+
+`peso_money_build` is deliberately left `pure`. It asks the pupil to CONSTRUCT `target_amount`,
+which on a word problem would have to be the answer — handing over the answer as the thing to
+build is a different task from solving the problem.
+
+### Two defects found while verifying, both of which would have shipped
+
+**1. The formatter discarded the word problem.** Its stem fallback ran whenever the DNA supplied
+no explicit `question` key, replacing the narrative with the counting stem while still keying the
+DNA's answer:
+
+```
+  stem shown : "Count the coins and bills shown. What is the total amount?"
+  pile drawn : P20 note + P5 coin        (reads as 25)
+  key        : 15                        (the DNA's "how much is LEFT" answer)
+```
+
+The item stopped being a 1-step problem and stopped being correct in the same move. It became
+reachable only because this formatter was let onto word-problem nodes, so it is fixed in the same
+commit. `ctx.question_text` — the narrated word problem — is now used.
+
+**2. The narrative was chosen independently of the DNA that computed the values.** On
+`mat_g2_na_q2_2` ("addition ... including problems involving money"), `select_spine` deliberately
+rotates between the money co-concept and the generic domain so both sub-cases appear. But it
+rotated the STORY without regard to which DNA had produced the numbers:
+
+```
+$ 120 seeds, money DNA forced (formatter='peso_money_read')
+  before:  money 67   NON-MONEY 53
+     e.g. "Moses collected 1 prayer journal and 601 song lyrics card at the village."
+          — narrated as objects while the DNA had computed peso amounts
+  after:   money 120  NON-MONEY 0        (mat_g1_na_q4_6 likewise 120/120)
+```
+
+Harmless-looking as text, which is why it survived; actively wrong the moment a peso picture is
+drawn beside it. `select_spine` takes a `require_domain` argument, applied BEFORE the node-level
+rotation so the rotation can only choose among narratives about what was actually computed. The
+domain list is now a module-level `NARRATIVE_DOMAIN_DNAS` read by both call sites — two copies of
+a rule that must agree is how they stop agreeing. Blast radius: **5 co-mapped nodes**; the other
+four were spot-checked and still narrate in their own domain.
+
+### Result, and the part that is NOT finished
+
+```
+mat_g1_na_q4_6   PesoMoney visuals   0/150  ->  49/300 (16%)
+mat_g2_na_q2_2   PesoMoney visuals   0      ->  31/300 (10%)
+answer coherence  49 + 31 visual items checked against the stem's own numbers: 0 mismatches
+full-tree render sweep, 151 nodes x 10 seeds: 0 errors
+```
+
+**The `in_pictures` CONTRADICTED verdict is NOT cleared, and no re-attestation was dispatched.**
+That is deliberate, and the reason is measured: the Attester packet builder uses ten FIXED seeds
+[11, 23, 42, 57, 64, 78, 91, 103, 118, 127], and **none of them renders a visual** at a 16% rate.
+A blind dispatch would spend a budget slot to be told what is already on the record. Moving the
+seeds so the verdict comes out better would be gaming the evidence, not earning it.
+
+**Why 16%, judged rather than guessed** — the brief asked whether the thin picture rates on the
+other four nodes are "coverage or an accident". On this node it is an accident, and its cause is
+now named. `_weighted_choice` in `adapter.py` weights `mcq` 3.0, `cloze` 1.5 and everything else
+0.6, giving `peso_money_read` a 0.6/5.1 = **11.8%** share by arithmetic. The table's own comment
+says *"specific bias toward the 'home' type is handled by the DNA's visual_home field"* — and
+**`_weighted_choice` never reads `visual_home`**. `money_peso` declares `visual_home="PesoMoney"`
+and it buys nothing. So the promised per-DNA visual bias does not exist, and the picture arm gets
+whatever the global textual bias leaves it.
+
+That is the next piece of work and it is deliberately not done here: implementing the bias changes
+routing for every visual DNA in the tree, which is a tree-wide content change that needs its own
+measurement pass rather than a tail-end edit. Named here so it is not rediscovered.
+
+### Evidence
+
+```
+$ PYTHONPATH=. .venv/bin/python -m scripts.regen_formatter_exclusions
+  210 exclusions across 85 nodes    (peso_money_read now servable on
+                                     mat_g1_na_q4_6 and mat_g2_na_q2_2)
+
+$ full-tree render sweep, 151 nodes x 10 student-path seeds
+  0 errors
+
+$ churn:  §5 1020 -> 1023 (+3)      §6 Phase 2 211 -> 211
+```
