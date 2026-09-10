@@ -1,0 +1,190 @@
+{
+  "batch": "batch071B03_mat_g3_na_q1_2",
+  "attested_at": "2026-09-10T00:00:00Z",
+  "role": "Attester",
+  "attested_by": "attester-ordinal-ceiling-watch-g1g3",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "any earlier Attester verdict on these clauses"
+    ]
+  },
+  "supersedes": "the 2026-08 record on this node, whose verdicts judged a rendering in which every ordinal row was populated by people. ordinal_numbers grew an object line-up on 2026-09-10 after a blind Attester ruled the `objects` clause NOT_PROVIDED against the people-only rendering; this record is a fresh dispatch against the rendering that exists now, not a re-file of the same judgement. Supersession is earned by this record facing §6F freshness itself.",
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "dispatcher, verbatim from the Attester's returned JSON",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g3_na_q1_2",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "The pencils are placed in a row. One pencil is number 100 in the row. Which word describes its position?",
+        "correct_answer": "100th",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 23,
+        "question_text": "Who arrived earlier: the student in 99th place or 76th place?",
+        "correct_answer": "76th",
+        "formatter": "cloze"
+      },
+      {
+        "seed": 42,
+        "question_text": "Which word describes the 100th position?",
+        "correct_answer": "one hundredth",
+        "formatter": "cloze"
+      },
+      {
+        "seed": 57,
+        "question_text": "Write the symbol for the ninety-ninth position.",
+        "correct_answer": "99th",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 64,
+        "question_text": "The pupils stand in a row. Jose is number 100 in the row. Which word describes Jose's position?",
+        "correct_answer": "100th",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 78,
+        "question_text": "A runner is at position number 100. In what place did the runner finish?",
+        "correct_answer": "100th",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 91,
+        "question_text": "Which word describes the 99th position?",
+        "correct_answer": "ninety-ninth",
+        "formatter": "cloze"
+      },
+      {
+        "seed": 103,
+        "question_text": "The pupils stand in a row. Iris is number 99 in the row. Which word describes Iris's position?",
+        "correct_answer": "99th",
+        "formatter": "cloze"
+      },
+      {
+        "seed": 118,
+        "question_text": "What ordinal describes position number 99?",
+        "correct_answer": "99th",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 127,
+        "question_text": "Which word describes the 99th position?",
+        "correct_answer": "ninety-ninth",
+        "formatter": "mcq"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "describe",
+      "node_id": "mat_g3_na_q1_2",
+      "clause": "Describe",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        42,
+        64,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "The verb is literally the task in seven of these: seeds 11, 42, 64, 91, 103 and 127 all turn on \"Which word describes...\", and seed 118 asks \"What ordinal describes position number 99?\" The pupil is producing a description of a place, not computing with it. Seed 57 (\"Write the symbol\") and seed 23 (a comparison) sit slightly off this verb, but they are the minority.",
+      "what_would_change_it": "A set built entirely of ordering or comparison prompts, with no sample asking the pupil to name what describes a given place, would fail this.",
+      "action_taken": "Left registered; the Attester reports the clause exercised across the set."
+    },
+    {
+      "capability_id": "position",
+      "node_id": "mat_g3_na_q1_2",
+      "clause": "position",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Placement in a sequence is the subject matter of all ten. Seven stems use the noun outright (\"describes its position\", \"the 100th position\", \"position number 99\"), while seed 23 and seed 78 use its synonym \"place\" - 76th place, in what place did the runner finish. Seed 64 fixes the position by counting into a row (\"Jose is number 100 in the row\"). There is no sample whose subject is anything other than where something stands.",
+      "what_would_change_it": "Stems about quantity, size or value instead of location in an order would remove it.",
+      "action_taken": "Left registered; the Attester reports the clause exercised across the set."
+    },
+    {
+      "capability_id": "objects",
+      "node_id": "mat_g3_na_q1_2",
+      "clause": "objects",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11
+      ],
+      "reasoning": "As at the two lower grades, the pencil row of seed 11 is doing all the work for this clause. The remaining nine are people or nothing: Jose and Iris counted into a row (seeds 64, 103), a runner (seed 78), students in places (seed 23), and four bare-position stems (seeds 42, 91, 118, 127) where no object or person is present at all. A pupil could work nine of these ten samples without ever positioning a thing.",
+      "what_would_change_it": "More than one seed grounding the ordinal in a concrete inanimate item - a hundred-item row of trees, lockers or pages - would give this clause real presence.",
+      "action_taken": "Left registered, with the Attester's named weakness carried forward as a BUILD ITEM rather than discarded: it reports the clause is exhibited only at the edge of the sample set. A PROVIDED verdict with a stated weakness is not a closed file."
+    },
+    {
+      "capability_id": "ordinal_numbers",
+      "node_id": "mat_g3_na_q1_2",
+      "clause": "ordinal numbers",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "The keys span the full ordinal apparatus this grade needs, including compound and hyphenated forms: \"one hundredth\" in seed 42, \"ninety-ninth\" in seeds 91 and 127, and symbol forms 99th and 100th in seeds 11, 57, 64, 78, 103 and 118. Distractors also exercise the trickier suffixes - 22nd, 63rd, 91st in seeds 64, 78 and 103 - so -st, -nd, -rd and -th are all visible on the page.",
+      "what_would_change_it": "Answers reverting to plain cardinal numbers, or option lists using only -th endings, would narrow this below what the clause names.",
+      "action_taken": "Left registered; the Attester reports the clause exercised across the set."
+    },
+    {
+      "capability_id": "up_to_100th",
+      "node_id": "mat_g3_na_q1_2",
+      "clause": "up to 100th",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        42,
+        64,
+        78
+      ],
+      "reasoning": "The hundredth position is the keyed answer four times: 100th in seeds 11, 64 and 78, and the spelled \"one hundredth\" in seed 42, with 100th also offered as a distractor in seed 11's list. The bound is squarely met. Worth noting for coverage, though, that the only two targets anywhere in the set are 99 and 100 - the wide middle of this range (the 20s through 80s) appears only as distractor values such as 39th, 55th, 62nd and 69th.",
+      "what_would_change_it": "This holds as long as 100th and one hundredth remain answer keys; it would fall only if they were demoted to distractors.",
+      "action_taken": "Left registered, with the Attester's named weakness carried forward as a BUILD ITEM rather than discarded: it reports the clause is exhibited only at the edge of the sample set. A PROVIDED verdict with a stated weakness is not a closed file."
+    }
+  ]
+}

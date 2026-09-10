@@ -1031,6 +1031,31 @@ def _attestation_staleness(records: List[Dict[str, Any]]) -> List[str]:
     longer exists. That hole would be invisible and it would scale -- which matters
     because this harness is the foundation the remaining MATATAG grade levels get built
     on, and a gate that certifies stale evidence certifies it for every grade.
+
+    KNOWN LIMITATION, measured (Scaling Mandate 6). **This compares the STEM and nothing
+    else.** §5, which asks the same question of the same kind of artifact, compares the
+    stem, the keyed value AND the offered options -- so the two freshness gates are not
+    the same strength, and §6F is the weaker one. Measured 2026-09-10 across the 151 live
+    records on this tree:
+
+        already STALE on the stem (what this checks) :  8
+        stem byte-identical, ANSWER KEY changed      : 50   <-- invisible here
+
+    Fifty live records, a third of the corpus, hold evidence that has partly expired with
+    nothing reporting it. That is not hypothetical: `b11_mat_g2_na_q3_5` seed 11 was
+    attested against a key of 'False' and now renders an empty key. It was found the day
+    a blind reviewer caught ordinal_numbers keying a symbol to a stem that asks for a
+    word -- a defect that changes the ANSWER and leaves the stem untouched, so §5 would
+    have expired the review and §6F kept the attestation.
+
+    Deliberately NOT closed in the commit that measured it, and the reason is Scaling
+    Mandate 5 rather than effort: this queue is already red (86 findings), so 50 more
+    could not be told from the backlog they landed in, and the mutation proving the gate
+    would score INVALID for the same reason. The design is settled and cheap when the
+    queue is clean: compare `correct_answer` as §5's `_resolved_answer` does -- through
+    the packet's own recorded `options`, so an A-D key resolves to its VALUE and the ~40
+    of those 50 that are placement-only do not read as drift. Attester packets already
+    carry `options`, so nothing new has to be recorded first.
     """
     from backend.app.practice_gen.validation.judgment_packets import _render_sample
 

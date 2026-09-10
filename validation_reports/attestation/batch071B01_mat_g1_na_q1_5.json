@@ -1,0 +1,216 @@
+{
+  "batch": "batch071B01_mat_g1_na_q1_5",
+  "attested_at": "2026-09-10T00:00:00Z",
+  "role": "Attester",
+  "attested_by": "attester-ordinal-ceiling-watch-g1g3",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "any earlier Attester verdict on these clauses"
+    ]
+  },
+  "supersedes": "the 2026-08 record on this node, whose verdicts judged a rendering in which every ordinal row was populated by people. ordinal_numbers grew an object line-up on 2026-09-10 after a blind Attester ruled the `objects` clause NOT_PROVIDED against the people-only rendering; this record is a fresh dispatch against the rendering that exists now, not a re-file of the same judgement. Supersession is earned by this record facing §6F freshness itself.",
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "dispatcher, verbatim from the Attester's returned JSON",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g1_na_q1_5",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "The pencils are placed in a row. One pencil is number 10 in the row. Which word describes its position?",
+        "correct_answer": "10th",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 23,
+        "question_text": "Who arrived earlier: the student in 9th place or 10th place?",
+        "correct_answer": "9th",
+        "formatter": "cloze"
+      },
+      {
+        "seed": 42,
+        "question_text": "Which word describes the 10th position?",
+        "correct_answer": "tenth",
+        "formatter": "cloze"
+      },
+      {
+        "seed": 57,
+        "question_text": "Write the symbol for the ninth position.",
+        "correct_answer": "9th",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 64,
+        "question_text": "Ana, Ben, Carlo, Dina, Elena, Fidel, Gina, Hector, Iris and Jose stand in a row. Who is 10th in the row?",
+        "correct_answer": "Jose",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 78,
+        "question_text": "A runner is at position number 10. In what place did the runner finish?",
+        "correct_answer": "10th",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 91,
+        "question_text": "Which word describes the 9th position?",
+        "correct_answer": "ninth",
+        "formatter": "cloze"
+      },
+      {
+        "seed": 103,
+        "question_text": "The pupils stand in a row. Iris is number 9 in the row. Which word describes Iris's position?",
+        "correct_answer": "9th",
+        "formatter": "cloze"
+      },
+      {
+        "seed": 118,
+        "question_text": "What ordinal describes position number 9?",
+        "correct_answer": "9th",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 127,
+        "question_text": "Which word describes the 9th position?",
+        "correct_answer": "ninth",
+        "formatter": "mcq"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "describe_position",
+      "node_id": "mat_g1_na_q1_5",
+      "clause": "Describe the position",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Every stem asks the pupil to say where something sits in a row or a race: seed 11 and seed 103 hand the pupil a counting number and ask which word describes that spot, seed 64 asks who occupies a named place in a line of ten children, and seed 78 asks in what place a runner finished. Seed 23 goes the other way, making the pupil compare two described positions to decide who arrived earlier. Positional description is the whole of this sample set, not a corner of it.",
+      "what_would_change_it": "It would flip if the stems only asked pupils to count or name quantities without ever locating an item within an ordered arrangement.",
+      "action_taken": "Left registered; the Attester reports the clause exercised across the set."
+    },
+    {
+      "capability_id": "objects",
+      "node_id": "mat_g1_na_q1_5",
+      "clause": "objects",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11
+      ],
+      "reasoning": "Only seed 11 puts an actual inanimate object in the row: \"The pencils are placed in a row.\" The other nine samples position people - students in places, pupils named Iris and Jose, a runner - or drop the referent altogether (seeds 42, 91, 118, 127 ask about a bare \"position\" with nothing standing in it). So the coverage is one sample in ten, and a pupil sampling this set would most often meet ordinals attached to persons rather than to things.",
+      "what_would_change_it": "Rotating a non-person referent (books, chairs, houses, flags) into several more of the ten stems would move this from a single instance to genuine coverage.",
+      "action_taken": "Left registered, with the Attester's named weakness carried forward as a BUILD ITEM rather than discarded: it reports the clause is exhibited only at the edge of the sample set. A PROVIDED verdict with a stated weakness is not a closed file."
+    },
+    {
+      "capability_id": "ordinal_numbers",
+      "node_id": "mat_g1_na_q1_5",
+      "clause": "ordinal numbers",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Ordinals carry both the questions and the keys throughout. Symbol forms are keyed in seeds 11, 57, 78, 103 and 118; word forms are keyed in seeds 42, 91 and 127; and seed 57 explicitly asks the pupil to convert a word ordinal (\"ninth\") into its symbol. Even seed 64, whose key is a child's name, resolves through the ordinal \"10th\" in the stem. Every option list is drawn from the ordinal series as well.",
+      "what_would_change_it": "Only a set that answered in cardinal numbers or plain labels, with no 1st/2nd/9th-style forms anywhere in stems, keys or options, would fail this.",
+      "action_taken": "Left registered; the Attester reports the clause exercised across the set."
+    },
+    {
+      "capability_id": "1st",
+      "node_id": "mat_g1_na_q1_5",
+      "clause": "1st",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        57,
+        91
+      ],
+      "reasoning": "\"1st\" reaches the page only as a distractor: it sits in the option lists of seeds 11, 23 and 57, and its word form \"first\" appears among the choices in seed 91. No stem asks about the first position and no key is 1st. I am relying entirely on the option lists here - the pupil reads the symbol but is never asked to reason about it, since every target in this set is position 9 or 10.",
+      "what_would_change_it": "A sample whose stem or answer key is the first position, rather than 1st merely padding a choice list, would make this a genuine exercise of the value.",
+      "action_taken": "Left registered, with the Attester's named weakness carried forward as a BUILD ITEM rather than discarded: it reports the clause is exhibited only at the edge of the sample set. A PROVIDED verdict with a stated weakness is not a closed file."
+    },
+    {
+      "capability_id": "2nd",
+      "node_id": "mat_g1_na_q1_5",
+      "clause": "2nd",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        57,
+        91,
+        118
+      ],
+      "reasoning": "The value shows up three times and always on the wrong-answer side: seed 57 and seed 118 both list \"2nd\" among four choices, and seed 91 offers \"second\" in word form. The keys in those same seeds are 9th, 9th and ninth. Nothing in any stem concerns the second position, so 2nd is on the page purely as choice-list filler.",
+      "what_would_change_it": "Keying at least one sample to the second position - or naming it in a stem, as seed 23 does with 9th and 10th - would exercise the value rather than display it.",
+      "action_taken": "Left registered; the Attester reports the clause exercised across the set."
+    },
+    {
+      "capability_id": "3rd",
+      "node_id": "mat_g1_na_q1_5",
+      "clause": "3rd",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        78,
+        91
+      ],
+      "reasoning": "Seed 78 carries \"3rd\" in its options (alongside 9th, 10th and 8th), while seeds 42 and 91 carry the spelled form \"third\" among their word choices. In all three the correct answer lies at the top of the range - tenth, 10th, ninth. Its presence is real but decorative: the third position is never the thing being described.",
+      "what_would_change_it": "One stem or key set at the third position would turn these incidental appearances into an actual test of it.",
+      "action_taken": "Left registered; the Attester reports the clause exercised across the set."
+    },
+    {
+      "capability_id": "up_to_10th",
+      "node_id": "mat_g1_na_q1_5",
+      "clause": "up to 10th",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        64,
+        78
+      ],
+      "reasoning": "The ceiling of the range is worked hard. Seeds 11 and 78 key 10th outright, seed 42 keys the word \"tenth\", seed 64 lays out exactly ten named children and asks who is 10th, and seed 23 sets 10th against 9th in a comparison. The set reaches the top of the stated span; what it does not do is spread across it, since every target is 9 or 10 and the lower ordinals survive only in distractors.",
+      "what_would_change_it": "Nothing here - the clause names the upper bound and seeds 11, 42, 64 and 78 hit it directly; only losing those 10th-keyed samples would change the verdict.",
+      "action_taken": "Left registered, with the Attester's named weakness carried forward as a BUILD ITEM rather than discarded: it reports the clause is exhibited only at the edge of the sample set. A PROVIDED verdict with a stated weakness is not a closed file."
+    }
+  ]
+}

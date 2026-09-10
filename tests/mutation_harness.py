@@ -223,6 +223,408 @@ def _plant_silent_substitution() -> Dict[Path, str]:
     return originals
 
 
+# ---------------------------------------------------------------------------------
+# §5 plants (2026-09-10).
+#
+# §5 declared six assertions and exactly ONE (`judgment_rationale_skeleton_5`) had a
+# mutation, so five could have been silently broken and the 696 findings on the tree
+# would have looked identical either way. Every plant below lands in a review JSON under
+# validation_reports/judgment/, because that is what §5 READS -- the lesson §6 paid for
+# on 2026-09-09, when a plant plausibly placed in the source survived because
+# `get_node_info` reads a build artifact instead.
+#
+# Each plant LOCATES its target by re-rendering rather than naming a node, so it cannot
+# quietly stop landing when the tree moves (a mutation that does not land scores
+# SURVIVED and reads as a broken gate). A precondition it cannot satisfy raises.
+# ---------------------------------------------------------------------------------
+
+_STALE_WITNESS = "PLANTED-STALE-WITNESS"
+
+
+def _fresh_samples() -> List[tuple]:
+    """
+    Every (path, data, index, sample, current_render) whose recorded stem STILL matches
+    what the pipeline renders today, in a stable order.
+
+    A plant aimed at freshness has to land on a sample that is currently FRESH. Planting
+    on one that is already stale would produce a finding that was going to be reported
+    anyway, and the mutation would be scored on a finding it did not cause.
+    """
+    import json
+
+    from backend.app.practice_gen.validation.judgment_packets import _render_sample
+    from backend.app.practice_gen.validation.validate_judgment import _normalize
+
+    out: List[tuple] = []
+    for path in sorted((REPO_ROOT / "validation_reports" / "judgment").rglob("*.json")):
+        data = json.loads(path.read_text(encoding="utf-8"))
+        node_id = data.get("node_id")
+        for i, s in enumerate(data.get("samples_reviewed") or []):
+            if not isinstance(s, dict) or not isinstance(s.get("seed"), int):
+                continue
+            try:
+                current = _render_sample(node_id, s["seed"])
+            except Exception:  # noqa: BLE001 -- an unrenderable seed is §5's finding, not ours
+                continue
+            if _normalize(s.get("question_text")) == _normalize(current.get("question_text")):
+                out.append((path, data, i, s, current))
+    return out
+
+
+def _plant_stale_review() -> Dict[Path, str]:
+    """
+    Rewrite one CURRENTLY-FRESH sample's recorded stem so the live render no longer
+    matches it -- the drift §5 exists to catch, carrying a token nothing else emits so
+    the finding is attributable to this plant and not to the 512 routine STALE findings
+    the re-review queue is sitting on.
+    """
+    import json
+
+    fresh = _fresh_samples()
+    if not fresh:
+        raise ValueError(
+            "mutation 'stale_review_undetected': no review on disk cites a seed that still "
+            "renders what was recorded, so there is no fresh sample to make stale. Either "
+            "the whole corpus is already stale (fix that first -- a plant cannot be told "
+            "apart from the backlog) or the packet builder is broken."
+        )
+    path, data, i, sample, _ = fresh[0]
+    text = path.read_text(encoding="utf-8")
+    data["samples_reviewed"][i]["question_text"] = (
+        f"{_STALE_WITNESS} {sample['question_text']}"
+    )
+    path.write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
+    return {path: text}
+
+
+_STALE_ANSWER_NODE = "mat_g1_dp_q3_2"
+
+
+def _plant_stale_answer_same_key() -> Dict[Path, str]:
+    """
+    Move the correct value onto a distractor THAT WAS ALREADY OFFERED, keeping the stem,
+    the option multiset and the A-D key all byte-identical.
+
+    This is the one drift shape no other §5 gate can see: the stem check passes, the
+    option-multiset check passes, and until 2026-09-10 the answer check compared the raw
+    `correct_answer` field -- an A-D key on the 59 read_mcq nodes -- so it passed too.
+    Measured that day, 2 real drifts of the neighbouring shape (same key, different
+    value) were going unreported on this tree.
+
+    Implemented by permuting the RECORDED option values, which is exactly equivalent to
+    the correct flag moving and keeps the multiset provably identical.
+    """
+    import json
+
+    from backend.app.practice_gen.validation.validate_judgment import _resolved_answer
+
+    for path, data, i, sample, current in _fresh_samples():
+        if data.get("node_id") != _STALE_ANSWER_NODE:
+            continue
+        _, keyed = _resolved_answer(sample)
+        cur_val, cur_keyed = _resolved_answer(current)
+        if not (keyed and cur_keyed):
+            continue
+        opts = sample.get("options")
+        # Find a distractor whose value differs from the keyed one, and swap the two
+        # values. The key stays put; the multiset stays put; the keyed VALUE changes.
+        key = str(sample.get("correct_answer"))
+        correct_idx = next(j for j, o in enumerate(opts) if str(o.get("key")) == key)
+        other_idx = next(
+            (j for j, o in enumerate(opts)
+             if j != correct_idx and str(o.get("value")) != str(opts[correct_idx]["value"])),
+            None,
+        )
+        if other_idx is None:
+            continue
+        text = path.read_text(encoding="utf-8")
+        tgt = data["samples_reviewed"][i]["options"]
+        tgt[correct_idx]["value"], tgt[other_idx]["value"] = (
+            tgt[other_idx]["value"], tgt[correct_idx]["value"],
+        )
+        # `is_correct` follows the key, not the value, so it must not move with it.
+        path.write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
+        return {path: text}
+
+    raise ValueError(
+        f"mutation 'stale_answer_same_key': {_STALE_ANSWER_NODE} does not resolve its "
+        "answer through its own option table on both sides, so the key-valued drift "
+        "shape cannot be planted. Repoint the mutation; do not weaken the check."
+    )
+
+
+def _plant_incomplete_review() -> Dict[Path, str]:
+    """
+    Strip a review of one required finding and of its distinct-seed quorum -- two
+    independent branches of the schema gate, planted together so a single run says
+    whether both still fire.
+    """
+    import json
+
+    from backend.app.practice_gen.validation.validate_judgment import REQUIRED_FINDINGS
+
+    for path in sorted((REPO_ROOT / "validation_reports" / "judgment").rglob("*.json")):
+        text = path.read_text(encoding="utf-8")
+        data = json.loads(text)
+        findings = data.get("findings")
+        if not isinstance(findings, dict) or not REQUIRED_FINDINGS <= set(findings):
+            continue
+        if not isinstance(data.get("sample_seeds"), list) or len(data["sample_seeds"]) < 2:
+            continue
+        del data["findings"]["cognitive_capacity"]
+        data["sample_seeds"] = data["sample_seeds"][:1]
+        path.write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
+        return {path: text}
+
+    raise ValueError(
+        "mutation 'review_schema_incomplete': no review on disk carries all six findings "
+        "and a seed list to strip. The corpus is already failing the schema gate, so a "
+        "plant cannot be told apart from it."
+    )
+
+
+_PHANTOM_QUOTE = "the pupils weigh the sampan in kilopascals"
+
+
+def _plant_fabricated_quote() -> Dict[Path, str]:
+    """
+    Put a quoted span in a rationale that appears nowhere in that review's own packet or
+    competency text -- the fabrication mechanism that produced 115 of the 151 reviews
+    §5's provenance gate was written for.
+    """
+    import json
+
+    for path in sorted((REPO_ROOT / "validation_reports" / "judgment").rglob("*.json")):
+        text = path.read_text(encoding="utf-8")
+        data = json.loads(text)
+        f = (data.get("findings") or {}).get("competency_fulfillment")
+        if not isinstance(f, dict) or not str(f.get("rationale", "")).strip():
+            continue
+        f["rationale"] = (
+            f"{f['rationale']} A representative item reads '{_PHANTOM_QUOTE}'."
+        )
+        path.write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
+        return {path: text}
+
+    raise FileNotFoundError(
+        "mutation 'fabricated_quote': no review carries a competency_fulfillment "
+        "rationale to append to."
+    )
+
+
+def _plant_verbatim_rationale() -> Dict[Path, str]:
+    """
+    Copy one node's rationale byte-for-byte onto another node's same finding.
+
+    The source is chosen for carrying NO quoted span, so the copy trips the
+    verbatim-reuse gate alone: a rationale quoting its own node's content would also
+    trip quote provenance on the destination, and a mutation that fires two gates
+    cannot say which one it proved.
+    """
+    import json
+
+    from backend.app.practice_gen.validation.validate_judgment import _QUOTE_RE
+
+    paths = sorted((REPO_ROOT / "validation_reports" / "judgment").rglob("*.json"))
+    donor = None
+    for path in paths:
+        data = json.loads(path.read_text(encoding="utf-8"))
+        r = str(((data.get("findings") or {}).get("scale_appropriateness") or {})
+                .get("rationale", "")).strip()
+        if len(r) >= 40 and not _QUOTE_RE.findall(r):
+            donor = (data.get("node_id"), r)
+            break
+    if donor is None:
+        raise ValueError(
+            "mutation 'verbatim_rationale_reuse': no scale_appropriateness rationale is "
+            "long enough and quote-free to copy without also tripping quote provenance."
+        )
+    donor_node, rationale = donor
+    for path in paths:
+        text = path.read_text(encoding="utf-8")
+        data = json.loads(text)
+        if data.get("node_id") == donor_node:
+            continue
+        f = (data.get("findings") or {}).get("scale_appropriateness")
+        if not isinstance(f, dict):
+            continue
+        f["rationale"] = rationale
+        path.write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
+        return {path: text}
+
+    raise ValueError("mutation 'verbatim_rationale_reuse': found no second review to copy into.")
+
+
+_PLANTED_REVIEWER = "planted-single-reviewer"
+
+
+def _plant_single_reviewer_identity() -> Dict[Path, str]:
+    """
+    Stamp one `reviewed_by` identity across more nodes than a blind batch may hold.
+
+    §5's twin of `single_attester_identity`. The threshold is READ rather than assumed,
+    so tightening `_MAX_NODES_PER_REVIEWER` cannot silently invalidate this plant.
+    """
+    import json
+
+    from backend.app.practice_gen.validation.validate_judgment import _MAX_NODES_PER_REVIEWER
+
+    n = _MAX_NODES_PER_REVIEWER + 1
+    targets = sorted((REPO_ROOT / "validation_reports" / "judgment").rglob("*.json"))[:n]
+    if len(targets) < n:
+        raise FileNotFoundError(
+            f"mutation 'single_reviewer_identity': needs {n} reviews to exceed a "
+            f"{_MAX_NODES_PER_REVIEWER}-node batch, found {len(targets)}."
+        )
+    originals: Dict[Path, str] = {}
+    for path in targets:
+        text = path.read_text(encoding="utf-8")
+        originals[path] = text
+        data = json.loads(text)
+        data["reviewed_by"] = _PLANTED_REVIEWER
+        path.write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
+    return originals
+
+
+_OPTIONS_DROPPED_NODE = "mat_g1_dp_q3_2"
+
+
+def _plant_review_drops_options() -> Dict[Path, str]:
+    """
+    Delete the recorded `options` from a sample whose live render still offers some.
+
+    Until 2026-09-10 this was a SILENT SKIP: `_validate_freshness` guarded its option
+    comparison with `is not None` on both sides, so "no options recorded" and "not a
+    choice item" were the same thing to it. 505 of 2026 recorded samples were in that
+    state, and on read_mcq it also left the answer unresolvable -- a quarter of the
+    corpus with two of the three freshness comparisons switched off and nothing said so.
+    """
+    import json
+
+    for path, data, i, sample, current in _fresh_samples():
+        if data.get("node_id") != _OPTIONS_DROPPED_NODE:
+            continue
+        if "options" not in sample or "options" not in current:
+            continue
+        text = path.read_text(encoding="utf-8")
+        del data["samples_reviewed"][i]["options"]
+        path.write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
+        return {path: text}
+
+    raise ValueError(
+        f"mutation 'mcq_reviewed_without_options': {_OPTIONS_DROPPED_NODE} has no fresh sample "
+        "recording options that the live render also offers, so the silent-skip shape cannot be planted."
+    )
+
+
+# ---------------------------------------------------------------------------------
+# §6 Phase 2 plants (2026-09-10).
+# ---------------------------------------------------------------------------------
+
+_PHANTOM_SEED = 999999
+
+
+def _plant_attester_without_evidence() -> Dict[Path, str]:
+    """
+    Break all three evidence branches of §6G on three separate LIVE verdicts: one with
+    its reasoning removed, one PROVIDED with no seed named, and one citing a seed absent
+    from its own packet.
+
+    Only live verdicts count -- a superseded record is exempt from §6G by design, so
+    planting in one would prove nothing. `_winning_verdict_index`'s last-file-wins rule
+    is replayed here rather than restated, the same way `_plant_template_attestation`
+    does it.
+    """
+    import json
+
+    d = REPO_ROOT / "validation_reports" / "attestation"
+    records = sorted(d.glob("*.json"))
+    owner: Dict[tuple, Path] = {}
+    for path in records:
+        for v in json.loads(path.read_text(encoding="utf-8")).get("verdicts", []):
+            owner[(v.get("node_id"), v.get("capability_id"))] = path
+
+    for path in records:
+        text = path.read_text(encoding="utf-8")
+        data = json.loads(text)
+        packet_seeds = {s.get("seed") for s in (data.get("packet") or {}).get("samples_judged") or []}
+        if _PHANTOM_SEED in packet_seeds:
+            continue
+        live = [v for v in data.get("verdicts", [])
+                if owner.get((v.get("node_id"), v.get("capability_id"))) == path
+                and v.get("verdict") == "PROVIDED"]
+        if len(live) < 3:
+            continue
+        live[0]["reasoning"] = ""
+        live[1]["seeds_showing_it"] = []
+        live[2]["seeds_showing_it"] = [_PHANTOM_SEED]
+        path.write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
+        return {path: text}
+
+    raise ValueError(
+        "mutation 'attester_without_evidence': no record owns three live PROVIDED "
+        "verdicts, so §6G's three evidence branches cannot be planted in one record. "
+        "Repoint the mutation rather than relaxing the check."
+    )
+
+
+def _plant_withdrawn_attestation() -> Dict[Path, str]:
+    """
+    Delete one (node, capability) verdict from EVERY record that carries it.
+
+    §6F's UNATTESTED branch reports zero on this tree, and "everything is attested" and
+    "the check cannot see a gap" are different facts that a passing run cannot tell
+    apart. This plant is what distinguishes them.
+
+    Every record, not just the winning one: `_load_attestations` resolves duplicates by
+    last-file-wins, so removing the verdict from the newest record alone would let an
+    older one win and the capability would still read as attested -- the plant would land
+    where behaviour does not change, which is how `unproducible_variant_declared`
+    survived twice while proving nothing.
+    """
+    import json
+
+    d = REPO_ROOT / "validation_reports" / "attestation"
+    records = sorted(d.glob("*.json"))
+    counts: Dict[tuple, int] = {}
+    for path in records:
+        for v in json.loads(path.read_text(encoding="utf-8")).get("verdicts", []):
+            counts[(v.get("node_id"), v.get("capability_id"))] = \
+                counts.get((v.get("node_id"), v.get("capability_id")), 0) + 1
+
+    from backend.app.practice_gen.validation.validate_capability import _declared_nodes
+
+    declared = set()
+    rows, _ = _declared_nodes(None)
+    for node_id, _competency, requires, _ignore in rows:
+        for req in requires:
+            declared.add((node_id, str(req.get("id", ""))))
+
+    target = next((pair for pair in sorted(counts) if pair in declared), None)
+    if target is None:
+        raise ValueError(
+            "mutation 'withdrawn_attestation': no attested (node, capability) pair is "
+            "also DECLARED by a node's `requires`, so deleting one could not make §6F "
+            "report UNATTESTED. The declaration source moved; repoint the mutation."
+        )
+
+    originals: Dict[Path, str] = {}
+    for path in records:
+        text = path.read_text(encoding="utf-8")
+        data = json.loads(text)
+        kept = [v for v in data.get("verdicts", [])
+                if (v.get("node_id"), v.get("capability_id")) != target]
+        if len(kept) == len(data.get("verdicts", [])):
+            continue
+        originals[path] = text
+        data["verdicts"] = kept
+        path.write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
+    if not originals:
+        raise ValueError("mutation 'withdrawn_attestation': target verdict vanished mid-plant.")
+    return originals
+
+
+
 MUTATIONS: List[Mutation] = [
     Mutation(
         name="leaky_window",
@@ -433,6 +835,131 @@ MUTATIONS: List[Mutation] = [
         expected_check="§5 (rationale-skeleton clustering)",
         expect_output_contains=["template rationale", "share one findings"],
         baseline_must_not_contain=["template rationale"],
+    ),
+    # ------------------------------------------------------------------------
+    # §5's other five assertions (2026-09-10), plus the sixth added with them.
+    #
+    # Every §5 command below runs with `--all`. §5's CLI prints the first 40 findings by
+    # default, and while the re-review queue is open it reports hundreds -- a planted
+    # violation that lands past the cut is scored SURVIVED, which reports a hole in the
+    # harness where the hole is really in the test (Scaling Mandate 2). `--all` is display
+    # only; the error set, the count and the exit code are identical either way, and the
+    # `baseline_must_not_contain` probe then runs against the WHOLE corpus rather than
+    # its first 40 lines.
+    # ------------------------------------------------------------------------
+    Mutation(
+        name="stale_review_undetected",
+        asserts=['judgment_review_freshness_5'],
+        description=(
+            "Rewrite a CURRENTLY-FRESH sample's recorded stem so it no longer matches "
+            "what the pipeline renders. Freshness is what makes a review expire rather "
+            "than become a checkbox, it produces 512 of §5's findings on this tree, and "
+            "until now nothing had shown it firing."
+        ),
+        edits={},
+        apply_fn=lambda: _plant_stale_review(),
+        command=["backend.app.practice_gen.validation.validate_judgment", "--all"],
+        expected_check="§5 freshness (a review may not outlive the content it judged)",
+        expect_output_contains=[f"STALE review && {_STALE_WITNESS}"],
+        baseline_must_not_contain=[_STALE_WITNESS],
+    ),
+    Mutation(
+        name="stale_answer_same_key",
+        asserts=['judgment_review_freshness_5'],
+        description=(
+            "Move the correct value onto a distractor that was ALREADY offered, keeping "
+            "the stem, the option multiset and the A-D key byte-identical. Until "
+            "2026-09-10 the answer comparison read the raw `correct_answer` field, which "
+            "is a KEY on the 59 read_mcq nodes, so this drift passed every §5 gate."
+        ),
+        edits={},
+        apply_fn=lambda: _plant_stale_answer_same_key(),
+        command=["backend.app.practice_gen.validation.validate_judgment", "--all"],
+        expected_check="§5 freshness (the keyed VALUE, not the slot it landed in)",
+        expect_output_contains=[f"{_STALE_ANSWER_NODE} && no longer keys the same answer"],
+        baseline_must_not_contain=[f"{_STALE_ANSWER_NODE} && no longer keys the same answer"],
+    ),
+    Mutation(
+        name="review_schema_incomplete",
+        asserts=['judgment_review_schema_5'],
+        description=(
+            "Delete a required finding from a review and cut its seed list below the "
+            "distinct-seed quorum -- two independent branches of the schema gate, so one "
+            "run says whether both still fire."
+        ),
+        edits={},
+        apply_fn=lambda: _plant_incomplete_review(),
+        command=["backend.app.practice_gen.validation.validate_judgment", "--all"],
+        expected_check="§5 schema (seeds, samples, six findings, verdicts)",
+        expect_output_contains=[
+            "findings missing required items && cognitive_capacity",
+            "'sample_seeds' must list >= 3 distinct seeds",
+        ],
+        baseline_must_not_contain=[
+            "findings missing required items",
+            "'sample_seeds' must list >= 3 distinct seeds",
+        ],
+    ),
+    Mutation(
+        name="fabricated_quote",
+        asserts=['judgment_quote_provenance_5'],
+        description=(
+            "Quote, in a rationale, a span that appears nowhere in that review's own "
+            "packet or competency text -- the mechanism by which 115 of 151 fabricated "
+            "reviews cited stems they were never shown."
+        ),
+        edits={},
+        apply_fn=lambda: _plant_fabricated_quote(),
+        command=["backend.app.practice_gen.validation.validate_judgment", "--all"],
+        expected_check="§5 quote provenance (a rationale may only cite what it was shown)",
+        expect_output_contains=[f"quotes && {_PHANTOM_QUOTE}"],
+        baseline_must_not_contain=[_PHANTOM_QUOTE],
+    ),
+    Mutation(
+        name="verbatim_rationale_reuse",
+        asserts=['judgment_rationale_verbatim_5'],
+        description=(
+            "Copy one node's rationale byte-for-byte onto another node's same finding. "
+            "The donor is chosen quote-free so the copy trips verbatim reuse ALONE -- a "
+            "mutation that fires two gates cannot say which one it proved."
+        ),
+        edits={},
+        apply_fn=lambda: _plant_verbatim_rationale(),
+        command=["backend.app.practice_gen.validation.validate_judgment", "--all"],
+        expected_check="§5 verbatim rationale reuse across nodes",
+        expect_output_contains=["copied verbatim from"],
+        baseline_must_not_contain=["copied verbatim from"],
+    ),
+    Mutation(
+        name="single_reviewer_identity",
+        asserts=['judgment_reviewer_plurality_5'],
+        description=(
+            "Stamp one `reviewed_by` identity across more nodes than a blind batch may "
+            "hold. §6H's twin has been proven since 2026-08-28; §5's original was not, "
+            "so the older of the two plurality gates was the unproven one."
+        ),
+        edits={},
+        apply_fn=lambda: _plant_single_reviewer_identity(),
+        command=["backend.app.practice_gen.validation.validate_judgment", "--all"],
+        expected_check="§5 reviewer plurality (one identity may not span the tree)",
+        expect_output_contains=[f"reviewer plurality && {_PLANTED_REVIEWER}"],
+        baseline_must_not_contain=["reviewer plurality"],
+    ),
+    Mutation(
+        name="mcq_reviewed_without_options",
+        asserts=['judgment_options_recorded_5'],
+        description=(
+            "Delete the recorded options from a sample whose live render still offers "
+            "some. Until 2026-09-10 that was a silent skip -- 505 of 2026 recorded "
+            "samples were in that state, with the option comparison switched off and, on "
+            "read_mcq, the answer unresolvable, and nothing said so."
+        ),
+        edits={},
+        apply_fn=lambda: _plant_review_drops_options(),
+        command=["backend.app.practice_gen.validation.validate_judgment", "--all"],
+        expected_check="§5 option adjudicability (a choice item must carry its choices)",
+        expect_output_contains=[f"{_OPTIONS_DROPPED_NODE} && records no 'options', but the live render"],
+        baseline_must_not_contain=[f"{_OPTIONS_DROPPED_NODE} && records no 'options', but the live render"],
     ),
     # ------------------------------------------------------------------------
     # The §6 phase seam (2026-09-08). §6A-§6E need no agent-authored artifact and
@@ -1133,6 +1660,49 @@ MUTATIONS: List[Mutation] = [
         expected_check="§6H (an Attester identity may not cover more than one dispatch)",
         expect_output_contains=["attester plurality", "planted-single-attester"],
         baseline_must_not_contain=["attester plurality"],
+    ),
+    Mutation(
+        name="attester_without_evidence",
+        asserts=["attester_evidence_6G"],
+        description=(
+            "Break all three evidence branches of §6G on three live verdicts in one "
+            "record: reasoning removed, PROVIDED with no seed named, and a seed cited "
+            "that is absent from the record's own packet. `template_attestation` proved "
+            "the skeleton-cluster path only, so the branch that asks a verdict to LOCATE "
+            "what it saw was unproven on a 787-verdict surface."
+        ),
+        edits={},
+        apply_fn=lambda: _plant_attester_without_evidence(),
+        command=["backend.app.practice_gen.validation.validate_capability", "--phase", "2"],
+        expected_check="§6G (a verdict must show its work and name the seeds that show it)",
+        expect_output_contains=[
+            "carries no reasoning (§6G)",
+            "names no seed in 'seeds_showing_it'",
+            f"cites seed {_PHANTOM_SEED}",
+        ],
+        baseline_must_not_contain=[
+            "carries no reasoning (§6G)",
+            "names no seed in 'seeds_showing_it'",
+            f"cites seed {_PHANTOM_SEED}",
+        ],
+    ),
+    Mutation(
+        name="withdrawn_attestation",
+        asserts=["capability_unattested_6F"],
+        description=(
+            "Delete one declared capability's verdict from EVERY record that carries it. "
+            "§6F's UNATTESTED branch reports zero on this tree, and 'everything is "
+            "attested' and 'the check cannot see a gap' are different facts a passing run "
+            "cannot tell apart. Removing it from the winning record alone would let an "
+            "older record win and the capability would still read as attested -- the plant "
+            "would land where behaviour does not change."
+        ),
+        edits={},
+        apply_fn=lambda: _plant_withdrawn_attestation(),
+        command=["backend.app.practice_gen.validation.validate_capability", "--phase", "2"],
+        expected_check="§6F UNATTESTED (a declared capability nobody blind has judged)",
+        expect_output_contains=["is UNATTESTED"],
+        baseline_must_not_contain=["is UNATTESTED"],
     ),
     Mutation(
         name="subtraction_pool_uncapped",

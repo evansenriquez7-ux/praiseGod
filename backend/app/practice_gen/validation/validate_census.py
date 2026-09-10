@@ -37,7 +37,11 @@ CENSUS_FLOORS = {
     # 399 collected 2026-09-08 (was 340, set when 349 were observed). 59 tests could
     # have stopped running without breaching it, which is the silent shrinkage this
     # floor exists to catch, so it is ratcheted to the real number less a little churn.
-    "unit_tests": 395,
+    # 412 collected 2026-09-10 (was 399), +9 from test_judgment_answer_resolution.py,
+    # which pins the half of §5's answer comparison that NARROWS -- a narrowing cannot be
+    # proven by a mutation, because the harness scores a plant by making the validator
+    # fail and a narrowing makes it quieter. Ratcheted to the real number less churn.
+    "unit_tests": 408,
     # 56 registered 2026-09-09 (was 51, 50, 48, 37). Four prove §8's own directions, one
     # §2C at (node, formatter) granularity, two the §6 phase seam, one that every contract
     # check declares the phase it runs in, four the §6 Phase 1 band (§6A/§6B/§6C/§6E, which
@@ -45,7 +49,16 @@ CENSUS_FLOORS = {
     # reads are the ones an author wrote. The ten of headroom that existed before meant ten
     # mutations could be deleted silently, and §8 only notices a deletion that leaves a
     # label unproven -- where two mutations prove one label, this floor is the only guard.
-    "mutations": 56,
+    # 65 registered 2026-09-10 (was 56). Nine prove the Phase 2 band, which had exactly
+    # two mutations across its nine assertions: six for §5 (freshness twice -- the stem
+    # path and the key-valued answer path -- schema, quote provenance, verbatim reuse,
+    # reviewer plurality, and the option-adjudicability check added with them), and two
+    # for §6's attestation half (§6G's evidence branches and §6F's UNATTESTED branch,
+    # which reported zero and could not say whether that meant "all attested" or "cannot
+    # see a gap"). §8 counts assertions, not mutations, and `judgment_review_freshness_5`
+    # is now proven by two of them -- so this floor is the only thing that notices if one
+    # of that pair is deleted.
+    "mutations": 65,
     # 983 observed 2026-09-08. How many (variant, value) pairs the blind-review packets
     # will actually demonstrate across the tree.
     #

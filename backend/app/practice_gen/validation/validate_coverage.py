@@ -52,12 +52,24 @@ a mutation may not assert a label no module declares; the allowlist may not name
 either; and every `  FAIL <label>` a validator prints must be in the inventory, which is
 what catches a check added without a declaration.
 
-KNOWN LIMITATION (Scaling Mandate 6)
-------------------------------------
+KNOWN LIMITATIONS (Scaling Mandate 6)
+-------------------------------------
 A validator that neither declares `ASSERTIONS` nor prints a `  FAIL <label>` line is
 invisible here, and so is a new failure mode folded into an existing label's error list.
 §8's unit is the assertion, not the mutation: where two mutations prove one label, either
 may be deleted without §8 noticing — §7's `mutations` floor is what guards that.
+
+**§8 proves by DECLARATION, not by EXECUTION.** `proven_assertions()` reads
+`Mutation.asserts` out of the mutation table; it never runs a mutation and never learns
+whether one was DETECTED. A mutation that SURVIVES — or that the runner refuses to score,
+reporting INVALID because the validator was already failing — still marks its label proven
+here, and still trips `assertion_allowlist_paid_8` if the label is also allowlisted. Named
+2026-09-10, when `mcq_reviewed_without_options` (a correct plant against a check whose
+baseline is red by construction, so the runner will not score it until the re-review queue
+clears) could not be carried on the allowlist for exactly that reason. Running
+`tests/mutation_harness.py` is what closes this and nothing in `run_all` does it — §7's
+`mutations` floor counts the table, not its results. Until a run of that table is itself an
+artifact this gate can read, "proven" here means "a mutation is written for it".
 
 Why a floor and not a hard zero
 -------------------------------
@@ -138,15 +150,13 @@ UNPROVEN_ASSERTIONS: Dict[str, str] = {
     "static_vocab_gated_lint":      "2026-09-08: the static half of vocabulary gating (skeleton banks, not rendered output). vocab_leak proves the RENDERED path (§1D)",
     "vocab_audit_pass_rate":        "2026-09-08: full-node vocabulary audit pass-rate gate. Same defect class as §1D's vocabulary_gating, which is proven, on a different code path",
     # ---- §5 validate_judgment ------------------------------------------------------
-    "judgment_review_schema_5":     "2026-09-08: per-node review schema (seeds, samples, six findings, verdicts). Unproven",
-    "judgment_review_freshness_5":  "2026-09-08: STALE detection -- a review whose seeds no longer render what was judged. Unproven; this is the highest-value §5 debt because it is what makes a review expire",
-    "judgment_quote_provenance_5":  "2026-09-08: a rationale quoting content absent from its own packet. Unproven",
-    "judgment_rationale_verbatim_5": "2026-09-08: byte-identical rationale reused across nodes. template_review proves the SKELETON cluster, which is the harder form",
-    "judgment_reviewer_plurality_5": "2026-09-08: one 'reviewed_by' identity spanning more than one blind batch. The §6H twin (attester_plurality_6H) IS proven",
+    # Five §5 entries were paid on 2026-09-10 (stale_review_undetected,
+    # stale_answer_same_key, review_schema_incomplete, fabricated_quote,
+    # verbatim_rationale_reuse, single_reviewer_identity). §5 had declared six assertions
+    # and proven one; five could have been silently broken and its 696 findings would have
+    # looked identical either way.
     "judgment_reviews":             "2026-09-08: run_all's rollup print for §5; the sub-assertions above carry the proof",
     # ---- §6 validate_capability ----------------------------------------------------
-    "capability_unattested_6F":     "2026-09-08: a declared capability with no blind Attester verdict. Dominates by volume while the attestation queue is open, which is exactly why a mutation would be hard to tell from the backlog",
-    "attester_evidence_6G":         "2026-09-08: a verdict with no reasoning, no cited seed, or a seed absent from its own packet. template_attestation proves the SKELETON-cluster path of §6G only",
     "capability_contract":          "2026-09-08: run_all's rollup print for §6; the sub-assertions above carry the proof",
     # ---- §7 validate_census --------------------------------------------------------
     "census_unit_tests":            "2026-09-08: the unit-test floor. Proving it means shrinking the suite under the harness, which the mutation runner cannot restore safely if interrupted mid-collection",

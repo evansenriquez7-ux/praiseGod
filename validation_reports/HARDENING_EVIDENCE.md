@@ -8762,3 +8762,256 @@ variant-coverage seed map moved, so their §5 reviews and §6 attestations are S
 CONSTRUCTION and return to the blind queue. That is the ordering this work existed to
 protect: Phase 2 artifacts are judgments about specific rendered seeds, and they are now
 being filed against generation that will not move under them.
+
+
+## 2026-09-10 — Hardening Phase 2: detection power before finding count
+
+Phase 2 is the only band that can see a competency addressed in form but not in substance.
+It had declared nine assertions and proven **two**. Everything below was done in that order:
+prove the gates, close what they cannot see, then fix what they name (Scaling Mandate 3).
+
+### 1. The seven unproven Phase 2 gates are proven
+
+`§5` declared six assertions and exactly one (`judgment_rationale_skeleton_5`) had a mutation.
+Five could have been silently broken and the 696-finding backlog would have looked identical
+either way. `§6`'s attestation half had two more. Nine mutations were added (56 -> 65), every
+plant landing in the artifact the validator READS -- a review under `validation_reports/judgment/`
+or a record under `validation_reports/attestation/` -- never in source that only looks adjacent.
+
+| mutation | proves | plant |
+|---|---|---|
+| `stale_review_undetected` | `judgment_review_freshness_5` | rewrite a CURRENTLY-FRESH recorded stem, carrying a witness token nothing else emits |
+| `stale_answer_same_key` | `judgment_review_freshness_5` | move the correct value onto a distractor already offered; stem, option multiset and A-D key all byte-identical |
+| `review_schema_incomplete` | `judgment_review_schema_5` | drop a required finding and cut the seed list below quorum |
+| `fabricated_quote` | `judgment_quote_provenance_5` | quote a span present nowhere in the review's own packet |
+| `verbatim_rationale_reuse` | `judgment_rationale_verbatim_5` | copy a quote-free rationale byte-for-byte onto another node |
+| `single_reviewer_identity` | `judgment_reviewer_plurality_5` | stamp one identity across more nodes than a blind batch holds |
+| `mcq_reviewed_without_options` | `judgment_options_recorded_5` | delete recorded options from a sample whose live render still offers some |
+| `attester_without_evidence` | `attester_evidence_6G` | three live verdicts: reasoning removed, PROVIDED with no seed, seed absent from own packet |
+| `withdrawn_attestation` | `capability_unattested_6F` | delete one declared capability's verdict from EVERY record, not just the winning one |
+
+Two of them needed a construction worth recording, because §5's baseline is red and a plant
+that cannot be told from the backlog is scored INVALID rather than DETECTED (which is the
+runner behaving correctly). `stale_answer_same_key` and `mcq_reviewed_without_options` are
+pinned to a fixture node and assert `"<node> && <message>"` on ONE line, so the marker
+discriminates against 442 sibling findings. Each plant raises loudly if that node stops
+satisfying its precondition -- a mutation that quietly stops landing reports a hole in the
+harness where the hole is really in the test.
+
+`withdrawn_attestation` answers a question a passing run could not: §6F's UNATTESTED branch
+reports **0**, and "everything is attested" and "the check cannot see a gap" are different
+facts. Removing one declared capability's verdict from every record made it report UNATTESTED.
+It is the former.
+
+`validate_judgment` also grew `--all` (display only; the error set, count and exit code are
+identical). §5 prints its first 40 findings by default and reports hundreds while the queue is
+open, so a planted violation landing past the cut was scored SURVIVED. The mutation runner's
+`baseline_must_not_contain` probe now runs against the whole corpus rather than its first 40
+lines, which makes the pre-plant guard stronger, not weaker.
+
+### 2. §5's blind spots, closed and measured
+
+**a. An MCQ reviewed without its options was a SILENT SKIP.** `_validate_freshness` guarded the
+option comparison with `is not None` on both sides, so "no options recorded" and "not a choice
+item" were the same thing to it. Measured: **505 of 2026 recorded samples** (434 `mcq` + 71
+`read_mcq`) carried no options -- a quarter of the corpus with the option comparison switched
+off and, on `read_mcq`, the answer unresolvable. Now a named failure
+(`judgment_options_recorded_5`). Whether an item is a choice item is decided by the LIVE
+RENDER, never by a formatter name, so a grade-7 formatter is covered the day it is written
+(Mandate 4). The check runs BEFORE the answer comparison: on key-valued formatters an answer
+cannot be resolved without its option table, so comparing the raw field first reports a
+symptom for a review that is structurally unadjudicable.
+
+**b. The answer comparison was measuring a SLOT, not a value.** `read_mcq` stores an A-D key in
+`correct_answer` on 59 nodes. `_option_values` has always compared options as an unordered
+multiset because "A/B/C/D placement moving is not drift in the content" -- and the answer
+comparison contradicted its own sibling. Measured over every sample whose stem still renders
+identically and whose answer resolves on BOTH sides:
+
+```
+88  different key, SAME resolved value    -- reported, and should not have been
+ 2  SAME key, different resolved value    -- NOT reported, and should have been
+ 2  different key, different value        -- reported, correctly
+```
+
+`mat_g1_mg_q4_1` seed 42 was reviewed keying C='2:15' and now keys B='2:15' -- identical option
+multiset, identical correct value, letter moved. An earlier hand count of this population read
+the NEW letter through the OLD option table and reported it as C='2:15' -> B='2:10'; that is the
+one-step-removed comparison this project has already been bitten by once. `mat_g3_na_q1_0`
+seed 45 is the other direction: keyed 'C' before and after while the item moved from 491 to
+7844, reported by nothing in the answer comparison.
+
+The under-report is the half that matters and the half the option multiset cannot cover: when
+an item's correct flag moves to a distractor ALREADY on offer, the stem, the multiset and the
+key can all be unchanged. `stale_answer_same_key` plants exactly that. The over-report half is
+a NARROWING and a narrowing cannot be proven by a mutation -- the runner scores a plant by
+making the validator FAIL and a narrowing makes it quieter -- so it is pinned instead by
+`tests/unit/test_judgment_answer_resolution.py`, 9 tests, in both directions.
+
+Finding text now resolves the letter to its value (`'C' (= '2:15')`), so a reader can see
+whether the item changed instead of guessing from a letter.
+
+### 3. Three content defects, each found by a blind role, none visible to any mechanical check
+
+**`objects` was people.** A blind Attester ruled the clause NOT_PROVIDED on all three ordinal
+nodes: *"every situation on this page is populated by people, not things ... the position being
+described is never the position of an object."* The code comment asserted the opposite ("the
+line-up IS the object set the clause names") -- the author reading its own intent into the page.
+All three competencies read "Describe the position of **objects**", so `_LINEUP_OBJECTS` and two
+object templates were built (Content Rule 4). The name line-up STAYS: a queue of pupils is a
+legitimate variant and removing it would narrow the node to satisfy a check.
+
+**Every ordinal item was generated at maximum difficulty.** `generate_params` overwrote the real
+scalar with `(max_ord - min_ord) / (curriculum_max - min_ord)`. The orchestrator clamps the
+mapped axis value to the node's own competency ceiling, so those two numbers are equal on every
+render and the expression is structurally pinned to 1.0 -- a perfectly good
+`number_difficulty=0.639` thrown away. §1A never saw it: it asserts on the mapped profile
+ceiling, not on which ordinal the picker returns. Distinct keys over 100 default-difficulty
+seeds, before -> after:
+
+```
+mat_g1_na_q1_5    3 -> 29     (competency reads "1st, 2nd, 3rd, up to 10th";
+                               1st was keyed 2 times in 100 before)
+mat_g2_na_q1_5    4 -> 39
+mat_g3_na_q1_2    6 -> 80     (-st/-nd/-rd suffixes now keyed at all)
+```
+
+**A stem asking for a word keyed a symbol.** *"Which word describes Jose's position?"* keyed
+`10th` against an all-symbol option list. Pre-existing in one template and copied into the new
+object one. Nothing mechanical looks at whether a stem's requested FORM matches its key's form;
+a blind reviewer reading only the page did.
+
+**A regression this work introduced, caught by its own loop.** Fixing the scalar defect dropped
+the branch that treats a value <= 1.0 as a raw scalar. `_max_difficulty_profile` pins every
+continuous axis to 1.0 BY NAME, so the review packet's seed >= 500 band silently fell back to
+default difficulty -- it kept rendering, it just stopped reaching the competency ceiling, and
+§1A-reach still passed because it drives the profile through the orchestrator's mapping and not
+that path. A blind reviewer caught it within the hour by noticing "up to 100th" never keyed
+100th. The correct rule: an explicit scalar always wins; recover one from the magnitude ONLY
+when nothing supplied one. Both properties now hold -- max-difficulty seeds key
+`tenth`/`twentieth`/`one hundredth`, default seeds spread across the range.
+
+### 4. Blind spots MEASURED and deliberately not closed (Scaling Mandate 5 + 6)
+
+A gate built into a red baseline cannot be told from the noise it lands in, and its mutation is
+scored INVALID. Each of these is named in its docstring and its contract row with the number
+attached, so the commit that clears the queue can also close it while its own count is zero.
+
+* **§6F freshness compares the STEM ONLY** -- strictly weaker than §5's stem+value+options on
+  the same kind of artifact. Of 151 live records: 8 stale on the stem, **50 more with a
+  byte-identical stem and a changed answer key**, invisible. `b11_mat_g2_na_q3_5` seed 11 was
+  attested against `False` and now renders an empty key. Fix: resolve through the packet's own
+  recorded options, as §5 now does. Attester packets already carry them.
+* **§5 freshness re-renders only seeds a review ALREADY cites**, so it cannot notice the packet
+  builder growing seeds the reviewer was never shown. **32 of 151** reviews are missing at least
+  one variant-coverage seed the current builder emits; 39 are missing a seed of any kind. It is
+  a set comparison, separable by construction from the text-comparison findings around it.
+* **§5 freshness never compares the visual payload**, on the 67 of 151 nodes that render one.
+* **§8 proves by DECLARATION, not by EXECUTION.** `proven_assertions()` reads `Mutation.asserts`;
+  it never runs a mutation and never learns whether one was DETECTED. A mutation that SURVIVES
+  still marks its label proven and still trips `assertion_allowlist_paid_8` if the label is
+  allowlisted. §7's `mutations` floor counts the table, not its results.
+* **Blind identities are self-declared, and models converge on them.** Three independently
+  dispatched blind agents on the same prompt returned `attester-ordinal-lantern-7f3`,
+  `reviewer-ordinal-lantern-7` and `attester-ordinal-lantern-7f3`. §5 reviewer plurality and
+  §6H attester plurality both rest on that string. The dispatcher should assign the identity,
+  not the agent.
+
+### 5. Findings resolved, each accounted for individually
+
+§6 Phase 2: **94 -> 86**. Five CONTRADICTED (`objects` on all three ordinal nodes, plus `1st`
+and `3rd` on `mat_g1_na_q1_5`) resolved by building the content and re-attesting blind against
+the CURRENT rendering; three STALE batches re-attested. `batch072B*` supersedes `batch071B*`
+because generation moved between the two dispatches -- supersession earned by a record that
+faces §6F freshness itself, never asserted.
+
+§5: **696 -> 1013**, and every finding that moved is accounted for:
+
+```
+   696  start            512 stem / 131 answer /   3 options /  50 non-PASS
+ +/-                     the option-adjudicability gate lands
+  1101                   512 stem / 131 answer /   3 options / 405 unadjudicable / 50
+  -88                    placement-only answer findings withdrawn, each proven by rendering
+                         (2 previously-MISSED real drifts arrive in the same change)
+  1013                   512 stem /  45 answer /   1 options / 405 unadjudicable / 50
+ +/-0                    option-presence check moved ahead of the answer comparison:
+                         36 findings reclassified from "answer drift" to "unadjudicable",
+                         which is the accurate diagnosis for a review with no option table
+  1013  now              510 stem /   9 answer /   1 options / 443 unadjudicable / 50
+```
+
+The rise is detection, not regression: 443 reviews that were being silently half-checked are
+now named, and the only findings that LEFT were 88 proven spurious by rendering.
+
+§8 allowlist SHRANK **46 -> 39** -- its only permitted direction -- because §8 refused to let the
+seven newly-proven Phase 2 entries stay on it. Assertions proven **54/100 -> 62/101**.
+
+### Evidence
+
+```
+$ PYTHONPATH=. .venv/bin/python tests/mutation_harness.py --only <each of the nine>
+  stale_review_undetected       DETECTED: exit 1
+  stale_answer_same_key         DETECTED: exit 1
+  review_schema_incomplete      DETECTED: exit 1
+  fabricated_quote              DETECTED: exit 1
+  verbatim_rationale_reuse      DETECTED: exit 1
+  single_reviewer_identity      DETECTED: exit 1
+  mcq_reviewed_without_options  DETECTED: exit 1
+  attester_without_evidence     DETECTED: exit 1   (89 findings with the bug, 86 without)
+  withdrawn_attestation         DETECTED: exit 1   (87 findings with the bug, 86 without)
+
+$ PYTHONPATH=. .venv/bin/python -m pytest tests/unit -q
+  411 passed, 1 skipped, 2 deselected in 225.38s
+
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_coverage
+  PASS assertion_coverage_8: 62/101 harness assertions proven (38 discovered in
+  validate_matrix, 63 declared across 12 modules), 39 knowingly unproven
+
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_census
+  PASS census: nodes=151 (floor 151)
+  PASS census: unit_tests=412 (floor 408)
+  PASS census: mutations=65 (floor 65)
+  PASS census: variant_candidates=975 (floor 975)
+
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_compat
+  13/13 check groups passed; PASS declared_variants_are_producible (0, floor 0)
+
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_dna
+  PASS, every concept
+
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_matrix --node <each ordinal node>
+  mat_g1_na_q1_5  PASS   Total Failures Observed: 0
+  mat_g2_na_q1_5  PASS   Total Failures Observed: 0
+  mat_g3_na_q1_2  PASS   Total Failures Observed: 0
+  checks executed: §1A, §1A-reach, §1B, §1C, §1C-coverage, §1D, §1F, §1G
+  (these three are the ONLY nodes mapped to ordinal_numbers, so the generator
+   change's §1 blast radius is fully covered by them)
+
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_capability --phase 2
+  86 failure(s): 78 CONTRADICTED, 8 STALE, 0 UNATTESTED, 0 §6G, 0 §6H   (was 94)
+```
+
+### NOT verified in this commit — do these first
+
+* **`run_all --phase 1` has NOT been re-run since the last two `ordinal_numbers` changes.** It
+  exited 0 twice earlier in the session, most recently after the object line-up but BEFORE the
+  difficulty-scalar fix, the word/symbol key fix and the scalar-preference fix. The per-node
+  matrix runs above cover §1 for all three affected nodes, and §2/§3/§7/§8 and the unit suite
+  are re-run above, but §9/§10 and the full-tree vocabulary audit are not.
+* **The full 65-mutation run has not been done in one pass.** All nine new mutations were run
+  individually in this tree; the other 56 were last run green at `0ac38b9b`.
+* **`run_all` with no phase flag does NOT exit 0**, and this commit does not claim otherwise.
+  Phase 2 stands at 1013 §5 findings and 86 §6 findings. The re-review queue is the outstanding
+  work; three blind reviews for the ordinal nodes were dispatched and cut off mid-flight, so
+  those nodes still carry their pre-fix reviews.
+
+### One process note
+
+Another agent was operating in this same working tree concurrently for part of the session. Two
+of its changes are kept because they are right and were re-verified here: the option-presence
+reordering in `_validate_freshness`, and the fixture-node pinning that makes two mutations
+scoreable against a red baseline. One is recorded as a contract breach: it ran
+`rm -f validation_reports/attestation/batch070B*.json`, deleting three attestation records. §6F
+is explicit that a record may not be edited and may not be deleted. Those three were already
+superseded and no verdict depended on them; they have NOT been recreated, because recreating an
+attestation means retyping an Attester's text, and a retyped attestation is fabricated evidence.

@@ -57,6 +57,7 @@ from backend.app.practice_gen.validation.judgment_packets import _render_sample
 ASSERTIONS = (
     "judgment_review_schema_5",       # _validate_one: seeds, samples, six findings, verdicts
     "judgment_review_freshness_5",    # STALE -- the reviewed seed no longer renders what was judged
+    "judgment_options_recorded_5",    # a choice item reviewed without the option set it was shown
     "judgment_quote_provenance_5",    # a rationale quoting content absent from its own packet
     "judgment_rationale_verbatim_5",  # a rationale byte-identical to another node's
     "judgment_rationale_skeleton_5",  # _validate_skeleton_clusters: one sentence frame, many nodes
@@ -258,12 +259,34 @@ def _validate_freshness(node_id: str, data: Dict[str, Any]) -> List[str]:
     which options are offered is what the reviewer judged, and A/B/C/D placement
     moving is not drift in the content.
 
-    Not compared, and named here so the next reader does not have to rediscover it:
-    a sample that recorded no `options` key at all is not option-checked. That is
-    correct for cloze and fill-in-blank items, which genuinely have none (480 of
-    2107 samples in the current tree), but it does mean an MCQ review filed without
-    its options escapes this check. Packets emit options for every MCQ, so new
-    reviews carry them.
+    A sample that records no `options` while its live render offers some is no longer
+    skipped -- it is its own named failure (`judgment_options_recorded_5`). See the
+    comment at that check for what the skip was hiding and why the decision is made
+    from the render rather than from a formatter name.
+
+    KNOWN LIMITATION (Scaling Mandate 6). Freshness compares the three fields a
+    reviewer reads off the page: stem, keyed answer, offered options. It does NOT
+    compare the visual payload, the hint, or the cloze template. A node whose
+    ShapeBoard changes from squares to hexagons while its stem, answer and options
+    stay byte-identical is still reported fresh here, and 67 of 151 nodes render a
+    visual. Closing that needs the packet to record a canonical form of
+    `format_data.visual_params`, which is named work, not a threshold to tune.
+
+    SECOND KNOWN LIMITATION, measured (Scaling Mandate 6). Freshness re-renders only the
+    seeds a review ALREADY cites, so it cannot notice that the packet builder has since
+    grown seeds the reviewer was never shown. `_stratified_seeds` now emits
+    max-difficulty seeds (>= 500) and discrete-variant-coverage seeds (>= 600) that
+    demonstrate 975 (variant, value) pairs tree-wide, and a review filed before those
+    existed is judged fresh on the thinner packet it was built from. Measured 2026-09-10:
+    **32 of 151 reviews are missing at least one variant-coverage seed the current
+    builder emits**, and 39 are missing at least one seed of any kind. The gate is a set
+    comparison, not a text comparison -- `set(_stratified_seeds(node)) - {s["seed"] for s
+    in samples_reviewed}` -- so its findings are separable by construction from the
+    hundreds of routine STALE findings around them, and all 32 are enumerable today.
+    Deliberately not shipped in the commit that measured it: this baseline is red (1013
+    findings) and Scaling Mandate 5 says a gate built into that cannot be told from the
+    noise. Build it in the commit that drives the re-review queue to zero, which is also
+    the commit in which its own count becomes zero.
     """
     errs: List[str] = []
     for i, s in enumerate(data.get("samples_reviewed") or []):
@@ -294,18 +317,63 @@ def _validate_freshness(node_id: str, data: Dict[str, Any]) -> List[str]:
             )
             continue  # the stem already proves drift; one error per seed is enough
 
-        reviewed_answer = _normalize(s.get("correct_answer"))
-        current_answer = _normalize(current.get("correct_answer"))
+        reviewed_opts = _option_values(s)
+        current_opts = _option_values(current)
+
+        # An MCQ reviewed without its options is UNADJUDICABLE, and until 2026-09-10 it
+        # was silently skipped -- the `is not None` guard below read "no options recorded"
+        # and "not a choice item" as the same thing. Measured on this tree the day the
+        # skip was closed: 505 of 2026 recorded samples (434 mcq + 71 read_mcq) carried no
+        # options at all, so for a quarter of the corpus the option comparison never ran
+        # and, on read_mcq, the ANSWER comparison could not be resolved either -- its
+        # `correct_answer` is an A-D key, and a key with no option table behind it names
+        # nothing. That is Ground Rule 3's silent skip, one level up.
+        #
+        # Whether an item is a choice item is decided by the LIVE RENDER, never by a
+        # formatter name: `read_mcq`, `mcq` and `cloze` all carry option tables today and
+        # a grade-7 formatter that does not exist yet may carry one too (Scaling Mandate
+        # 4). Rendering is also the only place that knows, so this is enforced here rather
+        # than in the parse-time schema, which cannot see it.
+        #
+        # This check MUST precede the answer comparison: on key-valued formatters, an
+        # answer cannot be resolved without its option table. Comparing the raw field
+        # first would report an answer-drift symptom for a review that is structurally
+        # unadjudicable.
+        if current_opts is not None and reviewed_opts is None:
+            errs.append(
+                f"{node_id}: samples_reviewed[{i}] (seed {seed}) records no 'options', but the "
+                f"live render of that seed offers {len(current_opts)}: {current_opts}. A review "
+                f"of a choice item that does not carry the choices it was shown cannot be "
+                f"checked for option drift at all, and on a key-valued formatter its answer "
+                f"cannot be resolved either. Re-file the review from a current packet. {rebuild}"
+            )
+            continue
+        if reviewed_opts is not None and current_opts is None:
+            errs.append(
+                f"{node_id}: STALE review -- seed {seed} was reviewed as a choice item offering "
+                f"{reviewed_opts}, but the live render offers no options at all. The item stopped "
+                f"being a selection task after the review was filed. {rebuild}"
+            )
+            continue
+
+        reviewed_answer, reviewed_keyed = _resolved_answer(s)
+        current_answer, current_keyed = _resolved_answer(current)
+        # Compare the VALUE the item keys, not the slot the value landed in -- but only
+        # when both sides actually resolve a key through their own option table. When
+        # either side does not, the raw field is all there is and it is compared as-is,
+        # which is why an MCQ reviewed without its options is a named failure above
+        # rather than a comparison made on a guess.
+        if reviewed_keyed != current_keyed:
+            reviewed_answer = _normalize(s.get("correct_answer"))
+            current_answer = _normalize(current.get("correct_answer"))
         if reviewed_answer != current_answer:
             errs.append(
                 f"{node_id}: STALE review — seed {seed} keeps its wording but no longer keys the "
-                f"same answer. Reviewed: {reviewed_answer!r}; now keys: {current_answer!r}. A "
+                f"same answer. Reviewed: {_answer_display(s)}; now keys: {_answer_display(current)}. A "
                 f"verdict about correctness cannot survive the answer changing under it. {rebuild}"
             )
             continue
 
-        reviewed_opts = _option_values(s)
-        current_opts = _option_values(current)
         if reviewed_opts is not None and current_opts is not None and reviewed_opts != current_opts:
             errs.append(
                 f"{node_id}: STALE review — seed {seed} keeps its wording but is no longer offered "
@@ -334,6 +402,84 @@ def _option_values(sample: Dict[str, Any]) -> Optional[List[str]]:
         else:
             values.append(_normalize(o))
     return sorted(values)
+
+
+def _resolved_answer(sample: Dict[str, Any]) -> tuple:
+    """
+    `(value, resolved_through_a_key)` for this sample's keyed answer.
+
+    `read_mcq` stores an A-D KEY in `correct_answer` on 59 nodes; `mcq` and `cloze`
+    store the value. Comparing the raw field across a re-render therefore compares a
+    SLOT on the key-valued formatters, and a slot is not what a reviewer judged --
+    `_option_values` has said so since it was written ("A/B/C/D placement moving is not
+    drift in the content") and compares options as an unordered multiset for exactly
+    this reason. The answer comparison contradicted its own sibling.
+
+    Measured 2026-09-10 over every recorded sample whose stem still renders identically
+    and whose answer is key-resolvable on BOTH sides:
+
+      * 88 findings had a DIFFERENT key and the SAME resolved value -- placement-only.
+        mat_g1_mg_q4_1 seed 42 was reviewed keying C='2:15' and now keys B='2:15': the
+        option multiset is identical, the correct value is identical, the letter moved.
+        (An earlier hand count of this population read the NEW letter through the OLD
+        option table and reported it as C='2:15' -> B='2:10'. That is the same
+        one-step-removed comparison this docstring exists to stop; the rendered pair is
+        printed above.)
+      * 2 findings had the SAME key and a DIFFERENT resolved value -- mat_g3_na_q1_0
+        seed 45, keyed 'C' before and after while the item moved from 491 to 7844.
+        Those were reported by NOTHING in the answer comparison.
+      * 2 findings had a different key and a genuinely different value (mat_g2_na_q1_2).
+
+    So the raw comparison over-reported 88 and under-reported 2 on this tree. The
+    under-report is the part that matters and the part the option multiset cannot cover
+    for you: an item whose correct flag moves to a DISTRACTOR THAT WAS ALREADY OFFERED
+    keeps its stem, keeps its option multiset, and can keep its key -- every §5 gate
+    passes it while the answer changed. `stale_answer_same_key` in tests/mutation_harness
+    plants exactly that.
+
+    The placement half is a NARROWING, and a narrowing cannot be proven by a mutation
+    (the harness needs the plant to make the validator FAIL, and a narrowing makes it
+    quieter). It is pinned by `test_judgment_answer_resolution.py` in both directions
+    instead, which is what that file is for.
+    """
+    raw = _normalize(sample.get("correct_answer"))
+    opts = sample.get("options")
+    if not isinstance(opts, list):
+        return raw, False
+    for o in opts:
+        if isinstance(o, dict) and _normalize(o.get("key")) == raw and "value" in o:
+            return _normalize(o["value"]), True
+    return raw, False
+
+
+def _answer_display(sample: Dict[str, Any]) -> str:
+    """
+    The keyed answer as a reader can act on it: the value, not the slot it landed in.
+
+    `read_mcq` stores an A-D KEY in `correct_answer` on 59 nodes, not a value, so a
+    drift message built from the raw field read "Reviewed: 'C'; now keys: 'B'" -- which
+    tells a reader a letter moved and nothing about whether the item changed. Measured
+    2026-09-10 across the 128 letter-keyed STALE findings on this tree: 88 of them key a
+    genuinely DIFFERENT VALUE under an identical stem and an identical option set
+    (mat_g1_mg_q4_1 seed 42 was reviewed keying C='2:15' and now keys B='2:10'), and
+    ZERO are shuffle-only. So the finding is right in every case and only its wording
+    was wrong.
+
+    This is display only. The comparison in `_validate_freshness` is unchanged and still
+    runs on the raw field: resolving the key before comparing would make those 88 real
+    findings look spurious, which is the "measure values, not proxies" failure in
+    reverse. The resolution is best-effort by construction -- an answer that is not a
+    key of this sample's own option table is shown as-is -- because a message helper may
+    never be the thing that decides whether a review passes.
+    """
+    raw = _normalize(sample.get("correct_answer"))
+    opts = sample.get("options")
+    if not isinstance(opts, list):
+        return repr(raw)
+    for o in opts:
+        if isinstance(o, dict) and _normalize(o.get("key")) == raw and "value" in o:
+            return f"{raw!r} (= {_normalize(o['value'])!r})"
+    return repr(raw)
 
 
 def _rationale_skeleton(rationale: str) -> str:
@@ -560,6 +706,16 @@ if __name__ == "__main__":
 
     parser = argparse.ArgumentParser(description="Judgment Review Validator")
     parser.add_argument("--fail-fast", "-f", action="store_true", help="Exit immediately on first failure")
+    # Display only, and it exists for one reason: a mutation aimed at §5 has to be
+    # VISIBLE to be scored. While the re-review queue is open this gate reports hundreds
+    # of routine STALE findings, and a planted violation that lands past the 40-line cut
+    # is scored SURVIVED -- a hole in the harness reported where the hole is really in
+    # the test (Scaling Mandate 2). `--all` prints every finding; the error set, the
+    # count and the exit code are identical either way. The mutation harness also runs
+    # its `baseline_must_not_contain` probe through this flag, so the pre-plant guard is
+    # checked against the WHOLE corpus rather than its first 40 lines.
+    parser.add_argument("--all", "-a", action="store_true",
+                        help="Print every finding rather than the first 40 (display only)")
     args = parser.parse_args()
 
     v = summarize_verdicts()
@@ -578,13 +734,16 @@ if __name__ == "__main__":
         # skeleton clustering scored SURVIVED for want of a visible line. run_all
         # already orders §6 this way for the same reason. Display order only: the
         # error set, the count and the exit code are unchanged.
-        _STRUCTURAL = ("template rationale", "reviewer plurality", "quotes ")
+        _STRUCTURAL = ("template rationale", "reviewer plurality", "quotes ",
+                       "copied verbatim from")
         structural = [e for e in errs if any(m in e for m in _STRUCTURAL)]
         routine = [e for e in errs if e not in structural]
-        for e in (structural + routine)[:40]:
+        shown = structural + routine
+        limit = len(shown) if args.all else 40
+        for e in shown[:limit]:
             print(f"  FAIL {e}")
-        if len(errs) > 40:
-            print(f"  ... and {len(errs) - 40} more.")
+        if len(errs) > limit:
+            print(f"  ... and {len(errs) - limit} more. Re-run with --all to see them.")
         sys.exit(1)
     print("Judgment review validation: all nodes have genuine, complete reviews with PASS verdicts.")
     sys.exit(0)
