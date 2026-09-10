@@ -9535,3 +9535,71 @@ $ full-tree render sweep, 151 nodes x 10 student-path seeds
 
 $ churn:  §5 1020 -> 1023 (+3)      §6 Phase 2 211 -> 211
 ```
+
+---
+
+## 2026-09-10 — the full-table run caught a mutation my own content work had blinded
+
+### What happened
+
+`attestation_option_drift` PASSED when run with `--only` immediately after it was written, and
+SURVIVED in the first full 70-mutation run of the session. Diagnosed by rendering the fixture,
+not by reading the validator:
+
+```
+b09_mat_g2_na_q2_8 seed 11
+  recorded: 'What is the next number in the pattern: 30, 28, 26, 24, 22, 20?'
+  renders : 'What is the next number in the pattern: 20, 18, 16, 14, 12, 10?'
+```
+
+The §5b alphabetic-pattern work three commits earlier shifted that node's rng stream. §6F reports
+the FIRST problem it finds per record and stops, so the stem branch fired and the plant never
+reached the option comparison it was written to prove.
+
+**The check was working. The mutation stopped reaching the code the validator runs** — Scaling
+Mandate 2's second cause, and precisely the state that gets misreported as a hole in the harness
+when the hole is really in the test.
+
+### Two fixes, because repointing alone would leave the trap set
+
+1. `_ATTEST_OPTION_DRIFT_NODE` repointed from `mat_g2_na_q2_8` to `mat_g1_dp_q3_0`, a data node
+   no current content work touches.
+2. `_require_fresh_sample` — the fix that matters. All three §6F record plants now assert their
+   fixture still renders what its record says before planting, and the option-drift plant
+   additionally pins the ANSWER, which §6F compares before options. A drifted fixture now raises
+   with the recorded and live stems printed instead of silently scoring SURVIVED.
+
+The guard is proven rather than assumed. Pointed back at the fixture that broke:
+
+```
+$ PYTHONPATH=. .venv/bin/python -c "M._ATTEST_OPTION_DRIFT_NODE='mat_g2_na_q2_8';
+                                    M._plant_attestation_option_drift()"
+  ValueError: mutation 'attestation_option_drift': fixture mat_g2_na_q2_8 seed 11 is already
+  STALE ON THE STEM, so §6F reports that and never reaches the branch this mutation plants in.
+  The check is not what moved -- the content is.
+    recorded: 'What is the next number in the pattern: 30, 28, 26, 24, 22, 20?'
+    renders : 'What is the next number in the pattern: 20, 18, 16, 14, 12, 10?'
+  Repoint the fixture to a record whose stem still matches.
+```
+
+### The lesson, stated so it is not relearned
+
+**A `--only` run cannot detect a fixture invalidated by content work in the same session.** Every
+§5/§6 mutation is pinned to specific node content, and every content commit can move it. The
+individual runs after each commit were all green and all of them were blind to this. Only the
+full table, run after the content work, could see it — so the full table is not optional
+verification at the end of a content session, it is the only thing that checks the pins.
+
+### Evidence
+
+```
+$ PYTHONPATH=. .venv/bin/python tests/mutation_harness.py        (before the fix)
+  69/70 mutations detected.
+  A surviving mutation is a hole in the harness, not a harmless gap:
+    - attestation_option_drift: nothing enforces §6F freshness (the offered options...)
+
+$ PYTHONPATH=. .venv/bin/python tests/mutation_harness.py        (after)
+  70/70 mutations detected.
+  Praise God — the verifier verifies.
+  EXIT=0        working tree clean afterwards (kill-safe restore intact)
+```

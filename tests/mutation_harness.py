@@ -314,7 +314,14 @@ _STALE_GRAPH_NODE = "mat_g1_na_q3_6"
 # run would score INVALID on the baseline guard -- see Scaling Mandate 5. Every marker
 # is a "<node> && <message>" conjunction for the same reason.
 _ATTEST_ANSWER_NODE = "mat_g1_na_q1_4"          # clean record, no options either side
-_ATTEST_OPTION_DRIFT_NODE = "mat_g2_na_q2_8"    # live render offers options
+# Was mat_g2_na_q2_8 until 2026-09-10. The §5b alphabetic-pattern work shifted that
+# node's rng stream, so its record went STALE ON THE STEM and §6F's stem branch fired
+# before the option comparison could be reached -- the plant stopped reaching the code
+# the validator runs, and the full-table run scored it SURVIVED while the check itself
+# was fine (Scaling Mandate 2, second cause). `_require_fresh_sample` below now turns
+# that into a loud, named failure instead of a silent survival. Repointed to a data
+# node, whose content no current content work touches.
+_ATTEST_OPTION_DRIFT_NODE = "mat_g1_dp_q3_0"    # live render offers options
 _ATTEST_CHOICE_LOST_NODE = "mat_g2_na_q1_4"     # clean record, live render offers none
 _ATTEST_UNADJUDICABLE_NODE = "mat_g2_na_q3_8"   # clean record, true_false on every seed
 
@@ -2373,6 +2380,38 @@ def _attestation_record_for(node_id: str, mutation: str):
     )
 
 
+def _require_fresh_sample(node_id: str, sample: Dict, mutation: str) -> Dict:
+    """
+    Assert a fixture sample still renders what its record says, and return the render.
+
+    §6F reports the FIRST problem it finds per record and stops. So a fixture whose stem
+    has drifted answers with the stem finding no matter what is planted underneath it,
+    and the plant is scored SURVIVED even though the check works perfectly. That is
+    Scaling Mandate 2's second cause, and it is invisible unless the plant says so:
+    `attestation_option_drift` passed on its own and then survived in the full-table run
+    after unrelated content work moved mat_g2_na_q2_8's rng stream.
+
+    Raising here converts that into a named failure that tells the next agent exactly
+    which fixture moved and what it moved to, instead of a hole reported in the harness
+    where the hole is really in the test.
+    """
+    from backend.app.practice_gen.validation.judgment_packets import _render_sample
+
+    current = _render_sample(node_id, sample["seed"])
+    was = " ".join(str(sample.get("question_text", "")).split())
+    now = " ".join(str(current.get("question_text", "")).split())
+    if was != now:
+        raise ValueError(
+            f"mutation {mutation!r}: fixture {node_id} seed {sample['seed']} is already "
+            f"STALE ON THE STEM, so §6F reports that and never reaches the branch this "
+            f"mutation plants in. The check is not what moved -- the content is.\n"
+            f"  recorded: {was[:110]!r}\n"
+            f"  renders : {now[:110]!r}\n"
+            f"Repoint the fixture to a record whose stem still matches."
+        )
+    return current
+
+
 def _plant_attestation_answer_drift() -> Dict[Path, str]:
     """
     Move the answer an attestation was filed against, leaving its stem byte-identical.
@@ -2387,7 +2426,7 @@ def _plant_attestation_answer_drift() -> Dict[Path, str]:
 
     path, data = _attestation_record_for(_ATTEST_ANSWER_NODE, "attestation_answer_drift")
     sample = data["packet"]["samples_judged"][0]
-    current = _render_sample(_ATTEST_ANSWER_NODE, sample["seed"])
+    current = _require_fresh_sample(_ATTEST_ANSWER_NODE, sample, "attestation_answer_drift")
     if current.get("options") is not None:
         raise ValueError(
             f"mutation 'attestation_answer_drift': {_ATTEST_ANSWER_NODE} seed "
@@ -2417,7 +2456,18 @@ def _plant_attestation_option_drift() -> Dict[Path, str]:
     drift_path, drift_data = _attestation_record_for(
         _ATTEST_OPTION_DRIFT_NODE, "attestation_option_drift")
     sample = drift_data["packet"]["samples_judged"][0]
-    current = _render_sample(_ATTEST_OPTION_DRIFT_NODE, sample["seed"])
+    current = _require_fresh_sample(
+        _ATTEST_OPTION_DRIFT_NODE, sample, "attestation_option_drift")
+    # The answer comparison runs BEFORE the option comparison, so a fixture whose answer
+    # has also moved would be reported for that instead. Pin it explicitly.
+    if str(sample.get("correct_answer")) != str(current.get("correct_answer")):
+        raise ValueError(
+            f"mutation 'attestation_option_drift': {_ATTEST_OPTION_DRIFT_NODE} seed "
+            f"{sample['seed']} no longer keys the same answer "
+            f"({sample.get('correct_answer')!r} -> {current.get('correct_answer')!r}), so "
+            f"§6F reports the answer drift before reaching the option comparison. "
+            f"Repoint the fixture."
+        )
     live = current.get("options")
     if not isinstance(live, list) or not live:
         raise ValueError(
@@ -2444,7 +2494,8 @@ def _plant_attestation_option_drift() -> Dict[Path, str]:
     lost_path, lost_data = _attestation_record_for(
         _ATTEST_CHOICE_LOST_NODE, "attestation_option_drift")
     lost_sample = lost_data["packet"]["samples_judged"][0]
-    lost_current = _render_sample(_ATTEST_CHOICE_LOST_NODE, lost_sample["seed"])
+    lost_current = _require_fresh_sample(
+        _ATTEST_CHOICE_LOST_NODE, lost_sample, "attestation_option_drift")
     if lost_current.get("options") is not None:
         raise ValueError(
             f"mutation 'attestation_option_drift': {_ATTEST_CHOICE_LOST_NODE} seed "
