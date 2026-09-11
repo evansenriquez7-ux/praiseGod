@@ -299,6 +299,27 @@ def _visual_payload_defects(p: dict) -> List[str]:
                     x = v.get(k)
                     if num(x) and not (st <= x <= en):
                         out.append(f"NumberLine {k}={x} falls outside its own axis [{st}, {en}]")
+        # Equal jumps (mat_g2_na_q3_1's "equal jumps on a number line"): a payload that
+        # declares a run of them is claiming the picture shows that run, so the run must
+        # be drawable and must END on the value the item keys. Nothing else in the
+        # harness can see this: the component reads the jump keys inside a branch, so
+        # the derived frontend contract classes them CONDITIONAL and §9 enforces
+        # unconditional keys only. Stated over the payload's own fields, so any grade's
+        # number line that declares jumps inherits it.
+        js, jc, jf = v.get("jump_size"), v.get("jump_count"), v.get("jump_from")
+        if js is not None or jc is not None:
+            if not (num(js) and num(jc)) or js < 1 or jc < 1:
+                out.append(
+                    f"NumberLine declares jump_size={js!r} x jump_count={jc!r}: a jump of "
+                    f"nothing, or no jumps at all, draws an empty picture under a stem "
+                    f"that promises arrows"
+                )
+            elif num(jf) and num(v.get("value")) and jf + js * jc != v["value"]:
+                out.append(
+                    f"NumberLine draws {jc} jumps of {js} from {jf}, landing on "
+                    f"{jf + js * jc}, but the item is keyed to {v['value']} -- the picture "
+                    f"shows a different sum than the one the pupil is graded on"
+                )
 
     elif vt == "PlaceValueBlocks":
         calc = (v.get("thousands", 0) or 0) * 1000 + (v.get("hundreds", 0) or 0) * 100 \

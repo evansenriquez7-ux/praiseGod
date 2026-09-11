@@ -265,6 +265,14 @@ COMPATIBILITY: Dict[str, List[str]] = {
         "error_detect",
         "array_grid_read",
         "array_grid_set",
+        # mat_g2_na_q3_1 names four media -- "concrete and pictorial models and
+        # numerals, and ... groups of equal quantities, arrays, counting by multiples,
+        # and equal jumps on a number line". Arrays were served by array_grid_*; the
+        # other two were not drawn at all. Both are scoped to the task_types those
+        # clauses bind in FORMATTER_VARIANT_SUPPORT below, so a plain table-fact node
+        # is not handed a picture its own competency never asked for.
+        "number_line_read",
+        "emoji_pictorial",
     ],
 
     "division": [
@@ -962,6 +970,20 @@ FORMATTER_VARIANT_SUPPORT: Dict[str, Dict[str, Dict[str, List[str]]]] = {
         # ("0 x 7 = 0. True or False?") by a formatter that can actually express it.
         "array_grid_read": {"task_type": ["find_product", "repeated_addition", "equal_groups", "skip_counting", "number_line_jumps"], "context": ["pure"]},
         "array_grid_set": {"task_type": ["find_product", "repeated_addition", "equal_groups", "skip_counting", "number_line_jumps"], "context": ["pure"]},
+        # "equal jumps on a number line", and the same picture for the two sub-skills
+        # that share it: repeated addition (3 + 3 + 3) and counting by multiples
+        # (3, 6, 9) ARE runs of equal jumps. All three must be listed, not just
+        # number_line_jumps: mat_g2_na_q3_1 binds task_type to all three at once, and
+        # formatter_refused_at_node is ALL-not-ANY -- supporting one of the three would
+        # make the formatter unavailable on the only node whose competency names it.
+        # Restricted to `pure` like the array formatters: the word-problem narrative is
+        # the DNA's, and a visual that replaces it re-asks a different question.
+        "number_line_read": {"task_type": ["repeated_addition", "skip_counting", "number_line_jumps"], "context": ["pure"]},
+        # "groups of equal quantities" (mat_g2_na_q3_1) and "create equal groups, using
+        # language such as '5 groups of 3'" (mat_g2_na_q3_0). Both of those nodes' bound
+        # task_types are listed for the ALL-not-ANY reason above; `find_product` and the
+        # property task_types are NOT, so no bare table-fact node offers it.
+        "emoji_pictorial": {"task_type": ["equal_groups", "repeated_addition", "skip_counting", "number_line_jumps"], "context": ["pure"]},
         "error_detect": {"task_type": ["find_product", "estimate", "zero_identity", "equal_groups", "repeated_addition", "skip_counting", "number_line_jumps", "two_step"]},
         "true_false": {"task_type": ["find_product", "estimate", "zero_identity", "equal_groups", "repeated_addition", "skip_counting", "number_line_jumps", "two_step"]},
         "cloze": {"task_type": ["find_product", "estimate", "zero_identity", "equal_groups", "repeated_addition", "skip_counting", "number_line_jumps", "two_step"]},

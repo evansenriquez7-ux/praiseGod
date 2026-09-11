@@ -166,6 +166,24 @@ export function NumberLineInteractive({ params, onAnswer, disabled }) {
   const dotDivIndex = getDivisionIndex(dotPosition);
   const dotPercent = totalDivisions > 0 ? (dotDivIndex / totalDivisions) * 100 : 0;
 
+  // Equal jumps. The payload may declare a run of `jump_count` hops of `jump_size`
+  // from `jump_from` -- the medium mat_g2_na_q3_1 names outright ("equal jumps on a
+  // number line"), which nothing here drew: the stem said "taking 2 equal jumps of 9"
+  // and the pupil saw a bare dot. Read INSIDE the guard so every payload that declares
+  // no jumps (addition, rounding, read-a-value, and intro_gen's own number lines)
+  // renders exactly as it did before.
+  const jumpArcs = [];
+  if (params?.jump_count > 0 && params?.jump_size > 0) {
+    const jumpFrom = params.jump_from ?? start;
+    for (let i = 0; i < params.jump_count; i++) {
+      jumpArcs.push({
+        from: jumpFrom + i * params.jump_size,
+        to: jumpFrom + (i + 1) * params.jump_size,
+      });
+    }
+  }
+  const pctOf = (val) => (totalDivisions > 0 ? (getDivisionIndex(val) / totalDivisions) * 100 : 0);
+
   // Build tick marks with major/minor intervals
   const ticks = [];
   const ticksPerMajor = Math.round(safeMajorInterval / safeMinorInterval);
@@ -208,6 +226,59 @@ export function NumberLineInteractive({ params, onAnswer, disabled }) {
           width: '100%',
         }}
       >
+        {/* Equal jumps, drawn as one arc per hop above the axis. preserveAspectRatio
+            is "none" so the viewBox's x units ARE percentages of the track; the stroke
+            is kept uniform by vectorEffect rather than by the aspect ratio. */}
+        {jumpArcs.length > 0 && (
+          <svg
+            width="100%"
+            height="48"
+            viewBox="0 0 100 48"
+            preserveAspectRatio="none"
+            style={{
+              position: 'absolute',
+              left: 0,
+              bottom: '100%',
+              overflow: 'visible',
+              pointerEvents: 'none',
+            }}
+          >
+            {jumpArcs.map((arc, i) => {
+              const x1 = pctOf(arc.from);
+              const x2 = pctOf(arc.to);
+              return (
+                <path
+                  key={`jump-${i}`}
+                  d={`M ${x1} 46 Q ${(x1 + x2) / 2} 2 ${x2} 46`}
+                  fill="none"
+                  stroke="hsl(var(--primary))"
+                  strokeWidth="2"
+                  vectorEffect="non-scaling-stroke"
+                />
+              );
+            })}
+          </svg>
+        )}
+        {jumpArcs.map((arc, i) => (
+          <div
+            key={`jump-label-${i}`}
+            style={{
+              position: 'absolute',
+              left: `${(pctOf(arc.from) + pctOf(arc.to)) / 2}%`,
+              bottom: '100%',
+              marginBottom: '30px',
+              transform: 'translateX(-50%)',
+              fontSize: '12px',
+              fontWeight: 700,
+              color: 'hsl(var(--primary))',
+              whiteSpace: 'nowrap',
+              pointerEvents: 'none',
+            }}
+          >
+            {`+${arc.to - arc.from}`}
+          </div>
+        ))}
+
         {/* Tick marks with major/minor distinction */}
         {ticks.map((tick, i) => (
           <React.Fragment key={i}>
@@ -3054,6 +3125,38 @@ export function EmojiPictorialInteractive({ params, disabled }) {
     
     return elements;
   };
+
+  if (operation === 'multiplication') {
+    // b groups of a items -- "5 groups of 3" is mat_g2_na_q3_0's own wording, and
+    // mat_g2_na_q3_1 names "groups of equal quantities". Each group is drawn in its own
+    // box so the pupil can count the groups and what is in one, which is the whole
+    // point of the model; one undivided heap of a*b items would not be it.
+    return (
+      <div style={{ padding: '20px', textAlign: 'center' }}>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', justifyContent: 'center' }}>
+          {Array.from({ length: Math.max(0, group_b) }).map((_, i) => (
+            <div
+              key={`group-${i}`}
+              style={{
+                padding: '10px',
+                background: 'hsl(var(--card-bg))',
+                border: '2px dashed hsl(var(--border-color))',
+                borderRadius: '12px',
+                fontSize: '32px',
+                maxWidth: '180px',
+                display: 'flex',
+                flexWrap: 'wrap',
+                justifyContent: 'center',
+                gap: '6px',
+              }}
+            >
+              {renderEmojiNumber(group_a, emoji)}
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
 
   if (operation === 'subtraction') {
     const remaining = Math.max(0, group_a - group_b);

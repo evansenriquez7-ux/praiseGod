@@ -212,7 +212,10 @@ def format_true_false(ctx: QuestionContext, rng: random.Random) -> FormattedProb
                     statement = f"Count {b} {plural_name} by repeated addition: {terms} = {fill_value}."
                 else:
                     unit = "group" if b == 1 else "groups"
-                    statement = f"There are {b} {unit} of {a}. By repeated addition, {terms} = {fill_value}."
+                    # "There are 1 group of 1" -- the noun was pluralized and the verb was not.
+                    # One sentence, four copies (doc_rem.md R2); all four say it the same way.
+                    was = "is" if b == 1 else "are"
+                    statement = f"There {was} {b} {unit} of {a}. By repeated addition, {terms} = {fill_value}."
             elif values.get("task_type") == "repeated_addition" and blank_target in ("result", "total"):
                 terms = " + ".join([str(a)] * b)
                 statement = f"{terms} = {fill_value}"

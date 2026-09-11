@@ -9919,3 +9919,329 @@ $ pytest tests/unit -q                  423 passed, 1 skipped
 $ validate_census                       mutations=72 (floor 72)
 $ run_all --phase 2  contract checks    contract_doc / operator_doc / two_direction: PASS
 ```
+
+---
+
+## 2026-09-11 — Three media MATATAG names that the pipeline did not render
+
+Three competencies name a medium in their own words and the pipeline rendered something
+else, or rendered text *describing* the medium instead of the medium. Under Content Rule 4
+building them is the fix, not scope creep. Owner ruling of the same date confirmed the
+first; the other two are the clauses' own wording.
+
+### A. "Which statement is true?" replaces a permanently wrong fourth option
+
+Every `compare_pair` item in the tree offered **cannot be determined** as a fourth MCQ
+option. A blind reviewer FAILed `mat_g1_na_q1_3` on `cognitive_capacity` for it: a
+permanently wrong abstraction at Grade 1 Quarter 1, which a pupil eliminates without
+comparing anything. It could not simply be deleted — `validate_matrix` requires exactly 4
+MCQ options and the sign space {>, <, =} holds three, so a filler is structurally forced.
+
+Built instead: the item asks which STATEMENT is true, over four comparison statements of
+which exactly one is.
+
+```
+before  Ana has 10 seashells. Jose has 12 seashells. Which sign correctly compares the two amounts?
+        options: < / > / cannot be determined / =
+after   Ana has 10 seashells. Jose has 12 seashells. Which statement is true?
+        options: 10 > 12 / 12 < 10 / 10 = 12 / 10 < 12        key 10 < 12
+```
+
+The sign remains the DNA's keyed answer: `fmt_cloze` fills `{a} ___ {b}` with it and
+`fmt_true_false` claims it, so only `fmt_mcq` — the one formatter that shows four whole
+options — switches presentation. Three details the build had to get right:
+
+1. **The equal case cannot be written from {a, b} alone.** `a == b` collapses every
+   statement over the pair onto three distinct strings, so the fourth brings in a
+   neighbouring value inside the node's own range (`2 = 2` true; `2 > 3`, `2 < 2`,
+   `2 > 2` false).
+2. **A word problem needs its own wording.** The DNA's narrative ends on *which sign*,
+   which four whole statements do not answer. It now supplies both endings, and fmt_mcq
+   RAISES (naming node and seed) if the statement wording is missing rather than serving a
+   stem its own options contradict. Mutation `compare_pair_asks_for_a_sign_and_offers_statements`
+   plants exactly that state; §1C catches it.
+3. **`fmt_true_false`'s `comparing_ordering` branch still holds.** Its fill slot is
+   restricted to a real sign; the distractor pool is now two signs, both of that shape.
+   Re-rendered across the tree: no `20 cannot be determined 13`, and no 3-option MCQ.
+
+Cloze now offers three options rather than four — the complete sign space, no filler. The
+4-option rule is contract and was not touched: it applies to `format == "mcq"` or
+`answer_collection == "mcq"`, and cloze collects `fill_in_blank`.
+
+### B. Equal jumps on a number line (`mat_g2_na_q3_1`)
+
+The competency names four media; arrays were served by `GridArea` and the jumps rendered as
+TEXT describing a line that was never drawn. All four parts of the fix were needed:
+
+* `NumberLineParams` gains `jump_from` / `jump_size` / `jump_count` (optional: every other
+  number line takes no jumps, and a `set` payload must not carry them — a drawn run ENDS on
+  the value the pupil is asked to place, so the formatter strips them in set mode).
+* `NumberLineInteractive` draws one SVG arc per jump, labelled with the jump size.
+* `fmt_number_line` gains a multiplication branch — **params AND stem**, per the lesson
+  `fmt_peso_money` and this formatter's own money branch each paid for. Without the stem
+  branch the generic "What number is marked?" would have replaced the question. Three
+  stems, one per sub-skill (`number_line_jumps`, `skip_counting`, `repeated_addition`).
+* `COMPATIBILITY["multiplication"] += number_line_read`, scoped in
+  `FORMATTER_VARIANT_SUPPORT` to those three task types and `context: pure`.
+
+**The scoping had to name all three task types, not just `number_line_jumps`.**
+`formatter_refused_at_node` is ALL-not-ANY, and `mat_g2_na_q3_1` binds task_type to all
+three at once — supporting one of the three would have made the formatter unavailable on
+the only node whose competency names it. Same shape for `emoji_pictorial`. The regenerated
+`_generated_formatter_exclusions.py` is the measurement: both new formatters are excluded
+from every multiplication node except the two whose competencies name them.
+
+The axis carries one tick per jump (so the line itself counts by multiples — the same
+clause's "counting by multiples") and runs one jump past the landing point, so the answer
+is never simply the end of the line. The dot stays at the start.
+
+### C. Groups of equal quantities (`mat_g2_na_q3_0`, `mat_g2_na_q3_1`)
+
+`fmt_emoji_pictorial` hard-coded
+
+```python
+operation = ctx.dna_concept if ctx.dna_concept in ("addition", "subtraction") else "addition"
+```
+
+so on a multiplication node it drew `a + b` items beside an answer of `a x b` — a picture
+contradicting its own key. Declaring the pair compatible first would have shipped that.
+The silent default is now an explicit branch per concept, and an unhandled concept RAISES.
+The component draws `group_b` boxes of `group_a` items, which is the model the clause names
+("5 groups of 3"); one undivided heap of `a*b` would not be.
+
+Stem language is group-only: `multiplication`, `product` and `times` are all NOT_YET_KNOWN
+at `mat_g2_na_q3_0`.
+
+### Also fixed on the way (root cause, all instances)
+
+* **Negative options on a number line.** `fmt_number_line` never filtered negative
+  ErrorPattern distractors, though `fmt_mcq` and `fmt_cloze` have both carried that guard
+  since blind review flagged -34/-14/-3 elsewhere. Measured before the fix: `-1` on
+  `mat_g1_na_q3_0`, `-50`/`-500` on `mat_g3_na_q2_5`.
+* **"There are 1 group of 1".** The noun was pluralized and the verb was not, in all four
+  copies of that sentence (`fmt_mcq`, `fmt_true_false`, `fmt_error_detect`,
+  `base_generator` — doc_rem.md R2's duplication). All four now say it the same way.
+
+### What gates each of the three, and what does not
+
+| Built | Gated by | Proven by |
+|---|---|---|
+| statement options | §1C execution (fmt_mcq refuses a stem its options contradict) | `compare_pair_asks_for_a_sign_and_offers_statements` |
+| the jumps EXIST | `tests/unit/test_media_the_competency_names.py` | `number_line_drops_its_jumps` |
+| the jumps are CONSISTENT | §1G (a declared run must land on the keyed value) | `number_line_jumps_land_elsewhere` |
+| the emoji picture's arithmetic | §1E answer-key integrity | `emoji_pictorial_draws_a_different_operation` |
+
+### The finding the full table produced: §9 had no working mutation, and had not since 950bc9a8
+
+Running the FULL table after the content work (Command 9's own warning: a `--only` run
+cannot detect a fixture your own content work invalidated) produced three findings, of
+which only the first two are mine:
+
+1. **`answer_corruption` and `missing_correct_answer` both anchored on the fmt_mcq line I
+   changed** (`correct_answer=ctx.correct_answer` became `correct_answer=correct`). The
+   harness REFUSED to run rather than scoring a plant it never applied. Both repointed.
+2. **`unrenderable_visual_payload` and `visual_payload_drops_required_key` SURVIVED** — §9's
+   only two mutations, so `render_contract_9` and `render_contract_floor_9` were both
+   unproven. This is NOT mine. Measured in a pristine worktree at `950bc9a8`:
+
+```
+$ cd /tmp/ccmed_baseline && python -m tests.mutation_harness --only unrenderable_visual_payload
+  FAIL  unrenderable_visual_payload §9 (the payload must be renderable by the component the student sees)
+0/1 mutations detected.
+$ cd /tmp/ccmed_baseline && python -m tests.mutation_harness --only visual_payload_drops_required_key
+  FAIL  visual_payload_drops_required_key §9 render contract (payload carries every key the component reads)
+0/1 mutations detected.
+```
+
+   The cause is the second of the two the Scaling Mandate names — the anchor moved out from
+   under the check, not the check breaking. Both plants dropped a key the old HAND-WRITTEN
+   `REQUIRED_KEYS` map listed and the components never read: `total_value` is not read by
+   `PlaceValueBlocksInteractive` at all (its derived contract is `required: []`, so §9 can
+   enforce nothing on that visual type), and `total_wholes` is not read by
+   `FractionModelInteractive`. The commit that derived the contract from the AST was right
+   to stop requiring them — and silently blinded its own gate's proofs in the same move.
+
+   Repointed onto keys the components genuinely read AND the Pydantic model does not
+   require (the second condition matters: where §4 requires the key too, generation raises
+   and §9 never sees a payload — measured, see Named limit 2):
+
+```
+$ python -m tests.mutation_harness --only visual_payload_drops_required_key
+    DETECTED: exit 1 — FAIL render_contract_floor_9: 6 broken renders exceeds floor 0   [FractionModel / interaction_mode]
+$ python -m tests.mutation_harness --only unrenderable_visual_payload
+    DETECTED: exit 1 — FAIL render_contract_9: 2 finding(s) on ['mat_g2_na_q3_4']        [GridArea / shaded]
+```
+
+   **This is why the §7 `mutations` floor counts mutations and §8 counts assertions.**
+   Neither would have noticed: §8 saw two mutations naming the two §9 labels and called
+   them proven; the census saw 72 mutations and called the suite intact. Only running them
+   says whether they still land. The prompt for this work stated the table at 72/72
+   detected at `950bc9a8`; the measured figure was 70/72, with the two that guard the
+   pupil's actual render among the failures.
+
+### Named limits (Scaling Mandate 6)
+
+1. **§9 cannot enforce the jump keys.** The component reads `jump_count`/`jump_size` inside
+   a branch, so `extract_visual_contract.mjs` classifies them CONDITIONAL, and §9 enforces
+   unconditional keys only — its own named limit, now with a payload that depends on it.
+   That is why their ABSENCE is gated by a unit test rather than by a § check. Do not read
+   the §9 PASS as covering them.
+2. **§9 could not be shown catching an unserved key on either new payload, because §4
+   catches it first.** Planting `params.pop("group_b")` in the emoji payload fails at the
+   Pydantic model (`EmojiPictorialParams.group_b Field required`) before §9 sees a payload;
+   dropping all three arms of NumberLine's required GROUP likewise fails at
+   `NumberLineParams.correct_position`. Both verbatim below. On these two visual types
+   every unconditionally-read component key is also schema-required, so §9 is the weaker of
+   the pair here — not an additional guarantee.
+3. **§5 cannot see the picture.** The blind packet carries stem, key and options only, so a
+   reviewer's verdict on a medium is a verdict on the text that describes it. The clause
+   attestation that COULD judge the drawn artifact is §6F, deferred under D-1.
+4. **The capability providers for both clauses are still wrong, and were left that way.**
+   `CAPABILITY_PROVIDERS['equal_jumps_on_a_number_line']` lists
+   `['array_grid_read', 'array_grid_set', 'cloze', 'error_detect', 'mcq', 'true_false']` —
+   a clause naming a NUMBER LINE provided by an array and three text formatters, which §6D
+   passes because an array is not a generic textual family. `groups_of_equal_quantities`
+   carries the identical row. `number_line_read` and `emoji_pictorial` now genuinely provide
+   them; registering that is §6 work and D-1 defers it. Named here so the next agent can do
+   it in one edit.
+5. **The drawn run of jumps ends on the answer's tick, and every tick is labelled.** That is
+   deliberate — it is the model the clause names, and it is the same property
+   `array_grid_read` has always had (the pupil can count the squares). It is a judgment
+   call, not an oversight; a reviewer who disagrees should say so against these renders.
+
+### Evidence
+
+Baseline re-measured first, on the tree at `950bc9a8` (the prompt's figures are not trusted
+on their own — §2's own instruction):
+
+```
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.run_all --phase 1
+PHASE 1 PASSED SUCCESSFULLY!                                              EXIT 0
+  PASS assertion_coverage_8: 65/104 harness assertions proven (39 knowingly unproven)
+  PASS census: nodes=151 · unit_tests=424 (floor 419) · mutations=72 (floor 72) · variant_candidates=975 (floor 975)
+  PASS render_contract_floor_9: 0 broken renders (floor 0)
+  PASS formatters_reachable (35 (node, formatter) pair(s), floor 37)     <- floor carrying 2 of headroom
+$ ... validate_judgment --all
+Verdicts over 151 reviewed nodes: PASS=14 CONCERN=95 FAIL=42 UNKNOWN=0
+Judgment review validation: 473 problem(s) found.                          0 stale
+```
+
+After the three builds, on a clean tree with no edits in flight:
+
+```
+$ python -m ...run_all --phase 1
+PHASE 1 PASSED SUCCESSFULLY!                              EXIT 0
+  PASS §1H applicability (all 151 nodes ran every check their composition makes applicable)
+  PASS capability_contract (Phase 1: 5 findings, floor 5 -- unchanged by this work)
+  PASS render_contract_floor_9: 0 broken renders (floor 0)
+  PASS formatters_reachable (35 (node, formatter) pair(s), floor 35)
+  PASS assertion_coverage_8: 65/104 proven, 39 knowingly unproven
+  PASS contract_doc_matches_registry / operator_doc_covers_registry / two_direction_contract_match
+$ python -m tests.mutation_harness                       76/76 mutations detected.
+$ python -m pytest tests/unit -q                         427 passed, 1 skipped, 2 deselected in 79.87s
+$ python -m ...validate_matrix --node mat_g2_na_q3_1     Total Failures Observed: 0
+$ python -m ...validate_matrix --node mat_g2_na_q3_0     Total Failures Observed: 0
+$ python -m ...validate_matrix --node mat_g1_na_q1_3     Total Failures Observed: 0
+$ python -m ...validate_compat                           13/13 check groups passed
+$ python -m ...validate_render --node-ids <the 9 touched nodes>
+                                                         PASS render_contract_9: 0 findings on 9 node(s)
+$ python -m ...validate_census                           unit_tests=428 (floor 425) · mutations=76 (floor 76)
+$ python -m scripts.regen_formatter_exclusions           228 exclusions across 92 nodes
+$ node tests/frontend/extract_visual_contract.mjs ...    NumberLine conditional += jump_count, jump_size
+                                                                    optional    += jump_from
+```
+
+The four new mutations, each caught BY NAME:
+
+```
+emoji_pictorial_draws_a_different_operation   DETECTED — [1/1] Checking mat_g2_na_q3_0 ...  FAIL
+    §1E answer-key integrity (the picture's arithmetic is the item's)
+number_line_drops_its_jumps                   DETECTED — test_multiplication_number_line_carries_its_jumps
+    the payload draws the medium mat_g2_na_q3_1 names        (unit test, not a § check — see Named limit 1)
+number_line_jumps_land_elsewhere              DETECTED — [1/1] Checking mat_g2_na_q3_1 ...  FAIL
+    §1G visual payload (the picture agrees with its own answer)
+compare_pair_asks_for_a_sign_and_offers_statements  DETECTED — [1/1] Checking mat_g1_na_q1_3 ...  FAIL
+    §1C execution (a formatter refuses a stem its options cannot answer)
+```
+
+The components were RENDERED, not read. `vite build --ssr` + `renderToStaticMarkup` over
+payloads taken from the live pipeline:
+
+```
+--- equal jumps, mat_g2_na_q3_1 seed 42 | Start at 0 and take 2 equal jumps of 5 on the number line...
+    NumberLineInteractive: 2953 chars, <path> arcs: 2, jump labels: +5 +5
+      path: M 0 46 Q 16.666666666666664 2 33.33333333333333 46
+      path: M 33.33333333333333 46 Q 49.99999999999999 2 66.66666666666666 46
+--- equal jumps, mat_g2_na_q3_1 seed 64 | The arrows show counting by 10s on the number line...
+    NumberLineInteractive: 2956 chars, <path> arcs: 2, jump labels: +10 +10
+--- groups of equal quantities, mat_g2_na_q3_0 seed 603
+    EmojiPictorialInteractive: 1422 chars, dashed group boxes: 3, emoji drawn: 9
+--- subtraction emoji (UNCHANGED path), mat_g1_na_q3_0 seed 48
+    EmojiPictorialInteractive: 1454 chars, dashed boxes: 0, emoji drawn: 10
+--- a number line with NO jumps (UNCHANGED path)
+    NumberLineInteractive: 4247 chars, <path> arcs: 0
+$ node frontend/node_modules/.bin/eslint frontend/src/components/VisualSkeletons.jsx
+✖ 44 problems (0 errors, 44 warnings)      all pre-existing; the file had 44 before this change
+```
+
+The §9 enforcement demonstration asked for, and what it actually showed:
+
+```
+$ plant params.pop("group_b") in the emoji payload; run validate_render --node-ids mat_g2_na_q3_0,mat_g2_na_q3_1
+exit: 0    PASS render_contract_9: 0 findings on 2 node(s)
+    -- because generation raises first:
+    pydantic_core._pydantic_core.ValidationError: 1 validation error for EmojiPictorialParams
+    group_b  Field required [type=missing, ...]
+$ plant removal of dot_value/value/correct_position from the jumps payload; run the auditor on mat_g2_na_q3_1
+exit: 1    24 findings — all `pipeline_error`, i.e. NumberLineParams.correct_position raising, not a contract finding
+```
+
+§5 accounting, in three measurements:
+
+```
+baseline                 473 findings   0 stale   PASS=14 CONCERN=95 FAIL=42
+after the generators     512 findings  39 stale   (8 mat_g1_na_q1_3 · 10 mat_g2_na_q3_0 · 13 mat_g2_na_q3_1 · 8 mat_g3_na_q1_5)
+after the re-review      481 findings   0 stale   PASS=14 CONCERN=93 FAIL=44
+```
+
+Six nodes re-reviewed blind under an identity the dispatcher assigned
+(`reviewer-media-slate-tamarind-8817`), filed from the DISPATCH-TIME skeletons:
+
+| node | overall before -> after | findings |
+|---|---|---|
+| mat_g1_na_q1_3 | FAIL -> FAIL | 3 -> 4 |
+| mat_g1_na_q3_0 | CONCERN -> CONCERN | 3 -> 6 |
+| mat_g2_na_q3_0 | CONCERN -> FAIL | 4 -> 5 |
+| mat_g2_na_q3_1 | CONCERN -> CONCERN | 3 -> 4 |
+| mat_g3_na_q1_5 | CONCERN -> FAIL | 3 -> 3 |
+| mat_g3_na_q2_5 | FAIL -> FAIL | 5 -> 7 |
+
+**None of the six passed before and none passes now, and the fresh reviewer was harsher
+than the one it replaced.** That is the honest outcome and it is worth stating plainly
+rather than reporting the three builds as a win.
+
+**And §5 cannot be used to show the media were built.** `mat_g2_na_q3_1`'s
+`comprehensive_coverage` was already PASS in the review this one replaces
+(`reviewer-c4-pumice-lovage-6370`), whose rationale reads *All four representations the
+wording enumerates are actually generated: arrays to read, rectangles to shade, counting
+by multiples spelled out term by term, and equal jumps starting at zero on a number line*
+-- written while the number line drew no jumps at all. The new review scores that item
+PASS too, and for the same reason: the packet carries stems, keys and options, and a stem
+SAYING equal jumps is indistinguishable, on that surface, from a picture that draws them.
+The earlier FAIL quoted in `registry.py` (*None of the competency's named representations
+... appear anywhere in the eleven samples*) is from a round before that one, and was
+answered by the array formatters, not by this work.
+
+So the §5 verdicts here re-earn the node's text; they are not evidence about the media.
+The evidence that the media exist is the executed render above, the unit test, and §1G --
+and the gate that could judge the drawn artifact against the clause is §6F, deferred under
+D-1. Named limit 3 is not a footnote to this section; it is the reason this section cannot
+report what it would otherwise be tempting to report.
+
+What the fresh reviewer found that the builds did NOT address, now live in §5's queue:
+an all-False true/false population on both comparison nodes (six of fourteen items keyed
+False, answerable without reading the numerals); `5 threes` never generated on
+`mat_g2_na_q3_0` though its competency names that wording; and `mat_g3_na_q2_5` rounding
+both operands to thousands regardless of proximity, so `5646 - 5190` is keyed 1000 against
+a true difference of 456. None is caused by this work; all three are now recorded against
+re-renderable samples.

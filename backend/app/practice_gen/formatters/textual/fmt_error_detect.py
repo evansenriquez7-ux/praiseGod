@@ -159,7 +159,10 @@ def _build_pure_equation(ctx: QuestionContext) -> str:
             if group_form == "plural_name":
                 return f"Count {b} {plural_name} by repeated addition: {terms} = {slot('result', 'total', value=r)}"
             unit = "group" if b == 1 else "groups"
-            return f"There are {b} {unit} of {a} ({terms}), so there are {slot('result', 'total', value=r)} in all."
+            # "There are 1 group of 1" -- the noun was pluralized and the verb was not.
+            # One sentence, four copies (doc_rem.md R2); all four say it the same way.
+            was = "is" if b == 1 else "are"
+            return f"There {was} {b} {unit} of {a} ({terms}), so there are {slot('result', 'total', value=r)} in all."
         if values.get("task_type") == "repeated_addition" and blank_target in ("result", "total"):
             terms = " + ".join([str(a)] * b)
             return f"{terms} = {slot('result', 'total', value=r)}"

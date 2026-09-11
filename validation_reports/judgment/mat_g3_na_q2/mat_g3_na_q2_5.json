@@ -1,6 +1,6 @@
 {
   "node_id": "mat_g3_na_q2_5",
-  "reviewed_by": "reviewer-c6-mistral-comfrey-8916",
+  "reviewed_by": "reviewer-media-slate-tamarind-8817",
   "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
@@ -293,27 +293,27 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "FAIL",
-      "rationale": "Several keyed estimates are not estimates of the quantity asked about. The item reading 'Estimate the difference: 5646 − 5190' is keyed 1000 when the two numbers differ by 456, and the pair 3540 and 1433, which differ by 2107, is keyed 3000. An answer certified as correct while overshooting the true difference by more than double teaches a pupil that estimation need not resemble the answer."
+      "rationale": "Several keys are not reasonable estimates of the difference they claim to estimate. Seed 600 turns 5646 less 5190 into 1000 when the actual gap is 456, and seed 603 gives 3000 where the true difference is 2107, because both numerals are rounded to thousands no matter how near each other they sit. An estimate that exceeds the quantity by more than double does not fulfil the verb."
     },
     "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "The stated scope reaches down to numbers of fewer digits, yet only the 540 and 137 sample works below four digits in the minuend. Every other case is a four-digit minuend, so the smaller end of the up-to-four-digit range is barely touched."
+      "verdict": "FAIL",
+      "rationale": "Only seed 43 rounds anywhere other than the thousands place. No sampled item estimates a four digit pair to the nearest ten or to the nearest hundred, so the whole competency has been narrowed to a single rounding rule applied mechanically, and the sub-cases a pupil most needs are absent."
     },
     "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Read purely as a reading and load question, one rounding step and one subtraction of round numbers is well within this quarter, and the approximation symbol is introduced consistently in every shell that uses it."
+      "verdict": "CONCERN",
+      "rationale": "Vocabulary and sentence length suit Grade 3, but the demand sits below grade because no estimating is needed to answer. At seeds 42, 601 and 603 the choices are the key plus values one or two away from it, so the round number is identifiable on sight and the arithmetic can be skipped entirely."
     },
     "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "Four shells are used, which is better than a single template, but not one sample puts estimation to any purpose; there is no situation where a rough answer would be the sensible thing to want, only naked expressions to approximate."
+      "verdict": "FAIL",
+      "rationale": "Not one of the fifteen samples places the task in a context; every stem is a bare pair of numerals or a restatement of one. On top of that the four error detect items, seeds 48, 502, 602 and 604, all report the pupil as correct, so neither a situational variant nor a fault finding variant is genuinely present."
     },
     "competency_alignment": {
-      "verdict": "CONCERN",
-      "rationale": "Choice sets cluster one or two units around the key, so the only round-looking option is always the right one. That means the progression is not building judgment about how much to round; it is rewarding the recognition of a tidy number."
+      "verdict": "FAIL",
+      "rationale": "What varies between seeds 43, 501 and 500 is the magnitude of the numerals, not the estimating judgement, and the distractor construction visible at seeds 501, 600 and 603 keeps the key as the only round value throughout. Nothing in the progression develops choosing a rounding place or checking whether a rounded result is sensible."
     },
     "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "Minuends stay within four digits, topping out around 9413, and no estimate exceeds the range a Grade 3 subtraction objective works in."
+      "verdict": "CONCERN",
+      "rationale": "Values do stay inside four digits, from 90 at seed 604 up to 9413 at seed 500. The problem is the pairing: seeds 48, 602 and 604 set a four digit first numeral against a two or three digit second one, so under the thousands rule the smaller number rounds away to nothing and the answer is simply the larger number rounded."
     }
   },
   "overall": "FAIL"

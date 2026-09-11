@@ -44,7 +44,12 @@ CENSUS_FLOORS = {
     # 423 collected 2026-09-10 (was 412), +11 from test_attestation_freshness.py, which
     # pins §6F's branch ORDER and the half of its answer comparison that NARROWS -- the
     # same reason test_judgment_answer_resolution.py exists, one gate over.
-    "unit_tests": 419,
+    # 428 collected 2026-09-11 (was 424 at the previous ratchet's measurement), +4 from
+    # test_media_the_competency_names.py. Those four are the ONLY gate on the equal-jumps
+    # payload's existence: the component reads jump_count/jump_size inside a branch, so
+    # the derived frontend contract classes them conditional and §9 enforces unconditional
+    # keys only. Ratcheted to the real number less a little churn, as above.
+    "unit_tests": 425,
     # 56 registered 2026-09-09 (was 51, 50, 48, 37). Four prove §8's own directions, one
     # §2C at (node, formatter) granularity, two the §6 phase seam, one that every contract
     # check declares the phase it runs in, four the §6 Phase 1 band (§6A/§6B/§6C/§6E, which
@@ -74,7 +79,13 @@ CENSUS_FLOORS = {
     # that makes owner ruling R-5 machine-checkable -- added while its count was zero.
     # 72 registered 2026-09-11 (was 71): +1 for the frontend visual contract, now derived
     # from the component AST instead of a hand-written key map that had drifted 35 keys.
-    "mutations": 72,
+    # 76 registered 2026-09-11 (was 72): +4 for the three media a competency names and the
+    # pipeline did not render. Two prove labels that already had a mutation
+    # (`answer_key_integrity`, `visual_payload`) and so are invisible to §8, which counts
+    # assertions rather than mutations -- this floor is the only thing that notices if
+    # either is deleted. One is caught by a unit test rather than any § check, which is
+    # itself the finding it records.
+    "mutations": 76,
     # 983 observed 2026-09-08. How many (variant, value) pairs the blind-review packets
     # will actually demonstrate across the tree.
     #

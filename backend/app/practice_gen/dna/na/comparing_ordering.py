@@ -157,7 +157,34 @@ def generate_params(
         numbers = [a, b]
         answer = _compare_symbol(a, b)
         distractors = [o for o in [">", "<", "="] if o != answer]
-        distractors.append("cannot be determined")
+        # A fourth option is structurally forced -- validate_matrix requires exactly
+        # four MCQ options -- and the sign space {>, <, =} holds three, so this line
+        # used to append "cannot be determined": a permanently wrong abstraction that
+        # a Grade 1 pupil eliminates without comparing anything (blind review of
+        # mat_g1_na_q1_3, cognitive_capacity FAIL). Owner ruling 2026-09-11: ask which
+        # STATEMENT is true instead, over four comparison statements of which exactly
+        # one is. That is a change of PRESENTATION -- "compare two numbers" is still
+        # the whole of what is asked.
+        #
+        # The sign stays this DNA's keyed answer, because two other formatters need it
+        # in that shape: fmt_cloze fills "{a} ___ {b}" with it and fmt_true_false
+        # claims it. So the statements ride alongside the sign rather than replacing
+        # it, and the formatter that offers four whole options (fmt_mcq) uses them.
+        statement = f"{a} {answer} {b}"
+        statement_distractors = [f"{a} {s} {b}" for s in (">", "<", "=") if s != answer]
+        if a != b:
+            # The same comparison written the other way round is false whenever the
+            # two numbers differ: 10 < 12 is true, 12 < 10 is not.
+            statement_distractors.append(f"{b} {answer} {a}")
+        else:
+            # a == b collapses every statement over {a, b} onto three distinct strings
+            # ("5 > 5", "5 < 5", "5 = 5"), so the fourth has to bring in a neighbouring
+            # value. It stays inside this node's own range and is still a comparison of
+            # two whole numbers, which is exactly what the competency names.
+            neighbour = a + 1 if a + 1 <= effective_max else a - 1
+            statement_distractors.append(
+                f"{a} > {neighbour}" if neighbour > a else f"{a} < {neighbour}"
+            )
 
     elif task_type == "order_set":
         sz_lo, sz_hi = bounds["set_size"]
@@ -240,6 +267,11 @@ def generate_params(
         "b": numbers[1] if len(numbers) > 1 else None,
         "distractors": distractors,
     }
+    if task_type == "compare_two":
+        # Read by fmt_mcq only (see the statement block above). Every other formatter
+        # keeps answering with the sign.
+        result_dict["statement"] = statement
+        result_dict["statement_distractors"] = statement_distractors
     if task_type == "order_set":
         # fmt_ordering.py's primary sequence-resolution path reads
         # ctx.values["sequence"] (a plain list of the raw numbers to sort).
@@ -308,6 +340,14 @@ def generate_params(
             result_dict["question"] = (
                 f"{actor} has {a} {a_word}. {friend} has {b} {b_word}. "
                 f"Which sign correctly compares the two amounts?"
+            )
+            # The same narrative asked the way the four-statement presentation
+            # answers it. fmt_mcq offers whole statements ("10 < 12"), which do not
+            # answer "which sign", so a word problem served as MCQ needs this ending
+            # instead; cloze and true_false keep the sign wording above.
+            result_dict["question_statement"] = (
+                f"{actor} has {a} {a_word}. {friend} has {b} {b_word}. "
+                f"Which statement is true?"
             )
 
     return result_dict

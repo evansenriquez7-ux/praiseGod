@@ -111,10 +111,24 @@ def _build_params(
         operation = "counting"
         a = ctx.correct_answer
         b = 0
-    else:
-        operation = ctx.dna_concept if ctx.dna_concept in ("addition", "subtraction") else "addition"
+    elif ctx.dna_concept in ("addition", "subtraction", "multiplication"):
+        # This read "ctx.dna_concept if ctx.dna_concept in ('addition', 'subtraction')
+        # else 'addition'" -- a silent default that drew `a + b` items beside an answer
+        # keyed `a x b` the moment this formatter was pointed at a multiplication node.
+        # The picture and the key contradicting each other is the one defect a
+        # PICTORIAL model cannot survive, so an unhandled concept fails loudly instead:
+        # a formatter that has no branch for a DNA does not render that DNA, it renders
+        # something else (the same lesson fmt_number_line's money branch records).
+        operation = ctx.dna_concept
         a = values.get("a", 3)
         b = values.get("b", 2)
+    else:
+        raise ValueError(
+            f"emoji_pictorial has no pictorial model for concept {ctx.dna_concept!r} "
+            f"(node={ctx.node_id}, seed={ctx.seed}). Add the branch that draws it "
+            f"before declaring the pair compatible -- defaulting to 'addition' draws a "
+            f"picture that contradicts the item's own answer key."
+        )
     
     # Select random emoji
     emoji = rng.choice(_ALL_EMOJIS)
@@ -128,6 +142,14 @@ def _build_params(
     # Build the display strings (capped to prevent massive JSON payloads and UI clutter)
     display = (emoji * a) if a <= 20 else f"(Large group of {a} {_pluralize(base_name, a)})"
     if a == 0: display = "0"
+
+    if operation == "multiplication":
+        # b groups of a. "5 groups of 3" is mat_g2_na_q3_0's own wording and
+        # mat_g2_na_q3_1 names "groups of equal quantities" outright, so the groups --
+        # not one undivided heap of a*b items -- are the model the clause asks for.
+        one_group = (emoji * a) if a <= 20 else f"(group of {a} {_pluralize(base_name, a)})"
+        display = "   ".join([one_group] * b) if b <= 10 \
+            else f"({b} groups of {a} {_pluralize(base_name, a)})"
 
     if operation == "addition":
         display_b = (emoji * b) if b <= 20 else f"(Large group of {b} {_pluralize(base_name, b)})"
@@ -171,6 +193,8 @@ def _correct_answer(params: dict) -> int:
         return a + b
     elif params["operation"] == "subtraction":
         return a - b
+    elif params["operation"] == "multiplication":
+        return a * b
     else:  # counting
         return a
 
@@ -202,6 +226,14 @@ def _generate_distractors(
     if operation == "addition":
         if a >= b:
             distractors.add(a - b)
+    elif operation == "multiplication":
+        # Added the groups instead of counting them all (a + b), and miscounted the
+        # groups by one in either direction -- the two misconceptions an equal-groups
+        # picture actually produces. `distractors` already carries a and b themselves
+        # ("counted one group only", "counted the groups").
+        distractors.add(a + b)
+        distractors.add(correct - a)
+        distractors.add(correct + a)
     else:
         distractors.add(a + b)
 
@@ -260,6 +292,16 @@ def _build_question_text(params: dict, context_variant: str = "word_problem") ->
         # Line 3: Question
         line3 = f"How many total {name_plural} are there?"
         
+    elif operation == "multiplication":
+        # Group language only. "multiplication", "product" and "times" are all
+        # NOT_YET_KNOWN at mat_g2_na_q3_0, whose competency is stated entirely in
+        # groups ("5 groups of 3", "5 threes"), so the stem names what is drawn and
+        # asks for the total.
+        unit = "group" if b == 1 else "groups"
+        line1 = group_a_str
+        line2 = f"There {'is' if b == 1 else 'are'} {b} {unit} of {a} {name_a}."
+        line3 = f"How many {name_plural} are there in all?"
+
     elif operation == "subtraction":
         # Line 1: Show starting amount
         if a == 0:

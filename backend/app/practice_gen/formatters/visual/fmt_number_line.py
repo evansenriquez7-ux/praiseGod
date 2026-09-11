@@ -413,6 +413,54 @@ def _build_addition_params(values: dict, grade: int, rng: random.Random) -> dict
         "divisions": divisions,
     }
 
+def _build_multiplication_params(values: dict, seed: int) -> dict:
+    """
+    Build number-line params for multiplication drawn as EQUAL JUMPS.
+
+    mat_g2_na_q3_1 names four media -- "concrete and pictorial models and numerals,
+    ... groups of equal quantities, arrays, counting by multiples, and equal jumps on
+    a number line". Arrays were served by GridArea; the jumps were described in words
+    over a line that never showed them ("Starting at 0, taking 2 equal jumps of 9 on
+    the number line lands on ___", drawn as a bare dot). The picture IS what the
+    clause names, so the payload declares the jumps and the component draws one arc
+    each.
+
+    `a` is the size of one jump and `b` how many are taken, matching this DNA's own
+    group wording ("There are {b} groups of {a}"). The axis carries one tick per jump
+    -- so the line itself counts by multiples of `a`, the same clause's "counting by
+    multiples" -- and runs one jump past the landing point, so the answer is never
+    simply the end of the line.
+    """
+    a = int(values["a"])
+    b = int(values["b"])
+    if a < 1 or b < 1:
+        # Fail loudly rather than drawing an empty axis: start == end would also trip
+        # §1G, but with a message about an axis rather than about the jumps.
+        raise ValueError(
+            f"number_line cannot draw {b} equal jump(s) of {a} (seed {seed}): a jump of "
+            f"nothing, or no jumps at all, renders an empty line."
+        )
+    start = 0
+    end = a * (b + 1)
+    return {
+        "start": start,
+        "end": end,
+        "interval": a,
+        "minor_interval": a,
+        "major_interval": a,
+        "divisions": b + 1,
+        # The dot stays at the start. Pre-marking the landing point would answer the
+        # question the stem asks.
+        "dot_value": start,
+        "value": a * b,
+        "correct_position": a * b,
+        "content_type": "whole_number",
+        "jump_from": start,
+        "jump_size": a,
+        "jump_count": b,
+    }
+
+
 def _build_subtraction_params(values: dict, grade: int, rng: random.Random) -> dict:
     """
     Build number line params for subtraction problems.
@@ -537,6 +585,12 @@ def format_number_line(
     elif ctx.dna_concept == "subtraction" and "a" in values and "b" in values:
         # Build subtraction-specific number line with hops
         vp = _build_subtraction_params(values, ctx.grade, rng)
+    elif ctx.dna_concept == "multiplication" and "a" in values and "b" in values:
+        # Equal jumps. Like the money branch below, this has to exist BEFORE the
+        # formatter may be declared compatible with the DNA: without it multiplication
+        # falls through to the generic "mark this number" path, which takes its target
+        # from values["answer"] -- a line with the product already marked on it.
+        vp = _build_multiplication_params(values, ctx.seed)
     elif ctx.dna_concept == "money_peso" and "a" in values and "b" in values:
         # Money on a number line. `money_peso` computes either an addition
         # ("add_amounts") or a subtraction ("find_change"), and a peso amount is a
@@ -659,14 +713,37 @@ def format_number_line(
     if interaction_mode == "set":
         # In set mode, start the dot at the start of the range to prevent answer leak
         vp["dot_value"] = vp.get("start", 0)
+        # Same reason, for the same payload: a drawn run of jumps ENDS on the value the
+        # pupil is being asked to place, so a "set" item may not carry one. (Only
+        # `number_line_read` is declared for multiplication today; this keeps the
+        # invariant with the payload rather than with the declaration table, which is
+        # where it would be lost the day `number_line_set` is declared too.)
+        for _jump_key in ("jump_from", "jump_size", "jump_count"):
+            vp.pop(_jump_key, None)
     else:
         if "dot_value" not in vp:
             vp["dot_value"] = vp.get("value", vp.get("correct_position"))
     
-    # For addition/subtraction/rounding, use context distractors; otherwise build from traps
+    # For addition/subtraction/multiplication/rounding, use context distractors;
+    # otherwise build from traps. Multiplication joins the list because its
+    # ErrorPatterns are the misconceptions this item is actually about -- added
+    # instead of multiplied (a + b), one group short (a*b - b), one group too many
+    # (a*b + b) -- while the trap builder below only knows about positions one
+    # division either side of the mark.
     seen = {str(correct_val)}
-    if ctx.dna_concept in ("addition", "subtraction", "rounding") and ctx.distractors:
-        distractor_vals = [d for d in ctx.distractors if d != correct_val][:3]
+    if ctx.dna_concept in ("addition", "subtraction", "multiplication", "rounding") and ctx.distractors:
+        # A Grade 1-3 pupil has not met numbers below zero, so a negative ErrorPattern
+        # value ("a - b" when b > a) is unreadable rather than tempting. fmt_mcq and
+        # fmt_cloze have each carried this guard for their own option pools since blind
+        # review flagged -34/-14/-3 across money, addition and multiplication; this
+        # formatter never had it, and offered -1 on mat_g1_na_q3_0 and -50/-500 on
+        # mat_g3_na_q2_5 (measured 2026-09-11). The padding loop below refills the slot
+        # from the axis.
+        distractor_vals = [
+            d for d in ctx.distractors
+            if d != correct_val and not (isinstance(d, (int, float))
+                                         and not isinstance(d, bool) and d < 0)
+        ][:3]
         for d in distractor_vals:
             seen.add(str(d))
     else:
@@ -784,6 +861,42 @@ def format_number_line(
             question_text = f"The dot is at {a} and it moves backward {b} {num_word}. Starting from {a}, just count back {b} {num_word}. Which number will the dot land on?"
         else:
             question_text = f"Show {a} − {b} on the number line."
+    elif ctx.dna_concept == "multiplication" and "a" in values and "b" in values:
+        # A visual formatter declared for a new DNA needs a STEM branch as well as a
+        # params branch, or the generic "What number is marked?" below silently
+        # replaces the question the item was generated to ask (fmt_peso_money and this
+        # formatter's own money branch each paid for that lesson on 2026-09-11).
+        a, b = values["a"], values["b"]
+        # "number line" is not introduced vocabulary at every node this can reach, and
+        # the picture is self-explanatory without its name -- same treatment as _stem().
+        where = " on the number line" if "number line" in set(ctx.cumulative_vocab) else ""
+        _mul_task_type = values.get("task_type")
+        if interaction_mode == "read":
+            # A jump count of 1 is rare but reachable (the DNA thins, rather than
+            # bans, its degenerate operands), and "After 1 jumps" is the same missing
+            # pluralization blind reviewers flagged across the tree.
+            jump_word = "jump" if b == 1 else "jumps"
+            if _mul_task_type == "skip_counting":
+                question_text = (
+                    f"The arrows show counting by {a}s{where}. "
+                    f"After {b} {jump_word}, which number do you land on?"
+                )
+            elif _mul_task_type == "repeated_addition":
+                terms = " + ".join([str(a)] * b) if b <= 5 else f"{a} added {b} times"
+                question_text = (
+                    f"The arrows show {terms}{where}. "
+                    f"Which number {'does the jump' if b == 1 else 'do the jumps'} land on?"
+                )
+            else:
+                question_text = (
+                    f"Start at 0 and take {b} equal {jump_word} of {a}{where}. "
+                    f"Which number do you land on?"
+                )
+        else:
+            # Unreachable today (only `number_line_read` is declared for
+            # multiplication) but the jumps are stripped from a "set" payload above,
+            # so the pupil is placing the landing point, not reading it.
+            question_text = f"Show {b} equal {'jump' if b == 1 else 'jumps'} of {a}{where}."
     elif ctx.dna_concept == "rounding":
         num = values.get("number", vp.get("value"))
         precision = values.get("round_to", 10)

@@ -95,7 +95,10 @@ def _build_pure_question(ctx: QuestionContext) -> str:
             if group_form == "plural_name":
                 return f"Count {b} {plural_name} by repeated addition ({terms}): how many in all?"
             unit = "group" if b == 1 else "groups"
-            return f"There are {b} {unit} of {a} ({terms}). How many in all?"
+            # "There are 1 group of 1" -- the noun was pluralized and the verb was not.
+            # One sentence, four copies (doc_rem.md R2); all four say it the same way.
+            was = "is" if b == 1 else "are"
+            return f"There {was} {b} {unit} of {a} ({terms}). How many in all?"
         if values.get("task_type") == "repeated_addition" and blank_target in ("result", "total"):
             terms = " + ".join([str(a)] * b)
             return f"{terms} = ___. What is {a} × {b}?"
@@ -209,6 +212,12 @@ def _build_pure_question(ctx: QuestionContext) -> str:
             return f"Order these numbers from least to greatest: {nums_str}"
         elif task_type == "find_between":
             return f"What number is between {a} and {b}?"
+        elif values.get("statement") is not None:
+            # compare_pair is offered as four whole comparison statements under MCQ
+            # (owner ruling 2026-09-11, see comparing_ordering.py), so the stem asks
+            # which of them is true. The numbers live in the options; repeating them
+            # here would make one option a copy of the stem.
+            return "Which statement is true?"
         else:
             # compare_two is keyed to a relation symbol; asking "which is
             # greater" invites a numeric answer and marks the correct one
@@ -241,7 +250,23 @@ def format_mcq(ctx: QuestionContext, rng: random.Random) -> FormattedProblem:
     """
     correct = ctx.correct_answer
     values = ctx.values or {}
-    
+
+    # comparing_ordering's compare_pair items are offered as four whole comparison
+    # statements ("10 < 12", "10 > 12", "10 = 12", "12 < 10"), exactly one of which is
+    # true -- owner ruling 2026-09-11, replacing the permanent "cannot be determined"
+    # fourth option. Only this formatter shows four whole options, so only this
+    # formatter switches presentation; the DNA still keys the sign for cloze and
+    # true_false.
+    use_statements = (
+        ctx.dna_concept == "comparing_ordering"
+        and values.get("statement") is not None
+        and bool(values.get("statement_distractors"))
+    )
+    distractor_pool = ctx.distractors
+    if use_statements:
+        correct = values["statement"]
+        distractor_pool = values["statement_distractors"]
+
     # Get context variant
     context_variant = values.get("context")
     if context_variant is None and ctx.difficulty_profile:
@@ -255,6 +280,22 @@ def format_mcq(ctx: QuestionContext, rng: random.Random) -> FormattedProblem:
     else:
         # Pure: use equation format
         question_text = _build_pure_question(ctx)
+
+    if use_statements and context_variant == "word_problem":
+        # The word-problem narrative reaches here ending on "Which sign correctly
+        # compares the two amounts?", which four whole statements do not answer. The
+        # DNA supplies the same narrative ending on the question these options DO
+        # answer. Absent, that is a contradiction between the item's own stem and its
+        # own options, so it fails rather than serving one.
+        question_statement = values.get("question_statement")
+        if not question_statement:
+            raise ValueError(
+                f"comparing_ordering served a word-problem compare_pair item with no "
+                f"'question_statement' (node={ctx.node_id}, seed={ctx.seed}). MCQ offers "
+                f"four comparison STATEMENTS; a stem asking which SIGN is correct asks a "
+                f"question its own options cannot answer."
+            )
+        question_text = question_statement
 
     # Collect candidate distractors — deduplicate and exclude correct answer
     if isinstance(correct, bool):
@@ -318,7 +359,7 @@ def format_mcq(ctx: QuestionContext, rng: random.Random) -> FormattedProblem:
         and not isinstance(correct, bool)
         and correct >= 0
     )
-    for d in ctx.distractors:
+    for d in distractor_pool:
         if d is None:
             continue
         d_str = str(d).strip().lower()
@@ -397,7 +438,7 @@ def format_mcq(ctx: QuestionContext, rng: random.Random) -> FormattedProblem:
         grade=ctx.grade,
         seed=ctx.seed,
         question_text=question_text,
-        correct_answer=ctx.correct_answer,
+        correct_answer=correct,
         distractors=distractors,
         hints=ctx.hints,
         format="mcq",

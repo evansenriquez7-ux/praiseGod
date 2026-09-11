@@ -14,6 +14,15 @@ class NumberLineParams(BaseVisualParams):
     denominator: Optional[int] = None
     decimal_value: Optional[float] = None
     value: Optional[int] = None
+    # Equal jumps -- a run of `jump_count` hops of `jump_size` starting at `jump_from`,
+    # which is the medium mat_g2_na_q3_1 names ("equal jumps on a number line") and the
+    # one this payload could not express before 2026-09-11: the component drew a bare
+    # dot while the stem described jumps nobody could see. Optional because every other
+    # number-line item takes no jumps at all, and absent from a "set" payload on
+    # purpose -- drawing the jumps there would draw the answer the pupil must place.
+    jump_from: Optional[int] = None
+    jump_size: Optional[int] = None
+    jump_count: Optional[int] = None
 
 class ClockParams(BaseVisualParams):
     hours: int

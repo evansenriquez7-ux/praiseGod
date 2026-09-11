@@ -643,7 +643,13 @@ _REACH_SEEDS = 40
 # extra="forbid" schema forbids without a contract change.
 #
 # Red baseline, so a floor that may only SHRINK (Mandate §5).
-_REACH_FLOOR = 37
+# 37 -> 35 on 2026-09-11. NOT caused by that day's content work: the tree at 950bc9a8
+# measures 35 too (checked in a pristine worktree, and the same 35 pairs), so the floor
+# had been carrying two pairs of headroom since before it. A floor above the real count
+# tolerates exactly that much silent regression, which is what this ratchet removes.
+# `mat_g2_na_q3_5/array_grid_read`, the sampling miss the note above names, is one of
+# the two now served at 40 seeds.
+_REACH_FLOOR = 35
 
 # A node needs this many successful generations before its unreachable set means
 # anything. Half the seed budget: enough for a formatter with any real selection

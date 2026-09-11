@@ -1,6 +1,6 @@
 {
   "node_id": "mat_g2_na_q3_0",
-  "reviewed_by": "reviewer-c4-pumice-lovage-6370",
+  "reviewed_by": "reviewer-media-slate-tamarind-8817",
   "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
@@ -10,6 +10,7 @@
     45,
     46,
     47,
+    61,
     500,
     501,
     502,
@@ -23,18 +24,59 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "true_false",
-      "question_text": "There are 10 groups of 4. By repeated addition, 4 added 10 times = 30. True or False?",
-      "correct_answer": false
+      "formatter": "mcq",
+      "question_text": "There are 10 groups of 4 (4 added 10 times). How many in all?",
+      "correct_answer": 40,
+      "options": [
+        {
+          "key": "A",
+          "value": 30,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 14,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 39,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 40,
+          "is_correct": true
+        }
+      ]
     },
     {
       "seed": 43,
-      "formatter": "error_detect",
-      "question_text": "Grace solved: \"There are 2 groups of 4 (4 + 4), so there are ___ in all.\". Grace says the missing number is 8. Is Grace correct?",
-      "correct_answer": {
-        "has_error": false,
-        "correct_value": 8
-      }
+      "formatter": "read_mcq",
+      "question_text": "⭐⭐⭐⭐   ⭐⭐⭐⭐\nThere are 2 groups of 4 stars.\nHow many stars are there in all?",
+      "correct_answer": "D",
+      "options": [
+        {
+          "key": "A",
+          "value": 6,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 9,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 4,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 8,
+          "is_correct": true
+        }
+      ]
     },
     {
       "seed": 44,
@@ -104,65 +146,55 @@
     },
     {
       "seed": 47,
+      "formatter": "error_detect",
+      "question_text": "Rosa solved: \"There are 4 groups of 6 (6 + 6 + 6 + 6), so there are ___ in all.\". Rosa says the missing number is 24. Is Rosa correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 24
+      }
+    },
+    {
+      "seed": 61,
+      "formatter": "true_false",
+      "question_text": "There is 1 group of 1. By repeated addition, 1 = 2. True or False?",
+      "correct_answer": false
+    },
+    {
+      "seed": 500,
+      "formatter": "error_detect",
+      "question_text": "Rico solved: \"There are 10 groups of 7 (7 added 10 times), so there are ___ in all.\". Rico says the missing number is 70. Is Rico correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 70
+      }
+    },
+    {
+      "seed": 501,
       "formatter": "mcq",
-      "question_text": "There are 4 groups of 6 (6 + 6 + 6 + 6). How many in all?",
-      "correct_answer": 24,
+      "question_text": "There are 10 groups of 10 (10 added 10 times). How many in all?",
+      "correct_answer": 100,
       "options": [
         {
           "key": "A",
+          "value": 99,
+          "is_correct": false
+        },
+        {
+          "key": "B",
           "value": 20,
           "is_correct": false
         },
         {
-          "key": "B",
-          "value": 24,
-          "is_correct": true
-        },
-        {
           "key": "C",
-          "value": 10,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 2,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 500,
-      "formatter": "mcq",
-      "question_text": "There are 10 groups of 7 (7 added 10 times). How many in all?",
-      "correct_answer": 70,
-      "options": [
-        {
-          "key": "A",
-          "value": 60,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 17,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 70,
+          "value": 100,
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 69,
+          "value": 90,
           "is_correct": false
         }
       ]
-    },
-    {
-      "seed": 501,
-      "formatter": "true_false",
-      "question_text": "There are 10 groups of 10. By repeated addition, 10 added 10 times = 90. True or False?",
-      "correct_answer": false
     },
     {
       "seed": 502,
@@ -172,9 +204,31 @@
     },
     {
       "seed": 600,
-      "formatter": "true_false",
-      "question_text": "There are 3 groups of 8. By repeated addition, 8 + 8 + 8 = 5. True or False?",
-      "correct_answer": false
+      "formatter": "mcq",
+      "question_text": "There are 3 groups of 8 (8 + 8 + 8). How many in all?",
+      "correct_answer": 24,
+      "options": [
+        {
+          "key": "A",
+          "value": 11,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 24,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 5,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 21,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 601,
@@ -210,127 +264,82 @@
     },
     {
       "seed": 602,
-      "formatter": "mcq",
-      "question_text": "There are 5 groups of 3 (3 + 3 + 3 + 3 + 3). How many in all?",
-      "correct_answer": 15,
-      "options": [
-        {
-          "key": "A",
-          "value": 14,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 15,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 10,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 8,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 603,
       "formatter": "error_detect",
-      "question_text": "Ana solved: \"There are 3 groups of 3 (3 + 3 + 3), so there are ___ in all.\". Ana says the missing number is 12. Is Ana correct?",
+      "question_text": "Jose solved: \"There are 5 groups of 3 (3 + 3 + 3 + 3 + 3), so there are ___ in all.\". Jose says the missing number is 15. Is Jose correct?",
       "correct_answer": {
-        "has_error": true,
-        "correct_value": 9
+        "has_error": false,
+        "correct_value": 15
       }
     },
     {
-      "seed": 604,
-      "formatter": "cloze",
-      "question_text": "2 groups of 6 (6 + 6) makes ___ in all",
-      "correct_answer": 12,
+      "seed": 603,
+      "formatter": "read_mcq",
+      "question_text": "🍎🍎🍎   🍎🍎🍎   🍎🍎🍎\nThere are 3 groups of 3 apples.\nHow many apples are there in all?",
+      "correct_answer": "C",
       "options": [
         {
           "key": "A",
-          "value": 8,
-          "text": "8",
+          "value": 10,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 4,
-          "text": "4",
+          "value": 6,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 12,
-          "text": "12",
+          "value": 9,
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 10,
-          "text": "10",
+          "value": 8,
           "is_correct": false
         }
       ]
     },
     {
+      "seed": 604,
+      "formatter": "true_false",
+      "question_text": "There are 2 groups of 6. By repeated addition, 6 + 6 = 14. True or False?",
+      "correct_answer": false
+    },
+    {
       "seed": 605,
-      "formatter": "mcq",
-      "question_text": "There are 3 groups of 5 (5 + 5 + 5). How many in all?",
-      "correct_answer": 15,
-      "options": [
-        {
-          "key": "A",
-          "value": 2,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 15,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 8,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 12,
-          "is_correct": false
-        }
-      ]
+      "formatter": "error_detect",
+      "question_text": "Liza solved: \"There are 3 groups of 5 (5 + 5 + 5), so there are ___ in all.\". Liza says the missing number is 15. Is Liza correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 15
+      }
     }
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "CONCERN",
-      "rationale": "Repeated addition is modelled well and the groups-of language is used consistently, but the competency quotes two naming conventions and only one survives into the output. The '5 threes' style of naming never appears anywhere in the sample set, so half the language target is unmet."
+      "rationale": "Counting by repeated addition is directly served, with the sums written out at seeds 600, 602 and 605, and creating equal groups is genuinely asked through the shading tasks at seeds 44 and 502. What is missing is one of the two forms of language the competency explicitly names."
     },
     "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "The create-equal-groups half of the competency is carried almost entirely by shading instructions, and genuinely concrete objects appear in only a single baskets-in-bags item; the rest work with abstract groups or squares."
+      "verdict": "FAIL",
+      "rationale": "The competency names two ways of talking about equal groups and only one of them is ever generated. All sixteen seeds use the groups of phrasing; not a single sample uses the plural multiple naming form, for example calling five groups of three by the name five threes. A named sub-case producing zero items is an uncovered sub-case."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Group counts and group sizes both stay at ten or below, the repeated sum is usually spelled out in brackets so the pupil sees the addition being named, and the sentences are single-clause."
+      "rationale": "Load is managed sensibly: short sums are spelled out term by term at seeds 603 and 605, while the long ones are compressed into an added so many times phrase at seeds 501 and 502 instead of printing ten addends. Sentence length and vocabulary fit the third quarter of Grade 2."
     },
     "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "An array to read, squares to shade, a bags-and-baskets story, a bracketed repeated sum and two peer-error checks give real spread across both how the grouping is shown and how the answer is given."
+      "verdict": "CONCERN",
+      "rationale": "Only seed 601 is a genuine context problem, and its baskets placed inside bags framing is both semantically backwards and structurally identical to the container stem used by the neighbouring node. Separately, all four error detect items, seeds 47, 500, 602 and 605, are keyed as no error, so that format never once asks a pupil to locate a mistake."
     },
     "competency_alignment": {
-      "verdict": "CONCERN",
-      "rationale": "One true-or-false item asserts '8 + 8 + 8 = 5'. A total smaller than a single addend is rejectable at a glance, so that rung is answered without performing any repeated addition and contributes nothing to the progression."
+      "verdict": "PASS",
+      "rationale": "Across seeds 43, 600, 501 and 603 the quantities that move are the number of groups and the size of each group, which is the equal grouping relationship the competency is about, rather than surface features of the question."
     },
     "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "The largest product implied is ten groups of ten, keeping every total within the hundred that Grade 2 repeated addition should reach and no further."
+      "verdict": "CONCERN",
+      "rationale": "The upper end is well chosen, reaching 100 at seed 501 and 80 at seed 502. The floor is not: seed 61 collapses to one group of one and then presents a bare claim about 1 and 2, which exercises nothing about repeated addition and reads as a malformed item rather than an easy one."
     }
   },
-  "overall": "CONCERN"
+  "overall": "FAIL"
 }

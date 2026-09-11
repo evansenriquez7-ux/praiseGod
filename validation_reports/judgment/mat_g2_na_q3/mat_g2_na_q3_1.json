@@ -1,6 +1,6 @@
 {
   "node_id": "mat_g2_na_q3_1",
-  "reviewed_by": "reviewer-c4-pumice-lovage-6370",
+  "reviewed_by": "reviewer-media-slate-tamarind-8817",
   "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
@@ -9,7 +9,8 @@
     44,
     45,
     46,
-    47,
+    49,
+    50,
     500,
     501,
     502,
@@ -23,56 +24,59 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "true_false",
-      "question_text": "Starting at 0, taking 2 equal jumps of 5 on the number line lands on 3. True or False?",
-      "correct_answer": false
-    },
-    {
-      "seed": 43,
       "formatter": "error_detect",
-      "question_text": "Grace solved: \"2 + 2 + 2 + 2 = ___\". Grace says the missing number is 8. Is Grace correct?",
+      "question_text": "Manny solved: \"Starting at 0, taking 2 equal jumps of 5 on the number line lands on ___\". Manny says the missing number is 3. Is Manny correct?",
       "correct_answer": {
-        "has_error": false,
-        "correct_value": 8
+        "has_error": true,
+        "correct_value": 10
       }
     },
     {
-      "seed": 44,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Shade all the squares inside the 8×5 rectangle. How many squares did you shade in all?",
-      "correct_answer": 40
+      "seed": 43,
+      "formatter": "true_false",
+      "question_text": "2 + 2 + 2 + 2 = 6. True or False?",
+      "correct_answer": false
     },
     {
-      "seed": 45,
+      "seed": 44,
       "formatter": "cloze",
-      "question_text": "Count by 10s: 10, 20, 30, 40. 10 × 4 = ___",
+      "question_text": "Count by 8s: 8, 16, 24, 32, 40. 8 × 5 = ___",
       "correct_answer": 40,
       "options": [
         {
           "key": "A",
-          "value": 40,
-          "text": "40",
-          "is_correct": true
+          "value": 3,
+          "text": "3",
+          "is_correct": false
         },
         {
           "key": "B",
-          "value": 6,
-          "text": "6",
+          "value": 35,
+          "text": "35",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 36,
-          "text": "36",
+          "value": 13,
+          "text": "13",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 14,
-          "text": "14",
-          "is_correct": false
+          "value": 40,
+          "text": "40",
+          "is_correct": true
         }
       ]
+    },
+    {
+      "seed": 45,
+      "formatter": "error_detect",
+      "question_text": "Pia solved: \"Counting by 10s: 10, 20, 30, 40, so 10 × 4 = ___\". Pia says the missing number is 36. Is Pia correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 40
+      }
     },
     {
       "seed": 46,
@@ -103,78 +107,110 @@
       ]
     },
     {
-      "seed": 47,
+      "seed": 49,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Shade 6 rows of 4 squares to show 4 added 6 times. How many squares did you shade in all?",
+      "correct_answer": 24
+    },
+    {
+      "seed": 50,
       "formatter": "mcq",
-      "question_text": "Count by 6s: 6, 12. What is 6 × 2?",
-      "correct_answer": 12,
+      "question_text": "Count by 3s: 3, 6, 9, 12, 15, 18, 21, 24, 27, 30. What is 3 × 10?",
+      "correct_answer": 30,
       "options": [
         {
           "key": "A",
-          "value": 4,
+          "value": 20,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 8,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 12,
+          "value": 30,
           "is_correct": true
         },
         {
+          "key": "C",
+          "value": 29,
+          "is_correct": false
+        },
+        {
           "key": "D",
-          "value": 10,
+          "value": 13,
           "is_correct": false
         }
       ]
     },
     {
       "seed": 500,
+      "formatter": "true_false",
+      "question_text": "Counting by 8s to 80 gives 8 × 10 = 90. True or False?",
+      "correct_answer": false
+    },
+    {
+      "seed": 501,
       "formatter": "mcq",
-      "question_text": "Count by 8s: 8, 16, 24, 32, 40, 48, 56, 64, 72, 80. What is 8 × 10?",
-      "correct_answer": 80,
+      "question_text": "Starting at 0, take 5 equal jumps of 7 on the number line. What is 7 × 5?",
+      "correct_answer": 35,
       "options": [
         {
           "key": "A",
-          "value": 70,
+          "value": 12,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 18,
-          "is_correct": false
+          "value": 35,
+          "is_correct": true
         },
         {
           "key": "C",
-          "value": 79,
+          "value": 30,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 80,
+          "value": 2,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 502,
+      "formatter": "cloze",
+      "question_text": "Starting at 0, 5 equal jumps of 8 on the number line lands on ___",
+      "correct_answer": 40,
+      "options": [
+        {
+          "key": "A",
+          "value": 13,
+          "text": "13",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 35,
+          "text": "35",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 3,
+          "text": "3",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 40,
+          "text": "40",
           "is_correct": true
         }
       ]
     },
     {
-      "seed": 501,
-      "formatter": "true_false",
-      "question_text": "Starting at 0, taking 5 equal jumps of 7 on the number line lands on 2. True or False?",
-      "correct_answer": false
-    },
-    {
-      "seed": 502,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Shade all the squares inside the 8×5 rectangle. How many squares did you shade in all?",
-      "correct_answer": 40
-    },
-    {
       "seed": 600,
       "formatter": "true_false",
-      "question_text": "Counting by 9s to 27 gives 9 × 3 = 6. True or False?",
-      "correct_answer": false
+      "question_text": "Counting by 9s to 27 gives 9 × 3 = 27. True or False?",
+      "correct_answer": true
     },
     {
       "seed": 601,
@@ -210,126 +246,78 @@
     },
     {
       "seed": 602,
-      "formatter": "mcq",
-      "question_text": "Count by 5s: 5, 10, 15. What is 5 × 3?",
-      "correct_answer": 15,
-      "options": [
-        {
-          "key": "A",
-          "value": 8,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 12,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 15,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 2,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 603,
       "formatter": "error_detect",
-      "question_text": "Ana solved: \"10 + 10 + 10 + 10 + 10 = ___\". Ana says the missing number is 55. Is Ana correct?",
+      "question_text": "Jose solved: \"Counting by 5s: 5, 10, 15, so 5 × 3 = ___\". Jose says the missing number is 15. Is Jose correct?",
       "correct_answer": {
-        "has_error": true,
-        "correct_value": 50
+        "has_error": false,
+        "correct_value": 15
       }
     },
     {
+      "seed": 603,
+      "formatter": "true_false",
+      "question_text": "10 + 10 + 10 + 10 + 10 = 50. True or False?",
+      "correct_answer": true
+    },
+    {
       "seed": 604,
-      "formatter": "cloze",
-      "question_text": "6 + 6 + 6 = ___",
+      "formatter": "mcq",
+      "question_text": "6 + 6 + 6 = ___. What is 6 × 3?",
       "correct_answer": 18,
       "options": [
         {
           "key": "A",
           "value": 3,
-          "text": "3",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 15,
-          "text": "15",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 18,
-          "text": "18",
           "is_correct": true
         },
         {
           "key": "D",
           "value": 9,
-          "text": "9",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 605,
-      "formatter": "mcq",
-      "question_text": "6 + 6 + 6 + 6 + 6 + 6 + 6 + 6 + 6 + 6 = ___. What is 6 × 10?",
-      "correct_answer": 60,
-      "options": [
-        {
-          "key": "A",
-          "value": 16,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 60,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 59,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 50,
-          "is_correct": false
-        }
-      ]
+      "formatter": "true_false",
+      "question_text": "6 + 6 + 6 + 6 + 6 + 6 + 6 + 6 + 6 + 6 = 60. True or False?",
+      "correct_answer": true
     }
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The link the competency is built on - repeated addition written as multiplication - is made explicit rather than assumed, with stems that print the chain of equal addends and then ask for the product in times notation."
+      "verdict": "CONCERN",
+      "rationale": "Illustrating is well covered, but the writing verb is never actually demanded. Keys at seeds 604, 44 and 50 are all totals, so the pupil supplies a product that the stem has already handed them the addends for; no item asks for the multiplication sentence itself to be produced from a repeated sum or the reverse."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "All four representations the wording enumerates are actually generated: arrays to read, rectangles to shade, counting by multiples spelled out term by term, and equal jumps starting at zero on a number line."
+      "rationale": "Every representation the competency lists shows up somewhere: arrays at seeds 46 and 49, counting by multiples at 44, 45, 50 and 602, equal jumps on the number line at 42, 501 and 502, equal groups at 601, and plain numeral sums at 43, 603 and 605."
     },
     "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Factors stay within ten, the multiples are listed for the pupil before the product is requested, and the bags-and-baskets story keeps its two quantities in one short sentence."
+      "verdict": "CONCERN",
+      "rationale": "A cluster of skip counting items answers itself. Seed 44 lists the count up to 40 and then asks for that same product, seed 50 lists to 30 and asks for 30, and seed 600 states the terminal value inside the claim being judged. The required step collapses to reading the final term rather than relating the count to the product."
     },
     "variant_comprehensiveness": {
       "verdict": "CONCERN",
-      "rationale": "Two separate seeds emit the identical instruction 'Shade all the squares inside the 8×5 rectangle' with the same answer, so the shading strand of this node is narrower than the formatter list implies - the same item is simply being reissued."
+      "rationale": "Breadth of representation is real, breadth of context is not. Seed 601 is the only story stem in sixteen samples and it reuses the same container template that appears in the sibling node, so a pupil meets multiplication in no setting other than bare figures and diagrams."
     },
     "competency_alignment": {
-      "verdict": "CONCERN",
-      "rationale": "Three true-or-false rungs propose values so far from the product that no repeated addition is needed to reject them - a five-jump chain said to land on 2, a two-jump chain said to land on 3, and '9 × 3 = 6'. Those items measure number sense, not the repeated-addition link."
+      "verdict": "PASS",
+      "rationale": "Difficulty moves through jump size and jump count at seeds 42, 501 and 502, and through the length of the addition chain at seeds 43, 603 and 605. Both of those are the repeated addition to multiplication correspondence rather than a decorative variable."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Both the number of groups and the group size stay at ten or under, so products remain within the hundred appropriate to an introductory multiplication competency."
+      "rationale": "Factors stay at 10 or under throughout, with totals ranging from 8 at seed 43 up to 90 at seed 601. That ceiling matches where multiplication sits in the third quarter of Grade 2, and small cases are represented alongside the large ones."
     }
   },
   "overall": "CONCERN"

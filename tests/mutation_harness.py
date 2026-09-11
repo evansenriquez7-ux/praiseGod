@@ -740,10 +740,17 @@ MUTATIONS: List[Mutation] = [
                 # of the 12-space line, so the literal matched twice and _apply
                 # aborted -- taking mutations 4..12 with it. The leading newline
                 # tightens the anchor; it does not loosen the mutation.
-                "\n        correct_answer=ctx.correct_answer,\n",
-                "\n        correct_answer=(ctx.correct_answer + 1)\n"
-                "        if isinstance(ctx.correct_answer, int) and not isinstance(ctx.correct_answer, bool)\n"
-                "        else ctx.correct_answer,\n",
+                #
+                # REPOINTED 2026-09-11: the served field became `correct_answer=correct`
+                # when compare_pair's MCQ presentation started offering whole comparison
+                # statements (`correct` is `ctx.correct_answer` on every other path). The
+                # full table caught the stale anchor and REFUSED to run rather than
+                # scoring a plant it never applied -- which is the whole reason a
+                # `--only` run cannot stand in for the full one after content work.
+                "\n        correct_answer=correct,\n",
+                "\n        correct_answer=(correct + 1)\n"
+                "        if isinstance(correct, int) and not isinstance(correct, bool)\n"
+                "        else correct,\n",
             )
         },
         command=["backend.app.practice_gen.validation.validate_matrix", "--node", "mat_g1_na_q1_7"],
@@ -1377,17 +1384,27 @@ MUTATIONS: List[Mutation] = [
         # makes the formatter raise KeyError on its own downstream read -- a crash, which
         # is another stage's finding, not §9's. §9 is about a payload that is BUILT and
         # SERVED while missing a key the component reads.
+        #
+        # REPOINTED 2026-09-11 for the same reason as `visual_payload_drops_required_key`
+        # (see its note): the old plant dropped `total_value` from PlaceValueBlocks, and
+        # `PlaceValueBlocksInteractive` reads no such key -- it destructures thousands /
+        # hundreds / tens / ones, each with its own default, so the DERIVED contract for
+        # that visual type is `required: []` and §9 can enforce nothing on it at all. The
+        # mutation survived in the pristine tree at 950bc9a8. GridArea's `shaded` is a
+        # bare read in the component and is not required by GridAreaParams, which is the
+        # combination §9 exists for; `mat_g2_na_q3_4` serves that payload on the student
+        # path at two of §9's three seeds.
         edits={
-            "backend/app/practice_gen/formatters/visual/fmt_place_value_blocks.py": (
+            "backend/app/practice_gen/formatters/visual/fmt_array_grid.py": (
                 '    format_data: dict = {"visual_params": vp}\n',
-                '    vp = {k: v for k, v in vp.items() if k != "total_value"}  # planted mutation\n'
+                '    vp = {k: v for k, v in vp.items() if k != "shaded"}  # planted mutation\n'
                 '    format_data: dict = {"visual_params": vp}\n',
             )
         },
         command=["backend.app.practice_gen.validation.validate_render",
-                 "--node-ids", "mat_g1_na_q1_2"],
+                 "--node-ids", "mat_g2_na_q3_4"],
         expected_check="§9 (the payload must be renderable by the component the student sees)",
-        expect_output_contains=["FAIL render_contract", "total_value"],
+        expect_output_contains=["FAIL render_contract", "shaded"],
         baseline_must_not_contain=["FAIL render_contract"],
     ),
     Mutation(
@@ -1720,7 +1737,11 @@ MUTATIONS: List[Mutation] = [
         ),
         edits={
             "backend/app/practice_gen/formatters/textual/fmt_mcq.py": (
-                "        correct_answer=ctx.correct_answer,\n        distractors=distractors,",
+                # REPOINTED 2026-09-11, same cause as `answer_corruption` one file over:
+                # the served field became `correct_answer=correct` when compare_pair's
+                # MCQ presentation started offering whole comparison statements. Two
+                # mutations anchored on that one line and the full table caught both.
+                "        correct_answer=correct,\n        distractors=distractors,",
                 "        correct_answer=None,  # planted mutation: no answer key\n        distractors=distractors,",
             )
         },
@@ -1904,16 +1925,31 @@ MUTATIONS: List[Mutation] = [
         # mutation proves that narrowing did not stop it catching a REAL missing key on
         # a genuinely visual payload -- the failure mode of "fixing" a check by making
         # it look at less.
+        #
+        # REPOINTED 2026-09-11, and the reason is the whole point of this harness. The
+        # plant used to drop `total_wholes`, which the hand-written REQUIRED_KEYS map
+        # listed. When that map was replaced by a contract DERIVED from the component
+        # AST (2026-09-11, one commit earlier), `total_wholes` stopped being required --
+        # because `FractionModelInteractive` does not read it. The mutation went on
+        # running, planting a bug §9 could no longer see, and SURVIVED: measured in a
+        # pristine worktree at 950bc9a8, `0/1 mutations detected`, so BOTH §9 assertions
+        # were unproven from the moment the contract became derived. That is cause two of
+        # a surviving mutation -- the anchor moved out from under the check, not the
+        # check breaking -- and the fix is to land the plant on a key the component
+        # genuinely reads. `interaction_mode` is FractionModel's one derived-required
+        # key, and the Pydantic model does not require it, so the payload is BUILT and
+        # SERVED without it rather than raising at §4 first.
         edits={
             "backend/app/practice_gen/formatters/visual/fmt_fraction_model.py": (
-                '    vp["total_wholes"] = max(1, _math.ceil(numer / denom)) if denom else 1\n',
-                '    pass  # planted mutation: required payload key dropped\n',
+                '    format_data: dict = {"visual_params": vp}\n',
+                '    vp = {k: v for k, v in vp.items() if k != "interaction_mode"}  # planted mutation\n'
+                '    format_data: dict = {"visual_params": vp}\n',
             )
         },
         command=["backend.app.practice_gen.validation.validate_render"],
         expected_check="§9 render contract (payload carries every key the component reads)",
-        expect_output_contains=["FractionModel && total_wholes"],
-        baseline_must_not_contain=["total_wholes"],
+        expect_output_contains=["FractionModel && interaction_mode"],
+        baseline_must_not_contain=["FAIL render_contract"],
     ),
     Mutation(
         name="variant_coverage_silently_narrowed",
@@ -2271,6 +2307,114 @@ MUTATIONS: List[Mutation] = [
         expected_check="§8 (a printed FAIL label no module declares)",
         expect_output_contains=["undeclared_planted_check && no module declares"],
         baseline_must_not_contain=["no module declares"],
+    ),
+    Mutation(
+        name="emoji_pictorial_draws_a_different_operation",
+        asserts=["answer_key_integrity"],
+        description=(
+            "Put back the silent default `operation = ctx.dna_concept if ctx.dna_concept "
+            "in ('addition', 'subtraction') else 'addition'`, which is how "
+            "fmt_emoji_pictorial stood until 2026-09-11. Pointed at a multiplication "
+            "node it then draws a + b items beside an answer keyed a x b: a PICTURE that "
+            "contradicts its own key, on the two grade-2 nodes whose competencies are "
+            "stated entirely in groups. Declaring a visual formatter compatible with a "
+            "DNA it has no branch for does not make it render that DNA -- it makes it "
+            "render something else, which is the same lesson fmt_number_line's money "
+            "branch records."
+        ),
+        edits={
+            "backend/app/practice_gen/formatters/visual/fmt_emoji_pictorial.py": (
+                "        operation = ctx.dna_concept\n"
+                '        a = values.get("a", 3)\n',
+                "        operation = ctx.dna_concept if ctx.dna_concept in (\"addition\", \"subtraction\") else \"addition\"  # planted mutation\n"
+                '        a = values.get("a", 3)\n',
+            ),
+        },
+        command=["backend.app.practice_gen.validation.validate_matrix",
+                 "--node", "mat_g2_na_q3_0"],
+        expected_check="§1E answer-key integrity (the picture's arithmetic is the item's)",
+        expect_output_contains=["emoji_pictorial && answer_key_integrity"],
+        baseline_must_not_contain=["answer_key_integrity"],
+    ),
+    Mutation(
+        name="number_line_drops_its_jumps",
+        asserts=[],
+        description=(
+            "Stop the multiplication number-line payload carrying the jumps its own stem "
+            "promises -- the state the pipeline was in until 2026-09-11, when it rendered "
+            "'Starting at 0, taking 2 equal jumps of 9 on the number line lands on ___' "
+            "over a line with a single dot on it. "
+            "Caught by a UNIT TEST, not by a validator, and that is the finding: the "
+            "React component reads jump_count/jump_size inside a branch, so the derived "
+            "frontend contract classes them CONDITIONAL and §9 -- which enforces "
+            "unconditional keys only -- cannot see their absence. §1G checks that a "
+            "DECLARED run of jumps is consistent; nothing but this test checks that a "
+            "competency naming the medium still gets one."
+        ),
+        edits={
+            "backend/app/practice_gen/formatters/visual/fmt_number_line.py": (
+                '        "jump_from": start,\n'
+                '        "jump_size": a,\n'
+                '        "jump_count": b,\n',
+                "        # planted mutation: the medium the competency names, undeclared\n",
+            ),
+        },
+        command=["pytest",
+                 "tests/unit/test_media_the_competency_names.py"
+                 "::test_multiplication_number_line_carries_its_jumps",
+                 "-q"],
+        expected_check="the payload draws the medium mat_g2_na_q3_1 names",
+        expect_output_contains=["test_multiplication_number_line_carries_its_jumps"],
+        baseline_must_not_contain=["test_multiplication_number_line_carries_its_jumps"],
+    ),
+    Mutation(
+        name="number_line_jumps_land_elsewhere",
+        asserts=["visual_payload"],
+        description=(
+            "Draw one jump more than the item is keyed to. The picture is still a "
+            "well-formed run of equal jumps on a well-formed axis -- every §1G invariant "
+            "that existed before 2026-09-11 passes it -- but it lands on a different "
+            "number than the pupil is graded on, which is the defect a drawn model can "
+            "have that a text stem cannot."
+        ),
+        edits={
+            "backend/app/practice_gen/formatters/visual/fmt_number_line.py": (
+                '        "jump_count": b,\n',
+                '        "jump_count": b + 1,  # planted mutation\n',
+            ),
+        },
+        command=["backend.app.practice_gen.validation.validate_matrix",
+                 "--node", "mat_g2_na_q3_1"],
+        expected_check="§1G visual payload (the picture agrees with its own answer)",
+        expect_output_contains=["visual_payload && landing on"],
+        baseline_must_not_contain=["visual_payload"],
+    ),
+    Mutation(
+        name="compare_pair_asks_for_a_sign_and_offers_statements",
+        asserts=["pipeline_run"],
+        description=(
+            "Drop the word-problem wording that asks which STATEMENT is true, leaving the "
+            "narrative ending on 'Which sign correctly compares the two amounts?' while "
+            "fmt_mcq offers four whole statements -- a stem asking a question its own "
+            "options cannot answer. The four-statement presentation (owner ruling "
+            "2026-09-11) replaced a permanent 'cannot be determined' fourth option, and "
+            "this is the way it can go wrong silently: both halves render, and only the "
+            "pupil notices they do not match. The formatter refuses instead."
+        ),
+        edits={
+            "backend/app/practice_gen/dna/na/comparing_ordering.py": (
+                '            result_dict["question_statement"] = (\n'
+                '                f"{actor} has {a} {a_word}. {friend} has {b} {b_word}. "\n'
+                '                f"Which statement is true?"\n'
+                "            )\n",
+                "            pass  # planted mutation: the statement wording removed\n",
+            ),
+        },
+        command=["backend.app.practice_gen.validation.validate_matrix",
+                 "--node", "mat_g1_na_q1_3"],
+        expected_check="§1C execution (a formatter refuses a stem its options cannot answer)",
+        expect_output_contains=["pipeline_run && question_statement"],
+        baseline_must_not_contain=["pipeline_run"],
     ),
 ]
 
