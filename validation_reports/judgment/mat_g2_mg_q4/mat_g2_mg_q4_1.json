@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g2_mg_q4_1",
-  "reviewed_by": "reviewer-b3-cinder-halyard-2276",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c3-nimbus-sorrel-4825",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -12,11 +12,10 @@
     500,
     501,
     502,
-    601,
+    600,
     603,
     605,
-    607,
-    608
+    606
   ],
   "samples_reviewed": [
     {
@@ -49,93 +48,49 @@
     },
     {
       "seed": 43,
-      "formatter": "read_mcq",
-      "question_text": "What time does the clock show?",
-      "correct_answer": "B",
-      "options": [
-        {
-          "key": "A",
-          "value": "5:05 a.m.",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "5:00 a.m.",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": "6:00 a.m.",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "4:00 a.m.",
-          "is_correct": false
-        }
-      ]
+      "formatter": "set_fill_in_blank",
+      "question_text": "Set the clock to show 5:00 a.m.",
+      "correct_answer": "5:00 a.m."
     },
     {
       "seed": 44,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Set the clock to show 9:40 a.m.",
-      "correct_answer": "9:40 a.m."
+      "formatter": "read_mcq",
+      "question_text": "What time does the clock show?",
+      "correct_answer": "A",
+      "options": [
+        {
+          "key": "A",
+          "value": "9:40 a.m.",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "10:40 a.m.",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "8:40 a.m.",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "9:35 a.m.",
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 45,
-      "formatter": "read_mcq",
-      "question_text": "What time does the clock show?",
-      "correct_answer": "B",
-      "options": [
-        {
-          "key": "A",
-          "value": "8:45 p.m.",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "7:45 p.m.",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": "7:40 p.m.",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "6:45 p.m.",
-          "is_correct": false
-        }
-      ]
+      "formatter": "set_fill_in_blank",
+      "question_text": "Set the clock to show 7:45 p.m.",
+      "correct_answer": "7:45 p.m."
     },
     {
       "seed": 46,
-      "formatter": "read_mcq",
-      "question_text": "What time does the clock show?",
-      "correct_answer": "B",
-      "options": [
-        {
-          "key": "A",
-          "value": "6:00 a.m.",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "7:00 a.m.",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": "7:05 a.m.",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "8:00 a.m.",
-          "is_correct": false
-        }
-      ]
+      "formatter": "set_fill_in_blank",
+      "question_text": "Set the clock to show 7:00 a.m.",
+      "correct_answer": "7:00 a.m."
     },
     {
       "seed": 500,
@@ -178,10 +133,10 @@
       ]
     },
     {
-      "seed": 601,
+      "seed": 600,
       "formatter": "set_fill_in_blank",
-      "question_text": "Set the clock to show 11:30 a.m.",
-      "correct_answer": "11:30 a.m."
+      "question_text": "Set the clock to show 6:45 a.m.",
+      "correct_answer": "6:45 a.m."
     },
     {
       "seed": 603,
@@ -196,42 +151,36 @@
       "correct_answer": "3:30 p.m."
     },
     {
-      "seed": 607,
+      "seed": 606,
       "formatter": "set_fill_in_blank",
-      "question_text": "Set the clock to show 12:05 a.m.",
-      "correct_answer": "12:05 a.m."
-    },
-    {
-      "seed": 608,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Set the clock to show 3:15 p.m.",
-      "correct_answer": "3:15 p.m."
+      "question_text": "Set the clock to show 12:00 a.m.",
+      "correct_answer": "12:00 a.m."
     }
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "Both verbs are genuinely present: several seeds render a clock face and ask what time it shows, while the Set the clock to show items reverse the task and require the learner to produce the time on the dial. The meridiem marker is carried in every stem and key rather than treated as optional."
+      "rationale": "Both verbs are served. Reading appears through items asking what time the clock shows, and writing appears through items asking the pupil to set the clock to a stated time, and a.m. or p.m. is attached in every single case."
     },
     "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "Minute positions span the full set a Grade 2 clock curriculum needs, with o'clock, five-past, quarter-past, half-past, forty and quarter-to all appearing. Morning and afternoon times are both well represented, and the hour values range across the dial rather than clustering."
+      "verdict": "CONCERN",
+      "rationale": "The minute values cluster heavily on the hour, the half hour and forty-five past. Quarter past and five past never occur as targets, and only three distinct clock faces are ever read, so the reading direction is thinly covered against eight setting items."
     },
     "cognitive_capacity": {
       "verdict": "CONCERN",
-      "rationale": "One seed asks for 12:05 a.m. to be set on the clock. The twelve o'clock hour is the single genuinely confusing case in the a.m. and p.m. system, since midnight belongs to a.m. while the hour hand reads twelve, and a Grade 2 learner meeting it here has no way to reason it out. A noon-hour value also appears among the options of another item."
+      "rationale": "One item asks the pupil to set the clock to show 12:00 a.m. Midnight against noon is the single hardest a.m. and p.m. case there is, and dropping it in without scaffolding is a real stretch for this grade."
     },
     "variant_comprehensiveness": {
       "verdict": "CONCERN",
-      "rationale": "The set alternates between exactly two formats and neither embeds the time in a situation, so nothing asks when a pupil leaves for school or when a programme starts. Reading and setting are covered, but writing the time from a spoken or worded description, the third natural orientation, is absent."
+      "rationale": "Only two presentations exist across twelve samples, and eight of them open with the same instruction to set the clock. No item connects a clock time to a daily routine or asks for a time to be written in words."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "What varies between seeds is the minute position on the dial, which is precisely the axis this competency is about: five-minute and quarter positions are harder to read than the hour positions, and both ends of that range are represented. The distractor sets reflect it too, offering neighbouring hours and near-miss minutes."
+      "rationale": "The variation across seeds is the hour and minute values chosen and the a.m. or p.m. label, which is precisely what a pupil must control to read and write analog time."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "All minute values are multiples of five, matching the analog-clock granularity expected at this level, and hours stay within the twelve-hour dial. No item demands minute-by-minute precision that an analog face at Grade 2 could not support."
+      "rationale": "Every target is a valid twelve-hour clock time on a five-minute boundary, and nothing strays into seconds or twenty-four-hour notation that would sit above this grade."
     }
   },
   "overall": "CONCERN"

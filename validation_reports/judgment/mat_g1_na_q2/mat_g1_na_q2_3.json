@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g1_na_q2_3",
-  "reviewed_by": "reviewer-r1-cobalt-juniper-7748",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c2-basalt-yarrow-7194",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -9,69 +9,52 @@
     44,
     45,
     46,
-    50,
-    55,
+    48,
     500,
     501,
     502,
-    601
+    600,
+    601,
+    603
   ],
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "Write 45 as tens and ones, for example 45 = 40 + 5.",
       "correct_answer": "40 + 5",
       "options": [
         {
           "key": "A",
           "value": "50 + 4",
+          "text": "50 + 4",
           "is_correct": false
         },
         {
           "key": "B",
           "value": "4 + 5",
+          "text": "4 + 5",
           "is_correct": false
         },
         {
           "key": "C",
           "value": "10 + 5",
+          "text": "10 + 5",
           "is_correct": false
         },
         {
           "key": "D",
           "value": "40 + 5",
+          "text": "40 + 5",
           "is_correct": true
         }
       ]
     },
     {
       "seed": 43,
-      "formatter": "mcq",
-      "question_text": "Write 10 as tens and ones, for example 45 = 40 + 5.",
-      "correct_answer": "10 + 0",
-      "options": [
-        {
-          "key": "A",
-          "value": "10 + 0",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": "30 + 8",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "1 + 0",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "1",
-          "is_correct": false
-        }
-      ]
+      "formatter": "set_fill_in_blank",
+      "question_text": "Use base-10 blocks to show the number 10.",
+      "correct_answer": 10
     },
     {
       "seed": 44,
@@ -107,109 +90,55 @@
     },
     {
       "seed": 45,
-      "formatter": "mcq",
-      "question_text": "Write 15 as tens and ones, for example 45 = 40 + 5.",
-      "correct_answer": "10 + 5",
-      "options": [
-        {
-          "key": "A",
-          "value": "10 + 5",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": "50 + 1",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "80 + 5",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "1 + 5",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 46,
-      "formatter": "mcq",
-      "question_text": "Write 10 as tens and ones, for example 45 = 40 + 5.",
-      "correct_answer": "10 + 0",
-      "options": [
-        {
-          "key": "A",
-          "value": "1",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "1 + 0",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "10 + 0",
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": "10 + 4",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 50,
       "formatter": "true_false",
-      "question_text": "Write 20 as tens and ones, for example 45 = 40 + 5. The answer is 2 + 0. True or False?",
+      "question_text": "Write 15 as tens and ones, for example 45 = 40 + 5. The answer is 50 + 1. True or False?",
       "correct_answer": false
     },
     {
-      "seed": 55,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Use base-10 blocks to show the number 10.",
-      "correct_answer": 10
+      "seed": 46,
+      "formatter": "true_false",
+      "question_text": "Write 10 as tens and ones, for example 45 = 40 + 5. The answer is 10 + 0. True or False?",
+      "correct_answer": true
     },
     {
-      "seed": 500,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Use base-10 blocks to show the number 91.",
-      "correct_answer": 91
-    },
-    {
-      "seed": 501,
-      "formatter": "cloze",
-      "question_text": "Write 76 as tens and ones, for example 45 = 40 + 5.",
-      "correct_answer": "70 + 6",
+      "seed": 48,
+      "formatter": "mcq",
+      "question_text": "Write 40 as tens and ones, for example 45 = 40 + 5.",
+      "correct_answer": "40 + 0",
       "options": [
         {
           "key": "A",
-          "value": "40 + 6",
-          "text": "40 + 6",
+          "value": "4 + 0",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "60 + 7",
-          "text": "60 + 7",
+          "value": "4",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "70 + 6",
-          "text": "70 + 6",
+          "value": "40 + 0",
           "is_correct": true
         },
         {
           "key": "D",
-          "value": "7 + 6",
-          "text": "7 + 6",
+          "value": "30 + 9",
           "is_correct": false
         }
       ]
+    },
+    {
+      "seed": 500,
+      "formatter": "true_false",
+      "question_text": "Write 91 as tens and ones, for example 45 = 40 + 5. The answer is 50 + 7. True or False?",
+      "correct_answer": false
+    },
+    {
+      "seed": 501,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Use base-10 blocks to show the number 76.",
+      "correct_answer": 76
     },
     {
       "seed": 502,
@@ -238,6 +167,12 @@
           "is_correct": false
         }
       ]
+    },
+    {
+      "seed": 600,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Use base-10 blocks to show the number 15.",
+      "correct_answer": 15
     },
     {
       "seed": 601,
@@ -270,33 +205,39 @@
           "is_correct": false
         }
       ]
+    },
+    {
+      "seed": 603,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Use base-10 blocks to show the number 12.",
+      "correct_answer": 12
     }
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "FAIL",
-      "rationale": "The worked example is baked into every stem as 'for example 45 = 40 + 5', and one sampled item asks 'Write 45 as tens and ones, for example 45 = 40 + 5.' with the key 40 + 5. That item prints its own answer inside the question, so it measures nothing about decomposing a number; whenever the generator selects 45 as the target this defect recurs by construction."
+      "verdict": "CONCERN",
+      "rationale": "Decomposition into tens and ones is what is asked throughout, but the worked illustration built into every stem uses 45, and one seed then sets 45 as the number to decompose - so that item reads 'Write 45 as tens and ones, for example 45 = 40 + 5.' and hands the pupil the answer inside the question."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "The targets sampled span the awkward cases as well as the routine ones: a teen value, round tens such as 10 and 20 whose ones digit is zero, and larger two-digit values in the seventies and nineties. For a competency saying 'any 2-digit number', that spread is respectable."
+      "rationale": "The 'any 2-digit number' clause is honoured across the sample: teens, exact tens with a zero in the ones place, and awkward numbers in the nineties all get decomposed, so the zero-ones case is not skipped."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Writing a two-digit numeral as a sum of its tens part and ones part is a single-step task, and the instruction sentence stays short enough for a Grade 1 reader in the second quarter."
+      "rationale": "A single decomposition per item, with a permanent exemplar in view, keeps the reasoning to one step; base-ten blocks give a concrete anchor entirely appropriate to this point in Grade 1."
     },
     "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "Apart from the base-10 block tasks, every sampled item is the identical instruction sentence with a different numeral substituted in. There is no context, no reverse direction asking which number a stated tens-and-ones sum makes, and no place-value question phrased any other way."
+      "verdict": "PASS",
+      "rationale": "Alongside the symbolic fill-ins there is a genuine manipulative task, 'Use base-10 blocks to show the number 76.', plus assertion-checking items, giving three distinct modes of engagement with the same idea."
     },
     "competency_alignment": {
-      "verdict": "CONCERN",
-      "rationale": "The block items ask only to 'Use base-10 blocks to show the number 91.' and never require naming the tens and ones parts, so they represent a quantity without decomposing it. Several distractors also come from an entirely unrelated number, for instance an option of 30 + 8 offered against a target of 10, and are dismissible without any place-value reasoning."
+      "verdict": "PASS",
+      "rationale": "Difficulty rises with the awkwardness of the number being split - round tens are easier than a number in the nineties - which is the axis this competency is actually about."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Every target is genuinely two-digit, from 10 at the bottom to the nineties at the top, so the generator neither slips into single digits nor exceeds the two-digit boundary the competency sets."
+      "rationale": "Targets sit between 10 and 94, squarely inside the two-digit band, and the wrong options offered are themselves two-digit decompositions rather than out-of-range values."
     }
   },
-  "overall": "FAIL"
+  "overall": "CONCERN"
 }

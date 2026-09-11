@@ -83,6 +83,7 @@ ASSERTIONS = (
     "capability_provenance_6A",
     "capability_orphan_provider_6A",
     "capability_coverage_6B",
+    "requires_ignore_locked_6B",
     "capability_provision_6C",
     "capability_generic_formatter_6D",
     "capability_nondiscriminating_bounds_6E",
@@ -750,6 +751,62 @@ def _validate_coverage(node_id: str, competency: str, requires: List[Dict],
         f"'requires_ignore' with the reason. Silently dropping a competency word is how a "
         f"node passes while never generating what it was written to teach."
     ]
+
+
+def _validate_requires_ignore_lock() -> List[str]:
+    """
+    §6B, the ground-truth half — `requires_ignore` is human-authored and may not drift.
+
+    A word in a node's `requires_ignore` says MATATAG names something this pipeline is
+    not required to build. That is a CURRICULUM RULING (docs/pgen_rulings.md R-5, owner
+    2026-09-11: "agents must see this requires_ignore as a human authored ground truth
+    ... something that can only be done by human judgement which can be verified by git
+    history"), and it is also the exact lever an agent would reach for to silence a §6B
+    coverage finding: §6B says "declare the requirement, or list the word in
+    requires_ignore", and one of those two options is free.
+
+    So the sanctioned contents live in `data/skeletons/requires_ignore.lock.json` and
+    this compares the two, failing on ANY divergence in EITHER direction — an addition
+    is an unsanctioned ruling, and a deletion silently re-imposes a requirement the
+    owner waived. Sanctioning a change means editing the lock, which is a separate,
+    greppable commit a reviewer can find in git history rather than a side effect
+    buried inside a content change.
+
+    KNOWN LIMIT, named rather than implied away (Scaling Mandate 6): this makes the act
+    VISIBLE, not impossible. An agent that can edit ground truth can edit the lock too.
+    What the gate guarantees is that doing so is deliberate, isolated and auditable —
+    which is what "verified by git history" can mean for a file both parties can write.
+
+    Phase 1: both files are in the repo and neither is an agent-authored artifact.
+    """
+    try:
+        src = json.loads(_VOCAB_ANNOTATION_PATH.read_text(encoding="utf-8"))["nodes"]
+        lock = json.loads(_REQUIRES_IGNORE_LOCK_PATH.read_text(encoding="utf-8"))["entries"]
+    except (OSError, KeyError, json.JSONDecodeError) as exc:
+        return [
+            f"§6B: could not compare `requires_ignore` with its lock "
+            f"({type(exc).__name__}: {exc}). Until they can be compared, a curriculum "
+            f"ruling can be added to ground truth without anyone seeing it."
+        ]
+
+    errs: List[str] = []
+    for node_id in sorted(set(src) | set(lock)):
+        have = sorted((src.get(node_id) or {}).get("requires_ignore") or [])
+        want = sorted(lock.get(node_id) or [])
+        if have == want:
+            continue
+        added = sorted(set(have) - set(want))
+        dropped = sorted(set(want) - set(have))
+        errs.append(
+            f"{node_id}: `requires_ignore` does not match "
+            f"data/skeletons/requires_ignore.lock.json "
+            f"(added={added or 'none'}, removed={dropped or 'none'}). Ignoring a "
+            f"competency word is a curriculum ruling only a human may make "
+            f"(docs/pgen_rulings.md R-5), and removing one silently re-imposes a "
+            f"requirement the owner waived. If this change is sanctioned, record it in "
+            f"the lock as its own commit so git history carries who decided it."
+        )
+    return errs
 
 
 def _bound_restricts_to(bound: Any) -> Set[str] | None:
@@ -1594,6 +1651,9 @@ _VOCAB_ANNOTATION_PATH = Path(__file__).resolve().parents[4] / "data" / "skeleto
 _KNOWLEDGE_GRAPH_PATH = Path(__file__).resolve().parents[4] / "data" / "knowledge_graph_g1_3.json"
 
 
+_REQUIRES_IGNORE_LOCK_PATH = _VOCAB_ANNOTATION_PATH.parent / "requires_ignore.lock.json"
+
+
 def declaration_sync_failures() -> List[str]:
     """
     The declarations §6 validates must be the ones an author actually wrote.
@@ -1723,6 +1783,7 @@ def _phase1_findings(node_ids: List[str] | None) -> List[str]:
     # Tree-wide, and deliberately over EVERY declared node rather than the `node_ids`
     # subset: "no node requires this" is a statement about the whole tree, so computing
     # it from a scoped run would report every provider outside the scope as an orphan.
+    errs += _validate_requires_ignore_lock()
     all_rows, _ = _declared_nodes(None)
     errs += _validate_no_orphan_providers(
         {str(r.get("id")) for _n, _c, reqs, _i in all_rows for r in reqs}

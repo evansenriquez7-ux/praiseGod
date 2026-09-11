@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g2_na_q2_2",
-  "reviewed_by": "reviewer-b4-plover-saffron-6041",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c4-pumice-lovage-6370",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -9,8 +9,6 @@
     44,
     45,
     46,
-    48,
-    49,
     500,
     501,
     502,
@@ -24,66 +22,66 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "true_false",
-      "question_text": "Start at 57. Count up 345 more. What number do you land on? The answer is 402. True or False?",
-      "correct_answer": true
-    },
-    {
-      "seed": 43,
-      "formatter": "error_detect",
-      "question_text": "Grace solved this problem: \"Nanding bought a pencil for ₱784 and an eraser for ₱112. How much did Nanding spend in all?\" Grace says the answer is 896. Is Grace correct?",
-      "correct_answer": {
-        "has_error": false,
-        "correct_value": 896
-      }
-    },
-    {
-      "seed": 44,
       "formatter": "mcq",
-      "question_text": "Coach Nora had ₱144 and received ₱480 more from Nanay. How much money does Coach Nora have in all?",
-      "correct_answer": 624,
+      "question_text": "Start at 57. Count up 345 more. What number do you land on?",
+      "correct_answer": 402,
       "options": [
         {
           "key": "A",
-          "value": 634,
-          "is_correct": false
+          "value": 402,
+          "is_correct": true
         },
         {
           "key": "B",
-          "value": 623,
+          "value": 401,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 624,
-          "is_correct": true
+          "value": 403,
+          "is_correct": false
         },
         {
           "key": "D",
-          "value": 625,
+          "value": 412,
           "is_correct": false
         }
       ]
     },
     {
+      "seed": 43,
+      "formatter": "true_false",
+      "question_text": "Nanding bought a pencil for ₱784 and an eraser for ₱112. How much did Nanding spend in all? The answer is 672. True or False?",
+      "correct_answer": false
+    },
+    {
+      "seed": 44,
+      "formatter": "error_detect",
+      "question_text": "Rico solved this problem: \"Coach Nora had ₱144 and received ₱480 more from Nanay. How much money does Coach Nora have in all?\" Rico says the answer is 624. Is Rico correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 624
+      }
+    },
+    {
       "seed": 45,
-      "formatter": "mcq",
+      "formatter": "read_mcq",
       "question_text": "Ate Gab has ₱20 in one pocket and ₱20 in another pocket. How much money does Ate Gab have in total?",
-      "correct_answer": 40,
+      "correct_answer": "D",
       "options": [
         {
           "key": "A",
-          "value": 400,
+          "value": 35,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 30,
+          "value": 45,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 41,
+          "value": 39,
           "is_correct": false
         },
         {
@@ -95,89 +93,33 @@
     },
     {
       "seed": 46,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "Ate Joy has ₱100 in one pocket and ₱556 in another pocket. How much money does Ate Joy have in total?",
       "correct_answer": 656,
       "options": [
         {
           "key": "A",
           "value": 6560,
+          "text": "6560",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 646,
+          "text": "646",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 657,
+          "text": "657",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 656,
+          "text": "656",
           "is_correct": true
-        }
-      ]
-    },
-    {
-      "seed": 48,
-      "formatter": "cloze",
-      "question_text": "Lara is on step 96. Lara climbs up 15 more steps. What step is Lara on now?",
-      "correct_answer": 111,
-      "options": [
-        {
-          "key": "A",
-          "value": 121,
-          "text": "121",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 110,
-          "text": "110",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 111,
-          "text": "111",
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 81,
-          "text": "81",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 49,
-      "formatter": "read_mcq",
-      "question_text": "Ate Bea has ₱20 in one pocket and ₱10 in another pocket. How much money does Ate Bea have in total?",
-      "correct_answer": "A",
-      "options": [
-        {
-          "key": "A",
-          "value": 30,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 35,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 20,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 50,
-          "is_correct": false
         }
       ]
     },
@@ -189,7 +131,7 @@
       "options": [
         {
           "key": "A",
-          "value": 780,
+          "value": 775,
           "is_correct": false
         },
         {
@@ -199,7 +141,7 @@
         },
         {
           "key": "C",
-          "value": 765,
+          "value": 760,
           "is_correct": false
         },
         {
@@ -211,32 +153,28 @@
     },
     {
       "seed": 501,
-      "formatter": "cloze",
+      "formatter": "read_mcq",
       "question_text": "Ate Sam saved ₱200 on Monday and ₱705 on Tuesday. How much money did Ate Sam save altogether?",
-      "correct_answer": 905,
+      "correct_answer": "D",
       "options": [
         {
           "key": "A",
-          "value": 906,
-          "text": "906",
+          "value": 904,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 895,
-          "text": "895",
+          "value": 955,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 9050,
-          "text": "9050",
+          "value": 855,
           "is_correct": false
         },
         {
           "key": "D",
           "value": 905,
-          "text": "905",
           "is_correct": true
         }
       ]
@@ -271,78 +209,78 @@
     },
     {
       "seed": 600,
-      "formatter": "cloze",
+      "formatter": "read_mcq",
       "question_text": "Kuya Tads saved ₱50 on Monday and ₱61 on Tuesday. How much money did Kuya Tads save altogether?",
-      "correct_answer": 111,
+      "correct_answer": "D",
       "options": [
         {
           "key": "A",
-          "value": 1110,
-          "text": "1110",
+          "value": 131,
           "is_correct": false
         },
         {
           "key": "B",
           "value": 101,
-          "text": "101",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 112,
-          "text": "112",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 111,
-          "text": "111",
           "is_correct": true
         }
       ]
     },
     {
       "seed": 601,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "Coach Roel had ₱750 and received ₱0 more from Nanay. How much money does Coach Roel have in all?",
       "correct_answer": 750,
       "options": [
         {
           "key": "A",
           "value": 751,
+          "text": "751",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 750,
+          "text": "750",
           "is_correct": true
         },
         {
           "key": "C",
           "value": 760,
+          "text": "760",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 749,
+          "text": "749",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 602,
-      "formatter": "mcq",
+      "formatter": "read_mcq",
       "question_text": "Sir Rez saved ₱20 on Monday and ₱30 on Tuesday. How much money did Sir Rez save altogether?",
-      "correct_answer": 50,
+      "correct_answer": "C",
       "options": [
         {
           "key": "A",
-          "value": 51,
+          "value": 49,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 40,
+          "value": 55,
           "is_correct": false
         },
         {
@@ -352,16 +290,16 @@
         },
         {
           "key": "D",
-          "value": 500,
+          "value": 45,
           "is_correct": false
         }
       ]
     },
     {
       "seed": 603,
-      "formatter": "mcq",
+      "formatter": "read_mcq",
       "question_text": "Ate Beng saved ₱10 on Monday and ₱500 on Tuesday. How much money did Ate Beng save altogether?",
-      "correct_answer": 510,
+      "correct_answer": "C",
       "options": [
         {
           "key": "A",
@@ -370,7 +308,7 @@
         },
         {
           "key": "B",
-          "value": 5100,
+          "value": 530,
           "is_correct": false
         },
         {
@@ -387,55 +325,51 @@
     },
     {
       "seed": 604,
-      "formatter": "cloze",
+      "formatter": "read_mcq",
       "question_text": "Kuya Renz has ₱10 in one pocket and ₱500 in another pocket. How much money does Kuya Renz have in total?",
-      "correct_answer": 510,
+      "correct_answer": "C",
       "options": [
         {
           "key": "A",
-          "value": 500,
-          "text": "500",
+          "value": 560,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 5100,
-          "text": "5100",
+          "value": 460,
           "is_correct": false
         },
         {
           "key": "C",
           "value": 510,
-          "text": "510",
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 511,
-          "text": "511",
+          "value": 509,
           "is_correct": false
         }
       ]
     },
     {
       "seed": 605,
-      "formatter": "mcq",
+      "formatter": "read_mcq",
       "question_text": "Riza had ₱200 in a piggy bank and used ₱50 to buy a notebook. How much money is left in the piggy bank?",
-      "correct_answer": 150,
+      "correct_answer": "D",
       "options": [
         {
           "key": "A",
-          "value": 290,
+          "value": 199,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 301,
+          "value": 201,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 3000,
+          "value": 220,
           "is_correct": false
         },
         {
@@ -449,27 +383,27 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "FAIL",
-      "rationale": "Seed 605 is a subtraction item sitting inside an addition competency: a piggy bank holds ₱200, ₱50 is used to buy a notebook, and the key is 150. Whatever its merit elsewhere, it does not address the verb 'addition' that this node states, and its presence means the generator can emit the wrong operation for this node."
+      "rationale": "One sample is not an addition problem at all: 'Riza had ₱200 in a piggy bank and used ₱50 to buy a notebook' is keyed to 150, a take-away. This competency is confined to addition with sums up to 1000, so a subtraction item rendered under it is off-competency content reaching the student."
     },
     "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "Both regrouping conditions the wording demands are genuinely produced. Seeds 44, 48 and 600 carry across the tens (144 plus 480, 96 plus 15, 50 plus 61), while seeds 46 and 501 are clean round-hundred additions. Money and non-money framings both appear."
+      "verdict": "CONCERN",
+      "rationale": "Regrouped and non-regrouped sums both do occur, and money contexts are plentiful, but the coverage is polluted at the low end by a degenerate item that adds nothing: 'received ₱0 more from Nanay' requires no addition to answer."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Two-clause stems naming a person, an amount, and a second amount are appropriate reading for Grade 2 Quarter 2, and the honorific names (Ate, Kuya, Coach, Nanay) are familiar register. No vocabulary beyond the quarter appears."
+      "rationale": "Stems are two-clause Filipino-context sentences of the length a second grader reads independently, honorifics such as Ate and Kuya are used naturally, and no operation beyond joining two amounts is demanded."
     },
     "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The pool spans saved-on-Monday-and-Tuesday, money-in-two-pockets, shop-purchase and stair-climbing narratives, plus a count-on framing in seed 42 and a judge-the-worked-solution framing in seed 43. That is real presentational range for a solve-problems competency."
+      "verdict": "CONCERN",
+      "rationale": "Nearly every sample is one of two interchangeable money templates - money in two pockets, or money saved on Monday and Tuesday. Bare computation appears only through a counting-on stem, and no part-whole or missing-addend presentation is sampled."
     },
     "competency_alignment": {
       "verdict": "CONCERN",
-      "rationale": "Seed 601 has Coach Roel receive ₱0 more, so the item's answer equals its own starting amount and no addition is performed at all. An easy end of the ladder should still be addition; a zero addend is a different axis entirely."
+      "rationale": "The sampled difficulty ladder moves mostly by swapping character names rather than by moving up the addition range; a two-digit pocket sum and a sum touching four digits sit side by side with nothing in the item design marking the step."
     },
     "scale_appropriateness": {
       "verdict": "CONCERN",
-      "rationale": "The sums themselves stop correctly at 1000 (seed 502 reaches it exactly), but several option lists breach that ceiling by an order of magnitude: 10000 offered against a ₱500 plus ₱500 purchase, 9050 in seed 501, 6560 in seed 46. A child who knows only that the total cannot exceed 1000 can discard those without adding."
+      "rationale": "The 1000 ceiling is touched exactly once, by a 500-plus-500 purchase. A large share of the remaining samples settle at sums below 120, so the stated range up to 1000 is barely exercised. Two option lists also carry values an order of magnitude off - 6560 and 10000 - which a pupil discards without adding."
     }
   },
   "overall": "FAIL"

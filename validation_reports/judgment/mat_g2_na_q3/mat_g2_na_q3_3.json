@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g2_na_q3_3",
-  "reviewed_by": "reviewer-r1-cobalt-juniper-7748",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c4-pumice-lovage-6370",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -9,7 +9,6 @@
     44,
     45,
     46,
-    47,
     500,
     501,
     502,
@@ -21,46 +20,46 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "true_false",
-      "question_text": "Maico puts 3 costumes in each of 3 bags. How many costumes are in all the bags? The answer is 9. True or False?",
-      "correct_answer": true
-    },
-    {
-      "seed": 43,
-      "formatter": "error_detect",
-      "question_text": "Grace solved this problem: \"Nanding wants to buy 4 water bowls that cost ₱2 each. How much does Nanding need to pay in all?\" Grace says the answer is 8. Is Grace correct?",
-      "correct_answer": {
-        "has_error": false,
-        "correct_value": 8
-      }
-    },
-    {
-      "seed": 44,
       "formatter": "mcq",
-      "question_text": "Coach Nora wants to buy 1 shuttlecock that cost ₱2 each. How much does Coach Nora need to pay in all?",
-      "correct_answer": 2,
+      "question_text": "Maico puts 3 costumes in each of 3 bags. How many costumes are in all the bags?",
+      "correct_answer": 9,
       "options": [
         {
           "key": "A",
-          "value": 4,
+          "value": 12,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 2,
-          "is_correct": true
+          "value": 8,
+          "is_correct": false
         },
         {
           "key": "C",
-          "value": 3,
-          "is_correct": false
+          "value": 9,
+          "is_correct": true
         },
         {
           "key": "D",
-          "value": 1,
+          "value": 6,
           "is_correct": false
         }
       ]
+    },
+    {
+      "seed": 43,
+      "formatter": "true_false",
+      "question_text": "Nanding wants to buy 4 water bowls that cost ₱2 each. How much does Nanding need to pay in all? The answer is 6. True or False?",
+      "correct_answer": false
+    },
+    {
+      "seed": 44,
+      "formatter": "error_detect",
+      "question_text": "Rico solved this problem: \"Coach Nora wants to buy 1 shuttlecock that cost ₱2 each. How much does Coach Nora need to pay in all?\" Rico says the answer is 2. Is Rico correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 2
+      }
     },
     {
       "seed": 45,
@@ -92,138 +91,90 @@
     },
     {
       "seed": 46,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "Ate Joy puts 2 seeds in each of 6 bags. How many seeds are in all the bags?",
       "correct_answer": 12,
       "options": [
         {
           "key": "A",
           "value": 8,
+          "text": "8",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 4,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 12,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 10,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 47,
-      "formatter": "cloze",
-      "question_text": "Pia wants to buy 8 fish food packets that cost ₱4 each. How much does Pia need to pay in all?",
-      "correct_answer": 32,
-      "options": [
-        {
-          "key": "A",
           "value": 4,
           "text": "4",
           "is_correct": false
         },
         {
-          "key": "B",
+          "key": "C",
           "value": 12,
           "text": "12",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 32,
-          "text": "32",
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 28,
-          "text": "28",
+          "value": 10,
+          "text": "10",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 500,
-      "formatter": "error_detect",
-      "question_text": "Rico solved this problem: \"Kuya Ton puts 10 ribbons in each of 8 bags. How many ribbons are in all the bags?\" Rico says the answer is 80. Is Rico correct?",
-      "correct_answer": {
-        "has_error": false,
-        "correct_value": 80
-      }
+      "formatter": "true_false",
+      "question_text": "Kuya Ton puts 10 ribbons in each of 8 bags. How many ribbons are in all the bags? The answer is 90. True or False?",
+      "correct_answer": false
     },
     {
       "seed": 501,
-      "formatter": "cloze",
+      "formatter": "mcq",
       "question_text": "Ate Sam puts 5 running shoes in each of 6 bags. How many running shoes are in all the bags?",
       "correct_answer": 30,
       "options": [
         {
           "key": "A",
           "value": 25,
-          "text": "25",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 30,
-          "text": "30",
           "is_correct": true
         },
         {
           "key": "C",
           "value": 11,
-          "text": "11",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 1,
-          "text": "1",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 502,
-      "formatter": "mcq",
-      "question_text": "Kuya Renz puts 4 canvases in each of 9 bags. How many canvases are in all the bags?",
-      "correct_answer": 36,
-      "options": [
-        {
-          "key": "A",
-          "value": 13,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 5,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 32,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 36,
-          "is_correct": true
-        }
-      ]
+      "formatter": "error_detect",
+      "question_text": "Dante solved this problem: \"Kuya Renz puts 4 canvases in each of 9 bags. How many canvases are in all the bags?\" Dante says the answer is 36. Is Dante correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 36
+      }
     },
     {
       "seed": 600,
+      "formatter": "true_false",
+      "question_text": "Kuya Tads puts 4 leashes in each of 5 bags. How many leashes are in all the bags? The answer is 20. True or False?",
+      "correct_answer": true
+    },
+    {
+      "seed": 601,
       "formatter": "cloze",
-      "question_text": "Kuya Tads puts 4 leashes in each of 5 bags. How many leashes are in all the bags?",
-      "correct_answer": 20,
+      "question_text": "Coach Roel wants to buy 6 score cards that cost ₱3 each. How much does Coach Roel need to pay in all?",
+      "correct_answer": 18,
       "options": [
         {
           "key": "A",
@@ -233,68 +184,8 @@
         },
         {
           "key": "B",
-          "value": 1,
-          "text": "1",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 20,
-          "text": "20",
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 16,
-          "text": "16",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 601,
-      "formatter": "mcq",
-      "question_text": "Coach Roel wants to buy 6 score cards that cost ₱3 each. How much does Coach Roel need to pay in all?",
-      "correct_answer": 18,
-      "options": [
-        {
-          "key": "A",
-          "value": 9,
-          "is_correct": false
-        },
-        {
-          "key": "B",
           "value": 15,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 3,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 18,
-          "is_correct": true
-        }
-      ]
-    },
-    {
-      "seed": 602,
-      "formatter": "cloze",
-      "question_text": "Sir Rez wants to buy 1 ribbon that cost ₱2 each. How much does Sir Rez need to pay in all?",
-      "correct_answer": 2,
-      "options": [
-        {
-          "key": "A",
-          "value": 1,
-          "text": "1",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 4,
-          "text": "4",
+          "text": "15",
           "is_correct": false
         },
         {
@@ -305,65 +196,71 @@
         },
         {
           "key": "D",
+          "value": 18,
+          "text": "18",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 602,
+      "formatter": "mcq",
+      "question_text": "Sir Rez wants to buy 1 ribbon that cost ₱2 each. How much does Sir Rez need to pay in all?",
+      "correct_answer": 2,
+      "options": [
+        {
+          "key": "A",
+          "value": 1,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 4,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "D",
           "value": 2,
-          "text": "2",
           "is_correct": true
         }
       ]
     },
     {
       "seed": 603,
-      "formatter": "mcq",
-      "question_text": "Ate Beng wants to buy 4 leashes that cost ₱3 each. How much does Ate Beng need to pay in all?",
-      "correct_answer": 12,
-      "options": [
-        {
-          "key": "A",
-          "value": 7,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 9,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 1,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 12,
-          "is_correct": true
-        }
-      ]
+      "formatter": "true_false",
+      "question_text": "Ate Beng wants to buy 4 leashes that cost ₱3 each. How much does Ate Beng need to pay in all? The answer is 12. True or False?",
+      "correct_answer": true
     }
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "These are word problems whose solution is a product from the permitted tables, and the money requirement is met by repeated purchase contexts priced in pesos per item, so both the solving verb and the money clause are served."
+      "rationale": "These are word problems rather than facts, the peso strand the competency explicitly requires is present in several items, and every product I recomputed against its stem - including ten ribbons across eight bags and four canvases across nine - is correctly keyed."
     },
     "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "The ten times table is reachable in only one sampled problem, the error-check about a child who 'puts 10 ribbons in each of 8 bags', and it arrives there as someone else's answer to verify rather than as a problem the student solves outright. The other four tables recur freely, so coverage across the named tables is uneven."
+      "verdict": "PASS",
+      "rationale": "Each of the five tables is reached somewhere in the set, twos and threes through purchase prices, fours and fives through the bag problems, and tens through the ribbon item, and money and non-money contexts both occur."
     },
     "cognitive_capacity": {
       "verdict": "CONCERN",
-      "rationale": "Two problems multiply by one and read oddly as a result: buying '1 shuttlecock that cost ₱2 each' and buying '1 ribbon that cost ₱2 each' keep the per-item phrasing while there is only one item. They are grammatically strained and require no multiplication at all, which wastes a slot in a set meant to build table fluency."
+      "rationale": "The purchase frame is ungrammatical when the count is one: buying '1 shuttlecock that cost ₱2 each' and '1 ribbon that cost ₱2 each' both mismatch number agreement and turn a single purchase into a rate question. Beginning readers are being asked to parse a sentence that is wrong."
     },
     "variant_comprehensiveness": {
       "verdict": "CONCERN",
-      "rationale": "Only two story schemas exist across the whole set: someone buying a number of identical items at a stated price, and someone putting a number of objects into each of several bags. The nouns and names rotate constantly while the sentence skeleton never does, and there is no array, rate, or comparison framing."
+      "rationale": "Only two sentence frames exist across the whole node - putting a count of things into each of several bags, or buying several things at a fixed price. There is no array context, no comparison such as three times as many, and no picture-led item."
     },
     "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Larger multipliers and larger unit prices drive the harder samples, so the progression is about handling bigger products from the same tables, which is the demand this competency describes."
+      "verdict": "CONCERN",
+      "rationale": "The lowest rungs multiply by one, so the answer is simply the price restated. Those items vary the object being bought rather than advancing the table recall the competency is about."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Prices sit between two and four pesos and quantities stay at ten or below, keeping every total inside the range a Grade 2 student working these tables should produce, with the largest answer reaching eighty."
+      "rationale": "Counts and prices both stay at ten or below and the largest total is eighty, which sits well inside what a Grade 2 multiplication problem should demand."
     }
   },
   "overall": "CONCERN"

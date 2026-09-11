@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g1_na_q1_5",
-  "reviewed_by": "reviewer-b1-quartz-mallow-4412",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c1-lantern-fescue-3061",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -20,92 +20,88 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "cloze",
+      "formatter": "mcq",
       "question_text": "Which word describes the 5th position?",
       "correct_answer": "fifth",
       "options": [
         {
           "key": "A",
           "value": "eighth",
-          "text": "eighth",
           "is_correct": false
         },
         {
           "key": "B",
           "value": "fifth",
-          "text": "fifth",
           "is_correct": true
         },
         {
           "key": "C",
           "value": "third",
-          "text": "third",
           "is_correct": false
         },
         {
           "key": "D",
           "value": "ninth",
-          "text": "ninth",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 43,
-      "formatter": "cloze",
+      "formatter": "mcq",
       "question_text": "Write the symbol for the third position.",
       "correct_answer": "3rd",
       "options": [
         {
           "key": "A",
           "value": "2nd",
-          "text": "2nd",
           "is_correct": false
         },
         {
           "key": "B",
           "value": "4th",
-          "text": "4th",
           "is_correct": false
         },
         {
           "key": "C",
           "value": "3rd",
-          "text": "3rd",
           "is_correct": true
         },
         {
           "key": "D",
           "value": "6th",
-          "text": "6th",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 44,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "Ana, Ben, Carlo and Dina stand in a row. Who is 3rd in the row?",
       "correct_answer": "Carlo",
       "options": [
         {
           "key": "A",
           "value": "Carlo",
+          "text": "Carlo",
           "is_correct": true
         },
         {
           "key": "B",
           "value": "Ana",
+          "text": "Ana",
           "is_correct": false
         },
         {
           "key": "C",
           "value": "Dina",
+          "text": "Dina",
           "is_correct": false
         },
         {
           "key": "D",
           "value": "Ben",
+          "text": "Ben",
           "is_correct": false
         }
       ]
@@ -140,60 +136,60 @@
     },
     {
       "seed": 46,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "Write the symbol for the first position.",
       "correct_answer": "1st",
       "options": [
         {
           "key": "A",
           "value": "9th",
+          "text": "9th",
           "is_correct": false
         },
         {
           "key": "B",
           "value": "1st",
+          "text": "1st",
           "is_correct": true
         },
         {
           "key": "C",
           "value": "10th",
+          "text": "10th",
           "is_correct": false
         },
         {
           "key": "D",
           "value": "3rd",
+          "text": "3rd",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 500,
-      "formatter": "cloze",
+      "formatter": "mcq",
       "question_text": "The baskets are placed in a row. One basket is number 10 in the row. Which word describes its position?",
       "correct_answer": "tenth",
       "options": [
         {
           "key": "A",
           "value": "eighth",
-          "text": "eighth",
           "is_correct": false
         },
         {
           "key": "B",
           "value": "seventh",
-          "text": "seventh",
           "is_correct": false
         },
         {
           "key": "C",
           "value": "ninth",
-          "text": "ninth",
           "is_correct": false
         },
         {
           "key": "D",
           "value": "tenth",
-          "text": "tenth",
           "is_correct": true
         }
       ]
@@ -228,28 +224,32 @@
     },
     {
       "seed": 502,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "Who arrived earlier: the student in 10th place or 3rd place?",
       "correct_answer": "3rd",
       "options": [
         {
           "key": "A",
           "value": "5th",
+          "text": "5th",
           "is_correct": false
         },
         {
           "key": "B",
           "value": "8th",
+          "text": "8th",
           "is_correct": false
         },
         {
           "key": "C",
           "value": "2nd",
+          "text": "2nd",
           "is_correct": false
         },
         {
           "key": "D",
           "value": "3rd",
+          "text": "3rd",
           "is_correct": true
         }
       ]
@@ -284,28 +284,32 @@
     },
     {
       "seed": 601,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "The pupils stand in a row. Jose is number 10 in the row. Which word describes Jose's position?",
       "correct_answer": "tenth",
       "options": [
         {
           "key": "A",
           "value": "second",
+          "text": "second",
           "is_correct": false
         },
         {
           "key": "B",
           "value": "third",
+          "text": "third",
           "is_correct": false
         },
         {
           "key": "C",
           "value": "seventh",
+          "text": "seventh",
           "is_correct": false
         },
         {
           "key": "D",
           "value": "tenth",
+          "text": "tenth",
           "is_correct": true
         }
       ]
@@ -369,28 +373,28 @@
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "Position is genuinely the subject: ordinal symbols, ordinal words, and a child standing third in a row of named pupils are all asked for, which is what describing position with ordinals means."
+      "verdict": "CONCERN",
+      "rationale": "The competency is about describing the position of objects, but most samples are pure notation drills - asking which word describes the 5th position, or to write the symbol for the third position - with no object in sight. Only three of the twelve attach an ordinal to something positioned, such as pupils standing in a row or baskets placed in a row, so the object-anchored form the wording calls for is the minority case."
     },
     "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "Although the competency runs the full span to 10th, the keys pile onto 3rd, 9th and 10th. Second, fourth, sixth and eighth are never the answer, and 6th and 8th surface only as the starting point of a comes-after question."
+      "verdict": "PASS",
+      "rationale": "The stated span is well covered: 1st, 3rd, 5th, 6th, 7th, 8th, 9th and 10th all appear as keys or targets, and both representations named in the competency, the symbol form and the word form, are produced rather than only recognised."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Matching a position number to its word or its symbol is single-step, and the row items use only four names so no list has to be held in memory."
+      "rationale": "Naming a position, converting between 3rd and third, and identifying who stands third among four named children are all single-step recall or scan tasks fitting the first quarter of Grade 1."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "Symbol-to-word, word-to-symbol, successor position, a line of named children, and an arrival-order comparison between two placings are all represented."
+      "rationale": "Four distinct question shapes are present - word for a position, symbol for a position, the successor of an ordinal, and a comparison of two places asking who arrived earlier - and answers come as both typed and selected responses."
     },
     "competency_alignment": {
-      "verdict": "CONCERN",
-      "rationale": "The successor question recurs three times with only the ordinal swapped, and no render works from the far end of a row or asks which position comes before a given one, so the set flattens rather than progressing."
+      "verdict": "PASS",
+      "rationale": "Decoys are drawn from neighbouring ordinals rather than from unrelated values, so the pupil must actually know the sequence; the successor items in particular build the ordering that underlies ordinal description."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Nothing above 10th is used as key or as decoy, which keeps the generator inside the upper bound the competency writes out."
+      "rationale": "Nothing beyond 10th is ever used, as keys or as decoys, so the explicit bound in the competency is respected exactly, and 1st and 10th are both exercised as endpoints."
     }
   },
   "overall": "CONCERN"

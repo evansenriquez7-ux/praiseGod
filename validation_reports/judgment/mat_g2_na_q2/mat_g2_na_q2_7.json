@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g2_na_q2_7",
-  "reviewed_by": "reviewer-r1-cobalt-juniper-7748",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c4-pumice-lovage-6370",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -9,8 +9,7 @@
     44,
     45,
     46,
-    50,
-    55,
+    48,
     500,
     501,
     502,
@@ -24,28 +23,32 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "Carlo had 630 stamps. Carlo gave 96 stamps to classmates. How many stamps does Carlo have left?",
       "correct_answer": 534,
       "options": [
         {
           "key": "A",
           "value": 524,
+          "text": "524",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 544,
+          "text": "544",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 554,
+          "text": "554",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 534,
+          "text": "534",
           "is_correct": true
         }
       ]
@@ -112,143 +115,67 @@
     },
     {
       "seed": 45,
-      "formatter": "mcq",
-      "question_text": "Ate Nena had ₱636. Ate Nena bought a ballpen for ₱61 and a pad paper for ₱179. How much money does Ate Nena have left?",
-      "correct_answer": 396,
-      "options": [
-        {
-          "key": "A",
-          "value": 396,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 406,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 416,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 386,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 46,
-      "formatter": "mcq",
-      "question_text": "Carlo had ₱810. Carlo bought a ballpen for ₱174 and a sandwich for ₱136. How much money does Carlo have left?",
-      "correct_answer": 500,
-      "options": [
-        {
-          "key": "A",
-          "value": 510,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 500,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 490,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 520,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 50,
       "formatter": "true_false",
-      "question_text": "Elena had 635 pencils. Elena gave 112 pencils to Isko and 248 pencils to Renz. How many pencils does Elena have left? The answer is 276. True or False?",
+      "question_text": "Ate Nena had ₱636. Ate Nena bought a ballpen for ₱61 and a pad paper for ₱179. How much money does Ate Nena have left? The answer is 416. True or False?",
       "correct_answer": false
     },
     {
-      "seed": 55,
+      "seed": 46,
+      "formatter": "true_false",
+      "question_text": "Carlo had ₱810. Carlo bought a ballpen for ₱174 and a sandwich for ₱136. How much money does Carlo have left? The answer is 500. True or False?",
+      "correct_answer": true
+    },
+    {
+      "seed": 48,
       "formatter": "error_detect",
-      "question_text": "Grace solved this problem: \"Ben had ₱87 and spent ₱30 for lunch. How much money does Ben have left?\" Grace says the answer is 47. Is Grace correct?",
+      "question_text": "Noel solved this problem: \"Ben had 780 tickets. Ben gave 109 tickets to Bianca and 74 tickets to Mia. How many tickets does Ben have left?\" Noel says the answer is 597. Is Noel correct?",
       "correct_answer": {
-        "has_error": true,
-        "correct_value": 57
+        "has_error": false,
+        "correct_value": 597
       }
     },
     {
       "seed": 500,
-      "formatter": "error_detect",
-      "question_text": "Rico solved this problem: \"Dan had ₱349. Dan bought a sandwich for ₱92 and a juice box for ₱84. How much money does Dan have left?\" Rico says the answer is 173. Is Rico correct?",
-      "correct_answer": {
-        "has_error": false,
-        "correct_value": 173
-      }
+      "formatter": "true_false",
+      "question_text": "Dan had ₱349. Dan bought a sandwich for ₱92 and a juice box for ₱84. How much money does Dan have left? The answer is 174. True or False?",
+      "correct_answer": false
     },
     {
       "seed": 501,
-      "formatter": "cloze",
+      "formatter": "mcq",
       "question_text": "Isko had 717 erasers. Isko gave 145 erasers to Ben and 304 erasers to Ate Nena. How many erasers does Isko have left?",
       "correct_answer": 268,
       "options": [
         {
           "key": "A",
           "value": 268,
-          "text": "268",
           "is_correct": true
         },
         {
           "key": "B",
           "value": 258,
-          "text": "258",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 278,
-          "text": "278",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 288,
-          "text": "288",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 502,
-      "formatter": "mcq",
-      "question_text": "Ben had 572 erasers. Ben gave 165 erasers to Isko and 331 erasers to Elena. How many erasers does Ben have left?",
-      "correct_answer": 76,
-      "options": [
-        {
-          "key": "A",
-          "value": 96,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 76,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 66,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 86,
-          "is_correct": false
-        }
-      ]
+      "formatter": "error_detect",
+      "question_text": "Dante solved this problem: \"Ben had 572 erasers. Ben gave 165 erasers to Isko and 331 erasers to Elena. How many erasers does Ben have left?\" Dante says the answer is 76. Is Dante correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 76
+      }
     },
     {
       "seed": 600,
@@ -312,127 +239,82 @@
     },
     {
       "seed": 602,
-      "formatter": "mcq",
-      "question_text": "Elena had ₱110 and spent ₱105 for lunch. How much money does Elena have left?",
-      "correct_answer": 5,
-      "options": [
-        {
-          "key": "A",
-          "value": 1,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 5,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 15,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 25,
-          "is_correct": false
-        }
-      ]
+      "formatter": "error_detect",
+      "question_text": "Jose solved this problem: \"Elena had ₱110 and spent ₱105 for lunch. How much money does Elena have left?\" Jose says the answer is 5. Is Jose correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 5
+      }
     },
     {
       "seed": 603,
-      "formatter": "cloze",
+      "formatter": "mcq",
       "question_text": "Ate Nena had 60 mangoes. Ate Nena gave 26 mangoes to Kuya Ton and 24 mangoes to Renz. How many mangoes does Ate Nena have left?",
       "correct_answer": 10,
       "options": [
         {
           "key": "A",
           "value": 20,
-          "text": "20",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 1,
-          "text": "1",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 30,
-          "text": "30",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 10,
-          "text": "10",
           "is_correct": true
         }
       ]
     },
     {
       "seed": 604,
-      "formatter": "mcq",
-      "question_text": "Renz had ₱234 and spent ₱110 at the sari-sari store. How much money does Renz have left?",
-      "correct_answer": 124,
-      "options": [
-        {
-          "key": "A",
-          "value": 124,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 144,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 114,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 134,
-          "is_correct": false
-        }
-      ]
+      "formatter": "error_detect",
+      "question_text": "Carlo solved this problem: \"Renz had ₱234 and spent ₱110 at the sari-sari store. How much money does Renz have left?\" Carlo says the answer is 124. Is Carlo correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 124
+      }
     },
     {
       "seed": 605,
-      "formatter": "error_detect",
-      "question_text": "Liza solved this problem: \"Bianca had ₱522 and spent ₱420 for a school project. How much money does Bianca have left?\" Liza says the answer is 102. Is Liza correct?",
-      "correct_answer": {
-        "has_error": false,
-        "correct_value": 102
-      }
+      "formatter": "true_false",
+      "question_text": "Bianca had ₱522 and spent ₱420 for a school project. How much money does Bianca have left? The answer is 112. True or False?",
+      "correct_answer": false
     }
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "Sampled items are genuine word problems solved by subtracting, and the money clause is honoured by several peso contexts such as buying a ballpen and a pad paper from a starting amount. Keys check out against their stems throughout the set."
+      "rationale": "Both step counts the competency names are present and correctly keyed. I recomputed all fifteen: the two-step chains such as 314 less 193 less 107 giving 14 and 717 less 145 less 304 giving 268 are right, as are the one-step ones such as 630 less 96 giving 534."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "The four things the wording demands all appear: single-step removals, two-step removals where a child gives to two recipients, peso contexts, and both regrouping and non-regrouping arithmetic, the latter visible where 234 has 110 spent from it against cases that must borrow across a zero."
+      "rationale": "Money problems are threaded through the set in peso amounts alongside object problems in stamps, bread and erasers, and the regrouped and non-regrouped cases both occur, so no clause of this competency's wording is left unsampled."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Two-step stems name the actor once and the two amounts in order, which a Grade 2 reader can hold. The quantities are sometimes implausible for their nouns, notably hundreds of loaves of bread being handed to two people, but the reading and reasoning load stays at grade."
+      "rationale": "Two-step stems introduce the two recipients in a single readable sentence rather than nesting conditions, and the contexts - a sari-sari store, a school project, lunch - are ones a Filipino second grader already navigates."
     },
     "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "Every problem in the set is a take-away or a spend, phrased as someone having an amount and giving away or buying. No difference or comparison wording appears, and no problem asks how much more one quantity is than another, so one of the standard subtraction situations is entirely missing from the contextual repertoire."
+      "verdict": "PASS",
+      "rationale": "Giving away to two people, buying two items, spending once at a shop and a single gift to a library each appear, and the formatter mix runs across cloze, choice, true-or-false and peer-error, so both the situation and the response mode vary."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Progression runs from a single small removal, such as the case starting at ₱110 with ₱105 spent, up to three-digit two-step chains that force borrowing; that is an escalation in subtraction demand rather than in unrelated reading complexity."
+      "rationale": "The harder samples are the ones with two sequential removals from a three-digit start, and the easier ones a single removal, which is precisely the one-step-to-two-step progression this node is defined by rather than a change in context dressing."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "The largest starting quantity sampled is 810 and every operand sits below a thousand as the competency requires, while the smaller cases keep the lower band of the range in play too."
+      "rationale": "Starting amounts run up to 810 and 780, comfortably inside the under-1000 bound, while remaining large enough that the two-step subtractions actually exercise three-digit work."
     }
   },
-  "overall": "CONCERN"
+  "overall": "PASS"
 }

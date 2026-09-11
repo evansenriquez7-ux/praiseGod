@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g1_na_q1_8",
-  "reviewed_by": "reviewer-b1-quartz-mallow-4412",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c1-lantern-fescue-3061",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -9,7 +9,7 @@
     44,
     45,
     46,
-    70,
+    51,
     500,
     501,
     502,
@@ -23,18 +23,37 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "true_false",
-      "question_text": "1 + 0 = 1. True or False?",
-      "correct_answer": true
+      "formatter": "mcq",
+      "question_text": "What is 1 + 0?",
+      "correct_answer": 1,
+      "options": [
+        {
+          "key": "A",
+          "value": 11,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 1,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 0,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 2,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 43,
-      "formatter": "error_detect",
-      "question_text": "Grace solved: \"0 + 10 = ___\". Grace says the blank is 10. Is Grace correct?",
-      "correct_answer": {
-        "has_error": false,
-        "correct_value": 10
-      }
+      "formatter": "true_false",
+      "question_text": "0 + 10 = 20. True or False?",
+      "correct_answer": false
     },
     {
       "seed": 44,
@@ -94,63 +113,44 @@
     },
     {
       "seed": 46,
-      "formatter": "mcq",
-      "question_text": "What is 0 + 13?",
+      "formatter": "cloze",
+      "question_text": "0 + 13 = ___",
       "correct_answer": 13,
       "options": [
         {
           "key": "A",
           "value": 13,
+          "text": "13",
           "is_correct": true
         },
         {
           "key": "B",
           "value": 23,
+          "text": "23",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 14,
+          "text": "14",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 12,
+          "text": "12",
           "is_correct": false
         }
       ]
     },
     {
-      "seed": 70,
-      "formatter": "cloze",
-      "question_text": "10 + 0 = ___",
-      "correct_answer": 10,
-      "options": [
-        {
-          "key": "A",
-          "value": 9,
-          "text": "9",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 10,
-          "text": "10",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 11,
-          "text": "11",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 20,
-          "text": "20",
-          "is_correct": false
-        }
-      ]
+      "seed": 51,
+      "formatter": "error_detect",
+      "question_text": "Ana solved: \"0 + 17 = ___\". Ana says the blank is 18. Is Ana correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 17
+      }
     },
     {
       "seed": 500,
@@ -266,28 +266,32 @@
     },
     {
       "seed": 601,
-      "formatter": "mcq",
-      "question_text": "What is 0 + 19?",
+      "formatter": "cloze",
+      "question_text": "0 + 19 = ___",
       "correct_answer": 19,
       "options": [
         {
           "key": "A",
           "value": 20,
+          "text": "20",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 29,
+          "text": "29",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 19,
+          "text": "19",
           "is_correct": true
         },
         {
           "key": "D",
           "value": 18,
+          "text": "18",
           "is_correct": false
         }
       ]
@@ -322,95 +326,69 @@
     },
     {
       "seed": 603,
+      "formatter": "true_false",
+      "question_text": "18 + 0 = 18. True or False?",
+      "correct_answer": true
+    },
+    {
+      "seed": 604,
       "formatter": "mcq",
-      "question_text": "What is 18 + 0?",
-      "correct_answer": 18,
+      "question_text": "What is 7 + 0?",
+      "correct_answer": 7,
       "options": [
         {
           "key": "A",
-          "value": 18,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 28,
-          "is_correct": false
-        },
-        {
-          "key": "C",
           "value": 17,
           "is_correct": false
         },
         {
-          "key": "D",
-          "value": 19,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 604,
-      "formatter": "true_false",
-      "question_text": "7 + 0 = 8. True or False?",
-      "correct_answer": false
-    },
-    {
-      "seed": 605,
-      "formatter": "cloze",
-      "question_text": "19 + 0 = ___",
-      "correct_answer": 19,
-      "options": [
-        {
-          "key": "A",
-          "value": 19,
-          "text": "19",
-          "is_correct": true
-        },
-        {
           "key": "B",
-          "value": 29,
-          "text": "29",
+          "value": 8,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 18,
-          "text": "18",
-          "is_correct": false
+          "value": 7,
+          "is_correct": true
         },
         {
           "key": "D",
-          "value": 20,
-          "text": "20",
+          "value": 6,
           "is_correct": false
         }
       ]
+    },
+    {
+      "seed": 605,
+      "formatter": "true_false",
+      "question_text": "19 + 0 = 19. True or False?",
+      "correct_answer": true
     }
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "The zero-property items do what they should. But several commutativity items silently alter the second expression - 'Is 13 + 6 the same as 6 + 14?' - and key them False. An item whose addends were changed illustrates nothing about 'changing the order of the addends'."
+      "verdict": "FAIL",
+      "rationale": "The order-of-addends half of this competency is mis-generated. Four samples pose questions such as whether 18 + 1 is the same as 1 + 14, or whether 13 + 6 is the same as 6 + 14, where the second expression is not a reordering of the first at all - one addend has been silently changed - and the key is False. A pupil who has correctly learned that changing the order of the addends does not change the sum will read the swapped-looking form, answer True, and be marked wrong; the item punishes the very generalisation the competency asks the pupil to apply. Only three samples, such as the one asking whether 16 + 3 is the same as 3 + 16, are genuine commutativity items."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "Both named properties are generated, zero is placed on each side of the plus sign across different renders, and commutativity is shown true for several different addend pairs."
+      "rationale": "Both named properties do get their own items: the zero property appears in several forms including 0 + 19 and 18 + 0, and the order property appears in the matched-addend questions, so neither clause is missing from the generated set."
     },
     "cognitive_capacity": {
       "verdict": "CONCERN",
-      "rationale": "The option 'Only when both are 0' asserts a condition that flatly contradicts the property being taught, and 'Cannot be determined' is abstract logical vocabulary for a Quarter 1 first grader. Both occupy slots in every commutativity render."
+      "rationale": "The mismatched-addend items demand that the pupil compute and compare two separate sums, a two-step arithmetic comparison, where an item about the property should be answerable by inspection. That is a heavier and different demand than illustrating a property, and it lands in Quarter 1 of Grade 1."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "True-or-false statements, a typed equation blank, an error-detection item about another pupil's work, and multiple choice are all in the mix, so the property is met in more than one guise."
+      "rationale": "Four formats carry the samples - direct computation, a verdict on a stated equation, a blank to complete, and a check of another pupil's proposed answer - so the properties are met in more than one presentation."
     },
     "competency_alignment": {
-      "verdict": "FAIL",
-      "rationale": "What separates the harder seeds is whether the second expression has been tampered with, not whether the pupil grasps the property. A learner can score by spotting mismatched numerals and never reason about order or zero at all, and the False items actively risk teaching that reordering addends sometimes does change the sum - the opposite of what this competency states."
+      "verdict": "CONCERN",
+      "rationale": "Across the order-property seeds the axis that varies is whether the two expressions match, which turns a property item into a spot-the-difference item; meanwhile the option Only when both are 0 is carried in every such list although it can never be correct for either property as stated."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Addends and sums stay at or below 20 throughout, which is the bound the competency specifies for illustrating these properties."
+      "rationale": "Every expression sampled, including the largest at 6 + 14, stays at or under a sum of 20 as the competency requires, and the zero-property items span the full range from 1 + 0 up to 19 + 0."
     }
   },
   "overall": "FAIL"

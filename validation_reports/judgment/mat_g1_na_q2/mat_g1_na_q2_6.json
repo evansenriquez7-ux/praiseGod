@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g1_na_q2_6",
-  "reviewed_by": "reviewer-b2-tallow-verdigris-8130",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c2-basalt-yarrow-7194",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -9,10 +9,8 @@
     44,
     45,
     46,
-    47,
-    48,
     52,
-    87,
+    79,
     500,
     501,
     502,
@@ -21,23 +19,20 @@
     602,
     603,
     604,
-    606
+    605
   ],
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "error_detect",
-      "question_text": "Manny solved: \"1 + 63 = ___\". Manny says the blank is 63. Is Manny correct?",
-      "correct_answer": {
-        "has_error": true,
-        "correct_value": 64
-      }
+      "formatter": "true_false",
+      "question_text": "One group has 1 item and another group has 63 items. Putting them together makes 63 items in all. True or False?",
+      "correct_answer": false
     },
     {
       "seed": 43,
-      "formatter": "read_mcq",
-      "question_text": "(Large group of 23 stars) — There are 23 stars.\n(Large group of 45 stars) — 45 more stars are added.\nHow many total stars are there?",
-      "correct_answer": "D",
+      "formatter": "mcq",
+      "question_text": "One group has 23 items and another group has 45 items. If you put them together, how many items are there in all?",
+      "correct_answer": 68,
       "options": [
         {
           "key": "A",
@@ -46,7 +41,7 @@
         },
         {
           "key": "B",
-          "value": 23,
+          "value": 78,
           "is_correct": false
         },
         {
@@ -63,125 +58,72 @@
     },
     {
       "seed": 44,
-      "formatter": "mcq",
-      "question_text": "Start at 30. Count up 25 more. What number do you land on?",
-      "correct_answer": 55,
+      "formatter": "read_mcq",
+      "question_text": "(Large group of 30 books) — There are 30 books.\n(Large group of 25 books) — 25 more books are added.\nHow many total books are there?",
+      "correct_answer": "D",
       "options": [
         {
           "key": "A",
-          "value": 65,
+          "value": 54,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 55,
-          "is_correct": true
+          "value": 30,
+          "is_correct": false
         },
         {
           "key": "C",
-          "value": 56,
+          "value": 25,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 54,
-          "is_correct": false
+          "value": 55,
+          "is_correct": true
         }
       ]
     },
     {
       "seed": 45,
-      "formatter": "mcq",
-      "question_text": "Start at 64. Count up 23 more. What number do you land on?",
-      "correct_answer": 87,
-      "options": [
-        {
-          "key": "A",
-          "value": 88,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 87,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 97,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 86,
-          "is_correct": false
-        }
-      ]
+      "formatter": "error_detect",
+      "question_text": "Pia solved: \"Start at 64. Count up 23 more. You land on ___\". Pia says the blank is 88. Is Pia correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 87
+      }
     },
     {
       "seed": 46,
-      "formatter": "mcq",
-      "question_text": "One group has 33 items and another group has 51 items. If you put them together, how many items are there in all?",
+      "formatter": "cloze",
+      "question_text": "One group has 33 items and another group has 51 items. Putting them together makes ___ items in all.",
       "correct_answer": 84,
       "options": [
         {
           "key": "A",
           "value": 83,
+          "text": "83",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 85,
+          "text": "85",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 84,
+          "text": "84",
           "is_correct": true
         },
         {
           "key": "D",
           "value": 94,
+          "text": "94",
           "is_correct": false
         }
       ]
-    },
-    {
-      "seed": 47,
-      "formatter": "cloze",
-      "question_text": "Start at 60. Count up 20 more. You land on ___",
-      "correct_answer": 80,
-      "options": [
-        {
-          "key": "A",
-          "value": 81,
-          "text": "81",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 80,
-          "text": "80",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 90,
-          "text": "90",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 79,
-          "text": "79",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 48,
-      "formatter": "true_false",
-      "question_text": "Start at 55. Count up 30 more. You land on 84. True or False?",
-      "correct_answer": false
     },
     {
       "seed": 52,
@@ -190,26 +132,26 @@
       "correct_answer": 99
     },
     {
-      "seed": 87,
+      "seed": 79,
       "formatter": "read_fill_in_blank",
-      "question_text": "The two parts are 60 and 30. What is the sum?",
+      "question_text": "The two parts are 30 and 60. What is the sum?",
       "correct_answer": 90
     },
     {
       "seed": 500,
       "formatter": "read_mcq",
-      "question_text": "(Large group of 55 drinks) — There are 55 drinks.\n(Large group of 43 drinks) — 43 more drinks are added.\nHow many total drinks are there?",
-      "correct_answer": "B",
+      "question_text": "The dot is at 55 and it moves forward 43 numbers. Starting from 55, just count up 43 numbers. Which number will the dot land on?",
+      "correct_answer": "A",
       "options": [
         {
           "key": "A",
-          "value": 99,
-          "is_correct": false
+          "value": 98,
+          "is_correct": true
         },
         {
           "key": "B",
-          "value": 98,
-          "is_correct": true
+          "value": 99,
+          "is_correct": false
         },
         {
           "key": "C",
@@ -218,139 +160,135 @@
         },
         {
           "key": "D",
-          "value": 55,
+          "value": 108,
           "is_correct": false
         }
       ]
     },
     {
       "seed": 501,
-      "formatter": "true_false",
-      "question_text": "Start at 80. Count up 3 more. You land on 83. True or False?",
-      "correct_answer": true
+      "formatter": "set_fill_in_blank",
+      "question_text": "Show 80 + 3 on the number line.",
+      "correct_answer": 83
     },
     {
       "seed": 502,
-      "formatter": "mcq",
-      "question_text": "Start at 90. Count up 1 more. What number do you land on?",
-      "correct_answer": 91,
+      "formatter": "read_mcq",
+      "question_text": "(Large group of 90 trees) — There are 90 trees.\n🌳 — 1 more tree is added.\nHow many total trees are there?",
+      "correct_answer": "B",
       "options": [
         {
           "key": "A",
+          "value": 92,
+          "is_correct": false
+        },
+        {
+          "key": "B",
           "value": 91,
           "is_correct": true
         },
         {
-          "key": "B",
-          "value": 90,
-          "is_correct": false
-        },
-        {
           "key": "C",
-          "value": 101,
+          "value": 89,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 92,
+          "value": 1,
           "is_correct": false
         }
       ]
     },
     {
       "seed": 600,
-      "formatter": "true_false",
-      "question_text": "Start at 73. Count up 26 more. You land on 99. True or False?",
-      "correct_answer": true
+      "formatter": "set_fill_in_blank",
+      "question_text": "Show 73 + 26 on the number line.",
+      "correct_answer": 99
     },
     {
       "seed": 601,
-      "formatter": "mcq",
-      "question_text": "One group has 60 items and another group has 30 items. If you put them together, how many items are there in all?",
-      "correct_answer": 90,
-      "options": [
-        {
-          "key": "A",
-          "value": 91,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 90,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 89,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 100,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 602,
-      "formatter": "cloze",
-      "question_text": "Start at 30. Count up 13 more. You land on ___",
-      "correct_answer": 43,
-      "options": [
-        {
-          "key": "A",
-          "value": 42,
-          "text": "42",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 43,
-          "text": "43",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 44,
-          "text": "44",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 53,
-          "text": "53",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 603,
       "formatter": "cloze",
       "question_text": "One group has 60 items and another group has 30 items. Putting them together makes ___ items in all.",
       "correct_answer": 90,
       "options": [
         {
           "key": "A",
-          "value": 100,
-          "text": "100",
-          "is_correct": false
-        },
-        {
-          "key": "B",
           "value": 91,
           "text": "91",
           "is_correct": false
         },
         {
-          "key": "C",
+          "key": "B",
           "value": 90,
           "text": "90",
           "is_correct": true
         },
         {
-          "key": "D",
+          "key": "C",
           "value": 89,
           "text": "89",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 100,
+          "text": "100",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 602,
+      "formatter": "read_mcq",
+      "question_text": "The dot is at 30 and it moves forward 13 numbers. Starting from 30, just count up 13 numbers. Which number will the dot land on?",
+      "correct_answer": "B",
+      "options": [
+        {
+          "key": "A",
+          "value": 42,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 43,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 44,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 53,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 603,
+      "formatter": "mcq",
+      "question_text": "One group has 60 items and another group has 30 items. If you put them together, how many items are there in all?",
+      "correct_answer": 90,
+      "options": [
+        {
+          "key": "A",
+          "value": 100,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 91,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 90,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 89,
           "is_correct": false
         }
       ]
@@ -365,58 +303,36 @@
       }
     },
     {
-      "seed": 606,
-      "formatter": "mcq",
-      "question_text": "Start at 51. Count up 48 more. What number do you land on?",
-      "correct_answer": 99,
-      "options": [
-        {
-          "key": "A",
-          "value": 100,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 109,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 99,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 98,
-          "is_correct": false
-        }
-      ]
+      "seed": 605,
+      "formatter": "read_fill_in_blank",
+      "question_text": "The two parts are 60 and 30. What is the sum?",
+      "correct_answer": 90
     }
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "CONCERN",
-      "rationale": "This node is supposed to be about solving posed problems, yet much of the pool is bare arithmetic in disguise: Manny's item is the naked sentence 1 + 63, and the repeated 'Start at 60. Count up 20 more' prompts are number-line procedure, not a situation to be interpreted."
+      "rationale": "The competency is about solving problems presented orally or in pictures, yet a number of sampled items carry no situation at all - one is a request to 'Show 80 + 3 on the number line.' and another simply supplies two parts and asks for their sum. Those are computation exercises that would serve the preceding compute-the-sum competency equally well, so this node's distinguishing verb is under-served."
     },
     "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "Picture-based problems do appear, but the story side is served by a single depersonalised frame -- 'One group has 33 items and another group has 51 items' -- with no named actors, no objects and no join-change structure, so the range of addition situations a Grade 1 pupil should meet is not covered."
+      "verdict": "PASS",
+      "rationale": "Both addend shapes do appear here, including small single-digit additions to a large two-digit amount, and the pictured presentations cover both a fully drawn group and a mixed large-group-plus-symbol layout."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Reading demand is low, each item is one step, and the counting-on phrasing gives a strategy the pupil can act out; nothing here exceeds Quarter 2 expectations."
+      "rationale": "Each situation is one step with no hidden inference, and every sampled sum avoids regrouping, so the demand is joining two quantities - appropriate for the end of Quarter 2."
     },
     "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "Counting up from a start point dominates so heavily that it recurs in mcq, cloze and true/false dress; the few other shapes (number-line display, symbol groups, part-part-whole) each appear once."
+      "verdict": "PASS",
+      "rationale": "Pictured collections, number-line movement, a joining story, and a peer-checking item all occur, so the range of presentations is genuinely wide even where individual items drift off the competency's intent."
     },
     "competency_alignment": {
-      "verdict": "CONCERN",
-      "rationale": "Difficulty is being driven by arithmetic size (51 plus 48 reaching 99) rather than by problem structure, so the ladder for this problem-solving competency is indistinguishable from the ladder for the computation competency that precedes it."
+      "verdict": "PASS",
+      "rationale": "As difficulty rises the addends grow and the pictured quantities get larger, which is coherent with addition within a hundred rather than with an unrelated axis."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "No sum exceeds 100 and none of the addition pairs regroups, so both constraints written into the competency hold across the sample."
+      "rationale": "The largest total reached is ninety-nine and the generic-item phrasing keeps quantities in the tens, so the stated sum ceiling holds throughout."
     }
   },
   "overall": "CONCERN"

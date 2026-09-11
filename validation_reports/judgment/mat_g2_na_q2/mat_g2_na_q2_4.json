@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g2_na_q2_4",
-  "reviewed_by": "reviewer-b4-plover-saffron-6041",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c4-pumice-lovage-6370",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -9,10 +9,8 @@
     44,
     45,
     46,
+    48,
     50,
-    51,
-    75,
-    82,
     500,
     501,
     502,
@@ -26,294 +24,211 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "mcq",
-      "question_text": "What is 30 − 3?",
+      "formatter": "cloze",
+      "question_text": "30 − 3 = ___",
       "correct_answer": 27,
       "options": [
         {
           "key": "A",
           "value": 27,
+          "text": "27",
           "is_correct": true
         },
         {
           "key": "B",
           "value": 33,
+          "text": "33",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 28,
+          "text": "28",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 26,
+          "text": "26",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 43,
-      "formatter": "mcq",
-      "question_text": "What is 20 − 1?",
-      "correct_answer": 19,
-      "options": [
-        {
-          "key": "A",
-          "value": 19,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 18,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 20,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 21,
-          "is_correct": false
-        }
-      ]
+      "formatter": "error_detect",
+      "question_text": "Grace solved: \"20 − 1 = ___\". Grace says the missing number is 18. Is Grace correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 19
+      }
     },
     {
       "seed": 44,
-      "formatter": "cloze",
-      "question_text": "60 − 51 = ___",
-      "correct_answer": 9,
-      "options": [
-        {
-          "key": "A",
-          "value": 10,
-          "text": "10",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 9,
-          "text": "9",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 8,
-          "text": "8",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 111,
-          "text": "111",
-          "is_correct": false
-        }
-      ]
+      "formatter": "read_fill_in_blank",
+      "question_text": "The total is 60 and one part is 51. What is the other part?",
+      "correct_answer": 9
     },
     {
       "seed": 45,
-      "formatter": "cloze",
-      "question_text": "60 − 2 = ___",
+      "formatter": "mcq",
+      "question_text": "What is 60 − 2?",
       "correct_answer": 58,
       "options": [
         {
           "key": "A",
           "value": 59,
-          "text": "59",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 57,
-          "text": "57",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 62,
-          "text": "62",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 58,
-          "text": "58",
           "is_correct": true
         }
       ]
     },
     {
       "seed": 46,
-      "formatter": "cloze",
-      "question_text": "20 − 15 = ___",
+      "formatter": "mcq",
+      "question_text": "What is 20 − 15?",
       "correct_answer": 5,
       "options": [
         {
           "key": "A",
           "value": 4,
-          "text": "4",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 6,
-          "text": "6",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 35,
-          "text": "35",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 5,
-          "text": "5",
           "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 48,
+      "formatter": "read_mcq",
+      "question_text": "(Large group of 90 candies) — There are 90 candies.\nTaking away 36 candies.\nHow many candies are left?",
+      "correct_answer": "C",
+      "options": [
+        {
+          "key": "A",
+          "value": 53,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 36,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 54,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 90,
+          "is_correct": false
         }
       ]
     },
     {
       "seed": 50,
-      "formatter": "read_fill_in_blank",
-      "question_text": "The total is 90 and one part is 18. What is the other part?",
-      "correct_answer": 72
+      "formatter": "true_false",
+      "question_text": "90 − 18 = 71. True or False?",
+      "correct_answer": false
     },
     {
-      "seed": 51,
+      "seed": 500,
+      "formatter": "read_fill_in_blank",
+      "question_text": "The total is 92 and one part is 55. What is the other part?",
+      "correct_answer": 37
+    },
+    {
+      "seed": 501,
       "formatter": "read_mcq",
-      "question_text": "The dot is at 50 and it moves backward 1 number. Starting from 50, just count back 1 number. Which number will the dot land on?",
+      "question_text": "The dot is at 80 and it moves backward 78 numbers. Starting from 80, just count back 78 numbers. Which number will the dot land on?",
       "correct_answer": "A",
       "options": [
         {
           "key": "A",
-          "value": 49,
+          "value": 2,
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 50,
+          "value": 3,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 48,
+          "value": 1,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 51,
+          "value": 158,
           "is_correct": false
         }
       ]
-    },
-    {
-      "seed": 75,
-      "formatter": "true_false",
-      "question_text": "90 − 2 = 92. True or False?",
-      "correct_answer": false
-    },
-    {
-      "seed": 82,
-      "formatter": "error_detect",
-      "question_text": "Dante solved: \"30 − 14 = ___\". Dante says the missing number is 16. Is Dante correct?",
-      "correct_answer": {
-        "has_error": false,
-        "correct_value": 16
-      }
-    },
-    {
-      "seed": 500,
-      "formatter": "read_mcq",
-      "question_text": "(Large group of 92 drinks) — There are 92 drinks.\nTaking away 55 drinks.\nHow many drinks are left?",
-      "correct_answer": "C",
-      "options": [
-        {
-          "key": "A",
-          "value": 38,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 92,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 37,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 36,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 501,
-      "formatter": "true_false",
-      "question_text": "80 − 78 = 2. True or False?",
-      "correct_answer": true
     },
     {
       "seed": 502,
-      "formatter": "mcq",
-      "question_text": "What is 93 − 65?",
-      "correct_answer": 28,
+      "formatter": "read_mcq",
+      "question_text": "(Large group of 93 trees) — There are 93 trees.\nTaking away 65 trees.\nHow many trees are left?",
+      "correct_answer": "B",
       "options": [
         {
           "key": "A",
-          "value": 28,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 27,
-          "is_correct": false
-        },
-        {
-          "key": "C",
           "value": 158,
           "is_correct": false
         },
         {
+          "key": "B",
+          "value": 28,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 65,
+          "is_correct": false
+        },
+        {
           "key": "D",
-          "value": 29,
+          "value": 27,
           "is_correct": false
         }
       ]
     },
     {
       "seed": 600,
-      "formatter": "mcq",
-      "question_text": "What is 50 − 45?",
-      "correct_answer": 5,
-      "options": [
-        {
-          "key": "A",
-          "value": 5,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 95,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 6,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 4,
-          "is_correct": false
-        }
-      ]
+      "formatter": "error_detect",
+      "question_text": "Noel solved: \"50 − 45 = ___\". Noel says the missing number is 5. Is Noel correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 5
+      }
     },
     {
       "seed": 601,
@@ -323,18 +238,18 @@
     },
     {
       "seed": 602,
-      "formatter": "mcq",
-      "question_text": "What is 60 − 46?",
-      "correct_answer": 14,
+      "formatter": "read_mcq",
+      "question_text": "(Large group of 60 clovers) — There are 60 clovers.\nTaking away 46 clovers.\nHow many clovers are left?",
+      "correct_answer": "C",
       "options": [
         {
           "key": "A",
-          "value": 15,
+          "value": 106,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 106,
+          "value": 15,
           "is_correct": false
         },
         {
@@ -351,61 +266,35 @@
     },
     {
       "seed": 603,
-      "formatter": "cloze",
-      "question_text": "30 − 21 = ___",
-      "correct_answer": 9,
-      "options": [
-        {
-          "key": "A",
-          "value": 10,
-          "text": "10",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 51,
-          "text": "51",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 8,
-          "text": "8",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 9,
-          "text": "9",
-          "is_correct": true
-        }
-      ]
+      "formatter": "read_fill_in_blank",
+      "question_text": "The total is 30 and one part is 21. What is the other part?",
+      "correct_answer": 9
     },
     {
       "seed": 604,
-      "formatter": "mcq",
-      "question_text": "What is 20 − 12?",
-      "correct_answer": 8,
+      "formatter": "read_mcq",
+      "question_text": "📚📚📚📚📚📚📚📚📚📚📚📚📚📚📚📚📚📚📚📚 — There are 20 books.\nTaking away 12 books.\nHow many books are left?",
+      "correct_answer": "B",
       "options": [
         {
           "key": "A",
-          "value": 32,
-          "is_correct": false
-        },
-        {
-          "key": "B",
           "value": 7,
           "is_correct": false
         },
         {
+          "key": "B",
+          "value": 8,
+          "is_correct": true
+        },
+        {
           "key": "C",
-          "value": 9,
+          "value": 32,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 8,
-          "is_correct": true
+          "value": 12,
+          "is_correct": false
         }
       ]
     },
@@ -419,27 +308,27 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "Regrouping is required in every single computation sampled, which is what this node demands and what makes it distinct from its neighbours. Both named shapes appear: 2-digit minus 1-digit in seed 45 and 2-digit minus 2-digit in seed 502's 93 take away 65."
+      "rationale": "I worked through all sixteen subtractions and every single one genuinely requires regrouping - the ones digit of the minuend is always smaller than that of the subtrahend. That is the discriminating property this competency names, and nothing in the sample set violates it."
     },
     "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "The minuend is a multiple of ten in roughly two thirds of the pool (30, 20, 60, 90, 50, 80 recur), so the borrowing a child practises is overwhelmingly the special case of a zero in the ones place. General borrowing such as 93 take away 65 or 92 take away 55 is the minority, when it should be the backbone."
+      "verdict": "PASS",
+      "rationale": "Both digit patterns the competency itemises appear: takes of 3, 1 and 2 from a multiple of ten give the two-digit-minus-one-digit case, while pairs such as 92 less 55 and 93 less 65 give the two-digit-minus-two-digit case."
     },
     "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Bare computation stems are one line, and the worded ones (the part-whole phrasing in seeds 50 and 605, the baskets on the table in seed 601) use concrete nouns and no clause nesting. This suits Quarter 2 of Grade 2."
+      "verdict": "CONCERN",
+      "rationale": "A number-line sample tells the pupil to 'just count back 78 numbers' from 80. Counting back seventy-eight single steps is unusable in practice and actively steers the child away from the regrouping strategy this very node exists to build."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "Presentation genuinely varies: a horizontal equation with a blank, a 'What is' question, a part-and-whole statement, a dot moving backward on a line, a true-or-false claim, a peer's wrong answer to judge, and a pictured group of 92 drinks. Seven distinct surfaces is ample here."
+      "rationale": "Bare horizontal equations, a part-and-whole phrasing, a pictured large group, an emoji row of books, a story about baskets and a peer-error check all appear, so the node is not resting on one presentation."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "What changes between easy and hard seeds is the size of the borrow and the distance between the two numbers, not some unrelated dimension. Seed 43's 20 take away 1 and seed 502's 93 take away 65 are the same skill at two intensities."
+      "rationale": "Difficulty moves by pushing the subtrahend closer to the minuend, which is what makes a regrouped take harder, and the answers I verified - 92 less 55 giving 37, 93 less 65 giving 28 - are all correct."
     },
     "scale_appropriateness": {
-      "verdict": "CONCERN",
-      "rationale": "Operands obey the under-100 bound, but option lists do not: 158 is offered as a difference for 93 take away 65, 106 for 60 take away 46, and 111 for 60 take away 51. Those are sums wearing a difference's clothes, and they exceed the very ceiling this competency sets."
+      "verdict": "PASS",
+      "rationale": "Both operands stay under 100 in every sample, with the largest minuend at 93, matching the competency's explicit under-100 bound without ever brushing three digits."
     }
   },
   "overall": "CONCERN"

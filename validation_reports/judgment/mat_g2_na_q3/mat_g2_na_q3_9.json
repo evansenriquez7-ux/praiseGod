@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g2_na_q3_9",
-  "reviewed_by": "reviewer-r3-fennel-quarry-5520",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c4-pumice-lovage-6370",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -9,8 +9,7 @@
     44,
     45,
     46,
-    50,
-    55,
+    48,
     500,
     501,
     502,
@@ -22,28 +21,32 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "Maico wants to share 3 costumes equally among 3 friends. How many costumes does each friend get?",
       "correct_answer": 1,
       "options": [
         {
           "key": "A",
           "value": 3,
+          "text": "3",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 1,
+          "text": "1",
           "is_correct": true
         },
         {
           "key": "C",
           "value": 0,
+          "text": "0",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 2,
+          "text": "2",
           "is_correct": false
         }
       ]
@@ -110,143 +113,67 @@
     },
     {
       "seed": 45,
-      "formatter": "mcq",
-      "question_text": "Ate Gab has ₱15 and wants to share it equally among 5 friends. How much does each friend get?",
-      "correct_answer": 3,
-      "options": [
-        {
-          "key": "A",
-          "value": 4,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 3,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 5,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 10,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 46,
-      "formatter": "mcq",
-      "question_text": "There are 12 seeds. If 2 seeds are put in each bag, how many bags are needed?",
-      "correct_answer": 6,
-      "options": [
-        {
-          "key": "A",
-          "value": 10,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 2,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 6,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 7,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 50,
       "formatter": "true_false",
-      "question_text": "Kuya Renz has ₱70 and wants to share it equally among 10 friends. How much does each friend get? The answer is 10. True or False?",
+      "question_text": "Ate Gab has ₱15 and wants to share it equally among 5 friends. How much does each friend get? The answer is 4. True or False?",
       "correct_answer": false
     },
     {
-      "seed": 55,
-      "formatter": "error_detect",
-      "question_text": "Grace solved this problem: \"Romel has ₱12 and wants to share it equally among 2 friends. How much does each friend get?\" Grace says the answer is 2. Is Grace correct?",
-      "correct_answer": {
-        "has_error": true,
-        "correct_value": 6
-      }
+      "seed": 46,
+      "formatter": "true_false",
+      "question_text": "There are 12 seeds. If 2 seeds are put in each bag, how many bags are needed? The answer is 6. True or False?",
+      "correct_answer": true
     },
     {
-      "seed": 500,
+      "seed": 48,
       "formatter": "error_detect",
-      "question_text": "Rico solved this problem: \"There are 90 ribbons. If 10 ribbons are put in each bag, how many bags are needed?\" Rico says the answer is 9. Is Rico correct?",
+      "question_text": "Noel solved this problem: \"Lara wants to share 90 costumes equally among 10 friends. How many costumes does each friend get?\" Noel says the answer is 9. Is Noel correct?",
       "correct_answer": {
         "has_error": false,
         "correct_value": 9
       }
     },
     {
+      "seed": 500,
+      "formatter": "true_false",
+      "question_text": "There are 90 ribbons. If 10 ribbons are put in each bag, how many bags are needed? The answer is 8. True or False?",
+      "correct_answer": false
+    },
+    {
       "seed": 501,
-      "formatter": "cloze",
+      "formatter": "mcq",
       "question_text": "There are 90 running shoes. If 10 running shoes are put in each bag, how many bags are needed?",
       "correct_answer": 9,
       "options": [
         {
           "key": "A",
           "value": 8,
-          "text": "8",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 9,
-          "text": "9",
           "is_correct": true
         },
         {
           "key": "C",
           "value": 10,
-          "text": "10",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 80,
-          "text": "80",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 502,
-      "formatter": "mcq",
-      "question_text": "Kuya Renz wants to share 90 canvases equally among 10 friends. How many canvases does each friend get?",
-      "correct_answer": 9,
-      "options": [
-        {
-          "key": "A",
-          "value": 8,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 10,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 9,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 80,
-          "is_correct": false
-        }
-      ]
+      "formatter": "error_detect",
+      "question_text": "Dante solved this problem: \"Kuya Renz wants to share 90 canvases equally among 10 friends. How many canvases does each friend get?\" Dante says the answer is 9. Is Dante correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 9
+      }
     },
     {
       "seed": 600,
@@ -310,60 +237,37 @@
     },
     {
       "seed": 602,
-      "formatter": "mcq",
-      "question_text": "Sir Rez has ₱20 and wants to share it equally among 10 friends. How much does each friend get?",
-      "correct_answer": 2,
-      "options": [
-        {
-          "key": "A",
-          "value": 10,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 2,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 1,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 3,
-          "is_correct": false
-        }
-      ]
+      "formatter": "error_detect",
+      "question_text": "Jose solved this problem: \"Sir Rez has ₱20 and wants to share it equally among 10 friends. How much does each friend get?\" Jose says the answer is 2. Is Jose correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 2
+      }
     },
     {
       "seed": 603,
-      "formatter": "cloze",
+      "formatter": "mcq",
       "question_text": "Ate Beng has ₱15 and wants to share it equally among 3 friends. How much does each friend get?",
       "correct_answer": 5,
       "options": [
         {
           "key": "A",
           "value": 5,
-          "text": "5",
           "is_correct": true
         },
         {
           "key": "B",
           "value": 3,
-          "text": "3",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 6,
-          "text": "6",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 12,
-          "text": "12",
           "is_correct": false
         }
       ]
@@ -372,27 +276,27 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "Every sampled item is a genuine division situation resolved by a single table fact, and the clause 'including problems involving money' is honoured rather than ignored: peso stems appear repeatedly (10 shared among 2, 40 among 10, 15 among 5, 20 among 4). Divisors stay inside the named set of 2, 3, 4, 5 and 10, and each key is the true quotient, including the two error-detect items where the stated correct_value matches the arithmetic. The one presentational wrinkle is that money stems ask how much each friend gets while keys and options are bare numerals with no currency mark, but the peso sign in the stem carries the unit, so the verb-noun mapping still holds."
+      "rationale": "Both meanings of division are exercised, which is more than the wording strictly demands - sharing equally among a number of friends gives the partitive sense, and asking how many bags are needed when a fixed count goes in each gives the quotative sense. The peso requirement is met in several items."
     },
     "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "All five tables the competency enumerates actually appear across the fourteen samples: dividing by 3 (costumes, and 15 among 3), by 2 (10 among 2, 12 in each bag, 12 among 2), by 4 (20 among 4), by 5 (15 among 5, 15 leashes), and by 10 (40, 70, 90, 20). Both meanings of division are exercised too: equal sharing among friends, and the measurement sense in the stems ending 'how many bags are needed?'. Coverage is uneven in weight, with the 10-table appearing five times and the 4-table only once, but no sub-case the wording names is missing outright."
+      "verdict": "CONCERN",
+      "rationale": "Table coverage is uneven: the four table is reached only by a single twenty-pesos-among-four item, while the ninety-divided-by-ten calculation recurs across four separate seeds in different object dressings."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Stems are one or two short clauses, the nouns are concrete classroom and market objects, and the Filipino address terms Kuya, Ate, Coach and Sir are age-appropriate register for a Grade 2 reader. No item demands more than one computation; the error_detect and true_false wrappers add a judgement step but the underlying fact is still a single table entry, which is a reasonable Quarter 3 ask. Only 'canvases' sits slightly outside a typical Grade 2 sight vocabulary, and nothing in any stem reaches for remainders, multi-digit long division, or notation the grade has not met."
+      "rationale": "Each stem sets up one sharing or grouping situation in a single sentence, the divisions all come out exact, and the money amounts divide into whole pesos with no remainder to explain."
     },
     "variant_comprehensiveness": {
       "verdict": "CONCERN",
-      "rationale": "Response formats are varied (mcq, cloze, true_false, error_detect), but underneath them sit only two story skeletons: sharing a quantity equally among friends, and putting a fixed number of objects into each bag. Not one of the fourteen samples presents division as a bare computation or an equation to complete, so a learner never meets the symbolic form of the skill. The money sub-case is narrower still, locked entirely to the sharing-among-friends frame; there is no peso item in the grouping frame, no price-per-item or change situation, and no orientation where the number of friends is the unknown."
+      "rationale": "The contexts collapse to two - dividing among friends or filling bags - with no array, no price-per-item inverse, and no picture-led division, so the variety on the page is object nouns rather than problem structures."
     },
     "competency_alignment": {
       "verdict": "CONCERN",
-      "rationale": "Stepping up from the first group to the later seeds, what actually grows is the size of the dividend paired with the easiest divisor, plus the answer format. Reaching 90 objects split ten ways is not a harder recall than 20 shared among 4, so the apparent escalation rides on magnitude and on wrapping the same quotient in a true_false or error_detect shell rather than on moving deeper into the 3- and 4-tables, which are the sparsest here. The opening sample compounds this: 3 costumes among 3 friends yields a quotient of 1 and offers 0 among its options, a choice no sharing situation can produce, which makes the easiest item both degenerate and answerable by eliminating an impossibility."
+      "rationale": "With the same ninety-by-ten quotient recurring and a floor item sharing three costumes among three friends for an answer of one, several rungs of the ladder change only the story while the division stays fixed or trivial."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Dividends run from 3 up to 90 and all products stay within what the 2, 3, 4, 5 and 10 tables generate, with the largest quotient being 9 and nothing requiring a fact above ten times ten. Divisors never stray outside the five listed tables, no division leaves a remainder, and the peso amounts (10, 12, 15, 20, 40, 70) are realistic small sums for a Grade 2 context rather than inflated figures. Nothing overshoots the stated ceiling and nothing sits so far below it that the range looks mis-set, the lone answer-of-1 case aside."
+      "rationale": "Dividends stay at ninety or below and the peso amounts sit between ten and forty, which keeps every item inside the two, three, four, five and ten tables the competency names."
     }
   },
   "overall": "CONCERN"

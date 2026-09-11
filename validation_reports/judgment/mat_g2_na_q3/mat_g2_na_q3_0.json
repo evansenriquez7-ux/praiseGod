@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g2_na_q3_0",
-  "reviewed_by": "reviewer-r1-cobalt-juniper-7748",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c4-pumice-lovage-6370",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -10,8 +10,6 @@
     45,
     46,
     47,
-    52,
-    68,
     500,
     501,
     502,
@@ -25,80 +23,62 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "error_detect",
-      "question_text": "Manny solved: \"There are 10 groups of 4 (4 added 10 times), so there are ___ in all.\". Manny says the missing number is 30. Is Manny correct?",
-      "correct_answer": {
-        "has_error": true,
-        "correct_value": 40
-      }
+      "formatter": "true_false",
+      "question_text": "There are 10 groups of 4. By repeated addition, 4 added 10 times = 30. True or False?",
+      "correct_answer": false
     },
     {
       "seed": 43,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Shade 4 groups of 2 squares to show 2 + 2 + 2 + 2. How many squares did you shade in all?",
-      "correct_answer": 8
+      "formatter": "error_detect",
+      "question_text": "Grace solved: \"There are 2 groups of 4 (4 + 4), so there are ___ in all.\". Grace says the missing number is 8. Is Grace correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 8
+      }
     },
     {
       "seed": 44,
-      "formatter": "mcq",
-      "question_text": "There are 4 groups of 10 (10 + 10 + 10 + 10). How many in all?",
-      "correct_answer": 40,
-      "options": [
-        {
-          "key": "A",
-          "value": 40,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 36,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 14,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 6,
-          "is_correct": false
-        }
-      ]
+      "formatter": "set_fill_in_blank",
+      "question_text": "Shade 10 groups of 4 squares to show 4 added 10 times. How many squares did you shade in all?",
+      "correct_answer": 40
     },
     {
       "seed": 45,
-      "formatter": "mcq",
-      "question_text": "There are 3 groups of 10 (10 + 10 + 10). How many in all?",
+      "formatter": "cloze",
+      "question_text": "3 groups of 10 (10 + 10 + 10) makes ___ in all",
       "correct_answer": 30,
       "options": [
         {
           "key": "A",
           "value": 30,
+          "text": "30",
           "is_correct": true
         },
         {
           "key": "B",
           "value": 13,
+          "text": "13",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 27,
+          "text": "27",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 7,
+          "text": "7",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 46,
-      "formatter": "mcq",
-      "question_text": "There are 2 groups of 9 (9 + 9). How many in all?",
-      "correct_answer": 18,
+      "formatter": "read_mcq",
+      "question_text": "Look at the array. It shows 9 groups of 2 (2 added 9 times). How many squares are shaded in all?",
+      "correct_answer": "A",
       "options": [
         {
           "key": "A",
@@ -107,262 +87,220 @@
         },
         {
           "key": "B",
-          "value": 7,
+          "value": 21,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 11,
+          "value": 15,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 16,
+          "value": 22,
           "is_correct": false
         }
       ]
     },
     {
       "seed": 47,
-      "formatter": "cloze",
-      "question_text": "4 groups of 6 (6 + 6 + 6 + 6) makes ___ in all",
+      "formatter": "mcq",
+      "question_text": "There are 4 groups of 6 (6 + 6 + 6 + 6). How many in all?",
       "correct_answer": 24,
       "options": [
         {
           "key": "A",
           "value": 20,
-          "text": "20",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 24,
-          "text": "24",
           "is_correct": true
         },
         {
           "key": "C",
           "value": 10,
-          "text": "10",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 2,
-          "text": "2",
           "is_correct": false
         }
       ]
     },
     {
-      "seed": 52,
-      "formatter": "read_mcq",
-      "question_text": "Look at the array. It shows 8 groups of 4 (4 added 8 times). How many squares are shaded in all?",
-      "correct_answer": "A",
+      "seed": 500,
+      "formatter": "mcq",
+      "question_text": "There are 10 groups of 7 (7 added 10 times). How many in all?",
+      "correct_answer": 70,
       "options": [
         {
           "key": "A",
-          "value": 32,
-          "is_correct": true
+          "value": 60,
+          "is_correct": false
         },
         {
           "key": "B",
-          "value": 29,
+          "value": 17,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 34,
-          "is_correct": false
+          "value": 70,
+          "is_correct": true
         },
         {
           "key": "D",
-          "value": 24,
+          "value": 69,
           "is_correct": false
         }
       ]
-    },
-    {
-      "seed": 68,
-      "formatter": "true_false",
-      "question_text": "There are 10 groups of 4. By repeated addition, 4 added 10 times = 40. True or False?",
-      "correct_answer": true
-    },
-    {
-      "seed": 500,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Shade 7 groups of 10 squares to show 10 added 7 times. How many squares did you shade in all?",
-      "correct_answer": 70
     },
     {
       "seed": 501,
       "formatter": "true_false",
-      "question_text": "There are 10 groups of 10. By repeated addition, 10 added 10 times = 100. True or False?",
-      "correct_answer": true
+      "question_text": "There are 10 groups of 10. By repeated addition, 10 added 10 times = 90. True or False?",
+      "correct_answer": false
     },
     {
       "seed": 502,
-      "formatter": "mcq",
-      "question_text": "There are 10 groups of 8 (8 added 10 times). How many in all?",
-      "correct_answer": 80,
-      "options": [
-        {
-          "key": "A",
-          "value": 79,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 70,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 18,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 80,
-          "is_correct": true
-        }
-      ]
+      "formatter": "set_fill_in_blank",
+      "question_text": "Shade 8 groups of 10 squares to show 10 added 8 times. How many squares did you shade in all?",
+      "correct_answer": 80
     },
     {
       "seed": 600,
       "formatter": "true_false",
-      "question_text": "There are 3 groups of 8. By repeated addition, 8 + 8 + 8 = 24. True or False?",
-      "correct_answer": true
+      "question_text": "There are 3 groups of 8. By repeated addition, 8 + 8 + 8 = 5. True or False?",
+      "correct_answer": false
     },
     {
       "seed": 601,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "Moses puts 3 baskets in each of 5 bags. How many baskets are in all the bags?",
       "correct_answer": 15,
       "options": [
         {
           "key": "A",
           "value": 2,
+          "text": "2",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 12,
+          "text": "12",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 8,
+          "text": "8",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 15,
+          "text": "15",
           "is_correct": true
         }
       ]
     },
     {
       "seed": 602,
-      "formatter": "cloze",
-      "question_text": "5 groups of 3 (3 + 3 + 3 + 3 + 3) makes ___ in all",
+      "formatter": "mcq",
+      "question_text": "There are 5 groups of 3 (3 + 3 + 3 + 3 + 3). How many in all?",
       "correct_answer": 15,
       "options": [
         {
           "key": "A",
           "value": 14,
-          "text": "14",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 15,
-          "text": "15",
           "is_correct": true
         },
         {
           "key": "C",
           "value": 10,
-          "text": "10",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 8,
-          "text": "8",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 603,
+      "formatter": "error_detect",
+      "question_text": "Ana solved: \"There are 3 groups of 3 (3 + 3 + 3), so there are ___ in all.\". Ana says the missing number is 12. Is Ana correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 9
+      }
+    },
+    {
+      "seed": 604,
       "formatter": "cloze",
-      "question_text": "3 groups of 3 (3 + 3 + 3) makes ___ in all",
-      "correct_answer": 9,
+      "question_text": "2 groups of 6 (6 + 6) makes ___ in all",
+      "correct_answer": 12,
       "options": [
         {
           "key": "A",
-          "value": 9,
-          "text": "9",
-          "is_correct": true
+          "value": 8,
+          "text": "8",
+          "is_correct": false
         },
         {
           "key": "B",
-          "value": 8,
-          "text": "8",
+          "value": 4,
+          "text": "4",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 12,
           "text": "12",
-          "is_correct": false
+          "is_correct": true
         },
         {
           "key": "D",
-          "value": 6,
-          "text": "6",
+          "value": 10,
+          "text": "10",
           "is_correct": false
         }
       ]
     },
     {
-      "seed": 604,
-      "formatter": "error_detect",
-      "question_text": "Carlo solved: \"There are 2 groups of 6 (6 + 6), so there are ___ in all.\". Carlo says the missing number is 12. Is Carlo correct?",
-      "correct_answer": {
-        "has_error": false,
-        "correct_value": 12
-      }
-    },
-    {
       "seed": 605,
-      "formatter": "cloze",
-      "question_text": "3 groups of 5 (5 + 5 + 5) makes ___ in all",
+      "formatter": "mcq",
+      "question_text": "There are 3 groups of 5 (5 + 5 + 5). How many in all?",
       "correct_answer": 15,
       "options": [
         {
           "key": "A",
           "value": 2,
-          "text": "2",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 15,
-          "text": "15",
           "is_correct": true
         },
         {
           "key": "C",
           "value": 8,
-          "text": "8",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 12,
-          "text": "12",
           "is_correct": false
         }
       ]
@@ -371,27 +309,27 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "CONCERN",
-      "rationale": "The competency prescribes two spoken forms, '5 groups of 3' and '5 threes'. The first is used constantly, including an item literally reading 5 groups of 3, but the second form never occurs in any sample, so half of the prescribed language is not being taught."
+      "rationale": "Repeated addition is modelled well and the groups-of language is used consistently, but the competency quotes two naming conventions and only one survives into the output. The '5 threes' style of naming never appears anywhere in the sample set, so half the language target is unmet."
     },
     "comprehensive_coverage": {
       "verdict": "CONCERN",
-      "rationale": "The verb pair is lopsided. Evaluating a total from a stated grouping accounts for nearly the whole set, whereas creating equal groups appears only in the two shading tasks, one of which asks the student to 'Shade 7 groups of 10 squares to show 10 added 7 times.' Group-making is the harder half and it is thinly sampled."
+      "rationale": "The create-equal-groups half of the competency is carried almost entirely by shading instructions, and genuinely concrete objects appear in only a single baskets-in-bags item; the rest work with abstract groups or squares."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The repeated sum is written out in full for the short cases and replaced by an added-so-many-times phrase only when the chain would get long, which keeps the stems readable for third-quarter Grade 2 while preserving the repeated-addition idea."
+      "rationale": "Group counts and group sizes both stay at ten or below, the repeated sum is usually spelled out in brackets so the pupil sees the addition being named, and the sentences are single-clause."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "Formats include checking another child's proposed total, judging a stated repeated-addition sentence true or false, completing a makes-in-all sentence, reading an array, shading to build groups, and one bags-and-baskets story. That is broad coverage of presentation."
+      "rationale": "An array to read, squares to shade, a bags-and-baskets story, a bracketed repeated sum and two peer-error checks give real spread across both how the grouping is shown and how the answer is given."
     },
     "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Harder samples raise the number of groups and the size of each group together, which increases the length of the repeated addition rather than importing some unrelated demand, so the progression builds the repeated-addition idea itself."
+      "verdict": "CONCERN",
+      "rationale": "One true-or-false item asserts '8 + 8 + 8 = 5'. A total smaller than a single addend is rejectable at a glance, so that rung is answered without performing any repeated addition and contributes nothing to the progression."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Totals top out at 100 where ten groups of ten are described, and the smallest cases sit around nine, giving a spread that stays inside what Grade 2 counting by repeated addition should reach."
+      "rationale": "The largest product implied is ten groups of ten, keeping every total within the hundred that Grade 2 repeated addition should reach and no further."
     }
   },
   "overall": "CONCERN"

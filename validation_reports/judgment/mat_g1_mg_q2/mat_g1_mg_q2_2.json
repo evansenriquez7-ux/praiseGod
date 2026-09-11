@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g1_mg_q2_2",
-  "reviewed_by": "reviewer-b1-quartz-mallow-4412",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c1-lantern-fescue-3061",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -9,7 +9,6 @@
     44,
     45,
     46,
-    50,
     500,
     501,
     502,
@@ -19,28 +18,32 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "A notebook is 6 hands long. A pencil is 2 hands long. How many hands longer is a notebook than a pencil?",
       "correct_answer": 4,
       "options": [
         {
           "key": "A",
           "value": 4,
+          "text": "4",
           "is_correct": true
         },
         {
           "key": "B",
           "value": 5,
+          "text": "5",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 3,
+          "text": "3",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 6,
+          "text": "6",
           "is_correct": false
         }
       ]
@@ -75,28 +78,32 @@
     },
     {
       "seed": 44,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "Dan walked 2 steps from the gate to the tree, and then 3 steps from the tree to the bench. How many steps did Dan walk in all?",
       "correct_answer": 5,
       "options": [
         {
           "key": "A",
           "value": 6,
+          "text": "6",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 7,
+          "text": "7",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 4,
+          "text": "4",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 5,
+          "text": "5",
           "is_correct": true
         }
       ]
@@ -158,65 +165,29 @@
       ]
     },
     {
-      "seed": 50,
-      "formatter": "cloze",
-      "question_text": "Mia walked 4 steps from the chair to the desk, and then 3 steps from the desk to the shelf. How many steps did Mia walk in all?",
-      "correct_answer": 7,
-      "options": [
-        {
-          "key": "A",
-          "value": 7,
-          "text": "7",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 9,
-          "text": "9",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 8,
-          "text": "8",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 6,
-          "text": "6",
-          "is_correct": false
-        }
-      ]
-    },
-    {
       "seed": 500,
-      "formatter": "cloze",
+      "formatter": "mcq",
       "question_text": "Mia walked 5 steps from the gate to the tree, and then 4 steps from the tree to the bench. How many steps did Mia walk in all?",
       "correct_answer": 9,
       "options": [
         {
           "key": "A",
           "value": 10,
-          "text": "10",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 11,
-          "text": "11",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 8,
-          "text": "8",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 9,
-          "text": "9",
           "is_correct": true
         }
       ]
@@ -251,28 +222,32 @@
     },
     {
       "seed": 502,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "From the teacher's desk, it is 7 steps to the chair and 6 steps to the bookshelf. How many steps farther is the chair than the bookshelf?",
       "correct_answer": 1,
       "options": [
         {
           "key": "A",
           "value": 2,
+          "text": "2",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 4,
+          "text": "4",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 3,
+          "text": "3",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 1,
+          "text": "1",
           "is_correct": true
         }
       ]
@@ -341,27 +316,27 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "Every render is a real problem stated in non-standard units - a difference in hands, a total of steps walked in two legs, or how many steps farther one landmark is than another - and each key computes correctly from its own stem."
+      "rationale": "Every sample is a genuine problem in which a non-standard measurement must be operated on rather than merely read: how many hands longer one object is than another, how many steps were walked in all, and how many steps farther one place is than another."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "Both operations the competency implies are generated: combining two part-distances into a whole, and finding the gap between two measured lengths. Lengths of objects and distances between places are both used as the setting."
+      "rationale": "Both problem structures that lengths and distances support are generated - comparison by difference, and combination by sum, including the end-to-end item asking for their total length in paperclips - and the units rotate through hands, steps and paperclips."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Two given quantities and one operation per item, with no total above ten, keeps each problem inside what a Quarter 2 first grader can carry through without writing intermediate steps."
+      "rationale": "Two given quantities, one operation, values no larger than 10 and a sum capped at 10 keep the reasoning to a single step, which is the right ceiling for Quarter 2; the settings, such as walking from the gate to the tree to the bench, are familiar."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "The situations differ in substance: ribbons of two lengths, a walk taken in two stages, classroom landmarks at differing step counts, and two objects placed 'end to end' to make a combined length."
+      "rationale": "Four distinct problem frames appear - two objects compared, a two-leg walk totalled, two distances from the teacher's desk compared, and two objects laid end to end - and answers are taken both as a typed blank and as a selection."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "The harder seeds widen the gap between the two measurements or lengthen the walk rather than switching to an unrelated skill, so the progression stays anchored to solving in non-standard units."
+      "rationale": "The harder seeds widen the gap between the two measures or push the total toward 10, and the operation required shifts between difference and sum; both are axes of this problem-solving competency rather than decoration."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Given measurements run from 2 to 8 units and no answer exceeds 10, matching what non-standard iteration realistically produces at this grade."
+      "rationale": "Measures run from 2 to 8 units with results between 1 and 10, comfortably inside Grade 1 addition and subtraction and inside what can genuinely be measured with hands, steps or paperclips."
     }
   },
   "overall": "PASS"

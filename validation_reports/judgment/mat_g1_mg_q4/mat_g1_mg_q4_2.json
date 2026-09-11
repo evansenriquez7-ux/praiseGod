@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g1_mg_q4_2",
-  "reviewed_by": "reviewer-b1-quartz-mallow-4412",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c1-lantern-fescue-3061",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -9,7 +9,6 @@
     44,
     45,
     46,
-    50,
     500,
     501,
     502,
@@ -17,33 +16,38 @@
     601,
     603,
     604,
-    605
+    605,
+    606
   ],
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "What day of the week comes right after Friday?",
       "correct_answer": "Saturday",
       "options": [
         {
           "key": "A",
           "value": "Monday",
+          "text": "Monday",
           "is_correct": false
         },
         {
           "key": "B",
           "value": "Tuesday",
+          "text": "Tuesday",
           "is_correct": false
         },
         {
           "key": "C",
           "value": "Saturday",
+          "text": "Saturday",
           "is_correct": true
         },
         {
           "key": "D",
           "value": "Sunday",
+          "text": "Sunday",
           "is_correct": false
         }
       ]
@@ -78,28 +82,32 @@
     },
     {
       "seed": 44,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "What month of the year comes right before December?",
       "correct_answer": "November",
       "options": [
         {
           "key": "A",
           "value": "January",
+          "text": "January",
           "is_correct": false
         },
         {
           "key": "B",
           "value": "November",
+          "text": "November",
           "is_correct": true
         },
         {
           "key": "C",
           "value": "February",
+          "text": "February",
           "is_correct": false
         },
         {
           "key": "D",
           "value": "March",
+          "text": "March",
           "is_correct": false
         }
       ]
@@ -161,65 +169,29 @@
       ]
     },
     {
-      "seed": 50,
-      "formatter": "cloze",
-      "question_text": "What month of the year comes right before June?",
-      "correct_answer": "May",
-      "options": [
-        {
-          "key": "A",
-          "value": "March",
-          "text": "March",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "January",
-          "text": "January",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "May",
-          "text": "May",
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": "February",
-          "text": "February",
-          "is_correct": false
-        }
-      ]
-    },
-    {
       "seed": 500,
-      "formatter": "cloze",
+      "formatter": "mcq",
       "question_text": "What month of the year comes right after October?",
       "correct_answer": "November",
       "options": [
         {
           "key": "A",
           "value": "March",
-          "text": "March",
           "is_correct": false
         },
         {
           "key": "B",
           "value": "February",
-          "text": "February",
           "is_correct": false
         },
         {
           "key": "C",
           "value": "January",
-          "text": "January",
           "is_correct": false
         },
         {
           "key": "D",
           "value": "November",
-          "text": "November",
           "is_correct": true
         }
       ]
@@ -254,28 +226,32 @@
     },
     {
       "seed": 502,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "What day of the week comes right after Friday?",
       "correct_answer": "Saturday",
       "options": [
         {
           "key": "A",
           "value": "Saturday",
+          "text": "Saturday",
           "is_correct": true
         },
         {
           "key": "B",
           "value": "Sunday",
+          "text": "Sunday",
           "is_correct": false
         },
         {
           "key": "C",
           "value": "Tuesday",
+          "text": "Tuesday",
           "is_correct": false
         },
         {
           "key": "D",
           "value": "Monday",
+          "text": "Monday",
           "is_correct": false
         }
       ]
@@ -370,89 +346,117 @@
     },
     {
       "seed": 604,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "What day of the week comes right before Wednesday?",
       "correct_answer": "Tuesday",
       "options": [
         {
           "key": "A",
           "value": "Thursday",
+          "text": "Thursday",
           "is_correct": false
         },
         {
           "key": "B",
           "value": "Sunday",
+          "text": "Sunday",
           "is_correct": false
         },
         {
           "key": "C",
           "value": "Tuesday",
+          "text": "Tuesday",
           "is_correct": true
         },
         {
           "key": "D",
           "value": "Monday",
+          "text": "Monday",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 605,
-      "formatter": "cloze",
+      "formatter": "mcq",
       "question_text": "What month of the year comes right before July?",
       "correct_answer": "June",
       "options": [
         {
           "key": "A",
           "value": "March",
-          "text": "March",
           "is_correct": false
         },
         {
           "key": "B",
           "value": "January",
-          "text": "January",
           "is_correct": false
         },
         {
           "key": "C",
           "value": "June",
-          "text": "June",
           "is_correct": true
         },
         {
           "key": "D",
           "value": "February",
-          "text": "February",
           "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 606,
+      "formatter": "mcq",
+      "question_text": "What month of the year comes right before June?",
+      "correct_answer": "May",
+      "options": [
+        {
+          "key": "A",
+          "value": "January",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "March",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "February",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "May",
+          "is_correct": true
         }
       ]
     }
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "The competency asks pupils to give the days and months in correct order, yet every render asks only for a single neighbour of one named day or month. Nothing requires producing or arranging the sequence, which is the productive half of what is written."
+      "verdict": "PASS",
+      "rationale": "The items ask for sequence position directly - which day comes right after Friday, which month comes right before December - which is the order relation the competency is about, and the keys are correct in every sample."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "Days and months are both covered, and both directions of the relation appear as 'comes right after' and 'comes right before', with keys correct in every case I checked."
+      "rationale": "Both cycles are sampled and both directions of traversal appear in each: days forward from Friday, Saturday, Tuesday and Wednesday and backward from Thursday and Wednesday; months forward from October and June and backward from December, September, July and June."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "One-step neighbour recall using familiar day and month names carries no arithmetic load and is right for Quarter 4 of Grade 1."
+      "rationale": "A single short question naming one day or month, answered with another name, is an appropriate memory task for Quarter 4 of Grade 1, and no item requires counting several steps through the cycle."
     },
     "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "Only two sentence frames exist in the whole set. The switch between formats changes nothing the pupil sees, and no calendar, story context or arrange-these-in-order task ever appears."
+      "verdict": "PASS",
+      "rationale": "The answer is collected both as a typed blank and as a selection, and the sampled anchors move around the week and around the year rather than clustering at one point in either cycle."
     },
     "competency_alignment": {
       "verdict": "FAIL",
-      "rationale": "In the month items the three wrong choices are drawn almost every time from January, February and March, leaving the key as the only option outside that block. A pupil can answer correctly by spotting the odd one out with no knowledge of month order whatsoever, so what varies across seeds is decoy selection rather than the ordering demand this competency exists to build."
+      "rationale": "The month items are answerable without knowing month order at all. In five of the six, the three wrong choices are drawn only from January, February and March - for instance the item keyed November offers January, February and March beside it, and the item keyed August does the same. Whenever the key is not itself an early-year month, spotting the odd one out yields the answer, so the difficulty axis that actually distinguishes these seeds is decoy selection rather than the ordering skill being built. The day items, whose decoys include genuine near neighbours such as Thursday beside a key of Wednesday, show the generator is capable of better and makes the month behaviour a defect rather than a limitation."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Seven weekday names and twelve month names are the full stated domain, and nothing outside that domain is used as key or decoy."
+      "rationale": "Only the seven real weekday names and the twelve real month names are used, with no invented or out-of-cycle members, so the domain matches the competency exactly."
     }
   },
   "overall": "FAIL"

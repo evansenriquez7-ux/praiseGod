@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g3_mg_q2_1",
-  "reviewed_by": "reviewer-b5-marlin-obsidian-3358",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c5-tarragon-flint-2549",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -9,40 +9,44 @@
     44,
     45,
     46,
-    50,
     500,
     501,
     502,
     600,
     601,
     602,
-    603
+    603,
+    605
   ],
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "An object's mass measures 7 g. About how many g is that, rounded to the nearest 10?",
       "correct_answer": 10,
       "options": [
         {
           "key": "A",
           "value": 11,
+          "text": "11",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 9,
+          "text": "9",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 10,
+          "text": "10",
           "is_correct": true
         },
         {
           "key": "D",
           "value": 12,
+          "text": "12",
           "is_correct": false
         }
       ]
@@ -77,28 +81,32 @@
     },
     {
       "seed": 44,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "An object's mass measures 18 kg. About how many kg is that, rounded to the nearest 10?",
       "correct_answer": 20,
       "options": [
         {
           "key": "A",
           "value": 21,
+          "text": "21",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 19,
+          "text": "19",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 20,
+          "text": "20",
           "is_correct": true
         },
         {
           "key": "D",
           "value": 22,
+          "text": "22",
           "is_correct": false
         }
       ]
@@ -160,65 +168,29 @@
       ]
     },
     {
-      "seed": 50,
-      "formatter": "cloze",
-      "question_text": "An object's mass measures 26 g. About how many g is that, rounded to the nearest 10?",
-      "correct_answer": 30,
-      "options": [
-        {
-          "key": "A",
-          "value": 29,
-          "text": "29",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 32,
-          "text": "32",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 30,
-          "text": "30",
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 31,
-          "text": "31",
-          "is_correct": false
-        }
-      ]
-    },
-    {
       "seed": 500,
-      "formatter": "cloze",
+      "formatter": "mcq",
       "question_text": "An object's mass measures 307 kg. About how many kg is that, rounded to the nearest 100?",
       "correct_answer": 300,
       "options": [
         {
           "key": "A",
           "value": 302,
-          "text": "302",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 301,
-          "text": "301",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 300,
-          "text": "300",
           "is_correct": true
         },
         {
           "key": "D",
           "value": 299,
-          "text": "299",
           "is_correct": false
         }
       ]
@@ -253,28 +225,32 @@
     },
     {
       "seed": 502,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "An object's mass measures 454 mg. About how many mg is that, rounded to the nearest 100?",
       "correct_answer": 500,
       "options": [
         {
           "key": "A",
           "value": 501,
+          "text": "501",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 502,
+          "text": "502",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 499,
+          "text": "499",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 500,
+          "text": "500",
           "is_correct": true
         }
       ]
@@ -341,28 +317,32 @@
     },
     {
       "seed": 602,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "An object's mass measures 13 mg. About how many mg is that, rounded to the nearest 10?",
       "correct_answer": 10,
       "options": [
         {
           "key": "A",
           "value": 9,
+          "text": "9",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 12,
+          "text": "12",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 11,
+          "text": "11",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 10,
+          "text": "10",
           "is_correct": true
         }
       ]
@@ -394,32 +374,60 @@
           "is_correct": false
         }
       ]
+    },
+    {
+      "seed": 605,
+      "formatter": "mcq",
+      "question_text": "An object's mass measures 26 g. About how many g is that, rounded to the nearest 10?",
+      "correct_answer": 30,
+      "options": [
+        {
+          "key": "A",
+          "value": 32,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 30,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 31,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 29,
+          "is_correct": false
+        }
+      ]
     }
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "FAIL",
-      "rationale": "Estimating a mass means judging how heavy something is without being told. Here the exact figure is supplied first, as in An object's mass measures 31 g, and the pupil merely rounds it. No object is ever identified either, so there is nothing whose mass could be estimated."
+      "rationale": "In every multiple-choice item only one option is a multiple of the stated rounding unit. For the 7 g item the options are 11, 9, 10 and 12, and for the 1927 mg item they are 1999, 2002, 2001 and 2000, so a pupil who has never rounded anything can pick the single round number and be right every time. The rounding the competency is about is never actually required."
     },
     "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "Grams, kilograms and milligrams all appear, but only one estimation move is ever generated, rounding to a power of ten. Judging a mass against a known benchmark, or choosing which unit is sensible for a given object, never occurs."
+      "verdict": "PASS",
+      "rationale": "All three units appear as keys and three different rounding units are generated, to the nearest 10, 100 and 1000, with both rounding up and rounding down occurring, for example 31 g going down to 30 and 26 g going up to 30."
     },
     "cognitive_capacity": {
       "verdict": "CONCERN",
-      "rationale": "One sample takes a 4 mg mass and rounds it to the nearest 10, keying the answer 0. Telling a Grade 3 pupil that an object's estimated mass is zero contradicts the physical premise the stem has just set up."
+      "rationale": "Rounding to the nearest 1000 on a four-digit milligram reading sits at the edge of Grade 3 Quarter 2, and the stem asks the pupil to accept an object measured to 1927 mg, a precision that no Grade 3 estimation activity would produce."
     },
     "variant_comprehensiveness": {
       "verdict": "FAIL",
-      "rationale": "Thirteen items, one sentence. Measure, then round. The unit token and the rounding place are the entirety of the variation, and there is no applied setting, no comparison of two estimates, and no alternative item format beyond multiple choice and a cloze that reads identically."
+      "rationale": "One frame is used for all thirteen samples, and the object is never anything but an unnamed object. Nothing asks a pupil to choose a sensible benchmark mass for a real item, which is the form estimation normally takes at this level."
     },
     "competency_alignment": {
-      "verdict": "FAIL",
-      "rationale": "The distractors are not possible answers. Against a key of 60 for a nearest-ten rounding, the options offered include 59, 61 and 62, none of which is a multiple of ten and none of which any rounding could produce. Every sample repeats this, so the option sets teach that rounding yields arbitrary nearby numbers."
+      "verdict": "CONCERN",
+      "rationale": "Because the exact mass is supplied in the stem, the competency's verb of estimating collapses into a pure number-rounding exercise that belongs to the number-sense strand; no item asks the pupil to judge a mass without being told it first."
     },
     "scale_appropriateness": {
-      "verdict": "CONCERN",
-      "rationale": "An estimate of 0 mg at one end and 307 kg at the other sit outside the masses a Grade 3 estimation task should involve, and rounding 1927 mg to the nearest 1000 concerns place value rather than any mass a pupil could picture."
+      "verdict": "FAIL",
+      "rationale": "Seed 600 gives an object measuring 4 mg and a key of 0, which asserts that a real object has a mass of about zero milligrams. The generator's lower bound is not compatible with the rounding unit it pairs with it, and the 307 kg and 1927 mg cases are similarly outside plausible object masses."
     }
   },
   "overall": "FAIL"

@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g1_na_q1_0",
-  "reviewed_by": "reviewer-r1-cobalt-juniper-7748",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c1-lantern-fescue-3061",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -12,40 +12,33 @@
     500,
     501,
     502,
-    600,
-    601,
-    602,
-    603
+    601
   ],
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "cloze",
-      "question_text": "What comes next: 94, 95, 96, 97, ___",
+      "formatter": "mcq",
+      "question_text": "What number comes next when counting: 94, 95, 96, 97, ___?",
       "correct_answer": 98,
       "options": [
         {
           "key": "A",
           "value": 99,
-          "text": "99",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 98,
-          "text": "98",
           "is_correct": true
         },
         {
           "key": "C",
           "value": 96,
-          "text": "96",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 95,
-          "text": "95",
           "is_correct": false
         }
       ]
@@ -53,7 +46,7 @@
     {
       "seed": 43,
       "formatter": "read_mcq",
-      "question_text": "⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐\nCount the stars.\nHow many stars are there in all?",
+      "question_text": "What number is marked?",
       "correct_answer": "A",
       "options": [
         {
@@ -68,7 +61,7 @@
         },
         {
           "key": "C",
-          "value": 0,
+          "value": 12,
           "is_correct": false
         },
         {
@@ -80,23 +73,23 @@
     },
     {
       "seed": 44,
-      "formatter": "mcq",
-      "question_text": "What number comes next when counting: 60, 61, 62, 63, ___?",
-      "correct_answer": 64,
+      "formatter": "read_mcq",
+      "question_text": "(Large group of 64 books)\nCount the books.\nHow many books are there in all?",
+      "correct_answer": "D",
       "options": [
         {
           "key": "A",
-          "value": 61,
+          "value": 63,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 62,
+          "value": 65,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 65,
+          "value": 0,
           "is_correct": false
         },
         {
@@ -136,28 +129,32 @@
     },
     {
       "seed": 46,
-      "formatter": "mcq",
-      "question_text": "What number comes next when counting: 31, 32, 33, 34, ___?",
+      "formatter": "cloze",
+      "question_text": "What comes next: 31, 32, 33, 34, ___",
       "correct_answer": 35,
       "options": [
         {
           "key": "A",
           "value": 35,
+          "text": "35",
           "is_correct": true
         },
         {
           "key": "B",
           "value": 36,
+          "text": "36",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 32,
+          "text": "32",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 33,
+          "text": "33",
           "is_correct": false
         }
       ]
@@ -165,203 +162,115 @@
     {
       "seed": 500,
       "formatter": "read_mcq",
-      "question_text": "(Large group of 73 drinks)\nCount the drinks.\nHow many drinks are there in all?",
-      "correct_answer": "C",
+      "question_text": "What number is marked?",
+      "correct_answer": "A",
       "options": [
         {
           "key": "A",
-          "value": 0,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 72,
-          "is_correct": false
-        },
-        {
-          "key": "C",
           "value": 73,
           "is_correct": true
         },
         {
-          "key": "D",
+          "key": "B",
+          "value": 75,
+          "is_correct": false
+        },
+        {
+          "key": "C",
           "value": 74,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 72,
           "is_correct": false
         }
       ]
     },
     {
       "seed": 501,
-      "formatter": "cloze",
-      "question_text": "What comes next: 91, 92, 93, 94, ___",
+      "formatter": "mcq",
+      "question_text": "What number comes next when counting: 91, 92, 93, 94, ___?",
       "correct_answer": 95,
       "options": [
         {
           "key": "A",
           "value": 96,
-          "text": "96",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 95,
-          "text": "95",
           "is_correct": true
         },
         {
           "key": "C",
           "value": 92,
-          "text": "92",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 93,
-          "text": "93",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 502,
-      "formatter": "mcq",
-      "question_text": "What number comes next when counting: 74, 75, 76, 77, ___?",
-      "correct_answer": 78,
+      "formatter": "read_mcq",
+      "question_text": "(Large group of 78 trees)\nCount the trees.\nHow many trees are there in all?",
+      "correct_answer": "B",
       "options": [
         {
           "key": "A",
-          "value": 75,
+          "value": 77,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 79,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 76,
-          "is_correct": false
-        },
-        {
-          "key": "D",
           "value": 78,
           "is_correct": true
-        }
-      ]
-    },
-    {
-      "seed": 600,
-      "formatter": "cloze",
-      "question_text": "What comes next: 58, 59, 60, 61, ___",
-      "correct_answer": 62,
-      "options": [
-        {
-          "key": "A",
-          "value": 62,
-          "text": "62",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 60,
-          "text": "60",
-          "is_correct": false
         },
         {
           "key": "C",
-          "value": 63,
-          "text": "63",
+          "value": 0,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 59,
-          "text": "59",
+          "value": 79,
           "is_correct": false
         }
       ]
     },
     {
       "seed": 601,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "Moses is counting forward by 1 starting from 28. The count is: 28, 29, 30, 31. What is the next number Moses should say?",
       "correct_answer": 32,
       "options": [
         {
           "key": "A",
           "value": 33,
+          "text": "33",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 30,
+          "text": "30",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 32,
+          "text": "32",
           "is_correct": true
         },
         {
           "key": "D",
           "value": 29,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 602,
-      "formatter": "mcq",
-      "question_text": "What number comes next when counting backward: 63, 62, 61, 60, ___?",
-      "correct_answer": 59,
-      "options": [
-        {
-          "key": "A",
-          "value": 58,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 59,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 62,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 61,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 603,
-      "formatter": "mcq",
-      "question_text": "What number comes next when counting: 25, 26, 27, 28, ___?",
-      "correct_answer": 29,
-      "options": [
-        {
-          "key": "A",
-          "value": 26,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 29,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 27,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 30,
+          "text": "29",
           "is_correct": false
         }
       ]
@@ -369,29 +278,29 @@
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "Counting sequences dominate and they do fit the counting verb, but the competency separately names identifying a number that is '1 more or 1 less' than a given number, and no sampled stem ever poses that framing directly; the learner is only ever asked what comes next in a printed run of four numbers. The pictorial items also carry an option of 0 alongside a visible group of stars or drinks, which no child counting a drawn set could choose."
+      "verdict": "PASS",
+      "rationale": "Counting to 100 is exercised in three distinct senses - continuing a sequence such as 94, 95, 96, 97 with a blank, counting a large group of objects to a total, and locating a marked number - all of which are the competency's core act."
     },
     "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "Of the twelve samples only one, the item reading 'counting backward: 63, 62, 61, 60', exercises the downward direction the competency explicitly includes. Counting down is therefore represented at roughly one sample in twelve while counting up appears in eight, and no item starts a backward count from a named number the way the forward item with Moses does."
+      "verdict": "FAIL",
+      "rationale": "The competency spells out counting up or down and identifying a number that is 1 more or 1 less, and only the upward half is ever generated. All five sequence items ascend, the narrative item explicitly states counting forward by 1, and across nine samples no item counts backwards or asks for 1 less than a given number. Two of the four behaviours the competency names in parentheses are therefore unsampled, and a pupil could clear this node without ever counting down."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Stems are single sentences with a visible run of four consecutive numbers, which is appropriate load for the opening quarter of Grade 1; the pictorial prompt 'Count the stars.' adds no reading burden and the named-child framing stays to one clause."
+      "rationale": "Four-term sequences with a single blank, and object counts presented as a large group with a stated total to verify, match the demands of Quarter 1 Grade 1; no item requires writing number words or operating on the numbers."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "Presentation genuinely varies: a fill-in continuation, a symbolic multiple choice, a picture-count item, and a narrated version in which a child says the count aloud. That spread covers the reasonable contextual forms for a counting competency at this level."
+      "rationale": "Four presentations are in play - a bare sequence, a number line with a mark to read, a pictured collection to count, and a named pupil narrating a count - and answers are taken both as a typed blank and as a choice."
     },
     "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Harder samples move the starting point higher in the hundred (into the seventies and nineties) rather than swapping in an unrelated skill; the axis being varied is where in the counting sequence the student is working, which is exactly what this node is about."
+      "verdict": "CONCERN",
+      "rationale": "The axis that actually varies across seeds is the magnitude of the starting number, from the 30s to the 90s. Because direction is held fixed at forward, the seeds never get harder in the way this competency defines harder, and the decade-crossing case that makes counting up to 100 difficult is only incidentally touched."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Every value stays inside the stated hundred, with the largest run ending at 98 and the largest counted group being 73 drinks; nothing crosses the ceiling and nothing sits so low that the hundred range goes untested."
+      "rationale": "Values reach into the 90s and the counted collections run to 64 and 78, so the stated ceiling of 100 is genuinely approached rather than the generator hovering in safe two-digit territory, and nothing exceeds it."
     }
   },
-  "overall": "CONCERN"
+  "overall": "FAIL"
 }

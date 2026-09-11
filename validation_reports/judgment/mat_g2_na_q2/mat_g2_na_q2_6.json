@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g2_na_q2_6",
-  "reviewed_by": "reviewer-b4-plover-saffron-6041",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c4-pumice-lovage-6370",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -9,10 +9,8 @@
     44,
     45,
     46,
-    50,
-    51,
-    55,
-    85,
+    48,
+    68,
     500,
     501,
     502,
@@ -26,28 +24,32 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "mcq",
-      "question_text": "What is 510 − 382?",
+      "formatter": "cloze",
+      "question_text": "510 − 382 = ___",
       "correct_answer": 128,
       "options": [
         {
           "key": "A",
           "value": 128,
+          "text": "128",
           "is_correct": true
         },
         {
           "key": "B",
           "value": 127,
+          "text": "127",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 892,
+          "text": "892",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 129,
+          "text": "129",
           "is_correct": false
         }
       ]
@@ -82,184 +84,101 @@
     },
     {
       "seed": 44,
-      "formatter": "cloze",
-      "question_text": "244 − 150 = ___",
-      "correct_answer": 94,
+      "formatter": "read_mcq",
+      "question_text": "The dot is at 244 and it moves backward 150 numbers. Starting from 244, just count back 150 numbers. Which number will the dot land on?",
+      "correct_answer": "B",
       "options": [
         {
           "key": "A",
           "value": 93,
-          "text": "93",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 94,
-          "text": "94",
           "is_correct": true
         },
         {
           "key": "C",
           "value": 95,
-          "text": "95",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 394,
-          "text": "394",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 45,
-      "formatter": "cloze",
-      "question_text": "30 − 29 = ___",
-      "correct_answer": 1,
-      "options": [
-        {
-          "key": "A",
-          "value": 1,
-          "text": "1",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 2,
-          "text": "2",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 0,
-          "text": "0",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 59,
-          "text": "59",
-          "is_correct": false
-        }
-      ]
+      "formatter": "read_fill_in_blank",
+      "question_text": "The total is 30 and one part is 29. What is the other part?",
+      "correct_answer": 1
     },
     {
       "seed": 46,
-      "formatter": "mcq",
-      "question_text": "What is 71 − 60?",
-      "correct_answer": 11,
-      "options": [
-        {
-          "key": "A",
-          "value": 131,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 10,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 11,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 12,
-          "is_correct": false
-        }
-      ]
+      "formatter": "read_fill_in_blank",
+      "question_text": "The total is 71 and one part is 60. What is the other part?",
+      "correct_answer": 11
     },
     {
-      "seed": 50,
-      "formatter": "read_mcq",
-      "question_text": "The dot is at 116 and it moves backward 20 numbers. Starting from 116, just count back 20 numbers. Which number will the dot land on?",
-      "correct_answer": "A",
-      "options": [
-        {
-          "key": "A",
-          "value": 96,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 97,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 95,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 136,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 51,
+      "seed": 48,
       "formatter": "error_detect",
-      "question_text": "Ana solved: \"152 − 150 = ___\". Ana says the missing number is 302. Is Ana correct?",
+      "question_text": "Noel solved: \"120 − 81 = ___\". Noel says the missing number is 39. Is Noel correct?",
       "correct_answer": {
-        "has_error": true,
-        "correct_value": 2
+        "has_error": false,
+        "correct_value": 39
       }
     },
     {
-      "seed": 55,
-      "formatter": "read_fill_in_blank",
-      "question_text": "The total is 380 and one part is 210. What is the other part?",
-      "correct_answer": 170
-    },
-    {
-      "seed": 85,
+      "seed": 68,
       "formatter": "true_false",
-      "question_text": "265 − 210 = 55. True or False?",
+      "question_text": "300 − 204 = 96. True or False?",
       "correct_answer": true
     },
     {
       "seed": 500,
-      "formatter": "read_fill_in_blank",
-      "question_text": "The total is 591 and one part is 487. What is the other part?",
-      "correct_answer": 104
-    },
-    {
-      "seed": 501,
-      "formatter": "true_false",
-      "question_text": "921 − 838 = 83. True or False?",
-      "correct_answer": true
-    },
-    {
-      "seed": 502,
-      "formatter": "mcq",
-      "question_text": "What is 823 − 659?",
-      "correct_answer": 164,
+      "formatter": "read_mcq",
+      "question_text": "The dot is at 591 and it moves backward 487 numbers. Starting from 591, just count back 487 numbers. Which number will the dot land on?",
+      "correct_answer": "D",
       "options": [
         {
           "key": "A",
-          "value": 1482,
+          "value": 103,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 165,
+          "value": 1078,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 164,
-          "is_correct": true
+          "value": 105,
+          "is_correct": false
         },
         {
           "key": "D",
-          "value": 163,
-          "is_correct": false
+          "value": 104,
+          "is_correct": true
         }
       ]
+    },
+    {
+      "seed": 501,
+      "formatter": "true_false",
+      "question_text": "921 − 838 = 1759. True or False?",
+      "correct_answer": false
+    },
+    {
+      "seed": 502,
+      "formatter": "error_detect",
+      "question_text": "Dante solved: \"823 − 659 = ___\". Dante says the missing number is 164. Is Dante correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 164
+      }
     },
     {
       "seed": 600,
@@ -323,91 +242,49 @@
     },
     {
       "seed": 602,
-      "formatter": "mcq",
-      "question_text": "What is 270 − 247?",
-      "correct_answer": 23,
-      "options": [
-        {
-          "key": "A",
-          "value": 22,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 24,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 517,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 23,
-          "is_correct": true
-        }
-      ]
+      "formatter": "error_detect",
+      "question_text": "Jose solved: \"270 − 247 = ___\". Jose says the missing number is 23. Is Jose correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 23
+      }
     },
     {
       "seed": 603,
-      "formatter": "cloze",
-      "question_text": "1 − 1 = ___",
-      "correct_answer": 0,
+      "formatter": "read_mcq",
+      "question_text": "The dot is at 1 and it moves backward 1 number. Starting from 1, just count back 1 number. Which number will the dot land on?",
+      "correct_answer": "B",
       "options": [
         {
           "key": "A",
           "value": 2,
-          "text": "2",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 0,
-          "text": "0",
           "is_correct": true
         },
         {
           "key": "C",
-          "value": 3,
-          "text": "3",
+          "value": -1,
           "is_correct": false
         },
         {
           "key": "D",
           "value": 1,
-          "text": "1",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 604,
-      "formatter": "mcq",
-      "question_text": "What is 416 − 0?",
-      "correct_answer": 416,
-      "options": [
-        {
-          "key": "A",
-          "value": 416,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 417,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 415,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 418,
-          "is_correct": false
-        }
-      ]
+      "formatter": "error_detect",
+      "question_text": "Carlo solved: \"416 − 0 = ___\". Carlo says the missing number is 416. Is Carlo correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 416
+      }
     },
     {
       "seed": 605,
@@ -441,28 +318,28 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "Subtraction across the full sub-1000 band is what these seeds deliver, from seed 42's 510 less 382 to seed 502's 823 less 659, with the arithmetic in the keys correct throughout the sample I checked."
+      "rationale": "The core of the set is genuine three-digit subtraction - 510 less 382, 930 less 408, 823 less 659, 591 less 487 - and each difference I checked is correct, so the operation the competency names is being practised properly at its top end."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "Borrowing and non-borrowing cases are both well stocked: 921 less 838 and 823 less 659 demand regrouping twice over, while 380 less 210 and 930 less 408 need none. Two-digit and three-digit operands both occur, as 'less than 1000' allows."
+      "rationale": "Regrouping-required cases such as 300 less 204 and 270 less 247 appear beside clean ones such as 765 less 110, so both branches of the with-and-without clause are represented in the sample set."
     },
     "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Stems stay at one short line, and the only narrative one, Moses taking 110 baskets from 765 on the table, uses a concrete countable noun. Three-digit borrowing is the stated content of this node, so the load matches the quarter."
+      "verdict": "FAIL",
+      "rationale": "One option list offers -1 as a choice. Negative numbers are not part of the Grade 2 number system and must not be placed in front of a pupil at this stage; here the item counts a dot backwards from 1 and the surrounding distractors make the negative look like a live candidate. The same family also tells the child to 'count back 487 numbers', an instruction no second grader can act on."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "Six surfaces are in play here, including a total-and-one-part phrasing in seeds 55 and 500, a dot counting backward in seeds 50 and 605, a truth claim about 265 less 210, and a peer's wrong answer to adjudicate in seed 51."
+      "rationale": "Horizontal equations, a part-and-whole phrasing, a backwards-moving dot, a baskets story and peer-error checks are all sampled, so the presentation spread here is wider than in the neighbouring subtraction nodes."
     },
     "competency_alignment": {
       "verdict": "CONCERN",
-      "rationale": "Three seeds do no subtracting worth the name: 11 minus 0, 416 minus 0, and 1 minus 1. Identity and self-cancelling cases belong to a much earlier competency and dilute a pool whose whole purpose is borrowing inside three digits."
+      "rationale": "Several rungs sit far below what the under-1000 band implies: 'What is 11 − 0?' needs no computation, a part-whole item gives a total of 30 against a part of 29, and a dot moves back one place from 1. These vary triviality rather than building three-digit regrouping."
     },
     "scale_appropriateness": {
       "verdict": "CONCERN",
-      "rationale": "Operands honour the sub-1000 bound, but the option lists push past it: 1482 appears against 823 less 659 and 1338 against 930 less 408. Both are the corresponding sums, and both name a quantity larger than anything this competency permits."
+      "rationale": "The ceiling is respected, with 930 the largest minuend, but roughly a third of the samples work below 100, so the three-digit range the competency defines is under-represented relative to how much of the sample set it should own."
     }
   },
-  "overall": "CONCERN"
+  "overall": "FAIL"
 }

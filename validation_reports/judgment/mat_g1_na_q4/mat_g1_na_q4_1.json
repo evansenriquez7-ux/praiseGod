@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g1_na_q4_1",
-  "reviewed_by": "reviewer-b2-tallow-verdigris-8130",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c2-basalt-yarrow-7194",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -9,8 +9,6 @@
     44,
     45,
     46,
-    50,
-    55,
     500,
     501,
     502,
@@ -19,37 +17,41 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "Look at the fraction models. Compare \\(\\frac{1}{2}\\) and \\(\\frac{1}{4}\\). Which sign makes the statement true: \\(\\frac{1}{2}\\) ___ \\(\\frac{1}{4}\\)?",
       "correct_answer": ">",
       "options": [
         {
           "key": "A",
           "value": ">",
+          "text": ">",
           "is_correct": true
         },
         {
           "key": "B",
           "value": "+",
+          "text": "+",
           "is_correct": false
         },
         {
           "key": "C",
           "value": "=",
+          "text": "=",
           "is_correct": false
         },
         {
           "key": "D",
           "value": "<",
+          "text": "<",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 43,
-      "formatter": "mcq",
+      "formatter": "read_mcq",
       "question_text": "Look at the shaded models. Which sign correctly compares the shaded parts: \\(\\frac{1}{2}\\) ___ \\(\\frac{1}{4}\\)?",
-      "correct_answer": ">",
+      "correct_answer": "D",
       "options": [
         {
           "key": "A",
@@ -103,9 +105,9 @@
     },
     {
       "seed": 45,
-      "formatter": "mcq",
+      "formatter": "read_mcq",
       "question_text": "Look at the shaded models. Which sign correctly compares the shaded parts: \\(\\frac{1}{4}\\) ___ \\(\\frac{1}{2}\\)?",
-      "correct_answer": "<",
+      "correct_answer": "C",
       "options": [
         {
           "key": "A",
@@ -131,97 +133,37 @@
     },
     {
       "seed": 46,
-      "formatter": "mcq",
-      "question_text": "Look at the shaded models. Which sign correctly compares the shaded parts: \\(\\frac{1}{2}\\) ___ \\(\\frac{1}{4}\\)?",
-      "correct_answer": ">",
-      "options": [
-        {
-          "key": "A",
-          "value": "=",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "+",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "<",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": ">",
-          "is_correct": true
-        }
-      ]
-    },
-    {
-      "seed": 50,
-      "formatter": "cloze",
-      "question_text": "Look at the shaded models. Which sign correctly compares the shaded parts: \\(\\frac{1}{4}\\) ___ \\(\\frac{1}{2}\\)?",
-      "correct_answer": "<",
-      "options": [
-        {
-          "key": "A",
-          "value": "+",
-          "text": "+",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": ">",
-          "text": ">",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "<",
-          "text": "<",
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": "=",
-          "text": "=",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 55,
       "formatter": "read_mcq",
-      "question_text": "Look at the fraction models. Compare \\(\\frac{1}{2}\\) and \\(\\frac{1}{4}\\). Which sign makes the statement true: \\(\\frac{1}{2}\\) ___ \\(\\frac{1}{4}\\)?",
-      "correct_answer": "B",
+      "question_text": "Look at the shaded models. Which sign correctly compares the shaded parts: \\(\\frac{1}{2}\\) ___ \\(\\frac{1}{4}\\)?",
+      "correct_answer": "D",
       "options": [
         {
           "key": "A",
-          "value": "<",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": ">",
-          "is_correct": true
-        },
-        {
-          "key": "C",
           "value": "=",
           "is_correct": false
         },
         {
-          "key": "D",
+          "key": "B",
           "value": "+",
           "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "<",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": ">",
+          "is_correct": true
         }
       ]
     },
     {
       "seed": 500,
-      "formatter": "read_mcq",
+      "formatter": "mcq",
       "question_text": "Look at the fraction models for \\(\\frac{1}{4}\\) and \\(\\frac{1}{2}\\). Which comparison sign is correct: \\(\\frac{1}{4}\\) ___ \\(\\frac{1}{2}\\)?",
-      "correct_answer": "A",
+      "correct_answer": "<",
       "options": [
         {
           "key": "A",
@@ -247,92 +189,88 @@
     },
     {
       "seed": 501,
-      "formatter": "cloze",
+      "formatter": "mcq",
       "question_text": "Look at the fraction models for \\(\\frac{1}{4}\\) and \\(\\frac{1}{2}\\). Which comparison sign is correct: \\(\\frac{1}{4}\\) ___ \\(\\frac{1}{2}\\)?",
       "correct_answer": "<",
       "options": [
         {
           "key": "A",
           "value": "+",
-          "text": "+",
           "is_correct": false
         },
         {
           "key": "B",
           "value": ">",
-          "text": ">",
           "is_correct": false
         },
         {
           "key": "C",
           "value": "=",
-          "text": "=",
           "is_correct": false
         },
         {
           "key": "D",
           "value": "<",
-          "text": "<",
           "is_correct": true
         }
       ]
     },
     {
       "seed": 502,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "Look at the fraction models. Compare \\(\\frac{1}{4}\\) and \\(\\frac{1}{2}\\). Which sign makes the statement true: \\(\\frac{1}{4}\\) ___ \\(\\frac{1}{2}\\)?",
       "correct_answer": "<",
       "options": [
         {
           "key": "A",
           "value": "<",
+          "text": "<",
           "is_correct": true
         },
         {
           "key": "B",
           "value": "+",
+          "text": "+",
           "is_correct": false
         },
         {
           "key": "C",
           "value": "=",
+          "text": "=",
           "is_correct": false
         },
         {
           "key": "D",
           "value": ">",
+          "text": ">",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 601,
-      "formatter": "cloze",
+      "formatter": "mcq",
       "question_text": "Look at the fraction models for \\(\\frac{1}{2}\\) and \\(\\frac{1}{4}\\). Which comparison sign is correct: \\(\\frac{1}{2}\\) ___ \\(\\frac{1}{4}\\)?",
       "correct_answer": ">",
       "options": [
         {
           "key": "A",
           "value": "+",
-          "text": "+",
           "is_correct": false
         },
         {
           "key": "B",
           "value": ">",
-          "text": ">",
           "is_correct": true
         },
         {
           "key": "C",
           "value": "<",
-          "text": "<",
           "is_correct": false
         },
         {
           "key": "D",
           "value": "=",
-          "text": "=",
           "is_correct": false
         }
       ]
@@ -341,27 +279,27 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "Each item asks for the sign that makes a statement between a half and a quarter true, and the stems consistently direct attention to the shaded models, which is the comparison-using-models act described."
+      "rationale": "Each item sets a half against a quarter and asks which relation holds, and the keys are correct in both directions, so the comparison the competency names is what is being scored."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "Both orientations are generated in balanced numbers -- the half named first with a greater-than key, and the quarter named first with a less-than key -- so neither direction is neglected."
+      "rationale": "Both orderings are generated - the half presented first and the quarter presented first - so pupils cannot succeed by always choosing the same symbol, which is the main trap for a two-fraction comparison."
     },
     "cognitive_capacity": {
       "verdict": "CONCERN",
-      "rationale": "Every option list includes '+', which is not a comparison sign at all. A pupil can discard it without looking at any model, and since '=' is also never correct for two unequal fractions, the real choice collapses to two symbols in every single item."
+      "rationale": "The stems carry raw LaTeX fraction markup rather than the plain slash notation used in the neighbouring fraction nodes of this same quarter; if that markup reaches a Grade 1 screen unrendered, a six-year-old is looking at backslashes and braces instead of a fraction."
     },
     "variant_comprehensiveness": {
       "verdict": "CONCERN",
-      "rationale": "Thirteen samples restate the same comparison in three interchangeable phrasings about looking at the fraction or shaded models; no item compares the two fractions through a different model such as a length, a set of objects, or two differently shaped wholes."
+      "rationale": "All nine samples are one task with three interchangeable wordings; nothing asks which shaded model is larger, or has the pupil point to the greater part, so the models the competency requires are only referred to, never acted on."
     },
     "competency_alignment": {
       "verdict": "CONCERN",
-      "rationale": "The high seeds are not harder than the low ones -- seed 601 poses the identical half-against-quarter comparison as seed 42 with the options reordered -- so the progression is varying stem wording and option position rather than anything about comparing fractions."
+      "rationale": "Since only one fraction pair exists in this competency, what differs between seeds is stem phrasing and option order rather than any growth in comparison demand, and the correct answer is always one of exactly two symbols."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "The node stays strictly within the two denominations named, never introducing thirds or fifths that would be out of scope for Grade 1 Quarter 4."
+      "rationale": "The quantities compared are precisely the half and the quarter the competency specifies, with no additional denominators pulled in from later grades."
     }
   },
   "overall": "CONCERN"

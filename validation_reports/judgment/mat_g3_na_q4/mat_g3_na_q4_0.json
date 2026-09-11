@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g3_na_q4_0",
-  "reviewed_by": "reviewer-r2-amber-trellis-1903",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c6-mistral-comfrey-8916",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -9,43 +9,46 @@
     44,
     45,
     46,
-    50,
-    55,
+    48,
     500,
     501,
     502,
     600,
     601,
+    602,
     603,
     604,
-    605,
-    606
+    605
   ],
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "mcq",
-      "question_text": "Start at 12 on a number line and take equal jumps back of 2 to reach 0. How many jumps did you make? 12 ÷ 2 = ___",
+      "formatter": "cloze",
+      "question_text": "Start at 12 on a number line and take equal jumps back of 2 to reach 0: 12 ÷ 2 = ___",
       "correct_answer": 6,
       "options": [
         {
           "key": "A",
           "value": 7,
+          "text": "7",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 10,
+          "text": "10",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 2,
+          "text": "2",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 6,
+          "text": "6",
           "is_correct": true
         }
       ]
@@ -112,143 +115,67 @@
     },
     {
       "seed": 45,
-      "formatter": "mcq",
-      "question_text": "Since 8 × 9 = 72, what is 72 ÷ 8?",
-      "correct_answer": 9,
-      "options": [
-        {
-          "key": "A",
-          "value": 9,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 64,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 10,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 8,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 46,
-      "formatter": "mcq",
-      "question_text": "Start at 16 on a number line and take equal jumps back of 8 to reach 0. How many jumps did you make? 16 ÷ 8 = ___",
-      "correct_answer": 2,
-      "options": [
-        {
-          "key": "A",
-          "value": 8,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 2,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 1,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 3,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 50,
       "formatter": "true_false",
-      "question_text": "Since 6 × 7 = 42, then 42 ÷ 6 = 8. True or False?",
+      "question_text": "Since 8 × 9 = 72, then 72 ÷ 8 = 8. True or False?",
       "correct_answer": false
     },
     {
-      "seed": 55,
-      "formatter": "error_detect",
-      "question_text": "Grace solved: \"Starting at 20 on a number line, taking equal jumps back of 5 takes ___ jumps to reach 0\". Grace says the missing number is 15. Is Grace correct?",
-      "correct_answer": {
-        "has_error": true,
-        "correct_value": 4
-      }
+      "seed": 46,
+      "formatter": "true_false",
+      "question_text": "Starting at 16 on a number line, taking 2 equal jumps back of 8 lands on 0. True or False?",
+      "correct_answer": true
     },
     {
-      "seed": 500,
+      "seed": 48,
       "formatter": "error_detect",
-      "question_text": "Rico solved: \"Since 9 × 6 = 54, then 54 ÷ 9 = ___\". Rico says the missing number is 6. Is Rico correct?",
+      "question_text": "Noel solved: \"Since 4 × 6 = 24, then 24 ÷ 4 = ___\". Noel says the missing number is 6. Is Noel correct?",
       "correct_answer": {
         "has_error": false,
         "correct_value": 6
       }
     },
     {
+      "seed": 500,
+      "formatter": "true_false",
+      "question_text": "Since 9 × 6 = 54, then 54 ÷ 9 = 5. True or False?",
+      "correct_answer": false
+    },
+    {
       "seed": 501,
-      "formatter": "cloze",
-      "question_text": "Since 7 × 5 = 35, 35 ÷ 7 = ___",
+      "formatter": "mcq",
+      "question_text": "Since 7 × 5 = 35, what is 35 ÷ 7?",
       "correct_answer": 5,
       "options": [
         {
           "key": "A",
           "value": 28,
-          "text": "28",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 5,
-          "text": "5",
           "is_correct": true
         },
         {
           "key": "C",
           "value": 7,
-          "text": "7",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 6,
-          "text": "6",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 502,
-      "formatter": "mcq",
-      "question_text": "Since 4 × 7 = 28, what is 28 ÷ 4?",
-      "correct_answer": 7,
-      "options": [
-        {
-          "key": "A",
-          "value": 24,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 7,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 4,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 8,
-          "is_correct": false
-        }
-      ]
+      "formatter": "error_detect",
+      "question_text": "Dante solved: \"Since 4 × 7 = 28, then 28 ÷ 4 = ___\". Dante says the missing number is 7. Is Dante correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 7
+      }
     },
     {
       "seed": 600,
@@ -311,127 +238,82 @@
       ]
     },
     {
+      "seed": 602,
+      "formatter": "error_detect",
+      "question_text": "Jose solved: \"Since 4 × 7 = 28, then 28 ÷ 4 = ___\". Jose says the missing number is 7. Is Jose correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 7
+      }
+    },
+    {
       "seed": 603,
-      "formatter": "cloze",
-      "question_text": "Start at 63 on a number line and take equal jumps back of 7 to reach 0: 63 ÷ 7 = ___",
+      "formatter": "mcq",
+      "question_text": "Start at 63 on a number line and take equal jumps back of 7 to reach 0. How many jumps did you make? 63 ÷ 7 = ___",
       "correct_answer": 9,
       "options": [
         {
           "key": "A",
           "value": 7,
-          "text": "7",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 9,
-          "text": "9",
           "is_correct": true
         },
         {
           "key": "C",
           "value": 56,
-          "text": "56",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 10,
-          "text": "10",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 604,
-      "formatter": "mcq",
-      "question_text": "Start at 40 on a number line and take equal jumps back of 5 to reach 0. How many jumps did you make? 40 ÷ 5 = ___",
-      "correct_answer": 8,
-      "options": [
-        {
-          "key": "A",
-          "value": 5,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 8,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 9,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 35,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 605,
       "formatter": "error_detect",
-      "question_text": "Liza solved: \"Starting at 72 on a number line, taking equal jumps back of 8 takes ___ jumps to reach 0\". Liza says the missing number is 9. Is Liza correct?",
+      "question_text": "Carlo solved: \"Starting at 40 on a number line, taking equal jumps back of 5 takes ___ jumps to reach 0\". Carlo says the missing number is 8. Is Carlo correct?",
       "correct_answer": {
         "has_error": false,
-        "correct_value": 9
+        "correct_value": 8
       }
     },
     {
-      "seed": 606,
-      "formatter": "mcq",
-      "question_text": "Start at 56 on a number line and take equal jumps back of 7 to reach 0. How many jumps did you make? 56 ÷ 7 = ___",
-      "correct_answer": 8,
-      "options": [
-        {
-          "key": "A",
-          "value": 7,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 8,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 9,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 49,
-          "is_correct": false
-        }
-      ]
+      "seed": 605,
+      "formatter": "true_false",
+      "question_text": "Starting at 72 on a number line, taking 64 equal jumps back of 8 lands on 0. True or False?",
+      "correct_answer": false
     }
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "Both named representations are addressed in words, but the competency says 'Illustrate', and this node's formatters are only mcq, cloze, true_false and error_detect. The number line is described in a sentence and never drawn, so the learner reads about equal jumps instead of seeing or marking them."
+      "verdict": "PASS",
+      "rationale": "Both representations the wording names are built out: equal jumps back along a number line to reach zero, and division recovered from a known product, as in the items that begin from a multiplication fact and ask for the related quotient."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "Neither clause is neglected: jumps back to zero appear repeatedly, and the inverse relation is made explicit in items of the shape 'Since 8 × 9 = 72, what is 72 ÷ 8?'. The two sub-cases are close to evenly split across the seeds."
+      "rationale": "The jump form appears with the count of jumps unknown and with the jump size given, and the inverse form appears in both directions, sometimes dividing by the first factor and sometimes by the second, so neither sub-case is a token."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The jump stems narrate the whole procedure, starting point, jump size, and destination of zero, before asking for the count, which suits a Grade 3 pupil meeting the number-line model. Dividends such as 63 and 72 use facts taught earlier in the year."
+      "rationale": "Starting values stay at or below seventy-two and jump sizes are single digits, so the number line can actually be imagined, which is what an illustrating objective needs at this grade."
     },
     "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "Within the two models the presentation still shifts: some jump items append the matching sentence 12 ÷ 2 = ___ while others ask the count alone, and the inverse items appear as questions, as fill-ins, as a false claim to reject, and as another pupil's answer to verify."
+      "verdict": "CONCERN",
+      "rationale": "The number line exists only as a sentence to picture; nothing in the set presents an actual model, an array, or a grouping the pupil manipulates, which sits awkwardly under a competency whose first verb is to illustrate. Two seeds also return the same item 'Since 4 × 7 = 28, then 28 ÷ 4 = ___' with only the classmate's name changed."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Harder seeds pair larger dividends with the six to nine facts of this quarter, for example jumping back by 8 from 72, so the growing demand is the division fact underneath the model rather than any unrelated complication."
+      "rationale": "Divisors range from two through nine and the samples alternate between recovering a quotient and checking a claimed number of jumps, so the difficulty moves along this objective's own axis."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Dividends run from 6 up to 72 with single-digit jump sizes and quotients no greater than nine, which keeps the number of jumps countable and stays within the multiplication facts a Grade 3 Quarter 4 pupil holds."
+      "rationale": "Dividends stay within the multiplication facts of this grade, from twelve up to seventy-two, which is the right band for a first encounter with division."
     }
   },
   "overall": "CONCERN"

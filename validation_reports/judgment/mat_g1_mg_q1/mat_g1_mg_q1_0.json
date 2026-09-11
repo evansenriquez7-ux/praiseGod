@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g1_mg_q1_0",
-  "reviewed_by": "reviewer-b1-quartz-mallow-4412",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c1-lantern-fescue-3061",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -9,7 +9,6 @@
     44,
     45,
     46,
-    50,
     500,
     501,
     502,
@@ -19,9 +18,9 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "mcq",
+      "formatter": "read_mcq",
       "question_text": "A party hat is shaped with 3 straight edges. What 2D shape is it?",
-      "correct_answer": "triangle",
+      "correct_answer": "A",
       "options": [
         {
           "key": "A",
@@ -75,9 +74,9 @@
     },
     {
       "seed": 44,
-      "formatter": "mcq",
+      "formatter": "read_mcq",
       "question_text": "A small flat shape with 3 straight edges is shown. What shape is it?",
-      "correct_answer": "triangle",
+      "correct_answer": "C",
       "options": [
         {
           "key": "A",
@@ -158,34 +157,6 @@
       ]
     },
     {
-      "seed": 50,
-      "formatter": "read_mcq",
-      "question_text": "A small flat shape with 3 straight edges is shown. What shape is it?",
-      "correct_answer": "D",
-      "options": [
-        {
-          "key": "A",
-          "value": "none of these",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "rectangle",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "square",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "triangle",
-          "is_correct": true
-        }
-      ]
-    },
-    {
       "seed": 500,
       "formatter": "read_mcq",
       "question_text": "A small flat shape with 3 straight edges is shown. What shape is it?",
@@ -215,9 +186,9 @@
     },
     {
       "seed": 501,
-      "formatter": "mcq",
+      "formatter": "read_mcq",
       "question_text": "A classroom chalkboard has 4 straight edges and opposite edges are equal. What shape is the chalkboard?",
-      "correct_answer": "rectangle",
+      "correct_answer": "D",
       "options": [
         {
           "key": "A",
@@ -243,9 +214,9 @@
     },
     {
       "seed": 502,
-      "formatter": "mcq",
+      "formatter": "read_mcq",
       "question_text": "A large flat shape with 4 equal straight edges is shown. What shape is it?",
-      "correct_answer": "square",
+      "correct_answer": "B",
       "options": [
         {
           "key": "A",
@@ -299,9 +270,9 @@
     },
     {
       "seed": 601,
-      "formatter": "mcq",
+      "formatter": "read_mcq",
       "question_text": "A flat floor tile has 4 equal straight edges. What shape is the tile?",
-      "correct_answer": "square",
+      "correct_answer": "C",
       "options": [
         {
           "key": "A",
@@ -329,28 +300,28 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "CONCERN",
-      "rationale": "Most stems describe a figure by counting its edges and ask for the name, which tests the definition rather than identification of a shape actually seen at some size or turn. Only the read-format items and the sign that is 'turned upside down' put a figure in front of the pupil."
+      "rationale": "Most stems hand the pupil the defining property in words before asking the question - a party hat is described as shaped with 3 straight edges, a chalkboard as having 4 straight edges and opposite edges are equal. The pupil can answer by matching a counted word to a shape name without ever looking at the figure, which is not the identification the competency asks for."
     },
     "comprehensive_coverage": {
-      "verdict": "FAIL",
-      "rationale": "The competency explicitly names different size and different orientation. Of eleven renders exactly one mentions a turn, and triangle is the key in six of them against two squares and two rectangles. The orientation sub-case is effectively unbuilt and the shape mix is lopsided."
+      "verdict": "CONCERN",
+      "rationale": "Triangle, rectangle and square all appear as keys, but the different orientation clause is carried by a single sample, the triangular sign that is turned upside down. No rotated square, no tilted rectangle, and different size is signalled only by the adjectives small and large rather than by any contrast between two sizes of the same shape."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Stems are one sentence, the option list is four shape names, and edge counting is the intended Quarter 1 route into naming 2D shapes."
+      "rationale": "Vocabulary stays at edges, corners and the three shape names, the contexts (party hat, chalkboard, floor tile) are everyday Filipino classroom objects, and one-sentence stems suit the opening quarter of Grade 1."
     },
     "variant_comprehensiveness": {
       "verdict": "CONCERN",
-      "rationale": "Three stems recur word for word across different seeds - the party hat appears three times - and what changes between those renders is the ordering of the options rather than the shape, its size, or how it is presented."
+      "rationale": "The party hat stem recurs verbatim at three of the ten seeds and the chalkboard stem at two more, so half the sample set is two sentences. Real variety here would mean the same shape shown at different tilts and sizes, which is precisely what the competency names and what the repetition crowds out."
     },
     "competency_alignment": {
       "verdict": "CONCERN",
-      "rationale": "Nothing climbs toward the demanding half of the competency. No item requires recognising a rectangle standing on a corner or a square drawn unusually large, which is where identification stops being definition recall."
+      "rationale": "Between seeds the thing that reliably changes is the order of the four options, not the size or orientation of the shape being identified, so the seeds do not form a progression that builds toward recognising a shape however it is turned."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Only the three named shapes plus a 'none of these' option ever appear; no circle, hexagon or solid from a later node is pulled in."
+      "rationale": "No numeric range is in play for a shape-naming competency; the only numbers used are the edge counts 3 and 4, which are exactly the attributes of the three named shapes."
     }
   },
-  "overall": "FAIL"
+  "overall": "CONCERN"
 }

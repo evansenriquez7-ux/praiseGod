@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g2_na_q1_9",
-  "reviewed_by": "reviewer-b3-cinder-halyard-2276",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c3-nimbus-sorrel-4825",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -10,8 +10,6 @@
     45,
     46,
     47,
-    48,
-    52,
     61,
     500,
     501,
@@ -26,12 +24,9 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "error_detect",
-      "question_text": "Manny solved: \"57 + 345 = ___\". Manny says the missing number is 401. Is Manny correct?",
-      "correct_answer": {
-        "has_error": true,
-        "correct_value": 402
-      }
+      "formatter": "set_fill_in_blank",
+      "question_text": "Show 57 + 345 on the number line.",
+      "correct_answer": 402
     },
     {
       "seed": 43,
@@ -41,31 +36,12 @@
     },
     {
       "seed": 44,
-      "formatter": "mcq",
-      "question_text": "What is 144 + 480?",
-      "correct_answer": 624,
-      "options": [
-        {
-          "key": "A",
-          "value": 623,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 624,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 634,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 625,
-          "is_correct": false
-        }
-      ]
+      "formatter": "error_detect",
+      "question_text": "Rico solved: \"144 + 480 = ___\". Rico says the missing number is 624. Is Rico correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 624
+      }
     },
     {
       "seed": 45,
@@ -97,279 +73,215 @@
     },
     {
       "seed": 46,
-      "formatter": "mcq",
-      "question_text": "What is 244 + 335?",
+      "formatter": "cloze",
+      "question_text": "244 + 335 = ___",
       "correct_answer": 579,
       "options": [
         {
           "key": "A",
           "value": 580,
+          "text": "580",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 589,
+          "text": "589",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 578,
+          "text": "578",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 579,
+          "text": "579",
           "is_correct": true
         }
       ]
     },
     {
       "seed": 47,
-      "formatter": "cloze",
-      "question_text": "260 + 240 = ___",
-      "correct_answer": 500,
+      "formatter": "read_mcq",
+      "question_text": "The dot is at 260 and it moves forward 240 numbers. Starting from 260, just count up 240 numbers. Which number will the dot land on?",
+      "correct_answer": "B",
       "options": [
         {
           "key": "A",
           "value": 20,
-          "text": "20",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 500,
-          "text": "500",
           "is_correct": true
         },
         {
           "key": "C",
           "value": 499,
-          "text": "499",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 510,
-          "text": "510",
           "is_correct": false
         }
       ]
     },
     {
-      "seed": 48,
+      "seed": 61,
       "formatter": "true_false",
-      "question_text": "96 + 15 = 96. True or False?",
+      "question_text": "345 + 160 = 504. True or False?",
       "correct_answer": false
     },
     {
-      "seed": 52,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Show 217 + 563 on the number line.",
-      "correct_answer": 780
-    },
-    {
-      "seed": 61,
+      "seed": 500,
       "formatter": "read_mcq",
-      "question_text": "The dot is at 345 and it moves forward 160 numbers. Starting from 345, just count up 160 numbers. Which number will the dot land on?",
+      "question_text": "The dot is at 727 and it moves forward 59 numbers. Starting from 727, just count up 59 numbers. Which number will the dot land on?",
       "correct_answer": "A",
       "options": [
         {
           "key": "A",
-          "value": 505,
+          "value": 786,
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 515,
+          "value": 796,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 185,
+          "value": 785,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 504,
+          "value": 668,
           "is_correct": false
         }
       ]
-    },
-    {
-      "seed": 500,
-      "formatter": "read_fill_in_blank",
-      "question_text": "The two parts are 727 and 59. What is the sum?",
-      "correct_answer": 786
     },
     {
       "seed": 501,
-      "formatter": "true_false",
-      "question_text": "748 + 95 = 843. True or False?",
-      "correct_answer": true
+      "formatter": "set_fill_in_blank",
+      "question_text": "Show 748 + 95 on the number line.",
+      "correct_answer": 843
     },
     {
       "seed": 502,
-      "formatter": "mcq",
-      "question_text": "What is 689 + 158?",
-      "correct_answer": 847,
-      "options": [
-        {
-          "key": "A",
-          "value": 846,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 857,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 531,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 847,
-          "is_correct": true
-        }
-      ]
+      "formatter": "error_detect",
+      "question_text": "Dante solved: \"689 + 158 = ___\". Dante says the missing number is 847. Is Dante correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 847
+      }
     },
     {
       "seed": 600,
-      "formatter": "true_false",
-      "question_text": "874 + 32 = 906. True or False?",
-      "correct_answer": true
+      "formatter": "set_fill_in_blank",
+      "question_text": "Show 874 + 32 on the number line.",
+      "correct_answer": 906
     },
     {
       "seed": 601,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "Moses is on step 750. Moses climbs up 0 more steps. What step is Moses on now?",
       "correct_answer": 750,
       "options": [
         {
           "key": "A",
           "value": 751,
+          "text": "751",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 749,
+          "text": "749",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 750,
+          "text": "750",
           "is_correct": true
         },
         {
           "key": "D",
           "value": 760,
+          "text": "760",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 602,
-      "formatter": "cloze",
-      "question_text": "501 + 150 = ___",
-      "correct_answer": 651,
+      "formatter": "read_mcq",
+      "question_text": "The dot is at 501 and it moves forward 150 numbers. Starting from 501, just count up 150 numbers. Which number will the dot land on?",
+      "correct_answer": "A",
       "options": [
         {
           "key": "A",
           "value": 651,
-          "text": "651",
           "is_correct": true
         },
         {
           "key": "B",
           "value": 661,
-          "text": "661",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 351,
-          "text": "351",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 650,
-          "text": "650",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 603,
-      "formatter": "cloze",
-      "question_text": "848 + 102 = ___",
-      "correct_answer": 950,
-      "options": [
-        {
-          "key": "A",
-          "value": 950,
-          "text": "950",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 960,
-          "text": "960",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 746,
-          "text": "746",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 949,
-          "text": "949",
-          "is_correct": false
-        }
-      ]
+      "formatter": "read_fill_in_blank",
+      "question_text": "The two parts are 848 and 102. What is the sum?",
+      "correct_answer": 950
     },
     {
       "seed": 604,
-      "formatter": "error_detect",
-      "question_text": "Carlo solved: \"633 + 367 = ___\". Carlo says the missing number is 1000. Is Carlo correct?",
-      "correct_answer": {
-        "has_error": false,
-        "correct_value": 1000
-      }
+      "formatter": "true_false",
+      "question_text": "633 + 367 = 633. True or False?",
+      "correct_answer": false
     },
     {
       "seed": 605,
-      "formatter": "cloze",
-      "question_text": "634 + 297 = ___",
-      "correct_answer": 931,
+      "formatter": "read_mcq",
+      "question_text": "The dot is at 634 and it moves forward 297 numbers. Starting from 634, just count up 297 numbers. Which number will the dot land on?",
+      "correct_answer": "D",
       "options": [
         {
           "key": "A",
           "value": 941,
-          "text": "941",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 337,
-          "text": "337",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 930,
-          "text": "930",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 931,
-          "text": "931",
           "is_correct": true
         }
       ]
@@ -378,27 +290,27 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "Addition within the stated bound is the direct demand of every seed, and I checked all eighteen keys against their stems without finding an arithmetic error, including the pair that sums to exactly one thousand and the error-detection item where a proposed 401 is correctly flagged against a true total of 402."
+      "rationale": "The samples are addition with totals at or below a thousand and the arithmetic is sound throughout, including the pair reaching exactly a thousand and the several pairs that require carrying across two columns."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "The with or without regrouping clause is honoured on both sides: several pairs carry in the ones and again in the tens, while others add cleanly in every column. Two-digit plus three-digit pairs appear alongside three-digit pairs, so the shorter addend case is not skipped."
+      "rationale": "The with or without regrouping clause is honoured on both sides: pairs like 244 and 335 need no carrying while pairs like 689 and 158 need it twice, and two-digit plus three-digit combinations appear alongside three-digit pairs."
     },
     "cognitive_capacity": {
       "verdict": "CONCERN",
-      "rationale": "One rendered item tells the learner that a dot moves forward 160 numbers and to just count up 160 numbers from 345. Counting on by 160 is not a strategy a second grader can or should execute literally, and the instruction as worded invites a procedure that would take the whole lesson rather than the place-value addition the item really wants."
+      "rationale": "Several items tell the pupil to count up a large number of single steps on a number line, in one case moving forward 297 numbers from 634. Counting up by ones is not a usable method at that magnitude, so the instruction misdescribes what the pupil must actually do."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "Six response types occur, spanning bare computation, judging another pupil's answer, supplying a sum from two stated parts, marking a sum on a line and verifying a written equation. The set covers production and verification orientations without leaving the competency's computational focus."
+      "rationale": "The presentations are genuinely diverse here: a number-line placement, a part-and-whole framing, an error-detection narrative, a true-or-false statement, a step-climbing story, and bare computation."
     },
     "competency_alignment": {
       "verdict": "CONCERN",
-      "rationale": "Most seeds vary regrouping and magnitude, which is right, but the item where a pupil on step 750 climbs up 0 more steps is an identity-property question that belongs to the addition-properties competency in this same quarter. As a test of addition with or without regrouping it demands nothing, and one true-or-false item is false so grossly that no computation is needed to reject it."
+      "rationale": "Two samples sit outside the regrouping skill this node builds. One adds zero, which belongs to the properties competency, and the true-or-false item asserting that 633 plus 367 equals 633 is rejectable at a glance because the claimed total equals one addend."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Sums range from the low five-hundreds to exactly one thousand, with the ceiling reached by a pair that lands on it precisely and never crossed by any item. Addends are drawn from across the two-digit and three-digit range, so the bound is both respected and genuinely exercised."
+      "rationale": "Every total stays at or under a thousand, with the largest results at 950, 931 and 906, so the ceiling is worked right up to without being crossed."
     }
   },
   "overall": "CONCERN"

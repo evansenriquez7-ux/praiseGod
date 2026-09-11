@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g2_na_q1_4",
-  "reviewed_by": "reviewer-b3-cinder-halyard-2276",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c3-nimbus-sorrel-4825",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -43,7 +43,7 @@
     {
       "seed": 44,
       "formatter": "ordering",
-      "question_text": "Arrange these numbers from smallest to largest: 412, 405, 231",
+      "question_text": "Arrange these numbers from smallest to largest: 412, 231, 405",
       "correct_answer": [
         231,
         405,
@@ -52,7 +52,7 @@
     },
     {
       "seed": 45,
-      "formatter": "ordering",
+      "formatter": "sort_order",
       "question_text": "Ben counted seashells collected by 5 friends: 260, 262, 268, 269, 270. Arrange the counts from smallest to largest.",
       "correct_answer": [
         260,
@@ -76,7 +76,7 @@
     {
       "seed": 500,
       "formatter": "sort_order",
-      "question_text": "Arrange these numbers from smallest to largest: 993, 998, 996, 1000",
+      "question_text": "Arrange these numbers from smallest to largest: 993, 996, 1000, 998",
       "correct_answer": [
         993,
         996,
@@ -97,7 +97,7 @@
     {
       "seed": 502,
       "formatter": "ordering",
-      "question_text": "Arrange these numbers from smallest to largest: 1000, 982, 995",
+      "question_text": "Arrange these numbers from smallest to largest: 995, 982, 1000",
       "correct_answer": [
         982,
         995,
@@ -127,8 +127,8 @@
     },
     {
       "seed": 602,
-      "formatter": "ordering",
-      "question_text": "Arrange these numbers from smallest to largest: 399, 409, 404, 406",
+      "formatter": "sort_order",
+      "question_text": "Arrange these numbers from smallest to largest: 404, 406, 399, 409",
       "correct_answer": [
         399,
         404,
@@ -138,7 +138,7 @@
     },
     {
       "seed": 603,
-      "formatter": "ordering",
+      "formatter": "sort_order",
       "question_text": "Kuya Pat counted stickers collected by 4 friends: 150, 164, 166, 168. Arrange the counts from largest to smallest.",
       "correct_answer": [
         168,
@@ -160,7 +160,7 @@
     },
     {
       "seed": 605,
-      "formatter": "ordering",
+      "formatter": "sort_order",
       "question_text": "Ana counted marbles collected by 5 friends: 161, 163, 171, 175, 177. Arrange the counts from largest to smallest.",
       "correct_answer": [
         177,
@@ -174,27 +174,27 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "Each seed asks for an actual arrangement and the keys are returned as ordered sequences, so the learner produces the ordering rather than selecting a pre-made one. Both requested directions are issued explicitly in the stems and the keys match them correctly throughout."
+      "rationale": "Every sample is a genuine ordering task with a correctly sorted key, and the and vice versa clause is honoured by items that ask for largest to smallest as often as smallest to largest."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "The vice versa clause is genuinely honoured, with smallest-to-largest and largest-to-smallest arriving in roughly equal numbers and both appearing in bare and contextual forms. Set sizes vary from three to five values, and both tightly clustered sets and sets with a distant outlier occur."
+      "rationale": "Both directions appear repeatedly, set sizes range from three to five numbers, and the thousand itself is included in several sets, so the top of the stated range is actually exercised rather than approached."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Ordering three to five three-digit numerals is a Quarter 1 Grade 2 demand, and the collected-objects framings keep the task concrete. The clustered sets require comparison down to the ones digit, which is challenging but squarely within what place-value knowledge at this point supports."
+      "rationale": "Arranging at most five three-digit numbers is a reasonable Quarter 1 demand, and the contextual versions about counting seashells or stickers collected by friends stay short enough not to add a reading burden."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "Bare numeral lists and word-problem framings about friends' collections both appear, the collections vary across seashells, storybooks, stickers and marbles, and two interaction types are used. Word problem, pure computation and both orientations are all represented."
+      "rationale": "Two situations alternate, a bare list of numbers to arrange and a collection story where several friends' counts must be ordered, and the set sizes and direction are shuffled independently of each other."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Difficulty moves along the dimensions that actually make ordering hard, namely how many values must be arranged and how close together they sit. A set of four values in the nine-hundreds separated by single units is a real step up from three widely spaced values, and both ends of that range are generated."
+      "rationale": "The later seeds tighten the gaps between the values, with sets such as 404, 406, 399, 409 turning on the final digit, which is exactly the discrimination this competency is meant to build."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "The ceiling is genuinely reached, with 1000 itself appearing inside several sets including one arranged from largest to smallest against 997 and 544. A couple of easier two-digit sets sit at the bottom of the range, which reads as scaffolding rather than as a failure to meet the bound."
+      "rationale": "Values run from the thirties up to exactly 1000 and never past it, which matches the stated ceiling and still gives a spread of magnitudes."
     }
   },
   "overall": "PASS"

@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g2_mg_q2_1",
-  "reviewed_by": "reviewer-b3-cinder-halyard-2276",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c3-nimbus-sorrel-4825",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -9,7 +9,6 @@
     44,
     45,
     46,
-    50,
     500,
     501,
     502,
@@ -21,28 +20,32 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "Which unit would you use to measure the length of a spoon: centimeters (cm) or meters (m)?",
       "correct_answer": "cm",
       "options": [
         {
           "key": "A",
           "value": "m",
+          "text": "m",
           "is_correct": false
         },
         {
           "key": "B",
           "value": "either works",
+          "text": "either works",
           "is_correct": false
         },
         {
           "key": "C",
           "value": "neither works",
+          "text": "neither works",
           "is_correct": false
         },
         {
           "key": "D",
           "value": "cm",
+          "text": "cm",
           "is_correct": true
         }
       ]
@@ -77,28 +80,32 @@
     },
     {
       "seed": 44,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "The distance between the gate and the library is about 50 ___. Which unit makes the measurement reasonable: cm or m?",
       "correct_answer": "m",
       "options": [
         {
           "key": "A",
           "value": "m",
+          "text": "m",
           "is_correct": true
         },
         {
           "key": "B",
           "value": "cm",
+          "text": "cm",
           "is_correct": false
         },
         {
           "key": "C",
           "value": "neither works",
+          "text": "neither works",
           "is_correct": false
         },
         {
           "key": "D",
           "value": "either works",
+          "text": "either works",
           "is_correct": false
         }
       ]
@@ -160,65 +167,29 @@
       ]
     },
     {
-      "seed": 50,
-      "formatter": "cloze",
-      "question_text": "The distance between the classroom and the canteen is about 40 ___. Which unit makes the measurement reasonable: cm or m?",
-      "correct_answer": "m",
-      "options": [
-        {
-          "key": "A",
-          "value": "m",
-          "text": "m",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": "neither works",
-          "text": "neither works",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "either works",
-          "text": "either works",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "cm",
-          "text": "cm",
-          "is_correct": false
-        }
-      ]
-    },
-    {
       "seed": 500,
-      "formatter": "cloze",
+      "formatter": "mcq",
       "question_text": "The distance between the gate and the library is about 50 ___. Which unit makes the measurement reasonable: cm or m?",
       "correct_answer": "m",
       "options": [
         {
           "key": "A",
           "value": "m",
-          "text": "m",
           "is_correct": true
         },
         {
           "key": "B",
           "value": "neither works",
-          "text": "neither works",
           "is_correct": false
         },
         {
           "key": "C",
           "value": "either works",
-          "text": "either works",
           "is_correct": false
         },
         {
           "key": "D",
           "value": "cm",
-          "text": "cm",
           "is_correct": false
         }
       ]
@@ -253,28 +224,32 @@
     },
     {
       "seed": 502,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "An eraser has a length of about 5 ___. Which unit is correct: cm or m?",
       "correct_answer": "cm",
       "options": [
         {
           "key": "A",
           "value": "cm",
+          "text": "cm",
           "is_correct": true
         },
         {
           "key": "B",
           "value": "m",
+          "text": "m",
           "is_correct": false
         },
         {
           "key": "C",
           "value": "neither works",
+          "text": "neither works",
           "is_correct": false
         },
         {
           "key": "D",
           "value": "either works",
+          "text": "either works",
           "is_correct": false
         }
       ]
@@ -341,28 +316,32 @@
     },
     {
       "seed": 602,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "The distance between your house and the church is about 150 ___. Which unit makes the measurement reasonable: cm or m?",
       "correct_answer": "m",
       "options": [
         {
           "key": "A",
           "value": "m",
+          "text": "m",
           "is_correct": true
         },
         {
           "key": "B",
           "value": "cm",
+          "text": "cm",
           "is_correct": false
         },
         {
           "key": "C",
           "value": "neither works",
+          "text": "neither works",
           "is_correct": false
         },
         {
           "key": "D",
           "value": "either works",
+          "text": "either works",
           "is_correct": false
         }
       ]
@@ -399,27 +378,27 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "CONCERN",
-      "rationale": "Identifying the right unit is handled thoroughly, but the competency pairs identify with use, and nothing in these thirteen seeds asks the learner to apply the chosen unit to an actual measurement. Every item terminates at the naming decision, so the second verb in the competency statement is never discharged."
+      "rationale": "Identifying the right unit is handled thoroughly, but the competency also says to use that unit, and no sample ever asks the pupil to record or state a measurement once the unit is chosen. Every item stops at the choice."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "Both objects of the competency are present and both unit answers occur. Short objects such as an eraser and a pencil case take centimetres, the gate-to-library and house-to-church spans take metres, and the basketball court item supplies the important case of a single object long enough to be measured in metres."
+      "rationale": "Both halves of the wording are populated: lengths of objects such as a spoon, a book and an eraser, and distances between two named places such as a gate and a library, with correct answers falling on both cm and m."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Each stem is one sentence with an explicit two-way choice spelled out inside it, which is exactly the support a second grader needs. The benchmark magnitudes given, about 5 for an eraser or about 28 for a court, are the kind of everyday figures a Grade 2 learner can sanity-check."
+      "rationale": "A binary unit choice about familiar objects is appropriate here, and the magnitudes supplied in the blank-style stems, such as about 28 for a basketball court, give the pupil a usable cue without arithmetic."
     },
     "variant_comprehensiveness": {
       "verdict": "CONCERN",
-      "rationale": "Three interchangeable phrasings rotate across the seeds but they resolve to one task shape, and the two fillers either works and neither works are never the key in any sample. A learner can safely discard half of every option set on sight, which drains the discrimination out of the format."
+      "rationale": "All twelve samples are the same two-way choice carrying the identical pair of filler options, either works and neither works. There is no ranking item, no odd-one-out, and no item where a wrong unit has to be corrected."
     },
     "competency_alignment": {
-      "verdict": "CONCERN",
-      "rationale": "The only thing that genuinely varies between seeds is which object or pair of locations gets named. Difficulty does not build toward anything: an eraser item and a house-to-church item make identical demands, so the progression is lexical substitution rather than a ramp in measurement judgment."
+      "verdict": "PASS",
+      "rationale": "The objects and distances chosen do move across the plausible range, from an eraser up to a basketball court and a house-to-church distance, so the progression tracks the size judgment this competency trains."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "The benchmark numbers attached to each object are realistic and stay small, from about 5 up to about 150 for the longest distance. These are plausibility cues rather than computation targets, and each one supports the unit it is paired with."
+      "rationale": "Each stated magnitude is realistic for the thing named, with small objects in the single and low double digits and distances of 50 and 150 for places that are genuinely that far apart."
     }
   },
   "overall": "CONCERN"

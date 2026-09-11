@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g2_na_q2_0",
-  "reviewed_by": "reviewer-b3-cinder-halyard-2276",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c3-nimbus-sorrel-4825",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -9,7 +9,6 @@
     44,
     45,
     46,
-    52,
     500,
     501,
     502,
@@ -21,32 +20,28 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "cloze",
-      "question_text": "What is the total value of 3 50¢ coins and 1 25¢ coin, in centavos?",
-      "correct_answer": 175,
+      "formatter": "read_mcq",
+      "question_text": "The dot is at ₱25 and it moves forward ₱50. Which amount will the dot land on?",
+      "correct_answer": "D",
       "options": [
         {
           "key": "A",
-          "value": 176,
-          "text": "176",
+          "value": 174,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 165,
-          "text": "165",
+          "value": 180,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 1750,
-          "text": "1750",
+          "value": 170,
           "is_correct": false
         },
         {
           "key": "D",
           "value": 175,
-          "text": "175",
           "is_correct": true
         }
       ]
@@ -87,13 +82,13 @@
     },
     {
       "seed": 45,
-      "formatter": "mcq",
-      "question_text": "Find the total amount of 1 ₱200 bill and 2 ₱100 bills:",
-      "correct_answer": 400,
+      "formatter": "read_mcq",
+      "question_text": "The dot is at ₱200 and it moves forward ₱100. Which amount will the dot land on?",
+      "correct_answer": "B",
       "options": [
         {
           "key": "A",
-          "value": 401,
+          "value": 399,
           "is_correct": false
         },
         {
@@ -103,48 +98,80 @@
         },
         {
           "key": "C",
-          "value": 4000,
+          "value": 395,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 390,
+          "value": 405,
           "is_correct": false
         }
       ]
     },
     {
       "seed": 46,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "How much is 4 50¢ coins and 1 25¢ coin altogether, in centavos?",
       "correct_answer": 225,
       "options": [
         {
           "key": "A",
           "value": 225,
+          "text": "225",
           "is_correct": true
         },
         {
           "key": "B",
           "value": 226,
+          "text": "226",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 215,
+          "text": "215",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 2250,
+          "text": "2250",
           "is_correct": false
         }
       ]
     },
     {
-      "seed": 52,
+      "seed": 500,
       "formatter": "read_mcq",
-      "question_text": "Use coins and bills to make exactly ₱1000. Use the fewest pieces possible.",
+      "question_text": "Use coins and bills to make exactly ₱801. Use the fewest pieces possible.",
+      "correct_answer": "A",
+      "options": [
+        {
+          "key": "A",
+          "value": 801,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 796,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 821,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 811,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 501,
+      "formatter": "read_mcq",
+      "question_text": "The dot is at ₱500 and it moves forward ₱500. Which amount will the dot land on?",
       "correct_answer": "A",
       "options": [
         {
@@ -154,55 +181,17 @@
         },
         {
           "key": "B",
-          "value": 1020,
+          "value": 950,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 1010,
+          "value": 1050,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 995,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 500,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Use coins and bills to make exactly ₱801. Use the fewest pieces possible.",
-      "correct_answer": 801
-    },
-    {
-      "seed": 501,
-      "formatter": "cloze",
-      "question_text": "How much is 2 ₱500 bills altogether?",
-      "correct_answer": 1000,
-      "options": [
-        {
-          "key": "A",
-          "value": 1000,
-          "text": "1000",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 10000,
-          "text": "10000",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 990,
-          "text": "990",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 1001,
-          "text": "1001",
+          "value": 999,
           "is_correct": false
         }
       ]
@@ -237,78 +226,56 @@
     },
     {
       "seed": 600,
-      "formatter": "cloze",
-      "question_text": "How much is 1 ₱200 bill, 2 ₱100 bills, and 1 ₱50 bill altogether?",
-      "correct_answer": 450,
-      "options": [
-        {
-          "key": "A",
-          "value": 451,
-          "text": "451",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 450,
-          "text": "450",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 4500,
-          "text": "4500",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 440,
-          "text": "440",
-          "is_correct": false
-        }
-      ]
+      "formatter": "set_fill_in_blank",
+      "question_text": "Use coins and bills to make exactly ₱450. Use the fewest pieces possible.",
+      "correct_answer": 450
     },
     {
       "seed": 601,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "What is the total value of 2 ₱10 coins?",
       "correct_answer": 20,
       "options": [
         {
           "key": "A",
           "value": 200,
+          "text": "200",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 10,
+          "text": "10",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 21,
+          "text": "21",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 20,
+          "text": "20",
           "is_correct": true
         }
       ]
     },
     {
       "seed": 602,
-      "formatter": "mcq",
-      "question_text": "How much is 1 ₱20 bill and 1 ₱5 coin altogether?",
-      "correct_answer": 25,
+      "formatter": "read_mcq",
+      "question_text": "The dot is at ₱20 and it moves forward ₱5. Which amount will the dot land on?",
+      "correct_answer": "C",
       "options": [
         {
           "key": "A",
-          "value": 250,
+          "value": 20,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 26,
+          "value": 24,
           "is_correct": false
         },
         {
@@ -318,65 +285,43 @@
         },
         {
           "key": "D",
-          "value": 15,
+          "value": 30,
           "is_correct": false
         }
       ]
     },
     {
       "seed": 603,
-      "formatter": "mcq",
-      "question_text": "Determine the total value of 1 ₱10 coin and 1 ₱5 coin:",
-      "correct_answer": 15,
-      "options": [
-        {
-          "key": "A",
-          "value": 150,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 15,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 5,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 16,
-          "is_correct": false
-        }
-      ]
+      "formatter": "set_fill_in_blank",
+      "question_text": "Use coins and bills to make exactly ₱15. Use the fewest pieces possible.",
+      "correct_answer": 15
     }
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "The counting items determine value correctly and the peso and centavo totals all check out. The make-an-exact-amount items do not hold up: one asks the learner to use coins and bills to make exactly a thousand pesos and then offers amounts as the options with the target already printed in the stem, so the key restates the question. The fewest pieces possible constraint is never assessed by any key in the set."
+      "verdict": "FAIL",
+      "rationale": "Two of the money number-line items cannot be answered from what they state. One puts the dot at 25 pesos, moves it forward 50 pesos, and keys 175; another starts at 200 pesos, moves forward 100 pesos, and keys 400. In both cases the stated start and step do not produce the keyed amount, and the correct total does not even appear among the options, so a pupil who computes properly is forced into a wrong answer."
     },
     "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "All four parenthesised sub-cases are generated rather than the easiest one or two. Centavo-only items combine fifty and twenty-five centavo coins, peso-coin-only items total ten and five peso pieces, bill-only items stack two-hundred, one-hundred and fifty peso notes, and mixed items pair a bill with a coin."
+      "verdict": "CONCERN",
+      "rationale": "All four parenthesised groupings are represented, but only just: centavo coins appear in a single item, peso coins in a single item, bills alone in a single item, and the combined case in one more. Three of the four sub-cases rest on one sample each."
     },
     "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The hardest item totals four different bill denominations, which is a reasonable Quarter 2 demand once addition to a thousand is established. Denomination names are given plainly with their numerals attached, and the centavo items keep the count of coins small enough to add by repeated grouping."
+      "verdict": "CONCERN",
+      "rationale": "Asking a pupil to make exactly 801 pesos using the fewest pieces possible is a minimisation problem over a mixed denomination set, which is a markedly heavier demand than totalling given bills and coins and sits above what the second quarter of Grade 2 should require."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "Four response types appear and two genuine orientations coexist: totalling a stated collection of money, and assembling a stated amount from coins and bills. Stem phrasings alternate between finding, determining and asking how much altogether, so the surface is not a single frame."
+      "rationale": "Three genuinely different demands occur: totalling a stated collection of bills and coins, constructing a target amount from pieces, and locating an amount after a jump, delivered across several formatters."
     },
     "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Difficulty grows along the competency's own dimensions, namely how many denominations are combined and whether coins and bills are mixed. The distractors also reflect money-specific errors, with one option showing the target total multiplied by ten, which is the peso-to-centavo slip this competency is meant to guard against."
+      "verdict": "CONCERN",
+      "rationale": "One make-the-amount item is rendered with the target amount itself sitting in the options list beside near-miss values, so it can be answered by copying the figure out of the stem without assembling anything."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "The thousand-peso ceiling is reached exactly, by a pair of five-hundred peso bills and by one construction item, and no total exceeds it. Centavo-only totals stay under two hundred and fifty centavos, which keeps the sub-peso case sensible for Grade 2."
+      "rationale": "Peso amounts stop at exactly 1000 and never exceed it, and the centavo item stays in true coin-sized values totalling 225 centavos, which respects the ceiling the competency states."
     }
   },
-  "overall": "CONCERN"
+  "overall": "FAIL"
 }

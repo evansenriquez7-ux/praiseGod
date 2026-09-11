@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g3_na_q2_1",
-  "reviewed_by": "reviewer-b6-thistle-kestrel-9724",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c6-mistral-comfrey-8916",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -10,8 +10,6 @@
     45,
     46,
     47,
-    48,
-    52,
     61,
     500,
     501,
@@ -26,12 +24,9 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "error_detect",
-      "question_text": "Manny solved: \"1086 + 2067 = ___\". Manny says the missing number is 3152. Is Manny correct?",
-      "correct_answer": {
-        "has_error": true,
-        "correct_value": 3153
-      }
+      "formatter": "set_fill_in_blank",
+      "question_text": "Show 1086 + 2067 on the number line.",
+      "correct_answer": 3153
     },
     {
       "seed": 43,
@@ -41,31 +36,12 @@
     },
     {
       "seed": 44,
-      "formatter": "mcq",
-      "question_text": "What is 1640 + 3900?",
-      "correct_answer": 5540,
-      "options": [
-        {
-          "key": "A",
-          "value": 5539,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 5541,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 5540,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 5550,
-          "is_correct": false
-        }
-      ]
+      "formatter": "error_detect",
+      "question_text": "Rico solved: \"1640 + 3900 = ___\". Rico says the missing number is 5540. Is Rico correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 5540
+      }
     },
     {
       "seed": 45,
@@ -97,279 +73,215 @@
     },
     {
       "seed": 46,
-      "formatter": "mcq",
-      "question_text": "What is 9997 + 2?",
+      "formatter": "cloze",
+      "question_text": "9997 + 2 = ___",
       "correct_answer": 9999,
       "options": [
         {
           "key": "A",
           "value": 9999,
+          "text": "9999",
           "is_correct": true
         },
         {
           "key": "B",
           "value": 9995,
+          "text": "9995",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 10009,
+          "text": "10009",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 9998,
+          "text": "9998",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 47,
-      "formatter": "cloze",
-      "question_text": "9090 + 310 = ___",
-      "correct_answer": 9400,
+      "formatter": "read_mcq",
+      "question_text": "The dot is at 9090 and it moves forward 310 numbers. Starting from 9090, just count up 310 numbers. Which number will the dot land on?",
+      "correct_answer": "D",
       "options": [
         {
           "key": "A",
           "value": 9410,
-          "text": "9410",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 9399,
-          "text": "9399",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 8780,
-          "text": "8780",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 9400,
-          "text": "9400",
           "is_correct": true
         }
       ]
     },
     {
-      "seed": 48,
+      "seed": 61,
       "formatter": "true_false",
-      "question_text": "6963 + 1080 = 6963. True or False?",
+      "question_text": "5373 + 4080 = 9452. True or False?",
       "correct_answer": false
     },
     {
-      "seed": 52,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Show 2911 + 4672 on the number line.",
-      "correct_answer": 7583
-    },
-    {
-      "seed": 61,
+      "seed": 500,
       "formatter": "read_mcq",
-      "question_text": "The dot is at 5373 and it moves forward 4080 numbers. Starting from 5373, just count up 4080 numbers. Which number will the dot land on?",
+      "question_text": "The dot is at 3622 and it moves forward 5280 numbers. Starting from 3622, just count up 5280 numbers. Which number will the dot land on?",
       "correct_answer": "B",
       "options": [
         {
           "key": "A",
-          "value": 9452,
+          "value": 8903,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 9453,
+          "value": 8902,
           "is_correct": true
         },
         {
           "key": "C",
-          "value": 1293,
+          "value": 8901,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 9463,
+          "value": 8912,
           "is_correct": false
         }
       ]
-    },
-    {
-      "seed": 500,
-      "formatter": "read_fill_in_blank",
-      "question_text": "The two parts are 3622 and 5280. What is the sum?",
-      "correct_answer": 8902
     },
     {
       "seed": 501,
-      "formatter": "true_false",
-      "question_text": "3583 + 586 = 4169. True or False?",
-      "correct_answer": true
+      "formatter": "set_fill_in_blank",
+      "question_text": "Show 3583 + 586 on the number line.",
+      "correct_answer": 4169
     },
     {
       "seed": 502,
-      "formatter": "mcq",
-      "question_text": "What is 6338 + 1914?",
-      "correct_answer": 8252,
-      "options": [
-        {
-          "key": "A",
-          "value": 4424,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 8262,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 8251,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 8252,
-          "is_correct": true
-        }
-      ]
+      "formatter": "error_detect",
+      "question_text": "Dante solved: \"6338 + 1914 = ___\". Dante says the missing number is 8252. Is Dante correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 8252
+      }
     },
     {
       "seed": 600,
-      "formatter": "true_false",
-      "question_text": "8506 + 218 = 8724. True or False?",
-      "correct_answer": true
+      "formatter": "set_fill_in_blank",
+      "question_text": "Show 8506 + 218 on the number line.",
+      "correct_answer": 8724
     },
     {
       "seed": 601,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "Pia has 4860 water bowls. A friend has 5100 water bowls. If they put all their water bowls together, how many water bowls do they have in all?",
       "correct_answer": 9960,
       "options": [
         {
           "key": "A",
           "value": 9959,
+          "text": "9959",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 9970,
+          "text": "9970",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 9961,
+          "text": "9961",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 9960,
+          "text": "9960",
           "is_correct": true
         }
       ]
     },
     {
       "seed": 602,
-      "formatter": "cloze",
-      "question_text": "8511 + 1489 = ___",
-      "correct_answer": 10000,
+      "formatter": "read_mcq",
+      "question_text": "The dot is at 8511 and it moves forward 1489 numbers. Starting from 8511, just count up 1489 numbers. Which number will the dot land on?",
+      "correct_answer": "C",
       "options": [
         {
           "key": "A",
           "value": 7022,
-          "text": "7022",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 10010,
-          "text": "10010",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 10000,
-          "text": "10000",
           "is_correct": true
         },
         {
           "key": "D",
           "value": 9999,
-          "text": "9999",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 603,
-      "formatter": "cloze",
-      "question_text": "2285 + 3504 = ___",
-      "correct_answer": 5789,
-      "options": [
-        {
-          "key": "A",
-          "value": 5788,
-          "text": "5788",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 5790,
-          "text": "5790",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 5789,
-          "text": "5789",
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 5799,
-          "text": "5799",
-          "is_correct": false
-        }
-      ]
+      "formatter": "read_fill_in_blank",
+      "question_text": "The two parts are 2285 and 3504. What is the sum?",
+      "correct_answer": 5789
     },
     {
       "seed": 604,
-      "formatter": "error_detect",
-      "question_text": "Carlo solved: \"6392 + 215 = ___\". Carlo says the missing number is 6607. Is Carlo correct?",
-      "correct_answer": {
-        "has_error": false,
-        "correct_value": 6607
-      }
+      "formatter": "true_false",
+      "question_text": "6392 + 215 = 6392. True or False?",
+      "correct_answer": false
     },
     {
       "seed": 605,
-      "formatter": "cloze",
-      "question_text": "6459 + 693 = ___",
-      "correct_answer": 7152,
+      "formatter": "read_mcq",
+      "question_text": "The dot is at 6459 and it moves forward 693 numbers. Starting from 6459, just count up 693 numbers. Which number will the dot land on?",
+      "correct_answer": "C",
       "options": [
         {
           "key": "A",
           "value": 7162,
-          "text": "7162",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 7151,
-          "text": "7151",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 7152,
-          "text": "7152",
           "is_correct": true
         },
         {
           "key": "D",
           "value": 5766,
-          "text": "5766",
           "is_correct": false
         }
       ]
@@ -378,27 +290,27 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "The items ask for sums of two whole numbers and the keys are those sums; seed 602 lands exactly on the stated ceiling with 8511 + 1489, which is the boundary case this competency most needs."
+      "rationale": "Sums are what is computed and the arithmetic checks out across the set, including the boundary case where 8511 plus 1489 is keyed at exactly 10000. Part-part-whole phrasing about two parts and a sum names the operation in the language of the objective."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "Both halves of the with and without regrouping pair are produced. Seed 46 adds 2 to 9997 with no carrying at all, while seed 605 requires carrying in two columns to reach 7152, and part-part-whole framing appears alongside the plain sum."
+      "rationale": "Both halves of the regrouping clause turn up: the pair 2285 and 3504 needs no carrying in any column, while cases such as 8506 plus 218 and 3583 plus 586 do. Addend sizes also vary from a single-digit 2 up to four digits."
     },
     "cognitive_capacity": {
       "verdict": "CONCERN",
-      "rationale": "The number-line item at seed 61 instructs the pupil to just count up 4080 numbers from 5373, which is not a procedure any third grader can or should perform; it names a strategy that the arithmetic makes absurd. Seed 48 is also degenerate, since 6963 + 1080 = 6963 can be rejected without computing anything, merely by noticing a sum cannot equal one addend."
+      "rationale": "The number-line items tell the pupil to count on by ones across jumps of thousands, as in the stem where the dot is at 3622 and moves forward 5280 numbers. Instructing a Grade 3 child to just count up 5280 numbers is not a method anyone can carry out, and it contradicts the column addition the node is meant to build."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "Six shapes are present: horizontal equation, vertical prompt via the two parts phrasing, truth evaluation, an error-spotting item about Manny, a number-line jump, and a water-bowls word problem at seed 601."
+      "rationale": "Six shells are in play: a bare equation, a part-and-sum statement, an error check on a classmate's work, a truth judgment, a number-line representation, and one collection context. That is ample presentation range for a computation objective."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Samples get harder by adding carries and by pushing the total toward ten thousand, not by complicating the sentence or introducing a second operation, so the added difficulty is addition difficulty."
+      "rationale": "Harder samples differ from easier ones by digit count and by how many columns carry, which is the progression this addition objective is about rather than some unrelated dressing."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Sums stay at or below ten thousand, with the exact ceiling reached once and the near ceiling reached at 9999 and 9960, and the addends themselves stay four digits or fewer."
+      "rationale": "No sum exceeds 10 000 and one lands on it precisely, so the ceiling is probed without being broken, and the low end reaches down to a three-digit pair such as 720 and 310."
     }
   },
   "overall": "CONCERN"

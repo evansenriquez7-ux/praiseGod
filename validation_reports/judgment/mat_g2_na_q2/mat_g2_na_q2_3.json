@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g2_na_q2_3",
-  "reviewed_by": "reviewer-r1-cobalt-juniper-7748",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c4-pumice-lovage-6370",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -9,8 +9,7 @@
     44,
     45,
     46,
-    50,
-    55,
+    48,
     500,
     501,
     502,
@@ -24,28 +23,32 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "mcq",
-      "question_text": "Since 10 + 1 = 11, what is 11 − 1?",
+      "formatter": "cloze",
+      "question_text": "Since 10 + 1 = 11, what is 11 − 1? Answer: ___",
       "correct_answer": 10,
       "options": [
         {
           "key": "A",
           "value": 10,
+          "text": "10",
           "is_correct": true
         },
         {
           "key": "B",
           "value": 9,
+          "text": "9",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 11,
+          "text": "11",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 12,
+          "text": "12",
           "is_correct": false
         }
       ]
@@ -112,143 +115,67 @@
     },
     {
       "seed": 45,
-      "formatter": "mcq",
-      "question_text": "If 49 + 1 = 50, then 50 − 1 = ___. What is the missing number?",
-      "correct_answer": 49,
-      "options": [
-        {
-          "key": "A",
-          "value": 51,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 48,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 49,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 50,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 46,
-      "formatter": "mcq",
-      "question_text": "Start at 24 on the number line and count back 1. What is 24 − 1?",
-      "correct_answer": 23,
-      "options": [
-        {
-          "key": "A",
-          "value": 24,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 23,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 25,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 22,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 50,
       "formatter": "true_false",
-      "question_text": "What is 30 − 3? (Hint: 27 + 3 = 30) The answer is 28. True or False?",
+      "question_text": "If 49 + 1 = 50, then 50 − 1 = 48. What is the missing number?. True or False?",
       "correct_answer": false
     },
     {
-      "seed": 55,
+      "seed": 46,
+      "formatter": "true_false",
+      "question_text": "Start at 24 on the number line and count back 1. What is 24 − 1? The answer is 23. True or False?",
+      "correct_answer": true
+    },
+    {
+      "seed": 48,
       "formatter": "error_detect",
-      "question_text": "Grace solved: \"Start at 15 on the number line and count back 2. What is 15 − 2? (Answer: ___)\". Grace says the missing number is 17. Is Grace correct?",
+      "question_text": "Noel solved: \"What is 15 − 6? (Hint: 9 + 6 = 15) (Answer: ___)\". Noel says the missing number is 9. Is Noel correct?",
       "correct_answer": {
-        "has_error": true,
-        "correct_value": 13
+        "has_error": false,
+        "correct_value": 9
       }
     },
     {
       "seed": 500,
-      "formatter": "error_detect",
-      "question_text": "Rico solved: \"If 89 + 4 = 93, then 93 − 4 = ___. What is the missing number?\". Rico says the missing number is 89. Is Rico correct?",
-      "correct_answer": {
-        "has_error": false,
-        "correct_value": 89
-      }
+      "formatter": "true_false",
+      "question_text": "If 89 + 4 = 93, then 93 − 4 = 90. What is the missing number?. True or False?",
+      "correct_answer": false
     },
     {
       "seed": 501,
-      "formatter": "cloze",
-      "question_text": "Since 84 + 9 = 93, what is 93 − 9? Answer: ___",
+      "formatter": "mcq",
+      "question_text": "Since 84 + 9 = 93, what is 93 − 9?",
       "correct_answer": 84,
       "options": [
         {
           "key": "A",
           "value": 84,
-          "text": "84",
           "is_correct": true
         },
         {
           "key": "B",
           "value": 85,
-          "text": "85",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 83,
-          "text": "83",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 102,
-          "text": "102",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 502,
-      "formatter": "mcq",
-      "question_text": "What is 58 − 9? (Hint: 49 + 9 = 58)",
-      "correct_answer": 49,
-      "options": [
-        {
-          "key": "A",
-          "value": 50,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 48,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 67,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 49,
-          "is_correct": true
-        }
-      ]
+      "formatter": "error_detect",
+      "question_text": "Dante solved: \"What is 58 − 9? (Hint: 49 + 9 = 58) (Answer: ___)\". Dante says the missing number is 49. Is Dante correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 49
+      }
     },
     {
       "seed": 600,
@@ -312,127 +239,82 @@
     },
     {
       "seed": 602,
-      "formatter": "mcq",
-      "question_text": "What is 20 − 3? (Hint: 17 + 3 = 20)",
-      "correct_answer": 17,
-      "options": [
-        {
-          "key": "A",
-          "value": 23,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 16,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 18,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 17,
-          "is_correct": true
-        }
-      ]
+      "formatter": "error_detect",
+      "question_text": "Jose solved: \"What is 20 − 3? (Hint: 17 + 3 = 20) (Answer: ___)\". Jose says the missing number is 17. Is Jose correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 17
+      }
     },
     {
       "seed": 603,
-      "formatter": "cloze",
+      "formatter": "mcq",
       "question_text": "If 74 + 1 = 75, then 75 − 1 = ___. What is the missing number?",
       "correct_answer": 74,
       "options": [
         {
           "key": "A",
           "value": 73,
-          "text": "73",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 76,
-          "text": "76",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 75,
-          "text": "75",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 74,
-          "text": "74",
           "is_correct": true
         }
       ]
     },
     {
       "seed": 604,
-      "formatter": "mcq",
-      "question_text": "If 13 + 2 = 15, then 15 − 2 = ___. What is the missing number?",
-      "correct_answer": 13,
-      "options": [
-        {
-          "key": "A",
-          "value": 13,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 14,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 12,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 17,
-          "is_correct": false
-        }
-      ]
+      "formatter": "error_detect",
+      "question_text": "Carlo solved: \"If 13 + 2 = 15, then 15 − 2 = ___. What is the missing number?\". Carlo says the missing number is 13. Is Carlo correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 13
+      }
     },
     {
       "seed": 605,
-      "formatter": "error_detect",
-      "question_text": "Liza solved: \"What is 15 − 1? (Hint: 14 + 1 = 15) (Answer: ___)\". Liza says the missing number is 14. Is Liza correct?",
-      "correct_answer": {
-        "has_error": false,
-        "correct_value": 14
-      }
+      "formatter": "true_false",
+      "question_text": "What is 15 − 1? (Hint: 14 + 1 = 15) The answer is 16. True or False?",
+      "correct_answer": false
     }
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "Both named illustrations are actually produced. Number-line items have a dot start at a value and move back a given number of steps, and inverse-of-addition items supply the companion fact first, as in the stem that reasons from 84 + 9 = 93 to the corresponding subtraction."
+      "verdict": "FAIL",
+      "rationale": "Two samples render a broken item: the stem states a completed equation, then appends 'What is the missing number?. True or False?' - there is no blank left to fill, the punctuation is doubled, and the key is a boolean. A stem demanding a missing number while the answer space accepts only true or false cannot assess the inverse relationship it is meant to illustrate."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "Neither sub-case is a token appearance; the number-line jumps and the addition-fact reversals each account for several samples, and the reversal appears both as a stated fact and as a parenthetical hint attached to a bare subtraction question."
+      "rationale": "Both halves the competency names are genuinely present: dot-and-jump items move backwards along a number line, and a separate family derives a difference from a stated sum, including hint-carrying versions that make the inverse link explicit."
     },
     "cognitive_capacity": {
       "verdict": "CONCERN",
-      "rationale": "One stem reads 'jump back 1 units', an agreement error in student-facing text that a Grade 2 reader will meet on the page. The reasoning demand itself is fine, but the sentence is not classroom-ready as rendered."
+      "rationale": "Beyond the malformed true-or-false stems, one number-line item instructs the pupil to 'jump back 1 units', a plural-agreement slip in text a beginning reader is decoding. The reasoning demand itself is fine for this quarter."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "Beyond plain selection and fill-in, the set includes truth judgments of a stated answer and error-detection items where a named child's proposed value must be checked, and those error items appear with both a genuine mistake and a correct claim."
+      "rationale": "Presentation genuinely varies: a dot moving on a line, a starting-point jump, a since-this-then-that derivation, a bracketed hint form, and a peer-error check. That is a real spread rather than one template recoloured."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "As samples get harder the subtrahend grows from one up to nine and the minuend climbs into the eighties and nineties, so what increases is the size of the backward jump and the fact being reversed, both intrinsic to this node."
+      "rationale": "Harder samples raise the minuend into the eighties and nineties while keeping the subtrahend a single digit, which is the progression this specific competency describes, and the number-line and inverse framings alternate rather than one crowding out the other."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Every minuend is two-digit and every subtrahend is single-digit, matching the '2-digit by 1-digit' bound exactly, with no sample drifting to two-digit subtrahends."
+      "rationale": "I checked every subtrahend in the packet and each is a single digit, with minuends ranging from the teens to 93 - exactly the two-digit-minus-one-digit band the competency states, with nothing spilling into two-digit subtrahends."
     }
   },
-  "overall": "CONCERN"
+  "overall": "FAIL"
 }

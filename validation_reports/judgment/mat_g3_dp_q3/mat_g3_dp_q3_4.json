@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g3_dp_q3_4",
-  "reviewed_by": "reviewer-b5-marlin-obsidian-3358",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c5-tarragon-flint-2549",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -329,27 +329,27 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "Each of the five terms the competency lists is reached as a correct key somewhere in the set: certain for the all-red bag and the all-red spinner, impossible for rolling 7 on a six-faced die and for a green ball in a blue-only bag, equally likely for the 5-and-5 bag and the four-quarter spinner, and both less likely and more likely for the unequal bags."
+      "rationale": "The five required terms are each the key of at least one item: 'certain' for the all-red spinner, 'impossible' for rolling a 7 on a six-sided die, 'less likely' and 'more likely' for the unequal ball counts, and 'equally likely' for the five-red five-blue bag. The items both describe a single outcome and compare two, matching the competency's two verbs."
     },
     "comprehensive_coverage": {
       "verdict": "CONCERN",
-      "rationale": "The competency pairs more with most and less with least. LEAST likely is asked outright in the three-yellow spinner and the aquarium item, but no stem anywhere asks which outcome is MOST likely; the closest is a two-way more likely comparison. One half of one named pair is never generated."
+      "rationale": "Superlative and comparative forms are unevenly served. 'LEAST likely' is generated twice, but no stem ever asks which outcome is most likely as a superlative; seed 502 asks only 'Which outcome is more likely?'. The competency lists less/least and more/most as paired forms and one half of the second pair is missing."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Quantities stay between one and ten objects, so likelihood can be judged by direct comparison of counts without ratio reasoning, and the tie handled in the spinner item is resolved by the honest key red or green rather than by forcing a single colour."
+      "rationale": "Counts are tiny (5 red balls, 3 yellow of 5 sections, 8 goldfish) so no ratio or fraction reasoning is smuggled in, and the probability language stays qualitative, which is correct for Grade 3 where numeric probability is not yet introduced."
     },
     "variant_comprehensiveness": {
       "verdict": "CONCERN",
-      "rationale": "All eleven samples are multiple choice, and the competency's phrase about real-life situations is served mainly by bags of coloured balls and spinners, which are classroom apparatus. The aquarium with goldfish, guppies and one angelfish is the single genuinely real-life setting in the set."
+      "rationale": "Ten of the eleven samples are bag-of-balls or spinner abstractions; only the aquarium tank with goldfish, guppies and an angelfish reaches the 'real-life situations' the competency demands. The format is mcq without exception, so there is no describe-in-your-own-words or true/false judgement variant."
     },
     "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "The harder samples move from an extreme case where one outcome fills the whole sample space to an unequal split needing comparison, and then to a three-way distribution where the rarest must be picked out. That escalation is entirely about likelihood judgment."
+      "verdict": "CONCERN",
+      "rationale": "One item is internally unsound as a discriminator: the spinner with 3 yellow, 1 red and 1 green has key 'red or green' because those two tie, yet the option list also offers 'blue', a colour that is not on the spinner at all. An impossible option in a likelihood item is particularly damaging, since judging impossibility is itself part of this competency."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "The competency states no numeric ceiling, and the object counts used, five balls, four spinner quarters, thirteen fish, are small enough to be held in mind while the likelihood terms are applied."
+      "rationale": "Section and object counts never exceed ten, which keeps every comparison decidable by direct counting rather than computation. That is the right scale for a competency whose ceiling is qualitative description, not quantification."
     }
   },
   "overall": "CONCERN"

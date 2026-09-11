@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g1_na_q3_6",
-  "reviewed_by": "reviewer-b2-tallow-verdigris-8130",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c2-basalt-yarrow-7194",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -9,8 +9,6 @@
     44,
     45,
     46,
-    50,
-    55,
     500,
     501,
     502
@@ -18,28 +16,32 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "What is the next letter in the pattern: d, p, c, d, p, c?",
       "correct_answer": "d",
       "options": [
         {
           "key": "A",
           "value": "o",
+          "text": "o",
           "is_correct": false
         },
         {
           "key": "B",
           "value": "b",
+          "text": "b",
           "is_correct": false
         },
         {
           "key": "C",
           "value": "n",
+          "text": "n",
           "is_correct": false
         },
         {
           "key": "D",
           "value": "d",
+          "text": "d",
           "is_correct": true
         }
       ]
@@ -74,28 +76,28 @@
     },
     {
       "seed": 44,
-      "formatter": "mcq",
-      "question_text": "What is the next number in the pattern: 10, 1, 10, 1, 10, 1?",
-      "correct_answer": 10,
+      "formatter": "read_mcq",
+      "question_text": "What is the missing piece (position 6) in the pattern?",
+      "correct_answer": "D",
       "options": [
         {
           "key": "A",
-          "value": 12,
+          "value": 0,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 9,
+          "value": 2,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 11,
+          "value": 10,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 10,
+          "value": 1,
           "is_correct": true
         }
       ]
@@ -157,66 +159,6 @@
       ]
     },
     {
-      "seed": 50,
-      "formatter": "cloze",
-      "question_text": "What is the next number in the pattern: 2, 10, 2, 10, 2, 10?",
-      "correct_answer": 2,
-      "options": [
-        {
-          "key": "A",
-          "value": 2,
-          "text": "2",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 3,
-          "text": "3",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 1,
-          "text": "1",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 4,
-          "text": "4",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 55,
-      "formatter": "read_mcq",
-      "question_text": "What is the missing piece (position 6) in the pattern?",
-      "correct_answer": "A",
-      "options": [
-        {
-          "key": "A",
-          "value": 13,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 12,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 14,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 1,
-          "is_correct": false
-        }
-      ]
-    },
-    {
       "seed": 500,
       "formatter": "read_mcq",
       "question_text": "What is the missing piece (position 6) in the pattern?",
@@ -246,60 +188,60 @@
     },
     {
       "seed": 501,
-      "formatter": "cloze",
-      "question_text": "What is the next number in the pattern: 8, 18, 20, 8, 18, 20?",
-      "correct_answer": 8,
+      "formatter": "read_mcq",
+      "question_text": "What is the missing piece (position 6) in the pattern?",
+      "correct_answer": "C",
       "options": [
         {
           "key": "A",
-          "value": 10,
-          "text": "10",
+          "value": 21,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 7,
-          "text": "7",
+          "value": 18,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 8,
-          "text": "8",
+          "value": 20,
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 9,
-          "text": "9",
+          "value": 8,
           "is_correct": false
         }
       ]
     },
     {
       "seed": 502,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "What is the next letter in the pattern: o, p, c, h, o, p?",
       "correct_answer": "c",
       "options": [
         {
           "key": "A",
           "value": "f",
+          "text": "f",
           "is_correct": false
         },
         {
           "key": "B",
           "value": "a",
+          "text": "a",
           "is_correct": false
         },
         {
           "key": "C",
           "value": "c",
+          "text": "c",
           "is_correct": true
         },
         {
           "key": "D",
           "value": "j",
+          "text": "j",
           "is_correct": false
         }
       ]
@@ -307,29 +249,29 @@
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "Continuing a repeating sequence is the right act, and the letter items mirror the competency's own a, b, c illustration. But the wording says next term/s and every sample asks for exactly one term; the two-blank case shown in the competency's example is never generated."
+      "verdict": "PASS",
+      "rationale": "Repeating units are presented intact and the pupil must continue them; the four-element letter run 'o, p, c, h, o, p' is correctly keyed to the third element of the unit, so the generator is genuinely tracking unit position rather than guessing."
     },
     "comprehensive_coverage": {
-      "verdict": "FAIL",
-      "rationale": "The competency explicitly opens the domain to rhythmic properties and visual elements in the arts, and neither ever appears: the entire pool is number strings, letter strings, and two unlabelled 'missing piece (position 6)' items whose options are numerals. Two of the three named strands of pattern material are missing outright, and so is the multi-term continuation."
+      "verdict": "CONCERN",
+      "rationale": "The wording says next term slash terms, but every sampled item asks for exactly one element - no seed requires two or more continuing terms, which is the harder half of the competency and the half the given example with two trailing blanks illustrates."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Each pattern is displayed with the repeating unit shown at least twice before the blank, and the letters used are single lowercase characters, which keeps the perceptual load right for Grade 1."
+      "rationale": "Six visible elements before the blank is enough for a Grade 1 pupil to detect the cycle by eye, and the letter and numeral alphabets used stay small and concrete."
     },
     "variant_comprehensiveness": {
       "verdict": "CONCERN",
-      "rationale": "Apart from the two picture-based missing-piece items, the presentation is a comma-separated string every time; nothing asks the pupil to extend a pattern laid out in another orientation or to identify the repeating unit itself."
+      "rationale": "Letters, numerals and a visual position-6 item are present, but the rhythmic properties and arts-based visual elements the competency parenthetically names never surface, and the visual item's options are numeric, so shape or colour patterning is absent from this node."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "The demand does deepen along the pattern axis: units grow from two elements (i, f) through three (d, p, c) to four (o, p, c, h), and the blank sometimes falls mid-sequence rather than at the end."
+      "rationale": "Unit length varies from two elements up to four across the sample, which is the dimension that makes a repeating pattern harder to read, and the interior-blank item shifts where the reasoning must be applied."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Numeric pattern elements stay small (1 through 20), which is appropriate since the numbers are pattern tokens rather than quantities to compute with."
+      "rationale": "Numeric pattern elements stay in the small range a Grade 1 pupil recognises on sight, and nothing in the pattern terms exceeds the number knowledge available by Quarter 3."
     }
   },
-  "overall": "FAIL"
+  "overall": "CONCERN"
 }

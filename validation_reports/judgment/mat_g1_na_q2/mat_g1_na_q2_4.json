@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g1_na_q2_4",
-  "reviewed_by": "reviewer-b2-tallow-verdigris-8130",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c2-basalt-yarrow-7194",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -9,7 +9,6 @@
     44,
     45,
     46,
-    47,
     500,
     501,
     502,
@@ -23,46 +22,46 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "true_false",
-      "question_text": "10 is 1 ten and 0 ones. 62 is 6 tens and 2 ones. Add the place values, then find the total: 10 + 62 = 72. True or False?",
-      "correct_answer": true
-    },
-    {
-      "seed": 43,
-      "formatter": "error_detect",
-      "question_text": "Grace solved: \"24 is 2 tens and 4 ones. 3 is 3 ones. Add the place values, then find the total: 24 + 3 = ___\". Grace says the blank is 27. Is Grace correct?",
-      "correct_answer": {
-        "has_error": false,
-        "correct_value": 27
-      }
-    },
-    {
-      "seed": 44,
       "formatter": "mcq",
-      "question_text": "30 is 3 tens and 0 ones. 22 is 2 tens and 2 ones. Add the place values, then find the total: what is 30 + 22?",
-      "correct_answer": 52,
+      "question_text": "10 is 1 ten and 0 ones. 62 is 6 tens and 2 ones. Add the place values, then find the total: what is 10 + 62?",
+      "correct_answer": 72,
       "options": [
         {
           "key": "A",
-          "value": 51,
+          "value": 82,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 62,
+          "value": 71,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 53,
+          "value": 73,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 52,
+          "value": 72,
           "is_correct": true
         }
       ]
+    },
+    {
+      "seed": 43,
+      "formatter": "true_false",
+      "question_text": "24 is 2 tens and 4 ones. 3 is 3 ones. Add the place values, then find the total: 24 + 3 = 37. True or False?",
+      "correct_answer": false
+    },
+    {
+      "seed": 44,
+      "formatter": "error_detect",
+      "question_text": "Rico solved: \"30 is 3 tens and 0 ones. 22 is 2 tens and 2 ones. Add the place values, then find the total: 30 + 22 = ___\". Rico says the blank is 52. Is Rico correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 52
+      }
     },
     {
       "seed": 45,
@@ -94,8 +93,155 @@
     },
     {
       "seed": 46,
+      "formatter": "cloze",
+      "question_text": "57 is 5 tens and 7 ones. 43 is 4 tens and 3 ones. Add the place values, then find the total: 57 + 43 = ___",
+      "correct_answer": 100,
+      "options": [
+        {
+          "key": "A",
+          "value": 110,
+          "text": "110",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 99,
+          "text": "99",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 101,
+          "text": "101",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 100,
+          "text": "100",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 500,
+      "formatter": "true_false",
+      "question_text": "55 is 5 tens and 5 ones. 43 is 4 tens and 3 ones. Add the place values, then find the total: 55 + 43 = 55. True or False?",
+      "correct_answer": false
+    },
+    {
+      "seed": 501,
       "formatter": "mcq",
-      "question_text": "57 is 5 tens and 7 ones. 43 is 4 tens and 3 ones. Add the place values, then find the total: what is 57 + 43?",
+      "question_text": "70 is 7 tens and 0 ones. 18 is 1 ten and 8 ones. Add the place values, then find the total: what is 70 + 18?",
+      "correct_answer": 88,
+      "options": [
+        {
+          "key": "A",
+          "value": 89,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 98,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 88,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 87,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 502,
+      "formatter": "error_detect",
+      "question_text": "Dante solved: \"87 is 8 tens and 7 ones. 9 is 9 ones. Add the place values, then find the total: 87 + 9 = ___\". Dante says the blank is 96. Is Dante correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 96
+      }
+    },
+    {
+      "seed": 600,
+      "formatter": "true_false",
+      "question_text": "47 is 4 tens and 7 ones. 7 is 7 ones. Add the place values, then find the total: 47 + 7 = 54. True or False?",
+      "correct_answer": true
+    },
+    {
+      "seed": 601,
+      "formatter": "cloze",
+      "question_text": "60 is 6 tens and 0 ones. 30 is 3 tens and 0 ones. Add the place values, then find the total: 60 + 30 = ___",
+      "correct_answer": 90,
+      "options": [
+        {
+          "key": "A",
+          "value": 100,
+          "text": "100",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 89,
+          "text": "89",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 90,
+          "text": "90",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 91,
+          "text": "91",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 602,
+      "formatter": "mcq",
+      "question_text": "30 is 3 tens and 0 ones. 6 is 6 ones. Add the place values, then find the total: what is 30 + 6?",
+      "correct_answer": 36,
+      "options": [
+        {
+          "key": "A",
+          "value": 36,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 37,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 35,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 46,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 603,
+      "formatter": "true_false",
+      "question_text": "19 is 1 ten and 9 ones. 54 is 5 tens and 4 ones. Add the place values, then find the total: 19 + 54 = 73. True or False?",
+      "correct_answer": true
+    },
+    {
+      "seed": 604,
+      "formatter": "mcq",
+      "question_text": "19 is 1 ten and 9 ones. 81 is 8 tens and 1 one. Add the place values, then find the total: what is 19 + 81?",
       "correct_answer": 100,
       "options": [
         {
@@ -105,305 +251,52 @@
         },
         {
           "key": "B",
-          "value": 99,
-          "is_correct": false
-        },
-        {
-          "key": "C",
           "value": 101,
           "is_correct": false
         },
         {
+          "key": "C",
+          "value": 99,
+          "is_correct": false
+        },
+        {
           "key": "D",
           "value": 100,
           "is_correct": true
         }
       ]
-    },
-    {
-      "seed": 47,
-      "formatter": "cloze",
-      "question_text": "10 is 1 ten and 0 ones. 60 is 6 tens and 0 ones. Add the place values, then find the total: 10 + 60 = ___",
-      "correct_answer": 70,
-      "options": [
-        {
-          "key": "A",
-          "value": 70,
-          "text": "70",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 69,
-          "text": "69",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 71,
-          "text": "71",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 80,
-          "text": "80",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 500,
-      "formatter": "error_detect",
-      "question_text": "Rico solved: \"55 is 5 tens and 5 ones. 43 is 4 tens and 3 ones. Add the place values, then find the total: 55 + 43 = ___\". Rico says the blank is 98. Is Rico correct?",
-      "correct_answer": {
-        "has_error": false,
-        "correct_value": 98
-      }
-    },
-    {
-      "seed": 501,
-      "formatter": "cloze",
-      "question_text": "70 is 7 tens and 0 ones. 18 is 1 ten and 8 ones. Add the place values, then find the total: 70 + 18 = ___",
-      "correct_answer": 88,
-      "options": [
-        {
-          "key": "A",
-          "value": 89,
-          "text": "89",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 98,
-          "text": "98",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 88,
-          "text": "88",
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 87,
-          "text": "87",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 502,
-      "formatter": "mcq",
-      "question_text": "87 is 8 tens and 7 ones. 9 is 9 ones. Add the place values, then find the total: what is 87 + 9?",
-      "correct_answer": 96,
-      "options": [
-        {
-          "key": "A",
-          "value": 95,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 96,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 97,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 106,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 600,
-      "formatter": "cloze",
-      "question_text": "47 is 4 tens and 7 ones. 7 is 7 ones. Add the place values, then find the total: 47 + 7 = ___",
-      "correct_answer": 54,
-      "options": [
-        {
-          "key": "A",
-          "value": 55,
-          "text": "55",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 53,
-          "text": "53",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 54,
-          "text": "54",
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 64,
-          "text": "64",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 601,
-      "formatter": "mcq",
-      "question_text": "60 is 6 tens and 0 ones. 30 is 3 tens and 0 ones. Add the place values, then find the total: what is 60 + 30?",
-      "correct_answer": 90,
-      "options": [
-        {
-          "key": "A",
-          "value": 100,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 89,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 90,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 91,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 602,
-      "formatter": "cloze",
-      "question_text": "30 is 3 tens and 0 ones. 6 is 6 ones. Add the place values, then find the total: 30 + 6 = ___",
-      "correct_answer": 36,
-      "options": [
-        {
-          "key": "A",
-          "value": 36,
-          "text": "36",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 37,
-          "text": "37",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 35,
-          "text": "35",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 46,
-          "text": "46",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 603,
-      "formatter": "mcq",
-      "question_text": "19 is 1 ten and 9 ones. 54 is 5 tens and 4 ones. Add the place values, then find the total: what is 19 + 54?",
-      "correct_answer": 73,
-      "options": [
-        {
-          "key": "A",
-          "value": 73,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 74,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 83,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 72,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 604,
-      "formatter": "true_false",
-      "question_text": "19 is 1 ten and 9 ones. 81 is 8 tens and 1 one. Add the place values, then find the total: 19 + 81 = 101. True or False?",
-      "correct_answer": false
     },
     {
       "seed": 605,
-      "formatter": "cloze",
-      "question_text": "60 is 6 tens and 0 ones. 30 is 3 tens and 0 ones. Add the place values, then find the total: 60 + 30 = ___",
-      "correct_answer": 90,
-      "options": [
-        {
-          "key": "A",
-          "value": 91,
-          "text": "91",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 90,
-          "text": "90",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 89,
-          "text": "89",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 100,
-          "text": "100",
-          "is_correct": false
-        }
-      ]
+      "formatter": "true_false",
+      "question_text": "60 is 6 tens and 0 ones. 30 is 3 tens and 0 ones. Add the place values, then find the total: 60 + 30 = 90. True or False?",
+      "correct_answer": true
     }
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "The expanded form is announced by the stem rather than produced by the pupil: each item already declares, for instance, that 30 is 3 tens and 0 ones before asking for the total, so a child who ignores the decomposition entirely and adds straight across scores identically. Nothing in the response evidences the expanding that the competency asks for."
+      "verdict": "PASS",
+      "rationale": "Each stem first restates both addends in tens and ones and then instructs 'Add the place values, then find the total', which is the expanded-form method the competency names rather than a bare sum."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "Both addend shapes are exercised -- two-digit with two-digit, and two-digit with a single-digit addend rendered as '9 is 9 ones' -- and round-ten addends appear alongside general ones."
+      "rationale": "Both shapes of addend pair are generated - two-digit with a single-digit partner expressed purely in ones, and two-digit with two-digit - and zero-ones addends are included, so the expansion step is exercised in its several forms."
     },
     "cognitive_capacity": {
       "verdict": "CONCERN",
-      "rationale": "Several items cross a ten in the ones column: 57 + 43, 19 + 54, 87 + 9 and 47 + 7 all require carrying, which sits past the without-regrouping boundary that this quarter's neighbouring addition work observes, and the two-sentence decomposition preamble makes the stems long for Grade 1."
+      "rationale": "Several pairs force a carry that the expanded-form script does not cover: the seed pairing 57 with 43, and the one pairing 87 with 9, both need the ones to be regrouped into a new ten, while the neighbouring Quarter 2 addition competency is explicitly restricted to sums without regrouping. Pupils are being asked to complete a method they have not been taught."
     },
     "variant_comprehensiveness": {
       "verdict": "CONCERN",
-      "rationale": "Not one sample carries a situation, a picture or a model; the Grace and Rico error-checking items simply wrap the identical 'Add the place values, then find the total' sentence in a second layer of prose."
+      "rationale": "Every single sampled stem is the identical two-sentence recital with different numerals substituted; only the response mode changes around it. No pictured, contextual or story presentation of expanded addition appears anywhere in the sample."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "The progression does track the competency's own variable -- from addends with zero ones (60 + 10) toward addends where both columns are non-zero (19 + 54) -- rather than drifting to an unrelated axis."
+      "rationale": "The escalation across seeds is in the size and messiness of the addends, which is the right lever for this competency, and the error-checking items still require the pupil to run the same expansion."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Totals stop at 100, which seed 46 hits exactly; the 101 that shows up is the deliberately false statement in a true/false item, not a key."
+      "rationale": "Addends and totals stay within two digits and land on 100 at the top end, so the arithmetic never leaves the range implied for Grade 1 place-value addition."
     }
   },
   "overall": "CONCERN"

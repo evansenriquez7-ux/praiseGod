@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g1_mg_q1_1",
-  "reviewed_by": "reviewer-b1-quartz-mallow-4412",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c1-lantern-fescue-3061",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -9,7 +9,6 @@
     44,
     45,
     46,
-    50,
     500,
     501,
     502,
@@ -18,9 +17,9 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "mcq",
+      "formatter": "read_mcq",
       "question_text": "Which shape has the same number of sides as a square?",
-      "correct_answer": "rectangle",
+      "correct_answer": "D",
       "options": [
         {
           "key": "A",
@@ -74,9 +73,9 @@
     },
     {
       "seed": 44,
-      "formatter": "mcq",
+      "formatter": "read_mcq",
       "question_text": "Which shape has fewer corners — a square or a triangle?",
-      "correct_answer": "triangle",
+      "correct_answer": "C",
       "options": [
         {
           "key": "A",
@@ -157,34 +156,6 @@
       ]
     },
     {
-      "seed": 50,
-      "formatter": "read_mcq",
-      "question_text": "Which shape has fewer corners — a square or a triangle?",
-      "correct_answer": "A",
-      "options": [
-        {
-          "key": "A",
-          "value": "triangle",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": "neither",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "square",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "they are equal",
-          "is_correct": false
-        }
-      ]
-    },
-    {
       "seed": 500,
       "formatter": "read_mcq",
       "question_text": "Which shape has fewer corners — a square or a triangle?",
@@ -214,9 +185,9 @@
     },
     {
       "seed": 501,
-      "formatter": "mcq",
+      "formatter": "read_mcq",
       "question_text": "Which shape has the same number of sides as a square?",
-      "correct_answer": "rectangle",
+      "correct_answer": "A",
       "options": [
         {
           "key": "A",
@@ -242,9 +213,9 @@
     },
     {
       "seed": 502,
-      "formatter": "mcq",
+      "formatter": "read_mcq",
       "question_text": "Which shape has the same number of sides as a square?",
-      "correct_answer": "rectangle",
+      "correct_answer": "C",
       "options": [
         {
           "key": "A",
@@ -270,9 +241,9 @@
     },
     {
       "seed": 604,
-      "formatter": "mcq",
+      "formatter": "read_mcq",
       "question_text": "A tilted square and a flat rectangle: do they have the same number of corners?",
-      "correct_answer": "Yes, both have 4 corners.",
+      "correct_answer": "A",
       "options": [
         {
           "key": "A",
@@ -299,28 +270,28 @@
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "Sides and corners are both used as the feature under comparison, which is exactly the basis the competency names for distinguishing shapes."
+      "verdict": "CONCERN",
+      "rationale": "The comparisons themselves are on target, but the option lists undercut them. Asked which shape has the same number of sides as a square, the pupil is offered they are different and neither alongside two shape names - two of the four choices cannot answer a which-shape question at all, which narrows a four-way item to a two-way guess."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "More, fewer, and same-number relations all occur as keys, and the square-triangle, triangle-rectangle and square-rectangle pairings are each sampled at least once."
+      "rationale": "Both features the competency names are exercised: sides appear in the more-sides and same-number-of-sides items, corners in the fewer-corners item and in the tilted square and flat rectangle question. More, fewer and same are all represented as relations."
     },
     "cognitive_capacity": {
-      "verdict": "CONCERN",
-      "rationale": "Offering 'they are different' as a choice answers a different question than the one asked. A first grader reading 'Which shape has the same number of sides as a square?' must discard an option that is not a shape at all, which adds a logical hurdle the competency never asked for."
+      "verdict": "PASS",
+      "rationale": "Comparing two named shapes on a single attribute, with answer text as short as Yes, both have 4 corners, is a reasonable first-quarter Grade 1 demand and needs no counting beyond four."
     },
     "variant_comprehensiveness": {
       "verdict": "CONCERN",
-      "rationale": "Nine of ten renders use the identical two-shape comparison sentence. Only the 'tilted square' item changes the frame by bringing orientation in, and nothing asks a pupil to sort or group shapes by a feature."
+      "rationale": "Eight of the nine samples are three recycled sentences about triangle-versus-rectangle sides or square-versus-triangle corners. Only the tilted square and flat rectangle item introduces orientation, and no item compares three shapes or asks the pupil to justify by counting a drawn figure."
     },
     "competency_alignment": {
-      "verdict": "CONCERN",
-      "rationale": "The 'fewer corners' question recurs four times with only option order shuffled, so seed variation is spending itself on reshuffling instead of on finer feature discrimination such as equal sides versus unequal sides."
+      "verdict": "PASS",
+      "rationale": "The seeds that differ do so by switching the attribute under comparison (sides versus corners) and the direction of the relation, both of which are axes internal to distinguishing shapes by feature."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Feature counts stay at three and four sides or corners, which is the entirety of the shape vocabulary this Grade 1 node governs."
+      "rationale": "Side and corner counts of 3 and 4 are the only quantities involved, which is precisely the range the three named 2-dimensional shapes generate."
     }
   },
   "overall": "CONCERN"

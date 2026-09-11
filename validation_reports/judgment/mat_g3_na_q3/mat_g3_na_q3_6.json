@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g3_na_q3_6",
-  "reviewed_by": "reviewer-b6-thistle-kestrel-9724",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c6-mistral-comfrey-8916",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -9,7 +9,6 @@
     44,
     45,
     46,
-    50,
     500,
     501,
     502
@@ -17,28 +16,32 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "This pattern follows a rule: 24, 24, 34, 34, 44, ... Each group of numbers repeats, then the next group changes by the same amount. What number is added or subtracted from one group to the next?",
       "correct_answer": 10,
       "options": [
         {
           "key": "A",
           "value": 74,
+          "text": "74",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 10,
+          "text": "10",
           "is_correct": true
         },
         {
           "key": "C",
           "value": 20,
+          "text": "20",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 0,
+          "text": "0",
           "is_correct": false
         }
       ]
@@ -73,28 +76,32 @@
     },
     {
       "seed": 44,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "This pattern follows a rule: 44, 45, 41, 34, 35, 31, 24, 25, ... Each group of numbers repeats, then the next group changes by the same amount. What number is added or subtracted from one group to the next?",
       "correct_answer": -10,
       "options": [
         {
           "key": "A",
           "value": -10,
+          "text": "-10",
           "is_correct": true
         },
         {
           "key": "B",
           "value": -20,
+          "text": "-20",
           "is_correct": false
         },
         {
           "key": "C",
           "value": -36,
+          "text": "-36",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 0,
+          "text": "0",
           "is_correct": false
         }
       ]
@@ -156,65 +163,29 @@
       ]
     },
     {
-      "seed": 50,
-      "formatter": "cloze",
-      "question_text": "This pattern follows a rule: 114, 118, 116, 64, 68, 66, 14, 18, ... Each group of numbers repeats, then the next group changes by the same amount. What number is added or subtracted from one group to the next?",
-      "correct_answer": -50,
-      "options": [
-        {
-          "key": "A",
-          "value": 0,
-          "text": "0",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": -286,
-          "text": "-286",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": -50,
-          "text": "-50",
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": -100,
-          "text": "-100",
-          "is_correct": false
-        }
-      ]
-    },
-    {
       "seed": 500,
-      "formatter": "cloze",
+      "formatter": "mcq",
       "question_text": "This pattern follows a rule: 237, 234, 232, 137, 134, 132, 37, 34, ... Each group of numbers repeats, then the next group changes by the same amount. What number is added or subtracted from one group to the next?",
       "correct_answer": -100,
       "options": [
         {
           "key": "A",
           "value": -563,
-          "text": "-563",
           "is_correct": false
         },
         {
           "key": "B",
           "value": -200,
-          "text": "-200",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 0,
-          "text": "0",
           "is_correct": false
         },
         {
           "key": "D",
           "value": -100,
-          "text": "-100",
           "is_correct": true
         }
       ]
@@ -249,28 +220,32 @@
     },
     {
       "seed": 502,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "This pattern follows a rule: 43, 47, 41, 63, 67, 61, 83, 87, ... Each group of numbers repeats, then the next group changes by the same amount. What number is added or subtracted from one group to the next?",
       "correct_answer": 20,
       "options": [
         {
           "key": "A",
           "value": 0,
+          "text": "0",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 20,
+          "text": "20",
           "is_correct": true
         },
         {
           "key": "C",
           "value": 40,
+          "text": "40",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 203,
+          "text": "203",
           "is_correct": false
         }
       ]
@@ -279,27 +254,27 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "FAIL",
-      "rationale": "The competency asks the pupil to explain how a pattern is generated, and the stem does the explaining for them. Each item states that each group of numbers repeats, then the next group changes by the same amount, and then asks only for the size of that change. The rule is handed over and a subtraction is requested in its place, so the explanatory act named by the competency never occurs in any sample."
+      "rationale": "The objective asks a pupil to explain how a pattern is generated, but each stem hands them the explanation first, stating that each group of numbers repeats and then the next group changes by the same amount, and asks only for the number involved. The generating rule is given away in the question, so nothing in the set requires the pupil to articulate anything."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "Rising and falling families are both generated, with positive steps on the 24, 24, 34 and 43, 47, 41 sequences and negative ones on the 212 and 237 sequences, and the repeating motif varies between two and three elements."
+      "rationale": "Both the increasing and the decreasing direction are generated, with shifts of ten, twenty and fifty upward and of ten, fifty and a hundred downward, and group lengths of two and three both occur."
     },
     "cognitive_capacity": {
       "verdict": "FAIL",
-      "rationale": "Six of the nine keys are negative numbers such as the value given for the 44, 45, 41 pattern and the one given for the 212 pattern. Signed integers are not part of Grade 3 number work, so the correct answer is written in a notation the pupil has not met. The question wording, which asks what number is added or subtracted, compounds the problem by inviting a magnitude while the key carries a sign."
+      "rationale": "Three of the eight samples key a negative number, including -10 and -100, as the answer. Signed numbers are not part of Grade 3 work, and the stem itself offers the grade-appropriate alternative by asking what is added or subtracted, so accepting only a negative numeral demands notation the pupil has not met."
     },
     "variant_comprehensiveness": {
       "verdict": "FAIL",
-      "rationale": "All nine samples are one sentence frame with the numerals swapped, spread across only two formatters. There is no item asking the pupil to continue the sequence, to state the motif length, to describe the rule in words, or to spot a mis-generated term, all of which are natural ways to test how a pattern is generated."
+      "rationale": "All eight renderings share one sentence frame word for word, differing only in the sequence printed and in whether the response is typed or chosen. There is no second way of asking, no continuation task, and no request to produce a further term."
     },
     "competency_alignment": {
       "verdict": "CONCERN",
-      "rationale": "Since the rule is pre-supplied in every stem, the only thing that gets harder is the size of the arithmetic between groups. That builds subtraction fluency rather than the ability to articulate how a repeating-and-changing pattern is produced."
+      "rationale": "Every option list carries 0, which cannot be the shift in a sequence that visibly changes, alongside arbitrary values such as -588 that correspond to nothing a pupil would compute. The only real variation between samples is the magnitude of the shift."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Sequence values remain within three digits and the step magnitudes are ten, twenty, fifty and a hundred, which is appropriate arithmetic for the grade even though the signed form is not."
+      "rationale": "Sequence terms sit between the tens and the low hundreds, small enough that finding the difference between successive groups is the work rather than the subtraction itself."
     }
   },
   "overall": "FAIL"

@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g3_na_q4_5",
-  "reviewed_by": "reviewer-r2-amber-trellis-1903",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c6-mistral-comfrey-8916",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -9,8 +9,7 @@
     44,
     45,
     46,
-    50,
-    55,
+    48,
     500,
     501,
     502,
@@ -22,28 +21,32 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "Maico wants to share 180 costumes equally among 2 friends. How many costumes does each friend get?",
       "correct_answer": 90,
       "options": [
         {
           "key": "A",
           "value": 2,
+          "text": "2",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 90,
+          "text": "90",
           "is_correct": true
         },
         {
           "key": "C",
           "value": 178,
+          "text": "178",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 91,
+          "text": "91",
           "is_correct": false
         }
       ]
@@ -110,143 +113,67 @@
     },
     {
       "seed": 45,
-      "formatter": "mcq",
-      "question_text": "Ate Gab has ₱120 and wants to share it equally among 4 friends. How much does each friend get?",
-      "correct_answer": 30,
-      "options": [
-        {
-          "key": "A",
-          "value": 30,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 116,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 31,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 4,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 46,
-      "formatter": "mcq",
-      "question_text": "There are 114 seeds. If 2 seeds are put in each bag, how many bags are needed?",
-      "correct_answer": 57,
-      "options": [
-        {
-          "key": "A",
-          "value": 112,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 58,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 57,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 2,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 50,
       "formatter": "true_false",
-      "question_text": "Kuya Renz has ₱30 and wants to share it equally among 6 friends. How much does each friend get? The answer is 4. True or False?",
+      "question_text": "Ate Gab has ₱120 and wants to share it equally among 4 friends. How much does each friend get? The answer is 31. True or False?",
       "correct_answer": false
     },
     {
-      "seed": 55,
+      "seed": 46,
+      "formatter": "true_false",
+      "question_text": "There are 114 seeds. If 2 seeds are put in each bag, how many bags are needed? The answer is 57. True or False?",
+      "correct_answer": true
+    },
+    {
+      "seed": 48,
       "formatter": "error_detect",
-      "question_text": "Grace solved this problem: \"Romel has ₱132 and wants to share it equally among 2 friends. How much does each friend get?\" Grace says the answer is 2. Is Grace correct?",
+      "question_text": "Noel solved this problem: \"Boboy wants to share 420 bags of flour equally among 6 friends. How many bags of flour does each friend get?\" Noel says the answer is 70. Is Noel correct?",
       "correct_answer": {
-        "has_error": true,
-        "correct_value": 66
+        "has_error": false,
+        "correct_value": 70
       }
     },
     {
       "seed": 500,
-      "formatter": "error_detect",
-      "question_text": "Rico solved this problem: \"There are 657 ribbons. If 9 ribbons are put in each bag, how many bags are needed?\" Rico says the answer is 73. Is Rico correct?",
-      "correct_answer": {
-        "has_error": false,
-        "correct_value": 73
-      }
+      "formatter": "true_false",
+      "question_text": "There are 657 ribbons. If 9 ribbons are put in each bag, how many bags are needed? The answer is 72. True or False?",
+      "correct_answer": false
     },
     {
       "seed": 501,
-      "formatter": "cloze",
+      "formatter": "mcq",
       "question_text": "There are 936 running shoes. If 9 running shoes are put in each bag, how many bags are needed?",
       "correct_answer": 104,
       "options": [
         {
           "key": "A",
           "value": 927,
-          "text": "927",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 105,
-          "text": "105",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 9,
-          "text": "9",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 104,
-          "text": "104",
           "is_correct": true
         }
       ]
     },
     {
       "seed": 502,
-      "formatter": "mcq",
-      "question_text": "Kuya Renz wants to share 738 canvases equally among 9 friends. How many canvases does each friend get?",
-      "correct_answer": 82,
-      "options": [
-        {
-          "key": "A",
-          "value": 9,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 83,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 82,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 729,
-          "is_correct": false
-        }
-      ]
+      "formatter": "error_detect",
+      "question_text": "Dante solved this problem: \"Kuya Renz wants to share 738 canvases equally among 9 friends. How many canvases does each friend get?\" Dante says the answer is 82. Is Dante correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 82
+      }
     },
     {
       "seed": 600,
@@ -310,60 +237,37 @@
     },
     {
       "seed": 602,
-      "formatter": "mcq",
-      "question_text": "Boboy has ₱220 and wants to share it equally among 5 friends. How much does each friend get?",
-      "correct_answer": 44,
-      "options": [
-        {
-          "key": "A",
-          "value": 215,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 5,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 45,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 44,
-          "is_correct": true
-        }
-      ]
+      "formatter": "error_detect",
+      "question_text": "Jose solved this problem: \"Boboy has ₱220 and wants to share it equally among 5 friends. How much does each friend get?\" Jose says the answer is 44. Is Jose correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 44
+      }
     },
     {
       "seed": 603,
-      "formatter": "cloze",
+      "formatter": "mcq",
       "question_text": "Ate Joy has ₱60 and wants to share it equally among 3 friends. How much does each friend get?",
       "correct_answer": 20,
       "options": [
         {
           "key": "A",
           "value": 3,
-          "text": "3",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 57,
-          "text": "57",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 20,
-          "text": "20",
           "is_correct": true
         },
         {
           "key": "D",
           "value": 21,
-          "text": "21",
           "is_correct": false
         }
       ]
@@ -371,28 +275,28 @@
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "Each sample is a contextual division with a one-digit divisor, and peso problems sit alongside object problems, so both the numeric scope and the money clause of the competency are addressed by the rendered items."
+      "verdict": "CONCERN",
+      "rationale": "The problems and their arithmetic are sound, but the money items answer in bare numbers while the stems use the peso sign; the one where Nikka has ₱42 to share between 2 friends is keyed 21 with options carrying no currency mark. For a competency that explicitly takes in money, an amount stripped of its unit is a half answer."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "Sharing and grouping meanings both appear, the latter in 'There are 936 running shoes. If 9 running shoes are put in each bag, how many bags are needed?', and dividends cover the two- and three-digit span with divisors ranging across 2 to 9."
+      "rationale": "Both meanings of division are produced rather than one: sharing a quantity equally among a number of friends, and finding how many containers are needed when each holds a fixed amount. Money and object contexts both appear on each meaning."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Every division resolves to a whole answer, so no partial peso ever arises, and the three-digit cases such as 738 shared among 9 use quotients that stay within what a Grade 3 pupil can carry through a single written division."
+      "rationale": "Each stem is a single situation followed by a single question, and dividends such as 936 with a single-digit divisor keep the computation to the short division this quarter has established."
     },
     "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "Contextual variety is narrow for a problem-solving node: the peso items reuse one frame about having an amount and sharing it equally among friends across most of the set, and the remaining stems fall into just two further skeletons. There is no change-giving, no unit-price reasoning, and no situation where the quotient must be interpreted rather than reported."
+      "verdict": "PASS",
+      "rationale": "Open responses, choices, a claimed answer to accept or reject, and another child's solution to check all appear, and the truth judgments are keyed both ways rather than leaning one direction."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "The axis that moves is the size of the dividend and the difficulty of the one-digit divisor, from ₱42 shared by 2 up to 738 shared by 9, which is what this competency is about; the money and object frames alternate throughout that climb."
+      "rationale": "Distractors are built from the errors this competency guards against, offering the divisor itself or the result of subtracting instead of dividing, so choosing correctly requires recognising that division is the operation."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Dividends sit between 30 and 936, exactly the two- to three-digit band named, and no divisor exceeds a single digit. Nothing overshoots into four digits or undershoots into single-digit dividends."
+      "rationale": "Dividends run from two digits up to 936 with single-digit divisors throughout, matching the stated two-to-three-digit by one-digit range, and all divisions come out whole as that scope implies."
     }
   },
   "overall": "CONCERN"

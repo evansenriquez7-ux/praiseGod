@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g1_mg_q4_3",
-  "reviewed_by": "reviewer-b1-quartz-mallow-4412",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c1-lantern-fescue-3061",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -38,7 +38,7 @@
         },
         {
           "key": "C",
-          "value": "Sunday",
+          "value": "Friday",
           "is_correct": false
         },
         {
@@ -61,7 +61,7 @@
         },
         {
           "key": "B",
-          "value": "Sunday",
+          "value": "Wednesday",
           "is_correct": false
         },
         {
@@ -84,7 +84,7 @@
       "options": [
         {
           "key": "A",
-          "value": "May",
+          "value": "June",
           "is_correct": false
         },
         {
@@ -99,7 +99,7 @@
         },
         {
           "key": "D",
-          "value": "August",
+          "value": "December",
           "is_correct": false
         }
       ]
@@ -112,17 +112,17 @@
       "options": [
         {
           "key": "A",
-          "value": "March",
-          "is_correct": false
-        },
-        {
-          "key": "B",
           "value": "October",
           "is_correct": false
         },
         {
+          "key": "B",
+          "value": "December",
+          "is_correct": false
+        },
+        {
           "key": "C",
-          "value": "November",
+          "value": "July",
           "is_correct": false
         },
         {
@@ -155,7 +155,7 @@
         },
         {
           "key": "D",
-          "value": "Monday",
+          "value": "Sunday",
           "is_correct": false
         }
       ]
@@ -168,17 +168,17 @@
       "options": [
         {
           "key": "A",
-          "value": "April",
-          "is_correct": false
-        },
-        {
-          "key": "B",
           "value": "September",
           "is_correct": false
         },
         {
+          "key": "B",
+          "value": "August",
+          "is_correct": false
+        },
+        {
           "key": "C",
-          "value": "December",
+          "value": "November",
           "is_correct": false
         },
         {
@@ -234,7 +234,7 @@
         },
         {
           "key": "C",
-          "value": "Sunday",
+          "value": "Thursday",
           "is_correct": false
         },
         {
@@ -262,12 +262,12 @@
         },
         {
           "key": "C",
-          "value": "Thursday",
+          "value": "Sunday",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "Friday",
+          "value": "Thursday",
           "is_correct": false
         }
       ]
@@ -280,7 +280,7 @@
       "options": [
         {
           "key": "A",
-          "value": "Sunday",
+          "value": "Wednesday",
           "is_correct": false
         },
         {
@@ -295,7 +295,7 @@
         },
         {
           "key": "D",
-          "value": "Saturday",
+          "value": "Sunday",
           "is_correct": false
         }
       ]
@@ -336,17 +336,17 @@
       "options": [
         {
           "key": "A",
-          "value": "Tuesday",
+          "value": "Wednesday",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "Monday",
+          "value": "Sunday",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "Wednesday",
+          "value": "Tuesday",
           "is_correct": false
         },
         {
@@ -364,17 +364,17 @@
       "options": [
         {
           "key": "A",
-          "value": "Monday",
+          "value": "Friday",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "Saturday",
+          "value": "Monday",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "Friday",
+          "value": "Tuesday",
           "is_correct": false
         },
         {
@@ -397,17 +397,17 @@
         },
         {
           "key": "B",
-          "value": "Sunday",
+          "value": "Friday",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "Saturday",
+          "value": "Sunday",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "Friday",
+          "value": "Saturday",
           "is_correct": false
         }
       ]
@@ -416,27 +416,27 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "Both objects of the competency are retrieved from the calendar - the weekday of a stated date and the month a page represents. Checked against the real 2025 calendar, February 1 as Saturday and May 23 as Friday are both right, as are the other dated keys."
+      "rationale": "Both nouns of the competency are addressed against an actual calendar page: the day of the week for a given date, and the identification of which month the displayed page belongs to. Nothing is answerable without consulting the calendar shown."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "Target dates sit at the beginning, middle and end of their months, and the months sampled run from January through November, so no single calendar shape or row position is privileged."
+      "rationale": "Dates sampled sit early, mid and late in the month - the 1st, the 2nd, the 6th, the 12th, the 19th, the 21st, the 23rd, the 25th and the 30th - so the pupil must track across several week rows rather than only reading the top line, and the month-identification case gets its own seeds."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Finding a numbered square and reading up to its column heading is one visual lookup with no interval counting, well matched to Quarter 4."
+      "rationale": "Locating a numeral in a grid and reading up to its column heading is a visual-scan task with no arithmetic, well matched to Quarter 4 of Grade 1, and each stem is one sentence after the instruction to look at the calendar."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "Two genuinely distinct tasks are generated: date-to-weekday lookup, and naming the month of a page whose label the pupil must infer, which forces attention to the whole page rather than one cell."
+      "rationale": "Two genuinely different questions are asked of the same artefact - find the weekday of a date, and name the month of an unlabelled page - and the calendar pages themselves rotate through most of the year rather than reusing one month."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "The harder seeds push the target date deeper into the month, where the pupil must track across more rows without losing the column - the authentic difficulty of calendar reading."
+      "rationale": "Later seeds move the target date deeper into the month, which is the real difficulty axis for calendar reading, and the month-naming items require reading the page layout rather than a caption; both build this competency directly."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Dates stay inside real month lengths, and the weekday and month option pools are the complete and correct sets with no invented entries."
+      "rationale": "All dates fall within the true length of the month named and I verified the weekday keys against the 2025 calendar - February 1 as Saturday, May 23 as Friday, July 2 as Wednesday, November 19 as Wednesday, April 30 as Wednesday and January 12 as Sunday are each correct, so the underlying calendar data is sound."
     }
   },
   "overall": "PASS"

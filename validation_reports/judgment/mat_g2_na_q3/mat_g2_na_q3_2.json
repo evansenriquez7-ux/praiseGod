@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g2_na_q3_2",
-  "reviewed_by": "reviewer-r1-cobalt-juniper-7748",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c4-pumice-lovage-6370",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -10,8 +10,6 @@
     45,
     46,
     47,
-    52,
-    68,
     500,
     501,
     502,
@@ -24,84 +22,66 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "error_detect",
-      "question_text": "Manny solved: \"3 × 3 = ___\". Manny says the missing number is 6. Is Manny correct?",
-      "correct_answer": {
-        "has_error": true,
-        "correct_value": 9
-      }
+      "formatter": "true_false",
+      "question_text": "3 × 3 = 6. True or False?",
+      "correct_answer": false
     },
     {
       "seed": 43,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Shade all the squares inside the 4×2 rectangle. How many squares did you shade in all?",
-      "correct_answer": 8
+      "formatter": "error_detect",
+      "question_text": "Grace solved: \"4 × 2 = ___\". Grace says the missing number is 8. Is Grace correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 8
+      }
     },
     {
       "seed": 44,
-      "formatter": "mcq",
-      "question_text": "What is 1 × 2?",
-      "correct_answer": 2,
-      "options": [
-        {
-          "key": "A",
-          "value": 4,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 2,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 1,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 3,
-          "is_correct": false
-        }
-      ]
+      "formatter": "set_fill_in_blank",
+      "question_text": "Shade all the squares inside the 1×2 rectangle. How many squares did you shade in all?",
+      "correct_answer": 2
     },
     {
       "seed": 45,
-      "formatter": "mcq",
-      "question_text": "What is 3 × 4?",
+      "formatter": "cloze",
+      "question_text": "3 × 4 = ___",
       "correct_answer": 12,
       "options": [
         {
           "key": "A",
           "value": 11,
+          "text": "11",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 8,
+          "text": "8",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 12,
+          "text": "12",
           "is_correct": true
         },
         {
           "key": "D",
           "value": 7,
+          "text": "7",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 46,
-      "formatter": "mcq",
-      "question_text": "What is 6 × 2?",
-      "correct_answer": 12,
+      "formatter": "read_mcq",
+      "question_text": "Look at the 6×2 array. How many squares are shaded in all?",
+      "correct_answer": "B",
       "options": [
         {
           "key": "A",
-          "value": 4,
+          "value": 15,
           "is_correct": false
         },
         {
@@ -111,254 +91,216 @@
         },
         {
           "key": "C",
-          "value": 8,
+          "value": 9,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 10,
+          "value": 16,
           "is_correct": false
         }
       ]
     },
     {
       "seed": 47,
-      "formatter": "cloze",
-      "question_text": "8 × 4 = ___",
+      "formatter": "mcq",
+      "question_text": "What is 8 × 4?",
       "correct_answer": 32,
       "options": [
         {
           "key": "A",
           "value": 32,
-          "text": "32",
           "is_correct": true
         },
         {
           "key": "B",
           "value": 12,
-          "text": "12",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 4,
-          "text": "4",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 28,
-          "text": "28",
           "is_correct": false
         }
       ]
     },
     {
-      "seed": 52,
-      "formatter": "read_mcq",
-      "question_text": "Look at the 7×4 array. How many squares are shaded in all?",
-      "correct_answer": "C",
+      "seed": 500,
+      "formatter": "mcq",
+      "question_text": "What is 8 × 10?",
+      "correct_answer": 80,
       "options": [
         {
           "key": "A",
-          "value": 25,
+          "value": 18,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 30,
+          "value": 70,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 28,
-          "is_correct": true
+          "value": 79,
+          "is_correct": false
         },
         {
           "key": "D",
-          "value": 22,
-          "is_correct": false
+          "value": 80,
+          "is_correct": true
         }
       ]
-    },
-    {
-      "seed": 68,
-      "formatter": "true_false",
-      "question_text": "8 × 5 = 40. True or False?",
-      "correct_answer": true
-    },
-    {
-      "seed": 500,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Shade all the squares inside the 8×10 rectangle. How many squares did you shade in all?",
-      "correct_answer": 80
     },
     {
       "seed": 501,
       "formatter": "true_false",
-      "question_text": "6 × 5 = 30. True or False?",
-      "correct_answer": true
+      "question_text": "6 × 5 = 1. True or False?",
+      "correct_answer": false
     },
     {
       "seed": 502,
-      "formatter": "mcq",
-      "question_text": "What is 9 × 4?",
-      "correct_answer": 36,
-      "options": [
-        {
-          "key": "A",
-          "value": 36,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 32,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 5,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 13,
-          "is_correct": false
-        }
-      ]
+      "formatter": "set_fill_in_blank",
+      "question_text": "Shade all the squares inside the 9×4 rectangle. How many squares did you shade in all?",
+      "correct_answer": 36
     },
     {
       "seed": 600,
       "formatter": "true_false",
-      "question_text": "5 × 4 = 20. True or False?",
-      "correct_answer": true
+      "question_text": "5 × 4 = 1. True or False?",
+      "correct_answer": false
     },
     {
       "seed": 601,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "Moses puts 3 baskets in each of 6 bags. How many baskets are in all the bags?",
       "correct_answer": 18,
       "options": [
         {
           "key": "A",
           "value": 9,
+          "text": "9",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 18,
+          "text": "18",
           "is_correct": true
         },
         {
           "key": "C",
           "value": 15,
+          "text": "15",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 3,
+          "text": "3",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 602,
-      "formatter": "cloze",
-      "question_text": "1 × 2 = ___",
+      "formatter": "mcq",
+      "question_text": "What is 1 × 2?",
       "correct_answer": 2,
       "options": [
         {
           "key": "A",
           "value": 3,
-          "text": "3",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 4,
-          "text": "4",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 1,
-          "text": "1",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 2,
-          "text": "2",
           "is_correct": true
         }
       ]
     },
     {
       "seed": 603,
+      "formatter": "error_detect",
+      "question_text": "Ana solved: \"4 × 3 = ___\". Ana says the missing number is 15. Is Ana correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 12
+      }
+    },
+    {
+      "seed": 604,
       "formatter": "cloze",
-      "question_text": "4 × 3 = ___",
+      "question_text": "6 × 2 = ___",
       "correct_answer": 12,
       "options": [
         {
           "key": "A",
-          "value": 12,
-          "text": "12",
-          "is_correct": true
+          "value": 8,
+          "text": "8",
+          "is_correct": false
         },
         {
           "key": "B",
-          "value": 1,
-          "text": "1",
+          "value": 10,
+          "text": "10",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 7,
-          "text": "7",
+          "value": 4,
+          "text": "4",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 9,
-          "text": "9",
-          "is_correct": false
+          "value": 12,
+          "text": "12",
+          "is_correct": true
         }
       ]
-    },
-    {
-      "seed": 604,
-      "formatter": "error_detect",
-      "question_text": "Carlo solved: \"6 × 2 = ___\". Carlo says the missing number is 12. Is Carlo correct?",
-      "correct_answer": {
-        "has_error": false,
-        "correct_value": 12
-      }
     }
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "Sampled items ask for products directly, and in every pair at least one factor comes from the tables the competency names, so the multiplication being practised is the multiplication the node prescribes rather than arbitrary facts."
+      "rationale": "Every sampled product has at least one factor drawn from the tables named, and the keys are correct throughout - I checked each, including the array item showing six rows of two and the shading item on a nine-by-four rectangle."
     },
     "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "Four of the five prescribed tables are drilled as actual computations, but the ten times table surfaces only once and only inside the instruction to 'Shade all the squares inside the 8×10 rectangle.' No sampled item asks a ten-table product as a fact to be recalled or selected, which leaves the easiest and most foundational of the five under-practised."
+      "verdict": "PASS",
+      "rationale": "All five named tables are reached: twos and fours through the bare facts, threes through a bags story and an error check, fives through a true-or-false, and tens through an eight-times-ten item."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Single-digit factors, an array picture available as support, and short stems such as the one asking what 9 × 4 equals are appropriate for a Grade 2 class meeting multiplication in the third quarter."
+      "rationale": "Notation is introduced with an array or a bracketed sum alongside the bare symbol, factors never exceed ten, and the one story stem keeps to a single sentence about bags."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "The node offers bare symbolic facts, a rectangle to shade, an array to read with the instruction to look at the 7×4 array, truth judgments, error checking of another child's product, and one bags story, so both concrete and abstract presentations are present."
+      "rationale": "Rectangles to shade, an array to count, plain horizontal facts, a bags-and-baskets word problem and peer-error checks between them cover both pictorial and symbolic presentation of the same tables."
     },
     "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "The scaling axis is factor size within the allowed tables, moving from a product of two up into the thirties and eighties, which is the natural difficulty ladder for table recall and not a substitute skill."
+      "verdict": "CONCERN",
+      "rationale": "Two true-or-false rungs each claim a two-digit product equals 1, and a further item asks for one times two. None of the three requires recall from any of the five tables, so the easy end of the ladder is not building this competency at all."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "No factor exceeds ten and the largest product sampled is eighty, consistent with a competency bounded by the 2, 3, 4, 5 and 10 tables; nothing strays into facts outside those tables."
+      "rationale": "The largest factor pairs sit at nine-by-four and eight-by-ten, which is the natural top of the named tables and leaves products inside a hundred."
     }
   },
   "overall": "CONCERN"

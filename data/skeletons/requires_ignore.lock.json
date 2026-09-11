@@ -1,0 +1,355 @@
+{
+  "_what_this_is": "The sanctioned contents of every node's `requires_ignore`. A word here is a statement that MATATAG names something this pipeline is not required to build, which is a CURRICULUM RULING and not an engineering decision.",
+  "_who_may_change_it": "A human. docs/pgen_rulings.md R-5 (owner, 2026-09-11): 'agents must see this requires_ignore as a human authored ground truth. this should be legally binding and something that can only be done by human judgement which can be verified by git history.' An agent may not add, alter or remove an entry on its own initiative, here or in vocab_annotation.json.",
+  "_how_it_is_enforced": "validate_capability's `requires_ignore_locked_6B` compares this file with the `requires_ignore` lists in data/skeletons/vocab_annotation.json and fails on ANY divergence, in either direction. An agent that quietly drops a competency word into `requires_ignore` to silence a \u00a76B coverage finding is refused; sanctioning it means editing THIS file, which is a separate, greppable diff a reviewer can see in git history rather than a side effect buried in a content change.",
+  "_known_limit": "This makes the act VISIBLE, not impossible: an agent able to edit ground truth can also edit this file. What the gate guarantees is that doing so is a deliberate, isolated, auditable commit rather than a silent one. Naming that limit is the point (Scaling Mandate 6).",
+  "entries": {
+    "mat_g1_dp_q3_0": [
+      "through"
+    ],
+    "mat_g1_mg_q2_2": [
+      "involving"
+    ],
+    "mat_g1_mg_q4_4": [
+      "involving"
+    ],
+    "mat_g1_na_q1_2": [
+      "a",
+      "and",
+      "e",
+      "g",
+      "of",
+      "using",
+      "variety"
+    ],
+    "mat_g1_na_q1_6": [
+      "e",
+      "g",
+      "using"
+    ],
+    "mat_g1_na_q1_7": [
+      "a",
+      "and",
+      "as",
+      "of",
+      "using",
+      "variety",
+      "with"
+    ],
+    "mat_g1_na_q1_8": [
+      "by",
+      "following",
+      "the",
+      "using"
+    ],
+    "mat_g1_na_q1_9": [
+      "given",
+      "in",
+      "involving",
+      "or",
+      "orally",
+      "with"
+    ],
+    "mat_g1_na_q2_2": [
+      "given",
+      "its",
+      "place",
+      "value"
+    ],
+    "mat_g1_na_q2_6": [
+      "involving",
+      "orally"
+    ],
+    "mat_g1_na_q3_0": [
+      "involving"
+    ],
+    "mat_g1_na_q3_1": [
+      "involving"
+    ],
+    "mat_g1_na_q3_3": [
+      "both",
+      "or",
+      "orally",
+      "where"
+    ],
+    "mat_g1_na_q3_4": [
+      "both",
+      "where"
+    ],
+    "mat_g1_na_q3_6": [
+      "arts",
+      "could",
+      "elements",
+      "patterns",
+      "properties",
+      "rhythmic",
+      "visual"
+    ],
+    "mat_g1_na_q4_6": [
+      "both",
+      "involving",
+      "orally",
+      "where"
+    ],
+    "mat_g2_dp_q3_0": [
+      ",",
+      "a",
+      "in",
+      "or",
+      "or",
+      "with"
+    ],
+    "mat_g2_dp_q3_1": [
+      "a",
+      "and",
+      "in",
+      "or",
+      "with",
+      "without"
+    ],
+    "mat_g2_mg_q2_3": [
+      "involving"
+    ],
+    "mat_g2_mg_q4_0": [
+      "terms"
+    ],
+    "mat_g2_mg_q4_2": [
+      "involving"
+    ],
+    "mat_g2_mg_q4_6": [
+      "involving"
+    ],
+    "mat_g2_na_q1_10": [
+      "following"
+    ],
+    "mat_g2_na_q1_4": [
+      "from"
+    ],
+    "mat_g2_na_q2_4": [
+      "where"
+    ],
+    "mat_g2_na_q2_5": [
+      "orally",
+      "where"
+    ],
+    "mat_g2_na_q2_6": [
+      "where"
+    ],
+    "mat_g2_na_q2_7": [
+      "where"
+    ],
+    "mat_g2_na_q2_8": [
+      "arts",
+      "elements",
+      "properties",
+      "rhythmic",
+      "visual"
+    ],
+    "mat_g2_na_q3_0": [
+      "'",
+      "'",
+      "a",
+      "and",
+      "and",
+      "as",
+      "by",
+      "in",
+      "such",
+      "using"
+    ],
+    "mat_g2_na_q3_2": [
+      "the",
+      "using"
+    ],
+    "mat_g2_na_q3_3": [
+      ",",
+      "including",
+      "involving",
+      "problems",
+      "the",
+      "using"
+    ],
+    "mat_g2_na_q3_4": [
+      "a",
+      "into",
+      "through"
+    ],
+    "mat_g2_na_q3_5": [
+      ",",
+      "a",
+      "and",
+      "and",
+      "as",
+      "in",
+      "of",
+      "of",
+      "or",
+      "using",
+      "variety"
+    ],
+    "mat_g2_na_q3_6": [
+      "the",
+      "using"
+    ],
+    "mat_g2_na_q3_7": [
+      "a",
+      "by",
+      "in",
+      "involving",
+      "or",
+      "the"
+    ],
+    "mat_g2_na_q3_8": [
+      "by",
+      "using"
+    ],
+    "mat_g2_na_q3_9": [
+      ",",
+      "including",
+      "involving",
+      "problems",
+      "the",
+      "using"
+    ],
+    "mat_g3_dp_q3_0": [
+      "a",
+      "e.g.,",
+      "from",
+      "or",
+      "with"
+    ],
+    "mat_g3_dp_q3_2": [
+      "and",
+      "in"
+    ],
+    "mat_g3_dp_q3_3": [
+      "a",
+      "and",
+      "in",
+      "using"
+    ],
+    "mat_g3_dp_q3_4": [
+      "following",
+      "terms"
+    ],
+    "mat_g3_mg_q2_0": [
+      ",",
+      "appropriate",
+      "in",
+      "using"
+    ],
+    "mat_g3_mg_q2_1": [
+      "of",
+      "using"
+    ],
+    "mat_g3_mg_q2_2": [
+      "a",
+      "including",
+      "of",
+      "the",
+      "use"
+    ],
+    "mat_g3_mg_q2_4": [
+      "using"
+    ],
+    "mat_g3_mg_q2_5": [
+      "of"
+    ],
+    "mat_g3_mg_q4_0": [
+      "effect"
+    ],
+    "mat_g3_mg_q4_1": [
+      "show"
+    ],
+    "mat_g3_na_q2_3": [
+      "involving"
+    ],
+    "mat_g3_na_q2_4": [
+      ",",
+      "are",
+      "both",
+      "numbers",
+      "where"
+    ],
+    "mat_g3_na_q2_5": [
+      "of"
+    ],
+    "mat_g3_na_q2_6": [
+      ",",
+      "Perform",
+      "of"
+    ],
+    "mat_g3_na_q2_7": [
+      ",",
+      "including",
+      "of",
+      "with"
+    ],
+    "mat_g3_na_q3_0": [
+      "the",
+      "using"
+    ],
+    "mat_g3_na_q3_1": [
+      ":",
+      ";",
+      "and",
+      "for",
+      "the"
+    ],
+    "mat_g3_na_q3_2": [
+      ",",
+      ":",
+      "and",
+      "with"
+    ],
+    "mat_g3_na_q3_3": [
+      "by",
+      "of",
+      "using"
+    ],
+    "mat_g3_na_q3_4": [
+      "including"
+    ],
+    "mat_g3_na_q3_5": [
+      "1a",
+      "1b",
+      "1c",
+      "2a",
+      "2b",
+      "2c"
+    ],
+    "mat_g3_na_q3_6": [
+      "a",
+      "given",
+      "or",
+      "with"
+    ],
+    "mat_g3_na_q4_0": [
+      "and",
+      "as",
+      "on",
+      "the",
+      "through"
+    ],
+    "mat_g3_na_q4_1": [
+      "the",
+      "using"
+    ],
+    "mat_g3_na_q4_2": [
+      "a",
+      "by",
+      "in",
+      "involving",
+      "or"
+    ],
+    "mat_g3_na_q4_3": [
+      ",",
+      ":",
+      "by"
+    ],
+    "mat_g3_na_q4_5": [
+      "involving",
+      "problems"
+    ]
+  }
+}

@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g2_mg_q1_0",
-  "reviewed_by": "reviewer-b2-tallow-verdigris-8130",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c2-basalt-yarrow-7194",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -9,7 +9,6 @@
     44,
     45,
     46,
-    50,
     500,
     501,
     502,
@@ -22,9 +21,9 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "mcq",
+      "formatter": "read_mcq",
       "question_text": "What shape has no corners and no straight sides?",
-      "correct_answer": "circle",
+      "correct_answer": "B",
       "options": [
         {
           "key": "A",
@@ -78,9 +77,9 @@
     },
     {
       "seed": 44,
-      "formatter": "mcq",
+      "formatter": "read_mcq",
       "question_text": "A circle is divided into 2 equal parts. What is each part called?",
-      "correct_answer": "half-circle",
+      "correct_answer": "C",
       "options": [
         {
           "key": "A",
@@ -161,34 +160,6 @@
       ]
     },
     {
-      "seed": 50,
-      "formatter": "read_mcq",
-      "question_text": "A circle is divided into 2 equal parts. What is each part called?",
-      "correct_answer": "D",
-      "options": [
-        {
-          "key": "A",
-          "value": "whole circle",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "quarter-circle",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "triangle",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "half-circle",
-          "is_correct": true
-        }
-      ]
-    },
-    {
       "seed": 500,
       "formatter": "read_mcq",
       "question_text": "A circle is divided into 2 equal parts. What is each part called?",
@@ -218,9 +189,9 @@
     },
     {
       "seed": 501,
-      "formatter": "mcq",
+      "formatter": "read_mcq",
       "question_text": "A shape is made from exactly one quarter of a circle. What is it called?",
-      "correct_answer": "quarter-circle",
+      "correct_answer": "D",
       "options": [
         {
           "key": "A",
@@ -246,9 +217,9 @@
     },
     {
       "seed": 502,
-      "formatter": "mcq",
+      "formatter": "read_mcq",
       "question_text": "A circle is divided into 4 equal parts. What is each part called?",
-      "correct_answer": "quarter-circle",
+      "correct_answer": "A",
       "options": [
         {
           "key": "A",
@@ -302,9 +273,9 @@
     },
     {
       "seed": 601,
-      "formatter": "mcq",
+      "formatter": "read_mcq",
       "question_text": "A shape is made from exactly half of a circle. What is it called?",
-      "correct_answer": "half-circle",
+      "correct_answer": "B",
       "options": [
         {
           "key": "A",
@@ -330,9 +301,9 @@
     },
     {
       "seed": 603,
-      "formatter": "mcq",
+      "formatter": "read_mcq",
       "question_text": "Which has more straight edges: a half-circle or a quarter-circle?",
-      "correct_answer": "quarter-circle",
+      "correct_answer": "D",
       "options": [
         {
           "key": "A",
@@ -358,9 +329,9 @@
     },
     {
       "seed": 604,
-      "formatter": "mcq",
+      "formatter": "read_mcq",
       "question_text": "How many quarter-circles make 1 whole circle?",
-      "correct_answer": "4",
+      "correct_answer": "D",
       "options": [
         {
           "key": "A",
@@ -415,29 +386,29 @@
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "FAIL",
-      "rationale": "Describing is served, but representing is entirely absent. Across all fourteen samples there is no item in which the pupil draws, shades, assembles or selects a picture of a circle, half circle or quarter circle -- every response is choosing a shape name or a number from four written options. One of the competency's two verbs has no generated task at all."
+      "verdict": "CONCERN",
+      "rationale": "The describing half is done well, but the competency begins with representing, and no sampled item has a pupil draw, build, fold or assemble a circle, half circle or quarter circle. Every question is answered by selecting a name or a number, so half of the competency's verb pair is never exercised."
     },
     "comprehensive_coverage": {
       "verdict": "CONCERN",
-      "rationale": "All three named figures are described, but the part-to-whole composition question exists only for quarters ('How many quarter-circles make 1 whole circle?'), with no matching item for half circles, and no sample combines the pieces back into a whole shape."
+      "rationale": "All three figures are named and related to one another, including how many quarter-circles make a whole, but the descriptive attributes stay narrow - corners, straight sides and straight edges - while nothing addresses the curved side, size, or building a whole from parts in the other direction."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Vocabulary is limited to the shape names plus corners and straight edges, the partitions used are only 2 and 4, and each question resolves in one judgement -- suitable for the opening quarter of Grade 2."
+      "rationale": "The reasoning is attribute recall and simple part-whole relation, and the comparison 'Which has more straight edges: a half-circle or a quarter-circle?' is correctly keyed, which is a fair discrimination for Grade 2."
     },
     "variant_comprehensiveness": {
       "verdict": "CONCERN",
-      "rationale": "The effective pool is much smaller than fourteen: 'What shape has no corners and no straight sides?' is reproduced identically at three seeds, and the circle-divided-into-2-equal-parts item at three more, so over a third of the samples are duplicates with only the option order changed."
+      "rationale": "Only two closely related choice formats appear, and 'What shape has no corners and no straight sides?' is regenerated verbatim across three separate seeds, so a pupil working through the node meets the same question repeatedly."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Where the items do differ, they deepen the same descriptive skill in the right way -- counting straight edges of a half against a quarter, and holding identity under rotation when a quarter-circle is turned to face another direction."
+      "rationale": "The question set does move along a real conceptual line - naming a figure, deriving it by dividing a circle, counting parts that rebuild the whole, and holding identity under rotation - all of which belong to this competency."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "The only numbers appearing are the partition counts 2 and 4 and small edge and corner counts, which is the correct numeric register for a shape-description competency at this level."
+      "rationale": "This competency sets no numeric ceiling, and the only numbers used are part counts of two and four together with a count of zero corners, all trivially inside Grade 2 number knowledge."
     }
   },
-  "overall": "FAIL"
+  "overall": "CONCERN"
 }

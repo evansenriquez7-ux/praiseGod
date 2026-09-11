@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g3_na_q2_3",
-  "reviewed_by": "reviewer-b6-thistle-kestrel-9724",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c6-mistral-comfrey-8916",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -9,7 +9,6 @@
     44,
     45,
     46,
-    47,
     500,
     501,
     502,
@@ -23,46 +22,46 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "true_false",
-      "question_text": "One basket has 1086 costumes. Another basket has 2067 costumes. If you put all the costumes together, how many costumes are there? The answer is 3153. True or False?",
-      "correct_answer": true
-    },
-    {
-      "seed": 43,
-      "formatter": "error_detect",
-      "question_text": "Grace solved this problem: \"Nikka bought a pencil for ₱1620 and an eraser for ₱2356. How much did Nikka spend in all?\" Grace says the answer is 3976. Is Grace correct?",
-      "correct_answer": {
-        "has_error": false,
-        "correct_value": 3976
-      }
-    },
-    {
-      "seed": 44,
       "formatter": "mcq",
-      "question_text": "Coach Nora had ₱1640 and received ₱3900 more from Nanay. How much money does Coach Nora have in all?",
-      "correct_answer": 5540,
+      "question_text": "One basket has 1086 costumes. Another basket has 2067 costumes. If you put all the costumes together, how many costumes are there?",
+      "correct_answer": 3153,
       "options": [
         {
           "key": "A",
-          "value": 5540,
+          "value": 3153,
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 5539,
+          "value": 3163,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 5550,
+          "value": 3154,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 5541,
+          "value": 3152,
           "is_correct": false
         }
       ]
+    },
+    {
+      "seed": 43,
+      "formatter": "true_false",
+      "question_text": "Nikka bought a pencil for ₱1620 and an eraser for ₱2356. How much did Nikka spend in all? The answer is 3986. True or False?",
+      "correct_answer": false
+    },
+    {
+      "seed": 44,
+      "formatter": "error_detect",
+      "question_text": "Rico solved this problem: \"Coach Nora had ₱1640 and received ₱3900 more from Nanay. How much money does Coach Nora have in all?\" Rico says the answer is 5540. Is Rico correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 5540
+      }
     },
     {
       "seed": 45,
@@ -94,316 +93,210 @@
     },
     {
       "seed": 46,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "There are 9997 seeds in one basket and 2 seeds in another basket. How many seeds are there in all?",
       "correct_answer": 9999,
       "options": [
         {
           "key": "A",
           "value": 9995,
+          "text": "9995",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 9998,
+          "text": "9998",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 9999,
+          "text": "9999",
           "is_correct": true
         },
         {
           "key": "D",
           "value": 10009,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 47,
-      "formatter": "cloze",
-      "question_text": "Chef Demi has ₱9090 in one pocket and ₱310 in another pocket. How much money does Chef Demi have in total?",
-      "correct_answer": 9400,
-      "options": [
-        {
-          "key": "A",
-          "value": 9410,
-          "text": "9410",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 9399,
-          "text": "9399",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 9400,
-          "text": "9400",
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 8780,
-          "text": "8780",
+          "text": "10009",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 500,
-      "formatter": "error_detect",
-      "question_text": "Rico solved this problem: \"Lola Caring collected 3622 cat toy and 5280 water bowl at the veterinary clinic. How many items did Lola Caring collect in total?\" Rico says the answer is 8902. Is Rico correct?",
-      "correct_answer": {
-        "has_error": false,
-        "correct_value": 8902
-      }
+      "formatter": "true_false",
+      "question_text": "Lola Caring collected 3622 cat toy and 5280 water bowl at the veterinary clinic. How many items did Lola Caring collect in total? The answer is 3622. True or False?",
+      "correct_answer": false
     },
     {
       "seed": 501,
-      "formatter": "cloze",
+      "formatter": "mcq",
       "question_text": "Ate Sam had 3583 running shoes. Then Ate Sam got 586 more. How many running shoes does Ate Sam have now?",
       "correct_answer": 4169,
       "options": [
         {
           "key": "A",
           "value": 2997,
-          "text": "2997",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 4169,
-          "text": "4169",
           "is_correct": true
         },
         {
           "key": "C",
           "value": 4168,
-          "text": "4168",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 4179,
-          "text": "4179",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 502,
-      "formatter": "mcq",
-      "question_text": "Kuya Renz has 6338 canvases. A friend has 1914 canvases. If they put all their canvases together, how many canvases do they have in all?",
-      "correct_answer": 8252,
-      "options": [
-        {
-          "key": "A",
-          "value": 8262,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 8251,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 8252,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 4424,
-          "is_correct": false
-        }
-      ]
+      "formatter": "error_detect",
+      "question_text": "Dante solved this problem: \"Kuya Renz has 6338 canvases. A friend has 1914 canvases. If they put all their canvases together, how many canvases do they have in all?\" Dante says the answer is 8252. Is Dante correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 8252
+      }
     },
     {
       "seed": 600,
-      "formatter": "cloze",
-      "question_text": "Lena had 8506 washi tape rolls. Then Lena got 218 more. How many washi tape rolls does Lena have now?",
-      "correct_answer": 8724,
-      "options": [
-        {
-          "key": "A",
-          "value": 8734,
-          "text": "8734",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 8723,
-          "text": "8723",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 8288,
-          "text": "8288",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 8724,
-          "text": "8724",
-          "is_correct": true
-        }
-      ]
+      "formatter": "true_false",
+      "question_text": "Lena had 8506 washi tape rolls. Then Lena got 218 more. How many washi tape rolls does Lena have now? The answer is 8724. True or False?",
+      "correct_answer": true
     },
     {
       "seed": 601,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "Coach Roel had ₱3321 and received ₱6679 more from Nanay. How much money does Coach Roel have in all?",
       "correct_answer": 10000,
       "options": [
         {
           "key": "A",
           "value": 10000,
+          "text": "10000",
           "is_correct": true
         },
         {
           "key": "B",
           "value": 10001,
+          "text": "10001",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 10010,
+          "text": "10010",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 9999,
+          "text": "9999",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 602,
-      "formatter": "cloze",
+      "formatter": "mcq",
       "question_text": "Boboy saved ₱9525 on Monday and ₱360 on Tuesday. How much money did Boboy save altogether?",
       "correct_answer": 9885,
       "options": [
         {
           "key": "A",
           "value": 9884,
-          "text": "9884",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 9885,
-          "text": "9885",
           "is_correct": true
         },
         {
           "key": "C",
           "value": 9165,
-          "text": "9165",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 9895,
-          "text": "9895",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 603,
-      "formatter": "mcq",
-      "question_text": "Ate Joy saved ₱8757 on Monday and ₱61 on Tuesday. How much money did Ate Joy save altogether?",
-      "correct_answer": 8818,
-      "options": [
-        {
-          "key": "A",
-          "value": 8828,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 8817,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 8818,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 8696,
-          "is_correct": false
-        }
-      ]
+      "formatter": "true_false",
+      "question_text": "Ate Joy saved ₱8757 on Monday and ₱61 on Tuesday. How much money did Ate Joy save altogether? The answer is 8818. True or False?",
+      "correct_answer": true
     },
     {
       "seed": 604,
-      "formatter": "true_false",
-      "question_text": "Kuya Renz has ₱2599 in one pocket and ₱1968 in another pocket. How much money does Kuya Renz have in total? The answer is 2599. True or False?",
-      "correct_answer": false
-    },
-    {
-      "seed": 605,
-      "formatter": "cloze",
-      "question_text": "Chef Demi has ₱9286 in one pocket and ₱135 in another pocket. How much money does Chef Demi have in total?",
-      "correct_answer": 9421,
+      "formatter": "mcq",
+      "question_text": "Kuya Renz has ₱2599 in one pocket and ₱1968 in another pocket. How much money does Kuya Renz have in total?",
+      "correct_answer": 4567,
       "options": [
         {
           "key": "A",
-          "value": 9421,
-          "text": "9421",
-          "is_correct": true
+          "value": 631,
+          "is_correct": false
         },
         {
           "key": "B",
-          "value": 9420,
-          "text": "9420",
+          "value": 4566,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 9151,
-          "text": "9151",
+          "value": 4577,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 9431,
-          "text": "9431",
-          "is_correct": false
+          "value": 4567,
+          "is_correct": true
         }
       ]
+    },
+    {
+      "seed": 605,
+      "formatter": "true_false",
+      "question_text": "Chef Demi has ₱9286 in one pocket and ₱135 in another pocket. How much money does Chef Demi have in total? The answer is 9421. True or False?",
+      "correct_answer": true
     }
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "The addition problems themselves are well posed, but on money items the stem asks how much money a character has while the key is a bare numeral, as with the 5540 answer to the Coach Nora item. An amount of money answered without any peso marker is not a complete money answer, and this node is one of the two places where the peso convention is supposed to be practised."
+      "verdict": "PASS",
+      "rationale": "These are worded situations resolved by one addition, and the money strand the competency calls out is genuinely present, with peso amounts in pockets, savings across two days, and money received from Nanay."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "The money clause of the competency is genuinely honoured alongside non-money contexts, and several distinct problem structures occur: putting two collections together, receiving more than one already had, and saving separate amounts on Monday and Tuesday."
+      "rationale": "Several distinct addition situations appear rather than one: combining two containers, adding to a starting amount, totalling two days of saving, and pooling two people's holdings. Both money and non-money versions are keyed."
     },
     "cognitive_capacity": {
       "verdict": "CONCERN",
-      "rationale": "Sentence length is right for the grade, but the noun agreement breaks at seed 500, where the clinic items are counted as 3622 cat toy and 5280 water bowl. Ungrammatical count nouns are a reading obstacle for a third grader parsing a two-quantity problem. Seed 604 is also answerable without arithmetic, since the proposed total repeats one of the two pocket amounts."
+      "rationale": "Language quality gets in the way in places. One stem has a collection of '3622 cat toy and 5280 water bowl' with singular nouns after plural counts, and the realism slips badly where 'Nikka bought a pencil for ₱1620' and where a person owns 3583 running shoes, which forces a child to suspend sense to reach the arithmetic."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "Contexts rotate across money, food and objects, and the response mode rotates across choice, cloze, truth evaluation and the checking-someone-else's-work form used for Grace and Rico."
+      "rationale": "Four shells carry the stories: open answer, four-option choice, a stated answer to accept or reject, and a check on another child's solution, and the truth judgments are genuinely mixed between True and False keys."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Difficulty climbs by carrying demand and by driving the total toward the ceiling, reaching exactly ten thousand on the Coach Roel item, rather than by making the story longer or adding a second operation."
+      "rationale": "Progression runs on addend size and on whether the situation is money or count, both of which are the competency's own dimensions, and the harder samples are the ones approaching four digits in both addends."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Every computed total lands at or under ten thousand, and the money amounts stay in a range a Grade 3 pupil can picture, from a 310 peso pocket up to a 9525 peso saving."
+      "rationale": "The ₱3321 plus ₱6679 item lands on exactly 10 000, the stated limit, and nothing crosses it, while three-digit money amounts give the lower end."
     }
   },
   "overall": "CONCERN"

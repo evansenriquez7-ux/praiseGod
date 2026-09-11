@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g1_na_q4_0",
-  "reviewed_by": "reviewer-b2-tallow-verdigris-8130",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c2-basalt-yarrow-7194",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -44,43 +44,15 @@
     },
     {
       "seed": 43,
-      "formatter": "read_mcq",
-      "question_text": "What fraction does the shaded picture show?",
-      "correct_answer": "B",
-      "options": [
-        {
-          "key": "A",
-          "value": "2/2",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "1/2",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": "2/1",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "3/2",
-          "is_correct": false
-        }
-      ]
+      "formatter": "set_click",
+      "question_text": "Shade 1/2 of the shape.",
+      "correct_answer": "1/2"
     },
     {
       "seed": 44,
-      "formatter": "set_click",
-      "question_text": "Shade 1/4 of the shape.",
-      "correct_answer": "1/4"
-    },
-    {
-      "seed": 45,
       "formatter": "read_mcq",
       "question_text": "What fraction does the shaded picture show?",
-      "correct_answer": "C",
+      "correct_answer": "D",
       "options": [
         {
           "key": "A",
@@ -89,48 +61,32 @@
         },
         {
           "key": "B",
+          "value": "4/4",
+          "is_correct": false
+        },
+        {
+          "key": "C",
           "value": "3/4",
           "is_correct": false
         },
         {
-          "key": "C",
+          "key": "D",
           "value": "1/4",
           "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": "4/4",
-          "is_correct": false
         }
       ]
     },
     {
+      "seed": 45,
+      "formatter": "set_click",
+      "question_text": "Shade 1/4 of the shape.",
+      "correct_answer": "1/4"
+    },
+    {
       "seed": 46,
-      "formatter": "read_mcq",
-      "question_text": "What fraction does the shaded picture show?",
-      "correct_answer": "A",
-      "options": [
-        {
-          "key": "A",
-          "value": "1/2",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": "2/2",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "3/2",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "2/1",
-          "is_correct": false
-        }
-      ]
+      "formatter": "set_click",
+      "question_text": "Shade 1/2 of the shape.",
+      "correct_answer": "1/2"
     },
     {
       "seed": 500,
@@ -176,27 +132,27 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "Both halves of the intended work are here: naming the fraction a shaded region shows, and acting on a shape via 'Shade 1/4 of the shape.', which is the illustrating side of the competency."
+      "rationale": "The two things this competency needs are both there - naming the fraction a shaded region shows, and producing a shaded region to match a named fraction - and both are tied to a single whole rather than to a set of objects."
     },
     "comprehensive_coverage": {
       "verdict": "CONCERN",
-      "rationale": "The split between the two fractions is lopsided -- a half is the subject of six of the eight samples while a quarter is the subject of two, and all three of the higher seeds return to halves, so quarters of a whole are barely exercised."
+      "rationale": "The competency gives 1/2 and 1/4 equal billing, but the sample is lopsided: the instruction 'Shade 1/2 of the shape.' recurs across four separate seeds while a quarter is shaded only once, so the fourth-part case is markedly under-generated."
     },
     "cognitive_capacity": {
       "verdict": "CONCERN",
-      "rationale": "The option lists offer 2/1 and 3/2, notations for quantities greater than one whole that a Grade 1 pupil has no schema for. They cannot be reasoned about, only discarded, which turns the identification into elimination rather than fraction reading."
+      "rationale": "The tasks themselves suit Grade 1, but the option lists put improper forms such as 3/2 and 2/1 in front of pupils who have met only a half and a quarter of one whole; a fraction naming more than a whole is not yet available to them and cannot be reasoned about."
     },
     "variant_comprehensiveness": {
       "verdict": "CONCERN",
-      "rationale": "Six samples repeat one identification stem word for word and the remaining two are shading tasks; no item presents the same idea through a differently partitioned shape description or a real object divided into parts."
+      "rationale": "Only two presentations exist across seven samples, and one of them repeats near-identically; there is no item asking for the half or quarter named in words, and no alternative whole-shape orientation is evident in the stems."
     },
     "competency_alignment": {
       "verdict": "CONCERN",
-      "rationale": "With only two target fractions available, the later seeds simply reproduce the half items already seen at seeds 42 and 43 instead of pressing toward the harder discrimination between a half and a quarter."
+      "rationale": "Because the repeated shading task is the same fraction each time, the axis actually varying between seeds is not fractional difficulty at all, which means this node's ramp does not build toward distinguishing a half from a quarter."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Keys are confined to 1/2 and 1/4, exactly the two fractions the competency names, with no denominator beyond four appearing as an answer."
+      "rationale": "The fractional quantities used in stems and keys are confined to a half and a quarter, exactly the two the competency names, with no third denominator introduced."
     }
   },
   "overall": "CONCERN"

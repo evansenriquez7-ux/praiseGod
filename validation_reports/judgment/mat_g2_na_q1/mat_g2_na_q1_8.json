@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g2_na_q1_8",
-  "reviewed_by": "reviewer-b3-cinder-halyard-2276",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c3-nimbus-sorrel-4825",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -9,7 +9,6 @@
     44,
     45,
     46,
-    47,
     500,
     501,
     502,
@@ -23,46 +22,46 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "true_false",
-      "question_text": "280 is 2 hundreds, 8 tens, and 0 ones. 550 is 5 hundreds, 5 tens, and 0 ones. Add the place values, then find the total: 280 + 550 = 830. True or False?",
-      "correct_answer": true
-    },
-    {
-      "seed": 43,
-      "formatter": "error_detect",
-      "question_text": "Grace solved: \"791 is 7 hundreds, 9 tens, and 1 one. 12 is 1 ten and 2 ones. Add the place values, then find the total: 791 + 12 = ___\". Grace says the missing number is 803. Is Grace correct?",
-      "correct_answer": {
-        "has_error": false,
-        "correct_value": 803
-      }
-    },
-    {
-      "seed": 44,
       "formatter": "mcq",
-      "question_text": "192 is 1 hundred, 9 tens, and 2 ones. 360 is 3 hundreds, 6 tens, and 0 ones. Add the place values, then find the total: what is 192 + 360?",
-      "correct_answer": 552,
+      "question_text": "280 is 2 hundreds, 8 tens, and 0 ones. 550 is 5 hundreds, 5 tens, and 0 ones. Add the place values, then find the total: what is 280 + 550?",
+      "correct_answer": 830,
       "options": [
         {
           "key": "A",
-          "value": 552,
+          "value": 830,
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 551,
+          "value": 840,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 562,
+          "value": 831,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 553,
+          "value": 829,
           "is_correct": false
         }
       ]
+    },
+    {
+      "seed": 43,
+      "formatter": "true_false",
+      "question_text": "791 is 7 hundreds, 9 tens, and 1 one. 12 is 1 ten and 2 ones. Add the place values, then find the total: 791 + 12 = 779. True or False?",
+      "correct_answer": false
+    },
+    {
+      "seed": 44,
+      "formatter": "error_detect",
+      "question_text": "Rico solved: \"192 is 1 hundred, 9 tens, and 2 ones. 360 is 3 hundreds, 6 tens, and 0 ones. Add the place values, then find the total: 192 + 360 = ___\". Rico says the missing number is 552. Is Rico correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 552
+      }
     },
     {
       "seed": 45,
@@ -94,316 +93,210 @@
     },
     {
       "seed": 46,
-      "formatter": "mcq",
-      "question_text": "54 is 5 tens and 4 ones. 481 is 4 hundreds, 8 tens, and 1 one. Add the place values, then find the total: what is 54 + 481?",
+      "formatter": "cloze",
+      "question_text": "54 is 5 tens and 4 ones. 481 is 4 hundreds, 8 tens, and 1 one. Add the place values, then find the total: 54 + 481 = ___",
       "correct_answer": 535,
       "options": [
         {
           "key": "A",
           "value": 536,
+          "text": "536",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 535,
+          "text": "535",
           "is_correct": true
         },
         {
           "key": "C",
           "value": 545,
+          "text": "545",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 534,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 47,
-      "formatter": "cloze",
-      "question_text": "530 is 5 hundreds, 3 tens, and 0 ones. 120 is 1 hundred, 2 tens, and 0 ones. Add the place values, then find the total: 530 + 120 = ___",
-      "correct_answer": 650,
-      "options": [
-        {
-          "key": "A",
-          "value": 649,
-          "text": "649",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 410,
-          "text": "410",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 650,
-          "text": "650",
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 660,
-          "text": "660",
+          "text": "534",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 500,
-      "formatter": "error_detect",
-      "question_text": "Rico solved: \"958 is 9 hundreds, 5 tens, and 8 ones. 35 is 3 tens and 5 ones. Add the place values, then find the total: 958 + 35 = ___\". Rico says the missing number is 993. Is Rico correct?",
-      "correct_answer": {
-        "has_error": false,
-        "correct_value": 993
-      }
+      "formatter": "true_false",
+      "question_text": "958 is 9 hundreds, 5 tens, and 8 ones. 35 is 3 tens and 5 ones. Add the place values, then find the total: 958 + 35 = 994. True or False?",
+      "correct_answer": false
     },
     {
       "seed": 501,
-      "formatter": "cloze",
-      "question_text": "250 is 2 hundreds, 5 tens, and 0 ones. 681 is 6 hundreds, 8 tens, and 1 one. Add the place values, then find the total: 250 + 681 = ___",
+      "formatter": "mcq",
+      "question_text": "250 is 2 hundreds, 5 tens, and 0 ones. 681 is 6 hundreds, 8 tens, and 1 one. Add the place values, then find the total: what is 250 + 681?",
       "correct_answer": 931,
       "options": [
         {
           "key": "A",
           "value": 930,
-          "text": "930",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 941,
-          "text": "941",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 931,
-          "text": "931",
           "is_correct": true
         },
         {
           "key": "D",
           "value": 932,
-          "text": "932",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 502,
-      "formatter": "mcq",
-      "question_text": "231 is 2 hundreds, 3 tens, and 1 one. 723 is 7 hundreds, 2 tens, and 3 ones. Add the place values, then find the total: what is 231 + 723?",
-      "correct_answer": 954,
-      "options": [
-        {
-          "key": "A",
-          "value": 955,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 954,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 964,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 953,
-          "is_correct": false
-        }
-      ]
+      "formatter": "error_detect",
+      "question_text": "Dante solved: \"231 is 2 hundreds, 3 tens, and 1 one. 723 is 7 hundreds, 2 tens, and 3 ones. Add the place values, then find the total: 231 + 723 = ___\". Dante says the missing number is 954. Is Dante correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 954
+      }
     },
     {
       "seed": 600,
-      "formatter": "cloze",
-      "question_text": "31 is 3 tens and 1 one. 859 is 8 hundreds, 5 tens, and 9 ones. Add the place values, then find the total: 31 + 859 = ___",
-      "correct_answer": 890,
-      "options": [
-        {
-          "key": "A",
-          "value": 891,
-          "text": "891",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 890,
-          "text": "890",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 889,
-          "text": "889",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 900,
-          "text": "900",
-          "is_correct": false
-        }
-      ]
+      "formatter": "true_false",
+      "question_text": "31 is 3 tens and 1 one. 859 is 8 hundreds, 5 tens, and 9 ones. Add the place values, then find the total: 31 + 859 = 890. True or False?",
+      "correct_answer": true
     },
     {
       "seed": 601,
-      "formatter": "mcq",
-      "question_text": "208 is 2 hundreds, 0 tens, and 8 ones. 772 is 7 hundreds, 7 tens, and 2 ones. Add the place values, then find the total: what is 208 + 772?",
+      "formatter": "cloze",
+      "question_text": "208 is 2 hundreds, 0 tens, and 8 ones. 772 is 7 hundreds, 7 tens, and 2 ones. Add the place values, then find the total: 208 + 772 = ___",
       "correct_answer": 980,
       "options": [
         {
           "key": "A",
           "value": 979,
+          "text": "979",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 981,
+          "text": "981",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 990,
+          "text": "990",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 980,
+          "text": "980",
           "is_correct": true
         }
       ]
     },
     {
       "seed": 602,
-      "formatter": "cloze",
-      "question_text": "360 is 3 hundreds, 6 tens, and 0 ones. 103 is 1 hundred, 0 tens, and 3 ones. Add the place values, then find the total: 360 + 103 = ___",
+      "formatter": "mcq",
+      "question_text": "360 is 3 hundreds, 6 tens, and 0 ones. 103 is 1 hundred, 0 tens, and 3 ones. Add the place values, then find the total: what is 360 + 103?",
       "correct_answer": 463,
       "options": [
         {
           "key": "A",
           "value": 257,
-          "text": "257",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 462,
-          "text": "462",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 473,
-          "text": "473",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 463,
-          "text": "463",
           "is_correct": true
         }
       ]
     },
     {
       "seed": 603,
-      "formatter": "mcq",
-      "question_text": "240 is 2 hundreds, 4 tens, and 0 ones. 670 is 6 hundreds, 7 tens, and 0 ones. Add the place values, then find the total: what is 240 + 670?",
-      "correct_answer": 910,
-      "options": [
-        {
-          "key": "A",
-          "value": 911,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 920,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 909,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 910,
-          "is_correct": true
-        }
-      ]
+      "formatter": "true_false",
+      "question_text": "240 is 2 hundreds, 4 tens, and 0 ones. 670 is 6 hundreds, 7 tens, and 0 ones. Add the place values, then find the total: 240 + 670 = 910. True or False?",
+      "correct_answer": true
     },
     {
       "seed": 604,
-      "formatter": "true_false",
-      "question_text": "156 is 1 hundred, 5 tens, and 6 ones. 844 is 8 hundreds, 4 tens, and 4 ones. Add the place values, then find the total: 156 + 844 = 1001. True or False?",
-      "correct_answer": false
-    },
-    {
-      "seed": 605,
-      "formatter": "cloze",
-      "question_text": "647 is 6 hundreds, 4 tens, and 7 ones. 175 is 1 hundred, 7 tens, and 5 ones. Add the place values, then find the total: 647 + 175 = ___",
-      "correct_answer": 822,
+      "formatter": "mcq",
+      "question_text": "156 is 1 hundred, 5 tens, and 6 ones. 844 is 8 hundreds, 4 tens, and 4 ones. Add the place values, then find the total: what is 156 + 844?",
+      "correct_answer": 1000,
       "options": [
         {
           "key": "A",
-          "value": 472,
-          "text": "472",
+          "value": 1001,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 822,
-          "text": "822",
-          "is_correct": true
+          "value": 1010,
+          "is_correct": false
         },
         {
           "key": "C",
-          "value": 821,
-          "text": "821",
+          "value": 999,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 832,
-          "text": "832",
-          "is_correct": false
+          "value": 1000,
+          "is_correct": true
         }
       ]
+    },
+    {
+      "seed": 605,
+      "formatter": "true_false",
+      "question_text": "647 is 6 hundreds, 4 tens, and 7 ones. 175 is 1 hundred, 7 tens, and 5 ones. Add the place values, then find the total: 647 + 175 = 822. True or False?",
+      "correct_answer": true
     }
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "CONCERN",
-      "rationale": "Every stem recites both addends broken into hundreds, tens and ones before asking for the total, and I verified each key computes correctly. The difficulty is that the decomposition is done for the learner: the instruction to add the place values, then find the total can be ignored entirely and the numerals added directly, so the expanded-form method is never actually required or produced."
+      "rationale": "The expanded decomposition is handed to the pupil in every single stem; no item asks them to produce it, or to express the answer in expanded form. Once the hundreds, tens and ones are written out for them, what remains is ordinary column addition, so the expanded-form method is demonstrated rather than practised."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "Pairs needing no carry and pairs needing a carry in more than one column are both generated, and three-digit-plus-two-digit pairs appear alongside three-digit-plus-three-digit ones. The expanded phrasing also handles singular and plural units correctly, which matters when an addend contributes exactly one one."
+      "rationale": "Pairings vary usefully across the set: two-digit added to three-digit as well as three-digit to three-digit, cases that carry such as 647 and 175, cases that do not such as 240 and 670, and one pair landing exactly on a thousand."
     },
     "cognitive_capacity": {
       "verdict": "CONCERN",
-      "rationale": "The stems are long by Quarter 1 standards, since a single item can recite six place-value phrases before the question arrives. An item stating that 156 is 1 hundred, 5 tens, and 6 ones and then doing the same for the second addend puts a substantial reading load in front of a computation a second grader would otherwise handle comfortably."
+      "rationale": "The reading load is heavy for Quarter 1 of Grade 2. Each stem spells out two full decompositions, issues an instruction to add the place values and then find the total, and only then poses the question, which is a long text for a pupil still consolidating three-digit numerals."
     },
     "variant_comprehensiveness": {
       "verdict": "CONCERN",
-      "rationale": "Four response types appear, but every one of them is poured into the same recitation frame, so the surface of the item never changes. There is no problem situation, no vertical arrangement, and crucially no item asking for the sum expressed back in expanded form, which is the orientation this competency most obviously supports."
+      "rationale": "Four formatters are present but every one of them carries the same two-sentence decomposition preamble and the same instruction before the question, so the presentation never genuinely changes, only the answer mechanism does."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "The axis being varied is whether and where regrouping occurs, together with whether both addends carry a hundreds part, and both of those are the genuine difficulty drivers for expanded-form addition. The progression does not drift onto an unrelated dimension."
+      "rationale": "The progression moves between carrying and non-carrying pairs and pushes the total toward the ceiling, both of which are the genuine difficulty sources for addition by place value."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Sums run from the mid-four-hundreds up to exactly one thousand and none exceeds the stated bound. The pair summing to 1000 is used as the basis of a false statement rather than as a produced total, so the ceiling is tested at its edge without being breached."
+      "rationale": "No total exceeds a thousand and one pair reaches it exactly, so the stated ceiling is both respected and actually tested."
     }
   },
   "overall": "CONCERN"

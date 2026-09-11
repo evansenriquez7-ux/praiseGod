@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g1_dp_q3_2",
-  "reviewed_by": "reviewer-b1-quartz-mallow-4412",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c1-lantern-fescue-3061",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -50,12 +50,12 @@
       "options": [
         {
           "key": "A",
-          "value": 2,
+          "value": 3,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 3,
+          "value": 2,
           "is_correct": false
         },
         {
@@ -134,17 +134,17 @@
       "options": [
         {
           "key": "A",
-          "value": 7,
-          "is_correct": false
-        },
-        {
-          "key": "B",
           "value": 6,
           "is_correct": false
         },
         {
-          "key": "C",
+          "key": "B",
           "value": 4,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 1,
           "is_correct": false
         },
         {
@@ -242,27 +242,27 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "CONCERN",
-      "rationale": "Reading a single row and finding a difference are squarely interpretive. But the summing items are loosely phrased: 'What is the total number of colors shown?' invites the answer four - the number of categories - rather than the summed count, so stem and key can pull apart."
+      "rationale": "Reading single rows and computing differences is squarely interpretive, but two stems ask for the total number of sports shown and the total number of colors shown while the keys (13 and 10) are sums of the tallies, not counts of the categories named. A pupil who answers the question as literally worded - how many sports - is marked wrong."
     },
     "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "Three distinct interpretive moves are all generated: retrieving one category's count, comparing two categories by difference, and combining the whole graph into a total."
+      "verdict": "CONCERN",
+      "rationale": "Three interpretive moves appear (read one row, compare two rows, total all rows) but the most basic pictograph question of all is missing: no sample asks which category has the most or the fewest, and none asks a yes/no comparison. That omission leaves the easiest and most common interpretation demand unsampled."
     },
     "cognitive_capacity": {
-      "verdict": "CONCERN",
-      "rationale": "Keys of 10, 11 and 13 require a first grader to add four category counts in a single step. Quarter 3 practice is built on one-step comparison and retrieval; four-addend summation from a picture is a heavier load than the competency implies."
+      "verdict": "PASS",
+      "rationale": "Counting symbols, taking a difference of at most 4, and summing four small rows to a total under 16 are within reach at Quarter 3 of Grade 1, and each stem is a single short question after Look at the picture graph."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "Question type rotates across count, difference and total, and the underlying data sets move between animals, school grades, sports and colours, which is reasonable spread for items that must lean on a rendered graph."
+      "rationale": "Although every item is a four-option read question - correct, since the graph must be on screen - the underlying task genuinely rotates among row-reading, difference-finding and totalling, and the subject matter moves across fruit, books by day, animals, flowers, grade levels, sports and colours."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Difficulty rises from reading one row to combining every row, a progression that belongs to graph interpretation itself rather than to some imported arithmetic ladder."
+      "rationale": "The progression from reading one row, to comparing two, to summing the whole graph is a real ladder of interpretation difficulty built on this competency rather than on arithmetic dressing."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Individual category counts stay below ten and the largest total is 13, inside what Grade 1 handles by Quarter 3."
+      "rationale": "Row values stay small enough to count symbol by symbol and the largest total shown is 15, which keeps the summing items inside Grade 1 addition even though the competency itself states no ceiling."
     }
   },
   "overall": "CONCERN"

@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g2_na_q1_2",
-  "reviewed_by": "reviewer-b3-cinder-halyard-2276",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c3-nimbus-sorrel-4825",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -56,31 +56,9 @@
     },
     {
       "seed": 45,
-      "formatter": "read_mcq",
-      "question_text": "What number is marked on the number line?",
-      "correct_answer": "D",
-      "options": [
-        {
-          "key": "A",
-          "value": 606,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 604,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 607,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 605,
-          "is_correct": true
-        }
-      ]
+      "formatter": "set_fill_in_blank",
+      "question_text": "Move the dot to show 605 on the number line.",
+      "correct_answer": 605
     },
     {
       "seed": 46,
@@ -153,28 +131,28 @@
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "Both verbs are discharged. Recognising is covered by items that read a value off blocks or off a marked line, and representing is covered by items instructing the learner to build a number with base-10 blocks or to move the dot to a given position, so the learner produces the model rather than only interpreting one."
+      "verdict": "CONCERN",
+      "rationale": "Both directions are attempted, building a model for a stated numeral and naming the numeral a model shows, but one options list places 20 among three three-digit choices, so that item can be narrowed without looking at the blocks at all."
     },
     "comprehensive_coverage": {
       "verdict": "CONCERN",
-      "rationale": "The competency promises a variety of concrete and pictorial models, yet only two ever appear: base-10 blocks and the number line. Place-value charts, bundled objects, money and expanded notation are all absent, so a variety amounts to a pair, and each of the eight samples is one of four near-identical stems."
+      "rationale": "The wording promises a variety of concrete and pictorial models, and exactly two ever appear: base-10 blocks and a number line. No place-value chart, bundled objects, money or expanded notation is generated."
     },
     "cognitive_capacity": {
-      "verdict": "CONCERN",
-      "rationale": "Several number-line items ask the learner to choose between four consecutive or near-consecutive three-digit values, such as distinguishing a point at 710 from 709, 711 and 712. Resolving single units at that magnitude on a drawn line is a perceptual task rather than a number-sense one, and it is an unfair demand at Grade 2."
+      "verdict": "PASS",
+      "rationale": "Three-digit values represented on blocks or a marked line, with one instruction per item, are the right demand for the opening quarter of Grade 2."
     },
     "variant_comprehensiveness": {
       "verdict": "CONCERN",
-      "rationale": "Only two response types occur and each is locked to one model, with reading always done on blocks or a line and producing always done by building or dragging. No item bridges the models by asking which representation matches a given numeral, and no numeral-to-numeral or word-form orientation appears at all."
+      "rationale": "Five of the eight samples are number-line items, and two of them repeat word for word the question asking what number is marked on the number line. The blocks presentation carries the remaining three."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "What changes between seeds is which representation the learner must move between and in which direction, which is exactly what this competency is about. The pairing of a build-the-number task with a read-the-number task on the same model is a coherent way to build representational fluency."
+      "rationale": "The numerals chosen deliberately include hard representation cases such as 203 with an empty tens column and 470 with an empty ones column, which is the right axis for a representation competency."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Values run from just over two hundred up to the low eight-hundreds, all three-digit and all under the stated thousand. That range fits base-10 block work, where hundreds flats remain countable, and matches the Quarter 1 number range."
+      "rationale": "All eight values are three-digit numerals between 203 and 821, sitting inside the thousand ceiling this competency sets."
     }
   },
   "overall": "CONCERN"

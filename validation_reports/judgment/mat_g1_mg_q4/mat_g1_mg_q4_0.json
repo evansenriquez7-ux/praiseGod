@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g1_mg_q4_0",
-  "reviewed_by": "reviewer-b1-quartz-mallow-4412",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c1-lantern-fescue-3061",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -271,27 +271,27 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "Each positional item states an initial facing direction, applies one named turn, and asks for the resulting heading; the keys check out throughout, including down after a half turn from up and left after a clockwise quarter turn from down."
+      "rationale": "Each item supplies an initial facing direction, applies a named turn, and asks for the resulting direction, which is exactly the structure the competency describes; every key I checked is correct, including a right-facing arrow given a quarter turn counter-clockwise ending up facing up."
     },
     "comprehensive_coverage": {
       "verdict": "CONCERN",
-      "rationale": "Counter-clockwise is named in the competency yet occurs in exactly one of nine renders, and that single case starts from RIGHT. Half turns get four renders and clockwise quarters three, so the direction sub-case is barely built at all."
+      "rationale": "Half turns and quarter turns clockwise are each sampled several times, but counter-clockwise appears in exactly one of the nine items. A competency that names two rotation directions explicitly should not leave one of them represented by a single seed, since a pupil practising here will almost never meet the harder direction."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "One turn, one object, four direction words, no chained rotations and no degree language - appropriate for Quarter 4 of Grade 1."
+      "rationale": "The stems are two short sentences, the four answers are the plain words up, down, left and right, and the supporting item defining a turn as the direction clock hands move gives the vocabulary an anchor suitable for Quarter 4 of Grade 1."
     },
     "variant_comprehensiveness": {
       "verdict": "CONCERN",
-      "rationale": "The object turned is an arrow in every positional render; no person, chair or toy is ever rotated. The one departure asks 'Which direction is clockwise?' and offers 'straight up' as a candidate, which is not a rotational sense and so is dismissable without understanding."
+      "rationale": "Apart from the one definition question, every sample is the same arrow sentence with a different starting direction. The competency speaks of objects being moved, which invites a chair, a pupil or a toy turning in place, and none of that context appears - nor does any item that runs the reasoning backwards by giving the result and asking for the turn."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "The seeds do move the starting heading across up, down, left and right, which is the variation this particular competency needs in order to stop being a memorised single case."
+      "rationale": "What changes between seeds is the starting orientation and the size of turn, both of which are the substance of this competency, and all four cardinal starts are used rather than only the easy upward one."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Only half and quarter turns are generated, exactly the two magnitudes the competency names; nothing finer or larger appears."
+      "rationale": "Turns are restricted to the half and quarter the competency names, with no eighth turns or multi-turn chains, so the generated range matches the stated bound exactly."
     }
   },
   "overall": "CONCERN"

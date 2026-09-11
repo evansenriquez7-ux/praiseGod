@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g2_mg_q4_0",
-  "reviewed_by": "reviewer-b3-cinder-halyard-2276",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c3-nimbus-sorrel-4825",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -416,28 +416,28 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "CONCERN",
-      "rationale": "Duration in days and duration in weeks are both computed correctly across every seed I checked. What is missing is the event: the competency asks for the duration of an event, yet every stem is a bare date span with no occasion attached, so the learner never connects a span to something happening."
+      "rationale": "The wording is about the duration of an event, yet no event is ever named. Each item gives two bare dates and asks how many days or weeks lie between them inclusive, so nothing is being described as having a duration."
     },
     "comprehensive_coverage": {
       "verdict": "CONCERN",
-      "rationale": "Day counts and week counts each appear, but every week question resolves to an exact multiple of seven days, so the combined case that the wording days and/or weeks invites, a span expressed as some weeks plus some leftover days, is never generated. Nor does any span cross a month boundary."
+      "rationale": "Every weeks item spans an exact multiple of seven days, seven, fourteen or twenty-one, so a duration expressed as weeks together with leftover days never appears. The and part of the days and/or weeks wording is unproduced."
     },
     "cognitive_capacity": {
-      "verdict": "CONCERN",
-      "rationale": "Every single stem hinges on the word inclusive. That is a precise technical qualifier that carries the whole arithmetic distinction between subtracting dates and counting them, and it is heavy vocabulary to place in front of a Grade 2 reader in all fourteen samples with no plainer alternative phrasing offered anywhere."
+      "verdict": "PASS",
+      "rationale": "Counting inclusive days inside one month, with all spans kept within a single calendar page and never crossing a month boundary, is a fair demand for the fourth quarter of Grade 2."
     },
     "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "All fourteen seeds use one response type and only two sentence frames, one counting days and one counting weeks. There is no reverse orientation, such as naming a start date and a duration and asking for the finish date, and no free-response form. Variation is limited to swapping the month name and the two dates."
+      "verdict": "FAIL",
+      "rationale": "All fourteen samples share one formatter and one sentence, opening by directing the pupil to look at the month's calendar and closing with the same inclusive phrasing. Only the month, the two dates, and the choice of the word days or weeks ever change."
     },
     "competency_alignment": {
-      "verdict": "CONCERN",
-      "rationale": "The calendar is nominally central but functionally optional: knowing that 24 to 27 inclusive spans four days, or that a fourteen-day stretch is two weeks, needs only arithmetic on the printed numerals. Because the varied axis is which month is displayed, the progression never makes the learner read the calendar structure itself."
+      "verdict": "PASS",
+      "rationale": "Widening the date span and switching the requested unit from days to weeks are both legitimate ways to press on calendar reading, so the difficulty axis does belong to this competency even though the presentation does not vary."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Spans range from three days up to three weeks and all stay within one month, which is the right size for describing an event's duration at Grade 2. Week counts never exceed four, so the division involved remains within reach."
+      "rationale": "No span exceeds twenty-one days and every one lies inside a single month of 2025, which keeps the answers to small whole numbers of days or weeks as the competency implies."
     }
   },
-  "overall": "CONCERN"
+  "overall": "FAIL"
 }

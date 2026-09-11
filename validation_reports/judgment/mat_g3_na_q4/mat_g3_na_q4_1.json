@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g3_na_q4_1",
-  "reviewed_by": "reviewer-r2-amber-trellis-1903",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c6-mistral-comfrey-8916",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -9,38 +9,37 @@
     44,
     45,
     46,
-    50,
-    51,
-    55,
-    85,
+    48,
+    68,
     500,
     501,
     502,
     600,
     601,
     602,
-    603
+    603,
+    604
   ],
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "mcq",
-      "question_text": "What is 48 ÷ 6?",
-      "correct_answer": 8,
+      "formatter": "read_mcq",
+      "question_text": "This array has 48 squares split into 6 equal rows. How many squares are in each row?",
+      "correct_answer": "D",
       "options": [
         {
           "key": "A",
-          "value": 9,
+          "value": 28,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 42,
+          "value": 5,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 6,
+          "value": 10,
           "is_correct": false
         },
         {
@@ -52,217 +51,98 @@
     },
     {
       "seed": 43,
-      "formatter": "mcq",
-      "question_text": "What is 18 ÷ 6?",
+      "formatter": "cloze",
+      "question_text": "18 ÷ 6 = ___",
       "correct_answer": 3,
       "options": [
         {
           "key": "A",
           "value": 6,
+          "text": "6",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 12,
+          "text": "12",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 3,
+          "text": "3",
           "is_correct": true
         },
         {
           "key": "D",
           "value": 4,
+          "text": "4",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 44,
-      "formatter": "cloze",
-      "question_text": "72 ÷ 8 = ___",
+      "formatter": "mcq",
+      "question_text": "What is 72 ÷ 8?",
       "correct_answer": 9,
       "options": [
         {
           "key": "A",
           "value": 8,
-          "text": "8",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 64,
-          "text": "64",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 9,
-          "text": "9",
           "is_correct": true
         },
         {
           "key": "D",
           "value": 10,
-          "text": "10",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 45,
-      "formatter": "cloze",
-      "question_text": "63 ÷ 7 = ___",
-      "correct_answer": 9,
-      "options": [
-        {
-          "key": "A",
-          "value": 9,
-          "text": "9",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 56,
-          "text": "56",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 7,
-          "text": "7",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 10,
-          "text": "10",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 46,
-      "formatter": "mcq",
-      "question_text": "What is 30 ÷ 6?",
-      "correct_answer": 5,
-      "options": [
-        {
-          "key": "A",
-          "value": 24,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 6,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 5,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 4,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 50,
-      "formatter": "read_mcq",
-      "question_text": "This array has 45 squares split into 9 equal rows. How many squares are in each row?",
-      "correct_answer": "C",
-      "options": [
-        {
-          "key": "A",
-          "value": 28,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 3,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 5,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 8,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 51,
       "formatter": "error_detect",
-      "question_text": "Ana solved: \"49 ÷ 7 = ___\". Ana says the missing number is 42. Is Ana correct?",
+      "question_text": "Pia solved: \"63 ÷ 7 = ___\". Pia says the missing number is 9. Is Pia correct?",
       "correct_answer": {
-        "has_error": true,
-        "correct_value": 7
+        "has_error": false,
+        "correct_value": 9
       }
     },
     {
-      "seed": 55,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Shade 36 squares into 6 equal rows. How many squares are in each row?",
-      "correct_answer": 6
+      "seed": 46,
+      "formatter": "error_detect",
+      "question_text": "Dante solved: \"30 ÷ 6 = ___\". Dante says the missing number is 4. Is Dante correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 5
+      }
     },
     {
-      "seed": 85,
+      "seed": 48,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Shade 81 squares into 9 equal rows. How many squares are in each row?",
+      "correct_answer": 9
+    },
+    {
+      "seed": 68,
       "formatter": "true_false",
-      "question_text": "28 ÷ 7 = 4. True or False?",
+      "question_text": "27 ÷ 9 = 3. True or False?",
       "correct_answer": true
     },
     {
       "seed": 500,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Shade 72 squares into 9 equal rows. How many squares are in each row?",
-      "correct_answer": 8
-    },
-    {
-      "seed": 501,
-      "formatter": "true_false",
-      "question_text": "81 ÷ 9 = 9. True or False?",
-      "correct_answer": true
-    },
-    {
-      "seed": 502,
       "formatter": "mcq",
-      "question_text": "What is 27 ÷ 9?",
-      "correct_answer": 3,
-      "options": [
-        {
-          "key": "A",
-          "value": 18,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 4,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 9,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 3,
-          "is_correct": true
-        }
-      ]
-    },
-    {
-      "seed": 600,
-      "formatter": "mcq",
-      "question_text": "What is 56 ÷ 7?",
+      "question_text": "What is 72 ÷ 9?",
       "correct_answer": 8,
       "options": [
         {
@@ -282,7 +162,51 @@
         },
         {
           "key": "D",
+          "value": 63,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 501,
+      "formatter": "true_false",
+      "question_text": "81 ÷ 9 = 72. True or False?",
+      "correct_answer": false
+    },
+    {
+      "seed": 502,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Shade 27 squares into 9 equal rows. How many squares are in each row?",
+      "correct_answer": 3
+    },
+    {
+      "seed": 600,
+      "formatter": "cloze",
+      "question_text": "56 ÷ 7 = ___",
+      "correct_answer": 8,
+      "options": [
+        {
+          "key": "A",
+          "value": 8,
+          "text": "8",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 9,
+          "text": "9",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 7,
+          "text": "7",
+          "is_correct": false
+        },
+        {
+          "key": "D",
           "value": 49,
+          "text": "49",
           "is_correct": false
         }
       ]
@@ -321,90 +245,70 @@
     },
     {
       "seed": 602,
-      "formatter": "mcq",
-      "question_text": "What is 64 ÷ 8?",
-      "correct_answer": 8,
-      "options": [
-        {
-          "key": "A",
-          "value": 7,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 56,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 9,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 8,
-          "is_correct": true
-        }
-      ]
+      "formatter": "set_fill_in_blank",
+      "question_text": "Shade 64 squares into 8 equal rows. How many squares are in each row?",
+      "correct_answer": 8
     },
     {
       "seed": 603,
-      "formatter": "cloze",
-      "question_text": "14 ÷ 7 = ___",
+      "formatter": "mcq",
+      "question_text": "What is 14 ÷ 7?",
       "correct_answer": 2,
       "options": [
         {
           "key": "A",
           "value": 2,
-          "text": "2",
           "is_correct": true
         },
         {
           "key": "B",
           "value": 1,
-          "text": "1",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 3,
-          "text": "3",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 7,
-          "text": "7",
           "is_correct": false
         }
       ]
+    },
+    {
+      "seed": 604,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Shade 30 squares into 6 equal rows. How many squares are in each row?",
+      "correct_answer": 5
     }
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "The set is squarely division by six, seven, eight and nine, and the keys track their stems, including the error-detect that rejects Ana's 42 for 49 ÷ 7 and supplies 7 instead."
+      "rationale": "Every quotient asked for comes from a fact in the tables the wording names, with six, seven, eight and nine each appearing as the divisor, and the dividends are genuine products from those tables rather than arbitrary numbers."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "Each named table is actually divided by: 48 ÷ 6 and 30 ÷ 6, 63 ÷ 7 and 14 ÷ 7, 72 ÷ 8 and 64 ÷ 8, and 81 ÷ 9 and 27 ÷ 9. Quotients span the full one-to-nine range rather than clustering at the easy end."
+      "rationale": "All four divisors are exercised and across a spread of the table, from the low end at fourteen divided by seven up to eighty-one divided by nine, so no table is represented by a single easy fact."
     },
     "cognitive_capacity": {
-      "verdict": "CONCERN",
-      "rationale": "The array reading states 45 squares in 9 equal rows yet lists 28 among the choices, a figure that no row of such an array could hold. Planting a physically impossible quantity next to a picture that pupils are being taught to trust works against the model the item uses."
+      "verdict": "PASS",
+      "rationale": "Quotients are single digits, the array items give a concrete fallback, and the sharing sentence about bowls among friends stays to one clause of setup, all matching a fourth-quarter Grade 3 pupil."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "Quotients are asked for as a question, as an equation to complete, as a statement to judge, as a peer's error to catch, as an array to read, as squares to shade, and once as a sharing story about water bowls among friends."
+      "rationale": "The set moves between a rectangular array described as 48 squares split into 6 equal rows, a shading task, bare number sentences, a sharing story, truth judgments and checks on another child's work. The error checks are keyed both ways, including one where the classmate is wrong."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "The difficulty that grows is the unfamiliarity of the fact, from 18 ÷ 6 through to 72 ÷ 9 and 81 ÷ 9, and no item drifts toward remainders or multi-digit dividends that belong to later nodes in this quarter."
+      "rationale": "Harder and easier samples differ by which table fact is required and whether a model is supplied, both of which build division fluency rather than varying some incidental feature."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "The largest dividend, 81, is exactly the top entry of the nine table, and every division is exact, which matches a node scoped to table facts rather than to general division."
+      "rationale": "Dividends run from fourteen to eighty-one, exactly the range spanned by the six, seven, eight and nine tables, with nothing reaching beyond them."
     }
   },
-  "overall": "CONCERN"
+  "overall": "PASS"
 }

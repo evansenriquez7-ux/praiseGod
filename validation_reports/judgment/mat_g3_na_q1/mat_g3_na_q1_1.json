@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g3_na_q1_1",
-  "reviewed_by": "reviewer-b5-marlin-obsidian-3358",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c5-tarragon-flint-2549",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -16,66 +16,66 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "cloze",
-      "question_text": "Write 1410 in words.",
-      "correct_answer": "one thousand four hundred ten",
+      "formatter": "true_false",
+      "question_text": "The number 1410 is written in words as 'one hundred forty-one'. True or False?",
+      "correct_answer": false
+    },
+    {
+      "seed": 43,
+      "formatter": "mcq",
+      "question_text": "Write 5688 in words.",
+      "correct_answer": "five thousand six hundred eighty-eight",
       "options": [
         {
           "key": "A",
-          "value": "one thousand four hundred ten",
-          "text": "one thousand four hundred ten",
+          "value": "five thousand six hundred eighty-eight",
           "is_correct": true
         },
         {
           "key": "B",
-          "value": "one thousand four hundred eleven",
-          "text": "one thousand four hundred eleven",
+          "value": "five thousand six hundred eighty-nine",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "one thousand four hundred",
-          "text": "one thousand four hundred",
+          "value": "eight thousand eight hundred sixty-five",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "one hundred forty-one",
-          "text": "one hundred forty-one",
+          "value": "five thousand six hundred seventy-eight",
           "is_correct": false
         }
       ]
     },
     {
-      "seed": 43,
-      "formatter": "true_false",
-      "question_text": "The number 5688 is written in words as 'five thousand six hundred eighty-nine'. True or False?",
-      "correct_answer": false
-    },
-    {
       "seed": 44,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "Write the number: nine thousand five hundred twenty-one.",
       "correct_answer": 9521,
       "options": [
         {
           "key": "A",
           "value": 1259,
+          "text": "1259",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 9522,
+          "text": "9522",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 9511,
+          "text": "9511",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 9521,
+          "text": "9521",
           "is_correct": true
         }
       ]
@@ -110,28 +110,32 @@
     },
     {
       "seed": 46,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "Write 7554 in words.",
       "correct_answer": "seven thousand five hundred fifty-four",
       "options": [
         {
           "key": "A",
           "value": "four thousand five hundred fifty-seven",
+          "text": "four thousand five hundred fifty-seven",
           "is_correct": false
         },
         {
           "key": "B",
           "value": "seven thousand five hundred fifty-four",
+          "text": "seven thousand five hundred fifty-four",
           "is_correct": true
         },
         {
           "key": "C",
           "value": "seven thousand five hundred fifty-five",
+          "text": "seven thousand five hundred fifty-five",
           "is_correct": false
         },
         {
           "key": "D",
           "value": "seven thousand five hundred forty-four",
+          "text": "seven thousand five hundred forty-four",
           "is_correct": false
         }
       ]
@@ -144,60 +148,38 @@
     },
     {
       "seed": 501,
-      "formatter": "cloze",
-      "question_text": "Write the number: six thousand seven hundred ninety-five.",
-      "correct_answer": 6795,
-      "options": [
-        {
-          "key": "A",
-          "value": 6796,
-          "text": "6796",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 6795,
-          "text": "6795",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 6785,
-          "text": "6785",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 5976,
-          "text": "5976",
-          "is_correct": false
-        }
-      ]
+      "formatter": "true_false",
+      "question_text": "The number written as 'six thousand seven hundred ninety-five' is 5976. True or False?",
+      "correct_answer": false
     },
     {
       "seed": 502,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "Write the number: three thousand seven hundred sixty-one.",
       "correct_answer": 3761,
       "options": [
         {
           "key": "A",
           "value": 1673,
+          "text": "1673",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 3761,
+          "text": "3761",
           "is_correct": true
         },
         {
           "key": "C",
           "value": 3762,
+          "text": "3762",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 3751,
+          "text": "3751",
           "is_correct": false
         }
       ]
@@ -205,28 +187,28 @@
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "Both directions the competency names are produced and every word form is correctly written, including the hyphenation in seven thousand five hundred fifty-four and the correct omission of a hyphen in one thousand four hundred ten."
+      "verdict": "CONCERN",
+      "rationale": "Reading and writing are both covered, but the true/false branch is degenerate: all three such items, the 1410 claim, the nine thousand six hundred thirty claim and the six thousand seven hundred ninety-five claim, have key False. A pupil who answers False reflexively scores every one of them without reading the number words."
     },
     "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "No sampled number carries a zero in the hundreds or tens place, which is precisely where writing number words breaks down for a Grade 3 pupil, and no sample reaches 10 000 itself or drops below 1000. The set exercises only the uniformly four-digit middle of the stated range."
+      "verdict": "PASS",
+      "rationale": "Numeral to word and word to numeral both occur several times, and the word forms exercise the awkward parts of the naming system, including the hyphenated tens such as eighty-eight and fifty-four and a value ending in a zero ones digit."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The compound forms required, eighty-nine and fifty-four among them, follow the standard Quarter 1 convention, and each item asks for a single translation with no additional operation attached."
+      "rationale": "Every number is four digits with no zero-place complications beyond a trailing zero, and the word forms follow a single consistent pattern of thousands, hundreds and a hyphenated remainder, which is the Grade 3 Quarter 1 expectation."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "Three formats appear and each does different work: multiple choice for the translation, cloze for the written form, and true_false items that put a claimed word form against a numeral and require the pupil to detect the mismatch, which both correctly key as False."
+      "rationale": "Three response types appear and the direction of translation alternates, so the node offers production of the word form, production of the numeral, and verification of a claimed equivalence rather than a single translation drill."
     },
     "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Alternating the direction of translation while holding the magnitude band steady is exactly what reading and writing numbers demands, and the digit-scramble distractors such as the reversal offered against 9521 target a genuine confusion."
+      "verdict": "CONCERN",
+      "rationale": "Distractor quality is uneven in a way that undercuts the progression. Some options are well chosen digit reversals such as four thousand five hundred fifty-seven against the key seven thousand five hundred fifty-four, but the false claim that 1410 is 'one hundred forty-one' names a three-digit number for a four-digit numeral, which any pupil rejects on length alone."
     },
     "scale_appropriateness": {
-      "verdict": "CONCERN",
-      "rationale": "The sampled band runs from 1410 to 9521, so the ceiling of 10 000 named in the competency is never itself written or read, in numerals or in words."
+      "verdict": "PASS",
+      "rationale": "All numerals fall between 1410 and 9630, inside the competency's 10 000 ceiling and high enough to require the thousands word, so the range matches the stated bound rather than lingering in easier three-digit territory."
     }
   },
   "overall": "CONCERN"

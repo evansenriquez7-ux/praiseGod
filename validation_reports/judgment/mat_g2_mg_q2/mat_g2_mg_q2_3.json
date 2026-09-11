@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g2_mg_q2_3",
-  "reviewed_by": "reviewer-b3-cinder-halyard-2276",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c3-nimbus-sorrel-4825",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -9,7 +9,6 @@
     44,
     45,
     46,
-    50,
     500,
     501,
     502,
@@ -21,28 +20,32 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "A book is 18 cm long. A shoe is 20 cm long. If they are placed end to end, what is their combined length in cm?",
       "correct_answer": 38,
       "options": [
         {
           "key": "A",
           "value": 43,
+          "text": "43",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 48,
+          "text": "48",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 38,
+          "text": "38",
           "is_correct": true
         },
         {
           "key": "D",
           "value": 33,
+          "text": "33",
           "is_correct": false
         }
       ]
@@ -77,28 +80,32 @@
     },
     {
       "seed": 44,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "A crayon is 11 cm long. A pencil is 10 cm long. If they are placed end to end, what is their combined length in cm?",
       "correct_answer": 21,
       "options": [
         {
           "key": "A",
           "value": 16,
+          "text": "16",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 31,
+          "text": "31",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 21,
+          "text": "21",
           "is_correct": true
         },
         {
           "key": "D",
           "value": 26,
+          "text": "26",
           "is_correct": false
         }
       ]
@@ -160,65 +167,29 @@
       ]
     },
     {
-      "seed": 50,
-      "formatter": "cloze",
-      "question_text": "Renz walked 31 m from the school gate to the canteen, and then walked 15 m from the canteen to the library. What is the total distance Renz walked in meters?",
-      "correct_answer": 46,
-      "options": [
-        {
-          "key": "A",
-          "value": 46,
-          "text": "46",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 56,
-          "text": "56",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 41,
-          "text": "41",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 51,
-          "text": "51",
-          "is_correct": false
-        }
-      ]
-    },
-    {
       "seed": 500,
-      "formatter": "cloze",
+      "formatter": "mcq",
       "question_text": "The distance from the school gate to the garden is 34 m. The distance from the school gate to the classroom is 23 m. How many meters farther is the garden than the classroom?",
       "correct_answer": 11,
       "options": [
         {
           "key": "A",
           "value": 6,
-          "text": "6",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 21,
-          "text": "21",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 11,
-          "text": "11",
           "is_correct": true
         },
         {
           "key": "D",
           "value": 16,
-          "text": "16",
           "is_correct": false
         }
       ]
@@ -253,28 +224,32 @@
     },
     {
       "seed": 502,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "Liza walked 12 m from the school gate to the classroom, and then walked 34 m from the classroom to the library. What is the total distance Liza walked in meters?",
       "correct_answer": 46,
       "options": [
         {
           "key": "A",
           "value": 51,
+          "text": "51",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 41,
+          "text": "41",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 46,
+          "text": "46",
           "is_correct": true
         },
         {
           "key": "D",
           "value": 56,
+          "text": "56",
           "is_correct": false
         }
       ]
@@ -341,28 +316,32 @@
     },
     {
       "seed": 602,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "A notebook is 20 cm long. A ruler is 15 cm long. How many cm longer is a notebook than a ruler?",
       "correct_answer": 5,
       "options": [
         {
           "key": "A",
           "value": 1,
+          "text": "1",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 10,
+          "text": "10",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 5,
+          "text": "5",
           "is_correct": true
         },
         {
           "key": "D",
           "value": 15,
+          "text": "15",
           "is_correct": false
         }
       ]
@@ -399,28 +378,28 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "Each seed poses a genuine problem in a length or distance setting and requires the learner to select and carry out an operation. The placed end to end framing drives joining, and the farther-than framing drives comparison by difference, so both halves of the competency's subject matter produce real problem-solving."
+      "rationale": "Each sample is a genuine situation requiring a length or distance calculation, not a bare sum dressed up: objects laid end to end, two walked legs of a journey, and one place being farther from a gate than another."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "Additive and subtractive situations both occur, and the two measurement contexts are kept distinct: centimetre problems use classroom objects laid end to end, while metre problems use walking routes and gate-to-location spans. The set does not collapse onto a single operation."
+      "rationale": "Both problem structures a competency like this needs are present in quantity. Joining appears through combined length and total distance walked, and comparing appears through how many metres farther and how many cm longer."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Problems stay one-step with two given quantities, and the named actors keep the situations concrete. Sums such as the 16 and 39 walking legs require regrouping, which is already established by this point in Grade 2, and no stem carries more information than the question needs."
+      "rationale": "Single-step problems with two-digit quantities, named children and school landmarks match Quarter 2 of Grade 2; the subtraction cases such as 43 minus 19 involve regrouping but remain within reach."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "Two response types appear and the contextual framings genuinely differ: objects compared for length, two-leg journeys totalled, and two routes from a common starting point compared for how much farther one runs. That is the contextual range this competency calls for."
+      "rationale": "Three distinct situation types recur across the seeds rather than one, and they alternate between centimetre object problems and metre distance problems, with both cloze and multiple-choice presentation."
     },
     "competency_alignment": {
-      "verdict": "CONCERN",
-      "rationale": "Seven of the thirteen seeds are the same two-leg walking template with different names and numbers, so the set leans heavily on one situation type. The distractors also sit at a fixed offset from the key in essentially every item, which means none of them models an error a learner would actually make, such as subtracting when they should add."
+      "verdict": "PASS",
+      "rationale": "The later seeds raise the operands toward sums in the fifties and sixties while keeping the same length and distance reasoning intact, so difficulty grows along the competency rather than beside it."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Metre values run from about 11 to 43 with totals staying under 70, and centimetre values track real object sizes in the teens and twenties. All results land inside the addition and subtraction range Grade 2 has by Quarter 2."
+      "rationale": "Totals stay below one hundred, with objects sized in tens of centimetres and walks of a few tens of metres, all plausible for the classroom and schoolyard settings used."
     }
   },
-  "overall": "CONCERN"
+  "overall": "PASS"
 }

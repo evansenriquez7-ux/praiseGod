@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g2_na_q4_4",
-  "reviewed_by": "reviewer-b4-plover-saffron-6041",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c4-pumice-lovage-6370",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -9,7 +9,6 @@
     44,
     45,
     46,
-    50,
     500,
     501,
     502,
@@ -20,28 +19,32 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "How is \\(\\frac{2}{5}\\) read in words?",
       "correct_answer": "two fifths",
       "options": [
         {
           "key": "A",
           "value": "three fifths",
+          "text": "three fifths",
           "is_correct": false
         },
         {
           "key": "B",
           "value": "one fifth",
+          "text": "one fifth",
           "is_correct": false
         },
         {
           "key": "C",
           "value": "five halfs",
+          "text": "five halfs",
           "is_correct": false
         },
         {
           "key": "D",
           "value": "two fifths",
+          "text": "two fifths",
           "is_correct": true
         }
       ]
@@ -76,28 +79,32 @@
     },
     {
       "seed": 44,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "Which word name represents \\(\\frac{1}{8}\\)?",
       "correct_answer": "one eighth",
       "options": [
         {
           "key": "A",
           "value": "one eighth",
+          "text": "one eighth",
           "is_correct": true
         },
         {
           "key": "B",
           "value": "one half",
+          "text": "one half",
           "is_correct": false
         },
         {
           "key": "C",
           "value": "8 oneths",
+          "text": "8 oneths",
           "is_correct": false
         },
         {
           "key": "D",
           "value": "two eighths",
+          "text": "two eighths",
           "is_correct": false
         }
       ]
@@ -159,65 +166,29 @@
       ]
     },
     {
-      "seed": 50,
-      "formatter": "cloze",
-      "question_text": "Write two fifths in fraction notation.",
-      "correct_answer": "2/5",
-      "options": [
-        {
-          "key": "A",
-          "value": "2/5",
-          "text": "2/5",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": "1/5",
-          "text": "1/5",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "3/5",
-          "text": "3/5",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "5/2",
-          "text": "5/2",
-          "is_correct": false
-        }
-      ]
-    },
-    {
       "seed": 500,
-      "formatter": "cloze",
+      "formatter": "mcq",
       "question_text": "Write five sixths in fraction notation.",
       "correct_answer": "5/6",
       "options": [
         {
           "key": "A",
           "value": "5/2",
-          "text": "5/2",
           "is_correct": false
         },
         {
           "key": "B",
           "value": "6/5",
-          "text": "6/5",
           "is_correct": false
         },
         {
           "key": "C",
           "value": "5/6",
-          "text": "5/6",
           "is_correct": true
         },
         {
           "key": "D",
           "value": "4/6",
-          "text": "4/6",
           "is_correct": false
         }
       ]
@@ -252,28 +223,32 @@
     },
     {
       "seed": 502,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "Write four eighths in fraction notation.",
       "correct_answer": "4/8",
       "options": [
         {
           "key": "A",
           "value": "3/8",
+          "text": "3/8",
           "is_correct": false
         },
         {
           "key": "B",
           "value": "5/8",
+          "text": "5/8",
           "is_correct": false
         },
         {
           "key": "C",
           "value": "4/8",
+          "text": "4/8",
           "is_correct": true
         },
         {
           "key": "D",
           "value": "8/4",
+          "text": "8/4",
           "is_correct": false
         }
       ]
@@ -340,28 +315,32 @@
     },
     {
       "seed": 602,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "Write two fourths in fraction notation.",
       "correct_answer": "2/4",
       "options": [
         {
           "key": "A",
           "value": "3/4",
+          "text": "3/4",
           "is_correct": false
         },
         {
           "key": "B",
           "value": "4/2",
+          "text": "4/2",
           "is_correct": false
         },
         {
           "key": "C",
           "value": "1/4",
+          "text": "1/4",
           "is_correct": false
         },
         {
           "key": "D",
           "value": "2/4",
+          "text": "2/4",
           "is_correct": true
         }
       ]
@@ -369,28 +348,28 @@
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "Reading and writing are both covered, but as with the representation node nothing here involves a set of fractions sharing a denominator. An item asking for the notation of three eighths is generic fraction naming; the 'similar' qualifier in this node's wording does no work in any sampled item."
+      "verdict": "PASS",
+      "rationale": "The reading and writing directions are both generated for genuinely non-unit fractions - three eighths, five sixths, four fifths and two fourths all appear - and each notation-to-words key correctly pluralises the denominator name."
     },
     "comprehensive_coverage": {
       "verdict": "CONCERN",
-      "rationale": "Fifths and eighths dominate the twelve seeds, fourths appear twice and sixths once, while halves and thirds, the two denominators a child meets first and names most often, are never the subject of an item."
+      "rationale": "Thirds never appear in either direction despite being available in this quarter's denominator set, and one sample, 'Write one eighth in fraction notation.', is a unit fraction duplicated verbatim from the earlier read-and-write unit fractions node rather than new content for this one."
     },
     "cognitive_capacity": {
       "verdict": "FAIL",
-      "rationale": "On a node whose entire content is the correct English name of a fraction, the option lists contain misspelled forms: 'five halfs' is offered in seed 42 and 'four halfs' in seed 501. Presenting a wrong plural as a candidate word name on a naming competency actively teaches the error it is meant to prevent."
+      "rationale": "This is the competency where correct fraction words are the object of instruction, and two option lists put a misspelled plural of half in front of the pupil, while a third offers a non-word built from 'oneths'. Printing malformed word names to a Grade 2 reader who is being taught those very names actively works against the node's purpose."
     },
     "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "Three distinct prompts appear, writing notation from a spoken name, asking how a fraction is read in words, and asking which word name represents a given fraction, so both translation directions are reached through more than one phrasing."
+      "verdict": "CONCERN",
+      "rationale": "Only two question shapes exist, writing a spoken name into notation and naming printed notation in words, and the second alternates between two near-identical phrasings, so there is no picture-supported or context-embedded reading of a fraction."
     },
     "competency_alignment": {
       "verdict": "CONCERN",
-      "rationale": "Several option sets include a non-word such as '8 oneths', which no child selects, so the effective choice narrows and the item stops discriminating between a child who knows eighths and one who is guessing among the remaining plausible names."
+      "rationale": "Because some option sets mix plausible near-misses with nonsense strings, those items can be answered by discarding what is not a word rather than by reading the fraction correctly, which weakens the rung rather than building it."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Numerators are always smaller than their denominators and denominators stay within the fourths-to-eighths range appropriate here, so no improper fraction or unfamiliar denominator is introduced."
+      "rationale": "Denominators stay within fourths through eighths and every numerator is smaller than its denominator, so the fractions sampled sit inside the proper similar-fraction range for this quarter."
     }
   },
   "overall": "FAIL"

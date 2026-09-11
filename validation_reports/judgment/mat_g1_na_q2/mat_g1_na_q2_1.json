@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g1_na_q2_1",
-  "reviewed_by": "reviewer-r1-cobalt-juniper-7748",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c2-basalt-yarrow-7194",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -12,40 +12,33 @@
     500,
     501,
     502,
-    600,
-    601,
-    602,
-    603
+    601
   ],
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "cloze",
-      "question_text": "What comes next: 0, 10, 20, 30, ___",
+      "formatter": "mcq",
+      "question_text": "What number comes next when counting: 0, 10, 20, 30, ___?",
       "correct_answer": 40,
       "options": [
         {
           "key": "A",
           "value": 10,
-          "text": "10",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 40,
-          "text": "40",
           "is_correct": true
         },
         {
           "key": "C",
           "value": 31,
-          "text": "31",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 20,
-          "text": "20",
           "is_correct": false
         }
       ]
@@ -53,17 +46,45 @@
     {
       "seed": 43,
       "formatter": "read_mcq",
-      "question_text": "(Large group of 44 stars)\nCount the stars.\nHow many stars are there in all?",
-      "correct_answer": "A",
+      "question_text": "What number is marked on the number line?",
+      "correct_answer": "C",
       "options": [
         {
           "key": "A",
+          "value": 43,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 45,
+          "is_correct": false
+        },
+        {
+          "key": "C",
           "value": 44,
           "is_correct": true
         },
         {
+          "key": "D",
+          "value": 46,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 44,
+      "formatter": "read_mcq",
+      "question_text": "(Large group of 100 books)\nCount the books.\nHow many books are there in all?",
+      "correct_answer": "D",
+      "options": [
+        {
+          "key": "A",
+          "value": 101,
+          "is_correct": false
+        },
+        {
           "key": "B",
-          "value": 43,
+          "value": 99,
           "is_correct": false
         },
         {
@@ -73,36 +94,8 @@
         },
         {
           "key": "D",
-          "value": 45,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 44,
-      "formatter": "mcq",
-      "question_text": "What number comes next when counting: 80, 85, 90, 95, ___?",
-      "correct_answer": 100,
-      "options": [
-        {
-          "key": "A",
           "value": 100,
           "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 85,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 96,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 90,
-          "is_correct": false
         }
       ]
     },
@@ -136,28 +129,32 @@
     },
     {
       "seed": 46,
-      "formatter": "mcq",
-      "question_text": "What number comes next when counting: 68, 70, 72, 74, ___?",
+      "formatter": "cloze",
+      "question_text": "What comes next: 68, 70, 72, 74, ___",
       "correct_answer": 76,
       "options": [
         {
           "key": "A",
           "value": 72,
+          "text": "72",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 75,
+          "text": "75",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 76,
+          "text": "76",
           "is_correct": true
         },
         {
           "key": "D",
           "value": 70,
+          "text": "70",
           "is_correct": false
         }
       ]
@@ -165,73 +162,41 @@
     {
       "seed": 500,
       "formatter": "read_mcq",
-      "question_text": "(Large group of 100 drinks)\nCount the drinks.\nHow many drinks are there in all?",
-      "correct_answer": "C",
+      "question_text": "What number is marked on the number line?",
+      "correct_answer": "B",
       "options": [
         {
           "key": "A",
-          "value": 0,
+          "value": 99,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 101,
-          "is_correct": false
-        },
-        {
-          "key": "C",
           "value": 100,
           "is_correct": true
         },
         {
+          "key": "C",
+          "value": 102,
+          "is_correct": false
+        },
+        {
           "key": "D",
-          "value": 99,
+          "value": 101,
           "is_correct": false
         }
       ]
     },
     {
       "seed": 501,
-      "formatter": "cloze",
-      "question_text": "What comes next: 20, 30, 40, 50, ___",
-      "correct_answer": 60,
-      "options": [
-        {
-          "key": "A",
-          "value": 60,
-          "text": "60",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 30,
-          "text": "30",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 51,
-          "text": "51",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 40,
-          "text": "40",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 502,
       "formatter": "mcq",
       "question_text": "What number comes next when counting: 20, 30, 40, 50, ___?",
       "correct_answer": 60,
       "options": [
         {
           "key": "A",
-          "value": 40,
-          "is_correct": false
+          "value": 60,
+          "is_correct": true
         },
         {
           "key": "B",
@@ -245,123 +210,67 @@
         },
         {
           "key": "D",
-          "value": 60,
-          "is_correct": true
+          "value": 40,
+          "is_correct": false
         }
       ]
     },
     {
-      "seed": 600,
-      "formatter": "cloze",
-      "question_text": "What comes next: 35, 40, 45, 50, ___",
-      "correct_answer": 55,
+      "seed": 502,
+      "formatter": "read_mcq",
+      "question_text": "(Large group of 60 trees)\nCount the trees.\nHow many trees are there in all?",
+      "correct_answer": "B",
       "options": [
         {
           "key": "A",
-          "value": 40,
-          "text": "40",
+          "value": 59,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 45,
-          "text": "45",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 55,
-          "text": "55",
+          "value": 60,
           "is_correct": true
         },
         {
+          "key": "C",
+          "value": 0,
+          "is_correct": false
+        },
+        {
           "key": "D",
-          "value": 51,
-          "text": "51",
+          "value": 61,
           "is_correct": false
         }
       ]
     },
     {
       "seed": 601,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "Moses is counting forward by 2 starting from 86. The count is: 86, 88, 90, 92. What is the next number Moses should say?",
       "correct_answer": 94,
       "options": [
         {
           "key": "A",
           "value": 94,
+          "text": "94",
           "is_correct": true
         },
         {
           "key": "B",
           "value": 93,
+          "text": "93",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 88,
+          "text": "88",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 90,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 602,
-      "formatter": "mcq",
-      "question_text": "What number comes next when counting backward: 45, 40, 35, 30, ___?",
-      "correct_answer": 25,
-      "options": [
-        {
-          "key": "A",
-          "value": 29,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 40,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 25,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 35,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 603,
-      "formatter": "mcq",
-      "question_text": "What number comes next when counting: 70, 72, 74, 76, ___?",
-      "correct_answer": 78,
-      "options": [
-        {
-          "key": "A",
-          "value": 78,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 72,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 74,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 77,
+          "text": "90",
           "is_correct": false
         }
       ]
@@ -370,27 +279,27 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "CONCERN",
-      "rationale": "Two of the twelve samples abandon skip counting altogether: one shows a large group and asks 'How many stars are there in all?' and another asks the student to 'Count the drinks.' Neither presents a 2s, 5s or 10s structure, so they test one-by-one enumeration, which belongs to a different objective than this one."
+      "rationale": "Skip-counting sequences by 2s, 5s and 10s do appear, but a sizeable share of the sample is off the verb entirely: 'Count the books.' on a pictured group is one-by-one cardinality, and 'What number is marked on the number line?' tests point reading, neither of which is counting by 2s, 5s or 10s."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "All three step sizes the competency names are genuinely produced: tens in the run beginning 0, 10, 20, 30, fives in the run reaching 100 from 80, 85, 90, 95, and twos in the run 68, 70, 72, 74. A descending fives sequence is also generated, which goes beyond the minimum."
+      "rationale": "All three named step sizes are actually produced - a tens chain starting at 0, a fives chain running 65, 70, 75, 80, and twos chains in the sixties and the eighties - so no step size is left ungenerated."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The narrated item that says a child is 'counting forward by 2 starting from 86' names the step explicitly rather than leaving it to be inferred, which is the right scaffolding for second-quarter Grade 1, and the remaining stems are one line long."
+      "rationale": "The stems are single sentences with a visible run of terms and one blank; the narrative version about Moses counting forward by 2 adds a name but no extra inferential step, which suits early Grade 1."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "Fill-in continuations, four-option selections, a narrated skip count attributed to a child, and a picture-count all appear, so the surface forms are not a single template repeated."
+      "rationale": "Presentation genuinely varies here - an abstract sequence with a blank, a named-pupil counting story, a number line, and a pictured collection - rather than one template with substituted numerals."
     },
     "competency_alignment": {
       "verdict": "CONCERN",
-      "rationale": "Alongside the off-target enumeration items, one sequence beginning 20, 30, 40, 50 is reproduced twice under two different formats, so part of the apparent spread is format variation over an identical mathematical item rather than added skip-counting demand. The picture items also offer 0 as a choice, which no count of a drawn group can yield."
+      "rationale": "The harder-looking items do not make the skip count harder; they swap in a different skill (reading a marked point, or totalling a pictured heap), so the difficulty axis being varied is presentation medium rather than command of the counting sequence."
     },
     "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "The fives run lands exactly on 100 and the twos runs sit in the eighties and nineties, so the upper reach of the stated range is genuinely exercised while nothing spills past it."
+      "verdict": "CONCERN",
+      "rationale": "The competency stops at 100, yet option sets reach past it - a choice of 101 sits against a pictured hundred, and a number-line item offers 101 and 102 - so pupils are asked to consider values outside the stated range."
     }
   },
   "overall": "CONCERN"

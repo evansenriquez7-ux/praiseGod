@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g2_na_q4_0",
-  "reviewed_by": "reviewer-b4-plover-saffron-6041",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c4-pumice-lovage-6370",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -45,93 +45,49 @@
     },
     {
       "seed": 43,
-      "formatter": "read_mcq",
-      "question_text": "What fraction does the model show?",
-      "correct_answer": "D",
-      "options": [
-        {
-          "key": "A",
-          "value": "2/2",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "3/2",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "2/1",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "1/2",
-          "is_correct": true
-        }
-      ]
+      "formatter": "set_click",
+      "question_text": "Shade 1/2 of the shape.",
+      "correct_answer": "1/2"
     },
     {
       "seed": 44,
-      "formatter": "set_click",
-      "question_text": "Shade 1/4 of the shape.",
-      "correct_answer": "1/4"
+      "formatter": "read_mcq",
+      "question_text": "What fraction does the model show?",
+      "correct_answer": "A",
+      "options": [
+        {
+          "key": "A",
+          "value": "1/4",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "4/1",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "3/4",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "4/4",
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 45,
-      "formatter": "read_mcq",
-      "question_text": "What fraction does the model show?",
-      "correct_answer": "D",
-      "options": [
-        {
-          "key": "A",
-          "value": "7/8",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "8/8",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "8/1",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "1/8",
-          "is_correct": true
-        }
-      ]
+      "formatter": "set_click",
+      "question_text": "Shade 1/8 of the shape.",
+      "correct_answer": "1/8"
     },
     {
       "seed": 46,
-      "formatter": "read_mcq",
-      "question_text": "What fraction does the model show?",
-      "correct_answer": "B",
-      "options": [
-        {
-          "key": "A",
-          "value": "3/2",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "1/2",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": "2/2",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "2/1",
-          "is_correct": false
-        }
-      ]
+      "formatter": "set_click",
+      "question_text": "Shade 1/2 of the shape.",
+      "correct_answer": "1/2"
     },
     {
       "seed": 500,
@@ -175,35 +131,57 @@
     },
     {
       "seed": 601,
-      "formatter": "set_click",
-      "question_text": "Shade 1/5 of the shape.",
-      "correct_answer": "1/5"
+      "formatter": "read_mcq",
+      "question_text": "What fraction does the number line show?",
+      "correct_answer": "A",
+      "options": [
+        {
+          "key": "A",
+          "value": "1/5",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "5/5",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "4/5",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "5/1",
+          "is_correct": false
+        }
+      ]
     }
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "Both verbs are exercised: identification through the model-reading items and representation through the shading tasks, where a child must produce 1/4, 1/2 or 1/5 on a shape rather than choose it."
+      "rationale": "Both verbs of the competency are attempted - identifying a fraction from a shown model and representing one by shading a shape - and the keys I could verify, such as the one-fifth number-line item, name genuine unit fractions with the numerator held at one."
     },
     "comprehensive_coverage": {
       "verdict": "FAIL",
-      "rationale": "The node names six denominators and one of them, sixths, is never generated in any of the nine seeds. Worse, half the pool is halves: seeds 43, 46, 500, 501 and 502 all work with 1/2, leaving thirds, fourths, fifths and eighths one appearance each."
+      "rationale": "The competency lists six denominators explicitly and one of them, 6, does not appear in a single sample. Meanwhile halves account for five of the nine items, so the set is simultaneously missing a required denominator and over-weighted on the easiest one."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Asking what fraction a model shows, and asking for a named unit fraction to be shaded, are both appropriately concrete for the quarter in which fractions first appear, with no symbolic manipulation demanded."
+      "rationale": "Stems are one short instruction each, the fractions carry a numerator of one throughout, and the inverted-notation decoys target exactly the confusion a beginner has about which number sits on top."
     },
     "variant_comprehensiveness": {
       "verdict": "CONCERN",
-      "rationale": "Two stems carry the entire node, one reading 'What fraction does the model show?' and one instructing the child to shade a named fraction of the shape. No number-line placement, no set-of-objects model, and no comparison of two representations occurs."
+      "rationale": "Four separate seeds produce the identical instruction 'Shade 1/2 of the shape.' with the same answer, so the representing half of this node is effectively a single item reissued, and only one sample uses a number line rather than an area model."
     },
     "competency_alignment": {
       "verdict": "CONCERN",
-      "rationale": "Seeds 500 and 501 are the same task word for word, shading one half, inside a nine-item pool, so the generator is spending its variation budget on repetition instead of on the denominators the competency lists."
+      "rationale": "Rather than stepping through the named denominators from halves toward eighths, the sampled set clusters on the easiest one, so the progression does not build the pupil's grasp of how a larger denominator means a smaller part."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Every fraction used has a numerator of 1 and a denominator drawn from the permitted set, and the inverted decoys such as 3/1 and 8/1 stay inside the same digits rather than introducing larger denominators."
+      "rationale": "No denominator exceeds eight and no numerator exceeds one, so the items stay inside the unit-fraction band this quarter defines, with the eighths ceiling reached."
     }
   },
   "overall": "FAIL"

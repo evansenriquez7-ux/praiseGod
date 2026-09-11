@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g2_na_q1_7",
-  "reviewed_by": "reviewer-b3-cinder-halyard-2276",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c3-nimbus-sorrel-4825",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -10,8 +10,6 @@
     45,
     46,
     47,
-    52,
-    68,
     500,
     501,
     502,
@@ -25,46 +23,46 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "error_detect",
-      "question_text": "Manny solved: \"Start at 80. Count up 3 more. You land on ___\". Manny says the missing number is 93. Is Manny correct?",
-      "correct_answer": {
-        "has_error": true,
-        "correct_value": 83
-      }
+      "formatter": "true_false",
+      "question_text": "Start at 80. Count up 3 more. You land on 93. True or False?",
+      "correct_answer": false
     },
     {
       "seed": 43,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Show 64 + 7 on the number line.",
-      "correct_answer": 71
-    },
-    {
-      "seed": 44,
-      "formatter": "mcq",
-      "question_text": "Start at 15. Count up 2 more. What number do you land on?",
-      "correct_answer": 17,
+      "formatter": "read_mcq",
+      "question_text": "The dot is at 64 and it moves forward 7 numbers. Starting from 64, just count up 7 numbers. Which number will the dot land on?",
+      "correct_answer": "D",
       "options": [
         {
           "key": "A",
-          "value": 16,
+          "value": 70,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 27,
+          "value": 81,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 17,
-          "is_correct": true
+          "value": 57,
+          "is_correct": false
         },
         {
           "key": "D",
-          "value": 13,
-          "is_correct": false
+          "value": 71,
+          "is_correct": true
         }
       ]
+    },
+    {
+      "seed": 44,
+      "formatter": "error_detect",
+      "question_text": "Rico solved: \"Start at 15. Count up 2 more. You land on ___\". Rico says the missing number is 17. Is Rico correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 17
+      }
     },
     {
       "seed": 45,
@@ -96,97 +94,41 @@
     },
     {
       "seed": 46,
-      "formatter": "mcq",
-      "question_text": "Start at 64. Count up 8 more. What number do you land on?",
+      "formatter": "cloze",
+      "question_text": "Start at 64. Count up 8 more. You land on ___",
       "correct_answer": 72,
       "options": [
         {
           "key": "A",
           "value": 71,
+          "text": "71",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 82,
+          "text": "82",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 56,
+          "text": "56",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 72,
+          "text": "72",
           "is_correct": true
         }
       ]
     },
     {
       "seed": 47,
-      "formatter": "cloze",
-      "question_text": "Start at 75. Count up 9 more. You land on ___",
-      "correct_answer": 84,
-      "options": [
-        {
-          "key": "A",
-          "value": 83,
-          "text": "83",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 84,
-          "text": "84",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 66,
-          "text": "66",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 94,
-          "text": "94",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 52,
-      "formatter": "read_mcq",
-      "question_text": "The dot is at 52 and it moves forward 9 numbers. Starting from 52, just count up 9 numbers. Which number will the dot land on?",
-      "correct_answer": "A",
-      "options": [
-        {
-          "key": "A",
-          "value": 61,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 71,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 43,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 60,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 68,
-      "formatter": "true_false",
-      "question_text": "Start at 95. Count up 4 more. You land on 99. True or False?",
-      "correct_answer": true
+      "formatter": "set_fill_in_blank",
+      "question_text": "Show 75 + 9 on the number line.",
+      "correct_answer": 84
     },
     {
       "seed": 500,
@@ -197,161 +139,41 @@
     {
       "seed": 501,
       "formatter": "true_false",
-      "question_text": "Start at 87. Count up 6 more. You land on 93. True or False?",
-      "correct_answer": true
+      "question_text": "Start at 87. Count up 6 more. You land on 103. True or False?",
+      "correct_answer": false
     },
     {
       "seed": 502,
-      "formatter": "mcq",
-      "question_text": "Start at 90. Count up 2 more. What number do you land on?",
-      "correct_answer": 92,
-      "options": [
-        {
-          "key": "A",
-          "value": 102,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 88,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 92,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 91,
-          "is_correct": false
-        }
-      ]
+      "formatter": "error_detect",
+      "question_text": "Dante solved: \"Start at 90. Count up 2 more. You land on ___\". Dante says the missing number is 92. Is Dante correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 92
+      }
     },
     {
       "seed": 600,
       "formatter": "true_false",
-      "question_text": "Start at 48. Count up 7 more. You land on 55. True or False?",
-      "correct_answer": true
+      "question_text": "Start at 48. Count up 7 more. You land on 65. True or False?",
+      "correct_answer": false
     },
     {
       "seed": 601,
-      "formatter": "mcq",
-      "question_text": "Start at 30. Count up 5 more. What number do you land on?",
+      "formatter": "cloze",
+      "question_text": "Start at 30. Count up 5 more. You land on ___",
       "correct_answer": 35,
       "options": [
         {
           "key": "A",
           "value": 45,
+          "text": "45",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 35,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 34,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 25,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 602,
-      "formatter": "cloze",
-      "question_text": "Start at 60. Count up 4 more. You land on ___",
-      "correct_answer": 64,
-      "options": [
-        {
-          "key": "A",
-          "value": 56,
-          "text": "56",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 63,
-          "text": "63",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 74,
-          "text": "74",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 64,
-          "text": "64",
-          "is_correct": true
-        }
-      ]
-    },
-    {
-      "seed": 603,
-      "formatter": "cloze",
-      "question_text": "Start at 74. Count up 8 more. You land on ___",
-      "correct_answer": 82,
-      "options": [
-        {
-          "key": "A",
-          "value": 92,
-          "text": "92",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 66,
-          "text": "66",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 82,
-          "text": "82",
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 81,
-          "text": "81",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 604,
-      "formatter": "error_detect",
-      "question_text": "Carlo solved: \"Start at 94. Count up 7 more. You land on ___\". Carlo says the missing number is 101. Is Carlo correct?",
-      "correct_answer": {
-        "has_error": false,
-        "correct_value": 101
-      }
-    },
-    {
-      "seed": 605,
-      "formatter": "cloze",
-      "question_text": "Start at 34. Count up 1 more. You land on ___",
-      "correct_answer": 35,
-      "options": [
-        {
-          "key": "A",
           "value": 35,
           "text": "35",
           "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 33,
-          "text": "33",
-          "is_correct": false
         },
         {
           "key": "C",
@@ -361,37 +183,105 @@
         },
         {
           "key": "D",
-          "value": 45,
-          "text": "45",
+          "value": 25,
+          "text": "25",
           "is_correct": false
         }
       ]
+    },
+    {
+      "seed": 602,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Show 60 + 4 on the number line.",
+      "correct_answer": 64
+    },
+    {
+      "seed": 603,
+      "formatter": "read_mcq",
+      "question_text": "The dot is at 74 and it moves forward 8 numbers. Starting from 74, just count up 8 numbers. Which number will the dot land on?",
+      "correct_answer": "C",
+      "options": [
+        {
+          "key": "A",
+          "value": 92,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 66,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 82,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 81,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 604,
+      "formatter": "mcq",
+      "question_text": "Start at 94. Count up 7 more. What number do you land on?",
+      "correct_answer": 101,
+      "options": [
+        {
+          "key": "A",
+          "value": 87,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 100,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 101,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 111,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 605,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Show 34 + 1 on the number line.",
+      "correct_answer": 35
     }
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "The counting-up framing is right and the arithmetic is sound throughout, but the number line is the representation this competency is named for and only three of the sixteen seeds involve one. The rest are bare start-and-count instructions that a learner can answer by mental addition without ever picturing a line, so the illustrative model is optional in most of the set."
+      "verdict": "PASS",
+      "rationale": "The counting-up model is genuinely enacted: each item starts at a two-digit number and moves forward by a one-digit amount, and the number-line items make that hop explicit by asking where the dot lands."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "Counts that stay inside the current ten and counts that cross into the next one are both well represented, which is the distinction that matters for counting up. Starting values are spread across the whole two-digit range from the teens to the nineties, and the added amount covers the full span of one-digit values."
+      "rationale": "Hops that stay inside a ten and hops that cross one both occur in quantity, and starting points are spread from the thirties to the nineties rather than clustering at round numbers."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Counting on by fewer than ten from a two-digit start is precisely the early Quarter 1 addition strategy, and the stems are two short imperative sentences. The error-detection items add a checking step without adding numerical load, since the underlying computation remains a small count on."
+      "rationale": "A single one-digit hop from a stated two-digit start is exactly the load this competency is written for, and the stems stay to one or two short sentences."
     },
     "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "Six distinct response types occur here, including judging another pupil's stated answer, marking a sum on a line, and a rendered item about a dot moving forward. Both the compute-the-landing-point and verify-the-landing-point orientations are generated, which is real breadth for a narrow skill."
+      "verdict": "CONCERN",
+      "rationale": "Five presentations appear, which is good, but all three true-or-false items are keyed False. That variant therefore rewards answering False without ever counting up, which defeats the point of including it."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "The dimension that varies is whether the count crosses a ten boundary, which is exactly what makes counting up harder or easier, together with the size of the one-digit jump. Both operands stay in the shapes the competency names, with two-digit starting points and one-digit increments in every item."
+      "rationale": "The difficulty ramp raises the starting number while holding the hop at a single digit, which is the right axis: the challenge in counting up is where you start, not how far you go."
     },
     "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "Starts range from 15 to 95 and increments from 1 to 9, keeping strictly to the 2-digit and 1-digit pairing the wording specifies. One seed starting at 94 and counting up 7 lands just past a hundred, which is a boundary case worth noting but remains inside the Grade 2 Quarter 1 number range."
+      "verdict": "CONCERN",
+      "rationale": "One item starts at 94 and counts up 7, landing on 101. That carries the illustration out of the two-digit territory the competency frames, and on a number-line model the crossing of a hundred is a distinctly different picture from the rest of the set."
     }
   },
   "overall": "CONCERN"

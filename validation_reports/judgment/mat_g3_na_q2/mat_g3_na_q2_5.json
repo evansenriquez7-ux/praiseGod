@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g3_na_q2_5",
-  "reviewed_by": "reviewer-b6-thistle-kestrel-9724",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c6-mistral-comfrey-8916",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -9,8 +9,7 @@
     44,
     45,
     46,
-    50,
-    55,
+    48,
     500,
     501,
     502,
@@ -24,28 +23,32 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "mcq",
-      "question_text": "Estimate the difference: 1950 − 1152",
+      "formatter": "cloze",
+      "question_text": "Estimate: 1950 − 1152 ≈ ___",
       "correct_answer": 1000,
       "options": [
         {
           "key": "A",
           "value": 999,
+          "text": "999",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 1001,
+          "text": "1001",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 1000,
+          "text": "1000",
           "is_correct": true
         },
         {
           "key": "D",
           "value": 1002,
+          "text": "1002",
           "is_correct": false
         }
       ]
@@ -112,70 +115,20 @@
     },
     {
       "seed": 45,
-      "formatter": "mcq",
-      "question_text": "Estimate the difference: 6195 − 2500",
-      "correct_answer": 3000,
-      "options": [
-        {
-          "key": "A",
-          "value": 2999,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 3002,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 3001,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 3000,
-          "is_correct": true
-        }
-      ]
-    },
-    {
-      "seed": 46,
-      "formatter": "mcq",
-      "question_text": "Estimate the difference: 6116 − 2430",
-      "correct_answer": 4000,
-      "options": [
-        {
-          "key": "A",
-          "value": 4000,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 4001,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 4002,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 3999,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 50,
       "formatter": "true_false",
-      "question_text": "7902 − 480 ≈ 7992. True or False?",
+      "question_text": "6195 − 2500 ≈ 3002. True or False?",
       "correct_answer": false
     },
     {
-      "seed": 55,
+      "seed": 46,
+      "formatter": "true_false",
+      "question_text": "6116 − 2430 ≈ 4000. True or False?",
+      "correct_answer": true
+    },
+    {
+      "seed": 48,
       "formatter": "error_detect",
-      "question_text": "Grace solved: \"3500 − 555 ≈ ___\". Grace says the missing number is 3000. Is Grace correct?",
+      "question_text": "Noel solved: \"2543 − 450 ≈ ___\". Noel says the missing number is 3000. Is Noel correct?",
       "correct_answer": {
         "has_error": false,
         "correct_value": 3000
@@ -183,72 +136,46 @@
     },
     {
       "seed": 500,
-      "formatter": "error_detect",
-      "question_text": "Rico solved: \"9413 − 3953 ≈ ___\". Rico says the missing number is 5000. Is Rico correct?",
-      "correct_answer": {
-        "has_error": false,
-        "correct_value": 5000
-      }
+      "formatter": "true_false",
+      "question_text": "9413 − 3953 ≈ 5004. True or False?",
+      "correct_answer": false
     },
     {
       "seed": 501,
-      "formatter": "cloze",
-      "question_text": "Estimate: 8363 − 4649 ≈ ___",
+      "formatter": "mcq",
+      "question_text": "Estimate the difference: 8363 − 4649",
       "correct_answer": 3000,
       "options": [
         {
           "key": "A",
           "value": 2999,
-          "text": "2999",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 3002,
-          "text": "3002",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 3000,
-          "text": "3000",
           "is_correct": true
         },
         {
           "key": "D",
           "value": 3001,
-          "text": "3001",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 502,
-      "formatter": "mcq",
-      "question_text": "Estimate the difference: 4783 − 2633",
-      "correct_answer": 2000,
-      "options": [
-        {
-          "key": "A",
-          "value": 2000,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 2001,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 2002,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 1999,
-          "is_correct": false
-        }
-      ]
+      "formatter": "error_detect",
+      "question_text": "Dante solved: \"4783 − 2633 ≈ ___\". Dante says the missing number is 2000. Is Dante correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 2000
+      }
     },
     {
       "seed": 600,
@@ -312,126 +239,81 @@
     },
     {
       "seed": 602,
-      "formatter": "mcq",
-      "question_text": "Estimate the difference: 4410 − 384",
-      "correct_answer": 4000,
-      "options": [
-        {
-          "key": "A",
-          "value": 3999,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 4001,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 4002,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 4000,
-          "is_correct": true
-        }
-      ]
+      "formatter": "error_detect",
+      "question_text": "Jose solved: \"4410 − 384 ≈ ___\". Jose says the missing number is 4000. Is Jose correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 4000
+      }
     },
     {
       "seed": 603,
-      "formatter": "cloze",
-      "question_text": "Estimate: 3540 − 1433 ≈ ___",
+      "formatter": "mcq",
+      "question_text": "Estimate the difference: 3540 − 1433",
       "correct_answer": 3000,
       "options": [
         {
           "key": "A",
           "value": 2999,
-          "text": "2999",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 3001,
-          "text": "3001",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 3000,
-          "text": "3000",
           "is_correct": true
         },
         {
           "key": "D",
           "value": 3002,
-          "text": "3002",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 604,
-      "formatter": "mcq",
-      "question_text": "Estimate the difference: 2101 − 90",
-      "correct_answer": 2000,
-      "options": [
-        {
-          "key": "A",
-          "value": 2001,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 2002,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 1999,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 2000,
-          "is_correct": true
-        }
-      ]
+      "formatter": "error_detect",
+      "question_text": "Carlo solved: \"2101 − 90 ≈ ___\". Carlo says the missing number is 2000. Is Carlo correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 2000
+      }
     },
     {
       "seed": 605,
-      "formatter": "error_detect",
-      "question_text": "Liza solved: \"4890 − 1385 ≈ ___\". Liza says the missing number is 4000. Is Liza correct?",
-      "correct_answer": {
-        "has_error": false,
-        "correct_value": 4000
-      }
+      "formatter": "true_false",
+      "question_text": "4890 − 1385 ≈ 3999. True or False?",
+      "correct_answer": false
     }
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The instruction to estimate the difference is what each stem states, and keys such as the 3000 given for 8363 minus 4649 are rounded values rather than exact ones, so the requested act matches the competency wording."
+      "verdict": "FAIL",
+      "rationale": "Several keyed estimates are not estimates of the quantity asked about. The item reading 'Estimate the difference: 5646 − 5190' is keyed 1000 when the two numbers differ by 456, and the pair 3540 and 1433, which differ by 2107, is keyed 3000. An answer certified as correct while overshooting the true difference by more than double teaches a pupil that estimation need not resemble the answer."
     },
     "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "Both operands range over two, three and four digits, including a case where the subtrahend is as small as 90, and the estimate is asked for through several response modes rather than only one."
+      "verdict": "CONCERN",
+      "rationale": "The stated scope reaches down to numbers of fewer digits, yet only the 540 and 137 sample works below four digits in the minuend. Every other case is a four-digit minuend, so the smaller end of the up-to-four-digit range is barely touched."
     },
     "cognitive_capacity": {
-      "verdict": "FAIL",
-      "rationale": "Across every choice item the distractors are the key offset by one or two, as with the four options clustered around 400 and those clustered around 2000. Since only a round number can be an estimate, the correct option is identifiable without performing any rounding or subtraction at all, which empties the item of its intended cognitive content."
+      "verdict": "PASS",
+      "rationale": "Read purely as a reading and load question, one rounding step and one subtraction of round numbers is well within this quarter, and the approximation symbol is introduced consistently in every shell that uses it."
     },
     "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "Four distinct presentations occur: the estimate-the-difference question, the approximation cloze written with the wavy equals sign, a truth judgement about 7902 minus 480, and the error-checking items attributed to Grace, Rico and Liza."
+      "verdict": "CONCERN",
+      "rationale": "Four shells are used, which is better than a single template, but not one sample puts estimation to any purpose; there is no situation where a rough answer would be the sensible thing to want, only naked expressions to approximate."
     },
     "competency_alignment": {
       "verdict": "CONCERN",
-      "rationale": "Some generated pairs make the estimate actively misleading. At seed 600 the true difference between 5646 and 5190 is a few hundred, yet the accepted estimate is 1000, more than double it. Rewarding an estimate that misrepresents the answer by that margin teaches the wrong habit, and the set offers no item where closeness of the operands is treated as a reason to estimate differently."
+      "rationale": "Choice sets cluster one or two units around the key, so the only round-looking option is always the right one. That means the progression is not building judgment about how much to round; it is rewarding the recognition of a tidy number."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Operands honour the up to four digits wording, the largest being 9413, and the estimated differences stay within the range this quarter's subtraction work already covers."
+      "rationale": "Minuends stay within four digits, topping out around 9413, and no estimate exceeds the range a Grade 3 subtraction objective works in."
     }
   },
   "overall": "FAIL"

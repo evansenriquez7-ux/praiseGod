@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g1_na_q1_7",
-  "reviewed_by": "reviewer-b1-quartz-mallow-4412",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c1-lantern-fescue-3061",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -11,8 +11,6 @@
     46,
     47,
     52,
-    66,
-    68,
     500,
     501,
     502,
@@ -26,27 +24,24 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "error_detect",
-      "question_text": "Manny solved: \"Start at 4. Count up 2 more. You land on ___\". Manny says the blank is 5. Is Manny correct?",
-      "correct_answer": {
-        "has_error": true,
-        "correct_value": 6
-      }
+      "formatter": "set_fill_in_blank",
+      "question_text": "Show 4 + 2 on the number line.",
+      "correct_answer": 6
     },
     {
       "seed": 43,
-      "formatter": "read_mcq",
-      "question_text": "⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ — There are 18 stars.\n⭐ — 1 more star is added.\nHow many total stars are there?",
-      "correct_answer": "D",
+      "formatter": "mcq",
+      "question_text": "Start at 18. Count up 1 more. What number do you land on?",
+      "correct_answer": 19,
       "options": [
         {
           "key": "A",
-          "value": 18,
-          "is_correct": false
+          "value": 19,
+          "is_correct": true
         },
         {
           "key": "B",
-          "value": 17,
+          "value": 18,
           "is_correct": false
         },
         {
@@ -56,30 +51,30 @@
         },
         {
           "key": "D",
-          "value": 19,
-          "is_correct": true
+          "value": 29,
+          "is_correct": false
         }
       ]
     },
     {
       "seed": 44,
-      "formatter": "mcq",
-      "question_text": "One group has 10 items and another group has 10 items. If you put them together, how many items are there in all?",
-      "correct_answer": 20,
+      "formatter": "read_mcq",
+      "question_text": "📚📚📚📚📚📚📚📚📚📚 — There are 10 books.\n📚📚📚📚📚📚📚📚📚📚 — 10 more books are added.\nHow many total books are there?",
+      "correct_answer": "D",
       "options": [
         {
           "key": "A",
-          "value": 30,
+          "value": 10,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 21,
+          "value": 0,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 19,
+          "value": 21,
           "is_correct": false
         },
         {
@@ -91,153 +86,78 @@
     },
     {
       "seed": 45,
-      "formatter": "mcq",
-      "question_text": "One group has 4 items and another group has 13 items. If you put them together, how many items are there in all?",
-      "correct_answer": 17,
-      "options": [
-        {
-          "key": "A",
-          "value": 17,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 16,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 18,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 27,
-          "is_correct": false
-        }
-      ]
+      "formatter": "error_detect",
+      "question_text": "Pia solved: \"4 + 13 = ___\". Pia says the blank is 18. Is Pia correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 17
+      }
     },
     {
       "seed": 46,
-      "formatter": "mcq",
-      "question_text": "Start at 12. Count up 7 more. What number do you land on?",
+      "formatter": "cloze",
+      "question_text": "Start at 12. Count up 7 more. You land on ___",
       "correct_answer": 19,
       "options": [
         {
           "key": "A",
           "value": 18,
+          "text": "18",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 29,
+          "text": "29",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 19,
+          "text": "19",
           "is_correct": true
         },
         {
           "key": "D",
           "value": 20,
+          "text": "20",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 47,
-      "formatter": "cloze",
-      "question_text": "One group has 1 item and another group has 10 items. Putting them together makes ___ items in all.",
-      "correct_answer": 11,
-      "options": [
-        {
-          "key": "A",
-          "value": 10,
-          "text": "10",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 21,
-          "text": "21",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 11,
-          "text": "11",
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 12,
-          "text": "12",
-          "is_correct": false
-        }
-      ]
+      "formatter": "read_fill_in_blank",
+      "question_text": "The two parts are 1 and 10. What is the sum?",
+      "correct_answer": 11
     },
     {
       "seed": 52,
-      "formatter": "read_fill_in_blank",
-      "question_text": "The two parts are 1 and 7. What is the sum?",
-      "correct_answer": 8
-    },
-    {
-      "seed": 66,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Show 12 + 7 on the number line.",
-      "correct_answer": 19
-    },
-    {
-      "seed": 68,
       "formatter": "true_false",
-      "question_text": "One group has 13 items and another group has 1 item. Putting them together makes 14 items in all. True or False?",
-      "correct_answer": true
+      "question_text": "One group has 1 item and another group has 7 items. Putting them together makes 9 items in all. True or False?",
+      "correct_answer": false
     },
     {
       "seed": 500,
-      "formatter": "read_mcq",
-      "question_text": "🥤🥤🥤🥤🥤🥤🥤🥤🥤🥤🥤🥤 — There are 12 drinks.\n🥤🥤🥤🥤🥤🥤🥤 — 7 more drinks are added.\nHow many total drinks are there?",
-      "correct_answer": "B",
-      "options": [
-        {
-          "key": "A",
-          "value": 7,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 19,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 5,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 20,
-          "is_correct": false
-        }
-      ]
+      "formatter": "read_fill_in_blank",
+      "question_text": "The two parts are 12 and 7. What is the sum?",
+      "correct_answer": 19
     },
     {
       "seed": 501,
       "formatter": "true_false",
-      "question_text": "One group has 15 items and another group has 2 items. Putting them together makes 17 items in all. True or False?",
-      "correct_answer": true
+      "question_text": "One group has 15 items and another group has 2 items. Putting them together makes 16 items in all. True or False?",
+      "correct_answer": false
     },
     {
       "seed": 502,
-      "formatter": "mcq",
-      "question_text": "One group has 4 items and another group has 14 items. If you put them together, how many items are there in all?",
-      "correct_answer": 18,
+      "formatter": "read_mcq",
+      "question_text": "🌳🌳🌳🌳 — There are 4 trees.\n🌳🌳🌳🌳🌳🌳🌳🌳🌳🌳🌳🌳🌳🌳 — 14 more trees are added.\nHow many total trees are there?",
+      "correct_answer": "B",
       "options": [
         {
           "key": "A",
-          "value": 28,
+          "value": 4,
           "is_correct": false
         },
         {
@@ -247,12 +167,12 @@
         },
         {
           "key": "C",
-          "value": 19,
+          "value": 17,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 17,
+          "value": 14,
           "is_correct": false
         }
       ]
@@ -260,163 +180,137 @@
     {
       "seed": 600,
       "formatter": "true_false",
-      "question_text": "One group has 11 items and another group has 7 items. Putting them together makes 18 items in all. True or False?",
-      "correct_answer": true
+      "question_text": "One group has 11 items and another group has 7 items. Putting them together makes 17 items in all. True or False?",
+      "correct_answer": false
     },
     {
       "seed": 601,
-      "formatter": "mcq",
-      "question_text": "Start at 10. Count up 5 more. What number do you land on?",
+      "formatter": "cloze",
+      "question_text": "Start at 10. Count up 5 more. You land on ___",
       "correct_answer": 15,
       "options": [
         {
           "key": "A",
           "value": 15,
+          "text": "15",
           "is_correct": true
         },
         {
           "key": "B",
           "value": 14,
+          "text": "14",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 16,
+          "text": "16",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 25,
+          "text": "25",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 603,
-      "formatter": "cloze",
-      "question_text": "Start at 4. Count up 3 more. You land on ___",
+      "formatter": "mcq",
+      "question_text": "Start at 4. Count up 3 more. What number do you land on?",
       "correct_answer": 7,
       "options": [
         {
           "key": "A",
           "value": 8,
-          "text": "8",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 17,
-          "text": "17",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 7,
-          "text": "7",
           "is_correct": true
         },
         {
           "key": "D",
           "value": 6,
-          "text": "6",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 604,
-      "formatter": "error_detect",
-      "question_text": "Carlo solved: \"Start at 17. Count up 1 more. You land on ___\". Carlo says the blank is 18. Is Carlo correct?",
-      "correct_answer": {
-        "has_error": false,
-        "correct_value": 18
-      }
+      "formatter": "true_false",
+      "question_text": "Start at 17. Count up 1 more. You land on 19. True or False?",
+      "correct_answer": false
     },
     {
       "seed": 605,
-      "formatter": "cloze",
-      "question_text": "Start at 11. Count up 7 more. You land on ___",
-      "correct_answer": 18,
+      "formatter": "read_mcq",
+      "question_text": "The dot is at 11 and it moves forward 7 numbers. Starting from 11, just count up 7 numbers. Which number will the dot land on?",
+      "correct_answer": "B",
       "options": [
         {
           "key": "A",
           "value": 28,
-          "text": "28",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 18,
-          "text": "18",
           "is_correct": true
         },
         {
           "key": "C",
           "value": 19,
-          "text": "19",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 17,
-          "text": "17",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 606,
-      "formatter": "mcq",
-      "question_text": "Start at 18. Count up 1 more. What number do you land on?",
-      "correct_answer": 19,
-      "options": [
-        {
-          "key": "A",
-          "value": 20,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 29,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 18,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 19,
-          "is_correct": true
-        }
-      ]
+      "formatter": "error_detect",
+      "question_text": "Manny solved: \"Start at 18. Count up 1 more. You land on ___\". Manny says the blank is 19. Is Manny correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 19
+      }
     }
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "Both descriptions the competency names are enacted literally - items that start at a number and 'Count up' a stated amount, and items that 'put them together' from two groups - alongside pictured sets and a number-line render."
+      "rationale": "Both descriptions the competency names are explicitly enacted rather than implied: counting up appears as starting at a number and counting on, and putting together appears verbatim in the group-combining items, with a part-whole item asking for the sum of two stated parts."
     },
     "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "Sums stay within 20 as required, but no sampled pair bridges a ten. Every addition is either ten-anchored or a small amount added to a larger one, so the case where counting up crosses a decade - the hard half of this skill - is never illustrated."
+      "verdict": "PASS",
+      "rationale": "The variety of models clause is genuinely met - a number line to move along, pictured rows of books and trees to combine, and an abstract two-part frame - and the addition is approached both as an increment of one and as a join of two sizeable groups."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "One addition per item with four short options, and the error-detection render names a child and states the claim plainly enough that a Grade 1 pupil can judge it."
+      "rationale": "Single-step joins with no regrouping language, plus short check-my-work items naming a pupil and a proposed answer, keep the reasoning at one operation, which suits Quarter 1; the emoji rows keep the pictorial model literally countable."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "Several interaction types appear across the set, including judging another pupil's stated answer, a true-or-false claim, a typed sum from two named parts, and emoji groups that are added to."
+      "rationale": "Seven different response formats appear across the sixteen samples, including an error-detection item and a verdict on a stated total, so the pupil encounters addition as something to perform, to illustrate, and to check."
     },
     "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "As seeds climb, the starting number rises toward the upper teens while the count-up step stays small enough to actually count, which is a sensible internal progression for illustrating addition."
+      "verdict": "CONCERN",
+      "rationale": "All four true-or-false samples key to False, so that slice can be swept without adding anything - and the generator demonstrably can vary a verdict, since the error-detection pair splits, with one item flagging an incorrect claim and another confirming a correct one. The decoys elsewhere also lean on a fixed decade-shift pattern, offering 29 beside 19 and 25 beside 15, which repeats one misconception rather than sampling several."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "The largest total is 20 and every sum lands at or below it, matching the ceiling the competency states without stopping short of it."
+      "rationale": "Sums run up to exactly 20 - the pictured item joining two rows of ten reaches the ceiling - and no sample crosses it, while addends stay small enough to count on from."
     }
   },
   "overall": "CONCERN"

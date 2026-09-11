@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g3_dp_q3_0",
-  "reviewed_by": "reviewer-r2-amber-trellis-1903",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c5-tarragon-flint-2549",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -9,8 +9,7 @@
     44,
     45,
     46,
-    50,
-    55,
+    48,
     500,
     501,
     502,
@@ -22,28 +21,32 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "A coin toss experiment was conducted with 15 tosses. The results are: Heads: 5, Tails: 10. How many times did the coin land on Heads?",
       "correct_answer": 5,
       "options": [
         {
           "key": "A",
           "value": 6,
+          "text": "6",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 10,
+          "text": "10",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 5,
+          "text": "5",
           "is_correct": true
         },
         {
           "key": "D",
           "value": 15,
+          "text": "15",
           "is_correct": false
         }
       ]
@@ -110,143 +113,67 @@
     },
     {
       "seed": 45,
-      "formatter": "mcq",
-      "question_text": "A student spun a spinner 24 times and recorded: Red: 10, Blue: 4, Green: 6, Yellow: 4. How many times did the spinner land on Blue?",
-      "correct_answer": 4,
-      "options": [
-        {
-          "key": "A",
-          "value": 10,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 6,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 7,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 4,
-          "is_correct": true
-        }
-      ]
-    },
-    {
-      "seed": 46,
-      "formatter": "mcq",
-      "question_text": "A coin was tossed 10 times. Heads occurred 6 times and Tails occurred 4 times. How many more times did Heads land than Tails?",
-      "correct_answer": 2,
-      "options": [
-        {
-          "key": "A",
-          "value": 3,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 2,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 6,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 1,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 50,
       "formatter": "true_false",
-      "question_text": "In a probability experiment, a tile was picked from a bag and replaced 20 times. Results: Red tile: 7, Blue tile: 7, Green tile: 6. How many times was a Red tile drawn? The answer is 10. True or False?",
+      "question_text": "A student spun a spinner 24 times and recorded: Red: 10, Blue: 4, Green: 6, Yellow: 4. How many times did the spinner land on Blue? The answer is 6. True or False?",
       "correct_answer": false
     },
     {
-      "seed": 55,
+      "seed": 46,
+      "formatter": "true_false",
+      "question_text": "A coin was tossed 10 times. Heads occurred 6 times and Tails occurred 4 times. How many more times did Heads land than Tails? The answer is 2. True or False?",
+      "correct_answer": true
+    },
+    {
+      "seed": 48,
       "formatter": "error_detect",
-      "question_text": "Grace solved this problem: \"A student recorded coin toss results in a table: Heads (6), Tails (6). How many total tosses were recorded in the experiment?\" Grace says the answer is 6. Is Grace correct?",
+      "question_text": "Noel solved this problem: \"A spinner experiment recorded these outcomes: Red: 5, Blue: 8, Green: 1, Yellow: 6. What is the total number of spins in the experiment?\" Noel says the answer is 20. Is Noel correct?",
       "correct_answer": {
-        "has_error": true,
-        "correct_value": 12
+        "has_error": false,
+        "correct_value": 20
       }
     },
     {
       "seed": 500,
-      "formatter": "error_detect",
-      "question_text": "Rico solved this problem: \"In a probability experiment, a tile was picked from a bag and replaced 25 times. Results: Red tile: 9, Blue tile: 10, Green tile: 6. How many times was a Blue tile drawn?\" Rico says the answer is 10. Is Rico correct?",
-      "correct_answer": {
-        "has_error": false,
-        "correct_value": 10
-      }
+      "formatter": "true_false",
+      "question_text": "In a probability experiment, a tile was picked from a bag and replaced 25 times. Results: Red tile: 9, Blue tile: 10, Green tile: 6. How many times was a Blue tile drawn? The answer is 11. True or False?",
+      "correct_answer": false
     },
     {
       "seed": 501,
-      "formatter": "cloze",
+      "formatter": "mcq",
       "question_text": "A spinner with colored sections was spun 24 times. The outcomes recorded are: Red: 7, Blue: 12, Green: 5. Which color was landed on most often?",
       "correct_answer": "Blue",
       "options": [
         {
           "key": "A",
           "value": "Green",
-          "text": "Green",
           "is_correct": false
         },
         {
           "key": "B",
           "value": "Orange",
-          "text": "Orange",
           "is_correct": false
         },
         {
           "key": "C",
           "value": "Blue",
-          "text": "Blue",
           "is_correct": true
         },
         {
           "key": "D",
           "value": "Red",
-          "text": "Red",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 502,
-      "formatter": "mcq",
-      "question_text": "A spinner experiment recorded these outcomes: Red: 8, Blue: 6, Green: 3, Yellow: 3. What is the total number of spins in the experiment?",
-      "correct_answer": 20,
-      "options": [
-        {
-          "key": "A",
-          "value": 17,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 20,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 25,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 22,
-          "is_correct": false
-        }
-      ]
+      "formatter": "error_detect",
+      "question_text": "Dante solved this problem: \"A spinner experiment recorded these outcomes: Red: 8, Blue: 6, Green: 3, Yellow: 3. What is the total number of spins in the experiment?\" Dante says the answer is 20. Is Dante correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 20
+      }
     },
     {
       "seed": 600,
@@ -310,60 +237,37 @@
     },
     {
       "seed": 602,
-      "formatter": "mcq",
-      "question_text": "In a die rolling experiment of 18 rolls, the results are: Face 1: 2, Face 2: 1, Face 3: 3, Face 4: 4, Face 5: 5, Face 6: 3. How many times did Face 1 appear?",
-      "correct_answer": 2,
-      "options": [
-        {
-          "key": "A",
-          "value": 3,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 1,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 4,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 2,
-          "is_correct": true
-        }
-      ]
+      "formatter": "error_detect",
+      "question_text": "Jose solved this problem: \"In a die rolling experiment of 18 rolls, the results are: Face 1: 2, Face 2: 1, Face 3: 3, Face 4: 4, Face 5: 5, Face 6: 3. How many times did Face 1 appear?\" Jose says the answer is 2. Is Jose correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 2
+      }
     },
     {
       "seed": 603,
-      "formatter": "cloze",
+      "formatter": "mcq",
       "question_text": "A spinner experiment recorded these outcomes: Red: 12, Blue: 7, Green: 5, Yellow: 6. What is the total number of spins in the experiment?",
       "correct_answer": 30,
       "options": [
         {
           "key": "A",
           "value": 27,
-          "text": "27",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 35,
-          "text": "35",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 30,
-          "text": "30",
           "is_correct": true
         },
         {
           "key": "D",
           "value": 32,
-          "text": "32",
           "is_correct": false
         }
       ]
@@ -371,29 +275,29 @@
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "FAIL",
-      "rationale": "The competency verb is 'Collect data from experiments', but in every sample the data have already been collected and tabulated for the learner, who is only asked to read a figure back out ('How many times did the coin land on Heads?'). Nothing requires tallying, recording an outcome, or building the record; the assessed skill is table interpretation, which is a different competency."
+      "verdict": "CONCERN",
+      "rationale": "The competency verb is to collect data from experiments, but every stem hands the learner a finished tally and asks a read-off question; nothing asks the pupil to tally, record or organise the outcomes of a trial. Seed 46 goes further and asks 'How many more times did Heads land than Tails?', which is comparison of already-collected data rather than collection."
     },
     "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The experiment types the competency exemplifies are all represented: coin tosses, a die rolling run reported face by face, spinner sections, and tiles drawn with replacement. Questions also range over a single category count, a comparison, a most-frequent outcome, and a total."
+      "verdict": "CONCERN",
+      "rationale": "Experiment types are well spread (coin, spinner, tile-in-bag, and a die across six faces), so the competency's named examples both appear. However all three error_detect items resolve to has_error False, so 'Is Noel correct?', 'Is Dante correct?' and 'Is Jose correct?' all answer yes; the mistaken-tally case the format exists to test is never generated."
     },
     "cognitive_capacity": {
-      "verdict": "CONCERN",
-      "rationale": "Counts and stated trial totals reconcile correctly wherever both are shown, which is good, but the most-often item lists Orange as a choice when the recorded outcomes are only Red, Blue and Green. Offering a colour that was never part of the experiment undermines the reading-from-data reasoning the item is meant to test."
+      "verdict": "PASS",
+      "rationale": "Trial counts run from 10 to 25 and each category count is a one- or two-digit number, so summing four outcome counts to 30 is squarely within Grade 3 Quarter 3 addition. Sentence length stays short and the outcome vocabulary (heads, tails, spinner, face) needs no prior teaching."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "The node varies both the apparatus and the question being asked of the record, and it includes a truth-judgement form and a checking-another-pupil's-answer form alongside direct questions, so presentation is not monotonous."
+      "rationale": "Four distinct response shapes appear across the seeds (cloze, mcq, true_false, error_detect) and the question itself alternates between single-category lookup, most-frequent outcome, difference between two outcomes, and total spins. That is genuine presentational range, not one template renumbered."
     },
     "competency_alignment": {
-      "verdict": "CONCERN",
-      "rationale": "Difficulty rises by adding outcome categories and larger totals, for example six die faces summing to 18 rolls, which stretches how much of a table a child must scan. That builds reading stamina rather than any part of gathering data from an experiment, so the progression climbs an axis the competency does not name."
+      "verdict": "PASS",
+      "rationale": "As the seeds advance the added demand stays inside data handling itself: from naming one recorded count, to identifying the most frequent colour, to totalling every outcome. Nothing shifts the load onto an unrelated axis such as larger numerals or extra arithmetic steps."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "The competency limits experiments to a small number of possible outcomes, and the samples honour that: at most six faces or four spinner colours, with trial totals of ten to thirty that a Grade 3 class could plausibly run."
+      "rationale": "Outcome counts never exceed 12 and totals never exceed 30, which suits an experiment with 'a small number of possible outcomes' as the competency phrases it. The six-face die item keeps each face count in single digits."
     }
   },
-  "overall": "FAIL"
+  "overall": "CONCERN"
 }

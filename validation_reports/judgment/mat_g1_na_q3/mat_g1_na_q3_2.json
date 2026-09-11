@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g1_na_q3_2",
-  "reviewed_by": "reviewer-b2-tallow-verdigris-8130",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c2-basalt-yarrow-7194",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -9,8 +9,6 @@
     44,
     45,
     46,
-    50,
-    72,
     500,
     501,
     502,
@@ -24,28 +22,32 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "mcq",
-      "question_text": "What number completes the expression: 3 + 2 = 1 + ___?",
+      "formatter": "cloze",
+      "question_text": "3 + 2 = 1 + ___",
       "correct_answer": 4,
       "options": [
         {
           "key": "A",
           "value": 8,
+          "text": "8",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 5,
+          "text": "5",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 4,
+          "text": "4",
           "is_correct": true
         },
         {
           "key": "D",
           "value": 7,
+          "text": "7",
           "is_correct": false
         }
       ]
@@ -80,31 +82,9 @@
     },
     {
       "seed": 44,
-      "formatter": "mcq",
-      "question_text": "What number completes the expression: 3 + 12 = 8 + ___?",
-      "correct_answer": 7,
-      "options": [
-        {
-          "key": "A",
-          "value": 18,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 7,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 8,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 27,
-          "is_correct": false
-        }
-      ]
+      "formatter": "true_false",
+      "question_text": "In 3 + 12 = 8 + ___, the missing number is 7. True or False?",
+      "correct_answer": true
     },
     {
       "seed": 45,
@@ -163,44 +143,6 @@
       ]
     },
     {
-      "seed": 50,
-      "formatter": "true_false",
-      "question_text": "In 19 − 2 = 18 − ___, the missing number is 36. True or False?",
-      "correct_answer": false
-    },
-    {
-      "seed": 72,
-      "formatter": "cloze",
-      "question_text": "2 + 2 = 3 + ___",
-      "correct_answer": 1,
-      "options": [
-        {
-          "key": "A",
-          "value": 2,
-          "text": "2",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 0,
-          "text": "0",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 1,
-          "text": "1",
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 6,
-          "text": "6",
-          "is_correct": false
-        }
-      ]
-    },
-    {
       "seed": 500,
       "formatter": "true_false",
       "question_text": "In 19 − 3 = 20 − ___, the missing number is 19. True or False?",
@@ -208,60 +150,38 @@
     },
     {
       "seed": 501,
-      "formatter": "cloze",
-      "question_text": "15 − 4 = 17 − ___",
-      "correct_answer": 6,
-      "options": [
-        {
-          "key": "A",
-          "value": 15,
-          "text": "15",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 26,
-          "text": "26",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 7,
-          "text": "7",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 6,
-          "text": "6",
-          "is_correct": true
-        }
-      ]
+      "formatter": "true_false",
+      "question_text": "In 15 − 4 = 17 − ___, the missing number is 26. True or False?",
+      "correct_answer": false
     },
     {
       "seed": 502,
-      "formatter": "mcq",
-      "question_text": "What number completes the expression: 19 − 1 = 20 − ___?",
+      "formatter": "cloze",
+      "question_text": "19 − 1 = 20 − ___",
       "correct_answer": 2,
       "options": [
         {
           "key": "A",
           "value": 3,
+          "text": "3",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 2,
+          "text": "2",
           "is_correct": true
         },
         {
           "key": "C",
           "value": 19,
+          "text": "19",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 37,
+          "text": "37",
           "is_correct": false
         }
       ]
@@ -296,120 +216,76 @@
     },
     {
       "seed": 601,
-      "formatter": "cloze",
-      "question_text": "1 + 7 = 5 + ___",
-      "correct_answer": 3,
-      "options": [
-        {
-          "key": "A",
-          "value": 9,
-          "text": "9",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 3,
-          "text": "3",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 4,
-          "text": "4",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 15,
-          "text": "15",
-          "is_correct": false
-        }
-      ]
+      "formatter": "true_false",
+      "question_text": "In 1 + 7 = 5 + ___, the missing number is 3. True or False?",
+      "correct_answer": true
     },
     {
       "seed": 602,
-      "formatter": "mcq",
-      "question_text": "What number completes the expression: 6 + 8 = 10 + ___?",
+      "formatter": "cloze",
+      "question_text": "6 + 8 = 10 + ___",
       "correct_answer": 4,
       "options": [
         {
           "key": "A",
           "value": 20,
+          "text": "20",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 4,
+          "text": "4",
           "is_correct": true
         },
         {
           "key": "C",
           "value": 5,
+          "text": "5",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 22,
+          "text": "22",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 603,
+      "formatter": "true_false",
+      "question_text": "In 15 − 8 = 8 − ___, the missing number is 15. True or False?",
+      "correct_answer": false
+    },
+    {
+      "seed": 604,
       "formatter": "cloze",
-      "question_text": "15 − 8 = 8 − ___",
+      "question_text": "2 + 2 = 3 + ___",
       "correct_answer": 1,
       "options": [
         {
           "key": "A",
-          "value": 2,
-          "text": "2",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 22,
-          "text": "22",
-          "is_correct": false
-        },
-        {
-          "key": "C",
           "value": 1,
           "text": "1",
           "is_correct": true
         },
         {
-          "key": "D",
-          "value": 15,
-          "text": "15",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 604,
-      "formatter": "mcq",
-      "question_text": "What number completes the expression: 2 + 2 = 3 + ___?",
-      "correct_answer": 1,
-      "options": [
-        {
-          "key": "A",
-          "value": 1,
-          "is_correct": true
-        },
-        {
           "key": "B",
           "value": 2,
+          "text": "2",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 6,
+          "text": "6",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 0,
+          "text": "0",
           "is_correct": false
         }
       ]
@@ -423,28 +299,28 @@
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "The competency's verb is to write an equivalent expression, but the pupil is never asked to produce one: the equivalent side is pre-written and only its final number is blanked, as in 'What number completes the expression: 3 + 2 = 1 + ___?'. Choosing a number out of four options is a narrower act than composing an equivalent expression."
+      "verdict": "PASS",
+      "rationale": "Items present a pair of expressions joined by an equals sign with one term withheld, matching the worked examples in the competency text, and every sampled key balances the two sides correctly when checked."
     },
     "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "Both worked cases in the competency's own examples are generated: addition equivalences such as 6 + 8 matched against 10 plus a blank, and subtraction equivalences such as 18 − 8 matched against 13 minus a blank."
+      "verdict": "CONCERN",
+      "rationale": "Addition and subtraction pairs both appear, but the blank sits in the same slot every time - the trailing operand on the right-hand side. The competency's verb is to write an equivalent expression, and reducing that to supplying one final number never asks a pupil to construct the alternative expression themselves."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Both expressions stay inside 20, the two sides are displayed on one line, and the pupil needs only to evaluate one side and then find the complement -- two steps, which is reasonable for Quarter 3."
+      "rationale": "Equivalence is presented with small operands, as in '3 + 2 = 1 + ___', so a Grade 1 pupil can evaluate one side and then reason back on the other without holding large quantities in mind."
     },
     "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "There is no model, picture or context anywhere; all sixteen samples are the same symbolic equation with the same blank position, differing only in whether the shell is multiple choice, a typed blank or a true/false claim."
+      "verdict": "PASS",
+      "rationale": "Symbolic presentation is inherent to this competency, and within that the sample alternates between supplying the term, choosing it, and judging a claimed term, which is adequate rather than monotonous."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "The gap between the two expressions widens as seeds progress (from 2 + 2 against 3 to 15 − 8 against 8), which is the axis that actually makes an equivalence harder to complete."
+      "rationale": "The ramp runs through the gap between the two anchor numbers and whether the second expression starts higher or lower than the first, which is precisely what makes an equivalence harder to see."
     },
     "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "Operands and results all stay at 20 or below on both sides of each equation, consistent with where this sits in Grade 1."
+      "verdict": "CONCERN",
+      "rationale": "All operands respect the twenty bound, but wrong options step outside it - values such as 37, 28 and 26 are offered as candidates - and one true-or-false item invites a pupil to consider subtracting fifteen from eight, which has no answer in Grade 1 number knowledge."
     }
   },
   "overall": "CONCERN"

@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g3_mg_q4_2",
-  "reviewed_by": "reviewer-b5-marlin-obsidian-3358",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c5-tarragon-flint-2549",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -271,27 +271,27 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "CONCERN",
-      "rationale": "Completing a figure is the competency's object, yet eight of nine samples mirror a single point or one polygon vertex across the line. Only the butterfly touches a figure, and it asks for a count of dots on the right wing rather than for the missing half to be built."
+      "rationale": "The competency asks for a figure to be completed, but almost every item completes a single point rather than a figure, for instance placing the mirror image of a point 3 grid units to the left of a vertical line. Only the butterfly item, where 3 dots on the left wing must be matched on the right, works at the level of a figure."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "Both orientations of the line of symmetry occur, mirroring is asked left-to-right and right-to-left as well as above-to-below, the reflected object is sometimes a point and sometimes a polygon vertex, and the distances used span 2 to 5 units."
+      "rationale": "Vertical and horizontal lines of symmetry are both used, and reflection is asked in both directions, left to right at several seeds and right to left at seed 601, so the generator does not assume a single fixed axis or a single side."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The governing principle is stated in terms a Grade 3 pupil can act on, that each vertex on the second half must be the same distance from the line of symmetry as its partner on the first half, and all counting is in whole grid units."
+      "rationale": "Grid-unit distances stay between 2 and 5 and the reasoning is one equal-distance step, which fits Grade 3 Quarter 4. Describing positions as so many grid units above or to the left of the line avoids coordinate notation, which is appropriate restraint at this grade."
     },
     "variant_comprehensiveness": {
       "verdict": "CONCERN",
-      "rationale": "Two stems repeat word for word within the nine samples, the 3-units-left item and the 2-units-above item, and every sample is multiple choice. The butterfly is the only concrete object in the set; the rest are abstract points on an unnamed grid."
+      "rationale": "Beyond the two principle statements and the butterfly, the node is one reflection item repeated, and two stems recur verbatim across seeds, the 3-units-left point item and the 2-units-above point item. Nothing asks the pupil to spot an incorrectly completed half or to work from a figure with several vertices at once."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "The wrong options are built from the actual misconceptions of this skill rather than from noise: the doubled distance appears as 6 grid units to the right of the line, and placing the partner on the line itself or on the same side both appear, so choosing correctly requires the mirror idea."
+      "rationale": "Difficulty moves from a plain point, to a polygon vertex, to a wing with multiple matching dots, which is a coherent build toward completing a whole symmetric figure rather than an unrelated escalation."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Distances of 2 to 5 grid units keep every reflection countable on ordinary grid paper, which is the right magnitude for completing a symmetric figure by hand at this grade."
+      "rationale": "No ceiling is stated by this competency, and the distances chosen keep every reflection inside a small grid, with the doubled-distance trap of 6 units against the correct 3 included as a distractor for the common misconception."
     }
   },
   "overall": "CONCERN"

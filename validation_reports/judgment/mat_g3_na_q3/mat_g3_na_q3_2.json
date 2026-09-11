@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g3_na_q3_2",
-  "reviewed_by": "reviewer-b6-thistle-kestrel-9724",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c6-mistral-comfrey-8916",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -9,7 +9,6 @@
     44,
     45,
     46,
-    47,
     500,
     501,
     502,
@@ -21,46 +20,46 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "true_false",
-      "question_text": "41 × 6 = 246. True or False?",
-      "correct_answer": true
-    },
-    {
-      "seed": 43,
-      "formatter": "error_detect",
-      "question_text": "Grace solved: \"573 × 4 = ___\". Grace says the missing number is 2292. Is Grace correct?",
-      "correct_answer": {
-        "has_error": false,
-        "correct_value": 2292
-      }
-    },
-    {
-      "seed": 44,
       "formatter": "mcq",
-      "question_text": "What is 1000 × 10?",
-      "correct_answer": 10000,
+      "question_text": "What is 41 × 6?",
+      "correct_answer": 246,
       "options": [
         {
           "key": "A",
-          "value": 10000,
+          "value": 246,
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 1010,
+          "value": 47,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 990,
+          "value": 240,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 9990,
+          "value": 35,
           "is_correct": false
         }
       ]
+    },
+    {
+      "seed": 43,
+      "formatter": "true_false",
+      "question_text": "573 × 4 = 577. True or False?",
+      "correct_answer": false
+    },
+    {
+      "seed": 44,
+      "formatter": "error_detect",
+      "question_text": "Rico solved: \"1000 × 10 = ___\". Rico says the missing number is 10000. Is Rico correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 10000
+      }
     },
     {
       "seed": 45,
@@ -92,278 +91,176 @@
     },
     {
       "seed": 46,
-      "formatter": "mcq",
-      "question_text": "What is 702 × 2?",
+      "formatter": "cloze",
+      "question_text": "702 × 2 = ___",
       "correct_answer": 1404,
       "options": [
         {
           "key": "A",
           "value": 1402,
+          "text": "1402",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 704,
+          "text": "704",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 700,
+          "text": "700",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 1404,
+          "text": "1404",
           "is_correct": true
-        }
-      ]
-    },
-    {
-      "seed": 47,
-      "formatter": "cloze",
-      "question_text": "18 × 500 = ___",
-      "correct_answer": 9000,
-      "options": [
-        {
-          "key": "A",
-          "value": 9000,
-          "text": "9000",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 8500,
-          "text": "8500",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 518,
-          "text": "518",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 8999,
-          "text": "8999",
-          "is_correct": false
         }
       ]
     },
     {
       "seed": 500,
-      "formatter": "error_detect",
-      "question_text": "Rico solved: \"1000 × 10 = ___\". Rico says the missing number is 10000. Is Rico correct?",
-      "correct_answer": {
-        "has_error": false,
-        "correct_value": 10000
-      }
+      "formatter": "true_false",
+      "question_text": "1000 × 10 = 9999. True or False?",
+      "correct_answer": false
     },
     {
       "seed": 501,
-      "formatter": "cloze",
-      "question_text": "1000 × 10 = ___",
+      "formatter": "mcq",
+      "question_text": "What is 1000 × 10?",
       "correct_answer": 10000,
       "options": [
         {
           "key": "A",
           "value": 9990,
-          "text": "9990",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 1010,
-          "text": "1010",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 990,
-          "text": "990",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 10000,
-          "text": "10000",
           "is_correct": true
         }
       ]
     },
     {
       "seed": 502,
-      "formatter": "mcq",
-      "question_text": "What is 33 × 300?",
-      "correct_answer": 9900,
-      "options": [
-        {
-          "key": "A",
-          "value": 9899,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 333,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 9600,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 9900,
-          "is_correct": true
-        }
-      ]
+      "formatter": "error_detect",
+      "question_text": "Dante solved: \"33 × 300 = ___\". Dante says the missing number is 9900. Is Dante correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 9900
+      }
     },
     {
       "seed": 600,
-      "formatter": "cloze",
-      "question_text": "104 × 80 = ___",
-      "correct_answer": 8320,
-      "options": [
-        {
-          "key": "A",
-          "value": 8240,
-          "text": "8240",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 8320,
-          "text": "8320",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 24,
-          "text": "24",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 184,
-          "text": "184",
-          "is_correct": false
-        }
-      ]
+      "formatter": "true_false",
+      "question_text": "104 × 80 = 8320. True or False?",
+      "correct_answer": true
     },
     {
       "seed": 601,
-      "formatter": "mcq",
-      "question_text": "What is 69 × 3?",
+      "formatter": "cloze",
+      "question_text": "69 × 3 = ___",
       "correct_answer": 207,
       "options": [
         {
           "key": "A",
           "value": 207,
+          "text": "207",
           "is_correct": true
         },
         {
           "key": "B",
           "value": 204,
+          "text": "204",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 66,
+          "text": "66",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 72,
+          "text": "72",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 602,
-      "formatter": "cloze",
-      "question_text": "43 × 200 = ___",
+      "formatter": "mcq",
+      "question_text": "What is 43 × 200?",
       "correct_answer": 8600,
       "options": [
         {
           "key": "A",
           "value": 8400,
-          "text": "8400",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 243,
-          "text": "243",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 8600,
-          "text": "8600",
           "is_correct": true
         },
         {
           "key": "D",
           "value": 8599,
-          "text": "8599",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 603,
-      "formatter": "mcq",
-      "question_text": "What is 108 × 9?",
-      "correct_answer": 972,
-      "options": [
-        {
-          "key": "A",
-          "value": 117,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 963,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 972,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 99,
-          "is_correct": false
-        }
-      ]
+      "formatter": "true_false",
+      "question_text": "108 × 9 = 972. True or False?",
+      "correct_answer": true
     }
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "The stems compute products of exactly the two shapes the competency names, a multi-digit number by a single digit as with 573 and 4, and a number by a multiplier whose only non-zero digit leads, as with 33 and 300."
+      "rationale": "The two multiplier shapes the wording distinguishes are both computed: ordinary single-digit multipliers as in 69 times 3, and multipliers whose only non-zero digit leads, as in 'What is 108 × 80?' and the 43 times 200 item."
     },
     "comprehensive_coverage": {
       "verdict": "CONCERN",
-      "rationale": "Both sub-cases appear and both regrouping conditions appear, but the four-digit half of the second sub-case rests entirely on 1000 x 10, which is generated three separate times across thirteen samples under three different formatters. One repeated fact standing in for a whole size band is thin evidence that the band is really covered, and no multiplier of a thousand is ever used."
+      "rationale": "Two-digit and three-digit multiplicands with single-digit multipliers are well represented and regrouping appears both ways, but the four-digit sub-case is carried by one computation only, 1000 × 10, which is repeated across three separate seeds. One arithmetic instance is not coverage of a clause."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The single-digit multiplications require at most one carry, and the round multipliers reduce to a table fact plus trailing zeros, both of which are within third-quarter Grade 3 reach."
+      "rationale": "Multiplying by a multiple of ten by appending zeros to a simpler product is the intended third-quarter method, and nothing here requires a two-digit by two-digit algorithm the grade has not met."
     },
     "variant_comprehensiveness": {
       "verdict": "CONCERN",
-      "rationale": "Four response modes are used, but all thirteen samples are naked computation. Neither the array or area model that makes regrouping visible nor any partial-product presentation appears, so the with and without regrouping contrast is never actually shown to the pupil, only tested."
+      "rationale": "Four question shells appear, yet every one of them presents a bare product; there is no equal-groups picture, no array, and no situation in which a multiplication of this size would arise."
     },
     "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Difficulty increases by carrying demand and by the size of the round multiplier, moving from 41 by 6 up to 108 by 80, which is the multiplication skill the competency describes."
+      "verdict": "CONCERN",
+      "rationale": "Because the same 1000 by 10 computation recurs three times, a quarter of the set contributes no new demand, and the difficulty otherwise moves only by digit count rather than by whether regrouping is needed."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Products respect the stated ten-thousand ceiling and reach it exactly once, while the rest cluster in the eight to nine thousand band with 9900 and 8640, so the ceiling is tested rather than avoided."
+      "rationale": "The largest product is exactly 10 000, the stated ceiling, and it is reached rather than avoided, with 9900 and 8640 filling the band just below it."
     }
   },
   "overall": "CONCERN"

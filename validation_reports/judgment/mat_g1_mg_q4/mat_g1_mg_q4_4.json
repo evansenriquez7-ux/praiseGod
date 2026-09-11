@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g1_mg_q4_4",
-  "reviewed_by": "reviewer-b1-quartz-mallow-4412",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c1-lantern-fescue-3061",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -9,8 +9,6 @@
     44,
     45,
     46,
-    50,
-    51,
     500,
     501,
     502,
@@ -52,56 +50,38 @@
     },
     {
       "seed": 43,
-      "formatter": "read_mcq",
+      "formatter": "set_fill_in_blank",
       "question_text": "Lunch starts at 10:00 and lasts half an hour (30 minutes). What time does it end?",
-      "correct_answer": "C",
-      "options": [
-        {
-          "key": "A",
-          "value": "10:00",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "11:00",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "10:30",
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": "11:30",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": "10:30"
     },
     {
       "seed": 44,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "This month is March. What month will it be in 2 months?",
       "correct_answer": "May",
       "options": [
         {
           "key": "A",
           "value": "January",
+          "text": "January",
           "is_correct": false
         },
         {
           "key": "B",
           "value": "May",
+          "text": "May",
           "is_correct": true
         },
         {
           "key": "C",
           "value": "February",
+          "text": "February",
           "is_correct": false
         },
         {
           "key": "D",
           "value": "March",
+          "text": "March",
           "is_correct": false
         }
       ]
@@ -136,98 +116,34 @@
     },
     {
       "seed": 46,
-      "formatter": "read_mcq",
-      "question_text": "A class starts at 8:00 and lasts for 1 hour. What time does it end?",
-      "correct_answer": "B",
-      "options": [
-        {
-          "key": "A",
-          "value": "7:00",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "9:00",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": "8:00",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "10:00",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 50,
-      "formatter": "cloze",
-      "question_text": "The school program begins in April and an exhibit happens in August. How many months later is the exhibit?",
-      "correct_answer": 4,
-      "options": [
-        {
-          "key": "A",
-          "value": 6,
-          "text": "6",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 5,
-          "text": "5",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 4,
-          "text": "4",
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 3,
-          "text": "3",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 51,
       "formatter": "set_fill_in_blank",
-      "question_text": "The recess began at 9:00 and finished at 9:30. How many minutes did it last?",
-      "correct_answer": "30"
+      "question_text": "A class starts at 8:00 and lasts for 1 hour. What time does it end?",
+      "correct_answer": "9:00"
     },
     {
       "seed": 500,
-      "formatter": "cloze",
+      "formatter": "mcq",
       "question_text": "The school program begins in May and an exhibit happens in September. How many months later is the exhibit?",
       "correct_answer": 4,
       "options": [
         {
           "key": "A",
           "value": 4,
-          "text": "4",
           "is_correct": true
         },
         {
           "key": "B",
           "value": 3,
-          "text": "3",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 5,
-          "text": "5",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 6,
-          "text": "6",
           "is_correct": false
         }
       ]
@@ -273,7 +189,7 @@
         },
         {
           "key": "B",
-          "value": "Sunday",
+          "value": "Thursday",
           "is_correct": false
         },
         {
@@ -318,34 +234,60 @@
     },
     {
       "seed": 601,
-      "formatter": "set_fill_in_blank",
+      "formatter": "read_mcq",
       "question_text": "The snack time began at 8:00 and finished at 8:30. How many minutes did it last?",
-      "correct_answer": "30"
+      "correct_answer": "D",
+      "options": [
+        {
+          "key": "A",
+          "value": 60,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 15,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 45,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 30,
+          "is_correct": true
+        }
+      ]
     },
     {
       "seed": 602,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "The school program begins in May and an exhibit happens in August. How many months later is the exhibit?",
       "correct_answer": 3,
       "options": [
         {
           "key": "A",
           "value": 4,
+          "text": "4",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 2,
+          "text": "2",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 3,
+          "text": "3",
           "is_correct": true
         },
         {
           "key": "D",
           "value": 5,
+          "text": "5",
           "is_correct": false
         }
       ]
@@ -393,28 +335,28 @@
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "Most renders are genuine time problems, but two are plain calendar lookups - asking 'What day of the week is May 21?' - which is retrieval, not solving, and duplicates what the calendar-reading node already supplies."
+      "verdict": "PASS",
+      "rationale": "The clock and calendar items are posed as situations to resolve rather than as readings - a break that starts at 9:00 and lasts a quarter of an hour (15 minutes), a snack time measured from start to finish, a gap counted between a school program and an exhibit - which is the problem-solving the competency calls for."
     },
     "comprehensive_coverage": {
       "verdict": "FAIL",
-      "rationale": "The competency lists days in a week among its five elements, and not one of the sixteen renders computes with them. The two items mentioning weekdays are calendar lookups; nothing moves forward or back a number of days or uses the seven-day cycle. Hour, half hour, quarter hour and months are served; that element is absent outright."
+      "rationale": "The competency lists five things problems may involve and one of them, days in a week, generates no problem at all. The only day-related samples ask what day of the week is May 21 and what day of the week is June 6 - calendar look-ups identical in shape to the calendar-reading competency's own items, requiring no elapsed-time or cyclic reasoning about a week. Hour, half hour, quarter hour and months in a year are all properly sampled, which makes the single missing sub-case a gap rather than a general weakness."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Elapsed times start on the hour and run a whole, half or quarter hour, and month gaps are two to four, so each item stays at one step with no borrowing across units."
+      "rationale": "Each problem gives two facts and asks for one, minute quantities are glossed in parentheses where they appear, and the month gaps never exceed four, keeping every item to a single step that a Quarter 4 Grade 1 pupil can hold in mind."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "Formats differ in substance: choosing an end time, typing how many minutes something lasted, counting hours spent, and working out a month interval, across both choice and typed-answer modes."
+      "rationale": "Presentation rotates widely: a duration added to a start time, an end time given and the elapsed minutes asked, an elapsed span in whole hours, a month advanced by a count, and a month gap asked in the other direction - collected as selections, typed blanks and cloze answers."
     },
     "competency_alignment": {
       "verdict": "CONCERN",
-      "rationale": "Six of the sixteen renders ask 'How many months later is the exhibit?' with only the month pair changed, so a large share of the seed variation buys a repeat of one template rather than a new demand within the competency's five elements."
+      "rationale": "Two of the fifteen samples spend their seeds on plain calendar look-ups that ask no time question, so part of the generated range does not advance this competency at all; the remaining items do progress sensibly from quarter-hour to hour-scale to multi-month spans."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Clock times stay on hour and half-hour boundaries and month gaps never exceed four, both within what Grade 1 Quarter 4 can reason about."
+      "rationale": "Times stay on a 12-hour clock with minute values confined to the quarter, half and hour marks, month intervals run from 2 to 4 within a single year, and the longest elapsed span asked is the three hours from 9:00 to 12:00."
     }
   },
   "overall": "FAIL"

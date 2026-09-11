@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g1_na_q3_4",
-  "reviewed_by": "reviewer-b2-tallow-verdigris-8130",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c2-basalt-yarrow-7194",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -9,9 +9,7 @@
     44,
     45,
     46,
-    50,
-    55,
-    85,
+    48,
     500,
     501,
     502,
@@ -25,91 +23,50 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "mcq",
-      "question_text": "Start at 12. Count back 11. What number do you land on?",
+      "formatter": "cloze",
+      "question_text": "Start at 12. Count back 11. You land on ___",
       "correct_answer": 1,
       "options": [
         {
           "key": "A",
           "value": 0,
+          "text": "0",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 2,
+          "text": "2",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 23,
+          "text": "23",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 1,
+          "text": "1",
           "is_correct": true
         }
       ]
     },
     {
       "seed": 43,
-      "formatter": "mcq",
-      "question_text": "Start at 45. Count back 10. What number do you land on?",
-      "correct_answer": 35,
-      "options": [
-        {
-          "key": "A",
-          "value": 35,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 34,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 55,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 36,
-          "is_correct": false
-        }
-      ]
+      "formatter": "error_detect",
+      "question_text": "Grace solved: \"Start at 45. Count back 10. You land on ___\". Grace says the missing number is 34. Is Grace correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 35
+      }
     },
     {
       "seed": 44,
-      "formatter": "cloze",
-      "question_text": "There are 90 stars. Taking away 20 stars leaves ___ stars.",
-      "correct_answer": 70,
-      "options": [
-        {
-          "key": "A",
-          "value": 71,
-          "text": "71",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 69,
-          "text": "69",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 110,
-          "text": "110",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 70,
-          "text": "70",
-          "is_correct": true
-        }
-      ]
+      "formatter": "true_false",
+      "question_text": "There are 90 stars. Taking away 20 stars leaves 70 stars. True or False?",
+      "correct_answer": true
     },
     {
       "seed": 45,
@@ -168,113 +125,53 @@
       ]
     },
     {
-      "seed": 50,
-      "formatter": "error_detect",
-      "question_text": "Jose solved: \"There are 43 candies. Taking away 30 candies leaves ___ candies.\". Jose says the missing number is 13. Is Jose correct?",
-      "correct_answer": {
-        "has_error": false,
-        "correct_value": 13
-      }
-    },
-    {
-      "seed": 55,
+      "seed": 48,
       "formatter": "read_mcq",
-      "question_text": "(Large group of 35 frogs) — There are 35 frogs.\nTaking away 10 frogs.\nHow many frogs are left?",
+      "question_text": "(Large group of 22 candies) — There are 22 candies.\nTaking away 10 candies.\nHow many candies are left?",
       "correct_answer": "C",
       "options": [
         {
           "key": "A",
-          "value": 35,
+          "value": 10,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 26,
+          "value": 32,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 25,
+          "value": 12,
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 24,
+          "value": 13,
           "is_correct": false
         }
       ]
-    },
-    {
-      "seed": 85,
-      "formatter": "true_false",
-      "question_text": "Start at 20. Count back 10. You land on 10. True or False?",
-      "correct_answer": true
     },
     {
       "seed": 500,
-      "formatter": "read_mcq",
-      "question_text": "(Large group of 81 drinks) — There are 81 drinks.\nTaking away 80 drinks.\nHow many drinks are left?",
-      "correct_answer": "C",
-      "options": [
-        {
-          "key": "A",
-          "value": 161,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 81,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 1,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 0,
-          "is_correct": false
-        }
-      ]
+      "formatter": "true_false",
+      "question_text": "There are 81 stars. Taking away 80 stars leaves 0 stars. True or False?",
+      "correct_answer": false
     },
     {
       "seed": 501,
-      "formatter": "cloze",
-      "question_text": "There are 91 candies. Taking away 71 candies leaves ___ candies.",
-      "correct_answer": 20,
-      "options": [
-        {
-          "key": "A",
-          "value": 20,
-          "text": "20",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 162,
-          "text": "162",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 21,
-          "text": "21",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 19,
-          "text": "19",
-          "is_correct": false
-        }
-      ]
+      "formatter": "error_detect",
+      "question_text": "Pia solved: \"There are 91 candies. Taking away 71 candies leaves ___ candies.\". Pia says the missing number is 21. Is Pia correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 20
+      }
     },
     {
       "seed": 502,
-      "formatter": "mcq",
-      "question_text": "There are 69 candies. Taking away 7 candies leaves how many candies?",
-      "correct_answer": 62,
+      "formatter": "read_mcq",
+      "question_text": "(Large group of 69 trees) — There are 69 trees.\nTaking away 7 trees.\nHow many trees are left?",
+      "correct_answer": "B",
       "options": [
         {
           "key": "A",
@@ -283,48 +180,29 @@
         },
         {
           "key": "B",
-          "value": 61,
-          "is_correct": false
+          "value": 62,
+          "is_correct": true
         },
         {
           "key": "C",
-          "value": 76,
+          "value": 69,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 62,
-          "is_correct": true
+          "value": 76,
+          "is_correct": false
         }
       ]
     },
     {
       "seed": 600,
-      "formatter": "mcq",
-      "question_text": "There are 50 erasers. Taking away 50 erasers leaves how many erasers?",
-      "correct_answer": 0,
-      "options": [
-        {
-          "key": "A",
-          "value": 0,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 1,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 2,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 100,
-          "is_correct": false
-        }
-      ]
+      "formatter": "error_detect",
+      "question_text": "Noel solved: \"There are 50 erasers. Taking away 50 erasers leaves ___ erasers.\". Noel says the missing number is 0. Is Noel correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 0
+      }
     },
     {
       "seed": 601,
@@ -334,84 +212,80 @@
     },
     {
       "seed": 602,
-      "formatter": "mcq",
-      "question_text": "There are 33 candies. Taking away 10 candies leaves how many candies?",
-      "correct_answer": 23,
+      "formatter": "read_mcq",
+      "question_text": "(Large group of 33 clovers) — There are 33 clovers.\nTaking away 10 clovers.\nHow many clovers are left?",
+      "correct_answer": "C",
       "options": [
         {
           "key": "A",
-          "value": 23,
-          "is_correct": true
+          "value": 33,
+          "is_correct": false
         },
         {
           "key": "B",
-          "value": 24,
+          "value": 22,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 43,
-          "is_correct": false
+          "value": 23,
+          "is_correct": true
         },
         {
           "key": "D",
-          "value": 22,
+          "value": 10,
           "is_correct": false
         }
       ]
     },
     {
       "seed": 603,
-      "formatter": "cloze",
-      "question_text": "Start at 48. Count back 30. You land on ___",
-      "correct_answer": 18,
+      "formatter": "read_mcq",
+      "question_text": "The dot is at 48 and it moves backward 30 numbers. Starting from 48, just count back 30 numbers. Which number will the dot land on?",
+      "correct_answer": "A",
       "options": [
         {
           "key": "A",
           "value": 18,
-          "text": "18",
           "is_correct": true
         },
         {
           "key": "B",
           "value": 17,
-          "text": "17",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 19,
-          "text": "19",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 78,
-          "text": "78",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 604,
-      "formatter": "mcq",
-      "question_text": "Start at 35. Count back 15. What number do you land on?",
-      "correct_answer": 20,
+      "formatter": "read_mcq",
+      "question_text": "(Large group of 35 books) — There are 35 books.\nTaking away 15 books.\nHow many books are left?",
+      "correct_answer": "B",
       "options": [
         {
           "key": "A",
-          "value": 21,
+          "value": 15,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 50,
-          "is_correct": false
+          "value": 20,
+          "is_correct": true
         },
         {
           "key": "C",
-          "value": 20,
-          "is_correct": true
+          "value": 35,
+          "is_correct": false
         },
         {
           "key": "D",
@@ -452,27 +326,27 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "Subtraction is carried out with no column borrowing anywhere (12 − 11, 63 − 60, 91 − 71 and 98-scale pairs all subtract cleanly), and the pictorial and number-line supports the competency calls for are actually used."
+      "rationale": "I checked each subtraction digit by digit and none of the sampled pairs requires regrouping, so the without-regrouping restriction is genuinely enforced by the generator and not merely asserted."
     },
     "comprehensive_coverage": {
       "verdict": "CONCERN",
-      "rationale": "The two-digit minus two-digit case is abundant, but the two-digit minus one-digit case that the competency names separately is represented by a single sample, 'There are 69 candies. Taking away 7 candies', out of seventeen. One instance is not a built sub-case."
+      "rationale": "Two minus shapes are named, yet the two-digit-minus-one-digit case is represented by essentially a single item, the pictured group where 'Taking away 7 trees.' is applied to sixty-nine. Fourteen of the fifteen sampled items are two-digit minus two-digit, so one named sub-case is generated only incidentally."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The count-back framing gives a strategy a Grade 1 pupil can perform on a line, and the numbers, though larger than in the earlier subtraction node, never require regrouping."
+      "rationale": "Count-back instructions are spelled out before the question is asked, the subtractions are carry-free, and the pictured sets carry a written total so a pupil is not forced to count sixty-nine symbols one at a time."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "Four distinct presentations recur: counting back from a start number, a dot travelling backward on a line, quantities of objects being removed, and checking whether Jose's stated result is right."
+      "rationale": "The sample includes number-line movement such as 'The dot is at 48 and it moves backward 30 numbers', large pictured groups, abstract count-back, and an error-checking format, which is the model variety the competency requires."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Later seeds reach the boundary cases that matter for this skill -- subtracting the entire amount to leave 0, and subtracting 80 from 81 -- rather than drifting onto an unrelated dimension."
+      "rationale": "The progression moves from small teens through to values in the nineties while holding the no-regrouping constraint, so what is getting harder is the number size within the exact skill named."
     },
     "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "Minuend and subtrahend are both under 100 throughout, the largest being 91, which matches the stated bound."
+      "verdict": "CONCERN",
+      "rationale": "Stems keep both numbers below one hundred, but option lists breach that ceiling twice over, offering 123 against a subtraction from sixty-three and 110 against one from seventy - values that cannot arise from taking anything away."
     }
   },
   "overall": "CONCERN"

@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g2_mg_q2_2",
-  "reviewed_by": "reviewer-b3-cinder-halyard-2276",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c3-nimbus-sorrel-4825",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -9,7 +9,6 @@
     44,
     45,
     46,
-    50,
     500,
     501,
     502,
@@ -21,28 +20,32 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "A wooden ruler measures 22 cm. About how many centimeters is that, rounded to the nearest 10 cm?",
       "correct_answer": 20,
       "options": [
         {
           "key": "A",
           "value": 30,
+          "text": "30",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 40,
+          "text": "40",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 10,
+          "text": "10",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 20,
+          "text": "20",
           "is_correct": true
         }
       ]
@@ -77,28 +80,32 @@
     },
     {
       "seed": 44,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "The distance from the library to the garden is 21 m. About how many meters is that, rounded to the nearest 10 m?",
       "correct_answer": 20,
       "options": [
         {
           "key": "A",
           "value": 40,
+          "text": "40",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 20,
+          "text": "20",
           "is_correct": true
         },
         {
           "key": "C",
           "value": 30,
+          "text": "30",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 10,
+          "text": "10",
           "is_correct": false
         }
       ]
@@ -160,65 +167,29 @@
       ]
     },
     {
-      "seed": 50,
-      "formatter": "cloze",
-      "question_text": "The distance from the bench to the mango tree is 16 m. About how many meters is that, rounded to the nearest 5 m?",
-      "correct_answer": 15,
-      "options": [
-        {
-          "key": "A",
-          "value": 15,
-          "text": "15",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 25,
-          "text": "25",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 10,
-          "text": "10",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 20,
-          "text": "20",
-          "is_correct": false
-        }
-      ]
-    },
-    {
       "seed": 500,
-      "formatter": "cloze",
+      "formatter": "mcq",
       "question_text": "A classroom hallway measures 21 m. About how many meters is that, rounded to the nearest 10 m?",
       "correct_answer": 20,
       "options": [
         {
           "key": "A",
           "value": 40,
-          "text": "40",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 30,
-          "text": "30",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 10,
-          "text": "10",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 20,
-          "text": "20",
           "is_correct": true
         }
       ]
@@ -253,28 +224,32 @@
     },
     {
       "seed": 502,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "A wooden ruler measures 21 cm. About how many centimeters is that, rounded to the nearest 10 cm?",
       "correct_answer": 20,
       "options": [
         {
           "key": "A",
           "value": 40,
+          "text": "40",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 30,
+          "text": "30",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 10,
+          "text": "10",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 20,
+          "text": "20",
           "is_correct": true
         }
       ]
@@ -341,28 +316,32 @@
     },
     {
       "seed": 602,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "The distance from the bench to the mango tree is 18 m. About how many meters is that, rounded to the nearest 5 m?",
       "correct_answer": 20,
       "options": [
         {
           "key": "A",
           "value": 20,
+          "text": "20",
           "is_correct": true
         },
         {
           "key": "B",
           "value": 25,
+          "text": "25",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 30,
+          "text": "30",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 15,
+          "text": "15",
           "is_correct": false
         }
       ]
@@ -399,27 +378,27 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "FAIL",
-      "rationale": "Estimation means arriving at a reasonable figure for a quantity you have not measured. Every sample here hands the learner an exact measurement and then asks About how many meters is that under a rounding instruction. That is a rounding exercise wearing an estimation label; the competency's verb is never performed, because there is nothing left to estimate once the true value is printed in the stem."
+      "rationale": "Not one sample asks the pupil to estimate. Every item supplies an exact measurement and then asks for it rounded to the nearest 5 or nearest 10. Rounding a number already given is arithmetic on a numeral; estimating a length or distance is judging an unmeasured quantity, and that verb is never exercised."
     },
     "comprehensive_coverage": {
       "verdict": "CONCERN",
-      "rationale": "The three quantity types named do appear, centimetre lengths, metre lengths and metre distances. What is absent is any other route into estimation: no choosing the most reasonable of several candidate measures, no benchmark comparison against a known referent, no estimate-then-check pairing. One sub-skill stands in for the whole competency."
+      "rationale": "Credit where due, all three combinations the wording names do occur: centimetres for objects, metres for objects, and metres for distance. But each is delivered through the one rounding task, so the sub-cases differ only in the unit word."
     },
     "cognitive_capacity": {
-      "verdict": "CONCERN",
-      "rationale": "Rounding to the nearest 5 m is not a standard early-primary rounding benchmark and does not follow from this measurement competency; deciding that 18 sits nearer 20 than 15 requires halving an interval that is not a power of ten. That is an extra procedural demand layered on top of a Grade 2 Quarter 2 measurement objective."
+      "verdict": "PASS",
+      "rationale": "The values to be rounded stay between 14 and 35 and the rounding grain is 5 or 10, which is a reasonable arithmetic load for this grade even though it is the wrong task for this competency."
     },
     "variant_comprehensiveness": {
       "verdict": "FAIL",
-      "rationale": "All thirteen seeds instantiate a single sentence frame: an object or span measures some value, followed by a request to round it. Only the noun, the number and the rounding benchmark move. There is no word-problem setting, no visual referent, no alternate orientation, and no item where the answer is a judgment rather than a rounded numeral."
+      "rationale": "Twelve samples, one template. Each names an object or a school-to-school distance, states a measurement, and asks about how many units that is once rounded. Nothing varies except the noun, the number and the rounding grain."
     },
     "competency_alignment": {
       "verdict": "CONCERN",
-      "rationale": "The difficulty dial being turned is rounding granularity, nearest 5 against nearest 10, plus the size of the starting value. Neither dimension belongs to estimating length or distance; a learner who improves across this progression has become better at rounding, not better at judging how long something is."
+      "rationale": "The only thing that changes between an easy and a hard seed is whether the target is the nearest 5 or the nearest 10. That is a rounding-precision axis; it does not deepen any estimating skill because no estimating is taking place."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "The underlying quantities are sensible for the objects named, with book and ruler lengths in the low twenties of centimetres and school-ground distances between roughly 14 and 35 metres. No value sits outside what a Grade 2 learner could plausibly encounter or handle."
+      "rationale": "Lengths in the twenties of centimetres and distances in the teens to thirties of metres are appropriate magnitudes for the rulers, storybooks, hallways and fences described."
     }
   },
   "overall": "FAIL"

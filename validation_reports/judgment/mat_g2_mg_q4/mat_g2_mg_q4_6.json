@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g2_mg_q4_6",
-  "reviewed_by": "reviewer-b3-cinder-halyard-2276",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c3-nimbus-sorrel-4825",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -9,7 +9,6 @@
     44,
     45,
     46,
-    50,
     500,
     501,
     502,
@@ -21,28 +20,32 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "A triangular flower bed has sides 2 m, 1 m, and 2 m. How much edging is needed to go all the way around it?",
       "correct_answer": 5,
       "options": [
         {
           "key": "A",
           "value": 6,
+          "text": "6",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 7,
+          "text": "7",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 4,
+          "text": "4",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 5,
+          "text": "5",
           "is_correct": true
         }
       ]
@@ -77,28 +80,32 @@
     },
     {
       "seed": 44,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "A square garden has a side of 9 m. How much fencing is needed to go all the way around it?",
       "correct_answer": 36,
       "options": [
         {
           "key": "A",
           "value": 36,
+          "text": "36",
           "is_correct": true
         },
         {
           "key": "B",
           "value": 37,
+          "text": "37",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 38,
+          "text": "38",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 35,
+          "text": "35",
           "is_correct": false
         }
       ]
@@ -160,65 +167,29 @@
       ]
     },
     {
-      "seed": 50,
-      "formatter": "cloze",
-      "question_text": "A square garden has a side of 5 m. How much fencing is needed to go all the way around it?",
-      "correct_answer": 20,
-      "options": [
-        {
-          "key": "A",
-          "value": 21,
-          "text": "21",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 20,
-          "text": "20",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 19,
-          "text": "19",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 22,
-          "text": "22",
-          "is_correct": false
-        }
-      ]
-    },
-    {
       "seed": 500,
-      "formatter": "cloze",
+      "formatter": "mcq",
       "question_text": "A square garden has a side of 17 m. How much fencing is needed to go all the way around it?",
       "correct_answer": 68,
       "options": [
         {
           "key": "A",
           "value": 70,
-          "text": "70",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 67,
-          "text": "67",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 69,
-          "text": "69",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 68,
-          "text": "68",
           "is_correct": true
         }
       ]
@@ -253,28 +224,32 @@
     },
     {
       "seed": 502,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "A triangular flower bed has sides 12 m, 6 m, and 17 m. How much edging is needed to go all the way around it?",
       "correct_answer": 35,
       "options": [
         {
           "key": "A",
           "value": 34,
+          "text": "34",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 36,
+          "text": "36",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 35,
+          "text": "35",
           "is_correct": true
         },
         {
           "key": "D",
           "value": 37,
+          "text": "37",
           "is_correct": false
         }
       ]
@@ -369,28 +344,32 @@
     },
     {
       "seed": 604,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "A rectangular garden is 5 m long and 4 m wide. How much fencing is needed to go all the way around it?",
       "correct_answer": 18,
       "options": [
         {
           "key": "A",
           "value": 17,
+          "text": "17",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 18,
+          "text": "18",
           "is_correct": true
         },
         {
           "key": "C",
           "value": 19,
+          "text": "19",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 20,
+          "text": "20",
           "is_correct": false
         }
       ]
@@ -399,27 +378,27 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "Every item embeds the perimeter calculation in a purpose, asking how much fencing or edging is needed to go all the way around a garden or flower bed. That framing is what turns a computation into a problem, and it matches the solve problems wording directly."
+      "rationale": "Each item embeds a perimeter calculation in a real reason to go around a shape, asking how much fencing or edging is needed, and all three named figures carry their own situation."
     },
     "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The three shapes named in the wording each get a matching real context: triangular flower beds needing edging, square gardens and rectangular gardens needing fencing. Several instances of each appear rather than one token example per shape."
+      "verdict": "CONCERN",
+      "rationale": "Only the forward direction is generated. No sample supplies a perimeter and asks for a missing side, and none requires two steps such as comparing the fencing for two plots, which a solve-problems competency should reach."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Each situation gives only the measurements needed and states the goal in everyday terms, so the modelling step is light and the arithmetic, at most three two-digit addends or a quadrupling, is secure by Quarter 4. Metre units fit the garden and flower-bed settings."
+      "rationale": "One-step problems in a garden setting with side lengths in metres and totals below seventy match what a fourth-quarter Grade 2 pupil can handle without scaffolding."
     },
     "variant_comprehensiveness": {
       "verdict": "CONCERN",
-      "rationale": "Only two situation types exist across all twelve seeds, and they are bound one-to-one to shape, so the flower bed is always the triangle and the garden is always the square or rectangle. A learner cannot meet the same shape in a new setting, and no item inverts the problem by giving available fencing and asking what it will enclose."
+      "rationale": "There are effectively two sentences in the whole set, a rectangular or square garden needing fencing and a triangular flower bed needing edging. Every context is a garden, and no non-garden situation or diagram-led version appears."
     },
     "competency_alignment": {
-      "verdict": "CONCERN",
-      "rationale": "Every problem is a single direct perimeter computation, so the progression moves only through larger side lengths. Nothing asks the learner to compare two enclosures, work back from a total, or handle a situation where part of the boundary needs no fencing, which is where problem solving at this competency would actually deepen."
+      "verdict": "PASS",
+      "rationale": "The later seeds enlarge the plot dimensions, up to a square garden with a side of seventeen metres, while holding the perimeter reasoning constant, so the ramp belongs to this competency."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Side measurements run from 1 m to 21 m and totals from 5 up to 68, all plausible for a school garden or flower bed and all within Grade 2 addition. No figure is given dimensions that would make the context absurd."
+      "rationale": "Plot dimensions run from one to twenty-one metres and every total stays under seventy, which suits both the arithmetic level and the realism of a school garden."
     }
   },
   "overall": "CONCERN"

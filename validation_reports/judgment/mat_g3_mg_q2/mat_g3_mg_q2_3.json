@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g3_mg_q2_3",
-  "reviewed_by": "reviewer-b5-marlin-obsidian-3358",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c5-tarragon-flint-2549",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -9,7 +9,6 @@
     44,
     45,
     46,
-    50,
     500,
     501,
     502
@@ -17,28 +16,32 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "What is the capacity of the container in mL?",
       "correct_answer": 56,
       "options": [
         {
           "key": "A",
           "value": 55,
+          "text": "55",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 57,
+          "text": "57",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 58,
+          "text": "58",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 56,
+          "text": "56",
           "is_correct": true
         }
       ]
@@ -73,28 +76,32 @@
     },
     {
       "seed": 44,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "What is the capacity of the container in mL?",
       "correct_answer": 69,
       "options": [
         {
           "key": "A",
           "value": 70,
+          "text": "70",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 71,
+          "text": "71",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 68,
+          "text": "68",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 69,
+          "text": "69",
           "is_correct": true
         }
       ]
@@ -156,65 +163,29 @@
       ]
     },
     {
-      "seed": 50,
-      "formatter": "cloze",
-      "question_text": "What is the capacity of the container in L?",
-      "correct_answer": 3,
-      "options": [
-        {
-          "key": "A",
-          "value": 4,
-          "text": "4",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 5,
-          "text": "5",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 3,
-          "text": "3",
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 2,
-          "text": "2",
-          "is_correct": false
-        }
-      ]
-    },
-    {
       "seed": 500,
-      "formatter": "cloze",
+      "formatter": "mcq",
       "question_text": "What is the capacity of the container in L?",
       "correct_answer": 285,
       "options": [
         {
           "key": "A",
           "value": 286,
-          "text": "286",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 285,
-          "text": "285",
           "is_correct": true
         },
         {
           "key": "C",
           "value": 284,
-          "text": "284",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 287,
-          "text": "287",
           "is_correct": false
         }
       ]
@@ -249,28 +220,32 @@
     },
     {
       "seed": 502,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "What is the capacity of the container in mL?",
       "correct_answer": 2893,
       "options": [
         {
           "key": "A",
           "value": 2894,
+          "text": "2894",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 2895,
+          "text": "2895",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 2892,
+          "text": "2892",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 2893,
+          "text": "2893",
           "is_correct": true
         }
       ]
@@ -279,27 +254,27 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "FAIL",
-      "rationale": "What is the capacity of the container in mL? names no container, describes no graduation, and reports no reading. Four numeric choices follow a question that contains no evidence at all, so the measurement the competency calls for is never performed and the item cannot be answered on its merits."
+      "rationale": "As rendered, 'What is the capacity of the container in L?' supplies no container, no graduation and no reading, so there is nothing in the item from which a capacity could be measured. The competency's requirement to use appropriate measuring tools produces no graduated cylinder, measuring jug or any other instrument in any of the eight samples."
     },
     "comprehensive_coverage": {
-      "verdict": "FAIL",
-      "rationale": "The competency's clause about appropriate measuring tools yields nothing. Across nine samples no graduated cylinder, measuring cup, pitcher or bottle is named, shown or chosen between."
+      "verdict": "CONCERN",
+      "rationale": "Litres and millilitres both occur as keys, so the unit pair is covered, but the tool clause of the competency generates nothing whatsoever and there is no item distinguishing when litres are the sensible unit and when millilitres are."
     },
     "cognitive_capacity": {
-      "verdict": "CONCERN",
-      "rationale": "A capacity of 285 L has no referent a Grade 3 pupil could hold in mind, and distinguishing 2893 mL from 2892 mL is a reading precision no classroom vessel provides."
+      "verdict": "PASS",
+      "rationale": "Only whole-number readings are asked for, with no fractional graduations or part-filled containers, which would be the appropriate simplification for Grade 3 Quarter 2 had a reading actually been presented."
     },
     "variant_comprehensiveness": {
       "verdict": "FAIL",
-      "rationale": "The generator emits a single interrogative shape nine times over; whether the unit reads L or mL is the whole of the variation. Nothing situates capacity in pouring, filling or serving, and no item compares two vessels."
+      "rationale": "Eight samples share one stem that varies only between the two units. No pouring situation, no comparison of a container against a labelled litre bottle, and no alternate presentation of any kind is generated."
     },
     "competency_alignment": {
       "verdict": "CONCERN",
-      "rationale": "The only axis that moves is the length of the numeral to be read, running from 3 up to 2893. That is digit-count growth, not growth in the measuring competence being certified."
+      "rationale": "The only axis that moves across seeds is the size of the numeral, from 14 up to 2893, while the demand on the pupil is unchanged. Enlarging the number does not make measuring capacity harder in any way this competency cares about."
     },
     "scale_appropriateness": {
       "verdict": "CONCERN",
-      "rationale": "Capacities of 192 L and 285 L describe drums rather than the drinking glasses, bottles and pitchers a Grade 3 capacity lesson uses, so the sampled range sits above the competency's practical context."
+      "rationale": "A container of 285 L or 192 L is not something a Grade 3 pupil measures with a classroom tool, and the options are consistently the key plus or minus one or two, as with 284, 286 and 287 around 285, which tests numeral discrimination rather than capacity."
     }
   },
   "overall": "FAIL"

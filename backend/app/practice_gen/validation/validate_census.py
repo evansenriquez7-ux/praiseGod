@@ -70,7 +70,9 @@ CENSUS_FLOORS = {
     # the commit that drove its count to zero (Scaling Mandate 5), and +1 for the WIDENED
     # declaration-sync gate -- `capability_declarations_in_sync_6` is now proven by two
     # mutations (one per field family), so this floor is the only guard on the pair.
-    "mutations": 70,
+    # 71 registered 2026-09-11 (was 70): +1 for `requires_ignore_locked_6B`, the gate
+    # that makes owner ruling R-5 machine-checkable -- added while its count was zero.
+    "mutations": 71,
     # 983 observed 2026-09-08. How many (variant, value) pairs the blind-review packets
     # will actually demonstrate across the tree.
     #

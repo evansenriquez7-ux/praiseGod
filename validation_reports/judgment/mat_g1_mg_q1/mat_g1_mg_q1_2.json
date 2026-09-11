@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g1_mg_q1_2",
-  "reviewed_by": "reviewer-b1-quartz-mallow-4412",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c1-lantern-fescue-3061",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -9,7 +9,6 @@
     44,
     45,
     46,
-    50,
     500,
     501,
     502,
@@ -19,9 +18,9 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "mcq",
+      "formatter": "read_mcq",
       "question_text": "A long rectangle is cut across its width into two equal squares. What two shapes are made?",
-      "correct_answer": "two squares",
+      "correct_answer": "B",
       "options": [
         {
           "key": "A",
@@ -75,9 +74,9 @@
     },
     {
       "seed": 44,
-      "formatter": "mcq",
+      "formatter": "read_mcq",
       "question_text": "Two identical squares are placed side by side. What shape do they form?",
-      "correct_answer": "rectangle",
+      "correct_answer": "D",
       "options": [
         {
           "key": "A",
@@ -158,34 +157,6 @@
       ]
     },
     {
-      "seed": 50,
-      "formatter": "read_mcq",
-      "question_text": "Two identical squares are placed side by side. What shape do they form?",
-      "correct_answer": "C",
-      "options": [
-        {
-          "key": "A",
-          "value": "square",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "none of these",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "rectangle",
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": "triangle",
-          "is_correct": false
-        }
-      ]
-    },
-    {
       "seed": 500,
       "formatter": "read_mcq",
       "question_text": "Two identical squares are placed side by side. What shape do they form?",
@@ -215,9 +186,9 @@
     },
     {
       "seed": 501,
-      "formatter": "mcq",
+      "formatter": "read_mcq",
       "question_text": "A long rectangle is cut across its width into two equal squares. What two shapes are made?",
-      "correct_answer": "two squares",
+      "correct_answer": "A",
       "options": [
         {
           "key": "A",
@@ -243,9 +214,9 @@
     },
     {
       "seed": 502,
-      "formatter": "mcq",
+      "formatter": "read_mcq",
       "question_text": "Two identical triangles are joined along their matching straight edges to make a 4-sided shape with equal sides. What shape is formed?",
-      "correct_answer": "square",
+      "correct_answer": "D",
       "options": [
         {
           "key": "A",
@@ -299,9 +270,9 @@
     },
     {
       "seed": 601,
-      "formatter": "mcq",
+      "formatter": "read_mcq",
       "question_text": "A rectangle is cut into two equal pieces down the middle. What two shapes are made?",
-      "correct_answer": "two rectangles",
+      "correct_answer": "C",
       "options": [
         {
           "key": "A",
@@ -329,27 +300,27 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "CONCERN",
-      "rationale": "Composing and decomposing are both genuinely attempted, but one stem states the piece shapes ('two equal squares') before asking what two shapes result, handing the answer over. A second joins two triangles on 'their longest straight edges' and keys rectangle, while a near-identical construction elsewhere is keyed square once equal sides are stated - the first of those is under-determined."
+      "rationale": "Composing and decomposing are both genuinely asked, but one composition item is under-determined: two triangles placed together, matching their longest straight edges is given a key of rectangle while square sits in the same option list, and nothing in that stem rules the square out. Seed 502 shows the generator can disambiguate by describing the result as a 4-sided shape with equal sides, which makes the looser stem a defect rather than an unavoidable ambiguity."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "All three named shapes take part on both sides of the operation: triangles build a rectangle and a square, squares build a rectangle, and a rectangle yields either two squares or two rectangles depending on the cut."
+      "rationale": "Both verbs of the competency are worked in both directions and all three shapes take part: triangles joined into a rectangle and into a square, squares joined into a rectangle, a rectangle cut into two squares, a square cut on a slant into two triangles, and a rectangle halved into two rectangles."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The described manipulations - placing shapes 'side by side', cutting 'from one corner to the opposite corner', cutting 'down the middle' - are the concrete paper-folding actions Grade 1 does with its hands."
+      "rationale": "The language of cutting across its width and placing side by side is concrete and matches what a Grade 1 pupil does with paper shapes; no item requires imagining more than two pieces at once."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "Both directions of the skill appear, the cut is described diagonally in one item and straight in another, and two renders switch into the read format so the pupil sometimes works from a figure."
+      "rationale": "The set alternates between items with a figure to inspect and items answered from the description alone, and it mixes joining actions with cutting actions and slant cuts with straight cuts, so presentation genuinely rotates rather than repeating one frame."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Progression runs from joining two identical pieces to predicting the pieces a stated cut produces, which is this competency's own arc rather than a borrowed one."
+      "rationale": "Difficulty moves along a line that belongs to this competency - from naming the result of an obvious side-by-side join, to reading a diagonal cut, to recognising that two triangles can make either a rectangle or a square depending on the pieces."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Nothing beyond two-piece composition is attempted; no four-piece tangram or area language intrudes from a later grade."
+      "rationale": "Every composition and decomposition involves exactly two pieces, which is the level at which Grade 1 composing and decomposing of plane shapes is expected to operate."
     }
   },
   "overall": "CONCERN"

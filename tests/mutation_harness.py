@@ -308,6 +308,10 @@ _ORPHAN_PROVIDER = "draw_lines"
 # drift found on 2026-09-10 spanned 18 nodes; one is enough to prove the comparison.
 _STALE_GRAPH_NODE = "mat_g1_na_q3_6"
 
+# A node whose `requires_ignore` the plant appends to. Pinned rather than scanned so the
+# marker names one node and the baseline guard can discriminate.
+_IGNORE_LOCK_NODE = "mat_g1_na_q1_2"
+
 # The three §6F fixtures below are PINNED to named nodes, not scanned for, and each
 # raises loudly if its node stops satisfying the precondition. §6F's queue is red (220
 # findings), so a scanned plant would land on a record that is already reported and the
@@ -2004,6 +2008,24 @@ MUTATIONS: List[Mutation] = [
         baseline_must_not_contain=[f"{_STALE_GRAPH_NODE} && 'cumulative_concepts'"],
     ),
     Mutation(
+        name="unsanctioned_requires_ignore",
+        asserts=["requires_ignore_locked_6B"],
+        description=(
+            "Add a word to a node's `requires_ignore` without sanctioning it in "
+            "data/skeletons/requires_ignore.lock.json. Ignoring a competency word is a "
+            "curriculum ruling only a human may make, and it is also the free half of "
+            "§6B's own remedy -- 'declare the requirement, or list the word in "
+            "requires_ignore' -- so without the lock an agent can silence a coverage "
+            "finding by waiving the competency instead of serving it."
+        ),
+        edits={},
+        apply_fn=lambda: _plant_unsanctioned_requires_ignore(),
+        command=["backend.app.practice_gen.validation.validate_capability", "--phase", "1"],
+        expected_check="§6B (requires_ignore is human-authored ground truth)",
+        expect_output_contains=[f"{_IGNORE_LOCK_NODE} && does not match"],
+        baseline_must_not_contain=[f"{_IGNORE_LOCK_NODE} && does not match"],
+    ),
+    Mutation(
         name="clause_not_in_competency",
         asserts=["capability_provenance_6A"],
         description=(
@@ -2536,6 +2558,40 @@ def _plant_contradicted_entry(capability: str) -> Dict[Path, str]:
         )
     injected = marker + f"    '{capability}': {{'variants': [('task_type', 'draw_construct')]}},\n"
     path.write_text(text.replace(marker, injected, 1), encoding="utf-8")
+    return {path: text}
+
+
+def _plant_unsanctioned_requires_ignore() -> Dict[Path, str]:
+    """
+    Drop a competency word into `requires_ignore` without sanctioning it in the lock.
+
+    This is the cheapest possible way to silence a §6B coverage finding: §6B's own
+    message offers two remedies -- "declare the requirement they describe, or list them
+    in 'requires_ignore' with the reason" -- and the second costs nothing. Ignoring a
+    competency word is a curriculum ruling (docs/pgen_rulings.md R-5, owner 2026-09-11:
+    human-authored, verifiable by git history), so the lock file is what makes taking
+    that remedy a visible, isolated act instead of a silent one.
+    """
+    import json
+
+    path = REPO_ROOT / "data" / "skeletons" / "vocab_annotation.json"
+    text = path.read_text(encoding="utf-8")
+    data = json.loads(text)
+    node = data["nodes"].get(_IGNORE_LOCK_NODE)
+    if node is None:
+        raise ValueError(
+            f"mutation 'unsanctioned_requires_ignore': {_IGNORE_LOCK_NODE} is not in "
+            f"vocab_annotation.json. Repoint the fixture."
+        )
+    planted = "planted_unsanctioned_word"
+    ig = node.get("requires_ignore") or []
+    if planted in ig:
+        raise ValueError(
+            f"mutation 'unsanctioned_requires_ignore': {planted!r} is already present, "
+            f"so planting it proves nothing."
+        )
+    node["requires_ignore"] = ig + [planted]
+    path.write_text(json.dumps(data, indent=2, ensure_ascii=True) + "\n", encoding="utf-8")
     return {path: text}
 
 

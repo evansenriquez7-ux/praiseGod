@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g3_na_q3_4",
-  "reviewed_by": "reviewer-r2-amber-trellis-1903",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c6-mistral-comfrey-8916",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -9,7 +9,6 @@
     44,
     45,
     46,
-    47,
     500,
     501,
     502,
@@ -23,46 +22,46 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "true_false",
-      "question_text": "Maico puts 2 costumes in each of 16 bags. How many costumes are in all the bags? The answer is 32. True or False?",
-      "correct_answer": true
-    },
-    {
-      "seed": 43,
-      "formatter": "error_detect",
-      "question_text": "Grace solved this problem: \"Nikka wants to buy 98 sticker sheets that cost ₱4 each. How much does Nikka need to pay in all?\" Grace says the answer is 392. Is Grace correct?",
-      "correct_answer": {
-        "has_error": false,
-        "correct_value": 392
-      }
-    },
-    {
-      "seed": 44,
       "formatter": "mcq",
-      "question_text": "Carlo bought 6 packs with 6 markers in each pack. Each marker costs ₱15. How much did Carlo pay in all?",
-      "correct_answer": 540,
+      "question_text": "Maico puts 2 costumes in each of 16 bags. How many costumes are in all the bags?",
+      "correct_answer": 32,
       "options": [
         {
           "key": "A",
-          "value": 51,
+          "value": 18,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 525,
+          "value": 30,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 540,
-          "is_correct": true
+          "value": 14,
+          "is_correct": false
         },
         {
           "key": "D",
-          "value": 21,
-          "is_correct": false
+          "value": 32,
+          "is_correct": true
         }
       ]
+    },
+    {
+      "seed": 43,
+      "formatter": "true_false",
+      "question_text": "Nikka wants to buy 98 sticker sheets that cost ₱4 each. How much does Nikka need to pay in all? The answer is 102. True or False?",
+      "correct_answer": false
+    },
+    {
+      "seed": 44,
+      "formatter": "error_detect",
+      "question_text": "Rico solved this problem: \"Carlo bought 6 packs with 6 markers in each pack. Each marker costs ₱15. How much did Carlo pay in all?\" Rico says the answer is 540. Is Rico correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 540
+      }
     },
     {
       "seed": 45,
@@ -94,316 +93,210 @@
     },
     {
       "seed": 46,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "Ate Joy puts 4 seeds in each of 85 bags. How many seeds are in all the bags?",
       "correct_answer": 340,
       "options": [
         {
           "key": "A",
           "value": 89,
+          "text": "89",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 336,
+          "text": "336",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 81,
+          "text": "81",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 340,
+          "text": "340",
           "is_correct": true
-        }
-      ]
-    },
-    {
-      "seed": 47,
-      "formatter": "cloze",
-      "question_text": "Grace prepared 2 large trays. Each tray holds 5 plates, and each plate has 10 cupcakes. How many cupcakes are there altogether?",
-      "correct_answer": 100,
-      "options": [
-        {
-          "key": "A",
-          "value": 99,
-          "text": "99",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 90,
-          "text": "90",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 100,
-          "text": "100",
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 20,
-          "text": "20",
-          "is_correct": false
         }
       ]
     },
     {
       "seed": 500,
-      "formatter": "error_detect",
-      "question_text": "Rico solved this problem: \"Bianca arranged 6 shelves with 6 boxes on each shelf. Each box has 5 jars. How many jars are there in all?\" Rico says the answer is 180. Is Rico correct?",
-      "correct_answer": {
-        "has_error": false,
-        "correct_value": 180
-      }
+      "formatter": "true_false",
+      "question_text": "Bianca arranged 6 shelves with 6 boxes on each shelf. Each box has 5 jars. How many jars are there in all? The answer is 179. True or False?",
+      "correct_answer": false
     },
     {
       "seed": 501,
-      "formatter": "cloze",
+      "formatter": "mcq",
       "question_text": "Grace arranged 4 shelves with 3 boxes on each shelf. Each box has 15 toy cars. How many toy cars are there in all?",
       "correct_answer": 180,
       "options": [
         {
           "key": "A",
           "value": 180,
-          "text": "180",
           "is_correct": true
         },
         {
           "key": "B",
           "value": 27,
-          "text": "27",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 179,
-          "text": "179",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 165,
-          "text": "165",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 502,
-      "formatter": "mcq",
-      "question_text": "Bianca bought 3 boxes of biscuits. Each box contains 7 packs, and each pack costs ₱4. How much did Bianca spend in all?",
-      "correct_answer": 84,
-      "options": [
-        {
-          "key": "A",
-          "value": 84,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 80,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 25,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 17,
-          "is_correct": false
-        }
-      ]
+      "formatter": "error_detect",
+      "question_text": "Dante solved this problem: \"Bianca bought 3 boxes of biscuits. Each box contains 7 packs, and each pack costs ₱4. How much did Bianca spend in all?\" Dante says the answer is 84. Is Dante correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 84
+      }
     },
     {
       "seed": 600,
-      "formatter": "cloze",
-      "question_text": "Juan bought 4 boxes of envelopes. Each box contains 7 packs, and each pack costs ₱5. How much did Juan spend in all?",
-      "correct_answer": 140,
-      "options": [
-        {
-          "key": "A",
-          "value": 23,
-          "text": "23",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 33,
-          "text": "33",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 140,
-          "text": "140",
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 135,
-          "text": "135",
-          "is_correct": false
-        }
-      ]
+      "formatter": "true_false",
+      "question_text": "Juan bought 4 boxes of envelopes. Each box contains 7 packs, and each pack costs ₱5. How much did Juan spend in all? The answer is 140. True or False?",
+      "correct_answer": true
     },
     {
       "seed": 601,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "Coach Roel wants to buy 75 score cards that cost ₱1 each. How much does Coach Roel need to pay in all?",
       "correct_answer": 75,
       "options": [
         {
           "key": "A",
           "value": 75,
+          "text": "75",
           "is_correct": true
         },
         {
           "key": "B",
           "value": 76,
+          "text": "76",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 77,
+          "text": "77",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 74,
+          "text": "74",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 602,
-      "formatter": "cloze",
+      "formatter": "mcq",
       "question_text": "Rico arranged 3 shelves with 4 boxes on each shelf. Each box has 10 figurines. How many figurines are there in all?",
       "correct_answer": 120,
       "options": [
         {
           "key": "A",
           "value": 2,
-          "text": "2",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 110,
-          "text": "110",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 120,
-          "text": "120",
           "is_correct": true
         },
         {
           "key": "D",
           "value": 22,
-          "text": "22",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 603,
-      "formatter": "mcq",
-      "question_text": "Ate Joy wants to buy 18 washi tape rolls that cost ₱40 each. How much does Ate Joy need to pay in all?",
-      "correct_answer": 720,
-      "options": [
-        {
-          "key": "A",
-          "value": 58,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 719,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 680,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 720,
-          "is_correct": true
-        }
-      ]
+      "formatter": "true_false",
+      "question_text": "Ate Joy wants to buy 18 washi tape rolls that cost ₱40 each. How much does Ate Joy need to pay in all? The answer is 720. True or False?",
+      "correct_answer": true
     },
     {
       "seed": 604,
-      "formatter": "true_false",
-      "question_text": "Kuya Renz wants to buy 6 watercolor sets that cost ₱3 each. How much does Kuya Renz need to pay in all? The answer is 21. True or False?",
-      "correct_answer": false
-    },
-    {
-      "seed": 605,
-      "formatter": "cloze",
-      "question_text": "Chef Demi wants to buy 6 cupcakes that cost ₱10 each. How much does Chef Demi need to pay in all?",
-      "correct_answer": 60,
+      "formatter": "mcq",
+      "question_text": "Kuya Renz wants to buy 6 watercolor sets that cost ₱3 each. How much does Kuya Renz need to pay in all?",
+      "correct_answer": 18,
       "options": [
         {
           "key": "A",
-          "value": 60,
-          "text": "60",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 50,
-          "text": "50",
+          "value": 9,
           "is_correct": false
         },
         {
+          "key": "B",
+          "value": 18,
+          "is_correct": true
+        },
+        {
           "key": "C",
-          "value": 16,
-          "text": "16",
+          "value": 3,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 59,
-          "text": "59",
+          "value": 15,
           "is_correct": false
         }
       ]
+    },
+    {
+      "seed": 605,
+      "formatter": "true_false",
+      "question_text": "Chef Demi wants to buy 6 cupcakes that cost ₱10 each. How much does Chef Demi need to pay in all? The answer is 60. True or False?",
+      "correct_answer": true
     }
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "Every sample is a worded problem requiring multiplication to solve, and money appears in both the one-step buying items and the multi-factor ones, so the competency's phrase about problems involving money is honoured rather than tacked on."
+      "rationale": "Problems are posed in words and solved by multiplying, and the money clause is genuinely served by cost-per-item situations. The two-step cases chain correctly, as with the six packs of six markers at fifteen pesos keyed 540."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "Both ends of the '1-to 2-step' range are supplied: single-step items such as buying score cards at ₱1 each, and genuine two-step chains such as shelves holding boxes that each hold jars. Non-money contexts and peso contexts both occur at each step count."
+      "rationale": "Both step counts the wording permits are produced: single multiplications for items in bags, and genuine two-step chains where shelves hold boxes which hold objects, or boxes hold packs which carry a price."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The two-step stems name their intermediate structure clearly, giving trays then plates then cupcakes in order, so the reading load is linear and a Grade 3 pupil can build the chain without re-parsing the sentence."
+      "rationale": "The two-step stems keep to two short sentences before the question, and the nesting of shelves, boxes and contents is concrete enough for a third-quarter Grade 3 reader to picture."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "Contexts rotate through unit-price purchasing, equal grouping into bags, and nested containers, and the response modes include an answer to compute, a truth judgement, and a peer's solution to audit. That is real contextual breadth for a problem-solving node."
+      "rationale": "Equal groups, unit-price purchases and rectangular shelf arrangements all appear, and they are posed as open questions, choices, claims to judge, and another child's work to check."
     },
     "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "The step count is what rises across the set, from a single product up to a three-quantity chain, which is the dimension the competency itself defines. Contexts change in service of that rather than substituting for it."
+      "verdict": "CONCERN",
+      "rationale": "A few samples collapse the multiplication they are meant to practise. Where 'Coach Roel wants to buy 75 score cards that cost ₱1 each.' the answer is the quantity itself, and the six sets at three pesos item is a table fact dressed as a problem, so those rungs do not advance the one-to-two-step demand."
     },
     "scale_appropriateness": {
-      "verdict": "CONCERN",
-      "rationale": "Several items demand more than Grade 3 multiplication should require. The markers item, where six packs of six each cost ₱15, keys 540 and so needs 36 multiplied by 15; the washi tape item at ₱40 each for 18 rolls keys 720; and the toy cars chain needs 12 multiplied by 15. Those are two-digit by two-digit computations, beyond the two-digit by one-digit work this quarter supports."
+      "verdict": "PASS",
+      "rationale": "Products run from eighteen up to seven hundred and twenty, and the two-step results such as 180 stay inside the range this quarter's multiplication supports."
     }
   },
   "overall": "CONCERN"

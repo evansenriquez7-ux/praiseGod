@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g3_mg_q1_0",
-  "reviewed_by": "reviewer-b5-marlin-obsidian-3358",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c8-hollow-ampersand-5277",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -9,11 +9,10 @@
     44,
     45,
     46,
-    50,
-    55,
     500,
     501,
     502,
+    600,
     601,
     602,
     605,
@@ -22,46 +21,50 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "A rectangle is covered edge-to-edge with unit square tiles, arranged in 2 rows and 7 columns. Estimate how many unit tiles cover the rectangle in all.",
       "correct_answer": 14,
       "options": [
         {
           "key": "A",
           "value": 14,
+          "text": "14",
           "is_correct": true
         },
         {
           "key": "B",
           "value": 18,
+          "text": "18",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 9,
+          "text": "9",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 21,
+          "text": "21",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 43,
-      "formatter": "mcq",
-      "question_text": "A rectangle is covered edge-to-edge with unit square tiles, arranged in 7 rows and 4 columns. Estimate how many unit tiles cover the rectangle in all.",
-      "correct_answer": 28,
+      "formatter": "read_mcq",
+      "question_text": "Look at the 7×4 array. How many squares are shaded in all?",
+      "correct_answer": "C",
       "options": [
         {
           "key": "A",
-          "value": 22,
+          "value": 29,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 11,
+          "value": 25,
           "is_correct": false
         },
         {
@@ -71,7 +74,7 @@
         },
         {
           "key": "D",
-          "value": 56,
+          "value": 22,
           "is_correct": false
         }
       ]
@@ -106,13 +109,13 @@
     },
     {
       "seed": 45,
-      "formatter": "mcq",
-      "question_text": "You are laying unit square tiles over a square, fitting 5 rows and 5 columns exactly. About how many tiles in total will you use?",
-      "correct_answer": 25,
+      "formatter": "read_mcq",
+      "question_text": "Look at the 5×5 array. How many squares are shaded in all?",
+      "correct_answer": "B",
       "options": [
         {
           "key": "A",
-          "value": 30,
+          "value": 26,
           "is_correct": false
         },
         {
@@ -122,21 +125,21 @@
         },
         {
           "key": "C",
-          "value": 10,
+          "value": 23,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 20,
+          "value": 27,
           "is_correct": false
         }
       ]
     },
     {
       "seed": 46,
-      "formatter": "mcq",
-      "question_text": "A rectangle is covered edge-to-edge with unit square tiles, arranged in 2 rows and 5 columns. Estimate how many unit tiles cover the rectangle in all.",
-      "correct_answer": 10,
+      "formatter": "read_mcq",
+      "question_text": "Look at the 2×5 array. How many squares are shaded in all?",
+      "correct_answer": "A",
       "options": [
         {
           "key": "A",
@@ -145,90 +148,30 @@
         },
         {
           "key": "B",
-          "value": 5,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 7,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 14,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 50,
-      "formatter": "cloze",
-      "question_text": "A square is covered edge-to-edge with unit square tiles, arranged in 4 rows and 4 columns. Estimate how many unit tiles cover the square in all.",
-      "correct_answer": 16,
-      "options": [
-        {
-          "key": "A",
-          "value": 8,
-          "text": "8",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 12,
-          "text": "12",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 20,
-          "text": "20",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 16,
-          "text": "16",
-          "is_correct": true
-        }
-      ]
-    },
-    {
-      "seed": 55,
-      "formatter": "read_mcq",
-      "question_text": "Look at the 4×3 array. How many squares are shaded in all?",
-      "correct_answer": "D",
-      "options": [
-        {
-          "key": "A",
           "value": 14,
           "is_correct": false
         },
         {
-          "key": "B",
-          "value": 11,
+          "key": "C",
+          "value": 9,
           "is_correct": false
         },
         {
-          "key": "C",
+          "key": "D",
           "value": 13,
           "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 12,
-          "is_correct": true
         }
       ]
     },
     {
       "seed": 500,
-      "formatter": "read_mcq",
-      "question_text": "Look at the 10×10 array. How many squares are shaded in all?",
-      "correct_answer": "B",
+      "formatter": "mcq",
+      "question_text": "A square is covered edge-to-edge with unit square tiles, arranged in 10 rows and 10 columns. Estimate how many unit tiles cover the square in all.",
+      "correct_answer": 100,
       "options": [
         {
           "key": "A",
-          "value": 101,
+          "value": 200,
           "is_correct": false
         },
         {
@@ -238,86 +181,54 @@
         },
         {
           "key": "C",
-          "value": 97,
+          "value": 20,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 102,
+          "value": 40,
           "is_correct": false
         }
       ]
     },
     {
       "seed": 501,
-      "formatter": "cloze",
+      "formatter": "mcq",
       "question_text": "A square is covered edge-to-edge with unit square tiles, arranged in 4 rows and 4 columns. Estimate how many unit tiles cover the square in all.",
       "correct_answer": 16,
       "options": [
         {
           "key": "A",
           "value": 8,
-          "text": "8",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 16,
-          "text": "16",
           "is_correct": true
         },
         {
           "key": "C",
           "value": 20,
-          "text": "20",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 12,
-          "text": "12",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 502,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "You are laying unit square tiles over a square, fitting 3 rows and 3 columns exactly. About how many tiles in total will you use?",
       "correct_answer": 9,
       "options": [
         {
           "key": "A",
           "value": 18,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 12,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 6,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 9,
-          "is_correct": true
-        }
-      ]
-    },
-    {
-      "seed": 601,
-      "formatter": "cloze",
-      "question_text": "Pia wants to cover a rectangular garden that is 2 m long and 3 m wide with square tiles that are 1 m on each side. How many tiles are needed to cover it completely?",
-      "correct_answer": 6,
-      "options": [
-        {
-          "key": "A",
-          "value": 10,
-          "text": "10",
+          "text": "18",
           "is_correct": false
         },
         {
@@ -330,63 +241,123 @@
           "key": "C",
           "value": 6,
           "text": "6",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 9,
+          "text": "9",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 600,
+      "formatter": "read_mcq",
+      "question_text": "Look at the 4×4 array. How many squares are shaded in all?",
+      "correct_answer": "A",
+      "options": [
+        {
+          "key": "A",
+          "value": 16,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 17,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 13,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 18,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 601,
+      "formatter": "mcq",
+      "question_text": "Pia wants to cover a rectangular garden that is 2 m long and 3 m wide with square tiles that are 1 m on each side. How many tiles are needed to cover it completely?",
+      "correct_answer": 6,
+      "options": [
+        {
+          "key": "A",
+          "value": 10,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 12,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 6,
           "is_correct": true
         },
         {
           "key": "D",
           "value": 3,
-          "text": "3",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 602,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "You are laying unit square tiles over a rectangle, fitting 5 rows and 3 columns exactly. About how many tiles in total will you use?",
       "correct_answer": 15,
       "options": [
         {
           "key": "A",
           "value": 8,
+          "text": "8",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 15,
+          "text": "15",
           "is_correct": true
         },
         {
           "key": "C",
           "value": 18,
+          "text": "18",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 12,
+          "text": "12",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 605,
-      "formatter": "read_mcq",
-      "question_text": "Look at the 5×6 array. How many squares are shaded in all?",
-      "correct_answer": "D",
+      "formatter": "mcq",
+      "question_text": "A rectangle is covered edge-to-edge with unit square tiles, arranged in 5 rows and 6 columns. Estimate how many unit tiles cover the rectangle in all.",
+      "correct_answer": 30,
       "options": [
         {
           "key": "A",
-          "value": 22,
+          "value": 36,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 33,
+          "value": 22,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 28,
+          "value": 11,
           "is_correct": false
         },
         {
@@ -398,18 +369,18 @@
     },
     {
       "seed": 606,
-      "formatter": "mcq",
-      "question_text": "A rectangle is covered edge-to-edge with unit square tiles, arranged in 4 rows and 7 columns. Estimate how many unit tiles cover the rectangle in all.",
-      "correct_answer": 28,
+      "formatter": "read_mcq",
+      "question_text": "Look at the 4×7 array. How many squares are shaded in all?",
+      "correct_answer": "C",
       "options": [
         {
           "key": "A",
-          "value": 22,
+          "value": 30,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 35,
+          "value": 22,
           "is_correct": false
         },
         {
@@ -419,7 +390,7 @@
         },
         {
           "key": "D",
-          "value": 11,
+          "value": 25,
           "is_correct": false
         }
       ]
@@ -428,27 +399,27 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "CONCERN",
-      "rationale": "The estimating verb is present only as wording. Stems say Estimate how many unit tiles cover the rectangle in all and About how many tiles in total will you use, but the key is the exact product and the distractors sit adjacent to it, so an approximate answer is marked wrong. The task performed is exact array counting wearing estimation language."
+      "rationale": "Covering a shape with unit tiles is exactly the illustrated activity intended, and the array items supply the picture the competency's first verb calls for. The estimation verb is where the samples drift. Stems advertise estimating, as in 'Estimate how many unit tiles cover the square in all', yet every key is the exact product and the distractors punish approximation rather than reward it: the options against the 7x4 array are 29, 25, 28 and 22, a spread no estimate could separate. Seed 502 is self-contradictory on its face, promising tiles 'fitting 3 rows and 3 columns exactly' and then asking 'About how many tiles in total will you use?'. No sampled item exercises estimating behaviour."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "Squares and rectangles are both tiled, the arrays cover shapes from 2 by 2 up to 10 by 10 including non-square rectangles in both row-heavy and column-heavy orientations, and a metre-tile garden situation shows the same idea outside the bare array."
+      "rationale": "Both shapes the competency disjoins are produced in quantity: squares turn up as 2 by 2, 3 by 3, 4 by 4, 5 by 5 and 10 by 10 tilings, while rectangles appear at 2 by 7, 5 by 3, 5 by 6 and several array sizes. The illustrated route and the verbally described route are both present too, so neither the shape sub-cases nor the two modes of presenting the tiling are missing."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Dimensions stay at ten or below so every tile count is a basic multiplication fact or a repeated addition a Grade 3 Quarter 1 pupil can carry out, and phrases like covered edge-to-edge give the tiling condition in plain language."
+      "rationale": "Row-and-column counts stay within the multiplication facts a Grade 3 pupil is building in the opening quarter, and the reasoning is a single step from array dimensions to a count. Phrasing such as covering a shape edge-to-edge is concrete and supported by the accompanying figure. The one measurement-flavoured stem, about a garden two metres long and three metres wide tiled with one-metre squares, still reduces to counting whole tiles rather than to any formal area computation."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "Three presentations occur: a described array, a displayed array introduced by Look at the 4x3 array, and a real situation where Pia tiles a garden with one-metre squares. Multiple choice and cloze both appear."
+      "rationale": "Three different interaction types are in evidence across the seeds, and the framings genuinely differ: a figure-reading item, an impersonal description of a tiled shape, a second-person tiling narration, and a named-character situation where 'Pia wants to cover a rectangular garden'. Row-by-column orientations are also flipped between seeds rather than fixed, so the same product is met in more than one arrangement."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "What grows across samples is the size of the tiled region, from four tiles to one hundred, which is the competency's own axis. Nothing else is being varied in its place."
+      "rationale": "What grows across the seeds is the size of the tiled region, from a four-tile square up to a hundred-tile square, and that growth is precisely what pushes a pupil from counting tiles one by one toward seeing the array structure. Nothing in the progression swaps in an unrelated demand such as unit conversion or perimeter; every harder seed is still a tile-covering question about a square or a rectangle."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "The largest region is the 10 by 10 array at one hundred tiles, which is the natural top of a Grade 3 tiling task and stays inside the multiplication facts available in Quarter 1."
+      "rationale": "No side length exceeds ten and no tile count exceeds one hundred, which matches the multiplication ceiling available to a Grade 3 pupil in Quarter 1. The smallest case, a two-by-two square answering to 4, is still large enough to be a genuine array rather than a degenerate one. Distractor magnitudes, such as 200 and 40 against the hundred-tile square, stay in the same believable band."
     }
   },
   "overall": "CONCERN"

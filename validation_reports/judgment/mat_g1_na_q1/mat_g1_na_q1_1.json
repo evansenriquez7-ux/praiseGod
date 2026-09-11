@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g1_na_q1_1",
-  "reviewed_by": "reviewer-b1-quartz-mallow-4412",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c1-lantern-fescue-3061",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -16,66 +16,66 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "cloze",
-      "question_text": "Write 35 in words.",
-      "correct_answer": "thirty-five",
+      "formatter": "true_false",
+      "question_text": "The number 35 is written in words as 'fifty-three'. True or False?",
+      "correct_answer": false
+    },
+    {
+      "seed": 43,
+      "formatter": "mcq",
+      "question_text": "Write 68 in words.",
+      "correct_answer": "sixty-eight",
       "options": [
         {
           "key": "A",
-          "value": "twenty-five",
-          "text": "twenty-five",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "thirty-five",
-          "text": "thirty-five",
+          "value": "sixty-eight",
           "is_correct": true
         },
         {
+          "key": "B",
+          "value": "eighty-six",
+          "is_correct": false
+        },
+        {
           "key": "C",
-          "value": "fifty-three",
-          "text": "fifty-three",
+          "value": "sixty-nine",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "thirty-six",
-          "text": "thirty-six",
+          "value": "fifty-eight",
           "is_correct": false
         }
       ]
     },
     {
-      "seed": 43,
-      "formatter": "true_false",
-      "question_text": "The number 68 is written in words as 'sixty-nine'. True or False?",
-      "correct_answer": false
-    },
-    {
       "seed": 44,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "Write the number: ninety-eight.",
       "correct_answer": 98,
       "options": [
         {
           "key": "A",
           "value": 98,
+          "text": "98",
           "is_correct": true
         },
         {
           "key": "B",
           "value": 89,
+          "text": "89",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 88,
+          "text": "88",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 99,
+          "text": "99",
           "is_correct": false
         }
       ]
@@ -110,28 +110,32 @@
     },
     {
       "seed": 46,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "Write 83 in words.",
       "correct_answer": "eighty-three",
       "options": [
         {
           "key": "A",
           "value": "seventy-three",
+          "text": "seventy-three",
           "is_correct": false
         },
         {
           "key": "B",
           "value": "eighty-three",
+          "text": "eighty-three",
           "is_correct": true
         },
         {
           "key": "C",
           "value": "thirty-eight",
+          "text": "thirty-eight",
           "is_correct": false
         },
         {
           "key": "D",
           "value": "eighty-four",
+          "text": "eighty-four",
           "is_correct": false
         }
       ]
@@ -144,60 +148,38 @@
     },
     {
       "seed": 501,
-      "formatter": "cloze",
-      "question_text": "Write the number: seventy-seven.",
-      "correct_answer": 77,
-      "options": [
-        {
-          "key": "A",
-          "value": 77,
-          "text": "77",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 76,
-          "text": "76",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 67,
-          "text": "67",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 78,
-          "text": "78",
-          "is_correct": false
-        }
-      ]
+      "formatter": "true_false",
+      "question_text": "The number written as 'seventy-seven' is 67. True or False?",
+      "correct_answer": false
     },
     {
       "seed": 502,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "Write the number: fifty-three.",
       "correct_answer": 53,
       "options": [
         {
           "key": "A",
           "value": 53,
+          "text": "53",
           "is_correct": true
         },
         {
           "key": "B",
           "value": 35,
+          "text": "35",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 54,
+          "text": "54",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 43,
+          "text": "43",
           "is_correct": false
         }
       ]
@@ -206,27 +188,27 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "Both directions named by the competency are live: numerals turned into words and words turned back into numerals, plus a true-or-false check on a stated equivalence."
+      "rationale": "Both halves of read and write are generated as separate tasks - converting a numeral into words, as in the instruction to write 68 in words, and converting a spoken form such as ninety-eight back into digits - with true-or-false checks probing the same correspondence."
     },
     "comprehensive_coverage": {
       "verdict": "CONCERN",
-      "rationale": "Every sampled value is a two-digit compound between 35 and 99. The teen names, the plain tens, and the single digits - precisely the forms first graders confuse when reading and writing numerals - never occur in these eight renders."
+      "rationale": "Every value sampled is a two-digit number from the mid-thirties upward. The teens, where the reading-and-writing confusion actually lives for six-year-olds, never appear, nor does any single-digit numeral, so the specific traps this competency exists to train are outside the generated set even though the direction coverage is even."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Hyphenated number words with four short options make no demand beyond Quarter 1 reading, and the true-or-false stems are single-clause."
+      "rationale": "Hyphenated two-digit number words and short imperative stems are the right demand for Quarter 1, and the true-or-false framing, such as the claim that 35 is written in words as 'fifty-three', asks for a judgment rather than production, which lightens the load appropriately."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "Three formats appear and the wrong answers are pedagogically chosen rather than random: 89 against 98, and 58 against 85, are exactly the digit reversals this competency has to stamp out."
+      "rationale": "Three response modes appear across the eight samples and the direction of translation flips between them, so the pupil meets the correspondence from both ends rather than only decoding or only encoding."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "The harder renders sit at the top of the range and use near-miss words, which is where reading and writing numerals actually breaks down for a beginner."
+      "rationale": "The decoys are built on the genuine misconceptions this competency targets - the digit reversal offering eighty-six against sixty-eight, and the neighbouring-decade confusion of seventy-three against eighty-three - so the difficulty sits on reading and writing rather than elsewhere."
     },
     "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "Nothing exceeds the stated bound, and one item probes the boundary directly by claiming 'ninety-nine' is 100."
+      "verdict": "CONCERN",
+      "rationale": "The ceiling of 100 is respected but never reached: the largest numeral written is in the nineties and 100 itself appears only inside a true-or-false claim as a wrong value, so the pupil is never asked to read or write the boundary number the competency names."
     }
   },
   "overall": "CONCERN"

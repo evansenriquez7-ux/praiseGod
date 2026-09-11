@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g1_na_q4_4",
-  "reviewed_by": "reviewer-r1-cobalt-juniper-7748",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c2-basalt-yarrow-7194",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -9,43 +9,39 @@
     44,
     45,
     46,
-    52,
     500,
     501,
     502,
     600,
     601,
+    602,
     603
   ],
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "cloze",
-      "question_text": "Determine the total value of 1 ₱50 bill, 2 ₱10 coins, and 1 ₱1 coin:",
-      "correct_answer": 71,
+      "formatter": "read_mcq",
+      "question_text": "The dot is at ₱10 and it moves forward ₱1. Which amount will the dot land on?",
+      "correct_answer": "B",
       "options": [
         {
           "key": "A",
-          "value": 72,
-          "text": "72",
+          "value": 70,
           "is_correct": false
         },
         {
           "key": "B",
           "value": 71,
-          "text": "71",
           "is_correct": true
         },
         {
           "key": "C",
-          "value": 61,
-          "text": "61",
+          "value": 76,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 710,
-          "text": "710",
+          "value": 66,
           "is_correct": false
         }
       ]
@@ -86,18 +82,18 @@
     },
     {
       "seed": 45,
-      "formatter": "mcq",
-      "question_text": "Find the total amount of 2 ₱20 bills:",
-      "correct_answer": 40,
+      "formatter": "read_mcq",
+      "question_text": "The dot is at ₱20 and it moves forward ₱20. Which amount will the dot land on?",
+      "correct_answer": "C",
       "options": [
         {
           "key": "A",
-          "value": 41,
+          "value": 39,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 30,
+          "value": 45,
           "is_correct": false
         },
         {
@@ -107,101 +103,95 @@
         },
         {
           "key": "D",
-          "value": 400,
+          "value": 35,
           "is_correct": false
         }
       ]
     },
     {
       "seed": 46,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "What is the total value of 2 ₱10 coins?",
       "correct_answer": 20,
       "options": [
         {
           "key": "A",
           "value": 21,
+          "text": "21",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 200,
+          "text": "200",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 10,
+          "text": "10",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 20,
+          "text": "20",
           "is_correct": true
-        }
-      ]
-    },
-    {
-      "seed": 52,
-      "formatter": "read_mcq",
-      "question_text": "Use coins and bills to make exactly ₱90. Use the fewest pieces possible.",
-      "correct_answer": "C",
-      "options": [
-        {
-          "key": "A",
-          "value": 100,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 85,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 90,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 110,
-          "is_correct": false
         }
       ]
     },
     {
       "seed": 500,
-      "formatter": "set_fill_in_blank",
+      "formatter": "read_mcq",
       "question_text": "Use coins and bills to make exactly ₱100. Use the fewest pieces possible.",
-      "correct_answer": 100
-    },
-    {
-      "seed": 501,
-      "formatter": "cloze",
-      "question_text": "Find the total amount of 1 ₱50 bill, 1 ₱20 bill, 1 ₱10 coin, and 1 ₱5 coin:",
-      "correct_answer": 85,
+      "correct_answer": "C",
       "options": [
         {
           "key": "A",
-          "value": 85,
-          "text": "85",
-          "is_correct": true
+          "value": 110,
+          "is_correct": false
         },
         {
           "key": "B",
-          "value": 75,
-          "text": "75",
+          "value": 120,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 86,
-          "text": "86",
+          "value": 100,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 95,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 501,
+      "formatter": "read_mcq",
+      "question_text": "The dot is at ₱5 and it moves forward ₱10. Which amount will the dot land on?",
+      "correct_answer": "A",
+      "options": [
+        {
+          "key": "A",
+          "value": 85,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 90,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 84,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 850,
-          "text": "850",
+          "value": 80,
           "is_correct": false
         }
       ]
@@ -236,117 +226,101 @@
     },
     {
       "seed": 600,
-      "formatter": "cloze",
-      "question_text": "Determine the total value of 1 ₱50 bill and 2 ₱20 bills:",
-      "correct_answer": 90,
-      "options": [
-        {
-          "key": "A",
-          "value": 900,
-          "text": "900",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 90,
-          "text": "90",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 91,
-          "text": "91",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 80,
-          "text": "80",
-          "is_correct": false
-        }
-      ]
+      "formatter": "set_fill_in_blank",
+      "question_text": "Use coins and bills to make exactly ₱90. Use the fewest pieces possible.",
+      "correct_answer": 90
     },
     {
       "seed": 601,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "What is the total value of 1 ₱10 coin and 2 ₱5 coins?",
       "correct_answer": 20,
       "options": [
         {
           "key": "A",
           "value": 200,
+          "text": "200",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 10,
+          "text": "10",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 21,
+          "text": "21",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 20,
+          "text": "20",
           "is_correct": true
         }
       ]
     },
     {
-      "seed": 603,
-      "formatter": "mcq",
-      "question_text": "Determine the total value of 3 ₱10 coins:",
-      "correct_answer": 30,
+      "seed": 602,
+      "formatter": "read_mcq",
+      "question_text": "The dot is at ₱20 and it moves forward ₱50. Which amount will the dot land on?",
+      "correct_answer": "A",
       "options": [
         {
           "key": "A",
-          "value": 30,
+          "value": 70,
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 20,
+          "value": 65,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 31,
+          "value": 75,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 300,
+          "value": 69,
           "is_correct": false
         }
       ]
+    },
+    {
+      "seed": 603,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Use coins and bills to make exactly ₱30. Use the fewest pieces possible.",
+      "correct_answer": 30
     }
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "FAIL",
-      "rationale": "One sampled item instructs 'Use coins and bills to make exactly ₱90. Use the fewest pieces possible.' and then offers 100, 85, 90 and 110 as choices with 90 as the key. The correct option is stated verbatim in the stem, so the item cannot assess determining a value; it asks the student to repeat a number they have just been given."
+      "rationale": "Two of the sampled money number-line items are internally inconsistent. 'The dot is at ₱10 and it moves forward ₱1.' is keyed to the second option in a list reading 70 / 71 / 76 / 66, a set which does not contain eleven at all; another item starting at five pesos and moving forward ten pesos is keyed to eighty-five. The stem asks for one amount and the key answers a different one, with no correct choice available."
     },
     "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "All three combination shapes the competency allows are produced: bills only, coins only, and mixtures such as 1 ₱50 bill, 2 ₱10 coins, and 1 ₱1 coin. Denominations stay clear of centavo pieces as the exclusion requires."
+      "verdict": "CONCERN",
+      "rationale": "The competency covers bills and-slash-or coins, but the sampled totals are either all coins or all bills; no item totals a mixed handful of bills together with coins, which is the case the and-or phrasing exists to capture."
     },
     "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Piece counts stay at three or fewer per denomination and the totals are reached by adding a handful of friendly amounts, which suits fourth-quarter Grade 1 money work."
+      "verdict": "CONCERN",
+      "rationale": "The composing tasks defeat themselves: 'Use coins and bills to make exactly ₱60. Use the fewest pieces possible.' is keyed to sixty, the number already printed in the stem, so nothing about choosing pieces or minimising their number is actually required or recorded."
     },
     "variant_comprehensiveness": {
       "verdict": "CONCERN",
-      "rationale": "The value items differ only in their opening verb, cycling between finding the total amount, asking what the total value is, and determining the total value, while the underlying sentence shape never changes. No purchase, change-giving, or comparison-of-two-purses context appears anywhere in the set."
+      "rationale": "Once the broken number-line items and the self-answering composing items are set aside, what remains is a small set of straightforward totalling questions, so the apparent breadth of presentation is not doing real work."
     },
     "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Harder samples add more denominations to the pile, moving from a single pair of like pieces up to a four-denomination mixture, so the rising demand is exactly the demand of totalling assorted money."
+      "verdict": "CONCERN",
+      "rationale": "Determining the value of a group of pieces is the target skill, but a large share of seeds instead exercise movement along a marked line, an axis that belongs to counting on rather than to valuing a collection of money."
     },
     "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "Totals reach ₱100 exactly and never exceed it. The tenfold distractors such as 710 against a key of 71 are far outside any plausible money value, though they do not breach the competency's stated ceiling for the keys themselves."
+      "verdict": "CONCERN",
+      "rationale": "Totals in the valid items reach one hundred pesos appropriately, but one option list offers 110 and 120 against a target of exactly one hundred, and the mismatched number-line items present amounts in the seventies and eighties that no part of their stem can produce."
     }
   },
   "overall": "FAIL"

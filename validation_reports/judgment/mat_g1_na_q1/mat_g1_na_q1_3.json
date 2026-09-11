@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g1_na_q1_3",
-  "reviewed_by": "reviewer-r1-cobalt-juniper-7748",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c1-lantern-fescue-3061",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -22,66 +22,66 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "cloze",
-      "question_text": "Compare the numbers: 9 ___ 9. Which sign is correct: >, <, or =?",
-      "correct_answer": "=",
+      "formatter": "true_false",
+      "question_text": "9 > 9. True or False?",
+      "correct_answer": false
+    },
+    {
+      "seed": 43,
+      "formatter": "mcq",
+      "question_text": "Ana has 10 seashells. Jose has 12 seashells. Which sign correctly compares the two amounts?",
+      "correct_answer": "<",
       "options": [
         {
           "key": "A",
           "value": ">",
-          "text": ">",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "<",
-          "text": "<",
+          "value": "cannot be determined",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "cannot be determined",
-          "text": "cannot be determined",
+          "value": "=",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "=",
-          "text": "=",
+          "value": "<",
           "is_correct": true
         }
       ]
     },
     {
-      "seed": 43,
-      "formatter": "true_false",
-      "question_text": "Ana has 10 seashells. Jose has 12 seashells. Which sign correctly compares the two amounts? The answer is >. True or False?",
-      "correct_answer": false
-    },
-    {
       "seed": 44,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "Compare the numbers: 1 ___ 15. Which sign is correct: >, <, or =?",
       "correct_answer": "<",
       "options": [
         {
           "key": "A",
           "value": "<",
+          "text": "<",
           "is_correct": true
         },
         {
           "key": "B",
           "value": "cannot be determined",
+          "text": "cannot be determined",
           "is_correct": false
         },
         {
           "key": "C",
           "value": "=",
+          "text": "=",
           "is_correct": false
         },
         {
           "key": "D",
           "value": ">",
+          "text": ">",
           "is_correct": false
         }
       ]
@@ -116,28 +116,32 @@
     },
     {
       "seed": 46,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "Compare the numbers: 2 ___ 8. Which sign is correct: >, <, or =?",
       "correct_answer": "<",
       "options": [
         {
           "key": "A",
           "value": "cannot be determined",
+          "text": "cannot be determined",
           "is_correct": false
         },
         {
           "key": "B",
           "value": "<",
+          "text": "<",
           "is_correct": true
         },
         {
           "key": "C",
           "value": ">",
+          "text": ">",
           "is_correct": false
         },
         {
           "key": "D",
           "value": "=",
+          "text": "=",
           "is_correct": false
         }
       ]
@@ -150,74 +154,58 @@
     },
     {
       "seed": 501,
-      "formatter": "cloze",
-      "question_text": "Compare the numbers: 20 ___ 19. Which sign is correct: >, <, or =?",
-      "correct_answer": ">",
-      "options": [
-        {
-          "key": "A",
-          "value": "cannot be determined",
-          "text": "cannot be determined",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "=",
-          "text": "=",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": ">",
-          "text": ">",
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": "<",
-          "text": "<",
-          "is_correct": false
-        }
-      ]
+      "formatter": "true_false",
+      "question_text": "20 < 19. True or False?",
+      "correct_answer": false
     },
     {
       "seed": 502,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "Compare the numbers: 12 ___ 12. Which sign is correct: >, <, or =?",
       "correct_answer": "=",
       "options": [
         {
           "key": "A",
           "value": "=",
+          "text": "=",
           "is_correct": true
         },
         {
           "key": "B",
           "value": ">",
+          "text": ">",
           "is_correct": false
         },
         {
           "key": "C",
           "value": "<",
+          "text": "<",
           "is_correct": false
         },
         {
           "key": "D",
           "value": "cannot be determined",
+          "text": "cannot be determined",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 600,
+      "formatter": "true_false",
+      "question_text": "16 > 19. True or False?",
+      "correct_answer": false
+    },
+    {
+      "seed": 601,
       "formatter": "cloze",
-      "question_text": "Compare the numbers: 16 ___ 19. Which sign is correct: >, <, or =?",
-      "correct_answer": "<",
+      "question_text": "Maria has 19 marbles. Ben has 19 marbles. Which sign correctly compares the two amounts?",
+      "correct_answer": "=",
       "options": [
         {
           "key": "A",
-          "value": "=",
-          "text": "=",
+          "value": "<",
+          "text": "<",
           "is_correct": false
         },
         {
@@ -228,73 +216,23 @@
         },
         {
           "key": "C",
+          "value": "=",
+          "text": "=",
+          "is_correct": true
+        },
+        {
+          "key": "D",
           "value": ">",
           "text": ">",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "<",
-          "text": "<",
-          "is_correct": true
-        }
-      ]
-    },
-    {
-      "seed": 601,
-      "formatter": "mcq",
-      "question_text": "Maria has 19 marbles. Ben has 19 marbles. Which sign correctly compares the two amounts?",
-      "correct_answer": "=",
-      "options": [
-        {
-          "key": "A",
-          "value": "<",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "cannot be determined",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "=",
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": ">",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 602,
-      "formatter": "mcq",
-      "question_text": "Compare the numbers: 1 ___ 10. Which sign is correct: >, <, or =?",
-      "correct_answer": "<",
-      "options": [
-        {
-          "key": "A",
-          "value": "=",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": ">",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "<",
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": "cannot be determined",
-          "is_correct": false
-        }
-      ]
+      "formatter": "true_false",
+      "question_text": "1 = 10. True or False?",
+      "correct_answer": false
     },
     {
       "seed": 603,
@@ -326,94 +264,64 @@
     },
     {
       "seed": 604,
-      "formatter": "cloze",
+      "formatter": "mcq",
       "question_text": "Jose has 18 marbles. Ben has 17 marbles. Which sign correctly compares the two amounts?",
       "correct_answer": ">",
       "options": [
         {
           "key": "A",
           "value": "=",
-          "text": "=",
           "is_correct": false
         },
         {
           "key": "B",
           "value": "<",
-          "text": "<",
           "is_correct": false
         },
         {
           "key": "C",
           "value": "cannot be determined",
-          "text": "cannot be determined",
           "is_correct": false
         },
         {
           "key": "D",
           "value": ">",
-          "text": ">",
           "is_correct": true
         }
       ]
     },
     {
       "seed": 605,
-      "formatter": "cloze",
-      "question_text": "Ben has 13 stickers. Maria has 18 stickers. Which sign correctly compares the two amounts?",
-      "correct_answer": "<",
-      "options": [
-        {
-          "key": "A",
-          "value": "cannot be determined",
-          "text": "cannot be determined",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": ">",
-          "text": ">",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "<",
-          "text": "<",
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": "=",
-          "text": "=",
-          "is_correct": false
-        }
-      ]
+      "formatter": "true_false",
+      "question_text": "Ben has 13 stickers. Maria has 18 stickers. Which sign correctly compares the two amounts? The answer is >. True or False?",
+      "correct_answer": false
     }
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "Each sampled item puts exactly two quantities side by side and asks which relation holds, which is precisely the comparison the competency states. Both the bare numeric form and the two-children form ask for the same relational judgment."
+      "rationale": "The comparison of two quantities is asked directly, both symbolically with a blank between two numerals and contextually through two children's collections, and the expected response is the relation symbol itself, which is what comparing two numbers means at this level."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "All three outcomes are produced as keys across the set: greater-than for the pair 20 and 19, less-than for several pairs, and equality both symbolically for 12 against 12 and contextually where Maria and Ben each have 19 marbles. Equality cases are often the ones a generator omits, and they are here."
+      "rationale": "All three relations are generated as keys - greater than for 18 against 17, less than for 10 against 12, and equality for 12 against 12 and for two children with 19 marbles each - so the equality case that generators often skip is genuinely present."
     },
     "cognitive_capacity": {
       "verdict": "CONCERN",
-      "rationale": "The option 'cannot be determined' is offered in every choice item yet is never the key, so a Grade 1 child can learn to strike it without comparing anything, and the notion of indeterminacy is itself beyond this stage. The true/false item that reports a story and then asserts 'The answer is >. True or False?' also stacks a claim about a symbol on top of a two-person narrative, which is two layers of reading for a first grader."
+      "rationale": "One item stacks two judgments inside one stem: it gives Ben 13 stickers and Maria 18, asks which sign compares them, then asserts the answer is > and asks true or false. A Grade 1 pupil must compare, then evaluate someone else's claim about a symbol, which is a layer of reasoning beyond the competency's single comparison."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "Three presentations coexist: a symbolic blank between two numerals, a seashell-and-marble story with named children, and a terse truth judgment of a stated equation. That is adequate contextual range for a comparison objective."
+      "rationale": "Bare symbolic comparisons, blank-filling between two numerals, and short narratives about seashells, marbles and storybooks all appear, and the response is variously a typed sign, a chosen sign, and a verdict on a statement."
     },
     "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "What changes between easier and harder samples is the closeness of the two quantities, moving from widely separated pairs toward adjacent ones such as 18 against 17; closeness is the genuine difficulty axis for comparing, so the progression serves this node."
+      "verdict": "FAIL",
+      "rationale": "Every one of the six true-or-false samples keys to False, including the claims that 9 is greater than 9, that 9 equals 7, that 20 is less than 19, that 16 is greater than 19 and that 1 equals 10. A pupil who answers False without reading scores every one of them, so that entire format certifies nothing about comparing numbers. The choice items compound this by carrying cannot be determined in every option list, an answer that is never possible when two numerals are given, so a quarter of each list is dead weight. What varies between seeds is therefore the surface of the claim rather than any deepening of the comparison itself."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "No operand exceeds 20 anywhere in the set, and the ceiling is actually reached rather than avoided, so the stated bound is both respected and exercised."
+      "rationale": "Every value compared lies between 1 and 20, hitting the stated ceiling exactly at 20 and including the hard adjacent pair 18 against 17 as well as wide gaps like 1 against 15."
     }
   },
-  "overall": "CONCERN"
+  "overall": "FAIL"
 }

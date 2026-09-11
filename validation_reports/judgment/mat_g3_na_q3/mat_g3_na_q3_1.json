@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g3_na_q3_1",
-  "reviewed_by": "reviewer-r2-amber-trellis-1903",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c6-mistral-comfrey-8916",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -9,9 +9,8 @@
     44,
     45,
     46,
-    61,
-    63,
     64,
+    75,
     500,
     501,
     502,
@@ -81,31 +80,12 @@
     },
     {
       "seed": 44,
-      "formatter": "mcq",
-      "question_text": "What is 6 × 0?",
-      "correct_answer": 0,
-      "options": [
-        {
-          "key": "A",
-          "value": 6,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 0,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 2,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 1,
-          "is_correct": false
-        }
-      ]
+      "formatter": "error_detect",
+      "question_text": "Rico solved: \"6 × 0 = ___\". Rico says the missing number is 0. Is Rico correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 0
+      }
     },
     {
       "seed": 45,
@@ -164,21 +144,6 @@
       ]
     },
     {
-      "seed": 61,
-      "formatter": "true_false",
-      "question_text": "7 × 0 = 7. True or False?",
-      "correct_answer": false
-    },
-    {
-      "seed": 63,
-      "formatter": "error_detect",
-      "question_text": "Ana solved: \"9 × 1 = ___\". Ana says the missing number is 9. Is Ana correct?",
-      "correct_answer": {
-        "has_error": false,
-        "correct_value": 9
-      }
-    },
-    {
       "seed": 64,
       "formatter": "cloze",
       "question_text": "1 × 6 = ___",
@@ -211,13 +176,16 @@
       ]
     },
     {
+      "seed": 75,
+      "formatter": "true_false",
+      "question_text": "1 × 9 = 9. True or False?",
+      "correct_answer": true
+    },
+    {
       "seed": 500,
-      "formatter": "error_detect",
-      "question_text": "Rico solved: \"9 × 1 = ___\". Rico says the missing number is 9. Is Rico correct?",
-      "correct_answer": {
-        "has_error": false,
-        "correct_value": 9
-      }
+      "formatter": "true_false",
+      "question_text": "9 × 1 = 8. True or False?",
+      "correct_answer": false
     },
     {
       "seed": 501,
@@ -333,32 +301,28 @@
     },
     {
       "seed": 602,
-      "formatter": "cloze",
-      "question_text": "7 × 1 = ___",
+      "formatter": "mcq",
+      "question_text": "What is 7 × 1?",
       "correct_answer": 7,
       "options": [
         {
           "key": "A",
           "value": 6,
-          "text": "6",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 8,
-          "text": "8",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 7,
-          "text": "7",
           "is_correct": true
         },
         {
           "key": "D",
           "value": 9,
-          "text": "9",
           "is_correct": false
         }
       ]
@@ -451,27 +415,27 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "CONCERN",
-      "rationale": "The competency asks the learner to 'Illustrate and apply' the properties, yet almost every item only asks whether two written expressions are the same. Nothing shows a property with a model, and nothing has the child use a property to obtain a result, so the recognition half is served while illustrating and applying are not."
+      "rationale": "The applying half of the objective is well served, but the illustrating half is missing entirely. Nothing in the set shows a property through an array, a grouping picture or any model; even the distributive item 'Is 8 × (7 + 2) the same as (8 × 7) + (8 × 2)?' is settled by computing both sides rather than by seeing why they agree."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "All five properties the competency spells out are genuinely present: identity through 7 × 1 = ___, the zero property through 'What is 6 × 0?', commutativity through 'Is 5 × 6 the same as 6 × 5?', associativity through 'Is (2 × 6) × 3 the same as 2 × (6 × 3)?', and distribution through the 8 × (7 + 2) comparison. Each also appears in a false-statement form."
+      "rationale": "All five clauses the wording enumerates do get generated: multiplying by one, multiplying by zero, reordering two factors, regrouping three factors, and distributing over a sum. The zero clause rests on a single sample, which is thin, but it is present."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Nested brackets are demanded by the competency's own distributive and grouping clauses, and the numbers inside them stay small enough that a Grade 3 pupil can verify both sides mentally, for instance the sums inside 6 × (8 + 5)."
+      "rationale": "Parenthesised expressions are used here because the competency itself describes grouping and distribution, so the notation is earned rather than imported, and the yes-or-no decision keeps the response demand light."
     },
     "variant_comprehensiveness": {
       "verdict": "CONCERN",
-      "rationale": "Two option strings, 'Only when both are 0' and 'Cannot be determined', recur in every comparison item and are never correct, which collapses those questions into coin-flip true-or-false decisions. The property items would benefit from forms that ask which property is being shown or that require completing an equivalent expression."
+      "rationale": "Ten of the sixteen samples are the same are-these-the-same comparison of two expressions. Only a couple ask for a product outright, and no property is ever named, described, or demonstrated by the pupil."
     },
     "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "The false variants are well chosen near-misses rather than random noise: '(8 × 7) + 4' breaks distribution by forgetting one product, and 3 × (7 × 3) breaks regrouping by altering a factor. Difficulty therefore moves along the property being tested, not along arithmetic size."
+      "verdict": "CONCERN",
+      "rationale": "The filler option 'Only when both are 0' appears in every choice list without ever being right, reducing a four-way decision to a coin flip between True and False. One item also pairs a genuine regrouping with a quietly altered factor, which risks teaching doubt about associativity rather than confidence in it."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Factors are drawn from the six to nine range the competency scopes, with the other operand kept to single digits, so the largest quantity a child must evaluate remains a two-digit product well inside Grade 3 reach."
+      "rationale": "Factors stay single-digit and the intermediate sums inside the distributive items stay small, so the arithmetic never distracts from the property being examined."
     }
   },
   "overall": "CONCERN"

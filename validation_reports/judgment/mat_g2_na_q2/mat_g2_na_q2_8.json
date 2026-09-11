@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g2_na_q2_8",
-  "reviewed_by": "reviewer-r1-cobalt-juniper-7748",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c4-pumice-lovage-6370",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -9,8 +9,6 @@
     44,
     45,
     46,
-    50,
-    55,
     500,
     501,
     502
@@ -18,28 +16,32 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "What is the next letter in the pattern: d, p, c, d, p, c?",
       "correct_answer": "d",
       "options": [
         {
           "key": "A",
           "value": "d",
+          "text": "d",
           "is_correct": true
         },
         {
           "key": "B",
           "value": "b",
+          "text": "b",
           "is_correct": false
         },
         {
           "key": "C",
           "value": "o",
+          "text": "o",
           "is_correct": false
         },
         {
           "key": "D",
           "value": "n",
+          "text": "n",
           "is_correct": false
         }
       ]
@@ -74,28 +76,28 @@
     },
     {
       "seed": 44,
-      "formatter": "mcq",
-      "question_text": "What is the next number in the pattern: 30, 26, 22, 18, 14, 10?",
-      "correct_answer": 6,
+      "formatter": "read_mcq",
+      "question_text": "What is the missing piece (position 6) in the pattern?",
+      "correct_answer": "C",
       "options": [
         {
           "key": "A",
-          "value": 10,
+          "value": 6,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 54,
+          "value": 11,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 6,
+          "value": 10,
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 2,
+          "value": 14,
           "is_correct": false
         }
       ]
@@ -157,66 +159,6 @@
       ]
     },
     {
-      "seed": 50,
-      "formatter": "cloze",
-      "question_text": "What is the next number in the pattern: 30, 29, 28, 27, 26, 25?",
-      "correct_answer": 24,
-      "options": [
-        {
-          "key": "A",
-          "value": 25,
-          "text": "25",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 36,
-          "text": "36",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 23,
-          "text": "23",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 24,
-          "text": "24",
-          "is_correct": true
-        }
-      ]
-    },
-    {
-      "seed": 55,
-      "formatter": "read_mcq",
-      "question_text": "What is the missing piece (position 6) in the pattern?",
-      "correct_answer": "D",
-      "options": [
-        {
-          "key": "A",
-          "value": 18,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 21,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 19,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 20,
-          "is_correct": true
-        }
-      ]
-    },
-    {
       "seed": 500,
       "formatter": "read_mcq",
       "question_text": "What is the missing piece (position 6) in the pattern?",
@@ -246,60 +188,60 @@
     },
     {
       "seed": 501,
-      "formatter": "cloze",
-      "question_text": "What is the next number in the pattern: 68, 81, 76, 68, 81, 76?",
-      "correct_answer": 68,
+      "formatter": "read_mcq",
+      "question_text": "What is the missing piece (position 6) in the pattern?",
+      "correct_answer": "A",
       "options": [
         {
           "key": "A",
-          "value": 68,
-          "text": "68",
+          "value": 76,
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 67,
-          "text": "67",
+          "value": 81,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 69,
-          "text": "69",
+          "value": 68,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 70,
-          "text": "70",
+          "value": 77,
           "is_correct": false
         }
       ]
     },
     {
       "seed": 502,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "What is the next letter in the pattern: o, p, c, h, o, p?",
       "correct_answer": "c",
       "options": [
         {
           "key": "A",
           "value": "c",
+          "text": "c",
           "is_correct": true
         },
         {
           "key": "B",
           "value": "a",
+          "text": "a",
           "is_correct": false
         },
         {
           "key": "C",
           "value": "f",
+          "text": "f",
           "is_correct": false
         },
         {
           "key": "D",
           "value": "j",
+          "text": "j",
           "is_correct": false
         }
       ]
@@ -308,28 +250,28 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "CONCERN",
-      "rationale": "The competency asks for 'the next term/s', and the plural case never materialises: every sampled item wants exactly one value, either the next one or the piece at a single stated position. Continuing a pattern by two or more terms, which is the harder and more diagnostic version, is absent."
+      "rationale": "The competency asks for 'the next term/s', and the plural is deliberate - continuing a pattern by two or more terms is a distinct demand. Every sampled item stops at a single term, so half of what the wording asks for is never tested."
     },
     "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "Numbers and letters are both covered, in increasing, decreasing and repeating-unit forms, but nothing in the set touches 'rhythmic properties' or 'visual elements in arts'. The two positional items present their choices as numbers, so even those are numeric rather than pictorial."
+      "verdict": "FAIL",
+      "rationale": "Of the four media the competency lists, only numbers and letters are generated. Nothing addresses 'rhythmic properties' and nothing addresses 'visual elements in arts'; the picture-led items that could have carried the arts case resolve to numeric option lists instead."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Six terms are shown before the blank, which is enough for a Grade 2 student to detect a constant step or a repeating unit without holding much in memory, and the largest step sampled is four."
+      "rationale": "Sequences are six terms long, the letter runs follow straightforward alphabet order or a short repeating cycle, and the numbers stay in the twenties and eighties - all well inside what a Grade 2 pupil can hold and continue."
     },
     "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The set mixes arithmetic runs with cyclic units such as the letter pattern that repeats d, p, c, and it varies whether the gap sits at the end or at an interior position, which is real structural variation and not merely a change of numbers."
+      "verdict": "CONCERN",
+      "rationale": "Two presentations exist - an inline listed sequence and an unshown image asking 'What is the missing piece (position 6) in the pattern?' - but there is no growing shape pattern, no object or colour repetition, and no pattern given as a rule to extend."
     },
     "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Difficulty moves through the pattern rule itself, from unit steps up to a step of four and from simple alphabetic succession like q, r, s, t, u, v to cycles whose repeating block must be identified first. That is the correct axis for a pattern-continuation objective."
+      "verdict": "CONCERN",
+      "rationale": "Both fully-displayed number sequences step by exactly one, up in one case and down in the other, so the rule itself never gets harder; what varies is only which medium carries it, which is an axis beside the point of determining a next term."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "The competency states no numeric ceiling; the values used stay in the two-digit range that a Grade 2 second-quarter student can handle, with the largest options in the eighties, so nothing is out of reach."
+      "rationale": "Terms stay in the low twenties and low eighties, which is appropriate for Grade 2 pattern work where the arithmetic must not compete with the pattern recognition."
     }
   },
-  "overall": "CONCERN"
+  "overall": "FAIL"
 }

@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g3_na_q1_0",
-  "reviewed_by": "reviewer-b5-marlin-obsidian-3358",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c5-tarragon-flint-2549",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -56,31 +56,9 @@
     },
     {
       "seed": 45,
-      "formatter": "read_mcq",
-      "question_text": "What number is marked on the number line?",
-      "correct_answer": "C",
-      "options": [
-        {
-          "key": "A",
-          "value": 7843,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 7846,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 7844,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 7845,
-          "is_correct": false
-        }
-      ]
+      "formatter": "set_fill_in_blank",
+      "question_text": "Move the dot to show 7844 on the number line.",
+      "correct_answer": 7844
     },
     {
       "seed": 46,
@@ -154,27 +132,27 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "CONCERN",
-      "rationale": "Both required representations are present, but the number-line items demand precision a picture cannot carry. Choosing among 9522, 9520, 9523 and 9521 means resolving consecutive integers on a drawn line, and the same one-apart option sets recur on the other number-line samples, so the pictorial model cannot actually decide the answer."
+      "rationale": "Both halves of the competency are exercised, pictorial models and numerals, in both directions. The flaw is one option set: the blocks item with key 7554 offers 21 alongside 7544 and 7454, and a two-digit value cannot arise from any reading of a four-digit block picture, so that option is dead weight a pupil discards immediately."
     },
     "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "Every sampled value is a four-digit number between the 1000s and the 9000s. Nothing falls below 1000, nothing reaches 10 000 itself, and no value carries a zero in an interior place, which is the hardest case for a base-10 block model since a whole place must be shown as empty."
+      "verdict": "PASS",
+      "rationale": "Two genuinely different pictorial models are used, base-10 blocks and the number line, and each is presented in both directions, once asking the pupil to build the representation for a given numeral and once asking for the numeral shown by the representation."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Base-10 blocks and a number line are the two models Grade 3 Quarter 1 uses for this range, and no sample asks the pupil to do anything with the numbers beyond representing or reading them."
+      "rationale": "Numerals are four digits throughout, which is what Grade 3 Quarter 1 establishes, and the instructions are single imperatives such as moving a dot to show a value on the number line, with no multi-clause reasoning."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "Two distinct models are used and both directions of the representation are exercised: building a model from a given numeral, as with the base-10 block and dot-placement items, and naming the numeral a shown model represents."
+      "rationale": "Two interaction types appear, a constructed representation and a read-and-choose, and they are crossed against the two model types, so the four combinations of model and direction are all represented in eight samples."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Variation is entirely in which model is used and which direction the translation runs, both of which are the competency's own dimensions rather than an imported arithmetic axis."
+      "rationale": "The near-miss options in the number line items, 9520 through 9523 around the key, force attention to the ones digit on a scaled line, which is exactly the representational precision this competency is about rather than an arithmetic skill."
     },
     "scale_appropriateness": {
-      "verdict": "CONCERN",
-      "rationale": "All sampled values sit between roughly 1400 and 9630, so the stated boundary of 10 000 is never reached, and the lower part of the range the competency covers is not sampled at all. One block item also offers 21 against three four-digit options, a choice no pupil needs the model to eliminate."
+      "verdict": "PASS",
+      "rationale": "Values run from 1410 to 9630, all strictly below the stated ceiling of 10 000 and all four-digit, so the representations stretch to the top of the range the competency names without crossing it."
     }
   },
   "overall": "CONCERN"

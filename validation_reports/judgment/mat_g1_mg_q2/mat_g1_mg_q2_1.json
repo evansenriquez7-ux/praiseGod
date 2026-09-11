@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g1_mg_q2_1",
-  "reviewed_by": "reviewer-b1-quartz-mallow-4412",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c1-lantern-fescue-3061",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -9,7 +9,6 @@
     44,
     45,
     46,
-    50,
     500,
     501,
     502,
@@ -18,28 +17,32 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "Which is shorter: 2 paperclips or 6 paperclips?",
       "correct_answer": 2,
       "options": [
         {
           "key": "A",
           "value": 2,
+          "text": "2",
           "is_correct": true
         },
         {
           "key": "B",
           "value": 6,
+          "text": "6",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 1,
+          "text": "1",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 3,
+          "text": "3",
           "is_correct": false
         }
       ]
@@ -74,28 +77,32 @@
     },
     {
       "seed": 44,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "The distance from the bench to the tree is 3 blocks. The distance from the gate to the tree is 4 blocks. Which distance is shorter?",
       "correct_answer": 3,
       "options": [
         {
           "key": "A",
           "value": 4,
+          "text": "4",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 5,
+          "text": "5",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 3,
+          "text": "3",
           "is_correct": true
         },
         {
           "key": "D",
           "value": 2,
+          "text": "2",
           "is_correct": false
         }
       ]
@@ -157,65 +164,29 @@
       ]
     },
     {
-      "seed": 50,
-      "formatter": "cloze",
-      "question_text": "The distance from the bench to the tree is 6 blocks. The distance from the gate to the tree is 7 blocks. Which distance is longer?",
-      "correct_answer": 7,
-      "options": [
-        {
-          "key": "A",
-          "value": 7,
-          "text": "7",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 9,
-          "text": "9",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 8,
-          "text": "8",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 6,
-          "text": "6",
-          "is_correct": false
-        }
-      ]
-    },
-    {
       "seed": 500,
-      "formatter": "cloze",
+      "formatter": "mcq",
       "question_text": "The distance from the bench to the tree is 9 blocks. The distance from the gate to the tree is 6 blocks. Which distance is longer?",
       "correct_answer": 9,
       "options": [
         {
           "key": "A",
           "value": 6,
-          "text": "6",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 9,
-          "text": "9",
           "is_correct": true
         },
         {
           "key": "C",
           "value": 10,
-          "text": "10",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 8,
-          "text": "8",
           "is_correct": false
         }
       ]
@@ -250,28 +221,32 @@
     },
     {
       "seed": 502,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "The distance from the bench to the tree is 7 hands. The distance from the gate to the tree is 4 hands. Which distance is longer?",
       "correct_answer": 7,
       "options": [
         {
           "key": "A",
           "value": 6,
+          "text": "6",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 7,
+          "text": "7",
           "is_correct": true
         },
         {
           "key": "C",
           "value": 8,
+          "text": "8",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 4,
+          "text": "4",
           "is_correct": false
         }
       ]
@@ -308,27 +283,27 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "CONCERN",
-      "rationale": "The comparison itself is sound, but option sets contain values the stem never mentioned. Asked 'Which is longer: 6 paperclips or 4 paperclips?', the pupil is also offered 5 and 7 - quantities no reading of the situation could produce, which makes the choice set incoherent rather than merely hard."
+      "rationale": "The comparisons are correct and both lengths and distances are compared, but half of each option list is unreachable: asked which is longer, 6 paperclips or 4 paperclips, the pupil is offered 5 and 7, values that appear nowhere in the stem. Every sample carries two such impossible options, so each item is really a two-way decision dressed as a four-way one."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "Longer and shorter are both asked, and the competency's two objects - lengths measured in paperclips and distances measured in blocks or hands - each get their own items."
+      "rationale": "Both directions of comparison are sampled in roughly equal measure - shorter and longer each appear several times - and the comparison is applied both to object lengths in paperclips and to walked distances in blocks and hands."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Choosing between two stated quantities is a single-step judgment, and the vocabulary stays at longer, shorter and the unit names with no measurement language from a later grade."
+      "rationale": "Two-sentence distance setups naming a bench, a tree and a gate, followed by a single which-is-shorter question, are well within Grade 1 Quarter 2 reading and reasoning; no computation is required, only ordering two counts."
     },
     "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "Seven of ten renders use the same landmark frame running from 'the bench to the tree' and 'gate to the tree' with only the numbers altered. The bare two-quantity form appears three times, and nothing compares three lengths or asks which of several objects is longest."
+      "verdict": "PASS",
+      "rationale": "The set carries a bare two-quantity comparison alongside a short narrative comparison of two routes, and answers are collected both as a cloze blank and as a choice, so the presentation is not a single template."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Difficulty does step from a wide gap such as 2 against 6 to adjacent values such as 6 against 7, which genuinely sharpens the comparison being taught."
+      "rationale": "Seeds vary the closeness of the two quantities, from a wide gap like 2 against 6 down to adjacent counts like 6 against 7, which is a real difficulty axis for comparing measures rather than an unrelated one."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Quantities sit between 2 and 9 non-standard units, a range a first grader can hold and compare without counting aids."
+      "rationale": "All compared values sit between 2 and 9 units, a count a Grade 1 pupil can actually lay out with paperclips or pace out in blocks, and the competency sets no higher ceiling to exceed."
     }
   },
   "overall": "CONCERN"

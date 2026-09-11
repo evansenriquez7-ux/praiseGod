@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g3_na_q1_5",
-  "reviewed_by": "reviewer-r2-amber-trellis-1903",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c6-mistral-comfrey-8916",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -22,66 +22,66 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "cloze",
-      "question_text": "Compare the numbers: 4507 ___ 4507. Which sign is correct: >, <, or =?",
-      "correct_answer": "=",
+      "formatter": "true_false",
+      "question_text": "4507 > 4507. True or False?",
+      "correct_answer": false
+    },
+    {
+      "seed": 43,
+      "formatter": "mcq",
+      "question_text": "Liza has 7481 marbles. Jose has 4926 marbles. Which sign correctly compares the two amounts?",
+      "correct_answer": ">",
       "options": [
         {
           "key": "A",
           "value": "=",
-          "text": "=",
-          "is_correct": true
+          "is_correct": false
         },
         {
           "key": "B",
-          "value": "cannot be determined",
-          "text": "cannot be determined",
+          "value": "<",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "<",
-          "text": "<",
-          "is_correct": false
+          "value": ">",
+          "is_correct": true
         },
         {
           "key": "D",
-          "value": ">",
-          "text": ">",
+          "value": "cannot be determined",
           "is_correct": false
         }
       ]
     },
     {
-      "seed": 43,
-      "formatter": "true_false",
-      "question_text": "Liza has 7481 marbles. Jose has 4926 marbles. Which sign correctly compares the two amounts? The answer is <. True or False?",
-      "correct_answer": false
-    },
-    {
       "seed": 44,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "Compare the numbers: 154 ___ 5700. Which sign is correct: >, <, or =?",
       "correct_answer": "<",
       "options": [
         {
           "key": "A",
           "value": "cannot be determined",
+          "text": "cannot be determined",
           "is_correct": false
         },
         {
           "key": "B",
           "value": "=",
+          "text": "=",
           "is_correct": false
         },
         {
           "key": "C",
           "value": ">",
+          "text": ">",
           "is_correct": false
         },
         {
           "key": "D",
           "value": "<",
+          "text": "<",
           "is_correct": true
         }
       ]
@@ -116,28 +116,32 @@
     },
     {
       "seed": 46,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "Compare the numbers: 1523 ___ 6521. Which sign is correct: >, <, or =?",
       "correct_answer": "<",
       "options": [
         {
           "key": "A",
           "value": "<",
+          "text": "<",
           "is_correct": true
         },
         {
           "key": "B",
           "value": "=",
+          "text": "=",
           "is_correct": false
         },
         {
           "key": "C",
           "value": ">",
+          "text": ">",
           "is_correct": false
         },
         {
           "key": "D",
           "value": "cannot be determined",
+          "text": "cannot be determined",
           "is_correct": false
         }
       ]
@@ -150,81 +154,65 @@
     },
     {
       "seed": 501,
-      "formatter": "cloze",
-      "question_text": "Compare the numbers: 3837 ___ 6709. Which sign is correct: >, <, or =?",
-      "correct_answer": "<",
-      "options": [
-        {
-          "key": "A",
-          "value": ">",
-          "text": ">",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "<",
-          "text": "<",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": "=",
-          "text": "=",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "cannot be determined",
-          "text": "cannot be determined",
-          "is_correct": false
-        }
-      ]
+      "formatter": "true_false",
+      "question_text": "3837 > 6709. True or False?",
+      "correct_answer": false
     },
     {
       "seed": 502,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "Compare the numbers: 5765 ___ 5765. Which sign is correct: >, <, or =?",
       "correct_answer": "=",
       "options": [
         {
           "key": "A",
           "value": "cannot be determined",
+          "text": "cannot be determined",
           "is_correct": false
         },
         {
           "key": "B",
           "value": "=",
+          "text": "=",
           "is_correct": true
         },
         {
           "key": "C",
           "value": ">",
+          "text": ">",
           "is_correct": false
         },
         {
           "key": "D",
           "value": "<",
+          "text": "<",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 600,
+      "formatter": "true_false",
+      "question_text": "6281 > 7381. True or False?",
+      "correct_answer": false
+    },
+    {
+      "seed": 601,
       "formatter": "cloze",
-      "question_text": "Compare the numbers: 6281 ___ 7381. Which sign is correct: >, <, or =?",
-      "correct_answer": "<",
+      "question_text": "Maria has 9294 marbles. Ben has 9294 marbles. Which sign correctly compares the two amounts?",
+      "correct_answer": "=",
       "options": [
         {
           "key": "A",
           "value": "=",
           "text": "=",
-          "is_correct": false
+          "is_correct": true
         },
         {
           "key": "B",
-          "value": "<",
-          "text": "<",
-          "is_correct": true
+          "value": ">",
+          "text": ">",
+          "is_correct": false
         },
         {
           "key": "C",
@@ -234,67 +222,17 @@
         },
         {
           "key": "D",
-          "value": ">",
-          "text": ">",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 601,
-      "formatter": "mcq",
-      "question_text": "Maria has 9294 marbles. Ben has 9294 marbles. Which sign correctly compares the two amounts?",
-      "correct_answer": "=",
-      "options": [
-        {
-          "key": "A",
-          "value": "=",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": ">",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "cannot be determined",
-          "is_correct": false
-        },
-        {
-          "key": "D",
           "value": "<",
+          "text": "<",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 602,
-      "formatter": "mcq",
-      "question_text": "Compare the numbers: 5005 ___ 300. Which sign is correct: >, <, or =?",
-      "correct_answer": ">",
-      "options": [
-        {
-          "key": "A",
-          "value": "<",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "cannot be determined",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": ">",
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": "=",
-          "is_correct": false
-        }
-      ]
+      "formatter": "true_false",
+      "question_text": "5005 = 300. True or False?",
+      "correct_answer": false
     },
     {
       "seed": 603,
@@ -326,93 +264,63 @@
     },
     {
       "seed": 604,
-      "formatter": "cloze",
+      "formatter": "mcq",
       "question_text": "Ben has 3724 storybooks. Jose has 3744 storybooks. Which sign correctly compares the two amounts?",
       "correct_answer": "<",
       "options": [
         {
           "key": "A",
           "value": "<",
-          "text": "<",
           "is_correct": true
         },
         {
           "key": "B",
           "value": "=",
-          "text": "=",
           "is_correct": false
         },
         {
           "key": "C",
           "value": "cannot be determined",
-          "text": "cannot be determined",
           "is_correct": false
         },
         {
           "key": "D",
           "value": ">",
-          "text": ">",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 605,
-      "formatter": "cloze",
-      "question_text": "Ana has 1496 pencils. Maria has 624 pencils. Which sign correctly compares the two amounts?",
-      "correct_answer": ">",
-      "options": [
-        {
-          "key": "A",
-          "value": ">",
-          "text": ">",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": "<",
-          "text": "<",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "=",
-          "text": "=",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "cannot be determined",
-          "text": "cannot be determined",
-          "is_correct": false
-        }
-      ]
+      "formatter": "true_false",
+      "question_text": "Ana has 1496 pencils. Maria has 624 pencils. Which sign correctly compares the two amounts? The answer is <. True or False?",
+      "correct_answer": false
     }
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "The comparisons themselves are sound and the keys are right, but the stem promises a choice among three signs ('Which sign is correct: >, <, or =?') while the option list always smuggles in 'cannot be determined'. For two fully specified whole numbers that choice can never be true, so a permanently impossible distractor sits in nearly every item."
+      "verdict": "PASS",
+      "rationale": "Each of the three relations the wording names is the keyed answer somewhere: greater-than on the 7481 against 4926 comparison, less-than repeatedly, and equals on the 5765 pair and on the Maria/Ben 9294 item. The stems ask for the sign, which is exactly the competency's verb."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "All three relations are keyed somewhere in the set: equality in 'Compare the numbers: 4507 ___ 4507', less-than in most story pairs, and greater-than in '5005 ___ 300' and the pencils comparison. No relation the symbols clause names is missing."
+      "rationale": "Beyond covering all three symbols, the pairs range from far apart (154 against 5700) to differing in a single digit (3724 against 3744), and the equal case appears both as a bare pair and inside a collection story."
     },
     "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Four-digit comparison is the Grade 3 Quarter 1 expectation, and the set includes a genuinely discriminating pair, 3724 against 3744, that forces attention to the tens place instead of the leading digit. Sentence length stays short and the contexts are everyday objects."
+      "verdict": "CONCERN",
+      "rationale": "Most items read cleanly, but the last sample stacks a story, a question about the correct sign, and then an assertion that the answer is a particular symbol, all to be judged true or false. That triple wrapping asks a Grade 3 reader to evaluate a claim about an answer to a question they were never asked to answer."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "Symbolic comparisons alternate with two-character quantity stories and with a bare truth judgement on 5497 = 5956, so the learner meets the relation both as a sign to pick and as a statement to verify."
+      "rationale": "Naked numeric comparisons, a blank between two numerals, and collection contexts with named children all appear, and the truth-judgment shell gives a fourth way in."
     },
     "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Harder seeds move from wildly unequal magnitudes such as 154 against 5700 toward near-neighbours differing in a single interior digit, which is exactly the place-value discrimination this competency is meant to develop."
+      "verdict": "CONCERN",
+      "rationale": "Every true-or-false sample here is keyed False, six for six, so a pupil who answers False without reading scores perfectly on that whole family. The option 'cannot be determined' also sits in every choice list while never being right, which shrinks a four-way decision to a three-way one."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Values run up to 9877 and 9573, close to but never past the stated ceiling of 10 000, while smaller operands like 300 and 624 supply the mixed-length comparisons that ceiling permits."
+      "rationale": "Quantities sit between the hundreds and 9877, under the ten-thousand ceiling the wording sets, and the mixed-width pair 5005 against 300 forces attention to digit count rather than leading digit."
     }
   },
   "overall": "CONCERN"

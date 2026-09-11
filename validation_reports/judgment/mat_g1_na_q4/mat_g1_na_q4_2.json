@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g1_na_q4_2",
-  "reviewed_by": "reviewer-b2-tallow-verdigris-8130",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c2-basalt-yarrow-7194",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -9,7 +9,6 @@
     44,
     45,
     46,
-    50,
     500,
     501,
     502,
@@ -19,28 +18,32 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "What comes next when counting by halves: 1/2, ___?",
       "correct_answer": "2/2",
       "options": [
         {
           "key": "A",
           "value": "2/4",
+          "text": "2/4",
           "is_correct": false
         },
         {
           "key": "B",
           "value": "1/2",
+          "text": "1/2",
           "is_correct": false
         },
         {
           "key": "C",
           "value": "3/2",
+          "text": "3/2",
           "is_correct": false
         },
         {
           "key": "D",
           "value": "2/2",
+          "text": "2/2",
           "is_correct": true
         }
       ]
@@ -75,28 +78,32 @@
     },
     {
       "seed": 44,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "What fraction is missing when counting by quarters: 1/4, ___, 3/4, 4/4?",
       "correct_answer": "2/4",
       "options": [
         {
           "key": "A",
           "value": "3/4",
+          "text": "3/4",
           "is_correct": false
         },
         {
           "key": "B",
           "value": "2/4",
+          "text": "2/4",
           "is_correct": true
         },
         {
           "key": "C",
           "value": "4/4",
+          "text": "4/4",
           "is_correct": false
         },
         {
           "key": "D",
           "value": "1/4",
+          "text": "1/4",
           "is_correct": false
         }
       ]
@@ -158,65 +165,29 @@
       ]
     },
     {
-      "seed": 50,
-      "formatter": "cloze",
-      "question_text": "Count by quarters: 2/4, 3/4, ___. What fraction comes next?",
-      "correct_answer": "4/4",
-      "options": [
-        {
-          "key": "A",
-          "value": "5/4",
-          "text": "5/4",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "4/2",
-          "text": "4/2",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "3/4",
-          "text": "3/4",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "4/4",
-          "text": "4/4",
-          "is_correct": true
-        }
-      ]
-    },
-    {
       "seed": 500,
-      "formatter": "cloze",
+      "formatter": "mcq",
       "question_text": "What fraction is missing when counting by quarters: 1/4, 2/4, ___, 4/4?",
       "correct_answer": "3/4",
       "options": [
         {
           "key": "A",
           "value": "3/4",
-          "text": "3/4",
           "is_correct": true
         },
         {
           "key": "B",
           "value": "2/4",
-          "text": "2/4",
           "is_correct": false
         },
         {
           "key": "C",
           "value": "1/4",
-          "text": "1/4",
           "is_correct": false
         },
         {
           "key": "D",
           "value": "4/4",
-          "text": "4/4",
           "is_correct": false
         }
       ]
@@ -251,28 +222,32 @@
     },
     {
       "seed": 502,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "What is the next fraction in the pattern: 1/4, 2/4, 3/4, ___?",
       "correct_answer": "4/4",
       "options": [
         {
           "key": "A",
           "value": "4/4",
+          "text": "4/4",
           "is_correct": true
         },
         {
           "key": "B",
           "value": "4/2",
+          "text": "4/2",
           "is_correct": false
         },
         {
           "key": "C",
           "value": "3/4",
+          "text": "3/4",
           "is_correct": false
         },
         {
           "key": "D",
           "value": "5/4",
+          "text": "5/4",
           "is_correct": false
         }
       ]
@@ -311,28 +286,32 @@
     },
     {
       "seed": 602,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "Count by quarters: 1/4, 2/4, 3/4, ___. What fraction comes next?",
       "correct_answer": "4/4",
       "options": [
         {
           "key": "A",
           "value": "3/4",
+          "text": "3/4",
           "is_correct": false
         },
         {
           "key": "B",
           "value": "4/4",
+          "text": "4/4",
           "is_correct": true
         },
         {
           "key": "C",
           "value": "4/2",
+          "text": "4/2",
           "is_correct": false
         },
         {
           "key": "D",
           "value": "5/4",
+          "text": "5/4",
           "is_correct": false
         }
       ]
@@ -341,28 +320,28 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "Sequences of fractional counts are continued or completed, which matches counting halves and quarters, and the quarter sequences correctly progress 1/4, 2/4, 3/4, 4/4 without reducing any term."
+      "rationale": "Items run a sequence of like fractions and ask for the term that continues or completes it, which is what counting halves and counting quarters means, and the keys follow the sequence correctly."
     },
     "comprehensive_coverage": {
-      "verdict": "FAIL",
-      "rationale": "The halves strand is effectively one item. Five separate seeds show the same fragment beginning at 1/2 with one blank after it, all keyed to 2/2; no half-count ever starts from a different term, contains an interior blank, or continues past one whole. Half of what this competency names is therefore represented by a single problem duplicated under different shells."
+      "verdict": "CONCERN",
+      "rationale": "The quarters strand is worked properly, with the blank falling at the second, third and final positions, but every halves item is the same single step: 'Count by halves: 1/2, ___. What fraction comes next?' recurs across several seeds with the identical key. Counting halves is effectively one item repeated."
     },
     "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Counts are short, never exceed one whole, and the notation stays in the unreduced quarters form that supports counting rather than demanding equivalence reasoning."
+      "verdict": "CONCERN",
+      "rationale": "Sequence length is fine for Grade 1, but choices such as 3/2, 5/4 and 4/2 place fractions beyond one whole and non-unit forms in front of pupils whose fraction vocabulary at this point is a half and a quarter of a single whole."
     },
     "variant_comprehensiveness": {
       "verdict": "CONCERN",
-      "rationale": "Only forward counting appears, and the blank sits either at the end or in one interior position; there is no backward count and no model or picture accompanying any of the fraction sequences."
+      "rationale": "Next-term and missing-middle forms both appear, but every item is a symbolic string; nothing counts halves or quarters against a shaded model or a partitioned object, even though this quarter's other fraction work is model-based."
     },
     "competency_alignment": {
-      "verdict": "CONCERN",
-      "rationale": "Seeds 500, 501 and 602 land on quarter sequences already produced by the low seeds, so the harder tier is not extending the count, and the offered 3/2 and 5/4 options point past a whole in a node whose keys never go there."
+      "verdict": "PASS",
+      "rationale": "Within the quarters strand the position of the blank shifts in a way that genuinely tests whether the pupil is tracking the count rather than recalling one answer, which serves the competency directly."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "All keys are at or below one whole (4/4 and 2/2 being the maxima), which is the right ceiling for first counting of halves and quarters."
+      "rationale": "Counts stop at the whole - four fourths and two halves - so the sequences do not run past one, which is the correct limit for this stage."
     }
   },
-  "overall": "FAIL"
+  "overall": "CONCERN"
 }

@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g2_na_q1_10",
-  "reviewed_by": "reviewer-b3-cinder-halyard-2276",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c3-nimbus-sorrel-4825",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -9,8 +9,7 @@
     44,
     45,
     46,
-    70,
-    104,
+    51,
     500,
     501,
     502,
@@ -52,12 +51,9 @@
     },
     {
       "seed": 43,
-      "formatter": "error_detect",
-      "question_text": "Grace solved: \"0 + 293 = ___\". Grace says the missing number is 293. Is Grace correct?",
-      "correct_answer": {
-        "has_error": false,
-        "correct_value": 293
-      }
+      "formatter": "true_false",
+      "question_text": "0 + 293 = 303. True or False?",
+      "correct_answer": false
     },
     {
       "seed": 44,
@@ -117,69 +113,44 @@
     },
     {
       "seed": 46,
-      "formatter": "mcq",
-      "question_text": "What is 0 + 410?",
+      "formatter": "cloze",
+      "question_text": "0 + 410 = ___",
       "correct_answer": 410,
       "options": [
         {
           "key": "A",
           "value": 410,
+          "text": "410",
           "is_correct": true
         },
         {
           "key": "B",
           "value": 411,
+          "text": "411",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 420,
+          "text": "420",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 409,
+          "text": "409",
           "is_correct": false
         }
       ]
     },
     {
-      "seed": 70,
-      "formatter": "cloze",
-      "question_text": "302 + 0 = ___",
-      "correct_answer": 302,
-      "options": [
-        {
-          "key": "A",
-          "value": 302,
-          "text": "302",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 303,
-          "text": "303",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 312,
-          "text": "312",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 301,
-          "text": "301",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 104,
-      "formatter": "true_false",
-      "question_text": "0 + 893 = 893. True or False?",
-      "correct_answer": true
+      "seed": 51,
+      "formatter": "error_detect",
+      "question_text": "Ana solved: \"0 + 859 = ___\". Ana says the missing number is 860. Is Ana correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 859
+      }
     },
     {
       "seed": 500,
@@ -295,28 +266,32 @@
     },
     {
       "seed": 601,
-      "formatter": "mcq",
-      "question_text": "What is 0 + 702?",
+      "formatter": "cloze",
+      "question_text": "0 + 702 = ___",
       "correct_answer": 702,
       "options": [
         {
           "key": "A",
           "value": 701,
+          "text": "701",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 703,
+          "text": "703",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 712,
+          "text": "712",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 702,
+          "text": "702",
           "is_correct": true
         }
       ]
@@ -351,95 +326,69 @@
     },
     {
       "seed": 603,
-      "formatter": "mcq",
-      "question_text": "What is 565 + 0?",
-      "correct_answer": 565,
-      "options": [
-        {
-          "key": "A",
-          "value": 564,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 565,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 566,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 575,
-          "is_correct": false
-        }
-      ]
+      "formatter": "true_false",
+      "question_text": "565 + 0 = 565. True or False?",
+      "correct_answer": true
     },
     {
       "seed": 604,
-      "formatter": "true_false",
-      "question_text": "208 + 0 = 209. True or False?",
-      "correct_answer": false
-    },
-    {
-      "seed": 605,
-      "formatter": "cloze",
-      "question_text": "905 + 0 = ___",
-      "correct_answer": 905,
+      "formatter": "mcq",
+      "question_text": "What is 208 + 0?",
+      "correct_answer": 208,
       "options": [
         {
           "key": "A",
-          "value": 904,
-          "text": "904",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 905,
-          "text": "905",
+          "value": 208,
           "is_correct": true
         },
         {
+          "key": "B",
+          "value": 218,
+          "is_correct": false
+        },
+        {
           "key": "C",
-          "value": 915,
-          "text": "915",
+          "value": 209,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 906,
-          "text": "906",
+          "value": 207,
           "is_correct": false
         }
       ]
+    },
+    {
+      "seed": 605,
+      "formatter": "true_false",
+      "question_text": "905 + 0 = 905. True or False?",
+      "correct_answer": true
     }
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "CONCERN",
-      "rationale": "Applying the three properties is well handled, but illustrate is the competency's first verb and no sample serves it. Nothing asks the learner to represent a property with a model, to complete an equivalent expression, or to show why reordering leaves the sum unchanged; every item is a verdict on a statement already written out."
+      "rationale": "The affirmative items genuinely illustrate the properties, but each negative one works by quietly substituting a different addend, as when 168 + 511 is set against 511 + 137. The pupil answers by spotting that a number changed, not by reasoning about order or grouping, so the false cases do not teach the property they are attached to."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "All three named properties are generated with multiple instances. The zero property appears with the zero in both positions, commutativity appears as a swap of two addends, and associativity appears as a regrouping of three addends with parentheses shifted from the first pair to the second."
+      "rationale": "All three properties the wording lists are produced: adding zero in several forms, reordering two addends, and regrouping three addends with parentheses, each appearing across multiple seeds."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Parenthesised three-addend expressions are demanding notation for Quarter 1, but this competency explicitly names changing the grouping of the addends, so the brackets are warranted rather than imported. Each stem poses one comparison and no item requires evaluating both sides to answer."
+      "rationale": "Parenthesised grouping is demanded by the competency itself, and the pupil is only ever asked whether two arrangements match rather than to evaluate both sides, which keeps the load manageable at this grade."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "Four distinct response types occur, including an error-detection item where a pupil's proposed answer to a zero-addition must be judged. Statements to verify, expressions to complete and comparisons to rule on give the set real presentational range."
+      "rationale": "Four presentations occur: a true-or-false statement, a same-or-not comparison, a fill-in-the-total, and an error-detection item where a named pupil's answer must be checked."
     },
     "competency_alignment": {
       "verdict": "CONCERN",
-      "rationale": "Three seeds pose comparisons that are false because an addend was quietly changed, as in the item asking whether 783 + 213 is the same as 213 + 685. Those can be answered by spotting mismatched digits with no grasp of commutativity at all, so they vary a vigilance axis rather than building the property. Cannot be determined is also never the key anywhere."
+      "rationale": "The zero property gets the richer treatment, appearing as a cloze and as an error-detection item, while order and grouping only ever arrive as a same-or-not judgment. Applying those two properties, as opposed to judging them, is never required."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Every sum stays under the stated thousand, with the three-addend cases reaching the high eight-hundreds at most and the zero-property items using addends up to the nine-hundreds. The bound is respected and also genuinely approached."
+      "rationale": "Every sum stays at or below a thousand, with the largest pairs such as 976 plus 3 and 783 plus 213 approaching but not breaching that ceiling."
     }
   },
   "overall": "CONCERN"

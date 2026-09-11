@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g2_na_q3_4",
-  "reviewed_by": "reviewer-r1-cobalt-juniper-7748",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c4-pumice-lovage-6370",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -9,24 +9,23 @@
     44,
     45,
     46,
-    50,
-    51,
-    55,
-    85,
+    48,
+    68,
     500,
     501,
     502,
     600,
     601,
     602,
-    603
+    603,
+    604
   ],
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "mcq",
-      "question_text": "What is 3 ÷ 3?",
-      "correct_answer": 1,
+      "formatter": "read_mcq",
+      "question_text": "This array has 3 squares split into 3 equal rows. How many squares are in each row?",
+      "correct_answer": "A",
       "options": [
         {
           "key": "A",
@@ -35,7 +34,7 @@
         },
         {
           "key": "B",
-          "value": 3,
+          "value": 8,
           "is_correct": false
         },
         {
@@ -45,73 +44,143 @@
         },
         {
           "key": "D",
-          "value": 0,
+          "value": 3,
           "is_correct": false
         }
       ]
     },
     {
       "seed": 43,
-      "formatter": "mcq",
-      "question_text": "What is 10 ÷ 2?",
+      "formatter": "cloze",
+      "question_text": "10 ÷ 2 = ___",
       "correct_answer": 5,
       "options": [
         {
           "key": "A",
           "value": 2,
+          "text": "2",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 6,
+          "text": "6",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 5,
+          "text": "5",
           "is_correct": true
         },
         {
           "key": "D",
           "value": 8,
+          "text": "8",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 44,
-      "formatter": "cloze",
-      "question_text": "40 ÷ 10 = ___",
+      "formatter": "mcq",
+      "question_text": "What is 40 ÷ 10?",
       "correct_answer": 4,
       "options": [
         {
           "key": "A",
           "value": 30,
-          "text": "30",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 5,
-          "text": "5",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 10,
-          "text": "10",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 4,
-          "text": "4",
           "is_correct": true
         }
       ]
     },
     {
       "seed": 45,
+      "formatter": "error_detect",
+      "question_text": "Pia solved: \"15 ÷ 5 = ___\". Pia says the missing number is 3. Is Pia correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 3
+      }
+    },
+    {
+      "seed": 46,
+      "formatter": "error_detect",
+      "question_text": "Dante solved: \"12 ÷ 2 = ___\". Dante says the missing number is 2. Is Dante correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 6
+      }
+    },
+    {
+      "seed": 48,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Shade 90 squares into 10 equal rows. How many squares are in each row?",
+      "correct_answer": 9
+    },
+    {
+      "seed": 68,
+      "formatter": "true_false",
+      "question_text": "50 ÷ 10 = 5. True or False?",
+      "correct_answer": true
+    },
+    {
+      "seed": 500,
+      "formatter": "mcq",
+      "question_text": "What is 90 ÷ 10?",
+      "correct_answer": 9,
+      "options": [
+        {
+          "key": "A",
+          "value": 8,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 9,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 10,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 80,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 501,
+      "formatter": "true_false",
+      "question_text": "90 ÷ 10 = 80. True or False?",
+      "correct_answer": false
+    },
+    {
+      "seed": 502,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Shade 90 squares into 10 equal rows. How many squares are in each row?",
+      "correct_answer": 9
+    },
+    {
+      "seed": 600,
       "formatter": "cloze",
       "question_text": "15 ÷ 5 = ___",
       "correct_answer": 3,
@@ -124,165 +193,20 @@
         },
         {
           "key": "B",
-          "value": 3,
-          "text": "3",
-          "is_correct": true
-        },
-        {
-          "key": "C",
           "value": 4,
           "text": "4",
           "is_correct": false
         },
         {
+          "key": "C",
+          "value": 3,
+          "text": "3",
+          "is_correct": true
+        },
+        {
           "key": "D",
           "value": 5,
           "text": "5",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 46,
-      "formatter": "mcq",
-      "question_text": "What is 12 ÷ 2?",
-      "correct_answer": 6,
-      "options": [
-        {
-          "key": "A",
-          "value": 10,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 2,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 6,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 7,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 50,
-      "formatter": "read_mcq",
-      "question_text": "This array has 70 squares split into 10 equal rows. How many squares are in each row?",
-      "correct_answer": "C",
-      "options": [
-        {
-          "key": "A",
-          "value": 5,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 34,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 7,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 10,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 51,
-      "formatter": "error_detect",
-      "question_text": "Ana solved: \"10 ÷ 5 = ___\". Ana says the missing number is 5. Is Ana correct?",
-      "correct_answer": {
-        "has_error": true,
-        "correct_value": 2
-      }
-    },
-    {
-      "seed": 55,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Shade 12 squares into 2 equal rows. How many squares are in each row?",
-      "correct_answer": 6
-    },
-    {
-      "seed": 85,
-      "formatter": "true_false",
-      "question_text": "20 ÷ 4 = 5. True or False?",
-      "correct_answer": true
-    },
-    {
-      "seed": 500,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Shade 90 squares into 10 equal rows. How many squares are in each row?",
-      "correct_answer": 9
-    },
-    {
-      "seed": 501,
-      "formatter": "true_false",
-      "question_text": "90 ÷ 10 = 9. True or False?",
-      "correct_answer": true
-    },
-    {
-      "seed": 502,
-      "formatter": "mcq",
-      "question_text": "What is 90 ÷ 10?",
-      "correct_answer": 9,
-      "options": [
-        {
-          "key": "A",
-          "value": 9,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 10,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 80,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 8,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 600,
-      "formatter": "mcq",
-      "question_text": "What is 15 ÷ 5?",
-      "correct_answer": 3,
-      "options": [
-        {
-          "key": "A",
-          "value": 10,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 4,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 3,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 5,
           "is_correct": false
         }
       ]
@@ -321,89 +245,69 @@
     },
     {
       "seed": 602,
-      "formatter": "mcq",
-      "question_text": "What is 20 ÷ 10?",
-      "correct_answer": 2,
-      "options": [
-        {
-          "key": "A",
-          "value": 1,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 10,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 2,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 3,
-          "is_correct": false
-        }
-      ]
+      "formatter": "set_fill_in_blank",
+      "question_text": "Shade 20 squares into 10 equal rows. How many squares are in each row?",
+      "correct_answer": 2
     },
     {
       "seed": 603,
-      "formatter": "cloze",
-      "question_text": "15 ÷ 3 = ___",
+      "formatter": "mcq",
+      "question_text": "What is 15 ÷ 3?",
       "correct_answer": 5,
       "options": [
         {
           "key": "A",
           "value": 3,
-          "text": "3",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 12,
-          "text": "12",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 5,
-          "text": "5",
           "is_correct": true
         },
         {
           "key": "D",
           "value": 6,
-          "text": "6",
           "is_correct": false
         }
       ]
+    },
+    {
+      "seed": 604,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Shade 12 squares into 2 equal rows. How many squares are in each row?",
+      "correct_answer": 6
     }
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "FAIL",
-      "rationale": "The competency's verb is to illustrate division through equal distribution, yet the majority of the sampled items are bare symbolic computations such as the one asking what 3 ÷ 3 is. Those stems contain no objects, no groups and no distribution; they ask for a quotient from a student who, at this node, is supposed to be shown what division means rather than asked to compute it."
+      "rationale": "The verb here is to illustrate division through equal distribution of objects, yet the majority of the samples are bare symbolic quotients - forms such as 'What is 40 ÷ 10?' and a plain ten-divided-by-two blank - with no objects, no groups and nothing being distributed. Symbol manipulation is the destination of this strand, not the illustration this node is supposed to supply."
     },
     "comprehensive_coverage": {
       "verdict": "CONCERN",
-      "rationale": "Where distribution is modelled, it is always the same direction: the number of rows or the number of friends is given and the size of each share is wanted, as in the array of 70 squares split into 10 equal rows. Nothing asks how many equal groups a quantity can be split into when the group size is fixed, so one of the two distribution situations never appears."
+      "rationale": "Equal distribution shows up only as shading into rows and one sharing-among-friends story. There is no dealing-out model, no leftover discussion, and no item that shows the objects being physically separated into the groups the wording describes."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Divisors are confined to small friendly values and every quotient is exact, so no remainder concept is smuggled in ahead of time; the shading and sharing tasks are described in one sentence each."
+      "rationale": "Divisors stay within the small tables, quotients are whole, and the row-shading instructions are phrased as a single action a Grade 2 pupil can carry out."
     },
     "variant_comprehensiveness": {
       "verdict": "CONCERN",
-      "rationale": "Exactly one sample places the operation in a sharing situation, where Moses wants to share 20 baskets equally among 4 friends. Given that equal distribution among people is the very situation this node exists to illustrate, having a single instance of it against a long run of symbolic facts is too narrow a contextual base."
+      "rationale": "The same ninety-divided-by-ten computation recurs across four separate seeds, twice as the identical instruction 'Shade 90 squares into 10 equal rows', so what looks like a varied set is substantially one calculation repeated."
     },
     "competency_alignment": {
-      "verdict": "CONCERN",
-      "rationale": "The difficulty ladder is built by enlarging the dividend in the symbolic facts, which trains quotient recall rather than the illustration the node asks for. One array item also offers 34 as a choice against a shaded arrangement of rows, a value that cannot arise from splitting the array evenly and is discardable on sight."
+      "verdict": "FAIL",
+      "rationale": "This node's sample set is effectively the same set of stems rendered for the later divide-using-the-tables node, seed for seed, down to 'This array has 3 squares split into 3 equal rows' and the same shading and sharing items. Two competencies with different verbs cannot both be served by one identical item pool - the progression from modelling to fact recall does not exist in the output. A true-or-false rung asserting that ninety divided by ten is 80 further rewards spotting a subtraction-shaped error rather than dividing."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Dividends reach 90 with a divisor of ten and stay within what Grade 2 equal-sharing work supports; the instruction to 'Shade 90 squares into 10 equal rows.' sits at the top of that band without exceeding it."
+      "rationale": "Dividends stay at ninety or below with single-digit quotients, which keeps the arithmetic inside what an introductory division competency should demand."
     }
   },
   "overall": "FAIL"

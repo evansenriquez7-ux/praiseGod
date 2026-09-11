@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g1_dp_q3_1",
-  "reviewed_by": "reviewer-b1-quartz-mallow-4412",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c1-lantern-fescue-3061",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -19,7 +19,7 @@
     {
       "seed": 42,
       "formatter": "set_fill_in_blank",
-      "question_text": "Look at the data: cats: 1, dogs: 3, birds: 2, fish: 2. Draw one 🐾 for each item in the picture graph.",
+      "question_text": "The survey shows: cats: 1, dogs: 3, birds: 2, fish: 2. Make a picture graph by drawing one 🐾 for each item.",
       "correct_answer": [
         1,
         3,
@@ -30,7 +30,7 @@
     {
       "seed": 43,
       "formatter": "set_fill_in_blank",
-      "question_text": "Complete the picture graph for apples: 3, bananas: 2, mangoes: 4, grapes: 3. Draw one 🍎 for each item.",
+      "question_text": "Look at the data: apples: 3, bananas: 2, mangoes: 4, grapes: 3. Draw one 🍎 for each item in the picture graph.",
       "correct_answer": [
         3,
         2,
@@ -41,7 +41,7 @@
     {
       "seed": 44,
       "formatter": "set_fill_in_blank",
-      "question_text": "Make a picture graph to show: roses: 5, sunflowers: 5, tulips: 1, daisies: 2. Draw one 🌸 for each item.",
+      "question_text": "Complete the picture graph for roses: 5, sunflowers: 5, tulips: 1, daisies: 2. Draw one 🌸 for each item.",
       "correct_answer": [
         5,
         5,
@@ -52,7 +52,7 @@
     {
       "seed": 45,
       "formatter": "set_fill_in_blank",
-      "question_text": "Make a picture graph to show: Monday: 4, Tuesday: 4, Wednesday: 3, Thursday: 1. Draw one 📖 for each item.",
+      "question_text": "The survey shows: Monday: 4, Tuesday: 4, Wednesday: 3, Thursday: 1. Make a picture graph by drawing one 📖 for each item.",
       "correct_answer": [
         4,
         4,
@@ -96,7 +96,7 @@
     {
       "seed": 502,
       "formatter": "set_fill_in_blank",
-      "question_text": "Look at the data: basketball: 2, volleyball: 3, swimming: 2, running: 4. Draw one ⚽ for each item in the picture graph.",
+      "question_text": "The survey shows: basketball: 2, volleyball: 3, swimming: 2, running: 4. Make a picture graph by drawing one ⚽ for each item.",
       "correct_answer": [
         2,
         3,
@@ -107,7 +107,7 @@
     {
       "seed": 600,
       "formatter": "set_fill_in_blank",
-      "question_text": "Look at the data: Monday: 3, Tuesday: 4, Wednesday: 2, Thursday: 5. Draw one 📖 for each item in the picture graph.",
+      "question_text": "Complete the picture graph for Monday: 3, Tuesday: 4, Wednesday: 2, Thursday: 5. Draw one 📖 for each item.",
       "correct_answer": [
         3,
         4,
@@ -118,7 +118,7 @@
     {
       "seed": 601,
       "formatter": "set_fill_in_blank",
-      "question_text": "Make a picture graph to show: Math: 5, Science: 5, English: 1, Art: 1. Draw one 📚 for each item.",
+      "question_text": "Complete the picture graph for Math: 5, Science: 5, English: 1, Art: 1. Draw one 📚 for each item.",
       "correct_answer": [
         5,
         5,
@@ -130,28 +130,28 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "Each render hands over a category-count list and asks for one drawn symbol per item, which is precisely presentation in a pictograph carrying no scale."
+      "rationale": "Each item does ask the pupil to build the graph, and the one-picture-per-item instruction is the correct rendering of a pictograph without a scale - no symbol ever stands for more than one unit, which is the whole point of the without a scale clause."
     },
     "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "Four categories appear every time with counts spanning one through five, and ties between categories occur, so the presentation task is exercised across the whole span a scaleless graph can hold."
+      "verdict": "CONCERN",
+      "rationale": "The source data is always handed over already counted, as a ready list of four labelled numbers. Nothing asks the pupil to build a picture graph from tally marks, from a table, or from a set of objects, so the only route into a pictograph that Grade 1 ever practises here is transcription of printed numerals."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "One picture per unit removes any scale reading or multiplication, and the chosen symbols (paw, apple, flower, book, star) come from a first grader's own world."
+      "rationale": "Four categories with counts from 1 to 5 is a sensible drawing load for this age, the label sets (days, fruits, subjects, sports) are all familiar, and the instruction sentence is short and imperative."
     },
     "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "All ten renders are the same fill-in exercise. The opening rotates between three wordings, yet the pupil's action never changes, and nothing ever asks which of several already-drawn graphs matches the data - the recognition direction of presenting."
+      "verdict": "FAIL",
+      "rationale": "Across ten seeds there is exactly one item shape. The three opening phrasings - the survey shows, look at the data, complete the picture graph - are cosmetic rewordings of the same sentence, and what actually changes from seed to seed is the label list, the picture symbol and four small numbers. Nothing varies the number of categories, the orientation of the graph, or the direction of the task."
     },
     "competency_alignment": {
       "verdict": "CONCERN",
-      "rationale": "Between seeds only the theme and the particular counts move. Nothing stretches graph-building itself: no fifth category, no zero-count row, no row that overflows the drawing space."
+      "rationale": "The key is a verbatim copy of the counts already printed in the stem, so no seed is harder than any other in any way that involves presenting data; the difficulty axis that does move is which emoji is drawn, which is unrelated to the competency."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Counts of one to five keep every row drawable symbol by symbol, which is the right ceiling when no scale is available to compress a tall row."
+      "rationale": "Counts are capped at 5 per row, appropriate when every picture equals one unit - a taller bar of symbols would make an unscaled pictograph unwieldy for a Grade 1 hand."
     }
   },
-  "overall": "CONCERN"
+  "overall": "FAIL"
 }

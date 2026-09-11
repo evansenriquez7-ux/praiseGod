@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g2_na_q2_5",
-  "reviewed_by": "reviewer-b4-plover-saffron-6041",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c4-pumice-lovage-6370",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -9,9 +9,7 @@
     44,
     45,
     46,
-    50,
-    55,
-    72,
+    48,
     500,
     501,
     502,
@@ -25,91 +23,50 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "Daniel is on step 4. Daniel goes down 1 step. What step is Daniel on now?",
       "correct_answer": 3,
       "options": [
         {
           "key": "A",
           "value": 3,
+          "text": "3",
           "is_correct": true
         },
         {
           "key": "B",
           "value": 5,
+          "text": "5",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 2,
+          "text": "2",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 4,
+          "text": "4",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 43,
-      "formatter": "mcq",
-      "question_text": "Start at 42. Count back 10. What number do you land on?",
-      "correct_answer": 32,
-      "options": [
-        {
-          "key": "A",
-          "value": 32,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 52,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 31,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 33,
-          "is_correct": false
-        }
-      ]
+      "formatter": "error_detect",
+      "question_text": "Grace solved this problem: \"Start at 42. Count back 10. What number do you land on?\" Grace says the answer is 31. Is Grace correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 32
+      }
     },
     {
       "seed": 44,
-      "formatter": "cloze",
-      "question_text": "Isko has 90 medals. A friend has 26 medals. How many fewer medals does the friend have?",
-      "correct_answer": 64,
-      "options": [
-        {
-          "key": "A",
-          "value": 116,
-          "text": "116",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 65,
-          "text": "65",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 64,
-          "text": "64",
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 63,
-          "text": "63",
-          "is_correct": false
-        }
-      ]
+      "formatter": "true_false",
+      "question_text": "Isko has 90 medals. A friend has 26 medals. How many fewer medals does the friend have? The answer is 64. True or False?",
+      "correct_answer": true
     },
     {
       "seed": 45,
@@ -168,113 +125,53 @@
       ]
     },
     {
-      "seed": 50,
-      "formatter": "error_detect",
-      "question_text": "Jose solved this problem: \"Bianca had 60 ribbons. Bianca used 1 of them. How many ribbons are left?\" Jose says the answer is 59. Is Jose correct?",
-      "correct_answer": {
-        "has_error": false,
-        "correct_value": 59
-      }
-    },
-    {
-      "seed": 55,
+      "seed": 48,
       "formatter": "read_mcq",
-      "question_text": "(Large group of 25 frogs) — There are 25 frogs.\nTaking away 20 frogs.\nHow many frogs are left?",
+      "question_text": "(Large group of 30 candies) — There are 30 candies.\nTaking away 8 candies.\nHow many candies are left?",
       "correct_answer": "C",
       "options": [
         {
           "key": "A",
-          "value": 4,
+          "value": 8,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 25,
+          "value": 38,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 5,
+          "value": 22,
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 20,
+          "value": 23,
           "is_correct": false
         }
       ]
-    },
-    {
-      "seed": 72,
-      "formatter": "true_false",
-      "question_text": "Des is on step 70. Des goes down 0 steps. What step is Des on now? The answer is 70. True or False?",
-      "correct_answer": true
     },
     {
       "seed": 500,
-      "formatter": "read_mcq",
-      "question_text": "(Large group of 94 drinks) — There are 94 drinks.\nTaking away 27 drinks.\nHow many drinks are left?",
-      "correct_answer": "C",
-      "options": [
-        {
-          "key": "A",
-          "value": 68,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 94,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 67,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 66,
-          "is_correct": false
-        }
-      ]
+      "formatter": "true_false",
+      "question_text": "Nanding had 94 water bowls. Nanding used 27 of them. How many water bowls are left? The answer is 66. True or False?",
+      "correct_answer": false
     },
     {
       "seed": 501,
-      "formatter": "cloze",
-      "question_text": "A home desk has 98 canvases. Carlo removes 49 canvases. How many canvases are left in the home desk?",
-      "correct_answer": 49,
-      "options": [
-        {
-          "key": "A",
-          "value": 48,
-          "text": "48",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 49,
-          "text": "49",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 50,
-          "text": "50",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 147,
-          "text": "147",
-          "is_correct": false
-        }
-      ]
+      "formatter": "error_detect",
+      "question_text": "Pia solved this problem: \"A home desk has 98 canvases. Carlo removes 49 canvases. How many canvases are left in the home desk?\" Pia says the answer is 50. Is Pia correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 49
+      }
     },
     {
       "seed": 502,
-      "formatter": "mcq",
-      "question_text": "Carlo had 73 canvases and gave 67 to friends at the home desk. How many canvases does Carlo have left?",
-      "correct_answer": 6,
+      "formatter": "read_mcq",
+      "question_text": "(Large group of 73 trees) — There are 73 trees.\nTaking away 67 trees.\nHow many trees are left?",
+      "correct_answer": "B",
       "options": [
         {
           "key": "A",
@@ -283,48 +180,29 @@
         },
         {
           "key": "B",
-          "value": 7,
-          "is_correct": false
-        },
-        {
-          "key": "C",
           "value": 6,
           "is_correct": true
         },
         {
+          "key": "C",
+          "value": 67,
+          "is_correct": false
+        },
+        {
           "key": "D",
-          "value": 5,
+          "value": 7,
           "is_correct": false
         }
       ]
     },
     {
       "seed": 600,
-      "formatter": "mcq",
-      "question_text": "A art room has 60 colored pencils. Kuya Renz removes 26 colored pencils. How many colored pencils are left in the art room?",
-      "correct_answer": 34,
-      "options": [
-        {
-          "key": "A",
-          "value": 33,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 34,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 35,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 86,
-          "is_correct": false
-        }
-      ]
+      "formatter": "error_detect",
+      "question_text": "Noel solved this problem: \"A art room has 60 colored pencils. Kuya Renz removes 26 colored pencils. How many colored pencils are left in the art room?\" Noel says the answer is 34. Is Noel correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 34
+      }
     },
     {
       "seed": 601,
@@ -334,24 +212,24 @@
     },
     {
       "seed": 602,
-      "formatter": "mcq",
-      "question_text": "Des has 30 knee pads. A friend has 26 knee pads. How many fewer knee pads does the friend have?",
-      "correct_answer": 4,
+      "formatter": "read_mcq",
+      "question_text": "(Large group of 30 clovers) — There are 30 clovers.\nTaking away 26 clovers.\nHow many clovers are left?",
+      "correct_answer": "C",
       "options": [
         {
           "key": "A",
-          "value": 4,
-          "is_correct": true
-        },
-        {
-          "key": "B",
           "value": 3,
           "is_correct": false
         },
         {
-          "key": "C",
-          "value": 56,
+          "key": "B",
+          "value": 26,
           "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 4,
+          "is_correct": true
         },
         {
           "key": "D",
@@ -362,45 +240,19 @@
     },
     {
       "seed": 603,
-      "formatter": "cloze",
-      "question_text": "Sir Ben has 90 crayons. Sir Ben gives away 20 crayons. How many crayons does Sir Ben have left?",
-      "correct_answer": 70,
-      "options": [
-        {
-          "key": "A",
-          "value": 110,
-          "text": "110",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 71,
-          "text": "71",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 70,
-          "text": "70",
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 69,
-          "text": "69",
-          "is_correct": false
-        }
-      ]
+      "formatter": "true_false",
+      "question_text": "Sir Ben has 90 crayons. Sir Ben gives away 20 crayons. How many crayons does Sir Ben have left? The answer is 69. True or False?",
+      "correct_answer": false
     },
     {
       "seed": 604,
-      "formatter": "mcq",
-      "question_text": "Faye is on step 31. Faye goes down 10 steps. What step is Faye on now?",
-      "correct_answer": 21,
+      "formatter": "read_mcq",
+      "question_text": "(Large group of 31 books) — There are 31 books.\nTaking away 10 books.\nHow many books are left?",
+      "correct_answer": "B",
       "options": [
         {
           "key": "A",
-          "value": 41,
+          "value": 10,
           "is_correct": false
         },
         {
@@ -410,7 +262,7 @@
         },
         {
           "key": "C",
-          "value": 20,
+          "value": 41,
           "is_correct": false
         },
         {
@@ -422,38 +274,35 @@
     },
     {
       "seed": 605,
-      "formatter": "error_detect",
-      "question_text": "Liza solved this problem: \"Riza has 24 milk tea cups. Riza gives away 1 milk tea cup. How many milk tea cups does Riza have left?\" Liza says the answer is 23. Is Liza correct?",
-      "correct_answer": {
-        "has_error": false,
-        "correct_value": 23
-      }
+      "formatter": "true_false",
+      "question_text": "Riza has 24 milk tea cups. Riza gives away 1 milk tea cup. How many milk tea cups does Riza have left? The answer is 24. True or False?",
+      "correct_answer": false
     }
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "These are problems rather than naked computations, as the wording requires, and the picture route the competency mentions is honoured by the read_mcq items showing a group of frogs and a group of drinks with the take-away stated."
+      "rationale": "These are framed as problems rather than exercises, and the subtraction meanings vary usefully - removal from a set, descending a staircase, and a comparison item asking how many fewer medals a friend has. Each key I recomputed matched the stem."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "The pool reaches past plain take-away into comparison subtraction: seed 44 asks how many fewer medals a friend has and seed 602 does the same with knee pads. With regrouping (90 less 26, 73 less 67) and without (42 less 10, 31 less 10) are both represented."
+      "rationale": "Regrouped takes such as 94 less 27 and 98 less 49 sit alongside clean ones such as 90 less 20 and 42 less 10, so the with-and-without pairing the competency spells out is genuinely realised, and pictorial group presentations satisfy the in-pictures clause."
     },
     "cognitive_capacity": {
-      "verdict": "CONCERN",
-      "rationale": "Seed 600 opens with 'A art room', an article error in text meant to be read to or by a young child. The contexts also strain plausibility, as when a home desk is said to hold 98 canvases in seed 501, which invites a child to doubt the scenario rather than solve it."
+      "verdict": "PASS",
+      "rationale": "Sentences are short, one situation per stem, and the vocabulary stays inside a Grade 2 world of medals, cookies, crayons and milk tea cups. Nothing asks for more than one take-away step."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "Stair-descending, counting back, comparison, removal from a room, giving away to friends, a pictured set, a true-or-false claim and a peer's solution to check all appear across these seeds. For an orally-or-pictorially delivered competency that is the right spread."
+      "rationale": "Stair-descent, shelf removal, giving away, how-many-fewer comparison, counting back and pictured groups all occur, and the formatter mix spreads across cloze, error-check, true-or-false and picture-led choice."
     },
     "competency_alignment": {
       "verdict": "CONCERN",
-      "rationale": "Two seeds subtract nothing at all: Des goes down 0 steps in seed 72 and Moses takes away 0 baskets in seed 601, both keyed True. Zero-subtrahend items test reading comprehension, not the with-and-without-regrouping progression this node is supposed to build."
+      "rationale": "The floor of the progression is occupied by items that do not exercise subtraction under 100 at all: 'Moses takes away 0 baskets' leaves the count untouched, and a staircase item works with 4 less 1. Neither requires the regrouping decision the node is meant to develop."
     },
     "scale_appropriateness": {
-      "verdict": "CONCERN",
-      "rationale": "Seed 42 works with 4 minus 1, well under the two-digit territory implied by numbers less than 100, and several distractor slots break the other way: 116 is offered against 90 less 26 and 113 against 60 less 53, both larger than the starting quantity."
+      "verdict": "PASS",
+      "rationale": "Operands reach 98 and 94, just under the competency's stated limit, and no sample crosses 100 in either the minuend or the result."
     }
   },
   "overall": "CONCERN"

@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g2_mg_q1_1",
-  "reviewed_by": "reviewer-b3-cinder-halyard-2276",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c3-nimbus-sorrel-4825",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -9,7 +9,6 @@
     44,
     45,
     46,
-    50,
     500,
     501,
     502,
@@ -20,9 +19,9 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "mcq",
+      "formatter": "read_mcq",
       "question_text": "On a square grid, a composite shape has 1 square, 1 triangle, and 1 rectangle joined together. How many simple shapes were used to compose it?",
-      "correct_answer": "3",
+      "correct_answer": "C",
       "options": [
         {
           "key": "A",
@@ -76,9 +75,9 @@
     },
     {
       "seed": 44,
-      "formatter": "mcq",
+      "formatter": "read_mcq",
       "question_text": "On a square grid, a composite figure is made by joining 2 squares of 4 grid units each side by side. What shape is formed?",
-      "correct_answer": "rectangle",
+      "correct_answer": "C",
       "options": [
         {
           "key": "A",
@@ -159,34 +158,6 @@
       ]
     },
     {
-      "seed": 50,
-      "formatter": "read_mcq",
-      "question_text": "On a square grid, a 4-by-2 rectangle is cut straight down the middle into two 2-by-2 parts. What shape is each part?",
-      "correct_answer": "B",
-      "options": [
-        {
-          "key": "A",
-          "value": "circle",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "square",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": "half-circle",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "triangle",
-          "is_correct": false
-        }
-      ]
-    },
-    {
       "seed": 500,
       "formatter": "read_mcq",
       "question_text": "On a square grid, a 4-by-2 rectangle is cut straight down the middle into two 2-by-2 parts. What shape is each part?",
@@ -216,9 +187,9 @@
     },
     {
       "seed": 501,
-      "formatter": "mcq",
+      "formatter": "read_mcq",
       "question_text": "On a square grid, a composite shape has 1 square, 1 triangle, and 1 rectangle joined together. How many simple shapes were used to compose it?",
-      "correct_answer": "3",
+      "correct_answer": "B",
       "options": [
         {
           "key": "A",
@@ -244,9 +215,9 @@
     },
     {
       "seed": 502,
-      "formatter": "mcq",
+      "formatter": "read_mcq",
       "question_text": "On a square grid, a composite figure is made of 1 square, 1 half-circle, and 1 rectangle. How many shapes form this composite figure?",
-      "correct_answer": "3",
+      "correct_answer": "D",
       "options": [
         {
           "key": "A",
@@ -300,9 +271,9 @@
     },
     {
       "seed": 601,
-      "formatter": "mcq",
+      "formatter": "read_mcq",
       "question_text": "Using cut-outs, a square is cut along a slant from one corner to the opposite corner. What two shapes are made?",
-      "correct_answer": "two triangles",
+      "correct_answer": "A",
       "options": [
         {
           "key": "A",
@@ -328,9 +299,9 @@
     },
     {
       "seed": 603,
-      "formatter": "mcq",
+      "formatter": "read_mcq",
       "question_text": "Using cut-outs, four quarter-circles of the same size are joined together. What complete shape do they make?",
-      "correct_answer": "circle",
+      "correct_answer": "B",
       "options": [
         {
           "key": "A",
@@ -358,27 +329,27 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "CONCERN",
-      "rationale": "Composing and decomposing are both exercised, and the slant-cut item asking what two shapes are made is genuine decomposition work. But five of the twelve samples ask a variant of How many simple shapes were used to compose it? where the stem itself already lists the parts, so the key is obtained by counting nouns in the sentence rather than by any spatial reasoning about the figure."
+      "rationale": "Composing and decomposing are both attempted, but roughly half the items list the parts inside the sentence and then ask how many simple shapes were used, so the pupil answers by counting nouns in the stem rather than by working with cut-outs or a grid."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "The competency's full shape inventory shows up across the sample set: squares, rectangles and triangles in the grid items, circle and half-circle in the joining items, and quarter-circles in the item where four are joined into a complete shape. Both named media, cut-outs and square grids, appear as stem framings."
+      "rationale": "All six named shape families turn up somewhere in the set, and decomposition is genuinely represented as well as composition: a square cut corner to corner yields two triangles, and four quarter-circles are joined into a whole."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Stem length stays inside one or two short sentences and the reasoning is single-step. Phrasing like joined together and placed together along their matching edges is concrete enough for a Grade 2 first-quarter reader, and no arithmetic beyond counting to four is required."
+      "rationale": "Sentences stay short, the counts involved never exceed four, and the shape vocabulary is the everyday Grade 2 set with no reference to angles, symmetry or measurement."
     },
     "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "Only two presentation types appear across all twelve seeds, and every figure is described in words rather than shown. For a competency built on cut-outs and square grids, nothing here asks the learner to physically assemble or partition anything; the manipulative is narrated instead of used. Two seed pairs also render byte-identical stems."
+      "verdict": "PASS",
+      "rationale": "Presentation genuinely shifts across the set: grid-based figures, cut-out manipulations, name-the-resulting-shape items and count-the-parts items each appear more than once."
     },
     "competency_alignment": {
       "verdict": "CONCERN",
-      "rationale": "What changes between seeds is mostly which shape nouns get named, not how hard the composition is. The two identical triangles item is also underdetermined as posed, and its three curved distractors let a learner reach the key purely by ruling out circle and the two circle fragments without thinking about edges at all."
+      "rationale": "The seed 600 item introduces a rotated composite shape yet still only asks for the number of simple shapes, so the added rotation changes nothing about the reasoning; difficulty is being varied on an orientation axis that the answer does not depend on."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "This competency states no numeric ceiling, and the incidental quantities used stay modest: part counts of one to four shapes, and grid descriptions no larger than 4 grid units per side. Nothing here overreaches a Grade 2 counting range."
+      "rationale": "This competency states no numeric ceiling, and the incidental quantities used, part counts of one to four and grid sizes of four by two, sit comfortably inside Grade 2 range."
     }
   },
   "overall": "CONCERN"

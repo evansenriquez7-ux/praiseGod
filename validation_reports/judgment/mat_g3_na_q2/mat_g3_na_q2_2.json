@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g3_na_q2_2",
-  "reviewed_by": "reviewer-b6-thistle-kestrel-9724",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c6-mistral-comfrey-8916",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -415,28 +415,28 @@
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "Each stem opens with the instruction to estimate the sum of two addends and the key is a rounded total rather than the exact one, so the competency verb is nominally the one being performed."
+      "verdict": "CONCERN",
+      "rationale": "The verb asked for is estimating a sum, but the rounding convention is never stated and only one convention is accepted. 'Estimate the sum: 8550 + 380' is keyed 9400, which comes from treating the two addends at different places; a pupil who rounds both to the nearest hundred gets 8900 and finds no option for it."
     },
     "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "Digit combinations do vary, from three-digit pairs such as 525 + 165 to four-digit pairs such as 5444 + 5375, but no stem ever states the place the pupil should round to. Because the accepted answer follows one particular convention, a pupil who rounds both addends to hundreds on the 168 + 1842 item produces a total that is not among the options, and the sub-case of estimating to a named place is never generated at all."
+      "verdict": "PASS",
+      "rationale": "Addend widths do vary within the stated up-to-four-digit scope, pairing three digits with four in several samples, three with three in the 389 and 869 item, and four with four where the estimate reaches the top of the range."
     },
     "cognitive_capacity": {
-      "verdict": "FAIL",
-      "rationale": "In every one of the fourteen items the three wrong options are the key plus or minus one or two, for example the set offered against 2200 and the set offered against 700. An estimate is by nature a round number, so the key is the only option that could ever be an estimate, and the pupil selects it by shape alone. The item measures nothing about rounding or addition."
+      "verdict": "PASS",
+      "rationale": "One rounding step followed by one addition of round numbers is the right load for this quarter, and the stems are four words plus an expression."
     },
     "variant_comprehensiveness": {
       "verdict": "FAIL",
-      "rationale": "All fourteen samples are one template under one formatter, differing only in the two numerals. There is no truth-evaluation form, no error-spotting form, no fill-in form and no context, even though sibling estimation work in this grade clearly admits them."
+      "rationale": "All fourteen renderings are the identical multiple-choice frame beginning with the same three-word instruction; no truth judgment, no blank to fill, no error check, no context. Numbers change and nothing else does, which is the clearest case of one template standing in for a node."
     },
     "competency_alignment": {
       "verdict": "CONCERN",
-      "rationale": "The single axis that moves across the set is the magnitude of the two addends. Nothing varies the rounding demand itself, such as an addend sitting at a rounding boundary or a pair whose estimate must be justified, so the progression does not build estimation judgement."
+      "rationale": "The distractors are always the key plus or minus one or two, as in the choices 9401 / 9399 / 9400 / 9402. Since an estimate is by nature a round number, the answer is identifiable as the only non-ragged option, so what the item discriminates is recognising roundness, not estimating."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Addends respect the up to four digits wording, the largest single addend being 9001, and estimated totals are capped at ten thousand rather than spilling past it."
+      "rationale": "Estimated totals stop at 10000, reached by pairs like 5444 and 5375, and the smallest estimate is 700, so the band matches a four-digit addend objective."
     }
   },
   "overall": "FAIL"

@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g2_na_q3_5",
-  "reviewed_by": "reviewer-r2-amber-trellis-1903",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c4-pumice-lovage-6370",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -10,24 +10,20 @@
     45,
     46,
     50,
-    51,
     55,
-    101,
     500,
     501,
     502,
     600,
     601,
-    602,
-    603,
-    604
+    602
   ],
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "mcq",
-      "question_text": "What is 2 ÷ 2?",
-      "correct_answer": 1,
+      "formatter": "read_mcq",
+      "question_text": "This array has 2 squares split into 2 equal rows. How many squares are in each row?",
+      "correct_answer": "A",
       "options": [
         {
           "key": "A",
@@ -36,45 +32,49 @@
         },
         {
           "key": "B",
-          "value": 3,
+          "value": 2,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 0,
+          "value": 3,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 2,
+          "value": 6,
           "is_correct": false
         }
       ]
     },
     {
       "seed": 43,
-      "formatter": "mcq",
-      "question_text": "What is 20 ÷ 5?",
+      "formatter": "cloze",
+      "question_text": "20 ÷ 5 = ___",
       "correct_answer": 4,
       "options": [
         {
           "key": "A",
           "value": 5,
+          "text": "5",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 4,
+          "text": "4",
           "is_correct": true
         },
         {
           "key": "C",
           "value": 3,
+          "text": "3",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 15,
+          "text": "15",
           "is_correct": false
         }
       ]
@@ -113,74 +113,46 @@
     },
     {
       "seed": 45,
+      "formatter": "true_false",
+      "question_text": "Starting from 40 and subtracting 10 repeatedly, you subtract 5 times before reaching 0. True or False?",
+      "correct_answer": false
+    },
+    {
+      "seed": 46,
+      "formatter": "error_detect",
+      "question_text": "Dante solved: \"20 ÷ 10 = ___\". Dante says the missing number is 1. Is Dante correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 2
+      }
+    },
+    {
+      "seed": 50,
       "formatter": "mcq",
-      "question_text": "What is 40 ÷ 10?",
-      "correct_answer": 4,
+      "question_text": "What is 15 ÷ 5?",
+      "correct_answer": 3,
       "options": [
         {
           "key": "A",
+          "value": 4,
+          "is_correct": false
+        },
+        {
+          "key": "B",
           "value": 5,
           "is_correct": false
         },
         {
-          "key": "B",
-          "value": 4,
-          "is_correct": true
-        },
-        {
           "key": "C",
-          "value": 30,
+          "value": 10,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 10,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 46,
-      "formatter": "mcq",
-      "question_text": "What is 20 ÷ 10?",
-      "correct_answer": 2,
-      "options": [
-        {
-          "key": "A",
-          "value": 1,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 10,
-          "is_correct": false
-        },
-        {
-          "key": "C",
           "value": 3,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 2,
           "is_correct": true
         }
       ]
-    },
-    {
-      "seed": 50,
-      "formatter": "true_false",
-      "question_text": "Starting from 15 and subtracting 5 repeatedly, you subtract 5 times before reaching 0. True or False?",
-      "correct_answer": false
-    },
-    {
-      "seed": 51,
-      "formatter": "error_detect",
-      "question_text": "Ana solved: \"80 ÷ 10 = ___\". Ana says the missing number is 10. Is Ana correct?",
-      "correct_answer": {
-        "has_error": true,
-        "correct_value": 8
-      }
     },
     {
       "seed": 55,
@@ -189,101 +161,47 @@
       "correct_answer": 5
     },
     {
-      "seed": 101,
-      "formatter": "read_mcq",
-      "question_text": "This array has 90 squares split into 10 equal rows. How many squares are in each row?",
-      "correct_answer": "B",
-      "options": [
-        {
-          "key": "A",
-          "value": 6,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 9,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 11,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 38,
-          "is_correct": false
-        }
-      ]
-    },
-    {
       "seed": 500,
-      "formatter": "error_detect",
-      "question_text": "Rico solved: \"Starting from 90 and subtracting 10 repeatedly, you subtract ___ times before reaching 0\". Rico says the missing number is 9. Is Rico correct?",
-      "correct_answer": {
-        "has_error": false,
-        "correct_value": 9
-      }
+      "formatter": "true_false",
+      "question_text": "Starting from 90 and subtracting 10 repeatedly, you subtract 8 times before reaching 0. True or False?",
+      "correct_answer": false
     },
     {
       "seed": 501,
-      "formatter": "cloze",
-      "question_text": "Start with 90. Subtract 10 repeatedly until reaching 0: you subtract ___ times.",
+      "formatter": "mcq",
+      "question_text": "What is 90 ÷ 10?",
       "correct_answer": 9,
       "options": [
         {
           "key": "A",
           "value": 9,
-          "text": "9",
           "is_correct": true
         },
         {
           "key": "B",
           "value": 10,
-          "text": "10",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 80,
-          "text": "80",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 8,
-          "text": "8",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 502,
-      "formatter": "mcq",
-      "question_text": "What is 80 ÷ 10?",
-      "correct_answer": 8,
-      "options": [
-        {
-          "key": "A",
-          "value": 10,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 9,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 70,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 8,
-          "is_correct": true
-        }
-      ]
+      "formatter": "error_detect",
+      "question_text": "Dante solved: \"Starting from 80 and subtracting 10 repeatedly, you subtract ___ times before reaching 0\". Dante says the missing number is 8. Is Dante correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 8
+      }
     },
     {
       "seed": 600,
@@ -347,117 +265,38 @@
     },
     {
       "seed": 602,
-      "formatter": "mcq",
-      "question_text": "What is 15 ÷ 3?",
-      "correct_answer": 5,
-      "options": [
-        {
-          "key": "A",
-          "value": 12,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 5,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 6,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 3,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 603,
-      "formatter": "cloze",
-      "question_text": "90 ÷ 10 = ___",
-      "correct_answer": 9,
-      "options": [
-        {
-          "key": "A",
-          "value": 10,
-          "text": "10",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 8,
-          "text": "8",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 80,
-          "text": "80",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 9,
-          "text": "9",
-          "is_correct": true
-        }
-      ]
-    },
-    {
-      "seed": 604,
-      "formatter": "mcq",
-      "question_text": "What is 20 ÷ 4?",
-      "correct_answer": 5,
-      "options": [
-        {
-          "key": "A",
-          "value": 4,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 16,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 5,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 6,
-          "is_correct": false
-        }
-      ]
+      "formatter": "error_detect",
+      "question_text": "Jose solved: \"Starting from 15 and subtracting 3 repeatedly, you subtract ___ times before reaching 0\". Jose says the missing number is 5. Is Jose correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 5
+      }
     }
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "CONCERN",
-      "rationale": "The competency's leading verbs are 'Illustrate and write division expressions', yet the bulk of the set is bare quotient recall such as 'What is 20 ÷ 5?'. No item asks the learner to produce or select the division expression that matches a model; the expression is always supplied and only its answer is wanted."
+      "rationale": "The competency asks the pupil to write division expressions, but every sampled item returns a single number - a quotient, a per-row count, or how many times you subtract. Nothing gives a situation and asks for the expression itself to be recorded, so the writing half of the verb pair is unassessed."
     },
     "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "Repeated subtraction is well served ('Start with 80. Subtract 10 repeatedly until reaching 0') and equal sharing appears once ('Moses wants to share 90 baskets equally among 10 friends'), but pictorial modelling is carried by only two array items, and 'formation of equal groups' in the measurement sense (how many groups of n) is absent from this node entirely."
+      "verdict": "PASS",
+      "rationale": "All three models named in the wording are genuinely present: equal sharing among friends, formation of equal rows through shading and arrays, and repeated subtraction items that count how many takes reach zero."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Stems stay one clause long with Grade 2 vocabulary, and the repeated-subtraction wording walks the child through the process step by step. Quantities such as 80 and 90 are handled only in tens, which keeps the counting load reasonable for Quarter 3 of Grade 2."
+      "rationale": "The repeated-subtraction stems state the start, the amount removed and the stopping point in that order, which is the sequence a second grader needs to follow the process, and all quotients are whole."
     },
     "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "Presentation genuinely rotates: symbolic sentence form (90 ÷ 10 = ___), question form, a sharing story, a shading task, an array read, a true/false, and an error-detect where Ana's answer must be checked. That is a healthy spread of orientations for one node."
+      "verdict": "CONCERN",
+      "rationale": "Six of the fourteen samples divide by ten, and the ninety-divided-by-ten case alone turns up in three different guises, so the divisor space is far narrower than the item count suggests."
     },
     "competency_alignment": {
       "verdict": "CONCERN",
-      "rationale": "Across seeds what actually changes is the size of the dividend (2 ÷ 2 up to 90 ÷ 10), not the richness of the representation. For a node whose point is modelling division several ways, scaling the numbers is the wrong difficulty axis; harder items should demand a different model, not a bigger number."
+      "rationale": "The lowest rung reads 'This array has 2 squares split into 2 equal rows', which resolves to one square per row and requires no partitioning at all; an item where the answer is one teaches nothing about modelling division."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Dividends top out at 90 with divisors of 10 or less and every quotient is a whole number no greater than 9, which sits comfortably inside what a Grade 2 learner meeting division for the first time can hold."
+      "rationale": "Dividends run from small single digits up to ninety with divisors confined to the small tables, keeping every quotient whole and within Grade 2 reach."
     }
   },
   "overall": "CONCERN"

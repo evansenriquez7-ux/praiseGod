@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g2_na_q1_5",
-  "reviewed_by": "reviewer-b3-cinder-halyard-2276",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c3-nimbus-sorrel-4825",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -20,92 +20,88 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "cloze",
+      "formatter": "mcq",
       "question_text": "Which word describes the 9th position?",
       "correct_answer": "ninth",
       "options": [
         {
           "key": "A",
           "value": "seventeenth",
-          "text": "seventeenth",
           "is_correct": false
         },
         {
           "key": "B",
           "value": "ninth",
-          "text": "ninth",
           "is_correct": true
         },
         {
           "key": "C",
           "value": "third",
-          "text": "third",
           "is_correct": false
         },
         {
           "key": "D",
           "value": "eighteenth",
-          "text": "eighteenth",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 43,
-      "formatter": "cloze",
+      "formatter": "mcq",
       "question_text": "Write the symbol for the fifth position.",
       "correct_answer": "5th",
       "options": [
         {
           "key": "A",
           "value": "12th",
-          "text": "12th",
           "is_correct": false
         },
         {
           "key": "B",
           "value": "5th",
-          "text": "5th",
           "is_correct": true
         },
         {
           "key": "C",
           "value": "3rd",
-          "text": "3rd",
           "is_correct": false
         },
         {
           "key": "D",
           "value": "15th",
-          "text": "15th",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 44,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "Ana, Ben, Carlo, Dina, Elena and Fidel stand in a row. Who is 6th in the row?",
       "correct_answer": "Fidel",
       "options": [
         {
           "key": "A",
           "value": "Ana",
+          "text": "Ana",
           "is_correct": false
         },
         {
           "key": "B",
           "value": "Fidel",
+          "text": "Fidel",
           "is_correct": true
         },
         {
           "key": "C",
           "value": "Elena",
+          "text": "Elena",
           "is_correct": false
         },
         {
           "key": "D",
           "value": "Carlo",
+          "text": "Carlo",
           "is_correct": false
         }
       ]
@@ -140,60 +136,60 @@
     },
     {
       "seed": 46,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "Write the symbol for the second position.",
       "correct_answer": "2nd",
       "options": [
         {
           "key": "A",
           "value": "17th",
+          "text": "17th",
           "is_correct": false
         },
         {
           "key": "B",
           "value": "2nd",
+          "text": "2nd",
           "is_correct": true
         },
         {
           "key": "C",
           "value": "15th",
+          "text": "15th",
           "is_correct": false
         },
         {
           "key": "D",
           "value": "5th",
+          "text": "5th",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 500,
-      "formatter": "cloze",
+      "formatter": "mcq",
       "question_text": "The baskets are placed in a row. One basket is number 20 in the row. Which word describes its position?",
       "correct_answer": "twentieth",
       "options": [
         {
           "key": "A",
           "value": "twentieth",
-          "text": "twentieth",
           "is_correct": true
         },
         {
           "key": "B",
           "value": "thirteenth",
-          "text": "thirteenth",
           "is_correct": false
         },
         {
           "key": "C",
           "value": "ninth",
-          "text": "ninth",
           "is_correct": false
         },
         {
           "key": "D",
           "value": "eighth",
-          "text": "eighth",
           "is_correct": false
         }
       ]
@@ -228,28 +224,32 @@
     },
     {
       "seed": 502,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "Who arrived earlier: the student in 20th place or 6th place?",
       "correct_answer": "6th",
       "options": [
         {
           "key": "A",
           "value": "16th",
+          "text": "16th",
           "is_correct": false
         },
         {
           "key": "B",
           "value": "7th",
+          "text": "7th",
           "is_correct": false
         },
         {
           "key": "C",
           "value": "6th",
+          "text": "6th",
           "is_correct": true
         },
         {
           "key": "D",
           "value": "8th",
+          "text": "8th",
           "is_correct": false
         }
       ]
@@ -284,28 +284,32 @@
     },
     {
       "seed": 601,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "The pupils stand in a row. Iris is number 19 in the row. Which word describes Iris's position?",
       "correct_answer": "nineteenth",
       "options": [
         {
           "key": "A",
           "value": "eleventh",
+          "text": "eleventh",
           "is_correct": false
         },
         {
           "key": "B",
           "value": "third",
+          "text": "third",
           "is_correct": false
         },
         {
           "key": "C",
           "value": "seventeenth",
+          "text": "seventeenth",
           "is_correct": false
         },
         {
           "key": "D",
           "value": "nineteenth",
+          "text": "nineteenth",
           "is_correct": true
         }
       ]
@@ -369,28 +373,28 @@
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "Only a handful of seeds actually describe the position of an object or person, such as the row of six children or the basket numbered twentieth. The majority are ordinal vocabulary drills converting a symbol to a word or naming what follows a given ordinal, which exercises terminology without any object whose position is being described."
+      "verdict": "PASS",
+      "rationale": "The ordinal language itself is handled in both surface forms, with items asking for the word describing a position and others asking for the symbol, and one item places named children in a row so a position must be located."
     },
     "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "Word forms, symbol forms, successor positions and a two-ordinal comparison all appear, and the twentieth ceiling is reached in both word and symbol form. First is nowhere in the set, however, neither as a key nor as an option, and it is the ordinal a Grade 2 learner meets before any other."
+      "verdict": "PASS",
+      "rationale": "Positions from second through twentieth are sampled, in word form and symbol form, and in both directions: naming the ordinal for a given number and identifying which position follows another."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Single-clause stems and the familiar row-of-pupils setting suit Quarter 1. Ordinal words carrying irregular spellings such as ninth and twentieth are the right targets at this level, and no item requires counting backward from the end of a line or any other second-order manipulation."
+      "rationale": "Single-step ordinal recognition with no arithmetic beyond adding one to a position suits the first quarter of Grade 2, and the row of six named children is short enough to hold in mind."
     },
     "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "Two response types are used and the framings genuinely differ: named children standing in a row, baskets laid out in a line, a pupil's place in a queue, and bare symbol-to-word conversion. Both the word-to-symbol and symbol-to-word directions are generated."
+      "verdict": "CONCERN",
+      "rationale": "Most items name a position in the abstract; only the row-of-children item and the arrival-order item attach an ordinal to actual objects or people, which is what describing the position of objects calls for."
     },
     "competency_alignment": {
       "verdict": "CONCERN",
-      "rationale": "The item asking who arrived earlier between twentieth place and sixth place offers two further ordinals that appear nowhere in the question, so three of its four options are unreachable answers. Several word-form items likewise pair the key with ordinals many positions away, letting a learner succeed by recognising a word stem rather than by ordinal reasoning."
+      "rationale": "The comparison item asking who arrived earlier offers 16th, 7th and 8th as alternatives when the stem mentions only two places, so three of its four options are impossible and the item collapses to a coin flip that needs no ordinal reasoning."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Ordinals used run from second up to twentieth and none exceeds the stated bound, with the ceiling itself appearing in more than one item. The successor questions stop at the position immediately before the limit, so no key is pushed past twentieth."
+      "rationale": "No position above twentieth is used anywhere in the set, and the item asking what follows 19th lands exactly on the stated ceiling rather than crossing it."
     }
   },
   "overall": "CONCERN"

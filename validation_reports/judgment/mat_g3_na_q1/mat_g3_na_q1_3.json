@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g3_na_q1_3",
-  "reviewed_by": "reviewer-b5-marlin-obsidian-3358",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c5-tarragon-flint-2549",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -9,7 +9,6 @@
     44,
     45,
     46,
-    50,
     500,
     501,
     502,
@@ -20,91 +19,47 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "In 1695, what digit is in the ones place?",
       "correct_answer": 5,
       "options": [
         {
           "key": "A",
           "value": 2,
+          "text": "2",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 8,
+          "text": "8",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 6,
+          "text": "6",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 5,
+          "text": "5",
           "is_correct": true
         }
       ]
     },
     {
       "seed": 43,
-      "formatter": "cloze",
-      "question_text": "What place is the digit 5 in, in the number 3250?",
-      "correct_answer": "tens",
-      "options": [
-        {
-          "key": "A",
-          "value": "ones",
-          "text": "ones",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "tens",
-          "text": "tens",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": "thousands",
-          "text": "thousands",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "hundreds",
-          "text": "hundreds",
-          "is_correct": false
-        }
-      ]
+      "formatter": "true_false",
+      "question_text": "What place is the digit 5 in, in the number 3250? The answer is tens. True or False?",
+      "correct_answer": true
     },
     {
       "seed": 44,
-      "formatter": "mcq",
-      "question_text": "What is the place value of the digit 5 in 9105?",
-      "correct_answer": 5,
-      "options": [
-        {
-          "key": "A",
-          "value": 15,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 5,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 9105,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 50,
-          "is_correct": false
-        }
-      ]
+      "formatter": "true_false",
+      "question_text": "In the number 9105, the value of the digit 5 in the ones place is 5. True or False?",
+      "correct_answer": true
     },
     {
       "seed": 45,
@@ -136,41 +91,9 @@
     },
     {
       "seed": 46,
-      "formatter": "cloze",
-      "question_text": "What place is the digit 5 in, in the number 4725?",
-      "correct_answer": "ones",
-      "options": [
-        {
-          "key": "A",
-          "value": "tens",
-          "text": "tens",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "ones",
-          "text": "ones",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": "thousands",
-          "text": "thousands",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "hundreds",
-          "text": "hundreds",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 50,
       "formatter": "true_false",
-      "question_text": "In the number 3105, the value of the digit 1 in the hundreds place is 1000. True or False?",
-      "correct_answer": false
+      "question_text": "What place is the digit 5 in, in the number 4725? The answer is ones. True or False?",
+      "correct_answer": true
     },
     {
       "seed": 500,
@@ -180,60 +103,38 @@
     },
     {
       "seed": 501,
-      "formatter": "cloze",
-      "question_text": "In 7639, what digit is in the hundreds place?",
-      "correct_answer": 6,
-      "options": [
-        {
-          "key": "A",
-          "value": 9,
-          "text": "9",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 0,
-          "text": "0",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 8,
-          "text": "8",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 6,
-          "text": "6",
-          "is_correct": true
-        }
-      ]
+      "formatter": "true_false",
+      "question_text": "In 7639, what digit is in the hundreds place? The answer is 9. True or False?",
+      "correct_answer": false
     },
     {
       "seed": 502,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "In 8735, what digit is in the tens place?",
       "correct_answer": 3,
       "options": [
         {
           "key": "A",
           "value": 8,
+          "text": "8",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 3,
+          "text": "3",
           "is_correct": true
         },
         {
           "key": "C",
           "value": 5,
+          "text": "5",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 1,
+          "text": "1",
           "is_correct": false
         }
       ]
@@ -268,34 +169,64 @@
     },
     {
       "seed": 601,
-      "formatter": "true_false",
-      "question_text": "What place is the digit 5 in, in the number 1305? The answer is ones. True or False?",
-      "correct_answer": true
+      "formatter": "cloze",
+      "question_text": "What place is the digit 5 in, in the number 1305?",
+      "correct_answer": "ones",
+      "options": [
+        {
+          "key": "A",
+          "value": "hundreds",
+          "text": "hundreds",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "thousands",
+          "text": "thousands",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "ones",
+          "text": "ones",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "tens",
+          "text": "tens",
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 602,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "What is the place value of the digit 3 in 2360?",
       "correct_answer": 300,
       "options": [
         {
           "key": "A",
           "value": 300,
+          "text": "300",
           "is_correct": true
         },
         {
           "key": "B",
           "value": 3,
+          "text": "3",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 13,
+          "text": "13",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 30,
+          "text": "30",
           "is_correct": false
         }
       ]
@@ -304,27 +235,27 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "CONCERN",
-      "rationale": "The competency separates the place value of a digit from the value of a digit, and the stems do not hold that distinction steady. What is the place value of the digit 5 in 5210? is keyed 5000, which is the value, while What place is the digit 5 in, in the number 3250? is keyed tens, and a true_false item uses the value of the digit 1 in the hundreds place for the same construct as the first. Three phrasings serve two concepts inconsistently."
+      "rationale": "The competency separates the place value of a digit from the value of a digit, and the generator conflates them. Asking for the place value of the digit 5 in 5210 is keyed 5000, while a separate item type asks what place the digit 5 is in within 3250 and answers tens. The same phrase is therefore taught with two different meanings inside one node."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "All four places of a four-digit numeral are targeted somewhere in the set, and all three clauses of the competency are generated: naming the place a digit occupies, giving what that digit is worth, and naming the digit that sits at a stated place."
+      "rationale": "All three tasks the competency lists are generated: the place or place value of a digit, the value of a digit as in the claim about the digit 5 in the ones place of 9105, and recovering the digit from a stated place as in asking which digit is in the tens place of 8735."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Every numeral is four digits and the place names used are limited to ones, tens, hundreds and thousands, which is exactly the Grade 3 Quarter 1 band, with one concept per item and no arithmetic attached."
+      "rationale": "Every numeral is four digits, matching the competency's stated scope, the place names used are only ones, tens, hundreds and thousands, and no item requires more than locating a digit or naming its value."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "Multiple choice, cloze and true_false all appear, and the true/false items run in both polarities rather than always being falsifiable, with the 1305 item correctly keyed True against two others keyed False."
+      "rationale": "Three response types appear and the true/false items carry both keys, True for the 3250 tens claim and False for the 7639 hundreds claim, so the verification branch is not answerable by a fixed response as it is elsewhere in this packet."
     },
     "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "What changes across samples is the digit selected, the place it occupies and the direction of the question, all of which are this competency's own axes. Every key is also correct, including the value 300 for the digit 3 in 2360."
+      "verdict": "CONCERN",
+      "rationale": "Several option sets include values built by prefixing a 1 to the digit, 15 in the 5210 item, 14 in the 4120 item, 13 in the 2360 item and a claimed value of 19 for the digit 9 in the thousands place. These correspond to no place-value misconception, unlike the genuinely diagnostic 50 and 5 options that sit beside them."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Every numeral used is exactly four digits, from 1305 through 9501, matching the competency's stated 4-digit number without falling below it or exceeding it."
+      "rationale": "The competency specifies a 4-digit number and every sampled numeral, from 1305 to 9501, is exactly four digits, so the range neither falls short into three-digit work nor overreaches toward five-digit place values."
     }
   },
   "overall": "CONCERN"

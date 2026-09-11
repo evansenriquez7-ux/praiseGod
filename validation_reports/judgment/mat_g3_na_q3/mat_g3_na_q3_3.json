@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g3_na_q3_3",
-  "reviewed_by": "reviewer-b6-thistle-kestrel-9724",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c6-mistral-comfrey-8916",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -9,7 +9,6 @@
     44,
     45,
     46,
-    47,
     500,
     501,
     502,
@@ -23,46 +22,46 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "true_false",
-      "question_text": "43 × 32 ≈ 1200. True or False?",
-      "correct_answer": true
-    },
-    {
-      "seed": 43,
-      "formatter": "error_detect",
-      "question_text": "Grace solved: \"99 × 21 ≈ ___\". Grace says the missing number is 2000. Is Grace correct?",
-      "correct_answer": {
-        "has_error": false,
-        "correct_value": 2000
-      }
-    },
-    {
-      "seed": 44,
       "formatter": "mcq",
-      "question_text": "Estimate the product: 345 × 15",
-      "correct_answer": 7000,
+      "question_text": "Estimate the product: 43 × 32",
+      "correct_answer": 1200,
       "options": [
         {
           "key": "A",
-          "value": 7002,
+          "value": 1199,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 7001,
+          "value": 1201,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 7000,
+          "value": 1200,
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 6999,
+          "value": 1202,
           "is_correct": false
         }
       ]
+    },
+    {
+      "seed": 43,
+      "formatter": "true_false",
+      "question_text": "99 × 21 ≈ 1992. True or False?",
+      "correct_answer": false
+    },
+    {
+      "seed": 44,
+      "formatter": "error_detect",
+      "question_text": "Rico solved: \"345 × 15 ≈ ___\". Rico says the missing number is 7000. Is Rico correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 7000
+      }
     },
     {
       "seed": 45,
@@ -94,317 +93,211 @@
     },
     {
       "seed": 46,
-      "formatter": "mcq",
-      "question_text": "Estimate the product: 295 × 17",
+      "formatter": "cloze",
+      "question_text": "Estimate: 295 × 17 ≈ ___",
       "correct_answer": 6000,
       "options": [
         {
           "key": "A",
           "value": 6001,
+          "text": "6001",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 6002,
+          "text": "6002",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 6000,
+          "text": "6000",
           "is_correct": true
         },
         {
           "key": "D",
           "value": 5999,
+          "text": "5999",
           "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 47,
-      "formatter": "cloze",
-      "question_text": "Estimate: 13 × 60 ≈ ___",
-      "correct_answer": 600,
-      "options": [
-        {
-          "key": "A",
-          "value": 599,
-          "text": "599",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 602,
-          "text": "602",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 601,
-          "text": "601",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 600,
-          "text": "600",
-          "is_correct": true
         }
       ]
     },
     {
       "seed": 500,
-      "formatter": "error_detect",
-      "question_text": "Rico solved: \"67 × 76 ≈ ___\". Rico says the missing number is 5600. Is Rico correct?",
-      "correct_answer": {
-        "has_error": false,
-        "correct_value": 5600
-      }
+      "formatter": "true_false",
+      "question_text": "67 × 76 ≈ 5604. True or False?",
+      "correct_answer": false
     },
     {
       "seed": 501,
-      "formatter": "cloze",
-      "question_text": "Estimate: 930 × 13 ≈ ___",
+      "formatter": "mcq",
+      "question_text": "Estimate the product: 930 × 13",
       "correct_answer": 9300,
       "options": [
         {
           "key": "A",
           "value": 9301,
-          "text": "9301",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 9302,
-          "text": "9302",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 9300,
-          "text": "9300",
           "is_correct": true
         },
         {
           "key": "D",
           "value": 9299,
-          "text": "9299",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 502,
-      "formatter": "mcq",
-      "question_text": "Estimate the product: 853 × 12",
-      "correct_answer": 8500,
-      "options": [
-        {
-          "key": "A",
-          "value": 8501,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 8502,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 8500,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 8499,
-          "is_correct": false
-        }
-      ]
+      "formatter": "error_detect",
+      "question_text": "Dante solved: \"853 × 12 ≈ ___\". Dante says the missing number is 8500. Is Dante correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 8500
+      }
     },
     {
       "seed": 600,
-      "formatter": "cloze",
-      "question_text": "Estimate: 92 × 98 ≈ ___",
-      "correct_answer": 9000,
-      "options": [
-        {
-          "key": "A",
-          "value": 9002,
-          "text": "9002",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 9000,
-          "text": "9000",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 8999,
-          "text": "8999",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 9001,
-          "text": "9001",
-          "is_correct": false
-        }
-      ]
+      "formatter": "true_false",
+      "question_text": "92 × 98 ≈ 9000. True or False?",
+      "correct_answer": true
     },
     {
       "seed": 601,
-      "formatter": "mcq",
-      "question_text": "Estimate the product: 28 × 27",
+      "formatter": "cloze",
+      "question_text": "Estimate: 28 × 27 ≈ ___",
       "correct_answer": 900,
       "options": [
         {
           "key": "A",
           "value": 902,
+          "text": "902",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 899,
+          "text": "899",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 900,
+          "text": "900",
           "is_correct": true
         },
         {
           "key": "D",
           "value": 901,
+          "text": "901",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 602,
-      "formatter": "cloze",
-      "question_text": "Estimate: 330 × 14 ≈ ___",
+      "formatter": "mcq",
+      "question_text": "Estimate the product: 330 × 14",
       "correct_answer": 3300,
       "options": [
         {
           "key": "A",
           "value": 3300,
-          "text": "3300",
           "is_correct": true
         },
         {
           "key": "B",
           "value": 3302,
-          "text": "3302",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 3299,
-          "text": "3299",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 3301,
-          "text": "3301",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 603,
-      "formatter": "mcq",
-      "question_text": "Estimate the product: 50 × 91",
-      "correct_answer": 4500,
-      "options": [
-        {
-          "key": "A",
-          "value": 4501,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 4500,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 4499,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 4502,
-          "is_correct": false
-        }
-      ]
+      "formatter": "true_false",
+      "question_text": "50 × 91 ≈ 4500. True or False?",
+      "correct_answer": true
     },
     {
       "seed": 604,
-      "formatter": "true_false",
-      "question_text": "262 × 18 ≈ 5207. True or False?",
-      "correct_answer": false
-    },
-    {
-      "seed": 605,
-      "formatter": "cloze",
-      "question_text": "Estimate: 503 × 20 ≈ ___",
-      "correct_answer": 10000,
+      "formatter": "mcq",
+      "question_text": "Estimate the product: 262 × 18",
+      "correct_answer": 5200,
       "options": [
         {
           "key": "A",
-          "value": 10002,
-          "text": "10002",
+          "value": 5201,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 9999,
-          "text": "9999",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 10000,
-          "text": "10000",
+          "value": 5200,
           "is_correct": true
         },
         {
+          "key": "C",
+          "value": 5199,
+          "is_correct": false
+        },
+        {
           "key": "D",
-          "value": 10001,
-          "text": "10001",
+          "value": 5202,
           "is_correct": false
         }
       ]
+    },
+    {
+      "seed": 605,
+      "formatter": "true_false",
+      "question_text": "503 × 20 ≈ 10000. True or False?",
+      "correct_answer": true
     }
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "The stems ask for an estimated product and the accepted answers follow from rounding each factor to a multiple of ten, which is the method the competency names; the 92 by 98 item rounding to 9000 shows it working as intended."
+      "rationale": "The method the wording prescribes is the method the keys use: each factor is taken to a multiple of ten before multiplying, so 'Estimate the product: 43 × 32' resolves to 1200 and the 28 by 27 item to 900. The stems name estimation rather than exact computation."
     },
     "comprehensive_coverage": {
-      "verdict": "FAIL",
-      "rationale": "The competency covers multiplication by a one-digit as well as a two-digit factor, and not one of the fifteen samples uses a single-digit second factor. Every multiplier shown, from 10 and 12 through 21, 32, 76 and 98, has two digits. An entire named sub-case is absent from the node, and nothing in the sample set would reveal that a pupil cannot estimate a three-digit number times a one-digit number."
+      "verdict": "CONCERN",
+      "rationale": "Two-digit by two-digit and three-digit by two-digit pairings are both plentiful, but the wording also admits a one-digit second factor and no sample uses one; the smallest multiplier anywhere in the set has two digits."
     },
     "cognitive_capacity": {
-      "verdict": "FAIL",
-      "rationale": "In every choice item the three wrong options are the key offset by one or two, as with the options surrounding 7000 and those surrounding 600. Since an estimate is necessarily round, the pupil identifies the key without rounding either factor. The truth item is worse still: 262 x 18 is rejected against 5207 purely because that value is not round, so no estimating occurs anywhere in the item."
+      "verdict": "PASS",
+      "rationale": "Rounding two factors and multiplying tens by tens is the expected third-quarter step, and the resulting products stay in a range Grade 3 can reason about."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "Four presentations carry the task: the estimate-the-product question, the approximation cloze, a truth statement about 43 x 32, and error checking attributed to Grace and Rico."
+      "rationale": "Four presentations carry the work rather than one: an open approximation, a choice, a statement to accept or reject, and a classmate's approximation to check. The truth judgments are keyed both True and False."
     },
     "competency_alignment": {
       "verdict": "CONCERN",
-      "rationale": "Some items round both factors upward, so 345 by 15 is accepted as 7000 when the true product is nearer five thousand. An estimate that overshoots by that much is not a useful approximation, and the set contains no item that teaches when rounding one factor down keeps the estimate honest."
+      "rationale": "The choice items surround the key with values one or two away, such as the set 1199 / 1201 / 1200 / 1202, so the only tidy number is always correct. The progression therefore varies factor size while leaving the actual decision trivial."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "First factors stay in the two to three digit band the competency states, from 13 up to 930, and estimated products are capped at ten thousand as the 503 by 20 item shows."
+      "rationale": "Estimated products run from 900 up to 10000, matching a two-to-three-digit by one-to-two-digit objective, and the 503 by 20 sample sits right at the top of that band."
     }
   },
-  "overall": "FAIL"
+  "overall": "CONCERN"
 }

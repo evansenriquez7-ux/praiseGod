@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g1_dp_q3_3",
-  "reviewed_by": "reviewer-b1-quartz-mallow-4412",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c1-lantern-fescue-3061",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -12,13 +12,14 @@
     500,
     501,
     502,
+    600,
     601
   ],
   "samples_reviewed": [
     {
       "seed": 42,
       "formatter": "set_fill_in_blank",
-      "question_text": "The pictograph shows cats, dogs, birds and fish. Fill in the table with the correct counts.",
+      "question_text": "Count the pictures in each row of the pictograph, then write the counts for cats, dogs, birds and fish in the table.",
       "correct_answer": [
         1,
         3,
@@ -29,7 +30,7 @@
     {
       "seed": 43,
       "formatter": "set_fill_in_blank",
-      "question_text": "Look at the pictograph. Write the correct count for each row in the table: apples, bananas, mangoes and grapes.",
+      "question_text": "Count the pictures in each row of the pictograph, then write the counts for apples, bananas, mangoes and grapes in the table.",
       "correct_answer": [
         3,
         2,
@@ -40,7 +41,7 @@
     {
       "seed": 44,
       "formatter": "set_fill_in_blank",
-      "question_text": "Count the pictures in each row of the pictograph, then write the counts for roses, sunflowers, tulips and daisies in the table.",
+      "question_text": "Look at the pictograph. Write the correct count for each row in the table: roses, sunflowers, tulips and daisies.",
       "correct_answer": [
         5,
         5,
@@ -62,7 +63,7 @@
     {
       "seed": 46,
       "formatter": "set_fill_in_blank",
-      "question_text": "Count the pictures in each row of the pictograph, then write the counts for cats, dogs, birds and fish in the table.",
+      "question_text": "Look at the pictograph. Write the correct count for each row in the table: cats, dogs, birds and fish.",
       "correct_answer": [
         4,
         1,
@@ -73,7 +74,7 @@
     {
       "seed": 500,
       "formatter": "set_fill_in_blank",
-      "question_text": "Count the pictures in each row of the pictograph, then write the counts for Grade 1, Grade 2, Grade 3 and Grade 4 in the table.",
+      "question_text": "The pictograph shows Grade 1, Grade 2, Grade 3 and Grade 4. Fill in the table with the correct counts.",
       "correct_answer": [
         5,
         5,
@@ -95,7 +96,7 @@
     {
       "seed": 502,
       "formatter": "set_fill_in_blank",
-      "question_text": "The pictograph shows basketball, volleyball, swimming and running. Fill in the table with the correct counts.",
+      "question_text": "Count the pictures in each row of the pictograph, then write the counts for basketball, volleyball, swimming and running in the table.",
       "correct_answer": [
         2,
         3,
@@ -104,9 +105,20 @@
       ]
     },
     {
+      "seed": 600,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Count the pictures in each row of the pictograph, then write the counts for Monday, Tuesday, Wednesday and Thursday in the table.",
+      "correct_answer": [
+        3,
+        4,
+        2,
+        5
+      ]
+    },
+    {
       "seed": 601,
       "formatter": "set_fill_in_blank",
-      "question_text": "Count the pictures in each row of the pictograph, then write the counts for Math, Science, English and Art in the table.",
+      "question_text": "Look at the pictograph. Write the correct count for each row in the table: Math, Science, English and Art.",
       "correct_answer": [
         5,
         5,
@@ -118,27 +130,27 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "The direction of transfer is correct throughout: pupils read rows of pictures and write the matching count into a table, which is organizing a scaleless pictograph into tabular form."
+      "rationale": "The direction of transfer is right: the pictograph is the given, the table is the product, and instructions such as Count the pictures in each row of the pictograph make the counting step explicit rather than handing the pupil the numbers."
     },
     "comprehensive_coverage": {
       "verdict": "CONCERN",
-      "rationale": "Every sample is a four-row table with counts between one and five, and the category sets recycle the same handful of themes, so the organizing skill is only ever probed at a single table shape and a single row count."
+      "rationale": "Every sample presents a full four-row graph and asks for all four table cells. There is no partially completed table to finish, no graph with a different number of rows, and no item where one row must be checked against a total - so organising is only ever practised at one fixed size and in one fixed completeness."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Counting a short row of pictures and writing a numeral is well matched to Quarter 3; no vocabulary beyond pictograph, table and row is required of the pupil."
+      "rationale": "Counting up to five identical pictures in a row and writing the numeral in a table cell is a fair Quarter 3 demand, and the category labels used - days, subjects, sports, flowers - need no reading beyond a Grade 1 sight vocabulary."
     },
     "variant_comprehensiveness": {
       "verdict": "CONCERN",
-      "rationale": "Three stem wordings circulate - one says to 'fill in the table', another says to 'count the pictures in each row' first - yet they describe an identical action. The variety is cosmetic rather than structural."
+      "rationale": "Three stem wordings rotate, ending variously with Fill in the table with the correct counts or a listing of the four row labels, but structurally the ten items are one task. No seed reverses the direction (table back to graph) or changes the response mode away from typing four counts."
     },
     "competency_alignment": {
       "verdict": "CONCERN",
-      "rationale": "The answer keys here are the same count lists the presentation node produces from the same seeds, so what actually differs between seeds is the category label, not any growing demand on tabulating."
+      "rationale": "What differs between an early seed and a late one is the label family and the four underlying numbers; the organising demand itself is identical at every seed, so there is no progression that deepens this competency."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Row counts of one through five stay within reliable picture-counting for a first grader and suit a graph with no scale."
+      "rationale": "Per-row counts never exceed 5 and the table is always four rows deep, which matches an unscaled pictograph a Grade 1 pupil can read picture by picture without losing place."
     }
   },
   "overall": "CONCERN"

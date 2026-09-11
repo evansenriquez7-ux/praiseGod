@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g3_mg_q2_0",
-  "reviewed_by": "reviewer-b5-marlin-obsidian-3358",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c5-tarragon-flint-2549",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -9,7 +9,6 @@
     44,
     45,
     46,
-    50,
     500,
     501,
     502
@@ -17,28 +16,32 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "What is the mass of the object in g?",
       "correct_answer": 7,
       "options": [
         {
           "key": "A",
           "value": 6,
+          "text": "6",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 9,
+          "text": "9",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 8,
+          "text": "8",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 7,
+          "text": "7",
           "is_correct": true
         }
       ]
@@ -73,28 +76,32 @@
     },
     {
       "seed": 44,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "What is the mass of the object in kg?",
       "correct_answer": 18,
       "options": [
         {
           "key": "A",
           "value": 20,
+          "text": "20",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 17,
+          "text": "17",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 18,
+          "text": "18",
           "is_correct": true
         },
         {
           "key": "D",
           "value": 19,
+          "text": "19",
           "is_correct": false
         }
       ]
@@ -156,65 +163,29 @@
       ]
     },
     {
-      "seed": 50,
-      "formatter": "cloze",
-      "question_text": "What is the mass of the object in g?",
-      "correct_answer": 26,
-      "options": [
-        {
-          "key": "A",
-          "value": 25,
-          "text": "25",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 26,
-          "text": "26",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 27,
-          "text": "27",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 28,
-          "text": "28",
-          "is_correct": false
-        }
-      ]
-    },
-    {
       "seed": 500,
-      "formatter": "cloze",
+      "formatter": "mcq",
       "question_text": "What is the mass of the object in kg?",
       "correct_answer": 307,
       "options": [
         {
           "key": "A",
           "value": 308,
-          "text": "308",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 306,
-          "text": "306",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 309,
-          "text": "309",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 307,
-          "text": "307",
           "is_correct": true
         }
       ]
@@ -249,28 +220,32 @@
     },
     {
       "seed": 502,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "What is the mass of the object in mg?",
       "correct_answer": 454,
       "options": [
         {
           "key": "A",
           "value": 455,
+          "text": "455",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 456,
+          "text": "456",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 454,
+          "text": "454",
           "is_correct": true
         },
         {
           "key": "D",
           "value": 453,
+          "text": "453",
           "is_correct": false
         }
       ]
@@ -279,27 +254,27 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "FAIL",
-      "rationale": "Nothing in any stem supports an answer. What is the mass of the object in g? gives no scale reading, no dial, no balance and no object, yet four numeric choices follow. The measuring act the competency requires never takes place, and the pupil has no information from which to prefer 7 over 6, 8 or 9."
+      "rationale": "The competency requires measuring 'using appropriate measuring tools', and no tool is named anywhere in the sample set. Worse, the rendered stem is simply 'What is the mass of the object in g?' with no object, no scale reading and no data of any kind, so as printed there is nothing from which a mass could be determined; the formatters used are cloze and mcq rather than the read type used elsewhere in this packet for figure-based items."
     },
     "comprehensive_coverage": {
-      "verdict": "FAIL",
-      "rationale": "The clause about using appropriate measuring tools generates nothing at all. No sample names a weighing instrument, shows one, or asks which tool suits a given object, so an explicitly named half of the competency is unrepresented across all nine samples."
+      "verdict": "CONCERN",
+      "rationale": "All three units in the competency do appear as keys, in grams, kilograms and milligrams. But the measuring-tool clause generates nothing at all, so one of the two things the competency's wording asks for is entirely unrepresented across eight samples."
     },
     "cognitive_capacity": {
-      "verdict": "CONCERN",
-      "rationale": "A reading of 1927 mg demands four-digit discrimination on an instrument scale, and a 307 kg object is nothing a Grade 3 pupil weighs in class. The magnitudes sit outside the measuring experience this quarter builds on."
+      "verdict": "PASS",
+      "rationale": "The reading demanded is a whole number with no decimals or interval interpolation, and the stem is a single short question, which would be within reach for Grade 3 Quarter 2 if the measurement information were present."
     },
     "variant_comprehensiveness": {
       "verdict": "FAIL",
-      "rationale": "Nine samples share one seven-word question in which only the unit symbol changes between g, kg and mg. There is no word problem, no comparison of two readings, no tool-selection item and no context of any kind."
+      "rationale": "There is exactly one stem in the entire node, differing only in the three-letter unit. No word problem, no named object, no balance or weighing scale context, and no alternate orientation such as being given a mass and asked which tool suits it."
     },
     "competency_alignment": {
       "verdict": "CONCERN",
-      "rationale": "What escalates between samples is purely the digit count of the answer, moving from 7 to 31 to 307 to 1927. Reading a numeral of greater length is a place-value skill, not a deepening of the measuring skill this competency names."
+      "rationale": "Progression across seeds consists solely of enlarging the number, from 7 up to 1927, while the act required of the pupil stays identical. That is varying numeral magnitude rather than developing measurement skill, and it collides with the physical meaning of the units."
     },
     "scale_appropriateness": {
       "verdict": "CONCERN",
-      "rationale": "The competency states no ceiling, but a 307 kg mass and a 1927 mg mass bracket a range far from the everyday objects a Grade 3 class places on a scale, and milligram readings in the thousands have no classroom instrument behind them."
+      "rationale": "A mass of 307 kg and a mass of 1927 mg are not quantities a Grade 3 pupil measures with a classroom instrument, and the distractors sit one or two units either side of the key, so the options for the 1927 mg item run 1926 through 1929 and discriminate nothing about mass."
     }
   },
   "overall": "FAIL"

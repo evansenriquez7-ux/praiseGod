@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g3_na_q2_4",
-  "reviewed_by": "reviewer-b6-thistle-kestrel-9724",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c6-mistral-comfrey-8916",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -9,10 +9,8 @@
     44,
     45,
     46,
-    50,
-    51,
-    55,
-    85,
+    48,
+    68,
     500,
     501,
     502,
@@ -26,28 +24,32 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "mcq",
-      "question_text": "What is 1830 − 1744?",
+      "formatter": "cloze",
+      "question_text": "1830 − 1744 = ___",
       "correct_answer": 86,
       "options": [
         {
           "key": "A",
           "value": 87,
+          "text": "87",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 86,
+          "text": "86",
           "is_correct": true
         },
         {
           "key": "C",
           "value": 3574,
+          "text": "3574",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 85,
+          "text": "85",
           "is_correct": false
         }
       ]
@@ -82,184 +84,101 @@
     },
     {
       "seed": 44,
-      "formatter": "cloze",
-      "question_text": "7222 − 810 = ___",
-      "correct_answer": 6412,
+      "formatter": "read_mcq",
+      "question_text": "The dot is at 7222 and it moves backward 810 numbers. Starting from 7222, just count back 810 numbers. Which number will the dot land on?",
+      "correct_answer": "A",
       "options": [
         {
           "key": "A",
           "value": 6412,
-          "text": "6412",
           "is_correct": true
         },
         {
           "key": "B",
           "value": 6413,
-          "text": "6413",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 8032,
-          "text": "8032",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 6411,
-          "text": "6411",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 45,
-      "formatter": "cloze",
-      "question_text": "880 − 102 = ___",
-      "correct_answer": 778,
-      "options": [
-        {
-          "key": "A",
-          "value": 982,
-          "text": "982",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 777,
-          "text": "777",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 779,
-          "text": "779",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 778,
-          "text": "778",
-          "is_correct": true
-        }
-      ]
+      "formatter": "read_fill_in_blank",
+      "question_text": "The total is 880 and one part is 102. What is the other part?",
+      "correct_answer": 778
     },
     {
       "seed": 46,
-      "formatter": "mcq",
-      "question_text": "What is 3463 − 60?",
-      "correct_answer": 3403,
-      "options": [
-        {
-          "key": "A",
-          "value": 3404,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 3403,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 3402,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 3523,
-          "is_correct": false
-        }
-      ]
+      "formatter": "read_fill_in_blank",
+      "question_text": "The total is 3463 and one part is 60. What is the other part?",
+      "correct_answer": 3403
     },
     {
-      "seed": 50,
-      "formatter": "read_mcq",
-      "question_text": "The dot is at 7042 and it moves backward 6900 numbers. Starting from 7042, just count back 6900 numbers. Which number will the dot land on?",
-      "correct_answer": "D",
-      "options": [
-        {
-          "key": "A",
-          "value": 141,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 13942,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 143,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 142,
-          "is_correct": true
-        }
-      ]
-    },
-    {
-      "seed": 51,
+      "seed": 48,
       "formatter": "error_detect",
-      "question_text": "Ana solved: \"542 − 20 = ___\". Ana says the missing number is 562. Is Ana correct?",
+      "question_text": "Noel solved: \"9120 − 1093 = ___\". Noel says the missing number is 8027. Is Noel correct?",
       "correct_answer": {
-        "has_error": true,
-        "correct_value": 522
+        "has_error": false,
+        "correct_value": 8027
       }
     },
     {
-      "seed": 55,
-      "formatter": "read_fill_in_blank",
-      "question_text": "The total is 1389 and one part is 1170. What is the other part?",
-      "correct_answer": 219
-    },
-    {
-      "seed": 85,
+      "seed": 68,
       "formatter": "true_false",
-      "question_text": "903 − 300 = 603. True or False?",
+      "question_text": "660 − 376 = 284. True or False?",
       "correct_answer": true
     },
     {
       "seed": 500,
-      "formatter": "read_fill_in_blank",
-      "question_text": "The total is 6398 and one part is 3715. What is the other part?",
-      "correct_answer": 2683
-    },
-    {
-      "seed": 501,
-      "formatter": "true_false",
-      "question_text": "3418 − 3379 = 39. True or False?",
-      "correct_answer": true
-    },
-    {
-      "seed": 502,
-      "formatter": "mcq",
-      "question_text": "What is 5609 − 1839?",
-      "correct_answer": 3770,
+      "formatter": "read_mcq",
+      "question_text": "The dot is at 6398 and it moves backward 3715 numbers. Starting from 6398, just count back 3715 numbers. Which number will the dot land on?",
+      "correct_answer": "D",
       "options": [
         {
           "key": "A",
-          "value": 3771,
+          "value": 2682,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 3770,
-          "is_correct": true
+          "value": 2684,
+          "is_correct": false
         },
         {
           "key": "C",
-          "value": 7448,
+          "value": 10113,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 3769,
-          "is_correct": false
+          "value": 2683,
+          "is_correct": true
         }
       ]
+    },
+    {
+      "seed": 501,
+      "formatter": "true_false",
+      "question_text": "3418 − 3379 = 6797. True or False?",
+      "correct_answer": false
+    },
+    {
+      "seed": 502,
+      "formatter": "error_detect",
+      "question_text": "Dante solved: \"5609 − 1839 = ___\". Dante says the missing number is 3770. Is Dante correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 3770
+      }
     },
     {
       "seed": 600,
@@ -323,91 +242,49 @@
     },
     {
       "seed": 602,
-      "formatter": "mcq",
-      "question_text": "What is 912 − 570?",
-      "correct_answer": 342,
-      "options": [
-        {
-          "key": "A",
-          "value": 341,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 343,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 342,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 1482,
-          "is_correct": false
-        }
-      ]
+      "formatter": "error_detect",
+      "question_text": "Jose solved: \"912 − 570 = ___\". Jose says the missing number is 342. Is Jose correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 342
+      }
     },
     {
       "seed": 603,
-      "formatter": "cloze",
-      "question_text": "3377 − 210 = ___",
-      "correct_answer": 3167,
+      "formatter": "read_mcq",
+      "question_text": "The dot is at 3377 and it moves backward 210 numbers. Starting from 3377, just count back 210 numbers. Which number will the dot land on?",
+      "correct_answer": "A",
       "options": [
         {
           "key": "A",
           "value": 3167,
-          "text": "3167",
           "is_correct": true
         },
         {
           "key": "B",
           "value": 3168,
-          "text": "3168",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 3587,
-          "text": "3587",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 3166,
-          "text": "3166",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 604,
-      "formatter": "mcq",
-      "question_text": "What is 5325 − 4220?",
-      "correct_answer": 1105,
-      "options": [
-        {
-          "key": "A",
-          "value": 1105,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 9545,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 1104,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 1106,
-          "is_correct": false
-        }
-      ]
+      "formatter": "error_detect",
+      "question_text": "Carlo solved: \"5325 − 4220 = ___\". Carlo says the missing number is 1105. Is Carlo correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 1105
+      }
     },
     {
       "seed": 605,
@@ -441,27 +318,27 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "Items require the difference of two stated numbers and the keys are those differences; the missing-part framing at seed 55, where the total is 1389 and one part is 1170, is a legitimate subtraction reading rather than a detour."
+      "rationale": "Subtraction is performed throughout and every key I checked is arithmetically right, including the tight 1830 take away 1744 leaving 86. The missing-part phrasing, where a total and one part are given, states subtraction in the part-whole language of the objective."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "Borrowing and non-borrowing cases both occur: 8413 minus 4110 needs no regrouping in any column, while 1830 minus 1744 needs it twice, and the take-away, missing-part and comparison meanings of subtraction all appear."
+      "rationale": "The clause about regrouping is honoured on both sides: 8413 minus 4110 needs no exchange in any column, whereas 9120 minus 1093 and 5609 minus 1839 both do, and one comparison situation asks how many more rather than how many are left."
     },
     "cognitive_capacity": {
       "verdict": "CONCERN",
-      "rationale": "Seed 50 tells the pupil to just count back 6900 numbers from 7042. Framing a four-digit subtraction as unit counting misrepresents the method and is impossible to carry out, which undercuts the very number-line illustration it is meant to provide; seed 605 repeats the same instruction with 110."
+      "rationale": "The backward number-line stems instruct counting back by ones over enormous distances; one has the dot at 6398 moving backward 3715 numbers with the direction to just count back that many. No Grade 3 pupil can execute that, and it teaches a strategy that fails at the very sizes this node targets."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "Plain equations, choice questions, truth evaluation, the Ana error-checking item, part-and-total phrasing, number-line movement and one comparison word problem are all represented, which is a genuinely wide spread for a computation node."
+      "rationale": "Bare differences, total-and-one-part statements, backward jumps, classmate error checks and a how-many-more comparison all appear, and the truth judgments split between a True and a False key rather than leaning one way."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Harder items add borrowing across more columns and put the minuend into the thousands, as with 5609 minus 1839, so the escalating factor is subtraction difficulty itself."
+      "rationale": "Difficulty tracks the borrowing demand and the width of the two numbers, which is the axis that belongs to this subtraction objective."
     },
     "scale_appropriateness": {
       "verdict": "CONCERN",
-      "rationale": "The competency scopes both numbers below ten thousand and most samples sit there, but seed 601 asks how many more water bowls 18 is than 10. An item whose operands are 18 and 10 is indistinguishable from early primary work and contributes nothing to a node defined by the four-digit ceiling."
+      "rationale": "Most values sit properly in the thousands, but one sample asks the difference between 18 and 10 water bowls and another works from 152. A single-column take-away is far under the four-digit band this Grade 3 quarter is meant to establish, even though it is technically inside the stated bound."
     }
   },
   "overall": "CONCERN"

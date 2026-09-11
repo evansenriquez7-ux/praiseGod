@@ -48,7 +48,7 @@ arm that `orally` named, and **at least half** of this node's rendered items mus
 picture or visual element. Under R-4 that rate is achieved by the COMPOSITION OF THE ALLOWED
 FORMATTER SET, never by weighting one formatter above another.
 
-**Enforcement: NOT YET BUILT.** Measured 2026-09-11 before the ruling: 49 of 300 seeds (16%).
+**Enforcement: NOT YET BUILT** — the RATE is not gated by any check. The ruling is *met*: 16% before, 51% measured over 300 seeds after `number_line_read` was declared for `money_peso` (2026-09-11), reached by set composition per R-4. Nothing stops it regressing.
 
 ## R-4 · No routing bias: uniform choice across allowed combinations (2026-09-11)
 
@@ -85,7 +85,13 @@ introduces an entry must carry the owner's decision.
 `requires_ignore_note` records the ruling and its reason at the point of use, so a later agent
 reading `["rhythmic", "properties", "arts"]` can tell a curriculum decision from a stopword.
 
-**Enforcement: NOT YET BUILT.**
+**Enforced** by `validate_capability` `requires_ignore_locked_6B` (Phase 1): the sanctioned
+contents live in `data/skeletons/requires_ignore.lock.json` and any divergence fails, in either
+direction — an addition is an unsanctioned ruling, a removal silently re-imposes a requirement
+the owner waived. Sanctioning a change means editing the lock: a separate, greppable commit
+rather than a side effect buried in a content change. **Known limit:** this makes the act
+visible, not impossible — an agent that can edit ground truth can edit the lock too. What is
+guaranteed is that doing so is deliberate and auditable.
 
 ---
 

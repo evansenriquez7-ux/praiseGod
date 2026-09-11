@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g1_na_q2_5",
-  "reviewed_by": "reviewer-b2-tallow-verdigris-8130",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c2-basalt-yarrow-7194",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -9,11 +9,9 @@
     44,
     45,
     46,
-    47,
-    50,
-    52,
-    61,
-    70,
+    49,
+    51,
+    108,
     500,
     501,
     502,
@@ -27,125 +25,140 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "read_mcq",
-      "question_text": "The dot is at 68 and it moves forward 10 numbers. Starting from 68, just count up 10 numbers. Which number will the dot land on?",
-      "correct_answer": "B",
+      "formatter": "read_fill_in_blank",
+      "question_text": "The two parts are 68 and 10. What is the sum?",
+      "correct_answer": 78
+    },
+    {
+      "seed": 43,
+      "formatter": "true_false",
+      "question_text": "30 + 30 = 70. True or False?",
+      "correct_answer": false
+    },
+    {
+      "seed": 44,
+      "formatter": "error_detect",
+      "question_text": "Rico solved: \"60 + 22 = ___\". Rico says the blank is 82. Is Rico correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 82
+      }
+    },
+    {
+      "seed": 45,
+      "formatter": "read_fill_in_blank",
+      "question_text": "The two parts are 30 and 15. What is the sum?",
+      "correct_answer": 45
+    },
+    {
+      "seed": 46,
+      "formatter": "cloze",
+      "question_text": "16 + 61 = ___",
+      "correct_answer": 77,
       "options": [
         {
           "key": "A",
           "value": 77,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 78,
+          "text": "77",
           "is_correct": true
         },
         {
+          "key": "B",
+          "value": 87,
+          "text": "87",
+          "is_correct": false
+        },
+        {
           "key": "C",
-          "value": 88,
+          "value": 76,
+          "text": "76",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 79,
+          "value": 78,
+          "text": "78",
           "is_correct": false
         }
       ]
     },
     {
-      "seed": 43,
+      "seed": 49,
       "formatter": "read_mcq",
-      "question_text": "(Large group of 30 stars) — There are 30 stars.\n(Large group of 30 stars) — 30 more stars are added.\nHow many total stars are there?",
-      "correct_answer": "D",
+      "question_text": "(Large group of 30 daisies) — There are 30 daisies.\n(Large group of 30 daisies) — 30 more daisies are added.\nHow many total daisies are there?",
+      "correct_answer": "C",
       "options": [
         {
           "key": "A",
-          "value": 59,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 30,
-          "is_correct": false
-        },
-        {
-          "key": "C",
           "value": 61,
           "is_correct": false
         },
         {
-          "key": "D",
-          "value": 60,
-          "is_correct": true
-        }
-      ]
-    },
-    {
-      "seed": 44,
-      "formatter": "mcq",
-      "question_text": "What is 60 + 22?",
-      "correct_answer": 82,
-      "options": [
-        {
-          "key": "A",
-          "value": 82,
-          "is_correct": true
-        },
-        {
           "key": "B",
-          "value": 92,
+          "value": 59,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 83,
-          "is_correct": false
+          "value": 60,
+          "is_correct": true
         },
         {
           "key": "D",
-          "value": 81,
+          "value": 30,
           "is_correct": false
         }
       ]
     },
     {
-      "seed": 45,
+      "seed": 51,
       "formatter": "mcq",
       "question_text": "What is 30 + 15?",
       "correct_answer": 45,
       "options": [
         {
           "key": "A",
-          "value": 44,
-          "is_correct": false
+          "value": 45,
+          "is_correct": true
         },
         {
           "key": "B",
-          "value": 46,
-          "is_correct": false
-        },
-        {
-          "key": "C",
           "value": 55,
           "is_correct": false
         },
         {
+          "key": "C",
+          "value": 46,
+          "is_correct": false
+        },
+        {
           "key": "D",
-          "value": 45,
-          "is_correct": true
+          "value": 44,
+          "is_correct": false
         }
       ]
     },
     {
-      "seed": 46,
-      "formatter": "mcq",
-      "question_text": "What is 16 + 61?",
-      "correct_answer": 77,
+      "seed": 108,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Show 30 + 60 on the number line.",
+      "correct_answer": 90
+    },
+    {
+      "seed": 500,
+      "formatter": "true_false",
+      "question_text": "83 + 15 = 83. True or False?",
+      "correct_answer": false
+    },
+    {
+      "seed": 501,
+      "formatter": "read_mcq",
+      "question_text": "The dot is at 70 and it moves forward 16 numbers. Starting from 70, just count up 16 numbers. Which number will the dot land on?",
+      "correct_answer": "A",
       "options": [
         {
           "key": "A",
-          "value": 77,
+          "value": 86,
           "is_correct": true
         },
         {
@@ -155,202 +168,53 @@
         },
         {
           "key": "C",
-          "value": 76,
+          "value": 96,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 78,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 47,
-      "formatter": "true_false",
-      "question_text": "30 + 15 = 46. True or False?",
-      "correct_answer": false
-    },
-    {
-      "seed": 50,
-      "formatter": "cloze",
-      "question_text": "40 + 45 = ___",
-      "correct_answer": 85,
-      "options": [
-        {
-          "key": "A",
-          "value": 86,
-          "text": "86",
-          "is_correct": false
-        },
-        {
-          "key": "B",
           "value": 85,
-          "text": "85",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 84,
-          "text": "84",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 95,
-          "text": "95",
           "is_correct": false
         }
       ]
-    },
-    {
-      "seed": 52,
-      "formatter": "read_fill_in_blank",
-      "question_text": "The two parts are 52 and 47. What is the sum?",
-      "correct_answer": 99
-    },
-    {
-      "seed": 61,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Show 51 + 30 on the number line.",
-      "correct_answer": 81
-    },
-    {
-      "seed": 70,
-      "formatter": "error_detect",
-      "question_text": "Dante solved: \"24 + 74 = ___\". Dante says the blank is 98. Is Dante correct?",
-      "correct_answer": {
-        "has_error": false,
-        "correct_value": 98
-      }
-    },
-    {
-      "seed": 500,
-      "formatter": "read_mcq",
-      "question_text": "(Large group of 83 drinks) — There are 83 drinks.\n🥤🥤🥤🥤🥤🥤🥤🥤🥤🥤🥤🥤🥤🥤🥤 — 15 more drinks are added.\nHow many total drinks are there?",
-      "correct_answer": "B",
-      "options": [
-        {
-          "key": "A",
-          "value": 99,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 98,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 97,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 83,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 501,
-      "formatter": "true_false",
-      "question_text": "70 + 16 = 86. True or False?",
-      "correct_answer": true
     },
     {
       "seed": 502,
-      "formatter": "mcq",
-      "question_text": "What is 55 + 34?",
-      "correct_answer": 89,
-      "options": [
-        {
-          "key": "A",
-          "value": 90,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 89,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 99,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 88,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 600,
       "formatter": "error_detect",
-      "question_text": "Noel solved: \"47 + 41 = ___\". Noel says the blank is 98. Is Noel correct?",
+      "question_text": "Dante solved: \"55 + 34 = ___\". Dante says the blank is 89. Is Dante correct?",
       "correct_answer": {
-        "has_error": true,
-        "correct_value": 88
+        "has_error": false,
+        "correct_value": 89
       }
     },
     {
+      "seed": 600,
+      "formatter": "true_false",
+      "question_text": "47 + 41 = 88. True or False?",
+      "correct_answer": true
+    },
+    {
       "seed": 601,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "Moses is on step 30. Moses climbs up 60 more steps. What step is Moses on now?",
       "correct_answer": 90,
       "options": [
         {
           "key": "A",
           "value": 91,
+          "text": "91",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 90,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 89,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 100,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 602,
-      "formatter": "true_false",
-      "question_text": "60 + 22 = 60. True or False?",
-      "correct_answer": false
-    },
-    {
-      "seed": 603,
-      "formatter": "cloze",
-      "question_text": "30 + 60 = ___",
-      "correct_answer": 90,
-      "options": [
-        {
-          "key": "A",
           "value": 90,
           "text": "90",
           "is_correct": true
         },
         {
-          "key": "B",
+          "key": "C",
           "value": 89,
           "text": "89",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 91,
-          "text": "91",
           "is_correct": false
         },
         {
@@ -360,6 +224,18 @@
           "is_correct": false
         }
       ]
+    },
+    {
+      "seed": 602,
+      "formatter": "read_fill_in_blank",
+      "question_text": "The two parts are 60 and 22. What is the sum?",
+      "correct_answer": 82
+    },
+    {
+      "seed": 603,
+      "formatter": "true_false",
+      "question_text": "30 + 60 = 90. True or False?",
+      "correct_answer": true
     },
     {
       "seed": 604,
@@ -399,27 +275,27 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "Sums are formed without any column crossing ten (55 + 34, 52 + 47, 24 + 74 all stay clean), and concrete and pictorial supports are real here: number-line placement, a dot advancing along the line, and counted drink symbols."
+      "rationale": "The sampled items are additions with sums at or below one hundred, and I checked each pair for carries - none of the generated sums requires regrouping, so the restriction the competency states is respected in the arithmetic itself."
     },
     "comprehensive_coverage": {
       "verdict": "FAIL",
-      "rationale": "The competency names two addend pairings and only one is built. Across all nineteen samples every addition is two-digit with two-digit -- 60 + 22, 30 + 15, 16 + 61, 40 + 45, 55 + 34 and so on. A two-digit plus one-digit sum never occurs, so half the stated scope is simply absent from the pool."
+      "rationale": "The competency names two addend shapes, '2-digit and 1-digit numbers, and 2-digit and 2-digit numbers'. Every addition in this sample is two-digit plus two-digit; not one item adds a single-digit number to a two-digit one. An entire named sub-case is never generated."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Sentences are short, the step-climbing and dot-moving framings are concrete, and no item requires more than one addition to answer."
+      "rationale": "Sentences are short, the arithmetic is carry-free, and the count-up instruction spells out the procedure before asking for the landing number, all of which fits a Grade 1 pupil mid-year."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "Presentation genuinely rotates: symbol sets to be combined, a number-line placement task, a bare equation, an error-checking judgement on Noel's work, and a stair-climbing situation."
+      "rationale": "The concrete and pictorial models the competency calls for are really present - a pictured group of daisies joined by more daisies, a number-line landing task, and 'Show 30 + 60 on the number line.' - alongside abstract equations and a part-part phrasing."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Later seeds push toward sums that land near the ceiling (52 and 47 giving 99, 83 and 15 giving 98) while keeping the no-regrouping constraint, so the ladder stretches the same skill rather than swapping in another."
+      "rationale": "Harder seeds use larger addends and less friendly digits rather than switching to some unrelated skill, so the ramp does build the addition competency, even though it never reaches the missing addend shape."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "The largest key is 99 and nothing overshoots the stated sum ceiling of 100."
+      "rationale": "Sums peak at ninety-eight and no stem crosses one hundred, matching the ceiling the wording sets."
     }
   },
   "overall": "FAIL"

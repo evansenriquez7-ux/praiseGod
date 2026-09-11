@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g3_dp_q3_3",
-  "reviewed_by": "reviewer-b5-marlin-obsidian-3358",
-  "review_date": "2026-09-10",
+  "reviewed_by": "reviewer-c5-tarragon-flint-2549",
+  "review_date": "2026-09-11",
   "blind": true,
   "sample_seeds": [
     42,
@@ -33,7 +33,7 @@
         },
         {
           "key": "B",
-          "value": 61,
+          "value": 59,
           "is_correct": false
         },
         {
@@ -56,7 +56,7 @@
       "options": [
         {
           "key": "A",
-          "value": 65,
+          "value": 60,
           "is_correct": false
         },
         {
@@ -66,7 +66,7 @@
         },
         {
           "key": "C",
-          "value": 59,
+          "value": 61,
           "is_correct": false
         },
         {
@@ -94,12 +94,12 @@
         },
         {
           "key": "C",
-          "value": 15,
+          "value": 35,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 16,
+          "value": 14,
           "is_correct": false
         }
       ]
@@ -127,7 +127,7 @@
         },
         {
           "key": "D",
-          "value": 41,
+          "value": 39,
           "is_correct": false
         }
       ]
@@ -150,7 +150,7 @@
         },
         {
           "key": "C",
-          "value": 5,
+          "value": 50,
           "is_correct": false
         },
         {
@@ -267,7 +267,7 @@
         },
         {
           "key": "D",
-          "value": 31,
+          "value": 29,
           "is_correct": false
         }
       ]
@@ -290,12 +290,12 @@
         },
         {
           "key": "C",
-          "value": 56,
+          "value": 54,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 55,
+          "value": 50,
           "is_correct": false
         }
       ]
@@ -336,7 +336,7 @@
       "options": [
         {
           "key": "A",
-          "value": 39,
+          "value": 41,
           "is_correct": false
         },
         {
@@ -415,29 +415,29 @@
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "FAIL",
-      "rationale": "Every cost item isolates its key by magnitude. Where the choices are 65, 45, 59 and 600, or 40, 54, 39 and 550, or 44, 120, 25 and 45, exactly one option is of the right order of magnitude for a multiplied total. A pupil who never looks at the graph scores these correctly, so the problem-solving the competency requires is bypassed."
+      "verdict": "PASS",
+      "rationale": "Every stem begins from a bar graph and poses a genuine problem on top of it rather than a bare reading: combining two categories, finding how many more one has than another, scaling by a unit price, or adding items to a category as in 'If 5 more items are added to Art, what will be the new total for Art?'. That is solving with graph data, as worded."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "Four distinct problem structures are generated on top of the graph: combining two categories into a joint total, finding how many more one category holds than another, applying a peso unit rate to a category, and adding a quantity to a category to get a new total."
+      "rationale": "The competency restricts itself to the single bar graph, and correctly no table items appear; within that restriction both orientations are used and four distinct problem structures (join, compare, multiply by a rate, increase) are generated across the seeds."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The unit rates chosen are 3, 5 and 10 pesos, so the multiplication stays within the tables a Grade 3 pupil has, and each problem needs one graph reading followed by one operation."
+      "rationale": "The heaviest computation is a two-digit by one-digit product such as the Thursday item costing 5 pesos per item with key 325, which Grade 3 Quarter 3 multiplication supports. Peso pricing is a familiar local context and the stems remain single-clause."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "Horizontal and vertical displays both carry every problem type, and the data sets rotate through fruit, sports, pets, months, flowers, school subjects, weekdays and grade levels, so the same problem never returns on the same context."
+      "rationale": "Although the response widget is constant, the situations genuinely differ: cost problems at three different unit prices, combination totals, difference comparisons and an increase-the-category item, across flowers, subjects, weekdays, sports, months and grade levels."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Difficulty climbs by the number of graph readings a problem consumes and by the operation applied to them, which is exactly what solving problems from a single bar graph means, rather than by inflating the underlying data."
+      "rationale": "Difficulty grows by adding a second operation to the graph reading, for example moving from 'How many more items were recorded for dogs than for cats?' to a unit-price total. Both ends of that progression still depend on extracting values from the bar graph, which is the competency's core."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Bar values stay in the tens, differences stay under fifty, and the largest derived answer is a peso total in the hundreds, all appropriate for Grade 3 Quarter 3 money and measurement contexts."
+      "rationale": "Bar values stay in the tens and the largest derived answer is 600 from the basketball cost item, so results remain well under the 10 000 ceiling Grade 3 works within while still being large enough to be worth computing."
     }
   },
-  "overall": "FAIL"
+  "overall": "PASS"
 }
