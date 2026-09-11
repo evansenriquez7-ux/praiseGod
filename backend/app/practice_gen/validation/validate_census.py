@@ -72,7 +72,9 @@ CENSUS_FLOORS = {
     # mutations (one per field family), so this floor is the only guard on the pair.
     # 71 registered 2026-09-11 (was 70): +1 for `requires_ignore_locked_6B`, the gate
     # that makes owner ruling R-5 machine-checkable -- added while its count was zero.
-    "mutations": 71,
+    # 72 registered 2026-09-11 (was 71): +1 for the frontend visual contract, now derived
+    # from the component AST instead of a hand-written key map that had drifted 35 keys.
+    "mutations": 72,
     # 983 observed 2026-09-08. How many (variant, value) pairs the blind-review packets
     # will actually demonstrate across the tree.
     #

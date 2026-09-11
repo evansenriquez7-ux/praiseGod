@@ -83,11 +83,22 @@ SEEDS_PER_NODE = (11, 42, 64)
 
 
 def _required_keys() -> Dict[str, List[str]]:
-    """The contract itself lives with the auditor; reuse it rather than restating it."""
-    sys.path.insert(0, str(REPO_ROOT))
-    from tests.frontend_contract_auditor import REQUIRED_KEYS
+    """
+    The contract itself lives with the auditor; reuse it rather than restating it.
 
-    return REQUIRED_KEYS
+    Since 2026-09-11 the auditor DERIVES it from the component AST rather than carrying
+    a hand-written map, so §9 now inherits a contract that cannot go stale. The previous
+    map had drifted 35 keys away from the components it claimed to mirror, which means
+    §9 was checking a contract nobody had reconciled with the source in a long while.
+
+    A required GROUP (`a ?? b ?? c` -- supply at least one) cannot be expressed as a flat
+    required-key list, so §9 checks the unconditional keys only and the auditor checks
+    both. Named rather than glossed: §9 is the weaker of the two on this axis.
+    """
+    sys.path.insert(0, str(REPO_ROOT))
+    from tests.frontend_contract_auditor import visual_contract
+
+    return {vt: spec["required"] for vt, spec in visual_contract().items()}
 
 
 def collect_findings(node_ids: Optional[List[str]] = None) -> List[str]:

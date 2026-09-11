@@ -47,6 +47,7 @@ import re
 import sys
 import time
 from collections import Counter
+from functools import lru_cache
 from concurrent.futures import ProcessPoolExecutor, as_completed
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
@@ -60,35 +61,66 @@ OUT_JSONL = SCRATCH / "frontend_contract_findings.jsonl"
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# Per-`visual_type` REQUIRED_KEYS — keys the React component reads from
-# `params.*` (derived from frontend/src/components/VisualSkeletons.jsx and
-# frontend/src/utils/renderUtils.jsx).  A payload whose visual_params lacks
-# any of these will render incorrectly.  `model_type` indicates a sub-branch
-# within FractionModelInteractive — the required_keys are union over all
-# branches but flags if the named sub-branch key is absent.
+# The visual contract is DERIVED FROM THE COMPONENT SOURCE, never written here.
+#
+# What stood here was a hand-written REQUIRED_KEYS map whose own comment said it was
+# "derived from VisualSkeletons.jsx and renderUtils.jsx" -- once, by a person reading
+# them. Measured 2026-09-11 it had drifted in BOTH directions:
+#
+#   * 35 keys the components read only via `const {...} = params` destructuring
+#     appeared in no list at all (hours, minutes, rows, columns, whole, part1, part2,
+#     categories, counts, labels, ...). The auditor could not have caught a payload
+#     omitting any of them.
+#   * NumberLine was required to carry `dot_value`, which the component reads as
+#     `params?.dot_value ?? params?.value ?? params?.correct_position` and does not
+#     require at all -- what it requires is ONE OF the three.
+#
+# A gate that models what it audits stops auditing the moment the real thing moves, and
+# says nothing when it does. So `tests/frontend/extract_visual_contract.mjs` parses the
+# component AST with Babel (already present in frontend/node_modules as a vite/eslint
+# dependency -- no new install) and emits the contract. There is no list to maintain,
+# because there is no list: a component added for grade 7 is covered the moment
+# renderUtils' switch names it, and a key it starts reading is covered the moment it is
+# written.
+#
+# Measured over 477 real payloads across 16 visual types: 0 required-key violations and
+# 0 required-group violations, so the gate's baseline is clean and its mutation is
+# scoreable (Scaling Mandate 5).
 # ─────────────────────────────────────────────────────────────────────────────
 
-REQUIRED_KEYS: Dict[str, List[str]] = {
-    "NumberLine":       ["start", "end", "dot_value"],   # `interval`/`minor_interval` is optional with fallback
-    "ClockSet":         ["hours", "minutes", "interaction_mode"],
-    "PesoMoney":        ["target_amount", "coins", "bills"],
-    "GridArea":         ["rows", "cols", "shaded"],
-    "BarChart":         ["categories"],   # values OR counts (pictograph alias) is required; check below
-    "EmojiPictorial":   ["emoji", "group_a", "group_b"],
-    "PlaceValueBlocks": ["total_value"],
-    "PatternSequence":  ["sequence", "missing_indices"],
-    "FractionModel":    ["model_type", "numerator", "denominator", "total_parts", "shaded_parts", "interaction_mode", "is_read_only", "total_wholes"],
-    "FractionShade":    ["shape", "total_parts", "interaction_mode", "is_read_only", "total_wholes"],
-    "TenFrame":         ["filled", "frame_count", "query_type"],  # total optional (= frame_count * 10)
-    "RulerMeasure":     ["length"],
-    "BalanceScale":     ["left_side", "right_side", "is_balanced"],
-    "ShapeBoard":       ["shapes"],   # grid_size optional; component iterates shapes[]
-    "Calendar":         ["month", "year"],
-    "FillInTable":      ["columns", "rows"],
-    "NumberBond":       ["whole", "part1", "part2", "blank_position"],
-    "Categorize":       ["shapes"],
-    "SortOrder":        ["correct_sequence"],
-}
+_EXTRACTOR = Path(__file__).resolve().parent / "frontend" / "extract_visual_contract.mjs"
+_FRONTEND = Path(__file__).resolve().parents[1] / "frontend"
+
+
+@lru_cache(maxsize=1)
+def visual_contract() -> Dict[str, Dict[str, Any]]:
+    """
+    `{visual_type: {component, required, required_groups, conditional, optional, unused}}`
+
+    Fails loudly. An extractor that returned {} on error would hand this auditor nothing
+    to check and the audit would pass -- the exact silent-green failure the harness
+    exists to prevent.
+    """
+    import subprocess
+
+    proc = subprocess.run(
+        ["node", str(_EXTRACTOR),
+         str(_FRONTEND / "src" / "components" / "VisualSkeletons.jsx"),
+         str(_FRONTEND / "src" / "utils" / "renderUtils.jsx")],
+        capture_output=True, text=True,
+    )
+    if proc.returncode != 0:
+        raise RuntimeError(
+            f"could not derive the frontend visual contract (exit {proc.returncode}):\n"
+            f"{proc.stderr.strip()}\n"
+            f"The auditor refuses to run against a contract it could not derive; a "
+            f"hand-written fallback is what this replaced."
+        )
+    contract = json.loads(proc.stdout)
+    if not contract:
+        raise RuntimeError("derived an empty visual contract; refusing to audit nothing.")
+    return contract
+
 
 # Formatters where the student submits the answer (so `correct_answer` must
 # NOT leak into `visual_params`).
@@ -155,9 +187,10 @@ def check_payload(payload: Dict[str, Any]) -> List[Dict[str, Any]]:
         "correct_answer": ca,
     }
 
-    # ── (a) REQUIRED_KEYS check ──────────────────────────────────────────────
-    if vt in REQUIRED_KEYS:
-        missing = [k for k in REQUIRED_KEYS[vt] if k not in vp]
+    # ── (a) required keys, derived from the component source ─────────────────
+    _contract = visual_contract().get(vt)
+    if _contract:
+        missing = [k for k in _contract["required"] if k not in vp]
         if missing:
             findings.append({
                 **common,
@@ -166,8 +199,23 @@ def check_payload(payload: Dict[str, Any]) -> List[Dict[str, Any]]:
                 "missing_keys": missing,
                 "vp_keys": list(vp.keys()),
                 "message": f"visual_type={vt} payload missing required visual_params keys: {missing}. "
-                           f"React component will see `undefined` and render incorrectly.",
+                           f"{_contract['component']} reads each of them with no default and no "
+                           f"presence check, so React sees `undefined` and renders incorrectly.",
             })
+        # A fallback CHAIN (`a ?? b ?? c`, all params reads) needs ONE of its members.
+        # Supplying none is Bug #58's shape: NumberLine falling through to a dot at 0.
+        for group in _contract["required_groups"]:
+            if not any(k in vp for k in group):
+                findings.append({
+                    **common,
+                    "check": "required_group_unsatisfied",
+                    "severity": "critical",
+                    "missing_keys": group,
+                    "vp_keys": list(vp.keys()),
+                    "message": f"visual_type={vt} payload supplies none of {group}. "
+                               f"{_contract['component']} reads them as a fallback chain, so the "
+                               f"render silently falls through to its final default.",
+                })
 
     # ── (b) MULTI_WHOLE check (Bug #57 class) ────────────────────────────────
     if vt in ("FractionModel", "FractionShade"):

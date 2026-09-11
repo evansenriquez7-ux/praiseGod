@@ -9795,3 +9795,127 @@ subprocesses that import source as they start, so a mid-run edit gives some work
 code and some the new. It was discarded and re-run clean. `tests/mutation_harness.py` already
 carries a "NEVER run concurrently with anything else" warning for the same reason; the same
 caution applies to `run_all --phase 1` whenever source is being edited.
+
+---
+
+## 2026-09-11 — the frontend visual contract was a hand-written model, and it had drifted
+
+### What was asked, and why the first answer was wrong
+
+Asked how frontend rendering could be verified as the tree scales, I proposed three layers:
+the existing structural auditor, new `vitest` component tests, and screenshots. The owner
+rejected two of the three and asked why the first was not enough — and was right on every
+count.
+
+* **Screenshots do not scale.** Nobody eyeballs renders at grade 7.
+* **The component-test layer was redundant.** Its headline justification was automated
+  answer-leak testing, and `tests/frontend_contract_auditor.py` has carried an
+  `ANSWER_LEAK` check since it was written. The proposal was made without reading what
+  the existing tool does.
+* **"Why is an agent only now saying this?"** Because nobody had measured it, including
+  me. I asserted a gap and reached for a new tool; the real gap was one command away
+  inside the tool that already existed.
+
+### The real defect: a gate that modelled what it audits
+
+`REQUIRED_KEYS` described itself as *"derived from VisualSkeletons.jsx and
+renderUtils.jsx"* — derived ONCE, by a person reading them. Measured 2026-09-11 it had
+drifted in BOTH directions:
+
+```
+keys the components actually read : 81   (46 via params.X, 36 via destructuring)
+keys REQUIRED_KEYS declared       : 43   hand-written
+  * 35 keys read ONLY via `const {...} = params` appeared in NO list at all
+    (hours, minutes, rows, columns, whole, part1, part2, categories, counts, labels ...)
+  * `dot_value` was REQUIRED of NumberLine, though the component reads it as one arm of
+    `params?.dot_value ?? params?.value ?? params?.correct_position` and needs none of
+    the three individually -- it needs ONE OF them
+```
+
+A gate that models what it audits stops auditing the moment the real thing moves, and says
+nothing when it does. `validate_render` §9 imports this same map, so §9 had been checking a
+contract nobody had reconciled with the source in a long while.
+
+### What replaced it
+
+`tests/frontend/extract_visual_contract.mjs` parses the component AST with Babel — already
+present in `frontend/node_modules` as a vite/eslint dependency, so no new package and no
+network install — and derives the contract on every run. Five classes, all read off the AST:
+
+```
+required        a bare read; missing -> undefined -> silent wrong render
+required_group  `a ?? b ?? c`, all params reads: supply AT LEAST ONE.
+                This is Bug #58's shape ("dot at 0 on number line").
+conditional     read only inside a branch (FractionModel's compare arm, BarChart's
+                second series). REPORTED, NOT ENFORCED.
+optional        chain ending in a real default, or presence is tested (`x ? a : b`)
+unused          destructured and never referenced
+```
+
+There is no list to maintain, because there is no list. A component added for grade 7 is
+covered the moment `renderUtils`' switch names it; a key it starts reading is covered the
+moment it is written; a key that gains a default stops being required automatically. The
+extractor exits non-zero on a parse failure, an unmapped component, or an empty result — a
+contract extractor that returned `{}` on error would hand the auditor nothing to check and
+the audit would pass.
+
+### Six wrong classifications of my own, each caught by measuring
+
+Every one was found by running the derived contract against real payloads, never by
+reading the code. The sequence is worth recording because the failure mode repeated:
+
+```
+22 false "required"  first pass treated every fallback as OPTIONAL, deriving
+                     `NumberLine: required = []` -- a contract checking nothing for the
+                     very component whose silent-default bug motivated the auditor
+17                   fixed by following destructured bindings to their USES
+                     (`const {max_coins} = params` then `max_coins || 8`)
+ 9                   fixed by adding the `conditional` class
+ 5                   fixed by walking past member access on a binding reference
+                     (`range?.[0] ?? 0`)
+ 1                   fixed by recognising ternary TESTS as presence checks --
+                     `isGuarded` contained the clause `consequent === consequent`,
+                     always true, which excluded exactly that case
+ 0                   fixed by deleting a clause of mine that RETURNED FALSE early for
+                     any read inside JSX, aborting the upward walk
+```
+
+Final: **477 payloads across 16 visual types, 0 required-key violations, 0 group
+violations.** A clean baseline is what makes the gate provable (Scaling Mandate 5).
+
+### Proven, and an orphaned caller found the honest way
+
+```
+$ PYTHONPATH=. .venv/bin/python tests/mutation_harness.py --only frontend_contract_key_unserved
+  PASS  frontend_contract_key_unserved  §9 (payload carries every key the component reads)
+```
+
+The plant adds a bare `params.planted_contract_key` read to `GridAreaInteractive`. Under
+the old hand-written map it would have been invisible until someone updated the list; the
+derived contract reaches it immediately.
+
+Deleting `REQUIRED_KEYS` also broke `validate_render`, which imported it — caught by
+running §9, not by grepping first. Repointed to the derived contract; §9 now inherits a
+contract that cannot go stale, and its docstring records that it checks unconditional keys
+only, so it is the weaker of the pair.
+
+### Named limits
+
+1. **Conditional keys are reported, not enforced.** Enforcing them means evaluating the
+   guard against the payload — a second model of the component, free to drift, which is
+   the thing this replaced.
+2. **§9 cannot express a required GROUP** in its flat key list, so it checks unconditional
+   keys only while the auditor checks both.
+3. **A stale saved `CompetencyConfiguration`** still drives the auditor's sweep: it offered
+   `emoji_pictorial` on `mat_g1_na_q4_6`, producing 40 `pipeline_error` findings for a
+   formatter that node does not support. Pre-existing, unrelated to this work, unfixed.
+
+### Evidence
+
+```
+$ run_all --phase 1                     EXIT 0
+$ validate_render                       PASS render_contract_floor_9: 0 broken renders (floor 0)
+$ pytest tests/unit -q                  423 passed, 1 skipped
+$ validate_census                       mutations=72 (floor 72)
+$ run_all --phase 2  contract checks    contract_doc / operator_doc / two_direction: PASS
+```

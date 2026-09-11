@@ -312,6 +312,12 @@ _STALE_GRAPH_NODE = "mat_g1_na_q3_6"
 # marker names one node and the baseline guard can discriminate.
 _IGNORE_LOCK_NODE = "mat_g1_na_q1_2"
 
+# The visual type whose React component the frontend-contract plant adds a read to.
+# GridArea renders on real student-path seeds across several nodes, so a newly required
+# key is actually reached by §9's sampling rather than sitting in an unrendered branch.
+_FRONTEND_PLANT_TYPE = "GridArea"
+_FRONTEND_PLANT_KEY = "planted_contract_key"
+
 # The three §6F fixtures below are PINNED to named nodes, not scanned for, and each
 # raises loudly if its node stops satisfying the precondition. §6F's queue is red (220
 # findings), so a scanned plant would land on a record that is already reported and the
@@ -2024,6 +2030,33 @@ MUTATIONS: List[Mutation] = [
         expected_check="§6B (requires_ignore is human-authored ground truth)",
         expect_output_contains=[f"{_IGNORE_LOCK_NODE} && does not match"],
         baseline_must_not_contain=[f"{_IGNORE_LOCK_NODE} && does not match"],
+    ),
+    Mutation(
+        name="frontend_contract_key_unserved",
+        asserts=["render_contract_floor_9"],
+        description=(
+            "Make a React component read a params key no payload supplies. Until "
+            "2026-09-11 the contract §9 checks against was a HAND-WRITTEN key map in "
+            "tests/frontend_contract_auditor.py, so a component that started reading a "
+            "new key was covered only if someone remembered to add it there -- and "
+            "measured that day it had drifted 35 keys away from the components it "
+            "claimed to mirror. The map is now derived from the component AST, so this "
+            "plant is reached the moment it is written, with no list to update."
+        ),
+        edits={
+            "frontend/src/components/VisualSkeletons.jsx": (
+                "export function GridAreaInteractive({ params, onAnswer, disabled }) {\n"
+                "  const { grid_size, correct_count, width, height, shape_type, cols, rows } = params || {};",
+                "export function GridAreaInteractive({ params, onAnswer, disabled }) {\n"
+                "  const { grid_size, correct_count, width, height, shape_type, cols, rows } = params || {};\n"
+                f"  const plantedContractKey = params.{_FRONTEND_PLANT_KEY};  // planted mutation\n"
+                "  void plantedContractKey;",
+            ),
+        },
+        command=["backend.app.practice_gen.validation.validate_render"],
+        expected_check="§9 (the payload carries every key the component reads)",
+        expect_output_contains=[_FRONTEND_PLANT_KEY],
+        baseline_must_not_contain=[_FRONTEND_PLANT_KEY],
     ),
     Mutation(
         name="clause_not_in_competency",
