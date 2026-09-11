@@ -1,34 +1,8 @@
 {
   "node_id": "mat_g2_mg_q2_1",
-  "reviewed_by": "Gemini Pro blind reviewer, batch G2-MG-Q2-Harden v2 (mat_g2_mg_q2_1), 2026-08-18",
+  "reviewed_by": "reviewer-b3-cinder-halyard-2276",
+  "review_date": "2026-09-10",
   "blind": true,
-  "overall": "PASS",
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The items successfully require students to identify and use appropriate units for both objects and distances. For example, they evaluate objects as in \"Which unit would you use to measure the length of a spoon: centimeters (cm) or meters (m)?\" and distances as in \"The distance between the gate and the library is about 50 ___. Which unit makes the measurement reasonable: cm or m?\""
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The generator successfully covers all parts of the competency: measuring \"the length of an object\" (\"Would you measure the length of a book in centimeters (cm) or meters (m)?\") and measuring \"the distance between two locations\" (\"Which unit is best to measure the distance between the bench and the playground: centimeters (cm) or meters (m)?\"). Both target units (m and cm) are well-represented as correct answers."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The vocabulary and scenarios are highly appropriate for Grade 2 students. Real-world contexts are familiar and easy to visualize, such as \"length of a shoe\", \"pencil case\", \"basketball court\", and the \"distance between your house and the church\"."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The samples demonstrate a good variety of problem formats. Some directly ask to identify the unit for a concept (\"What is the appropriate unit to measure the length of a shoe: cm or m?\"), while others provide a magnitude and ask the student to infer the unit that makes sense (\"A spoon has a length of about 16 ___. Which unit is correct: cm or m?\")."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "The questions strictly adhere to the competency's constraint of \"(m or cm)\". No out-of-scope units like millimeters or kilometers are introduced, and no numerical conversions between metric units are required. The focus remains entirely on identifying the appropriate unit as seen in \"An eraser has a length of about 5 ___. Which unit is correct: cm or m?\"."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "The scale and numerical values used alongside the units are realistic and factually correct for the given items. For example, it correctly associates a smaller magnitude with cm for small objects (\"An eraser has a length of about 5\") and realistic larger magnitudes for locations measured in m (\"The distance between your house and the church is about 150\")."
-    }
-  },
   "sample_seeds": [
     42,
     43,
@@ -58,18 +32,18 @@
         },
         {
           "key": "B",
-          "value": "neither works",
+          "value": "either works",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "cm",
-          "is_correct": true
+          "value": "neither works",
+          "is_correct": false
         },
         {
           "key": "D",
-          "value": "either works",
-          "is_correct": false
+          "value": "cm",
+          "is_correct": true
         }
       ]
     },
@@ -86,7 +60,7 @@
         },
         {
           "key": "B",
-          "value": "either works",
+          "value": "m",
           "is_correct": false
         },
         {
@@ -96,7 +70,7 @@
         },
         {
           "key": "D",
-          "value": "m",
+          "value": "either works",
           "is_correct": false
         }
       ]
@@ -109,8 +83,8 @@
       "options": [
         {
           "key": "A",
-          "value": "either works",
-          "is_correct": false
+          "value": "m",
+          "is_correct": true
         },
         {
           "key": "B",
@@ -124,8 +98,8 @@
         },
         {
           "key": "D",
-          "value": "m",
-          "is_correct": true
+          "value": "either works",
+          "is_correct": false
         }
       ]
     },
@@ -137,22 +111,22 @@
       "options": [
         {
           "key": "A",
-          "value": "neither works",
-          "is_correct": false
-        },
-        {
-          "key": "B",
           "value": "m",
           "is_correct": false
         },
         {
-          "key": "C",
+          "key": "B",
           "value": "cm",
           "is_correct": true
         },
         {
-          "key": "D",
+          "key": "C",
           "value": "either works",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "neither works",
           "is_correct": false
         }
       ]
@@ -175,12 +149,12 @@
         },
         {
           "key": "C",
-          "value": "either works",
+          "value": "m",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "m",
+          "value": "either works",
           "is_correct": false
         }
       ]
@@ -193,26 +167,26 @@
       "options": [
         {
           "key": "A",
-          "value": "cm",
-          "text": "cm",
-          "is_correct": false
-        },
-        {
-          "key": "B",
           "value": "m",
           "text": "m",
           "is_correct": true
         },
         {
-          "key": "C",
+          "key": "B",
           "value": "neither works",
           "text": "neither works",
           "is_correct": false
         },
         {
-          "key": "D",
+          "key": "C",
           "value": "either works",
           "text": "either works",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "cm",
+          "text": "cm",
           "is_correct": false
         }
       ]
@@ -231,20 +205,20 @@
         },
         {
           "key": "B",
+          "value": "neither works",
+          "text": "neither works",
+          "is_correct": false
+        },
+        {
+          "key": "C",
           "value": "either works",
           "text": "either works",
           "is_correct": false
         },
         {
-          "key": "C",
+          "key": "D",
           "value": "cm",
           "text": "cm",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "neither works",
-          "text": "neither works",
           "is_correct": false
         }
       ]
@@ -257,22 +231,22 @@
       "options": [
         {
           "key": "A",
-          "value": "m",
-          "is_correct": true
-        },
-        {
-          "key": "B",
           "value": "neither works",
           "is_correct": false
         },
         {
-          "key": "C",
-          "value": "either works",
+          "key": "B",
+          "value": "cm",
           "is_correct": false
         },
         {
+          "key": "C",
+          "value": "m",
+          "is_correct": true
+        },
+        {
           "key": "D",
-          "value": "cm",
+          "value": "either works",
           "is_correct": false
         }
       ]
@@ -285,13 +259,13 @@
       "options": [
         {
           "key": "A",
-          "value": "m",
-          "is_correct": false
+          "value": "cm",
+          "is_correct": true
         },
         {
           "key": "B",
-          "value": "cm",
-          "is_correct": true
+          "value": "m",
+          "is_correct": false
         },
         {
           "key": "C",
@@ -341,14 +315,14 @@
       "options": [
         {
           "key": "A",
-          "value": "either works",
-          "text": "either works",
+          "value": "cm",
+          "text": "cm",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "cm",
-          "text": "cm",
+          "value": "either works",
+          "text": "either works",
           "is_correct": false
         },
         {
@@ -378,12 +352,12 @@
         },
         {
           "key": "B",
-          "value": "neither works",
+          "value": "cm",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "cm",
+          "value": "neither works",
           "is_correct": false
         },
         {
@@ -401,17 +375,17 @@
       "options": [
         {
           "key": "A",
-          "value": "neither works",
-          "is_correct": false
-        },
-        {
-          "key": "B",
           "value": "m",
           "is_correct": true
         },
         {
-          "key": "C",
+          "key": "B",
           "value": "cm",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "neither works",
           "is_correct": false
         },
         {
@@ -421,5 +395,32 @@
         }
       ]
     }
-  ]
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "CONCERN",
+      "rationale": "Identifying the right unit is handled thoroughly, but the competency pairs identify with use, and nothing in these thirteen seeds asks the learner to apply the chosen unit to an actual measurement. Every item terminates at the naming decision, so the second verb in the competency statement is never discharged."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "Both objects of the competency are present and both unit answers occur. Short objects such as an eraser and a pencil case take centimetres, the gate-to-library and house-to-church spans take metres, and the basketball court item supplies the important case of a single object long enough to be measured in metres."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Each stem is one sentence with an explicit two-way choice spelled out inside it, which is exactly the support a second grader needs. The benchmark magnitudes given, about 5 for an eraser or about 28 for a court, are the kind of everyday figures a Grade 2 learner can sanity-check."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "Three interchangeable phrasings rotate across the seeds but they resolve to one task shape, and the two fillers either works and neither works are never the key in any sample. A learner can safely discard half of every option set on sight, which drains the discrimination out of the format."
+    },
+    "competency_alignment": {
+      "verdict": "CONCERN",
+      "rationale": "The only thing that genuinely varies between seeds is which object or pair of locations gets named. Difficulty does not build toward anything: an eraser item and a house-to-church item make identical demands, so the progression is lexical substitution rather than a ramp in measurement judgment."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "The benchmark numbers attached to each object are realistic and stay small, from about 5 up to about 150 for the longest distance. These are plausibility cues rather than computation targets, and each one supports the unit it is paired with."
+    }
+  },
+  "overall": "CONCERN"
 }

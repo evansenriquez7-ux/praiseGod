@@ -1,34 +1,8 @@
 {
   "node_id": "mat_g1_mg_q4_4",
-  "reviewed_by": "Gemini Pro blind reviewer, batch G1-MG-Q4-Harden v2 (mat_g1_mg_q4_1, mat_g1_mg_q4_3, mat_g1_mg_q4_4), 2026-08-18",
+  "reviewed_by": "reviewer-b1-quartz-mallow-4412",
+  "review_date": "2026-09-10",
   "blind": true,
-  "overall": "PASS",
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The generated questions successfully fulfill the competency by asking students to solve problems involving various time units specified: hour (\"lasts for 1 hour\"), half hour (\"lasts half an hour (30 minutes)\"), quarter hour (\"lasts a quarter of an hour (15 minutes)\"), days in a week (\"What day of the week is May 21?\"), and months in a year (\"How many months later is the exhibit?\")."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "All required time concepts outlined in the competency are covered. The packet includes elapsed time in hours (\"How many hours did Sam spend?\"), elapsed time in minutes mapped to half hours (\"How many minutes did it last?\"), end times from start times (\"What time does it end?\"), reading days of the week (\"What day of the week is June 6?\"), and counting months (\"What month will it be in 2 months?\")."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The difficulty is well-calibrated for Grade 1 Quarter 4. Calculating the end time when adding 1 hour, 30 minutes, or 15 minutes is kept simple without complex hour-rollovers (e.g., \"starts at 9:00 and lasts a quarter of an hour (15 minutes)\"). Counting months is limited to small, easily manageable numbers (e.g., \"in 2 months\", \"How many months later\")."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The problem variants provide a good mix of question styles. There are forward-counting time additions (\"starts at 8:00 and lasts for 1 hour. What time does it end?\"), duration calculations (\"began at 11:00 and finished at 11:30. How many minutes did it last?\"), forward-counting months (\"This month is March. What month will it be in 2 months?\"), and calendar day retrieval (\"Look at the May 2025 calendar. What day of the week is May 21?\")."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "The terminology and concepts strictly align with the competency text. The scaffolding included in the prompt, such as \"half an hour (30 minutes)\" and \"quarter of an hour (15 minutes)\", bridges the gap between conversational fractional hours and minute calculations safely for Grade 1 without overstepping bounds."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "The parameters and number ranges scale logically. Time intervals revolve around neat, whole units, half units, or quarters starting from top-of-the-hour times (e.g., 9:00, 10:00, 8:00). Month additions range reasonably from 2 to 4 months, which allows students to use finger-counting or basic mental math without strain."
-    }
-  },
   "sample_seeds": [
     42,
     43,
@@ -52,26 +26,26 @@
       "seed": 42,
       "formatter": "read_mcq",
       "question_text": "A short break starts at 9:00 and lasts a quarter of an hour (15 minutes). What time does it end?",
-      "correct_answer": "C",
+      "correct_answer": "A",
       "options": [
         {
           "key": "A",
-          "value": "9:00",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "9:45",
-          "is_correct": false
-        },
-        {
-          "key": "C",
           "value": "9:15",
           "is_correct": true
         },
         {
-          "key": "D",
+          "key": "B",
+          "value": "9:00",
+          "is_correct": false
+        },
+        {
+          "key": "C",
           "value": "9:30",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "9:45",
           "is_correct": false
         }
       ]
@@ -80,12 +54,12 @@
       "seed": 43,
       "formatter": "read_mcq",
       "question_text": "Lunch starts at 10:00 and lasts half an hour (30 minutes). What time does it end?",
-      "correct_answer": "A",
+      "correct_answer": "C",
       "options": [
         {
           "key": "A",
-          "value": "10:30",
-          "is_correct": true
+          "value": "10:00",
+          "is_correct": false
         },
         {
           "key": "B",
@@ -94,12 +68,12 @@
         },
         {
           "key": "C",
-          "value": "11:30",
-          "is_correct": false
+          "value": "10:30",
+          "is_correct": true
         },
         {
           "key": "D",
-          "value": "10:00",
+          "value": "11:30",
           "is_correct": false
         }
       ]
@@ -112,23 +86,23 @@
       "options": [
         {
           "key": "A",
-          "value": "February",
-          "is_correct": false
-        },
-        {
-          "key": "B",
           "value": "January",
           "is_correct": false
         },
         {
+          "key": "B",
+          "value": "May",
+          "is_correct": true
+        },
+        {
           "key": "C",
-          "value": "March",
+          "value": "February",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "May",
-          "is_correct": true
+          "value": "March",
+          "is_correct": false
         }
       ]
     },
@@ -140,22 +114,22 @@
       "options": [
         {
           "key": "A",
-          "value": 4,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 3,
-          "is_correct": false
-        },
-        {
-          "key": "C",
           "value": 2,
           "is_correct": true
         },
         {
-          "key": "D",
+          "key": "B",
           "value": 1,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 4,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 3,
           "is_correct": false
         }
       ]
@@ -178,12 +152,12 @@
         },
         {
           "key": "C",
-          "value": "10:00",
+          "value": "8:00",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "8:00",
+          "value": "10:00",
           "is_correct": false
         }
       ]
@@ -196,21 +170,21 @@
       "options": [
         {
           "key": "A",
+          "value": 6,
+          "text": "6",
+          "is_correct": false
+        },
+        {
+          "key": "B",
           "value": 5,
           "text": "5",
           "is_correct": false
         },
         {
-          "key": "B",
+          "key": "C",
           "value": 4,
           "text": "4",
           "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 6,
-          "text": "6",
-          "is_correct": false
         },
         {
           "key": "D",
@@ -262,26 +236,26 @@
       "seed": 501,
       "formatter": "read_mcq",
       "question_text": "Look at the May 2025 calendar. What day of the week is May 21?",
-      "correct_answer": "A",
+      "correct_answer": "B",
       "options": [
         {
           "key": "A",
+          "value": "Monday",
+          "is_correct": false
+        },
+        {
+          "key": "B",
           "value": "Wednesday",
           "is_correct": true
         },
         {
-          "key": "B",
+          "key": "C",
           "value": "Friday",
           "is_correct": false
         },
         {
-          "key": "C",
-          "value": "Sunday",
-          "is_correct": false
-        },
-        {
           "key": "D",
-          "value": "Monday",
+          "value": "Sunday",
           "is_correct": false
         }
       ]
@@ -290,7 +264,7 @@
       "seed": 502,
       "formatter": "read_mcq",
       "question_text": "Look at the June 2025 calendar. What day of the week is June 6?",
-      "correct_answer": "B",
+      "correct_answer": "D",
       "options": [
         {
           "key": "A",
@@ -299,8 +273,8 @@
         },
         {
           "key": "B",
-          "value": "Friday",
-          "is_correct": true
+          "value": "Sunday",
+          "is_correct": false
         },
         {
           "key": "C",
@@ -309,8 +283,8 @@
         },
         {
           "key": "D",
-          "value": "Sunday",
-          "is_correct": false
+          "value": "Friday",
+          "is_correct": true
         }
       ]
     },
@@ -322,12 +296,12 @@
       "options": [
         {
           "key": "A",
-          "value": 5,
+          "value": 3,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 3,
+          "value": 5,
           "is_correct": false
         },
         {
@@ -356,22 +330,22 @@
       "options": [
         {
           "key": "A",
-          "value": 3,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 5,
-          "is_correct": false
-        },
-        {
-          "key": "C",
           "value": 4,
           "is_correct": false
         },
         {
-          "key": "D",
+          "key": "B",
           "value": 2,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 3,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 5,
           "is_correct": false
         }
       ]
@@ -386,12 +360,12 @@
       "seed": 604,
       "formatter": "read_mcq",
       "question_text": "Sam started to play games at 9:00 and finished at 12:00. How many hours did Sam spend?",
-      "correct_answer": "A",
+      "correct_answer": "D",
       "options": [
         {
           "key": "A",
-          "value": 3,
-          "is_correct": true
+          "value": 5,
+          "is_correct": false
         },
         {
           "key": "B",
@@ -405,8 +379,8 @@
         },
         {
           "key": "D",
-          "value": 5,
-          "is_correct": false
+          "value": 3,
+          "is_correct": true
         }
       ]
     },
@@ -416,5 +390,32 @@
       "question_text": "Mia started to play games at 7:00 and finished at 8:00. How many hours did Mia spend?",
       "correct_answer": "1"
     }
-  ]
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "CONCERN",
+      "rationale": "Most renders are genuine time problems, but two are plain calendar lookups - asking 'What day of the week is May 21?' - which is retrieval, not solving, and duplicates what the calendar-reading node already supplies."
+    },
+    "comprehensive_coverage": {
+      "verdict": "FAIL",
+      "rationale": "The competency lists days in a week among its five elements, and not one of the sixteen renders computes with them. The two items mentioning weekdays are calendar lookups; nothing moves forward or back a number of days or uses the seven-day cycle. Hour, half hour, quarter hour and months are served; that element is absent outright."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Elapsed times start on the hour and run a whole, half or quarter hour, and month gaps are two to four, so each item stays at one step with no borrowing across units."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "Formats differ in substance: choosing an end time, typing how many minutes something lasted, counting hours spent, and working out a month interval, across both choice and typed-answer modes."
+    },
+    "competency_alignment": {
+      "verdict": "CONCERN",
+      "rationale": "Six of the sixteen renders ask 'How many months later is the exhibit?' with only the month pair changed, so a large share of the seed variation buys a repeat of one template rather than a new demand within the competency's five elements."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Clock times stay on hour and half-hour boundaries and month gaps never exceed four, both within what Grade 1 Quarter 4 can reason about."
+    }
+  },
+  "overall": "FAIL"
 }

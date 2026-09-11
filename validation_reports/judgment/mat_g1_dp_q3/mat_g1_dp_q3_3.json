@@ -1,35 +1,8 @@
 {
   "node_id": "mat_g1_dp_q3_3",
-  "reviewed_by": "Gemini Pro blind reviewer, batch Re-Harden (mat_g1_dp_q3_3), 2026-08-18",
-  "review_date": "2026-08-18",
+  "reviewed_by": "reviewer-b1-quartz-mallow-4412",
+  "review_date": "2026-09-10",
   "blind": true,
-  "overall": "PASS",
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "All generated items directly require students to count items in an unscaled pictograph and record the resulting counts into a table, perfectly fulfilling the competency 'Organize data in a pictograph without a scale into a table.' For example, seed 42 asks 'The pictograph shows cats, dogs, birds and fish. Fill in the table with the correct counts.' and seed 44 asks 'Count the pictures in each row of the pictograph, then write the counts for roses, sunflowers, tulips and daisies in the table.', which explicitly guides the student through reading pictograph rows and organizing the data into table counts."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The sample set covers a broad range of familiar, developmentally appropriate thematic domains including animals ('cats, dogs, birds and fish' in seed 42), fruits ('apples, bananas, mangoes and grapes' in seed 43), flowers ('roses, sunflowers, tulips and daisies' in seed 44), days of the week ('Monday, Tuesday, Wednesday and Thursday' in seed 45 and seed 501), grade levels ('Grade 1, Grade 2, Grade 3 and Grade 4' in seed 500), sports ('basketball, volleyball, swimming and running' in seed 502), and school subjects ('Math, Science, English and Art' in seed 601). Count distributions across categories provide rich, balanced coverage without exceeding Grade 1 counting limits."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The difficulty and structural complexity are tailored precisely for Grade 1 Quarter 3 learners. All quantities per category are small single-digit integers between 1 and 5 (e.g. [1, 3, 2, 2] in seed 42, [3, 2, 4, 3] in seed 43, and [5, 5, 1, 1] in seed 601), avoiding cognitive overload while reinforcing one-to-one correspondence counting. The prompts are clear, concise, and easy to parse, such as 'Look at the pictograph. Write the correct count for each row in the table: apples, bananas, mangoes and grapes.'"
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The samples exhibit diverse natural phrasing variations ('The pictograph shows cats, dogs, birds and fish. Fill in the table with the correct counts.', 'Look at the pictograph. Write the correct count for each row in the table: apples, bananas, mangoes and grapes.', 'Count the pictures in each row of the pictograph, then write the counts for roses, sunflowers, tulips and daisies in the table.') alongside diverse 4-category contexts. This ensures learners encounter varying prompt structures while maintaining structural consistency."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "The assessment items remain strictly within the boundaries of MATATAG learning competency mat_g1_dp_q3_3. There are no out-of-scope concepts such as scaled keys (e.g. 1 icon = 2 or 5 items), comparison arithmetic questions, or multi-step analysis, ensuring exact alignment with data organization from an unscaled pictograph to a table. For instance, seed 601 ('Count the pictures in each row of the pictograph, then write the counts for Math, Science, English and Art in the table.') directly tests the targeted skill."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "All samples represent unscaled data with an exact 1:1 relationship between pictures and counts. The answer vectors (e.g. [5, 5, 4, 3] in seed 500 and [2, 3, 2, 4] in seed 502) contain direct countable item frequencies within the Grade 1 number range (<= 5 items per category), adhering strictly to the 'without a scale' constraint."
-    }
-  },
   "sample_seeds": [
     42,
     43,
@@ -141,5 +114,32 @@
         1
       ]
     }
-  ]
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The direction of transfer is correct throughout: pupils read rows of pictures and write the matching count into a table, which is organizing a scaleless pictograph into tabular form."
+    },
+    "comprehensive_coverage": {
+      "verdict": "CONCERN",
+      "rationale": "Every sample is a four-row table with counts between one and five, and the category sets recycle the same handful of themes, so the organizing skill is only ever probed at a single table shape and a single row count."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Counting a short row of pictures and writing a numeral is well matched to Quarter 3; no vocabulary beyond pictograph, table and row is required of the pupil."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "Three stem wordings circulate - one says to 'fill in the table', another says to 'count the pictures in each row' first - yet they describe an identical action. The variety is cosmetic rather than structural."
+    },
+    "competency_alignment": {
+      "verdict": "CONCERN",
+      "rationale": "The answer keys here are the same count lists the presentation node produces from the same seeds, so what actually differs between seeds is the category label, not any growing demand on tabulating."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Row counts of one through five stay within reliable picture-counting for a first grader and suit a graph with no scale."
+    }
+  },
+  "overall": "CONCERN"
 }

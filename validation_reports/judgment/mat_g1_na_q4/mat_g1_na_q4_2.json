@@ -1,34 +1,8 @@
 {
   "node_id": "mat_g1_na_q4_2",
-  "reviewed_by": "Gemini Pro blind reviewer, batch G1-NA-Q4-Harden (mat_g1_na_q4_1..2), 2026-08-18",
+  "reviewed_by": "reviewer-b2-tallow-verdigris-8130",
+  "review_date": "2026-09-10",
   "blind": true,
-  "overall": "PASS",
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The samples directly fulfill the competency \"Count halves and quarters.\" by having students complete counting sequences for both halves (e.g., \"What comes next when counting by halves: 1/2, ___?\") and quarters (e.g., \"What fraction is missing when counting by quarters: 1/4, ___, 3/4, 4/4?\")."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The packet thoroughly covers both required fractions. It includes counting halves (\"Count by halves: 1/2, ___. What fraction comes next?\") and counting quarters (\"Count by quarters: 2/4, 3/4, ___. What fraction comes next?\"). It also tests finding missing terms at the end of a sequence (\"What is the next fraction in the pattern: 1/4, 2/4, 3/4, ___?\") and in the middle (\"What fraction is missing when counting by quarters: 1/4, ___, 3/4, 4/4?\")."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The questions are highly appropriate for a Grade 1, Quarter 4 learner. Students are asked to identify missing items in simple, explicitly stated counting sequences (\"What is the next fraction in the pattern: 1/4, 2/4, 3/4, ___?\"). The distractors are plausible numbers in sequence (e.g., \"5/4\" or \"2/4\") but do not require complex cognitive leaps or arithmetic calculations."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The samples demonstrate excellent structural variety. Questions use diverse phrasings such as \"What comes next when counting by halves: 1/2, ___?\", \"What fraction is missing when counting by quarters: 1/4, 2/4, ___, 4/4?\", and \"What is the next fraction in the pattern: 1/2, ___?\". Additionally, the packet uses both 'mcq' and 'cloze' formatters to present the options."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "There is strict alignment with the curriculum. Every question focuses purely on counting halves and quarters without introducing unstated fractions (like thirds or eighths). The language \"Count by halves\" and \"Count by quarters\" directly mirrors the intended mechanics of the learning competency."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "The numerical scale is perfectly constrained for Grade 1. All correct answers represent simple fractions that complete the sequences up to one whole (e.g., \"2/2\", \"3/4\", \"4/4\"). This ensures students are accurately tested on foundational fractions without exceeding expected bounds."
-    }
-  },
   "sample_seeds": [
     42,
     43,
@@ -51,23 +25,23 @@
       "options": [
         {
           "key": "A",
-          "value": "1/2",
-          "is_correct": false
-        },
-        {
-          "key": "B",
           "value": "2/4",
           "is_correct": false
         },
         {
+          "key": "B",
+          "value": "1/2",
+          "is_correct": false
+        },
+        {
           "key": "C",
-          "value": "2/2",
-          "is_correct": true
+          "value": "3/2",
+          "is_correct": false
         },
         {
           "key": "D",
-          "value": "3/2",
-          "is_correct": false
+          "value": "2/2",
+          "is_correct": true
         }
       ]
     },
@@ -79,13 +53,13 @@
       "options": [
         {
           "key": "A",
-          "value": "2/2",
-          "is_correct": true
+          "value": "1/2",
+          "is_correct": false
         },
         {
           "key": "B",
-          "value": "3/2",
-          "is_correct": false
+          "value": "2/2",
+          "is_correct": true
         },
         {
           "key": "C",
@@ -94,7 +68,7 @@
         },
         {
           "key": "D",
-          "value": "1/2",
+          "value": "3/2",
           "is_correct": false
         }
       ]
@@ -112,8 +86,8 @@
         },
         {
           "key": "B",
-          "value": "1/4",
-          "is_correct": false
+          "value": "2/4",
+          "is_correct": true
         },
         {
           "key": "C",
@@ -122,8 +96,8 @@
         },
         {
           "key": "D",
-          "value": "2/4",
-          "is_correct": true
+          "value": "1/4",
+          "is_correct": false
         }
       ]
     },
@@ -135,23 +109,23 @@
       "options": [
         {
           "key": "A",
-          "value": "4/2",
-          "is_correct": false
-        },
-        {
-          "key": "B",
           "value": "3/4",
           "is_correct": false
         },
         {
+          "key": "B",
+          "value": "5/4",
+          "is_correct": false
+        },
+        {
           "key": "C",
-          "value": "4/4",
-          "is_correct": true
+          "value": "4/2",
+          "is_correct": false
         },
         {
           "key": "D",
-          "value": "5/4",
-          "is_correct": false
+          "value": "4/4",
+          "is_correct": true
         }
       ]
     },
@@ -163,7 +137,7 @@
       "options": [
         {
           "key": "A",
-          "value": "2/4",
+          "value": "3/2",
           "is_correct": false
         },
         {
@@ -173,12 +147,12 @@
         },
         {
           "key": "C",
-          "value": "3/2",
+          "value": "1/2",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "1/2",
+          "value": "2/4",
           "is_correct": false
         }
       ]
@@ -191,27 +165,27 @@
       "options": [
         {
           "key": "A",
-          "value": "3/4",
-          "text": "3/4",
+          "value": "5/4",
+          "text": "5/4",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "4/4",
-          "text": "4/4",
-          "is_correct": true
-        },
-        {
-          "key": "C",
           "value": "4/2",
           "text": "4/2",
           "is_correct": false
         },
         {
-          "key": "D",
-          "value": "5/4",
-          "text": "5/4",
+          "key": "C",
+          "value": "3/4",
+          "text": "3/4",
           "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "4/4",
+          "text": "4/4",
+          "is_correct": true
         }
       ]
     },
@@ -255,22 +229,22 @@
       "options": [
         {
           "key": "A",
-          "value": "3/4",
-          "is_correct": true
-        },
-        {
-          "key": "B",
           "value": "4/4",
           "is_correct": false
         },
         {
-          "key": "C",
-          "value": "2/4",
+          "key": "B",
+          "value": "1/4",
           "is_correct": false
         },
         {
+          "key": "C",
+          "value": "3/4",
+          "is_correct": true
+        },
+        {
           "key": "D",
-          "value": "1/4",
+          "value": "2/4",
           "is_correct": false
         }
       ]
@@ -283,17 +257,17 @@
       "options": [
         {
           "key": "A",
-          "value": "3/4",
-          "is_correct": false
-        },
-        {
-          "key": "B",
           "value": "4/4",
           "is_correct": true
         },
         {
-          "key": "C",
+          "key": "B",
           "value": "4/2",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "3/4",
           "is_correct": false
         },
         {
@@ -311,9 +285,9 @@
       "options": [
         {
           "key": "A",
-          "value": "3/2",
-          "text": "3/2",
-          "is_correct": false
+          "value": "2/2",
+          "text": "2/2",
+          "is_correct": true
         },
         {
           "key": "B",
@@ -323,15 +297,15 @@
         },
         {
           "key": "C",
-          "value": "2/4",
-          "text": "2/4",
+          "value": "3/2",
+          "text": "3/2",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "2/2",
-          "text": "2/2",
-          "is_correct": true
+          "value": "2/4",
+          "text": "2/4",
+          "is_correct": false
         }
       ]
     },
@@ -343,17 +317,17 @@
       "options": [
         {
           "key": "A",
+          "value": "3/4",
+          "is_correct": false
+        },
+        {
+          "key": "B",
           "value": "4/4",
           "is_correct": true
         },
         {
-          "key": "B",
-          "value": "4/2",
-          "is_correct": false
-        },
-        {
           "key": "C",
-          "value": "3/4",
+          "value": "4/2",
           "is_correct": false
         },
         {
@@ -363,5 +337,32 @@
         }
       ]
     }
-  ]
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "Sequences of fractional counts are continued or completed, which matches counting halves and quarters, and the quarter sequences correctly progress 1/4, 2/4, 3/4, 4/4 without reducing any term."
+    },
+    "comprehensive_coverage": {
+      "verdict": "FAIL",
+      "rationale": "The halves strand is effectively one item. Five separate seeds show the same fragment beginning at 1/2 with one blank after it, all keyed to 2/2; no half-count ever starts from a different term, contains an interior blank, or continues past one whole. Half of what this competency names is therefore represented by a single problem duplicated under different shells."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Counts are short, never exceed one whole, and the notation stays in the unreduced quarters form that supports counting rather than demanding equivalence reasoning."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "Only forward counting appears, and the blank sits either at the end or in one interior position; there is no backward count and no model or picture accompanying any of the fraction sequences."
+    },
+    "competency_alignment": {
+      "verdict": "CONCERN",
+      "rationale": "Seeds 500, 501 and 602 land on quarter sequences already produced by the low seeds, so the harder tier is not extending the count, and the offered 3/2 and 5/4 options point past a whole in a node whose keys never go there."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "All keys are at or below one whole (4/4 and 2/2 being the maxima), which is the right ceiling for first counting of halves and quarters."
+    }
+  },
+  "overall": "FAIL"
 }

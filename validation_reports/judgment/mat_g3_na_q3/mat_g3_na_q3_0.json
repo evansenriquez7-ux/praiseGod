@@ -1,45 +1,17 @@
 {
   "node_id": "mat_g3_na_q3_0",
-  "reviewed_by": "Gemini Pro blind reviewer, batch G3-NA-Q3-Harden (mat_g3_na_q3_0), 2026-08-18",
-  "review_date": "2026-08-18",
+  "reviewed_by": "reviewer-b6-thistle-kestrel-9724",
+  "review_date": "2026-09-10",
   "blind": true,
-  "overall": "PASS",
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The items directly fulfill the competency requirement of multiplying numbers using the 6, 7, 8, and 9 multiplication tables. Multiple items assess direct computation and fact recall across all target tables, including \"What is 5 \u00d7 6?\" for 6s, \"4 \u00d7 7 = ___\" for 7s, \"4 \u00d7 8 = ___\" for 8s, and \"8 \u00d7 9 = 72. True or False?\" for 8s and 9s."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The sample set comprehensively covers all four specified multiplication tables (6, 7, 8, and 9) across diverse representations and factor combinations. For table 6, items include \"What is 3 \u00d7 6?\", \"What is 4 \u00d7 6?\", and \"7 \u00d7 6 = ___\". For table 7, items include \"What is 4 \u00d7 7?\", \"2 \u00d7 7 = 14. True or False?\", and \"Ana solved: \"3 \u00d7 7 = ___\". Ana says the missing number is 14. Is Ana correct?\". For table 8, items include \"What is 3 \u00d7 8?\" and \"Shade all the squares inside the 9\u00d78 rectangle. How many squares did you shade in all?\". For table 9, items include \"Look at the 2\u00d79 array. How many squares are shaded in all?\" and \"What is 4 \u00d7 9?\"."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The cognitive demand, sentence complexity, and vocabulary are well-calibrated for Grade 3 Quarter 3 students. Word problems and prompts such as \"Pia puts 7 water bowls in each of 2 bags. How many water bowls are in all the bags?\" and \"Shade all the squares inside the 4\u00d76 rectangle. How many squares did you shade in all?\" utilize clear, accessible phrasing without unnecessary working memory overhead."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The sample demonstrates excellent variant diversity, including standard multiple choice (\"What is 5 \u00d7 6?\"), fill-in-the-blank equations (\"7 \u00d7 6 = ___\"), visual array interpretation (\"Look at the 7\u00d76 array. How many squares are shaded in all?\"), interactive grid shading (\"Shade all the squares inside the 4\u00d76 rectangle. How many squares did you shade in all?\"), true/false validation (\"8 \u00d7 9 = 72. True or False?\"), error analysis (Ana solved: \"3 \u00d7 7 = ___\". Ana says the missing number is 14. Is Ana correct?), and contextual word problems (\"Pia puts 7 water bowls in each of 2 bags. How many water bowls are in all the bags?\")."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "All items strictly adhere to single-digit multiplication within the 6, 7, 8, and 9 fact families. There is no scope creep into multi-digit multiplication algorithms, division, or higher-grade concepts. Items such as \"4 \u00d7 8 = ___\" and \"What is 4 \u00d7 9?\" align precisely with the MATATAG learning competency."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "The numerical values and multipliers (factors 2 through 9 with products from 14 up to 72) are fully appropriate for Grade 3 multiplication tables. Examples range from smaller products like \"2 \u00d7 7 = 14. True or False?\" (product 14) and \"What is 3 \u00d7 6?\" (product 18) up to upper-table products like \"8 \u00d7 9 = 72. True or False?\" (product 72) and \"Shade all the squares inside the 9\u00d78 rectangle. How many squares did you shade in all?\"."
-    }
-  },
   "sample_seeds": [
     42,
     43,
     44,
     45,
     46,
-    50,
-    51,
-    55,
-    85,
+    47,
+    52,
+    68,
     500,
     501,
     502,
@@ -47,113 +19,380 @@
     601,
     602,
     603,
+    604,
     605
   ],
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "mcq",
-      "question_text": "What is 5 \u00d7 6?",
-      "correct_answer": 30
+      "formatter": "error_detect",
+      "question_text": "Manny solved: \"1 × 6 = ___\". Manny says the missing number is 0. Is Manny correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 6
+      }
     },
     {
       "seed": 43,
-      "formatter": "mcq",
-      "question_text": "What is 3 \u00d7 6?",
-      "correct_answer": 18
+      "formatter": "set_fill_in_blank",
+      "question_text": "Shade all the squares inside the 4×6 rectangle. How many squares did you shade in all?",
+      "correct_answer": 24
     },
     {
       "seed": 44,
-      "formatter": "cloze",
-      "question_text": "4 \u00d7 8 = ___",
-      "correct_answer": 32
+      "formatter": "mcq",
+      "question_text": "What is 4 × 9?",
+      "correct_answer": 36,
+      "options": [
+        {
+          "key": "A",
+          "value": 35,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 13,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 27,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 36,
+          "is_correct": true
+        }
+      ]
     },
     {
       "seed": 45,
-      "formatter": "cloze",
-      "question_text": "4 \u00d7 7 = ___",
-      "correct_answer": 28
+      "formatter": "mcq",
+      "question_text": "What is 3 × 8?",
+      "correct_answer": 24,
+      "options": [
+        {
+          "key": "A",
+          "value": 23,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 16,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 11,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 24,
+          "is_correct": true
+        }
+      ]
     },
     {
       "seed": 46,
       "formatter": "mcq",
-      "question_text": "What is 4 \u00d7 6?",
-      "correct_answer": 24
+      "question_text": "What is 6 × 6?",
+      "correct_answer": 36,
+      "options": [
+        {
+          "key": "A",
+          "value": 0,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 36,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 12,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 30,
+          "is_correct": false
+        }
+      ]
     },
     {
-      "seed": 50,
+      "seed": 47,
+      "formatter": "cloze",
+      "question_text": "8 × 8 = ___",
+      "correct_answer": 64,
+      "options": [
+        {
+          "key": "A",
+          "value": 64,
+          "text": "64",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 56,
+          "text": "56",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 0,
+          "text": "0",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 16,
+          "text": "16",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 52,
       "formatter": "read_mcq",
-      "question_text": "Look at the 2\u00d79 array. How many squares are shaded in all?",
-      "correct_answer": "A"
+      "question_text": "Look at the 9×7 array. How many squares are shaded in all?",
+      "correct_answer": "B",
+      "options": [
+        {
+          "key": "A",
+          "value": 65,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 63,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 60,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 32,
+          "is_correct": false
+        }
+      ]
     },
     {
-      "seed": 51,
-      "formatter": "error_detect",
-      "question_text": "Ana solved: \"3 \u00d7 7 = ___\". Ana says the missing number is 14. Is Ana correct?",
-      "correct_answer": {
-        "has_error": true,
-        "correct_value": 21
-      }
-    },
-    {
-      "seed": 55,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Shade all the squares inside the 4\u00d76 rectangle. How many squares did you shade in all?",
-      "correct_answer": 24
-    },
-    {
-      "seed": 85,
+      "seed": 68,
       "formatter": "true_false",
-      "question_text": "2 \u00d7 7 = 14. True or False?",
+      "question_text": "2 × 8 = 16. True or False?",
       "correct_answer": true
     },
     {
       "seed": 500,
       "formatter": "set_fill_in_blank",
-      "question_text": "Shade all the squares inside the 9\u00d78 rectangle. How many squares did you shade in all?",
+      "question_text": "Shade all the squares inside the 9×8 rectangle. How many squares did you shade in all?",
       "correct_answer": 72
     },
     {
       "seed": 501,
       "formatter": "true_false",
-      "question_text": "8 \u00d7 9 = 72. True or False?",
+      "question_text": "8 × 9 = 72. True or False?",
       "correct_answer": true
     },
     {
       "seed": 502,
       "formatter": "mcq",
-      "question_text": "What is 4 \u00d7 9?",
-      "correct_answer": 36
+      "question_text": "What is 4 × 9?",
+      "correct_answer": 36,
+      "options": [
+        {
+          "key": "A",
+          "value": 13,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 27,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 35,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 36,
+          "is_correct": true
+        }
+      ]
     },
     {
       "seed": 600,
-      "formatter": "mcq",
-      "question_text": "What is 4 \u00d7 7?",
-      "correct_answer": 28
+      "formatter": "true_false",
+      "question_text": "6 × 7 = 42. True or False?",
+      "correct_answer": true
     },
     {
       "seed": 601,
-      "formatter": "cloze",
-      "question_text": "Pia puts 7 water bowls in each of 2 bags. How many water bowls are in all the bags?",
-      "correct_answer": 14
+      "formatter": "mcq",
+      "question_text": "Pia puts 7 water bowls in each of 6 bags. How many water bowls are in all the bags?",
+      "correct_answer": 42,
+      "options": [
+        {
+          "key": "A",
+          "value": 35,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 41,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 42,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 13,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 602,
-      "formatter": "mcq",
-      "question_text": "What is 3 \u00d7 8?",
-      "correct_answer": 24
+      "formatter": "cloze",
+      "question_text": "3 × 9 = ___",
+      "correct_answer": 27,
+      "options": [
+        {
+          "key": "A",
+          "value": 12,
+          "text": "12",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 27,
+          "text": "27",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 26,
+          "text": "26",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 18,
+          "text": "18",
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 603,
       "formatter": "cloze",
-      "question_text": "7 \u00d7 6 = ___",
-      "correct_answer": 42
+      "question_text": "4 × 7 = ___",
+      "correct_answer": 28,
+      "options": [
+        {
+          "key": "A",
+          "value": 27,
+          "text": "27",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 11,
+          "text": "11",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 28,
+          "text": "28",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 21,
+          "text": "21",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 604,
+      "formatter": "error_detect",
+      "question_text": "Carlo solved: \"6 × 6 = ___\". Carlo says the missing number is 36. Is Carlo correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 36
+      }
     },
     {
       "seed": 605,
-      "formatter": "read_mcq",
-      "question_text": "Look at the 7\u00d76 array. How many squares are shaded in all?",
-      "correct_answer": "C"
+      "formatter": "cloze",
+      "question_text": "5 × 7 = ___",
+      "correct_answer": 35,
+      "options": [
+        {
+          "key": "A",
+          "value": 28,
+          "text": "28",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 35,
+          "text": "35",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 12,
+          "text": "12",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 34,
+          "text": "34",
+          "is_correct": false
+        }
+      ]
     }
-  ]
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "Every product involves at least one factor drawn from the six through nine tables, which is the restriction the competency states, and the keys are the products themselves."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "All four named tables are represented: the six table through 6 x 7, the seven table through 4 x 7 and 5 x 7, the eight table through 8 x 8, and the nine table through 4 x 9 and 3 x 9. Both the small-multiplier and square facts appear."
+    },
+    "cognitive_capacity": {
+      "verdict": "CONCERN",
+      "rationale": "Several option sets include a bare 0 as a choice for a product of two positive factors, for instance against 36 and against 64. No pupil who has begun the tables would entertain it, so it wastes a quarter of the choice space. The other distractors are well judged by contrast, since 13 against 4 x 9 and 11 against 3 x 8 encode the genuine add-instead-of-multiply error."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The node offers plain equations, choice questions, a truth judgement, an error-checking item about Manny, a shaded rectangle task, an array reading task and a word problem about bowls in bags, which is a strong spread of representations for a table-fact node."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "Harder samples move to larger factors within the same tables and to the array representation, rather than drifting into two-digit multiplication that belongs to a later competency."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Factors remain single digit and products top out at 72, exactly the span a six-through-nine tables competency should occupy."
+    }
+  },
+  "overall": "CONCERN"
 }

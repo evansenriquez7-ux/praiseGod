@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g1_na_q2_3",
-  "reviewed_by": "Gemini Pro blind reviewer, batch G1 (na place_value hardening), 2026-08-16",
-  "review_date": "2026-08-16",
+  "reviewed_by": "reviewer-b2-tallow-verdigris-8130",
+  "review_date": "2026-09-10",
   "blind": true,
   "sample_seeds": [
     42,
@@ -25,23 +25,23 @@
       "options": [
         {
           "key": "A",
-          "value": "4 + 5",
+          "value": "50 + 4",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "10 + 5",
+          "value": "4 + 5",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "40 + 5",
-          "is_correct": true
+          "value": "10 + 5",
+          "is_correct": false
         },
         {
           "key": "D",
-          "value": "50 + 4",
-          "is_correct": false
+          "value": "40 + 5",
+          "is_correct": true
         }
       ]
     },
@@ -58,17 +58,17 @@
         },
         {
           "key": "B",
-          "value": "1",
-          "is_correct": false
-        },
-        {
-          "key": "C",
           "value": "30 + 8",
           "is_correct": false
         },
         {
-          "key": "D",
+          "key": "C",
           "value": "1 + 0",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "1",
           "is_correct": false
         }
       ]
@@ -93,15 +93,15 @@
         },
         {
           "key": "C",
-          "value": "30 + 7",
-          "text": "30 + 7",
-          "is_correct": false
-        },
-        {
-          "key": "D",
           "value": "20 + 0",
           "text": "20 + 0",
           "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "30 + 7",
+          "text": "30 + 7",
+          "is_correct": false
         }
       ]
     },
@@ -113,22 +113,22 @@
       "options": [
         {
           "key": "A",
-          "value": "80 + 5",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "1 + 5",
-          "is_correct": false
-        },
-        {
-          "key": "C",
           "value": "10 + 5",
           "is_correct": true
         },
         {
-          "key": "D",
+          "key": "B",
           "value": "50 + 1",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "80 + 5",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "1 + 5",
           "is_correct": false
         }
       ]
@@ -141,22 +141,22 @@
       "options": [
         {
           "key": "A",
-          "value": "10 + 4",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "10 + 0",
-          "is_correct": true
-        },
-        {
-          "key": "C",
           "value": "1",
           "is_correct": false
         },
         {
-          "key": "D",
+          "key": "B",
           "value": "1 + 0",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "10 + 0",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "10 + 4",
           "is_correct": false
         }
       ]
@@ -187,21 +187,21 @@
       "options": [
         {
           "key": "A",
-          "value": "70 + 6",
-          "text": "70 + 6",
-          "is_correct": true
-        },
-        {
-          "key": "B",
           "value": "40 + 6",
           "text": "40 + 6",
           "is_correct": false
         },
         {
-          "key": "C",
+          "key": "B",
           "value": "60 + 7",
           "text": "60 + 7",
           "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "70 + 6",
+          "text": "70 + 6",
+          "is_correct": true
         },
         {
           "key": "D",
@@ -219,17 +219,17 @@
       "options": [
         {
           "key": "A",
-          "value": "40 + 9",
-          "is_correct": false
-        },
-        {
-          "key": "B",
           "value": "90 + 4",
           "is_correct": true
         },
         {
-          "key": "C",
+          "key": "B",
           "value": "30 + 6",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "40 + 9",
           "is_correct": false
         },
         {
@@ -247,56 +247,56 @@
       "options": [
         {
           "key": "A",
-          "value": "20 + 1",
-          "text": "20 + 1",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "1 + 2",
-          "text": "1 + 2",
-          "is_correct": false
-        },
-        {
-          "key": "C",
           "value": "20 + 8",
           "text": "20 + 8",
           "is_correct": false
         },
         {
-          "key": "D",
+          "key": "B",
           "value": "10 + 2",
           "text": "10 + 2",
           "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "1 + 2",
+          "text": "1 + 2",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "20 + 1",
+          "text": "20 + 1",
+          "is_correct": false
         }
       ]
     }
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The samples explicitly task the student to \"Decompose any 2-digit number into tens and ones.\" by asking them to \"Write 45 as tens and ones, for example 45 = 40 + 5.\""
+      "verdict": "CONCERN",
+      "rationale": "Decomposition into tens and ones is what the keys record, but the worked example embedded in the stem, 'for example 45 = 40 + 5', collides with the seed 42 item whose target number is 45 -- that pupil is handed the answer verbatim before being asked for it."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "The generator handles \"any 2-digit number\" by creating problems across the expected domain, covering values such as \"10\", \"15\", \"20\", \"76\", and \"94\"."
+      "rationale": "The phrase 'any 2-digit number' is honoured across the range: teen numbers (12, 15), exact tens where the ones digit is zero (10, 20), and ordinary two-digit numbers (45, 76, 91, 94) all appear as targets."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The cognitive load fits the intended grade level. Including scaffolds such as \"for example 45 = 40 + 5.\" helps primary students understand how to break down a \"2-digit number\"."
+      "rationale": "A single instruction plus a model equation is the whole reading load, and the base-10 block prompts give the concrete anchor a Quarter 2 Grade 1 pupil needs for this."
     },
     "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The packet tests the competency using varied formats including standard multiple choice, \"cloze\" types, and visual representations like \"Use base-10 blocks to show the number 91.\""
+      "verdict": "CONCERN",
+      "rationale": "Apart from the two block-building prompts, every stem is one sentence with the number swapped out; the reverse direction -- being given tens and ones and asked which number they make -- never appears, and neither does any contextual framing."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "The examples directly align with \"Decompose any 2-digit number into tens and ones.\" by featuring instructions such as \"Write 76 as tens and ones\" and corresponding decomposed correct answers like \"70 + 6\"."
+      "rationale": "Difficulty climbs on the one axis that matters here, from targets where the ones digit is 0 to targets like 76 and 94 where both parts must be produced, and the distractors shadow real errors such as reversing the digits."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "The numerical scale perfectly adheres to the competency limit of a \"2-digit number\". The bounds used in the set strictly fall between \"10\" and \"94\"."
+      "rationale": "Targets run from 10 to 94, staying inside the two-digit band the competency specifies, and no decomposition requires a hundreds part."
     }
   },
-  "overall": "PASS"
+  "overall": "CONCERN"
 }

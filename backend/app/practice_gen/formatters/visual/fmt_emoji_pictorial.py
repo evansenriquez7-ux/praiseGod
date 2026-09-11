@@ -277,10 +277,20 @@ def _build_question_text(params: dict, context_variant: str = "word_problem") ->
         line3 = f"How many {name_plural} are left?"
         
     else:  # counting
-        if a == 0:
-            line1 = f"There are 0 {name_plural}."
-        else:
-            line1 = f"{group_a_str} — There {'is' if a == 1 else 'are'} {a} {name_a}."
+        # A COUNTING item may not state its own count. This branch printed
+        #     "⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ — There are 10 stars."
+        #     "Count the stars."
+        #     "How many stars are there in all?"
+        # so the stem supplied the answer it then asked for, and the item measured
+        # nothing about counting. Found by blind review of mat_g1_na_q1_0 on
+        # 2026-09-10 ("A counting item that supplies its own answer measures nothing
+        # about counting"), which also caught the large-group form printing "There are
+        # 73 drinks." in the sentence before asking for that count.
+        #
+        # The ADDITION and SUBTRACTION branches above legitimately state `a`: there it
+        # is a given operand the pupil is handed, not the quantity being asked for.
+        # Only the counting branch is asking for `a` itself.
+        line1 = group_a_str if a else f"(no {name_plural} are shown)"
         line2 = f"Count the {name_plural}."
         line3 = f"How many {name_plural} are there in all?"
     return f"{line1}\n{line2}\n{line3}"

@@ -1,43 +1,14 @@
 {
   "node_id": "mat_g2_na_q1_3",
-  "reviewed_by": "Gemini Pro blind reviewer, batch Re-Harden (mat_g2_na_q1_3), 2026-08-18",
-  "review_date": "2026-08-18",
+  "reviewed_by": "reviewer-b3-cinder-halyard-2276",
+  "review_date": "2026-09-10",
   "blind": true,
-  "overall": "PASS",
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The items directly assess skip counting across all intervals mandated by the competency: counting by 2s in \"What number comes next when counting: 96, 98, 100, 102, ___?\" and \"What number comes next when counting: 126, 128, 130, 132, ___?\"; counting by 5s in \"Moses is counting forward by 5 starting from 120. The count is: 120, 125, 130, 135. What is the next number Moses should say?\" and \"What number comes next when counting: 100, 105, 110, 115, ___?\"; counting by 10s in \"What number comes next when counting: 60, 70, 80, 90, ___?\" and \"What number comes next when counting: 50, 60, 70, 80, ___?\"; counting by 20s in \"What number comes next when counting: 0, 20, 40, 60, ___?\", \"Find the missing number: 40, 60, 80, 100, ___\" and \"What number comes next when counting backward: 100, 80, 60, 40, ___?\"; counting by 50s in \"What number comes next when counting: 550, 600, 650, 700, ___?\"; and counting by 100s in \"What number comes next when counting: 0, 100, 200, 300, ___?\" and \"Find the missing number: 200, 300, 400, 500, ___\". All required intervals (2s, 5s, 10s, 20s, 50s, 100s) are fully fulfilled."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The sample set comprehensively covers varied starting points and ranges within the 0\u20131000 domain. It includes sequences starting at 0 such as \"What number comes next when counting: 0, 100, 200, 300, ___?\", sequences bridging hundred boundaries such as \"What number comes next when counting: 96, 98, 100, 102, ___?\", 3-digit intermediate ranges such as \"What number comes next when counting: 550, 600, 650, 700, ___?\", and backward counting such as \"What number comes next when counting backward: 100, 80, 60, 40, ___?\". Visual and contextual representations are also present."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The items are developmentally tailored for Grade 2 Quarter 1 learners. The question stems are brief and easy to parse, such as \"Find the missing number: 40, 60, 80, 100, ___\" and \"What number is marked on the number line?\". The word problem \"Moses is counting forward by 5 starting from 120. The count is: 120, 125, 130, 135. What is the next number Moses should say?\" uses simple, age-appropriate vocabulary and clear sentence structure without extraneous cognitive load."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "Multiple diverse task formats are utilized across the sample set: multiple-choice sequence completion in \"What number comes next when counting: 0, 20, 40, 60, ___?\", fill-in-the-blank cloze in \"Find the missing number: 200, 300, 400, 500, ___\", visual number line interpretation in \"What number is marked on the number line?\", contextual story problem in \"Moses is counting forward by 5 starting from 120. The count is: 120, 125, 130, 135. What is the next number Moses should say?\", and reverse sequence completion in \"What number comes next when counting backward: 100, 80, 60, 40, ___?\"."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Every sample strictly targets skip-counting patterns specified in the competency. No premature arithmetic operations, algebraic symbols, or advanced topics beyond Grade 2 Quarter 1 are present. Questions like \"What number comes next when counting: 126, 128, 130, 132, ___?\" and \"What number comes next when counting: 100, 105, 110, 115, ___?\" maintain pure alignment with the MATATAG standard."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "All numbers generated across the sample set adhere strictly to the competency's constraint of 'not beyond 1000'. The values span from single/double digits up to 3-digit ranges (e.g., reaching 750 in \"What number comes next when counting: 550, 600, 650, 700, ___?\" and 600 in \"Find the missing number: 200, 300, 400, 500, ___\"), with none exceeding 1000."
-    }
-  },
   "sample_seeds": [
     42,
     43,
     44,
     45,
     46,
-    50,
-    55,
     500,
     501,
     502,
@@ -49,87 +20,378 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "mcq",
-      "question_text": "What number comes next when counting: 0, 100, 200, 300, ___?",
-      "correct_answer": 400
+      "formatter": "cloze",
+      "question_text": "Find the missing number: 0, 100, 200, 300, ___",
+      "correct_answer": 400,
+      "options": [
+        {
+          "key": "A",
+          "value": 200,
+          "text": "200",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 400,
+          "text": "400",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 100,
+          "text": "100",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 301,
+          "text": "301",
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 43,
-      "formatter": "mcq",
-      "question_text": "What number comes next when counting: 96, 98, 100, 102, ___?",
-      "correct_answer": 104
+      "formatter": "read_mcq",
+      "question_text": "What number is marked on the number line?",
+      "correct_answer": "D",
+      "options": [
+        {
+          "key": "A",
+          "value": 302,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 301,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 299,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 300,
+          "is_correct": true
+        }
+      ]
     },
     {
       "seed": 44,
       "formatter": "mcq",
-      "question_text": "What number comes next when counting: 0, 20, 40, 60, ___?",
-      "correct_answer": 80
+      "question_text": "What number comes next when counting: 660, 680, 700, 720, ___?",
+      "correct_answer": 740,
+      "options": [
+        {
+          "key": "A",
+          "value": 740,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 700,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 680,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 721,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 45,
       "formatter": "mcq",
-      "question_text": "What number comes next when counting: 60, 70, 80, 90, ___?",
-      "correct_answer": 100
+      "question_text": "What number comes next when counting: 530, 540, 550, 560, ___?",
+      "correct_answer": 570,
+      "options": [
+        {
+          "key": "A",
+          "value": 570,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 561,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 550,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 540,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 46,
       "formatter": "mcq",
-      "question_text": "What number comes next when counting: 126, 128, 130, 132, ___?",
-      "correct_answer": 134
-    },
-    {
-      "seed": 50,
-      "formatter": "cloze",
-      "question_text": "Find the missing number: 40, 60, 80, 100, ___",
-      "correct_answer": 120
-    },
-    {
-      "seed": 55,
-      "formatter": "read_mcq",
-      "question_text": "What number is marked on the number line?",
-      "correct_answer": "C"
+      "question_text": "What number comes next when counting: 522, 524, 526, 528, ___?",
+      "correct_answer": 530,
+      "options": [
+        {
+          "key": "A",
+          "value": 524,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 530,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 526,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 529,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 500,
       "formatter": "read_mcq",
       "question_text": "What number is marked on the number line?",
-      "correct_answer": "A"
+      "correct_answer": "B",
+      "options": [
+        {
+          "key": "A",
+          "value": 739,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 740,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 742,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 741,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 501,
       "formatter": "cloze",
       "question_text": "Find the missing number: 200, 300, 400, 500, ___",
-      "correct_answer": 600
+      "correct_answer": 600,
+      "options": [
+        {
+          "key": "A",
+          "value": 300,
+          "text": "300",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 400,
+          "text": "400",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 501,
+          "text": "501",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 600,
+          "text": "600",
+          "is_correct": true
+        }
+      ]
     },
     {
       "seed": 502,
       "formatter": "mcq",
       "question_text": "What number comes next when counting: 550, 600, 650, 700, ___?",
-      "correct_answer": 750
+      "correct_answer": 750,
+      "options": [
+        {
+          "key": "A",
+          "value": 750,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 650,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 600,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 701,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 600,
-      "formatter": "mcq",
-      "question_text": "What number comes next when counting: 50, 60, 70, 80, ___?",
-      "correct_answer": 90
+      "formatter": "cloze",
+      "question_text": "Find the missing number: 550, 560, 570, 580, ___",
+      "correct_answer": 590,
+      "options": [
+        {
+          "key": "A",
+          "value": 581,
+          "text": "581",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 570,
+          "text": "570",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 590,
+          "text": "590",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 560,
+          "text": "560",
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 601,
-      "formatter": "cloze",
-      "question_text": "Moses is counting forward by 5 starting from 120. The count is: 120, 125, 130, 135. What is the next number Moses should say?",
-      "correct_answer": 140
+      "formatter": "mcq",
+      "question_text": "Moses is counting forward by 5 starting from 875. The count is: 875, 880, 885, 890. What is the next number Moses should say?",
+      "correct_answer": 895,
+      "options": [
+        {
+          "key": "A",
+          "value": 880,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 885,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 891,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 895,
+          "is_correct": true
+        }
+      ]
     },
     {
       "seed": 602,
       "formatter": "mcq",
-      "question_text": "What number comes next when counting backward: 100, 80, 60, 40, ___?",
-      "correct_answer": 20
+      "question_text": "What number comes next when counting backward: 300, 280, 260, 240, ___?",
+      "correct_answer": 220,
+      "options": [
+        {
+          "key": "A",
+          "value": 280,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 239,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 260,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 220,
+          "is_correct": true
+        }
+      ]
     },
     {
       "seed": 603,
       "formatter": "mcq",
-      "question_text": "What number comes next when counting: 100, 105, 110, 115, ___?",
-      "correct_answer": 120
+      "question_text": "What number comes next when counting: 705, 710, 715, 720, ___?",
+      "correct_answer": 725,
+      "options": [
+        {
+          "key": "A",
+          "value": 715,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 721,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 725,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 710,
+          "is_correct": false
+        }
+      ]
     }
-  ]
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "Skip counting is the real work in the sequence items, with each run giving four terms of a constant step before the blank. The counting-forward-by-5 item that reports a pupil's spoken count and asks for the next number said mirrors how this skill is actually practised aloud."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "Every one of the six step sizes the competency lists is generated somewhere in the set: twos in the 522 run, fives in the 705 run, tens in the 530 run, twenties in the 660 run, fifties in the 550 run, and hundreds in the run starting at 0. This is unusually complete sub-case coverage."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Four terms of context before each blank make the step size inferable without being stated, which is the right level of support. Steps that cross a hundred boundary, such as the twenties run passing 700, add appropriate challenge without exceeding Quarter 1 expectations."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "Three response types occur, sequences appear both as printed runs and as a marked line, backward counting appears alongside forward, and one item wraps the count in a named pupil's activity. Both the continue-the-pattern and the find-the-missing-term orientations are present."
+    },
+    "competency_alignment": {
+      "verdict": "CONCERN",
+      "rationale": "Two seeds render a number line and ask which value is marked, with options only one or two apart. Those items test point reading at three-digit precision and involve no step at all, so they vary a representational axis unrelated to skip counting and are the weakest members of an otherwise well-targeted set."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "No sequence crosses the stated bound: the highest term generated sits in the high eight-hundreds and the hundreds run stops at 600, so the not beyond 1000 restriction holds in every seed including the large-step ones where it would be easiest to breach."
+    }
+  },
+  "overall": "CONCERN"
 }

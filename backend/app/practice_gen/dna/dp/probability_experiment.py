@@ -48,6 +48,44 @@ VOCAB_OUTCOME = VocabGated(
 )
 
 
+def _positive_frequencies(total: int, n: int, rng: random.Random) -> List[int]:
+    """
+    `n` recorded frequencies, each at least 1, summing exactly to `total`.
+
+    Allocated one trial at a time rather than drawn independently and patched
+    afterwards. The patch-afterwards form produced NEGATIVE frequencies keyed as the
+    correct answer -- mat_g3_dp_q3_0 seed 601 rendered "Red tile: 2, Blue tile: -4,
+    Green tile: 7" for a stated 10 draws (they sum to 5) and keyed -4, found by blind
+    review on 2026-09-10: "the pupil is asked to select -4 over -3 as a frequency,
+    which teaches an impossibility". Negative integers are also outside the Grade 3
+    Quarter 3 number system entirely, so it breached concept gating as well as sense.
+
+    Two of the three experiment branches wrote
+
+        raw[1] = total - sum(raw)
+
+    AFTER mutating raw[0], which subtracts raw[1] from itself. The third used `+=` and
+    was arithmetically correct, but could still land on zero or below when the other
+    outcomes already exceeded the trial count. One allocation replaces all three,
+    because an experiment's outcome counts must sum to its trial count and no outcome
+    can be recorded fewer than zero times -- neither is a property worth re-deriving
+    per branch (three copies of a rule is how two of them ended up wrong).
+
+    Allocation is uniform over outcomes, so counts cluster near total/n the way a real
+    small experiment's do, instead of the skew a raw interval cut would give.
+    """
+    if total < n:
+        raise ValueError(
+            f"probability_experiment: cannot record {n} outcome(s) across {total} "
+            f"trial(s) and leave each outcome at least one. Widen the trial count; a "
+            f"frequency below one is not a frequency."
+        )
+    counts = [1] * n
+    for _ in range(total - n):
+        counts[rng.randrange(n)] += 1
+    return counts
+
+
 def generate_params(
     grade: int,
     difficulty_profile: Optional[Dict[str, Any]],
@@ -101,13 +139,7 @@ def generate_params(
     elif exp_type == "die_roll":
         num_faces = 6
         total_trials = rng.choice([12, 18, 20, 24, 30])
-        raw_counts = [rng.randint(1, 5) for _ in range(num_faces)]
-        diff_trials = total_trials - sum(raw_counts)
-        raw_counts[0] += diff_trials
-        if raw_counts[0] < 1:
-            raw_counts[0] = 1
-            raw_counts[1] += (total_trials - sum(raw_counts))
-        counts = raw_counts
+        counts = _positive_frequencies(total_trials, num_faces, rng)
         categories = ["1", "2", "3", "4", "5", "6"]
         table_str = ", ".join(f"Face {categories[i]}: {counts[i]}" for i in range(num_faces))
         
@@ -144,12 +176,7 @@ def generate_params(
         num_colors = rng.choice([3, 4])
         selected_colors = colors[:num_colors]
         total_spins = rng.choice([15, 20, 24, 30])
-        raw_spins = [rng.randint(2, 8) for _ in selected_colors]
-        raw_spins[0] += total_spins - sum(raw_spins)
-        if raw_spins[0] < 1:
-            raw_spins[0] = 2
-            raw_spins[1] = total_spins - sum(raw_spins)
-        counts = raw_spins
+        counts = _positive_frequencies(total_spins, num_colors, rng)
         categories = selected_colors
         table_str = ", ".join(f"{categories[i]}: {counts[i]}" for i in range(len(categories)))
 
@@ -176,12 +203,7 @@ def generate_params(
     else:
         tile_types = ["Red tile", "Blue tile", "Green tile"]
         total_draws = rng.choice([10, 15, 20, 25])
-        raw_draws = [rng.randint(2, 8) for _ in tile_types]
-        raw_draws[0] += total_draws - sum(raw_draws)
-        if raw_draws[0] < 1:
-            raw_draws[0] = 2
-            raw_draws[1] = total_draws - sum(raw_draws)
-        counts = raw_draws
+        counts = _positive_frequencies(total_draws, len(tile_types), rng)
         categories = tile_types
         table_str = ", ".join(f"{categories[i]}: {counts[i]}" for i in range(len(categories)))
         

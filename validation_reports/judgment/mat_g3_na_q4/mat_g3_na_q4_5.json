@@ -1,35 +1,8 @@
 {
   "node_id": "mat_g3_na_q4_5",
-  "reviewed_by": "Gemini Pro blind reviewer, batch G3-NA-Q4-Harden (mat_g3_na_q4_5), 2026-08-18",
-  "review_date": "2026-08-18",
+  "reviewed_by": "reviewer-b6-thistle-kestrel-9724",
+  "review_date": "2026-09-10",
   "blind": true,
-  "overall": "PASS",
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The sample set completely fulfills the MATATAG learning competency requirements for solving division problems involving 2- to 3-digit numbers by a 1-digit number, including money contexts. Two-digit dividends are practiced in items such as \"Nikka has \u20b142 and wants to share it equally among 2 friends. How much does each friend get?\" (seed 43) and \"There are 60 washi tape rolls. If 4 washi tape rolls are put in each bag, how many bags are needed?\" (seed 600). Three-digit dividends are thoroughly tested in items such as \"Maico wants to share 180 costumes equally among 2 friends. How many costumes does each friend get?\" (seed 42) and \"Coach Nora has \u20b1230 and wants to share it equally among 5 friends. How much does each friend get?\" (seed 44). Money problems featuring the Philippine Peso symbol (\u20b1) are well integrated across multiple seeds (seeds 43, 44, 45, 50, 55, 601, 602, 603)."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The items comprehensively span both partitive (equal sharing) and quotative (measurement/grouping) division situations. Equal sharing is represented in word problems such as \"Boboy has \u20b1220 and wants to share it equally among 5 friends. How much does each friend get?\" (seed 602), while equal grouping is tested in scenarios such as \"There are 114 seeds. If 2 seeds are put in each bag, how many bags are needed?\" (seed 46) and \"There are 936 running shoes. If 9 running shoes are put in each bag, how many bags are needed?\" (seed 501). The sample also properly balances non-monetary discrete objects (costumes, seeds, ribbons, shoes, washi tape) with explicit currency problems (\u20b130, \u20b142, \u20b160, \u20b1120, \u20b1132, \u20b1220, \u20b1230)."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "All problem contexts, syntactical constructions, and arithmetic operations are well calibrated to the cognitive capacity of Grade 3 Quarter 4 learners. The language uses culturally familiar and age-appropriate honorifics and objects (e.g., 'Ate Gab', 'Kuya Renz', 'Coach Roel', 'costumes', 'ribbons', 'washi tape rolls'). The word problems are direct, concise, and avoid extraneous linguistic complexity or multi-step cognitive overload."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The sample demonstrates excellent pedagogical variety across four distinct interaction formats: standard multiple-choice problems (seeds 42, 43, 45, 46, 502, 600, 602), cloze numeric fill-in-the-blank items (seeds 44, 501, 601, 603), true/false statement evaluation such as \"Kuya Renz has \u20b130 and wants to share it equally among 6 friends. How much does each friend get? The answer is 180. True or False?\" (seed 50), and higher-order error detection tasks such as \"Grace solved this problem: \"Romel has \u20b1132 and wants to share it equally among 2 friends. How much does each friend get?\" Grace says the answer is 130. Is Grace correct?\" (seed 55) and \"Rico solved this problem: \"There are 657 ribbons. If 9 ribbons are put in each bag, how many bags are needed?\" Rico says the answer is 73. Is Rico correct?\" (seed 500)."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "All questions strictly match the stated scope of 'mat_g3_na_q4_5'. Dividends remain strictly within 2 to 3 digits (e.g., 30, 42, 60, 114, 120, 132, 180, 220, 230, 657, 738, 936), divisors are strictly 1-digit integers (2, 3, 4, 5, 6, 9), and all divisions resolve without non-integer fractional or decimal remainders. No out-of-scope concepts (e.g., multi-digit divisors or decimal division) are introduced."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "The numerical parameters, quotient sizes, and monetary values are realistic and appropriate for Grade 3 students. Monetary quantities range from small values like \u20b130 to modest hundreds like \u20b1230, and item counts reflect plausible classroom or home quantities (such as 60 washi tape rolls, 114 seeds, or 180 costumes). Computation demands appropriately challenge students with single-digit divisors without presenting overwhelming numerical scales."
-    }
-  },
   "sample_seeds": [
     42,
     43,
@@ -51,42 +24,156 @@
       "seed": 42,
       "formatter": "mcq",
       "question_text": "Maico wants to share 180 costumes equally among 2 friends. How many costumes does each friend get?",
-      "correct_answer": 90
+      "correct_answer": 90,
+      "options": [
+        {
+          "key": "A",
+          "value": 2,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 90,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 178,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 360,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 43,
       "formatter": "mcq",
-      "question_text": "Nikka has \u20b142 and wants to share it equally among 2 friends. How much does each friend get?",
-      "correct_answer": 21
+      "question_text": "Nikka has ₱42 and wants to share it equally among 2 friends. How much does each friend get?",
+      "correct_answer": 21,
+      "options": [
+        {
+          "key": "A",
+          "value": 21,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 40,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 2,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 84,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 44,
       "formatter": "cloze",
-      "question_text": "Coach Nora has \u20b1230 and wants to share it equally among 5 friends. How much does each friend get?",
-      "correct_answer": 46
+      "question_text": "Coach Nora has ₱230 and wants to share it equally among 5 friends. How much does each friend get?",
+      "correct_answer": 46,
+      "options": [
+        {
+          "key": "A",
+          "value": 46,
+          "text": "46",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 1150,
+          "text": "1150",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 225,
+          "text": "225",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 5,
+          "text": "5",
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 45,
       "formatter": "mcq",
-      "question_text": "Ate Gab has \u20b1120 and wants to share it equally among 4 friends. How much does each friend get?",
-      "correct_answer": 30
+      "question_text": "Ate Gab has ₱120 and wants to share it equally among 4 friends. How much does each friend get?",
+      "correct_answer": 30,
+      "options": [
+        {
+          "key": "A",
+          "value": 30,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 116,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 480,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 4,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 46,
       "formatter": "mcq",
       "question_text": "There are 114 seeds. If 2 seeds are put in each bag, how many bags are needed?",
-      "correct_answer": 57
+      "correct_answer": 57,
+      "options": [
+        {
+          "key": "A",
+          "value": 112,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 228,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 57,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 2,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 50,
       "formatter": "true_false",
-      "question_text": "Kuya Renz has \u20b130 and wants to share it equally among 6 friends. How much does each friend get? The answer is 180. True or False?",
+      "question_text": "Kuya Renz has ₱30 and wants to share it equally among 6 friends. How much does each friend get? The answer is 180. True or False?",
       "correct_answer": false
     },
     {
       "seed": 55,
       "formatter": "error_detect",
-      "question_text": "Grace solved this problem: \"Romel has \u20b1132 and wants to share it equally among 2 friends. How much does each friend get?\" Grace says the answer is 130. Is Grace correct?",
+      "question_text": "Grace solved this problem: \"Romel has ₱132 and wants to share it equally among 2 friends. How much does each friend get?\" Grace says the answer is 130. Is Grace correct?",
       "correct_answer": {
         "has_error": true,
         "correct_value": 66
@@ -105,37 +192,208 @@
       "seed": 501,
       "formatter": "cloze",
       "question_text": "There are 936 running shoes. If 9 running shoes are put in each bag, how many bags are needed?",
-      "correct_answer": 104
+      "correct_answer": 104,
+      "options": [
+        {
+          "key": "A",
+          "value": 927,
+          "text": "927",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 8424,
+          "text": "8424",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 9,
+          "text": "9",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 104,
+          "text": "104",
+          "is_correct": true
+        }
+      ]
     },
     {
       "seed": 502,
       "formatter": "mcq",
       "question_text": "Kuya Renz wants to share 738 canvases equally among 9 friends. How many canvases does each friend get?",
-      "correct_answer": 82
+      "correct_answer": 82,
+      "options": [
+        {
+          "key": "A",
+          "value": 9,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 6642,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 82,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 729,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 600,
       "formatter": "mcq",
       "question_text": "There are 60 washi tape rolls. If 4 washi tape rolls are put in each bag, how many bags are needed?",
-      "correct_answer": 15
+      "correct_answer": 15,
+      "options": [
+        {
+          "key": "A",
+          "value": 15,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 56,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 240,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 4,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 601,
       "formatter": "cloze",
-      "question_text": "Coach Roel has \u20b1132 and wants to share it equally among 3 friends. How much does each friend get?",
-      "correct_answer": 44
+      "question_text": "Coach Roel has ₱132 and wants to share it equally among 3 friends. How much does each friend get?",
+      "correct_answer": 44,
+      "options": [
+        {
+          "key": "A",
+          "value": 396,
+          "text": "396",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 3,
+          "text": "3",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 44,
+          "text": "44",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 129,
+          "text": "129",
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 602,
       "formatter": "mcq",
-      "question_text": "Boboy has \u20b1220 and wants to share it equally among 5 friends. How much does each friend get?",
-      "correct_answer": 44
+      "question_text": "Boboy has ₱220 and wants to share it equally among 5 friends. How much does each friend get?",
+      "correct_answer": 44,
+      "options": [
+        {
+          "key": "A",
+          "value": 215,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 5,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 1100,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 44,
+          "is_correct": true
+        }
+      ]
     },
     {
       "seed": 603,
       "formatter": "cloze",
-      "question_text": "Ate Joy has \u20b160 and wants to share it equally among 3 friends. How much does each friend get?",
-      "correct_answer": 20
+      "question_text": "Ate Joy has ₱60 and wants to share it equally among 3 friends. How much does each friend get?",
+      "correct_answer": 20,
+      "options": [
+        {
+          "key": "A",
+          "value": 3,
+          "text": "3",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 57,
+          "text": "57",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 20,
+          "text": "20",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 180,
+          "text": "180",
+          "is_correct": false
+        }
+      ]
     }
-  ]
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "Each item is a division situation with a two or three digit dividend and a single-digit divisor, and money problems such as sharing 230 pesos among five friends satisfy the clause the competency adds about money."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "Both meanings of division are generated, the sharing sense in the items dividing money equally among friends and the grouping sense in the items asking how many bags are needed when a fixed number of seeds or ribbons goes in each, and money and non-money contexts both appear in both senses."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Stems are one or two short sentences, every division comes out exact so no remainder interpretation is demanded ahead of schedule, and dividends such as 114 and 120 keep the arithmetic inside fourth-quarter reach."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "Two problem frames alternate with four response modes, including a truth judgement about sharing 30 pesos among six friends and error checking on results reported by Grace and Rico, so no single template dominates the set."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "The distractors encode operation confusion rather than arbitrary offsets, since the options against 180 shared among 2 include the product and the difference of the two numbers, meaning wrong choices diagnose a misread of the division relationship."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Dividends occupy the stated two to three digit band, from 30 and 42 up to 936, and every divisor is a single digit as the competency requires."
+    }
+  },
+  "overall": "PASS"
 }

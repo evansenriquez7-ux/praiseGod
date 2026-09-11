@@ -1,34 +1,8 @@
 {
   "node_id": "mat_g1_dp_q3_0",
-  "reviewed_by": "Gemini Pro blind reviewer, batch G1-DP-Q3-Harden-v2 (mat_g1_dp_q3_0), 2026-08-18",
+  "reviewed_by": "reviewer-b1-quartz-mallow-4412",
+  "review_date": "2026-09-10",
   "blind": true,
-  "overall": "PASS",
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The items effectively assess the student's understanding of how to collect data via an interview, including identifying the variable, the process of interviewing, and recording the responses. Questions such as \"what is the best way to do a simple interview?\" directly evaluate the core competency."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The generated samples cover multiple facets of the competency. They address identifying the target audience (\"whom should you interview?\"\\), recognizing the data variable (\"What topic is Ben collecting data about\"\\), executing the interview process (\"What should Liza do right after a friend answers 'mango'?\"\\), and recording the collected data (\"How should Tina record the data\"\\)."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The scenarios and vocabulary are perfectly suited for Grade 1. The items use highly relatable contexts like favorite fruits, colors, and pets. The quantities involved are small (e.g., \"4 classmates\" or \"5 friends\"\\), ensuring that the cognitive focus remains on the data collection concept rather than arithmetic."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The sample set provides excellent variety. It includes counting occurrences from raw data (\"How many times was 'blue' collected\"\\), determining the methodology (\"what is the best way to do a simple interview?\"\\), identifying the data topic (\"What information is Dan collecting\"\\), and recognizing tally marks (\"record 4 tally marks\"\\)."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "All questions strictly adhere to the single-variable constraint and the 'simple interview' method specified in the MATATAG curriculum. No items drift into multi-variable data, complex surveys, or advanced graph interpretation."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "The distractors are well-crafted and age-appropriate for Grade 1. They offer clear, distinct, and sometimes deliberately absurd choices that test genuine comprehension without being confusing (e.g., choosing to interview 'the desks' instead of classmates, or selecting 'Erase all previous answers.')."
-    }
-  },
   "sample_seeds": [
     42,
     43,
@@ -50,22 +24,22 @@
       "options": [
         {
           "key": "A",
-          "value": "1",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "4",
-          "is_correct": false
-        },
-        {
-          "key": "C",
           "value": "3",
           "is_correct": true
         },
         {
-          "key": "D",
+          "key": "B",
           "value": "2",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "1",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "4",
           "is_correct": false
         }
       ]
@@ -78,13 +52,13 @@
       "options": [
         {
           "key": "A",
-          "value": "Cat: 2, Dog: 3",
-          "is_correct": true
+          "value": "Cat: 3, Dog: 2",
+          "is_correct": false
         },
         {
           "key": "B",
-          "value": "Cat: 3, Dog: 2",
-          "is_correct": false
+          "value": "Cat: 2, Dog: 3",
+          "is_correct": true
         },
         {
           "key": "C",
@@ -106,8 +80,8 @@
       "options": [
         {
           "key": "A",
-          "value": "Ask each classmate one by one and record their answers.",
-          "is_correct": true
+          "value": "Count the number of balls in the gym.",
+          "is_correct": false
         },
         {
           "key": "B",
@@ -116,13 +90,13 @@
         },
         {
           "key": "C",
-          "value": "Count the number of balls in the gym.",
+          "value": "Measure the height of the classroom door.",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "Measure the height of the classroom door.",
-          "is_correct": false
+          "value": "Ask each classmate one by one and record their answers.",
+          "is_correct": true
         }
       ]
     },
@@ -134,22 +108,22 @@
       "options": [
         {
           "key": "A",
-          "value": "Change her friend's answer to apple.",
-          "is_correct": false
-        },
-        {
-          "key": "B",
           "value": "Record 'mango' on her interview data sheet.",
           "is_correct": true
         },
         {
-          "key": "C",
+          "key": "B",
           "value": "Erase all previous answers.",
           "is_correct": false
         },
         {
-          "key": "D",
+          "key": "C",
           "value": "Stop asking and leave the room.",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "Change her friend's answer to apple.",
           "is_correct": false
         }
       ]
@@ -162,22 +136,22 @@
       "options": [
         {
           "key": "A",
-          "value": "your classmates",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": "the birds outside",
+          "value": "the classroom walls",
           "is_correct": false
         },
         {
-          "key": "C",
+          "key": "B",
           "value": "the desks",
           "is_correct": false
         },
         {
+          "key": "C",
+          "value": "your classmates",
+          "is_correct": true
+        },
+        {
           "key": "D",
-          "value": "the classroom walls",
+          "value": "the birds outside",
           "is_correct": false
         }
       ]
@@ -195,18 +169,18 @@
         },
         {
           "key": "B",
+          "value": "favorite color",
+          "is_correct": true
+        },
+        {
+          "key": "C",
           "value": "favorite food",
           "is_correct": false
         },
         {
-          "key": "C",
+          "key": "D",
           "value": "favorite pet",
           "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "favorite color",
-          "is_correct": true
         }
       ]
     },
@@ -228,12 +202,12 @@
         },
         {
           "key": "C",
-          "value": "favorite drink",
+          "value": "bedtime",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "bedtime",
+          "value": "favorite drink",
           "is_correct": false
         }
       ]
@@ -246,23 +220,23 @@
       "options": [
         {
           "key": "A",
-          "value": "number of bags",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "favorite snack",
-          "is_correct": true
-        },
-        {
-          "key": "C",
           "value": "favorite game",
           "is_correct": false
         },
         {
-          "key": "D",
+          "key": "B",
           "value": "favorite color",
           "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "number of bags",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "favorite snack",
+          "is_correct": true
         }
       ]
     },
@@ -274,18 +248,18 @@
       "options": [
         {
           "key": "A",
-          "value": "||||",
-          "is_correct": true
-        },
-        {
-          "key": "B",
           "value": "|||",
           "is_correct": false
         },
         {
-          "key": "C",
+          "key": "B",
           "value": "||",
           "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "||||",
+          "is_correct": true
         },
         {
           "key": "D",
@@ -302,25 +276,52 @@
       "options": [
         {
           "key": "A",
-          "value": "1",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "4",
-          "is_correct": false
-        },
-        {
-          "key": "C",
           "value": "2",
           "is_correct": false
         },
         {
-          "key": "D",
+          "key": "B",
           "value": "3",
           "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "4",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "1",
+          "is_correct": false
         }
       ]
     }
-  ]
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "Interviewing is genuinely the subject: items name whom to ask, what single question is posed, and what happens to the answer once given. That is collection of one variable by interview, not a disguised arithmetic task."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "The one-variable idea gets approached from several angles across the ten renders - naming the topic being asked about, recording an answer, laying down tally marks, and counting how often a response occurred - so this narrow competency is filled out rather than reduced to one question shape."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Four or five respondents, one-word answer categories, and stems of a single sentence sit comfortably in Grade 1 Quarter 3. The heaviest reading load is a short list of four names paired with choices."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "Presentation shifts between a procedural choice, a recording-format choice, a tally representation, and a vote count, so a pupil meeting several of these does not encounter the same skeleton each time."
+    },
+    "competency_alignment": {
+      "verdict": "CONCERN",
+      "rationale": "Some option sets are not real alternatives - 'the classroom walls', 'the desks' and 'the birds outside' can be struck without understanding interviewing at all. Meanwhile the two highest seeds move the work onto counting responses rather than onto collection method, so the axis that varies is not this competency's."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Sample sizes of four and five respondents, with no count above five, match what a first grader can actually gather and hold from a classroom interview."
+    }
+  },
+  "overall": "CONCERN"
 }

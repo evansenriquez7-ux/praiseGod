@@ -1,117 +1,197 @@
 {
   "node_id": "mat_g2_na_q3_1",
-  "reviewed_by": "Gemini Pro blind reviewer, batch Re-Harden (mat_g2_na_q3_1), 2026-08-18",
-  "review_date": "2026-08-18",
+  "reviewed_by": "reviewer-b4-plover-saffron-6041",
+  "review_date": "2026-09-10",
   "blind": true,
-  "overall": "PASS",
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The generated items directly and faithfully fulfill the competency requirement to illustrate and write multiplication as repeated addition across concrete, pictorial, and numeric representations. The items feature repeated addition equations connected directly to multiplication expressions (e.g., \"6 + 6 = ___. What is 6 \u00d7 2?\" and \"2 + 2 + 2 = ___. What is 2 \u00d7 3?\"), counting by multiples (e.g., \"Count by 4s: 4, 8, 12. 4 \u00d7 3 = ___\"), number line models (e.g., \"Starting at 0, take 2 equal jumps of 3 on the number line. What is 3 \u00d7 2?\"), and array representations (e.g., \"Look at the 6\u00d72 array. How many squares are shaded in all?\")."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The sample set comprehensively covers all representation modalities named in the MATATAG learning competency: equal jumps on a number line (e.g., \"Starting at 0, take 5 equal jumps of 8 on the number line. What is 8 \u00d7 5?\"), counting by multiples (e.g., \"Count by 7s: 7, 14. What is 7 \u00d7 2?\"), arrays and grids (e.g., \"Shade 5 rows of 2 squares to show 2 + 2 + 2 + 2 + 2. How many squares did you shade in all?\" and \"Look at the 2\u00d74 array. It shows 4 + 4. How many squares are shaded in all?\"), repeated addition sentences (e.g., \"4 + 4 + 4 = ___\"), and equal groups in real-world contexts (e.g., \"Moses puts 4 baskets in each of 3 bags. How many baskets are in all the bags?\")."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The cognitive demand, vocabulary, sentence length, and structural complexity are perfectly tailored to Grade 2 Quarter 3 learners. Items utilize straightforward prompts, clear visual instructions, and accessible scaffolds (e.g., \"Count by 2s: 2, 4, 6. 2 \u00d7 3 = ___\" and \"5 + 5 = ___. What is 5 \u00d7 2?\"), avoiding any over-complicated phrasing or extraneous cognitive load."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The sample set demonstrates excellent format diversity across multiple item types including multiple-choice (e.g., \"Starting at 0, take 2 equal jumps of 2 on the number line. What is 2 \u00d7 2?\"), cloze / fill-in-the-blank (e.g., \"4 + 4 + 4 = ___\"), true/false evaluations (e.g., \"2 + 2 + 2 + 2 + 2 = 10. True or False?\" and \"Starting at 0, taking 5 equal jumps of 7 on the number line lands on 35. True or False?\"), visual shading tasks (e.g., \"Shade all the squares inside the 8\u00d710 rectangle. How many squares did you shade in all?\"), and error detection (e.g., error detection (seed 51: \"4 + 4 + 4 = ___\"))."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "All items strictly align with the conceptual definition of multiplication as repeated addition without drifting into unrelated domains or higher-grade techniques (such as standard vertical algorithms or formal division). Every item explicitly bridges grouping, skip counting, number lines, or arrays with the foundational multiplication concept (e.g., \"Look at the 2\u00d74 array. It shows 4 + 4. How many squares are shaded in all?\")."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "The scale of factors and products is fully aligned with Grade 2 curriculum standards. Multipliers and group sizes range appropriately from small single-digit factors (e.g., \"Starting at 0, take 2 equal jumps of 3 on the number line. What is 3 \u00d7 2?\") up to manageable multiples of 5, 7, 8, and 10 (e.g., \"Shade all the squares inside the 8\u00d710 rectangle. How many squares did you shade in all?\"), keeping calculations within the appropriate range of 0 to 100."
-    }
-  },
   "sample_seeds": [
     42,
     43,
     44,
     45,
     46,
-    50,
-    51,
-    55,
-    85,
+    47,
+    52,
+    68,
     500,
     501,
     502,
     600,
     601,
+    602,
     603,
     604,
-    605,
-    606
+    605
   ],
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "mcq",
-      "question_text": "Starting at 0, take 2 equal jumps of 3 on the number line. What is 3 \u00d7 2?",
-      "correct_answer": 6
+      "formatter": "error_detect",
+      "question_text": "Manny solved: \"Starting at 0, taking 2 equal jumps of 5 on the number line lands on ___\". Manny says the missing number is 3. Is Manny correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 10
+      }
     },
     {
       "seed": 43,
-      "formatter": "mcq",
-      "question_text": "6 + 6 = ___. What is 6 \u00d7 2?",
-      "correct_answer": 12
+      "formatter": "set_fill_in_blank",
+      "question_text": "Shade 2 rows of 4 squares to show 4 + 4. How many squares did you shade in all?",
+      "correct_answer": 8
     },
     {
       "seed": 44,
-      "formatter": "cloze",
-      "question_text": "Count by 4s: 4, 8, 12. 4 \u00d7 3 = ___",
-      "correct_answer": 12
+      "formatter": "mcq",
+      "question_text": "Count by 8s: 8, 16, 24, 32, 40. What is 8 × 5?",
+      "correct_answer": 40,
+      "options": [
+        {
+          "key": "A",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 35,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 13,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 40,
+          "is_correct": true
+        }
+      ]
     },
     {
       "seed": 45,
-      "formatter": "cloze",
-      "question_text": "Count by 2s: 2, 4, 6. 2 \u00d7 3 = ___",
-      "correct_answer": 6
+      "formatter": "mcq",
+      "question_text": "Count by 10s: 10, 20, 30, 40. What is 10 × 4?",
+      "correct_answer": 40,
+      "options": [
+        {
+          "key": "A",
+          "value": 40,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 6,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 36,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 14,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 46,
       "formatter": "mcq",
-      "question_text": "2 + 2 + 2 = ___. What is 2 \u00d7 3?",
-      "correct_answer": 6
+      "question_text": "4 + 4 + 4 + 4 + 4 = ___. What is 4 × 5?",
+      "correct_answer": 20,
+      "options": [
+        {
+          "key": "A",
+          "value": 19,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 20,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 15,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 9,
+          "is_correct": false
+        }
+      ]
     },
     {
-      "seed": 50,
+      "seed": 47,
+      "formatter": "cloze",
+      "question_text": "Count by 6s: 6, 12. 6 × 2 = ___",
+      "correct_answer": 12,
+      "options": [
+        {
+          "key": "A",
+          "value": 4,
+          "text": "4",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 8,
+          "text": "8",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 12,
+          "text": "12",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 10,
+          "text": "10",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 52,
       "formatter": "read_mcq",
-      "question_text": "Look at the 6\u00d72 array. How many squares are shaded in all?",
-      "correct_answer": "A"
+      "question_text": "Look at the 9×2 array. How many squares are shaded in all?",
+      "correct_answer": "C",
+      "options": [
+        {
+          "key": "A",
+          "value": 22,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 20,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 18,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 15,
+          "is_correct": false
+        }
+      ]
     },
     {
-      "seed": 51,
-      "formatter": "error_detect",
-      "question_text": "Ana solved: \"4 + 4 + 4 = ___\". Ana says the missing number is 1. Is Ana correct?",
-      "correct_answer": {
-        "has_error": true,
-        "correct_value": 12
-      }
-    },
-    {
-      "seed": 55,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Shade 5 rows of 2 squares to show 2 + 2 + 2 + 2 + 2. How many squares did you shade in all?",
-      "correct_answer": 10
-    },
-    {
-      "seed": 85,
+      "seed": 68,
       "formatter": "true_false",
-      "question_text": "2 + 2 + 2 + 2 + 2 = 10. True or False?",
+      "question_text": "Starting at 0, taking 10 equal jumps of 4 on the number line lands on 40. True or False?",
       "correct_answer": true
     },
     {
       "seed": 500,
       "formatter": "set_fill_in_blank",
-      "question_text": "Shade all the squares inside the 8\u00d710 rectangle. How many squares did you shade in all?",
+      "question_text": "Shade all the squares inside the 8×10 rectangle. How many squares did you shade in all?",
       "correct_answer": 80
     },
     {
@@ -123,44 +203,196 @@
     {
       "seed": 502,
       "formatter": "mcq",
-      "question_text": "Starting at 0, take 5 equal jumps of 8 on the number line. What is 8 \u00d7 5?",
-      "correct_answer": 40
+      "question_text": "Starting at 0, take 5 equal jumps of 8 on the number line. What is 8 × 5?",
+      "correct_answer": 40,
+      "options": [
+        {
+          "key": "A",
+          "value": 13,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 35,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 40,
+          "is_correct": true
+        }
+      ]
     },
     {
       "seed": 600,
-      "formatter": "mcq",
-      "question_text": "Count by 7s: 7, 14. What is 7 \u00d7 2?",
-      "correct_answer": 14
+      "formatter": "true_false",
+      "question_text": "Counting by 9s to 27 gives 9 × 3 = 27. True or False?",
+      "correct_answer": true
     },
     {
       "seed": 601,
+      "formatter": "mcq",
+      "question_text": "Moses puts 10 baskets in each of 9 bags. How many baskets are in all the bags?",
+      "correct_answer": 90,
+      "options": [
+        {
+          "key": "A",
+          "value": 19,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 90,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 80,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 89,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 602,
       "formatter": "cloze",
-      "question_text": "Moses puts 4 baskets in each of 3 bags. How many baskets are in all the bags?",
-      "correct_answer": 12
+      "question_text": "Count by 5s: 5, 10, 15. 5 × 3 = ___",
+      "correct_answer": 15,
+      "options": [
+        {
+          "key": "A",
+          "value": 8,
+          "text": "8",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 12,
+          "text": "12",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 15,
+          "text": "15",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 2,
+          "text": "2",
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 603,
       "formatter": "cloze",
-      "question_text": "4 + 4 + 4 = ___",
-      "correct_answer": 12
+      "question_text": "10 + 10 + 10 + 10 + 10 = ___",
+      "correct_answer": 50,
+      "options": [
+        {
+          "key": "A",
+          "value": 5,
+          "text": "5",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 45,
+          "text": "45",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 15,
+          "text": "15",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 50,
+          "text": "50",
+          "is_correct": true
+        }
+      ]
     },
     {
       "seed": 604,
-      "formatter": "mcq",
-      "question_text": "5 + 5 = ___. What is 5 \u00d7 2?",
-      "correct_answer": 10
+      "formatter": "error_detect",
+      "question_text": "Carlo solved: \"6 + 6 + 6 = ___\". Carlo says the missing number is 18. Is Carlo correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 18
+      }
     },
     {
       "seed": 605,
-      "formatter": "read_mcq",
-      "question_text": "Look at the 2\u00d74 array. It shows 4 + 4. How many squares are shaded in all?",
-      "correct_answer": "C"
-    },
-    {
-      "seed": 606,
-      "formatter": "mcq",
-      "question_text": "Starting at 0, take 2 equal jumps of 2 on the number line. What is 2 \u00d7 2?",
-      "correct_answer": 4
+      "formatter": "cloze",
+      "question_text": "6 + 6 + 6 + 6 + 6 + 6 + 6 + 6 + 6 + 6 = ___",
+      "correct_answer": 60,
+      "options": [
+        {
+          "key": "A",
+          "value": 16,
+          "text": "16",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 60,
+          "text": "60",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 59,
+          "text": "59",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 50,
+          "text": "50",
+          "is_correct": false
+        }
+      ]
     }
-  ]
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "CONCERN",
+      "rationale": "The 'illustrate' half is done well; the 'write multiplication as repeated addition' half is not, because no item asks the child to produce the multiplication sentence. Seed 603 shows five tens joined by plus signs and asks only for 50, never for the 10 by 5 statement that the repeated addition encodes."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "All four models the wording enumerates are present: equal groups in the bags-of-baskets item, an array in the 9 by 2 reading task, counting by multiples in the count-by-8s item, and equal jumps on the number line in seeds 42, 68, 501 and 502."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Each multiplicative question is scaffolded by the additive form beside it, such as the count-by-10s list preceding the request for 10 times 4, so nothing demands recall of an unrehearsed fact. Every product involved reduces to the 2, 3, 4, 5 or 10 families by commuting the factors."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "Shading a rectangle, shading rows, reading an array, checking a claim about jumps, correcting a peer, a bags story and bare repeated-addition strings give this node genuinely different entry points into the same relationship."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "Difficulty climbs by lengthening the repeated addition and enlarging the group size while keeping the additive-to-multiplicative bridge in view, as in seed 605's ten sixes. The model type is varied deliberately rather than the arithmetic being made harder for its own sake."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Products run from 8 up to 90 and no factor exceeds 10, which keeps the node inside the multiplication range Grade 2 Quarter 3 works in. The 8 by 10 shading task at 80 is the largest and is still a table fact."
+    }
+  },
+  "overall": "CONCERN"
 }

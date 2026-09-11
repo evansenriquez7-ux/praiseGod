@@ -1,34 +1,8 @@
 {
   "node_id": "mat_g2_na_q2_3",
-  "reviewed_by": "Gemini Pro blind reviewer, batch G2-NA-Q2-Harden (mat_g2_na_q2_3), 2026-08-18",
+  "reviewed_by": "reviewer-b4-plover-saffron-6041",
+  "review_date": "2026-09-10",
   "blind": true,
-  "overall": "PASS",
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The sample set fully satisfies the MATATAG learning competency 'Illustrate subtraction of 2-digit by 1-digit on the number line and as an inverse of addition.' Both core instructional representations are thoroughly tested using 2-digit minuends and 1-digit subtrahends. Number line subtraction is assessed through movement and jumping contexts such as 'A dot is at 15 on the number line. If you move back 5 steps, what number do you reach?' (seed 43) and 'Starting at 60 on the number line, jump back 5 units. What number do you land on? Answer: ___' (seed 44). Subtraction as the inverse of addition is assessed using direct relational statements and hints like 'Since 10 + 1 = 11, what is 11 \u2212 1?' (seed 42) and 'If 49 + 1 = 50, then 50 \u2212 1 = ___. What is the missing number?' (seed 45)."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The items comprehensively cover subtraction of 2-digit numbers by 1-digit numbers across diverse decades and digit values (10s through 90s) and various 1-digit subtrahends (1, 2, 3, 4, 5, 8, 9). Examples include bridging/crossing multiples of ten such as 'Since 22 + 8 = 30, what is 30 \u2212 8?' (seed 600) and 'What is 58 \u2212 9? (Hint: 49 + 9 = 58)' (seed 502), non-regrouping cases like 'Start at 24 on the number line and count back 1. What is 24 \u2212 1?' (seed 46), and larger minuends like 'Since 84 + 9 = 93, what is 93 \u2212 9? Answer: ___' (seed 501)."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "All items are strictly tailored to Grade 2 Quarter 2 learners in terms of sentence length, vocabulary, and cognitive load. Instructions are clear, direct, and avoid superfluous narrative context. Problems such as 'What is 12 \u2212 1? (Hint: 11 + 1 = 12)' (seed 606) and 'What is 20 \u2212 3? (Hint: 17 + 3 = 20)' (seed 602) present scaffolded reasoning without placing an excessive burden on working memory."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The sample packet demonstrates strong structural and pedagogical variety across four distinct formatters: standard multiple-choice (e.g., 'Since 10 + 1 = 11, what is 11 \u2212 1?' [seed 42]), fill-in-the-blank / cloze (e.g., 'If 74 + 1 = 75, then 75 \u2212 1 = ___. What is the missing number?' [seed 603]), true/false evaluation ('What is 30 \u2212 3? (Hint: 27 + 3 = 30) The answer is 28. True or False?' [seed 50]), and error detection / student work evaluation ('Rico solved: \"If 89 + 4 = 93, then 93 \u2212 4 = ___. What is the missing number?\". Rico says the missing number is 89. Is Rico correct?' [seed 500] and 'Grace solved: \"Start at 15 on the number line and count back 2. What is 15 \u2212 2? (Answer: ___)\". Grace says the missing number is 17. Is Grace correct?' [seed 55])."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Every single generated item directly aligns with the competency target without construct under-representation or construct-irrelevant difficulty. There are no operations beyond 2-digit minus 1-digit subtraction, no multi-step word problems exceeding the competency scope, and every item targets either number line visualization or inverse addition relationships (e.g., 'If 13 + 2 = 15, then 15 \u2212 2 = ___. What is the missing number?' [seed 604] and 'Starting at 75 on the number line, jump back 1 units. What number do you land on? Answer: ___' [seed 601])."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "The numerical scale is strictly maintained within Grade 2 2-digit by 1-digit bounds: minuends range from 11 up to 93, subtrahends range from 1 to 9, and all resulting differences are non-negative 2-digit numbers or 10. Examples like 'A dot is at 15 on the number line. If you move back 5 steps, what number do you reach?' (seed 43, answer 10) and 'Since 84 + 9 = 93, what is 93 \u2212 9? Answer: ___' (seed 501, answer 84) verify adherence to grade-appropriate number domains."
-    }
-  },
   "sample_seeds": [
     42,
     43,
@@ -45,33 +19,33 @@
     602,
     603,
     604,
-    606
+    605
   ],
   "samples_reviewed": [
     {
       "seed": 42,
       "formatter": "mcq",
-      "question_text": "Since 10 + 1 = 11, what is 11 \u2212 1?",
+      "question_text": "Since 10 + 1 = 11, what is 11 − 1?",
       "correct_answer": 10,
       "options": [
         {
           "key": "A",
-          "value": 12,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 11,
-          "is_correct": false
-        },
-        {
-          "key": "C",
           "value": 10,
           "is_correct": true
         },
         {
-          "key": "D",
+          "key": "B",
           "value": 9,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 11,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 12,
           "is_correct": false
         }
       ]
@@ -84,12 +58,12 @@
       "options": [
         {
           "key": "A",
-          "value": 10,
-          "is_correct": true
+          "value": 9,
+          "is_correct": false
         },
         {
           "key": "B",
-          "value": 9,
+          "value": 20,
           "is_correct": false
         },
         {
@@ -99,8 +73,8 @@
         },
         {
           "key": "D",
-          "value": 20,
-          "is_correct": false
+          "value": 10,
+          "is_correct": true
         }
       ]
     },
@@ -118,38 +92,38 @@
         },
         {
           "key": "B",
-          "value": 65,
-          "text": "65",
-          "is_correct": false
-        },
-        {
-          "key": "C",
           "value": 56,
           "text": "56",
           "is_correct": false
         },
         {
-          "key": "D",
+          "key": "C",
           "value": 55,
           "text": "55",
           "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 65,
+          "text": "65",
+          "is_correct": false
         }
       ]
     },
     {
       "seed": 45,
       "formatter": "mcq",
-      "question_text": "If 49 + 1 = 50, then 50 \u2212 1 = ___. What is the missing number?",
+      "question_text": "If 49 + 1 = 50, then 50 − 1 = ___. What is the missing number?",
       "correct_answer": 49,
       "options": [
         {
           "key": "A",
-          "value": 50,
+          "value": 51,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 51,
+          "value": 48,
           "is_correct": false
         },
         {
@@ -159,7 +133,7 @@
         },
         {
           "key": "D",
-          "value": 48,
+          "value": 50,
           "is_correct": false
         }
       ]
@@ -167,7 +141,7 @@
     {
       "seed": 46,
       "formatter": "mcq",
-      "question_text": "Start at 24 on the number line and count back 1. What is 24 \u2212 1?",
+      "question_text": "Start at 24 on the number line and count back 1. What is 24 − 1?",
       "correct_answer": 23,
       "options": [
         {
@@ -182,12 +156,12 @@
         },
         {
           "key": "C",
-          "value": 22,
+          "value": 25,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 25,
+          "value": 22,
           "is_correct": false
         }
       ]
@@ -195,13 +169,13 @@
     {
       "seed": 50,
       "formatter": "true_false",
-      "question_text": "What is 30 \u2212 3? (Hint: 27 + 3 = 30) The answer is 28. True or False?",
+      "question_text": "What is 30 − 3? (Hint: 27 + 3 = 30) The answer is 28. True or False?",
       "correct_answer": false
     },
     {
       "seed": 55,
       "formatter": "error_detect",
-      "question_text": "Grace solved: \"Start at 15 on the number line and count back 2. What is 15 \u2212 2? (Answer: ___)\". Grace says the missing number is 17. Is Grace correct?",
+      "question_text": "Grace solved: \"Start at 15 on the number line and count back 2. What is 15 − 2? (Answer: ___)\". Grace says the missing number is 17. Is Grace correct?",
       "correct_answer": {
         "has_error": true,
         "correct_value": 13
@@ -210,7 +184,7 @@
     {
       "seed": 500,
       "formatter": "error_detect",
-      "question_text": "Rico solved: \"If 89 + 4 = 93, then 93 \u2212 4 = ___. What is the missing number?\". Rico says the missing number is 89. Is Rico correct?",
+      "question_text": "Rico solved: \"If 89 + 4 = 93, then 93 − 4 = ___. What is the missing number?\". Rico says the missing number is 89. Is Rico correct?",
       "correct_answer": {
         "has_error": false,
         "correct_value": 89
@@ -219,7 +193,7 @@
     {
       "seed": 501,
       "formatter": "cloze",
-      "question_text": "Since 84 + 9 = 93, what is 93 \u2212 9? Answer: ___",
+      "question_text": "Since 84 + 9 = 93, what is 93 − 9? Answer: ___",
       "correct_answer": 84,
       "options": [
         {
@@ -251,51 +225,51 @@
     {
       "seed": 502,
       "formatter": "mcq",
-      "question_text": "What is 58 \u2212 9? (Hint: 49 + 9 = 58)",
+      "question_text": "What is 58 − 9? (Hint: 49 + 9 = 58)",
       "correct_answer": 49,
       "options": [
         {
           "key": "A",
-          "value": 67,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 49,
-          "is_correct": true
-        },
-        {
-          "key": "C",
           "value": 50,
           "is_correct": false
         },
         {
-          "key": "D",
+          "key": "B",
           "value": 48,
           "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 67,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 49,
+          "is_correct": true
         }
       ]
     },
     {
       "seed": 600,
       "formatter": "mcq",
-      "question_text": "Since 22 + 8 = 30, what is 30 \u2212 8?",
+      "question_text": "Since 22 + 8 = 30, what is 30 − 8?",
       "correct_answer": 22,
       "options": [
         {
           "key": "A",
+          "value": 22,
+          "is_correct": true
+        },
+        {
+          "key": "B",
           "value": 38,
           "is_correct": false
         },
         {
-          "key": "B",
+          "key": "C",
           "value": 21,
           "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 22,
-          "is_correct": true
         },
         {
           "key": "D",
@@ -339,67 +313,67 @@
     {
       "seed": 602,
       "formatter": "mcq",
-      "question_text": "What is 20 \u2212 3? (Hint: 17 + 3 = 20)",
+      "question_text": "What is 20 − 3? (Hint: 17 + 3 = 20)",
       "correct_answer": 17,
       "options": [
         {
           "key": "A",
-          "value": 17,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 18,
-          "is_correct": false
-        },
-        {
-          "key": "C",
           "value": 23,
           "is_correct": false
         },
         {
-          "key": "D",
+          "key": "B",
           "value": 16,
           "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 18,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 17,
+          "is_correct": true
         }
       ]
     },
     {
       "seed": 603,
       "formatter": "cloze",
-      "question_text": "If 74 + 1 = 75, then 75 \u2212 1 = ___. What is the missing number?",
+      "question_text": "If 74 + 1 = 75, then 75 − 1 = ___. What is the missing number?",
       "correct_answer": 74,
       "options": [
         {
           "key": "A",
-          "value": 75,
-          "text": "75",
+          "value": 73,
+          "text": "73",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 74,
-          "text": "74",
-          "is_correct": true
-        },
-        {
-          "key": "C",
           "value": 76,
           "text": "76",
           "is_correct": false
         },
         {
-          "key": "D",
-          "value": 73,
-          "text": "73",
+          "key": "C",
+          "value": 75,
+          "text": "75",
           "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 74,
+          "text": "74",
+          "is_correct": true
         }
       ]
     },
     {
       "seed": 604,
       "formatter": "mcq",
-      "question_text": "If 13 + 2 = 15, then 15 \u2212 2 = ___. What is the missing number?",
+      "question_text": "If 13 + 2 = 15, then 15 − 2 = ___. What is the missing number?",
       "correct_answer": 13,
       "options": [
         {
@@ -409,48 +383,56 @@
         },
         {
           "key": "B",
-          "value": 12,
+          "value": 14,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 17,
+          "value": 12,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 14,
+          "value": 17,
           "is_correct": false
         }
       ]
     },
     {
-      "seed": 606,
-      "formatter": "mcq",
-      "question_text": "What is 12 \u2212 1? (Hint: 11 + 1 = 12)",
-      "correct_answer": 11,
-      "options": [
-        {
-          "key": "A",
-          "value": 11,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 13,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 10,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 12,
-          "is_correct": false
-        }
-      ]
+      "seed": 605,
+      "formatter": "error_detect",
+      "question_text": "Liza solved: \"What is 15 − 1? (Hint: 14 + 1 = 15) (Answer: ___)\". Liza says the missing number is 14. Is Liza correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 14
+      }
     }
-  ]
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "Both strategies this node names are actually exercised. The inverse relation drives seeds 42, 45, 501, 603 and 604, where a known sum is given and the matching difference requested; the number-line framing drives seeds 43, 44 and 601, where a position is stated and a backward jump taken."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "Subtrahends range from 1 up to 9 and cases that cross a ten are present alongside ones that do not: 93 minus 9 and 58 minus 9 both break a ten, while 75 minus 1 and 24 minus 1 stay inside it. Both halves of the inverse pairing are also shown, since seed 502 supplies the addition as a hint rather than as the premise."
+    },
+    "cognitive_capacity": {
+      "verdict": "CONCERN",
+      "rationale": "Seed 601 renders 'jump back 1 units', an agreement error in text a seven-year-old is expected to read unaided. Small as it is, a numeral-plus-plural mismatch in every singular-step instance is student-facing text that a teacher would have to correct aloud."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "The competency's verb is 'illustrate ... on the number line', yet every number-line item here is prose description only, as in seed 43's dot at 15 moving back 5. No rendered line, no tick marks, no arrow is offered in any of the sixteen seeds, and no story context appears either."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "Difficulty moves by exactly the right lever: whether the subtraction crosses a ten boundary and how large the minuend is. Seed 600's 30 minus 8 and seed 604's 15 minus 2 sit on opposite sides of that boundary while testing the same inverse insight."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Every minuend is two digits and every subtrahend one digit, exactly the '2-digit by 1-digit' bound stated. Seed 44's 60 and seed 501's 93 are the largest starting points and neither strays into three digits."
+    }
+  },
+  "overall": "CONCERN"
 }

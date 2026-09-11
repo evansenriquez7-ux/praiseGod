@@ -1,35 +1,8 @@
 {
   "node_id": "mat_g3_na_q1_3",
-  "reviewed_by": "Gemini Pro blind reviewer, batch G3-NA-Q1-Harden (mat_g3_na_q1_3), 2026-08-18",
-  "review_date": "2026-08-18",
+  "reviewed_by": "reviewer-b5-marlin-obsidian-3358",
+  "review_date": "2026-09-10",
   "blind": true,
-  "overall": "PASS",
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The sample packet thoroughly fulfills all three core requirements of the MATATAG learning competency ('Determine the place value of a digit in a 4-digit number, the value of a digit, and the digit of number, given its place value.'). Specifically, identifying the digit given a place value is tested in seed 42 (\"In 1695, what digit is in the ones place?\") and seed 501 (\"In 7639, what digit is in the hundreds place?\"). Determining the place name/place value of a digit is evaluated in seed 43 (\"What place is the digit 5 in, in the number 3250?\") and seed 46 (\"What place is the digit 5 in, in the number 4725?\"). Determining the value of a digit is assessed in seed 44 (\"What is the place value of the digit 5 in 9105?\"), seed 45 (\"What is the place value of the digit 5 in 5210?\"), seed 600 (\"What is the place value of the digit 4 in 4120?\"), and verified in seed 50 (\"In the number 3105, the value of the digit 1 in the hundreds place is 1000. True or False?\")."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The items comprehensively cover all four positional places (ones, tens, hundreds, thousands) across various 4-digit numbers. For instance, ones place is targeted in seed 42 (\"In 1695, what digit is in the ones place?\") and seed 46 (\"What place is the digit 5 in, in the number 4725?\"); tens place in seed 43 (\"What place is the digit 5 in, in the number 3250?\") and seed 502 (\"In 8735, what digit is in the tens place?\"); hundreds place in seed 501 (\"In 7639, what digit is in the hundreds place?\") and seed 602 (\"What is the place value of the digit 3 in 2360?\"); and thousands place in seed 45 (\"What is the place value of the digit 5 in 5210?\") and seed 500 (\"In the number 9501, the value of the digit 9 in the thousands place is 19. True or False?\"). Furthermore, numbers with zeros in various positions (e.g. 3250, 9105, 5210, 3105, 9501, 4120, 1305, 2360) ensure students understand place value mechanics when zero acts as a placeholder."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The language, syntax, and cognitive load are perfectly tuned for Grade 3 Quarter 1 learners. The phrasing is direct and unambiguous, such as \"In 8735, what digit is in the tens place?\" (seed 502) and \"What is the place value of the digit 3 in 2360?\" (seed 602). There are no unnecessary text overlays, convoluted sentence structures, or extraneous reading burdens that could impede early primary students from demonstrating mathematical mastery."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The sample set includes multiple formatters (MCQ, cloze, true_false) and varied question stems to evaluate mastery from different angles. For example, cloze formatting is used in seed 43 (\"What place is the digit 5 in, in the number 3250?\"), standard multiple-choice in seed 501 (\"In 7639, what digit is in the hundreds place?\"), and conceptual validation in seed 601 (\"What place is the digit 5 in, in the number 1305? The answer is ones. True or False?\"). Distractors across MCQs are pedagogically sound, offering plausible place values or alternative digits from the given numeral."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "All generated items align directly with the MATATAG Grade 3 Quarter 1 curriculum boundaries without overreaching or underreaching. Questions such as \"In 1695, what digit is in the ones place?\" (seed 42) and \"What is the place value of the digit 4 in 4120?\" (seed 600) assess exactly the target skills of digit identification and value determination. No higher-grade concepts (such as 5-digit numbers, decimals, or arithmetic operations) are introduced."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "All numbers used across the 12 seeds (e.g. 1695, 3250, 9105, 5210, 4725, 3105, 9501, 7639, 8735, 4120, 1305, 2360) are 4-digit numbers within the Grade 3 Quarter 1 range up to 10,000 as explicitly mandated by the competency text ('in a 4-digit number'). Examples like seed 44 (\"What is the place value of the digit 5 in 9105?\") and seed 45 (\"What is the place value of the digit 5 in 5210?\") strictly respect this scale requirement."
-    }
-  },
   "sample_seeds": [
     42,
     43,
@@ -53,23 +26,23 @@
       "options": [
         {
           "key": "A",
-          "value": 8,
-          "is_correct": false
-        },
-        {
-          "key": "B",
           "value": 2,
           "is_correct": false
         },
         {
+          "key": "B",
+          "value": 8,
+          "is_correct": false
+        },
+        {
           "key": "C",
-          "value": 5,
-          "is_correct": true
+          "value": 6,
+          "is_correct": false
         },
         {
           "key": "D",
-          "value": 6,
-          "is_correct": false
+          "value": 5,
+          "is_correct": true
         }
       ]
     },
@@ -81,15 +54,15 @@
       "options": [
         {
           "key": "A",
-          "value": "tens",
-          "text": "tens",
-          "is_correct": true
+          "value": "ones",
+          "text": "ones",
+          "is_correct": false
         },
         {
           "key": "B",
-          "value": "hundreds",
-          "text": "hundreds",
-          "is_correct": false
+          "value": "tens",
+          "text": "tens",
+          "is_correct": true
         },
         {
           "key": "C",
@@ -99,8 +72,8 @@
         },
         {
           "key": "D",
-          "value": "ones",
-          "text": "ones",
+          "value": "hundreds",
+          "text": "hundreds",
           "is_correct": false
         }
       ]
@@ -118,8 +91,8 @@
         },
         {
           "key": "B",
-          "value": 50,
-          "is_correct": false
+          "value": 5,
+          "is_correct": true
         },
         {
           "key": "C",
@@ -128,8 +101,8 @@
         },
         {
           "key": "D",
-          "value": 5,
-          "is_correct": true
+          "value": 50,
+          "is_correct": false
         }
       ]
     },
@@ -146,7 +119,7 @@
         },
         {
           "key": "B",
-          "value": 5,
+          "value": 50,
           "is_correct": false
         },
         {
@@ -156,7 +129,7 @@
         },
         {
           "key": "D",
-          "value": 50,
+          "value": 5,
           "is_correct": false
         }
       ]
@@ -169,8 +142,8 @@
       "options": [
         {
           "key": "A",
-          "value": "thousands",
-          "text": "thousands",
+          "value": "tens",
+          "text": "tens",
           "is_correct": false
         },
         {
@@ -181,14 +154,14 @@
         },
         {
           "key": "C",
-          "value": "hundreds",
-          "text": "hundreds",
+          "value": "thousands",
+          "text": "thousands",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "tens",
-          "text": "tens",
+          "value": "hundreds",
+          "text": "hundreds",
           "is_correct": false
         }
       ]
@@ -207,33 +180,33 @@
     },
     {
       "seed": 501,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "In 7639, what digit is in the hundreds place?",
       "correct_answer": 6,
       "options": [
         {
           "key": "A",
-          "value": 6,
-          "text": "6",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 8,
-          "text": "8",
-          "is_correct": false
-        },
-        {
-          "key": "C",
           "value": 9,
           "text": "9",
           "is_correct": false
         },
         {
-          "key": "D",
+          "key": "B",
           "value": 0,
           "text": "0",
           "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 8,
+          "text": "8",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 6,
+          "text": "6",
+          "is_correct": true
         }
       ]
     },
@@ -245,7 +218,7 @@
       "options": [
         {
           "key": "A",
-          "value": 1,
+          "value": 8,
           "is_correct": false
         },
         {
@@ -255,12 +228,12 @@
         },
         {
           "key": "C",
-          "value": 8,
+          "value": 5,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 5,
+          "value": 1,
           "is_correct": false
         }
       ]
@@ -273,12 +246,12 @@
       "options": [
         {
           "key": "A",
-          "value": 4,
+          "value": 14,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 40,
+          "value": 4,
           "is_correct": false
         },
         {
@@ -288,7 +261,7 @@
         },
         {
           "key": "D",
-          "value": 14,
+          "value": 40,
           "is_correct": false
         }
       ]
@@ -312,12 +285,12 @@
         },
         {
           "key": "B",
-          "value": 13,
+          "value": 3,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 3,
+          "value": 13,
           "is_correct": false
         },
         {
@@ -327,5 +300,32 @@
         }
       ]
     }
-  ]
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "CONCERN",
+      "rationale": "The competency separates the place value of a digit from the value of a digit, and the stems do not hold that distinction steady. What is the place value of the digit 5 in 5210? is keyed 5000, which is the value, while What place is the digit 5 in, in the number 3250? is keyed tens, and a true_false item uses the value of the digit 1 in the hundreds place for the same construct as the first. Three phrasings serve two concepts inconsistently."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "All four places of a four-digit numeral are targeted somewhere in the set, and all three clauses of the competency are generated: naming the place a digit occupies, giving what that digit is worth, and naming the digit that sits at a stated place."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Every numeral is four digits and the place names used are limited to ones, tens, hundreds and thousands, which is exactly the Grade 3 Quarter 1 band, with one concept per item and no arithmetic attached."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "Multiple choice, cloze and true_false all appear, and the true/false items run in both polarities rather than always being falsifiable, with the 1305 item correctly keyed True against two others keyed False."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "What changes across samples is the digit selected, the place it occupies and the direction of the question, all of which are this competency's own axes. Every key is also correct, including the value 300 for the digit 3 in 2360."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Every numeral used is exactly four digits, from 1305 through 9501, matching the competency's stated 4-digit number without falling below it or exceeding it."
+    }
+  },
+  "overall": "CONCERN"
 }

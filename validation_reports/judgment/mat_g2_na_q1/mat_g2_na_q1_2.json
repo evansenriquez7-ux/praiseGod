@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g2_na_q1_2",
-  "reviewed_by": "Gemini Pro blind reviewer, batch G1 (na number_reading hardening), 2026-08-16",
-  "review_date": "2026-08-16",
+  "reviewed_by": "reviewer-b3-cinder-halyard-2276",
+  "review_date": "2026-09-10",
   "blind": true,
   "sample_seeds": [
     42,
@@ -16,91 +16,69 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "read_mcq",
-      "question_text": "What number do the blocks show?",
-      "correct_answer": "C",
-      "options": [
-        {
-          "key": "A",
-          "value": 25,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 8,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 35,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 53,
-          "is_correct": false
-        }
-      ]
+      "formatter": "set_fill_in_blank",
+      "question_text": "Use base-10 blocks to show the number 203.",
+      "correct_answer": 203
     },
     {
       "seed": 43,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Use base-10 blocks to show the number 470.",
+      "correct_answer": 470
+    },
+    {
+      "seed": 44,
       "formatter": "read_mcq",
-      "question_text": "What number do the blocks show?",
+      "question_text": "What number is marked on the number line?",
       "correct_answer": "D",
       "options": [
         {
           "key": "A",
-          "value": 92,
+          "value": 711,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 3,
+          "value": 709,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 120,
+          "value": 712,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 102,
+          "value": 710,
           "is_correct": true
         }
       ]
-    },
-    {
-      "seed": 44,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Move the dot to show 58 on the number line.",
-      "correct_answer": 58
     },
     {
       "seed": 45,
       "formatter": "read_mcq",
       "question_text": "What number is marked on the number line?",
-      "correct_answer": "C",
+      "correct_answer": "D",
       "options": [
         {
           "key": "A",
-          "value": 137,
+          "value": 606,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 134,
+          "value": 604,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 135,
-          "is_correct": true
+          "value": 607,
+          "is_correct": false
         },
         {
           "key": "D",
-          "value": 136,
-          "is_correct": false
+          "value": 605,
+          "is_correct": true
         }
       ]
     },
@@ -108,27 +86,27 @@
       "seed": 46,
       "formatter": "read_mcq",
       "question_text": "What number do the blocks show?",
-      "correct_answer": "D",
+      "correct_answer": "A",
       "options": [
         {
           "key": "A",
-          "value": 31,
-          "is_correct": false
+          "value": 587,
+          "is_correct": true
         },
         {
           "key": "B",
-          "value": 113,
+          "value": 20,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 121,
+          "value": 577,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 131,
-          "is_correct": true
+          "value": 487,
+          "is_correct": false
         }
       ]
     },
@@ -148,17 +126,17 @@
       "seed": 502,
       "formatter": "read_mcq",
       "question_text": "What number is marked on the number line?",
-      "correct_answer": "B",
+      "correct_answer": "D",
       "options": [
         {
           "key": "A",
-          "value": 349,
+          "value": 351,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 350,
-          "is_correct": true
+          "value": 349,
+          "is_correct": false
         },
         {
           "key": "C",
@@ -167,8 +145,8 @@
         },
         {
           "key": "D",
-          "value": 351,
-          "is_correct": false
+          "value": 350,
+          "is_correct": true
         }
       ]
     }
@@ -176,28 +154,28 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "The generator successfully fulfills the requirement to \"Recognize and represent numbers up to 1000\" by providing tasks such as \"Move the dot to show 58 on the number line.\""
+      "rationale": "Both verbs are discharged. Recognising is covered by items that read a value off blocks or off a marked line, and representing is covered by items instructing the learner to build a number with base-10 blocks or to move the dot to a given position, so the learner produces the model rather than only interpreting one."
     },
     "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The samples cover \"using a variety of concrete and pictorial models, and numerals.\" by alternating between visual blocks (\"What number do the blocks show?\") and distance models (\"What number is marked on the number line?\")."
+      "verdict": "CONCERN",
+      "rationale": "The competency promises a variety of concrete and pictorial models, yet only two ever appear: base-10 blocks and the number line. Place-value charts, bundled objects, money and expanded notation are all absent, so a variety amounts to a pair, and each of the eight samples is one of four near-identical stems."
     },
     "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The tasks align perfectly with a Grade 2 student's capacity to handle \"numbers up to 1000\" by using direct, unambiguous instructions like \"Move the dot to show 821 on the number line.\""
+      "verdict": "CONCERN",
+      "rationale": "Several number-line items ask the learner to choose between four consecutive or near-consecutive three-digit values, such as distinguishing a point at 710 from 709, 711 and 712. Resolving single units at that magnitude on a drawn line is a perceptual task rather than a number-sense one, and it is an unfair demand at Grade 2."
     },
     "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The variants are comprehensive, smoothly balancing recognition tasks (\"What number is marked on the number line?\") with representation tasks (\"Move the dot to show 717 on the number line.\")."
+      "verdict": "CONCERN",
+      "rationale": "Only two response types occur and each is locked to one model, with reading always done on blocks or a line and producing always done by building or dragging. No item bridges the models by asking which representation matches a given numeral, and no numeral-to-numeral or word-form orientation appears at all."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "The samples align entirely with the directive to \"Recognize and represent numbers up to 1000 using a variety of concrete and pictorial models, and numerals.\" without exceeding the bounds of the curriculum."
+      "rationale": "What changes between seeds is which representation the learner must move between and in which direction, which is exactly what this competency is about. The pairing of a build-the-number task with a read-the-number task on the same model is a coherent way to build representational fluency."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Values are appropriately scaled for \"numbers up to 1000\", maintaining steady difficulty in multi-digit place value tests like \"What number do the blocks show?\"."
+      "rationale": "Values run from just over two hundred up to the low eight-hundreds, all three-digit and all under the stated thousand. That range fits base-10 block work, where hundreds flats remain countable, and matches the Quarter 1 number range."
     }
   },
-  "overall": "PASS"
+  "overall": "CONCERN"
 }

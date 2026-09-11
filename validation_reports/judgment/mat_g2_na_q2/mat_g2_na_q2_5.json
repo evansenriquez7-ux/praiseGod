@@ -1,34 +1,8 @@
 {
   "node_id": "mat_g2_na_q2_5",
-  "reviewed_by": "Gemini Pro blind reviewer, batch G2-NA-Q2-Harden (mat_g2_na_q2_5), 2026-08-18",
+  "reviewed_by": "reviewer-b4-plover-saffron-6041",
+  "review_date": "2026-09-10",
   "blind": true,
-  "overall": "PASS",
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The sample set directly fulfills the target competency of solving subtraction problems where both numbers are less than 100, covering both non-regrouping and regrouping cases. Subtraction without regrouping is well-represented in items such as \"Daniel is on step 4. Daniel goes down 1 step. What step is Daniel on now?\" (seed 42) and \"Start at 42. Count back 10. What number do you land on?\" (seed 43). Subtraction with regrouping is clearly tested in items such as \"A kitchen has 60 cookies. Chef Demi removes 53 cookies. How many cookies are left in the kitchen?\" (seed 45) and \"A home desk has 98 canvases. Carlo removes 49 canvases. How many canvases are left in the home desk?\" (seed 501)."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The items encompass diverse subtraction problem structures including take-away/part-part-whole (\"Carlo had 73 canvases and gave 67 to friends at the home desk. How many canvases does Carlo have left?\", seed 502), comparative difference (\"Des has 30 knee pads. A friend has 26 knee pads. How many fewer knee pads does the friend have?\", seed 602), linear step movement (\"Ate Nena is on step 60. Ate Nena goes down 20 steps. What step is Ate Nena on now?\", seed 46), counting back (\"Start at 52. Count back 0. What number do you land on?\", seed 606), zero subtraction identity (\"There are 37 baskets on the table. Moses takes away 0 baskets. How many baskets are left on the table? The answer is 37. True or False?\", seed 601), and visual/picture-based representations (\"(Large group of 94 drinks) \u2014 There are 94 drinks.\nTaking away 27 drinks.\nHow many drinks are left?\", seed 500)."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The reading load and cognitive complexity are well calibrated for Grade 2 Quarter 2 learners. Problem statements are direct and concise, using familiar Filipino names (Carlo, Bianca, Ate Nena, Kuya Renz, Sir Ben) and concrete objects (ribbons, cookies, frogs, colored pencils, canvases, medals). Arithmetic operations stay strictly within 2-digit subtraction without overburdening working memory."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The assessment packet includes a healthy distribution of item formats: standard multiple-choice (e.g. \"Faye is on step 31. Faye goes down 10 steps. What step is Faye on now?\", seed 604), cloze selection (e.g. \"Isko has 90 medals. A friend has 26 medals. How many fewer medals does the friend have?\", seed 44), pictorial comprehension via read_mcq (e.g. \"(Large group of 25 frogs) \u2014 There are 25 frogs.\nTaking away 20 frogs.\nHow many frogs are left?\", seed 55), error detection (e.g. \"Jose solved this problem: \"Bianca had 60 ribbons. Bianca used 1 of them. How many ribbons are left?\" Jose says the answer is 59. Is Jose correct?\", seed 50), and true/false verification (e.g. \"Des is on step 70. Des goes down 0 steps. What step is Des on now? The answer is 70. True or False?\", seed 72)."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "All generated items align strictly to subtraction problem solving within 100 without introducing extraneous operations (such as multiplication or 3-digit subtraction). Minuends and subtrahends are both non-negative integers under 100, adhering strictly to the MATATAG learning competency specifications."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "Numerical scale is fully compliant with the boundary condition \"where both numbers are less than 100\". Minuends span from small single digits (\"Daniel is on step 4. Daniel goes down 1 step. What step is Daniel on now?\", seed 42) up to high two-digit values (\"A home desk has 98 canvases. Carlo removes 49 canvases. How many canvases are left in the home desk?\", seed 501), and subtrahends range from 0 to two-digit numbers, ensuring no value equals or exceeds 100."
-    }
-  },
   "sample_seeds": [
     42,
     43,
@@ -46,7 +20,7 @@
     602,
     603,
     604,
-    606
+    605
   ],
   "samples_reviewed": [
     {
@@ -57,22 +31,22 @@
       "options": [
         {
           "key": "A",
-          "value": 5,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 4,
-          "is_correct": false
-        },
-        {
-          "key": "C",
           "value": 3,
           "is_correct": true
         },
         {
-          "key": "D",
+          "key": "B",
+          "value": 5,
+          "is_correct": false
+        },
+        {
+          "key": "C",
           "value": 2,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 4,
           "is_correct": false
         }
       ]
@@ -90,17 +64,17 @@
         },
         {
           "key": "B",
-          "value": 31,
+          "value": 52,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 33,
+          "value": 31,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 52,
+          "value": 33,
           "is_correct": false
         }
       ]
@@ -113,27 +87,27 @@
       "options": [
         {
           "key": "A",
-          "value": 63,
-          "text": "63",
-          "is_correct": false
-        },
-        {
-          "key": "B",
           "value": 116,
           "text": "116",
           "is_correct": false
         },
         {
-          "key": "C",
+          "key": "B",
           "value": 65,
           "text": "65",
           "is_correct": false
         },
         {
-          "key": "D",
+          "key": "C",
           "value": 64,
           "text": "64",
           "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 63,
+          "text": "63",
+          "is_correct": false
         }
       ]
     },
@@ -145,22 +119,22 @@
       "options": [
         {
           "key": "A",
-          "value": 8,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 113,
-          "is_correct": false
-        },
-        {
-          "key": "C",
           "value": 7,
           "is_correct": true
         },
         {
-          "key": "D",
+          "key": "B",
           "value": 6,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 113,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 8,
           "is_correct": false
         }
       ]
@@ -178,18 +152,18 @@
         },
         {
           "key": "B",
-          "value": 40,
-          "is_correct": true
-        },
-        {
-          "key": "C",
           "value": 39,
           "is_correct": false
         },
         {
-          "key": "D",
+          "key": "C",
           "value": 80,
           "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 40,
+          "is_correct": true
         }
       ]
     },
@@ -205,7 +179,7 @@
     {
       "seed": 55,
       "formatter": "read_mcq",
-      "question_text": "(Large group of 25 frogs) \u2014 There are 25 frogs.\nTaking away 20 frogs.\nHow many frogs are left?",
+      "question_text": "(Large group of 25 frogs) — There are 25 frogs.\nTaking away 20 frogs.\nHow many frogs are left?",
       "correct_answer": "C",
       "options": [
         {
@@ -239,7 +213,7 @@
     {
       "seed": 500,
       "formatter": "read_mcq",
-      "question_text": "(Large group of 94 drinks) \u2014 There are 94 drinks.\nTaking away 27 drinks.\nHow many drinks are left?",
+      "question_text": "(Large group of 94 drinks) — There are 94 drinks.\nTaking away 27 drinks.\nHow many drinks are left?",
       "correct_answer": "C",
       "options": [
         {
@@ -272,20 +246,20 @@
       "options": [
         {
           "key": "A",
+          "value": 48,
+          "text": "48",
+          "is_correct": false
+        },
+        {
+          "key": "B",
           "value": 49,
           "text": "49",
           "is_correct": true
         },
         {
-          "key": "B",
+          "key": "C",
           "value": 50,
           "text": "50",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 48,
-          "text": "48",
           "is_correct": false
         },
         {
@@ -309,13 +283,13 @@
         },
         {
           "key": "B",
-          "value": 6,
-          "is_correct": true
+          "value": 7,
+          "is_correct": false
         },
         {
           "key": "C",
-          "value": 7,
-          "is_correct": false
+          "value": 6,
+          "is_correct": true
         },
         {
           "key": "D",
@@ -332,22 +306,22 @@
       "options": [
         {
           "key": "A",
-          "value": 86,
-          "is_correct": false
-        },
-        {
-          "key": "B",
           "value": 33,
           "is_correct": false
         },
         {
-          "key": "C",
+          "key": "B",
           "value": 34,
           "is_correct": true
         },
         {
-          "key": "D",
+          "key": "C",
           "value": 35,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 86,
           "is_correct": false
         }
       ]
@@ -371,7 +345,7 @@
         },
         {
           "key": "B",
-          "value": 5,
+          "value": 3,
           "is_correct": false
         },
         {
@@ -381,7 +355,7 @@
         },
         {
           "key": "D",
-          "value": 3,
+          "value": 5,
           "is_correct": false
         }
       ]
@@ -394,21 +368,21 @@
       "options": [
         {
           "key": "A",
+          "value": 110,
+          "text": "110",
+          "is_correct": false
+        },
+        {
+          "key": "B",
           "value": 71,
           "text": "71",
           "is_correct": false
         },
         {
-          "key": "B",
+          "key": "C",
           "value": 70,
           "text": "70",
           "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 110,
-          "text": "110",
-          "is_correct": false
         },
         {
           "key": "D",
@@ -426,17 +400,17 @@
       "options": [
         {
           "key": "A",
+          "value": 41,
+          "is_correct": false
+        },
+        {
+          "key": "B",
           "value": 21,
           "is_correct": true
         },
         {
-          "key": "B",
-          "value": 20,
-          "is_correct": false
-        },
-        {
           "key": "C",
-          "value": 41,
+          "value": 20,
           "is_correct": false
         },
         {
@@ -447,32 +421,40 @@
       ]
     },
     {
-      "seed": 606,
-      "formatter": "mcq",
-      "question_text": "Start at 52. Count back 0. What number do you land on?",
-      "correct_answer": 52,
-      "options": [
-        {
-          "key": "A",
-          "value": 52,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 51,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 53,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 54,
-          "is_correct": false
-        }
-      ]
+      "seed": 605,
+      "formatter": "error_detect",
+      "question_text": "Liza solved this problem: \"Riza has 24 milk tea cups. Riza gives away 1 milk tea cup. How many milk tea cups does Riza have left?\" Liza says the answer is 23. Is Liza correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 23
+      }
     }
-  ]
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "These are problems rather than naked computations, as the wording requires, and the picture route the competency mentions is honoured by the read_mcq items showing a group of frogs and a group of drinks with the take-away stated."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "The pool reaches past plain take-away into comparison subtraction: seed 44 asks how many fewer medals a friend has and seed 602 does the same with knee pads. With regrouping (90 less 26, 73 less 67) and without (42 less 10, 31 less 10) are both represented."
+    },
+    "cognitive_capacity": {
+      "verdict": "CONCERN",
+      "rationale": "Seed 600 opens with 'A art room', an article error in text meant to be read to or by a young child. The contexts also strain plausibility, as when a home desk is said to hold 98 canvases in seed 501, which invites a child to doubt the scenario rather than solve it."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "Stair-descending, counting back, comparison, removal from a room, giving away to friends, a pictured set, a true-or-false claim and a peer's solution to check all appear across these seeds. For an orally-or-pictorially delivered competency that is the right spread."
+    },
+    "competency_alignment": {
+      "verdict": "CONCERN",
+      "rationale": "Two seeds subtract nothing at all: Des goes down 0 steps in seed 72 and Moses takes away 0 baskets in seed 601, both keyed True. Zero-subtrahend items test reading comprehension, not the with-and-without-regrouping progression this node is supposed to build."
+    },
+    "scale_appropriateness": {
+      "verdict": "CONCERN",
+      "rationale": "Seed 42 works with 4 minus 1, well under the two-digit territory implied by numbers less than 100, and several distractor slots break the other way: 116 is offered against 90 less 26 and 113 against 60 less 53, both larger than the starting quantity."
+    }
+  },
+  "overall": "CONCERN"
 }

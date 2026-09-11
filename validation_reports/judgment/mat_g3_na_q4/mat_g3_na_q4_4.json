@@ -1,420 +1,7 @@
 {
   "node_id": "mat_g3_na_q4_4",
-  "reviewed_by": "Gemini Pro blind reviewer, batch G3-Mixed-Harden (mat_g3_na_q4_2, mat_g3_na_q4_4, mat_g3_na_q4_7), 2026-08-17",
-  "overall": "PASS",
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The samples directly fulfill the competency's core requirement to estimate quotients. Questions consistently prompt the student to estimate using standard formats such as \"Estimate the quotient: 182 \u00f7 37\" and \"Estimate: 143 \u00f7 5 \u2248 ___\", demonstrating execution of the required estimation skill."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The competency mandates coverage of \"2- to 3-digit numbers divided by 1- to 2-digit numbers\". The sample set spans these bounds well, featuring 2-digit by 1-digit (\"22 \u00f7 2 \u2248 9. True or False?\"), 3-digit by 1-digit (\"488 \u00f7 5 \u2248 ___\"), and 3-digit by 2-digit division (\"182 \u00f7 37\"). All required parameter spaces are represented."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The language and structural complexity are highly appropriate for Grade 3 students in Quarter 4. The prompts are concise (e.g., \"Estimate the quotient: 34 \u00f7 2\") and the error-detection scenarios use simple, relatable phrasing (e.g., \"Rico solved: \"488 \u00f7 5 \u2248 ___\". Rico says the missing number is 100. Is Rico correct?\"), well within a typical third grader's reading comprehension."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The set exhibits strong variety in presentation formats. It includes standard multiple choice (\"Estimate the quotient: 557 \u00f7 68\"), fill-in-the-blank style cloze (\"Estimate: 713 \u00f7 87 \u2248 ___\"), true/false evaluations (\"22 \u00f7 2 \u2248 9. True or False?\"), and error detection scenarios involving named characters (\"Grace solved: \"298 \u00f7 69 \u2248 ___\". Grace says the missing number is 40. Is Grace correct?\")."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "All items focus purely on the target competency without introducing extraneous concepts or operations. The estimations resolve cleanly using basic multiples of 10 or 100 as expected for this level (e.g., \"488 \u00f7 5\" rounding to 500 \u00f7 5 = 100, and \"203 \u00f7 48\" rounding to 200 \u00f7 50 = 4). There is no out-of-bounds vocabulary or multi-step logic."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "The numerical values strictly adhere to the competency constraints (2- to 3-digit dividends and 1- to 2-digit divisors). Distractors in the multiple-choice items are well-scaled to catch common magnitude errors (e.g., for \"Estimate the quotient: 182 \u00f7 37\", distractors include 50 and 4, catching place value and rounding mistakes)."
-    }
-  },
-  "samples_reviewed": [
-    {
-      "seed": 42,
-      "formatter": "mcq",
-      "question_text": "Estimate the quotient: 182 \u00f7 37",
-      "correct_answer": 5,
-      "options": [
-        {
-          "key": "A",
-          "value": 50,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 4,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 5,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 7,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 43,
-      "formatter": "mcq",
-      "question_text": "Estimate the quotient: 162 \u00f7 61",
-      "correct_answer": 3,
-      "options": [
-        {
-          "key": "A",
-          "value": 3,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 5,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 2,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 30,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 44,
-      "formatter": "cloze",
-      "question_text": "Estimate: 143 \u00f7 5 \u2248 ___",
-      "correct_answer": 30,
-      "options": [
-        {
-          "key": "A",
-          "value": 35,
-          "text": "35",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 300,
-          "text": "300",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 25,
-          "text": "25",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 30,
-          "text": "30",
-          "is_correct": true
-        }
-      ]
-    },
-    {
-      "seed": 45,
-      "formatter": "mcq",
-      "question_text": "Estimate the quotient: 557 \u00f7 68",
-      "correct_answer": 8,
-      "options": [
-        {
-          "key": "A",
-          "value": 7,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 80,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 8,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 10,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 46,
-      "formatter": "mcq",
-      "question_text": "Estimate the quotient: 203 \u00f7 48",
-      "correct_answer": 4,
-      "options": [
-        {
-          "key": "A",
-          "value": 3,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 4,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 6,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 40,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 50,
-      "formatter": "true_false",
-      "question_text": "22 \u00f7 2 \u2248 9. True or False?",
-      "correct_answer": false
-    },
-    {
-      "seed": 55,
-      "formatter": "error_detect",
-      "question_text": "Grace solved: \"298 \u00f7 69 \u2248 ___\". Grace says the missing number is 40. Is Grace correct?",
-      "correct_answer": {
-        "has_error": true,
-        "correct_value": 4
-      }
-    },
-    {
-      "seed": 500,
-      "formatter": "error_detect",
-      "question_text": "Rico solved: \"488 \u00f7 5 \u2248 ___\". Rico says the missing number is 100. Is Rico correct?",
-      "correct_answer": {
-        "has_error": false,
-        "correct_value": 100
-      }
-    },
-    {
-      "seed": 501,
-      "formatter": "cloze",
-      "question_text": "Estimate: 713 \u00f7 87 \u2248 ___",
-      "correct_answer": 8,
-      "options": [
-        {
-          "key": "A",
-          "value": 8,
-          "text": "8",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 7,
-          "text": "7",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 10,
-          "text": "10",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 80,
-          "text": "80",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 502,
-      "formatter": "mcq",
-      "question_text": "Estimate the quotient: 34 \u00f7 2",
-      "correct_answer": 15,
-      "options": [
-        {
-          "key": "A",
-          "value": 150,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 15,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 10,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 20,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 600,
-      "formatter": "mcq",
-      "question_text": "Estimate the quotient: 468 \u00f7 58",
-      "correct_answer": 8,
-      "options": [
-        {
-          "key": "A",
-          "value": 80,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 10,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 8,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 7,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 601,
-      "formatter": "cloze",
-      "question_text": "Estimate: 558 \u00f7 87 \u2248 ___",
-      "correct_answer": 6,
-      "options": [
-        {
-          "key": "A",
-          "value": 8,
-          "text": "8",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 60,
-          "text": "60",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 5,
-          "text": "5",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 6,
-          "text": "6",
-          "is_correct": true
-        }
-      ]
-    },
-    {
-      "seed": 602,
-      "formatter": "mcq",
-      "question_text": "Estimate the quotient: 807 \u00f7 43",
-      "correct_answer": 20,
-      "options": [
-        {
-          "key": "A",
-          "value": 20,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 15,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 200,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 25,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 603,
-      "formatter": "cloze",
-      "question_text": "Estimate: 288 \u00f7 47 \u2248 ___",
-      "correct_answer": 6,
-      "options": [
-        {
-          "key": "A",
-          "value": 5,
-          "text": "5",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 6,
-          "text": "6",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 60,
-          "text": "60",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 8,
-          "text": "8",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 604,
-      "formatter": "mcq",
-      "question_text": "Estimate the quotient: 117 \u00f7 31",
-      "correct_answer": 4,
-      "options": [
-        {
-          "key": "A",
-          "value": 4,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 6,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 40,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 3,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 605,
-      "formatter": "error_detect",
-      "question_text": "Liza solved: \"357 \u00f7 57 \u2248 ___\". Liza says the missing number is 6. Is Liza correct?",
-      "correct_answer": {
-        "has_error": false,
-        "correct_value": 6
-      }
-    }
-  ],
+  "reviewed_by": "reviewer-b6-thistle-kestrel-9724",
+  "review_date": "2026-09-10",
   "blind": true,
   "sample_seeds": [
     42,
@@ -433,5 +20,419 @@
     603,
     604,
     605
-  ]
+  ],
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "formatter": "mcq",
+      "question_text": "Estimate the quotient: 182 ÷ 37",
+      "correct_answer": 5,
+      "options": [
+        {
+          "key": "A",
+          "value": 50,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 7,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 4,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 5,
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 43,
+      "formatter": "mcq",
+      "question_text": "Estimate the quotient: 162 ÷ 61",
+      "correct_answer": 3,
+      "options": [
+        {
+          "key": "A",
+          "value": 3,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 30,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 2,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 5,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 44,
+      "formatter": "cloze",
+      "question_text": "Estimate: 143 ÷ 5 ≈ ___",
+      "correct_answer": 30,
+      "options": [
+        {
+          "key": "A",
+          "value": 30,
+          "text": "30",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 25,
+          "text": "25",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 35,
+          "text": "35",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 300,
+          "text": "300",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 45,
+      "formatter": "mcq",
+      "question_text": "Estimate the quotient: 557 ÷ 68",
+      "correct_answer": 8,
+      "options": [
+        {
+          "key": "A",
+          "value": 7,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 10,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 80,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 8,
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 46,
+      "formatter": "mcq",
+      "question_text": "Estimate the quotient: 203 ÷ 48",
+      "correct_answer": 4,
+      "options": [
+        {
+          "key": "A",
+          "value": 40,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 6,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 4,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 3,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 50,
+      "formatter": "true_false",
+      "question_text": "22 ÷ 2 ≈ 9. True or False?",
+      "correct_answer": false
+    },
+    {
+      "seed": 55,
+      "formatter": "error_detect",
+      "question_text": "Grace solved: \"298 ÷ 69 ≈ ___\". Grace says the missing number is 40. Is Grace correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 4
+      }
+    },
+    {
+      "seed": 500,
+      "formatter": "error_detect",
+      "question_text": "Rico solved: \"488 ÷ 5 ≈ ___\". Rico says the missing number is 100. Is Rico correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 100
+      }
+    },
+    {
+      "seed": 501,
+      "formatter": "cloze",
+      "question_text": "Estimate: 713 ÷ 87 ≈ ___",
+      "correct_answer": 8,
+      "options": [
+        {
+          "key": "A",
+          "value": 10,
+          "text": "10",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 8,
+          "text": "8",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 80,
+          "text": "80",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 7,
+          "text": "7",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 502,
+      "formatter": "mcq",
+      "question_text": "Estimate the quotient: 34 ÷ 2",
+      "correct_answer": 15,
+      "options": [
+        {
+          "key": "A",
+          "value": 15,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 10,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 150,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 20,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 600,
+      "formatter": "mcq",
+      "question_text": "Estimate the quotient: 468 ÷ 58",
+      "correct_answer": 8,
+      "options": [
+        {
+          "key": "A",
+          "value": 7,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 80,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 8,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 10,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 601,
+      "formatter": "cloze",
+      "question_text": "Estimate: 558 ÷ 87 ≈ ___",
+      "correct_answer": 6,
+      "options": [
+        {
+          "key": "A",
+          "value": 60,
+          "text": "60",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 5,
+          "text": "5",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 8,
+          "text": "8",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 6,
+          "text": "6",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 602,
+      "formatter": "mcq",
+      "question_text": "Estimate the quotient: 807 ÷ 43",
+      "correct_answer": 20,
+      "options": [
+        {
+          "key": "A",
+          "value": 25,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 20,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 15,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 200,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 603,
+      "formatter": "cloze",
+      "question_text": "Estimate: 288 ÷ 47 ≈ ___",
+      "correct_answer": 6,
+      "options": [
+        {
+          "key": "A",
+          "value": 8,
+          "text": "8",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 5,
+          "text": "5",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 6,
+          "text": "6",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 60,
+          "text": "60",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 604,
+      "formatter": "mcq",
+      "question_text": "Estimate the quotient: 117 ÷ 31",
+      "correct_answer": 4,
+      "options": [
+        {
+          "key": "A",
+          "value": 4,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 6,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 40,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 605,
+      "formatter": "error_detect",
+      "question_text": "Liza solved: \"357 ÷ 57 ≈ ___\". Liza says the missing number is 6. Is Liza correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 6
+      }
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "Stems ask for an estimated quotient and the accepted values follow from replacing both numbers with compatible round ones, so 557 divided by 68 resolving to 8 is exactly the multiples-of-ten reasoning the competency prescribes."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "Unlike the sibling estimation nodes this one does produce both divisor sizes, with two-digit divisors such as 37, 61 and 87 and one-digit divisors in the items dividing 143 and 488 by 5, and both the multiples-of-ten and multiples-of-a-hundred adjustments are used."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The wrong options here are genuinely discriminating rather than cosmetic, since the set offered against 182 divided by 37 includes a tenfold place-value error alongside near-miss quotients, so the pupil must actually estimate to choose."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The estimate-the-quotient question, the approximation cloze, a truth statement about 22 divided by 2, and error checking attributed to Grace, Rico and Liza give four working presentations of the same skill."
+    },
+    "competency_alignment": {
+      "verdict": "CONCERN",
+      "rationale": "A few generated pairs make estimation pointless or misleading. Dividing 34 by 2 has an exact easy answer of seventeen, yet the required response is fifteen and seventeen is not offered, so a pupil who simply computes correctly finds no matching option; the 22 by 2 truth item has the same shape. Items should not ask for an approximation where the exact result is easier and then exclude it."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Dividends run from two digits at 22 and 34 up to three digits at 807, and divisors span one to two digits, matching the ranges the competency states on both sides."
+    }
+  },
+  "overall": "CONCERN"
 }

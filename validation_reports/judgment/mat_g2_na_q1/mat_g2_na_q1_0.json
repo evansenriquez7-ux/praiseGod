@@ -1,43 +1,14 @@
 {
   "node_id": "mat_g2_na_q1_0",
-  "reviewed_by": "Gemini Pro blind reviewer, batch Re-Harden (mat_g2_na_q1_0), 2026-08-18",
-  "review_date": "2026-08-18",
+  "reviewed_by": "reviewer-b3-cinder-halyard-2276",
+  "review_date": "2026-09-10",
   "blind": true,
-  "overall": "PASS",
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The sample items directly fulfill the target competency of counting numbers up to 1000. Problems evaluate forward sequential counting such as \"What number comes next when counting: 109, 110, 111, 112, ___?\", backward counting like \"What number comes next when counting backward: 83, 82, 81, 80, ___?\", and skip counting like \"What number comes next when counting: 0, 100, 200, 300, ___?\". All items directly assess core counting competencies."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The items thoroughly cover multiple aspects of counting within 1000. This includes single-step forward counting across decade and century boundaries (\"What number comes next when counting: 148, 149, 150, 151, ___?\"), missing number sequences (\"Find the missing number: 682, 683, 684, 685, ___\" and \"Find the missing number: 91, 92, 93, 94, ___\"), skip counting by 2s and 100s (\"What number comes next when counting: 74, 76, 78, 80, ___?\" and \"What number comes next when counting: 0, 100, 200, 300, ___?\"), verbal/word problem counting (\"Moses is counting forward by 1 starting from 52. The count is: 52, 53, 54, 55. What is the next number Moses should say?\"), and number line reading (\"What number is marked on the number line?\")."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The reading load, question framing, and mathematical structures are well-suited for Grade 2 Quarter 1 learners. The phrasing is concise and direct, e.g. \"What number comes next when counting: 32, 33, 34, 35, ___?\" and \"Find the missing number: 91, 92, 93, 94, ___\", avoiding unnecessary linguistic complexity."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "A balanced mix of formatters and problem structures is represented, spanning multiple choice (\"What number comes next when counting: 545, 546, 547, 548, ___?\"), cloze / fill-in-the-blank (\"Find the missing number: 682, 683, 684, 685, ___\" and \"Moses is counting forward by 1 starting from 52. The count is: 52, 53, 54, 55. What is the next number Moses should say?\"), and visual number line reading (\"What number is marked on the number line?\")."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "All generated items are tightly bound to the standard \"Count up to 1000.\". There is no out-of-scope arithmetic, multidigit operations, or concepts beyond Grade 2 Quarter 1. Items like \"What number comes next when counting: 141, 142, 143, 144, ___?\" and \"What number comes next when counting: 80, 81, 82, 83, ___?\" focus purely on counting skills."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "Number magnitude strictly adheres to the up-to-1000 range. Samples feature 2-digit numbers (\"What number comes next when counting: 62, 63, 64, 65, ___?\"), numbers bridging into the hundreds (\"What number comes next when counting: 109, 110, 111, 112, ___?\"), mid-range 3-digit numbers (\"Find the missing number: 682, 683, 684, 685, ___\" and \"What number comes next when counting: 545, 546, 547, 548, ___?\"), and multiples of 100 (\"What number comes next when counting: 0, 100, 200, 300, ___?\"), none of which exceed 1000."
-    }
-  },
   "sample_seeds": [
     42,
     43,
     44,
     45,
     46,
-    50,
-    55,
     500,
     501,
     502,
@@ -46,104 +17,443 @@
     602,
     603,
     604,
-    606
+    605
   ],
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "mcq",
-      "question_text": "What number comes next when counting: 109, 110, 111, 112, ___?",
-      "correct_answer": 113
+      "formatter": "cloze",
+      "question_text": "Find the missing number: 702, 703, 704, 705, ___",
+      "correct_answer": 706,
+      "options": [
+        {
+          "key": "A",
+          "value": 707,
+          "text": "707",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 704,
+          "text": "704",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 703,
+          "text": "703",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 706,
+          "text": "706",
+          "is_correct": true
+        }
+      ]
     },
     {
       "seed": 43,
-      "formatter": "mcq",
-      "question_text": "What number comes next when counting: 32, 33, 34, 35, ___?",
-      "correct_answer": 36
+      "formatter": "read_mcq",
+      "question_text": "What number is marked on the number line?",
+      "correct_answer": "B",
+      "options": [
+        {
+          "key": "A",
+          "value": 45,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 46,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 47,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 48,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 44,
       "formatter": "mcq",
-      "question_text": "What number comes next when counting: 80, 81, 82, 83, ___?",
-      "correct_answer": 84
+      "question_text": "What number comes next when counting: 437, 438, 439, 440, ___?",
+      "correct_answer": 441,
+      "options": [
+        {
+          "key": "A",
+          "value": 442,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 441,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 438,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 439,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 45,
       "formatter": "mcq",
-      "question_text": "What number comes next when counting: 62, 63, 64, 65, ___?",
-      "correct_answer": 66
+      "question_text": "What number comes next when counting: 289, 290, 291, 292, ___?",
+      "correct_answer": 293,
+      "options": [
+        {
+          "key": "A",
+          "value": 294,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 291,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 290,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 293,
+          "is_correct": true
+        }
+      ]
     },
     {
       "seed": 46,
       "formatter": "mcq",
-      "question_text": "What number comes next when counting: 141, 142, 143, 144, ___?",
-      "correct_answer": 145
-    },
-    {
-      "seed": 50,
-      "formatter": "cloze",
-      "question_text": "Find the missing number: 91, 92, 93, 94, ___",
-      "correct_answer": 95
-    },
-    {
-      "seed": 55,
-      "formatter": "read_mcq",
-      "question_text": "What number is marked on the number line?",
-      "correct_answer": "C"
+      "question_text": "What number comes next when counting: 195, 196, 197, 198, ___?",
+      "correct_answer": 199,
+      "options": [
+        {
+          "key": "A",
+          "value": 200,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 197,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 196,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 199,
+          "is_correct": true
+        }
+      ]
     },
     {
       "seed": 500,
       "formatter": "read_mcq",
       "question_text": "What number is marked on the number line?",
-      "correct_answer": "A"
+      "correct_answer": "D",
+      "options": [
+        {
+          "key": "A",
+          "value": 847,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 850,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 849,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 848,
+          "is_correct": true
+        }
+      ]
     },
     {
       "seed": 501,
       "formatter": "cloze",
       "question_text": "Find the missing number: 682, 683, 684, 685, ___",
-      "correct_answer": 686
+      "correct_answer": 686,
+      "options": [
+        {
+          "key": "A",
+          "value": 683,
+          "text": "683",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 687,
+          "text": "687",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 686,
+          "text": "686",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 684,
+          "text": "684",
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 502,
       "formatter": "mcq",
       "question_text": "What number comes next when counting: 545, 546, 547, 548, ___?",
-      "correct_answer": 549
+      "correct_answer": 549,
+      "options": [
+        {
+          "key": "A",
+          "value": 550,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 549,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 547,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 546,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 600,
-      "formatter": "mcq",
-      "question_text": "What number comes next when counting: 148, 149, 150, 151, ___?",
-      "correct_answer": 152
+      "formatter": "cloze",
+      "question_text": "Find the missing number: 411, 412, 413, 414, ___",
+      "correct_answer": 415,
+      "options": [
+        {
+          "key": "A",
+          "value": 415,
+          "text": "415",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 412,
+          "text": "412",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 413,
+          "text": "413",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 416,
+          "text": "416",
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 601,
-      "formatter": "cloze",
-      "question_text": "Moses is counting forward by 1 starting from 52. The count is: 52, 53, 54, 55. What is the next number Moses should say?",
-      "correct_answer": 56
+      "formatter": "mcq",
+      "question_text": "Moses is counting forward by 1 starting from 204. The count is: 204, 205, 206, 207. What is the next number Moses should say?",
+      "correct_answer": 208,
+      "options": [
+        {
+          "key": "A",
+          "value": 208,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 205,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 209,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 206,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 602,
       "formatter": "mcq",
-      "question_text": "What number comes next when counting backward: 83, 82, 81, 80, ___?",
-      "correct_answer": 79
+      "question_text": "What number comes next when counting backward: 433, 432, 431, 430, ___?",
+      "correct_answer": 429,
+      "options": [
+        {
+          "key": "A",
+          "value": 432,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 431,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 428,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 429,
+          "is_correct": true
+        }
+      ]
     },
     {
       "seed": 603,
       "formatter": "mcq",
-      "question_text": "What number comes next when counting: 49, 50, 51, 52, ___?",
-      "correct_answer": 53
+      "question_text": "What number comes next when counting: 174, 175, 176, 177, ___?",
+      "correct_answer": 178,
+      "options": [
+        {
+          "key": "A",
+          "value": 178,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 176,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 179,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 175,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 604,
-      "formatter": "mcq",
-      "question_text": "What number comes next when counting: 74, 76, 78, 80, ___?",
-      "correct_answer": 82
+      "formatter": "cloze",
+      "question_text": "Find the missing number: 206, 208, 210, 212, ___",
+      "correct_answer": 214,
+      "options": [
+        {
+          "key": "A",
+          "value": 213,
+          "text": "213",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 208,
+          "text": "208",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 214,
+          "text": "214",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 210,
+          "text": "210",
+          "is_correct": false
+        }
+      ]
     },
     {
-      "seed": 606,
+      "seed": 605,
       "formatter": "mcq",
-      "question_text": "What number comes next when counting: 0, 100, 200, 300, ___?",
-      "correct_answer": 400
+      "question_text": "What number comes next when counting: 735, 740, 745, 750, ___?",
+      "correct_answer": 755,
+      "options": [
+        {
+          "key": "A",
+          "value": 755,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 740,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 751,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 745,
+          "is_correct": false
+        }
+      ]
     }
-  ]
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "Counting is the genuine demand in every seed, whether continuing a printed run, supplying a missing term, or reading a marked point. The named-pupil item that states the count so far and asks for the next number spoken captures the oral counting this competency is really about."
+    },
+    "comprehensive_coverage": {
+      "verdict": "CONCERN",
+      "rationale": "Forward and backward counting both appear and the runs are spread across the hundreds, but the ceiling case is missing: no sequence approaches the nine hundreds, and the transition from 999 to 1000 that the phrase up to 1000 exists to name is never generated. The hardest rungs of this competency are simply not sampled."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Four printed terms before the blank give ample pattern support, and the stems are short and uniform. Reading three-digit numerals and extending by one is exactly the Quarter 1 Grade 2 demand, with no additional reasoning layered on."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "Three response types are present, the sequence is shown both as a comma-separated run and as a marked number line, and a personified counting context appears alongside the bare sequences. Both continuation and missing-term orientations are covered."
+    },
+    "competency_alignment": {
+      "verdict": "CONCERN",
+      "rationale": "Two seeds step the sequence by two and by five rather than by one. Skip counting is the subject of a separate competency in this same quarter, so varying the step size here shifts the difficulty onto an axis that belongs elsewhere, instead of pushing counting by ones further up toward the stated ceiling."
+    },
+    "scale_appropriateness": {
+      "verdict": "CONCERN",
+      "rationale": "The competency names 1000 as its bound, yet the largest value anywhere in the set is in the mid-eight-hundreds on a number line and the sequences top out in the seven-hundreds. The upper quarter of the stated range is untested, so the ceiling is claimed but not exercised."
+    }
+  },
+  "overall": "CONCERN"
 }

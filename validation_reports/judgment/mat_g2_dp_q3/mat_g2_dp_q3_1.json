@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g2_dp_q3_1",
-  "reviewed_by": "Gemini Pro blind reviewer, batch G1 (dp pictographs re-review), 2026-08-16",
-  "review_date": "2026-08-16",
+  "reviewed_by": "reviewer-b2-tallow-verdigris-8130",
+  "review_date": "2026-09-10",
   "blind": true,
   "sample_seeds": [
     42,
@@ -18,27 +18,27 @@
       "seed": 42,
       "formatter": "read_mcq",
       "question_text": "Look at the table. How many books were read on Monday?",
-      "correct_answer": "C",
+      "correct_answer": "D",
       "options": [
         {
           "key": "A",
-          "value": 7,
-          "is_correct": false
-        },
-        {
-          "key": "B",
           "value": 5,
           "is_correct": false
         },
         {
+          "key": "B",
+          "value": 7,
+          "is_correct": false
+        },
+        {
           "key": "C",
-          "value": 3,
-          "is_correct": true
+          "value": 4,
+          "is_correct": false
         },
         {
           "key": "D",
-          "value": 4,
-          "is_correct": false
+          "value": 3,
+          "is_correct": true
         }
       ]
     },
@@ -46,26 +46,26 @@
       "seed": 43,
       "formatter": "read_mcq",
       "question_text": "Look at the picture graph. Which has the most colors: red, blue, green or yellow?",
-      "correct_answer": "B",
+      "correct_answer": "A",
       "options": [
         {
           "key": "A",
-          "value": "blue",
-          "is_correct": false
-        },
-        {
-          "key": "B",
           "value": "green",
           "is_correct": true
         },
         {
-          "key": "C",
+          "key": "B",
           "value": "red",
           "is_correct": false
         },
         {
-          "key": "D",
+          "key": "C",
           "value": "yellow",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "blue",
           "is_correct": false
         }
       ]
@@ -78,17 +78,17 @@
       "options": [
         {
           "key": "A",
-          "value": 0,
+          "value": 20,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 1,
+          "value": 0,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 20,
+          "value": 1,
           "is_correct": false
         },
         {
@@ -130,7 +130,7 @@
       "seed": 46,
       "formatter": "read_mcq",
       "question_text": "Look at the picture graph. What is the total number of fruits shown?",
-      "correct_answer": "B",
+      "correct_answer": "D",
       "options": [
         {
           "key": "A",
@@ -139,45 +139,45 @@
         },
         {
           "key": "B",
-          "value": 23,
-          "is_correct": true
-        },
-        {
-          "key": "C",
           "value": 24,
           "is_correct": false
         },
         {
-          "key": "D",
+          "key": "C",
           "value": 19,
           "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 23,
+          "is_correct": true
         }
       ]
     },
     {
       "seed": 500,
       "formatter": "read_mcq",
-      "question_text": "Look at the picture graph. What is the difference between Grade 1 and Grade 2?",
-      "correct_answer": "A",
+      "question_text": "Look at the picture graph. What is the difference between Grade 4 and Grade 5?",
+      "correct_answer": "B",
       "options": [
         {
           "key": "A",
-          "value": 10,
-          "is_correct": true
+          "value": 40,
+          "is_correct": false
         },
         {
           "key": "B",
           "value": 20,
-          "is_correct": false
+          "is_correct": true
         },
         {
           "key": "C",
-          "value": 1,
+          "value": 10,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 30,
+          "value": 2,
           "is_correct": false
         }
       ]
@@ -195,17 +195,17 @@
         },
         {
           "key": "B",
-          "value": "Art",
+          "value": "Science",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "Math",
+          "value": "Art",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "Science",
+          "value": "Math",
           "is_correct": false
         }
       ]
@@ -218,7 +218,7 @@
       "options": [
         {
           "key": "A",
-          "value": 30,
+          "value": 7,
           "is_correct": false
         },
         {
@@ -233,7 +233,7 @@
         },
         {
           "key": "D",
-          "value": 7,
+          "value": 30,
           "is_correct": false
         }
       ]
@@ -242,28 +242,28 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "The provided samples successfully require students to interpret information from the specified data representations, specifically fulfilling the mandate to \"Interpret data in tabular form and in a pictograph with or without scale.\""
+      "rationale": "The four interpretation moves that matter are all produced: reading a single value, identifying the largest category, computing a difference between two categories, and finding a total across the display."
     },
     "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The set of generated problems provides comprehensive coverage of the required formats, displaying both \"Look at the table. How many books were read on Monday?\" for tabular data and multiple instances of \"Look at the picture graph.\" for pictographs."
+      "verdict": "CONCERN",
+      "rationale": "The competency names tabular form alongside pictographs, yet only the Monday books question reads a table; the other seven samples all read a picture graph, so the tabular strand is barely built. Scaled and unscaled displays do both appear, with 'Each ⚽ = 5' supplying the scaled case."
     },
     "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The cognitive demands are well-suited for a Grade 2 level. The mathematical operations required—such as basic reading, finding totals, determining differences, and comparing quantities—align with early elementary capabilities and use developmentally appropriate numerical ranges."
+      "verdict": "CONCERN",
+      "rationale": "Two stems confuse the category with the quantity -- asking which has the most colors when the categories themselves are red, blue, green and yellow, and likewise asking which has the most subjects among Math, Science and the rest. A Grade 2 reader is left without a stated unit to compare."
     },
     "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The problem variants are comprehensive in the types of interpretations they demand. Students are tasked with direct retrieval (\"Look at the table. How many books were read on Monday?\"), finding maximums (\"Which has the most colors: red, blue, green or yellow?\"), calculating totals (\"What is the total number of fruits shown?\"), and computing differences (\"What is the difference between cats and dogs?\")."
+      "verdict": "CONCERN",
+      "rationale": "Every sample is a four-option read-the-display question; there is no typed answer, no item asking the pupil to justify a comparison, and no two-part question drawing on more than one row pair."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Every sample in the packet adheres strictly to the curriculum requirement to \"Interpret data in tabular form and in a pictograph with or without scale.\" There is no scope creep into unauthorized representations like bar graphs or line plots."
+      "rationale": "Question demand does escalate along the interpretation axis, from a direct value lookup up to differences and whole-display totals, which is the right sequence for reading data."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "The competency explicitly accommodates representations with or without scale. The samples appropriately include a problem with an explicit scale mapping (\"Each ⚽ = 5.\"), which tests a fundamental skill appropriate for Grade 2 students who learn skip counting by 5s."
+      "rationale": "The quantities involved stay small, with totals in the twenties to forties and scaled values resolved by multiplying by five, appropriate for Grade 2 Quarter 3."
     }
   },
-  "overall": "PASS"
+  "overall": "CONCERN"
 }

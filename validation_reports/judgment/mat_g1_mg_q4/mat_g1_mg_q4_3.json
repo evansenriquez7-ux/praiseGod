@@ -1,34 +1,8 @@
 {
   "node_id": "mat_g1_mg_q4_3",
-  "reviewed_by": "Gemini Pro blind reviewer, batch G1-MG-Q4-Harden v3 (mat_g1_mg_q4_1, mat_g1_mg_q4_3), 2026-08-18",
+  "reviewed_by": "reviewer-b1-quartz-mallow-4412",
+  "review_date": "2026-09-10",
   "blind": true,
-  "overall": "PASS",
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The generated samples require the student to determine the day or month from a calendar (e.g., \"What day of the week is February 1?\", \"What month of the year is shown on this calendar?\"). This perfectly matches the competency requirement to \"Determine the day and month of the year using a calendar.\""
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The samples thoroughly cover the competency by asking students to determine both the day of the week for a specific date (e.g., \"What day of the week is May 23?\") and the month of the year displayed on a calendar (e.g., \"What month of the year is shown on this calendar?\")."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The task of reading a calendar to find a specific day or identify a month is entirely appropriate for Grade 1 Quarter 4. The phrasing is simple, direct, and easy to understand (e.g., \"Look at the July 2025 calendar.\")."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The samples demonstrate two distinct and necessary variants: one asking for the day of the week given a specific date (e.g., \"What day of the week is September 19?\"), and another asking to identify the month shown on a calendar page (e.g., \"What month of the year is shown on this calendar?\")."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "The questions align strictly with the competency. They do not introduce extraneous concepts like calculating durations or finding elapsed time. They focus solely on identifying the correct day and month as stated (e.g., \"What day of the week is April 30?\")."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "The numbers used for dates (e.g., 1, 12, 23, 30) and the specific months selected represent a real-world calendar context appropriate for a Grade 1 level, without presenting overly complex or tricky edge cases."
-    }
-  },
   "sample_seeds": [
     42,
     43,
@@ -50,16 +24,16 @@
       "seed": 42,
       "formatter": "read_mcq",
       "question_text": "Look at the February 2025 calendar. What day of the week is February 1?",
-      "correct_answer": "D",
+      "correct_answer": "A",
       "options": [
         {
           "key": "A",
-          "value": "Monday",
-          "is_correct": false
+          "value": "Saturday",
+          "is_correct": true
         },
         {
           "key": "B",
-          "value": "Thursday",
+          "value": "Monday",
           "is_correct": false
         },
         {
@@ -69,8 +43,8 @@
         },
         {
           "key": "D",
-          "value": "Saturday",
-          "is_correct": true
+          "value": "Thursday",
+          "is_correct": false
         }
       ]
     },
@@ -78,12 +52,12 @@
       "seed": 43,
       "formatter": "read_mcq",
       "question_text": "Look at the May 2025 calendar. What day of the week is May 23?",
-      "correct_answer": "A",
+      "correct_answer": "D",
       "options": [
         {
           "key": "A",
-          "value": "Friday",
-          "is_correct": true
+          "value": "Saturday",
+          "is_correct": false
         },
         {
           "key": "B",
@@ -97,8 +71,8 @@
         },
         {
           "key": "D",
-          "value": "Saturday",
-          "is_correct": false
+          "value": "Friday",
+          "is_correct": true
         }
       ]
     },
@@ -106,17 +80,17 @@
       "seed": 44,
       "formatter": "read_mcq",
       "question_text": "Look at the calendar page shown. What month of the year is shown on this calendar?",
-      "correct_answer": "D",
+      "correct_answer": "B",
       "options": [
         {
           "key": "A",
-          "value": "August",
+          "value": "May",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "May",
-          "is_correct": false
+          "value": "September",
+          "is_correct": true
         },
         {
           "key": "C",
@@ -125,8 +99,8 @@
         },
         {
           "key": "D",
-          "value": "September",
-          "is_correct": true
+          "value": "August",
+          "is_correct": false
         }
       ]
     },
@@ -138,7 +112,7 @@
       "options": [
         {
           "key": "A",
-          "value": "November",
+          "value": "March",
           "is_correct": false
         },
         {
@@ -148,7 +122,7 @@
         },
         {
           "key": "C",
-          "value": "March",
+          "value": "November",
           "is_correct": false
         },
         {
@@ -162,62 +136,6 @@
       "seed": 46,
       "formatter": "read_mcq",
       "question_text": "Look at the July 2025 calendar. What day of the week is July 2?",
-      "correct_answer": "D",
-      "options": [
-        {
-          "key": "A",
-          "value": "Friday",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "Monday",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "Thursday",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "Wednesday",
-          "is_correct": true
-        }
-      ]
-    },
-    {
-      "seed": 500,
-      "formatter": "read_mcq",
-      "question_text": "Look at the calendar page shown. What month of the year is shown on this calendar?",
-      "correct_answer": "C",
-      "options": [
-        {
-          "key": "A",
-          "value": "April",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "December",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "October",
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": "September",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 501,
-      "formatter": "read_mcq",
-      "question_text": "Look at the May 2025 calendar. What day of the week is May 21?",
       "correct_answer": "A",
       "options": [
         {
@@ -232,12 +150,68 @@
         },
         {
           "key": "C",
-          "value": "Sunday",
+          "value": "Thursday",
           "is_correct": false
         },
         {
           "key": "D",
           "value": "Monday",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 500,
+      "formatter": "read_mcq",
+      "question_text": "Look at the calendar page shown. What month of the year is shown on this calendar?",
+      "correct_answer": "D",
+      "options": [
+        {
+          "key": "A",
+          "value": "April",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "September",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "December",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "October",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 501,
+      "formatter": "read_mcq",
+      "question_text": "Look at the May 2025 calendar. What day of the week is May 21?",
+      "correct_answer": "C",
+      "options": [
+        {
+          "key": "A",
+          "value": "Sunday",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "Monday",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "Wednesday",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "Friday",
           "is_correct": false
         }
       ]
@@ -260,12 +234,12 @@
         },
         {
           "key": "C",
-          "value": "Monday",
+          "value": "Sunday",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "Sunday",
+          "value": "Monday",
           "is_correct": false
         }
       ]
@@ -274,62 +248,6 @@
       "seed": 601,
       "formatter": "read_mcq",
       "question_text": "Look at the November 2025 calendar. What day of the week is November 19?",
-      "correct_answer": "C",
-      "options": [
-        {
-          "key": "A",
-          "value": "Friday",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "Thursday",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "Wednesday",
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": "Tuesday",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 603,
-      "formatter": "read_mcq",
-      "question_text": "Look at the September 2025 calendar. What day of the week is September 19?",
-      "correct_answer": "D",
-      "options": [
-        {
-          "key": "A",
-          "value": "Saturday",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "Sunday",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "Tuesday",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "Friday",
-          "is_correct": true
-        }
-      ]
-    },
-    {
-      "seed": 604,
-      "formatter": "read_mcq",
-      "question_text": "Look at the April 2025 calendar. What day of the week is April 30?",
       "correct_answer": "B",
       "options": [
         {
@@ -344,13 +262,69 @@
         },
         {
           "key": "C",
-          "value": "Monday",
+          "value": "Thursday",
           "is_correct": false
         },
         {
           "key": "D",
+          "value": "Friday",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 603,
+      "formatter": "read_mcq",
+      "question_text": "Look at the September 2025 calendar. What day of the week is September 19?",
+      "correct_answer": "B",
+      "options": [
+        {
+          "key": "A",
           "value": "Sunday",
           "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "Friday",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "Tuesday",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "Saturday",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 604,
+      "formatter": "read_mcq",
+      "question_text": "Look at the April 2025 calendar. What day of the week is April 30?",
+      "correct_answer": "D",
+      "options": [
+        {
+          "key": "A",
+          "value": "Monday",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "Sunday",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "Tuesday",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "Wednesday",
+          "is_correct": true
         }
       ]
     },
@@ -358,27 +332,27 @@
       "seed": 605,
       "formatter": "read_mcq",
       "question_text": "Look at the October 2025 calendar. What day of the week is October 30?",
-      "correct_answer": "C",
+      "correct_answer": "D",
       "options": [
         {
           "key": "A",
-          "value": "Monday",
-          "is_correct": false
-        },
-        {
-          "key": "B",
           "value": "Tuesday",
           "is_correct": false
         },
         {
+          "key": "B",
+          "value": "Monday",
+          "is_correct": false
+        },
+        {
           "key": "C",
-          "value": "Thursday",
-          "is_correct": true
+          "value": "Wednesday",
+          "is_correct": false
         },
         {
           "key": "D",
-          "value": "Wednesday",
-          "is_correct": false
+          "value": "Thursday",
+          "is_correct": true
         }
       ]
     },
@@ -386,7 +360,7 @@
       "seed": 606,
       "formatter": "read_mcq",
       "question_text": "Look at the January 2025 calendar. What day of the week is January 12?",
-      "correct_answer": "C",
+      "correct_answer": "D",
       "options": [
         {
           "key": "A",
@@ -395,18 +369,18 @@
         },
         {
           "key": "B",
-          "value": "Friday",
+          "value": "Saturday",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "Sunday",
-          "is_correct": true
+          "value": "Friday",
+          "is_correct": false
         },
         {
           "key": "D",
-          "value": "Saturday",
-          "is_correct": false
+          "value": "Sunday",
+          "is_correct": true
         }
       ]
     },
@@ -414,29 +388,56 @@
       "seed": 607,
       "formatter": "read_mcq",
       "question_text": "Look at the February 2025 calendar. What day of the week is February 25?",
-      "correct_answer": "C",
+      "correct_answer": "A",
       "options": [
         {
           "key": "A",
-          "value": "Sunday",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "Friday",
-          "is_correct": false
-        },
-        {
-          "key": "C",
           "value": "Tuesday",
           "is_correct": true
         },
         {
-          "key": "D",
+          "key": "B",
+          "value": "Sunday",
+          "is_correct": false
+        },
+        {
+          "key": "C",
           "value": "Saturday",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "Friday",
           "is_correct": false
         }
       ]
     }
-  ]
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "Both objects of the competency are retrieved from the calendar - the weekday of a stated date and the month a page represents. Checked against the real 2025 calendar, February 1 as Saturday and May 23 as Friday are both right, as are the other dated keys."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "Target dates sit at the beginning, middle and end of their months, and the months sampled run from January through November, so no single calendar shape or row position is privileged."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Finding a numbered square and reading up to its column heading is one visual lookup with no interval counting, well matched to Quarter 4."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "Two genuinely distinct tasks are generated: date-to-weekday lookup, and naming the month of a page whose label the pupil must infer, which forces attention to the whole page rather than one cell."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "The harder seeds push the target date deeper into the month, where the pupil must track across more rows without losing the column - the authentic difficulty of calendar reading."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Dates stay inside real month lengths, and the weekday and month option pools are the complete and correct sets with no invented entries."
+    }
+  },
+  "overall": "PASS"
 }

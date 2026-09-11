@@ -1,34 +1,8 @@
 {
   "node_id": "mat_g3_dp_q3_4",
-  "reviewed_by": "Gemini Pro blind reviewer, batch G3-DP-Harden (mat_g3_dp_q3_0..mat_g3_dp_q3_4), 2026-08-17",
+  "reviewed_by": "reviewer-b5-marlin-obsidian-3358",
+  "review_date": "2026-09-10",
   "blind": true,
-  "overall": "PASS",
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The sample questions successfully fulfill the competency by asking students to describe and compare chance events using the exact terminology required. For instance, questions ask students to evaluate the \"chance of picking a red ball?\" or whether an outcome is \"more likely, less likely, or equally likely compared to picking blue?\""
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "Coverage is comprehensive across all specified terms. The sample set explicitly tests 'certain' (e.g., \"chance of picking a red ball?\" with only red balls), 'impossible' (e.g., \"chance of rolling the number 7?\"), 'equally likely' (e.g., \"The chances of picking red or blue are ___.\"), 'less/least likely' (e.g., \"Which fish is LEAST likely to be scooped first?\"), and 'more/most likely' (e.g., \"Which outcome is more likely?\")."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The cognitive load is highly appropriate for Grade 3. The contexts (bags of colored balls, spinners, dice, and aquariums) are familiar and concrete. The comparisons rely on basic counting of small quantities, such as comparing \"6 red balls and 4 blue balls\" or \"8 goldfish, 4 guppies, and 1 angelfish\", which easily allows a third grader to conceptualize the relative probabilities without needing formal fractions."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The variants encompass a diverse set of real-life situations. Problem templates include drawing items from bags (\"A bag has 3 red balls and 7 blue balls.\"), spinning spinners (\"A spinner has 5 sections: 3 yellow, 1 red, and 1 green.\"), rolling dice (\"A standard 6-sided die with faces 1 to 6 is rolled.\"), and selecting from groups (\"In an aquarium tank\"). This provides a robust variety of probability models."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "The generator aligns strictly with the competency text. It asks for qualitative probability descriptions (e.g., \"equally likely\", \"certain\") and avoids out-of-scope concepts like numerical probabilities, fractions, or percentages, which are typically introduced in later grades. The focus remains tightly bounded to describing outcomes with the mandated vocabulary."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "The scale and numbers used in the generation are perfectly appropriate. Quantities are kept small (e.g., 1 to 8 items per category), making it simple for students to immediately grasp the differences in quantity and thus determine the likelihood. The distractor options effectively test the target vocabulary without introducing confusion."
-    }
-  },
   "sample_seeds": [
     42,
     43,
@@ -51,22 +25,22 @@
       "options": [
         {
           "key": "A",
-          "value": "impossible",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "less likely",
-          "is_correct": false
-        },
-        {
-          "key": "C",
           "value": "certain",
           "is_correct": true
         },
         {
-          "key": "D",
+          "key": "B",
           "value": "equally likely",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "impossible",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "less likely",
           "is_correct": false
         }
       ]
@@ -79,18 +53,18 @@
       "options": [
         {
           "key": "A",
-          "value": "certain",
-          "is_correct": true
-        },
-        {
-          "key": "B",
           "value": "equally likely",
           "is_correct": false
         },
         {
-          "key": "C",
+          "key": "B",
           "value": "less likely",
           "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "certain",
+          "is_correct": true
         },
         {
           "key": "D",
@@ -135,22 +109,22 @@
       "options": [
         {
           "key": "A",
-          "value": "certain",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "more likely",
-          "is_correct": false
-        },
-        {
-          "key": "C",
           "value": "less likely",
           "is_correct": true
         },
         {
-          "key": "D",
+          "key": "B",
           "value": "equally likely",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "more likely",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "certain",
           "is_correct": false
         }
       ]
@@ -163,23 +137,23 @@
       "options": [
         {
           "key": "A",
-          "value": "more likely",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "impossible",
-          "is_correct": true
-        },
-        {
-          "key": "C",
           "value": "equally likely",
           "is_correct": false
         },
         {
-          "key": "D",
+          "key": "B",
+          "value": "more likely",
+          "is_correct": false
+        },
+        {
+          "key": "C",
           "value": "certain",
           "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "impossible",
+          "is_correct": true
         }
       ]
     },
@@ -191,23 +165,23 @@
       "options": [
         {
           "key": "A",
-          "value": "angelfish",
-          "is_correct": true
-        },
-        {
-          "key": "B",
           "value": "guppy",
           "is_correct": false
         },
         {
-          "key": "C",
+          "key": "B",
           "value": "goldfish",
           "is_correct": false
         },
         {
-          "key": "D",
+          "key": "C",
           "value": "All fish are equally likely.",
           "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "angelfish",
+          "is_correct": true
         }
       ]
     },
@@ -219,18 +193,18 @@
       "options": [
         {
           "key": "A",
-          "value": "more likely",
-          "is_correct": true
-        },
-        {
-          "key": "B",
           "value": "impossible",
           "is_correct": false
         },
         {
-          "key": "C",
+          "key": "B",
           "value": "equally likely",
           "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "more likely",
+          "is_correct": true
         },
         {
           "key": "D",
@@ -247,18 +221,18 @@
       "options": [
         {
           "key": "A",
-          "value": "blue",
+          "value": "impossible",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "red",
-          "is_correct": true
+          "value": "blue",
+          "is_correct": false
         },
         {
           "key": "C",
-          "value": "impossible",
-          "is_correct": false
+          "value": "red",
+          "is_correct": true
         },
         {
           "key": "D",
@@ -275,8 +249,8 @@
       "options": [
         {
           "key": "A",
-          "value": "blue is more likely",
-          "is_correct": false
+          "value": "equally likely",
+          "is_correct": true
         },
         {
           "key": "B",
@@ -290,8 +264,8 @@
         },
         {
           "key": "D",
-          "value": "equally likely",
-          "is_correct": true
+          "value": "blue is more likely",
+          "is_correct": false
         }
       ]
     },
@@ -303,13 +277,13 @@
       "options": [
         {
           "key": "A",
-          "value": "impossible",
+          "value": "Yellow is least likely",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "equally likely",
-          "is_correct": true
+          "value": "impossible",
+          "is_correct": false
         },
         {
           "key": "C",
@@ -318,8 +292,8 @@
         },
         {
           "key": "D",
-          "value": "Yellow is least likely",
-          "is_correct": false
+          "value": "equally likely",
+          "is_correct": true
         }
       ]
     },
@@ -331,17 +305,17 @@
       "options": [
         {
           "key": "A",
+          "value": "certain",
+          "is_correct": false
+        },
+        {
+          "key": "B",
           "value": "impossible",
           "is_correct": true
         },
         {
-          "key": "B",
-          "value": "more likely",
-          "is_correct": false
-        },
-        {
           "key": "C",
-          "value": "certain",
+          "value": "more likely",
           "is_correct": false
         },
         {
@@ -351,5 +325,32 @@
         }
       ]
     }
-  ]
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "Each of the five terms the competency lists is reached as a correct key somewhere in the set: certain for the all-red bag and the all-red spinner, impossible for rolling 7 on a six-faced die and for a green ball in a blue-only bag, equally likely for the 5-and-5 bag and the four-quarter spinner, and both less likely and more likely for the unequal bags."
+    },
+    "comprehensive_coverage": {
+      "verdict": "CONCERN",
+      "rationale": "The competency pairs more with most and less with least. LEAST likely is asked outright in the three-yellow spinner and the aquarium item, but no stem anywhere asks which outcome is MOST likely; the closest is a two-way more likely comparison. One half of one named pair is never generated."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Quantities stay between one and ten objects, so likelihood can be judged by direct comparison of counts without ratio reasoning, and the tie handled in the spinner item is resolved by the honest key red or green rather than by forcing a single colour."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "All eleven samples are multiple choice, and the competency's phrase about real-life situations is served mainly by bags of coloured balls and spinners, which are classroom apparatus. The aquarium with goldfish, guppies and one angelfish is the single genuinely real-life setting in the set."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "The harder samples move from an extreme case where one outcome fills the whole sample space to an unequal split needing comparison, and then to a three-way distribution where the rarest must be picked out. That escalation is entirely about likelihood judgment."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "The competency states no numeric ceiling, and the object counts used, five balls, four spinner quarters, thirteen fish, are small enough to be held in mind while the likelihood terms are applied."
+    }
+  },
+  "overall": "CONCERN"
 }

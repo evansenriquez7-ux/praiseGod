@@ -1,34 +1,8 @@
 {
   "node_id": "mat_g2_mg_q1_1",
-  "reviewed_by": "Gemini Pro blind reviewer, batch G2-MG-Q1-Harden (mat_g2_mg_q1_0..mat_g2_mg_q1_2), 2026-08-18",
+  "reviewed_by": "reviewer-b3-cinder-halyard-2276",
+  "review_date": "2026-09-10",
   "blind": true,
-  "overall": "PASS",
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The samples successfully test both composing and decomposing figures as explicitly required by the competency. For instance, \"joined along their flat straight edges\" and \"cut straight down the middle into two 2-by-2 parts\" directly address the composition and decomposition of figures."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The generated items cover the full spectrum of shapes listed in the competency, including squares, rectangles, triangles, circles, half-circles, and quarter-circles. They also incorporate both specified contexts: \"Using cut-outs\" and \"On a square grid\"."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The questions are well-suited for Grade 2. The scenarios use simple, easily visualizable shapes and operations, like joining \"two identical triangles\" or \"four quarter-circles\", which matches the cognitive expectations for a first-quarter Grade 2 learner."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The generator provides a good variety of problem structures. It asks students to identify the resulting shape from composition (\"What shape is formed?\"\\), the resulting shapes from decomposition (\"What two shapes are made?\"\\), and the count of simple shapes in a composite figure (\"How many simple shapes were used to compose it?\"\\)."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Every question strictly adheres to the competency text. There is no extraneous vocabulary, and the operations are limited entirely to composing and decomposing the exact set of shapes mentioned using \"cut-outs\" and \"square grids\"."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "The numerical values and spatial dimensions are appropriately scaled. Grid sizes like \"4-by-2\" and shape counts like \"1 square, 1 triangle, and 1 rectangle\" are perfectly scaled for Grade 2 mathematics, avoiding overly complex arithmetic."
-    }
-  },
   "sample_seeds": [
     42,
     43,
@@ -52,12 +26,12 @@
       "options": [
         {
           "key": "A",
-          "value": "2",
+          "value": "5",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "5",
+          "value": "2",
           "is_correct": false
         },
         {
@@ -85,7 +59,7 @@
         },
         {
           "key": "B",
-          "value": "half-circle",
+          "value": "circle",
           "is_correct": false
         },
         {
@@ -95,7 +69,7 @@
         },
         {
           "key": "D",
-          "value": "circle",
+          "value": "half-circle",
           "is_correct": false
         }
       ]
@@ -113,18 +87,18 @@
         },
         {
           "key": "B",
-          "value": "triangle",
-          "is_correct": false
-        },
-        {
-          "key": "C",
           "value": "quarter-circle",
           "is_correct": false
         },
         {
-          "key": "D",
+          "key": "C",
           "value": "rectangle",
           "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "triangle",
+          "is_correct": false
         }
       ]
     },
@@ -136,12 +110,12 @@
       "options": [
         {
           "key": "A",
-          "value": "4",
+          "value": "1",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "1",
+          "value": "3",
           "is_correct": false
         },
         {
@@ -151,7 +125,7 @@
         },
         {
           "key": "D",
-          "value": "3",
+          "value": "4",
           "is_correct": false
         }
       ]
@@ -164,22 +138,22 @@
       "options": [
         {
           "key": "A",
-          "value": "triangle",
+          "value": "rectangle",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "circle",
-          "is_correct": true
-        },
-        {
-          "key": "C",
           "value": "square",
           "is_correct": false
         },
         {
+          "key": "C",
+          "value": "circle",
+          "is_correct": true
+        },
+        {
           "key": "D",
-          "value": "rectangle",
+          "value": "triangle",
           "is_correct": false
         }
       ]
@@ -216,26 +190,26 @@
       "seed": 500,
       "formatter": "read_mcq",
       "question_text": "On a square grid, a 4-by-2 rectangle is cut straight down the middle into two 2-by-2 parts. What shape is each part?",
-      "correct_answer": "A",
+      "correct_answer": "C",
       "options": [
         {
           "key": "A",
-          "value": "square",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": "triangle",
-          "is_correct": false
-        },
-        {
-          "key": "C",
           "value": "circle",
           "is_correct": false
         },
         {
-          "key": "D",
+          "key": "B",
           "value": "half-circle",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "square",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "triangle",
           "is_correct": false
         }
       ]
@@ -248,22 +222,22 @@
       "options": [
         {
           "key": "A",
-          "value": "3",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": "5",
-          "is_correct": false
-        },
-        {
-          "key": "C",
           "value": "4",
           "is_correct": false
         },
         {
-          "key": "D",
+          "key": "B",
+          "value": "3",
+          "is_correct": true
+        },
+        {
+          "key": "C",
           "value": "2",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "5",
           "is_correct": false
         }
       ]
@@ -276,23 +250,23 @@
       "options": [
         {
           "key": "A",
-          "value": "1",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "3",
-          "is_correct": true
-        },
-        {
-          "key": "C",
           "value": "2",
           "is_correct": false
         },
         {
-          "key": "D",
+          "key": "B",
+          "value": "1",
+          "is_correct": false
+        },
+        {
+          "key": "C",
           "value": "4",
           "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "3",
+          "is_correct": true
         }
       ]
     },
@@ -304,12 +278,12 @@
       "options": [
         {
           "key": "A",
-          "value": "1",
+          "value": "3",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "3",
+          "value": "4",
           "is_correct": false
         },
         {
@@ -319,7 +293,7 @@
         },
         {
           "key": "D",
-          "value": "4",
+          "value": "1",
           "is_correct": false
         }
       ]
@@ -332,8 +306,8 @@
       "options": [
         {
           "key": "A",
-          "value": "two circles",
-          "is_correct": false
+          "value": "two triangles",
+          "is_correct": true
         },
         {
           "key": "B",
@@ -347,8 +321,8 @@
         },
         {
           "key": "D",
-          "value": "two triangles",
-          "is_correct": true
+          "value": "two circles",
+          "is_correct": false
         }
       ]
     },
@@ -370,15 +344,42 @@
         },
         {
           "key": "C",
-          "value": "square",
+          "value": "rectangle",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "rectangle",
+          "value": "square",
           "is_correct": false
         }
       ]
     }
-  ]
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "CONCERN",
+      "rationale": "Composing and decomposing are both exercised, and the slant-cut item asking what two shapes are made is genuine decomposition work. But five of the twelve samples ask a variant of How many simple shapes were used to compose it? where the stem itself already lists the parts, so the key is obtained by counting nouns in the sentence rather than by any spatial reasoning about the figure."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "The competency's full shape inventory shows up across the sample set: squares, rectangles and triangles in the grid items, circle and half-circle in the joining items, and quarter-circles in the item where four are joined into a complete shape. Both named media, cut-outs and square grids, appear as stem framings."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Stem length stays inside one or two short sentences and the reasoning is single-step. Phrasing like joined together and placed together along their matching edges is concrete enough for a Grade 2 first-quarter reader, and no arithmetic beyond counting to four is required."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "Only two presentation types appear across all twelve seeds, and every figure is described in words rather than shown. For a competency built on cut-outs and square grids, nothing here asks the learner to physically assemble or partition anything; the manipulative is narrated instead of used. Two seed pairs also render byte-identical stems."
+    },
+    "competency_alignment": {
+      "verdict": "CONCERN",
+      "rationale": "What changes between seeds is mostly which shape nouns get named, not how hard the composition is. The two identical triangles item is also underdetermined as posed, and its three curved distractors let a learner reach the key purely by ruling out circle and the two circle fragments without thinking about edges at all."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "This competency states no numeric ceiling, and the incidental quantities used stay modest: part counts of one to four shapes, and grid descriptions no larger than 4 grid units per side. Nothing here overreaches a Grade 2 counting range."
+    }
+  },
+  "overall": "CONCERN"
 }

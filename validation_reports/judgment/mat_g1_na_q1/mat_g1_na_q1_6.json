@@ -1,230 +1,443 @@
 {
- "node_id": "mat_g1_na_q1_6",
- "reviewed_by": "Blind judgment Reviewer (subagent, 0 tool uses, samples inline), batch fix-loop-tick-4 2026-08-20",
- "review_date": "2026-08-20",
- "blind": true,
- "overall": "CONCERN",
- "findings": {
-  "competency_fulfillment": {
-   "verdict": "PASS",
-   "rationale": "All 14 items ask the pupil to split a total into two parts or join two parts into a total, at or below 10. \"Ben has 5 stones: 🪨🪨🪨🪨🪨 He puts 4 in one group. How many are in the other group?\" is decomposition in the competency's exact two-group model; \"Dino has 2 beads and 3 beads: 🔵🔵 🔵🔵🔵 How many beads does he have in all?\" is composition. Nothing asks for anything outside compose/decompose, all 14 keys are mathematically correct, and in every item exactly one option is correct."
+  "node_id": "mat_g1_na_q1_6",
+  "reviewed_by": "reviewer-b1-quartz-mallow-4412",
+  "review_date": "2026-09-10",
+  "blind": true,
+  "sample_seeds": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    500,
+    501,
+    502,
+    602,
+    603,
+    604,
+    605,
+    606,
+    607
+  ],
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "formatter": "mcq",
+      "question_text": "Ana has 5 shells: 🐚🐚🐚🐚🐚 She puts 5 in one group. How many are in the other group?",
+      "correct_answer": "0",
+      "options": [
+        {
+          "key": "A",
+          "value": "0",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "2",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "1",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "5",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 43,
+      "formatter": "mcq",
+      "question_text": "Fely has 5 counters: 🔴🔴🔴🔴🔴 One group has 0 counters. How many are in the other group?",
+      "correct_answer": "5",
+      "options": [
+        {
+          "key": "A",
+          "value": "0",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "4",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "5",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "1",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 44,
+      "formatter": "mcq",
+      "question_text": "Cita has 3 sticks and 2 sticks: 🥢🥢🥢 🥢🥢 How many sticks does she have in all?",
+      "correct_answer": "5",
+      "options": [
+        {
+          "key": "A",
+          "value": "5",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "4",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "3",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "6",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 45,
+      "formatter": "mcq",
+      "question_text": "Get 10 blocks. Put 7 into one group. How many blocks are left over?",
+      "correct_answer": "3",
+      "options": [
+        {
+          "key": "A",
+          "value": "2",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "7",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "4",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "3",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 46,
+      "formatter": "mcq",
+      "question_text": "These pairs each make 5: 5 and 0, 4 and 1, 3 and 2, 2 and 3, 0 and 5. Which pair also makes 5?",
+      "correct_answer": "1 and 4",
+      "options": [
+        {
+          "key": "A",
+          "value": "2 and 2",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "4 and 2",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "1 and 4",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "1 and 3",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 500,
+      "formatter": "mcq",
+      "question_text": "Ella has 5 buttons: 🔘🔘🔘🔘🔘 She puts 1 in one group. How many are in the other group?",
+      "correct_answer": "4",
+      "options": [
+        {
+          "key": "A",
+          "value": "5",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "3",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "4",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "1",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 501,
+      "formatter": "mcq",
+      "question_text": "Cita puts 5 sticks into two groups. One group has 3. Which pair shows her groups?",
+      "correct_answer": "3 and 2",
+      "options": [
+        {
+          "key": "A",
+          "value": "4 and 1",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "3 and 3",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "2 and 2",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "3 and 2",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 502,
+      "formatter": "mcq",
+      "question_text": "Get 10 blocks. Put 7 into one group. How many blocks are left over?",
+      "correct_answer": "3",
+      "options": [
+        {
+          "key": "A",
+          "value": "2",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "7",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "4",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "3",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 602,
+      "formatter": "mcq",
+      "question_text": "Dino has 2 beads and 3 beads: 🔵🔵 🔵🔵🔵 How many beads does he have in all?",
+      "correct_answer": "5",
+      "options": [
+        {
+          "key": "A",
+          "value": "6",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "5",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "2",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "4",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 603,
+      "formatter": "mcq",
+      "question_text": "Cita has 5 sticks: 🥢🥢🥢🥢🥢 She puts 3 in one group. How many are in the other group?",
+      "correct_answer": "2",
+      "options": [
+        {
+          "key": "A",
+          "value": "3",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "2",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "5",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "1",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 604,
+      "formatter": "mcq",
+      "question_text": "Ben has 5 stones: 🪨🪨🪨🪨🪨 He puts 4 in one group. How many are in the other group?",
+      "correct_answer": "1",
+      "options": [
+        {
+          "key": "A",
+          "value": "2",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "4",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "0",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "1",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 605,
+      "formatter": "mcq",
+      "question_text": "Take 5 sticks. Hold all 5 in one hand. How many sticks are in your other hand?",
+      "correct_answer": "0",
+      "options": [
+        {
+          "key": "A",
+          "value": "1",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "2",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "0",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "5",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 606,
+      "formatter": "mcq",
+      "question_text": "Dino puts 10 blocks into two groups. One group has 7. Which pair shows his groups?",
+      "correct_answer": "7 and 3",
+      "options": [
+        {
+          "key": "A",
+          "value": "7 and 2",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "6 and 3",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "7 and 4",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "7 and 3",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 607,
+      "formatter": "mcq",
+      "question_text": "Get 5 counters. Put 3 in one group. How many counters are in the other group?",
+      "correct_answer": "2",
+      "options": [
+        {
+          "key": "A",
+          "value": "2",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "5",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "3",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "1",
+          "is_correct": false
+        }
+      ]
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "Both halves are present - a whole split into two groups and two groups joined back into a whole - and the materials are named concretely as shells, counters, sticks, beads, stones and blocks rather than abstract units."
+    },
+    "comprehensive_coverage": {
+      "verdict": "CONCERN",
+      "rationale": "The competency reaches up to 10, yet ten of the fourteen renders decompose 5 and the remainder decompose 10. Six, seven, eight and nine never serve as the whole, so most of the number bonds a first grader must build are simply never generated."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Quantities are shown as short emoji rows and the instructions are physical - take the objects, put some in one group, report the other - which is exactly concrete-materials work at this quarter."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "Presentation moves between pictured sets, an instruction to handle objects, a pair-selection item, and the listed-pairs item asking 'Which pair also makes 5?' where the missing bond must be supplied."
+    },
+    "competency_alignment": {
+      "verdict": "CONCERN",
+      "rationale": "Two seeds render one block item word for word identically, and elsewhere what moves is the child's name or the material rather than the whole being decomposed - which is the one dimension this competency is defined along."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "No whole exceeds 10 and zero is included as a legitimate part, exactly as the competency's own worked example spells out."
+    }
   },
-  "comprehensive_coverage": {
-   "verdict": "FAIL",
-   "rationale": "All six enumerated sub-cases appear at least once and in the order the competency writes them - \"Cita has 3 sticks and 2 sticks: 🥢🥢🥢 🥢🥢 How many sticks does she have in all?\" reads 3 sticks and 2 sticks while \"Dino has 2 beads and 3 beads: 🔵🔵 🔵🔵🔵 How many beads does he have in all?\" reads 2 beads and 3 beads - but the distribution is badly skewed, with 3-and-2 carrying four of the eleven five-items. The range clause is not met: only totals 5 and 10 appear, and all three ten-items use the SAME 7/3 split, one of them a verbatim duplicate. Totals 2, 3, 4, 6, 7, 8 and 9 never occur, so seven of the ten totals in scope are absent. The method clause is honoured inconsistently: pictorial arrays in seven items, imperative directions with no rendered objects in four, and neither in three."
-  },
-  "cognitive_capacity": {
-   "verdict": "CONCERN",
-   "rationale": "Most items are correctly pitched: one step, familiar objects, short sentences, Filipino-appropriate names. Two sit at the top of the range for an emergent reader. \"These pairs each make 5: 5 and 0, 4 and 1, 3 and 2, 2 and 3, 0 and 5. Which pair also makes 5?\" carries a 24-word stem containing five numeral pairs before the question is asked, the heaviest load in the set and the item with no picture to fall back on. \"Cita puts 5 sticks into two groups. One group has 3. Which pair shows her groups?\" and \"Dino puts 10 blocks into two groups. One group has 7. Which pair shows his groups?\" require reading a pair notation as an answer option, a legitimate but abstract representation, with no materials to anchor it."
-  },
-  "variant_comprehensiveness": {
-   "verdict": "CONCERN",
-   "rationale": "Five distinct frames are present, which is real variety. It is undercut by a verbatim duplicate, by the named-character frame carrying five items with wording identical apart from name, object and number, and by genuine composition appearing in only two of fourteen items. \"Take 5 sticks. Hold all 5 in one hand. How many sticks are in your other hand?\" deserves credit as the best-designed item in the set: it makes the zero case physically sensible rather than an empty abstraction."
-  },
-  "competency_alignment": {
-   "verdict": "PASS",
-   "rationale": "No item reaches past the competency: no addition or subtraction symbols, no number sentences, no totals above 10, no three-part decompositions. \"Fely has 5 counters: 🔴🔴🔴🔴🔴 One group has 0 counters. How many are in the other group?\" and \"Ana has 5 shells: 🐚🐚🐚🐚🐚 She puts 5 in one group. How many are in the other group?\" are not overreach - they are the enumerated sub-cases 0-and-5 and 5-and-0 verbatim. The shortfall is at set level, not item level."
-  },
-  "scale_appropriateness": {
-   "verdict": "PASS",
-   "rationale": "Every total is 5 or 10, every part is between 0 and 7, and no quantity exceeds the competency's ceiling of 10. Icon arrays are five objects or fewer per group, countable at a glance for Grade 1. The ceiling is respected; under-use of the range below it is scored under coverage."
-  }
- },
- "problems_reported": [
-  "Exact duplicate, seeds 45 and 502: identical stem and key of 3, option order only differing. The wasted slot sits inside the already thin 10-band.",
-  "Redundant partitions: the 3-and-2 split is the content of four items (44, 501, 603, 607) and the 7-and-3 split of all three ten-items (45, 502, 606). Seven of 14 items rest on two partitions.",
-  "ANSWER-KEY POSITION BIAS: of the 13 items whose option order is given, the key is FIRST in 7 (seeds 43, 500, 501, 602, 604, 605, 606) - 54% against a 25% chance expectation. A pupil who always taps the first choice scores above half, which corrupts the set as a measure of the competency.",
-  "Coverage gap: no item composes or decomposes 2, 3, 4, 6, 7, 8 or 9. The competency names 'up to 10' and offers 5 only as an example, so seven of the ten totals in scope are absent.",
-  "Compose is under-exercised at 2 of 14 (seeds 44, 602). The competency names compose FIRST.",
-  "Materials referred to but not supplied, seeds 45/502/605/607: the imperative direction instructs handling objects the item does not render and the pupil may not have. Answerable mentally, so not broken, but inconsistent with the seven sibling items that do show the objects.",
-  "Seed 46 is solvable without mathematics: the stem lists five of the six enumerated pairs and the key is the sixth, so it can be selected by noticing which pair is missing. The distractors do not close that path because none of them is a listed pair either.",
-  "Seeds 45/502 wording drift: 'left over' frames the second part as a remainder rather than the other group, leaning toward take-away where the parallel items say 'the other group'.",
-  "Verified clean: no wrong keys, no second-correct options, no mathematically false statement, no undefined mathematical referent. Seed 501's uniqueness depends on the pupil honouring the stated constraint ('4 and 1' also totals 5 but is excluded by 'One group has 3')."
- ],
- "sample_seeds": [
-  42,
-  43,
-  44,
-  45,
-  46,
-  500,
-  501,
-  502,
-  602,
-  603,
-  604,
-  605,
-  606,
-  607
- ],
- "samples_reviewed": [
-  {
-   "seed": 42,
-   "question_text": "Ana has 5 shells: 🐚🐚🐚🐚🐚 She puts 5 in one group. How many are in the other group?",
-   "correct_answer": "0",
-   "formatter": "mcq",
-   "options": [
-    "1",
-    "2",
-    "0",
-    "5"
-   ]
-  },
-  {
-   "seed": 43,
-   "question_text": "Fely has 5 counters: 🔴🔴🔴🔴🔴 One group has 0 counters. How many are in the other group?",
-   "correct_answer": "5",
-   "formatter": "mcq",
-   "options": [
-    "5",
-    "4",
-    "1",
-    "0"
-   ]
-  },
-  {
-   "seed": 44,
-   "question_text": "Cita has 3 sticks and 2 sticks: 🥢🥢🥢 🥢🥢 How many sticks does she have in all?",
-   "correct_answer": "5",
-   "formatter": "mcq",
-   "options": [
-    "6",
-    "4",
-    "3",
-    "5"
-   ]
-  },
-  {
-   "seed": 45,
-   "question_text": "Get 10 blocks. Put 7 into one group. How many blocks are left over?",
-   "correct_answer": "3",
-   "formatter": "mcq",
-   "options": [
-    "2",
-    "7",
-    "3",
-    "4"
-   ]
-  },
-  {
-   "seed": 46,
-   "question_text": "These pairs each make 5: 5 and 0, 4 and 1, 3 and 2, 2 and 3, 0 and 5. Which pair also makes 5?",
-   "correct_answer": "1 and 4",
-   "formatter": "mcq",
-   "options": [
-    "4 and 2",
-    "1 and 4",
-    "2 and 2",
-    "1 and 3"
-   ]
-  },
-  {
-   "seed": 500,
-   "question_text": "Ella has 5 buttons: 🔘🔘🔘🔘🔘 She puts 1 in one group. How many are in the other group?",
-   "correct_answer": "4",
-   "formatter": "mcq",
-   "options": [
-    "4",
-    "3",
-    "1",
-    "5"
-   ]
-  },
-  {
-   "seed": 501,
-   "question_text": "Cita puts 5 sticks into two groups. One group has 3. Which pair shows her groups?",
-   "correct_answer": "3 and 2",
-   "formatter": "mcq",
-   "options": [
-    "3 and 2",
-    "2 and 2",
-    "4 and 1",
-    "3 and 3"
-   ]
-  },
-  {
-   "seed": 502,
-   "question_text": "Get 10 blocks. Put 7 into one group. How many blocks are left over?",
-   "correct_answer": "3",
-   "formatter": "mcq",
-   "options": [
-    "7",
-    "3",
-    "2",
-    "4"
-   ]
-  },
-  {
-   "seed": 602,
-   "question_text": "Dino has 2 beads and 3 beads: 🔵🔵 🔵🔵🔵 How many beads does he have in all?",
-   "correct_answer": "5",
-   "formatter": "mcq",
-   "options": [
-    "5",
-    "2",
-    "4",
-    "6"
-   ]
-  },
-  {
-   "seed": 603,
-   "question_text": "Cita has 5 sticks: 🥢🥢🥢🥢🥢 She puts 3 in one group. How many are in the other group?",
-   "correct_answer": "2",
-   "formatter": "mcq",
-   "options": [
-    "5",
-    "2",
-    "3",
-    "1"
-   ]
-  },
-  {
-   "seed": 604,
-   "question_text": "Ben has 5 stones: 🪨🪨🪨🪨🪨 He puts 4 in one group. How many are in the other group?",
-   "correct_answer": "1",
-   "formatter": "mcq",
-   "options": [
-    "1",
-    "2",
-    "4",
-    "0"
-   ]
-  },
-  {
-   "seed": 605,
-   "question_text": "Take 5 sticks. Hold all 5 in one hand. How many sticks are in your other hand?",
-   "correct_answer": "0",
-   "formatter": "mcq",
-   "options": [
-    "0",
-    "1",
-    "5",
-    "2"
-   ]
-  },
-  {
-   "seed": 606,
-   "question_text": "Dino puts 10 blocks into two groups. One group has 7. Which pair shows his groups?",
-   "correct_answer": "7 and 3",
-   "formatter": "mcq",
-   "options": [
-    "7 and 3",
-    "7 and 2",
-    "6 and 3",
-    "7 and 4"
-   ]
-  },
-  {
-   "seed": 607,
-   "question_text": "Get 5 counters. Put 3 in one group. How many counters are in the other group?",
-   "correct_answer": "2",
-   "formatter": "mcq",
-   "options": [
-    "1",
-    "3",
-    "5",
-    "2"
-   ]
-  }
- ]
+  "overall": "CONCERN"
 }

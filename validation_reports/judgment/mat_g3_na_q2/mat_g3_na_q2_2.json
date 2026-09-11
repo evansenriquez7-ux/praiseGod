@@ -1,35 +1,8 @@
 {
   "node_id": "mat_g3_na_q2_2",
-  "reviewed_by": "Gemini Pro blind reviewer, batch G3-NA-Q2-Harden (mat_g3_na_q2_2), 2026-08-18",
-  "review_date": "2026-08-18",
+  "reviewed_by": "reviewer-b6-thistle-kestrel-9724",
+  "review_date": "2026-09-10",
   "blind": true,
-  "overall": "PASS",
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The items directly target the competency of estimating the sum of addends with up to 4 digits. The problems clearly require rounding addends to their highest place value and computing the estimated sum, as exemplified by items such as \"Estimate the sum: 85 + 600\", \"Estimate the sum: 150 + 337\", and \"Estimate the sum: 5444 + 5375\"."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The sample set comprehensively covers varied combinations of digit lengths within the up to 4 digits scope, including 2-digit with 3-digit addends (\"Estimate the sum: 360 + 57\", \"Estimate the sum: 85 + 600\"), 3-digit with 3-digit addends (\"Estimate the sum: 270 + 272\", \"Estimate the sum: 389 + 869\"), and 4-digit with 4-digit addends (\"Estimate the sum: 5444 + 5375\", \"Estimate the sum: 4635 + 4973\"). Rounding up, rounding down, and midpoint rounding cases are all present."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The cognitive load is fully appropriate for Grade 3 Quarter 2 learners. The items reinforce place-value rounding principles learned in Grade 3 Quarter 1 applied to addition estimation without extraneous linguistic complexity or unmanageable arithmetic overhead, seen in questions like \"Estimate the sum: 195 + 100\" and \"Estimate the sum: 240 + 253\"."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "A robust range of mathematical scenarios is represented across the sample seeds, encompassing varying addend magnitudes (e.g. \"Estimate the sum: 111 + 10\", \"Estimate the sum: 525 + 12\", and \"Estimate the sum: 630 + 208\") and transitions across thousand boundaries such as in \"Estimate the sum: 389 + 869\" (yielding 1300) and \"Estimate the sum: 5444 + 5375\" (yielding 10000)."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "The items align strictly and exclusively with MATATAG learning competency mat_g3_na_q2_2. There is no concept drift into decimals, subtraction, or multi-step word problem distractors; each question cleanly prompts estimation of an addition expression, such as \"Estimate the sum: 4635 + 4973\" and \"Estimate the sum: 250 + 260\"."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "All addends strictly respect the upper ceiling of 4 digits (e.g. 5444, 4973 in \"Estimate the sum: 5444 + 5375\" and \"Estimate the sum: 4635 + 4973\"), with no addends exceeding 9999 and estimated sums scaling suitably up to 10,000."
-    }
-  },
   "sample_seeds": [
     42,
     43,
@@ -41,95 +14,430 @@
     502,
     600,
     601,
-    607,
-    608,
-    609,
-    610
+    602,
+    603,
+    604,
+    605
   ],
   "samples_reviewed": [
     {
       "seed": 42,
       "formatter": "mcq",
-      "question_text": "Estimate the sum: 85 + 600",
-      "correct_answer": 690
+      "question_text": "Estimate the sum: 168 + 1842",
+      "correct_answer": 2200,
+      "options": [
+        {
+          "key": "A",
+          "value": 2199,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 2202,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 2201,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 2200,
+          "is_correct": true
+        }
+      ]
     },
     {
       "seed": 43,
       "formatter": "mcq",
-      "question_text": "Estimate the sum: 111 + 10",
-      "correct_answer": 110
+      "question_text": "Estimate the sum: 7167 + 770",
+      "correct_answer": 7800,
+      "options": [
+        {
+          "key": "A",
+          "value": 7801,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 7799,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 7800,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 7802,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 44,
       "formatter": "mcq",
-      "question_text": "Estimate the sum: 150 + 337",
-      "correct_answer": 500
+      "question_text": "Estimate the sum: 8550 + 380",
+      "correct_answer": 9400,
+      "options": [
+        {
+          "key": "A",
+          "value": 9401,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 9399,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 9400,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 9402,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 45,
       "formatter": "mcq",
-      "question_text": "Estimate the sum: 270 + 272",
-      "correct_answer": 600
+      "question_text": "Estimate the sum: 173 + 2762",
+      "correct_answer": 3200,
+      "options": [
+        {
+          "key": "A",
+          "value": 3201,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 3200,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 3199,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 3202,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 46,
       "formatter": "mcq",
-      "question_text": "Estimate the sum: 360 + 57",
-      "correct_answer": 460
+      "question_text": "Estimate the sum: 1646 + 1446",
+      "correct_answer": 3000,
+      "options": [
+        {
+          "key": "A",
+          "value": 3001,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 2999,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 3000,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 3002,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 500,
       "formatter": "mcq",
       "question_text": "Estimate the sum: 5444 + 5375",
-      "correct_answer": 10000
+      "correct_answer": 10000,
+      "options": [
+        {
+          "key": "A",
+          "value": 10000,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 9999,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 10001,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 10002,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 501,
       "formatter": "mcq",
       "question_text": "Estimate the sum: 4635 + 4973",
-      "correct_answer": 10000
+      "correct_answer": 10000,
+      "options": [
+        {
+          "key": "A",
+          "value": 9999,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 10001,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 10002,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 10000,
+          "is_correct": true
+        }
+      ]
     },
     {
       "seed": 502,
       "formatter": "mcq",
       "question_text": "Estimate the sum: 389 + 869",
-      "correct_answer": 1300
+      "correct_answer": 1300,
+      "options": [
+        {
+          "key": "A",
+          "value": 1301,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 1302,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 1300,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 1299,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 600,
       "formatter": "mcq",
-      "question_text": "Estimate the sum: 630 + 57",
-      "correct_answer": 660
+      "question_text": "Estimate the sum: 1391 + 2728",
+      "correct_answer": 4000,
+      "options": [
+        {
+          "key": "A",
+          "value": 4000,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 3999,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 4001,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 4002,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 601,
       "formatter": "mcq",
-      "question_text": "Estimate the sum: 240 + 253",
-      "correct_answer": 500
+      "question_text": "Estimate the sum: 2458 + 1131",
+      "correct_answer": 3000,
+      "options": [
+        {
+          "key": "A",
+          "value": 3002,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 3000,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 2999,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 3001,
+          "is_correct": false
+        }
+      ]
     },
     {
-      "seed": 607,
+      "seed": 602,
       "formatter": "mcq",
-      "question_text": "Estimate the sum: 525 + 12",
-      "correct_answer": 510
+      "question_text": "Estimate the sum: 525 + 165",
+      "correct_answer": 700,
+      "options": [
+        {
+          "key": "A",
+          "value": 699,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 702,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 701,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 700,
+          "is_correct": true
+        }
+      ]
     },
     {
-      "seed": 608,
+      "seed": 603,
       "formatter": "mcq",
-      "question_text": "Estimate the sum: 250 + 260",
-      "correct_answer": 600
+      "question_text": "Estimate the sum: 917 + 7743",
+      "correct_answer": 8900,
+      "options": [
+        {
+          "key": "A",
+          "value": 8902,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 8901,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 8900,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 8899,
+          "is_correct": false
+        }
+      ]
     },
     {
-      "seed": 609,
+      "seed": 604,
       "formatter": "mcq",
-      "question_text": "Estimate the sum: 630 + 208",
-      "correct_answer": 800
+      "question_text": "Estimate the sum: 1390 + 9001",
+      "correct_answer": 10000,
+      "options": [
+        {
+          "key": "A",
+          "value": 10000,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 9999,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 10001,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 10002,
+          "is_correct": false
+        }
+      ]
     },
     {
-      "seed": 610,
+      "seed": 605,
       "formatter": "mcq",
-      "question_text": "Estimate the sum: 195 + 100",
-      "correct_answer": 300
+      "question_text": "Estimate the sum: 3138 + 1211",
+      "correct_answer": 4000,
+      "options": [
+        {
+          "key": "A",
+          "value": 4001,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 4000,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 4002,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 3999,
+          "is_correct": false
+        }
+      ]
     }
-  ]
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "Each stem opens with the instruction to estimate the sum of two addends and the key is a rounded total rather than the exact one, so the competency verb is nominally the one being performed."
+    },
+    "comprehensive_coverage": {
+      "verdict": "CONCERN",
+      "rationale": "Digit combinations do vary, from three-digit pairs such as 525 + 165 to four-digit pairs such as 5444 + 5375, but no stem ever states the place the pupil should round to. Because the accepted answer follows one particular convention, a pupil who rounds both addends to hundreds on the 168 + 1842 item produces a total that is not among the options, and the sub-case of estimating to a named place is never generated at all."
+    },
+    "cognitive_capacity": {
+      "verdict": "FAIL",
+      "rationale": "In every one of the fourteen items the three wrong options are the key plus or minus one or two, for example the set offered against 2200 and the set offered against 700. An estimate is by nature a round number, so the key is the only option that could ever be an estimate, and the pupil selects it by shape alone. The item measures nothing about rounding or addition."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "FAIL",
+      "rationale": "All fourteen samples are one template under one formatter, differing only in the two numerals. There is no truth-evaluation form, no error-spotting form, no fill-in form and no context, even though sibling estimation work in this grade clearly admits them."
+    },
+    "competency_alignment": {
+      "verdict": "CONCERN",
+      "rationale": "The single axis that moves across the set is the magnitude of the two addends. Nothing varies the rounding demand itself, such as an addend sitting at a rounding boundary or a pair whose estimate must be justified, so the progression does not build estimation judgement."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Addends respect the up to four digits wording, the largest single addend being 9001, and estimated totals are capped at ten thousand rather than spilling past it."
+    }
+  },
+  "overall": "FAIL"
 }

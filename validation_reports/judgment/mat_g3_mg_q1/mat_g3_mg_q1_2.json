@@ -1,34 +1,8 @@
 {
   "node_id": "mat_g3_mg_q1_2",
-  "reviewed_by": "Gemini Pro blind reviewer, batch G3-MG-Harden (mat_g3_mg_q1_2..mat_g3_mg_q1_6), 2026-08-17",
+  "reviewed_by": "reviewer-b5-marlin-obsidian-3358",
+  "review_date": "2026-09-10",
   "blind": true,
-  "overall": "PASS",
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The sample problems successfully require the student to find the area of both squares and rectangles in the appropriate units, fulfilling the core expectation of the competency. For example, questions ask to 'Find the area of a rectangle that is 8 cm long and 5 cm wide in sq cm.' and 'Calculate the area of a square with sides of 4 m in sq m.'"
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The generator comprehensively covers all four distinct conditions in the competency: squares in sq. cm (e.g., 'A square has a side of 4 cm. What is its area in sq cm?'), squares in sq. m (e.g., 'Find the area of a square measuring 5 m on each side in sq m.'), rectangles in sq. cm (e.g., 'A rectangle has sides 4 cm and 3 cm. What is its area in sq cm?'), and rectangles in sq. m (e.g., 'A rectangle has sides 3 m and 5 m. What is its area in sq m?')."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The numerical values used in the problems are highly appropriate for Grade 3, Quarter 1. The side lengths are single-digit numbers (e.g., 2, 3, 4, 5, 6, 8), which rely on basic multiplication facts that are accessible to third graders without causing excessive cognitive load."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The sample set shows good variety in question phrasing, including direct declarative setups ('A rectangle has sides 4 cm and 3 cm. What is its area in sq cm?'), imperative commands ('Find the area of a square measuring 3 m on each side in sq m.'), and contextualized real-world objects ('A rectangular chalkboard is 2 m long and 3 m wide. What is the area of the chalkboard in sq m?')."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "All questions align strictly with the competency text. There is no scope creep; the problems do not ask for missing side lengths, perimeter, or conversions between units, focusing solely on finding the area given the dimensions."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "The dimensions and units paired with contextual objects are realistic and appropriately scaled. For instance, 'A rectangular chalkboard is 2 m long and 3 m wide.' is a plausible real-world measurement, while abstract shapes use standard small integers like 'A square has a side of 4 cm'."
-    }
-  },
   "sample_seeds": [
     42,
     43,
@@ -65,13 +39,13 @@
         },
         {
           "key": "C",
-          "value": 12,
-          "is_correct": true
+          "value": 14,
+          "is_correct": false
         },
         {
           "key": "D",
-          "value": 14,
-          "is_correct": false
+          "value": 12,
+          "is_correct": true
         }
       ]
     },
@@ -88,17 +62,17 @@
         },
         {
           "key": "B",
-          "value": 16,
+          "value": 8,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 6,
+          "value": 16,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 8,
+          "value": 6,
           "is_correct": false
         }
       ]
@@ -111,12 +85,12 @@
       "options": [
         {
           "key": "A",
-          "value": 12,
+          "value": 6,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 6,
+          "value": 12,
           "is_correct": false
         },
         {
@@ -139,7 +113,7 @@
       "options": [
         {
           "key": "A",
-          "value": 26,
+          "value": 20,
           "is_correct": false
         },
         {
@@ -154,7 +128,7 @@
         },
         {
           "key": "D",
-          "value": 20,
+          "value": 26,
           "is_correct": false
         }
       ]
@@ -167,17 +141,17 @@
       "options": [
         {
           "key": "A",
-          "value": 24,
-          "is_correct": false
-        },
-        {
-          "key": "B",
           "value": 12,
           "is_correct": true
         },
         {
-          "key": "C",
+          "key": "B",
           "value": 16,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 24,
           "is_correct": false
         },
         {
@@ -195,15 +169,15 @@
       "options": [
         {
           "key": "A",
-          "value": 8,
-          "text": "8",
-          "is_correct": false
-        },
-        {
-          "key": "B",
           "value": 16,
           "text": "16",
           "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 17,
+          "text": "17",
+          "is_correct": false
         },
         {
           "key": "C",
@@ -213,8 +187,8 @@
         },
         {
           "key": "D",
-          "value": 17,
-          "text": "17",
+          "value": 8,
+          "text": "8",
           "is_correct": false
         }
       ]
@@ -227,9 +201,9 @@
       "options": [
         {
           "key": "A",
-          "value": 16,
-          "text": "16",
-          "is_correct": true
+          "value": 8,
+          "text": "8",
+          "is_correct": false
         },
         {
           "key": "B",
@@ -239,15 +213,15 @@
         },
         {
           "key": "C",
-          "value": 8,
-          "text": "8",
+          "value": 15,
+          "text": "15",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 15,
-          "text": "15",
-          "is_correct": false
+          "value": 16,
+          "text": "16",
+          "is_correct": true
         }
       ]
     },
@@ -259,17 +233,17 @@
       "options": [
         {
           "key": "A",
+          "value": 12,
+          "is_correct": false
+        },
+        {
+          "key": "B",
           "value": 9,
           "is_correct": true
         },
         {
-          "key": "B",
-          "value": 10,
-          "is_correct": false
-        },
-        {
           "key": "C",
-          "value": 12,
+          "value": 10,
           "is_correct": false
         },
         {
@@ -287,22 +261,22 @@
       "options": [
         {
           "key": "A",
-          "value": 8,
-          "is_correct": false
-        },
-        {
-          "key": "B",
           "value": 16,
           "is_correct": true
         },
         {
+          "key": "B",
+          "value": 17,
+          "is_correct": false
+        },
+        {
           "key": "C",
-          "value": 15,
+          "value": 8,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 17,
+          "value": 15,
           "is_correct": false
         }
       ]
@@ -315,23 +289,23 @@
       "options": [
         {
           "key": "A",
-          "value": 10,
+          "value": 26,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 20,
+          "value": 10,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 25,
-          "is_correct": true
+          "value": 20,
+          "is_correct": false
         },
         {
           "key": "D",
-          "value": 26,
-          "is_correct": false
+          "value": 25,
+          "is_correct": true
         }
       ]
     },
@@ -343,27 +317,27 @@
       "options": [
         {
           "key": "A",
+          "value": 6,
+          "text": "6",
+          "is_correct": true
+        },
+        {
+          "key": "B",
           "value": 10,
           "text": "10",
           "is_correct": false
         },
         {
-          "key": "B",
+          "key": "C",
           "value": 5,
           "text": "5",
           "is_correct": false
         },
         {
-          "key": "C",
+          "key": "D",
           "value": 7,
           "text": "7",
           "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 6,
-          "text": "6",
-          "is_correct": true
         }
       ]
     },
@@ -375,8 +349,8 @@
       "options": [
         {
           "key": "A",
-          "value": 12,
-          "is_correct": true
+          "value": 14,
+          "is_correct": false
         },
         {
           "key": "B",
@@ -390,8 +364,8 @@
         },
         {
           "key": "D",
-          "value": 14,
-          "is_correct": false
+          "value": 12,
+          "is_correct": true
         }
       ]
     },
@@ -403,22 +377,22 @@
       "options": [
         {
           "key": "A",
-          "value": 15,
-          "is_correct": false
-        },
-        {
-          "key": "B",
           "value": 16,
           "is_correct": true
         },
         {
-          "key": "C",
+          "key": "B",
           "value": 8,
           "is_correct": false
         },
         {
-          "key": "D",
+          "key": "C",
           "value": 17,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 15,
           "is_correct": false
         }
       ]
@@ -431,8 +405,8 @@
       "options": [
         {
           "key": "A",
-          "value": 40,
-          "is_correct": true
+          "value": 13,
+          "is_correct": false
         },
         {
           "key": "B",
@@ -441,8 +415,8 @@
         },
         {
           "key": "C",
-          "value": 13,
-          "is_correct": false
+          "value": 40,
+          "is_correct": true
         },
         {
           "key": "D",
@@ -459,9 +433,9 @@
       "options": [
         {
           "key": "A",
-          "value": 30,
-          "text": "30",
-          "is_correct": true
+          "value": 22,
+          "text": "22",
+          "is_correct": false
         },
         {
           "key": "B",
@@ -471,9 +445,9 @@
         },
         {
           "key": "C",
-          "value": 22,
-          "text": "22",
-          "is_correct": false
+          "value": 30,
+          "text": "30",
+          "is_correct": true
         },
         {
           "key": "D",
@@ -483,5 +457,32 @@
         }
       ]
     }
-  ]
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "Every sample asks for an area and every key is the correct product of the given sides, with the requested unit stated explicitly in the stem so the pupil must answer in square units rather than linear ones."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "All four combinations the competency's wording implies are generated: square in sq cm, square in sq m, rectangle in sq cm, rectangle in sq m. Neither shape is confined to one unit."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Side lengths stay between two and eight, so every area is a single multiplication fact, and the vocabulary used is limited to side, length, width and area, all introduced by Grade 3 Quarter 1."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The stem phrasing genuinely rotates rather than resetting numbers in one frame: sides given as a pair, a side described as on each side, length and width named separately, and an imperative to calculate. A chalkboard gives one applied setting, and both multiple choice and cloze occur."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "The distractors are built from the competency's own confusions rather than from noise: the sum of the two sides and the perimeter both appear as wrong options against the area key, so choosing correctly requires distinguishing area from the operations it is confused with."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "The competency states no ceiling; areas range from 6 to 40 square units, which keeps the products inside Grade 3 Quarter 1 multiplication while still spanning a real range of shape sizes."
+    }
+  },
+  "overall": "PASS"
 }

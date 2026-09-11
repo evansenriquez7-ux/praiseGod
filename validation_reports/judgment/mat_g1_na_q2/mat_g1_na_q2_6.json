@@ -1,41 +1,18 @@
 {
   "node_id": "mat_g1_na_q2_6",
-  "reviewed_by": "Gemini Pro blind reviewer, batch Re-Harden (mat_g1_na_q2_6), 2026-08-18",
-  "review_date": "2026-08-18",
+  "reviewed_by": "reviewer-b2-tallow-verdigris-8130",
+  "review_date": "2026-09-10",
   "blind": true,
-  "overall": "PASS",
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The sampled problems directly satisfy the curriculum requirement to \"Solve problems (given orally or in pictures) involving addition with sums up to 100 without regrouping.\" by presenting authentic addition word problems and linear step scenarios. Items such as \"There are 52 trophies in one basket and 30 trophies in another basket. How many trophies are there in all?\" and \"Carlo had 84 canvases. Then Carlo got 0 more. How many canvases does Carlo have now?\" require students to compute non-regrouping sums cleanly within 100."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The dataset spans the key sub-cases expected under this competency: single-digit counting on like \"Start at 1. Count up 2 more. What number do you land on?\", combining single digits with multiples of ten in \"There is 1 score card in one basket and 10 score cards in another basket. How many score cards are there in all?\", adding zero, and adding two-digit numbers with single digits as seen in \"Pia collected 85 fish food packet and 2 hamster bedding pack at the veterinary clinic. How many items did Pia collect in total?\"."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Sentence structures and story contexts are tightly tailored for Grade 1 Quarter 2 students. Problems use clear, familiar vocabulary and repetitive syntactic forms such as \"One basket has 3 cookies. Another basket has 1 cookie. If you put all the cookies together, how many cookies are there?\" and sequential movement prompts like \"Moses is on step 2. Moses climbs up 2 more steps. What step is Moses on now?\", ensuring cognitive load focuses on additive combining."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "Multiple distinct situational contexts and problem structures are present across the sample set. These include static set-combination in \"Des has 10 knee pads. A friend has 3 knee pads. If they put all their knee pads together, how many knee pads do they have in all?\", discrete change/increase on steps in \"Sir Ben is on step 2. Sir Ben climbs up 1 more step. What step is Sir Ben on now?\", and number line counting progression in \"Start at 2. Count up 1 more. What number do you land on?\"."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "All generated items cleanly target addition without regrouping without introducing extraneous arithmetic concepts or higher-grade mechanisms. From fundamental counting on in \"Start at 1. Count up 3 more. What number do you land on?\" to two-digit combining in \"Isko has 12 medals. A friend has 1 medal. If they put all their medals together, how many medals do they have in all?\", the difficulty progression adheres strictly to the target competency."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "The numerical range is distributed appropriately across the target domain of \"sums up to 100 without regrouping.\" Samples scale from single-digit sums like \"One basket has 3 colored pencils. Another basket has 1 colored pencil. If you put all the colored pencils together, how many colored pencils are there?\" (sum 4) up to two-digit sums approaching 100 like \"There are 52 trophies in one basket and 30 trophies in another basket. How many trophies are there in all?\" (sum 82)."
-    }
-  },
   "sample_seeds": [
     42,
     43,
     44,
     45,
     46,
+    47,
+    48,
+    52,
+    87,
     500,
     501,
     502,
@@ -43,93 +20,404 @@
     601,
     602,
     603,
-    605,
+    604,
     606
   ],
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "mcq",
-      "question_text": "There is 1 score card in one basket and 10 score cards in another basket. How many score cards are there in all?",
-      "correct_answer": 11
+      "formatter": "error_detect",
+      "question_text": "Manny solved: \"1 + 63 = ___\". Manny says the blank is 63. Is Manny correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 64
+      }
     },
     {
       "seed": 43,
-      "formatter": "mcq",
-      "question_text": "Start at 1. Count up 2 more. What number do you land on?",
-      "correct_answer": 3
+      "formatter": "read_mcq",
+      "question_text": "(Large group of 23 stars) — There are 23 stars.\n(Large group of 45 stars) — 45 more stars are added.\nHow many total stars are there?",
+      "correct_answer": "D",
+      "options": [
+        {
+          "key": "A",
+          "value": 67,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 23,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 69,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 68,
+          "is_correct": true
+        }
+      ]
     },
     {
       "seed": 44,
       "formatter": "mcq",
-      "question_text": "Isko has 12 medals. A friend has 1 medal. If they put all their medals together, how many medals do they have in all?",
-      "correct_answer": 13
+      "question_text": "Start at 30. Count up 25 more. What number do you land on?",
+      "correct_answer": 55,
+      "options": [
+        {
+          "key": "A",
+          "value": 65,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 55,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 56,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 54,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 45,
       "formatter": "mcq",
-      "question_text": "One basket has 3 cookies. Another basket has 1 cookie. If you put all the cookies together, how many cookies are there?",
-      "correct_answer": 4
+      "question_text": "Start at 64. Count up 23 more. What number do you land on?",
+      "correct_answer": 87,
+      "options": [
+        {
+          "key": "A",
+          "value": 88,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 87,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 97,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 86,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 46,
       "formatter": "mcq",
-      "question_text": "Start at 1. Count up 3 more. What number do you land on?",
-      "correct_answer": 4
+      "question_text": "One group has 33 items and another group has 51 items. If you put them together, how many items are there in all?",
+      "correct_answer": 84,
+      "options": [
+        {
+          "key": "A",
+          "value": 83,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 85,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 84,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 94,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 47,
+      "formatter": "cloze",
+      "question_text": "Start at 60. Count up 20 more. You land on ___",
+      "correct_answer": 80,
+      "options": [
+        {
+          "key": "A",
+          "value": 81,
+          "text": "81",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 80,
+          "text": "80",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 90,
+          "text": "90",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 79,
+          "text": "79",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 48,
+      "formatter": "true_false",
+      "question_text": "Start at 55. Count up 30 more. You land on 84. True or False?",
+      "correct_answer": false
+    },
+    {
+      "seed": 52,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Show 83 + 16 on the number line.",
+      "correct_answer": 99
+    },
+    {
+      "seed": 87,
+      "formatter": "read_fill_in_blank",
+      "question_text": "The two parts are 60 and 30. What is the sum?",
+      "correct_answer": 90
     },
     {
       "seed": 500,
-      "formatter": "mcq",
-      "question_text": "Pia collected 85 fish food packet and 2 hamster bedding pack at the veterinary clinic. How many items did Pia collect in total?",
-      "correct_answer": 87
+      "formatter": "read_mcq",
+      "question_text": "(Large group of 55 drinks) — There are 55 drinks.\n(Large group of 43 drinks) — 43 more drinks are added.\nHow many total drinks are there?",
+      "correct_answer": "B",
+      "options": [
+        {
+          "key": "A",
+          "value": 99,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 98,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 97,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 55,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 501,
-      "formatter": "mcq",
-      "question_text": "There are 52 trophies in one basket and 30 trophies in another basket. How many trophies are there in all?",
-      "correct_answer": 82
+      "formatter": "true_false",
+      "question_text": "Start at 80. Count up 3 more. You land on 83. True or False?",
+      "correct_answer": true
     },
     {
       "seed": 502,
       "formatter": "mcq",
-      "question_text": "Carlo had 84 canvases. Then Carlo got 0 more. How many canvases does Carlo have now?",
-      "correct_answer": 84
+      "question_text": "Start at 90. Count up 1 more. What number do you land on?",
+      "correct_answer": 91,
+      "options": [
+        {
+          "key": "A",
+          "value": 91,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 90,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 101,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 92,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 600,
-      "formatter": "mcq",
-      "question_text": "One basket has 3 colored pencils. Another basket has 1 colored pencil. If you put all the colored pencils together, how many colored pencils are there?",
-      "correct_answer": 4
+      "formatter": "true_false",
+      "question_text": "Start at 73. Count up 26 more. You land on 99. True or False?",
+      "correct_answer": true
     },
     {
       "seed": 601,
       "formatter": "mcq",
-      "question_text": "Moses is on step 2. Moses climbs up 2 more steps. What step is Moses on now?",
-      "correct_answer": 4
+      "question_text": "One group has 60 items and another group has 30 items. If you put them together, how many items are there in all?",
+      "correct_answer": 90,
+      "options": [
+        {
+          "key": "A",
+          "value": 91,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 90,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 89,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 100,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 602,
-      "formatter": "mcq",
-      "question_text": "Des has 10 knee pads. A friend has 3 knee pads. If they put all their knee pads together, how many knee pads do they have in all?",
-      "correct_answer": 13
+      "formatter": "cloze",
+      "question_text": "Start at 30. Count up 13 more. You land on ___",
+      "correct_answer": 43,
+      "options": [
+        {
+          "key": "A",
+          "value": 42,
+          "text": "42",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 43,
+          "text": "43",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 44,
+          "text": "44",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 53,
+          "text": "53",
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 603,
-      "formatter": "mcq",
-      "question_text": "Sir Ben is on step 2. Sir Ben climbs up 1 more step. What step is Sir Ben on now?",
-      "correct_answer": 3
+      "formatter": "cloze",
+      "question_text": "One group has 60 items and another group has 30 items. Putting them together makes ___ items in all.",
+      "correct_answer": 90,
+      "options": [
+        {
+          "key": "A",
+          "value": 100,
+          "text": "100",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 91,
+          "text": "91",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 90,
+          "text": "90",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 89,
+          "text": "89",
+          "is_correct": false
+        }
+      ]
     },
     {
-      "seed": 605,
-      "formatter": "mcq",
-      "question_text": "Riza is on step 2. Riza climbs up 1 more step. What step is Riza on now?",
-      "correct_answer": 3
+      "seed": 604,
+      "formatter": "error_detect",
+      "question_text": "Carlo solved: \"30 + 30 = ___\". Carlo says the blank is 60. Is Carlo correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 60
+      }
     },
     {
       "seed": 606,
       "formatter": "mcq",
-      "question_text": "Start at 2. Count up 1 more. What number do you land on?",
-      "correct_answer": 3
+      "question_text": "Start at 51. Count up 48 more. What number do you land on?",
+      "correct_answer": 99,
+      "options": [
+        {
+          "key": "A",
+          "value": 100,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 109,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 99,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 98,
+          "is_correct": false
+        }
+      ]
     }
-  ]
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "CONCERN",
+      "rationale": "This node is supposed to be about solving posed problems, yet much of the pool is bare arithmetic in disguise: Manny's item is the naked sentence 1 + 63, and the repeated 'Start at 60. Count up 20 more' prompts are number-line procedure, not a situation to be interpreted."
+    },
+    "comprehensive_coverage": {
+      "verdict": "CONCERN",
+      "rationale": "Picture-based problems do appear, but the story side is served by a single depersonalised frame -- 'One group has 33 items and another group has 51 items' -- with no named actors, no objects and no join-change structure, so the range of addition situations a Grade 1 pupil should meet is not covered."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Reading demand is low, each item is one step, and the counting-on phrasing gives a strategy the pupil can act out; nothing here exceeds Quarter 2 expectations."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "Counting up from a start point dominates so heavily that it recurs in mcq, cloze and true/false dress; the few other shapes (number-line display, symbol groups, part-part-whole) each appear once."
+    },
+    "competency_alignment": {
+      "verdict": "CONCERN",
+      "rationale": "Difficulty is being driven by arithmetic size (51 plus 48 reaching 99) rather than by problem structure, so the ladder for this problem-solving competency is indistinguishable from the ladder for the computation competency that precedes it."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "No sum exceeds 100 and none of the addition pairs regroups, so both constraints written into the competency hold across the sample."
+    }
+  },
+  "overall": "CONCERN"
 }

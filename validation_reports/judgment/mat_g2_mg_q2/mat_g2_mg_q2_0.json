@@ -1,34 +1,8 @@
 {
   "node_id": "mat_g2_mg_q2_0",
-  "reviewed_by": "Gemini Pro blind reviewer, batch G2-MG-Q2-Harden v2 (mat_g2_mg_q2_0), 2026-08-18",
+  "reviewed_by": "reviewer-b3-cinder-halyard-2276",
+  "review_date": "2026-09-10",
   "blind": true,
-  "overall": "PASS",
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The sample questions successfully fulfill the requirements to measure and compare. Measuring is assessed via tool diagram reading (e.g. \"How long is the object? Give your answer in cm.\") while comparison is directly tested by providing two values and asking for the relative magnitude (e.g. \"Which length is shorter in cm?\")."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The samples thoroughly cover the entire competency scope. They include measuring objects in cm, comparing lengths of objects in cm (e.g., \"A pencil is 10 cm long. A ruler is 15 cm long. Which length is shorter in cm?\"), comparing lengths of objects in meters (e.g., \"A school fence is 10 m long. A garden path is 9 m long.\"), and comparing distances strictly in meters (e.g., \"The distance from the bench to the tree is 82 m. The distance from the gate to the tree is 37 m. Which distance is longer in meters?\")."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The numerical values are well within the cognitive capacity of a Grade 2 student. The lengths and distances involve manageable 1-digit and 2-digit whole numbers up to 100 (such as 10 cm, 20 cm, 82 m, 37 m) which perfectly suit Grade 2 arithmetic expectations without overshadowing the measurement concepts."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "There is excellent variation across the required dimensions. The questions alternate between finding the 'longer' and 'shorter' length (e.g., \"Which distance is longer in meters?\" vs \"Which distance is shorter in meters?\"). Furthermore, the formatters are varied (mcq, read_mcq, cloze)."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "The items strictly adhere to the competency text without any overreach. Objects are measured in both cm and m, and distance is precisely restricted to meters as mandated by the phrasing \"distance in meters\" in the curriculum text."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "The real-world objects and distances used in the scenarios have logical, realistic dimensions (e.g., \"A pencil is 10 cm long\", \"A spoon is 20 cm long\", \"The distance from the bench to the tree is 2 m\"). This ensures students can anchor their mathematical understanding in plausible physical realities."
-    }
-  },
   "sample_seeds": [
     42,
     43,
@@ -51,22 +25,22 @@
       "options": [
         {
           "key": "A",
-          "value": 1,
-          "is_correct": false
-        },
-        {
-          "key": "B",
           "value": 3,
           "is_correct": false
         },
         {
-          "key": "C",
+          "key": "B",
           "value": 2,
           "is_correct": true
         },
         {
-          "key": "D",
+          "key": "C",
           "value": 7,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 1,
           "is_correct": false
         }
       ]
@@ -79,7 +53,7 @@
       "options": [
         {
           "key": "A",
-          "value": 20,
+          "value": 4,
           "is_correct": false
         },
         {
@@ -94,7 +68,7 @@
         },
         {
           "key": "D",
-          "value": 4,
+          "value": 20,
           "is_correct": false
         }
       ]
@@ -112,12 +86,12 @@
         },
         {
           "key": "B",
-          "value": 15,
+          "value": 11,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 11,
+          "value": 15,
           "is_correct": false
         },
         {
@@ -135,7 +109,7 @@
       "options": [
         {
           "key": "A",
-          "value": 5,
+          "value": 15,
           "is_correct": false
         },
         {
@@ -150,7 +124,7 @@
         },
         {
           "key": "D",
-          "value": 15,
+          "value": 5,
           "is_correct": false
         }
       ]
@@ -159,26 +133,26 @@
       "seed": 46,
       "formatter": "read_mcq",
       "question_text": "How long is the object? Give your answer in cm.",
-      "correct_answer": "B",
+      "correct_answer": "C",
       "options": [
         {
           "key": "A",
-          "value": 20,
+          "value": 5,
           "is_correct": false
         },
         {
           "key": "B",
+          "value": 20,
+          "is_correct": false
+        },
+        {
+          "key": "C",
           "value": 6,
           "is_correct": true
         },
         {
-          "key": "C",
-          "value": 7,
-          "is_correct": false
-        },
-        {
           "key": "D",
-          "value": 5,
+          "value": 7,
           "is_correct": false
         }
       ]
@@ -191,8 +165,8 @@
       "options": [
         {
           "key": "A",
-          "value": 10,
-          "text": "10",
+          "value": 15,
+          "text": "15",
           "is_correct": false
         },
         {
@@ -203,8 +177,8 @@
         },
         {
           "key": "C",
-          "value": 15,
-          "text": "15",
+          "value": 10,
+          "text": "10",
           "is_correct": false
         },
         {
@@ -223,26 +197,26 @@
       "options": [
         {
           "key": "A",
+          "value": 14,
+          "text": "14",
+          "is_correct": false
+        },
+        {
+          "key": "B",
           "value": 19,
           "text": "19",
           "is_correct": true
         },
         {
-          "key": "B",
+          "key": "C",
           "value": 24,
           "text": "24",
           "is_correct": false
         },
         {
-          "key": "C",
+          "key": "D",
           "value": 20,
           "text": "20",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 14,
-          "text": "14",
           "is_correct": false
         }
       ]
@@ -260,12 +234,12 @@
         },
         {
           "key": "B",
-          "value": 77,
+          "value": 87,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 87,
+          "value": 77,
           "is_correct": false
         },
         {
@@ -283,13 +257,13 @@
       "options": [
         {
           "key": "A",
-          "value": 65,
-          "is_correct": false
+          "value": 47,
+          "is_correct": true
         },
         {
           "key": "B",
-          "value": 47,
-          "is_correct": true
+          "value": 52,
+          "is_correct": false
         },
         {
           "key": "C",
@@ -298,7 +272,7 @@
         },
         {
           "key": "D",
-          "value": 52,
+          "value": 65,
           "is_correct": false
         }
       ]
@@ -311,18 +285,18 @@
       "options": [
         {
           "key": "A",
+          "value": 20,
+          "is_correct": true
+        },
+        {
+          "key": "B",
           "value": 12,
           "is_correct": false
         },
         {
-          "key": "B",
+          "key": "C",
           "value": 25,
           "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 20,
-          "is_correct": true
         },
         {
           "key": "D",
@@ -339,8 +313,8 @@
       "options": [
         {
           "key": "A",
-          "value": 10,
-          "is_correct": true
+          "value": 9,
+          "is_correct": false
         },
         {
           "key": "B",
@@ -349,15 +323,42 @@
         },
         {
           "key": "C",
-          "value": 9,
+          "value": 15,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 15,
-          "is_correct": false
+          "value": 10,
+          "is_correct": true
         }
       ]
     }
-  ]
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "CONCERN",
+      "rationale": "Measuring and comparing are both represented, with the stem How long is the object? Give your answer in cm. covering the tool-reading side. The comparison items are undercut by their option sets: the bench-and-tree stem naming 2 m and 1 m offers 3 and 7 as choices, values that appear nowhere in the problem and that no reading of the situation could produce."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "Both directions of comparison are generated, longer and shorter, and all three units named by the competency are exercised: object length in centimetres, object length in metres via the fence and path item, and distance between locations in metres. Direct measurement from a rendered object also appears."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Two short declarative sentences followed by a question is the standard frame here, and the objects chosen, pencil, notebook, spoon, ruler, are all familiar classroom items. The comparison demands no computation, only reading two quantities, which suits Grade 2 Quarter 2."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "Three response types appear, including a rendered measuring item, and the contexts split cleanly between object-to-object comparison and location-to-location distance. That spread covers the presentational range the competency implies without padding."
+    },
+    "competency_alignment": {
+      "verdict": "CONCERN",
+      "rationale": "Difficulty across seeds moves by magnitude alone, from a 2 m versus 1 m pairing up to 82 m versus 37 m, but the cognitive task never changes: pick the larger or smaller of two printed numerals. Using an appropriate measuring tool, the clause that distinguishes this competency from plain number comparison, is reached by only two seeds."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Centimetre lengths sit between roughly 10 and 20, which matches real pencils and notebooks, and metre distances top out in the eighties, a believable schoolyard span. Nothing strays into ranges a Grade 2 learner could not picture or add."
+    }
+  },
+  "overall": "CONCERN"
 }

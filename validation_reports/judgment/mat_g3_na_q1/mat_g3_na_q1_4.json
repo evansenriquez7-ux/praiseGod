@@ -1,35 +1,8 @@
 {
   "node_id": "mat_g3_na_q1_4",
-  "reviewed_by": "Gemini Pro blind reviewer, batch G3-NA-Q1-Harden (mat_g3_na_q1_4), 2026-08-18",
-  "review_date": "2026-08-18",
+  "reviewed_by": "reviewer-b6-thistle-kestrel-9724",
+  "review_date": "2026-09-10",
   "blind": true,
-  "overall": "PASS",
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "All sampled problems directly address the MATATAG competency to round numbers to the nearest ten, hundred, or thousand. Direct rounding directives are used throughout, such as seed 42 asking \"Round 38 to the nearest 10.\", seed 50 asking \"Round 160 to the nearest 100.\", and seed 501 asking \"Round 6148 to the nearest 1000.\", as well as number line contextual items like seed 55 with \"The number 93 is marked on the number line. Round 93 to the nearest 10.\" which also explicitly require rounding."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The sample thoroughly covers all three target rounding units explicitly named in the competency text (ten, hundred, thousand). Rounding to the nearest ten is evaluated in items like seed 42's \"Round 38 to the nearest 10.\", rounding to the nearest hundred in seed 44's \"Round 105 to the nearest 100.\", and rounding to the nearest thousand in seed 501's \"Round 6148 to the nearest 1000.\"."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The vocabulary and grammatical structure are clear and age-appropriate for Grade 3 Quarter 1 learners. The items test rounding mechanics including standard cases and tie-breaking halfway cases, such as seed 601's \"Round 315 to the nearest 10.\" rounding up to 320 and seed 602's \"Round 225 to the nearest 100.\" rounding down to 200 based on the tens digit."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The generator provides healthy variant diversity, incorporating standard multiple-choice items like seed 42's \"Round 38 to the nearest 10.\", fill-in-the-blank cloze formats like seed 50's \"Round 160 to the nearest 100.\", and number line visual representation stems like seed 500's \"The number 8438 is marked on the number line. Round 8438 to the nearest 100.\"."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "The distractors and problem progressions isolate rounding and place-value estimation skills rather than confounding arithmetic. For example, in seed 43's \"Round 122 to the nearest 10.\", options focus on adjacent tens (120 vs 130), and seed 501's \"Round 6148 to the nearest 1000.\" tests rounding down to 6000 versus rounding up to 7000."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "The numbers sampled appropriately span the 2-digit to 4-digit numeric ranges appropriate for Grade 3 numbers up to 10,000, aligning with each rounding place value: 2-digit numbers for tens like seed 603's \"Round 83 to the nearest 10.\", 3-digit numbers for hundreds like seed 45's \"Round 230 to the nearest 100.\", and 4-digit numbers up to thousands like seed 502's \"Round 6952 to the nearest 1000.\"."
-    }
-  },
   "sample_seeds": [
     42,
     43,
@@ -56,22 +29,22 @@
       "options": [
         {
           "key": "A",
-          "value": 30,
-          "is_correct": false
-        },
-        {
-          "key": "B",
           "value": 50,
           "is_correct": false
         },
         {
-          "key": "C",
+          "key": "B",
           "value": 40,
           "is_correct": true
         },
         {
-          "key": "D",
+          "key": "C",
           "value": 0,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 30,
           "is_correct": false
         }
       ]
@@ -84,8 +57,8 @@
       "options": [
         {
           "key": "A",
-          "value": 120,
-          "is_correct": true
+          "value": 121,
+          "is_correct": false
         },
         {
           "key": "B",
@@ -94,13 +67,13 @@
         },
         {
           "key": "C",
-          "value": 121,
+          "value": 100,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 100,
-          "is_correct": false
+          "value": 120,
+          "is_correct": true
         }
       ]
     },
@@ -112,7 +85,7 @@
       "options": [
         {
           "key": "A",
-          "value": 110,
+          "value": 101,
           "is_correct": false
         },
         {
@@ -122,13 +95,13 @@
         },
         {
           "key": "C",
-          "value": 101,
-          "is_correct": false
+          "value": 100,
+          "is_correct": true
         },
         {
           "key": "D",
-          "value": 100,
-          "is_correct": true
+          "value": 110,
+          "is_correct": false
         }
       ]
     },
@@ -140,22 +113,22 @@
       "options": [
         {
           "key": "A",
-          "value": 201,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 0,
-          "is_correct": false
-        },
-        {
-          "key": "C",
           "value": 200,
           "is_correct": true
         },
         {
-          "key": "D",
+          "key": "B",
           "value": 210,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 0,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 201,
           "is_correct": false
         }
       ]
@@ -168,23 +141,23 @@
       "options": [
         {
           "key": "A",
-          "value": 170,
+          "value": 150,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 160,
-          "is_correct": true
-        },
-        {
-          "key": "C",
           "value": 100,
           "is_correct": false
         },
         {
-          "key": "D",
-          "value": 150,
+          "key": "C",
+          "value": 170,
           "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 160,
+          "is_correct": true
         }
       ]
     },
@@ -196,15 +169,15 @@
       "options": [
         {
           "key": "A",
-          "value": 100,
-          "text": "100",
-          "is_correct": false
-        },
-        {
-          "key": "B",
           "value": 200,
           "text": "200",
           "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 0,
+          "text": "0",
+          "is_correct": false
         },
         {
           "key": "C",
@@ -214,8 +187,8 @@
         },
         {
           "key": "D",
-          "value": 0,
-          "text": "0",
+          "value": 100,
+          "text": "100",
           "is_correct": false
         }
       ]
@@ -228,12 +201,12 @@
       "options": [
         {
           "key": "A",
-          "value": 100,
+          "value": 94,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 94,
+          "value": 100,
           "is_correct": false
         },
         {
@@ -261,7 +234,7 @@
         },
         {
           "key": "B",
-          "value": 8410,
+          "value": 8448,
           "is_correct": false
         },
         {
@@ -271,7 +244,7 @@
         },
         {
           "key": "D",
-          "value": 8448,
+          "value": 8410,
           "is_correct": false
         }
       ]
@@ -284,26 +257,26 @@
       "options": [
         {
           "key": "A",
-          "value": 6000,
-          "text": "6000",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 6001,
-          "text": "6001",
-          "is_correct": false
-        },
-        {
-          "key": "C",
           "value": 6010,
           "text": "6010",
           "is_correct": false
         },
         {
-          "key": "D",
+          "key": "B",
+          "value": 6000,
+          "text": "6000",
+          "is_correct": true
+        },
+        {
+          "key": "C",
           "value": 0,
           "text": "0",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 6001,
+          "text": "6001",
           "is_correct": false
         }
       ]
@@ -316,17 +289,17 @@
       "options": [
         {
           "key": "A",
-          "value": 6000,
-          "is_correct": false
-        },
-        {
-          "key": "B",
           "value": 7000,
           "is_correct": true
         },
         {
-          "key": "C",
+          "key": "B",
           "value": 7010,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 6000,
           "is_correct": false
         },
         {
@@ -344,7 +317,7 @@
       "options": [
         {
           "key": "A",
-          "value": 0,
+          "value": 201,
           "is_correct": false
         },
         {
@@ -359,7 +332,7 @@
         },
         {
           "key": "D",
-          "value": 201,
+          "value": 0,
           "is_correct": false
         }
       ]
@@ -372,27 +345,27 @@
       "options": [
         {
           "key": "A",
-          "value": 300,
-          "text": "300",
-          "is_correct": false
+          "value": 320,
+          "text": "320",
+          "is_correct": true
         },
         {
           "key": "B",
-          "value": 310,
-          "text": "310",
-          "is_correct": false
-        },
-        {
-          "key": "C",
           "value": 330,
           "text": "330",
           "is_correct": false
         },
         {
+          "key": "C",
+          "value": 300,
+          "text": "300",
+          "is_correct": false
+        },
+        {
           "key": "D",
-          "value": 320,
-          "text": "320",
-          "is_correct": true
+          "value": 310,
+          "text": "310",
+          "is_correct": false
         }
       ]
     },
@@ -409,17 +382,17 @@
         },
         {
           "key": "B",
-          "value": 201,
+          "value": 210,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 0,
+          "value": 201,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 210,
+          "value": 0,
           "is_correct": false
         }
       ]
@@ -442,12 +415,12 @@
         },
         {
           "key": "C",
-          "value": 0,
+          "value": 90,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 90,
+          "value": 0,
           "is_correct": false
         }
       ]
@@ -460,25 +433,52 @@
       "options": [
         {
           "key": "A",
-          "value": 1000,
-          "is_correct": true
-        },
-        {
-          "key": "B",
           "value": 1010,
           "is_correct": false
         },
         {
-          "key": "C",
+          "key": "B",
           "value": 0,
           "is_correct": false
         },
         {
-          "key": "D",
+          "key": "C",
           "value": 1001,
           "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 1000,
+          "is_correct": true
         }
       ]
     }
-  ]
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "Stems do exactly what the competency names: each asks to round a stated number to a stated place, and the key is the rounded value. Seed 46 rounds 158 upward to 160 and seed 603 rounds 83 downward to 80, so both directions of the rounding decision are exercised."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "All three named places appear as targets: nearest 10 (seed 42), nearest 100 (seed 45), nearest 1000 (seed 501 and 502). Rounding a number up across a thousands boundary is present too, since 6952 becomes 7000."
+    },
+    "cognitive_capacity": {
+      "verdict": "CONCERN",
+      "rationale": "The option sets repeatedly contain values that cannot be the answer to any rounding question. Seed 501 asks for the nearest 1000 yet offers 6010 and 6001, neither of which is a multiple of 1000, and a bare 0 appears as an option in roughly two thirds of the items. A pupil who only checks which option ends in the right number of zeros can answer without rounding anything, so the item demands far less than the competency intends."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "Besides the plain instruction form there is a number-line presentation, seen where the number 93 is described as marked on the number line, and the task appears under mcq, cloze and read_mcq. That is adequate presentational spread for a skill the curriculum states in purely numerical terms."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "What changes between easier and harder samples is the size of the number and the place being rounded to, moving from two-digit 38 up to four-digit 8438. That is the axis this competency is about, not an unrelated one."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Numbers stay inside the four-digit territory a Grade 3 first-quarter pupil works in, topping out at 8438, and the thousands items only appear where a thousands target is requested."
+    }
+  },
+  "overall": "CONCERN"
 }

@@ -1,34 +1,8 @@
 {
   "node_id": "mat_g1_mg_q2_2",
-  "reviewed_by": "Gemini Pro blind reviewer, batch G1-MG-Q2-Harden (mat_g1_mg_q2_0..mat_g1_mg_q2_2), 2026-08-18",
+  "reviewed_by": "reviewer-b1-quartz-mallow-4412",
+  "review_date": "2026-09-10",
   "blind": true,
-  "overall": "PASS",
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The samples directly fulfill the competency by asking students to solve word problems involving lengths and distances measured in non-standard units. For example, questions like \"A notebook is 6 hands long. A pencil is 2 hands long. How many hands longer is a notebook than a pencil?\" and \"From the teacher's desk, it is 6 steps to the reading corner and 3 steps to the chalkboard. How many steps farther is the reading corner than the chalkboard?\" explicitly test this skill."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "Coverage is comprehensive, encompassing both length and distance scenarios. Length is covered using units like hands and paperclips (e.g., \"A notebook is 6 hands long. A pencil is 2 hands long. How many hands longer is a notebook than a pencil?\", \"A pencil is 5 paperclips long and an eraser is 5 paperclips long. If they are placed end to end, what is their total length in paperclips?\"\\), while distance is covered using steps (e.g., \"Dan walked 2 steps from the gate to the tree, and then 3 steps from the tree to the bench. How many steps did Dan walk in all?\"\\). Furthermore, both addition and subtraction problem types are present."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The problems are perfectly tailored for Grade 1 Quarter 2 cognitive capacity. The values used are single-digit numbers resulting in sums and differences within 10 (e.g., \"Dan walked 2 steps from the gate to the tree, and then 3 steps from the tree to the bench. How many steps did Dan walk in all?\", \"From the teacher's desk, it is 8 steps to the gate and 3 steps to the bench. How many steps farther is the gate than the bench?\"\\). The problem phrasing is simple, concrete, and easy for early readers to parse."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The samples show excellent variant comprehensiveness. They include addition for distance (\"Dan walked 2 steps from the gate to the tree, and then 3 steps from the tree to the bench. How many steps did Dan walk in all?\"\\), subtraction for distance (\"From the teacher's desk, it is 6 steps to the reading corner and 3 steps to the chalkboard. How many steps farther is the reading corner than the chalkboard?\"\\), addition for length (\"A pencil is 5 paperclips long and an eraser is 5 paperclips long. If they are placed end to end, what is their total length in paperclips?\"\\), and subtraction for length (\"A shoe is 5 hands long. An eraser is 4 hands long. How many hands longer is a shoe than an eraser?\"\\)."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "The questions are strictly aligned with the competency Solve problems involving lengths and distances using non-standard units. Every question involves a word problem, focuses either on length or distance, and exclusively uses non-standard units like hands, paperclips, and steps."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "The scale of the numbers and scenarios is highly appropriate. Grade 1 students work with numbers up to 100 but typically solve simple word problems within 20 or 10 at this stage in the quarter. The numbers selected ensure the focus remains on understanding the concept of measurement rather than complex arithmetic."
-    }
-  },
   "sample_seeds": [
     42,
     43,
@@ -51,22 +25,22 @@
       "options": [
         {
           "key": "A",
-          "value": 5,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 6,
-          "is_correct": false
-        },
-        {
-          "key": "C",
           "value": 4,
           "is_correct": true
         },
         {
-          "key": "D",
+          "key": "B",
+          "value": 5,
+          "is_correct": false
+        },
+        {
+          "key": "C",
           "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 6,
           "is_correct": false
         }
       ]
@@ -79,22 +53,22 @@
       "options": [
         {
           "key": "A",
-          "value": 1,
-          "is_correct": true
-        },
-        {
-          "key": "B",
           "value": 3,
           "is_correct": false
         },
         {
-          "key": "C",
-          "value": 4,
+          "key": "B",
+          "value": 2,
           "is_correct": false
         },
         {
+          "key": "C",
+          "value": 1,
+          "is_correct": true
+        },
+        {
           "key": "D",
-          "value": 2,
+          "value": 4,
           "is_correct": false
         }
       ]
@@ -107,17 +81,17 @@
       "options": [
         {
           "key": "A",
-          "value": 4,
-          "is_correct": false
-        },
-        {
-          "key": "B",
           "value": 6,
           "is_correct": false
         },
         {
-          "key": "C",
+          "key": "B",
           "value": 7,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 4,
           "is_correct": false
         },
         {
@@ -135,12 +109,12 @@
       "options": [
         {
           "key": "A",
-          "value": 7,
+          "value": 6,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 6,
+          "value": 4,
           "is_correct": false
         },
         {
@@ -150,7 +124,7 @@
         },
         {
           "key": "D",
-          "value": 4,
+          "value": 7,
           "is_correct": false
         }
       ]
@@ -163,22 +137,22 @@
       "options": [
         {
           "key": "A",
-          "value": 5,
+          "value": 4,
           "is_correct": false
         },
         {
           "key": "B",
+          "value": 5,
+          "is_correct": false
+        },
+        {
+          "key": "C",
           "value": 3,
           "is_correct": true
         },
         {
-          "key": "C",
-          "value": 2,
-          "is_correct": false
-        },
-        {
           "key": "D",
-          "value": 4,
+          "value": 2,
           "is_correct": false
         }
       ]
@@ -191,20 +165,20 @@
       "options": [
         {
           "key": "A",
-          "value": 8,
-          "text": "8",
-          "is_correct": false
-        },
-        {
-          "key": "B",
           "value": 7,
           "text": "7",
           "is_correct": true
         },
         {
-          "key": "C",
+          "key": "B",
           "value": 9,
           "text": "9",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 8,
+          "text": "8",
           "is_correct": false
         },
         {
@@ -223,27 +197,27 @@
       "options": [
         {
           "key": "A",
-          "value": 9,
-          "text": "9",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 8,
-          "text": "8",
-          "is_correct": false
-        },
-        {
-          "key": "C",
           "value": 10,
           "text": "10",
           "is_correct": false
         },
         {
-          "key": "D",
+          "key": "B",
           "value": 11,
           "text": "11",
           "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 8,
+          "text": "8",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 9,
+          "text": "9",
+          "is_correct": true
         }
       ]
     },
@@ -255,23 +229,23 @@
       "options": [
         {
           "key": "A",
-          "value": 3,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 5,
-          "is_correct": false
-        },
-        {
-          "key": "C",
           "value": 2,
           "is_correct": false
         },
         {
-          "key": "D",
+          "key": "B",
           "value": 4,
           "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 5,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 3,
+          "is_correct": true
         }
       ]
     },
@@ -288,18 +262,18 @@
         },
         {
           "key": "B",
-          "value": 1,
-          "is_correct": true
-        },
-        {
-          "key": "C",
           "value": 4,
           "is_correct": false
         },
         {
-          "key": "D",
+          "key": "C",
           "value": 3,
           "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 1,
+          "is_correct": true
         }
       ]
     },
@@ -311,12 +285,12 @@
       "options": [
         {
           "key": "A",
-          "value": 7,
+          "value": 8,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 5,
+          "value": 7,
           "is_correct": false
         },
         {
@@ -326,7 +300,7 @@
         },
         {
           "key": "D",
-          "value": 8,
+          "value": 5,
           "is_correct": false
         }
       ]
@@ -339,20 +313,20 @@
       "options": [
         {
           "key": "A",
-          "value": 9,
-          "text": "9",
-          "is_correct": false
-        },
-        {
-          "key": "B",
           "value": 11,
           "text": "11",
           "is_correct": false
         },
         {
-          "key": "C",
+          "key": "B",
           "value": 12,
           "text": "12",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 9,
+          "text": "9",
           "is_correct": false
         },
         {
@@ -363,5 +337,32 @@
         }
       ]
     }
-  ]
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "Every render is a real problem stated in non-standard units - a difference in hands, a total of steps walked in two legs, or how many steps farther one landmark is than another - and each key computes correctly from its own stem."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "Both operations the competency implies are generated: combining two part-distances into a whole, and finding the gap between two measured lengths. Lengths of objects and distances between places are both used as the setting."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Two given quantities and one operation per item, with no total above ten, keeps each problem inside what a Quarter 2 first grader can carry through without writing intermediate steps."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The situations differ in substance: ribbons of two lengths, a walk taken in two stages, classroom landmarks at differing step counts, and two objects placed 'end to end' to make a combined length."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "The harder seeds widen the gap between the two measurements or lengthen the walk rather than switching to an unrelated skill, so the progression stays anchored to solving in non-standard units."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Given measurements run from 2 to 8 units and no answer exceeds 10, matching what non-standard iteration realistically produces at this grade."
+    }
+  },
+  "overall": "PASS"
 }

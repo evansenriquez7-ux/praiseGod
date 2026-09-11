@@ -1,35 +1,8 @@
 {
   "node_id": "mat_g3_na_q2_7",
-  "reviewed_by": "Gemini Pro blind reviewer, batch G3-NA-Q2-Harden (mat_g3_na_q2_7), 2026-08-18",
-  "review_date": "2026-08-18",
+  "reviewed_by": "reviewer-b6-thistle-kestrel-9724",
+  "review_date": "2026-09-10",
   "blind": true,
-  "overall": "PASS",
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The items directly fulfill the competency requirement to solve word problems involving addition and subtraction with 3 to 4 numbers of up to 2 digits, including money. For example, Seed 42 ('Fidel starts with \u20b136. Then Fidel receives \u20b132. Then Fidel receives \u20b129. How much money does Fidel have now?') requires multi-step addition across 3 monetary values. Seed 44 ('Ben starts with 90 mangoes. Then Ben receives 15 mangoes. Then Ben gives away 23 mangoes. Then Ben receives 49 mangoes. How many mangoes does Ben have now?') requires solving combined addition and subtraction across 4 quantities."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The sample demonstrates comprehensive coverage of the competency's full scope. It includes 3-number problems (e.g., Seed 43: 'Dina starts with \u20b198. Then Dina gives away \u20b119. Then Dina receives \u20b160. How much money does Dina have now?') and 4-number problems (e.g., Seed 45: 'Ana starts with \u20b133. Then Ana receives \u20b111. Then Ana receives \u20b139. Then Ana gives away \u20b144. How much money does Ana have now?'). Both monetary contexts using Philippine Pesos (e.g., Seed 46: 'Ana starts with \u20b176. Then Ana receives \u20b176. Then Ana receives \u20b130. How much money does Ana have now?') and non-monetary countable discrete items (e.g., Seed 50: 'Ana starts with 69 stickers. Then Ana receives 41 stickers. Then Ana receives 29 stickers. Then Ana gives away 87 stickers. How many stickers does Ana have now?' and Seed 500: 'Carlo starts with 75 eggs. Then Carlo gives away 60 eggs. Then Carlo receives 33 eggs. Then Carlo receives 82 eggs. How many eggs does Carlo have now?') are thoroughly represented."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The problem structure and narrative complexity are well-matched to Grade 3 Quarter 2 learners. Sentences follow a clean, sequential, chronological format (starts with, receives, gives away) without confusing linguistic distractors or complex nested syntax. For instance, Seed 501 ('Dina starts with 3 notebooks. Then Dina receives 97 notebooks. Then Dina gives away 48 notebooks. Then Dina receives 28 notebooks. How many notebooks does Dina have now?') allows students to model each action step-by-step."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The sample exhibits rich structural variation across operations and item formats. There are pure addition chains (e.g., Seed 600: 'Ana starts with \u20b144. Then Ana receives \u20b116. Then Ana receives \u20b122. Then Ana receives \u20b11. How much money does Ana have now?'), alternating addition and subtraction (e.g., Seed 502: 'Fidel starts with \u20b146. Then Fidel receives \u20b194. Then Fidel gives away \u20b195. Then Fidel receives \u20b190. How much money does Fidel have now?'), and consecutive subtractions (e.g., Seed 601: 'Dina starts with \u20b173. Then Dina receives \u20b170. Then Dina gives away \u20b194. Then Dina gives away \u20b15. How much money does Dina have now?'), formatted in both multiple choice and cloze formats."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "All generated items strictly adhere to the Grade 3 Quarter 2 bounds without introducing out-of-scope operations (such as multiplication or division) or negative intermediate quantities. In problems with subtractions, intermediate running totals remain non-negative (e.g., Seed 602: 'Elena starts with \u20b193. Then Elena gives away \u20b178. Then Elena receives \u20b162. How much money does Elena have now?')."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "All operands adhere strictly to the 'up to 2 digits' limit (operands <= 99). For instance, in Seed 603 ('Dina starts with 6 mangoes. Then Dina receives 8 mangoes. Then Dina receives 1 mangoes. How many mangoes does Dina have now?'), single-digit values are practiced, while Seed 604 ('Elena starts with \u20b160. Then Elena receives \u20b138. Then Elena receives \u20b188. How much money does Elena have now?') and Seed 605 ('Ana starts with 56 mangoes. Then Ana receives 70 mangoes. Then Ana receives 64 mangoes. How many mangoes does Ana have now?') use appropriate 2-digit numbers resulting in realistic sums for Grade 3."
-    }
-  },
   "sample_seeds": [
     42,
     43,
@@ -51,92 +24,465 @@
     {
       "seed": 42,
       "formatter": "mcq",
-      "question_text": "Fidel starts with \u20b136. Then Fidel receives \u20b132. Then Fidel receives \u20b129. How much money does Fidel have now?",
-      "correct_answer": 97
+      "question_text": "Fidel starts with ₱36. Then Fidel receives ₱32. Then Fidel receives ₱29. How much money does Fidel have now?",
+      "correct_answer": 97,
+      "options": [
+        {
+          "key": "A",
+          "value": 97,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 99,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 96,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 98,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 43,
       "formatter": "mcq",
-      "question_text": "Dina starts with \u20b198. Then Dina gives away \u20b119. Then Dina receives \u20b160. How much money does Dina have now?",
-      "correct_answer": 139
+      "question_text": "Dina starts with ₱98. Then Dina gives away ₱19. Then Dina receives ₱60. How much money does Dina have now?",
+      "correct_answer": 139,
+      "options": [
+        {
+          "key": "A",
+          "value": 138,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 139,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 140,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 141,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 44,
       "formatter": "mcq",
       "question_text": "Ben starts with 90 mangoes. Then Ben receives 15 mangoes. Then Ben gives away 23 mangoes. Then Ben receives 49 mangoes. How many mangoes does Ben have now?",
-      "correct_answer": 131
+      "correct_answer": 131,
+      "options": [
+        {
+          "key": "A",
+          "value": 132,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 133,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 130,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 131,
+          "is_correct": true
+        }
+      ]
     },
     {
       "seed": 45,
       "formatter": "mcq",
-      "question_text": "Ana starts with \u20b133. Then Ana receives \u20b111. Then Ana receives \u20b139. Then Ana gives away \u20b144. How much money does Ana have now?",
-      "correct_answer": 39
+      "question_text": "Ana starts with ₱33. Then Ana receives ₱11. Then Ana receives ₱39. Then Ana gives away ₱44. How much money does Ana have now?",
+      "correct_answer": 39,
+      "options": [
+        {
+          "key": "A",
+          "value": 39,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 41,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 40,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 38,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 46,
       "formatter": "mcq",
-      "question_text": "Ana starts with \u20b176. Then Ana receives \u20b176. Then Ana receives \u20b130. How much money does Ana have now?",
-      "correct_answer": 182
+      "question_text": "Ana starts with ₱76. Then Ana receives ₱76. Then Ana receives ₱30. How much money does Ana have now?",
+      "correct_answer": 182,
+      "options": [
+        {
+          "key": "A",
+          "value": 183,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 181,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 184,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 182,
+          "is_correct": true
+        }
+      ]
     },
     {
       "seed": 50,
       "formatter": "cloze",
       "question_text": "Ana starts with 69 stickers. Then Ana receives 41 stickers. Then Ana receives 29 stickers. Then Ana gives away 87 stickers. How many stickers does Ana have now?",
-      "correct_answer": 52
+      "correct_answer": 52,
+      "options": [
+        {
+          "key": "A",
+          "value": 53,
+          "text": "53",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 54,
+          "text": "54",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 52,
+          "text": "52",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 51,
+          "text": "51",
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 500,
       "formatter": "cloze",
       "question_text": "Carlo starts with 75 eggs. Then Carlo gives away 60 eggs. Then Carlo receives 33 eggs. Then Carlo receives 82 eggs. How many eggs does Carlo have now?",
-      "correct_answer": 130
+      "correct_answer": 130,
+      "options": [
+        {
+          "key": "A",
+          "value": 132,
+          "text": "132",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 129,
+          "text": "129",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 131,
+          "text": "131",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 130,
+          "text": "130",
+          "is_correct": true
+        }
+      ]
     },
     {
       "seed": 501,
       "formatter": "mcq",
       "question_text": "Dina starts with 3 notebooks. Then Dina receives 97 notebooks. Then Dina gives away 48 notebooks. Then Dina receives 28 notebooks. How many notebooks does Dina have now?",
-      "correct_answer": 80
+      "correct_answer": 80,
+      "options": [
+        {
+          "key": "A",
+          "value": 80,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 82,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 81,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 79,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 502,
       "formatter": "mcq",
-      "question_text": "Fidel starts with \u20b146. Then Fidel receives \u20b194. Then Fidel gives away \u20b195. Then Fidel receives \u20b190. How much money does Fidel have now?",
-      "correct_answer": 135
+      "question_text": "Fidel starts with ₱46. Then Fidel receives ₱94. Then Fidel gives away ₱95. Then Fidel receives ₱90. How much money does Fidel have now?",
+      "correct_answer": 135,
+      "options": [
+        {
+          "key": "A",
+          "value": 134,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 136,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 135,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 137,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 600,
       "formatter": "mcq",
-      "question_text": "Ana starts with \u20b144. Then Ana receives \u20b116. Then Ana receives \u20b122. Then Ana receives \u20b11. How much money does Ana have now?",
-      "correct_answer": 83
+      "question_text": "Ana starts with ₱44. Then Ana receives ₱16. Then Ana receives ₱22. Then Ana receives ₱1. How much money does Ana have now?",
+      "correct_answer": 83,
+      "options": [
+        {
+          "key": "A",
+          "value": 83,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 85,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 84,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 82,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 601,
       "formatter": "cloze",
-      "question_text": "Dina starts with \u20b173. Then Dina receives \u20b170. Then Dina gives away \u20b194. Then Dina gives away \u20b15. How much money does Dina have now?",
-      "correct_answer": 44
+      "question_text": "Dina starts with ₱73. Then Dina receives ₱70. Then Dina gives away ₱94. Then Dina gives away ₱5. How much money does Dina have now?",
+      "correct_answer": 44,
+      "options": [
+        {
+          "key": "A",
+          "value": 45,
+          "text": "45",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 43,
+          "text": "43",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 44,
+          "text": "44",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 46,
+          "text": "46",
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 602,
       "formatter": "mcq",
-      "question_text": "Elena starts with \u20b193. Then Elena gives away \u20b178. Then Elena receives \u20b162. How much money does Elena have now?",
-      "correct_answer": 77
+      "question_text": "Elena starts with ₱93. Then Elena gives away ₱78. Then Elena receives ₱62. How much money does Elena have now?",
+      "correct_answer": 77,
+      "options": [
+        {
+          "key": "A",
+          "value": 76,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 77,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 79,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 78,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 603,
       "formatter": "mcq",
       "question_text": "Dina starts with 6 mangoes. Then Dina receives 8 mangoes. Then Dina receives 1 mangoes. How many mangoes does Dina have now?",
-      "correct_answer": 15
+      "correct_answer": 15,
+      "options": [
+        {
+          "key": "A",
+          "value": 15,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 14,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 16,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 17,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 604,
       "formatter": "mcq",
-      "question_text": "Elena starts with \u20b160. Then Elena receives \u20b138. Then Elena receives \u20b188. How much money does Elena have now?",
-      "correct_answer": 186
+      "question_text": "Elena starts with ₱60. Then Elena receives ₱38. Then Elena receives ₱88. How much money does Elena have now?",
+      "correct_answer": 186,
+      "options": [
+        {
+          "key": "A",
+          "value": 188,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 185,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 187,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 186,
+          "is_correct": true
+        }
+      ]
     },
     {
       "seed": 605,
       "formatter": "cloze",
       "question_text": "Ana starts with 56 mangoes. Then Ana receives 70 mangoes. Then Ana receives 64 mangoes. How many mangoes does Ana have now?",
-      "correct_answer": 190
+      "correct_answer": 190,
+      "options": [
+        {
+          "key": "A",
+          "value": 191,
+          "text": "191",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 192,
+          "text": "192",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 190,
+          "text": "190",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 189,
+          "text": "189",
+          "is_correct": false
+        }
+      ]
     }
-  ]
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "Each item chains three or four two-digit quantities in a story and asks for the resulting amount, so the competency's combination of word problem and multi-term arithmetic is met; the money clause is honoured in a majority of the samples."
+    },
+    "comprehensive_coverage": {
+      "verdict": "CONCERN",
+      "rationale": "Money appears only ever as a running balance that grows and shrinks. The purchase and change situations that dominate real Grade 3 money work, buying several items and finding total cost or what is left from a note, are absent, as are comparison and part-part-whole structures. Three-term and four-term chains are both present, which is the one sub-case pairing that is covered."
+    },
+    "cognitive_capacity": {
+      "verdict": "CONCERN",
+      "rationale": "The reading level is right, but agreement fails where Dina receives 1 mangoes, and the answers to money questions are returned as bare numerals such as the 97 given for Fidel, with no peso marker on the key or the options, in a node whose competency explicitly concerns money."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "FAIL",
+      "rationale": "Every one of the fifteen samples is the same starts with, then receives, then gives away frame; only the actor name, the noun and the presence of a peso sign change. Two formatters wrap identical prose. A competency about solving problems demands more than one problem shape, and none is generated."
+    },
+    "competency_alignment": {
+      "verdict": "CONCERN",
+      "rationale": "Difficulty moves only by adding a fourth step or by choosing larger two-digit numbers. Nothing varies whether the unknown sits at the end or in the middle, and no distractor represents the natural error of adding where the story says gives away, so the progression does not probe the reasoning the chain is meant to build."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Individual quantities stay within two digits as required, and although running totals reach 190 the terms themselves never exceed the stated limit."
+    }
+  },
+  "overall": "FAIL"
 }

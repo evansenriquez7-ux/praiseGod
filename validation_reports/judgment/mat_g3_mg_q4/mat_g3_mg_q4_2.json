@@ -1,35 +1,8 @@
 {
   "node_id": "mat_g3_mg_q4_2",
-  "reviewed_by": "Gemini Pro blind reviewer, batch G3-MG-Q4-Harden (mat_g3_mg_q4_2), 2026-08-18",
-  "review_date": "2026-08-18",
+  "reviewed_by": "reviewer-b5-marlin-obsidian-3358",
+  "review_date": "2026-09-10",
   "blind": true,
-  "overall": "PASS",
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The items directly fulfill the competency requirement to complete a symmetric figure across a line. Questions evaluate locating corresponding points across vertical and horizontal lines of symmetry (e.g., \"A point is 3 grid units to the left of a vertical line of symmetry. Where is its mirror-image point?\" and \"A point is 2 grid units above a horizontal line of symmetry. Where must the matching point be drawn to complete the symmetric figure?\"), matching features on symmetric drawings (\"One side of a symmetric butterfly drawing has 3 dots on the left wing. How many dots must be drawn on the right wing to complete the figure?\"), and identifying equidistant reflection properties (\"When completing a symmetric figure on grid paper, each vertex on the second half must be the same distance from the line of symmetry as its partner on the first half. True or false?\")."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The sample set comprehensively covers key dimensions of the competency, including both vertical and horizontal symmetry lines, left-to-right and right-to-left reflections (\"A point is 4 grid units to the right of a vertical line of symmetry. Where should its matching point be drawn to complete the figure?\"), polygon vertices (\"A vertex of a polygon is 5 units to the left of a vertical line of symmetry. Where is the corresponding vertex of the completed symmetric polygon?\"), pictorial completion (\"One side of a symmetric butterfly drawing has 3 dots on the left wing. How many dots must be drawn on the right wing to complete the figure?\"), and fundamental symmetry definitions (\"To complete a symmetric figure across a vertical line of symmetry, the other half must be ___.\")."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The language, sentence structure, and conceptual load are calibrated appropriately for Grade 3 Quarter 4 students. Grid-based distance descriptions are intuitive and avoid formal coordinate notation, while contexts like \"One side of a symmetric butterfly drawing has 3 dots on the left wing. How many dots must be drawn on the right wing to complete the figure?\" provide accessible visual representations of reflectional completion."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The generator demonstrates solid variation across multiple item formats: directional mirror-point positioning across different axes (\"A point is 2 grid units above a horizontal line of symmetry. Where must the matching point be drawn to complete the symmetric figure?\"), polygon vertex reflection (\"A vertex of a polygon is 5 units to the left of a vertical line of symmetry. Where is the corresponding vertex of the completed symmetric polygon?\"), property verification (\"When completing a symmetric figure on grid paper, each vertex on the second half must be the same distance from the line of symmetry as its partner on the first half. True or false?\"), and conceptual completion rules (\"To complete a symmetric figure across a vertical line of symmetry, the other half must be ___.\")."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "All questions align strictly with the target competency 'Complete a figure that is symmetric with respect to a line' without introducing out-of-scope transformations such as rotations or formal Cartesian coordinate algebra. Items such as \"A point is 4 grid units to the right of a vertical line of symmetry. Where should its matching point be drawn to complete the figure?\" and \"A vertex of a polygon is 5 units to the left of a vertical line of symmetry. Where is the corresponding vertex of the completed symmetric polygon?\" target reflectional symmetry completion directly."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "The numerical values used for grid distances (such as 2, 3, 4, and 5 units in \"A point is 3 grid units to the left of a vertical line of symmetry. Where is its mirror-image point?\" and \"A vertex of a polygon is 5 units to the left of a vertical line of symmetry. Where is the corresponding vertex of the completed symmetric polygon?\") and small counts (\"One side of a symmetric butterfly drawing has 3 dots on the left wing. How many dots must be drawn on the right wing to complete the figure?\") are perfectly scaled for Grade 3 learners to visualize and count accurately."
-    }
-  },
   "sample_seeds": [
     42,
     43,
@@ -50,12 +23,12 @@
       "options": [
         {
           "key": "A",
-          "value": "3 grid units above the line",
+          "value": "on the line itself",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "on the line itself",
+          "value": "3 grid units above the line",
           "is_correct": false
         },
         {
@@ -78,12 +51,12 @@
       "options": [
         {
           "key": "A",
-          "value": "drawn as a mirror image of the first half",
-          "is_correct": true
+          "value": "drawn twice as large",
+          "is_correct": false
         },
         {
           "key": "B",
-          "value": "drawn twice as large",
+          "value": "drawn upside down",
           "is_correct": false
         },
         {
@@ -93,8 +66,8 @@
         },
         {
           "key": "D",
-          "value": "drawn upside down",
-          "is_correct": false
+          "value": "drawn as a mirror image of the first half",
+          "is_correct": true
         }
       ]
     },
@@ -106,17 +79,17 @@
       "options": [
         {
           "key": "A",
-          "value": "Only for rectangles",
+          "value": "Only for circles",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "False",
+          "value": "Only for rectangles",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "Only for circles",
+          "value": "False",
           "is_correct": false
         },
         {
@@ -134,18 +107,18 @@
       "options": [
         {
           "key": "A",
-          "value": "2 grid units to the right of the line",
-          "is_correct": false
-        },
-        {
-          "key": "B",
           "value": "2 grid units above the line of symmetry",
           "is_correct": false
         },
         {
-          "key": "C",
+          "key": "B",
           "value": "2 grid units below the line of symmetry",
           "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "2 grid units to the right of the line",
+          "is_correct": false
         },
         {
           "key": "D",
@@ -162,23 +135,23 @@
       "options": [
         {
           "key": "A",
-          "value": "on the line itself",
+          "value": "3 grid units above the line",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "3 grid units to the right of the line",
-          "is_correct": true
-        },
-        {
-          "key": "C",
           "value": "6 grid units to the right of the line",
           "is_correct": false
         },
         {
-          "key": "D",
-          "value": "3 grid units above the line",
+          "key": "C",
+          "value": "on the line itself",
           "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "3 grid units to the right of the line",
+          "is_correct": true
         }
       ]
     },
@@ -190,13 +163,13 @@
       "options": [
         {
           "key": "A",
-          "value": "5 units to the right of the line",
-          "is_correct": true
+          "value": "on the line of symmetry",
+          "is_correct": false
         },
         {
           "key": "B",
-          "value": "on the line of symmetry",
-          "is_correct": false
+          "value": "5 units to the right of the line",
+          "is_correct": true
         },
         {
           "key": "C",
@@ -218,13 +191,13 @@
       "options": [
         {
           "key": "A",
-          "value": "4 grid units below the line of symmetry",
+          "value": "2 grid units above the line of symmetry",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "2 grid units above the line of symmetry",
-          "is_correct": false
+          "value": "2 grid units below the line of symmetry",
+          "is_correct": true
         },
         {
           "key": "C",
@@ -233,8 +206,8 @@
         },
         {
           "key": "D",
-          "value": "2 grid units below the line of symmetry",
-          "is_correct": true
+          "value": "4 grid units below the line of symmetry",
+          "is_correct": false
         }
       ]
     },
@@ -251,18 +224,18 @@
         },
         {
           "key": "B",
-          "value": "0 dots",
+          "value": "1 dot on the wing",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "3 dots in matching positions",
-          "is_correct": true
+          "value": "0 dots",
+          "is_correct": false
         },
         {
           "key": "D",
-          "value": "1 dot on the wing",
-          "is_correct": false
+          "value": "3 dots in matching positions",
+          "is_correct": true
         }
       ]
     },
@@ -284,15 +257,42 @@
         },
         {
           "key": "C",
-          "value": "4 grid units to the right of the line",
-          "is_correct": false
+          "value": "4 grid units to the left of the line",
+          "is_correct": true
         },
         {
           "key": "D",
-          "value": "4 grid units to the left of the line",
-          "is_correct": true
+          "value": "4 grid units to the right of the line",
+          "is_correct": false
         }
       ]
     }
-  ]
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "CONCERN",
+      "rationale": "Completing a figure is the competency's object, yet eight of nine samples mirror a single point or one polygon vertex across the line. Only the butterfly touches a figure, and it asks for a count of dots on the right wing rather than for the missing half to be built."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "Both orientations of the line of symmetry occur, mirroring is asked left-to-right and right-to-left as well as above-to-below, the reflected object is sometimes a point and sometimes a polygon vertex, and the distances used span 2 to 5 units."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The governing principle is stated in terms a Grade 3 pupil can act on, that each vertex on the second half must be the same distance from the line of symmetry as its partner on the first half, and all counting is in whole grid units."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "Two stems repeat word for word within the nine samples, the 3-units-left item and the 2-units-above item, and every sample is multiple choice. The butterfly is the only concrete object in the set; the rest are abstract points on an unnamed grid."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "The wrong options are built from the actual misconceptions of this skill rather than from noise: the doubled distance appears as 6 grid units to the right of the line, and placing the partner on the line itself or on the same side both appear, so choosing correctly requires the mirror idea."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Distances of 2 to 5 grid units keep every reflection countable on ordinary grid paper, which is the right magnitude for completing a symmetric figure by hand at this grade."
+    }
+  },
+  "overall": "CONCERN"
 }

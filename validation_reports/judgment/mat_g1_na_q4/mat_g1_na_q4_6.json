@@ -1,42 +1,14 @@
 {
   "node_id": "mat_g1_na_q4_6",
-  "reviewed_by": "Gemini Pro blind reviewer, batch Re-Harden (mat_g1_na_q4_6), 2026-08-18",
-  "review_date": "2026-08-18",
+  "reviewed_by": "reviewer-b2-tallow-verdigris-8130",
+  "review_date": "2026-09-10",
   "blind": true,
-  "overall": "PASS",
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "All generated items faithfully require solving single-step word problems involving the addition or subtraction of money amounts. For instance, addition is directly tested in seed 43 (\"Kuya Ton had \u20b12 and received \u20b11 more from Nanay. How much money does Kuya Ton have in all?\") and seed 44 (\"Isko has \u20b110 in one pocket and \u20b16 in another pocket. How much money does Isko have in total?\"). Subtraction is directly tested in seed 42 (\"Marco had \u20b15 in a piggy bank and used \u20b11 to buy a notebook. How much money is left in the piggy bank?\") and seed 501 (\"Kuya Ton had \u20b150 in a piggy bank and used \u20b139 to buy a notebook. How much money is left in the piggy bank?\"). Every sample adheres to 1-step arithmetic with money values within bounds."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The sample set demonstrates comprehensive coverage across both required arithmetic operations (addition and subtraction of Philippine peso values) as well as diverse everyday contexts. Scenarios include combining amounts in pockets (\"Bianca has \u20b110 in one pocket and \u20b110 in another pocket. How much money does Bianca have in total?\" - seed 50), purchasing items and finding total cost (\"Moses bought a pencil for \u20b110 and an eraser for \u20b11. How much did Moses spend in all?\" - seed 601), and spending money with remaining change (\"Nanding had \u20b160 and bought a snack for \u20b140 at the sari-sari store. How much money does Nanding have left?\" - seed 500; \"Ate Nena had \u20b110 and spent \u20b11 on bags of flour at the palengke. How much money does Ate Nena have left?\" - seed 46)."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The cognitive demand and reading difficulty are exceptionally well-calibrated for Grade 1 Quarter 4 learners. Sentence structures are short, clear, and feature familiar Philippine cultural and household settings (e.g. Nanay, piggy bank, sari-sari store, palengke). The questions are straightforward single-step problems without extraneous or distracting information, such as in seed 603 (\"Sir Ben bought a pencil for \u20b12 and an eraser for \u20b11. How much did Sir Ben spend in all?\") and seed 604 (\"Faye had \u20b11 and received \u20b16 more from Nanay. How much money does Faye have in all?\")."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The samples show robust variant coverage, incorporating multiple semantic problem structures: joining/receiving amounts (\"Faye had \u20b11 and received \u20b16 more from Nanay. How much money does Faye have in all?\" - seed 604), aggregation of parts across different locations (\"Des has \u20b110 in one pocket and \u20b110 in another pocket. How much money does Des have in total?\" - seed 602), finding total expenditure (\"Riza bought a pencil for \u20b15 and an eraser for \u20b11. How much did Riza spend in all?\" - seed 605), and take-away/remaining subtraction from stored funds (\"Carlo had \u20b180 in a piggy bank and used \u20b12 to buy a notebook. How much money is left in the piggy bank?\" - seed 502). The evaluation format also spans multiple-choice (mcq) and fill-in-the-blank (cloze) formats."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "All sampled items strictly match the MATATAG learning competency statement without exceeding scope. Problems strictly involve single-step addition or subtraction of money, avoid complex multi-step reasoning, avoid non-money units or fractional centavos, and stay strictly within the bounds of sums up to \u20b1100 and subtraction amounts less than \u20b1100. For example, seed 45 (\"Chef Demi saved \u20b110 on Monday and \u20b11 on Tuesday. How much money did Chef Demi save altogether?\") and seed 600 (\"Kuya Renz had \u20b110 and bought a snack for \u20b12 at the sari-sari store. How much money does Kuya Renz have left?\") perfectly mirror the competency scope."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "Numerical scales are fully aligned with the competency constraints (addition sums \u2264 \u20b1100, subtraction minuends and subtrahends < \u20b1100). The samples range from small single-digit additions like \u20b12 + \u20b11 = \u20b13 in seed 43 (\"Kuya Ton had \u20b12 and received \u20b11 more from Nanay. How much money does Kuya Ton have in all?\") to two-digit subtractions like \u20b180 - \u20b12 = \u20b178 in seed 502 (\"Carlo had \u20b180 in a piggy bank and used \u20b12 to buy a notebook. How much money is left in the piggy bank?\") and \u20b160 - \u20b140 = \u20b120 in seed 500 (\"Nanding had \u20b160 and bought a snack for \u20b140 at the sari-sari store. How much money does Nanding have left?\"), ensuring appropriate progression without breaching limits."
-    }
-  },
   "sample_seeds": [
     42,
     43,
     44,
     45,
     46,
-    50,
     500,
     501,
     502,
@@ -50,93 +22,438 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "mcq",
-      "question_text": "Marco had \u20b15 in a piggy bank and used \u20b11 to buy a notebook. How much money is left in the piggy bank?",
-      "correct_answer": 4
+      "formatter": "cloze",
+      "question_text": "Marco had ₱5 in a piggy bank and used ₱2 to buy a notebook. How much money is left in the piggy bank?",
+      "correct_answer": 3,
+      "options": [
+        {
+          "key": "A",
+          "value": 4,
+          "text": "4",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 8,
+          "text": "8",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 3,
+          "text": "3",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 70,
+          "text": "70",
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 43,
-      "formatter": "mcq",
-      "question_text": "Kuya Ton had \u20b12 and received \u20b11 more from Nanay. How much money does Kuya Ton have in all?",
-      "correct_answer": 3
+      "formatter": "read_mcq",
+      "question_text": "Kuya Ton had ₱20 and received ₱10 more from Nanay. How much money does Kuya Ton have in all?",
+      "correct_answer": "A",
+      "options": [
+        {
+          "key": "A",
+          "value": 30,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 35,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 50,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 20,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 44,
       "formatter": "mcq",
-      "question_text": "Isko has \u20b110 in one pocket and \u20b16 in another pocket. How much money does Isko have in total?",
-      "correct_answer": 16
+      "question_text": "Isko has ₱10 in one pocket and ₱21 in another pocket. How much money does Isko have in total?",
+      "correct_answer": 31,
+      "options": [
+        {
+          "key": "A",
+          "value": 310,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 32,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 21,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 31,
+          "is_correct": true
+        }
+      ]
     },
     {
       "seed": 45,
       "formatter": "mcq",
-      "question_text": "Chef Demi saved \u20b110 on Monday and \u20b11 on Tuesday. How much money did Chef Demi save altogether?",
-      "correct_answer": 11
+      "question_text": "Chef Demi saved ₱2 on Monday and ₱10 on Tuesday. How much money did Chef Demi save altogether?",
+      "correct_answer": 12,
+      "options": [
+        {
+          "key": "A",
+          "value": 120,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 12,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 13,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 2,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 46,
       "formatter": "mcq",
-      "question_text": "Ate Nena had \u20b110 and spent \u20b11 on bags of flour at the palengke. How much money does Ate Nena have left?",
-      "correct_answer": 9
-    },
-    {
-      "seed": 50,
-      "formatter": "cloze",
-      "question_text": "Bianca has \u20b110 in one pocket and \u20b110 in another pocket. How much money does Bianca have in total?",
-      "correct_answer": 20
+      "question_text": "Ate Nena had ₱30 and spent ₱10 on bags of flour at the palengke. How much money does Ate Nena have left?",
+      "correct_answer": 20,
+      "options": [
+        {
+          "key": "A",
+          "value": 20,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 30,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 400,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 41,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 500,
-      "formatter": "cloze",
-      "question_text": "Nanding had \u20b160 and bought a snack for \u20b140 at the sari-sari store. How much money does Nanding have left?",
-      "correct_answer": 20
+      "formatter": "read_mcq",
+      "question_text": "Nanding had ₱60 and bought a snack for ₱40 at the sari-sari store. How much money does Nanding have left?",
+      "correct_answer": "D",
+      "options": [
+        {
+          "key": "A",
+          "value": 80,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 55,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 70,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 20,
+          "is_correct": true
+        }
+      ]
     },
     {
       "seed": 501,
-      "formatter": "mcq",
-      "question_text": "Kuya Ton had \u20b150 in a piggy bank and used \u20b139 to buy a notebook. How much money is left in the piggy bank?",
-      "correct_answer": 11
+      "formatter": "cloze",
+      "question_text": "Kuya Ton had ₱50 in a piggy bank and used ₱39 to buy a notebook. How much money is left in the piggy bank?",
+      "correct_answer": 11,
+      "options": [
+        {
+          "key": "A",
+          "value": 11,
+          "text": "11",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 101,
+          "text": "101",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 90,
+          "text": "90",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 1000,
+          "text": "1000",
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 502,
       "formatter": "mcq",
-      "question_text": "Carlo had \u20b180 in a piggy bank and used \u20b12 to buy a notebook. How much money is left in the piggy bank?",
-      "correct_answer": 78
+      "question_text": "Carlo had ₱80 in a piggy bank and used ₱2 to buy a notebook. How much money is left in the piggy bank?",
+      "correct_answer": 78,
+      "options": [
+        {
+          "key": "A",
+          "value": 78,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 820,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 83,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 72,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 600,
-      "formatter": "mcq",
-      "question_text": "Kuya Renz had \u20b110 and bought a snack for \u20b12 at the sari-sari store. How much money does Kuya Renz have left?",
-      "correct_answer": 8
+      "formatter": "cloze",
+      "question_text": "Kuya Renz had ₱10 and bought a snack for ₱5 at the sari-sari store. How much money does Kuya Renz have left?",
+      "correct_answer": 5,
+      "options": [
+        {
+          "key": "A",
+          "value": 150,
+          "text": "150",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 5,
+          "text": "5",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 6,
+          "text": "6",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 16,
+          "text": "16",
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 601,
-      "formatter": "cloze",
-      "question_text": "Moses bought a pencil for \u20b110 and an eraser for \u20b11. How much did Moses spend in all?",
-      "correct_answer": 11
+      "formatter": "mcq",
+      "question_text": "Moses bought a pencil for ₱15 and an eraser for ₱5. How much did Moses spend in all?",
+      "correct_answer": 20,
+      "options": [
+        {
+          "key": "A",
+          "value": 21,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 200,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 20,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 10,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 602,
       "formatter": "mcq",
-      "question_text": "Des has \u20b110 in one pocket and \u20b110 in another pocket. How much money does Des have in total?",
-      "correct_answer": 20
+      "question_text": "Des has ₱50 in one pocket and ₱20 in another pocket. How much money does Des have in total?",
+      "correct_answer": 70,
+      "options": [
+        {
+          "key": "A",
+          "value": 70,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 71,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 60,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 700,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 603,
       "formatter": "mcq",
-      "question_text": "Sir Ben bought a pencil for \u20b12 and an eraser for \u20b11. How much did Sir Ben spend in all?",
-      "correct_answer": 3
+      "question_text": "Sir Ben bought a pencil for ₱15 and an eraser for ₱15. How much did Sir Ben spend in all?",
+      "correct_answer": 30,
+      "options": [
+        {
+          "key": "A",
+          "value": 30,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 31,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 20,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 300,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 604,
-      "formatter": "mcq",
-      "question_text": "Faye had \u20b11 and received \u20b16 more from Nanay. How much money does Faye have in all?",
-      "correct_answer": 7
+      "formatter": "cloze",
+      "question_text": "Faye had ₱5 and received ₱25 more from Nanay. How much money does Faye have in all?",
+      "correct_answer": 30,
+      "options": [
+        {
+          "key": "A",
+          "value": 20,
+          "text": "20",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 31,
+          "text": "31",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 300,
+          "text": "300",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 30,
+          "text": "30",
+          "is_correct": true
+        }
+      ]
     },
     {
       "seed": 605,
-      "formatter": "cloze",
-      "question_text": "Riza bought a pencil for \u20b15 and an eraser for \u20b11. How much did Riza spend in all?",
-      "correct_answer": 6
+      "formatter": "mcq",
+      "question_text": "Riza bought a pencil for ₱10 and an eraser for ₱50. How much did Riza spend in all?",
+      "correct_answer": 60,
+      "options": [
+        {
+          "key": "A",
+          "value": 600,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 50,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 61,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 60,
+          "is_correct": true
+        }
+      ]
     }
-  ]
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "Each sample is a genuine one-step money situation resolved by a single addition or subtraction, and the peso amounts are embedded in the story rather than presented as a bare calculation."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "Both named operations are built out: money combined from two pockets, money received, and two purchases totalled on the addition side; money used from a piggy bank and money spent at the store on the subtraction side."
+    },
+    "cognitive_capacity": {
+      "verdict": "CONCERN",
+      "rationale": "The settings are well pitched for Filipino Grade 1 readers, with the sari-sari store and the palengke, but several option lists carry values with no misconception behind them -- 820 against a key of 78, and 1000 in a scenario capped at ₱50 -- which are digit-mashes rather than thinkable answers."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "Five distinct money scripts recur across the seeds: saving on two days, holding money in two pockets, receiving money from Nanay, buying two school items, and spending part of an amount."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "The difficulty moves through money-relevant steps -- from round amounts like ₱20 and ₱10 to the non-round ₱50 less ₱39 -- so what gets harder is the money arithmetic rather than the story."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Addition sums stop at ₱70 and never break ₱100, and in the subtraction items both the starting amount and the amount removed are under ₱100, honouring the two separate bounds the competency sets."
+    }
+  },
+  "overall": "CONCERN"
 }

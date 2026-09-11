@@ -1,35 +1,8 @@
 {
   "node_id": "mat_g3_mg_q2_4",
-  "reviewed_by": "Gemini Pro blind reviewer, batch G3-MG-Q2-Harden (mat_g3_mg_q2_4), 2026-08-18",
-  "review_date": "2026-08-18",
+  "reviewed_by": "reviewer-b5-marlin-obsidian-3358",
+  "review_date": "2026-09-10",
   "blind": true,
-  "overall": "PASS",
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The items directly fulfill the competency requirement of estimating capacity using liters and milliliters. Every sample presents a container capacity with a standard unit and asks the student to estimate/round it to an appropriate place value, as demonstrated in \"A container's capacity measures 56 mL. About how many mL is that, rounded to the nearest 10?\" and \"A container's capacity measures 16 L. About how many L is that, rounded to the nearest 10?\"."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The sample set comprehensively covers both units specified in the competency (L and mL) across multiple rounding scales (nearest 10, 100, and 1000). For example, it includes smaller values rounded to the nearest 10 such as \"A container's capacity measures 3 L. About how many L is that, rounded to the nearest 10?\", hundreds-scale estimation in \"A container's capacity measures 285 L. About how many L is that, rounded to the nearest 100?\", and thousands-scale estimation in \"A container's capacity measures 2893 mL. About how many mL is that, rounded to the nearest 1000?\"."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The difficulty and readability are well-calibrated for Grade 3 Quarter 2 students. The sentence structure is direct, concise, and avoids extraneous cognitive load or complicated vocabulary, as shown in \"A container's capacity measures 14 L. About how many L is that, rounded to the nearest 10?\" and \"A container's capacity measures 69 mL. About how many mL is that, rounded to the nearest 10?\"."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The generation demonstrates solid structural and format variety, spanning multiple-choice questions (e.g., \"A container's capacity measures 18 L. About how many L is that, rounded to the nearest 10?\") and cloze formats (e.g., \"A container's capacity measures 21 L. About how many L is that, rounded to the nearest 10?\"), testing rounding up and rounding down across single-digit, two-digit, three-digit, and four-digit capacities."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "All questions remain tightly aligned with the target learning competency without introducing out-of-scope concepts such as unit conversions or multi-step operations. Each question cleanly tests estimation of capacity, as seen in \"A container's capacity measures 192 L. About how many L is that, rounded to the nearest 100?\" and \"A container's capacity measures 18 mL. About how many mL is that, rounded to the nearest 10?\"."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "The numerical magnitudes and units are completely appropriate for Grade 3 capacity contexts, ranging from small values (e.g., \"A container's capacity measures 7 L. About how many L is that, rounded to the nearest 10?\") to larger real-world metric quantities (e.g., \"A container's capacity measures 51 mL. About how many mL is that, rounded to the nearest 10?\" and \"A container's capacity measures 2893 mL. About how many mL is that, rounded to the nearest 1000?\")."
-    }
-  },
   "sample_seeds": [
     42,
     43,
@@ -64,13 +37,13 @@
         },
         {
           "key": "C",
-          "value": 60,
-          "is_correct": true
+          "value": 59,
+          "is_correct": false
         },
         {
           "key": "D",
-          "value": 59,
-          "is_correct": false
+          "value": 60,
+          "is_correct": true
         }
       ]
     },
@@ -82,22 +55,22 @@
       "options": [
         {
           "key": "A",
-          "value": 20,
-          "is_correct": true
-        },
-        {
-          "key": "B",
           "value": 19,
           "is_correct": false
         },
         {
-          "key": "C",
-          "value": 22,
+          "key": "B",
+          "value": 21,
           "is_correct": false
         },
         {
+          "key": "C",
+          "value": 20,
+          "is_correct": true
+        },
+        {
           "key": "D",
-          "value": 21,
+          "value": 22,
           "is_correct": false
         }
       ]
@@ -110,23 +83,23 @@
       "options": [
         {
           "key": "A",
-          "value": 69,
-          "is_correct": false
+          "value": 70,
+          "is_correct": true
         },
         {
           "key": "B",
-          "value": 71,
-          "is_correct": false
-        },
-        {
-          "key": "C",
           "value": 72,
           "is_correct": false
         },
         {
+          "key": "C",
+          "value": 71,
+          "is_correct": false
+        },
+        {
           "key": "D",
-          "value": 70,
-          "is_correct": true
+          "value": 69,
+          "is_correct": false
         }
       ]
     },
@@ -138,23 +111,23 @@
       "options": [
         {
           "key": "A",
-          "value": 9,
-          "is_correct": false
-        },
-        {
-          "key": "B",
           "value": 11,
           "is_correct": false
         },
         {
+          "key": "B",
+          "value": 9,
+          "is_correct": false
+        },
+        {
           "key": "C",
-          "value": 10,
-          "is_correct": true
+          "value": 12,
+          "is_correct": false
         },
         {
           "key": "D",
-          "value": 12,
-          "is_correct": false
+          "value": 10,
+          "is_correct": true
         }
       ]
     },
@@ -171,8 +144,8 @@
         },
         {
           "key": "B",
-          "value": 20,
-          "is_correct": true
+          "value": 21,
+          "is_correct": false
         },
         {
           "key": "C",
@@ -181,8 +154,8 @@
         },
         {
           "key": "D",
-          "value": 21,
-          "is_correct": false
+          "value": 20,
+          "is_correct": true
         }
       ]
     },
@@ -200,15 +173,15 @@
         },
         {
           "key": "B",
-          "value": 0,
-          "text": "0",
-          "is_correct": true
-        },
-        {
-          "key": "C",
           "value": 2,
           "text": "2",
           "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 0,
+          "text": "0",
+          "is_correct": true
         },
         {
           "key": "D",
@@ -226,8 +199,8 @@
       "options": [
         {
           "key": "A",
-          "value": 302,
-          "text": "302",
+          "value": 299,
+          "text": "299",
           "is_correct": false
         },
         {
@@ -238,8 +211,8 @@
         },
         {
           "key": "C",
-          "value": 299,
-          "text": "299",
+          "value": 302,
+          "text": "302",
           "is_correct": false
         },
         {
@@ -286,23 +259,23 @@
       "options": [
         {
           "key": "A",
-          "value": 3000,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 3001,
-          "is_correct": false
-        },
-        {
-          "key": "C",
           "value": 3002,
           "is_correct": false
         },
         {
-          "key": "D",
+          "key": "B",
           "value": 2999,
           "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 3001,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 3000,
+          "is_correct": true
         }
       ]
     },
@@ -314,22 +287,22 @@
       "options": [
         {
           "key": "A",
-          "value": 11,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 9,
-          "is_correct": false
-        },
-        {
-          "key": "C",
           "value": 10,
           "is_correct": true
         },
         {
-          "key": "D",
+          "key": "B",
+          "value": 11,
+          "is_correct": false
+        },
+        {
+          "key": "C",
           "value": 12,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 9,
           "is_correct": false
         }
       ]
@@ -342,9 +315,9 @@
       "options": [
         {
           "key": "A",
-          "value": 19,
-          "text": "19",
-          "is_correct": false
+          "value": 20,
+          "text": "20",
+          "is_correct": true
         },
         {
           "key": "B",
@@ -354,15 +327,15 @@
         },
         {
           "key": "C",
-          "value": 22,
-          "text": "22",
+          "value": 19,
+          "text": "19",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 20,
-          "text": "20",
-          "is_correct": true
+          "value": 22,
+          "text": "22",
+          "is_correct": false
         }
       ]
     },
@@ -374,17 +347,17 @@
       "options": [
         {
           "key": "A",
+          "value": 21,
+          "is_correct": false
+        },
+        {
+          "key": "B",
           "value": 20,
           "is_correct": true
         },
         {
-          "key": "B",
-          "value": 22,
-          "is_correct": false
-        },
-        {
           "key": "C",
-          "value": 21,
+          "value": 22,
           "is_correct": false
         },
         {
@@ -402,8 +375,8 @@
       "options": [
         {
           "key": "A",
-          "value": 50,
-          "is_correct": true
+          "value": 51,
+          "is_correct": false
         },
         {
           "key": "B",
@@ -412,8 +385,8 @@
         },
         {
           "key": "C",
-          "value": 51,
-          "is_correct": false
+          "value": 50,
+          "is_correct": true
         },
         {
           "key": "D",
@@ -422,5 +395,32 @@
         }
       ]
     }
-  ]
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "FAIL",
+      "rationale": "The estimate is handed over before it is requested. Each stem states the exact capacity and then asks only for a rounding, so the judgment the competency describes is never exercised; and since no vessel is ever identified, there is nothing whose capacity a pupil could estimate."
+    },
+    "comprehensive_coverage": {
+      "verdict": "CONCERN",
+      "rationale": "Litres and millilitres both appear, but rounding to a power of ten is the sole estimation operation generated. Choosing between candidate units for a given container, or benchmarking against a familiar one-litre bottle, is never produced."
+    },
+    "cognitive_capacity": {
+      "verdict": "CONCERN",
+      "rationale": "One sample sets the capacity at 3 L and keys the rounded answer as 0. A container that holds nothing is not an estimate a Grade 3 pupil can reconcile with the situation the stem has described."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "FAIL",
+      "rationale": "Across thirteen samples nothing changes except the unit symbol and whether the rounding target is 10, 100 or 1000. No sample places the capacity in a situation, compares two estimates, or reverses the question."
+    },
+    "competency_alignment": {
+      "verdict": "FAIL",
+      "rationale": "The option sets cannot be answers to the question asked. For a nearest-ten rounding keyed at 60, the choices presented are 61, 62, 59 and 60, so three of four are not multiples of ten. The same pattern holds at the hundreds and thousands places, making the distractors impossible throughout."
+    },
+    "scale_appropriateness": {
+      "verdict": "CONCERN",
+      "rationale": "An estimated capacity of 0 L at the low end and 285 L at the high end both fall outside the containers this Grade 3 competency is about, so the sampled band brackets rather than matches its practical range."
+    }
+  },
+  "overall": "FAIL"
 }

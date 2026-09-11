@@ -1,43 +1,14 @@
 {
   "node_id": "mat_g3_na_q1_5",
-  "reviewed_by": "Gemini Pro blind reviewer, batch G3-NA-Q1-Harden (mat_g3_na_q1_5), 2026-08-18",
-  "review_date": "2026-08-18",
+  "reviewed_by": "reviewer-b6-thistle-kestrel-9724",
+  "review_date": "2026-09-10",
   "blind": true,
-  "overall": "PASS",
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The sample packet thoroughly fulfills the MATATAG competency 'Compare numbers up to 10 000 using the symbols =, >, and <.' All items require students to determine the relational inequality or equality between two numbers. Direct symbolic comparison items such as 'Compare the numbers: 71 ___ 71. Which sign is correct: >, <, or =?' (seed 42) and contextual comparison problems like 'Ben has 171 marbles. Jose has 180 marbles. Which sign correctly compares the two amounts?' (seed 43) directly target comparing two numerical quantities using the target relational symbols."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The items comprehensively cover all comparison outcomes (greater than, less than, and equal to) and digit magnitude configurations up to 10 000. It tests equal values in both 2-digit and 4-digit scales ('Compare the numbers: 71 ___ 71. Which sign is correct: >, <, or =?' [seed 42], 'Compare the numbers: 5765 ___ 5765. Which sign is correct: >, <, or =?' [seed 502]), strict less-than comparisons ('Compare the numbers: 3837 ___ 6709. Which sign is correct: >, <, or =?' [seed 501]), and strict greater-than comparisons ('Jose has 173 storybooks. Liza has 150 storybooks. Which sign correctly compares the two amounts?' [seed 72]). It also addresses comparing numbers with unequal digit lengths ('Compare the numbers: 12 ___ 200. Which sign is correct: >, <, or =?' [seed 44]) and numbers with identical leading digits ('Compare the numbers: 219 ___ 210. Which sign is correct: >, <, or =?' [seed 46])."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The reading load, contextual framing, and mathematical reasoning are well-calibrated for Grade 3 Quarter 1 learners. Word problems use concise, culturally resonant Philippine names and familiar objects without unnecessary linguistic clutter, as in 'Ben has 242 pencils. Liza has 90 pencils. Which sign correctly compares the two amounts?' (seed 45) and 'Jose has 113 seashells. Liza has 120 seashells. Which sign correctly compares the two amounts?' (seed 603). True/false verification items like '111 < 90. True or False?' (seed 50) provide succinct cognitive checks without extraneous cognitive load."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The packet employs a balanced mix of formats including standard multiple choice ('Compare the numbers: 217 ___ 30. Which sign is correct: >, <, or =?' [seed 602]), cloze completion ('Maria has 146 marbles. Ben has 146 marbles. Which sign correctly compares the two amounts?' [seed 601]), and true/false relational validation ('5497 = 5956. True or False?' [seed 500]). It balances pure symbolic prompts with real-world quantity comparisons ('Kuya Pat has 158 pencils. Maria has 60 pencils. Which sign correctly compares the two amounts? The answer is cannot be determined. True or False?' [seed 605])."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "All items remain strictly aligned with the scope of Grade 3 Quarter 1 number comparison. There is no inclusion of multi-step arithmetic, ordering sequences of multiple numbers, decimal numbers, or negative values. Questions strictly evaluate comparisons of positive integers up to 10 000 using relational symbols =, >, and <, such as 'Compare the numbers: 20 ___ 112. Which sign is correct: >, <, or =?' (seed 600) and 'Jose has 60 storybooks. Maria has 52 storybooks. Which sign correctly compares the two amounts?' (seed 604)."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "The numerical scale adheres precisely to the 'up to 10 000' ceiling of the learning competency. The sample spans 2-digit numbers ('Compare the numbers: 71 ___ 71. Which sign is correct: >, <, or =?' [seed 42]), 3-digit numbers ('Jose has 173 storybooks. Liza has 150 storybooks. Which sign correctly compares the two amounts?' [seed 72]), and 4-digit numbers up to thousands place comparisons ('Compare the numbers: 3837 ___ 6709. Which sign is correct: >, <, or =?' [seed 501], '5497 = 5956. True or False?' [seed 500]). All tested values are well within the 10 000 limit."
-    }
-  },
   "sample_seeds": [
     42,
     43,
     44,
     45,
     46,
-    50,
-    72,
     500,
     501,
     502,
@@ -51,79 +22,61 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "mcq",
-      "question_text": "Compare the numbers: 71 ___ 71. Which sign is correct: >, <, or =?",
+      "formatter": "cloze",
+      "question_text": "Compare the numbers: 4507 ___ 4507. Which sign is correct: >, <, or =?",
       "correct_answer": "=",
       "options": [
         {
           "key": "A",
-          "value": ">",
-          "is_correct": false
+          "value": "=",
+          "text": "=",
+          "is_correct": true
         },
         {
           "key": "B",
           "value": "cannot be determined",
+          "text": "cannot be determined",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "=",
-          "is_correct": true
+          "value": "<",
+          "text": "<",
+          "is_correct": false
         },
         {
           "key": "D",
-          "value": "<",
+          "value": ">",
+          "text": ">",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 43,
-      "formatter": "mcq",
-      "question_text": "Ben has 171 marbles. Jose has 180 marbles. Which sign correctly compares the two amounts?",
-      "correct_answer": "<",
-      "options": [
-        {
-          "key": "A",
-          "value": "<",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": "=",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "cannot be determined",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": ">",
-          "is_correct": false
-        }
-      ]
+      "formatter": "true_false",
+      "question_text": "Liza has 7481 marbles. Jose has 4926 marbles. Which sign correctly compares the two amounts? The answer is cannot be determined. True or False?",
+      "correct_answer": false
     },
     {
       "seed": 44,
       "formatter": "mcq",
-      "question_text": "Compare the numbers: 12 ___ 200. Which sign is correct: >, <, or =?",
+      "question_text": "Compare the numbers: 154 ___ 5700. Which sign is correct: >, <, or =?",
       "correct_answer": "<",
       "options": [
         {
           "key": "A",
-          "value": "=",
+          "value": "cannot be determined",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": ">",
+          "value": "=",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "cannot be determined",
+          "value": ">",
           "is_correct": false
         },
         {
@@ -136,93 +89,55 @@
     {
       "seed": 45,
       "formatter": "mcq",
-      "question_text": "Ben has 242 pencils. Liza has 90 pencils. Which sign correctly compares the two amounts?",
-      "correct_answer": ">",
+      "question_text": "Jose has 6427 storybooks. Ben has 9877 storybooks. Which sign correctly compares the two amounts?",
+      "correct_answer": "<",
       "options": [
         {
           "key": "A",
-          "value": "cannot be determined",
+          "value": "=",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "<",
+          "value": "cannot be determined",
           "is_correct": false
         },
         {
           "key": "C",
           "value": ">",
-          "is_correct": true
+          "is_correct": false
         },
         {
           "key": "D",
-          "value": "=",
-          "is_correct": false
+          "value": "<",
+          "is_correct": true
         }
       ]
     },
     {
       "seed": 46,
       "formatter": "mcq",
-      "question_text": "Compare the numbers: 219 ___ 210. Which sign is correct: >, <, or =?",
-      "correct_answer": ">",
+      "question_text": "Compare the numbers: 1523 ___ 6521. Which sign is correct: >, <, or =?",
+      "correct_answer": "<",
       "options": [
         {
           "key": "A",
-          "value": "cannot be determined",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": ">",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": "=",
-          "is_correct": false
-        },
-        {
-          "key": "D",
           "value": "<",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 50,
-      "formatter": "true_false",
-      "question_text": "111 < 90. True or False?",
-      "correct_answer": false
-    },
-    {
-      "seed": 72,
-      "formatter": "cloze",
-      "question_text": "Jose has 173 storybooks. Liza has 150 storybooks. Which sign correctly compares the two amounts?",
-      "correct_answer": ">",
-      "options": [
-        {
-          "key": "A",
-          "value": ">",
-          "text": ">",
           "is_correct": true
         },
         {
           "key": "B",
           "value": "=",
-          "text": "=",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "cannot be determined",
-          "text": "cannot be determined",
+          "value": ">",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "<",
-          "text": "<",
+          "value": "cannot be determined",
           "is_correct": false
         }
       ]
@@ -241,15 +156,15 @@
       "options": [
         {
           "key": "A",
-          "value": "<",
-          "text": "<",
-          "is_correct": true
+          "value": ">",
+          "text": ">",
+          "is_correct": false
         },
         {
           "key": "B",
-          "value": "cannot be determined",
-          "text": "cannot be determined",
-          "is_correct": false
+          "value": "<",
+          "text": "<",
+          "is_correct": true
         },
         {
           "key": "C",
@@ -259,8 +174,8 @@
         },
         {
           "key": "D",
-          "value": ">",
-          "text": ">",
+          "value": "cannot be determined",
+          "text": "cannot be determined",
           "is_correct": false
         }
       ]
@@ -273,7 +188,7 @@
       "options": [
         {
           "key": "A",
-          "value": ">",
+          "value": "cannot be determined",
           "is_correct": false
         },
         {
@@ -283,7 +198,7 @@
         },
         {
           "key": "C",
-          "value": "cannot be determined",
+          "value": ">",
           "is_correct": false
         },
         {
@@ -295,49 +210,21 @@
     },
     {
       "seed": 600,
-      "formatter": "mcq",
-      "question_text": "Compare the numbers: 20 ___ 112. Which sign is correct: >, <, or =?",
+      "formatter": "cloze",
+      "question_text": "Compare the numbers: 6281 ___ 7381. Which sign is correct: >, <, or =?",
       "correct_answer": "<",
       "options": [
         {
           "key": "A",
-          "value": ">",
+          "value": "=",
+          "text": "=",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "=",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "<",
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": "cannot be determined",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 601,
-      "formatter": "cloze",
-      "question_text": "Maria has 146 marbles. Ben has 146 marbles. Which sign correctly compares the two amounts?",
-      "correct_answer": "=",
-      "options": [
-        {
-          "key": "A",
           "value": "<",
           "text": "<",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": ">",
-          "text": ">",
-          "is_correct": false
+          "is_correct": true
         },
         {
           "key": "C",
@@ -347,22 +234,50 @@
         },
         {
           "key": "D",
+          "value": ">",
+          "text": ">",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 601,
+      "formatter": "mcq",
+      "question_text": "Maria has 9294 marbles. Ben has 9294 marbles. Which sign correctly compares the two amounts?",
+      "correct_answer": "=",
+      "options": [
+        {
+          "key": "A",
           "value": "=",
-          "text": "=",
           "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": ">",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "cannot be determined",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "<",
+          "is_correct": false
         }
       ]
     },
     {
       "seed": 602,
       "formatter": "mcq",
-      "question_text": "Compare the numbers: 217 ___ 30. Which sign is correct: >, <, or =?",
+      "question_text": "Compare the numbers: 5005 ___ 300. Which sign is correct: >, <, or =?",
       "correct_answer": ">",
       "options": [
         {
           "key": "A",
-          "value": ">",
-          "is_correct": true
+          "value": "<",
+          "is_correct": false
         },
         {
           "key": "B",
@@ -371,8 +286,8 @@
         },
         {
           "key": "C",
-          "value": "<",
-          "is_correct": false
+          "value": ">",
+          "is_correct": true
         },
         {
           "key": "D",
@@ -383,69 +298,122 @@
     },
     {
       "seed": 603,
-      "formatter": "cloze",
-      "question_text": "Jose has 113 seashells. Liza has 120 seashells. Which sign correctly compares the two amounts?",
+      "formatter": "mcq",
+      "question_text": "Ben has 1965 storybooks. Jose has 9573 storybooks. Which sign correctly compares the two amounts?",
       "correct_answer": "<",
       "options": [
         {
           "key": "A",
-          "value": "cannot be determined",
-          "text": "cannot be determined",
+          "value": "=",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "<",
-          "text": "<",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": ">",
-          "text": ">",
+          "value": "cannot be determined",
           "is_correct": false
         },
         {
+          "key": "C",
+          "value": "<",
+          "is_correct": true
+        },
+        {
           "key": "D",
-          "value": "=",
-          "text": "=",
+          "value": ">",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 604,
-      "formatter": "mcq",
-      "question_text": "Jose has 60 storybooks. Maria has 52 storybooks. Which sign correctly compares the two amounts?",
-      "correct_answer": ">",
+      "formatter": "cloze",
+      "question_text": "Ben has 3724 storybooks. Jose has 3744 storybooks. Which sign correctly compares the two amounts?",
+      "correct_answer": "<",
       "options": [
         {
           "key": "A",
-          "value": ">",
+          "value": "<",
+          "text": "<",
           "is_correct": true
         },
         {
           "key": "B",
           "value": "=",
+          "text": "=",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "<",
+          "value": "cannot be determined",
+          "text": "cannot be determined",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "cannot be determined",
+          "value": ">",
+          "text": ">",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 605,
-      "formatter": "true_false",
-      "question_text": "Kuya Pat has 158 pencils. Maria has 60 pencils. Which sign correctly compares the two amounts? The answer is cannot be determined. True or False?",
-      "correct_answer": false
+      "formatter": "cloze",
+      "question_text": "Ana has 1496 pencils. Maria has 624 pencils. Which sign correctly compares the two amounts?",
+      "correct_answer": ">",
+      "options": [
+        {
+          "key": "A",
+          "value": ">",
+          "text": ">",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "<",
+          "text": "<",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "=",
+          "text": "=",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "cannot be determined",
+          "text": "cannot be determined",
+          "is_correct": false
+        }
+      ]
     }
-  ]
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "Each item puts two quantities side by side and asks which relational sign holds, which matches the competency verb precisely; seed 602 contrasts 5005 with 300 and seed 604 contrasts the near pair 3724 and 3744."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "All three symbols named in the competency occur as keys: equality at seed 42 and seed 601, less-than repeatedly, and greater-than at seed 602 and seed 605. Both equal-digit-length and unequal-digit-length pairs are generated."
+    },
+    "cognitive_capacity": {
+      "verdict": "CONCERN",
+      "rationale": "Every multiple-choice option list carries cannot be determined, which can never be right when both numerals are printed in the stem, so one quarter of the choice space is dead weight. Worse, seed 43 wraps this into a true/false item whose asserted answer is cannot be determined even though the stem asks which sign compares the amounts; a Grade 3 pupil is being asked to evaluate a proposition that is not a sign at all."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "Presentation alternates between the bare numeral-and-blank layout, a named-character context about marbles or storybooks, and a true/false statement such as the one comparing 5497 and 5956, so the skill is met in more than one dress."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "Progression runs through genuinely harder discriminations, from grossly different magnitudes like 154 against 5700 to the twenty-apart pair 3724 and 3744 where the pupil must read to the tens digit. That is the right difficulty axis for comparison."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Quantities respect the stated ten-thousand limit while still reaching near it, with 9877 and 9573 appearing, and smaller three-digit values such as 624 give the digit-length contrast the skill needs."
+    }
+  },
+  "overall": "CONCERN"
 }

@@ -203,11 +203,22 @@ def build_records(packets: List[Dict[str, Any]], key: Dict[str, Any],
                 "sampling": "is_student_path=True",
                 "node_id": node_id,
                 "seeds": [s["seed"] for s in samples],
-                "samples_judged": [
-                    {"seed": s["seed"], "question_text": s["question_text"],
-                     "correct_answer": s["correct_answer"], "formatter": s["formatter"]}
-                    for s in samples
-                ],
+                # Copy every field the packet carries, rather than a hand-listed
+                # subset. The subset here was seed/question_text/correct_answer/
+                # formatter, which silently dropped `options` -- the field
+                # render_prompt_block PRINTS to the Attester under every sample, so
+                # every verdict on a choice item rests on it. Measured 2026-09-10:
+                # 0 of 1790 recorded samples carried options, leaving 136 of 151 live
+                # records unadjudicable under §6F and un-repairable, because a record
+                # may not be edited and what was shown is not written down.
+                #
+                # The identical subset lived in `attester_packets.py`'s record
+                # skeleton and was fixed there first; this is the copy that the
+                # filing path actually uses, and fixing one without the other would
+                # have left the whole re-attestation queue filing fresh records that
+                # were unadjudicable on arrival (AGENTS.md Protocol 2: root cause,
+                # then every instance of it).
+                "samples_judged": [dict(s) for s in samples],
             },
             "verdicts": entries,
         }

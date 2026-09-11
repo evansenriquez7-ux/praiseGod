@@ -1,35 +1,8 @@
 {
   "node_id": "mat_g2_dp_q3_0",
-  "reviewed_by": "Gemini Pro blind reviewer, batch Re-Harden (mat_g2_dp_q3_0), 2026-08-18",
-  "review_date": "2026-08-18",
+  "reviewed_by": "reviewer-b2-tallow-verdigris-8130",
+  "review_date": "2026-09-10",
   "blind": true,
-  "overall": "PASS",
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The samples completely fulfill the competency clause 'Present raw data, or data in tabular form, in a pictograph with a scale, or vice versa.' Both directions are robustly covered: data to pictograph representation (e.g., Seed 42: 'Look at the data: apples: 30, bananas: 20, mangoes: 10, grapes: 10. Draw a picture graph where each \ud83c\udf4e stands for 10 items.' and Seed 44: 'Make a picture graph to show: red: 10, blue: 5, green: 10, yellow: 5. Each \ud83c\udfa8 equals 5.') as well as pictograph to tabular counts (e.g., Seed 43: 'Look at the pictograph. Write the correct count for each row in the table: red, blue, green and yellow. The scale is 2: each symbol stands for 2 items.' and Seed 45: 'The pictograph shows Grade 1, Grade 2, Grade 3 and Grade 4. Fill in the table with the correct counts. The scale is 5: each symbol stands for 5 items.')."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "Coverage is thorough across both presentation directions, scaling factors (scales of 2, 5, and 10), and diverse real-world contexts relevant to Grade 2 students. The dataset spans common categories such as days of the week (Seed 500: 'Count the pictures in each row of the pictograph, then write the counts for Monday, Tuesday, Wednesday, Thursday, Friday and Saturday in the table. The scale is 5: each symbol stands for 5 items.'), sports (Seed 501: 'Look at the pictograph. Write the correct count for each row in the table: basketball, volleyball, swimming, running, soccer and tennis. The scale is 10: each symbol stands for 10 items.'), grade levels (Seed 45: 'The pictograph shows Grade 1, Grade 2, Grade 3 and Grade 4. Fill in the table with the correct counts. The scale is 5: each symbol stands for 5 items.'), fruits (Seed 42: 'Look at the data: apples: 30, bananas: 20, mangoes: 10, grapes: 10. Draw a picture graph where each \ud83c\udf4e stands for 10 items.'), and colors (Seed 502: 'The pictograph shows red, blue, green, yellow, purple and orange. Fill in the table with the correct counts. The scale is 10: each symbol stands for 10 items.')."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The problems are appropriately calibrated for Grade 2 Quarter 3 cognitive capacity. The instructions are concise, direct, and use simple vocabulary (e.g., Seed 44: 'Make a picture graph to show: red: 10, blue: 5, green: 10, yellow: 5. Each \ud83c\udfa8 equals 5.' and Seed 602: 'Count the pictures in each row of the pictograph, then write the counts for red, blue, green and yellow in the table. The scale is 5: each symbol stands for 5 items.'). The mathematical demands align with basic skip counting by 2, 5, and 10 up to small multiples (maximum count 40), avoiding complex multi-step arithmetic or fractional symbols that exceed Grade 2 development."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The generator shows excellent structural and contextual diversity. It exercises multiple scale values (scale 2 in Seed 601: 'Make a picture graph to show: apples: 4, bananas: 16, mangoes: 14, grapes: 16. Each \ud83c\udf4e equals 2.', scale 5 in Seed 44: 'Make a picture graph to show: red: 10, blue: 5, green: 10, yellow: 5. Each \ud83c\udfa8 equals 5.', and scale 10 in Seed 600: 'The pictograph shows basketball, volleyball, swimming and running. Fill in the table with the correct counts. The scale is 10: each symbol stands for 10 items.'), bidirectional translation, varying row counts (4 to 6 categories), and varied prompt stems ('Look at the data...', 'Make a picture graph...', 'Count the pictures in each row...')."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "All generated items align strictly and directly with the target learning competency. There are no out-of-scope distractors, extraneous multi-step word problem narratives, or advanced operations like fractions or half-symbols. Every sample precisely tests reading or constructing a scaled pictograph (e.g., Seed 46: 'Count the pictures in each row of the pictograph, then write the counts for apples, bananas, mangoes and grapes in the table. The scale is 2: each symbol stands for 2 items.' and Seed 42: 'Look at the data: apples: 30, bananas: 20, mangoes: 10, grapes: 10. Draw a picture graph where each \ud83c\udf4e stands for 10 items.')."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "The scales selected (2, 5, 10) are mathematically and pedagogically ideal for Grade 2, directly leveraging foundational skip counting. Multiples are exact integers without fractional symbols, yielding manageable icon counts (1 to 8 symbols per category). For example, Seed 601 ('Make a picture graph to show: apples: 4, bananas: 16, mangoes: 14, grapes: 16. Each \ud83c\udf4e equals 2.') generates icon counts [2, 8, 7, 8], and Seed 502 ('The pictograph shows red, blue, green, yellow, purple and orange. Fill in the table with the correct counts. The scale is 10: each symbol stands for 10 items.') translates clean tens up to 40 into counts [3, 2, 4, 1, 4, 1]."
-    }
-  },
   "sample_seeds": [
     42,
     43,
@@ -47,7 +20,7 @@
     {
       "seed": 42,
       "formatter": "set_fill_in_blank",
-      "question_text": "Look at the data: apples: 30, bananas: 20, mangoes: 10, grapes: 10. Draw a picture graph where each \ud83c\udf4e stands for 10 items.",
+      "question_text": "Look at the data: apples: 30, bananas: 20, mangoes: 10, grapes: 10. Draw a picture graph where each 🍎 stands for 10 items.",
       "correct_answer": [
         3,
         2,
@@ -69,7 +42,7 @@
     {
       "seed": 44,
       "formatter": "set_fill_in_blank",
-      "question_text": "Make a picture graph to show: red: 10, blue: 5, green: 10, yellow: 5. Each \ud83c\udfa8 equals 5.",
+      "question_text": "Make a picture graph to show: red: 10, blue: 5, green: 10, yellow: 5. Each 🎨 equals 5.",
       "correct_answer": [
         2,
         1,
@@ -108,8 +81,8 @@
         20,
         10,
         30,
-        10,
-        5
+        50,
+        10
       ]
     },
     {
@@ -120,9 +93,9 @@
         20,
         30,
         30,
+        50,
         30,
-        20,
-        30
+        20
       ]
     },
     {
@@ -135,7 +108,7 @@
         40,
         10,
         40,
-        10
+        50
       ]
     },
     {
@@ -152,7 +125,7 @@
     {
       "seed": 601,
       "formatter": "set_fill_in_blank",
-      "question_text": "Make a picture graph to show: apples: 4, bananas: 16, mangoes: 14, grapes: 16. Each \ud83c\udf4e equals 2.",
+      "question_text": "Make a picture graph to show: apples: 4, bananas: 16, mangoes: 14, grapes: 16. Each 🍎 equals 2.",
       "correct_answer": [
         2,
         8,
@@ -171,5 +144,32 @@
         10
       ]
     }
-  ]
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The 'or vice versa' structure is genuinely two-way here: some items build a picture graph from given category counts, and others read a pictograph back into table counts, with the scale applied in both directions."
+    },
+    "comprehensive_coverage": {
+      "verdict": "CONCERN",
+      "rationale": "The raw-data half of the wording is never really raw -- the input is always an already-summarised category and count list such as apples, bananas, mangoes and grapes with totals attached, so no sample requires organising unsorted responses before graphing."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Scales of 2, 5 and 10 keep every conversion inside Grade 2 multiplication and division facts, and the symbol counts stay whole, so no half-symbol interpretation is demanded at this stage."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "One fill-in shell carries all eleven samples, and the scale is always handed over in words ('each symbol stands for 2 items'); nothing asks the pupil to choose a sensible scale or to state what one symbol must represent."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "The progression increases exactly what should increase for this competency: category counts grow from four to six and the scale climbs from 2 through 5 to 10, making the conversions less trivial."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Data values range from 4 up to 50 with symbol counts staying under ten per row, which is a readable pictograph size and within Grade 2 number range."
+    }
+  },
+  "overall": "CONCERN"
 }

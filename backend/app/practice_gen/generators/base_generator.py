@@ -491,10 +491,37 @@ def generate_context(
             return value < 0 <= correct_answer
         return value < 0
 
+    def _is_impossible_zero(value: Any) -> bool:
+        """
+        A distractor of 0 that this operation cannot produce, so the pupil discards it
+        without computing anything.
+
+        multiplication's "subtracted instead of multiplied" (`a - b`) collapses to 0
+        whenever the two factors are equal, and a product of two non-zero factors is
+        never 0. Blind review of mat_g2_na_q3_2 (2026-09-10) caught it on 3 x 3:
+        "plants 0 as the claimed value of 3 times 3, which is not a table misconception
+        but an implausible value a child rejects without multiplying." The formula is
+        a genuine misconception and stays; only the degenerate value it yields on equal
+        factors is dropped, which is the same shape as the negative guard above.
+
+        Scoped to multiplication deliberately. Integer division CAN legitimately key 0
+        (3 divided by 6 among whole numbers), so the same rule there would suppress a
+        real answer rather than an impossible option.
+        """
+        if value != 0 or isinstance(value, bool):
+            return False
+        if dna.concept != "multiplication":
+            return False
+        a, b = values.get("a"), values.get("b")
+        return (isinstance(a, int) and isinstance(b, int)
+                and not isinstance(a, bool) and not isinstance(b, bool)
+                and a != 0 and b != 0)
+
     distractors: List[Any] = [
         d for d in values.get("distractors", [])
         if d is not None
         and not _is_out_of_grade_negative(d)
+        and not _is_impossible_zero(d)
         and not _is_equivalent_to_answer(d)
     ]
     distractors_provenance: Dict[Any, str] = {d: "base" for d in distractors}
@@ -533,6 +560,7 @@ def generate_context(
                     and distractor != correct_answer
                     and distractor not in distractors
                     and not _is_out_of_grade_negative(distractor)
+                    and not _is_impossible_zero(distractor)
                     and not _is_equivalent_to_answer(distractor)
                 ):
                     distractors.append(distractor)

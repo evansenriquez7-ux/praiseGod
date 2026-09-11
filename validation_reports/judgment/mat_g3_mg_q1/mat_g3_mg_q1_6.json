@@ -1,34 +1,8 @@
 {
   "node_id": "mat_g3_mg_q1_6",
-  "reviewed_by": "Gemini Pro blind reviewer, batch G3-MG-Harden (mat_g3_mg_q1_2..mat_g3_mg_q1_6), 2026-08-17",
+  "reviewed_by": "reviewer-b5-marlin-obsidian-3358",
+  "review_date": "2026-09-10",
   "blind": true,
-  "overall": "PASS",
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The items successfully fulfill the competency's mandate to 'Identify and draw line segments of equal length using a ruler.' Questions like 'Are Segment A and Segment B equal in length?' test the identification aspect, while questions such as 'If you use a ruler to draw Segment B equal in length starting at the 4 cm mark, at which centimeter mark on the ruler must Segment B end?' successfully translate the drawing aspect into a testable conceptual format."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The generator comprehensively covers the competency by exploring multiple facets: evaluating two given segments to determine if they are equal, finding a matching segment description given a base length (e.g., 'Which of the following describes a line segment that is equal in length to Segment A?'), and determining the correct endpoint to create an equal segment."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The questions are well-suited for Grade 3 students. The lengths and ruler marks involve small whole numbers (e.g., 0 to 14 cm), requiring basic addition and subtraction (e.g., 4 cm + 8 cm = 12 cm) which is appropriate for their cognitive capacity."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The sample packet demonstrates good variant comprehensiveness. It includes Yes/No comparison tasks ('Are Segment A and Segment B equal in length?'), multiple-choice selection of equivalent segments ('Which of the following describes a line segment that is equal in length to Segment A?'), and endpoint calculation tasks representing drawing ('at which centimeter mark on the ruler must Segment B end?')."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "All questions align perfectly with the target competency. They strictly focus on using ruler measurements to determine or establish equal lengths for line segments, without introducing unrelated concepts or vocabulary."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "The values used represent realistic and standard ruler measurements for classroom use (e.g., segments of '3 cm', '7 cm', up to ends at '14 cm'). This scale is highly appropriate and relatable for the intended Grade 3 audience."
-    }
-  },
   "sample_seeds": [
     42,
     43,
@@ -42,8 +16,7 @@
     600,
     601,
     602,
-    603,
-    604
+    603
   ],
   "samples_reviewed": [
     {
@@ -54,12 +27,12 @@
       "options": [
         {
           "key": "A",
-          "value": "No",
+          "value": "Cannot be determined without a set square",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "Cannot be determined without a set square",
+          "value": "Only if both segments start at 0 cm",
           "is_correct": false
         },
         {
@@ -69,7 +42,7 @@
         },
         {
           "key": "D",
-          "value": "Only if both segments start at 0 cm",
+          "value": "No",
           "is_correct": false
         }
       ]
@@ -82,22 +55,22 @@
       "options": [
         {
           "key": "A",
-          "value": "No",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": "Only if both segments start at 0 cm",
-          "is_correct": false
-        },
-        {
-          "key": "C",
           "value": "Cannot be determined without a set square",
           "is_correct": false
         },
         {
-          "key": "D",
+          "key": "B",
+          "value": "No",
+          "is_correct": true
+        },
+        {
+          "key": "C",
           "value": "Yes",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "Only if both segments start at 0 cm",
           "is_correct": false
         }
       ]
@@ -110,13 +83,13 @@
       "options": [
         {
           "key": "A",
-          "value": "A segment starting at 2 cm and ending at 3 cm",
+          "value": "A segment starting at 2 cm and ending at 7 cm",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "A segment starting at 2 cm and ending at 7 cm",
-          "is_correct": false
+          "value": "A segment starting at 2 cm and ending at 5 cm",
+          "is_correct": true
         },
         {
           "key": "C",
@@ -125,8 +98,8 @@
         },
         {
           "key": "D",
-          "value": "A segment starting at 2 cm and ending at 5 cm",
-          "is_correct": true
+          "value": "A segment starting at 2 cm and ending at 3 cm",
+          "is_correct": false
         }
       ]
     },
@@ -138,7 +111,7 @@
       "options": [
         {
           "key": "A",
-          "value": 13,
+          "value": 4,
           "is_correct": false
         },
         {
@@ -148,13 +121,13 @@
         },
         {
           "key": "C",
-          "value": 12,
-          "is_correct": true
+          "value": 13,
+          "is_correct": false
         },
         {
           "key": "D",
-          "value": 4,
-          "is_correct": false
+          "value": 12,
+          "is_correct": true
         }
       ]
     },
@@ -166,13 +139,13 @@
       "options": [
         {
           "key": "A",
-          "value": "Cannot be determined without a set square",
-          "is_correct": false
+          "value": "No",
+          "is_correct": true
         },
         {
           "key": "B",
-          "value": "No",
-          "is_correct": true
+          "value": "Cannot be determined without a set square",
+          "is_correct": false
         },
         {
           "key": "C",
@@ -194,8 +167,8 @@
       "options": [
         {
           "key": "A",
-          "value": "A segment starting at 3 cm and ending at 11 cm",
-          "text": "A segment starting at 3 cm and ending at 11 cm",
+          "value": "A segment starting at 3 cm and ending at 7 cm",
+          "text": "A segment starting at 3 cm and ending at 7 cm",
           "is_correct": false
         },
         {
@@ -206,14 +179,14 @@
         },
         {
           "key": "C",
-          "value": "A segment starting at 4 cm and ending at 11 cm",
-          "text": "A segment starting at 4 cm and ending at 11 cm",
+          "value": "A segment starting at 3 cm and ending at 11 cm",
+          "text": "A segment starting at 3 cm and ending at 11 cm",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "A segment starting at 3 cm and ending at 7 cm",
-          "text": "A segment starting at 3 cm and ending at 7 cm",
+          "value": "A segment starting at 4 cm and ending at 11 cm",
+          "text": "A segment starting at 4 cm and ending at 11 cm",
           "is_correct": false
         }
       ]
@@ -232,14 +205,14 @@
         },
         {
           "key": "B",
-          "value": "A segment starting at 3 cm and ending at 10 cm",
-          "text": "A segment starting at 3 cm and ending at 10 cm",
+          "value": "A segment starting at 3 cm and ending at 14 cm",
+          "text": "A segment starting at 3 cm and ending at 14 cm",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "A segment starting at 3 cm and ending at 14 cm",
-          "text": "A segment starting at 3 cm and ending at 14 cm",
+          "value": "A segment starting at 3 cm and ending at 10 cm",
+          "text": "A segment starting at 3 cm and ending at 10 cm",
           "is_correct": false
         },
         {
@@ -258,22 +231,22 @@
       "options": [
         {
           "key": "A",
-          "value": 9,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 10,
-          "is_correct": false
-        },
-        {
-          "key": "C",
           "value": 2,
           "is_correct": false
         },
         {
-          "key": "D",
+          "key": "B",
           "value": 7,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 9,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 10,
           "is_correct": false
         }
       ]
@@ -286,7 +259,7 @@
       "options": [
         {
           "key": "A",
-          "value": 4,
+          "value": 8,
           "is_correct": false
         },
         {
@@ -296,12 +269,12 @@
         },
         {
           "key": "C",
-          "value": 8,
+          "value": 3,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 3,
+          "value": 4,
           "is_correct": false
         }
       ]
@@ -314,22 +287,22 @@
       "options": [
         {
           "key": "A",
-          "value": 7,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 4,
-          "is_correct": false
-        },
-        {
-          "key": "C",
           "value": 11,
           "is_correct": true
         },
         {
-          "key": "D",
+          "key": "B",
           "value": 12,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 4,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 7,
           "is_correct": false
         }
       ]
@@ -342,27 +315,27 @@
       "options": [
         {
           "key": "A",
-          "value": 1,
-          "text": "1",
-          "is_correct": false
-        },
-        {
-          "key": "B",
           "value": 3,
           "text": "3",
           "is_correct": false
         },
         {
-          "key": "C",
+          "key": "B",
           "value": 4,
           "text": "4",
           "is_correct": false
         },
         {
-          "key": "D",
+          "key": "C",
           "value": 2,
           "text": "2",
           "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 1,
+          "text": "1",
+          "is_correct": false
         }
       ]
     },
@@ -402,53 +375,52 @@
       "options": [
         {
           "key": "A",
-          "value": 9,
-          "is_correct": false
-        },
-        {
-          "key": "B",
           "value": 7,
           "is_correct": true
         },
         {
-          "key": "C",
-          "value": 8,
-          "is_correct": false
-        },
-        {
-          "key": "D",
+          "key": "B",
           "value": 6,
           "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 604,
-      "formatter": "mcq",
-      "question_text": "On a ruler, Segment A starts at 0 cm and ends at 5 cm. Segment B starts at 4 cm and ends at 10 cm. Are Segment A and Segment B equal in length?",
-      "correct_answer": "No",
-      "options": [
-        {
-          "key": "A",
-          "value": "No",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": "Only if both segments start at 0 cm",
-          "is_correct": false
         },
         {
           "key": "C",
-          "value": "Yes",
+          "value": 9,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "Cannot be determined without a set square",
+          "value": 8,
           "is_correct": false
         }
       ]
     }
-  ]
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "Both halves of the competency are served and every key is arithmetically right: pupils identify equality by comparing a segment from 0 to 6 cm against one from 2 to 9 cm, and they plan a drawing by working out where a segment of a given length must end when it begins at a non-zero mark."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "Three distinct tasks are generated: judging whether two stated segments match, selecting from four described segments the one equal to a given length, and computing the terminal mark for a segment to be drawn. Both Yes and No outcomes occur in the judging items."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Reading a segment as the difference between its two ruler marks is exactly the Grade 3 Quarter 1 measuring skill, all lengths are whole centimetres, and no segment extends past 14 cm so a standard school ruler suffices."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "Two of the drawing items place the start at the 0 cm mark, which collapses the task since the end mark simply restates the given length, and nothing in the set asks about equal sides on a figure or equal lengths on a real object. Only multiple choice and cloze appear."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "Difficulty increases by shifting the starting mark away from zero and by widening the gap between the candidate segments, both of which are the actual ruler skill rather than a substitute axis."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Segment lengths run from 2 to 9 cm with no reading above 14 cm, matching the ruler a Grade 3 pupil uses and keeping every subtraction within basic facts."
+    }
+  },
+  "overall": "CONCERN"
 }

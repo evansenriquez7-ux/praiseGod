@@ -1,34 +1,8 @@
 {
   "node_id": "mat_g2_na_q2_4",
-  "reviewed_by": "Gemini Pro blind reviewer, batch G2-NA-Q2-Harden (mat_g2_na_q2_4), 2026-08-18",
+  "reviewed_by": "reviewer-b4-plover-saffron-6041",
+  "review_date": "2026-09-10",
   "blind": true,
-  "overall": "PASS",
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "Every sample item directly fulfills the requirement of subtracting numbers where both numbers are less than 100 with regrouping. The sample set exercises 2-digit minus 1-digit subtraction with regrouping (e.g., \"What is 30 \u2212 3?\", \"60 \u2212 2 = ___\") and 2-digit minus 2-digit subtraction with regrouping across decade boundaries and arbitrary 2-digit values (e.g., \"What is 93 \u2212 65?\", \"60 \u2212 51 = ___\", \"20 \u2212 15 = ___\"). In all instances, the units digit of the minuend is smaller than the units digit of the subtrahend, necessitating regrouping."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The sample set provides balanced and comprehensive coverage across the full scope of the competency. Both specified sub-cases are thoroughly tested: 2-digit minus 1-digit numbers (such as \"What is 20 \u2212 1?\" and \"90 \u2212 2 = 92. True or False?\") and 2-digit minus 2-digit numbers (such as \"What is 93 \u2212 65?\", \"What is 60 \u2212 46?\", and \"80 \u2212 78 = 2. True or False?\"). In addition, multiple problem structures are covered including direct computation, cloze equation completion, part-whole relationships, and word contexts."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "All items are developmentally appropriate for Grade 2 Quarter 2 learners. The linguistic complexity is appropriately constrained, using clear and familiar vocabulary (e.g., \"What is 30 \u2212 3?\", \"The total is 90 and one part is 18. What is the other part?\", \"There are 30 baskets on the table. Moses takes away 28 baskets. How many baskets are left on the table? The answer is 2. True or False?\"). Distractors target common place-value errors (e.g., adding instead of subtracting or subtracting without regrouping) without inducing extraneous cognitive load."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The sample exhibits an excellent variety of item variants and pedagogical formatters. These include standard multiple-choice arithmetic (\"What is 93 \u2212 65?\"), cloze equation completion (\"60 \u2212 51 = ___\", \"30 \u2212 21 = ___\"), number-line / backward counting (\"The dot is at 50 and it moves backward 1 number. Starting from 50, just count back 1 number. Which number will the dot land on?\"), part-whole missing addend (\"The total is 30 and one part is 23. What is the other part?\"), error detection (\"Dante solved: \"30 \u2212 14 = ___\". Dante says the missing number is 16. Is Dante correct?\"), and True/False assertions (\"80 \u2212 78 = 2. True or False?\")."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "All questions strictly align with the MATATAG learning competency without underreaching or exceeding curriculum boundaries. There are no operations beyond subtraction, no 3-digit operands, and no unregrouped calculations. Items like \"What is 93 \u2212 65?\" and \"What is 20 \u2212 12?\" stay squarely on 2-digit subtraction with regrouping for numbers under 100."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "Numerical bounds strictly adhere to the competency constraint that 'both numbers are less than 100'. Minuends range from 20 to 93 (e.g., 20 in \"What is 20 \u2212 1?\", 60 in \"60 \u2212 51 = ___\", 93 in \"What is 93 \u2212 65?\") and subtrahends range from 1 to 78 (e.g., 1 in \"What is 20 \u2212 1?\", 78 in \"80 \u2212 78 = 2. True or False?\"). All resulting differences remain positive whole numbers within the grade-appropriate range."
-    }
-  },
   "sample_seeds": [
     42,
     43,
@@ -53,23 +27,23 @@
     {
       "seed": 42,
       "formatter": "mcq",
-      "question_text": "What is 30 \u2212 3?",
+      "question_text": "What is 30 − 3?",
       "correct_answer": 27,
       "options": [
         {
           "key": "A",
+          "value": 27,
+          "is_correct": true
+        },
+        {
+          "key": "B",
           "value": 33,
           "is_correct": false
         },
         {
-          "key": "B",
+          "key": "C",
           "value": 28,
           "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 27,
-          "is_correct": true
         },
         {
           "key": "D",
@@ -81,7 +55,7 @@
     {
       "seed": 43,
       "formatter": "mcq",
-      "question_text": "What is 20 \u2212 1?",
+      "question_text": "What is 20 − 1?",
       "correct_answer": 19,
       "options": [
         {
@@ -109,39 +83,39 @@
     {
       "seed": 44,
       "formatter": "cloze",
-      "question_text": "60 \u2212 51 = ___",
+      "question_text": "60 − 51 = ___",
       "correct_answer": 9,
       "options": [
         {
           "key": "A",
-          "value": 8,
-          "text": "8",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 111,
-          "text": "111",
-          "is_correct": false
-        },
-        {
-          "key": "C",
           "value": 10,
           "text": "10",
           "is_correct": false
         },
         {
-          "key": "D",
+          "key": "B",
           "value": 9,
           "text": "9",
           "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 8,
+          "text": "8",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 111,
+          "text": "111",
+          "is_correct": false
         }
       ]
     },
     {
       "seed": 45,
       "formatter": "cloze",
-      "question_text": "60 \u2212 2 = ___",
+      "question_text": "60 − 2 = ___",
       "correct_answer": 58,
       "options": [
         {
@@ -152,53 +126,53 @@
         },
         {
           "key": "B",
+          "value": 57,
+          "text": "57",
+          "is_correct": false
+        },
+        {
+          "key": "C",
           "value": 62,
           "text": "62",
           "is_correct": false
         },
         {
-          "key": "C",
+          "key": "D",
           "value": 58,
           "text": "58",
           "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 57,
-          "text": "57",
-          "is_correct": false
         }
       ]
     },
     {
       "seed": 46,
       "formatter": "cloze",
-      "question_text": "20 \u2212 15 = ___",
+      "question_text": "20 − 15 = ___",
       "correct_answer": 5,
       "options": [
         {
           "key": "A",
-          "value": 6,
-          "text": "6",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 5,
-          "text": "5",
-          "is_correct": true
-        },
-        {
-          "key": "C",
           "value": 4,
           "text": "4",
           "is_correct": false
         },
         {
-          "key": "D",
+          "key": "B",
+          "value": 6,
+          "text": "6",
+          "is_correct": false
+        },
+        {
+          "key": "C",
           "value": 35,
           "text": "35",
           "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 5,
+          "text": "5",
+          "is_correct": true
         }
       ]
     },
@@ -212,22 +186,22 @@
       "seed": 51,
       "formatter": "read_mcq",
       "question_text": "The dot is at 50 and it moves backward 1 number. Starting from 50, just count back 1 number. Which number will the dot land on?",
-      "correct_answer": "C",
+      "correct_answer": "A",
       "options": [
         {
           "key": "A",
+          "value": 49,
+          "is_correct": true
+        },
+        {
+          "key": "B",
           "value": 50,
           "is_correct": false
         },
         {
-          "key": "B",
+          "key": "C",
           "value": 48,
           "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 49,
-          "is_correct": true
         },
         {
           "key": "D",
@@ -239,13 +213,13 @@
     {
       "seed": 75,
       "formatter": "true_false",
-      "question_text": "90 \u2212 2 = 92. True or False?",
+      "question_text": "90 − 2 = 92. True or False?",
       "correct_answer": false
     },
     {
       "seed": 82,
       "formatter": "error_detect",
-      "question_text": "Dante solved: \"30 \u2212 14 = ___\". Dante says the missing number is 16. Is Dante correct?",
+      "question_text": "Dante solved: \"30 − 14 = ___\". Dante says the missing number is 16. Is Dante correct?",
       "correct_answer": {
         "has_error": false,
         "correct_value": 16
@@ -254,7 +228,7 @@
     {
       "seed": 500,
       "formatter": "read_mcq",
-      "question_text": "(Large group of 92 drinks) \u2014 There are 92 drinks.\nTaking away 55 drinks.\nHow many drinks are left?",
+      "question_text": "(Large group of 92 drinks) — There are 92 drinks.\nTaking away 55 drinks.\nHow many drinks are left?",
       "correct_answer": "C",
       "options": [
         {
@@ -282,33 +256,33 @@
     {
       "seed": 501,
       "formatter": "true_false",
-      "question_text": "80 \u2212 78 = 2. True or False?",
+      "question_text": "80 − 78 = 2. True or False?",
       "correct_answer": true
     },
     {
       "seed": 502,
       "formatter": "mcq",
-      "question_text": "What is 93 \u2212 65?",
+      "question_text": "What is 93 − 65?",
       "correct_answer": 28,
       "options": [
         {
           "key": "A",
-          "value": 158,
-          "is_correct": false
-        },
-        {
-          "key": "B",
           "value": 28,
           "is_correct": true
         },
         {
+          "key": "B",
+          "value": 27,
+          "is_correct": false
+        },
+        {
           "key": "C",
-          "value": 29,
+          "value": 158,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 27,
+          "value": 29,
           "is_correct": false
         }
       ]
@@ -316,27 +290,27 @@
     {
       "seed": 600,
       "formatter": "mcq",
-      "question_text": "What is 50 \u2212 45?",
+      "question_text": "What is 50 − 45?",
       "correct_answer": 5,
       "options": [
         {
           "key": "A",
-          "value": 95,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 4,
-          "is_correct": false
-        },
-        {
-          "key": "C",
           "value": 5,
           "is_correct": true
         },
         {
-          "key": "D",
+          "key": "B",
+          "value": 95,
+          "is_correct": false
+        },
+        {
+          "key": "C",
           "value": 6,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 4,
           "is_correct": false
         }
       ]
@@ -350,23 +324,23 @@
     {
       "seed": 602,
       "formatter": "mcq",
-      "question_text": "What is 60 \u2212 46?",
+      "question_text": "What is 60 − 46?",
       "correct_answer": 14,
       "options": [
         {
           "key": "A",
-          "value": 14,
-          "is_correct": true
-        },
-        {
-          "key": "B",
           "value": 15,
           "is_correct": false
         },
         {
-          "key": "C",
+          "key": "B",
           "value": 106,
           "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 14,
+          "is_correct": true
         },
         {
           "key": "D",
@@ -378,7 +352,7 @@
     {
       "seed": 603,
       "formatter": "cloze",
-      "question_text": "30 \u2212 21 = ___",
+      "question_text": "30 − 21 = ___",
       "correct_answer": 9,
       "options": [
         {
@@ -389,34 +363,34 @@
         },
         {
           "key": "B",
-          "value": 9,
-          "text": "9",
-          "is_correct": true
-        },
-        {
-          "key": "C",
           "value": 51,
           "text": "51",
           "is_correct": false
         },
         {
-          "key": "D",
+          "key": "C",
           "value": 8,
           "text": "8",
           "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 9,
+          "text": "9",
+          "is_correct": true
         }
       ]
     },
     {
       "seed": 604,
       "formatter": "mcq",
-      "question_text": "What is 20 \u2212 12?",
+      "question_text": "What is 20 − 12?",
       "correct_answer": 8,
       "options": [
         {
           "key": "A",
-          "value": 8,
-          "is_correct": true
+          "value": 32,
+          "is_correct": false
         },
         {
           "key": "B",
@@ -425,13 +399,13 @@
         },
         {
           "key": "C",
-          "value": 32,
+          "value": 9,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 9,
-          "is_correct": false
+          "value": 8,
+          "is_correct": true
         }
       ]
     },
@@ -441,5 +415,32 @@
       "question_text": "The total is 30 and one part is 23. What is the other part?",
       "correct_answer": 7
     }
-  ]
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "Regrouping is required in every single computation sampled, which is what this node demands and what makes it distinct from its neighbours. Both named shapes appear: 2-digit minus 1-digit in seed 45 and 2-digit minus 2-digit in seed 502's 93 take away 65."
+    },
+    "comprehensive_coverage": {
+      "verdict": "CONCERN",
+      "rationale": "The minuend is a multiple of ten in roughly two thirds of the pool (30, 20, 60, 90, 50, 80 recur), so the borrowing a child practises is overwhelmingly the special case of a zero in the ones place. General borrowing such as 93 take away 65 or 92 take away 55 is the minority, when it should be the backbone."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Bare computation stems are one line, and the worded ones (the part-whole phrasing in seeds 50 and 605, the baskets on the table in seed 601) use concrete nouns and no clause nesting. This suits Quarter 2 of Grade 2."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "Presentation genuinely varies: a horizontal equation with a blank, a 'What is' question, a part-and-whole statement, a dot moving backward on a line, a true-or-false claim, a peer's wrong answer to judge, and a pictured group of 92 drinks. Seven distinct surfaces is ample here."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "What changes between easy and hard seeds is the size of the borrow and the distance between the two numbers, not some unrelated dimension. Seed 43's 20 take away 1 and seed 502's 93 take away 65 are the same skill at two intensities."
+    },
+    "scale_appropriateness": {
+      "verdict": "CONCERN",
+      "rationale": "Operands obey the under-100 bound, but option lists do not: 158 is offered as a difference for 93 take away 65, 106 for 60 take away 46, and 111 for 60 take away 51. Those are sums wearing a difference's clothes, and they exceed the very ceiling this competency sets."
+    }
+  },
+  "overall": "CONCERN"
 }

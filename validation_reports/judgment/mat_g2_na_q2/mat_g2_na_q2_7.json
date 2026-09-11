@@ -1,34 +1,8 @@
 {
   "node_id": "mat_g2_na_q2_7",
-  "reviewed_by": "Gemini Pro blind reviewer, batch G2-NA-Q2-Harden (mat_g2_na_q2_7), 2026-08-18",
+  "reviewed_by": "reviewer-b4-plover-saffron-6041",
+  "review_date": "2026-09-10",
   "blind": true,
-  "overall": "PASS",
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The sample set fully addresses the competency mandate to 'Solve 1- and 2-step problems involving subtraction where both numbers are less than 1000 (including problems involving money), with and without regrouping.' Single-step word problems are well represented (e.g., \"Carlo had 630 stamps. Carlo gave 96 stamps to classmates. How many stamps does Carlo have left?\" and \"Elena had \u20b1110 and spent \u20b1105 for lunch. How much money does Elena have left?\"), as are two-step problems (e.g., \"Ben had 314 loaves of bread. Ben gave 193 loaves of bread to Kuya Ton and 107 loaves of bread to Renz. How many loaves of bread does Ben have left?\" and \"Ate Nena had \u20b1636. Ate Nena bought a ballpen for \u20b161 and a pad paper for \u20b1179. How much money does Ate Nena have left?\"). Problems include both non-monetary discrete quantities and Philippine peso currency contexts, and span operations with regrouping (e.g., 630 - 96 = 534) and without regrouping (e.g., \"Elena had 922 books. Elena gave 300 books to the library. How many books does Elena have left?\")."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "Coverage across all sub-dimensions of the competency is complete and balanced. The items span 1-step subtraction (e.g., \"Ben had 160 books. Ben gave 13 books to a friend. How many books does Ben have left?\" and \"Renz had \u20b1234 and spent \u20b1110 at the sari-sari store. How much money does Renz have left?\") and 2-step subtraction (e.g., \"Ben had 572 erasers. Ben gave 165 erasers to Isko and 331 erasers to Elena. How many erasers does Ben have left?\" and \"Ate Nena had 60 mangoes. Ate Nena gave 26 mangoes to Kuya Ton and 24 mangoes to Renz. How many mangoes does Ate Nena have left?\"). Both standard physical items (stamps, bread, books, pencils, erasers, mangoes) and currency transactions (ballpen, pad paper, sandwich, lunch, sari-sari store) are covered across various 2-digit and 3-digit number scales."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The contextual complexity, phrasing, and cognitive load are perfectly tuned for Grade 2 Quarter 2 learners. Problem scenarios employ familiar Filipino cultural contexts, names, and items (e.g., \"Ate Nena had \u20b1636. Ate Nena bought a ballpen for \u20b161 and a pad paper for \u20b1179. How much money does Ate Nena have left?\" and \"Renz had \u20b1234 and spent \u20b1110 at the sari-sari store. How much money does Renz have left?\"). Sentences are concise, clear, and direct. The 2-step structures describe intuitive sequential giving/spending events without convoluted sentence structures or unintroduced mathematical concepts."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The sample packet tests competency mastery across multiple rich assessment formats. These include standard multiple-choice questions (e.g., \"Carlo had \u20b1810. Carlo bought a ballpen for \u20b1174 and a sandwich for \u20b1136. How much money does Carlo have left?\"), cloze / fill-in-the-blank items (e.g., \"Mia had 269 loaves of bread. Mia gave 30 loaves of bread to the library. How many loaves of bread does Mia have left?\"), true/false evaluations (e.g., \"Elena had 635 pencils. Elena gave 112 pencils to Isko and 248 pencils to Renz. How many pencils does Elena have left? The answer is 276. True or False?\"), and error detection problems evaluating peer work (e.g., \"Grace solved this problem: \"Ben had \u20b187 and spent \u20b130 for lunch. How much money does Ben have left?\" Grace says the answer is 47. Is Grace correct?\" and \"Rico solved this problem: \"Dan had \u20b1349. Dan bought a sandwich for \u20b192 and a juice box for \u20b184. How much money does Dan have left?\" Rico says the answer is 173. Is Rico correct?\")."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "All generated problems adhere strictly to the target competency. Every item focuses on 1-step or 2-step subtraction of quantities strictly below 1000. Distractors represent plausible mathematical miscalculations (such as place-value and regrouping errors) rather than arbitrary noise. No irrelevant operations, advanced terminology, or out-of-scope concepts are introduced."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "All numerical values strictly respect the curriculum bound of numbers less than 1000. Examples range from 2-digit subtractions such as \"Grace solved this problem: \"Ben had \u20b187 and spent \u20b130 for lunch. How much money does Ben have left?\" Grace says the answer is 47. Is Grace correct?\" to high 3-digit subtractions such as \"Elena had 922 books. Elena gave 300 books to the library. How many books does Elena have left?\" and \"Isko had 717 erasers. Isko gave 145 erasers to Ben and 304 erasers to Ate Nena. How many erasers does Isko have left?\". All subtrahends and results are positive integers well within the Grade 2 scale."
-    }
-  },
   "sample_seeds": [
     42,
     43,
@@ -45,7 +19,7 @@
     602,
     603,
     604,
-    606
+    605
   ],
   "samples_reviewed": [
     {
@@ -56,23 +30,23 @@
       "options": [
         {
           "key": "A",
-          "value": 544,
+          "value": 524,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 554,
+          "value": 544,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 534,
-          "is_correct": true
+          "value": 554,
+          "is_correct": false
         },
         {
           "key": "D",
-          "value": 524,
-          "is_correct": false
+          "value": 534,
+          "is_correct": true
         }
       ]
     },
@@ -84,23 +58,23 @@
       "options": [
         {
           "key": "A",
-          "value": 14,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 4,
-          "is_correct": false
-        },
-        {
-          "key": "C",
           "value": 34,
           "is_correct": false
         },
         {
-          "key": "D",
+          "key": "B",
           "value": 24,
           "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 4,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 14,
+          "is_correct": true
         }
       ]
     },
@@ -112,40 +86,40 @@
       "options": [
         {
           "key": "A",
-          "value": 137,
-          "text": "137",
-          "is_correct": false
-        },
-        {
-          "key": "B",
           "value": 157,
           "text": "157",
           "is_correct": false
         },
         {
-          "key": "C",
-          "value": 167,
-          "text": "167",
+          "key": "B",
+          "value": 137,
+          "text": "137",
           "is_correct": false
         },
         {
-          "key": "D",
+          "key": "C",
           "value": 147,
           "text": "147",
           "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 167,
+          "text": "167",
+          "is_correct": false
         }
       ]
     },
     {
       "seed": 45,
       "formatter": "mcq",
-      "question_text": "Ate Nena had \u20b1636. Ate Nena bought a ballpen for \u20b161 and a pad paper for \u20b1179. How much money does Ate Nena have left?",
+      "question_text": "Ate Nena had ₱636. Ate Nena bought a ballpen for ₱61 and a pad paper for ₱179. How much money does Ate Nena have left?",
       "correct_answer": 396,
       "options": [
         {
           "key": "A",
-          "value": 416,
-          "is_correct": false
+          "value": 396,
+          "is_correct": true
         },
         {
           "key": "B",
@@ -154,8 +128,8 @@
         },
         {
           "key": "C",
-          "value": 396,
-          "is_correct": true
+          "value": 416,
+          "is_correct": false
         },
         {
           "key": "D",
@@ -167,12 +141,12 @@
     {
       "seed": 46,
       "formatter": "mcq",
-      "question_text": "Carlo had \u20b1810. Carlo bought a ballpen for \u20b1174 and a sandwich for \u20b1136. How much money does Carlo have left?",
+      "question_text": "Carlo had ₱810. Carlo bought a ballpen for ₱174 and a sandwich for ₱136. How much money does Carlo have left?",
       "correct_answer": 500,
       "options": [
         {
           "key": "A",
-          "value": 520,
+          "value": 510,
           "is_correct": false
         },
         {
@@ -187,7 +161,7 @@
         },
         {
           "key": "D",
-          "value": 510,
+          "value": 520,
           "is_correct": false
         }
       ]
@@ -201,7 +175,7 @@
     {
       "seed": 55,
       "formatter": "error_detect",
-      "question_text": "Grace solved this problem: \"Ben had \u20b187 and spent \u20b130 for lunch. How much money does Ben have left?\" Grace says the answer is 47. Is Grace correct?",
+      "question_text": "Grace solved this problem: \"Ben had ₱87 and spent ₱30 for lunch. How much money does Ben have left?\" Grace says the answer is 47. Is Grace correct?",
       "correct_answer": {
         "has_error": true,
         "correct_value": 57
@@ -210,7 +184,7 @@
     {
       "seed": 500,
       "formatter": "error_detect",
-      "question_text": "Rico solved this problem: \"Dan had \u20b1349. Dan bought a sandwich for \u20b192 and a juice box for \u20b184. How much money does Dan have left?\" Rico says the answer is 173. Is Rico correct?",
+      "question_text": "Rico solved this problem: \"Dan had ₱349. Dan bought a sandwich for ₱92 and a juice box for ₱84. How much money does Dan have left?\" Rico says the answer is 173. Is Rico correct?",
       "correct_answer": {
         "has_error": false,
         "correct_value": 173
@@ -230,20 +204,20 @@
         },
         {
           "key": "B",
-          "value": 288,
-          "text": "288",
-          "is_correct": false
-        },
-        {
-          "key": "C",
           "value": 258,
           "text": "258",
           "is_correct": false
         },
         {
-          "key": "D",
+          "key": "C",
           "value": 278,
           "text": "278",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 288,
+          "text": "288",
           "is_correct": false
         }
       ]
@@ -256,7 +230,7 @@
       "options": [
         {
           "key": "A",
-          "value": 86,
+          "value": 96,
           "is_correct": false
         },
         {
@@ -266,12 +240,12 @@
         },
         {
           "key": "C",
-          "value": 96,
+          "value": 66,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 66,
+          "value": 86,
           "is_correct": false
         }
       ]
@@ -289,7 +263,7 @@
         },
         {
           "key": "B",
-          "value": 186,
+          "value": 216,
           "is_correct": false
         },
         {
@@ -299,7 +273,7 @@
         },
         {
           "key": "D",
-          "value": 216,
+          "value": 186,
           "is_correct": false
         }
       ]
@@ -324,33 +298,33 @@
         },
         {
           "key": "C",
-          "value": 259,
-          "text": "259",
-          "is_correct": false
-        },
-        {
-          "key": "D",
           "value": 239,
           "text": "239",
           "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 259,
+          "text": "259",
+          "is_correct": false
         }
       ]
     },
     {
       "seed": 602,
       "formatter": "mcq",
-      "question_text": "Elena had \u20b1110 and spent \u20b1105 for lunch. How much money does Elena have left?",
+      "question_text": "Elena had ₱110 and spent ₱105 for lunch. How much money does Elena have left?",
       "correct_answer": 5,
       "options": [
         {
           "key": "A",
-          "value": 5,
-          "is_correct": true
+          "value": 1,
+          "is_correct": false
         },
         {
           "key": "B",
-          "value": 25,
-          "is_correct": false
+          "value": 5,
+          "is_correct": true
         },
         {
           "key": "C",
@@ -359,7 +333,7 @@
         },
         {
           "key": "D",
-          "value": 1,
+          "value": 25,
           "is_correct": false
         }
       ]
@@ -372,34 +346,34 @@
       "options": [
         {
           "key": "A",
-          "value": 30,
-          "text": "30",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 10,
-          "text": "10",
-          "is_correct": true
-        },
-        {
-          "key": "C",
           "value": 20,
           "text": "20",
           "is_correct": false
         },
         {
-          "key": "D",
+          "key": "B",
           "value": 1,
           "text": "1",
           "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 30,
+          "text": "30",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 10,
+          "text": "10",
+          "is_correct": true
         }
       ]
     },
     {
       "seed": 604,
       "formatter": "mcq",
-      "question_text": "Renz had \u20b1234 and spent \u20b1110 at the sari-sari store. How much money does Renz have left?",
+      "question_text": "Renz had ₱234 and spent ₱110 at the sari-sari store. How much money does Renz have left?",
       "correct_answer": 124,
       "options": [
         {
@@ -409,48 +383,56 @@
         },
         {
           "key": "B",
-          "value": 114,
+          "value": 144,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 134,
+          "value": 114,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 144,
+          "value": 134,
           "is_correct": false
         }
       ]
     },
     {
-      "seed": 606,
-      "formatter": "mcq",
-      "question_text": "Elena had 922 books. Elena gave 300 books to the library. How many books does Elena have left?",
-      "correct_answer": 622,
-      "options": [
-        {
-          "key": "A",
-          "value": 622,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 632,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 612,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 642,
-          "is_correct": false
-        }
-      ]
+      "seed": 605,
+      "formatter": "error_detect",
+      "question_text": "Liza solved this problem: \"Bianca had ₱522 and spent ₱420 for a school project. How much money does Bianca have left?\" Liza says the answer is 102. Is Liza correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 102
+      }
     }
-  ]
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The node's distinguishing clause, 1- and 2-step, is genuinely honoured. Seed 44 is a single give-away, while seed 45 requires Ate Nena's ₱636 to be reduced twice, by ₱61 and then ₱179, before the remainder can be named."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "Money and non-money both appear in both step counts, and the regrouping condition varies inside each: 630 less 96 borrows, 269 less 30 does not. The keys on the two-step items I recomputed (14, 396, 500, 173, 268, 76, 196, 10) are all correct."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "A two-step stem here names one actor and two recipients in two short sentences, as in seed 43 where Ben distributes bread to Kuya Ton and then to Renz. That is the upper end of Grade 2 reading, but the competency explicitly asks for two steps."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "Every one of the sixteen seeds is the same narrative move: a character starts with a quantity or an amount of pesos and parts with some of it. No comparison problem ('how many more'), no missing-start problem, and no pictorial presentation appears anywhere in this pool."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "Distractors are tightly clustered ten or twenty either side of the key, as with 524, 544, 554 around 534 in seed 42, so a child must actually complete both subtractions rather than eliminate by magnitude. That is a progression built on this competency."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Starting amounts run from ₱87 up to ₱810 and every intermediate and final value stays under 1000, including in the two-step chains. Distractors also stay inside the legal range, unlike the operand-sum decoys seen elsewhere."
+    }
+  },
+  "overall": "CONCERN"
 }

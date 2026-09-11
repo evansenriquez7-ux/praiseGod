@@ -1,35 +1,8 @@
 {
   "node_id": "mat_g3_mg_q4_0",
-  "reviewed_by": "Gemini Pro blind reviewer, batch G3-MG-Q4-Harden (mat_g3_mg_q4_0), 2026-08-18",
-  "review_date": "2026-08-18",
+  "reviewed_by": "reviewer-b5-marlin-obsidian-3358",
+  "review_date": "2026-09-10",
   "blind": true,
-  "overall": "PASS",
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The sample packet fulfills the MATATAG competency to describe and draw the effect of two-direction multi-step slides. Items test conceptual understanding of translation preservation (e.g., \"A rectangle undergoes a two-direction slide: 4 units right and 2 units up. Does the orientation or shape of the rectangle change?\"), multi-step directional combination (e.g., \"A figure slides 2 spaces left, then 1 more space left, then 4 spaces up. What is the total movement in the two directions?\"), and determining resulting drawn grid points (e.g., \"A circle at grid coordinate (2, 4) slides 5 spaces right and 1 space down. At what grid point will the circle be drawn?\")."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The packet covers all essential facets of the competency: movement identification (\"A shape slides 5 spaces to the left and 2 spaces down. What type of movement is this?\"), direction counting (\"A shape moves 2 spaces right AND 3 spaces up. How many directions did it slide?\"), multi-step combination along an axis (\"A figure slides 2 spaces left, then 1 more space left, then 4 spaces up. What is the total movement in the two directions?\"), resulting grid point determination (\"A shape starts at position (5, 5). It undergoes a two-direction slide: 2 spaces left and 3 spaces down. What is the new position?\"), and reverse displacement calculation (\"A point moves from (1, 1) to (4, 5). How many units right and how many units up did it slide?\")."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The vocabulary and syntax are well-calibrated for Grade 3 Quarter 4 students. Sentences are concise, direct, and avoid complex clauses or heavy reading loads. Questions like \"A circle at grid coordinate (2, 4) slides 5 spaces right and 1 space down. At what grid point will the circle be drawn?\" and \"A point moves from (1, 1) to (4, 5). How many units right and how many units up did it slide?\" focus cognitive effort squarely on spatial reasoning and basic counting/arithmetic."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The generator provides a robust variety of problem archetypes: classification of motion types (\"A shape slides 5 spaces to the left and 2 spaces down. What type of movement is this?\"), invariant property verification (\"A rectangle undergoes a two-direction slide: 4 units right and 2 units up. Does the orientation or shape of the rectangle change?\"), multi-step displacement synthesis (\"A figure slides 2 spaces left, then 1 more space left, then 4 spaces up. What is the total movement in the two directions?\"), forward coordinate mapping (\"A shape starts at position (5, 5). It undergoes a two-direction slide: 2 spaces left and 3 spaces down. What is the new position?\"), and inverse coordinate displacement (\"A point moves from (1, 1) to (4, 5). How many units right and how many units up did it slide?\")."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "All items remain strictly within the boundaries of the MATATAG Grade 3 geometry domain. The questions deal only with basic shapes, first-quadrant grid positions, and two-direction slides without exceeding into negative coordinates, formal coordinate geometry formulas, or unintroduced transformations. Options in items like \"A shape slides 5 spaces to the left and 2 spaces down. What type of movement is this?\" use grade-appropriate terminology such as 'slide (translation)', 'turn (rotation)', and 'flip (reflection)'."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "All coordinates and translation distances use manageable single-digit whole numbers within 1 to 9 (e.g., in \"A point moves from (1, 1) to (4, 5). How many units right and how many units up did it slide?\" and \"A shape starts at position (5, 5). It undergoes a two-direction slide: 2 spaces left and 3 spaces down. What is the new position?\"). This scale allows students to easily visualize or draw the movements on standard elementary grid paper without computational overburden."
-    }
-  },
   "sample_seeds": [
     42,
     43,
@@ -55,17 +28,17 @@
         },
         {
           "key": "B",
-          "value": "turn (rotation)",
-          "is_correct": false
-        },
-        {
-          "key": "C",
           "value": "two-direction slide (translation)",
           "is_correct": true
         },
         {
-          "key": "D",
+          "key": "C",
           "value": "flip (reflection)",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "turn (rotation)",
           "is_correct": false
         }
       ]
@@ -78,13 +51,13 @@
       "options": [
         {
           "key": "A",
-          "value": "2",
-          "is_correct": true
+          "value": "1",
+          "is_correct": false
         },
         {
           "key": "B",
-          "value": "3",
-          "is_correct": false
+          "value": "2",
+          "is_correct": true
         },
         {
           "key": "C",
@@ -93,7 +66,7 @@
         },
         {
           "key": "D",
-          "value": "1",
+          "value": "3",
           "is_correct": false
         }
       ]
@@ -106,17 +79,17 @@
       "options": [
         {
           "key": "A",
-          "value": "3 spaces left and 1 space up",
-          "is_correct": false
-        },
-        {
-          "key": "B",
           "value": "2 spaces left and 4 spaces up",
           "is_correct": false
         },
         {
-          "key": "C",
+          "key": "B",
           "value": "7 spaces left",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "3 spaces left and 1 space up",
           "is_correct": false
         },
         {
@@ -134,22 +107,22 @@
       "options": [
         {
           "key": "A",
-          "value": "(3, 9)",
+          "value": "(2, 3)",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "(7, 5)",
-          "is_correct": false
-        },
-        {
-          "key": "C",
           "value": "(7, 3)",
           "is_correct": true
         },
         {
+          "key": "C",
+          "value": "(7, 5)",
+          "is_correct": false
+        },
+        {
           "key": "D",
-          "value": "(2, 3)",
+          "value": "(3, 9)",
           "is_correct": false
         }
       ]
@@ -162,22 +135,22 @@
       "options": [
         {
           "key": "A",
-          "value": "turn (rotation)",
+          "value": "one-direction slide",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "two-direction slide (translation)",
-          "is_correct": true
-        },
-        {
-          "key": "C",
           "value": "flip (reflection)",
           "is_correct": false
         },
         {
+          "key": "C",
+          "value": "two-direction slide (translation)",
+          "is_correct": true
+        },
+        {
           "key": "D",
-          "value": "one-direction slide",
+          "value": "turn (rotation)",
           "is_correct": false
         }
       ]
@@ -190,12 +163,12 @@
       "options": [
         {
           "key": "A",
-          "value": "No, only its position changes.",
-          "is_correct": true
+          "value": "Yes, it gets smaller.",
+          "is_correct": false
         },
         {
           "key": "B",
-          "value": "Yes, it gets smaller.",
+          "value": "Yes, it becomes a square.",
           "is_correct": false
         },
         {
@@ -205,8 +178,8 @@
         },
         {
           "key": "D",
-          "value": "Yes, it becomes a square.",
-          "is_correct": false
+          "value": "No, only its position changes.",
+          "is_correct": true
         }
       ]
     },
@@ -218,17 +191,17 @@
       "options": [
         {
           "key": "A",
+          "value": "(3, 9)",
+          "is_correct": false
+        },
+        {
+          "key": "B",
           "value": "(7, 3)",
           "is_correct": true
         },
         {
-          "key": "B",
-          "value": "(7, 5)",
-          "is_correct": false
-        },
-        {
           "key": "C",
-          "value": "(3, 9)",
+          "value": "(7, 5)",
           "is_correct": false
         },
         {
@@ -279,13 +252,13 @@
         },
         {
           "key": "B",
-          "value": "(3, 2)",
-          "is_correct": true
+          "value": "(7, 8)",
+          "is_correct": false
         },
         {
           "key": "C",
-          "value": "(7, 8)",
-          "is_correct": false
+          "value": "(3, 2)",
+          "is_correct": true
         },
         {
           "key": "D",
@@ -294,5 +267,32 @@
         }
       ]
     }
-  ]
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "CONCERN",
+      "rationale": "The describe and draw verbs are only partly served. Several items merely classify the motion, keying two-direction slide (translation) or counting that the shape slid in 2 directions, rather than describing or producing the resulting figure. The nearest thing to drawing is naming the grid point where a circle lands."
+    },
+    "comprehensive_coverage": {
+      "verdict": "CONCERN",
+      "rationale": "Multi-step is written into the competency but reaches exactly one sample, the figure that slides 2 spaces left, then 1 more space left, then 4 spaces up to give 3 spaces left and 4 spaces up. Every other sample is a single two-direction slide, so the accumulating sub-case is barely generated."
+    },
+    "cognitive_capacity": {
+      "verdict": "CONCERN",
+      "rationale": "Ordered-pair coordinate notation such as (2, 4) and (7, 3) carries four of the nine samples, although the competency itself speaks only of spaces and directions. That notation is a heavier convention than the slide idea requires at Grade 3 Quarter 4."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "Two stems recur verbatim within nine samples, the 5-left-and-2-down classification item and the circle at (2, 4) item each appearing twice, and all nine are multiple choice. No sample supplies a figure on a grid to be slid and redrawn."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "The set does reach past naming into the substance of translation: one item establishes that only position changes and neither orientation nor shape does, and another inverts the task by deriving the slide from a start and end point."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Slides of one to five spaces on a small grid with coordinates in single digits keep every translation countable by hand, which suits the figure-sliding work of this quarter."
+    }
+  },
+  "overall": "CONCERN"
 }

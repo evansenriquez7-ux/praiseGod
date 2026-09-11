@@ -1,44 +1,15 @@
 {
   "node_id": "mat_g1_na_q4_5",
-  "reviewed_by": "Gemini Pro blind reviewer, batch Re-Harden (mat_g1_na_q4_5), 2026-08-18",
-  "review_date": "2026-08-18",
+  "reviewed_by": "reviewer-b2-tallow-verdigris-8130",
+  "review_date": "2026-09-10",
   "blind": true,
-  "overall": "PASS",
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The items directly fulfill the competency requirement of comparing different denominations of peso coins and bills up to \u20b1100. For instance, seed 42 asks \"Which has a greater value: 1 \u20b1100 bill or 1 \u20b120 bill?\", seed 44 asks \"Which has a smaller value: 1 \u20b120 bill or 1 \u20b11 coin?\", and seed 501 asks \"Which has a greater value: 1 \u20b110 coin or 1 \u20b11 coin?\". All items prompt pairwise value comparisons of Philippine peso currency denominations without introducing centavo coins or denominations exceeding \u20b1100."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The sample set comprehensively covers comparisons across various currency types and directions. It includes bill-to-bill comparisons (e.g., seed 42: \"Which has a greater value: 1 \u20b1100 bill or 1 \u20b120 bill?\", seed 604: \"Which has a smaller value: 1 \u20b1100 bill or 1 \u20b120 bill?\"), bill-to-coin comparisons (e.g., seed 45: \"Which has a greater value: 1 \u20b150 bill or 1 \u20b110 coin?\", seed 55: \"Which has a greater value: 1 \u20b1100 bill or 1 \u20b15 coin?\"), coin-to-bill comparisons (e.g., seed 50: \"Which has a smaller value: 1 \u20b110 coin or 1 \u20b150 bill?\", seed 607: \"Which has a greater value: 1 \u20b110 coin or 1 \u20b120 bill?\"), and coin-to-coin comparisons (e.g., seed 501: \"Which has a greater value: 1 \u20b110 coin or 1 \u20b11 coin?\"). Both \"greater value\" and \"smaller value\" comparison directions are balanced across the samples."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The phrasing is concise, clear, and perfectly suited for Grade 1 Quarter 4 learners. Questions such as \"Which has a smaller value: 1 \u20b120 bill or 1 \u20b11 coin?\" (seed 44) and \"Which has a greater value: 1 \u20b150 bill or 1 \u20b110 coin?\" (seed 45) use straightforward comparative language without unnecessary cognitive load, complex sentence structures, or multi-step operations."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The items showcase diverse structural presentation formats, including multiple choice (mcq, read_mcq), fill-in-the-blank (set_fill_in_blank), and cloze formatters. Diverse pairs of denominations across \u20b11, \u20b15, \u20b110 coins and \u20b120, \u20b150, \u20b1100 bills are utilized across both directional queries, as seen in \"Which has a greater value: 1 \u20b1100 bill or 1 \u20b15 coin?\" (seed 55) and \"Which has a smaller value: 1 \u20b1100 bill or 1 \u20b110 coin?\" (seed 502)."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "The items strictly adhere to the learning competency scope. They exclusively compare peso coins (\u20b11, \u20b15, \u20b110) and bills (\u20b120, \u20b150, \u20b1100) up to \u20b1100 without straying into centavos, multi-denomination summation, or operations beyond the curriculum mandate. Examples like seed 501 (\"Which has a greater value: 1 \u20b110 coin or 1 \u20b11 coin?\") and seed 607 (\"Which has a greater value: 1 \u20b110 coin or 1 \u20b120 bill?\") demonstrate precise curricular alignment."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "All numerical values and denominations tested are well within the curriculum ceiling of \u20b1100, incorporating standard Philippine currency units (\u20b11, \u20b15, \u20b110, \u20b120, \u20b150, \u20b1100) as observed in seed 42 (\"Which has a greater value: 1 \u20b1100 bill or 1 \u20b120 bill?\") and seed 46 (\"Which has a smaller value: 1 \u20b1100 bill or 1 \u20b11 coin?\"). No quantities exceed \u20b1100."
-    }
-  },
   "sample_seeds": [
     42,
     43,
     44,
     45,
     46,
-    50,
-    55,
-    72,
+    52,
     500,
     501,
     502,
@@ -52,105 +23,426 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "mcq",
-      "question_text": "Which has a greater value: 1 \u20b1100 bill or 1 \u20b120 bill?",
-      "correct_answer": "1 \u20b1100 bill"
+      "formatter": "cloze",
+      "question_text": "Which has a smaller value: 1 ₱5 coin or 1 ₱50 bill?",
+      "correct_answer": "1 ₱5 coin",
+      "options": [
+        {
+          "key": "A",
+          "value": "1 ₱5 coin",
+          "text": "1 ₱5 coin",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "1 ₱10 coin",
+          "text": "1 ₱10 coin",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "They are equal",
+          "text": "They are equal",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "1 ₱50 bill",
+          "text": "1 ₱50 bill",
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 43,
-      "formatter": "mcq",
-      "question_text": "Which has a greater value: 1 \u20b150 bill or 1 \u20b1100 bill?",
-      "correct_answer": "1 \u20b1100 bill"
+      "formatter": "set_fill_in_blank",
+      "question_text": "Which has a greater value: 1 ₱50 bill or 1 ₱100 bill?",
+      "correct_answer": "1 ₱100 bill"
     },
     {
       "seed": 44,
       "formatter": "mcq",
-      "question_text": "Which has a smaller value: 1 \u20b120 bill or 1 \u20b11 coin?",
-      "correct_answer": "1 \u20b11 coin"
+      "question_text": "Which has a smaller value: 1 ₱20 bill or 1 ₱1 coin?",
+      "correct_answer": "1 ₱1 coin",
+      "options": [
+        {
+          "key": "A",
+          "value": "1 ₱50 bill",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "They are equal",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "1 ₱20 bill",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "1 ₱1 coin",
+          "is_correct": true
+        }
+      ]
     },
     {
       "seed": 45,
       "formatter": "mcq",
-      "question_text": "Which has a greater value: 1 \u20b150 bill or 1 \u20b110 coin?",
-      "correct_answer": "1 \u20b150 bill"
+      "question_text": "Which has a greater value: 1 ₱20 bill or 1 ₱50 bill?",
+      "correct_answer": "1 ₱50 bill",
+      "options": [
+        {
+          "key": "A",
+          "value": "They are equal",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "1 ₱10 coin",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "1 ₱20 bill",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "1 ₱50 bill",
+          "is_correct": true
+        }
+      ]
     },
     {
       "seed": 46,
       "formatter": "mcq",
-      "question_text": "Which has a smaller value: 1 \u20b1100 bill or 1 \u20b11 coin?",
-      "correct_answer": "1 \u20b11 coin"
+      "question_text": "Which has a smaller value: 1 ₱100 bill or 1 ₱1 coin?",
+      "correct_answer": "1 ₱1 coin",
+      "options": [
+        {
+          "key": "A",
+          "value": "1 ₱100 bill",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "1 ₱10 coin",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "They are equal",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "1 ₱1 coin",
+          "is_correct": true
+        }
+      ]
     },
     {
-      "seed": 50,
+      "seed": 52,
       "formatter": "read_mcq",
-      "question_text": "Which has a smaller value: 1 \u20b110 coin or 1 \u20b150 bill?",
-      "correct_answer": "A"
-    },
-    {
-      "seed": 55,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Which has a greater value: 1 \u20b1100 bill or 1 \u20b15 coin?",
-      "correct_answer": "1 \u20b1100 bill"
-    },
-    {
-      "seed": 72,
-      "formatter": "cloze",
-      "question_text": "Which has a smaller value: 1 \u20b1100 bill or 1 \u20b11 coin?",
-      "correct_answer": "1 \u20b11 coin"
+      "question_text": "Which has a greater value: 1 ₱10 coin or 1 ₱100 bill?",
+      "correct_answer": "B",
+      "options": [
+        {
+          "key": "A",
+          "value": "1 ₱10 coin",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "1 ₱100 bill",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "1 ₱20 bill",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "They are equal",
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 500,
       "formatter": "set_fill_in_blank",
-      "question_text": "Which has a smaller value: 1 \u20b120 bill or 1 \u20b15 coin?",
-      "correct_answer": "1 \u20b15 coin"
+      "question_text": "Which has a smaller value: 1 ₱20 bill or 1 ₱5 coin?",
+      "correct_answer": "1 ₱5 coin"
     },
     {
       "seed": 501,
       "formatter": "cloze",
-      "question_text": "Which has a greater value: 1 \u20b110 coin or 1 \u20b11 coin?",
-      "correct_answer": "1 \u20b110 coin"
+      "question_text": "Which has a greater value: 1 ₱10 coin or 1 ₱1 coin?",
+      "correct_answer": "1 ₱10 coin",
+      "options": [
+        {
+          "key": "A",
+          "value": "1 ₱1 coin",
+          "text": "1 ₱1 coin",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "1 ₱10 coin",
+          "text": "1 ₱10 coin",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "They are equal",
+          "text": "They are equal",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "1 ₱50 bill",
+          "text": "1 ₱50 bill",
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 502,
       "formatter": "mcq",
-      "question_text": "Which has a smaller value: 1 \u20b1100 bill or 1 \u20b110 coin?",
-      "correct_answer": "1 \u20b110 coin"
+      "question_text": "Which has a smaller value: 1 ₱100 bill or 1 ₱10 coin?",
+      "correct_answer": "1 ₱10 coin",
+      "options": [
+        {
+          "key": "A",
+          "value": "1 ₱10 coin",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "They are equal",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "1 ₱20 bill",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "1 ₱100 bill",
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 600,
-      "formatter": "mcq",
-      "question_text": "Which has a smaller value: 1 \u20b11 coin or 1 \u20b1100 bill?",
-      "correct_answer": "1 \u20b11 coin"
+      "formatter": "cloze",
+      "question_text": "Which has a smaller value: 1 ₱1 coin or 1 ₱100 bill?",
+      "correct_answer": "1 ₱1 coin",
+      "options": [
+        {
+          "key": "A",
+          "value": "They are equal",
+          "text": "They are equal",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "1 ₱20 bill",
+          "text": "1 ₱20 bill",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "1 ₱1 coin",
+          "text": "1 ₱1 coin",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "1 ₱100 bill",
+          "text": "1 ₱100 bill",
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 601,
-      "formatter": "cloze",
-      "question_text": "Which has a greater value: 1 \u20b120 bill or 1 \u20b110 coin?",
-      "correct_answer": "1 \u20b120 bill"
+      "formatter": "mcq",
+      "question_text": "Which has a smaller value: 1 ₱5 coin or 1 ₱20 bill?",
+      "correct_answer": "1 ₱5 coin",
+      "options": [
+        {
+          "key": "A",
+          "value": "1 ₱20 bill",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "1 ₱100 bill",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "They are equal",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "1 ₱5 coin",
+          "is_correct": true
+        }
+      ]
     },
     {
       "seed": 604,
-      "formatter": "mcq",
-      "question_text": "Which has a smaller value: 1 \u20b1100 bill or 1 \u20b120 bill?",
-      "correct_answer": "1 \u20b120 bill"
+      "formatter": "cloze",
+      "question_text": "Which has a smaller value: 1 ₱100 bill or 1 ₱20 bill?",
+      "correct_answer": "1 ₱20 bill",
+      "options": [
+        {
+          "key": "A",
+          "value": "1 ₱1 coin",
+          "text": "1 ₱1 coin",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "1 ₱100 bill",
+          "text": "1 ₱100 bill",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "They are equal",
+          "text": "They are equal",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "1 ₱20 bill",
+          "text": "1 ₱20 bill",
+          "is_correct": true
+        }
+      ]
     },
     {
       "seed": 605,
-      "formatter": "read_mcq",
-      "question_text": "Which has a greater value: 1 \u20b1100 bill or 1 \u20b110 coin?",
-      "correct_answer": "C"
+      "formatter": "cloze",
+      "question_text": "Which has a greater value: 1 ₱100 bill or 1 ₱10 coin?",
+      "correct_answer": "1 ₱100 bill",
+      "options": [
+        {
+          "key": "A",
+          "value": "1 ₱10 coin",
+          "text": "1 ₱10 coin",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "1 ₱100 bill",
+          "text": "1 ₱100 bill",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "1 ₱5 coin",
+          "text": "1 ₱5 coin",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "They are equal",
+          "text": "They are equal",
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 606,
       "formatter": "mcq",
-      "question_text": "Which has a greater value: 1 \u20b1100 bill or 1 \u20b150 bill?",
-      "correct_answer": "1 \u20b1100 bill"
+      "question_text": "Which has a greater value: 1 ₱10 coin or 1 ₱50 bill?",
+      "correct_answer": "1 ₱50 bill",
+      "options": [
+        {
+          "key": "A",
+          "value": "1 ₱50 bill",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "They are equal",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "1 ₱20 bill",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "1 ₱10 coin",
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 607,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Which has a greater value: 1 \u20b110 coin or 1 \u20b120 bill?",
-      "correct_answer": "1 \u20b120 bill"
+      "formatter": "mcq",
+      "question_text": "Which has a greater value: 1 ₱10 coin or 1 ₱20 bill?",
+      "correct_answer": "1 ₱20 bill",
+      "options": [
+        {
+          "key": "A",
+          "value": "1 ₱100 bill",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "They are equal",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "1 ₱20 bill",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "1 ₱10 coin",
+          "is_correct": false
+        }
+      ]
     }
-  ]
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "Pairs of peso denominations are set against each other and the pupil must name the greater or the smaller, which is the comparison the competency describes, with both question directions appearing."
+    },
+    "comprehensive_coverage": {
+      "verdict": "CONCERN",
+      "rationale": "Every comparison is one single piece against one single piece, so the interesting case for denominations -- several small coins weighed against one larger bill -- never occurs, and coin-to-coin, bill-to-bill and coin-to-bill pairings are not systematically covered."
+    },
+    "cognitive_capacity": {
+      "verdict": "CONCERN",
+      "rationale": "The option lists undercut the task: 'They are equal' is offered in every item although the two pieces named are always of different value, and each list also contains a denomination that is not one of the two being compared, so two of four choices fall away without any comparing."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "A single question shape runs through all fifteen samples with only the greater/smaller word and the denomination pair swapped; no picture of the pieces, no purchasing context and no ordering of three denominations appears."
+    },
+    "competency_alignment": {
+      "verdict": "CONCERN",
+      "rationale": "The high seeds are not comparing harder pairs: seed 600 sets a ₱1 coin against a ₱100 bill, the easiest possible discrimination, while an early seed already handles the closer ₱20-against-₱50 case, so the ladder is not ordered by comparison difficulty."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Denominations used span ₱1 to ₱100 and stop there, matching the ceiling and the exclusion of centavo pieces stated in the competency."
+    }
+  },
+  "overall": "CONCERN"
 }

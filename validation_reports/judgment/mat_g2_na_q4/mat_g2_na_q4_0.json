@@ -1,34 +1,8 @@
 {
   "node_id": "mat_g2_na_q4_0",
-  "reviewed_by": "Gemini Pro blind reviewer, batch G2-NA-Q4-Harden (mat_g2_na_q4_0), 2026-08-18",
+  "reviewed_by": "reviewer-b4-plover-saffron-6041",
+  "review_date": "2026-09-10",
   "blind": true,
-  "overall": "PASS",
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The items directly fulfill the competency requirement to 'Represent and identify unit fractions'. Identification is assessed via visual model multiple-choice questions asking 'What fraction does the model show?' (seeds 42, 43, 45, 46, 502), while representation is assessed through partition-shading tasks such as 'Shade 1/4 of the shape.' (seed 44), 'Shade 1/2 of the shape.' (seeds 500, 501), and 'Shade 1/5 of the shape.' (seed 601)."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The sample packet provides strong coverage across the specified denominators (2, 3, 4, 5, 8) and both behavioral dimensions of the standard (identification and active representation). Items include 'Shade 1/2 of the shape.', 'What fraction does the model show?' for 1/3 and 1/8, 'Shade 1/4 of the shape.', and 'Shade 1/5 of the shape.', thoroughly exercising the node scope."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The cognitive load is tailored perfectly for Grade 2 Quarter 4 learners. Prompts are brief, highly readable, and actionable without extraneous linguistic complexity, using simple instructions like 'Shade 1/4 of the shape.' and 'What fraction does the model show?'."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The generator exercises distinct formatters and question modes: read_mcq for model decoding with realistic distractors (inversions, complementary parts) in 'What fraction does the model show?', and set_click interactive manipulation in 'Shade 1/5 of the shape.' and 'Shade 1/2 of the shape.'."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "All generated items align strictly with the target competency text. Prompts like 'What fraction does the model show?' and 'Shade 1/4 of the shape.' target unit fractions exclusively without introducing non-unit fraction arithmetic or premature concepts."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "Numeric values, denominators, and partition numbers (2, 3, 4, 5, 8) strictly adhere to Grade 2 MATATAG fraction benchmarks, as seen in 'Shade 1/2 of the shape.', 'Shade 1/4 of the shape.', and 'Shade 1/5 of the shape.'."
-    }
-  },
   "sample_seeds": [
     42,
     43,
@@ -45,7 +19,7 @@
       "seed": 42,
       "formatter": "read_mcq",
       "question_text": "What fraction does the model show?",
-      "correct_answer": "C",
+      "correct_answer": "D",
       "options": [
         {
           "key": "A",
@@ -54,18 +28,18 @@
         },
         {
           "key": "B",
-          "value": "2/3",
+          "value": "3/3",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "1/3",
-          "is_correct": true
+          "value": "2/3",
+          "is_correct": false
         },
         {
           "key": "D",
-          "value": "3/3",
-          "is_correct": false
+          "value": "1/3",
+          "is_correct": true
         }
       ]
     },
@@ -73,27 +47,27 @@
       "seed": 43,
       "formatter": "read_mcq",
       "question_text": "What fraction does the model show?",
-      "correct_answer": "A",
+      "correct_answer": "D",
       "options": [
         {
           "key": "A",
-          "value": "1/2",
-          "is_correct": true
-        },
-        {
-          "key": "B",
           "value": "2/2",
           "is_correct": false
         },
         {
-          "key": "C",
+          "key": "B",
           "value": "3/2",
           "is_correct": false
         },
         {
-          "key": "D",
+          "key": "C",
           "value": "2/1",
           "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "1/2",
+          "is_correct": true
         }
       ]
     },
@@ -107,7 +81,7 @@
       "seed": 45,
       "formatter": "read_mcq",
       "question_text": "What fraction does the model show?",
-      "correct_answer": "C",
+      "correct_answer": "D",
       "options": [
         {
           "key": "A",
@@ -116,18 +90,18 @@
         },
         {
           "key": "B",
-          "value": "8/1",
+          "value": "8/8",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "1/8",
-          "is_correct": true
+          "value": "8/1",
+          "is_correct": false
         },
         {
           "key": "D",
-          "value": "8/8",
-          "is_correct": false
+          "value": "1/8",
+          "is_correct": true
         }
       ]
     },
@@ -175,17 +149,17 @@
       "seed": 502,
       "formatter": "read_mcq",
       "question_text": "What fraction does the model show?",
-      "correct_answer": "B",
+      "correct_answer": "D",
       "options": [
         {
           "key": "A",
-          "value": "2/1",
+          "value": "2/2",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "1/2",
-          "is_correct": true
+          "value": "2/1",
+          "is_correct": false
         },
         {
           "key": "C",
@@ -194,8 +168,8 @@
         },
         {
           "key": "D",
-          "value": "2/2",
-          "is_correct": false
+          "value": "1/2",
+          "is_correct": true
         }
       ]
     },
@@ -205,5 +179,32 @@
       "question_text": "Shade 1/5 of the shape.",
       "correct_answer": "1/5"
     }
-  ]
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "Both verbs are exercised: identification through the model-reading items and representation through the shading tasks, where a child must produce 1/4, 1/2 or 1/5 on a shape rather than choose it."
+    },
+    "comprehensive_coverage": {
+      "verdict": "FAIL",
+      "rationale": "The node names six denominators and one of them, sixths, is never generated in any of the nine seeds. Worse, half the pool is halves: seeds 43, 46, 500, 501 and 502 all work with 1/2, leaving thirds, fourths, fifths and eighths one appearance each."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Asking what fraction a model shows, and asking for a named unit fraction to be shaded, are both appropriately concrete for the quarter in which fractions first appear, with no symbolic manipulation demanded."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "Two stems carry the entire node, one reading 'What fraction does the model show?' and one instructing the child to shade a named fraction of the shape. No number-line placement, no set-of-objects model, and no comparison of two representations occurs."
+    },
+    "competency_alignment": {
+      "verdict": "CONCERN",
+      "rationale": "Seeds 500 and 501 are the same task word for word, shading one half, inside a nine-item pool, so the generator is spending its variation budget on repetition instead of on the denominators the competency lists."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Every fraction used has a numerator of 1 and a denominator drawn from the permitted set, and the inverted decoys such as 3/1 and 8/1 stay inside the same digits rather than introducing larger denominators."
+    }
+  },
+  "overall": "FAIL"
 }

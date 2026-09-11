@@ -1,126 +1,82 @@
 {
   "node_id": "mat_g1_na_q4_3",
-  "reviewed_by": "Gemini Pro blind reviewer, batch G1-NA-Q4-Money-Harden-v3 (mat_g1_na_q4_3), 2026-08-18",
+  "reviewed_by": "reviewer-b2-tallow-verdigris-8130",
+  "review_date": "2026-09-10",
   "blind": true,
-  "overall": "PASS",
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The items successfully require students to recognize Philippine currency and its notations up to \u20b1100, directly fulfilling the competency. Examples include translating to words (\"How is \u20b110 written in words?\") and recognizing specific money forms (\"A coin marked with the number 20 is shown. What coin is it?\")."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The samples thoroughly cover the required bounds of the competency: coins (\"A coin marked with the number 10 is shown. What coin is it?\"), bills (\"A bill marked with the number 20 is shown. What bill is it?\"), notations using the peso sign (\"How is 'one hundred pesos' written using the peso symbol?\"), and currency code (\"How is \u20b1100 written using the currency code PhP?\"). It properly stays within the \u20b1100 limit."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The language and concepts are well-suited for Grade 1, Quarter 4 students. The phrasing is simple and direct (e.g., \"How is \u20b15 written in words?\"). The proxy questions for visual identification (\"A coin marked with the number 20 is shown. What coin is it?\") use straightforward descriptive language that a first-grader can process."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "There is a strong variety of question formats and variants: translating symbol to words, translating words to symbol, identifying currency codes, and distinguishing between coins and bills based on their markings."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "The generated problems are strictly aligned with the MATATAG curriculum text. It deliberately focuses on the specified denominations and notations. The distractors effectively test the exclusion of centavos as mentioned in the competency (e.g., the distractor \"ten centavos\" for \"How is \u20b110 written in words?\")."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "The items use authentic, valid denominations for Philippine money up to \u20b1100 (\u20b15, \u20b110, \u20b120, \u20b150, \u20b1100). The distractors are appropriately scaled to test common errors, such as confusing the value with centavos or adding extra zeroes (e.g., \"\u20b11000\" or \"\u20b1200\")."
-    }
-  },
   "sample_seeds": [
     42,
     43,
     44,
     45,
     46,
-    50,
-    55,
-    72,
+    52,
     500,
     501,
     502,
     600,
+    601,
     605,
+    606,
     607
   ],
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "mcq",
-      "question_text": "How is \u20b110 written in words?",
-      "correct_answer": "ten pesos",
+      "formatter": "cloze",
+      "question_text": "A bill marked with the number 20 is shown. What bill is it?",
+      "correct_answer": "₱20 bill",
       "options": [
         {
           "key": "A",
-          "value": "fifteen pesos",
+          "value": "₱100 bill",
+          "text": "₱100 bill",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "ten centavos",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "ten pesos",
+          "value": "₱20 bill",
+          "text": "₱20 bill",
           "is_correct": true
         },
         {
+          "key": "C",
+          "value": "₱50 bill",
+          "text": "₱50 bill",
+          "is_correct": false
+        },
+        {
           "key": "D",
-          "value": "eight pesos",
+          "value": "₱10 coin",
+          "text": "₱10 coin",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 43,
-      "formatter": "mcq",
-      "question_text": "How is \u20b1100 written using the currency code PhP?",
-      "correct_answer": "PhP 100",
-      "options": [
-        {
-          "key": "A",
-          "value": "PhP 100",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": "PhP100c",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "100 PhP",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "\u20b1100",
-          "is_correct": false
-        }
-      ]
+      "formatter": "set_fill_in_blank",
+      "question_text": "How is ₱100 written using the currency code PhP?",
+      "correct_answer": "PhP 100"
     },
     {
       "seed": 44,
       "formatter": "mcq",
-      "question_text": "How is \u20b15 written in words?",
+      "question_text": "How is ₱5 written in words?",
       "correct_answer": "five pesos",
       "options": [
         {
           "key": "A",
-          "value": "fifty-five pesos",
+          "value": "five centavos",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "twenty-five pesos",
+          "value": "fifty-five pesos",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "five centavos",
+          "value": "twenty-five pesos",
           "is_correct": false
         },
         {
@@ -133,28 +89,28 @@
     {
       "seed": 45,
       "formatter": "mcq",
-      "question_text": "How is \u20b120 written using the currency code PhP?",
-      "correct_answer": "PhP 20",
+      "question_text": "How is ₱100 written in words?",
+      "correct_answer": "one hundred pesos",
       "options": [
         {
           "key": "A",
-          "value": "20 PhP",
+          "value": "one hundred centavos",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "\u20b120",
+          "value": "ninety-five pesos",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "PhP 20",
-          "is_correct": true
+          "value": "one hundred twenty pesos",
+          "is_correct": false
         },
         {
           "key": "D",
-          "value": "PhP20c",
-          "is_correct": false
+          "value": "one hundred pesos",
+          "is_correct": true
         }
       ]
     },
@@ -162,92 +118,54 @@
       "seed": 46,
       "formatter": "mcq",
       "question_text": "A coin marked with the number 20 is shown. What coin is it?",
-      "correct_answer": "\u20b120 coin",
+      "correct_answer": "₱20 coin",
       "options": [
         {
           "key": "A",
-          "value": "\u20b110 coin",
+          "value": "₱1 coin",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "\u20b120 coin",
-          "is_correct": true
+          "value": "₱10 coin",
+          "is_correct": false
         },
         {
           "key": "C",
-          "value": "\u20b15 coin",
+          "value": "₱5 coin",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "\u20b11 coin",
-          "is_correct": false
+          "value": "₱20 coin",
+          "is_correct": true
         }
       ]
     },
     {
-      "seed": 50,
+      "seed": 52,
       "formatter": "read_mcq",
-      "question_text": "How is 'one hundred pesos' written using the peso symbol?",
-      "correct_answer": "A",
+      "question_text": "How is 'twenty pesos' written using the peso symbol?",
+      "correct_answer": "B",
       "options": [
         {
           "key": "A",
-          "value": "\u20b1100",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": "100\u00a2",
+          "value": "20¢",
           "is_correct": false
         },
         {
+          "key": "B",
+          "value": "₱20",
+          "is_correct": true
+        },
+        {
           "key": "C",
-          "value": "\u20b195",
+          "value": "₱15",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "\u20b11000",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 55,
-      "formatter": "set_fill_in_blank",
-      "question_text": "A bill marked with the number 20 is shown. What bill is it?",
-      "correct_answer": "\u20b120 bill"
-    },
-    {
-      "seed": 72,
-      "formatter": "cloze",
-      "question_text": "A coin marked with the number 20 is shown. What coin is it?",
-      "correct_answer": "\u20b120 coin",
-      "options": [
-        {
-          "key": "A",
-          "value": "\u20b120 coin",
-          "text": "\u20b120 coin",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": "\u20b15 coin",
-          "text": "\u20b15 coin",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "\u20b110 coin",
-          "text": "\u20b110 coin",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "\u20b11 coin",
-          "text": "\u20b11 coin",
+          "value": "₱200",
           "is_correct": false
         }
       ]
@@ -255,37 +173,37 @@
     {
       "seed": 500,
       "formatter": "set_fill_in_blank",
-      "question_text": "How is \u20b110 written in words?",
+      "question_text": "How is ₱10 written in words?",
       "correct_answer": "ten pesos"
     },
     {
       "seed": 501,
       "formatter": "cloze",
       "question_text": "How is 'five pesos' written using the peso symbol?",
-      "correct_answer": "\u20b15",
+      "correct_answer": "₱5",
       "options": [
         {
           "key": "A",
-          "value": "\u20b15",
-          "text": "\u20b15",
-          "is_correct": true
+          "value": "₱50",
+          "text": "₱50",
+          "is_correct": false
         },
         {
           "key": "B",
-          "value": "5\u00a2",
-          "text": "5\u00a2",
+          "value": "5¢",
+          "text": "5¢",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "\u20b110",
-          "text": "\u20b110",
-          "is_correct": false
+          "value": "₱5",
+          "text": "₱5",
+          "is_correct": true
         },
         {
           "key": "D",
-          "value": "\u20b150",
-          "text": "\u20b150",
+          "value": "₱10",
+          "text": "₱10",
           "is_correct": false
         }
       ]
@@ -294,91 +212,204 @@
       "seed": 502,
       "formatter": "mcq",
       "question_text": "How is 'twenty pesos' written using the peso symbol?",
-      "correct_answer": "\u20b120",
+      "correct_answer": "₱20",
       "options": [
         {
           "key": "A",
-          "value": "\u20b1200",
+          "value": "₱15",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "\u20b120",
+          "value": "₱20",
           "is_correct": true
         },
         {
           "key": "C",
-          "value": "20\u00a2",
+          "value": "₱200",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "\u20b115",
+          "value": "20¢",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 600,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "A coin marked with the number 10 is shown. What coin is it?",
-      "correct_answer": "\u20b110 coin",
+      "correct_answer": "₱10 coin",
       "options": [
         {
           "key": "A",
-          "value": "\u20b11 coin",
+          "value": "₱1 coin",
+          "text": "₱1 coin",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "\u20b15 coin",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "\u20b110 coin",
+          "value": "₱10 coin",
+          "text": "₱10 coin",
           "is_correct": true
         },
         {
+          "key": "C",
+          "value": "₱5 coin",
+          "text": "₱5 coin",
+          "is_correct": false
+        },
+        {
           "key": "D",
-          "value": "\u20b120 coin",
+          "value": "₱20 coin",
+          "text": "₱20 coin",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 601,
+      "formatter": "mcq",
+      "question_text": "A bill marked with the number 50 is shown. What bill is it?",
+      "correct_answer": "₱50 bill",
+      "options": [
+        {
+          "key": "A",
+          "value": "₱20 bill",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "₱50 bill",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "₱100 bill",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "₱10 coin",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 605,
-      "formatter": "read_mcq",
+      "formatter": "cloze",
       "question_text": "How is 'ten pesos' written using the peso symbol?",
-      "correct_answer": "C",
+      "correct_answer": "₱10",
       "options": [
         {
           "key": "A",
-          "value": "\u20b1100",
+          "value": "10¢",
+          "text": "10¢",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "\u20b15",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "\u20b110",
+          "value": "₱10",
+          "text": "₱10",
           "is_correct": true
         },
         {
+          "key": "C",
+          "value": "₱100",
+          "text": "₱100",
+          "is_correct": false
+        },
+        {
           "key": "D",
-          "value": "10\u00a2",
+          "value": "₱5",
+          "text": "₱5",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 606,
+      "formatter": "mcq",
+      "question_text": "How is 'one hundred pesos' written using the peso symbol?",
+      "correct_answer": "₱100",
+      "options": [
+        {
+          "key": "A",
+          "value": "₱95",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "₱100",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "₱1000",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "100¢",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 607,
-      "formatter": "set_fill_in_blank",
+      "formatter": "mcq",
       "question_text": "How is 'fifty pesos' written using the peso symbol?",
-      "correct_answer": "\u20b150"
+      "correct_answer": "₱50",
+      "options": [
+        {
+          "key": "A",
+          "value": "₱500",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "50¢",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "₱45",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "₱50",
+          "is_correct": true
+        }
+      ]
     }
-  ]
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "Recognition of a denomination from its marked number and translation between the three notations are both produced, including the currency-code form in 'How is ₱100 written using the currency code PhP?', which is a notation the competency's wording covers and generators often skip."
+    },
+    "comprehensive_coverage": {
+      "verdict": "CONCERN",
+      "rationale": "Identification of the physical piece is exercised only for the ₱10, ₱20 and ₱50 denominations; the ₱1 and ₱5 coins appear as answer options or inside word-and-symbol tasks but are never themselves the piece to be recognised, and no ₱100 bill recognition item is generated."
+    },
+    "cognitive_capacity": {
+      "verdict": "CONCERN",
+      "rationale": "Option lists carry centavo notation such as 20¢ and 100¢ although this competency deliberately excludes centavo coins, so pupils are asked to reject a notation they have not been taught to read."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "Four directions of the same knowledge are present: symbol to words, words to symbol, marked piece to name, and peso amount to currency code, split across typed and selected responses."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "Denominations climb from ₱5 through ₱20 and ₱50 to ₱100 as seeds advance, and the distractors track the plausible confusions (fifty against five, a hundred against a thousand)."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "No key exceeds ₱100; the ₱200, ₱500 and ₱1000 forms occur only as wrong options, which is the correct way to keep an out-of-range value out of the answer space."
+    }
+  },
+  "overall": "CONCERN"
 }

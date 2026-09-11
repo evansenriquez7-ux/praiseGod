@@ -1,34 +1,8 @@
 {
   "node_id": "mat_g1_na_q3_7",
-  "reviewed_by": "Gemini Pro blind reviewer, batch G1-NA-Q3-Harden v2 (mat_g1_na_q3_7), 2026-08-18",
+  "reviewed_by": "reviewer-b2-tallow-verdigris-8130",
+  "review_date": "2026-09-10",
   "blind": true,
-  "overall": "PASS",
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The samples require the student to apply a given repeating unit (e.g., 'rectangle, triangle' or '10, 2') to identify the correct sequence, which successfully assesses pattern creation in a digital format without physical manipulatives."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The samples thoroughly cover the required elements by generating patterns using shapes ('rectangle, triangle'), letters ('o, c', 'i, e'), and numbers ('10, 2', '19, 17, 9')."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The complexity is highly appropriate for Grade 1 Quarter 3, focusing on foundational AB (e.g., 'a, k') and ABC (e.g., '19, 17, 9') repeating patterns that match early cognitive development constraints."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The set provides an excellent variety of sequence structures, utilizing both 2-element ('f, n') and 3-element ('rectangle, triangle, square') repeating groups across different item formats (mcq and cloze)."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "All questions directly target the core MATATAG competency 'Create repeating patterns using objects, images, or numbers.' by explicitly providing the core unit and asking the student to build the sequence."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "The numerical values used in the sequences (e.g., '19, 17, 9') are within the expected bounds for Grade 1 students, and distractors effectively isolate single-element errors (e.g., '19, 16, 9, 19, 17, 9')."
-    }
-  },
   "sample_seeds": [
     42,
     43,
@@ -49,50 +23,50 @@
       "options": [
         {
           "key": "A",
-          "value": "rectangle, triangle, square, triangle, rectangle, triangle",
+          "value": "rectangle, triangle, rectangle, triangle, rectangle, square",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "rectangle, triangle, rectangle, triangle, rectangle, rectangle",
+          "value": "rectangle, triangle, square, triangle, rectangle, triangle",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "rectangle, triangle, rectangle, triangle, rectangle, triangle",
-          "is_correct": true
+          "value": "rectangle, triangle, rectangle, triangle, rectangle, rectangle",
+          "is_correct": false
         },
         {
           "key": "D",
-          "value": "rectangle, triangle, rectangle, triangle, rectangle, square",
-          "is_correct": false
+          "value": "rectangle, triangle, rectangle, triangle, rectangle, triangle",
+          "is_correct": true
         }
       ]
     },
     {
       "seed": 43,
       "formatter": "mcq",
-      "question_text": "Use the repeating unit o, c to build a repeating pattern. Which sequence correctly creates it?",
-      "correct_answer": "o, c, o, c, o, c",
+      "question_text": "Use the repeating unit 10, 1 to build a repeating pattern. Which sequence correctly creates it?",
+      "correct_answer": "10, 1, 10, 1, 10, 1",
       "options": [
         {
           "key": "A",
-          "value": "o, c, o, c, o, c",
-          "is_correct": true
+          "value": "10, 1, 10, 1, 10, 2",
+          "is_correct": false
         },
         {
           "key": "B",
-          "value": "o, j, o, c, o, c",
+          "value": "10, 2, 10, 1, 10, 1",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "o, c, o, c, o, j",
-          "is_correct": false
+          "value": "10, 1, 10, 1, 10, 1",
+          "is_correct": true
         },
         {
           "key": "D",
-          "value": "o, c, o, c, f, c",
+          "value": "10, 1, 10, 1, 9, 1",
           "is_correct": false
         }
       ]
@@ -100,27 +74,27 @@
     {
       "seed": 44,
       "formatter": "mcq",
-      "question_text": "You want to create a repeating pattern using: 10, 2. Which sequence correctly creates it?",
-      "correct_answer": "10, 2, 10, 2, 10, 2",
+      "question_text": "Use the repeating unit square, triangle to build a repeating pattern. Which sequence correctly creates it?",
+      "correct_answer": "square, triangle, square, triangle, square, triangle",
       "options": [
         {
           "key": "A",
-          "value": "10, 2, 9, 2, 10, 2",
+          "value": "square, triangle, rectangle, triangle, square, triangle",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "10, 2, 11, 2, 10, 2",
+          "value": "square, square, square, triangle, square, triangle",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "10, 0, 10, 2, 10, 2",
+          "value": "square, triangle, square, triangle, square, rectangle",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "10, 2, 10, 2, 10, 2",
+          "value": "square, triangle, square, triangle, square, triangle",
           "is_correct": true
         }
       ]
@@ -128,55 +102,55 @@
     {
       "seed": 45,
       "formatter": "mcq",
-      "question_text": "You want to create a repeating pattern using: i, e. Which sequence correctly creates it?",
-      "correct_answer": "i, e, i, e, i, e",
+      "question_text": "You want to create a repeating pattern using: 2, 3. Which sequence correctly creates it?",
+      "correct_answer": "2, 3, 2, 3, 2, 3",
       "options": [
         {
           "key": "A",
-          "value": "i, j, i, e, i, e",
+          "value": "2, 3, 2, 3, 0, 3",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "i, f, i, e, i, e",
+          "value": "2, 3, 2, 2, 2, 3",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "i, e, i, e, i, e",
-          "is_correct": true
+          "value": "2, 0, 2, 3, 2, 3",
+          "is_correct": false
         },
         {
           "key": "D",
-          "value": "i, e, i, a, i, e",
-          "is_correct": false
+          "value": "2, 3, 2, 3, 2, 3",
+          "is_correct": true
         }
       ]
     },
     {
       "seed": 46,
       "formatter": "mcq",
-      "question_text": "You want to create a repeating pattern using: a, k. Which sequence correctly creates it?",
-      "correct_answer": "a, k, a, k, a, k",
+      "question_text": "You want to create a repeating pattern using: 1, 10. Which sequence correctly creates it?",
+      "correct_answer": "1, 10, 1, 10, 1, 10",
       "options": [
         {
           "key": "A",
-          "value": "a, k, a, k, a, j",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "a, k, a, k, a, k",
+          "value": "1, 10, 1, 10, 1, 10",
           "is_correct": true
         },
         {
+          "key": "B",
+          "value": "1, 7, 1, 10, 1, 10",
+          "is_correct": false
+        },
+        {
           "key": "C",
-          "value": "a, k, a, k, a, c",
+          "value": "1, 10, 1, 10, 1, 8",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "a, k, a, k, a, d",
+          "value": "1, 10, 1, 10, 1, 12",
           "is_correct": false
         }
       ]
@@ -184,31 +158,31 @@
     {
       "seed": 50,
       "formatter": "cloze",
-      "question_text": "Create a repeating pattern with the repeating group: f, n. Which sequence shows this pattern?",
-      "correct_answer": "f, n, f, n, f, n",
+      "question_text": "Create a repeating pattern with the repeating group: 2, 10. Which sequence shows this pattern?",
+      "correct_answer": "2, 10, 2, 10, 2, 10",
       "options": [
         {
           "key": "A",
-          "value": "f, n, p, n, f, n",
-          "text": "f, n, p, n, f, n",
+          "value": "2, 10, 2, 10, 1, 10",
+          "text": "2, 10, 2, 10, 1, 10",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "f, n, f, n, f, n",
-          "text": "f, n, f, n, f, n",
+          "value": "2, 10, 2, 10, 2, 10",
+          "text": "2, 10, 2, 10, 2, 10",
           "is_correct": true
         },
         {
           "key": "C",
-          "value": "f, j, f, n, f, n",
-          "text": "f, j, f, n, f, n",
+          "value": "2, 12, 2, 10, 2, 10",
+          "text": "2, 12, 2, 10, 2, 10",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "f, n, f, n, h, n",
-          "text": "f, n, f, n, h, n",
+          "value": "2, 10, 5, 10, 2, 10",
+          "text": "2, 10, 5, 10, 2, 10",
           "is_correct": false
         }
       ]
@@ -216,59 +190,59 @@
     {
       "seed": 500,
       "formatter": "cloze",
-      "question_text": "You want to create a repeating pattern using: 19, 17, 9. Which sequence correctly creates it?",
-      "correct_answer": "19, 17, 9, 19, 17, 9",
+      "question_text": "You want to create a repeating pattern using: 9, 18, 20. Which sequence correctly creates it?",
+      "correct_answer": "9, 18, 20, 9, 18, 20",
       "options": [
         {
           "key": "A",
-          "value": "19, 17, 9, 19, 17, 9",
-          "text": "19, 17, 9, 19, 17, 9",
-          "is_correct": true
+          "value": "9, 18, 20, 9, 16, 20",
+          "text": "9, 18, 20, 9, 16, 20",
+          "is_correct": false
         },
         {
           "key": "B",
-          "value": "19, 16, 9, 19, 17, 9",
-          "text": "19, 16, 9, 19, 17, 9",
+          "value": "9, 17, 20, 9, 18, 20",
+          "text": "9, 17, 20, 9, 18, 20",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "19, 17, 9, 19, 15, 9",
-          "text": "19, 17, 9, 19, 15, 9",
+          "value": "9, 18, 20, 9, 18, 23",
+          "text": "9, 18, 20, 9, 18, 23",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "19, 17, 9, 19, 17, 12",
-          "text": "19, 17, 9, 19, 17, 12",
-          "is_correct": false
+          "value": "9, 18, 20, 9, 18, 20",
+          "text": "9, 18, 20, 9, 18, 20",
+          "is_correct": true
         }
       ]
     },
     {
       "seed": 501,
       "formatter": "mcq",
-      "question_text": "Create a repeating pattern with the repeating group: 9, 8, 18. Which sequence shows this pattern?",
-      "correct_answer": "9, 8, 18, 9, 8, 18",
+      "question_text": "Create a repeating pattern with the repeating group: 8, 18, 20. Which sequence shows this pattern?",
+      "correct_answer": "8, 18, 20, 8, 18, 20",
       "options": [
         {
           "key": "A",
-          "value": "9, 8, 18, 9, 8, 18",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": "9, 8, 21, 9, 8, 18",
+          "value": "8, 18, 23, 8, 18, 20",
           "is_correct": false
         },
         {
+          "key": "B",
+          "value": "8, 18, 20, 8, 18, 20",
+          "is_correct": true
+        },
+        {
           "key": "C",
-          "value": "9, 8, 18, 9, 8, 17",
+          "value": "8, 18, 20, 8, 18, 19",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "9, 8, 18, 8, 8, 18",
+          "value": "8, 18, 20, 7, 18, 20",
           "is_correct": false
         }
       ]
@@ -286,20 +260,47 @@
         },
         {
           "key": "B",
+          "value": "rectangle, triangle, rectangle, rectangle, triangle, square",
+          "is_correct": false
+        },
+        {
+          "key": "C",
           "value": "rectangle, triangle, square, rectangle, triangle, square",
           "is_correct": true
         },
         {
-          "key": "C",
-          "value": "rectangle, triangle, triangle, rectangle, triangle, square",
-          "is_correct": false
-        },
-        {
           "key": "D",
-          "value": "rectangle, triangle, rectangle, rectangle, triangle, square",
+          "value": "rectangle, triangle, triangle, rectangle, triangle, square",
           "is_correct": false
         }
       ]
     }
-  ]
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "FAIL",
+      "rationale": "The competency's verb is to create a repeating pattern, and no sample lets the pupil build anything. Every item hands over four ready-made sequences and asks 'Which sequence correctly creates it?', so the assessed act is spotting the one sequence without a flawed element -- recognition, and specifically error-spotting, in place of construction. There is no constructive shell anywhere in the pool."
+    },
+    "comprehensive_coverage": {
+      "verdict": "CONCERN",
+      "rationale": "Numbers and shape names both serve as pattern material and units of two and three elements both occur, but the objects and images named in the competency are present only as the written words rectangle, triangle and square, never as objects or images the child arranges."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The repeating unit is stated explicitly in every stem and the sequences are only six elements long, so the reading and tracking demand suits a Grade 1 pupil in Quarter 3."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "One selection task repeats across all ten samples; even the items labelled cloze still present four candidate sequences, and the wrong options always differ from the key by exactly one substituted element, which makes the strategy identical every time."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "Unit length does grow from two-element units to three-element ones such as the rectangle, triangle, square group, which is the dimension along which creating a repeating pattern genuinely gets harder."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Numeric tokens remain within 20 and shape vocabulary is limited to three basic figures, both appropriate for this grade."
+    }
+  },
+  "overall": "FAIL"
 }

@@ -12,6 +12,32 @@ import random
 from backend.app.practice_gen.dna.base import FormattedProblem, QuestionContext
 
 
+_COMPARISON_SIGNS = (">", "<", "=", "\u2265", "\u2264", "\u2260")
+
+
+def _answer_shape(value) -> str:
+    """
+    The coarse KIND of an answer, for keeping a false statement grammatical.
+
+    Three kinds are enough to separate the shapes that cannot substitute for one
+    another inside "The answer is {x}.": a number, a comparison sign, and everything
+    else. Deliberately coarse -- it decides only which distractor reads naturally in a
+    claim, never whether an answer is right.
+    """
+    if isinstance(value, bool):
+        return "other"
+    if isinstance(value, (int, float)):
+        return "number"
+    text = str(value).strip()
+    if text in _COMPARISON_SIGNS:
+        return "sign"
+    try:
+        float(text)
+        return "number"
+    except ValueError:
+        return "other"
+
+
 def format_true_false(ctx: QuestionContext, rng: random.Random) -> FormattedProblem:
     """
     Format a QuestionContext as a True/False judgment problem.
@@ -33,8 +59,28 @@ def format_true_false(ctx: QuestionContext, rng: random.Random) -> FormattedProb
     if is_true:
         fill_value = ctx.correct_answer
     else:
-        # Pick a distractor
+        # Pick a distractor -- but only one SHAPED LIKE the answer this item keys.
+        #
+        # Every template below drops `fill_value` into a declarative claim ("... The
+        # answer is {fill_value}."), and a distractor of a different shape makes that
+        # claim ungrammatical rather than false. Blind review of mat_g1_na_q1_3
+        # (2026-09-10) caught the word-problem form of it: `comparing_ordering` offers
+        # "cannot be determined" as an MCQ trap, and picked here it rendered
+        #
+        #   "Ana has 10 seashells. Jose has 12 seashells. Which sign correctly compares
+        #    the two amounts? The answer is cannot be determined. True or False?"
+        #
+        # -- a question inside a claim inside a true-or-false, asking a Grade 1 pupil to
+        # evaluate a meta-answer. The `pure` comparing_ordering branch below already
+        # restricted its own fill slot to a real sign for the same reason ("20 cannot be
+        # determined 13"); that fix was scoped to one concept and one context, and this
+        # is the general form of it. A shape test rather than a string match, because
+        # the next such trap option will not be spelled "cannot be determined"
+        # (Scaling Mandate 4).
         distractors = [d for d in ctx.distractors if d != ctx.correct_answer]
+        same_shape = [d for d in distractors if _answer_shape(d) == _answer_shape(ctx.correct_answer)]
+        if same_shape:
+            distractors = same_shape
         if distractors:
             fill_value = rng.choice(distractors)
         else:

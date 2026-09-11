@@ -63,11 +63,31 @@ _ERROR_PATTERNS: List[ErrorPattern] = [
         label="ar_rem_swap",
         description="Reported remainder plus divisor instead of the quotient.",
     ),
+    # "Multiplied instead of divided" (formula "a * b") was removed on 2026-09-10.
+    # It is a real misconception, but as a DIVISION option it cannot discriminate: for
+    # any divisor >= 1 the product is at least the dividend, while a quotient can never
+    # exceed it. So the option is always the largest number on the page and always
+    # impossible, and a pupil eliminates it by size without dividing at all. Blind
+    # review of mat_g2_na_q3_4 (2026-09-10) measured the effect: "400 sits against 40
+    # divided by 10, 900 against 90 divided by 10, and 75 against 15 divided by 5.
+    # Those are products, and they let a child eliminate by size alone."
+    #
+    # The two patterns below take its place and ask the same question -- did you
+    # actually divide? -- at a magnitude a quotient could plausibly have, so the pupil
+    # has to compute rather than eyeball. Losing the fourth pattern would otherwise
+    # leave exact divisions with too few usable traps, because `ar_rem_drop` collapses
+    # onto the correct answer whenever the division comes out even.
     ErrorPattern(
-        formula="a * b",
-        required_concept="multiplication",
-        label="ar_wrong_op",
-        description="Multiplied instead of divided.",
+        formula="a // b + 1",
+        required_concept="division",
+        label="ar_quot_over",
+        description="Counted one group too many when sharing out.",
+    ),
+    ErrorPattern(
+        formula="a // b - 1",
+        required_concept="division",
+        label="ar_quot_under",
+        description="Counted one group too few when sharing out.",
     ),
 ]
 

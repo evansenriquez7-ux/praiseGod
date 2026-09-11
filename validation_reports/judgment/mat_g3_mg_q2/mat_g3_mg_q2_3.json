@@ -1,35 +1,8 @@
 {
   "node_id": "mat_g3_mg_q2_3",
-  "reviewed_by": "Gemini Pro blind reviewer, batch G3-MG-Q2-Harden (mat_g3_mg_q2_3), 2026-08-18",
-  "review_date": "2026-08-18",
+  "reviewed_by": "reviewer-b5-marlin-obsidian-3358",
+  "review_date": "2026-09-10",
   "blind": true,
-  "overall": "PASS",
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The sample items directly assess the MATATAG competency to measure capacity in liters (L) and milliliters (mL). In items such as 'What is the capacity of the container in mL?' (seed 42) and 'What is the capacity of the container in L?' (seed 43), students are required to determine and identify standard capacity values in both target units, directly fulfilling the required learning outcome."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The test packet thoroughly covers both specified units of capacity across diverse magnitudes. Both liters and milliliters are evaluated across varying numerical domains: milliliters are tested in small two-digit and four-digit quantities ('What is the capacity of the container in mL?', seeds 42, 44, 502), while liters are tested across single-, double-, and triple-digit volumes ('What is the capacity of the container in L?', seeds 43, 45, 46, 50, 500, 501)."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The problem formulations match Grade 3 Quarter 2 developmental benchmarks. Prompt phrasing is direct, standard, and concise ('What is the capacity of the container in L?' and 'What is the capacity of the container in mL?'), eliminating unnecessary reading overhead. Distractors reflect common scale-reading neighbor values (e.g., \u00b11 or \u00b12 around correct answers like 14 L and 56 mL), assessing precise measurement discernment without misleading complexity."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The generation exhibits strong structural and formatting diversity across both multiple-choice (MCQ) and cloze/fill-in formats. Both prompt variations ('What is the capacity of the container in mL?' and 'What is the capacity of the container in L?') appear seamlessly across both formatters with robust option distribution and randomized key placements."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "All items remain strictly aligned with the scope of MATATAG Grade 3 Quarter 2 measurement. The prompts focus exclusively on determining capacity in L and mL through standard questions like 'What is the capacity of the container in L?' and 'What is the capacity of the container in mL?', without introducing premature unit conversions or out-of-grade arithmetic operations."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "The numerical values and increments presented in the items are well-calibrated for Grade 3 capacity measurement. Target quantities ranging from discrete values like 3 L, 14 L, and 16 L to larger volumes like 192 L, 285 L, and 2893 mL represent realistic capacity contexts with tightly bounded distractor spreads that appropriately measure unit scale competence."
-    }
-  },
   "sample_seeds": [
     42,
     43,
@@ -50,23 +23,23 @@
       "options": [
         {
           "key": "A",
-          "value": 57,
+          "value": 55,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 58,
+          "value": 57,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 56,
-          "is_correct": true
+          "value": 58,
+          "is_correct": false
         },
         {
           "key": "D",
-          "value": 55,
-          "is_correct": false
+          "value": 56,
+          "is_correct": true
         }
       ]
     },
@@ -78,18 +51,18 @@
       "options": [
         {
           "key": "A",
-          "value": 16,
-          "is_correct": true
-        },
-        {
-          "key": "B",
           "value": 15,
           "is_correct": false
         },
         {
-          "key": "C",
+          "key": "B",
           "value": 18,
           "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 16,
+          "is_correct": true
         },
         {
           "key": "D",
@@ -106,17 +79,17 @@
       "options": [
         {
           "key": "A",
-          "value": 68,
-          "is_correct": false
-        },
-        {
-          "key": "B",
           "value": 70,
           "is_correct": false
         },
         {
-          "key": "C",
+          "key": "B",
           "value": 71,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 68,
           "is_correct": false
         },
         {
@@ -139,7 +112,7 @@
         },
         {
           "key": "B",
-          "value": 15,
+          "value": 13,
           "is_correct": false
         },
         {
@@ -149,7 +122,7 @@
         },
         {
           "key": "D",
-          "value": 13,
+          "value": 15,
           "is_correct": false
         }
       ]
@@ -162,22 +135,22 @@
       "options": [
         {
           "key": "A",
-          "value": 20,
-          "is_correct": false
-        },
-        {
-          "key": "B",
           "value": 18,
           "is_correct": true
         },
         {
+          "key": "B",
+          "value": 19,
+          "is_correct": false
+        },
+        {
           "key": "C",
-          "value": 17,
+          "value": 20,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 19,
+          "value": 17,
           "is_correct": false
         }
       ]
@@ -196,15 +169,15 @@
         },
         {
           "key": "B",
-          "value": 3,
-          "text": "3",
-          "is_correct": true
-        },
-        {
-          "key": "C",
           "value": 5,
           "text": "5",
           "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 3,
+          "text": "3",
+          "is_correct": true
         },
         {
           "key": "D",
@@ -222,20 +195,20 @@
       "options": [
         {
           "key": "A",
+          "value": 286,
+          "text": "286",
+          "is_correct": false
+        },
+        {
+          "key": "B",
           "value": 285,
           "text": "285",
           "is_correct": true
         },
         {
-          "key": "B",
+          "key": "C",
           "value": 284,
           "text": "284",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 286,
-          "text": "286",
           "is_correct": false
         },
         {
@@ -254,8 +227,8 @@
       "options": [
         {
           "key": "A",
-          "value": 192,
-          "is_correct": true
+          "value": 191,
+          "is_correct": false
         },
         {
           "key": "B",
@@ -264,8 +237,8 @@
         },
         {
           "key": "C",
-          "value": 191,
-          "is_correct": false
+          "value": 192,
+          "is_correct": true
         },
         {
           "key": "D",
@@ -287,20 +260,47 @@
         },
         {
           "key": "B",
-          "value": 2893,
-          "is_correct": true
-        },
-        {
-          "key": "C",
           "value": 2895,
           "is_correct": false
         },
         {
-          "key": "D",
+          "key": "C",
           "value": 2892,
           "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 2893,
+          "is_correct": true
         }
       ]
     }
-  ]
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "FAIL",
+      "rationale": "What is the capacity of the container in mL? names no container, describes no graduation, and reports no reading. Four numeric choices follow a question that contains no evidence at all, so the measurement the competency calls for is never performed and the item cannot be answered on its merits."
+    },
+    "comprehensive_coverage": {
+      "verdict": "FAIL",
+      "rationale": "The competency's clause about appropriate measuring tools yields nothing. Across nine samples no graduated cylinder, measuring cup, pitcher or bottle is named, shown or chosen between."
+    },
+    "cognitive_capacity": {
+      "verdict": "CONCERN",
+      "rationale": "A capacity of 285 L has no referent a Grade 3 pupil could hold in mind, and distinguishing 2893 mL from 2892 mL is a reading precision no classroom vessel provides."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "FAIL",
+      "rationale": "The generator emits a single interrogative shape nine times over; whether the unit reads L or mL is the whole of the variation. Nothing situates capacity in pouring, filling or serving, and no item compares two vessels."
+    },
+    "competency_alignment": {
+      "verdict": "CONCERN",
+      "rationale": "The only axis that moves is the length of the numeral to be read, running from 3 up to 2893. That is digit-count growth, not growth in the measuring competence being certified."
+    },
+    "scale_appropriateness": {
+      "verdict": "CONCERN",
+      "rationale": "Capacities of 192 L and 285 L describe drums rather than the drinking glasses, bottles and pitchers a Grade 3 capacity lesson uses, so the sampled range sits above the competency's practical context."
+    }
+  },
+  "overall": "FAIL"
 }

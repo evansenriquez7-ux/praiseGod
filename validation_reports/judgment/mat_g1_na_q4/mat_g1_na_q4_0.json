@@ -1,35 +1,8 @@
 {
   "node_id": "mat_g1_na_q4_0",
-  "reviewed_by": "Gemini Pro blind reviewer, batch Re-Harden (mat_g1_na_q4_0), 2026-08-18",
-  "review_date": "2026-08-18",
+  "reviewed_by": "reviewer-b2-tallow-verdigris-8130",
+  "review_date": "2026-09-10",
   "blind": true,
-  "overall": "PASS",
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The items fulfill the competency 'Illustrate 1/2 and 1/4 as parts of a whole' through both constructive shading tasks like \"Shade 1/4 of the shape.\" and \"Shade 1/2 of the shape.\" and visual identification tasks asking \"What fraction does the shaded picture show?\"."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "Both targeted fractions (1/2 and 1/4) are comprehensively covered across the sample set with items like \"Shade 1/2 of the shape.\" and \"Shade 1/4 of the shape.\", ensuring neither concept is omitted."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The task complexity and reading demands are well-calibrated for Grade 1 Quarter 4 learners. Prompts are concise and direct, such as \"What fraction does the shaded picture show?\" and \"Shade 1/2 of the shape.\", focusing student attention entirely on unit fraction concepts without unnecessary reading burden."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The generator provides multiple assessment modalities, pairing active interactive construction in set_click format (\"Shade 1/4 of the shape.\", \"Shade 1/2 of the shape.\") with visual recognition in read_mcq format (\"What fraction does the shaded picture show?\")."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "All generated items align directly to illustrating unit fractions of a whole shape (\"Shade 1/2 of the shape.\", \"What fraction does the shaded picture show?\") without straying into off-target topics like fraction arithmetic or non-unit fractions."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "The numeric scale strictly adheres to unit fractions 1/2 and 1/4 as required by the Grade 1 standard (\"Shade 1/4 of the shape.\", \"Shade 1/2 of the shape.\"), with no premature introduction of other denominators."
-    }
-  },
   "sample_seeds": [
     42,
     43,
@@ -45,13 +18,57 @@
       "seed": 42,
       "formatter": "read_mcq",
       "question_text": "What fraction does the shaded picture show?",
-      "correct_answer": "C"
+      "correct_answer": "C",
+      "options": [
+        {
+          "key": "A",
+          "value": "3/2",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "2/2",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "1/2",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "2/1",
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 43,
       "formatter": "read_mcq",
       "question_text": "What fraction does the shaded picture show?",
-      "correct_answer": "A"
+      "correct_answer": "B",
+      "options": [
+        {
+          "key": "A",
+          "value": "2/2",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "1/2",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "2/1",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "3/2",
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 44,
@@ -63,13 +80,57 @@
       "seed": 45,
       "formatter": "read_mcq",
       "question_text": "What fraction does the shaded picture show?",
-      "correct_answer": "C"
+      "correct_answer": "C",
+      "options": [
+        {
+          "key": "A",
+          "value": "4/1",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "3/4",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "1/4",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "4/4",
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 46,
       "formatter": "read_mcq",
       "question_text": "What fraction does the shaded picture show?",
-      "correct_answer": "B"
+      "correct_answer": "A",
+      "options": [
+        {
+          "key": "A",
+          "value": "1/2",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "2/2",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "3/2",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "2/1",
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 500,
@@ -87,7 +148,56 @@
       "seed": 502,
       "formatter": "read_mcq",
       "question_text": "What fraction does the shaded picture show?",
-      "correct_answer": "B"
+      "correct_answer": "B",
+      "options": [
+        {
+          "key": "A",
+          "value": "2/2",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "1/2",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "2/1",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "3/2",
+          "is_correct": false
+        }
+      ]
     }
-  ]
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "Both halves of the intended work are here: naming the fraction a shaded region shows, and acting on a shape via 'Shade 1/4 of the shape.', which is the illustrating side of the competency."
+    },
+    "comprehensive_coverage": {
+      "verdict": "CONCERN",
+      "rationale": "The split between the two fractions is lopsided -- a half is the subject of six of the eight samples while a quarter is the subject of two, and all three of the higher seeds return to halves, so quarters of a whole are barely exercised."
+    },
+    "cognitive_capacity": {
+      "verdict": "CONCERN",
+      "rationale": "The option lists offer 2/1 and 3/2, notations for quantities greater than one whole that a Grade 1 pupil has no schema for. They cannot be reasoned about, only discarded, which turns the identification into elimination rather than fraction reading."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "Six samples repeat one identification stem word for word and the remaining two are shading tasks; no item presents the same idea through a differently partitioned shape description or a real object divided into parts."
+    },
+    "competency_alignment": {
+      "verdict": "CONCERN",
+      "rationale": "With only two target fractions available, the later seeds simply reproduce the half items already seen at seeds 42 and 43 instead of pressing toward the harder discrimination between a half and a quarter."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Keys are confined to 1/2 and 1/4, exactly the two fractions the competency names, with no denominator beyond four appearing as an answer."
+    }
+  },
+  "overall": "CONCERN"
 }

@@ -1,34 +1,8 @@
 {
   "node_id": "mat_g2_mg_q4_4",
-  "reviewed_by": "Gemini Pro blind reviewer, batch G2-MG-Q4-Live (mat_g2_mg_q4_4), 2026-08-18",
+  "reviewed_by": "reviewer-b3-cinder-halyard-2276",
+  "review_date": "2026-09-10",
   "blind": true,
-  "overall": "PASS",
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The sample packet successfully fulfills both clauses of the competency. It asks students to identify perimeter concepts (e.g., \"What is the perimeter of a plane figure?\") and addresses measurement using tools both conceptually and practically (e.g., \"Which tool is best suited to measure the perimeter of a small picture frame in centimeters?\", \"Using a ruler, a student measures a rectangular photo card as 4 cm long and 3 cm wide. What is its perimeter?\")."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The generator covers all required aspects: conceptual definition of perimeter (\"Which statement correctly describes perimeter?\"), selecting appropriate measurement tools (\"To measure the perimeter of a classroom desk top, which tool should you use?\"), and calculating perimeter from given side lengths for various plane figures like squares, rectangles, and triangles (\"A rectangular garden is 11 m long and 9 m wide. How much fencing is needed to go all the way around it?\")."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The vocabulary and arithmetic demands are appropriately constrained for Grade 2, Quarter 4. The side lengths provided are manageable for repeated addition within 1000 (e.g., \"Each side is 8 cm.\", \"sides of a triangular bookmark are measured as 4 cm, 6 cm, and 5 cm.\"). The scenarios presented (picture frames, photo cards, desk tops) are familiar and contextualized for young learners."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The samples demonstrate a robust variety of question templates. These include direct definition questions (\"Which statement correctly describes perimeter?\"), tool selection scenarios (\"Which tool is best suited to measure the perimeter of a small picture frame in centimeters?\"), and contextual word problems applying the concept of perimeter to real-world objects (\"A rectangular garden is 11 m long and 9 m wide. How much fencing is needed to go all the way around it?\")."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Every generated question strictly aligns with the MATATAG competency text. The focus remains explicitly on identifying perimeter and using or identifying tools for measurement, without inappropriately wandering into area or abstract polygon properties. Questions like \"Using a ruler, a student measures a rectangular photo card as 4 cm long and 3 cm wide. What is its perimeter?\" perfectly integrate the 'measure', 'perimeter', and 'appropriate tools' elements."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "The numerical scale is highly appropriate. Operands are mostly single-digit or small double-digit numbers (e.g., 4, 3, 5, 8, 9, 11) ensuring that the cognitive load remains on the concept of perimeter rather than arithmetic struggle. Even the largest calculation (\"A square has a side of 19 cm. What is its perimeter?\") results in a sum of 76, comfortably within Grade 2 addition expectations."
-    }
-  },
   "sample_seeds": [
     42,
     43,
@@ -41,34 +15,36 @@
     502,
     600,
     601,
+    602,
     603,
+    604,
     605
   ],
   "samples_reviewed": [
     {
       "seed": 42,
       "formatter": "mcq",
-      "question_text": "What is the perimeter of a plane figure?",
-      "correct_answer": "the total distance around the outside boundary of the figure",
+      "question_text": "A triangle has sides 2 cm, 1 cm, and 2 cm. What is its perimeter?",
+      "correct_answer": 5,
       "options": [
         {
           "key": "A",
-          "value": "the amount of flat surface covered inside the figure",
+          "value": 7,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "the number of corners the figure has",
+          "value": 6,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "the total distance around the outside boundary of the figure",
+          "value": 5,
           "is_correct": true
         },
         {
           "key": "D",
-          "value": "the length of only its longest side",
+          "value": 4,
           "is_correct": false
         }
       ]
@@ -76,28 +52,28 @@
     {
       "seed": 43,
       "formatter": "mcq",
-      "question_text": "Which tool is best suited to measure the perimeter of a small picture frame in centimeters?",
-      "correct_answer": "a ruler",
+      "question_text": "A rectangle has sides 6 cm and 2 cm. What is its perimeter?",
+      "correct_answer": 16,
       "options": [
         {
           "key": "A",
-          "value": "a ruler",
-          "is_correct": true
+          "value": 17,
+          "is_correct": false
         },
         {
           "key": "B",
-          "value": "a measuring cup",
+          "value": 18,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "a calendar",
+          "value": 15,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "a kitchen scale",
-          "is_correct": false
+          "value": 16,
+          "is_correct": true
         }
       ]
     },
@@ -109,50 +85,50 @@
       "options": [
         {
           "key": "A",
-          "value": 35,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 37,
-          "is_correct": false
-        },
-        {
-          "key": "C",
           "value": 38,
           "is_correct": false
         },
         {
-          "key": "D",
+          "key": "B",
           "value": 36,
           "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 37,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 35,
+          "is_correct": false
         }
       ]
     },
     {
       "seed": 45,
       "formatter": "mcq",
-      "question_text": "Using a ruler, a student measures a rectangular photo card as 4 cm long and 3 cm wide. What is its perimeter?",
-      "correct_answer": 14,
+      "question_text": "A square has a side of 7 cm. What is its perimeter?",
+      "correct_answer": 28,
       "options": [
         {
           "key": "A",
-          "value": 16,
-          "is_correct": false
+          "value": 28,
+          "is_correct": true
         },
         {
           "key": "B",
-          "value": 7,
+          "value": 30,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 14,
-          "is_correct": true
+          "value": 29,
+          "is_correct": false
         },
         {
           "key": "D",
-          "value": 12,
+          "value": 27,
           "is_correct": false
         }
       ]
@@ -160,27 +136,27 @@
     {
       "seed": 46,
       "formatter": "mcq",
-      "question_text": "To measure the perimeter of a classroom desk top, which tool should you use?",
-      "correct_answer": "a ruler or measuring tape",
+      "question_text": "A rectangle has sides 8 cm and 1 cm. What is its perimeter?",
+      "correct_answer": 18,
       "options": [
         {
           "key": "A",
-          "value": "a beaker",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "a ruler or measuring tape",
+          "value": 18,
           "is_correct": true
         },
         {
+          "key": "B",
+          "value": 19,
+          "is_correct": false
+        },
+        {
           "key": "C",
-          "value": "a weighing scale",
+          "value": 17,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "a thermometer",
+          "value": 20,
           "is_correct": false
         }
       ]
@@ -188,31 +164,31 @@
     {
       "seed": 50,
       "formatter": "cloze",
-      "question_text": "Using a ruler, the three sides of a triangular bookmark are measured as 4 cm, 6 cm, and 5 cm. What is its perimeter?",
-      "correct_answer": 15,
+      "question_text": "A square has a side of 5 cm. What is its perimeter?",
+      "correct_answer": 20,
       "options": [
         {
           "key": "A",
-          "value": 13,
-          "text": "13",
+          "value": 21,
+          "text": "21",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 15,
-          "text": "15",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 16,
-          "text": "16",
+          "value": 22,
+          "text": "22",
           "is_correct": false
         },
         {
+          "key": "C",
+          "value": 20,
+          "text": "20",
+          "is_correct": true
+        },
+        {
           "key": "D",
-          "value": 14,
-          "text": "14",
+          "value": 19,
+          "text": "19",
           "is_correct": false
         }
       ]
@@ -220,31 +196,31 @@
     {
       "seed": 500,
       "formatter": "cloze",
-      "question_text": "A square has a side of 19 cm. What is its perimeter?",
-      "correct_answer": 76,
+      "question_text": "A square has a side of 17 cm. What is its perimeter?",
+      "correct_answer": 68,
       "options": [
         {
           "key": "A",
-          "value": 76,
-          "text": "76",
+          "value": 68,
+          "text": "68",
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 75,
-          "text": "75",
+          "value": 67,
+          "text": "67",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 77,
-          "text": "77",
+          "value": 69,
+          "text": "69",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 78,
-          "text": "78",
+          "value": 70,
+          "text": "70",
           "is_correct": false
         }
       ]
@@ -252,55 +228,55 @@
     {
       "seed": 501,
       "formatter": "mcq",
-      "question_text": "A student uses a ruler to measure the four sides of a square card. Each side is 8 cm. What is the perimeter?",
-      "correct_answer": 32,
+      "question_text": "A triangle has sides 10 cm, 21 cm, and 17 cm. What is its perimeter?",
+      "correct_answer": 48,
       "options": [
         {
           "key": "A",
-          "value": 32,
-          "is_correct": true
+          "value": 49,
+          "is_correct": false
         },
         {
           "key": "B",
-          "value": 34,
+          "value": 50,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 30,
+          "value": 47,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 12,
-          "is_correct": false
+          "value": 48,
+          "is_correct": true
         }
       ]
     },
     {
       "seed": 502,
       "formatter": "mcq",
-      "question_text": "To measure the perimeter of a classroom desk top, which tool should you use?",
-      "correct_answer": "a ruler or measuring tape",
+      "question_text": "A triangle has sides 12 cm, 6 cm, and 17 cm. What is its perimeter?",
+      "correct_answer": 35,
       "options": [
         {
           "key": "A",
-          "value": "a thermometer",
+          "value": 37,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "a ruler or measuring tape",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": "a beaker",
+          "value": 36,
           "is_correct": false
         },
         {
+          "key": "C",
+          "value": 35,
+          "is_correct": true
+        },
+        {
           "key": "D",
-          "value": "a weighing scale",
+          "value": 34,
           "is_correct": false
         }
       ]
@@ -308,87 +284,143 @@
     {
       "seed": 600,
       "formatter": "mcq",
-      "question_text": "A student uses a ruler to measure the four sides of a square card. Each side is 4 cm. What is the perimeter?",
-      "correct_answer": 16,
+      "question_text": "A square has a side of 6 cm. What is its perimeter?",
+      "correct_answer": 24,
       "options": [
         {
           "key": "A",
-          "value": 8,
+          "value": 26,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 14,
+          "value": 23,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 16,
-          "is_correct": true
+          "value": 25,
+          "is_correct": false
         },
         {
           "key": "D",
-          "value": 18,
-          "is_correct": false
+          "value": 24,
+          "is_correct": true
         }
       ]
     },
     {
       "seed": 601,
       "formatter": "cloze",
-      "question_text": "A rectangular garden is 11 m long and 9 m wide. How much fencing is needed to go all the way around it?",
-      "correct_answer": 40,
+      "question_text": "A rectangular garden is 12 m long and 10 m wide. How much fencing is needed to go all the way around it?",
+      "correct_answer": 44,
       "options": [
         {
           "key": "A",
-          "value": 39,
-          "text": "39",
+          "value": 43,
+          "text": "43",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 41,
-          "text": "41",
-          "is_correct": false
+          "value": 44,
+          "text": "44",
+          "is_correct": true
         },
         {
           "key": "C",
-          "value": 42,
-          "text": "42",
+          "value": 45,
+          "text": "45",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 40,
-          "text": "40",
+          "value": 46,
+          "text": "46",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 602,
+      "formatter": "mcq",
+      "question_text": "A rectangle has sides 8 cm and 2 cm. What is its perimeter?",
+      "correct_answer": 20,
+      "options": [
+        {
+          "key": "A",
+          "value": 21,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 20,
           "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 22,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 19,
+          "is_correct": false
         }
       ]
     },
     {
       "seed": 603,
       "formatter": "mcq",
-      "question_text": "Which statement correctly describes perimeter?",
-      "correct_answer": "It is the distance all the way around the outside edge of a shape.",
+      "question_text": "A square has a side of 3 cm. What is its perimeter?",
+      "correct_answer": 12,
       "options": [
         {
           "key": "A",
-          "value": "It is the number of square units inside a rectangle.",
+          "value": 13,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "It is the distance all the way around the outside edge of a shape.",
+          "value": 12,
           "is_correct": true
         },
         {
           "key": "C",
-          "value": "It is the space occupied inside a 3D solid.",
+          "value": 11,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "It is the weight of an object measured in grams.",
+          "value": 14,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 604,
+      "formatter": "mcq",
+      "question_text": "A triangle has sides 2 cm, 4 cm, and 4 cm. What is its perimeter?",
+      "correct_answer": 10,
+      "options": [
+        {
+          "key": "A",
+          "value": 10,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 11,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 12,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 9,
           "is_correct": false
         }
       ]
@@ -401,20 +433,20 @@
       "options": [
         {
           "key": "A",
+          "value": 25,
+          "text": "25",
+          "is_correct": false
+        },
+        {
+          "key": "B",
           "value": 26,
           "text": "26",
           "is_correct": true
         },
         {
-          "key": "B",
+          "key": "C",
           "value": 27,
           "text": "27",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 25,
-          "text": "25",
           "is_correct": false
         },
         {
@@ -425,5 +457,32 @@
         }
       ]
     }
-  ]
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "FAIL",
+      "rationale": "This competency is about identifying a figure's perimeter and measuring it with appropriate tools. Every sample instead supplies the side lengths in the stem and asks What is its perimeter?, which is pure addition. No item requires locating the perimeter on a figure, and no item involves a ruler, string, grid or any other measuring instrument, so the operative clause of the competency goes entirely unserved."
+    },
+    "comprehensive_coverage": {
+      "verdict": "CONCERN",
+      "rationale": "The figures generated are limited to triangles, squares and rectangles, but the competency says a plane figure without restriction, so quadrilaterals beyond rectangles and any irregular outline are absent. More pointedly, the identify half has no sub-case represented at all, leaving half the wording uncovered."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Adding three two-digit side lengths such as 10, 21 and 17, or quadrupling a side of 17, is within Quarter 4 Grade 2 addition. The stems are a single sentence stating the figure and its measurements, with no extraneous information to parse."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "Two response types appear but they carry the same sentence frame, and exactly one seed leaves the bare-figure format for a garden fencing situation. Nothing here shows the learner a drawn figure with marked sides, which is the presentation this competency's tool-based wording most obviously implies."
+    },
+    "competency_alignment": {
+      "verdict": "CONCERN",
+      "rationale": "Difficulty is dialled by side magnitude and by which of the three shapes is chosen, never by anything to do with measuring. The option sets compound this: for a square of side 9 the alternatives to 36 sit one to two units away, so no distractor represents a real perimeter misconception such as adding only two sides or forgetting to double."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Side lengths run from 1 to 21 units and the largest perimeter reached is 68, which keeps every total inside the addition range established in Grade 2. Both centimetre and metre contexts stay realistic for the objects and gardens described."
+    }
+  },
+  "overall": "FAIL"
 }

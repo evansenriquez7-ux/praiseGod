@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g1_mg_q4_0",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch B1 (g1 dp/mg + na_q1), 2026-08-12",
-  "review_date": "2026-08-12",
+  "reviewed_by": "reviewer-b1-quartz-mallow-4412",
+  "review_date": "2026-09-10",
   "blind": true,
   "sample_seeds": [
     42,
@@ -23,12 +23,12 @@
       "options": [
         {
           "key": "A",
-          "value": "up",
+          "value": "right",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "right",
+          "value": "up",
           "is_correct": false
         },
         {
@@ -51,23 +51,23 @@
       "options": [
         {
           "key": "A",
-          "value": "right",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": "down",
-          "is_correct": false
-        },
-        {
-          "key": "C",
           "value": "up",
           "is_correct": false
         },
         {
-          "key": "D",
+          "key": "B",
           "value": "left",
           "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "down",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "right",
+          "is_correct": true
         }
       ]
     },
@@ -84,8 +84,8 @@
         },
         {
           "key": "B",
-          "value": "down",
-          "is_correct": false
+          "value": "up",
+          "is_correct": true
         },
         {
           "key": "C",
@@ -94,8 +94,8 @@
         },
         {
           "key": "D",
-          "value": "up",
-          "is_correct": true
+          "value": "down",
+          "is_correct": false
         }
       ]
     },
@@ -107,22 +107,22 @@
       "options": [
         {
           "key": "A",
-          "value": "down",
-          "is_correct": false
-        },
-        {
-          "key": "B",
           "value": "right",
           "is_correct": false
         },
         {
-          "key": "C",
+          "key": "B",
           "value": "left",
           "is_correct": true
         },
         {
-          "key": "D",
+          "key": "C",
           "value": "up",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "down",
           "is_correct": false
         }
       ]
@@ -135,13 +135,13 @@
       "options": [
         {
           "key": "A",
-          "value": "right",
-          "is_correct": false
+          "value": "down",
+          "is_correct": true
         },
         {
           "key": "B",
-          "value": "down",
-          "is_correct": true
+          "value": "up",
+          "is_correct": false
         },
         {
           "key": "C",
@@ -150,7 +150,7 @@
         },
         {
           "key": "D",
-          "value": "up",
+          "value": "right",
           "is_correct": false
         }
       ]
@@ -163,23 +163,23 @@
       "options": [
         {
           "key": "A",
-          "value": "right",
-          "is_correct": true
-        },
-        {
-          "key": "B",
           "value": "up",
           "is_correct": false
         },
         {
-          "key": "C",
+          "key": "B",
           "value": "left",
           "is_correct": false
         },
         {
-          "key": "D",
+          "key": "C",
           "value": "down",
           "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "right",
+          "is_correct": true
         }
       ]
     },
@@ -196,17 +196,17 @@
         },
         {
           "key": "B",
-          "value": "down",
-          "is_correct": false
-        },
-        {
-          "key": "C",
           "value": "up",
           "is_correct": false
         },
         {
-          "key": "D",
+          "key": "C",
           "value": "right",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "down",
           "is_correct": false
         }
       ]
@@ -219,13 +219,13 @@
       "options": [
         {
           "key": "A",
-          "value": "right",
+          "value": "up",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "left",
-          "is_correct": true
+          "value": "right",
+          "is_correct": false
         },
         {
           "key": "C",
@@ -234,8 +234,8 @@
         },
         {
           "key": "D",
-          "value": "up",
-          "is_correct": false
+          "value": "left",
+          "is_correct": true
         }
       ]
     },
@@ -247,17 +247,17 @@
       "options": [
         {
           "key": "A",
-          "value": "straight up",
-          "is_correct": false
-        },
-        {
-          "key": "B",
           "value": "the opposite direction clock hands move",
           "is_correct": false
         },
         {
-          "key": "C",
+          "key": "B",
           "value": "to the left",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "straight up",
           "is_correct": false
         },
         {
@@ -271,28 +271,28 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "\"An arrow faces UP. It does a half turn. Which direction does it face now?\" and its quarter-turn clockwise and counter-clockwise variants map directly onto the competency's own wording."
+      "rationale": "Each positional item states an initial facing direction, applies one named turn, and asks for the resulting heading; the keys check out throughout, including down after a half turn from up and left after a clockwise quarter turn from down."
     },
     "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "Half turn, quarter turn clockwise, and quarter turn counter-clockwise (seed 44) all appear among the nine sampled seeds, though the counter-clockwise case shows up only once."
+      "verdict": "CONCERN",
+      "rationale": "Counter-clockwise is named in the competency yet occurs in exactly one of nine renders, and that single case starts from RIGHT. Half turns get four renders and clockwise quarters three, so the direction sub-case is barely built at all."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Direction vocabulary -- up, down, left, right, clockwise, counter-clockwise -- is grade-appropriate for Grade 1 Quarter 4."
+      "rationale": "One turn, one object, four direction words, no chained rotations and no degree language - appropriate for Quarter 4 of Grade 1."
     },
     "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "Starting direction and turn type both vary across the sample, and seed 601 adds a definitional check of what clockwise even means before the turn items ask students to apply it."
+      "verdict": "CONCERN",
+      "rationale": "The object turned is an arrow in every positional render; no person, chair or toy is ever rotated. The one departure asks 'Which direction is clockwise?' and offers 'straight up' as a candidate, which is not a rotational sense and so is dismissable without understanding."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Every sampled seed keeps the varying element inside starting direction and turn type, which is exactly what the competency measures."
+      "rationale": "The seeds do move the starting heading across up, down, left and right, which is the variation this particular competency needs in order to stop being a memorised single case."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Only the four cardinal directions and the two named turn types appear, matching the scope the competency states."
+      "rationale": "Only half and quarter turns are generated, exactly the two magnitudes the competency names; nothing finer or larger appears."
     }
   },
-  "overall": "PASS"
+  "overall": "CONCERN"
 }

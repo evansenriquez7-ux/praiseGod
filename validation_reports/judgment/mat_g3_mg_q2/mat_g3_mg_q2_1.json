@@ -1,35 +1,8 @@
 {
   "node_id": "mat_g3_mg_q2_1",
-  "reviewed_by": "Gemini Pro blind reviewer, batch G3-MG-Q2-Harden (mat_g3_mg_q2_1), 2026-08-18",
-  "review_date": "2026-08-18",
+  "reviewed_by": "reviewer-b5-marlin-obsidian-3358",
+  "review_date": "2026-09-10",
   "blind": true,
-  "overall": "PASS",
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The samples directly fulfill the competency requirement to estimate mass of an object across metric units (grams, kilograms, milligrams). For example, seed 42 asks \"An object's mass measures 7 g. About how many g is that, rounded to the nearest 10?\", seed 44 asks \"An object's mass measures 18 kg. About how many kg is that, rounded to the nearest 10?\", and seed 46 asks \"An object's mass measures 62 mg. About how many mg is that, rounded to the nearest 10?\". Each item prompts the student to perform rounding-based estimation on measured mass values."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "All target units named in the competency\u2014grams (g), kilograms (kg), and milligrams (mg)\u2014are comprehensively represented across multiple orders of magnitude. Grams are assessed in items such as \"An object's mass measures 31 g. About how many g is that, rounded to the nearest 10?\" (seed 43) and \"An object's mass measures 26 g. About how many g is that, rounded to the nearest 10?\" (seed 50). Kilograms are covered in items such as \"An object's mass measures 307 kg. About how many kg is that, rounded to the nearest 100?\" (seed 500) and \"An object's mass measures 14 kg. About how many kg is that, rounded to the nearest 10?\" (seed 601). Milligrams are covered in items such as \"An object's mass measures 1927 mg. About how many mg is that, rounded to the nearest 1000?\" (seed 501) and \"An object's mass measures 4 mg. About how many mg is that, rounded to the nearest 10?\" (seed 600)."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The cognitive complexity and reading demands are well-calibrated for Grade 3 Quarter 2 learners. Sentences follow a clean, accessible sentence frame (e.g., \"An object's mass measures 21 kg. About how many kg is that, rounded to the nearest 10?\" in seed 45) without introducing complex narrative overhead. The estimation concepts rely on rounding to the nearest 10, 100, or 1000, which aligns with Grade 3 numeracy standards."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The sample packet tests diverse rounding scenarios and item formats. Both multiple choice ('mcq') and fill-in-the-blank ('cloze') formatters are present (e.g., cloze in seed 603: \"An object's mass measures 7 kg. About how many kg is that, rounded to the nearest 10?\"). It includes rounding up (seed 502: \"An object's mass measures 454 mg. About how many mg is that, rounded to the nearest 100?\"), rounding down (seed 602: \"An object's mass measures 13 mg. About how many mg is that, rounded to the nearest 10?\"), rounding to zero (seed 600: \"An object's mass measures 4 mg. About how many mg is that, rounded to the nearest 10?\"), and multiple rounding places (10, 100, 1000)."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "The questions remain tightly aligned with estimation of mass using the specified units without curriculum drift. Items like \"An object's mass measures 18 kg. About how many kg is that, rounded to the nearest 10?\" (seed 44) focus purely on estimating mass within the given unit rather than conflating the task with unit conversion or non-mass measurements."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "The numeric values are appropriately scaled to the respective units and rounding bases. For instance, 1-digit values rounded to 10 appear in seed 42 (\"An object's mass measures 7 g. About how many g is that, rounded to the nearest 10?\"), 3-digit values rounded to 100 appear in seed 500 (\"An object's mass measures 307 kg. About how many kg is that, rounded to the nearest 100?\"), and 4-digit values rounded to 1000 appear in seed 501 (\"An object's mass measures 1927 mg. About how many mg is that, rounded to the nearest 1000?\"), which are all within Grade 3 place-value bounds."
-    }
-  },
   "sample_seeds": [
     42,
     43,
@@ -59,7 +32,7 @@
         },
         {
           "key": "B",
-          "value": 12,
+          "value": 9,
           "is_correct": false
         },
         {
@@ -69,7 +42,7 @@
         },
         {
           "key": "D",
-          "value": 9,
+          "value": 12,
           "is_correct": false
         }
       ]
@@ -82,23 +55,23 @@
       "options": [
         {
           "key": "A",
-          "value": 30,
-          "is_correct": true
-        },
-        {
-          "key": "B",
           "value": 29,
           "is_correct": false
         },
         {
-          "key": "C",
+          "key": "B",
           "value": 32,
           "is_correct": false
         },
         {
-          "key": "D",
+          "key": "C",
           "value": 31,
           "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 30,
+          "is_correct": true
         }
       ]
     },
@@ -120,13 +93,13 @@
         },
         {
           "key": "C",
-          "value": 22,
-          "is_correct": false
+          "value": 20,
+          "is_correct": true
         },
         {
           "key": "D",
-          "value": 20,
-          "is_correct": true
+          "value": 22,
+          "is_correct": false
         }
       ]
     },
@@ -138,12 +111,12 @@
       "options": [
         {
           "key": "A",
-          "value": 19,
+          "value": 21,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 21,
+          "value": 22,
           "is_correct": false
         },
         {
@@ -153,7 +126,7 @@
         },
         {
           "key": "D",
-          "value": 22,
+          "value": 19,
           "is_correct": false
         }
       ]
@@ -166,17 +139,17 @@
       "options": [
         {
           "key": "A",
-          "value": 59,
-          "is_correct": false
-        },
-        {
-          "key": "B",
           "value": 60,
           "is_correct": true
         },
         {
-          "key": "C",
+          "key": "B",
           "value": 62,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 59,
           "is_correct": false
         },
         {
@@ -200,20 +173,20 @@
         },
         {
           "key": "B",
+          "value": 32,
+          "text": "32",
+          "is_correct": false
+        },
+        {
+          "key": "C",
           "value": 30,
           "text": "30",
           "is_correct": true
         },
         {
-          "key": "C",
+          "key": "D",
           "value": 31,
           "text": "31",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 32,
-          "text": "32",
           "is_correct": false
         }
       ]
@@ -226,26 +199,26 @@
       "options": [
         {
           "key": "A",
-          "value": 300,
-          "text": "300",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 299,
-          "text": "299",
+          "value": 302,
+          "text": "302",
           "is_correct": false
         },
         {
-          "key": "C",
+          "key": "B",
           "value": 301,
           "text": "301",
           "is_correct": false
         },
         {
+          "key": "C",
+          "value": 300,
+          "text": "300",
+          "is_correct": true
+        },
+        {
           "key": "D",
-          "value": 302,
-          "text": "302",
+          "value": 299,
+          "text": "299",
           "is_correct": false
         }
       ]
@@ -258,8 +231,8 @@
       "options": [
         {
           "key": "A",
-          "value": 2000,
-          "is_correct": true
+          "value": 1999,
+          "is_correct": false
         },
         {
           "key": "B",
@@ -268,13 +241,13 @@
         },
         {
           "key": "C",
-          "value": 1999,
+          "value": 2001,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 2001,
-          "is_correct": false
+          "value": 2000,
+          "is_correct": true
         }
       ]
     },
@@ -291,18 +264,18 @@
         },
         {
           "key": "B",
-          "value": 500,
-          "is_correct": true
-        },
-        {
-          "key": "C",
           "value": 502,
           "is_correct": false
         },
         {
-          "key": "D",
+          "key": "C",
           "value": 499,
           "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 500,
+          "is_correct": true
         }
       ]
     },
@@ -348,20 +321,20 @@
         },
         {
           "key": "B",
-          "value": 11,
-          "text": "11",
-          "is_correct": false
-        },
-        {
-          "key": "C",
           "value": 12,
           "text": "12",
           "is_correct": false
         },
         {
-          "key": "D",
+          "key": "C",
           "value": 9,
           "text": "9",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 11,
+          "text": "11",
           "is_correct": false
         }
       ]
@@ -374,7 +347,7 @@
       "options": [
         {
           "key": "A",
-          "value": 11,
+          "value": 9,
           "is_correct": false
         },
         {
@@ -384,7 +357,7 @@
         },
         {
           "key": "C",
-          "value": 9,
+          "value": 11,
           "is_correct": false
         },
         {
@@ -396,35 +369,58 @@
     },
     {
       "seed": 603,
-      "formatter": "cloze",
+      "formatter": "mcq",
       "question_text": "An object's mass measures 7 kg. About how many kg is that, rounded to the nearest 10?",
       "correct_answer": 10,
       "options": [
         {
           "key": "A",
-          "value": 11,
-          "text": "11",
+          "value": 12,
           "is_correct": false
         },
         {
           "key": "B",
           "value": 9,
-          "text": "9",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 12,
-          "text": "12",
-          "is_correct": false
+          "value": 10,
+          "is_correct": true
         },
         {
           "key": "D",
-          "value": 10,
-          "text": "10",
-          "is_correct": true
+          "value": 11,
+          "is_correct": false
         }
       ]
     }
-  ]
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "FAIL",
+      "rationale": "Estimating a mass means judging how heavy something is without being told. Here the exact figure is supplied first, as in An object's mass measures 31 g, and the pupil merely rounds it. No object is ever identified either, so there is nothing whose mass could be estimated."
+    },
+    "comprehensive_coverage": {
+      "verdict": "CONCERN",
+      "rationale": "Grams, kilograms and milligrams all appear, but only one estimation move is ever generated, rounding to a power of ten. Judging a mass against a known benchmark, or choosing which unit is sensible for a given object, never occurs."
+    },
+    "cognitive_capacity": {
+      "verdict": "CONCERN",
+      "rationale": "One sample takes a 4 mg mass and rounds it to the nearest 10, keying the answer 0. Telling a Grade 3 pupil that an object's estimated mass is zero contradicts the physical premise the stem has just set up."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "FAIL",
+      "rationale": "Thirteen items, one sentence. Measure, then round. The unit token and the rounding place are the entirety of the variation, and there is no applied setting, no comparison of two estimates, and no alternative item format beyond multiple choice and a cloze that reads identically."
+    },
+    "competency_alignment": {
+      "verdict": "FAIL",
+      "rationale": "The distractors are not possible answers. Against a key of 60 for a nearest-ten rounding, the options offered include 59, 61 and 62, none of which is a multiple of ten and none of which any rounding could produce. Every sample repeats this, so the option sets teach that rounding yields arbitrary nearby numbers."
+    },
+    "scale_appropriateness": {
+      "verdict": "CONCERN",
+      "rationale": "An estimate of 0 mg at one end and 307 kg at the other sit outside the masses a Grade 3 estimation task should involve, and rounding 1927 mg to the nearest 1000 concerns place value rather than any mass a pupil could picture."
+    }
+  },
+  "overall": "FAIL"
 }

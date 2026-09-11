@@ -1,33 +1,24 @@
 {
   "node_id": "mat_g3_na_q4_7",
-  "reviewed_by": "Gemini Pro blind reviewer, batch G3-Mixed-Harden (mat_g3_na_q4_2, mat_g3_na_q4_4, mat_g3_na_q4_7), 2026-08-17",
-  "overall": "PASS",
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The items successfully fulfill the competency of adding and subtracting similar fractions using models. They explicitly contextualize the operations through area models (e.g., \"A shape is divided into 4 equal parts. 3 parts are shaded and 1 more part is shaded.\") and visual model interaction (\"Shade the shape to show the result of 5/6 + 1/6.\")."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The sample comprehensively covers both operations specified in the competency: addition (e.g., \"What fraction of the shape is shaded in all: \\(\\frac{3}{4} + \\frac{1}{4}\\)?\") and subtraction (e.g., \"If 1 shaded part is taken away, what fraction of the shape remains shaded: \\(\\frac{3}{8} - \\frac{1}{8}\\)?\")."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The cognitive load is appropriate for Grade 3 Quarter 4. The language used to describe the models is clear and straightforward (\"A shape is divided into 6 equal parts. 2 parts are shaded.\"), and denominators are kept to standard early-grade sizes (4, 5, 6, 8, 10)."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The items exhibit good variant comprehensiveness by employing multiple formats, including descriptive text models for MCQ (\"A shape is divided into 8 equal parts...\"), fill-in-the-blank text models (\"\\(\\frac{1}{10} + \\frac{1}{10} = ___\\)\"), and interactive visual models (\"Shade the shape to show the result of 7/8 - 1/8.\")."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "The questions are strictly aligned with the competency. They focus exclusively on similar fractions (same denominators) and consistently anchor the abstract symbolic operation to a concrete model representation, meeting both the mathematical and pedagogical constraints of the MATATAG curriculum."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "The numbers and distractors are scaled appropriately. Distractors target common student misconceptions, such as adding or subtracting the denominators (e.g., offering \"3/12\" for \\(\\frac{2}{6} - \\frac{1}{6}\\)) or inverting the fraction (e.g., offering \"6/2\")."
-    }
-  },
+  "reviewed_by": "reviewer-b7-almanac-ferrule-5169",
+  "review_date": "2026-09-10",
+  "blind": true,
+  "sample_seeds": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    50,
+    55,
+    72,
+    500,
+    501,
+    502,
+    600,
+    602,
+    603
+  ],
   "samples_reviewed": [
     {
       "seed": 42,
@@ -37,23 +28,23 @@
       "options": [
         {
           "key": "A",
-          "value": "4/3",
+          "value": "4/8",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "3/4",
+          "value": "4/3",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "4/4",
-          "is_correct": true
+          "value": "3/4",
+          "is_correct": false
         },
         {
           "key": "D",
-          "value": "4/8",
-          "is_correct": false
+          "value": "4/4",
+          "is_correct": true
         }
       ]
     },
@@ -65,18 +56,18 @@
       "options": [
         {
           "key": "A",
-          "value": "3/4",
-          "is_correct": true
-        },
-        {
-          "key": "B",
           "value": "3/8",
           "is_correct": false
         },
         {
-          "key": "C",
+          "key": "B",
           "value": "2/4",
           "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "3/4",
+          "is_correct": true
         },
         {
           "key": "D",
@@ -149,22 +140,22 @@
       "options": [
         {
           "key": "A",
-          "value": "3/8",
+          "value": "8/3",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "4/8",
-          "is_correct": true
-        },
-        {
-          "key": "C",
           "value": "4/16",
           "is_correct": false
         },
         {
+          "key": "C",
+          "value": "4/8",
+          "is_correct": true
+        },
+        {
           "key": "D",
-          "value": "8/3",
+          "value": "3/8",
           "is_correct": false
         }
       ]
@@ -187,12 +178,12 @@
         },
         {
           "key": "C",
-          "value": "3/4",
+          "value": "4/4",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "4/4",
+          "value": "3/4",
           "is_correct": false
         }
       ]
@@ -211,20 +202,20 @@
       "options": [
         {
           "key": "A",
+          "value": "1/10",
+          "text": "1/10",
+          "is_correct": false
+        },
+        {
+          "key": "B",
           "value": "2/10",
           "text": "2/10",
           "is_correct": true
         },
         {
-          "key": "B",
+          "key": "C",
           "value": "2/20",
           "text": "2/20",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "1/10",
-          "text": "1/10",
           "is_correct": false
         },
         {
@@ -249,27 +240,27 @@
       "options": [
         {
           "key": "A",
-          "value": "4/6",
-          "text": "4/6",
-          "is_correct": true
-        },
-        {
-          "key": "B",
           "value": "5/6",
           "text": "5/6",
           "is_correct": false
         },
         {
-          "key": "C",
+          "key": "B",
           "value": "6/12",
           "text": "6/12",
           "is_correct": false
         },
         {
-          "key": "D",
+          "key": "C",
           "value": "6/5",
           "text": "6/5",
           "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "4/6",
+          "text": "4/6",
+          "is_correct": true
         }
       ]
     },
@@ -281,18 +272,18 @@
       "options": [
         {
           "key": "A",
-          "value": "10/6",
+          "value": "6/10",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "5/10",
-          "is_correct": true
+          "value": "10/6",
+          "is_correct": false
         },
         {
           "key": "C",
-          "value": "6/10",
-          "is_correct": false
+          "value": "5/10",
+          "is_correct": true
         },
         {
           "key": "D",
@@ -314,18 +305,18 @@
         },
         {
           "key": "B",
-          "value": "3/5",
+          "value": "1/5",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "2/5",
-          "is_correct": true
+          "value": "3/5",
+          "is_correct": false
         },
         {
           "key": "D",
-          "value": "1/5",
-          "is_correct": false
+          "value": "2/5",
+          "is_correct": true
         }
       ]
     },
@@ -337,23 +328,23 @@
       "options": [
         {
           "key": "A",
-          "value": "3/5",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": "4/5",
+          "value": "5/10",
           "is_correct": false
         },
         {
-          "key": "C",
+          "key": "B",
           "value": "5/4",
           "is_correct": false
         },
         {
-          "key": "D",
-          "value": "5/10",
+          "key": "C",
+          "value": "4/5",
           "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "3/5",
+          "is_correct": true
         }
       ]
     },
@@ -365,8 +356,8 @@
       "options": [
         {
           "key": "A",
-          "value": "2/6",
-          "text": "2/6",
+          "value": "3/12",
+          "text": "3/12",
           "is_correct": false
         },
         {
@@ -383,28 +374,38 @@
         },
         {
           "key": "D",
-          "value": "3/12",
-          "text": "3/12",
+          "value": "2/6",
+          "text": "2/6",
           "is_correct": false
         }
       ]
     }
   ],
-  "blind": true,
-  "sample_seeds": [
-    42,
-    43,
-    44,
-    45,
-    46,
-    50,
-    55,
-    72,
-    500,
-    501,
-    502,
-    600,
-    602,
-    603
-  ]
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "Both verbs of 'Add and subtract similar fractions using models.' are exercised: addition stems such as the 3/4 + 1/4 item and subtraction stems such as the 6/10 - 1/10 item, all on a common denominator. The part-whole model is carried in every stem ('A shape is divided into 4 equal parts'), and 'Shade the shape to show the result of 5/6 + 1/6.' asks the learner to act on the model rather than merely read it, so the noun 'models' is genuinely honoured and keys such as 4/4 and 6/6 are arithmetically correct."
+    },
+    "comprehensive_coverage": {
+      "verdict": "FAIL",
+      "rationale": "Across all fourteen rendered items, spanning seeds 42 through 603, the second fraction is always one single part: every addition reads '1 more part is shaded' and every subtraction reads 'If 1 shaded part is taken away', yielding 3/4 + 1/4, 2/6 + 1/6, 7/8 - 1/8 and so on. A learner drilled on this node would never meet a pair like two-sixths added to three-sixths. The competency places no unit restriction on either addend, so half of its arithmetic territory - non-unit second operands, and sums that require combining two multi-part shadings - is simply never generated. The spread of seeds makes this systematic, not a sampling accident."
+    },
+    "cognitive_capacity": {
+      "verdict": "CONCERN",
+      "rationale": "Reading load is right for Grade 3 Quarter 4: two short sentences, plain terms like equal parts, shaded and taken away, denominators kept to 4, 5, 6, 8 and 10. The worry is the reasoning actually demanded by the multiple-choice items. Each option list carries a reversed fraction - 4/3, 4/2, 6/2, 8/3, 5/3, 5/4, 10/6, 6/5, and 10/1 - which is impossible when only parts of one shape are shaded, and usually a second distractor that is just the unchanged starting fraction. That leaves roughly one credible competitor, so a pupil can arrive at the key by discarding absurdities instead of adding or subtracting anything."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "Presentation formats are varied - mcq, read_mcq, set_click and cloze all appear - but the underlying wording is only two moulds, one for combining and one for removing, reused with different numbers. There is no everyday context at all: no food shared, no ribbon, no juice, only 'A shape' every time. Nor is there a bare symbolic exercise stated without the shape sentence. The single departure, 'What is the result of the fraction operation shown?' at seed 50, drops the wording entirely rather than offering a different situation. Contextual orientation is therefore much narrower than the formatter count suggests."
+    },
+    "competency_alignment": {
+      "verdict": "CONCERN",
+      "rationale": "What actually changes from item to item is chiefly the size of the denominator, from quarters up to tenths, and which of the two moulds is used. Since the added or removed amount is pinned at one part throughout, moving from fourths to tenths does not make the fraction operation itself any harder - the pupil still counts one part up or one part down. The axis being scaled is the fineness of the partition, which sits closer to naming and partitioning fractions than to the adding and subtracting this node is about. Only the items ending at 4/4 and 6/6 probe something distinctly operational, namely reaching the whole."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "The competency states no explicit numeric ceiling, and the denominators used - 4, 5, 6, 8 and 10 - sit comfortably within customary Grade 3 similar-fraction work. No key exceeds one whole: the largest results are 4/4 and 6/6, and subtraction results such as 4/6 and 6/8 stay positive, so no improper or mixed outcome is demanded of the pupil. Magnitudes are neither trivially small nor stretched past the grade."
+    }
+  },
+  "overall": "FAIL"
 }

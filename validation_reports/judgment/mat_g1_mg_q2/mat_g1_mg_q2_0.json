@@ -1,35 +1,8 @@
 {
   "node_id": "mat_g1_mg_q2_0",
-  "reviewed_by": "Gemini Pro blind reviewer, batch Re-Harden (mat_g1_mg_q2_0), 2026-08-18",
-  "review_date": "2026-08-18",
+  "reviewed_by": "reviewer-b1-quartz-mallow-4412",
+  "review_date": "2026-09-10",
   "blind": true,
-  "overall": "PASS",
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The items completely fulfill the competency requirements by assessing both the length of an object (e.g., \"How long is a paintbrush? Give your answer in paperclips.\") and the distance between two objects (e.g., \"A desk and a ball are placed apart. The distance between them is ___ paperclips.\") using non-standard units."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "All dimensions of the learning competency are covered. The sample set evaluates single-object length measurement (e.g., \"How long is a pencil? Give your answer in hands.\") as well as two-object distance measurement (e.g., \"A bag and a chair are placed apart. The distance between them is ___ hands.\") across various non-standard measuring units."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The cognitive demand is fully appropriate for Grade 1 Quarter 2 students. The sentence structures are straightforward, relying on simple visual counting and familiar everyday objects such as in \"How long is a pencil? Give your answer in crayons.\" and \"A chair and a box are placed apart. The distance between them is ___ hands.\""
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The sample demonstrates solid diversity across non-standard units (paperclips, hands, crayons), target objects (desk, ball, bag, chair, box, shelf, pencil, paintbrush), and phrasing templates (e.g., \"How long is a paintbrush? Give your answer in paperclips.\" vs. \"A shelf and a chair are placed apart. The distance between them is ___ hands.\")."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "The items remain strictly within the grade and competency boundaries. They exclusively utilize non-standard units and avoid introducing standard units (e.g., centimeters or inches) or complex calculations, directly adhering to the competency in questions like \"A desk and a bag are placed apart. The distance between them is ___ paperclips.\""
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "The quantities and physical dimensions tested are well-suited for early elementary learners. Small whole numbers representing countable non-standard unit spans are used in scenarios such as \"How long is a paintbrush? Give your answer in paperclips.\" and \"A shelf and a bag are placed apart. The distance between them is ___ hands.\""
-    }
-  },
   "sample_seeds": [
     42,
     43,
@@ -46,55 +19,280 @@
       "seed": 42,
       "formatter": "read_mcq",
       "question_text": "How long is a paintbrush? Give your answer in paperclips.",
-      "correct_answer": "C"
+      "correct_answer": "B",
+      "options": [
+        {
+          "key": "A",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 2,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 1,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 20,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 43,
       "formatter": "read_mcq",
       "question_text": "How long is a pencil? Give your answer in hands.",
-      "correct_answer": "B"
+      "correct_answer": "C",
+      "options": [
+        {
+          "key": "A",
+          "value": 5,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 4,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 20,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 44,
       "formatter": "read_mcq",
       "question_text": "A desk and a ball are placed apart. The distance between them is ___ paperclips.",
-      "correct_answer": "B"
+      "correct_answer": "D",
+      "options": [
+        {
+          "key": "A",
+          "value": 11,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 20,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 9,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 10,
+          "is_correct": true
+        }
+      ]
     },
     {
       "seed": 45,
       "formatter": "read_mcq",
       "question_text": "A bag and a chair are placed apart. The distance between them is ___ hands.",
-      "correct_answer": "B"
+      "correct_answer": "C",
+      "options": [
+        {
+          "key": "A",
+          "value": 4,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 20,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 5,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 6,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 46,
       "formatter": "read_mcq",
       "question_text": "How long is a pencil? Give your answer in crayons.",
-      "correct_answer": "B"
+      "correct_answer": "A",
+      "options": [
+        {
+          "key": "A",
+          "value": 2,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 1,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 20,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 3,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 500,
       "formatter": "read_mcq",
       "question_text": "A desk and a bag are placed apart. The distance between them is ___ paperclips.",
-      "correct_answer": "A"
+      "correct_answer": "C",
+      "options": [
+        {
+          "key": "A",
+          "value": 9,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 20,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 10,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 11,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 501,
       "formatter": "read_mcq",
       "question_text": "A chair and a box are placed apart. The distance between them is ___ hands.",
-      "correct_answer": "A"
+      "correct_answer": "A",
+      "options": [
+        {
+          "key": "A",
+          "value": 7,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 6,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 8,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 20,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 502,
       "formatter": "read_mcq",
       "question_text": "A shelf and a chair are placed apart. The distance between them is ___ hands.",
-      "correct_answer": "B"
+      "correct_answer": "D",
+      "options": [
+        {
+          "key": "A",
+          "value": 20,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 4,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 2,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 3,
+          "is_correct": true
+        }
+      ]
     },
     {
       "seed": 600,
       "formatter": "read_mcq",
       "question_text": "A shelf and a bag are placed apart. The distance between them is ___ hands.",
-      "correct_answer": "D"
+      "correct_answer": "D",
+      "options": [
+        {
+          "key": "A",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 5,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 20,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 4,
+          "is_correct": true
+        }
+      ]
     }
-  ]
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "CONCERN",
+      "rationale": "Both halves of the competency are attempted, but the measurements do not all survive a reality check: a pencil measured 'in hands' comes back as four, which inverts the size relation between object and unit and teaches the opposite of measurement sense."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "Length of a single object and distance between two objects both appear, and three different non-standard units - paperclips, hands and crayons - are used as the iterated measure."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Stems are one sentence and the answer is a small count of repeated units, with no conversion or standard unit named, which is the Quarter 2 expectation."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "Every render is the same picture-dependent multiple choice in one of two phrasings. No item asks which unit was used, none asks the pupil to type a measurement, and the blank-slot distance phrasing is simply the length phrasing with two nouns instead of one."
+    },
+    "competency_alignment": {
+      "verdict": "CONCERN",
+      "rationale": "What moves between seeds is mostly the pair of objects named, while a fixed decoy occupies one slot in every option set, so a portion of the discrimination being trained is outlier-spotting rather than measuring."
+    },
+    "scale_appropriateness": {
+      "verdict": "CONCERN",
+      "rationale": "Correct answers range from one to eleven units, yet the value 20 sits in all nine option sets - far outside the plausible band for a paintbrush or a classroom gap, and strikeable without measuring anything."
+    }
+  },
+  "overall": "CONCERN"
 }

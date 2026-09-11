@@ -1,121 +1,353 @@
 {
   "node_id": "mat_g1_na_q4_4",
-  "reviewed_by": "Gemini Pro blind reviewer, batch Re-Harden (mat_g1_na_q4_4), 2026-08-18",
-  "review_date": "2026-08-18",
+  "reviewed_by": "reviewer-b2-tallow-verdigris-8130",
+  "review_date": "2026-09-10",
   "blind": true,
-  "overall": "PASS",
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "All generated samples directly fulfill the MATATAG learning competency requirement to determine the value of bills and/or coins up to \u20b1100 (excluding centavo coins). Samples like \"What is the total value of 1 \u20b15 coin and 1 \u20b11 coin?\" and \"Find the total amount of 1 \u20b150 bill, 1 \u20b120 bill, 1 \u20b110 coin, and 1 \u20b15 coin:\" assess calculating the combined total of coins and bills. Additionally, items like \"Use coins and bills to make exactly \u20b16. Use the fewest pieces possible.\" evaluate composing given monetary amounts using standard denominations."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The sample set comprehensively covers the required competency aspects: coins only (e.g., \"How much is 3 \u20b15 coins and 1 \u20b11 coin altogether?\", \"How much is 1 \u20b110 coin, 1 \u20b15 coin, and 1 \u20b11 coin altogether?\"), bills only (e.g., \"Find the total amount of 2 \u20b120 bills:\", \"Find the total amount of 2 \u20b150 bills:\"), combined bills and coins (e.g., \"Find the total amount of 1 \u20b150 bill, 1 \u20b120 bill, 1 \u20b110 coin, and 1 \u20b15 coin:\"), and visual identification (e.g., \"Count the coins and bills shown. What is the total amount?\"). No centavo coins appear anywhere in the sample packet, strictly adhering to the exclusion clause."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The reading level, phrasing, and mathematical steps are perfectly matched to Grade 1 Quarter 4 learners. Prompts use simple, direct sentence frames such as \"Find the total amount of 1 \u20b110 coin and 2 \u20b11 coins:\" and \"Count the coins and bills shown. What is the total amount?\". Additive combinations remain within basic mental math and skip counting bounds for \u20b11, \u20b15, \u20b110, \u20b120, and \u20b150 denominations without unnecessary textual or cognitive friction."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The samples demonstrate a strong balance across varied formatters and question types, including multiple choice (\"What is the total value of 1 \u20b15 coin and 1 \u20b11 coin?\"), cloze fill-in (\"How much is 1 \u20b110 coin, 1 \u20b15 coin, and 1 \u20b11 coin altogether?\"), pictorial reading (\"Count the coins and bills shown. What is the total amount?\"), and optimization/composition tasks (\"Use coins and bills to make exactly \u20b1100. Use the fewest pieces possible.\")."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Every sample is strictly aligned with the target learning competency without under-serving or exceeding the scope. Questions focus exclusively on whole-peso bill and coin values up to \u20b1100 (e.g., \"Find the total amount of 2 \u20b150 bills:\" and \"What is the total value of 1 \u20b15 coin and 1 \u20b11 coin?\"). There are no multi-step word problems involving change or transaction contexts beyond finding/composing values."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "Number scales and totals are well-calibrated and span the full allowable range up to \u20b1100. Low totals are tested (e.g., \u20b16 in \"Use coins and bills to make exactly \u20b16. Use the fewest pieces possible.\"), mid-range totals are tested (e.g., \u20b116 in \"How much is 1 \u20b110 coin, 1 \u20b15 coin, and 1 \u20b11 coin altogether?\" and \u20b140 in \"Find the total amount of 2 \u20b120 bills:\"), and upper-bound totals are tested (e.g., \u20b185 in \"Find the total amount of 1 \u20b150 bill, 1 \u20b120 bill, 1 \u20b110 coin, and 1 \u20b15 coin:\" and \u20b1100 in \"Use coins and bills to make exactly \u20b1100. Use the fewest pieces possible.\"). All values remain within the \u20b1100 boundary."
-    }
-  },
   "sample_seeds": [
     42,
     43,
     44,
     45,
     46,
-    50,
-    55,
-    72,
+    52,
     500,
     501,
     502,
+    600,
+    601,
     603
   ],
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "mcq",
-      "question_text": "What is the total value of 1 \u20b15 coin and 1 \u20b11 coin?",
-      "correct_answer": 6
+      "formatter": "cloze",
+      "question_text": "Determine the total value of 1 ₱50 bill, 2 ₱10 coins, and 1 ₱1 coin:",
+      "correct_answer": 71,
+      "options": [
+        {
+          "key": "A",
+          "value": 72,
+          "text": "72",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 71,
+          "text": "71",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 61,
+          "text": "61",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 710,
+          "text": "710",
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 43,
-      "formatter": "mcq",
-      "question_text": "Find the total amount of 1 \u20b110 coin and 2 \u20b11 coins:",
-      "correct_answer": 12
+      "formatter": "set_fill_in_blank",
+      "question_text": "Use coins and bills to make exactly ₱60. Use the fewest pieces possible.",
+      "correct_answer": 60
     },
     {
       "seed": 44,
       "formatter": "mcq",
-      "question_text": "Find the total amount of 2 \u20b120 bills:",
-      "correct_answer": 40
+      "question_text": "How much is 1 ₱50 bill and 1 ₱20 bill altogether?",
+      "correct_answer": 70,
+      "options": [
+        {
+          "key": "A",
+          "value": 71,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 60,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 70,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 700,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 45,
       "formatter": "mcq",
-      "question_text": "Find the total amount of 2 \u20b120 bills:",
-      "correct_answer": 40
+      "question_text": "Find the total amount of 2 ₱20 bills:",
+      "correct_answer": 40,
+      "options": [
+        {
+          "key": "A",
+          "value": 41,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 30,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 40,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 400,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 46,
       "formatter": "mcq",
-      "question_text": "Find the total amount of 1 \u20b110 coin and 2 \u20b11 coins:",
-      "correct_answer": 12
+      "question_text": "What is the total value of 2 ₱10 coins?",
+      "correct_answer": 20,
+      "options": [
+        {
+          "key": "A",
+          "value": 21,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 200,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 10,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 20,
+          "is_correct": true
+        }
+      ]
     },
     {
-      "seed": 50,
+      "seed": 52,
       "formatter": "read_mcq",
-      "question_text": "Count the coins and bills shown. What is the total amount?",
-      "correct_answer": "A"
-    },
-    {
-      "seed": 55,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Use coins and bills to make exactly \u20b16. Use the fewest pieces possible.",
-      "correct_answer": 6
-    },
-    {
-      "seed": 72,
-      "formatter": "cloze",
-      "question_text": "How much is 1 \u20b110 coin, 1 \u20b15 coin, and 1 \u20b11 coin altogether?",
-      "correct_answer": 16
+      "question_text": "Use coins and bills to make exactly ₱90. Use the fewest pieces possible.",
+      "correct_answer": "C",
+      "options": [
+        {
+          "key": "A",
+          "value": 100,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 85,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 90,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 110,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 500,
       "formatter": "set_fill_in_blank",
-      "question_text": "Use coins and bills to make exactly \u20b1100. Use the fewest pieces possible.",
+      "question_text": "Use coins and bills to make exactly ₱100. Use the fewest pieces possible.",
       "correct_answer": 100
     },
     {
       "seed": 501,
       "formatter": "cloze",
-      "question_text": "Find the total amount of 1 \u20b150 bill, 1 \u20b120 bill, 1 \u20b110 coin, and 1 \u20b15 coin:",
-      "correct_answer": 85
+      "question_text": "Find the total amount of 1 ₱50 bill, 1 ₱20 bill, 1 ₱10 coin, and 1 ₱5 coin:",
+      "correct_answer": 85,
+      "options": [
+        {
+          "key": "A",
+          "value": 85,
+          "text": "85",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 75,
+          "text": "75",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 86,
+          "text": "86",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 850,
+          "text": "850",
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 502,
       "formatter": "mcq",
-      "question_text": "Find the total amount of 2 \u20b150 bills:",
-      "correct_answer": 100
+      "question_text": "Find the total amount of 2 ₱50 bills:",
+      "correct_answer": 100,
+      "options": [
+        {
+          "key": "A",
+          "value": 100,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 101,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 90,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 1000,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 600,
+      "formatter": "cloze",
+      "question_text": "Determine the total value of 1 ₱50 bill and 2 ₱20 bills:",
+      "correct_answer": 90,
+      "options": [
+        {
+          "key": "A",
+          "value": 900,
+          "text": "900",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 90,
+          "text": "90",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 91,
+          "text": "91",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 80,
+          "text": "80",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 601,
+      "formatter": "mcq",
+      "question_text": "What is the total value of 1 ₱10 coin and 2 ₱5 coins?",
+      "correct_answer": 20,
+      "options": [
+        {
+          "key": "A",
+          "value": 200,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 10,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 21,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 20,
+          "is_correct": true
+        }
+      ]
     },
     {
       "seed": 603,
       "formatter": "mcq",
-      "question_text": "How much is 3 \u20b15 coins and 1 \u20b11 coin altogether?",
-      "correct_answer": 16
+      "question_text": "Determine the total value of 3 ₱10 coins:",
+      "correct_answer": 30,
+      "options": [
+        {
+          "key": "A",
+          "value": 30,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 20,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 31,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 300,
+          "is_correct": false
+        }
+      ]
     }
-  ]
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "CONCERN",
+      "rationale": "Most items do total a stated collection of pieces, which is the competency. The make-an-amount items invert that and then fail to assess the inversion: 'Use coins and bills to make exactly ₱60' is keyed to 60, the very figure printed in the stem, so nothing about which pieces were chosen or whether the fewest were used is captured."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "Single-denomination groups (three ₱10 coins), bill-plus-bill pairs, and four-piece mixtures of bills and coins are all generated, covering the 'bills and/or coins' phrasing."
+    },
+    "cognitive_capacity": {
+      "verdict": "CONCERN",
+      "rationale": "The read item at seed 52 states the target ₱90 in its stem and then lists 90 among the options, so it is answered by copying rather than by any money reasoning -- a free mark sitting inside the pool."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "Three genuinely different question shapes recur: total this specific set, find the value of several identical pieces, and assemble a named amount, asked through typed, selected and interactive shells."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "Complexity rises on the right axis, from two identical coins up to a four-piece mixture of ₱50, ₱20, ₱10 and ₱5 that requires several partial sums."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Totals stop at exactly ₱100 and never pass it; options such as 710 and 850 are digit-shift errors offered as distractors, not keys."
+    }
+  },
+  "overall": "CONCERN"
 }

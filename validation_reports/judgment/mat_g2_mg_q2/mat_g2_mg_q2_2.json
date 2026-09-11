@@ -1,34 +1,8 @@
 {
   "node_id": "mat_g2_mg_q2_2",
-  "reviewed_by": "Gemini Pro blind reviewer, batch G2-MG-Q2-Harden v2 (mat_g2_mg_q2_2), 2026-08-18",
+  "reviewed_by": "reviewer-b3-cinder-halyard-2276",
+  "review_date": "2026-09-10",
   "blind": true,
-  "overall": "PASS",
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The samples successfully fulfill the competency of estimating length and distance by using the standard computer-based assessment approach of rounding to benchmarks. Items consistently prompt students with phrases like \"rounded to the nearest 10 cm\" and \"rounded to the nearest 5 m\"."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The packet comprehensively covers all aspects of the competency: length in centimeters (e.g., \"A wooden ruler measures 22 cm\"), length in meters (e.g., \"A school fence measures 35 m\"), and distance in meters (e.g., \"The distance from the classroom to the canteen is 17 m\")."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The cognitive load is appropriate for Grade 2. The numbers used (e.g., 14, 17, 21, 23, 35) are simple two-digit integers, and rounding to the nearest 5 or 10 is well within the developmental capacity and curriculum expectations of second graders."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The samples show excellent variant comprehensiveness. They vary the contexts (school, outdoors, everyday objects), the target units (meters vs. centimeters), the estimation base (\"nearest 5\" vs. \"nearest 10\"), and the question formats (MCQ and cloze)."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "The questions are strictly aligned with the target competency. No extraneous or advanced concepts are introduced, and the task consistently remains focused on estimating \"About how many meters is that\" or \"About how many centimeters is that\"."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "All measurements provided are physically plausible and realistic, giving students authentic contexts for estimation. A \"wooden ruler measures 22 cm\", a \"pencil case measures 17 cm\", and a \"distance from the front door to the school fence is 14 m\" all reflect accurate, real-world scales."
-    }
-  },
   "sample_seeds": [
     42,
     43,
@@ -63,13 +37,13 @@
         },
         {
           "key": "C",
-          "value": 20,
-          "is_correct": true
+          "value": 10,
+          "is_correct": false
         },
         {
           "key": "D",
-          "value": 10,
-          "is_correct": false
+          "value": 20,
+          "is_correct": true
         }
       ]
     },
@@ -81,8 +55,8 @@
       "options": [
         {
           "key": "A",
-          "value": 15,
-          "is_correct": true
+          "value": 25,
+          "is_correct": false
         },
         {
           "key": "B",
@@ -91,8 +65,8 @@
         },
         {
           "key": "C",
-          "value": 25,
-          "is_correct": false
+          "value": 15,
+          "is_correct": true
         },
         {
           "key": "D",
@@ -109,23 +83,23 @@
       "options": [
         {
           "key": "A",
-          "value": 10,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 30,
-          "is_correct": false
-        },
-        {
-          "key": "C",
           "value": 40,
           "is_correct": false
         },
         {
-          "key": "D",
+          "key": "B",
           "value": 20,
           "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 30,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 10,
+          "is_correct": false
         }
       ]
     },
@@ -137,7 +111,7 @@
       "options": [
         {
           "key": "A",
-          "value": 25,
+          "value": 10,
           "is_correct": false
         },
         {
@@ -147,13 +121,13 @@
         },
         {
           "key": "C",
-          "value": 15,
-          "is_correct": true
+          "value": 25,
+          "is_correct": false
         },
         {
           "key": "D",
-          "value": 10,
-          "is_correct": false
+          "value": 15,
+          "is_correct": true
         }
       ]
     },
@@ -165,7 +139,7 @@
       "options": [
         {
           "key": "A",
-          "value": 40,
+          "value": 30,
           "is_correct": false
         },
         {
@@ -180,7 +154,7 @@
         },
         {
           "key": "D",
-          "value": 30,
+          "value": 40,
           "is_correct": false
         }
       ]
@@ -193,26 +167,26 @@
       "options": [
         {
           "key": "A",
-          "value": 20,
-          "text": "20",
-          "is_correct": false
-        },
-        {
-          "key": "B",
           "value": 15,
           "text": "15",
           "is_correct": true
         },
         {
-          "key": "C",
+          "key": "B",
           "value": 25,
           "text": "25",
           "is_correct": false
         },
         {
-          "key": "D",
+          "key": "C",
           "value": 10,
           "text": "10",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 20,
+          "text": "20",
           "is_correct": false
         }
       ]
@@ -225,27 +199,27 @@
       "options": [
         {
           "key": "A",
-          "value": 20,
-          "text": "20",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 10,
-          "text": "10",
+          "value": 40,
+          "text": "40",
           "is_correct": false
         },
         {
-          "key": "C",
+          "key": "B",
           "value": 30,
           "text": "30",
           "is_correct": false
         },
         {
-          "key": "D",
-          "value": 40,
-          "text": "40",
+          "key": "C",
+          "value": 10,
+          "text": "10",
           "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 20,
+          "text": "20",
+          "is_correct": true
         }
       ]
     },
@@ -257,22 +231,22 @@
       "options": [
         {
           "key": "A",
-          "value": 40,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 60,
-          "is_correct": false
-        },
-        {
-          "key": "C",
           "value": 30,
           "is_correct": false
         },
         {
-          "key": "D",
+          "key": "B",
+          "value": 40,
+          "is_correct": true
+        },
+        {
+          "key": "C",
           "value": 50,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 60,
           "is_correct": false
         }
       ]
@@ -285,23 +259,23 @@
       "options": [
         {
           "key": "A",
-          "value": 30,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 20,
-          "is_correct": true
-        },
-        {
-          "key": "C",
           "value": 40,
           "is_correct": false
         },
         {
-          "key": "D",
+          "key": "B",
+          "value": 30,
+          "is_correct": false
+        },
+        {
+          "key": "C",
           "value": 10,
           "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 20,
+          "is_correct": true
         }
       ]
     },
@@ -313,22 +287,22 @@
       "options": [
         {
           "key": "A",
-          "value": 20,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 10,
-          "is_correct": false
-        },
-        {
-          "key": "C",
           "value": 15,
           "is_correct": true
         },
         {
-          "key": "D",
+          "key": "B",
           "value": 25,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 20,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 10,
           "is_correct": false
         }
       ]
@@ -341,9 +315,9 @@
       "options": [
         {
           "key": "A",
-          "value": 15,
-          "text": "15",
-          "is_correct": false
+          "value": 20,
+          "text": "20",
+          "is_correct": true
         },
         {
           "key": "B",
@@ -353,15 +327,15 @@
         },
         {
           "key": "C",
-          "value": 30,
-          "text": "30",
+          "value": 15,
+          "text": "15",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 20,
-          "text": "20",
-          "is_correct": true
+          "value": 30,
+          "text": "30",
+          "is_correct": false
         }
       ]
     },
@@ -378,12 +352,12 @@
         },
         {
           "key": "B",
-          "value": 30,
+          "value": 25,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 25,
+          "value": 30,
           "is_correct": false
         },
         {
@@ -401,7 +375,7 @@
       "options": [
         {
           "key": "A",
-          "value": 25,
+          "value": 20,
           "is_correct": false
         },
         {
@@ -411,15 +385,42 @@
         },
         {
           "key": "C",
-          "value": 20,
+          "value": 10,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 10,
+          "value": 25,
           "is_correct": false
         }
       ]
     }
-  ]
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "FAIL",
+      "rationale": "Estimation means arriving at a reasonable figure for a quantity you have not measured. Every sample here hands the learner an exact measurement and then asks About how many meters is that under a rounding instruction. That is a rounding exercise wearing an estimation label; the competency's verb is never performed, because there is nothing left to estimate once the true value is printed in the stem."
+    },
+    "comprehensive_coverage": {
+      "verdict": "CONCERN",
+      "rationale": "The three quantity types named do appear, centimetre lengths, metre lengths and metre distances. What is absent is any other route into estimation: no choosing the most reasonable of several candidate measures, no benchmark comparison against a known referent, no estimate-then-check pairing. One sub-skill stands in for the whole competency."
+    },
+    "cognitive_capacity": {
+      "verdict": "CONCERN",
+      "rationale": "Rounding to the nearest 5 m is not a standard early-primary rounding benchmark and does not follow from this measurement competency; deciding that 18 sits nearer 20 than 15 requires halving an interval that is not a power of ten. That is an extra procedural demand layered on top of a Grade 2 Quarter 2 measurement objective."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "FAIL",
+      "rationale": "All thirteen seeds instantiate a single sentence frame: an object or span measures some value, followed by a request to round it. Only the noun, the number and the rounding benchmark move. There is no word-problem setting, no visual referent, no alternate orientation, and no item where the answer is a judgment rather than a rounded numeral."
+    },
+    "competency_alignment": {
+      "verdict": "CONCERN",
+      "rationale": "The difficulty dial being turned is rounding granularity, nearest 5 against nearest 10, plus the size of the starting value. Neither dimension belongs to estimating length or distance; a learner who improves across this progression has become better at rounding, not better at judging how long something is."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "The underlying quantities are sensible for the objects named, with book and ruler lengths in the low twenties of centimetres and school-ground distances between roughly 14 and 35 metres. No value sits outside what a Grade 2 learner could plausibly encounter or handle."
+    }
+  },
+  "overall": "FAIL"
 }

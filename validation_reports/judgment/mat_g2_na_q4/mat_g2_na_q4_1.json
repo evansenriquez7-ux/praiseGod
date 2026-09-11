@@ -1,34 +1,8 @@
 {
   "node_id": "mat_g2_na_q4_1",
-  "reviewed_by": "Gemini Pro blind reviewer, batch G2-NA-Q4-Harden (mat_g2_na_q4_1), 2026-08-18",
+  "reviewed_by": "reviewer-b4-plover-saffron-6041",
+  "review_date": "2026-09-10",
   "blind": true,
-  "overall": "PASS",
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The sample items directly assess reading and writing unit fractions in fraction notation. Reading competencies are evaluated by presenting fraction notation and asking for word names, such as in \"Read the fraction \\(\\frac{1}{2}\\). Which is the correct word name?\" and \"How is \\(\\frac{1}{3}\\) read in words?\". Writing competencies are tested by giving word names and asking for fractional representations, such as in \"Write one third in fraction notation.\" and \"Write one eighth in fraction notation.\""
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The items comprehensively span standard unit fractions including halves, thirds, fourths, and eighths. Both directions of competency are thoroughly covered across items: reading notation to identify verbal names (e.g., \"Read the fraction \\(\\frac{1}{3}\\). Which is the correct word name?\") and converting verbal names to fraction notation (e.g., \"Write one fourth in fraction notation.\")."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The cognitive load is well-calibrated for Grade 2 Quarter 4 students. Question stems are direct and accessible, using clear instructions such as \"Write one half in fraction notation.\" and \"How is \\(\\frac{1}{2}\\) read in words?\", with age-appropriate vocabulary and no extraneous linguistic complexity."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "Multiple item templates and phrasing variants are included, such as \"Write one third in fraction notation.\", \"Read the fraction \\(\\frac{1}{2}\\). Which is the correct word name?\", and \"How is \\(\\frac{1}{2}\\) read in words?\". Formats include both standard multiple choice and cloze presentations, with effective distractors targeting common learner errors like inversion (e.g., 3/1, 4/1) and incorrect naming."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Every item strictly aligns with unit fraction reading and writing without exceeding the curricular scope. There are no out-of-scope operations, non-unit target answers, or improper fractions. Questions like \"Write one fourth in fraction notation.\" and \"How is \\(\\frac{1}{3}\\) read in words?\" adhere precisely to the target competency."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "The numbers and denominators used across all items (denominators 2, 3, 4, and 8, as seen in \"Write one half in fraction notation.\" and \"Write one eighth in fraction notation.\") are standard, intuitive unit fractions perfectly scaled for Grade 2 learners."
-    }
-  },
   "sample_seeds": [
     42,
     43,
@@ -51,18 +25,18 @@
       "options": [
         {
           "key": "A",
-          "value": "3/1",
-          "is_correct": false
-        },
-        {
-          "key": "B",
           "value": "1/2",
           "is_correct": false
         },
         {
-          "key": "C",
+          "key": "B",
           "value": "1/3",
           "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "3/1",
+          "is_correct": false
         },
         {
           "key": "D",
@@ -89,12 +63,12 @@
         },
         {
           "key": "C",
-          "value": "1/2",
+          "value": "4/1",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "4/1",
+          "value": "1/2",
           "is_correct": false
         }
       ]
@@ -117,13 +91,13 @@
         },
         {
           "key": "C",
-          "value": "one fourth",
-          "is_correct": false
+          "value": "one half",
+          "is_correct": true
         },
         {
           "key": "D",
-          "value": "one half",
-          "is_correct": true
+          "value": "one fourth",
+          "is_correct": false
         }
       ]
     },
@@ -135,12 +109,12 @@
       "options": [
         {
           "key": "A",
-          "value": "1/2",
+          "value": "4/1",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "4/1",
+          "value": "2/4",
           "is_correct": false
         },
         {
@@ -150,7 +124,7 @@
         },
         {
           "key": "D",
-          "value": "2/4",
+          "value": "1/2",
           "is_correct": false
         }
       ]
@@ -163,7 +137,7 @@
       "options": [
         {
           "key": "A",
-          "value": "1/4",
+          "value": "2/1",
           "is_correct": false
         },
         {
@@ -178,7 +152,7 @@
         },
         {
           "key": "D",
-          "value": "2/1",
+          "value": "1/4",
           "is_correct": false
         }
       ]
@@ -191,15 +165,15 @@
       "options": [
         {
           "key": "A",
-          "value": "3 oneths",
-          "text": "3 oneths",
+          "value": "two thirds",
+          "text": "two thirds",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "one third",
-          "text": "one third",
-          "is_correct": true
+          "value": "3 oneths",
+          "text": "3 oneths",
+          "is_correct": false
         },
         {
           "key": "C",
@@ -209,9 +183,9 @@
         },
         {
           "key": "D",
-          "value": "two thirds",
-          "text": "two thirds",
-          "is_correct": false
+          "value": "one third",
+          "text": "one third",
+          "is_correct": true
         }
       ]
     },
@@ -223,9 +197,9 @@
       "options": [
         {
           "key": "A",
-          "value": "one half",
-          "text": "one half",
-          "is_correct": true
+          "value": "2 oneths",
+          "text": "2 oneths",
+          "is_correct": false
         },
         {
           "key": "B",
@@ -235,15 +209,15 @@
         },
         {
           "key": "C",
-          "value": "2 oneths",
-          "text": "2 oneths",
+          "value": "one fourth",
+          "text": "one fourth",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "one fourth",
-          "text": "one fourth",
-          "is_correct": false
+          "value": "one half",
+          "text": "one half",
+          "is_correct": true
         }
       ]
     },
@@ -260,12 +234,12 @@
         },
         {
           "key": "B",
-          "value": "one fourth",
+          "value": "one third",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "one third",
+          "value": "one fourth",
           "is_correct": false
         },
         {
@@ -283,18 +257,18 @@
       "options": [
         {
           "key": "A",
-          "value": "2 oneths",
+          "value": "one fourth",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "one half",
-          "is_correct": true
+          "value": "2 oneths",
+          "is_correct": false
         },
         {
           "key": "C",
-          "value": "one fourth",
-          "is_correct": false
+          "value": "one half",
+          "is_correct": true
         },
         {
           "key": "D",
@@ -311,18 +285,18 @@
       "options": [
         {
           "key": "A",
-          "value": "3 oneths",
-          "is_correct": false
-        },
-        {
-          "key": "B",
           "value": "two thirds",
           "is_correct": false
         },
         {
-          "key": "C",
+          "key": "B",
           "value": "one third",
           "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "3 oneths",
+          "is_correct": false
         },
         {
           "key": "D",
@@ -339,13 +313,13 @@
       "options": [
         {
           "key": "A",
-          "value": "1/8",
-          "is_correct": true
+          "value": "1/2",
+          "is_correct": false
         },
         {
           "key": "B",
-          "value": "1/2",
-          "is_correct": false
+          "value": "1/8",
+          "is_correct": true
         },
         {
           "key": "C",
@@ -359,5 +333,32 @@
         }
       ]
     }
-  ]
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "Both directions the node requires are produced: writing notation from a word name, as in the one-third and one-eighth items, and reading a word name from notation, as in the items asking how a given fraction is read in words."
+    },
+    "comprehensive_coverage": {
+      "verdict": "CONCERN",
+      "rationale": "The denominator spread is badly skewed toward halves, which appear in six of the eleven seeds, with thirds three times and fourths and eighths twice between them. Fifths and sixths, which a Grade 2 child must also read and write, never appear here at all."
+    },
+    "cognitive_capacity": {
+      "verdict": "CONCERN",
+      "rationale": "The stems present the fraction as raw markup, rendering as \\(\\frac{1}{2}\\) in the sampled output. If a child sees that string rather than a typeset fraction, the item is unreadable at this age; either way it is worth confirming what actually reaches the page."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "Three phrasings are in play, an instruction to write a named fraction, a request for the correct word name of a shown fraction, and a question about how a fraction is read, which covers both translation directions with some surface variety."
+    },
+    "competency_alignment": {
+      "verdict": "CONCERN",
+      "rationale": "Filler options weaken the discrimination: strings like '2 oneths' and '3 oneths' are not words in any register and no child would select them, so several four-option items are effectively three-option ones and the elimination does not depend on knowing fraction names."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Only unit fractions appear, as the node specifies, and the denominators used stay within the small set a Grade 2 child works with, the largest being eighths."
+    }
+  },
+  "overall": "CONCERN"
 }

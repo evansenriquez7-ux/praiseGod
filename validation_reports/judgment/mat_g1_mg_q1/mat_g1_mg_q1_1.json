@@ -1,34 +1,8 @@
 {
   "node_id": "mat_g1_mg_q1_1",
-  "reviewed_by": "Gemini Pro blind reviewer, batch G1-MG-Q1-Harden (mat_g1_mg_q1_0..2), 2026-08-18",
+  "reviewed_by": "reviewer-b1-quartz-mallow-4412",
+  "review_date": "2026-09-10",
   "blind": true,
-  "overall": "PASS",
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The samples directly ask students to compare shapes by their features, as required by the competency. For example, \"Which shape has fewer corners \u2014 a square or a triangle?\" and \"Which shape has more sides \u2014 a triangle or a rectangle?\" directly test the ability to compare based on sides and corners."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The set comprehensively covers the required features, asking questions about both 'sides' (e.g., 'same number of sides', 'more sides') and 'corners' (e.g., 'fewer corners'). It also compares various basic shapes including squares, rectangles, and triangles."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The cognitive demand is appropriate for Grade 1, Quarter 1. The language is simple, and the comparisons are direct (e.g., \"Which shape has fewer corners \u2014 a square or a triangle?\"\\). The comparisons focus directly on basic shapes."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The generated questions provide good structural variety, including 'same number', 'more', 'fewer', and specific orientation-based scenarios such as \"A tilted square and a flat rectangle: do they have the same number of corners?\"\\)."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "All generated items are perfectly aligned with the target competency 'Compare and distinguish 2-dimensional shapes according to features such as sides and corners'. None of the questions stray into unrelated geometry concepts or higher-level math."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "The question length and formatting are suitable for Grade 1. The options are concise and distinct, e.g., options like 'they are equal', 'neither', or simple shape names."
-    }
-  },
   "sample_seeds": [
     42,
     43,
@@ -50,7 +24,7 @@
       "options": [
         {
           "key": "A",
-          "value": "triangle",
+          "value": "they are different",
           "is_correct": false
         },
         {
@@ -60,40 +34,40 @@
         },
         {
           "key": "C",
-          "value": "rectangle",
-          "is_correct": true
+          "value": "triangle",
+          "is_correct": false
         },
         {
           "key": "D",
-          "value": "they are different",
-          "is_correct": false
+          "value": "rectangle",
+          "is_correct": true
         }
       ]
     },
     {
       "seed": 43,
       "formatter": "mcq",
-      "question_text": "Which shape has more sides \u2014 a triangle or a rectangle?",
+      "question_text": "Which shape has more sides — a triangle or a rectangle?",
       "correct_answer": "rectangle",
       "options": [
         {
           "key": "A",
+          "value": "triangle",
+          "is_correct": false
+        },
+        {
+          "key": "B",
           "value": "rectangle",
           "is_correct": true
         },
         {
-          "key": "B",
+          "key": "C",
           "value": "they are equal",
           "is_correct": false
         },
         {
-          "key": "C",
-          "value": "neither",
-          "is_correct": false
-        },
-        {
           "key": "D",
-          "value": "triangle",
+          "value": "neither",
           "is_correct": false
         }
       ]
@@ -101,40 +75,40 @@
     {
       "seed": 44,
       "formatter": "mcq",
-      "question_text": "Which shape has fewer corners \u2014 a square or a triangle?",
+      "question_text": "Which shape has fewer corners — a square or a triangle?",
       "correct_answer": "triangle",
       "options": [
         {
           "key": "A",
-          "value": "they are equal",
-          "is_correct": false
-        },
-        {
-          "key": "B",
           "value": "square",
           "is_correct": false
         },
         {
-          "key": "C",
-          "value": "neither",
+          "key": "B",
+          "value": "they are equal",
           "is_correct": false
         },
         {
-          "key": "D",
+          "key": "C",
           "value": "triangle",
           "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "neither",
+          "is_correct": false
         }
       ]
     },
     {
       "seed": 45,
       "formatter": "mcq",
-      "question_text": "Which shape has fewer corners \u2014 a square or a triangle?",
+      "question_text": "Which shape has fewer corners — a square or a triangle?",
       "correct_answer": "triangle",
       "options": [
         {
           "key": "A",
-          "value": "neither",
+          "value": "they are equal",
           "is_correct": false
         },
         {
@@ -149,7 +123,7 @@
         },
         {
           "key": "D",
-          "value": "they are equal",
+          "value": "neither",
           "is_correct": false
         }
       ]
@@ -157,22 +131,22 @@
     {
       "seed": 46,
       "formatter": "mcq",
-      "question_text": "Which shape has more sides \u2014 a triangle or a rectangle?",
+      "question_text": "Which shape has more sides — a triangle or a rectangle?",
       "correct_answer": "rectangle",
       "options": [
         {
           "key": "A",
-          "value": "neither",
-          "is_correct": false
-        },
-        {
-          "key": "B",
           "value": "rectangle",
           "is_correct": true
         },
         {
-          "key": "C",
+          "key": "B",
           "value": "they are equal",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "neither",
           "is_correct": false
         },
         {
@@ -185,22 +159,22 @@
     {
       "seed": 50,
       "formatter": "read_mcq",
-      "question_text": "Which shape has fewer corners \u2014 a square or a triangle?",
-      "correct_answer": "B",
+      "question_text": "Which shape has fewer corners — a square or a triangle?",
+      "correct_answer": "A",
       "options": [
         {
           "key": "A",
-          "value": "square",
-          "is_correct": false
-        },
-        {
-          "key": "B",
           "value": "triangle",
           "is_correct": true
         },
         {
-          "key": "C",
+          "key": "B",
           "value": "neither",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "square",
           "is_correct": false
         },
         {
@@ -213,17 +187,17 @@
     {
       "seed": 500,
       "formatter": "read_mcq",
-      "question_text": "Which shape has fewer corners \u2014 a square or a triangle?",
-      "correct_answer": "A",
+      "question_text": "Which shape has fewer corners — a square or a triangle?",
+      "correct_answer": "D",
       "options": [
         {
           "key": "A",
-          "value": "triangle",
-          "is_correct": true
+          "value": "they are equal",
+          "is_correct": false
         },
         {
           "key": "B",
-          "value": "they are equal",
+          "value": "neither",
           "is_correct": false
         },
         {
@@ -233,8 +207,8 @@
         },
         {
           "key": "D",
-          "value": "neither",
-          "is_correct": false
+          "value": "triangle",
+          "is_correct": true
         }
       ]
     },
@@ -274,18 +248,18 @@
       "options": [
         {
           "key": "A",
-          "value": "triangle",
+          "value": "neither",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "rectangle",
-          "is_correct": true
+          "value": "triangle",
+          "is_correct": false
         },
         {
           "key": "C",
-          "value": "neither",
-          "is_correct": false
+          "value": "rectangle",
+          "is_correct": true
         },
         {
           "key": "D",
@@ -307,20 +281,47 @@
         },
         {
           "key": "B",
-          "value": "No, the rectangle has more.",
-          "is_correct": false
-        },
-        {
-          "key": "C",
           "value": "No, the square has more.",
           "is_correct": false
         },
         {
-          "key": "D",
+          "key": "C",
           "value": "Neither has corners.",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "No, the rectangle has more.",
           "is_correct": false
         }
       ]
     }
-  ]
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "Sides and corners are both used as the feature under comparison, which is exactly the basis the competency names for distinguishing shapes."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "More, fewer, and same-number relations all occur as keys, and the square-triangle, triangle-rectangle and square-rectangle pairings are each sampled at least once."
+    },
+    "cognitive_capacity": {
+      "verdict": "CONCERN",
+      "rationale": "Offering 'they are different' as a choice answers a different question than the one asked. A first grader reading 'Which shape has the same number of sides as a square?' must discard an option that is not a shape at all, which adds a logical hurdle the competency never asked for."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "Nine of ten renders use the identical two-shape comparison sentence. Only the 'tilted square' item changes the frame by bringing orientation in, and nothing asks a pupil to sort or group shapes by a feature."
+    },
+    "competency_alignment": {
+      "verdict": "CONCERN",
+      "rationale": "The 'fewer corners' question recurs four times with only option order shuffled, so seed variation is spending itself on reshuffling instead of on finer feature discrimination such as equal sides versus unequal sides."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Feature counts stay at three and four sides or corners, which is the entirety of the shape vocabulary this Grade 1 node governs."
+    }
+  },
+  "overall": "CONCERN"
 }

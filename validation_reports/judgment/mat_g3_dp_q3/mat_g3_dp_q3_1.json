@@ -1,34 +1,8 @@
 {
   "node_id": "mat_g3_dp_q3_1",
-  "reviewed_by": "Gemini Pro blind reviewer, batch G3-DP-Harden (mat_g3_dp_q3_0..mat_g3_dp_q3_4), 2026-08-17",
+  "reviewed_by": "reviewer-b5-marlin-obsidian-3358",
+  "review_date": "2026-09-10",
   "blind": true,
-  "overall": "PASS",
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The samples directly ask students to complete data presentation structures matching the curriculum requirements, such as 'Complete the table to show: cats: 5, dogs: 60, birds: 25, fish: 20.' and 'Create a vertical bar graph to show: basketball: 60, volleyball: 65, swimming: 15, running: 40.'."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "All parts of the competency are covered. Tables are covered (e.g., 'Complete the table to show: Monday: 55, Tuesday: 50, Wednesday: 45, Thursday: 60.'), vertical bar graphs are covered (e.g., 'Create a vertical bar graph to show: Grade 1: 15, Grade 2: 30, Grade 3: 45, Grade 4: 60.'), and horizontal bar graphs are covered (e.g., 'Create a horizontal bar graph to show: basketball: 30, volleyball: 55, swimming: 40, running: 15.')."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The categories are familiar to third graders (pets, sports, days, grades) and the numerical values are within a suitable range (e.g., multiples of 5 up to 95, as seen in 'January: 45, February: 65, March: 35, April: 20, May: 55, June: 95.'). This fits well within Grade 3 Quarter 3 capacity."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The samples feature a wide variety of thematic contexts (animals, sports, school grades, months, flowers, days) and vary the length of the data sets (from 4 items to 6 items, as seen in 'Complete the table to show: roses: 30, sunflowers: 60, tulips: 30, daisies: 70, lilies: 10, orchids: 65.')."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "The generated tasks are strictly aligned with the exact language of 'Present data in tables and single bar graphs'. They do not introduce out-of-scope concepts like double bar graphs, line graphs, or probability, maintaining tight alignment."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "The generation framework successfully scales across multiple presentation modes (tables, horizontal graphs, vertical graphs), varying data array lengths, and numeric distributions without repeating exact questions, ensuring high replayability."
-    }
-  },
   "sample_seeds": [
     42,
     43,
@@ -206,5 +180,32 @@
         5
       ]
     }
-  ]
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "CONCERN",
+      "rationale": "Presenting data is reduced to transcription. Each stem already lists every category with its value and the key is that same list of numbers in the same order, so nothing about organising data into a table or sizing a bar is actually demanded of the pupil."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "The three presentations the competency names all appear and are roughly balanced: Complete the table to show, Create a vertical bar graph to show, and Create a horizontal bar graph to show, across both four-category and six-category data sets."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Category labels are drawn from pets, sports, flowers, weekdays, months and grade levels, all familiar to a Grade 3 class, and every value is a multiple of 5 that a pupil can plot without interpolating between gridlines."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "FAIL",
+      "rationale": "Fourteen samples, one item type, one sentence shape. No sample supplies raw tallies to be organised first, none embeds the data in a situation, none asks for a graph title, axis label or scale, and none inverts the task by giving a graph to be turned into a table."
+    },
+    "competency_alignment": {
+      "verdict": "CONCERN",
+      "rationale": "The only thing that grows between an easy and a hard sample is the number of categories, four rising to six. Choosing an interval, labelling an axis and deciding bar length are the substance of presenting data here, and none of them is what varies."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Values run from 5 to 95, which fits comfortably on a single bar graph scaled in fives or tens and keeps every bar drawable on one sheet without a broken axis."
+    }
+  },
+  "overall": "FAIL"
 }

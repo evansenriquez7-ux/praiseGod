@@ -1,34 +1,8 @@
 {
   "node_id": "mat_g1_mg_q4_1",
-  "reviewed_by": "Gemini Pro blind reviewer, batch G1-MG-Q4-Harden v3 (mat_g1_mg_q4_1, mat_g1_mg_q4_3), 2026-08-18",
+  "reviewed_by": "reviewer-b1-quartz-mallow-4412",
+  "review_date": "2026-09-10",
   "blind": true,
-  "overall": "PASS",
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The generator successfully addresses both reading and writing time. Reading is assessed through the 'read_mcq' format with prompts like 'What time does the clock show?', and writing is assessed through 'set_fill_in_blank' asking to physically manipulate the clock hands, such as 'Set the clock to show 9:30.' This fully satisfies the competency's core requirements."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The generator correctly covers all three specific time intervals mandated by the competency: the hour ('5:00', '7:00', '11:00'), the half hour ('9:30', '7:30'), and the quarter hour ('2:15', '5:45', '3:45'). Both reading and writing skills are tested across these intervals."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The cognitive load is completely appropriate for Grade 1 students in Quarter 4. The language is simple, direct, and consistent across formats ('What time does the clock show?' and 'Set the clock to show 12:00.'). Distractors in the multiple-choice questions represent common Grade 1 errors without introducing trickery (e.g., confusing 2:10 with 2:15)."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The generator uses two distinct and appropriate formats: 'read_mcq' for interpreting the clock face and 'set_fill_in_blank' for writing/setting the time. The distribution between these formats is balanced and effectively covers the mechanical and interpretive aspects of the competency."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "The generator strictly aligns with the MATATAG curriculum. It only asks for times on the hour, half hour, and quarter hour. It does not overstep by asking for minute-level precision (e.g., 3:17) which would violate the scope for Grade 1."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "The generator demonstrates robust variability across seeds. It produces a wide array of clock times utilizing all requested intervals, ensuring that a student would not easily memorize patterns and will experience a comprehensive assessment of the skill."
-    }
-  },
   "sample_seeds": [
     42,
     43,
@@ -49,7 +23,7 @@
       "seed": 42,
       "formatter": "read_mcq",
       "question_text": "What time does the clock show?",
-      "correct_answer": "C",
+      "correct_answer": "B",
       "options": [
         {
           "key": "A",
@@ -58,13 +32,13 @@
         },
         {
           "key": "B",
-          "value": "2:10",
-          "is_correct": false
+          "value": "2:15",
+          "is_correct": true
         },
         {
           "key": "C",
-          "value": "2:15",
-          "is_correct": true
+          "value": "2:10",
+          "is_correct": false
         },
         {
           "key": "D",
@@ -77,12 +51,12 @@
       "seed": 43,
       "formatter": "read_mcq",
       "question_text": "What time does the clock show?",
-      "correct_answer": "A",
+      "correct_answer": "C",
       "options": [
         {
           "key": "A",
-          "value": "5:00",
-          "is_correct": true
+          "value": "5:05",
+          "is_correct": false
         },
         {
           "key": "B",
@@ -91,8 +65,8 @@
         },
         {
           "key": "C",
-          "value": "5:05",
-          "is_correct": false
+          "value": "5:00",
+          "is_correct": true
         },
         {
           "key": "D",
@@ -143,7 +117,7 @@
       "options": [
         {
           "key": "A",
-          "value": "7:05",
+          "value": "6:00",
           "is_correct": false
         },
         {
@@ -153,12 +127,12 @@
         },
         {
           "key": "C",
-          "value": "6:00",
+          "value": "8:00",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "8:00",
+          "value": "7:05",
           "is_correct": false
         }
       ]
@@ -193,12 +167,12 @@
         },
         {
           "key": "C",
-          "value": "6:10",
+          "value": "5:15",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "5:15",
+          "value": "6:10",
           "is_correct": false
         }
       ]
@@ -233,5 +207,32 @@
       "question_text": "Set the clock to show 3:15.",
       "correct_answer": "3:15"
     }
-  ]
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "Both verbs are exercised - clock faces are read into a time and stated times are set onto a clock - and hour, half hour and quarter hour all occur among the keys."
+    },
+    "comprehensive_coverage": {
+      "verdict": "CONCERN",
+      "rationale": "Reading is sampled only at o'clock, half past and quarter past. The quarter-to case shows up solely in the setting direction, as with 5:45, so no pupil is ever asked to read a face where the minute hand has passed the half."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Times are confined to the four quarter positions, and a distractor such as 2:10 models a plausible minute-hand misread rather than a trick, which is fair at this grade."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "Eight of thirteen renders are the single imperative to set the clock to a stated time, and two of those are the identical 9:30 item. No word context, no matching of an analog face to a written time, no comparison of two clocks."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "Difficulty is carried by the time itself, moving from whole hours through halves to quarters, which is this competency's own ladder rather than an imported one."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Hours reach 12 and minutes never leave 00, 15, 30 and 45, which is precisely the scope the competency states."
+    }
+  },
+  "overall": "CONCERN"
 }

@@ -1,34 +1,8 @@
 {
   "node_id": "mat_g2_mg_q1_2",
-  "reviewed_by": "Gemini Pro blind reviewer, batch G2-MG-Q1-Harden (mat_g2_mg_q1_0..mat_g2_mg_q1_2), 2026-08-18",
+  "reviewed_by": "reviewer-b3-cinder-halyard-2276",
+  "review_date": "2026-09-10",
   "blind": true,
-  "overall": "PASS",
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The sample questions successfully address both describing and predicting the outcome of drawing the slides. Questions like \"Describe the total slide in one direction.\" target the description aspect, while \"At what mark should the rectangle be drawn?\" effectively adapts the drawing requirement for an MCQ format."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The samples cover all parts of the competency: one-direction multi-step slides (\"slides 3 spaces left, then slides 2 more spaces left\"), understanding translation terminology (\"What is another mathematical name for a slide?\"), describing the effect (\"does its size or shape change?\"), and basic shapes (using \"rectangle\" and \"triangle\")."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The numerical reasoning required fits Grade 2 capacity. Tracking positions involves basic single-digit addition and subtraction (e.g., \"starts at position 3\" and slides \"1 space right, then 4 spaces right\"). The language is clear and accessible."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The variants represent a robust mix of conceptual and procedural tasks. It includes calculating final positions (\"At which space should you draw the final triangle?\"\\), identifying total distance moved (\"How far did it move in all?\"\\), recognizing terminology (\"What is this multi-step movement called?\"\\), and understanding properties of translations."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "The items strictly adhere to the MATATAG learning competency limits. They focus exclusively on \"one-direction\" slides (e.g., \"2 spaces up, then 3 more spaces up\") and avoid introducing multi-directional translations or rotations within the mathematical operations."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "The scale and magnitudes are appropriate for early elementary. Using small units like \"mark 8\", \"space 2\", and moving by small values keeps the arithmetic load minimal so the focus remains on the spatial transformation concept."
-    }
-  },
   "sample_seeds": [
     42,
     43,
@@ -49,12 +23,12 @@
       "options": [
         {
           "key": "A",
-          "value": "mark 5",
+          "value": "mark 2",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "mark 2",
+          "value": "mark 6",
           "is_correct": false
         },
         {
@@ -64,7 +38,7 @@
         },
         {
           "key": "D",
-          "value": "mark 6",
+          "value": "mark 5",
           "is_correct": false
         }
       ]
@@ -77,22 +51,22 @@
       "options": [
         {
           "key": "A",
-          "value": "one-direction multi-step slide (translation)",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": "turn (rotation)",
-          "is_correct": false
-        },
-        {
-          "key": "C",
           "value": "two-direction slide",
           "is_correct": false
         },
         {
-          "key": "D",
+          "key": "B",
           "value": "flip (reflection)",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "one-direction multi-step slide (translation)",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "turn (rotation)",
           "is_correct": false
         }
       ]
@@ -105,7 +79,7 @@
       "options": [
         {
           "key": "A",
-          "value": "reflection",
+          "value": "dilation",
           "is_correct": false
         },
         {
@@ -115,13 +89,13 @@
         },
         {
           "key": "C",
-          "value": "dilation",
-          "is_correct": false
+          "value": "translation",
+          "is_correct": true
         },
         {
           "key": "D",
-          "value": "translation",
-          "is_correct": true
+          "value": "reflection",
+          "is_correct": false
         }
       ]
     },
@@ -143,13 +117,13 @@
         },
         {
           "key": "C",
-          "value": "Yes, both steps moved the same direction.",
-          "is_correct": true
+          "value": "No, this is a turn (rotation).",
+          "is_correct": false
         },
         {
           "key": "D",
-          "value": "No, this is a turn (rotation).",
-          "is_correct": false
+          "value": "Yes, both steps moved the same direction.",
+          "is_correct": true
         }
       ]
     },
@@ -161,13 +135,13 @@
       "options": [
         {
           "key": "A",
-          "value": "Yes, it changes shape.",
+          "value": "Yes, it gets bigger.",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "No, the size and shape stay the same.",
-          "is_correct": true
+          "value": "Yes, it changes shape.",
+          "is_correct": false
         },
         {
           "key": "C",
@@ -176,8 +150,8 @@
         },
         {
           "key": "D",
-          "value": "Yes, it gets bigger.",
-          "is_correct": false
+          "value": "No, the size and shape stay the same.",
+          "is_correct": true
         }
       ]
     },
@@ -199,12 +173,12 @@
         },
         {
           "key": "C",
-          "value": "4 spaces to the right",
+          "value": "3 spaces to the right",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "3 spaces to the right",
+          "value": "4 spaces to the right",
           "is_correct": false
         }
       ]
@@ -217,22 +191,22 @@
       "options": [
         {
           "key": "A",
-          "value": "mark 3",
-          "is_correct": true
-        },
-        {
-          "key": "B",
           "value": "mark 2",
           "is_correct": false
         },
         {
-          "key": "C",
-          "value": "mark 6",
+          "key": "B",
+          "value": "mark 5",
           "is_correct": false
         },
         {
+          "key": "C",
+          "value": "mark 3",
+          "is_correct": true
+        },
+        {
           "key": "D",
-          "value": "mark 5",
+          "value": "mark 6",
           "is_correct": false
         }
       ]
@@ -250,18 +224,18 @@
         },
         {
           "key": "B",
-          "value": "space 7",
-          "is_correct": true
-        },
-        {
-          "key": "C",
           "value": "space 6",
           "is_correct": false
         },
         {
-          "key": "D",
+          "key": "C",
           "value": "space 4",
           "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "space 7",
+          "is_correct": true
         }
       ]
     },
@@ -273,25 +247,52 @@
       "options": [
         {
           "key": "A",
-          "value": "3 spaces to the right",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "2 spaces to the right",
-          "is_correct": false
-        },
-        {
-          "key": "C",
           "value": "6 spaces to the right",
           "is_correct": false
         },
         {
-          "key": "D",
+          "key": "B",
+          "value": "3 spaces to the right",
+          "is_correct": false
+        },
+        {
+          "key": "C",
           "value": "5 spaces to the right",
           "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "2 spaces to the right",
+          "is_correct": false
         }
       ]
     }
-  ]
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "CONCERN",
+      "rationale": "The describe half of this competency is well served, with items naming the movement and tracking a two-step slide to a final mark. The draw half is not: even the stem that ends At what mark should the rectangle be drawn? resolves to picking a mark label from four options, so nothing in the set requires the learner to produce a drawn image of the translated figure."
+    },
+    "comprehensive_coverage": {
+      "verdict": "CONCERN",
+      "rationale": "All four slide directions do appear across the seeds, and the invariance of size and shape is probed once. Missing entirely is the effect of the slide on an actual named basic shape beyond a bare position label; most stems operate on an unnamed shape moving along a one-dimensional strip of marks or spaces rather than on a figure in the plane."
+    },
+    "cognitive_capacity": {
+      "verdict": "FAIL",
+      "rationale": "One item offers dilation alongside rotation, translation and reflection as answer choices. Dilation is not elementary vocabulary in any strand of this curriculum and has no place in student-facing text at Grade 2 Quarter 1; putting it in front of a seven-year-old as a plausible option introduces a term from secondary transformation geometry."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "Every one of the nine seeds renders as the same four-option selection type. There is no fill-in response, no grid or figure to act on, and no reverse orientation such as being told the start and finish positions and asked to describe the slide that connects them. Two seeds also produce the same rectangle-at-mark-8 stem verbatim."
+    },
+    "competency_alignment": {
+      "verdict": "CONCERN",
+      "rationale": "Several seeds shift the axis away from translation itself toward terminology recall, asking what the movement is called or for another mathematical name for a slide. Those probe naming, not the described effect of a multi-step one-direction slide, and they crowd out the positional reasoning the competency actually targets."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Slide steps run between one and four spaces per leg and starting marks stay under ten, so totals never exceed a single-digit count of spaces. That keeps the arithmetic underneath the transformation well inside early Grade 2 range."
+    }
+  },
+  "overall": "FAIL"
 }

@@ -1,35 +1,8 @@
 {
   "node_id": "mat_g2_na_q3_4",
-  "reviewed_by": "Gemini Pro blind reviewer, batch Re-Harden (mat_g2_na_q3_4), 2026-08-18",
-  "review_date": "2026-08-18",
+  "reviewed_by": "reviewer-b4-plover-saffron-6041",
+  "review_date": "2026-09-10",
   "blind": true,
-  "overall": "PASS",
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The sample set directly and thoroughly fulfills the target competency of illustrating division through equal distribution of objects into several groups. Word problems explicitly frame equal sharing scenarios such as \"Moses wants to share 20 baskets equally among 4 friends. How many baskets does each friend get?\", while visual/array models directly operationalize equal grouping through prompts like \"This array has 70 squares split into 10 equal rows. How many squares are in each row?\" and \"Shade 12 squares into 2 equal rows. How many squares are in each row?\". Basic division sentences such as \"What is 10 \u00f7 2?\" and \"15 \u00f7 5 = ___\" represent the arithmetic formalization of this equal distribution concept."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "Coverage spans the full pedagogical progression of early division: concrete equal sharing word problems (\"Moses wants to share 20 baskets equally among 4 friends. How many baskets does each friend get?\"), visual row/group array partitioning (\"This array has 70 squares split into 10 equal rows. How many squares are in each row?\" and \"Shade 90 squares into 10 equal rows. How many squares are in each row?\"), conceptual error analysis (error analysis (seed 51: \"10 \u00f7 5 = ___\")), truth verification (\"20 \u00f7 4 = 5. True or False?\"), and direct calculation (\"40 \u00f7 10 = ___\", \"What is 3 \u00f7 3?\")."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "All problems are well-calibrated to Grade 2 Quarter 3 developmental capacities. The linguistic framing is concise and accessible without extraneous reading overhead, as seen in \"Moses wants to share 20 baskets equally among 4 friends. How many baskets does each friend get?\" and \"What is 12 \u00f7 2?\". The cognitive demand focuses on single-step partitioning into equal groups and standard division facts without confusing compound logic or multi-step operations."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The item set exhibits rich variant diversity across six distinct formatters: cloze (\"15 \u00f7 3 = ___\", \"40 \u00f7 10 = ___\"), mcq (\"What is 90 \u00f7 10?\", \"What is 15 \u00f7 5?\"), read_mcq (\"This array has 70 squares split into 10 equal rows. How many squares are in each row?\"), set_fill_in_blank (\"Shade 12 squares into 2 equal rows. How many squares are in each row?\"), true_false (\"90 \u00f7 10 = 9. True or False?\"), and error_detect (error analysis (seed 51: \"10 \u00f7 5 = ___\"))."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Every item strictly aligns with Grade 2 division fundamentals without introducing out-of-scope concepts such as remainders, multi-digit long division algorithms, or fractions. All divisors (2, 3, 4, 5, 10) and dividends represent exact equal distributions resulting in whole-number quotients, perfectly matching the MATATAG learning competency scope."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "Number scales are fully appropriate for Grade 2 division. Dividends remain within the standard elementary introductory ranges: small numbers up to 20 for general divisors (e.g., \"What is 3 \u00f7 3?\", \"What is 12 \u00f7 2?\", \"15 \u00f7 3 = ___\", \"20 \u00f7 4 = 5. True or False?\") and multiples of 10 up to 90 for division by 10 (e.g., \"40 \u00f7 10 = ___\", \"Shade 90 squares into 10 equal rows. How many squares are in each row?\", \"What is 20 \u00f7 10?\")."
-    }
-  },
   "sample_seeds": [
     42,
     43,
@@ -52,43 +25,183 @@
     {
       "seed": 42,
       "formatter": "mcq",
-      "question_text": "What is 3 \u00f7 3?",
-      "correct_answer": 1
+      "question_text": "What is 3 ÷ 3?",
+      "correct_answer": 1,
+      "options": [
+        {
+          "key": "A",
+          "value": 1,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 9,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 0,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 43,
       "formatter": "mcq",
-      "question_text": "What is 10 \u00f7 2?",
-      "correct_answer": 5
+      "question_text": "What is 10 ÷ 2?",
+      "correct_answer": 5,
+      "options": [
+        {
+          "key": "A",
+          "value": 2,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 20,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 5,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 8,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 44,
       "formatter": "cloze",
-      "question_text": "40 \u00f7 10 = ___",
-      "correct_answer": 4
+      "question_text": "40 ÷ 10 = ___",
+      "correct_answer": 4,
+      "options": [
+        {
+          "key": "A",
+          "value": 30,
+          "text": "30",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 400,
+          "text": "400",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 10,
+          "text": "10",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 4,
+          "text": "4",
+          "is_correct": true
+        }
+      ]
     },
     {
       "seed": 45,
       "formatter": "cloze",
-      "question_text": "15 \u00f7 5 = ___",
-      "correct_answer": 3
+      "question_text": "15 ÷ 5 = ___",
+      "correct_answer": 3,
+      "options": [
+        {
+          "key": "A",
+          "value": 10,
+          "text": "10",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 3,
+          "text": "3",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 75,
+          "text": "75",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 5,
+          "text": "5",
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 46,
       "formatter": "mcq",
-      "question_text": "What is 12 \u00f7 2?",
-      "correct_answer": 6
+      "question_text": "What is 12 ÷ 2?",
+      "correct_answer": 6,
+      "options": [
+        {
+          "key": "A",
+          "value": 10,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 2,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 6,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 24,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 50,
       "formatter": "read_mcq",
       "question_text": "This array has 70 squares split into 10 equal rows. How many squares are in each row?",
-      "correct_answer": "A"
+      "correct_answer": "C",
+      "options": [
+        {
+          "key": "A",
+          "value": 5,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 34,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 7,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 10,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 51,
       "formatter": "error_detect",
-      "question_text": "Ana solved: \"10 \u00f7 5 = ___\". Ana says the missing number is 5. Is Ana correct?",
+      "question_text": "Ana solved: \"10 ÷ 5 = ___\". Ana says the missing number is 5. Is Ana correct?",
       "correct_answer": {
         "has_error": true,
         "correct_value": 2
@@ -103,7 +216,7 @@
     {
       "seed": 85,
       "formatter": "true_false",
-      "question_text": "20 \u00f7 4 = 5. True or False?",
+      "question_text": "20 ÷ 4 = 5. True or False?",
       "correct_answer": true
     },
     {
@@ -115,38 +228,183 @@
     {
       "seed": 501,
       "formatter": "true_false",
-      "question_text": "90 \u00f7 10 = 9. True or False?",
+      "question_text": "90 ÷ 10 = 9. True or False?",
       "correct_answer": true
     },
     {
       "seed": 502,
       "formatter": "mcq",
-      "question_text": "What is 90 \u00f7 10?",
-      "correct_answer": 9
+      "question_text": "What is 90 ÷ 10?",
+      "correct_answer": 9,
+      "options": [
+        {
+          "key": "A",
+          "value": 9,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 10,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 80,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 900,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 600,
       "formatter": "mcq",
-      "question_text": "What is 15 \u00f7 5?",
-      "correct_answer": 3
+      "question_text": "What is 15 ÷ 5?",
+      "correct_answer": 3,
+      "options": [
+        {
+          "key": "A",
+          "value": 10,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 75,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 3,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 5,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 601,
       "formatter": "cloze",
       "question_text": "Moses wants to share 20 baskets equally among 4 friends. How many baskets does each friend get?",
-      "correct_answer": 5
+      "correct_answer": 5,
+      "options": [
+        {
+          "key": "A",
+          "value": 4,
+          "text": "4",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 16,
+          "text": "16",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 80,
+          "text": "80",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 5,
+          "text": "5",
+          "is_correct": true
+        }
+      ]
     },
     {
       "seed": 602,
       "formatter": "mcq",
-      "question_text": "What is 20 \u00f7 10?",
-      "correct_answer": 2
+      "question_text": "What is 20 ÷ 10?",
+      "correct_answer": 2,
+      "options": [
+        {
+          "key": "A",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 10,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 2,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 200,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 603,
       "formatter": "cloze",
-      "question_text": "15 \u00f7 3 = ___",
-      "correct_answer": 5
+      "question_text": "15 ÷ 3 = ___",
+      "correct_answer": 5,
+      "options": [
+        {
+          "key": "A",
+          "value": 3,
+          "text": "3",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 12,
+          "text": "12",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 5,
+          "text": "5",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 45,
+          "text": "45",
+          "is_correct": false
+        }
+      ]
     }
-  ]
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "FAIL",
+      "rationale": "The verb here is 'illustrate ... through equal distribution of objects', yet most of the pool is context-free symbol manipulation such as 'What is 3 ÷ 3?' and '40 ÷ 10 = ___'. Only the shaded rows, the array reading and the single sharing story actually distribute anything, so the node's defining activity is the minority case."
+    },
+    "comprehensive_coverage": {
+      "verdict": "CONCERN",
+      "rationale": "Equal distribution is modelled in just one narrative form, Moses sharing baskets among friends, and pictorially only as squares arranged in equal rows. Distribution into groups of a given size, the other natural reading of this competency, never appears."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Quotients are all single digit, dividends stay at or below 90, and the shading instructions name both the quantity and the number of rows explicitly. Nothing about the language or the arithmetic outruns Grade 2 Quarter 3."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "Although six formats are nominally present, nine of the sixteen seeds are the same symbolic division question in either the 'What is' or the equals-blank shape. The distribution-based presentations that this node exists to provide are outnumbered roughly three to one."
+    },
+    "competency_alignment": {
+      "verdict": "CONCERN",
+      "rationale": "The axis being varied is the size of the dividend in a symbol sentence, not the richness or type of the distribution model. As a result the pool is substantively indistinguishable from a division-facts node, and a child could pass it without ever picturing objects being dealt out."
+    },
+    "scale_appropriateness": {
+      "verdict": "CONCERN",
+      "rationale": "Dividends are appropriately small, but several options name quantities a quotient can never reach: 400 sits against 40 divided by 10, 900 against 90 divided by 10, and 75 against 15 divided by 5. Those are products, and they let a child eliminate by size alone."
+    }
+  },
+  "overall": "FAIL"
 }

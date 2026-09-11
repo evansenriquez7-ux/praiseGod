@@ -1,35 +1,8 @@
 {
   "node_id": "mat_g2_na_q3_6",
-  "reviewed_by": "Gemini Pro blind reviewer, batch Re-Harden (mat_g2_na_q3_6), 2026-08-18",
-  "review_date": "2026-08-18",
+  "reviewed_by": "reviewer-b4-plover-saffron-6041",
+  "review_date": "2026-09-10",
   "blind": true,
-  "overall": "PASS",
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "All sampled items directly assess division using the specified multiplication tables (2, 3, 4, 5, and 10). Items range from direct arithmetic facts such as \"What is 3 \u00f7 3?\" and \"What is 10 \u00f7 2?\" to structured equations like \"40 \u00f7 10 = ___\" and contextual sharing problems like \"Moses wants to share 20 baskets equally among 4 friends. How many baskets does each friend get?\". Each question cleanly tests the core operation of division based on known multiplication facts without irrelevant distractions."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The sample set covers all five required multiplication/division tables specified in the competency: table of 2 (\"What is 10 \u00f7 2?\", \"What is 12 \u00f7 2?\", \"Shade 12 squares into 2 equal rows. How many squares are in each row?\"), table of 3 (\"What is 3 \u00f7 3?\", \"15 \u00f7 3 = ___\"), table of 4 (\"20 \u00f7 4 = 5. True or False?\", \"Moses wants to share 20 baskets equally among 4 friends. How many baskets does each friend get?\"), table of 5 (\"15 \u00f7 5 = ___\", error analysis (seed 51: \"10 \u00f7 5 = ___\"), \"What is 15 \u00f7 5?\"), and table of 10 (\"40 \u00f7 10 = ___\", \"This array has 70 squares split into 10 equal rows. How many squares are in each row?\", \"90 \u00f7 10 = 9. True or False?\", \"What is 90 \u00f7 10?\", \"What is 20 \u00f7 10?\")."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The cognitive demand is fully appropriate for Grade 2 Quarter 3 learners. Language is accessible, clean, and concise. Scenarios reflect concrete, relatable contexts such as equal sharing (\"Moses wants to share 20 baskets equally among 4 friends. How many baskets does each friend get?\") and visual partitioning (\"This array has 70 squares split into 10 equal rows. How many squares are in each row?\"). No complex multi-step reasoning or advanced vocabulary beyond Grade 2 is required."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The generated items demonstrate high structural diversity across formatters, including direct multiple choice (\"What is 12 \u00f7 2?\"), equation fill-in/cloze (\"15 \u00f7 5 = ___\"), array interpretation (\"This array has 70 squares split into 10 equal rows. How many squares are in each row?\"), visual row shading (\"Shade 12 squares into 2 equal rows. How many squares are in each row?\"), conceptual error analysis (error analysis (seed 51: \"10 \u00f7 5 = ___\")), truth verification (\"20 \u00f7 4 = 5. True or False?\"), and word problem cloze (\"Moses wants to share 20 baskets equally among 4 friends. How many baskets does each friend get?\")."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "All problems maintain strict alignment to the target competency without introducing extraneous concepts such as remainders, multi-digit long division, or division tables outside of 2, 3, 4, 5, and 10. Items such as \"What is 90 \u00f7 10?\", \"What is 15 \u00f7 5?\", and \"15 \u00f7 3 = ___\" directly evaluate the expected mastery of basic division facts derived from the corresponding multiplication tables."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "Numerical quantities adhere strictly to Grade 2 division table boundaries. Dividends stay within standard table products (e.g. 3 in \"What is 3 \u00f7 3?\", 10 in \"What is 10 \u00f7 2?\", 12 in \"What is 12 \u00f7 2?\", 15 in \"15 \u00f7 5 = ___\", 20 in \"20 \u00f7 4 = 5. True or False?\", up to 70 and 90 in \"This array has 70 squares split into 10 equal rows. How many squares are in each row?\" and \"What is 90 \u00f7 10?\"). Divisors are restricted to 2, 3, 4, 5, and 10, and all quotients are single-digit whole numbers from 1 to 10."
-    }
-  },
   "sample_seeds": [
     42,
     43,
@@ -52,43 +25,183 @@
     {
       "seed": 42,
       "formatter": "mcq",
-      "question_text": "What is 3 \u00f7 3?",
-      "correct_answer": 1
+      "question_text": "What is 3 ÷ 3?",
+      "correct_answer": 1,
+      "options": [
+        {
+          "key": "A",
+          "value": 9,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 0,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 1,
+          "is_correct": true
+        }
+      ]
     },
     {
       "seed": 43,
       "formatter": "mcq",
-      "question_text": "What is 10 \u00f7 2?",
-      "correct_answer": 5
+      "question_text": "What is 10 ÷ 2?",
+      "correct_answer": 5,
+      "options": [
+        {
+          "key": "A",
+          "value": 20,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 8,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 5,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 2,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 44,
       "formatter": "cloze",
-      "question_text": "40 \u00f7 10 = ___",
-      "correct_answer": 4
+      "question_text": "40 ÷ 10 = ___",
+      "correct_answer": 4,
+      "options": [
+        {
+          "key": "A",
+          "value": 4,
+          "text": "4",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 30,
+          "text": "30",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 400,
+          "text": "400",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 10,
+          "text": "10",
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 45,
       "formatter": "cloze",
-      "question_text": "15 \u00f7 5 = ___",
-      "correct_answer": 3
+      "question_text": "15 ÷ 5 = ___",
+      "correct_answer": 3,
+      "options": [
+        {
+          "key": "A",
+          "value": 5,
+          "text": "5",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 10,
+          "text": "10",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 75,
+          "text": "75",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 3,
+          "text": "3",
+          "is_correct": true
+        }
+      ]
     },
     {
       "seed": 46,
       "formatter": "mcq",
-      "question_text": "What is 12 \u00f7 2?",
-      "correct_answer": 6
+      "question_text": "What is 12 ÷ 2?",
+      "correct_answer": 6,
+      "options": [
+        {
+          "key": "A",
+          "value": 10,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 6,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 24,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 2,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 50,
       "formatter": "read_mcq",
       "question_text": "This array has 70 squares split into 10 equal rows. How many squares are in each row?",
-      "correct_answer": "A"
+      "correct_answer": "A",
+      "options": [
+        {
+          "key": "A",
+          "value": 7,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 10,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 5,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 34,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 51,
       "formatter": "error_detect",
-      "question_text": "Ana solved: \"10 \u00f7 5 = ___\". Ana says the missing number is 5. Is Ana correct?",
+      "question_text": "Ana solved: \"10 ÷ 5 = ___\". Ana says the missing number is 5. Is Ana correct?",
       "correct_answer": {
         "has_error": true,
         "correct_value": 2
@@ -103,7 +216,7 @@
     {
       "seed": 85,
       "formatter": "true_false",
-      "question_text": "20 \u00f7 4 = 5. True or False?",
+      "question_text": "20 ÷ 4 = 5. True or False?",
       "correct_answer": true
     },
     {
@@ -115,38 +228,183 @@
     {
       "seed": 501,
       "formatter": "true_false",
-      "question_text": "90 \u00f7 10 = 9. True or False?",
+      "question_text": "90 ÷ 10 = 9. True or False?",
       "correct_answer": true
     },
     {
       "seed": 502,
       "formatter": "mcq",
-      "question_text": "What is 90 \u00f7 10?",
-      "correct_answer": 9
+      "question_text": "What is 90 ÷ 10?",
+      "correct_answer": 9,
+      "options": [
+        {
+          "key": "A",
+          "value": 80,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 10,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 9,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 900,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 600,
       "formatter": "mcq",
-      "question_text": "What is 15 \u00f7 5?",
-      "correct_answer": 3
+      "question_text": "What is 15 ÷ 5?",
+      "correct_answer": 3,
+      "options": [
+        {
+          "key": "A",
+          "value": 3,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 75,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 10,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 5,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 601,
       "formatter": "cloze",
       "question_text": "Moses wants to share 20 baskets equally among 4 friends. How many baskets does each friend get?",
-      "correct_answer": 5
+      "correct_answer": 5,
+      "options": [
+        {
+          "key": "A",
+          "value": 16,
+          "text": "16",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 4,
+          "text": "4",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 80,
+          "text": "80",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 5,
+          "text": "5",
+          "is_correct": true
+        }
+      ]
     },
     {
       "seed": 602,
       "formatter": "mcq",
-      "question_text": "What is 20 \u00f7 10?",
-      "correct_answer": 2
+      "question_text": "What is 20 ÷ 10?",
+      "correct_answer": 2,
+      "options": [
+        {
+          "key": "A",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 10,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 200,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 2,
+          "is_correct": true
+        }
+      ]
     },
     {
       "seed": 603,
       "formatter": "cloze",
-      "question_text": "15 \u00f7 3 = ___",
-      "correct_answer": 5
+      "question_text": "15 ÷ 3 = ___",
+      "correct_answer": 5,
+      "options": [
+        {
+          "key": "A",
+          "value": 45,
+          "text": "45",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 5,
+          "text": "5",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 12,
+          "text": "12",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 3,
+          "text": "3",
+          "is_correct": false
+        }
+      ]
     }
-  ]
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "Here the symbolic division questions are exactly what the node asks for, and each dividend and divisor pair corresponds to a fact in the five named tables, as with 12 divided by 2 and 15 divided by 3."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "Every named table is used as a divisor: 2 in the 12-and-10 items, 3 in seeds 42 and 603, 4 in the 20-divided-by-4 claim, 5 in seeds 45 and 600, and 10 in seeds 44, 502 and 602."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "One-line fact questions with single-digit answers are correctly pitched for the quarter in which division facts are first consolidated, and the one story item, sharing 20 baskets among 4 friends, adds no reading burden."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The fact recall is reached through an equals-blank sentence, a 'What is' question, a shaded-rows task, an array to read, a truth claim and a peer's wrong quotient, which is reasonable coverage for a computation-focused node."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "Dividend size within the named tables is the axis that moves, from 3 divided by 3 at the bottom to 90 divided by 10 at the top, and the divisor is always a table the child has just learned to multiply by."
+    },
+    "scale_appropriateness": {
+      "verdict": "CONCERN",
+      "rationale": "Some option sets reach outside anything the tables can produce: 24 is offered as a quotient for 12 divided by 2, and 34 appears among the choices for the 70-squares-in-10-rows array. A quotient larger than its dividend is not a table error a child could plausibly make."
+    }
+  },
+  "overall": "CONCERN"
 }

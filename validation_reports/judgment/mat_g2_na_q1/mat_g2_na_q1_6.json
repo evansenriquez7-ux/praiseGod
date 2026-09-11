@@ -1,35 +1,8 @@
 {
   "node_id": "mat_g2_na_q1_6",
-  "reviewed_by": "Gemini Pro blind reviewer, batch Re-Harden (mat_g2_na_q1_6), 2026-08-18",
-  "review_date": "2026-08-18",
+  "reviewed_by": "reviewer-b3-cinder-halyard-2276",
+  "review_date": "2026-09-10",
   "blind": true,
-  "overall": "PASS",
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The sample set fully addresses all three clauses of the MATATAG learning competency for 3-digit numbers. First, finding the digit given place value is tested in questions such as \"In 135, what digit is in the ones place?\" (seed 42) and \"In 752, what digit is in the hundreds place?\" (seed 501). Second, identifying the place value / place of a digit is tested in \"What place is the digit 1 in, in the number 195?\" (seed 43) and \"What place is the digit 0 in, in the number 260?\" (seed 46). Third, determining the value of a digit is tested in items such as \"What is the place value of the digit 3 in 320?\" (seed 44) and \"In the number 610, the value of the digit 1 in the tens place is 11. True or False?\" (seed 50)."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The samples provide balanced coverage across all digit positions (hundreds, tens, ones) and target skills. The ones position is represented in \"In 135, what digit is in the ones place?\" (seed 42) and \"In 847, what digit is in the ones place?\" (seed 502). The tens position is represented in \"What is the place value of the digit 8 in 285?\" (seed 45) and \"What is the place value of the digit 6 in 160?\" (seed 602). The hundreds position is represented in \"What is the place value of the digit 2 in 250?\" (seed 600) and \"In the number 831, the value of the digit 8 in the hundreds place is 18. True or False?\" (seed 500). Furthermore, numbers with zeros in terminal and internal positions are included (e.g., 320, 260, 610, 250, 405, 160)."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The linguistic complexity and cognitive load are perfectly tuned for Grade 2 Quarter 1 learners. The sentences are concise and direct without unnecessary filler words, as seen in \"In 135, what digit is in the ones place?\" (seed 42) and \"What is the place value of the digit 3 in 320?\" (seed 44). Verification tasks are clear and unambiguous, such as \"What place is the digit 4 in, in the number 405? The answer is hundreds. True or False?\" (seed 601)."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The generator utilizes multiple diverse formatters and problem structures, including multiple-choice questions (\"In 847, what digit is in the ones place?\", seed 502), fill-in-the-blank cloze prompts (\"What place is the digit 0 in, in the number 260?\", seed 46; \"In 752, what digit is in the hundreds place?\", seed 501), and true/false evaluation tasks (\"In the number 610, the value of the digit 1 in the tens place is 11. True or False?\", seed 50)."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "All items strictly adhere to the MATATAG learning competency without scope creep or out-of-grade operations. No 4-digit numbers, expanded form expressions, or arithmetic operations are introduced. Every problem focuses solely on digit identification, place determination, or value calculation within 3-digit numbers, as illustrated by \"What is the place value of the digit 8 in 285?\" (seed 45) and \"In 752, what digit is in the hundreds place?\" (seed 501)."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "All target numbers are strictly 3-digit whole numbers within 100-999 (e.g., 135, 195, 320, 285, 260, 610, 831, 752, 847, 250, 405, 160), exactly matching the MATATAG Grade 2 Quarter 1 domain for 3-digit numbers. Place values and digit values correspond correctly to ones (0-9), tens (10-90), and hundreds (100-900), as demonstrated in \"What is the place value of the digit 2 in 250?\" (seed 600) and \"What is the place value of the digit 6 in 160?\" (seed 602)."
-    }
-  },
   "sample_seeds": [
     42,
     43,
@@ -49,31 +22,137 @@
       "seed": 42,
       "formatter": "mcq",
       "question_text": "In 135, what digit is in the ones place?",
-      "correct_answer": 5
+      "correct_answer": 5,
+      "options": [
+        {
+          "key": "A",
+          "value": 5,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 6,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 2,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 8,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 43,
       "formatter": "cloze",
       "question_text": "What place is the digit 1 in, in the number 195?",
-      "correct_answer": "hundreds"
+      "correct_answer": "hundreds",
+      "options": [
+        {
+          "key": "A",
+          "value": "tens",
+          "text": "tens",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "ones",
+          "text": "ones",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "hundreds",
+          "text": "hundreds",
+          "is_correct": true
+        }
+      ]
     },
     {
       "seed": 44,
       "formatter": "mcq",
       "question_text": "What is the place value of the digit 3 in 320?",
-      "correct_answer": 300
+      "correct_answer": 300,
+      "options": [
+        {
+          "key": "A",
+          "value": 13,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 30,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 300,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 3,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 45,
       "formatter": "mcq",
       "question_text": "What is the place value of the digit 8 in 285?",
-      "correct_answer": 80
+      "correct_answer": 80,
+      "options": [
+        {
+          "key": "A",
+          "value": 80,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 18,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 8,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 285,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 46,
       "formatter": "cloze",
       "question_text": "What place is the digit 0 in, in the number 260?",
-      "correct_answer": "ones"
+      "correct_answer": "ones",
+      "options": [
+        {
+          "key": "A",
+          "value": "ones",
+          "text": "ones",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "tens",
+          "text": "tens",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "hundreds",
+          "text": "hundreds",
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 50,
@@ -91,19 +170,89 @@
       "seed": 501,
       "formatter": "cloze",
       "question_text": "In 752, what digit is in the hundreds place?",
-      "correct_answer": 7
+      "correct_answer": 7,
+      "options": [
+        {
+          "key": "A",
+          "value": 7,
+          "text": "7",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 0,
+          "text": "0",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 1,
+          "text": "1",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 8,
+          "text": "8",
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 502,
       "formatter": "mcq",
       "question_text": "In 847, what digit is in the ones place?",
-      "correct_answer": 7
+      "correct_answer": 7,
+      "options": [
+        {
+          "key": "A",
+          "value": 1,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 4,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 8,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 7,
+          "is_correct": true
+        }
+      ]
     },
     {
       "seed": 600,
       "formatter": "mcq",
       "question_text": "What is the place value of the digit 2 in 250?",
-      "correct_answer": 200
+      "correct_answer": 200,
+      "options": [
+        {
+          "key": "A",
+          "value": 200,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 20,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 12,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 2,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 601,
@@ -115,7 +264,56 @@
       "seed": 602,
       "formatter": "mcq",
       "question_text": "What is the place value of the digit 6 in 160?",
-      "correct_answer": 60
+      "correct_answer": 60,
+      "options": [
+        {
+          "key": "A",
+          "value": 6,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 60,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 160,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 16,
+          "is_correct": false
+        }
+      ]
     }
-  ]
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "FAIL",
+      "rationale": "The competency deliberately separates the place value of a digit from the value of a digit, yet four seeds ask what is the place value of the digit 3 in 320 and key it to 300. Three hundred is that digit's value; its place value is hundreds, as the generator's own phrasing elsewhere confirms when it asks what place the digit 1 is in and keys that to a place name. The stem asks for one thing and the key answers another, in the exact vocabulary the competency exists to fix."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "All three listed sub-skills are generated: naming which place a digit occupies, producing the amount a digit stands for, and recovering the digit sitting in a stated place. A zero digit is included among the place-naming cases, which is the sub-case generators most often skip."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Every stem concerns a single three-digit numeral and asks one question about one digit, which is the right load for Quarter 1. The true-or-false framings add a verification demand without adding reading difficulty, and no item requires the learner to decompose the whole number at once."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "Three response types appear, and the three question directions of the competency are each rendered in more than one of them. The verification items that assert a value and invite a judgment are a genuinely different orientation from the items that ask for the value outright."
+    },
+    "competency_alignment": {
+      "verdict": "CONCERN",
+      "rationale": "The wrong-answer options are built by a pattern that no learner error produces: a digit is repeatedly glued to a 1 to yield alternatives like 13 beside 300, or 18 beside 80. Real place-value confusion produces a neighbouring place's value, so the distractors neither diagnose nor challenge the misconception this competency addresses."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Every numeral used is three digits, running from the low hundreds to the eight-hundreds, which matches the competency's explicit restriction to a 3-digit number. No two-digit or four-digit case intrudes, and all three places are represented as targets."
+    }
+  },
+  "overall": "FAIL"
 }

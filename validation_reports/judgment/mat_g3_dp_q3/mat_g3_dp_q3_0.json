@@ -1,34 +1,8 @@
 {
   "node_id": "mat_g3_dp_q3_0",
-  "reviewed_by": "Gemini Pro blind reviewer, batch G3-DP-Harden (mat_g3_dp_q3_0..mat_g3_dp_q3_4), 2026-08-17",
+  "reviewed_by": "reviewer-b5-marlin-obsidian-3358",
+  "review_date": "2026-09-10",
   "blind": true,
-  "overall": "PASS",
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The generator successfully creates scenarios that simulate the results of data collection from simple experiments. Questions like \"How many times did the coin land on Heads?\" adequately assess the student's ability to engage with collected experimental data within a digital assessment format, directly satisfying the core verb and context of the competency."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The samples cover the full breadth of the competency. They include different types of experiments (coins, spinners, tiles) and require students to perform various operations on the data: direct extraction (\"How many times was a Blue tile drawn?\"), summation (\"What is the total number of spins in the experiment?\"), comparison (\"How many more times did Heads land than Tails?\"), and finding the maximum (\"Which color was landed on most often?\")."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The items are cognitively appropriate for Grade 3, Quarter 3. The mathematics required involves basic reading of small numbers and simple arithmetic (addition and subtraction within 30), which does not distract from the primary data handling task. For example, calculating the sum from \"Heads (6), Tails (6)\" to find total tosses is perfectly aligned with their capacity."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "There is excellent variant diversity. Contexts vary across coin tosses, spinners, and drawing tiles. The generator also makes great use of multiple formatter types, including mcq, cloze, true_false, and error_detect (e.g., asking \"Is Rico correct?\" after presenting a simulated student's work)."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "The content strictly aligns with the competency's constraint of \"experiments with a small number of possible outcomes\". The generators use contexts explicitly mentioned in the competency or closely related ones (e.g., \"coin toss experiment\", \"spinner experiment\", \"tile was picked\")."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "The scales used are realistic and perfectly suited for Grade 3. The total number of trials in the experiments ranges from 10 to 25 (e.g., \"A student spun a spinner 24 times\", \"A coin was tossed 10 times\"), ensuring the data sets are \"small\" as dictated by the competency."
-    }
-  },
   "sample_seeds": [
     42,
     43,
@@ -39,7 +13,11 @@
     55,
     500,
     501,
-    502
+    502,
+    600,
+    601,
+    602,
+    603
   ],
   "samples_reviewed": [
     {
@@ -50,12 +28,12 @@
       "options": [
         {
           "key": "A",
-          "value": 10,
+          "value": 6,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 6,
+          "value": 10,
           "is_correct": false
         },
         {
@@ -78,8 +56,8 @@
       "options": [
         {
           "key": "A",
-          "value": 3,
-          "is_correct": true
+          "value": 4,
+          "is_correct": false
         },
         {
           "key": "B",
@@ -88,8 +66,8 @@
         },
         {
           "key": "C",
-          "value": 4,
-          "is_correct": false
+          "value": 3,
+          "is_correct": true
         },
         {
           "key": "D",
@@ -106,27 +84,27 @@
       "options": [
         {
           "key": "A",
-          "value": 3,
-          "text": "3",
-          "is_correct": false
-        },
-        {
-          "key": "B",
           "value": 2,
           "text": "2",
           "is_correct": false
         },
         {
+          "key": "B",
+          "value": 5,
+          "text": "5",
+          "is_correct": true
+        },
+        {
           "key": "C",
-          "value": 6,
-          "text": "6",
+          "value": 3,
+          "text": "3",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 5,
-          "text": "5",
-          "is_correct": true
+          "value": 6,
+          "text": "6",
+          "is_correct": false
         }
       ]
     },
@@ -138,23 +116,23 @@
       "options": [
         {
           "key": "A",
-          "value": 16,
-          "is_correct": false
-        },
-        {
-          "key": "B",
           "value": 4,
           "is_correct": false
         },
         {
+          "key": "B",
+          "value": 2,
+          "is_correct": false
+        },
+        {
           "key": "C",
-          "value": 14,
-          "is_correct": true
+          "value": 16,
+          "is_correct": false
         },
         {
           "key": "D",
-          "value": 2,
-          "is_correct": false
+          "value": 14,
+          "is_correct": true
         }
       ]
     },
@@ -166,7 +144,7 @@
       "options": [
         {
           "key": "A",
-          "value": 6,
+          "value": 3,
           "is_correct": false
         },
         {
@@ -176,12 +154,12 @@
         },
         {
           "key": "C",
-          "value": 1,
+          "value": 6,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 3,
+          "value": 1,
           "is_correct": false
         }
       ]
@@ -218,9 +196,9 @@
       "options": [
         {
           "key": "A",
-          "value": "Red",
-          "text": "Red",
-          "is_correct": true
+          "value": "Green",
+          "text": "Green",
+          "is_correct": false
         },
         {
           "key": "B",
@@ -230,9 +208,9 @@
         },
         {
           "key": "C",
-          "value": "Green",
-          "text": "Green",
-          "is_correct": false
+          "value": "Red",
+          "text": "Red",
+          "is_correct": true
         },
         {
           "key": "D",
@@ -250,7 +228,7 @@
       "options": [
         {
           "key": "A",
-          "value": 25,
+          "value": 17,
           "is_correct": false
         },
         {
@@ -260,15 +238,162 @@
         },
         {
           "key": "C",
-          "value": 22,
+          "value": 25,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 17,
+          "value": 22,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 600,
+      "formatter": "mcq",
+      "question_text": "A coin toss experiment was conducted with 15 tosses. The results are: Heads: 12, Tails: 3. How many times did the coin land on Tails?",
+      "correct_answer": 3,
+      "options": [
+        {
+          "key": "A",
+          "value": 4,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 15,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 12,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 3,
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 601,
+      "formatter": "cloze",
+      "question_text": "In a probability experiment, a tile was picked from a bag and replaced 10 times. Results: Red tile: 2, Blue tile: -4, Green tile: 7. How many times was a Blue tile drawn?",
+      "correct_answer": -4,
+      "options": [
+        {
+          "key": "A",
+          "value": -4,
+          "text": "-4",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": -3,
+          "text": "-3",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 2,
+          "text": "2",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 7,
+          "text": "7",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 602,
+      "formatter": "mcq",
+      "question_text": "In a die rolling experiment of 18 rolls, the results are: Face 1: 1, Face 2: 1, Face 3: 3, Face 4: 4, Face 5: 5, Face 6: 4. How many times did Face 4 appear?",
+      "correct_answer": 4,
+      "options": [
+        {
+          "key": "A",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 1,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 5,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 4,
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 603,
+      "formatter": "cloze",
+      "question_text": "A spinner experiment recorded these outcomes: Red: 11, Blue: 6, Green: 7, Yellow: 6. What is the total number of spins in the experiment?",
+      "correct_answer": 30,
+      "options": [
+        {
+          "key": "A",
+          "value": 27,
+          "text": "27",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 35,
+          "text": "35",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 30,
+          "text": "30",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 32,
+          "text": "32",
           "is_correct": false
         }
       ]
     }
-  ]
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "CONCERN",
+      "rationale": "The competency's verb is collecting data from experiments, yet every stem hands over a finished tally and asks the pupil to retrieve or total it. That is acceptable as recording experimental results, but one sample records Blue tile: -4, which no coin, die, spinner or bag experiment can ever produce, so that item represents no experiment at all."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "The die, the coin, the spinner and the bag of tiles are all present, the die item enumerates all six faces, and the questions asked span a single outcome count, a grand total, a most-frequent outcome and a how-many-more comparison."
+    },
+    "cognitive_capacity": {
+      "verdict": "FAIL",
+      "rationale": "A negative count appears in the tile-drawing sample and is keyed as the correct answer. Negative integers are not part of the Grade 3 Quarter 3 number system, and the pupil is asked to select -4 over -3 as a frequency, which teaches an impossibility."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "Four presentations are exercised: plain multiple choice, cloze, a true/false verification of a stated answer, and two error-detect items where a named pupil's answer must be judged right or wrong, one of which is correctly keyed as no error."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "Harder samples add outcome categories (four-way spinners, the six-face die) and move from reading one frequency to deriving the experiment's total or a difference between two outcomes. Both moves stay inside what collecting and tabulating experimental results requires."
+    },
+    "scale_appropriateness": {
+      "verdict": "FAIL",
+      "rationale": "Trial counts of 10 to 25 are well judged for a small-outcome experiment, but the tile sample whose frequencies are 2, -4 and 7 neither sums to its stated 10 trials nor stays above zero. The experiment's own arithmetic is broken, not merely oversized."
+    }
+  },
+  "overall": "FAIL"
 }

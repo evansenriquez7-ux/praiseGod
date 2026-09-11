@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g3_na_q1_1",
-  "reviewed_by": "Gemini Pro blind reviewer, batch G1 (na number_reading hardening), 2026-08-16",
-  "review_date": "2026-08-16",
+  "reviewed_by": "reviewer-b5-marlin-obsidian-3358",
+  "review_date": "2026-09-10",
   "blind": true,
   "sample_seeds": [
     42,
@@ -9,8 +9,6 @@
     44,
     45,
     46,
-    50,
-    72,
     500,
     501,
     502
@@ -18,84 +16,66 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "mcq",
-      "question_text": "Write 89 in words.",
-      "correct_answer": "eighty-nine",
+      "formatter": "cloze",
+      "question_text": "Write 1410 in words.",
+      "correct_answer": "one thousand four hundred ten",
       "options": [
         {
           "key": "A",
-          "value": "ninety-eight",
-          "is_correct": false
+          "value": "one thousand four hundred ten",
+          "text": "one thousand four hundred ten",
+          "is_correct": true
         },
         {
           "key": "B",
-          "value": "seventy-nine",
+          "value": "one thousand four hundred eleven",
+          "text": "one thousand four hundred eleven",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "eighty-nine",
-          "is_correct": true
+          "value": "one thousand four hundred",
+          "text": "one thousand four hundred",
+          "is_correct": false
         },
         {
           "key": "D",
-          "value": "eight hundred ninety",
+          "value": "one hundred forty-one",
+          "text": "one hundred forty-one",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 43,
-      "formatter": "mcq",
-      "question_text": "Write 356 in words.",
-      "correct_answer": "three hundred fifty-six",
-      "options": [
-        {
-          "key": "A",
-          "value": "three hundred fifty-six",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": "three thousand five hundred sixty",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "three hundred forty-six",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "six hundred fifty-three",
-          "is_correct": false
-        }
-      ]
+      "formatter": "true_false",
+      "question_text": "The number 5688 is written in words as 'five thousand six hundred eighty-nine'. True or False?",
+      "correct_answer": false
     },
     {
       "seed": 44,
       "formatter": "mcq",
-      "question_text": "Write the number: five hundred ninety-six.",
-      "correct_answer": 596,
+      "question_text": "Write the number: nine thousand five hundred twenty-one.",
+      "correct_answer": 9521,
       "options": [
         {
           "key": "A",
-          "value": 5960,
+          "value": 1259,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 695,
+          "value": 9522,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 586,
+          "value": 9511,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 596,
+          "value": 9521,
           "is_correct": true
         }
       ]
@@ -103,27 +83,27 @@
     {
       "seed": 45,
       "formatter": "mcq",
-      "question_text": "Write the number: four hundred ninety-one.",
-      "correct_answer": 491,
+      "question_text": "Write the number: seven thousand eight hundred forty-four.",
+      "correct_answer": 7844,
       "options": [
         {
           "key": "A",
-          "value": 481,
-          "is_correct": false
+          "value": 7844,
+          "is_correct": true
         },
         {
           "key": "B",
-          "value": 194,
+          "value": 7834,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 491,
-          "is_correct": true
+          "value": 7845,
+          "is_correct": false
         },
         {
           "key": "D",
-          "value": 4910,
+          "value": 4487,
           "is_correct": false
         }
       ]
@@ -131,65 +111,27 @@
     {
       "seed": 46,
       "formatter": "mcq",
-      "question_text": "Write 473 in words.",
-      "correct_answer": "four hundred seventy-three",
+      "question_text": "Write 7554 in words.",
+      "correct_answer": "seven thousand five hundred fifty-four",
       "options": [
         {
           "key": "A",
-          "value": "four hundred sixty-three",
+          "value": "four thousand five hundred fifty-seven",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "four hundred seventy-three",
+          "value": "seven thousand five hundred fifty-four",
           "is_correct": true
         },
         {
           "key": "C",
-          "value": "four thousand seven hundred thirty",
+          "value": "seven thousand five hundred fifty-five",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "three hundred seventy-four",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 50,
-      "formatter": "true_false",
-      "question_text": "The number written as 'three hundred thirty-six' is 326. True or False?",
-      "correct_answer": false
-    },
-    {
-      "seed": 72,
-      "formatter": "cloze",
-      "question_text": "Write 254 in words.",
-      "correct_answer": "two hundred fifty-four",
-      "options": [
-        {
-          "key": "A",
-          "value": "two hundred fifty-four",
-          "text": "two hundred fifty-four",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": "two thousand five hundred forty",
-          "text": "two thousand five hundred forty",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "two hundred forty-four",
-          "text": "two hundred forty-four",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "four hundred fifty-two",
-          "text": "four hundred fifty-two",
+          "value": "seven thousand five hundred forty-four",
           "is_correct": false
         }
       ]
@@ -208,15 +150,15 @@
       "options": [
         {
           "key": "A",
-          "value": 6795,
-          "text": "6795",
-          "is_correct": true
-        },
-        {
-          "key": "B",
           "value": 6796,
           "text": "6796",
           "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 6795,
+          "text": "6795",
+          "is_correct": true
         },
         {
           "key": "C",
@@ -264,28 +206,28 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "The items effectively direct the student to \"Read and write numbers up to 10 000 in numerals and in words.\" For example, seed 42 explicitly tests writing by asking the student to \"Write 89 in words.\" while seed 44 tests reading words and writing numerals by asking \"Write the number: five hundred ninety-six.\""
+      "rationale": "Both directions the competency names are produced and every word form is correctly written, including the hyphenation in seven thousand five hundred fifty-four and the correct omission of a hyphen in one thousand four hundred ten."
     },
     "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The generator comprehensively covers both required directions. It includes numerals to words as seen in seed 46 with \"Write 473 in words.\" and words to numerals as seen in seed 502 with \"Write the number: three thousand seven hundred sixty-one.\""
+      "verdict": "CONCERN",
+      "rationale": "No sampled number carries a zero in the hundreds or tens place, which is precisely where writing number words breaks down for a Grade 3 pupil, and no sample reaches 10 000 itself or drops below 1000. The set exercises only the uniformly four-digit middle of the stated range."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The difficulty is well-suited for Grade 3, as the distractors target common developmental misconceptions like place value misalignment. For instance, seed 43 asks to \"Write 356 in words.\" and offers \"three thousand five hundred sixty\" to check if the student incorrectly shifted the digits by a magnitude."
+      "rationale": "The compound forms required, eighty-nine and fifty-four among them, follow the standard Quarter 1 convention, and each item asks for a single translation with no additional operation attached."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "There is a good variety of formats included in the packet, demonstrating strong variant comprehensiveness. The seeds use \"mcq\", \"true_false\", and \"cloze\" as formatters."
+      "rationale": "Three formats appear and each does different work: multiple choice for the translation, cloze for the written form, and true_false items that put a claimed word form against a numeral and require the pupil to detect the mismatch, which both correctly key as False."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "The items perfectly map to the competency without introducing any out-of-scope concepts. Every sample directly corresponds to the instruction to \"Read and write numbers up to 10 000 in numerals and in words.\""
+      "rationale": "Alternating the direction of translation while holding the magnitude band steady is exactly what reading and writing numbers demands, and the digit-scramble distractors such as the reversal offered against 9521 target a genuine confusion."
     },
     "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "The values are properly constrained to the \"up to 10 000\" requirement. The largest value used is in seed 500, referencing \"nine thousand six hundred thirty\" and the numeral \"9620\", which strictly conforms to the scale limit."
+      "verdict": "CONCERN",
+      "rationale": "The sampled band runs from 1410 to 9521, so the ceiling of 10 000 named in the competency is never itself written or read, in numerals or in words."
     }
   },
-  "overall": "PASS"
+  "overall": "CONCERN"
 }

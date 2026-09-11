@@ -1,107 +1,397 @@
 {
   "node_id": "mat_g1_na_q1_5",
-  "reviewed_by": "Gemini Pro blind reviewer, batch Re-Harden (mat_g1_na_q1_5), 2026-08-18",
-  "review_date": "2026-08-18",
+  "reviewed_by": "reviewer-b1-quartz-mallow-4412",
+  "review_date": "2026-09-10",
   "blind": true,
-  "overall": "PASS",
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "All generated items directly fulfill the competency of describing position using ordinal numbers from 1st up to 10th. For example, questions like \"Who arrived earlier: the student in 1st place or 3rd place?\" and \"A runner is at position number 1. In what place did the runner finish?\" assess ordinal reasoning in realistic placement contexts, while \"Write the symbol for the third position.\" directly evaluates the required ordinal symbol representation."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The sample set comprehensively covers the spectrum of ordinals from 1st up to 10th. It tests low ordinals (\"Write the symbol for the first position.\"), intermediate positions (\"What ordinal describes position number 2?\"), and upper boundary positions (\"What ordinal describes position number 10?\" and \"Which position comes after 9th?\"), ensuring no key sub-range within 1st-10th is neglected."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The language and structural complexity are well-tailored for Grade 1 Quarter 1 learners. Items use brief, direct prompts such as \"Write the symbol for the first position.\" and clear single-step questions such as \"What ordinal describes position number 2?\" without unnecessary syntactical complexity or cognitive overload."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The items demonstrate strong structural variety across both MCQ and cloze formatters. Tested formats include relative ordering comparison (\"Who arrived earlier: the student in 1st place or 3rd place?\"), symbol writing (\"Write the symbol for the third position.\"), position-in-context word problems (\"A runner is at position number 1. In what place did the runner finish?\"), number-to-ordinal translation (\"What ordinal describes position number 10?\"), and successor ordinal identification (\"Which position comes after 9th?\")."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Every problem adheres strictly to the scope of MATATAG G1 Q1 competency. Items like \"Write the symbol for the first position.\" and \"What ordinal describes position number 2?\" stay focused on ordinal concepts without introducing unintroduced concepts such as fractions, multi-digit operations, or ordinals beyond 10th."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "All numbers and positions in the sample set respect the explicit curriculum boundary of 1st up to 10th. The lowest value tested is 1st (\"Write the symbol for the first position.\") and the highest value tested is 10th (\"What ordinal describes position number 10?\" and \"Which position comes after 9th?\"), with no item exceeding 10th."
-    }
-  },
   "sample_seeds": [
     42,
     43,
     44,
     45,
     46,
-    50,
     500,
     501,
     502,
-    600
+    600,
+    601,
+    602,
+    603
   ],
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "mcq",
-      "question_text": "Who arrived earlier: the student in 1st place or 3rd place?",
-      "correct_answer": "1st"
+      "formatter": "cloze",
+      "question_text": "Which word describes the 5th position?",
+      "correct_answer": "fifth",
+      "options": [
+        {
+          "key": "A",
+          "value": "eighth",
+          "text": "eighth",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "fifth",
+          "text": "fifth",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "third",
+          "text": "third",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "ninth",
+          "text": "ninth",
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 43,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "Write the symbol for the third position.",
-      "correct_answer": "3rd"
+      "correct_answer": "3rd",
+      "options": [
+        {
+          "key": "A",
+          "value": "2nd",
+          "text": "2nd",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "4th",
+          "text": "4th",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "3rd",
+          "text": "3rd",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "6th",
+          "text": "6th",
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 44,
       "formatter": "mcq",
-      "question_text": "A runner is at position number 1. In what place did the runner finish?",
-      "correct_answer": "1st"
+      "question_text": "Ana, Ben, Carlo and Dina stand in a row. Who is 3rd in the row?",
+      "correct_answer": "Carlo",
+      "options": [
+        {
+          "key": "A",
+          "value": "Carlo",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "Ana",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "Dina",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "Ben",
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 45,
       "formatter": "mcq",
-      "question_text": "What ordinal describes position number 2?",
-      "correct_answer": "2nd"
+      "question_text": "Which position comes after 8th?",
+      "correct_answer": "9th",
+      "options": [
+        {
+          "key": "A",
+          "value": "10th",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "4th",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "9th",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "6th",
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 46,
       "formatter": "mcq",
       "question_text": "Write the symbol for the first position.",
-      "correct_answer": "1st"
-    },
-    {
-      "seed": 50,
-      "formatter": "cloze",
-      "question_text": "What ordinal describes position number 2?",
-      "correct_answer": "2nd"
+      "correct_answer": "1st",
+      "options": [
+        {
+          "key": "A",
+          "value": "9th",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "1st",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "10th",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "3rd",
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 500,
       "formatter": "cloze",
-      "question_text": "What ordinal describes position number 10?",
-      "correct_answer": "10th"
+      "question_text": "The baskets are placed in a row. One basket is number 10 in the row. Which word describes its position?",
+      "correct_answer": "tenth",
+      "options": [
+        {
+          "key": "A",
+          "value": "eighth",
+          "text": "eighth",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "seventh",
+          "text": "seventh",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "ninth",
+          "text": "ninth",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "tenth",
+          "text": "tenth",
+          "is_correct": true
+        }
+      ]
     },
     {
       "seed": 501,
       "formatter": "mcq",
       "question_text": "Which position comes after 9th?",
-      "correct_answer": "10th"
+      "correct_answer": "10th",
+      "options": [
+        {
+          "key": "A",
+          "value": "1st",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "10th",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "4th",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "7th",
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 502,
       "formatter": "mcq",
-      "question_text": "Which position comes after 9th?",
-      "correct_answer": "10th"
+      "question_text": "Who arrived earlier: the student in 10th place or 3rd place?",
+      "correct_answer": "3rd",
+      "options": [
+        {
+          "key": "A",
+          "value": "5th",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "8th",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "2nd",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "3rd",
+          "is_correct": true
+        }
+      ]
     },
     {
       "seed": 600,
       "formatter": "mcq",
-      "question_text": "A runner is at position number 2. In what place did the runner finish?",
-      "correct_answer": "2nd"
+      "question_text": "Which position comes after 6th?",
+      "correct_answer": "7th",
+      "options": [
+        {
+          "key": "A",
+          "value": "8th",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "2nd",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "10th",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "7th",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 601,
+      "formatter": "mcq",
+      "question_text": "The pupils stand in a row. Jose is number 10 in the row. Which word describes Jose's position?",
+      "correct_answer": "tenth",
+      "options": [
+        {
+          "key": "A",
+          "value": "second",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "third",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "seventh",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "tenth",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 602,
+      "formatter": "mcq",
+      "question_text": "What ordinal describes position number 3?",
+      "correct_answer": "3rd",
+      "options": [
+        {
+          "key": "A",
+          "value": "3rd",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "4th",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "1st",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "2nd",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 603,
+      "formatter": "mcq",
+      "question_text": "Which word describes the 9th position?",
+      "correct_answer": "ninth",
+      "options": [
+        {
+          "key": "A",
+          "value": "second",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "fourth",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "third",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "ninth",
+          "is_correct": true
+        }
+      ]
     }
-  ]
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "Position is genuinely the subject: ordinal symbols, ordinal words, and a child standing third in a row of named pupils are all asked for, which is what describing position with ordinals means."
+    },
+    "comprehensive_coverage": {
+      "verdict": "CONCERN",
+      "rationale": "Although the competency runs the full span to 10th, the keys pile onto 3rd, 9th and 10th. Second, fourth, sixth and eighth are never the answer, and 6th and 8th surface only as the starting point of a comes-after question."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Matching a position number to its word or its symbol is single-step, and the row items use only four names so no list has to be held in memory."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "Symbol-to-word, word-to-symbol, successor position, a line of named children, and an arrival-order comparison between two placings are all represented."
+    },
+    "competency_alignment": {
+      "verdict": "CONCERN",
+      "rationale": "The successor question recurs three times with only the ordinal swapped, and no render works from the far end of a row or asks which position comes before a given one, so the set flattens rather than progressing."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Nothing above 10th is used as key or as decoy, which keeps the generator inside the upper bound the competency writes out."
+    }
+  },
+  "overall": "CONCERN"
 }

@@ -1,34 +1,8 @@
 {
   "node_id": "mat_g2_mg_q1_0",
-  "reviewed_by": "Gemini Pro blind reviewer, batch G2-MG-Q1-Harden (mat_g2_mg_q1_0..mat_g2_mg_q1_2), 2026-08-18",
+  "reviewed_by": "reviewer-b2-tallow-verdigris-8130",
+  "review_date": "2026-09-10",
   "blind": true,
-  "overall": "PASS",
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The items successfully assess the ability to represent and describe the target shapes. Questions prompt students to identify shapes based on their core geometric attributes, such as \"What shape has no corners and no straight sides?\""
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The packet thoroughly covers all three shapes mandated by the competency: circles (\"How many corners does a circle have?\"\\), half-circles (\"A shape is made from exactly half of a circle. What is it called?\"\\), and quarter-circles (\"A circle is divided into 4 equal parts. What is each part called?\"\\)."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The conceptual load is highly appropriate for Grade 2, Quarter 1. The items use simple descriptive language suitable for early readers and basic spatial reasoning, such as understanding shape constancy when \"A quarter-circle is rotated to face another direction. What shape is it?\""
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The generated questions exhibit an excellent variety of testing formats. They range from definitional prompts (\"A shape is made from exactly one quarter of a circle. What is it called?\"\\) to compositional relationships (\"How many quarter-circles make 1 whole circle?\"\\) and comparative property analysis (\"Which has more straight edges: a half-circle or a quarter-circle?\"\\)."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "The questions strictly adhere to the MATATAG learning competency without scope creep. They focus explicitly on representing and describing the target circular figures. While other shapes like \"triangle\" and \"square\" appear as options, they are appropriately used only as plausible distractors."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "Numerical values used in the compositional items are small, concrete, and developmentally appropriate for the target grade (e.g., dividing into \"2 equal parts\" or \"4 equal parts\")."
-    }
-  },
   "sample_seeds": [
     42,
     43,
@@ -54,22 +28,22 @@
       "options": [
         {
           "key": "A",
-          "value": "triangle",
+          "value": "rectangle",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "square",
-          "is_correct": false
-        },
-        {
-          "key": "C",
           "value": "circle",
           "is_correct": true
         },
         {
+          "key": "C",
+          "value": "triangle",
+          "is_correct": false
+        },
+        {
           "key": "D",
-          "value": "rectangle",
+          "value": "square",
           "is_correct": false
         }
       ]
@@ -82,22 +56,22 @@
       "options": [
         {
           "key": "A",
-          "value": "circle",
-          "is_correct": true
-        },
-        {
-          "key": "B",
           "value": "rectangle",
           "is_correct": false
         },
         {
+          "key": "B",
+          "value": "circle",
+          "is_correct": true
+        },
+        {
           "key": "C",
-          "value": "square",
+          "value": "triangle",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "triangle",
+          "value": "square",
           "is_correct": false
         }
       ]
@@ -110,23 +84,23 @@
       "options": [
         {
           "key": "A",
-          "value": "whole circle",
-          "is_correct": false
-        },
-        {
-          "key": "B",
           "value": "quarter-circle",
           "is_correct": false
         },
         {
-          "key": "C",
-          "value": "triangle",
+          "key": "B",
+          "value": "whole circle",
           "is_correct": false
         },
         {
-          "key": "D",
+          "key": "C",
           "value": "half-circle",
           "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "triangle",
+          "is_correct": false
         }
       ]
     },
@@ -138,18 +112,18 @@
       "options": [
         {
           "key": "A",
+          "value": "quarter-circle",
+          "is_correct": true
+        },
+        {
+          "key": "B",
           "value": "square",
           "is_correct": false
         },
         {
-          "key": "B",
+          "key": "C",
           "value": "half-circle",
           "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "quarter-circle",
-          "is_correct": true
         },
         {
           "key": "D",
@@ -166,7 +140,7 @@
       "options": [
         {
           "key": "A",
-          "value": "square",
+          "value": "rectangle",
           "is_correct": false
         },
         {
@@ -176,7 +150,7 @@
         },
         {
           "key": "C",
-          "value": "rectangle",
+          "value": "square",
           "is_correct": false
         },
         {
@@ -190,17 +164,17 @@
       "seed": 50,
       "formatter": "read_mcq",
       "question_text": "A circle is divided into 2 equal parts. What is each part called?",
-      "correct_answer": "B",
+      "correct_answer": "D",
       "options": [
         {
           "key": "A",
-          "value": "quarter-circle",
+          "value": "whole circle",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "half-circle",
-          "is_correct": true
+          "value": "quarter-circle",
+          "is_correct": false
         },
         {
           "key": "C",
@@ -209,8 +183,8 @@
         },
         {
           "key": "D",
-          "value": "whole circle",
-          "is_correct": false
+          "value": "half-circle",
+          "is_correct": true
         }
       ]
     },
@@ -227,12 +201,12 @@
         },
         {
           "key": "B",
-          "value": "whole circle",
+          "value": "quarter-circle",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "quarter-circle",
+          "value": "whole circle",
           "is_correct": false
         },
         {
@@ -250,8 +224,8 @@
       "options": [
         {
           "key": "A",
-          "value": "quarter-circle",
-          "is_correct": true
+          "value": "half-circle",
+          "is_correct": false
         },
         {
           "key": "B",
@@ -265,8 +239,8 @@
         },
         {
           "key": "D",
-          "value": "half-circle",
-          "is_correct": false
+          "value": "quarter-circle",
+          "is_correct": true
         }
       ]
     },
@@ -278,22 +252,22 @@
       "options": [
         {
           "key": "A",
-          "value": "half-circle",
-          "is_correct": false
-        },
-        {
-          "key": "B",
           "value": "quarter-circle",
           "is_correct": true
         },
         {
-          "key": "C",
+          "key": "B",
           "value": "rectangle",
           "is_correct": false
         },
         {
-          "key": "D",
+          "key": "C",
           "value": "whole circle",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "half-circle",
           "is_correct": false
         }
       ]
@@ -306,22 +280,22 @@
       "options": [
         {
           "key": "A",
-          "value": "half-circle",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "circle",
-          "is_correct": false
-        },
-        {
-          "key": "C",
           "value": "quarter-circle",
           "is_correct": true
         },
         {
-          "key": "D",
+          "key": "B",
           "value": "square",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "circle",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "half-circle",
           "is_correct": false
         }
       ]
@@ -339,8 +313,8 @@
         },
         {
           "key": "B",
-          "value": "quarter-circle",
-          "is_correct": false
+          "value": "half-circle",
+          "is_correct": true
         },
         {
           "key": "C",
@@ -349,8 +323,8 @@
         },
         {
           "key": "D",
-          "value": "half-circle",
-          "is_correct": true
+          "value": "quarter-circle",
+          "is_correct": false
         }
       ]
     },
@@ -362,13 +336,13 @@
       "options": [
         {
           "key": "A",
-          "value": "neither",
+          "value": "they are equal",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "quarter-circle",
-          "is_correct": true
+          "value": "neither",
+          "is_correct": false
         },
         {
           "key": "C",
@@ -377,8 +351,8 @@
         },
         {
           "key": "D",
-          "value": "they are equal",
-          "is_correct": false
+          "value": "quarter-circle",
+          "is_correct": true
         }
       ]
     },
@@ -390,8 +364,8 @@
       "options": [
         {
           "key": "A",
-          "value": "4",
-          "is_correct": true
+          "value": "2",
+          "is_correct": false
         },
         {
           "key": "B",
@@ -400,13 +374,13 @@
         },
         {
           "key": "C",
-          "value": "2",
+          "value": "8",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "8",
-          "is_correct": false
+          "value": "4",
+          "is_correct": true
         }
       ]
     },
@@ -414,21 +388,21 @@
       "seed": 605,
       "formatter": "read_mcq",
       "question_text": "How many corners does a circle have?",
-      "correct_answer": "A",
+      "correct_answer": "B",
       "options": [
         {
           "key": "A",
+          "value": "2",
+          "is_correct": false
+        },
+        {
+          "key": "B",
           "value": "0",
           "is_correct": true
         },
         {
-          "key": "B",
-          "value": "1",
-          "is_correct": false
-        },
-        {
           "key": "C",
-          "value": "2",
+          "value": "1",
           "is_correct": false
         },
         {
@@ -438,5 +412,32 @@
         }
       ]
     }
-  ]
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "FAIL",
+      "rationale": "Describing is served, but representing is entirely absent. Across all fourteen samples there is no item in which the pupil draws, shades, assembles or selects a picture of a circle, half circle or quarter circle -- every response is choosing a shape name or a number from four written options. One of the competency's two verbs has no generated task at all."
+    },
+    "comprehensive_coverage": {
+      "verdict": "CONCERN",
+      "rationale": "All three named figures are described, but the part-to-whole composition question exists only for quarters ('How many quarter-circles make 1 whole circle?'), with no matching item for half circles, and no sample combines the pieces back into a whole shape."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Vocabulary is limited to the shape names plus corners and straight edges, the partitions used are only 2 and 4, and each question resolves in one judgement -- suitable for the opening quarter of Grade 2."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "The effective pool is much smaller than fourteen: 'What shape has no corners and no straight sides?' is reproduced identically at three seeds, and the circle-divided-into-2-equal-parts item at three more, so over a third of the samples are duplicates with only the option order changed."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "Where the items do differ, they deepen the same descriptive skill in the right way -- counting straight edges of a half against a quarter, and holding identity under rotation when a quarter-circle is turned to face another direction."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "The only numbers appearing are the partition counts 2 and 4 and small edge and corner counts, which is the correct numeric register for a shape-description competency at this level."
+    }
+  },
+  "overall": "FAIL"
 }

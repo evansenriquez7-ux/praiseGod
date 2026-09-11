@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g2_na_q1_4",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch B4 (g2 mg + na_q1-q2_0), 2026-08-12",
-  "review_date": "2026-08-12",
+  "reviewed_by": "reviewer-b3-cinder-halyard-2276",
+  "review_date": "2026-09-10",
   "blind": true,
   "sample_seeds": [
     42,
@@ -9,7 +9,6 @@
     44,
     45,
     46,
-    50,
     500,
     501,
     502,
@@ -23,66 +22,55 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "ordering",
-      "question_text": "Arrange these numbers from largest to smallest: 29, 15, 28",
+      "formatter": "sort_order",
+      "question_text": "Arrange these numbers from largest to smallest: 637, 638, 229",
       "correct_answer": [
-        29,
-        28,
-        15
+        638,
+        637,
+        229
       ]
     },
     {
       "seed": 43,
-      "formatter": "ordering",
-      "question_text": "Maria counted seashells collected by 3 friends: 24, 32, 35. Arrange the counts from largest to smallest.",
+      "formatter": "sort_order",
+      "question_text": "Maria counted seashells collected by 3 friends: 33, 41, 44. Arrange the counts from largest to smallest.",
       "correct_answer": [
-        35,
-        32,
-        24
+        44,
+        41,
+        33
       ]
     },
     {
       "seed": 44,
       "formatter": "ordering",
-      "question_text": "Arrange these numbers from smallest to largest: 26, 15, 33",
+      "question_text": "Arrange these numbers from smallest to largest: 412, 405, 231",
       "correct_answer": [
-        15,
-        26,
-        33
+        231,
+        405,
+        412
       ]
     },
     {
       "seed": 45,
       "formatter": "ordering",
-      "question_text": "Ben counted seashells collected by 5 friends: 21, 23, 29, 30, 31. Arrange the counts from smallest to largest.",
+      "question_text": "Ben counted seashells collected by 5 friends: 260, 262, 268, 269, 270. Arrange the counts from smallest to largest.",
       "correct_answer": [
-        21,
-        23,
-        29,
-        30,
-        31
+        260,
+        262,
+        268,
+        269,
+        270
       ]
     },
     {
       "seed": 46,
       "formatter": "ordering",
-      "question_text": "Arrange these numbers from smallest to largest: 41, 22, 39, 28",
+      "question_text": "Arrange these numbers from smallest to largest: 900, 881, 898, 887",
       "correct_answer": [
-        22,
-        28,
-        39,
-        41
-      ]
-    },
-    {
-      "seed": 50,
-      "formatter": "sort_order",
-      "question_text": "Arrange these numbers from smallest to largest: 32, 28, 41, 36",
-      "correct_answer": [
-        28,
-        32,
-        36,
-        41
+        881,
+        887,
+        898,
+        900
       ]
     },
     {
@@ -118,95 +106,95 @@
     },
     {
       "seed": 600,
-      "formatter": "ordering",
-      "question_text": "Arrange these numbers from largest to smallest: 32, 35, 25, 41",
+      "formatter": "sort_order",
+      "question_text": "Arrange these numbers from largest to smallest: 950, 934, 944, 941",
       "correct_answer": [
-        41,
-        35,
-        32,
-        25
+        950,
+        944,
+        941,
+        934
       ]
     },
     {
       "seed": 601,
-      "formatter": "sort_order",
-      "question_text": "Ben counted storybooks collected by 3 friends: 22, 38, 39. Arrange the counts from smallest to largest.",
+      "formatter": "ordering",
+      "question_text": "Ben counted storybooks collected by 3 friends: 181, 197, 198. Arrange the counts from smallest to largest.",
       "correct_answer": [
-        22,
-        38,
-        39
+        181,
+        197,
+        198
       ]
     },
     {
       "seed": 602,
       "formatter": "ordering",
-      "question_text": "Arrange these numbers from smallest to largest: 30, 40, 35, 37",
+      "question_text": "Arrange these numbers from smallest to largest: 399, 409, 404, 406",
       "correct_answer": [
-        30,
-        35,
-        37,
-        40
+        399,
+        404,
+        406,
+        409
       ]
     },
     {
       "seed": 603,
       "formatter": "ordering",
-      "question_text": "Kuya Pat counted stickers collected by 4 friends: 21, 35, 37, 39. Arrange the counts from largest to smallest.",
+      "question_text": "Kuya Pat counted stickers collected by 4 friends: 150, 164, 166, 168. Arrange the counts from largest to smallest.",
       "correct_answer": [
-        39,
-        37,
-        35,
-        21
+        168,
+        166,
+        164,
+        150
       ]
     },
     {
       "seed": 604,
-      "formatter": "ordering",
-      "question_text": "Liza counted seashells collected by 4 friends: 21, 22, 23, 24. Arrange the counts from largest to smallest.",
+      "formatter": "sort_order",
+      "question_text": "Liza counted seashells collected by 4 friends: 60, 61, 62, 63. Arrange the counts from largest to smallest.",
       "correct_answer": [
-        24,
-        23,
-        22,
-        21
+        63,
+        62,
+        61,
+        60
       ]
     },
     {
       "seed": 605,
-      "formatter": "sort_order",
-      "question_text": "Ana counted marbles collected by 5 friends: 22, 24, 32, 36, 38. Arrange the counts from largest to smallest.",
+      "formatter": "ordering",
+      "question_text": "Ana counted marbles collected by 5 friends: 161, 163, 171, 175, 177. Arrange the counts from largest to smallest.",
       "correct_answer": [
-        38,
-        36,
-        32,
-        24,
-        22
+        177,
+        175,
+        171,
+        163,
+        161
       ]
     }
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "Every sample presents a list of numbers to arrange, e.g. seed 44 \"Arrange these numbers from smallest to largest: 26, 15, 33\", directly matching the ordering verb."
+      "rationale": "Each seed asks for an actual arrangement and the keys are returned as ordered sequences, so the learner produces the ordering rather than selecting a pre-made one. Both requested directions are issued explicitly in the stems and the keys match them correctly throughout."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "The vice-versa clause is honored: largest-to-smallest (seed 42, seed 600) and smallest-to-largest (seed 44, seed 502) are each generated multiple times."
+      "rationale": "The vice versa clause is genuinely honoured, with smallest-to-largest and largest-to-smallest arriving in roughly equal numbers and both appearing in bare and contextual forms. Set sizes vary from three to five values, and both tightly clustered sets and sets with a distant outlier occur."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Both bare number lists and short named contexts, \"Maria counted seashells collected by 3 friends: 24, 32, 35\", are simple, single-clause sentences."
+      "rationale": "Ordering three to five three-digit numerals is a Quarter 1 Grade 2 demand, and the collected-objects framings keep the task concrete. The clustered sets require comparison down to the ones digit, which is challenging but squarely within what place-value knowledge at this point supports."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "Pure numeral lists sit alongside contextual word problems (seashells, stickers, marbles) and list lengths vary from three to five numbers."
+      "rationale": "Bare numeral lists and word-problem framings about friends' collections both appear, the collections vary across seashells, storybooks, stickers and marbles, and two interaction types are used. Word problem, pure computation and both orientations are all represented."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "The varying element is list length and value magnitude, both on the ordering skill."
+      "rationale": "Difficulty moves along the dimensions that actually make ordering hard, namely how many values must be arranged and how close together they sit. A set of four values in the nine-hundreds separated by single units is a real step up from three widely spaced values, and both ends of that range are generated."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Seed 500 uses values up to 1000 (\"993, 998, 996, 1000\") and seed 501 uses \"1000, 544, 997\", reaching the competency's stated ceiling."
+      "rationale": "The ceiling is genuinely reached, with 1000 itself appearing inside several sets including one arranged from largest to smallest against 997 and 544. A couple of easier two-digit sets sit at the bottom of the range, which reads as scaffolding rather than as a failure to meet the bound."
     }
   },
   "overall": "PASS"

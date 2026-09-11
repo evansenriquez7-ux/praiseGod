@@ -1,35 +1,8 @@
 {
   "node_id": "mat_g1_na_q1_7",
-  "reviewed_by": "Claude blind reviewer, batch D1B, 2026-09-04",
-  "review_date": "2026-09-04",
+  "reviewed_by": "reviewer-b1-quartz-mallow-4412",
+  "review_date": "2026-09-10",
   "blind": true,
-  "overall": "CONCERN",
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "The two describing clauses land squarely. \"Counting up\" is literal in seed 46, \"Start at 12. Count up 7 more. What number do you land on?\", and in seed 603, \"Start at 4. Count up 3 more. You land on ___\". \"Putting together\" is literal in seed 45, \"One group has 4 items and another group has 13 items. If you put them together, how many items are there in all?\", and seed 47, \"One group has 1 item and another group has 10 items. Putting them together makes ___ items in all.\" But the lead verb is to \"Illustrate\" using models, and most items illustrate nothing — seed 52 is purely abstract part-whole language, \"The two parts are 1 and 7. What is the sum?\", with no model, no objects and no picture."
-    },
-    "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "Two of the three clauses are covered well, but \"a variety of concrete and pictorial models\" is served by only three of 18 samples: seed 43's star array (\"There are 18 stars.\" then \"1 more star is added.\"), seed 500's cup array (\"There are 12 drinks.\"), and seed 66's \"Show 12 + 7 on the number line.\" Those two emoji items are the same model with a different icon, so the stated \"variety\" reduces to one pictorial type plus one number line. No concrete model (counters, blocks, fingers, ten-frame) appears anywhere; the closest is the generic noun in seed 600, \"One group has 11 items and another group has 7 items.\""
-    },
-    "cognitive_capacity": {
-      "verdict": "CONCERN",
-      "rationale": "This is Grade 1 Quarter 1, the first quarter of formal schooling, yet the dominant stem is a long text-only sentence with no picture to lean on: seed 501 reads \"One group has 15 items and another group has 2 items. Putting them together makes 17 items in all. True or False?\" — 19 words and two embedded numbers for an emergent reader, with the word \"items\" carrying no concrete referent. Seed 52's \"The two parts are 1 and 7. What is the sum?\" asks for abstract part-whole vocabulary at the point in the year when the competency expects models. The genuinely age-fitted items are the picture ones, seeds 43 and 500, and they are the minority."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "Two templates account for 14 of 18 samples: the group-combining sentence (seeds 44, 45, 47, 68, 501, 502, 600) and the count-up sentence (seeds 42, 46, 601, 603, 604, 606, 607), each repeated near-verbatim with only the numerals changed — compare seed 601, \"Start at 10. Count up 5 more. What number do you land on?\", with seed 607, \"Start at 10. Count up 9 more. What number do you land on?\". Operands repeat as well: 12 and 7 drive three separate items (seed 46's count-up, seed 66's \"Show 12 + 7 on the number line.\", and seed 500's drinks picture), and six items land on the answer 19. The noun is \"items\" in every group item; no real objects vary."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Nothing exceeds Grade 1 Quarter 1. Every operation is addition, every sum is at or under 20 (seed 44's 10 + 10 = 20 is the ceiling), and the only technical words used are ones the competency itself sanctions — \"counting up\" language in seed 606, \"Start at 18. Count up 1 more. What number do you land on?\", and putting-together language in seed 68, \"One group has 13 items and another group has 1 item. Putting them together makes 14 items in all. True or False?\" No subtraction, no place-value naming, no regrouping vocabulary appears."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "All sums fall inside \"sums up to 20\": the largest is seed 44's 20 (\"One group has 10 items and another group has 10 items.\"), and the smallest, seed 42's start at 4 counting up 2 to 6, gives an appropriate low anchor. Addends span 1 to 18 (seed 43's 18 stars plus 1; seed 52's \"The two parts are 1 and 7.\"), so both the small-number and near-ceiling ends of the band are exercised. Distractors above 20, such as 29 at seed 46 and 30 at seed 44, are lures only and are never presented as sums."
-    }
-  },
   "sample_seeds": [
     42,
     43,
@@ -47,8 +20,8 @@
     601,
     603,
     604,
-    606,
-    607
+    605,
+    606
   ],
   "samples_reviewed": [
     {
@@ -360,6 +333,38 @@
       }
     },
     {
+      "seed": 605,
+      "formatter": "cloze",
+      "question_text": "Start at 11. Count up 7 more. You land on ___",
+      "correct_answer": 18,
+      "options": [
+        {
+          "key": "A",
+          "value": 28,
+          "text": "28",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 18,
+          "text": "18",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 19,
+          "text": "19",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 17,
+          "text": "17",
+          "is_correct": false
+        }
+      ]
+    },
+    {
       "seed": 606,
       "formatter": "mcq",
       "question_text": "Start at 18. Count up 1 more. What number do you land on?",
@@ -386,34 +391,33 @@
           "is_correct": true
         }
       ]
-    },
-    {
-      "seed": 607,
-      "formatter": "mcq",
-      "question_text": "Start at 10. Count up 9 more. What number do you land on?",
-      "correct_answer": 19,
-      "options": [
-        {
-          "key": "A",
-          "value": 29,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 19,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 20,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 18,
-          "is_correct": false
-        }
-      ]
     }
-  ]
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "Both descriptions the competency names are enacted literally - items that start at a number and 'Count up' a stated amount, and items that 'put them together' from two groups - alongside pictured sets and a number-line render."
+    },
+    "comprehensive_coverage": {
+      "verdict": "CONCERN",
+      "rationale": "Sums stay within 20 as required, but no sampled pair bridges a ten. Every addition is either ten-anchored or a small amount added to a larger one, so the case where counting up crosses a decade - the hard half of this skill - is never illustrated."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "One addition per item with four short options, and the error-detection render names a child and states the claim plainly enough that a Grade 1 pupil can judge it."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "Several interaction types appear across the set, including judging another pupil's stated answer, a true-or-false claim, a typed sum from two named parts, and emoji groups that are added to."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "As seeds climb, the starting number rises toward the upper teens while the count-up step stays small enough to actually count, which is a sensible internal progression for illustrating addition."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "The largest total is 20 and every sum lands at or below it, matching the ceiling the competency states without stopping short of it."
+    }
+  },
+  "overall": "CONCERN"
 }

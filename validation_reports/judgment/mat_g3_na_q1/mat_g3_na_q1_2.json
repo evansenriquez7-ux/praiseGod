@@ -1,101 +1,83 @@
 {
   "node_id": "mat_g3_na_q1_2",
-  "reviewed_by": "Gemini Pro blind reviewer, batch G3-NA-Q1-Harden (mat_g3_na_q1_2), 2026-08-18",
-  "review_date": "2026-08-18",
+  "reviewed_by": "reviewer-b5-marlin-obsidian-3358",
+  "review_date": "2026-09-10",
   "blind": true,
-  "overall": "PASS",
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "Every sample directly assesses the target competency of describing positions with ordinal numbers. For example, seed 43 asks \"Write the symbol for the twelfth position.\", seed 44 asks \"A runner is at position number 3. In what place did the runner finish?\", and seed 500 asks \"What ordinal describes position number 100?\", directly evaluating the student's ability to represent and understand ordinal positions."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The samples provide comprehensive coverage of core ordinal skills: word-to-symbol conversion in seed 46 (\"Write the symbol for the first position.\") and seed 601 (\"Write the symbol for the eleventh position.\"), position-to-ordinal mapping in seed 45 (\"What ordinal describes position number 8?\") and seed 50 (\"What ordinal describes position number 6?\"), position comparison in seed 42 (\"Who arrived earlier: the student in 1st place or 12th place?\"), and sequential successor identification in seed 501 (\"Which position comes after 99th?\")."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The language, sentence structure, and conceptual load are well-calibrated for Grade 3 Quarter 1 students. Prompts such as \"A runner is at position number 6. In what place did the runner finish?\" in seed 600 use simple, familiar vocabulary and clear contexts without cognitive overloading or extraneous reading demands."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The item set features multiple question templates and real-world situations, ranging from competitive race scenarios like \"A runner is at position number 3. In what place did the runner finish?\" (seed 44) to arrival comparisons in \"Who arrived earlier: the student in 1st place or 12th place?\" (seed 42) and direct symbolic translation in \"Write the symbol for the twelfth position.\" (seed 43), with items delivered across both MCQ and cloze formatters."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "All items strictly adhere to the competency boundaries without introducing out-of-scope operations or premature concepts. Distractors (e.g. 71st, 98th, 97th in seed 45's \"What ordinal describes position number 8?\") represent valid ordinal structures that test true positional discrimination rather than reading tricks."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "The sample set fully spans the curriculum-mandated scale up to 100th. Low range values are tested in seed 46 (\"Write the symbol for the first position.\"), teen values in seed 601 (\"Write the symbol for the eleventh position.\"), and upper boundary values up to 100th are evaluated in seed 500 (\"What ordinal describes position number 100?\") and seed 501 (\"Which position comes after 99th?\")."
-    }
-  },
   "sample_seeds": [
     42,
     43,
     44,
     45,
     46,
-    50,
     500,
     501,
     502,
     600,
-    601
+    601,
+    602,
+    603
   ],
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "mcq",
-      "question_text": "Who arrived earlier: the student in 1st place or 12th place?",
-      "correct_answer": "1st",
+      "formatter": "cloze",
+      "question_text": "Which word describes the 95th position?",
+      "correct_answer": "ninety-fifth",
       "options": [
         {
           "key": "A",
-          "value": "43rd",
-          "is_correct": false
+          "value": "ninety-fifth",
+          "text": "ninety-fifth",
+          "is_correct": true
         },
         {
           "key": "B",
-          "value": "84th",
+          "value": "forty-second",
+          "text": "forty-second",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "1st",
-          "is_correct": true
+          "value": "seventy-ninth",
+          "text": "seventy-ninth",
+          "is_correct": false
         },
         {
           "key": "D",
-          "value": "80th",
+          "value": "eighty-third",
+          "text": "eighty-third",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 43,
-      "formatter": "mcq",
-      "question_text": "Write the symbol for the twelfth position.",
-      "correct_answer": "12th",
+      "formatter": "cloze",
+      "question_text": "Write the symbol for the ninetieth position.",
+      "correct_answer": "90th",
       "options": [
         {
           "key": "A",
-          "value": "12th",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": "47th",
+          "value": "15th",
+          "text": "15th",
           "is_correct": false
         },
         {
+          "key": "B",
+          "value": "90th",
+          "text": "90th",
+          "is_correct": true
+        },
+        {
           "key": "C",
-          "value": "16th",
+          "value": "46th",
+          "text": "46th",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "37th",
+          "value": "36th",
+          "text": "36th",
           "is_correct": false
         }
       ]
@@ -103,51 +85,51 @@
     {
       "seed": 44,
       "formatter": "mcq",
-      "question_text": "A runner is at position number 3. In what place did the runner finish?",
-      "correct_answer": "3rd",
+      "question_text": "The pupils stand in a row. Carlo is number 23 in the row. Which word describes Carlo's position?",
+      "correct_answer": "twenty-third",
       "options": [
         {
           "key": "A",
-          "value": "33rd",
-          "is_correct": false
+          "value": "twenty-third",
+          "is_correct": true
         },
         {
           "key": "B",
-          "value": "64th",
+          "value": "sixty-fourth",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "89th",
+          "value": "eighty-ninth",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "3rd",
-          "is_correct": true
+          "value": "thirty-third",
+          "is_correct": false
         }
       ]
     },
     {
       "seed": 45,
       "formatter": "mcq",
-      "question_text": "What ordinal describes position number 8?",
-      "correct_answer": "8th",
+      "question_text": "Which position comes after 63rd?",
+      "correct_answer": "64th",
       "options": [
         {
           "key": "A",
+          "value": "64th",
+          "is_correct": true
+        },
+        {
+          "key": "B",
           "value": "71st",
           "is_correct": false
         },
         {
-          "key": "B",
+          "key": "C",
           "value": "98th",
           "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "8th",
-          "is_correct": true
         },
         {
           "key": "D",
@@ -159,59 +141,27 @@
     {
       "seed": 46,
       "formatter": "mcq",
-      "question_text": "Write the symbol for the first position.",
-      "correct_answer": "1st",
-      "options": [
-        {
-          "key": "A",
-          "value": "32nd",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "1st",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": "89th",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "75th",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 50,
-      "formatter": "cloze",
-      "question_text": "What ordinal describes position number 6?",
+      "question_text": "Write the symbol for the sixth position.",
       "correct_answer": "6th",
       "options": [
         {
           "key": "A",
-          "value": "34th",
-          "text": "34th",
+          "value": "75th",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "6th",
-          "text": "6th",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": "8th",
-          "text": "8th",
+          "value": "32nd",
           "is_correct": false
         },
         {
+          "key": "C",
+          "value": "6th",
+          "is_correct": true
+        },
+        {
           "key": "D",
-          "value": "24th",
-          "text": "24th",
+          "value": "89th",
           "is_correct": false
         }
       ]
@@ -219,31 +169,31 @@
     {
       "seed": 500,
       "formatter": "cloze",
-      "question_text": "What ordinal describes position number 100?",
-      "correct_answer": "100th",
+      "question_text": "The baskets are placed in a row. One basket is number 100 in the row. Which word describes its position?",
+      "correct_answer": "one hundredth",
       "options": [
         {
           "key": "A",
-          "value": "100th",
-          "text": "100th",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": "5th",
-          "text": "5th",
+          "value": "thirteenth",
+          "text": "thirteenth",
           "is_correct": false
         },
         {
+          "key": "B",
+          "value": "one hundredth",
+          "text": "one hundredth",
+          "is_correct": true
+        },
+        {
           "key": "C",
-          "value": "60th",
-          "text": "60th",
+          "value": "fifth",
+          "text": "fifth",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "95th",
-          "text": "95th",
+          "value": "fifty-second",
+          "text": "fifty-second",
           "is_correct": false
         }
       ]
@@ -256,22 +206,22 @@
       "options": [
         {
           "key": "A",
-          "value": "100th",
-          "is_correct": true
+          "value": "63rd",
+          "is_correct": false
         },
         {
           "key": "B",
-          "value": "80th",
+          "value": "93rd",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "10th",
-          "is_correct": false
+          "value": "100th",
+          "is_correct": true
         },
         {
           "key": "D",
-          "value": "41st",
+          "value": "19th",
           "is_correct": false
         }
       ]
@@ -279,90 +229,169 @@
     {
       "seed": 502,
       "formatter": "mcq",
-      "question_text": "Which position comes after 99th?",
-      "correct_answer": "100th",
+      "question_text": "Who arrived earlier: the student in 100th place or 94th place?",
+      "correct_answer": "94th",
       "options": [
         {
           "key": "A",
-          "value": "21st",
+          "value": "77th",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "100th",
-          "is_correct": true
+          "value": "33rd",
+          "is_correct": false
         },
         {
           "key": "C",
-          "value": "63rd",
+          "value": "21st",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "61st",
-          "is_correct": false
+          "value": "94th",
+          "is_correct": true
         }
       ]
     },
     {
       "seed": 600,
       "formatter": "mcq",
-      "question_text": "A runner is at position number 6. In what place did the runner finish?",
-      "correct_answer": "6th",
+      "question_text": "Which position comes after 45th?",
+      "correct_answer": "46th",
       "options": [
         {
           "key": "A",
-          "value": "34th",
+          "value": "33rd",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "41st",
+          "value": "60th",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "6th",
-          "is_correct": true
+          "value": "40th",
+          "is_correct": false
         },
         {
           "key": "D",
-          "value": "60th",
-          "is_correct": false
+          "value": "46th",
+          "is_correct": true
         }
       ]
     },
     {
       "seed": 601,
-      "formatter": "cloze",
-      "question_text": "Write the symbol for the eleventh position.",
-      "correct_answer": "11th",
+      "formatter": "mcq",
+      "question_text": "The pupils stand in a row. Hector is number 88 in the row. Which word describes Hector's position?",
+      "correct_answer": "eighty-eighth",
       "options": [
         {
           "key": "A",
-          "value": "55th",
-          "text": "55th",
+          "value": "fifty-fourth",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "90th",
-          "text": "90th",
+          "value": "forty-eighth",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "49th",
-          "text": "49th",
+          "value": "eighty-eighth",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "ninetieth",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 602,
+      "formatter": "mcq",
+      "question_text": "What ordinal describes position number 24?",
+      "correct_answer": "24th",
+      "options": [
+        {
+          "key": "A",
+          "value": "65th",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "2nd",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "60th",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "11th",
-          "text": "11th",
+          "value": "24th",
           "is_correct": true
         }
       ]
+    },
+    {
+      "seed": 603,
+      "formatter": "mcq",
+      "question_text": "Which word describes the 71st position?",
+      "correct_answer": "seventy-first",
+      "options": [
+        {
+          "key": "A",
+          "value": "thirty-seventh",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "twentieth",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "seventy-first",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "sixty-sixth",
+          "is_correct": false
+        }
+      ]
     }
-  ]
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "Position is described in both registers the competency implies, and several samples anchor it to actual objects: pupils standing in a row with Carlo at number 23 and Hector at number 88, and baskets placed in a row with one at number 100."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "Five task shapes are produced, symbol to word, word to symbol, cardinal to ordinal, the position that comes next, and a comparison of two positions, and the suffix families are all exercised, with 71st, 33rd, 2nd and the -th forms all appearing."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Forms such as ninety-fifth and one hundredth are the expected Grade 3 Quarter 1 vocabulary, and the successor items stay simple enough that the 99th to 100th crossing can be reasoned about rather than memorised."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "Multiple choice and cloze both appear, and the set alternates between bare ordinal work and situated items involving a row of pupils, a row of baskets and an order of arrival, so presentation genuinely rotates."
+    },
+    "competency_alignment": {
+      "verdict": "CONCERN",
+      "rationale": "Two weaknesses pull the items off the competency. In the arrival item asking about 100th place or 94th place, only 94th is among the four options, so it resolves by spotting the listed position. And most option sets are unrelated ordinals rather than near neighbours, as with the 95th item offered against forty-second, seventy-ninth and eighty-third, so no ordinal discrimination is required."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Values run from 6th up to 100th and the ceiling is met exactly, with two samples landing on the hundredth position itself rather than stopping short of it."
+    }
+  },
+  "overall": "CONCERN"
 }

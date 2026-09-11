@@ -1,35 +1,8 @@
 {
   "node_id": "mat_g1_na_q3_6",
-  "reviewed_by": "Gemini Pro blind reviewer, batch Re-Harden (mat_g1_na_q3_6), 2026-08-19",
-  "review_date": "2026-08-19",
+  "reviewed_by": "reviewer-b2-tallow-verdigris-8130",
+  "review_date": "2026-09-10",
   "blind": true,
-  "overall": "PASS",
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The samples directly fulfill the MATATAG learning competency requirement to determine the next term/s in repeating patterns. Across the sample set, items require students to identify repeating sequences and name the subsequent term or missing element. For instance, Seed 42 asks \"What is the next letter in the pattern: e, d, e, d, e, d?\", Seed 44 asks \"What is the next number in the pattern: 10, 1, 10, 1, 10, 1?\", and Seed 55 asks \"What is the missing piece (position 6) in the pattern?\". All tasks clearly target pattern recognition and completion."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The sample set comprehensively covers the multiple modalities and pattern lengths described in the curriculum standard. It includes letter patterns such as \"What is the next letter in the pattern: e, d, e, d, e, d?\" (Seed 42) and \"What is the next letter in the pattern: f, o, c, f, o, c?\" (Seed 502), number patterns such as \"What is the next number in the pattern: 2, 1, 2, 1, 2, 1?\" (Seed 45) and \"What is the next number in the pattern: 8, 18, 20, 8, 18, 20?\" (Seed 501), as well as visual/positional pattern completion in \"What is the missing piece (position 6) in the pattern?\" (Seed 55). Both 2-term (AB) and 3-term (ABC) repeating cores are represented."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The items are well-tailored to Grade 1 Quarter 3 learners. The question stems are short, simple, and direct (e.g., \"What is the next number in the pattern: 10, 4, 10, 4, 10, 4?\" and \"What is the next letter in the pattern: p, c, p, c, p, c?\"). The sequences provide at least two full repetitions of the core pattern before prompting for the next term, ensuring clarity without overwhelming the student's working memory."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "There is a solid distribution of item formats and stimulus types across the seeds. The set includes standard multiple choice questions (mcq) in Seed 42 (\"What is the next letter in the pattern: e, d, e, d, e, d?\"), fill-in cloze format (cloze) in Seed 50 (\"What is the next number in the pattern: 2, 10, 2, 10, 2, 10?\") and Seed 501 (\"What is the next number in the pattern: 8, 18, 20, 8, 18, 20?\"), as well as visual stimulus questions (read_mcq) in Seed 500 (\"What is the missing piece (position 6) in the pattern?\")."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "All questions remain strictly within the bounds of MATATAG Grade 1 Quarter 3 repeating patterns. The problems exclusively assess periodic cyclic repetition (such as in Seed 46: \"What is the next number in the pattern: 10, 4, 10, 4, 10, 4?\" and Seed 502: \"What is the next letter in the pattern: f, o, c, f, o, c?\") without introducing out-of-grade arithmetic progression rules, geometric progressions, or complex algebraic relations."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "Numerical values and letter choices are scaled appropriately for Grade 1. Numeric terms are single and double-digit integers within 20 (e.g., 1, 2, 4, 8, 10, 18, 20 as seen in \"What is the next number in the pattern: 8, 18, 20, 8, 18, 20?\" and \"What is the next number in the pattern: 2, 1, 2, 1, 2, 1?\"), which are well within the Grade 1 number scope. Letters used are clear, distinct standard lowercase/uppercase alphabetic characters."
-    }
-  },
   "sample_seeds": [
     42,
     43,
@@ -46,62 +19,317 @@
     {
       "seed": 42,
       "formatter": "mcq",
-      "question_text": "What is the next letter in the pattern: e, d, e, d, e, d?",
-      "correct_answer": "e"
+      "question_text": "What is the next letter in the pattern: d, p, c, d, p, c?",
+      "correct_answer": "d",
+      "options": [
+        {
+          "key": "A",
+          "value": "o",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "b",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "n",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "d",
+          "is_correct": true
+        }
+      ]
     },
     {
       "seed": 43,
       "formatter": "mcq",
-      "question_text": "What is the next letter in the pattern: p, c, p, c, p, c?",
-      "correct_answer": "p"
+      "question_text": "What is the next letter in the pattern: i, f, i, f, i, f?",
+      "correct_answer": "i",
+      "options": [
+        {
+          "key": "A",
+          "value": "i",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "b",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "k",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "p",
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 44,
       "formatter": "mcq",
       "question_text": "What is the next number in the pattern: 10, 1, 10, 1, 10, 1?",
-      "correct_answer": 10
+      "correct_answer": 10,
+      "options": [
+        {
+          "key": "A",
+          "value": 12,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 9,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 11,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 10,
+          "is_correct": true
+        }
+      ]
     },
     {
       "seed": 45,
       "formatter": "mcq",
       "question_text": "What is the next number in the pattern: 2, 1, 2, 1, 2, 1?",
-      "correct_answer": 2
+      "correct_answer": 2,
+      "options": [
+        {
+          "key": "A",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 2,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 1,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 4,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 46,
       "formatter": "mcq",
       "question_text": "What is the next number in the pattern: 10, 4, 10, 4, 10, 4?",
-      "correct_answer": 10
+      "correct_answer": 10,
+      "options": [
+        {
+          "key": "A",
+          "value": 9,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 12,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 11,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 10,
+          "is_correct": true
+        }
+      ]
     },
     {
       "seed": 50,
       "formatter": "cloze",
       "question_text": "What is the next number in the pattern: 2, 10, 2, 10, 2, 10?",
-      "correct_answer": 2
+      "correct_answer": 2,
+      "options": [
+        {
+          "key": "A",
+          "value": 2,
+          "text": "2",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 3,
+          "text": "3",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 1,
+          "text": "1",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 4,
+          "text": "4",
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 55,
       "formatter": "read_mcq",
       "question_text": "What is the missing piece (position 6) in the pattern?",
-      "correct_answer": "C"
+      "correct_answer": "A",
+      "options": [
+        {
+          "key": "A",
+          "value": 13,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 12,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 14,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 1,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 500,
       "formatter": "read_mcq",
       "question_text": "What is the missing piece (position 6) in the pattern?",
-      "correct_answer": "A"
+      "correct_answer": "B",
+      "options": [
+        {
+          "key": "A",
+          "value": 10,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 9,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 17,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 19,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 501,
       "formatter": "cloze",
       "question_text": "What is the next number in the pattern: 8, 18, 20, 8, 18, 20?",
-      "correct_answer": 8
+      "correct_answer": 8,
+      "options": [
+        {
+          "key": "A",
+          "value": 10,
+          "text": "10",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 7,
+          "text": "7",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 8,
+          "text": "8",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 9,
+          "text": "9",
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 502,
       "formatter": "mcq",
-      "question_text": "What is the next letter in the pattern: f, o, c, f, o, c?",
-      "correct_answer": "f"
+      "question_text": "What is the next letter in the pattern: o, p, c, h, o, p?",
+      "correct_answer": "c",
+      "options": [
+        {
+          "key": "A",
+          "value": "f",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "a",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "c",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "j",
+          "is_correct": false
+        }
+      ]
     }
-  ]
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "CONCERN",
+      "rationale": "Continuing a repeating sequence is the right act, and the letter items mirror the competency's own a, b, c illustration. But the wording says next term/s and every sample asks for exactly one term; the two-blank case shown in the competency's example is never generated."
+    },
+    "comprehensive_coverage": {
+      "verdict": "FAIL",
+      "rationale": "The competency explicitly opens the domain to rhythmic properties and visual elements in the arts, and neither ever appears: the entire pool is number strings, letter strings, and two unlabelled 'missing piece (position 6)' items whose options are numerals. Two of the three named strands of pattern material are missing outright, and so is the multi-term continuation."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Each pattern is displayed with the repeating unit shown at least twice before the blank, and the letters used are single lowercase characters, which keeps the perceptual load right for Grade 1."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "Apart from the two picture-based missing-piece items, the presentation is a comma-separated string every time; nothing asks the pupil to extend a pattern laid out in another orientation or to identify the repeating unit itself."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "The demand does deepen along the pattern axis: units grow from two elements (i, f) through three (d, p, c) to four (o, p, c, h), and the blank sometimes falls mid-sequence rather than at the end."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Numeric pattern elements stay small (1 through 20), which is appropriate since the numbers are pattern tokens rather than quantities to compute with."
+    }
+  },
+  "overall": "FAIL"
 }

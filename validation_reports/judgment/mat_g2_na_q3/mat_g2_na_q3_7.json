@@ -1,34 +1,8 @@
 {
   "node_id": "mat_g2_na_q3_7",
-  "reviewed_by": "Gemini Pro blind reviewer, batch G2-NA-Q3-Harden (mat_g2_na_q3_7), 2026-08-18",
+  "reviewed_by": "reviewer-b4-plover-saffron-6041",
+  "review_date": "2026-09-10",
   "blind": true,
-  "overall": "PASS",
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "All 16 sampled items directly evaluate finding the missing number in number sentences involving multiplication or division by 2, 3, 4, 5, and 10. Items test missing components across varied equations such as missing factors in \"What number goes in the blank: ___ \u00d7 2 = 2?\" (seed 42) and \"2 \u00d7 ___ = 20\" (seed 44), missing dividends in \"___ \u00f7 5 = 6\" (seed 501) and \"What number goes in the blank: ___ \u00f7 3 = 5?\" (seed 502), missing divisors in \"What number goes in the blank: 50 \u00f7 ___ = 10?\" (seed 45) and \"Both sides balance evenly. 24 \u00f7 ? = 8. What is the missing value?\" (seed 500), and missing products/quotients in \"What number goes in the blank: 100 \u00f7 10 = ___?\" (seed 43) and \"10 \u00f7 5 = ___\" (seed 603)."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The sample set comprehensively covers all specified multipliers and divisors (2, 3, 4, 5, and 10) across both multiplication and division operations. For example, 2 is covered in \"What number goes in the blank: ___ \u00d7 2 = 2?\" (seed 42) and \"What number goes in the blank: 4 \u00f7 2 = ___?\" (seed 46); 3 is covered in \"Both sides balance evenly. 24 \u00f7 ? = 8. What is the missing value?\" (seed 500) and \"What number goes in the blank: ___ \u00f7 3 = 5?\" (seed 502); 4 is covered in \"What number goes in the blank: 8 \u00f7 4 = ___?\" (seed 600) and \"4 \u00d7 10 = ___. What is the missing number?\" (seed 604); 5 is covered in \"___ \u00f7 5 = 6\" (seed 501) and \"10 \u00f7 5 = ___\" (seed 603); and 10 is covered in \"What number goes in the blank: 100 \u00f7 10 = ___?\" (seed 43), \"10 \u00d7 ___ = 60\" (seed 601), and \"In 20 \u00f7 10 = ___, the missing number is 1. True or False?\" (seed 605)."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The language and sentence structures are clear, concise, and appropriate for Grade 2 Quarter 3 learners. Questions avoid extraneous text and confusing phrasing, using straightforward prompts like \"10 \u00d7 ___ = 60\" (seed 601), \"What number goes in the blank: 4 \u00f7 2 = ___?\" (seed 46), and accessible balance metaphors such as \"Both sides balance evenly. 2 \u00d7 ? = 10. What is the missing value?\" (seed 55). True/false items such as \"In 8 \u00f7 ___ = 2, the missing number is 6. True or False?\" (seed 50) provide simple verification without excessive reading load."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The items exhibit robust structural variation across multiple formatters and placeholder placements. Formats include standard multiple choice (\"What number goes in the blank: ___ \u00f7 2 = 10?\", seed 602), cloze (\"___ \u00f7 5 = 6\", seed 501; \"2 \u00d7 ___ = 20\", seed 44), balance-prompt read_mcq (\"Both sides balance evenly. 2 \u00d7 ? = 10. What is the missing value?\", seed 55), and true/false verification (\"In 20 \u00f7 10 = ___, the missing number is 1. True or False?\", seed 605). Placeholder positions span start, middle, and end across both operations."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Every single item is strictly aligned with MATATAG learning competency mat_g2_na_q3_7. There are no out-of-scope concepts such as multi-digit multiplication, remainders in division, or factors beyond 2, 3, 4, 5, and 10. Each problem precisely requires solving for an unknown in a basic number sentence, matching items like \"4 \u00d7 10 = ___. What is the missing number?\" (seed 604) and \"What number goes in the blank: 50 \u00f7 ___ = 10?\" (seed 45)."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "The numerical scale is strictly constrained to Grade 2 limits. Factors and divisors are 2, 3, 4, 5, or 10, with dividends and products staying under or equal to 100 (e.g. 100 in \"What number goes in the blank: 100 \u00f7 10 = ___?\" [seed 43], 60 in \"10 \u00d7 ___ = 60\" [seed 601], 50 in \"What number goes in the blank: 50 \u00f7 ___ = 10?\" [seed 45], 30 in \"___ \u00f7 5 = 6\" [seed 501], and 24 in \"Both sides balance evenly. 24 \u00f7 ? = 8. What is the missing value?\" [seed 500]). Distractors are plausible numerical neighbors and common operation errors rather than arbitrary large numbers."
-    }
-  },
   "sample_seeds": [
     42,
     43,
@@ -51,27 +25,27 @@
     {
       "seed": 42,
       "formatter": "mcq",
-      "question_text": "What number goes in the blank: ___ \u00d7 2 = 2?",
+      "question_text": "What number goes in the blank: ___ × 2 = 2?",
       "correct_answer": 1,
       "options": [
         {
           "key": "A",
-          "value": 3,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 2,
-          "is_correct": false
-        },
-        {
-          "key": "C",
           "value": 1,
           "is_correct": true
         },
         {
-          "key": "D",
+          "key": "B",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "C",
           "value": 4,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 2,
           "is_correct": false
         }
       ]
@@ -79,18 +53,18 @@
     {
       "seed": 43,
       "formatter": "mcq",
-      "question_text": "What number goes in the blank: 100 \u00f7 10 = ___?",
+      "question_text": "What number goes in the blank: 100 ÷ 10 = ___?",
       "correct_answer": 10,
       "options": [
         {
           "key": "A",
-          "value": 10,
-          "is_correct": true
+          "value": 20,
+          "is_correct": false
         },
         {
           "key": "B",
-          "value": 20,
-          "is_correct": false
+          "value": 10,
+          "is_correct": true
         },
         {
           "key": "C",
@@ -107,78 +81,78 @@
     {
       "seed": 44,
       "formatter": "cloze",
-      "question_text": "2 \u00d7 ___ = 20",
+      "question_text": "2 × ___ = 20",
       "correct_answer": 10,
       "options": [
         {
           "key": "A",
-          "value": 30,
-          "text": "30",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 22,
-          "text": "22",
-          "is_correct": false
-        },
-        {
-          "key": "C",
           "value": 11,
           "text": "11",
           "is_correct": false
         },
         {
-          "key": "D",
+          "key": "B",
+          "value": 30,
+          "text": "30",
+          "is_correct": false
+        },
+        {
+          "key": "C",
           "value": 10,
           "text": "10",
           "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 22,
+          "text": "22",
+          "is_correct": false
         }
       ]
     },
     {
       "seed": 45,
       "formatter": "mcq",
-      "question_text": "What number goes in the blank: 50 \u00f7 ___ = 10?",
+      "question_text": "What number goes in the blank: 50 ÷ ___ = 10?",
       "correct_answer": 5,
       "options": [
         {
           "key": "A",
-          "value": 6,
+          "value": 15,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 60,
+          "value": 6,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 5,
-          "is_correct": true
+          "value": 60,
+          "is_correct": false
         },
         {
           "key": "D",
-          "value": 15,
-          "is_correct": false
+          "value": 5,
+          "is_correct": true
         }
       ]
     },
     {
       "seed": 46,
       "formatter": "mcq",
-      "question_text": "What number goes in the blank: 4 \u00f7 2 = ___?",
+      "question_text": "What number goes in the blank: 4 ÷ 2 = ___?",
       "correct_answer": 2,
       "options": [
         {
           "key": "A",
-          "value": 3,
-          "is_correct": false
+          "value": 2,
+          "is_correct": true
         },
         {
           "key": "B",
-          "value": 2,
-          "is_correct": true
+          "value": 6,
+          "is_correct": false
         },
         {
           "key": "C",
@@ -187,7 +161,7 @@
         },
         {
           "key": "D",
-          "value": 6,
+          "value": 3,
           "is_correct": false
         }
       ]
@@ -195,14 +169,14 @@
     {
       "seed": 50,
       "formatter": "true_false",
-      "question_text": "In 8 \u00f7 ___ = 2, the missing number is 6. True or False?",
+      "question_text": "In 8 ÷ ___ = 2, the missing number is 6. True or False?",
       "correct_answer": false
     },
     {
       "seed": 55,
       "formatter": "read_mcq",
-      "question_text": "Both sides balance evenly. 2 \u00d7 ? = 10. What is the missing value?",
-      "correct_answer": "D",
+      "question_text": "Both sides balance evenly. 2 × ? = 10. What is the missing value?",
+      "correct_answer": "B",
       "options": [
         {
           "key": "A",
@@ -211,8 +185,8 @@
         },
         {
           "key": "B",
-          "value": 6,
-          "is_correct": false
+          "value": 5,
+          "is_correct": true
         },
         {
           "key": "C",
@@ -221,21 +195,21 @@
         },
         {
           "key": "D",
-          "value": 5,
-          "is_correct": true
+          "value": 6,
+          "is_correct": false
         }
       ]
     },
     {
       "seed": 500,
       "formatter": "read_mcq",
-      "question_text": "Both sides balance evenly. 24 \u00f7 ? = 8. What is the missing value?",
-      "correct_answer": "C",
+      "question_text": "Both sides balance evenly. 24 ÷ ? = 8. What is the missing value?",
+      "correct_answer": "A",
       "options": [
         {
           "key": "A",
-          "value": 27,
-          "is_correct": false
+          "value": 3,
+          "is_correct": true
         },
         {
           "key": "B",
@@ -244,12 +218,12 @@
         },
         {
           "key": "C",
-          "value": 3,
-          "is_correct": true
+          "value": 4,
+          "is_correct": false
         },
         {
           "key": "D",
-          "value": 4,
+          "value": 27,
           "is_correct": false
         }
       ]
@@ -257,7 +231,7 @@
     {
       "seed": 501,
       "formatter": "cloze",
-      "question_text": "___ \u00f7 5 = 6",
+      "question_text": "___ ÷ 5 = 6",
       "correct_answer": 30,
       "options": [
         {
@@ -268,8 +242,8 @@
         },
         {
           "key": "B",
-          "value": 31,
-          "text": "31",
+          "value": 36,
+          "text": "36",
           "is_correct": false
         },
         {
@@ -280,8 +254,8 @@
         },
         {
           "key": "D",
-          "value": 36,
-          "text": "36",
+          "value": 31,
+          "text": "31",
           "is_correct": false
         }
       ]
@@ -289,18 +263,18 @@
     {
       "seed": 502,
       "formatter": "mcq",
-      "question_text": "What number goes in the blank: ___ \u00f7 3 = 5?",
+      "question_text": "What number goes in the blank: ___ ÷ 3 = 5?",
       "correct_answer": 15,
       "options": [
         {
           "key": "A",
-          "value": 20,
-          "is_correct": false
+          "value": 15,
+          "is_correct": true
         },
         {
           "key": "B",
-          "value": 15,
-          "is_correct": true
+          "value": 8,
+          "is_correct": false
         },
         {
           "key": "C",
@@ -309,7 +283,7 @@
         },
         {
           "key": "D",
-          "value": 8,
+          "value": 20,
           "is_correct": false
         }
       ]
@@ -317,27 +291,27 @@
     {
       "seed": 600,
       "formatter": "mcq",
-      "question_text": "What number goes in the blank: 8 \u00f7 4 = ___?",
+      "question_text": "What number goes in the blank: 8 ÷ 4 = ___?",
       "correct_answer": 2,
       "options": [
         {
           "key": "A",
-          "value": 10,
+          "value": 3,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 6,
-          "is_correct": false
-        },
-        {
-          "key": "C",
           "value": 2,
           "is_correct": true
         },
         {
+          "key": "C",
+          "value": 10,
+          "is_correct": false
+        },
+        {
           "key": "D",
-          "value": 3,
+          "value": 6,
           "is_correct": false
         }
       ]
@@ -345,45 +319,45 @@
     {
       "seed": 601,
       "formatter": "cloze",
-      "question_text": "10 \u00d7 ___ = 60",
+      "question_text": "10 × ___ = 60",
       "correct_answer": 6,
       "options": [
         {
           "key": "A",
+          "value": 6,
+          "text": "6",
+          "is_correct": true
+        },
+        {
+          "key": "B",
           "value": 66,
           "text": "66",
           "is_correct": false
         },
         {
-          "key": "B",
+          "key": "C",
           "value": 70,
           "text": "70",
           "is_correct": false
         },
         {
-          "key": "C",
+          "key": "D",
           "value": 7,
           "text": "7",
           "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 6,
-          "text": "6",
-          "is_correct": true
         }
       ]
     },
     {
       "seed": 602,
       "formatter": "mcq",
-      "question_text": "What number goes in the blank: ___ \u00f7 2 = 10?",
+      "question_text": "What number goes in the blank: ___ ÷ 2 = 10?",
       "correct_answer": 20,
       "options": [
         {
           "key": "A",
-          "value": 20,
-          "is_correct": true
+          "value": 12,
+          "is_correct": false
         },
         {
           "key": "B",
@@ -397,15 +371,15 @@
         },
         {
           "key": "D",
-          "value": 12,
-          "is_correct": false
+          "value": 20,
+          "is_correct": true
         }
       ]
     },
     {
       "seed": 603,
       "formatter": "cloze",
-      "question_text": "10 \u00f7 5 = ___",
+      "question_text": "10 ÷ 5 = ___",
       "correct_answer": 2,
       "options": [
         {
@@ -416,15 +390,15 @@
         },
         {
           "key": "B",
-          "value": 2,
-          "text": "2",
-          "is_correct": true
-        },
-        {
-          "key": "C",
           "value": 12,
           "text": "12",
           "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 2,
+          "text": "2",
+          "is_correct": true
         },
         {
           "key": "D",
@@ -437,7 +411,7 @@
     {
       "seed": 604,
       "formatter": "mcq",
-      "question_text": "4 \u00d7 10 = ___. What is the missing number?",
+      "question_text": "4 × 10 = ___. What is the missing number?",
       "correct_answer": 40,
       "options": [
         {
@@ -452,12 +426,12 @@
         },
         {
           "key": "C",
-          "value": 44,
+          "value": 41,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 41,
+          "value": 44,
           "is_correct": false
         }
       ]
@@ -465,8 +439,35 @@
     {
       "seed": 605,
       "formatter": "true_false",
-      "question_text": "In 20 \u00f7 10 = ___, the missing number is 1. True or False?",
+      "question_text": "In 20 ÷ 10 = ___, the missing number is 1. True or False?",
       "correct_answer": false
     }
-  ]
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "Every item is a number sentence with one quantity withheld, and both operations the node names are represented, multiplication in the 2-times-blank and 10-times-blank items and division throughout the remainder."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "Notably, the blank occupies every possible position: the first factor in seed 42, the second factor in seed 44, the dividend in seeds 501, 502 and 602, the divisor in seeds 45 and 50, and the quotient in seeds 43, 46 and 600. That is the full sub-case set this wording implies."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Sentences are short and symbolic, and the balance framing in seeds 55 and 500 gives a concrete image of equality before asking for the missing value, which supports rather than strains a Grade 2 reader."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The same missing-value idea appears as a direct question, as an equation with an underscore, as a truth claim about a proposed answer, and as a balance with a question mark, so the child meets the unknown in several notations."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "Distractors sit close enough to force real work, as with 31 and 36 offered against the key 30 for the blank divided by 5 equalling 6, and the varying element between seeds is which slot is unknown, which is exactly what this competency is about."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "All quantities stay within the 2, 3, 4, 5 and 10 tables, topping out at the 100-divided-by-10 item, and every divisor used is one of the five the node names."
+    }
+  },
+  "overall": "PASS"
 }

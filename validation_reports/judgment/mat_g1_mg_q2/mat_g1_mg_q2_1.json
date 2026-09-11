@@ -1,35 +1,8 @@
 {
   "node_id": "mat_g1_mg_q2_1",
-  "reviewed_by": "Gemini Pro blind reviewer, batch Re-Harden (mat_g1_mg_q2_1), 2026-08-18",
-  "review_date": "2026-08-18",
+  "reviewed_by": "reviewer-b1-quartz-mallow-4412",
+  "review_date": "2026-09-10",
   "blind": true,
-  "overall": "PASS",
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The sample problems directly fulfill the target competency of comparing lengths and distances using non-standard units. Direct length comparison is assessed with items such as \"Which is shorter: 2 paperclips or 6 paperclips?\" and \"Which is longer: 6 paperclips or 4 paperclips?\", while distance comparison is assessed with items like \"The distance from the bench to the tree is 3 blocks. The distance from the gate to the tree is 4 blocks. Which distance is shorter?\" and \"The distance from the bench to the tree is 6 hands. The distance from the gate to the tree is 7 hands. Which distance is shorter?\"."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The sample set provides comprehensive coverage across the competency scope by including both length and distance scenarios. It thoroughly evaluates both comparative directions: identifying shorter lengths/distances (e.g., \"Which is shorter: 2 paperclips or 6 paperclips?\" and \"The distance from the bench to the tree is 8 blocks. The distance from the gate to the tree is 9 blocks. Which distance is shorter?\") and identifying longer lengths/distances (e.g., \"Which is longer: 8 paperclips or 2 paperclips?\" and \"The distance from the bench to the tree is 6 blocks. The distance from the gate to the tree is 7 blocks. Which distance is longer?\"). Furthermore, varied non-standard units are featured (paperclips, blocks, hands)."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The linguistic complexity, context, and structural demands are well-calibrated for Grade 1 Quarter 2 learners. Sentences are concise, straightforward, and clearly state the measured quantities and landmarks without distracting extraneous information, as seen in \"The distance from the bench to the tree is 9 blocks. The distance from the gate to the tree is 6 blocks. Which distance is longer?\"."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The packet exercises multiple formatters and problem structures, incorporating both multiple-choice questions (e.g., \"The distance from the bench to the tree is 7 hands. The distance from the gate to the tree is 4 hands. Which distance is longer?\") and cloze/fill-in formatters (e.g., \"The distance from the bench to the tree is 6 blocks. The distance from the gate to the tree is 7 blocks. Which distance is longer?\"), covering different units (paperclips, blocks, hands) and comparison targets (longer vs. shorter)."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "The problems maintain strict fidelity to the MATATAG Grade 1 Quarter 2 curriculum. They avoid premature standard measurement units (such as centimeters or inches) and instead use non-standard units (paperclips, blocks, hands) to compare quantities directly, perfectly aligned with \"The distance from the bench to the tree is 7 blocks. The distance from the gate to the tree is 9 blocks. Which distance is shorter?\"."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "All numeric counts used for the non-standard measurements fall within single-digit integers (2 through 9, such as in \"Which is shorter: 2 paperclips or 6 paperclips?\" and \"The distance from the bench to the tree is 8 blocks. The distance from the gate to the tree is 9 blocks. Which distance is shorter?\"). These values are completely accessible and developmentally appropriate for Grade 1 students."
-    }
-  },
   "sample_seeds": [
     42,
     43,
@@ -47,61 +20,316 @@
       "seed": 42,
       "formatter": "mcq",
       "question_text": "Which is shorter: 2 paperclips or 6 paperclips?",
-      "correct_answer": 2
+      "correct_answer": 2,
+      "options": [
+        {
+          "key": "A",
+          "value": 2,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 6,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 1,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 3,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 43,
       "formatter": "mcq",
       "question_text": "Which is longer: 6 paperclips or 4 paperclips?",
-      "correct_answer": 6
+      "correct_answer": 6,
+      "options": [
+        {
+          "key": "A",
+          "value": 4,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 5,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 6,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 7,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 44,
       "formatter": "mcq",
       "question_text": "The distance from the bench to the tree is 3 blocks. The distance from the gate to the tree is 4 blocks. Which distance is shorter?",
-      "correct_answer": 3
+      "correct_answer": 3,
+      "options": [
+        {
+          "key": "A",
+          "value": 4,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 5,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 3,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 2,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 45,
       "formatter": "mcq",
       "question_text": "The distance from the bench to the tree is 8 blocks. The distance from the gate to the tree is 9 blocks. Which distance is shorter?",
-      "correct_answer": 8
+      "correct_answer": 8,
+      "options": [
+        {
+          "key": "A",
+          "value": 8,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 10,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 9,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 7,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 46,
       "formatter": "mcq",
       "question_text": "Which is longer: 8 paperclips or 2 paperclips?",
-      "correct_answer": 8
+      "correct_answer": 8,
+      "options": [
+        {
+          "key": "A",
+          "value": 8,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 9,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 7,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 2,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 50,
       "formatter": "cloze",
       "question_text": "The distance from the bench to the tree is 6 blocks. The distance from the gate to the tree is 7 blocks. Which distance is longer?",
-      "correct_answer": 7
+      "correct_answer": 7,
+      "options": [
+        {
+          "key": "A",
+          "value": 7,
+          "text": "7",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 9,
+          "text": "9",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 8,
+          "text": "8",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 6,
+          "text": "6",
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 500,
       "formatter": "cloze",
       "question_text": "The distance from the bench to the tree is 9 blocks. The distance from the gate to the tree is 6 blocks. Which distance is longer?",
-      "correct_answer": 9
+      "correct_answer": 9,
+      "options": [
+        {
+          "key": "A",
+          "value": 6,
+          "text": "6",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 9,
+          "text": "9",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 10,
+          "text": "10",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 8,
+          "text": "8",
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 501,
       "formatter": "mcq",
       "question_text": "The distance from the bench to the tree is 6 hands. The distance from the gate to the tree is 7 hands. Which distance is shorter?",
-      "correct_answer": 6
+      "correct_answer": 6,
+      "options": [
+        {
+          "key": "A",
+          "value": 6,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 7,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 5,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 8,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 502,
       "formatter": "mcq",
       "question_text": "The distance from the bench to the tree is 7 hands. The distance from the gate to the tree is 4 hands. Which distance is longer?",
-      "correct_answer": 7
+      "correct_answer": 7,
+      "options": [
+        {
+          "key": "A",
+          "value": 6,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 7,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 8,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 4,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 600,
       "formatter": "mcq",
       "question_text": "The distance from the bench to the tree is 7 blocks. The distance from the gate to the tree is 9 blocks. Which distance is shorter?",
-      "correct_answer": 7
+      "correct_answer": 7,
+      "options": [
+        {
+          "key": "A",
+          "value": 7,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 9,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 8,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 6,
+          "is_correct": false
+        }
+      ]
     }
-  ]
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "CONCERN",
+      "rationale": "The comparison itself is sound, but option sets contain values the stem never mentioned. Asked 'Which is longer: 6 paperclips or 4 paperclips?', the pupil is also offered 5 and 7 - quantities no reading of the situation could produce, which makes the choice set incoherent rather than merely hard."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "Longer and shorter are both asked, and the competency's two objects - lengths measured in paperclips and distances measured in blocks or hands - each get their own items."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Choosing between two stated quantities is a single-step judgment, and the vocabulary stays at longer, shorter and the unit names with no measurement language from a later grade."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "Seven of ten renders use the same landmark frame running from 'the bench to the tree' and 'gate to the tree' with only the numbers altered. The bare two-quantity form appears three times, and nothing compares three lengths or asks which of several objects is longest."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "Difficulty does step from a wide gap such as 2 against 6 to adjacent values such as 6 against 7, which genuinely sharpens the comparison being taught."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Quantities sit between 2 and 9 non-standard units, a range a first grader can hold and compare without counting aids."
+    }
+  },
+  "overall": "CONCERN"
 }

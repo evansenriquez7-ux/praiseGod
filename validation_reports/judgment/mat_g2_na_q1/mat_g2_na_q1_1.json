@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g2_na_q1_1",
-  "reviewed_by": "Gemini Pro blind reviewer, batch G1 (na number_reading hardening), 2026-08-16",
-  "review_date": "2026-08-16",
+  "reviewed_by": "reviewer-b3-cinder-halyard-2276",
+  "review_date": "2026-09-10",
   "blind": true,
   "sample_seeds": [
     42,
@@ -9,8 +9,6 @@
     44,
     45,
     46,
-    50,
-    72,
     500,
     501,
     502
@@ -18,112 +16,94 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "mcq",
-      "question_text": "Write 35 in words.",
-      "correct_answer": "thirty-five",
+      "formatter": "cloze",
+      "question_text": "Write 203 in words.",
+      "correct_answer": "two hundred three",
       "options": [
         {
           "key": "A",
-          "value": "fifty-three",
+          "value": "three hundred two",
+          "text": "three hundred two",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "twenty-five",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "thirty-five",
+          "value": "two hundred three",
+          "text": "two hundred three",
           "is_correct": true
         },
         {
+          "key": "C",
+          "value": "one hundred ninety-three",
+          "text": "one hundred ninety-three",
+          "is_correct": false
+        },
+        {
           "key": "D",
-          "value": "three hundred fifty",
+          "value": "two hundred four",
+          "text": "two hundred four",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 43,
-      "formatter": "mcq",
-      "question_text": "Write 102 in words.",
-      "correct_answer": "one hundred two",
-      "options": [
-        {
-          "key": "A",
-          "value": "one hundred two",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": "ninety-two",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "one hundred three",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "two hundred one",
-          "is_correct": false
-        }
-      ]
+      "formatter": "true_false",
+      "question_text": "The number 470 is written in words as 'four hundred seventy-one'. True or False?",
+      "correct_answer": false
     },
     {
       "seed": 44,
       "formatter": "mcq",
-      "question_text": "Write the number: fifty-eight.",
-      "correct_answer": 58,
+      "question_text": "Write the number: seven hundred ten.",
+      "correct_answer": 710,
       "options": [
         {
           "key": "A",
-          "value": 580,
+          "value": 711,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 85,
+          "value": 17,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 48,
-          "is_correct": false
+          "value": 710,
+          "is_correct": true
         },
         {
           "key": "D",
-          "value": 58,
-          "is_correct": true
+          "value": 700,
+          "is_correct": false
         }
       ]
     },
     {
       "seed": 45,
       "formatter": "mcq",
-      "question_text": "Write the number: one hundred thirty-five.",
-      "correct_answer": 135,
+      "question_text": "Write the number: six hundred five.",
+      "correct_answer": 605,
       "options": [
         {
           "key": "A",
-          "value": 136,
+          "value": 606,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 531,
+          "value": 506,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 135,
+          "value": 605,
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 125,
+          "value": 595,
           "is_correct": false
         }
       ]
@@ -131,66 +111,28 @@
     {
       "seed": 46,
       "formatter": "mcq",
-      "question_text": "Write 131 in words.",
-      "correct_answer": "one hundred thirty-one",
+      "question_text": "Write 587 in words.",
+      "correct_answer": "five hundred eighty-seven",
       "options": [
         {
           "key": "A",
-          "value": "one hundred thirty",
+          "value": "five hundred eighty-eight",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "one hundred thirty-one",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": "one hundred thirty-two",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "one hundred twenty-one",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 50,
-      "formatter": "true_false",
-      "question_text": "The number written as 'ninety-seven' is 87. True or False?",
-      "correct_answer": false
-    },
-    {
-      "seed": 72,
-      "formatter": "cloze",
-      "question_text": "Write 76 in words.",
-      "correct_answer": "seventy-six",
-      "options": [
-        {
-          "key": "A",
-          "value": "seventy-six",
-          "text": "seventy-six",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": "seven hundred sixty",
-          "text": "seven hundred sixty",
+          "value": "seven hundred eighty-five",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "sixty-six",
-          "text": "sixty-six",
+          "value": "five hundred seventy-seven",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "sixty-seven",
-          "text": "sixty-seven",
-          "is_correct": false
+          "value": "five hundred eighty-seven",
+          "is_correct": true
         }
       ]
     },
@@ -214,20 +156,20 @@
         },
         {
           "key": "B",
+          "value": 128,
+          "text": "128",
+          "is_correct": false
+        },
+        {
+          "key": "C",
           "value": 822,
           "text": "822",
           "is_correct": false
         },
         {
-          "key": "C",
+          "key": "D",
           "value": 811,
           "text": "811",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 128,
-          "text": "128",
           "is_correct": false
         }
       ]
@@ -240,7 +182,7 @@
       "options": [
         {
           "key": "A",
-          "value": 53,
+          "value": 340,
           "is_correct": false
         },
         {
@@ -250,12 +192,12 @@
         },
         {
           "key": "C",
-          "value": 351,
+          "value": 53,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 340,
+          "value": 351,
           "is_correct": false
         }
       ]
@@ -264,28 +206,28 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "The items successfully implement the directive to \"Read and write numerals up to 1000.\" by challenging students with tasks such as \"Write 35 in words.\" and \"Write the number: fifty-eight.\""
+      "rationale": "Both directions of the competency are exercised and kept in balance: numerals are converted into words and word forms are converted back into numerals, with true-or-false items checking a proposed pairing. The learner is doing reading and writing of numerals rather than arithmetic."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "The provided samples offer comprehensive coverage of the competency, evaluating both numeral-to-word conversions like \"Write 102 in words.\" and word-to-numeral conversions like \"Write the number: one hundred thirty-five.\""
+      "rationale": "The tricky structural cases are represented rather than avoided. A number with a zero in the tens place appears as six hundred five, a number with a zero in the ones place appears in the seven-hundred-ten item, and hyphenated compound tens appear in the eight hundred twenty-one item."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The cognitive load of the items is appropriate for the target grade, utilizing straightforward phrasing such as \"The number written as 'ninety-seven' is 87. True or False?\""
+      "rationale": "Stems are four or five words long and ask for a single conversion with no embedded context. Hyphenated word forms such as eighty-seven are standard Grade 2 spelling targets, and no item requires holding more than one numeral in mind at a time."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "The generator demonstrates strong variant comprehensiveness by producing varied assessment formats, including multiple-choice, cloze, and true/false tasks such as \"The number written as 'seven hundred seventeen' is 718. True or False?\""
+      "rationale": "Three response types appear across only eight samples, and the verification orientation genuinely differs from the production orientation: judging whether a stated word form matches a numeral is a different act from generating either one. Both conversion directions occur in more than one format."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "The generated items strictly align with the requirement to \"Read and write numerals up to 1000.\" and do not include numerals beyond 1000 or unrelated concepts."
+      "rationale": "Difficulty tracks the structural complexity of the numeral itself, moving from a round hundred-and-tens form up to compound hyphenated forms and forms containing an internal zero. That is the dimension that makes reading and writing three-digit numerals hard, so the progression is on-competency."
     },
     "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "The samples effectively address the scale constraint of \"up to 1000.\" by testing a spectrum of values, from smaller numbers to larger numbers like \"Write the number: eight hundred twenty-one.\""
+      "verdict": "CONCERN",
+      "rationale": "All eight samples live between the low two-hundreds and the low eight-hundreds. The nine-hundreds never occur and 1000 itself, the one numeral whose reading and writing the stated bound singles out, appears in neither a stem nor a key nor an option, so the top of the range goes untested."
     }
   },
-  "overall": "PASS"
+  "overall": "CONCERN"
 }

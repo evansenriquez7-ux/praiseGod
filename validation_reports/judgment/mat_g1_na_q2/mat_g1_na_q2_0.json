@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g1_na_q2_0",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch B2 (g1 na_q2-q4 + g2 dp/mg), 2026-08-12",
-  "review_date": "2026-08-12",
+  "reviewed_by": "reviewer-b2-tallow-verdigris-8130",
+  "review_date": "2026-09-10",
   "blind": true,
   "sample_seeds": [
     42,
@@ -9,7 +9,6 @@
     44,
     45,
     46,
-    50,
     500,
     501,
     502,
@@ -23,63 +22,53 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "ordering",
-      "question_text": "Arrange these numbers from smallest to largest: 5, 3, 4",
+      "formatter": "sort_order",
+      "question_text": "Arrange these numbers from largest to smallest: 61, 62, 29",
       "correct_answer": [
-        3,
-        4,
-        5
+        62,
+        61,
+        29
       ]
     },
     {
       "seed": 43,
-      "formatter": "ordering",
-      "question_text": "Maria counted seashells collected by 3 friends: 1, 8, 11. Arrange the counts from largest to smallest.",
+      "formatter": "sort_order",
+      "question_text": "Maria counted seashells collected by 3 friends: 1, 5, 8. Arrange the counts from largest to smallest.",
       "correct_answer": [
-        11,
         8,
+        5,
         1
       ]
     },
     {
       "seed": 44,
       "formatter": "ordering",
-      "question_text": "Arrange these numbers from smallest to largest: 4, 2, 9, 1",
+      "question_text": "Arrange these numbers from smallest to largest: 38, 34, 43, 36",
       "correct_answer": [
-        1,
-        2,
-        4,
-        9
+        34,
+        36,
+        38,
+        43
       ]
     },
     {
       "seed": 45,
       "formatter": "ordering",
-      "question_text": "Ana counted seashells collected by 3 friends: 1, 5, 6. Arrange the counts from largest to smallest.",
+      "question_text": "Ana counted seashells collected by 3 friends: 19, 25, 26. Arrange the counts from largest to smallest.",
       "correct_answer": [
-        6,
-        5,
-        1
+        26,
+        25,
+        19
       ]
     },
     {
       "seed": 46,
       "formatter": "ordering",
-      "question_text": "Arrange these numbers from smallest to largest: 14, 1, 15",
+      "question_text": "Arrange these numbers from largest to smallest: 80, 30, 97",
       "correct_answer": [
-        1,
-        14,
-        15
-      ]
-    },
-    {
-      "seed": 50,
-      "formatter": "sort_order",
-      "question_text": "Arrange these numbers from smallest to largest: 15, 4, 8",
-      "correct_answer": [
-        4,
-        8,
-        15
+        97,
+        80,
+        30
       ]
     },
     {
@@ -114,91 +103,91 @@
     },
     {
       "seed": 600,
-      "formatter": "ordering",
-      "question_text": "Arrange these numbers from largest to smallest: 15, 8, 11",
+      "formatter": "sort_order",
+      "question_text": "Arrange these numbers from largest to smallest: 98, 100, 95",
       "correct_answer": [
-        15,
-        11,
-        8
+        100,
+        98,
+        95
       ]
     },
     {
       "seed": 601,
-      "formatter": "sort_order",
-      "question_text": "Ana counted marbles collected by 3 friends: 12, 14, 15. Arrange the counts from largest to smallest.",
+      "formatter": "ordering",
+      "question_text": "Ana counted marbles collected by 3 friends: 26, 27, 94. Arrange the counts from largest to smallest.",
       "correct_answer": [
-        15,
-        14,
-        12
+        94,
+        27,
+        26
       ]
     },
     {
       "seed": 602,
       "formatter": "ordering",
-      "question_text": "Arrange these numbers from smallest to largest: 6, 13, 11",
+      "question_text": "Arrange these numbers from smallest to largest: 39, 46, 44",
       "correct_answer": [
-        6,
-        11,
-        13
+        39,
+        44,
+        46
       ]
     },
     {
       "seed": 603,
       "formatter": "ordering",
-      "question_text": "Kuya Pat counted stickers collected by 4 friends: 1, 7, 11, 15. Arrange the counts from largest to smallest.",
+      "question_text": "Kuya Pat counted stickers collected by 4 friends: 6, 16, 20, 24. Arrange the counts from largest to smallest.",
       "correct_answer": [
-        15,
-        11,
-        7,
-        1
-      ]
-    },
-    {
-      "seed": 604,
-      "formatter": "ordering",
-      "question_text": "Maria counted seashells collected by 3 friends: 3, 5, 6. Arrange the counts from smallest to largest.",
-      "correct_answer": [
-        3,
-        5,
+        24,
+        20,
+        16,
         6
       ]
     },
     {
-      "seed": 605,
+      "seed": 604,
       "formatter": "sort_order",
-      "question_text": "Ana counted marbles collected by 4 friends: 1, 10, 12, 14. Arrange the counts from largest to smallest.",
+      "question_text": "Maria counted seashells collected by 3 friends: 7, 9, 10. Arrange the counts from smallest to largest.",
       "correct_answer": [
-        14,
-        12,
-        10,
-        1
+        7,
+        9,
+        10
+      ]
+    },
+    {
+      "seed": 605,
+      "formatter": "ordering",
+      "question_text": "Ana counted marbles collected by 4 friends: 10, 20, 22, 24. Arrange the counts from largest to smallest.",
+      "correct_answer": [
+        24,
+        22,
+        20,
+        10
       ]
     }
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "Every sample is an arrange-the-numbers task in one of the two directions the competency names, matching the verb 'Order numbers up to 100 from smallest to largest, and vice versa' precisely."
+      "rationale": "Every item literally asks the pupil to arrange a set of whole numbers, and the keys are ordered lists, which is exactly the ordering act the competency names."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "Both directions are generated (e.g. 'Arrange these numbers from smallest to largest: 5, 3, 4' and 'Arrange these numbers from largest to smallest: 100, 44, 97'), and set sizes vary between three and four numbers, so neither direction nor list length is neglected."
+      "rationale": "The 'and vice versa' half is genuinely built: largest-to-smallest and 'Arrange the counts from smallest to largest' both occur, in bare-number and in counted-objects form, across sets of three and of four numbers."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Lists stay short (three to four values) and the instruction line never adds extra clauses beyond naming the direction, which suits a Grade 1 Quarter 2 reader still building number-sense vocabulary."
+      "rationale": "One instruction sentence, no operation required beyond comparing two-digit numerals; the seashell and sticker settings need no reading stamina beyond Grade 1 Quarter 2."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "Bare numeral lists sit alongside a narrative frame, 'Maria counted seashells collected by 3 friends: 1, 8, 11', giving both an abstract and a contextual route into the same ordering skill."
+      "rationale": "Two presentations alternate throughout: a naked list of numerals to arrange, and a short collecting scenario where the counts must be pulled out of the sentence before being ordered."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Harder items simply push the values closer to the shared ceiling (94, 95, 100) rather than swapping in an unrelated skill, so difficulty tracks the size and closeness of the numbers being ordered."
+      "rationale": "What grows across seeds is what should grow for ordering: set size rises from three to four, and the spreads tighten (94, 95, 100 demands digit-by-digit comparison where 30, 80, 97 does not)."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "The largest values sampled top out at 100 itself ('100, 44, 97'), matching the 'up to 100' ceiling the competency states without drifting past it."
+      "rationale": "The stated ceiling of 100 is actually reached rather than approached; 100 itself appears as a member of several sets, and nothing exceeds it."
     }
   },
   "overall": "PASS"

@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g1_mg_q4_2",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch B1 (g1 dp/mg + na_q1), 2026-08-12",
-  "review_date": "2026-08-12",
+  "reviewed_by": "reviewer-b1-quartz-mallow-4412",
+  "review_date": "2026-09-10",
   "blind": true,
   "sample_seeds": [
     42,
@@ -9,6 +9,7 @@
     44,
     45,
     46,
+    50,
     500,
     501,
     502,
@@ -16,8 +17,7 @@
     601,
     603,
     604,
-    605,
-    606
+    605
   ],
   "samples_reviewed": [
     {
@@ -28,7 +28,7 @@
       "options": [
         {
           "key": "A",
-          "value": "Sunday",
+          "value": "Monday",
           "is_correct": false
         },
         {
@@ -43,7 +43,7 @@
         },
         {
           "key": "D",
-          "value": "Monday",
+          "value": "Sunday",
           "is_correct": false
         }
       ]
@@ -56,23 +56,23 @@
       "options": [
         {
           "key": "A",
-          "value": "Sunday",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": "Tuesday",
-          "is_correct": false
-        },
-        {
-          "key": "C",
           "value": "Wednesday",
           "is_correct": false
         },
         {
-          "key": "D",
+          "key": "B",
           "value": "Monday",
           "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "Tuesday",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "Sunday",
+          "is_correct": true
         }
       ]
     },
@@ -84,23 +84,23 @@
       "options": [
         {
           "key": "A",
-          "value": "February",
-          "is_correct": false
-        },
-        {
-          "key": "B",
           "value": "January",
           "is_correct": false
         },
         {
+          "key": "B",
+          "value": "November",
+          "is_correct": true
+        },
+        {
           "key": "C",
-          "value": "March",
+          "value": "February",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "November",
-          "is_correct": true
+          "value": "March",
+          "is_correct": false
         }
       ]
     },
@@ -112,22 +112,22 @@
       "options": [
         {
           "key": "A",
-          "value": "Thursday",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "Sunday",
-          "is_correct": false
-        },
-        {
-          "key": "C",
           "value": "Wednesday",
           "is_correct": true
         },
         {
-          "key": "D",
+          "key": "B",
           "value": "Monday",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "Sunday",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "Thursday",
           "is_correct": false
         }
       ]
@@ -140,13 +140,13 @@
       "options": [
         {
           "key": "A",
-          "value": "Tuesday",
-          "is_correct": false
+          "value": "Wednesday",
+          "is_correct": true
         },
         {
           "key": "B",
-          "value": "Wednesday",
-          "is_correct": true
+          "value": "Sunday",
+          "is_correct": false
         },
         {
           "key": "C",
@@ -155,36 +155,72 @@
         },
         {
           "key": "D",
-          "value": "Sunday",
+          "value": "Tuesday",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 50,
+      "formatter": "cloze",
+      "question_text": "What month of the year comes right before June?",
+      "correct_answer": "May",
+      "options": [
+        {
+          "key": "A",
+          "value": "March",
+          "text": "March",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "January",
+          "text": "January",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "May",
+          "text": "May",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "February",
+          "text": "February",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 500,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "What month of the year comes right after October?",
       "correct_answer": "November",
       "options": [
         {
           "key": "A",
-          "value": "November",
-          "is_correct": true
+          "value": "March",
+          "text": "March",
+          "is_correct": false
         },
         {
           "key": "B",
           "value": "February",
+          "text": "February",
           "is_correct": false
         },
         {
           "key": "C",
           "value": "January",
+          "text": "January",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "March",
-          "is_correct": false
+          "value": "November",
+          "text": "November",
+          "is_correct": true
         }
       ]
     },
@@ -206,12 +242,12 @@
         },
         {
           "key": "C",
-          "value": "Monday",
+          "value": "Sunday",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "Sunday",
+          "value": "Monday",
           "is_correct": false
         }
       ]
@@ -224,13 +260,13 @@
       "options": [
         {
           "key": "A",
-          "value": "Sunday",
-          "is_correct": false
+          "value": "Saturday",
+          "is_correct": true
         },
         {
           "key": "B",
-          "value": "Saturday",
-          "is_correct": true
+          "value": "Sunday",
+          "is_correct": false
         },
         {
           "key": "C",
@@ -252,18 +288,18 @@
       "options": [
         {
           "key": "A",
-          "value": "Sunday",
-          "is_correct": false
-        },
-        {
-          "key": "B",
           "value": "Monday",
           "is_correct": false
         },
         {
-          "key": "C",
+          "key": "B",
           "value": "Thursday",
           "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "Sunday",
+          "is_correct": false
         },
         {
           "key": "D",
@@ -274,28 +310,32 @@
     },
     {
       "seed": 601,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "What month of the year comes right before September?",
       "correct_answer": "August",
       "options": [
         {
           "key": "A",
           "value": "February",
+          "text": "February",
           "is_correct": false
         },
         {
           "key": "B",
           "value": "January",
+          "text": "January",
           "is_correct": false
         },
         {
           "key": "C",
           "value": "March",
+          "text": "March",
           "is_correct": false
         },
         {
           "key": "D",
           "value": "August",
+          "text": "August",
           "is_correct": true
         }
       ]
@@ -308,23 +348,23 @@
       "options": [
         {
           "key": "A",
-          "value": "March",
+          "value": "February",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "July",
-          "is_correct": true
-        },
-        {
-          "key": "C",
           "value": "January",
           "is_correct": false
         },
         {
-          "key": "D",
-          "value": "February",
+          "key": "C",
+          "value": "March",
           "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "July",
+          "is_correct": true
         }
       ]
     },
@@ -336,78 +376,54 @@
       "options": [
         {
           "key": "A",
-          "value": "Tuesday",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": "Monday",
+          "value": "Thursday",
           "is_correct": false
         },
         {
-          "key": "C",
+          "key": "B",
           "value": "Sunday",
           "is_correct": false
         },
         {
+          "key": "C",
+          "value": "Tuesday",
+          "is_correct": true
+        },
+        {
           "key": "D",
-          "value": "Thursday",
+          "value": "Monday",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 605,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "What month of the year comes right before July?",
       "correct_answer": "June",
       "options": [
         {
           "key": "A",
+          "value": "March",
+          "text": "March",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "January",
+          "text": "January",
+          "is_correct": false
+        },
+        {
+          "key": "C",
           "value": "June",
+          "text": "June",
           "is_correct": true
         },
         {
-          "key": "B",
-          "value": "January",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "February",
-          "is_correct": false
-        },
-        {
           "key": "D",
-          "value": "March",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 606,
-      "formatter": "mcq",
-      "question_text": "What month of the year comes right before June?",
-      "correct_answer": "May",
-      "options": [
-        {
-          "key": "A",
-          "value": "May",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": "January",
-          "is_correct": false
-        },
-        {
-          "key": "C",
           "value": "February",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "March",
+          "text": "February",
           "is_correct": false
         }
       ]
@@ -415,29 +431,29 @@
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "\"What day of the week comes right after Friday?\" and \"What month of the year comes right before December?\" both test sequencing directly, matching the competency's own phrasing."
+      "verdict": "CONCERN",
+      "rationale": "The competency asks pupils to give the days and months in correct order, yet every render asks only for a single neighbour of one named day or month. Nothing requires producing or arranging the sequence, which is the productive half of what is written."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "Both days-of-the-week and months-of-the-year sub-cases appear, and both are asked using the \"comes right after\" and \"comes right before\" directions."
+      "rationale": "Days and months are both covered, and both directions of the relation appear as 'comes right after' and 'comes right before', with keys correct in every case I checked."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Day and month names paired with a simple \"right after\" or \"right before\" phrasing suit Grade 1 Quarter 4."
+      "rationale": "One-step neighbour recall using familiar day and month names carries no arithmetic load and is right for Quarter 4 of Grade 1."
     },
     "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The day-versus-month axis and the after-versus-before axis both vary across the fourteen sampled seeds."
+      "verdict": "CONCERN",
+      "rationale": "Only two sentence frames exist in the whole set. The switch between formats changes nothing the pupil sees, and no calendar, story context or arrange-these-in-order task ever appears."
     },
     "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "No sampled item strays from ordering days or months; nothing tests calendar lookup or elapsed time here."
+      "verdict": "FAIL",
+      "rationale": "In the month items the three wrong choices are drawn almost every time from January, February and March, leaving the key as the only option outside that block. A pupil can answer correctly by spotting the odd one out with no knowledge of month order whatsoever, so what varies across seeds is decoy selection rather than the ordering demand this competency exists to build."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Sampled days span from Tuesday through Saturday and months span from January through November, covering a healthy portion of each full cycle."
+      "rationale": "Seven weekday names and twelve month names are the full stated domain, and nothing outside that domain is used as key or decoy."
     }
   },
-  "overall": "PASS"
+  "overall": "FAIL"
 }

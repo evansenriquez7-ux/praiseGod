@@ -9603,3 +9603,195 @@ $ PYTHONPATH=. .venv/bin/python tests/mutation_harness.py        (after)
   Praise God — the verifier verifies.
   EXIT=0        working tree clean afterwards (kill-safe restore intact)
 ```
+
+---
+
+## 2026-09-10 — Band B: the whole tree re-reviewed blind, and what it actually found
+
+### The headline
+
+All 151 nodes were re-reviewed by seven independently dispatched blind reviewers, one
+identity per batch, each shown nothing but the competency text and rendered samples.
+
+```
+§5 findings        1023  ->  500
+  STALE (stem)      510  ->    7
+  UNADJUDICABLE     442  ->    0
+  STALE (answer)      9  ->    0
+  STALE (options)     1  ->    0
+  quote provenance    0  ->    7
+  non-PASS verdicts  50  ->  486
+
+overall verdicts   PASS 140 / CONCERN 7 / FAIL 4
+              ->   PASS  13 / CONCERN 94 / FAIL 44
+```
+
+**The old numbers were not better, they were older.** 140 of 151 nodes carried a PASS from
+reviews of content the generator had long stopped producing. Re-earned against what the
+pipeline serves today, 13 nodes pass. That is the campaign's central result: the freshness
+debt was hiding the pedagogical debt, exactly as §3's ordering law predicts.
+
+The UNADJUDICABLE column going to zero is structural, not judgement: reviews are now filed
+from dispatch-time skeletons that carry the `options` the reviewer was shown, so every one
+of them is adjudicable on all three fields §5 compares.
+
+### A flaw in my own filing tool, caught before it could fabricate anything
+
+`tests/file_reviews.py` originally rebuilt the packet AT FILING TIME, on the reasoning that
+samples must come from the live pipeline rather than from the reviewer's reply. That is the
+one mistake in this area that cannot be detected afterwards.
+
+A generator fix landing between dispatch and filing — the normal case, since the point of a
+review batch is to find defects and fix them — would have paired the reviewer's verdicts with
+samples the reviewer never saw, and §5 freshness would have PASSED the result, because the
+samples really are fresh. A fabricated review with a clean bill of health, manufactured by the
+tool written to prevent exactly that.
+
+It now files the dispatch-time skeleton. Drift between dispatch and filing becomes VISIBLE:
+§5 re-renders, reports the node stale, and names the honest remedy. Five nodes are in that
+state right now precisely because two content fixes landed mid-flight, and they are listed
+below rather than hidden.
+
+### Second instance of an already-"fixed" root cause
+
+`tests/attester_file.py` dropped `options` from `samples_judged` the same way
+`attester_packets.py`'s record skeleton did. That is the path the entire 136-record
+re-attestation queue runs through, so every record it filed would have been UNADJUDICABLE on
+arrival under the §6F check built earlier the same day. Protocol 2 is "root cause, then all
+instances"; the instance that mattered was the one missed.
+
+### Two content defects the fresh evidence named, fixed and swept
+
+1. **A counting item that printed its own answer.** `fmt_emoji_pictorial`'s counting branch
+   rendered `⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ — There are 10 stars. / Count the stars. / How many stars are
+   there in all?`, and the large-group form printed "There are 73 drinks." before asking for
+   that count. The addition and subtraction branches legitimately state `a` — there it is a
+   given operand. Only the counting branch asks for `a` itself. 60 forced emoji renders after
+   the fix: 0 survivors.
+
+2. **A question nested in a claim nested in a true-or-false.** `fmt_true_false`'s word-problem
+   template appends "The answer is {fill_value}." and drew `fill_value` from any distractor,
+   including `comparing_ordering`'s "cannot be determined" meta-option:
+
+   > Ana has 10 seashells. Jose has 12 seashells. Which sign correctly compares the two
+   > amounts? The answer is cannot be determined. True or False?
+
+   A Grade 1 pupil asked to evaluate a meta-answer. The `pure` branch had already been patched
+   for the same shape ("20 cannot be determined 13"); that fix was scoped to one concept and
+   one context. `_answer_shape` is the general form: a false statement's fill value must be
+   the same KIND as the answer it replaces (number / comparison sign / other), tested by shape
+   rather than by string so the next trap option that is not spelled "cannot be determined" is
+   covered too (Scaling Mandate 4). 152 true_false items sampled after: 0 survivors.
+
+### Named and NOT fixed, with the reason
+
+* **Every comparison item carries "cannot be determined" as a permanent fourth option.** It
+  cannot simply be deleted: `validate_matrix` requires exactly 4 MCQ options and the sign
+  space {>, <, =} holds three, so a filler is structurally forced. The real fix reframes the
+  item as "which statement is true?" over four comparison statements — a `comparing_ordering`
+  change touching every comparison node in the tree. Not attempted mid-flight while reviewers
+  were returning verdicts against current content.
+
+* **12 nodes need a repair dispatch**, and the account session limit blocked it:
+  - content moved after their packet was built (my two fixes above):
+    `mat_g1_na_q1_0`, `mat_g1_na_q1_3`, `mat_g1_na_q2_1`, `mat_g1_na_q2_3`, `mat_g3_na_q1_5`
+  - rationale quotes text the reviewer was never shown (§5 quote provenance caught the
+    reviewer, which is the gate working):
+    `mat_g1_na_q1_2`, `mat_g1_na_q4_4`, `mat_g2_na_q2_3`, `mat_g2_na_q2_7`,
+    `mat_g2_na_q2_8`, `mat_g2_na_q3_2`, `mat_g2_na_q3_4`
+
+  Neither may be repaired by editing: the remedy for both is a fresh blind review of those
+  nodes, under a new identity.
+
+### The debt the review actually found, by item
+
+```
+   <overall>                    138 nodes
+   variant_comprehensiveness     74
+   competency_fulfillment        71
+   competency_alignment          70
+   comprehensive_coverage        62
+   cognitive_capacity            50
+   scale_appropriateness         21
+```
+
+Three worked examples of the specificity these verdicts carry:
+
+* `mat_g1_mg_q4_4` — "The competency lists days in a week among its five elements, and not one
+  of the sixteen renders computes with them."
+* `mat_g1_mg_q4_2` — "the three wrong choices are drawn almost every time from January,
+  February and March, leaving the key as the only option outside that block. A pupil can
+  answer correctly by spotting the odd one out with no knowledge of month order whatsoever."
+* `mat_g3_na_q4_7` — "every addition reads '1 more part is shaded' and every subtraction reads
+  'If 1 shaded part is taken away'", so the second fraction is never anything but one part.
+
+None of these is visible to any mechanical check, which is what Phase 2 is for.
+
+### Content defects the fresh §5 evidence named, fixed and swept (2026-09-10, continued)
+
+Four correctness defects, each found by a blind reviewer, each fixed at its root and then
+swept across every node that could exhibit it. None was visible to any mechanical check.
+
+**3. Negative frequencies keyed as the correct answer.** `mat_g3_dp_q3_0` seed 601 rendered
+
+> In a probability experiment, a tile was picked from a bag and replaced 10 times.
+> Results: Red tile: 2, Blue tile: **-4**, Green tile: 7. How many times was a Blue tile drawn?
+
+keyed `-4`. The counts also sum to 5 against a declared 10 draws. The reviewer: "the pupil is
+asked to select -4 over -3 as a frequency, which teaches an impossibility" — and negative
+integers are outside the Grade 3 Quarter 3 number system, so it breached concept gating too.
+
+Root cause, in two of three experiment branches:
+
+```python
+raw[0] += total - sum(raw)      # force the sum; raw[0] may go negative
+if raw[0] < 1:
+    raw[0] = 2
+    raw[1] = total - sum(raw)   # sum() now includes raw[1] -- it subtracts itself
+```
+
+The die branch used `+=` on that last line and was arithmetically right, but could still land
+on zero or below when the other outcomes already exceeded the trial count. One helper,
+`_positive_frequencies`, replaces all three: it allocates trials one at a time so every count
+is at least 1 and the total is exact by construction, and it clusters near total/n the way a
+real small experiment does. Three copies of a rule is how two of them came to be wrong.
+
+Swept: 219 items across every `probability_experiment` node — **0 negative frequencies, 0
+count-sets failing to sum to their declared trial total** (both were present before).
+
+**4. Division options a quotient can never reach.** `mat_g2_na_q3_4`: "400 sits against 40
+divided by 10, 900 against 90 divided by 10, and 75 against 15 divided by 5. Those are
+products, and they let a child eliminate by size alone."
+
+`ErrorPattern(formula="a * b", label="ar_wrong_op")` is a real misconception and a structurally
+useless division option: for any divisor >= 1 the product is at least the dividend, while a
+quotient can never exceed it, so the option is always the largest number on the page and always
+impossible. Replaced by `a // b + 1` and `a // b - 1`, which ask the same question — did you
+actually divide? — at a magnitude a quotient could plausibly have. Two patterns rather than
+one, because `ar_rem_drop` collapses onto the correct answer whenever the division is exact.
+
+Swept: 172 division MCQ items across 11 nodes. Items offering an option greater than the
+dividend: **8**, all near-misses (49 against a dividend of 42; 3 against a dividend of 2) from
+generic near-answer padding rather than products. The order-of-magnitude tell is gone; the
+residue is stated rather than claimed clean.
+
+**5. An impossible zero as a claimed multiplication product.** `mat_g2_na_q3_2` seed 42:
+"Manny solved: 3 x 3 = ___. Manny says the missing number is **0**." The reviewer: "not a table
+misconception but an implausible value a child rejects without multiplying."
+
+`a - b` collapses to 0 whenever the factors are equal, and a product of two non-zero factors is
+never 0. `_is_impossible_zero` sits beside the existing `_is_out_of_grade_negative` guard and
+drops the degenerate VALUE while keeping the misconception formula. Scoped to multiplication
+deliberately: integer division can legitimately key 0, so the same rule there would suppress a
+real answer rather than an impossible option.
+
+Swept: 221 multiplication items with non-zero factors — **0 impossible zeros** offered or
+claimed. Seed 42 now claims 6 (`a*b - b`, "dropped one group"), a real misconception at a
+plausible magnitude.
+
+**A process note worth recording.** The Phase 1 run started before these fixes was left running
+while the edits landed, which makes its result meaningless: the matrix spawns worker
+subprocesses that import source as they start, so a mid-run edit gives some workers the old
+code and some the new. It was discarded and re-run clean. `tests/mutation_harness.py` already
+carries a "NEVER run concurrently with anything else" warning for the same reason; the same
+caution applies to `run_all --phase 1` whenever source is being edited.

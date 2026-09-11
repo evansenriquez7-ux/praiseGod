@@ -1,35 +1,8 @@
 {
   "node_id": "mat_g3_na_q3_1",
-  "reviewed_by": "Claude blind reviewer, batch D1A-part1, 2026-08-28",
-  "review_date": "2026-08-28",
+  "reviewed_by": "reviewer-b6-thistle-kestrel-9724",
+  "review_date": "2026-09-10",
   "blind": true,
-  "overall": "CONCERN",
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "'Illustrate AND apply' names two coordinate verbs and only the second is met. All 17 items are symbolic judgements or fill-ins -- 'Is 6 × (9 + 4) the same as (6 × 9) + (6 × 4)?' (seed 45), '1 × 6 = ___' (seed 64), '7 × 0 = 7. True or False?' (seed 61), 'Is (2 × 6) × 3 the same as 2 × (6 × 3)?' (seed 601). No item illustrates a property with an array, equal groups, a re-grouping picture or any representation the student can point at, which means a pupil can answer every grouping and distributive item by matching the shape of the two sides without ever seeing why the property holds. The 'apply' half is fulfilled and the keys are correct (6 × 0 = 0 at seed 44; 9 × 1 = 9 at seed 63)."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "All five clauses named in the competency are exercised, with both true and false cases for four of them. One-times: seed 63, seed 64 '1 × 6 = ___', seed 602 '7 × 1 = ___'. Zero-times: seed 44 'What is 6 × 0?' -> 0 and seed 61 '7 × 0 = 7. True or False?' -> False. Order: seed 42 'Is 5 × 6 the same as 6 × 5?' -> true, with non-examples at seeds 43, 46 and 604. Grouping: seed 601 and seed 603 'Is (3 × 8) × 2 the same as 3 × (8 × 2)?' -> true, with a non-example at seed 605. Sum-of-addends: seeds 45 and 600 as true cases and seeds 501/502 as the classic the forgot-to-distribute-to-the-second-addend shape non-examples."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Grade 3, Quarter 3, and the structure fits. Parenthesised expressions such as '(3 × 8) × 2' (seed 603) and '6 × (8 + 6)' (seed 600) are demanded by the competency's own 'changing the grouping' and 'sum of two addends' clauses, so they are not over-reach. Individual facts stay single-digit (seed 604 'Is 8 × 7 the same as 7 × 4?'), and the false items are decidable structurally rather than by heavy arithmetic -- seed 501 'Is 5 × (8 + 4) the same as (5 × 8) + 4?' can be judged from the missing second product alone, and seed 605 from the 2 becoming a 3."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "Seeds 63 and 500 are the same item with only the name changed: 'Ana solved: \"9 × 1 = ___\"' against 'Rico solved: \"9 × 1 = ___\"' -- identical numbers, identical property, identical answer. Twelve of seventeen items are MCQ and every one carries the same four options (true, false, 'Cannot be determined', 'Only when both are 0'), including on grouping items like seed 601 where 'Only when both are 0' is not a misconception anyone holds. The two distributive non-examples are also the same edit twice: '(5 × 8) + 4' (seed 501) and '(5 × 7) + 9' (seed 502). No word problem or real-world context appears anywhere in the set."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Nothing later-grade appears: no division, no fractions or decimals, no exponents, no variables, and no order-of-operations rule beyond the parentheses the competency itself introduces. Seed 600 is a word-for-word instance of 'multiplying the sum of two addends by a number is the same as the sum of the products of a number by each addend', and seed 603 is a word-for-word instance of 'changing the grouping of the numbers being multiplied does not change the product'."
-    },
-    "scale_appropriateness": {
-      "verdict": "CONCERN",
-      "rationale": "The competency scopes these properties to 'the 6, 7, 8, and 9 multiplication tables'. Seeds 501 and 502 use 5 as the multiplier -- 'Is 5 × (8 + 4) the same as (5 × 8) + 4?' and 'Is 5 × (7 + 9) the same as (5 × 7) + 9?' -- so a sub-product is 5 × 4 = 20, which belongs to none of the four named tables. Seeds 601 and 605 likewise turn on 12 × 3 and 21 × 2 rather than on any 6-9 fact. Intermediate products above the tables are unavoidable once the competency asks for grouping and distribution, so seed 603's 24 × 2 is inherent, but the choice of 5 as a multiplier is free and steps outside the stated table set. Everything else is on-table: 5 × 6 (seed 42), 4 × 8 and 8 × 9 (seed 43), 6 × 0 (seed 44), 8 × 7 (seed 604)."
-    }
-  },
   "sample_seeds": [
     42,
     43,
@@ -137,7 +110,7 @@
     {
       "seed": 45,
       "formatter": "mcq",
-      "question_text": "Is 6 × (9 + 4) the same as (6 × 9) + (6 × 4)?",
+      "question_text": "Is 8 × (7 + 2) the same as (8 × 7) + (8 × 2)?",
       "correct_answer": true,
       "options": [
         {
@@ -249,7 +222,7 @@
     {
       "seed": 501,
       "formatter": "mcq",
-      "question_text": "Is 5 × (8 + 4) the same as (5 × 8) + 4?",
+      "question_text": "Is 8 × (7 + 4) the same as (8 × 7) + 4?",
       "correct_answer": false,
       "options": [
         {
@@ -277,7 +250,7 @@
     {
       "seed": 502,
       "formatter": "mcq",
-      "question_text": "Is 5 × (7 + 9) the same as (5 × 7) + 9?",
+      "question_text": "Is 7 × (8 + 4) the same as (7 × 8) + 4?",
       "correct_answer": false,
       "options": [
         {
@@ -305,7 +278,7 @@
     {
       "seed": 600,
       "formatter": "mcq",
-      "question_text": "Is 6 × (8 + 6) the same as (6 × 8) + (6 × 6)?",
+      "question_text": "Is 6 × (8 + 5) the same as (6 × 8) + (6 × 5)?",
       "correct_answer": true,
       "options": [
         {
@@ -474,5 +447,32 @@
         }
       ]
     }
-  ]
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "CONCERN",
+      "rationale": "The competency asks the pupil to illustrate and apply the properties, but nearly every sample only asks whether two written expressions are the same. Apart from two short cloze items there is no sample where a property is used as a tool to reach a product, and no sample illustrates a property with a grouping or array model, so both governing verbs are only partly served."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "All five listed properties are genuinely generated: the one-as-factor case, the zero case, the order case, the grouping case shown with 2 x 6 and 3, and the distributive case shown with 8 over the sum of 7 and 2."
+    },
+    "cognitive_capacity": {
+      "verdict": "CONCERN",
+      "rationale": "The option Only when both are 0 appears in every choice item and is a conditional quantified claim that a third grader has no way to evaluate; Cannot be determined is likewise never correct when both expressions are fully written out. Half of each option list is therefore noise rather than a discrimination."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "Alongside the same-as comparison there are truth statements, error checking attributed to Ana and Rico, and direct fill-in items for the identity property, so more than one response mode carries the content."
+    },
+    "competency_alignment": {
+      "verdict": "CONCERN",
+      "rationale": "The false-keyed items are built by altering an operand rather than by violating a property. Asking whether 4 x 8 is the same as 8 x 9 tests nothing about commutativity, since the two expressions simply contain different numbers, and the same defect appears where 3 x 7 doubled is set against 3 times the product of 7 and 3. Difficulty is varying whether a digit was swapped, not which property applies."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Factors stay single digit and the property statements are anchored on the six through nine tables the competency names, with the largest product reaching 72."
+    }
+  },
+  "overall": "CONCERN"
 }

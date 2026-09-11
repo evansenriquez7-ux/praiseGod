@@ -1,34 +1,8 @@
 {
   "node_id": "mat_g2_na_q2_9",
-  "reviewed_by": "Gemini Pro blind reviewer, batch G2-NA-Q2-Harden (mat_g2_na_q2_9), 2026-08-18",
+  "reviewed_by": "reviewer-b4-plover-saffron-6041",
+  "review_date": "2026-09-10",
   "blind": true,
-  "overall": "PASS",
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The items directly assess the student's ability to create increasing and decreasing patterns based on an explicit rule and starting value. For example, in seed 42 (\"You want to create a decreasing pattern where the rule is: Subtract 1 each time. Which sequence correctly creates it?\") and seed 45 (\"Create a pattern that starts at 2 and uses the rule: Add 3 each time. Which sequence shows this pattern?\"), students must apply the pattern rule to generate or identify the resulting sequence."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The sample set provides balanced coverage across both directions (increasing and decreasing) and multiple step sizes. Increasing patterns include unit steps (+1 in seed 43: \"You want to create an increasing pattern where the rule is: Add 1 each time. Which sequence correctly creates it?\"), steps of 2 (seed 50: \"You want to create an increasing pattern where the rule is: Add 2 each time. Which sequence correctly creates it?\"), and steps of 3 (seed 45). Decreasing patterns include steps of 1 (seed 42), steps of 2 (seed 46: \"You want to create a decreasing pattern where the rule is: Subtract 2 each time. Which sequence correctly creates it?\"), steps of 3 (seed 501: \"Start at 91 and create a decreasing pattern with the rule: Subtract 3 each time. Which pattern did you create?\"), and steps of 7 (seed 502: \"Create a pattern that starts at 89 and uses the rule: Subtract 7 each time. Which sequence shows this pattern?\")."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The sentence structures are straightforward and uncluttered, suitable for Grade 2 Quarter 2 learners (e.g., seed 44: \"You want to create an increasing pattern where the rule is: Add 1 each time. Which sequence correctly creates it?\"). Distractor options target plausible student errors, such as miscalculating a single intermediate term, without imposing excessive reading load."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The items vary phrasing templates effectively, including standard prompt phrasing (\"You want to create an increasing pattern where the rule is: Add 1 each time. Which sequence correctly creates it?\"), starting value focus (\"Create a pattern that starts at 2 and uses the rule: Add 3 each time. Which sequence shows this pattern?\"), and directive phrasing (\"Start at 91 and create a decreasing pattern with the rule: Subtract 3 each time. Which pattern did you create?\")."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "All questions remain tightly focused on generating linear arithmetic sequences within whole numbers. None introduce out-of-scope concepts such as non-linear patterns, negative numbers, or geometric scaling."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "The numerical magnitudes span single-digit numbers up to 2-digit numbers under 100 (e.g. from starting at 2 in seed 45 up to starting at 91 in seed 501: \"Start at 91 and create a decreasing pattern with the rule: Subtract 3 each time. Which pattern did you create?\"). Decreasing sequences maintain positive integers throughout (e.g., seed 502 descends from 89 to 54), which strictly adheres to Grade 2 numerical limits."
-    }
-  },
   "sample_seeds": [
     42,
     43,
@@ -54,7 +28,7 @@
         },
         {
           "key": "B",
-          "value": "10, 12, 8, 7, 6, 5",
+          "value": "10, 9, 6, 7, 6, 5",
           "is_correct": false
         },
         {
@@ -64,7 +38,7 @@
         },
         {
           "key": "D",
-          "value": "10, 9, 6, 7, 6, 5",
+          "value": "10, 12, 8, 7, 6, 5",
           "is_correct": false
         }
       ]
@@ -82,7 +56,7 @@
         },
         {
           "key": "B",
-          "value": "11, 13, 13, 14, 15, 16",
+          "value": "11, 12, 13, 14, 14, 16",
           "is_correct": false
         },
         {
@@ -92,7 +66,7 @@
         },
         {
           "key": "D",
-          "value": "11, 12, 13, 14, 14, 16",
+          "value": "11, 13, 13, 14, 15, 16",
           "is_correct": false
         }
       ]
@@ -105,23 +79,23 @@
       "options": [
         {
           "key": "A",
-          "value": "10, 11, 11, 13, 14, 15",
-          "is_correct": false
-        },
-        {
-          "key": "B",
           "value": "10, 11, 13, 13, 14, 15",
           "is_correct": false
         },
         {
-          "key": "C",
+          "key": "B",
           "value": "10, 9, 12, 13, 14, 15",
           "is_correct": false
         },
         {
-          "key": "D",
+          "key": "C",
           "value": "10, 11, 12, 13, 14, 15",
           "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "10, 11, 11, 13, 14, 15",
+          "is_correct": false
         }
       ]
     },
@@ -133,23 +107,23 @@
       "options": [
         {
           "key": "A",
-          "value": "2, 2, 8, 11, 14, 17",
+          "value": "2, 5, 8, 10, 14, 17",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "2, 5, 8, 8, 14, 17",
+          "value": "2, 2, 8, 11, 14, 17",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "2, 5, 8, 11, 14, 17",
-          "is_correct": true
+          "value": "2, 5, 8, 8, 14, 17",
+          "is_correct": false
         },
         {
           "key": "D",
-          "value": "2, 5, 8, 10, 14, 17",
-          "is_correct": false
+          "value": "2, 5, 8, 11, 14, 17",
+          "is_correct": true
         }
       ]
     },
@@ -161,22 +135,22 @@
       "options": [
         {
           "key": "A",
-          "value": "15, 13, 11, 9, 7, 7",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "15, 13, 11, 9, 7, 5",
-          "is_correct": true
-        },
-        {
-          "key": "C",
           "value": "15, 13, 11, 9, 7, 3",
           "is_correct": false
         },
         {
-          "key": "D",
+          "key": "B",
           "value": "15, 15, 11, 9, 7, 5",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "15, 13, 11, 9, 7, 5",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "15, 13, 11, 9, 7, 7",
           "is_correct": false
         }
       ]
@@ -189,21 +163,21 @@
       "options": [
         {
           "key": "A",
+          "value": "1, 3, 5, 7, 8, 11",
+          "text": "1, 3, 5, 7, 8, 11",
+          "is_correct": false
+        },
+        {
+          "key": "B",
           "value": "1, 3, 5, 10, 9, 11",
           "text": "1, 3, 5, 10, 9, 11",
           "is_correct": false
         },
         {
-          "key": "B",
+          "key": "C",
           "value": "1, 3, 5, 7, 9, 11",
           "text": "1, 3, 5, 7, 9, 11",
           "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": "1, 3, 5, 7, 8, 11",
-          "text": "1, 3, 5, 7, 8, 11",
-          "is_correct": false
         },
         {
           "key": "D",
@@ -227,20 +201,20 @@
         },
         {
           "key": "B",
-          "value": "91, 90, 89, 91, 87, 86",
-          "text": "91, 90, 89, 91, 87, 86",
-          "is_correct": false
-        },
-        {
-          "key": "C",
           "value": "91, 90, 89, 88, 87, 87",
           "text": "91, 90, 89, 88, 87, 87",
           "is_correct": false
         },
         {
-          "key": "D",
+          "key": "C",
           "value": "91, 90, 89, 88, 85, 86",
           "text": "91, 90, 89, 88, 85, 86",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "91, 90, 89, 91, 87, 86",
+          "text": "91, 90, 89, 91, 87, 86",
           "is_correct": false
         }
       ]
@@ -258,17 +232,17 @@
         },
         {
           "key": "B",
-          "value": "91, 88, 85, 82, 79, 75",
+          "value": "91, 88, 85, 80, 79, 76",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "91, 88, 85, 81, 79, 76",
+          "value": "91, 88, 85, 82, 79, 75",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "91, 88, 85, 80, 79, 76",
+          "value": "91, 88, 85, 81, 79, 76",
           "is_correct": false
         }
       ]
@@ -281,13 +255,13 @@
       "options": [
         {
           "key": "A",
-          "value": "89, 82, 75, 71, 61, 54",
+          "value": "89, 82, 76, 68, 61, 54",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "89, 82, 75, 68, 61, 54",
-          "is_correct": true
+          "value": "89, 82, 75, 71, 61, 54",
+          "is_correct": false
         },
         {
           "key": "C",
@@ -296,10 +270,37 @@
         },
         {
           "key": "D",
-          "value": "89, 82, 76, 68, 61, 54",
-          "is_correct": false
+          "value": "89, 82, 75, 68, 61, 54",
+          "is_correct": true
         }
       ]
     }
-  ]
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "FAIL",
+      "rationale": "The competency's only verb is 'Create', and no sampled item asks a child to create anything. All ten present four finished sequences and ask which one is right, so the work is spotting a corrupted term in someone else's list rather than generating terms from a rule."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "Both directions named are stocked, with add-1, add-2 and add-3 rules on the increasing side and subtract-1, subtract-2, subtract-3 and subtract-7 on the decreasing side. Starting values range from 1 up to 91, so the rule is not tied to a single origin."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Six-term sequences with a stated rule such as 'Subtract 7 each time' are readable and computable for this grade, and the arithmetic involved (89, 82, 75, 68, 61, 54) stays within two-digit subtraction already taught."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "Only two stem phrasings exist across the whole pool, one beginning 'You want to create' and one beginning 'Create a pattern that starts at', and even the items labelled cloze still present four candidate sequences. There is no open construction, no picture, no continuation of a partially built pattern."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "Each wrong option corrupts exactly one term of the correct sequence, as with 91, 88, 85, 82, 79, 75 against the key ending 76, so a child must check the rule at every position. Step size and direction are the axes being varied, which are this competency's own axes."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "No ceiling is stated for this node, and every term generated stays under 100, with the highest start at 91 and the lowest at 1. Nothing crosses into number territory a Grade 2 child has not met."
+    }
+  },
+  "overall": "FAIL"
 }

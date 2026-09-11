@@ -1,43 +1,14 @@
 {
   "node_id": "mat_g1_na_q2_1",
-  "reviewed_by": "Gemini Pro blind reviewer, batch Re-Harden (mat_g1_na_q2_1), 2026-08-18",
-  "review_date": "2026-08-18",
+  "reviewed_by": "reviewer-b2-tallow-verdigris-8130",
+  "review_date": "2026-09-10",
   "blind": true,
-  "overall": "PASS",
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The items directly assess counting by 2s, 5s, and 10s up to 100. For instance, counting by 2s is tested in \"What number comes next when counting: 14, 16, 18, 20, ___?\", counting by 5s is tested in \"What number comes next when counting: 0, 5, 10, 15, ___?\", and counting by 10s is tested in \"What number comes next when counting: 0, 10, 20, 30, ___?\"."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The sample packet thoroughly covers skip counting intervals of 2s, 5s, and 10s across multiple starting points and representations. Forward skip counting is tested in sequences like \"What comes next: 30, 32, 34, 36, ___\" and \"What number comes next when counting: 10, 15, 20, 25, ___?\", while backward counting is exercised in \"What number comes next when counting backward: 25, 20, 15, 10, ___?\"."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The difficulty and reading load are appropriate for Grade 1 Quarter 2 students. The sentence structures are concise and accessible, such as in pattern recognition (\"What comes next: 22, 24, 26, 28, ___\"), clear contextual phrasing (\"Moses is counting forward by 2 starting from 26. The count is: 26, 28, 30, 32. What is the next number Moses should say?\"), and simple visual queries (\"What number is marked on the number line?\")."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The generator demonstrates solid format variety, utilizing standard multiple-choice questions (\"What number comes next when counting: 18, 20, 22, 24, ___?\"), cloze / fill-in-the-blank items (\"What comes next: 20, 30, 40, 50, ___\"), visual number lines (\"What number is marked on the number line?\"), and word problem contexts (\"Moses is counting forward by 2 starting from 26. The count is: 26, 28, 30, 32. What is the next number Moses should say?\")."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "All generated items align tightly with the target competency \"Count by 2s, 5s and 10s up to 100\" without introducing unintroduced mathematical concepts or operations. Items such as \"What number comes next when counting: 20, 30, 40, 50, ___?\" and \"What number comes next when counting: 15, 20, 25, 30, ___?\" assess skip counting directly."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "All numbers used in the sequences and contexts are scaled strictly within whole numbers up to 100, such as group counting up to the boundary in \"How many drinks are there in all?\" and sequences reaching standard mid-range values like \"What comes next: 20, 30, 40, 50, ___\"."
-    }
-  },
   "sample_seeds": [
     42,
     43,
     44,
     45,
     46,
-    50,
-    72,
     500,
     501,
     502,
@@ -49,87 +20,378 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "mcq",
-      "question_text": "What number comes next when counting: 0, 10, 20, 30, ___?",
-      "correct_answer": 40
+      "formatter": "cloze",
+      "question_text": "What comes next: 0, 10, 20, 30, ___",
+      "correct_answer": 40,
+      "options": [
+        {
+          "key": "A",
+          "value": 10,
+          "text": "10",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 40,
+          "text": "40",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 31,
+          "text": "31",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 20,
+          "text": "20",
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 43,
-      "formatter": "mcq",
-      "question_text": "What number comes next when counting: 14, 16, 18, 20, ___?",
-      "correct_answer": 22
+      "formatter": "read_mcq",
+      "question_text": "(Large group of 44 stars) — There are 44 stars.\nCount the stars.\nHow many stars are there in all?",
+      "correct_answer": "A",
+      "options": [
+        {
+          "key": "A",
+          "value": 44,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 43,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 0,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 45,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 44,
       "formatter": "mcq",
-      "question_text": "What number comes next when counting: 0, 5, 10, 15, ___?",
-      "correct_answer": 20
+      "question_text": "What number comes next when counting: 80, 85, 90, 95, ___?",
+      "correct_answer": 100,
+      "options": [
+        {
+          "key": "A",
+          "value": 100,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 85,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 96,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 90,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 45,
       "formatter": "mcq",
-      "question_text": "What number comes next when counting: 15, 20, 25, 30, ___?",
-      "correct_answer": 35
+      "question_text": "What number comes next when counting: 65, 70, 75, 80, ___?",
+      "correct_answer": 85,
+      "options": [
+        {
+          "key": "A",
+          "value": 75,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 85,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 70,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 81,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 46,
       "formatter": "mcq",
-      "question_text": "What number comes next when counting: 18, 20, 22, 24, ___?",
-      "correct_answer": 26
-    },
-    {
-      "seed": 50,
-      "formatter": "read_mcq",
-      "question_text": "What number is marked on the number line?",
-      "correct_answer": "B"
-    },
-    {
-      "seed": 72,
-      "formatter": "cloze",
-      "question_text": "What comes next: 30, 32, 34, 36, ___",
-      "correct_answer": 38
+      "question_text": "What number comes next when counting: 68, 70, 72, 74, ___?",
+      "correct_answer": 76,
+      "options": [
+        {
+          "key": "A",
+          "value": 72,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 75,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 76,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 70,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 500,
       "formatter": "read_mcq",
-      "question_text": "(Large group of 100 drinks) \u2014 There are 100 drinks.\nCount the drinks.\nHow many drinks are there in all?",
-      "correct_answer": "C"
+      "question_text": "(Large group of 100 drinks) — There are 100 drinks.\nCount the drinks.\nHow many drinks are there in all?",
+      "correct_answer": "C",
+      "options": [
+        {
+          "key": "A",
+          "value": 0,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 101,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 100,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 99,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 501,
       "formatter": "cloze",
       "question_text": "What comes next: 20, 30, 40, 50, ___",
-      "correct_answer": 60
+      "correct_answer": 60,
+      "options": [
+        {
+          "key": "A",
+          "value": 60,
+          "text": "60",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 30,
+          "text": "30",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 51,
+          "text": "51",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 40,
+          "text": "40",
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 502,
       "formatter": "mcq",
       "question_text": "What number comes next when counting: 20, 30, 40, 50, ___?",
-      "correct_answer": 60
+      "correct_answer": 60,
+      "options": [
+        {
+          "key": "A",
+          "value": 40,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 30,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 51,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 60,
+          "is_correct": true
+        }
+      ]
     },
     {
       "seed": 600,
-      "formatter": "mcq",
-      "question_text": "What number comes next when counting: 10, 15, 20, 25, ___?",
-      "correct_answer": 30
+      "formatter": "cloze",
+      "question_text": "What comes next: 35, 40, 45, 50, ___",
+      "correct_answer": 55,
+      "options": [
+        {
+          "key": "A",
+          "value": 40,
+          "text": "40",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 45,
+          "text": "45",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 55,
+          "text": "55",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 51,
+          "text": "51",
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 601,
-      "formatter": "cloze",
-      "question_text": "Moses is counting forward by 2 starting from 26. The count is: 26, 28, 30, 32. What is the next number Moses should say?",
-      "correct_answer": 34
+      "formatter": "mcq",
+      "question_text": "Moses is counting forward by 2 starting from 86. The count is: 86, 88, 90, 92. What is the next number Moses should say?",
+      "correct_answer": 94,
+      "options": [
+        {
+          "key": "A",
+          "value": 94,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 93,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 88,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 90,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 602,
       "formatter": "mcq",
-      "question_text": "What number comes next when counting backward: 25, 20, 15, 10, ___?",
-      "correct_answer": 5
+      "question_text": "What number comes next when counting backward: 45, 40, 35, 30, ___?",
+      "correct_answer": 25,
+      "options": [
+        {
+          "key": "A",
+          "value": 29,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 40,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 25,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 35,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 603,
-      "formatter": "cloze",
-      "question_text": "What comes next: 22, 24, 26, 28, ___",
-      "correct_answer": 30
+      "formatter": "mcq",
+      "question_text": "What number comes next when counting: 70, 72, 74, 76, ___?",
+      "correct_answer": 78,
+      "options": [
+        {
+          "key": "A",
+          "value": 78,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 72,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 74,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 77,
+          "is_correct": false
+        }
+      ]
     }
-  ]
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "CONCERN",
+      "rationale": "Most seeds do practise skip counting, but the two picture items break the task: the stem states 'There are 44 stars.' and then asks 'How many stars are there in all?', so the key is copied out of the prompt and no counting by 2s, 5s or 10s happens at all."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "All three intervals the competency names are genuinely present -- twos (68, 70, 72, 74), fives (80, 85, 90, 95) and tens (20, 30, 40, 50) -- and the sequences start from varied, non-zero points."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The skip-count stems are single-line and the numerals stay two-digit; a Grade 1 pupil in Quarter 2 can carry out the continue-the-count demand without extra decoding."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "Three shells appear: a bare 'What comes next' blank, a four-option next-number choice, and a named-child framing where Moses is counting forward by 2 from a stated start."
+    },
+    "competency_alignment": {
+      "verdict": "FAIL",
+      "rationale": "The hardest-looking seeds abandon the competency's axis entirely: seed 500 shows a bulk group of 100 drinks and asks for the total, which is one-by-one enumeration of a large set, not counting by 2s, 5s or 10s. Difficulty is being carried by set magnitude rather than by the skip-count structure, and one seed also counts backward by fives, a direction the competency never names."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Counts terminate at 100 exactly (80, 85, 90, 95 keys to 100) and no key runs past it; the 101 that appears is only a distractor."
+    }
+  },
+  "overall": "FAIL"
 }

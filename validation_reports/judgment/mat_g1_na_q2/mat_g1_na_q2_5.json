@@ -1,35 +1,8 @@
 {
   "node_id": "mat_g1_na_q2_5",
-  "reviewed_by": "Claude blind reviewer, batch D1B, 2026-09-04",
-  "review_date": "2026-09-04",
+  "reviewed_by": "reviewer-b2-tallow-verdigris-8130",
+  "review_date": "2026-09-10",
   "blind": true,
-  "overall": "FAIL",
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "Adding without regrouping to sums under 100 is done correctly throughout — seed 502's \"What is 55 + 34?\" (89) and seed 52's \"The two parts are 52 and 47. What is the sum?\" (99) are both carry-free. But the clause \"using a variety of concrete and pictorial models\" is barely honoured, and one item is answerable without adding: seed 602 renders \"60 + 22 = 60. True or False?\", where the asserted sum is the first addend unchanged, so a student answers False by inspection. The two picture items also degrade into prose: seed 43 shows \"(Large group of 30 stars) — There are 30 stars.\" — a parenthetical description of a picture is not a pictorial model for a Grade 1 reader."
-    },
-    "comprehensive_coverage": {
-      "verdict": "FAIL",
-      "rationale": "The competency names two operand cases, \"for 2-digit and 1-digit numbers, and 2-digit and 2-digit numbers\", and every one of the 19 samples is 2-digit plus 2-digit. Seed 44 \"What is 60 + 22?\", seed 45 \"What is 30 + 15?\", seed 46 \"What is 16 + 61?\", seed 50 \"40 + 45 = ___\", seed 52 (52 and 47), seed 61 \"Show 51 + 30 on the number line.\", seed 70 \"24 + 74 = ___\", seed 500 (83 and 15), seed 501 \"70 + 16 = 86. True or False?\", seed 502 (55 and 34), seed 600 \"47 + 41 = ___\", seed 603 \"30 + 60 = ___\" — not a single 1-digit addend appears anywhere in the batch. Half the explicitly enumerated scope is untested."
-    },
-    "cognitive_capacity": {
-      "verdict": "CONCERN",
-      "rationale": "For Grade 1 Quarter 2 the pictorial support fails exactly where it is most needed. Seed 500 mixes representations inside one item: the first group is the unreadable placeholder \"(Large group of 83 drinks) — There are 83 drinks.\" while the second group is drawn as actual cup icons for 15 more, so a child sees a picture for one addend and a sentence for the other. Seed 604 asks a Grade 1 child to \"just count up 30 numbers\" one at a time from 30. Seed 601's context, \"Moses is on step 30. Moses climbs up 60 more steps. What step is Moses on now?\", places a six-year-old on a 90-step staircase."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "FAIL",
-      "rationale": "Operand pairs are duplicated four times across only 19 samples: 30 and 15 at seeds 45 and 47 (\"30 + 15 = 46. True or False?\"), 60 and 22 at seeds 44 and 602, 30 and 30 at seeds 43 and 604, and 30 with 60 three separate times at seeds 601, 603 (\"30 + 60 = ___\") and 605 (\"60 + 30 = 90. True or False?\"). Round multiples of ten dominate the first addend (30, 40, 60, 70, 30, 60, 30, 60), so the tens column is trivially 0-plus-something in many items. Only one item, seed 601's steps, has a real-world context."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Nothing reaches beyond the competency. Every item is whole-number addition, no carry is ever required, and the language stays plain — seed 42 uses only \"The dot is at 68 and it moves forward 10 numbers.\" and seed 70 uses a peer-check frame, \"Dante solved: \"24 + 74 = ___\". Dante says the blank is 98. Is Dante correct?\" There is no subtraction, no regrouping vocabulary, and no place-value terminology that would belong to a later node."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "Every sum obeys \"sums up to 100\": the largest are seed 52's 99 and seed 500's 98, and seed 601's 90 sits just below the ceiling, so the top of the band is genuinely reached without breaching it. Addends run from 15 (seed 500) to 83 (seed 500's first group), giving spread across the two-digit range. Distractor 100 at seeds 601 and 603 is presented only as a wrong option, never as a rendered sum."
-    }
-  },
   "sample_seeds": [
     42,
     43,
@@ -422,5 +395,32 @@
       "question_text": "60 + 30 = 90. True or False?",
       "correct_answer": true
     }
-  ]
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "Sums are formed without any column crossing ten (55 + 34, 52 + 47, 24 + 74 all stay clean), and concrete and pictorial supports are real here: number-line placement, a dot advancing along the line, and counted drink symbols."
+    },
+    "comprehensive_coverage": {
+      "verdict": "FAIL",
+      "rationale": "The competency names two addend pairings and only one is built. Across all nineteen samples every addition is two-digit with two-digit -- 60 + 22, 30 + 15, 16 + 61, 40 + 45, 55 + 34 and so on. A two-digit plus one-digit sum never occurs, so half the stated scope is simply absent from the pool."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Sentences are short, the step-climbing and dot-moving framings are concrete, and no item requires more than one addition to answer."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "Presentation genuinely rotates: symbol sets to be combined, a number-line placement task, a bare equation, an error-checking judgement on Noel's work, and a stair-climbing situation."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "Later seeds push toward sums that land near the ceiling (52 and 47 giving 99, 83 and 15 giving 98) while keeping the no-regrouping constraint, so the ladder stretches the same skill rather than swapping in another."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "The largest key is 99 and nothing overshoots the stated sum ceiling of 100."
+    }
+  },
+  "overall": "FAIL"
 }

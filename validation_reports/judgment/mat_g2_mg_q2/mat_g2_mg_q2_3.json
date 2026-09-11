@@ -1,34 +1,8 @@
 {
   "node_id": "mat_g2_mg_q2_3",
-  "reviewed_by": "Gemini Pro blind reviewer, batch G2-MG-Q2-Harden (mat_g2_mg_q2_3), 2026-08-18",
+  "reviewed_by": "reviewer-b3-cinder-halyard-2276",
+  "review_date": "2026-09-10",
   "blind": true,
-  "overall": "PASS",
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The generator successfully produces word problems requiring students to solve problems for both length and distance, as explicitly mandated by the competency. Questions directly ask for outcomes like \"what is their combined length in cm?\" and \"What is the total distance Ben walked in meters?\"."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The samples comprehensively cover both required dimensions: length (using centimeters for objects, e.g., \"A book is 18 cm long. A shoe is 20 cm long.\") and distance (using meters for travel, e.g., \"walked 16 m from the school gate to the playground\"). Furthermore, both addition (\"total distance\") and subtraction (\"How many meters farther\") operations are included."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The cognitive load is highly appropriate for Grade 2. The problems require one-step addition or subtraction using 2-digit numbers within 100 (e.g., 43 - 19 = 24, 18 + 11 = 29). The sentence structures are straightforward and easy for young readers to parse, such as \"A notebook is 20 cm long. A ruler is 15 cm long. How many cm longer is a notebook than a ruler?\"."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The variants are distinct and well-distributed. The packet contains distance addition (\"What is the total distance Liza walked in meters?\"), distance subtraction (\"How many meters farther is the classroom than the playground?\"), length addition (\"If they are placed end to end, what is their combined length in cm?\"), and length subtraction (\"How many cm longer is a notebook than a ruler?\")."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "The generator aligns strictly with the target competency. It does not introduce out-of-scope concepts like unit conversion between meters and centimeters, fractional lengths, or multi-step word problems involving other quantities, remaining laser-focused on basic length and distance problem solving."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "The values generated are physically realistic and build good measurement intuition for Grade 2 students. Lengths of school supplies are sensible (e.g., \"A crayon is 11 cm long. A pencil is 10 cm long.\"), and distances around a school campus are logical (e.g., \"distance from the school gate to the gym is 43 m\")."
-    }
-  },
   "sample_seeds": [
     42,
     43,
@@ -81,8 +55,8 @@
       "options": [
         {
           "key": "A",
-          "value": 55,
-          "is_correct": true
+          "value": 60,
+          "is_correct": false
         },
         {
           "key": "B",
@@ -96,8 +70,8 @@
         },
         {
           "key": "D",
-          "value": 60,
-          "is_correct": false
+          "value": 55,
+          "is_correct": true
         }
       ]
     },
@@ -114,18 +88,18 @@
         },
         {
           "key": "B",
-          "value": 26,
-          "is_correct": false
-        },
-        {
-          "key": "C",
           "value": 31,
           "is_correct": false
         },
         {
-          "key": "D",
+          "key": "C",
           "value": 21,
           "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 26,
+          "is_correct": false
         }
       ]
     },
@@ -137,22 +111,22 @@
       "options": [
         {
           "key": "A",
-          "value": 30,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 25,
-          "is_correct": false
-        },
-        {
-          "key": "C",
           "value": 20,
           "is_correct": true
         },
         {
-          "key": "D",
+          "key": "B",
           "value": 15,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 25,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 30,
           "is_correct": false
         }
       ]
@@ -165,13 +139,13 @@
       "options": [
         {
           "key": "A",
-          "value": 34,
+          "value": 29,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 24,
-          "is_correct": true
+          "value": 34,
+          "is_correct": false
         },
         {
           "key": "C",
@@ -180,8 +154,8 @@
         },
         {
           "key": "D",
-          "value": 29,
-          "is_correct": false
+          "value": 24,
+          "is_correct": true
         }
       ]
     },
@@ -193,26 +167,26 @@
       "options": [
         {
           "key": "A",
-          "value": 51,
-          "text": "51",
-          "is_correct": false
-        },
-        {
-          "key": "B",
           "value": 46,
           "text": "46",
           "is_correct": true
         },
         {
-          "key": "C",
+          "key": "B",
           "value": 56,
           "text": "56",
           "is_correct": false
         },
         {
-          "key": "D",
+          "key": "C",
           "value": 41,
           "text": "41",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 51,
+          "text": "51",
           "is_correct": false
         }
       ]
@@ -225,26 +199,26 @@
       "options": [
         {
           "key": "A",
-          "value": 11,
-          "text": "11",
-          "is_correct": true
-        },
-        {
-          "key": "B",
           "value": 6,
           "text": "6",
           "is_correct": false
         },
         {
-          "key": "C",
-          "value": 16,
-          "text": "16",
+          "key": "B",
+          "value": 21,
+          "text": "21",
           "is_correct": false
         },
         {
+          "key": "C",
+          "value": 11,
+          "text": "11",
+          "is_correct": true
+        },
+        {
           "key": "D",
-          "value": 21,
-          "text": "21",
+          "value": 16,
+          "text": "16",
           "is_correct": false
         }
       ]
@@ -257,13 +231,13 @@
       "options": [
         {
           "key": "A",
-          "value": 61,
-          "is_correct": true
+          "value": 71,
+          "is_correct": false
         },
         {
           "key": "B",
-          "value": 71,
-          "is_correct": false
+          "value": 61,
+          "is_correct": true
         },
         {
           "key": "C",
@@ -290,17 +264,17 @@
         },
         {
           "key": "B",
+          "value": 41,
+          "is_correct": false
+        },
+        {
+          "key": "C",
           "value": 46,
           "is_correct": true
         },
         {
-          "key": "C",
-          "value": 56,
-          "is_correct": false
-        },
-        {
           "key": "D",
-          "value": 41,
+          "value": 56,
           "is_correct": false
         }
       ]
@@ -313,18 +287,18 @@
       "options": [
         {
           "key": "A",
-          "value": 55,
-          "is_correct": false
-        },
-        {
-          "key": "B",
           "value": 45,
           "is_correct": false
         },
         {
-          "key": "C",
+          "key": "B",
           "value": 50,
           "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 55,
+          "is_correct": false
         },
         {
           "key": "D",
@@ -341,27 +315,27 @@
       "options": [
         {
           "key": "A",
-          "value": 24,
-          "text": "24",
-          "is_correct": false
-        },
-        {
-          "key": "B",
           "value": 34,
           "text": "34",
           "is_correct": false
         },
         {
-          "key": "C",
-          "value": 39,
-          "text": "39",
+          "key": "B",
+          "value": 24,
+          "text": "24",
           "is_correct": false
         },
         {
-          "key": "D",
+          "key": "C",
           "value": 29,
           "text": "29",
           "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 39,
+          "text": "39",
+          "is_correct": false
         }
       ]
     },
@@ -373,22 +347,22 @@
       "options": [
         {
           "key": "A",
-          "value": 5,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 15,
+          "value": 1,
           "is_correct": false
         },
         {
-          "key": "C",
+          "key": "B",
           "value": 10,
           "is_correct": false
         },
         {
+          "key": "C",
+          "value": 5,
+          "is_correct": true
+        },
+        {
           "key": "D",
-          "value": 1,
+          "value": 15,
           "is_correct": false
         }
       ]
@@ -401,25 +375,52 @@
       "options": [
         {
           "key": "A",
-          "value": 63,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 53,
-          "is_correct": true
-        },
-        {
-          "key": "C",
           "value": 58,
           "is_correct": false
         },
         {
-          "key": "D",
+          "key": "B",
           "value": 48,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 53,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 63,
           "is_correct": false
         }
       ]
     }
-  ]
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "Each seed poses a genuine problem in a length or distance setting and requires the learner to select and carry out an operation. The placed end to end framing drives joining, and the farther-than framing drives comparison by difference, so both halves of the competency's subject matter produce real problem-solving."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "Additive and subtractive situations both occur, and the two measurement contexts are kept distinct: centimetre problems use classroom objects laid end to end, while metre problems use walking routes and gate-to-location spans. The set does not collapse onto a single operation."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Problems stay one-step with two given quantities, and the named actors keep the situations concrete. Sums such as the 16 and 39 walking legs require regrouping, which is already established by this point in Grade 2, and no stem carries more information than the question needs."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "Two response types appear and the contextual framings genuinely differ: objects compared for length, two-leg journeys totalled, and two routes from a common starting point compared for how much farther one runs. That is the contextual range this competency calls for."
+    },
+    "competency_alignment": {
+      "verdict": "CONCERN",
+      "rationale": "Seven of the thirteen seeds are the same two-leg walking template with different names and numbers, so the set leans heavily on one situation type. The distractors also sit at a fixed offset from the key in essentially every item, which means none of them models an error a learner would actually make, such as subtracting when they should add."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Metre values run from about 11 to 43 with totals staying under 70, and centimetre values track real object sizes in the teens and twenties. All results land inside the addition and subtraction range Grade 2 has by Quarter 2."
+    }
+  },
+  "overall": "CONCERN"
 }

@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g1_dp_q3_1",
-  "reviewed_by": "Gemini Pro blind reviewer, batch G1 (dp pictographs re-review), 2026-08-16",
-  "review_date": "2026-08-16",
+  "reviewed_by": "reviewer-b1-quartz-mallow-4412",
+  "review_date": "2026-09-10",
   "blind": true,
   "sample_seeds": [
     42,
@@ -130,28 +130,28 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "The generator successfully translates the data sets into interactive tasks where the student populates a pictograph. Because the student is actively plotting the data by placing symbols, it successfully executes the competency constraint to \"Present data in a pictograph without a scale.\""
+      "rationale": "Each render hands over a category-count list and asks for one drawn symbol per item, which is precisely presentation in a pictograph carrying no scale."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "The problem set tests the skill across a wide variety of categorical data types, including animals, fruits, days of the week, grade levels, and school subjects, providing robust coverage of the concept."
+      "rationale": "Four categories appear every time with counts spanning one through five, and ties between categories occur, so the presentation task is exercised across the whole span a scaleless graph can hold."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The numerical values required for the data sets range exclusively from 1 to 5. This strict limit on magnitude is perfectly calibrated for Grade 1 students, preventing cognitive overload from counting large quantities."
+      "rationale": "One picture per unit removes any scale reading or multiplication, and the chosen symbols (paw, apple, flower, book, star) come from a first grader's own world."
     },
     "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The problems successfully cycle through distinct framing contexts, such as organizing survey results, completing existing graphs, and building graphs from scratch, offering sufficient structural variation for the competency."
+      "verdict": "CONCERN",
+      "rationale": "All ten renders are the same fill-in exercise. The opening rotates between three wordings, yet the pupil's action never changes, and nothing ever asks which of several already-drawn graphs matches the data - the recognition direction of presenting."
     },
     "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "The generator is tightly focused on the core task of data presentation. It successfully avoids introducing out-of-scope tasks such as data interpretation, comparative analysis, or mathematical operations on the data points."
+      "verdict": "CONCERN",
+      "rationale": "Between seeds only the theme and the particular counts move. Nothing stretches graph-building itself: no fifth category, no zero-count row, no row that overflows the drawing space."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "The explicit text instructions enforce a strict one-to-one mapping between the symbol and the item being represented. This accurately reflects the constraint to present the pictograph without any condensed scale."
+      "rationale": "Counts of one to five keep every row drawable symbol by symbol, which is the right ceiling when no scale is available to compress a tall row."
     }
   },
-  "overall": "PASS"
+  "overall": "CONCERN"
 }

@@ -1,35 +1,8 @@
 {
   "node_id": "mat_g3_na_q4_3",
-  "reviewed_by": "Gemini Pro blind reviewer, batch G3-NA-Q4-Harden (mat_g3_na_q4_3), 2026-08-18",
-  "review_date": "2026-08-18",
+  "reviewed_by": "reviewer-b6-thistle-kestrel-9724",
+  "review_date": "2026-09-10",
   "blind": true,
-  "overall": "PASS",
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The sample items directly fulfill all aspects of the competency ('Divide numbers with and without remainder: 2- to 3-digit numbers by 1-digit number without remainder, 2-digit numbers by 1-digit number with remainder, and 2- to 4-digit numbers by 10,100, and 1000'). Examples include 2- to 3-digit by 1-digit without remainder like \"What is 78 \u00f7 6?\" (seed 43) and \"158 \u00f7 2 = ___\" (seed 601); 2-digit by 1-digit with remainder like \"What is 51 \u00f7 8?\" (seed 45) and \"What is 60 \u00f7 7?\" (seed 600); and 2- to 4-digit by powers of 10 like \"What is 2000 \u00f7 1000?\" (seed 42), \"6540 \u00f7 10 = ___\" (seed 44), and \"What is 3100 \u00f7 100?\" (seed 502)."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "All structural cases mandated by the learning competency are represented across the stratified sample set: exact divisions of 2-digit dividends by 1-digit divisors (\"What is 16 \u00f7 8?\", \"What is 75 \u00f7 5?\"), exact divisions of 3-digit dividends by 1-digit divisors (\"448 \u00f7 7 = ___\"), division of 2-digit dividends with remainders (\"What is 51 \u00f7 8?\", \"What is 60 \u00f7 7?\"), and division of 2-, 3-, and 4-digit dividends by 10, 100, and 1000 (\"What is 70 \u00f7 10?\", \"560 \u00f7 10 = 5600. True or False?\", \"What is 3100 \u00f7 100?\", \"5000 \u00f7 1000 = ___\")."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The items are calibrated precisely for Grade 3 Quarter 4 students. Question stems are succinct, mathematically unambiguous, and free from unnecessary reading overhead or convoluted scenarios (e.g., \"What is 78 \u00f7 6?\", \"6540 \u00f7 10 = ___\", and \"What is 51 \u00f7 8?\"). The error-detect prompts like \"Grace solved: \"35 \u00f7 5 = ___\". Grace says the missing number is 30. Is Grace correct?\" (seed 55) present standard single-step student misconceptions cleanly."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The sample set features a balanced distribution of interactive formats: standard multiple-choice calculation (e.g., \"What is 2000 \u00f7 1000?\", \"What is 60 \u00f7 7?\"), cloze / equation completion (e.g., \"158 \u00f7 2 = ___\", \"5000 \u00f7 1000 = ___\"), binary true/false verification (\"560 \u00f7 10 = 5600. True or False?\"), and error-detection / critique variants (Rico solved: \"6920 \u00f7 10 = ___\". Rico says the missing number is 692. Is Rico correct?)."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Every generated item remains strictly within the bounds of the learning competency. No problems introduce out-of-scope operations such as 3-digit dividends with remainder or multi-digit divisors other than 10, 100, and 1000. All operations directly align with Grade 3 MATATAG expectations."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "All numeric values adhere to the specified range constraints: 1-digit divisors (2 through 8), exact powers of 10 divisors (10, 100, 1000), 2-digit dividends for remainder divisions (\"What is 51 \u00f7 8?\", \"What is 60 \u00f7 7?\"), and 2- to 4-digit dividends for power-of-10 divisions (\"What is 70 \u00f7 10?\", \"6540 \u00f7 10 = ___\", \"What is 3100 \u00f7 100?\", \"5000 \u00f7 1000 = ___\")."
-    }
-  },
   "sample_seeds": [
     42,
     43,
@@ -51,43 +24,157 @@
     {
       "seed": 42,
       "formatter": "mcq",
-      "question_text": "What is 2000 \u00f7 1000?",
-      "correct_answer": 2
+      "question_text": "What is 2000 ÷ 1000?",
+      "correct_answer": 2,
+      "options": [
+        {
+          "key": "A",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 2000000,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 2,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 1000,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 43,
       "formatter": "mcq",
-      "question_text": "What is 78 \u00f7 6?",
-      "correct_answer": 13
+      "question_text": "What is 78 ÷ 6?",
+      "correct_answer": 13,
+      "options": [
+        {
+          "key": "A",
+          "value": 468,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 13,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 6,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 72,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 44,
       "formatter": "cloze",
-      "question_text": "6540 \u00f7 10 = ___",
-      "correct_answer": 654
+      "question_text": "6540 ÷ 10 = ___",
+      "correct_answer": 654,
+      "options": [
+        {
+          "key": "A",
+          "value": 6530,
+          "text": "6530",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 10,
+          "text": "10",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 654,
+          "text": "654",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 65400,
+          "text": "65400",
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 45,
       "formatter": "mcq",
-      "question_text": "What is 51 \u00f7 8?",
-      "correct_answer": "6 R 3"
+      "question_text": "What is 51 ÷ 8?",
+      "correct_answer": "6 R 3",
+      "options": [
+        {
+          "key": "A",
+          "value": "6 R 3",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "6 R 2",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "6",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "7 R 3",
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 46,
       "formatter": "mcq",
-      "question_text": "What is 16 \u00f7 8?",
-      "correct_answer": 2
+      "question_text": "What is 16 ÷ 8?",
+      "correct_answer": 2,
+      "options": [
+        {
+          "key": "A",
+          "value": 128,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 2,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 8,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 50,
       "formatter": "true_false",
-      "question_text": "560 \u00f7 10 = 5600. True or False?",
+      "question_text": "560 ÷ 10 = 5600. True or False?",
       "correct_answer": false
     },
     {
       "seed": 55,
       "formatter": "error_detect",
-      "question_text": "Grace solved: \"35 \u00f7 5 = ___\". Grace says the missing number is 30. Is Grace correct?",
+      "question_text": "Grace solved: \"35 ÷ 5 = ___\". Grace says the missing number is 30. Is Grace correct?",
       "correct_answer": {
         "has_error": true,
         "correct_value": 7
@@ -96,7 +183,7 @@
     {
       "seed": 500,
       "formatter": "error_detect",
-      "question_text": "Rico solved: \"6920 \u00f7 10 = ___\". Rico says the missing number is 692. Is Rico correct?",
+      "question_text": "Rico solved: \"6920 ÷ 10 = ___\". Rico says the missing number is 692. Is Rico correct?",
       "correct_answer": {
         "has_error": false,
         "correct_value": 692
@@ -105,44 +192,237 @@
     {
       "seed": 501,
       "formatter": "cloze",
-      "question_text": "5000 \u00f7 1000 = ___",
-      "correct_answer": 5
+      "question_text": "5000 ÷ 1000 = ___",
+      "correct_answer": 5,
+      "options": [
+        {
+          "key": "A",
+          "value": 4000,
+          "text": "4000",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 1000,
+          "text": "1000",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 5,
+          "text": "5",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 5000000,
+          "text": "5000000",
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 502,
       "formatter": "mcq",
-      "question_text": "What is 3100 \u00f7 100?",
-      "correct_answer": 31
+      "question_text": "What is 3100 ÷ 100?",
+      "correct_answer": 31,
+      "options": [
+        {
+          "key": "A",
+          "value": 100,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 31,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 3000,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 310000,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 600,
       "formatter": "mcq",
-      "question_text": "What is 60 \u00f7 7?",
-      "correct_answer": "8 R 4"
+      "question_text": "What is 60 ÷ 7?",
+      "correct_answer": "8 R 4",
+      "options": [
+        {
+          "key": "A",
+          "value": "8 R 3",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "9 R 4",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "8",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "8 R 4",
+          "is_correct": true
+        }
+      ]
     },
     {
       "seed": 601,
       "formatter": "cloze",
-      "question_text": "158 \u00f7 2 = ___",
-      "correct_answer": 79
+      "question_text": "158 ÷ 2 = ___",
+      "correct_answer": 79,
+      "options": [
+        {
+          "key": "A",
+          "value": 316,
+          "text": "316",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 79,
+          "text": "79",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 156,
+          "text": "156",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 2,
+          "text": "2",
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 602,
       "formatter": "mcq",
-      "question_text": "What is 70 \u00f7 10?",
-      "correct_answer": 7
+      "question_text": "What is 70 ÷ 10?",
+      "correct_answer": 7,
+      "options": [
+        {
+          "key": "A",
+          "value": 10,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 7,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 700,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 60,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 603,
       "formatter": "cloze",
-      "question_text": "448 \u00f7 7 = ___",
-      "correct_answer": 64
+      "question_text": "448 ÷ 7 = ___",
+      "correct_answer": 64,
+      "options": [
+        {
+          "key": "A",
+          "value": 7,
+          "text": "7",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 3136,
+          "text": "3136",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 441,
+          "text": "441",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 64,
+          "text": "64",
+          "is_correct": true
+        }
+      ]
     },
     {
       "seed": 604,
       "formatter": "mcq",
-      "question_text": "What is 75 \u00f7 5?",
-      "correct_answer": 15
+      "question_text": "What is 75 ÷ 5?",
+      "correct_answer": 15,
+      "options": [
+        {
+          "key": "A",
+          "value": 375,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 5,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 70,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 15,
+          "is_correct": true
+        }
+      ]
     }
-  ]
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The three divisions the competency spells out are all attempted and the remainder notation is rendered properly, with the answer to 51 divided by 8 given in the quotient-and-remainder form rather than as a decimal or a rounded whole."
+    },
+    "comprehensive_coverage": {
+      "verdict": "CONCERN",
+      "rationale": "Coverage is badly unbalanced across the three named sub-cases. Division by ten, a hundred and a thousand accounts for about half the set, from 70 divided by 10 up to 6540 divided by 10, while the with-remainder sub-case is carried by only two samples, 51 by 8 and 60 by 7. A sub-case represented by two items out of fifteen cannot certify that remainder handling works across divisors."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Dividends are read rather than long-divided in the power-of-ten cases, the exact divisions use familiar table facts extended to three digits as with 448 by 7, and the remainder notation is the standard Grade 3 form."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "Choice, cloze, truth judgement about 560 divided by 10, and error checking about the results Grace and Rico report all appear, which is adequate for a node whose competency is purely computational."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "The remainder items have exactly the right distractors, since the options against 51 divided by 8 include the same quotient with a wrong remainder and the quotient with the remainder dropped, so the difficulty being probed is remainder handling itself."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Dividends span the two to four digit range the competency describes, from 16 at the low end up to 6920, and the divisors stay single digit except in the power-of-ten cases the wording explicitly permits."
+    }
+  },
+  "overall": "CONCERN"
 }

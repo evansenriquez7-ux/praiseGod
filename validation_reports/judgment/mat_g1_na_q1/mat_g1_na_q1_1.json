@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g1_na_q1_1",
-  "reviewed_by": "Gemini Pro blind reviewer, batch G1 (na number_reading hardening), 2026-08-16",
-  "review_date": "2026-08-16",
+  "reviewed_by": "reviewer-b1-quartz-mallow-4412",
+  "review_date": "2026-09-10",
   "blind": true,
   "sample_seeds": [
     42,
@@ -9,8 +9,6 @@
     44,
     45,
     46,
-    50,
-    72,
     500,
     501,
     502
@@ -18,178 +16,122 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "mcq",
-      "question_text": "Write 13 in words.",
-      "correct_answer": "thirteen",
+      "formatter": "cloze",
+      "question_text": "Write 35 in words.",
+      "correct_answer": "thirty-five",
       "options": [
         {
           "key": "A",
-          "value": "fourteen",
+          "value": "twenty-five",
+          "text": "twenty-five",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "thirteen",
+          "value": "thirty-five",
+          "text": "thirty-five",
           "is_correct": true
         },
         {
           "key": "C",
-          "value": "three",
+          "value": "fifty-three",
+          "text": "fifty-three",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "thirty-one",
+          "value": "thirty-six",
+          "text": "thirty-six",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 43,
-      "formatter": "mcq",
-      "question_text": "Write 22 in words.",
-      "correct_answer": "twenty-two",
-      "options": [
-        {
-          "key": "A",
-          "value": "twenty-three",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "twenty-one",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "twenty-two",
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": "twelve",
-          "is_correct": false
-        }
-      ]
+      "formatter": "true_false",
+      "question_text": "The number 68 is written in words as 'sixty-nine'. True or False?",
+      "correct_answer": false
     },
     {
       "seed": 44,
       "formatter": "mcq",
-      "question_text": "Write the number: twenty-nine.",
-      "correct_answer": 29,
+      "question_text": "Write the number: ninety-eight.",
+      "correct_answer": 98,
       "options": [
         {
           "key": "A",
-          "value": 19,
-          "is_correct": false
+          "value": 98,
+          "is_correct": true
         },
         {
           "key": "B",
-          "value": 92,
+          "value": 89,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 30,
+          "value": 88,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 29,
-          "is_correct": true
+          "value": 99,
+          "is_correct": false
         }
       ]
     },
     {
       "seed": 45,
       "formatter": "mcq",
-      "question_text": "Write the number: twenty-six.",
-      "correct_answer": 26,
+      "question_text": "Write the number: eighty-five.",
+      "correct_answer": 85,
       "options": [
         {
           "key": "A",
-          "value": 62,
+          "value": 86,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 27,
+          "value": 58,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 26,
-          "is_correct": true
+          "value": 75,
+          "is_correct": false
         },
         {
           "key": "D",
-          "value": 16,
-          "is_correct": false
+          "value": 85,
+          "is_correct": true
         }
       ]
     },
     {
       "seed": 46,
       "formatter": "mcq",
-      "question_text": "Write 25 in words.",
-      "correct_answer": "twenty-five",
+      "question_text": "Write 83 in words.",
+      "correct_answer": "eighty-three",
       "options": [
         {
           "key": "A",
-          "value": "twenty-six",
+          "value": "seventy-three",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "twenty-five",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": "fifteen",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "fifty-two",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 50,
-      "formatter": "true_false",
-      "question_text": "The number written as 'twenty-one' is 22. True or False?",
-      "correct_answer": false
-    },
-    {
-      "seed": 72,
-      "formatter": "cloze",
-      "question_text": "Write 38 in words.",
-      "correct_answer": "thirty-eight",
-      "options": [
-        {
-          "key": "A",
-          "value": "thirty-eight",
-          "text": "thirty-eight",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": "twenty-eight",
-          "text": "twenty-eight",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "thirty-nine",
-          "text": "thirty-nine",
-          "is_correct": false
-        },
-        {
-          "key": "D",
           "value": "eighty-three",
-          "text": "eighty-three",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "thirty-eight",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "eighty-four",
           "is_correct": false
         }
       ]
@@ -220,14 +162,14 @@
         },
         {
           "key": "C",
-          "value": 78,
-          "text": "78",
+          "value": 67,
+          "text": "67",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 67,
-          "text": "67",
+          "value": 78,
+          "text": "78",
           "is_correct": false
         }
       ]
@@ -240,13 +182,13 @@
       "options": [
         {
           "key": "A",
-          "value": 35,
-          "is_correct": false
+          "value": 53,
+          "is_correct": true
         },
         {
           "key": "B",
-          "value": 53,
-          "is_correct": true
+          "value": 35,
+          "is_correct": false
         },
         {
           "key": "C",
@@ -264,28 +206,28 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "The packet successfully fulfills the instruction to \"Read and write numerals up to 100.\" by testing both decoding and encoding skills, clearly evidenced by dual-directional prompts like \"Write 13 in words.\" and \"Write the number: twenty-nine.\""
+      "rationale": "Both directions named by the competency are live: numerals turned into words and words turned back into numerals, plus a true-or-false check on a stated equivalence."
     },
     "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The items offer a comprehensive survey of the targeted domain. It tests moving from numerals to words with \"Write 22 in words.\" and from words to numerals with \"Write the number: fifty-three.\", robustly checking translation in both directions."
+      "verdict": "CONCERN",
+      "rationale": "Every sampled value is a two-digit compound between 35 and 99. The teen names, the plain tens, and the single digits - precisely the forms first graders confuse when reading and writing numerals - never occur in these eight renders."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The phrasing and sentence structures are suitable for a Grade 1 learner. Sentence frames such as \"Write 13 in words.\" and \"The number written as 'twenty-one' is 22. True or False?\" are direct, clear, and unburdened by extraneous cognitive load."
+      "rationale": "Hyphenated number words with four short options make no demand beyond Quarter 1 reading, and the true-or-false stems are single-clause."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "The packet features a solid mix of question formats, satisfying variant comprehensiveness by blending standard multiple choice, cloze items, and verification statements like \"The number written as 'ninety-nine' is 100. True or False?\""
+      "rationale": "Three formats appear and the wrong answers are pedagogically chosen rather than random: 89 against 98, and 58 against 85, are exactly the digit reversals this competency has to stamp out."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Every sample focuses strictly on the requirement to \"Read and write numerals up to 100.\" without introducing unrelated concepts or vocabulary. Questions like \"Write 25 in words.\" remain perfectly scoped to the competency."
+      "rationale": "The harder renders sit at the top of the range and use near-miss words, which is where reading and writing numerals actually breaks down for a beginner."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "The values utilized across all seeds strictly adhere to the bound \"up to 100.\" The samples evaluate knowledge at various points in this range, including upper-bound figures as seen in \"The number written as 'ninety-nine' is 100. True or False?\""
+      "rationale": "Nothing exceeds the stated bound, and one item probes the boundary directly by claiming 'ninety-nine' is 100."
     }
   },
-  "overall": "PASS"
+  "overall": "CONCERN"
 }

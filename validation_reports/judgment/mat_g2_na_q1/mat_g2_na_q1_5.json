@@ -1,99 +1,83 @@
 {
   "node_id": "mat_g2_na_q1_5",
-  "reviewed_by": "Gemini Pro blind reviewer, batch G2-NA-Q1-Harden (mat_g2_na_q1_5), 2026-08-18",
+  "reviewed_by": "reviewer-b3-cinder-halyard-2276",
+  "review_date": "2026-09-10",
   "blind": true,
-  "overall": "PASS",
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The generator successfully requires students to use ordinal numbers to indicate positions, matching the competency. Questions like \"A runner is at position number 2. In what place did the runner finish?\" accurately assess this skill."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The sample spans the required numerical range up to the 20th. It tests early ordinals (\"Write the symbol for the first position.\"), mid-range ordinals, and the upper limit of the competency (\"What ordinal describes position number 20?\")."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The language and conceptual complexity are perfectly suited for Grade 2, Quarter 1. Questions are short and direct, such as \"What ordinal describes position number 4?\", avoiding unnecessary cognitive load."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The generator exhibits strong variant diversity. It includes converting cardinal positions to ordinals (\"What ordinal describes position number 3?\"), sequence reasoning (\"Which position comes after 19th?\"), relative comparisons (\"Who arrived earlier: the student in 1st place or 6th place?\"), and word-to-symbol translation (\"Write the symbol for the sixth position.\")."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Every generated item strictly adheres to the wording and intent of \"Describe the position of objects using ordinal numbers up to 20th.\" There are no items that stray into unrelated topics or exceed the 20th position limit."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "The distractors are plausible and structurally consistent. Incorrect options in questions like \"Which position comes after 19th?\" provide other valid ordinal numbers within the learned scope (e.g., \"8th\", \"5th\", \"13th\"), which correctly scales the multiple-choice challenge."
-    }
-  },
   "sample_seeds": [
     42,
     43,
     44,
     45,
     46,
-    50,
     500,
     501,
     502,
-    600
+    600,
+    601,
+    602,
+    603
   ],
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "mcq",
-      "question_text": "Who arrived earlier: the student in 1st place or 6th place?",
-      "correct_answer": "1st",
+      "formatter": "cloze",
+      "question_text": "Which word describes the 9th position?",
+      "correct_answer": "ninth",
       "options": [
         {
           "key": "A",
-          "value": "5th",
+          "value": "seventeenth",
+          "text": "seventeenth",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "4th",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "1st",
+          "value": "ninth",
+          "text": "ninth",
           "is_correct": true
         },
         {
+          "key": "C",
+          "value": "third",
+          "text": "third",
+          "is_correct": false
+        },
+        {
           "key": "D",
-          "value": "7th",
+          "value": "eighteenth",
+          "text": "eighteenth",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 43,
-      "formatter": "mcq",
-      "question_text": "Write the symbol for the sixth position.",
-      "correct_answer": "6th",
+      "formatter": "cloze",
+      "question_text": "Write the symbol for the fifth position.",
+      "correct_answer": "5th",
       "options": [
         {
           "key": "A",
-          "value": "6th",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": "3rd",
+          "value": "12th",
+          "text": "12th",
           "is_correct": false
         },
         {
+          "key": "B",
+          "value": "5th",
+          "text": "5th",
+          "is_correct": true
+        },
+        {
           "key": "C",
-          "value": "12th",
+          "value": "3rd",
+          "text": "3rd",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "2nd",
+          "value": "15th",
+          "text": "15th",
           "is_correct": false
         }
       ]
@@ -101,41 +85,41 @@
     {
       "seed": 44,
       "formatter": "mcq",
-      "question_text": "A runner is at position number 2. In what place did the runner finish?",
-      "correct_answer": "2nd",
+      "question_text": "Ana, Ben, Carlo, Dina, Elena and Fidel stand in a row. Who is 6th in the row?",
+      "correct_answer": "Fidel",
       "options": [
         {
           "key": "A",
-          "value": "12th",
+          "value": "Ana",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "13th",
-          "is_correct": false
+          "value": "Fidel",
+          "is_correct": true
         },
         {
           "key": "C",
-          "value": "20th",
+          "value": "Elena",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "2nd",
-          "is_correct": true
+          "value": "Carlo",
+          "is_correct": false
         }
       ]
     },
     {
       "seed": 45,
       "formatter": "mcq",
-      "question_text": "What ordinal describes position number 4?",
-      "correct_answer": "4th",
+      "question_text": "Which position comes after 16th?",
+      "correct_answer": "17th",
       "options": [
         {
           "key": "A",
-          "value": "5th",
-          "is_correct": false
+          "value": "17th",
+          "is_correct": true
         },
         {
           "key": "B",
@@ -144,12 +128,12 @@
         },
         {
           "key": "C",
-          "value": "4th",
-          "is_correct": true
+          "value": "20th",
+          "is_correct": false
         },
         {
           "key": "D",
-          "value": "20th",
+          "value": "4th",
           "is_correct": false
         }
       ]
@@ -157,59 +141,27 @@
     {
       "seed": 46,
       "formatter": "mcq",
-      "question_text": "Write the symbol for the first position.",
-      "correct_answer": "1st",
+      "question_text": "Write the symbol for the second position.",
+      "correct_answer": "2nd",
       "options": [
         {
           "key": "A",
-          "value": "5th",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "1st",
-          "is_correct": true
-        },
-        {
-          "key": "C",
           "value": "17th",
           "is_correct": false
         },
         {
-          "key": "D",
-          "value": "15th",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 50,
-      "formatter": "cloze",
-      "question_text": "What ordinal describes position number 3?",
-      "correct_answer": "3rd",
-      "options": [
-        {
-          "key": "A",
-          "value": "11th",
-          "text": "11th",
-          "is_correct": false
-        },
-        {
           "key": "B",
-          "value": "3rd",
-          "text": "3rd",
+          "value": "2nd",
           "is_correct": true
         },
         {
           "key": "C",
-          "value": "20th",
-          "text": "20th",
+          "value": "15th",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "14th",
-          "text": "14th",
+          "value": "5th",
           "is_correct": false
         }
       ]
@@ -217,31 +169,31 @@
     {
       "seed": 500,
       "formatter": "cloze",
-      "question_text": "What ordinal describes position number 20?",
-      "correct_answer": "20th",
+      "question_text": "The baskets are placed in a row. One basket is number 20 in the row. Which word describes its position?",
+      "correct_answer": "twentieth",
       "options": [
         {
           "key": "A",
-          "value": "20th",
-          "text": "20th",
+          "value": "twentieth",
+          "text": "twentieth",
           "is_correct": true
         },
         {
           "key": "B",
-          "value": "9th",
-          "text": "9th",
+          "value": "thirteenth",
+          "text": "thirteenth",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "18th",
-          "text": "18th",
+          "value": "ninth",
+          "text": "ninth",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "15th",
-          "text": "15th",
+          "value": "eighth",
+          "text": "eighth",
           "is_correct": false
         }
       ]
@@ -259,17 +211,17 @@
         },
         {
           "key": "B",
-          "value": "10th",
-          "is_correct": false
-        },
-        {
-          "key": "C",
           "value": "7th",
           "is_correct": false
         },
         {
-          "key": "D",
+          "key": "C",
           "value": "5th",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "10th",
           "is_correct": false
         }
       ]
@@ -277,27 +229,27 @@
     {
       "seed": 502,
       "formatter": "mcq",
-      "question_text": "Which position comes after 19th?",
-      "correct_answer": "20th",
+      "question_text": "Who arrived earlier: the student in 20th place or 6th place?",
+      "correct_answer": "6th",
       "options": [
         {
           "key": "A",
-          "value": "8th",
+          "value": "16th",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "20th",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": "5th",
+          "value": "7th",
           "is_correct": false
         },
         {
+          "key": "C",
+          "value": "6th",
+          "is_correct": true
+        },
+        {
           "key": "D",
-          "value": "13th",
+          "value": "8th",
           "is_correct": false
         }
       ]
@@ -305,30 +257,141 @@
     {
       "seed": 600,
       "formatter": "mcq",
-      "question_text": "A runner is at position number 3. In what place did the runner finish?",
-      "correct_answer": "3rd",
+      "question_text": "Which position comes after 12th?",
+      "correct_answer": "13th",
       "options": [
         {
           "key": "A",
-          "value": "12th",
+          "value": "11th",
           "is_correct": false
         },
         {
           "key": "B",
+          "value": "13th",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "18th",
+          "is_correct": false
+        },
+        {
+          "key": "D",
           "value": "19th",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 601,
+      "formatter": "mcq",
+      "question_text": "The pupils stand in a row. Iris is number 19 in the row. Which word describes Iris's position?",
+      "correct_answer": "nineteenth",
+      "options": [
+        {
+          "key": "A",
+          "value": "eleventh",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "third",
           "is_correct": false
         },
         {
           "key": "C",
+          "value": "seventeenth",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "nineteenth",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 602,
+      "formatter": "mcq",
+      "question_text": "What ordinal describes position number 6?",
+      "correct_answer": "6th",
+      "options": [
+        {
+          "key": "A",
           "value": "3rd",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "14th",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "6th",
           "is_correct": true
         },
         {
           "key": "D",
-          "value": "18th",
+          "value": "15th",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 603,
+      "formatter": "mcq",
+      "question_text": "Which word describes the 18th position?",
+      "correct_answer": "eighteenth",
+      "options": [
+        {
+          "key": "A",
+          "value": "third",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "thirteenth",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "eighteenth",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "fifth",
           "is_correct": false
         }
       ]
     }
-  ]
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "CONCERN",
+      "rationale": "Only a handful of seeds actually describe the position of an object or person, such as the row of six children or the basket numbered twentieth. The majority are ordinal vocabulary drills converting a symbol to a word or naming what follows a given ordinal, which exercises terminology without any object whose position is being described."
+    },
+    "comprehensive_coverage": {
+      "verdict": "CONCERN",
+      "rationale": "Word forms, symbol forms, successor positions and a two-ordinal comparison all appear, and the twentieth ceiling is reached in both word and symbol form. First is nowhere in the set, however, neither as a key nor as an option, and it is the ordinal a Grade 2 learner meets before any other."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Single-clause stems and the familiar row-of-pupils setting suit Quarter 1. Ordinal words carrying irregular spellings such as ninth and twentieth are the right targets at this level, and no item requires counting backward from the end of a line or any other second-order manipulation."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "Two response types are used and the framings genuinely differ: named children standing in a row, baskets laid out in a line, a pupil's place in a queue, and bare symbol-to-word conversion. Both the word-to-symbol and symbol-to-word directions are generated."
+    },
+    "competency_alignment": {
+      "verdict": "CONCERN",
+      "rationale": "The item asking who arrived earlier between twentieth place and sixth place offers two further ordinals that appear nowhere in the question, so three of its four options are unreachable answers. Several word-form items likewise pair the key with ordinals many positions away, letting a learner succeed by recognising a word stem rather than by ordinal reasoning."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Ordinals used run from second up to twentieth and none exceeds the stated bound, with the ceiling itself appearing in more than one item. The successor questions stop at the position immediately before the limit, so no key is pushed past twentieth."
+    }
+  },
+  "overall": "CONCERN"
 }
