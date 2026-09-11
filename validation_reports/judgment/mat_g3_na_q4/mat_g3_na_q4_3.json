@@ -1,6 +1,6 @@
 {
   "node_id": "mat_g3_na_q4_3",
-  "reviewed_by": "reviewer-b6-thistle-kestrel-9724",
+  "reviewed_by": "reviewer-r2-amber-trellis-1903",
   "review_date": "2026-09-10",
   "blind": true,
   "sample_seeds": [
@@ -29,12 +29,12 @@
       "options": [
         {
           "key": "A",
-          "value": 3,
+          "value": 1,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 2000000,
+          "value": 3,
           "is_correct": false
         },
         {
@@ -57,7 +57,7 @@
       "options": [
         {
           "key": "A",
-          "value": 468,
+          "value": 14,
           "is_correct": false
         },
         {
@@ -103,8 +103,8 @@
         },
         {
           "key": "D",
-          "value": 65400,
-          "text": "65400",
+          "value": 655,
+          "text": "655",
           "is_correct": false
         }
       ]
@@ -145,7 +145,7 @@
       "options": [
         {
           "key": "A",
-          "value": 128,
+          "value": 3,
           "is_correct": false
         },
         {
@@ -155,7 +155,7 @@
         },
         {
           "key": "C",
-          "value": 3,
+          "value": 1,
           "is_correct": false
         },
         {
@@ -168,13 +168,13 @@
     {
       "seed": 50,
       "formatter": "true_false",
-      "question_text": "560 ÷ 10 = 5600. True or False?",
+      "question_text": "560 ÷ 10 = 10. True or False?",
       "correct_answer": false
     },
     {
       "seed": 55,
       "formatter": "error_detect",
-      "question_text": "Grace solved: \"35 ÷ 5 = ___\". Grace says the missing number is 30. Is Grace correct?",
+      "question_text": "Grace solved: \"35 ÷ 5 = ___\". Grace says the missing number is 5. Is Grace correct?",
       "correct_answer": {
         "has_error": true,
         "correct_value": 7
@@ -215,8 +215,8 @@
         },
         {
           "key": "D",
-          "value": 5000000,
-          "text": "5000000",
+          "value": 6,
+          "text": "6",
           "is_correct": false
         }
       ]
@@ -244,7 +244,7 @@
         },
         {
           "key": "D",
-          "value": 310000,
+          "value": 32,
           "is_correct": false
         }
       ]
@@ -285,8 +285,8 @@
       "options": [
         {
           "key": "A",
-          "value": 316,
-          "text": "316",
+          "value": 80,
+          "text": "80",
           "is_correct": false
         },
         {
@@ -327,7 +327,7 @@
         },
         {
           "key": "C",
-          "value": 700,
+          "value": 8,
           "is_correct": false
         },
         {
@@ -351,8 +351,8 @@
         },
         {
           "key": "B",
-          "value": 3136,
-          "text": "3136",
+          "value": 65,
+          "text": "65",
           "is_correct": false
         },
         {
@@ -377,7 +377,7 @@
       "options": [
         {
           "key": "A",
-          "value": 375,
+          "value": 16,
           "is_correct": false
         },
         {
@@ -401,28 +401,28 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "The three divisions the competency spells out are all attempted and the remainder notation is rendered properly, with the answer to 51 divided by 8 given in the quotient-and-remainder form rather than as a decimal or a rounded whole."
+      "rationale": "The node answers the competency clause by clause, producing exact quotients, quotients carrying a remainder written as 6 R 3, and divisions by the powers of ten. Keys and stems agree, including the accepted 692 for 6920 ÷ 10."
     },
     "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "Coverage is badly unbalanced across the three named sub-cases. Division by ten, a hundred and a thousand accounts for about half the set, from 70 divided by 10 up to 6540 divided by 10, while the with-remainder sub-case is carried by only two samples, 51 by 8 and 60 by 7. A sub-case represented by two items out of fifteen cannot certify that remainder handling works across divisors."
+      "verdict": "PASS",
+      "rationale": "All three listed sub-cases are actually generated: two- and three-digit by one-digit without remainder in 158 ÷ 2 and 448 ÷ 7, two-digit by one-digit with remainder in 51 ÷ 8 and 60 ÷ 7, and division by ten, hundred and thousand across 70 ÷ 10, 3100 ÷ 100 and 5000 ÷ 1000."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Dividends are read rather than long-divided in the power-of-ten cases, the exact divisions use familiar table facts extended to three digits as with 448 by 7, and the remainder notation is the standard Grade 3 form."
+      "rationale": "Remainder notation is introduced in the option set itself so its meaning is inferable, and the divisions by powers of ten are digit-shift exercises rather than long division, which is a sensible Quarter 4 load."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "Choice, cloze, truth judgement about 560 divided by 10, and error checking about the results Grace and Rico report all appear, which is adequate for a node whose competency is purely computational."
+      "rationale": "Both question and equation orientations occur, the remainder items contrast a right and a near-right answer such as 6 R 3 against 6 R 2, and there are truth-judgement and error-checking forms alongside direct computation."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "The remainder items have exactly the right distractors, since the options against 51 divided by 8 include the same quotient with a wrong remainder and the quotient with the remainder dropped, so the difficulty being probed is remainder handling itself."
+      "rationale": "Difficulty tracks the sub-case rather than an outside axis: the powers-of-ten items scale from a two-digit dividend up to 6540, while the one-digit divisor items move from 16 ÷ 8 to 448 ÷ 7, each staying inside its own clause."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Dividends span the two to four digit range the competency describes, from 16 at the low end up to 6920, and the divisors stay single digit except in the power-of-ten cases the wording explicitly permits."
+      "rationale": "Dividends reach four digits only where the competency permits it, namely division by ten, hundred or thousand, and the one-digit-divisor work stops at three digits as stated. The remainder cases are correctly restricted to two-digit dividends."
     }
   },
-  "overall": "CONCERN"
+  "overall": "PASS"
 }

@@ -131,7 +131,11 @@ def file_one(node_id: str, verdict_block: Dict[str, Any], reviewed_by: str,
 
 def main() -> int:
     ap = argparse.ArgumentParser(description="File a blind reviewer's §5 verdicts.")
-    ap.add_argument("--batch", type=int, required=True, help="1-indexed batch from --plan")
+    ap.add_argument("--batch", type=int, help="1-indexed batch from --plan")
+    ap.add_argument("--nodes",
+                    help="file of node ids (one per line) for a REPAIR dispatch -- a set "
+                         "of nodes that went stale or whose review failed a §5 gate, which "
+                         "does not line up with any --plan batch")
     ap.add_argument("--verdicts", required=True, help="the reviewer's reply, as JSON")
     ap.add_argument("--reviewed-by", required=True, help="the identity YOU assigned")
     ap.add_argument("--date", required=True, help="YYYY-MM-DD")
@@ -148,11 +152,21 @@ def main() -> int:
             f"batch rather than filing under a name you did not issue."
         )
 
-    expected = set(batches()[args.batch - 1])
+    if (args.batch is None) == (args.nodes is None):
+        raise ValueError("pass exactly one of --batch or --nodes.")
+    if args.batch is not None:
+        expected = set(batches()[args.batch - 1])
+    else:
+        expected = set(Path(args.nodes).read_text(encoding="utf-8").split())
+    if len(expected) > 25:
+        raise ValueError(
+            f"{len(expected)} nodes under one identity; §5 reviewer plurality caps a blind "
+            f"batch at 25. Split the dispatch and assign a second identity."
+        )
     got = {k for k in reply if k.startswith("mat_")}
     if got != expected:
         raise ValueError(
-            f"batch {args.batch}: reply covers {len(got)} node(s), expected {len(expected)}. "
+            f"reply covers {len(got)} node(s), expected {len(expected)}. "
             f"missing={sorted(expected - got)} unexpected={sorted(got - expected)}"
         )
 

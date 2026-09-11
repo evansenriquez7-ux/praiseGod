@@ -1,6 +1,6 @@
 {
   "node_id": "mat_g2_na_q3_5",
-  "reviewed_by": "reviewer-b4-plover-saffron-6041",
+  "reviewed_by": "reviewer-r2-amber-trellis-1903",
   "review_date": "2026-09-10",
   "blind": true,
   "sample_seeds": [
@@ -36,7 +36,7 @@
         },
         {
           "key": "B",
-          "value": 4,
+          "value": 3,
           "is_correct": false
         },
         {
@@ -69,7 +69,7 @@
         },
         {
           "key": "C",
-          "value": 100,
+          "value": 3,
           "is_correct": false
         },
         {
@@ -105,8 +105,8 @@
         },
         {
           "key": "D",
-          "value": 800,
-          "text": "800",
+          "value": 9,
+          "text": "9",
           "is_correct": false
         }
       ]
@@ -119,7 +119,7 @@
       "options": [
         {
           "key": "A",
-          "value": 400,
+          "value": 5,
           "is_correct": false
         },
         {
@@ -147,7 +147,7 @@
       "options": [
         {
           "key": "A",
-          "value": 3,
+          "value": 1,
           "is_correct": false
         },
         {
@@ -157,7 +157,7 @@
         },
         {
           "key": "C",
-          "value": 200,
+          "value": 3,
           "is_correct": false
         },
         {
@@ -170,13 +170,13 @@
     {
       "seed": 50,
       "formatter": "true_false",
-      "question_text": "Starting from 15 and subtracting 5 repeatedly, you subtract 75 times before reaching 0. True or False?",
+      "question_text": "Starting from 15 and subtracting 5 repeatedly, you subtract 5 times before reaching 0. True or False?",
       "correct_answer": false
     },
     {
       "seed": 51,
       "formatter": "error_detect",
-      "question_text": "Ana solved: \"80 ÷ 10 = ___\". Ana says the missing number is 70. Is Ana correct?",
+      "question_text": "Ana solved: \"80 ÷ 10 = ___\". Ana says the missing number is 10. Is Ana correct?",
       "correct_answer": {
         "has_error": true,
         "correct_value": 8
@@ -251,8 +251,8 @@
         },
         {
           "key": "D",
-          "value": 900,
-          "text": "900",
+          "value": 8,
+          "text": "8",
           "is_correct": false
         }
       ]
@@ -270,7 +270,7 @@
         },
         {
           "key": "B",
-          "value": 800,
+          "value": 9,
           "is_correct": false
         },
         {
@@ -308,7 +308,7 @@
         },
         {
           "key": "D",
-          "value": 100,
+          "value": 2,
           "is_correct": false
         }
       ]
@@ -333,8 +333,8 @@
         },
         {
           "key": "C",
-          "value": 900,
-          "text": "900",
+          "value": 8,
+          "text": "8",
           "is_correct": false
         },
         {
@@ -363,7 +363,7 @@
         },
         {
           "key": "C",
-          "value": 45,
+          "value": 6,
           "is_correct": false
         },
         {
@@ -387,8 +387,8 @@
         },
         {
           "key": "B",
-          "value": 900,
-          "text": "900",
+          "value": 8,
+          "text": "8",
           "is_correct": false
         },
         {
@@ -428,7 +428,7 @@
         },
         {
           "key": "D",
-          "value": 80,
+          "value": 6,
           "is_correct": false
         }
       ]
@@ -437,27 +437,27 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "CONCERN",
-      "rationale": "The illustrating is real but the writing is missing. Seed 44 walks a child from 80 down by tens and asks how many times the subtraction happened, yet never asks for the division expression that records it, so the 'write division expressions' clause goes unexercised across all fifteen seeds."
+      "rationale": "The competency's leading verbs are 'Illustrate and write division expressions', yet the bulk of the set is bare quotient recall such as 'What is 20 ÷ 5?'. No item asks the learner to produce or select the division expression that matches a model; the expression is always supplied and only its answer is wanted."
     },
     "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "All three models the wording lists are generated: equal sharing in the baskets-among-friends item, formation of equal groups in the shade-into-rows and array tasks, and repeated subtraction in seeds 44, 50, 500 and 501."
+      "verdict": "CONCERN",
+      "rationale": "Repeated subtraction is well served ('Start with 80. Subtract 10 repeatedly until reaching 0') and equal sharing appears once ('Moses wants to share 90 baskets equally among 10 friends'), but pictorial modelling is carried by only two array items, and 'formation of equal groups' in the measurement sense (how many groups of n) is absent from this node entirely."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The repeated-subtraction stems state the start, the step and the stopping point in one sentence, which is a manageable three-part instruction at this stage, and every quotient sought is a single digit."
+      "rationale": "Stems stay one clause long with Grade 2 vocabulary, and the repeated-subtraction wording walks the child through the process step by step. Quantities such as 80 and 90 are handled only in tens, which keeps the counting load reasonable for Quarter 3 of Grade 2."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "Symbolic division, a shading task, an array reading, a countdown, a truth claim and a peer's error all appear here, so the same relationship is approached from concrete, pictorial and notational directions as the competency asks."
+      "rationale": "Presentation genuinely rotates: symbolic sentence form (90 ÷ 10 = ___), question form, a sharing story, a shading task, an array read, a true/false, and an error-detect where Ana's answer must be checked. That is a healthy spread of orientations for one node."
     },
     "competency_alignment": {
       "verdict": "CONCERN",
-      "rationale": "Division by 10 dominates the pool, appearing in seeds 44, 45, 46, 500, 501, 502, 600, 601 and 603, which makes place-value shifting rather than equal grouping the recurring insight. Seed 50 also plants a claim of 75 subtractions from 15, rejectable on size without any modelling."
+      "rationale": "Across seeds what actually changes is the size of the dividend (2 ÷ 2 up to 90 ÷ 10), not the richness of the representation. For a node whose point is modelling division several ways, scaling the numbers is the wrong difficulty axis; harder items should demand a different model, not a bigger number."
     },
     "scale_appropriateness": {
-      "verdict": "CONCERN",
-      "rationale": "Dividends stop sensibly at 90, but options such as 800 against 80 divided by 10 and 900 against 90 divided by 10 name values far above anything the operation can yield, and 100 appears as a choice for 10 divided by 10."
+      "verdict": "PASS",
+      "rationale": "Dividends top out at 90 with divisors of 10 or less and every quotient is a whole number no greater than 9, which sits comfortably inside what a Grade 2 learner meeting division for the first time can hold."
     }
   },
   "overall": "CONCERN"

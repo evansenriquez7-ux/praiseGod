@@ -8,7 +8,7 @@ from backend.app.practice_gen.compatibility import (
     get_compatible_formatters_for_variant,
 )
 from backend.app.practice_gen.axes_catalog import get_axes_for_concept
-from backend.app.practice_gen.adapter import _get_dna_instance, _weighted_choice, apply_formatter, apply_experience
+from backend.app.practice_gen.adapter import _get_dna_instance, _uniform_choice, apply_formatter, apply_experience
 from backend.app.practice_gen.generators.base_generator import generate_context
 
 class PracticeOrchestrator:
@@ -559,7 +559,7 @@ class PracticeOrchestrator:
                 available = [fmt for fmt in available if fmt in allowed_formatters]
             if not available:
                 raise ValueError(f"No compatible formatters available for DNA '{dna_name}'")
-            formatter = _weighted_choice(rng, available)
+            formatter = _uniform_choice(rng, available)
 
         problem = apply_formatter(ctx, formatter, rng)
         # Annotate the problem with the DNA concept that was actually chosen.
@@ -621,7 +621,7 @@ class PracticeOrchestrator:
             candidates = [f for f in available_formatters if f != last_formatter]
             if not candidates:
                 candidates = available_formatters
-            formatter = _weighted_choice(batch_rng, candidates)
+            formatter = _uniform_choice(batch_rng, candidates)
             last_formatter = formatter
 
             problem = PracticeOrchestrator.generate_problem(

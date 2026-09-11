@@ -1,6 +1,6 @@
 {
   "node_id": "mat_g1_na_q2_1",
-  "reviewed_by": "reviewer-b2-tallow-verdigris-8130",
+  "reviewed_by": "reviewer-r1-cobalt-juniper-7748",
   "review_date": "2026-09-10",
   "blind": true,
   "sample_seeds": [
@@ -53,7 +53,7 @@
     {
       "seed": 43,
       "formatter": "read_mcq",
-      "question_text": "(Large group of 44 stars) — There are 44 stars.\nCount the stars.\nHow many stars are there in all?",
+      "question_text": "(Large group of 44 stars)\nCount the stars.\nHow many stars are there in all?",
       "correct_answer": "A",
       "options": [
         {
@@ -165,7 +165,7 @@
     {
       "seed": 500,
       "formatter": "read_mcq",
-      "question_text": "(Large group of 100 drinks) — There are 100 drinks.\nCount the drinks.\nHow many drinks are there in all?",
+      "question_text": "(Large group of 100 drinks)\nCount the drinks.\nHow many drinks are there in all?",
       "correct_answer": "C",
       "options": [
         {
@@ -370,28 +370,28 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "CONCERN",
-      "rationale": "Most seeds do practise skip counting, but the two picture items break the task: the stem states 'There are 44 stars.' and then asks 'How many stars are there in all?', so the key is copied out of the prompt and no counting by 2s, 5s or 10s happens at all."
+      "rationale": "Two of the twelve samples abandon skip counting altogether: one shows a large group and asks 'How many stars are there in all?' and another asks the student to 'Count the drinks.' Neither presents a 2s, 5s or 10s structure, so they test one-by-one enumeration, which belongs to a different objective than this one."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "All three intervals the competency names are genuinely present -- twos (68, 70, 72, 74), fives (80, 85, 90, 95) and tens (20, 30, 40, 50) -- and the sequences start from varied, non-zero points."
+      "rationale": "All three step sizes the competency names are genuinely produced: tens in the run beginning 0, 10, 20, 30, fives in the run reaching 100 from 80, 85, 90, 95, and twos in the run 68, 70, 72, 74. A descending fives sequence is also generated, which goes beyond the minimum."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The skip-count stems are single-line and the numerals stay two-digit; a Grade 1 pupil in Quarter 2 can carry out the continue-the-count demand without extra decoding."
+      "rationale": "The narrated item that says a child is 'counting forward by 2 starting from 86' names the step explicitly rather than leaving it to be inferred, which is the right scaffolding for second-quarter Grade 1, and the remaining stems are one line long."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "Three shells appear: a bare 'What comes next' blank, a four-option next-number choice, and a named-child framing where Moses is counting forward by 2 from a stated start."
+      "rationale": "Fill-in continuations, four-option selections, a narrated skip count attributed to a child, and a picture-count all appear, so the surface forms are not a single template repeated."
     },
     "competency_alignment": {
-      "verdict": "FAIL",
-      "rationale": "The hardest-looking seeds abandon the competency's axis entirely: seed 500 shows a bulk group of 100 drinks and asks for the total, which is one-by-one enumeration of a large set, not counting by 2s, 5s or 10s. Difficulty is being carried by set magnitude rather than by the skip-count structure, and one seed also counts backward by fives, a direction the competency never names."
+      "verdict": "CONCERN",
+      "rationale": "Alongside the off-target enumeration items, one sequence beginning 20, 30, 40, 50 is reproduced twice under two different formats, so part of the apparent spread is format variation over an identical mathematical item rather than added skip-counting demand. The picture items also offer 0 as a choice, which no count of a drawn group can yield."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Counts terminate at 100 exactly (80, 85, 90, 95 keys to 100) and no key runs past it; the 101 that appears is only a distractor."
+      "rationale": "The fives run lands exactly on 100 and the twos runs sit in the eighties and nineties, so the upper reach of the stated range is genuinely exercised while nothing spills past it."
     }
   },
-  "overall": "FAIL"
+  "overall": "CONCERN"
 }

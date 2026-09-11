@@ -1,6 +1,6 @@
 {
   "node_id": "mat_g3_na_q4_2",
-  "reviewed_by": "reviewer-b6-thistle-kestrel-9724",
+  "reviewed_by": "reviewer-r2-amber-trellis-1903",
   "review_date": "2026-09-10",
   "blind": true,
   "sample_seeds": [
@@ -204,7 +204,7 @@
     {
       "seed": 68,
       "formatter": "error_detect",
-      "question_text": "Rico solved: \"___ ÷ 9 = 6\". Rico says the missing number is 6. Is Rico correct?",
+      "question_text": "Rico solved: \"___ ÷ 9 = 6\". Rico says the missing number is 5. Is Rico correct?",
       "correct_answer": {
         "has_error": true,
         "correct_value": 54
@@ -227,8 +227,8 @@
       "options": [
         {
           "key": "A",
-          "value": 729,
-          "text": "729",
+          "value": 10,
+          "text": "10",
           "is_correct": false
         },
         {
@@ -436,28 +436,28 @@
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "Many samples genuinely place the unknown in a term position, as when the dividend is blank ahead of a division by 9. But several put the blank where the answer normally goes, so an item reading 72 divided by 8 with a blank, or one asking for the missing number in 8 x 5, is ordinary computation identical to the neighbouring multiplication and division nodes rather than solving for a missing term."
+      "verdict": "PASS",
+      "rationale": "Items genuinely hinge on recovering an unknown from a number sentence rather than on plain computation, and the divisors and factors involved are the six, seven, eight and nine the competency specifies."
     },
     "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "Both operations named in the competency appear, and the unknown is placed in more than one slot, sitting as a first factor before a multiplication by 6, as a second factor after 9, and as the dividend in several division sentences."
+      "verdict": "CONCERN",
+      "rationale": "Three of the four possible blank positions appear, the dividend in '___ ÷ 9 = 7', the quotient in '72 ÷ 8 = ___', and a factor in '9 × ___ = 63', but the missing-divisor case is never generated anywhere in the set. Multiplication is also badly outweighed by division, leaving that half of the 'multiplication or division' wording thinly sampled."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "All values stay within the tables, the largest being 81, and the balance framing that states both sides balance evenly gives a concrete image for the unknown that suits a fourth-quarter third grader."
+      "rationale": "Inverse reasoning on single-digit facts is a reasonable Quarter 4 demand, and the verbal phrasing 'What divided by 8 equals 9?' gives pupils a spoken route into the same structure the symbolic blanks present."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "Five presentations occur: the what number goes in the blank phrasing, the symbolic sentence with a blank, the what divided by wording, a balance reading item, and truth and error-checking forms including the one about 45 divided by 9."
+      "rationale": "The unknown is presented symbolically, verbally, as a balance in 'Both sides balance evenly. 6 × ? = 60.', as a truth judgement, and as another pupil's wrong value to correct. That is more presentational range than a missing-number node usually gets."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "The distractors track real errors rather than noise, since against a blank dividend over 9 equalling 7 the options include both given numbers and a neighbouring table product, so a pupil who multiplies the wrong pair is caught."
+      "rationale": "What varies across seeds is which element of the sentence is hidden and how far the inverse step reaches, which is precisely the competency's target rather than a proxy such as bigger numbers."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Every number sentence is built from the six through nine tables with products no larger than 81, matching the restriction the competency states."
+      "rationale": "Unknowns resolve to values such as 21, 40, 56, 63 and 81, all products of the named tables, and no operand exceeds what those tables generate."
     }
   },
   "overall": "CONCERN"

@@ -1,6 +1,6 @@
 {
   "node_id": "mat_g2_na_q3_6",
-  "reviewed_by": "reviewer-b4-plover-saffron-6041",
+  "reviewed_by": "reviewer-r2-amber-trellis-1903",
   "review_date": "2026-09-10",
   "blind": true,
   "sample_seeds": [
@@ -30,7 +30,7 @@
       "options": [
         {
           "key": "A",
-          "value": 9,
+          "value": 2,
           "is_correct": false
         },
         {
@@ -58,7 +58,7 @@
       "options": [
         {
           "key": "A",
-          "value": 20,
+          "value": 6,
           "is_correct": false
         },
         {
@@ -98,8 +98,8 @@
         },
         {
           "key": "C",
-          "value": 400,
-          "text": "400",
+          "value": 5,
+          "text": "5",
           "is_correct": false
         },
         {
@@ -130,8 +130,8 @@
         },
         {
           "key": "C",
-          "value": 75,
-          "text": "75",
+          "value": 4,
+          "text": "4",
           "is_correct": false
         },
         {
@@ -160,7 +160,7 @@
         },
         {
           "key": "C",
-          "value": 24,
+          "value": 7,
           "is_correct": false
         },
         {
@@ -254,7 +254,7 @@
         },
         {
           "key": "D",
-          "value": 900,
+          "value": 8,
           "is_correct": false
         }
       ]
@@ -272,7 +272,7 @@
         },
         {
           "key": "B",
-          "value": 75,
+          "value": 4,
           "is_correct": false
         },
         {
@@ -307,8 +307,8 @@
         },
         {
           "key": "C",
-          "value": 80,
-          "text": "80",
+          "value": 6,
+          "text": "6",
           "is_correct": false
         },
         {
@@ -327,7 +327,7 @@
       "options": [
         {
           "key": "A",
-          "value": 3,
+          "value": 1,
           "is_correct": false
         },
         {
@@ -337,7 +337,7 @@
         },
         {
           "key": "C",
-          "value": 200,
+          "value": 3,
           "is_correct": false
         },
         {
@@ -355,8 +355,8 @@
       "options": [
         {
           "key": "A",
-          "value": 45,
-          "text": "45",
+          "value": 6,
+          "text": "6",
           "is_correct": false
         },
         {
@@ -383,27 +383,27 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "Here the symbolic division questions are exactly what the node asks for, and each dividend and divisor pair corresponds to a fact in the five named tables, as with 12 divided by 2 and 15 divided by 3."
+      "rationale": "Every sampled item is a straight division fact recovery, which is exactly what 'Divide numbers using the 2, 3 4, 5, and 10 multiplication tables' asks for; stems and keys agree throughout, including the error-detect on 10 ÷ 5 where the correct value 2 is carried."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "Every named table is used as a divisor: 2 in the 12-and-10 items, 3 in seeds 42 and 603, 4 in the 20-divided-by-4 claim, 5 in seeds 45 and 600, and 10 in seeds 44, 502 and 602."
+      "rationale": "All five named tables are actually exercised: 12 ÷ 2 and 10 ÷ 2 for twos, 15 ÷ 3 for threes, 20 ÷ 4 for fours, 15 ÷ 5 for fives, and several tens facts up to 90 ÷ 10. No table named in the competency is left unsampled."
     },
     "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "One-line fact questions with single-digit answers are correctly pitched for the quarter in which division facts are first consolidated, and the one story item, sharing 20 baskets among 4 friends, adds no reading burden."
+      "verdict": "CONCERN",
+      "rationale": "The array item 'This array has 70 squares split into 10 equal rows' offers 34 among its choices, a value that would require an array of 340 squares and so contradicts the quantity the stem just stated. An option that cannot be reconciled with the picture teaches the child to distrust the model rather than read it."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "The fact recall is reached through an equals-blank sentence, a 'What is' question, a shaded-rows task, an array to read, a truth claim and a peer's wrong quotient, which is reasonable coverage for a computation-focused node."
+      "rationale": "Beyond plain computation the node supplies a shading construction, an array reading, a truth judgement on 20 ÷ 4 = 5, a flawed-worked-example check, and one sharing story about baskets among friends. Orientation is varied even though the competency itself is purely computational."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Dividend size within the named tables is the axis that moves, from 3 divided by 3 at the bottom to 90 divided by 10 at the top, and the divisor is always a table the child has just learned to multiply by."
+      "rationale": "Harder seeds move to less familiar facts and larger table entries rather than importing an unrelated skill; nothing in the set drifts into remainders, two-step reasoning, or tables outside the five listed."
     },
     "scale_appropriateness": {
-      "verdict": "CONCERN",
-      "rationale": "Some option sets reach outside anything the tables can produce: 24 is offered as a quotient for 12 divided by 2, and 34 appears among the choices for the 70-squares-in-10-rows array. A quotient larger than its dividend is not a table error a child could plausibly make."
+      "verdict": "PASS",
+      "rationale": "The largest dividend, 90, is precisely the top of the ten times table, and no item exceeds a single-digit quotient. The ceiling implied by the named tables is respected without being undershot either."
     }
   },
   "overall": "CONCERN"

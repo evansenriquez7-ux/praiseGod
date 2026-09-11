@@ -1,6 +1,6 @@
 {
   "node_id": "mat_g1_na_q2_3",
-  "reviewed_by": "reviewer-b2-tallow-verdigris-8130",
+  "reviewed_by": "reviewer-r1-cobalt-juniper-7748",
   "review_date": "2026-09-10",
   "blind": true,
   "sample_seeds": [
@@ -164,7 +164,7 @@
     {
       "seed": 50,
       "formatter": "true_false",
-      "question_text": "Write 20 as tens and ones, for example 45 = 40 + 5. The answer is 60 + 4. True or False?",
+      "question_text": "Write 20 as tens and ones, for example 45 = 40 + 5. The answer is 2 + 0. True or False?",
       "correct_answer": false
     },
     {
@@ -274,29 +274,29 @@
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "Decomposition into tens and ones is what the keys record, but the worked example embedded in the stem, 'for example 45 = 40 + 5', collides with the seed 42 item whose target number is 45 -- that pupil is handed the answer verbatim before being asked for it."
+      "verdict": "FAIL",
+      "rationale": "The worked example is baked into every stem as 'for example 45 = 40 + 5', and one sampled item asks 'Write 45 as tens and ones, for example 45 = 40 + 5.' with the key 40 + 5. That item prints its own answer inside the question, so it measures nothing about decomposing a number; whenever the generator selects 45 as the target this defect recurs by construction."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "The phrase 'any 2-digit number' is honoured across the range: teen numbers (12, 15), exact tens where the ones digit is zero (10, 20), and ordinary two-digit numbers (45, 76, 91, 94) all appear as targets."
+      "rationale": "The targets sampled span the awkward cases as well as the routine ones: a teen value, round tens such as 10 and 20 whose ones digit is zero, and larger two-digit values in the seventies and nineties. For a competency saying 'any 2-digit number', that spread is respectable."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "A single instruction plus a model equation is the whole reading load, and the base-10 block prompts give the concrete anchor a Quarter 2 Grade 1 pupil needs for this."
+      "rationale": "Writing a two-digit numeral as a sum of its tens part and ones part is a single-step task, and the instruction sentence stays short enough for a Grade 1 reader in the second quarter."
     },
     "variant_comprehensiveness": {
       "verdict": "CONCERN",
-      "rationale": "Apart from the two block-building prompts, every stem is one sentence with the number swapped out; the reverse direction -- being given tens and ones and asked which number they make -- never appears, and neither does any contextual framing."
+      "rationale": "Apart from the base-10 block tasks, every sampled item is the identical instruction sentence with a different numeral substituted in. There is no context, no reverse direction asking which number a stated tens-and-ones sum makes, and no place-value question phrased any other way."
     },
     "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Difficulty climbs on the one axis that matters here, from targets where the ones digit is 0 to targets like 76 and 94 where both parts must be produced, and the distractors shadow real errors such as reversing the digits."
+      "verdict": "CONCERN",
+      "rationale": "The block items ask only to 'Use base-10 blocks to show the number 91.' and never require naming the tens and ones parts, so they represent a quantity without decomposing it. Several distractors also come from an entirely unrelated number, for instance an option of 30 + 8 offered against a target of 10, and are dismissible without any place-value reasoning."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Targets run from 10 to 94, staying inside the two-digit band the competency specifies, and no decomposition requires a hundreds part."
+      "rationale": "Every target is genuinely two-digit, from 10 at the bottom to the nineties at the top, so the generator neither slips into single digits nor exceeds the two-digit boundary the competency sets."
     }
   },
-  "overall": "CONCERN"
+  "overall": "FAIL"
 }

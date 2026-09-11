@@ -1,6 +1,6 @@
 {
   "node_id": "mat_g2_na_q3_9",
-  "reviewed_by": "reviewer-b4-plover-saffron-6041",
+  "reviewed_by": "reviewer-r3-fennel-quarry-5520",
   "review_date": "2026-09-10",
   "blind": true,
   "sample_seeds": [
@@ -43,7 +43,7 @@
         },
         {
           "key": "D",
-          "value": 9,
+          "value": 2,
           "is_correct": false
         }
       ]
@@ -66,7 +66,7 @@
         },
         {
           "key": "C",
-          "value": 20,
+          "value": 6,
           "is_correct": false
         },
         {
@@ -102,8 +102,8 @@
         },
         {
           "key": "D",
-          "value": 400,
-          "text": "400",
+          "value": 5,
+          "text": "5",
           "is_correct": false
         }
       ]
@@ -116,7 +116,7 @@
       "options": [
         {
           "key": "A",
-          "value": 75,
+          "value": 4,
           "is_correct": false
         },
         {
@@ -159,7 +159,7 @@
         },
         {
           "key": "D",
-          "value": 24,
+          "value": 7,
           "is_correct": false
         }
       ]
@@ -167,13 +167,13 @@
     {
       "seed": 50,
       "formatter": "true_false",
-      "question_text": "Kuya Renz has ₱70 and wants to share it equally among 10 friends. How much does each friend get? The answer is 700. True or False?",
+      "question_text": "Kuya Renz has ₱70 and wants to share it equally among 10 friends. How much does each friend get? The answer is 10. True or False?",
       "correct_answer": false
     },
     {
       "seed": 55,
       "formatter": "error_detect",
-      "question_text": "Grace solved this problem: \"Romel has ₱12 and wants to share it equally among 2 friends. How much does each friend get?\" Grace says the answer is 10. Is Grace correct?",
+      "question_text": "Grace solved this problem: \"Romel has ₱12 and wants to share it equally among 2 friends. How much does each friend get?\" Grace says the answer is 2. Is Grace correct?",
       "correct_answer": {
         "has_error": true,
         "correct_value": 6
@@ -196,8 +196,8 @@
       "options": [
         {
           "key": "A",
-          "value": 900,
-          "text": "900",
+          "value": 8,
+          "text": "8",
           "is_correct": false
         },
         {
@@ -228,7 +228,7 @@
       "options": [
         {
           "key": "A",
-          "value": 900,
+          "value": 8,
           "is_correct": false
         },
         {
@@ -261,7 +261,7 @@
         },
         {
           "key": "B",
-          "value": 75,
+          "value": 4,
           "is_correct": false
         },
         {
@@ -290,8 +290,8 @@
         },
         {
           "key": "B",
-          "value": 80,
-          "text": "80",
+          "value": 6,
+          "text": "6",
           "is_correct": false
         },
         {
@@ -326,12 +326,12 @@
         },
         {
           "key": "C",
-          "value": 3,
+          "value": 1,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 200,
+          "value": 3,
           "is_correct": false
         }
       ]
@@ -356,8 +356,8 @@
         },
         {
           "key": "C",
-          "value": 45,
-          "text": "45",
+          "value": 6,
+          "text": "6",
           "is_correct": false
         },
         {
@@ -372,27 +372,27 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "These are division word problems, and the money clause is carried by the peso-sharing items in seeds 43, 44, 45, 601, 602 and 603, where an amount is split equally among a number of friends."
+      "rationale": "Every sampled item is a genuine division situation resolved by a single table fact, and the clause 'including problems involving money' is honoured rather than ignored: peso stems appear repeatedly (10 shared among 2, 40 among 10, 15 among 5, 20 among 4). Divisors stay inside the named set of 2, 3, 4, 5 and 10, and each key is the true quotient, including the two error-detect items where the stated correct_value matches the arithmetic. The one presentational wrinkle is that money stems ask how much each friend gets while keys and options are bare numerals with no currency mark, but the peso sign in the stem carries the unit, so the verb-noun mapping still holds."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "Both meanings of division are generated, partitive sharing among a stated number of friends and quotitive grouping in the items asking how many bags are needed when a fixed number goes in each. All five tables appear as divisors."
+      "rationale": "All five tables the competency enumerates actually appear across the fourteen samples: dividing by 3 (costumes, and 15 among 3), by 2 (10 among 2, 12 in each bag, 12 among 2), by 4 (20 among 4), by 5 (15 among 5, 15 leashes), and by 10 (40, 70, 90, 20). Both meanings of division are exercised too: equal sharing among friends, and the measurement sense in the stems ending 'how many bags are needed?'. Coverage is uneven in weight, with the 10-table appearing five times and the 4-table only once, but no sub-case the wording names is missing outright."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Single-sentence problems with one actor, one quantity and one divisor are right for this quarter, and every answer is a single digit, so the sharing can be verified by dealing out if a child needs to."
+      "rationale": "Stems are one or two short clauses, the nouns are concrete classroom and market objects, and the Filipino address terms Kuya, Ate, Coach and Sir are age-appropriate register for a Grade 2 reader. No item demands more than one computation; the error_detect and true_false wrappers add a judgement step but the underlying fact is still a single table entry, which is a reasonable Quarter 3 ask. Only 'canvases' sits slightly outside a typical Grade 2 sight vocabulary, and nothing in any stem reaches for remainders, multi-digit long division, or notation the grade has not met."
     },
     "variant_comprehensiveness": {
       "verdict": "CONCERN",
-      "rationale": "Only two story shapes exist, sharing equally among friends and packing a fixed number per bag, and no pictorial or array-based item appears at all in this pool despite division being newly introduced this quarter."
+      "rationale": "Response formats are varied (mcq, cloze, true_false, error_detect), but underneath them sit only two story skeletons: sharing a quantity equally among friends, and putting a fixed number of objects into each bag. Not one of the fourteen samples presents division as a bare computation or an equation to complete, so a learner never meets the symbolic form of the skill. The money sub-case is narrower still, locked entirely to the sharing-among-friends frame; there is no peso item in the grouping frame, no price-per-item or change situation, and no orientation where the number of friends is the unknown."
     },
     "competency_alignment": {
       "verdict": "CONCERN",
-      "rationale": "Division by 10 carries an outsized share of the pool, appearing in seeds 44, 50, 500, 501, 502 and 602, so the recurring skill is a place-value shift rather than the spread of tables the node names. Sharing 3 costumes among 3 friends at the other extreme requires no table either."
+      "rationale": "Stepping up from the first group to the later seeds, what actually grows is the size of the dividend paired with the easiest divisor, plus the answer format. Reaching 90 objects split ten ways is not a harder recall than 20 shared among 4, so the apparent escalation rides on magnitude and on wrapping the same quotient in a true_false or error_detect shell rather than on moving deeper into the 3- and 4-tables, which are the sparsest here. The opening sample compounds this: 3 costumes among 3 friends yields a quotient of 1 and offers 0 among its options, a choice no sharing situation can produce, which makes the easiest item both degenerate and answerable by eliminating an impossibility."
     },
     "scale_appropriateness": {
-      "verdict": "CONCERN",
-      "rationale": "The quantities shared are fine, but options such as 900 for 90 shared among 10 and 200 for ₱20 shared among 10 friends name shares larger than the whole amount, and 700 is the planted wrong answer for ₱70 split ten ways."
+      "verdict": "PASS",
+      "rationale": "Dividends run from 3 up to 90 and all products stay within what the 2, 3, 4, 5 and 10 tables generate, with the largest quotient being 9 and nothing requiring a fact above ten times ten. Divisors never stray outside the five listed tables, no division leaves a remainder, and the peso amounts (10, 12, 15, 20, 40, 70) are realistic small sums for a Grade 2 context rather than inflated figures. Nothing overshoots the stated ceiling and nothing sits so far below it that the range looks mis-set, the lone answer-of-1 case aside."
     }
   },
   "overall": "CONCERN"

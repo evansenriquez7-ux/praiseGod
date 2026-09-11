@@ -1,6 +1,6 @@
 {
   "node_id": "mat_g2_na_q3_2",
-  "reviewed_by": "reviewer-b4-plover-saffron-6041",
+  "reviewed_by": "reviewer-r1-cobalt-juniper-7748",
   "review_date": "2026-09-10",
   "blind": true,
   "sample_seeds": [
@@ -25,7 +25,7 @@
     {
       "seed": 42,
       "formatter": "error_detect",
-      "question_text": "Manny solved: \"3 × 3 = ___\". Manny says the missing number is 0. Is Manny correct?",
+      "question_text": "Manny solved: \"3 × 3 = ___\". Manny says the missing number is 6. Is Manny correct?",
       "correct_answer": {
         "has_error": true,
         "correct_value": 9
@@ -45,7 +45,7 @@
       "options": [
         {
           "key": "A",
-          "value": 1,
+          "value": 4,
           "is_correct": false
         },
         {
@@ -55,7 +55,7 @@
         },
         {
           "key": "C",
-          "value": 0,
+          "value": 1,
           "is_correct": false
         },
         {
@@ -275,14 +275,14 @@
         },
         {
           "key": "B",
-          "value": 1,
-          "text": "1",
+          "value": 4,
+          "text": "4",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 0,
-          "text": "0",
+          "value": 1,
+          "text": "1",
           "is_correct": false
         },
         {
@@ -338,27 +338,27 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "Each sampled product has at least one factor drawn from the five tables the node names, and the items ask for the product directly, which is what 'multiply numbers using the tables' means at this stage."
+      "rationale": "Sampled items ask for products directly, and in every pair at least one factor comes from the tables the competency names, so the multiplication being practised is the multiplication the node prescribes rather than arbitrary facts."
     },
     "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "All five named tables surface: the twos in 1 times 2 and 6 times 2, the threes in 3 times 3 and 4 times 3, the fours in 3 times 4, 8 times 4 and 9 times 4, the fives in 6 times 5 and 8 times 5, and the tens in the 8 by 10 shading task."
+      "verdict": "CONCERN",
+      "rationale": "Four of the five prescribed tables are drilled as actual computations, but the ten times table surfaces only once and only inside the instruction to 'Shade all the squares inside the 8×10 rectangle.' No sampled item asks a ten-table product as a fact to be recalled or selected, which leaves the easiest and most foundational of the five under-practised."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The bare fact stems are a single line, and the two visual tasks state the rectangle or array dimensions explicitly so no counting of unlabelled marks is required. Nothing here reaches beyond the table recall Quarter 3 establishes."
+      "rationale": "Single-digit factors, an array picture available as support, and short stems such as the one asking what 9 × 4 equals are appropriate for a Grade 2 class meeting multiplication in the third quarter."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "Alongside the plain fact questions there is a rectangle to shade, an array to read, a truth claim to evaluate, a peer answer to check, and one baskets-in-bags story, so the same fact is met symbolically, pictorially and verbally."
+      "rationale": "The node offers bare symbolic facts, a rectangle to shade, an array to read with the instruction to look at the 7×4 array, truth judgments, error checking of another child's product, and one bags story, so both concrete and abstract presentations are present."
     },
     "competency_alignment": {
-      "verdict": "CONCERN",
-      "rationale": "Two flaws pull away from table recall. Seed 42 plants 0 as the claimed value of 3 times 3, which is not a table misconception but an implausible value a child rejects without multiplying, and the trivial fact 1 times 2 is generated twice, in seeds 44 and 602, inside a sixteen-item pool."
+      "verdict": "PASS",
+      "rationale": "The scaling axis is factor size within the allowed tables, moving from a product of two up into the thirties and eighties, which is the natural difficulty ladder for table recall and not a substitute skill."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "No product exceeds 80 and no factor exceeds 10, so the whole pool sits inside the 2, 3, 4, 5 and 10 tables' natural ceiling of 100. Distractors such as 32 against 36 and 25 against 28 also stay in the plausible product band."
+      "rationale": "No factor exceeds ten and the largest product sampled is eighty, consistent with a competency bounded by the 2, 3, 4, 5 and 10 tables; nothing strays into facts outside those tables."
     }
   },
   "overall": "CONCERN"

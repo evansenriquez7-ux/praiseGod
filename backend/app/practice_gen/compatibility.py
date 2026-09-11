@@ -355,6 +355,13 @@ COMPATIBILITY: Dict[str, List[str]] = {
     "money_peso": [
         "mcq",
         "cloze",
+        # A peso amount is a VALUE, so a number line renders it natively: a dot at the
+        # starting amount and a hop of the second. Declared only once fmt_number_line
+        # gained an explicit money branch -- see its comment for what the fallback did
+        # instead (marked the answer on the line). Added 2026-09-11 to carry
+        # mat_g1_na_q4_6 to the >=50% picture rate rulings R-3 requires, by SET
+        # COMPOSITION rather than by a weight, which R-4 forbids.
+        "number_line_read",
         "peso_money_read",
         "peso_money_build",
     ],
@@ -1125,6 +1132,21 @@ FORMATTER_VARIANT_SUPPORT: Dict[str, Dict[str, Dict[str, List[str]]]] = {
         # deliberately: it asks the pupil to CONSTRUCT `target_amount`, which on a word
         # problem would have to be the answer, and handing over the answer as the thing
         # to build is a different task from solving the problem.
+        # A number line plots AMOUNTS, so it serves money's arithmetic competencies and
+        # not its notation ones. Measured 2026-09-11 over 60 seeds per node: `read_write`
+        # keys "1 P5 coin" / "two thousand four hundred sixty-three pesos" and `compare`
+        # keys a denomination name, while `add_amounts` / `find_change` /
+        # `add_or_subtract` key integers. Declaring the formatter without this line
+        # crashed 272 of 1828 renders on the notation nodes, and the empirical exclusions
+        # file could not catch it -- it probes 12 fixed seeds and is documented as
+        # guarding against false REFUSALS, not against a pair that serves at those seeds
+        # and raises at others.
+        #
+        # Listed as an EXPLICIT restriction on purpose: the orchestrator skips checking a
+        # registry-synthesized scope value (like `add_or_subtract`) unless the table
+        # restricts that variant for that formatter, which is what makes this line bite.
+        "number_line_read": {"operation": ["add_amounts", "find_change", "add_or_subtract",
+                                           "add", "subtract"]},
         "peso_money_read": {"task_type": ["count_total"], "context": ["pure", "word_problem"]},
         "peso_money_build": {"task_type": ["count_total", "make_change"], "context": ["pure"]},
     },

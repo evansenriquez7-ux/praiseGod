@@ -30,24 +30,28 @@ from backend.app.practice_gen.schemas.visuals import VisualSchemaRegistry
 
 # ═══════════════════════════════════════════════════════════════════════════════
 
-# FORMATTER WEIGHT MAP
-# Textual formatters (mcq, numeric_input) are preferred for the majority of
-# problems so the primary formatter bias is maintained.
-# ═══════════════════════════════════════════════════════════════════════════════
-
-_FORMATTER_WEIGHTS: Dict[str, float] = {
-    "mcq": 3.0,
-    "numeric_input": 2.5,
-    "cloze": 1.5,
-    "ordering": 1.0,
-    "true_false": 1.0,
-    "error_detect": 0.8,
-    "fill_in_blank": 1.0,
-    # Visual formatters get equal weight; specific bias toward the "home" type
-    # is handled by the DNA's visual_home field.
-}
-
-_DEFAULT_WEIGHT = 0.6   # weight for any formatter not explicitly listed above
+# FORMATTER SELECTION — UNIFORM, BY OWNER RULING
+#
+# docs/pgen_rulings.md R-4 (2026-09-11): "there should never be a bias. for an lc or dna,
+# dd, contextual variants, and visual formatter combinations must be completely random
+# across allowed combinations."
+#
+# What stood here was a weight map -- mcq 3.0, numeric_input 2.5, cloze 1.5, everything
+# else 0.6 -- under the heading "Textual formatters are preferred for the majority of
+# problems so the primary formatter bias is maintained", plus a comment promising that
+# "specific bias toward the 'home' type is handled by the DNA's visual_home field". The
+# chooser never read `visual_home`, so that second bias did not exist. The ruling says
+# the answer was neither: no bias at all.
+#
+# The cost of the old map, measured: a node offering {mcq, cloze, peso_money_read} gave
+# its only visual formatter 0.6/5.1 = 11.8% of renders, so mat_g1_na_q4_6 -- whose
+# competency reads "given orally or in pictures" -- served a picture on 16% of seeds, and
+# blind review after blind review reported one item type per node ("all thirteen sampled
+# items are true-or-false", "all ten renders are the same fill-in exercise").
+#
+# A node's formatter mix is therefore a property of its ALLOWED SET, which is the honest
+# place for it: to serve a competency that names a medium, give the node more formatters
+# of that medium (R-3), never a weight.
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -298,17 +302,22 @@ def _get_dna_instance(dna_name: str):
     raise ImportError(f"No DNA instance found in module for concept '{dna_name}'")
 
 
-def _weighted_choice(rng: random.Random, formatters: List[str]) -> str:
-    """Pick a formatter from the list, weighted toward mcq and numeric_input."""
-    weights = [_FORMATTER_WEIGHTS.get(f, _DEFAULT_WEIGHT) for f in formatters]
-    total = sum(weights)
-    r = rng.random() * total
-    cumulative = 0.0
-    for fmt, w in zip(formatters, weights):
-        cumulative += w
-        if r <= cumulative:
-            return fmt
-    return formatters[-1]
+def _uniform_choice(rng: random.Random, formatters: List[str]) -> str:
+    """
+    Pick a formatter uniformly from the ones this node allows (rulings R-4).
+
+    Sorted before choosing so the draw depends on the SET, not on the order a caller
+    happened to build it in. Two call sites assembling the same allowed formatters in
+    different orders must serve the same mix, or "uniform" holds only for whichever one
+    is being looked at.
+    """
+    if not formatters:
+        raise ValueError(
+            "_uniform_choice: no formatters to choose from. A node with no allowed "
+            "formatter cannot be served, and picking one anyway would serve content the "
+            "node does not advertise."
+        )
+    return rng.choice(sorted(formatters))
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -387,7 +396,7 @@ def generate_problem(
             available = [fmt for fmt in available if fmt in allowed_formatters]
         if not available:
             raise ValueError(f"No compatible formatters available for DNA '{dna_name}'")
-        formatter = _weighted_choice(rng, available)
+        formatter = _uniform_choice(rng, available)
 
     # 5b. Enforce formatter/variant compatibility (FORMATTER_VARIANT_SUPPORT).
     # This only ran for auto-picked formatters (via task_type filtering above);
@@ -560,7 +569,7 @@ def generate_batch(
         candidates = [f for f in available_formatters if f != last_formatter]
         if not candidates:
             candidates = available_formatters
-        formatter = _weighted_choice(batch_rng, candidates)
+        formatter = _uniform_choice(batch_rng, candidates)
         last_formatter = formatter
 
         problem = generate_problem(

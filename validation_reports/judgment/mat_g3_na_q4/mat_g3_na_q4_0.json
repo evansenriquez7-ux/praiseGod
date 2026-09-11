@@ -1,6 +1,6 @@
 {
   "node_id": "mat_g3_na_q4_0",
-  "reviewed_by": "reviewer-b6-thistle-kestrel-9724",
+  "reviewed_by": "reviewer-r2-amber-trellis-1903",
   "review_date": "2026-09-10",
   "blind": true,
   "sample_seeds": [
@@ -30,7 +30,7 @@
       "options": [
         {
           "key": "A",
-          "value": 24,
+          "value": 7,
           "is_correct": false
         },
         {
@@ -68,7 +68,7 @@
         },
         {
           "key": "C",
-          "value": 144,
+          "value": 5,
           "is_correct": false
         },
         {
@@ -86,8 +86,8 @@
       "options": [
         {
           "key": "A",
-          "value": 36,
-          "text": "36",
+          "value": 5,
+          "text": "5",
           "is_correct": false
         },
         {
@@ -128,7 +128,7 @@
         },
         {
           "key": "C",
-          "value": 576,
+          "value": 10,
           "is_correct": false
         },
         {
@@ -156,12 +156,12 @@
         },
         {
           "key": "C",
-          "value": 3,
+          "value": 1,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 128,
+          "value": 3,
           "is_correct": false
         }
       ]
@@ -169,7 +169,7 @@
     {
       "seed": 50,
       "formatter": "true_false",
-      "question_text": "Since 6 × 7 = 42, then 42 ÷ 6 = 252. True or False?",
+      "question_text": "Since 6 × 7 = 42, then 42 ÷ 6 = 8. True or False?",
       "correct_answer": false
     },
     {
@@ -216,8 +216,8 @@
         },
         {
           "key": "D",
-          "value": 245,
-          "text": "245",
+          "value": 6,
+          "text": "6",
           "is_correct": false
         }
       ]
@@ -245,7 +245,7 @@
         },
         {
           "key": "D",
-          "value": 112,
+          "value": 8,
           "is_correct": false
         }
       ]
@@ -263,7 +263,7 @@
         },
         {
           "key": "B",
-          "value": 441,
+          "value": 10,
           "is_correct": false
         },
         {
@@ -304,8 +304,8 @@
         },
         {
           "key": "D",
-          "value": 12,
-          "text": "12",
+          "value": 5,
+          "text": "5",
           "is_correct": false
         }
       ]
@@ -336,8 +336,8 @@
         },
         {
           "key": "D",
-          "value": 441,
-          "text": "441",
+          "value": 10,
+          "text": "10",
           "is_correct": false
         }
       ]
@@ -360,7 +360,7 @@
         },
         {
           "key": "C",
-          "value": 200,
+          "value": 9,
           "is_correct": false
         },
         {
@@ -397,7 +397,7 @@
         },
         {
           "key": "C",
-          "value": 392,
+          "value": 9,
           "is_correct": false
         },
         {
@@ -410,29 +410,29 @@
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "Both routes the competency names are actually walked: items that start at a number and take equal jumps back to reach zero, and items that hand the pupil a multiplication fact and ask for the related quotient, as with the fact 3 x 4 leading into 12 divided by 3."
+      "verdict": "CONCERN",
+      "rationale": "Both named representations are addressed in words, but the competency says 'Illustrate', and this node's formatters are only mcq, cloze, true_false and error_detect. The number line is described in a sentence and never drawn, so the learner reads about equal jumps instead of seeing or marking them."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "The number-line illustration and the inverse-of-multiplication illustration each appear in roughly half the samples, and both are delivered with the divisor varying across 2, 5, 6, 7, 8 and 9 so no single fact carries the sub-case."
+      "rationale": "Neither clause is neglected: jumps back to zero appear repeatedly, and the inverse relation is made explicit in items of the shape 'Since 8 × 9 = 72, what is 72 ÷ 8?'. The two sub-cases are close to evenly split across the seeds."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Dividends stay at or below 72 and the jump counts stay small enough to be genuinely imaginable on a line, unlike large-count jump framings; the two-clause stems are short enough for a fourth-quarter Grade 3 reader."
+      "rationale": "The jump stems narrate the whole procedure, starting point, jump size, and destination of zero, before asking for the count, which suits a Grade 3 pupil meeting the number-line model. Dividends such as 63 and 72 use facts taught earlier in the year."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "Four response modes carry the work, including a truth statement built on the fact 6 x 7 and error-checking items attributed to Grace and Liza, and the jump items alternate between asking how many jumps were made and completing the division sentence directly."
+      "rationale": "Within the two models the presentation still shifts: some jump items append the matching sentence 12 ÷ 2 = ___ while others ask the count alone, and the inverse items appear as questions, as fill-ins, as a false claim to reject, and as another pupil's answer to verify."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "The distractors are built from the relationship being taught rather than from arbitrary offsets: against 72 divided by 8 the wrong options include the product of the two numbers and their difference, so choosing badly reveals a specific misunderstanding of inverse operations."
+      "rationale": "Harder seeds pair larger dividends with the six to nine facts of this quarter, for example jumping back by 8 from 72, so the growing demand is the division fact underneath the model rather than any unrelated complication."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Everything stays inside the multiplication tables, with dividends from 6 up to 72, which is the right span for a node introducing division rather than computing it at length."
+      "rationale": "Dividends run from 6 up to 72 with single-digit jump sizes and quotients no greater than nine, which keeps the number of jumps countable and stays within the multiplication facts a Grade 3 Quarter 4 pupil holds."
     }
   },
-  "overall": "PASS"
+  "overall": "CONCERN"
 }

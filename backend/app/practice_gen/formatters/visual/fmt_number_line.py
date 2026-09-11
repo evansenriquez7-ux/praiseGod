@@ -498,18 +498,35 @@ def format_number_line(
     """
     values = ctx.values or {}
     
-    # Find if we have a numeric target in values
+    # Find if we have a numeric target in values.
+    #
+    # FAILS WHERE THE VALUE IS NEEDED, not here. This parse used to raise the moment an
+    # `answer` would not survive int(), which is right for the generic "mark this number"
+    # path below -- that path cannot work without it -- and wrong for every concept
+    # branch that builds its line from `a` and `b` and never reads `target_num` at all.
+    #
+    # The difference is not academic: `money_peso` legitimately keys a STRING on its
+    # notation and denomination competencies ("1 P5 coin", "P10", "two thousand four
+    # hundred sixty-three pesos"), while keying a plain integer on its add/subtract ones.
+    # So the eager raise turned "this formatter cannot serve this ITEM" into a crash on
+    # any node that does both, and the empirical exclusions file could not save it --
+    # that file probes 12 fixed seeds and is documented as guarding against false
+    # REFUSALS, not against a pair that serves at those seeds and raises at others.
+    # Found 2026-09-11 on mat_g1_na_q4_3 the moment number_line_read was declared for
+    # money_peso.
+    #
+    # `_unparseable_target` carries the reason forward so the generic branch can raise
+    # exactly the message it used to, naming the offending value. Nothing is swallowed:
+    # a numeric path that needs the value and cannot get it still fails loudly.
     target_num = None
-    if "number" in values:
-        try:
-            target_num = int(values["number"])
-        except (ValueError, TypeError) as e:
-            raise ValueError(f"Invalid 'number' value in context: {values['number']}") from e
-    elif "answer" in values:
-        try:
-            target_num = int(values["answer"])
-        except (ValueError, TypeError) as e:
-            raise ValueError(f"Invalid 'answer' value in context: {values['answer']}") from e
+    _unparseable_target = None
+    for _key in ("number", "answer"):
+        if _key in values:
+            try:
+                target_num = int(values[_key])
+            except (ValueError, TypeError):
+                _unparseable_target = (_key, values[_key])
+            break
 
     # ── 1. Resolve visual_params ───────────────────────────────────────────────
     if ctx.visual_params and "correct_position" in ctx.visual_params:
@@ -520,6 +537,26 @@ def format_number_line(
     elif ctx.dna_concept == "subtraction" and "a" in values and "b" in values:
         # Build subtraction-specific number line with hops
         vp = _build_subtraction_params(values, ctx.grade, rng)
+    elif ctx.dna_concept == "money_peso" and "a" in values and "b" in values:
+        # Money on a number line. `money_peso` computes either an addition
+        # ("add_amounts") or a subtraction ("find_change"), and a peso amount is a
+        # VALUE, so the hop builders above render it correctly as-is: a dot at the
+        # starting amount and a hop of the second amount, with the pupil reading off
+        # where it lands.
+        #
+        # This branch has to exist before the formatter may be declared compatible with
+        # money_peso. Without it the concept falls through to the generic
+        # "mark target_num" path at the bottom, which takes its target from
+        # values["answer"] -- so a stem asking "Marco had P20 and spent P5, how much is
+        # left?" would render a line with 15 already marked on it. Declaring a visual
+        # formatter compatible with a DNA it has no branch for does not make it render
+        # that DNA; it makes it render a fallback, and here the fallback leaks the
+        # answer (found 2026-09-11 before the declaration was made, not after).
+        if str(values.get("operation", "")).startswith("find_change") or \
+                values.get("operation") == "subtract":
+            vp = _build_subtraction_params(values, ctx.grade, rng)
+        else:
+            vp = _build_addition_params(values, ctx.grade, rng)
     elif ctx.dna_concept == "rounding" and ("number" in values or target_num is not None):
         value = values.get("number", target_num)
         round_to = values.get("round_to", 10)
@@ -542,6 +579,15 @@ def format_number_line(
             "marked_points": [],
             "question_mark_at": None,
         }
+    elif target_num is None and _unparseable_target is not None:
+        _k, _v = _unparseable_target
+        raise ValueError(
+            f"Invalid {_k!r} value in context: {_v}. `number_line` reached its generic "
+            f"'mark this number' path, which needs a numeric target, and {ctx.dna_concept!r} "
+            f"supplies none for this item. Either this formatter should not be reachable "
+            f"for this (node, item) -- add the concept branch that renders it -- or the "
+            f"DNA should not key a non-numeric answer here."
+        )
     elif target_num is not None:
         # Handle static number payload (e.g. from number_reading, place_value, or counting)
         value = target_num
@@ -699,7 +745,32 @@ def format_number_line(
 
     # Build question text - special handling for addition/subtraction
     # Use "counting up/back" language aligned with Grade 1 competency
-    if ctx.dna_concept == "addition" and "a" in values and "b" in values:
+    if ctx.dna_concept == "money_peso" and "a" in values and "b" in values:
+        # A money item's own wording survives; the line ILLUSTRATES it.
+        #
+        # Without this branch the concept fell through to the generic stem at the
+        # bottom, "What number is marked on the number line?", which replaced the word
+        # problem outright -- "Ate Bea bought a pencil for P40 and an eraser for P20.
+        # How much did Ate Bea spend?" became a bare number-line reading with the money
+        # gone. That is the identical defect fmt_peso_money carried until earlier today
+        # (a formatter's own stem displacing the narrative it was handed), which is why
+        # it is worth naming twice: a visual formatter declared compatible with a new
+        # DNA needs a stem branch as well as a params branch, or it silently re-asks a
+        # different question.
+        a, b = values["a"], values["b"]
+        subtractive = (str(values.get("operation", "")) in ("find_change", "subtract"))
+        if values.get("context") == "word_problem" and ctx.question_text:
+            question_text = ctx.question_text
+        elif interaction_mode == "read":
+            direction = "back" if subtractive else "forward"
+            question_text = (
+                f"The dot is at \u20b1{a} and it moves {direction} \u20b1{b}. "
+                f"Which amount will the dot land on?"
+            )
+        else:
+            sign = "\u2212" if subtractive else "+"
+            question_text = f"Show \u20b1{a} {sign} \u20b1{b} on the number line."
+    elif ctx.dna_concept == "addition" and "a" in values and "b" in values:
         a, b = values["a"], values["b"]
         num_word = "number" if b == 1 else "numbers"
         if interaction_mode == "read":

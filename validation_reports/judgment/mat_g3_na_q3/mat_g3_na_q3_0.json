@@ -1,6 +1,6 @@
 {
   "node_id": "mat_g3_na_q3_0",
-  "reviewed_by": "reviewer-b6-thistle-kestrel-9724",
+  "reviewed_by": "reviewer-r2-amber-trellis-1903",
   "review_date": "2026-09-10",
   "blind": true,
   "sample_seeds": [
@@ -26,7 +26,7 @@
     {
       "seed": 42,
       "formatter": "error_detect",
-      "question_text": "Manny solved: \"1 × 6 = ___\". Manny says the missing number is 0. Is Manny correct?",
+      "question_text": "Manny solved: \"1 × 6 = ___\". Manny says the missing number is 7. Is Manny correct?",
       "correct_answer": {
         "has_error": true,
         "correct_value": 6
@@ -102,7 +102,7 @@
       "options": [
         {
           "key": "A",
-          "value": 0,
+          "value": 30,
           "is_correct": false
         },
         {
@@ -117,7 +117,7 @@
         },
         {
           "key": "D",
-          "value": 30,
+          "value": 35,
           "is_correct": false
         }
       ]
@@ -136,14 +136,14 @@
         },
         {
           "key": "B",
-          "value": 56,
-          "text": "56",
+          "value": 63,
+          "text": "63",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 0,
-          "text": "0",
+          "value": 56,
+          "text": "56",
           "is_correct": false
         },
         {
@@ -371,28 +371,28 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "Every product involves at least one factor drawn from the six through nine tables, which is the restriction the competency states, and the keys are the products themselves."
+      "rationale": "Every item resolves to a product in which at least one factor comes from the six through nine tables the competency names, and the keys match their stems throughout, including the error-detect where Carlo's 36 for 6 × 6 is correctly accepted."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "All four named tables are represented: the six table through 6 x 7, the seven table through 4 x 7 and 5 x 7, the eight table through 8 x 8, and the nine table through 4 x 9 and 3 x 9. Both the small-multiplier and square facts appear."
+      "rationale": "Each of the four tables is actually exercised rather than assumed: sixes through 6 × 6 and 6 × 7, sevens through 4 × 7 and 5 × 7, eights through 8 × 8 and 3 × 8, and nines through 4 × 9 and 8 × 9. The array tasks reach the larger entries such as the 9×8 rectangle."
     },
     "cognitive_capacity": {
-      "verdict": "CONCERN",
-      "rationale": "Several option sets include a bare 0 as a choice for a product of two positive factors, for instance against 36 and against 64. No pupil who has begun the tables would entertain it, so it wastes a quarter of the choice space. The other distractors are well judged by contrast, since 13 against 4 x 9 and 11 against 3 x 8 encode the genuine add-instead-of-multiply error."
+      "verdict": "PASS",
+      "rationale": "Single-fact recall with one-line prompts is appropriate for Grade 3 Quarter 3, and the shading task 'Shade all the squares inside the 4×6 rectangle' supplies a concrete route for pupils who do not yet have the fact memorised."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "The node offers plain equations, choice questions, a truth judgement, an error-checking item about Manny, a shaded rectangle task, an array reading task and a word problem about bowls in bags, which is a strong spread of representations for a table-fact node."
+      "rationale": "The node spans question form, equation form, truth checking, a marked worked example, an array to read, a rectangle to shade, and one grouping story about water bowls in bags. Presentation is not confined to a single template."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Harder samples move to larger factors within the same tables and to the array representation, rather than drifting into two-digit multiplication that belongs to a later competency."
+      "rationale": "The sequence climbs from an identity-like 1 × 6 through mid-table facts to 8 × 9 and the 9×8 shading, so what gets harder is the difficulty of the fact itself rather than the surrounding language. Two seeds do land on the same 4 × 9 item with only the option order changed, which is a variety blemish rather than a misdirected axis."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Factors remain single digit and products top out at 72, exactly the span a six-through-nine tables competency should occupy."
+      "rationale": "Products stay between 6 and 72, which is entirely inside the tables named; no item wanders into two-digit factors or beyond the ninety-nine ceiling those tables imply."
     }
   },
-  "overall": "CONCERN"
+  "overall": "PASS"
 }

@@ -1,6 +1,6 @@
 {
   "node_id": "mat_g3_na_q4_1",
-  "reviewed_by": "reviewer-b6-thistle-kestrel-9724",
+  "reviewed_by": "reviewer-r2-amber-trellis-1903",
   "review_date": "2026-09-10",
   "blind": true,
   "sample_seeds": [
@@ -30,7 +30,7 @@
       "options": [
         {
           "key": "A",
-          "value": 288,
+          "value": 9,
           "is_correct": false
         },
         {
@@ -73,7 +73,7 @@
         },
         {
           "key": "D",
-          "value": 108,
+          "value": 4,
           "is_correct": false
         }
       ]
@@ -104,8 +104,8 @@
         },
         {
           "key": "D",
-          "value": 576,
-          "text": "576",
+          "value": 10,
+          "text": "10",
           "is_correct": false
         }
       ]
@@ -136,8 +136,8 @@
         },
         {
           "key": "D",
-          "value": 441,
-          "text": "441",
+          "value": 10,
+          "text": "10",
           "is_correct": false
         }
       ]
@@ -165,7 +165,7 @@
         },
         {
           "key": "D",
-          "value": 180,
+          "value": 4,
           "is_correct": false
         }
       ]
@@ -244,7 +244,7 @@
         },
         {
           "key": "B",
-          "value": 243,
+          "value": 4,
           "is_correct": false
         },
         {
@@ -272,7 +272,7 @@
         },
         {
           "key": "B",
-          "value": 392,
+          "value": 9,
           "is_correct": false
         },
         {
@@ -295,8 +295,8 @@
       "options": [
         {
           "key": "A",
-          "value": 196,
-          "text": "196",
+          "value": 5,
+          "text": "5",
           "is_correct": false
         },
         {
@@ -327,7 +327,7 @@
       "options": [
         {
           "key": "A",
-          "value": 9,
+          "value": 7,
           "is_correct": false
         },
         {
@@ -337,7 +337,7 @@
         },
         {
           "key": "C",
-          "value": 512,
+          "value": 9,
           "is_correct": false
         },
         {
@@ -361,14 +361,14 @@
         },
         {
           "key": "B",
-          "value": 3,
-          "text": "3",
+          "value": 1,
+          "text": "1",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 98,
-          "text": "98",
+          "value": 3,
+          "text": "3",
           "is_correct": false
         },
         {
@@ -383,28 +383,28 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "Every divisor in the set is six, seven, eight or nine and every quotient is exact, so the items sit squarely inside the tables the competency restricts them to without drifting into remainders that belong elsewhere."
+      "rationale": "The set is squarely division by six, seven, eight and nine, and the keys track their stems, including the error-detect that rejects Ana's 42 for 49 ÷ 7 and supplies 7 instead."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "All four tables carry several samples each, the six table through 48 and 30 divided by 6, the seven table through 63, 28 and 14, the eight table through 72 and 64, and the nine table through 81, 45 and 27, so no table is a token presence."
+      "rationale": "Each named table is actually divided by: 48 ÷ 6 and 30 ÷ 6, 63 ÷ 7 and 14 ÷ 7, 72 ÷ 8 and 64 ÷ 8, and 81 ÷ 9 and 27 ÷ 9. Quotients span the full one-to-nine range rather than clustering at the easy end."
     },
     "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Dividends do not exceed 81 and the language is plain, and the shading task asking for 36 squares in 6 equal rows expresses the division concretely rather than abstractly, which suits pupils still consolidating the facts."
+      "verdict": "CONCERN",
+      "rationale": "The array reading states 45 squares in 9 equal rows yet lists 28 among the choices, a figure that no row of such an array could hold. Planting a physically impossible quantity next to a picture that pupils are being taught to trust works against the model the item uses."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "Seven presentations occur across the set, including an array reading item about 45 squares in 9 equal rows, a shading task, a truth statement, error checking about Ana, and a sharing word problem about bowls among friends."
+      "rationale": "Quotients are asked for as a question, as an equation to complete, as a statement to judge, as a peer's error to catch, as an array to read, as squares to shade, and once as a sharing story about water bowls among friends."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Wrong options are derived from the operands in instructive ways, so against 48 divided by 6 the choices include the product and the difference of the two numbers, meaning the difficulty being varied is command of the inverse relationship rather than an unrelated numeric spread."
+      "rationale": "The difficulty that grows is the unfamiliarity of the fact, from 18 ÷ 6 through to 72 ÷ 9 and 81 ÷ 9, and no item drifts toward remainders or multi-digit dividends that belong to later nodes in this quarter."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Quotients are single digits and dividends stay within the table products, which is precisely the ceiling implied by a competency scoped to the six through nine tables."
+      "rationale": "The largest dividend, 81, is exactly the top entry of the nine table, and every division is exact, which matches a node scoped to table facts rather than to general division."
     }
   },
-  "overall": "PASS"
+  "overall": "CONCERN"
 }
