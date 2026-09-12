@@ -49,12 +49,21 @@ that a validator READS is listed in `INPUT_FILES` by name. The corpora are the r
 THE PHASE BOUNDARY, AND THE ONE THING THIS MODULE REFUSES TO PRETEND
 --------------------------------------------------------------------
 A proof record is machine-generated, so it is a Phase 1 input (plan step 5). But a proof
-is only as artifact-free as the thing it was proved against. 24 of the 76 mutations plant
-into `validation_reports/judgment/` or `validation_reports/attestation/` — genuine
-agent-authored review files — so their evidence is bound to a corpus Phase 1 may not read
-and this module cannot fingerprint. Those proofs are recorded in full and marked
-`phase1_admissible: false`, with every out-of-set path named. They are real evidence; they
-are not evidence Phase 1 can stand on.
+is only as artifact-free as the thing it was proved against. A mutation that plants into
+`validation_reports/judgment/` or `validation_reports/attestation/` — genuine agent-authored
+review files — binds its evidence to a corpus Phase 1 may not read and this module cannot
+fingerprint. Such a proof is recorded in full and marked `phase1_admissible: false`, with
+every out-of-set path named. It is real evidence; it is not evidence Phase 1 can stand on.
+
+MEASURED 2026-09-12: **no proof on disk is currently inadmissible.** All 79 records are
+`phase1_admissible: true`, because `tests/isolated_corpus.py` moved the custody mutations
+onto isolated deterministic corpora under `tests/` — an input root, fingerprinted like any
+other. 9 of the 79 mutations still touch a review corpus in some way; none of them leaves
+the fingerprinted input set. This paragraph previously read "24 of the 76 mutations … are
+marked `phase1_admissible: false`", which described the tree before that migration and was
+false by the time the migration landed in the same commit. The mechanism below is what
+decides admissibility; the counts here are an observation and go stale — re-read the
+records rather than trusting this sentence.
 
 KNOWN LIMITATIONS (Scaling Mandate 6)
 -------------------------------------

@@ -1121,13 +1121,61 @@ row rather than as "crashes on DNS".
 
 ### What a fresh session should do first
 
-1. `git log --oneline -2` — confirm `d5c752d1` / `94e95347`; the tree is clean and Phase 1 green.
-2. Run `tests/phase2_migration.py` and replace both step-0 inventories. They are the only
-   artifacts still describing the pre-commit tree (76 mutations / 104 assertions / dirty_count 3
-   against the current 79 / 107 / clean).
-3. Create the nine `H-` rows in `validation_reports/phase2_hardening/hardening_status.json`.
-4. Then step 0A (`H-01`, hermetic Phase 1) — it is the largest open blocker and nothing depends
-   on it being deferred.
+Step 0's bookkeeping is **already done** — do not redo it:
+
+- Both step-0 inventories are regenerated against the committed tree and agree with §8
+  (107 assertions, 68 proven by execution, 39 allowlisted, 79 mutations, 776 requirement pairs
+  in states 357 current / 351 stale / 68 unresolved-content).
+- All nine `H-` rows exist in `validation_reports/phase2_hardening/hardening_status.json`,
+  schema-gated by `tests/hardening_status.py` and proved in both directions by
+  `tests/unit/test_hardening_status.py` (22 tests). Validate any time with
+  `PYTHONPATH=. .venv/bin/python tests/hardening_status.py`.
+- `owner` is `"unassigned"` on every row. **That is the one field a human must fill in.**
+
+So a fresh session starts here:
+
+1. `git log --oneline -1` and `PYTHONPATH=. .venv/bin/python tests/hardening_status.py` —
+   confirm the tree and that 9 rows validate.
+2. **Start step 0A (`H-01`, hermetic Phase 1).** It is the largest open blocker, nothing depends
+   on deferring it, and it is the one finding that got *worse* on re-measurement: Phase 1's
+   verdict currently depends on whether an external database host resolves.
+3. Expect the first edit under an input root to invalidate all 79 mutation proofs. That is the
+   safe direction and costs one full table re-run (~12 minutes measured). Re-prove, do not
+   weaken `mutation_proof`'s staleness rules to avoid it.
+
+**HAZARD YOU WILL HIT ON THAT FIRST RE-RUN — `source_edited_without_reproof` self-poisons.**
+Encountered and diagnosed 2026-09-12. This is the mutation that proves §8 notices a proof record
+going stale, and it is the one mutation whose subject is the proof corpus itself, so it has a trap
+no other mutation has:
+
+1. During a FULL table re-run the corpus is legitimately mixed — records already rewritten carry
+   the new digest, records not yet reached carry the old one. §8's baseline is therefore red with
+   `different source/fixture tree`, which is exactly the marker this mutation expects, so the
+   runner correctly refuses to score it (Mandate 2: it cannot tell the plant from the
+   pre-existing failure) and records `detected: false`.
+2. **That failure record is itself a §8 finding.** On the next attempt the baseline is red again —
+   now because of this mutation's own record — so it is refused again, forever. A single `--only`
+   re-run does NOT fix it; the corpus being coherent is not enough.
+
+The remedy is to delete the failed record and re-run the mutation alone:
+
+```sh
+rm validation_reports/mutation_proofs/source_edited_without_reproof.json
+PYTHONPATH=. .venv/bin/python tests/mutation_harness.py --only source_edited_without_reproof
+```
+
+A MISSING record is reported under `assertion_coverage_8` ("claimed by mutation(s) that have filed
+NO executed proof record"), a different assertion from the `mutation_proof_integrity_8` marker this
+mutation expects — so the baseline is clean and the plant becomes scoreable. Verified: DETECTED,
+79/79. Deleting a record that says `detected: false` removes evidence of a failed run, not evidence
+of correctness; it is not weakening the check.
+
+**Owed work, deliberately batched:** this hazard is recorded here but NOT yet in
+`mutation_proof.py`'s KNOWN LIMITATIONS block, because that file is under `INPUT_ROOTS` and adding
+a comment would invalidate all 79 proofs for a 12-minute re-run on its own. Step 0A's first edit
+invalidates them anyway — **add the note then**, in the same commit, so it costs nothing. Better
+still, consider making the runner ignore a mutation's own prior failed record when computing that
+mutation's baseline, which removes the trap rather than documenting it.
 
 Do NOT re-run the full mutation table to begin with: `INPUT_ROOTS` fingerprints working-tree
 bytes, the commit changed none, and §8 re-verified all 79 records afterwards. Re-run it the

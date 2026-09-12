@@ -74,16 +74,25 @@ def _now() -> str:
 
 def _checkout_state() -> Dict[str, Any]:
     """The exact tree the inventory describes, including uncommitted work."""
-    def git(*args: str) -> str:
-        return subprocess.run(["git", *args], cwd=REPO_ROOT, check=True,
-                              capture_output=True, text=True).stdout.strip()
+    def git(*args: str, strip: bool = True) -> str:
+        out = subprocess.run(["git", *args], cwd=REPO_ROOT, check=True,
+                             capture_output=True, text=True).stdout
+        # `--porcelain` lines are `XY<space>PATH`, and X is a SPACE for an unstaged
+        # change. A blanket .strip() therefore ate the leading space of the FIRST line
+        # only, so the fixed [3:] offset below cut one character off that one path and
+        # left every other path correct -- `validation_reports/x` came back as
+        # `alidation_reports/x`. Observed 2026-09-12 in a regenerated inventory. Strip
+        # trailing newlines only when the caller is parsing columns.
+        return out.strip() if strip else out.rstrip("\n")
 
-    dirty = git("status", "--porcelain")
+    dirty = git("status", "--porcelain", strip=False)
     return {
         "head": git("rev-parse", "HEAD"),
         "head_short": git("rev-parse", "--short", "HEAD"),
         "branch": git("rev-parse", "--abbrev-ref", "HEAD"),
         "working_tree_clean": dirty == "",
+        # Rename entries read `R  old -> new`; the arrow form is preserved verbatim
+        # rather than guessed at, because this field is provenance, not a path list.
         "dirty_paths": [line[3:] for line in dirty.splitlines()],
         "python": sys.version.split()[0],
         "generated_at": _now(),

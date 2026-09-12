@@ -56,7 +56,18 @@ CENSUS_FLOORS = {
     # path) is planted there against isolated fixtures, because those directions cannot be
     # proven by a mutation: the mutation runner is the thing they judge. Ratcheted to the
     # real number less a little churn, as above.
-    "unit_tests": 468,
+    # 495 collected 2026-09-12 (was 473 at the previous ratchet's measurement), +22 from
+    # test_hardening_status.py -- the H-row ledger's schema gate, proved in both
+    # directions here because it is NOT reachable by the mutation harness: it is not
+    # registered in run_all, since it tracks PLAN progress rather than pipeline
+    # behaviour, and a §-ref for it would put planning state inside the contract the
+    # pipeline is measured against. Every direction it can fail (closed with no proof
+    # artifact, closed with no revision, out_of_scope with no deciding commit, a
+    # revision that is not a commit, an artifact absent from disk, an open row still
+    # carrying provenance, unknown status, duplicate id, wrong schema version, rows
+    # missing) is planted against in-memory documents. Ratcheted to the real number less
+    # a little churn, as above.
+    "unit_tests": 490,
     # 56 registered 2026-09-09 (was 51, 50, 48, 37). Four prove §8's own directions, one
     # §2C at (node, formatter) granularity, two the §6 phase seam, one that every contract
     # check declares the phase it runs in, four the §6 Phase 1 band (§6A/§6B/§6C/§6E, which

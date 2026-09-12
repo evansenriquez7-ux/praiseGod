@@ -1,25 +1,111 @@
 {
  "schema_version": 1,
  "checkout": {
-  "head": "c007b8aef5f08262b4964b5263ab506c520936c1",
-  "head_short": "c007b8ae",
-  "branch": "main",
+  "head": "015b7f359847ef7486b6c8203b8657c01809a12c",
+  "head_short": "015b7f35",
+  "branch": "harness/executed-mutation-proof",
   "working_tree_clean": false,
   "dirty_paths": [
+   "backend/app/practice_gen/validation/mutation_proof.py",
+   "backend/app/practice_gen/validation/validate_census.py",
    "docs/phase2_hardening_completion_plan.md",
-   "tests/phase2_migration.py"
+   "tests/phase2_migration.py",
+   "validation_reports/mutation_proofs/allowlist_keeps_a_paid_debt.json",
+   "validation_reports/mutation_proofs/allowlist_names_a_phantom_label.json",
+   "validation_reports/mutation_proofs/answer_corruption.json",
+   "validation_reports/mutation_proofs/answer_leak_in_stem.json",
+   "validation_reports/mutation_proofs/attestation_answer_drift.json",
+   "validation_reports/mutation_proofs/attestation_drops_options.json",
+   "validation_reports/mutation_proofs/attestation_leaks_into_phase1.json",
+   "validation_reports/mutation_proofs/attestation_option_drift.json",
+   "validation_reports/mutation_proofs/attester_without_evidence.json",
+   "validation_reports/mutation_proofs/blank_question_text.json",
+   "validation_reports/mutation_proofs/boundary_off_by_one.json",
+   "validation_reports/mutation_proofs/broken_formatter_combo.json",
+   "validation_reports/mutation_proofs/capability_provider_unregistered.json",
+   "validation_reports/mutation_proofs/clause_not_in_competency.json",
+   "validation_reports/mutation_proofs/compare_pair_asks_for_a_sign_and_offers_statements.json",
+   "validation_reports/mutation_proofs/competency_scope_narrowed.json",
+   "validation_reports/mutation_proofs/competency_word_uncovered.json",
+   "validation_reports/mutation_proofs/config_bypasses_competency.json",
+   "validation_reports/mutation_proofs/contract_check_declares_no_phase.json",
+   "validation_reports/mutation_proofs/contradicted_attestation.json",
+   "validation_reports/mutation_proofs/count_noun_disagrees.json",
+   "validation_reports/mutation_proofs/coverage_map_gap.json",
+   "validation_reports/mutation_proofs/dangling_node_reference.json",
+   "validation_reports/mutation_proofs/declarations_out_of_sync.json",
+   "validation_reports/mutation_proofs/degenerate_answer_key.json",
+   "validation_reports/mutation_proofs/emoji_pictorial_draws_a_different_operation.json",
+   "validation_reports/mutation_proofs/empty_execution_matrix.json",
+   "validation_reports/mutation_proofs/fabricated_quote.json",
+   "validation_reports/mutation_proofs/formatter_route_mismatch.json",
+   "validation_reports/mutation_proofs/formatter_unreachable_on_student_path.json",
+   "validation_reports/mutation_proofs/frontend_contract_key_unserved.json",
+   "validation_reports/mutation_proofs/grader_keys_a_value_answer.json",
+   "validation_reports/mutation_proofs/grader_rejects_correct_answer.json",
+   "validation_reports/mutation_proofs/inverted_number_line.json",
+   "validation_reports/mutation_proofs/leaky_window.json",
+   "validation_reports/mutation_proofs/malformed_competency_bound.json",
+   "validation_reports/mutation_proofs/mcq_duplicate_options.json",
+   "validation_reports/mutation_proofs/mcq_empty_option_value.json",
+   "validation_reports/mutation_proofs/mcq_key_disagrees_with_option.json",
+   "validation_reports/mutation_proofs/mcq_no_correct_option.json",
+   "validation_reports/mutation_proofs/mcq_reviewed_without_options.json",
+   "validation_reports/mutation_proofs/mcq_wrong_option_count.json",
+   "validation_reports/mutation_proofs/missing_correct_answer.json",
+   "validation_reports/mutation_proofs/mutation_asserts_an_unknown_label.json",
+   "validation_reports/mutation_proofs/node_dropped_from_check.json",
+   "validation_reports/mutation_proofs/number_line_drops_its_jumps.json",
+   "validation_reports/mutation_proofs/number_line_jumps_land_elsewhere.json",
+   "validation_reports/mutation_proofs/orphan_provider.json",
+   "validation_reports/mutation_proofs/phase_ref_misassigned.json",
+   "validation_reports/mutation_proofs/predictable_option_placement.json",
+   "validation_reports/mutation_proofs/provider_is_only_a_bounds_catch_all.json",
+   "validation_reports/mutation_proofs/registry_drift.json",
+   "validation_reports/mutation_proofs/review_schema_incomplete.json",
+   "validation_reports/mutation_proofs/second_option_answers_too.json",
+   "validation_reports/mutation_proofs/shrinking_node_registry.json",
+   "validation_reports/mutation_proofs/silent_substitution.json",
+   "validation_reports/mutation_proofs/single_attester_identity.json",
+   "validation_reports/mutation_proofs/single_formatter_unreachable.json",
+   "validation_reports/mutation_proofs/single_reviewer_identity.json",
+   "validation_reports/mutation_proofs/source_edited_without_reproof.json",
+   "validation_reports/mutation_proofs/stale_answer_same_key.json",
+   "validation_reports/mutation_proofs/stale_attestation.json",
+   "validation_reports/mutation_proofs/stale_generated_graph.json",
+   "validation_reports/mutation_proofs/stale_review_undetected.json",
+   "validation_reports/mutation_proofs/stem_declares_the_answer.json",
+   "validation_reports/mutation_proofs/subtraction_pool_uncapped.json",
+   "validation_reports/mutation_proofs/template_attestation.json",
+   "validation_reports/mutation_proofs/template_review.json",
+   "validation_reports/mutation_proofs/undeclared_check_reports_itself.json",
+   "validation_reports/mutation_proofs/unproducible_variant_declared.json",
+   "validation_reports/mutation_proofs/unrenderable_visual_payload.json",
+   "validation_reports/mutation_proofs/unsanctioned_requires_ignore.json",
+   "validation_reports/mutation_proofs/unservable_advertised_formatter.json",
+   "validation_reports/mutation_proofs/variant_coverage_silently_narrowed.json",
+   "validation_reports/mutation_proofs/verbatim_rationale_reuse.json",
+   "validation_reports/mutation_proofs/visual_payload_drops_required_key.json",
+   "validation_reports/mutation_proofs/vocab_leak.json",
+   "validation_reports/mutation_proofs/wildcard_provider.json",
+   "validation_reports/mutation_proofs/withdrawn_attestation.json",
+   "validation_reports/phase2_hardening/assertion_migration.json",
+   "validation_reports/phase2_hardening/requirement_inventory.json",
+   "tests/hardening_status.py",
+   "tests/unit/test_hardening_status.py",
+   "validation_reports/phase2_hardening/hardening_status.json"
   ],
   "python": "3.12.13",
-  "generated_at": "2026-09-12T03:46:27+08:00"
+  "generated_at": "2026-09-12T17:01:12+08:00"
  },
  "summary": {
-  "assertions_inventoried": 104,
-  "assertions_with_a_mutation": 65,
+  "assertions_inventoried": 107,
+  "assertions_with_a_mutation": 68,
   "assertions_allowlisted_unproven": 39,
   "assertions_unaccounted": 0,
-  "mutations_registered": 76,
+  "mutations_registered": 79,
   "mutations_via_run_all_wrapper": 0,
-  "mutations_touching_review_corpus": 24,
+  "mutations_touching_review_corpus": 9,
   "mutation_asserts_outside_inventory": []
  },
  "assertions": [
@@ -127,9 +213,7 @@
   {
    "assertion": "assertion_coverage_8",
    "declared_in": "validate_coverage.py",
-   "printed_by": [
-    "validate_coverage.py:428"
-   ],
+   "printed_by": [],
    "discovered_in_matrix": false,
    "proving_mutations": [
     "coverage_map_gap"
@@ -196,8 +280,8 @@
    "assertion": "capability_contract",
    "declared_in": "validate_capability.py",
    "printed_by": [
-    "run_all.py:417",
-    "run_all.py:458"
+    "run_all.py:421",
+    "run_all.py:462"
    ],
    "discovered_in_matrix": false,
    "proving_mutations": [],
@@ -343,7 +427,7 @@
    "assertion": "census",
    "declared_in": "validate_census.py",
    "printed_by": [
-    "validate_census.py:213"
+    "validate_census.py:239"
    ],
    "discovered_in_matrix": false,
    "proving_mutations": [
@@ -479,6 +563,19 @@
    "discovered_in_matrix": true,
    "proving_mutations": [
     "missing_correct_answer"
+   ],
+   "proof_kind": "declared",
+   "allowlist_reason": null
+  },
+  {
+   "assertion": "count_noun_agreement_1J",
+   "declared_in": "validate_language.py",
+   "printed_by": [
+    "validate_language.py:221"
+   ],
+   "discovered_in_matrix": false,
+   "proving_mutations": [
+    "count_noun_disagrees"
    ],
    "proof_kind": "declared",
    "allowlist_reason": null
@@ -740,7 +837,7 @@
    "assertion": "judgment_reviews",
    "declared_in": "validate_judgment.py",
    "printed_by": [
-    "run_all.py:380"
+    "run_all.py:384"
    ],
    "discovered_in_matrix": false,
    "proving_mutations": [],
@@ -834,6 +931,17 @@
    "allowlist_reason": "2026-09-08: §1B's difficulty monotonicity across the scalar sweep. Unproven"
   },
   {
+   "assertion": "mutation_proof_integrity_8",
+   "declared_in": "validate_coverage.py",
+   "printed_by": [],
+   "discovered_in_matrix": false,
+   "proving_mutations": [
+    "source_edited_without_reproof"
+   ],
+   "proof_kind": "declared",
+   "allowlist_reason": null
+  },
+  {
    "assertion": "node_references_resolve",
    "declared_in": "validate_compat.py",
    "printed_by": [
@@ -856,6 +964,19 @@
    "allowlist_reason": "2026-09-08: the testing_pipeline.md ref floor. Unproven"
   },
   {
+   "assertion": "option_degeneracy_1K",
+   "declared_in": "validate_options.py",
+   "printed_by": [
+    "validate_options.py:230"
+   ],
+   "discovered_in_matrix": false,
+   "proving_mutations": [
+    "second_option_answers_too"
+   ],
+   "proof_kind": "declared",
+   "allowlist_reason": null
+  },
+  {
    "assertion": "option_placement",
    "declared_in": "validate_compat.py",
    "printed_by": [
@@ -872,7 +993,7 @@
    "assertion": "per_node_applicability_1H",
    "declared_in": "validate_matrix.py",
    "printed_by": [
-    "run_all.py:346"
+    "run_all.py:350"
    ],
    "discovered_in_matrix": false,
    "proving_mutations": [
@@ -1056,7 +1177,7 @@
    "assertion": "two_direction_contract_match",
    "declared_in": "run_all.py",
    "printed_by": [
-    "run_all.py:615"
+    "run_all.py:633"
    ],
    "discovered_in_matrix": false,
    "proving_mutations": [],
@@ -1067,7 +1188,7 @@
    "assertion": "unit_tests",
    "declared_in": "run_all.py",
    "printed_by": [
-    "run_all.py:165"
+    "run_all.py:169"
    ],
    "discovered_in_matrix": false,
    "proving_mutations": [],
@@ -1117,7 +1238,7 @@
    "assertion": "vocab_audit_pass_rate",
    "declared_in": "validate_vocab.py",
    "printed_by": [
-    "run_all.py:309"
+    "run_all.py:313"
    ],
    "discovered_in_matrix": false,
    "proving_mutations": [],
@@ -1374,18 +1495,24 @@
    ],
    "expected_check": "§6F freshness (attestation is about content that still exists)",
    "command": [
-    "backend.app.practice_gen.validation.validate_capability"
+    "tests.isolated_corpus",
+    "--gate",
+    "attestation"
    ],
    "expect_output_contains": [
-    "STALE && planted drift"
+    "isolated_plant_attestation",
+    "is STALE (§6F) at seed"
    ],
    "baseline_must_not_contain": [
-    "planted drift"
+    "isolated_plant_attestation",
+    "FAIL isolated_control_attestation"
    ],
-   "edit_paths": [],
-   "uses_apply_fn": true,
+   "edit_paths": [
+    "tests/isolated_corpus.py"
+   ],
+   "uses_apply_fn": false,
    "runs_run_all": false,
-   "reads_review_corpus": true
+   "reads_review_corpus": false
   },
   {
    "mutation": "attestation_answer_drift",
@@ -1394,18 +1521,24 @@
    ],
    "expected_check": "§6F freshness (the keyed value, not just the stem)",
    "command": [
-    "backend.app.practice_gen.validation.validate_capability"
+    "tests.isolated_corpus",
+    "--gate",
+    "attestation"
    ],
    "expect_output_contains": [
-    "mat_g1_na_q1_4 && no longer keys the same answer"
+    "isolated_plant_attestation",
+    "no longer keys the same answer"
    ],
    "baseline_must_not_contain": [
-    "mat_g1_na_q1_4 && no longer keys the same answer"
+    "isolated_plant_attestation",
+    "FAIL isolated_control_attestation"
    ],
-   "edit_paths": [],
-   "uses_apply_fn": true,
+   "edit_paths": [
+    "tests/isolated_corpus.py"
+   ],
+   "uses_apply_fn": false,
    "runs_run_all": false,
-   "reads_review_corpus": true
+   "reads_review_corpus": false
   },
   {
    "mutation": "attestation_option_drift",
@@ -1414,20 +1547,24 @@
    ],
    "expected_check": "§6F freshness (the offered options, as §5 compares them)",
    "command": [
-    "backend.app.practice_gen.validation.validate_capability"
+    "tests.isolated_corpus",
+    "--gate",
+    "attestation"
    ],
    "expect_output_contains": [
-    "mat_g1_dp_q3_0 && no longer offered the same options",
-    "mat_g2_na_q1_4 && stopped being a selection task"
+    "isolated_plant_attestation",
+    "no longer offered the same options"
    ],
    "baseline_must_not_contain": [
-    "mat_g1_dp_q3_0 && no longer offered the same options",
-    "mat_g2_na_q1_4 && stopped being a selection task"
+    "isolated_plant_attestation",
+    "FAIL isolated_control_attestation"
    ],
-   "edit_paths": [],
-   "uses_apply_fn": true,
+   "edit_paths": [
+    "tests/isolated_corpus.py"
+   ],
+   "uses_apply_fn": false,
    "runs_run_all": false,
-   "reads_review_corpus": true
+   "reads_review_corpus": false
   },
   {
    "mutation": "attestation_drops_options",
@@ -1458,19 +1595,24 @@
    ],
    "expected_check": "§5 (rationale-skeleton clustering)",
    "command": [
-    "backend.app.practice_gen.validation.validate_judgment"
+    "tests.isolated_corpus",
+    "--gate",
+    "judgment"
    ],
    "expect_output_contains": [
-    "template rationale",
-    "share one findings"
+    "isolated_plant_judgment",
+    "template rationale:"
    ],
    "baseline_must_not_contain": [
-    "template rationale"
+    "isolated_plant_judgment",
+    "FAIL isolated_control_judgment"
    ],
-   "edit_paths": [],
-   "uses_apply_fn": true,
+   "edit_paths": [
+    "tests/isolated_corpus.py"
+   ],
+   "uses_apply_fn": false,
    "runs_run_all": false,
-   "reads_review_corpus": true
+   "reads_review_corpus": false
   },
   {
    "mutation": "stale_review_undetected",
@@ -1479,19 +1621,24 @@
    ],
    "expected_check": "§5 freshness (a review may not outlive the content it judged)",
    "command": [
-    "backend.app.practice_gen.validation.validate_judgment",
-    "--all"
+    "tests.isolated_corpus",
+    "--gate",
+    "judgment"
    ],
    "expect_output_contains": [
-    "STALE review && PLANTED-STALE-WITNESS"
+    "isolated_plant_judgment",
+    "no longer renders the content that was judged"
    ],
    "baseline_must_not_contain": [
-    "PLANTED-STALE-WITNESS"
+    "isolated_plant_judgment",
+    "FAIL isolated_control_judgment"
    ],
-   "edit_paths": [],
-   "uses_apply_fn": true,
+   "edit_paths": [
+    "tests/isolated_corpus.py"
+   ],
+   "uses_apply_fn": false,
    "runs_run_all": false,
-   "reads_review_corpus": true
+   "reads_review_corpus": false
   },
   {
    "mutation": "stale_answer_same_key",
@@ -1500,19 +1647,24 @@
    ],
    "expected_check": "§5 freshness (the keyed VALUE, not the slot it landed in)",
    "command": [
-    "backend.app.practice_gen.validation.validate_judgment",
-    "--all"
+    "tests.isolated_corpus",
+    "--gate",
+    "judgment"
    ],
    "expect_output_contains": [
-    "mat_g1_dp_q3_2 && no longer keys the same answer"
+    "isolated_plant_judgment",
+    "no longer keys the same answer"
    ],
    "baseline_must_not_contain": [
-    "mat_g1_dp_q3_2 && no longer keys the same answer"
+    "isolated_plant_judgment",
+    "FAIL isolated_control_judgment"
    ],
-   "edit_paths": [],
-   "uses_apply_fn": true,
+   "edit_paths": [
+    "tests/isolated_corpus.py"
+   ],
+   "uses_apply_fn": false,
    "runs_run_all": false,
-   "reads_review_corpus": true
+   "reads_review_corpus": false
   },
   {
    "mutation": "review_schema_incomplete",
@@ -1521,21 +1673,24 @@
    ],
    "expected_check": "§5 schema (seeds, samples, six findings, verdicts)",
    "command": [
-    "backend.app.practice_gen.validation.validate_judgment",
-    "--all"
+    "tests.isolated_corpus",
+    "--gate",
+    "judgment"
    ],
    "expect_output_contains": [
-    "findings missing required items && cognitive_capacity",
-    "'sample_seeds' must list >= 3 distinct seeds"
+    "isolated_plant_judgment",
+    "findings missing required items"
    ],
    "baseline_must_not_contain": [
-    "findings missing required items",
-    "'sample_seeds' must list >= 3 distinct seeds"
+    "isolated_plant_judgment",
+    "FAIL isolated_control_judgment"
    ],
-   "edit_paths": [],
-   "uses_apply_fn": true,
+   "edit_paths": [
+    "tests/isolated_corpus.py"
+   ],
+   "uses_apply_fn": false,
    "runs_run_all": false,
-   "reads_review_corpus": true
+   "reads_review_corpus": false
   },
   {
    "mutation": "fabricated_quote",
@@ -1544,19 +1699,24 @@
    ],
    "expected_check": "§5 quote provenance (a rationale may only cite what it was shown)",
    "command": [
-    "backend.app.practice_gen.validation.validate_judgment",
-    "--all"
+    "tests.isolated_corpus",
+    "--gate",
+    "judgment"
    ],
    "expect_output_contains": [
-    "quotes && the pupils weigh the sampan in kilopascals"
+    "isolated_plant_judgment",
+    "appears nowhere in this review's own samples_reviewed"
    ],
    "baseline_must_not_contain": [
-    "the pupils weigh the sampan in kilopascals"
+    "isolated_plant_judgment",
+    "FAIL isolated_control_judgment"
    ],
-   "edit_paths": [],
-   "uses_apply_fn": true,
+   "edit_paths": [
+    "tests/isolated_corpus.py"
+   ],
+   "uses_apply_fn": false,
    "runs_run_all": false,
-   "reads_review_corpus": true
+   "reads_review_corpus": false
   },
   {
    "mutation": "verbatim_rationale_reuse",
@@ -1565,19 +1725,24 @@
    ],
    "expected_check": "§5 verbatim rationale reuse across nodes",
    "command": [
-    "backend.app.practice_gen.validation.validate_judgment",
-    "--all"
+    "tests.isolated_corpus",
+    "--gate",
+    "judgment"
    ],
    "expect_output_contains": [
-    "copied verbatim from"
+    "isolated_plant_judgment",
+    "is copied verbatim from"
    ],
    "baseline_must_not_contain": [
-    "copied verbatim from"
+    "isolated_plant_judgment",
+    "FAIL isolated_control_judgment"
    ],
-   "edit_paths": [],
-   "uses_apply_fn": true,
+   "edit_paths": [
+    "tests/isolated_corpus.py"
+   ],
+   "uses_apply_fn": false,
    "runs_run_all": false,
-   "reads_review_corpus": true
+   "reads_review_corpus": false
   },
   {
    "mutation": "single_reviewer_identity",
@@ -1586,19 +1751,24 @@
    ],
    "expected_check": "§5 reviewer plurality (one identity may not span the tree)",
    "command": [
-    "backend.app.practice_gen.validation.validate_judgment",
-    "--all"
+    "tests.isolated_corpus",
+    "--gate",
+    "judgment"
    ],
    "expect_output_contains": [
-    "reviewer plurality && planted-single-reviewer"
+    "isolated_plant_judgment",
+    "reviewer plurality:"
    ],
    "baseline_must_not_contain": [
-    "reviewer plurality"
+    "isolated_plant_judgment",
+    "FAIL isolated_control_judgment"
    ],
-   "edit_paths": [],
-   "uses_apply_fn": true,
+   "edit_paths": [
+    "tests/isolated_corpus.py"
+   ],
+   "uses_apply_fn": false,
    "runs_run_all": false,
-   "reads_review_corpus": true
+   "reads_review_corpus": false
   },
   {
    "mutation": "mcq_reviewed_without_options",
@@ -1607,19 +1777,24 @@
    ],
    "expected_check": "§5 option adjudicability (a choice item must carry its choices)",
    "command": [
-    "backend.app.practice_gen.validation.validate_judgment",
-    "--all"
+    "tests.isolated_corpus",
+    "--gate",
+    "judgment"
    ],
    "expect_output_contains": [
-    "mat_g1_dp_q3_2 && records no 'options', but the live render"
+    "isolated_plant_judgment",
+    "records no 'options'"
    ],
    "baseline_must_not_contain": [
-    "mat_g1_dp_q3_2 && records no 'options', but the live render"
+    "isolated_plant_judgment",
+    "FAIL isolated_control_judgment"
    ],
-   "edit_paths": [],
-   "uses_apply_fn": true,
+   "edit_paths": [
+    "tests/isolated_corpus.py"
+   ],
+   "uses_apply_fn": false,
    "runs_run_all": false,
-   "reads_review_corpus": true
+   "reads_review_corpus": false
   },
   {
    "mutation": "attestation_leaks_into_phase1",
@@ -1672,18 +1847,24 @@
    ],
    "expected_check": "§6G (attester reasoning-skeleton clustering)",
    "command": [
-    "backend.app.practice_gen.validation.validate_capability"
+    "tests.isolated_corpus",
+    "--gate",
+    "attestation"
    ],
    "expect_output_contains": [
-    "attester boilerplate (§6G) && share one normalized"
-   ],
-   "baseline_must_not_contain": [
+    "isolated_plant_attestation",
     "attester boilerplate (§6G)"
    ],
-   "edit_paths": [],
-   "uses_apply_fn": true,
+   "baseline_must_not_contain": [
+    "isolated_plant_attestation",
+    "FAIL isolated_control_attestation"
+   ],
+   "edit_paths": [
+    "tests/isolated_corpus.py"
+   ],
+   "uses_apply_fn": false,
    "runs_run_all": false,
-   "reads_review_corpus": true
+   "reads_review_corpus": false
   },
   {
    "mutation": "empty_execution_matrix",
@@ -2085,14 +2266,85 @@
     "backend.app.practice_gen.validation.validate_coverage"
    ],
    "expect_output_contains": [
-    "FAIL assertion_coverage",
-    "worker_crash"
+    "worker_crash' can fail but no mutation proves it"
    ],
    "baseline_must_not_contain": [
-    "FAIL assertion_coverage"
+    "worker_crash' can fail but no mutation proves it"
    ],
    "edit_paths": [
     "backend/app/practice_gen/validation/validate_coverage.py"
+   ],
+   "uses_apply_fn": false,
+   "runs_run_all": false,
+   "reads_review_corpus": false
+  },
+  {
+   "mutation": "source_edited_without_reproof",
+   "asserts": [
+    "mutation_proof_integrity_8"
+   ],
+   "expected_check": "§8 (an executed-mutation proof record that no longer describes the tree)",
+   "command": [
+    "backend.app.practice_gen.validation.validate_coverage"
+   ],
+   "expect_output_contains": [
+    "FAIL mutation_proof_integrity_8",
+    "different source/fixture tree"
+   ],
+   "baseline_must_not_contain": [
+    "different source/fixture tree"
+   ],
+   "edit_paths": [
+    "backend/app/practice_gen/dna/base.py"
+   ],
+   "uses_apply_fn": false,
+   "runs_run_all": false,
+   "reads_review_corpus": false
+  },
+  {
+   "mutation": "count_noun_disagrees",
+   "asserts": [
+    "count_noun_agreement_1J"
+   ],
+   "expected_check": "§1J (an explicit count and its noun agree in the rendered text)",
+   "command": [
+    "backend.app.practice_gen.validation.validate_language",
+    "--node-ids",
+    "mat_g2_na_q2_3"
+   ],
+   "expect_output_contains": [
+    "mat_g2_na_q2_3 && 1 units"
+   ],
+   "baseline_must_not_contain": [
+    "count_noun_agreement_1J ("
+   ],
+   "edit_paths": [
+    "backend/app/practice_gen/dna/na/subtraction.py"
+   ],
+   "uses_apply_fn": false,
+   "runs_run_all": false,
+   "reads_review_corpus": false
+  },
+  {
+   "mutation": "second_option_answers_too",
+   "asserts": [
+    "option_degeneracy_1K"
+   ],
+   "expected_check": "§1K (exactly one option may answer the question)",
+   "command": [
+    "backend.app.practice_gen.validation.validate_options",
+    "--node-ids",
+    "mat_g1_na_q4_2"
+   ],
+   "expect_output_contains": [
+    "option_degeneracy_1K",
+    "carry the keyed answer's exact value"
+   ],
+   "baseline_must_not_contain": [
+    "option_degeneracy_1K ("
+   ],
+   "edit_paths": [
+    "backend/app/practice_gen/formatters/textual/fmt_mcq.py"
    ],
    "uses_apply_fn": false,
    "runs_run_all": false,
@@ -2322,19 +2574,24 @@
    ],
    "expected_check": "§6H (an Attester identity may not cover more than one dispatch)",
    "command": [
-    "backend.app.practice_gen.validation.validate_capability"
+    "tests.isolated_corpus",
+    "--gate",
+    "attestation"
    ],
    "expect_output_contains": [
-    "attester plurality",
-    "planted-single-attester"
+    "isolated_plant_attestation",
+    "attester plurality:"
    ],
    "baseline_must_not_contain": [
-    "attester plurality"
+    "isolated_plant_attestation",
+    "FAIL isolated_control_attestation"
    ],
-   "edit_paths": [],
-   "uses_apply_fn": true,
+   "edit_paths": [
+    "tests/isolated_corpus.py"
+   ],
+   "uses_apply_fn": false,
    "runs_run_all": false,
-   "reads_review_corpus": true
+   "reads_review_corpus": false
   },
   {
    "mutation": "attester_without_evidence",
@@ -2343,24 +2600,24 @@
    ],
    "expected_check": "§6G (a verdict must show its work and name the seeds that show it)",
    "command": [
-    "backend.app.practice_gen.validation.validate_capability",
-    "--phase",
-    "2"
+    "tests.isolated_corpus",
+    "--gate",
+    "attestation"
    ],
    "expect_output_contains": [
-    "carries no reasoning (§6G)",
-    "names no seed in 'seeds_showing_it'",
-    "cites seed 999999"
+    "isolated_plant_attestation",
+    "names no seed in 'seeds_showing_it'"
    ],
    "baseline_must_not_contain": [
-    "carries no reasoning (§6G)",
-    "names no seed in 'seeds_showing_it'",
-    "cites seed 999999"
+    "isolated_plant_attestation",
+    "FAIL isolated_control_attestation"
    ],
-   "edit_paths": [],
-   "uses_apply_fn": true,
+   "edit_paths": [
+    "tests/isolated_corpus.py"
+   ],
+   "uses_apply_fn": false,
    "runs_run_all": false,
-   "reads_review_corpus": true
+   "reads_review_corpus": false
   },
   {
    "mutation": "withdrawn_attestation",
@@ -2369,20 +2626,24 @@
    ],
    "expected_check": "§6F UNATTESTED (a declared capability nobody blind has judged)",
    "command": [
-    "backend.app.practice_gen.validation.validate_capability",
-    "--phase",
-    "2"
+    "tests.isolated_corpus",
+    "--gate",
+    "attestation"
    ],
    "expect_output_contains": [
-    "is UNATTESTED"
+    "isolated_plant_attestation",
+    "is UNATTESTED (§6F)"
    ],
    "baseline_must_not_contain": [
-    "is UNATTESTED"
+    "isolated_plant_attestation",
+    "FAIL isolated_control_attestation"
    ],
-   "edit_paths": [],
-   "uses_apply_fn": true,
+   "edit_paths": [
+    "tests/isolated_corpus.py"
+   ],
+   "uses_apply_fn": false,
    "runs_run_all": false,
-   "reads_review_corpus": true
+   "reads_review_corpus": false
   },
   {
    "mutation": "subtraction_pool_uncapped",

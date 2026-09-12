@@ -1,0 +1,202 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-09-12T16:22:27+08:00",
+  "head_short": "015b7f35",
+  "source_plan": "docs/phase2_hardening_completion_plan.md",
+  "note": "Finding counts can GROW as stronger gates expose defects; a smaller count is not evidence of progress. Validate with `PYTHONPATH=. .venv/bin/python tests/hardening_status.py`.",
+  "rows": [
+    {
+      "id": "H-01",
+      "status": "open",
+      "owner": "unassigned",
+      "finding": "Phase 1 is not hermetic. validate_grade opens the configured database (SessionLocal), so §10's verdict depends on an external host resolving.",
+      "affected_assertions": [
+        "grading_contract_10",
+        "grading_contract_floor_10"
+      ],
+      "baseline_evidence": "2026-09-12: the SAME tree crashed on Neon DNS earlier in the day and passed §10 hours later on identical code, because the network came back. This is non-determinism in a gate (Protocol 6), not merely a crash — a stronger finding than 'aborts on DNS'.",
+      "acceptance_checks": [
+        "Full Phase 1 completes with network disabled and an empty external database configuration",
+        "Isolated in-memory or rolled-back grader fixture; no persistent shared learner",
+        "Planted accepted-wrong and rejected-correct answers each detected by name",
+        "An always-true grader and an always-false grader each have a detected mutation"
+      ],
+      "proof_artifacts": [],
+      "closing_revision": null,
+      "updated_at": "2026-09-12T16:22:27+08:00"
+    },
+    {
+      "id": "H-02",
+      "status": "in_progress",
+      "owner": "unassigned",
+      "finding": "Assertions that can fail but have no executed mutation proving they do.",
+      "affected_assertions": [
+        "assertion_coverage_8",
+        "mutation_proof_integrity_8"
+      ],
+      "baseline_evidence": "2026-09-12 on 015b7f35: 68/107 harness assertions proven BY EXECUTION; 39 on the shrink-only allowlist, including concept_gating, answer_key_recomputation, monotonicity, value_reaches_max, static_vocab_gated_lint, interest_invariance, kg_monotonicity, lab_portal_equivalence and grading_contract_floor_10.",
+      "acceptance_checks": [
+        "A current detected mutation for every content/release-critical assertion",
+        "Any inherently non-mutable check carries a narrow owner-approved limitation and an independent executable control",
+        "UNPROVEN_ASSERTIONS only shrinks"
+      ],
+      "proof_artifacts": [
+        "validation_reports/mutation_proofs",
+        "validation_reports/phase2_hardening/assertion_migration.json"
+      ],
+      "closing_revision": null,
+      "updated_at": "2026-09-12T16:22:27+08:00",
+      "notes": "Partially closed at 94e95347: §8 now proves by EXECUTION rather than by declaration, and 79/79 proof records verify. The remaining 39 unproven assertions are the open part."
+    },
+    {
+      "id": "H-03",
+      "status": "open",
+      "owner": "unassigned",
+      "finding": "run_all can lose its final summary and two-direction evidence when a stage raises; several validators catch an import/generation error and continue, so attempted work can be reported as coverage.",
+      "affected_assertions": [
+        "two_direction_contract_match",
+        "contract_doc_matches_registry",
+        "operator_doc_covers_registry"
+      ],
+      "baseline_evidence": "Not yet re-measured on 015b7f35. The stage registry described in step 0A does not exist; run_all still tracks stage results as local booleans.",
+      "acceptance_checks": [
+        "Stage ledger records scheduled, attempted, completed, failed and crashed",
+        "Exceptions become named failures; skipped obligations are failures",
+        "The non-fail-fast run reaches every independent stage and exits nonzero once at the end",
+        "Missing registration, wrong phase, crash and unattempted-stage paths each proved by mutation"
+      ],
+      "proof_artifacts": [],
+      "closing_revision": null,
+      "updated_at": "2026-09-12T16:22:27+08:00"
+    },
+    {
+      "id": "H-04",
+      "status": "open",
+      "owner": "unassigned",
+      "finding": "Continuous axes are swept separately from discrete ones, and serving context, experience, interest, renderer and response mode are not one finite obligation model.",
+      "affected_assertions": [
+        "execution_matrix_1C",
+        "coverage_map_1C",
+        "applicability_1H"
+      ],
+      "baseline_evidence": "2026-09-12: §1C filtering yields 4,325 allowed (node, DNA, formatter, discrete-assignment) obligations across 463 node/DNA/formatter pairs; 5-10 seeds each is 21,625-43,250 generated problems. Today's matrix sweep is 60 seeds x 151 nodes = 9,060 samples.",
+      "acceptance_checks": [
+        "Machine-generated obligation manifest derived from the production student route",
+        "obligation_budget.json records counts per dimension and names the production rule making each rejected combination unreachable",
+        "Two independent derivations agree on the reachable count",
+        "Every obligation is executed or rejected for a named contradiction; zero silent drops"
+      ],
+      "proof_artifacts": [],
+      "closing_revision": null,
+      "updated_at": "2026-09-12T16:22:27+08:00"
+    },
+    {
+      "id": "H-05",
+      "status": "open",
+      "owner": "unassigned",
+      "finding": "Vocabulary, interest, DNA, compatibility, render and grade checks contain narrow representatives, first-DNA selection, low sample counts, G1-3 assumptions, tolerated floors, static approximations or silent import paths.",
+      "affected_assertions": [
+        "static_vocab_gated_lint",
+        "vocab_audit_pass_rate",
+        "interest_invariance",
+        "dna_structure",
+        "dna_difficulty_feasibility",
+        "registry_coverage",
+        "kg_monotonicity",
+        "lab_portal_equivalence"
+      ],
+      "baseline_evidence": "2026-09-12: eight of the named labels sit in UNPROVEN_ASSERTIONS. fmt_emoji_pictorial selects emoji via rng.choice(_ALL_EMOJIS) and never reads interest context, which §4 cannot see because a theme that is ignored produces vacuous invariance.",
+      "acceptance_checks": [
+        "Scale-safe checks over every applicable node/DNA/formatter/grade and final rendered output",
+        "Exact typed comparisons; robust multi-digit grade parsing; real prerequisite edges",
+        "Named mutations on the live path for each",
+        "A missing or ignored theme is a failure, not vacuous invariance"
+      ],
+      "proof_artifacts": [],
+      "closing_revision": null,
+      "updated_at": "2026-09-12T16:22:27+08:00"
+    },
+    {
+      "id": "H-06",
+      "status": "open",
+      "owner": "unassigned",
+      "finding": "Phase 2 evidence omits complete visuals and options, freshness does not bind every learner-visible field, and requirement evidence can be incomplete if clause extraction omitted curriculum text.",
+      "affected_assertions": [
+        "judgment_reviews",
+        "stale_review_undetected",
+        "capability_contract"
+      ],
+      "baseline_evidence": "2026-09-12 on 015b7f35: judgment_packets._render_sample emits only seed, formatter, question_text, correct_answer, options, hint, cloze_text — NO visual fields. Phase 2 reports 484 judgment problems and 217 capability problems (67 contradicted, 76 stale, 74 unadjudicable). Of 776 required pairs: 357 current, 351 stale, 68 unresolved content.",
+      "acceptance_checks": [
+        "Canonical full-view packet and replay digest",
+        "Render-derived textual visual description, never payload-derived, with its own mutation",
+        "Full competency-to-requirement decomposition reviewed; exact clause coverage",
+        "Missing learner-visible evidence is unadjudicable and blocking"
+      ],
+      "proof_artifacts": [
+        "validation_reports/phase2_hardening/requirement_inventory.json"
+      ],
+      "closing_revision": null,
+      "updated_at": "2026-09-12T16:22:27+08:00"
+    },
+    {
+      "id": "H-07",
+      "status": "open",
+      "owner": "unassigned",
+      "finding": "The six facets do not yet force explicit judgments about contextual/logical validity, ambiguity, feedback/hints, misconception quality, interaction clarity or accessibility.",
+      "affected_assertions": [
+        "judgment_reviews",
+        "single_reviewer_identity",
+        "verbatim_rationale_reuse"
+      ],
+      "baseline_evidence": "Not yet re-measured on 015b7f35. The merged evidence record of plan step 1 does not exist; reviews carry no per-sample contextual-validity verdict.",
+      "acceptance_checks": [
+        "Per-sample contextual-validity evidence inside the existing facets",
+        "§1L bounded semantic-role/affordance checks, staged family by family at a clean baseline",
+        "Calibrated blind reviewers who identify a planted contextually-impossible defect before their verdicts are admissible",
+        "Every confirmed contextual defect yields a pinned regression fixture AND a mutation"
+      ],
+      "proof_artifacts": [],
+      "closing_revision": null,
+      "updated_at": "2026-09-12T16:22:27+08:00"
+    },
+    {
+      "id": "H-08",
+      "status": "open",
+      "owner": "unassigned",
+      "finding": "Nothing executes the React components. §9 checks that a payload carries the keys a component reads but never renders it, so a component that throws, ignores a conditional key or draws an empty box passes every gate.",
+      "affected_assertions": [
+        "render_contract_9",
+        "render_contract_floor_9"
+      ],
+      "baseline_evidence": "2026-09-12: frontend/run_servers_and_test.js is inert (CommonJS in an ESM package, Puppeteer absent from package.json and node_modules, bare python unavailable, Vite dev mode, no assertions). 20 of the 22 components in VisualSkeletons.jsx are driven purely by onClick/onChange; 2 use getBoundingClientRect; @dnd-kit appears in no visual skeleton.",
+      "acceptance_checks": [
+        "Headless renderToStaticMarkup over every registered component on real student-path payloads",
+        "Component x payload-class behaviour tests including the onAnswer -> answers_match round trip",
+        "Results consumed by run_all as a digest-bound artifact; the suite never regenerates its own evidence",
+        "Planted defects (thrown render, dropped conditional key, degenerate visual, onAnswer disagreeing with the key) each detected by name",
+        "Pointer-drag geometry on the two pointer components recorded as an unproven blind spot, not described as covered"
+      ],
+      "proof_artifacts": [],
+      "closing_revision": null,
+      "updated_at": "2026-09-12T16:22:27+08:00",
+      "notes": "Owner ruling 2026-09-12: NO browser gate. Closed in Phase 1 without Chromium, Puppeteer or a dev server. See plan step 5A."
+    },
+    {
+      "id": "H-09",
+      "status": "out_of_scope",
+      "owner": "unassigned",
+      "finding": "Production deploys automatically from main, backend uses :latest, and neither workflow binds deployed artifacts to Phase 1, Phase 2, mutations, frontend results or review evidence.",
+      "affected_assertions": [],
+      "baseline_evidence": "Unchanged and unmeasured. .github/workflows/ still holds deploy-backend.yml and the two firebase-hosting workflows.",
+      "acceptance_checks": [
+        "Revisit only after M1 and M2 land",
+        "When revived, start from this row rather than from a plan section"
+      ],
+      "proof_artifacts": [],
+      "closing_revision": "d5c752d1",
+      "updated_at": "2026-09-12T16:22:27+08:00",
+      "notes": "Owner ruling 2026-09-12: release promotion, staging/production separation, canaries, telemetry, alerting and rollback are cut from the hardening plan. None gates content correctness. The regression-feedback rule that lived in that section was re-homed into plan step 6 rather than deleted with it."
+    }
+  ]
+}
