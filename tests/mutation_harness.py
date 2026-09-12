@@ -2597,6 +2597,62 @@ MUTATIONS: List[Mutation] = [
                                 "does nothing but"],
         baseline_must_not_contain=["FAIL silent_path_disposition_8"],
     ),
+    # ── The judgment packet's sample allocation (plan step 2) ──────────────────────
+    Mutation(
+        name="variant_coverage_cap_returns",
+        asserts=["packet_variant_coverage_uncapped"],
+        description=(
+            "Put the per-node cap of 6 back on variant coverage. 975 candidate "
+            "(variant, value) pairs exist across 151 nodes and 68 nodes exceed 6, so the "
+            "cap left 292 pairs that NO PACKET COULD EVER CONTAIN -- 30% of the declared "
+            "variant space permanently unreviewable, while §7's census floor counted "
+            "CANDIDATES rather than coverage and so could not notice. A review campaign "
+            "run on that allocation structurally cannot see cases the reviewer is being "
+            "asked to judge, and the staleness gate then pins the blind spot in place, "
+            "because it only re-renders the seeds a review already cites."
+        ),
+        edits={
+            "backend/app/practice_gen/validation/judgment_packets.py": (
+                "    for i in range(len(candidates)):\n"
+                "        seed = _VARIANT_COVERAGE_SEED_FLOOR + i\n",
+                "    for i in range(len(candidates)):\n"
+                "        if len(variant_extra) >= 6:  # planted mutation: the cap returns\n"
+                "            break\n"
+                "        seed = _VARIANT_COVERAGE_SEED_FLOOR + i\n",
+            )
+        },
+        command=["pytest", "tests/unit/test_packet_allocation.py", "-q",
+                 "-p", "no:cacheprovider"],
+        expected_check="packet allocation (no per-node cap on variant coverage)",
+        expect_output_contains=["test_every_declared_candidate_is_attempted"],
+        baseline_must_not_contain=["test_every_declared_candidate_is_attempted"],
+    ),
+    Mutation(
+        name="packet_stops_pinning_interest",
+        asserts=["packet_interest_pinned"],
+        description=(
+            "Stop allocating interest samples. Measured before 2026-09-12: the string "
+            "`interest` appeared ZERO times in judgment_packets.py, although "
+            "pipeline.run() has always accepted `student_interest`. The dimension that "
+            "generates the STORY -- and so drives both contextual coherence and language "
+            "appropriateness, two of the six facets -- had no allocation at all, and "
+            "every review was written about the neutral default only."
+        ),
+        edits={
+            "backend/app/practice_gen/validation/judgment_packets.py": (
+                "    interest_extra = [\n"
+                "        seed for seed in range(_INTEREST_SEED_FLOOR,\n",
+                "    interest_extra = []\n"
+                "    _unused_interest = [\n"
+                "        seed for seed in range(_INTEREST_SEED_FLOOR,\n",
+            )
+        },
+        command=["pytest", "tests/unit/test_packet_allocation.py", "-q",
+                 "-p", "no:cacheprovider"],
+        expected_check="packet allocation (interest is pinned explicitly)",
+        expect_output_contains=["test_the_packet_actually_allocates_interest_samples"],
+        baseline_must_not_contain=["test_the_packet_actually_allocates_interest_samples"],
+    ),
 ]
 
 # The templated-review mutation cannot be a literal find/replace: each review's

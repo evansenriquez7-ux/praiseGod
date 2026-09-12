@@ -22,6 +22,8 @@ from __future__ import annotations
 import argparse
 import json
 import sys
+import zlib
+from pathlib import Path
 from typing import Any, Dict, List
 
 from backend.app.practice_gen.pipeline import run
@@ -69,6 +71,93 @@ _MAX_DIFFICULTY_SEED_CEIL = 600
 # candidate (variant_name, value) pairs so the mapping is reconstructible
 # from (node_id, seed) alone, the same trick as the max-difficulty range.
 _VARIANT_COVERAGE_SEED_FLOOR = 600
+_VARIANT_COVERAGE_SEED_CEIL = 700   # bounded 2026-09-12; max candidates on one node is 25
+
+# ─── The four dimensions a packet could not see until 2026-09-12 (plan step 2) ─────────
+#
+# MEASURED, and every figure here reproduces on the current tree:
+#
+#   interest/theme       `interest` appeared 0 times in this module, although pipeline.run()
+#                        has always accepted `student_interest`. The dimension that generates
+#                        the STORY -- and therefore drives both contextual coherence and
+#                        language appropriateness -- had NO allocation at all.
+#   variant coverage     975 candidate (variant, value) pairs across 151 nodes against a cap
+#                        of 6; 68 nodes exceed it, leaving 292 pairs NO PACKET COULD EVER
+#                        CONTAIN. §7's census floor counts CANDIDATES, not coverage, so it
+#                        could not notice.
+#   continuous difficulty  two points only: the auto-path default and all-axes-at-1.0. Never
+#                        one axis at a time, so "which axis made this too hard" was
+#                        unobservable.
+#   experience           run() accepts it; this builder never passed it.
+#
+# Each dimension gets its own RESERVED SEED RANGE for the same reason the two existing ones
+# do: `validate_judgment`'s freshness check calls `_render_sample(node_id, seed)` with no
+# profile argument, so a cited seed's NUMBER alone has to determine what to re-render with.
+# Samples also now carry an explicit `requested` block (plan step 2: "Make a sample's replay
+# identity explicit ... new records do not depend on seed arithmetic alone"), so the ranges
+# remain decodable for legacy replay while new records say outright what was asked for.
+_INTEREST_SEED_FLOOR = 700
+_INTEREST_SEED_CEIL = 800
+_PER_AXIS_MAX_SEED_FLOOR = 800
+_PER_AXIS_MAX_SEED_CEIL = 900
+_FLOOR_DIFFICULTY_SEED_FLOOR = 900
+_FLOOR_DIFFICULTY_SEED_CEIL = 1000
+_EXPERIENCE_SEED_FLOOR = 1000
+_EXPERIENCE_SEED_CEIL = 1100
+
+
+def _interest_bank() -> List[str]:
+    """Every interest the bank declares, sorted. Read from data, never restated here."""
+    path = Path(__file__).resolve().parents[4] / "data" / "interest_bank.json"
+    return sorted(json.loads(path.read_text(encoding="utf-8"))["interests"])
+
+
+def _interest_buckets(node_id: str) -> List[Any]:
+    """
+    The three interest buckets a packet pins, per plan step 2: "a themed interest, a
+    contrasting theme, the neutral default".
+
+    The two themes are chosen by a STABLE digest of the node id -- `zlib.crc32`, not
+    `hash()`, which is salted per process and would make a packet unreproducible between
+    runs. Different nodes therefore draw different themes (so a theme-specific defect has
+    a chance of surfacing somewhere) while any single node always draws the same two.
+    """
+    bank = _interest_bank()
+    if not bank:
+        return [None]
+    first = zlib.crc32(node_id.encode("utf-8")) % len(bank)
+    second = (first + len(bank) // 2) % len(bank)
+    if second == first:
+        second = (first + 1) % len(bank)
+    return [None, bank[first], bank[second]]
+
+
+def _reachable_experiences() -> List[str]:
+    """
+    The experience wrappers production offers, read from `pipeline.get_pipeline_status`.
+
+    Not restated here: a second copy of that list would be free to disagree with the
+    adapter's four branches, which is the duplicated-rule failure this harness keeps
+    finding in its own history.
+    """
+    from ..pipeline import get_pipeline_status
+
+    return sorted(get_pipeline_status()["experiences_available"])
+
+
+def _continuous_axis_names(node_id: str) -> List[str]:
+    """Every continuous axis this node's DNAs declare, sorted, so indexing is stable."""
+    names: List[str] = []
+    for dna_name in get_node_dnas(node_id) or []:
+        for axis in get_axes_for_concept(dna_name):
+            if axis.get("dim_type") == "continuous" and axis["name"] not in names:
+                names.append(axis["name"])
+    return sorted(names)
+
+
+def _floor_difficulty_profile(node_id: str) -> Dict[str, float]:
+    """Every continuous axis pinned to 0.0 -- the easiest item a pupil can receive."""
+    return {name: 0.0 for name in _continuous_axis_names(node_id)}
 
 
 def _bound_allows(bound: Any, val: Any) -> bool:
@@ -296,15 +385,46 @@ def _regrouping_fits(level: Any, max_places: Optional[int]) -> bool:
 
 
 def _render_sample(node_id: str, seed: int, difficulty_profile: Dict[str, Any] = None) -> Dict[str, Any]:
-    """Generate one problem and reduce it to reviewer-facing rendered fields only."""
+    """
+    Generate one problem and reduce it to reviewer-facing rendered fields only.
+
+    The seed's RANGE selects the profile, because freshness re-renders from
+    `(node_id, seed)` with no profile argument. Every range is disjoint, and the sample
+    records what was actually requested in `requested` so a new record does not depend on
+    seed arithmetic alone to describe itself (plan step 2).
+    """
+    interest: Any = None
+    experience = "standard"
+
     if difficulty_profile is None and _MAX_DIFFICULTY_SEED_FLOOR <= seed < _MAX_DIFFICULTY_SEED_CEIL:
         difficulty_profile = _max_difficulty_profile(node_id)
-    elif difficulty_profile is None and seed >= _VARIANT_COVERAGE_SEED_FLOOR:
+    elif difficulty_profile is None and _VARIANT_COVERAGE_SEED_FLOOR <= seed < _VARIANT_COVERAGE_SEED_CEIL:
         candidates = _variant_coverage_candidates(node_id)
         if candidates:
             var_name, val = candidates[(seed - _VARIANT_COVERAGE_SEED_FLOOR) % len(candidates)]
             difficulty_profile = {var_name: val}
-    p = run(node_id, seed=seed, difficulty_profile=difficulty_profile)
+    elif _INTEREST_SEED_FLOOR <= seed < _INTEREST_SEED_CEIL:
+        buckets = _interest_buckets(node_id)
+        interest = buckets[(seed - _INTEREST_SEED_FLOOR) % len(buckets)]
+    elif difficulty_profile is None and _PER_AXIS_MAX_SEED_FLOOR <= seed < _PER_AXIS_MAX_SEED_CEIL:
+        # ONE axis at 1.0, the rest left at the generator's default. The all-axes range
+        # (500-599) cannot answer "which axis made this too hard", because it moves them
+        # all at once; this is the per-axis half plan step 2 asks for.
+        axes = _continuous_axis_names(node_id)
+        if axes:
+            difficulty_profile = {axes[(seed - _PER_AXIS_MAX_SEED_FLOOR) % len(axes)]: 1.0}
+    elif difficulty_profile is None and _FLOOR_DIFFICULTY_SEED_FLOOR <= seed < _FLOOR_DIFFICULTY_SEED_CEIL:
+        # The third point on the continuous dimension. Before this, a packet saw the
+        # default and the ceiling and nothing else -- two points are not a range, and the
+        # easiest item a pupil can actually receive was never reviewed.
+        difficulty_profile = _floor_difficulty_profile(node_id)
+    elif _EXPERIENCE_SEED_FLOOR <= seed < _EXPERIENCE_SEED_CEIL:
+        wrappers = [e for e in _reachable_experiences() if e != "standard"]
+        if wrappers:
+            experience = wrappers[(seed - _EXPERIENCE_SEED_FLOOR) % len(wrappers)]
+
+    p = run(node_id, seed=seed, difficulty_profile=difficulty_profile,
+            student_interest=interest, experience=experience)
     fd = p.get("format_data") or {}
     options = fd.get("mcq_options") or fd.get("options")
     sample: Dict[str, Any] = {
@@ -312,6 +432,14 @@ def _render_sample(node_id: str, seed: int, difficulty_profile: Dict[str, Any] =
         "formatter": p.get("format") or p.get("formatter"),
         "question_text": p.get("question_text", ""),
         "correct_answer": p.get("correct_answer"),
+        # Plan step 2: "Make a sample's replay identity explicit ... new records do not
+        # depend on seed arithmetic alone to describe a requested profile." The reserved
+        # ranges still decode, for legacy records; this says it outright.
+        "requested": {
+            "difficulty_profile": difficulty_profile,
+            "student_interest": interest,
+            "experience": experience,
+        },
     }
     if options is not None:
         sample["options"] = options
@@ -332,8 +460,13 @@ _MAX_EXTRA_SAMPLES = 5
 _MAX_DIFFICULTY_SEED_SCAN = range(500, 510)
 _MAX_DIFFICULTY_SAMPLES = 3
 
-# Up to this many discrete-variant-coverage samples are kept per packet.
-_VARIANT_COVERAGE_SAMPLES = 6
+# How many floor-difficulty samples to keep (all continuous axes at 0.0).
+_FLOOR_DIFFICULTY_SAMPLES = 2
+
+# `_VARIANT_COVERAGE_SAMPLES` is GONE as of 2026-09-12. It was 6, against 975 candidate
+# (variant, value) pairs across 151 nodes: 68 nodes exceeded it and 292 pairs could never
+# appear in any packet. §7's census floor counts candidates, not coverage, so it could not
+# see that 30% of the declared variant space was permanently unreviewable.
 
 
 def _stratified_seeds(node_id: str) -> List[int]:
@@ -404,11 +537,16 @@ def _stratified_seeds(node_id: str) -> List[int]:
     seen_texts = {s["question_text"] for s in [
         *(x for x in (_try_render(node_id, sd) for sd in list(REVIEW_SEEDS) + extra + max_diff_extra) if x)
     ]}
+    # THE CAP IS GONE (2026-09-12, plan step 2). It stood at 6 while 975 candidate
+    # (variant, value) pairs exist across 151 nodes: 68 nodes exceeded it, so 292 pairs
+    # could NEVER appear in any packet, and §7's census floor counts CANDIDATES rather
+    # than coverage, so nothing noticed. The dedup-on-text filter below stays -- a
+    # declared variant the DNA never reads renders identically and padding the packet
+    # with it would add noise, not coverage -- so the number that actually lands is
+    # measured rather than assumed.
     variant_extra: List[int] = []
     candidates = _variant_coverage_candidates(node_id)
     for i in range(len(candidates)):
-        if len(variant_extra) >= _VARIANT_COVERAGE_SAMPLES:
-            break
         seed = _VARIANT_COVERAGE_SEED_FLOOR + i
         sample = _try_render(node_id, seed)
         if sample is None:
@@ -417,7 +555,45 @@ def _stratified_seeds(node_id: str) -> List[int]:
             seen_texts.add(sample["question_text"])
             variant_extra.append(seed)
 
-    return list(REVIEW_SEEDS) + extra + max_diff_extra + variant_extra
+    # Interest: three buckets -- a themed interest, a contrasting theme, and the neutral
+    # default. This dimension generates the STORY, so it drives both contextual coherence
+    # and language appropriateness, and it had ZERO allocation before today.
+    interest_extra = [
+        seed for seed in range(_INTEREST_SEED_FLOOR,
+                               _INTEREST_SEED_FLOOR + len(_interest_buckets(node_id)))
+        if _seed_renders(node_id, seed)
+    ]
+
+    # One continuous axis at a time at 1.0, so "which axis made this too hard" is
+    # answerable; plus the floor, so the continuous dimension is a range rather than the
+    # two points (default, all-axes-max) it was.
+    axis_count = len(_continuous_axis_names(node_id))
+    per_axis_extra = [
+        seed for seed in range(_PER_AXIS_MAX_SEED_FLOOR,
+                               _PER_AXIS_MAX_SEED_FLOOR + axis_count)
+        if _seed_renders(node_id, seed)
+    ]
+    floor_extra = [
+        seed for seed in range(_FLOOR_DIFFICULTY_SEED_FLOOR,
+                               _FLOOR_DIFFICULTY_SEED_FLOOR + _FLOOR_DIFFICULTY_SAMPLES)
+        if _seed_renders(node_id, seed)
+    ]
+
+    # Every experience wrapper except `standard`, which the base seeds already render.
+    experience_extra = [
+        seed for seed in range(
+            _EXPERIENCE_SEED_FLOOR,
+            _EXPERIENCE_SEED_FLOOR + len([e for e in _reachable_experiences()
+                                          if e != "standard"]))
+        if _seed_renders(node_id, seed)
+    ]
+
+    # NAMED LIMIT (plan step 2, stated here, in the contract row and in the evidence log):
+    # these groups are MARGINAL, not CROSSED. A visual formatter at max difficulty with a
+    # pinned variant under a themed interest is still only sampled by chance. The packet
+    # must not be read as demonstrating joint coverage it does not have.
+    return (list(REVIEW_SEEDS) + extra + max_diff_extra + variant_extra
+            + interest_extra + per_axis_extra + floor_extra + experience_extra)
 
 
 # Every render this module gave up on, as {node_id: [(seed, "ExcType: message"), ...]}.

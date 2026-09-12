@@ -1,18 +1,20 @@
 {
  "asserts": [
-  "subtraction_candidate_pool_bounded"
+  "packet_interest_pinned"
  ],
  "baseline_exit": 0,
  "baseline_markers_already_present": [],
  "baseline_must_not_contain": [
-  "test_large_range_does_not_enumerate_the_whole_space"
+  "test_the_packet_actually_allocates_interest_samples"
  ],
  "command": [
   "pytest",
-  "tests/unit/test_subtraction_candidate_pool.py::test_large_range_does_not_enumerate_the_whole_space",
-  "-q"
+  "tests/unit/test_packet_allocation.py",
+  "-q",
+  "-p",
+  "no:cacheprovider"
  ],
- "definition_digest": "0e82845aba8189d7b553b8e72b17f962794a1a4ddca8092f864fa3b7e519e7f8",
+ "definition_digest": "609121a0dc3e981dca1cc4b5dea3909ff331a400d238288d7fab02e43bd8b9fc",
  "detected": true,
  "diagnostic_line": "exit 1 — =================================== FAILURES ===================================",
  "environment": {
@@ -23,22 +25,22 @@
   "system": "Darwin"
  },
  "expect_output_contains": [
-  "test_large_range_does_not_enumerate_the_whole_space"
+  "test_the_packet_actually_allocates_interest_samples"
  ],
- "expected_check": "candidate-pool budget (counting_back/taking_away)",
- "finished_at": "2026-09-12T22:58:32+08:00",
- "input_digest": "78ae397bc33f57cb41085014a1d57e3f9fd3045438ab6801e51fb31ac54bfcfb",
+ "expected_check": "packet allocation (interest is pinned explicitly)",
+ "finished_at": "2026-09-12T23:06:24+08:00",
+ "input_digest": "18b8d272ca3b7373fd94e0fbea6ee857fb7d6fd55ebe2a6fb465da94bddfc1b9",
  "mutated_paths": [
-  "backend/app/practice_gen/dna/na/subtraction.py"
+  "backend/app/practice_gen/validation/judgment_packets.py"
  ],
- "mutation": "subtraction_pool_uncapped",
+ "mutation": "packet_stops_pinning_interest",
  "observed_markers": {
-  "test_large_range_does_not_enumerate_the_whole_space": true
+  "test_the_packet_actually_allocates_interest_samples": true
  },
  "paths_outside_input_set": [],
  "phase1_admissible": true,
  "planted_exit": 1,
  "restored_clean": true,
  "schema_version": 1,
- "started_at": "2026-09-12T22:56:28+08:00"
+ "started_at": "2026-09-12T23:06:03+08:00"
 }

@@ -93,6 +93,32 @@ KNOWN LIMITATIONS (Scaling Mandate 6)
   record that says `detected: false` removes evidence of a failed run, not evidence of
   correctness.
 
+* **The trap is a CLASS, not one mutation.** Generalised 2026-09-12 after
+  `allowlist_keeps_a_paid_debt` fell into it too. The condition is mechanical:
+
+      a mutation self-poisons when its own `expect_output_contains` marker appears in the
+      text §8 prints when reporting THAT mutation's failed record.
+
+  §8 quotes the runner's refusal reason verbatim, and the refusal reason quotes the expected
+  marker -- so for any mutation whose subject is this corpus, a single failure makes the
+  baseline permanently contain the marker it is waiting for. Two instances are known:
+
+      source_edited_without_reproof   marker "different source/fixture tree"
+      allowlist_keeps_a_paid_debt     marker "now proves it"
+
+  Both are scored by the same remedy: delete the `detected: false` record, re-run that
+  mutation alone. Neither survives a FULL table run, because during one the corpus is
+  legitimately mixed and `proven_assertions()` is depleted, so the premise each plant depends
+  on is temporarily untrue. **Expect both to need the manual remedy after every full re-run.**
+
+  The durable fix for both is the one `tests/isolated_corpus.py` already applied to the
+  custody mutations: move the plant onto an ISOLATED proof corpus under `tests/`, so the
+  mutation's subject is a fixture rather than the live corpus it is running inside. That is
+  named here as owed work and was NOT attempted -- it is a real piece of design, not a
+  comment, and excluding a mutation's own prior record from its own baseline does NOT fix it
+  (during a full run the baseline is red from records not yet reached, whatever that
+  mutation's own record says).
+
   THE REAL FIX, not done here: have the runner exclude a mutation's own prior record when
   computing that mutation's baseline. That removes the trap instead of documenting it, and is
   a change to `tests/mutation_harness.py` rather than to this module.

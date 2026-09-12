@@ -69,6 +69,13 @@ ASSERTIONS = (
     # §0 is 399 tests and §8 does not inventory them one by one; §7's unit_tests floor
     # guards their number. A test a mutation names individually is inventoried here.
     "subtraction_candidate_pool_bounded",  # tests/unit/test_subtraction_candidate_pool.py
+    # The judgment packet's sample allocation (plan step 2). Declared separately for the
+    # same reason the line above is: a mutation that drives ONE test file proves that
+    # property, not the §0 stage gate. Asserting `unit_tests` for these made the
+    # allowlisted `unit_tests` entry read as proven, which §8 caught immediately as a
+    # paid debt left on the register -- an accurate complaint about an inaccurate claim.
+    "packet_variant_coverage_uncapped",    # tests/unit/test_packet_allocation.py
+    "packet_interest_pinned",              # tests/unit/test_packet_allocation.py
     "contract_doc_matches_registry",
     "operator_doc_covers_registry",
     "two_direction_contract_match",

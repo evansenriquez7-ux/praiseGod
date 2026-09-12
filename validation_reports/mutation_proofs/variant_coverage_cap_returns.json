@@ -1,18 +1,20 @@
 {
  "asserts": [
-  "subtraction_candidate_pool_bounded"
+  "packet_variant_coverage_uncapped"
  ],
  "baseline_exit": 0,
  "baseline_markers_already_present": [],
  "baseline_must_not_contain": [
-  "test_large_range_does_not_enumerate_the_whole_space"
+  "test_every_declared_candidate_is_attempted"
  ],
  "command": [
   "pytest",
-  "tests/unit/test_subtraction_candidate_pool.py::test_large_range_does_not_enumerate_the_whole_space",
-  "-q"
+  "tests/unit/test_packet_allocation.py",
+  "-q",
+  "-p",
+  "no:cacheprovider"
  ],
- "definition_digest": "0e82845aba8189d7b553b8e72b17f962794a1a4ddca8092f864fa3b7e519e7f8",
+ "definition_digest": "cc65ba6b48ef9f131cd3c6a69186906640ca51acbf685b4b45869a2e91c0a348",
  "detected": true,
  "diagnostic_line": "exit 1 — =================================== FAILURES ===================================",
  "environment": {
@@ -23,22 +25,22 @@
   "system": "Darwin"
  },
  "expect_output_contains": [
-  "test_large_range_does_not_enumerate_the_whole_space"
+  "test_every_declared_candidate_is_attempted"
  ],
- "expected_check": "candidate-pool budget (counting_back/taking_away)",
- "finished_at": "2026-09-12T22:58:32+08:00",
- "input_digest": "78ae397bc33f57cb41085014a1d57e3f9fd3045438ab6801e51fb31ac54bfcfb",
+ "expected_check": "packet allocation (no per-node cap on variant coverage)",
+ "finished_at": "2026-09-12T23:06:03+08:00",
+ "input_digest": "18b8d272ca3b7373fd94e0fbea6ee857fb7d6fd55ebe2a6fb465da94bddfc1b9",
  "mutated_paths": [
-  "backend/app/practice_gen/dna/na/subtraction.py"
+  "backend/app/practice_gen/validation/judgment_packets.py"
  ],
- "mutation": "subtraction_pool_uncapped",
+ "mutation": "variant_coverage_cap_returns",
  "observed_markers": {
-  "test_large_range_does_not_enumerate_the_whole_space": true
+  "test_every_declared_candidate_is_attempted": true
  },
  "paths_outside_input_set": [],
  "phase1_admissible": true,
  "planted_exit": 1,
  "restored_clean": true,
  "schema_version": 1,
- "started_at": "2026-09-12T22:56:28+08:00"
+ "started_at": "2026-09-12T23:05:43+08:00"
 }

@@ -93,7 +93,13 @@ CENSUS_FLOORS = {
     # `except: continue` WITH), training people to paper over correct code; too narrow and
     # a dropped obligation goes uncounted. The first version reported 33; the narrowed one
     # reports 19, and the 14 it stopped flagging all record a finding first.
-    "unit_tests": 593,
+    # 617 collected 2026-09-12 (was 600), +17 from test_packet_allocation.py. M1
+    # acceptance asks that the packet's allocation be "measured, not asserted"; these are
+    # the assertions behind that. A review campaign run on the old allocation structurally
+    # could not see cases the reviewer was being asked to judge -- interest had ZERO
+    # allocation, 292 of 975 declared (variant, value) pairs were unreachable at any cap
+    # of 6, and the continuous dimension was two points rather than a range.
+    "unit_tests": 610,
     # 56 registered 2026-09-09 (was 51, 50, 48, 37). Four prove §8's own directions, one
     # §2C at (node, formatter) granularity, two the §6 phase seam, one that every contract
     # check declares the phase it runs in, four the §6 Phase 1 band (§6A/§6B/§6C/§6E, which
@@ -165,7 +171,10 @@ CENSUS_FLOORS = {
     # the plan step 0 inventory gate. Added at a HARD ZERO rather than a floor, because
     # all 19 live silent handlers were classified first (9 checked, 3 named-failure,
     # 7 limitation) -- Scaling Mandate 5 the right way round.
-    "mutations": 92,
+    # 94 registered 2026-09-12 (was 92): +2 for the packet allocation (plan step 2).
+    # One puts the per-node variant cap back (292 pairs unreachable); one stops pinning
+    # interest (the dimension that generates the STORY, previously unallocated entirely).
+    "mutations": 94,
     # 983 observed 2026-09-08. How many (variant, value) pairs the blind-review packets
     # will actually demonstrate across the tree.
     #
