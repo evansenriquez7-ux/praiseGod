@@ -1,7 +1,7 @@
 # Graph Report - ccmed  (2026-09-12)
 
 ## Corpus Check
-- 777 files · ~1,536,038 words
+- 777 files · ~1,536,413 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `bbfaa372`
+- Built from commit: `ade21efb`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -391,7 +391,7 @@
 - [[_COMMUNITY_2026-08-13 — Estimate was only a word (mat_g3_mg_q1_0)|2026-08-13 — "Estimate" was only a word (mat_g3_mg_q1_0)]]
 - [[_COMMUNITY_.axis_level_index|.axis_level_index]]
 - [[_COMMUNITY_generate_params|generate_params]]
-- [[_COMMUNITY_2026-08-23 — tick 24 — 90 clauses attested; the medium clauses are where the tree is thinnest|2026-08-23 — tick 24 — 90 clauses attested; the medium clauses are where the tree is thinnest]]
+- [[_COMMUNITY_2026-08-20 (tick 8) — A dispatch-only tick coverage 52 → 127|2026-08-20 (tick 8) — A dispatch-only tick: coverage 52 → 127]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `Hardening ledger archive` - 414 edges
@@ -836,7 +836,7 @@ Nodes (21): _generate_addition_examples(), _generate_comparing_examples(), _gene
 
 ### Community 103 - "Community 103"
 Cohesion: 0.04
-Nodes (50): 1. Distractor Non-Determinism Fix in `place_value.py`, 1. Fractions answer-key false positive — `mat_g2_na_q4_0`/`_1`/`_2`, 2026-08-13 — The G1 measure items: a visual for the task, and a size model for the units, 2026-08-14 — "2-digit by 1-digit" bounds two operands, and only one had a key, 2026-08-19 — Unit 3 completion + full `run_all` verification, 2026-08-20 — §5 worker death: a silent unbounded wait in the last gate, 2026-08-20 (tick 8) — A dispatch-only tick: coverage 52 → 127, 2026-08-21 (tick 14) — CORRECTION: §2B's 236 was two defects, not one (+42 more)
+Nodes (51): 1. Distractor Non-Determinism Fix in `place_value.py`, 1. Fractions answer-key false positive — `mat_g2_na_q4_0`/`_1`/`_2`, 2026-08-13 — The G1 measure items: a visual for the task, and a size model for the units, 2026-08-19 — Unit 3 completion + full `run_all` verification, 2026-08-20 — §5 worker death: a silent unbounded wait in the last gate, 2026-08-21 (tick 14) — CORRECTION: §2B's 236 was two defects, not one, 2026-08-23 — §6G: an attestation must show its work, 2026-08-23 — tick 24 — 90 clauses attested; the medium clauses are where the tree is thinnest (+43 more)
 
 ### Community 104 - "Community 104"
 Cohesion: 0.04
@@ -1347,8 +1347,8 @@ Cohesion: 0.24
 Nodes (5): Documentation Rules (meta-rules), Contract Rules Table, Core Principles, PG Pipeline Contract, PG Pipeline — Engineering Guide & Hardening Record
 
 ### Community 255 - "2026-08-13 — Content no competency asks for, and a metre wearing centimetres"
-Cohesion: 0.15
-Nodes (12): collect_findings(), _emit_malformed(), _emit_whitespace_equivalent(), _Findings, main(), §10 — the grading contract, in BOTH directions, hermetically.  Why this exists -, A submission that is structurally invalid for this payload's response contract., The same answer, padded. None where padding is meaningless for the shape.      D (+4 more)
+Cohesion: 0.12
+Nodes (17): _as_number(), collect_findings(), _emit_malformed(), _emit_whitespace_equivalent(), _Findings, main(), _mcq_keys(), Any (+9 more)
 
 ### Community 256 - "Queries"
 Cohesion: 0.23
@@ -1435,8 +1435,8 @@ Cohesion: 0.11
 Nodes (19): PracticeOrchestrator, Any, Bridge Layer separating the generation logic from the FastAPI routing/server lay, compute(), main(), Returns (exclusions, broken) -- broken = pairs that raise a NON-eligibility erro, The orchestrator must set problem.dna_name to the actually-chosen DNA., The cross-DNA formatter filter, asserted as an INVARIANT over every case where (+11 more)
 
 ### Community 277 - "_combined_interests"
-Cohesion: 0.15
-Nodes (10): _as_number(), _emit_wrong(), _mcq_keys(), Any, The numeric value of a scalar answer, or None if it is not one., key -> is_correct, from whichever option shape this payload carries., A submission that is KNOWN wrong for this payload, or None if none is derivable., §10's second direction: the emitters that make an always-true grader detectable. (+2 more)
+Cohesion: 0.20
+Nodes (5): _emit_wrong(), A submission that is KNOWN wrong for this payload, or None if none is derivable., §10's second direction: the emitters that make an always-true grader detectable., One option means no wrong answer exists; that is an obligation failure, not a pa, TestEmitWrong
 
 ### Community 278 - "test_6g_is_clean_on_the_real_tree"
 Cohesion: 0.22
@@ -1675,8 +1675,8 @@ Cohesion: 0.33
 Nodes (10): _build_traps(), _build_visual_params(), format_bar_chart(), _grade_scale(), _pick_categories(), Random, fmt_bar_chart.py — BarChart visual formatter  Produces a FormattedProblem with b, Build BarChart visual_params.      visual_params keys:         categories     — (+2 more)
 
 ### Community 360 - "test_contradicted_entry_is_caught_by_name"
-Cohesion: 0.40
-Nodes (5): A zero factor was reaching students, and §1G's seeds never landed on it, All instances (Protocol 2), Bound the pool, never the ceiling, It moves no content at all, Tick 21 — 2026-08-22 — the candidate pool was quadratic in a curriculum ceiling
+Cohesion: 0.50
+Nodes (4): 2026-08-14 — "2-digit by 1-digit" bounds two operands, and only one had a key, The failing rationale, Verification, Why binding alone was not enough — and what had to be built
 
 ### Community 361 - "Any"
 Cohesion: 0.08
@@ -1794,9 +1794,9 @@ Nodes (5): 2026-08-13 — "Estimate" was only a word (mat_g3_mg_q1_0), Root caus
 Cohesion: 0.10
 Nodes (36): max_regrouping_places(), Largest borrow count achievable for any (a, b) with a <= max_minuend, a >= b., _bound_allows(), build_group(), build_packet(), _main(), _max_difficulty_profile(), _max_regrouping_places_for() (+28 more)
 
-### Community 399 - "2026-08-23 — tick 24 — 90 clauses attested; the medium clauses are where the tree is thinnest"
+### Community 394 - "2026-08-20 (tick 8) — A dispatch-only tick: coverage 52 → 127"
 Cohesion: 0.50
-Nodes (4): 2026-08-23 — tick 24 — 90 clauses attested; the medium clauses are where the tree is thinnest, batch023 → batch028: a verdict moved without being edited, Tooling, and the honesty problem it forced, What the blind verdicts found — the pattern is a medium, not a node
+Nodes (4): 2026-08-20 (tick 8) — A dispatch-only tick: coverage 52 → 127, Content defects found unasked, The dominant shape of the failures, Why this tick was dispatches only
 
 ## Knowledge Gaps
 - **2005 isolated node(s):** `graphify`, `PackageDescription`, `Foundation`, `PathKit`, `graphify-mcp` (+2000 more)

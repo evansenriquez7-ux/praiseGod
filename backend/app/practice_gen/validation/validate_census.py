@@ -87,7 +87,13 @@ CENSUS_FLOORS = {
     # CANNOT be a mutation: a mutation proves a check fires, and determinism is the
     # absence of variation. It is pinned by test instead, alongside the assertions that
     # the budget report keeps saying what it does NOT cover.
-    "unit_tests": 578,
+    # 600 collected 2026-09-12 (was 585), +15 from test_silent_path_inventory.py. What
+    # they pin is the DEFINITION of "silent", which fails in both directions: too broad and
+    # the gate flags record-then-continue handlers (the named-failure pattern H-01 replaced
+    # `except: continue` WITH), training people to paper over correct code; too narrow and
+    # a dropped obligation goes uncounted. The first version reported 33; the narrowed one
+    # reports 19, and the 14 it stopped flagging all record a finding first.
+    "unit_tests": 593,
     # 56 registered 2026-09-09 (was 51, 50, 48, 37). Four prove §8's own directions, one
     # §2C at (node, formatter) granularity, two the §6 phase seam, one that every contract
     # check declares the phase it runs in, four the §6 Phase 1 band (§6A/§6B/§6C/§6E, which
@@ -155,7 +161,11 @@ CENSUS_FLOORS = {
     # which is the failure the plan's own unreproducible 4,325 figure walked into.
     # `dead_formatter_route_ignored` registers a sixth unreachable route: §2B/§2C hold
     # advertised->servable, and nothing held registered->reachable until §11.
-    "mutations": 91,
+    # 92 registered 2026-09-12 (was 91): +1 for `silent_handler_without_a_disposition`,
+    # the plan step 0 inventory gate. Added at a HARD ZERO rather than a floor, because
+    # all 19 live silent handlers were classified first (9 checked, 3 named-failure,
+    # 7 limitation) -- Scaling Mandate 5 the right way round.
+    "mutations": 92,
     # 983 observed 2026-09-08. How many (variant, value) pairs the blind-review packets
     # will actually demonstrate across the tree.
     #

@@ -118,7 +118,17 @@ def validate_all_interest_invariance() -> Dict[str, List[str]]:
     for concept in DNA_MODULE_MAP:
         try:
             dna = load_dna(concept)
-        except ImportError:
+        except ImportError as exc:
+            # A NAMED FAILURE, not a `continue`. Until 2026-09-12 this was
+            # `except ImportError: continue`, so a DNA whose module stopped importing
+            # vanished from §4 entirely and the stage still printed "12/12 passed" --
+            # the silent import path plan step 0A forbids ("Import or provenance loss
+            # fails") and `H-05` names. §3 already treated the identical failure as a
+            # named error two modules over; the two disagreed about the same event.
+            results[concept] = [
+                f"{concept}: could not import DNA module, so interest invariance was "
+                f"NEVER CHECKED for it: {exc}"
+            ]
             continue
         if not (dna.dna_type in ("formula", "algorithmic") and dna.requires_context):
             continue

@@ -82,11 +82,16 @@ def _are_values_equal(v1: Any, v2: Any) -> bool:
                     parts = v.split("/")
                     return float(parts[0]) / float(parts[1])
                 except Exception:
+                    # DISPOSITION: checked -- this is a COERCION helper: falling through
+                    # returns None, and every caller treats None as 'not comparable as a
+                    # number' and falls back to an exact comparison. Nothing is skipped.
                     pass
             else:
                 try:
                     return float(v)
                 except Exception:
+                    # DISPOSITION: checked -- as above: None means 'not a number', and the
+                    # caller compares exactly instead. No obligation is dropped.
                     pass
         return None
     

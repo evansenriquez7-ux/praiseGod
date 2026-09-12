@@ -538,6 +538,10 @@ def score_problem_operands(problem: Dict[str, Any], axis_name: str) -> List[floa
         try:
             scores.append(score_candidate(val, max_val, t))
         except Exception:
+            # DISPOSITION: limitation -- an unscoreable candidate contributes no score,
+            # so the monotonicity comparison runs on fewer points rather than on a wrong
+            # one. Narrow, but it means a value NOTHING can score is invisible instead of
+            # reported. Would close by recording the unscoreable candidate as a finding.
             pass
             
     return scores
@@ -1019,6 +1023,13 @@ def run_matrix_for_node(node_id: str, fail_fast: bool) -> Tuple[List[Dict[str, A
                     except RuntimeError as e:
                         # Infeasible combination (e.g. regrouping=two_places but max_sum=20) —
                         # this is expected for constrained nodes, not a harness failure.
+                        # DISPOSITION: limitation -- infeasibility is inferred from the
+                        # EXCEPTION TYPE, so a RuntimeError raised for any other reason is
+                        # read as 'legitimately infeasible' and the discrete value goes
+                        # unchecked. `discrete_integrity` and `discrete_gen` are both in
+                        # UNPROVEN_ASSERTIONS, which is the same gap from the other side.
+                        # Would close by having the generator raise a distinguishable
+                        # Infeasible error rather than a bare RuntimeError.
                         pass
                     except Exception as e:
                         failures.append({
@@ -1659,6 +1670,9 @@ def run_matrix_for_node(node_id: str, fail_fast: bool) -> Tuple[List[Dict[str, A
                         })
                     except ValueError:
                         # Success: correctly rejected the incompatible variant
+                        # DISPOSITION: named-failure -- this IS the §1C-reverse contract
+                        # passing. Reaching the append above instead (no raise) is the
+                        # finding; a non-ValueError crash is caught below and reported.
                         pass
                     except Exception as exc:
                         failures.append({
@@ -1685,6 +1699,9 @@ def run_matrix_for_node(node_id: str, fail_fast: bool) -> Tuple[List[Dict[str, A
                         "error": f"Curriculum-gate violation: requesting {var_name}='{excluded_val}' (not yet available at grade={grade}, quarter={quarter}) did not raise an error."
                     })
                 except ValueError:
+                    # DISPOSITION: named-failure -- the curriculum gate refusing an
+                    # unavailable variant is the pass condition; not raising is the
+                    # finding recorded above, and any other exception is reported below.
                     pass
                 except Exception as exc:
                     failures.append({
@@ -1793,6 +1810,12 @@ def expected_checks_for_node(node_id: str) -> Set[str]:
         try:
             axes = get_axes_for_concept(dna_name)
         except Exception:
+            # DISPOSITION: limitation -- this is §1H's APPLICABILITY PREDICTOR, not a
+            # check. A DNA whose axes cannot be read predicts no obligations, so §1H
+            # expects nothing of it and cannot notice that its checks stopped running --
+            # the predictor going quiet looks exactly like a node with nothing to check.
+            # Would close by failing the predictor, which §3 already does for the DNA
+            # itself (dna_structure), so the DNA cannot break without SOME gate firing.
             continue
         try:
             comp_bounds = get_node_competency_bounds(node_id, dna_name) or {}
@@ -1836,6 +1859,9 @@ def expected_checks_for_node(node_id: str) -> Set[str]:
             try:
                 supported = get_supported_variants(dna_name, fmt)
             except Exception:
+                # DISPOSITION: limitation -- same predictor, same shape as above: an
+                # unreadable FORMATTER_VARIANT_SUPPORT entry predicts no §1C-reverse
+                # obligation rather than reporting that it could not tell.
                 continue
             if any(set(all_dna_variants.get(var, [])) - set(allowed)
                    for var, allowed in supported.items()):

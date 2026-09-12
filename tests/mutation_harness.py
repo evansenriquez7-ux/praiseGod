@@ -2569,6 +2569,34 @@ MUTATIONS: List[Mutation] = [
                                 "planted_dead_route"],
         baseline_must_not_contain=["FAIL obligation_routes_reachable"],
     ),
+    Mutation(
+        name="silent_handler_without_a_disposition",
+        asserts=["silent_path_disposition_8"],
+        description=(
+            "Add an `except Exception: continue` with no recorded disposition to the "
+            "render contract's sweep. This is the shape plan step 0 requires to be "
+            "inventoried and §10 had two of until 2026-09-12: an obligation dropped "
+            "without a word, which is how attempted work gets reported as coverage. "
+            "Measured before the inventory: 19 silent handlers, all unclassified; all 19 "
+            "now carry a disposition, which is why this gate is a hard zero rather than a "
+            "tolerated floor."
+        ),
+        edits={
+            "backend/app/practice_gen/validation/validate_render.py": (
+                "            d = p if isinstance(p, dict) else p.__dict__\n",
+                "            try:\n"
+                "                pass\n"
+                "            except Exception:  # planted mutation: undisclosed silent path\n"
+                "                continue\n"
+                "            d = p if isinstance(p, dict) else p.__dict__\n",
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_coverage"],
+        expected_check="§8 (every silent handler carries a recorded disposition)",
+        expect_output_contains=["FAIL silent_path_disposition_8",
+                                "does nothing but"],
+        baseline_must_not_contain=["FAIL silent_path_disposition_8"],
+    ),
 ]
 
 # The templated-review mutation cannot be a literal find/replace: each review's

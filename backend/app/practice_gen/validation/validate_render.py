@@ -116,6 +116,10 @@ def collect_findings(node_ids: Optional[List[str]] = None) -> List[str]:
                     node_id=node_id, seed=seed, is_student_path=True
                 )
             except Exception:
+                # DISPOSITION: checked -- §1C/§1C-coverage own generation failures and
+                # sweep far more seeds than §9's three, so a node that cannot generate
+                # fails there. RESIDUAL: a failure unique to one of §9's three seeds is
+                # invisible here, because §9 only checks what it managed to render.
                 continue  # a generation failure is another stage's finding, not §9's
             d = p if isinstance(p, dict) else p.__dict__
             vt = d.get("visual_type")

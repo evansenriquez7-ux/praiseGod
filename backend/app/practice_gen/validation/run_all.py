@@ -960,6 +960,9 @@ def run_all(fail_fast: bool = False, phase: Optional[int] = None) -> int:
                 if ledger.get(_stage_name).state != "failed":
                     continue
             except KeyError:
+                # DISPOSITION: checked -- a stage absent from the ledger was not scheduled
+                # for this --phase run, so it owes no refs and there is nothing to discard.
+                # The ledger itself reports any stage that WAS scheduled and never ran.
                 continue  # not scheduled in this --phase run
             for _ref in _phase_refs(_phase):
                 expected_subset.discard(_ref)

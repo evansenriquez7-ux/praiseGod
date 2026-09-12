@@ -1,18 +1,18 @@
 {
  "asserts": [
-  "assertion_coverage_8"
+  "silent_path_disposition_8"
  ],
  "baseline_exit": 1,
  "baseline_markers_already_present": [],
  "baseline_must_not_contain": [
-  "worker_crash' can fail but no mutation proves it"
+  "FAIL silent_path_disposition_8"
  ],
  "command": [
   "backend.app.practice_gen.validation.validate_coverage"
  ],
- "definition_digest": "20442ec878e21e1550fb613d13056afb3aed5717308f9bb56a6a6960572c2dae",
+ "definition_digest": "13dcfb8aa228b6cb647d9528d5b0eb546e007f781920e0bc057c333367bb8a2b",
  "detected": true,
- "diagnostic_line": "exit 1 — FAIL mutation_proof_integrity_8 (1 in 1 family):",
+ "diagnostic_line": "exit 1 — FAIL mutation_proof_integrity_8 (3 in 3 families):",
  "environment": {
   "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
   "machine": "x86_64",
@@ -21,22 +21,24 @@
   "system": "Darwin"
  },
  "expect_output_contains": [
-  "worker_crash' can fail but no mutation proves it"
+  "FAIL silent_path_disposition_8",
+  "does nothing but"
  ],
- "expected_check": "§8 (every assertion is proven by a mutation or on a shrinking allowlist)",
- "finished_at": "2026-09-12T22:16:58+08:00",
+ "expected_check": "§8 (every silent handler carries a recorded disposition)",
+ "finished_at": "2026-09-12T22:25:36+08:00",
  "input_digest": "b2cdc2c75e2e88fc901632504c954a2a950212396bb9e7dc593da46819ae6f9a",
  "mutated_paths": [
-  "backend/app/practice_gen/validation/validate_coverage.py"
+  "backend/app/practice_gen/validation/validate_render.py"
  ],
- "mutation": "coverage_map_gap",
+ "mutation": "silent_handler_without_a_disposition",
  "observed_markers": {
-  "worker_crash' can fail but no mutation proves it": true
+  "FAIL silent_path_disposition_8": true,
+  "does nothing but": true
  },
  "paths_outside_input_set": [],
  "phase1_admissible": true,
  "planted_exit": 1,
  "restored_clean": true,
  "schema_version": 1,
- "started_at": "2026-09-12T22:16:54+08:00"
+ "started_at": "2026-09-12T22:25:33+08:00"
 }

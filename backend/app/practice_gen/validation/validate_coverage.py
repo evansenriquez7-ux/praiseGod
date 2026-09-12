@@ -124,6 +124,8 @@ ASSERTIONS = (
     "assertion_asserts_unknown_8",    # a mutation asserting a label nothing declares
     "assertion_undeclared_check_8",   # a printed `  FAIL` label no module declares
     "check_phase_registry_8",         # a contract ref that declares no harness phase
+    "silent_path_disposition_8",      # a silent exception handler with no recorded
+                                      # disposition (plan step 0's inventory)
     "mutation_proof_integrity_8",     # an executed-proof record that does not hold
 )
 
@@ -567,6 +569,54 @@ def _print_findings(label: str, errors: List[str], families: List[str]) -> None:
         print(f"    ... and {len(errors) - shown} more.")
 
 
+def silent_path_failures() -> List[str]:
+    """
+    Every silent exception handler in the package that carries no recorded disposition.
+
+    THE OBLIGATION (plan step 0): "Inventory every warning, `continue`, exception handler
+    ... Each receives one of three dispositions: remove it by checking the obligation,
+    turn it into a named failure, or record a narrow inherent limitation."
+
+    A SILENT handler is one whose body does nothing but leave -- `continue`, `pass`, or a
+    bare `return`, and nothing else. A handler that records a finding and THEN continues
+    is the named-failure pattern this exists to encourage, not an instance of the defect;
+    counting those would have flagged §10's own obligation handlers, which are exactly
+    what the H-01 work replaced `except: continue` WITH.
+
+    Why this sits in §8 rather than a §-ref of its own: §8 is already the gate that
+    measures whether the other gates are real. "This assertion has no proof" and "this
+    handler drops an obligation without saying so" are the same question asked of
+    different things.
+
+    MEASURED 2026-09-12: 33 silent handlers by the first (over-broad) definition, 19 by
+    this one, and all 19 now carry a disposition -- 9 `checked`, 3 `named-failure`,
+    7 `limitation`. Because the baseline reached ZERO unclassified, this is a hard zero
+    rather than a shrink-only floor (Scaling Mandate 5): a silent handler added tomorrow
+    fails the build instead of disappearing into a tolerated count.
+    """
+    if str(REPO_ROOT) not in sys.path:
+        sys.path.insert(0, str(REPO_ROOT))
+    from tests.silent_path_inventory import scan
+
+    problems: List[str] = []
+    for path in scan():
+        if not path.disposition:
+            problems.append(
+                f"§8 silent path: {path.file}:{path.line} in {path.function}() catches "
+                f"`{path.handler}` and does nothing but `{path.body}`. An obligation "
+                f"dropped without a word is how attempted work gets reported as coverage. "
+                f"Record a disposition in the handler: "
+                f"`# DISPOSITION: checked|named-failure|limitation -- <why>`."
+            )
+        elif path.disposition == "INVALID":
+            problems.append(
+                f"§8 silent path: {path.file}:{path.line} in {path.function}() has a "
+                f"DISPOSITION marker that names no known kind ({path.note[:60]!r}). "
+                f"Use one of checked, named-failure, limitation."
+            )
+    return problems
+
+
 def validate_all() -> bool:
     inventory = harness_assertion_labels()
     proven = proven_assertions()
@@ -587,6 +637,18 @@ def validate_all() -> bool:
         records, _ = mutation_proof.load_proofs()
         print(f"  PASS mutation_proof_integrity_8: {len(records)} executed mutation proof(s) "
               f"verified against the current source/fixture digest")
+
+    silent = silent_path_failures()
+    if silent:
+        _print_findings("silent_path_disposition_8", silent,
+                        ["silent_path"] * len(silent))
+        ok = False
+    else:
+        from tests.silent_path_inventory import build_report
+        counts = build_report()["counts"]
+        print(f"  PASS silent_path_disposition_8: all "
+              f"{counts['silent_handlers']} silent handler(s) carry a recorded "
+              f"disposition ({counts['by_disposition']})")
 
     if errors:
         _print_findings("assertion_coverage_8", errors, [f for _m, f in tagged])

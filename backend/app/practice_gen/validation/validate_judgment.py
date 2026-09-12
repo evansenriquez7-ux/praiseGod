@@ -671,6 +671,8 @@ def validate_judgment_reviews(fail_fast: bool = False) -> List[str]:
         try:
             data = json.loads(path.read_text(encoding="utf-8"))
         except json.JSONDecodeError:
+            # DISPOSITION: checked -- _validate_one reports the malformed file by name
+            # in the same run, so the review cannot pass by being unreadable.
             continue  # already reported by _validate_one
         if not isinstance(data, dict) or not isinstance(data.get("findings"), dict):
             continue  # malformed shape, already reported by _validate_one
@@ -729,6 +731,9 @@ def summarize_verdicts() -> Dict[str, int]:
         try:
             data = json.loads(path.read_text(encoding="utf-8"))
         except json.JSONDecodeError:
+            # DISPOSITION: checked -- _validate_one fails the run on a malformed review,
+            # so this cannot turn a bad review into a pass. RESIDUAL: it DOES understate
+            # `reviewed`, so the summary line counts fewer nodes than exist on disk.
             continue
         counts["reviewed"] += 1
         verdict = str(data.get("overall", "")).upper()

@@ -10708,3 +10708,113 @@ precisely the failure mode the plan's unreproducible figure walked into.
 5. **Continuous partitions are three classes per axis** (both curriculum boundaries and
    one interior representative). Behaviour between representatives stays explicitly
    unproven.
+
+---
+
+## Plan step 0 — the silent-path inventory, gated at a hard zero (2026-09-12)
+
+Step 0 requires: "Inventory every warning, `continue`, exception handler, sample cap,
+floor, allowlist, exclusion, and 'not judged/not gated' branch in the harness. Each
+receives one of three dispositions." `H-03` closed the RUNNER's exception boundaries and
+deliberately left the validator-INTERNAL ones open; this is that residue, for the
+exception-handler family.
+
+### Measured
+
+```text
+$ ast-scan backend/app/practice_gen/validation/*.py
+broad_except             32
+narrow_except            25
+broad_except_silent      20
+narrow_except_silent     13
+TOTAL                    90
+```
+
+### The scanner's own false positive, found by reading its output
+
+The first definition of "silent" returned `continue` for any handler body CONTAINING a
+`Continue`, and reported **33**. Three of those were in code written earlier the same day:
+
+```python
+except Exception as exc:
+    found.obligation.append(f"{node_id} (seed {seed}): generation raised {exc} ...")
+    continue
+```
+
+That is §10's obligation reporter — the exact pattern the `H-01` work replaced
+`except: continue` WITH. A gate that flags the fix as the defect trains people to paper
+over correct code with markers, and buries the real findings in the noise it creates.
+
+Narrowed to "the body does NOTHING BUT leave" — `continue`, `pass`, or a bare `return`,
+with nothing else — the count is **19**, and all 14 it stopped flagging record a finding
+first. `tests/unit/test_silent_path_inventory.py` pins that boundary in both directions,
+because it fails badly either way: too broad floods the gate, too narrow hides a dropped
+obligation.
+
+### One real defect fixed rather than marked
+
+`validate_interest.validate_all_interest_invariance` answered a DNA `ImportError` with a
+bare `continue`. A DNA whose module stopped importing **vanished from §4 entirely** and
+the stage still printed `12/12 passed`. That is the silent import path step 0A forbids in
+so many words ("Import or provenance loss fails") and `H-05` names — and `validate_dna`
+had treated the identical event as a named error two modules over, so two validators
+disagreed about the same event. It is now a named failure:
+
+```text
+{concept}: could not import DNA module, so interest invariance was NEVER CHECKED for it
+```
+
+### Dispositions, in the code rather than in a table
+
+The disposition lives in a comment inside the handler:
+
+```python
+except Exception:
+    # DISPOSITION: checked -- §2G (all_competency_bounds_parse) fails the run on any node
+    # whose bounds will not parse, over every node, so a parse failure cannot hide here.
+    continue
+```
+
+A registry keyed by `(file, line)` rots on the first edit above it and one keyed by
+function name rots on the first rename. This travels with the code it describes, a
+reviewer reads it where the decision applies, and it is greppable and machine-checkable.
+
+Final state, all 19 classified:
+
+```text
+$ PYTHONPATH=. .venv/bin/python tests/silent_path_inventory.py
+  silent handlers=19 unclassified=0 invalid_marker=0
+  by disposition: {'checked': 9, 'named-failure': 3, 'limitation': 7}
+
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_coverage
+  PASS silent_path_disposition_8: all 19 silent handler(s) carry a recorded disposition
+       ({'checked': 9, 'named-failure': 3, 'limitation': 7})
+```
+
+**A hard zero, not a floor** — Scaling Mandate 5 the right way round. The 19 were
+classified BEFORE the gate went in, so its baseline is genuinely clean and a silent
+handler added tomorrow fails the build instead of disappearing into a tolerated count.
+
+### The seven limitations, now written down where they apply
+
+Naming them is the point; they were invisible before. In brief: §2E's option-placement
+distribution is biased by however many nodes fail to generate and does not report the
+contributor count; `validate_compat`'s config probe infers "refused" from the exception
+TYPE, so a crash reads as a refusal; `validate_matrix`'s discrete-integrity sweep infers
+infeasibility from a bare `RuntimeError` (which is the same gap `discrete_integrity` and
+`discrete_gen` already sit in `UNPROVEN_ASSERTIONS` for); §1H's applicability PREDICTOR
+going quiet looks exactly like a node with nothing to check; and an unreadable source file
+is skipped by the dangling-reference scan. Each carries what would close it.
+
+### Named limitations of the gate itself (Scaling Mandate 6)
+
+1. **A marker is a claim, not a proof.** `# DISPOSITION: checked -- §1G covers this`
+   asserts that §1G covers it; nothing verifies that it does. Strictly better than an
+   unexplained `continue`, strictly weaker than a test.
+2. **Scope is the validation package only.** The pipeline's own silent paths are not
+   scanned; Protocol 3 forbids them there too and that inventory is separate work.
+3. **A handler that logs and continues is not counted**, though it can still lose an
+   obligation. Widening that is a deliberate next step, not an oversight.
+4. **Only exception handlers.** Step 0 also names sample caps, floors, allowlists and
+   "not judged" branches. Floors and the allowlist already have gates (§7's census,
+   §8's shrink-only rule); caps and "not judged" branches do not, and are not claimed.

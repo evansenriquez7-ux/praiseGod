@@ -521,6 +521,9 @@ def validate_config_respects_competency() -> List[str]:
             try:
                 bounds = get_node_competency_bounds(node_id, dna) or {}
             except Exception:
+                # DISPOSITION: checked -- §2G (all_competency_bounds_parse) fails the
+                # run on any node whose bounds will not parse, over every node, so a
+                # parse failure cannot hide here; double-reporting it would only bury it.
                 continue
             for axis, bound in bounds.items():
                 # List bounds only -- see orchestrator._competency_allows: a tuple is a
@@ -538,8 +541,16 @@ def validate_config_respects_competency() -> List[str]:
                         allowed_difficulties={axis: [intruder]},
                     )
                 except ValueError:
+                    # DISPOSITION: named-failure -- this IS the contract being satisfied:
+                    # the orchestrator refusing an out-of-competency config is the pass
+                    # condition, and reaching the line below instead is the finding.
                     continue          # refused, which is the contract
                 except Exception:
+                    # DISPOSITION: limitation -- a non-ValueError crash is indistinguishable
+                    # here from a refusal, so a node that crashes on this probe is counted
+                    # as having refused. §1C owns generation crashes. Would close by
+                    # asserting the exception TYPE, which needs the orchestrator to raise a
+                    # distinguishable error for 'refused' versus 'broke'.
                     continue          # a content-level failure is another check's business
                 errors.append(
                     f"{node_id}: a configuration offering {axis}={intruder!r} was SERVED, "
@@ -595,6 +606,12 @@ def validate_option_placement() -> List[str]:
                 p = PracticeOrchestrator.generate_problem(
                     node_id=node_id, seed=seed, formatter="mcq", is_lab=False)
             except Exception:
+                # DISPOSITION: limitation -- §2E measures where the CORRECT option lands
+                # across nodes at a fixed seed. A node that fails to generate simply does
+                # not contribute a sample, which biases the distribution by however many
+                # nodes drop out; the count of contributors is not reported. §1C owns the
+                # generation failure itself. Would close by reporting the contributor count
+                # alongside the percentages.
                 continue
             d = p if isinstance(p, dict) else p.__dict__
             fd = d.get("format_data") or {}
@@ -698,6 +715,9 @@ def validate_advertised_formatters_are_reachable() -> List[str]:
                 p = PracticeOrchestrator.generate_problem(
                     node_id=node_id, seed=seed, is_student_path=True)
             except Exception:
+                # DISPOSITION: checked -- `generated` counts only successful renders and
+                # §2C compares reachability against that count, so a failure shrinks the
+                # sample rather than being counted as a reach. §1C owns the failure.
                 continue
             generated += 1
             d = p if isinstance(p, dict) else p.__dict__
@@ -755,6 +775,10 @@ def validate_node_references_resolve() -> List[str]:
         try:
             text = path.read_text(encoding="utf-8", errors="ignore")
         except OSError:
+            # DISPOSITION: limitation -- an unreadable source file is skipped, so a
+            # dangling node reference inside it is not found. Narrow: every file in the
+            # tree is readable today and an unreadable one would break the build long
+            # before this check. Would close by failing on OSError.
             continue
         missing = sorted({m for m in pattern.findall(text) if m not in real})
         if missing:
@@ -882,6 +906,8 @@ def validate_competency_scope_not_narrowed() -> List[str]:
             try:
                 bounds = get_node_competency_bounds(node_id, dna)
             except Exception:  # noqa: BLE001 - §2G owns parse failures; don't double-report
+                # DISPOSITION: checked -- §2G (all_competency_bounds_parse) fails on any
+                # unparseable bound across every node, so nothing hides here.
                 continue
             if not isinstance(bounds, dict):
                 continue

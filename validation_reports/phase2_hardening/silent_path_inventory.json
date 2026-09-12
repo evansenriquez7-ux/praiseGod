@@ -1,0 +1,188 @@
+{
+  "schema_version": 1,
+  "scope": "backend/app/practice_gen/validation/*.py",
+  "marker_convention": "# DISPOSITION: <checked|named-failure|limitation> -- <note>",
+  "counts": {
+    "silent_handlers": 19,
+    "unclassified": 0,
+    "invalid_marker": 0,
+    "by_disposition": {
+      "checked": 9,
+      "named-failure": 3,
+      "limitation": 7
+    }
+  },
+  "paths": [
+    {
+      "file": "run_all.py",
+      "line": 962,
+      "function": "run_all",
+      "handler": "KeyError",
+      "body": "continue",
+      "disposition": "checked",
+      "note": "a stage absent from the ledger was not scheduled"
+    },
+    {
+      "file": "validate_compat.py",
+      "line": 523,
+      "function": "validate_config_respects_competency",
+      "handler": "Exception",
+      "body": "continue",
+      "disposition": "checked",
+      "note": "\u00a72G (all_competency_bounds_parse) fails the"
+    },
+    {
+      "file": "validate_compat.py",
+      "line": 543,
+      "function": "validate_config_respects_competency",
+      "handler": "ValueError",
+      "body": "continue",
+      "disposition": "named-failure",
+      "note": "this IS the contract being satisfied:"
+    },
+    {
+      "file": "validate_compat.py",
+      "line": 548,
+      "function": "validate_config_respects_competency",
+      "handler": "Exception",
+      "body": "continue",
+      "disposition": "limitation",
+      "note": "a non-ValueError crash is indistinguishable"
+    },
+    {
+      "file": "validate_compat.py",
+      "line": 608,
+      "function": "validate_option_placement",
+      "handler": "Exception",
+      "body": "continue",
+      "disposition": "limitation",
+      "note": "\u00a72E measures where the CORRECT option lands"
+    },
+    {
+      "file": "validate_compat.py",
+      "line": 717,
+      "function": "validate_advertised_formatters_are_reachable",
+      "handler": "Exception",
+      "body": "continue",
+      "disposition": "checked",
+      "note": "`generated` counts only successful renders and"
+    },
+    {
+      "file": "validate_compat.py",
+      "line": 777,
+      "function": "validate_node_references_resolve",
+      "handler": "OSError",
+      "body": "continue",
+      "disposition": "limitation",
+      "note": "an unreadable source file is skipped, so a"
+    },
+    {
+      "file": "validate_compat.py",
+      "line": 908,
+      "function": "validate_competency_scope_not_narrowed",
+      "handler": "Exception",
+      "body": "continue",
+      "disposition": "checked",
+      "note": "\u00a72G (all_competency_bounds_parse) fails on any"
+    },
+    {
+      "file": "validate_dna.py",
+      "line": 84,
+      "function": "_are_values_equal",
+      "handler": "Exception",
+      "body": "pass",
+      "disposition": "checked",
+      "note": "this is a COERCION helper: falling through"
+    },
+    {
+      "file": "validate_dna.py",
+      "line": 92,
+      "function": "_are_values_equal",
+      "handler": "Exception",
+      "body": "pass",
+      "disposition": "checked",
+      "note": "as above: None means 'not a number', and the"
+    },
+    {
+      "file": "validate_judgment.py",
+      "line": 673,
+      "function": "validate_judgment_reviews",
+      "handler": "json.JSONDecodeError",
+      "body": "continue",
+      "disposition": "checked",
+      "note": "_validate_one reports the malformed file by name"
+    },
+    {
+      "file": "validate_judgment.py",
+      "line": 733,
+      "function": "summarize_verdicts",
+      "handler": "json.JSONDecodeError",
+      "body": "continue",
+      "disposition": "checked",
+      "note": "_validate_one fails the run on a malformed review,"
+    },
+    {
+      "file": "validate_matrix.py",
+      "line": 540,
+      "function": "score_problem_operands",
+      "handler": "Exception",
+      "body": "pass",
+      "disposition": "limitation",
+      "note": "an unscoreable candidate contributes no score,"
+    },
+    {
+      "file": "validate_matrix.py",
+      "line": 1023,
+      "function": "run_matrix_for_node",
+      "handler": "RuntimeError",
+      "body": "pass",
+      "disposition": "limitation",
+      "note": "infeasibility is inferred from the"
+    },
+    {
+      "file": "validate_matrix.py",
+      "line": 1671,
+      "function": "run_matrix_for_node",
+      "handler": "ValueError",
+      "body": "pass",
+      "disposition": "named-failure",
+      "note": "this IS the \u00a71C-reverse contract"
+    },
+    {
+      "file": "validate_matrix.py",
+      "line": 1701,
+      "function": "run_matrix_for_node",
+      "handler": "ValueError",
+      "body": "pass",
+      "disposition": "named-failure",
+      "note": "the curriculum gate refusing an"
+    },
+    {
+      "file": "validate_matrix.py",
+      "line": 1812,
+      "function": "expected_checks_for_node",
+      "handler": "Exception",
+      "body": "continue",
+      "disposition": "limitation",
+      "note": "this is \u00a71H's APPLICABILITY PREDICTOR, not a"
+    },
+    {
+      "file": "validate_matrix.py",
+      "line": 1861,
+      "function": "expected_checks_for_node",
+      "handler": "Exception",
+      "body": "continue",
+      "disposition": "limitation",
+      "note": "same predictor, same shape as above: an"
+    },
+    {
+      "file": "validate_render.py",
+      "line": 118,
+      "function": "collect_findings",
+      "handler": "Exception",
+      "body": "continue",
+      "disposition": "checked",
+      "note": "\u00a71C/\u00a71C-coverage own generation failures and"
+    }
+  ]
+}
