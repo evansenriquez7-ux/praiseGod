@@ -7,8 +7,8 @@
   "rows": [
     {
       "id": "H-01",
-      "status": "in_progress",
-      "owner": "session-2597c378 (hermetic §10)",
+      "status": "closed",
+      "owner": "unclaimed",
       "finding": "Phase 1 is not hermetic. validate_grade opened the configured database (SessionLocal) and wrote a persistent shared learner into it, so §10's verdict depended on an external host resolving. §10 also asserted ACCEPTANCE only, so an always-true grader satisfied it perfectly, and answered a generation crash or an underivable answer with `except: continue`.",
       "affected_assertions": [
         "grading_contract_10",
@@ -25,10 +25,18 @@
         "Planted accepted-wrong and rejected-correct answers each detected by name",
         "An always-true grader and an always-false grader each have a detected mutation"
       ],
-      "proof_artifacts": [],
-      "closing_revision": null,
-      "updated_at": "2026-09-12T18:32:50+08:00",
-      "measurement_status": "measured 2026-09-12 on 647ee51e",
+      "proof_artifacts": [
+        "validation_reports/mutation_proofs/grader_accepts_wrong_answer.json",
+        "validation_reports/mutation_proofs/grader_coerces_malformed_boolean.json",
+        "validation_reports/mutation_proofs/grader_drops_key_normalisation.json",
+        "validation_reports/mutation_proofs/grading_obligation_silently_skipped.json",
+        "validation_reports/mutation_proofs/graded_path_reaches_the_network.json",
+        "validation_reports/mutation_proofs/grader_rejects_correct_answer_tree_wide.json",
+        "validation_reports/HARDENING_EVIDENCE.md"
+      ],
+      "closing_revision": "9fbcfdf9",
+      "updated_at": "2026-09-12T19:46:21+08:00",
+      "measurement_status": "closed and re-measured 2026-09-12 on 9fbcfdf9",
       "recommended_order": 1
     },
     {
