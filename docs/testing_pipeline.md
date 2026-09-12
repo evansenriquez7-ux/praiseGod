@@ -118,7 +118,7 @@ mutation is unproven regardless of how long it has been passing.
 | §1J count/noun agreement | an explicit count and the noun after it must agree in the text a pupil reads |
 | §1K option degeneracy | a choice item must offer distinguishable choices, and exactly one may answer it |
 | §9 render contract | the payload must be renderable by the React component the student sees |
-| §10 grading contract | a known-correct answer must be graded correct by all three graders |
+| §10 grading contract | a known-correct answer graded correct, a known-wrong or malformed one refused, by all three graders — hermetically |
 | §7 census | the suite itself has not silently shrunk |
 | two-direction | the contract doc, this doc, and the registry agree |
 
@@ -162,7 +162,7 @@ mutation is unproven regardless of how long it has been passing.
 | `§7` | run_all: the suite's own census (nodes, unit tests, mutations) has not shrunk below its floor |
 | `§8` | validate_coverage: every assertion the harness can emit is either proven by an EXECUTED mutation (a verified proof record in `validation_reports/mutation_proofs/`) or on a shrinking allowlist |
 | `§9` | validate_render: the payload a node emits must be renderable by the React component the student sees |
-| `§10` | validate_grade: a known-correct answer must be graded correct by all three graders |
+| `§10` | validate_grade: a known-correct answer must be graded correct, a known-wrong or malformed one refused, by all three graders — hermetically |
 
 ### Proving the harness
 

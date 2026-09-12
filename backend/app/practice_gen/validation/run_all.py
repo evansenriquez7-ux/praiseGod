@@ -131,7 +131,7 @@ CONTRACT_CHECKS: Dict[str, str] = {
     "§1J": "validate_language: an explicit count and its noun must agree in the rendered student text, nested quoted statements included",
     "§1K": "validate_options: a choice item must offer distinguishable choices, and exactly one of them may answer the question",
     "§9": "validate_render: the payload a node emits must be renderable by the React component the student sees",
-    "§10": "validate_grade: a known-correct answer must be graded correct by all three graders",
+    "§10": "validate_grade: a known-correct answer must be graded correct, a known-wrong or malformed one refused, by all three graders — hermetically",
 }
 
 _LAST_UNIT_TEST_COUNT: list = [None]

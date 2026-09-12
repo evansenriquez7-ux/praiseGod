@@ -23,7 +23,7 @@ from backend.app.practice_gen import pipeline
 
 from backend.app.practice_gen import registry as _pg_registry
 
-from backend.app.services.scoring import validate_math_answer, answers_match
+from backend.app.services.scoring import validate_math_answer, answers_match, bool_answers_match, normalize_option_key
 from backend.app.practice_gen.axes_catalog import (
     get_axes_for_concept as _get_axes_for_concept,
     compute_difficulty_scalar as _compute_difficulty_scalar,
@@ -83,6 +83,24 @@ PRACTICE_GEN_CACHE = RedisDict("practice_gen_v2")
 
 # Path to the shared dedup scratch file (same file testy CLI uses)
 _SCRATCH_FILE = Path(__file__).parent.parent.parent / "scratch" / "gen_problems.jsonl"
+
+def _as_column_text(value: Any) -> str:
+    """
+    Render a submitted or keyed answer as the text its database column declares.
+
+    `Attempt.correct_answer`/`selected_answer` are `Column(String)` while the response
+    contracts legitimately carry lists (ordering, sort_order), dicts (clock_set,
+    currency_picker) and numbers. Whether the driver tolerates that is dialect-specific,
+    which makes it exactly the kind of environment-dependent behaviour Protocol 6 forbids
+    in anything a gate exercises. JSON for structured values so the log round-trips;
+    `str` for scalars so existing rows keep their shape.
+    """
+    if isinstance(value, str):
+        return value
+    if isinstance(value, (list, dict)):
+        return json.dumps(value)
+    return str(value)
+
 
 def _combined_interests(student, fallback: str = "general") -> str:
     """
@@ -972,12 +990,14 @@ def submit_practice_answer(req: schemas.AnswerSubmitRequest, db: Session = Depen
     # Grading
     if is_ela or req.skeleton_id.startswith("ai_"):
         # Key comparison for ELA and AI-generated Math
-        is_correct = (str(req.selected_answer).upper() == skeleton.get("correct_key", "A").upper())
+        is_correct = (normalize_option_key(req.selected_answer)
+                       == normalize_option_key(skeleton.get("correct_key", "A")))
     elif is_matatag:
         # MATATAG — check format type
         fmt = skeleton.get("format", "mcq")
         if fmt == "mcq" or skeleton.get("answer_collection") == "mcq":
-            is_correct = (str(req.selected_answer).upper() == skeleton.get("correct_key", "A").upper())
+            is_correct = (normalize_option_key(req.selected_answer)
+                       == normalize_option_key(skeleton.get("correct_key", "A")))
         elif fmt in ["cloze", "numeric_input", "ordering", "true_false", "error_detect", "fill_in_blank"]:
             student_answer = req.selected_answer
             correct_answer = skeleton.get("correct_answer")
@@ -1001,9 +1021,10 @@ def submit_practice_answer(req: schemas.AnswerSubmitRequest, db: Session = Depen
                 except:
                     is_correct = str(student_answer).strip() == str(correct_answer)
             elif fmt == "true_false":
-                student_bool = str(student_answer).strip().lower() in ("true", "yes", "t", "1")
-                correct_bool = str(correct_answer).lower() in ("true", "yes", "t", "1")
-                is_correct = student_bool == correct_bool
+                # Strict parse: an unrecognised submission is NOT silently False.
+                # See services.scoring.parse_bool_answer -- the old membership test
+                # graded gibberish CORRECT on every False-keyed item.
+                is_correct = bool_answers_match(student_answer, correct_answer)
             elif fmt == "error_detect":
                 try:
                     student_parsed = json.loads(student_answer) if isinstance(student_answer, str) else student_answer
@@ -1099,7 +1120,8 @@ def submit_practice_answer(req: schemas.AnswerSubmitRequest, db: Session = Depen
                     else:
                         is_correct = str(student_parsed).strip().lower() == str(correct_answer).strip().lower()
                 else:
-                    is_correct = (str(req.selected_answer).upper() == skeleton.get("correct_key", "A").upper())
+                    is_correct = (normalize_option_key(req.selected_answer)
+                       == normalize_option_key(skeleton.get("correct_key", "A")))
             else:
                 # Non-visual and not an MCQ: grade by VALUE, not by option key.
                 # This branch used to compare the submission to `correct_key`, so a
@@ -1110,7 +1132,7 @@ def submit_practice_answer(req: schemas.AnswerSubmitRequest, db: Session = Depen
                 is_correct = answers_match(req.selected_answer, skeleton.get("correct_answer"))
     else:
         # SymPy Math — VALUE comparison (robust against narration shuffles and worked examples)
-        selected_key = str(req.selected_answer).upper()
+        selected_key = normalize_option_key(req.selected_answer)
         if selected_key in skeleton["options"]:
             selected_opt = skeleton["options"][selected_key]
             is_correct = validate_math_answer(skeleton["correct_answer"], selected_opt["value"])
@@ -1121,7 +1143,7 @@ def submit_practice_answer(req: schemas.AnswerSubmitRequest, db: Session = Depen
     # Identify Trap engineered misconception
     trap_selected = None
     if isinstance(skeleton.get("options"), dict):
-        opt_data = skeleton["options"].get(str(req.selected_answer).upper())
+        opt_data = skeleton["options"].get(normalize_option_key(req.selected_answer))
         if isinstance(opt_data, dict):
             trap_selected = opt_data.get("trap_name")
             if trap_selected == "distractor":
@@ -1129,14 +1151,24 @@ def submit_practice_answer(req: schemas.AnswerSubmitRequest, db: Session = Depen
         elif isinstance(opt_data, tuple) and len(opt_data) > 1:
             trap_selected = opt_data[1]
             
-    # Save the Attempt log in PostgreSQL
+    # Save the Attempt log in PostgreSQL.
+    #
+    # `Attempt.correct_answer` and `Attempt.selected_answer` are both `Column(String)`,
+    # but `AnswerSubmitRequest.selected_answer` is `Any` and the ordering/sort_order,
+    # currency_picker, clock_set and fill_in_blank contracts legitimately submit a list or
+    # a dict. Binding the raw object to a String column is a driver-dependent accident: it
+    # raised `ProgrammingError: type 'list' is not supported` the first time §10 ran
+    # against an isolated database (H-01), having previously only ever been exercised
+    # against the configured host. Serialise to the column's declared type at the
+    # persistence boundary. Grading is already decided above from `req.selected_answer`
+    # itself, so this changes what is LOGGED, never what is graded.
     new_attempt = models.Attempt(
         student_id=req.student_id,
         skill_id=req.skill_id,
         skeleton_id=req.skeleton_id,
         stem=req.stem,
-        correct_answer=skeleton["correct_key"],
-        selected_answer=req.selected_answer,
+        correct_answer=_as_column_text(skeleton["correct_key"]),
+        selected_answer=_as_column_text(req.selected_answer),
         is_correct=is_correct,
         response_time_ms=req.response_time_ms,
         trap_selected=trap_selected,

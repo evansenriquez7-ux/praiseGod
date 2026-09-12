@@ -57,11 +57,11 @@ into coherent contract/enforcement commits, and re-proved on a clean integration
 | Legacy requirement inventory | 776 required pairs; 787 loaded pairs; 11 historical-only; 68 unresolved-content pairs | Existing `requirement_inventory.json`; stale, generated with only 3 dirty paths |
 | Legacy assertion inventory | 104 assertions; 76 mutations; 39 allowlisted unproven assertions | Existing `assertion_migration.json`; stale, generated before the 79-mutation tree |
 | Current fast unit collection | 473 selected / 475 discovered; 2 slow tests deselected | Current working-tree bytes |
-| Current mutation corpus | 79 records; all 79 `detected: true`; all 79 `phase1_admissible: true`; proof evaluation reports 0 errors | Current working-tree bytes, not a clean commit |
-| Current unproven assertion inventory | 39, including major content-correctness checks | Current working-tree bytes |
-| Current census minima | 468 unit tests; 79 mutations; 151 nodes; 975 variant candidates | Current working-tree bytes |
+| Current mutation corpus | **85** records; all 85 `detected: true`; all 85 `phase1_admissible: true`; proof evaluation reports 0 errors. Full table wall time ~19 min | Measured on the closing revision |
+| Current unproven assertion inventory | **38** (was 39). `grading_contract_floor_10` was PAID by a full-tree mutation, affordable only because §10 fell from 14m23s to 33s | Measured on the closing revision |
+| Current census minima | **545** unit tests (552 collected); **85** mutations; 151 nodes; 975 variant candidates | Measured on the closing revision |
 | Current Phase 2 execution | 484 judgment problems; 217 capability problems (67 contradicted, 76 stale, 74 unadjudicable) | Current working-tree bytes |
-| Current Phase 1 execution | Reached §10 only after earlier stages passed, then crashed on external Neon DNS before coverage/census | Current working-tree bytes |
+| Current Phase 1 execution | **Hermetic since 2026-09-12 (`H-01` closed).** Exits 0 with `DATABASE_URL=` empty: 151/151 nodes, 0 failures, 85/85 mutation proofs verified, 73/111 assertions proven by execution | Measured on the closing revision |
 | Current frontend execution | Build passes with an oversized-chunk warning; lint has 225 warnings; browser script crashes under ESM and has no assertions | Current working-tree bytes |
 | Packet discrepancy | `mat_g1_na_q1_2`, seed 42: attester includes PlaceValueBlocks; judgment omits visual fields | Early review probe |
 | Freshness hole | Same node/seed: corrupt recorded visual fields produce no judgment freshness error | Early review probe; still open |
@@ -90,7 +90,7 @@ IDs are planning handles for the evidence ledger, not new contract references.
 
 | ID | Finding | Required closure evidence |
 |---|---|---|
-| `H-01` | Phase 1 is not hermetic. `validate_grade` opens the configured database and the aggregate run aborts on DNS; generation and grading gaps can be skipped. | In-memory or isolated transactional grader fixture; planted accepted-wrong and rejected-correct answers; full Phase 1 completes without network or persistent student state. |
+| `H-01` | **CLOSED 2026-09-12 at `PENDING_REV`.** Phase 1 was not hermetic: `validate_grade` opened the configured database and wrote a persistent shared learner into it, so §10's verdict depended on an external host resolving. §10 also asserted ACCEPTANCE only — an always-true grader passed it perfectly — and answered a generation crash or an underivable answer with `except: continue`. | `tests/hermetic_db.py` (throwaway SQLite + a socket guard that raises by name); §10 rewritten for four directions with three new zero-tolerance assertions; six new detected mutations including the always-true grader and a full-tree plant that PAYS `grading_contract_floor_10`; full Phase 1 green with `DATABASE_URL=` empty. Measured: the full §10 sweep fell from **14m23s to 33s**. |
 | `H-02` | Thirty-nine assertions are explicitly unproven, including concept gating, answer recomputation, monotonicity, maximum reach, vocabulary, interest, render schema, grading floor, KG monotonicity, and Lab/portal equivalence. | A current detected mutation for every content/release-critical assertion; any inherently non-mutable check has a narrow, owner-approved limitation and independent executable control. |
 | `H-03` | The runner can lose the final summary and its two-direction evidence when a stage raises. Several validators catch an import/generation error and continue, so attempted work can be reported as coverage. | Stage ledger records scheduled, attempted, completed, failed, and crashed; exceptions become named failures; skipped obligations are failures; the non-fail-fast run reaches every independent stage and exits nonzero once at the end. |
 | `H-04` | “Exhaustive matrix” covers discrete formatter combinations, but continuous axes are swept separately and serving context, experience, interest, renderer, and response mode are not one finite obligation model. | Machine-generated obligation manifest from the student route; exhaustive finite partitions for reachable state, including cross-axis boundary classes; zero missing, skipped, or unexpectedly unreachable obligations. |
@@ -177,13 +177,46 @@ the default audit continues through every independent stage. The two-direction c
 the declared schedule with attempted and completed stages, so a crash cannot remove its own
 expected references. Prove missing registration, wrong phase, crash, and unattempted-stage paths.
 
-Make grading local and deterministic. Use an isolated in-memory or rolled-back database fixture,
-create no persistent shared learner, and forbid network access. For every reachable response
-contract, generate explicit-seed items and submit a known-correct answer, known-wrong answer,
-malformed answer, and representation-equivalent answer where the contract permits one. Exercise
-all production grader entry points and assert both acceptance and refusal; an always-true grader
-and an always-false grader each have a detected mutation. A generation failure or unrenderable
-answer is a named `(node, DNA, formatter, profile, seed)` obligation failure.
+**Make grading local and deterministic — LANDED at `PENDING_REV`.** `tests/hermetic_db.py` binds
+`backend.app.database` to a throwaway SQLite file at the one seam every caller passes through
+(`get_engine`'s cached `_engine`/`_SessionFactory`), so FastAPI's `get_db` and every direct
+`SessionLocal()` are covered without a per-route override; the file is deleted on exit, so no
+learner survives. Inside the block every outbound non-loopback socket raises
+`HermeticNetworkError` by name, which turns a future network dependency into a loud named failure
+rather than a gate that sometimes passes.
+
+§10 now runs four directions per sample against all three production grader entry points, each
+under its own assertion: ACCEPT (`grading_contract_10` / `grading_contract_floor_10`), REFUSE a
+known-wrong AND a malformed submission (`grading_refusal_10`), ACCEPT an equivalent rendering
+(`grading_equivalence_10`), and OBLIGATION — every `(node, seed)` executes or fails BY NAME
+(`grading_obligation_10`), replacing the two `except: continue` paths. `grading_hermetic_10`
+reports any outbound connection from the graded path. An always-false grader
+(`grader_rejects_correct_answer`, and now `grader_rejects_correct_answer_tree_wide` on the floor
+path) and an always-true grader (`grader_accepts_wrong_answer`) each have a detected mutation, as
+do the malformed-boolean coercion, the dropped key normalisation, an unexecutable obligation, and
+an outbound connection.
+
+**Three real defects were fixed at their root to reach a zero baseline** (Scaling Mandate 5), each
+of them a shared-default or a duplicated-comparison bug of the kind §10 exists for:
+`Attempt.selected_answer` is `Column(String)` while the ordering/clock/currency contracts submit
+lists and dicts (bound raw, dialect-dependent — now serialised at the persistence boundary); all
+three graders shared `str(v).lower() in ("true","yes","t","1")`, which has **no failure value**, so
+gibberish was graded CORRECT on every False-keyed `true_false` item (now one strict
+`services.scoring.parse_bool_answer`); and the MCQ key comparison was hand-written seven times with
+only Lab v2 stripping whitespace, so `"  B  "` against a key of `"B"` was refused by portal and Lab
+v1 and accepted by Lab v2 on **211 of 256** samples (now one `normalize_option_key`), with Lab v2's
+unrecognised-format fallback routed through `answers_match` like the portal's.
+
+**NOT gated, measured and recorded:** decimal rendering. `"73.0"` against a key of `73` is refused
+on **122 of 122** whole-number fill-in-blank/cloze samples, by all three graders alike — a shared
+strictness, not a disagreement. Whether a MATATAG whole-number blank admits a decimal form is a
+curriculum ruling (Protocol 5), so it is named in the contract row, the validator docstring and the
+evidence log rather than quietly gated in either direction.
+
+Still OPEN from this paragraph: breadth. §10 runs three seeds per node, not the step 0B obligation
+manifest, and `_emit_wrong` derives ONE perturbation of the key rather than searching adversarially
+— a grader that accepts a *differently* wrong answer is not caught. Both are named limitations in
+the validator docstring; the first is `H-04`'s, the second is `H-02`'s.
 
 Strengthen the current Phase 1 modules against that manifest:
 
@@ -1129,7 +1162,16 @@ opens `SessionLocal`, so Phase 1's verdict depends on an external host resolving
 non-determinism in a gate (Protocol 6), not merely a crash — state it that way in `H-01`'s
 row rather than as "crashes on DNS".
 
-### What a fresh session should do first
+### H-01 is CLOSED (2026-09-12). What a fresh session should do first
+
+**Do not start step 0A's grading half — it landed.** §10 is hermetic and bidirectional,
+Phase 1 exits 0 with `DATABASE_URL=` empty, and the six mutations that prove it are in the
+85-record corpus. `validation_reports/HARDENING_EVIDENCE.md` carries the full section; the
+short version is in the `H-01` row of the blockers table above.
+
+What that leaves is `H-03` (`recommended_order` 2): the stage registry and result ledger.
+`run_all` is still one 667-line function in which a stage that raises can take the final
+summary and the two-direction evidence with it. Nothing in H-01's work touched that.
 
 Step 0's bookkeeping is **already done** — do not redo it:
 
@@ -1140,18 +1182,31 @@ Step 0's bookkeeping is **already done** — do not redo it:
   schema-gated by `tests/hardening_status.py` and proved in both directions by
   `tests/unit/test_hardening_status.py` (22 tests). Validate any time with
   `PYTHONPATH=. .venv/bin/python tests/hardening_status.py`.
-- `owner` is `"unassigned"` on every row. **That is the one field a human must fill in.**
+- `owner` is a work-lock, not an accountability field; `H-01` was claimed and released
+  through it, which is the first time the mechanism was exercised.
 
 So a fresh session starts here:
 
 1. `git log --oneline -1` and `PYTHONPATH=. .venv/bin/python tests/hardening_status.py` —
-   confirm the tree and that 9 rows validate.
-2. **Start step 0A (`H-01`, hermetic Phase 1).** It is the largest open blocker, nothing depends
-   on deferring it, and it is the one finding that got *worse* on re-measurement: Phase 1's
-   verdict currently depends on whether an external database host resolves.
-3. Expect the first edit under an input root to invalidate all 79 mutation proofs. That is the
-   safe direction and costs one full table re-run (~12 minutes measured). Re-prove, do not
-   weaken `mutation_proof`'s staleness rules to avoid it.
+   confirm the tree and that 9 rows validate (1 closed, 1 out_of_scope, 7 open).
+2. **Start step 0A's remaining half (`H-03`, the stage registry).** The grading half is
+   done. `run_all` still runs its stages as straight-line code, so a stage that raises
+   erases the coverage/census/two-direction results that would have followed it, and
+   several validators still catch an import or generation error and continue — which is
+   how attempted work gets reported as coverage.
+3. Expect the first edit under an input root to invalidate all **85** mutation proofs. That
+   is the safe direction and costs one full table re-run (**~19 minutes measured on the
+   85-record corpus**, up from ~12 at 79 records — the new full-tree §10 plant is the
+   single most expensive one at roughly 70s). Re-prove; do not weaken `mutation_proof`'s
+   staleness rules to avoid it.
+4. **You WILL hit the `source_edited_without_reproof` trap below on that re-run.** It fired
+   again on 2026-09-12 exactly as documented, and the recorded remedy worked on the first
+   attempt. The deeper fix — moving that mutation onto an ISOLATED proof corpus under
+   `tests/`, the way `tests/isolated_corpus.py` already moved the custody mutations — is
+   named here as owed work and was NOT attempted, because excluding a mutation's own prior
+   record from its own baseline does not actually remove the trap: during a full table run
+   the corpus is legitimately mixed, so the baseline is red from records not yet reached,
+   whatever that mutation's own record says.
 
 **HAZARD YOU WILL HIT ON THAT FIRST RE-RUN — `source_edited_without_reproof` self-poisons.**
 Encountered and diagnosed 2026-09-12. This is the mutation that proves §8 notices a proof record

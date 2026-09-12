@@ -10245,3 +10245,169 @@ False, answerable without reading the numerals); `5 threes` never generated on
 both operands to thousands regardless of proximity, so `5646 - 5190` is keyed 1000 against
 a true difference of 456. None is caused by this work; all three are now recorded against
 re-renderable samples.
+
+---
+
+## H-01 — Phase 1 made hermetic, and §10 given its second direction (2026-09-12)
+
+`H-01` was recorded in the plan as "Phase 1 is not hermetic; the aggregate run aborts on
+DNS". Re-measurement made it **worse, not better**: on the same code a few hours later
+Phase 1 passed §10, because the network happened to be up. The finding is therefore
+non-determinism in a gate (Protocol 6), not a crash. Two more defects in the same check
+were found while closing it, and both are larger than the one that was written down.
+
+### What §10 actually asserted before this work
+
+One obligation: submit a known-correct answer, assert all three graders accept it. So
+**an always-true grader passed §10 perfectly** — mark every submission correct and every
+assertion is satisfied. Half of a grading contract is not a grading contract, and the
+missing half is the one that lets a pupil pass without learning anything. It also
+answered a generation crash and an underivable answer with `except Exception: continue`,
+so a node whose grading contract was never exercised reported exactly like one that passed.
+
+### Three production defects fixed at their root to reach a zero baseline
+
+Each is a shared-default or duplicated-comparison bug of the kind §10 exists for, and
+each was fixed once in a shared function rather than at the site that surfaced it
+(Protocol 2).
+
+| Defect | Measured | Root-cause fix |
+|---|---|---|
+| `Attempt.selected_answer` is `Column(String)`, but ordering/sort_order, clock_set, currency_picker and fill_in_blank contracts legitimately submit a list or a dict. Bound raw, so whether it works is dialect-dependent | `ProgrammingError: type 'list' is not supported` on 6 of the first 36 samples, the first time §10 ran against an isolated database | `_as_column_text` at the persistence boundary in `practice_router`. Grading is decided above it, so this changes what is LOGGED, never what is graded |
+| All three graders shared `str(v).strip().lower() in ("true","yes","t","1")`, which has **no failure value** — every unrecognised submission became `False`. On a `true_false` item keyed False (about half of them), a pupil submitting gibberish was graded **CORRECT** | 3 of the first 36 samples: `mat_g1_na_q1_1`, `mat_g1_na_q1_3`, `mat_g1_na_q1_9` at seed 42, accepted by portal, Lab v1 and Lab v2 alike | one strict `services.scoring.parse_bool_answer` → `bool_answers_match`; an unparseable KEY grades incorrect rather than raising, so the mis-grading is loud in §10 instead of a 500 for a pupil |
+| The MCQ key comparison was hand-written **seven times** across the three graders and only Lab v2 stripped whitespace | `"  B  "` against a key of `"B"`: refused by portal and Lab v1, accepted by Lab v2, on **211 of 256** MCQ samples tree-wide — one submission, two answers | one `services.scoring.normalize_option_key` at all seven sites |
+| Lab v2's unrecognised-format fallback was a raw `str(a) == str(b)` — the same fallthrough shape §10 was built for | the residual 9 of 256, all `set_click` / `set_fill_in_blank`, formats its `elif` chain does not name | routed through `answers_match`, the shared shape-keyed comparator the portal already used |
+
+### The hermetic fixture
+
+`tests/hermetic_db.py` binds `backend.app.database` to a throwaway SQLite file at the one
+seam every caller passes through — `get_engine`'s cached `_engine`/`_SessionFactory` —
+which covers FastAPI's `get_db` dependency and every direct `SessionLocal()` without a
+per-route override. The file is deleted on exit, so the `GraderGate_shared` learner that
+used to accumulate attempts, mastery and ELO drift in the production database is gone.
+Inside the block every outbound non-loopback socket raises `HermeticNetworkError` by name.
+
+**Measured consequence: the full §10 sweep fell from 14m23s to 33s.** Almost all of the
+old runtime was network round trips to a database on another continent.
+
+### Commands and verbatim output
+
+```text
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_grade
+  PASS grading_contract_floor_10: 0 mis-gradings (floor 0) over 453 student-path sample(s)
+  PASS grading_refusal_10: 0 of 906 known-wrong/malformed submission(s) graded correct
+  PASS grading_equivalence_10: 0 of 256 whitespace-equivalent submission(s) refused;
+       DECIMAL rendering is measured but NOT gated (limitation 1)
+  PASS grading_obligation_10: every (node, seed) obligation executed
+  PASS grading_hermetic_10: no outbound connection from the graded path
+EXIT=0    (33.0s wall, 151 nodes x 3 seeds x 4 directions x 3 graders)
+
+$ PYTHONPATH=. .venv/bin/python tests/mutation_harness.py
+84/85 mutations detected.
+  - source_edited_without_reproof: nothing enforces §8
+
+# The self-poisoning hazard the plan documents, hit exactly as predicted on the first
+# full re-run after an edit under INPUT_ROOTS. The recorded remedy worked first try:
+$ rm validation_reports/mutation_proofs/source_edited_without_reproof.json
+$ PYTHONPATH=. .venv/bin/python tests/mutation_harness.py --only source_edited_without_reproof
+    DETECTED: exit 1 — FAIL mutation_proof_integrity_8 (1 in 1 family):
+1/1 mutations detected.
+
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_coverage
+  PASS mutation_proof_integrity_8: 85 executed mutation proof(s) verified against the
+       current source/fixture digest
+  PASS assertion_coverage_8: 73/111 harness assertions proven BY EXECUTION, 38 knowingly
+       unproven (allowlist may only shrink)
+# was 68/107 proven, 39 unproven
+
+$ DATABASE_URL= PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.run_all --phase 1
+  PASS unit_tests (551 passed, 1 skipped, 2 deselected, 4 warnings in 80.79s)
+  Nodes Checked: 151 / Nodes Passed: 151 / Nodes Failed: 0
+  PASS census: nodes=151 unit_tests=552 mutations=85 variant_candidates=975
+  PASS contract_doc_matches_registry / operator_doc_covers_registry (37/37) /
+       two_direction_contract_match
+PHASE 1 PASSED SUCCESSFULLY!
+EXIT=0
+$ grep -cE "FAIL |Traceback|OperationalError|could not translate" phase1_nodb.log
+0
+```
+
+A second run put **every in-process Phase 1 stage inside the socket guard itself**, which is
+the "network disabled" half of `H-01`'s acceptance wording rather than only the empty-database
+half:
+
+```text
+$ DATABASE_URL= PYTHONPATH=. .venv/bin/python scratch/phase1_no_network.py
+#   with no_network():
+#       sys.exit(run_all(phase=1))
+  PASS census: nodes=151 unit_tests=552 mutations=85 variant_candidates=975
+PHASE 1 PASSED SUCCESSFULLY!
+EXIT=0
+$ grep -cE "FAIL |HermeticNetworkError|Traceback" phase1_noNet.log
+0
+```
+
+**NAMED GAP:** `run_all._run_unit_tests` shells out to pytest in a fresh interpreter, which does
+not inherit this process's monkeypatched socket module. §0 is therefore NOT covered by that
+guard; every in-process stage is.
+
+**A false start is recorded here rather than deleted.** The first attempt at that run reported
+`FAIL unit_tests (2 failed)` and then a 2700s matrix stall. Neither was real: the wrapper script
+lacked an `if __name__ == "__main__":` guard, and `validate_matrix` drives a `ProcessPoolExecutor`
+whose spawn start method re-imports `__main__` — so **52 concurrent copies of Phase 1** were
+running over the same report files. The two named tests pass on a normal run (`35 passed, 1
+skipped`), and a direct probe confirms the guard does NOT break a process pool (`pool result under
+the guard: [2, 4, 6]`). The log was discarded and the run redone; it is mentioned because a
+2700s stall and two red tests are exactly the shape of result that gets reported as a finding by
+an agent who does not check what produced it.
+
+`DATABASE_URL=` is not decoration. `backend/app/database.get_engine` raises
+`ValueError: DATABASE_URL environment variable is not set` on first use, and
+`load_dotenv()` will not override a key already present in the environment — so an empty
+value is a genuinely empty external database configuration, verified directly before the
+run. A Phase 1 stage that still reached for the configured host would have failed loudly.
+
+### The six new mutations, all DETECTED
+
+| Mutation | Asserts | What it plants |
+|---|---|---|
+| `grader_accepts_wrong_answer` | `grading_refusal_10` | an ALWAYS-TRUE Lab v1 grader — the exact mirror of `grader_rejects_correct_answer`, and the defect an accept-only §10 could never see |
+| `grader_coerces_malformed_boolean` | `grading_refusal_10` | the pre-fix lenient true/false membership test |
+| `grader_drops_key_normalisation` | `grading_equivalence_10` | `.strip()` removed from the shared MCQ key normaliser |
+| `grading_obligation_silently_skipped` | `grading_obligation_10` | generation raises for one node; the old `except: continue` reported that as a pass |
+| `graded_path_reaches_the_network` | `grading_hermetic_10` | an outbound connection added to the portal's submit route |
+| `grader_rejects_correct_answer_tree_wide` | `grading_contract_floor_10` | the always-false grader on the FULL-TREE floor path |
+
+The last one **pays an allowlist debt**. `grading_contract_floor_10` had sat in
+`UNPROVEN_ASSERTIONS` since 2026-09-08 for one reason: both grading mutations ran
+`--node-ids`, because a full sweep cost 14m23s. Hermetic, it costs 33s, so the floor path
+is now proven rather than excused. This is the same gap §9's floor path had already closed
+on the render side.
+
+### Named limitations, recorded here as well as in the docstring and the contract row
+
+1. **Representation equivalence is whitespace only.** Decimal rendering is measured and
+   NOT gated: `"73.0"` against a key of `73` is refused on **122 of 122** whole-number
+   fill-in-blank/cloze samples — by all three graders alike, so there is no grader
+   disagreement, only a shared strictness. Whether a MATATAG whole-number blank admits a
+   decimal form is a curriculum ruling (Protocol 5), and it stays open rather than being
+   quietly gated in either direction.
+2. **Three seeds per node**, not the step 0B obligation manifest. Breadth is `H-04`.
+3. **`_emit_wrong` derives, it does not search.** It perturbs ONE field of the keyed
+   answer, so a grader that accepts a *differently* wrong answer is not caught. This is
+   why `tests/unit/test_grade_bidirectional.py` pins each derivation: a "wrong" answer
+   that is not actually wrong makes `grading_refusal_10` pass vacuously, and a vacuous
+   gate is worse than none because it reports green.
+4. **The socket guard** hooks `socket.socket.connect`/`connect_ex` and
+   `socket.create_connection`, and deliberately ALLOWS loopback because
+   `fastapi.testclient` needs it. A C extension opening a connection beneath those (none
+   is used here) would not be caught.
+5. **SQLite is not PostgreSQL.** No route on this path issues dialect-specific SQL and
+   every column type in `models.py` is portable, but a future Postgres-only construct
+   would fail here rather than in production — the safe direction, and it is precisely how
+   the `Attempt.selected_answer` defect was found.
+6. **`tests/grader_roundtrip_auditor.py` still opens the configured database.** It is
+   manual dev tooling driven by no gate, and §10 imports only its pure `_emit_correct`.
+   Any `GraderGate_shared` / `GraderAudit_*` rows left in the production database by
+   earlier runs are still there; removing them touches production data and is left for
+   the owner to decide.

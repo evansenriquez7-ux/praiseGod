@@ -1,20 +1,20 @@
 {
  "asserts": [
-  "answer_leak_in_stem"
+  "grading_hermetic_10"
  ],
  "baseline_exit": 0,
  "baseline_markers_already_present": [],
  "baseline_must_not_contain": [
-  "answer_leak_in_stem"
+  "FAIL grading_hermetic_10"
  ],
  "command": [
-  "backend.app.practice_gen.validation.validate_matrix",
-  "--node",
+  "backend.app.practice_gen.validation.validate_grade",
+  "--node-ids",
   "mat_g1_na_q1_0"
  ],
- "definition_digest": "ad7c1f49476016050b3aa2c4b483d776e1c4ccd2c8de57f13b9e2c3a6471f0dd",
+ "definition_digest": "b1865ff46f33d5145ac0d6f4b2ee5e32a3cb80771c4fda883f4176893b37a9cf",
  "detected": true,
- "diagnostic_line": "exit 1 — [1/1] Checking mat_g1_na_q1_0 ...  FAIL",
+ "diagnostic_line": "exit 1 — FAIL grading_hermetic_10: 3 outbound connection attempt(s) from the graded path",
  "environment": {
   "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
   "machine": "x86_64",
@@ -23,22 +23,24 @@
   "system": "Darwin"
  },
  "expect_output_contains": [
-  "answer_leak_in_stem"
+  "FAIL grading_hermetic_10",
+  "outbound network connection"
  ],
- "expected_check": "§1F (question stem does not leak its own answer)",
- "finished_at": "2026-09-12T18:21:00+08:00",
+ "expected_check": "§10 (the graded path must not reach the network)",
+ "finished_at": "2026-09-12T18:30:35+08:00",
  "input_digest": "4be0067c4ccb9c328718136263588ca84683e185f017d1123d3e3169c75623f0",
  "mutated_paths": [
-  "backend/app/practice_gen/formatters/textual/fmt_mcq.py"
+  "backend/app/routes/practice_router.py"
  ],
- "mutation": "answer_leak_in_stem",
+ "mutation": "graded_path_reaches_the_network",
  "observed_markers": {
-  "answer_leak_in_stem": true
+  "FAIL grading_hermetic_10": true,
+  "outbound network connection": true
  },
  "paths_outside_input_set": [],
  "phase1_admissible": true,
  "planted_exit": 1,
  "restored_clean": true,
  "schema_version": 1,
- "started_at": "2026-09-12T18:20:54+08:00"
+ "started_at": "2026-09-12T18:30:29+08:00"
 }

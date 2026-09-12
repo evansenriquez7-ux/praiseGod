@@ -1,20 +1,20 @@
 {
  "asserts": [
-  "grading_contract_10"
+  "grading_refusal_10"
  ],
  "baseline_exit": 0,
  "baseline_markers_already_present": [],
  "baseline_must_not_contain": [
-  "FAIL grading_contract"
+  "FAIL grading_refusal_10"
  ],
  "command": [
   "backend.app.practice_gen.validation.validate_grade",
   "--node-ids",
   "mat_g1_na_q1_0"
  ],
- "definition_digest": "3090e35bf57915a09999418d014e21354334dea64663f03329842955f3da8918",
+ "definition_digest": "03303a35c5a357423c4cc937321cbfab860526f7828d5bf48ca3fdd21afa07c9",
  "detected": true,
- "diagnostic_line": "exit 1 — FAIL grading_equivalence_10: 2 equivalent rendering(s) of a correct answer were refused",
+ "diagnostic_line": "exit 1 — FAIL grading_refusal_10: 6 submission(s) that must be refused were graded CORRECT",
  "environment": {
   "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
   "machine": "x86_64",
@@ -23,24 +23,24 @@
   "system": "Darwin"
  },
  "expect_output_contains": [
-  "FAIL grading_contract",
-  "told they are wrong"
+  "FAIL grading_refusal_10",
+  "KNOWN-WRONG && told they are right"
  ],
- "expected_check": "§10 (a known-correct answer must be graded correct by all three graders)",
- "finished_at": "2026-09-12T18:21:45+08:00",
+ "expected_check": "§10 (a known-wrong or malformed submission must be graded incorrect)",
+ "finished_at": "2026-09-12T18:30:11+08:00",
  "input_digest": "4be0067c4ccb9c328718136263588ca84683e185f017d1123d3e3169c75623f0",
  "mutated_paths": [
   "backend/app/routes/matatag_router.py"
  ],
- "mutation": "grader_rejects_correct_answer",
+ "mutation": "grader_accepts_wrong_answer",
  "observed_markers": {
-  "FAIL grading_contract": true,
-  "told they are wrong": true
+  "FAIL grading_refusal_10": true,
+  "KNOWN-WRONG && told they are right": true
  },
  "paths_outside_input_set": [],
  "phase1_admissible": true,
  "planted_exit": 1,
  "restored_clean": true,
  "schema_version": 1,
- "started_at": "2026-09-12T18:21:39+08:00"
+ "started_at": "2026-09-12T18:30:05+08:00"
 }

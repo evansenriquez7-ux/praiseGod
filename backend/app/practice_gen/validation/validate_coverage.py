@@ -182,7 +182,11 @@ UNPROVEN_ASSERTIONS: Dict[str, str] = {
     # ---- §8 validate_coverage ------------------------------------------------------
     # (none: every direction of §8 is proven -- see the five coverage_* mutations)
     # ---- §10 validate_grade --------------------------------------------------------
-    "grading_contract_floor_10":    "2026-09-08: §10's FULL-TREE path against GRADE_FLOOR. Both grading mutations run --node-ids, so they prove the zero-tolerance subset path only. §9's floor path IS proven (visual_payload_drops_required_key runs the whole tree), and this is the same gap on the grading side",
+    # PAID 2026-09-12. `grading_contract_floor_10` sat here from 2026-09-08 because both
+    # grading mutations ran --node-ids and a full sweep cost 14m23s. Making §10 hermetic
+    # (H-01) dropped the full tree to 33 seconds, so
+    # `grader_rejects_correct_answer_tree_wide` now plants against the floor path itself.
+    # §10's other four assertions are proven by the five mutations added with them.
     # ---- §0 / run_all --------------------------------------------------------------
     "unit_tests":                   "2026-09-08: the §0 stage gate itself. Individual unit tests are not inventoried here; subtraction_candidate_pool_bounded is the one that is, because a mutation names it",
     "coverage_regression_1H":       "2026-09-08: §1E/§4/§1I coverage compared against the last recorded run. node_dropped_from_check proves the applicability half of §1H, not the regression half",

@@ -67,7 +67,16 @@ CENSUS_FLOORS = {
     # carrying provenance, unknown status, duplicate id, wrong schema version, rows
     # missing) is planted against in-memory documents. Ratcheted to the real number less
     # a little churn, as above.
-    "unit_tests": 490,
+    # 552 collected 2026-09-12 (was 495 at the previous ratchet's measurement), +41 from
+    # test_grade_bidirectional.py and +11 from test_hermetic_db.py -- the two halves of
+    # §10's second direction (H-01). The emitter tests exist because `grading_refusal_10`
+    # is only as strong as `_emit_wrong`: a "wrong" answer that is not actually wrong
+    # makes the refusal gate pass vacuously and an always-true grader walks through it
+    # again. The fixture tests exist because a hermetic database that silently fell back
+    # to the CONFIGURED one would restore H-01 quietly -- the check would still pass, just
+    # against a database across the public internet. Neither direction is reachable by a
+    # mutation on the pipeline. Ratcheted to the real number less a little churn.
+    "unit_tests": 545,
     # 56 registered 2026-09-09 (was 51, 50, 48, 37). Four prove §8's own directions, one
     # §2C at (node, formatter) granularity, two the §6 phase seam, one that every contract
     # check declares the phase it runs in, four the §6 Phase 1 band (§6A/§6B/§6C/§6E, which
@@ -111,7 +120,18 @@ CENSUS_FLOORS = {
     # 79 registered 2026-09-12 (was 77): +2 for the two bounded student-path lints,
     # `count_noun_disagrees` (§1J) and `second_option_answers_too` (§1K). Both were added
     # with their gates, while each gate's finding count was zero.
-    "mutations": 79,
+    # 85 registered 2026-09-12 (was 79): +6 for §10's second direction and its hermetic
+    # fixture (H-01). `grader_accepts_wrong_answer` is the exact mirror of
+    # `grader_rejects_correct_answer` -- an ALWAYS-TRUE grader, which satisfied every §10
+    # assertion perfectly until that day. `grader_coerces_malformed_boolean` and
+    # `grader_drops_key_normalisation` restore the two real defects fixed with the gate.
+    # `grading_obligation_silently_skipped` proves an unexecutable obligation fails by
+    # name rather than by `continue`. `graded_path_reaches_the_network` proves the socket
+    # guard. `grader_rejects_correct_answer_tree_wide` PAYS the `grading_contract_floor_10`
+    # allowlist entry, which had stood unproven since 2026-09-08 only because a full sweep
+    # cost 14m23s; hermetic, it costs 33s. Three of the six prove labels that now have two
+    # mutations, so this floor is the only guard on those pairs.
+    "mutations": 85,
     # 983 observed 2026-09-08. How many (variant, value) pairs the blind-review packets
     # will actually demonstrate across the tree.
     #

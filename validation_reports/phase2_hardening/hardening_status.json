@@ -7,12 +7,16 @@
   "rows": [
     {
       "id": "H-01",
-      "status": "open",
-      "owner": "unclaimed",
-      "finding": "Phase 1 is not hermetic. validate_grade opens the configured database (SessionLocal), so §10's verdict depends on an external host resolving.",
+      "status": "in_progress",
+      "owner": "session-2597c378 (hermetic §10)",
+      "finding": "Phase 1 is not hermetic. validate_grade opened the configured database (SessionLocal) and wrote a persistent shared learner into it, so §10's verdict depended on an external host resolving. §10 also asserted ACCEPTANCE only, so an always-true grader satisfied it perfectly, and answered a generation crash or an underivable answer with `except: continue`.",
       "affected_assertions": [
         "grading_contract_10",
-        "grading_contract_floor_10"
+        "grading_contract_floor_10",
+        "grading_refusal_10",
+        "grading_equivalence_10",
+        "grading_obligation_10",
+        "grading_hermetic_10"
       ],
       "baseline_evidence": "2026-09-12: the SAME tree crashed on Neon DNS earlier in the day and passed §10 hours later on identical code, because the network came back. This is non-determinism in a gate (Protocol 6), not merely a crash — a stronger finding than 'aborts on DNS'.",
       "acceptance_checks": [
@@ -23,7 +27,7 @@
       ],
       "proof_artifacts": [],
       "closing_revision": null,
-      "updated_at": "2026-09-12T17:15:41+08:00",
+      "updated_at": "2026-09-12T18:32:50+08:00",
       "measurement_status": "measured 2026-09-12 on 647ee51e",
       "recommended_order": 1
     },

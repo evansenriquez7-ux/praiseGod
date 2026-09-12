@@ -2259,6 +2259,169 @@ MUTATIONS: List[Mutation] = [
         expect_output_contains=["pipeline_run && question_statement"],
         baseline_must_not_contain=["pipeline_run"],
     ),
+    # ── §10's second direction, added with it 2026-09-12 (H-01) ─────────────────────
+    #
+    # `grader_rejects_correct_answer` above plants an ALWAYS-FALSE grader. Until these
+    # existed there was no plant for its mirror: an ALWAYS-TRUE grader satisfied every
+    # §10 assertion perfectly, because the only obligation was that a correct answer be
+    # accepted. The plan names both explicitly as H-01 closure evidence.
+    Mutation(
+        name="grader_accepts_wrong_answer",
+        asserts=["grading_refusal_10"],
+        description=(
+            "Make the Lab v1 grader accept every submission -- the exact mirror of "
+            "`grader_rejects_correct_answer`, and the defect an accept-only §10 could "
+            "never see. A pupil who gets the mathematics wrong is told they are right, "
+            "their ELO rises, and mastery is recorded for a competency they do not have."
+        ),
+        edits={
+            "backend/app/routes/matatag_router.py": (
+                "    return {\n"
+                '        "is_correct": is_correct,\n'
+                '        "correct_answer": correct_answer_str,\n'
+                '        "trap_triggered": trap_triggered,\n',
+                "    return {\n"
+                '        "is_correct": True,  # planted mutation: accept every answer\n'
+                '        "correct_answer": correct_answer_str,\n'
+                '        "trap_triggered": trap_triggered,\n',
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_grade",
+                 "--node-ids", "mat_g1_na_q1_0"],
+        expected_check="§10 (a known-wrong or malformed submission must be graded incorrect)",
+        expect_output_contains=["FAIL grading_refusal_10",
+                                "KNOWN-WRONG && told they are right"],
+        baseline_must_not_contain=["FAIL grading_refusal_10"],
+    ),
+    Mutation(
+        name="grader_coerces_malformed_boolean",
+        asserts=["grading_refusal_10"],
+        description=(
+            "Restore the lenient true/false membership test that all three graders shared "
+            "until 2026-09-12: `str(v).lower() in (\"true\", \"yes\", \"t\", \"1\")`, which has no "
+            "failure value, so every unrecognised submission became False. On a "
+            "`true_false` item keyed False -- about half of them -- a pupil who submitted "
+            "gibberish was graded CORRECT. Measured on three G1 nodes before the fix."
+        ),
+        edits={
+            "backend/app/services/scoring.py": (
+                "    student = parse_bool_answer(student_ans)\n"
+                "    correct = parse_bool_answer(correct_ans)\n"
+                "    return student is not None and correct is not None and student == correct\n",
+                "    # planted mutation: the pre-2026-09-12 lenient membership test\n"
+                '    student = str(student_ans).strip().lower() in ("true", "yes", "t", "1")\n'
+                '    correct = str(correct_ans).strip().lower() in ("true", "yes", "t", "1")\n'
+                "    return student == correct\n",
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_grade",
+                 "--node-ids", "mat_g1_na_q1_1"],
+        expected_check="§10 (a malformed submission must not be coerced into the keyed answer)",
+        expect_output_contains=["FAIL grading_refusal_10", "MALFORMED"],
+        baseline_must_not_contain=["FAIL grading_refusal_10"],
+    ),
+    Mutation(
+        name="grader_drops_key_normalisation",
+        asserts=["grading_equivalence_10"],
+        description=(
+            "Drop the `.strip()` from the shared MCQ key normaliser. This was the state "
+            "of the tree until 2026-09-12: the comparison was hand-written seven times "
+            "and only Lab v2 stripped, so a submission of '  B  ' against a key of 'B' "
+            "was refused by the portal and Lab v1 and accepted by Lab v2 -- 211 of 256 "
+            "MCQ samples, one submission, two answers."
+        ),
+        edits={
+            "backend/app/services/scoring.py": (
+                "    return str(value).strip().upper()\n",
+                "    return str(value).upper()  # planted mutation: strip() removed\n",
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_grade",
+                 "--node-ids", "mat_g1_na_q1_0"],
+        expected_check="§10 (an equivalent rendering of the correct answer is still accepted)",
+        expect_output_contains=["FAIL grading_equivalence_10", "whitespace-"],
+        baseline_must_not_contain=["FAIL grading_equivalence_10"],
+    ),
+    Mutation(
+        name="grading_obligation_silently_skipped",
+        asserts=["grading_obligation_10"],
+        description=(
+            "Make generation raise for one node. Until 2026-09-12 §10 answered this with "
+            "`except Exception: continue`, so a node whose grading contract was never "
+            "exercised at all reported exactly like a node that passed -- the silent-skip "
+            "shape AGENTS.md Protocol 3 forbids and plan step 0A names for every "
+            "obligation failure."
+        ),
+        edits={
+            "backend/app/services/orchestrator.py": (
+                "        rng = random.Random(seed)\n",
+                "        rng = random.Random(seed)\n"
+                '        if node_id == "mat_g1_na_q1_0":  # planted mutation\n'
+                '            raise RuntimeError("planted generation failure")\n',
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_grade",
+                 "--node-ids", "mat_g1_na_q1_0"],
+        expected_check="§10 (an obligation that cannot be executed fails by name)",
+        expect_output_contains=["FAIL grading_obligation_10",
+                                "planted generation failure"],
+        baseline_must_not_contain=["FAIL grading_obligation_10"],
+    ),
+    Mutation(
+        name="graded_path_reaches_the_network",
+        asserts=["grading_hermetic_10"],
+        description=(
+            "Add an outbound connection to the portal's submit route. This is H-01 in "
+            "miniature: §10 used to open the CONFIGURED database, so on 2026-09-12 the "
+            "same code crashed Phase 1 in the morning (Neon DNS) and passed in the "
+            "afternoon. A gate whose verdict depends on an external host is not a gate "
+            "(Protocol 6). The hermetic guard must name the regression, not tolerate it."
+        ),
+        edits={
+            "backend/app/routes/practice_router.py": (
+                "    # Grading\n",
+                "    # Grading\n"
+                "    import socket as _planted_socket  # planted mutation\n"
+                '    _planted_socket.create_connection(("example.com", 80), timeout=1)\n',
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_grade",
+                 "--node-ids", "mat_g1_na_q1_0"],
+        expected_check="§10 (the graded path must not reach the network)",
+        expect_output_contains=["FAIL grading_hermetic_10",
+                                "outbound network connection"],
+        baseline_must_not_contain=["FAIL grading_hermetic_10"],
+    ),
+    Mutation(
+        name="grader_rejects_correct_answer_tree_wide",
+        asserts=["grading_contract_floor_10"],
+        description=(
+            "The same always-false Lab v1 grader as `grader_rejects_correct_answer`, run "
+            "WITHOUT --node-ids so it lands on the full-tree floor path instead of the "
+            "zero-tolerance subset path. `grading_contract_floor_10` was allowlisted as "
+            "unproven from 2026-09-08 precisely because both grading mutations were "
+            "scoped to one node -- the same gap §9's floor path had already closed on the "
+            "render side. It costs a full sweep, which is 33 seconds now that §10 is "
+            "hermetic and no longer waits on a database across the public internet."
+        ),
+        edits={
+            "backend/app/routes/matatag_router.py": (
+                "    return {\n"
+                '        "is_correct": is_correct,\n'
+                '        "correct_answer": correct_answer_str,\n'
+                '        "trap_triggered": trap_triggered,\n',
+                "    return {\n"
+                '        "is_correct": False,  # planted mutation: reject every answer\n'
+                '        "correct_answer": correct_answer_str,\n'
+                '        "trap_triggered": trap_triggered,\n',
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_grade"],
+        expected_check="§10 full-tree floor (mis-gradings measured against GRADE_FLOOR)",
+        expect_output_contains=["FAIL grading_contract_floor_10",
+                                "mis-gradings exceeds floor"],
+        baseline_must_not_contain=["FAIL grading_contract_floor_10"],
+    ),
 ]
 
 # The templated-review mutation cannot be a literal find/replace: each review's

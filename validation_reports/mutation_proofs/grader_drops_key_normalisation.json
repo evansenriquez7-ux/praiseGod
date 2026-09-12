@@ -1,20 +1,20 @@
 {
  "asserts": [
-  "answer_leak_in_stem"
+  "grading_equivalence_10"
  ],
  "baseline_exit": 0,
  "baseline_markers_already_present": [],
  "baseline_must_not_contain": [
-  "answer_leak_in_stem"
+  "FAIL grading_equivalence_10"
  ],
  "command": [
-  "backend.app.practice_gen.validation.validate_matrix",
-  "--node",
+  "backend.app.practice_gen.validation.validate_grade",
+  "--node-ids",
   "mat_g1_na_q1_0"
  ],
- "definition_digest": "ad7c1f49476016050b3aa2c4b483d776e1c4ccd2c8de57f13b9e2c3a6471f0dd",
+ "definition_digest": "48007dc6485daeaa36a1c68ca13e24139e61015781504214164213362643912f",
  "detected": true,
- "diagnostic_line": "exit 1 — [1/1] Checking mat_g1_na_q1_0 ...  FAIL",
+ "diagnostic_line": "exit 1 — FAIL grading_equivalence_10: 2 equivalent rendering(s) of a correct answer were refused",
  "environment": {
   "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
   "machine": "x86_64",
@@ -23,22 +23,24 @@
   "system": "Darwin"
  },
  "expect_output_contains": [
-  "answer_leak_in_stem"
+  "FAIL grading_equivalence_10",
+  "whitespace-"
  ],
- "expected_check": "§1F (question stem does not leak its own answer)",
- "finished_at": "2026-09-12T18:21:00+08:00",
+ "expected_check": "§10 (an equivalent rendering of the correct answer is still accepted)",
+ "finished_at": "2026-09-12T18:30:23+08:00",
  "input_digest": "4be0067c4ccb9c328718136263588ca84683e185f017d1123d3e3169c75623f0",
  "mutated_paths": [
-  "backend/app/practice_gen/formatters/textual/fmt_mcq.py"
+  "backend/app/services/scoring.py"
  ],
- "mutation": "answer_leak_in_stem",
+ "mutation": "grader_drops_key_normalisation",
  "observed_markers": {
-  "answer_leak_in_stem": true
+  "FAIL grading_equivalence_10": true,
+  "whitespace-": true
  },
  "paths_outside_input_set": [],
  "phase1_admissible": true,
  "planted_exit": 1,
  "restored_clean": true,
  "schema_version": 1,
- "started_at": "2026-09-12T18:20:54+08:00"
+ "started_at": "2026-09-12T18:30:17+08:00"
 }

@@ -1,20 +1,20 @@
 {
  "asserts": [
-  "all_competency_bounds_parse"
+  "grading_refusal_10"
  ],
  "baseline_exit": 0,
  "baseline_markers_already_present": [],
  "baseline_must_not_contain": [
-  "FAIL all_competency_bounds_parse"
+  "FAIL grading_refusal_10"
  ],
  "command": [
-  "backend.app.practice_gen.validation.validate_compat",
-  "--only",
-  "bounds_property"
+  "backend.app.practice_gen.validation.validate_grade",
+  "--node-ids",
+  "mat_g1_na_q1_1"
  ],
- "definition_digest": "50df99c510b76293a26c310f54cdf7bbd7e023d797f998eab040f1d5015cf238",
+ "definition_digest": "e6c9001cf1678643a9d38162b591971d0b88f179798ab94563746fe095badbf8",
  "detected": true,
- "diagnostic_line": "exit 1 — FAIL all_competency_bounds_parse (157):",
+ "diagnostic_line": "exit 1 — FAIL grading_refusal_10: 1 submission(s) that must be refused were graded CORRECT",
  "environment": {
   "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
   "machine": "x86_64",
@@ -23,24 +23,24 @@
   "system": "Darwin"
  },
  "expect_output_contains": [
-  "FAIL all_competency_bounds_parse",
-  "min > max"
+  "FAIL grading_refusal_10",
+  "MALFORMED"
  ],
- "expected_check": "§2G (every node's competency bounds parse to a well-formed shape)",
- "finished_at": "2026-09-12T18:23:06+08:00",
+ "expected_check": "§10 (a malformed submission must not be coerced into the keyed answer)",
+ "finished_at": "2026-09-12T18:30:17+08:00",
  "input_digest": "4be0067c4ccb9c328718136263588ca84683e185f017d1123d3e3169c75623f0",
  "mutated_paths": [
-  "backend/app/practice_gen/registry.py"
+  "backend/app/services/scoring.py"
  ],
- "mutation": "malformed_competency_bound",
+ "mutation": "grader_coerces_malformed_boolean",
  "observed_markers": {
-  "FAIL all_competency_bounds_parse": true,
-  "min > max": true
+  "FAIL grading_refusal_10": true,
+  "MALFORMED": true
  },
  "paths_outside_input_set": [],
  "phase1_admissible": true,
  "planted_exit": 1,
  "restored_clean": true,
  "schema_version": 1,
- "started_at": "2026-09-12T18:23:05+08:00"
+ "started_at": "2026-09-12T18:30:11+08:00"
 }

@@ -58,6 +58,70 @@ def answers_match(student_ans: Any, correct_ans: Any) -> bool:
     return _norm(s_val) == _norm(c_val)
 
 
+def normalize_option_key(value: Any) -> str:
+    """
+    Normalise an MCQ option key for comparison: strip, then upper-case.
+
+    The key comparison `str(answer).upper() == correct_key.upper()` was written out
+    seven times across the portal and the two Lab graders, and only Lab v2 stripped
+    whitespace. Measured 2026-09-12 over the full tree: a submission of `"  B  "` for a
+    correct key of `"B"` was REFUSED by the portal and Lab v1 and ACCEPTED by Lab v2 on
+    211 of 256 MCQ samples -- three graders, one submission, two answers. That is the
+    exact defect class §10 was built for, so the normalisation becomes one function
+    rather than a seventh hand-written copy (Protocol 2).
+    """
+    return str(value).strip().upper()
+
+
+_TRUE_TOKENS = frozenset({"true", "t", "yes", "y", "1"})
+_FALSE_TOKENS = frozenset({"false", "f", "no", "n", "0"})
+
+
+def parse_bool_answer(value: Any) -> "bool | None":
+    """
+    Parse a true/false submission STRICTLY. `None` means "not a true/false answer".
+
+    Why strict, and why shared
+    --------------------------
+    All three graders used `str(v).strip().lower() in ("true", "yes", "t", "1")`, which
+    has no failure value: every unrecognised submission became **False**. On a
+    `true_false` item whose key is False -- roughly half of them -- a pupil who submitted
+    nothing meaningful was therefore graded CORRECT. Measured 2026-09-12 on the isolated
+    §10 fixture: the string "definitely_not_the_answer_zzz" was accepted by the portal,
+    Lab v1 and Lab v2 alike on `mat_g1_na_q1_1`, `mat_g1_na_q1_3` and `mat_g1_na_q1_9`.
+
+    That is a silent default in the accept-wrong direction (Protocol 3), and it was
+    written out three times (Protocol 2), so the fix is one function all three call.
+
+    An unparseable KEY also returns None, and the caller then grades the submission
+    incorrect rather than raising: a pupil must never see a 500 because a generator
+    keyed a malformed boolean. The resulting mis-grading is loud where it belongs --
+    every seed of that node becomes a §10 `grading_contract` finding.
+    """
+    if isinstance(value, bool):
+        return value
+    if isinstance(value, (int, float)) and not isinstance(value, bool):
+        if value == 1:
+            return True
+        if value == 0:
+            return False
+        return None
+    if isinstance(value, str):
+        token = value.strip().lower()
+        if token in _TRUE_TOKENS:
+            return True
+        if token in _FALSE_TOKENS:
+            return False
+    return None
+
+
+def bool_answers_match(student_ans: Any, correct_ans: Any) -> bool:
+    """True only when both sides parse as booleans and agree. See `parse_bool_answer`."""
+    student = parse_bool_answer(student_ans)
+    correct = parse_bool_answer(correct_ans)
+    return student is not None and correct is not None and student == correct
+
+
 def validate_math_answer(expected: Any, student_ans: str) -> bool:
     """
     Deterministic validation using SymPy solver.

@@ -24,7 +24,7 @@ from backend.app.practice_gen.dna.base import FormattedProblem
 
 from backend.app.practice_gen import registry as _pg_registry
 
-from backend.app.services.scoring import validate_math_answer, answers_match
+from backend.app.services.scoring import validate_math_answer, answers_match, bool_answers_match, normalize_option_key
 from backend.app.practice_gen.axes_catalog import (
     get_axes_for_concept as _get_axes_for_concept,
     compute_difficulty_scalar as _compute_difficulty_scalar,
@@ -1153,9 +1153,9 @@ def matatag_lab_submit(
                 is_correct = str(student_answer).strip() == str(skeleton.get("correct_answer"))
             correct_answer_str = str(skeleton.get("correct_answer"))
         elif fmt == "true_false":
-            student_bool = str(student_answer).strip().lower() in ("true", "yes", "t", "1")
-            correct_bool = str(skeleton.get("correct_answer")).lower() in ("true", "yes", "t", "1")
-            is_correct = student_bool == correct_bool
+            # Strict parse: an unrecognised submission is NOT silently False.
+            # See services.scoring.parse_bool_answer.
+            is_correct = bool_answers_match(student_answer, skeleton.get("correct_answer"))
             correct_answer_str = str(skeleton.get("correct_answer"))
         elif fmt == "error_detect":
             try:
@@ -1198,7 +1198,8 @@ def matatag_lab_submit(
                     if isinstance(v, dict) and v.get("trap") is None:
                         correct_key = k
                         break
-            is_correct = student_answer.upper() == (correct_key or "A").upper()
+            is_correct = (normalize_option_key(student_answer)
+                          == normalize_option_key(correct_key or "A"))
 
             # Get the text of the correct option for display
             correct_opt = raw_opts.get(correct_key, {})
@@ -1208,7 +1209,7 @@ def matatag_lab_submit(
                 correct_answer_str = str(correct_opt)
 
             # Check if student triggered a trap
-            selected_opt = raw_opts.get(student_answer.upper(), {})
+            selected_opt = raw_opts.get(normalize_option_key(student_answer), {})
             if not is_correct and isinstance(selected_opt, dict):
                 trap_triggered = selected_opt.get("trap")
 
@@ -1484,7 +1485,7 @@ def matatag_lab_v2_submit(req: LabV2SubmitRequest):
         # Accept ONLY the key (A/B/C/D) — matching the portal and lab v1
         # graders.  Accepting the option value too produced a divergence
         # (portal=False, v1=False, v2=True for value submissions).
-        if correct_key and str(student_answer).strip().upper() == str(correct_key).upper():
+        if correct_key and normalize_option_key(student_answer) == normalize_option_key(correct_key):
             is_correct = True
 
         # Check if student triggered a trap (distractor)
@@ -1525,10 +1526,9 @@ def matatag_lab_v2_submit(req: LabV2SubmitRequest):
             is_correct = str(student_answer).strip() == str(correct_answer)
 
     elif fmt == "true_false":
-        # True/False: compare boolean-like values
-        student_bool = str(student_answer).strip().lower() in ("true", "yes", "t", "1")
-        correct_bool = str(correct_answer).lower() in ("true", "yes", "t", "1")
-        is_correct = student_bool == correct_bool
+        # True/False: both sides must PARSE as booleans and agree. An unrecognised
+        # submission is not silently False -- see services.scoring.parse_bool_answer.
+        is_correct = bool_answers_match(student_answer, correct_answer)
 
     elif fmt == "error_detect":
         # Error detect: two-step answer
@@ -1578,11 +1578,17 @@ def matatag_lab_v2_submit(req: LabV2SubmitRequest):
                 except (ValueError, TypeError):
                     is_correct = str(parsed) == str(correct_answer)
             else:
-                # Generic comparison
-                is_correct = str(parsed) == str(correct_answer)
+                # Generic comparison, through the SHARED shape-keyed comparator.
+                # This branch used to be `str(parsed) == str(correct_answer)`: raw, so a
+                # submission of "  1/4  " for a key of "1/4" was refused here while the
+                # portal and Lab v1 (which both route through answers_match) accepted it.
+                # Measured 2026-09-12: 9 of 256 whitespace-padded value submissions, all
+                # set_click / set_fill_in_blank -- formats this `elif` chain does not name,
+                # which is the same unrecognised-format fallthrough §10 was built for.
+                is_correct = answers_match(parsed, correct_answer)
         else:
-            # Fallback: string comparison
-            is_correct = str(student_answer) == str(correct_answer)
+            # Fallback: the shared shape-keyed comparator, not a raw string compare.
+            is_correct = answers_match(student_answer, correct_answer)
 
     # Build explanation
     correct_display = str(correct_answer)
