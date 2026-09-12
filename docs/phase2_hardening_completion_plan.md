@@ -92,7 +92,7 @@ IDs are planning handles for the evidence ledger, not new contract references.
 |---|---|---|
 | `H-01` | **CLOSED 2026-09-12 at `9fbcfdf9`.** Phase 1 was not hermetic: `validate_grade` opened the configured database and wrote a persistent shared learner into it, so §10's verdict depended on an external host resolving. §10 also asserted ACCEPTANCE only — an always-true grader passed it perfectly — and answered a generation crash or an underivable answer with `except: continue`. | `tests/hermetic_db.py` (throwaway SQLite + a socket guard that raises by name); §10 rewritten for four directions with three new zero-tolerance assertions; six new detected mutations including the always-true grader and a full-tree plant that PAYS `grading_contract_floor_10`; full Phase 1 green with `DATABASE_URL=` empty. Measured: the full §10 sweep fell from **14m23s to 33s**. |
 | `H-02` | Thirty-nine assertions are explicitly unproven, including concept gating, answer recomputation, monotonicity, maximum reach, vocabulary, interest, render schema, grading floor, KG monotonicity, and Lab/portal equivalence. | A current detected mutation for every content/release-critical assertion; any inherently non-mutable check has a narrow, owner-approved limitation and independent executable control. |
-| `H-03` | The runner can lose the final summary and its two-direction evidence when a stage raises. Several validators catch an import/generation error and continue, so attempted work can be reported as coverage. | Stage ledger records scheduled, attempted, completed, failed, and crashed; exceptions become named failures; skipped obligations are failures; the non-fail-fast run reaches every independent stage and exits nonzero once at the end. |
+| `H-03` | **CLOSED 2026-09-12 at `1d0de929`, for the RUNNER's boundaries.** Measured rather than inherited: one planted stage crash made `run_all` return `None` instead of an exit code, skipped §10, §8 and §7 entirely, printed neither the two-direction section nor the summary, and named none of it. | Fifteen declared stages, each behind an exception boundary, in a five-state ledger with per-stage timings. A FAILED stage's refs leave the two-direction comparison; a CRASHED or never-entered stage's refs STAY, so a crash cannot silence the tripwire that exists to notice a registered check not executing. Four mutations, one per acceptance path; `crash_deletes_its_own_expected_refs` PAYS `two_direction_contract_match`. **Residual, explicitly NOT closed:** no per-stage command/input digest, and the validator-INTERNAL catch-and-continue paths (`validate_matrix._try_render`/`_seed_renders`) are untouched — §10's two went under `H-01`, the rest overlap `H-05` and step 2. |
 | `H-04` | “Exhaustive matrix” covers discrete formatter combinations, but continuous axes are swept separately and serving context, experience, interest, renderer, and response mode are not one finite obligation model. | Machine-generated obligation manifest from the student route; exhaustive finite partitions for reachable state, including cross-axis boundary classes; zero missing, skipped, or unexpectedly unreachable obligations. |
 | `H-05` | Vocabulary, interest, DNA, compatibility, render, and grade checks contain narrow representatives, first-DNA selection, low sample counts, G1–3 assumptions, tolerated floors/warnings, static approximations, or silent import paths. | Scale-safe checks over every applicable node/DNA/formatter/grade and final rendered output, with exact types, robust multi-digit grade parsing, real prerequisite edges, and named mutations on the live path. |
 | `H-06` | Phase 2 evidence omits complete visuals/options in places, freshness does not bind every learner-visible field, and requirement evidence can be incomplete if clause extraction itself omitted curriculum text. | Canonical full-view packet and replay digest; full competency-to-requirement decomposition review; exact clause coverage; missing learner-visible evidence is unadjudicable and blocking. |
@@ -169,13 +169,31 @@ grading, rendering, coverage, and evidence paths have no warning-only or silent-
 
 ### 0A. Make Phase 1 hermetic, complete, and honest before repairing content
 
-Refactor `run_all` around an explicit stage registry and result record. Each scheduled stage
-records its phase, contract references, command/input digest, start/end state, and named findings.
-Run independent stages behind exception boundaries so a crash is a failed stage and does not
-erase coverage/census/two-direction results. `--fail-fast` may stop after recording the failure;
-the default audit continues through every independent stage. The two-direction check compares
-the declared schedule with attempted and completed stages, so a crash cannot remove its own
-expected references. Prove missing registration, wrong phase, crash, and unattempted-stage paths.
+**Refactor `run_all` around an explicit stage registry — LANDED at `1d0de929`.** Fifteen stages
+are declared before anything executes, each running behind its own exception boundary, in a
+five-state ledger (`scheduled` — declared and never entered, a FAILURE — `attempted`, `completed`,
+`failed`, `crashed`) printed with per-stage timings. `--fail-fast` still stops early but stops
+AFTER recording, so an aborted run says which obligations it never reached. The two-direction
+check is now ledger-driven: a FAILED stage's refs leave the comparison because it ran and
+reported; a CRASHED or never-entered stage's refs STAY, so a crash cannot silence the tripwire
+whose job is to notice a registered check not executing. That replaced six hand-written
+`if not X_ok: discard(...)` pairs which were wrong in both directions — §2C–§2I were never
+discarded alongside §2, and §1J/§1K/§9/§10/§8/§7 had no pairs at all.
+
+All four paths are proved by mutation: crash (`stage_crash_escapes_the_ledger`),
+unattempted stage (`unreached_stage_reported_as_clean`), missing registration
+(`crash_deletes_its_own_expected_refs`, which also PAYS `two_direction_contract_match`), and
+wrong phase (`stage_runs_in_the_wrong_band`). The last needed a new check: `run_all`'s existing
+`misphased` reconciliation is **unreachable by construction**, because `_record_phase` derives
+both the refs and the phase it records them under from one registry. Rather than contrive a plant,
+that branch is named as a limitation and the real risk is now covered —
+`stage_phase_matches_manifest` holds every stage's declared refs to `_manifest.CHECK_PHASE`,
+two registries that describe one fact and had never been compared.
+
+**Still open from this paragraph, and not claimed:** the stage record carries no per-stage
+command/input digest; and the validator-INTERNAL catch-and-continue paths named in this row's
+`H-03` finding (`validate_matrix._try_render`, `_seed_renders`) are untouched. §10's two were
+removed under `H-01`; the remainder belong to step 2 and `H-05`.
 
 **Make grading local and deterministic — LANDED at `9fbcfdf9`.** `tests/hermetic_db.py` binds
 `backend.app.database` to a throwaway SQLite file at the one seam every caller passes through
@@ -1189,11 +1207,11 @@ So a fresh session starts here:
 
 1. `git log --oneline -1` and `PYTHONPATH=. .venv/bin/python tests/hardening_status.py` —
    confirm the tree and that 9 rows validate (1 closed, 1 out_of_scope, 7 open).
-2. **Start step 0A's remaining half (`H-03`, the stage registry).** The grading half is
-   done. `run_all` still runs its stages as straight-line code, so a stage that raises
-   erases the coverage/census/two-direction results that would have followed it, and
-   several validators still catch an import or generation error and continue — which is
-   how attempted work gets reported as coverage.
+2. **`H-01` and `H-03` are both CLOSED.** The next row by `recommended_order` is `H-04`
+   (step 0B, the student-path obligation manifest) at order 3, then `H-05` at 4. Note that
+   `H-05` inherits the half of `H-03` that was deliberately left open: the validator-INTERNAL
+   catch-and-continue paths (`validate_matrix._try_render`, `_seed_renders`) that let a lost
+   render be reported as coverage. `H-03` closed the RUNNER's boundaries, not those.
 3. Expect the first edit under an input root to invalidate all **85** mutation proofs. That
    is the safe direction and costs one full table re-run (**~19 minutes measured on the
    85-record corpus**, up from ~12 at 79 records — the new full-tree §10 plant is the

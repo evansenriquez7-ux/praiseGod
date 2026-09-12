@@ -66,13 +66,14 @@
     },
     {
       "id": "H-03",
-      "status": "in_progress",
-      "owner": "session-2597c378 (stage ledger)",
+      "status": "closed",
+      "owner": "unclaimed",
       "finding": "run_all can lose its final summary and two-direction evidence when a stage raises; several validators catch an import/generation error and continue, so attempted work can be reported as coverage.",
       "affected_assertions": [
-        "two_direction_contract_match",
-        "contract_doc_matches_registry",
-        "operator_doc_covers_registry"
+        "stage_ledger_complete",
+        "stage_crashed_",
+        "stage_phase_matches_manifest",
+        "two_direction_contract_match"
       ],
       "baseline_evidence": "MEASURE THIS FIRST, before treating the finding as fact. The statement below was inherited from the plan and NOT confirmed on the current tree (647ee51e). Reproduce it, record the command and verbatim output here, and correct the finding if the measurement disagrees. An inherited finding is a claim, not evidence. ORIGINAL CLAIM: Not yet re-measured on 015b7f35. The stage registry described in step 0A does not exist; run_all still tracks stage results as local booleans.",
       "acceptance_checks": [
@@ -82,11 +83,19 @@
         "The non-fail-fast run reaches every independent stage and exits nonzero once at the end",
         "Missing registration, wrong phase, crash and unattempted-stage paths each proved by mutation"
       ],
-      "proof_artifacts": [],
-      "closing_revision": null,
-      "updated_at": "2026-09-12T19:47:18+08:00",
-      "measurement_status": "unmeasured — inherited from the plan",
-      "recommended_order": 2
+      "proof_artifacts": [
+        "validation_reports/mutation_proofs/stage_crash_escapes_the_ledger.json",
+        "validation_reports/mutation_proofs/unreached_stage_reported_as_clean.json",
+        "validation_reports/mutation_proofs/crash_deletes_its_own_expected_refs.json",
+        "validation_reports/mutation_proofs/stage_runs_in_the_wrong_band.json",
+        "tests/unit/test_stage_ledger.py",
+        "validation_reports/HARDENING_EVIDENCE.md"
+      ],
+      "closing_revision": "1d0de929",
+      "updated_at": "2026-09-12T20:45:35+08:00",
+      "measurement_status": "MEASURED 2026-09-12 (was inherited/unmeasured) and closed on 1d0de929. The planted crash skipped three further gates, the two-direction tripwire and the summary, and named none of it.",
+      "recommended_order": 2,
+      "residual": "The RUNNER's boundaries only. Two named gaps stay open and are NOT covered by this closure: (1) the stage record carries no per-stage command/input digest, which plan step 0A also asks for; (2) validator-INTERNAL catch-and-continue paths (validate_matrix._try_render / _seed_renders) are untouched -- §10's two were removed under H-01, the rest overlap H-05 and plan step 2."
     },
     {
       "id": "H-04",
