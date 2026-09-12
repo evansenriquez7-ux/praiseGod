@@ -2521,6 +2521,54 @@ MUTATIONS: List[Mutation] = [
         expect_output_contains=["test_a_ref_registered_to_the_other_band_is_caught"],
         baseline_must_not_contain=["test_a_ref_registered_to_the_other_band_is_caught"],
     ),
+    # ── §11, the obligation manifest (H-04, 2026-09-12) ────────────────────────────
+    Mutation(
+        name="obligation_derivations_diverge",
+        asserts=["obligation_derivations_agree"],
+        description=(
+            "Drop one production gate from the node-first traversal only, so the two "
+            "derivations stop describing the same reachable space. This is the failure "
+            "the plan's own recorded figure walked into: 4,325 obligations across 463 "
+            "pairs, derived once, by a probe that is no longer on disk, reproducible by "
+            "no candidate model. A count nobody can re-derive is a number, not evidence."
+        ),
+        edits={
+            "tests/obligation_manifest.py": (
+                "                if formatter_refused_at_node(dna, comp_bounds, formatter):\n"
+                "                    rejections.append(Rejection(\n",
+                "                if False:  # planted mutation: one gate, one traversal\n"
+                "                    rejections.append(Rejection(\n",
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_obligations"],
+        expected_check="§11 (two independent derivations of the reachable count agree)",
+        expect_output_contains=["FAIL obligation_derivations_agree",
+                                "disagree"],
+        baseline_must_not_contain=["FAIL obligation_derivations_agree"],
+    ),
+    Mutation(
+        name="dead_formatter_route_ignored",
+        asserts=["obligation_routes_reachable"],
+        description=(
+            "Register a sixth formatter route nothing can reach. §2B and §2C hold "
+            "'a formatter a node ADVERTISES must be servable'; until §11 nothing held the "
+            "reverse, so a route in adapter.FORMATTER_ROUTES that no DNA declares and no "
+            "node advertises sat there indefinitely. Five already do, in two classes, "
+            "which is why the gate is a shrink-only floor rather than a hard zero."
+        ),
+        edits={
+            "backend/app/practice_gen/adapter.py": (
+                "FORMATTER_ROUTES: Dict[str, tuple] = {\n",
+                'FORMATTER_ROUTES: Dict[str, tuple] = {\n'
+                '    "planted_dead_route": (),  # planted mutation\n',
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_obligations"],
+        expected_check="§11 (a registered formatter route no obligation can reach)",
+        expect_output_contains=["FAIL obligation_routes_reachable",
+                                "planted_dead_route"],
+        baseline_must_not_contain=["FAIL obligation_routes_reachable"],
+    ),
 ]
 
 # The templated-review mutation cannot be a literal find/replace: each review's

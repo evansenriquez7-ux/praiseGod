@@ -1,7 +1,7 @@
 # Graph Report - ccmed  (2026-09-12)
 
 ## Corpus Check
-- 771 files · ~1,529,822 words
+- 771 files · ~1,530,157 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `f7d40381`
+- Built from commit: `1d0de929`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -365,6 +365,7 @@
 - [[_COMMUNITY_2026-08-28 — D0 (§6H) and the first D1 blind re-review batch|2026-08-28 — D0 (§6H) and the first D1 blind re-review batch]]
 - [[_COMMUNITY_socratic_chat_exchange|socratic_chat_exchange]]
 - [[_COMMUNITY_.axis_level_index|.axis_level_index]]
+- [[_COMMUNITY_2026-08-13 — The G1 measure items a visual for the task, and a size model for the units|2026-08-13 — The G1 measure items: a visual for the task, and a size model for the units]]
 - [[_COMMUNITY_generate_params|generate_params]]
 - [[_COMMUNITY_generate_params|generate_params]]
 - [[_COMMUNITY_generate_params|generate_params]]
@@ -377,7 +378,6 @@
 - [[_COMMUNITY_2026-09-10 — Band B the whole tree re-reviewed blind, and what it actually found|2026-09-10 — Band B: the whole tree re-reviewed blind, and what it actually found]]
 - [[_COMMUNITY_validate_grade.py|validate_grade.py]]
 - [[_COMMUNITY__plant_template_attestation|_plant_template_attestation]]
-- [[_COMMUNITY__plant_verbatim_rationale|_plant_verbatim_rationale]]
 - [[_COMMUNITY_2026-08-13 — Estimate was only a word (mat_g3_mg_q1_0)|2026-08-13 — "Estimate" was only a word (mat_g3_mg_q1_0)]]
 - [[_COMMUNITY_.axis_level_index|.axis_level_index]]
 - [[_COMMUNITY_generate_params|generate_params]]
@@ -828,7 +828,7 @@ Nodes (29): _generate_addition_examples(), _generate_comparing_examples(), _gene
 
 ### Community 103 - "Community 103"
 Cohesion: 0.04
-Nodes (51): 1. Distractor Non-Determinism Fix in `place_value.py`, 1. Fractions answer-key false positive — `mat_g2_na_q4_0`/`_1`/`_2`, 2026-08-13 — Content no competency asks for, and a metre wearing centimetres, 2026-08-13 — The G1 measure items: a visual for the task, and a size model for the units, 2026-08-14 — A stated width is a floor as well as a ceiling, 2026-08-19 — Unit 3 completion + full `run_all` verification, 2026-08-20 — §5 worker death: a silent unbounded wait in the last gate, 2026-08-20 (tick 6) — There is no pytest deadlock, and three tests I broke in tick 3 (+43 more)
+Nodes (51): 1. Distractor Non-Determinism Fix in `place_value.py`, 1. Fractions answer-key false positive — `mat_g2_na_q4_0`/`_1`/`_2`, 2026-08-13 — Content no competency asks for, and a metre wearing centimetres, 2026-08-14 — A stated width is a floor as well as a ceiling, 2026-08-19 — Unit 3 completion + full `run_all` verification, 2026-08-20 — §5 worker death: a silent unbounded wait in the last gate, 2026-08-20 (tick 6) — There is no pytest deadlock, and three tests I broke in tick 3, 2026-08-20 (tick 8) — A dispatch-only tick: coverage 52 → 127 (+43 more)
 
 ### Community 104 - "Community 104"
 Cohesion: 0.12
@@ -1351,8 +1351,8 @@ Cohesion: 0.33
 Nodes (6): 2026-08-28 — Track 0: will this survive grade 4?, §2C was load-dependent — my own defect from the previous step, §2F — every node id referenced in the app must resolve, §2G — the tree-wide property behind the fixture table, The harness was becoming too expensive to prove, Verification
 
 ### Community 259 - "generate_params"
-Cohesion: 0.13
-Nodes (18): interpolate(), linear_interpolate(), Linear interpolation between min_val and max_val at position t., Interpolate between min_val and max_val using the given scale type.      scale_t, generate_hints(), generate_params(), Any, DNA: Perimeter (Measurement & Geometry)  Covers MATATAG grades 2–3 perimeter com (+10 more)
+Cohesion: 0.33
+Nodes (8): generate_hints(), generate_params(), _positive_frequencies(), Any, Random, DNA: Probability Experiment (Data & Probability)  Covers MATATAG grade 3 compete, `n` recorded frequencies, each at least 1, summing exactly to `total`.      Allo, Generate parameters for collecting and recording data from simple experiments.
 
 ### Community 260 - "2026-08-13 — length_measurement: the largest FAIL cluster in the tree"
 Cohesion: 0.40
@@ -1371,8 +1371,8 @@ Cohesion: 0.38
 Nodes (4): §6F freshness re-renders every attestation's judged seeds. A record that no long, The case a blanket rule would break: batch018_mat_g3_na_q3_4 owned all four, Supersession must be earned by filing a replacement, not claimed in a string., TestAttestationSupersession
 
 ### Community 264 - "fmt_numeric_input.py"
-Cohesion: 0.10
-Nodes (26): log_interpolate(), Logarithmic interpolation between min_val and max_val at position t.      Produc, generate_hints(), generate_params(), _object_pool(), Any, DNA: Length Measurement (Measurement & Geometry)  Covers MATATAG grades 1–2 leng, Returns numeric params used by the ruler_measure formatter or word-problem spine (+18 more)
+Cohesion: 0.07
+Nodes (38): interpolate(), linear_interpolate(), log_interpolate(), Logarithmic interpolation between min_val and max_val at position t.      Produc, Linear interpolation between min_val and max_val at position t., Interpolate between min_val and max_val using the given scale type.      scale_t, generate_hints(), generate_params() (+30 more)
 
 ### Community 265 - "fmt_array_grid.py"
 Cohesion: 0.31
@@ -1694,6 +1694,10 @@ Nodes (8): 2026-09-10 — §6F reaches §5 parity, and the blind spot was 137 re
 Cohesion: 0.25
 Nodes (8): 2026-09-10 — §5b: the letter sub-cases MATATAG prints, which the pipeline could not produce, A third defect that fell out: letters on a competency that names none, Churn, measured as required, Evidence, How it is gated — no node id anywhere, The judgment the brief asked for, answered from the competency text, Two constraints that are measurements, not preferences, What the competencies actually say, and what was measured against them
 
+### Community 368 - "2026-08-13 — The G1 measure items: a visual for the task, and a size model for the units"
+Cohesion: 0.50
+Nodes (4): 2026-08-13 — The G1 measure items: a visual for the task, and a size model for the units, A regression I introduced and caught by measuring, Defect 1 — the dataless distance item, Defect 2 — object and unit drawn independently
+
 ### Community 369 - "generate_params"
 Cohesion: 0.29
 Nodes (11): Attempt, CompetencyConfiguration, MasteryState, NodeIntroView, ParentAccount, QuestionFlag, SkillEdge, SkillNode (+3 more)
@@ -1728,7 +1732,7 @@ Nodes (3): load_matatag_curriculum_endpoint(), Session, Load MATATAG (Philippine
 
 ### Community 380 - "probability_experiment.py"
 Cohesion: 0.08
-Nodes (25): A mathematical term fragment gated behind vocab knowledge.      preferred:    Te, VocabGated, generate_hints(), generate_params(), _positive_frequencies(), Any, Random, DNA: Probability Experiment (Data & Probability)  Covers MATATAG grade 3 compete (+17 more)
+Nodes (23): A mathematical term fragment gated behind vocab knowledge.      preferred:    Te, VocabGated, generate_hints(), generate_params(), Any, DNA: Probability Language (Data & Probability)  Covers MATATAG grade 3 probabili, Sample one scenario from the static pool filtered by difficulty profile., generate_hints() (+15 more)
 
 ### Community 386 - "2026-09-10 — Band B: the whole tree re-reviewed blind, and what it actually found"
 Cohesion: 0.25
@@ -1741,10 +1745,6 @@ Nodes (5): 2026-08-13 — Finishing the pairing fix: the unit, not the floor, Th
 ### Community 389 - "_plant_template_attestation"
 Cohesion: 0.40
 Nodes (5): 2026-08-13 — The unanswerable measure item was a routing bug, not a wording one, Second defect, same tick — a competency serving two of its three parts, That reasoning held, and the table showed exactly why, The blast radius the previous tick warned about did not materialise, The failing rationale
-
-### Community 390 - "_plant_verbatim_rationale"
-Cohesion: 0.50
-Nodes (4): 2026-08-28 — D0 (§6H) and the first D1 blind re-review batch, §6H — Attester identity and plurality (the blocker before any Attester campaign), Carried forward, D1 batch 1 — three nodes re-reviewed blind
 
 ### Community 391 - "2026-08-13 — "Estimate" was only a word (mat_g3_mg_q1_0)"
 Cohesion: 0.40

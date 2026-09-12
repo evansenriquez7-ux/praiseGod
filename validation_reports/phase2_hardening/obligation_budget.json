@@ -1,0 +1,323 @@
+{
+  "schema_version": 1,
+  "model": "obligation = (node, DNA, formatter, discrete assignment). Discrete assignments are the full Cartesian product of reachable variant values. See tests/obligation_manifest.py for the stated model and its limits.",
+  "counts": {
+    "nodes": 151,
+    "node_dna_formatter_pairs": 459,
+    "discrete_obligations": 5060,
+    "continuous_class_crossings": 22626,
+    "continuous_classes_per_axis": 3
+  },
+  "independent_derivation": {
+    "pairs": 459,
+    "discrete_obligations": 5060,
+    "agrees": true,
+    "method": "formatter-first traversal; see derive_count_independently"
+  },
+  "plan_figure_not_reproduced": {
+    "recorded_in_plan": {
+      "pairs": 463,
+      "allowed_assignments": 4325
+    },
+    "status": "NOT REPRODUCIBLE. The probe that produced it is not on disk and no candidate model recovers either figure. This manifest supersedes it; the plan's number is recorded here rather than inherited."
+  },
+  "per_dimension": {
+    "by_node_top": {
+      "mat_g2_na_q3_1": 648,
+      "mat_g1_na_q3_1": 324,
+      "mat_g1_na_q3_2": 324,
+      "mat_g1_na_q2_5": 216,
+      "mat_g2_na_q3_0": 198,
+      "mat_g2_na_q1_9": 184,
+      "mat_g3_na_q2_1": 184,
+      "mat_g2_na_q3_7": 180,
+      "mat_g2_na_q2_2": 163,
+      "mat_g3_na_q4_2": 152
+    },
+    "by_dna": {
+      "multiplication": 1130,
+      "missing_number": 972,
+      "addition": 952,
+      "subtraction": 516,
+      "money_peso": 333,
+      "time_reading": 180,
+      "comparing_ordering": 152,
+      "division": 112,
+      "counting": 104,
+      "shapes_2d": 84,
+      "fractions": 75,
+      "area": 64,
+      "mass_capacity": 48,
+      "order_of_operations": 48,
+      "perimeter": 42,
+      "length_measurement": 26,
+      "ordinal_numbers": 24,
+      "bar_graphs": 24,
+      "number_reading": 21,
+      "compose_decompose_to_10": 21,
+      "place_value": 20,
+      "rounding": 18,
+      "calendar": 16,
+      "probability_experiment": 16,
+      "probability_language": 16,
+      "patterns": 15,
+      "geometric_lines": 15,
+      "pictographs": 8,
+      "symmetry_slides": 8
+    },
+    "by_formatter": {
+      "mcq": 1461,
+      "cloze": 1226,
+      "true_false": 868,
+      "error_detect": 515,
+      "number_line_read": 189,
+      "emoji_pictorial": 172,
+      "array_grid_read": 79,
+      "array_grid_set": 79,
+      "number_bond": 66,
+      "clock_read": 50,
+      "clock_set": 50,
+      "peso_money_read": 35,
+      "ordering": 32,
+      "sort_order": 32,
+      "number_line_set": 31,
+      "categorize": 28,
+      "shape_board": 28,
+      "peso_money_build": 28,
+      "fraction_model_read": 15,
+      "bar_chart_read": 15,
+      "fraction_shade": 12,
+      "bar_chart_set": 9,
+      "calendar_read": 8,
+      "grid_area": 8,
+      "ruler_measure": 6,
+      "pictograph_read": 5,
+      "place_value_blocks_set": 5,
+      "place_value_blocks_read": 3,
+      "pattern_sequence": 3,
+      "pictograph_set": 1,
+      "fill_in_table": 1
+    },
+    "continuous_axes_by_dna": {
+      "addition": [
+        "max_sum",
+        "number_difficulty"
+      ],
+      "area": [
+        "number_difficulty"
+      ],
+      "bar_graphs": [
+        "num_categories",
+        "value_max"
+      ],
+      "calendar": [],
+      "comparing_ordering": [
+        "max_value",
+        "number_difficulty"
+      ],
+      "compose_decompose_to_10": [],
+      "counting": [
+        "range"
+      ],
+      "division": [
+        "number_difficulty"
+      ],
+      "fractions": [
+        "number_difficulty"
+      ],
+      "geometric_lines": [
+        "number_difficulty"
+      ],
+      "length_measurement": [
+        "number_difficulty"
+      ],
+      "mass_capacity": [
+        "number_difficulty"
+      ],
+      "missing_number": [
+        "number_difficulty"
+      ],
+      "money_peso": [
+        "max_total",
+        "number_difficulty"
+      ],
+      "multiplication": [
+        "max_product",
+        "number_difficulty"
+      ],
+      "number_reading": [
+        "range"
+      ],
+      "order_of_operations": [],
+      "ordinal_numbers": [
+        "ordinal_range"
+      ],
+      "patterns": [
+        "number_difficulty"
+      ],
+      "perimeter": [
+        "number_difficulty"
+      ],
+      "pictographs": [
+        "num_categories",
+        "value_max"
+      ],
+      "place_value": [
+        "number_difficulty"
+      ],
+      "probability_experiment": [],
+      "probability_language": [],
+      "rounding": [
+        "number_difficulty"
+      ],
+      "shapes_2d": [
+        "number_difficulty"
+      ],
+      "subtraction": [
+        "number_difficulty"
+      ],
+      "symmetry_slides": [
+        "number_difficulty"
+      ],
+      "time_reading": [
+        "number_difficulty"
+      ]
+    }
+  },
+  "not_crossed_into_the_manifest": {
+    "experience": {
+      "values": [
+        "hint_gated",
+        "mastery_drill",
+        "scaffolded",
+        "standard"
+      ],
+      "multiplier": 4
+    },
+    "student_interest": {
+      "values": [
+        "anime_manga",
+        "anime_rpg",
+        "basketball",
+        "bible",
+        "business_money",
+        "casual_puzzle_games",
+        "competitive_gaming",
+        "content_creation",
+        "creative_writing",
+        "dance",
+        "diy_crafts",
+        "fitness_sports",
+        "food_baking",
+        "graphic_design",
+        "history_trivia",
+        "kpop",
+        "meme_streaming",
+        "music_performance",
+        "pets",
+        "ppop",
+        "sandbox_games",
+        "science_tech",
+        "social_issues",
+        "visual_arts",
+        "volleyball",
+        "western_pop"
+      ],
+      "multiplier": 27,
+      "note": "+1 for the neutral default (no interest supplied)"
+    },
+    "why": "Both are genuinely free parameters of pipeline.run(), so the full cross is base x 4 x 27. The execution budget for that has not been measured, and the plan forbids silently dropping obligations -- so the multiplier is recorded here rather than the product being enumerated. THIS IS THE LARGEST UNCLOSED GAP IN H-04.",
+    "full_cross_if_enumerated": 546480
+  },
+  "rejected": {
+    "total": 269,
+    "by_production_rule": {
+      "NODE_FORMATTER_EXCLUSIONS": 228,
+      "FORMATTER_VARIANT_SUPPORT": 41
+    },
+    "examples": [
+      {
+        "node": "mat_g1_dp_q3_0",
+        "dna": "pictographs",
+        "formatter": "fill_in_table",
+        "rule": "NODE_FORMATTER_EXCLUSIONS",
+        "detail": "the DNA can drive this formatter but the node does not advertise it (generated exclusion), so no student receives it"
+      },
+      {
+        "node": "mat_g1_dp_q3_0",
+        "dna": "pictographs",
+        "formatter": "pictograph_read",
+        "rule": "NODE_FORMATTER_EXCLUSIONS",
+        "detail": "the DNA can drive this formatter but the node does not advertise it (generated exclusion), so no student receives it"
+      },
+      {
+        "node": "mat_g1_dp_q3_0",
+        "dna": "pictographs",
+        "formatter": "pictograph_set",
+        "rule": "NODE_FORMATTER_EXCLUSIONS",
+        "detail": "the DNA can drive this formatter but the node does not advertise it (generated exclusion), so no student receives it"
+      },
+      {
+        "node": "mat_g1_dp_q3_0",
+        "dna": "pictographs",
+        "formatter": "table_read",
+        "rule": "NODE_FORMATTER_EXCLUSIONS",
+        "detail": "the DNA can drive this formatter but the node does not advertise it (generated exclusion), so no student receives it"
+      },
+      {
+        "node": "mat_g1_dp_q3_1",
+        "dna": "pictographs",
+        "formatter": "fill_in_table",
+        "rule": "NODE_FORMATTER_EXCLUSIONS",
+        "detail": "the DNA can drive this formatter but the node does not advertise it (generated exclusion), so no student receives it"
+      },
+      {
+        "node": "mat_g1_dp_q3_1",
+        "dna": "pictographs",
+        "formatter": "mcq",
+        "rule": "NODE_FORMATTER_EXCLUSIONS",
+        "detail": "the DNA can drive this formatter but the node does not advertise it (generated exclusion), so no student receives it"
+      },
+      {
+        "node": "mat_g1_dp_q3_1",
+        "dna": "pictographs",
+        "formatter": "pictograph_read",
+        "rule": "NODE_FORMATTER_EXCLUSIONS",
+        "detail": "the DNA can drive this formatter but the node does not advertise it (generated exclusion), so no student receives it"
+      },
+      {
+        "node": "mat_g1_dp_q3_1",
+        "dna": "pictographs",
+        "formatter": "table_read",
+        "rule": "NODE_FORMATTER_EXCLUSIONS",
+        "detail": "the DNA can drive this formatter but the node does not advertise it (generated exclusion), so no student receives it"
+      },
+      {
+        "node": "mat_g1_dp_q3_2",
+        "dna": "pictographs",
+        "formatter": "fill_in_table",
+        "rule": "NODE_FORMATTER_EXCLUSIONS",
+        "detail": "the DNA can drive this formatter but the node does not advertise it (generated exclusion), so no student receives it"
+      },
+      {
+        "node": "mat_g1_dp_q3_2",
+        "dna": "pictographs",
+        "formatter": "mcq",
+        "rule": "NODE_FORMATTER_EXCLUSIONS",
+        "detail": "the DNA can drive this formatter but the node does not advertise it (generated exclusion), so no student receives it"
+      }
+    ]
+  },
+  "derived_coverage": {
+    "registered_formatters": 36,
+    "formatters_reached_by_some_obligation": 31,
+    "formatters_no_obligation_can_reach": [
+      "balance_scale",
+      "fill_in_blank",
+      "numeric_input",
+      "table_read",
+      "ten_frame"
+    ],
+    "note": "renderer and answer_collection are determined by the formatter, so they are reported as coverage rather than multiplied into the manifest; see the module docstring"
+  }
+}

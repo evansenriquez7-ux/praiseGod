@@ -119,6 +119,7 @@ mutation is unproven regardless of how long it has been passing.
 | §1K option degeneracy | a choice item must offer distinguishable choices, and exactly one may answer it |
 | §9 render contract | the payload must be renderable by the React component the student sees |
 | §10 grading contract | a known-correct answer graded correct, a known-wrong or malformed one refused, by all three graders — hermetically |
+| §11 obligation manifest | the reachable student-path space, derived twice and agreeing; no dead formatter route |
 | stage ledger | every declared stage ran to a verdict; a crash is a named failure, not an escape |
 | §7 census | the suite itself has not silently shrunk |
 | two-direction | the contract doc, this doc, and the registry agree |
@@ -164,6 +165,7 @@ mutation is unproven regardless of how long it has been passing.
 | `§8` | validate_coverage: every assertion the harness can emit is either proven by an EXECUTED mutation (a verified proof record in `validation_reports/mutation_proofs/`) or on a shrinking allowlist |
 | `§9` | validate_render: the payload a node emits must be renderable by the React component the student sees |
 | `§10` | validate_grade: a known-correct answer must be graded correct, a known-wrong or malformed one refused, by all three graders — hermetically |
+| `§11` | validate_obligations: the student-path obligation manifest is derived twice and agrees, and no registered formatter route is unreachable |
 
 ### Proving the harness
 

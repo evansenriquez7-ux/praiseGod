@@ -82,7 +82,12 @@ CENSUS_FLOORS = {
     # red by construction, so a plant there could not be scored at all (Mandate 2). These
     # drive the REAL StageLedger and the REAL run_all with every validator stubbed, and
     # three mutations plant into that control flow and are caught here by name.
-    "unit_tests": 569,
+    # 585 collected 2026-09-12 (was 576), +9 from test_obligation_manifest.py -- §11's
+    # determinism half. "Enumeration is deterministic" is an H-04 acceptance item that
+    # CANNOT be a mutation: a mutation proves a check fires, and determinism is the
+    # absence of variation. It is pinned by test instead, alongside the assertions that
+    # the budget report keeps saying what it does NOT cover.
+    "unit_tests": 578,
     # 56 registered 2026-09-09 (was 51, 50, 48, 37). Four prove §8's own directions, one
     # §2C at (node, formatter) granularity, two the §6 phase seam, one that every contract
     # check declares the phase it runs in, four the §6 Phase 1 band (§6A/§6B/§6C/§6E, which
@@ -145,7 +150,12 @@ CENSUS_FLOORS = {
     # proves the stage schedule is held to _manifest.CHECK_PHASE. That is the wrong-phase
     # path plan step 0A asks for; run_all's OTHER phase reconciliation (`misphased`) is
     # unreachable by construction and is recorded as a limitation instead.
-    "mutations": 89,
+    # 91 registered 2026-09-12 (was 89): +2 for §11, the obligation manifest.
+    # `obligation_derivations_diverge` drops one production gate from one traversal only,
+    # which is the failure the plan's own unreproducible 4,325 figure walked into.
+    # `dead_formatter_route_ignored` registers a sixth unreachable route: §2B/§2C hold
+    # advertised->servable, and nothing held registered->reachable until §11.
+    "mutations": 91,
     # 983 observed 2026-09-08. How many (variant, value) pairs the blind-review packets
     # will actually demonstrate across the tree.
     #

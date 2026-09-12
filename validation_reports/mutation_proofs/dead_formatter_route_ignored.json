@@ -1,0 +1,44 @@
+{
+ "asserts": [
+  "obligation_routes_reachable"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "FAIL obligation_routes_reachable"
+ ],
+ "command": [
+  "backend.app.practice_gen.validation.validate_obligations"
+ ],
+ "definition_digest": "a0173a2182f24d3b39868877476babe8aca1c723b7819b1c0bfae83372772040",
+ "detected": true,
+ "diagnostic_line": "exit 1 — FAIL obligation_routes_reachable: 6 registered formatter route(s) no obligation can reach, above the floor of 5: ['balance_scale', 'fill_in_blank', 'numeric_input', 'planted_dead_route', 'table_read', 'ten_frame']. A rou",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "FAIL obligation_routes_reachable",
+  "planted_dead_route"
+ ],
+ "expected_check": "§11 (a registered formatter route no obligation can reach)",
+ "finished_at": "2026-09-12T21:51:16+08:00",
+ "input_digest": "f42fb487bcdc6861de19ca7239bf04ac5e37f05cf9e928f34722a248cfb1eae7",
+ "mutated_paths": [
+  "backend/app/practice_gen/adapter.py"
+ ],
+ "mutation": "dead_formatter_route_ignored",
+ "observed_markers": {
+  "FAIL obligation_routes_reachable": true,
+  "planted_dead_route": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-09-12T21:51:14+08:00"
+}

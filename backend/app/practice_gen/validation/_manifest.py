@@ -55,6 +55,7 @@ CHECK_PHASE: Dict[str, int] = {
     "§8": 1,
     "§9": 1,
     "§10": 1,
+    "§11": 1,           # validate_obligations: the student-path obligation manifest
     # -- Phase 2: needs an agent-authored artifact on disk ------------------------------
     "§5": 2,            # validation_reports/judgment/
     "§6F": 2, "§6G": 2, "§6H": 2,   # validation_reports/attestation/

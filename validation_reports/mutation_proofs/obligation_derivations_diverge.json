@@ -1,0 +1,44 @@
+{
+ "asserts": [
+  "obligation_derivations_agree"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "FAIL obligation_derivations_agree"
+ ],
+ "command": [
+  "backend.app.practice_gen.validation.validate_obligations"
+ ],
+ "definition_digest": "f0a97069537766c5d97ec2f3a749fbfa22df56f8e3f76083a17376716eedad47",
+ "detected": true,
+ "diagnostic_line": "exit 1 — FAIL obligation_derivations_agree: the node-first traversal counts 500 (node, DNA, formatter) pairs and 5207 discrete obligations; the formatter-first traversal counts 459 and 5060. Two derivations of one production fact",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "FAIL obligation_derivations_agree",
+  "disagree"
+ ],
+ "expected_check": "§11 (two independent derivations of the reachable count agree)",
+ "finished_at": "2026-09-12T21:51:14+08:00",
+ "input_digest": "f42fb487bcdc6861de19ca7239bf04ac5e37f05cf9e928f34722a248cfb1eae7",
+ "mutated_paths": [
+  "tests/obligation_manifest.py"
+ ],
+ "mutation": "obligation_derivations_diverge",
+ "observed_markers": {
+  "FAIL obligation_derivations_agree": true,
+  "disagree": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-09-12T21:51:13+08:00"
+}

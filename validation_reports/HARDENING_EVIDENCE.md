@@ -10597,3 +10597,114 @@ the behavioural matrix is 60% of Phase 1's wall time.
    (`_try_render`, `_seed_renders`) are untouched here and remain open. They are named in
    plan step 2 and overlap `H-05`. This section closes the RUNNER's boundaries, not every
    validator's internal ones, and the H-row is not closed on that basis alone.
+
+---
+
+## H-04 (first half) — the obligation manifest, and a number that could not be re-derived
+(2026-09-12)
+
+Plan step 0B asks first for an enumeration WITHOUT generating: count the reachable
+student-path space before building anything that sweeps it. `H-04`'s acceptance includes
+a check with a sharp edge — "two independent derivations agree on the reachable count" —
+and applying it to the plan's own recorded figure is how this section starts.
+
+### The plan's 4,325 is not reproducible, and its probe is gone
+
+The plan records "a lower bound of 4,325 allowed `(node, DNA, formatter,
+discrete-assignment)` obligations across 463 node/DNA/formatter pairs". The probe that
+produced it is **not on disk** — `local_only/scratch/plan_fold_review/` holds a different
+probe with no enumeration in it — and no candidate model recovers either number. Measured
+2026-09-12 across four models:
+
+```text
+scope=COMPATIBILITY      pairs=474  sum-of-values=3063  full-product=5238
+scope=advertised         pairs=459  sum-of-values=2950  full-product=5060
+plan recorded            pairs=463       allowed_assignments=4325
+```
+
+A count nobody can re-derive is a number, not evidence. So the manifest does not inherit
+it. `tests/obligation_manifest.py` states its model explicitly, derives the count by two
+different traversals of the production tables, and `validate_obligations` (§11) fails if
+they disagree. The plan's figure is recorded in `obligation_budget.json` under
+`plan_figure_not_reproduced` and pinned by a unit test, so it stays visible as superseded
+rather than quietly vanishing — otherwise the next agent re-inherits it.
+
+### The model, stated rather than assumed
+
+An obligation is `(node, DNA, formatter, discrete assignment)`. Formatters are
+`COMPATIBILITY[dna]` INTERSECTED with `get_node_formatters(node)` — the first says what
+the DNA can drive, the second what the node may advertise after
+`NODE_FORMATTER_EXCLUSIONS`, and a pupil can only receive what both allow. Assignments are
+the full Cartesian product of variant values surviving all three production gates:
+`FORMATTER_VARIANT_SUPPORT`, the node's competency bounds where they pin a variant, and
+the `is_variant_available_at` curriculum gate.
+
+```text
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_obligations
+  PASS obligation_derivations_agree: two independent traversals agree on 459
+       (node, DNA, formatter) pair(s) and 5060 discrete obligation(s);
+       22626 continuous class crossing(s)
+  PASS obligation_routes_reachable: 5 registered route(s) unreachable (floor 5,
+       shrink-only): ['balance_scale', 'fill_in_blank', 'numeric_input', 'table_read',
+       'ten_frame']
+       experience x4 and interest x27 are NOT crossed in (546480 if enumerated)
+EXIT=0
+```
+
+Independent corroboration that the enumeration mirrors production: it derives **228**
+`NODE_FORMATTER_EXCLUSIONS` rejections, and `registry.get_node_formatters`'s own docstring
+records "228 of 690 pairs across 86 of 151 nodes were advertised and always refused".
+Two unrelated measurements of the same fact, agreeing.
+
+### A second finding the enumeration produced on its first run
+
+§2B and §2C hold *a formatter a node ADVERTISES must be servable*. **Nothing held the
+reverse** — a formatter REGISTERED in `adapter.FORMATTER_ROUTES` that no node can ever
+receive. Five exist, in two distinct classes, diagnosed rather than lumped together:
+
+| Route | Declared by a DNA? | Nodes advertising it |
+|---|---|---|
+| `fill_in_blank`, `numeric_input`, `ten_frame` | **no DNA at all** | 0 |
+| `balance_scale` (missing_number), `table_read` (pictographs) | yes | 0 — every node excludes it |
+
+Gated as a **shrink-only floor of 5**, not a hard zero, per Scaling Mandate 5: the
+baseline is not clean, and deciding whether a dead route should be deleted or wired to a
+node is a curriculum question (a formatter may exist for a grade not yet built), not one
+the harness may answer alone.
+
+### Mutations
+
+```text
+$ PYTHONPATH=. .venv/bin/python tests/mutation_harness.py --only obligation_derivations_diverge
+    DETECTED: exit 1 — FAIL obligation_derivations_agree: the node-first traversal counts
+    500 (node, DNA, formatter) pairs and 5207 discrete obligations; the formatter-first
+    traversal counts 459 and 5060.
+$ ... --only dead_formatter_route_ignored
+    DETECTED: exit 1 — FAIL obligation_routes_reachable: 6 registered formatter route(s)
+    no obligation can reach, above the floor of 5: [... 'planted_dead_route' ...]
+```
+
+`obligation_derivations_diverge` drops ONE production gate from ONE traversal, which is
+precisely the failure mode the plan's unreproducible figure walked into.
+
+### What H-04 does NOT close, stated because the row stays open
+
+1. **`experience` and `student_interest` are not crossed into the manifest.** Both are
+   free parameters of `pipeline.run()`, so the true product is 5,060 x 4 x 27 =
+   **546,480**. The budget file records the multiplier and the reachable values and labels
+   this "THE LARGEST UNCLOSED GAP IN H-04"; it does not enumerate the product, because the
+   execution cost has not been measured and the plan forbids silently dropping obligations
+   more than it forbids naming them.
+2. **Enumeration is not execution.** Nothing here generates a problem. An obligation
+   counted reachable may still be refused at generation time; step 0B's executor is what
+   turns that into a named failure.
+3. **The 1,000-obligation benchmark is not done**, nor sharding, nor the PR/release tier
+   split. Step 0B's budget targets (30 min PR tier, 4 h release) are unmeasured.
+4. **Two derivations agreeing does not make the model right.** Both read the same
+   production tables, so they catch a transcription error in either traversal, not a
+   misunderstanding they share. "Enumeration is deterministic" is pinned by unit test
+   rather than by mutation, because a mutation proves a check FIRES and determinism is the
+   absence of variation.
+5. **Continuous partitions are three classes per axis** (both curriculum boundaries and
+   one interior representative). Behaviour between representatives stays explicitly
+   unproven.

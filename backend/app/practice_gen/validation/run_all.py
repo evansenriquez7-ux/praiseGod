@@ -52,6 +52,7 @@ from backend.app.practice_gen.validation import (
     validate_options,
     validate_render,
     validate_grade,
+    validate_obligations,
     validate_coverage,
     validate_vocab,
 )
@@ -141,6 +142,7 @@ CONTRACT_CHECKS: Dict[str, str] = {
     "§1K": "validate_options: a choice item must offer distinguishable choices, and exactly one of them may answer the question",
     "§9": "validate_render: the payload a node emits must be renderable by the React component the student sees",
     "§10": "validate_grade: a known-correct answer must be graded correct, a known-wrong or malformed one refused, by all three graders — hermetically",
+    "§11": "validate_obligations: the student-path obligation manifest is derived twice and agrees, and no registered formatter route is unreachable",
 }
 
 _LAST_UNIT_TEST_COUNT: list = [None]
@@ -419,6 +421,7 @@ def run_all(fail_fast: bool = False, phase: Optional[int] = None) -> int:
         ("render_contract_9",   1, ("§9",),  "Render Contract (§9)"),
         ("grading_contract_10", 1, ("§10",), "Grading Contract (§10)"),
         ("assertion_coverage_8", 1, ("§8",), "Assertion Coverage (§8)"),
+        ("obligation_manifest_11", 1, ("§11",), "Obligation Manifest (§11)"),
         ("census_7",            1, ("§7",),  "Suite Census (§7)"),
         ("judgment_reviews_5",  2, ("§5",),  "Judgment Reviews (§5)"),
         ("capability_phase2",   2, (),      "Capability Contract Phase 2 (§6F-§6H)"),
@@ -836,6 +839,17 @@ def run_all(fail_fast: bool = False, phase: Optional[int] = None) -> int:
             executed_checks.add("§8")
         return ok
 
+    def _stage_obligation_manifest_11() -> bool:
+        print("\n--- Obligation Manifest (§11) ---")
+        # Counts the reachable student-path space WITHOUT generating anything, twice, by
+        # two different traversals of the production tables. The plan's recorded figure of
+        # 4,325 obligations could not be reproduced and its probe is not on disk, which is
+        # exactly what this acceptance check exists to catch.
+        ok = validate_obligations.validate_all()
+        if ok:
+            executed_checks.add("§11")
+        return ok
+
     def _stage_census_7() -> bool:
         print("\n--- Suite Census (§7) ---")
         ok = validate_census.validate_all()
@@ -844,7 +858,7 @@ def run_all(fail_fast: bool = False, phase: Optional[int] = None) -> int:
         return ok
 
     render_ok = grade_ok = coverage_ok = census_ok = True
-    language_ok = options_ok = True
+    language_ok = options_ok = obligations_ok = True
     if _runs(1):
         for _stage_name, _stage_body in (
             ("count_noun_1J", _stage_count_noun_1J),
@@ -852,6 +866,7 @@ def run_all(fail_fast: bool = False, phase: Optional[int] = None) -> int:
             ("render_contract_9", _stage_render_contract_9),
             ("grading_contract_10", _stage_grading_contract_10),
             ("assertion_coverage_8", _stage_assertion_coverage_8),
+            ("obligation_manifest_11", _stage_obligation_manifest_11),
             ("census_7", _stage_census_7),
         ):
             _stage_ok = ledger.run(_stage_name, _stage_body)
@@ -865,6 +880,8 @@ def run_all(fail_fast: bool = False, phase: Optional[int] = None) -> int:
                 grade_ok = _stage_ok
             elif _stage_name == "assertion_coverage_8":
                 coverage_ok = _stage_ok
+            elif _stage_name == "obligation_manifest_11":
+                obligations_ok = _stage_ok
             else:
                 census_ok = _stage_ok
             if not _stage_ok and fail_fast:
@@ -996,7 +1013,7 @@ def run_all(fail_fast: bool = False, phase: Optional[int] = None) -> int:
     all_ok = (unit_ok and dna_ok and compat_ok and interest_ok and vocab_ok and matrix_ok
               and judgment_ok and provision_ok and attestation_ok and contract_match_ok
               and census_ok and render_ok and grade_ok and coverage_ok
-              and language_ok and options_ok and not ledger_failures)
+              and language_ok and options_ok and obligations_ok and not ledger_failures)
     scope = "ALL TESTS" if phase is None else f"PHASE {phase}"
     if all_ok:
         print(f"{scope} PASSED SUCCESSFULLY! Praise God!")
