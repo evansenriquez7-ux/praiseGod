@@ -192,7 +192,9 @@ UNPROVEN_ASSERTIONS: Dict[str, str] = {
     "coverage_regression_1H":       "2026-09-08: §1E/§4/§1I coverage compared against the last recorded run. node_dropped_from_check proves the applicability half of §1H, not the regression half",
     "contract_doc_matches_registry": "2026-09-08: pgen_contract.md <-> CONTRACT_CHECKS equality. Unproven",
     "operator_doc_covers_registry": "2026-09-08: the testing_pipeline.md ref floor. Unproven",
-    "two_direction_contract_match": "2026-09-08: executed checks vs registered checks. Unproven",
+    # PAID 2026-09-12 by `crash_deletes_its_own_expected_refs`. The tripwire was unproven
+    # for four days; the plant that proves it is the one that matters most, because it
+    # silences the tripwire using the very crash that stopped a check executing.
 }
 
 

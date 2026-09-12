@@ -10411,3 +10411,189 @@ on the render side.
    Any `GraderGate_shared` / `GraderAudit_*` rows left in the production database by
    earlier runs are still there; removing them touches production data and is left for
    the owner to decide.
+
+---
+
+## H-03 — the stage ledger: a crash may not delete the obligations it skipped (2026-09-12)
+
+`H-03` carried `measurement_status: "unmeasured — inherited from the plan"`. The first
+acceptance check is therefore to measure it rather than believe it. Measured by
+monkeypatching one live stage to raise, with the two slow stages stubbed (the property
+under test is control flow, which stubbing does not affect):
+
+```text
+$ PYTHONPATH=. .venv/bin/python scratch/measure_h03.py     # BEFORE
+run_all returned      : None
+run_all raised        : 'RuntimeError: planted stage crash (H-03 measurement)'
+stage after the crash reached? grade_§10   : False
+stage after the crash reached? coverage_§8 : False
+stage after the crash reached? census_§7   : False
+two-direction section printed : False
+final summary printed         : False
+any line naming the crash     : False
+any FAIL line for §9          : False
+```
+
+**The inherited finding understated it.** "Can lose the final summary" is true, but the
+larger fact is that one stage raising silently skipped THREE further gates — the grading
+contract, the assertion-coverage gate and the census — and printed no line naming any of
+it. An operator saw a traceback. They did not see that §10 never ran. That is worse than
+a red run, because a red run at least tells you which obligations were checked.
+
+The same probe, after:
+
+```text
+$ PYTHONPATH=. .venv/bin/python scratch/measure_h03.py     # AFTER
+run_all returned      : 1
+run_all raised        : None
+stage after the crash reached? grade_§10   : True
+stage after the crash reached? coverage_§8 : True
+stage after the crash reached? census_§7   : True
+two-direction section printed : True
+final summary printed         : True
+any line naming the crash     : True
+```
+
+### What the ledger does, and the one distinction it exists for
+
+Fifteen stages are DECLARED before anything executes, so the runner can tell "never
+reached" from "ran and passed" — which straight-line code cannot. Five states:
+`scheduled` (declared, never entered — a FAILURE), `attempted`, `completed`, `failed`,
+`crashed`. Each is printed with its duration.
+
+The distinction that carries the whole row:
+
+  * a **failed** stage's contract refs LEAVE the two-direction comparison, because it ran
+    and it reported. This is the pre-existing behaviour and it is correct.
+  * a **crashed** or never-entered stage's refs STAY in the expected set, so the drift
+    tripwire reports them as registered-but-not-executed. A crash cannot silence the check
+    whose job is to notice that a registered check did not execute.
+
+That reconciliation was six hand-written `if not X_ok: expected.discard(...); executed.discard(...)`
+pairs, and they were wrong in two directions at once: the ref lists were incomplete (§2C
+through §2I were never discarded alongside §2, and §1J/§1K/§9/§10/§8/§7 had no pairs at
+all), and a crashed stage discarded its refs exactly like a stage that had run. It is now
+derived from the ledger, so a new stage cannot forget to add its pair.
+
+### A bug the new tests caught immediately
+
+`executed_checks |= validate_matrix.LAST_EXECUTED_CHECKS` inside a stage function is an
+augmented assignment, which REBINDS the name and makes it local — `UnboundLocalError`, not
+a contribution to the outer set. The refactor shipped with that defect and
+`test_stage_ledger.py` failed on its first run, naming the stage and the exception. It is
+`.update(...)` now. This is recorded because it is the argument for the tests existing:
+the ledger contained the crash and reported it by name, so the harness diagnosed its own
+regression instead of dying.
+
+### Commands and verbatim output
+
+```text
+$ PYTHONPATH=. .venv/bin/python -m pytest tests/unit/test_stage_ledger.py -q
+21 passed in 0.56s
+
+$ PYTHONPATH=. .venv/bin/python -m pytest tests/unit -q
+572 passed, 1 skipped, 2 deselected, 4 warnings in 81.37s
+
+$ PYTHONPATH=. .venv/bin/python tests/mutation_harness.py --only stage_crash_escapes_the_ledger
+    DETECTED: exit 1 — test_a_raising_stage_is_contained_and_named
+$ ... --only unreached_stage_reported_as_clean
+    DETECTED: exit 1 — test_a_stage_that_never_ran_is_a_ledger_failure
+$ ... --only crash_deletes_its_own_expected_refs
+    DETECTED: exit 1 — test_a_crash_cannot_delete_its_own_expected_refs
+3/3 mutations detected.
+
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_census
+  PASS census: unit_tests=573 (floor 566)
+  PASS census: mutations=88 (floor 88)
+```
+
+`crash_deletes_its_own_expected_refs` **pays an allowlist entry**:
+`two_direction_contract_match` had been unproven since 2026-09-08. It is the plant that
+matters most of the three, because it silences the drift tripwire using the very crash
+that stopped a check from executing. Allowlist 38 -> 37.
+
+### A second gap found while closing the first: two registries, one fact
+
+Plan step 0A asks for the WRONG-PHASE path to be proved. Attempting it showed that
+`run_all`'s existing `misphased` reconciliation -- comparing `executed_phase` against
+`validate_capability.CHECK_PHASE` -- is **unreachable by construction**: `_record_phase`
+derives both the refs it records AND the phase it records them under from that same
+registry, so the two cannot disagree. Rather than invent a contrived plant to tick the
+box, that branch is recorded as a limitation in the contract row and in the code.
+
+The real wrong-phase risk lay elsewhere and nothing checked it. `_manifest.CHECK_PHASE`
+decides which band a contract ref BELONGS to; the stage schedule decides which band
+actually RUNS it. Move §9 to Phase 2 in the manifest and `render_contract_9` still runs
+in Phase 1 -- so `--phase 2` reports §9 as registered-but-never-executed forever, while
+`--phase 1` goes on executing a ref it no longer owns. `stage_phase_matches_manifest`
+now holds every stage's declared refs to the manifest, in both directions (wrong band, and
+no manifest entry at all), and `stage_runs_in_the_wrong_band` proves it.
+
+```text
+$ PYTHONPATH=. .venv/bin/python tests/mutation_harness.py
+88/89 mutations detected.
+  - source_edited_without_reproof: nothing enforces §8
+
+# the documented self-poisoning remedy, again, second time this session:
+$ rm validation_reports/mutation_proofs/source_edited_without_reproof.json
+$ PYTHONPATH=. .venv/bin/python tests/mutation_harness.py --only source_edited_without_reproof
+    DETECTED: exit 1 — FAIL mutation_proof_integrity_8
+1/1 mutations detected.
+
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_coverage
+  PASS mutation_proof_integrity_8: 89 executed mutation proof(s) verified against the
+       current source/fixture digest
+  PASS assertion_coverage_8: 77/114 harness assertions proven BY EXECUTION, 37 knowingly
+       unproven (allowlist may only shrink)
+```
+
+Across this session: 68/107 proven -> **77/114**; allowlist 39 -> **37**; mutations 79 -> **89**.
+
+### The ledger on a real run
+
+```text
+--- Stage Ledger ---
+  PASS       unit_tests                     phase 1    82.0s
+  PASS       dna                            phase 1     0.1s
+  PASS       compatibility                  phase 1    58.6s
+  PASS       interest_invariance            phase 1     1.1s
+  PASS       vocabulary                     phase 1     2.1s
+  PASS       behavioural_matrix             phase 1   357.1s
+  PASS       capability_phase1              phase 1     0.5s
+  PASS       count_noun_1J                  phase 1    62.3s
+  PASS       option_degeneracy_1K           phase 1    62.4s
+  PASS       render_contract_9              phase 1     3.4s
+  PASS       grading_contract_10            phase 1    31.9s
+  FAIL       assertion_coverage_8           phase 1     0.5s
+  PASS       census_7                       phase 1     3.1s
+  scheduled=13 completed=12 failed=1 crashed=0 not_run=0 incomplete=0
+  PASS stage_ledger_complete: every scheduled stage ran to a verdict
+```
+
+That run is worth keeping as the example: §8 was legitimately red (the edits had
+invalidated all 85 proofs, which is the staleness rule working), the run continued through
+every remaining stage anyway, and the ledger says in one line which stage failed and that
+nothing was skipped. The per-stage timings are a free by-product and immediately useful --
+the behavioural matrix is 60% of Phase 1's wall time.
+
+### Named limitations (Scaling Mandate 6)
+
+1. **The three crash/ledger mutations drive pytest, not a live `run_all`.** This follows the existing
+   `subtraction_pool_uncapped` pattern and is forced: a full Phase 1 costs about eight
+   minutes per run, and a mutation needs a baseline AND a planted run; the Phase 2 band's
+   baseline is red by construction, so a plant there could not be scored at all (Mandate
+   2). `tests/unit/test_stage_ledger.py` drives the REAL `StageLedger` and the REAL
+   `run_all` with every validator stubbed, so the plant lands on production control flow
+   — but it proves the CONTROL FLOW, not that a crash inside a real validator is
+   contained. The live measurement at the top of this section is what establishes that,
+   and it is a measurement, not a gate.
+2. **The ledger does not yet record a command/input digest per stage**, which plan step 0A
+   also asks for. The stage record carries name, phase, refs, title, state, ok, detail and
+   duration. Binding each stage to its inputs is not done and is not claimed.
+3. **Validator-internal catch-and-continue is NOT closed by this.** `H-03`'s finding text
+   also names "several validators catch an import/generation error and continue, so
+   attempted work can be reported as coverage". §10's two `except: continue` paths were
+   removed under `H-01`; the remaining ones across `validate_matrix` and its helpers
+   (`_try_render`, `_seed_renders`) are untouched here and remain open. They are named in
+   plan step 2 and overlap `H-05`. This section closes the RUNNER's boundaries, not every
+   validator's internal ones, and the H-row is not closed on that basis alone.

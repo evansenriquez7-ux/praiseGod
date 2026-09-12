@@ -119,6 +119,7 @@ mutation is unproven regardless of how long it has been passing.
 | §1K option degeneracy | a choice item must offer distinguishable choices, and exactly one may answer it |
 | §9 render contract | the payload must be renderable by the React component the student sees |
 | §10 grading contract | a known-correct answer graded correct, a known-wrong or malformed one refused, by all three graders — hermetically |
+| stage ledger | every declared stage ran to a verdict; a crash is a named failure, not an escape |
 | §7 census | the suite itself has not silently shrunk |
 | two-direction | the contract doc, this doc, and the registry agree |
 

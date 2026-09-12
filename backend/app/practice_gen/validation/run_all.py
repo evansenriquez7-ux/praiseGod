@@ -56,7 +56,7 @@ from backend.app.practice_gen.validation import (
     validate_vocab,
 )
 from backend.app.practice_gen.validation.validate_matrix import run_matrix_validation
-from backend.app.practice_gen.validation._manifest import refs_in_phase
+from backend.app.practice_gen.validation._manifest import CHECK_PHASE, refs_in_phase
 
 _PGEN_CONTRACT_PATH = Path(__file__).resolve().parents[4] / "docs" / "pgen_contract.md"
 
@@ -71,6 +71,15 @@ ASSERTIONS = (
     "contract_doc_matches_registry",
     "operator_doc_covers_registry",
     "two_direction_contract_match",
+    # The stage ledger (H-03, 2026-09-12). Two directions, because a stage can fail to
+    # produce a verdict in two different ways and they are not the same finding:
+    "stage_ledger_complete",   # a scheduled stage never reached a verdict (crashed, or
+                               # never entered after a fail-fast abort)
+    "stage_phase_matches_manifest",  # a stage runs in a band its own refs are not
+                                     # registered to (two registries, one fact)
+    "stage_crashed_",          # one named stage raised. An f-string label: §8 inventories
+                               # it by family, the way validate_matrix's are, because the
+                               # stage name is part of the label and there are fifteen.
 )
 
 
@@ -137,6 +146,196 @@ CONTRACT_CHECKS: Dict[str, str] = {
 _LAST_UNIT_TEST_COUNT: list = [None]
 
 
+# ─── The stage ledger (H-03) ──────────────────────────────────────────────────
+#
+# MEASURED 2026-09-12, on this tree, by monkeypatching one mid-run stage to raise:
+#
+#     run_all returned      : None
+#     run_all raised        : RuntimeError: planted stage crash
+#     stage after the crash reached? grade_§10   : False
+#     stage after the crash reached? coverage_§8 : False
+#     stage after the crash reached? census_§7   : False
+#     two-direction section printed : False
+#     final summary printed         : False
+#     any line naming the crash     : False
+#
+# One stage raising took THREE further gates (§10, §8, §7), the two-direction tripwire
+# and the summary with it, and printed nothing naming what had been lost. An operator saw
+# a traceback; they did not see that §10 never ran. That is worse than a red run, because
+# a red run at least tells you which obligations were checked.
+#
+# So every stage is now DECLARED before anything executes, and each runs behind an
+# exception boundary. The ledger records five states:
+#
+#   scheduled  -- declared for this phase, never reached (an earlier fail-fast abort).
+#                 A FAILURE: an obligation nobody checked is not an obligation that passed.
+#   attempted  -- entered, not finished (visible only if the process is killed outright)
+#   completed  -- ran to the end and reported PASS
+#   failed     -- ran to the end and reported findings. Its §-refs leave the two-direction
+#                 comparison exactly as they did before: the stage DID run and DID report.
+#   crashed    -- raised. Its §-refs STAY in the expected set, so the tripwire reports them
+#                 as registered-but-not-executed and the crash cannot quietly delete its
+#                 own obligations. That is the plan's requirement in one line: "a crash
+#                 cannot remove its own expected references".
+#
+# `--fail-fast` still stops early, but stops AFTER recording, so even an aborted run says
+# what it did and did not reach.
+
+
+class StageResult:
+    """One scheduled harness stage and what became of it."""
+
+    __slots__ = ("name", "phase", "refs", "title", "state", "ok", "detail", "seconds")
+
+    def __init__(self, name: str, phase: int, refs: tuple, title: str) -> None:
+        self.name = name
+        self.phase = phase
+        self.refs = refs
+        self.title = title
+        self.state = "scheduled"
+        self.ok: Optional[bool] = None
+        self.detail = ""
+        self.seconds = 0.0
+
+    def __repr__(self) -> str:  # pragma: no cover - diagnostics only
+        return f"StageResult({self.name!r}, {self.state!r}, ok={self.ok!r})"
+
+
+class StageLedger:
+    """The declared schedule, and the state each stage actually reached."""
+
+    def __init__(self) -> None:
+        self._stages = []
+
+    def schedule(self, name: str, phase: int, refs: tuple, title: str) -> StageResult:
+        if any(s.name == name for s in self._stages):
+            raise ValueError(f"stage {name!r} is scheduled twice; stage names are keys")
+        stage = StageResult(name, phase, refs, title)
+        self._stages.append(stage)
+        return stage
+
+    def __iter__(self):
+        return iter(self._stages)
+
+    def get(self, name: str) -> StageResult:
+        for stage in self._stages:
+            if stage.name == name:
+                return stage
+        raise KeyError(name)
+
+    def run(self, name: str, body) -> bool:
+        """
+        Execute one scheduled stage behind an exception boundary.
+
+        Returns the stage's ok flag. A crash becomes a NAMED failure that returns False
+        and lets the run continue, instead of an exception that erases every stage after
+        it along with the summary.
+        """
+        import time
+        import traceback
+
+        stage = self.get(name)
+        stage.state = "attempted"
+        started = time.monotonic()
+        try:
+            ok = bool(body())
+            stage.state = "completed" if ok else "failed"
+            stage.ok = ok
+            return ok
+        except BaseException as exc:  # noqa: BLE001 - a crash must not escape a stage
+            stage.state = "crashed"
+            stage.ok = False
+            stage.detail = f"{type(exc).__name__}: {exc}"
+            print(f"  FAIL stage_crashed_{name}: {stage.detail}")
+            for line in traceback.format_exc().strip().splitlines()[-4:]:
+                print(f"    | {line}")
+            print(f"    - The ref(s) {list(stage.refs) or '(none)'} this stage would have "
+                  f"executed are NOT marked executed, and stay in the expected set, so the "
+                  f"two-direction check reports them rather than inheriting silence.")
+            return False
+        finally:
+            stage.seconds = time.monotonic() - started
+
+
+def _check_stage_phases(ledger: "StageLedger") -> list:
+    """
+    Every ref a stage declares must be registered to that stage's own phase.
+
+    THE DRIFT THIS CATCHES: `_manifest.CHECK_PHASE` decides which band a contract ref
+    belongs to, and the stage schedule decides which band actually RUNS it. They are two
+    registries describing one fact, so they can disagree -- move §9 to Phase 2 in the
+    manifest and `render_contract_9` still runs in Phase 1, where `--phase 2` would then
+    report it as registered-but-never-executed forever and `--phase 1` would execute a ref
+    it is not supposed to own. Nothing compared them until 2026-09-12.
+
+    Not to be confused with run_all's `misphased` reconciliation further down, which
+    compares `executed_phase` against the same registry `_record_phase` reads it from --
+    defensive, and UNREACHABLE by construction while both sides share one source. That is
+    recorded as a limitation rather than proved by a contrived plant.
+    """
+    problems = []
+    for stage in ledger:
+        for ref in stage.refs:
+            registered = CHECK_PHASE.get(ref)
+            if registered is None:
+                problems.append(
+                    f"stage {stage.name!r} declares ref {ref} which has no entry in "
+                    f"_manifest.CHECK_PHASE, so `run_all --phase N` cannot place it."
+                )
+            elif registered != stage.phase:
+                problems.append(
+                    f"stage {stage.name!r} runs in phase {stage.phase} but declares ref "
+                    f"{ref}, which _manifest.CHECK_PHASE registers to phase {registered}. "
+                    f"One of the two is wrong; a ref cannot be owned by a stage in a band "
+                    f"it is not registered to."
+                )
+    if problems:
+        print(f"  FAIL stage_phase_matches_manifest: {len(problems)} stage/ref phase disagreement(s)")
+        for problem in problems:
+            print(f"    - {problem}")
+    return problems
+
+
+def _print_stage_ledger(ledger: "StageLedger", phase: Optional[int]) -> list:
+    """
+    Print the ledger and return the named failures it produces.
+
+    A `scheduled` stage -- declared for this run and never entered -- is a failure in its
+    own right. Before this existed, a fail-fast abort and a clean run of a smaller suite
+    produced the same output.
+    """
+    in_scope = [s for s in ledger if phase is None or s.phase == phase]
+    print("\n--- Stage Ledger ---")
+    symbol = {"completed": "PASS", "failed": "FAIL", "crashed": "CRASH",
+              "scheduled": "NOT RUN", "attempted": "INCOMPLETE"}
+    for stage in in_scope:
+        mark = symbol.get(stage.state, stage.state.upper())
+        print(f"  {mark:<10} {stage.name:<30} phase {stage.phase}  {stage.seconds:6.1f}s"
+              f"{'  ' + stage.detail if stage.detail else ''}")
+
+    failures = []
+    for stage in in_scope:
+        if stage.state == "crashed":
+            failures.append(f"{stage.name} CRASHED: {stage.detail}")
+        elif stage.state in ("scheduled", "attempted"):
+            failures.append(
+                f"{stage.name} was scheduled for phase {stage.phase} and reached state "
+                f"{stage.state!r}: its obligations {list(stage.refs) or '(none)'} were "
+                f"never checked. An unchecked obligation is a failure, not a pass."
+            )
+    counts = {k: len([s for s in in_scope if s.state == k]) for k in symbol}
+    print(f"  scheduled={len(in_scope)} completed={counts['completed']} "
+          f"failed={counts['failed']} crashed={counts['crashed']} "
+          f"not_run={counts['scheduled']} incomplete={counts['attempted']}")
+    if failures:
+        print(f"  FAIL stage_ledger_complete: {len(failures)} stage(s) did not run to a verdict")
+        for failure in failures:
+            print(f"    - {failure}")
+    else:
+        print("  PASS stage_ledger_complete: every scheduled stage ran to a verdict")
+    return failures
+
+
 def _run_unit_tests() -> bool:
     """
     Run the fast unit suite and report it as a harness stage (§0).
@@ -197,6 +396,36 @@ def run_all(fail_fast: bool = False, phase: Optional[int] = None) -> int:
         """True if the band `p` is in scope for this run."""
         return phase is None or phase == p
 
+    # The DECLARED SCHEDULE. Every stage is named before anything runs, so the ledger can
+    # tell "never reached" from "ran and passed" -- which straight-line code cannot.
+    # `refs` is what the stage marks executed when it COMPLETES; the matrix's refs are
+    # observed rather than declared (see its stage body), so it declares the set it is
+    # held to and contributes the observed ones.
+    ledger = StageLedger()
+    _matrix_refs = ("§1A", "§1A-reach", "§1B", "§1C", "§1C-reverse", "§1C-coverage",
+                    "§1D", "§1E", "§1F", "§1G", "§1H", "§1I", "§4")
+    for _name, _phase, _refs, _title in (
+        ("unit_tests",          1, ("§0",),  "Unit Tests (the harness's own tests)"),
+        ("dna",                 1, ("§3",),  "DNA Structural and Parameter Checks"),
+        ("compatibility",       1, ("§2", "§2B", "§2C", "§2D", "§2E", "§2F", "§2G",
+                                    "§2H", "§2I"),
+                                           "Compatibility, Coverage & Monotonicity"),
+        ("interest_invariance", 1, (),      "Interest Invariance Checks"),
+        ("vocabulary",          1, (),      "Vocabulary & Concept Gating Audits"),
+        ("behavioural_matrix",  1, _matrix_refs, "Exhaustive Behavioral Matrix Validation"),
+        ("capability_phase1",   1, (),      "Capability Contract Phase 1 (§6A-§6E)"),
+        ("count_noun_1J",       1, ("§1J",), "Count/Noun Agreement (§1J)"),
+        ("option_degeneracy_1K", 1, ("§1K",), "Option Degeneracy (§1K)"),
+        ("render_contract_9",   1, ("§9",),  "Render Contract (§9)"),
+        ("grading_contract_10", 1, ("§10",), "Grading Contract (§10)"),
+        ("assertion_coverage_8", 1, ("§8",), "Assertion Coverage (§8)"),
+        ("census_7",            1, ("§7",),  "Suite Census (§7)"),
+        ("judgment_reviews_5",  2, ("§5",),  "Judgment Reviews (§5)"),
+        ("capability_phase2",   2, (),      "Capability Contract Phase 2 (§6F-§6H)"),
+    ):
+        if phase is None or phase == _phase:
+            ledger.schedule(_name, _phase, _refs, _title)
+
     executed_checks: Set[str] = set()
     # Which PHASE each executed §-ref actually ran in, against which
     # validate_capability.CHECK_PHASE is reconciled below. Recorded rather than
@@ -241,17 +470,22 @@ def run_all(fail_fast: bool = False, phase: Optional[int] = None) -> int:
     # look like a deadlock for five ticks. The fast suite is ~35s, so it runs FIRST --
     # there is no sense spending 40 minutes on the matrix when the harness's own tests
     # are broken.
-    if _runs(1):
+    def _stage_unit_tests() -> bool:
         print("--- Unit Tests (the harness's own tests) ---")
-        unit_ok = _run_unit_tests()
-        if unit_ok:
+        ok = _run_unit_tests()
+        if ok:
             executed_checks.add("§0")
+        return ok
+
+    if _runs(1):
+        unit_ok = ledger.run("unit_tests", _stage_unit_tests)
         if not unit_ok and fail_fast:
+            _print_stage_ledger(ledger, phase)
             return 1
     else:
         unit_ok = True
 
-    if _runs(1):
+    def _stage_dna() -> bool:
         print("\n--- DNA Structural and Parameter Checks ---")
         dna_results = validate_dna.validate_all_dnas()
         dna_failed = [c for c, errs in dna_results.items() if any(not e.startswith("WARN") for e in errs)]
@@ -264,12 +498,19 @@ def run_all(fail_fast: bool = False, phase: Optional[int] = None) -> int:
             executed_checks.add("§3")
         elif fail_fast:
             print("  ABORT after DNA validation (fail-fast active)")
+            return dna_ok
+        return dna_ok
+
+    if _runs(1):
+        dna_ok = ledger.run("dna", _stage_dna)
+        if not dna_ok and fail_fast:
+            _print_stage_ledger(ledger, phase)
             return 1
     else:
         dna_ok = True
 
     # 2. Compatibility
-    if _runs(1):
+    def _stage_compatibility() -> bool:
         print("\n--- Compatibility, Coverage & Monotonicity ---")
         compat_ok = validate_compat.validate_all()
         if compat_ok:
@@ -284,24 +525,38 @@ def run_all(fail_fast: bool = False, phase: Optional[int] = None) -> int:
             executed_checks.add("§2I")
         elif fail_fast:
             print("  ABORT after compatibility validation (fail-fast active)")
+            return compat_ok
+        return compat_ok
+
+    if _runs(1):
+        compat_ok = ledger.run("compatibility", _stage_compatibility)
+        if not compat_ok and fail_fast:
+            _print_stage_ledger(ledger, phase)
             return 1
     else:
         compat_ok = True
 
     # 3. Interest Invariance
-    if _runs(1):
+    def _stage_interest_invariance() -> bool:
         print("\n--- Interest Invariance Checks ---")
         interest_results = validate_interest.validate_all_interest_invariance()
         interest_failed = [c for c, errs in interest_results.items() if errs]
         interest_ok = len(interest_failed) == 0
         if not interest_ok and fail_fast:
             print("  ABORT after interest invariance (fail-fast active)")
+            return interest_ok
+        return interest_ok
+
+    if _runs(1):
+        interest_ok = ledger.run("interest_invariance", _stage_interest_invariance)
+        if not interest_ok and fail_fast:
+            _print_stage_ledger(ledger, phase)
             return 1
     else:
         interest_ok = True
 
     # 4. Vocabulary & Concept Gating (Full-Node Mode)
-    if _runs(1):
+    def _stage_vocabulary() -> bool:
         print("\n--- Vocabulary & Concept Gating Audits (Full-Node Mode) ---")
         vocab_results = validate_vocab.run_all_vocab_audits(sample_count=2)
         vocab_failed = []
@@ -316,21 +571,32 @@ def run_all(fail_fast: bool = False, phase: Optional[int] = None) -> int:
             if len(vocab_failed) > 5:
                 print(f"    ... and {len(vocab_failed) - 5} more nodes.")
             if fail_fast:
-                return 1
+                return vocab_ok
         else:
             print("  PASS vocabulary gating audit (all nodes)")
+        return vocab_ok
+
+    if _runs(1):
+        vocab_ok = ledger.run("vocabulary", _stage_vocabulary)
+        if not vocab_ok and fail_fast:
+            _print_stage_ledger(ledger, phase)
+            return 1
     else:
         vocab_ok = True
 
     # 5. Exhaustive Behavioral Matrix
-    if _runs(1):
+    def _stage_behavioural_matrix() -> bool:
         print("\n--- Exhaustive Behavioral Matrix Validation ---")
         # Run matrix validator. We set workers=0 for auto-detection.
         matrix_code = run_matrix_validation(fail_fast=fail_fast, workers=0)
         matrix_ok = matrix_code == 0
         # The matrix's §-refs are *observed*, not assumed: validate_matrix records an
         # id at each check site when that site actually evaluates an assertion.
-        executed_checks |= validate_matrix.LAST_EXECUTED_CHECKS
+        # `.update(...)`, never `|=`: inside a stage function an augmented assignment
+        # REBINDS the name and makes it local, which is an UnboundLocalError rather
+        # than a contribution to the outer set. Caught by test_stage_ledger.py the
+        # first time it ran, which is what those tests are for.
+        executed_checks.update(validate_matrix.LAST_EXECUTED_CHECKS)
 
         # §1H — per-node applicability. The union above proves each check ran SOMEWHERE;
         # this proves each ran on every node whose own composition demands it. Without it a
@@ -358,12 +624,19 @@ def run_all(fail_fast: bool = False, phase: Optional[int] = None) -> int:
 
         if not matrix_ok and fail_fast:
             print("  ABORT after matrix validation (fail-fast active)")
+            return matrix_ok
+        return matrix_ok
+
+    if _runs(1):
+        matrix_ok = ledger.run("behavioural_matrix", _stage_behavioural_matrix)
+        if not matrix_ok and fail_fast:
+            _print_stage_ledger(ledger, phase)
             return 1
     else:
         matrix_ok = True
 
     # 6. Judgment Reviews (genuine, non-boilerplate — hard gate)
-    if _runs(2):
+    def _stage_judgment_reviews_5() -> bool:
         print("\n--- Judgment Reviews (genuine per-node artifacts) ---")
         judgment_errors = validate_judgment.validate_judgment_reviews(fail_fast=fail_fast)
         v = validate_judgment.summarize_verdicts()
@@ -387,7 +660,14 @@ def run_all(fail_fast: bool = False, phase: Optional[int] = None) -> int:
             if len(judgment_errors) > 10:
                 print(f"    ... and {len(judgment_errors) - 10} more.")
             if fail_fast:
-                return 1
+                return judgment_ok
+        return judgment_ok
+
+    if _runs(2):
+        judgment_ok = ledger.run("judgment_reviews_5", _stage_judgment_reviews_5)
+        if not judgment_ok and fail_fast:
+            _print_stage_ledger(ledger, phase)
+            return 1
     else:
         judgment_ok = True
 
@@ -405,7 +685,7 @@ def run_all(fail_fast: bool = False, phase: Optional[int] = None) -> int:
     # Phase-2 backlog and nothing in the harness could tell the two bands apart. The
     # phase of each ref is read from validate_capability.CHECK_PHASE rather than
     # restated here — one registry, so a second copy cannot disagree with it.
-    if _runs(1):
+    def _stage_capability_phase1() -> bool:
         print("\n--- Capability Contract Phase 1 (artifact-free — §6A–§6E) ---")
         provision_errors = validate_capability.validate_capability_provision()
         # A floor, at the finding count and shrink-only — see _PROVISION_FLOOR.
@@ -430,7 +710,14 @@ def run_all(fail_fast: bool = False, phase: Optional[int] = None) -> int:
             if len(provision_errors) > 10:
                 print(f"    ... and {len(provision_errors) - 10} more.")
             if fail_fast:
-                return 1
+                return provision_ok
+        return provision_ok
+
+    if _runs(1):
+        provision_ok = ledger.run("capability_phase1", _stage_capability_phase1)
+        if not provision_ok and fail_fast:
+            _print_stage_ledger(ledger, phase)
+            return 1
     else:
         provision_ok = True
 
@@ -438,7 +725,7 @@ def run_all(fail_fast: bool = False, phase: Optional[int] = None) -> int:
     # single `run_all` reports the whole contract. Skipping it when Phase 1 is red
     # would hide the attestation band behind a §6D backlog, which is the failure this
     # split exists to end, not to repeat one level down.
-    if _runs(2):
+    def _stage_capability_phase2() -> bool:
         print("\n--- Capability Contract Phase 2 (attestation — §6F–§6H) ---")
         attestation_errors = validate_capability.validate_capability_attestation()
         attestation_ok = len(attestation_errors) == 0
@@ -475,53 +762,115 @@ def run_all(fail_fast: bool = False, phase: Optional[int] = None) -> int:
             if len(attestation_errors) > 10:
                 print(f"    ... and {len(attestation_errors) - 10} more.")
             if fail_fast:
-                return 1
+                return attestation_ok
+        return attestation_ok
+
+    if _runs(2):
+        attestation_ok = ledger.run("capability_phase2", _stage_capability_phase2)
+        if not attestation_ok and fail_fast:
+            _print_stage_ledger(ledger, phase)
+            return 1
     else:
         attestation_ok = True
 
-    # Two-direction contract enforcement check
-    # The four stages below are all Phase 1: each reads code, the knowledge graph or the
-    # harness's own bookkeeping, and none needs an agent-authored artifact on disk.
-    render_ok = grade_ok = coverage_ok = census_ok = True
-    language_ok = options_ok = True
-    if _runs(1):
+    # The six stages below are all Phase 1: each reads code, the knowledge graph or the
+    # harness's own bookkeeping, and none needs an agent-authored artifact on disk. Until
+    # 2026-09-12 they shared ONE `if _runs(1):` block, so a raise in any of them took the
+    # remaining five, the two-direction tripwire and the summary with it (H-03, measured).
+    # Each is now its own scheduled stage behind its own exception boundary.
+    #
+    # Each marks its ref executed only when it COMPLETES. That is a deliberate change from
+    # the unconditional `executed_checks.add(...)` these six used to do: with the ledger
+    # driving the two-direction comparison, a failed stage's refs are removed from BOTH
+    # sets, so the net result is identical -- and a CRASHED stage now keeps its refs in the
+    # expected set instead of quietly deleting its own obligations.
+    def _stage_count_noun_1J() -> bool:
         print("\n--- Count/Noun Agreement (§1J) ---")
         # Two bounded mechanical lints on the text a pupil READS, added 2026-09-12. They
         # sit next to §9 because all three drive the student path rather than stopping at
         # FormattedProblem. Neither is a test of age-appropriate language: §1D owns
         # vocabulary gating and the judgment reviews own reading load. Both were activated
         # at a measured zero (Scaling Mandate 5) -- §1J after four live stems were fixed.
-        language_ok = validate_language.validate_all()
-        executed_checks.add("§1J")
+        ok = validate_language.validate_all()
+        if ok:
+            executed_checks.add("§1J")
+        return ok
 
+    def _stage_option_degeneracy_1K() -> bool:
         print("\n--- Option Degeneracy (§1K) ---")
-        options_ok = validate_options.validate_all()
-        executed_checks.add("§1K")
+        ok = validate_options.validate_all()
+        if ok:
+            executed_checks.add("§1K")
+        return ok
 
+    def _stage_render_contract_9() -> bool:
         print("\n--- Render Contract (§9) ---")
         # The first stage that looks past FormattedProblem at what the STUDENT receives.
         # Everything above validates the pipeline's data; this asks whether the React
         # component can render it. It was an ungated auditor until 2026-08-28 and had been
         # holding 12 critical findings across 4 nodes the whole time.
-        render_ok = validate_render.validate_all()
-        executed_checks.add("§9")
+        ok = validate_render.validate_all()
+        if ok:
+            executed_checks.add("§9")
+        return ok
 
+    def _stage_grading_contract_10() -> bool:
         print("\n--- Grading Contract (§10) ---")
         # The worst defect class in the system: a pupil does the mathematics right and is
         # told they are wrong. Three graders serve answers and can disagree about one.
-        grade_ok = validate_grade.validate_all()
-        executed_checks.add("§10")
+        # Hermetic and bidirectional since 2026-09-12 (H-01): it also submits a
+        # known-wrong and a malformed answer and requires all three graders to REFUSE
+        # them, because an always-true grader passed the accept-only version perfectly.
+        ok = validate_grade.validate_all()
+        if ok:
+            executed_checks.add("§10")
+        return ok
 
+    def _stage_assertion_coverage_8() -> bool:
         print("\n--- Assertion Coverage (§8) ---")
         # Replaces "N of M checks proven", which counted a contract REF as proven when one
         # of its sub-assertions was. validate_matrix alone emits 38 assertion labels behind
         # ~11 refs, so that number flattered the harness considerably.
-        coverage_ok = validate_coverage.validate_all()
-        executed_checks.add("§8")
+        ok = validate_coverage.validate_all()
+        if ok:
+            executed_checks.add("§8")
+        return ok
 
+    def _stage_census_7() -> bool:
         print("\n--- Suite Census (§7) ---")
-        census_ok = validate_census.validate_all()
-        executed_checks.add("§7")
+        ok = validate_census.validate_all()
+        if ok:
+            executed_checks.add("§7")
+        return ok
+
+    render_ok = grade_ok = coverage_ok = census_ok = True
+    language_ok = options_ok = True
+    if _runs(1):
+        for _stage_name, _stage_body in (
+            ("count_noun_1J", _stage_count_noun_1J),
+            ("option_degeneracy_1K", _stage_option_degeneracy_1K),
+            ("render_contract_9", _stage_render_contract_9),
+            ("grading_contract_10", _stage_grading_contract_10),
+            ("assertion_coverage_8", _stage_assertion_coverage_8),
+            ("census_7", _stage_census_7),
+        ):
+            _stage_ok = ledger.run(_stage_name, _stage_body)
+            if _stage_name == "count_noun_1J":
+                language_ok = _stage_ok
+            elif _stage_name == "option_degeneracy_1K":
+                options_ok = _stage_ok
+            elif _stage_name == "render_contract_9":
+                render_ok = _stage_ok
+            elif _stage_name == "grading_contract_10":
+                grade_ok = _stage_ok
+            elif _stage_name == "assertion_coverage_8":
+                coverage_ok = _stage_ok
+            else:
+                census_ok = _stage_ok
+            if not _stage_ok and fail_fast:
+                print(f"  ABORT after {_stage_name} (fail-fast active)")
+                _print_stage_ledger(ledger, phase)
+                return 1
 
     print("\n--- Two-Direction Contract Verification ---")
     try:
@@ -571,31 +920,30 @@ def run_all(fail_fast: bool = False, phase: Optional[int] = None) -> int:
         expected_subset = set(CONTRACT_CHECKS.keys())
         if phase is not None:
             expected_subset &= refs_in_phase(phase)
-        matrix_refs = {"§1A", "§1A-reach", "§1B", "§1C", "§1C-reverse", "§1C-coverage",
-                   "§1D", "§1E", "§1F", "§1G", "§1H", "§1I", "§4"}
-        if not unit_ok:
-            expected_subset.discard("§0")
-            executed_checks.discard("§0")
-        if not dna_ok:
-            expected_subset.discard("§3")
-            executed_checks.discard("§3")
-        if not compat_ok:
-            expected_subset.discard("§2")
-            executed_checks.discard("§2")
-            expected_subset.discard("§2B")
-            executed_checks.discard("§2B")
-        if not matrix_ok:
-            expected_subset -= matrix_refs
-            executed_checks -= matrix_refs
-        if not judgment_ok:
-            expected_subset.discard("§5")
-            executed_checks.discard("§5")
+        # LEDGER-DRIVEN since 2026-09-12 (H-03). This used to be six hand-written
+        # `if not X_ok: discard(...)` pairs, and they were wrong in two directions at
+        # once: the ref lists were incomplete (§2C-§2I were never discarded with §2, and
+        # §1J/§1K/§9/§10/§8/§7 had no pairs at all), and a stage that CRASHED discarded
+        # its refs exactly like one that ran and reported -- so a crash deleted its own
+        # obligations from the comparison meant to notice they were missing.
+        #
+        # Now: a FAILED stage's refs leave both sets, as before. A CRASHED or NEVER-RUN
+        # stage's refs STAY in the expected set, so the tripwire below names them.
+        for _stage in ledger:
+            if phase is not None and _stage.phase != phase:
+                continue
+            if _stage.state == "failed":
+                expected_subset -= set(_stage.refs)
+                executed_checks -= set(_stage.refs)
         # Per PHASE, not per stage: a red Phase 1 no longer suppresses the §6F/§6G/§6H
         # rows, and a red Phase 2 no longer suppresses §6/§6D/§6E. Six hand-written
         # discard pairs on one boolean is what made the seam invisible here too.
-        for _phase, _ok in ((1, provision_ok), (2, attestation_ok)):
-            if _ok:
-                continue
+        for _phase, _stage_name in ((1, "capability_phase1"), (2, "capability_phase2")):
+            try:
+                if ledger.get(_stage_name).state != "failed":
+                    continue
+            except KeyError:
+                continue  # not scheduled in this --phase run
             for _ref in _phase_refs(_phase):
                 expected_subset.discard(_ref)
                 executed_checks.discard(_ref)
@@ -633,11 +981,22 @@ def run_all(fail_fast: bool = False, phase: Optional[int] = None) -> int:
         print(f"  FAIL two_direction_contract_match: {exc}")
         contract_match_ok = False
 
+    # The ledger, printed before the verdict. A run that crashed a stage and a run that
+    # passed a smaller suite used to look the same from here; now the schedule and what
+    # became of each stage are on the page, and an unreached obligation is a failure in
+    # its own right rather than an absence nobody can see.
+    ledger_failures = _print_stage_ledger(ledger, phase)
+    phase_problems = _check_stage_phases(ledger)
+    if not phase_problems:
+        print("  PASS stage_phase_matches_manifest: every stage's refs are registered to "
+              "the band that stage runs in")
+    ledger_failures = ledger_failures + phase_problems
+
     print("\n======================================================================")
     all_ok = (unit_ok and dna_ok and compat_ok and interest_ok and vocab_ok and matrix_ok
               and judgment_ok and provision_ok and attestation_ok and contract_match_ok
               and census_ok and render_ok and grade_ok and coverage_ok
-              and language_ok and options_ok)
+              and language_ok and options_ok and not ledger_failures)
     scope = "ALL TESTS" if phase is None else f"PHASE {phase}"
     if all_ok:
         print(f"{scope} PASSED SUCCESSFULLY! Praise God!")

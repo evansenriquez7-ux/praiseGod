@@ -2422,6 +2422,105 @@ MUTATIONS: List[Mutation] = [
                                 "mis-gradings exceeds floor"],
         baseline_must_not_contain=["FAIL grading_contract_floor_10"],
     ),
+    # ── The stage ledger (H-03, 2026-09-12) ────────────────────────────────────────
+    #
+    # These drive pytest rather than a validator, for the reason `subtraction_pool_uncapped`
+    # already does: the behaviour lives in `run_all` itself, a full Phase 1 run costs about
+    # eight minutes, and the Phase 2 band's baseline is red by construction so a plant there
+    # could not be scored at all (Mandate 2). `tests/unit/test_stage_ledger.py` drives the
+    # REAL StageLedger and the REAL run_all with every validator stubbed, so the plant lands
+    # on the production control flow and is caught by name in under a second.
+    #
+    # NAMED LIMIT: because the catcher is a unit test rather than a live `run_all`, these
+    # prove the ledger's control flow, not that a crash in a REAL validator is contained.
+    # The measurement that establishes the latter is recorded in the test module's docstring
+    # and in HARDENING_EVIDENCE.md, and was taken by monkeypatching a live run.
+    Mutation(
+        name="stage_crash_escapes_the_ledger",
+        asserts=["stage_crashed_"],
+        description=(
+            "Let a stage's exception propagate instead of being recorded. This is exactly "
+            "the state of run_all until 2026-09-12, and it was measured: one stage raising "
+            "took §10, §8, §7, the two-direction tripwire AND the final summary with it, "
+            "and printed nothing naming what had been lost. An operator saw a traceback, "
+            "not the fact that the grading contract never ran."
+        ),
+        edits={
+            "backend/app/practice_gen/validation/run_all.py": (
+                "        except BaseException as exc:  # noqa: BLE001 - a crash must not escape a stage\n",
+                "        except () as exc:  # planted mutation: the boundary catches nothing\n",
+            )
+        },
+        command=["pytest", "tests/unit/test_stage_ledger.py", "-q", "-p", "no:cacheprovider"],
+        expected_check="the stage exception boundary (a crash is a named failure, not an escape)",
+        expect_output_contains=["test_a_raising_stage_is_contained_and_named"],
+        baseline_must_not_contain=["test_a_raising_stage_is_contained_and_named"],
+    ),
+    Mutation(
+        name="unreached_stage_reported_as_clean",
+        asserts=["stage_ledger_complete"],
+        description=(
+            "Stop counting a scheduled-but-never-entered stage as a failure. A fail-fast "
+            "abort then reports exactly like a clean run of a smaller suite: the stages it "
+            "never reached simply vanish from the report. An obligation nobody checked is "
+            "not an obligation that passed -- that is the whole claim of this ledger, and "
+            "without this plant nothing proves the harness makes it."
+        ),
+        edits={
+            "backend/app/practice_gen/validation/run_all.py": (
+                '        elif stage.state in ("scheduled", "attempted"):\n',
+                '        elif stage.state in ():  # planted mutation: unreached == fine\n',
+            )
+        },
+        command=["pytest", "tests/unit/test_stage_ledger.py", "-q", "-p", "no:cacheprovider"],
+        expected_check="the stage ledger (an unreached obligation is a failure, not silence)",
+        expect_output_contains=["test_a_stage_that_never_ran_is_a_ledger_failure"],
+        baseline_must_not_contain=["test_a_stage_that_never_ran_is_a_ledger_failure"],
+    ),
+    Mutation(
+        name="crash_deletes_its_own_expected_refs",
+        asserts=["two_direction_contract_match"],
+        description=(
+            "Let a CRASHED stage discard its own §-refs from the two-direction comparison, "
+            "the way a FAILED stage legitimately does. The tripwire that exists to notice a "
+            "registered check never executing is then silenced by the very crash that "
+            "stopped it executing. This also PAYS an allowlist entry: "
+            "`two_direction_contract_match` had been unproven since 2026-09-08."
+        ),
+        edits={
+            "backend/app/practice_gen/validation/run_all.py": (
+                '            if _stage.state == "failed":\n',
+                '            if _stage.state in ("failed", "crashed"):  # planted mutation\n',
+            )
+        },
+        command=["pytest", "tests/unit/test_stage_ledger.py", "-q", "-p", "no:cacheprovider"],
+        expected_check="two-direction drift (a crash cannot delete its own expected refs)",
+        expect_output_contains=["test_a_crash_cannot_delete_its_own_expected_refs"],
+        baseline_must_not_contain=["test_a_crash_cannot_delete_its_own_expected_refs"],
+    ),
+    Mutation(
+        name="stage_runs_in_the_wrong_band",
+        asserts=["stage_phase_matches_manifest"],
+        description=(
+            "Stop comparing each stage's declared refs against the band "
+            "`_manifest.CHECK_PHASE` registers them to. These are two registries "
+            "describing one fact and nothing compared them until 2026-09-12: move §9 to "
+            "Phase 2 in the manifest and `render_contract_9` still runs in Phase 1, so "
+            "`--phase 2` reports it registered-but-never-executed forever while "
+            "`--phase 1` goes on executing a ref it does not own. The wrong-phase path "
+            "plan step 0A asks to be proved."
+        ),
+        edits={
+            "backend/app/practice_gen/validation/run_all.py": (
+                "            elif registered != stage.phase:\n",
+                "            elif False:  # planted mutation: bands need not agree\n",
+            )
+        },
+        command=["pytest", "tests/unit/test_stage_ledger.py", "-q", "-p", "no:cacheprovider"],
+        expected_check="the stage schedule agrees with _manifest.CHECK_PHASE on every ref",
+        expect_output_contains=["test_a_ref_registered_to_the_other_band_is_caught"],
+        baseline_must_not_contain=["test_a_ref_registered_to_the_other_band_is_caught"],
+    ),
 ]
 
 # The templated-review mutation cannot be a literal find/replace: each review's

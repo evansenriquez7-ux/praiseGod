@@ -1,16 +1,20 @@
 {
- "asserts": [],
+ "asserts": [
+  "stage_ledger_complete"
+ ],
  "baseline_exit": 0,
  "baseline_markers_already_present": [],
  "baseline_must_not_contain": [
-  "test_multiplication_number_line_carries_its_jumps"
+  "test_a_stage_that_never_ran_is_a_ledger_failure"
  ],
  "command": [
   "pytest",
-  "tests/unit/test_media_the_competency_names.py::test_multiplication_number_line_carries_its_jumps",
-  "-q"
+  "tests/unit/test_stage_ledger.py",
+  "-q",
+  "-p",
+  "no:cacheprovider"
  ],
- "definition_digest": "1268073871fdddf6a786fbdfbe470a43a870a980f3bd612e317e499a4886e2c7",
+ "definition_digest": "7e8a4aff2781f7c5f9dfc17e6b97cf0f21f199063d2a251e9fbc732caf4dad97",
  "detected": true,
  "diagnostic_line": "exit 1 — =================================== FAILURES ===================================",
  "environment": {
@@ -21,22 +25,22 @@
   "system": "Darwin"
  },
  "expect_output_contains": [
-  "test_multiplication_number_line_carries_its_jumps"
+  "test_a_stage_that_never_ran_is_a_ledger_failure"
  ],
- "expected_check": "the payload draws the medium mat_g2_na_q3_1 names",
- "finished_at": "2026-09-12T20:30:39+08:00",
+ "expected_check": "the stage ledger (an unreached obligation is a failure, not silence)",
+ "finished_at": "2026-09-12T20:33:08+08:00",
  "input_digest": "8f771395969748da6afca787f44de5545e1320eef6b98c6aed5e1f3c5891f256",
  "mutated_paths": [
-  "backend/app/practice_gen/formatters/visual/fmt_number_line.py"
+  "backend/app/practice_gen/validation/run_all.py"
  ],
- "mutation": "number_line_drops_its_jumps",
+ "mutation": "unreached_stage_reported_as_clean",
  "observed_markers": {
-  "test_multiplication_number_line_carries_its_jumps": true
+  "test_a_stage_that_never_ran_is_a_ledger_failure": true
  },
  "paths_outside_input_set": [],
  "phase1_admissible": true,
  "planted_exit": 1,
  "restored_clean": true,
  "schema_version": 1,
- "started_at": "2026-09-12T20:30:38+08:00"
+ "started_at": "2026-09-12T20:33:05+08:00"
 }

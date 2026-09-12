@@ -76,7 +76,13 @@ CENSUS_FLOORS = {
     # to the CONFIGURED one would restore H-01 quietly -- the check would still pass, just
     # against a database across the public internet. Neither direction is reachable by a
     # mutation on the pipeline. Ratcheted to the real number less a little churn.
-    "unit_tests": 545,
+    # 573 collected 2026-09-12 (was 552 at the previous ratchet's measurement), +21 from
+    # test_stage_ledger.py -- the H-03 crash boundary. Not reachable by a mutation against
+    # a live run_all: a full Phase 1 costs ~8 minutes, and the Phase 2 band's baseline is
+    # red by construction, so a plant there could not be scored at all (Mandate 2). These
+    # drive the REAL StageLedger and the REAL run_all with every validator stubbed, and
+    # three mutations plant into that control flow and are caught here by name.
+    "unit_tests": 569,
     # 56 registered 2026-09-09 (was 51, 50, 48, 37). Four prove §8's own directions, one
     # §2C at (node, formatter) granularity, two the §6 phase seam, one that every contract
     # check declares the phase it runs in, four the §6 Phase 1 band (§6A/§6B/§6C/§6E, which
@@ -131,7 +137,15 @@ CENSUS_FLOORS = {
     # allowlist entry, which had stood unproven since 2026-09-08 only because a full sweep
     # cost 14m23s; hermetic, it costs 33s. Three of the six prove labels that now have two
     # mutations, so this floor is the only guard on those pairs.
-    "mutations": 85,
+    # 88 registered 2026-09-12 (was 85): +3 for the stage ledger (H-03). One lets a stage's
+    # exception escape the boundary; one stops counting a never-entered stage as a failure;
+    # one lets a CRASHED stage discard its own §-refs from the two-direction comparison, and
+    # that third PAYS `two_direction_contract_match`, unproven since 2026-09-08.
+    # 89 registered 2026-09-12 (was 88): +1 for `stage_runs_in_the_wrong_band`, which
+    # proves the stage schedule is held to _manifest.CHECK_PHASE. That is the wrong-phase
+    # path plan step 0A asks for; run_all's OTHER phase reconciliation (`misphased`) is
+    # unreachable by construction and is recorded as a limitation instead.
+    "mutations": 89,
     # 983 observed 2026-09-08. How many (variant, value) pairs the blind-review packets
     # will actually demonstrate across the tree.
     #

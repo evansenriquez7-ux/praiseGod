@@ -1,16 +1,20 @@
 {
- "asserts": [],
+ "asserts": [
+  "stage_crashed_"
+ ],
  "baseline_exit": 0,
  "baseline_markers_already_present": [],
  "baseline_must_not_contain": [
-  "test_multiplication_number_line_carries_its_jumps"
+  "test_a_raising_stage_is_contained_and_named"
  ],
  "command": [
   "pytest",
-  "tests/unit/test_media_the_competency_names.py::test_multiplication_number_line_carries_its_jumps",
-  "-q"
+  "tests/unit/test_stage_ledger.py",
+  "-q",
+  "-p",
+  "no:cacheprovider"
  ],
- "definition_digest": "1268073871fdddf6a786fbdfbe470a43a870a980f3bd612e317e499a4886e2c7",
+ "definition_digest": "c4cc2ddbf0a7cda38101dbda7a410bf72c35bae40698f53344883a9558d585b6",
  "detected": true,
  "diagnostic_line": "exit 1 — =================================== FAILURES ===================================",
  "environment": {
@@ -21,22 +25,22 @@
   "system": "Darwin"
  },
  "expect_output_contains": [
-  "test_multiplication_number_line_carries_its_jumps"
+  "test_a_raising_stage_is_contained_and_named"
  ],
- "expected_check": "the payload draws the medium mat_g2_na_q3_1 names",
- "finished_at": "2026-09-12T20:30:39+08:00",
+ "expected_check": "the stage exception boundary (a crash is a named failure, not an escape)",
+ "finished_at": "2026-09-12T20:33:05+08:00",
  "input_digest": "8f771395969748da6afca787f44de5545e1320eef6b98c6aed5e1f3c5891f256",
  "mutated_paths": [
-  "backend/app/practice_gen/formatters/visual/fmt_number_line.py"
+  "backend/app/practice_gen/validation/run_all.py"
  ],
- "mutation": "number_line_drops_its_jumps",
+ "mutation": "stage_crash_escapes_the_ledger",
  "observed_markers": {
-  "test_multiplication_number_line_carries_its_jumps": true
+  "test_a_raising_stage_is_contained_and_named": true
  },
  "paths_outside_input_set": [],
  "phase1_admissible": true,
  "planted_exit": 1,
  "restored_clean": true,
  "schema_version": 1,
- "started_at": "2026-09-12T20:30:38+08:00"
+ "started_at": "2026-09-12T20:33:03+08:00"
 }
