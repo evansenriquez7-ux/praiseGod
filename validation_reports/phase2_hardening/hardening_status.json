@@ -135,7 +135,7 @@
     {
       "id": "H-05",
       "status": "open",
-      "owner": "unclaimed",
+      "owner": "released @ 08fdfdde",
       "finding": "Vocabulary, interest, DNA, compatibility, render and grade checks contain narrow representatives, first-DNA selection, low sample counts, G1-3 assumptions, tolerated floors, static approximations or silent import paths.",
       "affected_assertions": [
         "static_vocab_gated_lint",
@@ -156,9 +156,16 @@
       ],
       "proof_artifacts": [],
       "closing_revision": null,
-      "updated_at": "2026-09-12T17:15:41+08:00",
+      "updated_at": "2026-09-12T22:38:01+08:00",
       "measurement_status": "measured 2026-09-12 on 647ee51e",
-      "recommended_order": 4
+      "recommended_order": 4,
+      "progress": "PARTIAL, 08fdfdde: the silent-path half of this row is inventoried and gated. All 19 silent exception handlers in the validation package now carry a recorded disposition (9 checked, 3 named-failure, 7 limitation), gated at a HARD ZERO by §8's silent_path_disposition_8 with a detected mutation. One real defect in this row's own finding text was fixed: validate_interest answered a DNA ImportError with a bare `continue`, so a broken DNA vanished from §4 while the stage printed 12/12 passed -- the 'silent import path' this row names. The seven surviving limitations are now written down where they apply, each with what would close it.",
+      "still_open": [
+        "'narrow representatives, first-DNA selection, low sample counts, G1-3 assumptions, static approximations' -- none of that is addressed; only the silent-skip family is.",
+        "Robust multi-digit grade parsing and exact typed comparisons in validate_dna: unmeasured.",
+        "Real prerequisite edges in validate_compat: unmeasured.",
+        "Step 0 also names sample caps and 'not judged/not gated' branches; floors and the allowlist have gates (§7, §8) but caps and not-judged branches do not."
+      ]
     },
     {
       "id": "H-06",

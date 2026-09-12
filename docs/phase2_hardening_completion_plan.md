@@ -94,7 +94,7 @@ IDs are planning handles for the evidence ledger, not new contract references.
 | `H-02` | Thirty-nine assertions are explicitly unproven, including concept gating, answer recomputation, monotonicity, maximum reach, vocabulary, interest, render schema, grading floor, KG monotonicity, and Lab/portal equivalence. | A current detected mutation for every content/release-critical assertion; any inherently non-mutable check has a narrow, owner-approved limitation and independent executable control. |
 | `H-03` | **CLOSED 2026-09-12 at `1d0de929`, for the RUNNER's boundaries.** Measured rather than inherited: one planted stage crash made `run_all` return `None` instead of an exit code, skipped §10, §8 and §7 entirely, printed neither the two-direction section nor the summary, and named none of it. | Fifteen declared stages, each behind an exception boundary, in a five-state ledger with per-stage timings. A FAILED stage's refs leave the two-direction comparison; a CRASHED or never-entered stage's refs STAY, so a crash cannot silence the tripwire that exists to notice a registered check not executing. Four mutations, one per acceptance path; `crash_deletes_its_own_expected_refs` PAYS `two_direction_contract_match`. **Residual, explicitly NOT closed:** no per-stage command/input digest, and the validator-INTERNAL catch-and-continue paths (`validate_matrix._try_render`/`_seed_renders`) are untouched — §10's two went under `H-01`, the rest overlap `H-05` and step 2. |
 | `H-04` | **FIRST HALF LANDED at `ade21efb`; row stays OPEN.** Continuous axes are swept separately from discrete ones, and experience, interest, renderer and response mode were not one finite obligation model. | `tests/obligation_manifest.py` enumerates WITHOUT generating, derives the count by two independent traversals (459 pairs / 5,060 discrete obligations / 22,626 continuous crossings, agreeing), and writes `obligation_budget.json` naming every rejection with the production rule that caused it. Registered as §11 with two detected mutations. A new gate fell out of it: §2B/§2C hold *advertised → servable* and nothing held *registered → reachable* — 5 dead formatter routes, shrink-only floor. **STILL OPEN:** `experience` (×4) and `student_interest` (×27) are not crossed in, so the true product is 546,480; there is no executor, no 1,000-obligation benchmark, no sharding, and step 0B's 30-minute/4-hour budget targets are unmeasured. |
-| `H-05` | Vocabulary, interest, DNA, compatibility, render, and grade checks contain narrow representatives, first-DNA selection, low sample counts, G1–3 assumptions, tolerated floors/warnings, static approximations, or silent import paths. | Scale-safe checks over every applicable node/DNA/formatter/grade and final rendered output, with exact types, robust multi-digit grade parsing, real prerequisite edges, and named mutations on the live path. |
+| `H-05` | **PARTIAL at `08fdfdde`; row stays OPEN.** Vocabulary, interest, DNA, compatibility, render and grade checks contain narrow representatives, first-DNA selection, low sample counts, G1–3 assumptions, tolerated floors/warnings, static approximations, or silent import paths. | The SILENT-SKIP family is closed: all 19 silent handlers in the validation package carry a recorded disposition, gated at a hard zero by §8 `silent_path_disposition_8` with a detected mutation, and the row's own named defect — `validate_interest`'s silent DNA `ImportError`, which let a broken DNA vanish from §4 while the stage printed `12/12 passed` — is a named failure now. **STILL OPEN:** narrow representatives, first-DNA selection, low sample counts, G1–3 assumptions, static approximations; multi-digit grade parsing and exact typed comparisons; real prerequisite edges. None of those is addressed. |
 | `H-06` | Phase 2 evidence omits complete visuals/options in places, freshness does not bind every learner-visible field, and requirement evidence can be incomplete if clause extraction itself omitted curriculum text. | Canonical full-view packet and replay digest; full competency-to-requirement decomposition review; exact clause coverage; missing learner-visible evidence is unadjudicable and blocking. |
 | `H-07` | The six facets do not yet force explicit judgments about contextual/logical validity, ambiguity, feedback/hints, misconception quality, interaction clarity, or accessibility. A mathematically valid item can therefore pair impossible objects, containers, actions, units, or causal relationships. Identity fields alone do not establish independent review quality. | Per-sample contextual-validity evidence inside the existing facets; bounded semantic-role/affordance checks; calibrated blind reviewers; dispatch-bound receipts; targeted dual review/adjudication; and cited student-view evidence. |
 | `H-08` | Nothing executes the React components. §9 checks that a payload carries the keys a component reads, but never renders it, so a component that throws, ignores a conditional key, or draws an empty box passes every gate. The existing script is inert: CommonJS in an ESM package, an uninstalled Puppeteer import, unavailable bare `python`, Vite development mode, no assertions. | **No browser** (owner ruling). Headless `renderToStaticMarkup` over every registered component on real student-path payloads; component × payload-class behaviour tests including the `onAnswer` → `answers_match` round trip; results consumed by `run_all` as a digest-bound artifact; planted defects detected by name; pointer-drag geometry on two components recorded as an unproven blind spot. See step 5A. |
@@ -161,11 +161,26 @@ including each behavior within a shared label: current entry point, future entry
 positive control, violating fixture, expected marker, and disposition. Resolve unproven
 content-correctness checks before clearing the queue they purport to guard.
 
-Inventory every warning, `continue`, exception handler, sample cap, floor, allowlist, exclusion,
-and “not judged/not gated” branch in the harness. Each receives one of three dispositions:
-remove it by checking the obligation, turn it into a named failure, or record a narrow inherent
-limitation with an owner, scope, mitigation, and expiry/review trigger. Release-critical content,
-grading, rendering, coverage, and evidence paths have no warning-only or silent-skip outcome.
+**The EXCEPTION-HANDLER half of this inventory is LANDED at `08fdfdde`.**
+`tests/silent_path_inventory.py` scans the validation package for handlers whose body does
+nothing but leave (`continue`, `pass`, bare `return`), and §8's `silent_path_disposition_8`
+requires each to carry `# DISPOSITION: checked | named-failure | limitation -- <why>` in the
+handler itself. Measured: 90 handlers, 19 silent, **all 19 classified** (9 checked, 3
+named-failure, 7 limitation), so the gate is a HARD ZERO rather than a floor.
+
+Two things worth carrying forward. First, the scanner's own first definition counted any body
+CONTAINING a `continue`, which flagged §10's obligation reporters — the exact pattern step 0A's
+work replaced `except: continue` WITH. A gate that flags the fix as the defect trains people to
+paper over correct code; the definition is now "nothing but leave" and is pinned in both
+directions by unit test. Second, one real defect was fixed rather than marked: `validate_interest`
+answered a DNA `ImportError` with a bare `continue`, so a broken DNA module vanished from §4 while
+the stage printed `12/12 passed` — the silent import path this step forbids, which
+`validate_dna` had been treating as a named error two modules over.
+
+**Still owed from this paragraph:** sample caps and “not judged/not gated” branches have no gate
+(floors and allowlists already do, via §7's census and §8's shrink-only rule); the scan covers the
+validation package only, not the pipeline; and a handler that LOGS and continues is not counted
+though it can still lose an obligation.
 
 ### 0A. Make Phase 1 hermetic, complete, and honest before repairing content
 
