@@ -99,8 +99,8 @@
     },
     {
       "id": "H-04",
-      "status": "in_progress",
-      "owner": "session-2597c378 (obligation manifest)",
+      "status": "open",
+      "owner": "released @ ade21efb",
       "finding": "Continuous axes are swept separately from discrete ones, and serving context, experience, interest, renderer and response mode are not one finite obligation model.",
       "affected_assertions": [
         "execution_matrix_1C",
@@ -114,11 +114,23 @@
         "Two independent derivations agree on the reachable count",
         "Every obligation is executed or rejected for a named contradiction; zero silent drops"
       ],
-      "proof_artifacts": [],
+      "proof_artifacts": [
+        "validation_reports/mutation_proofs/obligation_derivations_diverge.json",
+        "validation_reports/mutation_proofs/dead_formatter_route_ignored.json",
+        "validation_reports/phase2_hardening/obligation_budget.json",
+        "tests/unit/test_obligation_manifest.py",
+        "validation_reports/HARDENING_EVIDENCE.md"
+      ],
       "closing_revision": null,
-      "updated_at": "2026-09-12T20:46:42+08:00",
-      "measurement_status": "measured 2026-09-12 on 647ee51e",
-      "recommended_order": 3
+      "updated_at": "2026-09-12T22:03:36+08:00",
+      "measurement_status": "RE-MEASURED and partially addressed on ade21efb. The plan's recorded figure (463 pairs / 4,325 obligations) is NOT REPRODUCIBLE and its probe is not on disk; the manifest supersedes it at 459 pairs / 5,060 discrete obligations, agreed by two independent traversals.",
+      "recommended_order": 3,
+      "progress": "FIRST HALF LANDED: tests/obligation_manifest.py enumerates without generating, derives the count twice, and writes obligation_budget.json naming every rejection with the production rule that caused it. Registered as §11 (validate_obligations) with two detected mutations. New gate found and added: registered->reachable, which §2B/§2C never held -- 5 dead formatter routes, shrink-only floor.",
+      "still_open": [
+        "experience (x4) and student_interest (x27) are NOT crossed in; the true product is 546,480 and the budget records the multiplier instead. Largest unclosed gap.",
+        "No executor: enumeration is not execution, so an obligation counted reachable may still be refused at generation time.",
+        "No 1,000-obligation benchmark, no sharding, no PR/release tier split; step 0B's 30-minute and 4-hour budget targets are unmeasured."
+      ]
     },
     {
       "id": "H-05",

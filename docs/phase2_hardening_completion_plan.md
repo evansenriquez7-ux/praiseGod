@@ -93,7 +93,7 @@ IDs are planning handles for the evidence ledger, not new contract references.
 | `H-01` | **CLOSED 2026-09-12 at `9fbcfdf9`.** Phase 1 was not hermetic: `validate_grade` opened the configured database and wrote a persistent shared learner into it, so §10's verdict depended on an external host resolving. §10 also asserted ACCEPTANCE only — an always-true grader passed it perfectly — and answered a generation crash or an underivable answer with `except: continue`. | `tests/hermetic_db.py` (throwaway SQLite + a socket guard that raises by name); §10 rewritten for four directions with three new zero-tolerance assertions; six new detected mutations including the always-true grader and a full-tree plant that PAYS `grading_contract_floor_10`; full Phase 1 green with `DATABASE_URL=` empty. Measured: the full §10 sweep fell from **14m23s to 33s**. |
 | `H-02` | Thirty-nine assertions are explicitly unproven, including concept gating, answer recomputation, monotonicity, maximum reach, vocabulary, interest, render schema, grading floor, KG monotonicity, and Lab/portal equivalence. | A current detected mutation for every content/release-critical assertion; any inherently non-mutable check has a narrow, owner-approved limitation and independent executable control. |
 | `H-03` | **CLOSED 2026-09-12 at `1d0de929`, for the RUNNER's boundaries.** Measured rather than inherited: one planted stage crash made `run_all` return `None` instead of an exit code, skipped §10, §8 and §7 entirely, printed neither the two-direction section nor the summary, and named none of it. | Fifteen declared stages, each behind an exception boundary, in a five-state ledger with per-stage timings. A FAILED stage's refs leave the two-direction comparison; a CRASHED or never-entered stage's refs STAY, so a crash cannot silence the tripwire that exists to notice a registered check not executing. Four mutations, one per acceptance path; `crash_deletes_its_own_expected_refs` PAYS `two_direction_contract_match`. **Residual, explicitly NOT closed:** no per-stage command/input digest, and the validator-INTERNAL catch-and-continue paths (`validate_matrix._try_render`/`_seed_renders`) are untouched — §10's two went under `H-01`, the rest overlap `H-05` and step 2. |
-| `H-04` | “Exhaustive matrix” covers discrete formatter combinations, but continuous axes are swept separately and serving context, experience, interest, renderer, and response mode are not one finite obligation model. | Machine-generated obligation manifest from the student route; exhaustive finite partitions for reachable state, including cross-axis boundary classes; zero missing, skipped, or unexpectedly unreachable obligations. |
+| `H-04` | **FIRST HALF LANDED at `ade21efb`; row stays OPEN.** Continuous axes are swept separately from discrete ones, and experience, interest, renderer and response mode were not one finite obligation model. | `tests/obligation_manifest.py` enumerates WITHOUT generating, derives the count by two independent traversals (459 pairs / 5,060 discrete obligations / 22,626 continuous crossings, agreeing), and writes `obligation_budget.json` naming every rejection with the production rule that caused it. Registered as §11 with two detected mutations. A new gate fell out of it: §2B/§2C hold *advertised → servable* and nothing held *registered → reachable* — 5 dead formatter routes, shrink-only floor. **STILL OPEN:** `experience` (×4) and `student_interest` (×27) are not crossed in, so the true product is 546,480; there is no executor, no 1,000-obligation benchmark, no sharding, and step 0B's 30-minute/4-hour budget targets are unmeasured. |
 | `H-05` | Vocabulary, interest, DNA, compatibility, render, and grade checks contain narrow representatives, first-DNA selection, low sample counts, G1–3 assumptions, tolerated floors/warnings, static approximations, or silent import paths. | Scale-safe checks over every applicable node/DNA/formatter/grade and final rendered output, with exact types, robust multi-digit grade parsing, real prerequisite edges, and named mutations on the live path. |
 | `H-06` | Phase 2 evidence omits complete visuals/options in places, freshness does not bind every learner-visible field, and requirement evidence can be incomplete if clause extraction itself omitted curriculum text. | Canonical full-view packet and replay digest; full competency-to-requirement decomposition review; exact clause coverage; missing learner-visible evidence is unadjudicable and blocking. |
 | `H-07` | The six facets do not yet force explicit judgments about contextual/logical validity, ambiguity, feedback/hints, misconception quality, interaction clarity, or accessibility. A mathematically valid item can therefore pair impossible objects, containers, actions, units, or causal relationships. Identity fields alone do not establish independent review quality. | Per-sample contextual-validity evidence inside the existing facets; bounded semantic-role/affordance checks; calibrated blind reviewers; dispatch-bound receipts; targeted dual review/adjudication; and cited student-view evidence. |
@@ -274,9 +274,19 @@ formatter, discrete profile, continuous boundary/equivalence class, experience, 
 family, renderer, and response mode. It also names rejected combinations and the production rule
 that makes each unreachable.
 
-The current §1C filtering yields a lower bound of 4,325 allowed
-`(node, DNA, formatter, discrete-assignment)` obligations across 463 node/DNA/formatter pairs.
-Five seeds per obligation means 21,625 generated problems; ten means 43,250. Execute that volume
+**The 4,325 figure this section used to quote is NOT REPRODUCIBLE and has been superseded**
+(2026-09-12, `ade21efb`). The probe that produced "4,325 allowed obligations across 463
+node/DNA/formatter pairs" is not on disk, and no candidate model recovers either number —
+measured across four: `COMPATIBILITY` scope gives 474 pairs with 3,063 summed / 5,238 crossed;
+advertised scope gives 459 with 2,950 / 5,060. A count nobody can re-derive is a number, not
+evidence, which is exactly what this step's own "two independent derivations agree" acceptance
+check exists to catch.
+
+`tests/obligation_manifest.py` now states its model explicitly and derives the count by two
+different traversals of the production tables; §11 (`validate_obligations`) fails if they
+disagree. **Measured and agreeing: 459 (node, DNA, formatter) pairs, 5,060 discrete
+obligations, 22,626 continuous class crossings.** Five seeds per obligation means 25,300
+generated problems; ten means 50,600. Execute that volume
 in the Python/backend harness, where problems can be generated and checked without browser startup,
 DOM work, screenshots, or network round trips. Continuous/context/experience crossings in the
 completed manifest can only increase that count. Do not multiply the same corpus through the
@@ -1207,11 +1217,14 @@ So a fresh session starts here:
 
 1. `git log --oneline -1` and `PYTHONPATH=. .venv/bin/python tests/hardening_status.py` —
    confirm the tree and that 9 rows validate (1 closed, 1 out_of_scope, 7 open).
-2. **`H-01` and `H-03` are both CLOSED.** The next row by `recommended_order` is `H-04`
-   (step 0B, the student-path obligation manifest) at order 3, then `H-05` at 4. Note that
-   `H-05` inherits the half of `H-03` that was deliberately left open: the validator-INTERNAL
-   catch-and-continue paths (`validate_matrix._try_render`, `_seed_renders`) that let a lost
-   render be reported as coverage. `H-03` closed the RUNNER's boundaries, not those.
+2. **`H-01` and `H-03` are CLOSED; `H-04`'s first half is landed and its row is still open.**
+   The manifest, its two derivations and §11 exist; what remains of `H-04` is the EXECUTOR —
+   crossing `experience` and `student_interest` in (the true product is 546,480), the
+   1,000-obligation benchmark, sharding, and the PR/release tier split. Start there, or move
+   to `H-05` at order 4. Note `H-05` also inherits the half of `H-03` left open on purpose:
+   the validator-INTERNAL catch-and-continue paths (`validate_matrix._try_render`,
+   `_seed_renders`) that let a lost render be reported as coverage. `H-03` closed the
+   RUNNER's boundaries, not those.
 3. Expect the first edit under an input root to invalidate all **85** mutation proofs. That
    is the safe direction and costs one full table re-run (**~19 minutes measured on the
    85-record corpus**, up from ~12 at 79 records — the new full-tree §10 plant is the
