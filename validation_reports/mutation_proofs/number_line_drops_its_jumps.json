@@ -1,0 +1,42 @@
+{
+ "asserts": [],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "test_multiplication_number_line_carries_its_jumps"
+ ],
+ "command": [
+  "pytest",
+  "tests/unit/test_media_the_competency_names.py::test_multiplication_number_line_carries_its_jumps",
+  "-q"
+ ],
+ "definition_digest": "1268073871fdddf6a786fbdfbe470a43a870a980f3bd612e317e499a4886e2c7",
+ "detected": true,
+ "diagnostic_line": "exit 1 — =================================== FAILURES ===================================",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "test_multiplication_number_line_carries_its_jumps"
+ ],
+ "expected_check": "the payload draws the medium mat_g2_na_q3_1 names",
+ "finished_at": "2026-09-12T05:11:02+08:00",
+ "input_digest": "33cd89ef09f8aa98c2dca206ad925748038cfbd2b08ab217114d980d0c40f8ab",
+ "mutated_paths": [
+  "backend/app/practice_gen/formatters/visual/fmt_number_line.py"
+ ],
+ "mutation": "number_line_drops_its_jumps",
+ "observed_markers": {
+  "test_multiplication_number_line_carries_its_jumps": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-09-12T05:11:00+08:00"
+}

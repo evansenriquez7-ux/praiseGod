@@ -18,6 +18,7 @@ import random
 from typing import Any, Dict, List, Optional, Set
 
 from backend.app.practice_gen.dna.base import (
+    count_noun,
     DIFFICULTY_LEVEL_MAP,
     DNA,
     DimensionSpec,
@@ -447,8 +448,8 @@ def generate_params(
         mode = rng.choice(["number_line", "inverse_addition"])
         if mode == "number_line":
             q_template = rng.choice([
-                f"Starting at {a_val} on the number line, jump back {b_val} units. What number do you land on?",
-                f"A dot is at {a_val} on the number line. If you move back {b_val} steps, what number do you reach?",
+                f"Starting at {a_val} on the number line, jump back {b_val} {count_noun(b_val, 'units')}. What number do you land on?",
+                f"A dot is at {a_val} on the number line. If you move back {b_val} {count_noun(b_val, 'steps')}, what number do you reach?",
                 f"Start at {a_val} on the number line and count back {b_val}. What is {a_val} − {b_val}?",
             ])
             return {
@@ -644,7 +645,9 @@ def generate_params(
         if task_type == "counting_back":
             q_text = f"Start at {start}. Count back {count_back}. What number do you land on?"
         else:
-            q_text = f"There are {start} {item_name}. Taking away {count_back} {item_name} leaves how many {item_name}?"
+            q_text = (f"There are {start} {count_noun(start, item_name)}. "
+                      f"Taking away {count_back} {count_noun(count_back, item_name)} "
+                      f"leaves how many {item_name}?")
         return {
             "a": start, "b": count_back, "result": start - count_back,
             "task_type": task_type,

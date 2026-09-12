@@ -16,7 +16,7 @@ Actor names rotate deterministically via seed.
 import random
 from typing import Any
 
-from backend.app.practice_gen.dna.base import FormattedProblem, QuestionContext
+from backend.app.practice_gen.dna.base import FormattedProblem, QuestionContext, count_noun
 
 
 # Rotating cast of Filipino student names for the "actor" role.
@@ -140,7 +140,13 @@ def _build_pure_equation(ctx: QuestionContext) -> str:
             return f"Start at {slot('a', value=a)}. Count back {slot('b', value=b)}. You land on {slot('result', value=r)}"
         if values.get("task_type") == "taking_away" and blank_target == "result":
             item = values.get("item_name", "items")
-            return f"There are {slot('a', value=a)} {item}. Taking away {slot('b', value=b)} {item} leaves {slot('result', value=r)} {item}."
+            # A blanked slot prints "___", so its noun stays plural: the quantity is the
+            # thing the pupil has to supply and "___ cookie" would give it away.
+            def noun(key, value):
+                return item if blank_target == key else count_noun(value, item)
+            return (f"There are {slot('a', value=a)} {noun('a', a)}. "
+                    f"Taking away {slot('b', value=b)} {noun('b', b)} "
+                    f"leaves {slot('result', value=r)} {noun('result', r)}.")
         return f"{slot('a', value=a)} − {slot('b', value=b)} = {slot('result', value=r)}"
     elif concept == "multiplication":
         a = values.get("a", values.get("groups"))

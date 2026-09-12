@@ -49,7 +49,14 @@ CENSUS_FLOORS = {
     # payload's existence: the component reads jump_count/jump_size inside a branch, so
     # the derived frontend contract classes them conditional and §9 enforces unconditional
     # keys only. Ratcheted to the real number less a little churn, as above.
-    "unit_tests": 425,
+    # 472 collected 2026-09-12 (was 428 at the previous ratchet's measurement), +45 from
+    # test_mutation_proof.py -- the consumer behind §8's switch from declared to EXECUTED
+    # proof. Every rejection reason (partial, malformed, interrupted, stale source, stale
+    # definition, wrong label, unobserved marker, SURVIVED, unrestored tree, inadmissible
+    # path) is planted there against isolated fixtures, because those directions cannot be
+    # proven by a mutation: the mutation runner is the thing they judge. Ratcheted to the
+    # real number less a little churn, as above.
+    "unit_tests": 468,
     # 56 registered 2026-09-09 (was 51, 50, 48, 37). Four prove §8's own directions, one
     # §2C at (node, formatter) granularity, two the §6 phase seam, one that every contract
     # check declares the phase it runs in, four the §6 Phase 1 band (§6A/§6B/§6C/§6E, which
@@ -85,7 +92,15 @@ CENSUS_FLOORS = {
     # assertions rather than mutations -- this floor is the only thing that notices if
     # either is deleted. One is caught by a unit test rather than any § check, which is
     # itself the finding it records.
-    "mutations": 76,
+    # 77 registered 2026-09-12 (was 76): +1 for `source_edited_without_reproof`, which
+    # proves §8's new `mutation_proof_integrity_8` -- that an executed-mutation proof
+    # record goes stale when the source it was taken against moves. Added in the commit
+    # that made §8 count EXECUTED proofs rather than `Mutation.asserts`, i.e. while its
+    # own finding count was zero (Scaling Mandate 5).
+    # 79 registered 2026-09-12 (was 77): +2 for the two bounded student-path lints,
+    # `count_noun_disagrees` (§1J) and `second_option_answers_too` (§1K). Both were added
+    # with their gates, while each gate's finding count was zero.
+    "mutations": 79,
     # 983 observed 2026-09-08. How many (variant, value) pairs the blind-review packets
     # will actually demonstrate across the tree.
     #

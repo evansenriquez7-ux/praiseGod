@@ -12,7 +12,7 @@ For word problems: Uses spine-generated text with blank inserted
 
 import random
 
-from backend.app.practice_gen.dna.base import FormattedProblem, QuestionContext
+from backend.app.practice_gen.dna.base import FormattedProblem, QuestionContext, count_noun
 from backend.app.practice_gen.formatters._distractor_fallback import augment_distractors
 from backend.app.practice_gen.formatters._option_order import shuffle_options
 
@@ -92,7 +92,8 @@ def _build_equation_sentence(ctx: QuestionContext) -> str:
             return f"Start at {a}. Count back {b}. You land on ___"
         if values.get("task_type") == "taking_away" and blank_target == "result":
             item = values.get("item_name", "items")
-            return f"There are {a} {item}. Taking away {b} {item} leaves ___ {item}."
+            return (f"There are {a} {count_noun(a, item)}. "
+                    f"Taking away {b} {count_noun(b, item)} leaves ___ {item}.")
         if blank_target == "result":
             return f"{a} − {b} = ___"
         elif blank_target == "b":

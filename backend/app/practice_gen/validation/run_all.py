@@ -48,6 +48,8 @@ from backend.app.practice_gen.validation import (
     validate_judgment,
     validate_matrix,
     validate_census,
+    validate_language,
+    validate_options,
     validate_render,
     validate_grade,
     validate_coverage,
@@ -126,6 +128,8 @@ CONTRACT_CHECKS: Dict[str, str] = {
     "§6H": "validate_capability PHASE 2: an Attester verdict must name who made it, and no identity may cover more than one dispatch",
     "§7": "run_all: the suite's own census (nodes, unit tests, mutations) has not shrunk below its floor",
     "§8": "validate_coverage: every assertion the harness can emit is either proven by a mutation or on a shrinking allowlist",
+    "§1J": "validate_language: an explicit count and its noun must agree in the rendered student text, nested quoted statements included",
+    "§1K": "validate_options: a choice item must offer distinguishable choices, and exactly one of them may answer the question",
     "§9": "validate_render: the payload a node emits must be renderable by the React component the student sees",
     "§10": "validate_grade: a known-correct answer must be graded correct by all three graders",
 }
@@ -479,7 +483,21 @@ def run_all(fail_fast: bool = False, phase: Optional[int] = None) -> int:
     # The four stages below are all Phase 1: each reads code, the knowledge graph or the
     # harness's own bookkeeping, and none needs an agent-authored artifact on disk.
     render_ok = grade_ok = coverage_ok = census_ok = True
+    language_ok = options_ok = True
     if _runs(1):
+        print("\n--- Count/Noun Agreement (§1J) ---")
+        # Two bounded mechanical lints on the text a pupil READS, added 2026-09-12. They
+        # sit next to §9 because all three drive the student path rather than stopping at
+        # FormattedProblem. Neither is a test of age-appropriate language: §1D owns
+        # vocabulary gating and the judgment reviews own reading load. Both were activated
+        # at a measured zero (Scaling Mandate 5) -- §1J after four live stems were fixed.
+        language_ok = validate_language.validate_all()
+        executed_checks.add("§1J")
+
+        print("\n--- Option Degeneracy (§1K) ---")
+        options_ok = validate_options.validate_all()
+        executed_checks.add("§1K")
+
         print("\n--- Render Contract (§9) ---")
         # The first stage that looks past FormattedProblem at what the STUDENT receives.
         # Everything above validates the pipeline's data; this asks whether the React
@@ -618,7 +636,8 @@ def run_all(fail_fast: bool = False, phase: Optional[int] = None) -> int:
     print("\n======================================================================")
     all_ok = (unit_ok and dna_ok and compat_ok and interest_ok and vocab_ok and matrix_ok
               and judgment_ok and provision_ok and attestation_ok and contract_match_ok
-              and census_ok and render_ok and grade_ok and coverage_ok)
+              and census_ok and render_ok and grade_ok and coverage_ok
+              and language_ok and options_ok)
     scope = "ALL TESTS" if phase is None else f"PHASE {phase}"
     if all_ok:
         print(f"{scope} PASSED SUCCESSFULLY! Praise God!")

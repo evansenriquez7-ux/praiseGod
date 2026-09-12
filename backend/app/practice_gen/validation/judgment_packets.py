@@ -356,22 +356,26 @@ def _stratified_seeds(node_id: str) -> List[int]:
     format can hide several. It is, however, mechanical and reproducible, which
     a reviewer's intuition about what to sample is not.
     """
+    # Every render that fails here goes through `_try_render`, which RECORDS it. Until
+    # 2026-09-12 these two loops carried bare `except Exception: continue` -- the same
+    # silent candidate loss `_try_render` was written to stop, still live two functions
+    # away, and invisible for the same reason: a seed that vanishes from a scan looks
+    # exactly like a seed the scan never reached. Ground Rule 3.
     seen = {}
     for seed in REVIEW_SEEDS:
-        try:
-            fmt = _render_sample(node_id, seed).get("formatter")
-        except Exception:
-            continue  # a base seed that cannot render is reported by the gate, not here
-        seen.setdefault(fmt, seed)
+        sample = _try_render(node_id, seed)
+        if sample is None:
+            continue  # recorded in _RENDER_FAILURES; the gate reports it
+        seen.setdefault(sample.get("formatter"), seed)
 
     extra: List[int] = []
     for seed in _STRATIFY_SCAN:
         if len(extra) >= _MAX_EXTRA_SAMPLES:
             break
-        try:
-            fmt = _render_sample(node_id, seed).get("formatter")
-        except Exception:
+        sample = _try_render(node_id, seed)
+        if sample is None:
             continue
+        fmt = sample.get("formatter")
         if fmt not in seen:
             seen[fmt] = seed
             extra.append(seed)
@@ -449,11 +453,8 @@ def _try_render(node_id: str, seed: int) -> Any:
 
 
 def _seed_renders(node_id: str, seed: int) -> bool:
-    try:
-        _render_sample(node_id, seed)
-        return True
-    except Exception:
-        return False
+    """Whether this seed renders. A failure is RECORDED, never merely answered `False`."""
+    return _try_render(node_id, seed) is not None
 
 
 def build_packet(node_id: str) -> Dict[str, Any]:

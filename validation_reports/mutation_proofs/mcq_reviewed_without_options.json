@@ -1,0 +1,47 @@
+{
+ "asserts": [
+  "judgment_options_recorded_5"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "isolated_plant_judgment",
+  "FAIL isolated_control_judgment"
+ ],
+ "command": [
+  "tests.isolated_corpus",
+  "--gate",
+  "judgment"
+ ],
+ "definition_digest": "daaa72c1241a3aead9999a08a9b064b1a9af3068b655909529f54f43e994a162",
+ "detected": true,
+ "diagnostic_line": "exit 1 — FAIL isolated_plant_judgment (1) planted=options_dropped:",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "isolated_plant_judgment",
+  "records no 'options'"
+ ],
+ "expected_check": "§5 option adjudicability (a choice item must carry its choices)",
+ "finished_at": "2026-09-12T05:01:49+08:00",
+ "input_digest": "33cd89ef09f8aa98c2dca206ad925748038cfbd2b08ab217114d980d0c40f8ab",
+ "mutated_paths": [
+  "tests/isolated_corpus.py"
+ ],
+ "mutation": "mcq_reviewed_without_options",
+ "observed_markers": {
+  "isolated_plant_judgment": true,
+  "records no 'options'": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-09-12T05:01:42+08:00"
+}

@@ -1,0 +1,42 @@
+{
+ "asserts": [
+  "capability_attestation_options_recorded_6F"
+ ],
+ "baseline_exit": 1,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "mat_g2_na_q3_8 && records no 'options' at seed"
+ ],
+ "command": [
+  "backend.app.practice_gen.validation.validate_capability"
+ ],
+ "definition_digest": "d8d31cecd36d1b151e79636565d09a3565b08bed4ca6ec64102ca37f1749d364",
+ "detected": true,
+ "diagnostic_line": "exit 1 — Capability contract: 222 failure(s) (5 Phase 1 / artifact-free, floor 5; 217 Phase 2 / attestation).",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "mat_g2_na_q3_8 && records no 'options' at seed"
+ ],
+ "expected_check": "§6F adjudicability (an attestation must carry the choices it was shown)",
+ "finished_at": "2026-09-12T05:00:53+08:00",
+ "input_digest": "33cd89ef09f8aa98c2dca206ad925748038cfbd2b08ab217114d980d0c40f8ab",
+ "mutated_paths": [
+  "backend/app/practice_gen/formatters/textual/fmt_true_false.py"
+ ],
+ "mutation": "attestation_drops_options",
+ "observed_markers": {
+  "mat_g2_na_q3_8 && records no 'options' at seed": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-09-12T05:00:49+08:00"
+}

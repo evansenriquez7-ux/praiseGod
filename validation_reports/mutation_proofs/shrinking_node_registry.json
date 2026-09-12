@@ -1,0 +1,45 @@
+{
+ "asserts": [
+  "census",
+  "census_nodes"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "is below the floor"
+ ],
+ "command": [
+  "backend.app.practice_gen.validation.validate_census"
+ ],
+ "definition_digest": "5ba86e6489b305d58f173d612e9134c9dd17937de90abe69fed6b2a9794c0e3f",
+ "detected": true,
+ "diagnostic_line": "exit 1 — FAIL census (2 floor(s) breached):",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "census",
+  "is below the floor"
+ ],
+ "expected_check": "§7 (the suite's own census has not shrunk below its floor)",
+ "finished_at": "2026-09-12T05:02:55+08:00",
+ "input_digest": "33cd89ef09f8aa98c2dca206ad925748038cfbd2b08ab217114d980d0c40f8ab",
+ "mutated_paths": [
+  "backend/app/practice_gen/registry.py"
+ ],
+ "mutation": "shrinking_node_registry",
+ "observed_markers": {
+  "census": true,
+  "is below the floor": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-09-12T05:02:50+08:00"
+}

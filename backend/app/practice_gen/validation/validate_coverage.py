@@ -59,17 +59,31 @@ invisible here, and so is a new failure mode folded into an existing label's err
 §8's unit is the assertion, not the mutation: where two mutations prove one label, either
 may be deleted without §8 noticing — §7's `mutations` floor is what guards that.
 
-**§8 proves by DECLARATION, not by EXECUTION.** `proven_assertions()` reads
-`Mutation.asserts` out of the mutation table; it never runs a mutation and never learns
-whether one was DETECTED. A mutation that SURVIVES — or that the runner refuses to score,
-reporting INVALID because the validator was already failing — still marks its label proven
-here, and still trips `assertion_allowlist_paid_8` if the label is also allowlisted. Named
-2026-09-10, when `mcq_reviewed_without_options` (a correct plant against a check whose
-baseline is red by construction, so the runner will not score it until the re-review queue
-clears) could not be carried on the allowlist for exactly that reason. Running
-`tests/mutation_harness.py` is what closes this and nothing in `run_all` does it — §7's
-`mutations` floor counts the table, not its results. Until a run of that table is itself an
-artifact this gate can read, "proven" here means "a mutation is written for it".
+**§8 proved by DECLARATION until 2026-09-12; it now proves by EXECUTION.**
+`proven_assertions()` used to read `Mutation.asserts` out of the mutation table. It never
+ran a mutation and never learned whether one was DETECTED, so a mutation that SURVIVED —
+or that the runner refused to score, reporting INVALID because the validator was already
+failing — still marked its label proven, and still tripped `assertion_allowlist_paid_8` if
+the label was also allowlisted. Named 2026-09-10, when `mcq_reviewed_without_options` (a
+correct plant against a check whose baseline is red by construction) could not be carried
+on the allowlist for exactly that reason.
+
+It is closed by making a run of the mutation table leave an artifact this gate can read.
+`tests/mutation_harness.py` writes one proof record per EXECUTED mutation to
+`validation_reports/mutation_proofs/`; `mutation_proof.verify_proof` rejects a record that
+is missing, partial, malformed, interrupted, stale against the mutation definition or the
+working-tree bytes, reporting a SURVIVED result, or carrying an expected marker that was
+not observed. A label counts as proven here only when a record survives all of that.
+
+`run_all` CONSUMES those records and never invokes the runner: a gate that can regenerate
+its own evidence is not a gate. There is no flag that makes this accept a stale proof.
+
+WHAT EXECUTION-PROOF STILL DOES NOT PROVE (Mandate 6)
+-----------------------------------------------------
+That a check fires on one planted violation. Not that the check is correct, not that the
+violation is the only shape of that defect, and not that a surviving mutation means the
+check is broken rather than that the plant stopped reaching the validated path — Mandate
+2's two causes are still told apart by hand.
 
 Why a floor and not a hard zero
 -------------------------------
@@ -87,6 +101,8 @@ import sys
 from pathlib import Path
 from typing import Dict, List, Sequence, Set, Tuple
 
+from backend.app.practice_gen.validation import mutation_proof
+
 REPO_ROOT = Path(__file__).resolve().parents[4]
 _VALIDATION_DIR = Path(__file__).resolve().parent
 
@@ -95,7 +111,8 @@ _MATRIX_MODULE = "validate_matrix.py"
 
 # Modules that hold no assertions of their own (packet builder, manifest tables). They
 # are still scanned for stray `  FAIL <label>` prints; they simply declare nothing.
-_HELPER_MODULES = {"__init__.py", "judgment_packets.py", "_manifest.py"}
+_HELPER_MODULES = {"__init__.py", "judgment_packets.py", "_manifest.py",
+                   "mutation_proof.py"}
 
 # §8 inventory: this module's own directions. Each is a separate way the coverage gate can
 # fail, and each has its own mutation -- a gate that measures other gates has no business
@@ -107,6 +124,7 @@ ASSERTIONS = (
     "assertion_asserts_unknown_8",    # a mutation asserting a label nothing declares
     "assertion_undeclared_check_8",   # a printed `  FAIL` label no module declares
     "check_phase_registry_8",         # a contract ref that declares no harness phase
+    "mutation_proof_integrity_8",     # an executed-proof record that does not hold
 )
 
 # Assertions that can fail but have no mutation proving they do. Each needs a reason and a
@@ -352,25 +370,102 @@ def harness_assertion_labels() -> Set[str]:
     return labels
 
 
-def proven_assertions() -> Set[str]:
+def _mutations() -> Sequence:
     if str(REPO_ROOT) not in sys.path:
         sys.path.insert(0, str(REPO_ROOT))
     from tests.mutation_harness import MUTATIONS
 
+    return MUTATIONS
+
+
+def declared_assertions() -> Set[str]:
+    """
+    Every label a mutation CLAIMS to prove. Not evidence — see `proven_assertions`.
+
+    Still needed in two directions that are about the table rather than about any run:
+    `assertion_asserts_unknown_8` (a mutation naming a label nothing emits) is a defect in
+    the table whether or not the mutation has been executed, and it must be reported the
+    same way on a tree with no proofs at all.
+    """
     proven: Set[str] = set()
-    for m in MUTATIONS:
+    for m in _mutations():
         proven |= set(m.asserts or ())
     return proven
 
 
+def _proof_state() -> Dict[str, object]:
+    """The executed-proof corpus, evaluated once per call site that needs it."""
+    return mutation_proof.evaluate(_mutations())
+
+
+def proven_assertions() -> Set[str]:
+    """
+    The labels an EXECUTED, verified, current mutation proof record establishes.
+
+    Not `Mutation.asserts`: that is what the table claims, and a claim is what this gate
+    exists to stop counting. See the module docstring and
+    `backend/app/practice_gen/validation/mutation_proof.py`.
+    """
+    return _proof_state()["proven"]  # type: ignore[return-value]
+
+
+def mutation_proof_failures() -> List[str]:
+    """
+    One error per proof record on disk that does not hold.
+
+    A mutation with NO record is not reported here — `validate_coverage`'s inventory pass
+    reports the resulting hole as an unproven assertion, which is the same finding stated
+    where it belongs. Splitting them matters: "never run" and "run, and the result does
+    not stand" have different fixes.
+    """
+    return _proof_state()["errors"]  # type: ignore[return-value]
+
+
+def unproven_because_never_executed() -> List[str]:
+    """
+    Mutations that claim a label but have filed no proof record at all.
+
+    Reported separately from a failed proof so the remaining work is countable: this list
+    shrinking to empty is what "the table has been run on these bytes" looks like.
+    """
+    records, _errs = mutation_proof.load_proofs()
+    return sorted(m.name for m in _mutations() if m.asserts and m.name not in records)
+
+
 def validate_coverage() -> List[str]:
     """Return an error per assertion that is neither proven nor knowingly excused."""
-    inventory = harness_assertion_labels()
-    proven = proven_assertions()
-    printed, errors = printed_check_labels()
+    return [msg for msg, _fam in validate_coverage_tagged()]
 
-    unexplained = sorted(inventory - proven - set(UNPROVEN_ASSERTIONS))
+
+def validate_coverage_tagged() -> List[Tuple[str, str]]:
+    """`validate_coverage`, with each error paired to the family it belongs to."""
+    inventory = harness_assertion_labels()
+    state = _proof_state()
+    proven: Set[str] = state["proven"]          # type: ignore[assignment]
+    stale_tree_only: Set[str] = state["stale_tree_only"]   # type: ignore[assignment]
+    declared = declared_assertions()
+    printed, errors = printed_check_labels()
+    # One tag per error, in step with `errors`, so the printer can show a member of every
+    # family instead of the first ten of the loudest one.
+    families: List[str] = ["printed_scan"] * len(errors)
+
+    never_run = set(unproven_because_never_executed())
+    # `stale_tree_only` labels DO have executed proofs; the single tree-move error above
+    # already says why they do not currently count, and repeating it per label would
+    # bury the finding a planted mutation is meant to surface.
+    unexplained = sorted(inventory - proven - set(UNPROVEN_ASSERTIONS) - stale_tree_only)
     for label in unexplained:
+        claimants = sorted(m.name for m in _mutations() if label in (m.asserts or ()))
+        if claimants and set(claimants) & never_run:
+            families.append("never_executed")
+            errors.append(
+                f"§8 coverage: assertion {label!r} is claimed by mutation(s) {claimants} "
+                f"that have filed NO executed proof record on these bytes. A mutation that "
+                f"has not been run proves nothing. Run: PYTHONPATH=. .venv/bin/python "
+                f"tests/mutation_harness.py --only {claimants[0]}"
+            )
+            continue
+        families.append("unproven_assertion")
         errors.append(
             f"§8 coverage: assertion {label!r} can fail but no mutation proves it does, and "
             f"it is not in UNPROVEN_ASSERTIONS. An unproven check is a broken check. Write "
@@ -380,7 +475,8 @@ def validate_coverage() -> List[str]:
 
     # The allowlist must shrink, never grow. Anything on it that is NOW proven should be
     # removed, and anything on it that no longer exists is stale bookkeeping.
-    for label in sorted(set(UNPROVEN_ASSERTIONS) & proven):
+    for label in sorted(set(UNPROVEN_ASSERTIONS) & declared):
+        families.append("allowlist_paid")
         errors.append(
             f"§8 coverage: {label!r} is listed as unproven but a mutation now proves it. "
             f"Remove it from UNPROVEN_ASSERTIONS -- the allowlist is a debt register, and "
@@ -391,6 +487,7 @@ def validate_coverage() -> List[str]:
     # accounted-for debt. Both entries this check found on the day it was written
     # (`node_to_dna_presence`, `scalar_1_0_reach`) were of exactly that shape.
     for label in sorted(set(UNPROVEN_ASSERTIONS) - inventory):
+        families.append("allowlist_phantom")
         errors.append(
             f"§8 coverage: UNPROVEN_ASSERTIONS names {label!r}, which no validator declares "
             f"and no check site emits. It excuses nothing while looking like an accounted-for "
@@ -399,7 +496,8 @@ def validate_coverage() -> List[str]:
 
     # `Mutation.asserts` is free text, so a typo silently marks a label proven that no
     # check emits -- while the real label sits in the inventory, unproven and unexcused.
-    for label in sorted(proven - inventory):
+    for label in sorted(declared - inventory):
+        families.append("asserts_unknown")
         errors.append(
             f"§8 coverage: a mutation asserts {label!r}, which no validator declares in "
             f"ASSERTIONS and validate_matrix never emits. Either the label is misspelled, or "
@@ -407,33 +505,91 @@ def validate_coverage() -> List[str]:
             f"emits proves nothing."
         )
 
-    errors += check_phase_registry_failures()
+    phase_errors = check_phase_registry_failures()
+    errors += phase_errors
+    families += ["phase_registry"] * len(phase_errors)
 
     # Discovery direction: a check that reports itself must be inventoried.
     for label in sorted(set(printed) - inventory):
+        families.append("undeclared_check")
         errors.append(
             f"§8 coverage: {printed[label][0]} prints '  FAIL {label}' but no module declares "
             f"{label!r} in ASSERTIONS. A check that can report a failure and is not in the "
             f"inventory is a check §8 cannot tell you is unproven."
         )
-    return errors
+    return list(zip(errors, families))
+
+
+# How many errors to print per stage, and the rule that stops the head being useless.
+_PRINT_BUDGET = 10
+
+
+def _print_findings(label: str, errors: List[str], families: List[str]) -> None:
+    """
+    Print a bounded head of `errors` that shows at least one of EVERY family present.
+
+    A flat `errors[:10]` looked harmless and was not. §8 can emit six unrelated families
+    at once, and the largest of them -- one line per assertion still lacking a proof --
+    drowned the rest: measured 2026-09-12, five of the seven mutations that prove §8's
+    own directions scored as "exited 1 but output lacked expected marker(s)", because the
+    planted finding was real, was in the list, and was truncated out of the printed head.
+    A mutation cannot be told from noise by a check that will not print it.
+
+    `families` is a parallel list of tags, one per error, so grouping is by what the error
+    IS rather than by a regex over its prose.
+    """
+    order: List[str] = []
+    grouped: Dict[str, List[str]] = {}
+    for fam, err in zip(families, errors):
+        grouped.setdefault(fam, []).append(err)
+        if fam not in order:
+            order.append(fam)
+
+    print(f"  FAIL {label} ({len(errors)} in {len(order)} famil{'y' if len(order) == 1 else 'ies'}):")
+    shown = 0
+    # One from each family first, so nothing is invisible; then fill the budget.
+    for fam in order:
+        print(f"    - {grouped[fam][0]}")
+        shown += 1
+    for fam in order:
+        for err in grouped[fam][1:]:
+            if shown >= max(_PRINT_BUDGET, len(order)):
+                break
+            print(f"    - {err}")
+            shown += 1
+    if shown < len(errors):
+        print(f"    ... and {len(errors) - shown} more.")
 
 
 def validate_all() -> bool:
     inventory = harness_assertion_labels()
     proven = proven_assertions()
     declared = declared_assertion_labels()
-    errors = validate_coverage()
+    proof_errors = mutation_proof_failures()
+    tagged = validate_coverage_tagged()
+    errors = [m for m, _f in tagged]
+
+    ok = True
+    # Reported as its own assertion rather than folded into the coverage rollup: "a proof
+    # record does not hold" and "this label has no proof" are different failures with
+    # different fixes, and a single label would let one hide inside the other's count.
+    if proof_errors:
+        _print_findings("mutation_proof_integrity_8", proof_errors,
+                        [mutation_proof.error_family(e) for e in proof_errors])
+        ok = False
+    else:
+        records, _ = mutation_proof.load_proofs()
+        print(f"  PASS mutation_proof_integrity_8: {len(records)} executed mutation proof(s) "
+              f"verified against the current source/fixture digest")
+
     if errors:
-        print(f"  FAIL assertion_coverage_8 ({len(errors)}):")
-        for e in errors[:10]:
-            print(f"    - {e}")
-        if len(errors) > 10:
-            print(f"    ... and {len(errors) - 10} more.")
+        _print_findings("assertion_coverage_8", errors, [f for _m, f in tagged])
+        return False
+    if not ok:
         return False
     matrix = matrix_assertion_labels()
     print(f"  PASS assertion_coverage_8: {len(inventory & proven)}/{len(inventory)} harness "
-          f"assertions proven ({len(matrix)} discovered in validate_matrix, "
+          f"assertions proven BY EXECUTION ({len(matrix)} discovered in validate_matrix, "
           f"{len(inventory) - len(matrix)} declared across {len(declared)} modules), "
           f"{len(UNPROVEN_ASSERTIONS)} knowingly unproven (allowlist may only shrink)")
     return True

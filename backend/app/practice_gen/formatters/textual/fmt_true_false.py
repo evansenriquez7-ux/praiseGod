@@ -9,7 +9,7 @@ to judge it as True or False.
 
 import random
 
-from backend.app.practice_gen.dna.base import FormattedProblem, QuestionContext
+from backend.app.practice_gen.dna.base import FormattedProblem, QuestionContext, count_noun
 
 
 _COMPARISON_SIGNS = (">", "<", "=", "\u2265", "\u2264", "\u2260")
@@ -186,7 +186,9 @@ def format_true_false(ctx: QuestionContext, rng: random.Random) -> FormattedProb
                 statement = f"Start at {a}. Count back {b}. You land on {fill_value}."
             elif values.get("task_type") == "taking_away" and blank_target == "result":
                 item = values.get("item_name", "items")
-                statement = f"There are {a} {item}. Taking away {b} {item} leaves {fill_value} {item}."
+                statement = (f"There are {a} {count_noun(a, item)}. "
+                             f"Taking away {b} {count_noun(b, item)} "
+                             f"leaves {fill_value} {count_noun(fill_value, item)}.")
             elif blank_target == "result":
                 statement = f"{a} − {b} = {fill_value}"
             elif blank_target == "b":

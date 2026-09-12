@@ -1,0 +1,42 @@
+{
+ "asserts": [
+  "render_contract_floor_9"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "planted_contract_key"
+ ],
+ "command": [
+  "backend.app.practice_gen.validation.validate_render"
+ ],
+ "definition_digest": "734568ecc86aca19972fe9118cd4dced7b0684592ff3f45e6ee7bd8ee87fcd9d",
+ "detected": true,
+ "diagnostic_line": "exit 1 — FAIL render_contract_floor_9: 8 broken renders exceeds floor 0",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "planted_contract_key"
+ ],
+ "expected_check": "§9 (the payload carries every key the component reads)",
+ "finished_at": "2026-09-12T05:10:27+08:00",
+ "input_digest": "33cd89ef09f8aa98c2dca206ad925748038cfbd2b08ab217114d980d0c40f8ab",
+ "mutated_paths": [
+  "frontend/src/components/VisualSkeletons.jsx"
+ ],
+ "mutation": "frontend_contract_key_unserved",
+ "observed_markers": {
+  "planted_contract_key": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-09-12T05:10:19+08:00"
+}

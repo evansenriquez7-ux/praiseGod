@@ -1,0 +1,46 @@
+{
+ "asserts": [
+  "config_respects_competency"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "bypassing curriculum gating"
+ ],
+ "command": [
+  "backend.app.practice_gen.validation.validate_compat",
+  "--only",
+  "config"
+ ],
+ "definition_digest": "8a5e122a62c88f87d1e9af9d86a5bc78d0a531e12addecdaaa486b1fff6c6661",
+ "detected": true,
+ "diagnostic_line": "exit 1 — FAIL config_respects_competency (17):",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "config_respects_competency",
+  "bypassing curriculum gating"
+ ],
+ "expected_check": "§2D (a saved configuration may not serve content outside a node's competency)",
+ "finished_at": "2026-09-12T05:02:59+08:00",
+ "input_digest": "33cd89ef09f8aa98c2dca206ad925748038cfbd2b08ab217114d980d0c40f8ab",
+ "mutated_paths": [
+  "backend/app/services/orchestrator.py"
+ ],
+ "mutation": "config_bypasses_competency",
+ "observed_markers": {
+  "bypassing curriculum gating": true,
+  "config_respects_competency": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-09-12T05:02:58+08:00"
+}

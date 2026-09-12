@@ -1,0 +1,44 @@
+{
+ "asserts": [
+  "requires_ignore_locked_6B"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "mat_g1_na_q1_2 && does not match"
+ ],
+ "command": [
+  "backend.app.practice_gen.validation.validate_capability",
+  "--phase",
+  "1"
+ ],
+ "definition_digest": "d2fc14d23a518accf6c61772e7150f8e67f4386d85d40975f0da01e46196fb50",
+ "detected": true,
+ "diagnostic_line": "exit 1 — Capability contract: 7 failure(s) (7 Phase 1 / artifact-free, floor 5; 0 Phase 2 / attestation).",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "mat_g1_na_q1_2 && does not match"
+ ],
+ "expected_check": "§6B (requires_ignore is human-authored ground truth)",
+ "finished_at": "2026-09-12T05:10:19+08:00",
+ "input_digest": "33cd89ef09f8aa98c2dca206ad925748038cfbd2b08ab217114d980d0c40f8ab",
+ "mutated_paths": [
+  "data/skeletons/vocab_annotation.json"
+ ],
+ "mutation": "unsanctioned_requires_ignore",
+ "observed_markers": {
+  "mat_g1_na_q1_2 && does not match": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-09-12T05:10:17+08:00"
+}

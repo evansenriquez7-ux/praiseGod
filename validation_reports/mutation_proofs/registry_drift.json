@@ -1,0 +1,40 @@
+{
+ "asserts": [
+  "compatibility_table"
+ ],
+ "baseline_exit": null,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [],
+ "command": [
+  "backend.app.practice_gen.validation.validate_compat"
+ ],
+ "definition_digest": "af480b23fc527f1d1adf2e76a9e4be05c101a17b2bec1018d6e961f8ca82571f",
+ "detected": true,
+ "diagnostic_line": "exit 1 — Traceback (most recent call last):",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "planted_phantom_dna"
+ ],
+ "expected_check": "_manifest.py import-time registry assertion",
+ "finished_at": "2026-09-12T05:00:17+08:00",
+ "input_digest": "33cd89ef09f8aa98c2dca206ad925748038cfbd2b08ab217114d980d0c40f8ab",
+ "mutated_paths": [
+  "backend/app/practice_gen/compatibility.py"
+ ],
+ "mutation": "registry_drift",
+ "observed_markers": {
+  "planted_phantom_dna": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-09-12T05:00:17+08:00"
+}

@@ -1,0 +1,46 @@
+{
+ "asserts": [
+  "render_contract_9"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "FAIL render_contract"
+ ],
+ "command": [
+  "backend.app.practice_gen.validation.validate_render",
+  "--node-ids",
+  "mat_g2_na_q3_4"
+ ],
+ "definition_digest": "793a3478a0b284364be4c0e007f62c542f15a6622d759ccf92bbcb0afaa07093",
+ "detected": true,
+ "diagnostic_line": "exit 1 — FAIL render_contract_9: 2 finding(s) on ['mat_g2_na_q3_4']",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "FAIL render_contract",
+  "shaded"
+ ],
+ "expected_check": "§9 (the payload must be renderable by the component the student sees)",
+ "finished_at": "2026-09-12T05:03:01+08:00",
+ "input_digest": "33cd89ef09f8aa98c2dca206ad925748038cfbd2b08ab217114d980d0c40f8ab",
+ "mutated_paths": [
+  "backend/app/practice_gen/formatters/visual/fmt_array_grid.py"
+ ],
+ "mutation": "unrenderable_visual_payload",
+ "observed_markers": {
+  "FAIL render_contract": true,
+  "shaded": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-09-12T05:02:59+08:00"
+}

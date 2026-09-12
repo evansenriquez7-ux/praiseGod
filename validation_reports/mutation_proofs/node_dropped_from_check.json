@@ -1,0 +1,46 @@
+{
+ "asserts": [
+  "per_node_applicability_1H"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "§1H applicability — the node's own composition"
+ ],
+ "command": [
+  "backend.app.practice_gen.validation.validate_matrix",
+  "--node",
+  "mat_g1_na_q1_0"
+ ],
+ "definition_digest": "cd88007dc6a330d0067b19ca56dee480a85fc89f21d65b21695b9547758e8ab7",
+ "detected": true,
+ "diagnostic_line": "exit 1 — Nodes Failed:  0",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "§1H applicability",
+  "mat_g1_na_q1_0"
+ ],
+ "expected_check": "§1H (every check a node's composition makes applicable ran on that node)",
+ "finished_at": "2026-09-12T05:02:50+08:00",
+ "input_digest": "33cd89ef09f8aa98c2dca206ad925748038cfbd2b08ab217114d980d0c40f8ab",
+ "mutated_paths": [
+  "backend/app/practice_gen/validation/validate_matrix.py"
+ ],
+ "mutation": "node_dropped_from_check",
+ "observed_markers": {
+  "mat_g1_na_q1_0": true,
+  "§1H applicability": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-09-12T05:02:44+08:00"
+}

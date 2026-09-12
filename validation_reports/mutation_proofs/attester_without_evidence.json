@@ -1,0 +1,47 @@
+{
+ "asserts": [
+  "attester_evidence_6G"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "isolated_plant_attestation",
+  "FAIL isolated_control_attestation"
+ ],
+ "command": [
+  "tests.isolated_corpus",
+  "--gate",
+  "attestation"
+ ],
+ "definition_digest": "ec6e32aa420278d363e0c44a62480d8f9a846dca4e1fa068749a7003aa62b753",
+ "detected": true,
+ "diagnostic_line": "exit 1 — FAIL isolated_plant_attestation (1) planted=attester_no_evidence:",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "isolated_plant_attestation",
+  "names no seed in 'seeds_showing_it'"
+ ],
+ "expected_check": "§6G (a verdict must show its work and name the seeds that show it)",
+ "finished_at": "2026-09-12T05:06:20+08:00",
+ "input_digest": "33cd89ef09f8aa98c2dca206ad925748038cfbd2b08ab217114d980d0c40f8ab",
+ "mutated_paths": [
+  "tests/isolated_corpus.py"
+ ],
+ "mutation": "attester_without_evidence",
+ "observed_markers": {
+  "isolated_plant_attestation": true,
+  "names no seed in 'seeds_showing_it'": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-09-12T05:06:14+08:00"
+}

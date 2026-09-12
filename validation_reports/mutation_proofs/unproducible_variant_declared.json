@@ -1,0 +1,44 @@
+{
+ "asserts": [
+  "declared_variants_are_producible"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "FAIL declared_variants_are_producible"
+ ],
+ "command": [
+  "backend.app.practice_gen.validation.validate_compat",
+  "--only",
+  "producible"
+ ],
+ "definition_digest": "80141c043c823b4eb342dc5261c87d2dc2d3e516bc349744be650d5c9dcafa8d",
+ "detected": true,
+ "diagnostic_line": "exit 1 — FAIL declared_variants_are_producible (643):",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "FAIL declared_variants_are_producible"
+ ],
+ "expected_check": "§2I (a declared discrete variant must be producible)",
+ "finished_at": "2026-09-12T05:05:04+08:00",
+ "input_digest": "33cd89ef09f8aa98c2dca206ad925748038cfbd2b08ab217114d980d0c40f8ab",
+ "mutated_paths": [
+  "backend/app/practice_gen/validation/judgment_packets.py"
+ ],
+ "mutation": "unproducible_variant_declared",
+ "observed_markers": {
+  "FAIL declared_variants_are_producible": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-09-12T05:04:40+08:00"
+}

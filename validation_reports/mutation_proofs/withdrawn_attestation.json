@@ -1,0 +1,47 @@
+{
+ "asserts": [
+  "capability_unattested_6F"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "isolated_plant_attestation",
+  "FAIL isolated_control_attestation"
+ ],
+ "command": [
+  "tests.isolated_corpus",
+  "--gate",
+  "attestation"
+ ],
+ "definition_digest": "ee9edd5f450756a9e7262018c1b543a6215d3e4ee9b8bd3ca9884ac89a63049d",
+ "detected": true,
+ "diagnostic_line": "exit 1 — FAIL isolated_plant_attestation (1) planted=withdrawn_attestation:",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "isolated_plant_attestation",
+  "is UNATTESTED (§6F)"
+ ],
+ "expected_check": "§6F UNATTESTED (a declared capability nobody blind has judged)",
+ "finished_at": "2026-09-12T05:06:27+08:00",
+ "input_digest": "33cd89ef09f8aa98c2dca206ad925748038cfbd2b08ab217114d980d0c40f8ab",
+ "mutated_paths": [
+  "tests/isolated_corpus.py"
+ ],
+ "mutation": "withdrawn_attestation",
+ "observed_markers": {
+  "is UNATTESTED (§6F)": true,
+  "isolated_plant_attestation": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-09-12T05:06:21+08:00"
+}

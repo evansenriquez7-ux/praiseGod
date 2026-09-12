@@ -1,0 +1,46 @@
+{
+ "asserts": [
+  "competency_scope_not_narrowed"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "FAIL competency_scope_not_narrowed"
+ ],
+ "command": [
+  "backend.app.practice_gen.validation.validate_compat",
+  "--only",
+  "scope"
+ ],
+ "definition_digest": "0e9760fddf72e76eb4add443110b75409cbd308405cace1bf86ccd04dd45047b",
+ "detected": true,
+ "diagnostic_line": "exit 1 — FAIL competency_scope_not_narrowed (9):",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "FAIL competency_scope_not_narrowed",
+  "mat_g3_na_q2_1"
+ ],
+ "expected_check": "§2H (a competency naming both cases must not be bound to one)",
+ "finished_at": "2026-09-12T05:04:40+08:00",
+ "input_digest": "33cd89ef09f8aa98c2dca206ad925748038cfbd2b08ab217114d980d0c40f8ab",
+ "mutated_paths": [
+  "backend/app/practice_gen/registry.py"
+ ],
+ "mutation": "competency_scope_narrowed",
+ "observed_markers": {
+  "FAIL competency_scope_not_narrowed": true,
+  "mat_g3_na_q2_1": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-09-12T05:04:39+08:00"
+}

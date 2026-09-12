@@ -115,6 +115,8 @@ mutation is unproven regardless of how long it has been passing.
 | 6/8 behavioural matrix (§1 family) | the per-node content sweep — boundaries, execution matrix, answer keys, visuals, applicability |
 | 7/8 judgment reviews (§5) | blind per-node review artifacts, non-boilerplate and non-stale |
 | 8/8 capability contract (§6 family) | competency → pipeline provision, blind Attester verdicts |
+| §1J count/noun agreement | an explicit count and the noun after it must agree in the text a pupil reads |
+| §1K option degeneracy | a choice item must offer distinguishable choices, and exactly one may answer it |
 | §9 render contract | the payload must be renderable by the React component the student sees |
 | §10 grading contract | a known-correct answer must be graded correct by all three graders |
 | §7 census | the suite itself has not silently shrunk |
@@ -137,6 +139,8 @@ mutation is unproven regardless of how long it has been passing.
 | `§1G` | validate_matrix: rendered visual payload is real and self-consistent |
 | `§1H` | validate_matrix: every check a node's composition makes applicable actually ran on that node |
 | `§1I` | validate_matrix: a true/false item family may not key every sample the same way |
+| `§1J` | validate_language: an explicit count and its noun must agree in the rendered student text, nested quoted statements included |
+| `§1K` | validate_options: a choice item must offer distinguishable choices, and exactly one of them may answer the question |
 | `§2` | validate_compat: registry/compatibility coverage & monotonicity |
 | `§2B` | validate_compat: every formatter a node advertises can actually be served for it |
 | `§2D` | validate_compat: a saved configuration may not serve content outside a node's competency |
@@ -156,9 +160,18 @@ mutation is unproven regardless of how long it has been passing.
 | `§6G` | validate_capability: an attestation shows its work — non-boilerplate reasoning citing seeds from its own packet |
 | `§6H` | validate_capability: an Attester verdict must name who made it, and no identity may cover more than one dispatch |
 | `§7` | run_all: the suite's own census (nodes, unit tests, mutations) has not shrunk below its floor |
-| `§8` | validate_coverage: every assertion the harness can emit is either proven by a mutation or on a shrinking allowlist |
+| `§8` | validate_coverage: every assertion the harness can emit is either proven by an EXECUTED mutation (a verified proof record in `validation_reports/mutation_proofs/`) or on a shrinking allowlist |
 | `§9` | validate_render: the payload a node emits must be renderable by the React component the student sees |
 | `§10` | validate_grade: a known-correct answer must be graded correct by all three graders |
+
+### Proving the harness
+
+`python tests/mutation_harness.py` plants each registered bug, runs the validator that
+should notice, restores the tree, and — since 2026-09-12 — writes a machine-readable proof
+record per mutation to `validation_reports/mutation_proofs/`. §8 READS those records; it
+does not run the table. So the order is: run the mutation table, then `run_all`. Editing
+any file under `mutation_proof.INPUT_ROOTS` invalidates every proof, and §8 says so in one
+line rather than 140.
 
 ### Floors
 

@@ -1,0 +1,47 @@
+{
+ "asserts": [
+  "capability_stale_attestation_6F"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "isolated_plant_attestation",
+  "FAIL isolated_control_attestation"
+ ],
+ "command": [
+  "tests.isolated_corpus",
+  "--gate",
+  "attestation"
+ ],
+ "definition_digest": "5e31a43757f18d6610ecc0d65f7652384a46dcd22746b4f57dfef663fd38c5e1",
+ "detected": true,
+ "diagnostic_line": "exit 1 — FAIL isolated_plant_attestation (1) planted=attestation_stale:",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "isolated_plant_attestation",
+  "is STALE (§6F) at seed"
+ ],
+ "expected_check": "§6F freshness (attestation is about content that still exists)",
+ "finished_at": "2026-09-12T05:00:35+08:00",
+ "input_digest": "33cd89ef09f8aa98c2dca206ad925748038cfbd2b08ab217114d980d0c40f8ab",
+ "mutated_paths": [
+  "tests/isolated_corpus.py"
+ ],
+ "mutation": "stale_attestation",
+ "observed_markers": {
+  "is STALE (§6F) at seed": true,
+  "isolated_plant_attestation": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-09-12T05:00:28+08:00"
+}

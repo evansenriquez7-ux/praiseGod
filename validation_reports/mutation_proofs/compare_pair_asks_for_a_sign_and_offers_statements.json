@@ -1,0 +1,44 @@
+{
+ "asserts": [
+  "pipeline_run"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "pipeline_run"
+ ],
+ "command": [
+  "backend.app.practice_gen.validation.validate_matrix",
+  "--node",
+  "mat_g1_na_q1_3"
+ ],
+ "definition_digest": "b1396447814ffcca09b27295438a0e77dd236fa29f1af74bc2572a41f9d4aa7d",
+ "detected": true,
+ "diagnostic_line": "exit 1 — [1/1] Checking mat_g1_na_q1_3 ...  FAIL",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "pipeline_run && question_statement"
+ ],
+ "expected_check": "§1C execution (a formatter refuses a stem its options cannot answer)",
+ "finished_at": "2026-09-12T05:11:49+08:00",
+ "input_digest": "33cd89ef09f8aa98c2dca206ad925748038cfbd2b08ab217114d980d0c40f8ab",
+ "mutated_paths": [
+  "backend/app/practice_gen/dna/na/comparing_ordering.py"
+ ],
+ "mutation": "compare_pair_asks_for_a_sign_and_offers_statements",
+ "observed_markers": {
+  "pipeline_run && question_statement": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-09-12T05:11:37+08:00"
+}

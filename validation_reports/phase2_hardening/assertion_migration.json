@@ -1,0 +1,2896 @@
+{
+ "schema_version": 1,
+ "checkout": {
+  "head": "c007b8aef5f08262b4964b5263ab506c520936c1",
+  "head_short": "c007b8ae",
+  "branch": "main",
+  "working_tree_clean": false,
+  "dirty_paths": [
+   "docs/phase2_hardening_completion_plan.md",
+   "tests/phase2_migration.py"
+  ],
+  "python": "3.12.13",
+  "generated_at": "2026-09-12T03:46:27+08:00"
+ },
+ "summary": {
+  "assertions_inventoried": 104,
+  "assertions_with_a_mutation": 65,
+  "assertions_allowlisted_unproven": 39,
+  "assertions_unaccounted": 0,
+  "mutations_registered": 76,
+  "mutations_via_run_all_wrapper": 0,
+  "mutations_touching_review_corpus": 24,
+  "mutation_asserts_outside_inventory": []
+ },
+ "assertions": [
+  {
+   "assertion": "NODE_TO_DNA_presence",
+   "declared_in": "validate_matrix.py",
+   "printed_by": [],
+   "discovered_in_matrix": true,
+   "proving_mutations": [],
+   "proof_kind": "allowlisted",
+   "allowlist_reason": "2026-09-08: registry mapping presence. Was spelled `node_to_dna_presence` from 2026-08-28 to 2026-09-08 and matched no emitted label, so it excused nothing while the real label sat outside the inventory"
+  },
+  {
+   "assertion": "advertised_formatters_are_servable",
+   "declared_in": "validate_compat.py",
+   "printed_by": [
+    "validate_compat.py:1084"
+   ],
+   "discovered_in_matrix": false,
+   "proving_mutations": [
+    "unservable_advertised_formatter"
+   ],
+   "proof_kind": "declared",
+   "allowlist_reason": null
+  },
+  {
+   "assertion": "all_competency_bounds_parse",
+   "declared_in": "validate_compat.py",
+   "printed_by": [
+    "validate_compat.py:1127"
+   ],
+   "discovered_in_matrix": false,
+   "proving_mutations": [
+    "malformed_competency_bound"
+   ],
+   "proof_kind": "declared",
+   "allowlist_reason": null
+  },
+  {
+   "assertion": "answer_key_integrity",
+   "declared_in": "validate_matrix.py",
+   "printed_by": [],
+   "discovered_in_matrix": true,
+   "proving_mutations": [
+    "answer_corruption",
+    "emoji_pictorial_draws_a_different_operation"
+   ],
+   "proof_kind": "declared",
+   "allowlist_reason": null
+  },
+  {
+   "assertion": "answer_key_recomputation",
+   "declared_in": "validate_matrix.py",
+   "printed_by": [],
+   "discovered_in_matrix": true,
+   "proving_mutations": [],
+   "proof_kind": "allowlisted",
+   "allowlist_reason": "2026-08-28: §1E sibling; answer_key_integrity is proven, this path is not"
+  },
+  {
+   "assertion": "answer_leak_in_stem",
+   "declared_in": "validate_matrix.py",
+   "printed_by": [],
+   "discovered_in_matrix": true,
+   "proving_mutations": [
+    "answer_leak_in_stem",
+    "stem_declares_the_answer"
+   ],
+   "proof_kind": "declared",
+   "allowlist_reason": null
+  },
+  {
+   "assertion": "assertion_allowlist_paid_8",
+   "declared_in": "validate_coverage.py",
+   "printed_by": [],
+   "discovered_in_matrix": false,
+   "proving_mutations": [
+    "allowlist_keeps_a_paid_debt"
+   ],
+   "proof_kind": "declared",
+   "allowlist_reason": null
+  },
+  {
+   "assertion": "assertion_allowlist_phantom_8",
+   "declared_in": "validate_coverage.py",
+   "printed_by": [],
+   "discovered_in_matrix": false,
+   "proving_mutations": [
+    "allowlist_names_a_phantom_label"
+   ],
+   "proof_kind": "declared",
+   "allowlist_reason": null
+  },
+  {
+   "assertion": "assertion_asserts_unknown_8",
+   "declared_in": "validate_coverage.py",
+   "printed_by": [],
+   "discovered_in_matrix": false,
+   "proving_mutations": [
+    "mutation_asserts_an_unknown_label"
+   ],
+   "proof_kind": "declared",
+   "allowlist_reason": null
+  },
+  {
+   "assertion": "assertion_coverage_8",
+   "declared_in": "validate_coverage.py",
+   "printed_by": [
+    "validate_coverage.py:428"
+   ],
+   "discovered_in_matrix": false,
+   "proving_mutations": [
+    "coverage_map_gap"
+   ],
+   "proof_kind": "declared",
+   "allowlist_reason": null
+  },
+  {
+   "assertion": "assertion_undeclared_check_8",
+   "declared_in": "validate_coverage.py",
+   "printed_by": [],
+   "discovered_in_matrix": false,
+   "proving_mutations": [
+    "undeclared_check_reports_itself"
+   ],
+   "proof_kind": "declared",
+   "allowlist_reason": null
+  },
+  {
+   "assertion": "attester_evidence_6G",
+   "declared_in": "validate_capability.py",
+   "printed_by": [],
+   "discovered_in_matrix": false,
+   "proving_mutations": [
+    "attester_without_evidence"
+   ],
+   "proof_kind": "declared",
+   "allowlist_reason": null
+  },
+  {
+   "assertion": "attester_plurality_6H",
+   "declared_in": "validate_capability.py",
+   "printed_by": [],
+   "discovered_in_matrix": false,
+   "proving_mutations": [
+    "single_attester_identity"
+   ],
+   "proof_kind": "declared",
+   "allowlist_reason": null
+  },
+  {
+   "assertion": "attester_reasoning_skeleton_6G",
+   "declared_in": "validate_capability.py",
+   "printed_by": [],
+   "discovered_in_matrix": false,
+   "proving_mutations": [
+    "template_attestation"
+   ],
+   "proof_kind": "declared",
+   "allowlist_reason": null
+  },
+  {
+   "assertion": "capability_attestation_options_recorded_6F",
+   "declared_in": "validate_capability.py",
+   "printed_by": [],
+   "discovered_in_matrix": false,
+   "proving_mutations": [
+    "attestation_drops_options"
+   ],
+   "proof_kind": "declared",
+   "allowlist_reason": null
+  },
+  {
+   "assertion": "capability_contract",
+   "declared_in": "validate_capability.py",
+   "printed_by": [
+    "run_all.py:417",
+    "run_all.py:458"
+   ],
+   "discovered_in_matrix": false,
+   "proving_mutations": [],
+   "proof_kind": "allowlisted",
+   "allowlist_reason": "2026-09-08: run_all's rollup print for §6; the sub-assertions above carry the proof"
+  },
+  {
+   "assertion": "capability_contradicted_6F",
+   "declared_in": "validate_capability.py",
+   "printed_by": [],
+   "discovered_in_matrix": false,
+   "proving_mutations": [
+    "contradicted_attestation"
+   ],
+   "proof_kind": "declared",
+   "allowlist_reason": null
+  },
+  {
+   "assertion": "capability_coverage_6B",
+   "declared_in": "validate_capability.py",
+   "printed_by": [],
+   "discovered_in_matrix": false,
+   "proving_mutations": [
+    "competency_word_uncovered"
+   ],
+   "proof_kind": "declared",
+   "allowlist_reason": null
+  },
+  {
+   "assertion": "capability_declarations_in_sync_6",
+   "declared_in": "validate_capability.py",
+   "printed_by": [],
+   "discovered_in_matrix": false,
+   "proving_mutations": [
+    "declarations_out_of_sync",
+    "stale_generated_graph"
+   ],
+   "proof_kind": "declared",
+   "allowlist_reason": null
+  },
+  {
+   "assertion": "capability_generic_formatter_6D",
+   "declared_in": "validate_capability.py",
+   "printed_by": [],
+   "discovered_in_matrix": false,
+   "proving_mutations": [
+    "wildcard_provider"
+   ],
+   "proof_kind": "declared",
+   "allowlist_reason": null
+  },
+  {
+   "assertion": "capability_nondiscriminating_bounds_6E",
+   "declared_in": "validate_capability.py",
+   "printed_by": [],
+   "discovered_in_matrix": false,
+   "proving_mutations": [
+    "provider_is_only_a_bounds_catch_all"
+   ],
+   "proof_kind": "declared",
+   "allowlist_reason": null
+  },
+  {
+   "assertion": "capability_orphan_provider_6A",
+   "declared_in": "validate_capability.py",
+   "printed_by": [],
+   "discovered_in_matrix": false,
+   "proving_mutations": [
+    "orphan_provider"
+   ],
+   "proof_kind": "declared",
+   "allowlist_reason": null
+  },
+  {
+   "assertion": "capability_phase_boundary_6",
+   "declared_in": "validate_capability.py",
+   "printed_by": [],
+   "discovered_in_matrix": false,
+   "proving_mutations": [
+    "attestation_leaks_into_phase1"
+   ],
+   "proof_kind": "declared",
+   "allowlist_reason": null
+  },
+  {
+   "assertion": "capability_phase_partition_6",
+   "declared_in": "validate_capability.py",
+   "printed_by": [],
+   "discovered_in_matrix": false,
+   "proving_mutations": [
+    "phase_ref_misassigned"
+   ],
+   "proof_kind": "declared",
+   "allowlist_reason": null
+  },
+  {
+   "assertion": "capability_provenance_6A",
+   "declared_in": "validate_capability.py",
+   "printed_by": [],
+   "discovered_in_matrix": false,
+   "proving_mutations": [
+    "clause_not_in_competency"
+   ],
+   "proof_kind": "declared",
+   "allowlist_reason": null
+  },
+  {
+   "assertion": "capability_provision_6C",
+   "declared_in": "validate_capability.py",
+   "printed_by": [],
+   "discovered_in_matrix": false,
+   "proving_mutations": [
+    "capability_provider_unregistered"
+   ],
+   "proof_kind": "declared",
+   "allowlist_reason": null
+  },
+  {
+   "assertion": "capability_stale_attestation_6F",
+   "declared_in": "validate_capability.py",
+   "printed_by": [],
+   "discovered_in_matrix": false,
+   "proving_mutations": [
+    "stale_attestation",
+    "attestation_answer_drift",
+    "attestation_option_drift"
+   ],
+   "proof_kind": "declared",
+   "allowlist_reason": null
+  },
+  {
+   "assertion": "capability_unattested_6F",
+   "declared_in": "validate_capability.py",
+   "printed_by": [],
+   "discovered_in_matrix": false,
+   "proving_mutations": [
+    "withdrawn_attestation"
+   ],
+   "proof_kind": "declared",
+   "allowlist_reason": null
+  },
+  {
+   "assertion": "census",
+   "declared_in": "validate_census.py",
+   "printed_by": [
+    "validate_census.py:213"
+   ],
+   "discovered_in_matrix": false,
+   "proving_mutations": [
+    "shrinking_node_registry",
+    "variant_coverage_silently_narrowed"
+   ],
+   "proof_kind": "declared",
+   "allowlist_reason": null
+  },
+  {
+   "assertion": "census_mutations",
+   "declared_in": "validate_census.py",
+   "printed_by": [],
+   "discovered_in_matrix": false,
+   "proving_mutations": [],
+   "proof_kind": "allowlisted",
+   "allowlist_reason": "2026-09-08: the mutation-count floor. A mutation that deletes mutations is self-referential; the floor is checked by hand when this file changes"
+  },
+  {
+   "assertion": "census_nodes",
+   "declared_in": "validate_census.py",
+   "printed_by": [],
+   "discovered_in_matrix": false,
+   "proving_mutations": [
+    "shrinking_node_registry"
+   ],
+   "proof_kind": "declared",
+   "allowlist_reason": null
+  },
+  {
+   "assertion": "census_unit_tests",
+   "declared_in": "validate_census.py",
+   "printed_by": [],
+   "discovered_in_matrix": false,
+   "proving_mutations": [],
+   "proof_kind": "allowlisted",
+   "allowlist_reason": "2026-09-08: the unit-test floor. Proving it means shrinking the suite under the harness, which the mutation runner cannot restore safely if interrupted mid-collection"
+  },
+  {
+   "assertion": "census_variant_candidates",
+   "declared_in": "validate_census.py",
+   "printed_by": [],
+   "discovered_in_matrix": false,
+   "proving_mutations": [
+    "variant_coverage_silently_narrowed"
+   ],
+   "proof_kind": "declared",
+   "allowlist_reason": null
+  },
+  {
+   "assertion": "check_phase_registry_8",
+   "declared_in": "validate_coverage.py",
+   "printed_by": [],
+   "discovered_in_matrix": false,
+   "proving_mutations": [
+    "contract_check_declares_no_phase"
+   ],
+   "proof_kind": "declared",
+   "allowlist_reason": null
+  },
+  {
+   "assertion": "compatibility_table",
+   "declared_in": "validate_compat.py",
+   "printed_by": [
+    "validate_compat.py:1056"
+   ],
+   "discovered_in_matrix": false,
+   "proving_mutations": [
+    "registry_drift"
+   ],
+   "proof_kind": "declared",
+   "allowlist_reason": null
+  },
+  {
+   "assertion": "competency_bounds_parsing",
+   "declared_in": "validate_compat.py",
+   "printed_by": [
+    "validate_compat.py:1150"
+   ],
+   "discovered_in_matrix": false,
+   "proving_mutations": [],
+   "proof_kind": "allowlisted",
+   "allowlist_reason": "2026-09-08: the FIXTURE-table half of bounds parsing; all_competency_bounds_parse is the tree-wide property and IS proven"
+  },
+  {
+   "assertion": "competency_scope_not_narrowed",
+   "declared_in": "validate_compat.py",
+   "printed_by": [
+    "validate_compat.py:1134"
+   ],
+   "discovered_in_matrix": false,
+   "proving_mutations": [
+    "competency_scope_narrowed"
+   ],
+   "proof_kind": "declared",
+   "allowlist_reason": null
+  },
+  {
+   "assertion": "concept_gating",
+   "declared_in": "validate_matrix.py",
+   "printed_by": [],
+   "discovered_in_matrix": true,
+   "proving_mutations": [],
+   "proof_kind": "allowlisted",
+   "allowlist_reason": "2026-08-28: distractor-provenance gate; vocabulary_gating is proven, this is not"
+  },
+  {
+   "assertion": "config_respects_competency",
+   "declared_in": "validate_compat.py",
+   "printed_by": [
+    "validate_compat.py:1093"
+   ],
+   "discovered_in_matrix": false,
+   "proving_mutations": [
+    "config_bypasses_competency"
+   ],
+   "proof_kind": "declared",
+   "allowlist_reason": null
+  },
+  {
+   "assertion": "contract_doc_matches_registry",
+   "declared_in": "run_all.py",
+   "printed_by": [],
+   "discovered_in_matrix": false,
+   "proving_mutations": [],
+   "proof_kind": "allowlisted",
+   "allowlist_reason": "2026-09-08: pgen_contract.md <-> CONTRACT_CHECKS equality. Unproven"
+  },
+  {
+   "assertion": "correct_answer_presence",
+   "declared_in": "validate_matrix.py",
+   "printed_by": [],
+   "discovered_in_matrix": true,
+   "proving_mutations": [
+    "missing_correct_answer"
+   ],
+   "proof_kind": "declared",
+   "allowlist_reason": null
+  },
+  {
+   "assertion": "coverage_regression_1H",
+   "declared_in": "validate_matrix.py",
+   "printed_by": [],
+   "discovered_in_matrix": false,
+   "proving_mutations": [],
+   "proof_kind": "allowlisted",
+   "allowlist_reason": "2026-09-08: §1E/§4/§1I coverage compared against the last recorded run. node_dropped_from_check proves the applicability half of §1H, not the regression half"
+  },
+  {
+   "assertion": "declared_variants_are_producible",
+   "declared_in": "validate_compat.py",
+   "printed_by": [
+    "validate_compat.py:1141"
+   ],
+   "discovered_in_matrix": false,
+   "proving_mutations": [
+    "unproducible_variant_declared"
+   ],
+   "proof_kind": "declared",
+   "allowlist_reason": null
+  },
+  {
+   "assertion": "degenerate_answer_key",
+   "declared_in": "validate_matrix.py",
+   "printed_by": [],
+   "discovered_in_matrix": true,
+   "proving_mutations": [
+    "degenerate_answer_key"
+   ],
+   "proof_kind": "declared",
+   "allowlist_reason": null
+  },
+  {
+   "assertion": "discrete_gen",
+   "declared_in": "validate_matrix.py",
+   "printed_by": [],
+   "discovered_in_matrix": true,
+   "proving_mutations": [],
+   "proof_kind": "allowlisted",
+   "allowlist_reason": "2026-09-08: generation crash at a pinned discrete value. Unproven"
+  },
+  {
+   "assertion": "discrete_integrity",
+   "declared_in": "validate_matrix.py",
+   "printed_by": [],
+   "discovered_in_matrix": true,
+   "proving_mutations": [],
+   "proof_kind": "allowlisted",
+   "allowlist_reason": "2026-09-08: a discrete axis value must round-trip into the generated item. Unproven"
+  },
+  {
+   "assertion": "dna_difficulty_feasibility",
+   "declared_in": "validate_dna.py",
+   "printed_by": [],
+   "discovered_in_matrix": false,
+   "proving_mutations": [],
+   "proof_kind": "allowlisted",
+   "allowlist_reason": "2026-09-08: every difficulty profile must be satisfiable. Unproven"
+  },
+  {
+   "assertion": "dna_structure",
+   "declared_in": "validate_dna.py",
+   "printed_by": [],
+   "discovered_in_matrix": false,
+   "proving_mutations": [],
+   "proof_kind": "allowlisted",
+   "allowlist_reason": "2026-09-08: DNA structural checks (formula/visual/static_bank/algorithmic). Unproven since §3 was written; a plant is cheap and this is the next debt to pay"
+  },
+  {
+   "assertion": "empty_execution_matrix",
+   "declared_in": "validate_matrix.py",
+   "printed_by": [],
+   "discovered_in_matrix": true,
+   "proving_mutations": [
+    "empty_execution_matrix"
+   ],
+   "proof_kind": "declared",
+   "allowlist_reason": null
+  },
+  {
+   "assertion": "formatter_match",
+   "declared_in": "validate_matrix.py",
+   "printed_by": [],
+   "discovered_in_matrix": true,
+   "proving_mutations": [
+    "formatter_route_mismatch"
+   ],
+   "proof_kind": "declared",
+   "allowlist_reason": null
+  },
+  {
+   "assertion": "formatters_reachable",
+   "declared_in": "validate_compat.py",
+   "printed_by": [
+    "validate_compat.py:1109"
+   ],
+   "discovered_in_matrix": false,
+   "proving_mutations": [
+    "formatter_unreachable_on_student_path",
+    "single_formatter_unreachable"
+   ],
+   "proof_kind": "declared",
+   "allowlist_reason": null
+  },
+  {
+   "assertion": "generate_scalar",
+   "declared_in": "validate_matrix.py",
+   "printed_by": [],
+   "discovered_in_matrix": true,
+   "proving_mutations": [],
+   "proof_kind": "allowlisted",
+   "allowlist_reason": "2026-09-08: generation crash at a probe scalar; the boundary mutations plant VALUE errors, which the exactness/containment labels catch first"
+  },
+  {
+   "assertion": "grading_contract_10",
+   "declared_in": "validate_grade.py",
+   "printed_by": [
+    "validate_grade.py:159"
+   ],
+   "discovered_in_matrix": false,
+   "proving_mutations": [
+    "grader_rejects_correct_answer",
+    "grader_keys_a_value_answer"
+   ],
+   "proof_kind": "declared",
+   "allowlist_reason": null
+  },
+  {
+   "assertion": "grading_contract_floor_10",
+   "declared_in": "validate_grade.py",
+   "printed_by": [
+    "validate_grade.py:167"
+   ],
+   "discovered_in_matrix": false,
+   "proving_mutations": [],
+   "proof_kind": "allowlisted",
+   "allowlist_reason": "2026-09-08: §10's FULL-TREE path against GRADE_FLOOR. Both grading mutations run --node-ids, so they prove the zero-tolerance subset path only. §9's floor path IS proven (visual_payload_drops_required_key runs the whole tree), and this is the same gap on the grading side"
+  },
+  {
+   "assertion": "import_dna",
+   "declared_in": "validate_matrix.py",
+   "printed_by": [],
+   "discovered_in_matrix": true,
+   "proving_mutations": [],
+   "proof_kind": "allowlisted",
+   "allowlist_reason": "2026-08-28: overlaps compatibility_table, which is proven"
+  },
+  {
+   "assertion": "interest_invariance",
+   "declared_in": "validate_interest.py",
+   "printed_by": [],
+   "discovered_in_matrix": false,
+   "proving_mutations": [],
+   "proof_kind": "allowlisted",
+   "allowlist_reason": "2026-09-08: the stage that the two matrix interest labels are excused AGAINST is itself unproven, so nothing in the interest column is proven anywhere"
+  },
+  {
+   "assertion": "interest_invariance_formatted",
+   "declared_in": "validate_matrix.py",
+   "printed_by": [],
+   "discovered_in_matrix": true,
+   "proving_mutations": [],
+   "proof_kind": "allowlisted",
+   "allowlist_reason": "2026-08-28: stage 4 covers the property; the matrix label is unproven"
+  },
+  {
+   "assertion": "interest_theme_generation",
+   "declared_in": "validate_matrix.py",
+   "printed_by": [],
+   "discovered_in_matrix": true,
+   "proving_mutations": [],
+   "proof_kind": "allowlisted",
+   "allowlist_reason": "2026-08-28: as above"
+  },
+  {
+   "assertion": "judgment_options_recorded_5",
+   "declared_in": "validate_judgment.py",
+   "printed_by": [],
+   "discovered_in_matrix": false,
+   "proving_mutations": [
+    "mcq_reviewed_without_options"
+   ],
+   "proof_kind": "declared",
+   "allowlist_reason": null
+  },
+  {
+   "assertion": "judgment_quote_provenance_5",
+   "declared_in": "validate_judgment.py",
+   "printed_by": [],
+   "discovered_in_matrix": false,
+   "proving_mutations": [
+    "fabricated_quote"
+   ],
+   "proof_kind": "declared",
+   "allowlist_reason": null
+  },
+  {
+   "assertion": "judgment_rationale_skeleton_5",
+   "declared_in": "validate_judgment.py",
+   "printed_by": [],
+   "discovered_in_matrix": false,
+   "proving_mutations": [
+    "template_review"
+   ],
+   "proof_kind": "declared",
+   "allowlist_reason": null
+  },
+  {
+   "assertion": "judgment_rationale_verbatim_5",
+   "declared_in": "validate_judgment.py",
+   "printed_by": [],
+   "discovered_in_matrix": false,
+   "proving_mutations": [
+    "verbatim_rationale_reuse"
+   ],
+   "proof_kind": "declared",
+   "allowlist_reason": null
+  },
+  {
+   "assertion": "judgment_review_freshness_5",
+   "declared_in": "validate_judgment.py",
+   "printed_by": [],
+   "discovered_in_matrix": false,
+   "proving_mutations": [
+    "stale_review_undetected",
+    "stale_answer_same_key"
+   ],
+   "proof_kind": "declared",
+   "allowlist_reason": null
+  },
+  {
+   "assertion": "judgment_review_schema_5",
+   "declared_in": "validate_judgment.py",
+   "printed_by": [],
+   "discovered_in_matrix": false,
+   "proving_mutations": [
+    "review_schema_incomplete"
+   ],
+   "proof_kind": "declared",
+   "allowlist_reason": null
+  },
+  {
+   "assertion": "judgment_reviewer_plurality_5",
+   "declared_in": "validate_judgment.py",
+   "printed_by": [],
+   "discovered_in_matrix": false,
+   "proving_mutations": [
+    "single_reviewer_identity"
+   ],
+   "proof_kind": "declared",
+   "allowlist_reason": null
+  },
+  {
+   "assertion": "judgment_reviews",
+   "declared_in": "validate_judgment.py",
+   "printed_by": [
+    "run_all.py:380"
+   ],
+   "discovered_in_matrix": false,
+   "proving_mutations": [],
+   "proof_kind": "allowlisted",
+   "allowlist_reason": "2026-09-08: run_all's rollup print for §5; the sub-assertions above carry the proof"
+  },
+  {
+   "assertion": "kg_monotonicity",
+   "declared_in": "validate_compat.py",
+   "printed_by": [
+    "validate_compat.py:1070"
+   ],
+   "discovered_in_matrix": false,
+   "proving_mutations": [],
+   "proof_kind": "allowlisted",
+   "allowlist_reason": "2026-09-08: cumulative-vocabulary monotonicity across the knowledge graph. Unproven"
+  },
+  {
+   "assertion": "lab_portal_equivalence",
+   "declared_in": "validate_compat.py",
+   "printed_by": [
+    "validate_compat.py:1077"
+   ],
+   "discovered_in_matrix": false,
+   "proving_mutations": [],
+   "proof_kind": "allowlisted",
+   "allowlist_reason": "2026-09-08: Lab and portal must serve the same node the same way. Unproven"
+  },
+  {
+   "assertion": "mcq_correct_presence",
+   "declared_in": "validate_matrix.py",
+   "printed_by": [],
+   "discovered_in_matrix": true,
+   "proving_mutations": [
+    "mcq_no_correct_option"
+   ],
+   "proof_kind": "declared",
+   "allowlist_reason": null
+  },
+  {
+   "assertion": "mcq_correct_value_mismatch",
+   "declared_in": "validate_matrix.py",
+   "printed_by": [],
+   "discovered_in_matrix": true,
+   "proving_mutations": [
+    "mcq_key_disagrees_with_option"
+   ],
+   "proof_kind": "declared",
+   "allowlist_reason": null
+  },
+  {
+   "assertion": "mcq_option_count",
+   "declared_in": "validate_matrix.py",
+   "printed_by": [],
+   "discovered_in_matrix": true,
+   "proving_mutations": [
+    "mcq_wrong_option_count"
+   ],
+   "proof_kind": "declared",
+   "allowlist_reason": null
+  },
+  {
+   "assertion": "mcq_option_uniqueness",
+   "declared_in": "validate_matrix.py",
+   "printed_by": [],
+   "discovered_in_matrix": true,
+   "proving_mutations": [
+    "mcq_duplicate_options"
+   ],
+   "proof_kind": "declared",
+   "allowlist_reason": null
+  },
+  {
+   "assertion": "mcq_option_validity",
+   "declared_in": "validate_matrix.py",
+   "printed_by": [],
+   "discovered_in_matrix": true,
+   "proving_mutations": [
+    "mcq_empty_option_value"
+   ],
+   "proof_kind": "declared",
+   "allowlist_reason": null
+  },
+  {
+   "assertion": "monotonicity",
+   "declared_in": "validate_matrix.py",
+   "printed_by": [],
+   "discovered_in_matrix": true,
+   "proving_mutations": [],
+   "proof_kind": "allowlisted",
+   "allowlist_reason": "2026-09-08: §1B's difficulty monotonicity across the scalar sweep. Unproven"
+  },
+  {
+   "assertion": "node_references_resolve",
+   "declared_in": "validate_compat.py",
+   "printed_by": [
+    "validate_compat.py:1120"
+   ],
+   "discovered_in_matrix": false,
+   "proving_mutations": [
+    "dangling_node_reference"
+   ],
+   "proof_kind": "declared",
+   "allowlist_reason": null
+  },
+  {
+   "assertion": "operator_doc_covers_registry",
+   "declared_in": "run_all.py",
+   "printed_by": [],
+   "discovered_in_matrix": false,
+   "proving_mutations": [],
+   "proof_kind": "allowlisted",
+   "allowlist_reason": "2026-09-08: the testing_pipeline.md ref floor. Unproven"
+  },
+  {
+   "assertion": "option_placement",
+   "declared_in": "validate_compat.py",
+   "printed_by": [
+    "validate_compat.py:1102"
+   ],
+   "discovered_in_matrix": false,
+   "proving_mutations": [
+    "predictable_option_placement"
+   ],
+   "proof_kind": "declared",
+   "allowlist_reason": null
+  },
+  {
+   "assertion": "per_node_applicability_1H",
+   "declared_in": "validate_matrix.py",
+   "printed_by": [
+    "run_all.py:346"
+   ],
+   "discovered_in_matrix": false,
+   "proving_mutations": [
+    "node_dropped_from_check"
+   ],
+   "proof_kind": "declared",
+   "allowlist_reason": null
+  },
+  {
+   "assertion": "pipeline_run",
+   "declared_in": "validate_matrix.py",
+   "printed_by": [],
+   "discovered_in_matrix": true,
+   "proving_mutations": [
+    "broken_formatter_combo",
+    "compare_pair_asks_for_a_sign_and_offers_statements"
+   ],
+   "proof_kind": "declared",
+   "allowlist_reason": null
+  },
+  {
+   "assertion": "question_text_presence",
+   "declared_in": "validate_matrix.py",
+   "printed_by": [],
+   "discovered_in_matrix": true,
+   "proving_mutations": [
+    "blank_question_text"
+   ],
+   "proof_kind": "declared",
+   "allowlist_reason": null
+  },
+  {
+   "assertion": "reach_generation",
+   "declared_in": "validate_matrix.py",
+   "printed_by": [],
+   "discovered_in_matrix": true,
+   "proving_mutations": [],
+   "proof_kind": "allowlisted",
+   "allowlist_reason": "2026-09-08: generation crash during the §1A-reach probe; same shape as generate_scalar"
+  },
+  {
+   "assertion": "registry_coverage",
+   "declared_in": "validate_compat.py",
+   "printed_by": [
+    "validate_compat.py:1063"
+   ],
+   "discovered_in_matrix": false,
+   "proving_mutations": [],
+   "proof_kind": "allowlisted",
+   "allowlist_reason": "2026-09-08: KG<->NODE_TO_DNA<->COMPATIBILITY bidirectional coverage. registry_drift plants in COMPATIBILITY and compatibility_table reports it first"
+  },
+  {
+   "assertion": "render_contract_9",
+   "declared_in": "validate_render.py",
+   "printed_by": [
+    "validate_render.py:168"
+   ],
+   "discovered_in_matrix": false,
+   "proving_mutations": [
+    "unrenderable_visual_payload"
+   ],
+   "proof_kind": "declared",
+   "allowlist_reason": null
+  },
+  {
+   "assertion": "render_contract_floor_9",
+   "declared_in": "validate_render.py",
+   "printed_by": [
+    "validate_render.py:176"
+   ],
+   "discovered_in_matrix": false,
+   "proving_mutations": [
+    "visual_payload_drops_required_key",
+    "frontend_contract_key_unserved"
+   ],
+   "proof_kind": "declared",
+   "allowlist_reason": null
+  },
+  {
+   "assertion": "requires_ignore_locked_6B",
+   "declared_in": "validate_capability.py",
+   "printed_by": [],
+   "discovered_in_matrix": false,
+   "proving_mutations": [
+    "unsanctioned_requires_ignore"
+   ],
+   "proof_kind": "declared",
+   "allowlist_reason": null
+  },
+  {
+   "assertion": "reverse_compatibility_check",
+   "declared_in": "validate_matrix.py",
+   "printed_by": [],
+   "discovered_in_matrix": true,
+   "proving_mutations": [
+    "silent_substitution"
+   ],
+   "proof_kind": "declared",
+   "allowlist_reason": null
+  },
+  {
+   "assertion": "reverse_compatibility_check_crash",
+   "declared_in": "validate_matrix.py",
+   "printed_by": [],
+   "discovered_in_matrix": true,
+   "proving_mutations": [],
+   "proof_kind": "allowlisted",
+   "allowlist_reason": "2026-08-28: crash variant of a proven check"
+  },
+  {
+   "assertion": "reverse_curriculum_gate_check",
+   "declared_in": "validate_matrix.py",
+   "printed_by": [],
+   "discovered_in_matrix": true,
+   "proving_mutations": [],
+   "proof_kind": "allowlisted",
+   "allowlist_reason": "2026-08-28: curriculum-gate reverse path, unproven"
+  },
+  {
+   "assertion": "reverse_curriculum_gate_check_crash",
+   "declared_in": "validate_matrix.py",
+   "printed_by": [],
+   "discovered_in_matrix": true,
+   "proving_mutations": [],
+   "proof_kind": "allowlisted",
+   "allowlist_reason": "2026-08-28: crash variant of the above"
+  },
+  {
+   "assertion": "scalar_exactness_0.0",
+   "declared_in": "validate_matrix.py",
+   "printed_by": [],
+   "discovered_in_matrix": true,
+   "proving_mutations": [],
+   "proof_kind": "allowlisted",
+   "allowlist_reason": "2026-09-08: the 0.0 end of §1A. boundary_off_by_one plants at 1.0; a 0.0 plant that does not also break per-item validity has not been found"
+  },
+  {
+   "assertion": "scalar_exactness_1.0",
+   "declared_in": "validate_matrix.py",
+   "printed_by": [],
+   "discovered_in_matrix": true,
+   "proving_mutations": [
+    "boundary_off_by_one"
+   ],
+   "proof_kind": "declared",
+   "allowlist_reason": null
+  },
+  {
+   "assertion": "scalar_exactness_1.0_exceed",
+   "declared_in": "validate_matrix.py",
+   "printed_by": [],
+   "discovered_in_matrix": true,
+   "proving_mutations": [],
+   "proof_kind": "allowlisted",
+   "allowlist_reason": "2026-09-08: §1A's no-sample-exceeds-max guard at t=1.0. leaky_window plants +10 at 1.0 and window_containment (§1B) reports it first"
+  },
+  {
+   "assertion": "static_vocab_gated_lint",
+   "declared_in": "validate_vocab.py",
+   "printed_by": [
+    "validate_vocab.py:368",
+    "validate_vocab.py:400"
+   ],
+   "discovered_in_matrix": false,
+   "proving_mutations": [],
+   "proof_kind": "allowlisted",
+   "allowlist_reason": "2026-09-08: the static half of vocabulary gating (skeleton banks, not rendered output). vocab_leak proves the RENDERED path (§1D)"
+  },
+  {
+   "assertion": "subtraction_candidate_pool_bounded",
+   "declared_in": "run_all.py",
+   "printed_by": [],
+   "discovered_in_matrix": false,
+   "proving_mutations": [
+    "subtraction_pool_uncapped"
+   ],
+   "proof_kind": "declared",
+   "allowlist_reason": null
+  },
+  {
+   "assertion": "two_direction_contract_match",
+   "declared_in": "run_all.py",
+   "printed_by": [
+    "run_all.py:615"
+   ],
+   "discovered_in_matrix": false,
+   "proving_mutations": [],
+   "proof_kind": "allowlisted",
+   "allowlist_reason": "2026-09-08: executed checks vs registered checks. Unproven"
+  },
+  {
+   "assertion": "unit_tests",
+   "declared_in": "run_all.py",
+   "printed_by": [
+    "run_all.py:165"
+   ],
+   "discovered_in_matrix": false,
+   "proving_mutations": [],
+   "proof_kind": "allowlisted",
+   "allowlist_reason": "2026-09-08: the §0 stage gate itself. Individual unit tests are not inventoried here; subtraction_candidate_pool_bounded is the one that is, because a mutation names it"
+  },
+  {
+   "assertion": "value_containment",
+   "declared_in": "validate_matrix.py",
+   "printed_by": [],
+   "discovered_in_matrix": true,
+   "proving_mutations": [],
+   "proof_kind": "allowlisted",
+   "allowlist_reason": "2026-09-08: §1B's per-value sweep. leaky_window is caught by window_containment before this label is reached"
+  },
+  {
+   "assertion": "value_reaches_max",
+   "declared_in": "validate_matrix.py",
+   "printed_by": [],
+   "discovered_in_matrix": true,
+   "proving_mutations": [],
+   "proof_kind": "allowlisted",
+   "allowlist_reason": "2026-09-08: §1A-reach proper. Needs a plant that caps the generator below the competency ceiling WITHOUT breaking per-item validity, so §1A/§1B do not catch it first. Not yet found; the axis-catalog mapping is shared, so capping it trips the boundary checks. (Was allowlisted as `scalar_1_0_reach`, a label no check site emits.)"
+  },
+  {
+   "assertion": "visual_payload",
+   "declared_in": "validate_matrix.py",
+   "printed_by": [],
+   "discovered_in_matrix": true,
+   "proving_mutations": [
+    "inverted_number_line",
+    "number_line_jumps_land_elsewhere"
+   ],
+   "proof_kind": "declared",
+   "allowlist_reason": null
+  },
+  {
+   "assertion": "visual_schema_integrity",
+   "declared_in": "validate_matrix.py",
+   "printed_by": [],
+   "discovered_in_matrix": true,
+   "proving_mutations": [],
+   "proof_kind": "allowlisted",
+   "allowlist_reason": "2026-08-28: SHADOWED, measured. Three plants were tried and none isolated it: negative counts and non-coercible types are both caught first by §1G (visual_payload), and a wrong-typed extra field violates nothing because the Pydantic schema coerces and total_value is not even declared. §4 adds little over §1G+§9 on this payload -- worth revisiting as a possible merge rather than a missing mutation"
+  },
+  {
+   "assertion": "vocab_audit_pass_rate",
+   "declared_in": "validate_vocab.py",
+   "printed_by": [
+    "run_all.py:309"
+   ],
+   "discovered_in_matrix": false,
+   "proving_mutations": [],
+   "proof_kind": "allowlisted",
+   "allowlist_reason": "2026-09-08: full-node vocabulary audit pass-rate gate. Same defect class as §1D's vocabulary_gating, which is proven, on a different code path"
+  },
+  {
+   "assertion": "vocabulary_gating",
+   "declared_in": "validate_matrix.py",
+   "printed_by": [],
+   "discovered_in_matrix": true,
+   "proving_mutations": [
+    "vocab_leak"
+   ],
+   "proof_kind": "declared",
+   "allowlist_reason": null
+  },
+  {
+   "assertion": "window_containment",
+   "declared_in": "validate_matrix.py",
+   "printed_by": [],
+   "discovered_in_matrix": true,
+   "proving_mutations": [
+    "leaky_window"
+   ],
+   "proof_kind": "declared",
+   "allowlist_reason": null
+  },
+  {
+   "assertion": "worker_crash",
+   "declared_in": "validate_matrix.py",
+   "printed_by": [],
+   "discovered_in_matrix": true,
+   "proving_mutations": [],
+   "proof_kind": "allowlisted",
+   "allowlist_reason": "2026-08-28: infrastructure label, not a content assertion"
+  }
+ ],
+ "mutations": [
+  {
+   "mutation": "leaky_window",
+   "asserts": [
+    "window_containment"
+   ],
+   "expected_check": "§1A/§1B (scalar boundary exactness / window containment)",
+   "command": [
+    "backend.app.practice_gen.validation.validate_matrix",
+    "--node",
+    "mat_g1_na_q1_7"
+   ],
+   "expect_output_contains": [
+    "window_containment && exceeds ceiling"
+   ],
+   "baseline_must_not_contain": [
+    "exceeds ceiling"
+   ],
+   "edit_paths": [
+    "backend/app/services/orchestrator.py"
+   ],
+   "uses_apply_fn": false,
+   "runs_run_all": false,
+   "reads_review_corpus": false
+  },
+  {
+   "mutation": "boundary_off_by_one",
+   "asserts": [
+    "scalar_exactness_1.0"
+   ],
+   "expected_check": "§1A (maximum never reached at scalar 1.0)",
+   "command": [
+    "backend.app.practice_gen.validation.validate_matrix",
+    "--node",
+    "mat_g1_na_q1_7"
+   ],
+   "expect_output_contains": [],
+   "baseline_must_not_contain": [],
+   "edit_paths": [
+    "backend/app/services/orchestrator.py"
+   ],
+   "uses_apply_fn": false,
+   "runs_run_all": false,
+   "reads_review_corpus": false
+  },
+  {
+   "mutation": "broken_formatter_combo",
+   "asserts": [
+    "pipeline_run"
+   ],
+   "expected_check": "§1C (variant x formatter execution matrix)",
+   "command": [
+    "backend.app.practice_gen.validation.validate_matrix",
+    "--node",
+    "mat_g1_na_q1_7"
+   ],
+   "expect_output_contains": [],
+   "baseline_must_not_contain": [],
+   "edit_paths": [
+    "backend/app/practice_gen/formatters/textual/fmt_mcq.py"
+   ],
+   "uses_apply_fn": false,
+   "runs_run_all": false,
+   "reads_review_corpus": false
+  },
+  {
+   "mutation": "answer_corruption",
+   "asserts": [
+    "answer_key_integrity"
+   ],
+   "expected_check": "§1E (answer-key integrity)",
+   "command": [
+    "backend.app.practice_gen.validation.validate_matrix",
+    "--node",
+    "mat_g1_na_q1_7"
+   ],
+   "expect_output_contains": [],
+   "baseline_must_not_contain": [],
+   "edit_paths": [
+    "backend/app/practice_gen/formatters/textual/fmt_mcq.py"
+   ],
+   "uses_apply_fn": false,
+   "runs_run_all": false,
+   "reads_review_corpus": false
+  },
+  {
+   "mutation": "vocab_leak",
+   "asserts": [
+    "vocabulary_gating"
+   ],
+   "expected_check": "§1D (vocabulary lint on formatted output)",
+   "command": [
+    "backend.app.practice_gen.validation.validate_matrix",
+    "--node",
+    "mat_g1_na_q1_7"
+   ],
+   "expect_output_contains": [
+    "NOT_YET_KNOWN && multiplication"
+   ],
+   "baseline_must_not_contain": [
+    "NOT_YET_KNOWN && multiplication"
+   ],
+   "edit_paths": [],
+   "uses_apply_fn": true,
+   "runs_run_all": false,
+   "reads_review_corpus": true
+  },
+  {
+   "mutation": "silent_substitution",
+   "asserts": [
+    "reverse_compatibility_check"
+   ],
+   "expected_check": "§1C-reverse (excluded combinations must raise)",
+   "command": [
+    "backend.app.practice_gen.validation.validate_matrix",
+    "--node",
+    "mat_g1_na_q1_0"
+   ],
+   "expect_output_contains": [
+    "reverse_compatibility_check && did not raise an error"
+   ],
+   "baseline_must_not_contain": [
+    "did not raise an error"
+   ],
+   "edit_paths": [],
+   "uses_apply_fn": true,
+   "runs_run_all": false,
+   "reads_review_corpus": true
+  },
+  {
+   "mutation": "registry_drift",
+   "asserts": [
+    "compatibility_table"
+   ],
+   "expected_check": "_manifest.py import-time registry assertion",
+   "command": [
+    "backend.app.practice_gen.validation.validate_compat"
+   ],
+   "expect_output_contains": [
+    "planted_phantom_dna"
+   ],
+   "baseline_must_not_contain": [],
+   "edit_paths": [
+    "backend/app/practice_gen/compatibility.py"
+   ],
+   "uses_apply_fn": false,
+   "runs_run_all": false,
+   "reads_review_corpus": false
+  },
+  {
+   "mutation": "wildcard_provider",
+   "asserts": [
+    "capability_generic_formatter_6D"
+   ],
+   "expected_check": "§6D (a generic textual formatter is not a provider)",
+   "command": [
+    "backend.app.practice_gen.validation.validate_capability"
+   ],
+   "expect_output_contains": [
+    "count_forward_from_a_given_number && §6D"
+   ],
+   "baseline_must_not_contain": [
+    "count_forward_from_a_given_number && §6D"
+   ],
+   "edit_paths": [],
+   "uses_apply_fn": true,
+   "runs_run_all": false,
+   "reads_review_corpus": true
+  },
+  {
+   "mutation": "contradicted_attestation",
+   "asserts": [
+    "capability_contradicted_6F"
+   ],
+   "expected_check": "§6F (blind Attester verdict contradicted by the table)",
+   "command": [
+    "backend.app.practice_gen.validation.validate_capability"
+   ],
+   "expect_output_contains": [
+    "CONTRADICTED && draw_line_relationships"
+   ],
+   "baseline_must_not_contain": [
+    "CONTRADICTED && draw_line_relationships"
+   ],
+   "edit_paths": [],
+   "uses_apply_fn": true,
+   "runs_run_all": false,
+   "reads_review_corpus": true
+  },
+  {
+   "mutation": "orphan_provider",
+   "asserts": [
+    "capability_orphan_provider_6A"
+   ],
+   "expected_check": "§6A (a provider entry no requirement reaches)",
+   "command": [
+    "backend.app.practice_gen.validation.validate_capability",
+    "--phase",
+    "1"
+   ],
+   "expect_output_contains": [
+    "draw_lines && but no node's `requires` names it"
+   ],
+   "baseline_must_not_contain": [
+    "draw_lines && but no node's `requires` names it"
+   ],
+   "edit_paths": [],
+   "uses_apply_fn": true,
+   "runs_run_all": false,
+   "reads_review_corpus": true
+  },
+  {
+   "mutation": "stale_attestation",
+   "asserts": [
+    "capability_stale_attestation_6F"
+   ],
+   "expected_check": "§6F freshness (attestation is about content that still exists)",
+   "command": [
+    "backend.app.practice_gen.validation.validate_capability"
+   ],
+   "expect_output_contains": [
+    "STALE && planted drift"
+   ],
+   "baseline_must_not_contain": [
+    "planted drift"
+   ],
+   "edit_paths": [],
+   "uses_apply_fn": true,
+   "runs_run_all": false,
+   "reads_review_corpus": true
+  },
+  {
+   "mutation": "attestation_answer_drift",
+   "asserts": [
+    "capability_stale_attestation_6F"
+   ],
+   "expected_check": "§6F freshness (the keyed value, not just the stem)",
+   "command": [
+    "backend.app.practice_gen.validation.validate_capability"
+   ],
+   "expect_output_contains": [
+    "mat_g1_na_q1_4 && no longer keys the same answer"
+   ],
+   "baseline_must_not_contain": [
+    "mat_g1_na_q1_4 && no longer keys the same answer"
+   ],
+   "edit_paths": [],
+   "uses_apply_fn": true,
+   "runs_run_all": false,
+   "reads_review_corpus": true
+  },
+  {
+   "mutation": "attestation_option_drift",
+   "asserts": [
+    "capability_stale_attestation_6F"
+   ],
+   "expected_check": "§6F freshness (the offered options, as §5 compares them)",
+   "command": [
+    "backend.app.practice_gen.validation.validate_capability"
+   ],
+   "expect_output_contains": [
+    "mat_g1_dp_q3_0 && no longer offered the same options",
+    "mat_g2_na_q1_4 && stopped being a selection task"
+   ],
+   "baseline_must_not_contain": [
+    "mat_g1_dp_q3_0 && no longer offered the same options",
+    "mat_g2_na_q1_4 && stopped being a selection task"
+   ],
+   "edit_paths": [],
+   "uses_apply_fn": true,
+   "runs_run_all": false,
+   "reads_review_corpus": true
+  },
+  {
+   "mutation": "attestation_drops_options",
+   "asserts": [
+    "capability_attestation_options_recorded_6F"
+   ],
+   "expected_check": "§6F adjudicability (an attestation must carry the choices it was shown)",
+   "command": [
+    "backend.app.practice_gen.validation.validate_capability"
+   ],
+   "expect_output_contains": [
+    "mat_g2_na_q3_8 && records no 'options' at seed"
+   ],
+   "baseline_must_not_contain": [
+    "mat_g2_na_q3_8 && records no 'options' at seed"
+   ],
+   "edit_paths": [
+    "backend/app/practice_gen/formatters/textual/fmt_true_false.py"
+   ],
+   "uses_apply_fn": false,
+   "runs_run_all": false,
+   "reads_review_corpus": false
+  },
+  {
+   "mutation": "template_review",
+   "asserts": [
+    "judgment_rationale_skeleton_5"
+   ],
+   "expected_check": "§5 (rationale-skeleton clustering)",
+   "command": [
+    "backend.app.practice_gen.validation.validate_judgment"
+   ],
+   "expect_output_contains": [
+    "template rationale",
+    "share one findings"
+   ],
+   "baseline_must_not_contain": [
+    "template rationale"
+   ],
+   "edit_paths": [],
+   "uses_apply_fn": true,
+   "runs_run_all": false,
+   "reads_review_corpus": true
+  },
+  {
+   "mutation": "stale_review_undetected",
+   "asserts": [
+    "judgment_review_freshness_5"
+   ],
+   "expected_check": "§5 freshness (a review may not outlive the content it judged)",
+   "command": [
+    "backend.app.practice_gen.validation.validate_judgment",
+    "--all"
+   ],
+   "expect_output_contains": [
+    "STALE review && PLANTED-STALE-WITNESS"
+   ],
+   "baseline_must_not_contain": [
+    "PLANTED-STALE-WITNESS"
+   ],
+   "edit_paths": [],
+   "uses_apply_fn": true,
+   "runs_run_all": false,
+   "reads_review_corpus": true
+  },
+  {
+   "mutation": "stale_answer_same_key",
+   "asserts": [
+    "judgment_review_freshness_5"
+   ],
+   "expected_check": "§5 freshness (the keyed VALUE, not the slot it landed in)",
+   "command": [
+    "backend.app.practice_gen.validation.validate_judgment",
+    "--all"
+   ],
+   "expect_output_contains": [
+    "mat_g1_dp_q3_2 && no longer keys the same answer"
+   ],
+   "baseline_must_not_contain": [
+    "mat_g1_dp_q3_2 && no longer keys the same answer"
+   ],
+   "edit_paths": [],
+   "uses_apply_fn": true,
+   "runs_run_all": false,
+   "reads_review_corpus": true
+  },
+  {
+   "mutation": "review_schema_incomplete",
+   "asserts": [
+    "judgment_review_schema_5"
+   ],
+   "expected_check": "§5 schema (seeds, samples, six findings, verdicts)",
+   "command": [
+    "backend.app.practice_gen.validation.validate_judgment",
+    "--all"
+   ],
+   "expect_output_contains": [
+    "findings missing required items && cognitive_capacity",
+    "'sample_seeds' must list >= 3 distinct seeds"
+   ],
+   "baseline_must_not_contain": [
+    "findings missing required items",
+    "'sample_seeds' must list >= 3 distinct seeds"
+   ],
+   "edit_paths": [],
+   "uses_apply_fn": true,
+   "runs_run_all": false,
+   "reads_review_corpus": true
+  },
+  {
+   "mutation": "fabricated_quote",
+   "asserts": [
+    "judgment_quote_provenance_5"
+   ],
+   "expected_check": "§5 quote provenance (a rationale may only cite what it was shown)",
+   "command": [
+    "backend.app.practice_gen.validation.validate_judgment",
+    "--all"
+   ],
+   "expect_output_contains": [
+    "quotes && the pupils weigh the sampan in kilopascals"
+   ],
+   "baseline_must_not_contain": [
+    "the pupils weigh the sampan in kilopascals"
+   ],
+   "edit_paths": [],
+   "uses_apply_fn": true,
+   "runs_run_all": false,
+   "reads_review_corpus": true
+  },
+  {
+   "mutation": "verbatim_rationale_reuse",
+   "asserts": [
+    "judgment_rationale_verbatim_5"
+   ],
+   "expected_check": "§5 verbatim rationale reuse across nodes",
+   "command": [
+    "backend.app.practice_gen.validation.validate_judgment",
+    "--all"
+   ],
+   "expect_output_contains": [
+    "copied verbatim from"
+   ],
+   "baseline_must_not_contain": [
+    "copied verbatim from"
+   ],
+   "edit_paths": [],
+   "uses_apply_fn": true,
+   "runs_run_all": false,
+   "reads_review_corpus": true
+  },
+  {
+   "mutation": "single_reviewer_identity",
+   "asserts": [
+    "judgment_reviewer_plurality_5"
+   ],
+   "expected_check": "§5 reviewer plurality (one identity may not span the tree)",
+   "command": [
+    "backend.app.practice_gen.validation.validate_judgment",
+    "--all"
+   ],
+   "expect_output_contains": [
+    "reviewer plurality && planted-single-reviewer"
+   ],
+   "baseline_must_not_contain": [
+    "reviewer plurality"
+   ],
+   "edit_paths": [],
+   "uses_apply_fn": true,
+   "runs_run_all": false,
+   "reads_review_corpus": true
+  },
+  {
+   "mutation": "mcq_reviewed_without_options",
+   "asserts": [
+    "judgment_options_recorded_5"
+   ],
+   "expected_check": "§5 option adjudicability (a choice item must carry its choices)",
+   "command": [
+    "backend.app.practice_gen.validation.validate_judgment",
+    "--all"
+   ],
+   "expect_output_contains": [
+    "mat_g1_dp_q3_2 && records no 'options', but the live render"
+   ],
+   "baseline_must_not_contain": [
+    "mat_g1_dp_q3_2 && records no 'options', but the live render"
+   ],
+   "edit_paths": [],
+   "uses_apply_fn": true,
+   "runs_run_all": false,
+   "reads_review_corpus": true
+  },
+  {
+   "mutation": "attestation_leaks_into_phase1",
+   "asserts": [
+    "capability_phase_boundary_6"
+   ],
+   "expected_check": "§6 phase boundary (Phase 1 must run with the attestation corpus absent)",
+   "command": [
+    "backend.app.practice_gen.validation.validate_capability"
+   ],
+   "expect_output_contains": [
+    "capability_phase_boundary_6 && is not"
+   ],
+   "baseline_must_not_contain": [
+    "capability_phase_boundary_6"
+   ],
+   "edit_paths": [
+    "backend/app/practice_gen/validation/validate_capability.py"
+   ],
+   "uses_apply_fn": false,
+   "runs_run_all": false,
+   "reads_review_corpus": false
+  },
+  {
+   "mutation": "phase_ref_misassigned",
+   "asserts": [
+    "capability_phase_partition_6"
+   ],
+   "expected_check": "§6 per-phase reconciliation (a finding may only cite refs of its own phase)",
+   "command": [
+    "backend.app.practice_gen.validation.validate_capability"
+   ],
+   "expect_output_contains": [
+    "capability_phase_partition_6 && §6D"
+   ],
+   "baseline_must_not_contain": [
+    "capability_phase_partition_6"
+   ],
+   "edit_paths": [
+    "backend/app/practice_gen/validation/_manifest.py"
+   ],
+   "uses_apply_fn": false,
+   "runs_run_all": false,
+   "reads_review_corpus": false
+  },
+  {
+   "mutation": "template_attestation",
+   "asserts": [
+    "attester_reasoning_skeleton_6G"
+   ],
+   "expected_check": "§6G (attester reasoning-skeleton clustering)",
+   "command": [
+    "backend.app.practice_gen.validation.validate_capability"
+   ],
+   "expect_output_contains": [
+    "attester boilerplate (§6G) && share one normalized"
+   ],
+   "baseline_must_not_contain": [
+    "attester boilerplate (§6G)"
+   ],
+   "edit_paths": [],
+   "uses_apply_fn": true,
+   "runs_run_all": false,
+   "reads_review_corpus": true
+  },
+  {
+   "mutation": "empty_execution_matrix",
+   "asserts": [
+    "empty_execution_matrix"
+   ],
+   "expected_check": "§1C-coverage (every node/DNA/formatter has a non-empty execution matrix)",
+   "command": [
+    "backend.app.practice_gen.validation.validate_matrix",
+    "--node",
+    "mat_g1_na_q1_9"
+   ],
+   "expect_output_contains": [
+    "empty_execution_matrix"
+   ],
+   "baseline_must_not_contain": [
+    "empty_execution_matrix"
+   ],
+   "edit_paths": [
+    "backend/app/practice_gen/compatibility.py"
+   ],
+   "uses_apply_fn": false,
+   "runs_run_all": false,
+   "reads_review_corpus": false
+  },
+  {
+   "mutation": "answer_leak_in_stem",
+   "asserts": [
+    "answer_leak_in_stem"
+   ],
+   "expected_check": "§1F (question stem does not leak its own answer)",
+   "command": [
+    "backend.app.practice_gen.validation.validate_matrix",
+    "--node",
+    "mat_g1_na_q1_0"
+   ],
+   "expect_output_contains": [
+    "answer_leak_in_stem"
+   ],
+   "baseline_must_not_contain": [
+    "answer_leak_in_stem"
+   ],
+   "edit_paths": [
+    "backend/app/practice_gen/formatters/textual/fmt_mcq.py"
+   ],
+   "uses_apply_fn": false,
+   "runs_run_all": false,
+   "reads_review_corpus": false
+  },
+  {
+   "mutation": "inverted_number_line",
+   "asserts": [
+    "visual_payload"
+   ],
+   "expected_check": "§1G (rendered visual payload is real and self-consistent)",
+   "command": [
+    "backend.app.practice_gen.validation.validate_matrix",
+    "--node",
+    "mat_g1_na_q1_0"
+   ],
+   "expect_output_contains": [
+    "visual_payload",
+    "is not below end"
+   ],
+   "baseline_must_not_contain": [
+    "is not below end"
+   ],
+   "edit_paths": [],
+   "uses_apply_fn": true,
+   "runs_run_all": false,
+   "reads_review_corpus": true
+  },
+  {
+   "mutation": "unservable_advertised_formatter",
+   "asserts": [
+    "advertised_formatters_are_servable"
+   ],
+   "expected_check": "§2B (every formatter a node advertises can actually be served)",
+   "command": [
+    "backend.app.practice_gen.validation.validate_compat",
+    "--only",
+    "servable"
+   ],
+   "expect_output_contains": [
+    "advertises formatter 'true_false'"
+   ],
+   "baseline_must_not_contain": [
+    "advertises formatter 'true_false'"
+   ],
+   "edit_paths": [
+    "backend/app/services/orchestrator.py"
+   ],
+   "uses_apply_fn": false,
+   "runs_run_all": false,
+   "reads_review_corpus": false
+  },
+  {
+   "mutation": "node_dropped_from_check",
+   "asserts": [
+    "per_node_applicability_1H"
+   ],
+   "expected_check": "§1H (every check a node's composition makes applicable ran on that node)",
+   "command": [
+    "backend.app.practice_gen.validation.validate_matrix",
+    "--node",
+    "mat_g1_na_q1_0"
+   ],
+   "expect_output_contains": [
+    "§1H applicability",
+    "mat_g1_na_q1_0"
+   ],
+   "baseline_must_not_contain": [
+    "§1H applicability — the node's own composition"
+   ],
+   "edit_paths": [
+    "backend/app/practice_gen/validation/validate_matrix.py"
+   ],
+   "uses_apply_fn": false,
+   "runs_run_all": false,
+   "reads_review_corpus": false
+  },
+  {
+   "mutation": "shrinking_node_registry",
+   "asserts": [
+    "census",
+    "census_nodes"
+   ],
+   "expected_check": "§7 (the suite's own census has not shrunk below its floor)",
+   "command": [
+    "backend.app.practice_gen.validation.validate_census"
+   ],
+   "expect_output_contains": [
+    "census",
+    "is below the floor"
+   ],
+   "baseline_must_not_contain": [
+    "is below the floor"
+   ],
+   "edit_paths": [
+    "backend/app/practice_gen/registry.py"
+   ],
+   "uses_apply_fn": false,
+   "runs_run_all": false,
+   "reads_review_corpus": false
+  },
+  {
+   "mutation": "degenerate_answer_key",
+   "asserts": [
+    "degenerate_answer_key"
+   ],
+   "expected_check": "§1I (a true/false item family may not key every sample the same way)",
+   "command": [
+    "backend.app.practice_gen.validation.validate_matrix",
+    "--node",
+    "mat_g3_na_q3_1"
+   ],
+   "expect_output_contains": [
+    "degenerate_answer_key",
+    "scores 100%"
+   ],
+   "baseline_must_not_contain": [
+    "degenerate_answer_key"
+   ],
+   "edit_paths": [
+    "backend/app/practice_gen/dna/na/multiplication.py"
+   ],
+   "uses_apply_fn": false,
+   "runs_run_all": false,
+   "reads_review_corpus": false
+  },
+  {
+   "mutation": "config_bypasses_competency",
+   "asserts": [
+    "config_respects_competency"
+   ],
+   "expected_check": "§2D (a saved configuration may not serve content outside a node's competency)",
+   "command": [
+    "backend.app.practice_gen.validation.validate_compat",
+    "--only",
+    "config"
+   ],
+   "expect_output_contains": [
+    "config_respects_competency",
+    "bypassing curriculum gating"
+   ],
+   "baseline_must_not_contain": [
+    "bypassing curriculum gating"
+   ],
+   "edit_paths": [
+    "backend/app/services/orchestrator.py"
+   ],
+   "uses_apply_fn": false,
+   "runs_run_all": false,
+   "reads_review_corpus": false
+  },
+  {
+   "mutation": "unrenderable_visual_payload",
+   "asserts": [
+    "render_contract_9"
+   ],
+   "expected_check": "§9 (the payload must be renderable by the component the student sees)",
+   "command": [
+    "backend.app.practice_gen.validation.validate_render",
+    "--node-ids",
+    "mat_g2_na_q3_4"
+   ],
+   "expect_output_contains": [
+    "FAIL render_contract",
+    "shaded"
+   ],
+   "baseline_must_not_contain": [
+    "FAIL render_contract"
+   ],
+   "edit_paths": [
+    "backend/app/practice_gen/formatters/visual/fmt_array_grid.py"
+   ],
+   "uses_apply_fn": false,
+   "runs_run_all": false,
+   "reads_review_corpus": false
+  },
+  {
+   "mutation": "grader_rejects_correct_answer",
+   "asserts": [
+    "grading_contract_10"
+   ],
+   "expected_check": "§10 (a known-correct answer must be graded correct by all three graders)",
+   "command": [
+    "backend.app.practice_gen.validation.validate_grade",
+    "--node-ids",
+    "mat_g1_na_q1_0"
+   ],
+   "expect_output_contains": [
+    "FAIL grading_contract",
+    "told they are wrong"
+   ],
+   "baseline_must_not_contain": [
+    "FAIL grading_contract"
+   ],
+   "edit_paths": [
+    "backend/app/routes/matatag_router.py"
+   ],
+   "uses_apply_fn": false,
+   "runs_run_all": false,
+   "reads_review_corpus": false
+  },
+  {
+   "mutation": "predictable_option_placement",
+   "asserts": [
+    "option_placement"
+   ],
+   "expected_check": "§2E (the correct option's position must not be predictable from the seed)",
+   "command": [
+    "backend.app.practice_gen.validation.validate_compat",
+    "--only",
+    "placement"
+   ],
+   "expect_output_contains": [
+    "FAIL option_placement",
+    "without doing any mathematics"
+   ],
+   "baseline_must_not_contain": [
+    "FAIL option_placement"
+   ],
+   "edit_paths": [
+    "backend/app/practice_gen/formatters/_option_order.py"
+   ],
+   "uses_apply_fn": false,
+   "runs_run_all": false,
+   "reads_review_corpus": false
+  },
+  {
+   "mutation": "formatter_unreachable_on_student_path",
+   "asserts": [
+    "formatters_reachable"
+   ],
+   "expected_check": "§2C (an advertised formatter must be reachable by the student path)",
+   "command": [
+    "backend.app.practice_gen.validation.validate_compat",
+    "--only",
+    "reachable"
+   ],
+   "expect_output_contains": [
+    "FAIL formatters_reachable"
+   ],
+   "baseline_must_not_contain": [
+    "FAIL formatters_reachable"
+   ],
+   "edit_paths": [
+    "backend/app/services/orchestrator.py"
+   ],
+   "uses_apply_fn": false,
+   "runs_run_all": false,
+   "reads_review_corpus": false
+  },
+  {
+   "mutation": "dangling_node_reference",
+   "asserts": [
+    "node_references_resolve"
+   ],
+   "expected_check": "§2F (every node id referenced in the app must exist in the registry)",
+   "command": [
+    "backend.app.practice_gen.validation.validate_compat",
+    "--only",
+    "references"
+   ],
+   "expect_output_contains": [
+    "FAIL node_references_resolve",
+    "mat_g9_na_q1_7"
+   ],
+   "baseline_must_not_contain": [
+    "FAIL node_references_resolve"
+   ],
+   "edit_paths": [
+    "backend/app/services/curriculum.py"
+   ],
+   "uses_apply_fn": false,
+   "runs_run_all": false,
+   "reads_review_corpus": false
+  },
+  {
+   "mutation": "malformed_competency_bound",
+   "asserts": [
+    "all_competency_bounds_parse"
+   ],
+   "expected_check": "§2G (every node's competency bounds parse to a well-formed shape)",
+   "command": [
+    "backend.app.practice_gen.validation.validate_compat",
+    "--only",
+    "bounds_property"
+   ],
+   "expect_output_contains": [
+    "FAIL all_competency_bounds_parse",
+    "min > max"
+   ],
+   "baseline_must_not_contain": [
+    "FAIL all_competency_bounds_parse"
+   ],
+   "edit_paths": [],
+   "uses_apply_fn": true,
+   "runs_run_all": false,
+   "reads_review_corpus": true
+  },
+  {
+   "mutation": "competency_scope_narrowed",
+   "asserts": [
+    "competency_scope_not_narrowed"
+   ],
+   "expected_check": "§2H (a competency naming both cases must not be bound to one)",
+   "command": [
+    "backend.app.practice_gen.validation.validate_compat",
+    "--only",
+    "scope"
+   ],
+   "expect_output_contains": [
+    "FAIL competency_scope_not_narrowed",
+    "mat_g3_na_q2_1"
+   ],
+   "baseline_must_not_contain": [
+    "FAIL competency_scope_not_narrowed"
+   ],
+   "edit_paths": [
+    "backend/app/practice_gen/registry.py"
+   ],
+   "uses_apply_fn": false,
+   "runs_run_all": false,
+   "reads_review_corpus": false
+  },
+  {
+   "mutation": "unproducible_variant_declared",
+   "asserts": [
+    "declared_variants_are_producible"
+   ],
+   "expected_check": "§2I (a declared discrete variant must be producible)",
+   "command": [
+    "backend.app.practice_gen.validation.validate_compat",
+    "--only",
+    "producible"
+   ],
+   "expect_output_contains": [
+    "FAIL declared_variants_are_producible"
+   ],
+   "baseline_must_not_contain": [
+    "FAIL declared_variants_are_producible"
+   ],
+   "edit_paths": [
+    "backend/app/practice_gen/validation/judgment_packets.py"
+   ],
+   "uses_apply_fn": false,
+   "runs_run_all": false,
+   "reads_review_corpus": false
+  },
+  {
+   "mutation": "coverage_map_gap",
+   "asserts": [
+    "assertion_coverage_8"
+   ],
+   "expected_check": "§8 (every assertion is proven by a mutation or on a shrinking allowlist)",
+   "command": [
+    "backend.app.practice_gen.validation.validate_coverage"
+   ],
+   "expect_output_contains": [
+    "FAIL assertion_coverage",
+    "worker_crash"
+   ],
+   "baseline_must_not_contain": [
+    "FAIL assertion_coverage"
+   ],
+   "edit_paths": [
+    "backend/app/practice_gen/validation/validate_coverage.py"
+   ],
+   "uses_apply_fn": false,
+   "runs_run_all": false,
+   "reads_review_corpus": false
+  },
+  {
+   "mutation": "mcq_wrong_option_count",
+   "asserts": [
+    "mcq_option_count"
+   ],
+   "expected_check": "§4/§1C (MCQ option count)",
+   "command": [
+    "backend.app.practice_gen.validation.validate_matrix",
+    "--node",
+    "mat_g1_na_q1_0"
+   ],
+   "expect_output_contains": [
+    "mcq_option_count"
+   ],
+   "baseline_must_not_contain": [
+    "mcq_option_count"
+   ],
+   "edit_paths": [
+    "backend/app/practice_gen/formatters/textual/fmt_mcq.py"
+   ],
+   "uses_apply_fn": false,
+   "runs_run_all": false,
+   "reads_review_corpus": false
+  },
+  {
+   "mutation": "mcq_no_correct_option",
+   "asserts": [
+    "mcq_correct_presence"
+   ],
+   "expected_check": "§4/§1C (an MCQ must contain its correct answer)",
+   "command": [
+    "backend.app.practice_gen.validation.validate_matrix",
+    "--node",
+    "mat_g1_na_q1_0"
+   ],
+   "expect_output_contains": [
+    "mcq_correct_presence"
+   ],
+   "baseline_must_not_contain": [
+    "mcq_correct_presence"
+   ],
+   "edit_paths": [
+    "backend/app/practice_gen/formatters/textual/fmt_mcq.py"
+   ],
+   "uses_apply_fn": false,
+   "runs_run_all": false,
+   "reads_review_corpus": false
+  },
+  {
+   "mutation": "mcq_duplicate_options",
+   "asserts": [
+    "mcq_option_uniqueness"
+   ],
+   "expected_check": "§4/§1C (MCQ options must be distinct)",
+   "command": [
+    "backend.app.practice_gen.validation.validate_matrix",
+    "--node",
+    "mat_g1_na_q1_0"
+   ],
+   "expect_output_contains": [
+    "mcq_option_uniqueness"
+   ],
+   "baseline_must_not_contain": [
+    "mcq_option_uniqueness"
+   ],
+   "edit_paths": [
+    "backend/app/practice_gen/formatters/textual/fmt_mcq.py"
+   ],
+   "uses_apply_fn": false,
+   "runs_run_all": false,
+   "reads_review_corpus": false
+  },
+  {
+   "mutation": "mcq_empty_option_value",
+   "asserts": [
+    "mcq_option_validity"
+   ],
+   "expected_check": "§4/§1C (no MCQ option may be empty)",
+   "command": [
+    "backend.app.practice_gen.validation.validate_matrix",
+    "--node",
+    "mat_g1_na_q1_0"
+   ],
+   "expect_output_contains": [
+    "mcq_option_validity"
+   ],
+   "baseline_must_not_contain": [
+    "mcq_option_validity"
+   ],
+   "edit_paths": [
+    "backend/app/practice_gen/formatters/textual/fmt_mcq.py"
+   ],
+   "uses_apply_fn": false,
+   "runs_run_all": false,
+   "reads_review_corpus": false
+  },
+  {
+   "mutation": "mcq_key_disagrees_with_option",
+   "asserts": [
+    "mcq_correct_value_mismatch"
+   ],
+   "expected_check": "§4/§1C (the flagged option must match the answer key)",
+   "command": [
+    "backend.app.practice_gen.validation.validate_matrix",
+    "--node",
+    "mat_g1_na_q1_0"
+   ],
+   "expect_output_contains": [
+    "mcq_correct_value_mismatch"
+   ],
+   "baseline_must_not_contain": [
+    "mcq_correct_value_mismatch"
+   ],
+   "edit_paths": [
+    "backend/app/practice_gen/formatters/textual/fmt_mcq.py"
+   ],
+   "uses_apply_fn": false,
+   "runs_run_all": false,
+   "reads_review_corpus": false
+  },
+  {
+   "mutation": "blank_question_text",
+   "asserts": [
+    "question_text_presence"
+   ],
+   "expected_check": "§1C (a served problem must carry a question)",
+   "command": [
+    "backend.app.practice_gen.validation.validate_matrix",
+    "--node",
+    "mat_g1_na_q1_0"
+   ],
+   "expect_output_contains": [
+    "question_text_presence"
+   ],
+   "baseline_must_not_contain": [
+    "question_text_presence"
+   ],
+   "edit_paths": [
+    "backend/app/practice_gen/formatters/textual/fmt_mcq.py"
+   ],
+   "uses_apply_fn": false,
+   "runs_run_all": false,
+   "reads_review_corpus": false
+  },
+  {
+   "mutation": "missing_correct_answer",
+   "asserts": [
+    "correct_answer_presence"
+   ],
+   "expected_check": "§1C (a served problem must carry an answer key)",
+   "command": [
+    "backend.app.practice_gen.validation.validate_matrix",
+    "--node",
+    "mat_g1_na_q1_0"
+   ],
+   "expect_output_contains": [
+    "correct_answer_presence"
+   ],
+   "baseline_must_not_contain": [
+    "correct_answer_presence"
+   ],
+   "edit_paths": [
+    "backend/app/practice_gen/formatters/textual/fmt_mcq.py"
+   ],
+   "uses_apply_fn": false,
+   "runs_run_all": false,
+   "reads_review_corpus": false
+  },
+  {
+   "mutation": "formatter_route_mismatch",
+   "asserts": [
+    "formatter_match"
+   ],
+   "expected_check": "§1C (the served route must be the formatter that was requested)",
+   "command": [
+    "backend.app.practice_gen.validation.validate_matrix",
+    "--node",
+    "mat_g1_na_q1_0"
+   ],
+   "expect_output_contains": [
+    "formatter_match"
+   ],
+   "baseline_must_not_contain": [
+    "formatter_match"
+   ],
+   "edit_paths": [
+    "backend/app/practice_gen/formatters/textual/fmt_mcq.py"
+   ],
+   "uses_apply_fn": false,
+   "runs_run_all": false,
+   "reads_review_corpus": false
+  },
+  {
+   "mutation": "stem_declares_the_answer",
+   "asserts": [
+    "answer_leak_in_stem"
+   ],
+   "expected_check": "§1F (a stem may not state its own answer)",
+   "command": [
+    "backend.app.practice_gen.validation.validate_matrix",
+    "--node",
+    "mat_g1_na_q1_0"
+   ],
+   "expect_output_contains": [
+    "answer_leak_in_stem",
+    "states the answer outright"
+   ],
+   "baseline_must_not_contain": [
+    "states the answer outright"
+   ],
+   "edit_paths": [
+    "backend/app/practice_gen/formatters/textual/fmt_mcq.py"
+   ],
+   "uses_apply_fn": false,
+   "runs_run_all": false,
+   "reads_review_corpus": false
+  },
+  {
+   "mutation": "single_attester_identity",
+   "asserts": [
+    "attester_plurality_6H"
+   ],
+   "expected_check": "§6H (an Attester identity may not cover more than one dispatch)",
+   "command": [
+    "backend.app.practice_gen.validation.validate_capability"
+   ],
+   "expect_output_contains": [
+    "attester plurality",
+    "planted-single-attester"
+   ],
+   "baseline_must_not_contain": [
+    "attester plurality"
+   ],
+   "edit_paths": [],
+   "uses_apply_fn": true,
+   "runs_run_all": false,
+   "reads_review_corpus": true
+  },
+  {
+   "mutation": "attester_without_evidence",
+   "asserts": [
+    "attester_evidence_6G"
+   ],
+   "expected_check": "§6G (a verdict must show its work and name the seeds that show it)",
+   "command": [
+    "backend.app.practice_gen.validation.validate_capability",
+    "--phase",
+    "2"
+   ],
+   "expect_output_contains": [
+    "carries no reasoning (§6G)",
+    "names no seed in 'seeds_showing_it'",
+    "cites seed 999999"
+   ],
+   "baseline_must_not_contain": [
+    "carries no reasoning (§6G)",
+    "names no seed in 'seeds_showing_it'",
+    "cites seed 999999"
+   ],
+   "edit_paths": [],
+   "uses_apply_fn": true,
+   "runs_run_all": false,
+   "reads_review_corpus": true
+  },
+  {
+   "mutation": "withdrawn_attestation",
+   "asserts": [
+    "capability_unattested_6F"
+   ],
+   "expected_check": "§6F UNATTESTED (a declared capability nobody blind has judged)",
+   "command": [
+    "backend.app.practice_gen.validation.validate_capability",
+    "--phase",
+    "2"
+   ],
+   "expect_output_contains": [
+    "is UNATTESTED"
+   ],
+   "baseline_must_not_contain": [
+    "is UNATTESTED"
+   ],
+   "edit_paths": [],
+   "uses_apply_fn": true,
+   "runs_run_all": false,
+   "reads_review_corpus": true
+  },
+  {
+   "mutation": "subtraction_pool_uncapped",
+   "asserts": [
+    "subtraction_candidate_pool_bounded"
+   ],
+   "expected_check": "candidate-pool budget (counting_back/taking_away)",
+   "command": [
+    "pytest",
+    "tests/unit/test_subtraction_candidate_pool.py::test_large_range_does_not_enumerate_the_whole_space",
+    "-q"
+   ],
+   "expect_output_contains": [
+    "test_large_range_does_not_enumerate_the_whole_space"
+   ],
+   "baseline_must_not_contain": [
+    "test_large_range_does_not_enumerate_the_whole_space"
+   ],
+   "edit_paths": [
+    "backend/app/practice_gen/dna/na/subtraction.py"
+   ],
+   "uses_apply_fn": false,
+   "runs_run_all": false,
+   "reads_review_corpus": false
+  },
+  {
+   "mutation": "grader_keys_a_value_answer",
+   "asserts": [
+    "grading_contract_10"
+   ],
+   "expected_check": "§10 grading contract (a known-correct answer is graded correct)",
+   "command": [
+    "backend.app.practice_gen.validation.validate_grade",
+    "--node-ids",
+    "mat_g1_na_q1_4"
+   ],
+   "expect_output_contains": [
+    "KNOWN-CORRECT && portal"
+   ],
+   "baseline_must_not_contain": [
+    "KNOWN-CORRECT"
+   ],
+   "edit_paths": [
+    "backend/app/routes/practice_router.py"
+   ],
+   "uses_apply_fn": false,
+   "runs_run_all": false,
+   "reads_review_corpus": false
+  },
+  {
+   "mutation": "visual_payload_drops_required_key",
+   "asserts": [
+    "render_contract_floor_9"
+   ],
+   "expected_check": "§9 render contract (payload carries every key the component reads)",
+   "command": [
+    "backend.app.practice_gen.validation.validate_render"
+   ],
+   "expect_output_contains": [
+    "FractionModel && interaction_mode"
+   ],
+   "baseline_must_not_contain": [
+    "FAIL render_contract"
+   ],
+   "edit_paths": [
+    "backend/app/practice_gen/formatters/visual/fmt_fraction_model.py"
+   ],
+   "uses_apply_fn": false,
+   "runs_run_all": false,
+   "reads_review_corpus": false
+  },
+  {
+   "mutation": "variant_coverage_silently_narrowed",
+   "asserts": [
+    "census",
+    "census_variant_candidates"
+   ],
+   "expected_check": "§7 census (variant coverage did not shrink)",
+   "command": [
+    "backend.app.practice_gen.validation.validate_census"
+   ],
+   "expect_output_contains": [
+    "variant_candidates && below the floor"
+   ],
+   "baseline_must_not_contain": [
+    "variant_candidates && below the floor"
+   ],
+   "edit_paths": [
+    "backend/app/practice_gen/validation/judgment_packets.py"
+   ],
+   "uses_apply_fn": false,
+   "runs_run_all": false,
+   "reads_review_corpus": false
+  },
+  {
+   "mutation": "single_formatter_unreachable",
+   "asserts": [
+    "formatters_reachable"
+   ],
+   "expected_check": "§2C (an advertised formatter must be reachable on the student path)",
+   "command": [
+    "backend.app.practice_gen.validation.validate_compat",
+    "--only",
+    "reachable"
+   ],
+   "expect_output_contains": [
+    "FAIL formatters_reachable",
+    "advertises 'cloze'"
+   ],
+   "baseline_must_not_contain": [
+    "advertises 'cloze'"
+   ],
+   "edit_paths": [
+    "backend/app/practice_gen/compatibility.py"
+   ],
+   "uses_apply_fn": false,
+   "runs_run_all": false,
+   "reads_review_corpus": false
+  },
+  {
+   "mutation": "declarations_out_of_sync",
+   "asserts": [
+    "capability_declarations_in_sync_6"
+   ],
+   "expected_check": "§6 (the declarations validated are the ones an author wrote)",
+   "command": [
+    "backend.app.practice_gen.validation.validate_capability",
+    "--phase",
+    "1"
+   ],
+   "expect_output_contains": [
+    "mat_g1_mg_q4_0 && does not match"
+   ],
+   "baseline_must_not_contain": [
+    "does not match"
+   ],
+   "edit_paths": [
+    "data/skeletons/vocab_annotation.json"
+   ],
+   "uses_apply_fn": false,
+   "runs_run_all": false,
+   "reads_review_corpus": false
+  },
+  {
+   "mutation": "stale_generated_graph",
+   "asserts": [
+    "capability_declarations_in_sync_6"
+   ],
+   "expected_check": "§6 (the generated graph matches a fresh build, in every field)",
+   "command": [
+    "backend.app.practice_gen.validation.validate_capability",
+    "--phase",
+    "1"
+   ],
+   "expect_output_contains": [
+    "mat_g1_na_q3_6 && 'cumulative_concepts'"
+   ],
+   "baseline_must_not_contain": [
+    "mat_g1_na_q3_6 && 'cumulative_concepts'"
+   ],
+   "edit_paths": [],
+   "uses_apply_fn": true,
+   "runs_run_all": false,
+   "reads_review_corpus": true
+  },
+  {
+   "mutation": "unsanctioned_requires_ignore",
+   "asserts": [
+    "requires_ignore_locked_6B"
+   ],
+   "expected_check": "§6B (requires_ignore is human-authored ground truth)",
+   "command": [
+    "backend.app.practice_gen.validation.validate_capability",
+    "--phase",
+    "1"
+   ],
+   "expect_output_contains": [
+    "mat_g1_na_q1_2 && does not match"
+   ],
+   "baseline_must_not_contain": [
+    "mat_g1_na_q1_2 && does not match"
+   ],
+   "edit_paths": [],
+   "uses_apply_fn": true,
+   "runs_run_all": false,
+   "reads_review_corpus": true
+  },
+  {
+   "mutation": "frontend_contract_key_unserved",
+   "asserts": [
+    "render_contract_floor_9"
+   ],
+   "expected_check": "§9 (the payload carries every key the component reads)",
+   "command": [
+    "backend.app.practice_gen.validation.validate_render"
+   ],
+   "expect_output_contains": [
+    "planted_contract_key"
+   ],
+   "baseline_must_not_contain": [
+    "planted_contract_key"
+   ],
+   "edit_paths": [
+    "frontend/src/components/VisualSkeletons.jsx"
+   ],
+   "uses_apply_fn": false,
+   "runs_run_all": false,
+   "reads_review_corpus": false
+  },
+  {
+   "mutation": "clause_not_in_competency",
+   "asserts": [
+    "capability_provenance_6A"
+   ],
+   "expected_check": "§6A (a declared clause must be a literal substring of the competency)",
+   "command": [
+    "backend.app.practice_gen.validation.validate_capability",
+    "--phase",
+    "1"
+   ],
+   "expect_output_contains": [
+    "half somersault && does not appear in the node's competency"
+   ],
+   "baseline_must_not_contain": [
+    "does not appear in the node's competency"
+   ],
+   "edit_paths": [
+    "data/knowledge_graph_g1_3.json"
+   ],
+   "uses_apply_fn": false,
+   "runs_run_all": false,
+   "reads_review_corpus": false
+  },
+  {
+   "mutation": "competency_word_uncovered",
+   "asserts": [
+    "capability_coverage_6B"
+   ],
+   "expected_check": "§6B (every content word of the competency is covered by some clause)",
+   "command": [
+    "backend.app.practice_gen.validation.validate_capability",
+    "--phase",
+    "1"
+   ],
+   "expect_output_contains": [
+    "mat_g1_mg_q4_0 && are covered by no requirement"
+   ],
+   "baseline_must_not_contain": [
+    "are covered by no requirement"
+   ],
+   "edit_paths": [
+    "data/knowledge_graph_g1_3.json"
+   ],
+   "uses_apply_fn": false,
+   "runs_run_all": false,
+   "reads_review_corpus": false
+  },
+  {
+   "mutation": "capability_provider_unregistered",
+   "asserts": [
+    "capability_provision_6C"
+   ],
+   "expected_check": "§6C (every declared capability maps to something the node can produce)",
+   "command": [
+    "backend.app.practice_gen.validation.validate_capability",
+    "--phase",
+    "1"
+   ],
+   "expect_output_contains": [
+    "'0_and_5' && register it in CAPABILITY_PROVIDERS"
+   ],
+   "baseline_must_not_contain": [
+    "'0_and_5' && register it in CAPABILITY_PROVIDERS"
+   ],
+   "edit_paths": [
+    "backend/app/practice_gen/validation/validate_capability.py"
+   ],
+   "uses_apply_fn": false,
+   "runs_run_all": false,
+   "reads_review_corpus": false
+  },
+  {
+   "mutation": "provider_is_only_a_bounds_catch_all",
+   "asserts": [
+    "capability_nondiscriminating_bounds_6E"
+   ],
+   "expected_check": "§6E (a `bounds` catch-all most of the table shares is not a provider)",
+   "command": [
+    "backend.app.practice_gen.validation.validate_capability",
+    "--phase",
+    "1"
+   ],
+   "expect_output_contains": [
+    "'range_up_to_100' && only reachable provider is a `bounds` catch-all"
+   ],
+   "baseline_must_not_contain": [
+    "only reachable provider is a `bounds` catch-all"
+   ],
+   "edit_paths": [
+    "backend/app/practice_gen/validation/validate_capability.py"
+   ],
+   "uses_apply_fn": false,
+   "runs_run_all": false,
+   "reads_review_corpus": false
+  },
+  {
+   "mutation": "contract_check_declares_no_phase",
+   "asserts": [
+    "check_phase_registry_8"
+   ],
+   "expected_check": "§8 (every contract check declares the phase it runs in)",
+   "command": [
+    "backend.app.practice_gen.validation.validate_coverage"
+   ],
+   "expect_output_contains": [
+    "§9 && declares no phase"
+   ],
+   "baseline_must_not_contain": [
+    "declares no phase"
+   ],
+   "edit_paths": [
+    "backend/app/practice_gen/validation/_manifest.py"
+   ],
+   "uses_apply_fn": false,
+   "runs_run_all": false,
+   "reads_review_corpus": false
+  },
+  {
+   "mutation": "allowlist_keeps_a_paid_debt",
+   "asserts": [
+    "assertion_allowlist_paid_8"
+   ],
+   "expected_check": "§8 (an allowlisted assertion a mutation now proves)",
+   "command": [
+    "backend.app.practice_gen.validation.validate_coverage"
+   ],
+   "expect_output_contains": [
+    "vocabulary_gating && now proves it"
+   ],
+   "baseline_must_not_contain": [
+    "now proves it"
+   ],
+   "edit_paths": [
+    "backend/app/practice_gen/validation/validate_coverage.py"
+   ],
+   "uses_apply_fn": false,
+   "runs_run_all": false,
+   "reads_review_corpus": false
+  },
+  {
+   "mutation": "allowlist_names_a_phantom_label",
+   "asserts": [
+    "assertion_allowlist_phantom_8"
+   ],
+   "expected_check": "§8 (an allowlist entry naming a label nothing emits)",
+   "command": [
+    "backend.app.practice_gen.validation.validate_coverage"
+   ],
+   "expect_output_contains": [
+    "worker_crash_typo && excuses nothing"
+   ],
+   "baseline_must_not_contain": [
+    "excuses nothing"
+   ],
+   "edit_paths": [
+    "backend/app/practice_gen/validation/validate_coverage.py"
+   ],
+   "uses_apply_fn": false,
+   "runs_run_all": false,
+   "reads_review_corpus": false
+  },
+  {
+   "mutation": "mutation_asserts_an_unknown_label",
+   "asserts": [
+    "assertion_asserts_unknown_8"
+   ],
+   "expected_check": "§8 (a mutation asserting a label no validator declares)",
+   "command": [
+    "backend.app.practice_gen.validation.validate_coverage"
+   ],
+   "expect_output_contains": [
+    "option_placementt && no validator declares"
+   ],
+   "baseline_must_not_contain": [
+    "no validator declares"
+   ],
+   "edit_paths": [
+    "tests/mutation_harness.py"
+   ],
+   "uses_apply_fn": false,
+   "runs_run_all": false,
+   "reads_review_corpus": false
+  },
+  {
+   "mutation": "undeclared_check_reports_itself",
+   "asserts": [
+    "assertion_undeclared_check_8"
+   ],
+   "expected_check": "§8 (a printed FAIL label no module declares)",
+   "command": [
+    "backend.app.practice_gen.validation.validate_coverage"
+   ],
+   "expect_output_contains": [
+    "undeclared_planted_check && no module declares"
+   ],
+   "baseline_must_not_contain": [
+    "no module declares"
+   ],
+   "edit_paths": [
+    "backend/app/practice_gen/validation/validate_census.py"
+   ],
+   "uses_apply_fn": false,
+   "runs_run_all": false,
+   "reads_review_corpus": false
+  },
+  {
+   "mutation": "emoji_pictorial_draws_a_different_operation",
+   "asserts": [
+    "answer_key_integrity"
+   ],
+   "expected_check": "§1E answer-key integrity (the picture's arithmetic is the item's)",
+   "command": [
+    "backend.app.practice_gen.validation.validate_matrix",
+    "--node",
+    "mat_g2_na_q3_0"
+   ],
+   "expect_output_contains": [
+    "emoji_pictorial && answer_key_integrity"
+   ],
+   "baseline_must_not_contain": [
+    "answer_key_integrity"
+   ],
+   "edit_paths": [
+    "backend/app/practice_gen/formatters/visual/fmt_emoji_pictorial.py"
+   ],
+   "uses_apply_fn": false,
+   "runs_run_all": false,
+   "reads_review_corpus": false
+  },
+  {
+   "mutation": "number_line_drops_its_jumps",
+   "asserts": [],
+   "expected_check": "the payload draws the medium mat_g2_na_q3_1 names",
+   "command": [
+    "pytest",
+    "tests/unit/test_media_the_competency_names.py::test_multiplication_number_line_carries_its_jumps",
+    "-q"
+   ],
+   "expect_output_contains": [
+    "test_multiplication_number_line_carries_its_jumps"
+   ],
+   "baseline_must_not_contain": [
+    "test_multiplication_number_line_carries_its_jumps"
+   ],
+   "edit_paths": [
+    "backend/app/practice_gen/formatters/visual/fmt_number_line.py"
+   ],
+   "uses_apply_fn": false,
+   "runs_run_all": false,
+   "reads_review_corpus": false
+  },
+  {
+   "mutation": "number_line_jumps_land_elsewhere",
+   "asserts": [
+    "visual_payload"
+   ],
+   "expected_check": "§1G visual payload (the picture agrees with its own answer)",
+   "command": [
+    "backend.app.practice_gen.validation.validate_matrix",
+    "--node",
+    "mat_g2_na_q3_1"
+   ],
+   "expect_output_contains": [
+    "visual_payload && landing on"
+   ],
+   "baseline_must_not_contain": [
+    "visual_payload"
+   ],
+   "edit_paths": [
+    "backend/app/practice_gen/formatters/visual/fmt_number_line.py"
+   ],
+   "uses_apply_fn": false,
+   "runs_run_all": false,
+   "reads_review_corpus": false
+  },
+  {
+   "mutation": "compare_pair_asks_for_a_sign_and_offers_statements",
+   "asserts": [
+    "pipeline_run"
+   ],
+   "expected_check": "§1C execution (a formatter refuses a stem its options cannot answer)",
+   "command": [
+    "backend.app.practice_gen.validation.validate_matrix",
+    "--node",
+    "mat_g1_na_q1_3"
+   ],
+   "expect_output_contains": [
+    "pipeline_run && question_statement"
+   ],
+   "baseline_must_not_contain": [
+    "pipeline_run"
+   ],
+   "edit_paths": [
+    "backend/app/practice_gen/dna/na/comparing_ordering.py"
+   ],
+   "uses_apply_fn": false,
+   "runs_run_all": false,
+   "reads_review_corpus": false
+  }
+ ]
+}

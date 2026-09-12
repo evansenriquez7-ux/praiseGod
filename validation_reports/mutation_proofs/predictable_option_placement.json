@@ -1,0 +1,46 @@
+{
+ "asserts": [
+  "option_placement"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "FAIL option_placement"
+ ],
+ "command": [
+  "backend.app.practice_gen.validation.validate_compat",
+  "--only",
+  "placement"
+ ],
+ "definition_digest": "49fafcb1d86f64729a94dc0588771f29b92251f900dca5baf0c6063b8917830f",
+ "detected": true,
+ "diagnostic_line": "exit 1 — FAIL option_placement (3):",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "FAIL option_placement",
+  "without doing any mathematics"
+ ],
+ "expected_check": "§2E (the correct option's position must not be predictable from the seed)",
+ "finished_at": "2026-09-12T05:03:25+08:00",
+ "input_digest": "33cd89ef09f8aa98c2dca206ad925748038cfbd2b08ab217114d980d0c40f8ab",
+ "mutated_paths": [
+  "backend/app/practice_gen/formatters/_option_order.py"
+ ],
+ "mutation": "predictable_option_placement",
+ "observed_markers": {
+  "FAIL option_placement": true,
+  "without doing any mathematics": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-09-12T05:03:19+08:00"
+}

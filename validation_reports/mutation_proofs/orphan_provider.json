@@ -1,0 +1,44 @@
+{
+ "asserts": [
+  "capability_orphan_provider_6A"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "draw_lines && but no node's `requires` names it"
+ ],
+ "command": [
+  "backend.app.practice_gen.validation.validate_capability",
+  "--phase",
+  "1"
+ ],
+ "definition_digest": "881b31b65b1012bb9dbe9d8b0ad23ef2f95f3d7426ac7b2d17f4b60edcef640e",
+ "detected": true,
+ "diagnostic_line": "exit 1 — Capability contract: 6 failure(s) (6 Phase 1 / artifact-free, floor 5; 0 Phase 2 / attestation).",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "draw_lines && but no node's `requires` names it"
+ ],
+ "expected_check": "§6A (a provider entry no requirement reaches)",
+ "finished_at": "2026-09-12T05:00:28+08:00",
+ "input_digest": "33cd89ef09f8aa98c2dca206ad925748038cfbd2b08ab217114d980d0c40f8ab",
+ "mutated_paths": [
+  "backend/app/practice_gen/validation/validate_capability.py"
+ ],
+ "mutation": "orphan_provider",
+ "observed_markers": {
+  "draw_lines && but no node's `requires` names it": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-09-12T05:00:26+08:00"
+}

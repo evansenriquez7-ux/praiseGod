@@ -20,19 +20,46 @@ Usage:
     python -m tests.mutation_harness --list
 
 Exit code 0 iff every mutation was detected.
+
+WHAT A RUN LEAVES BEHIND (2026-09-12)
+-------------------------------------
+Until this date a run of this table left nothing on disk, so §8 could only count
+mutations that had been WRITTEN, never mutations that had been RUN. `validate_coverage`'s
+own docstring named that hole: a mutation that SURVIVED, or that this runner refused to
+score as INVALID, still marked its label proven.
+
+Every executed mutation now writes a machine-readable proof record to
+`validation_reports/mutation_proofs/<name>.json` — baseline and planted exit statuses,
+which expected markers were actually observed, the paths it edited, and three digests
+binding it to the mutation definition and the working-tree bytes it ran against. §8 reads
+those records instead of `Mutation.asserts`. See
+`backend/app/practice_gen/validation/mutation_proof.py` for the schema and the verifier.
+
+A proof is published only AFTER the tree is restored and the input digest is confirmed
+unchanged, and the write is atomic, so an interrupted run leaves a rejected `.json.tmp`
+rather than a half-record that reads as current.
+
+`run_all` CONSUMES proofs and never invokes this module: a gate that can regenerate its
+own evidence is not a gate.
 """
 
 from __future__ import annotations
 
 import argparse
+import json
 import re
 import subprocess
 import sys
 from dataclasses import dataclass, field
+from datetime import datetime, timezone
 from pathlib import Path
-from typing import Callable, Dict, List, Optional, Tuple
+from typing import Any, Callable, Dict, List, Optional, Tuple
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
+
+from backend.app.practice_gen.validation import mutation_proof  # noqa: E402
 
 # Every subprocess runs the harness the same way CI does, from the repo root.
 _ENV_PREFIX = [sys.executable, "-m"]
@@ -78,53 +105,6 @@ class Mutation:
     apply_fn: Optional[Callable[[], Dict[Path, str]]] = None
 
 
-def _plant_template_attestation(count: int) -> Dict[Path, str]:
-    """
-    Overwrite one record's verdict reasoning with a per-clause fill-in of one frame.
-
-    This is the §5 fabrication shape aimed at the surface that is now four times
-    larger. §6F cannot see it: the packet is untouched, so freshness still passes,
-    the verdicts still exist, and nothing contradicts them. Only §6G reads the
-    reasoning.
-
-    The record is chosen for having `count` verdicts it still *owns* -- a superseded
-    record is exempt from §6G by design, so planting in one would prove nothing.
-    """
-    import json
-
-    d = REPO_ROOT / "validation_reports" / "attestation"
-    records = sorted(d.glob("*.json"))
-    if not records:
-        raise FileNotFoundError(
-            "mutation 'template_attestation': no attestation records to template. File "
-            "at least one Attester verdict before claiming §6G works."
-        )
-    # Replay last-file-wins so we plant in verdicts that are actually live.
-    owner: Dict[tuple, Path] = {}
-    for path in records:
-        for v in json.loads(path.read_text(encoding="utf-8")).get("verdicts", []):
-            owner[(v.get("node_id"), v.get("capability_id"))] = path
-
-    for path in records:
-        text = path.read_text(encoding="utf-8")
-        data = json.loads(text)
-        live = [v for v in data.get("verdicts", [])
-                if owner.get((v.get("node_id"), v.get("capability_id"))) == path]
-        if len(live) < count:
-            continue
-        for v in live[:count]:
-            seed = (v.get("seeds_showing_it") or [0])[0]
-            v["reasoning"] = (
-                f"Seed {seed} plainly exhibits '{v.get('clause')}' across the sample set."
-            )
-        path.write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
-        return {path: text}
-
-    raise ValueError(
-        f"mutation 'template_attestation': no record owns {count} live verdicts, so the "
-        f"skeleton cluster cannot exceed its cap. Repoint the mutation rather than "
-        f"lowering _MAX_ATTESTER_SKELETON_CLUSTER."
-    )
 
 
 def _plant_vocab_leak(term: str) -> Dict[Path, str]:
@@ -238,66 +218,12 @@ def _plant_silent_substitution() -> Dict[Path, str]:
 # SURVIVED and reads as a broken gate). A precondition it cannot satisfy raises.
 # ---------------------------------------------------------------------------------
 
-_STALE_WITNESS = "PLANTED-STALE-WITNESS"
 
 
-def _fresh_samples() -> List[tuple]:
-    """
-    Every (path, data, index, sample, current_render) whose recorded stem STILL matches
-    what the pipeline renders today, in a stable order.
-
-    A plant aimed at freshness has to land on a sample that is currently FRESH. Planting
-    on one that is already stale would produce a finding that was going to be reported
-    anyway, and the mutation would be scored on a finding it did not cause.
-    """
-    import json
-
-    from backend.app.practice_gen.validation.judgment_packets import _render_sample
-    from backend.app.practice_gen.validation.validate_judgment import _normalize
-
-    out: List[tuple] = []
-    for path in sorted((REPO_ROOT / "validation_reports" / "judgment").rglob("*.json")):
-        data = json.loads(path.read_text(encoding="utf-8"))
-        node_id = data.get("node_id")
-        for i, s in enumerate(data.get("samples_reviewed") or []):
-            if not isinstance(s, dict) or not isinstance(s.get("seed"), int):
-                continue
-            try:
-                current = _render_sample(node_id, s["seed"])
-            except Exception:  # noqa: BLE001 -- an unrenderable seed is §5's finding, not ours
-                continue
-            if _normalize(s.get("question_text")) == _normalize(current.get("question_text")):
-                out.append((path, data, i, s, current))
-    return out
 
 
-def _plant_stale_review() -> Dict[Path, str]:
-    """
-    Rewrite one CURRENTLY-FRESH sample's recorded stem so the live render no longer
-    matches it -- the drift §5 exists to catch, carrying a token nothing else emits so
-    the finding is attributable to this plant and not to the 512 routine STALE findings
-    the re-review queue is sitting on.
-    """
-    import json
-
-    fresh = _fresh_samples()
-    if not fresh:
-        raise ValueError(
-            "mutation 'stale_review_undetected': no review on disk cites a seed that still "
-            "renders what was recorded, so there is no fresh sample to make stale. Either "
-            "the whole corpus is already stale (fix that first -- a plant cannot be told "
-            "apart from the backlog) or the packet builder is broken."
-        )
-    path, data, i, sample, _ = fresh[0]
-    text = path.read_text(encoding="utf-8")
-    data["samples_reviewed"][i]["question_text"] = (
-        f"{_STALE_WITNESS} {sample['question_text']}"
-    )
-    path.write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
-    return {path: text}
 
 
-_STALE_ANSWER_NODE = "mat_g1_dp_q3_2"
 
 # A capability id no node's `requires` names. `draw_lines` held exactly this shape on
 # disk until 2026-09-10 -- a live registration orphaned by a rename -- so re-adding it
@@ -315,7 +241,6 @@ _IGNORE_LOCK_NODE = "mat_g1_na_q1_2"
 # The visual type whose React component the frontend-contract plant adds a read to.
 # GridArea renders on real student-path seeds across several nodes, so a newly required
 # key is actually reached by §9's sampling rather than sitting in an unrendered branch.
-_FRONTEND_PLANT_TYPE = "GridArea"
 _FRONTEND_PLANT_KEY = "planted_contract_key"
 
 # The three §6F fixtures below are PINNED to named nodes, not scanned for, and each
@@ -323,7 +248,6 @@ _FRONTEND_PLANT_KEY = "planted_contract_key"
 # findings), so a scanned plant would land on a record that is already reported and the
 # run would score INVALID on the baseline guard -- see Scaling Mandate 5. Every marker
 # is a "<node> && <message>" conjunction for the same reason.
-_ATTEST_ANSWER_NODE = "mat_g1_na_q1_4"          # clean record, no options either side
 # Was mat_g2_na_q2_8 until 2026-09-10. The §5b alphabetic-pattern work shifted that
 # node's rng stream, so its record went STALE ON THE STEM and §6F's stem branch fired
 # before the option comparison could be reached -- the plant stopped reaching the code
@@ -331,333 +255,35 @@ _ATTEST_ANSWER_NODE = "mat_g1_na_q1_4"          # clean record, no options eithe
 # was fine (Scaling Mandate 2, second cause). `_require_fresh_sample` below now turns
 # that into a loud, named failure instead of a silent survival. Repointed to a data
 # node, whose content no current content work touches.
-_ATTEST_OPTION_DRIFT_NODE = "mat_g1_dp_q3_0"    # live render offers options
-_ATTEST_CHOICE_LOST_NODE = "mat_g2_na_q1_4"     # clean record, live render offers none
 _ATTEST_UNADJUDICABLE_NODE = "mat_g2_na_q3_8"   # clean record, true_false on every seed
 
 
-def _plant_stale_answer_same_key() -> Dict[Path, str]:
-    """
-    Move the correct value onto a distractor THAT WAS ALREADY OFFERED, keeping the stem,
-    the option multiset and the A-D key all byte-identical.
-
-    This is the one drift shape no other §5 gate can see: the stem check passes, the
-    option-multiset check passes, and until 2026-09-10 the answer check compared the raw
-    `correct_answer` field -- an A-D key on the 59 read_mcq nodes -- so it passed too.
-    Measured that day, 2 real drifts of the neighbouring shape (same key, different
-    value) were going unreported on this tree.
-
-    Implemented by permuting the RECORDED option values, which is exactly equivalent to
-    the correct flag moving and keeps the multiset provably identical.
-    """
-    import json
-
-    from backend.app.practice_gen.validation.validate_judgment import _resolved_answer
-
-    for path, data, i, sample, current in _fresh_samples():
-        if data.get("node_id") != _STALE_ANSWER_NODE:
-            continue
-        _, keyed = _resolved_answer(sample)
-        cur_val, cur_keyed = _resolved_answer(current)
-        if not (keyed and cur_keyed):
-            continue
-        opts = sample.get("options")
-        # Find a distractor whose value differs from the keyed one, and swap the two
-        # values. The key stays put; the multiset stays put; the keyed VALUE changes.
-        key = str(sample.get("correct_answer"))
-        correct_idx = next(j for j, o in enumerate(opts) if str(o.get("key")) == key)
-        other_idx = next(
-            (j for j, o in enumerate(opts)
-             if j != correct_idx and str(o.get("value")) != str(opts[correct_idx]["value"])),
-            None,
-        )
-        if other_idx is None:
-            continue
-        text = path.read_text(encoding="utf-8")
-        tgt = data["samples_reviewed"][i]["options"]
-        tgt[correct_idx]["value"], tgt[other_idx]["value"] = (
-            tgt[other_idx]["value"], tgt[correct_idx]["value"],
-        )
-        # `is_correct` follows the key, not the value, so it must not move with it.
-        path.write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
-        return {path: text}
-
-    raise ValueError(
-        f"mutation 'stale_answer_same_key': {_STALE_ANSWER_NODE} does not resolve its "
-        "answer through its own option table on both sides, so the key-valued drift "
-        "shape cannot be planted. Repoint the mutation; do not weaken the check."
-    )
 
 
-def _plant_incomplete_review() -> Dict[Path, str]:
-    """
-    Strip a review of one required finding and of its distinct-seed quorum -- two
-    independent branches of the schema gate, planted together so a single run says
-    whether both still fire.
-    """
-    import json
-
-    from backend.app.practice_gen.validation.validate_judgment import REQUIRED_FINDINGS
-
-    for path in sorted((REPO_ROOT / "validation_reports" / "judgment").rglob("*.json")):
-        text = path.read_text(encoding="utf-8")
-        data = json.loads(text)
-        findings = data.get("findings")
-        if not isinstance(findings, dict) or not REQUIRED_FINDINGS <= set(findings):
-            continue
-        if not isinstance(data.get("sample_seeds"), list) or len(data["sample_seeds"]) < 2:
-            continue
-        del data["findings"]["cognitive_capacity"]
-        data["sample_seeds"] = data["sample_seeds"][:1]
-        path.write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
-        return {path: text}
-
-    raise ValueError(
-        "mutation 'review_schema_incomplete': no review on disk carries all six findings "
-        "and a seed list to strip. The corpus is already failing the schema gate, so a "
-        "plant cannot be told apart from it."
-    )
 
 
-_PHANTOM_QUOTE = "the pupils weigh the sampan in kilopascals"
 
 
-def _plant_fabricated_quote() -> Dict[Path, str]:
-    """
-    Put a quoted span in a rationale that appears nowhere in that review's own packet or
-    competency text -- the fabrication mechanism that produced 115 of the 151 reviews
-    §5's provenance gate was written for.
-    """
-    import json
-
-    for path in sorted((REPO_ROOT / "validation_reports" / "judgment").rglob("*.json")):
-        text = path.read_text(encoding="utf-8")
-        data = json.loads(text)
-        f = (data.get("findings") or {}).get("competency_fulfillment")
-        if not isinstance(f, dict) or not str(f.get("rationale", "")).strip():
-            continue
-        f["rationale"] = (
-            f"{f['rationale']} A representative item reads '{_PHANTOM_QUOTE}'."
-        )
-        path.write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
-        return {path: text}
-
-    raise FileNotFoundError(
-        "mutation 'fabricated_quote': no review carries a competency_fulfillment "
-        "rationale to append to."
-    )
 
 
-def _plant_verbatim_rationale() -> Dict[Path, str]:
-    """
-    Copy one node's rationale byte-for-byte onto another node's same finding.
-
-    The source is chosen for carrying NO quoted span, so the copy trips the
-    verbatim-reuse gate alone: a rationale quoting its own node's content would also
-    trip quote provenance on the destination, and a mutation that fires two gates
-    cannot say which one it proved.
-    """
-    import json
-
-    from backend.app.practice_gen.validation.validate_judgment import _QUOTE_RE
-
-    paths = sorted((REPO_ROOT / "validation_reports" / "judgment").rglob("*.json"))
-    donor = None
-    for path in paths:
-        data = json.loads(path.read_text(encoding="utf-8"))
-        r = str(((data.get("findings") or {}).get("scale_appropriateness") or {})
-                .get("rationale", "")).strip()
-        if len(r) >= 40 and not _QUOTE_RE.findall(r):
-            donor = (data.get("node_id"), r)
-            break
-    if donor is None:
-        raise ValueError(
-            "mutation 'verbatim_rationale_reuse': no scale_appropriateness rationale is "
-            "long enough and quote-free to copy without also tripping quote provenance."
-        )
-    donor_node, rationale = donor
-    for path in paths:
-        text = path.read_text(encoding="utf-8")
-        data = json.loads(text)
-        if data.get("node_id") == donor_node:
-            continue
-        f = (data.get("findings") or {}).get("scale_appropriateness")
-        if not isinstance(f, dict):
-            continue
-        f["rationale"] = rationale
-        path.write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
-        return {path: text}
-
-    raise ValueError("mutation 'verbatim_rationale_reuse': found no second review to copy into.")
 
 
-_PLANTED_REVIEWER = "planted-single-reviewer"
 
 
-def _plant_single_reviewer_identity() -> Dict[Path, str]:
-    """
-    Stamp one `reviewed_by` identity across more nodes than a blind batch may hold.
-
-    §5's twin of `single_attester_identity`. The threshold is READ rather than assumed,
-    so tightening `_MAX_NODES_PER_REVIEWER` cannot silently invalidate this plant.
-    """
-    import json
-
-    from backend.app.practice_gen.validation.validate_judgment import _MAX_NODES_PER_REVIEWER
-
-    n = _MAX_NODES_PER_REVIEWER + 1
-    targets = sorted((REPO_ROOT / "validation_reports" / "judgment").rglob("*.json"))[:n]
-    if len(targets) < n:
-        raise FileNotFoundError(
-            f"mutation 'single_reviewer_identity': needs {n} reviews to exceed a "
-            f"{_MAX_NODES_PER_REVIEWER}-node batch, found {len(targets)}."
-        )
-    originals: Dict[Path, str] = {}
-    for path in targets:
-        text = path.read_text(encoding="utf-8")
-        originals[path] = text
-        data = json.loads(text)
-        data["reviewed_by"] = _PLANTED_REVIEWER
-        path.write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
-    return originals
 
 
-_OPTIONS_DROPPED_NODE = "mat_g1_dp_q3_2"
 
 
-def _plant_review_drops_options() -> Dict[Path, str]:
-    """
-    Delete the recorded `options` from a sample whose live render still offers some.
-
-    Until 2026-09-10 this was a SILENT SKIP: `_validate_freshness` guarded its option
-    comparison with `is not None` on both sides, so "no options recorded" and "not a
-    choice item" were the same thing to it. 505 of 2026 recorded samples were in that
-    state, and on read_mcq it also left the answer unresolvable -- a quarter of the
-    corpus with two of the three freshness comparisons switched off and nothing said so.
-    """
-    import json
-
-    for path, data, i, sample, current in _fresh_samples():
-        if data.get("node_id") != _OPTIONS_DROPPED_NODE:
-            continue
-        if "options" not in sample or "options" not in current:
-            continue
-        text = path.read_text(encoding="utf-8")
-        del data["samples_reviewed"][i]["options"]
-        path.write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
-        return {path: text}
-
-    raise ValueError(
-        f"mutation 'mcq_reviewed_without_options': {_OPTIONS_DROPPED_NODE} has no fresh sample "
-        "recording options that the live render also offers, so the silent-skip shape cannot be planted."
-    )
 
 
 # ---------------------------------------------------------------------------------
 # §6 Phase 2 plants (2026-09-10).
 # ---------------------------------------------------------------------------------
 
-_PHANTOM_SEED = 999999
 
 
-def _plant_attester_without_evidence() -> Dict[Path, str]:
-    """
-    Break all three evidence branches of §6G on three separate LIVE verdicts: one with
-    its reasoning removed, one PROVIDED with no seed named, and one citing a seed absent
-    from its own packet.
-
-    Only live verdicts count -- a superseded record is exempt from §6G by design, so
-    planting in one would prove nothing. `_winning_verdict_index`'s last-file-wins rule
-    is replayed here rather than restated, the same way `_plant_template_attestation`
-    does it.
-    """
-    import json
-
-    d = REPO_ROOT / "validation_reports" / "attestation"
-    records = sorted(d.glob("*.json"))
-    owner: Dict[tuple, Path] = {}
-    for path in records:
-        for v in json.loads(path.read_text(encoding="utf-8")).get("verdicts", []):
-            owner[(v.get("node_id"), v.get("capability_id"))] = path
-
-    for path in records:
-        text = path.read_text(encoding="utf-8")
-        data = json.loads(text)
-        packet_seeds = {s.get("seed") for s in (data.get("packet") or {}).get("samples_judged") or []}
-        if _PHANTOM_SEED in packet_seeds:
-            continue
-        live = [v for v in data.get("verdicts", [])
-                if owner.get((v.get("node_id"), v.get("capability_id"))) == path
-                and v.get("verdict") == "PROVIDED"]
-        if len(live) < 3:
-            continue
-        live[0]["reasoning"] = ""
-        live[1]["seeds_showing_it"] = []
-        live[2]["seeds_showing_it"] = [_PHANTOM_SEED]
-        path.write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
-        return {path: text}
-
-    raise ValueError(
-        "mutation 'attester_without_evidence': no record owns three live PROVIDED "
-        "verdicts, so §6G's three evidence branches cannot be planted in one record. "
-        "Repoint the mutation rather than relaxing the check."
-    )
 
 
-def _plant_withdrawn_attestation() -> Dict[Path, str]:
-    """
-    Delete one (node, capability) verdict from EVERY record that carries it.
-
-    §6F's UNATTESTED branch reports zero on this tree, and "everything is attested" and
-    "the check cannot see a gap" are different facts that a passing run cannot tell
-    apart. This plant is what distinguishes them.
-
-    Every record, not just the winning one: `_load_attestations` resolves duplicates by
-    last-file-wins, so removing the verdict from the newest record alone would let an
-    older one win and the capability would still read as attested -- the plant would land
-    where behaviour does not change, which is how `unproducible_variant_declared`
-    survived twice while proving nothing.
-    """
-    import json
-
-    d = REPO_ROOT / "validation_reports" / "attestation"
-    records = sorted(d.glob("*.json"))
-    counts: Dict[tuple, int] = {}
-    for path in records:
-        for v in json.loads(path.read_text(encoding="utf-8")).get("verdicts", []):
-            counts[(v.get("node_id"), v.get("capability_id"))] = \
-                counts.get((v.get("node_id"), v.get("capability_id")), 0) + 1
-
-    from backend.app.practice_gen.validation.validate_capability import _declared_nodes
-
-    declared = set()
-    rows, _ = _declared_nodes(None)
-    for node_id, _competency, requires, _ignore in rows:
-        for req in requires:
-            declared.add((node_id, str(req.get("id", ""))))
-
-    target = next((pair for pair in sorted(counts) if pair in declared), None)
-    if target is None:
-        raise ValueError(
-            "mutation 'withdrawn_attestation': no attested (node, capability) pair is "
-            "also DECLARED by a node's `requires`, so deleting one could not make §6F "
-            "report UNATTESTED. The declaration source moved; repoint the mutation."
-        )
-
-    originals: Dict[Path, str] = {}
-    for path in records:
-        text = path.read_text(encoding="utf-8")
-        data = json.loads(text)
-        kept = [v for v in data.get("verdicts", [])
-                if (v.get("node_id"), v.get("capability_id")) != target]
-        if len(kept) == len(data.get("verdicts", [])):
-            continue
-        originals[path] = text
-        data["verdicts"] = kept
-        path.write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
-    if not originals:
-        raise ValueError("mutation 'withdrawn_attestation': target verdict vanished mid-plant.")
-    return originals
 
 
 
@@ -873,12 +499,22 @@ MUTATIONS: List[Mutation] = [
             "then change generators freely, and run_all keeps exiting 0 on evidence about "
             "content that no longer exists."
         ),
-        edits={},
-        apply_fn=lambda: _drift_attested_content(),
-        command=["backend.app.practice_gen.validation.validate_capability"],
+        # MIGRATED 2026-09-12 off the live corpus. This plant used to edit a real
+        # agent-authored review file, which bound its proof to bytes Phase 1 may not
+        # read and the fingerprint does not cover, and made it unprovable on a fresh
+        # clone. It now plants into an isolated corpus built from live renders; the
+        # driver runs a CLEAN build first, so every run carries its own positive
+        # control. See tests/isolated_corpus.py.
+        edits={
+            "tests/isolated_corpus.py": (
+                'PLANT: Optional[str] = None\n',
+                "PLANT: Optional[str] = 'attestation_stale'\n",
+            )
+        },
+        command=["tests.isolated_corpus", "--gate", "attestation"],
         expected_check="§6F freshness (attestation is about content that still exists)",
-        expect_output_contains=["STALE && planted drift"],
-        baseline_must_not_contain=["planted drift"],
+        expect_output_contains=["isolated_plant_attestation", 'is STALE (§6F) at seed'],
+        baseline_must_not_contain=["isolated_plant_attestation", "FAIL isolated_control_attestation"],
     ),
     Mutation(
         name="attestation_answer_drift",
@@ -889,12 +525,22 @@ MUTATIONS: List[Mutation] = [
             "a capability verdict outlived the answer changing under it -- the drift "
             "shape §5 has expired reviews for since `stale_answer_same_key`."
         ),
-        edits={},
-        apply_fn=lambda: _plant_attestation_answer_drift(),
-        command=["backend.app.practice_gen.validation.validate_capability"],
+        # MIGRATED 2026-09-12 off the live corpus. This plant used to edit a real
+        # agent-authored review file, which bound its proof to bytes Phase 1 may not
+        # read and the fingerprint does not cover, and made it unprovable on a fresh
+        # clone. It now plants into an isolated corpus built from live renders; the
+        # driver runs a CLEAN build first, so every run carries its own positive
+        # control. See tests/isolated_corpus.py.
+        edits={
+            "tests/isolated_corpus.py": (
+                'PLANT: Optional[str] = None\n',
+                "PLANT: Optional[str] = 'attestation_answer_drift'\n",
+            )
+        },
+        command=["tests.isolated_corpus", "--gate", "attestation"],
         expected_check="§6F freshness (the keyed value, not just the stem)",
-        expect_output_contains=[f"{_ATTEST_ANSWER_NODE} && no longer keys the same answer"],
-        baseline_must_not_contain=[f"{_ATTEST_ANSWER_NODE} && no longer keys the same answer"],
+        expect_output_contains=["isolated_plant_attestation", 'no longer keys the same answer'],
+        baseline_must_not_contain=["isolated_plant_attestation", "FAIL isolated_control_attestation"],
     ),
     Mutation(
         name="attestation_option_drift",
@@ -906,18 +552,22 @@ MUTATIONS: List[Mutation] = [
             "Attester is shown the option list under every sample, so its verdict rests "
             "on options §6F did not compare at all before 2026-09-10."
         ),
-        edits={},
-        apply_fn=lambda: _plant_attestation_option_drift(),
-        command=["backend.app.practice_gen.validation.validate_capability"],
+        # MIGRATED 2026-09-12 off the live corpus. This plant used to edit a real
+        # agent-authored review file, which bound its proof to bytes Phase 1 may not
+        # read and the fingerprint does not cover, and made it unprovable on a fresh
+        # clone. It now plants into an isolated corpus built from live renders; the
+        # driver runs a CLEAN build first, so every run carries its own positive
+        # control. See tests/isolated_corpus.py.
+        edits={
+            "tests/isolated_corpus.py": (
+                'PLANT: Optional[str] = None\n',
+                "PLANT: Optional[str] = 'attestation_option_drift'\n",
+            )
+        },
+        command=["tests.isolated_corpus", "--gate", "attestation"],
         expected_check="§6F freshness (the offered options, as §5 compares them)",
-        expect_output_contains=[
-            f"{_ATTEST_OPTION_DRIFT_NODE} && no longer offered the same options",
-            f"{_ATTEST_CHOICE_LOST_NODE} && stopped being a selection task",
-        ],
-        baseline_must_not_contain=[
-            f"{_ATTEST_OPTION_DRIFT_NODE} && no longer offered the same options",
-            f"{_ATTEST_CHOICE_LOST_NODE} && stopped being a selection task",
-        ],
+        expect_output_contains=["isolated_plant_attestation", 'no longer offered the same options'],
+        baseline_must_not_contain=["isolated_plant_attestation", "FAIL isolated_control_attestation"],
     ),
     Mutation(
         name="attestation_drops_options",
@@ -965,12 +615,22 @@ MUTATIONS: List[Mutation] = [
             "check this repo had, twice, because verbatim-reuse detection compares "
             "byte equality and a substituted node ID is not byte-identical."
         ),
-        edits={},
-        apply_fn=lambda: _plant_template_rationale(4),
-        command=["backend.app.practice_gen.validation.validate_judgment"],
+        # MIGRATED 2026-09-12 off the live corpus. This plant used to edit a real
+        # agent-authored review file, which bound its proof to bytes Phase 1 may not
+        # read and the fingerprint does not cover, and made it unprovable on a fresh
+        # clone. It now plants into an isolated corpus built from live renders; the
+        # driver runs a CLEAN build first, so every run carries its own positive
+        # control. See tests/isolated_corpus.py.
+        edits={
+            "tests/isolated_corpus.py": (
+                'PLANT: Optional[str] = None\n',
+                "PLANT: Optional[str] = 'template_skeleton'\n",
+            )
+        },
+        command=["tests.isolated_corpus", "--gate", "judgment"],
         expected_check="§5 (rationale-skeleton clustering)",
-        expect_output_contains=["template rationale", "share one findings"],
-        baseline_must_not_contain=["template rationale"],
+        expect_output_contains=["isolated_plant_judgment", 'template rationale:'],
+        baseline_must_not_contain=["isolated_plant_judgment", "FAIL isolated_control_judgment"],
     ),
     # ------------------------------------------------------------------------
     # §5's other five assertions (2026-09-10), plus the sixth added with them.
@@ -992,12 +652,22 @@ MUTATIONS: List[Mutation] = [
             "than become a checkbox, it produces 512 of §5's findings on this tree, and "
             "until now nothing had shown it firing."
         ),
-        edits={},
-        apply_fn=lambda: _plant_stale_review(),
-        command=["backend.app.practice_gen.validation.validate_judgment", "--all"],
+        # MIGRATED 2026-09-12 off the live corpus. This plant used to edit a real
+        # agent-authored review file, which bound its proof to bytes Phase 1 may not
+        # read and the fingerprint does not cover, and made it unprovable on a fresh
+        # clone. It now plants into an isolated corpus built from live renders; the
+        # driver runs a CLEAN build first, so every run carries its own positive
+        # control. See tests/isolated_corpus.py.
+        edits={
+            "tests/isolated_corpus.py": (
+                'PLANT: Optional[str] = None\n',
+                "PLANT: Optional[str] = 'stale_stem'\n",
+            )
+        },
+        command=["tests.isolated_corpus", "--gate", "judgment"],
         expected_check="§5 freshness (a review may not outlive the content it judged)",
-        expect_output_contains=[f"STALE review && {_STALE_WITNESS}"],
-        baseline_must_not_contain=[_STALE_WITNESS],
+        expect_output_contains=["isolated_plant_judgment", 'no longer renders the content that was judged'],
+        baseline_must_not_contain=["isolated_plant_judgment", "FAIL isolated_control_judgment"],
     ),
     Mutation(
         name="stale_answer_same_key",
@@ -1008,12 +678,22 @@ MUTATIONS: List[Mutation] = [
             "2026-09-10 the answer comparison read the raw `correct_answer` field, which "
             "is a KEY on the 59 read_mcq nodes, so this drift passed every §5 gate."
         ),
-        edits={},
-        apply_fn=lambda: _plant_stale_answer_same_key(),
-        command=["backend.app.practice_gen.validation.validate_judgment", "--all"],
+        # MIGRATED 2026-09-12 off the live corpus. This plant used to edit a real
+        # agent-authored review file, which bound its proof to bytes Phase 1 may not
+        # read and the fingerprint does not cover, and made it unprovable on a fresh
+        # clone. It now plants into an isolated corpus built from live renders; the
+        # driver runs a CLEAN build first, so every run carries its own positive
+        # control. See tests/isolated_corpus.py.
+        edits={
+            "tests/isolated_corpus.py": (
+                'PLANT: Optional[str] = None\n',
+                "PLANT: Optional[str] = 'stale_answer_same_key'\n",
+            )
+        },
+        command=["tests.isolated_corpus", "--gate", "judgment"],
         expected_check="§5 freshness (the keyed VALUE, not the slot it landed in)",
-        expect_output_contains=[f"{_STALE_ANSWER_NODE} && no longer keys the same answer"],
-        baseline_must_not_contain=[f"{_STALE_ANSWER_NODE} && no longer keys the same answer"],
+        expect_output_contains=["isolated_plant_judgment", 'no longer keys the same answer'],
+        baseline_must_not_contain=["isolated_plant_judgment", "FAIL isolated_control_judgment"],
     ),
     Mutation(
         name="review_schema_incomplete",
@@ -1023,18 +703,22 @@ MUTATIONS: List[Mutation] = [
             "distinct-seed quorum -- two independent branches of the schema gate, so one "
             "run says whether both still fire."
         ),
-        edits={},
-        apply_fn=lambda: _plant_incomplete_review(),
-        command=["backend.app.practice_gen.validation.validate_judgment", "--all"],
+        # MIGRATED 2026-09-12 off the live corpus. This plant used to edit a real
+        # agent-authored review file, which bound its proof to bytes Phase 1 may not
+        # read and the fingerprint does not cover, and made it unprovable on a fresh
+        # clone. It now plants into an isolated corpus built from live renders; the
+        # driver runs a CLEAN build first, so every run carries its own positive
+        # control. See tests/isolated_corpus.py.
+        edits={
+            "tests/isolated_corpus.py": (
+                'PLANT: Optional[str] = None\n',
+                "PLANT: Optional[str] = 'schema_incomplete'\n",
+            )
+        },
+        command=["tests.isolated_corpus", "--gate", "judgment"],
         expected_check="§5 schema (seeds, samples, six findings, verdicts)",
-        expect_output_contains=[
-            "findings missing required items && cognitive_capacity",
-            "'sample_seeds' must list >= 3 distinct seeds",
-        ],
-        baseline_must_not_contain=[
-            "findings missing required items",
-            "'sample_seeds' must list >= 3 distinct seeds",
-        ],
+        expect_output_contains=["isolated_plant_judgment", 'findings missing required items'],
+        baseline_must_not_contain=["isolated_plant_judgment", "FAIL isolated_control_judgment"],
     ),
     Mutation(
         name="fabricated_quote",
@@ -1044,12 +728,22 @@ MUTATIONS: List[Mutation] = [
             "packet or competency text -- the mechanism by which 115 of 151 fabricated "
             "reviews cited stems they were never shown."
         ),
-        edits={},
-        apply_fn=lambda: _plant_fabricated_quote(),
-        command=["backend.app.practice_gen.validation.validate_judgment", "--all"],
+        # MIGRATED 2026-09-12 off the live corpus. This plant used to edit a real
+        # agent-authored review file, which bound its proof to bytes Phase 1 may not
+        # read and the fingerprint does not cover, and made it unprovable on a fresh
+        # clone. It now plants into an isolated corpus built from live renders; the
+        # driver runs a CLEAN build first, so every run carries its own positive
+        # control. See tests/isolated_corpus.py.
+        edits={
+            "tests/isolated_corpus.py": (
+                'PLANT: Optional[str] = None\n',
+                "PLANT: Optional[str] = 'fabricated_quote'\n",
+            )
+        },
+        command=["tests.isolated_corpus", "--gate", "judgment"],
         expected_check="§5 quote provenance (a rationale may only cite what it was shown)",
-        expect_output_contains=[f"quotes && {_PHANTOM_QUOTE}"],
-        baseline_must_not_contain=[_PHANTOM_QUOTE],
+        expect_output_contains=["isolated_plant_judgment", "appears nowhere in this review's own samples_reviewed"],
+        baseline_must_not_contain=["isolated_plant_judgment", "FAIL isolated_control_judgment"],
     ),
     Mutation(
         name="verbatim_rationale_reuse",
@@ -1059,12 +753,22 @@ MUTATIONS: List[Mutation] = [
             "The donor is chosen quote-free so the copy trips verbatim reuse ALONE -- a "
             "mutation that fires two gates cannot say which one it proved."
         ),
-        edits={},
-        apply_fn=lambda: _plant_verbatim_rationale(),
-        command=["backend.app.practice_gen.validation.validate_judgment", "--all"],
+        # MIGRATED 2026-09-12 off the live corpus. This plant used to edit a real
+        # agent-authored review file, which bound its proof to bytes Phase 1 may not
+        # read and the fingerprint does not cover, and made it unprovable on a fresh
+        # clone. It now plants into an isolated corpus built from live renders; the
+        # driver runs a CLEAN build first, so every run carries its own positive
+        # control. See tests/isolated_corpus.py.
+        edits={
+            "tests/isolated_corpus.py": (
+                'PLANT: Optional[str] = None\n',
+                "PLANT: Optional[str] = 'verbatim_rationale'\n",
+            )
+        },
+        command=["tests.isolated_corpus", "--gate", "judgment"],
         expected_check="§5 verbatim rationale reuse across nodes",
-        expect_output_contains=["copied verbatim from"],
-        baseline_must_not_contain=["copied verbatim from"],
+        expect_output_contains=["isolated_plant_judgment", 'is copied verbatim from'],
+        baseline_must_not_contain=["isolated_plant_judgment", "FAIL isolated_control_judgment"],
     ),
     Mutation(
         name="single_reviewer_identity",
@@ -1074,12 +778,22 @@ MUTATIONS: List[Mutation] = [
             "hold. §6H's twin has been proven since 2026-08-28; §5's original was not, "
             "so the older of the two plurality gates was the unproven one."
         ),
-        edits={},
-        apply_fn=lambda: _plant_single_reviewer_identity(),
-        command=["backend.app.practice_gen.validation.validate_judgment", "--all"],
+        # MIGRATED 2026-09-12 off the live corpus. This plant used to edit a real
+        # agent-authored review file, which bound its proof to bytes Phase 1 may not
+        # read and the fingerprint does not cover, and made it unprovable on a fresh
+        # clone. It now plants into an isolated corpus built from live renders; the
+        # driver runs a CLEAN build first, so every run carries its own positive
+        # control. See tests/isolated_corpus.py.
+        edits={
+            "tests/isolated_corpus.py": (
+                'PLANT: Optional[str] = None\n',
+                "PLANT: Optional[str] = 'single_reviewer'\n",
+            )
+        },
+        command=["tests.isolated_corpus", "--gate", "judgment"],
         expected_check="§5 reviewer plurality (one identity may not span the tree)",
-        expect_output_contains=[f"reviewer plurality && {_PLANTED_REVIEWER}"],
-        baseline_must_not_contain=["reviewer plurality"],
+        expect_output_contains=["isolated_plant_judgment", 'reviewer plurality:'],
+        baseline_must_not_contain=["isolated_plant_judgment", "FAIL isolated_control_judgment"],
     ),
     Mutation(
         name="mcq_reviewed_without_options",
@@ -1090,12 +804,22 @@ MUTATIONS: List[Mutation] = [
             "samples were in that state, with the option comparison switched off and, on "
             "read_mcq, the answer unresolvable, and nothing said so."
         ),
-        edits={},
-        apply_fn=lambda: _plant_review_drops_options(),
-        command=["backend.app.practice_gen.validation.validate_judgment", "--all"],
+        # MIGRATED 2026-09-12 off the live corpus. This plant used to edit a real
+        # agent-authored review file, which bound its proof to bytes Phase 1 may not
+        # read and the fingerprint does not cover, and made it unprovable on a fresh
+        # clone. It now plants into an isolated corpus built from live renders; the
+        # driver runs a CLEAN build first, so every run carries its own positive
+        # control. See tests/isolated_corpus.py.
+        edits={
+            "tests/isolated_corpus.py": (
+                'PLANT: Optional[str] = None\n',
+                "PLANT: Optional[str] = 'options_dropped'\n",
+            )
+        },
+        command=["tests.isolated_corpus", "--gate", "judgment"],
         expected_check="§5 option adjudicability (a choice item must carry its choices)",
-        expect_output_contains=[f"{_OPTIONS_DROPPED_NODE} && records no 'options', but the live render"],
-        baseline_must_not_contain=[f"{_OPTIONS_DROPPED_NODE} && records no 'options', but the live render"],
+        expect_output_contains=["isolated_plant_judgment", "records no 'options'"],
+        baseline_must_not_contain=["isolated_plant_judgment", "FAIL isolated_control_judgment"],
     ),
     # ------------------------------------------------------------------------
     # The §6 phase seam (2026-09-08). §6A-§6E need no agent-authored artifact and
@@ -1163,12 +887,22 @@ MUTATIONS: List[Mutation] = [
             "This is the §5 fabrication aimed at a surface four times larger (787 "
             "verdicts against 151 reviews), dispatched in unattended batches nobody reads."
         ),
-        edits={},
-        apply_fn=lambda: _plant_template_attestation(4),
-        command=["backend.app.practice_gen.validation.validate_capability"],
+        # MIGRATED 2026-09-12 off the live corpus. This plant used to edit a real
+        # agent-authored review file, which bound its proof to bytes Phase 1 may not
+        # read and the fingerprint does not cover, and made it unprovable on a fresh
+        # clone. It now plants into an isolated corpus built from live renders; the
+        # driver runs a CLEAN build first, so every run carries its own positive
+        # control. See tests/isolated_corpus.py.
+        edits={
+            "tests/isolated_corpus.py": (
+                'PLANT: Optional[str] = None\n',
+                "PLANT: Optional[str] = 'attester_template'\n",
+            )
+        },
+        command=["tests.isolated_corpus", "--gate", "attestation"],
         expected_check="§6G (attester reasoning-skeleton clustering)",
-        expect_output_contains=["attester boilerplate (§6G) && share one normalized"],
-        baseline_must_not_contain=["attester boilerplate (§6G)"],
+        expect_output_contains=["isolated_plant_attestation", 'attester boilerplate (§6G)'],
+        baseline_must_not_contain=["isolated_plant_attestation", "FAIL isolated_control_attestation"],
     ),
     # ---------------------------------------------------------------------------
     # 2026-08-26: the four checks below were registered and binding but had no
@@ -1611,8 +1345,95 @@ MUTATIONS: List[Mutation] = [
         },
         command=["backend.app.practice_gen.validation.validate_coverage"],
         expected_check="§8 (every assertion is proven by a mutation or on a shrinking allowlist)",
-        expect_output_contains=["FAIL assertion_coverage", "worker_crash"],
-        baseline_must_not_contain=["FAIL assertion_coverage"],
+        # The marker names the planted LABEL, and the baseline guard does too. It used to
+        # be the bare rollup line "FAIL assertion_coverage", which stopped discriminating
+        # the moment §8 could be red for any other reason -- and since 2026-09-12 it can
+        # be: §8 now counts EXECUTED proofs, so during the very run that produces them it
+        # reports every not-yet-proven label. That made this mutation score INVALID
+        # against a baseline it had itself caused. The specific conjunction survives a red
+        # baseline, which is what a mutation's guard has to do.
+        expect_output_contains=["worker_crash' can fail but no mutation proves it"],
+        baseline_must_not_contain=["worker_crash' can fail but no mutation proves it"],
+    ),
+    Mutation(
+        name="source_edited_without_reproof",
+        asserts=["mutation_proof_integrity_8"],
+        description=(
+            "Edit pipeline source and re-run §8 WITHOUT re-running the mutation table. Every "
+            "proof record on disk was taken against different bytes, so none of them "
+            "describes what now runs, and §8 must say so rather than inheriting the last "
+            "run's green. This is the direction that makes execution-proof worth having: a "
+            "proof that cannot go stale is a checkbox with a digest on it."
+        ),
+        edits={
+            # A comment in a DNA base class: a real edit to a real input, chosen because it
+            # changes no behaviour at all. The point is precisely that §8 must object to an
+            # unproved edit WITHOUT needing to know whether it mattered.
+            "backend/app/practice_gen/dna/base.py": (
+                "from __future__ import annotations\n",
+                "from __future__ import annotations\n# planted mutation: an unproved source edit\n",
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_coverage"],
+        expected_check="§8 (an executed-mutation proof record that no longer describes the tree)",
+        expect_output_contains=[
+            "FAIL mutation_proof_integrity_8",
+            "different source/fixture tree",
+        ],
+        baseline_must_not_contain=["different source/fixture tree"],
+    ),
+    # ---------------------------------------------------------------------------
+    # §1J / §1K -- the two bounded lints on what a pupil READS, added 2026-09-12 while
+    # both counts were zero (Scaling Mandate 5). Each plant reverts a real composition
+    # site to the shape that was live before the fix, so the mutation is the defect the
+    # gate was built on rather than an invented one.
+    # ---------------------------------------------------------------------------
+    Mutation(
+        name="count_noun_disagrees",
+        asserts=["count_noun_agreement_1J"],
+        description=(
+            "Interpolate a count and a plural noun with a bare f-string, the way "
+            "'jump back 1 units' reached pupils. §1J must catch a stem whose noun "
+            "disagrees with its own count -- including inside a quoted statement, which "
+            "is where 'Taking away 1 cookies' was hiding."
+        ),
+        edits={
+            "backend/app/practice_gen/dna/na/subtraction.py": (
+                'f"Starting at {a_val} on the number line, jump back {b_val} {count_noun(b_val, \'units\')}. What number do you land on?",',
+                'f"Starting at {a_val} on the number line, jump back {b_val} units. What number do you land on?",',
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_language",
+                 "--node-ids", "mat_g2_na_q2_3"],
+        expected_check="§1J (an explicit count and its noun agree in the rendered text)",
+        expect_output_contains=["mat_g2_na_q2_3 && 1 units"],
+        baseline_must_not_contain=["count_noun_agreement_1J ("],
+    ),
+    Mutation(
+        name="second_option_answers_too",
+        asserts=["option_degeneracy_1K"],
+        description=(
+            "Make a distractor carry the keyed answer's exact value, so two of the four "
+            "options are right and a pupil who picks the wrong right one is marked wrong. "
+            "§1K must catch it by VALUE rather than by string equality."
+        ),
+        edits={
+            # Plants in the PIPELINE, not in the check: an off-by-one in the pool slice
+            # that lets the correct answer into the distractor list. The first plant tried
+            # here -- emptying fmt_mcq's `seen` dedup set -- SURVIVED, because no
+            # distractor pool on this tree happens to contain the key as a string, so the
+            # plant never reached the code §1K runs on (Mandate 2, second cause). Recorded
+            # rather than quietly replaced.
+            "backend/app/practice_gen/formatters/textual/fmt_mcq.py": (
+                "    distractors = candidates[:3]\n",
+                "    distractors = [correct] + candidates[:2]\n",
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_options",
+                 "--node-ids", "mat_g1_na_q4_2"],
+        expected_check="§1K (exactly one option may answer the question)",
+        expect_output_contains=["option_degeneracy_1K", "carry the keyed answer's exact value"],
+        baseline_must_not_contain=["option_degeneracy_1K ("],
     ),
     # ---------------------------------------------------------------------------
     # The MCQ answer-key family: five assertions guarding the options a pupil actually
@@ -1804,12 +1625,22 @@ MUTATIONS: List[Mutation] = [
             "one record covering the table, but nothing stopped one agent filing every "
             "batch: the author-verifying-itself structure the blind role exists to break."
         ),
-        edits={},
-        apply_fn=lambda: _plant_single_attester_identity(),
-        command=["backend.app.practice_gen.validation.validate_capability"],
+        # MIGRATED 2026-09-12 off the live corpus. This plant used to edit a real
+        # agent-authored review file, which bound its proof to bytes Phase 1 may not
+        # read and the fingerprint does not cover, and made it unprovable on a fresh
+        # clone. It now plants into an isolated corpus built from live renders; the
+        # driver runs a CLEAN build first, so every run carries its own positive
+        # control. See tests/isolated_corpus.py.
+        edits={
+            "tests/isolated_corpus.py": (
+                'PLANT: Optional[str] = None\n',
+                "PLANT: Optional[str] = 'single_attester'\n",
+            )
+        },
+        command=["tests.isolated_corpus", "--gate", "attestation"],
         expected_check="§6H (an Attester identity may not cover more than one dispatch)",
-        expect_output_contains=["attester plurality", "planted-single-attester"],
-        baseline_must_not_contain=["attester plurality"],
+        expect_output_contains=["isolated_plant_attestation", 'attester plurality:'],
+        baseline_must_not_contain=["isolated_plant_attestation", "FAIL isolated_control_attestation"],
     ),
     Mutation(
         name="attester_without_evidence",
@@ -1821,20 +1652,22 @@ MUTATIONS: List[Mutation] = [
             "the skeleton-cluster path only, so the branch that asks a verdict to LOCATE "
             "what it saw was unproven on a 787-verdict surface."
         ),
-        edits={},
-        apply_fn=lambda: _plant_attester_without_evidence(),
-        command=["backend.app.practice_gen.validation.validate_capability", "--phase", "2"],
+        # MIGRATED 2026-09-12 off the live corpus. This plant used to edit a real
+        # agent-authored review file, which bound its proof to bytes Phase 1 may not
+        # read and the fingerprint does not cover, and made it unprovable on a fresh
+        # clone. It now plants into an isolated corpus built from live renders; the
+        # driver runs a CLEAN build first, so every run carries its own positive
+        # control. See tests/isolated_corpus.py.
+        edits={
+            "tests/isolated_corpus.py": (
+                'PLANT: Optional[str] = None\n',
+                "PLANT: Optional[str] = 'attester_no_evidence'\n",
+            )
+        },
+        command=["tests.isolated_corpus", "--gate", "attestation"],
         expected_check="§6G (a verdict must show its work and name the seeds that show it)",
-        expect_output_contains=[
-            "carries no reasoning (§6G)",
-            "names no seed in 'seeds_showing_it'",
-            f"cites seed {_PHANTOM_SEED}",
-        ],
-        baseline_must_not_contain=[
-            "carries no reasoning (§6G)",
-            "names no seed in 'seeds_showing_it'",
-            f"cites seed {_PHANTOM_SEED}",
-        ],
+        expect_output_contains=["isolated_plant_attestation", "names no seed in 'seeds_showing_it'"],
+        baseline_must_not_contain=["isolated_plant_attestation", "FAIL isolated_control_attestation"],
     ),
     Mutation(
         name="withdrawn_attestation",
@@ -1847,12 +1680,22 @@ MUTATIONS: List[Mutation] = [
             "older record win and the capability would still read as attested -- the plant "
             "would land where behaviour does not change."
         ),
-        edits={},
-        apply_fn=lambda: _plant_withdrawn_attestation(),
-        command=["backend.app.practice_gen.validation.validate_capability", "--phase", "2"],
+        # MIGRATED 2026-09-12 off the live corpus. This plant used to edit a real
+        # agent-authored review file, which bound its proof to bytes Phase 1 may not
+        # read and the fingerprint does not cover, and made it unprovable on a fresh
+        # clone. It now plants into an isolated corpus built from live renders; the
+        # driver runs a CLEAN build first, so every run carries its own positive
+        # control. See tests/isolated_corpus.py.
+        edits={
+            "tests/isolated_corpus.py": (
+                'PLANT: Optional[str] = None\n',
+                "PLANT: Optional[str] = 'withdrawn_attestation'\n",
+            )
+        },
+        command=["tests.isolated_corpus", "--gate", "attestation"],
         expected_check="§6F UNATTESTED (a declared capability nobody blind has judged)",
-        expect_output_contains=["is UNATTESTED"],
-        baseline_must_not_contain=["is UNATTESTED"],
+        expect_output_contains=["isolated_plant_attestation", 'is UNATTESTED (§6F)'],
+        baseline_must_not_contain=["isolated_plant_attestation", "FAIL isolated_control_attestation"],
     ),
     Mutation(
         name="subtraction_pool_uncapped",
@@ -2422,12 +2265,6 @@ MUTATIONS: List[Mutation] = [
 # prose differs per node, so an anchor would have to hardcode four rationales and
 # would go stale the moment any node is re-reviewed. It edits the JSON structurally
 # instead, and returns the same {path: original_text} map so `_restore` is unchanged.
-_TEMPLATE_RATIONALE = (
-    "The items for {node_id} were reviewed against the competency and found to "
-    "address it directly. The number ranges observed are appropriate for the grade "
-    "and quarter, the vocabulary stays within what has been introduced, and the "
-    "answer keys are correct throughout. No issues were identified for {node_id}."
-)
 
 
 
@@ -2475,30 +2312,6 @@ def _plant_inverted_bound() -> Dict[Path, str]:
     return {path: original}
 
 
-def _plant_single_attester_identity() -> Dict[Path, str]:
-    """
-    Stamp one identity across every attestation record, as a single pass over the table
-    would. Written to the records rather than the validator because §6H's subject IS the
-    corpus: the defect it guards is one agent filing everything.
-    """
-    import json
-
-    d = REPO_ROOT / "validation_reports" / "attestation"
-    records = sorted(d.glob("*.json"))
-    if not records:
-        raise ValueError(
-            "mutation 'single_attester_identity': no attestation records to stamp. "
-            "File at least one Attester verdict before claiming §6H works."
-        )
-    originals: Dict[Path, str] = {}
-    for path in records:
-        text = path.read_text(encoding="utf-8")
-        data = json.loads(text)
-        originals[path] = text
-        data["attested_by"] = "planted-single-attester"
-        data["attested_at"] = "2026-08-29T00:00:00+0800"   # after the cutoff
-        path.write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
-    return originals
 
 def _plant_wildcard_provider(capability: str) -> Dict[Path, str]:
     """
@@ -2526,57 +2339,8 @@ def _plant_wildcard_provider(capability: str) -> Dict[Path, str]:
     return {path: text}
 
 
-def _drift_attested_content() -> Dict[Path, str]:
-    """Change the rendered text an attestation records, as a generator change would."""
-    import json
-    from backend.app.practice_gen.validation import validate_capability as VC
-
-    d = REPO_ROOT / "validation_reports" / "attestation"
-    records = sorted(d.glob("*.json"))
-    if not records:
-        raise FileNotFoundError(
-            "mutation 'stale_attestation': no attestation records to drift. File at "
-            "least one Attester verdict before claiming the freshness pass works."
-        )
-    all_records = [json.loads(p.read_text(encoding="utf-8")) for p in records]
-    winner = VC._winning_verdict_index(all_records)
-    target = None
-    target_data = None
-    for idx, path in enumerate(records):
-        rec = all_records[idx]
-        verdict_pairs = [(v.get("node_id"), v.get("capability_id")) for v in rec.get("verdicts", [])]
-        if verdict_pairs and any(winner.get(pair) == idx for pair in verdict_pairs):
-            packet = rec.get("packet") or {}
-            node_id = packet.get("node_id")
-            judged = packet.get("samples_judged")
-            if node_id and judged:
-                target = path
-                target_data = rec
-                break
-    if target is None:
-        raise ValueError(
-            "mutation 'stale_attestation': could not find an active winning attestation record to drift."
-        )
-    original_text = target.read_text(encoding="utf-8")
-    target_data["packet"]["samples_judged"][0]["question_text"] = "planted drift: a stem the pipeline never rendered"
-    target.write_text(json.dumps(target_data, indent=2, ensure_ascii=False), encoding="utf-8")
-    return {target: original_text}
 
 
-def _attestation_record_for(node_id: str, mutation: str):
-    """The live record whose packet is for `node_id`, plus its parsed data."""
-    import json
-
-    d = REPO_ROOT / "validation_reports" / "attestation"
-    for path in sorted(d.glob("*.json")):
-        data = json.loads(path.read_text(encoding="utf-8"))
-        if (data.get("packet") or {}).get("node_id") == node_id:
-            return path, data
-    raise ValueError(
-        f"mutation {mutation!r}: no attestation record on disk carries a packet for "
-        f"{node_id}. The fixture moved; repoint the mutation rather than scanning for "
-        f"any record, which would land on the red part of the queue and score INVALID."
-    )
 
 
 def _require_fresh_sample(node_id: str, sample: Dict, mutation: str) -> Dict:
@@ -2611,103 +2375,8 @@ def _require_fresh_sample(node_id: str, sample: Dict, mutation: str) -> Dict:
     return current
 
 
-def _plant_attestation_answer_drift() -> Dict[Path, str]:
-    """
-    Move the answer an attestation was filed against, leaving its stem byte-identical.
-
-    Until 2026-09-10 §6F compared the STEM ONLY, so a verdict about what an item asks
-    and answers survived the answer changing under it -- the shape §5 has expired
-    reviews for since `stale_answer_same_key` was written.
-    """
-    import json
-
-    from backend.app.practice_gen.validation.judgment_packets import _render_sample
-
-    path, data = _attestation_record_for(_ATTEST_ANSWER_NODE, "attestation_answer_drift")
-    sample = data["packet"]["samples_judged"][0]
-    current = _require_fresh_sample(_ATTEST_ANSWER_NODE, sample, "attestation_answer_drift")
-    if current.get("options") is not None:
-        raise ValueError(
-            f"mutation 'attestation_answer_drift': {_ATTEST_ANSWER_NODE} seed "
-            f"{sample['seed']} now renders options, so §6F reports it unadjudicable "
-            f"before ever comparing the answer. Repoint the fixture; do not reorder "
-            f"the check."
-        )
-    text = path.read_text(encoding="utf-8")
-    sample["correct_answer"] = "planted answer drift: an answer the pipeline never keyed"
-    path.write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
-    return {path: text}
 
 
-def _plant_attestation_option_drift() -> Dict[Path, str]:
-    """
-    Two branches of §6F's option comparison, planted together so one run says whether
-    both fire: an item whose offered options MOVED, and an item that stopped being a
-    choice item at all. The Attester is shown the option list under every sample by
-    `render_prompt_block`, so a verdict rests on it.
-    """
-    import json
-
-    from backend.app.practice_gen.validation.judgment_packets import _render_sample
-
-    originals: Dict[Path, str] = {}
-
-    drift_path, drift_data = _attestation_record_for(
-        _ATTEST_OPTION_DRIFT_NODE, "attestation_option_drift")
-    sample = drift_data["packet"]["samples_judged"][0]
-    current = _require_fresh_sample(
-        _ATTEST_OPTION_DRIFT_NODE, sample, "attestation_option_drift")
-    # The answer comparison runs BEFORE the option comparison, so a fixture whose answer
-    # has also moved would be reported for that instead. Pin it explicitly.
-    if str(sample.get("correct_answer")) != str(current.get("correct_answer")):
-        raise ValueError(
-            f"mutation 'attestation_option_drift': {_ATTEST_OPTION_DRIFT_NODE} seed "
-            f"{sample['seed']} no longer keys the same answer "
-            f"({sample.get('correct_answer')!r} -> {current.get('correct_answer')!r}), so "
-            f"§6F reports the answer drift before reaching the option comparison. "
-            f"Repoint the fixture."
-        )
-    live = current.get("options")
-    if not isinstance(live, list) or not live:
-        raise ValueError(
-            f"mutation 'attestation_option_drift': {_ATTEST_OPTION_DRIFT_NODE} seed "
-            f"{sample['seed']} no longer renders an option table, so option drift "
-            f"cannot be planted there. Repoint the fixture."
-        )
-    # Copy the LIVE table and move one DISTRACTOR only. The keyed value is untouched,
-    # so the answer comparison (which runs first) passes and the multiset comparison
-    # is what has to catch this.
-    planted = [dict(o) for o in live]
-    victim = next((o for o in planted if not o.get("is_correct")), None)
-    if victim is None:
-        raise ValueError(
-            f"mutation 'attestation_option_drift': {_ATTEST_OPTION_DRIFT_NODE} seed "
-            f"{sample['seed']} offers no distractor to move without moving the key."
-        )
-    victim["value"] = "planted option drift"
-    victim["text"] = "planted option drift"
-    originals[drift_path] = drift_path.read_text(encoding="utf-8")
-    sample["options"] = planted
-    drift_path.write_text(json.dumps(drift_data, indent=2, ensure_ascii=False), encoding="utf-8")
-
-    lost_path, lost_data = _attestation_record_for(
-        _ATTEST_CHOICE_LOST_NODE, "attestation_option_drift")
-    lost_sample = lost_data["packet"]["samples_judged"][0]
-    lost_current = _require_fresh_sample(
-        _ATTEST_CHOICE_LOST_NODE, lost_sample, "attestation_option_drift")
-    if lost_current.get("options") is not None:
-        raise ValueError(
-            f"mutation 'attestation_option_drift': {_ATTEST_CHOICE_LOST_NODE} seed "
-            f"{lost_sample['seed']} now renders options, so it cannot demonstrate an "
-            f"item that STOPPED being a choice item. Repoint the fixture."
-        )
-    originals[lost_path] = lost_path.read_text(encoding="utf-8")
-    lost_sample["options"] = [
-        {"key": "A", "value": "planted choice item", "is_correct": True},
-        {"key": "B", "value": "planted distractor", "is_correct": False},
-    ]
-    lost_path.write_text(json.dumps(lost_data, indent=2, ensure_ascii=False), encoding="utf-8")
-    return originals
 
 
 def _plant_contradicted_entry(capability: str) -> Dict[Path, str]:
@@ -2834,47 +2503,6 @@ def _plant_orphan_provider() -> Dict[Path, str]:
     return {path: text}
 
 
-def _plant_template_rationale(n_nodes: int) -> Dict[Path, str]:
-    """
-    Overwrite `findings.competency_fulfillment.rationale` on `n_nodes` reviews with
-    one shared template, node ID substituted in.
-
-    n_nodes must exceed validate_judgment._MAX_SKELETON_CLUSTER, or the planted
-    template is *within* the tolerance the check deliberately allows for sibling
-    nodes and its survival would say nothing. Read the threshold rather than
-    assuming it, so tightening the check cannot silently invalidate this mutation.
-    """
-    import json
-
-    from backend.app.practice_gen.validation.validate_judgment import _MAX_SKELETON_CLUSTER
-
-    if n_nodes <= _MAX_SKELETON_CLUSTER:
-        raise ValueError(
-            f"mutation 'template_review': planting {n_nodes} templated rationales cannot "
-            f"trip a check that tolerates {_MAX_SKELETON_CLUSTER}. Plant more than the "
-            f"threshold -- never lower the threshold to suit the mutation."
-        )
-
-    review_dir = REPO_ROOT / "validation_reports" / "judgment"
-    targets = sorted(review_dir.rglob("*.json"))[:n_nodes]
-    if len(targets) < n_nodes:
-        raise FileNotFoundError(
-            f"mutation 'template_review': needed {n_nodes} review files under "
-            f"'{review_dir}', found {len(targets)}. The mutation harness is stale "
-            f"relative to the tree."
-        )
-
-    originals: Dict[Path, str] = {}
-    for path in targets:
-        text = path.read_text(encoding="utf-8")
-        originals[path] = text
-        data = json.loads(text)
-        node_id = data.get("node_id", path.stem)
-        data["findings"]["competency_fulfillment"]["rationale"] = (
-            _TEMPLATE_RATIONALE.format(node_id=node_id)
-        )
-        path.write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
-    return originals
 
 
 def _apply(mutation: Mutation) -> Dict[Path, str]:
@@ -3041,45 +2669,112 @@ def _marker_present(marker: str, output: str) -> bool:
     return any(all(p in line for p in parts) for line in output.splitlines())
 
 
+def _now() -> str:
+    return datetime.now(timezone.utc).astimezone().isoformat(timespec="seconds")
+
+
 def run_mutation(mutation: Mutation) -> Tuple[bool, str]:
     """
     Apply, run, restore. Returns (detected, evidence-line).
 
-    Detection means the validator exited non-zero *and*, where the mutation
-    declares them, its output carried the expected markers — an unrelated crash
-    is not proof the assertion works.
+    Kept as the two-value entry point callers already use; `run_mutation_recorded`
+    carries the full result. Detection means the validator exited non-zero *and*, where
+    the mutation declares them, its output carried the expected markers — an unrelated
+    crash is not proof the assertion works.
     """
+    result = run_mutation_recorded(mutation)
+    return result["detected"], result["diagnostic_line"]
+
+
+def run_mutation_recorded(mutation: Mutation) -> Dict[str, Any]:
+    """
+    Apply, run, restore — and record everything a proof record needs to be checkable.
+
+    The returned dict is the proof record MINUS the digests the caller adds after
+    restoration (`input_digest`), because a digest taken while a bug is planted describes
+    a tree that only existed for the length of the run.
+
+    `restored_clean` is observed, not assumed: every planted file is read back and
+    compared against the text this runner saved before planting. A `finally` that ran is
+    not evidence that a write succeeded, and the one thing a harness that edits real
+    source may never do is leave one behind quietly.
+    """
+    record: Dict[str, Any] = {
+        "schema_version": mutation_proof.SCHEMA_VERSION,
+        "mutation": mutation.name,
+        "definition_digest": mutation_proof.definition_digest(mutation),
+        "asserts": sorted(mutation.asserts or ()),
+        "command": list(mutation.command),
+        "expected_check": mutation.expected_check,
+        "expect_output_contains": list(mutation.expect_output_contains or ()),
+        "baseline_must_not_contain": list(mutation.baseline_must_not_contain or ()),
+        "baseline_exit": None,
+        "baseline_markers_already_present": [],
+        "planted_exit": None,
+        "observed_markers": {},
+        "diagnostic_line": "",
+        "detected": False,
+        "mutated_paths": [],
+        "restored_clean": False,
+        "environment": mutation_proof.environment_fingerprint(),
+        "started_at": _now(),
+        "finished_at": None,
+    }
+
     # A validator that is already failing will "detect" anything. Prove the marker
     # is absent before planting, or the mutation proves nothing about the check.
     if mutation.baseline_must_not_contain:
-        _, before = _run(mutation)
+        base_code, before = _run(mutation)
+        record["baseline_exit"] = base_code
         already = [m for m in mutation.baseline_must_not_contain
                    if _marker_present(m, before)]
+        record["baseline_markers_already_present"] = already
         if already:
-            return False, (
+            record["diagnostic_line"] = (
                 f"INVALID — the unmutated tree already reports {already}; this mutation "
                 f"cannot distinguish the planted bug from the pre-existing failure."
             )
+            record["restored_clean"] = True   # nothing was planted
+            record["finished_at"] = _now()
+            return record
 
     originals: Dict[Path, str] = {}
     try:
         originals = _apply(mutation)
         _IN_FLIGHT.update(originals)
         _write_marker()
+        record["mutated_paths"] = sorted(mutation_proof._rel(p) for p in originals)
         code, output = _run(mutation)
+        record["planted_exit"] = code
     finally:
         if originals:
             _restore(originals)
+            record["restored_clean"] = all(
+                path.exists() and path.read_text(encoding="utf-8") == text
+                for path, text in originals.items()
+            )
+        else:
+            record["restored_clean"] = True
+
+    record["observed_markers"] = {
+        m: _marker_present(m, output) for m in mutation.expect_output_contains
+    }
+    record["finished_at"] = _now()
 
     if code == 0:
-        return False, "SURVIVED — validator exited 0 with the bug planted."
+        record["diagnostic_line"] = "SURVIVED — validator exited 0 with the bug planted."
+        return record
 
-    missing = [m for m in mutation.expect_output_contains if not _marker_present(m, output)]
+    missing = [m for m, seen in record["observed_markers"].items() if not seen]
     if missing:
-        return False, f"exited {code} but output lacked expected marker(s): {missing}"
+        record["diagnostic_line"] = (
+            f"exited {code} but output lacked expected marker(s): {missing}"
+        )
+        return record
 
-    line = _first_failure_line(output)
-    return True, f"exit {code} — {line}"
+    record["detected"] = True
+    record["diagnostic_line"] = f"exit {code} — {_first_failure_line(output)}"
+    return record
 
 
 def _first_failure_line(output: str) -> str:
@@ -3129,14 +2824,44 @@ def main() -> int:
     _matrix_report = REPO_ROOT / "validation_reports" / "matrix_report.json"
     _matrix_backup = _matrix_report.read_bytes() if _matrix_report.exists() else None
 
+    # The digest of the tree the proofs describe, taken on a CLEAN tree before anything
+    # is planted. Re-taken after every mutation: a run that cannot restore the bytes it
+    # started from has no business publishing evidence about them.
+    clean_digest = mutation_proof.input_digest()
+    print(f"\ninput digest (clean tree): {clean_digest[:16]}  "
+          f"proofs -> {mutation_proof.PROOF_DIR.relative_to(REPO_ROOT)}/")
+
     results: List[Tuple[Mutation, bool, str]] = []
+    unpublished: List[str] = []
     try:
         for i, m in enumerate(selected, 1):
             print(f"\n[{i}/{len(selected)}] {m.name}: {m.description}")
             print(f"    expected catcher: {m.expected_check}")
-            detected, evidence = run_mutation(m)
+            record = run_mutation_recorded(m)
+            detected, evidence = record["detected"], record["diagnostic_line"]
             results.append((m, detected, evidence))
             print(f"    {'DETECTED' if detected else 'SURVIVED'}: {evidence}")
+
+            # Publish only after restoration, and only once the tree is byte-identical to
+            # the one the digest describes. Anything else and the proof would bind a
+            # result to source that is not what ran.
+            after = mutation_proof.input_digest()
+            if after != clean_digest:
+                unpublished.append(m.name)
+                print(f"    !! PROOF NOT PUBLISHED: the input tree changed during this "
+                      f"mutation ({clean_digest[:12]} -> {after[:12]}). The tree was not "
+                      f"restored to the bytes the run started from, or another process "
+                      f"edited it. Nothing in validation_reports/mutation_proofs/ was "
+                      f"written for {m.name}.", file=sys.stderr)
+                continue
+            outside = mutation_proof.paths_outside_input_set(record["mutated_paths"])
+            record["input_digest"] = clean_digest
+            record["paths_outside_input_set"] = outside
+            record["phase1_admissible"] = not outside
+            path = mutation_proof.write_proof(record)
+            if outside:
+                print(f"    proof filed (NOT Phase-1 admissible: edits {outside}) "
+                      f"-> {path.relative_to(REPO_ROOT)}")
     finally:
         if _matrix_backup is None:
             _matrix_report.unlink(missing_ok=True)
@@ -3150,6 +2875,11 @@ def main() -> int:
         print(f"  {'PASS' if detected else 'FAIL'}  {m.name:24s} {m.expected_check}")
     caught = sum(1 for _, d, _ in results if d)
     print(f"\n{caught}/{len(results)} mutations detected.")
+    if unpublished:
+        print(f"\n!! {len(unpublished)} proof(s) NOT published because the tree moved "
+              f"under them: {unpublished}. §8 will report the affected assertions as "
+              f"unproven until those mutations are re-run on a quiet tree.")
+        return 1
     if caught != len(results):
         print("A surviving mutation is a hole in the harness, not a harmless gap:")
         for m, detected, _ in results:

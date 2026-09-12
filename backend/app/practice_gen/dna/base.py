@@ -194,45 +194,15 @@ class Spine:
         - If {objects} is used after a number, it becomes singular when the number is 1
         - E.g., "1 basketballs" -> "1 basketball", "1 water bottles" -> "1 water bottle"
         - "There are 1" -> "There is 1", "1 more steps" -> "1 more step"
+
+        The inflection rule itself lives at module level as `to_singular_phrase` so the
+        §1J agreement lint can apply the SAME rule to the final rendered text instead of
+        carrying a second copy of it. A harness that re-derives a generator rule is a
+        harness that eventually disagrees with the generator about what the rule is.
         """
         import re
 
-        def _to_singular_phrase(phrase: str) -> str:
-            if not phrase:
-                return phrase
-            words = phrase.split()
-            if len(words) >= 3 and words[1] == "of":
-                target_idx = 0
-            else:
-                target_idx = -1
-            word = words[target_idx]
-            irregulars = {
-                "loaves": "loaf",
-                "paintbrushes": "paintbrush",
-                "canvases": "canvas",
-                "matches": "match",
-                "boxes": "box",
-                "cherries": "cherry",
-                "glasses": "glass",
-                "steps": "step",
-                "feet": "foot",
-                "leaves": "leaf",
-                "cookies": "cookie",
-                "brownies": "brownie",
-                "smoothies": "smoothie",
-            }
-            if word in irregulars:
-                sing = irregulars[word]
-            elif word.endswith(("shes", "ches", "xes", "zes", "sses")):
-                sing = word[:-2]
-            elif word.endswith("ies") and len(word) > 3 and word[-4] not in "aeiou":
-                sing = word[:-3] + "y"
-            elif word.endswith("s") and not word.endswith("ss"):
-                sing = word[:-1]
-            else:
-                sing = word
-            words[target_idx] = sing
-            return " ".join(words)
+        _to_singular_phrase = to_singular_phrase
 
         slots_clean = dict(slots)
         if slots_clean.get("objects") in ("baskets", "basket") and "basket" in self.template:
@@ -300,6 +270,93 @@ class VocabGated:
 # DNA
 # Core specification of a mathematical concept.
 # ═══════════════════════════════════════════════════════════════════════════════
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Shared inflection. ONE copy, used by `DNA.render` when it fills a template and by
+# `validate_language` (§1J) when it lints the final rendered student text.
+#
+# Why it is shared rather than restated: `DNA.render` singularises "1 <plural>" as it
+# builds a stem, but a formatter that composes its own text -- an error-detect item
+# quoting a worked solution, a number-line stem naming a jump -- never passes through
+# that path, and three such stems were reaching pupils ("jump back 1 units", "move back
+# 1 steps", "Taking away 1 cookies"). The lint must ask the generator's own rule what the
+# right form is; a second implementation would drift and then argue.
+# ─────────────────────────────────────────────────────────────────────────────
+
+_SINGULAR_IRREGULARS = {
+    "loaves": "loaf",
+    "paintbrushes": "paintbrush",
+    "canvases": "canvas",
+    "matches": "match",
+    "boxes": "box",
+    "cherries": "cherry",
+    "glasses": "glass",
+    "steps": "step",
+    "feet": "foot",
+    "leaves": "leaf",
+    "cookies": "cookie",
+    "brownies": "brownie",
+    "smoothies": "smoothie",
+}
+
+
+def count_noun(count: Any, plural: str) -> str:
+    """
+    The count noun to write after `count`. Singular when the count is exactly 1.
+
+    The one call every stem-composing site makes, so that agreement is decided by the
+    same rule `Spine.render` uses on templated text. A site that interpolates a count and
+    a noun with an f-string and does NOT call this is what §1J
+    (`validate_language.count_noun_agreement_1J`) exists to catch -- "jump back 1 units"
+    reached pupils for exactly that reason.
+
+    A non-integer count (a blank placeholder, a fraction) leaves the plural alone: the
+    quantity is unknown or is not one, and "___ cookies" is the right thing to print.
+    """
+    return to_singular_phrase(plural) if count == 1 else plural
+
+
+# Endings that mark a word as ALREADY singular even though it ends in `s`. Without them
+# the bare "strip the final s" rule mangles the noun it is asked to leave alone: measured
+# 2026-09-12, `1 hibiscus` came back `1 hibiscu`, and `hibiscuses` came back `hibiscuse`.
+# Both were live -- the emoji item bank names a hibiscus -- and both would have been
+# produced by `Spine.render` on any templated stem carrying that noun.
+_ALREADY_SINGULAR_ENDINGS = ("us", "is", "ss", "ous")
+
+
+def to_singular_phrase(phrase: str) -> str:
+    """
+    The singular of a count-noun phrase. Returns `phrase` unchanged when already singular.
+
+    Operates on the head word: the last word normally, the first when the phrase has the
+    shape "<head> of <something>" ("boxes of crayons" -> "box of crayons").
+    """
+    if not phrase:
+        return phrase
+    words = phrase.split()
+    if len(words) >= 3 and words[1] == "of":
+        target_idx = 0
+    else:
+        target_idx = -1
+    word = words[target_idx]
+    if word in _SINGULAR_IRREGULARS:
+        sing = _SINGULAR_IRREGULARS[word]
+    elif word.endswith(("shes", "ches", "xes", "zes", "sses")):
+        sing = word[:-2]
+    elif word.endswith("ies") and len(word) > 3 and word[-4] not in "aeiou":
+        sing = word[:-3] + "y"
+    elif word.endswith(_ALREADY_SINGULAR_ENDINGS):
+        sing = word                      # hibiscus, axis, glass -- already singular
+    elif word.endswith("ses"):
+        sing = word[:-2]                 # hibiscuses -> hibiscus, buses -> bus
+    elif word.endswith("s"):
+        sing = word[:-1]
+    else:
+        sing = word
+    words[target_idx] = sing
+    return " ".join(words)
+
+
 
 @dataclass
 class DNA:

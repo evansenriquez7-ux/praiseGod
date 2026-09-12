@@ -27,7 +27,7 @@ answer_collection:
 import random
 from typing import List, Optional
 
-from backend.app.practice_gen.dna.base import FormattedProblem, QuestionContext
+from backend.app.practice_gen.dna.base import FormattedProblem, QuestionContext, count_noun
 from backend.app.practice_gen.formatters._option_order import shuffle_options
 
 
@@ -400,12 +400,15 @@ def format_array_grid(
         if shape_type == "rectangle" and rows and cols:
             if _mul_task_type == "equal_groups":
                 question_text = (
-                    f"Shade {rows} groups of {cols} squares to show {_repeated_sum(rows, cols)}. "
+                    f"Shade {rows} {count_noun(rows, 'groups')} of "
+                    f"{cols} {count_noun(cols, 'squares')} to show "
+                    f"{_repeated_sum(rows, cols)}. "
                     f"How many squares did you shade in all?"
                 )
             elif _mul_task_type == "repeated_addition":
                 question_text = (
-                    f"Shade {rows} rows of {cols} squares to show "
+                    f"Shade {rows} {count_noun(rows, 'rows')} of "
+                    f"{cols} {count_noun(cols, 'squares')} to show "
                     f"{_repeated_sum(rows, cols)}. "
                     f"How many squares did you shade in all?"
                 )
