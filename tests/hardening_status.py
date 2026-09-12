@@ -40,6 +40,21 @@ REQUIRED_FIELDS = (
 
 VALID_STATUS = ("open", "in_progress", "closed", "out_of_scope")
 
+# `owner` is a WORK-LOCK, not an accountability field. One person directs this repo, so
+# "who is responsible" is never in question and a column answering it would be constant.
+# The real hazard is two parallel worktree sessions both starting the same blocker, or a
+# fresh agent inheriting a half-built row with no sign anyone had been there. So the field
+# records WHO HOLDS THE ROW RIGHT NOW:
+#
+#   "unclaimed"            nobody is working it -- free to pick up
+#   "<anything else>"      a session identifier; that session is mid-flight on this row
+#   "released @ <rev>"     the holder finished and handed it back
+#
+# Claim before starting, release on commit. The two rules below are what make it load
+# bearing rather than decorative.
+UNCLAIMED = "unclaimed"
+_RELEASED_PREFIX = "released @ "
+
 # A row may only claim `closed` with both of these non-empty. `out_of_scope` needs a
 # closing_revision too -- the commit that recorded the decision -- but no proof artifacts,
 # because nothing was built.
@@ -91,6 +106,32 @@ def validate(doc: Dict[str, Any]) -> List[str]:
                 f"{where}: status is 'out_of_scope' but no closing_revision names the "
                 f"commit that recorded the decision."
             )
+
+        owner = row.get("owner")
+        if not isinstance(owner, str) or not owner.strip():
+            errors.append(
+                f"{where}: owner must be a non-empty string -- {UNCLAIMED!r}, a session "
+                f"identifier, or {_RELEASED_PREFIX!r} plus a revision."
+            )
+        else:
+            # A row nobody is holding cannot be in flight. This is the direction that
+            # catches an abandoned session: the row says in_progress, the lock says
+            # nobody has it, so the work stopped without anyone recording where.
+            if status == "in_progress" and owner == UNCLAIMED:
+                errors.append(
+                    f"{where}: status is 'in_progress' but owner is {UNCLAIMED!r}. Either a "
+                    f"session holds this row and should name itself, or the work stopped and "
+                    f"the status should say so."
+                )
+            # And a finished row must not still be locked, or the next session reads a
+            # closed blocker as someone else's live work and leaves it alone.
+            if status in ("closed", "out_of_scope") and owner != UNCLAIMED \
+                    and not owner.startswith(_RELEASED_PREFIX):
+                errors.append(
+                    f"{where}: status is {status!r} but owner is still {owner!r}. Release the "
+                    f"lock ({UNCLAIMED!r} or {_RELEASED_PREFIX!r}<revision>) so the row does "
+                    f"not read as someone's live work."
+                )
 
         # An open row with proof artifacts is not an error, but a closing_revision on one
         # is: it means the row was closed and reopened without clearing its provenance.

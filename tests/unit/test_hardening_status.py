@@ -116,3 +116,45 @@ def test_a_wrong_schema_version_is_caught():
 def test_rows_missing_entirely_is_caught():
     errors = hs.validate({"schema_version": hs.SCHEMA_VERSION})
     assert any("`rows` is missing" in e for e in errors), errors
+
+
+# ─── the work-lock directions ─────────────────────────────────────────────────
+# `owner` is a lock, not an accountability field (see hardening_status.UNCLAIMED).
+# These four are what make it load bearing: without them the column is decoration.
+
+
+def test_in_progress_may_not_be_unclaimed():
+    """The abandoned-session case: the row says in flight, the lock says nobody has it."""
+    errors = hs.validate(_doc(_row(status="in_progress", owner=hs.UNCLAIMED)))
+    assert any("in_progress" in e and hs.UNCLAIMED in e for e in errors), errors
+
+
+def test_a_closed_row_may_not_still_be_held():
+    """Otherwise the next session reads a finished blocker as someone's live work."""
+    row = _row(status="closed", owner="session-x",
+               proof_artifacts=["docs"], closing_revision="HEAD")
+    errors = hs.validate(_doc(row))
+    assert any("still" in e and "Release the lock" in e for e in errors), errors
+
+
+def test_an_empty_owner_is_caught():
+    errors = hs.validate(_doc(_row(owner="")))
+    assert any("non-empty string" in e for e in errors), errors
+
+
+def test_a_held_in_progress_row_and_a_released_closed_row_are_both_valid():
+    """The two shapes the lock is FOR must not be flagged."""
+    held = _row(id="H-98", status="in_progress", owner="session-x")
+    released = _row(id="H-97", status="closed", owner="released @ HEAD",
+                    proof_artifacts=["docs"], closing_revision="HEAD")
+    assert hs.validate(_doc(held, released)) == []
+
+
+def test_the_live_ledger_locks_are_consistent():
+    """Every row on disk obeys the lock rules, not just the schema."""
+    rows = hs.load()["rows"]
+    for r in rows:
+        if r["status"] == "in_progress":
+            assert r["owner"] != hs.UNCLAIMED, r["id"]
+        if r["status"] in ("closed", "out_of_scope"):
+            assert r["owner"] == hs.UNCLAIMED or r["owner"].startswith("released @ "), r["id"]

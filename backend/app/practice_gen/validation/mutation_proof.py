@@ -73,6 +73,29 @@ KNOWN LIMITATIONS (Scaling Mandate 6)
   a model of what each validator reads — the kind of second copy that drifts. Named, not
   fixed.
 * `environment` is recorded and not enforced (above).
+* **`source_edited_without_reproof` self-poisons, and the remedy is manual.** That mutation's
+  subject is this corpus, which gives it a trap no other mutation has. During a FULL table
+  re-run the corpus is legitimately mixed -- records already rewritten carry the new digest,
+  records not yet reached carry the old -- so §8's baseline is red with exactly the marker the
+  mutation expects, the runner correctly refuses to score it (Mandate 2: it cannot tell the
+  plant from the pre-existing failure), and it writes `detected: false`. That failure record
+  is ITSELF a §8 finding, so every later attempt is refused for the same reason. A bare
+  `--only` re-run does not break the loop.
+
+  Remedy, verified 2026-09-12:
+
+      rm validation_reports/mutation_proofs/source_edited_without_reproof.json
+      PYTHONPATH=. .venv/bin/python tests/mutation_harness.py --only source_edited_without_reproof
+
+  A MISSING record is reported under `assertion_coverage_8` ("claimed by mutation(s) that have
+  filed NO executed proof record"), a different assertion from the `mutation_proof_integrity_8`
+  marker this mutation expects -- so the baseline is clean and the plant scores. Deleting a
+  record that says `detected: false` removes evidence of a failed run, not evidence of
+  correctness.
+
+  THE REAL FIX, not done here: have the runner exclude a mutation's own prior record when
+  computing that mutation's baseline. That removes the trap instead of documenting it, and is
+  a change to `tests/mutation_harness.py` rather than to this module.
 * A proof states that the planted bug was detected by the named markers. It does not and
   cannot state that the check is CORRECT — only that it fires on this violation. Mandate
   2's second cause (a plant that no longer reaches the validated path) is caught by

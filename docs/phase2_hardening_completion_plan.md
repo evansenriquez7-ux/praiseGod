@@ -105,6 +105,16 @@ The active status ledger is
 per-tick narrative in `validation_reports/hardening_ledger.md`. Each H-row records
 `id`, `status`, `owner`, `affected_assertions`, `baseline_evidence`,
 `acceptance_checks`, `proof_artifacts`, `closing_revision`, and `updated_at`.
+
+`owner` is a **work-lock, not an accountability field** (decided 2026-09-12). One person
+directs this repo, so "who is responsible" is never in question and a column answering it
+would be constant. The hazard worth tracking is two parallel worktree sessions starting the
+same blocker, or a fresh agent inheriting a half-built row with no sign anyone was there. So
+it records who HOLDS the row: `unclaimed`, a session identifier, or `released @ <rev>`.
+**Claim a row before starting it; release it on commit.** `tests/hardening_status.py`
+enforces both directions — an `in_progress` row may not be `unclaimed`, and a closed row may
+not still be held. Each row also carries `measurement_status` (a finding measured on the
+current tree, or inherited from this plan and NOT yet confirmed) and `recommended_order`.
 The first integration step creates and schema-validates those nine rows. Finding counts can
 grow as stronger gates expose defects; a smaller count is not evidence of progress by itself.
 

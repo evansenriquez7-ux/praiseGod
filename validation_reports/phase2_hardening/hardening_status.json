@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-12T16:22:27+08:00",
+  "generated_at": "2026-09-12T17:15:41+08:00",
   "head_short": "015b7f35",
   "source_plan": "docs/phase2_hardening_completion_plan.md",
   "note": "Finding counts can GROW as stronger gates expose defects; a smaller count is not evidence of progress. Validate with `PYTHONPATH=. .venv/bin/python tests/hardening_status.py`.",
@@ -8,7 +8,7 @@
     {
       "id": "H-01",
       "status": "open",
-      "owner": "unassigned",
+      "owner": "unclaimed",
       "finding": "Phase 1 is not hermetic. validate_grade opens the configured database (SessionLocal), so §10's verdict depends on an external host resolving.",
       "affected_assertions": [
         "grading_contract_10",
@@ -23,12 +23,14 @@
       ],
       "proof_artifacts": [],
       "closing_revision": null,
-      "updated_at": "2026-09-12T16:22:27+08:00"
+      "updated_at": "2026-09-12T17:15:41+08:00",
+      "measurement_status": "measured 2026-09-12 on 647ee51e",
+      "recommended_order": 1
     },
     {
       "id": "H-02",
-      "status": "in_progress",
-      "owner": "unassigned",
+      "status": "open",
+      "owner": "unclaimed",
       "finding": "Assertions that can fail but have no executed mutation proving they do.",
       "affected_assertions": [
         "assertion_coverage_8",
@@ -45,21 +47,24 @@
         "validation_reports/phase2_hardening/assertion_migration.json"
       ],
       "closing_revision": null,
-      "updated_at": "2026-09-12T16:22:27+08:00",
-      "notes": "Partially closed at 94e95347: §8 now proves by EXECUTION rather than by declaration, and 79/79 proof records verify. The remaining 39 unproven assertions are the open part."
+      "updated_at": "2026-09-12T17:15:57+08:00",
+      "notes": "Partially paid down at 94e95347: §8 now proves by EXECUTION rather than by declaration, and 79/79 proof records verify. The remaining 39 allowlisted assertions are the open part. Status is 'open', not 'in_progress': no session is mid-flight on it, and progress-so-far belongs in notes rather than in a status that implies someone is working. This row shrinks as the other H-rows land, since each new gate pays down part of the 39.",
+      "measurement_status": "measured 2026-09-12 on 647ee51e",
+      "recommended_order": 6
     },
     {
       "id": "H-03",
       "status": "open",
-      "owner": "unassigned",
+      "owner": "unclaimed",
       "finding": "run_all can lose its final summary and two-direction evidence when a stage raises; several validators catch an import/generation error and continue, so attempted work can be reported as coverage.",
       "affected_assertions": [
         "two_direction_contract_match",
         "contract_doc_matches_registry",
         "operator_doc_covers_registry"
       ],
-      "baseline_evidence": "Not yet re-measured on 015b7f35. The stage registry described in step 0A does not exist; run_all still tracks stage results as local booleans.",
+      "baseline_evidence": "MEASURE THIS FIRST, before treating the finding as fact. The statement below was inherited from the plan and NOT confirmed on the current tree (647ee51e). Reproduce it, record the command and verbatim output here, and correct the finding if the measurement disagrees. An inherited finding is a claim, not evidence. ORIGINAL CLAIM: Not yet re-measured on 015b7f35. The stage registry described in step 0A does not exist; run_all still tracks stage results as local booleans.",
       "acceptance_checks": [
+        "Re-measure the finding on the current tree and record command + verbatim output",
         "Stage ledger records scheduled, attempted, completed, failed and crashed",
         "Exceptions become named failures; skipped obligations are failures",
         "The non-fail-fast run reaches every independent stage and exits nonzero once at the end",
@@ -67,12 +72,14 @@
       ],
       "proof_artifacts": [],
       "closing_revision": null,
-      "updated_at": "2026-09-12T16:22:27+08:00"
+      "updated_at": "2026-09-12T17:15:41+08:00",
+      "measurement_status": "unmeasured — inherited from the plan",
+      "recommended_order": 2
     },
     {
       "id": "H-04",
       "status": "open",
-      "owner": "unassigned",
+      "owner": "unclaimed",
       "finding": "Continuous axes are swept separately from discrete ones, and serving context, experience, interest, renderer and response mode are not one finite obligation model.",
       "affected_assertions": [
         "execution_matrix_1C",
@@ -88,12 +95,14 @@
       ],
       "proof_artifacts": [],
       "closing_revision": null,
-      "updated_at": "2026-09-12T16:22:27+08:00"
+      "updated_at": "2026-09-12T17:15:41+08:00",
+      "measurement_status": "measured 2026-09-12 on 647ee51e",
+      "recommended_order": 3
     },
     {
       "id": "H-05",
       "status": "open",
-      "owner": "unassigned",
+      "owner": "unclaimed",
       "finding": "Vocabulary, interest, DNA, compatibility, render and grade checks contain narrow representatives, first-DNA selection, low sample counts, G1-3 assumptions, tolerated floors, static approximations or silent import paths.",
       "affected_assertions": [
         "static_vocab_gated_lint",
@@ -114,12 +123,14 @@
       ],
       "proof_artifacts": [],
       "closing_revision": null,
-      "updated_at": "2026-09-12T16:22:27+08:00"
+      "updated_at": "2026-09-12T17:15:41+08:00",
+      "measurement_status": "measured 2026-09-12 on 647ee51e",
+      "recommended_order": 4
     },
     {
       "id": "H-06",
       "status": "open",
-      "owner": "unassigned",
+      "owner": "unclaimed",
       "finding": "Phase 2 evidence omits complete visuals and options, freshness does not bind every learner-visible field, and requirement evidence can be incomplete if clause extraction omitted curriculum text.",
       "affected_assertions": [
         "judgment_reviews",
@@ -137,20 +148,23 @@
         "validation_reports/phase2_hardening/requirement_inventory.json"
       ],
       "closing_revision": null,
-      "updated_at": "2026-09-12T16:22:27+08:00"
+      "updated_at": "2026-09-12T17:15:41+08:00",
+      "measurement_status": "measured 2026-09-12 on 647ee51e",
+      "recommended_order": 5
     },
     {
       "id": "H-07",
       "status": "open",
-      "owner": "unassigned",
+      "owner": "unclaimed",
       "finding": "The six facets do not yet force explicit judgments about contextual/logical validity, ambiguity, feedback/hints, misconception quality, interaction clarity or accessibility.",
       "affected_assertions": [
         "judgment_reviews",
         "single_reviewer_identity",
         "verbatim_rationale_reuse"
       ],
-      "baseline_evidence": "Not yet re-measured on 015b7f35. The merged evidence record of plan step 1 does not exist; reviews carry no per-sample contextual-validity verdict.",
+      "baseline_evidence": "MEASURE THIS FIRST, before treating the finding as fact. The statement below was inherited from the plan and NOT confirmed on the current tree (647ee51e). Reproduce it, record the command and verbatim output here, and correct the finding if the measurement disagrees. An inherited finding is a claim, not evidence. ORIGINAL CLAIM: Not yet re-measured on 015b7f35. The merged evidence record of plan step 1 does not exist; reviews carry no per-sample contextual-validity verdict.",
       "acceptance_checks": [
+        "Re-measure the finding on the current tree and record command + verbatim output",
         "Per-sample contextual-validity evidence inside the existing facets",
         "§1L bounded semantic-role/affordance checks, staged family by family at a clean baseline",
         "Calibrated blind reviewers who identify a planted contextually-impossible defect before their verdicts are admissible",
@@ -158,12 +172,14 @@
       ],
       "proof_artifacts": [],
       "closing_revision": null,
-      "updated_at": "2026-09-12T16:22:27+08:00"
+      "updated_at": "2026-09-12T17:15:41+08:00",
+      "measurement_status": "unmeasured — inherited from the plan",
+      "recommended_order": 7
     },
     {
       "id": "H-08",
       "status": "open",
-      "owner": "unassigned",
+      "owner": "unclaimed",
       "finding": "Nothing executes the React components. §9 checks that a payload carries the keys a component reads but never renders it, so a component that throws, ignores a conditional key or draws an empty box passes every gate.",
       "affected_assertions": [
         "render_contract_9",
@@ -179,13 +195,15 @@
       ],
       "proof_artifacts": [],
       "closing_revision": null,
-      "updated_at": "2026-09-12T16:22:27+08:00",
-      "notes": "Owner ruling 2026-09-12: NO browser gate. Closed in Phase 1 without Chromium, Puppeteer or a dev server. See plan step 5A."
+      "updated_at": "2026-09-12T17:15:41+08:00",
+      "notes": "Owner ruling 2026-09-12: NO browser gate. Closed in Phase 1 without Chromium, Puppeteer or a dev server. See plan step 5A.",
+      "measurement_status": "measured 2026-09-12 on 647ee51e",
+      "recommended_order": 8
     },
     {
       "id": "H-09",
       "status": "out_of_scope",
-      "owner": "unassigned",
+      "owner": "released @ d5c752d1",
       "finding": "Production deploys automatically from main, backend uses :latest, and neither workflow binds deployed artifacts to Phase 1, Phase 2, mutations, frontend results or review evidence.",
       "affected_assertions": [],
       "baseline_evidence": "Unchanged and unmeasured. .github/workflows/ still holds deploy-backend.yml and the two firebase-hosting workflows.",
@@ -195,8 +213,10 @@
       ],
       "proof_artifacts": [],
       "closing_revision": "d5c752d1",
-      "updated_at": "2026-09-12T16:22:27+08:00",
+      "updated_at": "2026-09-12T17:15:41+08:00",
       "notes": "Owner ruling 2026-09-12: release promotion, staging/production separation, canaries, telemetry, alerting and rollback are cut from the hardening plan. None gates content correctness. The regression-feedback rule that lived in that section was re-homed into plan step 6 rather than deleted with it."
     }
-  ]
+  ],
+  "sequencing_note": "recommended_order is a recommendation, not a constraint. H-01 first: it is the largest open blocker and the only finding that DEGRADED on re-measurement. H-03 second: a runner that can lose its own evidence makes every later measurement untrustworthy, so fixing it before the big builds means their results can be believed. H-04 third: the obligation manifest is the largest build and several other rows fold into it. H-02 sits late because it shrinks as the others land -- each new gate pays down part of the 39. H-09 is out of scope.",
+  "owner_semantics": "`owner` is a WORK-LOCK, not an accountability field: it records which session HOLDS the row right now. 'unclaimed' means free to pick up. Claim a row before starting it, release it on commit ('unclaimed' or 'released @ <rev>'). Enforced by tests/hardening_status.py: an in_progress row may not be unclaimed, and a closed row may not still be held."
 }
