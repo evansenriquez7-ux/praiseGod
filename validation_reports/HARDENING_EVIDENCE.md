@@ -10818,3 +10818,84 @@ is skipped by the dangling-reference scan. Each carries what would close it.
 4. **Only exception handlers.** Step 0 also names sample caps, floors, allowlists and
    "not judged" branches. Floors and the allowlist already have gates (§7's census,
    §8's shrink-only rule); caps and "not judged" branches do not, and are not claimed.
+
+---
+
+## Plan step 2 — the packet allocation, and where this session stopped (2026-09-12)
+
+Step 2: "**Fix the sample allocation before step 7 dispatches anything.** A review
+campaign run on today's allocation structurally cannot see cases the reviewer is being
+asked to judge." Every figure the plan recorded for this reproduces exactly on the current
+tree, which is worth noting given that step 0B's 4,325 did not.
+
+```text
+cap                       : 6          (plan: 6)
+candidate (variant,value) : 975        (plan: 975)
+nodes exceeding the cap   : 68         (plan: 68)
+pairs no packet can reach : 292        (plan: 292)
+grep -c interest judgment_packets.py : 0   (plan: 0)
+```
+
+### After
+
+```text
+nodes=151 total_samples=3514 mean=23.3 min=17 max=44
+by group: base 755, formatter 57, max_all_axes 453, variant 849,
+          interest 453, per_axis_max 192, floor_difficulty 302, experience 453
+variant candidates declared=975  landed as distinct samples=849
+reachable under the old cap=683 -> now 975   (+292, exactly as planned)
+recorded render failures across the tree: 0
+```
+
+Four dimensions, each with its own reserved seed range because `validate_judgment`'s
+freshness check re-renders from `(node_id, seed)` with no profile argument: interest
+(3 buckets — themed, contrasting, neutral, themes chosen by `zlib.crc32` of the node id
+rather than `hash()`, which is salted per process and would break replay), variant
+coverage (cap removed), per-axis maximum difficulty and a floor, and experience. Samples
+additionally carry a `requested` block, which is step 2's "make a sample's replay identity
+explicit … new records do not depend on seed arithmetic alone" — the reserved-range trick
+alone cannot satisfy that.
+
+**MEASURED, NOT GATED:** 126 of 975 declared pairs render text identical to a sample
+already in the packet — a declared variant the DNA never reads. Zero render failures, so
+none of the 126 is unproducible. §2I gates the unproducible direction; this no-op direction
+is reported and stays judgment work.
+
+**NAMED LIMIT:** the groups are MARGINAL, not CROSSED. A visual formatter at max
+difficulty with a pinned variant under a themed interest is still only sampled by chance.
+
+### Two corrections to my own work, both caught by §8
+
+1. I asserted `unit_tests` — the whole §0 stage gate — on two mutations that each drive
+   one test file. That made the allowlisted `unit_tests` entry read as proven and §8
+   reported it as a paid debt left on the register. An accurate complaint about an
+   inaccurate claim; they now assert their own declared labels.
+2. **The self-poisoning trap is a CLASS, not one mutation.** `allowlist_keeps_a_paid_debt`
+   fell into it too. The condition is mechanical: a mutation self-poisons when its own
+   expected marker appears in the text §8 prints when reporting THAT mutation's failed
+   record, because §8 quotes the runner's refusal reason and the refusal reason quotes the
+   marker. Both instances are named in `mutation_proof.py` now, with the remedy and the
+   warning that **both should be expected to need it after every full re-run**. The
+   durable fix (move the plant onto an isolated corpus under `tests/`, as
+   `tests/isolated_corpus.py` already did for the custody mutations) is named as owed work
+   and was NOT attempted.
+
+### VERIFICATION STATE AT HANDOFF — read this before trusting the tree
+
+* Fast unit suite: **616 passed, 1 skipped, 2 deselected**.
+* All four new/affected mutations: **DETECTED when run individually**.
+* **The FULL mutation table has NOT completed on this revision.** These edits invalidated
+  all 94 proofs and the re-run was stopped partway, so **§8 is RED and
+  `run_all --phase 1` exits 1** until the table is re-run. That is the staleness rule
+  working as designed, recorded here rather than left to be discovered.
+
+### Session totals (2026-09-12)
+
+| | Start | Handoff |
+|---|---|---|
+| Assertions proven BY EXECUTION | 68/107 | 80/117 (94 mutations registered, re-proof pending) |
+| Unproven allowlist | 39 | 37 |
+| Mutations | 79 | 94 |
+| Unit tests | 495 | 617 |
+| `H-` rows closed | 0 | 2 (`H-01`, `H-03`) |
+| §10 full-tree runtime | 14m23s, network-dependent | 33s, hermetic |

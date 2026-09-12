@@ -188,9 +188,10 @@
         "validation_reports/phase2_hardening/requirement_inventory.json"
       ],
       "closing_revision": null,
-      "updated_at": "2026-09-12T17:15:41+08:00",
+      "updated_at": "2026-09-12T23:11:26+08:00",
       "measurement_status": "measured 2026-09-12 on 647ee51e",
-      "recommended_order": 5
+      "recommended_order": 5,
+      "progress": "PARTIAL, a382ab06: plan step 2's sample-allocation half is done (the piece the plan says must land 'before step 7 dispatches anything'). Interest 0->3 buckets, variant pairs reachable 683->975, continuous difficulty 2->4 kinds, experience now varied; 3514 samples tree-wide. Samples carry an explicit `requested` replay-identity block. NOT done: the packet still carries NO VISUAL FIELDS -- _render_sample reduces every sample to seed/formatter/question_text/correct_answer/options/hint/cloze_text -- so 'judgment omits visual fields' and 'corrupt recorded visual fields produce no freshness error' are both still open. That half depends on H-08's static render, because step 2 requires the description be derived from the RENDERED OUTPUT, never from the payload."
     },
     {
       "id": "H-07",
@@ -258,5 +259,17 @@
     }
   ],
   "sequencing_note": "recommended_order is a recommendation, not a constraint. H-01 first: it is the largest open blocker and the only finding that DEGRADED on re-measurement. H-03 second: a runner that can lose its own evidence makes every later measurement untrustworthy, so fixing it before the big builds means their results can be believed. H-04 third: the obligation manifest is the largest build and several other rows fold into it. H-02 sits late because it shrinks as the others land -- each new gate pays down part of the 39. H-09 is out of scope.",
-  "owner_semantics": "`owner` is a WORK-LOCK, not an accountability field: it records which session HOLDS the row right now. 'unclaimed' means free to pick up. Claim a row before starting it, release it on commit ('unclaimed' or 'released @ <rev>'). Enforced by tests/hardening_status.py: an in_progress row may not be unclaimed, and a closed row may not still be held."
+  "owner_semantics": "`owner` is a WORK-LOCK, not an accountability field: it records which session HOLDS the row right now. 'unclaimed' means free to pick up. Claim a row before starting it, release it on commit ('unclaimed' or 'released @ <rev>'). Enforced by tests/hardening_status.py: an in_progress row may not be unclaimed, and a closed row may not still be held.",
+  "handoff": {
+    "written_at": "2026-09-12T23:11:26+08:00",
+    "head": "a382ab06",
+    "BLOCKING_FIRST_ACTION": "The mutation corpus is STALE on this revision and §8 is RED. Run `PYTHONPATH=. .venv/bin/python tests/mutation_harness.py` (~25 min, 94 mutations). Expect EXACTLY TWO survivors, both the documented self-poisoning class: source_edited_without_reproof and allowlist_keeps_a_paid_debt. For each, delete its .json under validation_reports/mutation_proofs/ and re-run it with --only. Then `DATABASE_URL= ... run_all --phase 1` must exit 0 with 14/14 stages.",
+    "invariants_to_preserve": [
+      "Run Phase 1 with `DATABASE_URL=` empty -- it proves §10 stays hermetic (H-01).",
+      "Any edit under mutation_proof.INPUT_ROOTS (backend/app, tests, scripts, data, frontend/src, docs/pgen_contract.md, docs/testing_pipeline.md) invalidates all 94 proofs. Batch edits, then re-run the table once.",
+      "A scratch script that imports run_all needs `if __name__ == \"__main__\"` or every ProcessPoolExecutor worker re-runs the whole harness.",
+      "Never assert `unit_tests` on a mutation that drives one test file; declare a label for it, as packet_variant_coverage_uncapped does."
+    ],
+    "next_by_recommended_order": "H-04 executor (order 3), then H-05 (4), H-06 (5)"
+  }
 }
