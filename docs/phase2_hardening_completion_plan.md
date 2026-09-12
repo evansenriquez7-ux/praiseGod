@@ -40,9 +40,15 @@ ground-truth correction follows AGENTS.md Protocol 5 and records the node, sourc
 
 ## Evidence and current implementation state
 
-All observations share git HEAD `c007b8ae`, but they do not describe one tree. Early probes ran
-before the current uncommitted implementation; later measurements ran with 23 modified or
-untracked paths. The snapshot column prevents a working-tree result from masquerading as evidence
+**Integration checkpoint CLEARED 2026-09-12.** What this section once described as uncommitted
+work is now landed at `94e95347` (harness/content) and `d5c752d1` (this document), on branch
+`harness/executed-mutation-proof` off `c007b8ae`. Phase 1 was executed on that tree before the
+commit and **exited 0** with zero failures; the tree is clean. A fresh session starts from those
+commits, not from a dirty worktree.
+
+Rows below still carry their snapshot label because the two step-0 inventories were generated
+BEFORE that work and remain stale — regenerating them is the first remaining task (step 0). The
+snapshot column prevents a working-tree result from masquerading as evidence
 for the commit. None of the partial work below is release evidence until it is reviewed, divided
 into coherent contract/enforcement commits, and re-proved on a clean integration revision.
 
@@ -62,9 +68,9 @@ into coherent contract/enforcement commits, and re-proved on a clean integration
 | Clause-schema hole | Adding a seventh required facet in memory accepts an empty clause map | Early review probe; still open |
 | Declaration-only mutation-proof hole | A synthetic assertion once counted as proven without execution | Early review probe; closed provisionally by `mutation_proof.py` and 79 executed records |
 
-Three implementation slices already exist in the dirty tree and need integration review:
-`tests/phase2_migration.py` plus its two reports implement a first version of step 0;
-`validate_language.py`/§1J and `validate_options.py`/§1K implement the first two bounded
+Three implementation slices **landed at `94e95347`**, having been reviewed and verified rather
+than merely present: `tests/phase2_migration.py` plus its two reports implement a first version of
+step 0; `validate_language.py`/§1J and `validate_options.py`/§1K implement the first two bounded
 lints in step 3; and `mutation_proof.py`, `tests/isolated_corpus.py`,
 `tests/mutation_harness.py`, `validate_coverage.py`, and
 `validation_reports/mutation_proofs/` implement most of step 4. The proof corpus also shows
@@ -106,12 +112,17 @@ grow as stronger gates expose defects; a smaller count is not evidence of progre
 
 ### 0. Establish a reproducible baseline and complete migration inventory
 
-Begin with an integration checkpoint for the current dirty worktree. Review every diff and group
-the existing work into coherent commits; binding behavior, its contract row, tests, and mutation
-proof machinery move together. Do not commit unrelated generator changes merely to obtain a clean
-tree. After the final integration commit, require a clean status, re-run the complete mutation
-table, and regenerate both step-0 inventories. The existing reports are useful prototypes but
-cannot be accepted because they describe 76 mutations and an earlier dirty-path set.
+**The integration checkpoint is DONE — do not look for a dirty worktree.** The work landed at
+`94e95347` with binding behavior, contract rows, tests and proof machinery in one commit; status is
+clean; Phase 1 exited 0 (151/151 nodes, 0 failures, 79/79 proofs verified against the current
+digest).
+
+**The first remaining task is to regenerate both step-0 inventories**, which are still prototypes
+taken before that commit: they describe 76 mutations and 104 assertions where the tree now has 79
+and 107, and record `dirty_count 3`. Run `tests/phase2_migration.py` on the committed revision and
+replace them. A full mutation-table re-run is NOT required for this: `mutation_proof.INPUT_ROOTS`
+fingerprints working-tree bytes, which the commit did not change, and §8 re-verified all 79 records
+with zero errors after it. Re-run the table only once an edit under an input root lands.
 
 Record checkout and working-tree state, runtime versions, commands, explicit seeds/profiles,
 unabridged failures, collected test IDs, mutation names, and assertion inventory. Execute
@@ -392,13 +403,13 @@ entry points before activating them on legacy records. Synthetic fixtures stay u
 they are never filed as genuine reviews. After activation, production migration debt remains
 a loud Phase 2 failure. An already-red rollup is not evidence that a new mutation was detected.
 
-### 3. Integrate and finish the existing §1J/§1K bounded lints
+### 3. Finish the landed §1J/§1K bounded lints
 
-The dirty tree already contains `validate_language.py`/§1J and
-`validate_options.py`/§1K, their `run_all` and `CHECK_PHASE` registration, contract rows,
-zero measured baselines over 9,060 language samples and 1,180 option-bearing samples, and
-detected mutations. Review and land these as one coherent contract/enforcement slice before
-expanding them. Preserve their declared limitations rather than treating their current zero
+`validate_language.py`/§1J and `validate_options.py`/§1K are **landed at `94e95347`** with their
+`run_all` and `CHECK_PHASE` registration, contract rows, and detected mutations. Re-measured on the
+committed tree: §1J 0 findings over 9,060 student-path samples; §1K 0 findings over 6,752
+option-bearing samples of 9,060. Nothing here needs reviewing or landing again; what remains is
+only the declared bounded extensions below. Preserve their declared limitations rather than treating their current zero
 finding counts as complete language or semantic coverage. Keep mechanical per-clause provision
 in Phase 1; declarations/reachability do not certify semantic fulfillment.
 
@@ -491,13 +502,13 @@ rule at a measured zero — do not activate the gate against a red baseline.
 
 ### 4. Make mutation coverage depend on executed evidence
 
-The dirty tree already implements the core design in `mutation_proof.py`,
-`tests/mutation_harness.py`, `tests/isolated_corpus.py`, and `validate_coverage.py`.
-Current evidence contains 79 detected, Phase-1-admissible records and the proof consumer reports
-zero errors. Review and land that slice; retain the rule that
-`validate_coverage.proven_assertions()` consumes validated results rather than
-`Mutation.asserts` declarations. Mutation executions remain serialized. This step is required
-for M1 acceptance; dirty-tree records are integration evidence rather than release evidence.
+The core design is **landed at `94e95347`** in `mutation_proof.py`, `tests/mutation_harness.py`,
+`tests/isolated_corpus.py`, and `validate_coverage.py`. Verified on the committed revision: 79
+detected, Phase-1-admissible records under a single input digest, and the proof consumer reports
+zero errors, zero stale, 68/107 assertions proven BY EXECUTION. Retain the rule that
+`validate_coverage.proven_assertions()` consumes validated results rather than `Mutation.asserts`
+declarations. Mutation executions remain serialized. What remains of this step is the hardening
+below, not the core mechanism.
 
 The proof record includes schema version, mutation name/definition digest, asserted labels,
 expected and observed markers, baseline and planted exit statuses, commands, node/seed/sample
@@ -616,6 +627,15 @@ path. This closes one seam nothing covers today — the value a component *emits
 for the correct selection must equal the keyed answer and be graded CORRECT by
 `services.scoring.answers_match`. §10 tests graders against the key and §9 tests payloads against
 the component's key list; the emitted value is untested by both.
+
+**Registration — all of this is Phase 1, and must be registered as such.** The new checks take
+their own §-refs (§1J/§1K are taken), and the enforcing commit adds each to `CONTRACT_CHECKS`,
+`_manifest.CHECK_PHASE` with value **1**, `docs/pgen_contract.md`, `docs/testing_pipeline.md`,
+its module `ASSERTIONS` inventory, its controls, and its detected mutations — together, per
+Protocol 7. The phase seam is decidable and these are on the Phase 1 side of it: none of them
+reads `validation_reports/judgment/` or `validation_reports/attestation/`, so all run on a fresh
+clone with no agent-authored artifact. `check_phase_registry_8` will fail the build if a ref is
+added without a phase, so this is enforced rather than remembered.
 
 Frontend results reach `run_all` as a **consumed artifact**, on the `mutation_proof.py` pattern:
 the suite writes a machine-readable result bound to the input digest, and `run_all` verifies and
@@ -881,9 +901,9 @@ When M3 is revived, it starts from `H-09`'s row in
 | `backend/app/practice_gen/validation/validate_judgment.py` | Merged schema, clause enforcement, expanded freshness/provenance, active-review resolution |
 | `tests/judgment_batches.py`; new merged filing helper in `tests/` | Exact delivery, dual batch limits, response joins, immutable filing |
 | `backend/app/practice_gen/validation/validate_capability.py` | Keep mechanical requirements/provision; migrate attestation behaviors and boundary enforcement |
-| `validation/validate_language.py`, `validate_options.py` | Existing dirty §1J/§1K implementations; review, land, preserve proofs, and close only their declared bounded extensions |
+| `validation/validate_language.py`, `validate_options.py` | **Landed `94e95347`.** §1J/§1K registered and green; only their declared bounded extensions remain |
 | Planned contextual-logic validator and context declarations | Step 3A inventory, typed semantic roles/affordances, §1L registration, zero-baseline activation, and Phase 2 context-family coverage |
-| `tests/mutation_harness.py`, `tests/isolated_corpus.py`, `validation/mutation_proof.py`, `validate_coverage.py`, `validation_reports/mutation_proofs/` | Existing dirty executed-proof implementation; review, fix docstring drift, land, and re-prove on the clean integration revision |
+| `tests/mutation_harness.py`, `tests/isolated_corpus.py`, `validation/mutation_proof.py`, `validate_coverage.py`, `validation_reports/mutation_proofs/` | **Landed `94e95347`.** Executed-proof mechanism green; `mutation_proof.py`'s docstring still says "24 of the 76 mutations … `phase1_admissible: false`" where all 79 records are now `true` — fix that drift |
 | `validation/run_all.py`, `validation/_manifest.py` | Stage registry/ledger, crash isolation, real check registration, phase boundaries, and honest summaries |
 | `validation/validate_grade.py` and grader fixtures | Hermetic bidirectional grading over every response contract, without external database state |
 | `validation/validate_render.py`; frontend component-contract tooling | Conditional payload enforcement; headless static render over every component; render-derived visual description consumed by the judgment packet |
@@ -900,8 +920,8 @@ When M3 is revived, it starts from `H-09`'s row in
 | `docs/pgen_contract.md`, `docs/pgen_judgment.md`, `docs/pgen_rulings.md` | Atomic enforcement updates, six-facet schema, accepted sequencing decision |
 
 In rows abbreviated as `validation/...`, the directory is
-`backend/app/practice_gen/validation/`. “Existing dirty” means present and executed in the
-current working tree; it does not mean reviewed, committed, or accepted for release.
+`backend/app/practice_gen/validation/`. **"Landed `94e95347`"** means committed, executed, and
+verified green on that revision — not that the step's remaining hardening is complete.
 
 ## Evidence for preparation and implementation-state review
 
@@ -1008,8 +1028,8 @@ at_1s_each: five_samples=360.4min ten_samples=720.8min
 
 The skipped unit test is not proof of a guard. Step 0 re-audits the actual mutation evidence and
 replaces backlog-dependent fixtures where needed. This plan revision changes only the plan; the
-dirty harness and generator work listed above predates it and remains unaccepted until the
-integration checkpoint passes.
+harness and generator work listed above landed at `94e95347` after the integration checkpoint
+passed; this document landed at `d5c752d1`.
 
 ### Review measurements, 2026-09-12 (post-revision critique)
 
@@ -1054,3 +1074,61 @@ all detected=true ; all restored_clean=true ; all phase1_admissible=true
 distinct input_digest across all 79 records : 1
 full mutation table wall time               : 716s total, 125s worst case
 ```
+
+### Integration checkpoint executed 2026-09-12 (this is the tree a fresh session starts from)
+
+```text
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.run_all --phase 1
+EXIT=0
+  PASS unit_tests (472 passed, 1 skipped, 2 deselected, 1 warning in 80.06s)
+  Nodes Checked: 151 / Nodes Passed: 151 / Nodes Failed: 0
+  Total Failures Observed: 0
+  PASS §1H applicability (all 151 nodes ran every check their composition makes applicable)
+  PASS capability_contract (Phase 1: all nodes declare, cite, cover, and are provided for)
+  PASS count_noun_agreement_1J: 0 findings over 9060 student-path sample(s);
+       2588 singular-after-many construction(s) observed and NOT judged (limitation 1)
+  PASS option_degeneracy_1K: 0 findings over 6752 option-bearing sample(s) of 9060;
+       43 equal-valued DISTRACTOR pair(s) NOT gated; 7673 pair(s) in an equivalence
+       domain this gate cannot compare
+  PASS render_contract_floor_9: 0 broken renders (floor 0)
+  PASS grading_contract_floor_10: 0 mis-gradings (floor 0)
+  PASS mutation_proof_integrity_8: 79 executed mutation proof(s) verified against the
+       current source/fixture digest
+  PASS assertion_coverage_8: 68/107 harness assertions proven BY EXECUTION, 39 knowingly unproven
+  PASS census: nodes=151 unit_tests=473 mutations=79 variant_candidates=975
+  PASS contract_doc_matches_registry / operator_doc_covers_registry (37/37) /
+       two_direction_contract_match
+PHASE 1 PASSED SUCCESSFULLY!
+
+$ grep -cE "FAIL|Traceback|OperationalError|could not translate" phase1.log
+0
+
+$ git log --oneline -2
+d5c752d1 docs(plan): phase 2 hardening plan revised after review
+94e95347 harness(§8)+content(§1J/§1K): coverage counts executed mutations now
+
+# re-verified AFTER the commit
+proof errors 0 | stale_tree_only 0 | records 79 | proven-by-execution 68 |
+unproven allowlist 39 | §8 coverage errors 0
+```
+
+**H-01 did NOT reproduce, and that makes it worse rather than better.** This document
+previously recorded Phase 1 crashing on Neon DNS before coverage/census. On the same code a
+few hours later it passed §10, because the network happened to be up. `validate_grade` still
+opens `SessionLocal`, so Phase 1's verdict depends on an external host resolving. That is
+non-determinism in a gate (Protocol 6), not merely a crash — state it that way in `H-01`'s
+row rather than as "crashes on DNS".
+
+### What a fresh session should do first
+
+1. `git log --oneline -2` — confirm `d5c752d1` / `94e95347`; the tree is clean and Phase 1 green.
+2. Run `tests/phase2_migration.py` and replace both step-0 inventories. They are the only
+   artifacts still describing the pre-commit tree (76 mutations / 104 assertions / dirty_count 3
+   against the current 79 / 107 / clean).
+3. Create the nine `H-` rows in `validation_reports/phase2_hardening/hardening_status.json`.
+4. Then step 0A (`H-01`, hermetic Phase 1) — it is the largest open blocker and nothing depends
+   on it being deferred.
+
+Do NOT re-run the full mutation table to begin with: `INPUT_ROOTS` fingerprints working-tree
+bytes, the commit changed none, and §8 re-verified all 79 records afterwards. Re-run it the
+first time an edit lands under an input root.
