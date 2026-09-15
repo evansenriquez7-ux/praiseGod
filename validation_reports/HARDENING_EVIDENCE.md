@@ -11097,3 +11097,141 @@ $ git diff --check
 The final two mutation records both report `detected=True`, `restored_clean=True`.
 The unqualified harness is running with an empty `DATABASE_URL`; its output is saved
 as `local_only/scratch/resume_run_all.log`. No full-suite success has been inferred.
+
+---
+
+## 2026-09-16 — review critique acted on: the verification layer re-proved from zero
+
+A review of four sessions' inherited work found the harness certifying nothing about its own
+bytes. This session acted on that in the order the review proposed. Every number below is
+from an executed command whose output is quoted.
+
+### The state found
+
+| | Found | After |
+|---|---|---|
+| Mutation proofs matching the working tree | **0 of 138** (10 distinct stale digests) | **145 of 145 current, 0 stale** |
+| Assertion labels proven by EXECUTION | **0 of 134** | **113 of 134** |
+| Mutations never executed at all | **7** | **0** |
+| Proofs that do not hold | 28 | 11 (two named clusters) |
+| `run_all` stage ledger | completed=10 failed=5 **crashed=1** | completed=12 failed=4 **crashed=0** |
+| `unit_tests` stage | FAIL (1 failed, 677 passed) | **PASS (703 passed, 1 skipped)** |
+| `two_direction_contract_match` | FAIL — `Registered but not executed: {'§5'}` | **PASS** |
+| Uncommitted files across every INPUT_ROOT | 209 entries / 141 files / +5479 −1332 | committed at `ec440e0e` |
+
+`docs/pgen_contract.md` is an `INPUT_FILE`, so the contract edits in this session each
+invalidated the corpus. The corpus was therefore run TWICE end to end: once on the
+inherited bytes (which is what found the three blind gates), then once more on the frozen
+final bytes after those gates were fixed.
+
+### Defects found by executing, not by reading
+
+**1. `answer_key_recomputation` was a no-op in its motivating case.** `validate_matrix`
+answered a missing formula input by setting `recomputed = served` — it trusted the key
+exactly when it could not verify it. Instrumented rather than argued: planted the bug by
+hand, confirmed `given_values` really loses operand `a`, watched the validator exit 0 on
+151/151. Narrowed to the two legitimate shapes (missing var IS the declared `blank_target`;
+boolean `true_false`). Cost measured over all 151 nodes before landing it: the skip fired
+**818 times across 8 nodes**, of which **808** were a missing var identical to the declared
+`blank_target` and the other **10** were one node/DNA/formatter already covered by the
+boolean exemption — so **zero** new findings, and the full matrix stayed 151/151.
+
+**2. `discrete_selection_not_reflected` tested a surface the check does not read.** §1B does
+pin `regrouping` here (10 observed calls at `{'regrouping': 'none'}`), so the plant was
+reached — an earlier reading that the axis was gone was wrong, and was corrected by
+instrumenting §1B's own call site instead of §1C's. The plant rewrote
+`result['difficulty_profile']`, but `verify_discrete_dimension` reads `given_values` and
+recomputes real carries. The check was right; the plant now makes the item carry while
+`none` was pinned. Its expected marker was also unmatchable ("not reflected" vs the emitted
+"does not reflect discrete option").
+
+**3. `discrete_selection_generation_crashes` collided with a dispositioned limitation.** It
+raised a bare `RuntimeError`, which §1B reads as "legitimately infeasible" by exception
+type. No change to the check could catch that without failing every genuinely infeasible
+combination, so the plant now raises `ValueError`. **Still uncovered and named:** a real
+generation crash surfacing as `RuntimeError` is still read as infeasible.
+
+**4. The three-band probe measured against a remote database.** `.env` carries a live Neon
+URL and `queue_state` built its probe env with `os.environ.copy()`, so
+`test_queue_counts_all_three_bands` FAILED in 15.89s without `DATABASE_URL=` and passed in
+153.15s with it. The probe now pins `DATABASE_URL=""` itself. **Broader finding, reported
+and not fixed:** CLAUDE.md's Definition of Done names `run_all` with no `DATABASE_URL=`,
+and that is not the hermetic command H-01 was proved with.
+
+**5. H-04's release budget was extrapolated from 83.4% of the index space.** The stride
+denominator was `sample_size - 1` (999) while only `sample_size - len(sentinels)` = 832
+points were emitted. Deciles ran `[139, 104, 116, 128, 105, 108, 112, 133, 44, 11]` against
+a uniform ~100, and §11 GATES on the projection. Fixed; deciles now
+`[125, 87, 99, 111, 88, 91, 95, 116, 93, 95]` at 100% span. **The corrected projection is
+2.518h over 6 shards against the old 1.312h over 3** — a 1.9× increase that matches the
+observed overrun which killed H-04's shards without a receipt.
+
+### The two clusters that remain unprovable, and why
+
+`assertion_coverage_8` FAILs with **10 errors in 1 family**, all `proof_does_not_hold` — a
+family that did not exist before this session and whose absence had 19 assertions reading as
+"no mutation proves it" when each already had one.
+
+* **§6F, 3 mutations** (`attestation_drops_options`, `attestation_leaks_into_phase1`,
+  `contradicted_attestation`): baseline is `validate_capability` unscoped, which exits 1 on
+  the 218 genuine attestation findings. They CANNOT be scoped to `--phase 1` — that band
+  never executes a §6F check, so the plant would SURVIVE while looking scoped. Owner ruling
+  2026-09-16: name them, do not allowlist them. Mandate 5 debt: these gates were built
+  against an already-red baseline.
+* **§8, 8 mutations** (`allowlist_keeps_a_paid_debt`, `allowlist_names_a_phantom_label`,
+  `contract_check_declares_no_phase`, `coverage_map_gap`, `mutation_asserts_an_unknown_label`,
+  `silent_handler_without_a_disposition`, `source_edited_without_reproof`,
+  `undeclared_check_reports_itself`): a genuine **self-reference deadlock**. Their baseline is
+  §8, §8 is red because their labels are unproven, and their labels are unproven because the
+  baseline is red. `declarations_out_of_sync` escaped only because its command is already
+  `validate_capability --phase 1`. This is NOT fixed by re-running: the documented
+  delete-and-rerun procedure was applied and 3 of 4 stayed INVALID. Closing it needs the
+  same move H-03's contract row already names as its blind spot — drive these through a unit
+  test against a stubbed coverage state rather than the live validator.
+
+### Bookkeeping that was pointing every session the wrong way
+
+H-07 sat `in_progress` under `codex-20260914-h08-static-render` — H-08's session — with its
+own `measurement_status` reading "unmeasured", while H-08 sat `open`/`unclaimed` with
+`proof_artifacts: []` beside the newest artifact in its own directory. Both were legal.
+H-07's substance (§1L / step 3A) is **unstarted**: no `context_semantics_inventory.json`
+exists and §1L appears in neither the contract nor `CHECK_PHASE`. Three directions added to
+`tests/hardening_status.py`, each proved to catch its own violation; the disk→rows one caught
+a real unclaimed artifact within the hour.
+
+### The v2 cutover, reconciled
+
+All 151 filed reviews are v1 (`{None: 151}`) and were rejected in one step, against the
+plan's "lossless filing path". A field-level migration was **refused as impossible in
+principle** — v2 wants judgments no v1 reviewer was asked for. Preserved instead as a
+non-adjudicable queue: **151 nodes, 44 FAIL / 93 CONCERN / 14 PASS, 137 with a non-PASS
+facet**, worst facet `variant_comprehensiveness` (83). Enforcement unchanged; the 151 fresh
+blind re-reviews remain owed and are now countable.
+
+### Commands
+
+```text
+$ DATABASE_URL= PYTHONPATH=. .venv/bin/python tests/mutation_harness.py     # final, frozen bytes
+  145 mutations; 0 stale; 0 never executed; 11 proofs do not hold (two clusters above)
+
+$ DATABASE_URL= PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.run_all
+  PASS unit_tests (703 passed, 1 skipped, 2 deselected in 645.51s)
+  PASS dna · compatibility · interest_invariance · vocabulary · behavioural_matrix 151/151
+  PASS capability_phase1 · count_noun_1J · option_degeneracy_1K · render_contract_9
+  PASS grading_contract_10 · census_7 · two_direction_contract_match
+  PASS contract_doc_matches_registry · operator_doc_covers_registry (40/40)
+  FAIL assertion_coverage_8 (10 in 1 family)
+  FAIL obligation_manifest_11  (release shard receipts only)
+  FAIL judgment_reviews_5      (1158 Phase 2 content findings)
+  FAIL capability_phase2       (218 attestation findings)
+  scheduled=16 completed=12 failed=4 crashed=0 not_run=0 incomplete=0
+  PASS stage_ledger_complete   EXIT=1
+
+$ PYTHONPATH=. .venv/bin/python tests/hardening_status.py
+  PASS hardening_status: 9 H-row(s) valid — 2 closed, 6 open, 1 out_of_scope
+```
+
+**The Definition of Done is NOT met and is not claimed.** Four stages are red: two are
+genuine Phase 2 content debt (1,158 review findings, 218 attestation findings), one needs
+H-04's 2.518h release sweep, and one is the two named mutation clusters above. Every red is
+named, every stage reached a verdict, and nothing is warning-only.
