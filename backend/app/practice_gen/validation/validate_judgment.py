@@ -166,10 +166,20 @@ def _validate_v2_schema(node_id: str, path: Path, data: Dict[str, Any]) -> List[
     """Validate the merged, lossless review record introduced by hardening H-06/H-07."""
     errs: List[str] = []
     if data.get("schema_version") != REVIEW_SCHEMA_VERSION:
+        # The rejection is correct and stays. What it must NOT imply is that the prior
+        # verdict is gone: on 2026-09-15 this message rejected all 151 reviews at once
+        # with nowhere for a reader to find what the previous programme had concluded,
+        # which is the loss the plan's "lossless filing path" was written to prevent.
+        # A v1 record cannot be migrated -- v2 wants judgments a v1 reviewer was never
+        # asked for -- so it is preserved as a QUEUE instead, never as evidence.
         return [
             f"{node_id}: review schema_version is {data.get('schema_version')!r}, expected "
             f"{REVIEW_SCHEMA_VERSION}; legacy evidence omits canonical learner-visible fields, "
-            "clause coverage, and dispatch-bound provenance and is unadjudicable."
+            "clause coverage, and dispatch-bound provenance and is unadjudicable. A fresh "
+            "blind re-review is owed. The v1 verdict and rationale are preserved, as a "
+            "non-adjudicable lead only, in "
+            "validation_reports/phase2_hardening/legacy_review_queue.json "
+            "(rebuild: PYTHONPATH=. .venv/bin/python tests/legacy_review_queue.py --write)."
         ]
 
     info = get_node_info(node_id) or {}

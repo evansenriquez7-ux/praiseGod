@@ -204,7 +204,10 @@
       "proof_artifacts": [
         "validation_reports/phase2_hardening/requirement_inventory.json",
         "validation_reports/mutation_proofs/judgment_accepts_foreign_dispatch_reviewer.json",
-        "validation_reports/mutation_proofs/judgment_accepts_mismatched_dispatch_clauses.json"
+        "validation_reports/mutation_proofs/judgment_accepts_mismatched_dispatch_clauses.json",
+        "validation_reports/phase2_hardening/legacy_review_queue.json",
+        "tests/legacy_review_queue.py",
+        "tests/unit/test_legacy_review_queue.py"
       ],
       "closing_revision": null,
       "updated_at": "2026-09-16T10:00:00+08:00",
@@ -216,7 +219,7 @@
         "The 151 live judgment records and capability attestations have not been independently re-reviewed into the new schema, so Phase 2 remains red by design.",
         "Clause/sample reasoning provenance and anti-template enforcement still need to cover the new nested reasoning fields, not only the six legacy top-level rationales."
       ],
-      "notes": "2026-09-16: lock 'codex-20260914-h06-canonical-evidence' released -- that session committed and ended without releasing, so the row read as live work to every session after it. Partial work is preserved in `progress`/`still_open`; the row is claimable."
+      "notes": "2026-09-16: lock 'codex-20260914-h06-canonical-evidence' released -- that session committed and ended without releasing, so the row read as live work to every session after it. Partial work is preserved in `progress`/`still_open`; the row is claimable. 2026-09-16: the v2 cutover had rejected all 151 filed reviews at once with no reconciliation, against plan step 1's 'lossless filing path' and M1 acceptance's 'all legacy unresolved findings reconcile without omissions'. A field-level v1->v2 migration is impossible in principle -- v2 wants per-sample contextual-validity verdicts, clause coverage and dispatch provenance that no v1 reviewer was asked for -- so the corpus is preserved as a non-adjudicable QUEUE instead: 151 nodes, 44 FAIL / 93 CONCERN / 14 PASS, 137 with a non-PASS facet. Enforcement is unchanged; the 151 fresh blind re-reviews remain owed and are now countable."
     },
     {
       "id": "H-07",
