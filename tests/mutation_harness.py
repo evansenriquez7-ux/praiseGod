@@ -986,7 +986,13 @@ MUTATIONS: List[Mutation] = [
         ),
         edits={},
         apply_fn=lambda: _plant_wildcard_provider("count_forward_from_a_given_number"),
-        command=["backend.app.practice_gen.validation.validate_capability"],
+        # SCOPED to the Phase 1 band 2026-09-16. Unscoped, this command also runs the
+        # Phase 2 attestation half, whose 218 genuine findings made the baseline exit 1 --
+        # so the proof was rejected for a red baseline (Mandate 5) and the assertion read
+        # as having no mutation at all. §6D is a Phase 1 check, `--phase 1` exits 0 on the
+        # current tree, and the plant still reaches the code §6D executes.
+        command=["backend.app.practice_gen.validation.validate_capability",
+                 "--phase", "1"],
         expected_check="§6D (a generic textual formatter is not a provider)",
         # Must name the capability AND cite §6D: exiting non-zero is not proof
         # while the honest §6D queue is open.
@@ -995,6 +1001,17 @@ MUTATIONS: List[Mutation] = [
     ),
     Mutation(
         name="contradicted_attestation",
+        # STRUCTURALLY UNPROVABLE UNTIL THE ATTESTATION QUEUE CLEARS (recorded
+        # 2026-09-16, Mandate 6). This plants into a Phase 2 §6F check, so unlike
+        # `wildcard_provider` and `phase_ref_misassigned` it CANNOT be scoped to
+        # `--phase 1` -- that band never executes the check, and the mutation would
+        # SURVIVE while looking scoped. Its baseline is therefore the unscoped
+        # command, which exits 1 on the 218 genuine Phase 2 attestation findings, so
+        # `mutation_proof` rejects the proof for a red baseline (Mandate 5) and the
+        # assertion reads as unproven. That is correct and is left red: these three
+        # §6F gates were built against an already-red baseline, which is the hazard
+        # Mandate 5 names. They become provable when the attestation findings clear,
+        # not by narrowing the command and not by an allowlist entry.
         asserts=['capability_contradicted_6F'],
         description=(
             "Re-register a capability a blind Attester already ruled NOT_PROVIDED -- the "
@@ -1107,6 +1124,17 @@ MUTATIONS: List[Mutation] = [
     ),
     Mutation(
         name="attestation_drops_options",
+        # STRUCTURALLY UNPROVABLE UNTIL THE ATTESTATION QUEUE CLEARS (recorded
+        # 2026-09-16, Mandate 6). This plants into a Phase 2 §6F check, so unlike
+        # `wildcard_provider` and `phase_ref_misassigned` it CANNOT be scoped to
+        # `--phase 1` -- that band never executes the check, and the mutation would
+        # SURVIVE while looking scoped. Its baseline is therefore the unscoped
+        # command, which exits 1 on the 218 genuine Phase 2 attestation findings, so
+        # `mutation_proof` rejects the proof for a red baseline (Mandate 5) and the
+        # assertion reads as unproven. That is correct and is left red: these three
+        # §6F gates were built against an already-red baseline, which is the hazard
+        # Mandate 5 names. They become provable when the attestation findings clear,
+        # not by narrowing the command and not by an allowlist entry.
         asserts=['capability_attestation_options_recorded_6F'],
         description=(
             "Make a formatter start emitting an option table on a node whose filed "
@@ -1367,6 +1395,17 @@ MUTATIONS: List[Mutation] = [
     # ------------------------------------------------------------------------
     Mutation(
         name="attestation_leaks_into_phase1",
+        # STRUCTURALLY UNPROVABLE UNTIL THE ATTESTATION QUEUE CLEARS (recorded
+        # 2026-09-16, Mandate 6). This plants into a Phase 2 §6F check, so unlike
+        # `wildcard_provider` and `phase_ref_misassigned` it CANNOT be scoped to
+        # `--phase 1` -- that band never executes the check, and the mutation would
+        # SURVIVE while looking scoped. Its baseline is therefore the unscoped
+        # command, which exits 1 on the 218 genuine Phase 2 attestation findings, so
+        # `mutation_proof` rejects the proof for a red baseline (Mandate 5) and the
+        # assertion reads as unproven. That is correct and is left red: these three
+        # §6F gates were built against an already-red baseline, which is the hazard
+        # Mandate 5 names. They become provable when the attestation findings clear,
+        # not by narrowing the command and not by an allowlist entry.
         asserts=['capability_phase_boundary_6'],
         description=(
             "Read the attestation corpus from the Phase 1 (artifact-free) half -- the "
@@ -1408,7 +1447,12 @@ MUTATIONS: List[Mutation] = [
                 '"§6C": 1, "§6D": 2, "§6E": 1,',
             )
         },
-        command=["backend.app.practice_gen.validation.validate_capability"],
+        # SCOPED to the Phase 1 band 2026-09-16, for the same reason as
+        # `wildcard_provider`: the unscoped command's baseline is red from the Phase 2
+        # attestation queue. The partition check reports from the Phase 1 half, which is
+        # where this plant lands.
+        command=["backend.app.practice_gen.validation.validate_capability",
+                 "--phase", "1"],
         expected_check="§6 per-phase reconciliation (a finding may only cite refs of its own phase)",
         expect_output_contains=["capability_phase_partition_6 && §6D"],
         baseline_must_not_contain=["capability_phase_partition_6"],

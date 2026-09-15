@@ -2,17 +2,19 @@
  "asserts": [
   "capability_phase_partition_6"
  ],
- "baseline_exit": 1,
+ "baseline_exit": 0,
  "baseline_markers_already_present": [],
  "baseline_must_not_contain": [
   "capability_phase_partition_6"
  ],
  "command": [
-  "backend.app.practice_gen.validation.validate_capability"
+  "backend.app.practice_gen.validation.validate_capability",
+  "--phase",
+  "1"
  ],
- "definition_digest": "bbee81b4fba740a8683351cf06ac1bda6d3a7032561bbe13e046d5cc64304e91",
+ "definition_digest": "e553fe03f89bbebaf80b60f4729aba3e47ce63ea12a02107729af50751d319d9",
  "detected": true,
- "diagnostic_line": "exit 1 — Capability contract: 224 failure(s) (6 Phase 1 / artifact-free, floor 5; 218 Phase 2 / attestation).",
+ "diagnostic_line": "exit 1 — Capability contract: 6 failure(s) (6 Phase 1 / artifact-free, floor 5; 0 Phase 2 / attestation).",
  "environment": {
   "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
   "machine": "x86_64",
@@ -24,8 +26,8 @@
   "capability_phase_partition_6 && §6D"
  ],
  "expected_check": "§6 per-phase reconciliation (a finding may only cite refs of its own phase)",
- "finished_at": "2026-09-15T05:45:39+08:00",
- "input_digest": "58cccb5a9e45dd5f7cbc40c98d866717f07972cc1004202ebb5c15974875e123",
+ "finished_at": "2026-09-16T00:36:54+08:00",
+ "input_digest": "97c7d589e1bac8043f28fe4945e25f66809ea3801e65065e53dd6812fc6d26b1",
  "mutated_paths": [
   "backend/app/practice_gen/validation/_manifest.py"
  ],
@@ -38,5 +40,5 @@
  "planted_exit": 1,
  "restored_clean": true,
  "schema_version": 1,
- "started_at": "2026-09-15T05:44:53+08:00"
+ "started_at": "2026-09-16T00:36:52+08:00"
 }
