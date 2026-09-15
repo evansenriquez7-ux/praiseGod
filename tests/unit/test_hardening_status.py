@@ -13,6 +13,7 @@ Every test names the specific way the ledger could lie if the check were absent.
 from __future__ import annotations
 
 import copy
+from datetime import datetime, timedelta, timezone
 
 import pytest
 
@@ -20,11 +21,16 @@ from tests import hardening_status as hs
 
 
 def _row(**over):
+    # `updated_at` defaults to NOW, not a fixed date, because a fixture standing in for a
+    # row someone is holding has to be a row someone touched: `STALE_LOCK_HOURS` reads this
+    # field to tell live work from an abandoned session. Tests about staleness pass an old
+    # timestamp explicitly.
     row = {
         "id": "H-99", "status": "open", "owner": "unassigned",
         "affected_assertions": [], "baseline_evidence": "measured",
         "acceptance_checks": ["something"], "proof_artifacts": [],
-        "closing_revision": None, "updated_at": "2026-09-12T00:00:00+08:00",
+        "closing_revision": None,
+        "updated_at": datetime.now(timezone.utc).isoformat(),
     }
     row.update(over)
     return row
@@ -158,3 +164,71 @@ def test_the_live_ledger_locks_are_consistent():
             assert r["owner"] != hs.UNCLAIMED, r["id"]
         if r["status"] in ("closed", "out_of_scope"):
             assert r["owner"] == hs.UNCLAIMED or r["owner"].startswith("released @ "), r["id"]
+
+
+# ─── the three directions added 2026-09-16 ────────────────────────────────────
+# Measured on the tree at f8597c0f: the ledger PASSED the schema and both original
+# lock rules while H-07 sat `in_progress` under H-08's session identifier with its
+# own measurement_status reading "unmeasured", and H-08 sat `open`/`unclaimed` with
+# `proof_artifacts: []` beside the newest artifact in its own directory. Two legal
+# rows, pointing the next session at exactly the wrong one each.
+
+
+def test_a_lock_naming_another_row_is_caught():
+    """The H-07 defect: the H-08 worker claimed H-07 and never released it."""
+    row = _row(id="H-07", status="in_progress", owner="codex-20260914-h08-static-render")
+    errors = hs.validate(_doc(row))
+    assert any("names H-08, not H-07" in e for e in errors), errors
+
+
+def test_a_lock_naming_its_own_row_is_accepted():
+    """The positive control -- the convention in use must not be flagged."""
+    row = _row(id="H-04", status="in_progress", owner="codex-20260912-h04-executor")
+    assert hs.validate(_doc(row)) == []
+
+
+def test_a_session_identifier_with_no_row_token_is_accepted():
+    """The check must not require the convention, only that it be self-consistent."""
+    row = _row(id="H-04", status="in_progress", owner="some-session-42")
+    assert hs.validate(_doc(row)) == []
+
+
+def test_a_lock_held_past_the_staleness_window_is_caught():
+    """An abandoned session: in flight, held, and untouched for days."""
+    old = (datetime.now(timezone.utc) - timedelta(hours=hs.STALE_LOCK_HOURS + 60)).isoformat()
+    row = _row(status="in_progress", owner="session-x", updated_at=old)
+    errors = hs.validate(_doc(row))
+    assert any("has held it for" in e and "released" in e for e in errors), errors
+
+
+def test_a_lock_inside_the_staleness_window_is_accepted():
+    recent = (datetime.now(timezone.utc) - timedelta(hours=hs.STALE_LOCK_HOURS - 1)).isoformat()
+    row = _row(status="in_progress", owner="session-x", updated_at=recent)
+    assert hs.validate(_doc(row)) == []
+
+
+def test_an_unparseable_timestamp_on_a_held_row_is_caught():
+    """A lock whose age cannot be measured is a lock that cannot be told from abandoned."""
+    row = _row(status="in_progress", owner="session-x", updated_at="last tuesday")
+    errors = hs.validate(_doc(row))
+    assert any("not a parseable timestamp" in e for e in errors), errors
+
+
+def test_an_artifact_no_row_claims_is_caught():
+    """The H-08 direction: rows->disk was checked, disk->rows was not."""
+    errors = hs._unclaimed_artifacts([_row(proof_artifacts=[])])
+    assert any("frontend_static_render.json" in e for e in errors), errors
+    assert all("no H-row lists it" in e for e in errors), errors
+
+
+def test_the_ledger_s_own_bookkeeping_is_not_demanded_as_evidence():
+    """The ledger and the prose handoff are nobody's proof artifacts."""
+    errors = hs._unclaimed_artifacts([_row(proof_artifacts=[])])
+    joined = " ".join(errors)
+    assert "hardening_status.json" not in joined
+    assert "HANDOFF_PROMPT.md" not in joined
+
+
+def test_the_live_ledger_claims_every_artifact_on_disk():
+    """The real reconciliation, which is what `main()` runs."""
+    assert hs._unclaimed_artifacts(hs.load()["rows"]) == []

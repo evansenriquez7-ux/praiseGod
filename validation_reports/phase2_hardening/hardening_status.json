@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-12T17:15:41+08:00",
-  "head_short": "015b7f35",
+  "generated_at": "2026-09-16T10:00:00+08:00",
+  "head_short": "ee8ad40e",
   "source_plan": "docs/phase2_hardening_completion_plan.md",
   "note": "Finding counts can GROW as stronger gates expose defects; a smaller count is not evidence of progress. Validate with `PYTHONPATH=. .venv/bin/python tests/hardening_status.py`.",
   "rows": [
@@ -99,8 +99,8 @@
     },
     {
       "id": "H-04",
-      "status": "in_progress",
-      "owner": "codex-20260912-h04-executor",
+      "status": "open",
+      "owner": "unclaimed",
       "finding": "Continuous axes are swept separately from discrete ones, and serving context, experience, interest, renderer and response mode are not one finite obligation model.",
       "affected_assertions": [
         "execution_matrix_1C",
@@ -128,7 +128,7 @@
         "validation_reports/HARDENING_EVIDENCE.md"
       ],
       "closing_revision": null,
-      "updated_at": "2026-09-15T14:10:00+08:00",
+      "updated_at": "2026-09-16T10:00:00+08:00",
       "measurement_status": "RE-MEASURED 2026-09-15 on the current working tree. Production removed four incompatible peso_money_build routes, yielding 455 pairs / 4,269 base / 461,052 finite obligations and 18,762 continuous crossings. Both derivations agree; the regenerated budget records 273 named rejections. The current full harness executed §11 cleanly; 1,000 cache keys / 4,000 represented executions were current and zero-failure, but no release shard receipt exists, so the finite sweep remains uncertified.",
       "recommended_order": 3,
       "progress": "EXECUTOR IMPLEMENTED on the working tree: tests/obligation_executor.py crosses 27 interest requests x4 experiences into 461,052 finite obligations and five deterministic seed slots into 2,305,260 executions. The cache reuses only the common generator/formatter result before applying all four production experience wrappers. The former 1,000-cache-key benchmark and all mutation receipts are invalidated by the current production-routing edits; they must be regenerated before any claim of certification. PR sentinels cover every current node/DNA/formatter/interest/experience/seed-slot family.",
@@ -136,12 +136,13 @@
         "The projected three release shards cannot yet complete: on 2026-09-15 all three live `--tier release --workers 4 --shard-count 3` runs exceeded the 1.312-hour aggregate benchmark projection without writing a receipt and were interrupted. Each was blocked in `ProcessPoolExecutor.map` waiting for cache-key results. The full 2,305,260-execution finite sweep is NOT certified; diagnose representative sampling and release-worker progress/fail-fast behavior on the real path before rerunning.",
         "Continuous axes move together at each representative; cross-axis Cartesian interactions and behavior between representatives remain explicitly unproven.",
         "The PR tier can include every changed base obligation only when the caller supplies its exact manifest key; automatic commit-diff-to-obligation mapping is not implemented."
-      ]
+      ],
+      "notes": "2026-09-16: lock 'codex-20260912-h04-executor' released -- that session committed and ended without releasing, so the row read as live work to every session after it. Partial work is preserved in `progress`/`still_open`; the row is claimable."
     },
     {
       "id": "H-05",
-      "status": "in_progress",
-      "owner": "codex-20260913-h05-scale-safety",
+      "status": "open",
+      "owner": "unclaimed",
       "finding": "Vocabulary, interest, DNA, compatibility, render and grade checks contain narrow representatives, first-DNA selection, low sample counts, G1-3 assumptions, tolerated floors, static approximations or silent import paths.",
       "affected_assertions": [
         "static_vocab_gated_lint",
@@ -169,22 +170,24 @@
         "validation_reports/mutation_proofs/secondary_dna_vocab_gate_leak.json",
         "validation_reports/mutation_proofs/interest_theme_changes_final_answer.json",
         "validation_reports/mutation_proofs/interest_theme_dropped_after_formatting.json",
-        "validation_reports/mutation_proofs/lab_route_drops_interest.json"
+        "validation_reports/mutation_proofs/lab_route_drops_interest.json",
+        "validation_reports/phase2_hardening/silent_path_inventory.json"
       ],
       "closing_revision": null,
-      "updated_at": "2026-09-14T00:00:00+08:00",
+      "updated_at": "2026-09-16T10:00:00+08:00",
       "measurement_status": "measured 2026-09-14 on working tree based at f8597c0f; all seven H-05 mutations current in the 105-proof corpus",
       "recommended_order": 4,
       "progress": "PARTIAL: the formerly red learner-visible interest path is repaired and executed clean over all 4,100 supported node/DNA/theme/seed requests; interest metadata alone no longer counts as delivery. Behavioral Lab/student-portal equivalence now executes one manifest-derived obligation for every current node/DNA/formatter route and passed its focused test. Vocabulary executes every mapped DNA and static VocabGated mapping. DNA structure exercises every applicable node and declared grade at five seeds through generate_context, parses multi-digit grades and uses exact Fraction comparison; feasibility has its own zero-acceptance mutation. Registry coverage is bidirectional through KG, NODE_TO_DNA, COMPATIBILITY and DNA_MODULE_MAP. KG monotonicity follows all 5,726 explicit prior_node_ids edges. Two genuine silent generation catches were removed, reducing the classified handler inventory from 19 to 17.",
       "still_open": [
         "The focused interest gate uses every node/DNA/theme at five seeds but the default formatter selected by each seed; every formatter x interest crossing still depends on H-04's six unexecuted release shards.",
         "Render and grading breadth, sample caps, exact displayed-domain classification, and other not-judged/not-gated branches named by H-05 remain unaddressed."
-      ]
+      ],
+      "notes": "2026-09-16: lock 'codex-20260913-h05-scale-safety' released -- that session committed and ended without releasing, so the row read as live work to every session after it. Partial work is preserved in `progress`/`still_open`; the row is claimable."
     },
     {
       "id": "H-06",
-      "status": "in_progress",
-      "owner": "codex-20260914-h06-canonical-evidence",
+      "status": "open",
+      "owner": "unclaimed",
       "finding": "Phase 2 evidence omits complete visuals and options, freshness does not bind every learner-visible field, and requirement evidence can be incomplete if clause extraction omitted curriculum text.",
       "affected_assertions": [
         "judgment_reviews",
@@ -204,7 +207,7 @@
         "validation_reports/mutation_proofs/judgment_accepts_mismatched_dispatch_clauses.json"
       ],
       "closing_revision": null,
-      "updated_at": "2026-09-14T16:00:00+08:00",
+      "updated_at": "2026-09-16T10:00:00+08:00",
       "measurement_status": "executed focused controls 2026-09-14 on working tree",
       "recommended_order": 5,
       "progress": "PARTIAL: schema-v2 packets now record exact competency and full requirement snapshots, requested/effective replay identity, resolved answers, ordered options, hints, cloze, full visual payload, response configuration, stable sample/replay/packet digests, and a countable visual description derived from emitted React markup. Judgment and capability packets share the same student-path renderer; both freshness gates reject missing/corrupt rendered visual evidence. The merged validator requires exact clause coverage, per-sample mathematical/contextual/ambiguity/clarity assessments, lossless-decomposition review, packet-bound dispatch identity, and an immutable raw-response digest. Focused controls pass and seven new visual/schema mutations were detected individually; all proof records remain stale until the final full re-proof. Legacy live reviews are now explicit schema-v2 migration debt. Resumed checkpoint: seed-42 negative controls exposed and repaired reviewer/dispatch identity disagreement and mismatched dispatch clause allocation; both new mutations were detected individually on final bytes. Two capability freshness regressions also pass after replacing tsx CLI IPC with the direct Node loader in both renderer entry points.",
@@ -212,12 +215,13 @@
         "The merged opaque-response filing helper and dual node/clause dispatch planner are not yet complete.",
         "The 151 live judgment records and capability attestations have not been independently re-reviewed into the new schema, so Phase 2 remains red by design.",
         "Clause/sample reasoning provenance and anti-template enforcement still need to cover the new nested reasoning fields, not only the six legacy top-level rationales."
-      ]
+      ],
+      "notes": "2026-09-16: lock 'codex-20260914-h06-canonical-evidence' released -- that session committed and ended without releasing, so the row read as live work to every session after it. Partial work is preserved in `progress`/`still_open`; the row is claimable."
     },
     {
       "id": "H-07",
-      "status": "in_progress",
-      "owner": "codex-20260914-h08-static-render",
+      "status": "open",
+      "owner": "unclaimed",
       "finding": "The six facets do not yet force explicit judgments about contextual/logical validity, ambiguity, feedback/hints, misconception quality, interaction clarity or accessibility.",
       "affected_assertions": [
         "judgment_reviews",
@@ -234,9 +238,10 @@
       ],
       "proof_artifacts": [],
       "closing_revision": null,
-      "updated_at": "2026-09-14T16:00:00+08:00",
+      "updated_at": "2026-09-16T10:00:00+08:00",
       "measurement_status": "unmeasured — inherited from the plan",
-      "recommended_order": 7
+      "recommended_order": 7,
+      "notes": "2026-09-16: this row was 'in_progress' held by 'codex-20260914-h08-static-render' -- H-08's session identifier -- while its own measurement_status read 'unmeasured'. The H-08 worker claimed the wrong row and never released it, so the untouched row read as live work and the nearly-finished one read as unstarted. Released. §1L / plan step 3A is genuinely unstarted: no context_semantics_inventory.json exists and §1L appears in neither docs/pgen_contract.md nor _manifest.CHECK_PHASE."
     },
     {
       "id": "H-08",
@@ -255,9 +260,21 @@
         "Planted defects (thrown render, dropped conditional key, degenerate visual, onAnswer disagreeing with the key) each detected by name",
         "Pointer-drag geometry on the two pointer components recorded as an unproven blind spot, not described as covered"
       ],
-      "proof_artifacts": [],
+      "proof_artifacts": [
+        "validation_reports/phase2_hardening/frontend_static_render.json",
+        "validation_reports/mutation_proofs/frontend_component_throws_during_render.json",
+        "validation_reports/mutation_proofs/frontend_conditional_jump_branch_dropped.json",
+        "validation_reports/mutation_proofs/frontend_description_omits_drawn_element.json",
+        "validation_reports/mutation_proofs/frontend_visual_degenerates_to_empty_box.json",
+        "validation_reports/mutation_proofs/frontend_render_artifact_outlives_source.json",
+        "validation_reports/mutation_proofs/frontend_onanswer_disagrees_with_key.json",
+        "validation_reports/mutation_proofs/frontend_duplicate_mode_hides_missing_mode.json",
+        "validation_reports/mutation_proofs/frontend_roundtrip_coverage_silently_narrowed.json",
+        "tests/frontend_suite.py",
+        "tests/unit/test_frontend_artifact_completeness.py"
+      ],
       "closing_revision": null,
-      "updated_at": "2026-09-12T17:15:41+08:00",
+      "updated_at": "2026-09-16T10:00:00+08:00",
       "notes": "Owner ruling 2026-09-12: NO browser gate. Closed in Phase 1 without Chromium, Puppeteer or a dev server. See plan step 5A.",
       "measurement_status": "executed 2026-09-14 on working tree: 27 payload classes, 54 renders, 15 production visual types, 10 answer round trips",
       "recommended_order": 8,
