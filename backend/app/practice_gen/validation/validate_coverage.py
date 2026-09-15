@@ -59,6 +59,14 @@ invisible here, and so is a new failure mode folded into an existing label's err
 §8's unit is the assertion, not the mutation: where two mutations prove one label, either
 may be deleted without §8 noticing — §7's `mutations` floor is what guards that.
 
+An unproven label is reported in one of three families, because each takes a different
+fix: `never_executed` (claimed, but no proof record exists — run it), `proof_does_not_hold`
+(a record exists and fails verification, e.g. a red baseline — repair the control and
+re-run it, do NOT write a second mutation), and `unproven_assertion` (nothing claims the
+label — write a mutation or record a dated allowlist entry). What this still does not
+distinguish is Mandate 2's two causes of a SURVIVING mutation: a broken check and a plant
+that stopped reaching the validated path read identically here.
+
 **§8 proved by DECLARATION until 2026-09-12; it now proves by EXECUTION.**
 `proven_assertions()` used to read `Mutation.asserts` out of the mutation table. It never
 ran a mutation and never learned whether one was DETECTED, so a mutation that SURVIVED —
@@ -397,6 +405,13 @@ def mutation_proof_failures() -> List[str]:
     reports the resulting hole as an unproven assertion, which is the same finding stated
     where it belongs. Splitting them matters: "never run" and "run, and the result does
     not stand" have different fixes.
+
+    The inventory pass honours that split in THREE families, not two (fixed 2026-09-16):
+    `never_executed` (no record), `proof_does_not_hold` (a record exists and fails
+    verification), and `unproven_assertion` (no mutation claims the label at all). Until
+    the second family existed, 19 labels whose proofs had been taken against a red
+    baseline were reported as having no mutation, and the message told the reader to
+    write one.
     """
     return _proof_state()["errors"]  # type: ignore[return-value]
 
@@ -430,6 +445,12 @@ def validate_coverage_tagged() -> List[Tuple[str, str]]:
     families: List[str] = ["printed_scan"] * len(errors)
 
     never_run = set(unproven_because_never_executed())
+    # A label can be unproven in THREE ways, and they take three different fixes. Reporting
+    # the third as the first is how 19 assertions on 2026-09-15 told the reader to "write
+    # the mutation" for checks that already had one -- the proof had been taken against a
+    # red baseline. Following that message would have added a duplicate rather than re-run
+    # the control from a clean tree.
+    failed_verification: Dict[str, List[str]] = state["failed_verification"]  # type: ignore[assignment]
     # `stale_tree_only` labels DO have executed proofs; the single tree-move error above
     # already says why they do not currently count, and repeating it per label would
     # bury the finding a planted mutation is meant to surface.
@@ -443,6 +464,20 @@ def validate_coverage_tagged() -> List[Tuple[str, str]]:
                 f"that have filed NO executed proof record on these bytes. A mutation that "
                 f"has not been run proves nothing. Run: PYTHONPATH=. .venv/bin/python "
                 f"tests/mutation_harness.py --only {claimants[0]}"
+            )
+            continue
+        broken = [c for c in claimants if c in failed_verification]
+        if broken:
+            families.append("proof_does_not_hold")
+            reasons = "; ".join(
+                f"{c}: {failed_verification[c][0]}" for c in broken
+            )
+            errors.append(
+                f"§8 coverage: assertion {label!r} IS claimed by mutation(s) {broken}, and "
+                f"each has filed a proof record that does NOT hold -- so the assertion is "
+                f"unproven, but the mutation is not missing. Do NOT write another mutation "
+                f"and do NOT allowlist it: fix what the record says and re-run it. "
+                f"Rejection(s): {reasons}"
             )
             continue
         families.append("unproven_assertion")

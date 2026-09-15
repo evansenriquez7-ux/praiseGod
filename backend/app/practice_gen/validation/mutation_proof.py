@@ -503,6 +503,10 @@ def evaluate(mutations: Iterable[Any],
       tree_moved      -- the input digest no longer matches what the proofs were taken on
       stale_tree_only -- labels whose ONLY problem is that tree move; §8 suppresses the
                          per-label error for these because `errors` already says it once
+      failed_verification -- {mutation name: its non-tree-move rejections}. A record
+                         EXISTS and does not hold, which is a different fix from having
+                         no record at all; §8's inventory pass needs to tell them apart
+                         or it tells the reader to write a mutation that is already there
       records         -- the raw proof records that parsed
 
     A mutation with no proof record at all is NOT an error here — it is simply not proving
@@ -518,6 +522,7 @@ def evaluate(mutations: Iterable[Any],
     stale_tree_only: Set[str] = set()
     tree_moved_names: List[str] = []
     recorded_digests: Set[str] = set()
+    failed_verification: Dict[str, List[str]] = {}
 
     for name, record in sorted(proofs.items()):
         errs = verify_proof(record, by_name.get(name), digest, require_phase1_admissible)
@@ -530,6 +535,7 @@ def evaluate(mutations: Iterable[Any],
             recorded_digests.add(str(record.get("input_digest", ""))[:12])
             stale_tree_only |= set(record.get("asserts") or ())
             continue
+        failed_verification[name] = other
         errors.extend(other)
 
     if tree_moved_names:
@@ -547,6 +553,7 @@ def evaluate(mutations: Iterable[Any],
         "tree_moved": bool(tree_moved_names),
         "tree_moved_mutations": sorted(tree_moved_names),
         "stale_tree_only": stale_tree_only,
+        "failed_verification": failed_verification,
         "records": proofs,
     }
 
