@@ -1,5 +1,5 @@
 """
-`run_all` pins DATABASE_URL before anything can capture it, and says that it did.
+The validation package pins DATABASE_URL before anything can capture it, and says it did.
 
 WHY THIS FILE EXISTS
 --------------------
@@ -8,20 +8,27 @@ WHY THIS FILE EXISTS
 at import time; `load_dotenv()` does not override a key already present in `os.environ`.
 So a pin is only effective before `backend.app.database` is first imported.
 
+The pin lives in `backend/app/practice_gen/validation/__init__.py`. It was in `run_all`
+first, and that was measurably not enough: every mutation runs its command as
+`python -m backend.app.practice_gen.validation.validate_<x>`, which never imports `run_all`,
+so all 145 mutation subprocesses still resolved the live URL. Python imports parent packages
+before submodules, so the package `__init__` is the one place that covers the aggregate
+runner, the direct validator form, and the mutation runner alike.
+
 WHAT THESE TESTS DO AND DO NOT GUARD
 ------------------------------------
-They assert the OUTCOME -- `backend.app.database.DATABASE_URL == ""` after importing
-`run_all` -- not where the pin sits in the file. That distinction is measured, not assumed:
-no module in `run_all`'s validator import block imports `backend.app.database` at import
-time (they take it lazily inside functions), so moving the pin below that block does not
-currently change the outcome and these tests correctly do NOT fail on it. Verified by
-planting exactly that edit; all six still passed.
+They assert the OUTCOME -- `backend.app.database.DATABASE_URL == ""` -- for each entry point
+separately, rather than where the pin sits in a file. That distinction is measured, not
+assumed: no module in `run_all`'s validator import block imports `backend.app.database` at
+import time (they take it lazily inside functions), so moving a pin below that block does
+not by itself change the outcome, and these tests correctly do NOT fail on it. Verified by
+planting exactly that edit.
 
 What they DO catch is the combination that would actually hurt: a module-level
-`backend.app.database` import appearing in the validator block while the pin sits beneath
-it. Asserting the outcome rather than the line number is what makes them survive a
-refactor, and it is the honest thing to claim -- an earlier draft of this docstring said
-these tests guarded the placement, and that was false.
+`backend.app.database` import appearing while the pin sits beneath it. Verified by planting
+that too -- 3 of 6 failed, naming the leaked URL. Asserting the outcome per entry point,
+rather than a line number, is what makes these survive a refactor; an earlier draft of this
+docstring claimed they guarded placement, and that was false.
 
 Measured before the pin, on identical bytes (2026-09-16):
 `tests/unit/test_supervisor_queue.py::test_queue_counts_all_three_bands` FAILED in 15.89s
@@ -95,6 +102,46 @@ def test_importing_run_all_leaves_database_url_empty():
         f"run_all. The pin must execute BEFORE the first import that reaches "
         f"backend.app.database -- check it has not been moved below run_all's import block."
     )
+
+
+def test_a_direct_validator_invocation_is_pinned_too():
+    """
+    The form EVERY mutation command uses, and the gap that made the first version of this
+    pin inadequate. `tests/mutation_harness.py` runs each mutation's command as a
+    subprocess, and those commands are
+    `python -m backend.app.practice_gen.validation.validate_<x>` -- `run_all` is never
+    imported on that path. With the pin in `run_all` all 145 mutation subprocesses still
+    resolved the live Neon URL; measured before it shipped. The pin lives in the package
+    `__init__` for exactly this reason.
+    """
+    proc = _fresh(
+        "import backend.app.practice_gen.validation.validate_capability as vc; "
+        "import backend.app.database as db; "
+        "import sys; "
+        "print(repr(db.DATABASE_URL), "
+        "'run_all' in str(list(sys.modules)))"
+    )
+    assert proc.returncode == 0, proc.stderr
+    url, run_all_loaded = proc.stdout.strip().split(" ", 1)
+    assert url == "''", (
+        f"a direct validator invocation resolved {url}. Every mutation command takes this "
+        f"path, so the pin must live in the validation package's __init__, not in run_all."
+    )
+    assert run_all_loaded == "False", (
+        "this test is meant to prove the pin WITHOUT run_all in the picture; if run_all is "
+        "imported here it proves nothing about the direct path"
+    )
+
+
+def test_the_mutation_runner_import_is_pinned_too():
+    """The runner itself, for the same reason."""
+    proc = _fresh(
+        "import tests.mutation_harness as m; "
+        "import backend.app.database as db; "
+        "print(repr(db.DATABASE_URL))"
+    )
+    assert proc.returncode == 0, proc.stderr
+    assert proc.stdout.strip() == "''"
 
 
 def test_the_graded_path_cannot_open_a_remote_engine_after_the_pin():
