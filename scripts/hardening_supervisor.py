@@ -476,6 +476,14 @@ def queue_state() -> dict | None:
     # probe measures the same student path as run_all instead of becoming unevaluable.
     probe_env = os.environ.copy()
     probe_env["PYTHONPATH"] = "."
+    # HERMETIC BY CONSTRUCTION, not by inheritance (fixed 2026-09-16). `.env` in this
+    # repo carries a live Postgres URL, and the probe imports the app, so an inherited
+    # environment sent this measurement at a remote database: the test that proves the
+    # three-band arithmetic (`test_queue_counts_all_three_bands`) FAILED in 15.9s when
+    # the caller had not set `DATABASE_URL=` and PASSED in 153s when it had. A gate whose
+    # verdict depends on an operator remembering an environment variable is not a gate,
+    # and H-01 closed on Phase 1 being hermetic. The probe now pins it itself.
+    probe_env["DATABASE_URL"] = ""
     p = subprocess.run(
         [sys.executable, "-c", _QUEUE_PROBE],
         cwd=REPO, capture_output=True, text=True,
