@@ -8,6 +8,7 @@ from tests.obligation_executor import (
     DEFAULT_SEEDS_PER_OBLIGATION,
     SEED_SLOT_SCALARS,
     _base_obligations,
+    cache_key_count,
     decode_cache_index,
     difficulty_profile_for,
     experience_values,
@@ -15,6 +16,7 @@ from tests.obligation_executor import (
     finite_obligation_count,
     interest_request_values,
     pr_indices,
+    pr_sentinel_indices,
     representative_indices,
     release_receipt_findings,
     represented_execution_count,
@@ -131,3 +133,67 @@ def test_executor_stops_after_first_failed_obligation(monkeypatch):
     assert calls == [0]
     assert len(results) == 1
     assert results[0].failure is not None
+
+
+# ── the sample's uniformity, which the release budget is multiplied out of ────
+# `benchmark()` projects the whole release sweep as
+# `elapsed / len(indices) * cache_key_count(...)`, and §11 gates on the two
+# `*_within_budget` flags derived from it. A sample that is not uniform over the
+# index space makes that gate report "within budget" from a skewed mean.
+#
+# Measured at sample_size=1000 before 2026-09-16: the stride denominator was
+# `sample_size - 1` (999) while only `sample_size - len(sentinels)` = 832 points
+# were emitted, so the strided component covered 83.4% of the span and the top two
+# deciles held 44 and 11 points against a uniform ~100. H-04's release shards,
+# sized from that projection, ran far past it and were killed without a receipt.
+
+
+def test_the_sample_spans_the_whole_index_space():
+    """The defect directly: the strided component stopped at 83.4% of the range."""
+    total = cache_key_count(DEFAULT_SEEDS_PER_OBLIGATION)
+    sentinels = set(pr_sentinel_indices(DEFAULT_SEEDS_PER_OBLIGATION))
+    strided = [i for i in representative_indices(1000) if i not in sentinels]
+    covered = max(strided) / (total - 1)
+    assert covered > 0.99, (
+        f"strided points cover only {covered:.1%} of the cache-key span; the release "
+        f"projection is a linear extrapolation of this sample's mean cost"
+    )
+
+
+def test_no_decile_of_the_index_space_is_starved():
+    """
+    Uniformity, stated as a bound rather than an exact count: sentinels are included
+    by contract and they cluster low, so decile 0 runs legitimately heavy. What must
+    not recur is a decile the sample barely touches.
+    """
+    total = cache_key_count(DEFAULT_SEEDS_PER_OBLIGATION)
+    indices = representative_indices(1000)
+    counts = [0] * 10
+    for index in indices:
+        counts[min(9, index * 10 // total)] += 1
+    assert min(counts) >= 60, (
+        f"decile counts {counts} — a decile under 60 of an expected ~100 means the "
+        f"projection is extrapolating from a region it barely sampled"
+    )
+
+
+def test_the_sample_is_exactly_the_requested_size_and_deterministic():
+    """No truncation of the high tail, no short return, same answer every call."""
+    first = representative_indices(1000)
+    assert len(first) == len(set(first)) == 1000
+    assert first == representative_indices(1000)
+
+
+def test_every_sentinel_survives_the_top_up():
+    """
+    The top-up bisects gaps, which must never displace a sentinel: the sentinels are
+    the only thing guaranteeing the sample touches each node/DNA/formatter family.
+    """
+    sentinels = set(pr_sentinel_indices(DEFAULT_SEEDS_PER_OBLIGATION))
+    assert sentinels <= set(representative_indices(1000))
+
+
+def test_a_sample_the_size_of_the_sentinel_set_is_exactly_the_sentinels():
+    """The boundary: no strided points to emit, and the stride must not divide by zero."""
+    sentinels = pr_sentinel_indices(DEFAULT_SEEDS_PER_OBLIGATION)
+    assert representative_indices(len(sentinels)) == sorted(sentinels)

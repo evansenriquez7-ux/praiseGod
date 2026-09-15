@@ -273,26 +273,70 @@ def representative_indices(
     sample_size: int,
     seeds_per_obligation: int = DEFAULT_SEEDS_PER_OBLIGATION,
 ) -> List[int]:
-    """Deterministic 1,000-style sample covering all finite dimensions first."""
+    """
+    Deterministic sample covering all finite dimensions first, then spread uniformly.
+
+    WHY THE STRIDE DENOMINATOR IS THE EMITTED COUNT AND NOT `sample_size`
+    --------------------------------------------------------------------
+    This function's result is multiplied straight into a release budget:
+    `benchmark()` computes `elapsed / len(indices) * cache_key_count(...)` and §11 GATES on
+    the two `*_within_budget` flags derived from it. A sample that is not uniform over the
+    index space therefore does not merely mis-estimate, it makes a gate report "within
+    budget" off a skewed mean.
+
+    Until 2026-09-16 it was not uniform. The stride was computed over `sample_size - 1`
+    (999) but the loop broke as soon as the SET reached `sample_size`, so with 168
+    sentinels already in the set only 832 strided points were ever emitted — the first 832
+    ordinals of a 1,000-point stride. Measured at `sample_size=1000`: the strided component
+    stopped at index 480,550 of 576,315, covering **83.4%** of the span (832/999 = 83.3%),
+    and the top two deciles held 44 and 11 points against a uniform ~100. The top-up loop
+    then filled from index 0 upward, re-weighting the low end it had already over-sampled,
+    and `[:sample_size]` truncated the high tail.
+
+    Observed consequence: H-04's three release shards, sized from this projection, ran far
+    past the 1.312h aggregate estimate and were killed without a receipt. The projection
+    was read as a worker defect; it was this.
+
+    The denominator is now the number of points actually emitted, and the top-up bisects
+    the widest remaining gaps instead of prepending zeros, so the sample stays uniform when
+    sentinels collide with strided points.
+    """
     total = cache_key_count(seeds_per_obligation)
-    if sample_size < len(pr_sentinel_indices(seeds_per_obligation)):
+    sentinels = pr_sentinel_indices(seeds_per_obligation)
+    if sample_size < len(sentinels):
         raise ValueError(
             f"sample_size={sample_size} is smaller than the "
-            f"{len(pr_sentinel_indices(seeds_per_obligation))} required sentinels"
+            f"{len(sentinels)} required sentinels"
         )
     if sample_size > total:
         raise ValueError(f"sample_size={sample_size} exceeds {total} cache keys")
-    selected = set(pr_sentinel_indices(seeds_per_obligation))
-    if sample_size > 1:
-        for ordinal in range(sample_size):
-            selected.add(round(ordinal * (total - 1) / (sample_size - 1)))
-            if len(selected) >= sample_size:
-                break
-    candidate = 0
+
+    selected = set(sentinels)
+    n_strided = sample_size - len(selected)
+    if n_strided > 0:
+        denominator = (n_strided - 1) if n_strided > 1 else 1
+        for ordinal in range(n_strided):
+            selected.add(round(ordinal * (total - 1) / denominator))
+
+    # A strided point can land on a sentinel, which leaves the set short. Fill by
+    # bisecting the widest gap each time: that preserves uniformity, where filling from
+    # zero upward (the previous behaviour) biases exactly the region already densest.
     while len(selected) < sample_size:
-        selected.add(candidate)
-        candidate += 1
-    return sorted(selected)[:sample_size]
+        ordered = sorted(selected)
+        widest, at = 0, None
+        for left, right in zip(ordered, ordered[1:]):
+            midpoint = (left + right) // 2
+            if right - left > widest and midpoint not in selected:
+                widest, at = right - left, midpoint
+        if at is None:
+            # No gap is bisectable; fall back to the lowest unused index so the function
+            # still returns exactly `sample_size` points rather than silently fewer.
+            at = next(i for i in range(total) if i not in selected)
+        selected.add(at)
+
+    # No truncation: `selected` can never exceed `sample_size` above, and slicing the
+    # sorted list is what discarded the high tail before.
+    return sorted(selected)
 
 
 def changed_base_indices(keys: Sequence[str]) -> List[int]:
