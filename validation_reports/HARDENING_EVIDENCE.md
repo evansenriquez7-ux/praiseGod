@@ -11235,3 +11235,97 @@ $ PYTHONPATH=. .venv/bin/python tests/hardening_status.py
 genuine Phase 2 content debt (1,158 review findings, 218 attestation findings), one needs
 H-04's 2.518h release sweep, and one is the two named mutation clusters above. Every red is
 named, every stage reached a verdict, and nothing is warning-only.
+
+---
+
+## 2026-09-16 — owner decision: the harness pins its own database URL
+
+### The decision, and a correction to how it was framed
+
+The review called this a "contractual problem". **That was overstated and is withdrawn.**
+No contract row ever claimed Phase 1 was hermetic: the §10 row scopes its claim to
+`hermetic_database()` and names its blind spots, and `H-01`'s row says "Phase 1 green **with
+`DATABASE_URL=` empty**", which is a conditional and true. What actually existed were two
+separate things:
+
+1. **A reproducibility defect.** `AGENTS.md`'s Definition of Done names
+   `python -m backend.app.practice_gen.validation.run_all` with no prefix, and that was not
+   the command the evidence was proved with. Measured on identical bytes:
+   `test_queue_counts_all_three_bands` **FAILED in 15.89s** unprefixed and **passed in
+   153.15s** with `DATABASE_URL=` empty, because `.env` carries a live Neon URL and the
+   three-band probe reached it. A gate whose answer depends on the operator's environment is
+   not a gate (Protocol 6).
+2. **A real latent gap, not fixed here and now recorded as owed work.**
+   `hermetic_database()` is called in exactly ONE place, `validate_grade`, and
+   `grading_hermetic_10` asserts "no outbound connection from **the graded path**". The other
+   thirteen Phase 1 stages have neither the guard nor any assertion covering outbound
+   connections.
+
+Decision: fix (1) in the harness rather than the documentation, and record (2) as a gate to
+build while its baseline is still clean (Mandate 5).
+
+### What shipped
+
+The validation package pins `DATABASE_URL=""` at import. `run_all` prints what it replaced —
+scheme and host only, never the credential, because that output is pasted into evidence logs
+— so this is not a silent default (Protocol 3).
+
+**The first attempt was inadequate and was caught before it certified anything.** The pin
+began in `run_all`, but every mutation runs its command as
+`python -m backend.app.practice_gen.validation.validate_<x>`, which never imports `run_all`:
+
+```text
+$ python -c "import ...validation.validate_capability, backend.app.database as db; \
+             print(repr(db.DATABASE_URL))"
+  'postgresql://neondb_owner:npg_rkx1bqZNJ...'
+```
+
+So all 145 mutation subprocesses were still environment-dependent. A corpus run already in
+flight was killed rather than allowed to finish against bytes the pin did not cover. Python
+imports parent packages before submodules, so the pin moved to
+`backend/app/practice_gen/validation/__init__.py`, which covers the aggregate runner, the
+direct validator form and the mutation runner alike.
+
+**A second correction, to my own comment.** Its first draft claimed the placement above
+`run_all`'s import block was load-bearing and that moving it "silently restores the defect".
+Measured: no module in that block imports `backend.app.database` at import time, so moving
+the pin below it changes nothing today — and when that edit was planted, all six tests
+correctly still passed. The comment now says placement is precautionary. The tests assert the
+OUTCOME per entry point rather than a line number, and catch the combination that would
+actually hurt: planting a module-level database import alongside a pin moved below it failed
+3 of 6 and named the leaked URL.
+
+### Verification
+
+```text
+$ PYTHONPATH=. .venv/bin/pytest tests/unit/test_run_all_hermetic_pin.py -q
+  8 passed
+
+  direct validator import  -> ''  and get_engine() refuses by name
+  mutation runner import   -> ''
+  run_all import          -> ''
+  operator-supplied URL    -> overridden, not honoured
+  bare import (control)    -> CONFIGURED, so the suite cannot pass vacuously
+  banner names the replaced host, never the credential, and names the limitation
+
+$ PYTHONPATH=. .venv/bin/python tests/mutation_harness.py          # no prefix
+  145 records · 0 stale · 0 never executed · 11 do not hold (the two known clusters)
+  proven: 113 of 134 assertion labels
+
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.run_all   # NO prefix
+  PASS unit_tests (711 passed, 1 skipped, 2 deselected in 650.57s)
+  scheduled=16 completed=12 failed=4 crashed=0 not_run=0 incomplete=0
+  EXIT=1
+```
+
+Unprefixed, that stage read `1 failed, 677 passed` before this change. The ledger is now
+**identical to the prefixed run**, which is the whole point: the documented command and the
+proved command are the same command.
+
+### Still owed
+
+A Phase-1-wide hermeticity gate: install the guard around every stage, add a
+`phase1_hermetic` assertion, and prove it with a mutation planting an outbound connection in
+a **non-§10** stage. Recorded in the §10 contract row, `AGENTS.md`, the plan's `START HERE`
+handoff (step 5 of the recommended order) and `HANDOFF_PROMPT.md`. **Pinning a URL is
+configuration, not enforcement**, and must not be read as having closed it.
