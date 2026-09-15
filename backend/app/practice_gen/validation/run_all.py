@@ -40,6 +40,51 @@ import sys
 from pathlib import Path
 from typing import Dict, Optional, Set
 
+# ───────────────────────────────────────────────────────────────────────────────────────
+# HERMETICITY: THE DATABASE URL IS PINNED EMPTY FOR EVERY RUN OF THIS HARNESS
+# ───────────────────────────────────────────────────────────────────────────────────────
+# `.env` in this repo carries a live Neon Postgres URL. `backend/app/database.py` calls
+# `load_dotenv()` and captures `os.getenv("DATABASE_URL")` into a MODULE-LEVEL constant at
+# import time, and `load_dotenv()` does not override a key already present in os.environ.
+# So a pin is only effective before `backend.app.database` is first imported.
+#
+# PLACEMENT IS PRECAUTIONARY, NOT LOAD-BEARING TODAY -- measured, because the first draft of
+# this comment claimed the opposite and was wrong. No module in the validator block below
+# imports `backend.app.database` at import time (they take it lazily inside functions), so
+# moving these two lines beneath that block does not currently break anything:
+#     python -c "from backend.app.practice_gen.validation import validate_grade, ...; \
+#                'backend.app.database' in sys.modules"   -> False
+# They sit above the imports anyway, so that the day some validator does start importing
+# the database at module load, the pin is already earlier than it. `test_run_all_hermetic_pin`
+# asserts the OUTCOME (`database.DATABASE_URL == ""` after importing this module) rather than
+# the placement, and so it catches exactly the combination that would actually hurt: a
+# module-level database import landing while the pin sits below it.
+#
+# WHY PIN IT AT ALL. Without it the harness's verdict depends on an ambient variable the
+# operator has to remember. Measured on identical bytes 2026-09-16:
+# `tests/unit/test_supervisor_queue.py::test_queue_counts_all_three_bands` FAILED in 15.89s
+# with the variable unset and PASSED in 153.15s with it empty, because the three-band probe
+# reached the real database. CLAUDE.md's Definition of Done names this module with no
+# prefix, so the documented command was not the command H-01 was proved with. A gate whose
+# answer depends on the environment is not a gate (Protocol 6), and the fix belongs in the
+# harness rather than in an instruction a future session must remember.
+#
+# NOT A SILENT DEFAULT (Protocol 3): what was overridden is printed at the top of every run,
+# see `_print_hermeticity_banner`. No band of this harness has any business reaching
+# production Postgres -- §10 builds a throwaway SQLite instead, via
+# `tests/hermetic_db.hermetic_database()`.
+#
+# LIMITATION, NAMED (Mandate 6): this pins the DATABASE URL. It does NOT install the socket
+# guard, so it does not make Phase 1 hermetic -- it only removes the operator's ability to
+# get a different answer by forgetting a prefix. `hermetic_database()` is used in exactly
+# ONE place (`validate_grade`), and `grading_hermetic_10` is scoped to "the graded path", so
+# the other thirteen Phase 1 stages have no guard and no assertion covering outbound
+# connections. See `docs/pgen_contract.md`'s §10 row and the `START HERE` handoff: building
+# a Phase-1-wide hermeticity gate is owed work, and this pin must not be read as having
+# done it.
+_PINNED_DATABASE_URL = os.environ.get("DATABASE_URL")
+os.environ["DATABASE_URL"] = ""
+
 from backend.app.practice_gen.validation import (
     validate_compat,
     validate_dna,
@@ -308,6 +353,34 @@ def _check_stage_phases(ledger: "StageLedger") -> list:
     return problems
 
 
+def _print_hermeticity_banner() -> None:
+    """
+    Say what was pinned, so the pin at the top of this module is not a silent default.
+
+    Protocol 3 forbids silent defaults, and overriding a variable the operator may have set
+    deliberately is exactly the kind of thing that has to announce itself -- otherwise the
+    next person to debug a connection error has no way to know the harness took the wheel.
+    The line also lands in the saved run log, which is what makes a filed run's hermeticity
+    auditable after the fact rather than assumed.
+    """
+    had = _PINNED_DATABASE_URL
+    if had:
+        # Show only the scheme and host. The value is a live credential and this output is
+        # pasted into evidence logs and commit messages.
+        shown = had.split("://", 1)[0] + "://" + had.split("@")[-1].split("/")[0] \
+            if "://" in had and "@" in had else "<set>"
+        print(f"  DATABASE_URL pinned to empty for this run (was {shown}). "
+              f"No band of this harness may use production Postgres.")
+    elif had == "":
+        print("  DATABASE_URL was already empty; pinned empty for this run.")
+    else:
+        print("  DATABASE_URL was unset; pinned empty for this run.")
+    print("  LIMITATION: this pins the URL only. The socket guard "
+          "(tests/hermetic_db.hermetic_database) runs in §10 alone, so the other Phase 1 "
+          "stages have no assertion covering outbound connections -- owed work, see "
+          "docs/pgen_contract.md §10 and the plan's START HERE handoff.")
+
+
 def _print_stage_ledger(ledger: "StageLedger", phase: Optional[int]) -> list:
     """
     Print the ledger and return the named failures it produces.
@@ -402,11 +475,14 @@ def run_all(fail_fast: bool = False, phase: Optional[int] = None) -> int:
                    f"({'artifact-free' if phase == 1 else 'needs an agent-authored artifact'})")
     print("======================================================================")
     print(banner)
-    print("======================================================================\n")
+    print("======================================================================")
+    _print_hermeticity_banner()
+    print()
 
     def _runs(p: int) -> bool:
         """True if the band `p` is in scope for this run."""
         return phase is None or phase == p
+
 
     # The DECLARED SCHEDULE. Every stage is named before anything runs, so the ledger can
     # tell "never reached" from "ran and passed" -- which straight-line code cannot.

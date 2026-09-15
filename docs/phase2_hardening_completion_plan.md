@@ -1267,18 +1267,31 @@ PYTHONPATH=. .venv/bin/python tests/hardening_status.py
 #  -> PASS hardening_status: 9 H-row(s) valid — 2 closed, 6 open, 1 out_of_scope
 ```
 
-**Run Phase 1 with `DATABASE_URL=` empty.** `.env` in this repo carries a live Neon Postgres
-URL, and the harness loads it. This is not cosmetic: it is why `test_supervisor_queue`
-FAILED in 15.89s and passed in 153.15s on the same bytes.
+**No `DATABASE_URL=` prefix is needed — this was DECIDED and implemented 2026-09-16.**
 
 ```sh
-DATABASE_URL= PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.run_all
+PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.run_all
 ```
 
-**OPEN OWNER DECISION, not yours to settle silently:** CLAUDE.md's Definition of Done names
-that command *without* `DATABASE_URL=`, so the documented command is not the hermetic one
-H-01 was proved with. Either `run_all` should pin the variable for Phase 1 itself or refuse
-to start with a non-empty one. Ask; do not quietly change the contract.
+`run_all` pins the database URL empty at import and prints what it overrode, so the
+documented command is now the command the evidence is proved with. The prefix still works
+and is harmless. Why it mattered: `.env` carries a live Neon URL, and on identical bytes
+`test_queue_counts_all_three_bands` FAILED in 15.89s unprefixed and PASSED in 153.15s with
+the variable empty — a gate whose answer depends on the operator's environment is not a gate
+(Protocol 6). The pin is announced rather than silent (Protocol 3) and is covered by
+`tests/unit/test_run_all_hermetic_pin.py`.
+
+**What that did NOT do, and it is the next hermeticity task.** Pinning a URL is
+configuration, not enforcement. `hermetic_database()` — the throwaway SQLite plus the socket
+guard that raises `HermeticNetworkError` by name — is called in exactly ONE place,
+`validate_grade`, and `grading_hermetic_10` is scoped to "the graded path". The other
+thirteen Phase 1 stages have no guard and no assertion covering outbound connections, so the
+next network dependency introduced anywhere outside §10 surfaces only as flaky redness.
+
+OWED, and a good self-contained piece of work: install the guard around every Phase 1 stage,
+add a `phase1_hermetic` assertion, and prove it with a mutation that plants an outbound
+connection in a NON-§10 stage. **Its baseline is clean today**, which per Mandate 5 is
+exactly when to build a gate. Do not describe the pin as having closed this.
 
 ### What is true right now
 
@@ -1357,7 +1370,10 @@ when you make it.
 4. **M2 content work** (steps 6 and 7) — the 218 attestation findings and the 1,158 review
    findings. This is the bulk of the remaining project and it unblocks §6F cluster 1.
    **The 151 fresh blind re-reviews are owed and are now countable.** See below.
-5. **`H-06`'s remainder** and the §8 deadlock (cluster 2) as capacity allows.
+5. **The Phase-1-wide hermeticity gate** described above — small, self-contained, and the
+   rare case of a gate whose baseline is already clean, so it can be proved properly rather
+   than against noise.
+6. **`H-06`'s remainder** and the §8 deadlock (cluster 2) as capacity allows.
 
 ### The review corpus: what was decided, and what you must not do
 

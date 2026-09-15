@@ -64,6 +64,8 @@ python -m backend.app.practice_gen.validation.run_all   # exits 0
 
 and any judgment items in `docs/pgen_judgment.md` have their evidence artifacts filed. Nothing else counts. Not "the code looks right," not "I traced the logic," not a checked box. If the harness doesn't exist yet in your branch, the definition of done is the relevant validator module for what you touched, run to a clean exit, with output shown.
 
+**That command needs no `DATABASE_URL=` prefix, as of 2026-09-16.** `run_all` pins the database URL empty itself and prints what it overrode, so the documented command is now the command the evidence is proved with. It was not before: `.env` carries a live Neon URL, and on identical bytes `test_queue_counts_all_three_bands` FAILED in 15.89s unprefixed and PASSED in 153.15s with `DATABASE_URL=` empty. **Pinning the URL is not hermeticity** — the socket guard (`tests/hermetic_db.hermetic_database`) runs in §10 alone, so thirteen Phase 1 stages still have no assertion covering outbound connections. That gate is owed work; see `docs/pgen_contract.md`'s §10 row and the plan's `START HERE` handoff.
+
 ## Engineering Protocols
 1. **Verification is execution.** Never report a bug fixed or a feature working without running the code and showing the output. Your report to the user must include the exact command(s) run and their verbatim result. A prediction of success phrased as a confirmation is a lie.
 2. **Root cause, then all instances.** When a bug is found, identify the root cause and fix every occurrence of that cause across the codebase — not just the reported symptom. Use Graphify to enumerate the occurrences (see #4).

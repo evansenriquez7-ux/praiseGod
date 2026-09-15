@@ -24,15 +24,16 @@ exactly one place now.
 
 ## The two things worth saying twice
 
-**Run Phase 1 hermetically.** `.env` carries a live Neon Postgres URL and the harness loads
-it, so the verdict changes depending on whether you remembered:
+**The Definition of Done command needs no prefix.** Decided and implemented 2026-09-16:
+`run_all` pins the database URL empty itself and prints what it overrode, because `.env`
+carries a live Neon URL and the verdict used to depend on whether you remembered.
 
 ```sh
-DATABASE_URL= PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.run_all
+PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.run_all
 ```
 
-CLAUDE.md's Definition of Done names that command *without* the empty `DATABASE_URL`. That
-gap is a recorded open owner decision — raise it, do not silently change either side.
+**That is not hermeticity, and the handoff says so.** The socket guard runs in §10 alone;
+building a Phase-1-wide hermeticity gate is owed work with a clean baseline available today.
 
 **The Definition of Done is NOT met, and no artifact in this repository claims it is.** Four
 stages are red: 1,158 Phase 2 review findings, 218 attestation findings, H-04's unrun
