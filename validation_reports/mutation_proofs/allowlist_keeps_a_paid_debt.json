@@ -3,7 +3,9 @@
   "assertion_allowlist_paid_8"
  ],
  "baseline_exit": 1,
- "baseline_markers_already_present": [],
+ "baseline_markers_already_present": [
+  "now proves it"
+ ],
  "baseline_must_not_contain": [
   "now proves it"
  ],
@@ -11,8 +13,8 @@
   "backend.app.practice_gen.validation.validate_coverage"
  ],
  "definition_digest": "ad754deb22a8eb14b899040972dcddabebcc1342a3e06abd39d727a706535a3e",
- "detected": true,
- "diagnostic_line": "exit 1 — FAIL mutation_proof_integrity_8 (3 in 3 families):",
+ "detected": false,
+ "diagnostic_line": "INVALID — the unmutated command baseline exited 1 and already reports ['now proves it']; this mutation cannot distinguish the planted bug from a pre-existing failure.",
  "environment": {
   "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
   "machine": "x86_64",
@@ -24,19 +26,15 @@
   "vocabulary_gating && now proves it"
  ],
  "expected_check": "§8 (an allowlisted assertion a mutation now proves)",
- "finished_at": "2026-09-15T06:00:45+08:00",
- "input_digest": "58cccb5a9e45dd5f7cbc40c98d866717f07972cc1004202ebb5c15974875e123",
- "mutated_paths": [
-  "backend/app/practice_gen/validation/validate_coverage.py"
- ],
+ "finished_at": "2026-09-16T01:38:46+08:00",
+ "input_digest": "0241936d686a7276024f2b07cf0e5c6339a34b14e6afb4cf294c4462fdf94ef5",
+ "mutated_paths": [],
  "mutation": "allowlist_keeps_a_paid_debt",
- "observed_markers": {
-  "vocabulary_gating && now proves it": true
- },
+ "observed_markers": {},
  "paths_outside_input_set": [],
  "phase1_admissible": true,
- "planted_exit": 1,
+ "planted_exit": null,
  "restored_clean": true,
  "schema_version": 1,
- "started_at": "2026-09-15T06:00:42+08:00"
+ "started_at": "2026-09-16T01:38:45+08:00"
 }

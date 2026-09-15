@@ -1,0 +1,46 @@
+{
+ "asserts": [
+  "answer_key_recomputation"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "answer_key_recomputation"
+ ],
+ "command": [
+  "backend.app.practice_gen.validation.validate_matrix",
+  "--node",
+  "mat_g1_na_q1_7"
+ ],
+ "definition_digest": "e32617bf87b2f981ee19871abbf0f8caa642c098c0e275d55ea7bc4bde9b1310",
+ "detected": true,
+ "diagnostic_line": "exit 1 — [1/1] Checking mat_g1_na_q1_7 ...  FAIL",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "answer_key_recomputation",
+  "Could not recompute answer"
+ ],
+ "expected_check": "§1E answer keys are independently recomputable from served inputs",
+ "finished_at": "2026-09-16T01:55:22+08:00",
+ "input_digest": "0acc7a2ac31602e09c878d5398663905e65e88a8bd92c2cc9d2c2bce48d76b56",
+ "mutated_paths": [
+  "backend/app/practice_gen/pipeline.py"
+ ],
+ "mutation": "answer_recomputation_input_missing",
+ "observed_markers": {
+  "Could not recompute answer": true,
+  "answer_key_recomputation": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-09-16T01:55:14+08:00"
+}

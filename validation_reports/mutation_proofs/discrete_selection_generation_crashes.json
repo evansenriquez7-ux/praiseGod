@@ -1,0 +1,48 @@
+{
+ "asserts": [
+  "discrete_gen"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "discrete_gen_regrouping_none"
+ ],
+ "command": [
+  "backend.app.practice_gen.validation.validate_matrix",
+  "--node",
+  "mat_g1_na_q1_7"
+ ],
+ "definition_digest": "cf280387e81340f3a86489a3a79f8e1e00d8f803a6b1e1c3df9680e10d05a0cf",
+ "detected": true,
+ "diagnostic_line": "exit 1 — [1/1] Checking mat_g1_na_q1_7 ...  FAIL",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "discrete_gen_regrouping_none",
+  "planted discrete generation crash",
+  "seed="
+ ],
+ "expected_check": "§1B every pinned discrete option generates or fails by name",
+ "finished_at": "2026-09-16T01:58:21+08:00",
+ "input_digest": "e6abc4cc8dd1d45899aeae5feb5775aaf8a5b2b51118123d228bea9815bdf156",
+ "mutated_paths": [
+  "backend/app/practice_gen/pipeline.py"
+ ],
+ "mutation": "discrete_selection_generation_crashes",
+ "observed_markers": {
+  "discrete_gen_regrouping_none": true,
+  "planted discrete generation crash": true,
+  "seed=": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-09-16T01:58:14+08:00"
+}

@@ -1,0 +1,46 @@
+{
+ "asserts": [
+  "scalar_exactness_1.0_exceed"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "scalar_exactness_1.0_exceed_max_sum"
+ ],
+ "command": [
+  "backend.app.practice_gen.validation.validate_matrix",
+  "--node",
+  "mat_g1_na_q1_7"
+ ],
+ "definition_digest": "6b038bf1ac1f3d7b788745ba004a877b2926a5cdcc900955543cf82dd1e181ca",
+ "detected": true,
+ "diagnostic_line": "exit 1 — [1/1] Checking mat_g1_na_q1_7 ...  FAIL",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "scalar_exactness_1.0_exceed_max_sum",
+  "exceeds competency maximum"
+ ],
+ "expected_check": "§1A scalar 1.0 never exceeds the competency maximum",
+ "finished_at": "2026-09-16T00:50:49+08:00",
+ "input_digest": "0241936d686a7276024f2b07cf0e5c6339a34b14e6afb4cf294c4462fdf94ef5",
+ "mutated_paths": [
+  "backend/app/practice_gen/pipeline.py"
+ ],
+ "mutation": "maximum_scalar_echo_exceeds_bound",
+ "observed_markers": {
+  "exceeds competency maximum": true,
+  "scalar_exactness_1.0_exceed_max_sum": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-09-16T00:50:41+08:00"
+}

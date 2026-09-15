@@ -570,19 +570,40 @@ MUTATIONS: List[Mutation] = [
             "Change the returned discrete profile after generation. The matrix must prove "
             "the requested option reached the item rather than merely accepting generation."
         ),
+        # REPOINTED 2026-09-16, after this plant SURVIVED the full corpus. Diagnosed by
+        # instrumenting the real path rather than by reading the validator (Mandate 2):
+        # §1B pins `regrouping` on this node exactly as the plant assumed -- 10 calls at
+        # `{'regrouping': 'none'}` were observed -- so the plant WAS reached. It simply
+        # landed in a field the check does not read. `verify_discrete_dimension`
+        # (validate_matrix.py:582) takes `given_values`, recomputes the real carries with
+        # `count_addition_carries(a, b)`, and never consults `difficulty_profile`. So
+        # rewriting the echoed profile changed nothing the verdict depended on. That is a
+        # STRONGER check than comparing echoed metadata, so the check was right and the
+        # mutation was testing the wrong surface.
+        #
+        # The plant now violates what the check actually asserts: the item is made to
+        # carry while `regrouping: none` was the pinned request. 7 + 5 = 12 is exactly one
+        # carry, so `carries == 0` fails. `correct_answer` is moved with it, so the item
+        # stays arithmetically sound and this mutation proves §1B alone rather than also
+        # tripping §1E's answer-key checks.
+        #
+        # The expected marker was also wrong and would never have matched: the validator
+        # emits "does not reflect discrete option", not "not reflected".
         edits={
             "backend/app/practice_gen/pipeline.py": (
                 "    result = problem.model_dump()\n"
                 "    return result\n",
                 "    result = problem.model_dump()\n"
                 "    if node_id == 'mat_g1_na_q1_7' and difficulty_profile == {'regrouping': 'none'}:\n"
-                "        result['difficulty_profile']['regrouping'] = 'one_place'\n"
+                "        result['given_values']['a'] = 7\n"
+                "        result['given_values']['b'] = 5\n"
+                "        result['correct_answer'] = 12\n"
                 "    return result\n",
             )
         },
         command=["backend.app.practice_gen.validation.validate_matrix", "--node", "mat_g1_na_q1_7"],
         expected_check="§1B each pinned discrete option is reflected in the generated item",
-        expect_output_contains=["discrete_integrity_regrouping_none", "not reflected"],
+        expect_output_contains=["discrete_integrity_regrouping_none", "does not reflect discrete option"],
         baseline_must_not_contain=["discrete_integrity_regrouping_none"],
     ),
     Mutation(
@@ -592,11 +613,26 @@ MUTATIONS: List[Mutation] = [
             "Crash one pinned discrete option. The matrix must name the option and seed "
             "rather than silently reduce discrete-domain coverage."
         ),
+        # PLANT TYPE CHANGED 2026-09-16, after this SURVIVED the full corpus. It raised a
+        # bare `RuntimeError`, and §1B answers RuntimeError with `except RuntimeError:
+        # pass` -- a dispositioned limitation (validate_matrix.py ~1022): infeasibility is
+        # inferred from the EXCEPTION TYPE, so a RuntimeError raised for any reason at all
+        # reads as "legitimately infeasible" and the discrete value goes unchecked. The
+        # plant was therefore indistinguishable from the thing the check deliberately
+        # tolerates, and no change to the check could catch it without also failing every
+        # genuinely infeasible combination.
+        #
+        # So the plant now raises a ValueError, which exercises the `except Exception`
+        # branch that this assertion actually owns and which emits
+        # `discrete_gen_<axis>_<value>` with the seed. What remains UNCOVERED, and is not
+        # claimed by this mutation: a generation crash that surfaces as a RuntimeError is
+        # still silently read as infeasible. Closing that needs a distinguishable
+        # `Infeasible` exception from the generator, as the handler's own note says.
         edits={
             "backend/app/practice_gen/pipeline.py": (
                 "    problem = PracticeOrchestrator.generate_problem(\n",
                 "    if node_id == 'mat_g1_na_q1_7' and difficulty_profile == {'regrouping': 'none'}:\n"
-                "        raise RuntimeError(f'planted discrete generation crash seed={seed}')\n"
+                "        raise ValueError(f'planted discrete generation crash seed={seed}')\n"
                 "    problem = PracticeOrchestrator.generate_problem(\n",
             )
         },

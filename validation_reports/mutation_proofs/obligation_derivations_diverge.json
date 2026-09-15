@@ -2,15 +2,17 @@
  "asserts": [
   "obligation_derivations_agree"
  ],
- "baseline_exit": 1,
+ "baseline_exit": 0,
  "baseline_markers_already_present": [],
  "baseline_must_not_contain": [
   "FAIL obligation_derivations_agree"
  ],
  "command": [
-  "backend.app.practice_gen.validation.validate_obligations"
+  "backend.app.practice_gen.validation.validate_obligations",
+  "--only",
+  "manifest"
  ],
- "definition_digest": "f0a97069537766c5d97ec2f3a749fbfa22df56f8e3f76083a17376716eedad47",
+ "definition_digest": "49fd69a5710c0e6e884f30edac21f317a6527f95b1697270da1f84c870379bc1",
  "detected": true,
  "diagnostic_line": "exit 1 — FAIL obligation_derivations_agree: the node-first traversal counts 496 (node, DNA, formatter) pairs and 4416 discrete obligations; the formatter-first traversal counts 455 and 4269. Two derivations of one production fact",
  "environment": {
@@ -25,8 +27,8 @@
   "disagree"
  ],
  "expected_check": "§11 (two independent derivations of the reachable count agree)",
- "finished_at": "2026-09-15T06:03:49+08:00",
- "input_digest": "58cccb5a9e45dd5f7cbc40c98d866717f07972cc1004202ebb5c15974875e123",
+ "finished_at": "2026-09-16T01:35:28+08:00",
+ "input_digest": "0241936d686a7276024f2b07cf0e5c6339a34b14e6afb4cf294c4462fdf94ef5",
  "mutated_paths": [
   "tests/obligation_manifest.py"
  ],
@@ -40,5 +42,5 @@
  "planted_exit": 1,
  "restored_clean": true,
  "schema_version": 1,
- "started_at": "2026-09-15T06:03:44+08:00"
+ "started_at": "2026-09-16T01:35:26+08:00"
 }

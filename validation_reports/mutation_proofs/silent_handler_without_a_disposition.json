@@ -11,8 +11,8 @@
   "backend.app.practice_gen.validation.validate_coverage"
  ],
  "definition_digest": "13dcfb8aa228b6cb647d9528d5b0eb546e007f781920e0bc057c333367bb8a2b",
- "detected": true,
- "diagnostic_line": "exit 1 — FAIL mutation_proof_integrity_8 (5 in 3 families):",
+ "detected": false,
+ "diagnostic_line": "INVALID — the unmutated command baseline exited 1; this mutation cannot distinguish the planted bug from a pre-existing failure.",
  "environment": {
   "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
   "machine": "x86_64",
@@ -25,20 +25,15 @@
   "does nothing but"
  ],
  "expected_check": "§8 (every silent handler carries a recorded disposition)",
- "finished_at": "2026-09-15T06:04:12+08:00",
- "input_digest": "58cccb5a9e45dd5f7cbc40c98d866717f07972cc1004202ebb5c15974875e123",
- "mutated_paths": [
-  "backend/app/practice_gen/validation/validate_render.py"
- ],
+ "finished_at": "2026-09-16T01:35:43+08:00",
+ "input_digest": "0241936d686a7276024f2b07cf0e5c6339a34b14e6afb4cf294c4462fdf94ef5",
+ "mutated_paths": [],
  "mutation": "silent_handler_without_a_disposition",
- "observed_markers": {
-  "FAIL silent_path_disposition_8": true,
-  "does nothing but": true
- },
+ "observed_markers": {},
  "paths_outside_input_set": [],
  "phase1_admissible": true,
- "planted_exit": 1,
+ "planted_exit": null,
  "restored_clean": true,
  "schema_version": 1,
- "started_at": "2026-09-15T06:04:09+08:00"
+ "started_at": "2026-09-16T01:35:42+08:00"
 }

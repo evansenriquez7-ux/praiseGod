@@ -1386,9 +1386,62 @@ def run_matrix_for_node(node_id: str, fail_fast: bool) -> Tuple[List[Dict[str, A
                                     unpacked_served = unpacked_served.get("correct_value", None)
                                 
                                 missing_vars = [v for v in formula_vars if v not in p.get("given_values", {})]
-                                if missing_vars:
-                                    # Skip recomputation check since one or more variables needed to compute/check the formula are masked/blanked out.
+                                # WHY THIS BRANCH IS NARROW (fixed 2026-09-16)
+                                # ---------------------------------------------
+                                # It used to be `if missing_vars: recomputed = unpacked_served`
+                                # — i.e. when an input the formula needs was absent, the check
+                                # TRUSTED the served key. That is a no-op in precisely this
+                                # gate's motivating case, and it was measured, not reasoned:
+                                # `answer_recomputation_input_missing` plants exactly this
+                                # (pops operand `a` out of a served mcq) and SURVIVED the full
+                                # corpus on 2026-09-16 — the validator exited 0 with the bug
+                                # planted, so `answer_key_recomputation` was unproven while
+                                # reading as covered.
+                                #
+                                # An absent input is legitimate in exactly two shapes:
+                                #   * the item BLANKED it on purpose — a fill-in-the-blank whose
+                                #     missing variable is the one the DNA declares as
+                                #     `blank_target`; and
+                                #   * a boolean `true_false` item, which serves a verdict rather
+                                #     than a value and is already exempted from numeric
+                                #     integrity a few lines below.
+                                # Anything else means the served answer cannot be independently
+                                # recomputed from what the student was actually given, which is
+                                # a finding, not a reason to skip.
+                                #
+                                # Measured cost of the narrowing over all 151 nodes before
+                                # landing it (Mandate 5 — prove a gate at a clean baseline):
+                                # the skip fired 818 times across 8 nodes; 808 were a missing
+                                # var identical to the declared `blank_target`, and the other 10
+                                # were one node/DNA/formatter (mat_g2_na_q3_8 / division /
+                                # true_false, 5 seeds x 2 assignments) already covered by the
+                                # boolean exemption. So this costs ZERO new findings today and
+                                # the gate stops being blind.
+                                _gv = p.get("given_values", {})
+                                _blanked_on_purpose = (
+                                    len(missing_vars) == 1
+                                    and missing_vars[0] == _gv.get("blank_target")
+                                )
+                                _boolean_verdict = isinstance(p.get("correct_answer"), bool)
+                                if missing_vars and (_blanked_on_purpose or _boolean_verdict):
                                     recomputed = unpacked_served
+                                elif missing_vars:
+                                    failures.append({
+                                        "dna": dna_name,
+                                        "formatter": formatter,
+                                        "check": "answer_key_recomputation",
+                                        "seed": seed,
+                                        "error": (
+                                            f"Could not recompute answer using formula "
+                                            f"'{dna.answer_formula}': given_values omits "
+                                            f"{missing_vars}, and the item does not declare "
+                                            f"{'/'.join(missing_vars)} as its blank_target "
+                                            f"(blank_target={_gv.get('blank_target')!r}). The "
+                                            f"served key cannot be independently recomputed from "
+                                            f"what the student was given."
+                                        ),
+                                    })
+                                    continue
                                 else:
                                     recomputed = _eval_formula(dna.answer_formula, p.get("given_values", {}))
 

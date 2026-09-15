@@ -8,9 +8,11 @@
   "FAIL obligation_benchmark_11"
  ],
  "command": [
-  "backend.app.practice_gen.validation.validate_obligations"
+  "backend.app.practice_gen.validation.validate_obligations",
+  "--only",
+  "benchmark"
  ],
- "definition_digest": "53caddd893dfac39659e31efa8ac9b32d6c3b157d8ecf75fe5fd55d0ae1f907b",
+ "definition_digest": "8dead853b7141f979c64d41e1e9b3fd839b7e136c0bd0ad3d3bede97638ce755",
  "detected": true,
  "diagnostic_line": "exit 1 — FAIL obligation_benchmark_11: source/input digest is stale",
  "environment": {
@@ -25,8 +27,8 @@
   "source/input digest is stale"
  ],
  "expected_check": "§11 (the benchmark is bound to current executor/source bytes)",
- "finished_at": "2026-09-15T06:06:24+08:00",
- "input_digest": "58cccb5a9e45dd5f7cbc40c98d866717f07972cc1004202ebb5c15974875e123",
+ "finished_at": "2026-09-16T01:35:37+08:00",
+ "input_digest": "0241936d686a7276024f2b07cf0e5c6339a34b14e6afb4cf294c4462fdf94ef5",
  "mutated_paths": [
   "tests/obligation_executor.py"
  ],
@@ -40,5 +42,5 @@
  "planted_exit": 1,
  "restored_clean": true,
  "schema_version": 1,
- "started_at": "2026-09-15T06:06:19+08:00"
+ "started_at": "2026-09-16T01:35:35+08:00"
 }
