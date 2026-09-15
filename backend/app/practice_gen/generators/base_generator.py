@@ -32,7 +32,7 @@ from typing import Any, Dict, List, Optional, Set
 
 from ..dna.base import DNA, QuestionContext, VocabGated
 from ..registry import get_node_competency_bounds, get_node_dnas, get_node_info
-from .interest import get_interest_slots, pick_interest
+from .interest import get_interest_emoji, get_interest_slots, pick_interest
 from .spines import NARRATIVE_DOMAIN_DNAS, select_spine
 
 
@@ -383,6 +383,15 @@ def generate_context(
     # ── e. Interest slots ─────────────────────────────────────────────────────
     resolved_theme = pick_interest(interest_theme, grade, rng)
     slots = get_interest_slots(resolved_theme, grade, rng, not_yet_known=not_yet_known)
+    interest_visible_terms: List[str] = [str(value) for value in slots.values() if value]
+    interest_cue: Optional[str] = None
+    if interest_theme is not None:
+        emoji = get_interest_emoji(resolved_theme, grade)
+        interest_visible_terms.append(emoji)
+        interest_cue = (
+            f"{emoji} {slots['actor']} has a math challenge about "
+            f"{slots['objects']}."
+        )
 
     # ── f. Question text ──────────────────────────────────────────────────────
     # Accept either key: every other DNA returns "question", but ordinal_numbers
@@ -391,16 +400,35 @@ def generate_context(
     # "What is the ordinal name for position 6?" while the DNA had computed the
     # answer for "A runner finished in sixth place. What position number is
     # that?" — a stem asking for a word, answered with a number.
-    if values.get("question") is not None or values.get("question_text") is not None:
-        question_text = values.get("question") or values["question_text"]
-    elif spine is not None:
+    if spine is not None:
         try:
             question_text = spine.render(slots, values)
         except KeyError:
-            # Template asked for a slot that values doesn't have — fall back.
-            question_text = _build_symbolic_question(dna, values, cumulative_vocab)
+            # The selected template is incompatible with the DNA payload. Preserve
+            # the DNA-authored question when one exists; a symbolic reconstruction is
+            # the final fallback. The interest visibility gate will reject this path
+            # when an explicit theme request consequently disappears.
+            question_text = (
+                values.get("question")
+                or values.get("question_text")
+                or _build_symbolic_question(dna, values, cumulative_vocab)
+            )
+    elif values.get("question") is not None or values.get("question_text") is not None:
+        question_text = values.get("question") or values["question_text"]
     else:
         question_text = _build_symbolic_question(dna, values, cumulative_vocab)
+
+    # A caller-supplied interest is a learner-facing request, not analytics metadata.
+    # Some curriculum-bound tasks must remain symbolic/pure and some formatters replace
+    # a DNA's prose, so a valid theme could previously survive only in
+    # ``interest_theme`` while the pupil saw none of it.  Preserve the exact mathematics
+    # and add a short thematic cue only when the selected spine/question used none of
+    # the resolved slots.  The interest bank is grade-gated and every slot has already
+    # passed NOT_YET_KNOWN filtering above.
+    if interest_theme is not None:
+        question_lower = question_text.lower()
+        if not any(value.lower() in question_lower for value in interest_visible_terms):
+            question_text = f"{interest_cue} {question_text}"
 
     # question_text_with_blank: replace the blank_target value with "___"
     blank_target: str = values.get("blank_target", "result")
@@ -627,6 +655,8 @@ def generate_context(
         grade=grade,
         seed=seed,
         interest_theme=resolved_theme if resolved_theme != "neutral" else None,
+        interest_cue=interest_cue,
+        interest_visible_terms=interest_visible_terms,
         spine_id=spine_id,
         difficulty_profile=profile_to_use,
         difficulty_axes_served=difficulty_axes_served,

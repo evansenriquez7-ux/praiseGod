@@ -1,5 +1,5 @@
 """
-§9 — the render contract: the payload the STUDENT receives must be renderable.
+§9/§12 — payload schema plus consumed browserless React render evidence.
 
 Why this exists
 ---------------
@@ -59,6 +59,10 @@ REPO_ROOT = Path(__file__).resolve().parents[4]
 ASSERTIONS = (
     "render_contract_9",        # subset mode (--node-ids): any finding fails
     "render_contract_floor_9",  # full tree measured against RENDER_FLOOR
+    "frontend_artifact_fresh_12",  # static-render evidence binds current inputs
+    "frontend_static_render_12",   # every recorded component execution succeeded
+    "rendered_visual_description_12",  # descriptions derive from emitted markup
+    "frontend_answer_roundtrip_13",  # component emission matches backend key by value
 )
 
 # ZERO, as of 2026-09-08. The floor is gone, not shrunk.
@@ -80,6 +84,167 @@ ASSERTIONS = (
 RENDER_FLOOR = 0
 
 SEEDS_PER_NODE = (11, 42, 64)
+STATIC_RENDER_ARTIFACT = (
+    REPO_ROOT / "validation_reports" / "phase2_hardening"
+    / "frontend_static_render.json"
+)
+
+
+def validate_static_render_artifact() -> bool:
+    """Consume, but never regenerate, the digest-bound React render result.
+
+    The artifact is produced explicitly by ``tests/frontend_suite.py``.  This consumer
+    verifies current-input freshness, execution totals, registry identity, and that each
+    description identifies itself as parsed from rendered markup.
+
+    Named limits: jsdom has no layout engine, so NumberLine and BarChart pointer-drag
+    geometry remains unproven. Static markup cannot establish crowding, overlap, colour
+    contrast, or real touch-target size. Five current renderUtils registrations are not
+    reachable from a practice student-path obligation; the artifact names them and this
+    check does not misreport them as covered.
+    """
+    from backend.app.practice_gen.validation.mutation_proof import input_digest
+
+    errors: List[str] = []
+    if not STATIC_RENDER_ARTIFACT.exists():
+        errors.append(
+            f"missing {STATIC_RENDER_ARTIFACT.relative_to(REPO_ROOT)}; build it with "
+            "PYTHONPATH=. .venv/bin/python tests/frontend_suite.py"
+        )
+        artifact: Dict[str, Any] = {}
+    else:
+        try:
+            import json
+
+            artifact = json.loads(STATIC_RENDER_ARTIFACT.read_text(encoding="utf-8"))
+        except (OSError, ValueError) as exc:
+            errors.append(f"static-render artifact is unreadable: {exc}")
+            artifact = {}
+
+    current_digest = input_digest()
+    recorded_digest = artifact.get("source_input_digest")
+    if recorded_digest != current_digest:
+        errors.append(
+            "frontend render evidence is stale: source input digest is "
+            f"{str(recorded_digest)[:12] or 'missing'}, current is {current_digest[:12]}. "
+            "Re-run PYTHONPATH=. .venv/bin/python tests/frontend_suite.py"
+        )
+
+    outcomes = artifact.get("outcomes")
+    if not isinstance(outcomes, list) or not outcomes:
+        errors.append("frontend artifact records no executed component cases")
+        outcomes = []
+    if artifact.get("renders_executed") != len(outcomes) or len(outcomes) != 2 * artifact.get("cases_executed", 0):
+        errors.append(
+            f"frontend artifact claims {artifact.get('cases_executed')} cases / "
+            f"{artifact.get('renders_executed')} renders but carries {len(outcomes)} outcomes"
+        )
+
+    current_registered = sorted(_required_keys())
+    if artifact.get("registered_visual_types") != current_registered:
+        errors.append(
+            "frontend artifact's renderer registry does not equal the current AST-derived "
+            f"registry ({artifact.get('registered_visual_types')} != {current_registered})"
+        )
+
+    covered = sorted({row.get("visual_type") for row in outcomes if row.get("visual_type")})
+    if covered != artifact.get("production_visual_types"):
+        errors.append(
+            "frontend artifact component coverage does not equal its declared production "
+            f"visual types ({covered} != {artifact.get('production_visual_types')})"
+        )
+    case_modes: Dict[str, set[str]] = {}
+    case_metadata: Dict[str, tuple[Any, Any]] = {}
+    for row in outcomes:
+        case_id = row.get("case_id")
+        seed = row.get("seed")
+        mode = row.get("mode")
+        if not isinstance(case_id, str) or not case_id:
+            errors.append(f"frontend outcome has invalid case_id={case_id!r}")
+        else:
+            case_modes.setdefault(case_id, set()).add(mode)
+            metadata = (row.get("interaction_mode"), row.get("answer_collection"))
+            if case_id in case_metadata and case_metadata[case_id] != metadata:
+                errors.append(f"{case_id}: active/disabled interaction metadata disagrees")
+            case_metadata[case_id] = metadata
+        desc = row.get("description") or {}
+        if mode not in {"active", "disabled"}:
+            errors.append(f"{row.get('case_id')} seed {seed}: invalid render mode {mode!r}")
+        if desc.get("source") != "rendered_static_markup":
+            errors.append(
+                f"{row.get('case_id')} seed {seed}: {mode} visual description is not "
+                "identified as render-derived"
+            )
+        if not isinstance(desc.get("element_count"), int) or desc.get("element_count", 0) <= 2:
+            errors.append(
+                f"{row.get('case_id')} seed {seed}: {mode} render is degenerate "
+                f"(element_count={desc.get('element_count')!r})"
+            )
+    expected_modes = {"active", "disabled"}
+    invalid_modes = {
+        case_id: sorted(modes)
+        for case_id, modes in case_modes.items()
+        if modes != expected_modes
+    }
+    if len(case_modes) != artifact.get("cases_executed", 0) or invalid_modes:
+        errors.append(
+            "frontend artifact does not carry exactly one active and one disabled render "
+            f"per case (cases={len(case_modes)}, invalid={invalid_modes})"
+        )
+
+    from backend.app.services.scoring import answers_match
+
+    roundtrips = artifact.get("answer_roundtrips")
+    if not isinstance(roundtrips, list) or not roundtrips:
+        errors.append("frontend artifact records no onAnswer round trips")
+        roundtrips = []
+    expected_roundtrip_ids = sorted(
+        case_id for case_id, (interaction_mode, answer_collection) in case_metadata.items()
+        if interaction_mode == "set" or answer_collection != "mcq"
+    )
+    actual_roundtrip_ids = sorted(
+        row.get("case_id") for row in roundtrips if isinstance(row, dict)
+    )
+    if (len(actual_roundtrip_ids) != len(set(actual_roundtrip_ids))
+            or actual_roundtrip_ids != expected_roundtrip_ids):
+        errors.append(
+            "frontend answer-roundtrip coverage disagrees with rendered interactive cases: "
+            f"recorded={actual_roundtrip_ids}, expected={expected_roundtrip_ids}"
+        )
+    for row in roundtrips:
+        if not answers_match(row.get("emitted_answer"), row.get("correct_answer")):
+            errors.append(
+                f"{row.get('case_id')} seed {row.get('seed')}: component emitted "
+                f"{row.get('emitted_answer')!r}, keyed {row.get('correct_answer')!r}"
+            )
+
+    if errors:
+        print(f"  FAIL frontend_static_render_12: {len(errors)} artifact finding(s)")
+        for error in errors[:10]:
+            print(f"    - {error}")
+        return False
+
+    print(
+        f"  PASS frontend_artifact_fresh_12: digest {current_digest[:12]}; "
+        f"{artifact.get('cases_executed')} real student-path payload(s)"
+    )
+    print(
+        f"  PASS frontend_static_render_12: {len(covered)} production visual type(s) "
+        "executed active and disabled"
+    )
+    print(
+        f"  PASS rendered_visual_description_12: {len(outcomes)} descriptions "
+        "parsed from rendered markup"
+    )
+    print(
+        f"  PASS frontend_answer_roundtrip_13: {len(roundtrips)} correct UI interactions "
+        "emitted values accepted by answers_match"
+    )
+    unreachable = artifact.get("unreachable_renderer_registrations") or []
+    if unreachable:
+        print("    NOT COVERED — unreachable renderer registrations: " + ", ".join(unreachable))
+    print("    BLIND SPOT — NumberLine/BarChart pointer-drag geometry (jsdom has no layout)")
+    return True
 
 
 def _required_keys() -> Dict[str, List[str]]:
@@ -160,11 +325,14 @@ def collect_findings(node_ids: Optional[List[str]] = None) -> List[str]:
     return findings
 
 
-def validate_all(node_ids: Optional[List[str]] = None) -> bool:
+def validate_all(node_ids: Optional[List[str]] = None, *, artifact_only: bool = False) -> bool:
     """
     Full tree: compare against the floor.
     Subset (`node_ids`): require ZERO findings, so §9 is mutation-provable in seconds.
     """
+    if artifact_only:
+        return validate_static_render_artifact()
+
     findings = collect_findings(node_ids)
 
     if node_ids:
@@ -187,7 +355,7 @@ def validate_all(node_ids: Optional[List[str]] = None) -> bool:
         print(f"    {len(findings)} payloads the student cannot render remain — content work:")
         for f in findings[:4]:
             print(f"      - {f[:110]}")
-    return True
+    return validate_static_render_artifact()
 
 
 def main() -> int:
@@ -195,9 +363,11 @@ def main() -> int:
 
     ap = argparse.ArgumentParser(description="§9 render contract")
     ap.add_argument("--node-ids", help="comma-separated subset; any finding fails")
+    ap.add_argument("--artifact-only", action="store_true",
+                    help="consume the §12 static-render artifact without generating §9 samples")
     args = ap.parse_args()
     nodes = [n.strip() for n in args.node_ids.split(",")] if args.node_ids else None
-    return 0 if validate_all(nodes) else 1
+    return 0 if validate_all(nodes, artifact_only=args.artifact_only) else 1
 
 
 if __name__ == "__main__":

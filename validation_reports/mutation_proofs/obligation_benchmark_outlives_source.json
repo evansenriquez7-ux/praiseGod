@@ -1,0 +1,44 @@
+{
+ "asserts": [
+  "obligation_benchmark_11"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "FAIL obligation_benchmark_11"
+ ],
+ "command": [
+  "backend.app.practice_gen.validation.validate_obligations"
+ ],
+ "definition_digest": "53caddd893dfac39659e31efa8ac9b32d6c3b157d8ecf75fe5fd55d0ae1f907b",
+ "detected": true,
+ "diagnostic_line": "exit 1 — FAIL obligation_benchmark_11: source/input digest is stale",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "FAIL obligation_benchmark_11",
+  "source/input digest is stale"
+ ],
+ "expected_check": "§11 (the benchmark is bound to current executor/source bytes)",
+ "finished_at": "2026-09-15T06:06:24+08:00",
+ "input_digest": "58cccb5a9e45dd5f7cbc40c98d866717f07972cc1004202ebb5c15974875e123",
+ "mutated_paths": [
+  "tests/obligation_executor.py"
+ ],
+ "mutation": "obligation_benchmark_outlives_source",
+ "observed_markers": {
+  "FAIL obligation_benchmark_11": true,
+  "source/input digest is stale": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-09-15T06:06:19+08:00"
+}

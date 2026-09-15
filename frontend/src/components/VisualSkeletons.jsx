@@ -249,6 +249,7 @@ export function NumberLineInteractive({ params, onAnswer, disabled }) {
               return (
                 <path
                   key={`jump-${i}`}
+                  data-pgen-role="number-line-jump"
                   d={`M ${x1} 46 Q ${(x1 + x2) / 2} 2 ${x2} 46`}
                   fill="none"
                   stroke="hsl(var(--primary))"
@@ -409,7 +410,9 @@ export function ClockSetInteractive({ params, onAnswer, disabled }) {
 
   useEffect(() => {
     if (onAnswer && !isReadOnly && hasInteractedRef.current) {
-      const hourStr = String(hours).padStart(2, '0');
+      // The backend key is H:MM (for example "9:45"), not HH:MM. Emitting
+      // "09:45" made the correct hand positions fail the shared exact comparator.
+      const hourStr = String(hours);
       const minStr = String(minutes).padStart(2, '0');
       onAnswer(`${hourStr}:${minStr}`);
     }
@@ -2547,6 +2550,7 @@ export function GridAreaInteractive({ params, onAnswer, disabled }) {
             return (
               <div
                 key={key}
+                data-pgen-role="grid-cell"
                 onClick={() => toggleCell(row, col)}
                 style={{
                   width: cellSize,
@@ -3597,6 +3601,7 @@ export function FractionModelInteractive({ params, onAnswer, disabled }) {
                 return (
                   <div 
                     key={i} 
+                    data-pgen-role="fraction-part"
                     onClick={() => {
                       if (isClickable) {
                         hasInteractedRef.current = true;
@@ -3640,6 +3645,7 @@ export function FractionModelInteractive({ params, onAnswer, disabled }) {
             return (
               <div 
                 key={i} 
+                data-pgen-role="fraction-part"
                 onClick={() => {
                   if (isClickable) {
                     hasInteractedRef.current = true;

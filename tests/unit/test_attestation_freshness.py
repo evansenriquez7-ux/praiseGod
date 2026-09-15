@@ -169,3 +169,49 @@ def test_a_clean_record_reports_nothing(monkeypatch):
                 {"question_text": "What is 2 + 3?", "correct_answer": "5",
                  "options": _opts("C", [3, 4, 5, 6])})
     assert errs == []
+
+
+def _attach_visual(rows):
+    out = []
+    for row in rows:
+        rendered = dict(row)
+        if rendered.get("visual_type"):
+            rendered["visual_render"] = {
+                "visual_type": rendered["visual_type"],
+                "renderer_input_digest": "live-render-digest",
+                "description": {
+                    "source": "rendered_static_markup",
+                    "element_count": 17,
+                    "role_counts": {"number-line-jump": 2},
+                },
+            }
+        rendered.pop("_visual_params", None)
+        out.append(rendered)
+    return out
+
+
+def test_a_visual_attestation_without_rendered_evidence_is_unadjudicable(monkeypatch):
+    from tests import frontend_renderer
+
+    monkeypatch.setattr(frontend_renderer, "attach_rendered_visual_descriptions", _attach_visual)
+    base = {"question_text": "Use the number line.", "correct_answer": 6}
+    live = {**base, "visual_type": "NumberLine",
+            "_visual_params": {"start": 0, "end": 10, "jump_count": 2, "jump_size": 3}}
+    errs = _run(monkeypatch, base, live)
+    assert len(errs) == 1 and "records no render-derived visual evidence" in errs[0]
+
+
+def test_a_changed_rendered_visual_makes_attestation_stale(monkeypatch):
+    from tests import frontend_renderer
+
+    monkeypatch.setattr(frontend_renderer, "attach_rendered_visual_descriptions", _attach_visual)
+    base = {"question_text": "Use the number line.", "correct_answer": 6}
+    recorded = {**base, "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "old-render-digest",
+        "description": {"source": "rendered_static_markup", "element_count": 2},
+    }}
+    live = {**base, "visual_type": "NumberLine",
+            "_visual_params": {"start": 0, "end": 10, "jump_count": 2, "jump_size": 3}}
+    errs = _run(monkeypatch, recorded, live)
+    assert len(errs) == 1 and "render-derived visual description" in errs[0]

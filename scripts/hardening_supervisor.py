@@ -115,6 +115,7 @@ routine and self-remediable: the caller re-runs with --reap and continues.
 from __future__ import annotations
 
 import argparse
+import os
 import json
 import re
 import subprocess
@@ -471,10 +472,14 @@ def queue_state() -> dict | None:
     which is a Class C repair and the tick's only unit. It never returns a count that
     silently omits a band; a band it could not measure is reported as unmeasured.
     """
+    # Canonical freshness rendering invokes Node. Preserve the caller's PATH so the
+    # probe measures the same student path as run_all instead of becoming unevaluable.
+    probe_env = os.environ.copy()
+    probe_env["PYTHONPATH"] = "."
     p = subprocess.run(
         [sys.executable, "-c", _QUEUE_PROBE],
         cwd=REPO, capture_output=True, text=True,
-        env={"PYTHONPATH": ".", "PATH": "/usr/bin:/bin"},
+        env=probe_env,
     )
     line = next((l for l in (p.stdout or "").splitlines() if l.startswith("__QUEUE__")), None)
     if line is None:

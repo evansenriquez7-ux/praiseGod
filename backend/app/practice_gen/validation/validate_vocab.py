@@ -204,7 +204,6 @@ def run_vocab_audit(
             "pass_rate": 0.0,
         }
 
-    # Pick the first DNA concept for this node
     concepts = NODE_TO_DNA.get(node_id, [])
     if not concepts:
         return {
@@ -213,44 +212,53 @@ def run_vocab_audit(
             "pass_rate": 0.0,
         }
 
-    try:
-        dna = load_dna(concepts[0])
-    except ImportError as e:
-        return {
-            "node_id": node_id,
-            "violations": [f"Could not import DNA for concept '{concepts[0]}': {e}"],
-            "pass_rate": 0.0,
-        }
-
     all_violations: List[str] = []
     problems_with_violations = 0
+    total_problems = len(concepts) * sample_count
 
-    for seed in range(sample_count):
+    # Every mapping is an obligation. Selecting concepts[0] let a vocabulary leak in
+    # any secondary DNA remain invisible forever, because no sample could reach it.
+    for concept in concepts:
         try:
-            ctx = generate_context(
-                dna=dna,
-                node_id=node_id,
-                grade=grade,
-                seed=seed,
-                difficulty_profile=None,
-                interest_theme=None,
-            )
-        except Exception as exc:
+            dna = load_dna(concept)
+        except ImportError as exc:
             all_violations.append(
-                f"seed={seed}: generate_context raised: {exc}"
+                f"DNA={concept}: could not import module: {exc}"
             )
-            problems_with_violations += 1
+            problems_with_violations += sample_count
             continue
 
-        v1 = validate_vocab_constraints(ctx, node)
-        v2 = validate_concept_constraints(ctx, node)
-        problem_violations = v1 + v2
+        for seed in range(sample_count):
+            try:
+                ctx = generate_context(
+                    dna=dna,
+                    node_id=node_id,
+                    grade=grade,
+                    seed=seed,
+                    difficulty_profile=None,
+                    interest_theme=None,
+                    is_student_path=True,
+                )
+            except Exception as exc:
+                all_violations.append(
+                    f"DNA={concept} seed={seed}: generate_context raised: {exc}"
+                )
+                problems_with_violations += 1
+                continue
 
-        if problem_violations:
-            problems_with_violations += 1
-            all_violations.extend(problem_violations)
+            problem_violations = (
+                validate_vocab_constraints(ctx, node)
+                + validate_concept_constraints(ctx, node)
+            )
 
-    pass_rate = (sample_count - problems_with_violations) / sample_count
+            if problem_violations:
+                problems_with_violations += 1
+                all_violations.extend(
+                    f"DNA={concept} seed={seed}: {violation}"
+                    for violation in problem_violations
+                )
+
+    pass_rate = (total_problems - problems_with_violations) / total_problems
 
     return {
         "node_id": node_id,
@@ -300,7 +308,9 @@ def lint_all_vocab_gated_instances() -> List[str]:
     # 2. Audit against knowledge graph nodes
     # For DNA-specific instances: check against every node mapped to that DNA concept
     for concept, instances in vocab_gated_by_concept.items():
-        nodes_for_concept = [nid for nid, concepts in NODE_TO_DNA.items() if concepts and concepts[0] == concept]
+        nodes_for_concept = [
+            nid for nid, concepts in NODE_TO_DNA.items() if concept in concepts
+        ]
         for nid in nodes_for_concept:
             node = get_node(nid)
             if not node:
@@ -383,33 +393,15 @@ def run_all_vocab_audits(sample_count: int = 5) -> Dict[str, Dict]:
 # ─── entry point ──────────────────────────────────────────────────────────────
 
 if __name__ == "__main__":
-    # Spot-check a handful of nodes across grades and branches.
-    _SAMPLE_NODES = [
-        ("mat_g1_na_q1_7", 1),
-        ("mat_g1_mg_q1_0", 1),
-        ("mat_g2_na_q3_2", 2),
-        ("mat_g3_na_q2_1", 3),
-        ("mat_g3_dp_q3_1", 3),
-    ]
-
-    any_failures = False
-
-    # Run static linter
-    lint_violations = lint_all_vocab_gated_instances()
-    if lint_violations:
-        print("  FAIL static_vocab_gated_lint:")
-        for v in lint_violations:
-            print(f"    - {v}")
-        any_failures = True
-
-    for nid, gr in _SAMPLE_NODES:
-        result = run_vocab_audit(nid, gr, sample_count=5)
-        rate = result["pass_rate"]
-        status = "PASS" if not result["violations"] else "FAIL"
-        print(f"  {status} {nid} (grade {gr}) — pass_rate={rate:.2f}")
-        if result["violations"]:
-            any_failures = True
-            for v in result["violations"]:
-                print(f"    - {v}")
-
-    sys.exit(1 if any_failures else 0)
+    results = run_all_vocab_audits(sample_count=2)
+    failures = {
+        node_id: result for node_id, result in results.items()
+        if result["pass_rate"] < 1.0
+    }
+    if failures:
+        print(f"  FAIL vocab_audit_pass_rate ({len(failures)} node(s)):")
+        for node_id, result in failures.items():
+            print(f"    - {node_id}: {result['violations']}")
+    else:
+        print(f"  PASS vocab_audit_pass_rate ({len(results)} nodes; every mapped DNA)")
+    sys.exit(1 if failures else 0)

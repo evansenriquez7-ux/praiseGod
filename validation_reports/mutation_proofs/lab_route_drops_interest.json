@@ -1,0 +1,48 @@
+{
+ "asserts": [
+  "lab_portal_equivalence"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "Lab/portal mismatch"
+ ],
+ "command": [
+  "backend.app.practice_gen.validation.validate_compat"
+ ],
+ "definition_digest": "770f4b7be139d93a84f37902e168b52e4ff9325ca67427d7c1b0dfee17d891cf",
+ "detected": true,
+ "diagnostic_line": "exit 1 — FAIL lab_portal_equivalence:",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "FAIL lab_portal_equivalence",
+  "Lab/portal mismatch",
+  "differing fields",
+  "seed="
+ ],
+ "expected_check": "behavioral Lab v2/student-portal equivalence",
+ "finished_at": "2026-09-15T05:28:52+08:00",
+ "input_digest": "58cccb5a9e45dd5f7cbc40c98d866717f07972cc1004202ebb5c15974875e123",
+ "mutated_paths": [
+  "backend/app/routes/matatag_router.py"
+ ],
+ "mutation": "lab_route_drops_interest",
+ "observed_markers": {
+  "FAIL lab_portal_equivalence": true,
+  "Lab/portal mismatch": true,
+  "differing fields": true,
+  "seed=": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-09-15T05:26:34+08:00"
+}

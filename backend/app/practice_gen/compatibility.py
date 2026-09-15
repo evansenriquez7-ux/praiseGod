@@ -1170,7 +1170,15 @@ FORMATTER_VARIANT_SUPPORT: Dict[str, Dict[str, Dict[str, List[str]]]] = {
         "number_line_read": {"operation": ["add_amounts", "find_change", "add_or_subtract",
                                            "add", "subtract"]},
         "peso_money_read": {"task_type": ["count_total"], "context": ["pure", "word_problem"]},
-        "peso_money_build": {"task_type": ["count_total", "make_change"], "context": ["pure"]},
+        # The set component emits the numeric amount assembled. Notation and comparison
+        # tasks key strings such as "₱20 coin"; routing those here made a correct UI
+        # interaction ungradeable (seed 1280780060 emitted 20 against "₱20 coin").
+        # Keep only operations whose answer domain is the numeric amount being built.
+        "peso_money_build": {
+            "task_type": ["count_total", "make_change"],
+            "context": ["pure"],
+            "operation": ["add_amounts", "find_change", "add_or_subtract", "add", "subtract"],
+        },
     },
 
     "number_reading": {
@@ -1467,5 +1475,4 @@ def validate_lab_selection(
         result["effective_formatter"] = "mcq"
 
     return result
-
 

@@ -1,16 +1,16 @@
 {
   "schema_version": 1,
-  "model": "obligation = (node, DNA, formatter, discrete assignment). Discrete assignments are the full Cartesian product of reachable variant values. See tests/obligation_manifest.py for the stated model and its limits.",
+  "model": "base obligation = (node, DNA, formatter, discrete assignment), crossed for execution with every interest request, experience wrapper, and five deterministic seed slots. See tests/obligation_manifest.py and tests/obligation_executor.py for the stated model and limits.",
   "counts": {
     "nodes": 151,
-    "node_dna_formatter_pairs": 459,
-    "discrete_obligations": 5060,
-    "continuous_class_crossings": 22626,
+    "node_dna_formatter_pairs": 455,
+    "discrete_obligations": 4269,
+    "continuous_class_crossings": 18762,
     "continuous_classes_per_axis": 3
   },
   "independent_derivation": {
-    "pairs": 459,
-    "discrete_obligations": 5060,
+    "pairs": 455,
+    "discrete_obligations": 4269,
     "agrees": true,
     "method": "formatter-first traversal; see derive_count_independently"
   },
@@ -19,27 +19,32 @@
       "pairs": 463,
       "allowed_assignments": 4325
     },
+    "first_manifest_candidate": {
+      "pairs": 459,
+      "allowed_assignments": 5060,
+      "status": "SUPERSEDED after execution: 152 of the first 1,000 candidates were refused because the manifest passed node_id to a DNA-keyed curriculum gate. Corrected base count is 4,293."
+    },
     "status": "NOT REPRODUCIBLE. The probe that produced it is not on disk and no candidate model recovers either figure. This manifest supersedes it; the plan's number is recorded here rather than inherited."
   },
   "per_dimension": {
     "by_node_top": {
-      "mat_g2_na_q3_1": 648,
-      "mat_g1_na_q3_1": 324,
-      "mat_g1_na_q3_2": 324,
-      "mat_g1_na_q2_5": 216,
-      "mat_g2_na_q3_0": 198,
+      "mat_g2_na_q3_1": 324,
+      "mat_g1_na_q2_5": 208,
       "mat_g2_na_q1_9": 184,
       "mat_g3_na_q2_1": 184,
+      "mat_g1_na_q3_1": 180,
+      "mat_g1_na_q3_2": 180,
       "mat_g2_na_q3_7": 180,
       "mat_g2_na_q2_2": 163,
-      "mat_g3_na_q4_2": 152
+      "mat_g3_na_q4_2": 152,
+      "mat_g3_na_q3_4": 144
     },
     "by_dna": {
-      "multiplication": 1130,
-      "missing_number": 972,
-      "addition": 952,
+      "addition": 916,
+      "multiplication": 693,
+      "missing_number": 684,
       "subtraction": 516,
-      "money_peso": 333,
+      "money_peso": 309,
       "time_reading": 180,
       "comparing_ordering": 152,
       "division": 112,
@@ -50,9 +55,9 @@
       "mass_capacity": 48,
       "order_of_operations": 48,
       "perimeter": 42,
-      "length_measurement": 26,
       "ordinal_numbers": 24,
       "bar_graphs": 24,
+      "length_measurement": 22,
       "number_reading": 21,
       "compose_decompose_to_10": 21,
       "place_value": 20,
@@ -61,38 +66,38 @@
       "probability_experiment": 16,
       "probability_language": 16,
       "patterns": 15,
-      "geometric_lines": 15,
+      "geometric_lines": 13,
       "pictographs": 8,
       "symmetry_slides": 8
     },
     "by_formatter": {
-      "mcq": 1461,
-      "cloze": 1226,
-      "true_false": 868,
-      "error_detect": 515,
-      "number_line_read": 189,
-      "emoji_pictorial": 172,
-      "array_grid_read": 79,
-      "array_grid_set": 79,
+      "mcq": 1267,
+      "cloze": 1050,
+      "true_false": 693,
+      "error_detect": 436,
+      "number_line_read": 162,
+      "emoji_pictorial": 132,
       "number_bond": 66,
       "clock_read": 50,
       "clock_set": 50,
+      "array_grid_read": 42,
+      "array_grid_set": 42,
       "peso_money_read": 35,
       "ordering": 32,
       "sort_order": 32,
       "number_line_set": 31,
       "categorize": 28,
       "shape_board": 28,
-      "peso_money_build": 28,
       "fraction_model_read": 15,
       "bar_chart_read": 15,
       "fraction_shade": 12,
       "bar_chart_set": 9,
       "calendar_read": 8,
       "grid_area": 8,
-      "ruler_measure": 6,
       "pictograph_read": 5,
       "place_value_blocks_set": 5,
+      "ruler_measure": 4,
+      "peso_money_build": 4,
       "place_value_blocks_read": 3,
       "pattern_sequence": 3,
       "pictograph_set": 1,
@@ -182,9 +187,44 @@
       "time_reading": [
         "number_difficulty"
       ]
-    }
+    },
+    "experience": [
+      "hint_gated",
+      "mastery_drill",
+      "scaffolded",
+      "standard"
+    ],
+    "student_interest_request": [
+      "(automatic)",
+      "anime_manga",
+      "anime_rpg",
+      "basketball",
+      "bible",
+      "business_money",
+      "casual_puzzle_games",
+      "competitive_gaming",
+      "content_creation",
+      "creative_writing",
+      "dance",
+      "diy_crafts",
+      "fitness_sports",
+      "food_baking",
+      "graphic_design",
+      "history_trivia",
+      "kpop",
+      "meme_streaming",
+      "music_performance",
+      "pets",
+      "ppop",
+      "sandbox_games",
+      "science_tech",
+      "social_issues",
+      "visual_arts",
+      "volleyball",
+      "western_pop"
+    ]
   },
-  "not_crossed_into_the_manifest": {
+  "execution_model": {
     "experience": {
       "values": [
         "hint_gated",
@@ -194,8 +234,9 @@
       ],
       "multiplier": 4
     },
-    "student_interest": {
+    "student_interest_request": {
       "values": [
+        "(automatic)",
         "anime_manga",
         "anime_rpg",
         "basketball",
@@ -224,15 +265,26 @@
         "western_pop"
       ],
       "multiplier": 27,
-      "note": "+1 for the neutral default (no interest supplied)"
+      "note": "None is production's automatic-selection path, not a neutral theme. Grade-inappropriate named themes also fall back automatically; H-05 owns that ignored-theme behavior."
     },
-    "why": "Both are genuinely free parameters of pipeline.run(), so the full cross is base x 4 x 27. The execution budget for that has not been measured, and the plan forbids silently dropping obligations -- so the multiplier is recorded here rather than the product being enumerated. THIS IS THE LARGEST UNCLOSED GAP IN H-04.",
-    "full_cross_if_enumerated": 546480
+    "finite_obligations": 461052,
+    "seeds_per_obligation": 5,
+    "seed_slot_scalars": [
+      0.0,
+      0.5,
+      1.0,
+      0.25,
+      0.75
+    ],
+    "release_cache_keys": 576315,
+    "release_represented_executions": 2305260,
+    "cache_key": "base obligation + interest request + seed slot",
+    "cache_reuse": "the generated/formatted problem is deep-copied through all four production experience wrappers"
   },
   "rejected": {
-    "total": 269,
+    "total": 273,
     "by_production_rule": {
-      "NODE_FORMATTER_EXCLUSIONS": 228,
+      "NODE_FORMATTER_EXCLUSIONS": 232,
       "FORMATTER_VARIANT_SUPPORT": 41
     },
     "examples": [

@@ -1,0 +1,44 @@
+{
+ "asserts": [
+  "obligation_dimension_coverage_11"
+ ],
+ "baseline_exit": 1,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "FAIL obligation_dimension_coverage_11"
+ ],
+ "command": [
+  "backend.app.practice_gen.validation.validate_obligations"
+ ],
+ "definition_digest": "52e8a8616970d117c4a087f28d21b9fb618a889b8e71c63c58801f9f1dcc7f40",
+ "detected": true,
+ "diagnostic_line": "exit 1 — FAIL obligation_dimension_coverage_11: finite obligations 443976 < floor 461052; fewer than 27 interest request paths",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "FAIL obligation_dimension_coverage_11",
+  "fewer than 27 interest request paths"
+ ],
+ "expected_check": "§11 (every finite serving dimension is crossed)",
+ "finished_at": "2026-09-15T06:03:58+08:00",
+ "input_digest": "58cccb5a9e45dd5f7cbc40c98d866717f07972cc1004202ebb5c15974875e123",
+ "mutated_paths": [
+  "tests/obligation_executor.py"
+ ],
+ "mutation": "obligation_interest_dimension_dropped",
+ "observed_markers": {
+  "FAIL obligation_dimension_coverage_11": true,
+  "fewer than 27 interest request paths": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-09-15T06:03:53+08:00"
+}

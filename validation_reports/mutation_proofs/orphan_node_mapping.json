@@ -1,0 +1,42 @@
+{
+ "asserts": [
+  "registry_coverage"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "mat_g10_na_q1_999"
+ ],
+ "command": [
+  "backend.app.practice_gen.validation.validate_compat"
+ ],
+ "definition_digest": "e1bf74312b677c7f412466255ff44dc1edcf8c25a9c5d0fc45733670e2294136",
+ "detected": true,
+ "diagnostic_line": "exit 1 — FAIL registry_coverage:",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "NODE_TO_DNA node 'mat_g10_na_q1_999' is missing from the knowledge graph"
+ ],
+ "expected_check": "§2 registry coverage (NODE_TO_DNA -> KG reverse direction)",
+ "finished_at": "2026-09-15T05:21:30+08:00",
+ "input_digest": "58cccb5a9e45dd5f7cbc40c98d866717f07972cc1004202ebb5c15974875e123",
+ "mutated_paths": [
+  "backend/app/practice_gen/registry.py"
+ ],
+ "mutation": "orphan_node_mapping",
+ "observed_markers": {
+  "NODE_TO_DNA node 'mat_g10_na_q1_999' is missing from the knowledge graph": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-09-15T05:19:13+08:00"
+}

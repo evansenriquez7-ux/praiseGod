@@ -1,0 +1,46 @@
+{
+ "asserts": [
+  "obligation_release_shards_11"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "test_missing_release_receipts_are_a_blocking_finding && failed"
+ ],
+ "command": [
+  "pytest",
+  "tests/unit/test_obligation_executor.py::test_missing_release_receipts_are_a_blocking_finding",
+  "-q"
+ ],
+ "definition_digest": "8428d3f64231d63facaca9e150e4e9c24896cde06a03b58eb1c3af9bf9eccfa4",
+ "detected": true,
+ "diagnostic_line": "exit 1 — =================================== FAILURES ===================================",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "test_missing_release_receipts_are_a_blocking_finding",
+  "failed"
+ ],
+ "expected_check": "§11 (a release that never ran cannot pass)",
+ "finished_at": "2026-09-15T10:33:49+08:00",
+ "input_digest": "5d3f50de44e19ab65d9d2c7a302c6a09b01ee188ed312d0a61a84db3abfc1cd8",
+ "mutated_paths": [
+  "tests/obligation_executor.py"
+ ],
+ "mutation": "obligation_release_absence_accepted",
+ "observed_markers": {
+  "failed": true,
+  "test_missing_release_receipts_are_a_blocking_finding": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-09-15T10:33:48+08:00"
+}

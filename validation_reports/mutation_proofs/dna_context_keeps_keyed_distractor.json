@@ -1,0 +1,42 @@
+{
+ "asserts": [
+  "dna_structure"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "produced distractor equals correct answer"
+ ],
+ "command": [
+  "backend.app.practice_gen.validation.validate_dna"
+ ],
+ "definition_digest": "d2ee27b1bbb646b9edcbd4f94e5d344136dab0b113e7243fee4e0eb8f1a9170b",
+ "detected": true,
+ "diagnostic_line": "exit 1 — DNA validation: 10/29 passed, 19 failed.",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "produced distractor equals correct answer"
+ ],
+ "expected_check": "§3 DNA structure on production contexts",
+ "finished_at": "2026-09-15T05:23:57+08:00",
+ "input_digest": "58cccb5a9e45dd5f7cbc40c98d866717f07972cc1004202ebb5c15974875e123",
+ "mutated_paths": [
+  "backend/app/practice_gen/generators/base_generator.py"
+ ],
+ "mutation": "dna_context_keeps_keyed_distractor",
+ "observed_markers": {
+  "produced distractor equals correct answer": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-09-15T05:23:48+08:00"
+}

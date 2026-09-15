@@ -1,0 +1,44 @@
+{
+ "asserts": [
+  "dna_difficulty_feasibility"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "acceptance rate 0.000 < MIN"
+ ],
+ "command": [
+  "backend.app.practice_gen.validation.validate_dna"
+ ],
+ "definition_digest": "1d9d23316dc0777e910de2bd6d2a35f58d57702207ef5e09329bb37c8402baae",
+ "detected": true,
+ "diagnostic_line": "exit 1 — DNA validation: 28/29 passed, 1 failed.",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "addition grade=1",
+  "acceptance rate 0.000 < MIN"
+ ],
+ "expected_check": "§3 DNA difficulty feasibility",
+ "finished_at": "2026-09-15T05:24:07+08:00",
+ "input_digest": "58cccb5a9e45dd5f7cbc40c98d866717f07972cc1004202ebb5c15974875e123",
+ "mutated_paths": [
+  "backend/app/practice_gen/dna/na/addition.py"
+ ],
+ "mutation": "dna_profile_becomes_unsatisfiable",
+ "observed_markers": {
+  "acceptance rate 0.000 < MIN": true,
+  "addition grade=1": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-09-15T05:23:57+08:00"
+}

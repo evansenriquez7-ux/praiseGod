@@ -8,8 +8,13 @@ fixed seeds; it never sees the generator/DNA/formatter code. That is what makes
 the resulting review genuine rather than the author grading its own homework
 (`doc_rem.md` §3.1: "the verifier is not the author").
 
-A packet is pure rendered output (question text, correct answer, options), so
-handing it to a reviewer discloses no implementation detail.
+A packet is canonical learner-visible output: stem, resolved answer, options,
+hints, cloze template, response configuration, and the full visual payload plus
+a description derived from React's emitted static markup.  The payload is retained
+losslessly for replay; it is never treated as proof that React drew it.  The static
+description can establish countable structure but cannot establish crowding,
+overlap, colour contrast, or physical touch-target size.  Those layout properties
+remain explicitly unproven without a browser.
 
 CLI:
     python -m backend.app.practice_gen.validation.judgment_packets --node mat_g1_na_q1_0
@@ -20,6 +25,7 @@ CLI:
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import sys
 import zlib
@@ -33,6 +39,40 @@ from backend.app.practice_gen.compatibility import VARIANTS_BY_DNA
 
 # Fixed seeds so a review is reproducible and the harness can require >= 3 of them.
 REVIEW_SEEDS: List[int] = [42, 43, 44, 45, 46]
+SAMPLING_VERSION = "phase2-stratified-v2-rendered-visual"
+
+
+def _json_digest(value: Any) -> str:
+    return hashlib.sha256(
+        json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode()
+    ).hexdigest()
+
+
+def _resolved_answer_value(answer: Any, options: Any) -> Any:
+    if isinstance(options, list):
+        for option in options:
+            if (isinstance(option, dict) and str(option.get("key")) == str(answer)
+                    and "value" in option):
+                return option["value"]
+    return answer
+
+
+def finalize_samples(samples: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    """Add stable replay identity only after render-derived evidence is attached."""
+    finalized: List[Dict[str, Any]] = []
+    for original in samples:
+        sample = dict(original)
+        identity = {
+            "node_id": sample.get("node_id"),
+            "seed": sample.get("seed"),
+            "requested": sample.get("requested"),
+            "serving_mode": sample.get("serving_mode"),
+        }
+        sample["sample_id"] = _json_digest(identity)[:20]
+        digestable = {key: value for key, value in sample.items() if key != "replay_digest"}
+        sample["replay_digest"] = _json_digest(digestable)
+        finalized.append(sample)
+    return finalized
 
 
 def _max_difficulty_profile(node_id: str) -> Dict[str, float]:
@@ -424,10 +464,12 @@ def _render_sample(node_id: str, seed: int, difficulty_profile: Dict[str, Any] =
             experience = wrappers[(seed - _EXPERIENCE_SEED_FLOOR) % len(wrappers)]
 
     p = run(node_id, seed=seed, difficulty_profile=difficulty_profile,
-            student_interest=interest, experience=experience)
+            student_interest=interest, experience=experience, is_student_path=True)
     fd = p.get("format_data") or {}
     options = fd.get("mcq_options") or fd.get("options")
+    rendered_visual_type = p.get("visual_type") if p.get("is_visual") else None
     sample: Dict[str, Any] = {
+        "node_id": node_id,
         "seed": seed,
         "formatter": p.get("format") or p.get("formatter"),
         "question_text": p.get("question_text", ""),
@@ -440,13 +482,31 @@ def _render_sample(node_id: str, seed: int, difficulty_profile: Dict[str, Any] =
             "student_interest": interest,
             "experience": experience,
         },
+        "serving_mode": "student_path",
+        "effective": {
+            "format": p.get("format") or p.get("formatter"),
+            "is_visual": bool(p.get("is_visual")),
+            "visual_type": rendered_visual_type,
+            "interaction_mode": p.get("interaction_mode"),
+            "answer_collection": p.get("answer_collection"),
+            "experience": p.get("experience"),
+        },
     }
     if options is not None:
         sample["options"] = options
-    if p.get("hint"):
+    sample["resolved_answer"] = _resolved_answer_value(p.get("correct_answer"), options)
+    if "hints" in p:
+        sample["hints"] = p.get("hints")
+    elif "hint" in p:
         sample["hint"] = p.get("hint")
-    if fd.get("cloze_text"):
+    if "cloze_text" in fd:
         sample["cloze_text"] = fd.get("cloze_text")
+    visual_type = rendered_visual_type
+    visual_params = p.get("visual_params") or fd.get("visual_params")
+    if visual_type is not None:
+        sample["visual_type"] = visual_type
+        sample["visual_payload"] = visual_params
+        sample["_visual_params"] = visual_params
     return sample
 
 
@@ -639,15 +699,25 @@ def build_packet(node_id: str) -> Dict[str, Any]:
         raise ValueError(f"Unknown node '{node_id}' — cannot build a review packet.")
     seeds = _stratified_seeds(node_id)
     samples = [_render_sample(node_id, s) for s in seeds]
-    return {
+    from tests.frontend_renderer import attach_rendered_visual_descriptions
+
+    samples = finalize_samples(attach_rendered_visual_descriptions(samples))
+    requirements = [dict(req) for req in (info.get("requires") or [])]
+    packet_core = {
+        "schema_version": 2,
+        "sampling_version": SAMPLING_VERSION,
         "node_id": node_id,
-        "grade": info.get("grade"),
-        "quarter": info.get("quarter"),
-        "subdomain": info.get("subdomain") or info.get("domain"),
-        "competency_text": info.get("competency", ""),
-        "sample_seeds": seeds,
+        "competency_snapshot": {
+            "text": info.get("competency", ""),
+            "grade": info.get("grade"),
+            "quarter": info.get("quarter"),
+            "subdomain": info.get("subdomain") or info.get("domain"),
+        },
+        "requirements_snapshot": requirements,
+        "sample_ids": [sample["sample_id"] for sample in samples],
         "samples": samples,
     }
+    return {**packet_core, "packet_digest": _json_digest(packet_core)}
 
 
 def build_group(group_prefix: str) -> List[Dict[str, Any]]:

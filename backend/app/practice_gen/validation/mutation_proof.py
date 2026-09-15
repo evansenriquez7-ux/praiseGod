@@ -161,6 +161,11 @@ INPUT_ROOTS: Tuple[str, ...] = (
 INPUT_FILES: Tuple[str, ...] = (
     "docs/pgen_contract.md",
     "docs/testing_pipeline.md",
+    # §12 executes the exact locally installed frontend toolchain. Package manifests
+    # are inputs even though node_modules remains excluded: dependency changes must
+    # invalidate both static-render evidence and mutation proofs.
+    "frontend/package.json",
+    "frontend/package-lock.json",
     # `validation_reports/` is mostly this harness's OUTPUT, which is why it is not a
     # root. This one file is an INPUT: §1H's coverage-regression check reads it as the
     # baseline it compares against, so a proof about §1H that did not cover it would be
@@ -401,10 +406,15 @@ def verify_proof(record: Dict[str, Any], mutation: Any, current_input_digest: st
             f"the check runs (Mandate 2). Diagnose which before re-filing."
         )
 
-    if record["baseline_must_not_contain"] and record.get("baseline_exit") is None:
+    if record.get("baseline_exit") is None:
         errs.append(
-            f"mutation proof '{name}': declares baseline markers but records no baseline "
-            f"run. Without it the planted failure cannot be told from a pre-existing one."
+            f"mutation proof '{name}': records no baseline run. Without a clean baseline "
+            f"the planted failure cannot be told from a pre-existing one."
+        )
+    elif record["baseline_exit"] != 0:
+        errs.append(
+            f"mutation proof '{name}': baseline exited {record['baseline_exit']}; Mandate 5 "
+            f"requires a clean control before a planted failure can prove anything."
         )
 
     observed = record["observed_markers"]

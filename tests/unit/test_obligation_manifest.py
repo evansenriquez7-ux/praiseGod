@@ -63,15 +63,37 @@ class TestTheBudgetReportSaysWhatItDoesNotCover:
         assert stated["recorded_in_plan"] == {"pairs": 463, "allowed_assignments": 4325}
         assert "NOT REPRODUCIBLE" in stated["status"]
 
-    def test_it_names_experience_and_interest_as_not_crossed_in(self):
+    def test_it_crosses_experience_and_interest_into_the_execution_model(self):
         budget = build_budget()
-        cross = budget["not_crossed_into_the_manifest"]
+        cross = budget["execution_model"]
         assert cross["experience"]["multiplier"] == 4
-        assert cross["student_interest"]["multiplier"] == 27
-        assert cross["full_cross_if_enumerated"] == (
+        assert cross["student_interest_request"]["multiplier"] == 27
+        assert cross["finite_obligations"] == (
             budget["counts"]["discrete_obligations"] * 4 * 27
         )
-        assert "LARGEST UNCLOSED GAP" in cross["why"]
+        assert cross["release_represented_executions"] == (
+            cross["finite_obligations"] * cross["seeds_per_obligation"]
+        )
+
+    def test_curriculum_gate_is_keyed_by_dna_not_node_id(self):
+        """The first executor benchmark found 152/1,000 false-reachable entries here."""
+        obligations, _ = enumerate_obligations()
+        missing_number_g1 = [
+            dict(o.assignment)
+            for o in obligations
+            if o.node_id == "mat_g1_na_q3_1" and o.dna == "missing_number"
+        ]
+        assert missing_number_g1
+        assert all(profile.get("tables") not in {"6", "7", "8", "9"}
+                   for profile in missing_number_g1)
+
+        length_g1 = [
+            dict(o.assignment)
+            for o in obligations
+            if o.node_id == "mat_g1_mg_q2_2" and o.dna == "length_measurement"
+        ]
+        assert length_g1
+        assert all(profile.get("unit_type") not in {"cm", "m"} for profile in length_g1)
 
     def test_every_rejection_names_a_production_rule(self):
         _, rejections = enumerate_obligations()

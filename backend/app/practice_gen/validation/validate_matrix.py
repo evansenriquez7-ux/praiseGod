@@ -1940,8 +1940,12 @@ def coverage_regressions(executed_by_node: Dict[str, List[str]]) -> List[str]:
 
 
 def run_matrix_validation(node: Optional[str] = None, fail_fast: bool = False, workers: int = 0) -> int:
-    # Load all nodes
-    all_node_ids = get_all_node_ids()
+    # Derive the matrix population from the knowledge graph, independently of
+    # NODE_TO_DNA. Using get_all_node_ids() here used the mapping under test as the
+    # enumerator, so deleting a mapping deleted the node from the sweep and made
+    # NODE_TO_DNA_presence unreachable on the public CLI path.
+    from backend.app.practice_gen.registry import _KG_NODES
+    all_node_ids = sorted(_KG_NODES)
     
     if node:
         if node not in all_node_ids:

@@ -1,0 +1,46 @@
+{
+ "asserts": [
+  "obligation_release_shards_11"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "test_release_shards_are_complete_non_overlapping_and_order_independent && failed"
+ ],
+ "command": [
+  "pytest",
+  "tests/unit/test_obligation_executor.py::test_release_shards_are_complete_non_overlapping_and_order_independent",
+  "-q"
+ ],
+ "definition_digest": "28ebc85892b94bb0732a07c13cbed43720451556a041ce8bdf236a5b1956a322",
+ "detected": true,
+ "diagnostic_line": "exit 1 — =================================== FAILURES ===================================",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "test_release_shards_are_complete_non_overlapping_and_order_independent",
+  "failed"
+ ],
+ "expected_check": "§11 (release shards are complete and non-overlapping)",
+ "finished_at": "2026-09-15T10:33:52+08:00",
+ "input_digest": "5d3f50de44e19ab65d9d2c7a302c6a09b01ee188ed312d0a61a84db3abfc1cd8",
+ "mutated_paths": [
+  "tests/obligation_executor.py"
+ ],
+ "mutation": "obligation_release_shard_drops_tail",
+ "observed_markers": {
+  "failed": true,
+  "test_release_shards_are_complete_non_overlapping_and_order_independent": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-09-15T10:33:49+08:00"
+}

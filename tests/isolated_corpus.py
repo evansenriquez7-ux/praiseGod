@@ -57,6 +57,7 @@ KNOWN LIMITATIONS (Scaling Mandate 6)
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import sys
 import tempfile
@@ -71,7 +72,13 @@ if str(REPO_ROOT) not in sys.path:
 from backend.app.practice_gen.registry import get_all_node_ids, get_node_info  # noqa: E402
 from backend.app.practice_gen.validation import validate_capability as cap  # noqa: E402
 from backend.app.practice_gen.validation import validate_judgment as jud  # noqa: E402
-from backend.app.practice_gen.validation.judgment_packets import _render_sample  # noqa: E402
+from backend.app.practice_gen.validation.judgment_packets import (  # noqa: E402
+    SAMPLING_VERSION,
+    _json_digest,
+    _render_sample,
+    finalize_samples,
+)
+from tests.frontend_renderer import attach_rendered_visual_descriptions  # noqa: E402
 
 # ─────────────────────────────────────────────────────────────────────────────
 # THE PLANT SLOT. The mutation harness rewrites this one line.
@@ -132,6 +139,7 @@ _PHANTOM_QUOTE = "the pupils weigh the sampan in kilopascals"
 # a node that has it; landing on none at all is a loud failure in `run_gate`, never a
 # silent no-op that would score the mutation as SURVIVED for the wrong reason.
 _PLACED: set = set()
+_JUDGMENT_PACKETS: Dict[str, Dict[str, Any]] = {}
 
 
 def corpus_nodes() -> List[str]:
@@ -157,7 +165,26 @@ def _samples_for(node_id: str) -> List[Dict[str, Any]]:
                 f"({type(exc).__name__}: {exc}). The control corpus must be built from "
                 f"content the pipeline actually serves; fix the render, do not drop the seed."
             ) from exc
-    return out
+    return finalize_samples(attach_rendered_visual_descriptions(out))
+
+
+def _control_packet(node_id: str, samples: List[Dict[str, Any]]) -> Dict[str, Any]:
+    info = get_node_info(node_id) or {}
+    core = {
+        "schema_version": jud.REVIEW_SCHEMA_VERSION,
+        "sampling_version": SAMPLING_VERSION,
+        "node_id": node_id,
+        "competency_snapshot": {
+            "text": info.get("competency", ""),
+            "grade": info.get("grade"),
+            "quarter": info.get("quarter"),
+            "subdomain": info.get("subdomain") or info.get("domain"),
+        },
+        "requirements_snapshot": [dict(req) for req in (info.get("requires") or [])],
+        "sample_ids": [sample["sample_id"] for sample in samples],
+        "samples": samples,
+    }
+    return {**core, "packet_digest": _json_digest(core)}
 
 
 # ─── the §5 corpus ────────────────────────────────────────────────────────────
@@ -172,10 +199,16 @@ _SINGLE_NODE_PLANTS = frozenset({
 
 def build_judgment_corpus(dest: Path, plant: Optional[str] = None) -> List[str]:
     _PLACED.clear()
+    _JUDGMENT_PACKETS.clear()
     nodes = corpus_nodes()
     for i, node_id in enumerate(nodes):
         samples = _samples_for(node_id)
+        packet = _control_packet(node_id, samples)
+        _JUDGMENT_PACKETS[node_id] = packet
+        samples = json.loads(json.dumps(samples))
         reviewer = f"isolated-reviewer-{i // (CORPUS_SIZE // 2 + 1)}"
+        dispatch_id = f"isolated-dispatch-{i:03d}"
+        clause_ids = [str(req.get("id", "")) for req in packet["requirements_snapshot"]]
         findings = {}
         for j, item in enumerate(sorted(jud.REQUIRED_FINDINGS)):
             # The node id is appended so no two rationales are byte-identical (§5's
@@ -186,19 +219,92 @@ def build_judgment_corpus(dest: Path, plant: Optional[str] = None) -> List[str]:
                 "verdict": "PASS",
                 "rationale": f"{_FRAMES[(i + j * 5) % len(_FRAMES)]} (node {node_id})",
             }
+        findings["competency_fulfillment"]["clause_ids"] = clause_ids
+        findings["competency_fulfillment"]["decomposition"] = {
+            "verdict": "PASS",
+            "requirement_ids": clause_ids,
+            "reasoning": (
+                "The requirement list preserves the verbs, objects, ranges, representations, "
+                f"and named subcases in this complete competency: {packet['competency_snapshot']['text']}"
+            ),
+        }
+        findings["comprehensive_coverage"]["clause_ids"] = clause_ids
+        sample_assessments = [{
+            "sample_id": sample["sample_id"],
+            "reviewer_identity": reviewer,
+            "dispatch_id": dispatch_id,
+            "checks": {
+                name: {
+                    "verdict": "PASS",
+                    "reasoning": (
+                        f"The learner-visible evidence in sample {sample['sample_id']} supports "
+                        f"this {name.replace('_', ' ')} judgment: {sample['question_text']}"
+                    ),
+                }
+                for name in sorted(jud.SAMPLE_ASSESSMENTS)
+            },
+        } for sample in samples]
+        clause_evidence = [{
+            "requirement_id": req_id,
+            "clause": next(req.get("clause") for req in packet["requirements_snapshot"]
+                           if str(req.get("id", "")) == req_id),
+            "verdict": "PASS",
+            "reasoning": (
+                f"The cited learner view supports {req_id}, whose clause is "
+                f"{next(req.get('clause') for req in packet['requirements_snapshot'] if str(req.get('id', '')) == req_id)}; "
+                f"the actual sample asks {samples[0]['question_text']}"
+            ),
+            "sample_ids": [samples[0]["sample_id"]],
+            "reviewer_identity": reviewer,
+            "dispatch_id": dispatch_id,
+        } for req_id in clause_ids]
         review = {
+            "schema_version": jud.REVIEW_SCHEMA_VERSION,
             "node_id": node_id,
             "reviewed_by": reviewer,
             "review_date": "2026-09-12",
             "blind": True,
+            "competency_snapshot": packet["competency_snapshot"],
+            "requirements_snapshot": packet["requirements_snapshot"],
+            "packet_digest": packet["packet_digest"],
+            "sampling_version": packet["sampling_version"],
             "sample_seeds": list(SEEDS),
+            "sample_ids": packet["sample_ids"],
             "samples_reviewed": samples,
+            "sample_assessments": sample_assessments,
+            "clause_evidence": clause_evidence,
             "findings": findings,
             "overall": "PASS",
         }
         _apply_judgment_plant(plant, i, nodes, review, samples)
         path = dest / "_".join(node_id.split("_")[:-1]) / f"{node_id}.json"
         path.parent.mkdir(parents=True, exist_ok=True)
+        response_path = path.parent / ".responses" / f"{dispatch_id}.json"
+        response_path.parent.mkdir(parents=True, exist_ok=True)
+        response_payload = {
+            "sample_assessments": review["sample_assessments"],
+            "clause_evidence": review["clause_evidence"],
+            "findings": review["findings"],
+            "overall": review["overall"],
+        }
+        response_path.write_text(
+            json.dumps(response_payload, indent=1, ensure_ascii=False), encoding="utf-8"
+        )
+        review["dispatch_provenance"] = [{
+            "dispatch_id": dispatch_id,
+            "reviewer_identity": reviewer,
+            "review_date": "2026-09-12",
+            "blind": True,
+            "packet_digest": packet["packet_digest"],
+            "clause_ids": clause_ids,
+            "response_ref": str(response_path.relative_to(path.parent)),
+            "response_digest": hashlib.sha256(response_path.read_bytes()).hexdigest(),
+        }]
+        if plant == "single_reviewer":
+            # Provenance is built after the main plant; keep all identity fields aligned.
+            review["dispatch_provenance"][0]["reviewer_identity"] = (
+                "isolated-one-identity-for-everything"
+            )
         path.write_text(json.dumps(review, indent=1, ensure_ascii=False), encoding="utf-8")
     _assert_placed(plant)
     return nodes
@@ -219,7 +325,13 @@ def _apply_judgment_plant(plant: Optional[str], i: int, nodes: List[str],
     if plant is None:
         return
     if plant == "single_reviewer":
-        review["reviewed_by"] = "isolated-one-identity-for-everything"
+        identity = "isolated-one-identity-for-everything"
+        # Keep schema-v2 dispatch identity consistent so plurality is actually reached.
+        review["reviewed_by"] = identity
+        for assessment in review["sample_assessments"]:
+            assessment["reviewer_identity"] = identity
+        for evidence in review["clause_evidence"]:
+            evidence["reviewer_identity"] = identity
         return
     if plant == "template_skeleton":
         # One frame across every node, node id still appended so the strings stay
@@ -393,13 +505,14 @@ def _apply_attestation_plant(plant: Optional[str], i: int, record: Dict[str, Any
 
 @contextmanager
 def _judgment_pointed_at(dir_: Path, nodes: List[str]) -> Iterator[None]:
-    real_dir, real_ids = jud.JUDGMENT_DIR, jud.get_all_node_ids
+    real_dir, real_ids, real_build = jud.JUDGMENT_DIR, jud.get_all_node_ids, jud.build_packet
     jud.JUDGMENT_DIR = dir_
     jud.get_all_node_ids = lambda: list(nodes)
+    jud.build_packet = lambda node_id: _JUDGMENT_PACKETS[node_id]
     try:
         yield
     finally:
-        jud.JUDGMENT_DIR, jud.get_all_node_ids = real_dir, real_ids
+        jud.JUDGMENT_DIR, jud.get_all_node_ids, jud.build_packet = real_dir, real_ids, real_build
 
 
 @contextmanager

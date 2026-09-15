@@ -81,25 +81,43 @@ def render_prompt_block(packets: List[Dict[str, Any]]) -> str:
     """
     out: List[str] = []
     for p in packets:
+        competency = p["competency_snapshot"]
         out.append("=" * 74)
         out.append(f"NODE: {p['node_id']}")
-        out.append(f"COMPETENCY (Grade {p['grade']}, Quarter {p['quarter']}, "
-                   f"{p.get('subdomain')}):")
-        out.append(p["competency_text"])
+        out.append(f"PACKET DIGEST: {p['packet_digest']}")
+        out.append(f"COMPETENCY (Grade {competency['grade']}, "
+                   f"Quarter {competency['quarter']}, {competency.get('subdomain')}):")
+        out.append(competency["text"])
+        out.append("")
+        out.append("REQUIREMENTS (confirm this is a lossless decomposition of the competency):")
+        for requirement in p["requirements_snapshot"]:
+            out.append(f"  {requirement['id']}: {requirement['clause']}")
         out.append("")
         out.append("SAMPLES (every one of these is real rendered output):")
         for s in p["samples"]:
-            out.append(f"  seed {s['seed']}  [{s.get('formatter')}]")
+            out.append(f"  sample {s['sample_id']}  seed {s['seed']}  [{s.get('formatter')}]")
             out.append(f"      stem:    {s['question_text']}")
-            out.append(f"      key:     {s.get('correct_answer')}")
+            out.append(f"      answer:  {s.get('resolved_answer')}")
             opts = s.get("options")
             if opts:
                 vals = [str(o.get("value")) if isinstance(o, dict) else str(o) for o in opts]
                 out.append(f"      options: {' / '.join(vals)}")
-            if s.get("cloze_text"):
+            if "cloze_text" in s:
                 out.append(f"      cloze:   {s['cloze_text']}")
-            if s.get("hint"):
+            if "hints" in s:
+                out.append(f"      hints:   {json.dumps(s['hints'], ensure_ascii=False)}")
+            elif "hint" in s:
                 out.append(f"      hint:    {s['hint']}")
+            out.append(f"      response: {json.dumps(s['effective'], ensure_ascii=False)}")
+            if s.get("visual_type"):
+                out.append(f"      visual:  {s['visual_type']}")
+                out.append("      rendered structure: " + json.dumps(
+                    s["visual_render"]["description"], ensure_ascii=False
+                ))
+                out.append(
+                    "      layout limit: this static description does not prove crowding, "
+                    "overlap, colour contrast, or physical touch-target size"
+                )
         failures = render_failures(p["node_id"])
         if failures:
             # Never silent (Ground Rule 3): a seed the packet builder could not render is
@@ -125,11 +143,17 @@ def skeleton(packet: Dict[str, Any]) -> Dict[str, Any]:
     waiting to happen.
     """
     return {
+        "schema_version": packet["schema_version"],
         "node_id": packet["node_id"],
+        "competency_snapshot": packet["competency_snapshot"],
+        "requirements_snapshot": packet["requirements_snapshot"],
+        "packet_digest": packet["packet_digest"],
+        "sampling_version": packet["sampling_version"],
         "reviewed_by": "<name the reviewing model/agent>",
         "review_date": "<YYYY-MM-DD>",
         "blind": True,
-        "sample_seeds": packet["sample_seeds"],
+        "sample_seeds": [sample["seed"] for sample in packet["samples"]],
+        "sample_ids": packet["sample_ids"],
         "samples_reviewed": packet["samples"],
         "findings": {item: {"verdict": "<PASS|CONCERN|FAIL>",
                             "rationale": "<node-specific, >= 40 chars, quoting only "

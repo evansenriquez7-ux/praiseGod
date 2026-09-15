@@ -69,7 +69,8 @@ def run(
         is_student_path=is_student_path,
         forced_dna=forced_dna,
     )
-    return problem.model_dump()
+    result = problem.model_dump()
+    return result
 
 
 def run_batch(

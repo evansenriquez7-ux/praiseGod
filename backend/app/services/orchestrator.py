@@ -562,6 +562,15 @@ class PracticeOrchestrator:
             formatter = _uniform_choice(rng, available)
 
         problem = apply_formatter(ctx, formatter, rng)
+        if interest_theme is not None:
+            rendered = problem.question_text.lower()
+            if not any(term.lower() in rendered for term in ctx.interest_visible_terms):
+                if not ctx.interest_cue:
+                    raise AssertionError(
+                        f"interest cue missing for requested theme={interest_theme!r} "
+                        f"(node={node_id}, DNA={dna_name}, seed={seed})"
+                    )
+                problem.question_text = f"{ctx.interest_cue} {problem.question_text}"
         # Annotate the problem with the DNA concept that was actually chosen.
         # Without this, the auditor cannot do per-DNA content checks (it would
         # fall back to the first DNA in the node's list, which is not

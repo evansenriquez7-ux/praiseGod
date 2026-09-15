@@ -1,0 +1,46 @@
+{
+ "asserts": [
+  "contract_doc_matches_registry"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "test_contract_registry_drift_is_a_named_failure && failed"
+ ],
+ "command": [
+  "pytest",
+  "tests/unit/test_stage_ledger.py::TestDocumentationDriftEndToEnd::test_contract_registry_drift_is_a_named_failure",
+  "-q"
+ ],
+ "definition_digest": "abe7c37f53e536203366ed4bc12b334cc6f6ab9f50249a9a74bb84fb4b929552",
+ "detected": true,
+ "diagnostic_line": "exit 1 — =================================== FAILURES ===================================",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "test_contract_registry_drift_is_a_named_failure",
+  "failed"
+ ],
+ "expected_check": "the binding contract table exactly matches the runner registry",
+ "finished_at": "2026-09-15T10:41:53+08:00",
+ "input_digest": "8042a19788fe9375139cd62b4c774988ae6eaa00725ce712337d47f64cf685ac",
+ "mutated_paths": [
+  "backend/app/practice_gen/validation/run_all.py"
+ ],
+ "mutation": "contract_registry_drift_accepted",
+ "observed_markers": {
+  "failed": true,
+  "test_contract_registry_drift_is_a_named_failure": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-09-15T10:41:51+08:00"
+}

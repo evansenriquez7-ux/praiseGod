@@ -1,0 +1,46 @@
+{
+ "asserts": [
+  "NODE_TO_DNA_presence"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "NODE_TO_DNA_presence"
+ ],
+ "command": [
+  "backend.app.practice_gen.validation.validate_matrix",
+  "--node",
+  "mat_g1_na_q1_0"
+ ],
+ "definition_digest": "d8781debdd2095faaba728516ad7a7b298a6c689de2787d7e4d459c8d494cff3",
+ "detected": true,
+ "diagnostic_line": "exit 1 — [1/1] Checking mat_g1_na_q1_0 ...  FAIL",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "NODE_TO_DNA_presence",
+  "mat_g1_na_q1_0"
+ ],
+ "expected_check": "§1 matrix prerequisite (every registered node has a DNA mapping)",
+ "finished_at": "2026-09-15T10:44:58+08:00",
+ "input_digest": "f714b5cc5e44665de3eb3f11f51ee163996e9f3920ccbfbb52022fce7e861048",
+ "mutated_paths": [
+  "backend/app/practice_gen/registry.py"
+ ],
+ "mutation": "node_loses_all_dna_mappings",
+ "observed_markers": {
+  "NODE_TO_DNA_presence": true,
+  "mat_g1_na_q1_0": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-09-15T10:44:54+08:00"
+}

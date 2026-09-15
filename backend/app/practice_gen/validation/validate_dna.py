@@ -12,7 +12,9 @@ from __future__ import annotations
 import importlib
 import math
 import random
+import re
 import sys
+from fractions import Fraction
 from typing import Any, Dict, List, Optional, Tuple
 
 from ..dna.base import DNA, ErrorPattern
@@ -21,6 +23,8 @@ from ..generators.difficulty import (
     enumerate_profiles,
     measure_acceptance_rate,
 )
+from ..generators.base_generator import generate_context
+from ..registry import NODE_TO_DNA, get_node_info
 
 
 from ._manifest import DNA_MODULE_MAP, load_dna
@@ -34,19 +38,20 @@ ASSERTIONS = (
 )
 
 
-def _sample_params_for_grade(dna: DNA, grade: int, seed: int = 42) -> Optional[Dict[str, Any]]:
+STRUCTURAL_SEEDS: Tuple[int, ...] = (0, 1, 42, 99, 2_147_483_647)
+
+
+def _sample_params_for_grade(dna: DNA, grade: int, seed: int = 42) -> Dict[str, Any]:
     """
     Call the DNA module's generate_params with a neutral profile.
-    Returns the params dict, or None if generation fails.
+    A declared grade that cannot generate is a named structural failure.  Returning
+    ``None`` here used to erase the entire formula/error-pattern check silently.
     """
     module_path = DNA_MODULE_MAP.get(dna.concept)
     if module_path is None:
-        return None
-    try:
-        mod = importlib.import_module(module_path)
-        return mod.generate_params(grade, {}, seed)
-    except Exception:
-        return None
+        raise ImportError(f"{dna.concept}: no DNA_MODULE_MAP entry")
+    mod = importlib.import_module(module_path)
+    return mod.generate_params(grade, {}, seed)
 
 
 def _eval_formula(formula: str, values: Dict[str, Any]) -> Any:
@@ -70,36 +75,97 @@ def _eval_formula(formula: str, values: Dict[str, Any]) -> Any:
 
 
 def _are_values_equal(v1: Any, v2: Any) -> bool:
-    """Check if two math values are equal, supporting fraction strings vs float comparison."""
-    if v1 == v2:
-        return True
-    def to_float(v):
-        if isinstance(v, (int, float)):
-            return float(v)
-        if isinstance(v, str):
-            if "/" in v:
+    """Compare numeric values exactly, without binary-float approximation."""
+    def canonical(value: Any) -> Tuple[str, Any]:
+        if isinstance(value, bool):
+            return ("bool", value)
+        if isinstance(value, (int, Fraction)):
+            return ("number", Fraction(value))
+        if isinstance(value, float):
+            return ("number", Fraction(str(value)))
+        if isinstance(value, str):
+            try:
+                return ("number", Fraction(value.strip()))
+            except (ValueError, ZeroDivisionError):
+                return ("text", value)
+        return (type(value).__qualname__, value)
+
+    return canonical(v1) == canonical(v2)
+
+
+def _declared_grades(dna: DNA) -> Tuple[List[int], List[str]]:
+    grades: List[int] = []
+    errors: List[str] = []
+    for key in dna.param_bounds:
+        if not re.fullmatch(r"g\d+", key):
+            errors.append(
+                f"{dna.concept}: invalid param_bounds grade key {key!r}; expected g<digits>."
+            )
+            continue
+        grades.append(int(key[1:]))
+    if not grades:
+        errors.append(f"{dna.concept}: no declared grades in param_bounds.")
+    return sorted(set(grades)), errors
+
+
+def _validate_formula_samples(dna: DNA) -> List[str]:
+    """Exercise every applicable node and declared grade at deterministic seeds."""
+    errors: List[str] = []
+    grades, grade_errors = _declared_grades(dna)
+    errors.extend(grade_errors)
+    for grade in grades:
+        node_ids = [
+            node_id
+            for node_id, concepts in NODE_TO_DNA.items()
+            if dna.concept in concepts
+            and (get_node_info(node_id) or {}).get("grade") == grade
+        ]
+        # A bound may intentionally precede its first node (currently counting/perimeter
+        # g3). It is still syntax-checked directly, but is explicitly not claimed as a
+        # student-path obligation until a node maps it.
+        if not node_ids:
+            for seed in STRUCTURAL_SEEDS:
                 try:
-                    parts = v.split("/")
-                    return float(parts[0]) / float(parts[1])
-                except Exception:
-                    # DISPOSITION: checked -- this is a COERCION helper: falling through
-                    # returns None, and every caller treats None as 'not comparable as a
-                    # number' and falls back to an exact comparison. Nothing is skipped.
-                    pass
-            else:
+                    sample_values = _sample_params_for_grade(dna, grade, seed=seed)
+                    _eval_formula(dna.answer_formula, sample_values)
+                except Exception as exc:
+                    errors.append(
+                        f"{dna.concept} unmapped grade={grade} seed={seed}: "
+                        f"formula sampling raised: {exc}"
+                    )
+            continue
+
+        for node_id in node_ids:
+            for seed in STRUCTURAL_SEEDS:
                 try:
-                    return float(v)
-                except Exception:
-                    # DISPOSITION: checked -- as above: None means 'not a number', and the
-                    # caller compares exactly instead. No obligation is dropped.
-                    pass
-        return None
-    
-    f1 = to_float(v1)
-    f2 = to_float(v2)
-    if f1 is not None and f2 is not None:
-        return math.isclose(f1, f2)
-    return False
+                    ctx = generate_context(
+                        dna=dna,
+                        node_id=node_id,
+                        grade=grade,
+                        seed=seed,
+                        difficulty_profile=None,
+                        interest_theme=None,
+                        is_student_path=True,
+                    )
+                except Exception as exc:
+                    errors.append(
+                        f"{dna.concept} node={node_id} grade={grade} seed={seed}: "
+                        f"generate_context raised: {exc}"
+                    )
+                    continue
+
+                # A distractor equal to the key is a hard failure on the produced
+                # context. Raw ErrorPattern formulas may collide for particular values;
+                # production must remove key collisions before this seam. Equal-valued
+                # distractors are deliberately left to §1K's display-aware rule: two
+                # representations of the same wrong value can be legitimate.
+                for distractor in ctx.distractors:
+                    if _are_values_equal(distractor, ctx.correct_answer):
+                        errors.append(
+                            f"{dna.concept} node={node_id} grade={grade} seed={seed}: "
+                            f"produced distractor equals correct answer {distractor!r}."
+                        )
+    return errors
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -112,10 +178,10 @@ def validate_formula_dna(dna: DNA) -> List[str]:
 
     Checks:
       1. answer_formula is not None.
-      2. For each grade (g1, g2, g3) where param_bounds exists:
+      2. For every declared grade where param_bounds exists:
          All (lo, hi) pairs with numeric bounds satisfy lo < hi.
       3. For each ErrorPattern: formula evaluates without error for
-         sample param values at grade 1.
+         five deterministic samples at every declared grade.
       4. Distractors != correct answer for sample param values.
       5. Distractors are mutually distinct.
 
@@ -147,57 +213,7 @@ def validate_formula_dna(dna: DNA) -> List[str]:
                     f"lo={lo} >= hi={hi} — randint would crash."
                 )
 
-    # 3–5. Evaluate error patterns against sample params
-    grade_keys = list(dna.param_bounds.keys())
-    sample_grade_key = grade_keys[0] if grade_keys else None
-    sample_grade = int(sample_grade_key[1]) if sample_grade_key else 1
-    sample_values = _sample_params_for_grade(dna, sample_grade, seed=42)
-
-    if sample_values is not None:
-        # Compute correct answer
-        try:
-            correct = _eval_formula(dna.answer_formula, sample_values)
-        except Exception as exc:
-            errors.append(
-                f"{concept}: answer_formula '{dna.answer_formula}' failed to "
-                f"evaluate for sample values {sample_values}: {exc}"
-            )
-            correct = None
-
-        distractor_values: List[Any] = []
-        for ep in dna.error_patterns:
-            # 3. Formula evaluates without error
-            if ep.formula in ("None", None):
-                continue
-            try:
-                d_val = _eval_formula(ep.formula, sample_values)
-            except Exception as exc:
-                errors.append(
-                    f"{concept}: ErrorPattern '{ep.label}' formula "
-                    f"'{ep.formula}' raised: {exc}"
-                )
-                continue
-
-            if correct is not None:
-                # 4. Distractor != correct (runtime filter handles edge cases — WARN only)
-                if _are_values_equal(d_val, correct):
-                    errors.append(
-                        f"WARN {concept}: ErrorPattern '{ep.label}' produces "
-                        f"distractor == correct answer ({d_val}) for sample seed. "
-                        f"Runtime distractor filter handles this."
-                    )
-                    # Don't track collisions-with-correct as duplicate distractors;
-                    # runtime already skips them.
-                    continue
-
-            # 5. Distractors mutually distinct
-            if any(_are_values_equal(d_val, val) for val in distractor_values):
-                errors.append(
-                    f"{concept}: ErrorPattern '{ep.label}' produces a duplicate "
-                    f"distractor value ({d_val})."
-                )
-            else:
-                distractor_values.append(d_val)
+    errors.extend(_validate_formula_samples(dna))
 
     return errors
 
@@ -224,6 +240,8 @@ def validate_visual_dna(dna: DNA) -> List[str]:
     }
     errors: List[str] = []
     concept = dna.concept
+    _, grade_errors = _declared_grades(dna)
+    errors.extend(grade_errors)
 
     if dna.answer_formula is not None:
         errors.append(
@@ -262,6 +280,8 @@ def validate_static_bank_dna(dna: DNA) -> List[str]:
     """
     errors: List[str] = []
     concept = dna.concept
+    _, grade_errors = _declared_grades(dna)
+    errors.extend(grade_errors)
 
     if dna.answer_formula is not None:
         errors.append(
@@ -305,55 +325,7 @@ def validate_algorithmic_dna(dna: DNA) -> List[str]:
                     f"lo={lo} >= hi={hi} — randint would crash."
                 )
 
-    # 3–5. Evaluate error patterns against sample params
-    grade_keys = list(dna.param_bounds.keys())
-    sample_grade_key = grade_keys[0] if grade_keys else None
-    sample_grade = int(sample_grade_key[1]) if sample_grade_key else 1
-    sample_values = _sample_params_for_grade(dna, sample_grade, seed=42)
-
-    if sample_values is not None:
-        # Compute correct answer
-        try:
-            correct = _eval_formula(dna.answer_formula, sample_values)
-        except Exception as exc:
-            errors.append(
-                f"{concept}: answer_formula '{dna.answer_formula}' failed to "
-                f"evaluate for sample values {sample_values}: {exc}"
-            )
-            correct = None
-
-        distractor_values: List[Any] = []
-        for ep in dna.error_patterns:
-            # 3. Formula evaluates without error
-            if ep.formula in ("None", None):
-                continue
-            try:
-                d_val = _eval_formula(ep.formula, sample_values)
-            except Exception as exc:
-                errors.append(
-                    f"{concept}: ErrorPattern '{ep.label}' formula "
-                    f"'{ep.formula}' raised: {exc}"
-                )
-                continue
-
-            if correct is not None:
-                # 4. Distractor != correct (runtime filter handles edge cases — WARN only)
-                if _are_values_equal(d_val, correct):
-                    errors.append(
-                        f"WARN {concept}: ErrorPattern '{ep.label}' produces "
-                        f"distractor == correct answer ({d_val}) for sample seed. "
-                        f"Runtime distractor filter handles this."
-                    )
-                    continue
-
-            # 5. Distractors mutually distinct
-            if any(_are_values_equal(d_val, val) for val in distractor_values):
-                errors.append(
-                    f"{concept}: ErrorPattern '{ep.label}' produces a duplicate "
-                    f"distractor value ({d_val})."
-                )
-            else:
-                distractor_values.append(d_val)
+    errors.extend(_validate_formula_samples(dna))
 
     return errors
 

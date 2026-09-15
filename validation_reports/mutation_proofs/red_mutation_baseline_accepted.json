@@ -1,0 +1,46 @@
+{
+ "asserts": [
+  "mutation_proof_integrity_8"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "test_red_baseline_is_invalid_before_any_plant && failed"
+ ],
+ "command": [
+  "pytest",
+  "tests/unit/test_mutation_runner.py::test_red_baseline_is_invalid_before_any_plant",
+  "-q"
+ ],
+ "definition_digest": "955b863505d4d4d0b314e77f7e56e7d33d54510a4965d0d94a88c5d27d0a3987",
+ "detected": true,
+ "diagnostic_line": "exit 1 — =================================== FAILURES ===================================",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "test_red_baseline_is_invalid_before_any_plant",
+  "failed"
+ ],
+ "expected_check": "§8 proof integrity (every mutation starts from an exit-zero control)",
+ "finished_at": "2026-09-15T10:50:35+08:00",
+ "input_digest": "ad4c6c488417dfbf0e7cecafeb2fc28aacaaae02baaf9adc2fb2e9dd7c20e2c9",
+ "mutated_paths": [
+  "tests/mutation_harness.py"
+ ],
+ "mutation": "red_mutation_baseline_accepted",
+ "observed_markers": {
+  "failed": true,
+  "test_red_baseline_is_invalid_before_any_plant": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-09-15T10:50:34+08:00"
+}

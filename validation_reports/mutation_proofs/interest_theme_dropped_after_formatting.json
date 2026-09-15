@@ -1,0 +1,46 @@
+{
+ "asserts": [
+  "interest_theme_visibility"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "FAIL interest_theme_visibility"
+ ],
+ "command": [
+  "backend.app.practice_gen.validation.validate_interest"
+ ],
+ "definition_digest": "096f7556872a5696e5457be29195e007f4590b85cd68bddb0a8c5adb3a141ed5",
+ "detected": true,
+ "diagnostic_line": "exit 1 — FAIL mat_g1_na_q1_0/counting:",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "FAIL interest_theme_visibility",
+  "no declared theme value reached",
+  "seed=731"
+ ],
+ "expected_check": "final student-path learner-visible interest delivery",
+ "finished_at": "2026-09-15T05:26:34+08:00",
+ "input_digest": "58cccb5a9e45dd5f7cbc40c98d866717f07972cc1004202ebb5c15974875e123",
+ "mutated_paths": [
+  "backend/app/services/orchestrator.py"
+ ],
+ "mutation": "interest_theme_dropped_after_formatting",
+ "observed_markers": {
+  "FAIL interest_theme_visibility": true,
+  "no declared theme value reached": true,
+  "seed=731": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-09-15T05:25:26+08:00"
+}

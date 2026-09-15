@@ -1,0 +1,46 @@
+{
+ "asserts": [
+  "judgment_visual_evidence_5"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "test_corrupt_rendered_visual_is_stale && failed"
+ ],
+ "command": [
+  "pytest",
+  "tests/unit/test_judgment_visual_evidence.py",
+  "-q"
+ ],
+ "definition_digest": "a87da2b46e8486a511c36735a202528bf574429dadf87ff66a310700433347d8",
+ "detected": true,
+ "diagnostic_line": "exit 1 — =================================== FAILURES ===================================",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "test_corrupt_rendered_visual_is_stale",
+  "failed"
+ ],
+ "expected_check": "§5 (corrupt render-derived visual evidence makes a review stale)",
+ "finished_at": "2026-09-15T05:49:32+08:00",
+ "input_digest": "58cccb5a9e45dd5f7cbc40c98d866717f07972cc1004202ebb5c15974875e123",
+ "mutated_paths": [
+  "backend/app/practice_gen/validation/validate_judgment.py"
+ ],
+ "mutation": "judgment_accepts_corrupt_rendered_visual",
+ "observed_markers": {
+  "failed": true,
+  "test_corrupt_rendered_visual_is_stale": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-09-15T05:49:31+08:00"
+}

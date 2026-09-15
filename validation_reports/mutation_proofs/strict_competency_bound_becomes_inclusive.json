@@ -1,0 +1,46 @@
+{
+ "asserts": [
+  "competency_bounds_parsing"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "FAIL competency_bounds_parsing"
+ ],
+ "command": [
+  "backend.app.practice_gen.validation.validate_compat",
+  "--only",
+  "bounds_fixture"
+ ],
+ "definition_digest": "c45023508222439e83e967e734f5442159e703cef5931f04c4e48cddbed025ee",
+ "detected": true,
+ "diagnostic_line": "exit 1 — FAIL competency_bounds_parsing (2):",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "FAIL competency_bounds_parsing",
+  "expected key 'max_minuend'"
+ ],
+ "expected_check": "§2G exact fixture (strict curriculum bounds stay exclusive)",
+ "finished_at": "2026-09-15T10:42:45+08:00",
+ "input_digest": "b04a89c893bd5686db9bc277054ed999c2fd46e81867777dea449f1e0f520513",
+ "mutated_paths": [
+  "backend/app/practice_gen/registry.py"
+ ],
+ "mutation": "strict_competency_bound_becomes_inclusive",
+ "observed_markers": {
+  "FAIL competency_bounds_parsing": true,
+  "expected key 'max_minuend'": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-09-15T10:42:44+08:00"
+}

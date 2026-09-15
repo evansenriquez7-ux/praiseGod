@@ -164,3 +164,45 @@ class TestReplayIdentityIsExplicit:
                                       "experience"}, (
                 "a record that depends on seed arithmetic alone cannot describe itself"
             )
+
+
+class TestCanonicalPacket:
+    def test_build_is_deterministic_and_digest_bound(self):
+        first = jp.build_packet(NODE)
+        second = jp.build_packet(NODE)
+        assert first == second
+        core = {key: value for key, value in first.items() if key != "packet_digest"}
+        assert first["packet_digest"] == jp._json_digest(core)
+
+    def test_packet_snapshots_live_competency_and_requirements(self):
+        from backend.app.practice_gen.registry import get_node_info
+
+        packet = jp.build_packet(NODE)
+        live = jp.get_node_info(NODE)
+        assert packet["schema_version"] == 2
+        assert packet["sampling_version"] == jp.SAMPLING_VERSION
+        assert packet["competency_snapshot"]["text"] == live["competency"]
+        assert packet["requirements_snapshot"] == live["requires"]
+
+    def test_samples_preserve_replay_and_learner_visible_fields(self):
+        packet = jp.build_packet(NODE)
+        assert packet["sample_ids"] == [s["sample_id"] for s in packet["samples"]]
+        assert len(packet["sample_ids"]) == len(set(packet["sample_ids"]))
+        for sample in packet["samples"]:
+            assert sample["node_id"] == NODE
+            assert sample["serving_mode"] == "student_path"
+            assert "resolved_answer" in sample
+            assert set(sample["effective"]) == {
+                "format", "is_visual", "visual_type", "interaction_mode", "answer_collection",
+                "experience",
+            }
+            digestable = {k: v for k, v in sample.items() if k != "replay_digest"}
+            assert sample["replay_digest"] == jp._json_digest(digestable)
+
+    def test_visual_sample_keeps_full_payload_and_rendered_description(self):
+        packet = jp.build_packet(NODE)
+        visual = next(s for s in packet["samples"] if s.get("visual_type"))
+        assert isinstance(visual["visual_payload"], dict) and visual["visual_payload"]
+        assert "_visual_params" not in visual, "the renderer's private handoff must not leak"
+        assert visual["visual_render"]["description"]["source"] == "rendered_static_markup"
+        assert visual["visual_render"]["renderer_input_digest"]

@@ -1,0 +1,42 @@
+{
+ "asserts": [
+  "kg_monotonicity"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "KG Monotonicity Error (edge"
+ ],
+ "command": [
+  "backend.app.practice_gen.validation.validate_compat"
+ ],
+ "definition_digest": "b0c263fd3eabaa0c7e58bfb82ba3393d07e19736f2d46d1ee4ac78da33263554",
+ "detected": true,
+ "diagnostic_line": "exit 1 — FAIL kg_monotonicity:",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "KG Monotonicity Error (edge"
+ ],
+ "expected_check": "§2 KG monotonicity on explicit prerequisite edges",
+ "finished_at": "2026-09-15T05:23:48+08:00",
+ "input_digest": "58cccb5a9e45dd5f7cbc40c98d866717f07972cc1004202ebb5c15974875e123",
+ "mutated_paths": [
+  "data/knowledge_graph_g1_3.json"
+ ],
+ "mutation": "prerequisite_edge_loses_vocab",
+ "observed_markers": {
+  "KG Monotonicity Error (edge": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-09-15T05:21:31+08:00"
+}

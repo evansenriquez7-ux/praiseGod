@@ -1,0 +1,46 @@
+{
+ "asserts": [
+  "obligation_execution_11"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "test_executor_stops_after_first_failed_obligation && failed"
+ ],
+ "command": [
+  "pytest",
+  "tests/unit/test_obligation_executor.py::test_executor_stops_after_first_failed_obligation",
+  "-q"
+ ],
+ "definition_digest": "cb534dfdbaba2d31a491a3b83b9affb2210b3df5e66a13007aeb2f15877a5e31",
+ "detected": true,
+ "diagnostic_line": "exit 1 — =================================== FAILURES ===================================",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "test_executor_stops_after_first_failed_obligation",
+  "failed"
+ ],
+ "expected_check": "§11 (the executor stops after its first named failure)",
+ "finished_at": "2026-09-15T10:37:51+08:00",
+ "input_digest": "dcd638d82714535499660232c2efa2393b38dd7515fd89f99de98ba52b02bd4f",
+ "mutated_paths": [
+  "tests/obligation_executor.py"
+ ],
+ "mutation": "obligation_executor_continues_after_failure",
+ "observed_markers": {
+  "failed": true,
+  "test_executor_stops_after_first_failed_obligation": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-09-15T10:37:50+08:00"
+}

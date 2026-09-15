@@ -1,0 +1,46 @@
+{
+ "asserts": [
+  "worker_crash"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "test_worker_converts_an_unexpected_node_crash_to_a_named_result && failed"
+ ],
+ "command": [
+  "pytest",
+  "tests/unit/test_stage_ledger.py::TestCrashIsolationEndToEnd::test_worker_converts_an_unexpected_node_crash_to_a_named_result",
+  "-q"
+ ],
+ "definition_digest": "1a4a769d981a849f1b5a0a87df0979907b9e41c351ac8c798960733edcd265f5",
+ "detected": true,
+ "diagnostic_line": "exit 1 — =================================== FAILURES ===================================",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "test_worker_converts_an_unexpected_node_crash_to_a_named_result",
+  "failed"
+ ],
+ "expected_check": "the matrix process worker converts crashes to named failures",
+ "finished_at": "2026-09-15T10:50:38+08:00",
+ "input_digest": "ad4c6c488417dfbf0e7cecafeb2fc28aacaaae02baaf9adc2fb2e9dd7c20e2c9",
+ "mutated_paths": [
+  "backend/app/practice_gen/validation/validate_matrix.py"
+ ],
+ "mutation": "matrix_worker_crash_escapes",
+ "observed_markers": {
+  "failed": true,
+  "test_worker_converts_an_unexpected_node_crash_to_a_named_result": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-09-15T10:50:36+08:00"
+}

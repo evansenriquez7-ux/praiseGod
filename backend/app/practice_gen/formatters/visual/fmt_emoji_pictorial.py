@@ -130,8 +130,16 @@ def _build_params(
             f"picture that contradicts the item's own answer key."
         )
     
-    # Select random emoji
-    emoji = rng.choice(_ALL_EMOJIS)
+    # An explicitly requested interest must reach the learner-visible picture.
+    # Random selection here made the visual contradict its own interest metadata
+    # (for example, a ppop request could draw a taco instead of the bank's microphone).
+    # Automatic/neutral requests retain the deterministic seeded variety.
+    if ctx.interest_theme:
+        from backend.app.practice_gen.generators.interest import get_interest_emoji
+
+        emoji = get_interest_emoji(ctx.interest_theme, ctx.grade)
+    else:
+        emoji = rng.choice(_ALL_EMOJIS)
     
     # Get emoji name for reveal text
     base_name = _EMOJI_NAMES.get(emoji, "item")

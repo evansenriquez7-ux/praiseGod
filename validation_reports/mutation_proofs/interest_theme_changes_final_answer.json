@@ -1,0 +1,44 @@
+{
+ "asserts": [
+  "interest_invariance"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "correct_answer differs across themes"
+ ],
+ "command": [
+  "backend.app.practice_gen.validation.validate_interest"
+ ],
+ "definition_digest": "c05436b426633aa168e969ffc7f7c331f147e2c6625561beac3c2cfb4cc7d7f6",
+ "detected": true,
+ "diagnostic_line": "exit 1 — FAIL mat_g1_na_q1_7/addition:",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "mat_g1_na_q1_7/addition",
+  "correct_answer differs across themes"
+ ],
+ "expected_check": "final student-path interest invariance",
+ "finished_at": "2026-09-15T05:25:26+08:00",
+ "input_digest": "58cccb5a9e45dd5f7cbc40c98d866717f07972cc1004202ebb5c15974875e123",
+ "mutated_paths": [
+  "backend/app/practice_gen/generators/base_generator.py"
+ ],
+ "mutation": "interest_theme_changes_final_answer",
+ "observed_markers": {
+  "correct_answer differs across themes": true,
+  "mat_g1_na_q1_7/addition": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-09-15T05:24:18+08:00"
+}

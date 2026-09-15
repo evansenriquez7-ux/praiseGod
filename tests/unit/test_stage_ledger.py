@@ -184,6 +184,7 @@ def stubbed_harness(monkeypatch):
     monkeypatch.setattr(ra.validate_render, "validate_all", lambda: True)
     monkeypatch.setattr(ra.validate_grade, "validate_all", lambda: True)
     monkeypatch.setattr(ra.validate_coverage, "validate_all", lambda: True)
+    monkeypatch.setattr(ra.validate_obligations, "validate_all", lambda: True)
     monkeypatch.setattr(ra.validate_census, "validate_all", lambda: True)
     # Phase 2 too, so a `phase=None` run stays in the fast suite: the real judgment and
     # attestation stages read the agent-authored corpora and take tens of seconds.
@@ -218,6 +219,34 @@ class TestCrashIsolationEndToEnd:
         assert "CHECKS FAILED" in out, "the summary must still be printed"
         assert "FAIL stage_crashed_render_contract_9" in out
         assert "planted stage crash" in out
+
+    def test_a_failing_unit_suite_is_a_named_stage_failure(
+        self, stubbed_harness, capsys
+    ):
+        stubbed_harness.setattr(ra, "_run_unit_tests", lambda: False)
+
+        assert ra.run_all(phase=1) == 1
+        out = capsys.readouterr().out
+        assert "unit_tests" in out
+        assert "FAILED" in out
+
+    def test_worker_converts_an_unexpected_node_crash_to_a_named_result(self, monkeypatch):
+        def boom(_node_id, *, fail_fast):
+            assert fail_fast is False
+            raise RuntimeError("planted node worker crash")
+
+        monkeypatch.setattr(ra.validate_matrix, "run_matrix_for_node", boom)
+        node_id, failures, executed = ra.validate_matrix._worker("mat_g1_na_q1_0")
+
+        assert node_id == "mat_g1_na_q1_0"
+        assert executed == set()
+        assert failures == [{
+            "dna": "unknown",
+            "formatter": "unknown",
+            "check": "worker_crash",
+            "seed": 0,
+            "error": "planted node worker crash",
+        }]
 
     def test_a_crash_cannot_delete_its_own_expected_refs(self, stubbed_harness, capsys):
         """
@@ -270,6 +299,40 @@ class TestCrashIsolationEndToEnd:
         out = capsys.readouterr().out.split("--- Stage Ledger ---")[1]
         assert "judgment_reviews_5" not in out
         assert "capability_phase2" not in out
+
+
+class TestDocumentationDriftEndToEnd:
+    """The runner must execute both documentation directions, including absence."""
+
+    def test_contract_registry_drift_is_a_named_failure(
+        self, stubbed_harness, monkeypatch, capsys
+    ):
+        monkeypatch.setattr(
+            ra,
+            "_parse_contract_section_refs",
+            lambda: set(ra.CONTRACT_CHECKS) - {"§13"},
+        )
+
+        assert ra.run_all(phase=1) == 1
+        assert "FAIL contract_doc_matches_registry" in capsys.readouterr().out
+
+    def test_operator_document_coverage_loss_is_a_named_failure(
+        self, stubbed_harness, monkeypatch, tmp_path, capsys
+    ):
+        operator_doc = tmp_path / "testing_pipeline.md"
+        operator_doc.write_text("# deliberately stale operator guide\n", encoding="utf-8")
+        monkeypatch.setattr(ra, "_OPERATOR_DOC_PATH", operator_doc)
+
+        assert ra.run_all(phase=1) == 1
+        assert "FAIL operator_doc_covers_registry" in capsys.readouterr().out
+
+    def test_missing_operator_document_is_a_named_failure(
+        self, stubbed_harness, monkeypatch, tmp_path, capsys
+    ):
+        monkeypatch.setattr(ra, "_OPERATOR_DOC_PATH", tmp_path / "absent.md")
+
+        assert ra.run_all(phase=1) == 1
+        assert "FAIL operator_doc_covers_registry" in capsys.readouterr().out
 
 
 # ─────────────────────────────────────────────────────────────────────────────

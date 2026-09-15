@@ -99,7 +99,9 @@ CENSUS_FLOORS = {
     # could not see cases the reviewer was being asked to judge -- interest had ZERO
     # allocation, 292 of 975 declared (variant, value) pairs were unreachable at any cap
     # of 6, and the continuous dimension was two points rather than a range.
-    "unit_tests": 610,
+    # 635 collected 2026-09-13: H-04's executor controls plus H-05's explicit-edge,
+    # multi-digit-grade/exact-value, and secondary-DNA vocabulary controls.
+    "unit_tests": 635,
     # 56 registered 2026-09-09 (was 51, 50, 48, 37). Four prove §8's own directions, one
     # §2C at (node, formatter) granularity, two the §6 phase seam, one that every contract
     # check declares the phase it runs in, four the §6 Phase 1 band (§6A/§6B/§6C/§6E, which
@@ -169,12 +171,15 @@ CENSUS_FLOORS = {
     # advertised->servable, and nothing held registered->reachable until §11.
     # 92 registered 2026-09-12 (was 91): +1 for `silent_handler_without_a_disposition`,
     # the plan step 0 inventory gate. Added at a HARD ZERO rather than a floor, because
-    # all 19 live silent handlers were classified first (9 checked, 3 named-failure,
-    # 7 limitation) -- Scaling Mandate 5 the right way round.
+    # all 19 live silent handlers were classified first; H-05 then removed two checked
+    # catch-and-drop paths, leaving 17 (7 checked, 3 named-failure, 7 limitation).
     # 94 registered 2026-09-12 (was 92): +2 for the packet allocation (plan step 2).
     # One puts the per-node variant cap back (292 pairs unreachable); one stops pinning
     # interest (the dimension that generates the STORY, previously unallocated entirely).
-    "mutations": 94,
+    # 105 registered 2026-09-13: +4 H-04 executor directions and +7 H-05
+    # scale-safety directions (registry, KG edges, DNA structure/feasibility,
+    # vocabulary static/rendered breadth, and final-answer interest invariance).
+    "mutations": 105,
     # 983 observed 2026-09-08. How many (variant, value) pairs the blind-review packets
     # will actually demonstrate across the tree.
     #

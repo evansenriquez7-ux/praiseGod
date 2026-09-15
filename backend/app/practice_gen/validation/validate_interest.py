@@ -1,173 +1,195 @@
-"""
-Practice Generation — Interest Invariance Validation
+"""Practice-generation interest invariance on the final student-path problem.
 
-Verifies that interest-theme wrapping never changes the correct answer.
-A formula DNA's numeric answer must be identical regardless of which
-story spine / interest theme is applied.
+Every mapped context-using DNA is exercised at every node, for every theme the
+interest bank declares appropriate to that node's grade, at five deterministic seeds.
+The requested theme must survive into final-problem metadata, at least one declared
+theme value must reach the learner-visible final problem, and the mathematical answer
+must remain invariant.
 
-Run as a module:
-    python -m backend.app.practice_gen.validation.validate_interest
+Known limitation (H-05): visibility proves that the requested theme reached the final
+problem; it does not prove the resulting narrative is natural, helpful, or coherent.
+Those semantic properties remain Phase 2 judgment work.
 """
 
 from __future__ import annotations
 
-import importlib
+import json
 import sys
-from typing import Dict, List, Optional
+from pathlib import Path
+from typing import Any, Dict, List
 
-from ..dna.base import DNA
-from ..generators.base_generator import generate_context
+from backend.app.services.orchestrator import PracticeOrchestrator
 
-
-# ─── DNA module registry (same as validate_dna) ───────────────────────────────
-
+from ..generators.interest import get_grade_appropriate_interests
+from ..registry import NODE_TO_DNA, get_node_info
 from ._manifest import DNA_MODULE_MAP, load_dna
+from .validate_dna import _are_values_equal
 
-# §8 inventory: the assertions this module can independently fail on. Each must be
-# proven by a mutation naming it in `Mutation.asserts`, or excused in
-# validate_coverage.UNPROVEN_ASSERTIONS with a reason and a date.
-ASSERTIONS = ("interest_invariance",)
+ASSERTIONS = ("interest_invariance", "interest_theme_visibility")
 
-# Three representative interest themes used for invariance testing.
-# These must exist in interest_bank.json; if not found the generator falls back
-# to the neutral theme — which is still fine for invariance checking.
-_TEST_THEMES: List[str] = ["animals", "sports", "food"]
+INTEREST_SEEDS = (731, 733, 739, 743, 751)
+_BANK_PATH = Path(__file__).resolve().parents[4] / "data" / "interest_bank.json"
+
+
+def _interest_bank() -> Dict[str, Dict[str, Any]]:
+    return json.loads(_BANK_PATH.read_text(encoding="utf-8"))["interests"]
+
+
+def _theme_is_visible(problem: Any, theme: str, bank: Dict[str, Dict[str, Any]]) -> bool:
+    """Whether a declared theme value reaches the final learner-facing payload."""
+    theme_data = bank[theme]
+    candidates: List[str] = []
+    for key in ("actors", "objects", "places", "item1", "item2"):
+        candidates.extend(str(value).lower() for value in theme_data.get(key, []) if value)
+    if theme_data.get("emoji"):
+        candidates.append(str(theme_data["emoji"]))
+    rendered = json.dumps(problem.model_dump(), ensure_ascii=False, default=str).lower()
+    return any(candidate in rendered for candidate in candidates)
 
 
 def validate_interest_invariance(
-    dna: DNA,
+    dna: Any,
     grade: int,
     node_id: str,
-    trials: int = 10,
+    trials: int = len(INTEREST_SEEDS),
+    bank: Dict[str, Dict[str, Any]] | None = None,
 ) -> List[str]:
-    """
-    Verify that interest theme does not alter the correct answer.
+    """Check all supported themes on one node/DNA through the final student path."""
+    if not dna.requires_context:
+        return []
+    if trials < 1 or trials > len(INTEREST_SEEDS):
+        raise ValueError(
+            f"trials={trials}; expected 1..{len(INTEREST_SEEDS)} deterministic seeds"
+        )
 
-    For each of `trials` seeds, generates the same problem three times
-    (once per _TEST_THEMES) and asserts that all three correct_answer
-    values are identical.
+    themes = get_grade_appropriate_interests(grade)
+    if not themes:
+        return [f"{dna.concept} node={node_id} grade={grade}: no supported interest themes"]
 
-    Only applies to formula-type DNAs with requires_context=True.
-    Returns an empty list immediately for all other DNA types.
-
-    Args:
-        dna: A formula DNA with requires_context=True.
-        grade: Student grade level (1–3).
-        node_id: A valid MATATAG node ID for this DNA.
-        trials: Number of seed values to test.
-
-    Returns:
-        List of error strings. Empty list = invariance holds.
-    """
+    bank = bank or _interest_bank()
     errors: List[str] = []
-
-    if not (dna.dna_type == "formula" and dna.requires_context):
-        return errors  # Only meaningful for context-using formula DNAs.
-
-    for seed in range(trials):
-        answers: List = []
-        for theme in _TEST_THEMES:
+    for seed in INTEREST_SEEDS[:trials]:
+        expected_answer: Any = None
+        answer_set = False
+        for theme in themes:
             try:
-                ctx = generate_context(
-                    dna=dna,
+                problem = PracticeOrchestrator.generate_problem(
                     node_id=node_id,
-                    grade=grade,
                     seed=seed,
-                    difficulty_profile=None,
                     interest_theme=theme,
+                    is_student_path=True,
+                    forced_dna=dna.concept,
                 )
-                answers.append(ctx.correct_answer)
             except Exception as exc:
                 errors.append(
-                    f"{dna.concept} seed={seed} theme='{theme}': "
-                    f"generate_context raised: {exc}"
+                    f"{dna.concept} node={node_id} grade={grade} seed={seed} "
+                    f"theme={theme!r}: production generation raised: {exc}"
                 )
-                # Can't compare if generation failed; continue to next seed.
-                break
+                continue
 
-        if len(answers) == len(_TEST_THEMES):
-            if len(set(answers)) > 1:
+            if problem.node_id != node_id or problem.dna_name != dna.concept:
                 errors.append(
-                    f"{dna.concept} seed={seed}: correct_answer differs across "
-                    f"interest themes: {dict(zip(_TEST_THEMES, answers))}"
+                    f"{dna.concept} node={node_id} grade={grade} seed={seed} "
+                    f"theme={theme!r}: served node/DNA "
+                    f"{problem.node_id}/{problem.dna_name}"
+                )
+            if problem.interest_theme != theme:
+                errors.append(
+                    f"{dna.concept} node={node_id} grade={grade} seed={seed}: "
+                    f"requested theme={theme!r}, served metadata={problem.interest_theme!r}"
+                )
+            if not _theme_is_visible(problem, theme, bank):
+                errors.append(
+                    f"interest_theme_visibility: {dna.concept} node={node_id} "
+                    f"grade={grade} seed={seed} theme={theme!r}: no declared theme "
+                    "value reached the final learner-facing problem"
                 )
 
+            if not answer_set:
+                expected_answer = problem.correct_answer
+                answer_set = True
+            elif not _are_values_equal(problem.correct_answer, expected_answer):
+                errors.append(
+                    f"{dna.concept} node={node_id} grade={grade} seed={seed}: "
+                    f"correct_answer differs across themes; expected "
+                    f"{expected_answer!r}, theme={theme!r} served "
+                    f"{problem.correct_answer!r}"
+                )
     return errors
 
 
 def validate_all_interest_invariance() -> Dict[str, List[str]]:
-    """
-    Run interest invariance checks for all requires_context=True formula DNAs.
-
-    Returns:
-        Dict mapping concept name → list of error strings.
-    """
-    # Map concept → one representative node_id from registry.
-    # We import lazily to avoid circular imports.
-    from ..registry import NODE_TO_DNA
-
-    # Build concept → first node_id mapping.
-    concept_to_node: Dict[str, str] = {}
-    for node_id, concepts in NODE_TO_DNA.items():
-        for c in concepts:
-            if c not in concept_to_node:
-                concept_to_node[c] = node_id
-
+    """Run every applicable node/DNA/theme and gate final theme visibility."""
     results: Dict[str, List[str]] = {}
+    bank = _interest_bank()
+    visibility_total = 0
+    visibility_missing = 0
+    visibility_examples: List[str] = []
 
-    for concept in DNA_MODULE_MAP:
-        try:
-            dna = load_dna(concept)
-        except ImportError as exc:
-            # A NAMED FAILURE, not a `continue`. Until 2026-09-12 this was
-            # `except ImportError: continue`, so a DNA whose module stopped importing
-            # vanished from §4 entirely and the stage still printed "12/12 passed" --
-            # the silent import path plan step 0A forbids ("Import or provenance loss
-            # fails") and `H-05` names. §3 already treated the identical failure as a
-            # named error two modules over; the two disagreed about the same event.
-            results[concept] = [
-                f"{concept}: could not import DNA module, so interest invariance was "
-                f"NEVER CHECKED for it: {exc}"
+    for node_id, concepts in NODE_TO_DNA.items():
+        node = get_node_info(node_id)
+        if node is None:
+            results[f"{node_id}/(registry)"] = [
+                f"{node_id}: missing knowledge-graph node"
             ]
             continue
-        if not (dna.dna_type in ("formula", "algorithmic") and dna.requires_context):
-            continue
-
-        node_id = concept_to_node.get(concept)
-        if node_id is None:
-            results[concept] = [
-                f"{concept}: no node_id found in NODE_TO_DNA — cannot test."
+        grade = node.get("grade")
+        if not isinstance(grade, int):
+            results[f"{node_id}/(registry)"] = [
+                f"{node_id}: grade must be int, got {grade!r}"
             ]
             continue
 
-        # Extract grade from node_id (format: mat_g{grade}_...)
-        try:
-            grade = int(node_id.split("_")[1][1])
-        except (IndexError, ValueError):
-            grade = 1
+        for concept in concepts:
+            key = f"{node_id}/{concept}"
+            if concept not in DNA_MODULE_MAP:
+                results[key] = [f"{concept}: missing from DNA_MODULE_MAP"]
+                continue
+            try:
+                dna = load_dna(concept)
+            except ImportError as exc:
+                results[key] = [f"{concept}: could not import DNA module: {exc}"]
+                continue
+            if not dna.requires_context:
+                continue
 
-        errors = validate_interest_invariance(dna, grade, node_id)
-        results[concept] = errors
+            themes = get_grade_appropriate_interests(grade)
+            visibility_total += len(themes) * len(INTEREST_SEEDS)
+            results[key] = validate_interest_invariance(
+                dna, grade, node_id, bank=bank
+            )
+            visible_errors = [
+                error for error in results[key]
+                if error.startswith("interest_theme_visibility:")
+            ]
+            visibility_missing += len(visible_errors)
+            for error in visible_errors:
+                if len(visibility_examples) < 5:
+                    visibility_examples.append(error)
 
-    # Print summary
     total = len(results)
-    passed = sum(1 for errs in results.values() if not errs)
-    failed = total - passed
-    print(f"\nInterest invariance: {passed}/{total} passed, {failed} failed.")
-    for concept, errs in results.items():
-        if errs:
-            print(f"  FAIL {concept}:")
-            for e in errs:
-                print(f"    - {e}")
-        else:
-            print(f"  PASS {concept}")
-
+    failed = sum(bool(errors) for errors in results.values())
+    print(f"\nInterest invariance: {total - failed}/{total} node/DNA pairs passed.")
+    for key, errors in results.items():
+        if errors:
+            print(f"  FAIL {key}:")
+            for error in errors:
+                print(f"    - {error}")
+    if visibility_missing:
+        print(
+            "  FAIL interest_theme_visibility: "
+            f"{visibility_missing}/{visibility_total} supported requests had no "
+            f"theme-bank value in final output; examples={visibility_examples}"
+        )
+    else:
+        print(
+            "  PASS interest_theme_visibility: "
+            f"all {visibility_total} supported node/DNA/theme/seed requests reached "
+            "the final learner-facing problem"
+        )
     return results
 
 
-# ─── entry point ──────────────────────────────────────────────────────────────
-
 if __name__ == "__main__":
-    results = validate_all_interest_invariance()
-    failed = [c for c, errs in results.items() if errs]
-    sys.exit(1 if failed else 0)
+    _results = validate_all_interest_invariance()
+    sys.exit(1 if any(_results.values()) else 0)

@@ -1376,6 +1376,35 @@ def get_node_config(node_id: str, db: Session = Depends(get_db)):
     }
 
 
+def _generate_lab_v2_student_problem(
+    *,
+    node_id: str,
+    formatter: Optional[str],
+    difficulty_profile: Optional[dict],
+    seed: int,
+    interest_theme: Optional[str],
+    allowed_formatters: Optional[list[str]] = None,
+    allowed_difficulties: Optional[dict] = None,
+    allowed_contexts: Optional[dict] = None,
+    forced_dna: Optional[str] = None,
+) -> dict:
+    """Pure generation seam used by the Lab v2 route and equivalence gate."""
+    from backend.app.practice_gen.pipeline import run
+
+    return run(
+        node_id=node_id,
+        formatter=formatter,
+        difficulty_profile=difficulty_profile,
+        seed=seed,
+        student_interest=interest_theme,
+        allowed_formatters=allowed_formatters,
+        allowed_difficulties=allowed_difficulties,
+        allowed_contexts=allowed_contexts,
+        is_student_path=True,
+        forced_dna=forced_dna,
+    )
+
+
 @router.post("/api/matatag/lab/v2/generate", response_model=FormattedProblem)
 def matatag_lab_v2_generate(req: LabV2GenerateRequest, db: Session = Depends(get_db)):
     """
@@ -1414,12 +1443,12 @@ def matatag_lab_v2_generate(req: LabV2GenerateRequest, db: Session = Depends(get
         # competency-bound clamp as the portal. The is_lab parameter is
         # retained in the orchestrator for a future opt-in "explore beyond
         # LC" toggle, but no caller exercises it now.
-        problem_dict = run(
+        problem_dict = _generate_lab_v2_student_problem(
             node_id=req.node_id,
             formatter=req.formatter,
             difficulty_profile=combined_profile if combined_profile else None,
             seed=seed,
-            student_interest=req.interest_theme,
+            interest_theme=req.interest_theme,
             allowed_formatters=req.allowed_formatters,
             allowed_difficulties=req.allowed_difficulties,
             allowed_contexts=req.allowed_contexts,
@@ -1847,6 +1876,4 @@ def get_intro_status(node_key: str, student_id: int, db: Session = Depends(get_d
     if record:
         return {"viewed": True, "viewed_at": record.viewed_at.isoformat()}
     return {"viewed": False, "viewed_at": None}
-
-
 

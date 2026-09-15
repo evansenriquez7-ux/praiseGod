@@ -1,0 +1,46 @@
+{
+ "asserts": [
+  "vocab_audit_pass_rate"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "DNA=comparing_ordering seed=0"
+ ],
+ "command": [
+  "backend.app.practice_gen.validation.validate_vocab"
+ ],
+ "definition_digest": "e8073afd018b2d41a89dcdd0a4df7481d95982a34ce9986dae14fb870e76358e",
+ "detected": true,
+ "diagnostic_line": "exit 1 — FAIL vocab_audit_pass_rate (1 node(s)):",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "DNA=comparing_ordering seed=0",
+  "NOT_YET_KNOWN",
+  "multiplication"
+ ],
+ "expected_check": "vocabulary audit on every mapped DNA",
+ "finished_at": "2026-09-15T05:24:12+08:00",
+ "input_digest": "58cccb5a9e45dd5f7cbc40c98d866717f07972cc1004202ebb5c15974875e123",
+ "mutated_paths": [
+  "backend/app/practice_gen/generators/base_generator.py"
+ ],
+ "mutation": "secondary_dna_vocab_leak",
+ "observed_markers": {
+  "DNA=comparing_ordering seed=0": true,
+  "NOT_YET_KNOWN": true,
+  "multiplication": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-09-15T05:24:07+08:00"
+}

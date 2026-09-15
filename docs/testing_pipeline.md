@@ -109,8 +109,8 @@ mutation is unproven regardless of how long it has been passing.
 |---|---|
 | 1/8 unit tests (§0) | the harness's own tests; `tests/unit/` |
 | 2/8 DNA structural (§3) | generator structure and difficulty-profile feasibility |
-| 3/8 compatibility (§2 family) | registry coverage, monotonicity, servability, reachability, saved-config gating, option placement |
-| 4/8 interest invariance | the answer must not depend on the interest theme |
+| 3/8 compatibility (§2 family) | bidirectional registry coverage, explicit-edge monotonicity, servability, reachability, saved-config gating, option placement, and executed Lab v2/portal output equality |
+| 4/8 interest invariance and delivery | across every applicable node/DNA, grade-supported theme, and five seeds, the answer must not change and a declared theme value must reach the final learner-facing problem |
 | 5/8 vocabulary gating | no NOT_YET_KNOWN vocabulary in rendered output |
 | 6/8 behavioural matrix (§1 family) | the per-node content sweep — boundaries, execution matrix, answer keys, visuals, applicability |
 | 7/8 judgment reviews (§5) | blind per-node review artifacts, non-boilerplate and non-stale |
@@ -119,7 +119,9 @@ mutation is unproven regardless of how long it has been passing.
 | §1K option degeneracy | a choice item must offer distinguishable choices, and exactly one may answer it |
 | §9 render contract | the payload must be renderable by the React component the student sees |
 | §10 grading contract | a known-correct answer graded correct, a known-wrong or malformed one refused, by all three graders — hermetically |
-| §11 obligation manifest | the reachable student-path space, derived twice and agreeing; no dead formatter route |
+| §11 obligation manifest/executor | the reachable finite student-path space is derived twice, crossed over interest and experience, executed by deterministic PR/release tiers, benchmarked, and sharded without gaps |
+| §12 frontend static render | consumes current digest-bound evidence that every production-reachable visual type executed under React server rendering and yielded a render-derived structural description |
+| §13 frontend answer emission | correct non-pointer interactions on every production-reachable interactive visual route emit a value accepted by the shared backend comparator |
 | stage ledger | every declared stage ran to a verdict; a crash is a named failure, not an escape |
 | §7 census | the suite itself has not silently shrunk |
 | two-direction | the contract doc, this doc, and the registry agree |
@@ -135,15 +137,15 @@ mutation is unproven regardless of how long it has been passing.
 | `§1C` | validate_matrix: execution matrix (variant x formatter combinations) |
 | `§1C-reverse` | validate_matrix: reverse check (excluded combinations raise clear errors) |
 | `§1C-coverage` | validate_matrix: every node/DNA/formatter has a non-empty execution matrix |
-| `§1D` | validate_matrix: vocabulary/concept lint on final formatted output |
-| `§1E` | validate_matrix: answer-key & interest theme invariance on formatted output |
+| `§1D` | validate_matrix: vocabulary/concept lint on final formatted output; validate_vocab separately covers every mapped DNA (including secondary mappings) and every static VocabGated branch |
+| `§1E` | validate_matrix: answer-key invariance on formatted output; validate_interest crosses every applicable node/DNA with all supported themes and five seeds on the final student path (theme visibility remains measured red, not gated) |
 | `§1F` | validate_matrix: question stem does not leak its own answer |
 | `§1G` | validate_matrix: rendered visual payload is real and self-consistent |
 | `§1H` | validate_matrix: every check a node's composition makes applicable actually ran on that node |
 | `§1I` | validate_matrix: a true/false item family may not key every sample the same way |
 | `§1J` | validate_language: an explicit count and its noun must agree in the rendered student text, nested quoted statements included |
 | `§1K` | validate_options: a choice item must offer distinguishable choices, and exactly one of them may answer the question |
-| `§2` | validate_compat: registry/compatibility coverage & monotonicity |
+| `§2` | validate_compat: bidirectional KG↔registry↔compatibility↔module coverage and monotonicity along every explicit `prior_node_ids` edge |
 | `§2B` | validate_compat: every formatter a node advertises can actually be served for it |
 | `§2D` | validate_compat: a saved configuration may not serve content outside a node's competency |
 | `§2E` | validate_compat: the correct option's position must not be predictable from the seed |
@@ -152,7 +154,7 @@ mutation is unproven regardless of how long it has been passing.
 | `§2G` | validate_compat: every node's competency bounds parse to a well-formed shape — the tree-wide property behind the fixture table |
 | `§2H` | validate_compat: a competency naming BOTH cases of a dimension must not be bound to one of them — §2G proves bounds are well-formed, §2H proves they are faithful to the competency text |
 | `§2I` | validate_compat: a discrete variant a node declares must be one it can actually produce — a shrinking floor (65 at 2026-09-04), not a hard gate |
-| `§3` | validate_dna: structural checks and difficulty profiles feasibility |
+| `§3` | validate_dna: production-context structure at every applicable node/declared grade/five seeds, exact numeric comparison, and difficulty-profile feasibility |
 | `§4` | validate_matrix: VISUAL payload schema validation (recorded only under is_visual, so ~67 of 151 nodes; non-visual response shape rests on the Pydantic model at runtime) |
 | `§5` | validate_judgment: genuine, non-boilerplate, non-stale blind judgment reviews |
 | `§6` | validate_capability: competency requirements declared, cited, covered, and provided |
@@ -165,7 +167,13 @@ mutation is unproven regardless of how long it has been passing.
 | `§8` | validate_coverage: every assertion the harness can emit is either proven by an EXECUTED mutation (a verified proof record in `validation_reports/mutation_proofs/`) or on a shrinking allowlist |
 | `§9` | validate_render: the payload a node emits must be renderable by the React component the student sees |
 | `§10` | validate_grade: a known-correct answer must be graded correct, a known-wrong or malformed one refused, by all three graders — hermetically |
-| `§11` | validate_obligations: the student-path obligation manifest is derived twice and agrees, and no registered formatter route is unreachable |
+| `§11` | validate_obligations: the student-path manifest is derived twice; finite dimensions cannot shrink; PR sentinels execute; benchmark evidence is current; release receipts are mandatory and form a complete, non-overlapping current shard union |
+
+The runner checks the binding contract table, this operator guide, and observed execution as
+three independent drift directions. A failure in one does not skip either of the others, and a
+missing operator guide is a named failure rather than an absent check.
+| `§12` | validate_render: consume, never regenerate, current browserless React static-render evidence; five registered-but-unreachable visual types and pointer geometry remain explicitly uncovered |
+| `§13` | validate_render: consume current component `onAnswer` round trips and compare emitted values with backend keys through `answers_match` |
 
 ### Proving the harness
 

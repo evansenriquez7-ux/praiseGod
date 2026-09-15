@@ -1,0 +1,46 @@
+{
+ "asserts": [
+  "judgment_clause_coverage_5"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "test_requirement_omission_is_unadjudicable && failed"
+ ],
+ "command": [
+  "pytest",
+  "tests/unit/test_judgment_merged_schema.py::test_requirement_omission_is_unadjudicable",
+  "-q"
+ ],
+ "definition_digest": "5ddcc0aebc0f64363d06f9193596cf8fc6862b159eb5492bd6bba1c9b75fa1b8",
+ "detected": true,
+ "diagnostic_line": "exit 1 — =================================== FAILURES ===================================",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "test_requirement_omission_is_unadjudicable",
+  "failed"
+ ],
+ "expected_check": "§5 (requirement decomposition exactly matches live competency ground truth)",
+ "finished_at": "2026-09-15T05:49:35+08:00",
+ "input_digest": "58cccb5a9e45dd5f7cbc40c98d866717f07972cc1004202ebb5c15974875e123",
+ "mutated_paths": [
+  "backend/app/practice_gen/validation/validate_judgment.py"
+ ],
+ "mutation": "judgment_accepts_incomplete_requirement_snapshot",
+ "observed_markers": {
+  "failed": true,
+  "test_requirement_omission_is_unadjudicable": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-09-15T05:49:34+08:00"
+}

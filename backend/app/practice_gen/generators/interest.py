@@ -165,6 +165,26 @@ def get_interest_slots(
     }
 
 
+def get_interest_emoji(interest_id: str, grade: int) -> str:
+    """Return the declared learner-visible emoji for a supported interest.
+
+    Unlike ``get_interest_slots``, this helper has no neutral fallback.  A formatter
+    explicitly promising the requested theme must not silently draw an unrelated
+    symbol when the bank entry or its emoji is missing.
+    """
+    data = _INTERESTS.get(interest_id)
+    if data is None:
+        raise ValueError(f"Unknown interest theme {interest_id!r}")
+    if interest_id not in get_grade_appropriate_interests(grade):
+        raise ValueError(
+            f"Interest theme {interest_id!r} is not supported for grade={grade}"
+        )
+    emoji = data.get("emoji")
+    if not isinstance(emoji, str) or not emoji.strip():
+        raise ValueError(f"Interest theme {interest_id!r} declares no visible emoji")
+    return emoji
+
+
 # ---------------------------------------------------------------------------
 # pick_interest
 # ---------------------------------------------------------------------------

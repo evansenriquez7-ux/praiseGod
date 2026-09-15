@@ -48,9 +48,9 @@ import sys
 from pathlib import Path
 from typing import Any, Dict, List
 
-from backend.app.practice_gen.pipeline import run
 from backend.app.practice_gen.registry import get_node_info
 from backend.app.practice_gen.validation import validate_capability as VC
+from backend.app.practice_gen.validation.judgment_packets import _render_sample, finalize_samples
 
 # Fixed so a packet is reproducible: an Attester verdict is about specific seeds, and
 # a verdict that cannot be re-rendered is not evidence.
@@ -58,25 +58,10 @@ SAMPLE_SEEDS = [11, 23, 42, 57, 64, 78, 91, 103, 118, 127]
 
 
 def _render(node_id: str, seed: int) -> Dict[str, Any] | None:
-    """One student-path sample, reduced to what an Attester may see."""
-    p = run(node_id, seed=seed, is_student_path=True)
-    fd = p.get("format_data") or {}
-    sample: Dict[str, Any] = {
-        "seed": seed,
-        "formatter": p.get("format") or p.get("formatter"),
-        "question_text": p.get("question_text", ""),
-        "correct_answer": p.get("correct_answer"),
-    }
-    options = fd.get("mcq_options") or fd.get("options")
-    if options is not None:
-        sample["options"] = options
-    if p.get("hint"):
-        sample["hint"] = p["hint"]
-    if fd.get("cloze_text"):
-        sample["cloze_text"] = fd["cloze_text"]
-    # A visual capability is exhibited by the visual payload, not the stem. Carry the
-    # payload's shape (keys and a short repr) so "does this render a table?" is
-    # answerable from the packet without handing over the formatter source.
+    """One canonical student-path sample, shared with judgment packet replay."""
+    # Hand the shared static renderer its exact payload, but never describe that payload
+    # here. A declared jump can be present in data while React draws none; only emitted
+    # markup is evidence of what the learner sees.
     #
     # FIXED 2026-08-20. This read `fd.get("visual") or fd.get("visual_data")`, and the
     # pipeline emits NEITHER key -- it puts the payload in `format_data["visual_params"]`
@@ -96,17 +81,7 @@ def _render(node_id: str, seed: int) -> Dict[str, Any] | None:
     # equal jumps of 3 on the number line") has visual_type None, so that stem names a
     # model the item does not draw. That is a real finding, and it is only separable from
     # the packet bug once the payload is actually carried.
-    visual_type = p.get("visual_type")
-    visual = p.get("visual_params") or fd.get("visual_params")
-    if visual is not None or visual_type:
-        sample["visual_type"] = visual_type
-        if isinstance(visual, dict):
-            sample["visual_payload_keys"] = sorted(visual)
-            sample["visual_payload_excerpt"] = json.dumps(visual, ensure_ascii=False)[:600]
-        elif visual is not None:
-            sample["visual_payload_keys"] = type(visual).__name__
-            sample["visual_payload_excerpt"] = json.dumps(visual, ensure_ascii=False)[:600]
-    return sample
+    return _render_sample(node_id, seed)
 
 
 
@@ -153,7 +128,10 @@ def render_prompt_block(packets: List[Dict[str, Any]]) -> str:
                 out.append(f"        options: {' / '.join(vals)}")
             if s.get("visual_type"):
                 out.append(f"        VISUAL RENDERED: {s['visual_type']}")
-                out.append(f"        payload: {s.get('visual_payload_excerpt')}")
+                out.append(
+                    "        rendered structure: "
+                    + json.dumps(s.get("visual_render", {}).get("description"), ensure_ascii=False)
+                )
             if s.get("hint"):
                 out.append(f"        hint: {s['hint']}")
         out.append("")
@@ -187,6 +165,10 @@ def build(node_ids: List[str], capabilities: List[str] | None = None) -> tuple:
                 f"An Attester cannot rule on an empty packet, and a capability with no "
                 f"reachable content is a §6C failure, not a packet to file."
             )
+
+        from tests.frontend_renderer import attach_rendered_visual_descriptions
+
+        samples = finalize_samples(attach_rendered_visual_descriptions(samples))
 
         for req in requires:
             cap = str(req.get("id", ""))

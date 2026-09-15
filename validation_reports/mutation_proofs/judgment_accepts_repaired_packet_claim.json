@@ -1,0 +1,46 @@
+{
+ "asserts": [
+  "judgment_packet_integrity_5"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "test_packet_digest_cannot_be_repaired && failed"
+ ],
+ "command": [
+  "pytest",
+  "tests/unit/test_judgment_merged_schema.py::test_packet_digest_cannot_be_repaired_to_modified_samples_by_claim",
+  "-q"
+ ],
+ "definition_digest": "314e4fc16d697d08602f5b2b2db9256ad382880732239fc4aefabe65cb7b3369",
+ "detected": true,
+ "diagnostic_line": "exit 1 — =================================== FAILURES ===================================",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "test_packet_digest_cannot_be_repaired",
+  "failed"
+ ],
+ "expected_check": "§5 (packet digest binds exact delivered learner-visible evidence)",
+ "finished_at": "2026-09-15T05:49:33+08:00",
+ "input_digest": "58cccb5a9e45dd5f7cbc40c98d866717f07972cc1004202ebb5c15974875e123",
+ "mutated_paths": [
+  "backend/app/practice_gen/validation/validate_judgment.py"
+ ],
+ "mutation": "judgment_accepts_repaired_packet_claim",
+ "observed_markers": {
+  "failed": true,
+  "test_packet_digest_cannot_be_repaired": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-09-15T05:49:32+08:00"
+}

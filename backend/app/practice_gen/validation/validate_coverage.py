@@ -134,41 +134,16 @@ ASSERTIONS = (
 # exists to catch -- write the mutation instead.
 UNPROVEN_ASSERTIONS: Dict[str, str] = {
     # ---- §1* validate_matrix -------------------------------------------------------
-    "answer_key_recomputation":     "2026-08-28: §1E sibling; answer_key_integrity is proven, this path is not",
     "concept_gating":               "2026-08-28: distractor-provenance gate; vocabulary_gating is proven, this is not",
-    "import_dna":                   "2026-08-28: overlaps compatibility_table, which is proven",
-    "interest_invariance_formatted": "2026-08-28: stage 4 covers the property; the matrix label is unproven",
-    "interest_theme_generation":    "2026-08-28: as above",
     "reverse_compatibility_check_crash": "2026-08-28: crash variant of a proven check",
     "reverse_curriculum_gate_check": "2026-08-28: curriculum-gate reverse path, unproven",
     "reverse_curriculum_gate_check_crash": "2026-08-28: crash variant of the above",
     "visual_schema_integrity":      "2026-08-28: SHADOWED, measured. Three plants were tried and none isolated it: negative counts and non-coercible types are both caught first by §1G (visual_payload), and a wrong-typed extra field violates nothing because the Pydantic schema coerces and total_value is not even declared. §4 adds little over §1G+§9 on this payload -- worth revisiting as a possible merge rather than a missing mutation",
-    "worker_crash":                 "2026-08-28: infrastructure label, not a content assertion",
-    "NODE_TO_DNA_presence":         "2026-09-08: registry mapping presence. Was spelled `node_to_dna_presence` from 2026-08-28 to 2026-09-08 and matched no emitted label, so it excused nothing while the real label sat outside the inventory",
     # These eleven were emitted as f-strings and invisible to the old regex. Each is now
     # inventoried by its family name; the ones with mutations are absent from this list.
-    "generate_scalar":              "2026-09-08: generation crash at a probe scalar; the boundary mutations plant VALUE errors, which the exactness/containment labels catch first",
-    "scalar_exactness_0.0":         "2026-09-08: the 0.0 end of §1A. boundary_off_by_one plants at 1.0; a 0.0 plant that does not also break per-item validity has not been found",
-    "scalar_exactness_1.0_exceed":  "2026-09-08: §1A's no-sample-exceeds-max guard at t=1.0. leaky_window plants +10 at 1.0 and window_containment (§1B) reports it first",
-    "value_containment":            "2026-09-08: §1B's per-value sweep. leaky_window is caught by window_containment before this label is reached",
-    "reach_generation":             "2026-09-08: generation crash during the §1A-reach probe; same shape as generate_scalar",
-    "value_reaches_max":            "2026-09-08: §1A-reach proper. Needs a plant that caps the generator below the competency ceiling WITHOUT breaking per-item validity, so §1A/§1B do not catch it first. Not yet found; the axis-catalog mapping is shared, so capping it trips the boundary checks. (Was allowlisted as `scalar_1_0_reach`, a label no check site emits.)",
-    "discrete_integrity":           "2026-09-08: a discrete axis value must round-trip into the generated item. Unproven",
-    "discrete_gen":                 "2026-09-08: generation crash at a pinned discrete value. Unproven",
     "monotonicity":                 "2026-09-08: §1B's difficulty monotonicity across the scalar sweep. Unproven",
     # ---- §2 validate_compat --------------------------------------------------------
-    "registry_coverage":            "2026-09-08: KG<->NODE_TO_DNA<->COMPATIBILITY bidirectional coverage. registry_drift plants in COMPATIBILITY and compatibility_table reports it first",
-    "kg_monotonicity":              "2026-09-08: cumulative-vocabulary monotonicity across the knowledge graph. Unproven",
-    "lab_portal_equivalence":       "2026-09-08: Lab and portal must serve the same node the same way. Unproven",
-    "competency_bounds_parsing":    "2026-09-08: the FIXTURE-table half of bounds parsing; all_competency_bounds_parse is the tree-wide property and IS proven",
     # ---- §3 validate_dna -----------------------------------------------------------
-    "dna_structure":                "2026-09-08: DNA structural checks (formula/visual/static_bank/algorithmic). Unproven since §3 was written; a plant is cheap and this is the next debt to pay",
-    "dna_difficulty_feasibility":   "2026-09-08: every difficulty profile must be satisfiable. Unproven",
-    # ---- stage 4 validate_interest -------------------------------------------------
-    "interest_invariance":          "2026-09-08: the stage that the two matrix interest labels are excused AGAINST is itself unproven, so nothing in the interest column is proven anywhere",
-    # ---- validate_vocab ------------------------------------------------------------
-    "static_vocab_gated_lint":      "2026-09-08: the static half of vocabulary gating (skeleton banks, not rendered output). vocab_leak proves the RENDERED path (§1D)",
-    "vocab_audit_pass_rate":        "2026-09-08: full-node vocabulary audit pass-rate gate. Same defect class as §1D's vocabulary_gating, which is proven, on a different code path",
     # ---- §5 validate_judgment ------------------------------------------------------
     # Five §5 entries were paid on 2026-09-10 (stale_review_undetected,
     # stale_answer_same_key, review_schema_incomplete, fabricated_quote,
@@ -190,10 +165,7 @@ UNPROVEN_ASSERTIONS: Dict[str, str] = {
     # `grader_rejects_correct_answer_tree_wide` now plants against the floor path itself.
     # §10's other four assertions are proven by the five mutations added with them.
     # ---- §0 / run_all --------------------------------------------------------------
-    "unit_tests":                   "2026-09-08: the §0 stage gate itself. Individual unit tests are not inventoried here; subtraction_candidate_pool_bounded is the one that is, because a mutation names it",
     "coverage_regression_1H":       "2026-09-08: §1E/§4/§1I coverage compared against the last recorded run. node_dropped_from_check proves the applicability half of §1H, not the regression half",
-    "contract_doc_matches_registry": "2026-09-08: pgen_contract.md <-> CONTRACT_CHECKS equality. Unproven",
-    "operator_doc_covers_registry": "2026-09-08: the testing_pipeline.md ref floor. Unproven",
     # PAID 2026-09-12 by `crash_deletes_its_own_expected_refs`. The tripwire was unproven
     # for four days; the plant that proves it is the one that matters most, because it
     # silences the tripwire using the very crash that stopped a check executing.

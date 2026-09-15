@@ -1,0 +1,44 @@
+{
+ "asserts": [
+  "rendered_visual_description_12"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "equal jumps but rendered 0"
+ ],
+ "command": [
+  "tests.frontend_suite"
+ ],
+ "definition_digest": "f8d0c6f62a43f957143ef9b2cd2f7526009f813d5f775c0ff38e7bf51a96c376",
+ "detected": true,
+ "diagnostic_line": "exit 1 — FAIL frontend_static_render_12: 2 finding(s)",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "FAIL frontend_static_render_12",
+  "equal jumps but rendered 0"
+ ],
+ "expected_check": "§12 (rendered structure faithfully represents conditional payload data)",
+ "finished_at": "2026-09-15T05:48:35+08:00",
+ "input_digest": "58cccb5a9e45dd5f7cbc40c98d866717f07972cc1004202ebb5c15974875e123",
+ "mutated_paths": [
+  "frontend/src/components/VisualSkeletons.jsx"
+ ],
+ "mutation": "frontend_conditional_jump_branch_dropped",
+ "observed_markers": {
+  "FAIL frontend_static_render_12": true,
+  "equal jumps but rendered 0": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-09-15T05:48:18+08:00"
+}

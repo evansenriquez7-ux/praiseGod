@@ -60,6 +60,7 @@ from backend.app.practice_gen.validation.validate_matrix import run_matrix_valid
 from backend.app.practice_gen.validation._manifest import CHECK_PHASE, refs_in_phase
 
 _PGEN_CONTRACT_PATH = Path(__file__).resolve().parents[4] / "docs" / "pgen_contract.md"
+_OPERATOR_DOC_PATH = Path(__file__).resolve().parents[4] / "docs" / "testing_pipeline.md"
 
 # §8 inventory: the assertions the RUNNER owns, as opposed to the ones it re-reports for
 # the modules it drives. Each must be proven by a mutation naming it in
@@ -150,6 +151,8 @@ CONTRACT_CHECKS: Dict[str, str] = {
     "§9": "validate_render: the payload a node emits must be renderable by the React component the student sees",
     "§10": "validate_grade: a known-correct answer must be graded correct, a known-wrong or malformed one refused, by all three graders — hermetically",
     "§11": "validate_obligations: the student-path obligation manifest is derived twice and agrees, and no registered formatter route is unreachable",
+    "§12": "validate_render: current digest-bound React static-render evidence executes every production-reachable visual type and describes emitted markup",
+    "§13": "validate_render: a correct interaction emitted by every production interactive visual route is accepted by the shared backend answer comparator",
 }
 
 _LAST_UNIT_TEST_COUNT: list = [None]
@@ -425,7 +428,7 @@ def run_all(fail_fast: bool = False, phase: Optional[int] = None) -> int:
         ("capability_phase1",   1, (),      "Capability Contract Phase 1 (§6A-§6E)"),
         ("count_noun_1J",       1, ("§1J",), "Count/Noun Agreement (§1J)"),
         ("option_degeneracy_1K", 1, ("§1K",), "Option Degeneracy (§1K)"),
-        ("render_contract_9",   1, ("§9",),  "Render Contract (§9)"),
+        ("render_contract_9",   1, ("§9", "§12", "§13"),  "Render Contract (§9/§12/§13)"),
         ("grading_contract_10", 1, ("§10",), "Grading Contract (§10)"),
         ("assertion_coverage_8", 1, ("§8",), "Assertion Coverage (§8)"),
         ("obligation_manifest_11", 1, ("§11",), "Obligation Manifest (§11)"),
@@ -814,7 +817,7 @@ def run_all(fail_fast: bool = False, phase: Optional[int] = None) -> int:
         return ok
 
     def _stage_render_contract_9() -> bool:
-        print("\n--- Render Contract (§9) ---")
+        print("\n--- Render Contract (§9/§12) ---")
         # The first stage that looks past FormattedProblem at what the STUDENT receives.
         # Everything above validates the pipeline's data; this asks whether the React
         # component can render it. It was an ungated auditor until 2026-08-28 and had been
@@ -822,6 +825,8 @@ def run_all(fail_fast: bool = False, phase: Optional[int] = None) -> int:
         ok = validate_render.validate_all()
         if ok:
             executed_checks.add("§9")
+            executed_checks.add("§12")
+            executed_checks.add("§13")
         return ok
 
     def _stage_grading_contract_10() -> bool:
@@ -897,13 +902,18 @@ def run_all(fail_fast: bool = False, phase: Optional[int] = None) -> int:
                 return 1
 
     print("\n--- Two-Direction Contract Verification ---")
+    contract_match_ok = True
+    registry_refs = set(CONTRACT_CHECKS.keys())
+
+    # Keep the three directions independent. Until 2026-09-15 they shared one try block:
+    # a contract-doc failure skipped the operator-doc and executed-ref checks entirely,
+    # and all three failures were mislabeled as two_direction_contract_match.
     try:
         # (doc_rem.md §3.5 drift tripwire) docs/pgen_contract.md is the single
         # source of truth for which §-refs are binding. A contract row naming
         # a §-ref this module doesn't implement — or an implemented check the
         # doc doesn't mention — is drift, and fails the run.
         doc_refs = _parse_contract_section_refs()
-        registry_refs = set(CONTRACT_CHECKS.keys())
         if doc_refs != registry_refs:
             raise AssertionError(
                 f"Drift between docs/pgen_contract.md and run_all.py's CONTRACT_CHECKS registry!\n"
@@ -911,7 +921,11 @@ def run_all(fail_fast: bool = False, phase: Optional[int] = None) -> int:
                 f"  Implemented but not in contract doc: {registry_refs - doc_refs}"
             )
         print("  PASS contract_doc_matches_registry")
+    except (AssertionError, FileNotFoundError) as exc:
+        print(f"  FAIL contract_doc_matches_registry: {exc}")
+        contract_match_ok = False
 
+    try:
         # The OPERATOR doc drifts the same way and had no tripwire. Measured 2026-08-28:
         # docs/testing_pipeline.md was 83 lines last touched 2026-07-31 and named 3 of the
         # 24 checks then registered, while asserting a "CI-enforced harness" that had been
@@ -920,21 +934,23 @@ def run_all(fail_fast: bool = False, phase: Optional[int] = None) -> int:
         # Deliberately a FLOOR, not equality: pgen_contract.md is the binding table and
         # must match exactly, whereas testing_pipeline.md is prose that explains a subset.
         # Requiring every ref would force boilerplate; requiring a floor stops it rotting.
-        operator_doc = Path(__file__).resolve().parents[4] / "docs" / "testing_pipeline.md"
-        if operator_doc.exists():
-            text = operator_doc.read_text(encoding="utf-8")
-            named = {r for r in registry_refs if r in text}
-            floor = 12
-            if len(named) < floor:
-                raise AssertionError(
-                    f"docs/testing_pipeline.md names only {len(named)} of "
-                    f"{len(registry_refs)} registered checks (floor {floor}). The operator "
-                    f"documentation has fallen behind the pipeline it describes; a reader "
-                    f"is being told about a harness that no longer exists. Missing: "
-                    f"{sorted(registry_refs - named)[:12]}"
-                )
-            print(f"  PASS operator_doc_covers_registry ({len(named)}/{len(registry_refs)} refs, floor {floor})")
+        text = _OPERATOR_DOC_PATH.read_text(encoding="utf-8")
+        named = {r for r in registry_refs if r in text}
+        floor = 12
+        if len(named) < floor:
+            raise AssertionError(
+                f"docs/testing_pipeline.md names only {len(named)} of "
+                f"{len(registry_refs)} registered checks (floor {floor}). The operator "
+                f"documentation has fallen behind the pipeline it describes; a reader "
+                f"is being told about a harness that no longer exists. Missing: "
+                f"{sorted(registry_refs - named)[:12]}"
+            )
+        print(f"  PASS operator_doc_covers_registry ({len(named)}/{len(registry_refs)} refs, floor {floor})")
+    except (AssertionError, FileNotFoundError) as exc:
+        print(f"  FAIL operator_doc_covers_registry: {exc}")
+        contract_match_ok = False
 
+    try:
         # Compare the checks the contract table claims are binding against the
         # checks the harness *observed itself* running. Under --phase, only the band
         # that ran is in scope -- comparing a phase-1 run against all 35 refs would
@@ -1003,7 +1019,6 @@ def run_all(fail_fast: bool = False, phase: Optional[int] = None) -> int:
                              for ref, (got, want) in sorted(misphased.items()))
             )
         print("  PASS two_direction_contract_match")
-        contract_match_ok = True
     except (AssertionError, FileNotFoundError) as exc:
         print(f"  FAIL two_direction_contract_match: {exc}")
         contract_match_ok = False

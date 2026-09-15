@@ -1,0 +1,44 @@
+{
+ "asserts": [
+  "frontend_answer_roundtrip_13"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "FAIL frontend_answer_roundtrip_13"
+ ],
+ "command": [
+  "tests.frontend_suite"
+ ],
+ "definition_digest": "e29d29157675c602d6e2f6ec508ae42445f9dea5cb29588a3b188f0eb7b28eed",
+ "detected": true,
+ "diagnostic_line": "exit 1 — FAIL frontend_answer_roundtrip_13: number_bond:mat_g1_na_q2_5:515638171 seed 515638171 emitted 52, keyed 51",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "FAIL frontend_answer_roundtrip_13",
+  "emitted"
+ ],
+ "expected_check": "§13 (onAnswer emitted value is accepted by answers_match)",
+ "finished_at": "2026-09-15T05:49:31+08:00",
+ "input_digest": "58cccb5a9e45dd5f7cbc40c98d866717f07972cc1004202ebb5c15974875e123",
+ "mutated_paths": [
+  "frontend/src/components/VisualSkeletons.jsx"
+ ],
+ "mutation": "frontend_onanswer_disagrees_with_key",
+ "observed_markers": {
+  "FAIL frontend_answer_roundtrip_13": true,
+  "emitted": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-09-15T05:49:11+08:00"
+}

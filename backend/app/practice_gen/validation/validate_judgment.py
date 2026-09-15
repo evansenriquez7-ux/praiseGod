@@ -43,21 +43,31 @@ or stale review is a loud FAIL naming the node, never a skip (Ground Rule 3).
 from __future__ import annotations
 
 import collections
+import hashlib
 import json
 import re
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Set
 
 from backend.app.practice_gen.registry import get_all_node_ids, get_node_info
-from backend.app.practice_gen.validation.judgment_packets import _render_sample
+from backend.app.practice_gen.validation.judgment_packets import (
+    _json_digest,
+    _render_sample,
+    build_packet,
+)
 
 # §8 inventory: the assertions this module can independently fail on. Each must be
 # proven by a mutation naming it in `Mutation.asserts`, or excused in
 # validate_coverage.UNPROVEN_ASSERTIONS with a reason and a date.
 ASSERTIONS = (
     "judgment_review_schema_5",       # _validate_one: seeds, samples, six findings, verdicts
+    "judgment_packet_integrity_5",    # canonical sample/replay/packet digests and identities
+    "judgment_clause_coverage_5",     # exact live requirement snapshot and one verdict per clause
+    "judgment_sample_assessments_5",  # every delivered sample explicitly judged on four checks
+    "judgment_dispatch_provenance_5", # packet-bound identity plus immutable raw response digest
     "judgment_review_freshness_5",    # STALE -- the reviewed seed no longer renders what was judged
     "judgment_options_recorded_5",    # a choice item reviewed without the option set it was shown
+    "judgment_visual_evidence_5",     # missing/corrupt render-derived visual evidence
     "judgment_quote_provenance_5",    # a rationale quoting content absent from its own packet
     "judgment_rationale_verbatim_5",  # a rationale byte-identical to another node's
     "judgment_rationale_skeleton_5",  # _validate_skeleton_clusters: one sentence frame, many nodes
@@ -84,6 +94,13 @@ REQUIRED_FINDINGS: Set[str] = {
 }
 
 VALID_VERDICTS: Set[str] = {"PASS", "FAIL", "CONCERN"}
+REVIEW_SCHEMA_VERSION = 2
+SAMPLE_ASSESSMENTS: Set[str] = {
+    "mathematical_validity",
+    "contextual_logical_validity",
+    "ambiguity",
+    "learner_facing_clarity",
+}
 
 # Placeholder reviewer identities that indicate an auto-generated stub, not a
 # genuine independent review. A real review names the model/agent that produced it.
@@ -132,6 +149,248 @@ def _node_file(node_id: str) -> Path:
     return JUDGMENT_DIR / group_dir / f"{node_id}.json"
 
 
+def _packet_core_from_review(data: Dict[str, Any]) -> Dict[str, Any]:
+    """Reconstruct exactly the packet content whose digest the review claims."""
+    return {
+        "schema_version": data.get("schema_version"),
+        "sampling_version": data.get("sampling_version"),
+        "node_id": data.get("node_id"),
+        "competency_snapshot": data.get("competency_snapshot"),
+        "requirements_snapshot": data.get("requirements_snapshot"),
+        "sample_ids": data.get("sample_ids"),
+        "samples": data.get("samples_reviewed"),
+    }
+
+
+def _validate_v2_schema(node_id: str, path: Path, data: Dict[str, Any]) -> List[str]:
+    """Validate the merged, lossless review record introduced by hardening H-06/H-07."""
+    errs: List[str] = []
+    if data.get("schema_version") != REVIEW_SCHEMA_VERSION:
+        return [
+            f"{node_id}: review schema_version is {data.get('schema_version')!r}, expected "
+            f"{REVIEW_SCHEMA_VERSION}; legacy evidence omits canonical learner-visible fields, "
+            "clause coverage, and dispatch-bound provenance and is unadjudicable."
+        ]
+
+    info = get_node_info(node_id) or {}
+    expected_competency = {
+        "text": info.get("competency", ""),
+        "grade": info.get("grade"),
+        "quarter": info.get("quarter"),
+        "subdomain": info.get("subdomain") or info.get("domain"),
+    }
+    if data.get("competency_snapshot") != expected_competency:
+        errs.append(
+            f"{node_id}: competency_snapshot differs from the complete live MATATAG competency "
+            "and grade/quarter context; altered or omitted wording cannot inherit PASS."
+        )
+    expected_requirements = [dict(req) for req in (info.get("requires") or [])]
+    if data.get("requirements_snapshot") != expected_requirements:
+        errs.append(
+            f"{node_id}: requirements_snapshot is not the exact live ordered requirement set; "
+            "omission, duplication, altered wording, and unknown clauses are unadjudicable."
+        )
+
+    samples = data.get("samples_reviewed")
+    sample_ids = data.get("sample_ids")
+    if not isinstance(samples, list) or not isinstance(sample_ids, list):
+        return errs + [f"{node_id}: v2 review requires list samples_reviewed and sample_ids."]
+    actual_ids = [sample.get("sample_id") if isinstance(sample, dict) else None
+                  for sample in samples]
+    if sample_ids != actual_ids or len(set(sample_ids)) != len(sample_ids):
+        errs.append(
+            f"{node_id}: sample_ids must be unique and exactly match samples_reviewed in "
+            "delivered order; additional historical samples cannot replace a required sample."
+        )
+    for index, sample in enumerate(samples):
+        if not isinstance(sample, dict):
+            continue
+        digestable = {key: value for key, value in sample.items() if key != "replay_digest"}
+        if sample.get("replay_digest") != _json_digest(digestable):
+            errs.append(
+                f"{node_id}: samples_reviewed[{index}] replay_digest does not bind its full "
+                "canonical learner-visible and replay content."
+            )
+
+    recorded_digest = data.get("packet_digest")
+    if recorded_digest != _json_digest(_packet_core_from_review(data)):
+        errs.append(
+            f"{node_id}: packet_digest does not match the exact delivered packet recorded in "
+            "this review; verdicts and evidence may not be re-paired."
+        )
+
+    assessments = data.get("sample_assessments")
+    if not isinstance(assessments, list):
+        errs.append(f"{node_id}: sample_assessments must explicitly judge every delivered sample.")
+        assessments = []
+    assessed_ids = [a.get("sample_id") for a in assessments if isinstance(a, dict)]
+    if assessed_ids != sample_ids or len(assessed_ids) != len(set(assessed_ids)):
+        errs.append(
+            f"{node_id}: sample_assessments must cover each delivered sample exactly once, in "
+            "packet order, without missing, duplicate, or foreign sample_ids."
+        )
+    for index, assessment in enumerate(assessments):
+        if not isinstance(assessment, dict):
+            errs.append(f"{node_id}: sample_assessments[{index}] must be an object.")
+            continue
+        checks = assessment.get("checks")
+        if not isinstance(checks, dict) or set(checks) != SAMPLE_ASSESSMENTS:
+            errs.append(
+                f"{node_id}: sample_assessments[{index}].checks must contain exactly "
+                f"{sorted(SAMPLE_ASSESSMENTS)}."
+            )
+            continue
+        for name, block in checks.items():
+            if not isinstance(block, dict) or block.get("verdict") not in VALID_VERDICTS:
+                errs.append(f"{node_id}: sample {assessment.get('sample_id')} {name} verdict is invalid.")
+                continue
+            if block["verdict"] != "PASS":
+                errs.append(
+                    f"{node_id}: sample {assessment.get('sample_id')} {name} is "
+                    f"{block['verdict']}; every learner-visible sample must pass."
+                )
+            if len(str(block.get("reasoning", "")).strip()) < _MIN_RATIONALE_LEN:
+                errs.append(
+                    f"{node_id}: sample {assessment.get('sample_id')} {name} reasoning is "
+                    f"under {_MIN_RATIONALE_LEN} characters."
+                )
+
+    expected_by_id = {str(req.get("id", "")): req for req in expected_requirements}
+    clause_evidence = data.get("clause_evidence")
+    if not isinstance(clause_evidence, list):
+        errs.append(f"{node_id}: clause_evidence must contain one verdict per requirement.")
+        clause_evidence = []
+    clause_ids = [str(entry.get("requirement_id", ""))
+                  for entry in clause_evidence if isinstance(entry, dict)]
+    if (set(clause_ids) != set(expected_by_id) or len(clause_ids) != len(expected_by_id)
+            or len(clause_ids) != len(set(clause_ids))):
+        errs.append(
+            f"{node_id}: clause_evidence must cover the exact requirement IDs once each; "
+            f"expected={sorted(expected_by_id)}, got={clause_ids}."
+        )
+    valid_sample_ids = set(sample_ids)
+    for entry in clause_evidence:
+        if not isinstance(entry, dict):
+            errs.append(f"{node_id}: every clause_evidence entry must be an object.")
+            continue
+        req_id = str(entry.get("requirement_id", ""))
+        expected = expected_by_id.get(req_id)
+        if expected is not None and entry.get("clause") != expected.get("clause"):
+            errs.append(f"{node_id}: clause_evidence[{req_id}] alters the live clause wording.")
+        verdict = entry.get("verdict")
+        if verdict not in VALID_VERDICTS:
+            errs.append(f"{node_id}: clause_evidence[{req_id}] verdict is invalid.")
+        elif verdict != "PASS":
+            errs.append(f"{node_id}: clause_evidence[{req_id}] is {verdict}; every clause must pass.")
+        cited = entry.get("sample_ids")
+        if not isinstance(cited, list) or not cited or not set(cited) <= valid_sample_ids:
+            errs.append(
+                f"{node_id}: PASS clause_evidence[{req_id}] must cite one or more sample_ids "
+                "from the delivered packet."
+            )
+        if len(str(entry.get("reasoning", "")).strip()) < _MIN_RATIONALE_LEN:
+            errs.append(f"{node_id}: clause_evidence[{req_id}] reasoning is too short/absent.")
+        for field in ("reviewer_identity", "dispatch_id"):
+            if not str(entry.get(field, "")).strip():
+                errs.append(f"{node_id}: clause_evidence[{req_id}] missing {field} attribution.")
+
+    findings = data.get("findings") or {}
+    for item in ("competency_fulfillment", "comprehensive_coverage"):
+        block = findings.get(item) if isinstance(findings, dict) else None
+        if isinstance(block, dict) and block.get("clause_ids") != clause_ids:
+            errs.append(
+                f"{node_id}: findings['{item}'].clause_ids must reference every clause_evidence "
+                "entry in order."
+            )
+    fulfillment = findings.get("competency_fulfillment") if isinstance(findings, dict) else None
+    decomposition = fulfillment.get("decomposition") if isinstance(fulfillment, dict) else None
+    if (not isinstance(decomposition, dict)
+            or decomposition.get("verdict") != "PASS"
+            or decomposition.get("requirement_ids") != clause_ids
+            or len(str(decomposition.get("reasoning", "")).strip()) < _MIN_RATIONALE_LEN):
+        errs.append(
+            f"{node_id}: competency_fulfillment.decomposition must PASS, explain why the "
+            "requirements losslessly cover the full competency, and reference every clause."
+        )
+
+    dispatches = data.get("dispatch_provenance")
+    if not isinstance(dispatches, list) or not dispatches:
+        errs.append(f"{node_id}: dispatch_provenance must bind the delivered packet and raw reply.")
+        dispatches = []
+    dispatch_by_id: Dict[str, Dict[str, Any]] = {}
+    for dispatch in dispatches:
+        if not isinstance(dispatch, dict):
+            errs.append(f"{node_id}: every dispatch_provenance entry must be an object.")
+            continue
+        dispatch_id = str(dispatch.get("dispatch_id", "")).strip()
+        if not dispatch_id or dispatch_id in dispatch_by_id:
+            errs.append(f"{node_id}: dispatch IDs must be non-empty and unique within the record.")
+            continue
+        dispatch_by_id[dispatch_id] = dispatch
+        reviewer = str(dispatch.get("reviewer_identity", "")).strip().lower()
+        if reviewer in _PLACEHOLDER_REVIEWERS:
+            errs.append(f"{node_id}: dispatch {dispatch_id} has a placeholder reviewer identity.")
+        if dispatch.get("blind") is not True:
+            errs.append(f"{node_id}: dispatch {dispatch_id} must record blind: true.")
+        if dispatch.get("packet_digest") != recorded_digest:
+            errs.append(f"{node_id}: dispatch {dispatch_id} does not bind the delivered packet digest.")
+        dispatched_clauses = dispatch.get("clause_ids")
+        if not isinstance(dispatched_clauses, list) or len(dispatched_clauses) > 25:
+            errs.append(f"{node_id}: dispatch {dispatch_id} must carry at most 25 clause verdicts.")
+        response_ref = dispatch.get("response_ref")
+        response_digest = str(dispatch.get("response_digest", ""))
+        if not isinstance(response_ref, str) or not response_ref.strip():
+            errs.append(f"{node_id}: dispatch {dispatch_id} missing exact returned response_ref.")
+        else:
+            response_path = (path.parent / response_ref).resolve()
+            try:
+                response_path.relative_to(JUDGMENT_DIR.resolve())
+            except ValueError:
+                errs.append(f"{node_id}: dispatch {dispatch_id} response_ref escapes judgment storage.")
+            else:
+                if not response_path.is_file():
+                    errs.append(f"{node_id}: dispatch {dispatch_id} raw response is missing at {response_ref!r}.")
+                elif hashlib.sha256(response_path.read_bytes()).hexdigest() != response_digest:
+                    errs.append(f"{node_id}: dispatch {dispatch_id} raw response digest does not match.")
+    used_dispatches = {
+        str(entry.get("dispatch_id", "")) for entry in clause_evidence if isinstance(entry, dict)
+    } | {
+        str(entry.get("dispatch_id", "")) for entry in assessments if isinstance(entry, dict)
+    }
+    if used_dispatches != set(dispatch_by_id):
+        errs.append(
+            f"{node_id}: dispatch provenance must exactly cover dispatch IDs used by sample and "
+            f"clause assessments; got={sorted(dispatch_by_id)}, used={sorted(used_dispatches)}."
+        )
+    for entry in [*clause_evidence, *assessments]:
+        if not isinstance(entry, dict):
+            continue
+        dispatch = dispatch_by_id.get(str(entry.get("dispatch_id", "")))
+        if dispatch is not None and entry.get("reviewer_identity") != dispatch.get("reviewer_identity"):
+            errs.append(
+                f"{node_id}: seed(s)={data.get('sample_seeds')} assessment reviewer does not match dispatch "
+                f"{entry.get('dispatch_id')!r}."
+            )
+    for dispatch_id, dispatch in dispatch_by_id.items():
+        assigned = dispatch.get("clause_ids")
+        observed = [entry.get("requirement_id") for entry in clause_evidence
+                    if isinstance(entry, dict) and entry.get("dispatch_id") == dispatch_id]
+        if not isinstance(assigned, list) or collections.Counter(map(str, assigned)) != collections.Counter(map(str, observed)):
+            errs.append(
+                f"{node_id}: seed(s)={data.get('sample_seeds')} dispatch {dispatch_id!r} clause allocation does not match "
+                f"attributed evidence: assigned={assigned!r}, observed={observed!r}."
+            )
+    for assessment in assessments:
+        if isinstance(assessment, dict):
+            for field in ("reviewer_identity", "dispatch_id"):
+                if not str(assessment.get(field, "")).strip():
+                    errs.append(
+                        f"{node_id}: sample assessment {assessment.get('sample_id')} missing "
+                        f"{field} attribution."
+                    )
+    return errs
+
+
 def _validate_one(node_id: str, path: Path) -> List[str]:
     """Return a list of schema/quality errors for one node's review file."""
     errs: List[str] = []
@@ -149,21 +408,12 @@ def _validate_one(node_id: str, path: Path) -> List[str]:
     if data.get("node_id") != node_id:
         errs.append(f"{node_id}: review 'node_id' is {data.get('node_id')!r}, expected {node_id!r}.")
 
-    reviewer = str(data.get("reviewed_by", "")).strip().lower()
-    if reviewer in _PLACEHOLDER_REVIEWERS:
-        errs.append(
-            f"{node_id}: 'reviewed_by' is a placeholder ({data.get('reviewed_by')!r}); "
-            f"a genuine review must name the reviewing model/agent."
-        )
-
-    if data.get("blind") is not True:
-        errs.append(
-            f"{node_id}: review must attest 'blind': true — the reviewer must be given only the "
-            f"competency text + rendered samples, blind to the generator implementation."
-        )
+    errs.extend(_validate_v2_schema(node_id, path, data))
 
     seeds = data.get("sample_seeds")
-    if not isinstance(seeds, list) or len(set(seeds)) < _MIN_SEEDS:
+    if (not isinstance(seeds, list) or len(set(seeds)) < _MIN_SEEDS
+            or seeds != [s.get("seed") for s in (data.get("samples_reviewed") or [])
+                         if isinstance(s, dict)]):
         errs.append(f"{node_id}: 'sample_seeds' must list >= {_MIN_SEEDS} distinct seeds (got {seeds!r}).")
 
     # The review must carry the actual samples it judged, not just claim to have seen them.
@@ -296,13 +546,11 @@ def _validate_freshness(node_id: str, data: Dict[str, Any]) -> List[str]:
     comment at that check for what the skip was hiding and why the decision is made
     from the render rather than from a formatter name.
 
-    KNOWN LIMITATION (Scaling Mandate 6). Freshness compares the three fields a
-    reviewer reads off the page: stem, keyed answer, offered options. It does NOT
-    compare the visual payload, the hint, or the cloze template. A node whose
-    ShapeBoard changes from squares to hexagons while its stem, answer and options
-    stay byte-identical is still reported fresh here, and 67 of 151 nodes render a
-    visual. Closing that needs the packet to record a canonical form of
-    `format_data.visual_params`, which is named work, not a threshold to tune.
+    Visual freshness compares the render-derived structural evidence carried by the
+    packet, never a payload paraphrase. Missing evidence on a currently visual sample is
+    unadjudicable. The named residual is layout: static markup cannot establish crowding,
+    overlap, colour contrast or physical touch-target size. Hints and cloze templates
+    are also still outside this comparison.
 
     SECOND KNOWN LIMITATION, measured (Scaling Mandate 6). Freshness re-renders only the
     seeds a review ALREADY cites, so it cannot notice that the packet builder has since
@@ -321,19 +569,64 @@ def _validate_freshness(node_id: str, data: Dict[str, Any]) -> List[str]:
     the commit in which its own count becomes zero.
     """
     errs: List[str] = []
-    for i, s in enumerate(data.get("samples_reviewed") or []):
-        if not isinstance(s, dict) or not isinstance(s.get("seed"), int):
-            continue  # already reported as a schema error by _validate_one
-        seed = s["seed"]
+    reviewed_samples = data.get("samples_reviewed") or []
+    if data.get("schema_version") == REVIEW_SCHEMA_VERSION:
         try:
-            current = _render_sample(node_id, seed)
-        except Exception as exc:  # noqa: BLE001 — re-raised as a named harness failure
+            current_packet = build_packet(node_id)
+        except Exception as exc:  # noqa: BLE001 — converted to a named, reproducible failure
+            return [
+                f"{node_id}: the current canonical student-path packet cannot be rendered "
+                f"({type(exc).__name__}: {exc}). Reproduce with: python -m "
+                f"backend.app.practice_gen.validation.judgment_packets --node {node_id}"
+            ]
+        if data.get("sampling_version") != current_packet["sampling_version"]:
             errs.append(
-                f"{node_id}: samples_reviewed[{i}] cites seed {seed}, which the live pipeline "
-                f"can no longer render ({type(exc).__name__}: {exc}). Reproduce with: "
-                f"python -m backend.app.practice_gen.validation.judgment_packets --node {node_id}"
+                f"{node_id}: STALE review -- sampling_version changed from "
+                f"{data.get('sampling_version')!r} to {current_packet['sampling_version']!r}; a "
+                "review of a thinner or different allocation cannot certify the current packet."
             )
+        if data.get("sample_ids") != current_packet["sample_ids"]:
+            errs.append(
+                f"{node_id}: STALE review -- required sample identities changed; additional "
+                "historical samples cannot replace a newly required sample."
+            )
+        if data.get("packet_digest") != current_packet["packet_digest"]:
+            errs.append(
+                f"{node_id}: STALE review -- the canonical learner-visible packet digest changed. "
+                "Stem, resolved answer, ordered options, hints, cloze, visual payload/rendered "
+                "structure, response configuration, replay inputs, and effective choices are bound."
+            )
+        current_by_index = {
+            i: current for i, current in enumerate(current_packet["samples"])
+            if i < len(reviewed_samples)
+        }
+    else:
+        # Preserve all legacy checks while v1 evidence is being migrated. A schema
+        # failure must not exempt a CONCERN/FAIL or stale record from the old controls.
+        raw_current: List[Dict[str, Any]] = []
+        current_indices: List[int] = []
+        for i, sample in enumerate(reviewed_samples):
+            if not isinstance(sample, dict) or not isinstance(sample.get("seed"), int):
+                continue
+            try:
+                raw_current.append(_render_sample(node_id, sample["seed"]))
+                current_indices.append(i)
+            except Exception as exc:  # noqa: BLE001 — named rather than skipped
+                errs.append(
+                    f"{node_id}: samples_reviewed[{i}] cites seed {sample['seed']}, which the "
+                    f"live pipeline can no longer render ({type(exc).__name__}: {exc})."
+                )
+        from tests.frontend_renderer import attach_rendered_visual_descriptions
+        from backend.app.practice_gen.validation.judgment_packets import finalize_samples
+
+        rendered_current = finalize_samples(attach_rendered_visual_descriptions(raw_current))
+        current_by_index = dict(zip(current_indices, rendered_current))
+
+    for i, s in enumerate(reviewed_samples):
+        if i not in current_by_index:
             continue
+        seed = s["seed"]
+        current = current_by_index[i]
         reviewed_text = _normalize(s.get("question_text"))
         current_text = _normalize(current.get("question_text"))
         rebuild = (
@@ -348,6 +641,29 @@ def _validate_freshness(node_id: str, data: Dict[str, Any]) -> List[str]:
                 f"a fresh blind re-review is required. {rebuild}"
             )
             continue  # the stem already proves drift; one error per seed is enough
+
+        reviewed_visual = s.get("visual_render")
+        current_visual = current.get("visual_render")
+        if current_visual is not None and reviewed_visual is None:
+            errs.append(
+                f"{node_id}: samples_reviewed[{i}] (seed {seed}) records no render-derived "
+                f"visual evidence, but the live item renders {current_visual.get('visual_type')}. "
+                f"Missing learner-visible evidence is unadjudicable. {rebuild}"
+            )
+            continue
+        if reviewed_visual is not None and current_visual is None:
+            errs.append(
+                f"{node_id}: STALE review -- seed {seed} was judged with a rendered visual "
+                f"but the live item has none. {rebuild}"
+            )
+            continue
+        if reviewed_visual is not None and reviewed_visual != current_visual:
+            errs.append(
+                f"{node_id}: STALE review -- seed {seed}'s rendered visual description or "
+                f"renderer-input digest changed. A visual judgment cannot survive that drift. "
+                f"{rebuild}"
+            )
+            continue
 
         reviewed_opts = _option_values(s)
         current_opts = _option_values(current)
@@ -556,6 +872,32 @@ def _provenance_corpus(node_id: str, data: Dict[str, Any]) -> str:
     return " ".join(" ".join(p.split()).lower() for p in parts)
 
 
+def _review_reasonings(data: Dict[str, Any]):
+    """Yield every reviewer-authored reasoning field with its precise record location.
+
+    Hypothetical remediation text is deliberately not part of this iterator. Quotation
+    marks in a proposed future example are not claims about observed packet evidence.
+    """
+    for item, finding in (data.get("findings") or {}).items():
+        if not isinstance(finding, dict):
+            continue
+        yield f"findings['{item}'].rationale", str(finding.get("rationale", ""))
+        decomposition = finding.get("decomposition")
+        if isinstance(decomposition, dict):
+            yield (f"findings['{item}'].decomposition.reasoning",
+                   str(decomposition.get("reasoning", "")))
+    for index, entry in enumerate(data.get("clause_evidence") or []):
+        if isinstance(entry, dict):
+            yield f"clause_evidence[{index}].reasoning", str(entry.get("reasoning", ""))
+    for index, assessment in enumerate(data.get("sample_assessments") or []):
+        if not isinstance(assessment, dict):
+            continue
+        for name, block in (assessment.get("checks") or {}).items():
+            if isinstance(block, dict):
+                yield (f"sample_assessments[{index}].checks['{name}'].reasoning",
+                       str(block.get("reasoning", "")))
+
+
 def _validate_quote_provenance(node_id: str, data: Dict[str, Any]) -> List[str]:
     """
     Every span a rationale puts in quotes must exist in the review's own packet.
@@ -569,17 +911,14 @@ def _validate_quote_provenance(node_id: str, data: Dict[str, Any]) -> List[str]:
     """
     errs: List[str] = []
     corpus = _provenance_corpus(node_id, data)
-    for item, f in (data.get("findings") or {}).items():
-        if not isinstance(f, dict):
-            continue
-        rationale = str(f.get("rationale", ""))
+    for location, rationale in _review_reasonings(data):
         for _, span in _QUOTE_RE.findall(rationale):
             probe = " ".join(span.split()).lower().strip().rstrip(".")
             if len(probe) < _MIN_QUOTE_LEN:
                 continue
             if probe not in corpus:
                 errs.append(
-                    f"{node_id}: findings['{item}'].rationale quotes {span!r}, which appears "
+                    f"{node_id}: {location} quotes {span!r}, which appears "
                     f"nowhere in this review's own samples_reviewed or competency text — the "
                     f"reviewer cited content it was never shown. Rebuild the packet and "
                     f"re-review blind: python -m backend.app.practice_gen.validation."
@@ -613,14 +952,15 @@ def _validate_reviewer_plurality(reviewers: Dict[str, List[str]]) -> List[str]:
 def _validate_skeleton_clusters(skeletons: Dict[tuple, List[str]]) -> List[str]:
     """Fail any normalized rationale skeleton shared by more than _MAX_SKELETON_CLUSTER nodes."""
     errs: List[str] = []
-    for (item, skeleton), nodes in sorted(skeletons.items(), key=lambda kv: -len(kv[1])):
-        if len(nodes) > _MAX_SKELETON_CLUSTER:
+    for (item, skeleton), nodes in sorted(skeletons.items(), key=lambda kv: -len(set(kv[1]))):
+        distinct_nodes = sorted(set(nodes))
+        if len(distinct_nodes) > _MAX_SKELETON_CLUSTER:
             errs.append(
-                f"template rationale: {len(nodes)} nodes share one findings['{item}'] skeleton "
+                f"template rationale: {len(distinct_nodes)} nodes share one {item} skeleton "
                 f"(max {_MAX_SKELETON_CLUSTER}) — node IDs, quoted spans, and digits stripped, the "
                 f"rationales are the same sentence frame, which is a fill-in-the-blank form rather "
                 f"than independent judgment. Skeleton: {skeleton[:160]!r}. "
-                f"Nodes: {sorted(nodes)[:5]}{' ...' if len(nodes) > 5 else ''}."
+                f"Nodes: {distinct_nodes[:5]}{' ...' if len(distinct_nodes) > 5 else ''}."
             )
     return errs
 
@@ -647,6 +987,8 @@ def validate_judgment_reviews(fail_fast: bool = False) -> List[str]:
     seen_rationales: Dict[str, str] = {}  # rationale -> first node_id that used it
     skeletons: Dict[tuple, List[str]] = collections.defaultdict(list)  # (item, skeleton) -> nodes
     reviewers: Dict[str, List[str]] = collections.defaultdict(list)  # reviewed_by -> nodes
+    dispatch_clause_counts: Dict[str, int] = collections.defaultdict(int)
+    dispatch_identities: Dict[str, str] = {}
 
     for nid in node_ids:
         path = _node_file(nid)
@@ -685,18 +1027,39 @@ def validate_judgment_reviews(fail_fast: bool = False) -> List[str]:
         if fail_fast and errors:
             return errors
 
-        reviewers[str(data.get("reviewed_by", "")).strip()].append(nid)
+        if data.get("schema_version") == REVIEW_SCHEMA_VERSION:
+            for dispatch in data.get("dispatch_provenance") or []:
+                if not isinstance(dispatch, dict):
+                    continue
+                dispatch_id = str(dispatch.get("dispatch_id", "")).strip()
+                identity = str(dispatch.get("reviewer_identity", "")).strip()
+                if not dispatch_id or not identity:
+                    continue
+                if dispatch_id in dispatch_identities and dispatch_identities[dispatch_id] != identity:
+                    errors.append(
+                        f"dispatch {dispatch_id!r} is attributed to both "
+                        f"{dispatch_identities[dispatch_id]!r} and {identity!r}."
+                    )
+                dispatch_identities[dispatch_id] = identity
+                reviewers[identity].append(nid)
+                dispatch_clause_counts[dispatch_id] += len(dispatch.get("clause_ids") or [])
+        else:
+            reviewers[str(data.get("reviewed_by", "")).strip()].append(nid)
 
-        for item, f in (data.get("findings") or {}).items():
-            if not isinstance(f, dict):
-                continue
-            rationale = str(f.get("rationale", "")).strip().lower()
+        for location, reasoning in _review_reasonings(data):
+            rationale = reasoning.strip().lower()
             if len(rationale) < _MIN_RATIONALE_LEN:
                 continue
-            skeletons[(item, _rationale_skeleton(rationale))].append(nid)
+            if location.startswith("findings["):
+                category = location.split("].", 1)[0] + "]"
+            elif ".checks[" in location:
+                category = "sample_" + location.rsplit("checks[", 1)[1].split("]", 1)[0]
+            else:
+                category = location.split("[", 1)[0]
+            skeletons[(category, _rationale_skeleton(rationale))].append(nid)
             if rationale in seen_rationales and seen_rationales[rationale] != nid:
                 errors.append(
-                    f"{nid}: findings['{item}'].rationale is copied verbatim from "
+                    f"{nid}: {location} is copied verbatim from "
                     f"'{seen_rationales[rationale]}' — boilerplate is not a genuine review."
                 )
                 if fail_fast:
@@ -712,6 +1075,12 @@ def validate_judgment_reviews(fail_fast: bool = False) -> List[str]:
     # reviewer identity is only visible across the whole tree.
     errors.extend(_validate_skeleton_clusters(skeletons))
     errors.extend(_validate_reviewer_plurality(reviewers))
+    for dispatch_id, count in sorted(dispatch_clause_counts.items()):
+        if count > 25:
+            errors.append(
+                f"dispatch {dispatch_id!r} carries {count} clause verdicts across records "
+                "(max 25); split it rather than enlarging the exemption."
+            )
 
     return errors
 

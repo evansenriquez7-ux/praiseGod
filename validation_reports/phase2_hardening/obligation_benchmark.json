@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "kind": "obligation_executor_benchmark",
+  "generated_at": "2026-09-14T22:06:19.148760+00:00",
+  "platform": "macOS-15.7.7-x86_64-i386-64bit",
+  "python": "3.12.13 (main, Mar  3 2026, 12:39:30) [Clang 17.0.0 (clang-1700.6.4.2)]",
+  "workers": 4,
+  "sample_size": 1000,
+  "seeds_per_obligation": 5,
+  "manifest_digest": "adb12e956377303d490b53228568965183b3a1e0b640d3309a17a8485574e40d",
+  "source_input_digest": "58cccb5a9e45dd5f7cbc40c98d866717f07972cc1004202ebb5c15974875e123",
+  "counts": {
+    "base_obligations": 4269,
+    "interest_requests": 27,
+    "experiences": 4,
+    "finite_obligations": 461052,
+    "release_cache_keys": 576315,
+    "release_represented_executions": 2305260
+  },
+  "measurement": {
+    "cache_keys_completed": 1000,
+    "represented_executions": 4000,
+    "elapsed_seconds": 8.197445665020496,
+    "worker_median_ms": 6.9356080202851444,
+    "worker_p95_ms": 29.467165004462004,
+    "peak_rss_bytes": 109436928,
+    "response_modes": [
+      "click",
+      "drag",
+      "error_detect",
+      "fill_in_blank",
+      "mcq",
+      "true_false"
+    ],
+    "renderers": [
+      "(text)",
+      "BarChart",
+      "Calendar",
+      "ClockSet",
+      "EmojiPictorial",
+      "FillInTable",
+      "FractionModel",
+      "FractionShade",
+      "GridArea",
+      "NumberBond",
+      "NumberLine",
+      "PatternSequence",
+      "PesoMoney",
+      "PlaceValueBlocks",
+      "RulerMeasure",
+      "ShapeBoard"
+    ],
+    "failures": []
+  },
+  "projection": {
+    "release_wall_seconds_at_measured_throughput": 4724.310898436287,
+    "release_wall_hours_at_measured_throughput": 1.3123085828989687,
+    "recommended_shard_count": 3,
+    "projected_seconds_per_shard": 1574.7702994787624
+  },
+  "targets": {
+    "pr_seconds": 1800,
+    "release_shard_seconds": 1800,
+    "release_total_seconds": 14400,
+    "release_projection_within_budget": true,
+    "shard_projection_within_budget": true
+  },
+  "cache": {
+    "key": "base obligation + interest request + seed slot",
+    "reuse": "one generator/formatter execution is deep-copied through all four production experience wrappers"
+  },
+  "sample_indices_sha256": "9002b2d8ae7398924794717603a5b5b7519e92186487f59a6576f4a6a5c23c02"
+}

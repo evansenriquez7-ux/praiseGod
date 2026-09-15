@@ -91,6 +91,7 @@ ASSERTIONS = (
     "capability_contradicted_6F",
     "capability_stale_attestation_6F",
     "capability_attestation_options_recorded_6F",
+    "capability_attestation_visual_evidence_6F",
     "attester_reasoning_skeleton_6G",
     "attester_evidence_6G",
     "attester_plurality_6H",
@@ -1166,17 +1167,11 @@ def _attestation_staleness(records: List[Dict[str, Any]]) -> List[str]:
     was an artifact of the measurement, not a drift. Ten such would-be false positives
     were in that population.
 
-    KNOWN LIMITATION, unchanged and named (Scaling Mandate 6): like §5, this does not
-    compare the VISUAL PAYLOAD, and a capability clause about a medium is exactly the
-    kind an attestation is filed for. A ShapeBoard can change from squares to hexagons
-    under a byte-identical stem, answer and option set and still read fresh here.
-
-    SECOND LIMITATION, measured rather than assumed: the packet builder renders with
-    `is_student_path=True` and this re-renders through `_render_sample`, which does not.
-    Across all 1510 recorded samples on 2026-09-10 the two paths agreed on stem, answer
-    and option presence in every case, so the comparison is sound today -- but nothing
-    enforces that they stay the same path, and if they diverge this gate reports drift
-    that is really a path difference.
+    Visual evidence now uses the same canonical student-path renderer and the same
+    browserless React-derived description as §5. Missing visual evidence is
+    unadjudicable and changed evidence is stale. The shared named limitation remains
+    layout: static markup cannot prove crowding, overlap, colour contrast, or physical
+    touch-target size.
     """
     from backend.app.practice_gen.validation.judgment_packets import _render_sample
     from backend.app.practice_gen.validation.validate_judgment import (
@@ -1204,6 +1199,40 @@ def _attestation_staleness(records: List[Dict[str, Any]]) -> List[str]:
     winner = _winning_verdict_index(records)
 
     errs: List[str] = []
+    current_raw: Dict[tuple, Dict[str, Any]] = {}
+    current_failures: Dict[tuple, str] = {}
+    for idx, rec in enumerate(records):
+        verdict_pairs = [(v.get("node_id"), v.get("capability_id"))
+                         for v in rec.get("verdicts", [])]
+        if verdict_pairs and all(winner.get(pair) != idx for pair in verdict_pairs):
+            continue
+        packet = rec.get("packet") or {}
+        node_id = packet.get("node_id")
+        for sample in packet.get("samples_judged") or []:
+            seed = sample.get("seed")
+            key = (node_id, seed)
+            if not node_id or seed is None or key in current_raw or key in current_failures:
+                continue
+            try:
+                current_raw[key] = _render_sample(node_id, seed)
+            except Exception as exc:  # noqa: BLE001 — retained and attributed below
+                current_failures[key] = f"{type(exc).__name__}: {exc}"
+    if current_raw:
+        from tests.frontend_renderer import attach_rendered_visual_descriptions
+        keys = list(current_raw)
+        try:
+            rendered = attach_rendered_visual_descriptions(
+                [current_raw[key] for key in keys]
+            )
+        except Exception as exc:  # noqa: BLE001 — one broken render invalidates the evidence run
+            return [
+                "capability attestation freshness could not render canonical student-view "
+                f"evidence ({type(exc).__name__}: {exc})."
+            ]
+        current_rendered = dict(zip(keys, rendered))
+    else:
+        current_rendered = {}
+
     for idx, rec in enumerate(records):
         verdict_pairs = [(v.get("node_id"), v.get("capability_id"))
                          for v in rec.get("verdicts", [])]
@@ -1238,7 +1267,14 @@ def _attestation_staleness(records: List[Dict[str, Any]]) -> List[str]:
             if seed is None:
                 errs.append(f"attestation batch {batch!r}: a judged sample carries no seed.")
                 continue
-            current = _render_sample(node_id, seed)
+            key = (node_id, seed)
+            if key in current_failures:
+                errs.append(
+                    f"{node_id}: attestation batch {batch!r} cannot render seed {seed} "
+                    f"({current_failures[key]}). {rebuild}"
+                )
+                break
+            current = current_rendered[key]
             was, now = sample.get("question_text", ""), current.get("question_text", "")
             if " ".join(str(was).split()) != " ".join(str(now).split()):
                 errs.append(
@@ -1246,6 +1282,24 @@ def _attestation_staleness(records: List[Dict[str, Any]]) -> List[str]:
                     f"The Attester judged {was[:90]!r} but the pipeline now renders "
                     f"{now[:90]!r}. Every verdict in this batch is about content that no "
                     f"longer exists -- re-attest the batch. Do not edit the record."
+                )
+                break
+
+            recorded_visual = sample.get("visual_render")
+            current_visual = current.get("visual_render")
+            if current_visual is not None and recorded_visual is None:
+                errs.append(
+                    f"{node_id}: attestation batch {batch!r} records no render-derived visual "
+                    f"evidence at seed {seed}, but the live item renders "
+                    f"{current_visual.get('visual_type')}. A capability judgment about a "
+                    f"medium without what the learner saw is unadjudicable. {rebuild}"
+                )
+                break
+            if recorded_visual is not None and recorded_visual != current_visual:
+                errs.append(
+                    f"{node_id}: attestation batch {batch!r} is STALE (§6F) at seed {seed} — "
+                    "its render-derived visual description or renderer-input digest changed. "
+                    f"{rebuild}"
                 )
                 break
 

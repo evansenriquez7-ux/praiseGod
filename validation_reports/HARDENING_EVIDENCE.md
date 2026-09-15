@@ -10899,3 +10899,201 @@ difficulty with a pinned variant under a themed interest is still only sampled b
 | Unit tests | 495 | 617 |
 | `H-` rows closed | 0 | 2 (`H-01`, `H-03`) |
 | §10 full-tree runtime | 14m23s, network-dependent | 33s, hermetic |
+
+---
+
+## H-04 executor and H-05 scale-safety partial implementation (2026-09-14)
+
+Graphify was queried before the multi-file changes to identify the H-04 obligation paths and
+the H-05 validator/registry relationships. The graph was useful for locating dependents, but
+execution—not graph structure—established every result below.
+
+### Root cause and executor measurement
+
+The first 1,000-entry H-04 probe produced 152 production refusals. Instrumenting the executed
+route showed that `tests/obligation_manifest._reachable_values` passed `node_id` to
+`is_variant_available_at`, while production passes the DNA concept. Correcting that single
+cause produced the independently derived 459-pair / 4,293-base manifest.
+
+```text
+$ PYTHONPATH=. .venv/bin/python -m tests.obligation_executor --tier benchmark --sample-size 1000 --workers 4
+PASS benchmark: cache_keys=1000 represented_executions=4000 elapsed=17.136s median=6.993ms p95=32.068ms peak_rss=112369664B failures=0
+projected_release=2.759h recommended_shards=6 projected_per_shard=27.588m
+```
+
+```text
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_obligations
+  PASS obligation_derivations_agree: two independent traversals agree on 459 (node, DNA, formatter) pair(s) and 4293 discrete obligation(s); 18906 continuous class crossing(s)
+  PASS obligation_routes_reachable: 5 registered route(s) unreachable (floor 5, shrink-only): ['balance_scale', 'fill_in_blank', 'numeric_input', 'table_read', 'ten_frame']
+  PASS obligation_dimension_coverage_11: 4293 base x 27 interest requests x 4 experiences = 463644 finite obligations; 2318220 executions at 5 seeds
+  PASS obligation_execution_11: 168 PR cache-key sentinels / 672 experience executions completed in 1.251s
+  PASS obligation_benchmark_11: 1,000 representative cache keys are current, failure-free, and project within the four-hour / 30-minute-shard budgets
+       release tier NOT RUN: no shard receipts exist; PR execution is partial and does not certify the complete finite sweep
+       budget written to validation_reports/phase2_hardening/obligation_budget.json
+```
+
+The NOT RUN line is binding: H-04 remains open until all six release receipts cover the exact,
+non-overlapping union.
+
+### H-05 measured breadth and residual
+
+The strengthened checks execute every mapped DNA, all declared grades at five structural seeds,
+all 5,726 explicit prerequisite edges, and every grade-supported theme on the final student path.
+They use exact typed comparisons and parse multi-digit grades. The interest result distinguishes
+answer invariance from actual learner visibility:
+
+```text
+Interest invariance: 94/94 node/DNA pairs passed.
+  NOT GATED interest_theme_visibility: 555/820 supported requests had no theme-bank value in final output at seed=731; examples=['mat_g1_na_q1_0/counting:bible', 'mat_g1_na_q1_0/counting:fitness_sports', 'mat_g1_na_q1_0/counting:dance', 'mat_g1_na_q1_0/counting:visual_arts', 'mat_g1_na_q1_0/counting:food_baking']
+```
+
+That red measurement is not converted into a tolerated floor. H-05 remains open until the
+learner-visible delivery defect is repaired and a clean gate can be activated;
+`lab_portal_equivalence` also remains unproven.
+
+### Mutation proof and hermetic Phase 1
+
+```text
+$ PYTHONPATH=. .venv/bin/python tests/mutation_harness.py
+104/105 mutations detected.
+A surviving mutation is a hole in the harness, not a harmless gap:
+  - source_edited_without_reproof: nothing enforces §8 (an executed-mutation proof record that no longer describes the tree)
+```
+
+This was the documented self-poisoning class. `allowlist_keeps_a_paid_debt` was detected in
+the aggregate. Both records were deleted and re-run in the required order:
+
+```text
+$ PYTHONPATH=. .venv/bin/python tests/mutation_harness.py --only source_edited_without_reproof
+1/1 mutations detected.
+Praise God — the verifier verifies.
+
+$ PYTHONPATH=. .venv/bin/python tests/mutation_harness.py --only allowlist_keeps_a_paid_debt
+1/1 mutations detected.
+Praise God — the verifier verifies.
+
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_coverage
+  PASS mutation_proof_integrity_8: 105 executed mutation proof(s) verified against the current source/fixture digest
+  PASS silent_path_disposition_8: all 17 silent handler(s) carry a recorded disposition ({'checked': 7, 'named-failure': 3, 'limitation': 7})
+  PASS assertion_coverage_8: 93/123 harness assertions proven BY EXECUTION (38 discovered in validate_matrix, 85 declared across 15 modules), 30 knowingly unproven (allowlist may only shrink)
+```
+
+```text
+$ DATABASE_URL= PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.run_all --phase 1
+  PASS unit_tests (634 passed, 1 skipped, 2 deselected, 4 warnings in 106.04s (0:01:46))
+Nodes Checked: 151
+Nodes Passed:  151
+Nodes Failed:  0
+  PASS mutation_proof_integrity_8: 105 executed mutation proof(s) verified against the current source/fixture digest
+  PASS assertion_coverage_8: 93/123 harness assertions proven BY EXECUTION (38 discovered in validate_matrix, 85 declared across 15 modules), 30 knowingly unproven (allowlist may only shrink)
+  PASS census: nodes=151 (floor 151)
+  PASS census: unit_tests=635 (floor 635)
+  PASS census: mutations=105 (floor 105)
+  PASS census: variant_candidates=975 (floor 975)
+  scheduled=14 completed=14 failed=0 crashed=0 not_run=0 incomplete=0
+  PASS stage_ledger_complete: every scheduled stage ran to a verdict
+  PASS stage_phase_matches_manifest: every stage's refs are registered to the band that stage runs in
+PHASE 1 PASSED SUCCESSFULLY! Praise God!
+```
+
+No failure seed remains unresolved. The production-refusal root cause was observed in the
+1,000-entry execution probe rather than inferred from source; the post-fix benchmark had zero
+failures. The explicitly reported interest visibility diagnostic uses seed 731.
+
+### Full-suite residual measured through Phase 2
+
+```text
+$ DATABASE_URL= PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.run_all --phase 2
+  FAIL judgment_reviews (484 problem(s) — non-PASS verdicts or incomplete reviews):
+  FAIL capability_contract (Phase 2, 217 problem(s): 67 CONTRADICTED, 0 UNATTESTED, 76 STALE (§6F), 74 UNADJUDICABLE (no recorded options)):
+  FAIL       judgment_reviews_5             phase 2    14.2s
+  FAIL       capability_phase2              phase 2     1.3s
+  scheduled=2 completed=0 failed=2 crashed=0 not_run=0 incomplete=0
+  PASS stage_ledger_complete: every scheduled stage ran to a verdict
+  PASS stage_phase_matches_manifest: every stage's refs are registered to the band that stage runs in
+SOME PHASE 2 CHECKS FAILED. Please review the output above.
+EXIT=1
+```
+
+Accordingly, the unqualified `run_all` Definition of Done is not claimed. The red Phase 2
+corpora require the H-06/H-07 evidence work and fresh blind review/attestation; they were not
+edited to manufacture a green result.
+
+## 2026-09-14 resumed H-06 attribution and sandbox renderer repair
+
+Preserved the inherited dirty tree and reconciled its stale handoff. No current
+full-suite success is claimed. Scratch logs and per-step resume notes are under
+`local_only/scratch/resume_*.log` and `hardening_resume.txt`.
+
+At seed 42, executed negative controls showed that schema v2 accepted an assessment
+reviewer different from its attributed dispatch and an omitted dispatch clause.
+Enforcement now compares identities and exact clause allocations; the contract row
+moves with it. The diagnostic for used dispatch IDs now interpolates actual IDs.
+
+```text
+$ DATABASE_URL= PYTHONPATH=. .venv/bin/python -m pytest tests/unit/test_judgment_merged_schema.py -q
+12 passed in 0.24s
+
+$ DATABASE_URL= PYTHONPATH=. .venv/bin/python tests/mutation_harness.py --only judgment_accepts_foreign_dispatch_reviewer
+1/1 mutations detected.
+Praise God — the verifier verifies.
+
+$ DATABASE_URL= PYTHONPATH=. .venv/bin/python tests/mutation_harness.py --only judgment_accepts_mismatched_dispatch_clauses
+1/1 mutations detected.
+Praise God — the verifier verifies.
+```
+
+Later renderer edits invalidate these initial proof digests; they are historical
+execution evidence until re-proved, not a claim of current corpus integrity.
+
+The broader unit baseline exposed two capability-freshness failures and was
+interrupted for diagnosis:
+
+```text
+$ DATABASE_URL= PYTHONPATH=. .venv/bin/python -m pytest tests/unit -q
+FAILED tests/unit/test_capability_contract.py::test_attestation_goes_stale_when_content_drifts
+FAILED tests/unit/test_capability_contract.py::test_attestation_without_samples_cannot_be_checked_and_fails
+2 failed, 134 passed, 1 skipped, 2 deselected, 1 warning in 182.56s (0:03:02)
+```
+
+A production-path render of `mat_g1_na_q1_0` at seed 43 reached `NumberLine` and
+failed because the `tsx` CLI tries to create an IPC socket (`listen EPERM`). Both
+Python launch sites now invoke `node --import tsx` from the frontend directory;
+this uses the same renderer and checks without the CLI socket. The direct probe
+reported `PASS frontend_static_render_12: 1 payloads, 2 active/disabled renders, 1 visual types`.
+
+```text
+$ npm --prefix frontend test
+ Test Files  2 passed (2)
+      Tests  38 passed (38)
+PASS frontend_static_render_12: 27 real payloads; 15 production visual types; artifact validation_reports/phase2_hardening/frontend_static_render.json
+  NOT COVERED (unreachable registrations): BalanceScale, Categorize, RuleDiscovery, SortOrder, TenFrame
+Praise God — the React render evidence is executable.
+```
+
+The two broader capability regressions are being re-run; their final result and
+current proof verification belong in the next checkpoint, not inferred from this
+frontend pass. H-06 merged filing, live independent review migration, and the other
+open H-rows remain outstanding.
+
+### Final focused regression checkpoint
+
+```text
+$ DATABASE_URL= PYTHONPATH=. .venv/bin/python -m pytest tests/unit/test_capability_contract.py::test_attestation_goes_stale_when_content_drifts tests/unit/test_capability_contract.py::test_attestation_without_samples_cannot_be_checked_and_fails tests/unit/test_judgment_merged_schema.py -q
+14 passed in 136.95s (0:02:16)
+
+$ DATABASE_URL= PYTHONPATH=. .venv/bin/python tests/mutation_harness.py --only judgment_accepts_foreign_dispatch_reviewer
+1/1 mutations detected.
+
+$ DATABASE_URL= PYTHONPATH=. .venv/bin/python tests/mutation_harness.py --only judgment_accepts_mismatched_dispatch_clauses
+1/1 mutations detected.
+
+$ PYTHONPATH=. .venv/bin/python tests/hardening_status.py
+PASS hardening_status: 9 H-row(s) valid — 2 closed, 4 in_progress, 2 open, 1 out_of_scope
+
+$ git diff --check
+```
+
+The final two mutation records both report `detected=True`, `restored_clean=True`.
+The unqualified harness is running with an empty `DATABASE_URL`; its output is saved
+as `local_only/scratch/resume_run_all.log`. No full-suite success has been inferred.

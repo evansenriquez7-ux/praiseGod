@@ -1,0 +1,46 @@
+{
+ "asserts": [
+  "import_dna"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "import_dna"
+ ],
+ "command": [
+  "backend.app.practice_gen.validation.validate_matrix",
+  "--node",
+  "mat_g1_na_q1_0"
+ ],
+ "definition_digest": "e8e3ba64c7e1814eacf6a7e0bcdf7f65ea3e3c65e22cf7f281f9370d2eef2c75",
+ "detected": true,
+ "diagnostic_line": "exit 1 — [1/1] Checking mat_g1_na_q1_0 ...  FAIL",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "import_dna",
+  "planted_absent"
+ ],
+ "expected_check": "§1 matrix prerequisite (a mapped DNA must import)",
+ "finished_at": "2026-09-15T10:43:40+08:00",
+ "input_digest": "2dbce542d9d1767237b92825f7d335c985d688c81c60ad36eb857bff06cc4a9d",
+ "mutated_paths": [
+  "backend/app/practice_gen/validation/_manifest.py"
+ ],
+ "mutation": "mapped_dna_module_cannot_import",
+ "observed_markers": {
+  "import_dna": true,
+  "planted_absent": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-09-15T10:43:36+08:00"
+}

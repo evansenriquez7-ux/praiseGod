@@ -1,0 +1,48 @@
+{
+ "asserts": [
+  "reach_generation"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "reach_generation_max_sum"
+ ],
+ "command": [
+  "backend.app.practice_gen.validation.validate_matrix",
+  "--node",
+  "mat_g1_na_q1_7"
+ ],
+ "definition_digest": "ba5fc3e14041624c2c653eba69eecfb44bc6007f20fdf29586ae205d99989079",
+ "detected": true,
+ "diagnostic_line": "exit 1 — [1/1] Checking mat_g1_na_q1_7 ...  FAIL",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "reach_generation_max_sum",
+  "planted reach probe crash",
+  "seed="
+ ],
+ "expected_check": "§1A-reach generation failures are named with their seed",
+ "finished_at": "2026-09-15T10:46:20+08:00",
+ "input_digest": "d442c53fe74f884dfa07079ea1066cb18d22c0f0d1119e1bc17f86c04254acb8",
+ "mutated_paths": [
+  "backend/app/practice_gen/pipeline.py"
+ ],
+ "mutation": "maximum_reach_probe_crashes",
+ "observed_markers": {
+  "planted reach probe crash": true,
+  "reach_generation_max_sum": true,
+  "seed=": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-09-15T10:46:13+08:00"
+}

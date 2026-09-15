@@ -1,0 +1,46 @@
+{
+ "asserts": [
+  "obligation_execution_11"
+ ],
+ "baseline_exit": 1,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "FAIL obligation_execution_11"
+ ],
+ "command": [
+  "backend.app.practice_gen.validation.validate_obligations"
+ ],
+ "definition_digest": "6d6c28efd180112fe5a544684c5d42d23f2149117209612d0f3c512eb71c7a5e",
+ "detected": true,
+ "diagnostic_line": "exit 1 — FAIL obligation_benchmark_11: source/input digest is stale",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "FAIL obligation_execution_11",
+  "planted obligation refusal",
+  "seed="
+ ],
+ "expected_check": "§11 (every declared-reachable PR sentinel executes)",
+ "finished_at": "2026-09-15T06:04:02+08:00",
+ "input_digest": "58cccb5a9e45dd5f7cbc40c98d866717f07972cc1004202ebb5c15974875e123",
+ "mutated_paths": [
+  "backend/app/services/orchestrator.py"
+ ],
+ "mutation": "declared_obligation_refused_at_execution",
+ "observed_markers": {
+  "FAIL obligation_execution_11": true,
+  "planted obligation refusal": true,
+  "seed=": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-09-15T06:03:58+08:00"
+}

@@ -182,6 +182,37 @@ from backend.app.routes import parent
 from fastapi import APIRouter
 router = APIRouter(tags=['practice'])
 
+
+def _generate_portal_student_problem(
+    *,
+    node_id: str,
+    formatter: Optional[str] = None,
+    difficulty_profile: Optional[dict] = None,
+    seed: Optional[int] = None,
+    interest_theme: Optional[str] = None,
+    experience: str = "standard",
+    allowed_formatters: Optional[list[str]] = None,
+    allowed_difficulties: Optional[dict] = None,
+    allowed_contexts: Optional[dict] = None,
+    forced_dna: Optional[str] = None,
+) -> dict:
+    """Pure generation seam used by the student route and equivalence gate."""
+    from backend.app.practice_gen.pipeline import run
+
+    return run(
+        node_id=node_id,
+        formatter=formatter,
+        difficulty_profile=difficulty_profile,
+        seed=seed,
+        student_interest=interest_theme,
+        experience=experience,
+        allowed_formatters=allowed_formatters,
+        allowed_difficulties=allowed_difficulties,
+        allowed_contexts=allowed_contexts,
+        is_student_path=True,
+        forced_dna=forced_dna,
+    )
+
 @router.get("/api/practice/question", response_model=schemas.QuestionResponse)
 def get_practice_question(student_id: int, subject: str = "Math", subdomain: Optional[str] = None, db: Session = Depends(get_db)):
     """
@@ -538,8 +569,6 @@ def get_practice_question(student_id: int, subject: str = "Math", subdomain: Opt
         ELA_SKELETON_CACHE[skeleton["skeleton_id"]] = skeleton
     else:
         # Unified v2 pipeline for MATATAG and Math
-        from backend.app.practice_gen.pipeline import run as _pg_run
-        
         # Load saved portal config for this node (allowed formatters etc.)
         _allowed_fmt = None
         _allowed_diff = None
@@ -576,9 +605,9 @@ def get_practice_question(student_id: int, subject: str = "Math", subdomain: Opt
         # bug from every observer (Lab surfaced it; portal hid it). Let the
         # ValueError propagate so the student sees an honest error and the
         # bug is reproducible from the portal path too.
-        problem_dict = _pg_run(
+        problem_dict = _generate_portal_student_problem(
             node_id=skill_id,
-            student_interest=interest_theme,
+            interest_theme=interest_theme,
             allowed_formatters=_allowed_fmt,
             allowed_difficulties=_allowed_diff,
             allowed_contexts=_allowed_ctx,
@@ -1360,5 +1389,4 @@ def flag_question(req: schemas.QuestionFlagRequest, db: Session = Depends(get_db
     db.add(new_flag)
     db.commit()
     return {"success": True}
-
 

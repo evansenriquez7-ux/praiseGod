@@ -87,10 +87,9 @@ class Mutation:
     # alone emits 26 distinct assertion labels behind ~11 refs.
     asserts: List[str] = field(default_factory=list)
     expect_output_contains: List[str] = field(default_factory=list)
-    # Substrings the *unmutated* tree must NOT already produce. Without this, a
-    # mutation "passes" on a validator that was failing before it was applied --
-    # which is precisely the state §5 and §6 are in while the honest work queue
-    # is open, and precisely the false green Phase 4 exists to prevent.
+    # Substrings the *unmutated* tree must NOT already produce. The unmutated command
+    # must also exit zero; markers make the diagnostic more precise but never excuse a
+    # red baseline (Scaling Mandate 5).
     #
     # A marker containing " && " means "all of these parts on ONE line". A bare
     # substring is too coarse once several checks report on the same capability:
@@ -203,6 +202,36 @@ def _plant_silent_substitution() -> Dict[Path, str]:
     return originals
 
 
+def _plant_prerequisite_vocab_loss() -> Dict[Path, str]:
+    """Remove one predecessor term from an explicit KG edge's successor."""
+    path = REPO_ROOT / "data/knowledge_graph_g1_3.json"
+    original = path.read_text(encoding="utf-8")
+    graph = json.loads(original)
+    nodes = graph.get("nodes", {})
+    for successor_id, successor in nodes.items():
+        successor_vocab = successor.get("cumulative_vocab", [])
+        for predecessor_id in successor.get("prior_node_ids", []):
+            predecessor = nodes.get(predecessor_id)
+            if predecessor is None:
+                continue
+            required = set(predecessor.get("cumulative_vocab", [])) | set(
+                predecessor.get("student_vocab", [])
+            )
+            removable = sorted(required & set(successor_vocab))
+            if not removable:
+                continue
+            term = removable[0]
+            successor["cumulative_vocab"] = [
+                value for value in successor_vocab if value != term
+            ]
+            path.write_text(json.dumps(graph, indent=2) + "\n", encoding="utf-8")
+            return {path: original}
+    raise ValueError(
+        "mutation 'prerequisite_edge_loses_vocab': no explicit prior_node_ids edge "
+        "with inherited vocabulary was found; the generated graph shape changed"
+    )
+
+
 # ---------------------------------------------------------------------------------
 # §5 plants (2026-09-10).
 #
@@ -288,6 +317,316 @@ _ATTEST_UNADJUDICABLE_NODE = "mat_g2_na_q3_8"   # clean record, true_false on ev
 
 
 MUTATIONS: List[Mutation] = [
+    Mutation(
+        name="node_loses_all_dna_mappings",
+        asserts=["NODE_TO_DNA_presence"],
+        description=(
+            "Delete every DNA mapping for one still-registered node. The matrix must fail "
+            "that node by name before a new grade can silently contribute zero checks."
+        ),
+        edits={
+            "backend/app/practice_gen/registry.py": (
+                '    "mat_g1_na_q1_0": ["counting"],\n',
+                '    # planted mutation: registered node has no DNA mapping\n',
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_matrix", "--node", "mat_g1_na_q1_0"],
+        expected_check="§1 matrix prerequisite (every registered node has a DNA mapping)",
+        expect_output_contains=["NODE_TO_DNA_presence", "mat_g1_na_q1_0"],
+        baseline_must_not_contain=["NODE_TO_DNA_presence"],
+    ),
+    Mutation(
+        name="mapped_dna_module_cannot_import",
+        asserts=["import_dna"],
+        description=(
+            "Point a live node's mapped DNA at an absent module. The per-node matrix must "
+            "record the import failure instead of treating that DNA as having no obligations."
+        ),
+        edits={
+            "backend/app/practice_gen/validation/_manifest.py": (
+                '    "counting":            "backend.app.practice_gen.dna.na.counting",\n',
+                '    "counting":            "backend.app.practice_gen.dna.na.planted_absent",\n',
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_matrix", "--node", "mat_g1_na_q1_0"],
+        expected_check="§1 matrix prerequisite (a mapped DNA must import)",
+        expect_output_contains=["import_dna", "planted_absent"],
+        baseline_must_not_contain=["import_dna"],
+    ),
+    Mutation(
+        name="matrix_worker_crash_escapes",
+        asserts=["worker_crash"],
+        description=(
+            "Disable the process-worker exception boundary. A node-level crash would then "
+            "escape without the worker_crash label and can strand the parent pool."
+        ),
+        edits={
+            "backend/app/practice_gen/validation/validate_matrix.py": (
+                "    except Exception as exc:\n"
+                "        return node_id, [{\"dna\": \"unknown\", \"formatter\": \"unknown\", \"check\": \"worker_crash\",\n",
+                "    except () as exc:  # planted mutation: worker crash escapes unnamed\n"
+                "        return node_id, [{\"dna\": \"unknown\", \"formatter\": \"unknown\", \"check\": \"worker_crash\",\n",
+            )
+        },
+        command=["pytest", "tests/unit/test_stage_ledger.py::TestCrashIsolationEndToEnd::test_worker_converts_an_unexpected_node_crash_to_a_named_result", "-q"],
+        expected_check="the matrix process worker converts crashes to named failures",
+        expect_output_contains=["test_worker_converts_an_unexpected_node_crash_to_a_named_result", "failed"],
+        baseline_must_not_contain=["test_worker_converts_an_unexpected_node_crash_to_a_named_result && failed"],
+    ),
+    Mutation(
+        name="red_mutation_baseline_accepted",
+        asserts=["mutation_proof_integrity_8"],
+        description=(
+            "Accept a nonzero unmutated command when its chosen marker is absent. A red "
+            "control can change or bypass the planted path, so Mandate 5 makes it unscorable."
+        ),
+        edits={
+            "tests/mutation_harness.py": (
+                "    if base_code != 0 or already:\n",
+                "    if already:  # planted mutation: any unrelated red baseline is accepted\n",
+            )
+        },
+        command=["pytest", "tests/unit/test_mutation_runner.py::test_red_baseline_is_invalid_before_any_plant", "-q"],
+        expected_check="§8 proof integrity (every mutation starts from an exit-zero control)",
+        expect_output_contains=["test_red_baseline_is_invalid_before_any_plant", "failed"],
+        baseline_must_not_contain=["test_red_baseline_is_invalid_before_any_plant && failed"],
+    ),
+    Mutation(
+        name="scalar_probe_generation_crashes",
+        asserts=["generate_scalar"],
+        description=(
+            "Crash one continuous-axis probe before generation. The matrix must name the "
+            "scalar and seed instead of comparing a smaller surviving sample."
+        ),
+        edits={
+            "backend/app/practice_gen/pipeline.py": (
+                "    problem = PracticeOrchestrator.generate_problem(\n",
+                "    if node_id == 'mat_g1_na_q1_7' and difficulty_profile == {'max_sum': 0.25}:\n"
+                "        raise RuntimeError(f'planted scalar probe crash seed={seed}')\n"
+                "    problem = PracticeOrchestrator.generate_problem(\n",
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_matrix", "--node", "mat_g1_na_q1_7"],
+        expected_check="§1A/§1B scalar probe failures are named with their seed",
+        expect_output_contains=["generate_scalar_0.25", "planted scalar probe crash", "seed="],
+        baseline_must_not_contain=["generate_scalar_0.25"],
+    ),
+    Mutation(
+        name="maximum_reach_probe_crashes",
+        asserts=["reach_generation"],
+        description=(
+            "Crash the separate maximum-reach profile while ordinary scalar generation "
+            "still passes. The matrix must not turn the missing reach samples into silence."
+        ),
+        edits={
+            "backend/app/practice_gen/pipeline.py": (
+                "    problem = PracticeOrchestrator.generate_problem(\n",
+                "    if node_id == 'mat_g1_na_q1_7' and difficulty_profile == "
+                "{'max_sum': 1.0, 'number_difficulty': 1.0}:\n"
+                "        raise RuntimeError(f'planted reach probe crash seed={seed}')\n"
+                "    problem = PracticeOrchestrator.generate_problem(\n",
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_matrix", "--node", "mat_g1_na_q1_7"],
+        expected_check="§1A-reach generation failures are named with their seed",
+        expect_output_contains=["reach_generation_max_sum", "planted reach probe crash", "seed="],
+        baseline_must_not_contain=["reach_generation_max_sum"],
+    ),
+    Mutation(
+        name="formatted_interest_generation_crashes",
+        asserts=["interest_theme_generation"],
+        description=(
+            "Crash one themed formatted generation after the ordinary reference succeeds. "
+            "The matrix must report the missing theme comparison rather than pass vacuously."
+        ),
+        edits={
+            "backend/app/practice_gen/pipeline.py": (
+                "    problem = PracticeOrchestrator.generate_problem(\n",
+                "    if node_id == 'mat_g1_na_q1_7' and student_interest == 'animals':\n"
+                "        raise RuntimeError(f'planted themed generation crash seed={seed}')\n"
+                "    problem = PracticeOrchestrator.generate_problem(\n",
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_matrix", "--node", "mat_g1_na_q1_7"],
+        expected_check="§1E every requested comparison theme generates",
+        expect_output_contains=["interest_theme_generation", "planted themed generation crash", "seed="],
+        baseline_must_not_contain=["interest_theme_generation"],
+    ),
+    Mutation(
+        name="formatted_interest_changes_answer",
+        asserts=["interest_invariance_formatted"],
+        description=(
+            "Change the final numeric answer only for one interest theme. The formatted "
+            "matrix path must compare mathematical meaning after theming, not metadata."
+        ),
+        edits={
+            "backend/app/practice_gen/pipeline.py": (
+                "    result = problem.model_dump()\n"
+                "    return result\n",
+                "    if node_id == 'mat_g1_na_q1_7' and student_interest == 'animals':\n"
+                "        problem.correct_answer += 1  # planted mutation: theme changes math\n"
+                "    result = problem.model_dump()\n"
+                "    return result\n",
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_matrix", "--node", "mat_g1_na_q1_7"],
+        expected_check="§1E formatted interest changes context but not the answer",
+        expect_output_contains=["interest_invariance_formatted", "correct answer changed"],
+        baseline_must_not_contain=["interest_invariance_formatted"],
+    ),
+    Mutation(
+        name="minimum_scalar_echo_drifts",
+        asserts=["scalar_exactness_0.0"],
+        description=(
+            "Return a different governed ceiling at scalar 0.0 while generation succeeds. "
+            "The lower boundary must be checked exactly, not only for containment."
+        ),
+        edits={
+            "backend/app/practice_gen/pipeline.py": (
+                "    result = problem.model_dump()\n"
+                "    return result\n",
+                "    result = problem.model_dump()\n"
+                "    if node_id == 'mat_g1_na_q1_7' and difficulty_profile == {'max_sum': 0.0}:\n"
+                "        result['difficulty_profile']['max_sum'] = 1\n"
+                "    return result\n",
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_matrix", "--node", "mat_g1_na_q1_7"],
+        expected_check="§1A scalar 0.0 maps exactly to the curriculum floor",
+        expect_output_contains=["scalar_exactness_0.0_max_sum", "minimum window ceiling"],
+        baseline_must_not_contain=["scalar_exactness_0.0_max_sum"],
+    ),
+    Mutation(
+        name="maximum_scalar_echo_exceeds_bound",
+        asserts=["scalar_exactness_1.0_exceed"],
+        description=(
+            "Return a governed ceiling above the competency maximum at scalar 1.0. The "
+            "upper guard must reject an overshoot even if generated operands stayed valid."
+        ),
+        edits={
+            "backend/app/practice_gen/pipeline.py": (
+                "    result = problem.model_dump()\n"
+                "    return result\n",
+                "    result = problem.model_dump()\n"
+                "    if node_id == 'mat_g1_na_q1_7' and difficulty_profile == {'max_sum': 1.0}:\n"
+                "        result['difficulty_profile']['max_sum'] = 21\n"
+                "    return result\n",
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_matrix", "--node", "mat_g1_na_q1_7"],
+        expected_check="§1A scalar 1.0 never exceeds the competency maximum",
+        expect_output_contains=["scalar_exactness_1.0_exceed_max_sum", "exceeds competency maximum"],
+        baseline_must_not_contain=["scalar_exactness_1.0_exceed_max_sum"],
+    ),
+    Mutation(
+        name="generated_operand_exceeds_ceiling",
+        asserts=["value_containment"],
+        description=(
+            "Place an operand above the supplied maximum while leaving the echoed profile "
+            "unchanged. This distinguishes real payload containment from scalar mapping."
+        ),
+        edits={
+            "backend/app/practice_gen/pipeline.py": (
+                "    result = problem.model_dump()\n"
+                "    return result\n",
+                "    result = problem.model_dump()\n"
+                "    if node_id == 'mat_g1_na_q1_7' and difficulty_profile == {'max_sum': 1.0}:\n"
+                "        result['given_values']['a'] = 21\n"
+                "    return result\n",
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_matrix", "--node", "mat_g1_na_q1_7"],
+        expected_check="§1B generated numeric payload values stay within the supplied cap",
+        expect_output_contains=["value_containment_max_sum", "given_values.a=21"],
+        baseline_must_not_contain=["value_containment_max_sum"],
+    ),
+    Mutation(
+        name="maximum_reach_is_artificially_capped",
+        asserts=["value_reaches_max"],
+        description=(
+            "Force the independent number-difficulty control to its minimum only during "
+            "the max-reach probe. Items remain valid and contained but never approach the "
+            "competency ceiling."
+        ),
+        edits={
+            "backend/app/practice_gen/pipeline.py": (
+                "    problem = PracticeOrchestrator.generate_problem(\n",
+                "    if node_id == 'mat_g1_na_q1_7' and difficulty_profile == "
+                "{'max_sum': 1.0, 'number_difficulty': 1.0}:\n"
+                "        difficulty_profile = dict(difficulty_profile)\n"
+                "        difficulty_profile['number_difficulty'] = 0.0\n"
+                "    problem = PracticeOrchestrator.generate_problem(\n",
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_matrix", "--node", "mat_g1_na_q1_7"],
+        expected_check="§1A-reach valid samples approach the competency maximum",
+        expect_output_contains=["value_reaches_max_max_sum", "Ceiling never approached"],
+        baseline_must_not_contain=["value_reaches_max_max_sum"],
+    ),
+    Mutation(
+        name="discrete_selection_not_reflected",
+        asserts=["discrete_integrity"],
+        description=(
+            "Change the returned discrete profile after generation. The matrix must prove "
+            "the requested option reached the item rather than merely accepting generation."
+        ),
+        edits={
+            "backend/app/practice_gen/pipeline.py": (
+                "    result = problem.model_dump()\n"
+                "    return result\n",
+                "    result = problem.model_dump()\n"
+                "    if node_id == 'mat_g1_na_q1_7' and difficulty_profile == {'regrouping': 'none'}:\n"
+                "        result['difficulty_profile']['regrouping'] = 'one_place'\n"
+                "    return result\n",
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_matrix", "--node", "mat_g1_na_q1_7"],
+        expected_check="§1B each pinned discrete option is reflected in the generated item",
+        expect_output_contains=["discrete_integrity_regrouping_none", "not reflected"],
+        baseline_must_not_contain=["discrete_integrity_regrouping_none"],
+    ),
+    Mutation(
+        name="discrete_selection_generation_crashes",
+        asserts=["discrete_gen"],
+        description=(
+            "Crash one pinned discrete option. The matrix must name the option and seed "
+            "rather than silently reduce discrete-domain coverage."
+        ),
+        edits={
+            "backend/app/practice_gen/pipeline.py": (
+                "    problem = PracticeOrchestrator.generate_problem(\n",
+                "    if node_id == 'mat_g1_na_q1_7' and difficulty_profile == {'regrouping': 'none'}:\n"
+                "        raise RuntimeError(f'planted discrete generation crash seed={seed}')\n"
+                "    problem = PracticeOrchestrator.generate_problem(\n",
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_matrix", "--node", "mat_g1_na_q1_7"],
+        expected_check="§1B every pinned discrete option generates or fails by name",
+        expect_output_contains=["discrete_gen_regrouping_none", "planted discrete generation crash", "seed="],
+        baseline_must_not_contain=["discrete_gen_regrouping_none"],
+    ),
+    Mutation(
+        name="answer_recomputation_input_missing",
+        asserts=["answer_key_recomputation"],
+        description=(
+            "Remove an operand only from the serialized MCQ after its answer was built. "
+            "Independent recomputation must fail by name instead of trusting the key."
+        ),
+        edits={
+            "backend/app/practice_gen/pipeline.py": (
+                "    result = problem.model_dump()\n"
+                "    return result\n",
+                "    result = problem.model_dump()\n"
+                "    if node_id == 'mat_g1_na_q1_7' and formatter == 'mcq':\n"
+                "        result['given_values'].pop('a', None)\n"
+                "    return result\n",
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_matrix", "--node", "mat_g1_na_q1_7"],
+        expected_check="§1E answer keys are independently recomputable from served inputs",
+        expect_output_contains=["answer_key_recomputation", "Could not recompute answer"],
+        baseline_must_not_contain=["answer_key_recomputation"],
+    ),
     Mutation(
         name="leaky_window",
         asserts=["window_containment"],
@@ -428,6 +767,203 @@ MUTATIONS: List[Mutation] = [
         command=["backend.app.practice_gen.validation.validate_compat"],
         expected_check="_manifest.py import-time registry assertion",
         expect_output_contains=["planted_phantom_dna"],
+    ),
+    Mutation(
+        name="orphan_node_mapping",
+        asserts=["registry_coverage"],
+        description=(
+            "Add a NODE_TO_DNA mapping for a node the knowledge graph does not contain. "
+            "Node-driven checks never visit an orphan, so registry coverage must compare "
+            "the reverse direction explicitly."
+        ),
+        edits={
+            "backend/app/practice_gen/registry.py": (
+                "NODE_TO_DNA: Dict[str, List[str]] = {\n",
+                "NODE_TO_DNA: Dict[str, List[str]] = {\n"
+                '    "mat_g10_na_q1_999": ["addition"],  # planted orphan\n',
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_compat"],
+        expected_check="§2 registry coverage (NODE_TO_DNA -> KG reverse direction)",
+        expect_output_contains=[
+            "NODE_TO_DNA node 'mat_g10_na_q1_999' is missing from the knowledge graph"
+        ],
+        baseline_must_not_contain=["mat_g10_na_q1_999"],
+    ),
+    Mutation(
+        name="prerequisite_edge_loses_vocab",
+        asserts=["kg_monotonicity"],
+        description=(
+            "Remove inherited vocabulary from the successor of a real "
+            "prior_node_ids edge. This proves the validator follows declared graph "
+            "edges rather than adjacency inferred from today's G1-3 node names."
+        ),
+        edits={},
+        apply_fn=_plant_prerequisite_vocab_loss,
+        command=["backend.app.practice_gen.validation.validate_compat"],
+        expected_check="§2 KG monotonicity on explicit prerequisite edges",
+        expect_output_contains=["KG Monotonicity Error (edge"],
+        baseline_must_not_contain=["KG Monotonicity Error (edge"],
+    ),
+    Mutation(
+        name="dna_context_keeps_keyed_distractor",
+        asserts=["dna_structure"],
+        description=(
+            "Append the keyed answer to the production QuestionContext distractors. "
+            "The DNA gate must inspect produced contexts across mapped nodes and reject "
+            "the invalid option with its node and deterministic seed."
+        ),
+        edits={
+            "backend/app/practice_gen/generators/base_generator.py": (
+                "    return ctx\n\n\n# ═══════════════════════════════════════════════",
+                "    ctx.distractors.append(ctx.correct_answer)  # planted mutation\n"
+                "    return ctx\n\n\n# ═══════════════════════════════════════════════",
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_dna"],
+        expected_check="§3 DNA structure on production contexts",
+        expect_output_contains=["produced distractor equals correct answer"],
+        baseline_must_not_contain=["produced distractor equals correct answer"],
+    ),
+    Mutation(
+        name="dna_profile_becomes_unsatisfiable",
+        asserts=["dna_difficulty_feasibility"],
+        description=(
+            "Collapse both Grade 1 addition operands to 1 so the declared regrouping "
+            "profile has zero acceptance. The feasibility sweep must reach that grade "
+            "and profile and fail by measured rate."
+        ),
+        edits={
+            "backend/app/practice_gen/dna/na/addition.py": (
+                '    "g1": {"a": (1, 50),  "b": (1, 50),  "max_result": 100},\n',
+                '    "g1": {"a": (1, 1),   "b": (1, 1),   "max_result": 100},  # planted\n',
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_dna"],
+        expected_check="§3 DNA difficulty feasibility",
+        expect_output_contains=["addition grade=1" , "acceptance rate 0.000 < MIN"],
+        baseline_must_not_contain=["acceptance rate 0.000 < MIN"],
+    ),
+    Mutation(
+        name="secondary_dna_vocab_leak",
+        asserts=["vocab_audit_pass_rate"],
+        description=(
+            "Append a future term only when mat_g1_mg_q1_1 renders its secondary "
+            "comparing_ordering DNA. The old concepts[0] audit never generated this "
+            "mapping, so the leak was structurally invisible."
+        ),
+        edits={
+            "backend/app/practice_gen/generators/base_generator.py": (
+                "    # A caller-supplied interest is a learner-facing request, not analytics metadata.\n",
+                "    if node_id == 'mat_g1_mg_q1_1' and dna.concept == 'comparing_ordering':\n"
+                "        question_text += ' Use multiplication to check.'  # planted\n\n"
+                "    # A caller-supplied interest is a learner-facing request, not analytics metadata.\n",
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_vocab"],
+        expected_check="vocabulary audit on every mapped DNA",
+        expect_output_contains=[
+            "DNA=comparing_ordering seed=0",
+            "NOT_YET_KNOWN",
+            "multiplication",
+        ],
+        baseline_must_not_contain=["DNA=comparing_ordering seed=0"],
+    ),
+    Mutation(
+        name="secondary_dna_vocab_gate_leak",
+        asserts=["static_vocab_gated_lint"],
+        description=(
+            "Put a future term in a VocabGated fallback owned by a secondary DNA. "
+            "The static lint must audit every node mapping, not concepts[0] only."
+        ),
+        edits={
+            "backend/app/practice_gen/dna/na/comparing_ordering.py": (
+                'VOCAB_GT    = VocabGated(requires_vocab="greater than", preferred="greater than", fallback="bigger than")\n',
+                'VOCAB_GT    = VocabGated(requires_vocab="greater than", preferred="greater than", fallback="multiplication")  # planted\n',
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_vocab"],
+        expected_check="static VocabGated lint on secondary DNA mappings",
+        expect_output_contains=[
+            "static_vocab_gated_lint",
+            "DNA 'comparing_ordering'",
+            "multiplication",
+        ],
+        baseline_must_not_contain=["DNA 'comparing_ordering' instance"],
+    ),
+    Mutation(
+        name="interest_theme_changes_final_answer",
+        asserts=["interest_invariance"],
+        description=(
+            "Corrupt the final mathematical answer only for one supported interest on "
+            "one real node/DNA. This reaches the student-path formatter and proves the "
+            "all-node/all-theme invariance gate is not a metadata-only check."
+        ),
+        edits={
+            "backend/app/practice_gen/generators/base_generator.py": (
+                "    ctx = QuestionContext(\n"
+                "        values=values,\n",
+                "    if (node_id == 'mat_g1_na_q1_7' and dna.concept == 'addition'\n"
+                "            and interest_theme == 'bible'):\n"
+                "        correct_answer += 1  # planted mutation\n"
+                "    ctx = QuestionContext(\n"
+                "        values=values,\n",
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_interest"],
+        expected_check="final student-path interest invariance",
+        expect_output_contains=[
+            "mat_g1_na_q1_7/addition",
+            "correct_answer differs across themes",
+        ],
+        baseline_must_not_contain=["correct_answer differs across themes"],
+    ),
+    Mutation(
+        name="interest_theme_dropped_after_formatting",
+        asserts=["interest_theme_visibility"],
+        description=(
+            "Discard the fallback theme cue after a formatter rebuilds the question. "
+            "The metadata and answer remain correct, so only the learner-visible "
+            "delivery assertion can distinguish this from a successfully themed item."
+        ),
+        edits={
+            "backend/app/services/orchestrator.py": (
+                '                problem.question_text = f"{ctx.interest_cue} {problem.question_text}"\n',
+                "                problem.question_text = problem.question_text  # planted: theme disappears\n",
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_interest"],
+        expected_check="final student-path learner-visible interest delivery",
+        expect_output_contains=[
+            "FAIL interest_theme_visibility",
+            "no declared theme value reached",
+            "seed=731",
+        ],
+        baseline_must_not_contain=["FAIL interest_theme_visibility"],
+    ),
+    Mutation(
+        name="lab_route_drops_interest",
+        asserts=["lab_portal_equivalence"],
+        description=(
+            "Drop the requested interest only in the Lab v2 generation seam. The "
+            "pipeline remains healthy and the portal still serves the themed problem; "
+            "only an executed field-for-field route comparison catches the preview drift."
+        ),
+        edits={
+            "backend/app/routes/matatag_router.py": (
+                "        student_interest=interest_theme,\n",
+                "        student_interest=None,  # planted Lab/portal drift\n",
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_compat"],
+        expected_check="behavioral Lab v2/student-portal equivalence",
+        expect_output_contains=[
+            "FAIL lab_portal_equivalence",
+            "Lab/portal mismatch",
+            "differing fields",
+            "seed=",
+        ],
+        baseline_must_not_contain=["Lab/portal mismatch"],
     ),
     # ------------------------------------------------------------------------
     # §5 and §6 — the two stages that have actually been defeated.
@@ -1142,6 +1678,303 @@ MUTATIONS: List[Mutation] = [
         baseline_must_not_contain=["FAIL render_contract"],
     ),
     Mutation(
+        name="frontend_component_throws_during_render",
+        asserts=["frontend_static_render_12"],
+        description=(
+            "Make a production-reachable React visual throw during server rendering. "
+            "The schema remains valid, so only component execution can detect it."
+        ),
+        edits={
+            "frontend/src/components/VisualSkeletons.jsx": (
+                "export function NumberBondInteractive({ params, onAnswer, disabled }) {\n",
+                "export function NumberBondInteractive({ params, onAnswer, disabled }) {\n"
+                "  throw new Error('planted frontend render throw');\n",
+            ),
+        },
+        command=["tests.frontend_suite"],
+        expected_check="§12 (a production React component executes without throwing)",
+        expect_output_contains=["FAIL frontend_static_render_12", "component threw"],
+        baseline_must_not_contain=["component threw"],
+    ),
+    Mutation(
+        name="frontend_conditional_jump_branch_dropped",
+        asserts=["rendered_visual_description_12"],
+        description=(
+            "Disable NumberLine's equal-jump branch while preserving jump_count and "
+            "jump_size in a real payload. The AST classes those reads conditional, so "
+            "only rendered structure can distinguish declared jumps from no drawn hops."
+        ),
+        edits={
+            "frontend/src/components/VisualSkeletons.jsx": (
+                "  if (params?.jump_count > 0 && params?.jump_size > 0) {\n",
+                "  if (false && params?.jump_count > 0 && params?.jump_size > 0) {\n",
+            ),
+        },
+        command=["tests.frontend_suite"],
+        expected_check="§12 (rendered structure faithfully represents conditional payload data)",
+        expect_output_contains=["FAIL frontend_static_render_12", "equal jumps but rendered 0"],
+        baseline_must_not_contain=["equal jumps but rendered 0"],
+    ),
+    Mutation(
+        name="frontend_description_omits_drawn_element",
+        asserts=["rendered_visual_description_12"],
+        description=(
+            "Leave NumberLine's jump marks in the emitted markup but make the shared "
+            "describer omit them. A describer that silently drops drawn structure would "
+            "manufacture false confidence in every Phase-2 packet consuming it."
+        ),
+        edits={
+            "frontend/src/staticRenderEvidence.jsx": (
+                "  for (const el of document.querySelectorAll('[data-pgen-role]')) {\n",
+                "  for (const el of document.querySelectorAll("
+                "'[data-pgen-role]:not([data-pgen-role=\"number-line-jump\"])')) {\n",
+            ),
+        },
+        command=["tests.frontend_suite"],
+        expected_check="§12 (render-derived descriptions include drawn structural elements)",
+        expect_output_contains=["FAIL frontend_static_render_12", "equal jumps but rendered 0"],
+        baseline_must_not_contain=["equal jumps but rendered 0"],
+    ),
+    Mutation(
+        name="frontend_visual_degenerates_to_empty_box",
+        asserts=["frontend_static_render_12"],
+        description=(
+            "Replace a production-reachable visual with an empty div. It does not throw "
+            "and its payload remains schema-valid, but the pupil sees an empty box."
+        ),
+        edits={
+            "frontend/src/components/VisualSkeletons.jsx": (
+                "export function NumberBondInteractive({ params, onAnswer, disabled }) {\n",
+                "export function NumberBondInteractive({ params, onAnswer, disabled }) {\n"
+                "  return <div />;  // planted degenerate visual\n",
+            ),
+        },
+        command=["tests.frontend_suite"],
+        expected_check="§12 (a rendered visual is non-degenerate)",
+        expect_output_contains=["FAIL frontend_static_render_12", "degenerate empty box"],
+        baseline_must_not_contain=["degenerate empty box"],
+    ),
+    Mutation(
+        name="frontend_render_artifact_outlives_source",
+        asserts=["frontend_artifact_fresh_12"],
+        description=(
+            "Edit a rendered component after the static-render suite has published its "
+            "result. The Python gate must refuse stale evidence rather than treating a "
+            "past render as proof of current source."
+        ),
+        edits={
+            "frontend/src/components/VisualSkeletons.jsx": (
+                "import React, { useState, useEffect, useRef } from 'react';\n",
+                "import React, { useState, useEffect, useRef } from 'react';\n"
+                "// planted source drift after evidence publication\n",
+            ),
+        },
+        command=["backend.app.practice_gen.validation.validate_render", "--artifact-only"],
+        expected_check="§12 (frontend evidence is bound to the current input digest)",
+        expect_output_contains=["FAIL frontend_static_render_12", "evidence is stale"],
+        baseline_must_not_contain=["evidence is stale"],
+    ),
+    Mutation(
+        name="frontend_onanswer_disagrees_with_key",
+        asserts=["frontend_answer_roundtrip_13"],
+        description=(
+            "Shift the value NumberBond emits after a correct typed interaction. The "
+            "component still renders and the backend key is still valid, but the UI and "
+            "shared answer comparator now disagree."
+        ),
+        edits={
+            "frontend/src/components/VisualSkeletons.jsx": (
+                "        onAnswer(parseInt(val, 10));\n",
+                "        onAnswer(parseInt(val, 10) + 1);  // planted emission drift\n",
+            ),
+        },
+        command=["tests.frontend_suite"],
+        expected_check="§13 (onAnswer emitted value is accepted by answers_match)",
+        expect_output_contains=["FAIL frontend_answer_roundtrip_13", "emitted"],
+        baseline_must_not_contain=["FAIL frontend_answer_roundtrip_13"],
+    ),
+    Mutation(
+        name="frontend_roundtrip_coverage_silently_narrowed",
+        asserts=["frontend_answer_roundtrip_13"],
+        description=(
+            "Stop requiring the consumed round-trip case IDs to equal every interactive "
+            "case in the rendered corpus. One valid interaction would then let all other "
+            "component emissions disappear while §13 still reports PASS."
+        ),
+        edits={
+            "backend/app/practice_gen/validation/validate_render.py": (
+                "            or actual_roundtrip_ids != expected_roundtrip_ids):\n",
+                "            or False):  # planted mutation: a nonempty subset is enough\n",
+            )
+        },
+        command=["pytest", "tests/unit/test_frontend_artifact_completeness.py::test_pruned_roundtrip_artifact_fails", "-q"],
+        expected_check="§13 (every interactive rendered case has exactly one round trip)",
+        expect_output_contains=["test_pruned_roundtrip_artifact_fails", "failed"],
+        baseline_must_not_contain=["test_pruned_roundtrip_artifact_fails && failed"],
+    ),
+    Mutation(
+        name="frontend_duplicate_mode_hides_missing_mode",
+        asserts=["frontend_static_render_12"],
+        description=(
+            "Stop requiring exactly one active and one disabled render per case. Duplicate "
+            "active outcomes could then preserve the total count while disabled behavior "
+            "was never executed."
+        ),
+        edits={
+            "backend/app/practice_gen/validation/validate_render.py": (
+                "    if len(case_modes) != artifact.get(\"cases_executed\", 0) or invalid_modes:\n",
+                "    if False:  # planted mutation: duplicate modes may hide a missing mode\n",
+            )
+        },
+        command=["pytest", "tests/unit/test_frontend_artifact_completeness.py::test_duplicate_modes_cannot_hide_an_unrendered_mode", "-q"],
+        expected_check="§12 (each rendered case executes active and disabled exactly once)",
+        expect_output_contains=["test_duplicate_modes_cannot_hide_an_unrendered_mode", "failed"],
+        baseline_must_not_contain=["test_duplicate_modes_cannot_hide_an_unrendered_mode && failed"],
+    ),
+    Mutation(
+        name="judgment_accepts_corrupt_rendered_visual",
+        asserts=["judgment_visual_evidence_5"],
+        description=(
+            "Disable the freshness comparison for recorded render-derived visual "
+            "evidence. A review can then retain a PASS after the actual drawn structure "
+            "or its renderer-input digest changes."
+        ),
+        edits={
+            "backend/app/practice_gen/validation/validate_judgment.py": (
+                "        if reviewed_visual is not None and reviewed_visual != current_visual:\n",
+                "        if False and reviewed_visual is not None and reviewed_visual != current_visual:\n",
+            ),
+        },
+        command=["pytest", "tests/unit/test_judgment_visual_evidence.py", "-q"],
+        expected_check="§5 (corrupt render-derived visual evidence makes a review stale)",
+        expect_output_contains=["test_corrupt_rendered_visual_is_stale", "failed"],
+        baseline_must_not_contain=["test_corrupt_rendered_visual_is_stale && failed"],
+    ),
+    Mutation(
+        name="judgment_accepts_repaired_packet_claim",
+        asserts=["judgment_packet_integrity_5"],
+        description=(
+            "Disable the binding between packet_digest and the exact samples recorded "
+            "with the verdict. A dispatcher could then alter learner-visible evidence "
+            "and retain the original delivered-packet claim."
+        ),
+        edits={
+            "backend/app/practice_gen/validation/validate_judgment.py": (
+                '    if recorded_digest != _json_digest(_packet_core_from_review(data)):\n',
+                '    if False and recorded_digest != _json_digest(_packet_core_from_review(data)):\n',
+            ),
+        },
+        command=["pytest", "tests/unit/test_judgment_merged_schema.py::test_packet_digest_cannot_be_repaired_to_modified_samples_by_claim", "-q"],
+        expected_check="§5 (packet digest binds exact delivered learner-visible evidence)",
+        expect_output_contains=["test_packet_digest_cannot_be_repaired", "failed"],
+        baseline_must_not_contain=["test_packet_digest_cannot_be_repaired && failed"],
+    ),
+    Mutation(
+        name="judgment_accepts_incomplete_requirement_snapshot",
+        asserts=["judgment_clause_coverage_5"],
+        description=(
+            "Disable exact comparison of the packet's requirement decomposition with "
+            "live MATATAG ground truth. Omitted, duplicated, altered, or invented clauses "
+            "could otherwise inherit a perfect review."
+        ),
+        edits={
+            "backend/app/practice_gen/validation/validate_judgment.py": (
+                '    if data.get("requirements_snapshot") != expected_requirements:\n',
+                '    if False and data.get("requirements_snapshot") != expected_requirements:\n',
+            ),
+        },
+        command=["pytest", "tests/unit/test_judgment_merged_schema.py::test_requirement_omission_is_unadjudicable", "-q"],
+        expected_check="§5 (requirement decomposition exactly matches live competency ground truth)",
+        expect_output_contains=["test_requirement_omission_is_unadjudicable", "failed"],
+        baseline_must_not_contain=["test_requirement_omission_is_unadjudicable && failed"],
+    ),
+    Mutation(
+        name="judgment_accepts_unassessed_sample",
+        asserts=["judgment_sample_assessments_5"],
+        description=(
+            "Disable exact per-sample assessment coverage. A delivered sample with an "
+            "impossible context or ambiguous learner interaction could then be omitted "
+            "from the response while the node remains PASS."
+        ),
+        edits={
+            "backend/app/practice_gen/validation/validate_judgment.py": (
+                '    if assessed_ids != sample_ids or len(assessed_ids) != len(set(assessed_ids)):\n',
+                '    if False and (assessed_ids != sample_ids or len(assessed_ids) != len(set(assessed_ids))):\n',
+            ),
+        },
+        command=["pytest", "tests/unit/test_judgment_merged_schema.py::test_missing_sample_assessment_is_rejected", "-q"],
+        expected_check="§5 (every delivered sample receives explicit learner-facing assessments)",
+        expect_output_contains=["test_missing_sample_assessment_is_rejected", "failed"],
+        baseline_must_not_contain=["test_missing_sample_assessment_is_rejected && failed"],
+    ),
+    Mutation(
+        name="judgment_accepts_foreign_dispatch_reviewer",
+        asserts=["judgment_dispatch_provenance_5"],
+        description="Remove the binding between each assessment reviewer and its dispatch identity (seed=42).",
+        edits={
+            "backend/app/practice_gen/validation/validate_judgment.py": (
+                '        if dispatch is not None and entry.get("reviewer_identity") != dispatch.get("reviewer_identity"):\n',
+                '        if False and dispatch is not None and entry.get("reviewer_identity") != dispatch.get("reviewer_identity"):\n',
+            ),
+        },
+        command=["pytest", "tests/unit/test_judgment_merged_schema.py::test_assessment_identity_must_match_dispatch", "-q"],
+        expected_check="§5 (assessment identity agrees with dispatch)",
+        expect_output_contains=["test_assessment_identity_must_match_dispatch", "failed"],
+        baseline_must_not_contain=["test_assessment_identity_must_match_dispatch && failed"],
+    ),
+    Mutation(
+        name="judgment_accepts_mismatched_dispatch_clauses",
+        asserts=["judgment_dispatch_provenance_5"],
+        description="Remove exact dispatch-to-clause allocation enforcement (seed=42).",
+        edits={
+            "backend/app/practice_gen/validation/validate_judgment.py": (
+                '        if not isinstance(assigned, list) or collections.Counter(map(str, assigned)) != collections.Counter(map(str, observed)):\n',
+                '        if False:\n',
+            ),
+        },
+        command=["pytest", "tests/unit/test_judgment_merged_schema.py::test_clause_must_belong_to_attributed_dispatch", "-q"],
+        expected_check="§5 (exact dispatch clause allocation)",
+        expect_output_contains=["test_clause_must_belong_to_attributed_dispatch", "failed"],
+        baseline_must_not_contain=["test_clause_must_belong_to_attributed_dispatch && failed"],
+    ),
+    Mutation(
+        name="judgment_accepts_changed_raw_response",
+        asserts=["judgment_dispatch_provenance_5"],
+        description=(
+            "Disable the raw-response digest comparison. Identity and blindness fields "
+            "would then be self-declared metadata detached from the exact returned review."
+        ),
+        edits={
+            "backend/app/practice_gen/validation/validate_judgment.py": (
+                '                elif hashlib.sha256(response_path.read_bytes()).hexdigest() != response_digest:\n',
+                '                elif False and hashlib.sha256(response_path.read_bytes()).hexdigest() != response_digest:\n',
+            ),
+        },
+        command=["pytest", "tests/unit/test_judgment_merged_schema.py::test_raw_response_drift_is_rejected", "-q"],
+        expected_check="§5 (dispatch provenance binds the exact raw returned response)",
+        expect_output_contains=["test_raw_response_drift_is_rejected", "failed"],
+        baseline_must_not_contain=["test_raw_response_drift_is_rejected && failed"],
+    ),
+    Mutation(
+        name="attestation_accepts_corrupt_rendered_visual",
+        asserts=["capability_attestation_visual_evidence_6F"],
+        description=(
+            "Disable capability-attestation comparison of render-derived visual "
+            "evidence. A medium clause could then retain PROVIDED after the learner's "
+            "actual drawn structure changed."
+        ),
+        edits={
+            "backend/app/practice_gen/validation/validate_capability.py": (
+                '            if recorded_visual is not None and recorded_visual != current_visual:\n',
+                '            if False and recorded_visual is not None and recorded_visual != current_visual:\n',
+            ),
+        },
+        command=["pytest", "tests/unit/test_attestation_freshness.py::test_a_changed_rendered_visual_makes_attestation_stale", "-q"],
+        expected_check="§6F (capability evidence expires when rendered visual structure changes)",
+        expect_output_contains=["test_a_changed_rendered_visual", "failed"],
+        baseline_must_not_contain=["test_a_changed_rendered_visual && failed"],
+    ),
+    Mutation(
         name="grader_rejects_correct_answer",
         asserts=['grading_contract_10'],
         description=(
@@ -1257,6 +2090,27 @@ MUTATIONS: List[Mutation] = [
         baseline_must_not_contain=["FAIL all_competency_bounds_parse"],
     ),
     Mutation(
+        name="strict_competency_bound_becomes_inclusive",
+        asserts=["competency_bounds_parsing"],
+        description=(
+            "Treat 'less than N' as inclusive N. The tree-wide shape property still sees "
+            "a valid ordered tuple, but the exact curriculum-reading fixture must reject "
+            "the off-by-one that previously served 20 or 100 on strict-bound nodes."
+        ),
+        edits={
+            "backend/app/practice_gen/registry.py": (
+                "                if match.group(1) == \"less than\":\n"
+                "                    ceiling -= 1\n",
+                "                if match.group(1) == \"less than\":\n"
+                "                    ceiling += 0  # planted mutation: strict bound is inclusive\n",
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_compat", "--only", "bounds_fixture"],
+        expected_check="§2G exact fixture (strict curriculum bounds stay exclusive)",
+        expect_output_contains=["FAIL competency_bounds_parsing", "expected key 'max_minuend'"],
+        baseline_must_not_contain=["FAIL competency_bounds_parsing"],
+    ),
+    Mutation(
         name="competency_scope_narrowed",
         asserts=["competency_scope_not_narrowed"],
         description=(
@@ -1288,14 +2142,15 @@ MUTATIONS: List[Mutation] = [
         name="unproducible_variant_declared",
         asserts=["declared_variants_are_producible"],
         description=(
-            "Drop the competency-bounds filter from the variant-coverage candidate builder, "
+            "Drop the production curriculum-reach filter from the variant-coverage candidate builder, "
             "so nodes start declaring variant values their own competency excludes and the "
             "unproducible count climbs above its floor. This is the shape that hid for 31 "
             "nodes: the packet builder swallowed each failed render with `except Exception: "
             "return None`, so a declared-but-impossible variant simply vanished and the "
             "reviewer got a thinner packet with no indication anything was missing."
         ),
-        # ANCHOR REPOINTED 2026-09-08, twice, and the second time is the instructive one.
+        # The bounds guards are redundant with _variant_reaches_this_node.  A plant that
+        # removes only them does not alter candidates and therefore proves nothing.
         #
         # The original read "if bound is None or _bound_allows(bound, v):\n pairs.add(...)"
         # and matched ZERO times -- the loop had been restructured into guard-clause form
@@ -1312,13 +2167,10 @@ MUTATIONS: List[Mutation] = [
         # merely where the rule is written.
         edits={
             "backend/app/practice_gen/validation/judgment_packets.py": (
-                "                for v in opts:\n"
-                "                    if bound is not None and not _bound_allows(bound, v):\n"
-                "                        continue\n"
-                "                    eff = effective_bounds.get(var_name)\n"
-                "                    if eff is not None and not _bound_allows(eff, v):\n"
+                "                    if not _variant_reaches_this_node(node_id, dna_name, var_name, v):\n"
                 "                        continue\n",
-                "                for v in opts:  # planted mutation: bounds filtering dropped\n",
+                "                    if False:  # planted mutation: production reach gate dropped\n"
+                "                        continue\n",
             ),
         },
         command=["backend.app.practice_gen.validation.validate_compat", "--only", "producible"],
@@ -2422,6 +3274,80 @@ MUTATIONS: List[Mutation] = [
                                 "mis-gradings exceeds floor"],
         baseline_must_not_contain=["FAIL grading_contract_floor_10"],
     ),
+    # ── Runner documentation drift guards ─────────────────────────────────────────
+    Mutation(
+        name="contract_registry_drift_accepted",
+        asserts=["contract_doc_matches_registry"],
+        description=(
+            "Disable the exact contract-table/runner-registry comparison. A binding §-ref "
+            "can then disappear from the contract while the runner still reports success."
+        ),
+        edits={
+            "backend/app/practice_gen/validation/run_all.py": (
+                "        if doc_refs != registry_refs:\n",
+                "        if False:  # planted mutation: contract drift accepted\n",
+            )
+        },
+        command=["pytest", "tests/unit/test_stage_ledger.py::TestDocumentationDriftEndToEnd::test_contract_registry_drift_is_a_named_failure", "-q"],
+        expected_check="the binding contract table exactly matches the runner registry",
+        expect_output_contains=["test_contract_registry_drift_is_a_named_failure", "failed"],
+        baseline_must_not_contain=["test_contract_registry_drift_is_a_named_failure && failed"],
+    ),
+    Mutation(
+        name="failing_unit_suite_accepted",
+        asserts=["unit_tests"],
+        description=(
+            "Replace the unit stage's real verdict with success. The runner must not claim "
+            "Phase 1 passed when its own test suite returned a failure."
+        ),
+        edits={
+            "backend/app/practice_gen/validation/run_all.py": (
+                "        ok = _run_unit_tests()\n",
+                "        ok = True  # planted mutation: failing unit suite accepted\n",
+            )
+        },
+        command=["pytest", "tests/unit/test_stage_ledger.py::TestCrashIsolationEndToEnd::test_a_failing_unit_suite_is_a_named_stage_failure", "-q"],
+        expected_check="§0 runner stage (a failing unit suite fails the run)",
+        expect_output_contains=["test_a_failing_unit_suite_is_a_named_stage_failure", "failed"],
+        baseline_must_not_contain=["test_a_failing_unit_suite_is_a_named_stage_failure && failed"],
+    ),
+    Mutation(
+        name="operator_document_coverage_loss_accepted",
+        asserts=["operator_doc_covers_registry"],
+        description=(
+            "Disable the operator-document coverage floor. The guide can then lose every "
+            "registered check while its drift gate still reports success."
+        ),
+        edits={
+            "backend/app/practice_gen/validation/run_all.py": (
+                "        if len(named) < floor:\n",
+                "        if False:  # planted mutation: stale operator guide accepted\n",
+            )
+        },
+        command=["pytest", "tests/unit/test_stage_ledger.py::TestDocumentationDriftEndToEnd::test_operator_document_coverage_loss_is_a_named_failure", "-q"],
+        expected_check="the operator guide retains its registered-check coverage floor",
+        expect_output_contains=["test_operator_document_coverage_loss_is_a_named_failure", "failed"],
+        baseline_must_not_contain=["test_operator_document_coverage_loss_is_a_named_failure && failed"],
+    ),
+    Mutation(
+        name="missing_operator_document_accepted",
+        asserts=["operator_doc_covers_registry"],
+        description=(
+            "Substitute an in-memory list of all refs when testing_pipeline.md is absent. "
+            "The former exists-guard behaved equivalently: deletion silently skipped the gate."
+        ),
+        edits={
+            "backend/app/practice_gen/validation/run_all.py": (
+                "        text = _OPERATOR_DOC_PATH.read_text(encoding=\"utf-8\")\n",
+                "        text = (_OPERATOR_DOC_PATH.read_text(encoding=\"utf-8\") if "
+                "_OPERATOR_DOC_PATH.exists() else \"\\n\".join(registry_refs))  # planted mutation\n",
+            )
+        },
+        command=["pytest", "tests/unit/test_stage_ledger.py::TestDocumentationDriftEndToEnd::test_missing_operator_document_is_a_named_failure", "-q"],
+        expected_check="an absent operator guide is a named failure, never a skipped check",
+        expect_output_contains=["test_missing_operator_document_is_a_named_failure", "failed"],
+        baseline_must_not_contain=["test_missing_operator_document_is_a_named_failure && failed"],
+    ),
     # ── The stage ledger (H-03, 2026-09-12) ────────────────────────────────────────
     #
     # These drive pytest rather than a validator, for the reason `subtraction_pool_uncapped`
@@ -2540,7 +3466,7 @@ MUTATIONS: List[Mutation] = [
                 "                    rejections.append(Rejection(\n",
             )
         },
-        command=["backend.app.practice_gen.validation.validate_obligations"],
+        command=["backend.app.practice_gen.validation.validate_obligations", "--only", "manifest"],
         expected_check="§11 (two independent derivations of the reachable count agree)",
         expect_output_contains=["FAIL obligation_derivations_agree",
                                 "disagree"],
@@ -2563,11 +3489,139 @@ MUTATIONS: List[Mutation] = [
                 '    "planted_dead_route": (),  # planted mutation\n',
             )
         },
-        command=["backend.app.practice_gen.validation.validate_obligations"],
+        command=["backend.app.practice_gen.validation.validate_obligations", "--only", "manifest"],
         expected_check="§11 (a registered formatter route no obligation can reach)",
         expect_output_contains=["FAIL obligation_routes_reachable",
                                 "planted_dead_route"],
         baseline_must_not_contain=["FAIL obligation_routes_reachable"],
+    ),
+    Mutation(
+        name="obligation_interest_dimension_dropped",
+        asserts=["obligation_dimension_coverage_11"],
+        description=(
+            "Drop the automatic-interest request from the finite Cartesian product. "
+            "The executor would become smaller and faster while silently ceasing to "
+            "exercise the production path used when a learner has no stored preference."
+        ),
+        edits={
+            "tests/obligation_executor.py": (
+                "    return (None, *sorted(bank))\n",
+                "    return tuple(sorted(bank))  # planted mutation: automatic path dropped\n",
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_obligations", "--only", "manifest"],
+        expected_check="§11 (every finite serving dimension is crossed)",
+        expect_output_contains=["FAIL obligation_dimension_coverage_11",
+                                "fewer than 27 interest request paths"],
+        baseline_must_not_contain=["FAIL obligation_dimension_coverage_11"],
+    ),
+    Mutation(
+        name="declared_obligation_refused_at_execution",
+        asserts=["obligation_execution_11"],
+        description=(
+            "Make the production orchestrator refuse one node that the manifest declares "
+            "reachable. Enumeration still succeeds; only executing the fixed student-path "
+            "sentinel proves the counted obligation can actually be served."
+        ),
+        edits={
+            "backend/app/services/orchestrator.py": (
+                "    ) -> FormattedProblem:\n"
+                "        if seed is None:\n",
+                "    ) -> FormattedProblem:\n"
+                "        if node_id == 'mat_g1_dp_q3_0':\n"
+                "            raise ValueError(f'planted obligation refusal seed={seed}')\n"
+                "        if seed is None:\n",
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_obligations", "--only", "sentinels"],
+        expected_check="§11 (every declared-reachable PR sentinel executes)",
+        expect_output_contains=["FAIL obligation_execution_11",
+                                "planted obligation refusal",
+                                "seed="],
+        baseline_must_not_contain=["FAIL obligation_execution_11"],
+    ),
+    Mutation(
+        name="obligation_benchmark_outlives_source",
+        asserts=["obligation_benchmark_11"],
+        description=(
+            "Change executor source without re-running the 1,000-cache-key benchmark. "
+            "A performance and reachability projection about different bytes is stale "
+            "evidence, even when its recorded run had zero failures."
+        ),
+        edits={
+            "tests/obligation_executor.py": (
+                "TARGET_RELEASE_SECONDS = 4 * 60 * 60\n",
+                "TARGET_RELEASE_SECONDS = 4 * 60 * 60 + 1  # planted source drift\n",
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_obligations", "--only", "benchmark"],
+        expected_check="§11 (the benchmark is bound to current executor/source bytes)",
+        expect_output_contains=["FAIL obligation_benchmark_11",
+                                "source/input digest is stale"],
+        baseline_must_not_contain=["FAIL obligation_benchmark_11"],
+    ),
+    Mutation(
+        name="obligation_executor_continues_after_failure",
+        asserts=["obligation_execution_11"],
+        description=(
+            "Continue executing cache keys after the first named failure. This wastes the "
+            "rest of a release shard after its all-or-nothing receipt is already impossible "
+            "and can hide the failure behind hours of unnecessary work."
+        ),
+        edits={
+            "tests/obligation_executor.py": (
+                "            if record(_execute_cache_key(payload)):\n"
+                "                break\n",
+                "            if record(_execute_cache_key(payload)):\n"
+                "                continue  # planted mutation: ignore fail-fast stop\n",
+            )
+        },
+        command=["pytest", "tests/unit/test_obligation_executor.py::test_executor_stops_after_first_failed_obligation", "-q"],
+        expected_check="§11 (the executor stops after its first named failure)",
+        expect_output_contains=["test_executor_stops_after_first_failed_obligation", "failed"],
+        baseline_must_not_contain=["test_executor_stops_after_first_failed_obligation && failed"],
+    ),
+    Mutation(
+        name="obligation_release_absence_accepted",
+        asserts=["obligation_release_shards_11"],
+        description=(
+            "Make an absent release receipt set produce no finding. The PR sentinels and "
+            "benchmark remain green, so without this direction the complete finite sweep "
+            "can be NOT RUN while the §11 stage exits successfully."
+        ),
+        edits={
+            "tests/obligation_executor.py": (
+                "        return [\n"
+                "            \"no release shard receipts exist; the complete finite sweep is uncertified\"\n"
+                "        ], {\n",
+                "        return [], {  # planted mutation: missing release accepted\n",
+            )
+        },
+        command=["pytest", "tests/unit/test_obligation_executor.py::test_missing_release_receipts_are_a_blocking_finding", "-q"],
+        expected_check="§11 (a release that never ran cannot pass)",
+        expect_output_contains=["test_missing_release_receipts_are_a_blocking_finding", "failed"],
+        baseline_must_not_contain=["test_missing_release_receipts_are_a_blocking_finding && failed"],
+    ),
+    Mutation(
+        name="obligation_release_shard_drops_tail",
+        asserts=["obligation_release_shards_11"],
+        description=(
+            "Drop the final cache key from the modulo shard partition. Every completed "
+            "shard could still be internally green, but their union would be one required "
+            "obligation short. The structural union check must catch it by name."
+        ),
+        edits={
+            "tests/obligation_executor.py": (
+                "    return range(shard_index, cache_key_count(seeds_per_obligation), shard_count)\n",
+                "    return range(shard_index, cache_key_count(seeds_per_obligation) - 1, "
+                "shard_count)  # planted tail gap\n",
+            )
+        },
+        command=["pytest", "tests/unit/test_obligation_executor.py::test_release_shards_are_complete_non_overlapping_and_order_independent", "-q"],
+        expected_check="§11 (release shards are complete and non-overlapping)",
+        expect_output_contains=["test_release_shards_are_complete_non_overlapping_and_order_independent",
+                                "failed"],
+        baseline_must_not_contain=["test_release_shards_are_complete_non_overlapping_and_order_independent && failed"],
     ),
     Mutation(
         name="silent_handler_without_a_disposition",
@@ -3115,22 +4169,27 @@ def run_mutation_recorded(mutation: Mutation) -> Dict[str, Any]:
         "finished_at": None,
     }
 
-    # A validator that is already failing will "detect" anything. Prove the marker
-    # is absent before planting, or the mutation proves nothing about the check.
-    if mutation.baseline_must_not_contain:
-        base_code, before = _run(mutation)
-        record["baseline_exit"] = base_code
-        already = [m for m in mutation.baseline_must_not_contain
-                   if _marker_present(m, before)]
-        record["baseline_markers_already_present"] = already
+    # A validator that is already failing will "detect" anything. Mandate 5 requires a
+    # clean baseline, not merely absence of one chosen marker: an unrelated red can alter
+    # control flow, truncate output, or prevent the planted path from being reached.
+    base_code, before = _run(mutation)
+    record["baseline_exit"] = base_code
+    already = [m for m in mutation.baseline_must_not_contain
+               if _marker_present(m, before)]
+    record["baseline_markers_already_present"] = already
+    if base_code != 0 or already:
+        reasons = []
+        if base_code != 0:
+            reasons.append(f"baseline exited {base_code}")
         if already:
-            record["diagnostic_line"] = (
-                f"INVALID — the unmutated tree already reports {already}; this mutation "
-                f"cannot distinguish the planted bug from the pre-existing failure."
-            )
-            record["restored_clean"] = True   # nothing was planted
-            record["finished_at"] = _now()
-            return record
+            reasons.append(f"already reports {already}")
+        record["diagnostic_line"] = (
+            f"INVALID — the unmutated command {' and '.join(reasons)}; this mutation "
+            f"cannot distinguish the planted bug from a pre-existing failure."
+        )
+        record["restored_clean"] = True   # nothing was planted
+        record["finished_at"] = _now()
+        return record
 
     originals: Dict[Path, str] = {}
     try:

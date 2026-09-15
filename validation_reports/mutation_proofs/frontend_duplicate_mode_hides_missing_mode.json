@@ -1,0 +1,46 @@
+{
+ "asserts": [
+  "frontend_static_render_12"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "test_duplicate_modes_cannot_hide_an_unrendered_mode && failed"
+ ],
+ "command": [
+  "pytest",
+  "tests/unit/test_frontend_artifact_completeness.py::test_duplicate_modes_cannot_hide_an_unrendered_mode",
+  "-q"
+ ],
+ "definition_digest": "7355c02e216844b1fb03e9b28120179bf5f18a6e66b66cff2d57401a76669d69",
+ "detected": true,
+ "diagnostic_line": "exit 1 — =================================== FAILURES ===================================",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "test_duplicate_modes_cannot_hide_an_unrendered_mode",
+  "failed"
+ ],
+ "expected_check": "§12 (each rendered case executes active and disabled exactly once)",
+ "finished_at": "2026-09-15T10:33:58+08:00",
+ "input_digest": "5d3f50de44e19ab65d9d2c7a302c6a09b01ee188ed312d0a61a84db3abfc1cd8",
+ "mutated_paths": [
+  "backend/app/practice_gen/validation/validate_render.py"
+ ],
+ "mutation": "frontend_duplicate_mode_hides_missing_mode",
+ "observed_markers": {
+  "failed": true,
+  "test_duplicate_modes_cannot_hide_an_unrendered_mode": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-09-15T10:33:55+08:00"
+}

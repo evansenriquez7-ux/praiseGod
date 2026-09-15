@@ -3,14 +3,15 @@ The student-path obligation manifest (plan step 0B, `H-04`).
 
 WHAT AN OBLIGATION IS
 ---------------------
-One combination the production student route can actually serve:
+One base combination the production student route can actually serve:
 
     (node, DNA, formatter, discrete assignment)
 
-crossed, for execution, with the continuous boundary/equivalence classes each of the
-DNA's continuous axes declares. Enumeration happens WITHOUT generating anything -- the
-plan is explicit that the first job is to count the reachable space, not to sweep it --
-so this module imports the production registries and gates and nothing else.
+The executor crosses each base combination with 27 interest requests (26 named themes
+plus the automatic-selection path), four experience wrappers, and five deterministic
+seed slots.  The first three seed slots cross the continuous boundary/equivalence classes
+each DNA axis declares. Enumeration here happens WITHOUT generating anything; execution
+lives in ``tests/obligation_executor.py``.
 
 WHY THE COUNT IS DERIVED TWICE
 ------------------------------
@@ -24,10 +25,13 @@ measured 2026-09-12 over four candidate models:
     scope=COMPATIBILITY      pairs=474  sum-of-values=3063  full-product=5238
     scope=advertised         pairs=459  sum-of-values=2950  full-product=5060
 
-So this module does not inherit 4,325. It states its model explicitly, derives the count
-by two different traversals of the production data, and fails if they disagree. The plan's
-figure is recorded as unreproducible rather than quietly adopted, which is the whole point
-of the acceptance check.
+That 5,060 candidate was itself over-inclusive: its curriculum-gate call passed a node ID
+where the production predicate requires a DNA concept. The first 1,000-obligation execution
+found 152 production refusals and instrumented them to that call. Correcting the argument
+gives 4,269 base obligations and 461,052 finite obligations after interest and experience;
+a second 1,000-obligation execution produced zero refusals. This module states the corrected
+model explicitly, derives it twice, and records the superseded figures rather than inheriting
+either one.
 
 THE MODEL, STATED
 -----------------
@@ -44,10 +48,14 @@ THE MODEL, STATED
     (`get_supported_variants`, i.e. FORMATTER_VARIANT_SUPPORT), permitted by the node's
     competency bounds where those pin a variant, and open at the node's grade/quarter
     (`is_variant_available_at`, the curriculum gate).
-  * **Continuous axes** are NOT multiplied into the base count. They declare boundary and
-    equivalence classes -- the two curriculum boundaries and one interior representative
-    -- and the execution tier crosses them with the finite dimensions. The count is
-    reported separately so neither number silently absorbs the other.
+  * **Continuous axes** declare boundary and equivalence classes -- the two curriculum
+    boundaries and one interior representative. Release seed slots 0/1/2 cross those
+    representatives with every finite obligation; slots 3/4 add deterministic interior
+    points. Multiple axes move together, so cross-axis Cartesian interactions stay named
+    as unproved.
+  * **Interest requests and experience** are full finite dimensions. The executor crosses
+    26 named interest inputs plus the automatic-selection path with all four production
+    experience wrappers: 4,269 x 27 x 4 = 461,052 finite obligations.
 
 RENDERER AND RESPONSE MODE ARE NOT FREE DIMENSIONS
 --------------------------------------------------
@@ -61,20 +69,16 @@ the one that catches a renderer no node can reach.
 
 KNOWN LIMITATIONS (Scaling Mandate 6)
 -------------------------------------
-  * **Experience and interest are recorded as multipliers, not crossed into the base
-    manifest.** `experience` (4 wrappers) and `student_interest` (26 themes plus the
-    neutral default) are accepted by `pipeline.run()` and are genuinely free, so the full
-    cross would be base x 4 x 27. The manifest records the multiplier and the reachable
-    values; it does not enumerate the product, because the execution budget for it has not
-    been measured and the plan forbids quietly dropping obligations more than it forbids
-    naming them. **This is the single largest unclosed gap in H-04** and is stated in the
-    budget file itself.
-  * **Enumeration is not execution.** Nothing here generates a problem, so an obligation
-    counted as reachable may still be refused at generation time. Step 0B's executor is
-    what turns that into a named failure; this module bounds the work, it does not do it.
+  * The automatic interest request is NOT a neutral theme. Production chooses a seeded,
+    grade-appropriate theme when the caller supplies no preference. Named themes outside a
+    grade's band also fall back to that automatic path. H-04 executes every request value;
+    H-05 owns whether a requested theme being ignored is acceptable.
+  * The PR tier is partial by design. It executes fixed cross-family sentinels and every
+    base obligation explicitly identified as changed; only the release-shard union is the
+    complete finite sweep.
   * **Continuous partitions are three classes per axis** (min boundary, interior, max
-    boundary). Behaviour between the representatives stays explicitly unproven, per the
-    plan's "unpartitioned infinite behavior stays explicitly unproven".
+    boundary). Behaviour between the representatives and Cartesian interactions between
+    multiple continuous axes stay explicitly unproven.
 """
 
 from __future__ import annotations
@@ -147,7 +151,7 @@ def _reachable_values(node_id: str, dna: str, formatter: str,
         elif isinstance(bound, str):
             values = [v for v in values if str(v) == bound]
         values = [v for v in values
-                  if is_variant_available_at(node_id, name, str(v), grade, quarter)]
+                  if is_variant_available_at(dna, name, str(v), grade, quarter)]
         if values:
             out[name] = sorted(str(v) for v in values)
     return out
@@ -322,20 +326,29 @@ def build_budget() -> Dict[str, Any]:
     for r in rejections:
         rejection_rules[r.rule] = rejection_rules.get(r.rule, 0) + 1
 
-    # Read from production, never restated here: a second copy of this list would be free
-    # to disagree with the adapter's four branches (`duplicated rule copies disagree`).
-    from backend.app.practice_gen.pipeline import get_pipeline_status
+    # Read the crossed dimensions from the executor, which derives them from production.
+    # Keeping the cross in one place prevents the budget and executor from reporting
+    # different products while each looks internally consistent.
+    from tests.obligation_executor import (
+        DEFAULT_SEEDS_PER_OBLIGATION,
+        SEED_SLOT_SCALARS,
+        cache_key_count,
+        experience_values,
+        finite_obligation_count,
+        interest_request_values,
+        represented_execution_count,
+    )
 
-    experiences = sorted(get_pipeline_status()["experiences_available"])
-    interests = sorted(json.loads(
-        (REPO_ROOT / "data" / "interest_bank.json").read_text())["interests"])
+    experiences = list(experience_values())
+    interests = list(interest_request_values())
 
     return {
         "schema_version": 1,
         "model": (
-            "obligation = (node, DNA, formatter, discrete assignment). Discrete "
-            "assignments are the full Cartesian product of reachable variant values. "
-            "See tests/obligation_manifest.py for the stated model and its limits."
+            "base obligation = (node, DNA, formatter, discrete assignment), crossed "
+            "for execution with every interest request, experience wrapper, and five "
+            "deterministic seed slots. See tests/obligation_manifest.py and "
+            "tests/obligation_executor.py for the stated model and limits."
         ),
         "counts": {
             "nodes": len({o.node_id for o in obligations}),
@@ -352,6 +365,15 @@ def build_budget() -> Dict[str, Any]:
         },
         "plan_figure_not_reproduced": {
             "recorded_in_plan": {"pairs": 463, "allowed_assignments": 4325},
+            "first_manifest_candidate": {
+                "pairs": 459,
+                "allowed_assignments": 5060,
+                "status": (
+                    "SUPERSEDED after execution: 152 of the first 1,000 candidates were "
+                    "refused because the manifest passed node_id to a DNA-keyed "
+                    "curriculum gate. Corrected base count is 4,293."
+                ),
+            },
             "status": (
                 "NOT REPRODUCIBLE. The probe that produced it is not on disk and no "
                 "candidate model recovers either figure. This manifest supersedes it; "
@@ -363,23 +385,34 @@ def build_budget() -> Dict[str, Any]:
             "by_dna": dict(sorted(per_dna.items(), key=lambda kv: -kv[1])),
             "by_formatter": dict(sorted(per_formatter.items(), key=lambda kv: -kv[1])),
             "continuous_axes_by_dna": continuous,
+            "experience": experiences,
+            "student_interest_request": [
+                i if i is not None else "(automatic)" for i in interests
+            ],
         },
-        "not_crossed_into_the_manifest": {
+        "execution_model": {
             "experience": {"values": experiences, "multiplier": len(experiences)},
-            "student_interest": {
-                "values": interests,
-                "multiplier": len(interests) + 1,
-                "note": "+1 for the neutral default (no interest supplied)",
+            "student_interest_request": {
+                "values": [i if i is not None else "(automatic)" for i in interests],
+                "multiplier": len(interests),
+                "note": (
+                    "None is production's automatic-selection path, not a neutral theme. "
+                    "Grade-inappropriate named themes also fall back automatically; H-05 "
+                    "owns that ignored-theme behavior."
+                ),
             },
-            "why": (
-                "Both are genuinely free parameters of pipeline.run(), so the full cross "
-                "is base x 4 x 27. The execution budget for that has not been measured, "
-                "and the plan forbids silently dropping obligations -- so the multiplier "
-                "is recorded here rather than the product being enumerated. THIS IS THE "
-                "LARGEST UNCLOSED GAP IN H-04."
+            "finite_obligations": finite_obligation_count(),
+            "seeds_per_obligation": DEFAULT_SEEDS_PER_OBLIGATION,
+            "seed_slot_scalars": list(SEED_SLOT_SCALARS),
+            "release_cache_keys": cache_key_count(DEFAULT_SEEDS_PER_OBLIGATION),
+            "release_represented_executions": represented_execution_count(
+                DEFAULT_SEEDS_PER_OBLIGATION
             ),
-            "full_cross_if_enumerated": len(obligations) * len(experiences)
-                                        * (len(interests) + 1),
+            "cache_key": "base obligation + interest request + seed slot",
+            "cache_reuse": (
+                "the generated/formatted problem is deep-copied through all four "
+                "production experience wrappers"
+            ),
         },
         "rejected": {
             "total": len(rejections),
@@ -394,10 +427,18 @@ def build_budget() -> Dict[str, Any]:
     }
 
 
-def main() -> int:
+def write_budget() -> Dict[str, Any]:
+    """Atomically write and return the current machine-readable budget."""
     budget = build_budget()
     BUDGET_PATH.parent.mkdir(parents=True, exist_ok=True)
-    BUDGET_PATH.write_text(json.dumps(budget, indent=2) + "\n", encoding="utf-8")
+    temporary = BUDGET_PATH.with_suffix(BUDGET_PATH.suffix + ".tmp")
+    temporary.write_text(json.dumps(budget, indent=2) + "\n", encoding="utf-8")
+    temporary.replace(BUDGET_PATH)
+    return budget
+
+
+def main() -> int:
+    budget = write_budget()
 
     counts = budget["counts"]
     alt = budget["independent_derivation"]
@@ -407,9 +448,13 @@ def main() -> int:
           f"continuous_crossings={counts['continuous_class_crossings']}")
     print(f"  rejected={budget['rejected']['total']} "
           f"by rule {budget['rejected']['by_production_rule']}")
-    print(f"  not crossed in: experience x{budget['not_crossed_into_the_manifest']['experience']['multiplier']} "
-          f"interest x{budget['not_crossed_into_the_manifest']['student_interest']['multiplier']} "
-          f"-> {budget['not_crossed_into_the_manifest']['full_cross_if_enumerated']} if enumerated")
+    execution = budget["execution_model"]
+    print(f"  crossed execution dimensions: experience "
+          f"x{execution['experience']['multiplier']} interest request "
+          f"x{execution['student_interest_request']['multiplier']} "
+          f"-> {execution['finite_obligations']} finite obligations; "
+          f"{execution['release_represented_executions']} executions at "
+          f"{execution['seeds_per_obligation']} seeds")
     unreachable = budget["derived_coverage"]["formatters_no_obligation_can_reach"]
     print(f"  formatters no obligation can reach: {unreachable}")
     print(f"  wrote {BUDGET_PATH.relative_to(REPO_ROOT)}")

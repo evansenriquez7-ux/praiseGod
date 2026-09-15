@@ -100,9 +100,9 @@ def validate_registry_coverage() -> List[str]:
     Verify bidirectional coverage between the knowledge graph and NODE_TO_DNA,
     and between NODE_TO_DNA and COMPATIBILITY.
 
-    Checks:
-      1. Every node in knowledge_graph_g1_3.json appears in NODE_TO_DNA.
-      2. Every DNA concept in NODE_TO_DNA appears in COMPATIBILITY.
+    Checks every direction of the three registries.  A declaration that is used by
+    nothing is as much drift as a missing declaration: otherwise a future grade can
+    inherit a stale compatibility entry which no current student path exercises.
 
     Returns:
         List of error strings. Empty list = coverage is complete.
@@ -126,6 +126,13 @@ def validate_registry_coverage() -> List[str]:
                 f"Knowledge graph node '{node_id}' is missing from NODE_TO_DNA."
             )
 
+    # The reverse direction matters too.  An orphan mapping is invisible to every
+    # node-driven validator, so leaving it here would pre-approve a stale declaration.
+    for node_id in sorted(set(NODE_TO_DNA) - kg_node_ids):
+        errors.append(
+            f"NODE_TO_DNA node '{node_id}' is missing from the knowledge graph."
+        )
+
     # 2. Every DNA concept in NODE_TO_DNA must appear in COMPATIBILITY
     all_concepts_in_registry: set = set()
     for concepts in NODE_TO_DNA.values():
@@ -137,13 +144,33 @@ def validate_registry_coverage() -> List[str]:
                 f"NODE_TO_DNA concept '{concept}' is missing from COMPATIBILITY."
             )
 
+    for concept in sorted(set(COMPATIBILITY) - all_concepts_in_registry):
+        errors.append(
+            f"COMPATIBILITY concept '{concept}' is unused by NODE_TO_DNA."
+        )
+
+    # DNA_MODULE_MAP is the import registry.  Compare it in both directions rather
+    # than relying on validate_compatibility_table's one-way lookup.
+    for concept in sorted(set(DNA_MODULE_MAP) - set(COMPATIBILITY)):
+        errors.append(
+            f"DNA_MODULE_MAP concept '{concept}' is missing from COMPATIBILITY."
+        )
+    for concept in sorted(set(COMPATIBILITY) - set(DNA_MODULE_MAP)):
+        errors.append(
+            f"COMPATIBILITY concept '{concept}' is missing from DNA_MODULE_MAP."
+        )
+
     return errors
 
 
 def validate_kg_monotonicity() -> List[str]:
     """
-    Integrity lint check asserting that along every prerequisite edge:
+    Integrity lint check asserting that along every declared prerequisite edge:
     successor.cumulative ⊇ predecessor.cumulative ∪ predecessor.introduces.
+
+    ``prior_node_ids`` is the generated graph's explicit prerequisite relation.  The
+    previous implementation invented edges by sorting node IDs globally; that happened
+    to pass G1–3 but did not validate the graph relation consumed by future grades.
     """
     errors: List[str] = []
 
@@ -159,71 +186,135 @@ def validate_kg_monotonicity() -> List[str]:
         errors.append("Knowledge graph nodes are empty.")
         return errors
 
-    # Branch ordering for chronological sorting
-    BRANCH_ORDER = ["na", "mg", "dp"]
-
-    def chronological_sort_key(node_id: str) -> tuple:
-        parts = node_id.split("_")
-        grade = int(parts[1][1:])
-        branch = parts[2]
-        quarter = int(parts[3][1:])
-        index = int(parts[4])
-        branch_rank = BRANCH_ORDER.index(branch) if branch in BRANCH_ORDER else 99
-        return (grade, quarter, branch_rank, index)
-
-    sorted_ids = sorted(nodes.keys(), key=chronological_sort_key)
-
-    # Check global chronological monotonicity: successor.cumulative ⊇ predecessor.cumulative ∪ predecessor.introduces
-    for i in range(len(sorted_ids) - 1):
-        pred_id = sorted_ids[i]
-        succ_id = sorted_ids[i + 1]
-        pred = nodes[pred_id]
-        succ = nodes[succ_id]
-
-        # Concepts check
-        pred_dnas = NODE_TO_DNA.get(pred_id, [])
-        pred_concepts = (
-            set(pred.get("cumulative_concepts", []))
-            | set(pred.get("introduces_concepts", []))
-            | set(pred_dnas)
-        )
-        succ_concepts = set(succ.get("cumulative_concepts", []))
-        if not pred_concepts.issubset(succ_concepts):
-            diff = pred_concepts - succ_concepts
+    edge_count = 0
+    for succ_id, succ in sorted(nodes.items()):
+        prior_ids = succ.get("prior_node_ids")
+        if not isinstance(prior_ids, list):
             errors.append(
-                f"KG Monotonicity Error (global): {succ_id}.cumulative_concepts does not contain "
-                f"all concepts from predecessor {pred_id}. Missing: {diff}"
+                f"KG prerequisite error: {succ_id}.prior_node_ids must be a list, "
+                f"got {type(prior_ids).__name__}."
+            )
+            continue
+        if len(prior_ids) != len(set(prior_ids)):
+            errors.append(
+                f"KG prerequisite error: {succ_id}.prior_node_ids contains duplicates."
             )
 
-        # Vocab check
-        pred_vocab = set(pred.get("cumulative_vocab", [])) | set(pred.get("student_vocab", []))
-        succ_vocab = set(succ.get("cumulative_vocab", []))
-        if not pred_vocab.issubset(succ_vocab):
-            diff = pred_vocab - succ_vocab
-            errors.append(
-                f"KG Monotonicity Error (global): {succ_id}.cumulative_vocab does not contain "
-                f"all vocab from predecessor {pred_id}. Missing: {diff}"
+        for pred_id in prior_ids:
+            edge_count += 1
+            pred = nodes.get(pred_id)
+            if pred is None:
+                errors.append(
+                    f"KG prerequisite error: {succ_id} names unknown predecessor {pred_id}."
+                )
+                continue
+
+            # Concepts check
+            pred_dnas = NODE_TO_DNA.get(pred_id, [])
+            pred_concepts = (
+                set(pred.get("cumulative_concepts", []))
+                | set(pred.get("introduces_concepts", []))
+                | set(pred_dnas)
             )
+            succ_concepts = set(succ.get("cumulative_concepts", []))
+            if not pred_concepts.issubset(succ_concepts):
+                diff = pred_concepts - succ_concepts
+                errors.append(
+                    f"KG Monotonicity Error (edge {pred_id} -> {succ_id}): "
+                    f"successor cumulative_concepts is missing {sorted(diff)}"
+                )
+
+            # Vocab check
+            pred_vocab = set(pred.get("cumulative_vocab", [])) | set(pred.get("student_vocab", []))
+            succ_vocab = set(succ.get("cumulative_vocab", []))
+            if not pred_vocab.issubset(succ_vocab):
+                diff = pred_vocab - succ_vocab
+                errors.append(
+                    f"KG Monotonicity Error (edge {pred_id} -> {succ_id}): "
+                    f"successor cumulative_vocab is missing {sorted(diff)}"
+                )
+
+    if edge_count == 0:
+        errors.append("KG prerequisite error: no prior_node_ids edges were declared.")
 
     return errors
 
 
 def validate_lab_portal_equivalence() -> List[str]:
     """
-    Assert that the Lab router's bridge scalar is dynamically linked to the portal's DIFFICULTY_LEVEL_MAP[4].
+    Execute the Lab v2 and portal seams with identical production inputs.
+
+    One independently derived obligation per current node/DNA/formatter route is
+    compared field-for-field.  This covers every current route and grade without a
+    G1-G3 list.  H-04 owns the full discrete/interest/experience/seed Cartesian
+    product; this fast check deliberately uses the first reachable discrete assignment
+    per route and does not claim that larger product.
+
+    The helpers are the functions the live endpoints call, so a route that drops or
+    changes an argument diverges here.  Database selection/config retrieval and the
+    portal's legacy QuestionResponse serialization remain outside this assertion.
     """
+    import hashlib
+
+    from backend.app.practice_gen.compatibility import node_grade_quarter
+    from backend.app.practice_gen.generators.interest import get_grade_appropriate_interests
+    from backend.app.routes.matatag_router import _generate_lab_v2_student_problem
+    from backend.app.routes.practice_router import _generate_portal_student_problem
+    from tests.obligation_manifest import enumerate_obligations
+
     errors: List[str] = []
-    from backend.app.practice_gen.dna.base import DIFFICULTY_LEVEL_MAP
-    if 4 not in DIFFICULTY_LEVEL_MAP:
-        errors.append("DIFFICULTY_LEVEL_MAP does not contain key 4 for Advanced tier.")
-        
-    router_path = Path(__file__).parent.parent.parent.parent / "routes" / "matatag_router.py"
-    if router_path.exists():
-        content = router_path.read_text(encoding="utf-8")
-        if "bridge_scalar = 1.25" in content:
-            errors.append("matatag_router.py still contains hardcoded 'bridge_scalar = 1.25'.")
-        if "from backend.app.practice_gen.dna.base import DIFFICULTY_LEVEL_MAP" not in content:
-            errors.append("matatag_router.py does not import DIFFICULTY_LEVEL_MAP from base.py.")
+    obligations, _ = enumerate_obligations()
+    first_by_route = {}
+    for obligation in obligations:
+        route = (obligation.node_id, obligation.dna, obligation.formatter)
+        first_by_route.setdefault(route, obligation)
+
+    for ordinal, (route, obligation) in enumerate(sorted(first_by_route.items())):
+        node_id, dna, formatter = route
+        grade, _ = node_grade_quarter(node_id)
+        themes = get_grade_appropriate_interests(grade)
+        if not themes:
+            errors.append(
+                f"Lab/portal route {node_id}/{dna}/{formatter}: grade={grade} has no "
+                "supported interest theme"
+            )
+            continue
+        interest = themes[ordinal % len(themes)]
+        seed_material = f"lab-portal|{node_id}|{dna}|{formatter}".encode("utf-8")
+        seed = int.from_bytes(hashlib.sha256(seed_material).digest()[:4], "big") & 0x7FFFFFFF
+        kwargs = {
+            "node_id": node_id,
+            "formatter": formatter,
+            "difficulty_profile": dict(obligation.assignment),
+            "seed": seed,
+            "interest_theme": interest,
+            "forced_dna": dna,
+        }
+        try:
+            lab_problem = _generate_lab_v2_student_problem(**kwargs)
+        except Exception as exc:
+            errors.append(
+                f"Lab route raised for {node_id}/{dna}/{formatter}, seed={seed}: "
+                f"{type(exc).__name__}: {exc}"
+            )
+            continue
+        try:
+            portal_problem = _generate_portal_student_problem(**kwargs)
+        except Exception as exc:
+            errors.append(
+                f"Portal route raised for {node_id}/{dna}/{formatter}, seed={seed}: "
+                f"{type(exc).__name__}: {exc}"
+            )
+            continue
+        if lab_problem != portal_problem:
+            differing = sorted(
+                key for key in set(lab_problem) | set(portal_problem)
+                if lab_problem.get(key) != portal_problem.get(key)
+            )
+            errors.append(
+                f"Lab/portal mismatch for {node_id}/{dna}/{formatter}, seed={seed}, "
+                f"interest={interest!r}: differing fields={differing}"
+            )
     return errors
 
 
@@ -1027,7 +1118,9 @@ def validate_declared_variants_are_producible() -> List[str]:
         for i, (axis, value) in enumerate(candidates):
             seed = _VARIANT_COVERAGE_SEED_FLOOR + i
             try:
-                _render_sample(node_id, seed)
+                # Render the exact declared coordinate. Re-selecting a profile from the
+                # seed only proves some candidate renders, not this axis/value.
+                _render_sample(node_id, seed, {axis: value})
             except Exception as exc:  # noqa: BLE001 - the failure IS the finding
                 errors.append(
                     f"{node_id}: declares {axis}={value!r} but cannot produce it "
@@ -1190,6 +1283,7 @@ _SINGLE_CHECKS = {
     "placement": ("option_placement", validate_option_placement),
     "references": ("node_references_resolve", validate_node_references_resolve),
     "bounds_property": ("all_competency_bounds_parse", validate_all_competency_bounds_parse),
+    "bounds_fixture": ("competency_bounds_parsing", validate_competency_bounds_parsing),
     "scope": ("competency_scope_not_narrowed", validate_competency_scope_not_narrowed),
     "producible": ("declared_variants_are_producible", validate_declared_variants_are_producible),
     "servable": ("advertised_formatters_are_servable", validate_advertised_formatters_are_servable),

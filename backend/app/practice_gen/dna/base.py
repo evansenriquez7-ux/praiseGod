@@ -468,6 +468,8 @@ class QuestionContext(BaseModel):
     grade: int
     seed: int
     interest_theme: Optional[str]   # Which interest was applied
+    interest_cue: Optional[str] = None  # Short fallback when a formatter drops themed prose
+    interest_visible_terms: List[str] = Field(default_factory=list)
     spine_id: Optional[str]         # Which story spine was used
 
     # ── Difficulty ────────────────────────────────────────────────────────────

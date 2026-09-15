@@ -1,0 +1,46 @@
+{
+ "asserts": [
+  "unit_tests"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "test_a_failing_unit_suite_is_a_named_stage_failure && failed"
+ ],
+ "command": [
+  "pytest",
+  "tests/unit/test_stage_ledger.py::TestCrashIsolationEndToEnd::test_a_failing_unit_suite_is_a_named_stage_failure",
+  "-q"
+ ],
+ "definition_digest": "5cf452b185aae7f202f17e4d2f2ab6d503c47b1fad07c30d3a27c3156822a5a2",
+ "detected": true,
+ "diagnostic_line": "exit 1 — =================================== FAILURES ===================================",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "test_a_failing_unit_suite_is_a_named_stage_failure",
+  "failed"
+ ],
+ "expected_check": "§0 runner stage (a failing unit suite fails the run)",
+ "finished_at": "2026-09-15T10:48:20+08:00",
+ "input_digest": "85109f12646f70098a3f06569d827c6bb4448c7db880017a5a7568451e517356",
+ "mutated_paths": [
+  "backend/app/practice_gen/validation/run_all.py"
+ ],
+ "mutation": "failing_unit_suite_accepted",
+ "observed_markers": {
+  "failed": true,
+  "test_a_failing_unit_suite_is_a_named_stage_failure": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-09-15T10:48:18+08:00"
+}

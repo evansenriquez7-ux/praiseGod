@@ -1,0 +1,46 @@
+{
+ "asserts": [
+  "operator_doc_covers_registry"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "test_missing_operator_document_is_a_named_failure && failed"
+ ],
+ "command": [
+  "pytest",
+  "tests/unit/test_stage_ledger.py::TestDocumentationDriftEndToEnd::test_missing_operator_document_is_a_named_failure",
+  "-q"
+ ],
+ "definition_digest": "6cdb2fa5182b883450bb6f5ead481e4b938d256c776dc08977e1ca5c8e741e5e",
+ "detected": true,
+ "diagnostic_line": "exit 1 — =================================== FAILURES ===================================",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "test_missing_operator_document_is_a_named_failure",
+  "failed"
+ ],
+ "expected_check": "an absent operator guide is a named failure, never a skipped check",
+ "finished_at": "2026-09-15T10:41:58+08:00",
+ "input_digest": "8042a19788fe9375139cd62b4c774988ae6eaa00725ce712337d47f64cf685ac",
+ "mutated_paths": [
+  "backend/app/practice_gen/validation/run_all.py"
+ ],
+ "mutation": "missing_operator_document_accepted",
+ "observed_markers": {
+  "failed": true,
+  "test_missing_operator_document_is_a_named_failure": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-09-15T10:41:56+08:00"
+}

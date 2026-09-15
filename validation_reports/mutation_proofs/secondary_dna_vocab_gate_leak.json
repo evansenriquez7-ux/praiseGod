@@ -1,0 +1,46 @@
+{
+ "asserts": [
+  "static_vocab_gated_lint"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "DNA 'comparing_ordering' instance"
+ ],
+ "command": [
+  "backend.app.practice_gen.validation.validate_vocab"
+ ],
+ "definition_digest": "6fe408f9aa7fd19b69d159f7b6ce884134f98c5ebe4a9a3645b3f498d5f280c5",
+ "detected": true,
+ "diagnostic_line": "exit 1 — FAIL static_vocab_gated_lint:",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "static_vocab_gated_lint",
+  "DNA 'comparing_ordering'",
+  "multiplication"
+ ],
+ "expected_check": "static VocabGated lint on secondary DNA mappings",
+ "finished_at": "2026-09-15T05:24:17+08:00",
+ "input_digest": "58cccb5a9e45dd5f7cbc40c98d866717f07972cc1004202ebb5c15974875e123",
+ "mutated_paths": [
+  "backend/app/practice_gen/dna/na/comparing_ordering.py"
+ ],
+ "mutation": "secondary_dna_vocab_gate_leak",
+ "observed_markers": {
+  "DNA 'comparing_ordering'": true,
+  "multiplication": true,
+  "static_vocab_gated_lint": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-09-15T05:24:12+08:00"
+}

@@ -226,6 +226,12 @@ def test_a_mutation_with_baseline_markers_and_no_baseline_run_is_rejected():
     assert any("records no baseline run" in e for e in _errs(rec, m))
 
 
+def test_a_red_baseline_cannot_prove_a_mutation():
+    m = _FakeMutation()
+    rec = _record(m, "D", baseline_exit=1)
+    assert any("baseline exited 1" in e for e in _errs(rec, m))
+
+
 # ─── dirty-tree edits and restoration ────────────────────────────────────────
 
 
