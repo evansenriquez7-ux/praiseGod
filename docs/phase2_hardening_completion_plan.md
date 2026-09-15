@@ -1,8 +1,21 @@
 # Phase 2 hardening completion plan
 
+> ## ▶ New here? Read [START HERE — handoff](#start-here--handoff-written-2026-09-16-on-eeda642d) first.
+>
+> It is the last section of this document and it supersedes every other statement about what
+> to do next. It carries the measured state on `eeda642d`, the four red stages and who owns
+> each, the recommended order of work, the eight traps, and the two mutation clusters that
+> cannot currently be proven. The middle of this document is the *design* — read it for the
+> step you are about to implement, not for status.
+>
+> **First command, before you trust any number in here:**
+> `DATABASE_URL= PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.run_all`
+> — the empty `DATABASE_URL` is required, and why is explained in START HERE.
+
 **Species: explainer / implementation plan.** Revised 2026-09-12 after an independent review of
 this document, incorporating the owner rulings recorded in steps 2, 3A, 3B, 5A, 6, 8A and the M3
-cut. Earlier design decisions stand except where a ruling supersedes them.
+cut; status sections re-measured and the handoff rewritten 2026-09-16 on `eeda642d`. Earlier
+design decisions stand except where a ruling supersedes them.
 
 This document describes work to implement; it does not claim that proposed checks exist or change
 today's contracts. Binding changes
@@ -40,42 +53,50 @@ ground-truth correction follows AGENTS.md Protocol 5 and records the node, sourc
 
 ## Evidence and current implementation state
 
-**Integration checkpoint CLEARED 2026-09-12.** What this section once described as uncommitted
-work is now landed at `94e95347` (harness/content) and `d5c752d1` (this document), on branch
-`harness/executed-mutation-proof` off `c007b8ae`. Phase 1 was executed on that tree before the
-commit and **exited 0** with zero failures; the tree is clean. A fresh session starts from those
-commits, not from a dirty worktree.
+**Measured 2026-09-16 on `eeda642d`, input digest `e6abc4cc8dd1d458`, working tree clean.**
+Every row is an executed result. Where a row was corrected from an earlier snapshot, the old
+figure is shown, because four sessions' worth of stale numbers is what made the previous
+version of this section unusable.
 
-Rows below still carry their snapshot label because the two step-0 inventories were generated
-BEFORE that work and remain stale — regenerating them is the first remaining task (step 0). The
-snapshot column prevents a working-tree result from masquerading as evidence
-for the commit. None of the partial work below is release evidence until it is reviewed, divided
-into coherent contract/enforcement commits, and re-proved on a clean integration revision.
+The verification layer was re-proved from zero in that session. It had been reporting green
+subsets while **0 of 138** proof records matched the tree they described.
 
-| Observation | Measured result | Snapshot |
+| Observation | Measured result | Was |
 |---|---|---|
-| Legacy requirement inventory | 776 required pairs; 787 loaded pairs; 11 historical-only; 68 unresolved-content pairs | Existing `requirement_inventory.json`; stale, generated with only 3 dirty paths |
-| Legacy assertion inventory | 104 assertions; 76 mutations; 39 allowlisted unproven assertions | Existing `assertion_migration.json`; stale, generated before the 79-mutation tree |
-| Current fast unit collection | 473 selected / 475 discovered; 2 slow tests deselected | Current working-tree bytes |
-| Current mutation corpus | **85** records; all 85 `detected: true`; all 85 `phase1_admissible: true`; proof evaluation reports 0 errors. Full table wall time ~19 min | Measured on the closing revision |
-| Current unproven assertion inventory | **38** (was 39). `grading_contract_floor_10` was PAID by a full-tree mutation, affordable only because §10 fell from 14m23s to 33s | Measured on the closing revision |
-| Current census minima | **545** unit tests (552 collected); **85** mutations; 151 nodes; 975 variant candidates | Measured on the closing revision |
-| Current Phase 2 execution | 484 judgment problems; 217 capability problems (67 contradicted, 76 stale, 74 unadjudicable) | Current working-tree bytes |
-| Current Phase 1 execution | **Hermetic since 2026-09-12 (`H-01` closed).** Exits 0 with `DATABASE_URL=` empty: 151/151 nodes, 0 failures, 85/85 mutation proofs verified, 73/111 assertions proven by execution | Measured on the closing revision |
-| Current frontend execution | Build passes with an oversized-chunk warning; lint has 225 warnings; browser script crashes under ESM and has no assertions | Current working-tree bytes |
-| Packet discrepancy | `mat_g1_na_q1_2`, seed 42: attester includes PlaceValueBlocks; judgment omits visual fields | Early review probe |
-| Freshness hole | Same node/seed: corrupt recorded visual fields produce no judgment freshness error | Early review probe; still open |
-| Clause-schema hole | Adding a seventh required facet in memory accepts an empty clause map | Early review probe; still open |
-| Declaration-only mutation-proof hole | A synthetic assertion once counted as proven without execution | Early review probe; closed provisionally by `mutation_proof.py` and 79 executed records |
+| Mutation corpus | **145 records, all current.** 0 stale against the tree, 0 never executed, 11 that do not hold (two named clusters below) | 138 records, **0 matching the tree**, spread over 10 distinct stale digests; 7 never executed at all |
+| Assertions proven BY EXECUTION | **113 of 134** | **0 of 134** — every proof was stale, so nothing was proven |
+| Unproven-assertion allowlist | **11** (shrink-only; did not grow) | 11 |
+| Census minima | unit_tests **704**; mutations **145**; nodes **151**; variant_candidates **975** | unit_tests 679; mutations 145 |
+| Fast unit suite | **703 passed, 1 skipped, 2 deselected** in 645s | 1 FAILED, 677 passed — `test_supervisor_queue` was measuring against the live Neon database in `.env` |
+| `run_all` stage ledger | `scheduled=16 completed=12 failed=4 **crashed=0** not_run=0 incomplete=0`; `stage_ledger_complete` PASS | `completed=10 failed=5 **crashed=1**` |
+| Two-direction tripwire | **PASS**, and `contract_doc_matches_registry` / `operator_doc_covers_registry` (40/40) PASS | FAIL — `Registered but not executed: {'§5'}` |
+| Phase 1 stages still red | `assertion_coverage_8` (10 errors, 1 family) and `obligation_manifest_11` (release shard receipts only). Everything else PASSes, including matrix 151/151 with 0 failures | plus `unit_tests` and `render_contract_9` |
+| Phase 2 execution | **1,158** judgment problems; **218** capability problems (67 CONTRADICTED, 0 UNATTESTED, 69 STALE, 57 UNADJUDICABLE, 25 other) | 484 / 217 |
+| Obligation manifest | 455 node/DNA/formatter pairs, 4,269 base, 461,052 finite, 2,305,260 represented executions; two derivations agree; 273 named rejections | 459 / 4,293 / 463,644 |
+| Release budget | **2.518h over 6 shards of 25.181m.** 1,000 cache keys / 4,000 represented executions in 15.729s, p95 29.613ms, zero failures | **1.312h over 3 shards** — extrapolated from a sample covering 83.4% of the index space |
+| Frontend static render | 27 real payload classes, 54 renders, 15 production visual types, 10 `onAnswer` round trips; artifact digest-bound and consumed by §9/§12 | artifact stale against the source digest |
+| Legacy review corpus | **151 of 151 reviews are v1** and unadjudicable. Preserved as a non-adjudicable queue: 44 FAIL / 93 CONCERN / 14 PASS, 137 with a non-PASS facet, worst facet `variant_comprehensiveness` (83) | 151 rejected in one step with no reconciliation at all |
 
-Three implementation slices **landed at `94e95347`**, having been reviewed and verified rather
-than merely present: `tests/phase2_migration.py` plus its two reports implement a first version of
-step 0; `validate_language.py`/§1J and `validate_options.py`/§1K implement the first two bounded
-lints in step 3; and `mutation_proof.py`, `tests/isolated_corpus.py`,
-`tests/mutation_harness.py`, `validate_coverage.py`, and
-`validation_reports/mutation_proofs/` implement most of step 4. The proof corpus also shows
-that `mcq_reviewed_without_options`, formerly blocked by the red live review corpus, is detected
-against the isolated corpus and is Phase-1 admissible.
+### Three gates that were blind, found by executing rather than reading
+
+The corpus run is what surfaced these; none is visible from reading the validator.
+
+1. **`answer_key_recomputation` was a no-op in its own motivating case.** `validate_matrix`
+   answered a missing answer-formula input by setting `recomputed = served` — it trusted the
+   key precisely when it could not verify it. Narrowed to the two legitimate shapes (the
+   missing variable IS the declared `blank_target`; a boolean `true_false` verdict). Cost
+   measured over all 151 nodes before landing: the skip fired **818 times across 8 nodes**, of
+   which **808** were a legitimately blanked target and the other **10** were one
+   node/DNA/formatter already covered by the boolean exemption — **zero** new findings.
+2. **`discrete_selection_not_reflected` planted into a field the check does not read.** The
+   plant rewrote `result['difficulty_profile']`; `verify_discrete_dimension` reads
+   `given_values` and recomputes real carries. The check was right and stronger than metadata
+   comparison; the mutation was repointed. Its expected marker was also unmatchable.
+3. **`discrete_selection_generation_crashes` collided with a dispositioned limitation.** It
+   raised a bare `RuntimeError`, and §1B infers infeasibility from the exception TYPE. No
+   change to the check could catch that without failing every genuinely infeasible
+   combination, so the plant now raises `ValueError`. **Still uncovered, named rather than
+   closed:** a real generation crash surfacing as `RuntimeError` is read as infeasible.
 
 Graphify's local query identified the mutation/packet/validator connections but warned of
 pre-#1504 node IDs and possible same-name collisions. Revalidate source locations and callers;
@@ -91,9 +112,9 @@ IDs are planning handles for the evidence ledger, not new contract references.
 | ID | Finding | Required closure evidence |
 |---|---|---|
 | `H-01` | **CLOSED 2026-09-12 at `9fbcfdf9`.** Phase 1 was not hermetic: `validate_grade` opened the configured database and wrote a persistent shared learner into it, so §10's verdict depended on an external host resolving. §10 also asserted ACCEPTANCE only — an always-true grader passed it perfectly — and answered a generation crash or an underivable answer with `except: continue`. | `tests/hermetic_db.py` (throwaway SQLite + a socket guard that raises by name); §10 rewritten for four directions with three new zero-tolerance assertions; six new detected mutations including the always-true grader and a full-tree plant that PAYS `grading_contract_floor_10`; full Phase 1 green with `DATABASE_URL=` empty. Measured: the full §10 sweep fell from **14m23s to 33s**. |
-| `H-02` | **Thirty assertions remain explicitly unproven as of 2026-09-14 (93/123 proven by execution).** H-04/H-05 paid seven scale-safety debts plus four new executor assertions; concept gating, answer recomputation, monotonicity, maximum reach, render schema, Lab/portal equivalence, and other named debts remain. | A current detected mutation for every content/release-critical assertion; any inherently non-mutable check has a narrow, owner-approved limitation and independent executable control. |
+| `H-02` | **RE-PROVED 2026-09-16 on `eeda642d`: 113 of 134 assertions proven BY EXECUTION, up from 0 of 134** — every one of the 138 proofs then on disk was stale against the tree it described, across 10 distinct digests, so the harness was certifying nothing about its own bytes. The corpus is now 145 records, 0 stale, 0 never executed (was 7, including the sole mutations for `answer_key_recomputation`, `value_containment` and `value_reaches_max`). **21 labels remain unproven: 11 on the shrink-only allowlist and 10 from the two blocked clusters** (§6F, downstream of M2's attestation queue; and §8's eight self-referential checks, a self-reference deadlock that re-running does NOT fix — see START HERE). Superseded figure, kept so a stale copy is recognisable: "thirty assertions unproven, 93/123 proven" (2026-09-14).** H-04/H-05 paid seven scale-safety debts plus four new executor assertions; concept gating, answer recomputation, monotonicity, maximum reach, render schema, Lab/portal equivalence, and other named debts remain. | A current detected mutation for every content/release-critical assertion; any inherently non-mutable check has a narrow, owner-approved limitation and independent executable control. |
 | `H-03` | **CLOSED 2026-09-12 at `1d0de929`, for the RUNNER's boundaries.** Measured rather than inherited: one planted stage crash made `run_all` return `None` instead of an exit code, skipped §10, §8 and §7 entirely, printed neither the two-direction section nor the summary, and named none of it. | Fifteen declared stages, each behind an exception boundary, in a five-state ledger with per-stage timings. A FAILED stage's refs leave the two-direction comparison; a CRASHED or never-entered stage's refs STAY, so a crash cannot silence the tripwire that exists to notice a registered check not executing. Four mutations, one per acceptance path; `crash_deletes_its_own_expected_refs` PAYS `two_direction_contract_match`. **Residual, explicitly NOT closed:** no per-stage command/input digest, and the validator-INTERNAL catch-and-continue paths (`validate_matrix._try_render`/`_seed_renders`) are untouched — §10's two went under `H-01`, the rest overlap `H-05` and step 2. |
-| `H-04` | **EXECUTOR IMPLEMENTED 2026-09-14; row stays OPEN until release receipts exist.** The first 1,000-entry execution found 152 supposedly reachable obligations refused: the manifest passed `node_id` to a DNA-keyed curriculum gate. Corrected counts are 459 pairs / 4,293 base obligations / 18,906 continuous crossings, agreed twice. | `tests/obligation_executor.py` crosses 27 interest requests ×4 experiences into 463,644 finite obligations and five seed slots into 2,318,220 executions, caching only the common pre-experience result. The current 1,000-cache-key benchmark is zero-failure and projects 2.759 hours on four workers; six modulo shards project 27.588 minutes each. PR sentinels cover every current node/DNA/formatter/interest/experience/seed-slot family. Four new §11 assertions and mutations are current in the 105-proof corpus and cover dimension loss, production refusal, stale benchmark evidence and a shard-tail gap. **STILL OPEN:** the six release shards have not been executed, so the full finite sweep is explicitly NOT certified. |
+| `H-04` | **OPEN; the only remaining blocker is executing the sweep. RE-MEASURED 2026-09-16: 455 pairs / 4,269 base / 461,052 finite / 2,305,260 represented executions, and the budget is 2.518h over 6 shards of 25.181m.** The earlier 1.312h/3-shard figure was extrapolated from a sampler covering only 83.4% of the cache-key index space (top two deciles held 44 and 11 points against a uniform ~100); that bias is why the first shard attempt ran far past its estimate and was killed without a receipt, which was recorded at the time as a worker defect. Sampler fixed and pinned. Original note: **EXECUTOR IMPLEMENTED 2026-09-14.** The first 1,000-entry execution found 152 supposedly reachable obligations refused: the manifest passed `node_id` to a DNA-keyed curriculum gate. Corrected counts are 459 pairs / 4,293 base obligations / 18,906 continuous crossings, agreed twice. | `tests/obligation_executor.py` crosses 27 interest requests ×4 experiences into 463,644 finite obligations and five seed slots into 2,318,220 executions, caching only the common pre-experience result. The current 1,000-cache-key benchmark is zero-failure and projects 2.759 hours on four workers; six modulo shards project 27.588 minutes each. PR sentinels cover every current node/DNA/formatter/interest/experience/seed-slot family. Four new §11 assertions and mutations are current in the 105-proof corpus and cover dimension loss, production refusal, stale benchmark evidence and a shard-tail gap. **STILL OPEN:** the six release shards have not been executed, so the full finite sweep is explicitly NOT certified. |
 | `H-05` | **PARTIAL 2026-09-14; row stays OPEN.** Seven of its eight named assertions now have live-path detected mutations. Vocabulary audits every primary/secondary DNA; DNA structure runs every applicable node/declared grade at five seeds with multi-digit parsing and exact numeric comparison; KG monotonicity follows all 5,726 declared `prior_node_ids` edges; registry/module tables are compared in both directions; interest answer invariance crosses all supported themes on 94 node/DNA pairs. | The validator-internal catch-and-continue limitations remain named. New mutations prove `registry_coverage`, `kg_monotonicity`, `dna_structure`, `dna_difficulty_feasibility`, both vocabulary labels and `interest_invariance`; those seven debts leave §8's allowlist. **TWO OF THOSE CLAIMS WERE STALE — re-measured 2026-09-16 and corrected here.** (a) Learner-visible interest delivery is **green**, not red: `PASS interest_theme_visibility: all 4100 supported node/DNA/theme/seed requests reached the final learner-facing problem`. The emoji formatter now honours `ctx.interest_theme` instead of `rng.choice`, which is what the "555/820 ignored at seed 731" measurement was reporting. (b) `lab_portal_equivalence` is no longer a static wiring check: `validate_compat.validate_lab_portal_equivalence` executes `_generate_lab_v2_student_problem` and `_generate_portal_student_problem` over enumerated obligations and diffs the produced problems, and `lab_route_drops_interest` claims it. Both were fixed and neither was recorded — a row that under-reports its own progress sends the next session to redo finished work. **STILL GENUINELY OPEN:** formatter/render/grade breadth and the sample-cap/not-judged branches; full formatter×interest coverage awaits H-04's release shards; and `lab_route_drops_interest`'s proof, like the whole corpus, awaits re-execution. |
 | `H-06` | **DECISION RECORDED 2026-09-16 — the v2 cutover was not lossless, and cannot be made so.** Enforcement of `schema_version == 2` shipped without the reconciliation this plan requires in three places (step 1's "lossless filing path", step 5's "cut over without losing findings", M1 acceptance's "all legacy unresolved findings reconcile without omissions"), so **all 151 filed reviews were rejected as unadjudicable in one step** and the whole earned corpus stopped being visible as work. A field-level v1→v2 migration was considered and **refused as impossible in principle**: v2 demands per-sample contextual-validity verdicts, exact clause coverage and dispatch-bound provenance that a v1 reviewer was never asked for, so populating them would mean authoring judgments no reviewer gave — the same fabrication that cost 151 reviews their standing in tick A (`6d8385f`), and undetectable afterwards because the forged fields would be internally consistent. Owner ruling: **preserve as leads, re-review for evidence.** `tests/legacy_review_queue.py` copies every v1 verdict and rationale verbatim into `phase2_hardening/legacy_review_queue.json`, marked `adjudicable: false` at the top level *and per node*, carrying per-facet detail so the queue says what to look at: **151 nodes, 44 FAIL / 93 CONCERN / 14 PASS, 137 with a non-PASS facet**, worst facet `variant_comprehensiveness` (83), 0 orphans, 0 records missing a v1 facet. Enforcement is unchanged — every v1 review is still rejected by name, and the rejection now names the queue. The **151 fresh blind re-reviews remain owed**; they are now countable rather than implicit. Nothing in `run_all` consumes the queue, deliberately: a gate that read it would let v1 verdicts back in through the side door. Remaining finding: Phase 2 evidence omits complete visuals/options in places, freshness does not bind every learner-visible field, and requirement evidence can be incomplete if clause extraction itself omitted curriculum text. | Canonical full-view packet and replay digest; full competency-to-requirement decomposition review; exact clause coverage; missing learner-visible evidence is unadjudicable and blocking. |
 | `H-07` | **UNSTARTED, and the ledger said otherwise until 2026-09-16.** The row read `in_progress` under H-08's session lock while its own `measurement_status` read "unmeasured — inherited from the plan"; released to `open`/`unclaimed`. Measured: §1L / step 3A has not begun — no `context_semantics_inventory.json` exists anywhere, and `§1L` appears in neither `docs/pgen_contract.md` nor `_manifest.CHECK_PHASE`. This is the largest unstarted body of work in the plan, and the lock hid it. The six facets do not yet force explicit judgments about contextual/logical validity, ambiguity, feedback/hints, misconception quality, interaction clarity, or accessibility. A mathematically valid item can therefore pair impossible objects, containers, actions, units, or causal relationships. Identity fields alone do not establish independent review quality. | Per-sample contextual-validity evidence inside the existing facets; bounded semantic-role/affordance checks; calibrated blind reviewers; dispatch-bound receipts; targeted dual review/adjudication; and cited student-view evidence. |
@@ -314,7 +335,7 @@ different traversals of the production tables; §11 (`validate_obligations`) fai
 disagree. Its first result, 5,060, was still wrong: executing 1,000 representative entries
 produced 152 production refusals and traced them to `_reachable_values` passing `node_id` to
 `is_variant_available_at`, whose first argument is the DNA concept. Every production caller
-passes the DNA. **Corrected and agreeing: 459 (node, DNA, formatter) pairs, 4,293 base
+passes the DNA. **Superseded 2026-09-16 by 455 pairs / 4,269 base / 461,052 finite — production removed four incompatible `peso_money_build` routes. The figures in this paragraph are the 2026-09-14 derivation, kept for the reasoning; use the state table for current counts.** Corrected and agreeing at the time: 459 (node, DNA, formatter) pairs, 4,293 base
 obligations, 18,906 continuous class crossings.** Crossing 27 interest request paths and four
 experience wrappers yields 463,644 finite obligations. Five seeds per obligation means
 2,318,220 represented executions, reduced to 579,555 generator/formatter calls by caching only
@@ -1184,7 +1205,9 @@ distinct input_digest across all 79 records : 1
 full mutation table wall time               : 716s total, 125s worst case
 ```
 
-### Integration checkpoint executed 2026-09-12 (this is the tree a fresh session starts from)
+### Integration checkpoint executed 2026-09-12 — HISTORICAL, superseded
+
+**Not the tree you start from.** This block and the measurements above it are kept as the record of how the 2026-09-12 state was reached; its figures (79 records, 68 proven, 39 allowlisted) are four sessions stale. Current state is in the state table near the top and the `START HERE — handoff` section at the end, which wins over anything here.
 
 ```text
 $ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.run_all --phase 1
@@ -1228,92 +1251,183 @@ opens `SessionLocal`, so Phase 1's verdict depends on an external host resolving
 non-determinism in a gate (Protocol 6), not merely a crash — state it that way in `H-01`'s
 row rather than as "crashes on DNS".
 
-### H-01 is CLOSED (2026-09-12). What a fresh session should do first
+## START HERE — handoff, written 2026-09-16 on `eeda642d`
 
-**Do not start step 0A's grading half — it landed.** §10 is hermetic and bidirectional,
-Phase 1 exits 0 with `DATABASE_URL=` empty, and the six mutations that prove it are in the
-85-record corpus. `validation_reports/HARDENING_EVIDENCE.md` carries the full section; the
-short version is in the `H-01` row of the blockers table above.
+This section supersedes every earlier "what a fresh session should do" block in this
+document. Those blocks are gone; if you are reading advice about starting `H-03`, or about a
+79/85/105-record corpus, or about a dirty worktree, you are reading a copy older than this
+one.
 
-What that leaves is `H-03` (`recommended_order` 2): the stage registry and result ledger.
-`run_all` is still one 667-line function in which a stage that raises can take the final
-summary and the two-direction evidence with it. Nothing in H-01's work touched that.
-
-Step 0's bookkeeping is **already done** — do not redo it:
-
-- Both step-0 inventories are regenerated against the committed tree and agree with §8
-  (107 assertions, 68 proven by execution, 39 allowlisted, 79 mutations, 776 requirement pairs
-  in states 357 current / 351 stale / 68 unresolved-content).
-- All nine `H-` rows exist in `validation_reports/phase2_hardening/hardening_status.json`,
-  schema-gated by `tests/hardening_status.py` and proved in both directions by
-  `tests/unit/test_hardening_status.py` (22 tests). Validate any time with
-  `PYTHONPATH=. .venv/bin/python tests/hardening_status.py`.
-- `owner` is a work-lock, not an accountability field; `H-01` was claimed and released
-  through it, which is the first time the mechanism was exercised.
-
-So a fresh session starts here:
-
-1. `git log --oneline -1` and `PYTHONPATH=. .venv/bin/python tests/hardening_status.py` —
-   confirm the tree and that 9 rows validate (1 closed, 1 out_of_scope, 7 open).
-2. **`H-01` and `H-03` are CLOSED; `H-04` and `H-05` are partially implemented and remain open.**
-   Execution disproved the inherited 5,060/546,480 figures: the manifest had called a
-   DNA-keyed curriculum predicate with `node_id`. Corrected counts are 4,293 base and 463,644
-   finite obligations. Interest × experience crossing, five seed slots, the 1,000-key
-   benchmark, six-shard release partition, PR sentinels and four new mutation-backed checks
-   now exist. What remains is executing and verifying the six release shards. Continue there,
-   H-05 now executes every mapped DNA, every declared grade at five seeds, all explicit
-   prerequisite edges, and every grade-supported interest theme through the final student path.
-   Its remaining blocker is measured: 555/820 supported interest requests were not learner-visible,
-   and `lab_portal_equivalence` is still unproven. Note `H-05` also inherits the half of `H-03` left open on purpose:
-   the validator-INTERNAL catch-and-continue paths (`validate_matrix._try_render`,
-   `_seed_renders`) that let a lost render be reported as coverage. `H-03` closed the
-   RUNNER's boundaries, not those.
-3. Expect the first edit under an input root to invalidate all **105** mutation proofs. That
-   is the safe direction and costs one full table re-run. Re-prove; do not weaken `mutation_proof`'s
-   staleness rules to avoid it.
-4. **You WILL hit the `source_edited_without_reproof` trap below on that re-run.** It fired
-   again on 2026-09-12 exactly as documented, and the recorded remedy worked on the first
-   attempt. The deeper fix — moving that mutation onto an ISOLATED proof corpus under
-   `tests/`, the way `tests/isolated_corpus.py` already moved the custody mutations — is
-   named here as owed work and was NOT attempted, because excluding a mutation's own prior
-   record from its own baseline does not actually remove the trap: during a full table run
-   the corpus is legitimately mixed, so the baseline is red from records not yet reached,
-   whatever that mutation's own record says.
-
-**HAZARD YOU WILL HIT ON THAT FIRST RE-RUN — `source_edited_without_reproof` self-poisons.**
-Encountered and diagnosed 2026-09-12. This is the mutation that proves §8 notices a proof record
-going stale, and it is the one mutation whose subject is the proof corpus itself, so it has a trap
-no other mutation has:
-
-1. During a FULL table re-run the corpus is legitimately mixed — records already rewritten carry
-   the new digest, records not yet reached carry the old one. §8's baseline is therefore red with
-   `different source/fixture tree`, which is exactly the marker this mutation expects, so the
-   runner correctly refuses to score it (Mandate 2: it cannot tell the plant from the
-   pre-existing failure) and records `detected: false`.
-2. **That failure record is itself a §8 finding.** On the next attempt the baseline is red again —
-   now because of this mutation's own record — so it is refused again, forever. A single `--only`
-   re-run does NOT fix it; the corpus being coherent is not enough.
-
-The remedy is to delete the failed record and re-run the mutation alone:
+### Confirm the tree before trusting any number here
 
 ```sh
-rm validation_reports/mutation_proofs/source_edited_without_reproof.json
-PYTHONPATH=. .venv/bin/python tests/mutation_harness.py --only source_edited_without_reproof
+git log --oneline -1                                   # expect eeda642d or a descendant
+git status --porcelain                                 # expect EMPTY
+PYTHONPATH=. .venv/bin/python tests/hardening_status.py
+#  -> PASS hardening_status: 9 H-row(s) valid — 2 closed, 6 open, 1 out_of_scope
 ```
 
-A MISSING record is reported under `assertion_coverage_8` ("claimed by mutation(s) that have filed
-NO executed proof record"), a different assertion from the `mutation_proof_integrity_8` marker this
-mutation expects — so the baseline is clean and the plant becomes scoreable. Verified: DETECTED,
-79/79. Deleting a record that says `detected: false` removes evidence of a failed run, not evidence
-of correctness; it is not weakening the check.
+**Run Phase 1 with `DATABASE_URL=` empty.** `.env` in this repo carries a live Neon Postgres
+URL, and the harness loads it. This is not cosmetic: it is why `test_supervisor_queue`
+FAILED in 15.89s and passed in 153.15s on the same bytes.
 
-**Owed work, deliberately batched:** this hazard is recorded here but NOT yet in
-`mutation_proof.py`'s KNOWN LIMITATIONS block, because that file is under `INPUT_ROOTS` and adding
-a comment would invalidate all 79 proofs for a 12-minute re-run on its own. Step 0A's first edit
-invalidates them anyway — **add the note then**, in the same commit, so it costs nothing. Better
-still, consider making the runner ignore a mutation's own prior failed record when computing that
-mutation's baseline, which removes the trap rather than documenting it.
+```sh
+DATABASE_URL= PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.run_all
+```
 
-Do NOT re-run the full mutation table to begin with: `INPUT_ROOTS` fingerprints working-tree
-bytes, the commit changed none, and §8 re-verified all 79 records afterwards. Re-run it the
-first time an edit lands under an input root.
+**OPEN OWNER DECISION, not yours to settle silently:** CLAUDE.md's Definition of Done names
+that command *without* `DATABASE_URL=`, so the documented command is not the hermetic one
+H-01 was proved with. Either `run_all` should pin the variable for Phase 1 itself or refuse
+to start with a non-empty one. Ask; do not quietly change the contract.
+
+### What is true right now
+
+Four stages are red and every one of them is named. Nothing is warning-only, nothing is
+silently skipped, and `crashed=0`:
+
+| Red stage | What it is | Whose work |
+|---|---|---|
+| `judgment_reviews_5` | **1,158** Phase 2 findings. Genuine content debt | M2 / step 7 |
+| `capability_phase2` | **218** attestation findings (67 CONTRADICTED, 69 STALE, 57 UNADJUDICABLE, 25 other) | M2 / step 6 |
+| `obligation_manifest_11` | Release shard receipts only. Needs the **2.518h / 6-shard** sweep executed | `H-04` |
+| `assertion_coverage_8` | **10 errors, 1 family** — the two blocked clusters below | `H-02` |
+
+Everything else PASSes: unit tests (703), DNA, compatibility, interest invariance,
+vocabulary, the behavioural matrix at 151/151 with zero failures, `capability_phase1`, §1J,
+§1K, §9/§12, §10, §7, and the two-direction tripwire.
+
+### The two mutation clusters that cannot currently be proven
+
+These are the whole of `assertion_coverage_8`. They need **different** fixes, and conflating
+them is how the previous version of this document ended up telling readers to write
+mutations that already existed.
+
+**Cluster 1 — §6F, three mutations** (`attestation_drops_options`,
+`attestation_leaks_into_phase1`, `contradicted_attestation`). Their baseline is
+`validate_capability` unscoped, which exits 1 on the 218 genuine attestation findings, so
+every proof is rejected for a red baseline. They **cannot** be scoped to `--phase 1`: that
+band never executes a §6F check, so the plant would SURVIVE while the command merely looked
+narrowed, which is worse than the red. **Owner ruling 2026-09-16: name them, do not
+allowlist them.** These three gates were built against an already-red baseline, which is the
+hazard Mandate 5 exists to name. They become provable when the attestation queue clears —
+i.e. this cluster is downstream of M2, not of any harness work.
+
+**Cluster 2 — §8, eight mutations** (`allowlist_keeps_a_paid_debt`,
+`allowlist_names_a_phantom_label`, `contract_check_declares_no_phase`, `coverage_map_gap`,
+`mutation_asserts_an_unknown_label`, `silent_handler_without_a_disposition`,
+`source_edited_without_reproof`, `undeclared_check_reports_itself`). This is a genuine
+**self-reference deadlock**, and it is the most interesting unsolved problem in the harness:
+their baseline IS §8, §8 is red because their labels are unproven, and their labels are
+unproven because the baseline is red.
+
+**Do not just re-run them.** The documented delete-and-rerun remedy was executed on
+2026-09-16 and **3 of 4 attempts stayed INVALID**; only `declarations_out_of_sync` came back
+DETECTED, and only because its command was already `validate_capability --phase 1`.
+Recommended close, not yet attempted: drive these eight through a unit test against a
+**stubbed** coverage state rather than the live validator — exactly the move H-03's contract
+row already names as its own accepted blind spot for the stage-ledger mutations. That trades
+"proved against the real gate" for "proved at all", so record the trade in the contract row
+when you make it.
+
+### Recommended order of work
+
+1. **`H-04`'s release sweep** — the cheapest remaining close. The budget is now honest
+   (2.518h over 6 shards of 25.181m; the old 1.312h/3-shard figure came from a biased
+   sampler and is why the earlier attempt blew past its estimate and was killed). Run the six
+   shards, verify the receipts, close the row.
+   ```sh
+   PYTHONPATH=. .venv/bin/python tests/obligation_executor.py --tier release \
+       --workers 4 --shard-count 6 --shard-index N        # N = 0..5
+   PYTHONPATH=. .venv/bin/python tests/obligation_executor.py --tier verify-release
+   ```
+2. **`H-07` / §1L (plan step 3A) — the largest unstarted body of work in this plan.** It is
+   genuinely at zero: no `context_semantics_inventory.json` exists anywhere, and `§1L`
+   appears in neither `docs/pgen_contract.md` nor `_manifest.CHECK_PHASE`. Until 2026-09-16
+   the ledger hid this, because the row read `in_progress` under H-08's session lock while
+   its own `measurement_status` said "unmeasured". Build it family by family against a clean
+   baseline, per Mandate 5 and step 3A's staging rule. M1 requires only the nonbinding
+   inventory with zero unmapped live sources — do **not** add a binding §1L contract row
+   against a red baseline.
+3. **`H-08`'s five uncovered registrations** — `BalanceScale`, `Categorize`,
+   `RuleDiscovery`, `SortOrder`, `TenFrame` are outside the practice obligation graph. They
+   need a dead-route versus non-practice-reachable disposition before the row can close.
+   `BalanceScale`/`TenFrame` have real intro payloads. Pointer geometry on
+   `NumberLine`/`BarChart` stays a named blind spot; jsdom cannot prove it and it must not be
+   described as covered.
+4. **M2 content work** (steps 6 and 7) — the 218 attestation findings and the 1,158 review
+   findings. This is the bulk of the remaining project and it unblocks §6F cluster 1.
+   **The 151 fresh blind re-reviews are owed and are now countable.** See below.
+5. **`H-06`'s remainder** and the §8 deadlock (cluster 2) as capacity allows.
+
+### The review corpus: what was decided, and what you must not do
+
+All 151 filed reviews are v1 (`schema_version: None`); the validator requires v2, so all 151
+are unadjudicable. A field-level v1→v2 migration was considered on 2026-09-16 and **refused
+as impossible in principle**: v2 demands per-sample contextual-validity verdicts, exact
+clause coverage and dispatch-bound provenance that no v1 reviewer was ever asked for, so
+populating those fields means authoring judgments nobody gave. That is the fabrication that
+cost 151 reviews their standing in tick A (`6d8385f`), and it would be undetectable
+afterwards because the forged fields would be internally consistent.
+
+Owner ruling: **preserve as leads, re-review for evidence.** The prior verdicts live in
+`validation_reports/phase2_hardening/legacy_review_queue.json`, marked `adjudicable: false`
+at the top level *and per node*, with per-facet detail so the queue says what to look at.
+Rebuild it with `PYTHONPATH=. .venv/bin/python tests/legacy_review_queue.py --write`.
+
+Use it to **prioritise** re-review. Never cite it as evidence, never copy a v1 rationale into
+a v2 review, and note that a v1 `PASS` records only that someone once wrote PASS — tick A
+found template rationales in that corpus.
+
+### Traps, all of them measured
+
+1. **Any edit under `mutation_proof.INPUT_ROOTS` invalidates the entire 145-record corpus.**
+   `INPUT_FILES` includes `docs/pgen_contract.md`, so **editing the contract invalidates
+   every proof.** The 2026-09-16 session had to run the corpus end to end twice for exactly
+   this reason. Batch all edits, then run the table once:
+   `DATABASE_URL= PYTHONPATH=. .venv/bin/python tests/mutation_harness.py` (~70 min).
+2. **`source_edited_without_reproof` self-poisons.** During a full run the corpus is
+   legitimately mixed, so §8's baseline is red with the very marker this mutation expects and
+   the runner correctly refuses to score it. Its own failed record then keeps the baseline
+   red forever. The remedy is to delete the record and re-run alone — but see cluster 2: on
+   2026-09-16 that remedy no longer sufficed, so treat this as part of the deadlock rather
+   than a one-line fix.
+3. **A surviving mutation has two causes and you must tell them apart by instrumenting the
+   real path** (Mandate 2). All three genuine survivors of the 2026-09-16 run had *different*
+   causes: one broken check, one plant aimed at a field the check never reads, one plant whose
+   exception type collided with a dispositioned limitation. Reading the validator would have
+   misdiagnosed all three. Render the sample, print the value, prove the planted bug arrives.
+4. **`--only` cannot validate a fixture pinned by other mutations.** A fixture invalidated by
+   same-session content work only shows up in the FULL table run.
+5. **A scratch script importing `run_all` needs an `if __name__ == "__main__"` guard**, or
+   every process-pool worker re-runs Phase 1.
+6. **Do not run anything heavy concurrently with `run_all`.** `tests/frontend_renderer.py`
+   writes to one fixed path, `local_only/scratch/frontend_packet_render/{corpus,result}.json`,
+   with no PID, no uuid and no lock, and six call sites funnel through it. Running the unit
+   suite alongside `run_all` on 2026-09-16 made §5 CRASH with
+   `renderer returned active evidence for [~400 packets], expected [5]` — one invocation
+   consumed evidence another produced. §5 completes cleanly when run alone. **This is unfixed
+   and is a real defect, not merely an operating note:** the loud outcome is a crashed gate,
+   the quiet one is wrong visual descriptions attached to review packets.
+7. **Never assert `unit_tests` on a mutation that drives a single test file.**
+8. **Every `§` token in `docs/pgen_contract.md` is scanned as a contract reference**, prose
+   included.
+
+### Rules this handoff will not let you skip
+
+- **The Definition of Done is an executed `run_all` with its output shown.** It is currently
+  **NOT met** and this document does not claim otherwise. Do not report a green subset as
+  completion, and do not describe Phase 1 as green while `assertion_coverage_8` and
+  `obligation_manifest_11` are red.
+- **Claim an H-row before starting it and release it on commit.** The lock is enforced from
+  five directions now, including that a session identifier embedding an H-row token must
+  embed *its own* — that check exists because the H-08 worker claimed H-07, leaving the
+  untouched row reading as live work and the nearly-finished row reading as unstarted.
+- **Every artifact in `validation_reports/phase2_hardening/` must be claimed by some row's
+  `proof_artifacts`.** The disk→rows direction is enforced; an unclaimed artifact fails the
+  gate.
+- **Never weaken a check to make it pass.** If a gate is red, the bug is in the pipeline. The
+  one exception is documented ground-truth error, reported with node ID and justification.
+- **Leave every limitation named in writing** — docstring, `docs/pgen_contract.md` row, and
+  the evidence log. A gate described as total is how the next agent stops looking.
+- **File an Evidence section** in `validation_reports/HARDENING_EVIDENCE.md` with the exact
+  commands, verbatim output, and seeds for anything found or fixed.
