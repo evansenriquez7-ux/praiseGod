@@ -1,6 +1,6 @@
 # Handoff — continue the Phase 2 hardening plan
 
-**Rewritten 2026-09-16 on `eeda642d`. This file is deliberately a POINTER, not a summary.**
+**Rewritten 2026-09-16, current as of `839754b8`. This file is deliberately a POINTER, not a summary.**
 
 Earlier versions of this file duplicated the plan's status and then drifted from it: on
 2026-09-15 it described a 105-proof corpus, a green Phase 1 snapshot, and a red interest
@@ -37,7 +37,7 @@ building a Phase-1-wide hermeticity gate is owed work with a clean baseline avai
 
 **The Definition of Done is NOT met, and no artifact in this repository claims it is.** Four
 stages are red: 1,158 Phase 2 review findings, 218 attestation findings, H-04's unrun
-2.518h release sweep, and the two mutation clusters. Every red is named and none is
+2.555h release sweep, and the two mutation clusters. Every red is named and none is
 warning-only. Do not report a green subset as completion.
 
 ## Claim your row before you start
