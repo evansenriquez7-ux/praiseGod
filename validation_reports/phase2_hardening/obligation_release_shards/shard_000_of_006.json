@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "kind": "obligation_executor_release_shard",
+  "generated_at": "2026-09-16T05:59:20.308021+00:00",
+  "workers": 4,
+  "seeds_per_obligation": 5,
+  "manifest_digest": "adb12e956377303d490b53228568965183b3a1e0b640d3309a17a8485574e40d",
+  "source_input_digest": "b9c75027d177d6c2041b224668e14f6a07f620b169549a81f934f451536efb42",
+  "sharding": {
+    "algorithm": "cache_index modulo shard_count",
+    "shard_index": 0,
+    "shard_count": 6,
+    "first_cache_index": 0,
+    "stride": 6,
+    "expected_cache_keys": 96053,
+    "total_cache_keys": 576315
+  },
+  "measurement": {
+    "cache_keys_completed": 96053,
+    "represented_executions": 384212,
+    "elapsed_seconds": 1510.0643062960007,
+    "worker_median_ms": 7.055618974845856,
+    "worker_p95_ms": 30.428607016801834,
+    "peak_rss_bytes": 121540608,
+    "response_modes": [
+      "click",
+      "drag",
+      "error_detect",
+      "fill_in_blank",
+      "mcq",
+      "true_false"
+    ],
+    "renderers": [
+      "(text)",
+      "BarChart",
+      "Calendar",
+      "ClockSet",
+      "EmojiPictorial",
+      "FillInTable",
+      "FractionModel",
+      "FractionShade",
+      "GridArea",
+      "NumberBond",
+      "NumberLine",
+      "PatternSequence",
+      "PesoMoney",
+      "PlaceValueBlocks",
+      "RulerMeasure",
+      "ShapeBoard"
+    ],
+    "failures": []
+  }
+}

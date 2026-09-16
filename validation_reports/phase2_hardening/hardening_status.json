@@ -9,7 +9,7 @@
       "id": "H-01",
       "status": "closed",
       "owner": "unclaimed",
-      "finding": "Phase 1 is not hermetic. validate_grade opened the configured database (SessionLocal) and wrote a persistent shared learner into it, so §10's verdict depended on an external host resolving. §10 also asserted ACCEPTANCE only, so an always-true grader satisfied it perfectly, and answered a generation crash or an underivable answer with `except: continue`.",
+      "finding": "Phase 1 is not hermetic. validate_grade opened the configured database (SessionLocal) and wrote a persistent shared learner into it, so \u00a710's verdict depended on an external host resolving. \u00a710 also asserted ACCEPTANCE only, so an always-true grader satisfied it perfectly, and answered a generation crash or an underivable answer with `except: continue`.",
       "affected_assertions": [
         "grading_contract_10",
         "grading_contract_floor_10",
@@ -18,7 +18,7 @@
         "grading_obligation_10",
         "grading_hermetic_10"
       ],
-      "baseline_evidence": "2026-09-12: the SAME tree crashed on Neon DNS earlier in the day and passed §10 hours later on identical code, because the network came back. This is non-determinism in a gate (Protocol 6), not merely a crash — a stronger finding than 'aborts on DNS'.",
+      "baseline_evidence": "2026-09-12: the SAME tree crashed on Neon DNS earlier in the day and passed \u00a710 hours later on identical code, because the network came back. This is non-determinism in a gate (Protocol 6), not merely a crash \u2014 a stronger finding than 'aborts on DNS'.",
       "acceptance_checks": [
         "Full Phase 1 completes with network disabled and an empty external database configuration",
         "Isolated in-memory or rolled-back grader fixture; no persistent shared learner",
@@ -60,7 +60,7 @@
       ],
       "closing_revision": null,
       "updated_at": "2026-09-16T18:00:00+08:00",
-      "notes": "Re-measured 2026-09-15: §8 verifies 121/121 current proof records against input digest 58cccb5a9e45dd5f and reports 105/134 assertions proven by execution, with 29 on the shrink-only allowlist. The full corpus repaired and re-proved reviewer plurality, §2I exact variant producibility, §11 automatic-interest coverage, and benchmark freshness. Status remains open: the remaining 29 allowlisted assertions are the unclosed part. 2026-09-16: the 17 red-baseline proofs were diagnosed into three causes. 8 run §8 itself and are circular -- they self-resolve once the corpus is re-proved. 4 run §11 and clear once the stale benchmark artifact is regenerated. Of the 5 running validate_capability, 2 (wildcard_provider §6D, phase_ref_misassigned) were SCOPED to `--phase 1`, whose band exits 0, and both are now DETECTED with baseline_exit 0. The remaining 3 (attestation_drops_options, attestation_leaks_into_phase1, contradicted_attestation) plant into Phase 2 §6F checks and CANNOT be scoped -- that band never runs them, so the plant would survive while looking scoped. Their baseline is red on the 218 genuine attestation findings, so they stay unproven and the red is deliberate: those three gates were built against an already-red baseline (Mandate 5). Recorded in the mutation definitions, the §6F contract row and here; NOT allowlisted. 2026-09-16 FINAL: the 21 unproven labels are 11 on the shrink-only allowlist plus 10 from the two blocked clusters. Cluster 1 (3 mutations) is §6F, blocked on the 218 attestation findings and owner-ruled to be named rather than allowlisted. Cluster 2 (8 mutations) is a §8 SELF-REFERENCE DEADLOCK: their baseline is §8, §8 is red because their labels are unproven, and their labels are unproven because the baseline is red. The documented delete-and-rerun procedure was applied; 3 of 4 stayed INVALID, so re-running does not close it. `declarations_out_of_sync` escaped only because its command was already `validate_capability --phase 1`. Recommended close: drive those 8 through a unit test against a stubbed coverage state, which is the move H-03's contract row already names as its own blind spot.",
+      "notes": "Re-measured 2026-09-15: \u00a78 verifies 121/121 current proof records against input digest 58cccb5a9e45dd5f and reports 105/134 assertions proven by execution, with 29 on the shrink-only allowlist. The full corpus repaired and re-proved reviewer plurality, \u00a72I exact variant producibility, \u00a711 automatic-interest coverage, and benchmark freshness. Status remains open: the remaining 29 allowlisted assertions are the unclosed part. 2026-09-16: the 17 red-baseline proofs were diagnosed into three causes. 8 run \u00a78 itself and are circular -- they self-resolve once the corpus is re-proved. 4 run \u00a711 and clear once the stale benchmark artifact is regenerated. Of the 5 running validate_capability, 2 (wildcard_provider \u00a76D, phase_ref_misassigned) were SCOPED to `--phase 1`, whose band exits 0, and both are now DETECTED with baseline_exit 0. The remaining 3 (attestation_drops_options, attestation_leaks_into_phase1, contradicted_attestation) plant into Phase 2 \u00a76F checks and CANNOT be scoped -- that band never runs them, so the plant would survive while looking scoped. Their baseline is red on the 218 genuine attestation findings, so they stay unproven and the red is deliberate: those three gates were built against an already-red baseline (Mandate 5). Recorded in the mutation definitions, the \u00a76F contract row and here; NOT allowlisted. 2026-09-16 FINAL: the 21 unproven labels are 11 on the shrink-only allowlist plus 10 from the two blocked clusters. Cluster 1 (3 mutations) is \u00a76F, blocked on the 218 attestation findings and owner-ruled to be named rather than allowlisted. Cluster 2 (8 mutations) is a \u00a78 SELF-REFERENCE DEADLOCK: their baseline is \u00a78, \u00a78 is red because their labels are unproven, and their labels are unproven because the baseline is red. The documented delete-and-rerun procedure was applied; 3 of 4 stayed INVALID, so re-running does not close it. `declarations_out_of_sync` escaped only because its command was already `validate_capability --phase 1`. Recommended close: drive those 8 through a unit test against a stubbed coverage state, which is the move H-03's contract row already names as its own blind spot.",
       "measurement_status": "EXECUTED 2026-09-16 on frozen bytes: full 145-mutation corpus, 0 stale, 0 never-executed, 113/134 assertion labels proven BY EXECUTION (was 0/134 when the session opened, because all 138 proofs were stale against the tree). 11 proofs do not hold, in two named clusters.",
       "recommended_order": 6
     },
@@ -95,19 +95,19 @@
       "updated_at": "2026-09-12T20:45:35+08:00",
       "measurement_status": "MEASURED 2026-09-12 (was inherited/unmeasured) and closed on 1d0de929. The planted crash skipped three further gates, the two-direction tripwire and the summary, and named none of it.",
       "recommended_order": 2,
-      "residual": "The RUNNER's boundaries only. Two named gaps stay open and are NOT covered by this closure: (1) the stage record carries no per-stage command/input digest, which plan step 0A also asks for; (2) validator-INTERNAL catch-and-continue paths (validate_matrix._try_render / _seed_renders) are untouched -- §10's two were removed under H-01, the rest overlap H-05 and plan step 2."
+      "residual": "The RUNNER's boundaries only. Two named gaps stay open and are NOT covered by this closure: (1) the stage record carries no per-stage command/input digest, which plan step 0A also asks for; (2) validator-INTERNAL catch-and-continue paths (validate_matrix._try_render / _seed_renders) are untouched -- \u00a710's two were removed under H-01, the rest overlap H-05 and plan step 2."
     },
     {
       "id": "H-04",
-      "status": "open",
-      "owner": "unclaimed",
+      "status": "in_progress",
+      "owner": "claude-20260916-h04-release-sweep",
       "finding": "Continuous axes are swept separately from discrete ones, and serving context, experience, interest, renderer and response mode are not one finite obligation model.",
       "affected_assertions": [
         "execution_matrix_1C",
         "coverage_map_1C",
         "applicability_1H"
       ],
-      "baseline_evidence": "2026-09-12: §1C filtering yields 4,325 allowed (node, DNA, formatter, discrete-assignment) obligations across 463 node/DNA/formatter pairs; 5-10 seeds each is 21,625-43,250 generated problems. Today's matrix sweep is 60 seeds x 151 nodes = 9,060 samples.",
+      "baseline_evidence": "2026-09-12: \u00a71C filtering yields 4,325 allowed (node, DNA, formatter, discrete-assignment) obligations across 463 node/DNA/formatter pairs; 5-10 seeds each is 21,625-43,250 generated problems. Today's matrix sweep is 60 seeds x 151 nodes = 9,060 samples.",
       "acceptance_checks": [
         "Machine-generated obligation manifest derived from the production student route",
         "obligation_budget.json records counts per dimension and names the production rule making each rejected combination unreachable",
@@ -128,8 +128,8 @@
         "validation_reports/HARDENING_EVIDENCE.md"
       ],
       "closing_revision": null,
-      "updated_at": "2026-09-16T10:00:00+08:00",
-      "measurement_status": "RE-MEASURED 2026-09-15 on the current working tree. Production removed four incompatible peso_money_build routes, yielding 455 pairs / 4,269 base / 461,052 finite obligations and 18,762 continuous crossings. Both derivations agree; the regenerated budget records 273 named rejections. The current full harness executed §11 cleanly; 1,000 cache keys / 4,000 represented executions were current and zero-failure, but no release shard receipt exists, so the finite sweep remains uncertified.",
+      "updated_at": "2026-09-16T13:33:53+08:00",
+      "measurement_status": "RE-MEASURED 2026-09-15 on the current working tree. Production removed four incompatible peso_money_build routes, yielding 455 pairs / 4,269 base / 461,052 finite obligations and 18,762 continuous crossings. Both derivations agree; the regenerated budget records 273 named rejections. The current full harness executed \u00a711 cleanly; 1,000 cache keys / 4,000 represented executions were current and zero-failure, but no release shard receipt exists, so the finite sweep remains uncertified.",
       "recommended_order": 3,
       "progress": "EXECUTOR IMPLEMENTED on the working tree: tests/obligation_executor.py crosses 27 interest requests x4 experiences into 461,052 finite obligations and five deterministic seed slots into 2,305,260 executions. The cache reuses only the common generator/formatter result before applying all four production experience wrappers. The former 1,000-cache-key benchmark and all mutation receipts are invalidated by the current production-routing edits; they must be regenerated before any claim of certification. PR sentinels cover every current node/DNA/formatter/interest/experience/seed-slot family.",
       "still_open": [
@@ -194,7 +194,7 @@
         "stale_review_undetected",
         "capability_contract"
       ],
-      "baseline_evidence": "2026-09-12 on 015b7f35: judgment_packets._render_sample emits only seed, formatter, question_text, correct_answer, options, hint, cloze_text — NO visual fields. Phase 2 reports 484 judgment problems and 217 capability problems (67 contradicted, 76 stale, 74 unadjudicable). Of 776 required pairs: 357 current, 351 stale, 68 unresolved content.",
+      "baseline_evidence": "2026-09-12 on 015b7f35: judgment_packets._render_sample emits only seed, formatter, question_text, correct_answer, options, hint, cloze_text \u2014 NO visual fields. Phase 2 reports 484 judgment problems and 217 capability problems (67 contradicted, 76 stale, 74 unadjudicable). Of 776 required pairs: 357 current, 351 stale, 68 unresolved content.",
       "acceptance_checks": [
         "Canonical full-view packet and replay digest",
         "Render-derived textual visual description, never payload-derived, with its own mutation",
@@ -235,22 +235,22 @@
       "acceptance_checks": [
         "Re-measure the finding on the current tree and record command + verbatim output",
         "Per-sample contextual-validity evidence inside the existing facets",
-        "§1L bounded semantic-role/affordance checks, staged family by family at a clean baseline",
+        "\u00a71L bounded semantic-role/affordance checks, staged family by family at a clean baseline",
         "Calibrated blind reviewers who identify a planted contextually-impossible defect before their verdicts are admissible",
         "Every confirmed contextual defect yields a pinned regression fixture AND a mutation"
       ],
       "proof_artifacts": [],
       "closing_revision": null,
       "updated_at": "2026-09-16T10:00:00+08:00",
-      "measurement_status": "unmeasured — inherited from the plan",
+      "measurement_status": "unmeasured \u2014 inherited from the plan",
       "recommended_order": 7,
-      "notes": "2026-09-16: this row was 'in_progress' held by 'codex-20260914-h08-static-render' -- H-08's session identifier -- while its own measurement_status read 'unmeasured'. The H-08 worker claimed the wrong row and never released it, so the untouched row read as live work and the nearly-finished one read as unstarted. Released. §1L / plan step 3A is genuinely unstarted: no context_semantics_inventory.json exists and §1L appears in neither docs/pgen_contract.md nor _manifest.CHECK_PHASE."
+      "notes": "2026-09-16: this row was 'in_progress' held by 'codex-20260914-h08-static-render' -- H-08's session identifier -- while its own measurement_status read 'unmeasured'. The H-08 worker claimed the wrong row and never released it, so the untouched row read as live work and the nearly-finished one read as unstarted. Released. \u00a71L / plan step 3A is genuinely unstarted: no context_semantics_inventory.json exists and \u00a71L appears in neither docs/pgen_contract.md nor _manifest.CHECK_PHASE."
     },
     {
       "id": "H-08",
       "status": "open",
       "owner": "unclaimed",
-      "finding": "Nothing executes the React components. §9 checks that a payload carries the keys a component reads but never renders it, so a component that throws, ignores a conditional key or draws an empty box passes every gate.",
+      "finding": "Nothing executes the React components. \u00a79 checks that a payload carries the keys a component reads but never renders it, so a component that throws, ignores a conditional key or draws an empty box passes every gate.",
       "affected_assertions": [
         "render_contract_9",
         "render_contract_floor_9"
@@ -311,7 +311,7 @@
     "head": "working tree based at f8597c0f",
     "BLOCKING_FIRST_ACTION": "Superseded prior green snapshot: current dirty-tree full harness is running, not certified. See HANDOFF_PROMPT.md resume checkpoint and local_only/scratch/hardening_resume.txt. Full proof corpus has not been refreshed; only the two new dispatch-attribution mutations have current resumed proofs.",
     "invariants_to_preserve": [
-      "Run Phase 1 with `DATABASE_URL=` empty -- it proves §10 stays hermetic (H-01).",
+      "Run Phase 1 with `DATABASE_URL=` empty -- it proves \u00a710 stays hermetic (H-01).",
       "Any edit under mutation_proof.INPUT_ROOTS (backend/app, tests, scripts, data, frontend/src, docs/pgen_contract.md, docs/testing_pipeline.md) invalidates all 105 proofs. Batch edits, then re-run the table once.",
       "A scratch script that imports run_all needs `if __name__ == \"__main__\"` or every ProcessPoolExecutor worker re-runs the whole harness.",
       "Never assert `unit_tests` on a mutation that drives one test file; declare a label for it, as packet_variant_coverage_uncapped does."

@@ -11329,3 +11329,145 @@ A Phase-1-wide hermeticity gate: install the guard around every stage, add a
 a **non-§10** stage. Recorded in the §10 contract row, `AGENTS.md`, the plan's `START HERE`
 handoff (step 5 of the recommended order) and `HANDOFF_PROMPT.md`. **Pinning a URL is
 configuration, not enforcement**, and must not be read as having closed it.
+
+## H-04 — the finite release sweep, executed (2026-09-16)
+
+Row `H-04` held as `claude-20260916-h04-release-sweep`. Executed on `2152ffca`'s bytes,
+`input_digest() = b9c75027d177d6c2041b224668e14f6a07f620b169549a81f934f451536efb42`, which is
+the digest the six receipts record.
+
+### The row's own `still_open` was stale, and checking that first is why this ran at all
+
+The row said the sweep must not be re-run until "representative sampling and release-worker
+progress/fail-fast behavior" were diagnosed. Both had already been fixed on 2026-09-16 and
+the row was never updated:
+
+* `representative_indices` now strides over the number of points actually emitted and
+  bisects the widest remaining gap, instead of striding over `sample_size - 1` and breaking
+  early — the bias that covered only 83.4% of the index space.
+* `execute_indices` replaced `ProcessPoolExecutor.map` with a bounded `workers * 2`
+  in-flight window, which is what had blocked the earlier attempt.
+
+Smoke-tested before committing machine time, rather than assumed:
+
+```text
+$ PYTHONPATH=. .venv/bin/python tests/obligation_executor.py --tier pr --workers 4
+  cache_keys=168 represented_executions=672 elapsed=1.258s median=6.927ms p95=24.981ms
+  peak_rss=91938816B failures=0
+  PARTIAL PR TIER: fixed sentinels plus every explicitly changed obligation
+```
+
+### The sweep
+
+Six shards, sequential, four workers each, nothing else running on the machine — each shard
+had only ~14% margin against its 1,800s target, so concurrent load would have failed the
+receipts rather than merely slowed them.
+
+```sh
+for N in 0 1 2 3 4 5; do
+  PYTHONPATH=. .venv/bin/python tests/obligation_executor.py --tier release \
+      --workers 4 --shard-count 6 --shard-index $N
+done
+```
+
+```text
+shard 0  cache_keys=96053 represented_executions=384212 elapsed=1510.064s p95=30.429ms failures=0
+shard 1  cache_keys=96053 represented_executions=384212 elapsed=1539.941s p95=30.405ms failures=0
+shard 2  cache_keys=96053 represented_executions=384212 elapsed=1587.987s p95=30.529ms failures=0
+shard 3  cache_keys=96052 represented_executions=384208 elapsed=1551.594s p95=30.396ms failures=0
+shard 4  cache_keys=96052 represented_executions=384208 elapsed=1545.944s p95=30.307ms failures=0
+shard 5  cache_keys=96052 represented_executions=384208 elapsed=1576.461s p95=30.916ms failures=0
+```
+
+Aggregate **9,311.991s = 2.5867h**, 576,315 cache keys, 2,305,260 represented executions,
+**0 failures**. Every shard exited 0 and wrote its receipt.
+
+```text
+$ PYTHONPATH=. .venv/bin/python tests/obligation_executor.py --tier verify-release
+  release_status=complete receipts=6 complete=True
+  EXIT=0
+```
+
+**A correction to a claim I made mid-flight.** Watching shard 0's first 15,000 keys land at
+~345 keys/s, I reported that the 2.555h projection looked ~5x pessimistic because the
+1,000-key benchmark amortises pool warm-up over too few keys. That was wrong, and it was
+wrong in the way the Mandate warns about: I extrapolated from a partial observation instead
+of waiting for the measurement. The rate falls off sharply after the early indices. Measured
+aggregate 9,311.991s against a projected 9,198.822s is **+1.23%** — the repaired sampler's
+projection is accurate, and the per-shard projection of 1,533.137s bracketed the real range
+of 1,510.064–1,587.987s.
+
+### §11, and the harness
+
+```text
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_obligations
+  PASS obligation_derivations_agree: two independent traversals agree on 455 (node, DNA,
+       formatter) pair(s) and 4269 discrete obligation(s); 18762 continuous class crossing(s)
+  PASS obligation_routes_reachable: 5 registered route(s) unreachable (floor 5, shrink-only)
+  PASS obligation_dimension_coverage_11: 4269 base x 27 interest requests x 4 experiences =
+       461052 finite obligations; 2305260 executions at 5 seeds
+  PASS obligation_execution_11: 168 PR cache-key sentinels / 672 experience executions in 1.271s
+  PASS obligation_benchmark_11: 1,000 representative cache keys are current, failure-free,
+       and project within the four-hour / 30-minute-shard budgets
+  PASS obligation_release_shards_11: 6 current shards cover 576315 cache keys / 2305260
+       executions with no overlap
+  EXIT=0
+```
+
+```text
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.run_all
+  PASS       unit_tests                     phase 1   653.3s   (711 passed, 1 skipped, 2 deselected)
+  PASS       dna                            phase 1     4.4s
+  PASS       compatibility                  phase 1    67.2s
+  PASS       interest_invariance            phase 1    33.6s
+  PASS       vocabulary                     phase 1     2.2s
+  PASS       behavioural_matrix             phase 1   366.9s
+  PASS       capability_phase1              phase 1     0.5s
+  PASS       count_noun_1J                  phase 1    61.9s
+  PASS       option_degeneracy_1K           phase 1    62.1s
+  PASS       render_contract_9              phase 1     3.4s
+  PASS       grading_contract_10            phase 1    30.1s
+  FAIL       assertion_coverage_8           phase 1     1.2s
+  PASS       obligation_manifest_11         phase 1     1.6s
+  PASS       census_7                       phase 1     7.3s
+  FAIL       judgment_reviews_5             phase 2   129.4s
+  FAIL       capability_phase2              phase 2    22.2s
+  scheduled=16 completed=13 failed=3 crashed=0 not_run=0 incomplete=0
+  RUN_ALL EXIT=1
+```
+
+**The Definition of Done is still NOT met.** `obligation_manifest_11` moved from red to
+green and the ledger from `completed=12 failed=4` to `completed=13 failed=3`; the remaining
+three reds — `assertion_coverage_8`, `judgment_reviews_5`, `capability_phase2` — are
+untouched by this work and none of them is warning-only.
+
+### Two limitations this sweep exposed, both named rather than fixed
+
+**1. The green is bound to exact bytes, so the sweep must be a session's last source-affecting
+act.** Each receipt records `source_input_digest()` and `release_receipt_findings` rejects a
+stale one by name, so any edit under `INPUT_ROOTS` re-reds §11 at a cost of 2.59h. Measured:
+creating a single file under `tests/` moved the digest from `b9c75027…` to `b96e7962…`, and
+removing it restored `b9c75027…`. This is correct for a release gate, but it inverts the
+plan's recommended order for any session that also edits source — which is why the owed
+Phase-1-wide hermeticity gate was **not** started this session: landing it would have
+destroyed the receipts it sat next to. Filed as trap 9.
+
+**2. The ledger's disk→rows artifact check cannot see these receipts.**
+`tests/hardening_status.py::_unclaimed_artifacts` iterates `ARTIFACT_DIR.iterdir()` and
+`continue`s on any non-file, while the executor writes to
+`validation_reports/phase2_hardening/obligation_release_shards/` — a subdirectory. The six
+most expensive artifacts in the plan directory are therefore exempt from the exact
+two-direction check added on 2026-09-16 to stop evidence going unclaimed. That is the H-08
+shape one level down: a directory of real evidence that no row is forced to claim. H-04 now
+names all six receipts individually in `proof_artifacts`, so the rows→disk direction binds
+them by `.exists()`, but **that is a manual patch, not a fix.** The fix is to recurse, and
+it cannot be done here: `hardening_status.py` is itself an input root, so the edit re-reds
+§11 per limitation 1. Filed as trap 10, and owed to the next session that touches
+`INPUT_ROOTS`.
+
+### What H-04 does and does not close
+
+All four acceptance checks are met. Closed with four residuals, all pre-existing or newly
+named above: continuous axes move together at each representative so cross-axis Cartesian
+interactions stay unproven; the PR tier still needs the caller to supply an exact manifest
+key; the digest binding in limitation 1; and the ledger blind spot in limitation 2.
