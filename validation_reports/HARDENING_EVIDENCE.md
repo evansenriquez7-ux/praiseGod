@@ -11649,3 +11649,370 @@ $ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.run_all
 count is **unchanged at 10 in 1 family** — this batch added no new coverage debt. **The
 Definition of Done is NOT met**; the three reds are the two blocked mutation clusters and the
 M2 content queue, none of which this work touched.
+
+## H-07 / §1L step 3A milestone M1 — the context semantics inventory (2026-09-16)
+
+Picked up from the plan's `START HERE` recommended order, step 2: **"`H-07` / §1L (plan step
+3A) — the largest unstarted body of work in this plan."** The row was `open`/`unclaimed` and
+was claimed as `claude-20260916-h07-context-semantics` before any work began.
+
+**Scope discipline first.** M1 asks only for the nonbinding `context_semantics_inventory.json`
+with zero unmapped live sources. It does **not** ask for a §1L validator, and step 3A forbids a
+§1L contract row against a red baseline. Confirmed still true after this work:
+
+```text
+$ grep -c "§1L" docs/pgen_contract.md
+0
+$ grep -rn "1L" backend/app/practice_gen/validation/_manifest.py
+(no output)
+```
+
+### The inherited finding, re-measured rather than believed
+
+H-07's `baseline_evidence` said "MEASURE THIS FIRST … an inherited finding is a claim, not
+evidence." The plan's own figures for the interest bank reproduce exactly:
+
+```text
+$ PYTHONPATH=. .venv/bin/python -c "...interest_bank.json..."
+themes 26 slots ['actors', 'objects', 'places', 'item1', 'item2']
+total role entries 663 distinct strings 552
+Counter({'actors': 160, 'objects': 160, 'places': 135, 'item1': 104, 'item2': 104})
+```
+
+### What the inventory covers
+
+```text
+$ PYTHONPATH=. .venv/bin/python tests/context_semantics_inventory.py --write --seeds 4
+wrote validation_reports/phase2_hardening/context_semantics_inventory.json
+sources=843 live=299 unmapped_live=0 unresolved=144 unreviewed_frames=0 role_mismatches=7
+```
+
+843 sources in four families — `interest_bank` 663, `spine_slot_use` 156, `dna_lexical_slot`
+19, `neutral_slots` 5 — over **35,256 renders of the real pipeline, 0 errors**. M1's
+acceptance (`unmapped_live_sources == 0`) is met.
+
+There is deliberately no fifth family for DNA-authored question templates. They cannot carry
+interest context: `generate_context` builds interest slots in step (e), *after* the DNA has
+produced values in step (c), and slots are never passed into a DNA. A DNA stem reaches a
+learner bare or with the fixed `interest_cue` sentence prepended, and that cue is inventoried
+as a family-C template.
+
+### Four violations, reproduced by execution rather than by reading
+
+**CSI-V1 is the one that matters**, because it is a vocabulary-gate bypass, not only a
+contextual defect. `dna/base.py:208` carries a hard-coded substitution:
+
+```python
+if slots_clean.get("objects") in ("baskets", "basket") and "basket" in self.template:
+    slots_clean["objects"] = "figs"
+```
+
+Reproduced at `mat_g1_na_q2_5`, grade 1, **seed 7**, theme `bible`:
+
+```text
+spine_id      : add_putting_together
+interest_cue  : ✝️ Ruth has a math challenge about baskets.
+visible_terms : ['Ruth', 'baskets', 'temple', 'Bible storybook', 'sticker set', '✝️']
+question_text : ✝️ Ruth has a math challenge about baskets. One basket has 28 figs.
+                Another basket has 60 figs. If you put all the figs together, how many
+                figs are there?
+cumulative_vocab contains figs?  False
+```
+
+Three distinct defects in one item: the cue promises *baskets* and the stem delivers *figs*;
+`interest_visible_terms` still records "baskets", so the interest-visibility check is
+satisfied by a word the stem no longer contains; and **"figs" is substituted inside
+`Spine.render`, after `get_interest_slots` has applied the node's `NOT_YET_KNOWN` filter**, so
+it reaches a learner without ever passing the vocabulary gate. Incidence, measured:
+
+Reproduce by rendering every `bible` render across all 151 nodes at
+`{"context": "word_problem"}` × each declared `structure` × seeds 0–29, and counting stems
+containing "figs" whose `interest_cue` says "baskets" (the scratch script lived at
+`local_only/scratch/probe_figs.py`, which is gitignored — the loop is four lines over
+`generate_context`):
+
+```text
+bible renders=6030  stems containing 'figs'=3  cue/stem contradictions=3
+  [mat_g1_na_q2_5 seed=7]  ✝️ Ruth has a math challenge about baskets. One basket has 28 figs…
+  [mat_g2_na_q1_9 seed=16] ✝️ Paul has a math challenge about baskets. One basket has 450 figs…
+  [mat_g3_na_q2_1 seed=11] ✝️ Peter has a math challenge about baskets. There are 3400 figs…
+```
+
+3 of 6030 is a low rate but a **100% conditional failure rate**: every firing, on all three
+grades, produced the contradiction. The rule is also scoped to the single string "baskets", so
+the 13 other container-like objects the inventory flags still render inside containers —
+`pets/hamster cages`, `bible/jars`, `food_baking/bags of flour`, and three that belong to
+grade 5–10 themes and are therefore debt inherited by a grade that does not exist yet.
+
+The other three, each rendered through the production pipeline with its seed:
+
+| id | node / seed / theme | rendered |
+|---|---|---|
+| CSI-V2 | `mat_g1_na_q3_3` s13 bible | `A mountain has 10 sheep. Daniel removes 2 sheep. How many sheep are left in the mountain?` |
+| CSI-V3 | `mat_g3_na_q2_4` s18 volleyball | `A beach has 4282 score sheets. Ate Alyssa removes 4170 score sheets…` |
+| CSI-V4 | `mat_g1_na_q3_3` s23 basketball | `A arena has 10 basketballs. Marco removes 1 basketball…` |
+
+CSI-V4 is **article/noun disagreement, and no current gate catches it**: §1J's contract row
+checks count/noun agreement and names its blind spots, which do not include articles.
+
+### The seven role mismatches
+
+`sub_removes` is the only template that makes `{place}` *hold* objects
+(`A {place} has {a} {objects}` … `left in the {place}?`). The bank declares every `places`
+entry a `location`. That is 2 occurrences, 127 statically eligible nodes, 55 affected live
+entries. The other five are measurement templates (`meas_object`, `meas_difference`,
+`meas_compare_lengths`) requiring `measurable_attribute` from slots that supply
+`countable_object` — which is how "measured two sheep … total length" becomes renderable.
+
+### Two bugs in my own rule table, kept in the source as comments
+
+Both **reported a confident wrong number rather than failing**, which is the failure mode the
+Scaling Mandate is about:
+
+1. A trailing `\b` after `\}` never matches (the next character is punctuation), which left
+   127 occurrences "unreviewed" — including the `sub_removes` containment frame this module
+   exists to name.
+2. Matching a rule against a *window* around the occurrence let one slot's rule claim another
+   slot in the same sentence: `{actor}` in `sub_removes` matched the `A {place} has` container
+   rule, manufacturing 57 "mismatches" of which 50 were the window bleeding. Rules now embed
+   their own slot and a match counts only when it **spans** the occurrence being classified.
+
+After both fixes: `unreviewed_frames=0`, `role_mismatches=7`.
+
+### Limitations, named here and in the docstring and the JSON
+
+- **`observed_live_renders == 0` does NOT mean dead.** The observation drives only the
+  `context` and `structure` axes declared in `VARIANTS_BY_DNA` — not `task_type`, `table`,
+  `number_type`, `strategy` or any formatter axis — over a fixed seed range. Measured
+  consequence: `meas_object` is statically eligible on **130 of 151 nodes** and was observed
+  **0** times. 144 sources are therefore recorded `liveness: "UNRESOLVED"`, which is a lead,
+  not a finding of dormancy. Treating UNRESOLVED as dead is how a real defect gets filed as
+  unreachable.
+- **Role proposals are proposals.** A family-A entry's role is inferred from the slot it sits
+  in, the bank's only declaration. Whether "mountain" is a container or "sheep" is measurable
+  is emitted as an owner ruling (CSI-R1…R4), never resolved here.
+- **`CONTAINER_HEAD_NOUNS` is a seed list, not a lexicon.** An entry whose head noun is absent
+  is not flagged, and absence of a flag is not evidence of plausibility.
+- **16 of 26 themes are not reachable at grades 1–3** (bands start at 5 or 6). They are
+  inventoried anyway, because scoping the inventory to today's grades is exactly what Mandate 4
+  forbids; three already carry container-like objects.
+
+### Four owner rulings are open and block the §1L rules
+
+`CSI-R1` which `places` entries are containers; `CSI-R2` whether `item1`/`item2` must be
+singular or the templates must stop hard-coding the article; `CSI-R3` whether theme object
+lists must be theme-coherent (`volleyball.objects` contains "shuttlecocks" and "rackets");
+`CSI-R4` whether the `baskets`→`figs` substitution should be replaced by a declared role rule.
+**No fix was applied to any of them.** The correct fix for V1–V3 *is* the §1L capability that
+step 3A defers, and hand-patching a symptom would deepen the stopgap.
+
+### A pre-existing fallback found while working, flagged not fixed
+
+`base_generator.py:165-171` degrades an unknown `node_id` to empty `cumulative_vocab` /
+`cumulative_concepts` sets with the comment "Degrade gracefully … rather than raising". Under
+Protocol 3 that is a silent default in pipeline code: an unknown node renders with *no*
+vocabulary gating at all rather than failing loudly. Not touched — it is outside M1 and
+outside this row.
+
+### Re-proof after the source edit, and a third digest-bound artifact nobody had named
+
+The batch was one file, `tests/context_semantics_inventory.py`. It moved the input digest and
+invalidated the proofs, exactly as trap 9 predicts:
+
+```text
+$ PYTHONPATH=. .venv/bin/python -c "...mutation_proof.input_digest()..."
+files: 256  digest: 922b182a1356cb9fb0eec7dc1463b6bd6ec9cccf547b8ab1debb93fabdd810ec   (before)
+files: 257  digest: f4a692a8802fa8a89284f14dfc2c34ea5a379f731529fefa361995a9b5ea17d4   (after)
+```
+
+Nothing broke on the way in:
+
+```text
+$ PYTHONPATH=. .venv/bin/pytest tests/unit -q
+722 passed, 1 skipped, 2 deselected, 4 warnings in 650.59s (0:10:50)
+$ PYTHONPATH=. .venv/bin/python tests/hardening_status.py
+PASS hardening_status: 9 H-row(s) valid — 3 closed, 1 in_progress, 4 open, 1 out_of_scope
+```
+
+**The corpus came back 134/146 — twelve survivors where the plan documents eleven.**
+
+```text
+$ DATABASE_URL= PYTHONPATH=. .venv/bin/python tests/mutation_harness.py
+134/146 mutations detected.
+```
+
+Eleven are the two known clusters exactly as documented: §6F's three
+(`contradicted_attestation`, `attestation_drops_options`, `attestation_leaks_into_phase1`) and
+§8's eight (`coverage_map_gap`, `source_edited_without_reproof`,
+`contract_check_declares_no_phase`, `allowlist_keeps_a_paid_debt`,
+`allowlist_names_a_phantom_label`, `mutation_asserts_an_unknown_label`,
+`undeclared_check_reports_itself`, `silent_handler_without_a_disposition`).
+
+The twelfth, **`obligation_benchmark_outlives_source §11`, is in neither cluster.** Mandate 2
+says a survivor has two causes and you must tell them apart by instrumenting the real path, so
+I ran the check rather than reading it:
+
+```text
+$ DATABASE_URL= PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_obligations --only benchmark
+  FAIL obligation_benchmark_11: source/input digest is stale
+```
+
+That is cause two, not a broken check: the mutation declares
+`baseline_must_not_contain=["FAIL obligation_benchmark_11"]`, and the baseline cannot be clean
+while the benchmark is stale. **`validation_reports/phase2_hardening/obligation_benchmark.json`
+binds `source_input_digest()` just as the six release receipts do** — it still recorded
+`922b182a…`. Trap 9 named the corpus and the receipts as the cost of a source edit and omitted
+this one, so the documented cost model was incomplete. Regenerating it is cheap:
+
+```text
+$ DATABASE_URL= PYTHONPATH=. .venv/bin/python -m tests.obligation_executor --tier benchmark --sample-size 1000
+cache_keys=1000 represented_executions=4000 elapsed=15.733s median=7.081ms p95=30.719ms peak_rss=110522368B failures=0
+projected_release=2.519h recommended_shards=6 projected_per_shard=25.187m
+wrote validation_reports/phase2_hardening/obligation_benchmark.json
+$ DATABASE_URL= PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_obligations --only benchmark
+  PASS obligation_benchmark_11
+```
+
+**15.7 seconds against ~70 min of corpus and ~2.5h of sweep.** The hazard is not the cost, it
+is that a session paying only the two documented costs is left holding a survivor that looks
+like a hole in §11 and is not one. Trap 9 and `HANDOFF_PROMPT.md` now name all three artifacts
+and say to re-run the benchmark first.
+
+### The sweep, re-run because this session edited source (2026-09-17)
+
+Six shards sequentially on four workers, then verification:
+
+```text
+=== SHARD 0 START 23:09:30 ===
+cache_keys=96053 represented_executions=384212 elapsed=1538.261s median=7.042ms p95=30.427ms failures=0
+=== SHARD 1 START 23:35:10 ===
+cache_keys=96053 represented_executions=384212 elapsed=1534.930s median=7.047ms p95=30.392ms failures=0
+=== SHARD 2 START 00:00:45 ===
+cache_keys=96053 represented_executions=384212 elapsed=1578.710s median=7.083ms p95=30.451ms failures=0
+=== SHARD 3 START 00:27:05 ===
+cache_keys=96052 represented_executions=384208 elapsed=1546.106s median=7.105ms p95=30.576ms failures=0
+=== SHARD 4 START 00:52:52 ===
+cache_keys=96052 represented_executions=384208 elapsed=1537.650s median=7.114ms p95=30.498ms failures=0
+=== SHARD 5 START 01:18:31 ===
+cache_keys=96052 represented_executions=384208 elapsed=1562.196s median=7.115ms p95=30.500ms failures=0
+=== VERIFY-RELEASE 01:44:34 ===
+release_status=complete receipts=6 complete=True
+```
+
+**576,315 cache keys / 2,305,260 executions / 0 failures**, 9,297.853s aggregate (2.583h)
+against the 2.519h projection the regenerated benchmark had just produced — **+2.5%**. The
+key and execution totals match the previous sweep's exactly, which is the point of a
+finite manifest: the same bytes of *obligation* were re-certified against different bytes of
+*source*.
+
+**A sequencing hazard worth naming, because I nearly walked into it.** The natural next move
+after diagnosing `obligation_benchmark_outlives_source` is to re-prove it immediately. Do not:
+that mutation plants an edit into `tests/obligation_executor.py`, which is the very module the
+six shards spend 2.6 hours executing. Re-proving it mid-sweep would have corrupted the
+receipts the sweep exists to produce. Re-proved after the sweep released the file:
+
+```text
+$ DATABASE_URL= PYTHONPATH=. .venv/bin/python tests/mutation_harness.py --only obligation_benchmark_outlives_source
+input digest (clean tree): f4a692a8802fa8a8
+[1/1] obligation_benchmark_outlives_source
+    expected catcher: §11 (the benchmark is bound to current executor/source bytes)
+    DETECTED: exit 1 — FAIL obligation_benchmark_11: source/input digest is stale
+1/1 mutations detected.
+```
+
+So the corpus stands at **135/146**, and the eleven remaining survivors are exactly the two
+documented clusters — no new coverage debt from this session.
+
+### Definition of Done, executed — still NOT met, and that is the honest verdict
+
+```text
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.run_all
+--- Obligation Manifest (§11) ---
+  PASS obligation_derivations_agree: two independent traversals agree on 455 (node, DNA,
+       formatter) pair(s) and 4269 discrete obligation(s); 18762 continuous class crossing(s)
+  PASS obligation_dimension_coverage_11: 4269 base x 27 interest requests x 4 experiences
+       = 461052 finite obligations; 2305260 executions at 5 seeds
+  PASS obligation_benchmark_11: 1,000 representative cache keys are current, failure-free,
+       and project within the four-hour / 30-minute-shard budgets
+  PASS obligation_release_shards_11: 6 current shards cover 576315 cache keys / 2305260
+       executions with no overlap
+
+--- Suite Census (§7) ---
+  PASS census: nodes=151 (floor 151)      PASS census: unit_tests=723 (floor 635)
+  PASS census: mutations=146 (floor 105)  PASS census: variant_candidates=975 (floor 975)
+
+--- Stage Ledger ---
+  FAIL       assertion_coverage_8           phase 1     1.2s
+  PASS       obligation_manifest_11         phase 1     1.6s
+  FAIL       judgment_reviews_5             phase 2   129.4s
+  FAIL       capability_phase2              phase 2    22.2s
+  scheduled=16 completed=13 failed=3 crashed=0 not_run=0 incomplete=0
+  PASS stage_ledger_complete: every scheduled stage ran to a verdict
+  PASS stage_phase_matches_manifest: every stage's refs are registered to the band that
+       stage runs in
+
+SOME ALL TESTS CHECKS FAILED. Please review the output above.
+```
+
+**The same three reds as before this session, with `crashed=0` and nothing skipped.** That
+identity is the point: it is the evidence that a source edit plus a full re-proof regressed
+nothing. `assertion_coverage_8` reports **10 findings in 1 family**, matching the documented
+baseline exactly, and every one is the §8/§6F self-reference deadlock — "the recorded result
+is NOT DETECTED … the unmutated command baseline exited 1". `obligation_manifest_11` is back
+to PASS.
+
+**The Definition of Done is NOT met and this entry does not claim otherwise.** M1 delivered an
+inventory, not a gate; it was never going to move any of the three. The reds remain M2's
+content queue (1,158 review findings, 218 attestation findings) and the §8 deadlock.
+
+**One honesty note about this transcript:** the exit code was not captured — the command was
+backgrounded through `tail`, so `${PIPESTATUS[0]}` reported the pipeline's status, not
+`run_all`'s. The failure banner and `failed=3` are the verdict; the numeral is not evidence I
+actually hold, so it is not quoted.
+
+### Owner ruling on CSI-R4 (2026-09-17), and what it actually settles
+
+**Ruling, verbatim:** *"'figs' is fine for any grade level. As long as a substituted word is
+something that would normally fit in a typical 'basket', then the substituted word is ok."*
+
+**CSI-R4 is therefore CLOSED in favour of keeping the substitution**, and the ruling supplies
+the declared rule §1L needs for this family: *an object placed inside a container frame must
+plausibly fit that container.* That is a containment-plausibility relationship, which is
+exactly the shape step 3A asks for — "small composable declarations near the context source"
+rather than a blacklist of absurd sentences.
+
+**A correction to CSI-V1 as this log first recorded it.** It called the cue/stem pair a
+learner-visible contradiction. That was overstated. The cue names the theme slot value
+(`baskets`) while the stem counts figs *inside* baskets; the item is coherent, merely
+redundant. The mechanism was described correctly — the cue fires because the plural "baskets"
+does not string-match "One basket has" in the pre-cue text, so the interest-visibility check
+sees no themed term — but the severity was wrong. The vocabulary-gate observation also loses
+its force under the ruling: "figs" enters after the `NOT_YET_KNOWN` filter, but if "figs" is
+safe at every grade then the bypass has no live consequence **for this substitution**. The
+mechanism remains worth knowing about, because it is a channel that would carry any future
+substituted word past the gate; it is not, today, a defect.
+
+**What the ruling does NOT close, and in fact widens.** Applied consistently, "must plausibly
+fit in a typical basket" indicts the cases the hard-coded rule never reaches. The substitution
+fires only for the literal string `baskets`, only when `basket` appears in the template, so
+the other thirteen container-like entries the inventory flags still render unchanged inside
+basket and box frames — measured, not supposed:
+
+```text
+One basket has 28 hamster cages. Another basket has 60 hamster cages.   (pets, seed 7)
+There were 10 jars in a box. 3 jars were taken out.                     (bible, seed 5)
+There are 11 bags of flour in one basket and 0 bags of flour in another basket.
+```
+
+`pets/hamster cages` does not fit the owner's rule any better than `bible/baskets` did. So
+CSI-R4's disposition is **"keep the substitution, and generalise it"**: the correct end state
+is a declared containment rule covering every container-like object, not a second hard-coded
+string. That is M2 work under this row, and it is now a rule the owner has stated rather than
+a judgment the next agent has to invent.
+
+**The inventory JSON still reads `CSI-R4: OPEN`, deliberately.** Its ruling text lives in
+`tests/context_semantics_inventory.py`, which is under `INPUT_ROOTS`; editing it to record an
+annotation that changes no behaviour would re-red the corpus, the six receipts and the
+benchmark for another ~3.7h. Per trap 9 this is batched with the next source edit under this
+row — whoever generalises the containment rule updates both in one commit. Until then this
+entry and the plan's `START HERE` carry the ruling.

@@ -51,7 +51,13 @@ because six release receipts exist, and every receipt binds `source_input_digest
 `INPUT_ROOTS` digest the 146-record mutation corpus binds. **Any** edit under `backend/app`,
 `tests`, `scripts`, `data`, `frontend/src`, `docs/pgen_contract.md` or
 `docs/testing_pipeline.md` invalidates all of it and costs **~70 min of corpus plus ~2.5h of
-sweep** to restore. That is correct for gates that certify bytes rather than intentions, and
+sweep** to restore.
+
+**THREE artifacts bind that digest, not two.** `obligation_benchmark.json` binds it as well,
+and re-running only the corpus and the sweep leaves `obligation_benchmark_outlives_source §11`
+surviving — a twelfth survivor in neither documented cluster, which reads like a broken gate
+and is not one. It costs **15.7 seconds**. Re-run it FIRST. Measured 2026-09-16; plan trap 9
+carries the commands. That is correct for gates that certify bytes rather than intentions, and
 it was paid twice on 2026-09-16 — the second time for about 200 lines of harness fix. So:
 
 > **Batch every source edit, land them all, and run the corpus and the sweep LAST.**

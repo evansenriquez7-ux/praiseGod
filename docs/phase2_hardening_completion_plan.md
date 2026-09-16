@@ -119,7 +119,7 @@ IDs are planning handles for the evidence ledger, not new contract references.
 | `H-04` | **CLOSED 2026-09-16: the six release shards were executed and their receipts verified.** Measured aggregate **9,311.991s / 2.5867h** over 576,315 cache keys and 2,305,260 represented executions, **0 failures**, six non-overlapping receipts, `release_status=complete`. The 2.555h / 25.552m projection held to +1.23%; worst shard 1,587.987s against the 1,800s target. The earlier 1.312h/3-shard figure was extrapolated from a sampler covering only 83.4% of the cache-key index space, which is why the first shard attempt ran past its estimate and was killed without a receipt; that was recorded at the time as a worker defect and was not one. Sampler fixed and pinned 2026-09-16, and this sweep is the measurement that confirms the repaired projection. | All four acceptance checks met: the manifest is machine-generated from the production student route; `obligation_budget.json` names 273 rejections; two derivations agree on 455 pairs / 4,269 base obligations; and every obligation was executed with zero silent drops. **RESIDUAL, not closed by this row:** (a) continuous axes move together at each representative, so cross-axis Cartesian interactions and behaviour *between* representatives stay explicitly unproven; (b) the PR tier still needs an exact manifest key from the caller — commit-diff-to-obligation mapping is not implemented; (c) the receipts are bound to `source_input_digest()`, so **any** later edit under `INPUT_ROOTS` re-reds §11 and costs another 2.59h sweep (see trap 9); (d) the ledger's disk→rows artifact check cannot see these receipts at all (see trap 10). |
 | `H-05` | **PARTIAL 2026-09-14; row stays OPEN.** Seven of its eight named assertions now have live-path detected mutations. Vocabulary audits every primary/secondary DNA; DNA structure runs every applicable node/declared grade at five seeds with multi-digit parsing and exact numeric comparison; KG monotonicity follows all 5,726 declared `prior_node_ids` edges; registry/module tables are compared in both directions; interest answer invariance crosses all supported themes on 94 node/DNA pairs. | The validator-internal catch-and-continue limitations remain named. New mutations prove `registry_coverage`, `kg_monotonicity`, `dna_structure`, `dna_difficulty_feasibility`, both vocabulary labels and `interest_invariance`; those seven debts leave §8's allowlist. **TWO OF THOSE CLAIMS WERE STALE — re-measured 2026-09-16 and corrected here.** (a) Learner-visible interest delivery is **green**, not red: `PASS interest_theme_visibility: all 4100 supported node/DNA/theme/seed requests reached the final learner-facing problem`. The emoji formatter now honours `ctx.interest_theme` instead of `rng.choice`, which is what the "555/820 ignored at seed 731" measurement was reporting. (b) `lab_portal_equivalence` is no longer a static wiring check: `validate_compat.validate_lab_portal_equivalence` executes `_generate_lab_v2_student_problem` and `_generate_portal_student_problem` over enumerated obligations and diffs the produced problems, and `lab_route_drops_interest` claims it. Both were fixed and neither was recorded — a row that under-reports its own progress sends the next session to redo finished work. **STILL GENUINELY OPEN:** formatter/render/grade breadth and the sample-cap/not-judged branches; full formatter×interest coverage awaits H-04's release shards; and `lab_route_drops_interest`'s proof, like the whole corpus, awaits re-execution. |
 | `H-06` | **DECISION RECORDED 2026-09-16 — the v2 cutover was not lossless, and cannot be made so.** Enforcement of `schema_version == 2` shipped without the reconciliation this plan requires in three places (step 1's "lossless filing path", step 5's "cut over without losing findings", M1 acceptance's "all legacy unresolved findings reconcile without omissions"), so **all 151 filed reviews were rejected as unadjudicable in one step** and the whole earned corpus stopped being visible as work. A field-level v1→v2 migration was considered and **refused as impossible in principle**: v2 demands per-sample contextual-validity verdicts, exact clause coverage and dispatch-bound provenance that a v1 reviewer was never asked for, so populating them would mean authoring judgments no reviewer gave — the same fabrication that cost 151 reviews their standing in tick A (`6d8385f`), and undetectable afterwards because the forged fields would be internally consistent. Owner ruling: **preserve as leads, re-review for evidence.** `tests/legacy_review_queue.py` copies every v1 verdict and rationale verbatim into `phase2_hardening/legacy_review_queue.json`, marked `adjudicable: false` at the top level *and per node*, carrying per-facet detail so the queue says what to look at: **151 nodes, 44 FAIL / 93 CONCERN / 14 PASS, 137 with a non-PASS facet**, worst facet `variant_comprehensiveness` (83), 0 orphans, 0 records missing a v1 facet. Enforcement is unchanged — every v1 review is still rejected by name, and the rejection now names the queue. The **151 fresh blind re-reviews remain owed**; they are now countable rather than implicit. Nothing in `run_all` consumes the queue, deliberately: a gate that read it would let v1 verdicts back in through the side door. Remaining finding: Phase 2 evidence omits complete visuals/options in places, freshness does not bind every learner-visible field, and requirement evidence can be incomplete if clause extraction itself omitted curriculum text. | Canonical full-view packet and replay digest; full competency-to-requirement decomposition review; exact clause coverage; missing learner-visible evidence is unadjudicable and blocking. |
-| `H-07` | **UNSTARTED, and the ledger said otherwise until 2026-09-16.** The row read `in_progress` under H-08's session lock while its own `measurement_status` read "unmeasured — inherited from the plan"; released to `open`/`unclaimed`. Measured: §1L / step 3A has not begun — no `context_semantics_inventory.json` exists anywhere, and `§1L` appears in neither `docs/pgen_contract.md` nor `_manifest.CHECK_PHASE`. This is the largest unstarted body of work in the plan, and the lock hid it. The six facets do not yet force explicit judgments about contextual/logical validity, ambiguity, feedback/hints, misconception quality, interaction clarity, or accessibility. A mathematically valid item can therefore pair impossible objects, containers, actions, units, or causal relationships. Identity fields alone do not establish independent review quality. | Per-sample contextual-validity evidence inside the existing facets; bounded semantic-role/affordance checks; calibrated blind reviewers; dispatch-bound receipts; targeted dual review/adjudication; and cited student-view evidence. |
+| `H-07` | **M1 DONE 2026-09-16; the rest of §1L is still the largest unstarted body of work in the plan.** The row previously read `in_progress` under H-08's session lock while its own `measurement_status` read "unmeasured — inherited from the plan"; released, then claimed properly for this work. `tests/context_semantics_inventory.py` now writes the nonbinding inventory: **843 sources (interest_bank 663, spine_slot_use 156, dna_lexical_slot 19, neutral_slots 5), 0 unmapped live, 0 unreviewed frames, over 35,256 renders, 0 errors** — M1's acceptance met. `§1L` is still absent from `docs/pgen_contract.md` and `_manifest.CHECK_PHASE` **and must stay absent**: the inventory names 7 role mismatches and 4 reproduced violations, so the baseline is red and step 3A forbids the row. Found by rendering, not reading: `sub_removes` requires `{place}` to be a container while the bank declares it a location (`A mountain has 10 sheep`, seed 13); four measurement templates require `measurable_attribute` from `countable_object` slots; `A arena has 10 basketballs` is article disagreement **no gate catches**; and `dna/base.py:208` rewrites `baskets`→`figs` *after* the `NOT_YET_KNOWN` filter, bypassing the vocabulary gate (3 firings, 3 cue/stem contradictions, all three grades). Four owner rulings `CSI-R1…R4` are open and block the §1L rules. Three limitations are named in the module docstring, the JSON and the evidence log — chiefly that `observed_live_renders == 0` does NOT mean dead (`meas_object`: eligible on 130 of 151 nodes, observed 0 times; 144 sources are `UNRESOLVED`). The six facets still do not force per-sample contextual-validity judgments; that part of the finding is untouched. The six facets do not yet force explicit judgments about contextual/logical validity, ambiguity, feedback/hints, misconception quality, interaction clarity, or accessibility. A mathematically valid item can therefore pair impossible objects, containers, actions, units, or causal relationships. Identity fields alone do not establish independent review quality. | Per-sample contextual-validity evidence inside the existing facets; bounded semantic-role/affordance checks; calibrated blind reviewers; dispatch-bound receipts; targeted dual review/adjudication; and cited student-view evidence. |
 | `H-08` | **SUBSTANTIALLY IMPLEMENTED 2026-09-14/15; the row recorded none of it until 2026-09-16.** It read `open`/`unclaimed` with `proof_artifacts: []` while its evidence — `phase2_hardening/frontend_static_render.json`, eight `frontend_*` mutation proofs, `tests/frontend_suite.py` — sat on disk claimed by nobody, so a nearly-finished row read as unstarted. Now claimed. Executed: 27 payload classes, 54 renders in active and disabled modes, 15 production visual types, 10 `onAnswer` → `answers_match` round trips, six planted defects each detected by name, and two production defects (ClockSet emission, a `peso_money_build` route) found by execution and fixed. **STILL OPEN:** five `renderUtils` registrations are outside the practice obligation graph (`BalanceScale`, `Categorize`, `RuleDiscovery`, `SortOrder`, `TenFrame`) and need a dead-route versus non-practice disposition; jsdom cannot prove `NumberLine`/`BarChart` pointer geometry, crowding, overlap, colour contrast or touch-target size, which stay named blind spots. Original finding: nothing executes the React components. §9 checks that a payload carries the keys a component reads, but never renders it, so a component that throws, ignores a conditional key, or draws an empty box passes every gate. The existing script is inert: CommonJS in an ESM package, an uninstalled Puppeteer import, unavailable bare `python`, Vite development mode, no assertions. | **No browser** (owner ruling). Headless `renderToStaticMarkup` over every registered component on real student-path payloads; component × payload-class behaviour tests including the `onAnswer` → `answers_match` round trip; results consumed by `run_all` as a digest-bound artifact; planted defects detected by name; pointer-drag geometry on two components recorded as an unproven blind spot. See step 5A. |
 | `H-09` | Production deploys automatically from `main`, backend uses `:latest`, and neither workflow binds the deployed artifacts to Phase 1, Phase 2, mutations, browser results, or review evidence. | Staging/production separation, immutable SHA/digest artifacts, an attested release manifest, protected production promotion, canary replay, monitoring and tested rollback. |
 
@@ -1255,7 +1255,7 @@ row rather than as "crashes on DNS".
 
 ## START HERE — handoff
 
-**Revision: 2026-09-16, measured on `2152ffca` plus the H-04 release sweep committed on top of it.** The revision lives in this line
+**Revision: 2026-09-16, measured on `9dbf9ee5` plus the H-07/§1L M1 work committed on top of it.** The revision lives in this line
 rather than in the heading, because a heading carrying a commit hash makes the anchor
 that points at it break every time the section is refreshed.
 
@@ -1267,11 +1267,16 @@ one.
 ### Confirm the tree before trusting any number here
 
 ```sh
-git log --oneline -1                                   # expect 839754b8 or a descendant
+git log --oneline -1                                   # expect 9dbf9ee5 or a descendant
 git status --porcelain                                 # expect EMPTY
 PYTHONPATH=. .venv/bin/python tests/hardening_status.py
-#  -> PASS hardening_status: 9 H-row(s) valid — 2 closed, 6 open, 1 out_of_scope
+#  -> PASS hardening_status: 9 H-row(s) valid — 3 closed, 5 open, 1 out_of_scope
 ```
+
+**A SOURCE EDIT WAS MADE ON 2026-09-16 (`tests/context_semantics_inventory.py`), so the
+mutation corpus and the six release receipts were re-proved after it.** The digest moved
+`922b182a…` → `f4a692a8…` (256 → 257 input files). If `obligation_manifest_11` is red when
+you arrive, check whether a later edit moved it again before assuming a gate broke.
 
 **No `DATABASE_URL=` prefix is needed — this was DECIDED and implemented 2026-09-16.**
 
@@ -1307,8 +1312,11 @@ connection is caught. Do not describe this gate as total.
 ### What is true right now
 
 **Three** stages are red and every one of them is named. Nothing is warning-only, nothing
-is silently skipped, and `crashed=0`. Measured 2026-09-16 on `2152ffca`'s bytes:
-`scheduled=16 completed=13 failed=3 crashed=0 not_run=0 incomplete=0`, `EXIT=1`:
+is silently skipped, and `crashed=0`. Re-measured 2026-09-17 after the H-07/§1L M1 source edit
+and its full re-proof — **the same three, unchanged**, which is the evidence that the edit
+regressed nothing:
+`scheduled=16 completed=13 failed=3 crashed=0 not_run=0 incomplete=0`, and the run ends on
+`SOME ALL TESTS CHECKS FAILED`:
 
 | Red stage | What it is | Whose work |
 |---|---|---|
@@ -1316,10 +1324,12 @@ is silently skipped, and `crashed=0`. Measured 2026-09-16 on `2152ffca`'s bytes:
 | `capability_phase2` | **218** attestation findings (67 CONTRADICTED, 69 STALE, 57 UNADJUDICABLE, 25 other) | M2 / step 6 |
 | `assertion_coverage_8` | **10 errors, 1 family** — the two blocked clusters below | `H-02` |
 
-`obligation_manifest_11` was the fourth and **is now green**: the six release shards ran on
-2026-09-16 and `obligation_release_shards_11` reports 576,315 cache keys / 2,305,260
-executions with no overlap. Read trap 9 before you edit anything, because that green is
-bound to an exact source digest.
+`obligation_manifest_11` was the fourth and **is green**: the six release shards were re-run
+on 2026-09-17 against the current digest and `obligation_release_shards_11` reports 576,315
+cache keys / 2,305,260 executions with no overlap, `obligation_benchmark_11` PASS alongside
+it. Read trap 9 before you edit anything, because that green is bound to an exact source
+digest — and note that trap 9's cost model was **incomplete until 2026-09-17**: three
+artifacts bind the digest, not two.
 
 Everything else PASSes: unit tests (722 passed, 1 skipped), DNA, compatibility, interest invariance,
 vocabulary, the behavioural matrix at 151/151 with zero failures, `capability_phase1`, §1J,
@@ -1370,14 +1380,43 @@ when you make it.
        --workers 4 --shard-count 6 --shard-index N        # N = 0..5, ~25.5m each
    PYTHONPATH=. .venv/bin/python tests/obligation_executor.py --tier verify-release
    ```
-2. **`H-07` / §1L (plan step 3A) — the largest unstarted body of work in this plan.** It is
-   genuinely at zero: no `context_semantics_inventory.json` exists anywhere, and `§1L`
-   appears in neither `docs/pgen_contract.md` nor `_manifest.CHECK_PHASE`. Until 2026-09-16
-   the ledger hid this, because the row read `in_progress` under H-08's session lock while
-   its own `measurement_status` said "unmeasured". Build it family by family against a clean
-   baseline, per Mandate 5 and step 3A's staging rule. M1 requires only the nonbinding
-   inventory with zero unmapped live sources — do **not** add a binding §1L contract row
-   against a red baseline.
+2. **`H-07` / §1L (plan step 3A) — M1 DONE 2026-09-16; M2–M5 remain the largest unstarted
+   body of work in this plan.** `tests/context_semantics_inventory.py` now produces
+   `validation_reports/phase2_hardening/context_semantics_inventory.json`: **843 sources in
+   four families, 0 unmapped live, 0 unreviewed frames, measured over 35,256 renders with 0
+   errors**. M1's acceptance is met. `§1L` remains **deliberately absent** from
+   `docs/pgen_contract.md` and `_manifest.CHECK_PHASE`, and must stay absent — the inventory
+   is what measures the red baseline that forbids the row (7 role mismatches, 4 reproduced
+   violations). Adding a §1L row now is precisely the Mandate 5 hazard.
+
+   **What it found, all rendered rather than reasoned:** `sub_removes` is the only template
+   that makes `{place}` *hold* objects, while the bank declares every `places` entry a
+   `location` (127 eligible nodes, 55 affected live entries) — `A mountain has 10 sheep …
+   left in the mountain?` (`mat_g1_na_q3_3` seed 13). Four measurement templates require
+   `measurable_attribute` from slots supplying `countable_object`. `A arena has 10
+   basketballs` is article/noun disagreement that **no current gate catches** (§1J checks
+   count/noun only). And `dna/base.py:208` silently rewrites the themed object `baskets` to
+   **`figs`** *after* the `NOT_YET_KNOWN` filter has run, so the cue promises baskets, the
+   stem delivers figs, and a word in no vocabulary list reaches a learner — 3 firings
+   measured, 3 contradictions, across all three grades.
+
+   **`CSI-R4` was RULED ON 2026-09-17 and is closed:** *"'figs' is fine for any grade level.
+   As long as a substituted word is something that would normally fit in a typical 'basket',
+   then the substituted word is ok."* Keep the substitution. The ruling supplies the declared
+   rule §1L needs here — **an object placed inside a container frame must plausibly fit that
+   container** — and it *widens* the work rather than ending it: the hard-coded rule fires only
+   for the literal string `baskets`, so `One basket has 28 hamster cages` and `There were 10
+   jars in a box` still render. The end state is a declared containment rule over every
+   container-like object, not a second hard-coded string. **The inventory JSON still reads
+   `CSI-R4: OPEN`** because its text lives in `tests/context_semantics_inventory.py`, under
+   `INPUT_ROOTS`; recording a behaviour-free annotation there costs a ~3.7h re-proof, so per
+   trap 9 it is batched with the next source edit under this row.
+
+   **Next (M2):** `CSI-R1…R3` remain the owner's, not the next agent's. Do not hand-patch
+   V2–V4: the correct fix *is* the §1L capability step 3A defers. Read the inventory's three named limitations before
+   trusting any liveness number in it — `observed_live_renders == 0` does **not** mean dead
+   (`meas_object` is statically eligible on 130 of 151 nodes and was observed 0 times), and
+   144 sources sit at `liveness: "UNRESOLVED"` for that reason.
 3. **`H-08`'s five uncovered registrations** — `BalanceScale`, `Categorize`,
    `RuleDiscovery`, `SortOrder`, `TenFrame` are outside the practice obligation graph. They
    need a dead-route versus non-practice-reachable disposition before the row can close.
@@ -1455,6 +1494,25 @@ found template rationales in that corpus.
    bytes, not intentions — but it means the recommended order above is only valid for a
    session that makes no source edits. **Do the hermeticity gate, or any other `INPUT_ROOTS`
    work, BEFORE the sweep, never after.**
+
+   **THE COST MODEL ABOVE WAS INCOMPLETE, corrected 2026-09-16 by paying it.** A source edit
+   invalidates **three** artifacts, not two. Besides the 146-record corpus and the six shard
+   receipts, `validation_reports/phase2_hardening/obligation_benchmark.json` binds the same
+   `source_input_digest()`. Adding `tests/context_semantics_inventory.py` moved the digest
+   `922b182a…` → `f4a692a8…` (256 → 257 input files) and produced a **twelfth** surviving
+   mutation, `obligation_benchmark_outlives_source §11`, which belongs to neither documented
+   cluster. It survived for cluster-1's reason, not because the check broke: its
+   `baseline_must_not_contain=["FAIL obligation_benchmark_11"]` cannot hold while the
+   benchmark is stale. Diagnosed by running the real check, per Mandate 2:
+   ```sh
+   $ ...validate_obligations --only benchmark     #  FAIL obligation_benchmark_11: source/input digest is stale
+   $ ...tests.obligation_executor --tier benchmark --sample-size 1000    # 15.7s, failures=0
+   $ ...validate_obligations --only benchmark     #  PASS obligation_benchmark_11
+   ```
+   It is cheap — **15.7 seconds**, against ~70 min for the corpus and ~2.5h for the sweep —
+   but a session that re-runs only the two documented artifacts is left with a survivor it
+   will mistake for a broken gate. **Re-run the benchmark FIRST, then the corpus, then the
+   sweep.**
 10. **FIXED 2026-09-16, kept as the record of a hole that reported green.** The ledger's
    disk→rows artifact check could not see the release receipts.
    `tests/hardening_status.py::_unclaimed_artifacts` walks `ARTIFACT_DIR.iterdir()` and
