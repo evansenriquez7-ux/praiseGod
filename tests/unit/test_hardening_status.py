@@ -232,3 +232,40 @@ def test_the_ledger_s_own_bookkeeping_is_not_demanded_as_evidence():
 def test_the_live_ledger_claims_every_artifact_on_disk():
     """The real reconciliation, which is what `main()` runs."""
     assert hs._unclaimed_artifacts(hs.load()["rows"]) == []
+
+
+# ── The subdirectory hole, found 2026-09-16 after H-04's sweep ──────────────────────
+# `iterdir()` + `is_file()` skipped every subdirectory, so the six release receipts --
+# 2.59 hours of execution, the most expensive evidence in the plan directory -- were
+# exempt from the disk->rows direction entirely. Measured before the fix: 6 on disk, 0
+# reported.
+
+def test_an_artifact_in_a_subdirectory_is_not_invisible():
+    errors = hs._unclaimed_artifacts([_row(proof_artifacts=[])])
+    assert any("obligation_release_shards/shard_000_of_006.json" in e for e in errors), (
+        "a nested artifact must be reconciled like any other; this is the H-08 shape one "
+        f"directory level down -- {errors}"
+    )
+
+
+def test_a_claimed_directory_claims_what_is_inside_it():
+    """H-02 claims `validation_reports/mutation_proofs` as a directory, so a row must be
+    able to claim a directory of receipts the same way rather than re-listing every file
+    each time a shard count changes."""
+    claimed = "validation_reports/phase2_hardening/obligation_release_shards"
+    errors = hs._unclaimed_artifacts([_row(proof_artifacts=[claimed])])
+    assert not any("obligation_release_shards" in e for e in errors), errors
+
+
+def test_a_nested_file_does_not_inherit_a_top_level_exemption(tmp_path, monkeypatch):
+    """Exemptions are keyed to the path relative to the artifact directory, not to a bare
+    filename -- otherwise `sub/hardening_status.json` would exempt itself by name."""
+    monkeypatch.setattr(hs, "REPO_ROOT", tmp_path)
+    monkeypatch.setattr(hs, "ARTIFACT_DIR", tmp_path / "artifacts")
+    (tmp_path / "artifacts" / "sub").mkdir(parents=True)
+    (tmp_path / "artifacts" / "hardening_status.json").write_text("{}")
+    (tmp_path / "artifacts" / "sub" / "hardening_status.json").write_text("{}")
+
+    errors = hs._unclaimed_artifacts([_row(proof_artifacts=[])])
+    assert len(errors) == 1, errors
+    assert "sub/hardening_status.json" in errors[0]

@@ -3527,6 +3527,42 @@ MUTATIONS: List[Mutation] = [
         expect_output_contains=["test_a_ref_registered_to_the_other_band_is_caught"],
         baseline_must_not_contain=["test_a_ref_registered_to_the_other_band_is_caught"],
     ),
+    # ── The Phase-1-wide network guard (2026-09-16) ────────────────────────────────
+    #
+    # Same shape and same reason as the stage-ledger block above: the live catcher would
+    # be `run_all --phase 1`, whose baseline is RED today on `assertion_coverage_8`, and a
+    # plant scored against a red baseline is rejected rather than proven (Mandate 2).
+    # `tests/unit/test_phase1_hermetic.py` drives the REAL StageLedger, so the plant lands
+    # on the production control flow.
+    #
+    # NAMED LIMIT: this proves the guard's PLACEMENT in the runner, not that a real
+    # validator's outbound connection is caught, and the guard patches this interpreter
+    # only -- subprocess and multiprocessing children are outside it. Both limits are in
+    # the test module's docstring, StageLedger.run's docstring and docs/pgen_contract.md.
+    Mutation(
+        name="phase1_stage_escapes_the_network_guard",
+        asserts=["phase1_hermetic"],
+        description=(
+            "Run Phase 1 stage bodies outside the socket guard. This is exactly the state "
+            "of the harness until 2026-09-16: `hermetic_database()` was called in ONE "
+            "place, `validate_grade`, so §10 was hermetic and the other thirteen Phase 1 "
+            "stages could reach any host without a single assertion noticing. The failure "
+            "that shape produces was measured on 2026-09-12 under H-01 -- the same tree "
+            "crashed on Neon DNS in the morning and passed in the afternoon -- so the "
+            "cost of leaving it unguarded is a gate whose verdict depends on the weather "
+            "on the public internet (Protocol 6)."
+        ),
+        edits={
+            "backend/app/practice_gen/validation/run_all.py": (
+                "            with (no_network() if stage.phase == 1 else nullcontext()):\n",
+                "            with nullcontext():  # planted mutation: Phase 1 is unguarded\n",
+            )
+        },
+        command=["pytest", "tests/unit/test_phase1_hermetic.py", "-q", "-p", "no:cacheprovider"],
+        expected_check="the Phase 1 network guard (an outbound connection is named, not silent)",
+        expect_output_contains=["test_a_phase1_stage_reaching_the_network_is_named"],
+        baseline_must_not_contain=["test_a_phase1_stage_reaching_the_network_is_named"],
+    ),
     # ── §11, the obligation manifest (H-04, 2026-09-12) ────────────────────────────
     Mutation(
         name="obligation_derivations_diverge",

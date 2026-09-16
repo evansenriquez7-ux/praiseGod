@@ -65,8 +65,8 @@ subsets while **0 of 138** proof records matched the tree they described.
 
 | Observation | Measured result | Was |
 |---|---|---|
-| Mutation corpus | **145 records, all current.** 0 stale against the tree, 0 never executed, 11 that do not hold (two named clusters below) | 138 records, **0 matching the tree**, spread over 10 distinct stale digests; 7 never executed at all |
-| Assertions proven BY EXECUTION | **113 of 134** | **0 of 134** — every proof was stale, so nothing was proven |
+| Mutation corpus | **146 records, all current** (2026-09-16: `phase1_stage_escapes_the_network_guard` added and DETECTED; 135 detected, 11 survivors, all in the two named clusters). 0 stale against the tree, 0 never executed, 11 that do not hold (two named clusters below) | 138 records, **0 matching the tree**, spread over 10 distinct stale digests; 7 never executed at all |
+| Assertions proven BY EXECUTION | **114 of 135** (2026-09-16: `phase1_hermetic` added and proven; §8's error count unchanged at 10 in 1 family, so the batch added no coverage debt) | **0 of 134** — every proof was stale, so nothing was proven |
 | Unproven-assertion allowlist | **11** (shrink-only; did not grow) | 11 |
 | Census minima | unit_tests **712**; mutations **145**; nodes **151**; variant_candidates **975** | unit_tests 679; mutations 145 |
 | Fast unit suite | **711 passed, 1 skipped, 2 deselected** in 650s | 1 FAILED, 677 passed — `test_supervisor_queue` was measuring against the live Neon database in `.env` |
@@ -1287,17 +1287,22 @@ the variable empty — a gate whose answer depends on the operator's environment
 (Protocol 6). The pin is announced rather than silent (Protocol 3) and is covered by
 `tests/unit/test_run_all_hermetic_pin.py`.
 
-**What that did NOT do, and it is the next hermeticity task.** Pinning a URL is
-configuration, not enforcement. `hermetic_database()` — the throwaway SQLite plus the socket
-guard that raises `HermeticNetworkError` by name — is called in exactly ONE place,
-`validate_grade`, and `grading_hermetic_10` is scoped to "the graded path". The other
-thirteen Phase 1 stages have no guard and no assertion covering outbound connections, so the
-next network dependency introduced anywhere outside §10 surfaces only as flaky redness.
+**What that did NOT do — and it was BUILT on 2026-09-16.** Pinning a URL is
+configuration, not enforcement. `hermetic_database()` is still called in exactly ONE place,
+`validate_grade`, and `grading_hermetic_10` is still scoped to "the graded path". What
+changed is that the other stages are no longer unwatched: `StageLedger.run` now runs every
+PHASE 1 stage body inside `tests.hermetic_db.no_network()`, catching `HermeticNetworkError`
+ahead of the generic crash boundary so the violation is named `phase1_hermetic` rather than
+folded into `stage_crashed_<name>`, and recording it as `crashed` so the stage's refs stay in
+the expected set. `phase1_stage_escapes_the_network_guard` is DETECTED in the full table.
 
-OWED, and a good self-contained piece of work: install the guard around every Phase 1 stage,
-add a `phase1_hermetic` assertion, and prove it with a mutation that plants an outbound
-connection in a NON-§10 stage. **Its baseline is clean today**, which per Mandate 5 is
-exactly when to build a gate. Do not describe the pin as having closed this.
+**Its blind spots are real and are named everywhere they should be** (docstring, contract row,
+mutation comment, test module): the guard patches ONE interpreter, so a connection opened
+inside a child of `unit_tests`, `census_7` or `behavioural_matrix` is invisible; Phase 2
+stages are unguarded; loopback is allowed. And the mutation drives the real `StageLedger`
+through a unit test, not a live `run_all`, because `run_all --phase 1`'s baseline is red on
+`assertion_coverage_8` — it proves the guard's PLACEMENT, not that a real validator's
+connection is caught. Do not describe this gate as total.
 
 ### What is true right now
 
@@ -1316,7 +1321,7 @@ is silently skipped, and `crashed=0`. Measured 2026-09-16 on `2152ffca`'s bytes:
 executions with no overlap. Read trap 9 before you edit anything, because that green is
 bound to an exact source digest.
 
-Everything else PASSes: unit tests (711 passed, 1 skipped; census counts 712), DNA, compatibility, interest invariance,
+Everything else PASSes: unit tests (722 passed, 1 skipped), DNA, compatibility, interest invariance,
 vocabulary, the behavioural matrix at 151/151 with zero failures, `capability_phase1`, §1J,
 §1K, §9/§12, §10, §7, §11, and the two-direction tripwire.
 
@@ -1382,9 +1387,9 @@ when you make it.
 4. **M2 content work** (steps 6 and 7) — the 218 attestation findings and the 1,158 review
    findings. This is the bulk of the remaining project and it unblocks §6F cluster 1.
    **The 151 fresh blind re-reviews are owed and are now countable.** See below.
-5. **The Phase-1-wide hermeticity gate** described above — small, self-contained, and the
-   rare case of a gate whose baseline is already clean, so it can be proved properly rather
-   than against noise.
+5. ~~**The Phase-1-wide hermeticity gate**~~ — **DONE 2026-09-16**, together with trap 10's
+   fix, deliberately batched so the pair cost one corpus re-run and one sweep between them
+   rather than two of each. Its blind spots are named above and must not be read as closed.
 6. **`H-06`'s remainder** and the §8 deadlock (cluster 2) as capacity allows.
 
 ### The review corpus: what was decided, and what you must not do
@@ -1450,7 +1455,8 @@ found template rationales in that corpus.
    bytes, not intentions — but it means the recommended order above is only valid for a
    session that makes no source edits. **Do the hermeticity gate, or any other `INPUT_ROOTS`
    work, BEFORE the sweep, never after.**
-10. **The ledger's disk→rows artifact check cannot see the release receipts.**
+10. **FIXED 2026-09-16, kept as the record of a hole that reported green.** The ledger's
+   disk→rows artifact check could not see the release receipts.
    `tests/hardening_status.py::_unclaimed_artifacts` walks `ARTIFACT_DIR.iterdir()` and
    skips anything that is not a file, while the executor writes to
    `validation_reports/phase2_hardening/obligation_release_shards/` — a **subdirectory**.
@@ -1458,9 +1464,13 @@ found template rationales in that corpus.
    two-direction check built on 2026-09-16 to stop evidence going unclaimed; it is the H-08
    shape, one directory level down. H-04 names the six receipts individually in
    `proof_artifacts` so the rows→disk direction (which uses `.exists()`) does bind them,
-   but that is a manual patch over a blind spot, not a fix. **The fix is to recurse**, and
-   it must be batched with other `INPUT_ROOTS` work because `hardening_status.py` is itself
-   an input root — editing it re-reds §11 per trap 9.
+   but that was a manual patch over a blind spot, not a fix. It now recurses with `rglob`,
+   a row may claim a whole directory, and exemptions are keyed to the path relative to the
+   artifact directory so a nested file cannot inherit a top-level exemption by name. Proved
+   by planting an unclaimed file in the receipts subdirectory and watching it be named.
+   **The lesson outlives the fix:** this was found by READING the check, never by the check
+   firing — a gate with a hole in it reports green through the hole, so `iterdir()` in any
+   other reconciliation is worth the same suspicion.
 
 ### Rules this handoff will not let you skip
 

@@ -253,18 +253,39 @@ def _unclaimed_artifacts(rows: List[Dict[str, Any]]) -> List[str]:
     The original check only walked rows -> disk, so it could catch a row naming a file
     that had been deleted but never a file whose row had forgotten it. That is the H-08
     shape: the newest artifact in the directory, belonging to a row whose list was empty.
+
+    IT RECURSES, AND UNTIL 2026-09-16 IT DID NOT. `iterdir()` plus `is_file()` skipped
+    every subdirectory, so when H-04's release sweep wrote six shard receipts into
+    `obligation_release_shards/`, the most expensive evidence in this directory -- 2.59
+    hours of execution -- was exempt from the very check built to stop evidence going
+    unclaimed. That is the H-08 shape one level down, and it was found by reading the
+    check rather than by the check firing, which is the point: a gate with a hole in it
+    reports green through the hole. Measured before the fix: 6 receipts on disk, 0
+    reported.
+
+    A row may claim a DIRECTORY (`validation_reports/mutation_proofs` is claimed that way
+    by H-02), and everything beneath a claimed directory counts as claimed. That is a
+    deliberate trade: it keeps a row from having to re-list its files every time a shard
+    count changes, at the cost that claiming a directory claims whatever later appears in
+    it. Exemptions stay keyed to the path RELATIVE TO this directory rather than to a bare
+    filename, so a nested file cannot inherit a top-level exemption by sharing its name.
     """
     if not ARTIFACT_DIR.is_dir():
         return []
     claimed = {
         art for row in rows for art in (row.get("proof_artifacts") or [])
     }
+    claimed_dirs = [c for c in claimed if (REPO_ROOT / c).is_dir()]
     errors: List[str] = []
-    for path in sorted(ARTIFACT_DIR.iterdir()):
-        if not path.is_file() or path.name in _NOT_PROOF_ARTIFACTS:
+    for path in sorted(ARTIFACT_DIR.rglob("*")):
+        if not path.is_file():
+            continue
+        if path.relative_to(ARTIFACT_DIR).as_posix() in _NOT_PROOF_ARTIFACTS:
             continue
         rel = path.relative_to(REPO_ROOT).as_posix()
-        if rel not in claimed:
+        if rel not in claimed and not any(
+            rel.startswith(d.rstrip("/") + "/") for d in claimed_dirs
+        ):
             errors.append(
                 f"artifact {rel!r} exists but no H-row lists it in proof_artifacts. Either "
                 f"it is a row's evidence and that row should claim it, or nothing needs it "

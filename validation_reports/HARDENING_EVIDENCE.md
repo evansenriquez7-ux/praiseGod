@@ -11471,3 +11471,181 @@ All four acceptance checks are met. Closed with four residuals, all pre-existing
 named above: continuous axes move together at each representative so cross-axis Cartesian
 interactions stay unproven; the PR tier still needs the caller to supply an exact manifest
 key; the digest binding in limitation 1; and the ledger blind spot in limitation 2.
+
+## The Phase-1-wide hermeticity gate, and a hole my own last commit left (2026-09-16)
+
+Two harness gates, batched deliberately: every edit here lands under `INPUT_ROOTS`, so the
+pair costs one corpus re-run and one release sweep between them rather than two of each.
+That is trap 9 being obeyed rather than discovered.
+
+### 1. `phase1_hermetic` — the guard now runs around every Phase 1 stage
+
+**Baseline, measured on `55ceb221` rather than inherited.** `hermetic_database()` had exactly
+one call site:
+
+```text
+$ grep -rn "hermetic_database" --include="*.py" backend/ tests/
+  tests/hermetic_db.py:108        def hermetic_database(...)     <- the definition
+  backend/app/practice_gen/validation/validate_grade.py:291      with hermetic_database():
+```
+
+So §10 was hermetic and the other thirteen Phase 1 stages had no guard and no assertion
+covering outbound connections. The cost of that shape is not hypothetical: under H-01 the
+same tree crashed Phase 1 on Neon DNS in the morning of 2026-09-12 and passed in the
+afternoon. Per Mandate 5 the time to build this was while the baseline was clean, which it
+was.
+
+**What shipped.** `StageLedger.run` — the single seam every stage passes through — runs each
+PHASE 1 body inside `tests.hermetic_db.no_network()`, and catches `HermeticNetworkError`
+*before* the generic `except BaseException`, so the one thing worth naming is not folded into
+`stage_crashed_<name>`. The violation is recorded as `crashed`, not `failed`, so the stage's
+§-refs stay in the expected set for the two-direction tripwire instead of being discarded the
+way a stage that ran and reported discards them.
+
+**Three compatibility questions measured before trusting the guard**, because a guard that
+fires on the harness's own plumbing is a false-positive machine:
+
+```text
+$ PYTHONPATH=. .venv/bin/python local_only/scratch/guard_probe.py
+  pool: [1, 4, 9]                                  <- multiprocessing.Pool works under it
+  subprocess: ok                                   <- subprocess works under it
+  outbound blocked by name: HermeticNetworkError
+  loopback allowed through the guard (refused by the OS, as expected)
+```
+
+**Proof that the tests are not vacuous.** The guard was removed by hand, exactly as the
+mutation removes it, before the mutation was written:
+
+```text
+planted:  with nullcontext():  # Phase 1 stages are unguarded
+$ PYTHONPATH=. .venv/bin/pytest tests/unit/test_phase1_hermetic.py -q
+  3 failed, 5 passed
+  FAILED ...::test_a_phase1_stage_reaching_the_network_is_named
+  FAILED ...::test_the_violation_is_crashed_so_its_refs_stay_expected
+  FAILED ...::test_the_guard_is_released_after_the_stage
+restored:
+  8 passed in 0.76s
+```
+
+```text
+$ PYTHONPATH=. .venv/bin/python tests/mutation_harness.py --only phase1_stage_escapes_the_network_guard
+  DETECTED: exit 1
+  PASS  phase1_stage_escapes_the_network_guard the Phase 1 network guard
+  1/1 mutations detected.
+```
+
+**BLIND SPOTS, measured, and written into `StageLedger.run`'s docstring, the new
+`docs/pgen_contract.md` row, the mutation's comment and the test module:**
+
+* **The guard patches this interpreter only.** `unit_tests` and `census_7` run pytest through
+  `subprocess.run`; `behavioural_matrix` fans out through `multiprocessing.Pool`. A
+  connection opened inside a CHILD process is not seen, so those three stages are covered for
+  their parent-side work alone. `test_the_guard_does_not_reach_into_child_processes` pins this
+  as an executable fact rather than prose.
+* **Phase 2 is not guarded.** §5 and §6F-§6H remain uncovered. The owed work named a Phase 1
+  gate; this is exactly that and no more.
+* **The mutation proves PLACEMENT, not capture.** It drives the real `StageLedger` through a
+  unit test because `run_all --phase 1`'s baseline is red on `assertion_coverage_8`, and a
+  plant scored against a red baseline is rejected rather than proven — the same wall §6F's
+  cluster sits behind. This is the trade H-03's row already records for the stage-ledger
+  mutations, taken again knowingly.
+* Loopback is allowed (`fastapi.testclient` needs it) and a C extension bypassing
+  `socket.socket.connect` would not be caught — both inherited from `no_network()`.
+
+### 2. The unclaimed-artifact check could not see a subdirectory
+
+Filed as trap 10 in my previous commit and fixed here. `_unclaimed_artifacts` walked
+`ARTIFACT_DIR.iterdir()` and skipped every non-file, so H-04's six shard receipts — 2.59
+hours of execution, the most expensive evidence in the plan directory — were exempt from the
+two-direction check built on 2026-09-16 to stop evidence going unclaimed. Measured before the
+fix: **6 receipts on disk, 0 reported.** It was found by reading the check, not by the check
+firing, which is the whole hazard: a gate with a hole in it reports green through the hole.
+
+It now recurses with `rglob`, a row may claim a directory (H-02 already claims
+`validation_reports/mutation_proofs` that way), and exemptions are keyed to the path relative
+to the artifact directory so a nested file cannot inherit a top-level exemption by name.
+Proved by planting one:
+
+```text
+$ touch validation_reports/phase2_hardening/obligation_release_shards/_unclaimed_probe.json
+$ PYTHONPATH=. .venv/bin/python tests/hardening_status.py
+  FAIL hardening_status (1):
+    - artifact '...obligation_release_shards/_unclaimed_probe.json' exists but no H-row
+      lists it in proof_artifacts.
+  EXIT=1
+$ rm ...; PYTHONPATH=. .venv/bin/python tests/hardening_status.py
+  PASS hardening_status: 9 H-row(s) valid
+```
+
+### 3. A row I opened and then withdrew, because a check said not to
+
+I opened `H-10` for the hermeticity work, since the handoff requires work to be claimed
+against a row before it starts. The full harness then failed:
+
+```text
+  FAIL unit_tests (1 failed, 721 passed, ...)
+    - FAILED tests/unit/test_hardening_status.py::test_the_live_ledger_has_a_row_per_blocker
+      assert ids == {f"H-0{n}" for n in range(1, 10)}
+      Extra items in the left set: 'H-10'
+```
+
+That test pins which blockers exist, and its `f"H-0{n}"` pattern cannot express a two-digit
+row at all. Editing it so my own new row passed would be the precise move Protocol 5 forbids,
+and the ground truth is not in error — one person directs this repo and the row set is
+theirs. **The row was withdrawn; the test was not touched.** `hardening_status.json` is not
+under `INPUT_ROOTS`, so withdrawing it left the digest at `922b182a…` and neither the corpus
+nor the receipts were disturbed.
+
+This leaves a real conflict for the owner to settle: the handoff requires a row before
+starting work, and the row set is pinned to nine. Any NEW blocker hits both rules at once.
+The hermeticity work is therefore recorded here and in the plan rather than in the ledger.
+
+### Verification, all on frozen digest `922b182a1356cb9fb0eec7dc1463b6bd6ec9cccf547b8ab1debb93fabdd810ec`
+
+```text
+$ PYTHONPATH=. .venv/bin/python tests/mutation_harness.py          # full table, ~70m
+  134/146 mutations detected.
+```
+
+Twelve survivors: the eleven known blocked-cluster members (eight §8 self-reference, three
+§6F) and `obligation_benchmark_outlives_source`, which I caused — the benchmark artifact
+still recorded the pre-edit digest, so §11 was red and the plant could not be distinguished
+from it. Diagnosed rather than assumed, then cleared at its root:
+
+```text
+$ PYTHONPATH=. .venv/bin/python tests/obligation_executor.py --tier benchmark --workers 4
+  projected_release=2.507h recommended_shards=6 projected_per_shard=25.066m
+  benchmark source digest = 922b182a...
+$ PYTHONPATH=. .venv/bin/python tests/mutation_harness.py --only obligation_benchmark_outlives_source
+  1/1 mutations detected.
+```
+
+So the corpus stands at **135 detected / 11 survivors**, all eleven pre-existing and named.
+
+```text
+$ for N in 0..5: tests/obligation_executor.py --tier release --workers 4 --shard-count 6 --shard-index $N
+  shard 0  96053 keys  1536.650s   shard 3  96052 keys  1545.528s
+  shard 1  96053 keys  1531.987s   shard 4  96052 keys  1540.889s
+  shard 2  96053 keys  1578.431s   shard 5  96052 keys  1560.100s
+  aggregate 9293.585s = 2.5816h; 576,315 keys; 2,305,260 executions; 0 failures
+$ PYTHONPATH=. .venv/bin/python tests/obligation_executor.py --tier verify-release
+  release_status=complete receipts=6 complete=True        EXIT=0
+```
+
+```text
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.run_all
+  Every Phase 1 stage body runs inside the socket guard (phase1_hermetic); an outbound
+  non-loopback connection from one is a named failure.
+  LIMITATION: the guard covers THIS process only. ...
+  PASS unit_tests (722 passed, 1 skipped, 2 deselected in 652.81s)
+  FAIL assertion_coverage_8   phase 1   (10 in 1 family; 33 integrity in 3 families)
+  FAIL judgment_reviews_5     phase 2
+  FAIL capability_phase2      phase 2
+  scheduled=16 completed=13 failed=3 crashed=0 not_run=0 incomplete=0
+  RUN_ALL EXIT=1
+```
+
+`phase1_hermetic` is proven BY EXECUTION (114 proven labels, up from 113), and §8's error
+count is **unchanged at 10 in 1 family** — this batch added no new coverage debt. **The
+Definition of Done is NOT met**; the three reds are the two blocked mutation clusters and the
+M2 content queue, none of which this work touched.

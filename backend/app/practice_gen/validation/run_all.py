@@ -73,6 +73,10 @@ _OPERATOR_DOC_PATH = Path(__file__).resolve().parents[4] / "docs" / "testing_pip
 # `Mutation.asserts`, or excused in validate_coverage.UNPROVEN_ASSERTIONS.
 ASSERTIONS = (
     "unit_tests",                          # §0: the fast suite passes
+    # Every Phase 1 stage body runs inside the socket guard (2026-09-16). Declared here
+    # rather than under §10 because it is a property of the RUNNER, not of the grading
+    # contract -- §10's `grading_hermetic_10` keeps its own, narrower claim.
+    "phase1_hermetic",
     # §0 is 399 tests and §8 does not inventory them one by one; §7's unit_tests floor
     # guards their number. A test a mutation names individually is inventoried here.
     "subtraction_candidate_pool_bounded",  # tests/unit/test_subtraction_candidate_pool.py
@@ -243,23 +247,64 @@ class StageLedger:
 
     def run(self, name: str, body) -> bool:
         """
-        Execute one scheduled stage behind an exception boundary.
+        Execute one scheduled stage behind an exception boundary and a network guard.
 
         Returns the stage's ok flag. A crash becomes a NAMED failure that returns False
         and lets the run continue, instead of an exception that erases every stage after
         it along with the summary.
+
+        THE NETWORK GUARD (`phase1_hermetic`). Every PHASE 1 stage body runs inside
+        `tests.hermetic_db.no_network()`, so an outbound non-loopback connection from any
+        of them is a named failure rather than a gate whose answer depends on an external
+        host (H-01, Protocol 6). Until 2026-09-16 the socket guard ran in §10 alone --
+        `hermetic_database()` is called in exactly one place, `validate_grade` -- so the
+        other thirteen Phase 1 stages had no assertion covering outbound connections and
+        a new network dependency would have surfaced only as flaky redness.
+
+        A violation is recorded as `crashed`, not `failed`, and deliberately: the stage
+        aborted without reaching a verdict, so its §-refs must stay in the expected set
+        for the two-direction tripwire instead of being discarded the way a stage that
+        genuinely ran and said "no" discards them.
+
+        KNOWN LIMITATIONS (Scaling Mandate 6), each measured rather than assumed:
+          * **The guard covers this process only.** `unit_tests` and `census_7` run pytest
+            through `subprocess.run`, and `behavioural_matrix` fans out through
+            `multiprocessing.Pool`, so a connection opened inside a CHILD process is not
+            seen. Those three stages are guarded for their parent-side work alone.
+          * **Phase 2 stages are not guarded.** The owed work named a Phase-1-wide gate
+            and this is exactly that; §5 and §6F-§6H remain uncovered.
+          * Everything `no_network()` itself cannot see stays invisible here: a C
+            extension bypassing `socket.socket.connect`, and anything on loopback, which
+            is allowed because `fastapi.testclient` needs it.
         """
         import time
         import traceback
+        from contextlib import nullcontext
+
+        from tests.hermetic_db import HermeticNetworkError, no_network
 
         stage = self.get(name)
         stage.state = "attempted"
         started = time.monotonic()
         try:
-            ok = bool(body())
+            with (no_network() if stage.phase == 1 else nullcontext()):
+                ok = bool(body())
             stage.state = "completed" if ok else "failed"
             stage.ok = ok
             return ok
+        except HermeticNetworkError as exc:
+            # Before the generic boundary below, or this reads as `stage_crashed_<name>`
+            # and the one thing worth naming -- that a Phase 1 gate reached the network --
+            # is the one thing the operator would not be told.
+            stage.state = "crashed"
+            stage.ok = False
+            stage.detail = f"phase1_hermetic: {exc}"
+            print(f"  FAIL phase1_hermetic: stage {name!r} attempted an outbound network "
+                  f"connection, so its verdict would have depended on an external host "
+                  f"(H-01, Protocol 6). {exc}")
+            print(f"    - The ref(s) {list(stage.refs) or '(none)'} this stage would have "
+                  f"executed are NOT marked executed, and stay in the expected set.")
+            return False
         except BaseException as exc:  # noqa: BLE001 - a crash must not escape a stage
             stage.state = "crashed"
             stage.ok = False
@@ -336,10 +381,12 @@ def _print_hermeticity_banner() -> None:
         print("  DATABASE_URL was already empty; pinned empty for this run.")
     else:
         print("  DATABASE_URL was unset; pinned empty for this run.")
-    print("  LIMITATION: this pins the URL only. The socket guard "
-          "(tests/hermetic_db.hermetic_database) runs in §10 alone, so the other Phase 1 "
-          "stages have no assertion covering outbound connections -- owed work, see "
-          "docs/pgen_contract.md §10 and the plan's START HERE handoff.")
+    print("  Every Phase 1 stage body runs inside the socket guard (phase1_hermetic); an "
+          "outbound non-loopback connection from one is a named failure.")
+    print("  LIMITATION: the guard covers THIS process only. unit_tests and census_7 run "
+          "pytest through subprocess, and behavioural_matrix fans out through "
+          "multiprocessing, so a connection opened in a child process is not seen. "
+          "Phase 2 stages are not guarded. See docs/pgen_contract.md §10.")
 
 
 def _print_stage_ledger(ledger: "StageLedger", phase: Optional[int]) -> list:

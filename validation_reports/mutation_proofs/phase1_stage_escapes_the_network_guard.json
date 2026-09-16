@@ -1,18 +1,20 @@
 {
  "asserts": [
-  "operator_doc_covers_registry"
+  "phase1_hermetic"
  ],
  "baseline_exit": 0,
  "baseline_markers_already_present": [],
  "baseline_must_not_contain": [
-  "test_missing_operator_document_is_a_named_failure && failed"
+  "test_a_phase1_stage_reaching_the_network_is_named"
  ],
  "command": [
   "pytest",
-  "tests/unit/test_stage_ledger.py::TestDocumentationDriftEndToEnd::test_missing_operator_document_is_a_named_failure",
-  "-q"
+  "tests/unit/test_phase1_hermetic.py",
+  "-q",
+  "-p",
+  "no:cacheprovider"
  ],
- "definition_digest": "6cdb2fa5182b883450bb6f5ead481e4b938d256c776dc08977e1ca5c8e741e5e",
+ "definition_digest": "17a2437fa55fcd956b0f792aa7e02e7db833d5480a016f3d9c406a219e70f628",
  "detected": true,
  "diagnostic_line": "exit 1 — =================================== FAILURES ===================================",
  "environment": {
@@ -23,24 +25,22 @@
   "system": "Darwin"
  },
  "expect_output_contains": [
-  "test_missing_operator_document_is_a_named_failure",
-  "failed"
+  "test_a_phase1_stage_reaching_the_network_is_named"
  ],
- "expected_check": "an absent operator guide is a named failure, never a skipped check",
- "finished_at": "2026-09-16T17:38:56+08:00",
+ "expected_check": "the Phase 1 network guard (an outbound connection is named, not silent)",
+ "finished_at": "2026-09-16T17:39:09+08:00",
  "input_digest": "922b182a1356cb9fb0eec7dc1463b6bd6ec9cccf547b8ab1debb93fabdd810ec",
  "mutated_paths": [
   "backend/app/practice_gen/validation/run_all.py"
  ],
- "mutation": "missing_operator_document_accepted",
+ "mutation": "phase1_stage_escapes_the_network_guard",
  "observed_markers": {
-  "failed": true,
-  "test_missing_operator_document_is_a_named_failure": true
+  "test_a_phase1_stage_reaching_the_network_is_named": true
  },
  "paths_outside_input_set": [],
  "phase1_admissible": true,
  "planted_exit": 1,
  "restored_clean": true,
  "schema_version": 1,
- "started_at": "2026-09-16T17:38:53+08:00"
+ "started_at": "2026-09-16T17:39:06+08:00"
 }

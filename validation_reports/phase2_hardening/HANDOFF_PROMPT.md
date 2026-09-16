@@ -1,6 +1,6 @@
 # Handoff — continue the Phase 2 hardening plan
 
-**Rewritten 2026-09-16, current as of the H-04 release-sweep commit on top of `2152ffca`.
+**Rewritten 2026-09-16, current as of the `phase1_hermetic` commit on top of `2152ffca`.
 This file is deliberately a POINTER, not a summary.**
 
 Earlier versions of this file duplicated the plan's status and then drifted from it: on
@@ -33,17 +33,22 @@ carries a live Neon URL and the verdict used to depend on whether you remembered
 PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.run_all
 ```
 
-**That is not hermeticity, and the handoff says so.** The socket guard runs in §10 alone;
-building a Phase-1-wide hermeticity gate is owed work with a clean baseline available today.
+**Pinning is configuration; the enforcement was built on 2026-09-16.** Every Phase 1 stage
+body now runs inside the socket guard and `phase1_stage_escapes_the_network_guard` proves it.
+It is NOT total, and the plan says exactly where it stops: the guard patches one interpreter,
+so a connection opened inside a child of `unit_tests`, `census_7` or `behavioural_matrix` is
+invisible, and Phase 2 is unguarded.
 
 **The Definition of Done is NOT met, and no artifact in this repository claims it is.**
 **Three** stages are red: 1,158 Phase 2 review findings, 218 attestation findings, and the
 two mutation clusters. Every red is named and none is warning-only. Do not report a green
 subset as completion.
 
-H-04's release sweep was the fourth red and was **executed 2026-09-16** — 9,311.991s over
-six shards, 576,315 cache keys, 2,305,260 executions, 0 failures — so
-`obligation_manifest_11` is green. **Read the plan's trap 9 before you edit anything under
+H-04's release sweep was the fourth red and was **executed 2026-09-16** — and then executed
+a SECOND time the same day, because the hermeticity work moved the source digest and stale
+receipts are correctly refused. The standing figures are the second sweep's: 9,293.585s over
+six shards, 576,315 cache keys, 2,305,260 executions, 0 failures, so `obligation_manifest_11`
+is green. **Read the plan's trap 9 before you edit anything under
 `INPUT_ROOTS`:** those receipts bind an exact source digest, so the next source edit re-reds
 §11 and costs another 2.59h. Sequence source work BEFORE a sweep, never after.
 
