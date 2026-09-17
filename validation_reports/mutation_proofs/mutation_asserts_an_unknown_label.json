@@ -2,17 +2,21 @@
  "asserts": [
   "assertion_asserts_unknown_8"
  ],
- "baseline_exit": 1,
+ "baseline_exit": 0,
  "baseline_markers_already_present": [],
  "baseline_must_not_contain": [
-  "no validator declares"
+  "test_no_mutation_asserts_a_label_nothing_declares"
  ],
  "command": [
-  "backend.app.practice_gen.validation.validate_coverage"
+  "pytest",
+  "tests/unit/test_coverage_selfcheck.py",
+  "-q",
+  "-p",
+  "no:cacheprovider"
  ],
- "definition_digest": "52e9dbaf60215480bc08ec0b3e256b35633f9d91048c14f4a2c28d03592017bf",
- "detected": false,
- "diagnostic_line": "INVALID — the unmutated command baseline exited 1; this mutation cannot distinguish the planted bug from a pre-existing failure.",
+ "definition_digest": "86410298547a5c38f532afd0a17760c24a1e3fce531dd28ee5eaa463fba0748c",
+ "detected": true,
+ "diagnostic_line": "exit 1 — =================================== FAILURES ===================================",
  "environment": {
   "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
   "machine": "x86_64",
@@ -21,18 +25,22 @@
   "system": "Darwin"
  },
  "expect_output_contains": [
-  "option_placementt && no validator declares"
+  "test_no_mutation_asserts_a_label_nothing_declares"
  ],
  "expected_check": "§8 (a mutation asserting a label no validator declares)",
- "finished_at": "2026-09-17T05:38:41+08:00",
- "input_digest": "e02e03f10b0fff697491ffbf2c3d5cbc2c6caad287b63b22b3456bf756e6d22a",
- "mutated_paths": [],
+ "finished_at": "2026-09-17T18:02:13+08:00",
+ "input_digest": "9ba8e76048b8c1d31f156b22dec4f202e5a98d01c99552593cd7ecaf1926f4f5",
+ "mutated_paths": [
+  "tests/mutation_harness.py"
+ ],
  "mutation": "mutation_asserts_an_unknown_label",
- "observed_markers": {},
+ "observed_markers": {
+  "test_no_mutation_asserts_a_label_nothing_declares": true
+ },
  "paths_outside_input_set": [],
  "phase1_admissible": true,
- "planted_exit": null,
+ "planted_exit": 1,
  "restored_clean": true,
  "schema_version": 1,
- "started_at": "2026-09-17T05:38:39+08:00"
+ "started_at": "2026-09-17T18:02:07+08:00"
 }

@@ -2,17 +2,21 @@
  "asserts": [
   "check_phase_registry_8"
  ],
- "baseline_exit": 1,
+ "baseline_exit": 0,
  "baseline_markers_already_present": [],
  "baseline_must_not_contain": [
-  "declares no phase"
+  "test_every_contract_check_declares_the_phase_it_runs_in"
  ],
  "command": [
-  "backend.app.practice_gen.validation.validate_coverage"
+  "pytest",
+  "tests/unit/test_coverage_selfcheck.py",
+  "-q",
+  "-p",
+  "no:cacheprovider"
  ],
- "definition_digest": "556cef37e76e87d014fd39c7c0469690b133b9e7db9d85934c31c77646140ad1",
- "detected": false,
- "diagnostic_line": "INVALID — the unmutated command baseline exited 1; this mutation cannot distinguish the planted bug from a pre-existing failure.",
+ "definition_digest": "589b07e77b5a1d0b95464e21119e0a3c5f86ba608ef9de18cf8095f86a65c14a",
+ "detected": true,
+ "diagnostic_line": "exit 1 — =================================== FAILURES ===================================",
  "environment": {
   "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
   "machine": "x86_64",
@@ -21,18 +25,22 @@
   "system": "Darwin"
  },
  "expect_output_contains": [
-  "§9 && declares no phase"
+  "test_every_contract_check_declares_the_phase_it_runs_in"
  ],
  "expected_check": "§8 (every contract check declares the phase it runs in)",
- "finished_at": "2026-09-17T05:38:35+08:00",
- "input_digest": "e02e03f10b0fff697491ffbf2c3d5cbc2c6caad287b63b22b3456bf756e6d22a",
- "mutated_paths": [],
+ "finished_at": "2026-09-17T18:01:56+08:00",
+ "input_digest": "9ba8e76048b8c1d31f156b22dec4f202e5a98d01c99552593cd7ecaf1926f4f5",
+ "mutated_paths": [
+  "backend/app/practice_gen/validation/_manifest.py"
+ ],
  "mutation": "contract_check_declares_no_phase",
- "observed_markers": {},
+ "observed_markers": {
+  "test_every_contract_check_declares_the_phase_it_runs_in": true
+ },
  "paths_outside_input_set": [],
  "phase1_admissible": true,
- "planted_exit": null,
+ "planted_exit": 1,
  "restored_clean": true,
  "schema_version": 1,
- "started_at": "2026-09-17T05:38:33+08:00"
+ "started_at": "2026-09-17T18:01:50+08:00"
 }

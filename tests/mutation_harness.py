@@ -2270,12 +2270,20 @@ MUTATIONS: List[Mutation] = [
             "validate_matrix alone emits 26 assertion labels behind ~11 refs."
         ),
         edits={
+            # RE-ANCHORED 2026-09-17. The previous anchor was the `worker_crash` allowlist
+            # entry, which no longer exists -- the allowlist shrank from 29 entries to 11,
+            # and this plant had been matching ZERO lines. It could never land, so the
+            # mutation could never have been DETECTED even against a green baseline. The
+            # red baseline hid it: the runner rejects on the baseline BEFORE it plants, so
+            # the anchor was never exercised. Mandate 2's two causes, both present at once.
+            # `census_unit_tests` is a permanent resident (proving it means shrinking the
+            # suite), so it is a more stable anchor than an infrastructure label.
             "backend/app/practice_gen/validation/validate_coverage.py": (
-                '    "worker_crash":                 "2026-08-28: infrastructure label, not a content assertion",\n',
+                '    "census_unit_tests":            "2026-09-08: the unit-test floor. Proving it means shrinking the suite under the harness, which the mutation runner cannot restore safely if interrupted mid-collection",\n',
                 '    # planted mutation: allowlist entry removed, no mutation written\n',
             )
         },
-        command=["backend.app.practice_gen.validation.validate_coverage"],
+        command=["pytest", "tests/unit/test_coverage_selfcheck.py", "-q", "-p", "no:cacheprovider"],
         expected_check="§8 (every assertion is proven by a mutation or on a shrinking allowlist)",
         # The marker names the planted LABEL, and the baseline guard does too. It used to
         # be the bare rollup line "FAIL assertion_coverage", which stopped discriminating
@@ -2284,8 +2292,8 @@ MUTATIONS: List[Mutation] = [
         # reports every not-yet-proven label. That made this mutation score INVALID
         # against a baseline it had itself caused. The specific conjunction survives a red
         # baseline, which is what a mutation's guard has to do.
-        expect_output_contains=["worker_crash' can fail but no mutation proves it"],
-        baseline_must_not_contain=["worker_crash' can fail but no mutation proves it"],
+        expect_output_contains=["test_every_assertion_is_proven_or_excused"],
+        baseline_must_not_contain=["test_every_assertion_is_proven_or_excused"],
     ),
     Mutation(
         name="source_edited_without_reproof",
@@ -2297,22 +2305,30 @@ MUTATIONS: List[Mutation] = [
             "run's green. This is the direction that makes execution-proof worth having: a "
             "proof that cannot go stale is a checkbox with a digest on it."
         ),
+        # RE-AIMED 2026-09-17, from the SYMPTOM to the MECHANISM, and this one could not
+        # simply be redirected like its seven siblings. The old plant added a comment to
+        # `dna/base.py`, moving the input digest so every record on disk went stale. No
+        # unit test can hold that still: `tree_moved` is true when ANY record is stale, so
+        # during the ~70-minute table run the corpus is legitimately mixed and such a test
+        # is red for a reason that is not the plant. That is trap 2's self-poisoning, and
+        # routing it through a test module would have re-poisoned the baseline of all
+        # seven other mutations in that file.
+        #
+        # So it now plants into the comparison that makes staleness detectable at all, and
+        # the test builds a stale record by hand. NAMED LIMIT: this proves the digest
+        # comparison in `verify_proof` is live, NOT the end-to-end claim that editing
+        # pipeline source reds §8. That end-to-end direction remains unproven and is named
+        # in the contract row.
         edits={
-            # A comment in a DNA base class: a real edit to a real input, chosen because it
-            # changes no behaviour at all. The point is precisely that §8 must object to an
-            # unproved edit WITHOUT needing to know whether it mattered.
-            "backend/app/practice_gen/dna/base.py": (
-                "from __future__ import annotations\n",
-                "from __future__ import annotations\n# planted mutation: an unproved source edit\n",
+            "backend/app/practice_gen/validation/mutation_proof.py": (
+                '    if record["input_digest"] != current_input_digest:\n',
+                '    if False:  # planted mutation: a proof from another tree is accepted\n',
             )
         },
-        command=["backend.app.practice_gen.validation.validate_coverage"],
+        command=["pytest", "tests/unit/test_coverage_selfcheck.py", "-q", "-p", "no:cacheprovider"],
         expected_check="§8 (an executed-mutation proof record that no longer describes the tree)",
-        expect_output_contains=[
-            "FAIL mutation_proof_integrity_8",
-            "different source/fixture tree",
-        ],
-        baseline_must_not_contain=["different source/fixture tree"],
+        expect_output_contains=["test_a_proof_from_a_different_tree_is_rejected"],
+        baseline_must_not_contain=["test_a_proof_from_a_different_tree_is_rejected"],
     ),
     # ---------------------------------------------------------------------------
     # §1J / §1K -- the two bounded lints on what a pupil READS, added 2026-09-12 while
@@ -2985,10 +3001,10 @@ MUTATIONS: List[Mutation] = [
                 '    # planted mutation: §9 phase removed\n',
             ),
         },
-        command=["backend.app.practice_gen.validation.validate_coverage"],
+        command=["pytest", "tests/unit/test_coverage_selfcheck.py", "-q", "-p", "no:cacheprovider"],
         expected_check="§8 (every contract check declares the phase it runs in)",
-        expect_output_contains=["§9 && declares no phase"],
-        baseline_must_not_contain=["declares no phase"],
+        expect_output_contains=["test_every_contract_check_declares_the_phase_it_runs_in"],
+        baseline_must_not_contain=["test_every_contract_check_declares_the_phase_it_runs_in"],
     ),
     # ---- §8's own four extra directions ------------------------------------------
     #
@@ -2996,6 +3012,28 @@ MUTATIONS: List[Mutation] = [
     # may not be is unproven itself. Its first direction (inventoried, unproven, not
     # excused) is `coverage_map_gap` above; these four cover the rest. All are cheap --
     # validate_coverage parses source and imports the validation package, no generation.
+    #
+    # ALL EIGHT §8 MUTATIONS RUN A UNIT TEST, NOT `validate_coverage` (2026-09-17)
+    # ---------------------------------------------------------------------------
+    # Their live catcher used to be `validate_coverage` itself, and every one of them
+    # scored INVALID rather than DETECTED, because that command's baseline exits 1. This
+    # was the SELF-REFERENCE DEADLOCK named in the plan: §8 is red because these labels
+    # are unproven, and these labels are unproven because §8 is red. The documented
+    # delete-and-rerun remedy was executed on 2026-09-16 and 3 of 4 attempts stayed
+    # INVALID -- re-running does not break a circle.
+    #
+    # `tests/unit/test_coverage_selfcheck.py` drives the REAL `validate_coverage_tagged`
+    # over the REAL tree with ONE thing stubbed: `_proof_state`. Measured 2026-09-17, all
+    # 10 of §8's errors lived in the three proof-state families and the five bookkeeping
+    # families these mutations target carried zero, so stubbing that one seam yields a
+    # clean control without touching the code a plant has to travel.
+    #
+    # WHAT IT TRADES: these prove the bookkeeping directions against a coverage state in
+    # which proof records are ASSUMED CURRENT. §8's execution accounting -- a record that
+    # fails verification, a per-label stale digest, `never_executed` vs
+    # `proof_does_not_hold` -- is stubbed out and stays provable only against a green live
+    # corpus. Same trade H-03's row already names for the stage-ledger mutations, and it
+    # is recorded in `docs/pgen_contract.md` and the test module's docstring.
     Mutation(
         name="allowlist_keeps_a_paid_debt",
         asserts=["assertion_allowlist_paid_8"],
@@ -3012,10 +3050,10 @@ MUTATIONS: List[Mutation] = [
                 '    # ---- §1* validate_matrix ---',
             ),
         },
-        command=["backend.app.practice_gen.validation.validate_coverage"],
+        command=["pytest", "tests/unit/test_coverage_selfcheck.py", "-q", "-p", "no:cacheprovider"],
         expected_check="§8 (an allowlisted assertion a mutation now proves)",
-        expect_output_contains=["vocabulary_gating && now proves it"],
-        baseline_must_not_contain=["now proves it"],
+        expect_output_contains=["test_the_allowlist_holds_no_paid_debt"],
+        baseline_must_not_contain=["test_the_allowlist_holds_no_paid_debt"],
     ),
     Mutation(
         name="allowlist_names_a_phantom_label",
@@ -3035,10 +3073,10 @@ MUTATIONS: List[Mutation] = [
                 '    # ---- §1* validate_matrix ---',
             ),
         },
-        command=["backend.app.practice_gen.validation.validate_coverage"],
+        command=["pytest", "tests/unit/test_coverage_selfcheck.py", "-q", "-p", "no:cacheprovider"],
         expected_check="§8 (an allowlist entry naming a label nothing emits)",
-        expect_output_contains=["worker_crash_typo && excuses nothing"],
-        baseline_must_not_contain=["excuses nothing"],
+        expect_output_contains=["test_the_allowlist_names_no_phantom_label"],
+        baseline_must_not_contain=["test_the_allowlist_names_no_phantom_label"],
     ),
     Mutation(
         name="mutation_asserts_an_unknown_label",
@@ -3056,10 +3094,10 @@ MUTATIONS: List[Mutation] = [
                 '        asserts=[\'option_placementt\'],  # planted mutation\n',
             ),
         },
-        command=["backend.app.practice_gen.validation.validate_coverage"],
+        command=["pytest", "tests/unit/test_coverage_selfcheck.py", "-q", "-p", "no:cacheprovider"],
         expected_check="§8 (a mutation asserting a label no validator declares)",
-        expect_output_contains=["option_placementt && no validator declares"],
-        baseline_must_not_contain=["no validator declares"],
+        expect_output_contains=["test_no_mutation_asserts_a_label_nothing_declares"],
+        baseline_must_not_contain=["test_no_mutation_asserts_a_label_nothing_declares"],
     ),
     Mutation(
         name="undeclared_check_reports_itself",
@@ -3078,10 +3116,10 @@ MUTATIONS: List[Mutation] = [
                 '        print("  FAIL undeclared_planted_check: nobody declared me")\n',
             ),
         },
-        command=["backend.app.practice_gen.validation.validate_coverage"],
+        command=["pytest", "tests/unit/test_coverage_selfcheck.py", "-q", "-p", "no:cacheprovider"],
         expected_check="§8 (a printed FAIL label no module declares)",
-        expect_output_contains=["undeclared_planted_check && no module declares"],
-        baseline_must_not_contain=["no module declares"],
+        expect_output_contains=["test_every_printed_fail_label_is_declared"],
+        baseline_must_not_contain=["test_every_printed_fail_label_is_declared"],
     ),
     Mutation(
         name="emoji_pictorial_draws_a_different_operation",
@@ -3761,11 +3799,10 @@ MUTATIONS: List[Mutation] = [
                 "            d = p if isinstance(p, dict) else p.__dict__\n",
             )
         },
-        command=["backend.app.practice_gen.validation.validate_coverage"],
+        command=["pytest", "tests/unit/test_coverage_selfcheck.py", "-q", "-p", "no:cacheprovider"],
         expected_check="§8 (every silent handler carries a recorded disposition)",
-        expect_output_contains=["FAIL silent_path_disposition_8",
-                                "does nothing but"],
-        baseline_must_not_contain=["FAIL silent_path_disposition_8"],
+        expect_output_contains=["test_every_silent_handler_carries_a_disposition"],
+        baseline_must_not_contain=["test_every_silent_handler_carries_a_disposition"],
     ),
     # ── The judgment packet's sample allocation (plan step 2) ──────────────────────
     Mutation(

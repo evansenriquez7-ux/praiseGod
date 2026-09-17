@@ -2,17 +2,21 @@
  "asserts": [
   "mutation_proof_integrity_8"
  ],
- "baseline_exit": 1,
+ "baseline_exit": 0,
  "baseline_markers_already_present": [],
  "baseline_must_not_contain": [
-  "different source/fixture tree"
+  "test_a_proof_from_a_different_tree_is_rejected"
  ],
  "command": [
-  "backend.app.practice_gen.validation.validate_coverage"
+  "pytest",
+  "tests/unit/test_coverage_selfcheck.py",
+  "-q",
+  "-p",
+  "no:cacheprovider"
  ],
- "definition_digest": "e78a04a588dbb472213494c1c3035496c9c0d6d7865ff0c0e6c9afa2824e6f97",
- "detected": false,
- "diagnostic_line": "INVALID — the unmutated command baseline exited 1; this mutation cannot distinguish the planted bug from a pre-existing failure.",
+ "definition_digest": "9813003a402ecf187f9261343d1491c333863d7cfb886b5c97fee7db658be114",
+ "detected": true,
+ "diagnostic_line": "exit 1 — =================================== FAILURES ===================================",
  "environment": {
   "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
   "machine": "x86_64",
@@ -21,19 +25,22 @@
   "system": "Darwin"
  },
  "expect_output_contains": [
-  "FAIL mutation_proof_integrity_8",
-  "different source/fixture tree"
+  "test_a_proof_from_a_different_tree_is_rejected"
  ],
  "expected_check": "§8 (an executed-mutation proof record that no longer describes the tree)",
- "finished_at": "2026-09-17T05:29:32+08:00",
- "input_digest": "e02e03f10b0fff697491ffbf2c3d5cbc2c6caad287b63b22b3456bf756e6d22a",
- "mutated_paths": [],
+ "finished_at": "2026-09-17T17:52:49+08:00",
+ "input_digest": "9ba8e76048b8c1d31f156b22dec4f202e5a98d01c99552593cd7ecaf1926f4f5",
+ "mutated_paths": [
+  "backend/app/practice_gen/validation/mutation_proof.py"
+ ],
  "mutation": "source_edited_without_reproof",
- "observed_markers": {},
+ "observed_markers": {
+  "test_a_proof_from_a_different_tree_is_rejected": true
+ },
  "paths_outside_input_set": [],
  "phase1_admissible": true,
- "planted_exit": null,
+ "planted_exit": 1,
  "restored_clean": true,
  "schema_version": 1,
- "started_at": "2026-09-17T05:29:31+08:00"
+ "started_at": "2026-09-17T17:52:44+08:00"
 }

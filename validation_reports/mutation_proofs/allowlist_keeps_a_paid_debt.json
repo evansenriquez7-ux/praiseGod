@@ -2,19 +2,21 @@
  "asserts": [
   "assertion_allowlist_paid_8"
  ],
- "baseline_exit": 1,
- "baseline_markers_already_present": [
-  "now proves it"
- ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
  "baseline_must_not_contain": [
-  "now proves it"
+  "test_the_allowlist_holds_no_paid_debt"
  ],
  "command": [
-  "backend.app.practice_gen.validation.validate_coverage"
+  "pytest",
+  "tests/unit/test_coverage_selfcheck.py",
+  "-q",
+  "-p",
+  "no:cacheprovider"
  ],
- "definition_digest": "ad754deb22a8eb14b899040972dcddabebcc1342a3e06abd39d727a706535a3e",
- "detected": false,
- "diagnostic_line": "INVALID — the unmutated command baseline exited 1 and already reports ['now proves it']; this mutation cannot distinguish the planted bug from a pre-existing failure.",
+ "definition_digest": "aeb2655c30aa1d897d6a202222b0586a615782df80b42e71d1f5a598e7436b73",
+ "detected": true,
+ "diagnostic_line": "exit 1 — =================================== FAILURES ===================================",
  "environment": {
   "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
   "machine": "x86_64",
@@ -23,18 +25,22 @@
   "system": "Darwin"
  },
  "expect_output_contains": [
-  "vocabulary_gating && now proves it"
+  "test_the_allowlist_holds_no_paid_debt"
  ],
  "expected_check": "§8 (an allowlisted assertion a mutation now proves)",
- "finished_at": "2026-09-17T05:38:37+08:00",
- "input_digest": "e02e03f10b0fff697491ffbf2c3d5cbc2c6caad287b63b22b3456bf756e6d22a",
- "mutated_paths": [],
+ "finished_at": "2026-09-17T18:02:01+08:00",
+ "input_digest": "9ba8e76048b8c1d31f156b22dec4f202e5a98d01c99552593cd7ecaf1926f4f5",
+ "mutated_paths": [
+  "backend/app/practice_gen/validation/validate_coverage.py"
+ ],
  "mutation": "allowlist_keeps_a_paid_debt",
- "observed_markers": {},
+ "observed_markers": {
+  "test_the_allowlist_holds_no_paid_debt": true
+ },
  "paths_outside_input_set": [],
  "phase1_admissible": true,
- "planted_exit": null,
+ "planted_exit": 1,
  "restored_clean": true,
  "schema_version": 1,
- "started_at": "2026-09-17T05:38:35+08:00"
+ "started_at": "2026-09-17T18:01:56+08:00"
 }

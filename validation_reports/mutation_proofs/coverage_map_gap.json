@@ -2,17 +2,21 @@
  "asserts": [
   "assertion_coverage_8"
  ],
- "baseline_exit": 1,
+ "baseline_exit": 0,
  "baseline_markers_already_present": [],
  "baseline_must_not_contain": [
-  "worker_crash' can fail but no mutation proves it"
+  "test_every_assertion_is_proven_or_excused"
  ],
  "command": [
-  "backend.app.practice_gen.validation.validate_coverage"
+  "pytest",
+  "tests/unit/test_coverage_selfcheck.py",
+  "-q",
+  "-p",
+  "no:cacheprovider"
  ],
- "definition_digest": "20442ec878e21e1550fb613d13056afb3aed5717308f9bb56a6a6960572c2dae",
- "detected": false,
- "diagnostic_line": "INVALID — the unmutated command baseline exited 1; this mutation cannot distinguish the planted bug from a pre-existing failure.",
+ "definition_digest": "70c0ca0fa32640bb32317c34aa0496e6e5b4252d198e58dd5e52e9f99530dc29",
+ "detected": true,
+ "diagnostic_line": "exit 1 — =================================== FAILURES ===================================",
  "environment": {
   "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
   "machine": "x86_64",
@@ -21,18 +25,22 @@
   "system": "Darwin"
  },
  "expect_output_contains": [
-  "worker_crash' can fail but no mutation proves it"
+  "test_every_assertion_is_proven_or_excused"
  ],
  "expected_check": "§8 (every assertion is proven by a mutation or on a shrinking allowlist)",
- "finished_at": "2026-09-17T05:29:31+08:00",
- "input_digest": "e02e03f10b0fff697491ffbf2c3d5cbc2c6caad287b63b22b3456bf756e6d22a",
- "mutated_paths": [],
+ "finished_at": "2026-09-17T17:52:44+08:00",
+ "input_digest": "9ba8e76048b8c1d31f156b22dec4f202e5a98d01c99552593cd7ecaf1926f4f5",
+ "mutated_paths": [
+  "backend/app/practice_gen/validation/validate_coverage.py"
+ ],
  "mutation": "coverage_map_gap",
- "observed_markers": {},
+ "observed_markers": {
+  "test_every_assertion_is_proven_or_excused": true
+ },
  "paths_outside_input_set": [],
  "phase1_admissible": true,
- "planted_exit": null,
+ "planted_exit": 1,
  "restored_clean": true,
  "schema_version": 1,
- "started_at": "2026-09-17T05:29:29+08:00"
+ "started_at": "2026-09-17T17:52:38+08:00"
 }

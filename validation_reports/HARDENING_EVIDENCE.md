@@ -12130,3 +12130,121 @@ $ git status --porcelain -- backend/app tests scripts data frontend/src
 
 **The Definition of Done is NOT met.** The same three stages are red as before this session;
 that identity is the evidence the change regressed nothing. This was content work, not a gate.
+
+## H-02 — the §8 self-reference deadlock, broken (2026-09-17)
+
+**Row: `H-02`, claimed as `session-2026-09-17-H-02-s8-deadlock` before any edit.** Measured on
+`15f5b2fc`, a clean tree whose re-proof chain was verified complete first: all three
+digest-bound artifacts (the six shard receipts, `obligation_benchmark.json`, the 146 mutation
+proofs) carried `input_digest()` = `e02e03f10b0fff69`, and `hardening_status.py` PASSed with
+every row `unclaimed`.
+
+### What was wrong, and it was two things, not one
+
+Eight mutations proving §8's own directions all scored INVALID. The documented cause is the
+SELF-REFERENCE DEADLOCK: their catcher was `validate_coverage`, whose baseline exits 1, and
+Mandate 5 refuses a planted failure without a clean control. §8 is red because these labels
+are unproven; they are unproven because §8 is red. Re-running does not break a circle — the
+delete-and-rerun remedy was tried on 2026-09-16 and 3 of 4 attempts stayed INVALID.
+
+**The red baseline was also hiding a SECOND, independent defect, which is Mandate 2's other
+cause.** `coverage_map_gap` anchored its plant on the `worker_crash` allowlist entry:
+
+```text
+$ grep -n "worker_crash" backend/app/practice_gen/validation/validate_coverage.py
+  (no output)
+$ python -c "...; print(len(vc.UNPROVEN_ASSERTIONS))"
+  11 entries          # the allowlist shrank from 29; worker_crash left it
+```
+
+That plant had been matching **zero lines**. It could never have landed, so the mutation could
+never have been DETECTED even against a perfectly green baseline. It went unseen because the
+runner rejects on the baseline BEFORE it plants, so the anchor was never exercised. A moved
+anchor and a red baseline were present at once, and only one of them was documented.
+
+### The fix
+
+`tests/unit/test_coverage_selfcheck.py` drives the REAL `validate_coverage_tagged` over the
+REAL tree with exactly ONE seam stubbed, `_proof_state`. The stub is admissible because the
+red is confined to it — measured before writing a line of it:
+
+```text
+$ ... validate_coverage_tagged() with `_proof_state` stubbed
+  errors under stub: 0
+  families: {}
+```
+
+All 10 of §8's errors sat in the three proof-state families; the five bookkeeping families the
+mutations target carried zero. So the stub buys a clean control without touching the path a
+plant travels. `coverage_map_gap` was re-anchored to `census_unit_tests`, a permanent allowlist
+resident. `source_edited_without_reproof` was re-aimed from the symptom to the mechanism.
+
+### Evidence
+
+```text
+$ DATABASE_URL= PYTHONPATH=. .venv/bin/python -m pytest tests/unit/test_coverage_selfcheck.py -q
+15 passed in 2.30s
+
+$ DATABASE_URL= PYTHONPATH=. .venv/bin/python -m pytest tests/unit -q
+737 passed, 1 skipped, 2 deselected, 4 warnings in 653.33s      # +15 over 722, no collateral change
+
+$ DATABASE_URL= PYTHONPATH=. .venv/bin/python -m tests.obligation_executor --tier benchmark --sample-size 1000
+cache_keys=1000 represented_executions=4000 elapsed=16.213s median=7.125ms p95=29.552ms failures=0
+projected_release=2.596h recommended_shards=6 projected_per_shard=25.955m
+
+$ DATABASE_URL= PYTHONPATH=. .venv/bin/python tests/mutation_harness.py
+143/146 mutations detected.                                      # was 135/146
+A surviving mutation is a hole in the harness, not a harmless gap:
+  - contradicted_attestation: nothing enforces §6F (blind Attester verdict contradicted by the table)
+  - attestation_drops_options: nothing enforces §6F adjudicability (an attestation must carry the choices it was shown)
+  - attestation_leaks_into_phase1: nothing enforces §6 phase boundary (Phase 1 must run with the attestation corpus absent)
+```
+
+All eight, in the FULL table run, each observing its OWN named test:
+
+```text
+allowlist_keeps_a_paid_debt            detected=True base=0 planted=1 digest=9ba8e76048b8
+allowlist_names_a_phantom_label        detected=True base=0 planted=1 digest=9ba8e76048b8
+contract_check_declares_no_phase       detected=True base=0 planted=1 digest=9ba8e76048b8
+coverage_map_gap                       detected=True base=0 planted=1 digest=9ba8e76048b8
+mutation_asserts_an_unknown_label      detected=True base=0 planted=1 digest=9ba8e76048b8
+silent_handler_without_a_disposition   detected=True base=0 planted=1 digest=9ba8e76048b8
+source_edited_without_reproof          detected=True base=0 planted=1 digest=9ba8e76048b8
+undeclared_check_reports_itself        detected=True base=0 planted=1 digest=9ba8e76048b8
+```
+
+`base=0` is the whole point: that column read 1 for all eight before this session, and it is
+what Mandate 5 was rejecting.
+
+**Trap 2 is neutralised for `source_edited_without_reproof`.** Its old form self-poisoned
+during exactly this run — the corpus is legitimately mixed mid-table, which made its own
+baseline red and left its failed record keeping the baseline red forever. It now scores `base=0`
+in a full run.
+
+```text
+$ DATABASE_URL= PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_coverage
+FAIL mutation_proof_integrity_8 (9 in 3 families)        # was 33
+PASS silent_path_disposition_8: all 17 silent handler(s) carry a recorded disposition
+FAIL assertion_coverage_8 (3 in 1 family)                # was 10
+```
+
+Every one of the remaining 3 + 9 errors names a §6F mutation. Nothing of §8's own remains.
+
+### What this does NOT prove — the trade, named in three places
+
+Recorded in the test module docstring, the `tests/mutation_harness.py` cluster comment, and the
+`validate_coverage` §8 row of `docs/pgen_contract.md`:
+
+- §8's **execution accounting** is stubbed out and remains unproven: that a record failing
+  verification is reported, that a stale digest is caught per label, that `never_executed` and
+  `proof_does_not_hold` are told apart. Those need a green live corpus, which waits on §6F.
+- `source_edited_without_reproof` now proves only that the digest comparison in
+  `mutation_proof.verify_proof` is live — NOT the end-to-end claim that editing pipeline source
+  reds §8. No unit test can hold that still, because `tree_moved` is true whenever ANY record is
+  stale and the corpus is legitimately mixed during the table run.
+- This is the same trade `H-03`'s row already names for the stage-ledger mutations: "proved
+  against the real gate" exchanged for "proved at all".
+
+**The Definition of Done is NOT met.** `assertion_coverage_8` is still red, on 3 errors instead
+of 10, and `judgment_reviews_5` and `capability_phase2` are untouched by this work. The §6F
+cluster is downstream of M2's attestation queue, not of any harness work.
