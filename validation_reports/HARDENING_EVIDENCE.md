@@ -12016,3 +12016,117 @@ annotation that changes no behaviour would re-red the corpus, the six receipts a
 benchmark for another ~3.7h. Per trap 9 this is batched with the next source edit under this
 row — whoever generalises the containment rule updates both in one commit. Until then this
 entry and the plan's `START HERE` carry the ruling.
+
+## The interest-bank repair under the owner's containment rule (2026-09-17)
+
+**Owner ruling that drove this**, given after CSI-R4 was raised: *"'hamster cages' dont
+normally fit in a basket. however, 'hamsters' could fit in a basket"*, and, asked where the
+remedy should live, the owner chose **fix the interest bank** over a declared-affordance layer
+or a generalised substitution table.
+
+### The rule indicted far more than the substitution ever reached
+
+Applying "would normally fit in a typical basket" to every object that can reach a containment
+frame produced **three classes**, only the first of which the `baskets`->`figs` hack addresses.
+Five frames are involved -- `add_putting_together`, `add_combination`, `sub_taking_away_table`,
+`sub_how_many_left`, `div_how_many_groups`. Rendered through the real `Spine.render`, not
+imagined:
+
+```text
+CLASS 1  container-in-container
+  One basket has 28 hamster cages. Another basket has 60 hamster cages.
+CLASS 2  physical but too big                                    (LIVE at G1-3 today)
+  One basket has 28 bicycles. / 28 nets. / 28 sheep.
+  There are 28 bicycles on the table. Kuya Chad takes away 60 bicycles.
+CLASS 3  not physical at all                            (ALL in grade-5+ themes)
+  There were 28 ranked matches in a box. 60 ranked matches were taken out.
+  One basket has 28 subscribers. / 28 game lives. / 28 game servers.
+```
+
+**Class 3 is the scaling finding.** Every instance sits in a theme whose `grade_band` starts
+at 5 or 6, so none is reachable at G1-3 and none would have been seen by eye. They are
+guaranteed the moment grade 5 is built — debt inherited by a grade that does not exist yet,
+which is the exact shape Mandate 4 exists to catch. It is also why substitution alone could
+not be the remedy: there is no physical substitute for "ranked matches" that stays on theme.
+
+### What was changed
+
+`data/interest_bank.json`, **16 of 26 themes, 16 lines, `objects` only**. Scope was verified
+rather than assumed: `item1`/`item2` never reach a containment frame (they appear only in
+`add_join`, `meas_object`, `meas_difference`, `data_bar_read`), so 160 entries were in scope,
+not 368. `bible/baskets` was deliberately left in place so the `figs` substitution the owner
+ruled to keep still fires.
+
+Two pre-checks that could each have broken §1J:
+
+```text
+$ grep -rl "<each removed string>" --include="*.py" --include="*.ts" --include="*.tsx" backend tests frontend/src
+  only live hit: backend/app/practice_gen/dna/base.py::_SINGULAR_IRREGULARS  "canvases": "canvas"
+  -> left in place; it is a general inflection rule, not bank-specific
+
+$ to_singular_phrase() on all 36 new words
+  1 hamster / 1 olive / 1 jump rope / 1 arm sleeve / 1 whistle / 1 solar cell / ...
+  all 36 are regular plurals; no new irregular-map entries needed
+```
+
+All 160 objects were then re-rendered through `add_putting_together`; every one now plausibly
+fits a basket.
+
+### What this repair does NOT do — stated because the owner chose it with this visible
+
+**It gates nothing.** It corrects today's data and adds no check, so the next author to add a
+theme entry can reintroduce any of the three classes with nothing to stop them. The owner
+selected this remedy over a declared-affordance layer with that trade stated in the options.
+It is recorded in `tests/context_semantics_inventory.py` under `CSI-R4.NAMED_LIMITATION`, and
+the containment assertion should be added when the binding §1L row is.
+
+**The inventory's container detector now over-flags relative to the rule.** Its criterion is
+"the head noun names a container", which is broader than "fits in a basket". Thirteen entries
+still carry the flag -- `jars`, `water bottles`, `bags of flour`, `eco bags` -- and every one
+satisfies the owner's rule. The only true container-in-container left is `bible/baskets`,
+which is substituted. A flag there is a LEAD, not a finding; **do not work that list to zero.**
+
+**CSI-R3 was not resolved.** `volleyball.objects` still contains `shuttlecocks`, which is
+badminton equipment in a volleyball theme. It fits a basket, so it is outside this ruling.
+`rackets` was replaced only because a racket does not fit a basket, not to fix coherence.
+
+### Re-proof, benchmark-first this time
+
+```text
+[1/5] INVENTORY REGEN 04:51  sources=843 live=299 unmapped_live=0 unresolved=144
+                             unreviewed_frames=0 role_mismatches=7
+[2/5] BENCHMARK       04:55  1000 keys / 4000 executions / 15.667s / failures=0
+                             projected_release=2.508h recommended_shards=6
+[3/5] MUTATION CORPUS 04:56  135/146 detected, 47.6 min
+[4/5] RELEASE SHARDS  05:43  6 shards, failures=0 each, 9,294.262s aggregate (2.582h)
+                             release_status=complete receipts=6 complete=True
+[5/5] RUN_ALL         08:18  scheduled=16 completed=13 failed=3 crashed=0 not_run=0
+                             FAIL assertion_coverage_8 / judgment_reviews_5 / capability_phase2
+                             PASS obligation_manifest_11
+                             SOME ALL TESTS CHECKS FAILED
+```
+
+**135/146 with exactly eleven survivors, and they are precisely the two documented clusters** —
+§6F's three and §8's eight. No twelfth. **That is the trap-9 correction proving itself:** the
+previous run produced `obligation_benchmark_outlives_source` as a twelfth survivor because the
+stale benchmark reddened its baseline; running the benchmark FIRST, as the corrected trap now
+instructs, returned it to DETECTED. The correction was verified by the thing it predicts, not
+by re-reading it.
+
+`count_noun_1J`, `vocabulary`, `interest_invariance` and `behavioural_matrix` all PASS, which
+is what establishes that rewriting 160 learner-visible nouns broke neither agreement nor
+vocabulary gating.
+
+```text
+$ pytest tests/unit -q
+722 passed, 1 skipped, 2 deselected, 4 warnings in 652.01s   (identical to the pre-change run)
+
+$ all seven digest-bound artifacts vs input_digest() e02e03f10b0fff69
+  MATCH x6 shard receipts + MATCH obligation_benchmark.json
+$ git status --porcelain -- backend/app tests scripts data frontend/src
+  M data/interest_bank.json
+  M tests/context_semantics_inventory.py          <- the two intentional edits, nothing planted
+```
+
+**The Definition of Done is NOT met.** The same three stages are red as before this session;
+that identity is the evidence the change regressed nothing. This was content work, not a gate.

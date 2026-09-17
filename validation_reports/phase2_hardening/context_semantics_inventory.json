@@ -3,8 +3,8 @@
  "kind": "context_semantics_inventory",
  "binding": false,
  "contract_reference": "§1L (RESERVED, deliberately NOT registered)",
- "generated_at": "2026-09-16T14:07:52.132025+00:00",
- "head_short": "9dbf9ee5",
+ "generated_at": "2026-09-16T20:55:48.890582+00:00",
+ "head_short": "93d169cc",
  "plan_step": "3A / M1",
  "hardening_row": "H-07",
  "role_vocabulary": {
@@ -94,11 +94,12 @@
    "spine_id": "add_putting_together",
    "rendered": "✝️ Ruth has a math challenge about baskets. One basket has 28 figs. Another basket has 60 figs. If you put all the figs together, how many figs are there?",
    "source": "backend/app/practice_gen/dna/base.py::Spine.render",
+   "status": "ADJUDICATED 2026-09-17 — NOT a defect; see CSI-R4",
    "what_is_wrong": [
-    "The cue promises 'baskets' and the stem delivers 'figs' — a learner-visible contradiction inside one item.",
-    "'figs' is substituted INSIDE Spine.render, after get_interest_slots has applied the node's NOT_YET_KNOWN filter, so it reaches the stem without ever passing the vocabulary gate. Verified: 'figs' is absent from this node's cumulative_vocab.",
+    "SEVERITY CORRECTED. This record first called the cue/stem pair a learner-visible contradiction. That was overstated: the cue names the theme slot value ('baskets') while the stem counts figs INSIDE baskets, which is redundant, not contradictory. The mechanism was right -- the cue fires because the plural 'baskets' does not string-match 'One basket has' in the pre-cue text -- but the severity was not.",
+    "'figs' is substituted INSIDE Spine.render, after get_interest_slots has applied the node's NOT_YET_KNOWN filter, so it reaches the stem without ever passing the vocabulary gate. Verified: 'figs' is absent from this node's cumulative_vocab. Under the owner's ruling that 'figs' is safe at every grade this has no live consequence, but the CHANNEL remains: any future substituted word would travel the same path past the gate.",
     "interest_visible_terms still records 'baskets', so the interest-visibility check is satisfied by a word the stem no longer contains.",
-    "The rule is hard-coded to the single string 'baskets' and fires only when 'basket' appears in the template, so every other container-like object (hamster cages, water bowls, jars) still renders inside a basket."
+    "The rule is hard-coded to the single string 'baskets'. That gap was the real finding and is now CLOSED at the data layer rather than in this rule: the owner's fit criterion indicted objects the substitution never reached -- container-in-container ('hamster cages'), too-big ('bicycles', 'nets', 'sheep'), and NON-PHYSICAL ('ranked matches', 'game lives', 'subscribers', 'game servers', all in grade-5+ themes and therefore invisible at G1-3). 16 of 26 themes had their `objects` rewritten on 2026-09-17."
    ],
    "reproduce": "generate_context(load_dna('addition'), 'mat_g1_na_q2_5', 1, 7, {'context':'word_problem','structure':'result_unknown'}, 'bible')"
   },
@@ -259,9 +260,12 @@
   },
   {
    "id": "CSI-R4",
+   "status": "RULED 2026-09-17 — CLOSED",
    "question": "Should `Spine.render`'s hard-coded 'baskets' -> 'figs' substitution be removed in favour of a declared role rule?",
-   "why": "It is a Mandate 4 stopgap scoped to one string, it contradicts the interest cue in every render that fires it (3 of 3 measured), and it injects a word AFTER the NOT_YET_KNOWN vocabulary filter has run. See CSI-V1.",
-   "blocks": "§1L container-in-container rules, and a vocabulary-gate hole that is §1D's concern rather than §1L's."
+   "ruling": "'figs' is fine for any grade level. As long as a substituted word is something that would normally fit in a typical 'basket', then the substituted word is ok. The substitution is KEPT.",
+   "rule_established": "An object placed inside a container frame must plausibly fit that container.",
+   "remedy_chosen": "Fix the interest bank rather than add a declaration layer or generalise the substitution table. Applied 2026-09-17: the `objects` list of 16 of 26 themes was rewritten so every entry plausibly fits a basket. Only `objects` was touched -- item1/item2 never reach a containment frame.",
+   "NAMED_LIMITATION": "This remedy GATES NOTHING. It corrects today's data and adds no check, so the next author to add a theme entry can reintroduce the same shape with nothing to stop them. The owner chose it with that trade stated. Whoever builds the binding §1L row should add the containment assertion then; until then the only thing standing between a grade-5 theme and 'One basket has 28 ranked matches' is this file and whoever reads it."
   },
   {
    "id": "CSI-R3",
@@ -4486,7 +4490,7 @@
    "source_location": "data/interest_bank.json#/interests/bible/objects/2",
    "theme": "bible",
    "slot": "objects",
-   "value": "sheep",
+   "value": "olives",
    "proposed_role": "countable_object",
    "role_basis": "slot declaration (the bank's only declaration)",
    "grade_band": [
@@ -5148,7 +5152,7 @@
    "source_location": "data/interest_bank.json#/interests/competitive_gaming/objects/0",
    "theme": "competitive_gaming",
    "slot": "objects",
-   "value": "ranked matches",
+   "value": "match tickets",
    "proposed_role": "countable_object",
    "role_basis": "slot declaration (the bank's only declaration)",
    "grade_band": [
@@ -5169,7 +5173,7 @@
    "source_location": "data/interest_bank.json#/interests/competitive_gaming/objects/1",
    "theme": "competitive_gaming",
    "slot": "objects",
-   "value": "hero skins",
+   "value": "hero cards",
    "proposed_role": "countable_object",
    "role_basis": "slot declaration (the bank's only declaration)",
    "grade_band": [
@@ -5190,7 +5194,7 @@
    "source_location": "data/interest_bank.json#/interests/competitive_gaming/objects/2",
    "theme": "competitive_gaming",
    "slot": "objects",
-   "value": "kill streaks",
+   "value": "score cards",
    "proposed_role": "countable_object",
    "role_basis": "slot declaration (the bank's only declaration)",
    "grade_band": [
@@ -5682,7 +5686,7 @@
    "source_location": "data/interest_bank.json#/interests/sandbox_games/objects/1",
    "theme": "sandbox_games",
    "slot": "objects",
-   "value": "game servers",
+   "value": "game manuals",
    "proposed_role": "countable_object",
    "role_basis": "slot declaration (the bank's only declaration)",
    "grade_band": [
@@ -5703,7 +5707,7 @@
    "source_location": "data/interest_bank.json#/interests/sandbox_games/objects/2",
    "theme": "sandbox_games",
    "slot": "objects",
-   "value": "resource packs",
+   "value": "block packs",
    "proposed_role": "countable_object",
    "role_basis": "slot declaration (the bank's only declaration)",
    "grade_band": [
@@ -5725,7 +5729,7 @@
    "source_location": "data/interest_bank.json#/interests/sandbox_games/objects/3",
    "theme": "sandbox_games",
    "slot": "objects",
-   "value": "in-game coins",
+   "value": "coin tokens",
    "proposed_role": "countable_object",
    "role_basis": "slot declaration (the bank's only declaration)",
    "grade_band": [
@@ -5746,7 +5750,7 @@
    "source_location": "data/interest_bank.json#/interests/sandbox_games/objects/4",
    "theme": "sandbox_games",
    "slot": "objects",
-   "value": "skins",
+   "value": "skin cards",
    "proposed_role": "countable_object",
    "role_basis": "slot declaration (the bank's only declaration)",
    "grade_band": [
@@ -5767,7 +5771,7 @@
    "source_location": "data/interest_bank.json#/interests/sandbox_games/objects/5",
    "theme": "sandbox_games",
    "slot": "objects",
-   "value": "crafting items",
+   "value": "craft blocks",
    "proposed_role": "countable_object",
    "role_basis": "slot declaration (the bank's only declaration)",
    "grade_band": [
@@ -6176,7 +6180,7 @@
    "source_location": "data/interest_bank.json#/interests/anime_rpg/objects/0",
    "theme": "anime_rpg",
    "slot": "objects",
-   "value": "gacha pulls",
+   "value": "gacha tickets",
    "proposed_role": "countable_object",
    "role_basis": "slot declaration (the bank's only declaration)",
    "grade_band": [
@@ -6218,7 +6222,7 @@
    "source_location": "data/interest_bank.json#/interests/anime_rpg/objects/2",
    "theme": "anime_rpg",
    "slot": "objects",
-   "value": "primogems",
+   "value": "gem tokens",
    "proposed_role": "countable_object",
    "role_basis": "slot declaration (the bank's only declaration)",
    "grade_band": [
@@ -6281,7 +6285,7 @@
    "source_location": "data/interest_bank.json#/interests/anime_rpg/objects/5",
    "theme": "anime_rpg",
    "slot": "objects",
-   "value": "resin",
+   "value": "resin figures",
    "proposed_role": "countable_object",
    "role_basis": "slot declaration (the bank's only declaration)",
    "grade_band": [
@@ -6731,7 +6735,7 @@
    "source_location": "data/interest_bank.json#/interests/casual_puzzle_games/objects/2",
    "theme": "casual_puzzle_games",
    "slot": "objects",
-   "value": "game lives",
+   "value": "game cards",
    "proposed_role": "countable_object",
    "role_basis": "slot declaration (the bank's only declaration)",
    "grade_band": [
@@ -6752,7 +6756,7 @@
    "source_location": "data/interest_bank.json#/interests/casual_puzzle_games/objects/3",
    "theme": "casual_puzzle_games",
    "slot": "objects",
-   "value": "hint coins",
+   "value": "hint tokens",
    "proposed_role": "countable_object",
    "role_basis": "slot declaration (the bank's only declaration)",
    "grade_band": [
@@ -6773,7 +6777,7 @@
    "source_location": "data/interest_bank.json#/interests/casual_puzzle_games/objects/4",
    "theme": "casual_puzzle_games",
    "slot": "objects",
-   "value": "level stars",
+   "value": "star stickers",
    "proposed_role": "countable_object",
    "role_basis": "slot declaration (the bank's only declaration)",
    "grade_band": [
@@ -6794,7 +6798,7 @@
    "source_location": "data/interest_bank.json#/interests/casual_puzzle_games/objects/5",
    "theme": "casual_puzzle_games",
    "slot": "objects",
-   "value": "power-ups",
+   "value": "power-up cards",
    "proposed_role": "countable_object",
    "role_basis": "slot declaration (the bank's only declaration)",
    "grade_band": [
@@ -8270,7 +8274,7 @@
    "source_location": "data/interest_bank.json#/interests/anime_manga/objects/2",
    "theme": "anime_manga",
    "slot": "objects",
-   "value": "cosplay props",
+   "value": "cosplay pins",
    "proposed_role": "countable_object",
    "role_basis": "slot declaration (the bank's only declaration)",
    "grade_band": [
@@ -9275,7 +9279,7 @@
    "source_location": "data/interest_bank.json#/interests/creative_writing/objects/1",
    "theme": "creative_writing",
    "slot": "objects",
-   "value": "story chapters",
+   "value": "story cards",
    "proposed_role": "countable_object",
    "role_basis": "slot declaration (the bank's only declaration)",
    "grade_band": [
@@ -9767,7 +9771,7 @@
    "source_location": "data/interest_bank.json#/interests/content_creation/objects/0",
    "theme": "content_creation",
    "slot": "objects",
-   "value": "video clips",
+   "value": "memory cards",
    "proposed_role": "countable_object",
    "role_basis": "slot declaration (the bank's only declaration)",
    "grade_band": [
@@ -9788,7 +9792,7 @@
    "source_location": "data/interest_bank.json#/interests/content_creation/objects/1",
    "theme": "content_creation",
    "slot": "objects",
-   "value": "subscribers",
+   "value": "fan letters",
    "proposed_role": "countable_object",
    "role_basis": "slot declaration (the bank's only declaration)",
    "grade_band": [
@@ -9809,7 +9813,7 @@
    "source_location": "data/interest_bank.json#/interests/content_creation/objects/2",
    "theme": "content_creation",
    "slot": "objects",
-   "value": "ring lights",
+   "value": "light clips",
    "proposed_role": "countable_object",
    "role_basis": "slot declaration (the bank's only declaration)",
    "grade_band": [
@@ -9830,7 +9834,7 @@
    "source_location": "data/interest_bank.json#/interests/content_creation/objects/3",
    "theme": "content_creation",
    "slot": "objects",
-   "value": "tripods",
+   "value": "phone stands",
    "proposed_role": "countable_object",
    "role_basis": "slot declaration (the bank's only declaration)",
    "grade_band": [
@@ -9851,7 +9855,7 @@
    "source_location": "data/interest_bank.json#/interests/content_creation/objects/4",
    "theme": "content_creation",
    "slot": "objects",
-   "value": "editing presets",
+   "value": "preset cards",
    "proposed_role": "countable_object",
    "role_basis": "slot declaration (the bank's only declaration)",
    "grade_band": [
@@ -10281,7 +10285,7 @@
    "source_location": "data/interest_bank.json#/interests/meme_streaming/objects/0",
    "theme": "meme_streaming",
    "slot": "objects",
-   "value": "stream donations",
+   "value": "donation cards",
    "proposed_role": "countable_object",
    "role_basis": "slot declaration (the bank's only declaration)",
    "grade_band": [
@@ -10323,7 +10327,7 @@
    "source_location": "data/interest_bank.json#/interests/meme_streaming/objects/2",
    "theme": "meme_streaming",
    "slot": "objects",
-   "value": "emotes",
+   "value": "emote stickers",
    "proposed_role": "countable_object",
    "role_basis": "slot declaration (the bank's only declaration)",
    "grade_band": [
@@ -10344,7 +10348,7 @@
    "source_location": "data/interest_bank.json#/interests/meme_streaming/objects/3",
    "theme": "meme_streaming",
    "slot": "objects",
-   "value": "clip highlights",
+   "value": "clip cards",
    "proposed_role": "countable_object",
    "role_basis": "slot declaration (the bank's only declaration)",
    "grade_band": [
@@ -10794,7 +10798,7 @@
    "source_location": "data/interest_bank.json#/interests/graphic_design/objects/0",
    "theme": "graphic_design",
    "slot": "objects",
-   "value": "design templates",
+   "value": "template cards",
    "proposed_role": "countable_object",
    "role_basis": "slot declaration (the bank's only declaration)",
    "grade_band": [
@@ -10857,7 +10861,7 @@
    "source_location": "data/interest_bank.json#/interests/graphic_design/objects/3",
    "theme": "graphic_design",
    "slot": "objects",
-   "value": "canvases",
+   "value": "sketch cards",
    "proposed_role": "countable_object",
    "role_basis": "slot declaration (the bank's only declaration)",
    "grade_band": [
@@ -11864,7 +11868,7 @@
    "source_location": "data/interest_bank.json#/interests/volleyball/objects/2",
    "theme": "volleyball",
    "slot": "objects",
-   "value": "rackets",
+   "value": "whistles",
    "proposed_role": "countable_object",
    "role_basis": "slot declaration (the bank's only declaration)",
    "grade_band": [
@@ -11885,7 +11889,7 @@
    "source_location": "data/interest_bank.json#/interests/volleyball/objects/3",
    "theme": "volleyball",
    "slot": "objects",
-   "value": "nets",
+   "value": "arm sleeves",
    "proposed_role": "countable_object",
    "role_basis": "slot declaration (the bank's only declaration)",
    "grade_band": [
@@ -12336,7 +12340,7 @@
    "source_location": "data/interest_bank.json#/interests/fitness_sports/objects/0",
    "theme": "fitness_sports",
    "slot": "objects",
-   "value": "bicycles",
+   "value": "jump ropes",
    "proposed_role": "countable_object",
    "role_basis": "slot declaration (the bank's only declaration)",
    "grade_band": [
@@ -12357,7 +12361,7 @@
    "source_location": "data/interest_bank.json#/interests/fitness_sports/objects/1",
    "theme": "fitness_sports",
    "slot": "objects",
-   "value": "skateboards",
+   "value": "wristbands",
    "proposed_role": "countable_object",
    "role_basis": "slot declaration (the bank's only declaration)",
    "grade_band": [
@@ -13470,7 +13474,7 @@
    "source_location": "data/interest_bank.json#/interests/visual_arts/objects/5",
    "theme": "visual_arts",
    "slot": "objects",
-   "value": "canvases",
+   "value": "paint tubes",
    "proposed_role": "countable_object",
    "role_basis": "slot declaration (the bank's only declaration)",
    "grade_band": [
@@ -15483,7 +15487,7 @@
    "source_location": "data/interest_bank.json#/interests/pets/objects/3",
    "theme": "pets",
    "slot": "objects",
-   "value": "hamster cages",
+   "value": "hamsters",
    "proposed_role": "countable_object",
    "role_basis": "slot declaration (the bank's only declaration)",
    "grade_band": [
@@ -15495,8 +15499,7 @@
    "observed_live_renders": 246,
    "liveness": "LIVE",
    "ambiguity_requiring_human_ruling": [
-    "slot supplies 'countable_object' but reachable templates require ['measurable_attribute']; the bank does not declare which entries satisfy them",
-    "value is container-like and ['add_combination', 'add_putting_together', 'sub_how_many_left'] place it INSIDE a container, producing a container-in-container premise"
+    "slot supplies 'countable_object' but reachable templates require ['measurable_attribute']; the bank does not declare which entries satisfy them"
    ],
    "migration_status": "inventoried_nonbinding"
   },
@@ -15998,7 +16001,7 @@
    "source_location": "data/interest_bank.json#/interests/science_tech/objects/3",
    "theme": "science_tech",
    "slot": "objects",
-   "value": "solar panels",
+   "value": "solar cells",
    "proposed_role": "countable_object",
    "role_basis": "slot declaration (the bank's only declaration)",
    "grade_band": [
@@ -16019,7 +16022,7 @@
    "source_location": "data/interest_bank.json#/interests/science_tech/objects/4",
    "theme": "science_tech",
    "slot": "objects",
-   "value": "science fair boards",
+   "value": "lab notebooks",
    "proposed_role": "countable_object",
    "role_basis": "slot declaration (the bank's only declaration)",
    "grade_band": [
@@ -17541,7 +17544,7 @@
    "source_location": "data/interest_bank.json#/interests/social_issues/objects/3",
    "theme": "social_issues",
    "slot": "objects",
-   "value": "project materials",
+   "value": "project folders",
    "proposed_role": "countable_object",
    "role_basis": "slot declaration (the bank's only declaration)",
    "grade_band": [
@@ -17562,7 +17565,7 @@
    "source_location": "data/interest_bank.json#/interests/social_issues/objects/4",
    "theme": "social_issues",
    "slot": "objects",
-   "value": "tarpaulins",
+   "value": "campaign pins",
    "proposed_role": "countable_object",
    "role_basis": "slot declaration (the bank's only declaration)",
    "grade_band": [

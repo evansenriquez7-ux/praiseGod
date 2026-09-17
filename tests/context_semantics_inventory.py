@@ -271,6 +271,14 @@ SINGULAR_REQUIRED_RULES: List[Tuple[str, str]] = [
 # is NOT flagged, and absence of a flag is not evidence of plausibility. It exists to make
 # the already-known instances countable and to give the eventual §1L rule a starting
 # declaration; it must not be read as coverage.
+#
+# IT ALSO OVER-FLAGS, and deliberately so. Its criterion is "the head noun names a
+# container", which is BROADER than the owner's 2026-09-17 criterion ("would normally fit in
+# a typical basket"). After the bank was fixed, 13 entries still carry this flag -- jars,
+# water bottles, bags of flour, eco bags, sticker packs and the like -- and every one of them
+# satisfies the owner's rule, because a jar fits in a basket perfectly well. The only true
+# container-in-container left is `bible/baskets`, which `Spine.render` substitutes. So a
+# flag here is a LEAD to look at, never a finding; do not work this list down to zero.
 CONTAINER_HEAD_NOUNS: Tuple[str, ...] = (
     "basket", "box", "bag", "jar", "cage", "bowl", "cup", "case", "crate", "bin",
     "tin", "can", "pack", "set", "sack", "bottle",
@@ -294,18 +302,29 @@ REPRODUCED_VIOLATIONS: List[Dict[str, Any]] = [
                     "figs. Another basket has 60 figs. If you put all the figs together, "
                     "how many figs are there?",
         "source": "backend/app/practice_gen/dna/base.py::Spine.render",
+        "status": "ADJUDICATED 2026-09-17 — NOT a defect; see CSI-R4",
         "what_is_wrong": [
-            "The cue promises 'baskets' and the stem delivers 'figs' — a learner-visible "
-            "contradiction inside one item.",
+            "SEVERITY CORRECTED. This record first called the cue/stem pair a "
+            "learner-visible contradiction. That was overstated: the cue names the theme "
+            "slot value ('baskets') while the stem counts figs INSIDE baskets, which is "
+            "redundant, not contradictory. The mechanism was right -- the cue fires because "
+            "the plural 'baskets' does not string-match 'One basket has' in the pre-cue "
+            "text -- but the severity was not.",
             "'figs' is substituted INSIDE Spine.render, after get_interest_slots has "
             "applied the node's NOT_YET_KNOWN filter, so it reaches the stem without ever "
             "passing the vocabulary gate. Verified: 'figs' is absent from this node's "
-            "cumulative_vocab.",
+            "cumulative_vocab. Under the owner's ruling that 'figs' is safe at every grade "
+            "this has no live consequence, but the CHANNEL remains: any future substituted "
+            "word would travel the same path past the gate.",
             "interest_visible_terms still records 'baskets', so the interest-visibility "
             "check is satisfied by a word the stem no longer contains.",
-            "The rule is hard-coded to the single string 'baskets' and fires only when "
-            "'basket' appears in the template, so every other container-like object "
-            "(hamster cages, water bowls, jars) still renders inside a basket.",
+            "The rule is hard-coded to the single string 'baskets'. That gap was the real "
+            "finding and is now CLOSED at the data layer rather than in this rule: the "
+            "owner's fit criterion indicted objects the substitution never reached -- "
+            "container-in-container ('hamster cages'), too-big ('bicycles', 'nets', "
+            "'sheep'), and NON-PHYSICAL ('ranked matches', 'game lives', 'subscribers', "
+            "'game servers', all in grade-5+ themes and therefore invisible at G1-3). "
+            "16 of 26 themes had their `objects` rewritten on 2026-09-17.",
         ],
         "reproduce": "generate_context(load_dna('addition'), 'mat_g1_na_q2_5', 1, 7, "
                      "{'context':'word_problem','structure':'result_unknown'}, 'bible')",
@@ -749,13 +768,26 @@ def build(observation: Optional[Dict[str, Any]]) -> Dict[str, Any]:
     })
     owner_rulings.append({
         "id": "CSI-R4",
+        "status": "RULED 2026-09-17 — CLOSED",
         "question": "Should `Spine.render`'s hard-coded 'baskets' -> 'figs' substitution be "
                     "removed in favour of a declared role rule?",
-        "why": "It is a Mandate 4 stopgap scoped to one string, it contradicts the interest "
-               "cue in every render that fires it (3 of 3 measured), and it injects a word "
-               "AFTER the NOT_YET_KNOWN vocabulary filter has run. See CSI-V1.",
-        "blocks": "§1L container-in-container rules, and a vocabulary-gate hole that is "
-                  "§1D's concern rather than §1L's.",
+        "ruling": "'figs' is fine for any grade level. As long as a substituted word is "
+                  "something that would normally fit in a typical 'basket', then the "
+                  "substituted word is ok. The substitution is KEPT.",
+        "rule_established": "An object placed inside a container frame must plausibly fit "
+                            "that container.",
+        "remedy_chosen": "Fix the interest bank rather than add a declaration layer or "
+                         "generalise the substitution table. Applied 2026-09-17: the "
+                         "`objects` list of 16 of 26 themes was rewritten so every entry "
+                         "plausibly fits a basket. Only `objects` was touched -- item1/item2 "
+                         "never reach a containment frame.",
+        "NAMED_LIMITATION": "This remedy GATES NOTHING. It corrects today's data and adds no "
+                            "check, so the next author to add a theme entry can reintroduce "
+                            "the same shape with nothing to stop them. The owner chose it "
+                            "with that trade stated. Whoever builds the binding §1L row "
+                            "should add the containment assertion then; until then the only "
+                            "thing standing between a grade-5 theme and 'One basket has 28 "
+                            "ranked matches' is this file and whoever reads it.",
     })
     owner_rulings.append({
         "id": "CSI-R3",
