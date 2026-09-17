@@ -1322,7 +1322,7 @@ regressed nothing:
 |---|---|---|
 | `judgment_reviews_5` | **1,158** Phase 2 findings. Genuine content debt | M2 / step 7 |
 | `capability_phase2` | **218** attestation findings (67 CONTRADICTED, 69 STALE, 57 UNADJUDICABLE, 25 other) | M2 / step 6 |
-| `assertion_coverage_8` | **10 errors, 1 family** — the two blocked clusters below | `H-02` |
+| `assertion_coverage_8` | **3 errors, 1 family** — §6F ONLY, since 2026-09-17 on `f293e2ff` (was 10 errors across two clusters). `mutation_proof_integrity_8` fell 33 -> 9 in the same move and `silent_path_disposition_8` now PASSes. The §8 cluster below is CLOSED; every remaining error names a §6F attestation mutation | `H-02` (remainder is M2-blocked) |
 
 `obligation_manifest_11` was the fourth and **is green**: the six release shards were re-run
 on 2026-09-17 against the current digest and `obligation_release_shards_11` reports 576,315
@@ -1350,6 +1350,8 @@ narrowed, which is worse than the red. **Owner ruling 2026-09-16: name them, do 
 allowlist them.** These three gates were built against an already-red baseline, which is the
 hazard Mandate 5 exists to name. They become provable when the attestation queue clears —
 i.e. this cluster is downstream of M2, not of any harness work.
+
+**Cluster 2 — §8, eight mutations — CLOSED 2026-09-17 on `f293e2ff`. The text below is kept as the record of the deadlock and of how it was broken; it is no longer live work.** All eight now run `pytest tests/unit/test_coverage_selfcheck.py`, which drives the REAL `validate_coverage_tagged` over the REAL tree with ONE seam stubbed, `_proof_state`, and all eight score `base=0 planted=1` in a full table run (143/146 detected, was 135/146). The recommended close below was the one taken. TWO things the deadlock had hidden, both now fixed: `coverage_map_gap` anchored on the `worker_crash` allowlist entry, which no longer exists — the allowlist shrank 29 -> 11, so that plant matched ZERO lines and could never have landed even against a green baseline (Mandate 2's other cause, invisible because the runner rejects on the baseline BEFORE it plants); and `source_edited_without_reproof` had to be re-aimed at the digest comparison in `mutation_proof.verify_proof`, because no unit test can hold its end-to-end direction still. NAMED TRADE: §8's EXECUTION accounting is stubbed out and stays provable only against a green live corpus. Original description follows.
 
 **Cluster 2 — §8, eight mutations** (`allowlist_keeps_a_paid_debt`,
 `allowlist_names_a_phantom_label`, `contract_check_declares_no_phase`, `coverage_map_gap`,
