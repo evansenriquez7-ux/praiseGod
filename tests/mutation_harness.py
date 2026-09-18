@@ -3565,6 +3565,36 @@ MUTATIONS: List[Mutation] = [
         expect_output_contains=["test_a_ref_registered_to_the_other_band_is_caught"],
         baseline_must_not_contain=["test_a_ref_registered_to_the_other_band_is_caught"],
     ),
+    # ── §12's renderer-registration dispositions (H-08, 2026-09-18) ────────────────
+    #
+    # An unreachable registration is not itself a defect; an UNEXPLAINED one is. "The suite
+    # covers 15 of 20" reads identically whether the other five are retired names or live
+    # components nothing renders -- and measurement showed it was BOTH: three dead routes
+    # and two live on the intro surface, after the docstring had called all five legacy/dead
+    # since 2026-09-14. Added while the finding count was zero (Mandate 5).
+    Mutation(
+        name="unreachable_registration_without_a_disposition",
+        asserts=["renderer_registration_disposition_12"],
+        description=(
+            "Rename a disposition key so a registration the practice obligation graph "
+            "cannot reach carries no explanation. This is the state §12 was in until "
+            "2026-09-18: five registrations reported NOT COVERED with nothing recording "
+            "why, so a component that had been retired and a component that is live on "
+            "another student-facing surface were indistinguishable in the artifact. The "
+            "plant fires both directions of the gate at once -- Categorize becomes "
+            "undispositioned, and the renamed key becomes stale bookkeeping."
+        ),
+        edits={
+            "backend/app/practice_gen/validation/validate_render.py": (
+                '    "Categorize": (\n',
+                '    "planted_mutation_not_a_registration": (  # planted mutation\n',
+            ),
+        },
+        command=["backend.app.practice_gen.validation.validate_render", "--artifact-only"],
+        expected_check="§12 (every unreachable renderer registration carries a disposition)",
+        expect_output_contains=["'Categorize' && NO disposition"],
+        baseline_must_not_contain=["NO disposition"],
+    ),
     # ── The Phase-1-wide network guard (2026-09-16) ────────────────────────────────
     #
     # Same shape and same reason as the stage-ledger block above: the live catcher would

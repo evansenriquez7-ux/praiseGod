@@ -9,7 +9,22 @@ working-tree input digest used by mutation proofs.
 Known limits
 ------------
 * The current practice obligation graph reaches 15 of renderUtils' 20 registrations.
-  The five legacy/dead registrations are recorded in the artifact, not called covered.
+  The other five are recorded in the artifact, not called covered, and each carries a
+  required disposition in `validate_render.UNREACHABLE_REGISTRATION_DISPOSITIONS`
+  (`renderer_registration_disposition_12`). CORRECTED 2026-09-18: this docstring used to
+  call all five "legacy/dead", which measurement contradicts. Three are dead routes
+  (Categorize, RuleDiscovery, SortOrder -- retired names no formatter emits); TWO are
+  live on the intro surface (BalanceScale 15 payloads, TenFrame 18) and deleting them
+  would break it.
+* THE INTRO SURFACE IS NOT COVERED BY THIS SUITE AT ALL, and that is the larger hole.
+  `/api/matatag/intro/{node_key}` is a live student-facing route serving 24 nodes, and
+  its cards are drawn by ~25 inline `vt === '...'` branches in `frontend/src/App.jsx`,
+  not by VisualSkeletons.jsx. Measured 2026-09-18: that surface emits 29 distinct
+  visual types, most of which have NO renderUtils registration, and this suite never
+  loads App.jsx. So "the React components are executed" is true of the PRACTICE
+  registry only. The intro renderers today are exactly as unexecuted as the practice
+  ones were before H-08 began. Owner-ruled 2026-09-18 to be named here rather than
+  closed in that session; closing it is a separate blocker.
 * jsdom has no layout engine. NumberLine and BarChart pointer-drag geometry remains
   unproven; their non-pointer paths and rendered structures are the browserless surface.
 * Static descriptions quantify emitted markup, but cannot prove crowding, overlap,

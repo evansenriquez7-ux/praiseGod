@@ -1515,6 +1515,20 @@ found template rationales in that corpus.
    but a session that re-runs only the two documented artifacts is left with a survivor it
    will mistake for a broken gate. **Re-run the benchmark FIRST, then the corpus, then the
    sweep.**
+
+   **AND THERE IS A FOURTH, found 2026-09-18 under H-08.**
+   `validation_reports/phase2_hardening/frontend_static_render.json` also carries
+   `source_input_digest`, and `frontend_artifact_fresh_12` reds when it is stale. `run_all`
+   does NOT regenerate it — that module contains no reference to it at all. It currently
+   survives a source edit only INCIDENTALLY, because five mutations run `tests.frontend_suite`
+   as their command and rewrite it as a side effect of the corpus run. So a session that
+   edits source and re-runs only the three documented artifacts gets §12 current by accident
+   rather than by design, and if those five mutations were ever scoped or removed, an edit
+   would leave §12 stale with no documented remedy. Regenerate it explicitly, after every
+   source edit and before the corpus:
+   ```sh
+   DATABASE_URL= PYTHONPATH=. .venv/bin/python tests/frontend_suite.py   # ~10s
+   ```
 10. **FIXED 2026-09-16, kept as the record of a hole that reported green.** The ledger's
    disk→rows artifact check could not see the release receipts.
    `tests/hardening_status.py::_unclaimed_artifacts` walks `ARTIFACT_DIR.iterdir()` and

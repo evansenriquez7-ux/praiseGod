@@ -1,20 +1,19 @@
 {
  "asserts": [
-  "render_contract_9"
+  "renderer_registration_disposition_12"
  ],
  "baseline_exit": 0,
  "baseline_markers_already_present": [],
  "baseline_must_not_contain": [
-  "FAIL render_contract"
+  "NO disposition"
  ],
  "command": [
   "backend.app.practice_gen.validation.validate_render",
-  "--node-ids",
-  "mat_g2_na_q3_4"
+  "--artifact-only"
  ],
- "definition_digest": "793a3478a0b284364be4c0e007f62c542f15a6622d759ccf92bbcb0afaa07093",
+ "definition_digest": "0cc1ee53248f5d3c1afda1fed055b6c1378d261d9dded64c1832151fdd7771da",
  "detected": true,
- "diagnostic_line": "exit 1 — FAIL render_contract_9: 2 finding(s) on ['mat_g2_na_q3_4']",
+ "diagnostic_line": "exit 1 — FAIL frontend_static_render_12: 3 artifact finding(s)",
  "environment": {
   "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
   "machine": "x86_64",
@@ -23,24 +22,22 @@
   "system": "Darwin"
  },
  "expect_output_contains": [
-  "FAIL render_contract",
-  "shaded"
+  "'Categorize' && NO disposition"
  ],
- "expected_check": "§9 (the payload must be renderable by the component the student sees)",
- "finished_at": "2026-09-18T01:30:11+08:00",
+ "expected_check": "§12 (every unreachable renderer registration carries a disposition)",
+ "finished_at": "2026-09-18T01:46:35+08:00",
  "input_digest": "1060da57c9f5ef18c452893a07b450ddb368047aff04fd05c772ad8dd14cb167",
  "mutated_paths": [
-  "backend/app/practice_gen/formatters/visual/fmt_array_grid.py"
+  "backend/app/practice_gen/validation/validate_render.py"
  ],
- "mutation": "unrenderable_visual_payload",
+ "mutation": "unreachable_registration_without_a_disposition",
  "observed_markers": {
-  "FAIL render_contract": true,
-  "shaded": true
+  "'Categorize' && NO disposition": true
  },
  "paths_outside_input_set": [],
  "phase1_admissible": true,
  "planted_exit": 1,
  "restored_clean": true,
  "schema_version": 1,
- "started_at": "2026-09-18T01:30:09+08:00"
+ "started_at": "2026-09-18T01:46:33+08:00"
 }

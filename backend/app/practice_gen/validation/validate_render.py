@@ -63,7 +63,57 @@ ASSERTIONS = (
     "frontend_static_render_12",   # every recorded component execution succeeded
     "rendered_visual_description_12",  # descriptions derive from emitted markup
     "frontend_answer_roundtrip_13",  # component emission matches backend key by value
+    "renderer_registration_disposition_12",  # every unreachable registration is dispositioned
 )
+
+
+# Every renderer registration the practice obligation graph cannot reach must say WHY, in
+# one of exactly two classes. The shape is §8's `silent_path_disposition_8`: an unreachable
+# registration is not itself a defect, but an UNEXPLAINED one is, because "the suite covers
+# 15 of 20" reads identically whether the other five are retired names or live components
+# nothing renders.
+#
+#   dead-route             nothing emits this visual type on ANY surface. Retired name.
+#   non-practice-reachable not reachable from the practice obligation graph, but LIVE on
+#                          another student-facing surface, so the component is not dead
+#                          and deleting it would break that surface.
+#
+# Measured 2026-09-18 by execution, not by reading (see the H-08 evidence entry):
+# `generate_intro_content` over all 24 intro nodes at seeds 7/21/42, 0 errors, counting
+# every `visual_type` reachable from the live `/api/matatag/intro/{node_key}` route.
+_DISPOSITION_CLASSES = ("dead-route", "non-practice-reachable")
+
+UNREACHABLE_REGISTRATION_DISPOSITIONS: Dict[str, str] = {
+    "BalanceScale": (
+        "non-practice-reachable -- 2026-09-18: fmt_balance_scale emits it, but §11 floors "
+        "`balance_scale` as an unreachable route (advertised on missing_number nodes, which "
+        "refuse every variant it offers). LIVE on the intro surface: 15 payloads on 1 intro "
+        "node, rendered by its own `vt === 'BalanceScale'` branch in App.jsx. Not dead."
+    ),
+    "TenFrame": (
+        "non-practice-reachable -- 2026-09-18: fmt_ten_frame emits it, but §11 floors "
+        "`ten_frame` as an unreachable route. LIVE on the intro surface: 18 payloads on 1 "
+        "intro node, rendered by its own `vt === 'TenFrame'` branch in App.jsx. Not dead."
+    ),
+    "Categorize": (
+        "dead-route -- 2026-09-18: no formatter emits visual_type 'Categorize'; it was "
+        "refactored into fmt_shape_board (ShapeBoard). Absent from intro content at every "
+        "node and seed measured, and App.jsx has no branch for it. Retired name."
+    ),
+    "RuleDiscovery": (
+        "dead-route -- 2026-09-18: no formatter emits visual_type 'RuleDiscovery'; it was "
+        "refactored into fmt_pattern_sequence (PatternSequence) and fmt_fill_in_table. "
+        "Absent from intro content, and App.jsx has no branch for it. Retired name."
+    ),
+    "SortOrder": (
+        "dead-route -- 2026-09-18: no formatter emits visual_type 'SortOrder'; ordering "
+        "became the TEXTUAL fmt_ordering, which produces no visual payload. Absent from "
+        "intro content, and App.jsx has no branch for it. NOTE: comparing_ordering still "
+        "declares visual_home='SortOrder', but base_generator reads visual_home only when "
+        "dna_type=='visual_read' and that DNA is 'algorithmic', so the declaration is a "
+        "measured no-op (visual_type=None on every generated problem). Retired name."
+    ),
+}
 
 # ZERO, as of 2026-09-08. The floor is gone, not shrunk.
 #
@@ -218,6 +268,37 @@ def validate_static_render_artifact() -> bool:
                 f"{row.get('emitted_answer')!r}, keyed {row.get('correct_answer')!r}"
             )
 
+    # ── renderer_registration_disposition_12 ──────────────────────────────────
+    # Two directions, because each catches a different way the record rots.
+    unreachable_now = sorted(artifact.get("unreachable_renderer_registrations") or [])
+    disposition_errors: List[str] = []
+    for name in unreachable_now:
+        text = UNREACHABLE_REGISTRATION_DISPOSITIONS.get(name)
+        if not text:
+            disposition_errors.append(
+                f"renderer registration {name!r} is unreachable from the practice obligation "
+                f"graph and carries NO disposition. An unexplained gap reads exactly like a "
+                f"covered one. Add an entry to UNREACHABLE_REGISTRATION_DISPOSITIONS naming "
+                f"it {' or '.join(_DISPOSITION_CLASSES)}, with the evidence and a date."
+            )
+        elif not text.startswith(_DISPOSITION_CLASSES):
+            disposition_errors.append(
+                f"renderer registration {name!r} has a disposition that does not start with "
+                f"one of {list(_DISPOSITION_CLASSES)}: {text[:60]!r}. The class is what makes "
+                f"the record machine-readable; free prose is how a dead route hides."
+            )
+    # A disposition for something that is no longer unreachable is stale bookkeeping: either
+    # the registration became reachable (delete the entry, it is now covered) or it was
+    # removed (delete the entry, it names nothing). Same direction as §8's allowlist checks.
+    for name in sorted(set(UNREACHABLE_REGISTRATION_DISPOSITIONS) - set(unreachable_now)):
+        disposition_errors.append(
+            f"UNREACHABLE_REGISTRATION_DISPOSITIONS names {name!r}, which is NOT currently an "
+            f"unreachable registration. Either it is now reached by the practice obligation "
+            f"graph, or the registration is gone. Delete the entry -- a disposition that "
+            f"excuses nothing reads as accounted-for coverage."
+        )
+    errors.extend(disposition_errors)
+
     if errors:
         print(f"  FAIL frontend_static_render_12: {len(errors)} artifact finding(s)")
         for error in errors[:10]:
@@ -240,9 +321,18 @@ def validate_static_render_artifact() -> bool:
         f"  PASS frontend_answer_roundtrip_13: {len(roundtrips)} correct UI interactions "
         "emitted values accepted by answers_match"
     )
-    unreachable = artifact.get("unreachable_renderer_registrations") or []
-    if unreachable:
-        print("    NOT COVERED — unreachable renderer registrations: " + ", ".join(unreachable))
+    by_class: Dict[str, List[str]] = {}
+    for name in unreachable_now:
+        cls = UNREACHABLE_REGISTRATION_DISPOSITIONS[name].split(" --", 1)[0]
+        by_class.setdefault(cls, []).append(name)
+    print(
+        f"  PASS renderer_registration_disposition_12: all {len(unreachable_now)} unreachable "
+        f"registration(s) dispositioned ("
+        + "; ".join(f"{cls}: {', '.join(names)}" for cls, names in sorted(by_class.items()))
+        + ")"
+    )
+    if unreachable_now:
+        print("    NOT COVERED — unreachable renderer registrations: " + ", ".join(unreachable_now))
     print("    BLIND SPOT — NumberLine/BarChart pointer-drag geometry (jsdom has no layout)")
     return True
 

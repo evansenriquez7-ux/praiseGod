@@ -26,7 +26,14 @@ def _artifact() -> dict:
         "renders_executed": 4,
         "registered_visual_types": sorted(validate_render._required_keys()),
         "production_visual_types": ["NumberBond"],
-        "unreachable_renderer_registrations": [],
+        # Coherent with the dispositions the consumer requires. It used to be `[]`,
+        # which no real run can produce: the suite computes this as registered minus
+        # produced, and this fixture registers 20 types while producing one. That
+        # inconsistency was invisible until `renderer_registration_disposition_12`
+        # cross-referenced the two lists (2026-09-18).
+        "unreachable_renderer_registrations": sorted(
+            validate_render.UNREACHABLE_REGISTRATION_DISPOSITIONS
+        ),
         "outcomes": [
             {**common, "case_id": case_id, "mode": mode, "description": description}
             for case_id in ("number-bond-case-a", "number-bond-case-b")
@@ -53,6 +60,35 @@ def _validate(tmp_path, monkeypatch, artifact: dict) -> bool:
 
 def test_complete_roundtrip_artifact_passes(tmp_path, monkeypatch):
     assert _validate(tmp_path, monkeypatch, _artifact()) is True
+
+
+def test_an_undispositioned_unreachable_registration_fails(tmp_path, monkeypatch):
+    """`renderer_registration_disposition_12`, direction 1: a gap with no explanation.
+
+    "15 of 20 covered" reads identically whether the other five are retired names or live
+    components nothing renders, so an unreachable registration must say which it is.
+    """
+    artifact = _artifact()
+    artifact["unreachable_renderer_registrations"] = sorted(
+        list(validate_render.UNREACHABLE_REGISTRATION_DISPOSITIONS) + ["UndispositionedThing"]
+    )
+
+    assert _validate(tmp_path, monkeypatch, artifact) is False
+
+
+def test_a_disposition_for_a_reachable_registration_fails(tmp_path, monkeypatch):
+    """Direction 2: stale bookkeeping.
+
+    A disposition naming something no longer unreachable excuses nothing while reading as
+    accounted-for coverage -- the same defect §8 catches on its own allowlist.
+    """
+    artifact = _artifact()
+    artifact["unreachable_renderer_registrations"] = [
+        name for name in sorted(validate_render.UNREACHABLE_REGISTRATION_DISPOSITIONS)
+        if name != "Categorize"
+    ]
+
+    assert _validate(tmp_path, monkeypatch, artifact) is False
 
 
 def test_pruned_roundtrip_artifact_fails(tmp_path, monkeypatch):

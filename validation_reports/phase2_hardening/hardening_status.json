@@ -269,22 +269,23 @@
         "Pointer-drag geometry on the two pointer components recorded as an unproven blind spot, not described as covered"
       ],
       "proof_artifacts": [
-        "validation_reports/phase2_hardening/frontend_static_render.json",
+        "tests/frontend_suite.py",
+        "tests/unit/test_frontend_artifact_completeness.py",
         "validation_reports/mutation_proofs/frontend_component_throws_during_render.json",
         "validation_reports/mutation_proofs/frontend_conditional_jump_branch_dropped.json",
         "validation_reports/mutation_proofs/frontend_description_omits_drawn_element.json",
-        "validation_reports/mutation_proofs/frontend_visual_degenerates_to_empty_box.json",
-        "validation_reports/mutation_proofs/frontend_render_artifact_outlives_source.json",
-        "validation_reports/mutation_proofs/frontend_onanswer_disagrees_with_key.json",
         "validation_reports/mutation_proofs/frontend_duplicate_mode_hides_missing_mode.json",
+        "validation_reports/mutation_proofs/frontend_onanswer_disagrees_with_key.json",
+        "validation_reports/mutation_proofs/frontend_render_artifact_outlives_source.json",
         "validation_reports/mutation_proofs/frontend_roundtrip_coverage_silently_narrowed.json",
-        "tests/frontend_suite.py",
-        "tests/unit/test_frontend_artifact_completeness.py"
+        "validation_reports/mutation_proofs/frontend_visual_degenerates_to_empty_box.json",
+        "validation_reports/mutation_proofs/unreachable_registration_without_a_disposition.json",
+        "validation_reports/phase2_hardening/frontend_static_render.json"
       ],
       "closing_revision": null,
-      "updated_at": "2026-09-16T10:00:00+08:00",
+      "updated_at": "2026-09-18T12:10:00+08:00",
       "notes": "Owner ruling 2026-09-12: NO browser gate. Closed in Phase 1 without Chromium, Puppeteer or a dev server. See plan step 5A.",
-      "measurement_status": "executed 2026-09-14 on working tree: 27 payload classes, 54 renders, 15 production visual types, 10 answer round trips",
+      "measurement_status": "EXECUTED 2026-09-18 on the re-proved corpus at digest 1060da57c9f5: 144/147 mutations DETECTED. The five unreachable renderer registrations are DISPOSITIONED and the disposition is now GATED, not merely recorded: `renderer_registration_disposition_12` fails an unreachable registration with no disposition AND a disposition naming something no longer unreachable. Measurement CORRECTED the prior record, which had called all five legacy/dead since 2026-09-14: three are dead routes (Categorize, RuleDiscovery, SortOrder) but TWO are live on the intro surface (BalanceScale 15 payloads, TenFrame 18, over 24 intro nodes at seeds 7/21/42 with 0 errors), so deleting them would have broken a student-facing route. Row stays OPEN: the row's own finding -- nothing executes the React components -- remains TRUE of the intro surface, which is outside this suite entirely.",
       "recommended_order": 8,
       "progress": "Browserless renderToStaticMarkup/Vitest evidence now executes 27 real practice student-path payload classes in active and disabled modes, validates non-degenerate/countable emitted structure, and round-trips 10 interactive onAnswer values through backend answers_match. run_all consumes a digest-bound artifact. Six planted defects were individually detected: throw, dropped conditional branch, descriptor omission, empty render, stale artifact, and emitted-answer drift. ClockSet emission and peso_money_build route defects found by execution were fixed.",
       "still_open": [

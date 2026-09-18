@@ -12248,3 +12248,114 @@ Recorded in the test module docstring, the `tests/mutation_harness.py` cluster c
 **The Definition of Done is NOT met.** `assertion_coverage_8` is still red, on 3 errors instead
 of 10, and `judgment_reviews_5` and `capability_phase2` are untouched by this work. The §6F
 cluster is downstream of M2's attestation queue, not of any harness work.
+
+## H-08 — the five unreachable renderer registrations, dispositioned (2026-09-18)
+
+**Row: `H-08`, claimed as `session-2026-09-18-H-08-registration-disposition` before any edit.**
+Measured on `b822bafe`, clean tree, all digest-bound artifacts current at `9ba8e76048b8c1d3`.
+
+The task was a dead-route versus non-practice-reachable disposition for `BalanceScale`,
+`Categorize`, `RuleDiscovery`, `SortOrder` and `TenFrame`. Owner ruled 2026-09-18 that it be
+built as a GATE rather than a note, and that the intro-surface gap found while measuring be
+NAMED rather than closed in this session.
+
+### The dispositions, and they corrected the existing record
+
+The suite docstring and the §12 contract row had described all five as "legacy/dead" since
+2026-09-14. Measurement contradicts that for two of them.
+
+| Registration | Practice emitter | Intro payloads | `App.jsx` branch | Disposition |
+|---|---|---|---|---|
+| `TenFrame` | `fmt_ten_frame`; §11 floors `ten_frame` unreachable | **18**, 1 node | yes | non-practice-reachable |
+| `BalanceScale` | `fmt_balance_scale`; §11 floors `balance_scale` unreachable | **15**, 1 node | yes | non-practice-reachable |
+| `Categorize` | none — refactored into `fmt_shape_board` | 0 | no | dead-route |
+| `RuleDiscovery` | none — refactored into `fmt_pattern_sequence`/`fmt_fill_in_table` | 0 | no | dead-route |
+| `SortOrder` | none — became the TEXTUAL `fmt_ordering`, no visual payload | 0 | no | dead-route |
+
+Intro evidence: `generate_intro_content` over all 24 nodes from `get_available_intro_nodes()`
+at seeds 7/21/42, **0 errors**, recursively counting every `visual_type`. Deleting either
+`BalanceScale` or `TenFrame` as "dead" would have broken a live student-facing route.
+
+### The gate
+
+`renderer_registration_disposition_12`, in `validate_render`, enforcing BOTH directions —
+the shape of §8's `silent_path_disposition_8` and of its allowlist checks:
+
+```text
+$ ... validate_render --artifact-only
+  PASS renderer_registration_disposition_12: all 5 unreachable registration(s) dispositioned
+       (dead-route: Categorize, RuleDiscovery, SortOrder; non-practice-reachable: BalanceScale, TenFrame)
+```
+
+Added while its finding count was zero (Mandate 5).
+
+### Evidence
+
+```text
+$ DATABASE_URL= PYTHONPATH=. .venv/bin/python tests/mutation_harness.py --only unreachable_registration_without_a_disposition
+  PASS  unreachable_registration_without_a_disposition §12 (every unreachable renderer registration carries a disposition)
+1/1 mutations detected.
+
+$ DATABASE_URL= PYTHONPATH=. .venv/bin/python -m pytest tests/unit -q
+739 passed, 1 skipped, 2 deselected, 4 warnings in 653.73s     # +2 negative controls, no collateral
+
+$ DATABASE_URL= PYTHONPATH=. .venv/bin/python -m tests.obligation_executor --tier benchmark --sample-size 1000
+cache_keys=1000 elapsed=15.802s failures=0  projected_release=2.530h
+
+$ DATABASE_URL= PYTHONPATH=. .venv/bin/python tests/mutation_harness.py
+144/147 mutations detected.        # the same three §6F survivors, nothing else
+unreachable_registration_without_a_disposition  detected=True base=0 planted=1 markers=[True]
+```
+
+### The plant would have passed for the wrong reason, and that was checked rather than assumed
+
+The plant edits `validate_render.py`, which moves the input digest, so `frontend_artifact_fresh_12`
+reports the artifact stale and the command exits 1 **whether or not the new gate works**. A proof
+resting on the exit code would therefore have proved nothing (Mandate 2). Verified by breaking
+the gate deliberately while keeping the plant:
+
+```text
+planted + gate broken:
+  EXIT=1
+  marker "NO disposition" present? 0
+  FAIL frontend_static_render_12: 1 artifact finding(s)
+    - frontend render evidence is stale: source input digest is 479b582f786d, current is c4da0ba5e88e
+```
+
+Exit 1, marker absent — so a broken gate scores NOT DETECTED. The proof rests on the
+`'Categorize' && NO disposition` conjunction, not on the exit status.
+
+### Three findings beyond the task, all named in writing
+
+1. **Two dead `visual_home` declarations.** `comparing_ordering` declares `visual_home='SortOrder'`
+   and `missing_number` declares `visual_home='BalanceScale'`, but `base_generator.py:630` reads
+   `visual_home` only when `dna_type == 'visual_read'`, and both DNAs are `algorithmic`. OBSERVED,
+   not inferred — real generated problems report `visual_type=None`:
+   ```text
+   mat_g1_na_q1_3 seed=11  visual_type=None
+   mat_g1_na_q1_4 seed=23  visual_type=None
+   mat_g1_na_q3_2 seed=11  visual_type=None
+   ```
+   A future agent adding `visual_home='X'` to an algorithmic DNA gets silence. Recorded in the
+   `SortOrder` disposition text and the §12 contract row. NOT fixed here: removing them is a DNA
+   edit whose blast radius belongs to its own change.
+
+2. **§12 covers half the frontend — the larger hole.** `/api/matatag/intro/{node_key}` is live,
+   serves 24 nodes, and its cards are drawn by ~25 inline `vt === '...'` branches in
+   `frontend/src/App.jsx`, emitting **29 distinct visual types**, most with no `renderUtils`
+   registration at all. `tests/frontend_suite.py` never loads `App.jsx`. So H-08's own finding —
+   "nothing executes the React components" — is still true of the intro surface, which is exactly
+   as unexecuted today as the practice registry was before H-08 began. Owner-ruled 2026-09-18 to
+   be named, not closed here. Recorded in the suite docstring, the §12 contract row and here.
+
+3. **`frontend_static_render.json` is a FOURTH digest-bound artifact, and the handoff names three.**
+   It carries `source_input_digest` and `frontend_artifact_fresh_12` reds when it is stale. It is
+   NOT regenerated by `run_all` — that module contains no reference to it. It currently survives a
+   source edit only INCIDENTALLY, because five mutations run `tests.frontend_suite` as their
+   command and rewrite it as a side effect. A session that edits source and re-runs only the three
+   documented artifacts gets §12 current by accident. If those five mutations were ever scoped or
+   removed, an edit would leave §12 stale with no documented remedy. Regenerate it explicitly:
+   `DATABASE_URL= PYTHONPATH=. .venv/bin/python tests/frontend_suite.py`.
+
+**The Definition of Done is NOT met.** This work closes no red stage: §12 was already green and
+remains green with one more assertion. The three red stages are unchanged.
