@@ -1321,6 +1321,7 @@ regressed nothing:
 | Red stage | What it is | Whose work |
 |---|---|---|
 | `judgment_reviews_5` | **1,158** Phase 2 findings. Genuine content debt | M2 / step 7 |
+| — | *(2026-09-18: §6F is now the ONLY surviving mutation cluster, so M2 is the sole remaining blocker in the harness. Clearing the attestation queue takes the corpus to 147/147.)* | |
 | `capability_phase2` | **218** attestation findings (67 CONTRADICTED, 69 STALE, 57 UNADJUDICABLE, 25 other) | M2 / step 6 |
 | `assertion_coverage_8` | **3 errors, 1 family** — §6F ONLY, since 2026-09-17 on `f293e2ff` (was 10 errors across two clusters). `mutation_proof_integrity_8` fell 33 -> 9 in the same move and `silent_path_disposition_8` now PASSes. The §8 cluster below is CLOSED; every remaining error names a §6F attestation mutation | `H-02` (remainder is M2-blocked) |
 
@@ -1419,12 +1420,34 @@ when you make it.
    trusting any liveness number in it — `observed_live_renders == 0` does **not** mean dead
    (`meas_object` is statically eligible on 130 of 151 nodes and was observed 0 times), and
    144 sources sit at `liveness: "UNRESOLVED"` for that reason.
-3. **`H-08`'s five uncovered registrations** — `BalanceScale`, `Categorize`,
-   `RuleDiscovery`, `SortOrder`, `TenFrame` are outside the practice obligation graph. They
-   need a dead-route versus non-practice-reachable disposition before the row can close.
-   `BalanceScale`/`TenFrame` have real intro payloads. Pointer geometry on
-   `NumberLine`/`BarChart` stays a named blind spot; jsdom cannot prove it and it must not be
-   described as covered.
+3. ~~**`H-08`'s five uncovered registrations**~~ — **DISPOSITIONED AND GATED 2026-09-18 on
+   `e49b0cb4`.** All five now carry a required disposition in
+   `validate_render.UNREACHABLE_REGISTRATION_DISPOSITIONS`, enforced in BOTH directions by
+   `renderer_registration_disposition_12` (undispositioned registration fails; a disposition
+   naming something no longer unreachable fails as stale). Measurement CORRECTED the earlier
+   description of all five as legacy/dead: `Categorize`, `RuleDiscovery` and `SortOrder` are
+   dead routes with no emitter on any surface, but `BalanceScale` (15 payloads) and
+   `TenFrame` (18) are LIVE on the intro surface, so deleting them would have broken a
+   student-facing route. Pointer geometry on `NumberLine`/`BarChart` remains a named blind
+   spot; jsdom cannot prove it and it must not be described as covered.
+
+   **THE ROW IS STILL OPEN, AND ON PURPOSE.** H-08's own finding — "nothing executes the
+   React components" — remains literally TRUE of the intro surface.
+   `/api/matatag/intro/{node_key}` is live, serves 24 nodes, and its cards are drawn by ~25
+   inline `vt === '...'` branches in `frontend/src/App.jsx` emitting **29 distinct visual
+   types**, most with no `renderUtils` registration at all. `tests/frontend_suite.py` never
+   loads `App.jsx`. So §12 covers the PRACTICE registry only, and those renderers are today
+   exactly as unexecuted as the practice ones were before H-08 began. Closing H-08 on the
+   practice half would describe a half-covered gate as total. Owner-ruled 2026-09-18 to be
+   NAMED rather than closed; building the coverage is a new blocker and needs an H-row,
+   which is the owner's call (see the two-digit-row conflict below).
+
+   Found while measuring, NOT fixed, because a DNA edit belongs to its own change:
+   `comparing_ordering` declares `visual_home='SortOrder'` and `missing_number` declares
+   `visual_home='BalanceScale'`, but `base_generator.py:630` reads `visual_home` only when
+   `dna_type == 'visual_read'` and both DNAs are `algorithmic`. Observed on real generated
+   problems — `visual_type=None` at every seed tried — so both declarations are measured
+   no-ops. A future agent adding `visual_home='X'` to an algorithmic DNA gets silence.
 4. **M2 content work** (steps 6 and 7) — the 218 attestation findings and the 1,158 review
    findings. This is the bulk of the remaining project and it unblocks §6F cluster 1.
    **The 151 fresh blind re-reviews are owed and are now countable.** See below.
