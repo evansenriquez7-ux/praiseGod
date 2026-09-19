@@ -110,6 +110,28 @@ class BalanceScaleParams(BaseVisualParams):
     blank_side: str
     is_balanced: bool
 
+class ScaleReadParams(BaseVisualParams):
+    """
+    A graduated measuring instrument with its pointer at a reading.
+
+    The mass/capacity analogue of RulerMeasureParams. `mass_capacity`'s
+    `read_measurement` task asks "what is the mass of the object?", which is
+    answerable only if the instrument is drawn -- before this existed the DNA
+    carried the reading in `values["value"]` and nothing rendered it, so the
+    stem named an object the learner could not see and the expected answer was
+    underivable from anything on the page.
+
+    `reading` must land exactly on a graduation (`reading % tick_interval == 0`)
+    or the item is not exactly answerable; the formatter snaps it, the same way
+    RulerMeasure's object spans a whole number of ruler units.
+    """
+    reading: int
+    unit: str
+    scale_max: int
+    tick_interval: int
+    instrument: str = Field(..., pattern="^(dial|cylinder)$")
+    object_label: Optional[str] = None
+
 class GridAreaParams(BaseVisualParams):
     rows: int
     cols: int
@@ -118,6 +140,25 @@ class GridAreaParams(BaseVisualParams):
 class FillInTableParams(BaseModel):
     columns: List[str] = Field(description="Column headers")
     rows: List[List[Any]] = Field(description="Table rows (values can be numbers, strings, or None for blank)")
+    # The display the counts are to be READ FROM, when this table is the
+    # destination of a transfer rather than the whole item.
+    #
+    # "Organize data in a pictograph without a scale into a table"
+    # (mat_g1_dp_q3_3) is a transfer between TWO displays and only the
+    # destination was ever drawn. An earlier session correctly rewrote the stem
+    # to name the source ("Count the pictures in each row of the pictograph,
+    # then write the counts ...") -- which made the item MORE explicitly
+    # unanswerable, because it now instructs the pupil to look at something that
+    # is not on the page. The pictograph was in the DNA's own visual_params the
+    # whole time (symbol, counts, scale, title) and this formatter dropped it.
+    #
+    # Optional: a table that is not transferred from anywhere leaves it None and
+    # renders exactly as before.
+    source_pictograph: Optional[Dict[str, Any]] = Field(
+        default=None,
+        description="{'symbol': str, 'scale': int, 'title': str, "
+                    "'rows': [{'category': str, 'count': int}]} — the stimulus to count",
+    )
 
 class VisualSchemaRegistry:
     """Registry to map visual types to their Pydantic schemas."""
@@ -138,6 +179,7 @@ class VisualSchemaRegistry:
         "PatternSequence": PatternSequenceParams,
         "RulerMeasure": RulerMeasureParams,
         "BalanceScale": BalanceScaleParams,
+        "ScaleRead": ScaleReadParams,
         "GridArea": GridAreaParams,
         "FillInTable": FillInTableParams,
     }

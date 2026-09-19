@@ -52,6 +52,26 @@ def format_fill_in_table(
         "rows": rows,
     }
 
+    # Carry the SOURCE display through. The stem below tells the pupil to count the
+    # pictures in each row of the pictograph, and until now nothing drew that
+    # pictograph -- the counts were in `vp` (symbol, counts/values, scale, title) and
+    # were dropped here, so every sample on mat_g1_dp_q3_3 asked the pupil to read a
+    # display that did not exist and keyed an answer derivable from nothing on the
+    # page. Measured before this change: 60 of 60 seeds.
+    #
+    # `scale` is carried because the competency is specifically "a pictograph WITHOUT
+    # a scale": one picture must mean one item, and a renderer that silently assumed
+    # otherwise would change the answer.
+    _symbol = vp.get("symbol")
+    if _symbol and categories and values:
+        visual_params["source_pictograph"] = {
+            "symbol": _symbol,
+            "scale": vp.get("scale", 1),
+            "title": vp.get("title"),
+            "rows": [{"category": cat, "count": int(val)}
+                     for cat, val in zip(categories, values)],
+        }
+
     # "Organize data in a pictograph without a scale INTO A TABLE" (mat_g1_dp_q3_3)
     # is a transfer between two displays, and the single stem this formatter used to
     # emit -- "Fill in the {table_word} with the correct counts." -- named neither of

@@ -12359,3 +12359,385 @@ Exit 1, marker absent — so a broken gate scores NOT DETECTED. The proof rests 
 
 **The Definition of Done is NOT met.** This work closes no red stage: §12 was already green and
 remains green with one more assertion. The three red stages are unchanged.
+
+---
+
+## 2026-09-19 — H-06 / M2 step 6: four capability gaps closed, one needing a harness rule change
+
+Session `claude-20260919-h06-attestation-queue`, on `34dcd54b`. Row claimed `in_progress`,
+`PASS hardening_status` before and after.
+
+### Method
+
+The §6F queue was triaged by ROOT CAUSE before any edit. Of the 218 attestation findings, 67 are
+CONTRADICTED; 26 of those name a `variants` provider. Those 26 were probed for whether the declared
+variant value is ever selected on the default student path:
+
+```
+$ ...pipeline.run(node, seed=s, is_student_path=True)   # 26 nodes x 60 seeds
+NONE-REACHED 20   PARTIAL 1   ALL-REACHED 5
+```
+
+**That probe tested PROFILE KEYS, and it is wrong on its own.** Re-measured at the RENDERED TEXT it
+gave two false positives — `mat_g2_na_q3_7` renders all five of `tables` 2/3/4/5/10, and
+`mat_g1_mg_q4_4` renders all three of hour/half-hour/quarter-hour — because those DNAs resolve a
+list bound internally where the key never equals the value. Every finding below was confirmed at the
+rendered output, never at the profile. Recorded because the profile-key probe is the obvious thing
+to write and it over-reports.
+
+### Fixed, each measured before and after on the default student path (three below; the fourth,
+### counting `direction`, needed a coordinated harness change and has its own section)
+
+1. **`mat_g3_na_q1_4` could not round to the nearest thousand**, which its competency names
+   ("Round numbers to the nearest ten, hundred, or thousand"). `rounding.py` already varies
+   `precision` across the feasible set, offering `nearest_thousand` only once `max_val >= 1000`.
+   Nothing bound `max_value`, so `max_val` came from the grade ceiling scaled by
+   `number_difficulty` — and that is frozen at the catalog default 0.5 unless the node carries a
+   competency-bound scope axis, a gap `services/orchestrator.py` names in its own comment.
+   `log_interpolate(10, 9999, 0.5)` is ~316.
+   ```text
+   BEFORE  200 seeds: {'10': 108, '100': 92}                 # nearest 1000: ZERO
+   AFTER   200 seeds: {'10': 75, '1000': 61, '100': 64}
+   e.g. "Round 9405 to the nearest 100." -> 9400
+   ```
+   Bound from the largest precision the competency itself names, so a future grade inherits it.
+
+2. **`mat_g2_na_q4_3` served the area model only**, though its competency names four
+   representations including "the number line". `fractions.py:152` fell back to `"area_model"` and
+   nothing bound `fraction_model`. All three declared values already render correctly — the
+   number-line value even rewrites the stem.
+   ```text
+   BEFORE 60 seeds:  FractionModel/FractionShade only, model_type=area_model
+   AFTER 120 seeds:  {'area_model': 23, 'number_line': 18, 'set_model': 21, None: 58}
+   e.g. "What fraction does the number line show?"
+   ```
+
+3. **`mat_g2_na_q3_0` never used the `'5 threes'` register** its competency names verbatim
+   ("using language such as '5 groups of 3' and '5 threes'"). ROOT CAUSE: `multiplication.py` built
+   its `_number_plurals` dict and **discarded it** — `group_form` and `plural_name` stayed `None`,
+   so the `"Count {b} {plural_name}"` branch implemented in `fmt_cloze`, `fmt_mcq`, `fmt_true_false`,
+   `fmt_error_detect` AND `base_generator` was unreachable dead code in all five. Blind review had
+   already reported "'5 threes' never appears in any of the eleven samples"; the other half of that
+   finding was fixed in an earlier session, this half was not.
+   ```text
+   BEFORE 60 seeds:  plural register 0
+   AFTER 120 seeds:  {'groups_of': 86, 'plural_name': 34}
+   e.g. "Count 3 eights by repeated addition (8 + 8 + 8): how many in all?" -> 24
+   ```
+
+### Verification
+
+```text
+$ DATABASE_URL= PYTHONPATH=. .venv/bin/python -m pytest tests/unit -q
+739 passed, 1 skipped, 2 deselected, 4 warnings in 660.01s (0:11:00)
+
+$ ...tests.obligation_executor._base_obligations()
+4269          # these three fixes are manifest-neutral; the counting change below takes it to 4277
+```
+
+### Counting `direction`: fixed, WITH the harness rule it required — owner-approved
+
+`mat_g1_na_q1_0`'s competency names "counting up or down" and "1 more or 1 less", and
+`count_backward_from_a_given_number` / `identify_one_less_than_a_number` are both CONTRADICTED.
+Measured: **0 descending sequences in 300 default student-path seeds**, while the DNA renders them
+correctly the moment `direction` is passed. The backward half had never been reachable.
+
+Binding `direction` alone was not enough and the first attempt was **withdrawn** rather than shipped:
+under `validate_matrix.formatter_refused_at_node`, a list bound made `emoji_pictorial` refused at the
+node outright — measured as exactly two obligations vanishing (4269 -> 4267) and
+`test_emoji_pictorial_uses_the_requested_theme_emoji` failing. That function was deliberate and
+documented itself: *"ALL, not ANY. The DNA picks one member per seed, so a formatter is eligible
+only if it can render EVERY value the node might land on."*
+
+**Its premise was true when written and is no longer.** The pipeline now narrows a list-valued bound
+to the formatter-supported subset before the DNA resolves it, so the DNA cannot land on a value the
+formatter would have to draw and cannot. Owner-approved on 2026-09-19 as a coordinated change, and
+all four pieces moved together per Protocol 7:
+
+  * `services/orchestrator.py` — narrow a list bound to the chosen formatter's supported subset;
+  * `generators/base_generator.py` — `generate_context` had been re-injecting the whole competency
+    bound over that narrowing one frame later. **Found only by instrumenting `counting.generate_params`,
+    the real consumer**: the profile the orchestrator passed looked correct and was not what the DNA
+    received. A check of the orchestrator's own output would have reported success;
+  * `validation/validate_matrix.py` — `wanted <= allowed` becomes `wanted & allowed`, refusing a
+    formatter only when it can render NONE of the named values;
+  * `docs/pgen_contract.md` §1C-coverage row.
+
+**What did NOT relax, verified by execution rather than by reading the diff.** The defect the ALL
+rule was built for is still caught, in both the harness and production:
+
+```text
+mat_g3_na_q3_1 task_type=['commutative','associative','distributive','zero_identity'], array_grid_read
+  formatter_refused_at_node -> True
+  PRODUCTION                -> ValueError: Forced DNA 'multiplication' not compatible ...
+mat_g1_na_q1_0 direction=['forward','backward'], emoji_pictorial
+  formatter_refused_at_node -> False      # partial support, narrowed to ['forward']
+```
+
+A scalar bound is unchanged under both readings — a one-element `wanted` is either inside `allowed`
+or disjoint from it — so only multi-value bounds with partial support moved.
+
+```text
+BEFORE  300 seeds: {'ascending': 142, 'n/a': 158}          # DESCENDING: ZERO
+AFTER   300 seeds: {'DESC': 106, 'n/a': 126, 'asc': 68}    # EmojiPictorial paired with a countdown: 0
+e.g. "What number comes next when counting backward: 79, 78, 77, 76, ___?" -> 75
+```
+
+The three counting nodes whose LCs do NOT name descending are unchanged at 0 descending, bound
+`None` — the binding is read from competency text, so no node gains content its LC does not name.
+
+**The obligation product GREW, 4269 -> 4277, and the eight are real.** Each was confirmed served by
+production at 5 of 5 seeds before the pinned count was touched:
+`mat_g1_na_q3_4 subtraction/number_line_read` x6 and `mat_g2_na_q3_5 division/array_grid_read+set` x2.
+Both LCs name pictorial models outright ("using concrete and pictorial models"; "a variety of
+concrete and pictorial models"), so the ALL reading had been **suppressing routes the curriculum
+requires** — and `mat_g2_na_q3_5`'s `objects` capability is a live §6F CONTRADICTED finding for
+exactly the missing pictorial evidence those routes supply. The count in
+`tests/unit/test_obligation_executor.py` was updated with that evidence recorded beside it.
+
+### Proof, not inspection
+
+```text
+$ ...tests/mutation_harness.py --only silent_substitution
+    expected catcher: §1C-reverse (excluded combinations must raise)
+    DETECTED: exit 1 — [1/1] Checking mat_g1_na_q1_0 ...  FAIL
+1/1 mutations detected.
+```
+
+§1C-reverse still executes on that node after the change (`Contract checks actually executed`
+includes `§1C-reverse`), so the plant still reaches the code the validator runs — the failure mode
+Mandate 2 names, checked rather than assumed.
+
+```text
+$ ...validate_matrix
+Nodes Checked: 151   Nodes Passed: 151   Nodes Failed: 0   Total Failures Observed: 0
+§1H applicability: PASS (151 node(s))
+
+$ ...pytest tests/unit -q
+739 passed, 1 skipped, 2 deselected in 660.05s
+```
+
+**NAMED LIMIT.** No mutation yet plants at the `wanted & allowed` comparison itself, so the ANY
+reading is proven to still catch silent substitution and proven consistent with production on both
+the NONE and PARTIAL cases, but its own boundary is not mutation-covered. That gap is real and is
+recorded here, in the contract row and in the function's comment.
+
+### §2B caught the second-order effect, and it was regenerated rather than hand-edited
+
+The ANY reading also made `cloze`, `error_detect` and `true_false` servable on
+`mat_g3_na_q3_1`, which `_generated_formatter_exclusions.py` still listed as refused. That file is
+derived EMPIRICALLY by asking the orchestrator at 12 seeds, precisely because three attempts to
+model its eligibility rules statically all drifted. §2B exists to catch it going stale, and did:
+
+```text
+$ ...validate_compat
+Compatibility validation: 12/13 check groups passed.
+  FAIL advertised_formatters_are_servable:
+    - mat_g3_na_q3_1: formatter 'cloze' is listed in NODE_FORMATTER_EXCLUSIONS but the
+      orchestrator now serves it. The exclusion is stale and is withholding a formatter
+      the node could use. Regenerate with: ...scripts.regen_formatter_exclusions
+    (+ error_detect, true_false)
+```
+
+Regenerated with its own documented script — never hand-edited — taking 229 exclusions across 92
+nodes, and the obligation product 4277 -> 4289. The 12 new routes are that node x those three
+formatters x context x number_type, all narrowed to `task_type=zero_identity`, the only property
+value those formatters support. Content checked before the count was pinned, not after:
+
+```text
+cloze        seed23: '6 x 0 = ___'                                  -> 0
+true_false   seed23: '6 x 0 = 0. True or False?'                    -> True
+error_detect seed23: 'Rosa solved: "6 x 0 = ___". Rosa says ... 6.' -> has_error=True, correct=0
+```
+
+The zero and identity properties are named outright in that node's competency.
+
+```text
+$ ...validate_compat
+Compatibility validation: 13/13 check groups passed.
+$ ...validate_matrix
+Nodes Checked: 151   Nodes Passed: 151   Nodes Failed: 0
+```
+
+**This is the part worth carrying forward:** a pipeline change this small moved an empirically
+derived artifact two steps away from it, and nothing about the edit said so. It was found by running
+the gates, not by reasoning about the diff.
+
+### Found while measuring, NOT fixed — two nodes serve UNANSWERABLE items
+
+A sweep of all 151 nodes x 20 seeds for stems that reference a visual the item never draws
+(`is_visual=False`) returned 8 nodes / 79 samples. Six are self-describing in text and answerable.
+Two are not, at **20 of 20 seeds each**:
+
+```text
+mat_g3_mg_q2_0 seed1: "What is the mass of the object in g?"        is_visual=False  -> ans=1
+mat_g3_mg_q2_3 seed1: "What is the capacity of the container in L?" is_visual=False  -> ans=8
+```
+
+There is no object, no container, and no number anywhere in the stem; the answer is underivable.
+`mass_capacity` is `dna_type="algorithmic"` with `visual_home=None`, so it cannot emit a visual at
+all, yet its `read_measurement` task_type writes stems that require reading an instrument. A third,
+`mat_g1_dp_q3_3`, draws the FillInTable it asks the pupil to complete but never draws the
+pictograph it says to count ("Count the pictures in each row of the pictograph", 60/60 seeds).
+
+`BalanceScale`, `RulerMeasure` and `Pictograph` all exist as registered visual schemas, so the
+remedy is reachable — but it needs `visual_home` honoured for algorithmic DNAs, which the plan
+already names as a measured no-op belonging to its own change, plus intro-surface renderers that
+§12 does not execute. **Not attempted here. It is a bigger and more severe finding than the
+capability queue it was found under, and it is student-facing today.**
+
+### The unanswerable items are FIXED — mass, capacity and the pictograph
+
+Owner-directed 2026-09-19 to continue under H-06 rather than open a row. All three defects
+shared one shape: **the stem asked the pupil to read a display the pipeline never drew**, and in
+every case the data was already there and something downstream dropped it.
+
+**This was a port, not an invention.** `length_measurement` had already solved the identical
+problem and its own comment says how: *"the fix is to give the task its visual, NOT to restrict it
+and hope"*. There, `ruler_measure` owns `read_measurement` and FORMATTER_VARIANT_SUPPORT forbids
+`mcq`/`cloze` from it. Confirmed live before copying — `RulerMeasure` renders 17 times in a
+151-node x 12-seed sweep and three G1/G2 length nodes serve `ruler_measure` alone:
+
+```text
+mat_g1_mg_q2_0 seed1: 'How long is a spoon? Give your answer in paperclips.'
+   vp={'ruler_end': 20, 'object_start': 0, 'object_end': 6, 'length': 6, ...}   # readable: 6
+```
+
+**1 & 2 — mass and capacity (`mat_g3_mg_q2_0`, `mat_g3_mg_q2_3`).** `mass_capacity` could drive only
+`mcq` and `cloze`, so it had NO visual formatter at all, while its `read_measurement` task wrote
+"What is the mass of the object in g?" -> 1. Built `ScaleRead`: a schema, `fmt_scale_read.py`
+(graduated dial for mass, cylinder for capacity), an adapter route, and `ScaleReadInteractive`.
+FORMATTER_VARIANT_SUPPORT then gave `read_measurement` to it and took it from the textual pair.
+
+```text
+BEFORE  20/20 seeds per node UNANSWERABLE, visual_type=None
+AFTER   200/200 seeds per node render ScaleRead
+        stems referencing an undrawn referent:            0   (was 20/20)
+        keyed answer == the reading the instrument shows: 200/200
+seed1: 'Look at the scale. What is the mass of the parcel? Give your answer in g.'
+   vp={'reading': 1, 'unit': 'g', 'scale_max': 6, 'tick_interval': 1, 'instrument': 'dial'}
+```
+
+`estimate` and `compare` stay textual **on purpose**: an instrument that shows the reading destroys
+an estimation task (the trap `length_measurement`'s comment names), and `compare` states both
+magnitudes in words and is answerable without a drawing.
+
+**3 — the pictograph (`mat_g1_dp_q3_3`).** The competency is a transfer between TWO displays and only
+the destination was drawn. An earlier session had correctly rewritten the stem to name the source
+("Count the pictures in each row of the pictograph, then write the counts...") — which made the item
+MORE explicitly unanswerable, since it now instructs the pupil to look at something absent. The
+pictograph was in the DNA's own `visual_params` (`symbol`, `counts`, `scale`, `title`) and
+`fmt_fill_in_table` dropped it. Carried through as `source_pictograph` and rendered above the table.
+
+```text
+Monday     expected 3  rendered 3  OK      title rendered: true
+Tuesday    expected 5  rendered 5  OK      input fields (the table to fill): 4
+Wednesday  expected 1  rendered 1  OK      payload WITHOUT a pictograph: block absent, 4 inputs
+Thursday   expected 4  rendered 4  OK      (backwards compatible)
+```
+
+### Verified by execution, and two gates caught things reading the diff would not
+
+```text
+$ ...tests/frontend_suite.py
+PASS frontend_static_render_12: 28 payloads, 56 renders, 16 visual types   (was 15)
+  ScaleRead is in production_visual_types AND registered_visual_types; it is NOT in the
+  unreachable list, so it needs no disposition.
+$ ...validate_render        all 6 checks PASS, renderer_registration_disposition_12 still 5/5
+$ ...validate_compat        13/13 check groups passed; formatters_reachable 35, floor 35
+$ ...validate_matrix        151/151, 0 failures, §1H PASS
+$ ...pytest tests/unit      739 passed, 1 skipped (675.32s)
+```
+
+The needle is in the emitted markup, not merely in the payload — checked because graduations
+without a pointer would still be unanswerable, and the artifact records counts rather than HTML:
+
+```text
+dial  reading=60/75 mg  16 graduations  needle x2=222.97 y2=86.98   (fraction .80 -> 36 deg)
+dial  reading=1/6   g    7 graduations  needle x2=71.88  y2=94.90   (fraction .17 -> 150 deg)
+cyl   reading=35/45 mL  10 graduations  fill height 77.78%
+```
+
+**§2B caught the consequence, twice.** Adding a formatter widened `get_node_formatters()`, and
+`advertised_formatters_are_servable` plus `formatters_reachable` failed together (43 pairs against a
+floor of 35) naming `scale_read` advertised where the orchestrator refuses it AND `mcq`/`cloze`
+advertised where they are now refused. `_generated_formatter_exclusions.py` was REGENERATED with its
+documented script, never hand-edited, and the result is the design stated outright:
+
+```text
+mat_g3_mg_q2_0: ['scale_read']          mat_g3_mg_q2_1: ['mcq', 'cloze']
+mat_g3_mg_q2_3: ['scale_read']          mat_g3_mg_q2_2/4/5: ['mcq', 'cloze']
+```
+
+Obligation product 4289 -> 4281, a DECREASE and an intended one: each of the two nodes traded 8
+textual routes for 4 visual ones, and the 8 it lost were the unanswerable ones. Fewer routes, all
+answerable.
+
+**Tree-wide, the defect class shrank rather than moved.** The same sweep that found it:
+
+```text
+NODES WITH DANGLING VISUAL REFERENCE: 6  (was 8)
+TOTAL SAMPLES: 39 of 3020                (was 79)
+```
+
+The remaining 6 were triaged and are answerable — each describes its referent in the stem text
+(fraction models named as 1/2 and 1/4, a number-line position stated in words, ASCII geometry
+models, a schedule given inline). They are cosmetic ("Look at the..." naming something drawn only in
+prose), not underivable, and are deliberately left.
+
+### FOUND AND MEASURED, NOT FIXED: the `estimate` task keys a ZERO measurement
+
+Different defect, same DNA, found while rendering the six `mass_capacity` nodes. Answerable but
+pedagogically wrong, and it is live:
+
+```text
+mat_g3_mg_q2_1 seed1: "An object's mass measures 1 g. About how many g is that,
+                       rounded to the nearest 10?"          -> 0        12/200 seeds
+mat_g3_mg_q2_4 seed3: "A container's capacity measures 4 L. About how many L is that,
+                       rounded to the nearest 10?"          -> 0        21/200 seeds
+```
+
+An object with no mass, and a container that holds nothing. The rounding is arithmetically right and
+the item is nonsense: `_round_unit_for` picks a place-value column by magnitude, and any reading
+below half that column rounds to zero. The remedy is to keep the estimate task's reading at or above
+half its rounding column (or lower the column), so the estimate is non-degenerate. NOT attempted
+here — it is a separate defect from the unanswerable class this session was directed at, and it
+wants its own measurement of what the competency "Estimate mass of an object" should actually ask,
+given the framing note already in `mass_capacity.py` that estimation-as-rounding was a deliberate
+choice to avoid an object-reference database.
+
+### Definition of Done
+
+**NOT met, and nothing here claims otherwise.** None of this work closes a red stage:
+`judgment_reviews_5`, `capability_phase2` and `assertion_coverage_8` are all still red. Four §6F
+CONTRADICTED findings now have the content their clauses name, and three nodes no longer serve
+unanswerable items, but **a §6F finding clears only when a BLIND Attester re-judges the new
+renders** — a fix at the generator is not a verdict, and this session authored none. Expect the
+queue to move only after re-attestation. Equally, the three unanswerable nodes are fixed at the
+GENERATOR and are not yet gated: no check would catch the class returning, which is named below.
+
+The four digest-bound artifacts are STALE against these source edits and the re-proof chain has
+deliberately NOT been run, on the owner's instruction to keep the batch open. Re-prove in the
+documented order — frontend artifact, benchmark, corpus, sweep LAST. Note the frontend artifact was
+regenerated three times during this session purely to keep §12 green against successive edits; the
+LAST regeneration is the only one that will still be current.
+
+### A FIX AT THE DATA LAYER GATES NOTHING — what is still unguarded
+
+Named because the mandate requires it, not because it is comfortable:
+
+* **No check catches a stem that references a display the item does not draw.** The sweep that found
+  all three defects is a scratch probe in this session's transcript, not a gate. `scale_read` owning
+  `read_measurement` is enforced (FORMATTER_VARIANT_SUPPORT + §2B + the regenerated exclusions), so
+  THAT node pair cannot regress silently; but a NEW DNA repeating the pattern would land with
+  nothing to catch it. Mandate 5 says to build the gate while its finding count is zero — the count
+  is now 6 nodes / 39 samples of the cosmetic remainder, not zero, so a binding check would sit on a
+  red baseline. The honest sequence is: rule on those 6, then add the gate.
+* **`source_pictograph` is rendered but not asserted.** §12 counts elements and text labels from the
+  markup; nothing asserts that the symbols in a pictograph row NUMBER what the table's answer says.
+  The 3/5/1/4 correspondence was verified once, by hand, in this session. Change
+  `fmt_fill_in_table` and that correspondence can break with every gate still green.
+* **`ScaleRead` geometry is unproven beyond arithmetic.** jsdom has no layout engine, so the needle's
+  angle and the cylinder's fill height were checked by computing them from the emitted attributes,
+  not by observing a rendered pixel. This is the same blind spot §12 already names for
+  NumberLine/BarChart pointer geometry, and it now covers one more visual type.

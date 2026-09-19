@@ -130,6 +130,22 @@ def _regrouping_is_two_sided(text: str) -> bool:
     return any(phrase in text for phrase in _TWO_SIDED_REGROUPING_PHRASES)
 
 
+# The ways a MATATAG counting competency says "and downwards too". Kept as one
+# compiled predicate for the same reason as _TWO_SIDED_REGROUPING_PHRASES: the
+# knowledge of which words mean "descending" belongs in exactly one place.
+#
+# "1 more or 1 less" is included because that clause IS the descending case at
+# G1 -- `identify_one_less_than_a_number` is a separate required capability on
+# mat_g1_na_q1_0, and a forward-only generator cannot serve it.
+_COUNTING_NAMES_DESCENDING = re.compile(
+    r"\bup\s+or\s+down\b"
+    r"|\bforward\s+or\s+backward\b"
+    r"|\bbackwards?\b"
+    r"|\bcount(?:ing)?\s+back\b"
+    r"|\b1\s+more\s+or\s+1\s+less\b"
+)
+
+
 def _parse_competency_bounds(
     competency: str,
     dna_name: str,
@@ -449,6 +465,17 @@ def _parse_competency_bounds(
         if "problems" in text or "word problem" in text:
             bounds["context"] = "word_problem"
 
+        # The other half of that same blind-review finding, still open until
+        # now: q3_0 names TWO registers for the equal-groups model, "'5 groups
+        # of 3' and '5 threes'", and only the first was ever rendered. The
+        # plural-number form is implemented in five formatters but the DNA
+        # never set the `group_form` that selects it. Bind it from the
+        # competency's own example so the alternation follows the curriculum
+        # rather than the DNA's taste, and so a node that names only the group
+        # form keeps only the group form.
+        if re.search(r"\b\d+\s+(?:ones|twos|threes|fours|fives|sixes|sevens|eights|nines|tens)\b", text):
+            bounds["group_form"] = ["groups_of", "plural_name"]
+
         # "Estimate the product of 2- to 3-digit numbers by 1- to 2-digit
         # numbers by estimating the factors using multiples of 10"
         # (mat_g3_na_q3_3) -- round both factors to the nearest 10, then
@@ -685,6 +712,39 @@ def _parse_competency_bounds(
         # numbers, count-up-as-addition-strategy, repeated-addition groups)
         # correctly use the DNA's own by_1 default without a bound.
 
+        # `direction` was declared by VARIANTS_BY_DNA and implemented in
+        # counting.py, but NOTHING ever set it: nothing binds it here, and the
+        # orchestrator injects a variant value only for the (dna, formatter)
+        # pairs FORMATTER_VARIANT_SUPPORT names -- which for counting is
+        # emoji_pictorial, pinned to "forward". So generate_params fell to its
+        # own `profile.get("direction", "forward")` default on every student
+        # request, and the descending half of a competency that explicitly
+        # names it was never once generated. Measured on mat_g1_na_q1_0 before
+        # this change: 0 descending sequences in 300 default student-path
+        # seeds, while the same node renders them correctly the moment
+        # `direction` is passed. That is the same defect already fixed twice in
+        # this DNA's skip axes ("silently degraded to plain +1 counting, 100%
+        # of the time") and once in comparing_ordering.py's `direction`.
+        #
+        # Bind it from the competency's own words so the fix is not scoped to
+        # the nodes in front of us: any future grade whose LC names counting
+        # down inherits it with no edit here.
+        #
+        # NAMED LIMIT: a competency naming ONLY descending counting would be
+        # bound to both values here, because every MATATAG counting LC that
+        # mentions counting down also names counting up ("up or down", "1 more
+        # or 1 less"). No node in the G1-G10 tree is backward-only today; if
+        # one appears, this needs to split "names descending" from "names
+        # both" rather than assuming they coincide.
+        if _COUNTING_NAMES_DESCENDING.search(text):
+            # A LIST, deliberately, not a sentinel string. §6C reads a scalar
+            # bound as pinning the key to exactly that value
+            # (validate_capability._bound_restricts_to), so a sentinel would
+            # make `direction=backward` unreachable-by-declaration and turn
+            # this §6F contradiction into a §6D provision gap -- moving the
+            # defect rather than fixing it. A list keeps both values provided.
+            bounds["direction"] = ["forward", "backward"]
+
     # Ordinal numbers: no gate here at all previously -- this DNA's own
     # "ordinal_range" axis (axes_catalog.py) had no per-node ceiling to map
     # against, so every node fell to the axis's generic default_max=100
@@ -694,6 +754,33 @@ def _parse_competency_bounds(
     # coincidentally keeping every render low), fixing that bug without
     # this gate let a G1 "up to 10th" node render "49th"/"52nd" -- a real
     # curriculum-scope violation, not just a coverage gap.
+    elif dna_name == "rounding":
+        # rounding.py already varies `precision` across whichever precisions are
+        # feasible at the seed's max_val, offering "nearest_thousand" only once
+        # max_val >= 1000 -- rounding 234 to the nearest 1000 is a degenerate
+        # "always 0" item. But nothing bound `max_value` here, so max_val came
+        # from the DNA's own grade ceiling scaled by `number_difficulty`, and
+        # THAT is frozen at the catalog default of 0.5 unless the node carries a
+        # competency-bound scope axis (services/orchestrator.py, which names the
+        # gap in its own comment). log_interpolate(10, 9999, 0.5) is ~316, so
+        # max_val never once reached 1000 and the "thousand" the competency
+        # names was unreachable: measured 0 of 200 default student-path seeds
+        # before this change, against 108 "nearest 10" and 92 "nearest 100".
+        #
+        # Bind the scope from the largest precision the competency itself names.
+        # That both opens the range and, because a tuple bound is a scope axis,
+        # unfreezes `number_difficulty` for this node through the existing path
+        # rather than by special-casing it.
+        _ROUNDING_SCOPE = (
+            ("thousand", (1000, 9999)),
+            ("hundred",  (100, 999)),
+            ("ten",      (10, 99)),
+        )
+        for _word, _span in _ROUNDING_SCOPE:
+            if re.search(rf'nearest\s+(?:\w+,?\s+)*?{_word}', text) or f"nearest {_word}" in text:
+                bounds["max_value"] = _span
+                break
+
     elif dna_name == "ordinal_numbers":
         match = re.search(r'up\s+to\s+(\d+)(?:st|nd|rd|th)', text)
         if match:
@@ -1267,6 +1354,28 @@ def _parse_competency_bounds(
     # numerator > 1, which is the entire point that distinguishes it from the
     # "unit" node. Bind explicitly from the LC wording.
     elif dna_name == "fractions":
+        # Which REPRESENTATIONS the competency names. fractions.py declares
+        # three `fraction_model` values and renders all three correctly -- the
+        # number-line value even rewrites the stem to "What fraction does the
+        # number line show?" -- but line 152 falls back to "area_model" and
+        # nothing bound the axis, so a competency naming "groups of objects,
+        # fraction charts, fraction tiles, AND the number line" served the area
+        # model alone. Measured on mat_g2_na_q4_3 before this change: 0 of 60
+        # default student-path seeds produced a number line.
+        #
+        # Bound as a list so every named model stays provided under §6C and the
+        # DNA picks one per seed, the same shape as counting's `direction`.
+        _named_models = []
+        if "number line" in text:
+            _named_models.append("number_line")
+        if "groups of objects" in text or "set of objects" in text:
+            _named_models.append("set_model")
+        if ("fraction chart" in text or "fraction tile" in text
+                or "region" in text or "area model" in text or "shape" in text):
+            _named_models.append("area_model")
+        if _named_models:
+            bounds["fraction_model"] = sorted(set(_named_models))
+
         if "unit fraction" in text or "1/2 and 1/4" in text or "1/2 and 1/4" in text or "half" in text or "quarter" in text:
             bounds["fraction_type"] = "unit_fraction"
         elif "similar fraction" in text:

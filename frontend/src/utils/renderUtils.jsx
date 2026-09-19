@@ -19,6 +19,7 @@ import {
   TenFrameInteractive,
   RulerMeasureInteractive,
   BalanceScaleInteractive,
+  ScaleReadInteractive,
   ShapeBoardInteractive,
   NumberBondInteractive
 } from '../components/VisualSkeletons.jsx';
@@ -61,6 +62,10 @@ export function renderVisualInner(vt, vp, onAnswer, disabled, uniqueKey) {
       return <RulerMeasureInteractive key={uniqueKey} params={vp} onAnswer={onAnswer} disabled={disabled} />;
     case 'BalanceScale':
       return <BalanceScaleInteractive key={uniqueKey} params={vp} disabled={disabled} />;
+    // Read-only: no onAnswer, like EmojiPictorial/TenFrame/BalanceScale above. The
+    // pupil reads the instrument; there is no set mode to route to.
+    case 'ScaleRead':
+      return <ScaleReadInteractive key={uniqueKey} params={vp} />;
     case 'ShapeBoard':
       return <ShapeBoardInteractive key={uniqueKey} params={vp} onAnswer={onAnswer} disabled={disabled} />;
     case 'NumberBond':

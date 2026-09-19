@@ -645,9 +645,12 @@ def formatter_refused_at_node(dna_name: str, comp_bounds: dict, fmt: str) -> boo
     """
     Does this node's competency bind a variant to values this formatter cannot render?
 
-    Mirrors `compatibility.is_variant_available_at`: ALL, not ANY. The DNA picks one
-    member per seed, so a formatter is eligible only if it can render EVERY value the
-    node might land on; supporting one of four is not support.
+    ANY, not ALL, since 2026-09-19 -- a formatter is refused only when it can render
+    NONE of the values the bound names. The orchestrator narrows a list-valued bound to
+    the formatter-supported subset before the DNA resolves it, so partial support is real
+    support: the DNA cannot land on a value the formatter would have to draw and cannot.
+    See the comment at the comparison for what that replaced and why, and note that a
+    SCALAR bound behaves identically under both readings.
 
     The list branch was missing until 2026-08-26 -- the guard read
     `not isinstance(bound_val, list)` and so skipped every list-valued bound. 78 such
@@ -672,7 +675,31 @@ def formatter_refused_at_node(dna_name: str, comp_bounds: dict, fmt: str) -> boo
         allowed = {str(v) for v in restrictions[var_name]}
         wanted = ({str(b) for b in bound_val}
                   if isinstance(bound_val, list) else {str(bound_val)})
-        if not wanted <= allowed:
+        # AMENDED 2026-09-19, owner-approved, WITH the pipeline change that earns it.
+        #
+        # This read `if not wanted <= allowed` -- ALL, not ANY -- on the stated premise
+        # that "the DNA picks one member per seed, so a formatter is eligible only if it
+        # can render EVERY value the node might land on". That premise was TRUE when it
+        # was written and is no longer: the orchestrator now narrows a list-valued bound
+        # to the subset the chosen formatter supports before the DNA resolves it, and
+        # `generate_context` preserves a narrowed subset instead of re-injecting the whole
+        # bound over it. So the DNA can no longer land on a value this formatter cannot
+        # render, and the set the formatter must cover is the INTERSECTION, not the bound.
+        #
+        # What this deliberately does NOT relax: a formatter that can render NONE of the
+        # named values is still refused, which is the defect the ALL rule was built to
+        # catch (mat_g3_na_q3_1 binds task_type to four properties `array_grid_read`
+        # supports none of). A SCALAR bound is unchanged in every case -- a one-element
+        # `wanted` is either inside `allowed` or disjoint from it, so the two readings
+        # agree. Only a multi-value bound with partial support moves, and only to where
+        # the pipeline already is.
+        #
+        # Measured on mat_g1_na_q1_0, whose LC names "counting up or down": under the old
+        # reading, binding direction=['forward','backward'] refused emoji_pictorial and
+        # took the obligation product 4269 -> 4267, deleting a route production serves
+        # correctly. Under this reading the node keeps emoji (forward only) AND gains the
+        # backward half its competency names.
+        if not (wanted & allowed):
             return True
     return False
 

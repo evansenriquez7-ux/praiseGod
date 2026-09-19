@@ -409,6 +409,14 @@ COMPATIBILITY: Dict[str, List[str]] = {
     "mass_capacity": [
         "mcq",
         "cloze",
+        # `read_measurement` asks the pupil to read an instrument, and this DNA
+        # had no visual formatter at all -- so mat_g3_mg_q2_0 and mat_g3_mg_q2_3
+        # served "What is the mass of the object in g?" with nothing on the page,
+        # UNANSWERABLE at 20 of 20 seeds. The reading was already in the DNA's
+        # values; only the drawing was missing. FORMATTER_VARIANT_SUPPORT below
+        # gives `read_measurement` to this formatter and takes it away from the
+        # textual pair, exactly as `length_measurement` does with `ruler_measure`.
+        "scale_read",
     ],
 
     "time_reading": [
@@ -941,6 +949,31 @@ FORMATTER_VARIANT_SUPPORT: Dict[str, Dict[str, Dict[str, List[str]]]] = {
                               "equal_length", "compare_distance", "solve_problems_non_standard", "solve_word_problem"]},
         "cloze": {"task_type": ["compare", "convert", "choose_unit", "estimate",
                                 "equal_length", "compare_distance", "solve_problems_non_standard", "solve_word_problem"]},
+    },
+
+    "mass_capacity": {
+        # THE SAME DEFECT AS length_measurement's ABOVE, on the sibling DNA, found
+        # 2026-09-19 and unnoticed until then because this DNA had no entry in this
+        # table at all AND no visual formatter to restrict toward. `read_measurement`
+        # is a READ-THE-INSTRUMENT task; served through mcq/cloze it rendered
+        #     mat_g3_mg_q2_0: "What is the mass of the object in g?"        -> 1
+        #     mat_g3_mg_q2_3: "What is the capacity of the container in L?" -> 8
+        # with no object, no container and no number anywhere in the stem -- 20 of 20
+        # seeds on each node, every one of them unanswerable. The reading was in the
+        # DNA's values["value"] the whole time; nothing drew it.
+        #
+        # Same remedy as the ruler, in the same order: GIVE the task its visual
+        # (fmt_scale_read, a graduated dial for mass and cylinder for capacity),
+        # then take the task away from the formatters that cannot draw it. Doing
+        # only the second half would have left read_measurement unrenderable.
+        "scale_read": {"task_type": ["read_measurement"]},
+        # As above, this table has no negative form: excluding read_measurement
+        # means listing every other task_type. `estimate` and `compare` stay textual
+        # on purpose -- an instrument that shows the reading destroys an estimation
+        # task, which is the trap length_measurement's comment names, and `compare`
+        # states both magnitudes in words and is answerable without a drawing.
+        "mcq": {"task_type": ["compare", "convert", "estimate"]},
+        "cloze": {"task_type": ["compare", "convert", "estimate"]},
     },
 
     "multiplication": {

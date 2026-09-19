@@ -427,6 +427,32 @@ class PracticeOrchestrator:
                         )
                         if is_registry_scope and not explicitly_restricted:
                             continue
+                        # A competency naming SEVERAL values of one variant binds the
+                        # list of them (registry._parse_competency_bounds: counting's
+                        # `direction`, fractions' `fraction_model`, multiplication's
+                        # `group_form`). A list is not a value, so passing it straight
+                        # to is_variant_supported asked "does this formatter support
+                        # the literal list?" -- always no -- and disqualified every
+                        # DNA, which surfaced as `Forced DNA 'counting' not compatible`
+                        # on mat_g1_na_q1_0/emoji_pictorial.
+                        #
+                        # The right question is whether the formatter can render AT
+                        # LEAST ONE of the named values. It is then narrowed to
+                        # exactly the supported subset once the DNA is chosen (see
+                        # `_narrow_listed_variants` below), so a formatter that can
+                        # only draw part of the competency still cannot be handed the
+                        # part it cannot draw -- emoji_pictorial keeps counting
+                        # forward while mcq/cloze serve both directions.
+                        if isinstance(var_val, (list, tuple)):
+                            if not any(
+                                is_variant_supported(d, formatter, var_name, v)
+                                and is_variant_available_at(
+                                    d, var_name, str(v), _node_grade, _node_quarter)
+                                for v in var_val
+                            ):
+                                dna_compatible = False
+                                break
+                            continue
                         if not is_variant_supported(d, formatter, var_name, var_val):
                             dna_compatible = False
                             break
@@ -462,6 +488,33 @@ class PracticeOrchestrator:
 
         if not formatter and allowed_formatters and len(allowed_formatters) == 1:
             formatter = allowed_formatters[0]
+
+        # Narrow a competency's LIST-valued variant bound to what the chosen
+        # formatter can actually render, before the DNA resolves it. The
+        # compatibility loop above admits a DNA when the formatter can draw at
+        # least one named value; without this, the DNA's own rng could then pick
+        # one of the others -- emoji_pictorial (FORMATTER_VARIANT_SUPPORT pins it
+        # to direction='forward') would eventually be handed 'backward' and draw
+        # a countdown it has no way to represent.
+        #
+        # Narrowing rather than clearing is deliberate: the competency still
+        # names every value, so the ones this formatter cannot draw stay
+        # reachable through the formatters that can, which is what keeps §6C
+        # provision honest instead of quietly dropping half an LC.
+        if formatter:
+            for _var_name, _var_val in list(local_difficulty_profile.items()):
+                if not isinstance(_var_val, (list, tuple)):
+                    continue
+                if VARIANTS_BY_DNA.get(dna_name, {}).get(_var_name) is None:
+                    continue          # not a declared variant axis; e.g. skip_pool
+                _supported = [
+                    v for v in _var_val
+                    if is_variant_supported(dna_name, formatter, _var_name, v)
+                    and is_variant_available_at(
+                        dna_name, _var_name, str(v), _node_grade, _node_quarter)
+                ]
+                if _supported and len(_supported) < len(_var_val):
+                    local_difficulty_profile[_var_name] = _supported
 
         if formatter:
             from backend.app.practice_gen.compatibility import FORMATTER_VARIANT_SUPPORT

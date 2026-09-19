@@ -201,7 +201,25 @@ def generate_context(
                     profile_to_use[dim] = max_val
             else:
                 # Override profile with strict discrete bounds from curriculum
-                profile_to_use[dim] = bound_val
+                #
+                # EXCEPT when the caller already narrowed a LIST bound to a
+                # SUBSET of itself. That is not a request to leave the
+                # curriculum, it is a refinement inside it: the orchestrator
+                # narrows a competency's list-valued variant to the values the
+                # chosen formatter can actually render. Overwriting it here put
+                # the whole list back, so `direction=['forward','backward']`
+                # reached emoji_pictorial -- a formatter FORMATTER_VARIANT_SUPPORT
+                # pins to 'forward' precisely because it cannot draw a countdown.
+                # Verified at the DNA rather than at this function's output: the
+                # orchestrator's narrowing looked correct on the profile it
+                # passed and was silently undone one frame later.
+                _incoming = profile_to_use.get(dim)
+                if (isinstance(bound_val, list)
+                        and isinstance(_incoming, (list, tuple)) and _incoming
+                        and {str(v) for v in _incoming} <= {str(b) for b in bound_val}):
+                    profile_to_use[dim] = list(_incoming)
+                else:
+                    profile_to_use[dim] = bound_val
     else:
         # For non-student paths (harness/Lab/audit): do NOT clamp/override, use profile as-is
         # but still fill in any omitted dimensions using their bounds/defaults.

@@ -738,6 +738,30 @@ def generate_params(
             9: "nines",
             10: "tens",
         }
+        # This dict was BUILT AND DISCARDED: `group_form` and `plural_name`
+        # stayed None, so the "Count {b} {plural_name}" branch that fmt_cloze,
+        # fmt_mcq, fmt_true_false, fmt_error_detect and base_generator all
+        # implement was unreachable dead code in every one of them. The effect
+        # was that mat_g2_na_q3_0 -- whose competency names BOTH registers, "'5
+        # groups of 3' AND '5 threes'" -- only ever rendered the first. Measured
+        # before this change: 0 of 60 default student-path seeds used the
+        # plural-number form (blind review had already reported "'5 threes'
+        # never appears in any of the eleven samples").
+        plural_name = _number_plurals.get(a, f"{a}s")
+        # Which register to use is bound from the competency's own wording
+        # (registry._parse_competency_bounds); resolve the list here per seed,
+        # as counting.py does for `direction`. Unbound competencies keep the
+        # group form, which is what they name.
+        _form_bound = profile.get("group_form", "groups_of")
+        if isinstance(_form_bound, (list, tuple)):
+            if not _form_bound:
+                raise ValueError(
+                    f"multiplication: `group_form` bound is empty at seed {seed}. Fix "
+                    f"the competency binding in registry._parse_competency_bounds."
+                )
+            group_form = rng.choice(sorted(str(f) for f in _form_bound))
+        else:
+            group_form = str(_form_bound)
     # A zero (or negative) operand is degenerate for every task_type that reaches this
     # tail: `zero_identity` builds its own (0, other) pair and returns far above, so a 0
     # here is never the zero property -- it is a selection accident.

@@ -1211,7 +1211,7 @@ export function EstimationGateInteractive({ params, onAnswer, disabled }) {
 //  FILL-IN-TABLE INTERACTIVE
 // ============================================================================
 export function FillInTableInteractive({ params, onAnswer, disabled }) {
-  const { columns, rows, rule_description } = params;
+  const { columns, rows, rule_description, source_pictograph } = params;
   const [inputs, setInputs] = useState({});
   const hasInteractedRef = useRef(false);
 
@@ -1254,6 +1254,45 @@ export function FillInTableInteractive({ params, onAnswer, disabled }) {
           color: 'hsl(var(--text))'
         }}>
           <strong>Rule:</strong> {rule_description}
+        </div>
+      )}
+
+      {/* SOURCE PICTOGRAPH — the display the counts are read FROM.
+          "Organize data in a pictograph without a scale into a table" is a transfer
+          between two displays and only the destination used to be drawn, so a stem
+          saying "count the pictures in each row of the pictograph" pointed at nothing
+          and its answer was underivable from the page. One symbol per item, because
+          the competency is specifically a pictograph WITHOUT a scale; if a payload ever
+          carries scale > 1 the key is stated so the row is still countable. */}
+      {source_pictograph && Array.isArray(source_pictograph.rows) && (
+        <div data-role="source-pictograph" style={{ marginBottom: '20px' }}>
+          {source_pictograph.title && (
+            <div style={{ textAlign: 'center', fontWeight: 700, marginBottom: '10px' }}>
+              {source_pictograph.title}
+            </div>
+          )}
+          <table style={{ margin: '0 auto', borderCollapse: 'collapse', fontSize: '16px' }}>
+            <tbody>
+              {source_pictograph.rows.map((row, idx) => (
+                <tr key={idx} data-role="pictograph-row" data-category={row.category}>
+                  <th scope="row" style={{ padding: '6px 12px', textAlign: 'right',
+                                           fontWeight: 600, whiteSpace: 'nowrap' }}>
+                    {row.category}
+                  </th>
+                  <td style={{ padding: '6px 12px', letterSpacing: '4px', fontSize: '20px' }}>
+                    {source_pictograph.symbol
+                      ? source_pictograph.symbol.repeat(Math.max(0, Number(row.count) || 0))
+                      : null}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          {Number(source_pictograph.scale) > 1 && (
+            <div style={{ textAlign: 'center', fontSize: '13px', marginTop: '6px' }}>
+              Each {source_pictograph.symbol} means {source_pictograph.scale}.
+            </div>
+          )}
         </div>
       )}
 
@@ -4023,6 +4062,120 @@ export function NumberBondInteractive({ params, onAnswer, disabled }) {
       <div style={{ display: 'flex', gap: '40px' }}>
         {renderCircle(part1, blank_position === 'part1')}
         {renderCircle(part2, blank_position === 'part2')}
+      </div>
+    </div>
+  );
+}
+
+// ============================================================================
+//  SCALE READ  (mass -> dial, capacity -> graduated cylinder)
+// ============================================================================
+// The mass/capacity counterpart of RulerMeasureInteractive. `mass_capacity`'s
+// read_measurement task asks "what is the mass of the object?", and before this
+// existed nothing drew the instrument: the reading sat in the DNA's values and
+// the pupil was asked for a number that appeared nowhere on the page
+// (mat_g3_mg_q2_0 / mat_g3_mg_q2_3, unanswerable at 20 of 20 seeds).
+//
+// READ-ONLY BY DESIGN, and deliberately with no interactive branch. Two reasons:
+// MATATAG G3 asks the pupil to read a tool, not to set one; and the read-only
+// detection used elsewhere in this file (`onAnswer !== undefined && !disabled`)
+// disagrees with what QuestionRenderer passes, so a component that branches on it
+// can render empty. Nothing here depends on that signal.
+//
+// Every graduation is a real element so the static-render evidence can count what
+// the learner actually sees, rather than trusting the payload.
+export function ScaleReadInteractive({ params }) {
+  const reading = Number(params?.reading) || 0;
+  const unit = params?.unit || '';
+  const tick = Number(params?.tick_interval) || 1;
+  const scaleMax = Number(params?.scale_max) || Math.max(tick, reading + tick * 2);
+  const instrument = params?.instrument === 'cylinder' ? 'cylinder' : 'dial';
+  const objectLabel = params?.object_label || 'the object';
+
+  const gradCount = Math.max(1, Math.round(scaleMax / tick));
+  const grads = Array.from({ length: gradCount + 1 }, (_, i) => i * tick);
+  // Label every graduation while they stay countable, otherwise every other one,
+  // so a 25-graduation instrument does not become a wall of digits.
+  const labelEvery = gradCount > 12 ? 2 : 1;
+  const fraction = scaleMax > 0 ? Math.min(1, reading / scaleMax) : 0;
+
+  if (instrument === 'cylinder') {
+    return (
+      <div data-visual="ScaleRead" data-instrument="cylinder" data-reading={reading}
+           style={{ display: 'flex', flexDirection: 'column', alignItems: 'center',
+                    padding: '20px', width: '100%' }}>
+        <div style={{ display: 'flex', alignItems: 'flex-end', gap: '10px' }}>
+          <div style={{ position: 'relative', width: '90px', height: '260px',
+                        border: '3px solid #475569', borderTop: 'none',
+                        borderRadius: '0 0 12px 12px', background: '#f8fafc' }}>
+            {/* liquid, filled to the reading */}
+            <div data-role="fill"
+                 style={{ position: 'absolute', left: 0, right: 0, bottom: 0,
+                          height: `${fraction * 100}%`,
+                          background: 'linear-gradient(180deg, #60a5fa, #2563eb)',
+                          borderRadius: '0 0 9px 9px' }} />
+            {grads.map((value, i) => (
+              <div key={i} data-role="graduation" data-value={value}
+                   style={{ position: 'absolute', left: 0, bottom: `${(i / gradCount) * 100}%`,
+                            width: i % labelEvery === 0 ? '22px' : '12px',
+                            height: '2px', background: '#334155' }}>
+                {i % labelEvery === 0 && (
+                  <span style={{ position: 'absolute', left: '26px', top: '-8px',
+                                 fontSize: '11px', fontWeight: 700, color: '#0f172a' }}>
+                    {value}
+                  </span>
+                )}
+              </div>
+            ))}
+          </div>
+          <span style={{ fontSize: '14px', fontWeight: 700, color: '#0f172a' }}>{unit}</span>
+        </div>
+        <div style={{ marginTop: '10px', fontSize: '13px', color: '#334155' }}>
+          {objectLabel}
+        </div>
+      </div>
+    );
+  }
+
+  // Dial: a half-circle gauge with a needle. SVG rather than CSS rotation so the
+  // needle's position is in the emitted markup and not only in a transform.
+  const cx = 150, cy = 140, r = 110;
+  const angle = Math.PI * (1 - fraction);           // pi = 0 on the left, 0 = full right
+  const needleX = cx + r * 0.82 * Math.cos(angle);
+  const needleY = cy - r * 0.82 * Math.sin(angle);
+  return (
+    <div data-visual="ScaleRead" data-instrument="dial" data-reading={reading}
+         style={{ display: 'flex', flexDirection: 'column', alignItems: 'center',
+                  padding: '20px', width: '100%' }}>
+      <svg width="300" height="175" viewBox="0 0 300 175" role="img"
+           aria-label={`Scale showing the mass of ${objectLabel} in ${unit}`}>
+        <path d={`M ${cx - r} ${cy} A ${r} ${r} 0 0 1 ${cx + r} ${cy}`}
+              fill="#f8fafc" stroke="#475569" strokeWidth="3" />
+        {grads.map((value, i) => {
+          const a = Math.PI * (1 - i / gradCount);
+          const inner = i % labelEvery === 0 ? 0.86 : 0.93;
+          return (
+            <g key={i} data-role="graduation" data-value={value}>
+              <line x1={cx + r * inner * Math.cos(a)} y1={cy - r * inner * Math.sin(a)}
+                    x2={cx + r * Math.cos(a)} y2={cy - r * Math.sin(a)}
+                    stroke="#334155" strokeWidth="2" />
+              {i % labelEvery === 0 && (
+                <text x={cx + r * 0.72 * Math.cos(a)} y={cy - r * 0.72 * Math.sin(a) + 4}
+                      textAnchor="middle" fontSize="11" fontWeight="700" fill="#0f172a">
+                  {value}
+                </text>
+              )}
+            </g>
+          );
+        })}
+        <line data-role="needle" x1={cx} y1={cy} x2={needleX} y2={needleY}
+              stroke="#dc2626" strokeWidth="4" strokeLinecap="round" />
+        <circle cx={cx} cy={cy} r="7" fill="#dc2626" />
+        <text x={cx} y={cy - 24} textAnchor="middle" fontSize="13" fontWeight="700"
+              fill="#0f172a">{unit}</text>
+      </svg>
+      <div style={{ marginTop: '4px', fontSize: '13px', color: '#334155' }}>
+        {objectLabel}
       </div>
     </div>
   );

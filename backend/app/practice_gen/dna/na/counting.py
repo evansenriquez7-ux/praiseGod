@@ -202,6 +202,25 @@ def generate_params(
         current_lo = min(max_num, max(lo, prev_target + 1))
 
     direction      = profile.get("direction", "forward")
+    # A competency that names counting in both directions binds `direction` to
+    # the list of values it names (registry._parse_competency_bounds), the same
+    # shape missing_number's `tables` bound already uses. The orchestrator
+    # injects a non-tuple bound into the profile verbatim, so the list arrives
+    # here and this DNA resolves it against its own seeded rng -- exactly how
+    # _select_skip resolves the `skip_pool` list below.
+    #
+    # Without this, the list would fall through to the `== "forward"` tests
+    # further down, every one of which is False for a list, so a node naming
+    # both directions would have counted backward 100% of the time -- the
+    # mirror image of the forward-only defect this fixes.
+    if isinstance(direction, (list, tuple)):
+        if not direction:
+            raise ValueError(
+                f"counting: `direction` bound is empty for seed {seed}. A bound that "
+                f"names no value cannot be resolved; fix the competency binding in "
+                f"registry._parse_competency_bounds rather than defaulting here."
+            )
+        direction = rng.choice(sorted(str(d) for d in direction))
     interval_level = profile.get("skip_interval", "by_1")
 
     skip_pool = profile.get("skip_pool", bounds["skip_pool"])

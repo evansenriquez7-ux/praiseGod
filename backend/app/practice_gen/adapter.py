@@ -148,6 +148,11 @@ FORMATTER_ROUTES: Dict[str, tuple] = {
         "format_ruler_measure",
         {"interaction_mode": "read", "answer_collection": "mcq"},
     ),
+    "scale_read": (
+        "backend.app.practice_gen.formatters.visual.fmt_scale_read",
+        "format_scale_read",
+        {"interaction_mode": "read", "answer_collection": "mcq"},
+    ),
     "sort_order": (
         "backend.app.practice_gen.formatters.textual.fmt_ordering",
         "format_ordering",

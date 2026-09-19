@@ -150,6 +150,19 @@ def generate_params(
 
     frac_type  = profile.get("fraction_type",  "unit_fraction")
     model_type = profile.get("fraction_model", "area_model")
+    # A competency naming several representations binds `fraction_model` to the
+    # list of models it names (registry._parse_competency_bounds); resolve it
+    # here against this DNA's own seeded rng, as counting.py does for
+    # `direction`. Left unresolved, the list would flow into model_type and
+    # every `model_type == "..."` test below would be False.
+    if isinstance(model_type, (list, tuple)):
+        if not model_type:
+            raise ValueError(
+                f"fractions: `fraction_model` bound is empty at seed {seed}. Fix the "
+                f"competency binding in registry._parse_competency_bounds; this DNA "
+                f"will not silently pick a representation the LC does not name."
+            )
+        model_type = rng.choice(sorted(str(m) for m in model_type))
     operation  = profile.get("operation",      "identify_name")
     num_diff_scalar = float(profile.get("number_difficulty", 0.5))
 
