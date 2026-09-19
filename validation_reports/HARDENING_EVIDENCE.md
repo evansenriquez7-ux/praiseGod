@@ -12685,26 +12685,82 @@ The remaining 6 were triaged and are answerable — each describes its referent 
 models, a schedule given inline). They are cosmetic ("Look at the..." naming something drawn only in
 prose), not underivable, and are deliberately left.
 
-### FOUND AND MEASURED, NOT FIXED: the `estimate` task keys a ZERO measurement
+### FIXED: the `estimate` task keyed a ZERO measurement
 
-Different defect, same DNA, found while rendering the six `mass_capacity` nodes. Answerable but
-pedagogically wrong, and it is live:
+Different defect from the unanswerable class above, same DNA, found while rendering all six
+`mass_capacity` nodes. Answerable, and nonsense:
 
 ```text
+BEFORE
 mat_g3_mg_q2_1 seed1: "An object's mass measures 1 g. About how many g is that,
                        rounded to the nearest 10?"          -> 0        12/200 seeds
 mat_g3_mg_q2_4 seed3: "A container's capacity measures 4 L. About how many L is that,
                        rounded to the nearest 10?"          -> 0        21/200 seeds
 ```
 
-An object with no mass, and a container that holds nothing. The rounding is arithmetically right and
-the item is nonsense: `_round_unit_for` picks a place-value column by magnitude, and any reading
-below half that column rounds to zero. The remedy is to keep the estimate task's reading at or above
-half its rounding column (or lower the column), so the estimate is non-degenerate. NOT attempted
-here — it is a separate defect from the unanswerable class this session was directed at, and it
-wants its own measurement of what the competency "Estimate mass of an object" should actually ask,
-given the framing note already in `mass_capacity.py` that estimation-as-rounding was a deliberate
-choice to avoid an object-reference database.
+An object with no mass and a container that holds nothing.
+
+**The arithmetic was NOT the bug, and `_round_for_estimate` was deliberately left alone.** Its own
+comment records a blind review correcting an earlier `max(unit, ...)` floor *in that function*,
+because 2 rounded to the nearest 10 really is 0. Re-adding a floor there would have re-broken what
+that review fixed. What is wrong is POSING the task on such a value: an estimate is only a task when
+there is a quantity to estimate. So the floor belongs at value generation, and that is where it went.
+
+`_estimate_min_reading()` DERIVES the floor from `_round_unit_for`'s smallest column
+(`_round_unit_for(1) // 2` -> 5) rather than hard-coding 5, so the two cannot drift apart. Only the
+smallest column needs it: any value large enough to select a bigger column already exceeds half of
+it by construction (100 selects the hundreds column, 1000 the thousands).
+
+The draw is redrawn INSIDE the estimate branch, in the same shape `compare` above already redraws for
+its own well-formedness reason, and the range is widened to at least two values because at scalar 0.0
+the log interpolation collapses the upper bound onto the lower one. The ceiling is `unit_ceiling - 1`
+so `_nudge_off_round` can still step one unit up without leaving the unit's declared range.
+
+```text
+AFTER   0 of 400 seeds key a zero measurement on either node (was 12/200 and 21/200)
+        minimum keyed answer: 10
+mat_g3_mg_q2_1 seed1: "An object's mass measures 38 g ... nearest 10?"  -> 40
+mat_g3_mg_q2_4 seed1: "A container's capacity measures 11 L ... nearest 10?" -> 10
+```
+
+**`read_measurement` and `compare` are BYTE-IDENTICAL**, which is why the redraw is inside the branch
+rather than at the shared draw. Proved by dumping 480 samples (4 nodes x 120 seeds: format, visual
+params, question text, answer) on this tree, stashing to the committed parent, dumping again, and
+diffing: identical. That matters because `read_measurement`'s samples are the ones the new ScaleRead
+instrument was verified against, and it is well-formed at a reading of 1.
+
+Boundary arithmetic checked directly rather than inferred from the sweep passing:
+
+```text
+val=  1 round_to=  10 estimate=    0   <- still 0, correctly; no longer DRAWABLE for estimate
+val=  4 round_to=  10 estimate=    0   <- same
+val=  5 round_to=  10 estimate=   10   <- the round-half-up boundary a prior review pinned
+val= 10 round_to=  10 nudged= 11 est=10
+val=100 round_to= 100 nudged=101 est=100
+val=999 round_to= 100 estimate= 1000
+Every (unit, scalar) corner -- 5 units x 6 scalars, range validity, nudge-over-ceiling,
+zero-estimate:  violations NONE
+```
+
+§1F ("the item answers itself") holds by construction, not by luck: `_nudge_off_round` guarantees the
+drawn value is never an exact multiple of its rounding column, and the estimate always is one, so the
+value can never equal its own answer.
+
+```text
+$ ...validate_matrix        151/151, 0 failures, §1F among the checks executed, §1H PASS
+$ ...validate_compat        13/13 check groups passed
+$ ...validate_render        6/6 PASS
+$ ...tests/frontend_suite.py   16 visual types; artifact regenerated at digest 8847c1d5babb
+$ ...pytest tests/unit      739 passed, 1 skipped (674.58s)
+$ obligation product        4281 -- UNCHANGED; no route or formatter moved
+```
+
+**NAMED LIMIT.** This is a fix at the data layer and it gates nothing: no check asserts that an
+estimate task's answer is a non-degenerate measurement. The floor is enforced only by the DNA that
+now applies it, so a sibling DNA framing estimation the same way would reproduce the defect with
+every gate green. The framing itself also remains the previous session's documented choice —
+estimation-as-rounding, chosen to avoid an object-reference database — and whether "Estimate mass of
+an object" should instead ask for a plausible magnitude is an owner question this did not reopen.
 
 ### Definition of Done
 

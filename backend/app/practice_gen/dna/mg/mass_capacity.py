@@ -118,6 +118,34 @@ def _round_unit_for(val: int) -> int:
     return 1000
 
 
+def _estimate_min_reading() -> int:
+    """
+    The smallest reading an estimate task may pose.
+
+    Below HALF its rounding column a value rounds, correctly, to ZERO -- and
+    "An object's mass measures 1 g. About how many g is that, rounded to the
+    nearest 10?" answers 0: an object with no mass. Measured 2026-09-19 before
+    this floor existed: 12 of 200 seeds on mat_g3_mg_q2_1 and 21 of 200 on
+    mat_g3_mg_q2_4 keyed a zero measurement.
+
+    The bug was NOT in `_round_for_estimate`, and that function is deliberately
+    left alone: its own comment records a blind review correcting an earlier
+    `max(unit, ...)` floor there, because 2 rounded to the nearest 10 really is
+    0. The arithmetic was right; POSING the task on such a value is what is
+    wrong. An estimate is only a task when there is a quantity to estimate.
+
+    Derived from `_round_unit_for`'s smallest column rather than written as a
+    literal, so the two cannot drift apart: round-half-up needs val >= unit/2,
+    and 5 -> 10 is the boundary case `_round_for_estimate` already pins.
+
+    Only the smallest column needs this floor. Any value large enough to select
+    a bigger column is already at least that column's own size (100 selects the
+    hundreds column, 1000 the thousands), so it clears half of it by
+    construction.
+    """
+    return _round_unit_for(1) // 2
+
+
 def _nudge_off_round(val: int) -> int:
     """
     Shift a value that is already an exact multiple of its rounding unit.
@@ -274,7 +302,26 @@ def generate_params(
         # the nearest round unit (a legitimate G3 interpretation that doesn't
         # require an external object-reference database the way "estimate a
         # paperclip's mass" would).
-        val = _nudge_off_round(val)
+        #
+        # Redrawn from a floored range, in the same shape the `compare` branch
+        # above redraws for its own well-formedness reason. The shared draw can
+        # land below half the rounding column, where the correct answer is 0 --
+        # so this task, and ONLY this task, needs a floor. Redrawing here rather
+        # than moving the shared draw keeps `read_measurement` byte-identical:
+        # that task is well-formed at a reading of 1 and its samples are the ones
+        # the ScaleRead instrument was verified against.
+        #
+        # The range is widened to at least two values for the same reason
+        # `compare` widens: at scalar 0.0 the log interpolation collapses the
+        # upper bound onto the lower one, and randint(lo, hi) with hi < lo raises.
+        # `unit_ceiling - 1` leaves room for `_nudge_off_round` to step one unit
+        # UP without leaving the unit's declared range, which the comment on
+        # _UNIT_RANGE requires ("every range sits inside the numeric envelope
+        # declared in _PARAM_BOUNDS").
+        unit_ceiling = _UNIT_RANGE[unit][1]
+        e_lo = min(max(u_min, _estimate_min_reading()), unit_ceiling - 1)
+        e_hi = max(e_lo + 1, min(u_max, unit_ceiling - 1))
+        val = _nudge_off_round(rng.randint(e_lo, e_hi))
         return {
             "blank_target": "answer",
             "measurement_type": mtype,
