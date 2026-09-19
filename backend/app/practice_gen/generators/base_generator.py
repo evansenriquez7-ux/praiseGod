@@ -30,7 +30,7 @@ import re
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Set
 
-from ..dna.base import DNA, QuestionContext, VocabGated
+from ..dna.base import DNA, QuestionContext, VocabGated, count_noun, number_group_name
 from ..registry import get_node_competency_bounds, get_node_dnas, get_node_info
 from .interest import get_interest_emoji, get_interest_slots, pick_interest
 from .spines import NARRATIVE_DOMAIN_DNAS, select_spine
@@ -797,11 +797,10 @@ def _build_symbolic_question(
             group_form = values.get("group_form")
             plural_name = values.get("plural_name")
             if not plural_name:
-                _plurals = {1: "ones", 2: "twos", 3: "threes", 4: "fours", 5: "fives", 6: "sixes", 7: "sevens", 8: "eights", 9: "nines", 10: "tens"}
-                plural_name = _plurals.get(a, f"{a}s")
+                plural_name = number_group_name(a, b)
             terms = " + ".join([str(a)] * b) if b <= 5 else f"{a} added {b} times"
             if group_form == "plural_name":
-                return f"Count {b} {plural_name} by repeated addition ({terms}): how many in all?"
+                return f"Count {b} {count_noun(b, plural_name)} by repeated addition ({terms}): how many in all?"
             unit = "group" if b == 1 else "groups"
             # "There are 1 group of 1" -- the noun was pluralized and the verb was not.
             # One sentence, four copies (doc_rem.md R2); all four say it the same way.

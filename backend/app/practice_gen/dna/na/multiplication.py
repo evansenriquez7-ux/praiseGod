@@ -21,6 +21,7 @@ from backend.app.practice_gen.dna.base import (
     DimensionSpec,
     ErrorPattern,
     VocabGated,
+    number_group_name,
 )
 
 
@@ -726,28 +727,21 @@ def generate_params(
     group_form = None
     plural_name = None
     if task_type == "equal_groups":
-        _number_plurals = {
-            1: "ones",
-            2: "twos",
-            3: "threes",
-            4: "fours",
-            5: "fives",
-            6: "sixes",
-            7: "sevens",
-            8: "eights",
-            9: "nines",
-            10: "tens",
-        }
-        # This dict was BUILT AND DISCARDED: `group_form` and `plural_name`
-        # stayed None, so the "Count {b} {plural_name}" branch that fmt_cloze,
-        # fmt_mcq, fmt_true_false, fmt_error_detect and base_generator all
-        # implement was unreachable dead code in every one of them. The effect
-        # was that mat_g2_na_q3_0 -- whose competency names BOTH registers, "'5
-        # groups of 3' AND '5 threes'" -- only ever rendered the first. Measured
-        # before this change: 0 of 60 default student-path seeds used the
-        # plural-number form (blind review had already reported "'5 threes'
-        # never appears in any of the eleven samples").
-        plural_name = _number_plurals.get(a, f"{a}s")
+        # The number register this branch feeds was BUILT AND DISCARDED before
+        # 11d14915: `group_form` and `plural_name` stayed None, so the
+        # "Count {b} {plural_name}" branch that fmt_cloze, fmt_mcq, fmt_true_false,
+        # fmt_error_detect and base_generator all implement was unreachable dead
+        # code in every one of them. The effect was that mat_g2_na_q3_0 -- whose
+        # competency names BOTH registers, "'5 groups of 3' AND '5 threes'" --
+        # only ever rendered the first. Measured before that change: 0 of 60
+        # default student-path seeds used the plural-number form (blind review had
+        # already reported "'5 threes' never appears in any of the eleven samples").
+        #
+        # Waking it up then shipped a SECOND defect, which is why this is one call
+        # and not a local dict: the register was interpolated as a bare plural, so
+        # b == 1 read "1 threes". `number_group_name` routes it through `count_noun`
+        # -- the rule §1J itself imports -- so the two cannot disagree.
+        plural_name = number_group_name(a, b)
         # Which register to use is bound from the competency's own wording
         # (registry._parse_competency_bounds); resolve the list here per seed,
         # as counting.py does for `direction`. Unbound competencies keep the

@@ -3,14 +3,14 @@
   "model": "base obligation = (node, DNA, formatter, discrete assignment), crossed for execution with every interest request, experience wrapper, and five deterministic seed slots. See tests/obligation_manifest.py and tests/obligation_executor.py for the stated model and limits.",
   "counts": {
     "nodes": 151,
-    "node_dna_formatter_pairs": 455,
-    "discrete_obligations": 4269,
-    "continuous_class_crossings": 18762,
+    "node_dna_formatter_pairs": 459,
+    "discrete_obligations": 4281,
+    "continuous_class_crossings": 18834,
     "continuous_classes_per_axis": 3
   },
   "independent_derivation": {
-    "pairs": 455,
-    "discrete_obligations": 4269,
+    "pairs": 459,
+    "discrete_obligations": 4281,
     "agrees": true,
     "method": "formatter-first traversal; see derive_count_independently"
   },
@@ -41,20 +41,20 @@
     },
     "by_dna": {
       "addition": 916,
-      "multiplication": 693,
+      "multiplication": 705,
       "missing_number": 684,
-      "subtraction": 516,
+      "subtraction": 522,
       "money_peso": 309,
       "time_reading": 180,
       "comparing_ordering": 152,
-      "division": 112,
+      "division": 114,
       "counting": 104,
       "shapes_2d": 84,
       "fractions": 75,
       "area": 64,
-      "mass_capacity": 48,
       "order_of_operations": 48,
       "perimeter": 42,
+      "mass_capacity": 40,
       "ordinal_numbers": 24,
       "bar_graphs": 24,
       "length_measurement": 22,
@@ -71,17 +71,17 @@
       "symmetry_slides": 8
     },
     "by_formatter": {
-      "mcq": 1267,
-      "cloze": 1050,
-      "true_false": 693,
-      "error_detect": 436,
-      "number_line_read": 162,
+      "mcq": 1259,
+      "cloze": 1046,
+      "true_false": 697,
+      "error_detect": 440,
+      "number_line_read": 168,
       "emoji_pictorial": 132,
       "number_bond": 66,
       "clock_read": 50,
       "clock_set": 50,
-      "array_grid_read": 42,
-      "array_grid_set": 42,
+      "array_grid_read": 43,
+      "array_grid_set": 43,
       "peso_money_read": 35,
       "ordering": 32,
       "sort_order": 32,
@@ -94,6 +94,7 @@
       "bar_chart_set": 9,
       "calendar_read": 8,
       "grid_area": 8,
+      "scale_read": 8,
       "pictograph_read": 5,
       "place_value_blocks_set": 5,
       "ruler_measure": 4,
@@ -267,7 +268,7 @@
       "multiplier": 27,
       "note": "None is production's automatic-selection path, not a neutral theme. Grade-inappropriate named themes also fall back automatically; H-05 owns that ignored-theme behavior."
     },
-    "finite_obligations": 461052,
+    "finite_obligations": 462348,
     "seeds_per_obligation": 5,
     "seed_slot_scalars": [
       0.0,
@@ -276,16 +277,16 @@
       0.25,
       0.75
     ],
-    "release_cache_keys": 576315,
-    "release_represented_executions": 2305260,
+    "release_cache_keys": 577935,
+    "release_represented_executions": 2311740,
     "cache_key": "base obligation + interest request + seed slot",
     "cache_reuse": "the generated/formatted problem is deep-copied through all four production experience wrappers"
   },
   "rejected": {
-    "total": 273,
+    "total": 275,
     "by_production_rule": {
-      "NODE_FORMATTER_EXCLUSIONS": 232,
-      "FORMATTER_VARIANT_SUPPORT": 41
+      "NODE_FORMATTER_EXCLUSIONS": 237,
+      "FORMATTER_VARIANT_SUPPORT": 38
     },
     "examples": [
       {
@@ -361,8 +362,8 @@
     ]
   },
   "derived_coverage": {
-    "registered_formatters": 36,
-    "formatters_reached_by_some_obligation": 31,
+    "registered_formatters": 37,
+    "formatters_reached_by_some_obligation": 32,
     "formatters_no_obligation_can_reach": [
       "balance_scale",
       "fill_in_blank",

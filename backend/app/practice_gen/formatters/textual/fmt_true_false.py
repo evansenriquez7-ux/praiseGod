@@ -9,7 +9,8 @@ to judge it as True or False.
 
 import random
 
-from backend.app.practice_gen.dna.base import FormattedProblem, QuestionContext, count_noun
+from backend.app.practice_gen.dna.base import (FormattedProblem, QuestionContext, count_noun,
+                                                 number_group_name)
 
 
 _COMPARISON_SIGNS = (">", "<", "=", "\u2265", "\u2264", "\u2260")
@@ -207,11 +208,10 @@ def format_true_false(ctx: QuestionContext, rng: random.Random) -> FormattedProb
                 group_form = values.get("group_form")
                 plural_name = values.get("plural_name")
                 if not plural_name:
-                    _plurals = {1: "ones", 2: "twos", 3: "threes", 4: "fours", 5: "fives", 6: "sixes", 7: "sevens", 8: "eights", 9: "nines", 10: "tens"}
-                    plural_name = _plurals.get(a, f"{a}s")
+                    plural_name = number_group_name(a, b)
                 terms = " + ".join([str(a)] * b) if b <= 5 else f"{a} added {b} times"
                 if group_form == "plural_name":
-                    statement = f"Count {b} {plural_name} by repeated addition: {terms} = {fill_value}."
+                    statement = f"Count {b} {count_noun(b, plural_name)} by repeated addition: {terms} = {fill_value}."
                 else:
                     unit = "group" if b == 1 else "groups"
                     # "There are 1 group of 1" -- the noun was pluralized and the verb was not.

@@ -1,29 +1,29 @@
 {
   "schema_version": 1,
   "kind": "obligation_executor_benchmark",
-  "generated_at": "2026-09-17T17:00:21.151014+00:00",
+  "generated_at": "2026-09-19T19:27:30.474721+00:00",
   "platform": "macOS-15.7.7-x86_64-i386-64bit",
   "python": "3.12.13 (main, Mar  3 2026, 12:39:30) [Clang 17.0.0 (clang-1700.6.4.2)]",
   "workers": 4,
   "sample_size": 1000,
   "seeds_per_obligation": 5,
-  "manifest_digest": "adb12e956377303d490b53228568965183b3a1e0b640d3309a17a8485574e40d",
-  "source_input_digest": "1060da57c9f5ef18c452893a07b450ddb368047aff04fd05c772ad8dd14cb167",
+  "manifest_digest": "b5625a09f50567bb95d4ef82146d787c3f7b8d1795818690919b6b0ee68af4ee",
+  "source_input_digest": "90ed5464a45073d9f52f9a47e43d8019b63f177bafe64b5c3e0135250b32bfff",
   "counts": {
-    "base_obligations": 4269,
+    "base_obligations": 4281,
     "interest_requests": 27,
     "experiences": 4,
-    "finite_obligations": 461052,
-    "release_cache_keys": 576315,
-    "release_represented_executions": 2305260
+    "finite_obligations": 462348,
+    "release_cache_keys": 577935,
+    "release_represented_executions": 2311740
   },
   "measurement": {
     "cache_keys_completed": 1000,
     "represented_executions": 4000,
-    "elapsed_seconds": 15.801669336040504,
-    "worker_median_ms": 7.108128978870809,
-    "worker_p95_ms": 29.528814018703997,
-    "peak_rss_bytes": 111525888,
+    "elapsed_seconds": 8.918490227079019,
+    "worker_median_ms": 7.093975495081395,
+    "worker_p95_ms": 28.845807071775198,
+    "peak_rss_bytes": 111755264,
     "response_modes": [
       "click",
       "drag",
@@ -48,15 +48,16 @@
       "PesoMoney",
       "PlaceValueBlocks",
       "RulerMeasure",
+      "ScaleRead",
       "ShapeBoard"
     ],
     "failures": []
   },
   "projection": {
-    "release_wall_seconds_at_measured_throughput": 9106.739063400184,
-    "release_wall_hours_at_measured_throughput": 2.5296497398333844,
-    "recommended_shard_count": 6,
-    "projected_seconds_per_shard": 1517.7898439000307
+    "release_wall_seconds_at_measured_throughput": 5154.307649386912,
+    "release_wall_hours_at_measured_throughput": 1.4317521248296978,
+    "recommended_shard_count": 3,
+    "projected_seconds_per_shard": 1718.1025497956373
   },
   "targets": {
     "pr_seconds": 1800,
@@ -69,5 +70,5 @@
     "key": "base obligation + interest request + seed slot",
     "reuse": "one generator/formatter execution is deep-copied through all four production experience wrappers"
   },
-  "sample_indices_sha256": "ee0ded9191b2ea55d7d1979060460280eb67c4a1a3732faf93debbd49b5cac22"
+  "sample_indices_sha256": "9701ef536cd65ccd7eac5713f9c05014ddaaf6bc3751b6904d30d8c8d77db8a4"
 }

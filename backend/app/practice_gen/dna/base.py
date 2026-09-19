@@ -316,6 +316,37 @@ def count_noun(count: Any, plural: str) -> str:
     return to_singular_phrase(plural) if count == 1 else plural
 
 
+# The number-as-count-noun register: "5 threes" beside "5 groups of 3". MATATAG names both
+# forms explicitly -- mat_g2_na_q3_0's competency quotes "'5 groups of 3' AND '5 threes'" --
+# so this register is curriculum, not decoration.
+#
+# It lives here, ONCE, because five stem-composing sites and one DNA all need it. It was
+# previously copy-pasted into all six, and the copies disagreed with the DNA the moment the
+# register went live: `1 threes` reached pupils on mat_g2_na_q3_0 because the f-strings
+# interpolating it never called `count_noun`. Measured 2026-09-19 at 8 §1J findings over 7
+# seeds, on a check that had been green at 0 findings / 9,060 samples the day before.
+_NUMBER_GROUP_NAMES: Dict[int, str] = {
+    1: "ones", 2: "twos", 3: "threes", 4: "fours", 5: "fives",
+    6: "sixes", 7: "sevens", 8: "eights", 9: "nines", 10: "tens",
+}
+
+
+def number_group_name(value: Any, count: Any) -> str:
+    """
+    The count-noun name of `value` as a group size: "threes" in "5 threes", but "three" in
+    "1 three".
+
+    Agreement is decided by `count_noun`, the same rule every other stem-composing site
+    uses and the same one `validate_language` imports, so §1J cannot disagree with this
+    function by construction. Call THIS rather than interpolating a bare plural -- that is
+    the exact mistake the register shipped with.
+
+    A value outside the named register falls back to "<value>s", which is what each of the
+    six copies did before they were consolidated.
+    """
+    return count_noun(count, _NUMBER_GROUP_NAMES.get(value, f"{value}s"))
+
+
 # Endings that mark a word as ALREADY singular even though it ends in `s`. Without them
 # the bare "strip the final s" rule mangles the noun it is asked to leave alone: measured
 # 2026-09-12, `1 hibiscus` came back `1 hibiscu`, and `hibiscuses` came back `hibiscuse`.

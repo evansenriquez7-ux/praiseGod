@@ -12797,3 +12797,174 @@ Named because the mandate requires it, not because it is comfortable:
   angle and the cylinder's fill height were checked by computing them from the emitted attributes,
   not by observing a rendered pixel. This is the same blind spot §12 already names for
   NumberLine/BarChart pointer geometry, and it now covers one more visual type.
+
+## 2026-09-20 — H-06: the 2026-09-19 batch re-proved, and the regression it was hiding
+
+Row claimed `claude-20260919-h06-reproof`. This session ran the re-proof chain the previous one
+deliberately held, and **changed no source**. Every file it touched is under `validation_reports/`,
+which is harness OUTPUT and outside the fingerprint; `input_digest()` read `8847c1d5babb0f5f` before
+the first command and after the last, so all four artifact families are bound to the same bytes.
+
+### State established before anything ran
+
+Three signals, because the digests alone cannot tell mid-BATCH from an interrupted re-proof:
+HEAD `96a8417d` (verified a descendant of `7e33d26d` via `merge-base --is-ancestor`), worktree
+`git status --porcelain` **EMPTY**, and the plan's `START HERE` saying a batch landed. Digests read
+exactly as `HANDOFF_PROMPT.md` predicted: six shards STALE, benchmark STALE, frontend CURRENT,
+proofs 0 current / 147 stale.
+
+### The chain, in the documented order
+
+| Step | Command | Result |
+|---|---|---|
+| 1 | `-m tests.obligation_executor --tier benchmark --sample-size 1000` | 1,000 keys / 4,000 executions, 8.862s, median 7.096ms, p95 28.999ms, **failures=0** |
+| 2 | `tests/mutation_harness.py` | **144/147 DETECTED**, ~49m, proofs 0 current / 147 stale -> **147 current / 0 stale** |
+| 3 | six `--tier release --workers 4 --shard-count 6`, then `--tier verify-release` | all six rc=0, **failures=0** each; `release_status=complete receipts=6 complete=True` |
+
+Shards measured **577,935 cache keys / 2,311,740 executions**, worst shard 1578.849s against the
+1,800s target (12.3% margin), 22:33 -> 01:57 wall clock. **These supersede the 2026-09-17 figures of
+576,315 / 2,305,260** — the difference is the 2026-09-19 batch's own doing (obligation product 4,281
+after ALL->ANY and ScaleRead), and the plan's state table still carries the old pair.
+
+### A FOURTH red stage, which no handoff predicted
+
+`scheduled=16 completed=12 failed=4 crashed=0`. The plan's last measurement was `completed=13
+failed=3`. The new one is **`count_noun_1J`, 8 findings, every one on `mat_g2_na_q3_0`** — the node
+the batch fixed:
+
+```
+- mat_g2_na_q3_0: seed 17 question_text writes '1 threes' where the count is 1; the pipeline's own
+  inflection rule (dna.base.to_singular_phrase) gives '1 three'. Text: 'Count 1 threes (3) = ___'
+```
+
+Root cause is `dna/na/multiplication.py:750`, `plural_name = _number_plurals.get(a, f"{a}s")`. The
+register is keyed on `a` alone and has **no `b == 1` case**, so it writes "1 threes" where English
+takes "1 three". This was NOT a latent defect the batch exposed by accident — it is the batch's own
+code. §1J was measured at 0 findings over 9,060 samples at `94e95347` and the plan records it green
+on `f293e2ff`; `11d14915` is the only commit in `git log -S _number_plurals` since.
+
+**This is the re-proof earning its cost.** The batch landed with `validate_matrix` 151/151, compat
+13/13, render 6/6 and 739 unit tests green, and shipped a regression anyway, because the gate that
+catches it only runs in the chain that was being held. A content batch separated from its re-proof
+is not merely unproven — it can be wrong in a way its own session's evidence cannot show.
+
+### The §6F cluster came back INVALID, which is not the same as SURVIVED
+
+The three survivors are the documented §6F cluster, but the runner's wording matters and the
+mutation-survivor rule requires distinguishing the two causes:
+
+```
+- mutation proof 'contradicted_attestation': the recorded result is NOT DETECTED ('INVALID — the
+  unmutated command baseline exited 1; this mutation cannot distinguish the planted bug from a
+  pre-existing failure.')
+```
+
+The runner **refused to score** them: `capability_phase2` is red with 218 findings, so their
+unmutated baseline already exits 1. This is Mandate 5 observed from the wrong end — a gate whose
+baseline is red cannot be told apart from the noise it sits in. Re-running the corpus will never fix
+it. Only clearing the attestation queue will, which makes `assertion_coverage_8` strictly
+M2-blocked, exactly as the plan says.
+
+### Verbatim Definition of Done — `RUN_ALL_EXIT=1`
+
+```
+FAIL       count_noun_1J                  phase 1    64.2s
+FAIL       assertion_coverage_8           phase 1     1.1s
+FAIL       judgment_reviews_5             phase 2   133.6s
+FAIL       capability_phase2              phase 2    23.1s
+scheduled=16 completed=12 failed=4 crashed=0 not_run=0 incomplete=0
+SOME ALL TESTS CHECKS FAILED.
+```
+
+`judgment_reviews` 1,221 problems (was 1,158 — re-measured, the old figure was inherited, not
+measured). `capability_contract` Phase 2 218 problems: 67 CONTRADICTED, 0 UNATTESTED, 73 STALE,
+53 UNADJUDICABLE, 25 other. `obligation_manifest_11` went **GREEN**: benchmark, shards and
+derivations all PASS at 459 pairs / 4,281 discrete obligations.
+
+### §1J FIXED, and the tree re-proved a SECOND time
+
+The owner directed the regression be fixed before anything was committed, which spent the re-proof
+above and bought a second one. What the first re-proof cost in hours, it returned in a defect that
+would otherwise have been committed as certified.
+
+**Root cause, and it was already written down.** `dna.base.count_noun`'s docstring says: *"A site
+that interpolates a count and a noun with an f-string and does NOT call this is what §1J exists to
+catch."* The `plural_name` branch added in `11d14915` did exactly that. The `groups_of` register
+three lines below it already handled the case (`unit = "group" if b == 1 else "groups"`), so the new
+branch was the only one out of step.
+
+**The register was copy-pasted into SIX sites** — `dna/na/multiplication.py` plus fallback copies in
+`fmt_cloze`, `fmt_mcq`, `fmt_true_false`, `fmt_error_detect` and `base_generator`. Fixing only the
+reported node would have left five copies free to disagree again. It is now
+`dna.base.number_group_name(value, count)`, defined ONCE and routed through `count_noun` — the same
+function `validate_language` imports — so §1J and the generator cannot disagree by construction
+rather than by agreement. `grep '_plurals = {1: "ones"'` returns nothing.
+
+`count_noun` is ALSO applied at all five interpolation sites, not only at the DNA. Fixing where you
+edited leaves a later frame free to hand a bare plural to the f-string — this plan's trap 1, the
+`generate_context` re-injection, in a different costume. Double application is idempotent and was
+verified, not assumed: `count_noun(1, number_group_name(3,1))` -> `'three'`,
+`count_noun(5, number_group_name(3,5))` -> `'threes'`.
+
+**Measured at the real consumer**, all seven reported seeds on the DEFAULT student path:
+
+```
+seed  9 b=1 a=1: 'Count 1 one (1) = ___'          (was 'Count 1 ones (1) = ___')
+seed 17 b=1 a=3: 'Count 1 three (3) = ___'        (was 'Count 1 threes (3) = ___')
+seed 50 b=1 a=2: 'Count 1 two (2) = ___'          (was 'Count 1 twos (2) = ___')
+```
+
+The register the batch existed to serve is INTACT: a 200-seed sweep shows `plural_name` selected 92
+times (67 with b>1), still rendering `Count 3 eights` and `Count 10 fours`. The fix corrects
+agreement; it does not retreat from the competency clause.
+
+### The second re-proof, and the gate proving itself after the change
+
+Because the fix edits the code §1J's own mutation plants into, a green §1J proves nothing on its
+own. The corpus was re-run and **`count_noun_disagrees` is DETECTED** (`FAIL
+count_noun_agreement_1J (6)` under mutation, 0 clean), so the check is proven against a planted
+violation on the post-fix bytes.
+
+Digest `8847c1d5babb0f5f` -> `90ed5464a45073d9`. Chain re-run in the documented order — frontend
+artifact FIRST because source changed, then benchmark, corpus, sweep LAST:
+
+| Step | Result |
+|---|---|
+| `frontend_suite.py` | 39 tests passed, 28 payloads, 16 visual types, artifact fresh |
+| benchmark | `failures=0`, 8.918s |
+| corpus | **144/147 DETECTED**; same three §6F survivors, no new ones |
+| six shards + verify | all rc=0, `failures=0`; **577,935 keys / 2,311,740 executions**; `complete=True` |
+
+All four artifact families verified fresh at `90ed5464a45073d9`. Obligation product **unchanged at
+4,281** — an inflection fix moves no route, which is the evidence it stayed inside its scope.
+
+### Verbatim Definition of Done — still `RUN_ALL_EXIT=1`, and honestly so
+
+```
+  PASS       count_noun_1J                  phase 1    64.3s
+  FAIL       assertion_coverage_8           phase 1     1.1s
+  FAIL       judgment_reviews_5             phase 2   133.8s
+  FAIL       capability_phase2              phase 2    23.1s
+  scheduled=16 completed=13 failed=3 crashed=0 not_run=0 incomplete=0
+SOME ALL TESTS CHECKS FAILED.
+```
+
+`completed=13 failed=3`, back to the three the plan names, with §1J green at 0 findings / 9,060
+samples. **This is not completion.** `judgment_reviews_5` and `capability_phase2` are content debt
+owed to M2's blind attestation queue, and `assertion_coverage_8` is red because the §6F trio's
+unmutated baseline exits 1 — a gate sitting on a red baseline, which no amount of re-running
+repairs. Only clearing the attestation queue will.
+
+### NAMED LIMIT — §1J never lints hints, and a live violation is standing
+
+`validate_language._texts` reads `problem["hint"]`, singular. The student-path payload carries
+`hints`, a LIST. **No hint text has ever been linted by §1J.** The same `mat_g2_na_q3_0` seed 17 that
+now renders a correct stem still ships the hint `"Think of it as 1 groups of 3: 3."` — a count/noun
+violation of exactly the class §1J exists to catch, invisible to it.
+
+It is a different code path from the one fixed here and it was NOT fixed, because `validation/` is
+read-only when the task is fixing a generator (AGENTS.md File Management). Closing it means either
+a harness edit or a hint-composition fix, and the owner should decide which. Recorded here, in the
+H-06 `progress` field, and reported directly, so that a green §1J is not mistaken for a linted
+learner surface. The gate's PASS line covers stems, statements, prompts and cloze templates — not
+hints.

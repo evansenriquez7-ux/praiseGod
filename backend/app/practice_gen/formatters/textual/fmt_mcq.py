@@ -15,7 +15,8 @@ Respects the 'context' variant:
 import random
 from typing import List
 
-from backend.app.practice_gen.dna.base import FormattedProblem, QuestionContext
+from backend.app.practice_gen.dna.base import (FormattedProblem, QuestionContext, count_noun,
+                                                 number_group_name)
 from backend.app.practice_gen.formatters._distractor_fallback import augment_distractors
 from backend.app.practice_gen.formatters._option_order import shuffle_options
 
@@ -89,11 +90,10 @@ def _build_pure_question(ctx: QuestionContext) -> str:
             group_form = values.get("group_form")
             plural_name = values.get("plural_name")
             if not plural_name:
-                _plurals = {1: "ones", 2: "twos", 3: "threes", 4: "fours", 5: "fives", 6: "sixes", 7: "sevens", 8: "eights", 9: "nines", 10: "tens"}
-                plural_name = _plurals.get(a, f"{a}s")
+                plural_name = number_group_name(a, b)
             terms = " + ".join([str(a)] * b) if b <= 5 else f"{a} added {b} times"
             if group_form == "plural_name":
-                return f"Count {b} {plural_name} by repeated addition ({terms}): how many in all?"
+                return f"Count {b} {count_noun(b, plural_name)} by repeated addition ({terms}): how many in all?"
             unit = "group" if b == 1 else "groups"
             # "There are 1 group of 1" -- the noun was pluralized and the verb was not.
             # One sentence, four copies (doc_rem.md R2); all four say it the same way.
