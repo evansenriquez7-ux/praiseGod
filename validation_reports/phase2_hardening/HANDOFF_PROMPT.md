@@ -37,7 +37,7 @@ PY
 | What you see | What it means | What to do |
 |---|---|---|
 | All `True`, clean tree | Certified. Rare. | Pick up M2 below. |
-| Mixed / all `False`, **clean** tree, HEAD `7e33d26d` | **Mid-BATCH.** A content batch landed and its re-proof was deliberately not run. This is today's state. | **Run the re-proof chain. That is the job.** |
+| Mixed / all `False`, **clean** tree, HEAD at or after `7e33d26d` | **Mid-BATCH.** A content batch landed and its re-proof was deliberately not run. This is today's state. | **Run the re-proof chain. That is the job.** |
 | Any `False`, **dirty** tree | Mid-re-proof, interrupted. | Finish it; see "Shards are resumable" below. |
 
 **Mid-batch and mid-re-proof look identical from the digests alone.** The difference is
