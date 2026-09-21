@@ -1,20 +1,14 @@
 {
   "schema_version": 1,
   "note": "Intent record for interruption safety. Written when a batch, chain or campaign STARTS and cleared when it completes; an intent left open means a session did not reach its finish line. Deliberately digest-free -- see tests/tree_state.py. Read with `PYTHONPATH=. .venv/bin/python tests/tree_state.py`.",
-  "open_intent": {
+  "open_intent": null,
+  "last_completed": {
     "kind": "campaign",
     "began_at": "2026-09-22T02:34:55+08:00",
     "session": "claude-opus5-20260922-h06-rulings",
     "note": "owner rulings 2026-09-22: re-attest the 7 blocked nodes then retire predecessors; re-dispatch abstract-medium clauses with a neutral prompt; no source edits intended",
-    "next_step": "Resume the campaign; it touches no source, so no re-proof is owed."
-  },
-  "last_completed": {
-    "kind": "campaign",
-    "began_at": "2026-09-21T22:26:59+08:00",
-    "session": "claude-opus5-20260921-h06-attestation",
-    "note": "H-06 Phase B: blind re-attestation campaign over the 218-finding capability queue; no source edits intended",
     "next_step": "Resume the campaign; it touches no source, so no re-proof is owed.",
-    "completed_at": "2026-09-22T00:28:27+08:00",
-    "completion_note": "H-06 campaign complete: 33/33 dispatches filed, capability_phase2 218 -> 61, digest unmoved, no re-proof owed"
+    "completed_at": "2026-09-22T02:46:36+08:00",
+    "completion_note": "owner rulings done: structural blocker cleared, cap2 218->55 all CONTRADICTED, digest unmoved"
   }
 }
