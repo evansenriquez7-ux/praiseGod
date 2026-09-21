@@ -1,0 +1,759 @@
+{
+  "batch": "batch110_mat_g2_na_q2_6",
+  "attested_at": "2026-09-21T00:00:00Z",
+  "attested_by": "blind-attester-haiku45-d31-20260922",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "the Attester was told to read exactly local_only/scratch/attester/h06/d31.prompt.txt, which is attester_packets.render_prompt_block output (item id, clause, competency, grade/quarter and the rendered samples only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "prompt-contract dispatch to a separate agent: told to read exactly one packet render and no other path, and to write its verdict JSON. Tool access was NOT structurally prevented, so this does not claim the '0' (inline, no tool access) contract; at least one Read and one Write were expected and used."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g2_na_q2_6",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g2_na_q2_6",
+        "seed": 11,
+        "formatter": "read_mcq",
+        "question_text": "The dot is at 150 and it moves backward 115 numbers. Starting from 150, just count back 115 numbers. Which number will the dot land on?",
+        "correct_answer": "D",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "NumberLine",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 265,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 34,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 36,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 35,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 35,
+        "hints": [
+          "We are subtracting 115 from 150.",
+          "The ones digit 0 is less than 5, so we need to borrow. Borrow 1 ten: 10 − 5 = 5.",
+          "Subtract the tens: 4 − 1 = 3. (after borrowing)",
+          "The difference of 150 − 115 = 35."
+        ],
+        "visual_type": "NumberLine",
+        "visual_payload": {
+          "start": 0,
+          "end": 200,
+          "major_interval": 100,
+          "minor_interval": 50,
+          "interval": 50,
+          "dot_value": 150,
+          "move_by": -115,
+          "content_type": "whole_number",
+          "value": 35,
+          "correct_position": 35,
+          "divisions": 4,
+          "is_interactive": false,
+          "show_labels": true,
+          "correct_answer": 35.0,
+          "target": 35.0
+        },
+        "visual_render": {
+          "visual_type": "NumberLine",
+          "renderer_input_digest": "065ef12f6648dcb5636a16e8006b4369f5575a6eca2c98f1a617270351cba2a5",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "NumberLine",
+            "element_count": 13,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "0",
+              "100",
+              "200"
+            ],
+            "distinct_colours": [
+              "hsl(var(--border-color)",
+              "hsl(var(--text-muted)",
+              "hsl(var(--text)",
+              "hsl(var(--primary)",
+              "hsl(var(--card-bg)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "4f34aec2bbe59114feca",
+        "replay_digest": "a485a553d1dd08c196dc17ce17825f97c1b0cb1301b382c94203ad71f953ccad"
+      },
+      {
+        "node_id": "mat_g2_na_q2_6",
+        "seed": 23,
+        "formatter": "cloze",
+        "question_text": "282 − 90 = ___",
+        "correct_answer": 192,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 192,
+            "text": "192",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 372,
+            "text": "372",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 193,
+            "text": "193",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 191,
+            "text": "191",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 192,
+        "hints": [
+          "We are subtracting 90 from 282.",
+          "Subtract the ones: 2 − 0 = 2.",
+          "Subtract the tens: 8 − 9 = -1.",
+          "The difference of 282 − 90 = 192."
+        ],
+        "sample_id": "b5af4f357ed8a75b8728",
+        "replay_digest": "0f2812ef0fa15bbf350977c22eb9cad2609f3f87e597dc479813f9907567521a"
+      },
+      {
+        "node_id": "mat_g2_na_q2_6",
+        "seed": 42,
+        "formatter": "cloze",
+        "question_text": "510 − 382 = ___",
+        "correct_answer": 128,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 128,
+            "text": "128",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 127,
+            "text": "127",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 892,
+            "text": "892",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 129,
+            "text": "129",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 128,
+        "hints": [
+          "We are subtracting 382 from 510.",
+          "The ones digit 0 is less than 2, so we need to borrow. Borrow 1 ten: 10 − 2 = 8.",
+          "Subtract the tens: 0 − 8 = -8. (after borrowing)",
+          "The difference of 510 − 382 = 128."
+        ],
+        "sample_id": "82a25b5c1e771c807a8b",
+        "replay_digest": "51140a1cb0f40d40616ac82a2a6ef3b82d254050a5486bbbb6756cc4cd1810c7"
+      },
+      {
+        "node_id": "mat_g2_na_q2_6",
+        "seed": 57,
+        "formatter": "mcq",
+        "question_text": "What is 371 − 150?",
+        "correct_answer": 221,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 222,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 221,
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 220,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 521,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 221,
+        "hints": [
+          "We are subtracting 150 from 371.",
+          "Subtract the ones: 1 − 0 = 1.",
+          "Subtract the tens: 7 − 5 = 2.",
+          "The difference of 371 − 150 = 221."
+        ],
+        "sample_id": "71309301e29333a9daa6",
+        "replay_digest": "ff892d79e62656ba39dfd98a2ef07a335983e4e495f3505e621712dfe14e0933"
+      },
+      {
+        "node_id": "mat_g2_na_q2_6",
+        "seed": 64,
+        "formatter": "cloze",
+        "question_text": "21 − 15 = ___",
+        "correct_answer": 6,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 7,
+            "text": "7",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 5,
+            "text": "5",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 6,
+            "text": "6",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 36,
+            "text": "36",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 6,
+        "hints": [
+          "We are subtracting 15 from 21.",
+          "The ones digit 1 is less than 5, so we need to borrow. Borrow 1 ten: 11 − 5 = 6.",
+          "Subtract the tens: 1 − 1 = 0. (after borrowing)",
+          "The difference of 21 − 15 = 6."
+        ],
+        "sample_id": "edbdde8a10297a763303",
+        "replay_digest": "eaa7277fc8a6f6a08f7a51c8dcdd713062f63fc9d03f2df143a714ccf8ede62c"
+      },
+      {
+        "node_id": "mat_g2_na_q2_6",
+        "seed": 78,
+        "formatter": "cloze",
+        "question_text": "103 − 0 = ___",
+        "correct_answer": 103,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 104,
+            "text": "104",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 103,
+            "text": "103",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 102,
+            "text": "102",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 105,
+            "text": "105",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 103,
+        "hints": [
+          "We are subtracting 0 from 103.",
+          "Subtract the ones: 3 − 0 = 3.",
+          "Subtract the tens: 0 − 0 = 0.",
+          "The difference of 103 − 0 = 103."
+        ],
+        "sample_id": "5f1bc5921acab0bd642c",
+        "replay_digest": "3b225cb2994a561cec342356a7b4b03e96226003692d3360ea86f73fbc09a797"
+      },
+      {
+        "node_id": "mat_g2_na_q2_6",
+        "seed": 91,
+        "formatter": "read_mcq",
+        "question_text": "The dot is at 1 and it moves backward 1 number. Starting from 1, just count back 1 number. Which number will the dot land on?",
+        "correct_answer": "B",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "NumberLine",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": -1,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 0,
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 1,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 2,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 0,
+        "hints": [
+          "We are subtracting 1 from 1.",
+          "Subtract the ones: 1 − 1 = 0.",
+          "The difference of 1 − 1 = 0."
+        ],
+        "visual_type": "NumberLine",
+        "visual_payload": {
+          "start": 0,
+          "end": 20,
+          "major_interval": 5,
+          "minor_interval": 1,
+          "interval": 1,
+          "dot_value": 1,
+          "move_by": -1,
+          "content_type": "whole_number",
+          "value": 0,
+          "correct_position": 0,
+          "divisions": 20,
+          "is_interactive": false,
+          "show_labels": true,
+          "correct_answer": 0.0,
+          "target": 0.0
+        },
+        "visual_render": {
+          "visual_type": "NumberLine",
+          "renderer_input_digest": "bc6d860260b4d4531e8d98afe1f5c7820e343d5e7bc1a22fbac4e147455c8324",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "NumberLine",
+            "element_count": 31,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "0",
+              "5",
+              "10",
+              "15",
+              "20"
+            ],
+            "distinct_colours": [
+              "hsl(var(--border-color)",
+              "hsl(var(--text-muted)",
+              "hsl(var(--text)",
+              "hsl(var(--primary)",
+              "hsl(var(--card-bg)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "aed4c8ea10a9923b9411",
+        "replay_digest": "d7fbde1fc5e5f5ba0928522cdf187f71bfe5617096153a4c9e548c47212e00a7"
+      },
+      {
+        "node_id": "mat_g2_na_q2_6",
+        "seed": 103,
+        "formatter": "true_false",
+        "question_text": "900 − 601 = 299. True or False?",
+        "correct_answer": true,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "true_false",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "true_false",
+          "experience": "standard"
+        },
+        "resolved_answer": true,
+        "hints": [
+          "We are subtracting 601 from 900.",
+          "The ones digit 0 is less than 1, so we need to borrow. Borrow 1 ten: 10 − 1 = 9.",
+          "Subtract the tens: -1 − 0 = -1. (after borrowing)",
+          "The difference of 900 − 601 = 299."
+        ],
+        "sample_id": "d6c6db172b1eb550fe2a",
+        "replay_digest": "04cc0856c2ad2ca041df5a98f2f8af4965cd54e2de54c05ebd2665cf22fec7c1"
+      },
+      {
+        "node_id": "mat_g2_na_q2_6",
+        "seed": 118,
+        "formatter": "mcq",
+        "question_text": "What is 220 − 135?",
+        "correct_answer": 85,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 355,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 86,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 85,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 84,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 85,
+        "hints": [
+          "We are subtracting 135 from 220.",
+          "The ones digit 0 is less than 5, so we need to borrow. Borrow 1 ten: 10 − 5 = 5.",
+          "Subtract the tens: 1 − 3 = -2. (after borrowing)",
+          "The difference of 220 − 135 = 85."
+        ],
+        "sample_id": "6fc53f93384445a60d1b",
+        "replay_digest": "5b0202ba873516530a071b85850e0ad2300889acce7f8dbf6e5f610297cba579"
+      },
+      {
+        "node_id": "mat_g2_na_q2_6",
+        "seed": 127,
+        "formatter": "read_mcq",
+        "question_text": "The dot is at 18 and it moves backward 15 numbers. Starting from 18, just count back 15 numbers. Which number will the dot land on?",
+        "correct_answer": "D",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "NumberLine",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 33,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 4,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 2,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 3,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 3,
+        "hints": [
+          "We are subtracting 15 from 18.",
+          "Subtract the ones: 8 − 5 = 3.",
+          "Subtract the tens: 1 − 1 = 0.",
+          "The difference of 18 − 15 = 3."
+        ],
+        "visual_type": "NumberLine",
+        "visual_payload": {
+          "start": 0,
+          "end": 20,
+          "major_interval": 5,
+          "minor_interval": 1,
+          "interval": 1,
+          "dot_value": 18,
+          "move_by": -15,
+          "content_type": "whole_number",
+          "value": 3,
+          "correct_position": 3,
+          "divisions": 20,
+          "is_interactive": false,
+          "show_labels": true,
+          "correct_answer": 3.0,
+          "target": 3.0
+        },
+        "visual_render": {
+          "visual_type": "NumberLine",
+          "renderer_input_digest": "61494c840b7c0d9e9fc3b170b9980fef40c42996aca94dffef11e688db709c2e",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "NumberLine",
+            "element_count": 31,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "0",
+              "5",
+              "10",
+              "15",
+              "20"
+            ],
+            "distinct_colours": [
+              "hsl(var(--border-color)",
+              "hsl(var(--text-muted)",
+              "hsl(var(--text)",
+              "hsl(var(--primary)",
+              "hsl(var(--card-bg)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "467d75889baada343acb",
+        "replay_digest": "4603139335c3b76cc78054d6636fae1f0b6cc4a4ea236d2070456785dc2607c6"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "subtract_numbers",
+      "node_id": "mat_g2_na_q2_6",
+      "clause": "Subtract numbers",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Subtraction is the operation in every sample. Problems range from simple facts like 21−15 to larger problems like 510−382, all requiring the learner to subtract one number from another.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "less_than_1000",
+      "node_id": "mat_g2_na_q2_6",
+      "clause": "both numbers are less than 1000",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Examining all operands: 150, 115, 282, 90, 510, 382, 371, 150, 21, 15, 103, 0, 1, 1, 900, 601, 220, 135, 18, 15—every number is strictly less than 1000. The constraint is satisfied throughout.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "regrouping",
+      "node_id": "mat_g2_na_q2_6",
+      "clause": "with and without regrouping",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "The sample set exhibits both cases: regrouping scenarios (like 150−115 which requires decomposing tens) and non-regrouping scenarios (like 282−90 where no decomposition is needed). The clause is satisfied by variety within the pool.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    }
+  ],
+  "supersedes": "Replaces batch026B08_mat_g2_na_q2_6, which §6F reported as unusable evidence (stale stem/answer, or a record that carries no options or no render-derived visual for content that renders one). The predecessor is left on disk; supersession is earned by this record, not declared by it."
+}

@@ -1,0 +1,617 @@
+{
+  "batch": "batch109_mat_g1_dp_q3_0",
+  "attested_at": "2026-09-21T00:00:00Z",
+  "attested_by": "blind-attester-haiku45-d30-20260922",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "the Attester was told to read exactly local_only/scratch/attester/h06/d30.prompt.txt, which is attester_packets.render_prompt_block output (item id, clause, competency, grade/quarter and the rendered samples only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "prompt-contract dispatch to a separate agent: told to read exactly one packet render and no other path, and to write its verdict JSON. Tool access was NOT structurally prevented, so this does not claim the '0' (inline, no tool access) contract; at least one Read and one Write were expected and used."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g1_dp_q3_0",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g1_dp_q3_0",
+        "seed": 11,
+        "formatter": "mcq",
+        "question_text": "Tina asks 5 friends their favorite pet: 2 say Cat, 3 say Dog. How should Tina record the data in her interview list?",
+        "correct_answer": "Cat: 2, Dog: 3",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "Cat: 2, Dog: 3",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "Cat: 5, Dog: 0",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "Cat: 1, Dog: 4",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "Cat: 3, Dog: 2",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "Cat: 2, Dog: 3",
+        "hints": [
+          "Read the interview question or results carefully.",
+          "Find the votes or answers counted for each choice.",
+          "Answer what the interview shows."
+        ],
+        "sample_id": "fee307fe40684db5d973",
+        "replay_digest": "d35ee89ab06c83cc38bd7aa0cc6ef0f7e035d5806c0c087bf727d3b1d66f7b4a"
+      },
+      {
+        "node_id": "mat_g1_dp_q3_0",
+        "seed": 23,
+        "formatter": "mcq",
+        "question_text": "During an interview, 3 classmates answered 'dog'. How should you record 3 tally marks for 'dog'?",
+        "correct_answer": "|||",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "||",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "||||",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "|||",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "|",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "|||",
+        "hints": [
+          "Read the interview question or results carefully.",
+          "Find the votes or answers counted for each choice.",
+          "Answer what the interview shows."
+        ],
+        "sample_id": "8c7dbb5873aa65252a79",
+        "replay_digest": "ffb49511fde0f442a01c54daab735d2bb1d5194039055e441944ef9bcba09be2"
+      },
+      {
+        "node_id": "mat_g1_dp_q3_0",
+        "seed": 42,
+        "formatter": "mcq",
+        "question_text": "Rico conducts an interview with 4 classmates: Ana chose blue, Leo chose red, Sam chose blue, Mia chose blue. How many times was 'blue' collected in the interview?",
+        "correct_answer": "3",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "3",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "2",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "1",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "4",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "3",
+        "hints": [
+          "Read the interview question or results carefully.",
+          "Find the votes or answers counted for each choice.",
+          "Answer what the interview shows."
+        ],
+        "sample_id": "0c46fa11a82d13f7b3cc",
+        "replay_digest": "a0614b549ba68640fdfb35a0d2205f069ec6efdeff9d7d7f450485afda0c20a5"
+      },
+      {
+        "node_id": "mat_g1_dp_q3_0",
+        "seed": 57,
+        "formatter": "mcq",
+        "question_text": "In an interview, you ask 4 friends for their favorite fruit: Kim says Apple, Ben says Mango, Dan says Apple, Joy says Apple. How many votes did Apple get?",
+        "correct_answer": "3",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "1",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "4",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "3",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "2",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "3",
+        "hints": [
+          "Read the interview question or results carefully.",
+          "Find the votes or answers counted for each choice.",
+          "Answer what the interview shows."
+        ],
+        "sample_id": "9d76eff439da97b67d19",
+        "replay_digest": "a02dcfc1f120071f07e469fa1e70aa73699307dd9bb9ee38702fdea13822a237"
+      },
+      {
+        "node_id": "mat_g1_dp_q3_0",
+        "seed": 64,
+        "formatter": "mcq",
+        "question_text": "Maya wants to collect information about her classmates' favorite fruits. What question should Maya ask in her simple interview?",
+        "correct_answer": "What is your favorite fruit?",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "How old are you?",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "What time is it?",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "What is your favorite fruit?",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "How many shoes do you have?",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "What is your favorite fruit?",
+        "hints": [
+          "Read the interview question or results carefully.",
+          "Find the votes or answers counted for each choice.",
+          "Answer what the interview shows."
+        ],
+        "sample_id": "6c94cd642271e0c9c145",
+        "replay_digest": "160c8e40dad766566820784be87d3ed977beecb52b18fe54c588d38a4c554a07"
+      },
+      {
+        "node_id": "mat_g1_dp_q3_0",
+        "seed": 78,
+        "formatter": "mcq",
+        "question_text": "If you want to collect data about what shoes your classmates wear to school, whom should you interview?",
+        "correct_answer": "your classmates",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "the desks",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "the classroom walls",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "the birds outside",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "your classmates",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "your classmates",
+        "hints": [
+          "Read the interview question or results carefully.",
+          "Find the votes or answers counted for each choice.",
+          "Answer what the interview shows."
+        ],
+        "sample_id": "2a609f07983c67d6788c",
+        "replay_digest": "fd8722cf1064d7cd9712f5167c362999543157169237cd6f7959e9b0c8eb333f"
+      },
+      {
+        "node_id": "mat_g1_dp_q3_0",
+        "seed": 91,
+        "formatter": "mcq",
+        "question_text": "Tina asks 5 friends their favorite pet: 2 say Cat, 3 say Dog. How should Tina record the data in her interview list?",
+        "correct_answer": "Cat: 2, Dog: 3",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "Cat: 3, Dog: 2",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "Cat: 2, Dog: 3",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "Cat: 1, Dog: 4",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "Cat: 5, Dog: 0",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "Cat: 2, Dog: 3",
+        "hints": [
+          "Read the interview question or results carefully.",
+          "Find the votes or answers counted for each choice.",
+          "Answer what the interview shows."
+        ],
+        "sample_id": "1beb3e51a01b63a747a1",
+        "replay_digest": "43976b718e8727d077380a3470cc7de2c9cf8c729e93ae735610fabfba1ea9b7"
+      },
+      {
+        "node_id": "mat_g1_dp_q3_0",
+        "seed": 103,
+        "formatter": "mcq",
+        "question_text": "During an interview, 3 classmates answered 'dog'. How should you record 3 tally marks for 'dog'?",
+        "correct_answer": "|||",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "|||",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "||",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "||||",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "|",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "|||",
+        "hints": [
+          "Read the interview question or results carefully.",
+          "Find the votes or answers counted for each choice.",
+          "Answer what the interview shows."
+        ],
+        "sample_id": "8219eca210d14c0193e2",
+        "replay_digest": "0c82c4d6542e7aaa2aa74215938e57347249ef59cde55ac9d6194ae5ead4b516"
+      },
+      {
+        "node_id": "mat_g1_dp_q3_0",
+        "seed": 118,
+        "formatter": "mcq",
+        "question_text": "Dan asks each pupil: 'What is your favorite snack?' What information is Dan collecting in this interview?",
+        "correct_answer": "favorite snack",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "number of bags",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "favorite snack",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "favorite game",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "favorite color",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "favorite snack",
+        "hints": [
+          "Read the interview question or results carefully.",
+          "Find the votes or answers counted for each choice.",
+          "Answer what the interview shows."
+        ],
+        "sample_id": "a754172ffdc4901ccfac",
+        "replay_digest": "b3694bb485fcb06b5e09b18467fbf5f4ffdaf20d2760d23c8b7db53bb1c5d359"
+      },
+      {
+        "node_id": "mat_g1_dp_q3_0",
+        "seed": 127,
+        "formatter": "mcq",
+        "question_text": "Paul asks 4 pupils for their favorite fruit. Which of these is a response collected from this interview?",
+        "correct_answer": "banana",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "20 pesos",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "7 o'clock",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "triangle",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "banana",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "banana",
+        "hints": [
+          "Read the interview question or results carefully.",
+          "Find the votes or answers counted for each choice.",
+          "Answer what the interview shows."
+        ],
+        "sample_id": "24a31fc1b8539610d34c",
+        "replay_digest": "3af8cc0d49d2c58a07bbce195f2cc7ff5904b587a5cf2e2aa41f5c570613e547"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "collect_data",
+      "node_id": "mat_g1_dp_q3_0",
+      "clause": "Collect data",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "The samples consistently involve collecting data through interviews. Each stem describes an interview scenario where responses are gathered (e.g., 'Tina asks 5 friends their favorite pet', 'During an interview, 3 classmates answered dog'), demonstrating active data collection across all ten seeds.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "one_variable",
+      "node_id": "mat_g1_dp_q3_0",
+      "clause": "one variable",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All samples collect data on a single variable. The competency and stems show data gathering on one attribute per sample: either favorite pet, tally responses for an answer choice, favorite fruit, or what shoes classmates wear. No samples ask about multiple independent variables simultaneously.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "simple_interview",
+      "node_id": "mat_g1_dp_q3_0",
+      "clause": "simple interview",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All samples describe simple interview formats. Students are asked basic yes-or-no questions or asked for single-word responses about preferences (favorite pet, fruit, snack, color, game). The interview method is straightforward and age-appropriate for Grade 1 without complex logistics.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    }
+  ],
+  "supersedes": "Replaces batch024_mat_g1_dp_q3_0, which §6F reported as unusable evidence (stale stem/answer, or a record that carries no options or no render-derived visual for content that renders one). The predecessor is left on disk; supersession is earned by this record, not declared by it."
+}

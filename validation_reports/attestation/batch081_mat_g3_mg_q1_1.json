@@ -1,0 +1,733 @@
+{
+  "batch": "batch081_mat_g3_mg_q1_1",
+  "attested_at": "2026-09-21T00:00:00Z",
+  "attested_by": "blind-attester-opus5-d02-20260921",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "the Attester was told to read exactly local_only/scratch/attester/h06/d02.prompt.txt, which is attester_packets.render_prompt_block output (item id, clause, competency, grade/quarter and the rendered samples only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "prompt-contract dispatch to a separate agent: told to read exactly one packet render and no other path, and to write its verdict JSON. Tool access was NOT structurally prevented, so this does not claim the '0' (inline, no tool access) contract; at least one Read and one Write were expected and used."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g3_mg_q1_1",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g3_mg_q1_1",
+        "seed": 11,
+        "formatter": "mcq",
+        "question_text": "Cover each square with unit square tiles and count them: a 2 by 2 square takes 4 tiles, a 3 by 3 square takes 9 tiles, and a 5 by 5 square takes 25 tiles. Which rule always gives the number of tiles?",
+        "correct_answer": "side × side",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "side + 4",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "side × side",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "side + side",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "4 × side",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "side × side",
+        "hints": [
+          "The area tells us how many unit squares cover the shape.",
+          "Area of a square = side × side = ? × ? = side × side sq cm."
+        ],
+        "sample_id": "1d41f8ce73c364974899",
+        "replay_digest": "8134558d0eb9516057b42d2d7b244c9a34809bdde2071867a08e97ff4034cf88"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_1",
+        "seed": 23,
+        "formatter": "cloze",
+        "question_text": "Three squares are tiled with unit squares: a 3 by 3 square takes 9 tiles, a 4 by 4 square takes 16 tiles, and a 5 by 5 square takes 25 tiles. Which rule works for every one of them?",
+        "correct_answer": "side × side",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "side × side",
+            "text": "side × side",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "side + side",
+            "text": "side + side",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "4 × side",
+            "text": "4 × side",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "side + 4",
+            "text": "side + 4",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "side × side",
+        "hints": [
+          "The area tells us how many unit squares cover the shape.",
+          "Area of a square = side × side = ? × ? = side × side sq cm."
+        ],
+        "sample_id": "e00088da406786844c7c",
+        "replay_digest": "55fb5e6dedf96116448050d54d534a6050c24c5c73dbddbac458359ac4bff950"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_1",
+        "seed": 42,
+        "formatter": "cloze",
+        "question_text": "Cover each rectangle with unit square tiles and count them: a 4 by 3 rectangle takes 12 tiles, a 5 by 4 rectangle takes 20 tiles, and a 7 by 2 rectangle takes 14 tiles. Which rule always gives the number of tiles?",
+        "correct_answer": "length × width",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "length × width",
+            "text": "length × width",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "length + width",
+            "text": "length + width",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "length + width + length + width",
+            "text": "length + width + length + width",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "length + length",
+            "text": "length + length",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "length × width",
+        "hints": [
+          "The area tells us how many unit squares cover the shape.",
+          "Area of a rectangle = length × width = ? × ? = length × width sq cm."
+        ],
+        "sample_id": "a8ee43347b69382711c0",
+        "replay_digest": "d1dfeb999cb109b860436871c2f99ab003a026e186b41158023de57d1fb19550"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_1",
+        "seed": 57,
+        "formatter": "mcq",
+        "question_text": "Cover each rectangle with unit square tiles and count them: a 6 by 5 rectangle takes 30 tiles, a 7 by 2 rectangle takes 14 tiles, and a 9 by 10 rectangle takes 90 tiles. Which rule always gives the number of tiles?",
+        "correct_answer": "length × width",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "length × width",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "length + width",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "length + width + length + width",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "length + length",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "length × width",
+        "hints": [
+          "The area tells us how many unit squares cover the shape.",
+          "Area of a rectangle = length × width = ? × ? = length × width sq cm."
+        ],
+        "sample_id": "56e1fe35c40dcdf758bd",
+        "replay_digest": "427e7784822569f58950af0f5378a2564a632a219c7aa3d346f41cd112cecb9e"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_1",
+        "seed": 64,
+        "formatter": "cloze",
+        "question_text": "Cover each square with unit square tiles and count them: a 2 by 2 square takes 4 tiles, a 4 by 4 square takes 16 tiles, and a 5 by 5 square takes 25 tiles. Which rule always gives the number of tiles?",
+        "correct_answer": "side × side",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "side + 4",
+            "text": "side + 4",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "side + side",
+            "text": "side + side",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "4 × side",
+            "text": "4 × side",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "side × side",
+            "text": "side × side",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "side × side",
+        "hints": [
+          "The area tells us how many unit squares cover the shape.",
+          "Area of a square = side × side = ? × ? = side × side sq cm."
+        ],
+        "sample_id": "4940286e77badc2f5c26",
+        "replay_digest": "b65a3740abb4c0ae7bed9b40a98f03c289f6e11b29b393d9d40dfe2c0be6f1e1"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_1",
+        "seed": 78,
+        "formatter": "cloze",
+        "question_text": "Cover each rectangle with unit square tiles and count them: a 5 by 4 rectangle takes 20 tiles, an 8 by 5 rectangle takes 40 tiles, and a 9 by 2 rectangle takes 18 tiles. Which rule always gives the number of tiles?",
+        "correct_answer": "length × width",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "length × width",
+            "text": "length × width",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "length + length",
+            "text": "length + length",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "length + width",
+            "text": "length + width",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "length + width + length + width",
+            "text": "length + width + length + width",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "length × width",
+        "hints": [
+          "The area tells us how many unit squares cover the shape.",
+          "Area of a rectangle = length × width = ? × ? = length × width sq cm."
+        ],
+        "sample_id": "e107cfba89732d913077",
+        "replay_digest": "2483d206512db4f16668febf937a6d25a87d7d54eb6fa8e36774a9b1045cd93f"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_1",
+        "seed": 91,
+        "formatter": "cloze",
+        "question_text": "Cover each rectangle with unit square tiles and count them: a 5 by 10 rectangle takes 50 tiles, a 9 by 3 rectangle takes 27 tiles, and a 10 by 5 rectangle takes 50 tiles. Which rule always gives the number of tiles?",
+        "correct_answer": "length × width",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "length + width + length + width",
+            "text": "length + width + length + width",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "length + length",
+            "text": "length + length",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "length + width",
+            "text": "length + width",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "length × width",
+            "text": "length × width",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "length × width",
+        "hints": [
+          "The area tells us how many unit squares cover the shape.",
+          "Area of a rectangle = length × width = ? × ? = length × width sq cm."
+        ],
+        "sample_id": "18b22f13d8416597f76f",
+        "replay_digest": "a4f737e2108d692d31e488bcc74c31517a4aa760cb1a4a831cf64878974fcdc4"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_1",
+        "seed": 103,
+        "formatter": "cloze",
+        "question_text": "Cover each square with unit square tiles and count them: a 2 by 2 square takes 4 tiles, a 4 by 4 square takes 16 tiles, and a 5 by 5 square takes 25 tiles. Which rule always gives the number of tiles?",
+        "correct_answer": "side × side",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "4 × side",
+            "text": "4 × side",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "side + side",
+            "text": "side + side",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "side + 4",
+            "text": "side + 4",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "side × side",
+            "text": "side × side",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "side × side",
+        "hints": [
+          "The area tells us how many unit squares cover the shape.",
+          "Area of a square = side × side = ? × ? = side × side sq cm."
+        ],
+        "sample_id": "19c23b3b5e7bfee10bc7",
+        "replay_digest": "58eb41fea8dcda60d6792d8b8d647f181ce86ff056135045a463193a0fc462d9"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_1",
+        "seed": 118,
+        "formatter": "mcq",
+        "question_text": "Cover each rectangle with unit square tiles and count them: a 3 by 2 rectangle takes 6 tiles, a 6 by 4 rectangle takes 24 tiles, and a 7 by 10 rectangle takes 70 tiles. Which rule always gives the number of tiles?",
+        "correct_answer": "length × width",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "length + width + length + width",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "length + width",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "length + length",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "length × width",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "length × width",
+        "hints": [
+          "The area tells us how many unit squares cover the shape.",
+          "Area of a rectangle = length × width = ? × ? = length × width sq cm."
+        ],
+        "sample_id": "9fe31a69c8b7d334f354",
+        "replay_digest": "7c9b16ad792ed4fa28d86ee7bfcfc68c6de3b9bbe4075fd118f992bdf70a699a"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_1",
+        "seed": 127,
+        "formatter": "cloze",
+        "question_text": "Cover each rectangle with unit square tiles and count them: a 4 by 10 rectangle takes 40 tiles, a 5 by 4 rectangle takes 20 tiles, and an 8 by 2 rectangle takes 16 tiles. Which rule always gives the number of tiles?",
+        "correct_answer": "length × width",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "length + width",
+            "text": "length + width",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "length × width",
+            "text": "length × width",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "length + width + length + width",
+            "text": "length + width + length + width",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "length + length",
+            "text": "length + length",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "length × width",
+        "hints": [
+          "The area tells us how many unit squares cover the shape.",
+          "Area of a rectangle = length × width = ? × ? = length × width sq cm."
+        ],
+        "sample_id": "3e490c88c2d6cc66ae3e",
+        "replay_digest": "b96259f76f595ce548e63b2c72a90156869410051989e4ae4e32b39e78a34bbb"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "explore_pattern_across_cases",
+      "node_id": "mat_g3_mg_q1_1",
+      "clause": "Explore",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Every stem hands the learner three worked tiling cases and then asks which rule holds for all of them, which is an act of examining instances to find a pattern rather than recalling a taught formula. The exploratory posture the clause names is what the question format is built around.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable.",
+      "content_note_from_attester": "The exploration is entirely verbal: no sample lets the learner place or count a tile, the counts arrive already computed."
+    },
+    {
+      "capability_id": "reason_inductively_from_cases",
+      "node_id": "mat_g3_mg_q1_1",
+      "clause": "inductively",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Induction means generalising from particular cases, and that is precisely the move each sample demands: three specific dimension/tile-count pairs are laid out, and the asked-for answer is the rule that 'always' or 'for every one of them' reproduces the counts. Seed 23 even words it as 'Which rule works for every one of them?'.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "derive_area_formula",
+      "node_id": "mat_g3_mg_q1_1",
+      "clause": "the derivation",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        42,
+        57,
+        64,
+        103,
+        118
+      ],
+      "reasoning": "What the learner produces here is the formula itself, arrived at from evidence rather than quoted: the data (4 tiles for 2 by 2, 9 for 3 by 3, 25 for 5 by 5) is the premise and 'side × side' is the conclusion drawn from it. That path from measurements to a general statement is the derivation the clause points at.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable.",
+      "content_note_from_attester": "Format is selection from four candidate rules, so the learner recognises a correct derivation rather than constructing one; the distractors do include the perimeter rule, which forces the comparison against the data."
+    },
+    {
+      "capability_id": "area_formula_expression",
+      "node_id": "mat_g3_mg_q1_1",
+      "clause": "the formulas",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        64,
+        103,
+        42,
+        57,
+        78,
+        91,
+        118,
+        127
+      ],
+      "reasoning": "Both target formulas appear as answer keys in the samples: 'side × side' for the square seeds and 'length × width' for the rectangle seeds. The clause asks for the formulas and the formulas are literally the correct responses.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "area_attribute",
+      "node_id": "mat_g3_mg_q1_1",
+      "clause": "the areas",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        42,
+        91,
+        118
+      ],
+      "reasoning": "The quantity under study across all ten samples is how many unit squares it takes to cover a region, and that count is the region's area measured in square units. Although the samples never print the word 'area', the thing being measured and generalised is nothing else.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable.",
+      "content_note_from_attester": "Worth flagging that no stem names the result as an area, nor attaches a square-unit label to it, so the bridge from 'number of tiles' to 'area' is left for instruction to supply."
+    },
+    {
+      "capability_id": "square_figure",
+      "node_id": "mat_g3_mg_q1_1",
+      "clause": "a square",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        64,
+        103
+      ],
+      "reasoning": "Four of the ten samples are built on squares only, with equal-side cases such as 2 by 2, 3 by 3, 4 by 4 and 5 by 5, and their keys use the side-based rule. A square figure is therefore squarely in scope here.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "rectangle_figure",
+      "node_id": "mat_g3_mg_q1_1",
+      "clause": "a rectangle",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        57,
+        78,
+        91,
+        118,
+        127
+      ],
+      "reasoning": "Six samples use non-square rectangles (4 by 3, 6 by 5, 9 by 2, 7 by 10 and so on) and key on length × width, so the rectangle case named by the clause is covered separately from the square case and with its own vocabulary.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "square_tile_array",
+      "node_id": "mat_g3_mg_q1_1",
+      "clause": "square tile units",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Square tiles are a manipulative, and none of these ten samples carries a VISUAL RENDERED line at all: the tiles exist only as the phrase 'unit square tiles' inside the sentence, and the tile counts are supplied to the learner ready-made. Being told that a 4 by 3 rectangle takes 12 tiles is not the same as being shown an array of twelve unit squares to count, so the medium the clause requires is described but never presented.",
+      "action_taken": "Filed as a §6F CONTRADICTED finding against H-06 and left reported. This session's scope is re-earning blind evidence at zero re-proof cost; no CAPABILITY_PROVIDERS entry was deleted and no artifact was built, because either act is a source edit that owes the full re-proof chain. The contradiction stands as the queue item."
+    },
+    {
+      "capability_id": "square_tile_unit",
+      "node_id": "mat_g3_mg_q1_1",
+      "clause": "tile units",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [
+        11,
+        42,
+        64,
+        118
+      ],
+      "reasoning": "For the unit of measure to be visible as a unit, something has to show one tile standing for one unit of covering. Nothing is drawn in any sample; the phrase 'unit square tiles' is prose, the covering is asserted, and the learner's whole task is choosing between four symbolic rules. No rendered structure exists to establish the tile as the unit.",
+      "action_taken": "Filed as a §6F CONTRADICTED finding against H-06 and left reported. This session's scope is re-earning blind evidence at zero re-proof cost; no CAPABILITY_PROVIDERS entry was deleted and no artifact was built, because either act is a source edit that owes the full re-proof chain. The contradiction stands as the queue item.",
+      "content_note_from_attester": "Because every sample lacks a visual, the entire tile-unit basis of this competency rests on the stem wording."
+    }
+  ],
+  "supersedes": "Replaces batch026_mat_g3_mg_q1_1, which §6F reported as unusable evidence (stale stem/answer, or a record that carries no options or no render-derived visual for content that renders one). The predecessor is left on disk; supersession is earned by this record, not declared by it."
+}

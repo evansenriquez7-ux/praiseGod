@@ -1,0 +1,575 @@
+{
+  "batch": "batch108_mat_g3_na_q3_4",
+  "attested_at": "2026-09-21T00:00:00Z",
+  "attested_by": "blind-attester-haiku45-d29-20260922",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "the Attester was told to read exactly local_only/scratch/attester/h06/d29.prompt.txt, which is attester_packets.render_prompt_block output (item id, clause, competency, grade/quarter and the rendered samples only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "prompt-contract dispatch to a separate agent: told to read exactly one packet render and no other path, and to write its verdict JSON. Tool access was NOT structurally prevented, so this does not claim the '0' (inline, no tool access) contract; at least one Read and one Write were expected and used."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g3_na_q3_4",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g3_na_q3_4",
+        "seed": 11,
+        "formatter": "true_false",
+        "question_text": "Tessie wants to buy 48 washi tape rolls that cost ₱20 each. How much does Tessie need to pay in all? The answer is 960. True or False?",
+        "correct_answer": true,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "true_false",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "true_false",
+          "experience": "standard"
+        },
+        "resolved_answer": true,
+        "hints": [
+          "Step 1: First find the total items in the groups: 6 × 8 = 48.",
+          "Step 2: Multiply the total items by 20: 48 × 20 = 960."
+        ],
+        "sample_id": "745aa9c5975c7fbe3445",
+        "replay_digest": "1f52799fe6536b45b0f153c98c4c304e6b917e9efe4ac7b18cddd20e53a15030"
+      },
+      {
+        "node_id": "mat_g3_na_q3_4",
+        "seed": 23,
+        "formatter": "cloze",
+        "question_text": "Marco puts 10 sneakers in each of 4 bags. How many sneakers are in all the bags?",
+        "correct_answer": 40,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 14,
+            "text": "14",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 40,
+            "text": "40",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 30,
+            "text": "30",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 39,
+            "text": "39",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 40,
+        "hints": [
+          "Step 1: First find the total items in the groups: 2 × 2 = 4.",
+          "Step 2: Multiply the total items by 10: 4 × 10 = 40."
+        ],
+        "sample_id": "a71212b742d7c700ba18",
+        "replay_digest": "9fe09fa89c238251db352c51e5c48c1b15a9f9e9b9c618341262654d03e571a4"
+      },
+      {
+        "node_id": "mat_g3_na_q3_4",
+        "seed": 42,
+        "formatter": "mcq",
+        "question_text": "Maico puts 2 costumes in each of 16 bags. How many costumes are in all the bags?",
+        "correct_answer": 32,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 18,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 30,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 14,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 32,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 32,
+        "hints": [
+          "We need to find the total of equal groups 16 groups of 2.",
+          "Think of it as 2 groups of 16: 16 + 16.",
+          "Break 16 into 10 + 6: (10 × 2) + (6 × 2) = 20 + 12 = 32.",
+          "The product of 16 × 2 = 32."
+        ],
+        "sample_id": "47146116610712068df9",
+        "replay_digest": "99dc91f4c52a99609d4cfb6e45bff87e1949e777b233cebb141ced04ca9c22b7"
+      },
+      {
+        "node_id": "mat_g3_na_q3_4",
+        "seed": 57,
+        "formatter": "error_detect",
+        "question_text": "Pia solved this problem: \"Arnel wants to buy 84 running shoes that cost ₱5 each. How much does Arnel need to pay in all?\" Pia says the answer is 420. Is Pia correct?",
+        "correct_answer": {
+          "has_error": false,
+          "correct_value": 420
+        },
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "error_detect",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "error_detect",
+          "experience": "standard"
+        },
+        "resolved_answer": {
+          "has_error": false,
+          "correct_value": 420
+        },
+        "hints": [
+          "We need to find the total of equal groups 84 groups of 5.",
+          "Think of it as 5 groups of 84: 84 + 84 + 84 + 84 + 84.",
+          "Break 84 into 80 + 4: (80 × 5) + (4 × 5) = 400 + 20 = 420.",
+          "The product of 84 × 5 = 420."
+        ],
+        "sample_id": "3170482cbd87506f1142",
+        "replay_digest": "7f957f56f0af98e3dec84405f0bfaedb309b22de626d02c11462877d4b7cf2e3"
+      },
+      {
+        "node_id": "mat_g3_na_q3_4",
+        "seed": 64,
+        "formatter": "cloze",
+        "question_text": "Boboy wants to buy 14 cupcakes that cost ₱10 each. How much does Boboy need to pay in all?",
+        "correct_answer": 140,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 130,
+            "text": "130",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 140,
+            "text": "140",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 24,
+            "text": "24",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 4,
+            "text": "4",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 140,
+        "hints": [
+          "Step 1: First find the total items in the groups: 2 × 7 = 14.",
+          "Step 2: Multiply the total items by 10: 14 × 10 = 140."
+        ],
+        "sample_id": "dcdf3374bbf835306348",
+        "replay_digest": "2ebbf245db723332e22067ec33aaaf96b6c6cc378c3c6c7e7a171f9ee8ef31f8"
+      },
+      {
+        "node_id": "mat_g3_na_q3_4",
+        "seed": 78,
+        "formatter": "mcq",
+        "question_text": "Kuya Ton puts 2 ribbons in each of 85 bags. How many ribbons are in all the bags?",
+        "correct_answer": 170,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 83,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 168,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 170,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 87,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 170,
+        "hints": [
+          "We need to find the total of equal groups 85 groups of 2.",
+          "Think of it as 2 groups of 85: 85 + 85.",
+          "Break 85 into 80 + 5: (80 × 2) + (5 × 2) = 160 + 10 = 170.",
+          "The product of 85 × 2 = 170."
+        ],
+        "sample_id": "85cd4d02c3347b568b20",
+        "replay_digest": "efe706f7e8d7b64c117a556bafca04a5d06066ba1e3cbbd13599d6e767728d21"
+      },
+      {
+        "node_id": "mat_g3_na_q3_4",
+        "seed": 91,
+        "formatter": "error_detect",
+        "question_text": "Grace solved this problem: \"Coach Nora wants to buy 4 arm sleeves that cost ₱1 each. How much does Coach Nora need to pay in all?\" Grace says the answer is 4. Is Grace correct?",
+        "correct_answer": {
+          "has_error": false,
+          "correct_value": 4
+        },
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "error_detect",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "error_detect",
+          "experience": "standard"
+        },
+        "resolved_answer": {
+          "has_error": false,
+          "correct_value": 4
+        },
+        "hints": [
+          "We need to find the total of equal groups 4 groups of 1.",
+          "Think of it as 1 group of 4: 4.",
+          "The product of 4 × 1 = 4."
+        ],
+        "sample_id": "2376d4418d6c00b62116",
+        "replay_digest": "081772a4ec968a5f463ceb6d495b96fdece8b4f37d7f6dcc8cc4b8589e2ac7d0"
+      },
+      {
+        "node_id": "mat_g3_na_q3_4",
+        "seed": 103,
+        "formatter": "error_detect",
+        "question_text": "Grace solved this problem: \"Ate Sam puts 2 jump ropes in each of 21 bags. How many jump ropes are in all the bags?\" Grace says the answer is 44. Is Grace correct?",
+        "correct_answer": {
+          "has_error": true,
+          "correct_value": 42
+        },
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "error_detect",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "error_detect",
+          "experience": "standard"
+        },
+        "resolved_answer": {
+          "has_error": true,
+          "correct_value": 42
+        },
+        "hints": [
+          "Step 1: First find the total items in the groups: 3 × 7 = 21.",
+          "Step 2: Multiply the total items by 2: 21 × 2 = 42."
+        ],
+        "sample_id": "86fd081697db85315c05",
+        "replay_digest": "539bd612a4be934344830ad341ae7b3dd7b6575651ddf9972096c57c11a8d855"
+      },
+      {
+        "node_id": "mat_g3_na_q3_4",
+        "seed": 118,
+        "formatter": "mcq",
+        "question_text": "Ate Gab puts 5 ribbons in each of 85 bags. How many ribbons are in all the bags?",
+        "correct_answer": 425,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 420,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 425,
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 80,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 90,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 425,
+        "hints": [
+          "We need to find the total of equal groups 85 groups of 5.",
+          "Think of it as 5 groups of 85: 85 + 85 + 85 + 85 + 85.",
+          "Break 85 into 80 + 5: (80 × 5) + (5 × 5) = 400 + 25 = 425.",
+          "The product of 85 × 5 = 425."
+        ],
+        "sample_id": "67965fe6dd334821e39a",
+        "replay_digest": "870a5ea6ebbc7e8e34b3d21ff788094466357e071ce32c89ec1610bbb61f4134"
+      },
+      {
+        "node_id": "mat_g3_na_q3_4",
+        "seed": 127,
+        "formatter": "cloze",
+        "question_text": "David wants to buy 38 scrolls that cost ₱1 each. How much does David need to pay in all?",
+        "correct_answer": 38,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 38,
+            "text": "38",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 37,
+            "text": "37",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 40,
+            "text": "40",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 39,
+            "text": "39",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 38,
+        "hints": [
+          "We need to find the total of equal groups 38 groups of 1.",
+          "Think of it as 1 group of 38: 38.",
+          "Break 38 into 30 + 8: (30 × 1) + (8 × 1) = 30 + 8 = 38.",
+          "The product of 38 × 1 = 38."
+        ],
+        "sample_id": "91b24072d2ca31d460ee",
+        "replay_digest": "b69c6ddc5672b14a06ce256266c9a3fa5282e3d48ba417ef1c9e18acb9955041"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "solve_multiplication_problems",
+      "node_id": "mat_g3_na_q3_4",
+      "clause": "Solve",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All ten samples require students to solve multiplication problems. They range from simple single-step multiplication (seed 23: 10 × 4) to problems embedded in contexts requiring multiplication (seed 11: 48 × 20), and verification tasks where multiplication answers are checked (seeds 57, 91, 103).",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "1_to_2_step",
+      "node_id": "mat_g3_na_q3_4",
+      "clause": "1-to 2-step",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Every sample is a one-step multiplication problem. None require solving two separate operations before the multiplication or combining a multiplication result with another operation. Each problem isolates a single multiplicative relationship to solve.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "multiplication_problems",
+      "node_id": "mat_g3_na_q3_4",
+      "clause": "multiplication problems",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All ten samples are structured as multiplication problems. The contexts vary (buying items at a unit price, grouping objects, checking solutions) but every sample requires identifying and performing a multiplication operation.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "problems_involving_money",
+      "node_id": "mat_g3_na_q3_4",
+      "clause": "problems involving money",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        57,
+        64,
+        91,
+        127
+      ],
+      "reasoning": "Five samples involve monetary amounts in Philippine peso (₱): seed 11 (Tessie buying washi tape rolls), seed 57 (Arnel buying running shoes), seed 64 (Boboy buying cupcakes), seed 91 (Coach Nora buying arm sleeves), and seed 127 (David buying scrolls). The competency includes this dimension in its scope.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    }
+  ],
+  "supersedes": "Replaces batch025S3_mat_g3_na_q3_4, which §6F reported as unusable evidence (stale stem/answer, or a record that carries no options or no render-derived visual for content that renders one). The predecessor is left on disk; supersession is earned by this record, not declared by it."
+}

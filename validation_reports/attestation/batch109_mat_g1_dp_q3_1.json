@@ -1,0 +1,1172 @@
+{
+  "batch": "batch109_mat_g1_dp_q3_1",
+  "attested_at": "2026-09-21T00:00:00Z",
+  "attested_by": "blind-attester-haiku45-d30-20260922",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "the Attester was told to read exactly local_only/scratch/attester/h06/d30.prompt.txt, which is attester_packets.render_prompt_block output (item id, clause, competency, grade/quarter and the rendered samples only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "prompt-contract dispatch to a separate agent: told to read exactly one packet render and no other path, and to write its verdict JSON. Tool access was NOT structurally prevented, so this does not claim the '0' (inline, no tool access) contract; at least one Read and one Write were expected and used."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g1_dp_q3_1",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g1_dp_q3_1",
+        "seed": 11,
+        "formatter": "set_fill_in_blank",
+        "question_text": "Look at the data: Grade 1: 5, Grade 2: 4, Grade 3: 4, Grade 4: 5. Draw one ⭐ for each item in the picture graph.",
+        "correct_answer": [
+          5,
+          4,
+          4,
+          5
+        ],
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "set_fill_in_blank",
+          "is_visual": true,
+          "visual_type": "BarChart",
+          "interaction_mode": "set",
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "resolved_answer": [
+          5,
+          4,
+          4,
+          5
+        ],
+        "hints": [
+          "Look at the pictograph carefully.",
+          "Each picture stands for 1 item.",
+          "Draw 1 picture for each item in each category."
+        ],
+        "visual_type": "BarChart",
+        "visual_payload": {
+          "categories": [
+            "Grade 1",
+            "Grade 2",
+            "Grade 3",
+            "Grade 4"
+          ],
+          "counts": [
+            5,
+            4,
+            4,
+            5
+          ],
+          "values": [
+            5,
+            4,
+            4,
+            5
+          ],
+          "scale": 1,
+          "symbol": "⭐",
+          "title": "Stars Earned",
+          "subject": "stars earned",
+          "stem_template": "How many stars were earned by {cat}?",
+          "is_read_mode": false,
+          "is_pictograph": true,
+          "max_y": 7
+        },
+        "visual_render": {
+          "visual_type": "BarChart",
+          "renderer_input_digest": "11122bc985f0a21390b0b7f5fbcb9fe292503fd870daedc57e1e46235cdcb502",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "BarChart",
+            "element_count": 62,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 8,
+            "input_count": 0,
+            "text_labels": [
+              "Each symbol = 1. Click to add/remove symbols.",
+              "0",
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6",
+              "7",
+              "−",
+              "+",
+              "Grade 1",
+              "Grade 2",
+              "Grade 3",
+              "Grade 4",
+              "Use +/- buttons to add or remove symbols"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--card-bg)",
+              "hsl(var(--border-color)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "7469716785f7beb427eb",
+        "replay_digest": "3b5d857c91600c9be311f71339c3f35001d2de61d018f3da89e3b4e6b5b49d65"
+      },
+      {
+        "node_id": "mat_g1_dp_q3_1",
+        "seed": 23,
+        "formatter": "set_fill_in_blank",
+        "question_text": "The survey shows: Monday: 1, Tuesday: 1, Wednesday: 5, Thursday: 3. Make a picture graph by drawing one 📖 for each item.",
+        "correct_answer": [
+          1,
+          1,
+          5,
+          3
+        ],
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "set_fill_in_blank",
+          "is_visual": true,
+          "visual_type": "BarChart",
+          "interaction_mode": "set",
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "resolved_answer": [
+          1,
+          1,
+          5,
+          3
+        ],
+        "hints": [
+          "Look at the pictograph carefully.",
+          "Each picture stands for 1 item.",
+          "Draw 1 picture for each item in each category."
+        ],
+        "visual_type": "BarChart",
+        "visual_payload": {
+          "categories": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday"
+          ],
+          "counts": [
+            1,
+            1,
+            5,
+            3
+          ],
+          "values": [
+            1,
+            1,
+            5,
+            3
+          ],
+          "scale": 1,
+          "symbol": "📖",
+          "title": "Books Read",
+          "subject": "books read",
+          "stem_template": "How many books were read on {cat}?",
+          "is_read_mode": false,
+          "is_pictograph": true,
+          "max_y": 7
+        },
+        "visual_render": {
+          "visual_type": "BarChart",
+          "renderer_input_digest": "f0d7e6d82b5fa0ce91be0f38f2e6d7fbbcb16368cf78be8f3e57a78ed5f4b939",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "BarChart",
+            "element_count": 62,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 8,
+            "input_count": 0,
+            "text_labels": [
+              "Each symbol = 1. Click to add/remove symbols.",
+              "0",
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6",
+              "7",
+              "−",
+              "+",
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Use +/- buttons to add or remove symbols"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--card-bg)",
+              "hsl(var(--border-color)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "f5dd5f020317f0043e33",
+        "replay_digest": "158ea02259e30119f3d433e484d9eec1e1f5616cc641edd2b78997c1fdf46323"
+      },
+      {
+        "node_id": "mat_g1_dp_q3_1",
+        "seed": 42,
+        "formatter": "set_fill_in_blank",
+        "question_text": "The survey shows: cats: 1, dogs: 3, birds: 2, fish: 2. Make a picture graph by drawing one 🐾 for each item.",
+        "correct_answer": [
+          1,
+          3,
+          2,
+          2
+        ],
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "set_fill_in_blank",
+          "is_visual": true,
+          "visual_type": "BarChart",
+          "interaction_mode": "set",
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "resolved_answer": [
+          1,
+          3,
+          2,
+          2
+        ],
+        "hints": [
+          "Look at the pictograph carefully.",
+          "Each picture stands for 1 item.",
+          "Draw 1 picture for each item in each category."
+        ],
+        "visual_type": "BarChart",
+        "visual_payload": {
+          "categories": [
+            "cats",
+            "dogs",
+            "birds",
+            "fish"
+          ],
+          "counts": [
+            1,
+            3,
+            2,
+            2
+          ],
+          "values": [
+            1,
+            3,
+            2,
+            2
+          ],
+          "scale": 1,
+          "symbol": "🐾",
+          "title": "Favorite Pets",
+          "subject": "pets",
+          "stem_template": "How many pupils chose {cat}?",
+          "is_read_mode": false,
+          "is_pictograph": true,
+          "max_y": 5
+        },
+        "visual_render": {
+          "visual_type": "BarChart",
+          "renderer_input_digest": "2b909a670261407f77e490652f28aa3f52cf4edb98bac4dfda82bc9f7ee762d6",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "BarChart",
+            "element_count": 58,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 8,
+            "input_count": 0,
+            "text_labels": [
+              "Each symbol = 1. Click to add/remove symbols.",
+              "0",
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "−",
+              "+",
+              "cats",
+              "dogs",
+              "birds",
+              "fish",
+              "Use +/- buttons to add or remove symbols"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--card-bg)",
+              "hsl(var(--border-color)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "ebad6c2311a4905cf7d0",
+        "replay_digest": "e159b0e2365d888beebd4375105a2dcdee7063fa588aa0657f05f43d0a0334a4"
+      },
+      {
+        "node_id": "mat_g1_dp_q3_1",
+        "seed": 57,
+        "formatter": "set_fill_in_blank",
+        "question_text": "Make a picture graph to show: apples: 3, bananas: 5, mangoes: 5, grapes: 1. Draw one 🍎 for each item.",
+        "correct_answer": [
+          3,
+          5,
+          5,
+          1
+        ],
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "set_fill_in_blank",
+          "is_visual": true,
+          "visual_type": "BarChart",
+          "interaction_mode": "set",
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "resolved_answer": [
+          3,
+          5,
+          5,
+          1
+        ],
+        "hints": [
+          "Look at the pictograph carefully.",
+          "Each picture stands for 1 item.",
+          "Draw 1 picture for each item in each category."
+        ],
+        "visual_type": "BarChart",
+        "visual_payload": {
+          "categories": [
+            "apples",
+            "bananas",
+            "mangoes",
+            "grapes"
+          ],
+          "counts": [
+            3,
+            5,
+            5,
+            1
+          ],
+          "values": [
+            3,
+            5,
+            5,
+            1
+          ],
+          "scale": 1,
+          "symbol": "🍎",
+          "title": "Favorite Fruits",
+          "subject": "fruits",
+          "stem_template": "How many {cat} were counted?",
+          "is_read_mode": false,
+          "is_pictograph": true,
+          "max_y": 7
+        },
+        "visual_render": {
+          "visual_type": "BarChart",
+          "renderer_input_digest": "623b6e302dbe5e2f7be8ec8fa339596bffe4481855d5592a8288b5e453ac96de",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "BarChart",
+            "element_count": 62,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 8,
+            "input_count": 0,
+            "text_labels": [
+              "Each symbol = 1. Click to add/remove symbols.",
+              "0",
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6",
+              "7",
+              "−",
+              "+",
+              "apples",
+              "bananas",
+              "mangoes",
+              "grapes",
+              "Use +/- buttons to add or remove symbols"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--card-bg)",
+              "hsl(var(--border-color)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "335a0d73ec3a01a488dc",
+        "replay_digest": "7027becd69752c090659785889a347b87170933b7f70f73ac3d882609493e756"
+      },
+      {
+        "node_id": "mat_g1_dp_q3_1",
+        "seed": 64,
+        "formatter": "set_fill_in_blank",
+        "question_text": "Complete the picture graph for Grade 1: 1, Grade 2: 5, Grade 3: 4, Grade 4: 5. Draw one ⭐ for each item.",
+        "correct_answer": [
+          1,
+          5,
+          4,
+          5
+        ],
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "set_fill_in_blank",
+          "is_visual": true,
+          "visual_type": "BarChart",
+          "interaction_mode": "set",
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "resolved_answer": [
+          1,
+          5,
+          4,
+          5
+        ],
+        "hints": [
+          "Look at the pictograph carefully.",
+          "Each picture stands for 1 item.",
+          "Draw 1 picture for each item in each category."
+        ],
+        "visual_type": "BarChart",
+        "visual_payload": {
+          "categories": [
+            "Grade 1",
+            "Grade 2",
+            "Grade 3",
+            "Grade 4"
+          ],
+          "counts": [
+            1,
+            5,
+            4,
+            5
+          ],
+          "values": [
+            1,
+            5,
+            4,
+            5
+          ],
+          "scale": 1,
+          "symbol": "⭐",
+          "title": "Stars Earned",
+          "subject": "stars earned",
+          "stem_template": "How many stars were earned by {cat}?",
+          "is_read_mode": false,
+          "is_pictograph": true,
+          "max_y": 7
+        },
+        "visual_render": {
+          "visual_type": "BarChart",
+          "renderer_input_digest": "fc6b33ba840877f12bb52a7ea355010c72940ed125b5b0393ed71ddad624eec6",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "BarChart",
+            "element_count": 62,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 8,
+            "input_count": 0,
+            "text_labels": [
+              "Each symbol = 1. Click to add/remove symbols.",
+              "0",
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6",
+              "7",
+              "−",
+              "+",
+              "Grade 1",
+              "Grade 2",
+              "Grade 3",
+              "Grade 4",
+              "Use +/- buttons to add or remove symbols"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--card-bg)",
+              "hsl(var(--border-color)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "7bcafc5c8f76aa188087",
+        "replay_digest": "b654f9b5c90701361e76538bb2f196e7e9079a4d1998324df2a7ab83e82494f1"
+      },
+      {
+        "node_id": "mat_g1_dp_q3_1",
+        "seed": 78,
+        "formatter": "set_fill_in_blank",
+        "question_text": "The survey shows: Math: 1, Science: 3, English: 3, Art: 4. Make a picture graph by drawing one 📚 for each item.",
+        "correct_answer": [
+          1,
+          3,
+          3,
+          4
+        ],
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "set_fill_in_blank",
+          "is_visual": true,
+          "visual_type": "BarChart",
+          "interaction_mode": "set",
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "resolved_answer": [
+          1,
+          3,
+          3,
+          4
+        ],
+        "hints": [
+          "Look at the pictograph carefully.",
+          "Each picture stands for 1 item.",
+          "Draw 1 picture for each item in each category."
+        ],
+        "visual_type": "BarChart",
+        "visual_payload": {
+          "categories": [
+            "Math",
+            "Science",
+            "English",
+            "Art"
+          ],
+          "counts": [
+            1,
+            3,
+            3,
+            4
+          ],
+          "values": [
+            1,
+            3,
+            3,
+            4
+          ],
+          "scale": 1,
+          "symbol": "📚",
+          "title": "Favorite Subjects",
+          "subject": "subjects",
+          "stem_template": "How many pupils voted for {cat}?",
+          "is_read_mode": false,
+          "is_pictograph": true,
+          "max_y": 6
+        },
+        "visual_render": {
+          "visual_type": "BarChart",
+          "renderer_input_digest": "775767df6127d27968b04a8f28cb7d4f473c276773d4aa352c5c5c3657417588",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "BarChart",
+            "element_count": 60,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 8,
+            "input_count": 0,
+            "text_labels": [
+              "Each symbol = 1. Click to add/remove symbols.",
+              "0",
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6",
+              "−",
+              "+",
+              "Math",
+              "Science",
+              "English",
+              "Art",
+              "Use +/- buttons to add or remove symbols"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--card-bg)",
+              "hsl(var(--border-color)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "f36ae14a7a890736b862",
+        "replay_digest": "e82a9db16eab6b705a22c9f7d11273e57e4d7f674c0611e7151faecb3451a1dc"
+      },
+      {
+        "node_id": "mat_g1_dp_q3_1",
+        "seed": 91,
+        "formatter": "set_fill_in_blank",
+        "question_text": "Look at the data: cats: 5, dogs: 2, birds: 2, fish: 4. Draw one 🐾 for each item in the picture graph.",
+        "correct_answer": [
+          5,
+          2,
+          2,
+          4
+        ],
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "set_fill_in_blank",
+          "is_visual": true,
+          "visual_type": "BarChart",
+          "interaction_mode": "set",
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "resolved_answer": [
+          5,
+          2,
+          2,
+          4
+        ],
+        "hints": [
+          "Look at the pictograph carefully.",
+          "Each picture stands for 1 item.",
+          "Draw 1 picture for each item in each category."
+        ],
+        "visual_type": "BarChart",
+        "visual_payload": {
+          "categories": [
+            "cats",
+            "dogs",
+            "birds",
+            "fish"
+          ],
+          "counts": [
+            5,
+            2,
+            2,
+            4
+          ],
+          "values": [
+            5,
+            2,
+            2,
+            4
+          ],
+          "scale": 1,
+          "symbol": "🐾",
+          "title": "Favorite Pets",
+          "subject": "pets",
+          "stem_template": "How many pupils chose {cat}?",
+          "is_read_mode": false,
+          "is_pictograph": true,
+          "max_y": 7
+        },
+        "visual_render": {
+          "visual_type": "BarChart",
+          "renderer_input_digest": "efccdb24b42fe46728359fd5794d478000d52c5d87871c4b40496f0491a3130d",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "BarChart",
+            "element_count": 62,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 8,
+            "input_count": 0,
+            "text_labels": [
+              "Each symbol = 1. Click to add/remove symbols.",
+              "0",
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6",
+              "7",
+              "−",
+              "+",
+              "cats",
+              "dogs",
+              "birds",
+              "fish",
+              "Use +/- buttons to add or remove symbols"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--card-bg)",
+              "hsl(var(--border-color)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "f33c37a3d54ddeb71f27",
+        "replay_digest": "b11ac22d12686906c74d706abd52760a71a294a9fced755cc961133cf532bf70"
+      },
+      {
+        "node_id": "mat_g1_dp_q3_1",
+        "seed": 103,
+        "formatter": "set_fill_in_blank",
+        "question_text": "Make a picture graph to show: Grade 1: 2, Grade 2: 1, Grade 3: 5, Grade 4: 1. Draw one ⭐ for each item.",
+        "correct_answer": [
+          2,
+          1,
+          5,
+          1
+        ],
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "set_fill_in_blank",
+          "is_visual": true,
+          "visual_type": "BarChart",
+          "interaction_mode": "set",
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "resolved_answer": [
+          2,
+          1,
+          5,
+          1
+        ],
+        "hints": [
+          "Look at the pictograph carefully.",
+          "Each picture stands for 1 item.",
+          "Draw 1 picture for each item in each category."
+        ],
+        "visual_type": "BarChart",
+        "visual_payload": {
+          "categories": [
+            "Grade 1",
+            "Grade 2",
+            "Grade 3",
+            "Grade 4"
+          ],
+          "counts": [
+            2,
+            1,
+            5,
+            1
+          ],
+          "values": [
+            2,
+            1,
+            5,
+            1
+          ],
+          "scale": 1,
+          "symbol": "⭐",
+          "title": "Stars Earned",
+          "subject": "stars earned",
+          "stem_template": "How many stars were earned by {cat}?",
+          "is_read_mode": false,
+          "is_pictograph": true,
+          "max_y": 7
+        },
+        "visual_render": {
+          "visual_type": "BarChart",
+          "renderer_input_digest": "b7ab3b7e019504162a6e4c50eab466cf3e1a436a80e2451b3ac98e1392d19ffa",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "BarChart",
+            "element_count": 62,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 8,
+            "input_count": 0,
+            "text_labels": [
+              "Each symbol = 1. Click to add/remove symbols.",
+              "0",
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6",
+              "7",
+              "−",
+              "+",
+              "Grade 1",
+              "Grade 2",
+              "Grade 3",
+              "Grade 4",
+              "Use +/- buttons to add or remove symbols"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--card-bg)",
+              "hsl(var(--border-color)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "91732ac28578d9e59478",
+        "replay_digest": "00d781f63f9d123d5717972d542398c4d39aab1c3698082b052f16e2d9765ac9"
+      },
+      {
+        "node_id": "mat_g1_dp_q3_1",
+        "seed": 118,
+        "formatter": "set_fill_in_blank",
+        "question_text": "The survey shows: red: 3, blue: 1, green: 3, yellow: 3. Make a picture graph by drawing one 🎨 for each item.",
+        "correct_answer": [
+          3,
+          1,
+          3,
+          3
+        ],
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "set_fill_in_blank",
+          "is_visual": true,
+          "visual_type": "BarChart",
+          "interaction_mode": "set",
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "resolved_answer": [
+          3,
+          1,
+          3,
+          3
+        ],
+        "hints": [
+          "Look at the pictograph carefully.",
+          "Each picture stands for 1 item.",
+          "Draw 1 picture for each item in each category."
+        ],
+        "visual_type": "BarChart",
+        "visual_payload": {
+          "categories": [
+            "red",
+            "blue",
+            "green",
+            "yellow"
+          ],
+          "counts": [
+            3,
+            1,
+            3,
+            3
+          ],
+          "values": [
+            3,
+            1,
+            3,
+            3
+          ],
+          "scale": 1,
+          "symbol": "🎨",
+          "title": "Favorite Colors",
+          "subject": "colors",
+          "stem_template": "How many pupils chose {cat}?",
+          "is_read_mode": false,
+          "is_pictograph": true,
+          "max_y": 5
+        },
+        "visual_render": {
+          "visual_type": "BarChart",
+          "renderer_input_digest": "17f79e4c5dadb9e82a1be854c446909bbdae27a0302c1d8fcd99cc72202e2ec0",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "BarChart",
+            "element_count": 58,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 8,
+            "input_count": 0,
+            "text_labels": [
+              "Each symbol = 1. Click to add/remove symbols.",
+              "0",
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "−",
+              "+",
+              "red",
+              "blue",
+              "green",
+              "yellow",
+              "Use +/- buttons to add or remove symbols"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--card-bg)",
+              "hsl(var(--border-color)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "7f0b68ce0a251caca4dd",
+        "replay_digest": "0397d3f9aac9d94daa5dd7bc8df165d9a5c8d8de59024506115000767ff80bd2"
+      },
+      {
+        "node_id": "mat_g1_dp_q3_1",
+        "seed": 127,
+        "formatter": "set_fill_in_blank",
+        "question_text": "Make a picture graph to show: apples: 5, bananas: 5, mangoes: 5, grapes: 1. Draw one 🍎 for each item.",
+        "correct_answer": [
+          5,
+          5,
+          5,
+          1
+        ],
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "set_fill_in_blank",
+          "is_visual": true,
+          "visual_type": "BarChart",
+          "interaction_mode": "set",
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "resolved_answer": [
+          5,
+          5,
+          5,
+          1
+        ],
+        "hints": [
+          "Look at the pictograph carefully.",
+          "Each picture stands for 1 item.",
+          "Draw 1 picture for each item in each category."
+        ],
+        "visual_type": "BarChart",
+        "visual_payload": {
+          "categories": [
+            "apples",
+            "bananas",
+            "mangoes",
+            "grapes"
+          ],
+          "counts": [
+            5,
+            5,
+            5,
+            1
+          ],
+          "values": [
+            5,
+            5,
+            5,
+            1
+          ],
+          "scale": 1,
+          "symbol": "🍎",
+          "title": "Favorite Fruits",
+          "subject": "fruits",
+          "stem_template": "How many {cat} were counted?",
+          "is_read_mode": false,
+          "is_pictograph": true,
+          "max_y": 7
+        },
+        "visual_render": {
+          "visual_type": "BarChart",
+          "renderer_input_digest": "2e4155c1cd319b20aa6d5740995904718095b21f71366ddd608d35212932b0d5",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "BarChart",
+            "element_count": 62,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 8,
+            "input_count": 0,
+            "text_labels": [
+              "Each symbol = 1. Click to add/remove symbols.",
+              "0",
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6",
+              "7",
+              "−",
+              "+",
+              "apples",
+              "bananas",
+              "mangoes",
+              "grapes",
+              "Use +/- buttons to add or remove symbols"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--card-bg)",
+              "hsl(var(--border-color)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "a8120ab53c88f6fee3f6",
+        "replay_digest": "0da689068f0059d7b8c85c1775423c324c4fb03735ae29735f934b0cd58a2680"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "present_data",
+      "node_id": "mat_g1_dp_q3_1",
+      "clause": "Present data",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All samples ask learners to present data visually. Stems explicitly instruct 'Draw one [symbol] for each item in the picture graph' or 'Make a picture graph by drawing...' The BarChart visuals render the pictographs learners are constructing from data.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "pictograph",
+      "node_id": "mat_g1_dp_q3_1",
+      "clause": "pictograph",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Every sample renders a pictograph using BarChart visual type. The pictographs use emoji and symbol representations (⭐, 📖, 🐾, 🍎, 📚, 🎨) with one symbol per data unit, which is the defining feature of a pictograph format across all ten seeds.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "without_scale",
+      "node_id": "mat_g1_dp_q3_1",
+      "clause": "without a scale",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All samples explicitly state in text_labels 'Each symbol = 1' with no indication of a multi-unit scale (such as 'each symbol = 2' or 'each symbol = 5'). The pictographs operate without scale, representing exactly one data unit per symbol throughout all ten seeds.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    }
+  ],
+  "supersedes": "Replaces batch027_mat_g1_dp_q3_1, which §6F reported as unusable evidence (stale stem/answer, or a record that carries no options or no render-derived visual for content that renders one). The predecessor is left on disk; supersession is earned by this record, not declared by it."
+}

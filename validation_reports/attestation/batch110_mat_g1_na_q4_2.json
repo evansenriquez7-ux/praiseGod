@@ -1,0 +1,645 @@
+{
+  "batch": "batch110_mat_g1_na_q4_2",
+  "attested_at": "2026-09-21T00:00:00Z",
+  "attested_by": "blind-attester-haiku45-d31-20260922",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "the Attester was told to read exactly local_only/scratch/attester/h06/d31.prompt.txt, which is attester_packets.render_prompt_block output (item id, clause, competency, grade/quarter and the rendered samples only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "prompt-contract dispatch to a separate agent: told to read exactly one packet render and no other path, and to write its verdict JSON. Tool access was NOT structurally prevented, so this does not claim the '0' (inline, no tool access) contract; at least one Read and one Write were expected and used."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g1_na_q4_2",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g1_na_q4_2",
+        "seed": 11,
+        "formatter": "mcq",
+        "question_text": "What fraction is missing when counting by quarters: 1/4, 2/4, ___, 4/4?",
+        "correct_answer": "3/4",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "2/4",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "1/4",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "3/4",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "4/4",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "3/4",
+        "hints": [
+          "When adding fractions with the same bottom number, keep the bottom number the same.",
+          "Add only the top numbers: 3 + 0 = 3.",
+          "Write the result over the same bottom number: 3/4.",
+          "The answer is 3/4."
+        ],
+        "sample_id": "3585c4d770747156d1ac",
+        "replay_digest": "e6b6546d9c843dfae00eaba246ea50d88e1c3027f22ab8272a3fac12691eed0a"
+      },
+      {
+        "node_id": "mat_g1_na_q4_2",
+        "seed": 23,
+        "formatter": "cloze",
+        "question_text": "What comes next when counting by quarters: 1/4, 2/4, 3/4, ___?",
+        "correct_answer": "4/4",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "4/4",
+            "text": "4/4",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "4/2",
+            "text": "4/2",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "3/4",
+            "text": "3/4",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "5/4",
+            "text": "5/4",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "4/4",
+        "hints": [
+          "When adding fractions with the same bottom number, keep the bottom number the same.",
+          "Add only the top numbers: 4 + 0 = 4.",
+          "Write the result over the same bottom number: 4/4.",
+          "The answer is 4/4."
+        ],
+        "sample_id": "6c4daaefaee1cc6bf21d",
+        "replay_digest": "77d21c96f02938a82ddaea8bbd9131c45fb9299e79564fcd8acdea999e41eb4d"
+      },
+      {
+        "node_id": "mat_g1_na_q4_2",
+        "seed": 42,
+        "formatter": "cloze",
+        "question_text": "What comes next when counting by halves: 1/2, ___?",
+        "correct_answer": "2/2",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "2/4",
+            "text": "2/4",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "1/2",
+            "text": "1/2",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "3/2",
+            "text": "3/2",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "2/2",
+            "text": "2/2",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "2/2",
+        "hints": [
+          "When adding fractions with the same bottom number, keep the bottom number the same.",
+          "Add only the top numbers: 2 + 0 = 2.",
+          "Write the result over the same bottom number: 2/2.",
+          "The answer is 2/2."
+        ],
+        "sample_id": "df0a4314b8dec61b335e",
+        "replay_digest": "be19cebc12b89831a32e8c840df4c9fd369a7e7c791a6e94dfb009a15246a78d"
+      },
+      {
+        "node_id": "mat_g1_na_q4_2",
+        "seed": 57,
+        "formatter": "mcq",
+        "question_text": "Count by halves: 1/2, ___. What fraction comes next?",
+        "correct_answer": "2/2",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "1/2",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "2/2",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "2/4",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "3/2",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "2/2",
+        "hints": [
+          "When adding fractions with the same bottom number, keep the bottom number the same.",
+          "Add only the top numbers: 2 + 0 = 2.",
+          "Write the result over the same bottom number: 2/2.",
+          "The answer is 2/2."
+        ],
+        "sample_id": "925e917acbec448f8c65",
+        "replay_digest": "bf08f7cc2968fdc87eef9c22668eed7c13ea894cc1add8be560eafb17b6e62c7"
+      },
+      {
+        "node_id": "mat_g1_na_q4_2",
+        "seed": 64,
+        "formatter": "cloze",
+        "question_text": "What is the next fraction in the pattern: 1/4, 2/4, 3/4, ___?",
+        "correct_answer": "4/4",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "5/4",
+            "text": "5/4",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "3/4",
+            "text": "3/4",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "4/4",
+            "text": "4/4",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "4/2",
+            "text": "4/2",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "4/4",
+        "hints": [
+          "When adding fractions with the same bottom number, keep the bottom number the same.",
+          "Add only the top numbers: 4 + 0 = 4.",
+          "Write the result over the same bottom number: 4/4.",
+          "The answer is 4/4."
+        ],
+        "sample_id": "0f601acaa3e933f27c8b",
+        "replay_digest": "407dc6ee0b7025895af96b2f3f4c53f7270a22922ac11647734497f60efa3ac0"
+      },
+      {
+        "node_id": "mat_g1_na_q4_2",
+        "seed": 78,
+        "formatter": "cloze",
+        "question_text": "What comes next when counting by halves: 1/2, ___?",
+        "correct_answer": "2/2",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "2/2",
+            "text": "2/2",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "3/2",
+            "text": "3/2",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "1/2",
+            "text": "1/2",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "2/4",
+            "text": "2/4",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "2/2",
+        "hints": [
+          "When adding fractions with the same bottom number, keep the bottom number the same.",
+          "Add only the top numbers: 2 + 0 = 2.",
+          "Write the result over the same bottom number: 2/2.",
+          "The answer is 2/2."
+        ],
+        "sample_id": "486da378d457f2c1c06d",
+        "replay_digest": "015a591584fda55fdd8d88aa560081bad8df8289098c76c19d511454113b8665"
+      },
+      {
+        "node_id": "mat_g1_na_q4_2",
+        "seed": 91,
+        "formatter": "cloze",
+        "question_text": "What is the next fraction in the pattern: 1/2, ___?",
+        "correct_answer": "2/2",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "1/2",
+            "text": "1/2",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "2/2",
+            "text": "2/2",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "3/2",
+            "text": "3/2",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "2/4",
+            "text": "2/4",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "2/2",
+        "hints": [
+          "When adding fractions with the same bottom number, keep the bottom number the same.",
+          "Add only the top numbers: 2 + 0 = 2.",
+          "Write the result over the same bottom number: 2/2.",
+          "The answer is 2/2."
+        ],
+        "sample_id": "dfff46b88541585aacd7",
+        "replay_digest": "916aebb692de1612b7421ace416bd18aa794a95ee839580eb4a0e59220fb1ef7"
+      },
+      {
+        "node_id": "mat_g1_na_q4_2",
+        "seed": 103,
+        "formatter": "cloze",
+        "question_text": "What fraction is missing when counting by quarters: 1/4, ___, 3/4, 4/4?",
+        "correct_answer": "2/4",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "2/4",
+            "text": "2/4",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "3/4",
+            "text": "3/4",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "4/4",
+            "text": "4/4",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "1/4",
+            "text": "1/4",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "2/4",
+        "hints": [
+          "When adding fractions with the same bottom number, keep the bottom number the same.",
+          "Add only the top numbers: 2 + 0 = 2.",
+          "Write the result over the same bottom number: 2/4.",
+          "The answer is 2/4."
+        ],
+        "sample_id": "8f689c9c1fc448e5991d",
+        "replay_digest": "163d0ea5a1b04ce4c8b610c46331129d3313f75979e8436ea0e706e34e0a3e0c"
+      },
+      {
+        "node_id": "mat_g1_na_q4_2",
+        "seed": 118,
+        "formatter": "mcq",
+        "question_text": "Count by halves: 1/2, ___. What fraction comes next?",
+        "correct_answer": "2/2",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "1/2",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "3/2",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "2/2",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "2/4",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "2/2",
+        "hints": [
+          "When adding fractions with the same bottom number, keep the bottom number the same.",
+          "Add only the top numbers: 2 + 0 = 2.",
+          "Write the result over the same bottom number: 2/2.",
+          "The answer is 2/2."
+        ],
+        "sample_id": "cb8a9f17d51b04535209",
+        "replay_digest": "4e87304859e1ae3384859ae50b4f0699033e685a1b4a8d8112125125acc771d7"
+      },
+      {
+        "node_id": "mat_g1_na_q4_2",
+        "seed": 127,
+        "formatter": "cloze",
+        "question_text": "What is the next fraction in the pattern: 1/2, ___?",
+        "correct_answer": "2/2",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "3/2",
+            "text": "3/2",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "2/2",
+            "text": "2/2",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "1/2",
+            "text": "1/2",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "2/4",
+            "text": "2/4",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "2/2",
+        "hints": [
+          "When adding fractions with the same bottom number, keep the bottom number the same.",
+          "Add only the top numbers: 2 + 0 = 2.",
+          "Write the result over the same bottom number: 2/2.",
+          "The answer is 2/2."
+        ],
+        "sample_id": "6915b37645fe8d78ec80",
+        "replay_digest": "a6e1674e85071aac56bb4d39bd1e2767746745db115f6fdb25cc27826a4ddc4d"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "count",
+      "node_id": "mat_g1_na_q4_2",
+      "clause": "Count",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "The samples present sequences of fractions where learners identify the next term or missing term by recognizing the counting pattern. Questions explicitly use the verb count or ask what comes next in a sequence following a regular rule.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "halves",
+      "node_id": "mat_g1_na_q4_2",
+      "clause": "halves",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        57,
+        78,
+        91,
+        118,
+        127
+      ],
+      "reasoning": "Multiple samples exhibit counting by halves: seed 42 asks 'What comes next when counting by halves: 1/2, ___?', seed 57 states 'Count by halves: 1/2, ___', and seeds 78, 91, 118, 127 follow the same pattern with halves as the unit fraction.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "quarters",
+      "node_id": "mat_g1_na_q4_2",
+      "clause": "quarters",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        64,
+        103
+      ],
+      "reasoning": "Four samples explicitly involve quarters. Seed 11 asks about the missing quarter in the sequence 1/4, 2/4, ___, 4/4. Seeds 23 and 64 present the pattern 1/4, 2/4, 3/4, ___. Seed 103 asks for the missing quarter in 1/4, ___, 3/4, 4/4.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    }
+  ],
+  "supersedes": "Replaces batch026B04_mat_g1_na_q4_2, which §6F reported as unusable evidence (stale stem/answer, or a record that carries no options or no render-derived visual for content that renders one). The predecessor is left on disk; supersession is earned by this record, not declared by it."
+}

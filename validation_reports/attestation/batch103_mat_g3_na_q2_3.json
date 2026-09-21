@@ -1,0 +1,574 @@
+{
+  "batch": "batch103_mat_g3_na_q2_3",
+  "attested_at": "2026-09-21T00:00:00Z",
+  "attested_by": "blind-attester-haiku45-d24-20260922",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "the Attester was told to read exactly local_only/scratch/attester/h06/d24.prompt.txt, which is attester_packets.render_prompt_block output (item id, clause, competency, grade/quarter and the rendered samples only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "prompt-contract dispatch to a separate agent: told to read exactly one packet render and no other path, and to write its verdict JSON. Tool access was NOT structurally prevented, so this does not claim the '0' (inline, no tool access) contract; at least one Read and one Write were expected and used."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g3_na_q2_3",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g3_na_q2_3",
+        "seed": 11,
+        "formatter": "true_false",
+        "question_text": "Tessie has ₱7770 in one pocket and ₱1725 in another pocket. How much money does Tessie have in total? The answer is 9495. True or False?",
+        "correct_answer": true,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "true_false",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "true_false",
+          "experience": "standard"
+        },
+        "resolved_answer": true,
+        "hints": [
+          "We are adding two numbers: 7770 and 1725.",
+          "Add the ones: 0 + 5 = 5. Write 5 in the ones place.",
+          "Add the tens: 7 + 2 = 9.",
+          "The sum is 7770 + 1725 = 9495."
+        ],
+        "sample_id": "b112787d38fe79f24343",
+        "replay_digest": "cef4f4a3cb745f9ca84581a257e95eff589f28db0d4b4b3dcd0c03cb51c914f2"
+      },
+      {
+        "node_id": "mat_g3_na_q2_3",
+        "seed": 23,
+        "formatter": "cloze",
+        "question_text": "Marco had 4202 sneakers. Then Marco got 3971 more. How many sneakers does Marco have now?",
+        "correct_answer": 8173,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 231,
+            "text": "231",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 8183,
+            "text": "8183",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 8172,
+            "text": "8172",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 8173,
+            "text": "8173",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 8173,
+        "hints": [
+          "We are adding two numbers: 4202 and 3971.",
+          "Add the ones: 2 + 1 = 3. Write 3 in the ones place.",
+          "Add the tens: 0 + 7 = 7.",
+          "The sum is 4202 + 3971 = 8173."
+        ],
+        "sample_id": "c62e52d192388a6a856a",
+        "replay_digest": "71e5f5191e981706c3a7f1a10f99350fe66d8f97a6e3b6ffddda063a4dc70bb5"
+      },
+      {
+        "node_id": "mat_g3_na_q2_3",
+        "seed": 42,
+        "formatter": "mcq",
+        "question_text": "One basket has 1086 costumes. Another basket has 2067 costumes. If you put all the costumes together, how many costumes are there?",
+        "correct_answer": 3153,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 3153,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 3163,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 3154,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 3152,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 3153,
+        "hints": [
+          "We are adding two numbers: 1086 and 2067.",
+          "Add the ones: 6 + 7 = 13. Write 3 in the ones place and carry over 1 ten.",
+          "Add the tens: 8 + 6 + 1 (carried) = 15.",
+          "The sum is 1086 + 2067 = 3153."
+        ],
+        "sample_id": "76746e9501193b85f467",
+        "replay_digest": "3c39b6aa55e501627efb1ef76b3e97521986768abf07656a0981efd25afd8f8d"
+      },
+      {
+        "node_id": "mat_g3_na_q2_3",
+        "seed": 57,
+        "formatter": "error_detect",
+        "question_text": "Pia solved this problem: \"Arnel had ₱8180 and received ₱1615 more from Nanay. How much money does Arnel have in all?\" Pia says the answer is 9795. Is Pia correct?",
+        "correct_answer": {
+          "has_error": false,
+          "correct_value": 9795
+        },
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "error_detect",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "error_detect",
+          "experience": "standard"
+        },
+        "resolved_answer": {
+          "has_error": false,
+          "correct_value": 9795
+        },
+        "hints": [
+          "We are adding two numbers: 8180 and 1615.",
+          "Add the ones: 0 + 5 = 5. Write 5 in the ones place.",
+          "Add the tens: 8 + 1 = 9.",
+          "The sum is 8180 + 1615 = 9795."
+        ],
+        "sample_id": "2f79a866a51b17bb52b1",
+        "replay_digest": "ea17a3b5dc963c4f4ad707b03879bf79d9cd978d1c0770cde361bb14f7658865"
+      },
+      {
+        "node_id": "mat_g3_na_q2_3",
+        "seed": 64,
+        "formatter": "cloze",
+        "question_text": "Boboy has ₱2590 in one pocket and ₱140 in another pocket. How much money does Boboy have in total?",
+        "correct_answer": 2730,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 2730,
+            "text": "2730",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 2450,
+            "text": "2450",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 2740,
+            "text": "2740",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 2729,
+            "text": "2729",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 2730,
+        "hints": [
+          "We are adding two numbers: 2590 and 140.",
+          "Add the ones: 0 + 0 = 0. Write 0 in the ones place.",
+          "Add the tens: 9 + 4 = 13.",
+          "The sum is 2590 + 140 = 2730."
+        ],
+        "sample_id": "a4055a842fb42bbad13e",
+        "replay_digest": "5b7b592eddb95c00c7bc704e383701d593f11daa36c2ebd8c428e4804f8dcc9d"
+      },
+      {
+        "node_id": "mat_g3_na_q2_3",
+        "seed": 78,
+        "formatter": "mcq",
+        "question_text": "One basket has 5242 ribbons. Another basket has 1534 ribbons. If you put all the ribbons together, how many ribbons are there?",
+        "correct_answer": 6776,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 6776,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 6786,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 6775,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 3708,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 6776,
+        "hints": [
+          "We are adding two numbers: 5242 and 1534.",
+          "Add the ones: 2 + 4 = 6. Write 6 in the ones place.",
+          "Add the tens: 4 + 3 = 7.",
+          "The sum is 5242 + 1534 = 6776."
+        ],
+        "sample_id": "67a134f2bedf35226a4a",
+        "replay_digest": "0f6359188dd4c40185a0c4d76ee3d305d9f077273e0c572ac43152d5933fb5e5"
+      },
+      {
+        "node_id": "mat_g3_na_q2_3",
+        "seed": 91,
+        "formatter": "error_detect",
+        "question_text": "Grace solved this problem: \"Coach Nora bought a pencil for ₱5521 and an eraser for ₱2405. How much did Coach Nora spend in all?\" Grace says the answer is 7926. Is Grace correct?",
+        "correct_answer": {
+          "has_error": false,
+          "correct_value": 7926
+        },
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "error_detect",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "error_detect",
+          "experience": "standard"
+        },
+        "resolved_answer": {
+          "has_error": false,
+          "correct_value": 7926
+        },
+        "hints": [
+          "We are adding two numbers: 5521 and 2405.",
+          "Add the ones: 1 + 5 = 6. Write 6 in the ones place.",
+          "Add the tens: 2 + 0 = 2.",
+          "The sum is 5521 + 2405 = 7926."
+        ],
+        "sample_id": "d3654cd1a74d4f7cb76e",
+        "replay_digest": "9bdc21937834fc312b73642ab7f7e50fbf3c37f8bf3dcd4dbc03d375eecf2e2a"
+      },
+      {
+        "node_id": "mat_g3_na_q2_3",
+        "seed": 103,
+        "formatter": "error_detect",
+        "question_text": "Grace solved this problem: \"There are 4619 jump ropes in one basket and 1767 jump ropes in another basket. How many jump ropes are there in all?\" Grace says the answer is 4619. Is Grace correct?",
+        "correct_answer": {
+          "has_error": true,
+          "correct_value": 6386
+        },
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "error_detect",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "error_detect",
+          "experience": "standard"
+        },
+        "resolved_answer": {
+          "has_error": true,
+          "correct_value": 6386
+        },
+        "hints": [
+          "We are adding two numbers: 4619 and 1767.",
+          "Add the ones: 9 + 7 = 16. Write 6 in the ones place and carry over 1 ten.",
+          "Add the tens: 1 + 6 + 1 (carried) = 8.",
+          "The sum is 4619 + 1767 = 6386."
+        ],
+        "sample_id": "89a05c23cf16562479d4",
+        "replay_digest": "699882050f9495c9b48665b898d0ba49cb72711d7af704bbce772e1193ef0162"
+      },
+      {
+        "node_id": "mat_g3_na_q2_3",
+        "seed": 118,
+        "formatter": "mcq",
+        "question_text": "Ate Gab has 2121 ribbons. A friend has 1959 ribbons. If they put all their ribbons together, how many ribbons do they have in all?",
+        "correct_answer": 4080,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 4079,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 4080,
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 162,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 4090,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 4080,
+        "hints": [
+          "We are adding two numbers: 2121 and 1959.",
+          "Add the ones: 1 + 9 = 10. Write 0 in the ones place and carry over 1 ten.",
+          "Add the tens: 2 + 5 + 1 (carried) = 8.",
+          "The sum is 2121 + 1959 = 4080."
+        ],
+        "sample_id": "71d2a89e6c06cc562589",
+        "replay_digest": "76f993626520c1edc2becf718bbf58e52b1c821bad7cf2a8830a2ac94fcccd99"
+      },
+      {
+        "node_id": "mat_g3_na_q2_3",
+        "seed": 127,
+        "formatter": "cloze",
+        "question_text": "David had ₱6182 and received ₱1716 more from Nanay. How much money does David have in all?",
+        "correct_answer": 7898,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 4466,
+            "text": "4466",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 7897,
+            "text": "7897",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 7898,
+            "text": "7898",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 7908,
+            "text": "7908",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 7898,
+        "hints": [
+          "We are adding two numbers: 6182 and 1716.",
+          "Add the ones: 2 + 6 = 8. Write 8 in the ones place.",
+          "Add the tens: 8 + 1 = 9.",
+          "The sum is 6182 + 1716 = 7898."
+        ],
+        "sample_id": "66336d76c187bfa60e17",
+        "replay_digest": "9cabfdaff20a34d576dcd0791d4b77df4e6e947fb93661c1a735d98cab3b7edd"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "solve_problems",
+      "node_id": "mat_g3_na_q2_3",
+      "clause": "Solve problems",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        42,
+        57
+      ],
+      "reasoning": "Each sample presents a word problem requiring solution. Seed 11 asks 'How much money does Tessie have in total?' with a verification task, seed 42 asks 'How many sneakers does Marco have now?' requiring calculation, and seed 57 asks whether a solution is correct, all framing mathematics as problem-solving.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "addition",
+      "node_id": "mat_g3_na_q2_3",
+      "clause": "addition",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        78
+      ],
+      "reasoning": "Addition is the operation in every sample. Seed 11 combines pocket amounts, seed 23 adds existing sneakers to new ones ('got 3971 more'), and seed 78 puts ribbon baskets together, consistently using addition to combine quantities.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "numbers",
+      "node_id": "mat_g3_na_q2_3",
+      "clause": "numbers",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        42,
+        91
+      ],
+      "reasoning": "Numbers are the central element in all samples. Seed 11 adds 7770 and 1725, seed 42 combines 1086 and 2067 costumes, and seed 91 works with 5521 and 2405 pesos, treating numbers as the operands of each addition problem.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "sums_up_to_10000",
+      "node_id": "mat_g3_na_q2_3",
+      "clause": "sums up to 10 000",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        64,
+        127
+      ],
+      "reasoning": "All computed sums remain within 10,000. Seed 11's answer is 9495, seed 64 yields 2730, and seed 127 totals 7898, all staying below the specified ceiling of 10,000.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "problems_involving_money",
+      "node_id": "mat_g3_na_q2_3",
+      "clause": "problems involving money",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        57,
+        91
+      ],
+      "reasoning": "Multiple samples explicitly involve money using peso currency. Seed 11 asks about money in pockets, seed 57 involves money received from Nanay, and seed 91 deals with Coach Nora's spending in pesos, embedding financial contexts throughout.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    }
+  ],
+  "supersedes": "Replaces batch026B13_mat_g3_na_q2_3, which §6F reported as unusable evidence (stale stem/answer, or a record that carries no options or no render-derived visual for content that renders one). The predecessor is left on disk; supersession is earned by this record, not declared by it."
+}

@@ -1,0 +1,958 @@
+{
+  "batch": "batch105_mat_g1_na_q4_1",
+  "attested_at": "2026-09-21T00:00:00Z",
+  "attested_by": "blind-attester-haiku45-d26-20260922",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "the Attester was told to read exactly local_only/scratch/attester/h06/d26.prompt.txt, which is attester_packets.render_prompt_block output (item id, clause, competency, grade/quarter and the rendered samples only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "prompt-contract dispatch to a separate agent: told to read exactly one packet render and no other path, and to write its verdict JSON. Tool access was NOT structurally prevented, so this does not claim the '0' (inline, no tool access) contract; at least one Read and one Write were expected and used."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g1_na_q4_1",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g1_na_q4_1",
+        "seed": 11,
+        "formatter": "read_mcq",
+        "question_text": "Look at the fraction models for \\(\\frac{1}{4}\\) and \\(\\frac{1}{2}\\). Which comparison sign is correct: \\(\\frac{1}{4}\\) ___ \\(\\frac{1}{2}\\)?",
+        "correct_answer": "C",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "FractionModel",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": ">",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "+",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "<",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "=",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "<",
+        "hints": [
+          "To compare 1/4 and 1/2, check if the bottom numbers are equal.",
+          "When bottom numbers are the same, the fraction with the bigger top number is larger.",
+          "1 vs 1: the larger top number gives the larger fraction."
+        ],
+        "visual_type": "FractionModel",
+        "visual_payload": {
+          "model_type": "area",
+          "numerator": 1,
+          "denominator": 4,
+          "total_parts": 4,
+          "shaded_parts": 1,
+          "fraction_str": "1/4",
+          "interaction_mode": "read",
+          "is_read_only": true,
+          "total_wholes": 1
+        },
+        "visual_render": {
+          "visual_type": "FractionModel",
+          "renderer_input_digest": "ddcc32087c62d0d0295a0ef636383ef64e9800991dcacb6bc2bbaca2fa1c7ffa",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "FractionModel",
+            "element_count": 7,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [],
+            "distinct_colours": [
+              "hsl(var(--primary)"
+            ],
+            "role_counts": {
+              "fraction-part": 4
+            }
+          }
+        },
+        "sample_id": "00582d1a3cb6e88006e4",
+        "replay_digest": "40c259442c3ad0b5f0711ebfce2736146cb03aa361ad0c37b7672a8e72b77d03"
+      },
+      {
+        "node_id": "mat_g1_na_q4_1",
+        "seed": 23,
+        "formatter": "read_mcq",
+        "question_text": "Look at the fraction models. Compare \\(\\frac{1}{4}\\) and \\(\\frac{1}{2}\\). Which sign makes the statement true: \\(\\frac{1}{4}\\) ___ \\(\\frac{1}{2}\\)?",
+        "correct_answer": "D",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "FractionModel",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "=",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": ">",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "+",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "<",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "<",
+        "hints": [
+          "To compare 1/4 and 1/2, check if the bottom numbers are equal.",
+          "When bottom numbers are the same, the fraction with the bigger top number is larger.",
+          "1 vs 1: the larger top number gives the larger fraction."
+        ],
+        "visual_type": "FractionModel",
+        "visual_payload": {
+          "model_type": "area",
+          "numerator": 1,
+          "denominator": 4,
+          "total_parts": 4,
+          "shaded_parts": 1,
+          "fraction_str": "1/4",
+          "interaction_mode": "read",
+          "is_read_only": true,
+          "total_wholes": 1
+        },
+        "visual_render": {
+          "visual_type": "FractionModel",
+          "renderer_input_digest": "ddcc32087c62d0d0295a0ef636383ef64e9800991dcacb6bc2bbaca2fa1c7ffa",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "FractionModel",
+            "element_count": 7,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [],
+            "distinct_colours": [
+              "hsl(var(--primary)"
+            ],
+            "role_counts": {
+              "fraction-part": 4
+            }
+          }
+        },
+        "sample_id": "ddc4ff9e0d8e0b85b4f4",
+        "replay_digest": "1c79eedfe29b60e28c526079c83e753467a5e7d704fa132379850e8584cdc05e"
+      },
+      {
+        "node_id": "mat_g1_na_q4_1",
+        "seed": 42,
+        "formatter": "read_mcq",
+        "question_text": "Look at the fraction models. Compare \\(\\frac{1}{2}\\) and \\(\\frac{1}{4}\\). Which sign makes the statement true: \\(\\frac{1}{2}\\) ___ \\(\\frac{1}{4}\\)?",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "FractionModel",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": ">",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "+",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "=",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "<",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": ">",
+        "hints": [
+          "To compare 1/2 and 1/4, check if the bottom numbers are equal.",
+          "When bottom numbers are the same, the fraction with the bigger top number is larger.",
+          "1 vs 1: the larger top number gives the larger fraction."
+        ],
+        "visual_type": "FractionModel",
+        "visual_payload": {
+          "model_type": "area",
+          "numerator": 1,
+          "denominator": 2,
+          "total_parts": 2,
+          "shaded_parts": 1,
+          "fraction_str": "1/2",
+          "interaction_mode": "read",
+          "is_read_only": true,
+          "total_wholes": 1
+        },
+        "visual_render": {
+          "visual_type": "FractionModel",
+          "renderer_input_digest": "9940f9c298039db672ff0faacec3cbfaed14ad15716bf08bfcbadfd1dcb7f00f",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "FractionModel",
+            "element_count": 5,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [],
+            "distinct_colours": [
+              "hsl(var(--primary)"
+            ],
+            "role_counts": {
+              "fraction-part": 2
+            }
+          }
+        },
+        "sample_id": "72445794426d2f0407a8",
+        "replay_digest": "6c399fc1c744fb5fd859feb5c442ab334f360247c01e7ac346f3f5b80fe3ed68"
+      },
+      {
+        "node_id": "mat_g1_na_q4_1",
+        "seed": 57,
+        "formatter": "read_mcq",
+        "question_text": "Look at the shaded models. Which sign correctly compares the shaded parts: \\(\\frac{1}{2}\\) ___ \\(\\frac{1}{4}\\)?",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "FractionModel",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": ">",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "+",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "=",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "<",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": ">",
+        "hints": [
+          "To compare 1/2 and 1/4, check if the bottom numbers are equal.",
+          "When bottom numbers are the same, the fraction with the bigger top number is larger.",
+          "1 vs 1: the larger top number gives the larger fraction."
+        ],
+        "visual_type": "FractionModel",
+        "visual_payload": {
+          "model_type": "area",
+          "numerator": 1,
+          "denominator": 2,
+          "total_parts": 2,
+          "shaded_parts": 1,
+          "fraction_str": "1/2",
+          "interaction_mode": "read",
+          "is_read_only": true,
+          "total_wholes": 1
+        },
+        "visual_render": {
+          "visual_type": "FractionModel",
+          "renderer_input_digest": "9940f9c298039db672ff0faacec3cbfaed14ad15716bf08bfcbadfd1dcb7f00f",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "FractionModel",
+            "element_count": 5,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [],
+            "distinct_colours": [
+              "hsl(var(--primary)"
+            ],
+            "role_counts": {
+              "fraction-part": 2
+            }
+          }
+        },
+        "sample_id": "7426e995b2a7cb533a9a",
+        "replay_digest": "03932e877aea2161528bbeba30f8cedff509fedae5365ed985322a9b29730d09"
+      },
+      {
+        "node_id": "mat_g1_na_q4_1",
+        "seed": 64,
+        "formatter": "read_mcq",
+        "question_text": "Look at the fraction models. Compare \\(\\frac{1}{4}\\) and \\(\\frac{1}{2}\\). Which sign makes the statement true: \\(\\frac{1}{4}\\) ___ \\(\\frac{1}{2}\\)?",
+        "correct_answer": "C",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "FractionModel",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "+",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "=",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "<",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": ">",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "<",
+        "hints": [
+          "To compare 1/4 and 1/2, check if the bottom numbers are equal.",
+          "When bottom numbers are the same, the fraction with the bigger top number is larger.",
+          "1 vs 1: the larger top number gives the larger fraction."
+        ],
+        "visual_type": "FractionModel",
+        "visual_payload": {
+          "model_type": "area",
+          "numerator": 1,
+          "denominator": 4,
+          "total_parts": 4,
+          "shaded_parts": 1,
+          "fraction_str": "1/4",
+          "interaction_mode": "read",
+          "is_read_only": true,
+          "total_wholes": 1
+        },
+        "visual_render": {
+          "visual_type": "FractionModel",
+          "renderer_input_digest": "ddcc32087c62d0d0295a0ef636383ef64e9800991dcacb6bc2bbaca2fa1c7ffa",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "FractionModel",
+            "element_count": 7,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [],
+            "distinct_colours": [
+              "hsl(var(--primary)"
+            ],
+            "role_counts": {
+              "fraction-part": 4
+            }
+          }
+        },
+        "sample_id": "16af03e4c895b8ce82ba",
+        "replay_digest": "764bb178f0ca0e5f39d0e8cddc6be03e9f47ab3313ef6b01d3b7769e7872550a"
+      },
+      {
+        "node_id": "mat_g1_na_q4_1",
+        "seed": 78,
+        "formatter": "read_mcq",
+        "question_text": "Look at the fraction models for \\(\\frac{1}{4}\\) and \\(\\frac{1}{2}\\). Which comparison sign is correct: \\(\\frac{1}{4}\\) ___ \\(\\frac{1}{2}\\)?",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "FractionModel",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "<",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "=",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": ">",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "+",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "<",
+        "hints": [
+          "To compare 1/4 and 1/2, check if the bottom numbers are equal.",
+          "When bottom numbers are the same, the fraction with the bigger top number is larger.",
+          "1 vs 1: the larger top number gives the larger fraction."
+        ],
+        "visual_type": "FractionModel",
+        "visual_payload": {
+          "model_type": "area",
+          "numerator": 1,
+          "denominator": 4,
+          "total_parts": 4,
+          "shaded_parts": 1,
+          "fraction_str": "1/4",
+          "interaction_mode": "read",
+          "is_read_only": true,
+          "total_wholes": 1
+        },
+        "visual_render": {
+          "visual_type": "FractionModel",
+          "renderer_input_digest": "ddcc32087c62d0d0295a0ef636383ef64e9800991dcacb6bc2bbaca2fa1c7ffa",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "FractionModel",
+            "element_count": 7,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [],
+            "distinct_colours": [
+              "hsl(var(--primary)"
+            ],
+            "role_counts": {
+              "fraction-part": 4
+            }
+          }
+        },
+        "sample_id": "a86ffaa1840be43fa57c",
+        "replay_digest": "5633abe502294f545338169d845278987afe386a06aa1d237717d6be308fee36"
+      },
+      {
+        "node_id": "mat_g1_na_q4_1",
+        "seed": 91,
+        "formatter": "read_mcq",
+        "question_text": "Look at the fraction models for \\(\\frac{1}{2}\\) and \\(\\frac{1}{4}\\). Which comparison sign is correct: \\(\\frac{1}{2}\\) ___ \\(\\frac{1}{4}\\)?",
+        "correct_answer": "C",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "FractionModel",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "<",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "+",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": ">",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "=",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": ">",
+        "hints": [
+          "To compare 1/2 and 1/4, check if the bottom numbers are equal.",
+          "When bottom numbers are the same, the fraction with the bigger top number is larger.",
+          "1 vs 1: the larger top number gives the larger fraction."
+        ],
+        "visual_type": "FractionModel",
+        "visual_payload": {
+          "model_type": "area",
+          "numerator": 1,
+          "denominator": 2,
+          "total_parts": 2,
+          "shaded_parts": 1,
+          "fraction_str": "1/2",
+          "interaction_mode": "read",
+          "is_read_only": true,
+          "total_wholes": 1
+        },
+        "visual_render": {
+          "visual_type": "FractionModel",
+          "renderer_input_digest": "9940f9c298039db672ff0faacec3cbfaed14ad15716bf08bfcbadfd1dcb7f00f",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "FractionModel",
+            "element_count": 5,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [],
+            "distinct_colours": [
+              "hsl(var(--primary)"
+            ],
+            "role_counts": {
+              "fraction-part": 2
+            }
+          }
+        },
+        "sample_id": "7923aa6e6d0d2253188a",
+        "replay_digest": "f2604590b0e99a85b5cf7a01255256411a28aa558567f0de8eeaf01c83e4dcd6"
+      },
+      {
+        "node_id": "mat_g1_na_q4_1",
+        "seed": 103,
+        "formatter": "read_mcq",
+        "question_text": "Look at the fraction models for \\(\\frac{1}{2}\\) and \\(\\frac{1}{4}\\). Which comparison sign is correct: \\(\\frac{1}{2}\\) ___ \\(\\frac{1}{4}\\)?",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "FractionModel",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": ">",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "<",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "=",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "+",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": ">",
+        "hints": [
+          "To compare 1/2 and 1/4, check if the bottom numbers are equal.",
+          "When bottom numbers are the same, the fraction with the bigger top number is larger.",
+          "1 vs 1: the larger top number gives the larger fraction."
+        ],
+        "visual_type": "FractionModel",
+        "visual_payload": {
+          "model_type": "area",
+          "numerator": 1,
+          "denominator": 2,
+          "total_parts": 2,
+          "shaded_parts": 1,
+          "fraction_str": "1/2",
+          "interaction_mode": "read",
+          "is_read_only": true,
+          "total_wholes": 1
+        },
+        "visual_render": {
+          "visual_type": "FractionModel",
+          "renderer_input_digest": "9940f9c298039db672ff0faacec3cbfaed14ad15716bf08bfcbadfd1dcb7f00f",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "FractionModel",
+            "element_count": 5,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [],
+            "distinct_colours": [
+              "hsl(var(--primary)"
+            ],
+            "role_counts": {
+              "fraction-part": 2
+            }
+          }
+        },
+        "sample_id": "29811e6614a7352800c7",
+        "replay_digest": "ca706efef82c62db10f141ac59fc1cc55c95a5b76c64dbfa4d36059098d03530"
+      },
+      {
+        "node_id": "mat_g1_na_q4_1",
+        "seed": 118,
+        "formatter": "read_mcq",
+        "question_text": "Look at the shaded models. Which sign correctly compares the shaded parts: \\(\\frac{1}{2}\\) ___ \\(\\frac{1}{4}\\)?",
+        "correct_answer": "D",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "FractionModel",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "=",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "+",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "<",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": ">",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": ">",
+        "hints": [
+          "To compare 1/2 and 1/4, check if the bottom numbers are equal.",
+          "When bottom numbers are the same, the fraction with the bigger top number is larger.",
+          "1 vs 1: the larger top number gives the larger fraction."
+        ],
+        "visual_type": "FractionModel",
+        "visual_payload": {
+          "model_type": "area",
+          "numerator": 1,
+          "denominator": 2,
+          "total_parts": 2,
+          "shaded_parts": 1,
+          "fraction_str": "1/2",
+          "interaction_mode": "read",
+          "is_read_only": true,
+          "total_wholes": 1
+        },
+        "visual_render": {
+          "visual_type": "FractionModel",
+          "renderer_input_digest": "9940f9c298039db672ff0faacec3cbfaed14ad15716bf08bfcbadfd1dcb7f00f",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "FractionModel",
+            "element_count": 5,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [],
+            "distinct_colours": [
+              "hsl(var(--primary)"
+            ],
+            "role_counts": {
+              "fraction-part": 2
+            }
+          }
+        },
+        "sample_id": "81767758767a45820c87",
+        "replay_digest": "f0c2c61191d40c753d20ac9d7373dcf9908ff5eb177637a7dc3bd54b006b2ece"
+      },
+      {
+        "node_id": "mat_g1_na_q4_1",
+        "seed": 127,
+        "formatter": "read_mcq",
+        "question_text": "Look at the fraction models for \\(\\frac{1}{2}\\) and \\(\\frac{1}{4}\\). Which comparison sign is correct: \\(\\frac{1}{2}\\) ___ \\(\\frac{1}{4}\\)?",
+        "correct_answer": "C",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "FractionModel",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "<",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "=",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": ">",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "+",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": ">",
+        "hints": [
+          "To compare 1/2 and 1/4, check if the bottom numbers are equal.",
+          "When bottom numbers are the same, the fraction with the bigger top number is larger.",
+          "1 vs 1: the larger top number gives the larger fraction."
+        ],
+        "visual_type": "FractionModel",
+        "visual_payload": {
+          "model_type": "area",
+          "numerator": 1,
+          "denominator": 2,
+          "total_parts": 2,
+          "shaded_parts": 1,
+          "fraction_str": "1/2",
+          "interaction_mode": "read",
+          "is_read_only": true,
+          "total_wholes": 1
+        },
+        "visual_render": {
+          "visual_type": "FractionModel",
+          "renderer_input_digest": "9940f9c298039db672ff0faacec3cbfaed14ad15716bf08bfcbadfd1dcb7f00f",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "FractionModel",
+            "element_count": 5,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [],
+            "distinct_colours": [
+              "hsl(var(--primary)"
+            ],
+            "role_counts": {
+              "fraction-part": 2
+            }
+          }
+        },
+        "sample_id": "b75bd511587c33d3d99a",
+        "replay_digest": "f6e5c8b73e75cc728c271cbfc21b39baea4e5d16111d5e3b6c5b6eca6fe03b3f"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "compare",
+      "node_id": "mat_g1_na_q4_1",
+      "clause": "Compare",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Every sample requires learners to compare fractions. Each seed asks 'Which comparison sign is correct' or 'Which sign makes the statement true' with options including <, >, and =, directly eliciting comparison of fractions like 1/4 with 1/2.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "half",
+      "node_id": "mat_g1_na_q4_1",
+      "clause": "1/2",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        57,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Most samples involve 1/2 in the comparison. Seeds 42 and 78 compare 1/2 and 1/4 (with 1/2 on the left), seeds 57 and 118 are similar, and seeds 91, 103, 127 also include 1/2 in the comparison statements, making 1/2 a regular element of these comparison tasks.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "quarter",
+      "node_id": "mat_g1_na_q4_1",
+      "clause": "1/4",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        64,
+        78
+      ],
+      "reasoning": "Multiple samples involve 1/4 in comparisons. Seeds 11 and 23 compare 1/4 and 1/2 (with 1/4 on the left), seed 64 compares 1/4 and 1/2, and seed 78 also compares 1/4 and 1/2, demonstrating that 1/4 regularly appears in the comparison framework.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "models",
+      "node_id": "mat_g1_na_q4_1",
+      "clause": "models",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All samples include VISUAL RENDERED showing FractionModel visuals, each with rendered structures listing element counts and fraction-part roles. These rendered visual models are the medium through which learners perform the comparisons, making the use of models explicit in every sample.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    }
+  ],
+  "supersedes": "Replaces batch026B04_mat_g1_na_q4_1, which §6F reported as unusable evidence (stale stem/answer, or a record that carries no options or no render-derived visual for content that renders one). The predecessor is left on disk; supersession is earned by this record, not declared by it."
+}

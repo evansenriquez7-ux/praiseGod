@@ -1,0 +1,882 @@
+{
+  "batch": "batch082_mat_g1_na_q1_0",
+  "attested_at": "2026-09-21T00:00:00Z",
+  "attested_by": "blind-attester-opus5-d03-20260921",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "the Attester was told to read exactly local_only/scratch/attester/h06/d03.prompt.txt, which is attester_packets.render_prompt_block output (item id, clause, competency, grade/quarter and the rendered samples only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "prompt-contract dispatch to a separate agent: told to read exactly one packet render and no other path, and to write its verdict JSON. Tool access was NOT structurally prevented, so this does not claim the '0' (inline, no tool access) contract; at least one Read and one Write were expected and used."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g1_na_q1_0",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g1_na_q1_0",
+        "seed": 11,
+        "formatter": "read_mcq",
+        "question_text": "What number is marked?",
+        "correct_answer": "B",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "NumberLine",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 83,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 84,
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 86,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 85,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 84,
+        "hints": [
+          "Look at the list of numbers: 80, 81, 82, 83, ___",
+          "Find the rule by comparing neighbours: 81 − 80 = 1.",
+          "This list of numbers shows jumping by 1s (add 1 each time).",
+          "Add 1 to 83: 83 + 1 = 84."
+        ],
+        "visual_type": "NumberLine",
+        "visual_payload": {
+          "value": 84,
+          "start": 80,
+          "end": 90,
+          "interval": 1,
+          "divisions": 10,
+          "correct_position": 84,
+          "dot_value": 84,
+          "content_type": "whole_number",
+          "labels": [
+            "80",
+            "90"
+          ],
+          "marked_points": [],
+          "question_mark_at": null,
+          "is_interactive": false,
+          "show_labels": true,
+          "correct_answer": 84.0,
+          "target": 84.0
+        },
+        "visual_render": {
+          "visual_type": "NumberLine",
+          "renderer_input_digest": "6a4971806d187010af6c297fa1c71b89506a8e9bde0b50bb52ee420d5a06d598",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "NumberLine",
+            "element_count": 27,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "80",
+              "81",
+              "82",
+              "83",
+              "84",
+              "85",
+              "86",
+              "87",
+              "88",
+              "89",
+              "90"
+            ],
+            "distinct_colours": [
+              "hsl(var(--border-color)",
+              "hsl(var(--text-muted)",
+              "hsl(var(--text)",
+              "hsl(var(--primary)",
+              "hsl(var(--card-bg)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "360004ad0cf4891e5214",
+        "replay_digest": "8e5608bbcb0179fea74977345d8b18181696f0c0a3b922636b531bb8a6f7f1a2"
+      },
+      {
+        "node_id": "mat_g1_na_q1_0",
+        "seed": 23,
+        "formatter": "cloze",
+        "question_text": "What comes next: 34, 35, 36, 37, ___",
+        "correct_answer": 38,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 35,
+            "text": "35",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 36,
+            "text": "36",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 39,
+            "text": "39",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 38,
+            "text": "38",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 38,
+        "hints": [
+          "Look at the list of numbers: 34, 35, 36, 37, ___",
+          "Find the rule by comparing neighbours: 35 − 34 = 1.",
+          "This list of numbers shows jumping by 1s (add 1 each time).",
+          "Add 1 to 37: 37 + 1 = 38."
+        ],
+        "sample_id": "b0292885f62a9958f38d",
+        "replay_digest": "b117459591f4ed915f2003d2a4a839ad8eeec6d23064efecb785773b5f100882"
+      },
+      {
+        "node_id": "mat_g1_na_q1_0",
+        "seed": 42,
+        "formatter": "read_mcq",
+        "question_text": "What number is marked?",
+        "correct_answer": "B",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "NumberLine",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 18,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 16,
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 15,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 17,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 16,
+        "hints": [
+          "Look at the list of numbers: 20, 19, 18, 17, ___",
+          "Find the rule by comparing neighbours: 19 − 20 = 1.",
+          "This list of numbers shows jumping by 1s (subtract 1 each time).",
+          "Subtract 1 to 17: 17 - 1 = 16."
+        ],
+        "visual_type": "NumberLine",
+        "visual_payload": {
+          "value": 16,
+          "start": 10,
+          "end": 20,
+          "interval": 1,
+          "divisions": 10,
+          "correct_position": 16,
+          "dot_value": 16,
+          "content_type": "whole_number",
+          "labels": [
+            "10",
+            "20"
+          ],
+          "marked_points": [],
+          "question_mark_at": null,
+          "is_interactive": false,
+          "show_labels": true,
+          "correct_answer": 16.0,
+          "target": 16.0
+        },
+        "visual_render": {
+          "visual_type": "NumberLine",
+          "renderer_input_digest": "7b285e7c26d982a12ad824745e099685217acc3c5e6cd4d9613ef7127af50785",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "NumberLine",
+            "element_count": 27,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "10",
+              "11",
+              "12",
+              "13",
+              "14",
+              "15",
+              "16",
+              "17",
+              "18",
+              "19",
+              "20"
+            ],
+            "distinct_colours": [
+              "hsl(var(--border-color)",
+              "hsl(var(--text-muted)",
+              "hsl(var(--text)",
+              "hsl(var(--primary)",
+              "hsl(var(--card-bg)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "ebca5e8451c9d8ccaac5",
+        "replay_digest": "2dfc1aa0c8dcef4287b256ed2796f24a952a860c6760b56179d424d8c0fe8c2f"
+      },
+      {
+        "node_id": "mat_g1_na_q1_0",
+        "seed": 57,
+        "formatter": "cloze",
+        "question_text": "What comes next: 54, 53, 52, 51, ___",
+        "correct_answer": 50,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 52,
+            "text": "52",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 50,
+            "text": "50",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 49,
+            "text": "49",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 53,
+            "text": "53",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 50,
+        "hints": [
+          "Look at the list of numbers: 54, 53, 52, 51, ___",
+          "Find the rule by comparing neighbours: 53 − 54 = 1.",
+          "This list of numbers shows jumping by 1s (subtract 1 each time).",
+          "Subtract 1 to 51: 51 - 1 = 50."
+        ],
+        "sample_id": "82f890d6150f3f85b772",
+        "replay_digest": "ad76ece63bb5762003b679ede22c7227f9b71a1ff1c6336caebde411ca07274b"
+      },
+      {
+        "node_id": "mat_g1_na_q1_0",
+        "seed": 64,
+        "formatter": "cloze",
+        "question_text": "What comes next: 24, 25, 26, 27, ___",
+        "correct_answer": 28,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 26,
+            "text": "26",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 25,
+            "text": "25",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 28,
+            "text": "28",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 29,
+            "text": "29",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 28,
+        "hints": [
+          "Look at the list of numbers: 24, 25, 26, 27, ___",
+          "Find the rule by comparing neighbours: 25 − 24 = 1.",
+          "This list of numbers shows jumping by 1s (add 1 each time).",
+          "Add 1 to 27: 27 + 1 = 28."
+        ],
+        "sample_id": "0c571856b616e5ef798a",
+        "replay_digest": "cf8c45bccf0b025e8a0425c1e7ec89d5de90b264b837ff74425bfaa317083bfd"
+      },
+      {
+        "node_id": "mat_g1_na_q1_0",
+        "seed": 78,
+        "formatter": "mcq",
+        "question_text": "What number comes next when counting backward: 35, 34, 33, 32, ___?",
+        "correct_answer": 31,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 31,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 33,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 30,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 34,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 31,
+        "hints": [
+          "Look at the list of numbers: 35, 34, 33, 32, ___",
+          "Find the rule by comparing neighbours: 34 − 35 = 1.",
+          "This list of numbers shows jumping by 1s (subtract 1 each time).",
+          "Subtract 1 to 32: 32 - 1 = 31."
+        ],
+        "sample_id": "3a695a633e7379ef22ee",
+        "replay_digest": "dce102d3264f822f3970ebe4490dab9c5c4ff5b6a5cf92d0fabd5298f62c2421"
+      },
+      {
+        "node_id": "mat_g1_na_q1_0",
+        "seed": 91,
+        "formatter": "read_mcq",
+        "question_text": "What number is marked?",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "NumberLine",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 78,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 79,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 80,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 77,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 78,
+        "hints": [
+          "Look at the list of numbers: 82, 81, 80, 79, ___",
+          "Find the rule by comparing neighbours: 81 − 82 = 1.",
+          "This list of numbers shows jumping by 1s (subtract 1 each time).",
+          "Subtract 1 to 79: 79 - 1 = 78."
+        ],
+        "visual_type": "NumberLine",
+        "visual_payload": {
+          "value": 78,
+          "start": 70,
+          "end": 80,
+          "interval": 1,
+          "divisions": 10,
+          "correct_position": 78,
+          "dot_value": 78,
+          "content_type": "whole_number",
+          "labels": [
+            "70",
+            "80"
+          ],
+          "marked_points": [],
+          "question_mark_at": null,
+          "is_interactive": false,
+          "show_labels": true,
+          "correct_answer": 78.0,
+          "target": 78.0
+        },
+        "visual_render": {
+          "visual_type": "NumberLine",
+          "renderer_input_digest": "3e922b70767d1bdd06eb99fb1ea7e82ac5b007ff2a86941e4919683c7bd6386f",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "NumberLine",
+            "element_count": 27,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "70",
+              "71",
+              "72",
+              "73",
+              "74",
+              "75",
+              "76",
+              "77",
+              "78",
+              "79",
+              "80"
+            ],
+            "distinct_colours": [
+              "hsl(var(--border-color)",
+              "hsl(var(--text-muted)",
+              "hsl(var(--text)",
+              "hsl(var(--primary)",
+              "hsl(var(--card-bg)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "5b4567fdcd28c60d2e8b",
+        "replay_digest": "cd53ee4318a718a7d8c8d9306c77ba514d2d2b28e0680df8a20cc021e6da63f4"
+      },
+      {
+        "node_id": "mat_g1_na_q1_0",
+        "seed": 103,
+        "formatter": "read_mcq",
+        "question_text": "(Large group of 58 items)\nCount the items.\nHow many items are there in all?",
+        "correct_answer": "D",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "EmojiPictorial",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 59,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 57,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 0,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 58,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 58,
+        "hints": [
+          "Look at the list of numbers: 54, 55, 56, 57, ___",
+          "Find the rule by comparing neighbours: 55 − 54 = 1.",
+          "This list of numbers shows jumping by 1s (add 1 each time).",
+          "Add 1 to 57: 57 + 1 = 58."
+        ],
+        "visual_type": "EmojiPictorial",
+        "visual_payload": {
+          "emoji": "🐕",
+          "group_a": 58,
+          "group_b": 0,
+          "operation": "counting",
+          "layout": "inline",
+          "display": "(Large group of 58 items)"
+        },
+        "visual_render": {
+          "visual_type": "EmojiPictorial",
+          "renderer_input_digest": "93a83298600da598eb7d7133880135c6ea1e3fecc5a68cf0a30aa9b8f9a14332",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "EmojiPictorial",
+            "element_count": 42,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "🛍️",
+              "10x 🐕",
+              "🐕",
+              "1x 🐕"
+            ],
+            "distinct_colours": [
+              "hsl(var(--card-bg)",
+              "hsl(var(--border-color)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "62331f4866e49919af98",
+        "replay_digest": "a79de868de32cfbcbc051907fd51b48b00ff819b5d1302d7d9386c15c661bcad"
+      },
+      {
+        "node_id": "mat_g1_na_q1_0",
+        "seed": 118,
+        "formatter": "mcq",
+        "question_text": "What number comes next when counting backward: 59, 58, 57, 56, ___?",
+        "correct_answer": 55,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 54,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 55,
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 58,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 57,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 55,
+        "hints": [
+          "Look at the list of numbers: 59, 58, 57, 56, ___",
+          "Find the rule by comparing neighbours: 58 − 59 = 1.",
+          "This list of numbers shows jumping by 1s (subtract 1 each time).",
+          "Subtract 1 to 56: 56 - 1 = 55."
+        ],
+        "sample_id": "ecd66bcce7dd897aac53",
+        "replay_digest": "490b1f8d4f2a74329b6ee077b91c3cec61c639064266973c3c462f5c6da149ee"
+      },
+      {
+        "node_id": "mat_g1_na_q1_0",
+        "seed": 127,
+        "formatter": "cloze",
+        "question_text": "What comes next: 86, 85, 84, 83, ___",
+        "correct_answer": 82,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 84,
+            "text": "84",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 81,
+            "text": "81",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 82,
+            "text": "82",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 85,
+            "text": "85",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 82,
+        "hints": [
+          "Look at the list of numbers: 86, 85, 84, 83, ___",
+          "Find the rule by comparing neighbours: 85 − 86 = 1.",
+          "This list of numbers shows jumping by 1s (subtract 1 each time).",
+          "Subtract 1 to 83: 83 - 1 = 82."
+        ],
+        "sample_id": "df52bf1be1dea93f5180",
+        "replay_digest": "bfad67d4d6bb097c5daeb76d30f5e65217859b1777e95178d9fe543030945c69"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "count_objects_to_a_total",
+      "node_id": "mat_g1_na_q1_0",
+      "clause": "Count",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        103,
+        23,
+        57,
+        11
+      ],
+      "reasoning": "Counting appears both as literal enumeration and as recitation of the sequence. Seed 103 instructs 'Count the items' over an EmojiPictorial holding 58 objects bundled as '10x' and '1x' groups, while seeds 23, 57, 64, 118 and 127 require the learner to continue a run of consecutive numbers, and seeds 11, 42 and 91 read a position off a labelled NumberLine. All of it is number-sequence work of the kind the clause names.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable.",
+      "content_note_from_attester": "Seed 103's options include 0 alongside 57, 58 and 59; zero is an implausible distractor for a picture of dozens of objects."
+    },
+    {
+      "capability_id": "range_up_to_100",
+      "node_id": "mat_g1_na_q1_0",
+      "clause": "up to 100",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        127,
+        118,
+        91
+      ],
+      "reasoning": "The question is whether the number range worked in reaches the stated ceiling, and the samples do live in the upper two-digit band without breaching it. Seed 11's number line is labelled 80 through 90, seed 91's runs 70 to 80, seed 127 counts down from 86, and seed 118 works in the 50s; the largest quantity anywhere, 90, is inside 100 and nothing exceeds it. The span is genuinely two-digit rather than clustered in the teens.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable.",
+      "content_note_from_attester": "No sample actually involves 100 itself or the 90-to-100 crossing, which is where counting to 100 usually breaks down."
+    },
+    {
+      "capability_id": "count_forward_from_a_given_number",
+      "node_id": "mat_g1_na_q1_0",
+      "clause": "counting up",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        23,
+        64
+      ],
+      "reasoning": "Ascending continuation is present in two seeds: 34, 35, 36, 37 with 38 keyed, and 24, 25, 26, 27 with 28 keyed. In each case the learner is handed a starting stretch and must carry the count forward, which is the upward direction the clause specifies. Both are multiple-choice with adjacent numbers as distractors, so the direction of the count is what decides the answer.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "count_backward_from_a_given_number",
+      "node_id": "mat_g1_na_q1_0",
+      "clause": "down from a given number",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        57,
+        78,
+        118,
+        127
+      ],
+      "reasoning": "Backward counting from a supplied starting point is well represented. Seed 57 runs 54, 53, 52, 51 to 50; seeds 78 and 118 state the direction outright with 'counting backward' from 35 and from 59; seed 127 descends 86, 85, 84, 83 to 82. Each gives a given number and requires the learner to step down from it, which is what this fragment asks for.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "identify_a_number_relative_to_another",
+      "node_id": "mat_g1_na_q1_0",
+      "clause": "identifying a number",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        42,
+        91
+      ],
+      "reasoning": "Three seeds are pure identification tasks rather than continuation tasks: 'What number is marked?' presented over a NumberLine whose rendered structure lists the tick labels (80 to 90, 10 to 20, and 70 to 80 respectively). The learner has to pin down which single number the mark sits on and select it from four neighbouring candidates, so naming a particular number is the required response.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "identify_one_more_than_a_number",
+      "node_id": "mat_g1_na_q1_0",
+      "clause": "1 more",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        23,
+        64
+      ],
+      "reasoning": "Taken with the surrounding competency text, this fragment is about landing on the successor of a number the learner is given. Seeds 23 and 64 do require exactly that operation: 37 is the last number shown and 38 is keyed, 27 is the last shown and 28 is keyed, with the adjacent wrong numbers as distractors so that a plus-one step is what separates right from wrong. The phrase 'one more than' is never used aloud in any stem, so the relation is present as an operation rather than as vocabulary.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable.",
+      "content_note_from_attester": "No sample poses the relation directly (e.g. 'what is 1 more than 46?'); it is only ever embedded in sequence continuation, which leaves the explicit 1-more language untested."
+    },
+    {
+      "capability_id": "identify_one_less_than_a_number",
+      "node_id": "mat_g1_na_q1_0",
+      "clause": "1 less",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        78,
+        118,
+        57,
+        127
+      ],
+      "reasoning": "Arriving at the predecessor of a given number is what the backward-counting seeds demand. In seed 78 the learner is given 32 and must answer 31; seed 118 gives 56 and wants 55; seed 57 gives 51 and wants 50; seed 127 gives 83 and wants 82. Each answer is precisely one below the last number supplied, with near neighbours offered as wrong choices. As with its counterpart clause, the relation is exercised without the words '1 less' ever being shown.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable.",
+      "content_note_from_attester": "The subtract-one relation is always dressed as sequence continuation; a stem naming '1 less than' explicitly does not appear in this sample of ten."
+    }
+  ],
+  "supersedes": "Replaces batch024_mat_g1_na_q1_0, which §6F reported as unusable evidence (stale stem/answer, or a record that carries no options or no render-derived visual for content that renders one). The predecessor is left on disk; supersession is earned by this record, not declared by it."
+}

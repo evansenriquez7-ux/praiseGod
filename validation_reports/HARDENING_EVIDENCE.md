@@ -13284,3 +13284,157 @@ exists. This is the plan's own rule seen from the paying end: *a generator fix d
 Tree state at the end of the chain: all four digest-bound artifact families FRESH against
 `3907ad23d1b84972` — 150 mutation proofs, 6 release shards, the benchmark, the frontend static
 render.
+
+## 2026-09-21/22 — H-06 / M2 step 6: the blind re-attestation campaign, run to completion
+
+**Row:** `H-06`, claimed as `claude-opus5-20260921-h06-attestation`, released on commit.
+**Tree:** started CERTIFIED at input digest `3907ad23d1b84972`. **The digest did not move.** No
+source under `INPUT_ROOTS` was touched, so no re-proof is owed — this was the whole reason
+Phase A went first, and it held.
+
+### What was done
+
+The owner's 2026-09-21 rulings were followed as written: the whole 218-finding capability queue
+is ONE resumable campaign (ruling 4), and blind attestation is performed by DISPATCH to a
+separate agent that has neither the answer key nor the dispatching session's context (ruling 6).
+The dispatching session authored no verdict, re-filed no verdict, and copied no v1 rationale
+forward. No record was edited.
+
+33 dispatches, one blind Attester identity each, covering all 144 clearable nodes and 741 clause
+items. Packets were built with `tests/attester_packets.py` and each Attester was told to read
+exactly one `render_prompt_block` rendering and no other path; verdicts were joined back to the
+key mechanically by `tests/attester_file.py`. `samples_delivery` and `tool_uses_by_attester` are
+recorded as what they actually were: a prompt-contract dispatch with at least one Read and one
+Write, NOT the `0` claim of structural blindness, which a subagent with tools cannot make.
+
+Resumability is a file: `validation_reports/phase2_hardening/attestation_campaign.json` carries
+the dispatch plan, per-dispatch status and verdict counts, and it is claimed by `H-06`.
+
+### Measured result — `capability_phase2` 218 → 61
+
+```
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_capability --phase 2
+Capability contract: 218 failure(s) (0 Phase 1 / artifact-free, floor 5; 218 Phase 2 / attestation).   # before
+Capability contract: 61 failure(s)  (0 Phase 1 / artifact-free, floor 5; 61 Phase 2 / attestation).    # after
+```
+
+| Category | Before | After |
+|---|---|---|
+| STALE | 74 | **6** |
+| record carries no `options` | 50 | **0** |
+| no render-derived visual evidence | 27 | **1** |
+| CONTRADICTED | 67 | **54** |
+
+741 verdicts earned: **687 PROVIDED / 54 NOT_PROVIDED**. `§6H` plurality PASS and `§6G`
+integrity 0 errors after every batch, checked as each landed.
+
+**CONTRADICTED fell while 54 new NOT_PROVIDED verdicts landed**, which is worth stating plainly
+because it looks contradictory. Fresh packets carry render-derived visual evidence; packets built
+before the 2026-08-20 `_render` fix carried none. A substantial share of the old NOT_PROVIDED
+verdicts on medium-naming clauses ("groups of objects", "fraction charts", "number line") were
+therefore measuring that packet bug rather than the pipeline, exactly as `attester_packets._render`'s
+comment predicted, and blind re-judgement against what now renders overturned them.
+
+### Verdict quality was checked, not assumed
+
+Three consecutive Haiku batches returned 25/25 PROVIDED. That pattern was audited before filing
+rather than trusted:
+
+* skeleton clustering measured per batch — d20/d21/d22 each gave **25 distinct skeletons, max
+  cluster 1** (`§6G` allows 3), so nothing was templated;
+* every PROVIDED verdict whose clause names a visual medium was cross-checked against its own
+  packet for whether any sample actually rendered a visual. One flag, `d22 item_024`, clause
+  "problems involving money" — inspected and legitimate: that clause names a problem *context*,
+  not a drawn medium, and the stems carry real peso amounts;
+* the pattern is STRUCTURAL, not model laxity. The campaign was planned highest-finding-count
+  first, so `d01`–`d16` hold the multi-finding nodes at **2.27 findings/node** where CONTRADICTED
+  concentrates, while `d17`–`d33` are uniformly **1.00 findings/node** — the tail, where the
+  content was fine and only the *evidence* was stale. All-PROVIDED is the predicted outcome there.
+
+Reasoning was specific rather than generic: one Attester verified every rendered sum stayed below
+100 and named all nine (84, 95, 78, 60, 86, 99, 99, 77, 60); another ruled a "table" clause
+NOT_PROVIDED off `table_row_count: 0` in the rendered structure.
+
+### The residual 61 is fully accounted for, and neither half clears by more attestation
+
+**7 findings are a STRUCTURAL HARNESS DEFECT, not content debt.** `_attestation_staleness` skips a
+predecessor record only when EVERY `(node_id, capability_id)` pair it holds is owned by a later
+record (`all(winner.get(pair) != idx ...)`). Seven live records each hold at least one pair whose
+capability is no longer in the node's `requires`:
+
+```
+mat_g2_na_q2_8   b09_mat_g2_na_q2_8            arts, rhythmic_properties, visual_elements
+mat_g1_na_q3_6   batch025B02_mat_g1_na_q3_6    arts, rhythmic_properties, visual_elements
+mat_g1_na_q4_6   batch025B02_mat_g1_na_q4_6    given_orally
+mat_g2_na_q2_5   batch025B07_mat_g2_na_q2_5    given_orally
+mat_g1_na_q3_3   batch026B03_mat_g1_na_q3_3    given_orally
+mat_g1_na_q1_9   batch028_mat_g1_na_q1_9       orally
+mat_g1_na_q2_6   batch028_mat_g1_na_q2_6       orally
+```
+
+Measured, not inferred: each of those five capability ids appears in **no** node's `requires`
+anywhere in the tree and in **no** `CAPABILITY_PROVIDERS` entry. They are rulings nothing
+consults — `_validate_attestation` iterates `requires` only. They are words the human-authored
+`requires_ignore` ground truth (`data/skeletons/requires_ignore.lock.json`) marks as named by
+MATATAG but deliberately not provided: oral delivery and arts integration. Because
+`attester_packets.build()` derives items FROM `requires`, a replacement packet can never take
+ownership of those pairs, so the predecessor stays in the freshness pass and re-reports for ever.
+Editing the record is forbidden; deleting it destroys genuine blind evidence.
+
+After the campaign the non-CONTRADICTED residual is **exactly** those 7 records and nothing else —
+zero unexplained findings, which is the confirmation that the diagnosis is complete.
+
+**This is not a G1–3 artifact.** Any future grade whose `requires_ignore` grows, or any `requires`
+id renamed after attestation, inherits a permanently un-clearable finding. Since
+`capability_phase2` can then never reach 0, the three `§6F` mutations stay INVALID and
+`assertion_coverage_8` stays red — so the Definition of Done is blocked on it.
+
+**Candidate fix, deliberately NOT applied:** in the supersession test, disregard verdict pairs
+whose capability is not in the node's current `requires`, because such a pair is a ruling no check
+consults — which is the rationale `_attestation_staleness`'s own docstring already gives for
+skipping fully-superseded records. Not applied here because it is a source edit under
+`INPUT_ROOTS`: it owes a mutation that catches its own planted violation by name, a
+`docs/pgen_contract.md` row in the same commit (Protocol 7), and the full ~3.4h re-proof chain.
+Sequencing it is the owner's call. Recorded in `attestation_campaign.json` under
+`structural_blocker_diagnosis` so it cannot be lost.
+
+**54 findings are genuine content debt**, now backed by fresh blind evidence naming the exact gap,
+across 35 nodes. Concentrations: `objects` (3), `6_7_8_and_9_multiplication_tables` (2),
+`concrete`/`concrete_models`, `images`/`in_pictures`, `different_size`/`different_orientation`,
+`peso_coins_only`, `write_value`, `fifties`. Each needs the artifact built or the provider entry
+deleted — both source edits, both owing the chain. Example, earned this session:
+`mat_g2_na_q4_3`'s competency names denominators 2, 3, 4, 5, 6 and 8, and a blind Attester
+checked every fraction in all ten samples and found only thirds and fifths ever render.
+
+### `assertion_coverage_8` — re-run, still red, by execution
+
+```
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_coverage
+  FAIL assertion_coverage_8 (3 in 1 family):
+    - §8 coverage: assertion 'capability_attestation_options_recorded_6F' ... proof record that does NOT hold
+    - §8 coverage: assertion 'capability_contradicted_6F' ... proof record that does NOT hold
+    - §8 coverage: assertion 'capability_phase_boundary_6' ... proof record that does NOT hold
+  (each: "INVALID — the unmutated command baseline exited 1")
+```
+
+Unchanged, and correctly so: the baseline is still `capability_phase2`, still red at 61. This was
+executed rather than predicted. **The Definition of Done is NOT met and this entry does not claim
+otherwise** — `run_all` was not run green, and the campaign could not make it so.
+
+### Named limitations of this session's work
+
+* **Blindness is a prompt contract, not a sandbox**, and this dispatch could not make it one. Each
+  Attester had tool access and was instructed not to use it beyond the one packet file; that is
+  recorded verbatim in every record's `blindness` block rather than flattened into a claim of
+  structural blindness.
+* **The Attester model changed mid-campaign** at the owner's instruction after a session rate
+  limit: `d01`–`d16` are Opus 5, `d17`–`d33` are Haiku 4.5. Every identity string names the model
+  that actually judged, and `attestation_campaign.json` records the switch, because §6H
+  independence is only checkable if the record is truthful about who made the verdict. The Agent
+  tool exposes no thinking-effort parameter, so no claim is made about one.
+* `d10`–`d16` were judged by Attesters that were killed by the rate limit *after* writing complete
+  verdict files. Completeness was verified per batch (every packet item covered exactly once)
+  before filing; `attester_file.py` refuses a partial batch by name, so this is checked, not
+  trusted.
+* The 54 CONTRADICTED findings are **evidence of a gap, not a fix for one**. Nothing in this
+  session changed content, and a fix at the evidence layer gates nothing.

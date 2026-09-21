@@ -1,0 +1,843 @@
+{
+  "batch": "batch111_mat_g2_na_q1_0",
+  "attested_at": "2026-09-21T00:00:00Z",
+  "attested_by": "blind-attester-haiku45-d32-20260922",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "the Attester was told to read exactly local_only/scratch/attester/h06/d32.prompt.txt, which is attester_packets.render_prompt_block output (item id, clause, competency, grade/quarter and the rendered samples only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "prompt-contract dispatch to a separate agent: told to read exactly one packet render and no other path, and to write its verdict JSON. Tool access was NOT structurally prevented, so this does not claim the '0' (inline, no tool access) contract; at least one Read and one Write were expected and used."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g2_na_q1_0",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g2_na_q1_0",
+        "seed": 11,
+        "formatter": "mcq",
+        "question_text": "What number comes next when counting: 486, 487, 488, 489, ___?",
+        "correct_answer": 490,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 488,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 491,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 490,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 487,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 490,
+        "hints": [
+          "Look at the list of numbers: 486, 487, 488, 489, ___",
+          "Find the rule by comparing neighbours: 487 − 486 = 1.",
+          "This list of numbers shows jumping by 1s (add 1 each time).",
+          "Add 1 to 489: 489 + 1 = 490."
+        ],
+        "sample_id": "b67a03b1dce88c618332",
+        "replay_digest": "f8fc9a250846f723465b137b30e8094f21c3f1594ffa10eb7adcc862307a56ad"
+      },
+      {
+        "node_id": "mat_g2_na_q1_0",
+        "seed": 23,
+        "formatter": "cloze",
+        "question_text": "Find the missing number: 932, 933, 934, 935, ___",
+        "correct_answer": 936,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 934,
+            "text": "934",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 936,
+            "text": "936",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 937,
+            "text": "937",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 933,
+            "text": "933",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 936,
+        "hints": [
+          "Look at the list of numbers: 932, 933, 934, 935, ___",
+          "Find the rule by comparing neighbours: 933 − 932 = 1.",
+          "This list of numbers shows jumping by 1s (add 1 each time).",
+          "Add 1 to 935: 935 + 1 = 936."
+        ],
+        "sample_id": "78bad60c842de284a236",
+        "replay_digest": "e9217503c12406a35e6645b9b2e5a47aeb84c64f8c00247245c12c78ae46d151"
+      },
+      {
+        "node_id": "mat_g2_na_q1_0",
+        "seed": 42,
+        "formatter": "read_mcq",
+        "question_text": "What number is marked on the number line?",
+        "correct_answer": "D",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "NumberLine",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 708,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 705,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 707,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 706,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 706,
+        "hints": [
+          "Look at the list of numbers: 702, 703, 704, 705, ___",
+          "Find the rule by comparing neighbours: 703 − 702 = 1.",
+          "This list of numbers shows jumping by 1s (add 1 each time).",
+          "Add 1 to 705: 705 + 1 = 706."
+        ],
+        "visual_type": "NumberLine",
+        "visual_payload": {
+          "value": 706,
+          "start": 700,
+          "end": 710,
+          "interval": 1,
+          "divisions": 10,
+          "correct_position": 706,
+          "dot_value": 706,
+          "content_type": "whole_number",
+          "labels": [
+            "700",
+            "710"
+          ],
+          "marked_points": [],
+          "question_mark_at": null,
+          "is_interactive": false,
+          "show_labels": true,
+          "correct_answer": 706.0,
+          "target": 706.0
+        },
+        "visual_render": {
+          "visual_type": "NumberLine",
+          "renderer_input_digest": "3b6b97c2574aa600890b2b3fc14394fa3d5c4b8a15ad90f99c346d7a4da9bcf7",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "NumberLine",
+            "element_count": 27,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "700",
+              "701",
+              "702",
+              "703",
+              "704",
+              "705",
+              "706",
+              "707",
+              "708",
+              "709",
+              "710"
+            ],
+            "distinct_colours": [
+              "hsl(var(--border-color)",
+              "hsl(var(--text-muted)",
+              "hsl(var(--text)",
+              "hsl(var(--primary)",
+              "hsl(var(--card-bg)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "070820a075dad57f85a9",
+        "replay_digest": "b59b85184adfcbe5bff66e4a7f4c3a34f2be47d9d54a187b7b01e0606110ff31"
+      },
+      {
+        "node_id": "mat_g2_na_q1_0",
+        "seed": 57,
+        "formatter": "cloze",
+        "question_text": "Find the missing number: 46, 47, 48, 49, ___",
+        "correct_answer": 50,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 48,
+            "text": "48",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 50,
+            "text": "50",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 47,
+            "text": "47",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 51,
+            "text": "51",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 50,
+        "hints": [
+          "Look at the list of numbers: 46, 47, 48, 49, ___",
+          "Find the rule by comparing neighbours: 47 − 46 = 1.",
+          "This list of numbers shows jumping by 1s (add 1 each time).",
+          "Add 1 to 49: 49 + 1 = 50."
+        ],
+        "sample_id": "561e965fe372aafad866",
+        "replay_digest": "c0facae3cb2c101527a3a60b063a1ccbc8b12a2c29bcd5cb730e116f8da0fbd2"
+      },
+      {
+        "node_id": "mat_g2_na_q1_0",
+        "seed": 64,
+        "formatter": "read_mcq",
+        "question_text": "What number is marked on the number line?",
+        "correct_answer": "C",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "NumberLine",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 515,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 518,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 516,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 517,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 516,
+        "hints": [
+          "Look at the list of numbers: 512, 513, 514, 515, ___",
+          "Find the rule by comparing neighbours: 513 − 512 = 1.",
+          "This list of numbers shows jumping by 1s (add 1 each time).",
+          "Add 1 to 515: 515 + 1 = 516."
+        ],
+        "visual_type": "NumberLine",
+        "visual_payload": {
+          "value": 516,
+          "start": 510,
+          "end": 520,
+          "interval": 1,
+          "divisions": 10,
+          "correct_position": 516,
+          "dot_value": 516,
+          "content_type": "whole_number",
+          "labels": [
+            "510",
+            "520"
+          ],
+          "marked_points": [],
+          "question_mark_at": null,
+          "is_interactive": false,
+          "show_labels": true,
+          "correct_answer": 516.0,
+          "target": 516.0
+        },
+        "visual_render": {
+          "visual_type": "NumberLine",
+          "renderer_input_digest": "edcf79e51c2b68cc0cf407252d07ea6cfeb27aec00f60d1054d1e5e89c620d98",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "NumberLine",
+            "element_count": 27,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "510",
+              "511",
+              "512",
+              "513",
+              "514",
+              "515",
+              "516",
+              "517",
+              "518",
+              "519",
+              "520"
+            ],
+            "distinct_colours": [
+              "hsl(var(--border-color)",
+              "hsl(var(--text-muted)",
+              "hsl(var(--text)",
+              "hsl(var(--primary)",
+              "hsl(var(--card-bg)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "4fba9d2ebb0aa1e307d6",
+        "replay_digest": "f9330979bd7039d815a85d7cca7d076f71dd5f0c3ebda8946a370df2a045fd41"
+      },
+      {
+        "node_id": "mat_g2_na_q1_0",
+        "seed": 78,
+        "formatter": "mcq",
+        "question_text": "What number comes next when counting: 924, 925, 926, 927, ___?",
+        "correct_answer": 928,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 925,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 928,
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 929,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 926,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 928,
+        "hints": [
+          "Look at the list of numbers: 924, 925, 926, 927, ___",
+          "Find the rule by comparing neighbours: 925 − 924 = 1.",
+          "This list of numbers shows jumping by 1s (add 1 each time).",
+          "Add 1 to 927: 927 + 1 = 928."
+        ],
+        "sample_id": "0cfa3174dab501627446",
+        "replay_digest": "6206848852d3edc882ae90aa5086179873cf54097ad08ce14120d2d590c24db9"
+      },
+      {
+        "node_id": "mat_g2_na_q1_0",
+        "seed": 91,
+        "formatter": "read_mcq",
+        "question_text": "What number is marked on the number line?",
+        "correct_answer": "D",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "NumberLine",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 95,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 92,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 94,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 93,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 93,
+        "hints": [
+          "Look at the list of numbers: 89, 90, 91, 92, ___",
+          "Find the rule by comparing neighbours: 90 − 89 = 1.",
+          "This list of numbers shows jumping by 1s (add 1 each time).",
+          "Add 1 to 92: 92 + 1 = 93."
+        ],
+        "visual_type": "NumberLine",
+        "visual_payload": {
+          "value": 93,
+          "start": 90,
+          "end": 100,
+          "interval": 1,
+          "divisions": 10,
+          "correct_position": 93,
+          "dot_value": 93,
+          "content_type": "whole_number",
+          "labels": [
+            "90",
+            "100"
+          ],
+          "marked_points": [],
+          "question_mark_at": null,
+          "is_interactive": false,
+          "show_labels": true,
+          "correct_answer": 93.0,
+          "target": 93.0
+        },
+        "visual_render": {
+          "visual_type": "NumberLine",
+          "renderer_input_digest": "040d602174201358e87e505736be2d8cec96956913e606059b707b2c3d057afb",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "NumberLine",
+            "element_count": 27,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "90",
+              "91",
+              "92",
+              "93",
+              "94",
+              "95",
+              "96",
+              "97",
+              "98",
+              "99",
+              "100"
+            ],
+            "distinct_colours": [
+              "hsl(var(--border-color)",
+              "hsl(var(--text-muted)",
+              "hsl(var(--text)",
+              "hsl(var(--primary)",
+              "hsl(var(--card-bg)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "7659587f2702c9f95bb4",
+        "replay_digest": "959290580a93a8d2f7200b5080791021fb11ed5f90faa392aa914d342b82c9d4"
+      },
+      {
+        "node_id": "mat_g2_na_q1_0",
+        "seed": 103,
+        "formatter": "read_mcq",
+        "question_text": "What number is marked on the number line?",
+        "correct_answer": "C",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "NumberLine",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 898,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 899,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 897,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 896,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 897,
+        "hints": [
+          "Look at the list of numbers: 893, 894, 895, 896, ___",
+          "Find the rule by comparing neighbours: 894 − 893 = 1.",
+          "This list of numbers shows jumping by 1s (add 1 each time).",
+          "Add 1 to 896: 896 + 1 = 897."
+        ],
+        "visual_type": "NumberLine",
+        "visual_payload": {
+          "value": 897,
+          "start": 890,
+          "end": 900,
+          "interval": 1,
+          "divisions": 10,
+          "correct_position": 897,
+          "dot_value": 897,
+          "content_type": "whole_number",
+          "labels": [
+            "890",
+            "900"
+          ],
+          "marked_points": [],
+          "question_mark_at": null,
+          "is_interactive": false,
+          "show_labels": true,
+          "correct_answer": 897.0,
+          "target": 897.0
+        },
+        "visual_render": {
+          "visual_type": "NumberLine",
+          "renderer_input_digest": "338e4bd1140b2a683b4c63138dbe41c86ac40d305779ed4a60fa00452409629c",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "NumberLine",
+            "element_count": 27,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "890",
+              "891",
+              "892",
+              "893",
+              "894",
+              "895",
+              "896",
+              "897",
+              "898",
+              "899",
+              "900"
+            ],
+            "distinct_colours": [
+              "hsl(var(--border-color)",
+              "hsl(var(--text-muted)",
+              "hsl(var(--text)",
+              "hsl(var(--primary)",
+              "hsl(var(--card-bg)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "3d03f0cd1a8853129d27",
+        "replay_digest": "a427924622a9f5b8e55f70495a413d5c9e78a6138050021612562000d1381d3f"
+      },
+      {
+        "node_id": "mat_g2_na_q1_0",
+        "seed": 118,
+        "formatter": "mcq",
+        "question_text": "What number comes next when counting: 790, 791, 792, 793, ___?",
+        "correct_answer": 794,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 795,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 794,
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 792,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 791,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 794,
+        "hints": [
+          "Look at the list of numbers: 790, 791, 792, 793, ___",
+          "Find the rule by comparing neighbours: 791 − 790 = 1.",
+          "This list of numbers shows jumping by 1s (add 1 each time).",
+          "Add 1 to 793: 793 + 1 = 794."
+        ],
+        "sample_id": "4429d11ac3e581fa24d9",
+        "replay_digest": "03ff5fded914ea108be2c67186e656d170d0c3cfd3ff3c2a890be3cfb38814b1"
+      },
+      {
+        "node_id": "mat_g2_na_q1_0",
+        "seed": 127,
+        "formatter": "cloze",
+        "question_text": "Find the missing number: 48, 49, 50, 51, ___",
+        "correct_answer": 52,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 52,
+            "text": "52",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 50,
+            "text": "50",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 49,
+            "text": "49",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 53,
+            "text": "53",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 52,
+        "hints": [
+          "Look at the list of numbers: 48, 49, 50, 51, ___",
+          "Find the rule by comparing neighbours: 49 − 48 = 1.",
+          "This list of numbers shows jumping by 1s (add 1 each time).",
+          "Add 1 to 51: 51 + 1 = 52."
+        ],
+        "sample_id": "c7de3455a5e57344d66c",
+        "replay_digest": "ba15e7bcc4a75916a7ed857ae093acdb3f53549977da20df01845075a39f7f18"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "count",
+      "node_id": "mat_g2_na_q1_0",
+      "clause": "Count",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All samples require students to count in sequence: finding the next number when counting (486→487→488→489→___, identify as 490), finding missing numbers in sequences (932→933→934→935→___), or identifying marked positions on a number line within a counting context (700-710 range, 510-520 range, 90-100 range, 890-900 range). The clause asks whether counting is shown; every sample is a counting exercise.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "up_to_1000",
+      "node_id": "mat_g2_na_q1_0",
+      "clause": "up to 1000",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "The sequences and marked values in all samples fall within the range from 1 to 1000: counting from 46 to 50, 486 to 490, 790 to 794, 924 to 928, 932 to 936, 48 to 52; marking positions on number lines in ranges 90-100, 510-520, 700-710, 890-900. No sample involves numbers above 1000.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    }
+  ],
+  "supersedes": "Replaces batch024_mat_g2_na_q1_0, which §6F reported as unusable evidence (stale stem/answer, or a record that carries no options or no render-derived visual for content that renders one). The predecessor is left on disk; supersession is earned by this record, not declared by it."
+}

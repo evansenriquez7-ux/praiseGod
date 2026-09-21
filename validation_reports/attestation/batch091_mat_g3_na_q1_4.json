@@ -1,0 +1,966 @@
+{
+  "batch": "batch091_mat_g3_na_q1_4",
+  "attested_at": "2026-09-21T00:00:00Z",
+  "attested_by": "blind-attester-opus5-d12-20260921",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "the Attester was told to read exactly local_only/scratch/attester/h06/d12.prompt.txt, which is attester_packets.render_prompt_block output (item id, clause, competency, grade/quarter and the rendered samples only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "prompt-contract dispatch to a separate agent: told to read exactly one packet render and no other path, and to write its verdict JSON. Tool access was NOT structurally prevented, so this does not claim the '0' (inline, no tool access) contract; at least one Read and one Write were expected and used."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g3_na_q1_4",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g3_na_q1_4",
+        "seed": 11,
+        "formatter": "read_mcq",
+        "question_text": "The number 7035 is marked on the number line. Round 7035 to the nearest 100.",
+        "correct_answer": "C",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "NumberLine",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 7045,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 7025,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 7000,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 7010,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 7000,
+        "hints": [
+          "Round 7035 to the closest hundreds.",
+          "Look at the digit just to the right of the hundreds place: it is 3.",
+          "Since 3 < 5, round down (keep the hundreds digit the same).",
+          "7035 rounded to the closest hundreds is 7000."
+        ],
+        "visual_type": "NumberLine",
+        "visual_payload": {
+          "value": 7035,
+          "start": 6900,
+          "end": 7200,
+          "interval": 10,
+          "divisions": 30,
+          "correct_position": 7035,
+          "dot_value": 7035,
+          "content_type": "whole_number",
+          "labels": [
+            "6900",
+            "7200"
+          ],
+          "marked_points": [],
+          "question_mark_at": null,
+          "is_interactive": false,
+          "show_labels": true,
+          "correct_answer": 7000.0,
+          "target": 7000.0
+        },
+        "visual_render": {
+          "visual_type": "NumberLine",
+          "renderer_input_digest": "6c5ba26970a4fc2a4ddb9d7cbd430e6655ede277f5e4ec4ae98ef635da076fdd",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "NumberLine",
+            "element_count": 67,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "6900",
+              "6910",
+              "6920",
+              "6930",
+              "6940",
+              "6950",
+              "6960",
+              "6970",
+              "6980",
+              "6990",
+              "7000",
+              "7010",
+              "7020",
+              "7030",
+              "7040",
+              "7050",
+              "7060",
+              "7070",
+              "7080",
+              "7090",
+              "7100",
+              "7110",
+              "7120",
+              "7130",
+              "7140",
+              "7150",
+              "7160",
+              "7170",
+              "7180",
+              "7190",
+              "7200"
+            ],
+            "distinct_colours": [
+              "hsl(var(--border-color)",
+              "hsl(var(--text-muted)",
+              "hsl(var(--text)",
+              "hsl(var(--primary)",
+              "hsl(var(--card-bg)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "e30d77ba65fc73a62dd8",
+        "replay_digest": "ddcc7511f4f6e834a6c8c54f3e21cb124cc41aefed1427a5217c459872f2d145"
+      },
+      {
+        "node_id": "mat_g3_na_q1_4",
+        "seed": 23,
+        "formatter": "cloze",
+        "question_text": "Round 7515 to the nearest 100.",
+        "correct_answer": 7500,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 7500,
+            "text": "7500",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 7510,
+            "text": "7510",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 7501,
+            "text": "7501",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 7000,
+            "text": "7000",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 7500,
+        "hints": [
+          "Round 7515 to the closest hundreds.",
+          "Look at the digit just to the right of the hundreds place: it is 1.",
+          "Since 1 < 5, round down (keep the hundreds digit the same).",
+          "7515 rounded to the closest hundreds is 7500."
+        ],
+        "sample_id": "5ff8e60a43274a6aada9",
+        "replay_digest": "c9348d42b1229dfd4f2c06be89141a3bde9705a01179bc66377c14b12346c348"
+      },
+      {
+        "node_id": "mat_g3_na_q1_4",
+        "seed": 42,
+        "formatter": "cloze",
+        "question_text": "Round 1815 to the nearest 1000.",
+        "correct_answer": 2000,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 2010,
+            "text": "2010",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 2000,
+            "text": "2000",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 0,
+            "text": "0",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 1000,
+            "text": "1000",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 2000,
+        "hints": [
+          "Round 1815 to the closest thousands.",
+          "Look at the digit just to the right of the thousands place: it is 8.",
+          "Since 8 ≥ 5, round up.",
+          "1815 rounded to the closest thousands is 2000."
+        ],
+        "sample_id": "7f1f817ba2f6ef8fab58",
+        "replay_digest": "e132453cadf2bcb9417fd786ea1196abf36d95e0d6bc53a49c7631122f5e7836"
+      },
+      {
+        "node_id": "mat_g3_na_q1_4",
+        "seed": 57,
+        "formatter": "mcq",
+        "question_text": "Round 4766 to the nearest 10.",
+        "correct_answer": 4770,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 4760,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 4700,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 4780,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 4770,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 4770,
+        "hints": [
+          "Round 4766 to the closest tens.",
+          "Look at the digit just to the right of the tens place: it is 6.",
+          "Since 6 ≥ 5, round up.",
+          "4766 rounded to the closest tens is 4770."
+        ],
+        "sample_id": "aa18f4932c03e4ede5ad",
+        "replay_digest": "0aee0bee3d4aef909e67b919de789d351ee1a85217b51b8306f7ad6bc177e74d"
+      },
+      {
+        "node_id": "mat_g3_na_q1_4",
+        "seed": 64,
+        "formatter": "cloze",
+        "question_text": "Round 1365 to the nearest 100.",
+        "correct_answer": 1400,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 1400,
+            "text": "1400",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 1000,
+            "text": "1000",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 1300,
+            "text": "1300",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 1410,
+            "text": "1410",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 1400,
+        "hints": [
+          "Round 1365 to the closest hundreds.",
+          "Look at the digit just to the right of the hundreds place: it is 6.",
+          "Since 6 ≥ 5, round up.",
+          "1365 rounded to the closest hundreds is 1400."
+        ],
+        "sample_id": "c998a6f7681018284993",
+        "replay_digest": "bbc2d535677d5614c1d8c32795e767ebcf135bb05d4510bb3e154040aa98f64b"
+      },
+      {
+        "node_id": "mat_g3_na_q1_4",
+        "seed": 78,
+        "formatter": "cloze",
+        "question_text": "Round 1983 to the nearest 10.",
+        "correct_answer": 1980,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 1980,
+            "text": "1980",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 1981,
+            "text": "1981",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 1900,
+            "text": "1900",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 1990,
+            "text": "1990",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 1980,
+        "hints": [
+          "Round 1983 to the closest tens.",
+          "Look at the digit just to the right of the tens place: it is 3.",
+          "Since 3 < 5, round down (keep the tens digit the same).",
+          "1983 rounded to the closest tens is 1980."
+        ],
+        "sample_id": "50c167dec6e2bef8b8ff",
+        "replay_digest": "e0509768d3be8f646b45e5ae1cbad2e7bcbe0c1135614e7085da13169f847ffd"
+      },
+      {
+        "node_id": "mat_g3_na_q1_4",
+        "seed": 91,
+        "formatter": "read_mcq",
+        "question_text": "The number 7048 is marked on the number line. Round 7048 to the nearest 10.",
+        "correct_answer": "B",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "NumberLine",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 7040,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 7050,
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 7000,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 7060,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 7050,
+        "hints": [
+          "Round 7048 to the closest tens.",
+          "Look at the digit just to the right of the tens place: it is 8.",
+          "Since 8 ≥ 5, round up.",
+          "7048 rounded to the closest tens is 7050."
+        ],
+        "visual_type": "NumberLine",
+        "visual_payload": {
+          "value": 7048,
+          "start": 7030,
+          "end": 7060,
+          "interval": 1,
+          "divisions": 30,
+          "correct_position": 7048,
+          "dot_value": 7048,
+          "content_type": "whole_number",
+          "labels": [
+            "7030",
+            "7060"
+          ],
+          "marked_points": [],
+          "question_mark_at": null,
+          "is_interactive": false,
+          "show_labels": true,
+          "correct_answer": 7050.0,
+          "target": 7050.0
+        },
+        "visual_render": {
+          "visual_type": "NumberLine",
+          "renderer_input_digest": "bef9b2d03a661f5fc5f201902f902c55663b956e60470944891b28987061ade7",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "NumberLine",
+            "element_count": 67,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "7030",
+              "7031",
+              "7032",
+              "7033",
+              "7034",
+              "7035",
+              "7036",
+              "7037",
+              "7038",
+              "7039",
+              "7040",
+              "7041",
+              "7042",
+              "7043",
+              "7044",
+              "7045",
+              "7046",
+              "7047",
+              "7048",
+              "7049",
+              "7050",
+              "7051",
+              "7052",
+              "7053",
+              "7054",
+              "7055",
+              "7056",
+              "7057",
+              "7058",
+              "7059",
+              "7060"
+            ],
+            "distinct_colours": [
+              "hsl(var(--border-color)",
+              "hsl(var(--text-muted)",
+              "hsl(var(--text)",
+              "hsl(var(--primary)",
+              "hsl(var(--card-bg)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "9e0f9a940d78c4404884",
+        "replay_digest": "20ddafcf8cda65d0eb90c7ed499f1d240339feb6c535b73edc6af7e24d5a0708"
+      },
+      {
+        "node_id": "mat_g3_na_q1_4",
+        "seed": 103,
+        "formatter": "read_mcq",
+        "question_text": "The number 7005 is marked on the number line. Round 7005 to the nearest 1000.",
+        "correct_answer": "D",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "NumberLine",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 0,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 7010,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 7105,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 7000,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 7000,
+        "hints": [
+          "Round 7005 to the closest thousands.",
+          "Look at the digit just to the right of the thousands place: it is 0.",
+          "Since 0 < 5, round down (keep the thousands digit the same).",
+          "7005 rounded to the closest thousands is 7000."
+        ],
+        "visual_type": "NumberLine",
+        "visual_payload": {
+          "value": 7005,
+          "start": 6000,
+          "end": 9000,
+          "interval": 100,
+          "divisions": 30,
+          "correct_position": 7005,
+          "dot_value": 7005,
+          "content_type": "whole_number",
+          "labels": [
+            "6000",
+            "9000"
+          ],
+          "marked_points": [],
+          "question_mark_at": null,
+          "is_interactive": false,
+          "show_labels": true,
+          "correct_answer": 7000.0,
+          "target": 7000.0
+        },
+        "visual_render": {
+          "visual_type": "NumberLine",
+          "renderer_input_digest": "bec5f505213638475bf5b9293724e23a0bc17c78227bb9bc1840432a1d01080f",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "NumberLine",
+            "element_count": 67,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "6000",
+              "6100",
+              "6200",
+              "6300",
+              "6400",
+              "6500",
+              "6600",
+              "6700",
+              "6800",
+              "6900",
+              "7000",
+              "7100",
+              "7200",
+              "7300",
+              "7400",
+              "7500",
+              "7600",
+              "7700",
+              "7800",
+              "7900",
+              "8000",
+              "8100",
+              "8200",
+              "8300",
+              "8400",
+              "8500",
+              "8600",
+              "8700",
+              "8800",
+              "8900",
+              "9000"
+            ],
+            "distinct_colours": [
+              "hsl(var(--border-color)",
+              "hsl(var(--text-muted)",
+              "hsl(var(--text)",
+              "hsl(var(--primary)",
+              "hsl(var(--card-bg)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "33a38fd2dde705ac1b1b",
+        "replay_digest": "f33d9092896512f25b1c6cc0498afb9215ca87eec814a4dd1d27b15484cccdf6"
+      },
+      {
+        "node_id": "mat_g3_na_q1_4",
+        "seed": 118,
+        "formatter": "mcq",
+        "question_text": "Round 2295 to the nearest 1000.",
+        "correct_answer": 2000,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 2001,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 2010,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 2000,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 0,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 2000,
+        "hints": [
+          "Round 2295 to the closest thousands.",
+          "Look at the digit just to the right of the thousands place: it is 2.",
+          "Since 2 < 5, round down (keep the thousands digit the same).",
+          "2295 rounded to the closest thousands is 2000."
+        ],
+        "sample_id": "8a3cc67f6a17401bbe5c",
+        "replay_digest": "a5bde8994204466e45a491646f4453f85a22523dc79d534f67ac21dd3e044c37"
+      },
+      {
+        "node_id": "mat_g3_na_q1_4",
+        "seed": 127,
+        "formatter": "read_mcq",
+        "question_text": "The number 7389 is marked on the number line. Round 7389 to the nearest 10.",
+        "correct_answer": "C",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "NumberLine",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 7400,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 7300,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 7390,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 7380,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 7390,
+        "hints": [
+          "Round 7389 to the closest tens.",
+          "Look at the digit just to the right of the tens place: it is 9.",
+          "Since 9 ≥ 5, round up.",
+          "7389 rounded to the closest tens is 7390."
+        ],
+        "visual_type": "NumberLine",
+        "visual_payload": {
+          "value": 7389,
+          "start": 7370,
+          "end": 7400,
+          "interval": 1,
+          "divisions": 30,
+          "correct_position": 7389,
+          "dot_value": 7389,
+          "content_type": "whole_number",
+          "labels": [
+            "7370",
+            "7400"
+          ],
+          "marked_points": [],
+          "question_mark_at": null,
+          "is_interactive": false,
+          "show_labels": true,
+          "correct_answer": 7390.0,
+          "target": 7390.0
+        },
+        "visual_render": {
+          "visual_type": "NumberLine",
+          "renderer_input_digest": "7602d5e3ad5a5dc620816647ee65d9d1baa301ce14ac4dc6ca78484545aad6d9",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "NumberLine",
+            "element_count": 67,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "7370",
+              "7371",
+              "7372",
+              "7373",
+              "7374",
+              "7375",
+              "7376",
+              "7377",
+              "7378",
+              "7379",
+              "7380",
+              "7381",
+              "7382",
+              "7383",
+              "7384",
+              "7385",
+              "7386",
+              "7387",
+              "7388",
+              "7389",
+              "7390",
+              "7391",
+              "7392",
+              "7393",
+              "7394",
+              "7395",
+              "7396",
+              "7397",
+              "7398",
+              "7399",
+              "7400"
+            ],
+            "distinct_colours": [
+              "hsl(var(--border-color)",
+              "hsl(var(--text-muted)",
+              "hsl(var(--text)",
+              "hsl(var(--primary)",
+              "hsl(var(--card-bg)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "28b3d6fd11ceb7ed5d83",
+        "replay_digest": "aca3c703cf7bf1dc7a138550f0c84642d04e9f50bd5ecc9af803eac3a840cc8d"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "round",
+      "node_id": "mat_g3_na_q1_4",
+      "clause": "Round",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Rounding is the demand in all ten samples without exception - each stem says \"Round\" a given value to a stated place, and the key is the rounded result (4766 to 4770, 1815 to 2000, and so on). The four number-line seeds put the target value on a labelled scale, which supports the rounding judgement rather than replacing it.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "numbers",
+      "node_id": "mat_g3_na_q1_4",
+      "clause": "numbers",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        118
+      ],
+      "reasoning": "What gets rounded in this block is always a number - 7035, 7515, 1815, 4766, 1365, 1983, 2295 - given in standard numeral form, within the thousands range. The clause's noun is satisfied straightforwardly; there is no substitution of quantities, measures or objects for the numbers themselves.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "nearest_ten",
+      "node_id": "mat_g3_na_q1_4",
+      "clause": "nearest ten",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        57,
+        78,
+        91,
+        127
+      ],
+      "reasoning": "Four of the ten samples set the rounding place at ten: 4766 goes to 4770, 1983 to 1980, and the two number-line seeds (91 with 7048, 127 with 7389) both ask for the nearest 10 while showing a unit-stepped scale on either side of the marked value. The ten-place case is therefore genuinely exercised, not merely available.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "hundred",
+      "node_id": "mat_g3_na_q1_4",
+      "clause": "hundred",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        64
+      ],
+      "reasoning": "Hundreds rounding turns up in three samples. Seed 23 takes 7515 to 7500 and seed 64 takes 1365 to 1400 - one down, one up, so both directions are seen - and seed 11 poses 7035 to the nearest 100 on a number line whose labels step by ten from 6900 to 7200, with 7000 as the key.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable.",
+      "content_note_from_attester": "Seed 11's distractors (7045, 7025, 7010) are all ten-place values under a hundred-place question, so three of four options are not multiples of 100 and the correct answer is identifiable without rounding."
+    },
+    {
+      "capability_id": "thousand",
+      "node_id": "mat_g3_na_q1_4",
+      "clause": "thousand",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        103,
+        118
+      ],
+      "reasoning": "The thousand place is asked for in seeds 42, 103 and 118: 1815 rounds up to 2000, 2295 rounds down to 2000, and 7005 rounds to 7000 on a number line labelled in hundreds from 6000 to 9000. Both rounding directions and both a bare and a visual presentation of the thousand case appear.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable.",
+      "content_note_from_attester": "In seeds 42 and 118 one distractor is 0, which no four-digit number rounds to at the thousand place."
+    }
+  ],
+  "supersedes": "Replaces batch026B12_mat_g3_na_q1_4, which §6F reported as unusable evidence (stale stem/answer, or a record that carries no options or no render-derived visual for content that renders one). The predecessor is left on disk; supersession is earned by this record, not declared by it."
+}

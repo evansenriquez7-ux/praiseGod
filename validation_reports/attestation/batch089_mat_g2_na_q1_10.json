@@ -1,0 +1,604 @@
+{
+  "batch": "batch089_mat_g2_na_q1_10",
+  "attested_at": "2026-09-21T00:00:00Z",
+  "attested_by": "blind-attester-opus5-d10-20260921",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "the Attester was told to read exactly local_only/scratch/attester/h06/d10.prompt.txt, which is attester_packets.render_prompt_block output (item id, clause, competency, grade/quarter and the rendered samples only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "prompt-contract dispatch to a separate agent: told to read exactly one packet render and no other path, and to write its verdict JSON. Tool access was NOT structurally prevented, so this does not claim the '0' (inline, no tool access) contract; at least one Read and one Write were expected and used."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g2_na_q1_10",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g2_na_q1_10",
+        "seed": 11,
+        "formatter": "mcq",
+        "question_text": "Is 288 + 701 the same as 701 + 239?",
+        "correct_answer": false,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": true,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "Only when both are 0",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": false,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "Cannot be determined",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": false,
+        "hints": [],
+        "sample_id": "f8df0cbc17ad74aeb0bb",
+        "replay_digest": "86108eeb10ba8a7963685aa1f70d4296f3f954e24cd56eb9c5e8964ee0ab8318"
+      },
+      {
+        "node_id": "mat_g2_na_q1_10",
+        "seed": 23,
+        "formatter": "mcq",
+        "question_text": "Is 692 + 301 the same as 301 + 552?",
+        "correct_answer": false,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": false,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "Cannot be determined",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": true,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "Only when both are 0",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": false,
+        "hints": [],
+        "sample_id": "4dfa0fd98add7c8fd2cf",
+        "replay_digest": "c011c00aa5a498cd565568687bb8b7926ce1979e733edf781ed6e3d39e3de819"
+      },
+      {
+        "node_id": "mat_g2_na_q1_10",
+        "seed": 42,
+        "formatter": "mcq",
+        "question_text": "Is (241 + 111) + 516 the same as 241 + (111 + 431)?",
+        "correct_answer": false,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "Cannot be determined",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "Only when both are 0",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": false,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": true,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": false,
+        "hints": [],
+        "sample_id": "be71538c23749f501c31",
+        "replay_digest": "f401acb24ae9f1e9cab52f446ebd1004b1d7ca86df2212c7cfb39c998e159b0b"
+      },
+      {
+        "node_id": "mat_g2_na_q1_10",
+        "seed": 57,
+        "formatter": "error_detect",
+        "question_text": "Pia solved: \"0 + 377 = ___\". Pia says the missing number is 377. Is Pia correct?",
+        "correct_answer": {
+          "has_error": false,
+          "correct_value": 377
+        },
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "error_detect",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "error_detect",
+          "experience": "standard"
+        },
+        "resolved_answer": {
+          "has_error": false,
+          "correct_value": 377
+        },
+        "hints": [
+          "We are adding two numbers: 0 and 377.",
+          "Add the ones: 0 + 7 = 7. Write 7 in the ones place.",
+          "Add the tens: 0 + 7 = 7.",
+          "The sum is 0 + 377 = 377."
+        ],
+        "sample_id": "ffe5fb8e44f104d9d389",
+        "replay_digest": "e6489f6ce5a7e0575ef5cd481f576824ce3ab7b5238d41a34f93c39bf48de85c"
+      },
+      {
+        "node_id": "mat_g2_na_q1_10",
+        "seed": 64,
+        "formatter": "mcq",
+        "question_text": "Is 892 + 6 the same as 6 + 892?",
+        "correct_answer": true,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "Cannot be determined",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "Only when both are 0",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": true,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": false,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": true,
+        "hints": [],
+        "sample_id": "6f53cd93a427b57b8aa9",
+        "replay_digest": "8078e7120b72ebdb875662314f9aaf9ce53d8e714107d98ac5b96f503b546ff2"
+      },
+      {
+        "node_id": "mat_g2_na_q1_10",
+        "seed": 78,
+        "formatter": "mcq",
+        "question_text": "What is 99 + 0?",
+        "correct_answer": 99,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 99,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 100,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 109,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 98,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 99,
+        "hints": [
+          "We are adding two numbers: 99 and 0.",
+          "Add the ones: 9 + 0 = 9. Write 9 in the ones place.",
+          "Add the tens: 9 + 0 = 9.",
+          "The sum is 99 + 0 = 99."
+        ],
+        "sample_id": "12930cf34051aed06243",
+        "replay_digest": "a516c4d3ed0162dcb5edc5b5e1869027653d4278ee2590b09fcacdb6db63efc3"
+      },
+      {
+        "node_id": "mat_g2_na_q1_10",
+        "seed": 91,
+        "formatter": "error_detect",
+        "question_text": "Grace solved: \"0 + 605 = ___\". Grace says the missing number is 605. Is Grace correct?",
+        "correct_answer": {
+          "has_error": false,
+          "correct_value": 605
+        },
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "error_detect",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "error_detect",
+          "experience": "standard"
+        },
+        "resolved_answer": {
+          "has_error": false,
+          "correct_value": 605
+        },
+        "hints": [
+          "We are adding two numbers: 0 and 605.",
+          "Add the ones: 0 + 5 = 5. Write 5 in the ones place.",
+          "Add the tens: 0 + 0 = 0.",
+          "The sum is 0 + 605 = 605."
+        ],
+        "sample_id": "c6d06f370c8f52f1695e",
+        "replay_digest": "73620154ff5f65fc62e84900046dbb6522eb7f5e72d9049ff3dd17ca4d5afce1"
+      },
+      {
+        "node_id": "mat_g2_na_q1_10",
+        "seed": 103,
+        "formatter": "mcq",
+        "question_text": "Is (714 + 112) + 63 the same as 714 + (112 + 63)?",
+        "correct_answer": true,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "Cannot be determined",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": false,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": true,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "Only when both are 0",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": true,
+        "hints": [],
+        "sample_id": "cddb9ffafb07c2bf599d",
+        "replay_digest": "58aad825af0262b18994deab291353d7aed8bd6c135f3f9e1c1e1115fc98de26"
+      },
+      {
+        "node_id": "mat_g2_na_q1_10",
+        "seed": 118,
+        "formatter": "mcq",
+        "question_text": "Is (16 + 451) + 222 the same as 16 + (451 + 245)?",
+        "correct_answer": false,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": true,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": false,
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "Cannot be determined",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "Only when both are 0",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": false,
+        "hints": [],
+        "sample_id": "71b16f61ad2cdcb5248c",
+        "replay_digest": "653e0682fabfd7b6f685a055fa5ddaeeaaa26905d9eedfce757d14a20c37bc2d"
+      },
+      {
+        "node_id": "mat_g2_na_q1_10",
+        "seed": 127,
+        "formatter": "cloze",
+        "question_text": "0 + 935 = ___",
+        "correct_answer": 935,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 945,
+            "text": "945",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 935,
+            "text": "935",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 934,
+            "text": "934",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 936,
+            "text": "936",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 935,
+        "hints": [
+          "We are adding two numbers: 0 and 935.",
+          "Add the ones: 0 + 5 = 5. Write 5 in the ones place.",
+          "Add the tens: 0 + 3 = 3.",
+          "The sum is 0 + 935 = 935."
+        ],
+        "sample_id": "12686c0c543922a51064",
+        "replay_digest": "f4543c6a2b544b205c6af24fc767808f8cca812e94d5afb4115d4fac61f5494b"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "illustrate_properties",
+      "node_id": "mat_g2_na_q1_10",
+      "clause": "Illustrate",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        64,
+        103,
+        127
+      ],
+      "reasoning": "To illustrate a property, a sample has to put a concrete instance of it in front of the learner, and these do: seed 64 lays 892 + 6 beside 6 + 892, seed 103 lays (714 + 112) + 63 beside 714 + (112 + 63), and seed 127 shows 0 + 935 = ___ with the zero addend visible. The illustration is symbolic rather than pictorial, but each property is displayed in a worked numeric case, not merely named.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable.",
+      "content_note_from_attester": "No VISUAL RENDERED appears anywhere in this block, so the illustrating is done entirely in number sentences; if this clause is meant to require a model or picture, this node has nothing pictorial to offer."
+    },
+    {
+      "capability_id": "apply_properties",
+      "node_id": "mat_g2_na_q1_10",
+      "clause": "apply",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        78,
+        127,
+        42,
+        57
+      ],
+      "reasoning": "Application means the learner has to use a property to get somewhere. Seeds 78 and 127 hand over 99 + 0 and 0 + 935 and demand the value, which only the zero property supplies without computation; seed 42 forces a decision about regrouped parentheses; seed 57 makes the learner adjudicate someone else's use of the zero rule. That is the property being put to work, not recited.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "properties_of_addition",
+      "node_id": "mat_g2_na_q1_10",
+      "clause": "properties of addition",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        64,
+        103,
+        78
+      ],
+      "reasoning": "All three addition properties named by the competency turn up across the ten samples: identity with zero (78, 127, 57, 91), order of addends (64, 11, 23) and grouping of addends (103, 42, 118). Nothing in the block strays outside those three, so the clause's subject matter is what the samples are about.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "sums_up_to_1000",
+      "node_id": "mat_g2_na_q1_10",
+      "clause": "sums up to 1000",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        103,
+        127
+      ],
+      "reasoning": "I added the addends in every sample and the totals sit inside the ceiling the clause sets: 288 + 701 = 989, 714 + 112 + 63 = 889, 0 + 935 = 935, 692 + 301 = 993, and the smallest is 99 + 0. The band is genuinely worked at its top end rather than hugging two-digit numbers, and no sample crosses 1000.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "identity_property",
+      "node_id": "mat_g2_na_q1_10",
+      "clause": "sum of zero and any number is equal to the number",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        57,
+        78,
+        91,
+        127
+      ],
+      "reasoning": "Four samples are squarely about adding zero and getting the original number back: 0 + 377 answered 377, 99 + 0 answered 99, 0 + 605 answered 605, 0 + 935 answered 935. Both orders of the zero appear, which matters because the property is stated for zero plus any number, and the keys agree with the property in every case.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "commutative_property",
+      "node_id": "mat_g2_na_q1_10",
+      "clause": "changing the order of the addends does not change the sum",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        64,
+        11,
+        23
+      ],
+      "reasoning": "Seed 64 is the clean commutative case, asking whether 892 + 6 equals 6 + 892 with the key True. Seeds 11 and 23 probe the same idea from the negative side by swapping the order and quietly altering an addend, so the learner has to notice that only a pure reordering preserves the sum. Order of addends is therefore the explicit subject of three samples.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable.",
+      "content_note_from_attester": "In seeds 11, 23, 42 and 118 the false variants change one addend as well as the order or grouping, which tests vigilance but could also teach a learner that reordering itself sometimes changes the sum; a stem cue that a number was changed would remove the ambiguity."
+    },
+    {
+      "capability_id": "associative_property",
+      "node_id": "mat_g2_na_q1_10",
+      "clause": "changing the grouping of the addends does not change the sum",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        103,
+        42,
+        118
+      ],
+      "reasoning": "Regrouping of addends is shown with parentheses that move: seed 103 gives (714 + 112) + 63 against 714 + (112 + 63) and keys True, while seeds 42 and 118 present shifted groupings whose addends were also tampered with and key False. Three samples out of ten put the grouping question directly to the learner.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    }
+  ],
+  "supersedes": "Replaces batch025B03_mat_g2_na_q1_10, which §6F reported as unusable evidence (stale stem/answer, or a record that carries no options or no render-derived visual for content that renders one). The predecessor is left on disk; supersession is earned by this record, not declared by it."
+}

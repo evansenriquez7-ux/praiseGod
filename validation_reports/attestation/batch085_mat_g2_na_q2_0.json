@@ -1,0 +1,1034 @@
+{
+  "batch": "batch085_mat_g2_na_q2_0",
+  "attested_at": "2026-09-21T00:00:00Z",
+  "attested_by": "blind-attester-opus5-d06-20260921",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "the Attester was told to read exactly local_only/scratch/attester/h06/d06.prompt.txt, which is attester_packets.render_prompt_block output (item id, clause, competency, grade/quarter and the rendered samples only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "prompt-contract dispatch to a separate agent: told to read exactly one packet render and no other path, and to write its verdict JSON. Tool access was NOT structurally prevented, so this does not claim the '0' (inline, no tool access) contract; at least one Read and one Write were expected and used."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g2_na_q2_0",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g2_na_q2_0",
+        "seed": 11,
+        "formatter": "set_fill_in_blank",
+        "question_text": "Use coins and bills to make exactly ₱26. Use the fewest pieces possible.",
+        "correct_answer": 26,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "set_fill_in_blank",
+          "is_visual": true,
+          "visual_type": "PesoMoney",
+          "interaction_mode": "set",
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "resolved_answer": 26,
+        "hints": [
+          "You have these amounts: ['peso5', 'peso1', 'peso20'].",
+          "Step 1: Add peso5 → running total = peso5.",
+          "Step 2: Add peso1 → running total = peso6.",
+          "Step 3: Add peso20 → running total = peso26.",
+          "The total is peso26."
+        ],
+        "visual_type": "PesoMoney",
+        "visual_payload": {
+          "coins": [
+            {
+              "denomination": 1,
+              "count": 1
+            },
+            {
+              "denomination": 5,
+              "count": 1
+            }
+          ],
+          "bills": [
+            {
+              "denomination": 20,
+              "count": 1
+            }
+          ],
+          "total": 26,
+          "target_amount": 26,
+          "exclude_centavos": true,
+          "coin_faces": [
+            1,
+            5,
+            10
+          ],
+          "bill_faces": [
+            20,
+            50,
+            100,
+            200
+          ],
+          "require_fewest": true,
+          "is_interactive": true
+        },
+        "visual_render": {
+          "visual_type": "PesoMoney",
+          "renderer_input_digest": "41e32efc3d37a4687b70f6587f8def0970744737eb5b902d69da52239e845103",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "PesoMoney",
+            "element_count": 19,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 9,
+            "input_count": 0,
+            "text_labels": [
+              "Make exactly:",
+              "₱26",
+              "BILLS",
+              "₱1000",
+              "₱500",
+              "₱200",
+              "₱100",
+              "₱50",
+              "₱20",
+              "COINS",
+              "₱10",
+              "₱5",
+              "₱1"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text)",
+              "hsl(var(--primary)",
+              "hsl(var(--text-muted)",
+              "#10b981,",
+              "#059669)",
+              "#fff",
+              "#f59e0b,",
+              "#d97706)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "10f49aefb0f975e4306a",
+        "replay_digest": "ce060c4b6c8275efe6801acdff8a6077f2de2be16a9f1fcb2f9ce18528b2d34c"
+      },
+      {
+        "node_id": "mat_g2_na_q2_0",
+        "seed": 23,
+        "formatter": "cloze",
+        "question_text": "How much is 1 ₱500 bill and 1 ₱200 bill altogether?",
+        "correct_answer": 700,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 690,
+            "text": "690",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 701,
+            "text": "701",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 700,
+            "text": "700",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 7000,
+            "text": "7000",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 700,
+        "hints": [
+          "You have these amounts: ['peso200', 'peso500'].",
+          "Step 1: Add peso200 → running total = peso200.",
+          "Step 2: Add peso500 → running total = peso700.",
+          "The total is peso700."
+        ],
+        "sample_id": "384b3aea71eab4a0b8cb",
+        "replay_digest": "45d7c8d8c7b9d1fbc646d6a8ffec3a9d947c36850fcefb7d300af39e090f0a0d"
+      },
+      {
+        "node_id": "mat_g2_na_q2_0",
+        "seed": 42,
+        "formatter": "read_mcq",
+        "question_text": "The dot is at ₱25 and it moves forward ₱50. Which amount will the dot land on?",
+        "correct_answer": "D",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "NumberLine",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 174,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 180,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 170,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 175,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 175,
+        "hints": [
+          "You have these amounts: ['peso25', 'peso50', 'peso50', 'peso50'].",
+          "Step 1: Add peso25 → running total = peso25.",
+          "Step 2: Add peso50 → running total = peso75.",
+          "Step 3: Add peso50 → running total = peso125.",
+          "Step 4: Add peso50 → running total = peso175.",
+          "The total is peso175."
+        ],
+        "visual_type": "NumberLine",
+        "visual_payload": {
+          "start": 10,
+          "end": 180,
+          "major_interval": 10,
+          "minor_interval": 5,
+          "interval": 5,
+          "dot_value": 25,
+          "move_by": 50,
+          "content_type": "whole_number",
+          "value": 175,
+          "correct_position": 175,
+          "divisions": 34,
+          "is_interactive": false,
+          "show_labels": true,
+          "correct_answer": 175.0,
+          "target": 175.0
+        },
+        "visual_render": {
+          "visual_type": "NumberLine",
+          "renderer_input_digest": "742497561e3b68c268c285ded551fabefc26b76330e040695033c9564de6fcd8",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "NumberLine",
+            "element_count": 58,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "10",
+              "20",
+              "30",
+              "40",
+              "50",
+              "60",
+              "70",
+              "80",
+              "90",
+              "100",
+              "110",
+              "120",
+              "130",
+              "140",
+              "150",
+              "160",
+              "170",
+              "180"
+            ],
+            "distinct_colours": [
+              "hsl(var(--border-color)",
+              "hsl(var(--text-muted)",
+              "hsl(var(--text)",
+              "hsl(var(--primary)",
+              "hsl(var(--card-bg)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "e834b8202ed9c79ef881",
+        "replay_digest": "8b08f464cdd8351f19dfd791fcee32ce1786bdc28048b9fe85298b18e1e2eed6"
+      },
+      {
+        "node_id": "mat_g2_na_q2_0",
+        "seed": 57,
+        "formatter": "mcq",
+        "question_text": "How much is 5 50¢ coins and 2 25¢ coins altogether, in centavos?",
+        "correct_answer": 300,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 3000,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 300,
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 290,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 301,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 300,
+        "hints": [
+          "You have these amounts: ['peso50', 'peso25', 'peso50', 'peso25', 'peso50', 'peso50', 'peso50'].",
+          "Step 1: Add peso50 → running total = peso50.",
+          "Step 2: Add peso25 → running total = peso75.",
+          "Step 3: Add peso50 → running total = peso125.",
+          "Step 4: Add peso25 → running total = peso150.",
+          "Step 5: Add peso50 → running total = peso200.",
+          "Step 6: Add peso50 → running total = peso250.",
+          "Step 7: Add peso50 → running total = peso300.",
+          "The total is peso300."
+        ],
+        "sample_id": "d5960a523abdb7f6ae62",
+        "replay_digest": "dfabcebe13eed3f5992b681f5de062d26b7459301288979d99f628f56879a526"
+      },
+      {
+        "node_id": "mat_g2_na_q2_0",
+        "seed": 64,
+        "formatter": "read_mcq",
+        "question_text": "Use coins and bills to make exactly ₱62. Use the fewest pieces possible.",
+        "correct_answer": "C",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "PesoMoney",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 82,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 61,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 62,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 72,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 62,
+        "hints": [
+          "You have these amounts: ['peso1', 'peso10', 'peso50', 'peso1'].",
+          "Step 1: Add peso1 → running total = peso1.",
+          "Step 2: Add peso10 → running total = peso11.",
+          "Step 3: Add peso50 → running total = peso61.",
+          "Step 4: Add peso1 → running total = peso62.",
+          "The total is peso62."
+        ],
+        "visual_type": "PesoMoney",
+        "visual_payload": {
+          "coins": [
+            {
+              "denomination": 1,
+              "count": 2
+            },
+            {
+              "denomination": 10,
+              "count": 1
+            }
+          ],
+          "bills": [
+            {
+              "denomination": 50,
+              "count": 1
+            }
+          ],
+          "total": 62,
+          "target_amount": 62,
+          "exclude_centavos": true,
+          "coin_faces": [
+            1,
+            5,
+            10
+          ],
+          "bill_faces": [
+            20,
+            50,
+            100,
+            200
+          ],
+          "require_fewest": true,
+          "is_interactive": false
+        },
+        "visual_render": {
+          "visual_type": "PesoMoney",
+          "renderer_input_digest": "c90915dec356811daf90649da63710eda08a6694f6e2d01807b4fbfb8f41c17c",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "PesoMoney",
+            "element_count": 17,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "BILLS",
+              "₱50",
+              "REPUBLIKA NG PILIPINAS",
+              "COINS",
+              "₱1",
+              "₱10"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "#fda4af,",
+              "#dc2626)",
+              "#fff",
+              "#cbd5e1,",
+              "#94a3b8)",
+              "#1e293b",
+              "#64748b",
+              "#fef08a 60%,",
+              "#cbd5e1 60%)",
+              "#94a3b8"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "cf8bbffb135a615512be",
+        "replay_digest": "8b8cd2f5c9a2ba286e9860ec60e5891911ed361ac6faa9f41fcbb2acd755052b"
+      },
+      {
+        "node_id": "mat_g2_na_q2_0",
+        "seed": 78,
+        "formatter": "read_mcq",
+        "question_text": "The dot is at ₱1 and it moves forward ₱5. Which amount will the dot land on?",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "NumberLine",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 58,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 53,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 63,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 57,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 58,
+        "hints": [
+          "You have these amounts: ['peso1', 'peso5', 'peso10', 'peso5', 'peso1', 'peso10', 'peso10', 'peso1', 'peso5', 'peso5', 'peso5'].",
+          "Step 1: Add peso1 → running total = peso1.",
+          "Step 2: Add peso5 → running total = peso6.",
+          "Step 3: Add peso10 → running total = peso16.",
+          "Step 4: Add peso5 → running total = peso21.",
+          "Step 5: Add peso1 → running total = peso22.",
+          "Step 6: Add peso10 → running total = peso32.",
+          "Step 7: Add peso10 → running total = peso42.",
+          "Step 8: Add peso1 → running total = peso43.",
+          "Step 9: Add peso5 → running total = peso48.",
+          "Step 10: Add peso5 → running total = peso53.",
+          "Step 11: Add peso5 → running total = peso58.",
+          "The total is peso58."
+        ],
+        "visual_type": "NumberLine",
+        "visual_payload": {
+          "start": 0,
+          "end": 60,
+          "major_interval": 10,
+          "minor_interval": 5,
+          "interval": 5,
+          "dot_value": 1,
+          "move_by": 5,
+          "content_type": "whole_number",
+          "value": 58,
+          "correct_position": 58,
+          "divisions": 12,
+          "is_interactive": false,
+          "show_labels": true,
+          "correct_answer": 58.0,
+          "target": 58.0
+        },
+        "visual_render": {
+          "visual_type": "NumberLine",
+          "renderer_input_digest": "11885eacad58fac5afc7790761f5b1848096ac35347891674b909416195c2c7b",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "NumberLine",
+            "element_count": 25,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "0",
+              "10",
+              "20",
+              "30",
+              "40",
+              "50",
+              "60"
+            ],
+            "distinct_colours": [
+              "hsl(var(--border-color)",
+              "hsl(var(--text-muted)",
+              "hsl(var(--text)",
+              "hsl(var(--primary)",
+              "hsl(var(--card-bg)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "967a8f0117efbb76b6a0",
+        "replay_digest": "386b2bd952018361719a2fa42dbe3fc10442180b452c3f6fbc54f8d7d0e70fd8"
+      },
+      {
+        "node_id": "mat_g2_na_q2_0",
+        "seed": 91,
+        "formatter": "mcq",
+        "question_text": "Find the total amount of 3 50¢ coins, in centavos:",
+        "correct_answer": 150,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 150,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 151,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 140,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 1500,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 150,
+        "hints": [
+          "You have these amounts: ['peso50', 'peso50', 'peso50'].",
+          "Step 1: Add peso50 → running total = peso50.",
+          "Step 2: Add peso50 → running total = peso100.",
+          "Step 3: Add peso50 → running total = peso150.",
+          "The total is peso150."
+        ],
+        "sample_id": "22929169de0f98d2a668",
+        "replay_digest": "cb0c8fa6c0aa12eccea16efc0375bf380e8e1fcd56906d9bd29ca7b353ea480a"
+      },
+      {
+        "node_id": "mat_g2_na_q2_0",
+        "seed": 103,
+        "formatter": "mcq",
+        "question_text": "Find the total amount of 3 ₱200 bills, 1 ₱50 bill, and 1 ₱5 coin:",
+        "correct_answer": 655,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 645,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 656,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 6550,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 655,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 655,
+        "hints": [
+          "You have these amounts: ['peso50', 'peso5', 'peso200', 'peso200', 'peso200'].",
+          "Step 1: Add peso50 → running total = peso50.",
+          "Step 2: Add peso5 → running total = peso55.",
+          "Step 3: Add peso200 → running total = peso255.",
+          "Step 4: Add peso200 → running total = peso455.",
+          "Step 5: Add peso200 → running total = peso655.",
+          "The total is peso655."
+        ],
+        "sample_id": "684c215c9700b0109bf6",
+        "replay_digest": "d93c26305159a7c4ba6fdb8db176e76d2f21fbfc864cb4450727de25d1b1cf55"
+      },
+      {
+        "node_id": "mat_g2_na_q2_0",
+        "seed": 118,
+        "formatter": "read_mcq",
+        "question_text": "The dot is at ₱1 and it moves forward ₱5. Which amount will the dot land on?",
+        "correct_answer": "B",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "NumberLine",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 52,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 57,
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 56,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 62,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 57,
+        "hints": [
+          "You have these amounts: ['peso1', 'peso5', 'peso10', 'peso10', 'peso10', 'peso5', 'peso10', 'peso1', 'peso5'].",
+          "Step 1: Add peso1 → running total = peso1.",
+          "Step 2: Add peso5 → running total = peso6.",
+          "Step 3: Add peso10 → running total = peso16.",
+          "Step 4: Add peso10 → running total = peso26.",
+          "Step 5: Add peso10 → running total = peso36.",
+          "Step 6: Add peso5 → running total = peso41.",
+          "Step 7: Add peso10 → running total = peso51.",
+          "Step 8: Add peso1 → running total = peso52.",
+          "Step 9: Add peso5 → running total = peso57.",
+          "The total is peso57."
+        ],
+        "visual_type": "NumberLine",
+        "visual_payload": {
+          "start": 0,
+          "end": 60,
+          "major_interval": 10,
+          "minor_interval": 5,
+          "interval": 5,
+          "dot_value": 1,
+          "move_by": 5,
+          "content_type": "whole_number",
+          "value": 57,
+          "correct_position": 57,
+          "divisions": 12,
+          "is_interactive": false,
+          "show_labels": true,
+          "correct_answer": 57.0,
+          "target": 57.0
+        },
+        "visual_render": {
+          "visual_type": "NumberLine",
+          "renderer_input_digest": "a20d0add113f3414c58c7b7477969c3925e393de69065991b940c07469035e77",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "NumberLine",
+            "element_count": 25,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "0",
+              "10",
+              "20",
+              "30",
+              "40",
+              "50",
+              "60"
+            ],
+            "distinct_colours": [
+              "hsl(var(--border-color)",
+              "hsl(var(--text-muted)",
+              "hsl(var(--text)",
+              "hsl(var(--primary)",
+              "hsl(var(--card-bg)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "41a609d7536636d0c14b",
+        "replay_digest": "1924b422f5e0da2a382987345df81a14244a107d87d74d7ff786cdcecd771562"
+      },
+      {
+        "node_id": "mat_g2_na_q2_0",
+        "seed": 127,
+        "formatter": "cloze",
+        "question_text": "What is the total value of 3 50¢ coins and 6 25¢ coins, in centavos?",
+        "correct_answer": 300,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 301,
+            "text": "301",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 290,
+            "text": "290",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 3000,
+            "text": "3000",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 300,
+            "text": "300",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 300,
+        "hints": [
+          "You have these amounts: ['peso50', 'peso25', 'peso50', 'peso50', 'peso25', 'peso25', 'peso25', 'peso25', 'peso25'].",
+          "Step 1: Add peso50 → running total = peso50.",
+          "Step 2: Add peso25 → running total = peso75.",
+          "Step 3: Add peso50 → running total = peso125.",
+          "Step 4: Add peso50 → running total = peso175.",
+          "Step 5: Add peso25 → running total = peso200.",
+          "Step 6: Add peso25 → running total = peso225.",
+          "Step 7: Add peso25 → running total = peso250.",
+          "Step 8: Add peso25 → running total = peso275.",
+          "Step 9: Add peso25 → running total = peso300.",
+          "The total is peso300."
+        ],
+        "sample_id": "b8181aa6aca0c9299325",
+        "replay_digest": "ddd783be3f48bf5e6dcd8da107df52b476c79958e0a26af5f682ac00acb8c36c"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "determine",
+      "node_id": "mat_g2_na_q2_0",
+      "clause": "Determine",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        23,
+        57,
+        91,
+        103,
+        127
+      ],
+      "reasoning": "Working out how much a stated collection is worth is the core demand in five of these samples: one 500-peso bill plus one 200-peso bill (23), five 50-centavo coins plus two 25-centavo coins (57), three 50-centavo coins (91), a mix of 200-peso bills, a 50-peso bill and a 5-peso coin (103), and a larger centavo mix (127). Each asks for a total value, which is the determining the clause calls for.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable.",
+      "content_note_from_attester": "The three NumberLine seeds look defective: seed 42 starts the dot at 25 pesos and moves it forward 50, which should land on 75, yet the key is 175; seeds 78 and 118 share the identical stem (dot at 1 peso, forward 5 pesos, so 6) but carry keys of 58 and 57 respectively. Two identical stems cannot have different correct answers, and none of the three keys follows from its stem."
+    },
+    {
+      "capability_id": "write_value",
+      "node_id": "mat_g2_na_q2_0",
+      "clause": "write the value",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        57,
+        91,
+        103,
+        127
+      ],
+      "reasoning": "Every sample that asks for a value hands the learner four numerals to pick between (23, 57, 91, 103, 127), so the response is a selection, not a written amount. The one seed without options (11) does not ask for a value at all: it displays a peso board of nine tappable denominations under the heading make exactly 26 pesos and has the learner assemble that amount, which runs the other direction - building a collection from a given figure instead of recording the figure of a given collection. Nothing here has the learner write down a value.",
+      "action_taken": "Filed as a §6F CONTRADICTED finding against H-06 and left reported. This session's scope is re-earning blind evidence at zero re-proof cost; no CAPABILITY_PROVIDERS entry was deleted and no artifact was built, because either act is a source edit that owes the full re-proof chain. The contradiction stands as the queue item.",
+      "content_note_from_attester": "The distractor sets in the value items are consistently off-by-one and off-by-a-factor-of-ten (690/701/700/7000, 150/151/140/1500), which is a reasonable design but means the selection is easy to make without computing the total."
+    },
+    {
+      "capability_id": "number_of_bills",
+      "node_id": "mat_g2_na_q2_0",
+      "clause": "number of bills",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        23,
+        103
+      ],
+      "reasoning": "Bills are counted by quantity and denomination in two seeds: one 500-peso bill and one 200-peso bill totalling 700 (23), and three 200-peso bills together with a 50-peso bill inside a larger total (103). Both give the learner a number of bills of a stated face value and ask what they come to.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "number_of_coins",
+      "node_id": "mat_g2_na_q2_0",
+      "clause": "number of coins",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        57,
+        91,
+        127
+      ],
+      "reasoning": "A stated quantity of coins of stated denominations is the whole content of three samples - five 50-centavo and two 25-centavo pieces (57), three 50-centavo pieces (91), three 50-centavo plus six 25-centavo pieces (127). In each the learner multiplies out and adds the coin values, which is what this clause describes.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "combination_of_bills_and_coins",
+      "node_id": "mat_g2_na_q2_0",
+      "clause": "combination of bills and coins",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        64,
+        103
+      ],
+      "reasoning": "Mixed holdings of paper and metal money do appear. Seed 103 totals three 200-peso bills, a 50-peso bill and a 5-peso coin in one sum; seeds 11 and 64 instruct the learner to use coins and bills together to reach an exact amount, and their PesoMoney boards render both categories, labelled BILLS and COINS, with 50-peso paper alongside 1-peso and 10-peso pieces in seed 64.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "up_to_1000",
+      "node_id": "mat_g2_na_q2_0",
+      "clause": "up to ₱1000",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        64,
+        103
+      ],
+      "reasoning": "Amounts stay inside the ceiling this clause sets while still reaching into the hundreds: 26 pesos (11), 700 pesos (23), 62 pesos (64) and 655 pesos (103) - all at or below 1000, none over. The peso board also lays out the full denomination set the range implies, with a 1000-peso note at the top of the BILLS row down to the 1-peso coin (11).",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable.",
+      "content_note_from_attester": "The largest total any sample asks for is 700 pesos, so the top of the range is approached but never worked at."
+    },
+    {
+      "capability_id": "centavo_coins_only",
+      "node_id": "mat_g2_na_q2_0",
+      "clause": "centavo coins only",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        57,
+        91,
+        127
+      ],
+      "reasoning": "Three samples are pure centavo problems: their collections contain nothing but 50-centavo and 25-centavo pieces, and each explicitly asks for the answer in centavos (57, 91, 127). No peso denomination enters those stems, so the exclusive sub-case named by this clause is genuinely isolated.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "peso_coins_only",
+      "node_id": "mat_g2_na_q2_0",
+      "clause": "peso coins only",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [
+        11,
+        57,
+        64,
+        91,
+        103,
+        127
+      ],
+      "reasoning": "There is no sample whose collection consists of peso coins and nothing else. The coin-only stems are all in centavos (57, 91, 127); where peso coins do turn up they are mixed with paper - a 5-peso coin among bills in 103, and 1-peso and 10-peso pieces sitting beside a 50-peso note in the rendered board of 64, with the same mixed instruction in 11. The exclusive peso-coin case the competency lists is simply absent from this block.",
+      "action_taken": "Filed as a §6F CONTRADICTED finding against H-06 and left reported. This session's scope is re-earning blind evidence at zero re-proof cost; no CAPABILITY_PROVIDERS entry was deleted and no artifact was built, because either act is a source edit that owes the full re-proof chain. The contradiction stands as the queue item."
+    },
+    {
+      "capability_id": "peso_bills_only",
+      "node_id": "mat_g2_na_q2_0",
+      "clause": "peso bills only",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        23
+      ],
+      "reasoning": "Seed 23 asks how much one 500-peso bill and one 200-peso bill come to altogether, keyed at 700. Its collection is paper money only - no coin of any kind, peso or centavo, is mentioned - which satisfies the bills-only case this clause singles out.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable.",
+      "content_note_from_attester": "Only one of the ten samples is bills-only, so the coverage of this sub-case rests on a single seed."
+    },
+    {
+      "capability_id": "combined_peso_coins_and_peso_bills",
+      "node_id": "mat_g2_na_q2_0",
+      "clause": "combined peso coins and peso bills",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        64,
+        103
+      ],
+      "reasoning": "Peso paper and peso metal are handled together rather than separately in three seeds. The clearest is 103, where three 200-peso bills and a 50-peso bill are totalled with a 5-peso coin. Seeds 11 and 64 pose the same mixture as a construction task, and seed 64's rendered board actually shows the combination in use: a 50-peso note under BILLS with 1-peso and 10-peso pieces under COINS.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    }
+  ],
+  "supersedes": "Replaces batch025S1_mat_g2_na_q2_0, which §6F reported as unusable evidence (stale stem/answer, or a record that carries no options or no render-derived visual for content that renders one). The predecessor is left on disk; supersession is earned by this record, not declared by it."
+}

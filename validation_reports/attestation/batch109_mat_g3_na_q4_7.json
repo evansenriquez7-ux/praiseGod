@@ -1,0 +1,972 @@
+{
+  "batch": "batch109_mat_g3_na_q4_7",
+  "attested_at": "2026-09-21T00:00:00Z",
+  "attested_by": "blind-attester-haiku45-d30-20260922",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "the Attester was told to read exactly local_only/scratch/attester/h06/d30.prompt.txt, which is attester_packets.render_prompt_block output (item id, clause, competency, grade/quarter and the rendered samples only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "prompt-contract dispatch to a separate agent: told to read exactly one packet render and no other path, and to write its verdict JSON. Tool access was NOT structurally prevented, so this does not claim the '0' (inline, no tool access) contract; at least one Read and one Write were expected and used."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g3_na_q4_7",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g3_na_q4_7",
+        "seed": 11,
+        "formatter": "set_click",
+        "question_text": "Shade the shape to show the result of 2/6 - 1/6.",
+        "correct_answer": "1/6",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "set_click",
+          "is_visual": true,
+          "visual_type": "FractionShade",
+          "interaction_mode": "set",
+          "answer_collection": "click",
+          "experience": "standard"
+        },
+        "resolved_answer": "1/6",
+        "hints": [
+          "When adding fractions with the same denominator, keep the denominator the same.",
+          "Add only the numerators: 2 + 1 = 3.",
+          "Write the result over the same denominator: 3/6.",
+          "The answer is 1/6."
+        ],
+        "visual_type": "FractionShade",
+        "visual_payload": {
+          "shape": "circle",
+          "total_parts": 6,
+          "ask_type": "shade_this_fraction",
+          "operation": "subtract",
+          "a_numerator": 2,
+          "a_denominator": 6,
+          "b_numerator": 1,
+          "b_denominator": 6,
+          "interaction_mode": "set",
+          "is_read_only": false,
+          "total_wholes": 1
+        },
+        "visual_render": {
+          "visual_type": "FractionShade",
+          "renderer_input_digest": "d0549c5f1f0cf63c3d7248f61aa88a772958d71c4f7276f02a2231a6ba07ba8d",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "FractionShade",
+            "element_count": 31,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "-",
+              "="
+            ],
+            "distinct_colours": [
+              "hsl(var(--primary)"
+            ],
+            "role_counts": {
+              "fraction-part": 18
+            }
+          }
+        },
+        "sample_id": "2d4382094a219ddc6046",
+        "replay_digest": "24d43b4ca0715ccd8fcbd5642085a57e6fe2553431b2fd7d4e0def13d213a251"
+      },
+      {
+        "node_id": "mat_g3_na_q4_7",
+        "seed": 23,
+        "formatter": "read_mcq",
+        "question_text": "What is the result of the fraction operation shown?",
+        "correct_answer": "D",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "FractionModel",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "8/10",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "10/2",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "10/10",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "2/10",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "2/10",
+        "hints": [
+          "When adding fractions with the same denominator, keep the denominator the same.",
+          "Add only the numerators: 3 + 1 = 4.",
+          "Write the result over the same denominator: 4/10.",
+          "The answer is 2/10."
+        ],
+        "visual_type": "FractionModel",
+        "visual_payload": {
+          "model_type": "area_model",
+          "numerator": 2,
+          "denominator": 10,
+          "total_parts": 10,
+          "shaded_parts": 2,
+          "fraction_str": "3/10 - 1/10",
+          "operation": "subtract",
+          "a_numerator": 3,
+          "a_denominator": 10,
+          "b_numerator": 1,
+          "b_denominator": 10,
+          "interaction_mode": "read",
+          "is_read_only": true,
+          "total_wholes": 1
+        },
+        "visual_render": {
+          "visual_type": "FractionModel",
+          "renderer_input_digest": "dd6f2a407a83be5bc98282c51ad0c9c40bbad0559dbbcecee0996f19bb6bf9b1",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "FractionModel",
+            "element_count": 43,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "-",
+              "="
+            ],
+            "distinct_colours": [
+              "hsl(var(--primary)"
+            ],
+            "role_counts": {
+              "fraction-part": 30
+            }
+          }
+        },
+        "sample_id": "b9fabd45eacdf5e2891c",
+        "replay_digest": "d4ef4fe611a8cdf00bc66f593aa773c25f71e906c7e0f31315dab3663d4a4941"
+      },
+      {
+        "node_id": "mat_g3_na_q4_7",
+        "seed": 42,
+        "formatter": "read_mcq",
+        "question_text": "What is the result of the fraction operation shown?",
+        "correct_answer": "D",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "FractionModel",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "5/4",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "3/4",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "6/4",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "4/4",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "4/4",
+        "hints": [
+          "When adding fractions with the same denominator, keep the denominator the same.",
+          "Add only the numerators: 3 + 1 = 4.",
+          "Write the result over the same denominator: 4/4.",
+          "The answer is 4/4."
+        ],
+        "visual_type": "FractionModel",
+        "visual_payload": {
+          "model_type": "area_model",
+          "numerator": 4,
+          "denominator": 4,
+          "total_parts": 4,
+          "shaded_parts": 4,
+          "fraction_str": "3/4 + 1/4",
+          "operation": "add",
+          "a_numerator": 3,
+          "a_denominator": 4,
+          "b_numerator": 1,
+          "b_denominator": 4,
+          "interaction_mode": "read",
+          "is_read_only": true,
+          "total_wholes": 1
+        },
+        "visual_render": {
+          "visual_type": "FractionModel",
+          "renderer_input_digest": "953e7e7faa52816d8baa20056411f510819ae70b46b32ca583b3209869e4a2ba",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "FractionModel",
+            "element_count": 25,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "+",
+              "="
+            ],
+            "distinct_colours": [
+              "hsl(var(--primary)"
+            ],
+            "role_counts": {
+              "fraction-part": 12
+            }
+          }
+        },
+        "sample_id": "da3b548ce915628375bf",
+        "replay_digest": "cdeedb14f68f42ed81ad605404ecdcc088ae333a6a472e3394e44a9c6aeb4eb9"
+      },
+      {
+        "node_id": "mat_g3_na_q4_7",
+        "seed": 57,
+        "formatter": "set_click",
+        "question_text": "Shade the shape to show the result of 3/5 + 1/5.",
+        "correct_answer": "4/5",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "set_click",
+          "is_visual": true,
+          "visual_type": "FractionShade",
+          "interaction_mode": "set",
+          "answer_collection": "click",
+          "experience": "standard"
+        },
+        "resolved_answer": "4/5",
+        "hints": [
+          "When adding fractions with the same denominator, keep the denominator the same.",
+          "Add only the numerators: 3 + 1 = 4.",
+          "Write the result over the same denominator: 4/5.",
+          "The answer is 4/5."
+        ],
+        "visual_type": "FractionShade",
+        "visual_payload": {
+          "shape": "rectangle",
+          "total_parts": 5,
+          "ask_type": "shade_this_fraction",
+          "operation": "add",
+          "a_numerator": 3,
+          "a_denominator": 5,
+          "b_numerator": 1,
+          "b_denominator": 5,
+          "interaction_mode": "set",
+          "is_read_only": false,
+          "total_wholes": 1
+        },
+        "visual_render": {
+          "visual_type": "FractionShade",
+          "renderer_input_digest": "473b27fb35a664471bc67d0bfa3b6db22c304a810f644396e184488b4ab23e1b",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "FractionShade",
+            "element_count": 28,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "+",
+              "="
+            ],
+            "distinct_colours": [
+              "hsl(var(--primary)"
+            ],
+            "role_counts": {
+              "fraction-part": 15
+            }
+          }
+        },
+        "sample_id": "9d3084277a16fb5f5b02",
+        "replay_digest": "49c9c85cb2c7a0c7da6c8d7a83bdf19891b11731ce242921e299c1510fd31a1a"
+      },
+      {
+        "node_id": "mat_g3_na_q4_7",
+        "seed": 64,
+        "formatter": "read_mcq",
+        "question_text": "What is the result of the fraction operation shown?",
+        "correct_answer": "C",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "FractionModel",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "10/2",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "8/10",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "2/10",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "10/10",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "2/10",
+        "hints": [
+          "When adding fractions with the same denominator, keep the denominator the same.",
+          "Add only the numerators: 3 + 1 = 4.",
+          "Write the result over the same denominator: 4/10.",
+          "The answer is 2/10."
+        ],
+        "visual_type": "FractionModel",
+        "visual_payload": {
+          "model_type": "area_model",
+          "numerator": 2,
+          "denominator": 10,
+          "total_parts": 10,
+          "shaded_parts": 2,
+          "fraction_str": "3/10 - 1/10",
+          "operation": "subtract",
+          "a_numerator": 3,
+          "a_denominator": 10,
+          "b_numerator": 1,
+          "b_denominator": 10,
+          "interaction_mode": "read",
+          "is_read_only": true,
+          "total_wholes": 1
+        },
+        "visual_render": {
+          "visual_type": "FractionModel",
+          "renderer_input_digest": "dd6f2a407a83be5bc98282c51ad0c9c40bbad0559dbbcecee0996f19bb6bf9b1",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "FractionModel",
+            "element_count": 43,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "-",
+              "="
+            ],
+            "distinct_colours": [
+              "hsl(var(--primary)"
+            ],
+            "role_counts": {
+              "fraction-part": 30
+            }
+          }
+        },
+        "sample_id": "737bb046149613b0f965",
+        "replay_digest": "43d6de4309558b39560bcd613bde4cfd9247b190b2195941039ec190f05c0e46"
+      },
+      {
+        "node_id": "mat_g3_na_q4_7",
+        "seed": 78,
+        "formatter": "read_mcq",
+        "question_text": "What is the result of the fraction operation shown?",
+        "correct_answer": "D",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "FractionModel",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "10/10",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "6/10",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "10/4",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "4/10",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "4/10",
+        "hints": [
+          "When adding fractions with the same denominator, keep the denominator the same.",
+          "Add only the numerators: 3 + 1 = 4.",
+          "Write the result over the same denominator: 4/10.",
+          "The answer is 4/10."
+        ],
+        "visual_type": "FractionModel",
+        "visual_payload": {
+          "model_type": "area_model",
+          "numerator": 4,
+          "denominator": 10,
+          "total_parts": 10,
+          "shaded_parts": 4,
+          "fraction_str": "3/10 + 1/10",
+          "operation": "add",
+          "a_numerator": 3,
+          "a_denominator": 10,
+          "b_numerator": 1,
+          "b_denominator": 10,
+          "interaction_mode": "read",
+          "is_read_only": true,
+          "total_wholes": 1
+        },
+        "visual_render": {
+          "visual_type": "FractionModel",
+          "renderer_input_digest": "9add289b6ba3c39d84cef9117ace25094f8b90260e7f63af0c4934395e5ad3b4",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "FractionModel",
+            "element_count": 43,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "+",
+              "="
+            ],
+            "distinct_colours": [
+              "hsl(var(--primary)"
+            ],
+            "role_counts": {
+              "fraction-part": 30
+            }
+          }
+        },
+        "sample_id": "1295c10bfa3e56bd527f",
+        "replay_digest": "15161adf2b47fee4a62dfcfc92dc4ed7e33e04165c91413ad27b04b49819e29c"
+      },
+      {
+        "node_id": "mat_g3_na_q4_7",
+        "seed": 91,
+        "formatter": "read_mcq",
+        "question_text": "What is the result of the fraction operation shown?",
+        "correct_answer": "B",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "FractionModel",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "10/2",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "2/10",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "10/10",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "8/10",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "2/10",
+        "hints": [
+          "When adding fractions with the same denominator, keep the denominator the same.",
+          "Add only the numerators: 1 + 1 = 2.",
+          "Write the result over the same denominator: 2/10.",
+          "The answer is 2/10."
+        ],
+        "visual_type": "FractionModel",
+        "visual_payload": {
+          "model_type": "area_model",
+          "numerator": 2,
+          "denominator": 10,
+          "total_parts": 10,
+          "shaded_parts": 2,
+          "fraction_str": "1/10 + 1/10",
+          "operation": "add",
+          "a_numerator": 1,
+          "a_denominator": 10,
+          "b_numerator": 1,
+          "b_denominator": 10,
+          "interaction_mode": "read",
+          "is_read_only": true,
+          "total_wholes": 1
+        },
+        "visual_render": {
+          "visual_type": "FractionModel",
+          "renderer_input_digest": "2d46db69464b10fdf7800080a9392462887206d78fd5986ebdcbf36b448086fa",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "FractionModel",
+            "element_count": 43,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "+",
+              "="
+            ],
+            "distinct_colours": [
+              "hsl(var(--primary)"
+            ],
+            "role_counts": {
+              "fraction-part": 30
+            }
+          }
+        },
+        "sample_id": "4662f55c265afcde6963",
+        "replay_digest": "bfc2fbe226bcad8e7bbdda111ff23cbeee8b3296bb369a6c6e58e140d4021812"
+      },
+      {
+        "node_id": "mat_g3_na_q4_7",
+        "seed": 103,
+        "formatter": "read_mcq",
+        "question_text": "What is the result of the fraction operation shown?",
+        "correct_answer": "D",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "FractionModel",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "6/4",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "6/6",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "2/6",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "4/6",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "4/6",
+        "hints": [
+          "When adding fractions with the same denominator, keep the denominator the same.",
+          "Add only the numerators: 5 + 1 = 6.",
+          "Write the result over the same denominator: 6/6.",
+          "The answer is 4/6."
+        ],
+        "visual_type": "FractionModel",
+        "visual_payload": {
+          "model_type": "area_model",
+          "numerator": 4,
+          "denominator": 6,
+          "total_parts": 6,
+          "shaded_parts": 4,
+          "fraction_str": "5/6 - 1/6",
+          "operation": "subtract",
+          "a_numerator": 5,
+          "a_denominator": 6,
+          "b_numerator": 1,
+          "b_denominator": 6,
+          "interaction_mode": "read",
+          "is_read_only": true,
+          "total_wholes": 1
+        },
+        "visual_render": {
+          "visual_type": "FractionModel",
+          "renderer_input_digest": "acea87435a87ab4a141d2517b79c1133a79541e1f8b449201f275739cd3d979f",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "FractionModel",
+            "element_count": 31,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "-",
+              "="
+            ],
+            "distinct_colours": [
+              "hsl(var(--primary)"
+            ],
+            "role_counts": {
+              "fraction-part": 18
+            }
+          }
+        },
+        "sample_id": "5e862c754f3ca1a4f7e8",
+        "replay_digest": "f7c702dc589944418da5283f685a6e50d5cf6050a6ef7448b324f6536630a55e"
+      },
+      {
+        "node_id": "mat_g3_na_q4_7",
+        "seed": 118,
+        "formatter": "set_click",
+        "question_text": "Shade the shape to show the result of 2/4 + 1/4.",
+        "correct_answer": "3/4",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "set_click",
+          "is_visual": true,
+          "visual_type": "FractionShade",
+          "interaction_mode": "set",
+          "answer_collection": "click",
+          "experience": "standard"
+        },
+        "resolved_answer": "3/4",
+        "hints": [
+          "When adding fractions with the same denominator, keep the denominator the same.",
+          "Add only the numerators: 2 + 1 = 3.",
+          "Write the result over the same denominator: 3/4.",
+          "The answer is 3/4."
+        ],
+        "visual_type": "FractionShade",
+        "visual_payload": {
+          "shape": "bar",
+          "total_parts": 4,
+          "ask_type": "shade_this_fraction",
+          "operation": "add",
+          "a_numerator": 2,
+          "a_denominator": 4,
+          "b_numerator": 1,
+          "b_denominator": 4,
+          "interaction_mode": "set",
+          "is_read_only": false,
+          "total_wholes": 1
+        },
+        "visual_render": {
+          "visual_type": "FractionShade",
+          "renderer_input_digest": "69ece3f175bbec5a794c162e1d8d9f3e0c881541fec715171dc75a912204877a",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "FractionShade",
+            "element_count": 25,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "+",
+              "="
+            ],
+            "distinct_colours": [
+              "hsl(var(--primary)"
+            ],
+            "role_counts": {
+              "fraction-part": 12
+            }
+          }
+        },
+        "sample_id": "b0293aaaf226ae33e4ed",
+        "replay_digest": "ad2c8c4207948954fb2e78fb852ea770c5f2ac53e1aecf7ce5f71f384f4cbe18"
+      },
+      {
+        "node_id": "mat_g3_na_q4_7",
+        "seed": 127,
+        "formatter": "read_mcq",
+        "question_text": "What is the result of the fraction operation shown?",
+        "correct_answer": "B",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "FractionModel",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "8/10",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "2/10",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "10/2",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "10/10",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "2/10",
+        "hints": [
+          "When adding fractions with the same denominator, keep the denominator the same.",
+          "Add only the numerators: 1 + 1 = 2.",
+          "Write the result over the same denominator: 2/10.",
+          "The answer is 2/10."
+        ],
+        "visual_type": "FractionModel",
+        "visual_payload": {
+          "model_type": "area_model",
+          "numerator": 2,
+          "denominator": 10,
+          "total_parts": 10,
+          "shaded_parts": 2,
+          "fraction_str": "1/10 + 1/10",
+          "operation": "add",
+          "a_numerator": 1,
+          "a_denominator": 10,
+          "b_numerator": 1,
+          "b_denominator": 10,
+          "interaction_mode": "read",
+          "is_read_only": true,
+          "total_wholes": 1
+        },
+        "visual_render": {
+          "visual_type": "FractionModel",
+          "renderer_input_digest": "2d46db69464b10fdf7800080a9392462887206d78fd5986ebdcbf36b448086fa",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "FractionModel",
+            "element_count": 43,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "+",
+              "="
+            ],
+            "distinct_colours": [
+              "hsl(var(--primary)"
+            ],
+            "role_counts": {
+              "fraction-part": 30
+            }
+          }
+        },
+        "sample_id": "dd2f737a3ec78141d621",
+        "replay_digest": "6049ad884ab863b202a1a780e81639696ca7e448aab9164bf3a6362fec74b825"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "add",
+      "node_id": "mat_g3_na_q4_7",
+      "clause": "Add",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        57,
+        78,
+        91,
+        118,
+        127
+      ],
+      "reasoning": "The samples exhibit addition operations across multiple instances. Seeds 42, 57, 78, 91, 118, and 127 all display addition problems (text_labels contain '+'), with students asked to shade shapes or identify results of addition with similar fractions.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "subtract",
+      "node_id": "mat_g3_na_q4_7",
+      "clause": "subtract",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        64,
+        103
+      ],
+      "reasoning": "The samples clearly show subtraction operations. Seeds 11, 23, 64, and 103 present subtraction problems (text_labels contain '-'), asking learners to shade shapes or identify results of subtracting similar fractions.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "similar_fractions",
+      "node_id": "mat_g3_na_q4_7",
+      "clause": "similar fractions",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Every sample uses fractions with identical denominators: 2/6 and 1/6 share denominator 6; 3/5 and 1/5 share denominator 5; various samples use 10ths, 4ths, and 6ths. All operations involve similar fractions (same denominator throughout all ten seeds).",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "models",
+      "node_id": "mat_g3_na_q4_7",
+      "clause": "models",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All samples render visual fraction models. The rendered structures show FractionShade (seeds 11, 57, 118) and FractionModel (seeds 23, 42, 64, 78, 91, 103, 127), with element_counts and role_counts confirming visual fraction representations are present for every sample.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    }
+  ],
+  "supersedes": "Replaces batch026B16_mat_g3_na_q4_7, which §6F reported as unusable evidence (stale stem/answer, or a record that carries no options or no render-derived visual for content that renders one). The predecessor is left on disk; supersession is earned by this record, not declared by it."
+}

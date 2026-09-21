@@ -1,7 +1,13 @@
 {
   "schema_version": 1,
   "note": "Intent record for interruption safety. Written when a batch, chain or campaign STARTS and cleared when it completes; an intent left open means a session did not reach its finish line. Deliberately digest-free -- see tests/tree_state.py. Read with `PYTHONPATH=. .venv/bin/python tests/tree_state.py`.",
-  "open_intent": null,
+  "open_intent": {
+    "kind": "campaign",
+    "began_at": "2026-09-21T22:26:59+08:00",
+    "session": "claude-opus5-20260921-h06-attestation",
+    "note": "H-06 Phase B: blind re-attestation campaign over the 218-finding capability queue; no source edits intended",
+    "next_step": "Resume the campaign; it touches no source, so no re-proof is owed."
+  },
   "last_completed": {
     "kind": "chain",
     "began_at": "2026-09-21T16:59:06+08:00",

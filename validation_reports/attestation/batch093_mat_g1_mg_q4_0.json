@@ -1,0 +1,685 @@
+{
+  "batch": "batch093_mat_g1_mg_q4_0",
+  "attested_at": "2026-09-21T00:00:00Z",
+  "attested_by": "blind-attester-opus5-d14-20260921",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "the Attester was told to read exactly local_only/scratch/attester/h06/d14.prompt.txt, which is attester_packets.render_prompt_block output (item id, clause, competency, grade/quarter and the rendered samples only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "prompt-contract dispatch to a separate agent: told to read exactly one packet render and no other path, and to write its verdict JSON. Tool access was NOT structurally prevented, so this does not claim the '0' (inline, no tool access) contract; at least one Read and one Write were expected and used."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g1_mg_q4_0",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g1_mg_q4_0",
+        "seed": 11,
+        "formatter": "mcq",
+        "question_text": "An arrow faces LEFT. It does a half turn. Which direction does it face now?",
+        "correct_answer": "right",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "right",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "down",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "up",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "left",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "right",
+        "hints": [
+          "A turn (rotation) spins a shape in place without sliding it.",
+          "A quarter turn moves it like 15 minutes on a clock.",
+          "A half turn faces it the opposite way."
+        ],
+        "sample_id": "d8aa383e54f49197ecff",
+        "replay_digest": "0e4699175c8029a9cdfb28dbee6f53e1627c699e02a1d1ef5f36771d3044a111"
+      },
+      {
+        "node_id": "mat_g1_mg_q4_0",
+        "seed": 23,
+        "formatter": "mcq",
+        "question_text": "An arrow faces DOWN. It does a quarter turn clockwise. Which direction does it face now?",
+        "correct_answer": "left",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "left",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "up",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "down",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "right",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "left",
+        "hints": [
+          "A turn (rotation) spins a shape in place without sliding it.",
+          "A quarter turn moves it like 15 minutes on a clock.",
+          "A half turn faces it the opposite way."
+        ],
+        "sample_id": "8415b28925920c7e63ef",
+        "replay_digest": "2311794613f02acdb65fe3ca3fa8555c666f7ba89c19b73b45c7a04cffeefd8b"
+      },
+      {
+        "node_id": "mat_g1_mg_q4_0",
+        "seed": 42,
+        "formatter": "mcq",
+        "question_text": "An arrow faces UP. It does a half turn. Which direction does it face now?",
+        "correct_answer": "down",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "right",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "up",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "down",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "left",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "down",
+        "hints": [
+          "A turn (rotation) spins a shape in place without sliding it.",
+          "A quarter turn moves it like 15 minutes on a clock.",
+          "A half turn faces it the opposite way."
+        ],
+        "sample_id": "910045fd0345f23bd8ed",
+        "replay_digest": "61f8c393bfbae57e2b4dafc23ff05439c7d8179982677c2adba215a6996febe3"
+      },
+      {
+        "node_id": "mat_g1_mg_q4_0",
+        "seed": 57,
+        "formatter": "mcq",
+        "question_text": "An arrow faces UP. It does a quarter turn clockwise. Which direction does it face now?",
+        "correct_answer": "right",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "left",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "right",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "up",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "down",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "right",
+        "hints": [
+          "A turn (rotation) spins a shape in place without sliding it.",
+          "A quarter turn moves it like 15 minutes on a clock.",
+          "A half turn faces it the opposite way."
+        ],
+        "sample_id": "5fce5d6ca49c300acf66",
+        "replay_digest": "f9ede4c2f78d7ff09e5bce7692fb23e6bb681f6a7a9eed38c5deab14d6d5b5cb"
+      },
+      {
+        "node_id": "mat_g1_mg_q4_0",
+        "seed": 64,
+        "formatter": "mcq",
+        "question_text": "An arrow faces LEFT. It does a half turn. Which direction does it face now?",
+        "correct_answer": "right",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "left",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "down",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "right",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "up",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "right",
+        "hints": [
+          "A turn (rotation) spins a shape in place without sliding it.",
+          "A quarter turn moves it like 15 minutes on a clock.",
+          "A half turn faces it the opposite way."
+        ],
+        "sample_id": "520f1eda3bc8ddcbcf3a",
+        "replay_digest": "4629ef4d9f70feeef95acfb6810c9c71ea1cd74faed69ca26a9601e9fe041bfd"
+      },
+      {
+        "node_id": "mat_g1_mg_q4_0",
+        "seed": 78,
+        "formatter": "mcq",
+        "question_text": "Which direction is clockwise?",
+        "correct_answer": "the direction clock hands move",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "the opposite direction clock hands move",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "the direction clock hands move",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "straight up",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "to the left",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "the direction clock hands move",
+        "hints": [
+          "A turn (rotation) spins a shape in place without sliding it.",
+          "A quarter turn moves it like 15 minutes on a clock.",
+          "A half turn faces it the opposite way."
+        ],
+        "sample_id": "6a1708aa036111242d9b",
+        "replay_digest": "55ceb109827a4f452e90c60386a0ccdf758f87c567b97f17b9986f917bd6c317"
+      },
+      {
+        "node_id": "mat_g1_mg_q4_0",
+        "seed": 91,
+        "formatter": "mcq",
+        "question_text": "An arrow faces UP. It does a half turn. Which direction does it face now?",
+        "correct_answer": "down",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "left",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "up",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "down",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "right",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "down",
+        "hints": [
+          "A turn (rotation) spins a shape in place without sliding it.",
+          "A quarter turn moves it like 15 minutes on a clock.",
+          "A half turn faces it the opposite way."
+        ],
+        "sample_id": "59d1dca8c6bf5ac093d6",
+        "replay_digest": "a9e79f88512f8eaa832af48f5788e14da5fd97527d380d8c6832488d0962d2ca"
+      },
+      {
+        "node_id": "mat_g1_mg_q4_0",
+        "seed": 103,
+        "formatter": "mcq",
+        "question_text": "An arrow faces LEFT. It does a half turn. Which direction does it face now?",
+        "correct_answer": "right",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "left",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "up",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "down",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "right",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "right",
+        "hints": [
+          "A turn (rotation) spins a shape in place without sliding it.",
+          "A quarter turn moves it like 15 minutes on a clock.",
+          "A half turn faces it the opposite way."
+        ],
+        "sample_id": "56098ab1a3ee2967d619",
+        "replay_digest": "ba22165137e9cd7afdc7df1cdd4fe8ea328e6b01067181ef9b8b614a86d932d4"
+      },
+      {
+        "node_id": "mat_g1_mg_q4_0",
+        "seed": 118,
+        "formatter": "mcq",
+        "question_text": "An arrow faces UP. It does a quarter turn counter-clockwise. Which direction does it face now?",
+        "correct_answer": "left",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "down",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "left",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "up",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "right",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "left",
+        "hints": [
+          "A turn (rotation) spins a shape in place without sliding it.",
+          "A quarter turn moves it like 15 minutes on a clock.",
+          "A half turn faces it the opposite way."
+        ],
+        "sample_id": "3299e7495a28b6e3ba3b",
+        "replay_digest": "0fff657665be7c1d04f06e2038691eb59b52be72c7f11babc3b2af0778fdc236"
+      },
+      {
+        "node_id": "mat_g1_mg_q4_0",
+        "seed": 127,
+        "formatter": "mcq",
+        "question_text": "An arrow faces UP. It does a quarter turn clockwise. Which direction does it face now?",
+        "correct_answer": "right",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "down",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "up",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "left",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "right",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "right",
+        "hints": [
+          "A turn (rotation) spins a shape in place without sliding it.",
+          "A quarter turn moves it like 15 minutes on a clock.",
+          "A half turn faces it the opposite way."
+        ],
+        "sample_id": "301fa302d20833959b26",
+        "replay_digest": "6abf1b0f3f0ffd220fcea40f0f483dec26436c8d40a6fe8d382f2a1eaa3c4e6f"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "identify_position",
+      "node_id": "mat_g1_mg_q4_0",
+      "clause": "Identify the position",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        118,
+        127
+      ],
+      "reasoning": "Nine of the ten stems end with 'Which direction does it face now?', which is precisely a request to state where the object has ended up after the turn. The keys are resulting orientations (right, left, down), and each is the correct result of the stated rotation from the stated start, so identification of the post-turn position is what the learner actually does.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable.",
+      "content_note_from_attester": "Seed 78 is a vocabulary-definition item about what clockwise means rather than a position task; it belongs to the competency's terminology but not to its identify-the-position action."
+    },
+    {
+      "capability_id": "objects",
+      "node_id": "mat_g1_mg_q4_0",
+      "clause": "objects",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Every rotation stem gives the learner a thing that turns - 'An arrow' - and it is that arrow's facing, not an abstract angle, that must be reported. An arrow is a legitimate object for this competency because its orientation is readable. Worth noting that no VISUAL RENDERED line accompanies any of these samples, so the arrow exists only as words on the page; the clause asks for objects being turned rather than for a picture, and that requirement is met, but the object is never drawn.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable.",
+      "content_note_from_attester": "For Grade 1 an unrendered arrow is demanding: the learner must construct the initial orientation mentally before rotating it. A drawn arrow would carry this competency far better than a text label."
+    },
+    {
+      "capability_id": "moved",
+      "node_id": "mat_g1_mg_q4_0",
+      "clause": "moved",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        23,
+        42,
+        57,
+        118,
+        127
+      ],
+      "reasoning": "Movement is the event each stem reports: 'It does a half turn', 'It does a quarter turn clockwise', 'It does a quarter turn counter-clockwise'. The arrow is not static in these problems - a rotation is applied between the given start and the asked-for result, and answering wrongly means having applied no motion or the wrong motion.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "half_turn",
+      "node_id": "mat_g1_mg_q4_0",
+      "clause": "half turn",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        42,
+        64,
+        91,
+        103
+      ],
+      "reasoning": "Half turns account for five samples. Two start from LEFT and key to right; three start from UP and key to down. Both keys are the correct 180-degree images of their starting facings, so the half-turn case is present and correctly resolved.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable.",
+      "content_note_from_attester": "Seeds 11, 64 and 103 are the same LEFT-plus-half-turn problem three times over, differing only in option order; within ten samples that is heavy repetition."
+    },
+    {
+      "capability_id": "quarter_turn",
+      "node_id": "mat_g1_mg_q4_0",
+      "clause": "quarter turn",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        23,
+        57,
+        118,
+        127
+      ],
+      "reasoning": "Quarter turns appear in four samples and in both rotational senses: DOWN turned clockwise gives left (seed 23), UP turned clockwise gives right (seeds 57 and 127), UP turned counter-clockwise gives left (seed 118). Each 90-degree result matches its stated start and sense.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "clockwise",
+      "node_id": "mat_g1_mg_q4_0",
+      "clause": "clockwise",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        23,
+        57,
+        127,
+        78
+      ],
+      "reasoning": "The clockwise sense is named explicitly in three rotation stems, and seed 78 goes further by asking the learner to identify it outright, keyed to 'the direction clock hands move'. So clockwise is both used as a condition of rotation and checked as a concept.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "counter_clockwise",
+      "node_id": "mat_g1_mg_q4_0",
+      "clause": "counter-clockwise direction",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        118
+      ],
+      "reasoning": "This direction shows up once. Seed 118 rotates an arrow facing UP a quarter turn counter-clockwise and keys the result as left, which is right for that sense. One instance is genuine evidence that the counter-clockwise case is reachable, though it is thin next to the three clockwise stems and the five half turns.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable.",
+      "content_note_from_attester": "Counter-clockwise is one seed in ten and never paired with a half turn or with a start other than UP; a learner could pass this sample set with only a shaky grip on the reversed sense."
+    },
+    {
+      "capability_id": "initial_facing_direction",
+      "node_id": "mat_g1_mg_q4_0",
+      "clause": "initial facing direction",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "No rotation stem asks the learner to invent a starting orientation: each one supplies it first, in capitals, before applying the turn - faces LEFT, faces DOWN, faces UP. That given starting facing is what makes the answer determinate, and it is present in every sample that involves a turn.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable.",
+      "content_note_from_attester": "The starting facings used are only UP, DOWN and LEFT; no sample begins from RIGHT."
+    }
+  ],
+  "supersedes": "Replaces batch002_mat_g1_mg_q4_0, which §6F reported as unusable evidence (stale stem/answer, or a record that carries no options or no render-derived visual for content that renders one). The predecessor is left on disk; supersession is earned by this record, not declared by it."
+}

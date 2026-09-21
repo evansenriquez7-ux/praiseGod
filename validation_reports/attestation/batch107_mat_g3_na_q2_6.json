@@ -1,0 +1,689 @@
+{
+  "batch": "batch107_mat_g3_na_q2_6",
+  "attested_at": "2026-09-21T00:00:00Z",
+  "attested_by": "blind-attester-haiku45-d28-20260922",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "the Attester was told to read exactly local_only/scratch/attester/h06/d28.prompt.txt, which is attester_packets.render_prompt_block output (item id, clause, competency, grade/quarter and the rendered samples only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "prompt-contract dispatch to a separate agent: told to read exactly one packet render and no other path, and to write its verdict JSON. Tool access was NOT structurally prevented, so this does not claim the '0' (inline, no tool access) contract; at least one Read and one Write were expected and used."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g3_na_q2_6",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g3_na_q2_6",
+        "seed": 11,
+        "formatter": "mcq",
+        "question_text": "72 + 60 + 58 - 66 = ___",
+        "correct_answer": 124,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 126,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 125,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 124,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 123,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 124,
+        "hints": [
+          "Evaluate the number sentence: 72 + 60 + 58 - 66.",
+          "Use the order of operations: work left to right for + and −.",
+          "Step 1: 72 + 60 = 132.",
+          "Step 2: 132 + 58 = 190.",
+          "Step 3: 190 - 66 = 124.",
+          "The answer is 124."
+        ],
+        "sample_id": "07dfa2f61602d8c79f19",
+        "replay_digest": "4541d5249021e3eb1249b3c9162683098032d445f5c8db37ebb1b77794c60fe2"
+      },
+      {
+        "node_id": "mat_g3_na_q2_6",
+        "seed": 23,
+        "formatter": "cloze",
+        "question_text": "80 + 59 - 4 - 14 = ___",
+        "correct_answer": 121,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 123,
+            "text": "123",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 120,
+            "text": "120",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 122,
+            "text": "122",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 121,
+            "text": "121",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 121,
+        "hints": [
+          "Evaluate the number sentence: 80 + 59 - 4 - 14.",
+          "Use the order of operations: work left to right for + and −.",
+          "Step 1: 80 + 59 = 139.",
+          "Step 2: 139 - 4 = 135.",
+          "Step 3: 135 - 14 = 121.",
+          "The answer is 121."
+        ],
+        "sample_id": "678bae5e568c9fb2d324",
+        "replay_digest": "318a09d736ca61b4401b33b6397c86a762c43c2d9bd22f9ae7edb6b0fe8480b8"
+      },
+      {
+        "node_id": "mat_g3_na_q2_6",
+        "seed": 42,
+        "formatter": "cloze",
+        "question_text": "4 + 95 + 36 = ___",
+        "correct_answer": 135,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 134,
+            "text": "134",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 137,
+            "text": "137",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 135,
+            "text": "135",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 136,
+            "text": "136",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 135,
+        "hints": [
+          "Evaluate the number sentence: 4 + 95 + 36.",
+          "Use the order of operations: work left to right for + and −.",
+          "Step 1: 4 + 95 = 99.",
+          "Step 2: 99 + 36 = 135.",
+          "The answer is 135."
+        ],
+        "sample_id": "bef1c6353b0dcf42b157",
+        "replay_digest": "cc8f9135a14a7e25639c68fe5630df7d29286332f87b05c4cd49376e44afc709"
+      },
+      {
+        "node_id": "mat_g3_na_q2_6",
+        "seed": 57,
+        "formatter": "mcq",
+        "question_text": "48 + 76 + 78 = ___",
+        "correct_answer": 202,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 202,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 203,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 201,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 204,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 202,
+        "hints": [
+          "Evaluate the number sentence: 48 + 76 + 78.",
+          "Use the order of operations: work left to right for + and −.",
+          "Step 1: 48 + 76 = 124.",
+          "Step 2: 124 + 78 = 202.",
+          "The answer is 202."
+        ],
+        "sample_id": "6cc2898899af7b1b6145",
+        "replay_digest": "15fdb30780f1c4cd44d9620ea116397095921407222dae292057b7d290295463"
+      },
+      {
+        "node_id": "mat_g3_na_q2_6",
+        "seed": 64,
+        "formatter": "cloze",
+        "question_text": "16 + 81 + 79 - 52 = ___",
+        "correct_answer": 124,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 126,
+            "text": "126",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 125,
+            "text": "125",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 124,
+            "text": "124",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 123,
+            "text": "123",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 124,
+        "hints": [
+          "Evaluate the number sentence: 16 + 81 + 79 - 52.",
+          "Use the order of operations: work left to right for + and −.",
+          "Step 1: 16 + 81 = 97.",
+          "Step 2: 97 + 79 = 176.",
+          "Step 3: 176 - 52 = 124.",
+          "The answer is 124."
+        ],
+        "sample_id": "67c7f7ba397c5ecf695d",
+        "replay_digest": "cc479f47d9d5099cae0ca7c8ebd654f37f9c9bdf3f1d761aa80b9f13dfbf145c"
+      },
+      {
+        "node_id": "mat_g3_na_q2_6",
+        "seed": 78,
+        "formatter": "cloze",
+        "question_text": "90 + 61 + 49 = ___",
+        "correct_answer": 200,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 202,
+            "text": "202",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 199,
+            "text": "199",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 200,
+            "text": "200",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 201,
+            "text": "201",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 200,
+        "hints": [
+          "Evaluate the number sentence: 90 + 61 + 49.",
+          "Use the order of operations: work left to right for + and −.",
+          "Step 1: 90 + 61 = 151.",
+          "Step 2: 151 + 49 = 200.",
+          "The answer is 200."
+        ],
+        "sample_id": "c8018e634b28d50f5a26",
+        "replay_digest": "d3aa152265e4c95b46fd39ab389db936e0b9d561341c023e2e09705b94a30aaa"
+      },
+      {
+        "node_id": "mat_g3_na_q2_6",
+        "seed": 91,
+        "formatter": "cloze",
+        "question_text": "76 + 23 - 88 = ___",
+        "correct_answer": 11,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 13,
+            "text": "13",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 12,
+            "text": "12",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 11,
+            "text": "11",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 10,
+            "text": "10",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 11,
+        "hints": [
+          "Evaluate the number sentence: 76 + 23 - 88.",
+          "Use the order of operations: work left to right for + and −.",
+          "Step 1: 76 + 23 = 99.",
+          "Step 2: 99 - 88 = 11.",
+          "The answer is 11."
+        ],
+        "sample_id": "aed0ef13f6829fb3674c",
+        "replay_digest": "bd5836dfb8253d6a28edf92d16a0c01456894ba2863d6f8231589f92a2e8cbae"
+      },
+      {
+        "node_id": "mat_g3_na_q2_6",
+        "seed": 103,
+        "formatter": "cloze",
+        "question_text": "93 + 90 + 95 - 28 = ___",
+        "correct_answer": 250,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 249,
+            "text": "249",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 250,
+            "text": "250",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 252,
+            "text": "252",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 251,
+            "text": "251",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 250,
+        "hints": [
+          "Evaluate the number sentence: 93 + 90 + 95 - 28.",
+          "Use the order of operations: work left to right for + and −.",
+          "Step 1: 93 + 90 = 183.",
+          "Step 2: 183 + 95 = 278.",
+          "Step 3: 278 - 28 = 250.",
+          "The answer is 250."
+        ],
+        "sample_id": "b4c7dded3bfcd9122cec",
+        "replay_digest": "74bb8d570ce3a47745a2ccd0141ba4d9537fcac7ca76cbb78918816c30cfcfb2"
+      },
+      {
+        "node_id": "mat_g3_na_q2_6",
+        "seed": 118,
+        "formatter": "mcq",
+        "question_text": "99 - 3 + 39 = ___",
+        "correct_answer": 135,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 134,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 137,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 136,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 135,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 135,
+        "hints": [
+          "Evaluate the number sentence: 99 - 3 + 39.",
+          "Use the order of operations: work left to right for + and −.",
+          "Step 1: 99 - 3 = 96.",
+          "Step 2: 96 + 39 = 135.",
+          "The answer is 135."
+        ],
+        "sample_id": "85d7e25f24239a1f0020",
+        "replay_digest": "66899f8d56d6254af6deb350e1df3946ab656f5ffb68a08d16bfddc331e28db5"
+      },
+      {
+        "node_id": "mat_g3_na_q2_6",
+        "seed": 127,
+        "formatter": "cloze",
+        "question_text": "80 + 75 + 73 = ___",
+        "correct_answer": 228,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 228,
+            "text": "228",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 229,
+            "text": "229",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 227,
+            "text": "227",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 230,
+            "text": "230",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 228,
+        "hints": [
+          "Evaluate the number sentence: 80 + 75 + 73.",
+          "Use the order of operations: work left to right for + and −.",
+          "Step 1: 80 + 75 = 155.",
+          "Step 2: 155 + 73 = 228.",
+          "The answer is 228."
+        ],
+        "sample_id": "fb4c7aaea89afce04bfa",
+        "replay_digest": "998fcb3e49a7501fb560741ebe5cd350f073f545c25331b26f3f8a5e778a315b"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "addition_and_subtraction",
+      "node_id": "mat_g3_na_q2_6",
+      "clause": "addition and subtraction",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "The clause 'addition and subtraction' names the two arithmetic operations involved. All samples involve expressions containing both addition and subtraction operators, or combinations primarily showing these operations applied to sequences of numbers.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "3_to_4_numbers",
+      "node_id": "mat_g3_na_q2_6",
+      "clause": "3 to 4 numbers",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "The clause '3 to 4 numbers' specifies how many operands appear in each expression. All samples combine either three or four distinct numbers: examples include 72 + 60 + 58 - 66 (four numbers), 48 + 76 + 78 (three numbers), and 76 + 23 - 88 (three numbers).",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "up_to_2_digits",
+      "node_id": "mat_g3_na_q2_6",
+      "clause": "up to 2 digits",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "The clause 'up to 2 digits' limits the size of individual numbers. All operands in the samples are two-digit or one-digit numbers, with the largest being 99. No three-digit or larger numbers appear among the addends and subtrahends.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "observing_correct_order_of_operations",
+      "node_id": "mat_g3_na_q2_6",
+      "clause": "observing correct order of operations",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "The clause 'observing correct order of operations' requires that addition and subtraction be performed in left-to-right sequence, since they have equal precedence. All samples follow this convention: operations are evaluated sequentially from left to right without any violation of proper ordering.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    }
+  ],
+  "supersedes": "Replaces batch026B13_mat_g3_na_q2_6, which §6F reported as unusable evidence (stale stem/answer, or a record that carries no options or no render-derived visual for content that renders one). The predecessor is left on disk; supersession is earned by this record, not declared by it."
+}

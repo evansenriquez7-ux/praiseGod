@@ -1,0 +1,602 @@
+{
+  "batch": "batch098_mat_g3_na_q1_1",
+  "attested_at": "2026-09-21T00:00:00Z",
+  "attested_by": "blind-attester-haiku45-d19-20260922",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "the Attester was told to read exactly local_only/scratch/attester/h06/d19.prompt.txt, which is attester_packets.render_prompt_block output (item id, clause, competency, grade/quarter and the rendered samples only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "prompt-contract dispatch to a separate agent: told to read exactly one packet render and no other path, and to write its verdict JSON. Tool access was NOT structurally prevented, so this does not claim the '0' (inline, no tool access) contract; at least one Read and one Write were expected and used."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g3_na_q1_1",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g3_na_q1_1",
+        "seed": 11,
+        "formatter": "mcq",
+        "question_text": "Write the number: eight thousand six hundred thirty.",
+        "correct_answer": 8630,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 8631,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 8620,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 8630,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 368,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 8630,
+        "hints": [
+          "Identify each word part and its place value.",
+          "Expanded form: 8000 + 600 + 30.",
+          "Add the parts together to get 8630."
+        ],
+        "sample_id": "dda0af0069dafd224342",
+        "replay_digest": "612fe0f5d59d586dd36588d78fad92f314a4ef51a92ebbcfd2f8b59d1ce115f6"
+      },
+      {
+        "node_id": "mat_g3_na_q1_1",
+        "seed": 23,
+        "formatter": "cloze",
+        "question_text": "Write the number: two thousand three hundred sixty-nine.",
+        "correct_answer": 2369,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 2370,
+            "text": "2370",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 2359,
+            "text": "2359",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 2369,
+            "text": "2369",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 9632,
+            "text": "9632",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 2369,
+        "hints": [
+          "Identify each word part and its place value.",
+          "Expanded form: 2000 + 300 + 60 + 9.",
+          "Add the parts together to get 2369."
+        ],
+        "sample_id": "de20ce11e57e7086b8b6",
+        "replay_digest": "d4d4e1ac167de10d0f7f33a34f652db92d4159fae6d585c0c5dd382dec2b54f2"
+      },
+      {
+        "node_id": "mat_g3_na_q1_1",
+        "seed": 42,
+        "formatter": "true_false",
+        "question_text": "The number 1410 is written in words as 'one hundred forty-one'. True or False?",
+        "correct_answer": false,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "true_false",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "true_false",
+          "experience": "standard"
+        },
+        "resolved_answer": false,
+        "hints": [
+          "Read the number 1410 one place at a time, starting from the largest place.",
+          "Thousands: 1 → 'one thousand'.",
+          "Hundreds: 4 → 'four hundred'.",
+          "The full word form is: 'one thousand four hundred ten'."
+        ],
+        "sample_id": "7de681385e6243dafeb1",
+        "replay_digest": "e1ca644e4c20bdcc041caaf3af9bec9fbe0c69fbd343891bade67f0ab5e0c974"
+      },
+      {
+        "node_id": "mat_g3_na_q1_1",
+        "seed": 57,
+        "formatter": "cloze",
+        "question_text": "Write 7026 in words.",
+        "correct_answer": "seven thousand twenty-six",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "seven thousand sixteen",
+            "text": "seven thousand sixteen",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "seven thousand twenty-seven",
+            "text": "seven thousand twenty-seven",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "seven thousand twenty-six",
+            "text": "seven thousand twenty-six",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "six thousand two hundred seven",
+            "text": "six thousand two hundred seven",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "seven thousand twenty-six",
+        "hints": [
+          "Read the number 7026 one place at a time, starting from the largest place.",
+          "Thousands: 7 → 'seven thousand'.",
+          "The full word form is: 'seven thousand twenty-six'."
+        ],
+        "sample_id": "378192830b84571e8cb6",
+        "replay_digest": "266b3b50444e91d3946b17994930ea5bb97d03ea451c202647ededc5c5070ff3"
+      },
+      {
+        "node_id": "mat_g3_na_q1_1",
+        "seed": 64,
+        "formatter": "true_false",
+        "question_text": "The number written as 'three thousand forty-six' is 3046. True or False?",
+        "correct_answer": true,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "true_false",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "true_false",
+          "experience": "standard"
+        },
+        "resolved_answer": true,
+        "hints": [
+          "Identify each word part and its place value.",
+          "Expanded form: 3000 + 40 + 6.",
+          "Add the parts together to get 3046."
+        ],
+        "sample_id": "91ad8ff4b24d3fe0b99e",
+        "replay_digest": "75b590a9e2c7f30804e0dc819b353c36748327a2e512cc5408538c9745e3f6af"
+      },
+      {
+        "node_id": "mat_g3_na_q1_1",
+        "seed": 78,
+        "formatter": "mcq",
+        "question_text": "Write 2574 in words.",
+        "correct_answer": "two thousand five hundred seventy-four",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "two thousand five hundred sixty-four",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "four thousand seven hundred fifty-two",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "two thousand five hundred seventy-five",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "two thousand five hundred seventy-four",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "two thousand five hundred seventy-four",
+        "hints": [
+          "Read the number 2574 one place at a time, starting from the largest place.",
+          "Thousands: 2 → 'two thousand'.",
+          "Hundreds: 5 → 'five hundred'.",
+          "The full word form is: 'two thousand five hundred seventy-four'."
+        ],
+        "sample_id": "e2db149d326d598372d4",
+        "replay_digest": "1942959477bbfdc81ec1bed7545fde26ab53637db80b98a8769218ad0e24f375"
+      },
+      {
+        "node_id": "mat_g3_na_q1_1",
+        "seed": 91,
+        "formatter": "true_false",
+        "question_text": "The number 3825 is written in words as 'three thousand eight hundred twenty-five'. True or False?",
+        "correct_answer": true,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "true_false",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "true_false",
+          "experience": "standard"
+        },
+        "resolved_answer": true,
+        "hints": [
+          "Read the number 3825 one place at a time, starting from the largest place.",
+          "Thousands: 3 → 'three thousand'.",
+          "Hundreds: 8 → 'eight hundred'.",
+          "The full word form is: 'three thousand eight hundred twenty-five'."
+        ],
+        "sample_id": "97dba6c1f6533bbf1c84",
+        "replay_digest": "785f28ade97c5f0c97bd72bbe4f5e901e65b07f6cc725a9ecfeaab4fe8ea4436"
+      },
+      {
+        "node_id": "mat_g3_na_q1_1",
+        "seed": 103,
+        "formatter": "true_false",
+        "question_text": "The number written as 'four thousand five hundred twenty-one' is 4521. True or False?",
+        "correct_answer": true,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "true_false",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "true_false",
+          "experience": "standard"
+        },
+        "resolved_answer": true,
+        "hints": [
+          "Identify each word part and its place value.",
+          "Expanded form: 4000 + 500 + 20 + 1.",
+          "Add the parts together to get 4521."
+        ],
+        "sample_id": "2549d4d90980c9e332b7",
+        "replay_digest": "648e793da4de85255effb04e2bf98a8da2b4c18a9b0c02035a1409185d042d45"
+      },
+      {
+        "node_id": "mat_g3_na_q1_1",
+        "seed": 118,
+        "formatter": "mcq",
+        "question_text": "Write 6115 in words.",
+        "correct_answer": "six thousand one hundred fifteen",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "six thousand one hundred five",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "six thousand one hundred sixteen",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "five thousand one hundred sixteen",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "six thousand one hundred fifteen",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "six thousand one hundred fifteen",
+        "hints": [
+          "Read the number 6115 one place at a time, starting from the largest place.",
+          "Thousands: 6 → 'six thousand'.",
+          "Hundreds: 1 → 'one hundred'.",
+          "The full word form is: 'six thousand one hundred fifteen'."
+        ],
+        "sample_id": "3597fde1bc4a874485f4",
+        "replay_digest": "ea488667a532b2cfdaf18a002f94992586a54e284f2f78135504f9085271d27d"
+      },
+      {
+        "node_id": "mat_g3_na_q1_1",
+        "seed": 127,
+        "formatter": "cloze",
+        "question_text": "Write 2607 in words.",
+        "correct_answer": "two thousand six hundred seven",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "seven thousand sixty-two",
+            "text": "seven thousand sixty-two",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "two thousand six hundred seven",
+            "text": "two thousand six hundred seven",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "two thousand six hundred eight",
+            "text": "two thousand six hundred eight",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "two thousand five hundred ninety-seven",
+            "text": "two thousand five hundred ninety-seven",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "two thousand six hundred seven",
+        "hints": [
+          "Read the number 2607 one place at a time, starting from the largest place.",
+          "Thousands: 2 → 'two thousand'.",
+          "Hundreds: 6 → 'six hundred'.",
+          "The full word form is: 'two thousand six hundred seven'."
+        ],
+        "sample_id": "0e3aaefa5f04d3511f0a",
+        "replay_digest": "0670fd986de3da23fbbb8f3b35c90873d73100cbb4fa9adf615f666695155977"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "read",
+      "node_id": "mat_g3_na_q1_1",
+      "clause": "Read",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All samples require reading numerals and text representations; students must interpret the written or numeral form of numbers in the range provided.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "write",
+      "node_id": "mat_g3_na_q1_1",
+      "clause": "write",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        57,
+        78,
+        118,
+        127
+      ],
+      "reasoning": "Multiple samples explicitly instruct 'Write the number' (seeds 11, 23) or 'Write ... in words' (seeds 57, 78, 118, 127), directly asking students to compose numerical or verbal representations.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "numbers",
+      "node_id": "mat_g3_na_q1_1",
+      "clause": "numbers",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Every sample involves 4-digit numbers that students must work with, read, write, or evaluate in a true/false context.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "up_to_10000",
+      "node_id": "mat_g3_na_q1_1",
+      "clause": "up to 10 000",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All sample numbers fall within the range up to 10,000: the highest value is 8630 (seed 11) and all others are smaller, staying within the specified limit.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "numerals",
+      "node_id": "mat_g3_na_q1_1",
+      "clause": "numerals",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Every sample uses numerical notation (8630, 2369, 1410, 7026, 3046, 2574, 3825, 4521, 6115, 2607), presenting numbers in digits.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "words",
+      "node_id": "mat_g3_na_q1_1",
+      "clause": "words",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All samples include word-form representations of numbers ('eight thousand six hundred thirty,' 'seven thousand twenty-six,' etc.), allowing students to encounter numbers written as text.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    }
+  ],
+  "supersedes": "Replaces batch025B08_mat_g3_na_q1_1, which §6F reported as unusable evidence (stale stem/answer, or a record that carries no options or no render-derived visual for content that renders one). The predecessor is left on disk; supersession is earned by this record, not declared by it."
+}

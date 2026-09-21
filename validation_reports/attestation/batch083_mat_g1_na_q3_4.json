@@ -1,0 +1,780 @@
+{
+  "batch": "batch083_mat_g1_na_q3_4",
+  "attested_at": "2026-09-21T00:00:00Z",
+  "attested_by": "blind-attester-opus5-d04-20260921",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "the Attester was told to read exactly local_only/scratch/attester/h06/d04.prompt.txt, which is attester_packets.render_prompt_block output (item id, clause, competency, grade/quarter and the rendered samples only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "prompt-contract dispatch to a separate agent: told to read exactly one packet render and no other path, and to write its verdict JSON. Tool access was NOT structurally prevented, so this does not claim the '0' (inline, no tool access) contract; at least one Read and one Write were expected and used."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g1_na_q3_4",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g1_na_q3_4",
+        "seed": 11,
+        "formatter": "true_false",
+        "question_text": "There are 75 erasers. Taking away 15 erasers leaves 59 erasers. True or False?",
+        "correct_answer": false,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "true_false",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "true_false",
+          "experience": "standard"
+        },
+        "resolved_answer": false,
+        "hints": [
+          "We are subtracting 15 from 75.",
+          "Subtract the ones: 5 − 5 = 0.",
+          "Subtract the tens: 7 − 1 = 6.",
+          "The difference of 75 − 15 = 60."
+        ],
+        "sample_id": "3eb940843aa604576dca",
+        "replay_digest": "2c4879fff0a0461c5490ec5f1e505a47a9377bdf76d397deae176815f55a034e"
+      },
+      {
+        "node_id": "mat_g1_na_q3_4",
+        "seed": 23,
+        "formatter": "cloze",
+        "question_text": "There are 15 apples. Taking away 14 apples leaves ___ apples.",
+        "correct_answer": 1,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 0,
+            "text": "0",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 29,
+            "text": "29",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 2,
+            "text": "2",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 1,
+            "text": "1",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 1,
+        "hints": [
+          "We are subtracting 14 from 15.",
+          "Subtract the ones: 5 − 4 = 1.",
+          "Subtract the tens: 1 − 1 = 0.",
+          "The difference of 15 − 14 = 1."
+        ],
+        "sample_id": "7cf65d6bdb089fa7386d",
+        "replay_digest": "858f919752078f7bd304a6aca55644aa78dd9d2fd371a8298e0e674b4f65a991"
+      },
+      {
+        "node_id": "mat_g1_na_q3_4",
+        "seed": 42,
+        "formatter": "cloze",
+        "question_text": "Start at 12. Count back 11. You land on ___",
+        "correct_answer": 1,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 0,
+            "text": "0",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 2,
+            "text": "2",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 23,
+            "text": "23",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 1,
+            "text": "1",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 1,
+        "hints": [
+          "We are subtracting 11 from 12.",
+          "Subtract the ones: 2 − 1 = 1.",
+          "Subtract the tens: 1 − 1 = 0.",
+          "The difference of 12 − 11 = 1."
+        ],
+        "sample_id": "0609e7bc944f66d7cc62",
+        "replay_digest": "b035a62cfc835805a65c718f8c5fa2f42b6ef38fc5e5bd6d71e46e74ec5775a2"
+      },
+      {
+        "node_id": "mat_g1_na_q3_4",
+        "seed": 57,
+        "formatter": "error_detect",
+        "question_text": "Pia solved: \"Start at 60. Count back 20. You land on ___\". Pia says the missing number is 80. Is Pia correct?",
+        "correct_answer": {
+          "has_error": true,
+          "correct_value": 40
+        },
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "error_detect",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "error_detect",
+          "experience": "standard"
+        },
+        "resolved_answer": {
+          "has_error": true,
+          "correct_value": 40
+        },
+        "hints": [
+          "We are subtracting 20 from 60.",
+          "Subtract the ones: 0 − 0 = 0.",
+          "Subtract the tens: 6 − 2 = 4.",
+          "The difference of 60 − 20 = 40."
+        ],
+        "sample_id": "4e99c0d5a60c58abf7b9",
+        "replay_digest": "45ec04c4029fe0ed54eb939ce03cecedfda7a9db57a1289ebd14f1d424b1abdc"
+      },
+      {
+        "node_id": "mat_g1_na_q3_4",
+        "seed": 64,
+        "formatter": "cloze",
+        "question_text": "There are 21 cookies. Taking away 20 cookies leaves ___ cookies.",
+        "correct_answer": 1,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 2,
+            "text": "2",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 0,
+            "text": "0",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 41,
+            "text": "41",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 1,
+            "text": "1",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 1,
+        "hints": [
+          "We are subtracting 20 from 21.",
+          "Subtract the ones: 1 − 0 = 1.",
+          "Subtract the tens: 2 − 2 = 0.",
+          "The difference of 21 − 20 = 1."
+        ],
+        "sample_id": "3fc43a7a1d8b52ee9e43",
+        "replay_digest": "cd95b27d7934fe12c2bb58cfb76e7f9af009e5b6e122c7654910a79129716cdf"
+      },
+      {
+        "node_id": "mat_g1_na_q3_4",
+        "seed": 78,
+        "formatter": "cloze",
+        "question_text": "Start at 16. Count back 15. You land on ___",
+        "correct_answer": 1,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 0,
+            "text": "0",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 1,
+            "text": "1",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 2,
+            "text": "2",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 31,
+            "text": "31",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 1,
+        "hints": [
+          "We are subtracting 15 from 16.",
+          "Subtract the ones: 6 − 5 = 1.",
+          "Subtract the tens: 1 − 1 = 0.",
+          "The difference of 16 − 15 = 1."
+        ],
+        "sample_id": "0f477128bb155aa5a63a",
+        "replay_digest": "ea263538be1cffee216b540b4dc302d2efe2a9bb398aa264598590dffa66fa6c"
+      },
+      {
+        "node_id": "mat_g1_na_q3_4",
+        "seed": 91,
+        "formatter": "read_mcq",
+        "question_text": "The dot is at 31 and it moves backward 30 numbers. Starting from 31, just count back 30 numbers. Which number will the dot land on?",
+        "correct_answer": "C",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "NumberLine",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 61,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 2,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 1,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 0,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 1,
+        "hints": [
+          "We are subtracting 30 from 31.",
+          "Subtract the ones: 1 − 0 = 1.",
+          "Subtract the tens: 3 − 3 = 0.",
+          "The difference of 31 − 30 = 1."
+        ],
+        "visual_type": "NumberLine",
+        "visual_payload": {
+          "start": 0,
+          "end": 50,
+          "major_interval": 10,
+          "minor_interval": 5,
+          "interval": 5,
+          "dot_value": 31,
+          "move_by": -30,
+          "content_type": "whole_number",
+          "value": 1,
+          "correct_position": 1,
+          "divisions": 10,
+          "is_interactive": false,
+          "show_labels": true,
+          "correct_answer": 1.0,
+          "target": 1.0
+        },
+        "visual_render": {
+          "visual_type": "NumberLine",
+          "renderer_input_digest": "ea2fdb19801475848862a6f05babd3d4e770810a01937a5288deda28dc9b8e72",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "NumberLine",
+            "element_count": 22,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "0",
+              "10",
+              "20",
+              "30",
+              "40",
+              "50"
+            ],
+            "distinct_colours": [
+              "hsl(var(--border-color)",
+              "hsl(var(--text-muted)",
+              "hsl(var(--text)",
+              "hsl(var(--primary)",
+              "hsl(var(--card-bg)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "fd434787f94f151cf176",
+        "replay_digest": "e1d6c4270c3c7e5562f79a54bb0c14666aa2ca2554644411e337e9dc95ee0c04"
+      },
+      {
+        "node_id": "mat_g1_na_q3_4",
+        "seed": 103,
+        "formatter": "read_mcq",
+        "question_text": "(Large group of 36 items) — There are 36 items.\nTaking away 30 items.\nHow many items are left?",
+        "correct_answer": "B",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "EmojiPictorial",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 36,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 6,
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 7,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 5,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 6,
+        "hints": [
+          "We are subtracting 30 from 36.",
+          "Subtract the ones: 6 − 0 = 6.",
+          "Subtract the tens: 3 − 3 = 0.",
+          "The difference of 36 − 30 = 6."
+        ],
+        "visual_type": "EmojiPictorial",
+        "visual_payload": {
+          "emoji": "🐕",
+          "group_a": 36,
+          "group_b": 30,
+          "operation": "subtraction",
+          "layout": "inline",
+          "display": "(Large group of 36 items)",
+          "reveal_display": "🐕🐕🐕🐕🐕🐕",
+          "reveal_text": "6 items"
+        },
+        "visual_render": {
+          "visual_type": "EmojiPictorial",
+          "renderer_input_digest": "60bb64b01d7e1cacba64c9bdc93abf9803b59945fc3f40c3863398a78641cd04",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "EmojiPictorial",
+            "element_count": 21,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "🐕",
+              "🛍️",
+              "10x 🐕"
+            ],
+            "distinct_colours": [
+              "hsl(var(--card-bg)",
+              "hsl(var(--border-color)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "6b84649b7a0b4b59d1c6",
+        "replay_digest": "3110856211336e2110bf799fde07d7485f51ef6551c47826ea3e19b58d4b1e57"
+      },
+      {
+        "node_id": "mat_g1_na_q3_4",
+        "seed": 118,
+        "formatter": "error_detect",
+        "question_text": "Dante solved: \"Start at 45. Count back 30. You land on ___\". Dante says the missing number is 16. Is Dante correct?",
+        "correct_answer": {
+          "has_error": true,
+          "correct_value": 15
+        },
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "error_detect",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "error_detect",
+          "experience": "standard"
+        },
+        "resolved_answer": {
+          "has_error": true,
+          "correct_value": 15
+        },
+        "hints": [
+          "We are subtracting 30 from 45.",
+          "Subtract the ones: 5 − 0 = 5.",
+          "Subtract the tens: 4 − 3 = 1.",
+          "The difference of 45 − 30 = 15."
+        ],
+        "sample_id": "82e18980d0a180f6f7de",
+        "replay_digest": "2d5f0dec5f0c42d586baa80fb82e4773665e79eee2bd6f412310a9a5805c4e77"
+      },
+      {
+        "node_id": "mat_g1_na_q3_4",
+        "seed": 127,
+        "formatter": "read_mcq",
+        "question_text": "The dot is at 18 and it moves backward 10 numbers. Starting from 18, just count back 10 numbers. Which number will the dot land on?",
+        "correct_answer": "D",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "NumberLine",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 9,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 28,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 7,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 8,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 8,
+        "hints": [
+          "We are subtracting 10 from 18.",
+          "Subtract the ones: 8 − 0 = 8.",
+          "Subtract the tens: 1 − 1 = 0.",
+          "The difference of 18 − 10 = 8."
+        ],
+        "visual_type": "NumberLine",
+        "visual_payload": {
+          "start": 0,
+          "end": 20,
+          "major_interval": 5,
+          "minor_interval": 1,
+          "interval": 1,
+          "dot_value": 18,
+          "move_by": -10,
+          "content_type": "whole_number",
+          "value": 8,
+          "correct_position": 8,
+          "divisions": 20,
+          "is_interactive": false,
+          "show_labels": true,
+          "correct_answer": 8.0,
+          "target": 8.0
+        },
+        "visual_render": {
+          "visual_type": "NumberLine",
+          "renderer_input_digest": "615de741944bdcda0f57889ea73a36b6ef28c5ae7913d3cf6370b43e4572ae57",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "NumberLine",
+            "element_count": 31,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "0",
+              "5",
+              "10",
+              "15",
+              "20"
+            ],
+            "distinct_colours": [
+              "hsl(var(--border-color)",
+              "hsl(var(--text-muted)",
+              "hsl(var(--text)",
+              "hsl(var(--primary)",
+              "hsl(var(--card-bg)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "c243c7daa76e06da042c",
+        "replay_digest": "eb52e259d51b4a983d1f1caee71e5b9d834ae1811cf40b6b4fc729c60aff601a"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "subtract_numbers",
+      "node_id": "mat_g1_na_q3_4",
+      "clause": "Subtract numbers",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Every stem in this block removes a quantity from a starting quantity - erasers taken away, counting back along a line, items left in a group - and each key is the difference, so subtraction of numbers is what the learner is actually doing in all ten renders.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "less_than_100",
+      "node_id": "mat_g1_na_q3_4",
+      "clause": "numbers are less than 100",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        118,
+        103,
+        91,
+        23
+      ],
+      "reasoning": "Scanning the operands: the largest minuend anywhere is 75 and the largest subtrahend is 30, with every other pair smaller still, so the whole sample set sits below the hundred ceiling the competency sets.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "concrete_models",
+      "node_id": "mat_g1_na_q3_4",
+      "clause": "concrete",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        64,
+        91,
+        127,
+        103
+      ],
+      "reasoning": "Concrete means manipulable material, and nothing here puts any in front of the learner. Erasers, apples and cookies exist only as words in seeds 11, 23 and 64 with no visual attached at all; where a visual does appear it is a NumberLine (91, 127) - a drawn scale, not material - and the one object-bearing render, seed 103's EmojiPictorial, is a picture of dogs rather than something handled. A named object with no drawing is not a concrete model.",
+      "action_taken": "Filed as a §6F CONTRADICTED finding against H-06 and left reported. This session's scope is re-earning blind evidence at zero re-proof cost; no CAPABILITY_PROVIDERS entry was deleted and no artifact was built, because either act is a source edit that owes the full re-proof chain. The contradiction stands as the queue item."
+    },
+    {
+      "capability_id": "pictorial_models",
+      "node_id": "mat_g1_na_q3_4",
+      "clause": "pictorial models",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        103,
+        91,
+        127
+      ],
+      "reasoning": "Three of the ten samples carry an actual drawn model. Seed 103 renders an EmojiPictorial whose labels include a dog glyph, a bag glyph and a '10x' grouping marker over 21 elements, which is a picture of the 36 items the stem subtracts from; seeds 91 and 127 render NumberLines with tick labels running 0-50 and 0-20. That is pictorial modelling of the subtraction, not mere mention of one.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable.",
+      "content_note_from_attester": "The EmojiPictorial label list is terse (one glyph plus a 10x grouping token); it is legible as a tens-and-ones picture of 36 but a reviewer cannot confirm the exact count of drawn items from the structure alone."
+    },
+    {
+      "capability_id": "without_regrouping",
+      "node_id": "mat_g1_na_q3_4",
+      "clause": "without regrouping",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "I checked the ones digit of each pair for a borrow: 75-15, 15-14, 12-11, 60-20, 21-20, 16-15, 31-30, 36-30, 45-30, 18-10. In every case the minuend's ones digit is at least the subtrahend's, so no sample forces a ten to be broken apart. The restriction the clause imposes holds across the block.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "sub_2d_1d",
+      "node_id": "mat_g1_na_q3_4",
+      "clause": "2-digit minus 1-digit numbers",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "This sub-case asks for a single-digit amount being taken from a two-digit one, and no sample offers that shape. The subtrahends across the block are 15, 14, 11, 20, 20, 15, 30, 30, 30 and 10 - ten two-digit values and not one number below ten. The 2-digit minus 1-digit half of the competency simply goes unrepresented here.",
+      "action_taken": "Filed as a §6F CONTRADICTED finding against H-06 and left reported. This session's scope is re-earning blind evidence at zero re-proof cost; no CAPABILITY_PROVIDERS entry was deleted and no artifact was built, because either act is a source edit that owes the full re-proof chain. The contradiction stands as the queue item.",
+      "content_note_from_attester": "Six seeds land on a difference of 1 (23, 42, 64, 78, 91 and the near-miss 11), which is a narrow answer spread quite apart from the missing sub-case."
+    },
+    {
+      "capability_id": "sub_2d_2d",
+      "node_id": "mat_g1_na_q3_4",
+      "clause": "2-digit minus 2-digit numbers",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        118,
+        127,
+        57,
+        103
+      ],
+      "reasoning": "Both operands are two-digit numbers throughout: 75 less 15, 45 less 30, 18 less 10, 60 less 20, 36 less 30. This is precisely the sub-case the clause names, and it is the only sub-case the block produces.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    }
+  ],
+  "supersedes": "Replaces batch027_mat_g1_na_q3_4, which §6F reported as unusable evidence (stale stem/answer, or a record that carries no options or no render-derived visual for content that renders one). The predecessor is left on disk; supersession is earned by this record, not declared by it."
+}

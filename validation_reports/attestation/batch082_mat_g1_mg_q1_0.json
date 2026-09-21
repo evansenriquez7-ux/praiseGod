@@ -1,0 +1,1067 @@
+{
+  "batch": "batch082_mat_g1_mg_q1_0",
+  "attested_at": "2026-09-21T00:00:00Z",
+  "attested_by": "blind-attester-opus5-d03-20260921",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "the Attester was told to read exactly local_only/scratch/attester/h06/d03.prompt.txt, which is attester_packets.render_prompt_block output (item id, clause, competency, grade/quarter and the rendered samples only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "prompt-contract dispatch to a separate agent: told to read exactly one packet render and no other path, and to write its verdict JSON. Tool access was NOT structurally prevented, so this does not claim the '0' (inline, no tool access) contract; at least one Read and one Write were expected and used."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g1_mg_q1_0",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g1_mg_q1_0",
+        "seed": 11,
+        "formatter": "read_mcq",
+        "question_text": "A small flat shape with 3 straight edges is shown. What shape is it?",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "ShapeBoard",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "triangle",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "rectangle",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "square",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "none of these",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "triangle",
+        "hints": [
+          "Look at each shape and its straight edges.",
+          "A triangle has 3 straight edges.",
+          "A square has 4 equal straight edges.",
+          "A rectangle has 4 straight edges (opposite straight edges are equal)."
+        ],
+        "visual_type": "ShapeBoard",
+        "visual_payload": {
+          "shapes": [
+            {
+              "id": "shape_0",
+              "type": "triangle",
+              "sides": 3,
+              "corners": 3,
+              "is_regular": true,
+              "orientation_deg": 0
+            },
+            {
+              "id": "shape_1",
+              "type": "rectangle",
+              "sides": 4,
+              "corners": 4,
+              "is_regular": false,
+              "orientation_deg": 0
+            },
+            {
+              "id": "shape_2",
+              "type": "square",
+              "sides": 4,
+              "corners": 4,
+              "is_regular": true,
+              "orientation_deg": 0
+            }
+          ],
+          "question_type": "illustrate",
+          "highlighted_shape": null
+        },
+        "visual_render": {
+          "visual_type": "ShapeBoard",
+          "renderer_input_digest": "1f27ed1eaa09eba215797ed2320fb05743131b5b44ea778d97362602a39a904a",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "ShapeBoard",
+            "element_count": 11,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [],
+            "distinct_colours": [
+              "hsl(var(--primary)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "5727108b70d8bc198e52",
+        "replay_digest": "9a68967671b3d4fe240bd0dd0fa874328a70408f3c8916071a060451d99040ae"
+      },
+      {
+        "node_id": "mat_g1_mg_q1_0",
+        "seed": 23,
+        "formatter": "read_mcq",
+        "question_text": "A classroom chalkboard has 4 straight edges and opposite edges are equal. What shape is the chalkboard?",
+        "correct_answer": "D",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "ShapeBoard",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "square",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "triangle",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "none of these",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "rectangle",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "rectangle",
+        "hints": [
+          "Look at each shape and its straight edges.",
+          "A triangle has 3 straight edges.",
+          "A square has 4 equal straight edges.",
+          "A rectangle has 4 straight edges (opposite straight edges are equal)."
+        ],
+        "visual_type": "ShapeBoard",
+        "visual_payload": {
+          "shapes": [
+            {
+              "id": "shape_0",
+              "type": "rectangle",
+              "sides": 4,
+              "corners": 4,
+              "is_regular": false,
+              "orientation_deg": 0
+            },
+            {
+              "id": "shape_1",
+              "type": "triangle",
+              "sides": 3,
+              "corners": 3,
+              "is_regular": true,
+              "orientation_deg": 0
+            },
+            {
+              "id": "shape_2",
+              "type": "square",
+              "sides": 4,
+              "corners": 4,
+              "is_regular": true,
+              "orientation_deg": 0
+            }
+          ],
+          "question_type": "illustrate",
+          "highlighted_shape": null
+        },
+        "visual_render": {
+          "visual_type": "ShapeBoard",
+          "renderer_input_digest": "95499e999a131b1233a4b4ea47a158def39bbb59328d44df71b1f6b2e3881d33",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "ShapeBoard",
+            "element_count": 11,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [],
+            "distinct_colours": [
+              "hsl(var(--primary)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "7da11b51c312f2ee0d0d",
+        "replay_digest": "be464f7ec5fd44c82dfc4b18f9accc4e105040ec3026400740bd0095fd63522a"
+      },
+      {
+        "node_id": "mat_g1_mg_q1_0",
+        "seed": 42,
+        "formatter": "read_mcq",
+        "question_text": "A party hat is shaped with 3 straight edges. What 2D shape is it?",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "ShapeBoard",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "triangle",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "square",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "rectangle",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "none of these",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "triangle",
+        "hints": [
+          "Look at each shape and its straight edges.",
+          "A triangle has 3 straight edges.",
+          "A square has 4 equal straight edges.",
+          "A rectangle has 4 straight edges (opposite straight edges are equal)."
+        ],
+        "visual_type": "ShapeBoard",
+        "visual_payload": {
+          "shapes": [
+            {
+              "id": "shape_0",
+              "type": "triangle",
+              "sides": 3,
+              "corners": 3,
+              "is_regular": true,
+              "orientation_deg": 0
+            },
+            {
+              "id": "shape_1",
+              "type": "rectangle",
+              "sides": 4,
+              "corners": 4,
+              "is_regular": false,
+              "orientation_deg": 0
+            },
+            {
+              "id": "shape_2",
+              "type": "square",
+              "sides": 4,
+              "corners": 4,
+              "is_regular": true,
+              "orientation_deg": 0
+            }
+          ],
+          "question_type": "illustrate",
+          "highlighted_shape": null
+        },
+        "visual_render": {
+          "visual_type": "ShapeBoard",
+          "renderer_input_digest": "1f27ed1eaa09eba215797ed2320fb05743131b5b44ea778d97362602a39a904a",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "ShapeBoard",
+            "element_count": 11,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [],
+            "distinct_colours": [
+              "hsl(var(--primary)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "e2e32858938b24e8945b",
+        "replay_digest": "ca8f1c9f6f57fffd573f5c91a2a38da2b5ce8ea5696f5bc4ac8cb08c263a5e2b"
+      },
+      {
+        "node_id": "mat_g1_mg_q1_0",
+        "seed": 57,
+        "formatter": "mcq",
+        "question_text": "A party hat is shaped with 3 straight edges. What 2D shape is it?",
+        "correct_answer": "triangle",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "square",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "none of these",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "triangle",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "rectangle",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "triangle",
+        "hints": [
+          "Look at each shape and its straight edges.",
+          "A triangle has 3 straight edges.",
+          "A square has 4 equal straight edges.",
+          "A rectangle has 4 straight edges (opposite straight edges are equal)."
+        ],
+        "sample_id": "8d3e1bdca0169d5a51cb",
+        "replay_digest": "1ad355b50d8f484987215b37552ff4572039bfe6ecfa22a7ea7a8d5e623a3270"
+      },
+      {
+        "node_id": "mat_g1_mg_q1_0",
+        "seed": 64,
+        "formatter": "read_mcq",
+        "question_text": "A small flat shape with 3 straight edges is shown. What shape is it?",
+        "correct_answer": "B",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "ShapeBoard",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "none of these",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "triangle",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "square",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "rectangle",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "triangle",
+        "hints": [
+          "Look at each shape and its straight edges.",
+          "A triangle has 3 straight edges.",
+          "A square has 4 equal straight edges.",
+          "A rectangle has 4 straight edges (opposite straight edges are equal)."
+        ],
+        "visual_type": "ShapeBoard",
+        "visual_payload": {
+          "shapes": [
+            {
+              "id": "shape_0",
+              "type": "triangle",
+              "sides": 3,
+              "corners": 3,
+              "is_regular": true,
+              "orientation_deg": 0
+            },
+            {
+              "id": "shape_1",
+              "type": "rectangle",
+              "sides": 4,
+              "corners": 4,
+              "is_regular": false,
+              "orientation_deg": 0
+            },
+            {
+              "id": "shape_2",
+              "type": "square",
+              "sides": 4,
+              "corners": 4,
+              "is_regular": true,
+              "orientation_deg": 0
+            }
+          ],
+          "question_type": "illustrate",
+          "highlighted_shape": null
+        },
+        "visual_render": {
+          "visual_type": "ShapeBoard",
+          "renderer_input_digest": "1f27ed1eaa09eba215797ed2320fb05743131b5b44ea778d97362602a39a904a",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "ShapeBoard",
+            "element_count": 11,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [],
+            "distinct_colours": [
+              "hsl(var(--primary)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "bb3547c81acdc8b6bcfa",
+        "replay_digest": "b53c1d7e62d1f98cbf92a5bb9a74e00d4f84ab26ca07b2e6401e8315617862f5"
+      },
+      {
+        "node_id": "mat_g1_mg_q1_0",
+        "seed": 78,
+        "formatter": "read_mcq",
+        "question_text": "A flat floor tile has 4 equal straight edges. What shape is the tile?",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "ShapeBoard",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "square",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "triangle",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "rectangle",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "none of these",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "square",
+        "hints": [
+          "Look at each shape and its straight edges.",
+          "A triangle has 3 straight edges.",
+          "A square has 4 equal straight edges.",
+          "A rectangle has 4 straight edges (opposite straight edges are equal)."
+        ],
+        "visual_type": "ShapeBoard",
+        "visual_payload": {
+          "shapes": [
+            {
+              "id": "shape_0",
+              "type": "square",
+              "sides": 4,
+              "corners": 4,
+              "is_regular": true,
+              "orientation_deg": 0
+            },
+            {
+              "id": "shape_1",
+              "type": "triangle",
+              "sides": 3,
+              "corners": 3,
+              "is_regular": true,
+              "orientation_deg": 0
+            },
+            {
+              "id": "shape_2",
+              "type": "rectangle",
+              "sides": 4,
+              "corners": 4,
+              "is_regular": false,
+              "orientation_deg": 0
+            }
+          ],
+          "question_type": "illustrate",
+          "highlighted_shape": null
+        },
+        "visual_render": {
+          "visual_type": "ShapeBoard",
+          "renderer_input_digest": "97d256824592929ce72d100e93b22b1a57613ba8d4303a6be5124361d2d4f08b",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "ShapeBoard",
+            "element_count": 11,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [],
+            "distinct_colours": [
+              "hsl(var(--primary)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "7b699be73d36774d82d2",
+        "replay_digest": "15b7c39dc5b13a7f9b9430882cf5d4c1080ae000b46aa40adbd5b4b3be400fc3"
+      },
+      {
+        "node_id": "mat_g1_mg_q1_0",
+        "seed": 91,
+        "formatter": "read_mcq",
+        "question_text": "A party hat is shaped with 3 straight edges. What 2D shape is it?",
+        "correct_answer": "B",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "ShapeBoard",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "square",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "triangle",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "rectangle",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "none of these",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "triangle",
+        "hints": [
+          "Look at each shape and its straight edges.",
+          "A triangle has 3 straight edges.",
+          "A square has 4 equal straight edges.",
+          "A rectangle has 4 straight edges (opposite straight edges are equal)."
+        ],
+        "visual_type": "ShapeBoard",
+        "visual_payload": {
+          "shapes": [
+            {
+              "id": "shape_0",
+              "type": "triangle",
+              "sides": 3,
+              "corners": 3,
+              "is_regular": true,
+              "orientation_deg": 0
+            },
+            {
+              "id": "shape_1",
+              "type": "rectangle",
+              "sides": 4,
+              "corners": 4,
+              "is_regular": false,
+              "orientation_deg": 0
+            },
+            {
+              "id": "shape_2",
+              "type": "square",
+              "sides": 4,
+              "corners": 4,
+              "is_regular": true,
+              "orientation_deg": 0
+            }
+          ],
+          "question_type": "illustrate",
+          "highlighted_shape": null
+        },
+        "visual_render": {
+          "visual_type": "ShapeBoard",
+          "renderer_input_digest": "1f27ed1eaa09eba215797ed2320fb05743131b5b44ea778d97362602a39a904a",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "ShapeBoard",
+            "element_count": 11,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [],
+            "distinct_colours": [
+              "hsl(var(--primary)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "bdb03d88d99e7f1ed49a",
+        "replay_digest": "1b837c9ef190c4331f3aa16288dcd54d519bb02a80ecc6d3903ff0ed4d14a1ca"
+      },
+      {
+        "node_id": "mat_g1_mg_q1_0",
+        "seed": 103,
+        "formatter": "read_mcq",
+        "question_text": "A small flat shape with 3 straight edges is shown. What shape is it?",
+        "correct_answer": "C",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "ShapeBoard",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "square",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "rectangle",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "triangle",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "none of these",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "triangle",
+        "hints": [
+          "Look at each shape and its straight edges.",
+          "A triangle has 3 straight edges.",
+          "A square has 4 equal straight edges.",
+          "A rectangle has 4 straight edges (opposite straight edges are equal)."
+        ],
+        "visual_type": "ShapeBoard",
+        "visual_payload": {
+          "shapes": [
+            {
+              "id": "shape_0",
+              "type": "triangle",
+              "sides": 3,
+              "corners": 3,
+              "is_regular": true,
+              "orientation_deg": 0
+            },
+            {
+              "id": "shape_1",
+              "type": "rectangle",
+              "sides": 4,
+              "corners": 4,
+              "is_regular": false,
+              "orientation_deg": 0
+            },
+            {
+              "id": "shape_2",
+              "type": "square",
+              "sides": 4,
+              "corners": 4,
+              "is_regular": true,
+              "orientation_deg": 0
+            }
+          ],
+          "question_type": "illustrate",
+          "highlighted_shape": null
+        },
+        "visual_render": {
+          "visual_type": "ShapeBoard",
+          "renderer_input_digest": "1f27ed1eaa09eba215797ed2320fb05743131b5b44ea778d97362602a39a904a",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "ShapeBoard",
+            "element_count": 11,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [],
+            "distinct_colours": [
+              "hsl(var(--primary)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "eb5b62590beb70744485",
+        "replay_digest": "121343d0bc557921b025b1b8186b9d9d70eaf8097c78e66091d95c8cb321e068"
+      },
+      {
+        "node_id": "mat_g1_mg_q1_0",
+        "seed": 118,
+        "formatter": "mcq",
+        "question_text": "A flat floor tile has 4 equal straight edges. What shape is the tile?",
+        "correct_answer": "square",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "none of these",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "square",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "rectangle",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "triangle",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "square",
+        "hints": [
+          "Look at each shape and its straight edges.",
+          "A triangle has 3 straight edges.",
+          "A square has 4 equal straight edges.",
+          "A rectangle has 4 straight edges (opposite straight edges are equal)."
+        ],
+        "sample_id": "d4785f7350a6ee563a06",
+        "replay_digest": "631c192f3eb6ea254404c13278ecb7f552d0847c5d7d491559a463d8fcaa63f6"
+      },
+      {
+        "node_id": "mat_g1_mg_q1_0",
+        "seed": 127,
+        "formatter": "read_mcq",
+        "question_text": "A party hat is shaped with 3 straight edges. What 2D shape is it?",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "ShapeBoard",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "triangle",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "rectangle",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "square",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "none of these",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "triangle",
+        "hints": [
+          "Look at each shape and its straight edges.",
+          "A triangle has 3 straight edges.",
+          "A square has 4 equal straight edges.",
+          "A rectangle has 4 straight edges (opposite straight edges are equal)."
+        ],
+        "visual_type": "ShapeBoard",
+        "visual_payload": {
+          "shapes": [
+            {
+              "id": "shape_0",
+              "type": "triangle",
+              "sides": 3,
+              "corners": 3,
+              "is_regular": true,
+              "orientation_deg": 0
+            },
+            {
+              "id": "shape_1",
+              "type": "rectangle",
+              "sides": 4,
+              "corners": 4,
+              "is_regular": false,
+              "orientation_deg": 0
+            },
+            {
+              "id": "shape_2",
+              "type": "square",
+              "sides": 4,
+              "corners": 4,
+              "is_regular": true,
+              "orientation_deg": 0
+            }
+          ],
+          "question_type": "illustrate",
+          "highlighted_shape": null
+        },
+        "visual_render": {
+          "visual_type": "ShapeBoard",
+          "renderer_input_digest": "1f27ed1eaa09eba215797ed2320fb05743131b5b44ea778d97362602a39a904a",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "ShapeBoard",
+            "element_count": 11,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [],
+            "distinct_colours": [
+              "hsl(var(--primary)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "e45d953819778eb7c019",
+        "replay_digest": "37146376d69e11b48a471a9ff60fb6c6cb15732e59037b47c64754bd12eb873d"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "identify",
+      "node_id": "mat_g1_mg_q1_0",
+      "clause": "Identify",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        78,
+        118
+      ],
+      "reasoning": "Naming a shape from what is presented is the task in every sample. Seeds 11 and 64 ask 'What shape is it?' with a ShapeBoard drawn, seed 23 asks what shape the chalkboard is, seed 78 asks about the tile, and seed 118 takes a typed shape name as its key. The learner's output is a shape identity, which is precisely the verb the clause carries.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable.",
+      "content_note_from_attester": "Most stems state the defining property outright ('3 straight edges', '4 equal straight edges'), so identification can be completed from the sentence without consulting the rendered shape."
+    },
+    {
+      "capability_id": "simple_2_dimensional_shapes",
+      "node_id": "mat_g1_mg_q1_0",
+      "clause": "simple 2-dimensional shapes",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        42,
+        78,
+        23
+      ],
+      "reasoning": "Everything in play is planar and elementary: flat shapes described as flat ('A small flat shape', 'A flat floor tile'), one stem saying '2D shape' in as many words, and option sets confined to triangle, rectangle and square plus a none-of-these distractor. A ShapeBoard visual accompanies eight of the ten seeds, so a two-dimensional figure is actually drawn and not just talked about. No solid or three-dimensional figure appears anywhere.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "triangle",
+      "node_id": "mat_g1_mg_q1_0",
+      "clause": "triangle",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        42,
+        57,
+        103
+      ],
+      "reasoning": "Three-sided figures are the most common subject in the block and they are the keyed answer, not merely a distractor. Seed 11's key A resolves to triangle in its option order, seed 42's key A likewise, seed 57 keys the literal string 'triangle', and seed 103's key C sits on triangle. The named shape is therefore what the learner must produce, repeatedly.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable.",
+      "content_note_from_attester": "The three-edge party-hat stem recurs at seeds 42, 57, 91 and 127 with only option order changing, so context variety within the triangle case is low."
+    },
+    {
+      "capability_id": "rectangle",
+      "node_id": "mat_g1_mg_q1_0",
+      "clause": "rectangle",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        23
+      ],
+      "reasoning": "One seed puts this shape in the answer position and does it properly. Seed 23 describes a chalkboard with 4 straight edges whose opposite edges are equal, keys D, and D in that option list is rectangle, with square offered as the near-miss distractor. The defining contrast between the two quadrilaterals is thus actually tested rather than assumed. It is a single occurrence: elsewhere rectangle only ever serves as a wrong option.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable.",
+      "content_note_from_attester": "Rectangle is the keyed answer in only 1 of 10 seeds while triangle takes 7, so the shape mix within this node is lopsided."
+    },
+    {
+      "capability_id": "square",
+      "node_id": "mat_g1_mg_q1_0",
+      "clause": "square",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        78,
+        118
+      ],
+      "reasoning": "Two samples ask for the equal-sided quadrilateral and accept it as correct. Seed 78's floor tile with 4 equal straight edges keys A, which is square in that ordering, and seed 118 repeats the tile context with the free-response key 'square'. Both hold rectangle in the distractor set, so the equal-edges condition is doing work in the stem.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "different_size",
+      "node_id": "mat_g1_mg_q1_0",
+      "clause": "different size",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        78,
+        118
+      ],
+      "reasoning": "Size variation would have to show up either as contrasting magnitudes in what is drawn or as a stem that makes scale matter, and neither happens. The word 'small' appears in the seed 11 and 64 stems, but nothing anywhere is presented as large, and the ShapeBoard rendered structure is byte-for-byte the same on every seed that has one (element_count 11, no text labels, a single colour), so the evidence gives me no way to see one figure as bigger than another. A lone adjective in prose, with an identical drawing behind it, does not amount to shapes of different size.",
+      "action_taken": "Filed as a §6F CONTRADICTED finding against H-06 and left reported. This session's scope is re-earning blind evidence at zero re-proof cost; no CAPABILITY_PROVIDERS entry was deleted and no artifact was built, because either act is a source edit that owes the full re-proof chain. The contradiction stands as the queue item.",
+      "content_note_from_attester": "The rendered-structure summary carries no dimension or scale information at all, so this clause may be unfalsifiable from this evidence format even if the generator does vary size."
+    },
+    {
+      "capability_id": "different_orientation",
+      "node_id": "mat_g1_mg_q1_0",
+      "clause": "different orientation",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [
+        11,
+        42,
+        64,
+        91,
+        127
+      ],
+      "reasoning": "Nothing in these ten samples turns on how a figure is rotated. No stem mentions turning, tilting, upside-down or sideways presentation, no option set rewards recognising a rotated figure, and the eight ShapeBoard renders are indistinguishable from one another in the structure given, so I cannot point to two seeds where the same shape sits at different angles. Since the stems also state the edge counts explicitly, orientation could not affect the answer even if it did vary.",
+      "action_taken": "Filed as a §6F CONTRADICTED finding against H-06 and left reported. This session's scope is re-earning blind evidence at zero re-proof cost; no CAPABILITY_PROVIDERS entry was deleted and no artifact was built, because either act is a source edit that owes the full re-proof chain. The contradiction stands as the queue item.",
+      "content_note_from_attester": "Recognising a shape in an unusual orientation is the harder half of this competency and is untouched here; the wording-based stems make the visual optional."
+    }
+  ],
+  "supersedes": "Replaces batch024_mat_g1_mg_q1_0, which §6F reported as unusable evidence (stale stem/answer, or a record that carries no options or no render-derived visual for content that renders one). The predecessor is left on disk; supersession is earned by this record, not declared by it."
+}

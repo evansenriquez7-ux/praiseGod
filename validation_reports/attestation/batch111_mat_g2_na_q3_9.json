@@ -1,0 +1,578 @@
+{
+  "batch": "batch111_mat_g2_na_q3_9",
+  "attested_at": "2026-09-21T00:00:00Z",
+  "attested_by": "blind-attester-haiku45-d32-20260922",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "the Attester was told to read exactly local_only/scratch/attester/h06/d32.prompt.txt, which is attester_packets.render_prompt_block output (item id, clause, competency, grade/quarter and the rendered samples only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "prompt-contract dispatch to a separate agent: told to read exactly one packet render and no other path, and to write its verdict JSON. Tool access was NOT structurally prevented, so this does not claim the '0' (inline, no tool access) contract; at least one Read and one Write were expected and used."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g2_na_q3_9",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g2_na_q3_9",
+        "seed": 11,
+        "formatter": "true_false",
+        "question_text": "Pia has ₱50 and wants to share it equally among 10 friends. How much does each friend get? The answer is 10. True or False?",
+        "correct_answer": false,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "true_false",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "true_false",
+          "experience": "standard"
+        },
+        "resolved_answer": false,
+        "hints": [
+          "We need to divide 50 by 10. The number being divided is 50; the number we divide by is 10.",
+          "Ask: how many times does 10 fit into 50? 10 × 5 = 50.",
+          "The quotient of 50 ÷ 10 = 5."
+        ],
+        "sample_id": "5de9a91e3aa3fbf5ab08",
+        "replay_digest": "fa28b258ea30228f33e243d99c5c7ca33fd1372ab01f41d17184c8acc2c526d1"
+      },
+      {
+        "node_id": "mat_g2_na_q3_9",
+        "seed": 23,
+        "formatter": "cloze",
+        "question_text": "There are 20 sneakers. If 5 sneakers are put in each bag, how many bags are needed?",
+        "correct_answer": 4,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 4,
+            "text": "4",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 15,
+            "text": "15",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 3,
+            "text": "3",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 5,
+            "text": "5",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 4,
+        "hints": [
+          "We need to divide 20 by 5. The number being divided is 20; the number we divide by is 5.",
+          "Ask: how many times does 5 fit into 20? 5 × 4 = 20.",
+          "The quotient of 20 ÷ 5 = 4."
+        ],
+        "sample_id": "69c9acfc913fec5d9795",
+        "replay_digest": "06e5410f9e757bf4b4a2df68766939ae7670614e6707e544a5492df8fe83cd61"
+      },
+      {
+        "node_id": "mat_g2_na_q3_9",
+        "seed": 42,
+        "formatter": "cloze",
+        "question_text": "Maico wants to share 3 costumes equally among 3 friends. How many costumes does each friend get?",
+        "correct_answer": 1,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 3,
+            "text": "3",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 1,
+            "text": "1",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 0,
+            "text": "0",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 2,
+            "text": "2",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 1,
+        "hints": [
+          "We need to divide 3 by 3. The number being divided is 3; the number we divide by is 3.",
+          "Ask: how many times does 3 fit into 3? 3 × 1 = 3.",
+          "The quotient of 3 ÷ 3 = 1."
+        ],
+        "sample_id": "d02e7cb8a9cd62f9a5d8",
+        "replay_digest": "a31dfedc0375c5543ddabfb53c8889ab4b4b7a3ddcace258c1c3074f47639477"
+      },
+      {
+        "node_id": "mat_g2_na_q3_9",
+        "seed": 57,
+        "formatter": "mcq",
+        "question_text": "Arnel has ₱10 and wants to share it equally among 2 friends. How much does each friend get?",
+        "correct_answer": 5,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 5,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 2,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 8,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 6,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 5,
+        "hints": [
+          "We need to divide 10 by 2. The number being divided is 10; the number we divide by is 2.",
+          "Ask: how many times does 2 fit into 10? 2 × 5 = 10.",
+          "The quotient of 10 ÷ 2 = 5."
+        ],
+        "sample_id": "7b54b387e703b35f57aa",
+        "replay_digest": "7058ff565d726079617c5e871d05f0022d08a60c71d83152e68fb59434cd2337"
+      },
+      {
+        "node_id": "mat_g2_na_q3_9",
+        "seed": 64,
+        "formatter": "cloze",
+        "question_text": "Esther has ₱70 and wants to share it equally among 10 friends. How much does each friend get?",
+        "correct_answer": 7,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 7,
+            "text": "7",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 10,
+            "text": "10",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 60,
+            "text": "60",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 8,
+            "text": "8",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 7,
+        "hints": [
+          "We need to divide 70 by 10. The number being divided is 70; the number we divide by is 10.",
+          "Ask: how many times does 10 fit into 70? 10 × 7 = 70.",
+          "The quotient of 70 ÷ 10 = 7."
+        ],
+        "sample_id": "c022fedeba563db775c1",
+        "replay_digest": "239aa875261c242a109bf174d280f4fed7f874406396a45bb039d33e17c69079"
+      },
+      {
+        "node_id": "mat_g2_na_q3_9",
+        "seed": 78,
+        "formatter": "cloze",
+        "question_text": "Kuya Ton wants to share 20 ribbons equally among 4 friends. How many ribbons does each friend get?",
+        "correct_answer": 5,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 4,
+            "text": "4",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 16,
+            "text": "16",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 5,
+            "text": "5",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 6,
+            "text": "6",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 5,
+        "hints": [
+          "We need to divide 20 by 4. The number being divided is 20; the number we divide by is 4.",
+          "Ask: how many times does 4 fit into 20? 4 × 5 = 20.",
+          "The quotient of 20 ÷ 4 = 5."
+        ],
+        "sample_id": "656cdb27e65e8d729e76",
+        "replay_digest": "9f70be3fbf6e12984074a83fd994bbc963312de937a4d6f3ebf7a23df883da29"
+      },
+      {
+        "node_id": "mat_g2_na_q3_9",
+        "seed": 91,
+        "formatter": "error_detect",
+        "question_text": "Grace solved this problem: \"Coach Nora has ₱12 and wants to share it equally among 2 friends. How much does each friend get?\" Grace says the answer is 5. Is Grace correct?",
+        "correct_answer": {
+          "has_error": true,
+          "correct_value": 6
+        },
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "error_detect",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "error_detect",
+          "experience": "standard"
+        },
+        "resolved_answer": {
+          "has_error": true,
+          "correct_value": 6
+        },
+        "hints": [
+          "We need to divide 12 by 2. The number being divided is 12; the number we divide by is 2.",
+          "Ask: how many times does 2 fit into 12? 2 × 6 = 12.",
+          "The quotient of 12 ÷ 2 = 6."
+        ],
+        "sample_id": "a04c36ecb496fa8ef494",
+        "replay_digest": "f1bbd8bf181580fdb1ba26739b346f078cf6ef3a7bb511727b673a1eaa345360"
+      },
+      {
+        "node_id": "mat_g2_na_q3_9",
+        "seed": 103,
+        "formatter": "error_detect",
+        "question_text": "Grace solved this problem: \"There are 50 jump ropes. If 10 jump ropes are put in each bag, how many bags are needed?\" Grace says the answer is 40. Is Grace correct?",
+        "correct_answer": {
+          "has_error": true,
+          "correct_value": 5
+        },
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "error_detect",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "error_detect",
+          "experience": "standard"
+        },
+        "resolved_answer": {
+          "has_error": true,
+          "correct_value": 5
+        },
+        "hints": [
+          "We need to divide 50 by 10. The number being divided is 50; the number we divide by is 10.",
+          "Ask: how many times does 10 fit into 50? 10 × 5 = 50.",
+          "The quotient of 50 ÷ 10 = 5."
+        ],
+        "sample_id": "6a2f7e8864db57026974",
+        "replay_digest": "0878bc70981993b1e9987d74f72d2f38572e087459aafc4f847d7257aad8adfc"
+      },
+      {
+        "node_id": "mat_g2_na_q3_9",
+        "seed": 118,
+        "formatter": "mcq",
+        "question_text": "Ate Gab wants to share 15 ribbons equally among 3 friends. How many ribbons does each friend get?",
+        "correct_answer": 5,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 5,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 3,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 12,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 6,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 5,
+        "hints": [
+          "We need to divide 15 by 3. The number being divided is 15; the number we divide by is 3.",
+          "Ask: how many times does 3 fit into 15? 3 × 5 = 15.",
+          "The quotient of 15 ÷ 3 = 5."
+        ],
+        "sample_id": "7212efca39c26c8c756c",
+        "replay_digest": "a5f6fca70d20c7f61b98af09e87a1dd9a92fc46674cf41e5b221a7245d347320"
+      },
+      {
+        "node_id": "mat_g2_na_q3_9",
+        "seed": 127,
+        "formatter": "cloze",
+        "question_text": "David has ₱10 and wants to share it equally among 2 friends. How much does each friend get?",
+        "correct_answer": 5,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 6,
+            "text": "6",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 5,
+            "text": "5",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 8,
+            "text": "8",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 2,
+            "text": "2",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 5,
+        "hints": [
+          "We need to divide 10 by 2. The number being divided is 10; the number we divide by is 2.",
+          "Ask: how many times does 2 fit into 10? 2 × 5 = 10.",
+          "The quotient of 10 ÷ 2 = 5."
+        ],
+        "sample_id": "e2d8d5373fd26640ec55",
+        "replay_digest": "86331c2434eee06c5323a1129a4421579c25eeb88d6f2c5933cbd8465fca91f9"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "solve_division_problems",
+      "node_id": "mat_g2_na_q3_9",
+      "clause": "Solve division problems",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Each sample presents a division problem that must be solved: sharing money equally among friends, distributing objects into bags or among people, and evaluating whether a student's stated answer is correct (error-detection). The clause asks for solving division problems; all samples require that work.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "tables_2_3_4_5_10",
+      "node_id": "mat_g2_na_q3_9",
+      "clause": "2, 3, 4, 5, and 10 multiplication tables",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "The samples span all five specified multiplication tables used in division contexts: the 2s in seed 57 (₱10 shared among 2 friends); the 3s in seeds 42, 118 (3 costumes shared among 3, 15 ribbons among 3); the 4s in seed 78 (20 ribbons among 4); the 5s in seed 23 (20 sneakers, 5 per bag); the 10s in seeds 11, 64 (₱50 and ₱70 shared among 10 friends). Complete coverage of all five tables.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "money",
+      "node_id": "mat_g2_na_q3_9",
+      "clause": "money",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        57,
+        64,
+        91,
+        127
+      ],
+      "reasoning": "The clause asks whether the samples include money as a problem context. Five seeds explicitly use Philippine peso amounts: seed 11 (₱50 shared among 10 friends), seed 57 (₱10 shared among 2), seed 64 (₱70 shared among 10), seed 91 (₱12 shared among 2), and seed 127 (₱10 shared among 2). Money-based division problems are present.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    }
+  ],
+  "supersedes": "Replaces batch026B09_mat_g2_na_q3_9, which §6F reported as unusable evidence (stale stem/answer, or a record that carries no options or no render-derived visual for content that renders one). The predecessor is left on disk; supersession is earned by this record, not declared by it."
+}

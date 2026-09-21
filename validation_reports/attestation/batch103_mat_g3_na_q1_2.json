@@ -1,0 +1,646 @@
+{
+  "batch": "batch103_mat_g3_na_q1_2",
+  "attested_at": "2026-09-21T00:00:00Z",
+  "attested_by": "blind-attester-haiku45-d24-20260922",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "the Attester was told to read exactly local_only/scratch/attester/h06/d24.prompt.txt, which is attester_packets.render_prompt_block output (item id, clause, competency, grade/quarter and the rendered samples only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "prompt-contract dispatch to a separate agent: told to read exactly one packet render and no other path, and to write its verdict JSON. Tool access was NOT structurally prevented, so this does not claim the '0' (inline, no tool access) contract; at least one Read and one Write were expected and used."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g3_na_q1_2",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g3_na_q1_2",
+        "seed": 11,
+        "formatter": "mcq",
+        "question_text": "The pencils are placed in a row. One pencil is number 58 in the row. Which word describes its position?",
+        "correct_answer": "fifty-eighth",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "fifty-fifth",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "fifty-eighth",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "fiftieth",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "seventy-first",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "fifty-eighth",
+        "hints": [
+          "Count the objects in order from the front: 1st, 2nd, 3rd, …",
+          "The 58th (fifty-eighth) place is position number 58.",
+          "Find the object standing at position 58."
+        ],
+        "sample_id": "d51b9ab18d4236f2611d",
+        "replay_digest": "67b036c24703e8ea1e3eb9ecd7086140040d175099c48ab537b7e1d5265886b1"
+      },
+      {
+        "node_id": "mat_g3_na_q1_2",
+        "seed": 23,
+        "formatter": "cloze",
+        "question_text": "Who arrived earlier: the student in 3rd place or 76th place?",
+        "correct_answer": "3rd",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "16th",
+            "text": "16th",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "98th",
+            "text": "98th",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "27th",
+            "text": "27th",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "3rd",
+            "text": "3rd",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "3rd",
+        "hints": [
+          "Smaller ordinal numbers come earlier (closer to the start).",
+          "Compare the numbers: the smaller ordinal position is earlier.",
+          "3rd means position 3."
+        ],
+        "sample_id": "628191a24b96ec05ccca",
+        "replay_digest": "9168366c6cdc15f1ee50f97bd76f300401569e4f36dac4268365e588a1353a1c"
+      },
+      {
+        "node_id": "mat_g3_na_q1_2",
+        "seed": 42,
+        "formatter": "mcq",
+        "question_text": "Which word describes the 95th position?",
+        "correct_answer": "ninety-fifth",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "ninety-fifth",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "forty-second",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "seventy-ninth",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "eighty-third",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "ninety-fifth",
+        "hints": [
+          "Ordinal numbers describe order in order.",
+          "The number 95 in order is called the 95th (ninety-fifth).",
+          "Remember: 1st = first, 2nd = second, 3rd = third, then add -th."
+        ],
+        "sample_id": "c7697ef556c93e67c41d",
+        "replay_digest": "a23317b6274e91ffba359a3b9b119d59c98be85287641bb8bc66b4004553717d"
+      },
+      {
+        "node_id": "mat_g3_na_q1_2",
+        "seed": 57,
+        "formatter": "cloze",
+        "question_text": "Write the symbol for the seventy-sixth position.",
+        "correct_answer": "76th",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "95th",
+            "text": "95th",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "15th",
+            "text": "15th",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "76th",
+            "text": "76th",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "86th",
+            "text": "86th",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "76th",
+        "hints": [
+          "Ordinal numbers describe order in order.",
+          "The number 76 in order is called the 76th (seventy-sixth).",
+          "Remember: 1st = first, 2nd = second, 3rd = third, then add -th."
+        ],
+        "sample_id": "2bd1897bd9b942242f9e",
+        "replay_digest": "c1608721c0da23deabca02a956ff6e41979fdf2af65e307ccbef0243bce9441a"
+      },
+      {
+        "node_id": "mat_g3_na_q1_2",
+        "seed": 64,
+        "formatter": "cloze",
+        "question_text": "The pupils stand in a row. Ana is number 81 in the row. Which word describes Ana's position?",
+        "correct_answer": "eighty-first",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "twenty-fifth",
+            "text": "twenty-fifth",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "thirty-first",
+            "text": "thirty-first",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "sixty-second",
+            "text": "sixty-second",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "eighty-first",
+            "text": "eighty-first",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "eighty-first",
+        "hints": [
+          "Count the objects in order from the front: 1st, 2nd, 3rd, …",
+          "The 81st (eighty-first) place is position number 81.",
+          "Find the object standing at position 81."
+        ],
+        "sample_id": "83048386adc339526e9a",
+        "replay_digest": "041061285858c5981eba5d36d8fadb6336090ae7ea6aec793c111230eb029b0c"
+      },
+      {
+        "node_id": "mat_g3_na_q1_2",
+        "seed": 78,
+        "formatter": "mcq",
+        "question_text": "A runner is at position number 39. In what place did the runner finish?",
+        "correct_answer": "39th",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "39th",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "64th",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "11th",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "29th",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "39th",
+        "hints": [
+          "'Thirty-ninth' is an order word word.",
+          "Count positions from the start: 1st, 2nd, 3rd, … until you reach thirty-ninth.",
+          "Thirty-ninth = position 39, written as 39th."
+        ],
+        "sample_id": "c51286e0f4412c9cd594",
+        "replay_digest": "ea9a9c1287fbdf58d9e7125416242e7f888346b7941c32fe1966e0e76c85d764"
+      },
+      {
+        "node_id": "mat_g3_na_q1_2",
+        "seed": 91,
+        "formatter": "cloze",
+        "question_text": "Which word describes the 88th position?",
+        "correct_answer": "eighty-eighth",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "sixteenth",
+            "text": "sixteenth",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "thirty-first",
+            "text": "thirty-first",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "eighty-eighth",
+            "text": "eighty-eighth",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "third",
+            "text": "third",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "eighty-eighth",
+        "hints": [
+          "Ordinal numbers describe order in order.",
+          "The number 88 in order is called the 88th (eighty-eighth).",
+          "Remember: 1st = first, 2nd = second, 3rd = third, then add -th."
+        ],
+        "sample_id": "0d44114b3c0147c41ae6",
+        "replay_digest": "5c973ddc1f21a1c47e30a533faa9baaf2306d0500fa17d9023839532e22a4c2a"
+      },
+      {
+        "node_id": "mat_g3_na_q1_2",
+        "seed": 103,
+        "formatter": "cloze",
+        "question_text": "The pupils stand in a row. Iris is number 89 in the row. Which word describes Iris's position?",
+        "correct_answer": "eighty-ninth",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "fifth",
+            "text": "fifth",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "sixty-ninth",
+            "text": "sixty-ninth",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "ninety-first",
+            "text": "ninety-first",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "eighty-ninth",
+            "text": "eighty-ninth",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "eighty-ninth",
+        "hints": [
+          "Count the objects in order from the front: 1st, 2nd, 3rd, …",
+          "The 89th (eighty-ninth) place is position number 89.",
+          "Find the object standing at position 89."
+        ],
+        "sample_id": "7ebcd4f92d5afef44486",
+        "replay_digest": "9db2da0dbac6a7c50b94dd833bc33a5309214d5c7e92cf1b3173b899541562ae"
+      },
+      {
+        "node_id": "mat_g3_na_q1_2",
+        "seed": 118,
+        "formatter": "mcq",
+        "question_text": "What ordinal describes position number 13?",
+        "correct_answer": "13th",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "13th",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "89th",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "63rd",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "7th",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "13th",
+        "hints": [
+          "'Thirteenth' is an order word word.",
+          "Count positions from the start: 1st, 2nd, 3rd, … until you reach thirteenth.",
+          "Thirteenth = position 13, written as 13th."
+        ],
+        "sample_id": "8305979dca86e32c5c29",
+        "replay_digest": "3482a38b1512958ae51ffa07e67e2f8312d129c8a7b0a918180242878382c19e"
+      },
+      {
+        "node_id": "mat_g3_na_q1_2",
+        "seed": 127,
+        "formatter": "cloze",
+        "question_text": "Which word describes the 4th position?",
+        "correct_answer": "fourth",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "eighty-third",
+            "text": "eighty-third",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "twenty-fifth",
+            "text": "twenty-fifth",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "fifty-sixth",
+            "text": "fifty-sixth",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "fourth",
+            "text": "fourth",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "fourth",
+        "hints": [
+          "Ordinal numbers describe order in order.",
+          "The number 4 in order is called the 4th (fourth).",
+          "Remember: 1st = first, 2nd = second, 3rd = third, then add -th."
+        ],
+        "sample_id": "1d8f200780d1cb2b3d99",
+        "replay_digest": "389f5e094531260bf04343c637599d4819a3a21ea681cabeee13ea4d896e1f89"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "describe",
+      "node_id": "mat_g3_na_q1_2",
+      "clause": "Describe",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42
+      ],
+      "reasoning": "The samples consistently ask students to describe the position of objects using ordinal language. Seeds 11 and 42 explicitly ask 'Which word describes its position?' while seed 23 asks 'Who arrived earlier' by position reference, demonstrating the act of describing position throughout.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "position",
+      "node_id": "mat_g3_na_q1_2",
+      "clause": "position",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        64,
+        103
+      ],
+      "reasoning": "The samples frequently reference position as the core concept. Seeds mention 'number 58 in the row' (position), pupils standing 'number 81' (position), and Iris positioned as 'number 89', establishing position as the explicit organizing principle of each problem.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "objects",
+      "node_id": "mat_g3_na_q1_2",
+      "clause": "objects",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        64
+      ],
+      "reasoning": "Objects appear throughout the samples as the entities whose positions are described. Seed 11 places pencils in a row, seed 23 references students in places, and seed 64 has pupils standing in a row, providing concrete objects that occupy positions.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "ordinal_numbers",
+      "node_id": "mat_g3_na_q1_2",
+      "clause": "ordinal numbers",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        42,
+        91
+      ],
+      "reasoning": "Ordinal numbers appear in every sample, both as numeric symbols and word forms. Seeds present ordinal notation (58, 76th, 95th) and spell out ordinal names (fifty-eighth, seventy-sixth, eighty-eighth), making ordinal number representation the explicit focus.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "up_to_100th",
+      "node_id": "mat_g3_na_q1_2",
+      "clause": "up to 100th",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        103,
+        127
+      ],
+      "reasoning": "All ordinal values in the samples fall within the specified bound. Seeds reference positions 58, 89, and 4 respectively, with the entire set staying below the 100th ceiling, satisfying the 'up to 100th' constraint.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    }
+  ],
+  "supersedes": "Replaces batch072B03_mat_g3_na_q1_2, which §6F reported as unusable evidence (stale stem/answer, or a record that carries no options or no render-derived visual for content that renders one). The predecessor is left on disk; supersession is earned by this record, not declared by it."
+}

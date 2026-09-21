@@ -1,0 +1,696 @@
+{
+  "batch": "batch102_mat_g3_mg_q1_5",
+  "attested_at": "2026-09-21T00:00:00Z",
+  "attested_by": "blind-attester-haiku45-d23-20260922",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "the Attester was told to read exactly local_only/scratch/attester/h06/d23.prompt.txt, which is attester_packets.render_prompt_block output (item id, clause, competency, grade/quarter and the rendered samples only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "prompt-contract dispatch to a separate agent: told to read exactly one packet render and no other path, and to write its verdict JSON. Tool access was NOT structurally prevented, so this does not claim the '0' (inline, no tool access) contract; at least one Read and one Write were expected and used."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g3_mg_q1_5",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g3_mg_q1_5",
+        "seed": 11,
+        "formatter": "read_mcq",
+        "question_text": "Look at the letter 'X'. The two crossing line segments form ___.",
+        "correct_answer": "D",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "GeometryFigure",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "parallel lines",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "curved lines",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "flat surfaces",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "intersecting lines",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "intersecting lines",
+        "hints": [
+          "Parallel lines never meet — they stay the same distance apart.",
+          "Intersecting lines cross at one point.",
+          "Perpendicular lines intersect at exactly a right angle (90°)."
+        ],
+        "visual_type": "GeometryFigure",
+        "visual_payload": {
+          "kind": "letter",
+          "labels": [],
+          "letter": "X"
+        },
+        "visual_render": {
+          "visual_type": "GeometryFigure",
+          "renderer_input_digest": "8924b1d6d1dafd18e5bb5e57b29c00ab9cb8d6b9c89b1e4a67663f865bd5a57f",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "GeometryFigure",
+            "element_count": 5,
+            "svg_count": 1,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [],
+            "distinct_colours": [],
+            "role_counts": {
+              "path": 2
+            }
+          }
+        },
+        "sample_id": "00dfc3bcabeb4f1382b3",
+        "replay_digest": "5f6d877a4c6eab5826d8b2e9d0d39bd1df96d6d1bd8aa78d0e29c81081c9c269"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_5",
+        "seed": 23,
+        "formatter": "read_mcq",
+        "question_text": "Look at the model. What type of lines are they?",
+        "correct_answer": "B",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "GeometryFigure",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "line segments",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "perpendicular lines",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "parallel lines",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "curved lines",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "perpendicular lines",
+        "hints": [
+          "Parallel lines never meet — they stay the same distance apart.",
+          "Intersecting lines cross at one point.",
+          "Perpendicular lines intersect at exactly a right angle (90°)."
+        ],
+        "visual_type": "GeometryFigure",
+        "visual_payload": {
+          "kind": "perpendicular",
+          "labels": [],
+          "letter": null
+        },
+        "visual_render": {
+          "visual_type": "GeometryFigure",
+          "renderer_input_digest": "20a4b1f980410b3c692ed3a97a5ed5cb080828fd511d4d6364b8e244e0a9b8de",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "GeometryFigure",
+            "element_count": 6,
+            "svg_count": 1,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [],
+            "distinct_colours": [],
+            "role_counts": {
+              "path": 2,
+              "right-angle": 1
+            }
+          }
+        },
+        "sample_id": "4d6e6f837f6d45415c1d",
+        "replay_digest": "2fa9e4572f6b0a124480b3d8e97bb801623243febf456bf64c4be6eccaf38655"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_5",
+        "seed": 42,
+        "formatter": "read_mcq",
+        "question_text": "Look at the letter 'H'. The two vertical side segments are an example of ___.",
+        "correct_answer": "B",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "GeometryFigure",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "rays",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "parallel lines",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "perpendicular lines",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "intersecting lines",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "parallel lines",
+        "hints": [
+          "Parallel lines never meet — they stay the same distance apart.",
+          "Intersecting lines cross at one point.",
+          "Perpendicular lines intersect at exactly a right angle (90°)."
+        ],
+        "visual_type": "GeometryFigure",
+        "visual_payload": {
+          "kind": "letter",
+          "labels": [],
+          "letter": "H"
+        },
+        "visual_render": {
+          "visual_type": "GeometryFigure",
+          "renderer_input_digest": "fb5bb18c432d218b89257bc13c673f12855975cb6cca23556dbb78124047a0c8",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "GeometryFigure",
+            "element_count": 6,
+            "svg_count": 1,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [],
+            "distinct_colours": [],
+            "role_counts": {
+              "path": 3
+            }
+          }
+        },
+        "sample_id": "d9cf93a7814869cd076d",
+        "replay_digest": "784346c772b712688f7d313272f8044e94f768368a46ef8af106bc0f476ef153"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_5",
+        "seed": 57,
+        "formatter": "mcq",
+        "question_text": "The corner of a square shows which type of lines meeting?",
+        "correct_answer": "perpendicular lines",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "curved lines",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "line segments",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "perpendicular lines",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "parallel lines",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "perpendicular lines",
+        "hints": [
+          "Parallel lines never meet — they stay the same distance apart.",
+          "Intersecting lines cross at one point.",
+          "Perpendicular lines intersect at exactly a right angle (90°)."
+        ],
+        "sample_id": "4884ea6553a6762b4deb",
+        "replay_digest": "52209092e75d5f449a8123e0246e8ec220c12a066900a847cc608d2d59441845"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_5",
+        "seed": 64,
+        "formatter": "mcq",
+        "question_text": "To draw perpendicular lines forming a square right angle, which tools can you use together?",
+        "correct_answer": "ruler and set square",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "ruler only",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "thermometer and clock",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "clock and ruler",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "ruler and set square",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "ruler and set square",
+        "hints": [
+          "Parallel lines never meet — they stay the same distance apart.",
+          "Intersecting lines cross at one point.",
+          "Perpendicular lines intersect at exactly a right angle (90°)."
+        ],
+        "sample_id": "6e3ab1d2e569db466c7b",
+        "replay_digest": "1997a7176cf479a7b3c54e11164562334d63ad9da9016a4825dc3f60ffa8467b"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_5",
+        "seed": 78,
+        "formatter": "mcq",
+        "question_text": "The corner of a square shows which type of lines meeting?",
+        "correct_answer": "perpendicular lines",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "curved lines",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "parallel lines",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "line segments",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "perpendicular lines",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "perpendicular lines",
+        "hints": [
+          "Parallel lines never meet — they stay the same distance apart.",
+          "Intersecting lines cross at one point.",
+          "Perpendicular lines intersect at exactly a right angle (90°)."
+        ],
+        "sample_id": "e7aa270f4984d37aa3b2",
+        "replay_digest": "4ec61f0c8a4999ea12ac5ff9322fb87166d41fc53bc896adba2b68fbc67a7100"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_5",
+        "seed": 91,
+        "formatter": "mcq",
+        "question_text": "Two lines that meet at a right angle (90°) are called ___.",
+        "correct_answer": "perpendicular lines",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "curved lines",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "parallel lines",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "perpendicular lines",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "line segments",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "perpendicular lines",
+        "hints": [
+          "Parallel lines never meet — they stay the same distance apart.",
+          "Intersecting lines cross at one point.",
+          "Perpendicular lines intersect at exactly a right angle (90°)."
+        ],
+        "sample_id": "449c0ae9e7f875213657",
+        "replay_digest": "c6503830201b89dc36936abe0c044232705820b7d9b4a27882e40f6c1a6ea97d"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_5",
+        "seed": 103,
+        "formatter": "mcq",
+        "question_text": "Two lines that never meet, no matter how far they extend, are called ___.",
+        "correct_answer": "parallel lines",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "rays",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "parallel lines",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "intersecting lines",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "perpendicular lines",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "parallel lines",
+        "hints": [
+          "Parallel lines never meet — they stay the same distance apart.",
+          "Intersecting lines cross at one point.",
+          "Perpendicular lines intersect at exactly a right angle (90°)."
+        ],
+        "sample_id": "7a06094c332a583df274",
+        "replay_digest": "dedcfa3b60465859348a1f56f1fa1bf38997b4c4daaf21dc95b309e83f2a8430"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_5",
+        "seed": 118,
+        "formatter": "mcq",
+        "question_text": "To draw two parallel lines using a ruler, you must make sure the lines ___.",
+        "correct_answer": "stay the same distance apart and never meet",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "cross at a single point",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "form a square right angle",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "stay the same distance apart and never meet",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "bend toward each other",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "stay the same distance apart and never meet",
+        "hints": [
+          "Parallel lines never meet — they stay the same distance apart.",
+          "Intersecting lines cross at one point.",
+          "Perpendicular lines intersect at exactly a right angle (90°)."
+        ],
+        "sample_id": "7950115e534be7d421ce",
+        "replay_digest": "d2fcfafc40a458c0b3bc53ab13a76684fbadc3ca82a3c9c48ac6212abed0a1ee"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_5",
+        "seed": 127,
+        "formatter": "mcq",
+        "question_text": "To draw perpendicular lines forming a square right angle, which tools can you use together?",
+        "correct_answer": "ruler and set square",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "ruler and set square",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "clock and ruler",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "ruler only",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "thermometer and clock",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "ruler and set square",
+        "hints": [
+          "Parallel lines never meet — they stay the same distance apart.",
+          "Intersecting lines cross at one point.",
+          "Perpendicular lines intersect at exactly a right angle (90°)."
+        ],
+        "sample_id": "2417dda33b475f0ecf28",
+        "replay_digest": "c11a34761323a5e84f0238f5389b1bd6de9bc980e31946f9acf2108e7908e765"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "recognize_line_relationships",
+      "node_id": "mat_g3_mg_q1_5",
+      "clause": "Recognize",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        78,
+        91,
+        103
+      ],
+      "reasoning": "The clause asks students to recognize line types. Seeds 11 and 23 render GeometryFigure visuals showing actual line arrangements to identify; seeds 57, 78, 91, 103, 118, 127 pose definition or visual-context questions like 'The corner of a square shows which type of lines meeting?' or 'Two lines that meet at a right angle are called...', requiring recognition of line categories.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "draw_line_relationships",
+      "node_id": "mat_g3_mg_q1_5",
+      "clause": "draw",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "The clause asks for drawing. Three seeds (64, 118, 127) mention tools for drawing and conditions for parallel/perpendicular lines, but they pose multiple-choice questions about how to draw, not tasks requiring students to produce a drawing. No seed shows a rendering interface or canvas for students to create a line drawing.",
+      "action_taken": "Filed as a §6F CONTRADICTED finding against H-06 and left reported. This session's scope is re-earning blind evidence at zero re-proof cost; no CAPABILITY_PROVIDERS entry was deleted and no artifact was built, because either act is a source edit that owes the full re-proof chain. The contradiction stands as the queue item."
+    },
+    {
+      "capability_id": "parallel_lines",
+      "node_id": "mat_g3_mg_q1_5",
+      "clause": "parallel",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        23,
+        42
+      ],
+      "reasoning": "The clause identifies parallel lines. Seed 23 renders a GeometryFigure and asks 'What type of lines are they?' with the correct answer being perpendicular lines (marked by right-angle indicator); seed 42 shows parallel line segments in the letter 'H'. Seeds 64 and 118 ask about parallel lines but in text-only format about how to draw them, not as rendered examples.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "intersecting_lines",
+      "node_id": "mat_g3_mg_q1_5",
+      "clause": "intersecting",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11
+      ],
+      "reasoning": "The clause focuses on intersecting lines. Seed 11 presents a GeometryFigure rendering an X shape and asks 'The two crossing line segments form ___', with the answer being intersecting lines. The visual directly shows two lines crossing, which is intersection.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "perpendicular_lines",
+      "node_id": "mat_g3_mg_q1_5",
+      "clause": "perpendicular lines",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        23,
+        57,
+        78,
+        91
+      ],
+      "reasoning": "The clause names perpendicular lines. Seed 23 renders a right-angle indicator in a GeometryFigure; seeds 57, 78, 91 pose text questions ('The corner of a square shows which type...' and 'Two lines that meet at a right angle...') requiring recognition that perpendicular lines form 90-degree angles.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    }
+  ],
+  "supersedes": "Replaces batch027_mat_g3_mg_q1_5, which §6F reported as unusable evidence (stale stem/answer, or a record that carries no options or no render-derived visual for content that renders one). The predecessor is left on disk; supersession is earned by this record, not declared by it."
+}

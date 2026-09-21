@@ -1,0 +1,687 @@
+{
+  "batch": "batch098_mat_g3_mg_q1_3",
+  "attested_at": "2026-09-21T00:00:00Z",
+  "attested_by": "blind-attester-haiku45-d19-20260922",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "the Attester was told to read exactly local_only/scratch/attester/h06/d19.prompt.txt, which is attester_packets.render_prompt_block output (item id, clause, competency, grade/quarter and the rendered samples only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "prompt-contract dispatch to a separate agent: told to read exactly one packet render and no other path, and to write its verdict JSON. Tool access was NOT structurally prevented, so this does not claim the '0' (inline, no tool access) contract; at least one Read and one Write were expected and used."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g3_mg_q1_3",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g3_mg_q1_3",
+        "seed": 11,
+        "formatter": "mcq",
+        "question_text": "A rectangular patio is 4 m long and 3 m wide (area = 12 sq m). If tiling costs ₱10 per sq m, what is the total cost to cover the patio?",
+        "correct_answer": 120,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 119,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 120,
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 122,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 121,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 120,
+        "hints": [
+          "The area tells us how many unit squares cover the shape.",
+          "Area of a rectangle = length × width = ? × ? = 120 sq m."
+        ],
+        "sample_id": "5327d5d20c941d392191",
+        "replay_digest": "5a66036b78f49d28b7181bbe4d6bdfb482a930b9a273b4fa3436db129cc2b291"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_3",
+        "seed": 23,
+        "formatter": "cloze",
+        "question_text": "Garden Plot A is 4 m by 5 m (area = 20 sq m). Garden Plot B is 4 m by 6 m (area = 24 sq m). How many sq m larger is Plot B than Plot A?",
+        "correct_answer": 4,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 4,
+            "text": "4",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 6,
+            "text": "6",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 5,
+            "text": "5",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 3,
+            "text": "3",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 4,
+        "hints": [
+          "The area tells us how many unit squares cover the shape.",
+          "Area of a rectangle = length × width = ? × ? = 4 sq m."
+        ],
+        "sample_id": "29dfa957909fbcabffbb",
+        "replay_digest": "bc9fcac678d9e78bb5c18faa3649fe7a7a521af4cf11cf2b9b61ef1ed38f4637"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_3",
+        "seed": 42,
+        "formatter": "cloze",
+        "question_text": "A rectangular classroom floor is 4 m long and 3 m wide. What is the area of the classroom floor in sq m?",
+        "correct_answer": 12,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 13,
+            "text": "13",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 14,
+            "text": "14",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 7,
+            "text": "7",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 12,
+            "text": "12",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 12,
+        "hints": [
+          "The area tells us how many unit squares cover the shape.",
+          "Area of a rectangle = length × width = 4 × 3 = 12 sq m."
+        ],
+        "sample_id": "ba2051ee6a8f913c20cd",
+        "replay_digest": "81b3ce27f99014498b46f1e0fae7cfb6d6ceb09987ad78fd034299a7e58a9e31"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_3",
+        "seed": 57,
+        "formatter": "mcq",
+        "question_text": "A square mat measures 2 m on each side. What is its area in sq m?",
+        "correct_answer": 4,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 5,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 8,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 4,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 3,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 4,
+        "hints": [
+          "The area tells us how many unit squares cover the shape.",
+          "Area of a square = side × side = 2 × 2 = 4 sq m."
+        ],
+        "sample_id": "b8a4fc0c81551759c62b",
+        "replay_digest": "709e25c04d53236238440e8d062648521ad38e56d1fd5f2bdc15e941d3ffc0c1"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_3",
+        "seed": 64,
+        "formatter": "cloze",
+        "question_text": "A rectangular rug has an area of 6 sq m and a width of 2 m. What is its length in m?",
+        "correct_answer": 3,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 3,
+            "text": "3",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 4,
+            "text": "4",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 5,
+            "text": "5",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 10,
+            "text": "10",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 3,
+        "hints": [
+          "The area = length × width.",
+          "We know the area is 6 sq m and one side is 2.",
+          "Divide: 6 ÷ 2 = 3."
+        ],
+        "sample_id": "5eb94ecd9233b88a3d77",
+        "replay_digest": "b4ae414b381f91bb11e56e3f8cf1da05ce83379fb2a6c13722f2d4dc81a25d42"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_3",
+        "seed": 78,
+        "formatter": "cloze",
+        "question_text": "A rectangular rug is 7 m long and 4 m wide. What is the area of the rug in sq m?",
+        "correct_answer": 28,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 11,
+            "text": "11",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 22,
+            "text": "22",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 29,
+            "text": "29",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 28,
+            "text": "28",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 28,
+        "hints": [
+          "The area tells us how many unit squares cover the shape.",
+          "Area of a rectangle = length × width = 7 × 4 = 28 sq m."
+        ],
+        "sample_id": "3fe77fac531a2da22bbf",
+        "replay_digest": "110435a037a0876258c2c97ee71308defe4c7e35f5b10f520337a04c5e6535ed"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_3",
+        "seed": 91,
+        "formatter": "cloze",
+        "question_text": "A rectangular chalkboard is 5 m long and 3 m wide. What is the area of the chalkboard in sq m?",
+        "correct_answer": 15,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 8,
+            "text": "8",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 16,
+            "text": "16",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 14,
+            "text": "14",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 15,
+            "text": "15",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 15,
+        "hints": [
+          "The area tells us how many unit squares cover the shape.",
+          "Area of a rectangle = length × width = 5 × 3 = 15 sq m."
+        ],
+        "sample_id": "964eb5a6514a59174f87",
+        "replay_digest": "fdd500060c989718c9cd57311b091123c5ccb64ac3bb0464b5333ee475dcc729"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_3",
+        "seed": 103,
+        "formatter": "cloze",
+        "question_text": "Garden Plot A is 2 m by 7 m (area = 14 sq m). Garden Plot B is 2 m by 10 m (area = 20 sq m). How many sq m larger is Plot B than Plot A?",
+        "correct_answer": 6,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 7,
+            "text": "7",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 8,
+            "text": "8",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 6,
+            "text": "6",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 5,
+            "text": "5",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 6,
+        "hints": [
+          "The area tells us how many unit squares cover the shape.",
+          "Area of a rectangle = length × width = ? × ? = 6 sq m."
+        ],
+        "sample_id": "c79f8eb3981a5894de7e",
+        "replay_digest": "be3b79cb6278de75a8dce3fca3666001271f7f5ba7f87c3c4e0b76793d2285d7"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_3",
+        "seed": 118,
+        "formatter": "mcq",
+        "question_text": "A square table top measures 2 m on each side. What is its area in sq m?",
+        "correct_answer": 4,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 8,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 5,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 4,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 3,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 4,
+        "hints": [
+          "The area tells us how many unit squares cover the shape.",
+          "Area of a square = side × side = 2 × 2 = 4 sq m."
+        ],
+        "sample_id": "5d7da3c582936eee18f0",
+        "replay_digest": "ec04ba78be5ebc4ee4c8669c2603d8c21ba6b6cabf723fc72d2c015d077e936e"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_3",
+        "seed": 127,
+        "formatter": "cloze",
+        "question_text": "A rectangular garden plot is 2 m long and 3 m wide. What is the area of the garden plot in sq m?",
+        "correct_answer": 6,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 7,
+            "text": "7",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 10,
+            "text": "10",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 5,
+            "text": "5",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 6,
+            "text": "6",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 6,
+        "hints": [
+          "The area tells us how many unit squares cover the shape.",
+          "Area of a rectangle = length × width = 2 × 3 = 6 sq m."
+        ],
+        "sample_id": "02555f1108639f125291",
+        "replay_digest": "e5583d181ce3ba458eeef7d12c82e478d2de412e5586170b173f7f88a8756c10"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "solve_area_problem",
+      "node_id": "mat_g3_mg_q1_3",
+      "clause": "Solve",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All samples ask for a calculation or determination of area based on given dimensions, requiring the student to perform a solution step to arrive at an answer.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "word_problem_context",
+      "node_id": "mat_g3_mg_q1_3",
+      "clause": "problems",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Each sample presents a word problem that contextualizes the area calculation within a realistic scenario (patios, gardens, classrooms, rugs, chalkboards, mats, table tops), requiring problem-solving.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "extract_area_relationship_from_context",
+      "node_id": "mat_g3_mg_q1_3",
+      "clause": "involving",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All samples engage students in computing areas, which is the central concept involved in the problem scenarios; this involves the mathematical relationship between dimensions and area.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "area_attribute",
+      "node_id": "mat_g3_mg_q1_3",
+      "clause": "areas",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Every sample directly addresses area computation: students calculate square meters for rectangular or square shapes, with areas ranging from 4 sq m to 28 sq m across the sample seeds.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "square_figure",
+      "node_id": "mat_g3_mg_q1_3",
+      "clause": "squares",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        57,
+        118
+      ],
+      "reasoning": "Seeds 57 and 118 explicitly feature square shapes (a mat and a table top measuring the same distance on each side), requiring area calculations for squares.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable.",
+      "content_note_from_attester": "Most samples focus on rectangles; squares represent a subset of the content."
+    },
+    {
+      "capability_id": "rectangle_figure",
+      "node_id": "mat_g3_mg_q1_3",
+      "clause": "rectangles",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        64,
+        78,
+        91,
+        103,
+        127
+      ],
+      "reasoning": "The majority of samples present rectangular shapes: patio, garden plots, classroom floor, rugs, chalkboard, and garden plot; these rectangles are central to the problem contexts.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    }
+  ],
+  "supersedes": "Replaces batch025B09_mat_g3_mg_q1_3, which §6F reported as unusable evidence (stale stem/answer, or a record that carries no options or no render-derived visual for content that renders one). The predecessor is left on disk; supersession is earned by this record, not declared by it."
+}

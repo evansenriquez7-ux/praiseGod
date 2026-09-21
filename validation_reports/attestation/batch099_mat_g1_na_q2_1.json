@@ -1,0 +1,813 @@
+{
+  "batch": "batch099_mat_g1_na_q2_1",
+  "attested_at": "2026-09-21T00:00:00Z",
+  "attested_by": "blind-attester-haiku45-d20-20260922",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "the Attester was told to read exactly local_only/scratch/attester/h06/d20.prompt.txt, which is attester_packets.render_prompt_block output (item id, clause, competency, grade/quarter and the rendered samples only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "prompt-contract dispatch to a separate agent: told to read exactly one packet render and no other path, and to write its verdict JSON. Tool access was NOT structurally prevented, so this does not claim the '0' (inline, no tool access) contract; at least one Read and one Write were expected and used."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g1_na_q2_1",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g1_na_q2_1",
+        "seed": 11,
+        "formatter": "read_mcq",
+        "question_text": "What number is marked on the number line?",
+        "correct_answer": "D",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "NumberLine",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 89,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 92,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 91,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 90,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 90,
+        "hints": [
+          "Look at the list of numbers: 70, 75, 80, 85, ___",
+          "Find the rule by comparing neighbours: 75 − 70 = 5.",
+          "This list of numbers shows jumping by 5s (add 5 each time).",
+          "Add 5 to 85: 85 + 5 = 90."
+        ],
+        "visual_type": "NumberLine",
+        "visual_payload": {
+          "value": 90,
+          "start": 80,
+          "end": 100,
+          "interval": 1,
+          "divisions": 20,
+          "correct_position": 90,
+          "dot_value": 90,
+          "content_type": "whole_number",
+          "labels": [
+            "80",
+            "100"
+          ],
+          "marked_points": [],
+          "question_mark_at": null,
+          "is_interactive": false,
+          "show_labels": true,
+          "correct_answer": 90.0,
+          "target": 90.0
+        },
+        "visual_render": {
+          "visual_type": "NumberLine",
+          "renderer_input_digest": "7b53f8fac6c0f11ee7c1618d2c00547860a9f84c01804256cf938d9ba1bb75d6",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "NumberLine",
+            "element_count": 47,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "80",
+              "81",
+              "82",
+              "83",
+              "84",
+              "85",
+              "86",
+              "87",
+              "88",
+              "89",
+              "90",
+              "91",
+              "92",
+              "93",
+              "94",
+              "95",
+              "96",
+              "97",
+              "98",
+              "99",
+              "100"
+            ],
+            "distinct_colours": [
+              "hsl(var(--border-color)",
+              "hsl(var(--text-muted)",
+              "hsl(var(--text)",
+              "hsl(var(--primary)",
+              "hsl(var(--card-bg)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "38316f3975d3d2996950",
+        "replay_digest": "eaaae4f18e2a9a236bafd26e1fda7f1a86a0df3fcdf311a7f96d3d9d70904bf6"
+      },
+      {
+        "node_id": "mat_g1_na_q2_1",
+        "seed": 23,
+        "formatter": "cloze",
+        "question_text": "What comes next: 80, 85, 90, 95, ___",
+        "correct_answer": 100,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 90,
+            "text": "90",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 96,
+            "text": "96",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 85,
+            "text": "85",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 100,
+            "text": "100",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 100,
+        "hints": [
+          "Look at the list of numbers: 80, 85, 90, 95, ___",
+          "Find the rule by comparing neighbours: 85 − 80 = 5.",
+          "This list of numbers shows jumping by 5s (add 5 each time).",
+          "Add 5 to 95: 95 + 5 = 100."
+        ],
+        "sample_id": "48baf4f835db8f707f5d",
+        "replay_digest": "60dc9c940894938f8f70622d5d03d7b915ad97440ee19200cb027fde2c78224a"
+      },
+      {
+        "node_id": "mat_g1_na_q2_1",
+        "seed": 42,
+        "formatter": "mcq",
+        "question_text": "What number comes next when counting: 0, 10, 20, 30, ___?",
+        "correct_answer": 40,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 10,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 40,
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 31,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 20,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 40,
+        "hints": [
+          "Look at the list of numbers: 0, 10, 20, 30, ___",
+          "Find the rule by comparing neighbours: 10 − 0 = 10.",
+          "This list of numbers shows jumping by 10s (add 10 each time).",
+          "Add 10 to 30: 30 + 10 = 40."
+        ],
+        "sample_id": "3d945a3fffc369ef8ed6",
+        "replay_digest": "65f36a71085ced73851f90553746ce744913e1828d71de15b16a697548a93ec2"
+      },
+      {
+        "node_id": "mat_g1_na_q2_1",
+        "seed": 57,
+        "formatter": "read_mcq",
+        "question_text": "(Large group of 54 items)\nCount the items.\nHow many items are there in all?",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "EmojiPictorial",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 54,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 53,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 0,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 55,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 54,
+        "hints": [
+          "Look at the list of numbers: 46, 48, 50, 52, ___",
+          "Find the rule by comparing neighbours: 48 − 46 = 2.",
+          "This list of numbers shows jumping by 2s (add 2 each time).",
+          "Add 2 to 52: 52 + 2 = 54."
+        ],
+        "visual_type": "EmojiPictorial",
+        "visual_payload": {
+          "emoji": "✝️",
+          "group_a": 54,
+          "group_b": 0,
+          "operation": "counting",
+          "layout": "inline",
+          "display": "(Large group of 54 items)"
+        },
+        "visual_render": {
+          "visual_type": "EmojiPictorial",
+          "renderer_input_digest": "8ad19c6f3dd6146421d5a43eedfc301bc8ba9deb03f230ad0d5418d1dc1e82fd",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "EmojiPictorial",
+            "element_count": 30,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "🛍️",
+              "10x ✝️",
+              "✝️",
+              "1x ✝️"
+            ],
+            "distinct_colours": [
+              "hsl(var(--card-bg)",
+              "hsl(var(--border-color)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "fb1de61b34fe050a831e",
+        "replay_digest": "1c9186389f502ab3fcaf973b6ac12c85f1f723edee2614f07b16c5173d448344"
+      },
+      {
+        "node_id": "mat_g1_na_q2_1",
+        "seed": 64,
+        "formatter": "cloze",
+        "question_text": "What comes next: 15, 20, 25, 30, ___",
+        "correct_answer": 35,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 20,
+            "text": "20",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 35,
+            "text": "35",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 31,
+            "text": "31",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 25,
+            "text": "25",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 35,
+        "hints": [
+          "Look at the list of numbers: 15, 20, 25, 30, ___",
+          "Find the rule by comparing neighbours: 20 − 15 = 5.",
+          "This list of numbers shows jumping by 5s (add 5 each time).",
+          "Add 5 to 30: 30 + 5 = 35."
+        ],
+        "sample_id": "cf6c2f4c606dd46f1c90",
+        "replay_digest": "7910c2e4ce68a9f381258a3b59d272bf377cbd630a900be77997a9a93018b0f7"
+      },
+      {
+        "node_id": "mat_g1_na_q2_1",
+        "seed": 78,
+        "formatter": "mcq",
+        "question_text": "What number comes next when counting: 28, 30, 32, 34, ___?",
+        "correct_answer": 36,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 36,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 32,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 35,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 30,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 36,
+        "hints": [
+          "Look at the list of numbers: 28, 30, 32, 34, ___",
+          "Find the rule by comparing neighbours: 30 − 28 = 2.",
+          "This list of numbers shows jumping by 2s (add 2 each time).",
+          "Add 2 to 34: 34 + 2 = 36."
+        ],
+        "sample_id": "49d6e76c423d2d4061b6",
+        "replay_digest": "9c4898c2c35ee7ea116df012f1587933b611a903dfbb57078a8c54df80ba3408"
+      },
+      {
+        "node_id": "mat_g1_na_q2_1",
+        "seed": 91,
+        "formatter": "read_mcq",
+        "question_text": "(Large group of 82 items)\nCount the items.\nHow many items are there in all?",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "EmojiPictorial",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 82,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 83,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 0,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 81,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 82,
+        "hints": [
+          "Look at the list of numbers: 74, 76, 78, 80, ___",
+          "Find the rule by comparing neighbours: 76 − 74 = 2.",
+          "This list of numbers shows jumping by 2s (add 2 each time).",
+          "Add 2 to 80: 80 + 2 = 82."
+        ],
+        "visual_type": "EmojiPictorial",
+        "visual_payload": {
+          "emoji": "🏀",
+          "group_a": 82,
+          "group_b": 0,
+          "operation": "counting",
+          "layout": "inline",
+          "display": "(Large group of 82 items)"
+        },
+        "visual_render": {
+          "visual_type": "EmojiPictorial",
+          "renderer_input_digest": "081d55a02c164ad33feb56e3a94ce1dc21d870d5e533ad3e7a7f5844e905b90e",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "EmojiPictorial",
+            "element_count": 33,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "🛍️",
+              "10x 🏀",
+              "🏀",
+              "1x 🏀"
+            ],
+            "distinct_colours": [
+              "hsl(var(--card-bg)",
+              "hsl(var(--border-color)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "8075824c526c2386eec4",
+        "replay_digest": "894012264fb0279726ac2eeee86e2ed36d8d2b53952e29ae8012c5d62baf6a1e"
+      },
+      {
+        "node_id": "mat_g1_na_q2_1",
+        "seed": 103,
+        "formatter": "read_mcq",
+        "question_text": "(Large group of 70 items)\nCount the items.\nHow many items are there in all?",
+        "correct_answer": "D",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "EmojiPictorial",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 71,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 69,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 0,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 70,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 70,
+        "hints": [
+          "Look at the list of numbers: 30, 40, 50, 60, ___",
+          "Find the rule by comparing neighbours: 40 − 30 = 10.",
+          "This list of numbers shows jumping by 10s (add 10 each time).",
+          "Add 10 to 60: 60 + 10 = 70."
+        ],
+        "visual_type": "EmojiPictorial",
+        "visual_payload": {
+          "emoji": "🐕",
+          "group_a": 70,
+          "group_b": 0,
+          "operation": "counting",
+          "layout": "inline",
+          "display": "(Large group of 70 items)"
+        },
+        "visual_render": {
+          "visual_type": "EmojiPictorial",
+          "renderer_input_digest": "e35a7a911db52f864ab26756292f2fc4be62ac4b8a87d712fb95a11f2054c008",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "EmojiPictorial",
+            "element_count": 24,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "🛍️",
+              "10x 🐕"
+            ],
+            "distinct_colours": [
+              "hsl(var(--card-bg)",
+              "hsl(var(--border-color)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "86e37b5b475059cec7e0",
+        "replay_digest": "6dac2abdb498bd693442c6825f88f7fd98e9f4cbe258c79fff5aadf7c6abfb6c"
+      },
+      {
+        "node_id": "mat_g1_na_q2_1",
+        "seed": 118,
+        "formatter": "mcq",
+        "question_text": "What number comes next when counting: 50, 60, 70, 80, ___?",
+        "correct_answer": 90,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 81,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 60,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 90,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 70,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 90,
+        "hints": [
+          "Look at the list of numbers: 50, 60, 70, 80, ___",
+          "Find the rule by comparing neighbours: 60 − 50 = 10.",
+          "This list of numbers shows jumping by 10s (add 10 each time).",
+          "Add 10 to 80: 80 + 10 = 90."
+        ],
+        "sample_id": "ff2b12344f24713ac293",
+        "replay_digest": "3c81c753009ad2298cd7de99902c8a54ca7a002e52a3856919cad62d1f558d1c"
+      },
+      {
+        "node_id": "mat_g1_na_q2_1",
+        "seed": 127,
+        "formatter": "cloze",
+        "question_text": "What comes next: 78, 80, 82, 84, ___",
+        "correct_answer": 86,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 82,
+            "text": "82",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 80,
+            "text": "80",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 85,
+            "text": "85",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 86,
+            "text": "86",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 86,
+        "hints": [
+          "Look at the list of numbers: 78, 80, 82, 84, ___",
+          "Find the rule by comparing neighbours: 80 − 78 = 2.",
+          "This list of numbers shows jumping by 2s (add 2 each time).",
+          "Add 2 to 84: 84 + 2 = 86."
+        ],
+        "sample_id": "9eb425714c20f137b8b5",
+        "replay_digest": "7c6d093c1043eec934e245641f97d54ba8ec0a156aa3ef099cb4c94d7bd92d69"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "count",
+      "node_id": "mat_g1_na_q2_1",
+      "clause": "Count",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All samples involve counting, either by identifying the next number in a sequence, counting grouped items visually, or working with patterns. Seed 11 presents a number line visual for counting reference, while seeds 57, 91, and 103 render EmojiPictorial visuals showing items to count. The core counting activity is present throughout.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "step_2s",
+      "node_id": "mat_g1_na_q2_1",
+      "clause": "2s",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        78,
+        127
+      ],
+      "reasoning": "Two samples show counting by increments of 2. Seed 78 asks 'What number comes next when counting: 28, 30, 32, 34, ___?' demonstrating a sequence increasing by 2 each step. Seed 127 asks 'What comes next: 78, 80, 82, 84, ___' with the same pattern of counting by 2s.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "step_5s",
+      "node_id": "mat_g1_na_q2_1",
+      "clause": "5s",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        23,
+        64
+      ],
+      "reasoning": "Two samples require counting by increments of 5. Seed 23 presents the sequence '80, 85, 90, 95, ___' and seed 64 presents '15, 20, 25, 30, ___', both advancing by 5 in each step. These directly exemplify counting by 5s.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "step_10s",
+      "node_id": "mat_g1_na_q2_1",
+      "clause": "10s",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        118
+      ],
+      "reasoning": "Two samples demonstrate counting by increments of 10. Seed 42 shows the sequence '0, 10, 20, 30, ___' and seed 118 shows '50, 60, 70, 80, ___', both progressing by 10 per step. These directly exhibit counting by 10s.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "up_to_100",
+      "node_id": "mat_g1_na_q2_1",
+      "clause": "100",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23
+      ],
+      "reasoning": "Two samples involve the number 100 as a bound or answer. Seed 11 displays a number line spanning from 80 to 100, establishing 100 as the upper limit of the counting space. Seed 23 has the correct answer as 100 ('What comes next: 80, 85, 90, 95, ___'). Both samples anchor directly to the value 100.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    }
+  ],
+  "supersedes": "Replaces batch026B02_mat_g1_na_q2_1, which §6F reported as unusable evidence (stale stem/answer, or a record that carries no options or no render-derived visual for content that renders one). The predecessor is left on disk; supersession is earned by this record, not declared by it."
+}

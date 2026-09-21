@@ -1,0 +1,645 @@
+{
+  "batch": "batch111_mat_g3_mg_q2_1",
+  "attested_at": "2026-09-21T00:00:00Z",
+  "attested_by": "blind-attester-haiku45-d32-20260922",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "the Attester was told to read exactly local_only/scratch/attester/h06/d32.prompt.txt, which is attester_packets.render_prompt_block output (item id, clause, competency, grade/quarter and the rendered samples only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "prompt-contract dispatch to a separate agent: told to read exactly one packet render and no other path, and to write its verdict JSON. Tool access was NOT structurally prevented, so this does not claim the '0' (inline, no tool access) contract; at least one Read and one Write were expected and used."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g3_mg_q2_1",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g3_mg_q2_1",
+        "seed": 11,
+        "formatter": "mcq",
+        "question_text": "An object's mass measures 26 g. About how many g is that, rounded to the nearest 10?",
+        "correct_answer": 30,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 31,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 29,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 30,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 32,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 30,
+        "hints": [
+          "Read the scale carefully.",
+          "The mass shown is 26 g.",
+          "Remember: 1000 gram (g) = 1 kilogram (kg)."
+        ],
+        "sample_id": "242756438022326a817b",
+        "replay_digest": "146f7c66958d42274277494998cf9f24e6de79d0bcb03a1316bce5d5ee3b7c8a"
+      },
+      {
+        "node_id": "mat_g3_mg_q2_1",
+        "seed": 23,
+        "formatter": "cloze",
+        "question_text": "An object's mass measures 49 g. About how many g is that, rounded to the nearest 10?",
+        "correct_answer": 50,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 52,
+            "text": "52",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 49,
+            "text": "49",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 50,
+            "text": "50",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 51,
+            "text": "51",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 50,
+        "hints": [
+          "Read the scale carefully.",
+          "The mass shown is 49 g.",
+          "Remember: 1000 gram (g) = 1 kilogram (kg)."
+        ],
+        "sample_id": "6d3467a400f807d9ac09",
+        "replay_digest": "44b8bbb92235f8da0ca2c2b7e006376a37e763d51d78e0c3c8a039073a2891cb"
+      },
+      {
+        "node_id": "mat_g3_mg_q2_1",
+        "seed": 42,
+        "formatter": "cloze",
+        "question_text": "An object's mass measures 23 g. About how many g is that, rounded to the nearest 10?",
+        "correct_answer": 20,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 21,
+            "text": "21",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 19,
+            "text": "19",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 20,
+            "text": "20",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 22,
+            "text": "22",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 20,
+        "hints": [
+          "Read the scale carefully.",
+          "The mass shown is 23 g.",
+          "Remember: 1000 gram (g) = 1 kilogram (kg)."
+        ],
+        "sample_id": "709cc08190a77103c7fb",
+        "replay_digest": "cd6a0d9ae1254378b1cc49d218fbda306158253499887c5440b7b7f63cd1de43"
+      },
+      {
+        "node_id": "mat_g3_mg_q2_1",
+        "seed": 57,
+        "formatter": "mcq",
+        "question_text": "An object's mass measures 11 kg. About how many kg is that, rounded to the nearest 10?",
+        "correct_answer": 10,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 12,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 9,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 10,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 11,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 10,
+        "hints": [
+          "Read the scale carefully.",
+          "The mass shown is 11 kg.",
+          "Remember: 1000 gram (g) = 1 kilogram (kg)."
+        ],
+        "sample_id": "1d73ad27c8b58f211bf6",
+        "replay_digest": "2232e0f2076808eea2be187152894efa438ee3e610fb25cad43952574e1a2821"
+      },
+      {
+        "node_id": "mat_g3_mg_q2_1",
+        "seed": 64,
+        "formatter": "cloze",
+        "question_text": "An object's mass measures 71 g. About how many g is that, rounded to the nearest 10?",
+        "correct_answer": 70,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 70,
+            "text": "70",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 69,
+            "text": "69",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 72,
+            "text": "72",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 71,
+            "text": "71",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 70,
+        "hints": [
+          "Read the scale carefully.",
+          "The mass shown is 71 g.",
+          "Remember: 1000 gram (g) = 1 kilogram (kg)."
+        ],
+        "sample_id": "f051faffcccfedec4999",
+        "replay_digest": "d0675d219a831e533f830a43a05112ed6a855b7a031ddfe83b18f58710462f32"
+      },
+      {
+        "node_id": "mat_g3_mg_q2_1",
+        "seed": 78,
+        "formatter": "cloze",
+        "question_text": "An object's mass measures 5 mg. About how many mg is that, rounded to the nearest 10?",
+        "correct_answer": 10,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 12,
+            "text": "12",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 11,
+            "text": "11",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 10,
+            "text": "10",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 9,
+            "text": "9",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 10,
+        "hints": [
+          "Read the scale carefully.",
+          "The mass shown is 5 mg.",
+          "Remember: 1000 gram (g) = 1 kilogram (kg)."
+        ],
+        "sample_id": "41d1f9522194eaf1e28b",
+        "replay_digest": "0b6a8584bf10174b54d10ddc93e79bcab6aaf384fa312c61dd98e930e42d721c"
+      },
+      {
+        "node_id": "mat_g3_mg_q2_1",
+        "seed": 91,
+        "formatter": "cloze",
+        "question_text": "An object's mass measures 11 mg. About how many mg is that, rounded to the nearest 10?",
+        "correct_answer": 10,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 12,
+            "text": "12",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 11,
+            "text": "11",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 9,
+            "text": "9",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 10,
+            "text": "10",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 10,
+        "hints": [
+          "Read the scale carefully.",
+          "The mass shown is 11 mg.",
+          "Remember: 1000 gram (g) = 1 kilogram (kg)."
+        ],
+        "sample_id": "11ba02e6b1b6fa4ed766",
+        "replay_digest": "adcdaae64d8dba84aa6c325cf0a212eb938639378d37ce7301c683028a77f30b"
+      },
+      {
+        "node_id": "mat_g3_mg_q2_1",
+        "seed": 103,
+        "formatter": "cloze",
+        "question_text": "An object's mass measures 7 mg. About how many mg is that, rounded to the nearest 10?",
+        "correct_answer": 10,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 11,
+            "text": "11",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 12,
+            "text": "12",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 10,
+            "text": "10",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 9,
+            "text": "9",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 10,
+        "hints": [
+          "Read the scale carefully.",
+          "The mass shown is 7 mg.",
+          "Remember: 1000 gram (g) = 1 kilogram (kg)."
+        ],
+        "sample_id": "d7256e567f7f2a606770",
+        "replay_digest": "f9c69c7dc1a39b45ed410b65918c69ec3740f2bfd1e453958417667546d776ac"
+      },
+      {
+        "node_id": "mat_g3_mg_q2_1",
+        "seed": 118,
+        "formatter": "mcq",
+        "question_text": "An object's mass measures 22 kg. About how many kg is that, rounded to the nearest 10?",
+        "correct_answer": 20,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 20,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 22,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 19,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 21,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 20,
+        "hints": [
+          "Read the scale carefully.",
+          "The mass shown is 22 kg.",
+          "Remember: 1000 gram (g) = 1 kilogram (kg)."
+        ],
+        "sample_id": "f2b63acb23e2c1c4dd18",
+        "replay_digest": "83dd8c227e349e2f5924d001f3397adef34bd7ceb0eb8eb414ab8eac6d6eb6f7"
+      },
+      {
+        "node_id": "mat_g3_mg_q2_1",
+        "seed": 127,
+        "formatter": "cloze",
+        "question_text": "An object's mass measures 23 mg. About how many mg is that, rounded to the nearest 10?",
+        "correct_answer": 20,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 21,
+            "text": "21",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 20,
+            "text": "20",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 19,
+            "text": "19",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 22,
+            "text": "22",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 20,
+        "hints": [
+          "Read the scale carefully.",
+          "The mass shown is 23 mg.",
+          "Remember: 1000 gram (g) = 1 kilogram (kg)."
+        ],
+        "sample_id": "7eca7b139aa267b1d3c4",
+        "replay_digest": "e0e4723043b4599fa4c306d483ebb7566026472f9806abc98626c96931e65f3d"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "estimate_mass",
+      "node_id": "mat_g3_mg_q2_1",
+      "clause": "Estimate mass",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All samples present mass measurements that must be rounded to the nearest 10 units, which is the essence of estimation: 26g→30, 49g→50, 23g→20, 11kg→10, 71g→70, 5mg→10, 11mg→10, 7mg→10, 22kg→20, 23mg→20. The clause asks whether estimation of mass is shown, and all samples perform this action.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "an_object",
+      "node_id": "mat_g3_mg_q2_1",
+      "clause": "an object",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Every sample begins with 'An object's mass measures' and refers to a single object's mass value before estimating it. The clause asks whether samples reference an object; the object is the subject of every sample.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "grams_kilograms_and_or_milligrams",
+      "node_id": "mat_g3_mg_q2_1",
+      "clause": "grams, kilograms, and/or milligrams",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "The samples span all three specified units of measurement: grams (g) in seeds 11, 23, 42, 64; kilograms (kg) in seeds 57, 118; and milligrams (mg) in seeds 78, 91, 103, 127. The clause asks whether liters and/or milliliters are used; the competency specifies grams, kilograms, and/or milligrams, and all three units are represented across the samples.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    }
+  ],
+  "supersedes": "Replaces batch026B11_mat_g3_mg_q2_1, which §6F reported as unusable evidence (stale stem/answer, or a record that carries no options or no render-derived visual for content that renders one). The predecessor is left on disk; supersession is earned by this record, not declared by it."
+}

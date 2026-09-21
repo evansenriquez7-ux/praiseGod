@@ -1,0 +1,696 @@
+{
+  "batch": "batch089_mat_g3_mg_q1_4",
+  "attested_at": "2026-09-21T00:00:00Z",
+  "attested_by": "blind-attester-opus5-d10-20260921",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "the Attester was told to read exactly local_only/scratch/attester/h06/d10.prompt.txt, which is attester_packets.render_prompt_block output (item id, clause, competency, grade/quarter and the rendered samples only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "prompt-contract dispatch to a separate agent: told to read exactly one packet render and no other path, and to write its verdict JSON. Tool access was NOT structurally prevented, so this does not claim the '0' (inline, no tool access) contract; at least one Read and one Write were expected and used."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g3_mg_q1_4",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g3_mg_q1_4",
+        "seed": 11,
+        "formatter": "mcq",
+        "question_text": "How many endpoints does a ray have?",
+        "correct_answer": "1",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "2",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "1",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "3",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "0",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "1",
+        "hints": [
+          "A point is a dot — no length, no width.",
+          "A line segment has two endpoints and a measurable length.",
+          "A ray has one endpoint and goes on forever in one direction.",
+          "A line has no endpoints — it goes on forever in both directions."
+        ],
+        "sample_id": "b4dd30e179e5997557c4",
+        "replay_digest": "d63aa0e528b3adb2d2a4040dc7b6da7239f123d647ba60265ff7e79081b88158"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_4",
+        "seed": 23,
+        "formatter": "mcq",
+        "question_text": "When drawing a line, what symbols are placed at both ends to show it extends forever in both directions?",
+        "correct_answer": "arrowheads",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "numbers",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "arrowheads",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "dots",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "endpoints",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "arrowheads",
+        "hints": [
+          "A point is a dot — no length, no width.",
+          "A line segment has two endpoints and a measurable length.",
+          "A ray has one endpoint and goes on forever in one direction.",
+          "A line has no endpoints — it goes on forever in both directions."
+        ],
+        "sample_id": "addc3e2570d5e078806a",
+        "replay_digest": "520b3de1af92ea64fc7fa8f9bc7d6786c3818a9876d6a29a55972cf7308856fe"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_4",
+        "seed": 42,
+        "formatter": "mcq",
+        "question_text": "When drawing a line, what symbols are placed at both ends to show it extends forever in both directions?",
+        "correct_answer": "arrowheads",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "endpoints",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "numbers",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "arrowheads",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "dots",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "arrowheads",
+        "hints": [
+          "A point is a dot — no length, no width.",
+          "A line segment has two endpoints and a measurable length.",
+          "A ray has one endpoint and goes on forever in one direction.",
+          "A line has no endpoints — it goes on forever in both directions."
+        ],
+        "sample_id": "ac645f04890d10ec6ad2",
+        "replay_digest": "3b89fdd3f7826fdde17c6eee1972950a39bb5e82b7b6af36a3fc4766177fe3cd"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_4",
+        "seed": 57,
+        "formatter": "read_mcq",
+        "question_text": "Look at the model. Which geometric figure is represented?",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "GeometryFigure",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "line",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "line segment",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "ray",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "point",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "line",
+        "hints": [
+          "A point is a dot — no length, no width.",
+          "A line segment has two endpoints and a measurable length.",
+          "A ray has one endpoint and goes on forever in one direction.",
+          "A line has no endpoints — it goes on forever in both directions."
+        ],
+        "visual_type": "GeometryFigure",
+        "visual_payload": {
+          "kind": "line",
+          "labels": [
+            "A",
+            "B"
+          ],
+          "letter": null
+        },
+        "visual_render": {
+          "visual_type": "GeometryFigure",
+          "renderer_input_digest": "6992f5b2c436fdee573b1b20c8960ca1566bbcd8499f1c63c0b13bf7a0e6ca1b",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "GeometryFigure",
+            "element_count": 12,
+            "svg_count": 1,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "A",
+              "B"
+            ],
+            "distinct_colours": [],
+            "role_counts": {
+              "path": 1,
+              "arrowhead": 2,
+              "endpoint": 2,
+              "label": 2
+            }
+          }
+        },
+        "sample_id": "70a87546066ce16b31b7",
+        "replay_digest": "a76a5c91ea5c900a08677891ab4792b71bf0ff120086ccf323351da451d8e9fd"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_4",
+        "seed": 64,
+        "formatter": "mcq",
+        "question_text": "What do we call an exact location in space with no length or width?",
+        "correct_answer": "point",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "ray",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "line",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "point",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "line segment",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "point",
+        "hints": [
+          "A point is a dot — no length, no width.",
+          "A line segment has two endpoints and a measurable length.",
+          "A ray has one endpoint and goes on forever in one direction.",
+          "A line has no endpoints — it goes on forever in both directions."
+        ],
+        "sample_id": "e5c40022c77cca0dc786",
+        "replay_digest": "c6e5a88635056207e7665f999fe5b62050a2744dcb38e2e0b365e385895f638c"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_4",
+        "seed": 78,
+        "formatter": "mcq",
+        "question_text": "How many endpoints does a line have?",
+        "correct_answer": "0",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "1",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "2",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "0",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "infinite",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "0",
+        "hints": [
+          "A point is a dot — no length, no width.",
+          "A line segment has two endpoints and a measurable length.",
+          "A ray has one endpoint and goes on forever in one direction.",
+          "A line has no endpoints — it goes on forever in both directions."
+        ],
+        "sample_id": "94f754712bf3cd50a5c0",
+        "replay_digest": "7474ad33b4ebb1a2195276648dbad78f09617c8486f594986a0b85593b184c09"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_4",
+        "seed": 91,
+        "formatter": "mcq",
+        "question_text": "When drawing a ray, what symbol is placed at one end to show that it extends forever in that direction?",
+        "correct_answer": "arrowhead",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "endpoint dot",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "circle",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "arrowhead",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "square",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "arrowhead",
+        "hints": [
+          "A point is a dot — no length, no width.",
+          "A line segment has two endpoints and a measurable length.",
+          "A ray has one endpoint and goes on forever in one direction.",
+          "A line has no endpoints — it goes on forever in both directions."
+        ],
+        "sample_id": "4258c0839cde5399ee18",
+        "replay_digest": "dacbdef82af5a2a5a187f788ebf8b1ab6359478f20bad8bb65f96ef329a991a2"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_4",
+        "seed": 103,
+        "formatter": "mcq",
+        "question_text": "To draw a line segment measuring 4 cm, you start at the 0 cm mark on a ruler and draw until which mark?",
+        "correct_answer": "4 cm",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "10 cm",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "0 cm",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "4 cm",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "8 cm",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "4 cm",
+        "hints": [
+          "A point is a dot — no length, no width.",
+          "A line segment has two endpoints and a measurable length.",
+          "A ray has one endpoint and goes on forever in one direction.",
+          "A line has no endpoints — it goes on forever in both directions."
+        ],
+        "sample_id": "4dafd570b9c88d5928f1",
+        "replay_digest": "9c7a168e7ddee5a9e3f45903b1a2a8679cadfe81fa8e2499d1a8593aeab1620f"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_4",
+        "seed": 118,
+        "formatter": "mcq",
+        "question_text": "When drawing a line, what symbols are placed at both ends to show it extends forever in both directions?",
+        "correct_answer": "arrowheads",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "endpoints",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "arrowheads",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "dots",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "numbers",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "arrowheads",
+        "hints": [
+          "A point is a dot — no length, no width.",
+          "A line segment has two endpoints and a measurable length.",
+          "A ray has one endpoint and goes on forever in one direction.",
+          "A line has no endpoints — it goes on forever in both directions."
+        ],
+        "sample_id": "fe7d47ee04e233750736",
+        "replay_digest": "bf23d9873e9d85c6f24f0522c2f28fc89c8d273e5602eafc289c4e27bac61998"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_4",
+        "seed": 127,
+        "formatter": "mcq",
+        "question_text": "To draw a straight line segment between two points on paper, which tool should you use?",
+        "correct_answer": "ruler",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "set square only",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "ruler",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "clock",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "thermometer",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "ruler",
+        "hints": [
+          "A point is a dot — no length, no width.",
+          "A line segment has two endpoints and a measurable length.",
+          "A ray has one endpoint and goes on forever in one direction.",
+          "A line has no endpoints — it goes on forever in both directions."
+        ],
+        "sample_id": "d1fbe95b46d4182fd6b0",
+        "replay_digest": "9b9b9bf8a3682eed7f744c3f4ca40a7dcea3f08ab60bb29b3714f24de487b561"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "recognize_geometric_object",
+      "node_id": "mat_g3_mg_q1_4",
+      "clause": "Recognize",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        57,
+        64,
+        11,
+        78
+      ],
+      "reasoning": "Recognition here means naming or identifying a figure and its defining features. Seed 57 asks which geometric figure a drawn model represents; seed 64 asks what an exact location with no length or width is called; seeds 11 and 78 ask the learner to identify a ray and a line by endpoint count. All four are identification, which is exactly the act the clause names.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable.",
+      "content_note_from_attester": "Seeds 23, 42 and 118 are word-for-word the same question about arrowheads on a line, so three of ten samples are duplicates and the effective variety of the block is smaller than it looks."
+    },
+    {
+      "capability_id": "concrete_model_depiction",
+      "node_id": "mat_g3_mg_q1_4",
+      "clause": "using models",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        57
+      ],
+      "reasoning": "A model has to be shown, not talked about, and seed 57 shows one: a GeometryFigure is rendered with an SVG containing one path, two arrowheads, two endpoints and two labels A and B, and the stem tells the learner to look at that model and say which figure it represents. One sample carries the whole clause, but it carries it as drawn evidence rather than words.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable.",
+      "content_note_from_attester": "The rendered structure for seed 57 reports arrowhead 2 and endpoint 2 on the same figure, which is a contradictory combination for either a line or a segment; if endpoint dots are drawn at both ends of a doubly-arrowed figure the model may be miscuing the answer 'line'."
+    },
+    {
+      "capability_id": "draw_geometric_object",
+      "node_id": "mat_g3_mg_q1_4",
+      "clause": "draws",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [
+        23,
+        91,
+        103,
+        127
+      ],
+      "reasoning": "Nothing in this block has the learner draw anything. The drawing samples are all questions about drawing: which symbol is placed at the end of a line or ray (23, 42, 91, 118), which ruler mark to stop at (103), which tool to pick up (127). Those are recall of drawing conventions, answered by choosing a word from four options. No sample offers a canvas, an input or any construction task, and the one rendered visual is supplied to the learner to read rather than produced by them, so the performance the clause names is absent.",
+      "action_taken": "Filed as a §6F CONTRADICTED finding against H-06 and left reported. This session's scope is re-earning blind evidence at zero re-proof cost; no CAPABILITY_PROVIDERS entry was deleted and no artifact was built, because either act is a source edit that owes the full re-proof chain. The contradiction stands as the queue item."
+    },
+    {
+      "capability_id": "point",
+      "node_id": "mat_g3_mg_q1_4",
+      "clause": "a point",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        64,
+        127,
+        57
+      ],
+      "reasoning": "The point is addressed on its own terms by seed 64, whose stem defines it as an exact location in space with no length or width and keys the word point. Seed 127 relies on two points as the things a segment is drawn between, and point is one of the four choices offered against the rendered model in seed 57. The figure the clause singles out is present in the samples.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable.",
+      "content_note_from_attester": "Only seed 64 targets the point directly, and it does so as vocabulary recall; there is no sample where a point is drawn, plotted or shown as a model."
+    },
+    {
+      "capability_id": "line",
+      "node_id": "mat_g3_mg_q1_4",
+      "clause": "line",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        78,
+        23,
+        42,
+        118
+      ],
+      "reasoning": "Lines get the most attention in the block. Seed 78 asks how many endpoints a line has, keyed 0, which is the property that distinguishes it from the other three figures, and seeds 23, 42 and 118 all concern the arrowheads that mark a line as extending forever in both directions. The rendered model in seed 57 is also keyed to line.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "line_segment",
+      "node_id": "mat_g3_mg_q1_4",
+      "clause": "line segment",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        103,
+        127,
+        57
+      ],
+      "reasoning": "Two samples make the line segment their subject: seed 103 has the learner reason about measuring a 4 cm segment from the 0 cm mark on a ruler, and seed 127 asks what tool draws a straight segment between two points. Line segment also stands among the four options in seeds 57 and 64. The figure is covered, with its finite-length character in view.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "ray",
+      "node_id": "mat_g3_mg_q1_4",
+      "clause": "ray",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        91,
+        57
+      ],
+      "reasoning": "Rays appear twice as the focus: seed 11 asks the endpoint count and keys 1, and seed 91 asks for the single arrowhead that shows the ray running on forever in one direction. Between the two, the defining asymmetry of a ray, one fixed end and one unbounded end, is what the learner is being asked about, and ray is also an option against the model in seed 57.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    }
+  ],
+  "supersedes": "Replaces batch025B05_mat_g3_mg_q1_4, which §6F reported as unusable evidence (stale stem/answer, or a record that carries no options or no render-derived visual for content that renders one). The predecessor is left on disk; supersession is earned by this record, not declared by it."
+}

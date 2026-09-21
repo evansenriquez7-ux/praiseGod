@@ -1,0 +1,787 @@
+{
+  "batch": "batch111_mat_g3_na_q4_1",
+  "attested_at": "2026-09-21T00:00:00Z",
+  "attested_by": "blind-attester-haiku45-d32-20260922",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "the Attester was told to read exactly local_only/scratch/attester/h06/d32.prompt.txt, which is attester_packets.render_prompt_block output (item id, clause, competency, grade/quarter and the rendered samples only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "prompt-contract dispatch to a separate agent: told to read exactly one packet render and no other path, and to write its verdict JSON. Tool access was NOT structurally prevented, so this does not claim the '0' (inline, no tool access) contract; at least one Read and one Write were expected and used."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g3_na_q4_1",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g3_na_q4_1",
+        "seed": 11,
+        "formatter": "mcq",
+        "question_text": "What is 18 ÷ 9?",
+        "correct_answer": 2,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 1,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 9,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 3,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 2,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 2,
+        "hints": [
+          "We need to divide 18 by 9. The number being divided is 18; the number we divide by is 9.",
+          "Ask: how many times does 9 fit into 18? 9 × 2 = 18.",
+          "The quotient of 18 ÷ 9 = 2."
+        ],
+        "sample_id": "9d024be205546e8ae42e",
+        "replay_digest": "ffdba33d37da58582df68666eb343aca2465fe72e906e3973a80c2c3aa8f31f1"
+      },
+      {
+        "node_id": "mat_g3_na_q4_1",
+        "seed": 23,
+        "formatter": "read_mcq",
+        "question_text": "This array has 8 squares split into 8 equal rows. How many squares are in each row?",
+        "correct_answer": "B",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "GridArea",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 18,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 1,
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 4,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 7,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 1,
+        "hints": [
+          "We need to divide 8 by 8. The number being divided is 8; the number we divide by is 8.",
+          "Ask: how many times does 8 fit into 8? 8 × 1 = 8.",
+          "The quotient of 8 ÷ 8 = 1."
+        ],
+        "visual_type": "GridArea",
+        "visual_payload": {
+          "rows": 8,
+          "cols": 1,
+          "shaded": true,
+          "highlight_groups": [],
+          "shape_type": "rectangle",
+          "correct_count": 1,
+          "grid_size": [
+            9,
+            2
+          ]
+        },
+        "visual_render": {
+          "visual_type": "GridArea",
+          "renderer_input_digest": "6744e75ea46a3088826e7edfbba0bca4fa34e6a6f275e7ecd677be3ba5227045",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "GridArea",
+            "element_count": 21,
+            "svg_count": 1,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 1,
+            "input_count": 0,
+            "text_labels": [
+              "Click squares to shade a",
+              "1 × 8",
+              "rectangle",
+              "8 square units",
+              "Clear All",
+              "Click squares to shade/unshade"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--primary)",
+              "#4b5563",
+              "#374151",
+              "hsl(var(--border-color)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {
+              "grid-cell": 8
+            }
+          }
+        },
+        "sample_id": "137315b18c95f4c95385",
+        "replay_digest": "1db000c14aa459a6748243478224b06ceb953c2b0e642411982dc1244ea4afa9"
+      },
+      {
+        "node_id": "mat_g3_na_q4_1",
+        "seed": 42,
+        "formatter": "read_mcq",
+        "question_text": "This array has 48 squares split into 6 equal rows. How many squares are in each row?",
+        "correct_answer": "D",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "GridArea",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 28,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 5,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 10,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 8,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 8,
+        "hints": [
+          "We need to divide 48 by 6. The number being divided is 48; the number we divide by is 6.",
+          "Ask: how many times does 6 fit into 48? 6 × 8 = 48.",
+          "The quotient of 48 ÷ 6 = 8."
+        ],
+        "visual_type": "GridArea",
+        "visual_payload": {
+          "rows": 6,
+          "cols": 8,
+          "shaded": true,
+          "highlight_groups": [],
+          "shape_type": "rectangle",
+          "correct_count": 8,
+          "grid_size": [
+            7,
+            9
+          ]
+        },
+        "visual_render": {
+          "visual_type": "GridArea",
+          "renderer_input_digest": "ee6d4c045c1d0b2586c9f7f5dc6b865ff0a659e324a1540410bf798096c126a0",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "GridArea",
+            "element_count": 61,
+            "svg_count": 1,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 1,
+            "input_count": 0,
+            "text_labels": [
+              "Click squares to shade a",
+              "8 × 6",
+              "rectangle",
+              "48 square units",
+              "Clear All",
+              "Click squares to shade/unshade"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--primary)",
+              "#4b5563",
+              "#374151",
+              "hsl(var(--border-color)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {
+              "grid-cell": 48
+            }
+          }
+        },
+        "sample_id": "9e9a0149c962d6301808",
+        "replay_digest": "170fd2b5e69b394ceabb4d3bd3d42b2068c41afde18e79a4f7924aebb6dcfc0a"
+      },
+      {
+        "node_id": "mat_g3_na_q4_1",
+        "seed": 57,
+        "formatter": "cloze",
+        "question_text": "18 ÷ 6 = ___",
+        "correct_answer": 3,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 12,
+            "text": "12",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 4,
+            "text": "4",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 6,
+            "text": "6",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 3,
+            "text": "3",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 3,
+        "hints": [
+          "We need to divide 18 by 6. The number being divided is 18; the number we divide by is 6.",
+          "Ask: how many times does 6 fit into 18? 6 × 3 = 18.",
+          "The quotient of 18 ÷ 6 = 3."
+        ],
+        "sample_id": "47a985801093765996fb",
+        "replay_digest": "e26dcf46f400ffe838b88e7757e23d27b6aa8dfc942007b0a7d0e5e9650a26d3"
+      },
+      {
+        "node_id": "mat_g3_na_q4_1",
+        "seed": 64,
+        "formatter": "read_mcq",
+        "question_text": "This array has 36 squares split into 9 equal rows. How many squares are in each row?",
+        "correct_answer": "C",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "GridArea",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 7,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 26,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 4,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 1,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 4,
+        "hints": [
+          "We need to divide 36 by 9. The number being divided is 36; the number we divide by is 9.",
+          "Ask: how many times does 9 fit into 36? 9 × 4 = 36.",
+          "The quotient of 36 ÷ 9 = 4."
+        ],
+        "visual_type": "GridArea",
+        "visual_payload": {
+          "rows": 9,
+          "cols": 4,
+          "shaded": true,
+          "highlight_groups": [],
+          "shape_type": "rectangle",
+          "correct_count": 4,
+          "grid_size": [
+            10,
+            5
+          ]
+        },
+        "visual_render": {
+          "visual_type": "GridArea",
+          "renderer_input_digest": "3397fe6157cda9411acca0047f73c87165dc1b7dd50764fd8e0f426f49b2c0c6",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "GridArea",
+            "element_count": 49,
+            "svg_count": 1,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 1,
+            "input_count": 0,
+            "text_labels": [
+              "Click squares to shade a",
+              "4 × 9",
+              "rectangle",
+              "36 square units",
+              "Clear All",
+              "Click squares to shade/unshade"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--primary)",
+              "#4b5563",
+              "#374151",
+              "hsl(var(--border-color)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {
+              "grid-cell": 36
+            }
+          }
+        },
+        "sample_id": "4e00c7dd205946a06293",
+        "replay_digest": "7b93776821a28580bf7a09e528891744108046611c76237cad117f59887d334c"
+      },
+      {
+        "node_id": "mat_g3_na_q4_1",
+        "seed": 78,
+        "formatter": "read_mcq",
+        "question_text": "This array has 28 squares split into 7 equal rows. How many squares are in each row?",
+        "correct_answer": "C",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "GridArea",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 22,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 7,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 4,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 2,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 4,
+        "hints": [
+          "We need to divide 28 by 7. The number being divided is 28; the number we divide by is 7.",
+          "Ask: how many times does 7 fit into 28? 7 × 4 = 28.",
+          "The quotient of 28 ÷ 7 = 4."
+        ],
+        "visual_type": "GridArea",
+        "visual_payload": {
+          "rows": 7,
+          "cols": 4,
+          "shaded": true,
+          "highlight_groups": [],
+          "shape_type": "rectangle",
+          "correct_count": 4,
+          "grid_size": [
+            8,
+            5
+          ]
+        },
+        "visual_render": {
+          "visual_type": "GridArea",
+          "renderer_input_digest": "d0e4e19b1260ef3baf0a676b17c641878ad47e57d91b5eacf3e54bd3d59d460f",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "GridArea",
+            "element_count": 41,
+            "svg_count": 1,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 1,
+            "input_count": 0,
+            "text_labels": [
+              "Click squares to shade a",
+              "4 × 7",
+              "rectangle",
+              "28 square units",
+              "Clear All",
+              "Click squares to shade/unshade"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--primary)",
+              "#4b5563",
+              "#374151",
+              "hsl(var(--border-color)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {
+              "grid-cell": 28
+            }
+          }
+        },
+        "sample_id": "c1748c71d952b0ee6e3a",
+        "replay_digest": "37ca85e4545025da0d6b6dcba22f64b1863689a7060c90f56ade3c3f7e075cfb"
+      },
+      {
+        "node_id": "mat_g3_na_q4_1",
+        "seed": 91,
+        "formatter": "mcq",
+        "question_text": "What is 36 ÷ 6?",
+        "correct_answer": 6,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 7,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 30,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 5,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 6,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 6,
+        "hints": [
+          "We need to divide 36 by 6. The number being divided is 36; the number we divide by is 6.",
+          "Ask: how many times does 6 fit into 36? 6 × 6 = 36.",
+          "The quotient of 36 ÷ 6 = 6."
+        ],
+        "sample_id": "284e7b40b439474067da",
+        "replay_digest": "bbfeda0ddb15411101cf3d766228e0dc98328d564f5a5eeb9e5b11f830aab9a1"
+      },
+      {
+        "node_id": "mat_g3_na_q4_1",
+        "seed": 103,
+        "formatter": "true_false",
+        "question_text": "27 ÷ 9 = 3. True or False?",
+        "correct_answer": true,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "true_false",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "true_false",
+          "experience": "standard"
+        },
+        "resolved_answer": true,
+        "hints": [
+          "We need to divide 27 by 9. The number being divided is 27; the number we divide by is 9.",
+          "Ask: how many times does 9 fit into 27? 9 × 3 = 27.",
+          "The quotient of 27 ÷ 9 = 3."
+        ],
+        "sample_id": "58691a372ba012f5ed67",
+        "replay_digest": "f6af7c05fa0e2d44c76788ba4e5aca57aa285e212d477a3ffa0c6d16f096c81b"
+      },
+      {
+        "node_id": "mat_g3_na_q4_1",
+        "seed": 118,
+        "formatter": "cloze",
+        "question_text": "21 ÷ 7 = ___",
+        "correct_answer": 3,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 7,
+            "text": "7",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 4,
+            "text": "4",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 3,
+            "text": "3",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 14,
+            "text": "14",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 3,
+        "hints": [
+          "We need to divide 21 by 7. The number being divided is 21; the number we divide by is 7.",
+          "Ask: how many times does 7 fit into 21? 7 × 3 = 21.",
+          "The quotient of 21 ÷ 7 = 3."
+        ],
+        "sample_id": "d4e44e83d18a14113fc1",
+        "replay_digest": "488961fb0a60881e04fbac201c393d70583619b53741d0710c4e40438ea790cb"
+      },
+      {
+        "node_id": "mat_g3_na_q4_1",
+        "seed": 127,
+        "formatter": "mcq",
+        "question_text": "What is 18 ÷ 6?",
+        "correct_answer": 3,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 3,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 6,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 4,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 12,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 3,
+        "hints": [
+          "We need to divide 18 by 6. The number being divided is 18; the number we divide by is 6.",
+          "Ask: how many times does 6 fit into 18? 6 × 3 = 18.",
+          "The quotient of 18 ÷ 6 = 3."
+        ],
+        "sample_id": "12836158209d284e1073",
+        "replay_digest": "caeeca951bdf5b6ff89ad213f5f17a06b861c64a7ba885b7b5ba0a4b8c348ba3"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "divide_numbers",
+      "node_id": "mat_g3_na_q4_1",
+      "clause": "Divide numbers",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All samples are division operations: seed 11 (18÷9), seeds 23, 42, 64, 78 (array division presented as grid visuals), seed 57 (18÷6), seed 91 (36÷6), seed 103 (27÷9 true/false), seed 118 (21÷7), seed 127 (18÷6). The clause asks whether students divide numbers; every sample is a division task.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "6_7_8_9",
+      "node_id": "mat_g3_na_q4_1",
+      "clause": "6, 7, 8, and 9",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "The samples draw from all four specified multiplication tables: the 6s in seeds 42, 57, 91, 127 (48÷6=8, 18÷6=3, 36÷6=6, 18÷6=3); the 7s in seed 78 (28÷7=4) and 118 (21÷7=3); the 8s in seed 23 (8÷8=1); the 9s in seeds 11, 64, 103 (18÷9=2, 36÷9=4, 27÷9=3). All four tables are represented.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "multiplication_tables",
+      "node_id": "mat_g3_na_q4_1",
+      "clause": "multiplication tables",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "The clause refers to multiplication tables as the foundation for division facts in the samples. Every sample uses a fact derived from one of the six, seven, eight, or nine times tables (e.g., 18÷9 is a 9s fact, 28÷7 is a 7s fact). Division through these table facts is the mechanism used throughout the samples.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    }
+  ],
+  "supersedes": "Replaces batch026B15_mat_g3_na_q4_1, which §6F reported as unusable evidence (stale stem/answer, or a record that carries no options or no render-derived visual for content that renders one). The predecessor is left on disk; supersession is earned by this record, not declared by it."
+}

@@ -1,0 +1,684 @@
+{
+  "batch": "batch108_mat_g3_na_q2_7",
+  "attested_at": "2026-09-21T00:00:00Z",
+  "attested_by": "blind-attester-haiku45-d29-20260922",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "the Attester was told to read exactly local_only/scratch/attester/h06/d29.prompt.txt, which is attester_packets.render_prompt_block output (item id, clause, competency, grade/quarter and the rendered samples only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "prompt-contract dispatch to a separate agent: told to read exactly one packet render and no other path, and to write its verdict JSON. Tool access was NOT structurally prevented, so this does not claim the '0' (inline, no tool access) contract; at least one Read and one Write were expected and used."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g3_na_q2_7",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g3_na_q2_7",
+        "seed": 11,
+        "formatter": "mcq",
+        "question_text": "Fidel starts with 60 eggs. Then Fidel receives 58 eggs. Then Fidel receives 66 eggs. Then Fidel gives away 76 eggs. How many eggs does Fidel have now?",
+        "correct_answer": 108,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 109,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 110,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 108,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 107,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 108,
+        "hints": [
+          "Evaluate the number sentence: 60 + 58 + 66 - 76.",
+          "Use the order of operations: work left to right for + and −.",
+          "Step 1: 60 + 58 = 118.",
+          "Step 2: 118 + 66 = 184.",
+          "Step 3: 184 - 76 = 108.",
+          "The answer is 108."
+        ],
+        "sample_id": "84b8131ab713d3aac82f",
+        "replay_digest": "f730275675ca18c9f8b67edb3afd2951b3717a651583e1be7402d70a51235456"
+      },
+      {
+        "node_id": "mat_g3_na_q2_7",
+        "seed": 23,
+        "formatter": "cloze",
+        "question_text": "Ana starts with 80 eggs. Then Ana receives 59 eggs. Then Ana gives away 4 eggs. Then Ana gives away 14 eggs. How many eggs does Ana have now?",
+        "correct_answer": 121,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 123,
+            "text": "123",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 120,
+            "text": "120",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 122,
+            "text": "122",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 121,
+            "text": "121",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 121,
+        "hints": [
+          "Evaluate the number sentence: 80 + 59 - 4 - 14.",
+          "Use the order of operations: work left to right for + and −.",
+          "Step 1: 80 + 59 = 139.",
+          "Step 2: 139 - 4 = 135.",
+          "Step 3: 135 - 14 = 121.",
+          "The answer is 121."
+        ],
+        "sample_id": "ad99818df261e5b53dc4",
+        "replay_digest": "e788b5d08cdaf820afa798c599fe9e10653c7ff4de24d581dad352aadc54ad5b"
+      },
+      {
+        "node_id": "mat_g3_na_q2_7",
+        "seed": 42,
+        "formatter": "cloze",
+        "question_text": "Fidel starts with ₱36. Then Fidel receives ₱32. Then Fidel receives ₱29. How much money does Fidel have now?",
+        "correct_answer": 97,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 97,
+            "text": "97",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 99,
+            "text": "99",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 96,
+            "text": "96",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 98,
+            "text": "98",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 97,
+        "hints": [
+          "Evaluate the number sentence: 36 + 32 + 29.",
+          "Use the order of operations: work left to right for + and −.",
+          "Step 1: 36 + 32 = 68.",
+          "Step 2: 68 + 29 = 97.",
+          "The answer is 97."
+        ],
+        "sample_id": "d6241e3a97992263109f",
+        "replay_digest": "297be2363c0652955b60b14498df5bba4b67aa59307de43afa2c0b67772dab2a"
+      },
+      {
+        "node_id": "mat_g3_na_q2_7",
+        "seed": 57,
+        "formatter": "mcq",
+        "question_text": "Carlo starts with ₱78. Then Carlo gives away ₱3. Then Carlo gives away ₱29. How much money does Carlo have now?",
+        "correct_answer": 46,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 48,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 45,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 46,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 47,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 46,
+        "hints": [
+          "Evaluate the number sentence: 78 - 3 - 29.",
+          "Use the order of operations: work left to right for + and −.",
+          "Step 1: 78 - 3 = 75.",
+          "Step 2: 75 - 29 = 46.",
+          "The answer is 46."
+        ],
+        "sample_id": "f35aa38f702628491aea",
+        "replay_digest": "670fa7347d0c0e488ee7ad4079431729633acc4a7ad45ee83935ae0c48bdaf9c"
+      },
+      {
+        "node_id": "mat_g3_na_q2_7",
+        "seed": 64,
+        "formatter": "cloze",
+        "question_text": "Fidel starts with ₱79. Then Fidel receives ₱52. Then Fidel receives ₱69. Then Fidel gives away ₱88. How much money does Fidel have now?",
+        "correct_answer": 112,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 112,
+            "text": "112",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 111,
+            "text": "111",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 113,
+            "text": "113",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 114,
+            "text": "114",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 112,
+        "hints": [
+          "Evaluate the number sentence: 79 + 52 + 69 - 88.",
+          "Use the order of operations: work left to right for + and −.",
+          "Step 1: 79 + 52 = 131.",
+          "Step 2: 131 + 69 = 200.",
+          "Step 3: 200 - 88 = 112.",
+          "The answer is 112."
+        ],
+        "sample_id": "b546e8d7c159194816a4",
+        "replay_digest": "fae579f24d9d36fe0abb3c293c74288990d3967707bfff5e2154b50e8b5f04ae"
+      },
+      {
+        "node_id": "mat_g3_na_q2_7",
+        "seed": 78,
+        "formatter": "cloze",
+        "question_text": "Fidel starts with ₱84. Then Fidel gives away ₱19. Then Fidel receives ₱84. How much money does Fidel have now?",
+        "correct_answer": 149,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 148,
+            "text": "148",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 151,
+            "text": "151",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 150,
+            "text": "150",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 149,
+            "text": "149",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 149,
+        "hints": [
+          "Evaluate the number sentence: 84 - 19 + 84.",
+          "Use the order of operations: work left to right for + and −.",
+          "Step 1: 84 - 19 = 65.",
+          "Step 2: 65 + 84 = 149.",
+          "The answer is 149."
+        ],
+        "sample_id": "0a54c157850aeaf7b9fe",
+        "replay_digest": "5d468f54e5b1006494fb0f0fc06bc1a64b42c31d4b36bf7f8cbedf135d74e419"
+      },
+      {
+        "node_id": "mat_g3_na_q2_7",
+        "seed": 91,
+        "formatter": "cloze",
+        "question_text": "Fidel starts with 28 marbles. Then Fidel receives 28 marbles. Then Fidel receives 50 marbles. How many marbles does Fidel have now?",
+        "correct_answer": 106,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 106,
+            "text": "106",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 107,
+            "text": "107",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 105,
+            "text": "105",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 108,
+            "text": "108",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 106,
+        "hints": [
+          "Evaluate the number sentence: 28 + 28 + 50.",
+          "Use the order of operations: work left to right for + and −.",
+          "Step 1: 28 + 28 = 56.",
+          "Step 2: 56 + 50 = 106.",
+          "The answer is 106."
+        ],
+        "sample_id": "d993216d4fce18e76b27",
+        "replay_digest": "e800119b83f09a023d484ea460b6d5c9cb45f94fd182890b6163f208c14cb229"
+      },
+      {
+        "node_id": "mat_g3_na_q2_7",
+        "seed": 103,
+        "formatter": "cloze",
+        "question_text": "Dina starts with 90 stickers. Then Dina receives 95 stickers. Then Dina receives 28 stickers. Then Dina gives away 89 stickers. How many stickers does Dina have now?",
+        "correct_answer": 124,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 125,
+            "text": "125",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 124,
+            "text": "124",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 123,
+            "text": "123",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 126,
+            "text": "126",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 124,
+        "hints": [
+          "Evaluate the number sentence: 90 + 95 + 28 - 89.",
+          "Use the order of operations: work left to right for + and −.",
+          "Step 1: 90 + 95 = 185.",
+          "Step 2: 185 + 28 = 213.",
+          "Step 3: 213 - 89 = 124.",
+          "The answer is 124."
+        ],
+        "sample_id": "5caba9eeee80dcfc0e54",
+        "replay_digest": "a9875762adfc27eb48d189844d5d20f2ef1e331303f7182d55b5880e74365a12"
+      },
+      {
+        "node_id": "mat_g3_na_q2_7",
+        "seed": 118,
+        "formatter": "mcq",
+        "question_text": "Carlo starts with ₱90. Then Carlo receives ₱47. Then Carlo gives away ₱38. How much money does Carlo have now?",
+        "correct_answer": 99,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 98,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 99,
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 101,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 100,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 99,
+        "hints": [
+          "Evaluate the number sentence: 90 + 47 - 38.",
+          "Use the order of operations: work left to right for + and −.",
+          "Step 1: 90 + 47 = 137.",
+          "Step 2: 137 - 38 = 99.",
+          "The answer is 99."
+        ],
+        "sample_id": "feb352b17a13b9c4fc02",
+        "replay_digest": "1fb733a87ab377d7251d32cce43094dd637d13a251d4d9d17d26111dbdf1f164"
+      },
+      {
+        "node_id": "mat_g3_na_q2_7",
+        "seed": 127,
+        "formatter": "cloze",
+        "question_text": "Carlo starts with 75 notebooks. Then Carlo receives 73 notebooks. Then Carlo receives 13 notebooks. How many notebooks does Carlo have now?",
+        "correct_answer": 161,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 163,
+            "text": "163",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 162,
+            "text": "162",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 160,
+            "text": "160",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 161,
+            "text": "161",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 161,
+        "hints": [
+          "Evaluate the number sentence: 75 + 73 + 13.",
+          "Use the order of operations: work left to right for + and −.",
+          "Step 1: 75 + 73 = 148.",
+          "Step 2: 148 + 13 = 161.",
+          "The answer is 161."
+        ],
+        "sample_id": "d03995e2e6c8e1dfdcd5",
+        "replay_digest": "2d92695f7d21d90e83b69541225c1641057b205ce5cec638999c5afb86105b00"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "solve_problems_involving_addition_and_subtraction",
+      "node_id": "mat_g3_na_q2_7",
+      "clause": "Solve problems involving addition and subtraction",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All ten samples are word problems that require solving through addition and/or subtraction of quantities. Each problem presents a sequence of operations (e.g., starts with, receives, gives away) that students must combine to find a total.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "3_to_4_numbers",
+      "node_id": "mat_g3_na_q2_7",
+      "clause": "3 to 4 numbers",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Every sample contains either three or four operands. Seed 11 has four values (60, 58, 66, 76); seeds 42, 57, 78, 91, 118, 127 have three values; seeds 23, 64, 103 have four values. None exceed four operands.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "up_to_2_digits",
+      "node_id": "mat_g3_na_q2_7",
+      "clause": "up to 2 digits",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All operands across the ten samples are either one or two digits. Examples: seed 11 uses 60, 58, 66, 76; seed 23 uses 80, 59, 4, 14 (where 4 is one digit). No three-digit or larger numbers appear in the operands themselves.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "problems_involving_money",
+      "node_id": "mat_g3_na_q2_7",
+      "clause": "problems involving money",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        57,
+        64,
+        78,
+        118
+      ],
+      "reasoning": "Five of the ten samples explicitly involve Philippine peso currency (₱): seeds 42, 57, 64, 78, and 118. The competency states \"including problems involving money,\" and the sample set demonstrates this inclusion through these five contexts.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    }
+  ],
+  "supersedes": "Replaces batch026B14_mat_g3_na_q2_7, which §6F reported as unusable evidence (stale stem/answer, or a record that carries no options or no render-derived visual for content that renders one). The predecessor is left on disk; supersession is earned by this record, not declared by it."
+}

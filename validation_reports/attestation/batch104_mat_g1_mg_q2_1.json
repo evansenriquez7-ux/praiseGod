@@ -1,0 +1,659 @@
+{
+  "batch": "batch104_mat_g1_mg_q2_1",
+  "attested_at": "2026-09-21T00:00:00Z",
+  "attested_by": "blind-attester-haiku45-d25-20260922",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "the Attester was told to read exactly local_only/scratch/attester/h06/d25.prompt.txt, which is attester_packets.render_prompt_block output (item id, clause, competency, grade/quarter and the rendered samples only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "prompt-contract dispatch to a separate agent: told to read exactly one packet render and no other path, and to write its verdict JSON. Tool access was NOT structurally prevented, so this does not claim the '0' (inline, no tool access) contract; at least one Read and one Write were expected and used."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g1_mg_q2_1",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g1_mg_q2_1",
+        "seed": 11,
+        "formatter": "mcq",
+        "question_text": "The distance from the bench to the tree is 9 blocks. The distance from the gate to the tree is 5 blocks. Which distance is shorter?",
+        "correct_answer": 5,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 5,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 6,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 4,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 9,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 5,
+        "hints": [
+          "Compare 9 blocks and 5 blocks.",
+          "9 is more than 5.",
+          "The longer distance is 5 blocks."
+        ],
+        "sample_id": "ac719ce8d3f268d6c31e",
+        "replay_digest": "0f6d77b6354645b57c803465f75241ea0de2a05bceaf9cdacf7bb7b9c56c8460"
+      },
+      {
+        "node_id": "mat_g1_mg_q2_1",
+        "seed": 23,
+        "formatter": "cloze",
+        "question_text": "The distance from the bench to the tree is 3 blocks. The distance from the gate to the tree is 2 blocks. Which distance is longer?",
+        "correct_answer": 3,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 2,
+            "text": "2",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 5,
+            "text": "5",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 3,
+            "text": "3",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 4,
+            "text": "4",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 3,
+        "hints": [
+          "Compare 3 blocks and 2 blocks.",
+          "3 is more than 2.",
+          "The longer distance is 3 blocks."
+        ],
+        "sample_id": "5ffced72b93f3b594b7f",
+        "replay_digest": "7bbe12f324996652eb2ce29cffa79e0b6d474324d7b7964ff9108e03c11ef202"
+      },
+      {
+        "node_id": "mat_g1_mg_q2_1",
+        "seed": 42,
+        "formatter": "cloze",
+        "question_text": "Which is shorter: 2 paperclips or 6 paperclips?",
+        "correct_answer": 2,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 2,
+            "text": "2",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 6,
+            "text": "6",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 1,
+            "text": "1",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 3,
+            "text": "3",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 2,
+        "hints": [
+          "Compare 2 paperclips and 6 paperclips.",
+          "6 is more than 2.",
+          "The longer length is 2 paperclips."
+        ],
+        "sample_id": "97a1399803c183295456",
+        "replay_digest": "d81743b4401cca397ffea87af21842fd219c56464de509ea0a8a705521e750dd"
+      },
+      {
+        "node_id": "mat_g1_mg_q2_1",
+        "seed": 57,
+        "formatter": "mcq",
+        "question_text": "Which is shorter: 7 paperclips or 2 paperclips?",
+        "correct_answer": 2,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 7,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 2,
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 3,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 1,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 2,
+        "hints": [
+          "Compare 7 paperclips and 2 paperclips.",
+          "7 is more than 2.",
+          "The longer length is 2 paperclips."
+        ],
+        "sample_id": "289caa99894ff9e675c9",
+        "replay_digest": "163599aa424535eb5a827e8b41934b2bf98cec42682b2d3a1a23d9f44c40d1d1"
+      },
+      {
+        "node_id": "mat_g1_mg_q2_1",
+        "seed": 64,
+        "formatter": "cloze",
+        "question_text": "The distance from the bench to the tree is 3 blocks. The distance from the gate to the tree is 8 blocks. Which distance is longer?",
+        "correct_answer": 8,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 3,
+            "text": "3",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 8,
+            "text": "8",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 7,
+            "text": "7",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 9,
+            "text": "9",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 8,
+        "hints": [
+          "Compare 3 blocks and 8 blocks.",
+          "8 is more than 3.",
+          "The longer distance is 8 blocks."
+        ],
+        "sample_id": "098da8f3d5fe693070fb",
+        "replay_digest": "ae4c90af35a4529f88ca228f8dd46b13b44a53229b15127c3d2d713b6fca8624"
+      },
+      {
+        "node_id": "mat_g1_mg_q2_1",
+        "seed": 78,
+        "formatter": "cloze",
+        "question_text": "Which is longer: 3 hands or 6 hands?",
+        "correct_answer": 6,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 7,
+            "text": "7",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 6,
+            "text": "6",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 5,
+            "text": "5",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 3,
+            "text": "3",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 6,
+        "hints": [
+          "Compare 3 hands and 6 hands.",
+          "6 is more than 3.",
+          "The longer length is 6 hands."
+        ],
+        "sample_id": "a5980acaf83516afeeb4",
+        "replay_digest": "75becfc8deaeca1a0830ad050c35ba850a12673687d6ea1d5eb3133ca3d39f15"
+      },
+      {
+        "node_id": "mat_g1_mg_q2_1",
+        "seed": 91,
+        "formatter": "cloze",
+        "question_text": "Which is longer: 4 paperclips or 8 paperclips?",
+        "correct_answer": 8,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 9,
+            "text": "9",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 8,
+            "text": "8",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 7,
+            "text": "7",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 4,
+            "text": "4",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 8,
+        "hints": [
+          "Compare 4 paperclips and 8 paperclips.",
+          "8 is more than 4.",
+          "The longer length is 8 paperclips."
+        ],
+        "sample_id": "cdbb87c0ebc1e014aeb1",
+        "replay_digest": "a942e29f4b3140dfecdc8df30e4abb0ee3cbaab0e3c7f210452f249f5987dca7"
+      },
+      {
+        "node_id": "mat_g1_mg_q2_1",
+        "seed": 103,
+        "formatter": "cloze",
+        "question_text": "The distance from the bench to the tree is 9 hands. The distance from the gate to the tree is 5 hands. Which distance is longer?",
+        "correct_answer": 9,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 10,
+            "text": "10",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 8,
+            "text": "8",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 9,
+            "text": "9",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 5,
+            "text": "5",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 9,
+        "hints": [
+          "Compare 9 hands and 5 hands.",
+          "9 is more than 5.",
+          "The longer distance is 9 hands."
+        ],
+        "sample_id": "7b9ee61f44235851a292",
+        "replay_digest": "f981a81ff216957a87cfb8116f3ad3f526fd9262c00d9a8ab3deff5ee79006b2"
+      },
+      {
+        "node_id": "mat_g1_mg_q2_1",
+        "seed": 118,
+        "formatter": "mcq",
+        "question_text": "Which is longer: 6 hands or 3 hands?",
+        "correct_answer": 6,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 5,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 6,
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 3,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 7,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 6,
+        "hints": [
+          "Compare 6 hands and 3 hands.",
+          "6 is more than 3.",
+          "The longer length is 6 hands."
+        ],
+        "sample_id": "9225a00f8dc63367be12",
+        "replay_digest": "f1e4bacdb7f13190cdff53d74133bd8b60b620e82c57245f1fc2009135f15817"
+      },
+      {
+        "node_id": "mat_g1_mg_q2_1",
+        "seed": 127,
+        "formatter": "cloze",
+        "question_text": "Which is shorter: 3 paperclips or 2 paperclips?",
+        "correct_answer": 2,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 3,
+            "text": "3",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 1,
+            "text": "1",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 2,
+            "text": "2",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 4,
+            "text": "4",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 2,
+        "hints": [
+          "Compare 3 paperclips and 2 paperclips.",
+          "3 is more than 2.",
+          "The longer length is 2 paperclips."
+        ],
+        "sample_id": "f5d85ce6a62ce193299f",
+        "replay_digest": "b9a838db85c714b52dd256a451d28dd19103a7f0875d5e17abb0bc54d7a0180e"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "compare",
+      "node_id": "mat_g1_mg_q2_1",
+      "clause": "Compare",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All samples require students to compare two quantities, using words like 'Which is shorter/longer?' and '? distance is X than ?', exercising the comparison action across different measurement contexts.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "lengths",
+      "node_id": "mat_g1_mg_q2_1",
+      "clause": "lengths",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Each seed compares the span or extent of objects measured in non-standard units—blocks, hands, paperclips, steps—all of which represent lengths when applied to physical objects or paths.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "distances",
+      "node_id": "mat_g1_mg_q2_1",
+      "clause": "distances",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        64,
+        103
+      ],
+      "reasoning": "Four seeds explicitly frame the measurement as distance between locations: 'distance from the bench to the tree', 'distance from the gate to the tree', establishing the concept of distance as inter-point separation.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "non_standard_units",
+      "node_id": "mat_g1_mg_q2_1",
+      "clause": "non-standard units",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Throughout all samples, measurements use only non-standard units—blocks, hands, paperclips, steps—never metric or standard inch/foot measures, fulfilling the clause requirement.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    }
+  ],
+  "supersedes": "Replaces batch026B01_mat_g1_mg_q2_1, which §6F reported as unusable evidence (stale stem/answer, or a record that carries no options or no render-derived visual for content that renders one). The predecessor is left on disk; supersession is earned by this record, not declared by it."
+}

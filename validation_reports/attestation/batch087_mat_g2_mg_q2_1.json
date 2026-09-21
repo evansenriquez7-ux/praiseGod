@@ -1,0 +1,725 @@
+{
+  "batch": "batch087_mat_g2_mg_q2_1",
+  "attested_at": "2026-09-21T00:00:00Z",
+  "attested_by": "blind-attester-opus5-d08-20260921",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "the Attester was told to read exactly local_only/scratch/attester/h06/d08.prompt.txt, which is attester_packets.render_prompt_block output (item id, clause, competency, grade/quarter and the rendered samples only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "prompt-contract dispatch to a separate agent: told to read exactly one packet render and no other path, and to write its verdict JSON. Tool access was NOT structurally prevented, so this does not claim the '0' (inline, no tool access) contract; at least one Read and one Write were expected and used."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g2_mg_q2_1",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g2_mg_q2_1",
+        "seed": 11,
+        "formatter": "mcq",
+        "question_text": "The distance between the gate and the library is about 50 ___. Which unit makes the measurement reasonable: cm or m?",
+        "correct_answer": "m",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "cm",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "neither works",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "m",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "either works",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "m",
+        "hints": [
+          "Count how many units fit along the object from end to end.",
+          "Make sure no gaps or overlaps between the units.",
+          "The length is m units."
+        ],
+        "sample_id": "9be382ee61a5c21f9ced",
+        "replay_digest": "6e03e0901912ce7a52f4e20f5ca724f6b79077e25344412ff6b0a8b559c9262f"
+      },
+      {
+        "node_id": "mat_g2_mg_q2_1",
+        "seed": 23,
+        "formatter": "cloze",
+        "question_text": "A hallway has a length of about 20 ___. Which unit is correct: cm or m?",
+        "correct_answer": "m",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "cm",
+            "text": "cm",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "m",
+            "text": "m",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "either works",
+            "text": "either works",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "neither works",
+            "text": "neither works",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "m",
+        "hints": [
+          "Count how many units fit along the object from end to end.",
+          "Make sure no gaps or overlaps between the units.",
+          "The length is m units."
+        ],
+        "sample_id": "265829b7ac412e13dc9a",
+        "replay_digest": "586da327f3a0bd871332c4b462420d84d3e59de823b2b56e2cceb6f302e3d7f2"
+      },
+      {
+        "node_id": "mat_g2_mg_q2_1",
+        "seed": 42,
+        "formatter": "cloze",
+        "question_text": "Which unit would you use to measure the length of a spoon: centimeters (cm) or meters (m)?",
+        "correct_answer": "cm",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "m",
+            "text": "m",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "either works",
+            "text": "either works",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "neither works",
+            "text": "neither works",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "cm",
+            "text": "cm",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "cm",
+        "hints": [
+          "Count how many units fit along the object from end to end.",
+          "Make sure no gaps or overlaps between the units.",
+          "The length is cm units."
+        ],
+        "sample_id": "7af9e39973449a601021",
+        "replay_digest": "8165529bac347f548e20e827678f7ef3c1fdfbd2bcfbbb4e9b93225c052728d1"
+      },
+      {
+        "node_id": "mat_g2_mg_q2_1",
+        "seed": 57,
+        "formatter": "mcq",
+        "question_text": "Which unit would you use to measure the length of a pencil: centimeters (cm) or meters (m)?",
+        "correct_answer": "cm",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "either works",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "m",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "cm",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "neither works",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "cm",
+        "hints": [
+          "Count how many units fit along the object from end to end.",
+          "Make sure no gaps or overlaps between the units.",
+          "The length is cm units."
+        ],
+        "sample_id": "027764ab32099d248a85",
+        "replay_digest": "0d17bb4e8e017d6755acf13e83dfa08aed6aa460a3b30b7dcf08cb5285d35368"
+      },
+      {
+        "node_id": "mat_g2_mg_q2_1",
+        "seed": 64,
+        "formatter": "cloze",
+        "question_text": "The distance between the school and the market is about 200 ___. Which unit makes the measurement reasonable: cm or m?",
+        "correct_answer": "m",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "either works",
+            "text": "either works",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "cm",
+            "text": "cm",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "neither works",
+            "text": "neither works",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "m",
+            "text": "m",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "m",
+        "hints": [
+          "Count how many units fit along the object from end to end.",
+          "Make sure no gaps or overlaps between the units.",
+          "The length is m units."
+        ],
+        "sample_id": "9eec0a44b193d1bbffd0",
+        "replay_digest": "75aa11eae8e1a75ce1509ec6fa66a174af673ed3b7f7cfcb859a421072f9098f"
+      },
+      {
+        "node_id": "mat_g2_mg_q2_1",
+        "seed": 78,
+        "formatter": "cloze",
+        "question_text": "Which unit is best to measure the distance between the school and the market: centimeters (cm) or meters (m)?",
+        "correct_answer": "m",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "neither works",
+            "text": "neither works",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "m",
+            "text": "m",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "either works",
+            "text": "either works",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "cm",
+            "text": "cm",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "m",
+        "hints": [
+          "Count how many units fit along the object from end to end.",
+          "Make sure no gaps or overlaps between the units.",
+          "The length is m units."
+        ],
+        "sample_id": "72fff66a9efe379853e0",
+        "replay_digest": "0fd8aa94b680bc8b6c12d4f9f21c7bc7085d65f65f6daa95f17f4477ccb57919"
+      },
+      {
+        "node_id": "mat_g2_mg_q2_1",
+        "seed": 91,
+        "formatter": "cloze",
+        "question_text": "Would you measure the length of a garden in centimeters (cm) or meters (m)?",
+        "correct_answer": "m",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "m",
+            "text": "m",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "cm",
+            "text": "cm",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "either works",
+            "text": "either works",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "neither works",
+            "text": "neither works",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "m",
+        "hints": [
+          "Count how many units fit along the object from end to end.",
+          "Make sure no gaps or overlaps between the units.",
+          "The length is m units."
+        ],
+        "sample_id": "d5c1db44df7f48303c9d",
+        "replay_digest": "e7a582af96c87608122648894f82cc8a63770286de29f52de70514a7b35bbe8b"
+      },
+      {
+        "node_id": "mat_g2_mg_q2_1",
+        "seed": 103,
+        "formatter": "cloze",
+        "question_text": "The distance between the bench and the playground is about 30 ___. Which unit makes the measurement reasonable: cm or m?",
+        "correct_answer": "m",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "m",
+            "text": "m",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "cm",
+            "text": "cm",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "neither works",
+            "text": "neither works",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "either works",
+            "text": "either works",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "m",
+        "hints": [
+          "Count how many units fit along the object from end to end.",
+          "Make sure no gaps or overlaps between the units.",
+          "The length is m units."
+        ],
+        "sample_id": "52fb6ac705f8662756e1",
+        "replay_digest": "fc9a8837fc3116dbe4313075049ad62c2dabaf74e8f8e2703e7066beb4aa6720"
+      },
+      {
+        "node_id": "mat_g2_mg_q2_1",
+        "seed": 118,
+        "formatter": "mcq",
+        "question_text": "Which unit is best to measure the distance between the classroom and the canteen: centimeters (cm) or meters (m)?",
+        "correct_answer": "m",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "cm",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "neither works",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "m",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "either works",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "m",
+        "hints": [
+          "Count how many units fit along the object from end to end.",
+          "Make sure no gaps or overlaps between the units.",
+          "The length is m units."
+        ],
+        "sample_id": "1849426ece34ce4f5670",
+        "replay_digest": "60dac39faeb0e3394195197acf892470d8097a21c4b214a6b323e3e432c82b09"
+      },
+      {
+        "node_id": "mat_g2_mg_q2_1",
+        "seed": 127,
+        "formatter": "cloze",
+        "question_text": "Which unit would you use to measure the length of a hallway: centimeters (cm) or meters (m)?",
+        "correct_answer": "m",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "neither works",
+            "text": "neither works",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "either works",
+            "text": "either works",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "cm",
+            "text": "cm",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "m",
+            "text": "m",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "m",
+        "hints": [
+          "Count how many units fit along the object from end to end.",
+          "Make sure no gaps or overlaps between the units.",
+          "The length is m units."
+        ],
+        "sample_id": "373c42a3505f4a32dedc",
+        "replay_digest": "c9ccc011dbe3b70d0c1fd5321b23dace0535a9e5b27115ac671785404b9756e0"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "identify",
+      "node_id": "mat_g2_mg_q2_1",
+      "clause": "Identify",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        57,
+        78,
+        91,
+        127
+      ],
+      "reasoning": "Every one of the ten stems is a straight recognition task: the learner is handed a thing to be measured and picks whether centimetres or metres suits it. No arithmetic, no reading of an instrument, just naming the right unit, which is what identifying a unit looks like.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "use",
+      "node_id": "mat_g2_mg_q2_1",
+      "clause": "use",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Applying a unit in an actual measurement never happens here. Where a magnitude is given at all, it is already supplied and only the label is missing, so the learner never measures a spoon, a hallway or a school-to-market walk with m or cm; the whole block terminates in choosing between four unit words. Selecting a unit and employing it to obtain a length are different acts and only the former is rendered.",
+      "action_taken": "Filed as a §6F CONTRADICTED finding against H-06 and left reported. This session's scope is re-earning blind evidence at zero re-proof cost; no CAPABILITY_PROVIDERS entry was deleted and no artifact was built, because either act is a source edit that owes the full re-proof chain. The contradiction stands as the queue item.",
+      "content_note_from_attester": "No ruler, tape, scale or visual appears on any seed, which is why nothing in the block reaches the applied half of the competency."
+    },
+    {
+      "capability_id": "unit",
+      "node_id": "mat_g2_mg_q2_1",
+      "clause": "unit",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        64,
+        118
+      ],
+      "reasoning": "What the option sets consist of is units of length and nothing else, and the noun appears verbatim inside most stems ('Which unit makes the measurement reasonable', 'Which unit is best'). The samples are built around units.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "m_or_cm",
+      "node_id": "mat_g2_mg_q2_1",
+      "clause": "m or cm",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        57,
+        78,
+        91,
+        118
+      ],
+      "reasoning": "Both members of the pair are laid out side by side in each stem, spelled and abbreviated: centimeters (cm) against meters (m). Keys fall on m in eight seeds and on cm in two, so neither half of the pair is decorative.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "measure",
+      "node_id": "mat_g2_mg_q2_1",
+      "clause": "measure",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        23,
+        42,
+        64,
+        78,
+        103
+      ],
+      "reasoning": "Measurement is the frame the questions are posed in: some ask what you would measure a given thing with, others ask whether a stated measurement is reasonable. That measuring context is explicitly rendered in the stems, even though the learner's own response stops at a unit choice.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "length",
+      "node_id": "mat_g2_mg_q2_1",
+      "clause": "length",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        23,
+        42,
+        57,
+        91,
+        127
+      ],
+      "reasoning": "The attribute being measured is named outright on half the seeds: the length of a spoon, of a pencil, of a hallway, of a garden. Length, not mass or capacity, is the quantity these items are about.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "object",
+      "node_id": "mat_g2_mg_q2_1",
+      "clause": "object",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        57,
+        91,
+        127
+      ],
+      "reasoning": "Concrete measurable things do appear. A spoon and a pencil are objects in the plainest sense and they are the subjects of two seeds; a garden and a hallway supply larger ones. The object side of the competency's two targets is therefore represented, and it is the side where cm is the correct key.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "distance",
+      "node_id": "mat_g2_mg_q2_1",
+      "clause": "distance",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        64,
+        78,
+        103,
+        118
+      ],
+      "reasoning": "Half the block measures separation rather than an object: gate to library, school to market, bench to playground, classroom to canteen. Those stems use the word for the quantity at issue and make it the thing a unit must fit.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    },
+    {
+      "capability_id": "between_two_locations",
+      "node_id": "mat_g2_mg_q2_1",
+      "clause": "between two locations",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        64,
+        78,
+        103,
+        118
+      ],
+      "reasoning": "Each separation stem names a pair of endpoints and both endpoints are places, not items you could pick up: a school and a market, a classroom and a canteen, a bench and a playground. Two locations is exactly the configuration rendered.",
+      "action_taken": "Left registered. The blind verdict earned the entry rather than assuming it; this record supersedes a predecessor that §6F had ruled unusable."
+    }
+  ],
+  "supersedes": "Replaces b12_mat_g2_mg_q2_1, which §6F reported as unusable evidence (stale stem/answer, or a record that carries no options or no render-derived visual for content that renders one). The predecessor is left on disk; supersession is earned by this record, not declared by it."
+}

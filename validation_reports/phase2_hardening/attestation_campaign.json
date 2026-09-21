@@ -1,0 +1,720 @@
+{
+  "campaign": "H-06 blind re-attestation of the capability queue",
+  "owner_row": "H-06",
+  "session": "claude-opus5-20260921-h06-attestation",
+  "measured_findings_at_plan_time": 218,
+  "batch_prefix_base": "batch080",
+  "rule_notes": [
+    "A replacement record must supersede EVERY (node, capability) pair its predecessor holds, or _attestation_staleness keeps reading the old record (validate_capability.py: 'all(winner.get(pair) != idx ...)').",
+    "Records are resolved last-file-wins over a SORTED glob, so a replacement batch prefix must sort after the incumbent (batch072 is the current max).",
+    "<=25 clause items per dispatch (\u00a76G); <=25 nodes per attester identity (\u00a76H)."
+  ],
+  "structurally_blocked": [
+    {
+      "node_id": "mat_g2_na_q2_8",
+      "clauses": 7,
+      "findings": 1,
+      "categories": [
+        "STALE"
+      ],
+      "blocked_by_unsupersedable_pairs": [
+        "arts",
+        "rhythmic_properties",
+        "visual_elements"
+      ]
+    },
+    {
+      "node_id": "mat_g1_na_q3_6",
+      "clauses": 4,
+      "findings": 1,
+      "categories": [
+        "STALE"
+      ],
+      "blocked_by_unsupersedable_pairs": [
+        "arts",
+        "rhythmic_properties",
+        "visual_elements"
+      ]
+    },
+    {
+      "node_id": "mat_g1_na_q4_6",
+      "clauses": 6,
+      "findings": 2,
+      "categories": [
+        "CONTRADICTED",
+        "NO_VISUAL_EVIDENCE"
+      ],
+      "blocked_by_unsupersedable_pairs": [
+        "given_orally"
+      ]
+    },
+    {
+      "node_id": "mat_g2_na_q2_5",
+      "clauses": 5,
+      "findings": 1,
+      "categories": [
+        "STALE"
+      ],
+      "blocked_by_unsupersedable_pairs": [
+        "given_orally"
+      ]
+    },
+    {
+      "node_id": "mat_g1_na_q3_3",
+      "clauses": 3,
+      "findings": 1,
+      "categories": [
+        "STALE"
+      ],
+      "blocked_by_unsupersedable_pairs": [
+        "given_orally"
+      ]
+    },
+    {
+      "node_id": "mat_g1_na_q1_9",
+      "clauses": 5,
+      "findings": 1,
+      "categories": [
+        "STALE"
+      ],
+      "blocked_by_unsupersedable_pairs": [
+        "orally"
+      ]
+    },
+    {
+      "node_id": "mat_g1_na_q2_6",
+      "clauses": 5,
+      "findings": 1,
+      "categories": [
+        "STALE"
+      ],
+      "blocked_by_unsupersedable_pairs": [
+        "orally"
+      ]
+    }
+  ],
+  "dispatches": [
+    {
+      "dispatch": "d01",
+      "batch_prefix": "batch080",
+      "attested_by": "blind-attester-opus5-d01-20260921",
+      "status": "filed",
+      "items": 17,
+      "nodes": [
+        "mat_g2_na_q4_3",
+        "mat_g2_na_q3_5"
+      ],
+      "findings_targeted": 12,
+      "verdict_counts": {
+        "PROVIDED": 12,
+        "NOT_PROVIDED": 5
+      }
+    },
+    {
+      "dispatch": "d02",
+      "batch_prefix": "batch081",
+      "attested_by": "blind-attester-opus5-d02-20260921",
+      "status": "filed",
+      "items": 25,
+      "nodes": [
+        "mat_g3_mg_q1_1",
+        "mat_g2_mg_q1_2",
+        "mat_g2_na_q1_3"
+      ],
+      "findings_targeted": 11,
+      "verdict_counts": {
+        "PROVIDED": 20,
+        "NOT_PROVIDED": 5
+      }
+    },
+    {
+      "dispatch": "d03",
+      "batch_prefix": "batch082",
+      "attested_by": "blind-attester-opus5-d03-20260921",
+      "status": "filed",
+      "items": 22,
+      "nodes": [
+        "mat_g2_na_q3_0",
+        "mat_g1_mg_q1_0",
+        "mat_g1_na_q1_0"
+      ],
+      "findings_targeted": 9,
+      "verdict_counts": {
+        "PROVIDED": 20,
+        "NOT_PROVIDED": 2
+      }
+    },
+    {
+      "dispatch": "d04",
+      "batch_prefix": "batch083",
+      "attested_by": "blind-attester-opus5-d04-20260921",
+      "status": "filed",
+      "items": 23,
+      "nodes": [
+        "mat_g1_na_q3_4",
+        "mat_g3_na_q2_1",
+        "mat_g1_na_q3_7",
+        "mat_g3_mg_q2_3"
+      ],
+      "findings_targeted": 12,
+      "verdict_counts": {
+        "PROVIDED": 19,
+        "NOT_PROVIDED": 4
+      }
+    },
+    {
+      "dispatch": "d05",
+      "batch_prefix": "batch084",
+      "attested_by": "blind-attester-opus5-d05-20260921",
+      "status": "filed",
+      "items": 25,
+      "nodes": [
+        "mat_g1_dp_q3_3",
+        "mat_g1_na_q3_2",
+        "mat_g3_mg_q2_0",
+        "mat_g3_mg_q2_2",
+        "mat_g1_na_q1_6"
+      ],
+      "findings_targeted": 14,
+      "verdict_counts": {
+        "PROVIDED": 23,
+        "NOT_PROVIDED": 2
+      }
+    },
+    {
+      "dispatch": "d06",
+      "batch_prefix": "batch085",
+      "attested_by": "blind-attester-opus5-d06-20260921",
+      "status": "filed",
+      "items": 21,
+      "nodes": [
+        "mat_g2_mg_q1_1",
+        "mat_g2_na_q2_0"
+      ],
+      "findings_targeted": 4,
+      "verdict_counts": {
+        "PROVIDED": 17,
+        "NOT_PROVIDED": 4
+      }
+    },
+    {
+      "dispatch": "d07",
+      "batch_prefix": "batch086",
+      "attested_by": "blind-attester-opus5-d07-20260921",
+      "status": "filed",
+      "items": 19,
+      "nodes": [
+        "mat_g2_na_q3_1",
+        "mat_g1_na_q1_7"
+      ],
+      "findings_targeted": 4,
+      "verdict_counts": {
+        "PROVIDED": 15,
+        "NOT_PROVIDED": 4
+      }
+    },
+    {
+      "dispatch": "d08",
+      "batch_prefix": "batch087",
+      "attested_by": "blind-attester-opus5-d08-20260921",
+      "status": "filed",
+      "items": 18,
+      "nodes": [
+        "mat_g2_mg_q2_1",
+        "mat_g3_na_q2_0"
+      ],
+      "findings_targeted": 4,
+      "verdict_counts": {
+        "PROVIDED": 16,
+        "NOT_PROVIDED": 2
+      }
+    },
+    {
+      "dispatch": "d09",
+      "batch_prefix": "batch088",
+      "attested_by": "blind-attester-opus5-d09-20260921",
+      "status": "filed",
+      "items": 22,
+      "nodes": [
+        "mat_g3_na_q4_3",
+        "mat_g1_mg_q4_4",
+        "mat_g2_dp_q3_0"
+      ],
+      "findings_targeted": 6,
+      "verdict_counts": {
+        "PROVIDED": 21,
+        "NOT_PROVIDED": 1
+      }
+    },
+    {
+      "dispatch": "d10",
+      "batch_prefix": "batch089",
+      "attested_by": "blind-attester-opus5-d10-20260921",
+      "status": "filed",
+      "items": 21,
+      "nodes": [
+        "mat_g2_na_q1_10",
+        "mat_g2_na_q2_2",
+        "mat_g3_mg_q1_4"
+      ],
+      "findings_targeted": 6,
+      "verdict_counts": {
+        "PROVIDED": 20,
+        "NOT_PROVIDED": 1
+      }
+    },
+    {
+      "dispatch": "d11",
+      "batch_prefix": "batch090",
+      "attested_by": "blind-attester-opus5-d11-20260921",
+      "status": "filed",
+      "items": 22,
+      "nodes": [
+        "mat_g2_mg_q4_2",
+        "mat_g2_na_q3_7",
+        "mat_g2_mg_q4_4",
+        "mat_g3_dp_q3_0"
+      ],
+      "findings_targeted": 8,
+      "verdict_counts": {
+        "PROVIDED": 16,
+        "NOT_PROVIDED": 6
+      }
+    },
+    {
+      "dispatch": "d12",
+      "batch_prefix": "batch091",
+      "attested_by": "blind-attester-opus5-d12-20260921",
+      "status": "filed",
+      "items": 24,
+      "nodes": [
+        "mat_g3_mg_q1_6",
+        "mat_g3_mg_q4_0",
+        "mat_g3_na_q1_4",
+        "mat_g3_na_q4_6",
+        "mat_g2_na_q1_9"
+      ],
+      "findings_targeted": 10,
+      "verdict_counts": {
+        "PROVIDED": 21,
+        "NOT_PROVIDED": 3
+      }
+    },
+    {
+      "dispatch": "d13",
+      "batch_prefix": "batch092",
+      "attested_by": "blind-attester-opus5-d13-20260921",
+      "status": "filed",
+      "items": 22,
+      "nodes": [
+        "mat_g2_na_q4_4",
+        "mat_g3_mg_q4_1",
+        "mat_g3_mg_q4_2",
+        "mat_g3_mg_q2_5",
+        "mat_g1_na_q1_2"
+      ],
+      "findings_targeted": 9,
+      "verdict_counts": {
+        "PROVIDED": 17,
+        "NOT_PROVIDED": 5
+      }
+    },
+    {
+      "dispatch": "d14",
+      "batch_prefix": "batch093",
+      "attested_by": "blind-attester-opus5-d14-20260921",
+      "status": "filed",
+      "items": 25,
+      "nodes": [
+        "mat_g3_dp_q3_4",
+        "mat_g1_mg_q4_0",
+        "mat_g2_mg_q2_0"
+      ],
+      "findings_targeted": 3,
+      "verdict_counts": {
+        "PROVIDED": 25,
+        "NOT_PROVIDED": 0
+      }
+    },
+    {
+      "dispatch": "d15",
+      "batch_prefix": "batch094",
+      "attested_by": "blind-attester-opus5-d15-20260921",
+      "status": "filed",
+      "items": 22,
+      "nodes": [
+        "mat_g2_mg_q4_3",
+        "mat_g1_na_q1_5",
+        "mat_g2_mg_q4_1"
+      ],
+      "findings_targeted": 3,
+      "verdict_counts": {
+        "PROVIDED": 21,
+        "NOT_PROVIDED": 1
+      }
+    },
+    {
+      "dispatch": "d16",
+      "batch_prefix": "batch095",
+      "attested_by": "blind-attester-opus5-d16-20260921",
+      "status": "filed",
+      "items": 21,
+      "nodes": [
+        "mat_g2_na_q2_1",
+        "mat_g3_mg_q1_0",
+        "mat_g3_mg_q1_2"
+      ],
+      "findings_targeted": 3,
+      "verdict_counts": {
+        "PROVIDED": 21,
+        "NOT_PROVIDED": 0
+      }
+    },
+    {
+      "dispatch": "d17",
+      "batch_prefix": "batch096",
+      "attested_by": "blind-attester-haiku45-d17-20260922",
+      "status": "filed",
+      "items": 25,
+      "nodes": [
+        "mat_g3_na_q3_1",
+        "mat_g1_mg_q1_1",
+        "mat_g1_mg_q4_1",
+        "mat_g1_na_q1_8"
+      ],
+      "findings_targeted": 4,
+      "verdict_counts": {
+        "PROVIDED": 22,
+        "NOT_PROVIDED": 3
+      }
+    },
+    {
+      "dispatch": "d18",
+      "batch_prefix": "batch097",
+      "attested_by": "blind-attester-haiku45-d18-20260922",
+      "status": "filed",
+      "items": 24,
+      "nodes": [
+        "mat_g1_na_q2_5",
+        "mat_g1_na_q4_3",
+        "mat_g1_na_q4_5",
+        "mat_g2_na_q1_2"
+      ],
+      "findings_targeted": 4,
+      "verdict_counts": {
+        "PROVIDED": 24,
+        "NOT_PROVIDED": 0
+      }
+    },
+    {
+      "dispatch": "d19",
+      "batch_prefix": "batch098",
+      "attested_by": "blind-attester-haiku45-d19-20260922",
+      "status": "filed",
+      "items": 24,
+      "nodes": [
+        "mat_g3_dp_q3_1",
+        "mat_g3_mg_q1_3",
+        "mat_g3_na_q1_1",
+        "mat_g3_na_q1_3"
+      ],
+      "findings_targeted": 4,
+      "verdict_counts": {
+        "PROVIDED": 23,
+        "NOT_PROVIDED": 1
+      }
+    },
+    {
+      "dispatch": "d20",
+      "batch_prefix": "batch099",
+      "attested_by": "blind-attester-haiku45-d20-20260922",
+      "status": "filed",
+      "items": 25,
+      "nodes": [
+        "mat_g1_mg_q1_2",
+        "mat_g1_na_q1_4",
+        "mat_g1_na_q2_0",
+        "mat_g1_na_q2_1",
+        "mat_g1_na_q3_0"
+      ],
+      "findings_targeted": 5,
+      "verdict_counts": {
+        "PROVIDED": 25,
+        "NOT_PROVIDED": 0
+      }
+    },
+    {
+      "dispatch": "d21",
+      "batch_prefix": "batch100",
+      "attested_by": "blind-attester-haiku45-d21-20260922",
+      "status": "filed",
+      "items": 25,
+      "nodes": [
+        "mat_g1_na_q4_4",
+        "mat_g2_dp_q3_1",
+        "mat_g2_mg_q1_0",
+        "mat_g2_mg_q2_2",
+        "mat_g2_mg_q4_0"
+      ],
+      "findings_targeted": 5,
+      "verdict_counts": {
+        "PROVIDED": 25,
+        "NOT_PROVIDED": 0
+      }
+    },
+    {
+      "dispatch": "d22",
+      "batch_prefix": "batch101",
+      "attested_by": "blind-attester-haiku45-d22-20260922",
+      "status": "filed",
+      "items": 25,
+      "nodes": [
+        "mat_g2_mg_q4_5",
+        "mat_g2_mg_q4_6",
+        "mat_g2_na_q1_7",
+        "mat_g2_na_q2_4",
+        "mat_g2_na_q2_7"
+      ],
+      "findings_targeted": 5,
+      "verdict_counts": {
+        "PROVIDED": 25,
+        "NOT_PROVIDED": 0
+      }
+    },
+    {
+      "dispatch": "d23",
+      "batch_prefix": "batch102",
+      "attested_by": "blind-attester-haiku45-d23-20260922",
+      "status": "filed",
+      "items": 25,
+      "nodes": [
+        "mat_g2_na_q3_4",
+        "mat_g3_dp_q3_2",
+        "mat_g3_dp_q3_3",
+        "mat_g3_mg_q1_5",
+        "mat_g3_na_q1_0"
+      ],
+      "findings_targeted": 5,
+      "verdict_counts": {
+        "PROVIDED": 23,
+        "NOT_PROVIDED": 2
+      }
+    },
+    {
+      "dispatch": "d24",
+      "batch_prefix": "batch103",
+      "attested_by": "blind-attester-haiku45-d24-20260922",
+      "status": "filed",
+      "items": 25,
+      "nodes": [
+        "mat_g3_na_q1_2",
+        "mat_g3_na_q1_6",
+        "mat_g3_na_q2_3",
+        "mat_g3_na_q3_2",
+        "mat_g3_na_q3_3"
+      ],
+      "findings_targeted": 5,
+      "verdict_counts": {
+        "PROVIDED": 25,
+        "NOT_PROVIDED": 0
+      }
+    },
+    {
+      "dispatch": "d25",
+      "batch_prefix": "batch104",
+      "attested_by": "blind-attester-haiku45-d25-20260922",
+      "status": "filed",
+      "items": 22,
+      "nodes": [
+        "mat_g3_na_q4_2",
+        "mat_g3_na_q4_4",
+        "mat_g1_mg_q2_1",
+        "mat_g1_mg_q2_2",
+        "mat_g1_mg_q4_2"
+      ],
+      "findings_targeted": 5,
+      "verdict_counts": {
+        "PROVIDED": 20,
+        "NOT_PROVIDED": 2
+      }
+    },
+    {
+      "dispatch": "d26",
+      "batch_prefix": "batch105",
+      "attested_by": "blind-attester-haiku45-d26-20260922",
+      "status": "filed",
+      "items": 24,
+      "nodes": [
+        "mat_g1_na_q1_1",
+        "mat_g1_na_q2_2",
+        "mat_g1_na_q2_4",
+        "mat_g1_na_q3_5",
+        "mat_g1_na_q4_0",
+        "mat_g1_na_q4_1"
+      ],
+      "findings_targeted": 6,
+      "verdict_counts": {
+        "PROVIDED": 24,
+        "NOT_PROVIDED": 0
+      }
+    },
+    {
+      "dispatch": "d27",
+      "batch_prefix": "batch106",
+      "attested_by": "blind-attester-haiku45-d27-20260922",
+      "status": "filed",
+      "items": 24,
+      "nodes": [
+        "mat_g2_na_q1_4",
+        "mat_g2_na_q1_5",
+        "mat_g2_na_q1_6",
+        "mat_g2_na_q2_3",
+        "mat_g2_na_q3_8",
+        "mat_g2_na_q4_0"
+      ],
+      "findings_targeted": 6,
+      "verdict_counts": {
+        "PROVIDED": 24,
+        "NOT_PROVIDED": 0
+      }
+    },
+    {
+      "dispatch": "d28",
+      "batch_prefix": "batch107",
+      "attested_by": "blind-attester-haiku45-d28-20260922",
+      "status": "filed",
+      "items": 24,
+      "nodes": [
+        "mat_g2_na_q4_1",
+        "mat_g2_na_q4_2",
+        "mat_g2_na_q4_5",
+        "mat_g3_na_q1_5",
+        "mat_g3_na_q2_2",
+        "mat_g3_na_q2_6"
+      ],
+      "findings_targeted": 6,
+      "verdict_counts": {
+        "PROVIDED": 24,
+        "NOT_PROVIDED": 0
+      }
+    },
+    {
+      "dispatch": "d29",
+      "batch_prefix": "batch108",
+      "attested_by": "blind-attester-haiku45-d29-20260922",
+      "status": "filed",
+      "items": 24,
+      "nodes": [
+        "mat_g3_na_q2_7",
+        "mat_g3_na_q3_4",
+        "mat_g3_na_q3_5",
+        "mat_g3_na_q3_6",
+        "mat_g3_na_q4_0",
+        "mat_g3_na_q4_5"
+      ],
+      "findings_targeted": 6,
+      "verdict_counts": {
+        "PROVIDED": 24,
+        "NOT_PROVIDED": 0
+      }
+    },
+    {
+      "dispatch": "d30",
+      "batch_prefix": "batch109",
+      "attested_by": "blind-attester-haiku45-d30-20260922",
+      "status": "filed",
+      "items": 25,
+      "nodes": [
+        "mat_g3_na_q4_7",
+        "mat_g1_dp_q3_0",
+        "mat_g1_dp_q3_1",
+        "mat_g1_dp_q3_2",
+        "mat_g1_mg_q2_0",
+        "mat_g1_mg_q4_3",
+        "mat_g1_na_q1_3",
+        "mat_g1_na_q2_3"
+      ],
+      "findings_targeted": 8,
+      "verdict_counts": {
+        "PROVIDED": 25,
+        "NOT_PROVIDED": 0
+      }
+    },
+    {
+      "dispatch": "d31",
+      "batch_prefix": "batch110",
+      "attested_by": "blind-attester-haiku45-d31-20260922",
+      "status": "filed",
+      "items": 24,
+      "nodes": [
+        "mat_g1_na_q3_1",
+        "mat_g1_na_q4_2",
+        "mat_g2_mg_q2_3",
+        "mat_g2_na_q1_1",
+        "mat_g2_na_q1_8",
+        "mat_g2_na_q2_6",
+        "mat_g2_na_q2_9",
+        "mat_g2_na_q3_2"
+      ],
+      "findings_targeted": 8,
+      "verdict_counts": {
+        "PROVIDED": 24,
+        "NOT_PROVIDED": 0
+      }
+    },
+    {
+      "dispatch": "d32",
+      "batch_prefix": "batch111",
+      "attested_by": "blind-attester-haiku45-d32-20260922",
+      "status": "filed",
+      "items": 25,
+      "nodes": [
+        "mat_g2_na_q3_3",
+        "mat_g2_na_q3_6",
+        "mat_g2_na_q3_9",
+        "mat_g3_mg_q2_1",
+        "mat_g3_na_q2_4",
+        "mat_g3_na_q2_5",
+        "mat_g3_na_q4_1",
+        "mat_g2_na_q1_0",
+        "mat_g3_mg_q2_4"
+      ],
+      "findings_targeted": 9,
+      "verdict_counts": {
+        "PROVIDED": 25,
+        "NOT_PROVIDED": 0
+      }
+    },
+    {
+      "dispatch": "d33",
+      "batch_prefix": "batch112",
+      "attested_by": "blind-attester-haiku45-d33-20260922",
+      "status": "filed",
+      "items": 2,
+      "nodes": [
+        "mat_g3_na_q3_0"
+      ],
+      "findings_targeted": 1,
+      "verdict_counts": {
+        "PROVIDED": 1,
+        "NOT_PROVIDED": 1
+      }
+    }
+  ],
+  "structural_blocker_diagnosis": {
+    "summary": "8 of the 218 findings, on 7 nodes, cannot be cleared by re-attestation, by editing a record (forbidden), or by any act that is not a source edit.",
+    "mechanism": "_attestation_staleness skips a record only when EVERY (node_id, capability_id) pair it holds is owned by a later record (`all(winner.get(pair) != idx ...)`). These 7 live records each hold at least one pair whose capability_id is no longer in the node's `requires`, so a replacement packet -- which attester_packets.build() derives FROM `requires` -- can never take ownership of it. The predecessor therefore stays in the freshness pass permanently and re-reports its finding.",
+    "orphan_capability_ids": [
+      "orally",
+      "given_orally",
+      "arts",
+      "rhythmic_properties",
+      "visual_elements"
+    ],
+    "measured": "Each of those five ids appears in NO node's `requires` anywhere in the tree and in NO CAPABILITY_PROVIDERS entry. They are consulted by nothing: _validate_attestation iterates `requires` only. They are words the human-authored `requires_ignore` ground truth (data/skeletons/requires_ignore.lock.json) marks as named by MATATAG but deliberately not provided -- oral delivery and arts integration.",
+    "why_it_matters_beyond_these_7": "This is not a G1-3 artifact. Any future grade in which a competency's `requires_ignore` grows, or a `requires` id is renamed after attestation, inherits a permanently un-clearable finding. capability_phase2 can then never reach 0, which in turn keeps the three \u00a76F mutations at INVALID and assertion_coverage_8 red -- so the Definition of Done is blocked by it.",
+    "candidate_fix_NOT_APPLIED": "In the supersession test, disregard verdict pairs whose capability is not in the node's current `requires`, because such a pair is a ruling no check consults -- which is the rationale _attestation_staleness's own docstring already gives for skipping fully-superseded records. A record all of whose CONSULTED pairs are superseded is not evidence for anything.",
+    "why_not_applied_here": "It is a source edit under INPUT_ROOTS: it owes a mutation that catches its own planted violation by name, a docs/pgen_contract.md row in the same commit (Protocol 7), and the full ~3.4h re-proof chain (corpus, benchmark, frontend artifact, six release shards). This session's ruled scope was the zero-re-proof attestation campaign. Sequencing it is the owner's call."
+  },
+  "attester_model_note": "d01-d16 were dispatched to Opus 5 subagents on 2026-09-21; the session hit its rate limit mid-wave. d17-d33 are dispatched to Haiku 4.5 subagents on 2026-09-22 at the owner's instruction. The identity string names the model that actually judged, because \u00a76H independence is only checkable if the record is truthful about who made the verdict."
+}
