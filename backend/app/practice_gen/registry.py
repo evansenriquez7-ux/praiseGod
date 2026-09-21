@@ -1381,6 +1381,22 @@ def _parse_competency_bounds(
         elif "similar fraction" in text:
             bounds["fraction_type"] = "similar_proper"
 
+        # "using models" is a CLAUSE IN ITS OWN RIGHT, not a property of one operation.
+        # The chain below is `elif`, so a competency whose verb branch fired first could
+        # never reach a task-mode binding: `mat_g1_na_q4_1` ("Compare 1/2 and 1/4 using
+        # models.") matched `compare`, set `operation` and stopped, leaving
+        # `fraction_task_mode` unbound. `fraction_model_read` requires
+        # `fraction_task_mode: ["model"]` in FORMATTER_VARIANT_SUPPORT, so the node could
+        # serve only `mcq` and `cloze` -- and its stems said "Look at the fraction models
+        # for 1/2 and 1/4" while drawing nothing at all, on 11 of 20 seeds.
+        #
+        # Content Rule 4: the competency NAMES models, the pipeline can already draw them,
+        # so binding the axis IS the fix rather than scope creep. Bound as its own `if`,
+        # before the verb chain, so it composes with whichever operation the verb selects.
+        # Three nodes carry the clause: mat_g1_na_q4_1, mat_g3_na_q4_6, mat_g3_na_q4_7.
+        if "using models" in text or "using a model" in text or "using model" in text:
+            bounds["fraction_task_mode"] = "model"
+
         if "illustrate" in text:
             bounds["fraction_task_mode"] = "model"
             bounds["operation"] = "identify_name"

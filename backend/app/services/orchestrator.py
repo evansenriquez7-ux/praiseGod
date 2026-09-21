@@ -481,7 +481,8 @@ class PracticeOrchestrator:
                 raise ValueError(f"Forced DNA '{forced_dna}' not compatible or supported for node '{node_id}'")
             valid_dnas = [forced_dna]
         if not valid_dnas:
-            raise ValueError(f"Formatter '{formatter}' is not supported by any DNA for node '{node_id}'")
+            from backend.app.practice_gen.compatibility import FormatterNotEligible
+            raise FormatterNotEligible(f"Formatter '{formatter}' is not supported by any DNA for node '{node_id}'")
 
         dna_name = rng.choice(valid_dnas)
         dna = _get_dna_instance(dna_name)
@@ -521,7 +522,21 @@ class PracticeOrchestrator:
             if dna_name in FORMATTER_VARIANT_SUPPORT and formatter in FORMATTER_VARIANT_SUPPORT[dna_name]:
                 caps = FORMATTER_VARIANT_SUPPORT[dna_name][formatter]
                 for variant_name, allowed_vals in caps.items():
-                    if variant_name not in local_difficulty_profile and allowed_vals:
+                    # `.get(...) is None`, NOT `not in`. The profile carries declared
+                    # variant axes as explicit `None` when the competency binds no value,
+                    # so a key-presence test read "already decided" for an axis that was
+                    # in fact undecided, and the formatter's restriction was skipped.
+                    # Measured 2026-09-21 on mat_g3_mg_q1_4: `task_type` sat at None,
+                    # `geometry_figure` declared `task_type: ["recognize_model"]`, the pin
+                    # never happened, and the DNA then handed the formatter a
+                    # `draw_construct` pool item with no figure to draw -- 10 of 30 seeds
+                    # raising. This is trap 1 exactly: the restriction was correct and was
+                    # defeated one stack frame later.
+                    #
+                    # Pinning an UNDECIDED axis is not the silent substitution §1C-reverse
+                    # forbids: a value the competency actually names stays in the profile
+                    # and is narrowed, not replaced, by the list-valued block above.
+                    if allowed_vals and local_difficulty_profile.get(variant_name) is None:
                         local_difficulty_profile[variant_name] = rng.choice(allowed_vals)
 
             # Feed the formatter's display ceiling to the DNA so it clamps its
@@ -613,6 +628,22 @@ class PracticeOrchestrator:
             if not available:
                 raise ValueError(f"No compatible formatters available for DNA '{dna_name}'")
             formatter = _uniform_choice(rng, available)
+
+        # The filter above runs ONLY when the formatter was not pinned, so a caller
+        # naming a formatter reached `apply_formatter` with no caps check at all -- which
+        # is how the Lab kept serving "Look at the fraction models" with nothing drawn
+        # after the student path had been fixed. Same rule, same function, both paths.
+        from backend.app.practice_gen.compatibility import assert_formatter_supports
+        # `ctx.difficulty_profile`, NOT `local_difficulty_profile`: the filter above reads
+        # the profile the CONTEXT ended up with, and the two differ -- `division` records
+        # remainder='0' in the requested profile while the formatter cap is written
+        # 'none', so reading the requested profile refused 10 of 40 seeds on
+        # mat_g2_na_q3_4 that the filter had already accepted. (That two-vocabulary
+        # mismatch between a DNA's axis values and a cap's allowed values is real and is
+        # NOT fixed here; it is only no longer read from the side that sees it.)
+        assert_formatter_supports(dna_name, formatter, ctx.values or {},
+                                  ctx.difficulty_profile or local_difficulty_profile,
+                                  node_id, seed)
 
         problem = apply_formatter(ctx, formatter, rng)
         if interest_theme is not None:

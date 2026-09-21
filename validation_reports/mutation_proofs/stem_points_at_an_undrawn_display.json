@@ -1,0 +1,46 @@
+{
+ "asserts": [
+  "dangling_visual_reference_1M"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "FAIL dangling_visual_reference_1M"
+ ],
+ "command": [
+  "backend.app.practice_gen.validation.validate_reference",
+  "--node-ids",
+  "mat_g1_na_q4_1"
+ ],
+ "definition_digest": "0f7992b781b3dff7fa79d4cb0f6445b15f8661d0fe76639a3b69d79a236afe21",
+ "detected": true,
+ "diagnostic_line": "exit 1 — FAIL dangling_visual_reference_1M (35):",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "FAIL dangling_visual_reference_1M",
+  "mat_g1_na_q4_1 && points at a display"
+ ],
+ "expected_check": "§1M (a stem that points at a display is served with one drawn)",
+ "finished_at": "2026-09-21T16:07:04+08:00",
+ "input_digest": "587f8f990c9c4f7606b1bb15d6ae4bc2039aa102bde1ed5879c59be8a10e5f92",
+ "mutated_paths": [
+  "backend/app/practice_gen/registry.py"
+ ],
+ "mutation": "stem_points_at_an_undrawn_display",
+ "observed_markers": {
+  "FAIL dangling_visual_reference_1M": true,
+  "mat_g1_na_q4_1 && points at a display": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-09-21T16:07:03+08:00"
+}

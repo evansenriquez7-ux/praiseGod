@@ -18,6 +18,7 @@ import random
 from typing import Any, Dict, List, Optional
 
 from backend.app.practice_gen.compatibility import (
+    assert_formatter_supports,
     get_formatters_for_dna,
     get_compatible_formatters_for_variant,
     get_variants_for_dna,
@@ -151,6 +152,16 @@ FORMATTER_ROUTES: Dict[str, tuple] = {
     "scale_read": (
         "backend.app.practice_gen.formatters.visual.fmt_scale_read",
         "format_scale_read",
+        {"interaction_mode": "read", "answer_collection": "mcq"},
+    ),
+    "geometry_figure": (
+        "backend.app.practice_gen.formatters.visual.fmt_geometry_figure",
+        "format_geometry_figure",
+        {"interaction_mode": "read", "answer_collection": "mcq"},
+    ),
+    "timetable_read": (
+        "backend.app.practice_gen.formatters.visual.fmt_timetable",
+        "format_timetable",
         {"interaction_mode": "read", "answer_collection": "mcq"},
     ),
     "sort_order": (
@@ -430,6 +441,32 @@ def generate_problem(
                     f"generate_problem: variant {var_name}='{var_value}' is not supported "
                     f"by formatter '{formatter}' for DNA '{dna_name}'."
                 )
+
+    # 5c. THE OTHER HALF, added 2026-09-21. The loop above walks the PROFILE and keeps
+    # only keys that are declared variants, so a restriction FORMATTER_VARIANT_SUPPORT
+    # states about an UNDECLARED axis was unenforceable here -- while the orchestrator's
+    # own formatter filter reads those same axes straight out of `ctx.values` and
+    # enforces them. Two paths, one rule, and they disagreed (trap 2).
+    #
+    # MEASURED 2026-09-21, and it was not a bookkeeping nicety. `fractions` restricts
+    # mcq/cloze to `fraction_task_mode="notation"`, and that axis is not in
+    # VARIANTS_BY_DNA, so pinning mcq on mat_g1_na_q4_1 -- a "Compare 1/2 and 1/4 USING
+    # MODELS" node -- SERVED, returning "Look at the fraction models for 1/2 and 1/4"
+    # with visual_type=None. The student path had just been fixed to draw that model;
+    # the Lab path was still shipping the undrawn stem, and §1M could not see it because
+    # §1M samples the student path.
+    #
+    # It also kept `_generated_formatter_exclusions.py` wrong in the direction that
+    # matters: the generator asks "does this formatter RAISE when pinned?", mcq did not,
+    # so the node went on advertising a formatter its own competency forbids and §2C
+    # counted the pair as unreachable content debt.
+    #
+    # Walks the formatter's OWN caps rather than the profile, so the axis need not be
+    # declared; values are read from `ctx.values` first (what was actually generated)
+    # and fall back to the profile (what was requested). ONE definition, shared with the
+    # orchestrator -- see compatibility.assert_formatter_supports.
+    assert_formatter_supports(dna_name, formatter, ctx.values or {}, effective_profile,
+                              node_id, seed)
 
     # 6. Apply formatter
     problem = apply_formatter(ctx, formatter, rng)

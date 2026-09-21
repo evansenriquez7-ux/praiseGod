@@ -132,6 +132,54 @@ class ScaleReadParams(BaseVisualParams):
     instrument: str = Field(..., pattern="^(dial|cylinder)$")
     object_label: Optional[str] = None
 
+class GeometryFigureParams(BaseVisualParams):
+    """
+    A drawn geometric model: a point, line, line segment, ray, or a pair of lines.
+
+    MATATAG names the model explicitly on both nodes this serves -- "Recognize,
+    USING MODELS, and draws a point, line, line segment, and ray" (mat_g3_mg_q1_4)
+    and "Recognize and DRAW parallel, intersecting, and perpendicular lines"
+    (mat_g3_mg_q1_5) -- and `geometric_lines` had no visual formatter at all, so
+    the model lived as ASCII inside the stem: "Look at the model: <---A--------B--->
+    (a straight path with arrowheads on both ends)." A stem that says "look at the
+    model" and draws nothing is the defect class `dangling_visual_reference_1M`
+    exists to catch; the parenthetical gloss made the item answerable in spite of
+    the drawing rather than because of it.
+
+    `kind` is what is drawn, not what the pupil must answer: a `recognize_model`
+    item draws the figure its key NAMES, which is precisely why the drawing may
+    not be described in words in the stem as well.
+    """
+    kind: str = Field(
+        ...,
+        pattern="^(point|line|segment|ray|parallel|perpendicular|intersecting|triangle|letter)$",
+    )
+    labels: List[str] = Field(
+        default_factory=list,
+        description="Point labels drawn on the figure, e.g. ['A', 'B']",
+    )
+    letter: Optional[str] = Field(
+        default=None,
+        description="For kind='letter': the capital letter whose strokes are the model",
+    )
+
+class TimetableParams(BaseVisualParams):
+    """
+    A drawn timetable: a class schedule or a bus timetable.
+
+    mat_g2_mg_q4_2's competency is elapsed time "including TIMETABLES", and a timetable
+    is a display. The stem used to carry it as a bulleted list after "Look at the class
+    schedule:", so the item pointed at something the page never drew -- answerable,
+    because the rows were in the sentence, but not a timetable-reading task. The rows
+    come from the DNA, which is also what computes the key, so the drawing and the answer
+    cannot disagree.
+    """
+    kind: str = Field(..., pattern="^(class|bus)$")
+    columns: List[str]
+    rows: List[Dict[str, Any]] = Field(
+        description="[{'label': str, 'start': str, 'end': str}, ...]"
+    )
+
 class GridAreaParams(BaseVisualParams):
     rows: int
     cols: int
@@ -180,6 +228,8 @@ class VisualSchemaRegistry:
         "RulerMeasure": RulerMeasureParams,
         "BalanceScale": BalanceScaleParams,
         "ScaleRead": ScaleReadParams,
+        "GeometryFigure": GeometryFigureParams,
+        "Timetable": TimetableParams,
         "GridArea": GridAreaParams,
         "FillInTable": FillInTableParams,
     }

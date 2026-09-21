@@ -104,6 +104,41 @@ _NOT_PROOF_ARTIFACTS = {
 #    this module is deliberately NOT registered in `run_all` (see the docstring).
 STALE_LOCK_HOURS = 36
 
+# ---------------------------------------------------------------------------------------
+# ROW IDS: THE TWO-DIGIT WIDENING, 2026-09-21 (owner ruling 2, plan START HERE)
+# ---------------------------------------------------------------------------------------
+# Until today the row set was pinned in ONE place, a unit test:
+#
+#     assert ids == {f"H-0{n}" for n in range(1, 10)}
+#
+# That literal cannot express `H-10` at all, so the ledger could not grow a tenth row --
+# H-08's intro-surface remainder had been waiting on it since 2026-09-18, and a 2026-09-16
+# agent correctly withdrew an `H-10` rather than edit the assertion without a ruling.
+#
+# WHAT THE ASSERTION WAS ACTUALLY FOR, AND WHY REPLACING IT IS NOT WEAKENING IT. It caught
+# a typo class, not a safety property: an id written `H-1`, `H-011` or `H-1O`, a duplicate,
+# or a row silently dropped from the set. Pinning the exact membership caught all of those
+# and also, incidentally, forbade growth. The rule below keeps every typo direction and
+# drops only the growth ban:
+#
+#   * the id matches `H-<dd>` exactly -- two digits, so `H-1` and `H-100` both fail;
+#   * ids are UNIQUE (already enforced above, kept there);
+#   * the ids form a CONTIGUOUS run from `H-01`, so a dropped or skipped row is named.
+#
+# Contiguity is what replaces the membership pin. A hard-coded count would have to be
+# edited on every new row, which is how a check stops scaling (Mandate 4): the next agent
+# to open `H-11` should have to justify the BLOCKER, not edit an arithmetic literal.
+#
+# It lives in `validate()` rather than only in the unit test on purpose. The old pin was
+# reachable only by running pytest, so `tests/hardening_status.py` -- the command the plan
+# and the handoff both tell you to run -- would PASS on a ledger with a duplicate-free but
+# misnumbered row set. Now the documented command enforces it.
+#
+# NAMED LIMIT: this constrains the SHAPE of the id set, never that a row exists for every
+# real blocker. Nothing here can know a blocker went unrecorded; that is what the plan's
+# prose and the artifact reconciliation below are for.
+_ROW_ID = re.compile(r"^H-\d{2}$")
+
 
 def validate(doc: Dict[str, Any]) -> List[str]:
     """Return one error per way this ledger does not hold. Empty list means it does."""
@@ -130,6 +165,14 @@ def validate(doc: Dict[str, Any]) -> List[str]:
         if rid in seen:
             errors.append(f"{where}: duplicate id {rid!r}")
         seen.add(rid)
+
+        # See `_ROW_ID` above: the typo directions the old membership pin caught, kept.
+        if not (isinstance(rid, str) and _ROW_ID.match(rid)):
+            errors.append(
+                f"{where}: id {rid!r} is not of the form 'H-<dd>' (two digits). The ledger "
+                f"is addressed by these ids in the plan, the handoff and every session "
+                f"lock, so a misnumbered row is a row the next session cannot find."
+            )
 
         status = row.get("status")
         if status not in VALID_STATUS:
@@ -233,6 +276,38 @@ def validate(doc: Dict[str, Any]) -> List[str]:
     return errors
 
 
+def _row_id_sequence(rows: List[Dict[str, Any]]) -> List[str]:
+    """
+    The other half of the row-id rule: the real ledger's ids run contiguously from `H-01`.
+
+    This lives beside `_unclaimed_artifacts` rather than inside `validate()` for the reason
+    that function's note gives -- `validate()` judges a DOCUMENT, and a synthetic one-row
+    fixture legitimately numbers itself `H-99`. Contiguity is a property of THIS
+    REPOSITORY's ledger, so it is reconciled where the repository is reconciled, and
+    `main()` runs both.
+
+    What it catches that per-row format checking cannot: a row deleted from the middle
+    (`H-05` gone leaves 01-04, 06-09 and nothing says so), and a new row numbered past the
+    end (`H-12` opened while `H-10`/`H-11` were never written, which reads to the next
+    session as two blockers it has lost rather than one it has gained).
+    """
+    ids = [r.get("id") for r in rows]
+    nums = sorted(int(i.split("-")[1]) for i in ids if isinstance(i, str) and _ROW_ID.match(i))
+    if not nums:
+        return ["ledger has no well-formed 'H-<dd>' row ids at all."]
+    expected = list(range(1, len(nums) + 1))
+    if nums != expected:
+        missing = sorted(set(expected) - set(nums))
+        beyond = sorted(set(nums) - set(expected))
+        return [
+            f"row ids are not a contiguous run from H-01: gap(s) at "
+            f"{['H-%02d' % n for n in missing]}, id(s) past the end "
+            f"{['H-%02d' % n for n in beyond]}. A missing number reads as a blocker this "
+            f"ledger has LOST, which is the one thing it exists to make impossible."
+        ]
+    return []
+
+
 def _hours_since(stamp: Any) -> float | None:
     """Age of an ISO-8601 timestamp in hours, or None if it will not parse."""
     if not isinstance(stamp, str):
@@ -313,7 +388,8 @@ def main() -> int:
         print(f"FAIL hardening_status: {LEDGER} does not exist")
         return 1
     doc = load()
-    errors = validate(doc) + _unclaimed_artifacts(doc.get("rows") or [])
+    rows = doc.get("rows") or []
+    errors = validate(doc) + _row_id_sequence(rows) + _unclaimed_artifacts(rows)
     if errors:
         print(f"FAIL hardening_status ({len(errors)}):")
         for e in errors:

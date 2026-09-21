@@ -1,20 +1,20 @@
 {
  "asserts": [
-  "count_noun_agreement_1J"
+  "unclassified_pupil_text_1J"
  ],
  "baseline_exit": 0,
  "baseline_markers_already_present": [],
  "baseline_must_not_contain": [
-  "count_noun_agreement_1J ("
+  "FAIL unclassified_pupil_text_1J"
  ],
  "command": [
   "backend.app.practice_gen.validation.validate_language",
   "--node-ids",
-  "mat_g2_na_q2_3"
+  "mat_g2_na_q3_0"
  ],
- "definition_digest": "ac1fb4dcf5ab388b2656fdbf2d4f47030447bb69bfb604ad1968cbdf0534448b",
+ "definition_digest": "7bd35f4ac016373dddd9c7bb3bc201df7dd0ebec21175a7dcd40ac6d227759a7",
  "detected": true,
- "diagnostic_line": "exit 1 — FAIL count_noun_agreement_1J (11):",
+ "diagnostic_line": "exit 1 — FAIL unclassified_pupil_text_1J (1):",
  "environment": {
   "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
   "machine": "x86_64",
@@ -23,22 +23,24 @@
   "system": "Darwin"
  },
  "expect_output_contains": [
-  "mat_g2_na_q2_3 && 1 units"
+  "FAIL unclassified_pupil_text_1J",
+  "'hints'"
  ],
- "expected_check": "§1J (an explicit count and its noun agree in the rendered text)",
- "finished_at": "2026-09-21T14:35:29+08:00",
+ "expected_check": "§1J reach (a string-bearing payload field is linted or excluded)",
+ "finished_at": "2026-09-21T14:35:22+08:00",
  "input_digest": "b3bb48ad7a02984f712ade6c6fdd8c27bc64cab6b0d78466829c25b6ec36ac01",
  "mutated_paths": [
-  "backend/app/practice_gen/dna/na/subtraction.py"
+  "backend/app/practice_gen/validation/validate_language.py"
  ],
- "mutation": "count_noun_disagrees",
+ "mutation": "pupil_text_field_goes_unlinted",
  "observed_markers": {
-  "mat_g2_na_q2_3 && 1 units": true
+  "'hints'": true,
+  "FAIL unclassified_pupil_text_1J": true
  },
  "paths_outside_input_set": [],
  "phase1_admissible": true,
  "planted_exit": 1,
  "restored_clean": true,
  "schema_version": 1,
- "started_at": "2026-09-21T14:35:27+08:00"
+ "started_at": "2026-09-21T14:35:21+08:00"
 }

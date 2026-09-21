@@ -392,6 +392,28 @@ MUTATIONS: List[Mutation] = [
         baseline_must_not_contain=["test_red_baseline_is_invalid_before_any_plant && failed"],
     ),
     Mutation(
+        name="tree_state_certifies_a_stale_tree",
+        asserts=["tree_state_certification"],
+        description=(
+            "Make the artifact digest comparison vacuous, so every receipt reads as current "
+            "whatever it records. `tree_state.py` would then report CERTIFIED on a tree "
+            "whose four artifact families describe different bytes -- and CERTIFIED is the "
+            "verdict that tells the next session to skip a ~3.4h re-proof chain. Planted at "
+            "the comparison itself rather than at the state machine, because the state "
+            "machine is only as good as the freshness it is handed."
+        ),
+        edits={
+            "tests/tree_state.py": (
+                "            elif recorded == live_digest:\n",
+                "            elif True:  # planted mutation: any recorded digest reads fresh\n",
+            )
+        },
+        command=["pytest", "tests/unit/test_tree_state.py::test_one_stale_family_forbids_certified", "-q"],
+        expected_check="tree_state cannot report `certified` on a stale tree (H-10)",
+        expect_output_contains=["test_one_stale_family_forbids_certified", "failed"],
+        baseline_must_not_contain=["test_one_stale_family_forbids_certified && failed"],
+    ),
+    Mutation(
         name="scalar_probe_generation_crashes",
         asserts=["generate_scalar"],
         description=(
@@ -2356,6 +2378,51 @@ MUTATIONS: List[Mutation] = [
         expected_check="§1J (an explicit count and its noun agree in the rendered text)",
         expect_output_contains=["mat_g2_na_q2_3 && 1 units"],
         baseline_must_not_contain=["count_noun_agreement_1J ("],
+    ),
+    Mutation(
+        name="pupil_text_field_goes_unlinted",
+        asserts=["unclassified_pupil_text_1J"],
+        description=(
+            "Drop `hints` from §1J's pupil-text classification, restoring the exact hole "
+            "measured on 2026-09-21: the student path emits `hints`, a LIST, and the lint "
+            "read `hint`, singular, so NO hint text had ever been checked while §1J stood "
+            "at 0 findings over 9,060 samples. The reach direction must name the field "
+            "rather than let a silent allowlist shrink back."
+        ),
+        edits={
+            "backend/app/practice_gen/validation/validate_language.py": (
+                '    "hints",            # the list the student path emits\n',
+                '    # planted mutation: the field silently drops out of the classification\n',
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_language",
+                 "--node-ids", "mat_g2_na_q3_0"],
+        expected_check="§1J reach (a string-bearing payload field is linted or excluded)",
+        expect_output_contains=["FAIL unclassified_pupil_text_1J", "'hints'"],
+        baseline_must_not_contain=["FAIL unclassified_pupil_text_1J"],
+    ),
+    Mutation(
+        name="stem_points_at_an_undrawn_display",
+        asserts=["dangling_visual_reference_1M"],
+        description=(
+            "Stop the competency's 'using models' clause binding `fraction_task_mode`, "
+            "which sends mat_g1_na_q4_1 back to mcq/cloze. Its stem still reads 'Look at "
+            "the fraction models for 1/2 and 1/4' while the item draws nothing -- the "
+            "exact state measured on 11 of 20 seeds before 2026-09-21. §1M must catch a "
+            "stem that points at a display the item never draws."
+        ),
+        edits={
+            "backend/app/practice_gen/registry.py": (
+                '        if "using models" in text or "using a model" in text or "using model" in text:\n',
+                '        if False:  # planted mutation: the "using models" clause stops binding\n',
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_reference",
+                 "--node-ids", "mat_g1_na_q4_1"],
+        expected_check="§1M (a stem that points at a display is served with one drawn)",
+        expect_output_contains=["FAIL dangling_visual_reference_1M",
+                                "mat_g1_na_q4_1 && points at a display"],
+        baseline_must_not_contain=["FAIL dangling_visual_reference_1M"],
     ),
     Mutation(
         name="second_option_answers_too",

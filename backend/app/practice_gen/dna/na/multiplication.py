@@ -21,6 +21,7 @@ from backend.app.practice_gen.dna.base import (
     DimensionSpec,
     ErrorPattern,
     VocabGated,
+    count_noun,
     number_group_name,
 )
 
@@ -824,12 +825,20 @@ def generate_hints(
         return hints
 
     # Step 1: restate as repeated addition / groups
-    hints.append(f"We need to {mul_phrase} {a} {times_phrase} {b}.")
+    #
+    # `count_noun` on the WHOLE phrase, not on the bare word, because the vocab gate
+    # supplies either "times" (invariant) or "groups of", and `to_singular_phrase` only
+    # finds the head of a "<head> of <x>" phrase when the <x> is present: "groups of 4"
+    # singularises to "group of 4", while a bare "groups of" would come back unchanged.
+    # A count of 1 shipped "We need to find the total of equal groups 1 groups of 4." to
+    # pupils until 2026-09-21, unlinted, because §1J never read `hints` (see that module's
+    # field classification).
+    hints.append(f"We need to {mul_phrase} {a} {count_noun(a, f'{times_phrase} {b}')}.")
 
     # Step 2: repeated addition breakdown (only practical for small b)
     if b <= 5:
         groups = " + ".join(str(a) for _ in range(b))
-        hints.append(f"Think of it as {b} groups of {a}: {groups}.")
+        hints.append(f"Think of it as {b} {count_noun(b, f'groups of {a}')}: {groups}.")
     else:
         hints.append(f"Use the {b} times table: {b} × {a}.")
 

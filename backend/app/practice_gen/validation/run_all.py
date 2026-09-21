@@ -55,6 +55,7 @@ from backend.app.practice_gen.validation import (
     validate_matrix,
     validate_census,
     validate_language,
+    validate_reference,
     validate_options,
     validate_render,
     validate_grade,
@@ -87,6 +88,14 @@ ASSERTIONS = (
     # paid debt left on the register -- an accurate complaint about an inaccurate claim.
     "packet_variant_coverage_uncapped",    # tests/unit/test_packet_allocation.py
     "packet_interest_pinned",              # tests/unit/test_packet_allocation.py
+    # The three-state determination (H-10, 2026-09-21). Declared here for the same reason
+    # as the two lines above: its mutation drives ONE test file, so asserting `unit_tests`
+    # would make the allowlisted `unit_tests` entry read as proven. `tests/tree_state.py`
+    # is deliberately NOT a run_all stage -- it reports on the harness's own artifacts
+    # rather than on pipeline behaviour, the same standing `tests/hardening_status.py` has
+    # -- but the label it owns is still inventoried, because the verdict it can get wrong
+    # (`certified` on a stale tree) tells the next session to skip the re-proof chain.
+    "tree_state_certification",            # tests/unit/test_tree_state.py
     "contract_doc_matches_registry",
     "operator_doc_covers_registry",
     "two_direction_contract_match",
@@ -158,6 +167,7 @@ CONTRACT_CHECKS: Dict[str, str] = {
     "§8": "validate_coverage: every assertion the harness can emit is either proven by a mutation or on a shrinking allowlist",
     "§1J": "validate_language: an explicit count and its noun must agree in the rendered student text, nested quoted statements included",
     "§1K": "validate_options: a choice item must offer distinguishable choices, and exactly one of them may answer the question",
+    "§1M": "validate_reference: a stem that points at a display must be served with one drawn",
     "§9": "validate_render: the payload a node emits must be renderable by the React component the student sees",
     "§10": "validate_grade: a known-correct answer must be graded correct, a known-wrong or malformed one refused, by all three graders — hermetically",
     "§11": "validate_obligations: the student-path obligation manifest is derived twice and agrees, and no registered formatter route is unreachable",
@@ -512,6 +522,7 @@ def run_all(fail_fast: bool = False, phase: Optional[int] = None) -> int:
         ("capability_phase1",   1, (),      "Capability Contract Phase 1 (§6A-§6E)"),
         ("count_noun_1J",       1, ("§1J",), "Count/Noun Agreement (§1J)"),
         ("option_degeneracy_1K", 1, ("§1K",), "Option Degeneracy (§1K)"),
+        ("dangling_reference_1M", 1, ("§1M",), "Dangling Visual Reference (§1M)"),
         ("render_contract_9",   1, ("§9", "§12", "§13"),  "Render Contract (§9/§12/§13)"),
         ("grading_contract_10", 1, ("§10",), "Grading Contract (§10)"),
         ("assertion_coverage_8", 1, ("§8",), "Assertion Coverage (§8)"),
@@ -900,6 +911,18 @@ def run_all(fail_fast: bool = False, phase: Optional[int] = None) -> int:
             executed_checks.add("§1K")
         return ok
 
+    def _stage_dangling_reference_1M() -> bool:
+        print("\n--- Dangling Visual Reference (§1M) ---")
+        # The third bounded lint on what a pupil READS, added 2026-09-21. Activated at a
+        # measured zero (Scaling Mandate 5): the four nodes whose stems pointed at an
+        # undrawn display -- mat_g1_na_q4_1, mat_g2_mg_q4_2, mat_g3_mg_q1_4,
+        # mat_g3_mg_q1_5 -- were all given the visual their competencies name BEFORE this
+        # gate landed, so its baseline is genuinely zero rather than dispositioned around.
+        ok = validate_reference.validate_all()
+        if ok:
+            executed_checks.add("§1M")
+        return ok
+
     def _stage_render_contract_9() -> bool:
         print("\n--- Render Contract (§9/§12) ---")
         # The first stage that looks past FormattedProblem at what the STUDENT receives.
@@ -959,6 +982,7 @@ def run_all(fail_fast: bool = False, phase: Optional[int] = None) -> int:
         for _stage_name, _stage_body in (
             ("count_noun_1J", _stage_count_noun_1J),
             ("option_degeneracy_1K", _stage_option_degeneracy_1K),
+            ("dangling_reference_1M", _stage_dangling_reference_1M),
             ("render_contract_9", _stage_render_contract_9),
             ("grading_contract_10", _stage_grading_contract_10),
             ("assertion_coverage_8", _stage_assertion_coverage_8),

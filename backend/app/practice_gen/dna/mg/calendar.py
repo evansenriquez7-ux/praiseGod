@@ -15,6 +15,7 @@ from backend.app.practice_gen.dna.base import (
     DNA,
     ErrorPattern,
     VocabGated,
+    count_noun,
 )
 
 
@@ -414,7 +415,12 @@ def generate_hints(
         unit  = "days" if task_type == "elapsed_days" else "weeks"
         return [
             f"Count the {unit} between {start} and {end} on the {cal_label}.",
-            f"Subtract: {end} - {start} = {values.get('answer', '?')} {unit}.",
+            # `count_noun`, not a bare `{unit}`: an elapsed span of exactly one shipped
+            # "= 1 weeks." until 2026-09-21. The rule is the generator's own so this cannot
+            # disagree with §1J. A missing answer ('?') is not 1 and keeps the plural,
+            # which is `count_noun`'s documented behaviour for a non-integer count.
+            f"Subtract: {end} - {start} = {values.get('answer', '?')} "
+            f"{count_noun(values.get('answer'), unit)}.",
         ]
     return [
         f"Use the {cal_label} to find the answer.",

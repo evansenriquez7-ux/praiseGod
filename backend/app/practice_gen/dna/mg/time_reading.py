@@ -15,6 +15,7 @@ from backend.app.practice_gen.dna.base import (
     DNA,
     ErrorPattern,
     VocabGated,
+    count_noun,
 )
 
 
@@ -247,11 +248,20 @@ def generate_params(
                 target_bus = rng.choice([1, 2])
                 ans_min = b1_dur if target_bus == 1 else b2_dur
 
+                # The timetable is DRAWN (visual_type="Timetable") rather than
+                # bulleted into the stem. "Look at the bus timetable:" followed by no
+                # timetable is the defect `dangling_visual_reference_1M` names, and the
+                # competency asks for elapsed time "including TIMETABLES" -- a timetable
+                # is a display, so drawing it is what the LC says (Content Rule 4).
+                timetable_kind = "bus"
+                timetable_columns = ["Bus", "Departs", "Arrives"]
+                timetable_rows = [
+                    {"label": "Bus 1", "start": b1_start_str, "end": b1_end_str},
+                    {"label": "Bus 2", "start": b2_start_str, "end": b2_end_str},
+                ]
                 question = (
-                    f"Look at the bus timetable:\n"
-                    f"• Bus 1: Departs {b1_start_str}, Arrives {b1_end_str}\n"
-                    f"• Bus 2: Departs {b2_start_str}, Arrives {b2_end_str}\n"
-                    f"According to the timetable, how many minutes is the travel time for Bus {target_bus}?"
+                    f"Look at the bus timetable. According to the timetable, how many "
+                    f"minutes is the travel time for Bus {target_bus}?"
                 )
                 answer = ans_min
                 distractors = sorted({
@@ -265,21 +275,23 @@ def generate_params(
                 e_end_str = _fmt_time(9, 45, "a.m." if use_ampm else None)
 
                 subj = rng.choice(["Math", "English"])
+                # As above: the schedule is drawn, not bulleted into the stem.
+                timetable_kind = "class"
+                timetable_columns = ["Subject", "Starts", "Ends"]
+                timetable_rows = [
+                    {"label": "Math", "start": m_start_str, "end": m_end_str},
+                    {"label": "English", "start": e_start_str, "end": e_end_str},
+                ]
                 if subj == "Math":
                     question = (
-                        f"Look at the class schedule:\n"
-                        f"• Math: {m_start_str} – {m_end_str}\n"
-                        f"• English: {e_start_str} – {e_end_str}\n"
-                        f"How many hours long is the Math class?"
+                        "Look at the class schedule. How many hours long is the Math class?"
                     )
                     answer = 1
                     distractors = [2, 3, 4]
                 else:
                     question = (
-                        f"Look at the class schedule:\n"
-                        f"• Math: {m_start_str} – {m_end_str}\n"
-                        f"• English: {e_start_str} – {e_end_str}\n"
-                        f"How many minutes long is the English class?"
+                        "Look at the class schedule. How many minutes long is the "
+                        "English class?"
                     )
                     answer = 45
                     distractors = [30, 40, 50]
@@ -288,6 +300,13 @@ def generate_params(
                 "blank_target": "answer",
                 "task_type": "elapsed_time",
                 "elapsed_unit": "timetable",
+                # What `timetable_read` draws. Carried in values rather than composed in
+                # the formatter so the DNA stays the single source of the times the key
+                # is computed from -- a formatter that rebuilt them could disagree with
+                # the answer, which is the "two copies of one rule" trap.
+                "timetable_kind": timetable_kind,
+                "timetable_columns": timetable_columns,
+                "timetable_rows": timetable_rows,
                 "question": question,
                 "answer": answer,
                 "distractors": distractors,
@@ -574,8 +593,8 @@ def generate_hints(
         else:
             marks = minute // 5
             hints.append(
-                f"Count by 5s from 12: the long hand has passed {marks} marks, "
-                f"so the minutes are {minute}."
+                f"Count by 5s from 12: the long hand has passed {marks} "
+                f"{count_noun(marks, 'marks')}, so the minutes are {minute}."
             )
     else:
         # G1: 'minute' hasn't been introduced yet — describe hand position with
@@ -594,7 +613,10 @@ def generate_hints(
             hints.append("The long hand points to 9 — that is a quarter before the next hour.")
         else:
             marks = minute // 5
-            hints.append(f"Count by 5s from 12: the long hand has passed {marks} marks.")
+            hints.append(
+                f"Count by 5s from 12: the long hand has passed {marks} "
+                f"{count_noun(marks, 'marks')}."
+            )
 
     hints.append(f"The time shown is {values['time_str']}.")
     return hints

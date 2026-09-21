@@ -180,6 +180,7 @@ def stubbed_harness(monkeypatch):
                         lambda **kw: {"n": {"pass_rate": 1.0, "violations": []}})
     monkeypatch.setattr(ra.validate_capability, "validate_capability_provision", lambda: [])
     monkeypatch.setattr(ra.validate_language, "validate_all", lambda: True)
+    monkeypatch.setattr(ra.validate_reference, "validate_all", lambda: True)
     monkeypatch.setattr(ra.validate_options, "validate_all", lambda: True)
     monkeypatch.setattr(ra.validate_render, "validate_all", lambda: True)
     monkeypatch.setattr(ra.validate_grade, "validate_all", lambda: True)

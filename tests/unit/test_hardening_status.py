@@ -46,8 +46,61 @@ def test_the_live_ledger_is_valid():
 
 
 def test_the_live_ledger_has_a_row_per_blocker():
-    ids = {r["id"] for r in hs.load()["rows"]}
-    assert ids == {f"H-0{n}" for n in range(1, 10)}
+    """
+    WIDENED TO TWO DIGITS 2026-09-21 (owner ruling 2). This assertion used to read
+    `assert ids == {f"H-0{n}" for n in range(1, 10)}`, which could not express `H-10` --
+    H-08's intro-surface remainder had been waiting on that literal since 2026-09-18.
+
+    What the pin was for is kept: ids well formed, unique, contiguous, and none lost. What
+    it is not allowed to keep is the growth ban, so the count is a FLOOR (the nine blockers
+    recorded up to 2026-09-20) rather than an equality -- the same choice
+    `operator_doc_covers_registry` makes and for the same reason. A row is added by
+    justifying a blocker, never by editing an arithmetic literal here (Mandate 4).
+    """
+    rows = hs.load()["rows"]
+    ids = {r["id"] for r in rows}
+    assert len(ids) == len(rows), "duplicate row id on disk"
+    assert all(hs._ROW_ID.match(i) for i in ids), sorted(ids)
+    assert hs._row_id_sequence(rows) == []
+    assert len(ids) >= 9, f"a recorded blocker has been dropped from the ledger: {sorted(ids)}"
+
+
+def test_a_two_digit_row_id_is_accepted():
+    """The whole point of the widening: `H-10` must be expressible."""
+    assert hs.validate(_doc(_row(id="H-10"))) == []
+
+
+@pytest.mark.parametrize("bad", ["H-1", "H-100", "H-1O", "h-01", "H01", "HH-01", 10, None])
+def test_a_malformed_row_id_is_caught(bad):
+    """Every typo direction the old membership pin caught, kept without the growth ban."""
+    errors = hs.validate(_doc(_row(id=bad)))
+    assert any("is not of the form" in e for e in errors), (bad, errors)
+
+
+def test_a_gap_in_the_row_ids_is_caught():
+    """A row deleted from the middle reads as a blocker the ledger has lost."""
+    rows = [_row(id="H-01"), _row(id="H-02"), _row(id="H-04")]
+    errors = hs._row_id_sequence(rows)
+    assert any("H-03" in e and "contiguous" in e for e in errors), errors
+
+
+def test_a_row_numbered_past_the_end_is_caught():
+    """`H-12` opened while H-10/H-11 were never written loses two rows, not gains one."""
+    errors = hs._row_id_sequence([_row(id="H-01"), _row(id="H-12")])
+    assert any("H-12" in e and "past the end" in e for e in errors), errors
+
+
+def test_a_contiguous_run_including_two_digits_is_accepted():
+    """The positive control for the widening, at the digit boundary."""
+    rows = [_row(id="H-%02d" % n) for n in range(1, 12)]
+    assert hs._row_id_sequence(rows) == []
+
+
+def test_the_contiguity_rule_is_not_asserted_against_a_synthetic_document():
+    """`validate()` judges a DOCUMENT, so a one-row `H-99` fixture is legal there. If this
+    ever fails, contiguity has been moved into `validate()` and every fixture in this file
+    is now asserting the shape of the live ledger instead of the rule under test."""
+    assert hs.validate(_doc(_row(id="H-99"))) == []
 
 
 def test_valid_document_produces_no_errors():

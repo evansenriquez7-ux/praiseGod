@@ -1,0 +1,46 @@
+{
+ "asserts": [
+  "tree_state_certification"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "test_one_stale_family_forbids_certified && failed"
+ ],
+ "command": [
+  "pytest",
+  "tests/unit/test_tree_state.py::test_one_stale_family_forbids_certified",
+  "-q"
+ ],
+ "definition_digest": "6cd9528beaeebf0c2876e4457e74f2ef558958412df35f543743eddd4c96c81b",
+ "detected": true,
+ "diagnostic_line": "exit 1 — =================================== FAILURES ===================================",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "test_one_stale_family_forbids_certified",
+  "failed"
+ ],
+ "expected_check": "tree_state cannot report `certified` on a stale tree (H-10)",
+ "finished_at": "2026-09-21T14:23:57+08:00",
+ "input_digest": "a75cefe8ace23d9528adaf023f59d4a001585914e208dbc76ce496d442b974df",
+ "mutated_paths": [
+  "tests/tree_state.py"
+ ],
+ "mutation": "tree_state_certifies_a_stale_tree",
+ "observed_markers": {
+  "failed": true,
+  "test_one_stale_family_forbids_certified": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-09-21T14:23:56+08:00"
+}

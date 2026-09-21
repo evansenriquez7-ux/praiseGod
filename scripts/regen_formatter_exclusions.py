@@ -78,7 +78,12 @@ def compute() -> tuple[dict[str, list[str]], list[str]]:
                     # because "it raised, so it is not excluded" reads identically to
                     # "it worked" in the output and that is how a broken pair stays
                     # advertised forever.
-                    if "is not supported by any DNA" not in str(exc):
+                    # TYPE first, substring second. Classifying an eligibility refusal by its
+                    # wording meant a refusal phrased differently was reported as a content
+                    # crash and the pair stayed advertised -- see FormatterNotEligible.
+                    from backend.app.practice_gen.compatibility import FormatterNotEligible
+                    if not isinstance(exc, FormatterNotEligible) and \
+                            "is not supported by any DNA" not in str(exc):
                         refused_every_seed = False
                         other_error = f"{node_id}/{fmt} seed={seed}: {type(exc).__name__}: {exc}"
                         break

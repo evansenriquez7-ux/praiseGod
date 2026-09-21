@@ -12968,3 +12968,255 @@ a harness edit or a hint-composition fix, and the owner should decide which. Rec
 H-06 `progress` field, and reported directly, so that a green §1J is not mistaken for a linted
 learner surface. The gate's PASS line covers stems, statements, prompts and cloze templates — not
 hints.
+
+---
+
+## 2026-09-21 — Phase A: interruption safety, the §1J hints hole, and the §1M gate
+
+Session `claude-20260921-h10-tree-state`, on `cffd5ab0` (certified). One batch, four
+owner-authorised items, so one re-proof is owed rather than four. The batch intent was recorded
+before the first edit and the tree-state machinery built in item 1 is what recorded it.
+
+### Item 2 — the H-row cap, widened (owner ruling 2)
+
+`tests/unit/test_hardening_status.py:50` pinned the row set as `ids == {f"H-0{n}" for n in
+range(1, 10)}`, a literal that cannot express `H-10`. What the pin actually caught was a TYPO
+class, not a safety property, so every typo direction is kept and only the growth ban dropped:
+ids must match `H-<dd>`, be unique, and form a CONTIGUOUS run from `H-01`; the count is now a
+FLOOR of nine. The format rule moved INTO `validate()` in the same commit, because the old pin was
+reachable only through pytest and `tests/hardening_status.py` — the command the plan tells you to
+run — would have passed on a misnumbered ledger.
+
+```text
+$ PYTHONPATH=. .venv/bin/python -m pytest tests/unit/test_hardening_status.py -q
+52 passed in 0.38s
+$ PYTHONPATH=. .venv/bin/python tests/hardening_status.py
+PASS hardening_status: 10 H-row(s) valid — 3 closed, 1 in_progress, 5 open, 1 out_of_scope
+```
+
+The ledger edit was surgical — `git diff --numstat` reports `32 0`, thirty-two insertions and
+**zero** deletions, so none of the `§`/`—` escapes on rows this session does not own were
+renormalised (the 2026-09-20 collateral-churn trap).
+
+### Item 1 — `tree_state`, and the two states that could not be told apart
+
+Four artifact families are digest-bound, and comparing them against the live digest says WHETHER
+they are current, never WHY not. "A batch landed and its re-proof was never run" and "a session
+was interrupted mid-work" were **indistinguishable from the digests alone** and were separated by
+reading a paragraph. No amount of hashing recovers a fact nobody recorded, so intent is now
+recorded explicitly: `validation_reports/phase2_hardening/tree_state.json`, committed, DIGEST-FREE,
+and outside `INPUT_ROOTS` so that recording a batch does not invalidate the artifacts the batch is
+about to invalidate.
+
+That last claim is verified, not assumed — `test_writing_the_state_file_does_not_move_the_input_digest`
+executes `input_digest()` either side of a real write.
+
+```text
+$ PYTHONPATH=. .venv/bin/python -m pytest tests/unit/test_tree_state.py -q
+23 passed in 0.36s
+
+$ DATABASE_URL= PYTHONPATH=. .venv/bin/python tests/mutation_harness.py \
+      --only tree_state_certifies_a_stale_tree
+  PASS  tree_state_certifies_a_stale_tree  tree_state cannot report `certified` on a stale tree (H-10)
+1/1 mutations detected.
+```
+
+The mutation makes the digest comparison vacuous (`elif recorded == live_digest` -> `elif True`),
+which is the one verdict that costs real money: `certified` on a stale tree tells the next session
+to skip a ~3.4h chain.
+
+NAMED LIMITS, all in the docstring, the contract row and here: an intent is a claim, not a lock
+(no pid, no heartbeat, no timeout, so a live session cannot be told from one that died holding it);
+a session that never calls `--begin` leaves a dirty worktree with no record of what the edits were
+FOR; `--complete` is trusted; and `_worktree_is_dirty`'s own `git status` call is exercised only by
+running the module for real, since the unit tests inject `dirty` to drive the state machine over a
+temporary root.
+
+### Item 3 — §1J had never linted a single hint, and that was one instance of the real defect
+
+Confirmed by execution before anything was changed:
+
+```text
+d.get('hint')  -> None
+d.get('hints') -> ['We need to find the total of equal groups 3 groups of 1.',
+                   'Think of it as 1 groups of 3: 3.',
+                   'The answer of 3 × 1 = 3.']
+_texts() returns: question_text, format_data.context        <- no hints at all
+scan_text(hint) -> [(1, 'groups', 'group')]
+```
+
+Adding `hints` alone would have left the same defect in eight other fields. Measured over 453
+renders, `_texts` — a hand-maintained allowlist — never read NINE text-bearing surfaces:
+`hints` (430/453 samples), `format_data.mcq_options` (127, so the contract's "its options" was true
+only of the 204 carrying `format_data.options`), `distractors`, `correct_answer`,
+`format_data.sentence`/`error_label`/`problem_expression`/`actor_name`/`time_str`/`direction`/`items`.
+
+ROOT CAUSE, not the symptom: a silent allowlist cannot tell "every pupil-facing field" from "the
+fields somebody thought of". Fields are now classified in BOTH directions and a string-bearing key
+in neither set is a named finding, `unclassified_pupil_text_1J`. **On its first full run that
+direction immediately found two more fields nobody had classified** —
+`format_data.actors_answer` (interpolated into the stem: "Grace says the missing number is 13 R 3")
+and `format_data.correct_value` — on `error_detect` routes a 3-seed probe never reached.
+
+Reach on identical samples: **21,604 -> 73,864 texts linted, ×3.42.**
+
+Ten real violations were behind the hole, every one fixed at its composition site with the
+generator's own `dna.base.count_noun`, never a re-derivation: multiplication's `1 groups of N`
+(two sites), calendar's `= 1 weeks`, length's `The length is 1 hands`, time's `passed 1 marks`
+(two sites), perimeter's `each 1 units long`. `length_measurement` also carried a LOCAL `_sing()`
+re-derivation of the inflection rule — the exact "N copies of one rule" trap — deleted in favour of
+the shared helper. Two words were added to `_FUNCTION_WORDS` for false positives the widened reach
+exposed, `equals` (a verb) and `vs`; `shows`, `costs` and `times` were deliberately NOT added,
+because each is also a real noun and silencing one would hide a genuine disagreement.
+
+```text
+$ DATABASE_URL= PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_language
+  PASS count_noun_agreement_1J: 0 findings over 9060 student-path sample(s), 73864 text(s) linted;
+       7170 singular-after-many construction(s) observed and NOT judged (known limitation 1),
+       1537 already-singular word(s) after a count of 1
+  PASS unclassified_pupil_text_1J: every string-bearing payload field is either linted or
+       deliberately excluded
+
+$ ... tests/mutation_harness.py --only pupil_text_field_goes_unlinted
+  PASS  pupil_text_field_goes_unlinted  §1J reach (a string-bearing payload field is linted or excluded)
+$ ... tests/mutation_harness.py --only count_noun_disagrees
+  PASS  count_noun_disagrees  §1J (an explicit count and its noun agree in the rendered text)
+```
+
+### Item 4 — the undrawn referents, FIXED first and then gated (owner ruling 5)
+
+**The set is FOUR nodes, not six, and the earlier figure cannot be reproduced.** The 2026-09-19
+sweep that produced "6" was a scratch probe that was thrown away, so its cue list no longer exists
+anywhere — which is the argument for building the gate. Rebuilt under a strictly DEICTIC rule the
+count is 4 nodes / 26 samples; under a looser MENTION rule it is 11 nodes, and 7 of those are false
+("There are 5 knee pads ON THE TABLE" is furniture; "A dot is at 12 ON THE NUMBER LINE" states the
+position in words). Deixis is the property that makes an item depend on a drawing.
+
+All four were given the visual their competency NAMES — Content Rule 4, not scope creep:
+
+| node | competency clause | fix |
+|---|---|---|
+| `mat_g1_na_q4_1` | "Compare 1/2 and 1/4 **using models**" | the `using models` clause now binds `fraction_task_mode`; 20/20 seeds draw FractionModel |
+| `mat_g3_mg_q1_4` | "Recognize, **using models**, and draws a point, line, line segment, and ray" | new `geometry_figure` formatter + GeometryFigure component |
+| `mat_g3_mg_q1_5` | "Recognize and **draw** parallel, intersecting, and perpendicular lines" | same |
+| `mat_g2_mg_q4_2` | "...**including timetables**" | new `timetable_read` formatter + Timetable component |
+
+The clause fix reached two further nodes by root cause: `mat_g3_na_q4_6` and `mat_g3_na_q4_7` also
+say "using models" and also bound nothing. q4_6 then had NO model route at all, so `fraction_shade`
+— which already composes multiple wholes and says so in its stem ("Shade 11/6 using 2 identical
+shapes") — gained `improper`. `fraction_model_read` did NOT: probed by widening it in memory, it
+emitted `numerator=7 denominator=3 total_parts=3 shaded_parts=7`, seven shaded parts in a shape
+that has three, so that route waits on multi-whole support and the reason is in the table.
+
+The geometry drawing is proved by counting what React actually EMITTED, not by trusting the
+payload — the distinctions a pupil must see are elements with their own `data-pgen-role`:
+
+```text
+kind           path endpt arrow rt-ang cross label   svg
+point             0     1     0      0     0     1   1
+line              1     2     2      0     0     2   1
+segment           1     2     0      0     0     2   1
+ray               1     2     1      0     0     2   1
+parallel          2     0     0      0     0     0   1
+perpendicular     2     0     0      1     0     0   1
+intersecting      2     0     0      0     1     0   1
+triangle          1     3     0      0     0     3   1
+letterH           3     0     0      0     0     0   1
+```
+
+A ray has one arrowhead, a line two, a segment none; perpendicular and intersecting differ by the
+square corner alone. Pinned in `tests/unit/test_geometry_figure.py` (17 passed) rather than left as
+a one-off measurement. It inherits §12's named blind spot: jsdom has no layout engine, so this
+proves the elements exist and are distinct, never that they are positioned legibly.
+
+Then, and only then, the gate — `validate_reference` §1M, activated at a genuinely zero baseline:
+
+```text
+$ DATABASE_URL= PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_reference
+  PASS dangling_visual_reference_1M: 0 findings over 9060 student-path sample(s);
+       723 sample(s) point at a display AND draw one; 44 deictic pattern(s) recognised
+
+$ ... tests/mutation_harness.py --only stem_points_at_an_undrawn_display
+    DETECTED: exit 1 — FAIL dangling_visual_reference_1M (35):
+  PASS  stem_points_at_an_undrawn_display  §1M (a stem that points at a display is served with one drawn)
+```
+
+723 samples point AND draw, so the check is not passing vacuously.
+
+### Found while fixing item 4 — the Lab was still shipping the undrawn stem
+
+After the student path was fixed, pinning the old formatter still served the old item:
+
+```text
+mat_g1_na_q4_1  mcq   SERVED  visual=None
+                      stem='Look at the fraction models for \(\frac{1}{2}\) and \(\frac{1}{4}\)...'
+```
+
+`FORMATTER_VARIANT_SUPPORT` restricts mcq/cloze to `fraction_task_mode="notation"`, but that axis
+is not declared in `VARIANTS_BY_DNA`, and the adapter's enforcement walks the PROFILE keeping only
+DECLARED axes — so the restriction was unenforceable there, while the orchestrator skips its own
+filter entirely whenever a formatter is PINNED. Two paths, one rule, and neither covered the case.
+§1M could not see it either, because §1M samples the student path. Consolidated into one
+`compatibility.assert_formatter_supports` called from both.
+
+**Widening it further was wrong twice, and both gates said so** — recorded because the near-misses
+are the useful part:
+
+* comparing the caps against `ctx.values` refused every pinned render on `mat_g2_mg_q2_0`, because
+  `ruler_measure`'s caps list the SENTINEL `task_type='measure_compare_or_distance'` and the DNA
+  resolves it to `'compare'`. §2B named it exactly: *"the pinned path is stricter than the auto
+  path — an orchestrator defect"*. This is the same category error §2D's own comment records
+  costing 144 legitimate configs.
+* comparing the REQUEST instead refused 46 producible declarations (§2I) on `mat_g1_na_q1_7`, where
+  the profile asks one `task_type` and the DNA generates another.
+* and `division` carries the axis `remainder='none'` in the profile beside the arithmetic remainder
+  `0` in values — a name collision the orchestrator's filter survives only because `if ctx_val and`
+  treats `0` as falsy.
+
+So the rule is scoped to exactly the axes the other rule SKIPS — the undeclared ones — where there
+is only one vocabulary. NAMED LIMITATION: a DECLARED axis restricted by caps is still unchecked on
+the orchestrator's pinned path; closing that needs sentinel resolution and belongs to its own change.
+
+### The exclusions classifier told eligibility from breakage BY SUBSTRING
+
+`scripts/regen_formatter_exclusions.py` and `validate_compat` both classified a refusal with
+`"is not supported by any DNA" not in str(exc)`. Any eligibility refusal phrased differently was
+recorded as a CONTENT CRASH rather than an exclusion, so the node went on advertising a formatter it
+can never serve and §2C counted the pair as content debt. Now carried as a TYPE,
+`FormatterNotEligible`.
+
+```text
+exclusions 239 across  97 nodes  ->  275 across 111 nodes
+formatters_reachable      44 pairs  ->  6 pairs   (floor was 35)
+```
+
+**Most of what that floor was said to be tracking was bookkeeping, not content work.** The floor is
+ratcheted 35 -> 6, the measured count on two consecutive runs. The six that remain are real and are
+named in the code.
+
+### Everything re-run after the batch
+
+```text
+$ ... validate_language      PASS both labels, 0 findings / 9060 samples / 73864 texts
+$ ... validate_reference     PASS 0 findings / 9060 samples
+$ ... validate_compat        13/13 check groups passed
+$ ... validate_matrix        Nodes Checked 151  Passed 151  Failed 0  Total Failures Observed 0
+                             §1H applicability: PASS (151 node(s))
+$ ... tests/frontend_suite.py
+  PASS frontend_static_render_12: 29 payloads, 58 renders, 17 visual types   (was 28 / 16)
+  NOT COVERED (unreachable registrations): BalanceScale, Categorize, RuleDiscovery, SortOrder, TenFrame
+$ ... pytest tests/unit/test_obligation_executor.py -q     15 passed
+```
+
+Obligation product 4281 -> 4306. Every added route was confirmed SERVED before the pinned counts
+were touched — `geometry_figure` and `timetable_read` each DREW at 5 of 5 pinned seeds on both of
+their nodes — which is the order trap 4 requires.
+
+### What this batch does NOT claim
+
+The Definition of Done is an executed `run_all` exiting 0, and **it is not met here**: the re-proof
+chain this batch owes has not been run at the time of writing, so every mutation proof, the
+benchmark, the frontend artifact and the six release shards are STALE against these bytes by
+construction. `tree_state.json` records the batch as open for exactly that reason. The three red
+stages the plan names (`judgment_reviews_5`, `capability_phase2`, `assertion_coverage_8`) are
+untouched by this work and remain M2's.

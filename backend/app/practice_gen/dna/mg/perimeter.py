@@ -15,6 +15,7 @@ from backend.app.practice_gen.dna.base import (
     DNA,
     ErrorPattern,
     VocabGated,
+    count_noun,
     linear_interpolate,
 )
 
@@ -363,7 +364,7 @@ def generate_hints(
 
     if shape == "square":
         s = sides.get("s", "?")
-        hints.append(f"A square has 4 equal sides, each {s} units long.")
+        hints.append(f"A square has 4 equal sides, each {s} {count_noun(s, 'units')} long.")
         hints.append(f"Perimeter = 4 × {s} = {values['answer']}.")
     elif shape == "rectangle":
         l, w = sides.get("l", "?"), sides.get("w", "?")

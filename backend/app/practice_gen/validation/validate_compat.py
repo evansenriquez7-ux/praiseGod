@@ -534,7 +534,12 @@ def validate_advertised_formatters_are_servable() -> List[str]:
                     node_id=node_id, seed=11, formatter=fmt, is_lab=False,
                 )
             except Exception as exc:  # noqa: BLE001
-                if "is not supported by any DNA" not in str(exc):
+                # TYPE first, substring second. Classifying an eligibility refusal by its
+                # wording meant a refusal phrased differently was reported as a content
+                # crash and the pair stayed advertised -- see FormatterNotEligible.
+                from backend.app.practice_gen.compatibility import FormatterNotEligible
+                if not isinstance(exc, FormatterNotEligible) and \
+                        "is not supported by any DNA" not in str(exc):
                     continue  # a content-level failure is another check's business
                 refused.append(fmt)
 
@@ -757,7 +762,23 @@ _REACH_SEEDS = 40
 # tolerates exactly that much silent regression, which is what this ratchet removes.
 # `mat_g2_na_q3_5/array_grid_read`, the sampling miss the note above names, is one of
 # the two now served at 40 seeds.
-_REACH_FLOOR = 35
+# 35 -> 8 on 2026-09-21, and the 27 pairs did NOT come off by fixing 27 nodes. They came
+# off because `_generated_formatter_exclusions.py` had been generated through a classifier
+# that told an eligibility refusal from a content crash BY SUBSTRING -- `"is not supported
+# by any DNA" not in str(exc)`. Any eligibility refusal phrased differently was recorded as
+# a broken pair instead of an excluded one, so the node went on ADVERTISING a formatter it
+# can never serve and this check counted it as content debt. `FormatterNotEligible` now
+# carries that distinction as a TYPE; regenerating with it moved the exclusions from 239
+# across 97 nodes to 275 across 111, and this count from 44 to 8 in the same run.
+#
+# So most of the "content work" this floor was said to be tracking was bookkeeping, and
+# the ratchet is the point: a floor above the real count tolerates exactly that much
+# silent regression. The 6 that remain are real, and 6 is the measured count on two
+# consecutive runs (the intermediate readings of 8 and 3 seen while this was being
+# fixed were different EXCLUSION-FILE states, not sampling noise):
+#   mat_g1_na_q3_4/number_bond, mat_g1_mg_q4_4/timetable_read,
+#   mat_g3_na_q4_0 and mat_g3_na_q4_2 x {array_grid_read, array_grid_set}
+_REACH_FLOOR = 6
 
 # A node needs this many successful generations before its unreachable set means
 # anything. Half the seed budget: enough for a formatter with any real selection

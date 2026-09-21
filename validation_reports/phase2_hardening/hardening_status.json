@@ -308,6 +308,39 @@
       "closing_revision": "d5c752d1",
       "updated_at": "2026-09-12T17:15:41+08:00",
       "notes": "Owner ruling 2026-09-12: release promotion, staging/production separation, canaries, telemetry, alerting and rollback are cut from the hardening plan. None gates content correctness. The regression-feedback rule that lived in that section was re-homed into plan step 6 rather than deleted with it."
+    },
+    {
+      "id": "H-10",
+      "status": "in_progress",
+      "owner": "claude-20260921-h10-tree-state",
+      "finding": "The pipeline cannot report which of its three tree states it is in. Two of them -- 'a batch landed and its re-proof was never run' and 'a session was interrupted mid-work' -- are INDISTINGUISHABLE from the four artifact digests alone, and were told apart by reading a human-written paragraph in HANDOFF_PROMPT.md. Nothing records that work has STARTED, so an interruption leaves no trace of what was in flight; MUTATION_IN_FLIGHT.json is a kill-safety marker for the mutation corpus alone and says nothing about a batch or a chain.",
+      "affected_assertions": [
+        "tree_state_certification"
+      ],
+      "baseline_evidence": "2026-09-21 on cffd5ab0: the three-state determination was an ad-hoc inline script (reproduced in HANDOFF_PROMPT.md and in the plan's START HERE) plus a prose table telling the reader that its last two rows 'are indistinguishable from the digests alone'. No tree_state.py and no tree_state.json existed; `ls` of both paths returned No such file or directory.",
+      "acceptance_checks": [
+        "One command prints which of the three states the tree is in, with a nonzero exit for anything but certified",
+        "Intent is recorded when a batch or chain STARTS and cleared on completion, in a committed digest-free file that survives a clone",
+        "The two formerly indistinguishable states are separated by something executable, not by prose",
+        "A planted violation proves the command cannot report `certified` on a stale tree",
+        "Writing the intent file does not move the input digest -- verified by execution, not assumed"
+      ],
+      "proof_artifacts": [
+        "validation_reports/phase2_hardening/tree_state.json",
+        "tests/tree_state.py",
+        "tests/unit/test_tree_state.py",
+        "validation_reports/mutation_proofs/tree_state_certifies_a_stale_tree.json"
+      ],
+      "closing_revision": null,
+      "updated_at": "2026-09-21T14:25:00+08:00",
+      "measurement_status": "EXECUTED 2026-09-21: 23 unit tests pass and `tree_state_certifies_a_stale_tree` is DETECTED -- the plant makes the artifact digest comparison vacuous (`elif recorded == live_digest` -> `elif True`) and the gate must refuse to report `certified`. The digest-free claim is verified by execution, not assumed: `input_digest()` is measured either side of a real write to tree_state.json. Batch re-proof chain still owed at the time of writing.",
+      "recommended_order": 1,
+      "notes": "Opened under owner ruling 3 of 2026-09-21 ('a handoff can occur at ANY moment ... the pipeline must accommodate arbitrary interruption'). This is the FIRST two-digit row: it exists only because ruling 2 lifted the H-row cap, which until 2026-09-21 was pinned by tests/unit/test_hardening_status.py:50 to a set literal that could not express H-10. NOT taken by this row, and still the owner's call: splitting H-08's intro-surface render remainder into its own row, which the plan reserves for the owner explicitly.",
+      "still_open": [
+        "The intent record is a claim, not a lock: no pid, no heartbeat, no timeout, so a session that is alive cannot be told from one that died holding an open intent (named limitation 1).",
+        "A session that never calls --begin is invisible to the intent half; the dirty worktree still reports interrupted, but with no record of what the edits were for (named limitation 2).",
+        "`_worktree_is_dirty`'s own `git status --porcelain` call is not covered by the unit tests, which inject `dirty` to drive the state machine over a temporary root (named limitation 4)."
+      ]
     }
   ],
   "sequencing_note": "recommended_order is a recommendation, not a constraint. H-01 and H-03 are closed. H-04's executor exists but the six release shards remain unrun. H-05 has seven of eight named assertion debts proved but remains red on learner-visible interest delivery and unproved Lab/portal equivalence. H-08 may move ahead of H-06 because H-06 needs render-derived visual evidence. H-02 sits late because it shrinks as the others land; 30 assertions remain. H-09 is out of scope.",

@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "assertion": "frontend_static_render_12",
-  "cases_executed": 28,
-  "renders_executed": 56,
+  "cases_executed": 29,
+  "renders_executed": 58,
   "production_visual_types": [
     "BarChart",
     "Calendar",
@@ -11,6 +11,7 @@
     "FillInTable",
     "FractionModel",
     "FractionShade",
+    "GeometryFigure",
     "GridArea",
     "NumberBond",
     "NumberLine",
@@ -1026,6 +1027,68 @@
         ],
         "role_counts": {
           "fraction-part": 2
+        }
+      }
+    },
+    {
+      "case_id": "geometry_figure:mat_g3_mg_q1_4:144073525",
+      "visual_type": "GeometryFigure",
+      "formatter": "geometry_figure",
+      "node_id": "mat_g3_mg_q1_4",
+      "seed": 144073525,
+      "interaction_mode": "read",
+      "answer_collection": "mcq",
+      "mode": "active",
+      "markup_bytes": 835,
+      "description": {
+        "source": "rendered_static_markup",
+        "visual_type": "GeometryFigure",
+        "element_count": 10,
+        "svg_count": 1,
+        "table_row_count": 0,
+        "table_cell_count": 0,
+        "button_count": 0,
+        "input_count": 0,
+        "text_labels": [
+          "A",
+          "B"
+        ],
+        "distinct_colours": [],
+        "role_counts": {
+          "path": 1,
+          "endpoint": 2,
+          "label": 2
+        }
+      }
+    },
+    {
+      "case_id": "geometry_figure:mat_g3_mg_q1_4:144073525",
+      "visual_type": "GeometryFigure",
+      "formatter": "geometry_figure",
+      "node_id": "mat_g3_mg_q1_4",
+      "seed": 144073525,
+      "interaction_mode": "read",
+      "answer_collection": "mcq",
+      "mode": "disabled",
+      "markup_bytes": 835,
+      "description": {
+        "source": "rendered_static_markup",
+        "visual_type": "GeometryFigure",
+        "element_count": 10,
+        "svg_count": 1,
+        "table_row_count": 0,
+        "table_cell_count": 0,
+        "button_count": 0,
+        "input_count": 0,
+        "text_labels": [
+          "A",
+          "B"
+        ],
+        "distinct_colours": [],
+        "role_counts": {
+          "path": 1,
+          "endpoint": 2,
+          "label": 2
         }
       }
     },
@@ -2149,7 +2212,7 @@
     "jsdom has no layout engine: NumberLine and BarChart pointer-drag geometry is unproven",
     "static markup cannot prove crowding, overlap, colour contrast, or touch-target size"
   ],
-  "source_input_digest": "90ed5464a45073d9f52f9a47e43d8019b63f177bafe64b5c3e0135250b32bfff",
+  "source_input_digest": "4a7c760e023f84c48cfe3828af96e1b3734c95a56cbc4d9b99c877dfbc9cf6bd",
   "registered_visual_types": [
     "BalanceScale",
     "BarChart",
@@ -2160,6 +2223,7 @@
     "FillInTable",
     "FractionModel",
     "FractionShade",
+    "GeometryFigure",
     "GridArea",
     "NumberBond",
     "NumberLine",

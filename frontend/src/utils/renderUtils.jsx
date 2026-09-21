@@ -20,6 +20,8 @@ import {
   RulerMeasureInteractive,
   BalanceScaleInteractive,
   ScaleReadInteractive,
+  GeometryFigureInteractive,
+  TimetableInteractive,
   ShapeBoardInteractive,
   NumberBondInteractive
 } from '../components/VisualSkeletons.jsx';
@@ -66,6 +68,10 @@ export function renderVisualInner(vt, vp, onAnswer, disabled, uniqueKey) {
     // pupil reads the instrument; there is no set mode to route to.
     case 'ScaleRead':
       return <ScaleReadInteractive key={uniqueKey} params={vp} />;
+    case 'GeometryFigure':
+      return <GeometryFigureInteractive key={uniqueKey} params={vp} />;
+    case 'Timetable':
+      return <TimetableInteractive key={uniqueKey} params={vp} />;
     case 'ShapeBoard':
       return <ShapeBoardInteractive key={uniqueKey} params={vp} onAnswer={onAnswer} disabled={disabled} />;
     case 'NumberBond':

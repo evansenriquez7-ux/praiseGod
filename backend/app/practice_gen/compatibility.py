@@ -430,6 +430,13 @@ COMPATIBILITY: Dict[str, List[str]] = {
         # path (task_type=="clock_reading") never picks them.
         "mcq",
         "cloze",
+        # `timetable_read` (2026-09-21): the elapsed_unit="timetable" sub-case IS a
+        # display-reading task -- "including TIMETABLES" is in the competency -- and
+        # mcq/cloze bulleted the schedule into the stem after "Look at the class
+        # schedule:", pointing at a display nothing drew. Scoped to
+        # elapsed_unit=="timetable" in FORMATTER_VARIANT_SUPPORT below, and taken away
+        # from mcq/cloze there in the same edit, so no route serves it undrawn.
+        "timetable_read",
     ],
 
     "calendar": [
@@ -451,6 +458,15 @@ COMPATIBILITY: Dict[str, List[str]] = {
 
     "geometric_lines": [
         "mcq",
+        # Added 2026-09-21. MATATAG names the model on both nodes this DNA serves --
+        # "Recognize, USING MODELS, and draws a point, line, line segment, and ray"
+        # (mat_g3_mg_q1_4) and "Recognize and DRAW parallel, intersecting, and
+        # perpendicular lines" (mat_g3_mg_q1_5) -- and with `mcq` alone the model had
+        # to live as ASCII inside the stem ("Look at the model: <---A--------B--->
+        # (a straight path with arrowheads on both ends)"), which made the item
+        # answerable from the GLOSS rather than from the model. Content Rule 4: the
+        # competency names it, so building the formatter is the fix.
+        "geometry_figure",
     ],
 
     "symmetry_slides": [
@@ -976,6 +992,41 @@ FORMATTER_VARIANT_SUPPORT: Dict[str, Dict[str, Dict[str, List[str]]]] = {
         "cloze": {"task_type": ["compare", "convert", "estimate"]},
     },
 
+    "geometric_lines": {
+        # THE SAME DEFECT AS mass_capacity's ABOVE, and fixed in the same order.
+        # `recognize_model` is a LOOK-AT-THE-MODEL task; served through `mcq`, which
+        # draws nothing, it rendered the model as ASCII inside the stem:
+        #     mat_g3_mg_q1_4: "Look at the model: <---A--------B---> (a straight path
+        #                      with arrowheads on both ends). Which geometric figure
+        #                      is represented?"
+        #     mat_g3_mg_q1_5: "Look at the model: two lines that cross each other and
+        #                      form right angles / square corners ( / + ). What type
+        #                      of lines are they?"
+        # Measured 2026-09-21: 6 of 20 seeds on q1_4 and 5 of 20 on q1_5. Answerable,
+        # but only from the parenthetical GLOSS -- "a straight path with endpoints at
+        # both ends" IS the definition of a line segment -- so the item tested reading
+        # a definition rather than recognising a model, while both competencies name
+        # the model outright ("Recognize, using models, ..." / "Recognize and draw ...").
+        #
+        # Same remedy, same order: GIVE the task its visual (fmt_geometry_figure), THEN
+        # take the task away from the formatter that cannot draw it. Doing only the
+        # second half would have left recognize_model unrenderable.
+        "geometry_figure": {
+            "task_type": ["recognize_model"],
+            "concept_type": ["parallel_intersecting_perpendicular", "point_line_segment_ray"],
+        },
+        # As in mass_capacity, this table has no negative form, so excluding
+        # `recognize_model` from mcq means listing every other task_type the pool
+        # carries. `draw_construct` ("which tool should you use?"), `identify_name`,
+        # `identify_property` and `explain_difference` are all answerable in words and
+        # stay textual on purpose -- drawing a figure for "which tool draws a segment?"
+        # would depict something the question is not about.
+        "mcq": {
+            "task_type": ["identify_name", "identify_property", "draw_construct",
+                          "explain_difference"],
+        },
+    },
+
     "multiplication": {
         "table": ["2", "3", "4", "5", "10"],
         "structure": ["result_unknown"],
@@ -1137,18 +1188,37 @@ FORMATTER_VARIANT_SUPPORT: Dict[str, Dict[str, Dict[str, List[str]]]] = {
         # single shape until their schemas gain real multi-shape support.
         "fraction_model_read": {
             "operation": ["identify_name", "compare", "add", "subtract", "add_subtract"],
+            # NO `improper` HERE, DELIBERATELY, and measured rather than assumed. Probed
+            # 2026-09-21 by widening this list in memory and rendering mat_g3_na_q4_6:
+            # seed 2 produced `numerator=7 denominator=3 total_parts=3 shaded_parts=7` --
+            # seven shaded parts in a shape that has three. `fraction_shade` below handles
+            # the same values correctly because it knows to lay out MULTIPLE wholes
+            # ("Shade 11/6 using 2 identical shapes"); this formatter models one shape and
+            # has no such concept. Adding `improper` here would ship a degenerate visual,
+            # so it waits on multi-whole support in `fmt_fraction_model` and its component.
             "fraction_type": ["unit_fraction", "unit", "similar_proper", "proper"],
             # "represent and identify" nodes (mat_g2_na_q4_0/_3) vs "read
             # and write... in fraction notation" siblings (mat_g2_na_q4_1/
             # _4) -- see registry.py's fraction_task_mode binding comment.
-            # Absent for every OTHER fractions node (compare/add_subtract/
-            # count_sequence never set this axis), so this restriction
-            # only ever excludes the notation-only nodes, never those.
+            # SINCE 2026-09-21 this axis is ALSO bound by the "using models" clause
+            # (mat_g1_na_q4_1, mat_g3_na_q4_6, mat_g3_na_q4_7), so the sentence that used
+            # to stand here -- "absent for every OTHER fractions node, so this restriction
+            # only ever excludes the notation-only nodes" -- is no longer true and has
+            # been removed rather than left to mislead. The restriction now also routes
+            # those three nodes AWAY from mcq/cloze, which is the intent: a competency
+            # that says "using models" may not be served as bare notation.
             "fraction_task_mode": ["model"],
         },
         "fraction_shade": {
             "operation": ["identify_name", "equivalent", "add", "subtract", "add_subtract"],
-            "fraction_type": ["unit_fraction", "unit", "similar_proper", "proper"],
+            # `improper` added 2026-09-21: mat_g3_na_q4_6 ("Represent fractions that are
+            # equal to one and greater than one using models") had NO model route at all,
+            # so binding its "using models" clause left it unservable. This formatter
+            # already composes multiple wholes and states it in the stem, verified on 8 of
+            # 12 seeds before the entry was widened -- the capability existed and only the
+            # declaration was missing.
+            "fraction_type": ["unit_fraction", "unit", "similar_proper", "proper",
+                              "improper"],
             "fraction_task_mode": ["model"],
         },
         # operation="order" (mat_g2_na_q4_2/mat_g2_na_q4_5) returns a LIST
@@ -1257,8 +1327,19 @@ FORMATTER_VARIANT_SUPPORT: Dict[str, Dict[str, Dict[str, List[str]]]] = {
         # problem with no single clock to show -- textual only, and
         # excluded from the default clock_reading path by the same
         # task_type match above.
-        "mcq": {"task_type": ["elapsed_time"]},
-        "cloze": {"task_type": ["elapsed_time"]},
+        # `elapsed_unit` is NOT a declared variant axis (see VARIANTS_BY_DNA), and is
+        # restricted here anyway: the orchestrator's formatter filter reads the value
+        # straight out of `ctx.values`, so it narrows correctly without adding a sixth
+        # axis to this DNA's variant cross-product -- declaring one would demand every
+        # precision x ampm x mode x task_type x context x elapsed_unit combination exist
+        # in the pool, which is how a declaration becomes a sweep nobody can satisfy.
+        "timetable_read": {"task_type": ["elapsed_time"], "elapsed_unit": ["timetable"]},
+        # As elsewhere in this table there is no negative form, so excluding the
+        # timetable sub-case means listing the other three elapsed units by name.
+        "mcq": {"task_type": ["elapsed_time"],
+                "elapsed_unit": ["minutes", "hours", "days"]},
+        "cloze": {"task_type": ["elapsed_time"],
+                  "elapsed_unit": ["minutes", "hours", "days"]},
     },
 
     "calendar": {
@@ -1373,6 +1454,95 @@ def get_supported_variants(
             result[variant_name] = all_values
 
     return result
+
+
+class FormatterNotEligible(ValueError):
+    """
+    A formatter was asked for a combination it is not ELIGIBLE for -- as opposed to one
+    it accepted and then broke on.
+
+    The distinction is load bearing and used to be carried by a SUBSTRING. Both
+    `scripts/regen_formatter_exclusions.py` and `validate_compat` classify a refusal by
+    testing `"is not supported by any DNA" not in str(exc)`, so an eligibility refusal
+    phrased any other way is silently reclassified as a content crash: the pair is then
+    reported as broken instead of excluded, stays in the node's advertised list, and §2C
+    counts it as unreachable content debt forever. That is exactly what happened on
+    2026-09-21 when `assert_formatter_supports` began refusing mcq/cloze on the "using
+    models" fraction nodes.
+
+    Subclasses ValueError so every existing `except ValueError` still catches it.
+    """
+
+
+def assert_formatter_supports(dna_name: str, formatter: str, values: dict,
+                              profile: dict, node_id: str = "?", seed=None) -> None:
+    """
+    Raise when a formatter is used against a value FORMATTER_VARIANT_SUPPORT forbids.
+
+    ONE definition, called from BOTH entry points, because they disagreed. The rule lived
+    in `adapter.generate_problem` (walking the difficulty profile, keeping only axes
+    declared in VARIANTS_BY_DNA) and, separately, in the orchestrator's formatter FILTER,
+    which reads the same axes out of `ctx.values` and does not require them to be
+    declared. Neither covered the case that matters: the ORCHESTRATOR skips its filter
+    entirely when the caller PINS a formatter, and the adapter's copy is on a function the
+    orchestrator does not call.
+
+    MEASURED 2026-09-21. `fractions` restricts mcq/cloze to `fraction_task_mode="notation"`
+    and that axis is not declared, so pinning mcq on mat_g1_na_q4_1 -- "Compare 1/2 and
+    1/4 USING MODELS" -- SERVED, returning "Look at the fraction models for 1/2 and 1/4"
+    with `visual_type=None`. The student path had just been fixed to draw that model while
+    the Lab path still shipped the undrawn stem, and §1M could not see it because §1M
+    samples the student path.
+
+    IT COVERS ONLY THE AXES THE OTHER RULE SKIPS -- the ones NOT declared in
+    VARIANTS_BY_DNA -- and that scope is the whole point. `adapter`'s 5b already enforces
+    every DECLARED axis through `is_variant_supported`, which understands the two shapes a
+    declared axis can take. This closes the complement: an axis FORMATTER_VARIANT_SUPPORT
+    restricts but nobody declared, which 5b walks straight past.
+
+    WHY IT MUST NOT BE WIDER, measured on 2026-09-21 by widening it and watching two
+    separate gates go red. Caps, profiles and `ctx.values` do not share one vocabulary:
+
+      * a profile value can be a SCOPE SENTINEL and `ctx.values` its RESOLUTION.
+        `ruler_measure`'s caps list `task_type='measure_compare_or_distance'`; the DNA
+        resolves that to `'compare'`, so comparing the resolved value against the caps
+        refused every pinned render on mat_g2_mg_q2_0 and §2B named it correctly as "the
+        pinned path is stricter than the auto path -- an orchestrator defect". This is the
+        same category error §2D's own comment already records costing 144 legitimate
+        configs.
+      * an axis NAME can collide with a generated value. `division` carries the axis
+        `remainder='none'` in the profile and the arithmetic remainder `0` in values.
+      * reading the REQUEST instead refused 46 producible declarations (§2I) on
+        mat_g1_na_q1_7, where the profile asks one task_type and the DNA generates another.
+
+    Undeclared axes have none of those problems, because an axis nobody declared has
+    exactly one vocabulary: the one the caps entry and the competency bound share.
+
+    NAMED LIMITATION: a DECLARED axis restricted by caps is still enforced only by 5b, and
+    only on the adapter's path. The orchestrator's own filter covers the auto-pick path;
+    a PINNED formatter on a declared axis remains unchecked there. Closing that needs the
+    sentinel vocabulary resolved before comparison, which is per-DNA scope logic and
+    belongs to its own change.
+    """
+    from backend.app.practice_gen.compatibility import get_variants_for_dna as _declared
+    declared = set(_declared(dna_name) or {})
+    caps = FORMATTER_VARIANT_SUPPORT.get(dna_name, {}).get(formatter) or {}
+    for var_name, allowed_vals in caps.items():
+        if var_name in declared:
+            continue          # 5b owns it -- see the docstring
+        if not allowed_vals or not isinstance(allowed_vals, list):
+            continue
+        actual = (profile or {}).get(var_name)
+        if actual is None:
+            actual = (values or {}).get(var_name)
+        if not actual or isinstance(actual, (list, tuple)):
+            continue
+        if actual not in allowed_vals:
+            raise FormatterNotEligible(
+                f"generate_problem: {var_name}='{actual}' is not supported by formatter "
+                f"'{formatter}' for DNA '{dna_name}' (supported: {allowed_vals}). "
+                f"node={node_id} seed={seed}."
+            )
 
 
 def is_variant_supported(

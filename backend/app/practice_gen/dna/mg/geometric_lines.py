@@ -367,6 +367,7 @@ _ITEM_POOL: List[Dict[str, Any]] = [
     # ── point / line / segment / ray: recognize_model ──────────────────────────
     {
         "question": "Look at the model: • P (a single dot with a label). Which geometric figure is represented?",
+        "figure": {"kind": "point", "labels": ["P"]},
         "answer": "point",
         "distractors": ["line", "ray", "line segment"],
         "concept_type": "point_line_segment_ray",
@@ -375,6 +376,7 @@ _ITEM_POOL: List[Dict[str, Any]] = [
     },
     {
         "question": "Look at the model: <---A--------B---> (a straight path with arrowheads on both ends). Which geometric figure is represented?",
+        "figure": {"kind": "line", "labels": ["A", "B"]},
         "answer": "line",
         "distractors": ["line segment", "ray", "point"],
         "concept_type": "point_line_segment_ray",
@@ -383,6 +385,7 @@ _ITEM_POOL: List[Dict[str, Any]] = [
     },
     {
         "question": "Look at the model: • A--------B • (a straight path with endpoints at both ends). Which geometric figure is represented?",
+        "figure": {"kind": "segment", "labels": ["A", "B"]},
         "answer": "line segment",
         "distractors": ["line", "ray", "point"],
         "concept_type": "point_line_segment_ray",
@@ -391,6 +394,7 @@ _ITEM_POOL: List[Dict[str, Any]] = [
     },
     {
         "question": "Look at the model: • A--------B---> (starts at endpoint A and extends past B with an arrowhead). Which geometric figure is represented?",
+        "figure": {"kind": "ray", "labels": ["A", "B"]},
         "answer": "ray",
         "distractors": ["line", "line segment", "point"],
         "concept_type": "point_line_segment_ray",
@@ -399,6 +403,7 @@ _ITEM_POOL: List[Dict[str, Any]] = [
     },
     {
         "question": "Look at the diagram of a triangle. Each of its straight sides with two endpoints is an example of a ___.",
+        "figure": {"kind": "triangle", "labels": ["A", "B", "C"]},
         "answer": "line segment",
         "distractors": ["line", "ray", "point"],
         "concept_type": "point_line_segment_ray",
@@ -407,6 +412,7 @@ _ITEM_POOL: List[Dict[str, Any]] = [
     },
     {
         "question": "A beam of light starting from a flashlight and travelling outward in one direction is a real-world model of a ___.",
+        "figure": {"kind": "ray", "labels": ["A", "B"]},
         "answer": "ray",
         "distractors": ["line", "line segment", "point"],
         "concept_type": "point_line_segment_ray",
@@ -461,6 +467,7 @@ _ITEM_POOL: List[Dict[str, Any]] = [
     # ── parallel / intersecting / perpendicular: recognize_model ───────────────
     {
         "question": "Look at the model: two straight lines that run side by side and never meet ( || ). What type of lines are they?",
+        "figure": {"kind": "parallel"},
         "answer": "parallel lines",
         "distractors": ["perpendicular lines", "intersecting lines", "rays"],
         "concept_type": "parallel_intersecting_perpendicular",
@@ -469,6 +476,7 @@ _ITEM_POOL: List[Dict[str, Any]] = [
     },
     {
         "question": "Look at the model: two lines that cross each other and form right angles / square corners ( ⟂ / + ). What type of lines are they?",
+        "figure": {"kind": "perpendicular"},
         "answer": "perpendicular lines",
         # 'intersecting lines' removed as a distractor: every perpendicular pair
         # IS an intersecting pair, so a pupil choosing it was marked wrong for a
@@ -482,6 +490,7 @@ _ITEM_POOL: List[Dict[str, Any]] = [
     },
     {
         "question": "Look at the model: two lines that cross at a single point without forming square corners ( X ). What type of lines are they?",
+        "figure": {"kind": "intersecting"},
         "answer": "intersecting lines",
         "distractors": ["parallel lines", "perpendicular lines", "rays"],
         "concept_type": "parallel_intersecting_perpendicular",
@@ -490,6 +499,7 @@ _ITEM_POOL: List[Dict[str, Any]] = [
     },
     {
         "question": "Look at the letter 'H'. The two vertical side segments are an example of ___.",
+        "figure": {"kind": "letter", "letter": "H"},
         "answer": "parallel lines",
         "distractors": ["perpendicular lines", "intersecting lines", "rays"],
         "concept_type": "parallel_intersecting_perpendicular",
@@ -498,6 +508,7 @@ _ITEM_POOL: List[Dict[str, Any]] = [
     },
     {
         "question": "Look at the letter 'T'. The vertical and horizontal segments meet to form ___.",
+        "figure": {"kind": "letter", "letter": "T"},
         "answer": "perpendicular lines",
         # See above: 'intersecting lines' is true of a perpendicular pair, so it
         # cannot serve as a distractor against a keyed 'perpendicular lines'.
@@ -508,6 +519,7 @@ _ITEM_POOL: List[Dict[str, Any]] = [
     },
     {
         "question": "Look at the letter 'X'. The two crossing line segments form ___.",
+        "figure": {"kind": "letter", "letter": "X"},
         "answer": "intersecting lines",
         # Same mirror defect: nothing in the stem rules out square corners, so
         # 'perpendicular lines' is not reliably false of the figure described.

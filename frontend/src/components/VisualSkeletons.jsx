@@ -4084,6 +4084,217 @@ export function NumberBondInteractive({ params, onAnswer, disabled }) {
 //
 // Every graduation is a real element so the static-render evidence can count what
 // the learner actually sees, rather than trusting the payload.
+/**
+ * GeometryFigureInteractive — the drawn model for `geometric_lines`.
+ *
+ * MATATAG names the model on both nodes this serves ("Recognize, USING MODELS, and
+ * draws a point, line, line segment, and ray"; "Recognize and DRAW parallel,
+ * intersecting, and perpendicular lines"), and until 2026-09-21 the DNA had no visual
+ * formatter at all, so the model was ASCII inside the stem: "Look at the model:
+ * <---A--------B---> (a straight path with arrowheads on both ends)". The parenthetical
+ * gloss made the item answerable from a DEFINITION rather than from a model.
+ *
+ * The distinctions a pupil must see are exactly three, and each is drawn rather than
+ * described: an ARROWHEAD means "continues forever this way", a DOT means "stops here",
+ * and a right-angle SQUARE marks perpendicularity. Every one of them is an element in
+ * the emitted SVG with its own `data-role`, so the static-render suite can count them
+ * instead of trusting a screenshot -- the same choice ScaleRead's needle makes, and for
+ * the same reason (jsdom has no layout engine; see §12's named blind spot).
+ */
+/**
+ * TimetableInteractive — the drawn schedule for `time_reading`'s timetable sub-case.
+ *
+ * mat_g2_mg_q4_2's competency is elapsed time "including TIMETABLES". The stem used to
+ * bullet the schedule into the sentence after "Look at the class schedule:", so the item
+ * pointed at a display the page never drew and the pupil read prose rather than a table.
+ *
+ * Emitted as a real <table>, so the static-render evidence counts rows and cells
+ * (`table_row_count`, `table_cell_count`) rather than trusting a div grid that only
+ * looks tabular.
+ */
+export function TimetableInteractive({ params }) {
+  const kind = params?.kind === 'bus' ? 'bus' : 'class';
+  const columns = Array.isArray(params?.columns) && params.columns.length
+    ? params.columns
+    : ['Name', 'Starts', 'Ends'];
+  const rows = Array.isArray(params?.rows) ? params.rows : [];
+
+  if (!rows.length) {
+    // An empty timetable is the degenerate render §12 exists to catch: it would look
+    // like a heading with nothing under it and the item would be unanswerable.
+    throw new Error('Timetable: no rows to draw');
+  }
+
+  return (
+    <div data-visual="Timetable" data-kind={kind}
+         style={{ display: 'flex', justifyContent: 'center', padding: '16px',
+                  width: '100%' }}>
+      <table data-pgen-role="timetable"
+             style={{ borderCollapse: 'collapse', minWidth: '280px',
+                      fontSize: '15px', background: '#ffffff' }}>
+        <thead>
+          <tr>
+            {columns.map((c, i) => (
+              <th key={i} data-pgen-role="timetable-header"
+                  style={{ border: '2px solid #334155', padding: '8px 14px',
+                           background: '#e2e8f0', fontWeight: 700, color: '#0f172a' }}>
+                {c}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((r, i) => (
+            <tr key={i} data-pgen-role="timetable-row" data-label={r?.label || ''}>
+              <td style={{ border: '2px solid #334155', padding: '8px 14px',
+                           fontWeight: 600, color: '#0f172a' }}>{r?.label}</td>
+              <td style={{ border: '2px solid #334155', padding: '8px 14px',
+                           color: '#0f172a' }}>{r?.start}</td>
+              <td style={{ border: '2px solid #334155', padding: '8px 14px',
+                           color: '#0f172a' }}>{r?.end}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+export function GeometryFigureInteractive({ params }) {
+  const kind = params?.kind || 'segment';
+  const labels = Array.isArray(params?.labels) ? params.labels : [];
+  const letter = params?.letter || null;
+
+  const W = 320, H = 180;
+  const stroke = '#1d4ed8', strokeW = 4;
+  const dot = (x, y, key, label) => (
+    <g key={key}>
+      <circle data-pgen-role="endpoint" cx={x} cy={y} r="6" fill="#0f172a" />
+      {label && (
+        <text data-pgen-role="label" x={x} y={y - 14} textAnchor="middle" fontSize="16"
+              fontWeight="700" fill="#0f172a">{label}</text>
+      )}
+    </g>
+  );
+
+  // One marker per arrowhead, so each is countable in the emitted markup.
+  const arrow = (x, y, dir, key) => (
+    <polygon data-pgen-role="arrowhead" key={key}
+             points={dir === 'right'
+               ? `${x},${y - 8} ${x + 16},${y} ${x},${y + 8}`
+               : `${x},${y - 8} ${x - 16},${y} ${x},${y + 8}`}
+             fill={stroke} />
+  );
+
+  let body = null;
+  if (kind === 'point') {
+    body = <>{dot(W / 2, H / 2, 'p', labels[0] || 'P')}</>;
+  } else if (kind === 'line') {
+    body = (
+      <>
+        <line data-pgen-role="path" x1={50} y1={H / 2} x2={W - 50} y2={H / 2}
+              stroke={stroke} strokeWidth={strokeW} />
+        {arrow(50, H / 2, 'left', 'a1')}
+        {arrow(W - 50, H / 2, 'right', 'a2')}
+        {dot(110, H / 2, 'd1', labels[0] || 'A')}
+        {dot(W - 110, H / 2, 'd2', labels[1] || 'B')}
+      </>
+    );
+  } else if (kind === 'segment') {
+    body = (
+      <>
+        <line data-pgen-role="path" x1={70} y1={H / 2} x2={W - 70} y2={H / 2}
+              stroke={stroke} strokeWidth={strokeW} />
+        {dot(70, H / 2, 'd1', labels[0] || 'A')}
+        {dot(W - 70, H / 2, 'd2', labels[1] || 'B')}
+      </>
+    );
+  } else if (kind === 'ray') {
+    body = (
+      <>
+        <line data-pgen-role="path" x1={70} y1={H / 2} x2={W - 50} y2={H / 2}
+              stroke={stroke} strokeWidth={strokeW} />
+        {dot(70, H / 2, 'd1', labels[0] || 'A')}
+        {dot(150, H / 2, 'd2', labels[1] || 'B')}
+        {arrow(W - 50, H / 2, 'right', 'a1')}
+      </>
+    );
+  } else if (kind === 'parallel') {
+    body = (
+      <>
+        <line data-pgen-role="path" x1={50} y1={65} x2={W - 50} y2={65}
+              stroke={stroke} strokeWidth={strokeW} />
+        <line data-pgen-role="path" x1={50} y1={125} x2={W - 50} y2={125}
+              stroke={stroke} strokeWidth={strokeW} />
+      </>
+    );
+  } else if (kind === 'perpendicular') {
+    body = (
+      <>
+        <line data-pgen-role="path" x1={50} y1={H / 2} x2={W - 50} y2={H / 2}
+              stroke={stroke} strokeWidth={strokeW} />
+        <line data-pgen-role="path" x1={W / 2} y1={25} x2={W / 2} y2={H - 25}
+              stroke={stroke} strokeWidth={strokeW} />
+        {/* the square corner is the whole distinction from `intersecting` */}
+        <rect data-pgen-role="right-angle" x={W / 2} y={H / 2 - 22} width="22" height="22"
+              fill="none" stroke="#dc2626" strokeWidth="3" />
+      </>
+    );
+  } else if (kind === 'intersecting') {
+    body = (
+      <>
+        <line data-pgen-role="path" x1={55} y1={35} x2={W - 55} y2={H - 35}
+              stroke={stroke} strokeWidth={strokeW} />
+        <line data-pgen-role="path" x1={55} y1={H - 35} x2={W - 55} y2={35}
+              stroke={stroke} strokeWidth={strokeW} />
+        <circle data-pgen-role="intersection" cx={W / 2} cy={H / 2} r="5" fill="#dc2626" />
+      </>
+    );
+  } else if (kind === 'triangle') {
+    body = (
+      <>
+        <polygon data-pgen-role="path" points={`${W / 2},35 ${W - 70},${H - 40} 70,${H - 40}`}
+                 fill="none" stroke={stroke} strokeWidth={strokeW} />
+        {dot(W / 2, 35, 't1', labels[0] || 'A')}
+        {dot(W - 70, H - 40, 't2', labels[1] || 'B')}
+        {dot(70, H - 40, 't3', labels[2] || 'C')}
+      </>
+    );
+  } else if (kind === 'letter') {
+    // The letter's STROKES are the model, so it is drawn as line segments rather
+    // than set as type: a glyph in a font is not a figure a pupil can point at.
+    const strokes = {
+      H: [[90, 40, 90, 140], [230, 40, 230, 140], [90, 90, 230, 90]],
+      T: [[80, 45, 240, 45], [160, 45, 160, 145]],
+      X: [[85, 40, 235, 140], [235, 40, 85, 140]],
+    }[letter] || [];
+    body = (
+      <>
+        {strokes.map((s, i) => (
+          <line data-pgen-role="path" key={i} x1={s[0]} y1={s[1]} x2={s[2]} y2={s[3]}
+                stroke={stroke} strokeWidth={6} strokeLinecap="round" />
+        ))}
+      </>
+    );
+  } else {
+    // Never silently draw an empty box: an unknown kind is a routing defect and
+    // must be visible as one rather than rendering as a blank frame (Protocol 3).
+    throw new Error(`GeometryFigure: unknown kind '${kind}'`);
+  }
+
+  return (
+    <div data-visual="GeometryFigure" data-kind={kind} data-letter={letter || ''}
+         style={{ display: 'flex', flexDirection: 'column', alignItems: 'center',
+                  padding: '16px', width: '100%' }}>
+      <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`} role="img"
+           aria-label={letter ? `The letter ${letter} drawn as line segments`
+                              : `A drawn ${kind}`}>
+        {body}
+      </svg>
+    </div>
+  );
+}
+
 export function ScaleReadInteractive({ params }) {
   const reading = Number(params?.reading) || 0;
   const unit = params?.unit || '';

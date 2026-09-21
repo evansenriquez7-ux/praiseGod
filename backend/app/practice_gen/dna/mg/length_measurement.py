@@ -15,6 +15,7 @@ from backend.app.practice_gen.dna.base import (
     DNA,
     ErrorPattern,
     VocabGated,
+    count_noun,
     linear_interpolate,
     log_interpolate,
 )
@@ -912,9 +913,13 @@ def generate_hints(
     m_label  = VOCAB_METER.resolve(cumulative_vocab)
     unit_label = {"cm": cm_label, "m": m_label}
 
-    def _sing(unit: str, count: Any) -> str:
-        """Non-standard units are all regular '-s' plurals; singularize for count==1."""
-        return unit[:-1] if count == 1 and isinstance(unit, str) and unit.endswith("s") and unit not in ("cm", "m") else unit
+    # A local `_sing(unit, count)` used to live here: `unit[:-1]` when the count was 1,
+    # with a hand-rolled exception for "cm"/"m". That is the shared inflection rule written
+    # a SECOND time, and a second copy is free to disagree with the one §1J imports -- it
+    # would have mangled any unit ending in -us/-is/-ss the way `1 hibiscus` -> `1 hibiscu`
+    # was mangled in 2026-09-12. Removed 2026-09-21 in favour of `dna.base.count_noun`,
+    # which needs no cm/m exception because neither ends in "s". Note the ARGUMENT ORDER is
+    # the opposite way round: `count_noun(count, plural)`.
 
     # task_type-specific branches must be checked before the generic
     # unit_type=="non_standard" fallback below -- "compare"/"equal_length"/
@@ -925,18 +930,18 @@ def generate_hints(
         val_a, val_b = values["value_a"], values["value_b"]
         unit_word = unit_label.get(unit_type, values.get("unit", "units"))
         return [
-            f"Compare {val_a} {_sing(unit_word, val_a)} and {val_b} {_sing(unit_word, val_b)}.",
+            f"Compare {val_a} {count_noun(val_a, unit_word)} and {val_b} {count_noun(val_b, unit_word)}.",
             f"{max(val_a, val_b)} is more than {min(val_a, val_b)}.",
-            f"The longer {'distance' if task_type == 'compare_distance' else 'length'} is {values['answer']} {_sing(unit_word, values['answer'])}.",
+            f"The longer {'distance' if task_type == 'compare_distance' else 'length'} is {values['answer']} {count_noun(values['answer'], unit_word)}.",
         ]
 
     if task_type == "equal_length":
         val_a, val_b = values["value_a"], values["value_b"]
         unit_word = unit_label.get(unit_type, values.get("unit", "units"))
         return [
-            f"Compare {val_a} {_sing(unit_word, val_a)} and {val_b} {_sing(unit_word, val_b)}.",
+            f"Compare {val_a} {count_noun(val_a, unit_word)} and {val_b} {count_noun(val_b, unit_word)}.",
             "Equal length means the same number of units, not just a similar look.",
-            f"{val_a} {_sing(unit_word, val_a)} {'equals' if val_a == val_b else 'does not equal'} {val_b} {_sing(unit_word, val_b)}, so the answer is {values['answer']}.",
+            f"{val_a} {count_noun(val_a, unit_word)} {'equals' if val_a == val_b else 'does not equal'} {val_b} {count_noun(val_b, unit_word)}, so the answer is {values['answer']}.",
         ]
 
     if task_type == "distance_between":
@@ -944,7 +949,7 @@ def generate_hints(
         return [
             f"Count how many {unit} fit in the gap between the two objects.",
             "Make sure no gaps or overlaps between the units.",
-            f"The distance between them is {values['answer']} {_sing(unit, values['answer'])}.",
+            f"The distance between them is {values['answer']} {count_noun(values['answer'], unit)}.",
         ]
 
     if unit_type == "non_standard":
@@ -952,7 +957,7 @@ def generate_hints(
         return [
             f"Count how many {unit} fit along the object from end to end.",
             "Make sure no gaps or overlaps between the units.",
-            f"The length is {values['answer']} {unit}.",
+            f"The length is {values['answer']} {count_noun(values['answer'], unit)}.",
         ]
 
     if unit_type == "convert_between":
@@ -972,7 +977,8 @@ def generate_hints(
 
     return [
         f"Read the measurement on the ruler carefully.",
-        f"The length is {values['answer']} {values.get('unit', 'units')}.",
+        f"The length is {values['answer']} "
+        f"{count_noun(values['answer'], values.get('unit', 'units'))}.",
     ]
 
 
