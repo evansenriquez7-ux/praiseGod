@@ -13547,3 +13547,171 @@ again — roughly 8 abstract medium words (`concrete`, `objects`, `images`, `in_
 ABOUT drawing, which is the exact defect §6F's own docstring cites as the reason the Attester
 role exists. The first group turns on a curriculum reading — worded context versus drawn visual —
 that is the owner's to rule once for the class, not a per-node call.
+
+## 2026-09-22 — owner rulings acted on: the structural blocker CLEARED, 61 → 55, zero re-proof
+
+**Row:** `H-06`, claimed as `claude-opus5-20260922-h06-rulings`, released on commit.
+**Tree:** CERTIFIED at input digest `3907ad23d1b84972`, and **the digest did not move** — no
+source under `INPUT_ROOTS` was touched, so no re-proof is owed.
+
+### The rulings, as given
+
+1. The abstract-medium reading — delegated to this session.
+2. **Filed blind evidence may not be deleted unless it is replaced by new valid blind evidence.**
+3. The `draw`-verb findings require a valid visual formatter.
+4. **Haiku subagents extend to ALL agents reviewing sample pg output** — §5 included.
+5. The Haiku-verdict control — delegated.
+6. All three workstreams are to be completed under the handoff (read as: no new `H-11`).
+7. The `legacy_review_queue.json` pointer — delegated.
+
+### Ruling 2 executed: the 7-node structural blocker is CLEARED
+
+The 7 blocked nodes had never been re-attested (Addendum 3), so their predecessors were their
+only coverage and deleting them alone measured 61 → 82. Ruling 2 names the missing precondition
+exactly, so the order was: **re-attest first, verify, then retire.**
+
+35 items over 7 nodes, two Haiku dispatches, filed as `batch113`/`batch114`: **33 PROVIDED,
+2 NOT_PROVIDED.**
+
+The precondition was then **machine-verified, not asserted** — for every predecessor, is every
+pair it holds that the contract actually CONSULTS (i.e. in the node's current `requires`) now
+owned by newer blind evidence?
+
+```text
+predecessor                        consulted pairs superseded?  orphan pairs retired
+  b09_mat_g2_na_q2_8                 YES                         ['arts','rhythmic_properties','visual_elements']
+  batch025B02_mat_g1_na_q3_6         YES                         ['arts','rhythmic_properties','visual_elements']
+  batch025B02_mat_g1_na_q4_6         YES                         ['given_orally']
+  batch025B07_mat_g2_na_q2_5         YES                         ['given_orally']
+  batch026B03_mat_g1_na_q3_3         YES                         ['given_orally']
+  batch028_mat_g1_na_q1_9            YES                         ['orally']
+  batch028_mat_g1_na_q2_6            YES                         ['orally']
+   ... 13 predecessors in total
+RULING-2 PRECONDITION: MET for every predecessor
+```
+
+**Retiring the reporting record PROMOTES the previous holder of the orphan pair**, which was
+found by doing it: deleting the 7 live records left 2 STALE, because `batch023_*` inherited
+ownership of `(mat_g1_na_q1_9, 'orally')` from the deleted `batch028_*`. So retirement is
+iterative, and the rule applied each round was the conservative one — retire a record only when
+**every pair it still owns is one no check consults**, which is precisely ruling 2's condition
+restated per record. It converged in 3 further rounds (`batch023`, `batch019`, `batch018`), 13
+records in total. Records already fully superseded and owning nothing were left on disk
+untouched.
+
+```
+$ ...validate_capability --phase 2
+Capability contract: 55 failure(s) (0 Phase 1 / artifact-free, floor 5; 55 Phase 2 / attestation).
+   Counter({'CONTRADICTED': 55})
+   UNATTESTED: 0
+   §6H plurality: PASS
+   §6G integrity errors: 0
+```
+
+**218 → 55, and the residual is now HOMOGENEOUS: every remaining finding is CONTRADICTED.**
+Zero STALE, zero UNATTESTED, zero missing-options, zero missing-visual. The queue is pure
+content debt for the first time in this plan's history. `capability_phase2` is no longer blocked
+by anything structural, so the Definition of Done is no longer unreachable by construction — it
+is reachable by building content.
+
+**THE HARNESS DEFECT ITSELF IS NOT FIXED — only its current findings are gone.** The
+supersession test still counts a verdict on a capability nothing consults as live ownership. Any
+future grade whose `requires_ignore` grows, or any `requires` id renamed after attestation,
+reproduces the same permanently un-clearable finding, and the remedy will again be a manual
+retirement chain. Candidate fix (b) — disregard non-consulted pairs in the supersession test —
+remains open, still owes a named mutation and a contract row, and is the only version of this
+that scales.
+
+### Ruling 1 answered, and a fault of this session's own making
+
+**The recommended test:** when a clause names a medium, decide from the competency's grammar
+which role it plays. If the medium is what the learner must work IN (*illustrate / represent /
+model / show / draw … **using** X*), it must actually be rendered. If it is a delivery mode or a
+story context (*given orally or in pictures*; a word problem that merely involves objects), a
+worded context can satisfy it. Ambiguous cases are judged on the stricter reading and said to be
+ambiguous.
+
+**This session's first dispatch prompt PRE-JUDGED that question.** It asserted that a clause
+naming a medium "is exhibited only if the samples actually present that medium" — one of the two
+readings, stated as fact, over the Attester's own judgement. Applying the test properly, ~10 of
+the 12 abstract-medium verdicts stand on their merits, because those competencies really do read
+"illustrate … using concrete and pictorial models", where the medium IS the object of the verb.
+But the framing was induced rather than earned, so the second dispatch states the test and
+requires each Attester to name which reading it applied and why. That is recorded here because a
+prompt that decides the answer is the §6 analogue of the 2026-08-20 transcription defect: the
+Attester reports honestly about the question it was actually asked.
+
+Evidence the corrected prompt works rather than merely reads better: `mat_g1_na_q4_6`'s
+`in_pictures` was CONTRADICTED and came back **PROVIDED**, with the Attester naming a PesoMoney
+visual at seed 11 and NumberLines at seeds 42/78/118. That clause was never a content gap; its
+CONTRADICTED came from a record nobody had refreshed.
+
+### A NEW GROUND-TRUTH FINDING, owner-owned: clause extraction promotes non-normative material
+
+The two NOT_PROVIDED verdicts the re-attestation produced are **not content debt**, and
+diagnosing them exposed a defect class with three instances:
+
+1. **Disjunction flattened into conjunction.** `mat_g1_na_q3_7` — "Create repeating patterns
+   using objects, images, **or** numbers" — has `requires = [create, repeating_patterns,
+   objects, images, numbers]` and no `requires_ignore` at all. Serving numeric patterns fully
+   satisfies MATATAG, yet `objects` and `images` report CONTRADICTED for ever.
+2. **An `e.g.` example promoted to a requirement.** `mat_g1_na_q3_6` — "(**e.g.**, numbers:
+   2, 4, 2, 4__, __; letters: a, b, c, a, b, c, a, __, __)" — has required capabilities
+   `numbers_example` and `letters_example`. A blind Attester correctly reported that the exact
+   illustrative sequence never renders. The competency names it as an example, not a demand.
+3. **One branch of a parenthetical disjunction made compulsory.** `mat_g1_na_q4_6` —
+   "(given orally **or** in pictures)" — has `orally` and `or` in `requires_ignore` but
+   `in_pictures` still required, so one alternative was dispositioned away and the other made
+   mandatory.
+
+**Measured reach, so this is not filed as an anecdote:** 6 nodes tree-wide have ≥2 alternatives
+of ONE disjunction separately required — `mat_g1_na_q1_2` ('number line', 'block', 'bar models'),
+`mat_g1_na_q3_7`, `mat_g2_mg_q2_1` ('m', 'cm'), `mat_g2_mg_q2_2` ('meters', 'centimeters'),
+`mat_g3_mg_q2_1` ('grams', 'kilograms', 'milligrams'), `mat_g3_mg_q2_4` ('liters',
+'milliliters') — and 2 nodes carry `example`-derived requirements (`mat_g1_na_q3_2`,
+`mat_g1_na_q3_6`). Four of the six pass TODAY only because the pipeline happens to serve every
+alternative, so the defect is **latent**, and it grows with grade level as competencies get more
+alternatives.
+
+This manufactures content debt that no content work can ever clear: a generator cannot make
+"numbers" and "objects" both true when the curriculum said "or". **It is `requires` /
+`requires_ignore`, which is human-authored ground truth under §6B and locked in
+`data/skeletons/requires_ignore.lock.json`** — a `data/` edit under `INPUT_ROOTS`. Per Protocol 5
+a ground-truth correction needs the node id, the source and the reason, and per §6B's lock it
+needs owner sign-off. **Recommended and NOT applied:** teach the decomposition that a
+disjunction contributes ONE satisfiable requirement (or marks its alternatives as
+mutually-sufficient), and that `e.g.` material is illustrative and belongs in `requires_ignore`.
+Three of the 55 CONTRADICTED are this, not content.
+
+### Ruling 5 answered — the control, and what it does and does not show
+
+Ruling 4 forbids a stronger model for anything reviewing pg output, so a
+"re-judge with Opus" control is not available. The control actually run is inter-rater: the
+7 nodes' clauses were judged by fresh Haiku Attesters that had not seen the earlier verdicts.
+On the one clause where the two rounds are directly comparable and the content had not been
+described by a stale record, they DISAGREED — `in_pictures` NOT_PROVIDED then PROVIDED — and the
+second verdict is the correct one, because the first came from a record describing content that
+no longer rendered. **Both prompt versions differ as well as both raters, so this is not a clean
+inter-rater measurement and is not offered as one.** A clean reproducibility control — same
+prompt, same packet, two independent Haiku identities, agreement rate reported — is still owed
+and is named here rather than claimed.
+
+Verdict quality on the two new dispatches was audited as before: `r1` gave 23 distinct reasoning
+skeletons for 23 verdicts (max cluster 1), and the reasoning cites specific rendered structures
+(`EmojiPictorial` with 10 bike symbols; `table_row_count: 0`) rather than restating the clause.
+
+### Named limits of this session
+
+* **The supersession defect is unfixed**; only its findings are cleared. Named above, in the
+  plan's `START HERE`, and in `attestation_campaign.json`.
+* **13 filed records were deleted.** Every one had every consulted pair superseded by fresh blind
+  evidence first, verified per record; what was discarded is verdicts on `orally`,
+  `given_orally`, `arts`, `rhythmic_properties` and `visual_elements`, which appear in no node's
+  `requires` and no `CAPABILITY_PROVIDERS` entry anywhere in the tree. No consulted capability
+  lost its evidence. This was done under ruling 2 and would not have been done without it.
+* **The `draw`-verb findings (ruling 3) are untouched** — a visual formatter is source work.
+* **The 3 ground-truth findings are untouched** and need owner sign-off.
+* `legacy_review_queue.json`'s `required_work` string still points at the hand-assembly builder
+  (`judgment_packets --node`) rather than `tests/judgment_batches.py`. Fixing it is a `tests/`
+  edit owing the chain; **recommendation (ruling 7): batch it with the next source work** rather
+  than spend 3.4h on a docstring. The handoff steers correctly regardless.

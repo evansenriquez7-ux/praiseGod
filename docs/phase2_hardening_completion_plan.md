@@ -1259,7 +1259,63 @@ row rather than as "crashes on DNS".
 rather than in the heading, because a heading carrying a commit hash makes the anchor
 that points at it break every time the section is refreshed.
 
-> ### ⚠ 2026-09-22 — PHASE B's ATTESTATION CAMPAIGN IS COMPLETE. READ THIS FIRST.
+> ### ⚠ 2026-09-22 (late) — OWNER RULINGS ACTED ON. THE §6 QUEUE IS NOW PURE CONTENT DEBT.
+>
+> Supersedes the block below it, which is kept for its reasoning and for the campaign record.
+>
+> **`capability_phase2` = 55, and EVERY remaining finding is CONTRADICTED.** Zero STALE, zero
+> UNATTESTED, zero missing-options, zero missing-visual, §6G integrity 0 errors, §6H plurality
+> PASS. Digest `3907ad23d1b84972` unmoved; no re-proof owed. 218 → 55 over two sessions.
+>
+> **The 7-node structural blocker is CLEARED**, under the owner's ruling that filed blind
+> evidence may be retired only once replaced by new valid blind evidence. Order: re-attest the
+> 7 nodes (35 items, two Haiku dispatches, `batch113`/`batch114`, 33 PROVIDED / 2 NOT_PROVIDED),
+> machine-verify per record that every CONSULTED pair is superseded, then retire. Retirement is
+> ITERATIVE — deleting the reporting record promotes the previous holder of the orphan pair — and
+> converged over 4 rounds, 13 records. **The Definition of Done is no longer unreachable by
+> construction.**
+>
+> **But the HARNESS DEFECT is not fixed, only its findings are.** The supersession test still
+> counts a verdict on a capability nothing consults as live ownership, so any future grade whose
+> `requires_ignore` grows reproduces it and needs the same manual retirement chain. Fix (b) below
+> is still the only version that scales.
+>
+> **NEW, and owner-owned: `requires` extraction promotes NON-NORMATIVE material into mandatory
+> capabilities.** Three instances, all measured: a disjunction flattened into a conjunction
+> (`mat_g1_na_q3_7`, "objects, images, **or** numbers" → all three required); an `e.g.` example
+> promoted to a requirement (`mat_g1_na_q3_6`, `numbers_example`/`letters_example`); and one
+> branch of a parenthetical disjunction made compulsory while the other was ignored
+> (`mat_g1_na_q4_6`, `in_pictures` required, `orally` ignored). Reach: **6 nodes** have ≥2
+> alternatives of one disjunction separately required (`mat_g1_na_q1_2`, `mat_g1_na_q3_7`,
+> `mat_g2_mg_q2_1`, `mat_g2_mg_q2_2`, `mat_g3_mg_q2_1`, `mat_g3_mg_q2_4`) and **2** carry
+> `example`-derived requirements (`mat_g1_na_q3_2`, `mat_g1_na_q3_6`). Four of the six pass today
+> only because the pipeline happens to serve every alternative, so it is LATENT and grows with
+> grade level. **This manufactures content debt no generator can clear** — nothing can make
+> "objects" and "numbers" both true when MATATAG said "or". It is `requires`/`requires_ignore`,
+> human-authored ground truth under §6B, locked in `data/skeletons/requires_ignore.lock.json`, so
+> correcting it is a `data/` edit needing owner sign-off (Protocol 5) and the chain. **3 of the
+> 55 CONTRADICTED are this, not content.** Recommended, not applied: a disjunction contributes
+> ONE satisfiable requirement; `e.g.` material is illustrative and belongs in `requires_ignore`.
+>
+> **Owner rulings recorded 2026-09-22, binding on the next session:**
+>
+> 1. **The medium test.** When a clause names a medium, decide from the competency's grammar
+>    which role it plays: the thing the learner must work IN (*illustrate/represent/model/draw
+>    … using X*) → it must actually be rendered; a delivery mode or story context (*given orally
+>    or in pictures*) → a worded context can satisfy it. Ambiguous → judge on the stricter
+>    reading and say so. **Never encode the answer in the dispatch prompt** — this session's
+>    first prompt did, asserting that any medium clause needs the medium present, and that is
+>    the §6 analogue of the 2026-08-20 transcription defect.
+> 2. **Filed blind evidence may be deleted ONLY once replaced by new valid blind evidence**, and
+>    the replacement must be verified per record, per pair, before anything is removed.
+> 3. **The `draw`-verb findings require a valid visual formatter** — a question ABOUT drawing
+>    does not satisfy a competency that says draw. Source work.
+> 4. **Haiku subagents extend to ALL agents reviewing sample pg output**, the §5 review campaign
+>    included. Name the model that actually judged in the record.
+> 6. **All three workstreams complete under the handoff** — no `H-11`. `H-06` carries the
+>    capability content debt, the structural defect, and the 151 owed judgment re-reviews.
+>
+> ### ⚠ 2026-09-22 — PHASE B's ATTESTATION CAMPAIGN IS COMPLETE (superseded by the block above).
 >
 > Supersedes every block below it, which are kept for their reasoning. Where they
 > disagree, this wins. **The campaign the two previous handoffs sent you at no longer

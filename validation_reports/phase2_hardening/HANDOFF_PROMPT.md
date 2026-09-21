@@ -85,7 +85,15 @@ Every previous handoff could send you at work that cost no re-proof. That work n
 exists. **Everything left is a source edit and therefore owes the full ~3.4h chain**, so the
 correct move is to BATCH it: do not land one fix, re-prove, then land another.
 
-The residual 61 on `capability_phase2` splits in two, and neither half is more attestation:
+**As of 2026-09-22 (late) the §6 queue is 55 and EVERY finding is CONTRADICTED** — zero STALE,
+zero UNATTESTED, zero missing-options, zero missing-visual. The 7-node structural blocker was
+cleared under the owner's ruling 2 (retire a filed record only once new valid blind evidence
+replaces it, verified per pair). **The harness defect behind it is NOT fixed, only its findings
+are**, and 3 of the 55 are a ground-truth decomposition defect rather than content. Read the
+plan's `START HERE` before planning any §6 work; the paragraphs below describe the 61-finding
+state and are kept for their reasoning.
+
+The residual 61 on `capability_phase2` split in two, and neither half was more attestation:
 
 1. **54 CONTRADICTED — genuine content debt**, 35 nodes, each now backed by fresh blind
    evidence that names the exact gap. Build the artifact the clause names, or delete the

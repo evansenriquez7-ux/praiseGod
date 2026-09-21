@@ -1,0 +1,679 @@
+{
+  "batch": "batch113_mat_g1_na_q2_6",
+  "attested_at": "2026-09-22T00:00:00Z",
+  "attested_by": "blind-attester-haiku45-r1-20260922",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "the Attester was told to read exactly local_only/scratch/attester/h06r2/r1.prompt.txt, which is attester_packets.render_prompt_block output (item id, clause, competency, grade/quarter and the rendered samples only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "prompt-contract dispatch to a separate Haiku 4.5 agent: told to read exactly one packet render and no other path, and to write its verdict JSON. Tool access was NOT structurally prevented, so this does not claim the '0' contract; one Read and one Write were expected and used."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g1_na_q2_6",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g1_na_q2_6",
+        "seed": 11,
+        "formatter": "mcq",
+        "question_text": "Start at 60. Count up 13 more. What number do you land on?",
+        "correct_answer": 73,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 72,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 74,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 73,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 83,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 73,
+        "hints": [
+          "We are adding two numbers: 60 and 13.",
+          "Add the ones: 0 + 3 = 3. Write 3 in the ones place.",
+          "Add the tens: 6 + 1 = 7.",
+          "The sum is 60 + 13 = 73."
+        ],
+        "sample_id": "0e50da1c1e1c9ea2763e",
+        "replay_digest": "062b90192bc4a82c75c663ed3847780c9f9de6fd3bfb8c28d52d551188afd745"
+      },
+      {
+        "node_id": "mat_g1_na_q2_6",
+        "seed": 23,
+        "formatter": "true_false",
+        "question_text": "Start at 41. Count up 27 more. You land on 68. True or False?",
+        "correct_answer": true,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "true_false",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "true_false",
+          "experience": "standard"
+        },
+        "resolved_answer": true,
+        "hints": [
+          "We are adding two numbers: 41 and 27.",
+          "Add the ones: 1 + 7 = 8. Write 8 in the ones place.",
+          "Add the tens: 4 + 2 = 6.",
+          "The sum is 41 + 27 = 68."
+        ],
+        "sample_id": "b6755c2b1fdaad6ff976",
+        "replay_digest": "be943e48bed555fa78453f0f1ff2337101ec029fc50381667fe86268affba32f"
+      },
+      {
+        "node_id": "mat_g1_na_q2_6",
+        "seed": 42,
+        "formatter": "true_false",
+        "question_text": "One group has 1 item and another group has 63 items. Putting them together makes 63 items in all. True or False?",
+        "correct_answer": false,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "true_false",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "true_false",
+          "experience": "standard"
+        },
+        "resolved_answer": false,
+        "hints": [
+          "We are adding two numbers: 1 and 63.",
+          "Add the ones: 1 + 3 = 4. Write 4 in the ones place.",
+          "Add the tens: 0 + 6 = 6.",
+          "The sum is 1 + 63 = 64."
+        ],
+        "sample_id": "e826f3e06986a1e8b34f",
+        "replay_digest": "12fccb7170b0e0951fa56de35ff8352c7391367c80b7ea72ffbe067feb749fda"
+      },
+      {
+        "node_id": "mat_g1_na_q2_6",
+        "seed": 57,
+        "formatter": "read_mcq",
+        "question_text": "(Large group of 32 items) — There are 32 items.\n(Large group of 24 items) — 24 more items are added.\nHow many total items are there?",
+        "correct_answer": "C",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "EmojiPictorial",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 32,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 57,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 56,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 8,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 56,
+        "hints": [
+          "We are adding two numbers: 32 and 24.",
+          "Add the ones: 2 + 4 = 6. Write 6 in the ones place.",
+          "Add the tens: 3 + 2 = 5.",
+          "The sum is 32 + 24 = 56."
+        ],
+        "visual_type": "EmojiPictorial",
+        "visual_payload": {
+          "emoji": "✝️",
+          "group_a": 32,
+          "group_b": 24,
+          "operation": "addition",
+          "layout": "separated",
+          "display": "(Large group of 32 items)",
+          "display_b": "(Large group of 24 items)"
+        },
+        "visual_render": {
+          "visual_type": "EmojiPictorial",
+          "renderer_input_digest": "ce391cf8d2b8af9d6cc13c15140ba1f7bddf3c96834bf8fc1ae1d41f0b8a6a86",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "EmojiPictorial",
+            "element_count": 39,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "🛍️",
+              "10x ✝️",
+              "✝️",
+              "1x ✝️",
+              "+"
+            ],
+            "distinct_colours": [
+              "hsl(var(--card-bg)",
+              "hsl(var(--border-color)",
+              "hsl(var(--text-muted)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "749d19e859c7eb484a35",
+        "replay_digest": "af013303a289b2bda6011efa833aee0741e1cabde173d5a105cd126db61518b0"
+      },
+      {
+        "node_id": "mat_g1_na_q2_6",
+        "seed": 64,
+        "formatter": "read_mcq",
+        "question_text": "The dot is at 12 and it moves forward 3 numbers. Starting from 12, just count up 3 numbers. Which number will the dot land on?",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "NumberLine",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 15,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 25,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 16,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 14,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 15,
+        "hints": [
+          "We are adding two numbers: 12 and 3.",
+          "Add the ones: 2 + 3 = 5. Write 5 in the ones place.",
+          "Add the tens: 1 + 0 = 1.",
+          "The sum is 12 + 3 = 15."
+        ],
+        "visual_type": "NumberLine",
+        "visual_payload": {
+          "start": 0,
+          "end": 20,
+          "major_interval": 5,
+          "minor_interval": 1,
+          "interval": 1,
+          "dot_value": 12,
+          "move_by": 3,
+          "content_type": "whole_number",
+          "value": 15,
+          "correct_position": 15,
+          "divisions": 20,
+          "is_interactive": false,
+          "show_labels": true,
+          "correct_answer": 15.0,
+          "target": 15.0
+        },
+        "visual_render": {
+          "visual_type": "NumberLine",
+          "renderer_input_digest": "5d00248bc5ec4c6bdbcc728494747362c73f4b61250e7c24ea70206d6f93aa3b",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "NumberLine",
+            "element_count": 31,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "0",
+              "5",
+              "10",
+              "15",
+              "20"
+            ],
+            "distinct_colours": [
+              "hsl(var(--border-color)",
+              "hsl(var(--text-muted)",
+              "hsl(var(--text)",
+              "hsl(var(--primary)",
+              "hsl(var(--card-bg)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "3b7ceb7c657223e466f7",
+        "replay_digest": "c5233103391ef3ae5a33c14868808018cb8aa58a7a8c42ced85524b85491616b"
+      },
+      {
+        "node_id": "mat_g1_na_q2_6",
+        "seed": 78,
+        "formatter": "error_detect",
+        "question_text": "Manny solved: \"5 + 72 = ___\". Manny says the blank is 77. Is Manny correct?",
+        "correct_answer": {
+          "has_error": false,
+          "correct_value": 77
+        },
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "error_detect",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "error_detect",
+          "experience": "standard"
+        },
+        "resolved_answer": {
+          "has_error": false,
+          "correct_value": 77
+        },
+        "hints": [
+          "We are adding two numbers: 5 and 72.",
+          "Add the ones: 5 + 2 = 7. Write 7 in the ones place.",
+          "Add the tens: 0 + 7 = 7.",
+          "The sum is 5 + 72 = 77."
+        ],
+        "sample_id": "1ef0221fab331d189de2",
+        "replay_digest": "d23881645b0734e95cd9a7fcbf383b729141297ad55a948fc5eff0f29ad14be0"
+      },
+      {
+        "node_id": "mat_g1_na_q2_6",
+        "seed": 91,
+        "formatter": "true_false",
+        "question_text": "One group has 60 items and another group has 30 items. Putting them together makes 90 items in all. True or False?",
+        "correct_answer": true,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "true_false",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "true_false",
+          "experience": "standard"
+        },
+        "resolved_answer": true,
+        "hints": [
+          "We are adding two numbers: 60 and 30.",
+          "Add the ones: 0 + 0 = 0. Write 0 in the ones place.",
+          "Add the tens: 6 + 3 = 9.",
+          "The sum is 60 + 30 = 90."
+        ],
+        "sample_id": "b8b80b8b9d7e140c6fc2",
+        "replay_digest": "f5e05199e18f46711eaa217b25f904c52892bf92dbc10dd21536abc23932d4a5"
+      },
+      {
+        "node_id": "mat_g1_na_q2_6",
+        "seed": 103,
+        "formatter": "set_fill_in_blank",
+        "question_text": "Show 67 + 31 on the number line.",
+        "correct_answer": 98,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "set_fill_in_blank",
+          "is_visual": true,
+          "visual_type": "NumberLine",
+          "interaction_mode": "set",
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "resolved_answer": 98,
+        "hints": [
+          "We are adding two numbers: 67 and 31.",
+          "Add the ones: 7 + 1 = 8. Write 8 in the ones place.",
+          "Add the tens: 6 + 3 = 9.",
+          "The sum is 67 + 31 = 98."
+        ],
+        "visual_type": "NumberLine",
+        "visual_payload": {
+          "start": 50,
+          "end": 100,
+          "major_interval": 10,
+          "minor_interval": 5,
+          "interval": 5,
+          "dot_value": 50,
+          "move_by": 31,
+          "content_type": "whole_number",
+          "value": 98,
+          "correct_position": 98,
+          "divisions": 10,
+          "is_interactive": true,
+          "show_labels": true,
+          "correct_answer": 98.0,
+          "target": 98.0
+        },
+        "visual_render": {
+          "visual_type": "NumberLine",
+          "renderer_input_digest": "13c3ea690465b9c299ede62fd84cce80622ddab525e8f78a04e684a964935826",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "NumberLine",
+            "element_count": 25,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "50",
+              "60",
+              "70",
+              "80",
+              "90",
+              "100",
+              "Your answer: Position",
+              "75",
+              "Click track, drag dot, or use ← → arrow keys"
+            ],
+            "distinct_colours": [
+              "hsl(var(--border-color)",
+              "hsl(var(--text-muted)",
+              "hsl(var(--text)",
+              "hsl(var(--primary)",
+              "hsl(var(--card-bg)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "3695401d73ef60d9ead6",
+        "replay_digest": "3d6ab9bdf8a9a2c32ff82698d2845f7d1cc025ff3e38e5f567573c6bc8e91821"
+      },
+      {
+        "node_id": "mat_g1_na_q2_6",
+        "seed": 118,
+        "formatter": "error_detect",
+        "question_text": "Dante solved: \"32 + 24 = ___\". Dante says the blank is 57. Is Dante correct?",
+        "correct_answer": {
+          "has_error": true,
+          "correct_value": 56
+        },
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "error_detect",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "error_detect",
+          "experience": "standard"
+        },
+        "resolved_answer": {
+          "has_error": true,
+          "correct_value": 56
+        },
+        "hints": [
+          "We are adding two numbers: 32 and 24.",
+          "Add the ones: 2 + 4 = 6. Write 6 in the ones place.",
+          "Add the tens: 3 + 2 = 5.",
+          "The sum is 32 + 24 = 56."
+        ],
+        "sample_id": "ef93e3b9bf63118b3d7e",
+        "replay_digest": "a4215f049212c8580893a851b74a3aed4452aaecdc970417540e90d83ec1cadb"
+      },
+      {
+        "node_id": "mat_g1_na_q2_6",
+        "seed": 127,
+        "formatter": "cloze",
+        "question_text": "One group has 71 items and another group has 1 item. Putting them together makes ___ items in all.",
+        "correct_answer": 72,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 73,
+            "text": "73",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 72,
+            "text": "72",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 71,
+            "text": "71",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 82,
+            "text": "82",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 72,
+        "hints": [
+          "We are adding two numbers: 71 and 1.",
+          "Add the ones: 1 + 1 = 2. Write 2 in the ones place.",
+          "Add the tens: 7 + 0 = 7.",
+          "The sum is 71 + 1 = 72."
+        ],
+        "sample_id": "358f750fefc15311afa7",
+        "replay_digest": "90c44e7fa872235efa338467b4ecc289e4391359475a010b313b6c244a77218b"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "solve_problems",
+      "node_id": "mat_g1_na_q2_6",
+      "clause": "Solve problems",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Across all ten samples in this Grade 1 Quarter 2 set, learners engage with problems posed as counting-forward scenarios, true/false statements, number-line interpretation, and collaborative problem-solving tasks.",
+      "action_taken": "Left registered. Earned by a fresh blind verdict on the node's current rendered output; this record replaces a predecessor §6F had ruled unusable."
+    },
+    {
+      "capability_id": "pictures",
+      "node_id": "mat_g1_na_q2_6",
+      "clause": "pictures",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        57,
+        64,
+        103
+      ],
+      "reasoning": "Seed 57 renders an EmojiPictorial showing large groups of items, seed 64 renders a NumberLine visual with a dot position, and seed 103 renders a NumberLine for learners to complete by placing an answer on the line.",
+      "action_taken": "Left registered. Earned by a fresh blind verdict on the node's current rendered output; this record replaces a predecessor §6F had ruled unusable."
+    },
+    {
+      "capability_id": "addition",
+      "node_id": "mat_g1_na_q2_6",
+      "clause": "addition",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All samples work with the addition operation: counting up steps, verifying sums, moving forward on number lines, and demonstrating how to show an addition result on a visual scale.",
+      "action_taken": "Left registered. Earned by a fresh blind verdict on the node's current rendered output; this record replaces a predecessor §6F had ruled unusable."
+    },
+    {
+      "capability_id": "sum_up_to_100",
+      "node_id": "mat_g1_na_q2_6",
+      "clause": "sums up to 100",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Addition sums across all samples—73, 68, 56, 15, 77, 90, 98, 56, 72—stay at or below 100, meeting the competency range constraint for this quarter.",
+      "action_taken": "Left registered. Earned by a fresh blind verdict on the node's current rendered output; this record replaces a predecessor §6F had ruled unusable."
+    },
+    {
+      "capability_id": "without_regrouping",
+      "node_id": "mat_g1_na_q2_6",
+      "clause": "without regrouping",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All addition problems in the samples avoid place-value carrying: 60+13=73 (6+1 tens, 0+3 ones), 41+27=68 (4+2=6 tens, 1+7=8 ones), 32+24=56 (3+2=5 tens, 2+4=6 ones), and all others proceed digit by digit without regrouping.",
+      "action_taken": "Left registered. Earned by a fresh blind verdict on the node's current rendered output; this record replaces a predecessor §6F had ruled unusable."
+    }
+  ],
+  "supersedes": "Replaces the predecessor record §6F reported as unusable. Filed under the owner's 2026-09-22 ruling that filed blind evidence may only be retired once replaced by new valid blind evidence: every capability this node currently requires now carries a fresh blind verdict on its live rendered output."
+}
