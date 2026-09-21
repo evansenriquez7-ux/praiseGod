@@ -1296,7 +1296,18 @@ that points at it break every time the section is refreshed.
 > ~3.4h re-proof chain:
 >
 > 1. **54 CONTRADICTED = genuine content debt** across 35 nodes, each now backed by blind
->    evidence naming the exact gap. Concentrations: `objects` (3),
+>    evidence naming the exact gap. **They are NOT one kind of work — measured 2026-09-22:
+>    24 name a physical or visual MEDIUM, 30 name a verb, range or scope.** The medium 24 split
+>    again, and not evenly in difficulty: ~8 are abstract medium words (`concrete`,
+>    `concrete_models`, `objects`, `images`, `in_pictures`, `groups_of_objects`) where the live
+>    question is whether a worded context satisfies the clause or a visual must be DRAWN — an
+>    OWNER reading of MATATAG that should be ruled ONCE for the whole class, or 35 nodes will get
+>    35 inconsistent calls; ~11 name a specific drawable artifact (`fraction_charts`,
+>    `square_grids`, `equal_jumps_on_a_number_line`, `balance_scale`, `square_tile_array`), which
+>    is unambiguous build work; and ~5 name the VERB `draw` (`draw_geometric_object`,
+>    `draw_segment_of_given_length`, `drawing_the_line_of_symmetry`, `draw_effect`), which needs
+>    a real draw affordance rather than a multiple-choice question ABOUT drawing — the exact
+>    defect §6F's own docstring cites as its founding case. Concentrations: `objects` (3),
 >    `6_7_8_and_9_multiplication_tables` (2), `concrete`/`concrete_models`,
 >    `images`/`in_pictures`, `different_size`/`different_orientation`, `peso_coins_only`,
 >    `write_value`, `fifties`. Each needs the artifact BUILT or the provider entry
@@ -1325,14 +1336,34 @@ that points at it break every time the section is refreshed.
 >    INVALID and `assertion_coverage_8` stays red — so **the Definition of Done is blocked
 >    on this defect**, not merely inconvenienced by it.
 >
->    **Candidate fix, ruled out for THIS session only, not on the merits:** in the
->    supersession test, disregard verdict pairs whose capability is not in the node's
->    current `requires`, since such a pair is a ruling no check consults — which is the
->    rationale `_attestation_staleness`'s own docstring already gives for skipping
->    fully-superseded records. It is a source edit and owes a mutation catching its own
->    planted violation BY NAME, a `docs/pgen_contract.md` row in the same commit
->    (Protocol 7), and the chain. **Sequencing it is the OWNER's call**; it was not taken
->    unilaterally mid-campaign.
+>    **THOSE 7 NODES WERE EXCLUDED FROM THE CAMPAIGN and were never re-attested.** Their
+>    predecessor record is still their ONLY coverage, so every *required* capability on them
+>    rests on evidence §6F has already ruled unusable. Re-attesting them is owed work in its
+>    own right, whichever remedy is chosen, and costs no re-proof.
+>
+>    **THERE ARE THREE REMEDIES, not one, and the cheap-looking one was MEASURED and is a
+>    trap on its own:**
+>
+>    * **(a) Delete the 7 predecessor records.** `validation_reports/attestation/` is outside
+>      the fingerprint, so this costs NO re-proof — which makes it look like the cheap win.
+>      **Measured 2026-09-22 by doing it (records moved aside, §6F run alone, then restored):
+>      61 → 82, creating 25 UNATTESTED.** Deletion removes the only coverage those nodes have,
+>      so on its own it makes the queue WORSE. It becomes viable only AFTER the 7 nodes are
+>      re-attested, and it still means deleting filed blind evidence, which the protocol
+>      discourages — so it needs an explicit owner ruling even then. What it would discard is
+>      only verdicts on capabilities nothing consults, because every consulted pair would by
+>      then carry a fresh verdict.
+>    * **(b) Fix the supersession test** — disregard verdict pairs whose capability is not in
+>      the node's current `requires`, since such a pair is a ruling no check consults, which is
+>      the rationale `_attestation_staleness`'s own docstring already gives for skipping
+>      fully-superseded records. Preserves every record. It is a source edit and owes a mutation
+>      catching its own planted violation BY NAME, a `docs/pgen_contract.md` row in the same
+>      commit (Protocol 7), and the chain.
+>    * **(c) Accept it.** Then `capability_phase2` never reaches 0 and the Definition of Done is
+>      unreachable by construction. State that rather than drifting into it.
+>
+>    **Choosing between them is the OWNER's call**, not a session's; none was taken
+>    unilaterally. (b) is the one that scales, because it also immunises every future grade.
 >
 > **The recommended order is therefore inverted from every previous handoff.** The cheap,
 > no-re-proof work is done. Everything remaining costs the chain, so BATCH IT: the

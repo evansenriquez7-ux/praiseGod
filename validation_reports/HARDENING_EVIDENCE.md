@@ -13498,3 +13498,52 @@ trap 11 does not merely risk a loud crash or a flattering undercount — **it co
 figures in either direction, and those figures then get copied into handoffs and plans as
 measured fact.** Both of this project's status documents were carrying one. Measure every stage
 ALONE before writing its number anywhere.
+
+### Addendum 3 — the 7 blocked nodes were never re-attested, and DELETING their records is worse
+
+Two corrections to this session's own reporting, both found by executing rather than reasoning.
+
+**1. The campaign covered the 144 clearable nodes and NOT the 7 blocked ones.** That was the
+plan's definition and it is correct as scoped, but it has a consequence the first write-up did
+not state: those 7 nodes' *required* capabilities are still covered ONLY by the stale predecessor
+record. So their capability evidence is unusable, not merely un-superseded. **Re-attesting those
+7 nodes is owed work in its own right, is in scope under the owner's single-campaign ruling, and
+costs no re-proof** — whichever structural remedy is later chosen.
+
+**2. Deleting the 7 predecessor records is NOT the cheap win it appears to be.** Because
+`validation_reports/attestation/` sits outside the fingerprint, deletion costs no re-proof, and
+this session's earlier framing treated the source fix as the only remedy without pricing
+deletion at all. So it was measured, by doing it: the 7 records were moved aside, §6F was run
+ALONE, and they were restored.
+
+```
+$ (7 records moved out of validation_reports/attestation/)
+$ ...validate_capability --phase 2
+Capability contract: 82 failure(s) (0 Phase 1 ...; 82 Phase 2 / attestation).
+   Counter({'CONTRADICTED': 55, 'UNATTESTED': 25, 'STALE': 2})
+   UNATTESTED created: 25
+$ (restored; worktree clean)
+$ ...validate_capability --phase 2
+Capability contract: 61 failure(s) (0 Phase 1 ...; 61 Phase 2 / attestation).
+```
+
+**61 → 82, and 25 brand-new UNATTESTED findings.** The cause is correction 1: deletion removes
+the only coverage those nodes have, and §6F correctly reports that nobody blind has judged them.
+A session that reached for the no-re-proof remedy without measuring it would have made the queue
+21 findings worse and called it a fix.
+
+Deletion becomes viable only AFTER those 7 nodes are re-attested — at which point every
+*consulted* pair carries a fresh verdict and the only thing discarded is verdicts on capabilities
+nothing consults. Even then it is deletion of filed blind evidence, which the protocol
+discourages, so it needs an explicit owner ruling. The three remedies, priced, are in the plan's
+`START HERE`.
+
+**Also measured, because the 54 CONTRADICTED were being described as one queue and are not:**
+24 of them name a physical or visual MEDIUM and 30 name a verb, range or scope. The 24 split
+again — roughly 8 abstract medium words (`concrete`, `objects`, `images`, `in_pictures`,
+`groups_of_objects`), 11 specific drawable artifacts (`fraction_charts`, `square_grids`,
+`equal_jumps_on_a_number_line`, `balance_scale`, `square_tile_array`), and 5 that name the VERB
+`draw`. The last group needs a genuine draw affordance rather than a multiple-choice question
+ABOUT drawing, which is the exact defect §6F's own docstring cites as the reason the Attester
+role exists. The first group turns on a curriculum reading — worded context versus drawn visual —
+that is the owner's to rule once for the class, not a per-node call.

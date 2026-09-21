@@ -92,14 +92,22 @@ The residual 61 on `capability_phase2` splits in two, and neither half is more a
    provider entry; **Content Rule 4 decides which** — if the competency names the verb, model
    or range, building it IS the fix and is not scope creep; if it does not, building it is
    invention and the entry goes. Cite the competency clause in the commit and the evidence log.
-2. **7 are a STRUCTURAL HARNESS DEFECT** that no amount of content work or re-attestation can
-   touch, and **the Definition of Done is blocked on it** — while `capability_phase2` is red the
-   three §6F mutations stay INVALID and `assertion_coverage_8` stays red. Diagnosis, the seven
-   node ids, and the candidate one-line fix are in the plan's `START HERE` and in
-   `phase2_hardening/attestation_campaign.json` → `structural_blocker_diagnosis`. **Applying it
-   is the OWNER's call to sequence**, not a session's to take on its own: it needs a mutation
-   catching its own planted violation BY NAME plus a `docs/pgen_contract.md` row in the same
-   commit.
+   **These are three different sizes of work, not one queue**: 24 name a medium and 30 a
+   verb/range, and ~5 name the verb `draw`, which needs a real draw affordance rather than a
+   question ABOUT drawing. **One fork needs an OWNER ruling for the whole class before you touch
+   any of it** — whether an abstract medium word (`concrete`, `objects`, `images`,
+   `in pictures`) is satisfied by a worded context or demands a drawn visual. Ruled once, it is
+   consistent; left unruled, 35 nodes get 35 different answers. See the plan's `START HERE`.
+2. **7 are a STRUCTURAL HARNESS DEFECT** and **the Definition of Done is blocked on it** —
+   while `capability_phase2` is red the three §6F mutations stay INVALID and
+   `assertion_coverage_8` stays red. **Those 7 nodes were EXCLUDED from the campaign and were
+   never re-attested**, so their required capabilities still rest on evidence §6F has ruled
+   unusable; re-attesting them is owed regardless of remedy and costs no re-proof. **There are
+   THREE remedies, and the cheap-looking one was measured and is a trap:** deleting the 7
+   predecessor records costs no re-proof but takes §6F from **61 to 82, creating 25
+   UNATTESTED**, because it removes the only coverage those nodes have. Read the plan's
+   `START HERE` for all three and for which is the OWNER's to pick. Do not improvise here, and
+   do not delete a filed record on your own authority.
 
 **`judgment_reviews_5` (1252) is the largest single queue left and the campaign did not touch
 it**, correctly — attestation records are not judgment reviews. All 151 filed reviews are v1 and
