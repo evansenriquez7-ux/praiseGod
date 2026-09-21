@@ -311,8 +311,8 @@
     },
     {
       "id": "H-10",
-      "status": "in_progress",
-      "owner": "claude-20260921-h10-tree-state",
+      "status": "open",
+      "owner": "released @ 7912add7",
       "finding": "The pipeline cannot report which of its three tree states it is in. Two of them -- 'a batch landed and its re-proof was never run' and 'a session was interrupted mid-work' -- are INDISTINGUISHABLE from the four artifact digests alone, and were told apart by reading a human-written paragraph in HANDOFF_PROMPT.md. Nothing records that work has STARTED, so an interruption leaves no trace of what was in flight; MUTATION_IN_FLIGHT.json is a kill-safety marker for the mutation corpus alone and says nothing about a batch or a chain.",
       "affected_assertions": [
         "tree_state_certification"
