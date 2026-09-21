@@ -1297,6 +1297,30 @@ that points at it break every time the section is refreshed.
 > 55 CONTRADICTED are this, not content.** Recommended, not applied: a disjunction contributes
 > ONE satisfiable requirement; `e.g.` material is illustrative and belongs in `requires_ignore`.
 >
+> **RULING 5 DISCHARGED, and it qualifies the campaign — read this before building anything.**
+> A clean reproducibility control was run: same prompt, same packet, fresh Haiku identities, so
+> only the rater varies. `d01` (hardest batch) **76.5%** agreement, `d20` (the 1.00-findings/node
+> tail) **96.0%**, **combined 37/42 = 88.1%**. Control verdicts were NOT filed — they are a
+> measurement, not evidence. Five substantive disagreements, and their direction matters:
+> **2 of the 5 CONTRADICTED on `mat_g2_na_q3_5` did not reproduce** (the control passed
+> `formation_of_equal_groups` and `objects`, citing GridArea visuals the first rater called
+> absent), while `similar_fractions` and `fraction_tiles` were filed PROVIDED and the control
+> failed both — so the queue may UNDER-count debt as well as over-count it. On
+> `concrete_pictorial` round 1 passed on ONE seed in ten and the control failed it on the other
+> nine, which is arguably the better reading and which nothing in the packet format makes an
+> Attester weigh.
+>
+> §6F's contract — "a blind Attester ruled X on this rendered content" — remains literally true
+> of all 741 verdicts. What the control removes is the right to treat any SINGLE verdict as
+> settled. The aggregate (218 → 55) rests on hundreds of verdicts and is far more robust than any
+> row in it. **Operational rule: never commit engineering effort to a lone CONTRADICTED — confirm
+> it with a second independent dispatch first.** One Haiku dispatch against days of formatter
+> work. At 88% agreement, dual-dispatching the 55 would be expected to overturn ~6. This is the
+> measured basis for the "targeted dual review/adjudication" H-06's acceptance already names.
+> Limits of the control: 42 of 741 verdicts, a purposive not random sample, Haiku-against-Haiku
+> only (ruling 4 forbids a stronger-model comparison, so shared systematic bias is unmeasured),
+> and run on the FIRST prompt because that is the one the filed verdicts used.
+>
 > **Owner rulings recorded 2026-09-22, binding on the next session:**
 >
 > 1. **The medium test.** When a clause names a medium, decide from the competency's grammar

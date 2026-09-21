@@ -1,6 +1,6 @@
 # Handoff — continue the Phase 2 hardening plan
 
-**Rewritten 2026-09-22 on `fdd77513`, tree CERTIFIED. This file is deliberately a
+**Rewritten 2026-09-22 (late) on `22d873e3`, tree CERTIFIED. This file is deliberately a
 POINTER, not a summary.**
 
 Earlier versions duplicated the plan's status and then drifted from it. Two sources of truth
@@ -69,60 +69,107 @@ PYTHONPATH=. .venv/bin/python tests/tree_state.py --complete --note "where you g
 
 ---
 
-## THE JOB — the cheap work is GONE; what is left costs the chain
+## THE JOB — §6 is now pure content debt; §5 is the last zero-cost campaign
 
-**Phase A is DONE (2026-09-21). Phase B's attestation campaign is DONE (2026-09-22). Do not
-redo either, and do not plan another campaign.** All 144 clearable nodes were re-attested by
-blind dispatch, all 33 dispatches are filed, and `capability_phase2` fell **218 → 61**. The
-per-category deltas, the verdict counts and the audit of them are in the plan's `START HERE`
-and in `HARDENING_EVIDENCE.md` (2026-09-21/22). `H-06` is `released @ 28400eb4`, still OPEN.
+**Phase A is DONE (2026-09-21). Phase B's attestation campaign is DONE (2026-09-22). The
+7-node structural blocker is CLEARED (2026-09-22, late). Do not redo any of it, and do not plan
+another §6 attestation campaign.** `H-06` is `released @ e18015f0`, still OPEN.
 
 **Read the plan's `START HERE — handoff` for the numbers.** This file does not repeat them,
-because two sources of truth is how a session inherits confident wrong ones.
+because two sources of truth is how a session inherits confident wrong ones. In outline:
+`capability_phase2` went **218 → 55 and EVERY remaining finding is CONTRADICTED** — zero STALE,
+zero UNATTESTED, zero missing-options, zero missing-visual, §6G integrity 0 errors, §6H
+plurality PASS. All 151 nodes now carry fresh blind evidence.
 
-**The three red stages are the same three, and the shape of the remaining work has INVERTED.**
-Every previous handoff could send you at work that cost no re-proof. That work no longer
-exists. **Everything left is a source edit and therefore owes the full ~3.4h chain**, so the
-correct move is to BATCH it: do not land one fix, re-prove, then land another.
+**Three stages are still red and the Definition of Done is still NOT met**:
+`judgment_reviews_5` (1252), `capability_phase2` (55), `assertion_coverage_8` (3 in 1 family,
+still INVALID against a red baseline — re-running cannot fix it).
 
-**As of 2026-09-22 (late) the §6 queue is 55 and EVERY finding is CONTRADICTED** — zero STALE,
-zero UNATTESTED, zero missing-options, zero missing-visual. The 7-node structural blocker was
-cleared under the owner's ruling 2 (retire a filed record only once new valid blind evidence
-replaces it, verified per pair). **The harness defect behind it is NOT fixed, only its findings
-are**, and 3 of the 55 are a ground-truth decomposition defect rather than content. Read the
-plan's `START HERE` before planning any §6 work; the paragraphs below describe the 61-finding
-state and are kept for their reasoning.
+### Where the remaining work is, and what each piece costs
 
-The residual 61 on `capability_phase2` split in two, and neither half was more attestation:
+**§5 — the 151 owed blind judgment re-reviews. THIS IS THE ONLY ZERO-RE-PROOF WORK LEFT, and
+it is the largest queue.** `validation_reports/judgment/` is outside the fingerprint, so a whole
+review campaign moves no digest. All 151 filed reviews are v1 and unadjudicable; the v1→v2
+migration was refused as impossible in principle. **If you want to make progress without paying
+3.4h, start here.** Seven dispatches — see the machinery section below.
 
-1. **54 CONTRADICTED — genuine content debt**, 35 nodes, each now backed by fresh blind
-   evidence that names the exact gap. Build the artifact the clause names, or delete the
-   provider entry; **Content Rule 4 decides which** — if the competency names the verb, model
-   or range, building it IS the fix and is not scope creep; if it does not, building it is
-   invention and the entry goes. Cite the competency clause in the commit and the evidence log.
-   **These are three different sizes of work, not one queue**: 24 name a medium and 30 a
-   verb/range, and ~5 name the verb `draw`, which needs a real draw affordance rather than a
-   question ABOUT drawing. **One fork needs an OWNER ruling for the whole class before you touch
-   any of it** — whether an abstract medium word (`concrete`, `objects`, `images`,
-   `in pictures`) is satisfied by a worded context or demands a drawn visual. Ruled once, it is
-   consistent; left unruled, 35 nodes get 35 different answers. See the plan's `START HERE`.
-2. **7 are a STRUCTURAL HARNESS DEFECT** and **the Definition of Done is blocked on it** —
-   while `capability_phase2` is red the three §6F mutations stay INVALID and
-   `assertion_coverage_8` stays red. **Those 7 nodes were EXCLUDED from the campaign and were
-   never re-attested**, so their required capabilities still rest on evidence §6F has ruled
-   unusable; re-attesting them is owed regardless of remedy and costs no re-proof. **There are
-   THREE remedies, and the cheap-looking one was measured and is a trap:** deleting the 7
-   predecessor records costs no re-proof but takes §6F from **61 to 82, creating 25
-   UNATTESTED**, because it removes the only coverage those nodes have. Read the plan's
-   `START HERE` for all three and for which is the OWNER's to pick. Do not improvise here, and
-   do not delete a filed record on your own authority.
+**§6 — 55 CONTRADICTED, all of it source work, so BATCH it.** Every one owes the chain, so do
+not land one fix, re-prove, then land another. It is not one queue:
 
-**`judgment_reviews_5` (1252) is the largest single queue left and the campaign did not touch
-it**, correctly — attestation records are not judgment reviews. All 151 filed reviews are v1 and
-unadjudicable, and the v1→v2 migration was refused as impossible in principle. The 151 fresh
-blind re-reviews are still owed. That is a second campaign, by dispatch, and it is the one piece
-of remaining work that costs NO re-proof, because `validation_reports/judgment/` is outside the
-fingerprint. **If you want zero-re-proof work, it is here, not in §6.**
+* **~52 are genuine content debt** across 35 nodes, each backed by fresh blind evidence naming
+  the exact gap. Build the artifact the clause names, or delete the provider entry; **Content
+  Rule 4 decides which** — if the competency names the verb, model or range, building it IS the
+  fix and is not scope creep; if it does not, building it is invention and the entry goes. Cite
+  the competency clause in the commit and the evidence log. Three different sizes of work sit
+  inside this: 24 name a medium, 30 name a verb/range, and **~5 name the verb `draw`**, which by
+  owner ruling 3 requires a valid visual formatter — a multiple-choice question ABOUT drawing
+  does not satisfy a competency that says draw.
+* **3 are NOT content debt.** They are the §6B ground-truth decomposition defect below. No
+  generator can clear them. Do not try to build content for them.
+
+**BEFORE YOU BUILD ANYTHING FOR A §6 FINDING — the reproducibility rule.** A measured control
+(same prompt, same packet, fresh Haiku identities) puts inter-rater agreement at **88.1%
+overall, and only 76.5% on the hardest batch**. Five verdicts moved, in both directions: two of
+the five CONTRADICTED on `mat_g2_na_q3_5` did NOT reproduce, and two filed PROVIDEDs failed on
+re-judgement. **So never commit engineering effort to a lone CONTRADICTED — confirm it with one
+more independent dispatch first.** That costs a single Haiku dispatch and can save days of
+formatter work; at 88% agreement, dual-dispatching all 55 would be expected to overturn ~6. Nor
+is a lone PROVIDED proof of coverage. The AGGREGATE (218 → 55) is robust because it rests on
+hundreds of verdicts; no individual row is. Full numbers, direction of each disagreement, and the
+control's own limits are in the plan's `START HERE` and `HARDENING_EVIDENCE.md`.
+
+### Owner rulings, 2026-09-22 — binding, and they resolve forks earlier handoffs left open
+
+1. **The medium test.** When a clause names a medium, decide from the competency's grammar which
+   role it plays: the thing the learner must work IN (*illustrate / represent / model / draw …
+   **using** X*) → it must actually be rendered; a delivery mode or story context (*given orally
+   or in pictures*; a word problem that merely involves objects) → a worded context can satisfy
+   it. Ambiguous → judge on the stricter reading and say so. **Never encode the answer in the
+   dispatch prompt.** This session's first prompt did exactly that, asserting any medium clause
+   needs the medium present, and that is the §6 analogue of the 2026-08-20 transcription defect:
+   the Attester answers honestly about the question it was actually asked. Measured consequence —
+   with the corrected prompt, `mat_g1_na_q4_6`'s `in_pictures` went CONTRADICTED → PROVIDED on
+   real PesoMoney and NumberLine visuals. It was never a content gap.
+2. **Filed blind evidence may be retired ONLY once replaced by new valid blind evidence**, and
+   the replacement must be verified per record and per pair before anything is removed. This is
+   how the 7-node blocker was cleared; the method is in the plan's `START HERE`. **Do not delete
+   a filed record on any other basis.**
+3. **`draw`-verb findings require a valid visual formatter.** Source work.
+4. **Haiku subagents extend to ALL agents reviewing sample pg output**, the §5 campaign
+   included. Name the model that actually judged in the record — §6H/§5 independence is only
+   checkable if the record is truthful about who made the verdict.
+6. **All three workstreams complete under this handoff — no `H-11`.** `H-06` carries the §6
+   content debt, the structural/ground-truth defects, and the 151 owed judgment re-reviews.
+
+### The §6B ground-truth decomposition defect — owner-owned, do NOT hand-patch
+
+`requires` extraction promotes **non-normative sentence material** into mandatory capabilities,
+so the pipeline is charged with debt the curriculum never asked for. Three measured instances:
+
+* **A disjunction flattened into a conjunction.** `mat_g1_na_q3_7` — "Create repeating patterns
+  using objects, images, **or** numbers" — has `requires = [create, repeating_patterns, objects,
+  images, numbers]` and no `requires_ignore` at all. Serving numeric patterns fully satisfies
+  MATATAG, yet `objects` and `images` report CONTRADICTED for ever.
+* **An `e.g.` example promoted to a requirement.** `mat_g1_na_q3_6` — "(**e.g.**, numbers: 2, 4,
+  2, 4__, __; letters: a, b, c, …)" — requires `numbers_example` and `letters_example`. A blind
+  Attester correctly reported the exact illustrative sequence never renders.
+* **One branch of a parenthetical disjunction made compulsory** while the other was ignored.
+  `mat_g1_na_q4_6` — "(given orally **or** in pictures)" — `orally` and `or` are in
+  `requires_ignore`, `in_pictures` is still required.
+
+**Measured reach, so this is not an anecdote:** 6 nodes carry ≥2 alternatives of ONE disjunction
+separately required — `mat_g1_na_q1_2`, `mat_g1_na_q3_7`, `mat_g2_mg_q2_1`, `mat_g2_mg_q2_2`,
+`mat_g3_mg_q2_1`, `mat_g3_mg_q2_4` — and 2 carry `example`-derived requirements
+(`mat_g1_na_q3_2`, `mat_g1_na_q3_6`). **Four of the six pass TODAY only because the pipeline
+happens to serve every alternative**, so the defect is LATENT and grows with grade level as
+competencies acquire more alternatives.
+
+It is `requires` / `requires_ignore` — human-authored ground truth under §6B, locked in
+`data/skeletons/requires_ignore.lock.json` — so correcting it is a `data/` edit under
+`INPUT_ROOTS` needing **owner sign-off (Protocol 5: node id, source, reason)** plus the chain.
+**Recommended and NOT applied:** a disjunction contributes ONE satisfiable requirement (or marks
+its alternatives mutually sufficient), and `e.g.` material is illustrative and belongs in
+`requires_ignore`.
 
 ### The machinery — TWO campaigns, TWO toolchains. Do not cross them.
 
@@ -196,8 +243,8 @@ assessments (`mathematical_validity`, `contextual_logical_validity`, `ambiguity`
   or `_attestation_staleness` keeps reading the old record and its finding never clears. This is
   the mechanic behind the 7-node blocker.
 * **Records resolve last-file-wins over a SORTED glob**, so a replacement batch prefix must sort
-  AFTER the incumbent. `batch112` is now the maximum (the campaign ran batch080–batch112);
-  start above it.
+  AFTER the incumbent. `batch114` is now the maximum (the campaign ran batch080–batch112 and the
+  7-node re-attestation added batch113–batch114); start above it.
 * **≤25 clause items per dispatch (§6G); ≤25 nodes per Attester identity (§6H).** At 776 pairs
   over 151 nodes that is ~33 dispatches for one clean round.
 * **Plan highest-finding-count first.** It front-loads the nodes where CONTRADICTED concentrates
@@ -254,15 +301,17 @@ exists because a worker once claimed H-07 while doing H-08.
 PYTHONPATH=. .venv/bin/python tests/hardening_status.py     # must PASS before and after
 ```
 
-* **`H-06`** holds the M2 capability queue. Released `@ 28400eb4`, still OPEN, and must not be
-  closed by a re-proof alone. Its attestation campaign is COMPLETE; what remains under it is 54
-  CONTRADICTED content findings plus the 7-record structural supersession defect, both source
-  work. The 151 owed blind judgment re-reviews also sit under it.
+* **`H-06`** holds the M2 capability queue. Released `@ e18015f0`, still OPEN, and must not be
+  closed by a re-proof alone. Its attestation campaign is COMPLETE and its structural blocker is
+  CLEARED. What remains under it, per owner ruling 6 and all in one row: ~52 CONTRADICTED content
+  findings, 3 CONTRADICTED that are the §6B ground-truth defect awaiting owner sign-off, the
+  unfixed supersession test, and the 151 owed blind judgment re-reviews.
 * **`H-10`** is the interruption-safety row, released `@ 7912add7`, still OPEN: the machinery
   exists and its mutation is detected, but the row's own finding is only half answered.
-* **`H-02`, `H-05`, `H-07`, `H-08`** are open and unclaimed. `H-02`'s 3 remaining §6F errors
-  are downstream of `capability_phase2` reaching 0, which now requires the structural fix in #2
-  above as well as the content debt — re-attestation alone can no longer move them.
+* **`H-02`, `H-05`, `H-07`, `H-08`** are open and unclaimed. `H-02`'s 3 remaining §6F errors are
+  downstream of `capability_phase2` reaching 0. Since 2026-09-22 that means clearing the 55
+  CONTRADICTED — all source work — because every evidence-shape and structural finding is gone.
+  Re-attestation cannot move them.
 * Splitting **H-08's intro-surface render gap** into its own row is still the OWNER's call.
   The row set can express `H-11` now; that is not permission to open one.
 
@@ -340,9 +389,10 @@ control, and the owner ruled that "must end certified" is NOT the rule.
     `tests/frontend_renderer.py` writes to one fixed path with no PID and no lock; six call
     sites funnel through it, including BOTH §5 and §6F's freshness pass. Unfixed. The
     documented symptom was §5 crashing (`renderer returned active evidence for [~400
-    packets]`), but on 2026-09-22 `validate_capability --phase 2` run alongside a running
-    `validate_judgment` reported **55** findings where the tree has **61** — measured three
-    times alone. **It under-reported by six, silently.** It also perturbs UPWARD: the
+    packets]`), but on 2026-09-22, when the tree stood at **61** findings, `validate_capability
+    --phase 2` run alongside a running `validate_judgment` reported **55** — while three runs
+    alone all reported 61. **It under-reported by six, silently.** (Do not read those two figures
+    as today's count; the tree is now 55 for unrelated reasons.) It also perturbs UPWARD: the
     `judgment_reviews_5` figure of 1253 recorded on 2026-09-21 is 1252 on inputs `git` proves
     byte-identical (no change to `validation_reports/judgment/` and no source change since
     `664fbe46`), and 1252 is stable across two clean runs. **Neither a lower nor a higher §5 /
@@ -359,7 +409,14 @@ control, and the owner ruled that "must end certified" is NOT the rule.
 ## Still owner-owned — do not hand-patch around these
 
 **`CSI-R1`–`CSI-R3`** are open owner rulings in `context_semantics_inventory.json`. `CSI-R4`
-is ruled and closed. Splitting H-08's intro-surface gap into its own row is also the owner's.
+is ruled and closed. Splitting H-08's intro-surface gap into its own row is also the owner's —
+and note owner ruling 6 already refused a new row for the §5 campaign, so the bar for opening
+`H-11` is higher than "the schema allows it".
+
+**The §6B ground-truth decomposition defect is owner-owned**: `requires`/`requires_ignore` is
+human-authored ground truth, locked, and a correction needs sign-off with node id, source and
+reason (Protocol 5). Three of the 55 CONTRADICTED are this. Do not edit the lock to make a
+finding go away.
 
 ---
 
@@ -399,6 +456,27 @@ is ruled and closed. Splitting H-08's intro-surface gap into its own row is also
 * **The Phase 1 network guard patches ONE interpreter**, so connections opened inside children
   of `unit_tests`, `census_7` and `behavioural_matrix` are invisible; Phase 2 stages are
   unguarded; loopback is allowed.
+* **A single blind verdict is ~88% reproducible, 76.5% on hard batches** (measured 2026-09-22
+  over 42 of 741 verdicts, same prompt, same packet, fresh Haiku raters). Verdicts are earned and
+  re-renderable, but one verdict is not settled fact. Dual dispatch before building; see the
+  reproducibility rule above.
+* **THE SUPERSESSION DEFECT IS UNFIXED — only its findings were cleared.**
+  `_attestation_staleness` skips a predecessor only when EVERY pair it holds is superseded, and
+  it counts a verdict on a capability nothing consults as live ownership. The 7 affected records
+  were retired manually on 2026-09-22 under owner ruling 2. Any future grade whose
+  `requires_ignore` grows, or any `requires` id renamed after attestation, reproduces it and will
+  need the same manual retirement chain. The scaling fix — disregard non-consulted pairs in the
+  supersession test — is still open and owes a named mutation plus a contract row.
+* **Retiring a record PROMOTES the previous holder of its orphan pair.** Found by doing it:
+  deleting the 7 reporting records left 2 STALE when `batch023` inherited
+  `('mat_g1_na_q1_9','orally')` from the deleted `batch028`. Retirement is iterative; it took 4
+  rounds and 13 records. Re-measure after every round rather than assuming one pass is enough.
+* **Nothing makes an Attester weigh PREVALENCE.** A clause can be ruled PROVIDED on the strength
+  of one seed in ten — measured on `mat_g1_na_q3_0` `concrete_pictorial`, where a second rater
+  failed it on the other nine. The packet format offers no notion of "how often", so a competency
+  demanding a model is satisfiable by a single lucky seed.
+* **`tests/frontend_renderer.py`'s single fixed path has now corrupted TWO recorded figures**
+  (§6F by −6, §5 by +1). It is a live defect, not an operating note; see trap 11.
 
 ---
 

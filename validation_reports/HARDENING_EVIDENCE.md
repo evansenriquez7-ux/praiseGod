@@ -13715,3 +13715,67 @@ skeletons for 23 verdicts (max cluster 1), and the reasoning cites specific rend
   (`judgment_packets --node`) rather than `tests/judgment_batches.py`. Fixing it is a `tests/`
   edit owing the chain; **recommendation (ruling 7): batch it with the next source work** rather
   than spend 3.4h on a docstring. The handoff steers correctly regardless.
+
+### Ruling 5 DISCHARGED — the reproducibility control, and it qualifies the whole campaign
+
+The earlier entry said a clean control was owed and named it rather than claiming it. It has now
+been run: **same prompt text, same packet file, fresh Haiku identities**, so the only thing that
+varies is the rater. Two batches were re-judged — `d01` (17 items, the highest-finding-count
+nodes) and `d20` (25 items, the 1.00-findings/node tail). Control verdicts were **not filed**;
+they are a measurement, not evidence, and filing them would have superseded earned verdicts.
+
+```
+d01: 17 items compared, 13 agree -> 76.5%
+d20: 25 items compared, 24 agree -> 96.0%
+COMBINED: 37/42 = 88.1% agreement across independent Haiku raters
+```
+
+**~12% of blind verdicts do not reproduce, and reproducibility is WORST exactly where the
+judgement matters most** — 76.5% on the hard batch against 96.0% on the easy tail. The five
+disagreements are substantive readings, not coin-flips:
+
+| item | node / capability | round 1 | control |
+|---|---|---|---|
+| `item_003` | `mat_g2_na_q4_3` `similar_fractions` | PROVIDED | NOT_PROVIDED |
+| `item_007` | `mat_g2_na_q4_3` `fraction_tiles` | PROVIDED | NOT_PROVIDED |
+| `item_015` | `mat_g2_na_q3_5` `formation_of_equal_groups` | NOT_PROVIDED | PROVIDED |
+| `item_016` | `mat_g2_na_q3_5` `objects` | NOT_PROVIDED | PROVIDED |
+| `item_023` | `mat_g1_na_q3_0` `concrete_pictorial` | PROVIDED | NOT_PROVIDED |
+
+Read what that means rather than just the percentage:
+
+* **Two of the five CONTRADICTED findings on `mat_g2_na_q3_5` are not reproducible.** The control
+  ruled both PROVIDED, citing GridArea visuals organising objects into rows and columns that the
+  first rater said were absent. A session that spends days building a formatter for
+  `formation_of_equal_groups` would be building against a verdict a second blind rater does not
+  share.
+* **It cuts the other way too.** `similar_fractions` and `fraction_tiles` were filed PROVIDED and
+  the control failed both — the control's point on `fraction_tiles` being that FractionShade and
+  FractionModel are not the discrete manipulative a "tile" names. So the campaign may be
+  UNDER-counting debt as well as over-counting it.
+* **On `concrete_pictorial` the control's reasoning is arguably the better one.** Round 1 passed
+  the clause on the strength of ONE seed in ten; the control failed it because the other nine
+  render subtraction as text. A competency asking for concrete and pictorial models is not
+  obviously satisfied at 1-in-10, and nothing in the packet format makes the Attester weigh
+  prevalence.
+
+**What this does and does not invalidate.** §6F's contract is "a blind Attester ruled X on this
+rendered content", and that remains literally true of all 741 filed verdicts — they were earned,
+blind, and are re-renderable. What the control removes is the right to treat any SINGLE verdict
+as settled fact. The aggregate movement (218 → 55, every category to zero but CONTRADICTED) is
+far more robust than any individual row in it, because it rests on hundreds of verdicts rather
+than one.
+
+**Operational rule this puts on the next session, and it is new:** do not commit engineering
+effort to a lone CONTRADICTED. Confirm it with a second independent dispatch first — the cost is
+one Haiku dispatch against days of formatter work. Equally, do not read a lone PROVIDED as proof
+of coverage. This is the measured basis for the "targeted dual review/adjudication" that H-06's
+acceptance criteria already name and that has never been costed: at 88% agreement, dual dispatch
+on the 55 CONTRADICTED would be expected to overturn roughly 6 of them.
+
+**Named limits of the control itself:** 42 of 741 verdicts were re-judged, chosen as one hard and
+one easy batch rather than at random, so 88.1% is an estimate from a small purposive sample and
+not a tree-wide rate. It measures Haiku-against-Haiku only — ruling 4 forbids a stronger-model
+comparison — so it says nothing about whether both raters share a systematic bias. And it used
+the FIRST, medium-pre-judging prompt, deliberately, because that is the prompt the filed verdicts
+were produced under; a control on the corrected prompt has not been run.
