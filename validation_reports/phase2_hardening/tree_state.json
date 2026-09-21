@@ -1,7 +1,13 @@
 {
   "schema_version": 1,
   "note": "Intent record for interruption safety. Written when a batch, chain or campaign STARTS and cleared when it completes; an intent left open means a session did not reach its finish line. Deliberately digest-free -- see tests/tree_state.py. Read with `PYTHONPATH=. .venv/bin/python tests/tree_state.py`.",
-  "open_intent": null,
+  "open_intent": {
+    "kind": "batch",
+    "began_at": "2026-09-22T03:15:00+08:00",
+    "session": "H-06-rulings78-2026-09-22",
+    "note": "Fix B (renderer concurrency + node_id in case_id + silent-path mutation + contract row), then Fix A (6B ground truth), then content debt. Chain owed at the end.",
+    "next_step": "Land every remaining source edit, then run the re-proof chain in order."
+  },
   "last_completed": {
     "kind": "campaign",
     "began_at": "2026-09-22T02:34:55+08:00",

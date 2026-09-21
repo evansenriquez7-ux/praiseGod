@@ -96,6 +96,15 @@ ASSERTIONS = (
     # -- but the label it owns is still inventoried, because the verdict it can get wrong
     # (`certified` on a stale tree) tells the next session to skip the re-proof chain.
     "tree_state_certification",            # tests/unit/test_tree_state.py
+    # Renderer invocation isolation (owner ruling 8, 2026-09-22). Declared here for the
+    # same reason as the lines above -- its mutations drive ONE test file. The property
+    # is not a pipeline behaviour but an EVIDENCE-INTEGRITY one, which is why it earns a
+    # label of its own: `tests/frontend_renderer.py` is funnelled through by six call
+    # sites including BOTH §5 and §6F, and when two of them collided it did not crash, it
+    # silently attached one run's rendered visual evidence to the other run's samples.
+    # Measured cost: §6F recorded 55 findings on a tree that had 61, §5 recorded 1253
+    # where it has 1252. A stage figure that moves with no source change is the symptom.
+    "renderer_invocation_isolation",       # tests/unit/test_frontend_renderer_isolation.py
     "contract_doc_matches_registry",
     "operator_doc_covers_registry",
     "two_direction_contract_match",

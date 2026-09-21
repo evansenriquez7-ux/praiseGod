@@ -66,9 +66,10 @@ def _params(kind: str) -> dict:
 
 @pytest.fixture(scope="module")
 def rendered():
-    """Every kind rendered ONCE. One Node invocation for the whole module: the renderer
-    writes to a single fixed path with no lock (a named, unfixed hazard), so tests here
-    must not each drive it."""
+    """Every kind rendered ONCE. One Node invocation for the whole module -- now for COST
+    rather than for safety: since 2026-09-22 (owner ruling 8) each invocation renders in
+    its own `run-<pid>-<uuid4>` directory, so concurrent callers no longer corrupt each
+    other. Driving Node once per kind would still be needlessly slow."""
     cases = [(k, _params(k)) for k in _EXPECTED]
     cases += [(f"letter{L}", {"kind": "letter", "labels": [], "letter": L})
               for L in _LETTER_STROKES]

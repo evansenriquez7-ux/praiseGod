@@ -1,0 +1,46 @@
+{
+ "asserts": [
+  "renderer_invocation_isolation"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "test_each_invocation_renders_in_its_own_directory && failed"
+ ],
+ "command": [
+  "pytest",
+  "tests/unit/test_frontend_renderer_isolation.py::test_each_invocation_renders_in_its_own_directory",
+  "-q"
+ ],
+ "definition_digest": "559580fd228845bbbab42863c39314850514cadf0ca75c33b838bcc01dfdb0a4",
+ "detected": true,
+ "diagnostic_line": "exit 1 — =================================== FAILURES ===================================",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "test_each_invocation_renders_in_its_own_directory",
+  "failed"
+ ],
+ "expected_check": "§0 (each renderer invocation writes its own corpus and result)",
+ "finished_at": "2026-09-22T03:19:49+08:00",
+ "input_digest": "7c235b072e5a0817d13e8006414a2a22ac32ad5e4d00a18162ff6d55ed6e597b",
+ "mutated_paths": [
+  "tests/frontend_renderer.py"
+ ],
+ "mutation": "renderer_shares_one_fixed_render_path",
+ "observed_markers": {
+  "failed": true,
+  "test_each_invocation_renders_in_its_own_directory": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-09-22T03:19:43+08:00"
+}

@@ -1938,6 +1938,75 @@ MUTATIONS: List[Mutation] = [
         baseline_must_not_contain=["test_duplicate_modes_cannot_hide_an_unrendered_mode && failed"],
     ),
     Mutation(
+        name="renderer_case_id_omits_node_id",
+        asserts=["renderer_invocation_isolation"],
+        description=(
+            "Revert case_id to `packet-{index}-seed-{seed}`, the form that OMITS node_id. "
+            "This is the SILENT half of the renderer concurrency defect: two different "
+            "nodes then mint the same id, so when two of the six call sites collide their "
+            "id SETS can coincide while the rendered structure belongs to the other "
+            "process. The existing `set(active) != set(by_id)` guard passes, and one run "
+            "attaches the other run's visual evidence with no crash and no warning. "
+            "Measured cost before the fix: §6F reported 55 findings on a tree that had "
+            "61, and §5 reported 1253 where it has 1252. Deliberately NOT aimed at the "
+            "loud RuntimeError -- a plant that only trips that guard proves nothing new."
+        ),
+        edits={
+            "tests/frontend_renderer.py": (
+                '            case_id = f"{node_id}-packet-{index}-seed-{sample.get(\'seed\')}"\n',
+                '            case_id = f"packet-{index}-seed-{sample.get(\'seed\')}"  # planted mutation\n',
+            )
+        },
+        command=[
+            "pytest",
+            "tests/unit/test_frontend_renderer_isolation.py"
+            "::test_two_nodes_at_the_same_index_and_seed_do_not_share_a_case_id",
+            "-q",
+        ],
+        expected_check="§0 (two nodes at one index and seed may not share a case_id)",
+        expect_output_contains=[
+            "test_two_nodes_at_the_same_index_and_seed_do_not_share_a_case_id",
+            "failed",
+        ],
+        baseline_must_not_contain=[
+            "test_two_nodes_at_the_same_index_and_seed_do_not_share_a_case_id && failed"
+        ],
+    ),
+    Mutation(
+        name="renderer_shares_one_fixed_render_path",
+        asserts=["renderer_invocation_isolation"],
+        description=(
+            "Revert the per-invocation `run-<pid>-<uuid4>` directory to the single fixed "
+            "corpus/result pair every invocation used to share. This is the LOUD half: "
+            "two concurrent runs overwrite each other's files. It carries its own "
+            "mutation because the two halves MASK each other -- unique directories make "
+            "the end-to-end behaviour correct even with the colliding id space restored, "
+            "so a single end-to-end assertion would let the silent half survive."
+        ),
+        edits={
+            "tests/frontend_renderer.py": (
+                '        run_dir = SCRATCH / f"run-{os.getpid()}-{uuid.uuid4().hex}"\n'
+                '        run_dir.mkdir(parents=True, exist_ok=False)\n',
+                '        run_dir = SCRATCH  # planted mutation: one shared path again\n'
+                '        run_dir.mkdir(parents=True, exist_ok=True)\n',
+            )
+        },
+        command=[
+            "pytest",
+            "tests/unit/test_frontend_renderer_isolation.py"
+            "::test_each_invocation_renders_in_its_own_directory",
+            "-q",
+        ],
+        expected_check="§0 (each renderer invocation writes its own corpus and result)",
+        expect_output_contains=[
+            "test_each_invocation_renders_in_its_own_directory",
+            "failed",
+        ],
+        baseline_must_not_contain=[
+            "test_each_invocation_renders_in_its_own_directory && failed"
+        ],
+    ),
+    Mutation(
         name="judgment_accepts_corrupt_rendered_visual",
         asserts=["judgment_visual_evidence_5"],
         description=(

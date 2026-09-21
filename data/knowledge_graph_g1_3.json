@@ -6721,19 +6721,16 @@
           "kind": "context",
           "id": "addition_subtraction_expression",
           "clause": "addition or subtraction expression"
-        },
-        {
-          "kind": "context",
-          "id": "example_1",
-          "clause": "2+3 = 1+4"
-        },
-        {
-          "kind": "context",
-          "id": "example_2",
-          "clause": "10-5 = 6-1"
         }
       ],
-      "requires_ignore": [],
+      "requires_ignore": [
+        "1",
+        "10-5",
+        "2",
+        "3",
+        "4",
+        "6-1"
+      ],
       "NOT_YET_KNOWN": [
         "L",
         "a.m.",
@@ -7982,16 +7979,6 @@
           "kind": "object",
           "id": "repeating_pattern",
           "clause": "repeating pattern"
-        },
-        {
-          "kind": "range",
-          "id": "numbers_example",
-          "clause": "numbers: 2, 4, 2, 4__, __"
-        },
-        {
-          "kind": "range",
-          "id": "letters_example",
-          "clause": "letters: a, b, c, a, b, c, a, __, __"
         }
       ],
       "requires_ignore": [
@@ -8001,7 +7988,13 @@
         "properties",
         "arts",
         "visual",
-        "elements"
+        "elements",
+        "2",
+        "4",
+        "b",
+        "c",
+        "letters",
+        "numbers"
       ],
       "NOT_YET_KNOWN": [
         "L",
@@ -8312,18 +8305,8 @@
         },
         {
           "kind": "representation",
-          "id": "objects",
-          "clause": "objects"
-        },
-        {
-          "kind": "representation",
-          "id": "images",
-          "clause": "images"
-        },
-        {
-          "kind": "representation",
-          "id": "numbers",
-          "clause": "numbers"
+          "id": "objects_images_or_numbers",
+          "clause": "objects, images, or numbers"
         }
       ],
       "requires_ignore": [],
@@ -24535,13 +24518,8 @@
         },
         {
           "kind": "property",
-          "id": "meters",
-          "clause": "meters (m)"
-        },
-        {
-          "kind": "property",
-          "id": "centimeters",
-          "clause": "centimeters (cm)"
+          "id": "meters_or_centimeters",
+          "clause": "meters (m) or centimeters (cm)"
         },
         {
           "kind": "property",
@@ -25423,13 +25401,8 @@
         },
         {
           "kind": "property",
-          "id": "meters",
-          "clause": "meters"
-        },
-        {
-          "kind": "property",
-          "id": "centimeters",
-          "clause": "centimeters"
+          "id": "meters_or_centimeters",
+          "clause": "meters or centimeters"
         },
         {
           "kind": "property",
@@ -53683,13 +53656,8 @@
         },
         {
           "kind": "unit",
-          "id": "liters",
-          "clause": "liters (L)"
-        },
-        {
-          "kind": "unit",
-          "id": "milliliters",
-          "clause": "milliliters (mL)"
+          "id": "liters_and_or_milliliters",
+          "clause": "liters (L) and/or milliliters (mL)"
         },
         {
           "kind": "object",

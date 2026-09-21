@@ -1,0 +1,46 @@
+{
+ "asserts": [
+  "renderer_invocation_isolation"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "test_two_nodes_at_the_same_index_and_seed_do_not_share_a_case_id && failed"
+ ],
+ "command": [
+  "pytest",
+  "tests/unit/test_frontend_renderer_isolation.py::test_two_nodes_at_the_same_index_and_seed_do_not_share_a_case_id",
+  "-q"
+ ],
+ "definition_digest": "ba424e6361cd13e5908dae9d35e893cdccff127fc95c0f55c43c7102574f82cc",
+ "detected": true,
+ "diagnostic_line": "exit 1 — =================================== FAILURES ===================================",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "test_two_nodes_at_the_same_index_and_seed_do_not_share_a_case_id",
+  "failed"
+ ],
+ "expected_check": "§0 (two nodes at one index and seed may not share a case_id)",
+ "finished_at": "2026-09-22T03:20:36+08:00",
+ "input_digest": "7c235b072e5a0817d13e8006414a2a22ac32ad5e4d00a18162ff6d55ed6e597b",
+ "mutated_paths": [
+  "tests/frontend_renderer.py"
+ ],
+ "mutation": "renderer_case_id_omits_node_id",
+ "observed_markers": {
+  "failed": true,
+  "test_two_nodes_at_the_same_index_and_seed_do_not_share_a_case_id": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-09-22T03:20:29+08:00"
+}

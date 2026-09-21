@@ -13859,3 +13859,196 @@ the corpus anyway, and only if done before the corpus run rather than after.
 Both fixes are source edits under `INPUT_ROOTS` and so is the content debt, so the handoff
 sequences them as ONE batch and ONE chain, with the anchor scan before the corpus, the benchmark
 after the last source commit, and the release sweep last.
+
+---
+
+## 2026-09-22 (session `H-06-rulings78-2026-09-22`) — OWNER RULINGS 7 AND 8 ACTED ON
+
+Tree entered CERTIFIED at digest `3907ad23d1b84972`. `tests/tree_state.py` and
+`tests/hardening_status.py` both agreed with the handoff before the first edit. `H-06`
+claimed as a work-lock; a `batch` intent was recorded before any source was touched, and
+during the session `tree_state.py` correctly reported `INTERRUPTED` with that note — the
+first time the interruption machinery has been exercised by a real interruption.
+
+### FIX B (owner ruling 8) — the fixed-path renderer, BOTH halves
+
+`tests/frontend_renderer.py` is funnelled through by six call sites including both §5 and
+§6F. It wrote `local_only/scratch/frontend_packet_render/{corpus,result}.json` — fixed
+paths, no pid, no uuid, no lock — and minted `case_id = f"packet-{index}-seed-{seed}"`,
+which OMITS `node_id`.
+
+Fixed both halves, as the ruling requires:
+
+1. every invocation renders in its own `run-<pid>-<uuid4>` directory, removed on the
+   success path and deliberately KEPT on failure so the corpus that produced a failure
+   survives for diagnosis (the raised error names the directory);
+2. `case_id` now carries `node_id`, so two nodes cannot mint the same id.
+
+**Why both, and why two mutations rather than one.** The halves MASK each other. Unique
+directories make the end-to-end behaviour correct *even with the colliding id space
+restored*, so a single end-to-end assertion would let a `case_id` regression survive. Each
+half therefore carries its own named assertion and its own mutation.
+
+New label `renderer_invocation_isolation` in `run_all.ASSERTIONS`; new contract row in
+`docs/pgen_contract.md`; new test module `tests/unit/test_frontend_renderer_isolation.py`
+(4 tests). Both directions of `contract_doc_matches_registry` / `operator_doc_covers_registry`
+re-checked clean after the doc edit.
+
+```
+$ PYTHONPATH=. .venv/bin/python tests/mutation_harness.py --only renderer_case_id_omits_node_id
+  PASS  renderer_case_id_omits_node_id §0 (two nodes at one index and seed may not share a case_id)
+1/1 mutations detected.
+
+$ PYTHONPATH=. .venv/bin/python tests/mutation_harness.py --only renderer_shares_one_fixed_render_path
+  PASS  renderer_shares_one_fixed_render_path §0 (each renderer invocation writes its own corpus and result)
+1/1 mutations detected.
+```
+
+**The mutation was checked for passing for the WRONG REASON, and the first check FAILED
+the way it was supposed to.** Neutering only the first assertion left the mutation still
+DETECTED — the second assertion (`node_id in case_id`) was catching it. Neutering BOTH:
+
+```
+  FAIL  renderer_case_id_omits_node_id §0 (two nodes at one index and seed may not share a case_id)
+0/1 mutations detected.
+```
+
+So the test's own assertions are what catch the plant, not an incidental error. File
+restored byte-identical (`diff` clean) and re-confirmed DETECTED.
+
+Stale limitation corrected: `tests/unit/test_geometry_figure.py`'s fixture docstring
+described the renderer as "a single fixed path with no lock (a named, unfixed hazard)",
+which is no longer true. A named limitation left standing after it is closed is how the
+next agent stops looking (Mandate 6), in the opposite direction.
+
+### FIX A (owner ruling 7) — §6B ground-truth decomposition, Protocol 5 record
+
+`requires` is hand-authored in `data/skeletons/vocab_annotation.json`. Both files
+round-trip EXACTLY under `json.dumps(indent=2, ensure_ascii=True)` (verified by comparing
+against the original bytes before editing), so the diffs carry no collateral churn:
+23 insertions / 54 deletions in `vocab_annotation.json`, 19/5 in the lock.
+
+**Disjunction flattened into a conjunction — one disjunction now contributes ONE requirement**,
+spelled the way `m_or_cm`, `grams_kilograms_and_or_milligrams` and `liters_and_or_milliliters`
+already are in this same file:
+
+| node | MATATAG text (quoted) | was | now |
+|---|---|---|---|
+| `mat_g1_na_q3_7` | "Create repeating patterns using objects, images, **or** numbers." | `objects` + `images` + `numbers` | `objects_images_or_numbers` |
+| `mat_g2_mg_q2_2` | "Estimate length using meters **or** centimeters, and distance using meters." | `meters` + `centimeters` | `meters_or_centimeters` |
+| `mat_g2_mg_q2_0` | "... in meters (m) **or** centimeters (cm), and distance in meters ..." | `meters` + `centimeters` | `meters_or_centimeters` |
+| `mat_g3_mg_q2_3` | "Measure capacity in liters (L) **and/or** milliliters (mL) ..." | `liters` + `milliliters` | `liters_and_or_milliliters` |
+
+**`e.g.` material is illustrative, not a requirement** — moved to `requires_ignore`, lock
+updated in the same commit:
+
+| node | MATATAG text (quoted) | dropped |
+|---|---|---|
+| `mat_g1_na_q3_6` | "(**e.g.**, numbers: 2, 4, 2, 4__, __; letters: a, b, c, …)" | `numbers_example`, `letters_example` |
+| `mat_g1_na_q3_2` | "(**e.g.**, 2+3 = 1+4; 10-5 = 6-1)" | `example_1`, `example_2` |
+
+**TWO OF THESE NODES ARE NOT IN THE HANDOFF'S LIST OF SIX, and were found by sweeping
+rather than by inheriting the list.** `mat_g2_mg_q2_0` and `mat_g3_mg_q2_3` carry exactly
+the same defect, and `mat_g3_mg_q2_3` is directly inconsistent with its own sibling
+`mat_g3_mg_q2_4`, which already collapses the identical "liters and/or milliliters"
+disjunction into one id. Both were LATENT (passing), so they were fixed while their
+baseline was still clean (Mandate 5). **The handoff's reach figure of 6 nodes is an
+undercount; it is at least 8.**
+
+**`mat_g1_na_q1_2` was the judgement call and is DELIBERATELY NOT CHANGED.** Its competency
+reads "using a variety of concrete and pictorial models (e.g., number line, block or bar
+models, and numerals)". Two readings are available and the distinction is principled: in
+`mat_g1_na_q3_6` and `mat_g1_na_q3_2` the `e.g.` material is a LITERAL INSTANCE ("2, 4, 2,
+4__, __") that no generator could ever be asked to render as a mandatory artifact, whereas
+here it names CLASSES OF MODEL that the pipeline genuinely provides. Owner ruling 1 directs
+the stricter reading where ambiguous. The strict reading keeps `number_line`,
+`block_or_bar_models` and `numerals` required; all three PASS today, so the strict reading
+costs nothing and preserves three live gates. Recorded rather than left to ride on the
+pattern of the others.
+
+**Provider table moved in the same commit** (§6A would otherwise name every orphan): nine
+entries deleted (`centimeters`, `example_1`, `example_2`, `images`, `letters_example`,
+`liters`, `meters`, `milliliters`, `numbers_example`), two added
+(`meters_or_centimeters`, `objects_images_or_numbers`) carrying the providers of the
+entries they replace. `liters_and_or_milliliters` already existed and was reused.
+
+```
+$ PYTHONPATH=. .venv/bin/python -m scripts.rebuild_knowledge_graph
+Rebuilt knowledge graph: 151 nodes
+
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_capability --phase 1
+Capability contract: 5 failure(s) (5 Phase 1 / artifact-free, floor 5; 0 Phase 2 / attestation).
+```
+Back to exactly the floor — the five pre-existing `draw`-verb content findings. Immediately
+after the ground-truth edit and before re-attestation it was 17 (9 orphans + 3 unprovided
+new ids + the floor 5), which is the predicted intermediate state, not a regression.
+
+### RE-ATTESTATION, and a defect I introduced and caught before filing
+
+The four nodes with a new-to-them capability id reported UNATTESTED, exactly as the handoff
+predicted — `capability_phase2` held at 55 (51 CONTRADICTED + 4 UNATTESTED), i.e. net zero
+until re-attested.
+
+**Defect 1, in my own dispatch construction: `attester_packets.py` numbers items PER
+INVOCATION**, so concatenating four nodes' packets into one prompt produced `item_001` four
+times. That is the same class of bug as the `case_id` defect fixed above — an id two
+sources can both mint, joined by a tool that assumes uniqueness. Caught before filing;
+nothing was filed through the ambiguous join. **This is a live trap for any future
+multi-node dispatch and is not currently guarded.**
+
+**Defect 2, and it is the more important one: my first dispatch prompt changed the
+INSTRUMENT, not just the rater.** It added an instruction to weigh prevalence ("if only
+some of the ten samples show the clause, say how many"). Result, on the same 18 clauses:
+
+| prompt | PROVIDED | NOT_PROVIDED |
+|---|---|---|
+| with prevalence instruction | 12 | **6** |
+| neutral (campaign framing) | 16 | **2** |
+
+All six clauses the prevalence-primed dispatch failed had been ruled **PROVIDED by two
+prior independent blind Attesters each** (`batch025B01`/`batch093`, `batch026B04`/`batch083`,
+`batch026B05`/`batch100`). Four of the six flipped back under the neutral prompt. So the
+flip is a PROMPT EFFECT, not rater variance, and the prevalence-primed verdicts were
+discarded rather than filed — they are not comparable to a corpus judged on a different
+standard. **This is a measured number for a blind spot the plan already names in words**
+("Nothing makes an Attester weigh PREVALENCE"): weighing prevalence flips 6 of 18 clauses
+on 4 nodes that two raters each had passed. Whether prevalence should become part of the
+standard is a curriculum-standard question and therefore the OWNER's call, not a session's.
+
+Four records filed as `batch115_*` (prefix sorts after `batch114`, the previous maximum),
+one blind Haiku identity `blind-attester-haiku45-b115-20260922` covering 4 nodes (§6H cap
+is 25). The two NOT_PROVIDED carry an `action_taken` recording that they are NOT acted on,
+because the reproducibility rule forbids committing engineering effort to a lone
+CONTRADICTED before a second independent dispatch confirms it.
+
+```
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_capability --phase 2
+Capability contract: 53 failure(s) (0 Phase 1 / artifact-free, floor 5; 53 Phase 2 / attestation).
+  -> 53 CONTRADICTED, 0 UNATTESTED, 0 STALE, 0 UNADJUDICABLE
+```
+
+**55 → 53.** Composition: the 4 ground-truth CONTRADICTED cleared as the ruling predicted;
+2 new CONTRADICTED arrived from honest blind re-attestation of `mat_g2_mg_q2_0` (`measure`,
+`distance`) and are recorded as owing confirmation, not work.
+
+**The supersession defect did NOT reproduce here**, which was not predicted and is worth
+recording: `mat_g2_mg_q2_0`'s superseded `batch093` record still holds the now-unconsulted
+pairs `('mat_g2_mg_q2_0','meters')` and `(...,'centimeters')`, yet §6F reports 0 STALE. The
+structural fix remains open and still owes a named mutation; this run is evidence about one
+shape of the defect, not evidence that it is gone.
+
+### NAMED LIMITATIONS LEFT STANDING BY THIS SESSION
+
+* **Collapsing "meters or centimeters" loses the distance-unit pin.** `mat_g2_mg_q2_2` and
+  `mat_g2_mg_q2_0` both end "...and distance in/using **meters**", so meters is arguably
+  required unconditionally for the distance clause even though it is optional for length.
+  The collapsed id cannot express that, and §6B coverage passes because the word "meters"
+  appears inside the collapsed clause. Named rather than silently accepted.
+* **A dozen further disjunctions are NOT touched and are the owner's reading**, because
+  they are a new judgement rather than the file's own convention applied consistently:
+  `mat_g1_na_q4_4` ("bills and/or coins"), `mat_g2_mg_q4_0` ("days and/or weeks"),
+  `mat_g3_na_q1_4` ("nearest ten, hundred, or thousand"), `mat_g2_na_q1_9` ("with or
+  without regrouping") and others read as required COVERAGE rather than alternatives. The
+  sweep that found them is reproducible; the classification is not mechanical.
+* **Multi-node attester dispatches have a colliding item-id space** (defect 1 above), with
+  nothing guarding it.

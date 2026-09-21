@@ -1,0 +1,826 @@
+{
+  "batch": "batch115_mat_g2_mg_q2_0",
+  "attested_at": "2026-09-22T00:00:00Z",
+  "attested_by": "blind-attester-haiku45-b115-20260922",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "the Attester was told to read exactly local_only/scratch/attest115/{mat_g1_na_q3_7,mat_g2_mg_q2_0,mat_g2_mg_q2_2,mat_g3_mg_q2_3}.prompt.txt, which is attester_packets.render_prompt_block output (item id, clause, competency, grade/quarter and the rendered samples only). Verified before dispatch to contain no node id, no capability id and no provider table.",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "prompt-contract dispatch to a separate Haiku subagent: told to read exactly four packet renders under local_only/scratch/attest115/ and no other path, and to return verdict JSON. Tool access was NOT structurally prevented, so this does not claim the '0' (inline, no tool access) contract; 4 tool uses were reported by the harness, consistent with reading the four named files."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g2_mg_q2_0",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g2_mg_q2_0",
+        "seed": 11,
+        "formatter": "mcq",
+        "question_text": "A pencil is 10 cm long. A ruler is 15 cm long. Which length is longer in cm?",
+        "correct_answer": 15,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 15,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 16,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 10,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 20,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 15,
+        "hints": [
+          "Compare 10 centimeter (cm) and 15 centimeter (cm).",
+          "15 is more than 10.",
+          "The longer length is 15 centimeter (cm)."
+        ],
+        "sample_id": "bb29846e8fc29404ffb2",
+        "replay_digest": "845ff3b8892ab0ee022c08c2a178d9e904e20de4c23ece91e81a80ceef466931"
+      },
+      {
+        "node_id": "mat_g2_mg_q2_0",
+        "seed": 23,
+        "formatter": "cloze",
+        "question_text": "A spoon is 12 cm long. A notebook is 20 cm long. Which length is longer in cm?",
+        "correct_answer": 20,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 20,
+            "text": "20",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 12,
+            "text": "12",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 15,
+            "text": "15",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 25,
+            "text": "25",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 20,
+        "hints": [
+          "Compare 12 centimeter (cm) and 20 centimeter (cm).",
+          "20 is more than 12.",
+          "The longer length is 20 centimeter (cm)."
+        ],
+        "sample_id": "427e35d52027709736db",
+        "replay_digest": "f352c74c989020543fc06d5556468f3494dc8e831c731c824c98e7a205f93e77"
+      },
+      {
+        "node_id": "mat_g2_mg_q2_0",
+        "seed": 42,
+        "formatter": "cloze",
+        "question_text": "The distance from the bench to the tree is 2 m. The distance from the gate to the tree is 1 m. Which distance is longer in meters?",
+        "correct_answer": 2,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 3,
+            "text": "3",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 2,
+            "text": "2",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 7,
+            "text": "7",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 1,
+            "text": "1",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 2,
+        "hints": [
+          "Compare 2 centimeter (cm) and 1 centimeter (cm).",
+          "2 is more than 1.",
+          "The longer distance is 2 centimeter (cm)."
+        ],
+        "sample_id": "4cb17c90223e427cff52",
+        "replay_digest": "3a19b608183137b7e69f534665bf5019dbef143c41b037be97808050589d73cf"
+      },
+      {
+        "node_id": "mat_g2_mg_q2_0",
+        "seed": 57,
+        "formatter": "read_mcq",
+        "question_text": "How long is the object? Give your answer in cm.",
+        "correct_answer": "C",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "RulerMeasure",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 20,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 6,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 5,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 4,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 5,
+        "hints": [
+          "Read the measurement on the ruler carefully.",
+          "The length is 5 cm."
+        ],
+        "visual_type": "RulerMeasure",
+        "visual_payload": {
+          "ruler_start": 0,
+          "ruler_end": 20,
+          "unit": "cm",
+          "object_start": 0,
+          "object_end": 5,
+          "length": 5,
+          "unit_name": "cm"
+        },
+        "visual_render": {
+          "visual_type": "RulerMeasure",
+          "renderer_input_digest": "a54f705a043ccf3eb0786bc33eb460695329a6a21756e1dcf7efc40e9207fe8d",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "RulerMeasure",
+            "element_count": 21,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 1,
+            "text_labels": [
+              "0 cm",
+              "0",
+              "5",
+              "10",
+              "cm"
+            ],
+            "distinct_colours": [
+              "#f8fafc",
+              "#cbd5e1",
+              "#475569",
+              "#0f172a"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "bf552ea9e4d390c5391e",
+        "replay_digest": "169af359ed4cb4f54b0c9f62edd32983e34178e954c27dcf83c69f74219ad797"
+      },
+      {
+        "node_id": "mat_g2_mg_q2_0",
+        "seed": 64,
+        "formatter": "cloze",
+        "question_text": "A pencil is 10 cm long. A book is 18 cm long. Which length is longer in cm?",
+        "correct_answer": 18,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 18,
+            "text": "18",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 23,
+            "text": "23",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 13,
+            "text": "13",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 10,
+            "text": "10",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 18,
+        "hints": [
+          "Compare 10 centimeter (cm) and 18 centimeter (cm).",
+          "18 is more than 10.",
+          "The longer length is 18 centimeter (cm)."
+        ],
+        "sample_id": "5ca221d8c5557fa3c48c",
+        "replay_digest": "4a975294e5c595b22e221e567ddff7b08bb631a8feca715e810ac30469810d8a"
+      },
+      {
+        "node_id": "mat_g2_mg_q2_0",
+        "seed": 78,
+        "formatter": "read_mcq",
+        "question_text": "How long is the object? Give your answer in cm.",
+        "correct_answer": "B",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "RulerMeasure",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 20,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 8,
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 7,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 9,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 8,
+        "hints": [
+          "Read the measurement on the ruler carefully.",
+          "The length is 8 cm."
+        ],
+        "visual_type": "RulerMeasure",
+        "visual_payload": {
+          "ruler_start": 0,
+          "ruler_end": 20,
+          "unit": "cm",
+          "object_start": 0,
+          "object_end": 8,
+          "length": 8,
+          "unit_name": "cm"
+        },
+        "visual_render": {
+          "visual_type": "RulerMeasure",
+          "renderer_input_digest": "5012e8e738348bba24d209b8cd1d3bb198389976d38cac7b8f4ab1266eb117bd",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "RulerMeasure",
+            "element_count": 21,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 1,
+            "text_labels": [
+              "0 cm",
+              "0",
+              "5",
+              "10",
+              "cm"
+            ],
+            "distinct_colours": [
+              "#f8fafc",
+              "#cbd5e1",
+              "#475569",
+              "#0f172a"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "c2b95e13e0dbda25f371",
+        "replay_digest": "13799d537c02b31ec49b3dcd065656302a7e31afa98ba70be5bc83b62105ac33"
+      },
+      {
+        "node_id": "mat_g2_mg_q2_0",
+        "seed": 91,
+        "formatter": "read_mcq",
+        "question_text": "How long is the object? Give your answer in cm.",
+        "correct_answer": "C",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "RulerMeasure",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 20,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 7,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 6,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 5,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 6,
+        "hints": [
+          "Read the measurement on the ruler carefully.",
+          "The length is 6 cm."
+        ],
+        "visual_type": "RulerMeasure",
+        "visual_payload": {
+          "ruler_start": 0,
+          "ruler_end": 20,
+          "unit": "cm",
+          "object_start": 0,
+          "object_end": 6,
+          "length": 6,
+          "unit_name": "cm"
+        },
+        "visual_render": {
+          "visual_type": "RulerMeasure",
+          "renderer_input_digest": "8a3f34734c50ab8caf8c8701a92b8eb65e438c20b65062b464ce8c828ed16527",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "RulerMeasure",
+            "element_count": 21,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 1,
+            "text_labels": [
+              "0 cm",
+              "0",
+              "5",
+              "10",
+              "cm"
+            ],
+            "distinct_colours": [
+              "#f8fafc",
+              "#cbd5e1",
+              "#475569",
+              "#0f172a"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "3fea2ae6e047cf9324f1",
+        "replay_digest": "d77fac22a73f02ca25d839151f2f24d42e1e28244b9a968082ec1d012511b44e"
+      },
+      {
+        "node_id": "mat_g2_mg_q2_0",
+        "seed": 103,
+        "formatter": "cloze",
+        "question_text": "The distance from the bench to the tree is 8 m. The distance from the gate to the tree is 4 m. Which distance is longer in meters?",
+        "correct_answer": 8,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 4,
+            "text": "4",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 8,
+            "text": "8",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 3,
+            "text": "3",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 13,
+            "text": "13",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 8,
+        "hints": [
+          "Compare 8 centimeter (cm) and 4 centimeter (cm).",
+          "8 is more than 4.",
+          "The longer distance is 8 centimeter (cm)."
+        ],
+        "sample_id": "0531ae22d142464bf9a9",
+        "replay_digest": "9e653ea55859a2a8427a55f096f647f1e1419f5f9fef92ca500d479518d5b4f0"
+      },
+      {
+        "node_id": "mat_g2_mg_q2_0",
+        "seed": 118,
+        "formatter": "mcq",
+        "question_text": "The distance from the bench to the tree is 3 m. The distance from the gate to the tree is 5 m. Which distance is shorter in meters?",
+        "correct_answer": 3,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 5,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 1,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 3,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 8,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 3,
+        "hints": [
+          "Compare 3 centimeter (cm) and 5 centimeter (cm).",
+          "5 is more than 3.",
+          "The longer distance is 3 centimeter (cm)."
+        ],
+        "sample_id": "ddccd213ca5d74b14aa5",
+        "replay_digest": "b71436f21346553c8b6ab6b06b474cc469e870deef2638916fa67411a79785e2"
+      },
+      {
+        "node_id": "mat_g2_mg_q2_0",
+        "seed": 127,
+        "formatter": "read_mcq",
+        "question_text": "How long is the object? Give your answer in cm.",
+        "correct_answer": "B",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "RulerMeasure",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 4,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 5,
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 6,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 20,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 5,
+        "hints": [
+          "Read the measurement on the ruler carefully.",
+          "The length is 5 cm."
+        ],
+        "visual_type": "RulerMeasure",
+        "visual_payload": {
+          "ruler_start": 0,
+          "ruler_end": 20,
+          "unit": "cm",
+          "object_start": 0,
+          "object_end": 5,
+          "length": 5,
+          "unit_name": "cm"
+        },
+        "visual_render": {
+          "visual_type": "RulerMeasure",
+          "renderer_input_digest": "a54f705a043ccf3eb0786bc33eb460695329a6a21756e1dcf7efc40e9207fe8d",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "RulerMeasure",
+            "element_count": 21,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 1,
+            "text_labels": [
+              "0 cm",
+              "0",
+              "5",
+              "10",
+              "cm"
+            ],
+            "distinct_colours": [
+              "#f8fafc",
+              "#cbd5e1",
+              "#475569",
+              "#0f172a"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "773433ca31a5fdb0b155",
+        "replay_digest": "16f0e347bd899a4baa6842b961853fa7a1852e63964081de74a0c42f65061086"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "measure",
+      "node_id": "mat_g2_mg_q2_0",
+      "clause": "Measure",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "Six of ten samples ask students to compare given measurements ('Which length is longer?') rather than perform measurement. Only seeds 57, 78, 91, 127 present a RulerMeasure visual and ask 'How long is the object?'—actual measurement tasks. The item emphasizes comparison of pre-measured quantities over measurement itself.",
+      "action_taken": "LEFT AS REPORTED, NOT YET ACTED ON. This clause ('Measure') was ruled PROVIDED by two prior independent blind Attesters (batch025B01, batch093). Per the plan's reproducibility rule (88.1% inter-rater agreement measured 2026-09-22), a lone NOT_PROVIDED is not settled fact and no engineering effort is committed to it until a second independent dispatch confirms it. Recorded here so the disagreement is visible rather than discarded."
+    },
+    {
+      "capability_id": "compare",
+      "node_id": "mat_g2_mg_q2_0",
+      "clause": "compare",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        64,
+        103,
+        118
+      ],
+      "reasoning": "Seeds 11, 23, 42, 64 ask 'Which length is longer?'; seeds 103, 118 ask 'Which distance is longer/shorter?' Six of ten samples directly require comparison of magnitudes, which is the cognitive action the clause names.",
+      "action_taken": "no action needed; the clause is exhibited by the rendered samples"
+    },
+    {
+      "capability_id": "lengths",
+      "node_id": "mat_g2_mg_q2_0",
+      "clause": "lengths",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        127
+      ],
+      "reasoning": "Eight samples involve measuring or comparing lengths of objects: seeds 11, 23, 42, 64 discuss pencil, ruler, spoon, notebook, book lengths; seeds 57, 78, 91, 127 ask 'How long is the object?' Seeds 103, 118 refer to distances, not object lengths.",
+      "action_taken": "no action needed; the clause is exhibited by the rendered samples"
+    },
+    {
+      "capability_id": "objects",
+      "node_id": "mat_g2_mg_q2_0",
+      "clause": "objects",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All ten samples involve concrete physical objects: seeds 11, 23, 42, 64 measure pencils, rulers, spoons, notebooks; seeds 57, 78, 91, 127 measure bottles, containers, jugs; seeds 103, 118 reference bench and tree. Every sample works with identifiable objects.",
+      "action_taken": "no action needed; the clause is exhibited by the rendered samples"
+    },
+    {
+      "capability_id": "meters_or_centimeters",
+      "node_id": "mat_g2_mg_q2_0",
+      "clause": "meters (m) or centimeters (cm)",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All samples ask for answers in either meters (m) or centimeters (cm). Seeds 11, 23, 42, 64, 57, 78, 91, 127 specify cm; seeds 103, 118 specify m. The clause presents alternatives joined by 'or'—all samples satisfy at least one branch.",
+      "action_taken": "no action needed; the clause is exhibited by the rendered samples"
+    },
+    {
+      "capability_id": "distance",
+      "node_id": "mat_g2_mg_q2_0",
+      "clause": "distance",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "Only two of ten samples involve distance: seeds 103, 118 explicitly state 'distance from bench to tree' and 'distance from gate to tree'. The remaining eight samples measure or compare object lengths, not distances. Distance is a minor component of this item.",
+      "action_taken": "LEFT AS REPORTED, NOT YET ACTED ON. This clause ('distance') was ruled PROVIDED by two prior independent blind Attesters (batch025B01, batch093). Same reproducibility rule as item_001: confirmation by a second independent dispatch is owed before any provider entry is deleted or any artifact built. The reasoning given is prevalence-based (2 of 10 samples), and prevalence is a named, unclosed gap in the packet format."
+    },
+    {
+      "capability_id": "measuring_tools",
+      "node_id": "mat_g2_mg_q2_0",
+      "clause": "measuring tools",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        57,
+        78,
+        91,
+        127
+      ],
+      "reasoning": "Seeds 57, 78, 91, 127 each render a RulerMeasure visual (containing 21 SVG elements and scale labels in cm), providing an actual measuring tool that students must read to determine length. These samples directly present and require use of an appropriate measuring tool.",
+      "action_taken": "no action needed; the clause is exhibited by the rendered samples"
+    }
+  ]
+}
