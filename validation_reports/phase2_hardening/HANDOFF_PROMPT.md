@@ -108,14 +108,73 @@ blind re-reviews are still owed. That is a second campaign, by dispatch, and it 
 of remaining work that costs NO re-proof, because `validation_reports/judgment/` is outside the
 fingerprint. **If you want zero-re-proof work, it is here, not in §6.**
 
-### The machinery, reused
+### The machinery — TWO campaigns, TWO toolchains. Do not cross them.
 
-Both campaigns dispatch the same way. `tests/attester_packets.py` writes the blind half and the
-key it must not see; `tests/attester_file.py` joins returned verdicts to the key mechanically so
-nothing is retyped. The §6 campaign's plan, per-dispatch status and verdict counts are in
-`phase2_hardening/attestation_campaign.json`, which is resumable and claimed by `H-06`.
+Both dispatch blind, and both refuse to let you retype evidence, but they are different
+modules and the §5 one has a hazard §6's does not.
 
-**What the last campaign learned, so you do not rediscover it:**
+**§6 attestation (DONE):** `tests/attester_packets.py` writes the blind half and the key it must
+not see; `render_prompt_block` emits the Attester-facing text verbatim; `tests/attester_file.py`
+joins returned verdicts to the key mechanically. The campaign's plan, per-dispatch status and
+verdict counts are in `phase2_hardening/attestation_campaign.json` — resumable, claimed by `H-06`.
+
+**§5 judgment review (OWED, 151 nodes):** a DIFFERENT pair.
+
+```sh
+PYTHONPATH=. .venv/bin/python -m tests.judgment_batches --plan          # the batch plan
+PYTHONPATH=. .venv/bin/python -m tests.judgment_batches --batch 3 \
+    --blind local_only/scratch/review/b3.txt --skeleton-dir local_only/scratch/review/b3/
+PYTHONPATH=. .venv/bin/python -m tests.file_reviews \
+    --batch 3 --verdicts <reply.json> \
+    --reviewed-by <dispatcher-assigned-identity> --date <ISO> \
+    --skeleton-dir local_only/scratch/review/b3/
+```
+
+`backend/.../validation/judgment_packets.py` is the underlying builder and has its own CLI, but
+dispatch through `tests/judgment_batches.py`: hand-assembling a §5 review is the retyping defect
+that module was written to close, on the larger of the two surfaces (151 reviews × 6 rationales).
+
+**Two §5-specific rules that have no §6 analogue, and one of them is a trap that PASSES:**
+
+* **File the samples from the DISPATCH-TIME skeleton (`--skeleton-dir`), never a rebuild at
+  filing time.** `file_reviews.py`'s first version rebuilt the packet when filing — which sounds
+  stricter and is the one mistake that cannot be detected afterwards. A generator fix landing
+  between dispatch and filing (the NORMAL case, since the point of a batch is to find defects and
+  fix them) pairs the reviewer's verdicts with samples it never saw, and §5 freshness PASSES,
+  because the samples really are fresh. That is a fabricated review with a clean bill of health,
+  manufactured by the tool meant to prevent it. Filing what the reviewer actually saw makes the
+  drift VISIBLE instead — the node reports stale and the honest remedy is a re-review.
+* **The reviewer identity is assigned by the DISPATCHER and a mismatched reply is refused.**
+  Measured 2026-09-10: three independently dispatched blind agents given the same prompt all
+  converged on variations of one self-declared name, which would silently weaken §5 reviewer
+  plurality and §6H attester plurality alike.
+
+**Scale of the §5 campaign — executed 2026-09-22, not estimated:**
+
+```text
+$ PYTHONPATH=. .venv/bin/python -m tests.judgment_batches --plan
+batch  1: 25 nodes  mat_g1_dp_q3_0 .. mat_g1_na_q1_9
+batch  2: 25 nodes  mat_g1_na_q2_0 .. mat_g2_mg_q1_0
+batch  3: 25 nodes  mat_g2_mg_q1_1 .. mat_g2_na_q2_0
+batch  4: 25 nodes  mat_g2_na_q2_1 .. mat_g2_na_q4_5
+batch  5: 25 nodes  mat_g3_dp_q3_0 .. mat_g3_na_q1_3
+batch  6: 25 nodes  mat_g3_na_q1_4 .. mat_g3_na_q4_6
+batch  7:  1 nodes  mat_g3_na_q4_7 .. mat_g3_na_q4_7
+
+7 batches of <= 25 ...; each needs its OWN reviewer identity, or §5 reports reviewer plurality.
+```
+
+So it is **7 dispatches, not 33** — but each is far heavier per node than a §6 one, because a
+§5 review owes 6 findings plus 4 per-sample assessments for every node, where a §6 verdict owed
+one answer per clause. Budget accordingly and expect corrective rounds.
+
+Other constraints: schema v2 only, ≤25 nodes per reviewer identity, 6 required
+findings per node (`competency_fulfillment`, `comprehensive_coverage`, `cognitive_capacity`,
+`variant_comprehensiveness`, `competency_alignment`, `scale_appropriateness`) plus 4 per-sample
+assessments (`mathematical_validity`, `contextual_logical_validity`, `ambiguity`,
+`learner_facing_clarity`). Rationale skeletons cluster at 3, same as §6G.
+
+**What the §6 campaign learned that carries over, so you do not rediscover it:**
 
 * **A replacement record must supersede EVERY `(node, capability)` pair its predecessor holds**,
   or `_attestation_staleness` keeps reading the old record and its finding never clears. This is
