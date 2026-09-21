@@ -1,7 +1,7 @@
 # Handoff — continue the Phase 2 hardening plan
 
-**Rewritten 2026-09-21 on `2d335e8c`, with the tree CERTIFIED. This file is deliberately a
-POINTER, not a summary.**
+**Rewritten 2026-09-21 (evening), after Phase A landed and was re-proved. The tree is
+CERTIFIED. This file is deliberately a POINTER, not a summary.**
 
 Earlier versions duplicated the plan's status and then drifted from it. Two sources of truth
 is how a session inherits confident wrong numbers, so status lives in exactly one place —
@@ -12,47 +12,48 @@ the owner has already decided.
 
 ## FIRST: establish what state the tree is in
 
-**Do this before touching anything.** There are THREE states and they are not equally obvious.
+**Do this before touching anything.** There are THREE states and ONE command tells you
+which you are in — that command is new as of 2026-09-21 and replaces the ad-hoc script
+plus prose table that used to live here.
 
 ```sh
-git log --oneline -1                     # expect 2d335e8c or a descendant
-git status --porcelain                   # NOT empty => a session was interrupted
-PYTHONPATH=. .venv/bin/python tests/hardening_status.py
-#  -> PASS hardening_status: 9 H-row(s) valid — 3 closed, 5 open, 1 out_of_scope
-
-PYTHONPATH=. .venv/bin/python - <<'PY'
-from backend.app.practice_gen.validation.mutation_proof import input_digest
-import json, glob, collections
-live = input_digest(); print('LIVE', live[:16])
-for f in sorted(glob.glob('validation_reports/phase2_hardening/obligation_release_shards/*.json')):
-    print(' ', f.split('/')[-1], json.load(open(f))['source_input_digest'] == live)
-for n in ('obligation_benchmark.json', 'frontend_static_render.json'):
-    print(' ', n, json.load(open(f'validation_reports/phase2_hardening/{n}'))['source_input_digest'] == live)
-c = collections.Counter(json.load(open(f))['input_digest'] == live
-                        for f in glob.glob('validation_reports/mutation_proofs/*.json'))
-print('  proofs current', c[True], 'stale', c[False])
-PY
+PYTHONPATH=. .venv/bin/python tests/tree_state.py     # exit 0 only when CERTIFIED
 ```
 
-**The expected reading on `2d335e8c`, and what CERTIFIED looks like:**
+It reports the live digest, the worktree, each of the four digest-bound artifact families,
+and any OPEN INTENT — a record written when a batch or chain STARTS and cleared when it
+finishes. That intent is what separates the two states that were previously
+indistinguishable from the digests alone:
+
+| State | Means | Do |
+|---|---|---|
+| `certified` | nothing in flight, worktree clean, all four families fresh | **Start THE JOB.** Do not re-run the chain; it proves nothing new |
+| `awaiting_reproof` | a batch landed, the chain was never run | Run the chain in the documented order |
+| `interrupted` | an intent is open, or the worktree is dirty | Read the open intent — it names what was in flight and the next step |
+
+**The expected reading right now:**
 
 ```text
-LIVE 90ed5464a45073d9
-  shard_000..005          True   (all six)
-  obligation_benchmark    True
-  frontend_static_render  True
-  proofs current 147 stale 0
+PASS tree_state: CERTIFIED
+  live input digest : 3907ad23d1b84972
+  mutation_proofs         fresh  150 file(s)
+  release_shards          fresh  6 file(s)
+  obligation_benchmark    fresh  1 file(s)
+  frontend_static_render  fresh  1 file(s)
 ```
 
-| What you see | What it means | What to do |
-|---|---|---|
-| All `True`, clean tree | **Certified. This is the state you were handed.** | Start THE JOB below. Do not re-run the chain — it proves nothing new. |
-| Mixed/`False`, **clean** tree | A batch landed and its re-proof was not run | Re-proof chain first, in the documented order below |
-| Any `False`, **dirty** tree | A session was interrupted mid-work | Read "if you arrive mid-anything" below. Shards are individually resumable. |
+Also confirm the ledger, which now runs to `H-10`:
 
-**The last two are indistinguishable from the digests alone** and today you can only tell
-them apart by reading prose. **That is a pipeline defect and fixing it is step 1 of your
-job.** See THE JOB.
+```sh
+PYTHONPATH=. .venv/bin/python tests/hardening_status.py
+#  -> PASS hardening_status: 10 H-row(s) valid — 3 closed, 5 open, 1 out_of_scope, 1 ...
+```
+
+NAMED LIMITS of `tree_state`, so you keep looking: an intent is a claim, not a lock (no pid,
+no heartbeat, no timeout — a live session cannot be told from one that died holding it); a
+session that never calls `--begin` leaves a dirty worktree with no record of WHY; and
+`--complete` is trusted, caught only in that clearing it on a stale tree still reports
+`awaiting_reproof` rather than `certified`.
 
 ---
 
@@ -63,52 +64,29 @@ full text is in the plan's `START HERE`. Read it there; the summary here is orie
 
 Your work has **two phases, in this order, and the order is load-bearing.**
 
-### Phase A — land every source edit in ONE batch, pay ONE re-proof
+### Phase A — DONE 2026-09-21, and re-proved. Do not redo it.
 
-Anything under `INPUT_ROOTS` (`backend/app`, `tests`, `scripts`, `data`, `frontend/src`,
-`docs/pgen_contract.md`, `docs/testing_pipeline.md`) invalidates all four artifact families
-and costs ~3.4h to restore. **So do all of it at once, then re-prove once.** Four items,
-all owner-authorised:
+All four items landed and the chain was run: corpus 147/150 (three §6F survivors, all
+`INVALID` on a red `capability_phase2` baseline), six shards at 0 failures, verify-release
+complete, `run_all` at `scheduled=17 completed=14 failed=3 crashed=0`.
 
-1. **Interruption-safety machinery (do this first — it makes every later session cheaper).**
-   Build `validation_reports/phase2_hardening/tree_state.json` (committed, digest-free,
-   survives a clone) recording *intent*: written when a batch or chain starts, cleared on
-   completion. Plus `tests/tree_state.py`, a single entry point that prints which of the
-   three states the tree is in. **It needs its own mutation proving it cannot report
-   `certified` on a stale tree.** Today no such machinery exists — `MUTATION_IN_FLIGHT.json`
-   is a kill-safety marker for the corpus alone, nothing records batch intent, and the
-   three-state determination is an ad-hoc script plus a human-written paragraph.
-2. **Widen the H-row cap.** `tests/unit/test_hardening_status.py:50` pins
-   `assert ids == {f"H-0{n}" for n in range(1, 10)}`, which cannot express `H-10`. Widen to
-   two digits with the contract row in the same commit. H-08's remainder (the intro-surface
-   render gap) has been waiting on exactly this.
-3. **Fix the §1J hints hole.** `validate_language._texts` reads `problem["hint"]`, singular;
-   the student-path payload carries `hints`, a LIST. **No hint text has ever been linted.**
-   `mat_g2_na_q3_0` seed 17 currently ships `"Think of it as 1 groups of 3: 3."` — a live
-   violation of the exact class §1J exists to catch. Fix the lint, then fix whatever it
-   finds. `dna.base.count_noun` is the rule; do not re-derive it.
-4. **Fix the 6 undrawn-referent nodes, THEN build the gate.** Owner ruled: draw the referent
-   on all 6 before the gate lands, so its baseline is genuinely zero rather than
-   dispositioned-around. No gate catches a stem referencing a display the item never draws —
-   three nodes served literally unanswerable items until 2026-09-19 and the sweep that found
-   them was a scratch probe, not a check.
+1. **Interruption-safety machinery** — `tests/tree_state.py` + `tree_state.json`, under the
+   new row `H-10`, with `tree_state_certifies_a_stale_tree` DETECTED.
+2. **H-row cap widened** to two digits; the typo-catching directions kept, the growth ban
+   dropped, and the rule moved into `validate()` so the documented command enforces it.
+3. **The §1J hints hole is closed at the root.** It had never linted a hint. Fixing only
+   that field would have left eight other unread surfaces, so fields are now classified in
+   both directions and an unclassified one is its own finding — which caught two more on
+   its first full run. Reach 21,604 -> 73,300 texts.
+4. **The four undrawn-referent nodes were FIXED, then §1M landed** at a zero baseline.
+   The set was FOUR, not six; the earlier probe was scratch and its number is not
+   reproducible.
 
-Then, and only then, the chain — **in this order**:
-
-```sh
-# frontend FIRST when source changed (~10s) — run_all does NOT regenerate it
-DATABASE_URL= PYTHONPATH=. .venv/bin/python tests/frontend_suite.py
-# benchmark (~16s) — skipping it leaves a survivor you will misdiagnose
-DATABASE_URL= PYTHONPATH=. .venv/bin/python -m tests.obligation_executor --tier benchmark --sample-size 1000
-# corpus (~50m). EXIT 1 IS NORMAL: it reports survivors. Read the tail, do not assume a crash.
-DATABASE_URL= PYTHONPATH=. .venv/bin/python tests/mutation_harness.py
-# sweep LAST (~2.6h, six shards ~25.5m each)
-for N in 0 1 2 3 4 5; do DATABASE_URL= PYTHONPATH=. .venv/bin/python tests/obligation_executor.py \
-    --tier release --workers 4 --shard-count 6 --shard-index $N; done
-DATABASE_URL= PYTHONPATH=. .venv/bin/python tests/obligation_executor.py --tier verify-release
-# the Definition of Done — needs no DATABASE_URL= prefix; run_all pins it itself
-PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.run_all
-```
+**Two things Phase A found that were bigger than Phase A:** the LAB path was still serving
+undrawn stems after the student path was fixed (two entry points, one rule, neither
+enforcing it on the pinned path), and `formatters_reachable`'s floor of 35 was mostly
+BOOKKEEPING — the exclusions generator told an eligibility refusal from a content crash by
+SUBSTRING, so ~27 pairs stayed wrongly advertised. Floor ratcheted 35 -> 6.
 
 ### Phase B — the capability attestation campaign
 
@@ -255,9 +233,27 @@ is ruled and closed.
 
 ## Limitations left standing — named so you keep looking
 
-* **§1J does not lint hints.** Phase A item 3. Until then, a green §1J covers stems,
-  statements, prompts and cloze templates — NOT hints.
-* **No gate catches a stem that references a display the item never draws.** Phase A item 4.
+* ~~**§1J does not lint hints.**~~ CLOSED 2026-09-21. It lints them now, along with eight
+  other surfaces it had never read, and an unclassified payload field is its own finding
+  (`unclassified_pupil_text_1J`). STILL TRUE: §1M's deixis list is closed, so a stem that
+  points in wording nobody has seen yet is not caught; §1J's mirror direction (a singular
+  noun after a count of two or more) is measured and printed but does not gate; count/verb
+  agreement is not checked at all; and neither reads the VISUAL payload's own labels.
+* ~~**No gate catches a stem that references a display the item never draws.**~~ CLOSED
+  2026-09-21 by §1M. STILL TRUE: it cannot tell whether the drawn visual is the RIGHT one —
+  an item that says "look at the pictograph" and draws a clock passes §1M and is §1G's and
+  §9's business — and it cannot see a display the pupil needs but the stem never mentions.
+* **A DECLARED variant axis restricted by `FORMATTER_VARIANT_SUPPORT` is still unchecked on
+  the orchestrator's PINNED path.** `assert_formatter_supports` is deliberately scoped to
+  UNDECLARED axes, because caps, profiles and `ctx.values` do not share one vocabulary —
+  widening it refused every pinned render on `mat_g2_mg_q2_0` (§2B) and 46 producible
+  declarations on `mat_g1_na_q1_7` (§2I). Closing it needs sentinel resolution, per-DNA.
+* **A legitimate axis value of `0`, `""` or `False` is never enforced by either path**,
+  because both skip falsy values — a guard that exists only to survive `division`'s
+  `remainder` name collision. No current axis uses one.
+* **`fraction_model_read` cannot draw an improper fraction** (it emitted `shaded_parts=7`
+  in a shape with `total_parts=3`), so `mat_g3_na_q4_6` is served by `fraction_shade`
+  alone. Multi-whole support in that formatter would widen it.
 * **The ANY reading of `formatter_refused_at_node` is not mutation-covered at its own
   comparison.** Proven to still catch silent substitution and consistent with production on
   the NONE and PARTIAL cases; the `wanted & allowed` boundary itself is unproven.

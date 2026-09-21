@@ -1255,9 +1255,55 @@ row rather than as "crashes on DNS".
 
 ## START HERE — handoff
 
-**Revision: 2026-09-21, measured on `2d335e8c` (tree CERTIFIED).** The revision lives in this line
+**Revision: 2026-09-21 (evening), measured on the Phase A batch (tree CERTIFIED again).** The revision lives in this line
 rather than in the heading, because a heading carrying a commit hash makes the anchor
 that points at it break every time the section is refreshed.
+
+> ### ⚠ 2026-09-21 EVENING — PHASE A IS LANDED AND RE-PROVED. READ THIS FIRST.
+>
+> Supersedes the morning block below, which is kept for its reasoning. Where they
+> disagree, this wins.
+>
+> **The tree is CERTIFIED again**, on the Phase A batch. All four digest-bound artifact
+> families are fresh against `3907ad23d1b84972`: 150 mutation proofs, six release shards,
+> the benchmark, the frontend static render. `tests/tree_state.py` now tells you this in
+> one command instead of an ad-hoc script plus a paragraph — that machinery is item 1.
+>
+> **All four Phase A items are done.** `H-10` is open for the first time and holds the
+> interruption-safety work. §1J's reach went 21,604 -> 73,300 texts linted (×3.4) and it
+> now lints hints, which it never had. §1M is a NEW stage — a stem that points at a
+> display must be served with one — activated at a genuinely zero baseline after all four
+> undrawn-referent nodes were given the visuals their competencies name. `scheduled` is
+> therefore **17**, not 16.
+>
+> **Red stages, re-measured on this tree — the same three, all M2's:**
+>
+> | Stage | Count | Change |
+> |---|---|---|
+> | `judgment_reviews_5` | **1253** | **UP from 1221 (+32)** — see below |
+> | `capability_phase2` | **218** — 67 CONTRADICTED, 0 UNATTESTED, 74 STALE, 50 UNADJUDICABLE, 27 other | unchanged in total |
+> | `assertion_coverage_8` | 3 in 1 family (§6F) | unchanged; still unfixable by re-running |
+>
+> **Phase A made `judgment_reviews_5` WORSE and that is correct.** Changing a generator
+> makes every review of its old output STALE, and a stale verdict is unearned. The four
+> nodes that gained visuals are exactly the nodes whose filed reviews now describe content
+> that no longer renders. A generator fix does not clear a §6F finding and it can create
+> §5 ones. The remedy is a blind re-review, which is Phase B.
+>
+> **So Phase B is now the whole of the remaining work**, and nothing in Phase A shortened
+> it. Start at `START HERE`'s Phase B section: the nine ripe nodes, dispatch-based blind
+> attestation, `tests/attester_packets.py` and `tests/attester_file.py`. Note that
+> `mat_g1_na_q4_1`, `mat_g3_mg_q1_4`, `mat_g3_mg_q1_5` and `mat_g2_mg_q4_2` have all
+> changed TODAY and must be attested against what they render NOW.
+>
+> **Two traps this session paid for, in full:**
+>
+> 1. **Scan all 150 mutation anchors before running the corpus after a source batch.** The
+>    run aborted at 54/150 because a batch edit moved one anchor. The scan is two seconds;
+>    the abort was fifty minutes.
+> 2. **Re-run the benchmark AFTER the last source commit, not before.** A commit landing
+>    between the benchmark and the corpus leaves `obligation_benchmark_11` red at baseline,
+>    and its mutation then scores INVALID rather than DETECTED.
 
 > ### ⚠ 2026-09-21 — READ THIS BEFORE THE REST OF THIS SECTION
 >

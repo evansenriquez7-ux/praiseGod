@@ -13220,3 +13220,67 @@ benchmark, the frontend artifact and the six release shards are STALE against th
 construction. `tree_state.json` records the batch as open for exactly that reason. The three red
 stages the plan names (`judgment_reviews_5`, `capability_phase2`, `assertion_coverage_8`) are
 untouched by this work and remain M2's.
+
+### The re-proof chain, executed — and what it cost and did not buy
+
+Run in the documented order after the batch landed. One abort and one stale artifact, both
+diagnosed rather than worked around.
+
+**The corpus aborted at 54/150 on a moved anchor.** `unservable_advertised_formatter` anchors on
+the orchestrator guard that the batch had just changed to raise `FormatterNotEligible`, so the
+anchor matched 0 times and the harness refused to loosen it. That is Mandate 2's SECOND cause — a
+plant that no longer reaches the code — not a broken check, and the refusal is the behaviour to
+keep. Re-aimed (the plant itself is unchanged) and re-proved DETECTED. **A 150-anchor scan against
+current source takes two seconds and would have caught it before a 50-minute run; do it after any
+source batch.** All 150 now match.
+
+**A fourth mutation survived and it was ours, not §6F's.**
+`obligation_benchmark_outlives_source` came back `INVALID — the unmutated command baseline exited
+1`, the THIRD outcome that is neither detected nor survived. Cause: the benchmark had been run
+BEFORE the anchor-fix commit, which touched two files under `INPUT_ROOTS`, so
+`obligation_benchmark_11` was genuinely red at baseline. Re-running the benchmark and re-proving
+that one mutation — before the shards start, never during, since its plant edits the module the
+shards spend 2.6h inside — returns DETECTED.
+
+```text
+mutation corpus     147/150 DETECTED
+                    3 survivors, all §6F, all INVALID on a red capability_phase2 baseline
+six release shards  96,885 cache keys / 387,540 executions each, failures=0 on every shard
+                    581,310 keys / 2,325,240 executions total, 2.57h
+verify-release      release_status=complete receipts=6 complete=True
+```
+
+**`run_all`, the Definition of Done:**
+
+```text
+scheduled=17 completed=14 failed=3 crashed=0 not_run=0 incomplete=0
+SOME ALL TESTS CHECKS FAILED. Please review the output above.
+
+  PASS  count_noun_1J          65.2s    0 findings / 9060 samples / 73,300 texts linted
+  PASS  unclassified_pupil_text_1J      every string-bearing field linted or excluded
+  PASS  dangling_reference_1M  64.5s    0 findings / 9060 samples; 723 point AND draw
+  PASS  stage_ledger_complete           every scheduled stage ran to a verdict
+  PASS  stage_phase_matches_manifest    §1M's refs are registered to the band it runs in
+  FAIL  assertion_coverage_8   1.2s     3 in 1 family (§6F)
+  FAIL  judgment_reviews_5     138.6s   1253
+  FAIL  capability_phase2      23.9s    218 — 67 CONTRADICTED, 0 UNATTESTED, 74 STALE,
+                                              50 UNADJUDICABLE, 27 other
+```
+
+`scheduled` is 17, not 16: §1M is a new stage and the ledger counts it.
+
+**THE DEFINITION OF DONE IS NOT MET.** The same three stages are red, every one of them M2's
+attestation debt, and `assertion_coverage_8` is red precisely BECAUSE the §6F trio cannot be scored
+against a red `capability_phase2`. Nothing in this batch could move them.
+
+**And this batch made one number WORSE, which is the honest reading of it.** `judgment_reviews_5`
+went **1221 -> 1253, +32**. Changing a generator makes every review of its old output STALE, and a
+stale review's verdict is unearned — `mat_g1_na_q1_0` seed 42 was reviewed as *"What number comes
+next when counting: 94, 95, 96, 97, ___?"* and now renders *"What number is marked?"*. The four
+nodes given visuals are exactly the nodes whose filed reviews now describe content that no longer
+exists. This is the plan's own rule seen from the paying end: *a generator fix does not clear a
+§6F finding, and it can create §5 ones*. The fix is a blind re-review, which is Phase B.
+
+Tree state at the end of the chain: all four digest-bound artifact families FRESH against
+`3907ad23d1b84972` — 150 mutation proofs, 6 release shards, the benchmark, the frontend static
+render.

@@ -1,20 +1,14 @@
 {
   "schema_version": 1,
   "note": "Intent record for interruption safety. Written when a batch, chain or campaign STARTS and cleared when it completes; an intent left open means a session did not reach its finish line. Deliberately digest-free -- see tests/tree_state.py. Read with `PYTHONPATH=. .venv/bin/python tests/tree_state.py`.",
-  "open_intent": {
+  "open_intent": null,
+  "last_completed": {
     "kind": "chain",
     "began_at": "2026-09-21T16:59:06+08:00",
     "session": "claude-20260921-h10-tree-state",
     "note": "Re-proof chain for the Phase A batch at 5f773114, documented order: frontend suite, benchmark, mutation corpus, six release shards, verify-release, run_all.",
-    "next_step": "Resume the chain at the first step whose artifact is still stale; shards are individually resumable, so re-run only the stale indices."
-  },
-  "last_completed": {
-    "kind": "batch",
-    "began_at": "2026-09-21T14:21:20+08:00",
-    "session": "claude-20260921-h10-tree-state",
-    "note": "Phase A, four owner-authorised items in ONE batch: (1) interruption-safety machinery + H-10, (2) H-row cap widened to two digits, (3) the §1J hints hole, (4) the 6 undrawn-referent nodes then their gate. Chain owed on completion.",
-    "next_step": "Land every remaining source edit, then run the re-proof chain in order.",
-    "completed_at": "2026-09-21T16:59:06+08:00",
-    "completion_note": "All four Phase A items landed at 5f773114; unit suite 792 passed, matrix 151/151, compat 13/13. Chain owed."
+    "next_step": "Resume the chain at the first step whose artifact is still stale; shards are individually resumable, so re-run only the stale indices.",
+    "completed_at": "2026-09-21T21:24:09+08:00",
+    "completion_note": "Chain complete: corpus 147/150, six shards 0 failures, verify-release complete=True, run_all scheduled=17 completed=14 failed=3 crashed=0. All four artifact families fresh against 3907ad23d1b84972."
   }
 }

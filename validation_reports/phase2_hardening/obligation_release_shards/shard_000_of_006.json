@@ -1,27 +1,27 @@
 {
   "schema_version": 1,
   "kind": "obligation_executor_release_shard",
-  "generated_at": "2026-09-19T20:41:54.384355+00:00",
+  "generated_at": "2026-09-21T10:46:54.457894+00:00",
   "workers": 4,
   "seeds_per_obligation": 5,
-  "manifest_digest": "b5625a09f50567bb95d4ef82146d787c3f7b8d1795818690919b6b0ee68af4ee",
-  "source_input_digest": "90ed5464a45073d9f52f9a47e43d8019b63f177bafe64b5c3e0135250b32bfff",
+  "manifest_digest": "d76314be393176de34c0ceb6df87826dbc077179b32964fb1e531d1434762406",
+  "source_input_digest": "3907ad23d1b849729f219a97c517fc908df30d41ff6c4ca0363defa3433a5aae",
   "sharding": {
     "algorithm": "cache_index modulo shard_count",
     "shard_index": 0,
     "shard_count": 6,
     "first_cache_index": 0,
     "stride": 6,
-    "expected_cache_keys": 96323,
-    "total_cache_keys": 577935
+    "expected_cache_keys": 96885,
+    "total_cache_keys": 581310
   },
   "measurement": {
-    "cache_keys_completed": 96323,
-    "represented_executions": 385292,
-    "elapsed_seconds": 1539.3291403630283,
-    "worker_median_ms": 7.025216007605195,
-    "worker_p95_ms": 30.473279068246484,
-    "peak_rss_bytes": 121430016,
+    "cache_keys_completed": 96885,
+    "represented_executions": 387540,
+    "elapsed_seconds": 1534.0751886840008,
+    "worker_median_ms": 7.057036997139221,
+    "worker_p95_ms": 30.737679000594653,
+    "peak_rss_bytes": 122286080,
     "response_modes": [
       "click",
       "drag",
@@ -39,6 +39,7 @@
       "FillInTable",
       "FractionModel",
       "FractionShade",
+      "GeometryFigure",
       "GridArea",
       "NumberBond",
       "NumberLine",
@@ -47,7 +48,8 @@
       "PlaceValueBlocks",
       "RulerMeasure",
       "ScaleRead",
-      "ShapeBoard"
+      "ShapeBoard",
+      "Timetable"
     ],
     "failures": []
   }
