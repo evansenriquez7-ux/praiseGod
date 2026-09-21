@@ -1,6 +1,6 @@
 # Handoff — continue the Phase 2 hardening plan
 
-**Rewritten 2026-09-21 (evening) on `2aedd33e`, tree CERTIFIED. This file is deliberately a
+**Rewritten 2026-09-22 on `fdd77513`, tree CERTIFIED. This file is deliberately a
 POINTER, not a summary.**
 
 Earlier versions duplicated the plan's status and then drifted from it. Two sources of truth
@@ -69,87 +69,89 @@ PYTHONPATH=. .venv/bin/python tests/tree_state.py --complete --note "where you g
 
 ---
 
-## THE JOB — Phase B, and only Phase B
+## THE JOB — the cheap work is GONE; what is left costs the chain
 
-**Phase A is DONE (2026-09-21) and re-proved. Do not redo any of it.** Interruption-safety
-machinery, the two-digit H-row cap, the §1J hints hole, and the four undrawn-referent nodes
-plus the §1M gate all landed, and the full chain was run: corpus 147/150, six shards at 0
-failures, `verify-release` complete, `run_all` at `scheduled=17 completed=14 failed=3
-crashed=0`. Details in the plan's `START HERE` and in `HARDENING_EVIDENCE.md`.
+**Phase A is DONE (2026-09-21). Phase B's attestation campaign is DONE (2026-09-22). Do not
+redo either, and do not plan another campaign.** All 144 clearable nodes were re-attested by
+blind dispatch, all 33 dispatches are filed, and `capability_phase2` fell **218 → 61**. The
+per-category deltas, the verdict counts and the audit of them are in the plan's `START HERE`
+and in `HARDENING_EVIDENCE.md` (2026-09-21/22). `H-06` is `released @ 28400eb4`, still OPEN.
 
-**Three stages are red and all three are M2's attestation debt.** They are the whole of the
-remaining work in this plan:
+**Read the plan's `START HERE — handoff` for the numbers.** This file does not repeat them,
+because two sources of truth is how a session inherits confident wrong ones.
 
-| Stage | Count | Note |
-|---|---|---|
-| `judgment_reviews_5` | **1253** | went UP from 1221 — see below; this is correct |
-| `capability_phase2` | **218** — 67 CONTRADICTED, 0 UNATTESTED, 74 STALE, 50 UNADJUDICABLE, 27 other | |
-| `assertion_coverage_8` | 3 in 1 family (§6F) | **Cannot be fixed by re-running.** Its three mutations return `INVALID` because their baseline IS `capability_phase2`, which is red. Only clearing the queue clears it. |
+**The three red stages are the same three, and the shape of the remaining work has INVERTED.**
+Every previous handoff could send you at work that cost no re-proof. That work no longer
+exists. **Everything left is a source edit and therefore owes the full ~3.4h chain**, so the
+correct move is to BATCH it: do not land one fix, re-prove, then land another.
 
-**Phase A made `judgment_reviews_5` WORSE, and that is correct behaviour, not a regression to
-undo.** Changing a generator makes every review of its old output STALE, and a stale verdict
-is unearned — `mat_g1_na_q1_0` seed 42 was reviewed as *"What number comes next when
-counting: 94, 95, 96, 97, ___?"* and now renders *"What number is marked?"*. The nodes that
-gained visuals are exactly the nodes whose filed reviews describe content that no longer
-exists. **A generator fix does not clear a §6F finding, and it can create §5 ones.** Expect
-the count to move against you whenever you touch content; the only thing that clears either
-queue is a blind re-judgement.
+The residual 61 on `capability_phase2` splits in two, and neither half is more attestation:
 
-### The campaign
+1. **54 CONTRADICTED — genuine content debt**, 35 nodes, each now backed by fresh blind
+   evidence that names the exact gap. Build the artifact the clause names, or delete the
+   provider entry; **Content Rule 4 decides which** — if the competency names the verb, model
+   or range, building it IS the fix and is not scope creep; if it does not, building it is
+   invention and the entry goes. Cite the competency clause in the commit and the evidence log.
+2. **7 are a STRUCTURAL HARNESS DEFECT** that no amount of content work or re-attestation can
+   touch, and **the Definition of Done is blocked on it** — while `capability_phase2` is red the
+   three §6F mutations stay INVALID and `assertion_coverage_8` stays red. Diagnosis, the seven
+   node ids, and the candidate one-line fix are in the plan's `START HERE` and in
+   `phase2_hardening/attestation_campaign.json` → `structural_blocker_diagnosis`. **Applying it
+   is the OWNER's call to sequence**, not a session's to take on its own: it needs a mutation
+   catching its own planted violation BY NAME plus a `docs/pgen_contract.md` row in the same
+   commit.
 
-Owner ruled the **whole 218-finding queue is ONE campaign**, spanning sessions and
-**resumable**. It is also the only work that can turn a red stage green.
+**`judgment_reviews_5` (1252) is the largest single queue left and the campaign did not touch
+it**, correctly — attestation records are not judgment reviews. All 151 filed reviews are v1 and
+unadjudicable, and the v1→v2 migration was refused as impossible in principle. The 151 fresh
+blind re-reviews are still owed. That is a second campaign, by dispatch, and it is the one piece
+of remaining work that costs NO re-proof, because `validation_reports/judgment/` is outside the
+fingerprint. **If you want zero-re-proof work, it is here, not in §6.**
 
-**It costs NO re-proof, provided you touch no source.** `validation_reports/judgment/` and
-`validation_reports/attestation/` are deliberately outside the fingerprint (see
-`mutation_proof.INPUT_FILES`' comment) — verified, not assumed: a probe file written into
-`attestation/` left the digest unmoved. That is precisely why Phase A went first, and why you
-should be reluctant to open a source edit now. **If you do touch source, you owe the whole
-~3.4h chain again.**
+### The machinery, reused
 
-**Where to start — measured on THIS tree, not inherited.** Highest finding counts first:
+Both campaigns dispatch the same way. `tests/attester_packets.py` writes the blind half and the
+key it must not see; `tests/attester_file.py` joins returned verdicts to the key mechanically so
+nothing is retyped. The §6 campaign's plan, per-dispatch status and verdict counts are in
+`phase2_hardening/attestation_campaign.json`, which is resumable and claimed by `H-06`.
 
-```text
-mat_g2_na_q4_3   7      mat_g1_na_q1_0   3      mat_g2_mg_q1_2   3
-mat_g2_na_q3_5   5      mat_g3_mg_q2_0   3      mat_g2_na_q1_3   3
-mat_g3_mg_q1_1   5      mat_g3_mg_q2_3   3      mat_g1_na_q3_2   3
-mat_g1_mg_q1_0   3      mat_g1_dp_q3_3   3      mat_g1_na_q3_7   3
-mat_g3_na_q2_1   3      mat_g3_mg_q2_2   3
-```
+**What the last campaign learned, so you do not rediscover it:**
 
-**SIX NODES CHANGED ON 2026-09-21 and their prior evidence is worthless.** Re-attest these
-against what they render NOW, never against a recorded sample:
-
-```text
-mat_g1_na_q4_1   now draws FractionModel   ("Compare 1/2 and 1/4 using models")
-mat_g3_na_q4_6   now served by fraction_shade, was unservable entirely
-mat_g3_na_q4_7   now draws fraction models
-mat_g3_mg_q1_4   now draws GeometryFigure  ("Recognize, using models, ... point, line, ray")
-mat_g3_mg_q1_5   now draws GeometryFigure  ("Recognize and draw parallel/perpendicular")
-mat_g2_mg_q4_2   now draws Timetable       ("...including timetables")
-```
-
-Also re-render before judging anything on `mat_g2_na_q3_0`, `mat_g1_mg_q2_2`, the
-`mat_g2_mg_q4_*` family, `mat_g3_mg_q3_2`, and the calendar and perimeter nodes — their
-HINTS changed when §1J began linting hint text for the first time.
+* **A replacement record must supersede EVERY `(node, capability)` pair its predecessor holds**,
+  or `_attestation_staleness` keeps reading the old record and its finding never clears. This is
+  the mechanic behind the 7-node blocker.
+* **Records resolve last-file-wins over a SORTED glob**, so a replacement batch prefix must sort
+  AFTER the incumbent. `batch112` is now the maximum (the campaign ran batch080–batch112);
+  start above it.
+* **≤25 clause items per dispatch (§6G); ≤25 nodes per Attester identity (§6H).** At 776 pairs
+  over 151 nodes that is ~33 dispatches for one clean round.
+* **Plan highest-finding-count first.** It front-loads the nodes where CONTRADICTED concentrates
+  (2.27 findings/node) and leaves a tail at 1.00, where all-PROVIDED batches are the PREDICTED
+  result rather than a sign of a lax reviewer — a distinction worth measuring before you trust
+  or distrust a batch.
+* **Audit an all-PROVIDED batch before filing it**: count distinct reasoning skeletons (§6G
+  allows 3 per cluster) and cross-check every PROVIDED whose clause names a visual medium
+  against whether its samples actually rendered one.
+* **Dispatch subagents on Haiku and keep concurrency modest.** A 2026-09-21 wave of 8 Opus
+  dispatches hit the session rate limit and killed 14 agents mid-flight; the owner's instruction
+  is Haiku only. Name the model that actually judged in `attested_by` — §6H independence is only
+  checkable if the record is truthful about who made the verdict.
 
 ### How blindness works — the owner's ruling, and it is not negotiable
 
-You **DISPATCH** to a separate agent that has neither the answer key nor your context.
-`tests/attester_packets.py` writes what the Attester sees and the key it must not see;
-`tests/attester_file.py` turns returned verdicts into §6F/§6G records without retyping.
+You **DISPATCH** to a separate agent that has neither the answer key nor your context. You never
+author a verdict, never re-file one, and never copy a v1 rationale forward.
 
-**Blindness is a prompt contract, not a sandbox.** You never author a verdict, never re-file
-one, and never copy a v1 rationale forward. All 151 legacy reviews are v1 and unadjudicable,
-and the v1→v2 migration was refused as impossible in principle — v2 demands per-sample
-contextual-validity verdicts, exact clause coverage and dispatch-bound provenance that no v1
-reviewer was ever asked for, so populating those fields means authoring judgments nobody
-gave. Use `legacy_review_queue.json` to PRIORITISE, never as evidence. A v1 `PASS` records
-only that somebody once wrote PASS; tick A found template rationales in that corpus.
+**Blindness is a prompt contract, not a sandbox**, and a dispatched subagent has tools. Record
+`samples_delivery` and `tool_uses_by_attester` as what they actually were; `--tool-uses 0` claims
+structural blindness that a tool-bearing subagent does not have, and writing it would be a false
+evidentiary claim.
 
-§6G clusters reasoning skeletons precisely to catch a fill-in-the-blank verdict stapled onto
-many clauses. `template_attestation` is a live, DETECTED mutation for it. Do not give it
-something to find.
+All 151 legacy reviews are v1 and unadjudicable. Use `legacy_review_queue.json` to PRIORITISE,
+never as evidence: a v1 `PASS` records only that somebody once wrote PASS, and tick A found
+template rationales in that corpus. §6G clusters reasoning skeletons precisely to catch a
+fill-in-the-blank verdict stapled onto many clauses, and `template_attestation` is a live,
+DETECTED mutation for it. Do not give it something to find.
 
 ---
 
@@ -161,8 +163,9 @@ something to find.
 2. **`docs/phase2_hardening_completion_plan.md`, `START HERE — handoff`.** It opens with a
    dated block that supersedes everything below it, including the owner rulings in full.
 3. The middle of that plan for the *design* of what you implement. Design, never status.
-4. **`validation_reports/HARDENING_EVIDENCE.md`**, the 2026-09-21 entries, for how the
-   current numbers were obtained and what was measured rather than assumed.
+4. **`validation_reports/HARDENING_EVIDENCE.md`**, the 2026-09-21/22 entries, for how the
+   current numbers were obtained and what was measured rather than assumed — including the
+   campaign's audit of its own verdicts and the named limits of its blindness contract.
 
 ---
 
@@ -176,12 +179,15 @@ exists because a worker once claimed H-07 while doing H-08.
 PYTHONPATH=. .venv/bin/python tests/hardening_status.py     # must PASS before and after
 ```
 
-* **`H-06`** holds the M2 capability queue — **this is your row for the campaign.** Released
-  `@ e23a4ffe`, still OPEN, and must not be closed by a re-proof alone.
+* **`H-06`** holds the M2 capability queue. Released `@ 28400eb4`, still OPEN, and must not be
+  closed by a re-proof alone. Its attestation campaign is COMPLETE; what remains under it is 54
+  CONTRADICTED content findings plus the 7-record structural supersession defect, both source
+  work. The 151 owed blind judgment re-reviews also sit under it.
 * **`H-10`** is the interruption-safety row, released `@ 7912add7`, still OPEN: the machinery
   exists and its mutation is detected, but the row's own finding is only half answered.
-* **`H-02`, `H-05`, `H-07`, `H-08`** are open and unclaimed. `H-02` shrinks as the queue
-  clears — its 3 remaining §6F errors are downstream of your campaign.
+* **`H-02`, `H-05`, `H-07`, `H-08`** are open and unclaimed. `H-02`'s 3 remaining §6F errors
+  are downstream of `capability_phase2` reaching 0, which now requires the structural fix in #2
+  above as well as the content debt — re-attestation alone can no longer move them.
 * Splitting **H-08's intro-surface render gap** into its own row is still the OWNER's call.
   The row set can express `H-11` now; that is not permission to open one.
 
@@ -255,8 +261,14 @@ control, and the owner ruled that "must end certified" is NOT the rule.
 10. **The pre-commit hook rebuilds Graphify and stages `graphify-out/`.** Expect more files in
     the commit than you staged. It does NOT move the input digest — verify that rather than
     assume it.
-11. **Do not run anything heavy concurrently.** `tests/frontend_renderer.py` writes to one
-    fixed path with no PID and no lock; six call sites funnel through it. Unfixed.
+11. **Do not run anything heavy concurrently, and the failure is not always loud.**
+    `tests/frontend_renderer.py` writes to one fixed path with no PID and no lock; six call
+    sites funnel through it, including BOTH §5 and §6F's freshness pass. Unfixed. The
+    documented symptom was §5 crashing (`renderer returned active evidence for [~400
+    packets]`), but on 2026-09-22 `validate_capability --phase 2` run alongside a running
+    `validate_judgment` reported **55** findings where the tree has **61** — measured three
+    times alone. **It under-reported by six, silently.** A lower §6F or §5 count is not
+    progress unless it was measured with nothing else running.
 12. **Cosmetic edits cost 3.4 hours.** A 2026-09-20 session realigned four import
     continuation lines AFTER completing the chain and invalidated the whole re-proof. Once
     certified, touch no source you do not mean to change.

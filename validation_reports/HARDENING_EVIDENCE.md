@@ -13438,3 +13438,31 @@ otherwise** — `run_all` was not run green, and the campaign could not make it 
   trusted.
 * The 54 CONTRADICTED findings are **evidence of a gap, not a fix for one**. Nothing in this
   session changed content, and a fix at the evidence layer gates nothing.
+
+### Addendum, same session — trap 11 also makes §6F UNDER-REPORT, silently
+
+Found by paying it. While re-measuring the red stages for the handoff, `validate_capability
+--phase 2` was run concurrently with a still-running `validate_judgment` and reported **55**
+findings. Run alone, immediately afterwards, it reported **61** three times in a row:
+
+```
+$ ...validate_capability --phase 2      # while §5 was running
+Capability contract: 55 failure(s) (0 Phase 1 ...; 55 Phase 2 / attestation).
+$ for i in 1 2 3; do ...validate_capability --phase 2; done    # alone
+Capability contract: 61 failure(s) (0 Phase 1 ...; 61 Phase 2 / attestation).
+Capability contract: 61 failure(s) (0 Phase 1 ...; 61 Phase 2 / attestation).
+Capability contract: 61 failure(s) (0 Phase 1 ...; 61 Phase 2 / attestation).
+```
+
+Cause is the already-documented one: `tests/frontend_renderer.py` writes to a single fixed path
+with no PID and no lock, and BOTH §5 and §6F's freshness pass funnel through
+`attach_rendered_visual_descriptions`. **What is new is the direction of the failure.** Trap 11
+and the plan's trap 6 record the symptom as §5 *crashing* loudly
+(`renderer returned active evidence for [~400 packets], expected [5]`). Here nothing crashed:
+§6F quietly returned six fewer findings than the tree actually has, because the visual evidence it
+compared against had been produced by the other process. A gate that under-reports in silence is
+strictly worse than one that crashes, and it is the shape of defect this harness exists to stop.
+
+**61 is the correct figure** — it is the reading with nothing else running, reproduced three times.
+55 is the corrupted one. Recorded here so a future session that sees a lower §6F count does not
+book it as progress. The remedy is unchanged and still unfixed: run nothing heavy concurrently.

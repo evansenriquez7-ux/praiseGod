@@ -1255,11 +1255,99 @@ row rather than as "crashes on DNS".
 
 ## START HERE — handoff
 
-**Revision: 2026-09-21 (evening), measured on the Phase A batch (tree CERTIFIED again).** The revision lives in this line
+**Revision: 2026-09-22, measured after the H-06 attestation campaign (tree CERTIFIED).** The revision lives in this line
 rather than in the heading, because a heading carrying a commit hash makes the anchor
 that points at it break every time the section is refreshed.
 
-> ### ⚠ 2026-09-21 EVENING — PHASE A IS LANDED AND RE-PROVED. READ THIS FIRST.
+> ### ⚠ 2026-09-22 — PHASE B's ATTESTATION CAMPAIGN IS COMPLETE. READ THIS FIRST.
+>
+> Supersedes every block below it, which are kept for their reasoning. Where they
+> disagree, this wins. **The campaign the two previous handoffs sent you at no longer
+> exists as work**: all 144 clearable nodes have been re-attested and every dispatch is
+> filed. What is left is not more attestation.
+>
+> **The tree is CERTIFIED** at input digest `3907ad23d1b84972` — unchanged, because the
+> campaign touched no source. `tests/tree_state.py` exits 0; the ledger runs to `H-10`
+> and PASSes at 3 closed / 6 open / 1 out_of_scope. `H-06` is `released @ 28400eb4`,
+> still OPEN.
+>
+> **Red stages, re-measured 2026-09-22, each stage run ALONE:**
+>
+> | Stage | Count | Change |
+> |---|---|---|
+> | `judgment_reviews_5` | **1252** | was 1253; unaffected by the campaign, as expected — attestation records are not judgment reviews |
+> | `capability_phase2` | **61** | **DOWN from 218.** 54 CONTRADICTED + 7 structurally blocked |
+> | `assertion_coverage_8` | 3 in 1 family (§6F) | unchanged; re-run and still INVALID against a red baseline |
+>
+> **What the campaign did**, in full in `HARDENING_EVIDENCE.md` (2026-09-21/22): 33
+> dispatches, one blind Attester identity each, 144/144 clearable nodes, 741 fresh clause
+> verdicts (687 PROVIDED / 54 NOT_PROVIDED). STALE 74 → 6, missing-options 50 → 0,
+> missing-visual 27 → 1, CONTRADICTED 67 → 54. §6G integrity 0 errors and §6H plurality
+> PASS throughout. No record was edited; the dispatching session authored no verdict.
+>
+> **CONTRADICTED fell even though 54 new NOT_PROVIDED verdicts landed.** Fresh packets
+> carry render-derived visual evidence that packets built before the 2026-08-20 `_render`
+> fix never did, so a large share of the old NOT_PROVIDED verdicts on medium-naming
+> clauses were measuring that packet bug rather than the pipeline. Blind re-judgement
+> against what now renders overturned them. Expect no such windfall a second time.
+>
+> **THE REMAINING 61 CANNOT BE CLEARED BY MORE ATTESTATION. Do not plan another campaign.**
+> The residual splits in two, and both halves need a SOURCE edit and therefore the full
+> ~3.4h re-proof chain:
+>
+> 1. **54 CONTRADICTED = genuine content debt** across 35 nodes, each now backed by blind
+>    evidence naming the exact gap. Concentrations: `objects` (3),
+>    `6_7_8_and_9_multiplication_tables` (2), `concrete`/`concrete_models`,
+>    `images`/`in_pictures`, `different_size`/`different_orientation`, `peso_coins_only`,
+>    `write_value`, `fifties`. Each needs the artifact BUILT or the provider entry
+>    DELETED. Content Rule 4 governs which: if the competency names it, building it is the
+>    fix; if it does not, the entry goes. Example: `mat_g2_na_q4_3`'s competency names
+>    denominators 2, 3, 4, 5, 6 and 8, and an Attester checked every fraction in all ten
+>    samples and found only thirds and fifths ever render.
+> 2. **7 are a STRUCTURAL HARNESS DEFECT and are nobody's content debt.**
+>    `_attestation_staleness` skips a predecessor record only when EVERY
+>    `(node_id, capability_id)` pair it holds is owned by a later record. Seven live
+>    records each hold a pair whose capability has left the node's `requires` — `orally`,
+>    `given_orally`, `arts`, `rhythmic_properties`, `visual_elements` — and those five ids
+>    were measured to appear in **no** node's `requires` anywhere in the tree and in **no**
+>    `CAPABILITY_PROVIDERS` entry. They are rulings nothing consults. Because
+>    `attester_packets.build()` derives its items FROM `requires`, no replacement packet can
+>    ever take ownership of them, so the predecessor stays in the freshness pass and
+>    re-reports for ever. Editing a record is forbidden and deleting one destroys genuine
+>    blind evidence. The affected nodes are `mat_g1_na_q1_9`, `mat_g1_na_q2_6`,
+>    `mat_g1_na_q3_3`, `mat_g1_na_q3_6`, `mat_g1_na_q4_6`, `mat_g2_na_q2_5`,
+>    `mat_g2_na_q2_8`. Full diagnosis in
+>    `phase2_hardening/attestation_campaign.json` → `structural_blocker_diagnosis`.
+>
+>    **It is not a G1–3 artifact.** Any future grade whose `requires_ignore` grows, or any
+>    `requires` id renamed after attestation, inherits a permanently un-clearable finding.
+>    And because `capability_phase2` can then never reach 0, the three §6F mutations stay
+>    INVALID and `assertion_coverage_8` stays red — so **the Definition of Done is blocked
+>    on this defect**, not merely inconvenienced by it.
+>
+>    **Candidate fix, ruled out for THIS session only, not on the merits:** in the
+>    supersession test, disregard verdict pairs whose capability is not in the node's
+>    current `requires`, since such a pair is a ruling no check consults — which is the
+>    rationale `_attestation_staleness`'s own docstring already gives for skipping
+>    fully-superseded records. It is a source edit and owes a mutation catching its own
+>    planted violation BY NAME, a `docs/pgen_contract.md` row in the same commit
+>    (Protocol 7), and the chain. **Sequencing it is the OWNER's call**; it was not taken
+>    unilaterally mid-campaign.
+>
+> **The recommended order is therefore inverted from every previous handoff.** The cheap,
+> no-re-proof work is done. Everything remaining costs the chain, so BATCH IT: the
+> supersession fix and as much of the 54-finding content debt as you can carry, in one
+> batch, then one chain. Read trap 1 (scan all 150 anchors first), trap 2 (benchmark AFTER
+> the last commit) and trap 12 (cosmetic edits cost 3.4h) before the first edit.
+>
+> **A trap was re-paid this session and its direction is new.** `validate_capability
+> --phase 2` run concurrently with a running `validate_judgment` reported **55** findings;
+> run alone it reported **61**, three times. Both funnel through
+> `tests/frontend_renderer.py`'s single fixed path. The documented symptom of trap 11 was
+> §5 CRASHING loudly; here §6F silently UNDER-reported by six. A lower §6F count is not
+> progress unless it was measured with nothing else running.
+
+> ### ⚠ 2026-09-21 EVENING — PHASE A IS LANDED AND RE-PROVED (superseded by the block above).
 >
 > Supersedes the morning block below, which is kept for its reasoning. Where they
 > disagree, this wins.
