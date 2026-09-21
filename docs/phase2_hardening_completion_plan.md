@@ -1293,9 +1293,25 @@ that points at it break every time the section is refreshed.
 > grade level. **This manufactures content debt no generator can clear** — nothing can make
 > "objects" and "numbers" both true when MATATAG said "or". It is `requires`/`requires_ignore`,
 > human-authored ground truth under §6B, locked in `data/skeletons/requires_ignore.lock.json`, so
-> correcting it is a `data/` edit needing owner sign-off (Protocol 5) and the chain. **3 of the
-> 55 CONTRADICTED are this, not content.** Recommended, not applied: a disjunction contributes
-> ONE satisfiable requirement; `e.g.` material is illustrative and belongs in `requires_ignore`.
+> correcting it is a `data/` edit and still carries node id, source and reason (Protocol 5).
+>
+> **EXACTLY 4 of the 55 CONTRADICTED are this, not content** — `mat_g1_na_q3_6`
+> `numbers_example` + `letters_example`, and `mat_g1_na_q3_7` `objects` + `images`. An earlier
+> draft said 3: `mat_g1_na_q4_6` `in_pictures` was on that list and has since cleared to
+> PROVIDED, while `concrete_models`/`objects` on `mat_g1_na_q3_4`, `mat_g2_na_q3_5` and
+> `mat_g3_mg_q2_2` read "concrete **and** pictorial models" / "masses **of** objects" — those are
+> CONJUNCTIONS and therefore genuine debt. **Test each one for "or"/"e.g." against the competency
+> text before classifying it**; the distinction is the whole finding.
+>
+> **AUTHORISED BY THE OWNER FOR THE NEXT SESSION (ruling 7).** And the correction is NOT a new
+> schema field: the annotation convention already collapses a disjunction into ONE requirement on
+> `mat_g2_mg_q2_1` (`m_or_cm`), `mat_g3_mg_q2_1` (`grams_kilograms_and_or_milligrams`) and
+> `mat_g3_mg_q2_4` (`liters_and_or_milliliters`), and was simply applied inconsistently elsewhere.
+> So the fix is to make `data/skeletons/vocab_annotation.json` follow its own convention, rebuild
+> the KG, update the orphaned `CAPABILITY_PROVIDERS` entries, and RE-ATTEST every touched node —
+> a renamed capability id has no attestation and would report UNATTESTED, which is worse than the
+> CONTRADICTED it removed. Full executable spec, including the latent cases to fix while their
+> baseline is still clean, is in the handoff's "NEXT SESSION" section.
 >
 > **RULING 5 DISCHARGED, and it qualifies the campaign — read this before building anything.**
 > A clean reproducibility control was run: same prompt, same packet, fresh Haiku identities, so
@@ -1338,6 +1354,15 @@ that points at it break every time the section is refreshed.
 >    included. Name the model that actually judged in the record.
 > 6. **All three workstreams complete under the handoff** — no `H-11`. `H-06` carries the
 >    capability content debt, the structural defect, and the 151 owed judgment re-reviews.
+> 7. **The §6B ground-truth correction is AUTHORISED for the next session.** Sign-off is given;
+>    the node ids, competency text and reason still go in the commit and evidence log (Protocol
+>    5). The ruling is the sign-off, not a substitute for the record.
+> 8. **The fixed-path renderer is to be FIXED in the next session.** It is a blocker in its own
+>    right, not an operating note: it has corrupted two recorded figures, in both directions
+>    (§6F by −6, §5 by +1). Two halves must both be fixed — a unique per-invocation path, AND
+>    `node_id` in `case_id`, because `case_id` currently omits it so ids collide across processes
+>    and the existing loud guard passes while the evidence belongs to another run. The mutation
+>    must target that SILENT path, not the loud `RuntimeError`. Spec in the handoff.
 >
 > ### ⚠ 2026-09-22 — PHASE B's ATTESTATION CAMPAIGN IS COMPLETE (superseded by the block above).
 >

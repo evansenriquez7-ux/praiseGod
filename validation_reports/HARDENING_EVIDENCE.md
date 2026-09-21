@@ -13779,3 +13779,83 @@ not a tree-wide rate. It measures Haiku-against-Haiku only — ruling 4 forbids 
 comparison — so it says nothing about whether both raters share a systematic bias. And it used
 the FIRST, medium-pre-judging prompt, deliberately, because that is the prompt the filed verdicts
 were produced under; a control on the corrected prompt has not been run.
+
+### Owner rulings 7 and 8 (2026-09-22) — two source fixes authorised for the NEXT session
+
+Recorded here so the authorisation is not only in a prose handoff, and with the groundwork done
+so the next session implements rather than re-derives.
+
+**Ruling 7 — the §6B ground-truth correction is authorised.** Sign-off is given; Protocol 5's
+record (node id, competency text, reason) is still owed in the commit and here.
+
+The important discovery is that **this needs no new schema field, because the annotation
+convention already exists and was applied inconsistently.** `requires` is hand-authored in
+`data/skeletons/vocab_annotation.json` as `{"clause", "id", "kind"}` entries and carried through
+unchanged by `scripts/rebuild_knowledge_graph.py`, which is explicitly forbidden from
+synthesising it. Measured across the tree:
+
+```
+mat_g2_mg_q2_1   'm or cm'                             -> 'm_or_cm'                            ONE   correct
+mat_g3_mg_q2_1   'grams, kilograms, and/or milligrams' -> 'grams_kilograms_and_or_milligrams'   ONE   correct
+mat_g3_mg_q2_4   'liters and/or milliliters'           -> 'liters_and_or_milliliters'           ONE   correct
+mat_g1_na_q3_7   'objects, images, or numbers'         -> 'objects','images','numbers'          THREE inconsistent
+mat_g2_mg_q2_2   'meters or centimeters'               -> 'meters','centimeters'                TWO   inconsistent (latent)
+```
+
+So the fix is to make the file follow its own convention: one disjunction, one requirement.
+
+**The count was corrected from 3 to 4 by measuring rather than restating it.** Exactly four of
+the 55 CONTRADICTED are this defect — `mat_g1_na_q3_6` `numbers_example` + `letters_example` and
+`mat_g1_na_q3_7` `objects` + `images`. The earlier figure of 3 included `mat_g1_na_q4_6`
+`in_pictures`, which has since cleared to PROVIDED under the corrected medium prompt. And three
+findings that LOOK like this defect are not: `concrete_models` on `mat_g1_na_q3_4`, `objects` on
+`mat_g2_na_q3_5` and `objects` on `mat_g3_mg_q2_2` come from "concrete **and** pictorial models"
+and "masses **of** objects" — conjunctions, therefore genuine content debt. **The test is whether
+MATATAG wrote "or"/"e.g.", quoted from the competency text.** That leaves **51 content findings**,
+not 52.
+
+Two consequences the next session must not discover the hard way, both the same shape as defects
+already paid for here:
+
+* **A renamed capability id orphans its `CAPABILITY_PROVIDERS` entry** (§6 Phase 1's
+  `_validate_no_orphan_providers` names it) and **has no attestation, so §6F reports UNATTESTED**
+  — strictly worse than the CONTRADICTED removed. Every touched node must be re-attested in the
+  same session. This is the identical trap that made deleting 7 records measure 61 → 82.
+* **`mat_g1_na_q3_2` and `mat_g2_mg_q2_2` currently PASS**, so they are latent. Fix them in the
+  same batch, while their baseline is clean — Mandate 5, build the gate before the queue fills.
+
+`mat_g1_na_q1_2` is flagged as a genuine judgement call rather than folded in: "using a variety
+of concrete and pictorial models (e.g., number line, block or bar models, **and** numerals)" is
+an `e.g.` list joined by "and", so it may be a conjunction, a list of examples, or both. It is to
+be decided explicitly and the reading recorded.
+
+**Ruling 8 — the fixed-path renderer is to be fixed, as a blocker in its own right.** It has now
+corrupted two recorded figures in opposite directions (§6F by −6, §5 by +1), and both of this
+project's status documents were carrying one.
+
+The groundwork here is the **second, silent defect underneath the known one**, found by reading
+the module after the measurements rather than assuming the fixed path was the whole story:
+
+```python
+case_id = f"packet-{index}-seed-{sample.get('seed')}"      # tests/frontend_renderer.py:44
+```
+
+`case_id` omits `node_id`, although `node_id` is available and is even stored inside the case
+dict. So two different nodes' packets both produce `packet-0-seed-11`. The loud guard
+(`if set(active) != set(by_id): raise RuntimeError`) compares id SETS, so when two processes
+collide those sets can coincide while the rendered structure belongs to the other process — the
+guard passes and one run silently attaches the other's visual evidence. **The loud guard is
+exactly what hid the quiet failure**, which is why the fix has two halves: a unique
+per-invocation path (pid + uuid under `SCRATCH`) so processes cannot share a file, AND `node_id`
+inside `case_id` so a collision is impossible and the guard can actually detect cross-talk.
+
+**The mutation must target the SILENT path.** A plant that only trips the existing `RuntimeError`
+proves nothing that is not already proven. The honest proof constructs two sample sets from
+different nodes that collide on `packet-<index>-seed-<seed>` and asserts each run receives its
+own evidence. Its `docs/pgen_contract.md` row ships in the same commit (Protocol 7) — and editing
+that file invalidates the whole mutation corpus, which is acceptable only because this batch owes
+the corpus anyway, and only if done before the corpus run rather than after.
+
+Both fixes are source edits under `INPUT_ROOTS` and so is the content debt, so the handoff
+sequences them as ONE batch and ONE chain, with the anchor scan before the corpus, the benchmark
+after the last source commit, and the release sweep last.

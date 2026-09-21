@@ -96,7 +96,7 @@ migration was refused as impossible in principle. **If you want to make progress
 **§6 — 55 CONTRADICTED, all of it source work, so BATCH it.** Every one owes the chain, so do
 not land one fix, re-prove, then land another. It is not one queue:
 
-* **~52 are genuine content debt** across 35 nodes, each backed by fresh blind evidence naming
+* **51 are genuine content debt** across 35 nodes, each backed by fresh blind evidence naming
   the exact gap. Build the artifact the clause names, or delete the provider entry; **Content
   Rule 4 decides which** — if the competency names the verb, model or range, building it IS the
   fix and is not scope creep; if it does not, building it is invention and the entry goes. Cite
@@ -104,8 +104,13 @@ not land one fix, re-prove, then land another. It is not one queue:
   inside this: 24 name a medium, 30 name a verb/range, and **~5 name the verb `draw`**, which by
   owner ruling 3 requires a valid visual formatter — a multiple-choice question ABOUT drawing
   does not satisfy a competency that says draw.
-* **3 are NOT content debt.** They are the §6B ground-truth decomposition defect below. No
-  generator can clear them. Do not try to build content for them.
+* **4 are NOT content debt.** `mat_g1_na_q3_6` `numbers_example` + `letters_example` and
+  `mat_g1_na_q3_7` `objects` + `images` are the §6B ground-truth decomposition defect below. No
+  generator can clear them; **do not try to build content for them.** (Counted as 3 in an earlier
+  draft — `mat_g1_na_q4_6` `in_pictures` was on that list and has since cleared to PROVIDED, and
+  `concrete_models`/`objects` on `mat_g1_na_q3_4`, `mat_g2_na_q3_5` and `mat_g3_mg_q2_2` read
+  "concrete **and** pictorial models" / "masses **of** objects", which are CONJUNCTIONS and so
+  genuine debt. Check the conjunction/disjunction before classifying any of them.)
 
 **BEFORE YOU BUILD ANYTHING FOR A §6 FINDING — the reproducibility rule.** A measured control
 (same prompt, same packet, fresh Haiku identities) puts inter-rater agreement at **88.1%
@@ -140,6 +145,12 @@ control's own limits are in the plan's `START HERE` and `HARDENING_EVIDENCE.md`.
    checkable if the record is truthful about who made the verdict.
 6. **All three workstreams complete under this handoff — no `H-11`.** `H-06` carries the §6
    content debt, the structural/ground-truth defects, and the 151 owed judgment re-reviews.
+7. **The §6B ground-truth correction is AUTHORISED for the next session** (owner, 2026-09-22).
+   Sign-off is given; the node ids and justification still go in the commit and the evidence log
+   per Protocol 5. Spec below.
+8. **The fixed-path renderer is to be FIXED in the next session** (owner, 2026-09-22). It is a
+   blocker in its own right, not an operating note: it has corrupted two recorded figures, in
+   both directions. Spec below.
 
 ### The §6B ground-truth decomposition defect — owner-owned, do NOT hand-patch
 
@@ -170,6 +181,112 @@ It is `requires` / `requires_ignore` — human-authored ground truth under §6B,
 **Recommended and NOT applied:** a disjunction contributes ONE satisfiable requirement (or marks
 its alternatives mutually sufficient), and `e.g.` material is illustrative and belongs in
 `requires_ignore`.
+
+### NEXT SESSION — TWO OWNER-AUTHORISED SOURCE FIXES. Batch them with the content work.
+
+Both are source edits under `INPUT_ROOTS`, so they owe the chain — and so does the content debt.
+**Do all the source work in ONE batch, then run the chain ONCE.** Order at the end of this
+section.
+
+#### FIX A — §6B: make the `requires` annotation follow its own existing convention
+
+**Do not invent a schema field. The convention already exists and was applied inconsistently.**
+Some nodes already collapse a disjunction into ONE requirement and pass cleanly:
+
+```
+mat_g2_mg_q2_1   'm or cm'                          -> id 'm_or_cm'                             ONE requirement  ✅
+mat_g3_mg_q2_1   'grams, kilograms, and/or milligrams' -> 'grams_kilograms_and_or_milligrams'    ONE requirement  ✅
+mat_g3_mg_q2_4   'liters and/or milliliters'        -> 'liters_and_or_milliliters'               ONE requirement  ✅
+mat_g1_na_q3_7   'objects, images, or numbers'      -> 'objects' + 'images' + 'numbers'          THREE  ❌
+mat_g2_mg_q2_2   'meters or centimeters'            -> 'meters' + 'centimeters'                  TWO    ❌ (latent)
+```
+
+So Fix A is: **one disjunction contributes one requirement**, spelled the way `m_or_cm` already
+is. `requires` is hand-authored in `data/skeletons/vocab_annotation.json` and carried through
+UNCHANGED by `scripts/rebuild_knowledge_graph.py` (which must never synthesise it), so the edit
+is to that one file plus a KG rebuild. Entries are `{"clause": ..., "id": ..., "kind": ...}`.
+
+And separately, `e.g.` material is illustrative, not a requirement:
+
+```
+mat_g1_na_q3_6   '(e.g., numbers: 2,4,2,4__; letters: a,b,c,...)'  -> 'numbers_example','letters_example'  (kind: range)
+mat_g1_na_q3_2   '(e.g., 2+3 = 1+4; 10-5 = 6-1)'                   -> 'example_1','example_2'              (kind: context)
+```
+
+**Which findings this clears — exactly 4 of the 55**, and no more:
+`mat_g1_na_q3_6` `numbers_example` + `letters_example`; `mat_g1_na_q3_7` `objects` + `images`.
+`mat_g1_na_q3_2`'s two and `mat_g2_mg_q2_2`'s two currently PASS, so they are LATENT — fix them
+in the same batch while the baseline is clean (Mandate 5), not after they turn red.
+
+**`mat_g1_na_q1_2` is the judgement call in this set, and it is NOT obviously a disjunction.**
+Its competency reads "using a variety of concrete and pictorial models (e.g., number line, block
+or bar models, **and** numerals)" — an `e.g.` list joined by "and", so it may be a conjunction of
+required models, a list of examples, or both. Decide it explicitly and record the reading; do not
+let it ride on the pattern of the others.
+
+**What Fix A also drags in — check all of it before running the chain:**
+
+* **Renaming a capability id orphans its `CAPABILITY_PROVIDERS` entry**, and §6 Phase 1's
+  `_validate_no_orphan_providers` will name it. Update the table in the same commit.
+* **A new capability id has no attestation**, so §6F reports it **UNATTESTED** — worse than the
+  CONTRADICTED you removed. **Re-attest every touched node in the same session**, via
+  `tests/attester_packets.py`, batch prefix above `batch114`. This is the same trap that made
+  deleting records measure 61 → 82.
+* `requires_ignore` is locked in `data/skeletons/requires_ignore.lock.json` and compared by
+  §6B's `_validate_requires_ignore_lock`. If you move a word into `requires_ignore`, the lock
+  moves with it, in the same commit.
+* Protocol 5: the commit and the evidence log carry the node id, the competency text, and the
+  reason. Owner ruling 7 is the sign-off; it does not replace the record.
+
+#### FIX B — the fixed-path renderer, and the SILENT mechanism behind it
+
+`tests/frontend_renderer.py` writes `local_only/scratch/frontend_packet_render/{corpus,result}.json`
+— **fixed paths, no pid, no uuid, no lock** — and six call sites funnel through it, including both
+§5 and §6F's freshness pass. Two concurrent runs overwrite each other's corpus and result.
+
+**The loud failure is already guarded** (`if set(active) != set(by_id): raise RuntimeError(...)`,
+which is what made §5 crash with "renderer returned active evidence for [~400 packets]").
+**The SILENT failure is a second, separate defect and it is why a figure can move quietly:**
+
+```python
+case_id = f"packet-{index}-seed-{sample.get('seed')}"      # tests/frontend_renderer.py:44
+```
+
+**`case_id` omits `node_id`** — though `node_id` is right there and is even stored inside the
+case. So two different nodes' packets both produce `packet-0-seed-11`. When two processes
+collide, the id SETS can coincide while the rendered structure belongs to the other process, the
+`set(active) != set(by_id)` guard passes, and one run attaches the other's visual evidence. That
+is how §6F reported 55 where the tree had 61, and §5 reported 1253 where it has 1252 — no crash,
+no warning.
+
+**Fix both halves, or the loud guard keeps hiding the quiet one:**
+
+1. Give each invocation its own directory (pid + uuid under `SCRATCH`, cleaned up after), so two
+   processes cannot share a file at all.
+2. Put `node_id` into `case_id`, so an id collision is impossible and the existing guard actually
+   detects cross-talk rather than passing through it.
+
+**It needs a mutation, and the mutation must target the SILENT path**, not the loud one — a plant
+that only trips the existing `RuntimeError` proves nothing new. Prove it by constructing two
+sample sets from different nodes that collide on `packet-<index>-seed-<seed>` and asserting the
+evidence attached is each one's own. Ship the `docs/pgen_contract.md` row in the same commit
+(Protocol 7). **Editing `docs/pgen_contract.md` invalidates the whole mutation corpus** — that is
+fine here because the batch owes the corpus anyway, but do it before the corpus run, never after.
+
+#### The order for the batch, so you pay the chain once
+
+1. Land **all** source work: Fix A (+ provider table, + lock), Fix B (+ its mutation), and as much
+   of the ~51 content debt as you are taking. Rebuild the KG after touching
+   `vocab_annotation.json`.
+2. **Re-attest every node whose capability ids changed** (zero re-proof, and it prevents the
+   UNATTESTED regression). Confirm `capability_phase2` moved the way you expect, run ALONE.
+3. Regenerate `_generated_formatter_exclusions.py` if any formatter or COMPATIBILITY entry moved
+   (trap 6), and check the pinned counts in `tests/unit/test_obligation_executor.py` (trap 7).
+4. **Scan all 150 mutation anchors** (trap 1) — two seconds, versus a fifty-minute abort.
+5. Regenerate `tests/frontend_suite.py`'s artifact (~10s), then the benchmark (~16s), then the
+   corpus (~70min), then the six release shards (~2.6h). **The benchmark goes AFTER your last
+   source commit** (trap 2) and the sweep is the LAST source-affecting act (trap 9).
+6. `run_all` alone, output shown. Then `tests/tree_state.py` must report CERTIFIED.
 
 ### The machinery — TWO campaigns, TWO toolchains. Do not cross them.
 
@@ -303,9 +420,10 @@ PYTHONPATH=. .venv/bin/python tests/hardening_status.py     # must PASS before a
 
 * **`H-06`** holds the M2 capability queue. Released `@ e18015f0`, still OPEN, and must not be
   closed by a re-proof alone. Its attestation campaign is COMPLETE and its structural blocker is
-  CLEARED. What remains under it, per owner ruling 6 and all in one row: ~52 CONTRADICTED content
-  findings, 3 CONTRADICTED that are the §6B ground-truth defect awaiting owner sign-off, the
-  unfixed supersession test, and the 151 owed blind judgment re-reviews.
+  CLEARED. What remains under it, per owner ruling 6 and all in one row: **51 CONTRADICTED
+  content findings, 4 CONTRADICTED that are the §6B ground-truth defect (AUTHORISED, ruling 7),
+  the renderer concurrency defect (AUTHORISED, ruling 8), the still-unfixed supersession test,
+  and the 151 owed blind judgment re-reviews.**
 * **`H-10`** is the interruption-safety row, released `@ 7912add7`, still OPEN: the machinery
   exists and its mutation is detected, but the row's own finding is only half answered.
 * **`H-02`, `H-05`, `H-07`, `H-08`** are open and unclaimed. `H-02`'s 3 remaining §6F errors are
@@ -413,10 +531,12 @@ is ruled and closed. Splitting H-08's intro-surface gap into its own row is also
 and note owner ruling 6 already refused a new row for the §5 campaign, so the bar for opening
 `H-11` is higher than "the schema allows it".
 
-**The §6B ground-truth decomposition defect is owner-owned**: `requires`/`requires_ignore` is
-human-authored ground truth, locked, and a correction needs sign-off with node id, source and
-reason (Protocol 5). Three of the 55 CONTRADICTED are this. Do not edit the lock to make a
-finding go away.
+**The §6B ground-truth decomposition defect WAS owner-owned and is now AUTHORISED** (owner
+ruling 7, 2026-09-22). `requires`/`requires_ignore` is still human-authored ground truth and
+still locked, so the correction carries node id, source and reason per Protocol 5 — the ruling is
+the sign-off, not a substitute for the record. **4 of the 55 CONTRADICTED are this.** Never edit
+the lock merely to make a finding go away: the test is whether MATATAG wrote "or"/"e.g.", which is
+a reading of the competency text you must quote.
 
 ---
 
@@ -476,7 +596,9 @@ finding go away.
   failed it on the other nine. The packet format offers no notion of "how often", so a competency
   demanding a model is satisfiable by a single lucky seed.
 * **`tests/frontend_renderer.py`'s single fixed path has now corrupted TWO recorded figures**
-  (§6F by −6, §5 by +1). It is a live defect, not an operating note; see trap 11.
+  (§6F by −6, §5 by +1) — a live defect, not an operating note. **Owner ruling 8 authorises
+  fixing it next session**; spec in the NEXT SESSION section. Until it lands, trap 11 stands and
+  every stage figure must be measured with nothing else running.
 
 ---
 
