@@ -1255,65 +1255,78 @@ row rather than as "crashes on DNS".
 
 ## START HERE — handoff
 
-**Revision: 2026-09-19, measured on `7e33d26d`.** The revision lives in this line
+**Revision: 2026-09-21, measured on `2d335e8c` (tree CERTIFIED).** The revision lives in this line
 rather than in the heading, because a heading carrying a commit hash makes the anchor
 that points at it break every time the section is refreshed.
 
-> ### ⚠ 2026-09-19 — READ THIS BEFORE THE REST OF THIS SECTION
+> ### ⚠ 2026-09-21 — READ THIS BEFORE THE REST OF THIS SECTION
 >
-> The block below dated 2026-09-16 is kept for its reasoning, which is still good. Its
-> NUMBERS are superseded here. Where the two disagree, this block wins.
+> Blocks dated 2026-09-16 and 2026-09-19 below are kept for their reasoning. Their NUMBERS
+> are superseded here. Where any of them disagree with this block, this block wins.
 >
-> **The tree is NOT mid-re-proof. It is mid-BATCH: a content batch LANDED and its
-> re-proof was deliberately not run.** That is a state earlier handoffs did not
-> anticipate, and it looks identical to an abandoned re-proof unless you read this.
-> Measured on `7e33d26d` at digest `8847c1d5babb0f5f`:
+> **The tree is CERTIFIED.** Not mid-batch, not mid-re-proof. HEAD `2d335e8c`, worktree
+> clean, digest `90ed5464a45073d9`, and all FOUR digest-bound artifact families verified
+> fresh against it: six release shards, the benchmark, the frontend static render, and
+> 147/147 mutation proofs with 0 stale. This is the first certified tree in this plan's
+> history and it is PERISHABLE — any edit under `INPUT_ROOTS` costs a ~3.4h re-proof.
 >
-> ```text
-> six release shard receipts   STALE (all 6)
-> obligation_benchmark.json    STALE
-> frontend_static_render.json  CURRENT      <- already fresh; do not regenerate unnecessarily
-> mutation proofs              0 current, 147 STALE
-> ```
+> **What the 2026-09-19 mid-BATCH re-proof bought, and what it cost.** Running the held
+> chain turned `run_all` red on FOUR stages, not three. The extra one was `count_noun_1J`,
+> 8 findings, all on `mat_g2_na_q3_0` — the node the batch had just fixed. Waking the
+> "5 threes" register up shipped a second defect behind the first: it was interpolated as
+> a bare plural, so `b == 1` read "1 threes". The batch had landed with matrix 151/151,
+> compat 13/13, render 6/6 and 739 unit tests green, and shipped the regression anyway,
+> because the only gate that catches it runs in the chain that was being held. **A content
+> batch separated from its re-proof is not merely unproven — it can be wrong in a way its
+> own session's evidence cannot show.** Fixed at `e23a4ffe` and re-proved in full.
 >
-> **The single highest-value thing to do is run the re-proof chain. It is unattended,
-> ~3.7h, and nothing else in this plan can be certified until it finishes.** Commands and
-> order are in `validation_reports/phase2_hardening/HANDOFF_PROMPT.md`. Do not edit
-> anything under `INPUT_ROOTS` while it runs.
+> **Red stages, all re-measured 2026-09-21 on this tree — no inherited figures:**
 >
-> **Red stages, and their provenance — believe the measured ones, re-measure the rest:**
->
-> | Stage | Count | Measured when |
+> | Stage | Count | Why it is red |
 > |---|---|---|
-> | `capability_phase2` | **218** (67 CONTRADICTED, 73 STALE, 78 missing-evidence) | re-measured 2026-09-19 on this tree |
-> | `assertion_coverage_8` | red by construction | 147/147 proofs stale at this digest |
-> | `obligation_manifest_11` | red | shards + benchmark stale; it was GREEN before this batch |
-> | `judgment_reviews_5` | 1,158 | NOT re-measured on 2026-09-19; figure inherited |
+> | `judgment_reviews_5` | **1,221** | M2 content debt. (The long-quoted 1,158 was inherited, never measured.) |
+> | `capability_phase2` | **218** — 67 CONTRADICTED, 0 UNATTESTED, 73 STALE, 53 UNADJUDICABLE, 25 other | M2 content debt |
+> | `assertion_coverage_8` | 3 in 1 family (§6F) | **Cannot be fixed by re-running.** See below. |
 >
-> **The 2026-09-19 batch fixed SEVEN content defects and cleared ZERO findings**, which is
-> not a contradiction: a §6F finding clears only when a BLIND Attester re-judges the
-> renders, and that session authored no verdicts. What it did do is make nine nodes worth
-> re-attesting, because their content demonstrably moved toward the clause. Each now shows
-> a STALE (or missing-evidence) batch with its CONTRADICTED capabilities still standing:
+> `scheduled=16 completed=13 failed=3 crashed=0`. Everything else PASSes, including
+> `obligation_manifest_11` (459 pairs / 4,281 discrete obligations; 6 shards covering
+> 577,935 cache keys / 2,311,740 executions) and §1J at 0 findings / 9,060 samples.
 >
-> ```text
-> mat_g1_na_q1_0 (2)  mat_g3_na_q1_4 (1)  mat_g2_na_q4_3 (6)  mat_g2_na_q3_0 (2)
-> mat_g3_mg_q2_0 (2)  mat_g3_mg_q2_3 (2)  mat_g1_dp_q3_3 (2)  mat_g3_mg_q2_1 (0)
-> mat_g3_mg_q2_4 (0)          -- 17 of the 67 CONTRADICTED sit on these nodes
-> ```
+> **`assertion_coverage_8` is NOT a broken check and re-running the corpus will never fix
+> it.** The three §6F mutations come back `INVALID — the unmutated command baseline exited
+> 1`. The runner REFUSED TO SCORE them, because their baseline command is
+> `capability_phase2`, which is red with 218 findings. This is Mandate 5 seen from the
+> wrong end: a gate whose baseline is already red cannot be distinguished from the noise it
+> sits in. **Only clearing the attestation queue clears it.** Do not spend 70 minutes
+> re-running the corpus expecting movement here.
 >
-> **One binding rule changed, owner-approved.** `validate_matrix.formatter_refused_at_node`
-> moved from ALL to ANY: a formatter is refused only when it can render NONE of a bound's
-> values, because the orchestrator now narrows a list-valued bound to the
-> formatter-supported subset. The §1C-coverage contract row moved in the same commit.
-> Consequence you will meet: the obligation product is **4281**, not 4269, and
-> `_generated_formatter_exclusions.py` is regenerated by its script whenever a formatter or
-> compatibility entry changes — §2B fails loudly and names the stale entries. NEVER
-> hand-edit that file.
+> ### Owner rulings, 2026-09-21 — these supersede standing rules where they conflict
 >
-> **A new visual type exists:** `ScaleRead` (schema, `fmt_scale_read.py`, adapter route,
-> `ScaleReadInteractive`). `mass_capacity`'s `read_measurement` is now visual-only, the way
-> `length_measurement`'s already was. §12 covers it; it needs no disposition.
+> 1. **`backend/app/practice_gen/validation/` is now EDITABLE**, lifting the read-only rule
+>    in AGENTS.md File Management. Condition: every new or changed check must be shown
+>    catching its own planted violation BY NAME (Mandate 1) and ship its
+>    `docs/pgen_contract.md` row in the same commit (Protocol 7).
+> 2. **The H-row cap is lifted.** `tests/unit/test_hardening_status.py:50` pins rows with
+>    `assert ids == {f"H-0{n}" for n in range(1, 10)}`, which cannot express `H-10`. Widen
+>    it to two digits, with the contract row and the test in the same commit. This is a
+>    documented ground-truth limit, NOT weakening a check to pass — the distinction is that
+>    the assertion encodes a typo-class constraint, not a safety property. A 2026-09-16
+>    agent correctly withdrew `H-10` rather than edit this without a ruling; the ruling now
+>    exists.
+> 3. **A handoff can occur at ANY moment** — hardware and environment failures are outside
+>    a session's control. "Must end certified" is therefore NOT the rule. **The pipeline
+>    must instead accommodate arbitrary interruption**, which today it does not: see the
+>    state-machinery item below. Sessions should still prefer to end certified when they
+>    can.
+> 4. **The whole 218-finding capability queue is one campaign**, not a nine-node errand. It
+>    will span sessions and must be resumable.
+> 5. **The 6 undrawn-referent nodes are to be FIXED FIRST, then gated.** Drawing the
+>    referent on all 6 comes before the gate lands, so the gate's baseline is genuinely
+>    zero rather than dispositioned-around (strict Mandate 5).
+> 6. **Blind attestation is performed by DISPATCH to a separate agent** that has neither the
+>    answer key nor the dispatching session's context. The dispatching agent never authors
+>    a verdict and never re-files one.
+
 
 This section supersedes every earlier "what a fresh session should do" block in this
 document. Those blocks are gone; if you are reading advice about starting `H-03`, or about a
