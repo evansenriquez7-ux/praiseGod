@@ -4,6 +4,7 @@ import random
 from backend.app.practice_gen.dna.base import FormattedProblem, QuestionContext
 from backend.app.practice_gen.registry import get_node_dnas, get_node_competency_bounds
 from backend.app.practice_gen.compatibility import (
+    FormatterNotEligible,
     get_formatters_for_dna,
     get_compatible_formatters_for_variant,
 )
@@ -481,7 +482,6 @@ class PracticeOrchestrator:
                 raise ValueError(f"Forced DNA '{forced_dna}' not compatible or supported for node '{node_id}'")
             valid_dnas = [forced_dna]
         if not valid_dnas:
-            from backend.app.practice_gen.compatibility import FormatterNotEligible
             raise FormatterNotEligible(f"Formatter '{formatter}' is not supported by any DNA for node '{node_id}'")
 
         dna_name = rng.choice(valid_dnas)

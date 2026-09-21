@@ -1633,12 +1633,16 @@ MUTATIONS: List[Mutation] = [
         ),
         edits={
             "backend/app/services/orchestrator.py": (
+                # Re-aimed 2026-09-21: this guard now raises `FormatterNotEligible`
+                # rather than a bare ValueError, so that the exclusions generator can tell
+                # an eligibility refusal from a content crash by TYPE instead of by
+                # message text. The plant is unchanged -- same refusal, same place.
                 "        if not valid_dnas:\n"
-                "            raise ValueError(f\"Formatter '{formatter}' is not supported by any DNA for node '{node_id}'\")",
+                "            raise FormatterNotEligible(f\"Formatter '{formatter}' is not supported by any DNA for node '{node_id}'\")",
                 "        if formatter == 'true_false':\n"
                 "            valid_dnas = []  # planted mutation: refuse one advertised formatter\n"
                 "        if not valid_dnas:\n"
-                "            raise ValueError(f\"Formatter '{formatter}' is not supported by any DNA for node '{node_id}'\")",
+                "            raise FormatterNotEligible(f\"Formatter '{formatter}' is not supported by any DNA for node '{node_id}'\")",
             )
         },
         command=["backend.app.practice_gen.validation.validate_compat", "--only", "servable"],
