@@ -1275,7 +1275,7 @@ that points at it break every time the section is refreshed.
 >
 > | Stage | Count | Change |
 > |---|---|---|
-> | `judgment_reviews_5` | **1252** | was 1253; unaffected by the campaign, as expected — attestation records are not judgment reviews |
+> | `judgment_reviews_5` | **1252** | the recorded 1253 was a POLLUTED measurement, not a change — see below |
 > | `capability_phase2` | **61** | **DOWN from 218.** 54 CONTRADICTED + 7 structurally blocked |
 > | `assertion_coverage_8` | 3 in 1 family (§6F) | unchanged; re-run and still INVALID against a red baseline |
 >
@@ -1340,7 +1340,15 @@ that points at it break every time the section is refreshed.
 > batch, then one chain. Read trap 1 (scan all 150 anchors first), trap 2 (benchmark AFTER
 > the last commit) and trap 12 (cosmetic edits cost 3.4h) before the first edit.
 >
-> **A trap was re-paid this session and its direction is new.** `validate_capability
+> **The previously recorded `judgment_reviews_5` figure of 1253 was wrong, and proving it
+> cost nothing.** §5 reports **1252**, stable across two clean runs. `git log` shows
+> `validation_reports/judgment/` untouched since the 2026-09-21 handoff commit `664fbe46`, and
+> `git diff` shows NO source change under `INPUT_ROOTS` across the same range — so §5's inputs
+> are byte-identical to the tree the 1253 was taken on, and a gate with identical inputs that
+> is stable at 1252 cannot have legitimately been 1253. The earlier figure was measured while
+> something else was running. **1252 is the number; do not "restore" 1253.**
+>
+> **A trap was re-paid this session and its direction is new — and it cuts BOTH ways.** `validate_capability
 > --phase 2` run concurrently with a running `validate_judgment` reported **55** findings;
 > run alone it reported **61**, three times. Both funnel through
 > `tests/frontend_renderer.py`'s single fixed path. The documented symptom of trap 11 was

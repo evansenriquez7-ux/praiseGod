@@ -13466,3 +13466,35 @@ strictly worse than one that crashes, and it is the shape of defect this harness
 **61 is the correct figure** — it is the reading with nothing else running, reproduced three times.
 55 is the corrupted one. Recorded here so a future session that sees a lower §6F count does not
 book it as progress. The remedy is unchanged and still unfixed: run nothing heavy concurrently.
+
+### Addendum 2 — the recorded `judgment_reviews_5` figure of 1253 was also polluted
+
+Corollary of the trap above, and it corroborates it from the opposite direction. §5 reports
+**1252** problems, stable across two clean runs with nothing else running:
+
+```
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_judgment
+Verdicts over 151 reviewed nodes: PASS=14 CONCERN=93 FAIL=44 UNKNOWN=0
+Judgment review validation: 1252 problem(s) found.        # twice, identical
+```
+
+The 2026-09-21 handoff and plan both recorded **1253**. That difference is not a change in the
+tree, and this is provable rather than argued:
+
+```
+$ git log --oneline 664fbe46..HEAD -- validation_reports/judgment/      # empty
+$ git diff --stat 664fbe46..HEAD -- backend/app tests scripts data frontend/src   # empty
+```
+
+§5's entire input — the filed reviews, and every module that renders the samples it re-renders
+— is byte-identical to the tree the 1253 was taken on. A deterministic gate on identical inputs
+that is stable at 1252 cannot legitimately have been 1253. **The earlier figure was measured
+with something else running**, the same single-fixed-path renderer collision as the §6F case
+above, differing only in sign: −6 there, +1 here.
+
+Two consequences worth carrying forward. First, **1252 is the number** and a future session
+must not "restore" 1253 on the authority of the older document. Second, and more importantly:
+trap 11 does not merely risk a loud crash or a flattering undercount — **it corrupts recorded
+figures in either direction, and those figures then get copied into handoffs and plans as
+measured fact.** Both of this project's status documents were carrying one. Measure every stage
+ALONE before writing its number anywhere.

@@ -326,8 +326,12 @@ control, and the owner ruled that "must end certified" is NOT the rule.
     documented symptom was §5 crashing (`renderer returned active evidence for [~400
     packets]`), but on 2026-09-22 `validate_capability --phase 2` run alongside a running
     `validate_judgment` reported **55** findings where the tree has **61** — measured three
-    times alone. **It under-reported by six, silently.** A lower §6F or §5 count is not
-    progress unless it was measured with nothing else running.
+    times alone. **It under-reported by six, silently.** It also perturbs UPWARD: the
+    `judgment_reviews_5` figure of 1253 recorded on 2026-09-21 is 1252 on inputs `git` proves
+    byte-identical (no change to `validation_reports/judgment/` and no source change since
+    `664fbe46`), and 1252 is stable across two clean runs. **Neither a lower nor a higher §5 /
+    §6F count means anything unless it was measured with nothing else running.** Measure each
+    stage ALONE before you write its number anywhere.
 12. **Cosmetic edits cost 3.4 hours.** A 2026-09-20 session realigned four import
     continuation lines AFTER completing the chain and invalidated the whole re-proof. Once
     certified, touch no source you do not mean to change.
