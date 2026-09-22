@@ -14350,3 +14350,72 @@ family**; `judgment_reviews_5` = **1253 at the `run_all` stage entry point** (12
 module plus one aggregate rollup); `capability_phase2` = **57 CONTRADICTED**. All other stages
 passed. No new seeded generator failure was found or fixed in this closeout; the only sample
 seeds materially used were the ten batch116 packet seeds listed above.
+
+## 2026-09-22 — REVIEW OF THE CLOSEOUT BATCH, and the two copies it could not have found
+
+Session `H-06-review-closeout-2026-09-22`, reviewing `codex-closeout-b116-20260922`.
+
+### What the closeout got right, verified by execution rather than by reading its report
+
+* **All four authorised source corrections are exact.** The three renderer-evidence strings
+  and the new `§1M` paragraph match the specification, and `§1M` carries its three blind spots
+  (CLOSED deixis list, cannot judge whether the drawn visual is the RIGHT one, reads stems not
+  hints). Operator coverage `41 / 41 | NOT named: NONE`; both contract directions `NONE`.
+* **`batch116` is honest evidence.** All 18 filed verdicts were re-joined to their dispatch key
+  and compared field by field against the stored Attester output:
+
+  ```
+  18 verdicts compared. Every filed verdict byte-identical to the dispatched source: True
+  ```
+
+  No verdict, reasoning or seed list was authored, altered or reordered by the filing session.
+* **`attested_by` correctly still names Haiku** (`blind-attester-haiku45-b115-20260922`), because
+  Haiku judged those verdicts. Owner ruling 10 changes the model for FUTURE dispatches; relabelling
+  earned evidence to match a new ruling would have been a false evidentiary claim, and the closeout
+  did not make it.
+* **`capability_phase2` 53 → 57**, measured alone: 57 CONTRADICTED, 0 UNATTESTED, 0 STALE,
+  0 UNADJUDICABLE. Phase 1 back at its floor of 5. The rise is ruling 9 working.
+* **Corpus 149/152**, survivors exactly `attestation_drops_options`,
+  `attestation_leaks_into_phase1`, `contradicted_attestation`, each `baseline_exit 1` — the known
+  §6F cluster, INVALID against a red baseline, not a new hole.
+* **Nothing was weakened.** The whole source diff across the closeout is 5 files / 46 insertions,
+  touching no validator, no assertion and no threshold.
+
+### What it missed, and why the fault is in the PROMPT, not the agent
+
+The prompt it was given asserted "**Three** digest-bound files still carry the overstated
+sentence" and enumerated them. **There were FIVE.** A hand-enumerated list of edit sites is
+exactly the defect this repository keeps rediscovering — a rule copied into N places disagrees
+with itself, and a correction aimed at a hand-listed subset half-lands.
+
+* The closeout found a **fourth** — `run_all.py:105-106`'s `ASSERTIONS` comment — and correctly
+  **named it rather than fixing it**, because the prompt limited the correction to its three and
+  directed that out-of-list work be named. That was the right call under its instructions.
+* A **fifth** — `tests/unit/test_frontend_renderer_isolation.py`'s module docstring, the primary
+  documentation of why that gate exists — was missed by the prompt AND by the closeout.
+
+Both are corrected here. The sweep that found them is mechanical, over the digest-bound input
+set itself rather than a remembered list:
+
+```python
+from backend.app.practice_gen.validation.mutation_proof import _iter_input_files
+# regex for "§5 reported 1253", "1253 where it has 1252", "corrupted TWO figures", ...
+```
+
+```
+BEFORE: STALE MISATTRIBUTION INSIDE DIGEST-BOUND INPUTS: 3
+  backend/app/practice_gen/validation/run_all.py:105
+  tests/frontend_renderer.py:22                      <- the CORRECTION note itself, not a hit
+  tests/unit/test_frontend_renderer_isolation.py:17
+
+AFTER:  remaining hits: 2   (both are CORRECTED-2026-09-22 notes, as intended)
+```
+
+**LESSON, recorded because it will recur:** when correcting a claim that was copy-pasted into
+prose, enumerate the sites by SWEEPING `mutation_proof._iter_input_files()`, never by listing
+them from memory. This correction half-landed twice — once when the original session wrote the
+claim into five places, and once when the closeout prompt named three of them.
+
+**Cost of the miss:** both surviving copies are under `INPUT_ROOTS`, so correcting a comment
+costs the full ~3.4h chain a second time. That is the measurable price of a hand-listed edit set,
+and it is why the sweep above is worth running BEFORE a batch rather than after.

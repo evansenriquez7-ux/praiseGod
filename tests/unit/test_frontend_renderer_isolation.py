@@ -13,9 +13,15 @@ single end-to-end assertion proves neither:
     while the rendered structure belongs to the other process -- the loud guard passes and
     one run attaches the other's visual evidence).
 
-Measured cost of the silent half before it was fixed: §6F reported 55 findings on a tree
-that had 61, and §5 reported 1253 where it has 1252. Two corrupted figures, opposite
-directions, no crash and no warning in either.
+Measured cost of the silent half before it was fixed: §6F reported 55 findings under
+concurrent load on a tree that had 61, against 61 on three clean runs -- no crash and no
+warning.
+
+CORRECTED 2026-09-22: this docstring originally also cited "§5 reported 1253 where it has
+1252" as a second corrupted figure. That was MISATTRIBUTED and is NOT this defect. The §5
+difference is `run_all._stage_judgment_reviews_5` appending one aggregate finding the
+module's own CLI never emits, so 1252 (module) and 1253 (stage) are both correct for their
+entry point. The §6F symptom above is the one this test exists for.
 
 Unique directories alone make the end-to-end behaviour correct EVEN WITH the colliding id
 space restored -- which is exactly why a mutation that reverts `case_id` would survive an

@@ -102,8 +102,12 @@ ASSERTIONS = (
     # label of its own: `tests/frontend_renderer.py` is funnelled through by six call
     # sites including BOTH §5 and §6F, and when two of them collided it did not crash, it
     # silently attached one run's rendered visual evidence to the other run's samples.
-    # Measured cost: §6F recorded 55 findings on a tree that had 61, §5 recorded 1253
-    # where it has 1252. A stage figure that moves with no source change is the symptom.
+    # Measured cost: §6F recorded 55 findings under concurrent load on a tree that had
+    # 61, against 61 on three clean runs. A stage figure that moves with no source change
+    # is the symptom. (A §5 figure of 1253-against-1252 was cited here originally and was
+    # MISATTRIBUTED -- that difference is `_stage_judgment_reviews_5` appending one
+    # aggregate finding the module's own CLI never emits, so both numbers are correct for
+    # their entry point. Corrected 2026-09-22.)
     "renderer_invocation_isolation",       # tests/unit/test_frontend_renderer_isolation.py
     "contract_doc_matches_registry",
     "operator_doc_covers_registry",
