@@ -35,9 +35,9 @@ from the digests alone.
 
 ```text
 PASS tree_state: CERTIFIED
-  live input digest : 3907ad23d1b84972
+  live input digest : 124ee1ca14d20526
   worktree          : clean
-  mutation_proofs         fresh  150 file(s)
+  mutation_proofs         fresh  152 file(s)
   release_shards          fresh  6 file(s)
   obligation_benchmark    fresh  1 file(s)
   frontend_static_render  fresh  1 file(s)
@@ -66,6 +66,32 @@ PYTHONPATH=. .venv/bin/python tests/tree_state.py --begin campaign \
 # ... and on completion:
 PYTHONPATH=. .venv/bin/python tests/tree_state.py --complete --note "where you got to"
 ```
+
+---
+
+## ⚠ 2026-09-22 (latest) — RULINGS 7, 8 AND 9 ACTED ON. READ THIS FIRST.
+
+Tree is **CERTIFIED** at `124ee1ca14d20526`; the chain was run in full and costs nothing to redo.
+`H-06` is `released @ d86c9508`, still OPEN.
+
+* **Fix A and Fix B are DONE.** Do not redo them. `capability_phase2` **55 → 53**.
+* **`judgment_reviews_5` is 1252 from the module and 1253 from the `run_all` stage, and BOTH ARE
+  CORRECT.** The plan's instruction not to "restore" 1253 is wrong and is now marked superseded.
+  Always quote the entry point with the figure.
+* **Owner ruling 9: prevalence is now part of the Attester standard.** All 741 filed verdicts were
+  earned on the superseded neutral standard, so today's 53 is an OLD-instrument number. The ruling is
+  scoped as a corpus-wide re-dispatch campaign (~33 Haiku dispatches, no re-proof owed) and was
+  deliberately NOT half-applied. **Expect the count to RISE.** `batch115` replaces first.
+* **THREE CORRECTIONS ARE OWED IN THE NEXT SOURCE BATCH, before you run the chain:** the overstated
+  "§5 reported 1253 where it has 1252" sentence in `tests/frontend_renderer.py`'s docstring, the
+  `docs/pgen_contract.md` renderer row and the `renderer_case_id_omits_node_id` mutation description;
+  plus `docs/testing_pipeline.md`, which lacks a counterpart for the new row
+  (`operator_doc_covers_registry` 40/40 → 40/41, passing but a real gap). All are digest-bound, which
+  is why they were not done at the END of a chain.
+* **The benchmark prints `recommended_shards=4`; `validate_obligations.py:165` hard-codes 6.**
+  Follow the validator. Six shards measured 2.593h aggregate, worst shard 1588.9s vs a 1800s budget.
+* **Still open under `H-06`:** ~51 CONTRADICTED content findings, the 151 owed §5 re-reviews, the
+  unfixed supersession test, and now the ruling-9 campaign.
 
 ---
 
@@ -503,7 +529,20 @@ control, and the owner ruled that "must end certified" is NOT the rule.
 10. **The pre-commit hook rebuilds Graphify and stages `graphify-out/`.** Expect more files in
     the commit than you staged. It does NOT move the input digest — verify that rather than
     assume it.
-11. **Do not run anything heavy concurrently, and the failure is not always loud.**
+11. **[LARGELY CLOSED 2026-09-22 under owner ruling 8 — see the correction below before
+    trusting the rest of this trap.]** `tests/frontend_renderer.py` now renders every
+    invocation in its own `run-<pid>-<uuid4>` directory AND puts `node_id` in `case_id`,
+    so two callers can neither share a file nor mint the same id. Both halves carry their
+    own DETECTED mutation (`renderer_shares_one_fixed_render_path`,
+    `renderer_case_id_omits_node_id`). **AND THE §5 HALF OF THIS TRAP WAS NEVER THE
+    RENDERER AT ALL:** the 1252-vs-1253 difference is `run_all.py:760-764` appending one
+    aggregate finding the module's CLI never emits — module 1252, stage 1253,
+    deterministic, measured with nothing running. Quote the ENTRY POINT alongside any §5
+    figure. The §6F observation (55 under load against 61 clean, three times) was real and
+    is what the fix addresses. Contention is still not serialised, so prefer measuring
+    alone. Original text follows.
+
+    **Do not run anything heavy concurrently, and the failure is not always loud.**
     `tests/frontend_renderer.py` writes to one fixed path with no PID and no lock; six call
     sites funnel through it, including BOTH §5 and §6F's freshness pass. Unfixed. The
     documented symptom was §5 crashing (`renderer returned active evidence for [~400
@@ -595,7 +634,12 @@ a reading of the competency text you must quote.
   of one seed in ten — measured on `mat_g1_na_q3_0` `concrete_pictorial`, where a second rater
   failed it on the other nine. The packet format offers no notion of "how often", so a competency
   demanding a model is satisfiable by a single lucky seed.
-* **`tests/frontend_renderer.py`'s single fixed path has now corrupted TWO recorded figures**
+* **[FIXED 2026-09-22, ruling 8.]** ~~`tests/frontend_renderer.py`'s single fixed path has
+  now corrupted TWO recorded figures~~ — and only ONE of the two was ever the renderer.
+  The §6F figure (−6) was; the §5 figure (+1) was the `run_all` rollup above. Both halves
+  of the renderer defect are fixed and mutation-covered. **Residual:** uniqueness is per
+  `(pid, uuid4)`, not a lock — cross-talk is gone, contention is not.
+* **SUPERSEDED, kept so a stale copy is recognisable:** `tests/frontend_renderer.py`'s single fixed path has now corrupted TWO recorded figures
   (§6F by −6, §5 by +1) — a live defect, not an operating note. **Owner ruling 8 authorises
   fixing it next session**; spec in the NEXT SESSION section. Until it lands, trap 11 stands and
   every stage figure must be measured with nothing else running.
