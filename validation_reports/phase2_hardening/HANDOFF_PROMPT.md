@@ -35,7 +35,7 @@ from the digests alone.
 
 ```text
 PASS tree_state: CERTIFIED
-  live input digest : 0d8a8ec3f9812aba
+  live input digest : dfae9bbb7a1398d7
   worktree          : clean
   mutation_proofs         fresh  152 file(s)
   release_shards          fresh  6 file(s)
@@ -69,7 +69,50 @@ PYTHONPATH=. .venv/bin/python tests/tree_state.py --complete --note "where you g
 
 ---
 
-## ⚠ 2026-09-22 (latest) — CLOSEOUT COMPLETE; CORPUS NOW MIXES TWO STANDARDS
+## ⚠ 2026-09-22 (latest) — CLOSEOUT REVIEWED AND COMPLETED. START HERE.
+
+Tree is **CERTIFIED** at `dfae9bbb7a1398d7`, worktree clean, all four artifact families fresh.
+`H-06` is `released @ 505baf4e`, still OPEN. The chain is current — **do not re-run it.**
+
+**Measured state, each stage run ALONE:**
+
+| stage | count | note |
+|---|---|---|
+| `capability_phase2` | **57** | 57 CONTRADICTED, 0 UNATTESTED, 0 STALE, 0 UNADJUDICABLE |
+| `judgment_reviews_5` | **1252 module / 1253 stage** | quote the ENTRY POINT; the ±1 is `run_all`'s rollup, not pollution |
+| `assertion_coverage_8` | 3 in 1 family | the §6F cluster, INVALID against a red `capability_phase2` |
+
+Corpus **149/152**; survivors are exactly `contradicted_attestation`,
+`attestation_drops_options`, `attestation_leaks_into_phase1`. Phase 1 at its floor of 5.
+Operator coverage **41/41**. `run_all` exits 1 — **the Definition of Done is NOT met.**
+
+**READ THIS BEFORE YOU TRUST `capability_phase2`'s 57.** The corpus now mixes TWO Attester
+standards. Owner ruling 9 made prevalence part of the standard, and only the 18 verdicts on
+`mat_g1_na_q3_7`, `mat_g2_mg_q2_0`, `mat_g2_mg_q2_2` and `mat_g3_mg_q2_3` (`batch116`) were
+judged under it. The other ~723 were judged on the superseded neutral standard. **57 is
+therefore a two-instrument number.** Owner ruling 10 adds a second variable for any NEW
+dispatch: `gpt-terra` light-thinking rather than Haiku, which is a different rater FAMILY, and
+the measured 88.1% agreement is Haiku-against-Haiku and does NOT transfer.
+
+**What that means operationally:** a cross-standard or cross-family NOT_PROVIDED landing against
+an older PROVIDED is **not, on its own, a regression**. Nothing currently separates a genuine
+finding from an instrument effect. The resolution is the corpus-wide ruling-9 re-dispatch
+campaign (~33 dispatches, no re-proof owed because attestation is outside the fingerprint).
+
+**A correction that half-landed TWICE, and the rule that stops a third time.** The renderer fix
+cited a §5 figure that was never the renderer. That claim was written into FIVE digest-bound
+places; the first correction pass named three, the closeout found a fourth and correctly named
+it out-of-list, and a fifth was missed by both. All five are now correct. **When correcting a
+claim that was copy-pasted into prose, enumerate the sites by sweeping
+`mutation_proof._iter_input_files()`, never from memory** — the hand-listed set cost the 3.4h
+chain twice.
+
+**Still open under `H-06`:** ~51 CONTRADICTED content findings, the 151 owed §5 blind
+re-reviews, the unfixed supersession test, and the ruling-9 campaign.
+
+---
+
+## 2026-09-22 (historical) — CLOSEOUT COMPLETE; CORPUS NOW MIXES TWO STANDARDS
 
 Tree is **CERTIFIED** at `0d8a8ec3f9812aba`; the full chain is current and costs nothing to
 redo. `H-06` is `released @ 2b7c6d18`, still OPEN.
