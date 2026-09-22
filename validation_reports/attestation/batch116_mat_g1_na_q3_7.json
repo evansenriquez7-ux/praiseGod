@@ -1,0 +1,593 @@
+{
+  "batch": "batch116_mat_g1_na_q3_7",
+  "attested_at": "2026-09-22T00:00:00Z",
+  "attested_by": "blind-attester-haiku45-b115-20260922",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "the Attester read attester_packets.render_prompt_block output (item id, clause, competency, grade/quarter and the rendered samples only), verified before dispatch to contain no node id, no capability id and no provider table.",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "prompt-contract dispatch to a separate Haiku subagent: told to read exactly four packet renders under local_only/scratch/attest115/ and no other path, and to return verdict JSON. Tool access was NOT structurally prevented, so this does not claim the '0' (inline, no tool access) contract."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g1_na_q3_7",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g1_na_q3_7",
+        "seed": 11,
+        "formatter": "mcq",
+        "question_text": "Use the repeating unit 2, 10 to build a repeating pattern. Which sequence correctly creates it?",
+        "correct_answer": "2, 10, 2, 10, 2, 10",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "2, 10, 2, 10, 2, 10",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "2, 10, 2, 10, 2, 8",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "2, 10, 2, 10, 5, 10",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "2, 10, 4, 10, 2, 10",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "2, 10, 2, 10, 2, 10",
+        "hints": [],
+        "sample_id": "95599d59906dd0ab6e92",
+        "replay_digest": "7fe9a37ba911ebc5451e5f027242dbf7c55ee3bdab674bb62b7debc229b23164"
+      },
+      {
+        "node_id": "mat_g1_na_q3_7",
+        "seed": 23,
+        "formatter": "cloze",
+        "question_text": "Create a repeating pattern with the repeating group: square, triangle. Which sequence shows this pattern?",
+        "correct_answer": "square, triangle, square, triangle, square, triangle",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "square, triangle, square, triangle, rectangle, triangle",
+            "text": "square, triangle, square, triangle, rectangle, triangle",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "square, triangle, square, triangle, square, triangle",
+            "text": "square, triangle, square, triangle, square, triangle",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "square, triangle, triangle, triangle, square, triangle",
+            "text": "square, triangle, triangle, triangle, square, triangle",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "square, triangle, square, triangle, square, rectangle",
+            "text": "square, triangle, square, triangle, square, rectangle",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "square, triangle, square, triangle, square, triangle",
+        "hints": [],
+        "sample_id": "74684e942ff15ba4638a",
+        "replay_digest": "63da2355047b82bb5201e91c17039df225bc1bce3050e54236e2f6ab02ed8453"
+      },
+      {
+        "node_id": "mat_g1_na_q3_7",
+        "seed": 42,
+        "formatter": "cloze",
+        "question_text": "You want to create a repeating pattern using: rectangle, triangle. Which sequence correctly creates it?",
+        "correct_answer": "rectangle, triangle, rectangle, triangle, rectangle, triangle",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "rectangle, triangle, rectangle, triangle, rectangle, square",
+            "text": "rectangle, triangle, rectangle, triangle, rectangle, square",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "rectangle, triangle, square, triangle, rectangle, triangle",
+            "text": "rectangle, triangle, square, triangle, rectangle, triangle",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "rectangle, triangle, rectangle, triangle, rectangle, rectangle",
+            "text": "rectangle, triangle, rectangle, triangle, rectangle, rectangle",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "rectangle, triangle, rectangle, triangle, rectangle, triangle",
+            "text": "rectangle, triangle, rectangle, triangle, rectangle, triangle",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "rectangle, triangle, rectangle, triangle, rectangle, triangle",
+        "hints": [],
+        "sample_id": "a23ebb9642ac9547bfba",
+        "replay_digest": "44f6e0d7e0bc0eed074377b745ad5ee33670a059be695c089226b16127271d6d"
+      },
+      {
+        "node_id": "mat_g1_na_q3_7",
+        "seed": 57,
+        "formatter": "mcq",
+        "question_text": "Use the repeating unit 10, 1 to build a repeating pattern. Which sequence correctly creates it?",
+        "correct_answer": "10, 1, 10, 1, 10, 1",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "10, 1, 10, 1, 7, 1",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "10, 1, 10, 2, 10, 1",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "10, 1, 12, 1, 10, 1",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "10, 1, 10, 1, 10, 1",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "10, 1, 10, 1, 10, 1",
+        "hints": [],
+        "sample_id": "739021da07956d2896ab",
+        "replay_digest": "3848f5fa2dce8482d5c89f15e5b1a34cf1486640742c56f46acbd9aa9d75097e"
+      },
+      {
+        "node_id": "mat_g1_na_q3_7",
+        "seed": 64,
+        "formatter": "cloze",
+        "question_text": "You want to create a repeating pattern using: rectangle, triangle. Which sequence correctly creates it?",
+        "correct_answer": "rectangle, triangle, rectangle, triangle, rectangle, triangle",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "rectangle, triangle, rectangle, triangle, rectangle, triangle",
+            "text": "rectangle, triangle, rectangle, triangle, rectangle, triangle",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "rectangle, triangle, square, triangle, rectangle, triangle",
+            "text": "rectangle, triangle, square, triangle, rectangle, triangle",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "rectangle, triangle, rectangle, triangle, rectangle, square",
+            "text": "rectangle, triangle, rectangle, triangle, rectangle, square",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "rectangle, triangle, triangle, triangle, rectangle, triangle",
+            "text": "rectangle, triangle, triangle, triangle, rectangle, triangle",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "rectangle, triangle, rectangle, triangle, rectangle, triangle",
+        "hints": [],
+        "sample_id": "063182905b286db84b0b",
+        "replay_digest": "c1ede8166e4b7f0a8a68091f85dbf405387bf53d6eb825fc0903397127103814"
+      },
+      {
+        "node_id": "mat_g1_na_q3_7",
+        "seed": 78,
+        "formatter": "cloze",
+        "question_text": "Create a repeating pattern with the repeating group: triangle, rectangle. Which sequence shows this pattern?",
+        "correct_answer": "triangle, rectangle, triangle, rectangle, triangle, rectangle",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "triangle, rectangle, triangle, rectangle, square, rectangle",
+            "text": "triangle, rectangle, triangle, rectangle, square, rectangle",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "triangle, rectangle, triangle, rectangle, triangle, rectangle",
+            "text": "triangle, rectangle, triangle, rectangle, triangle, rectangle",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "triangle, rectangle, square, rectangle, triangle, rectangle",
+            "text": "triangle, rectangle, square, rectangle, triangle, rectangle",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "triangle, rectangle, rectangle, rectangle, triangle, rectangle",
+            "text": "triangle, rectangle, rectangle, rectangle, triangle, rectangle",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "triangle, rectangle, triangle, rectangle, triangle, rectangle",
+        "hints": [],
+        "sample_id": "f5852c9ad38fb5ed62cb",
+        "replay_digest": "e5dc1b20403b0bc8486bf09fad86d9f2f6fbc3bf58002fe950e8384ff457fd7b"
+      },
+      {
+        "node_id": "mat_g1_na_q3_7",
+        "seed": 91,
+        "formatter": "cloze",
+        "question_text": "Create a repeating pattern with the repeating group: rectangle, square. Which sequence shows this pattern?",
+        "correct_answer": "rectangle, square, rectangle, square, rectangle, square",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "rectangle, square, square, square, rectangle, square",
+            "text": "rectangle, square, square, square, rectangle, square",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "rectangle, square, rectangle, square, triangle, square",
+            "text": "rectangle, square, rectangle, square, triangle, square",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "rectangle, square, rectangle, square, rectangle, rectangle",
+            "text": "rectangle, square, rectangle, square, rectangle, rectangle",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "rectangle, square, rectangle, square, rectangle, square",
+            "text": "rectangle, square, rectangle, square, rectangle, square",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "rectangle, square, rectangle, square, rectangle, square",
+        "hints": [],
+        "sample_id": "3ab3829cdf66241364ad",
+        "replay_digest": "f04a00c320a2a708f4f91be74d2267209ba5561da64c2bf41bd50535d09525d7"
+      },
+      {
+        "node_id": "mat_g1_na_q3_7",
+        "seed": 103,
+        "formatter": "cloze",
+        "question_text": "Create a repeating pattern with the repeating group: rectangle, square. Which sequence shows this pattern?",
+        "correct_answer": "rectangle, square, rectangle, square, rectangle, square",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "rectangle, square, rectangle, square, rectangle, triangle",
+            "text": "rectangle, square, rectangle, square, rectangle, triangle",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "rectangle, square, rectangle, square, triangle, square",
+            "text": "rectangle, square, rectangle, square, triangle, square",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "rectangle, square, rectangle, square, rectangle, square",
+            "text": "rectangle, square, rectangle, square, rectangle, square",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "rectangle, square, rectangle, triangle, rectangle, square",
+            "text": "rectangle, square, rectangle, triangle, rectangle, square",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "rectangle, square, rectangle, square, rectangle, square",
+        "hints": [],
+        "sample_id": "f0ab8977ba09f8178b0c",
+        "replay_digest": "990d825084ecec004f52990a513a824f3543cb7ba64165e4296a97e55940d7dd"
+      },
+      {
+        "node_id": "mat_g1_na_q3_7",
+        "seed": 118,
+        "formatter": "mcq",
+        "question_text": "Use the repeating unit 1, 10 to build a repeating pattern. Which sequence correctly creates it?",
+        "correct_answer": "1, 10, 1, 10, 1, 10",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "1, 10, 1, 9, 1, 10",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "1, 10, 1, 7, 1, 10",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "1, 10, 1, 10, 1, 10",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "1, 9, 1, 10, 1, 10",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "1, 10, 1, 10, 1, 10",
+        "hints": [],
+        "sample_id": "025c1f5df79feb32281b",
+        "replay_digest": "119e1903d4f3b922c85c2c9c3a974f0ba9bad1a8632974326b3b67b26a4de121"
+      },
+      {
+        "node_id": "mat_g1_na_q3_7",
+        "seed": 127,
+        "formatter": "cloze",
+        "question_text": "Create a repeating pattern with the repeating group: square, rectangle. Which sequence shows this pattern?",
+        "correct_answer": "square, rectangle, square, rectangle, square, rectangle",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "square, rectangle, square, rectangle, triangle, rectangle",
+            "text": "square, rectangle, square, rectangle, triangle, rectangle",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "square, rectangle, square, triangle, square, rectangle",
+            "text": "square, rectangle, square, triangle, square, rectangle",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "square, rectangle, square, rectangle, square, rectangle",
+            "text": "square, rectangle, square, rectangle, square, rectangle",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "square, rectangle, square, square, square, rectangle",
+            "text": "square, rectangle, square, square, square, rectangle",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "square, rectangle, square, rectangle, square, rectangle",
+        "hints": [],
+        "sample_id": "962e121b11b69a3a500a",
+        "replay_digest": "64aafb1dab10af7039aaef76a51e67af2e3475abd00a48679479190ee0eff21b"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "create",
+      "node_id": "mat_g1_na_q3_7",
+      "clause": "Create",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "The competency names 'Create' as an action verb requiring the student to produce or generate patterns. The samples consistently ask students to select from pre-made options: 'Which sequence correctly creates it?' and 'Which sequence shows this pattern?' Recognizing which sequence creates a pattern is not the same as creating one. Students are identifying existing creations, not producing their own.",
+      "action_taken": "Finding recorded and not acted on: the reproducibility rule (88.1% inter-rater agreement; 76.5% on the hardest batch) requires a second independent blind dispatch before engineering work on a lone CONTRADICTED verdict."
+    },
+    {
+      "capability_id": "repeating_patterns",
+      "node_id": "mat_g1_na_q3_7",
+      "clause": "repeating patterns",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All ten samples demonstrate repeating patterns through their structure: sequences that cycle (2,10,2,10,2,10; square,triangle,square,triangle,square,triangle) and geometric shapes that alternate (rectangle,triangle,rectangle,triangle,rectangle,triangle). The repeating unit in each sample is clear and consistent across all seeds.",
+      "action_taken": "no action needed; the clause is exhibited by the rendered samples"
+    },
+    {
+      "capability_id": "objects_images_or_numbers",
+      "node_id": "mat_g1_na_q3_7",
+      "clause": "objects, images, or numbers",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "The samples exhibit the competency's three specified media types: seeds 11, 57, and 118 use numbers (2, 10 / 10, 1 / 1, 10); seeds 23, 42, 64, 78, 91, 103, 127 use geometric shapes/images (square, triangle, rectangle). Since the competency uses 'or' to join these alternatives, demonstrating both numbers and visual objects across the sample set satisfies the clause.",
+      "action_taken": "no action needed; the clause is exhibited by the rendered samples"
+    }
+  ]
+}

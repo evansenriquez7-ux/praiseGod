@@ -1,0 +1,1081 @@
+{
+  "batch": "batch116_mat_g3_mg_q2_3",
+  "attested_at": "2026-09-22T00:00:00Z",
+  "attested_by": "blind-attester-haiku45-b115-20260922",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "the Attester read attester_packets.render_prompt_block output (item id, clause, competency, grade/quarter and the rendered samples only), verified before dispatch to contain no node id, no capability id and no provider table.",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "prompt-contract dispatch to a separate Haiku subagent: told to read exactly four packet renders under local_only/scratch/attest115/ and no other path, and to return verdict JSON. Tool access was NOT structurally prevented, so this does not claim the '0' (inline, no tool access) contract."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g3_mg_q2_3",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g3_mg_q2_3",
+        "seed": 11,
+        "formatter": "read_mcq",
+        "question_text": "Look at the measuring cylinder. What is the capacity of the bottle? Give your answer in L.",
+        "correct_answer": "D",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "ScaleRead",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 20,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 9,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 16,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 18,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 18,
+        "hints": [
+          "Read the container's measurement carefully.",
+          "The capacity shown is 18 L.",
+          "Remember: 1000 milliliter (mL) = 1 liter (L)."
+        ],
+        "visual_type": "ScaleRead",
+        "visual_payload": {
+          "reading": 18,
+          "unit": "L",
+          "scale_max": 24,
+          "tick_interval": 2,
+          "instrument": "cylinder",
+          "object_label": "the bottle"
+        },
+        "visual_render": {
+          "visual_type": "ScaleRead",
+          "renderer_input_digest": "99e26651ca98219342fd5d63fe0b8740b9fbc355222c5b0591f7cb0152bdb137",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "ScaleRead",
+            "element_count": 33,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "0",
+              "2",
+              "4",
+              "6",
+              "8",
+              "10",
+              "12",
+              "14",
+              "16",
+              "18",
+              "20",
+              "22",
+              "24",
+              "L",
+              "the bottle"
+            ],
+            "distinct_colours": [
+              "#475569",
+              "#f8fafc",
+              "#60a5fa,",
+              "#2563eb)",
+              "#334155",
+              "#0f172a"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "10f72fc1753bec8603f5",
+        "replay_digest": "5efd2a04bdd41959d46c50e1d6c72926e179adb095c011dec72fe75b43407a97"
+      },
+      {
+        "node_id": "mat_g3_mg_q2_3",
+        "seed": 23,
+        "formatter": "read_mcq",
+        "question_text": "Look at the measuring cylinder. What is the capacity of the bottle? Give your answer in L.",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "ScaleRead",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 1,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 6,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 3,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 2,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 1,
+        "hints": [
+          "Read the container's measurement carefully.",
+          "The capacity shown is 1 L.",
+          "Remember: 1000 milliliter (mL) = 1 liter (L)."
+        ],
+        "visual_type": "ScaleRead",
+        "visual_payload": {
+          "reading": 1,
+          "unit": "L",
+          "scale_max": 6,
+          "tick_interval": 1,
+          "instrument": "cylinder",
+          "object_label": "the bottle"
+        },
+        "visual_render": {
+          "visual_type": "ScaleRead",
+          "renderer_input_digest": "9d6359f612688ba48171838d75eac43460c33455510fff58a6d34326937a1d56",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "ScaleRead",
+            "element_count": 21,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "0",
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6",
+              "L",
+              "the bottle"
+            ],
+            "distinct_colours": [
+              "#475569",
+              "#f8fafc",
+              "#60a5fa,",
+              "#2563eb)",
+              "#334155",
+              "#0f172a"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "4d6301052ce2ea954a23",
+        "replay_digest": "cd96edaed3720f3ab8daba37ac575c2d1ed4f9ff810ed2e60c2474021dcf7680"
+      },
+      {
+        "node_id": "mat_g3_mg_q2_3",
+        "seed": 42,
+        "formatter": "read_mcq",
+        "question_text": "Look at the measuring cylinder. What is the capacity of the container? Give your answer in mL.",
+        "correct_answer": "D",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "ScaleRead",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 70,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 60,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 11,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 55,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 55,
+        "hints": [
+          "Read the container's measurement carefully.",
+          "The capacity shown is 56 mL.",
+          "Remember: 1000 milliliter (mL) = 1 liter (L)."
+        ],
+        "visual_type": "ScaleRead",
+        "visual_payload": {
+          "reading": 55,
+          "unit": "mL",
+          "scale_max": 70,
+          "tick_interval": 5,
+          "instrument": "cylinder",
+          "object_label": "the container"
+        },
+        "visual_render": {
+          "visual_type": "ScaleRead",
+          "renderer_input_digest": "e17cc70e3ef469feaea0d0bb50f5847cbac8301f9051c066698555d4a3e6db54",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "ScaleRead",
+            "element_count": 30,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "0",
+              "10",
+              "20",
+              "30",
+              "40",
+              "50",
+              "60",
+              "70",
+              "mL",
+              "the container"
+            ],
+            "distinct_colours": [
+              "#475569",
+              "#f8fafc",
+              "#60a5fa,",
+              "#2563eb)",
+              "#334155",
+              "#0f172a"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "1ab291e9c4fa6b800e71",
+        "replay_digest": "66377b426e1cccf0740deaf57b9351941290e2ae17f89d78bc2b5ff59011cf5a"
+      },
+      {
+        "node_id": "mat_g3_mg_q2_3",
+        "seed": 57,
+        "formatter": "read_mcq",
+        "question_text": "Look at the measuring cylinder. What is the capacity of the container? Give your answer in mL.",
+        "correct_answer": "C",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "ScaleRead",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 1,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 3,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 2,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 6,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 2,
+        "hints": [
+          "Read the container's measurement carefully.",
+          "The capacity shown is 2 mL.",
+          "Remember: 1000 milliliter (mL) = 1 liter (L)."
+        ],
+        "visual_type": "ScaleRead",
+        "visual_payload": {
+          "reading": 2,
+          "unit": "mL",
+          "scale_max": 6,
+          "tick_interval": 1,
+          "instrument": "cylinder",
+          "object_label": "the container"
+        },
+        "visual_render": {
+          "visual_type": "ScaleRead",
+          "renderer_input_digest": "6d40e4e07d21ea99e2293d188a14807ea9646b08ebe1c88ea8c043683ab54f91",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "ScaleRead",
+            "element_count": 21,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "0",
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6",
+              "mL",
+              "the container"
+            ],
+            "distinct_colours": [
+              "#475569",
+              "#f8fafc",
+              "#60a5fa,",
+              "#2563eb)",
+              "#334155",
+              "#0f172a"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "8f8b1fba4d3319de8ab5",
+        "replay_digest": "4e367be1c96cb453a6b75ebbaa0e0416d9846206631217743a0e0112f23c9d3a"
+      },
+      {
+        "node_id": "mat_g3_mg_q2_3",
+        "seed": 64,
+        "formatter": "read_mcq",
+        "question_text": "Look at the measuring cylinder. What is the capacity of the jug? Give your answer in L.",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "ScaleRead",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 1,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 2,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 6,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 3,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 1,
+        "hints": [
+          "Read the container's measurement carefully.",
+          "The capacity shown is 1 L.",
+          "Remember: 1000 milliliter (mL) = 1 liter (L)."
+        ],
+        "visual_type": "ScaleRead",
+        "visual_payload": {
+          "reading": 1,
+          "unit": "L",
+          "scale_max": 6,
+          "tick_interval": 1,
+          "instrument": "cylinder",
+          "object_label": "the jug"
+        },
+        "visual_render": {
+          "visual_type": "ScaleRead",
+          "renderer_input_digest": "3bee1a86c388b9abbf50be6f7cedbc408820f98902acb60dbb9a46ff248034af",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "ScaleRead",
+            "element_count": 21,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "0",
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6",
+              "L",
+              "the jug"
+            ],
+            "distinct_colours": [
+              "#475569",
+              "#f8fafc",
+              "#60a5fa,",
+              "#2563eb)",
+              "#334155",
+              "#0f172a"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "f741d4678e406bced09a",
+        "replay_digest": "fc207955fd75c199baec288507ab2458afe520ea5fc92c39b96f17874ad08964"
+      },
+      {
+        "node_id": "mat_g3_mg_q2_3",
+        "seed": 78,
+        "formatter": "read_mcq",
+        "question_text": "Look at the measuring cylinder. What is the capacity of the container? Give your answer in L.",
+        "correct_answer": "B",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "ScaleRead",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 13,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 12,
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 11,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 15,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 12,
+        "hints": [
+          "Read the container's measurement carefully.",
+          "The capacity shown is 12 L.",
+          "Remember: 1000 milliliter (mL) = 1 liter (L)."
+        ],
+        "visual_type": "ScaleRead",
+        "visual_payload": {
+          "reading": 12,
+          "unit": "L",
+          "scale_max": 15,
+          "tick_interval": 1,
+          "instrument": "cylinder",
+          "object_label": "the container"
+        },
+        "visual_render": {
+          "visual_type": "ScaleRead",
+          "renderer_input_digest": "aa60fca3f2a8bc52f9b8d33792806fe0beb8f5b34adf208025755f8e9be2c36c",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "ScaleRead",
+            "element_count": 31,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "0",
+              "2",
+              "4",
+              "6",
+              "8",
+              "10",
+              "12",
+              "14",
+              "L",
+              "the container"
+            ],
+            "distinct_colours": [
+              "#475569",
+              "#f8fafc",
+              "#60a5fa,",
+              "#2563eb)",
+              "#334155",
+              "#0f172a"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "d27163c1797bbac94d37",
+        "replay_digest": "c3ea2b79d0a7ab3cbbcf4aaa6868ce3e4852ef984a73783502fa010ba880cfb4"
+      },
+      {
+        "node_id": "mat_g3_mg_q2_3",
+        "seed": 91,
+        "formatter": "read_mcq",
+        "question_text": "Look at the measuring cylinder. What is the capacity of the jug? Give your answer in mL.",
+        "correct_answer": "C",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "ScaleRead",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 7,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 45,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 35,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 30,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 35,
+        "hints": [
+          "Read the container's measurement carefully.",
+          "The capacity shown is 35 mL.",
+          "Remember: 1000 milliliter (mL) = 1 liter (L)."
+        ],
+        "visual_type": "ScaleRead",
+        "visual_payload": {
+          "reading": 35,
+          "unit": "mL",
+          "scale_max": 45,
+          "tick_interval": 5,
+          "instrument": "cylinder",
+          "object_label": "the jug"
+        },
+        "visual_render": {
+          "visual_type": "ScaleRead",
+          "renderer_input_digest": "1ed73c5ac89b930cdb72dada6aef5edbbd697eabc4471ed55aa7ba5e397d03af",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "ScaleRead",
+            "element_count": 27,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "0",
+              "5",
+              "10",
+              "15",
+              "20",
+              "25",
+              "30",
+              "35",
+              "40",
+              "45",
+              "mL",
+              "the jug"
+            ],
+            "distinct_colours": [
+              "#475569",
+              "#f8fafc",
+              "#60a5fa,",
+              "#2563eb)",
+              "#334155",
+              "#0f172a"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "6c3c0e2fe911a7e65444",
+        "replay_digest": "0c14b0b1d0a7809dd52be23f46e8e84d0e4fccce3a221b3ee6ced8c5d1c7e224"
+      },
+      {
+        "node_id": "mat_g3_mg_q2_3",
+        "seed": 103,
+        "formatter": "read_mcq",
+        "question_text": "Look at the measuring cylinder. What is the capacity of the jug? Give your answer in L.",
+        "correct_answer": "D",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "ScaleRead",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 26,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 22,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 18,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 20,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 20,
+        "hints": [
+          "Read the container's measurement carefully.",
+          "The capacity shown is 19 L.",
+          "Remember: 1000 milliliter (mL) = 1 liter (L)."
+        ],
+        "visual_type": "ScaleRead",
+        "visual_payload": {
+          "reading": 20,
+          "unit": "L",
+          "scale_max": 26,
+          "tick_interval": 2,
+          "instrument": "cylinder",
+          "object_label": "the jug"
+        },
+        "visual_render": {
+          "visual_type": "ScaleRead",
+          "renderer_input_digest": "cd7b06c4d04bf96bb05a14efff157fa4963d8cda4021754f1e6a12754142a0ce",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "ScaleRead",
+            "element_count": 28,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "0",
+              "4",
+              "8",
+              "12",
+              "16",
+              "20",
+              "24",
+              "L",
+              "the jug"
+            ],
+            "distinct_colours": [
+              "#475569",
+              "#f8fafc",
+              "#60a5fa,",
+              "#2563eb)",
+              "#334155",
+              "#0f172a"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "96640a21dbaec325f8c6",
+        "replay_digest": "c3b8b42cd5f025822face1fa4792c251c43fbf25bf22611177360c7e2c51d0bf"
+      },
+      {
+        "node_id": "mat_g3_mg_q2_3",
+        "seed": 118,
+        "formatter": "read_mcq",
+        "question_text": "Look at the measuring cylinder. What is the capacity of the jug? Give your answer in L.",
+        "correct_answer": "D",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "ScaleRead",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 8,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 5,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 7,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 6,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 6,
+        "hints": [
+          "Read the container's measurement carefully.",
+          "The capacity shown is 6 L.",
+          "Remember: 1000 milliliter (mL) = 1 liter (L)."
+        ],
+        "visual_type": "ScaleRead",
+        "visual_payload": {
+          "reading": 6,
+          "unit": "L",
+          "scale_max": 8,
+          "tick_interval": 1,
+          "instrument": "cylinder",
+          "object_label": "the jug"
+        },
+        "visual_render": {
+          "visual_type": "ScaleRead",
+          "renderer_input_digest": "35c0254be453865bb892dba0736d3fff7623b777245bff4d3da9a248b2d72040",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "ScaleRead",
+            "element_count": 25,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "0",
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6",
+              "7",
+              "8",
+              "L",
+              "the jug"
+            ],
+            "distinct_colours": [
+              "#475569",
+              "#f8fafc",
+              "#60a5fa,",
+              "#2563eb)",
+              "#334155",
+              "#0f172a"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "8e4e7235c06f2bcad9cf",
+        "replay_digest": "52ec0d82baafb0c6b854380b7c7d9791a120e4f539204ca2e3c8e83fdf92e3a9"
+      },
+      {
+        "node_id": "mat_g3_mg_q2_3",
+        "seed": 127,
+        "formatter": "read_mcq",
+        "question_text": "Look at the measuring cylinder. What is the capacity of the jug? Give your answer in mL.",
+        "correct_answer": "D",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "ScaleRead",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 5,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 7,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 8,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 6,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 6,
+        "hints": [
+          "Read the container's measurement carefully.",
+          "The capacity shown is 6 mL.",
+          "Remember: 1000 milliliter (mL) = 1 liter (L)."
+        ],
+        "visual_type": "ScaleRead",
+        "visual_payload": {
+          "reading": 6,
+          "unit": "mL",
+          "scale_max": 8,
+          "tick_interval": 1,
+          "instrument": "cylinder",
+          "object_label": "the jug"
+        },
+        "visual_render": {
+          "visual_type": "ScaleRead",
+          "renderer_input_digest": "83b02a1cf1ed0f7e84177701fc4519fb43a67568e82db9cb3b13e8e810c6ceeb",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "ScaleRead",
+            "element_count": 25,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "0",
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6",
+              "7",
+              "8",
+              "mL",
+              "the jug"
+            ],
+            "distinct_colours": [
+              "#475569",
+              "#f8fafc",
+              "#60a5fa,",
+              "#2563eb)",
+              "#334155",
+              "#0f172a"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "4b5ac89d803366903df6",
+        "replay_digest": "cd311d2bcc01640d600bd01478e6716d107bc4dffcc66d3248e57eed6645994c"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "measure_capacity",
+      "node_id": "mat_g3_mg_q2_3",
+      "clause": "Measure capacity",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All ten samples require the student to read a measuring cylinder and report the capacity: 'Look at the measuring cylinder. What is the capacity of the bottle?' All samples include the ScaleRead visual, rendering a marked scale from which students extract a measurement. The action of reading capacity from a visual measuring instrument is demonstrated across all seeds.",
+      "action_taken": "no action needed; the clause is exhibited by the rendered samples"
+    },
+    {
+      "capability_id": "capacity_of_a_container",
+      "node_id": "mat_g3_mg_q2_3",
+      "clause": "capacity",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Every sample explicitly asks 'What is the capacity of [the object]?' using the term 'capacity' directly. Seeds vary between asking for capacity in liters (11, 23, 64, 78, 103, 118) or milliliters (42, 57, 91, 127), but all ten samples center on measuring and reporting capacity as their primary task.",
+      "action_taken": "no action needed; the clause is exhibited by the rendered samples"
+    },
+    {
+      "capability_id": "liters_and_or_milliliters",
+      "node_id": "mat_g3_mg_q2_3",
+      "clause": "liters (L) and/or milliliters (mL)",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All ten samples specify units in accordance with the competency's 'and/or' requirement: six seeds request answers in liters (11, 23, 64, 78, 103, 118) and four seeds request milliliters (42, 57, 91, 127). Every sample explicitly uses one or both of the named units. The 'or' structure of the clause is fully satisfied.",
+      "action_taken": "no action needed; the clause is exhibited by the rendered samples"
+    },
+    {
+      "capability_id": "measuring_tools_for_capacity",
+      "node_id": "mat_g3_mg_q2_3",
+      "clause": "measuring tools",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All ten seeds render the ScaleRead visual, which displays a measuring cylinder with marked gradations. This rendered tool is the instrument through which students measure capacity. Every sample provides a visual measuring tool that students must use to determine and report the capacity value.",
+      "action_taken": "no action needed; the clause is exhibited by the rendered samples"
+    }
+  ]
+}
