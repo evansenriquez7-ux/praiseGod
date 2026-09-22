@@ -1,16 +1,16 @@
 # Graph Report - ccmed  (2026-09-23)
 
 ## Corpus Check
-- 1186 files · ~2,408,887 words
+- 1186 files · ~2,408,893 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 6219 nodes · 10003 edges · 449 communities (403 shown, 46 thin omitted)
+- 6219 nodes · 10003 edges · 449 communities (402 shown, 47 thin omitted)
 - Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 245 edges (avg confidence: 0.65)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `f070cf3a`
+- Built from commit: `459b72df`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -475,7 +475,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (449 total, 46 thin omitted)
+## Communities (449 total, 47 thin omitted)
 
 ### Community 0 - "Community 0"
 Cohesion: 0.12
@@ -574,8 +574,8 @@ Cohesion: 0.12
 Nodes (16): 1. Logarithmic Ranges (Exponential Growth), 2. Linear Ranges (Constant Growth), Axis Policy: Result-Bound vs. Operand-Bound (2026-07-01), Bridging to the Next Competency (Scalar > 1), Calculation Logic, Core Concepts, Difficulty Dimensions in Practice Generation, How to add a new axis (+8 more)
 
 ### Community 24 - "Community 24"
-Cohesion: 0.08
-Nodes (17): _check_stage_phases(), _parse_contract_section_refs(), _print_hermeticity_banner(), Extract every '§1A'-style reference from docs/pgen_contract.md's rule     table, One scheduled harness stage and what became of it., Execute one scheduled stage behind an exception boundary and a network guard., Every ref a stage declares must be registered to that stage's own phase.      TH, Say what was pinned, so the pin at the top of this module is not a silent defaul (+9 more)
+Cohesion: 0.09
+Nodes (15): _check_stage_phases(), _parse_contract_section_refs(), _print_hermeticity_banner(), Extract every '§1A'-style reference from docs/pgen_contract.md's rule     table, One scheduled harness stage and what became of it., Execute one scheduled stage behind an exception boundary and a network guard., Every ref a stage declares must be registered to that stage's own phase.      TH, Say what was pinned, so the pin at the top of this module is not a silent defaul (+7 more)
 
 ### Community 25 - "Community 25"
 Cohesion: 0.16
@@ -891,7 +891,7 @@ Nodes (25): _generate_addition_examples(), _generate_comparing_examples(), _gene
 
 ### Community 103 - "Community 103"
 Cohesion: 0.03
-Nodes (61): 1. Distractor Non-Determinism Fix in `place_value.py`, 1. Fractions answer-key false positive — `mat_g2_na_q4_0`/`_1`/`_2`, 2026-08-13 — The G1 measure items: a visual for the task, and a size model for the units, 2026-08-14 — "2-digit by 1-digit" bounds two operands, and only one had a key, 2026-08-19 — Unit 3 completion + full `run_all` verification, 2026-08-20 (tick 6) — There is no pytest deadlock, and three tests I broke in tick 3, 2026-08-20 (tick 8) — A dispatch-only tick: coverage 52 → 127, 2026-08-23 — §6G: an attestation must show its work (+53 more)
+Nodes (61): 1. Distractor Non-Determinism Fix in `place_value.py`, 1. Fractions answer-key false positive — `mat_g2_na_q4_0`/`_1`/`_2`, 2026-08-13 — The G1 measure items: a visual for the task, and a size model for the units, 2026-08-14 — "2-digit by 1-digit" bounds two operands, and only one had a key, 2026-08-19 — Unit 3 completion + full `run_all` verification, 2026-08-20 — §5 worker death: a silent unbounded wait in the last gate, 2026-08-20 (tick 6) — There is no pytest deadlock, and three tests I broke in tick 3, 2026-08-20 (tick 8) — A dispatch-only tick: coverage 52 → 127 (+53 more)
 
 ### Community 104 - "Community 104"
 Cohesion: 0.23
@@ -1338,8 +1338,8 @@ Cohesion: 0.33
 Nodes (6): 2026-08-13 — Grade-3 area magnitudes: an area is a multiplication, and the tables are gated (Tick C), Ground truth, read rather than guessed, Protocol 2 — all instances, not just the reported one, Root cause, and a second instance of it, The failing rationales, Verification
 
 ### Community 239 - "RedisDict"
-Cohesion: 0.09
-Nodes (16): _print_stage_ledger(), The declared schedule, and the state each stage actually reached., Print the ledger and return the named failures it produces.      A `scheduled` s, StageLedger, _dial(), The owed work named a PHASE 1 gate. §5 and §6F-§6H remain uncovered, and this, TestPhase1StagesAreGuarded, TestTheControls (+8 more)
+Cohesion: 0.08
+Nodes (19): _print_stage_ledger(), The declared schedule, and the state each stage actually reached., Print the ledger and return the named failures it produces.      A `scheduled` s, StageLedger, _dial(), `phase1_hermetic` (2026-09-16): every Phase 1 stage runs inside the socket guard, The owed work named a PHASE 1 gate. §5 and §6F-§6H remain uncovered, and this, Stand in for the real connect, so an absent guard is visible but harmless. (+11 more)
 
 ### Community 240 - "_combined_interests"
 Cohesion: 0.17
@@ -1348,10 +1348,6 @@ Nodes (16): generate_node_id(), get_competencies_for_grade(), get_competency_by_
 ### Community 241 - "_gen_g2_na_q1_numbers"
 Cohesion: 0.33
 Nodes (6): 2026-08-12 — Tick C: money "determine the value" nodes — operation leak, sub-case rotation, coin/bill boundary, Before / after, Fresh blind re-review (reviewer never saw the fix), The failing rationales, Three defects, all found by following the binding, Why centavo coins were not done here
-
-### Community 242 - "duplicate_registry_keys.py"
-Cohesion: 0.22
-Nodes (6): get_matatag_difficulty_axes(), get_matatag_lab_interests(), get_matatag_nodes(), Return the difficulty axes for a specific MATATAG node.      Axes are specific t, Return ALL available interest themes for word problem personalization., RedisDict
 
 ### Community 243 - "Ground Rule 2: Spec Corrections & Baseline Fixes"
 Cohesion: 0.22
@@ -1490,8 +1486,8 @@ Cohesion: 0.27
 Nodes (10): _build_traps(), format_scale_read(), Random, fmt_scale_read.py — ScaleRead visual formatter (mass and capacity)  The mass/cap, Up to 3 distractors, each a real misreading of this instrument., Ask for the reading the drawing shows.      The measured quantity is vocab-gated, Build a ScaleRead FormattedProblem from a QuestionContext.      Pulls the readin, Choose (reading, tick_interval, scale_max) so the reading is EXACTLY readable. (+2 more)
 
 ### Community 277 - "_combined_interests"
-Cohesion: 0.08
-Nodes (31): CompetencyConfiguration, _combined_interests(), _generate_lab_v2_student_problem(), get_intro_content(), get_intro_status(), get_matatag_progress(), get_node_config(), LabV2ConfigSaveRequest (+23 more)
+Cohesion: 0.06
+Nodes (37): CompetencyConfiguration, _combined_interests(), _generate_lab_v2_student_problem(), get_intro_content(), get_intro_status(), get_matatag_difficulty_axes(), get_matatag_lab_interests(), get_matatag_nodes() (+29 more)
 
 ### Community 278 - "test_6g_is_clean_on_the_real_tree"
 Cohesion: 0.22
@@ -1614,8 +1610,8 @@ Cohesion: 0.27
 Nodes (10): _close_pair(), _compare_symbol(), generate_hints(), generate_params(), Any, Random, DNA: Comparing and Ordering Numbers (Number & Algebra)  Covers MATATAG grades 1–, Return 2–4 step-by-step hints for a comparison/ordering problem. (+2 more)
 
 ### Community 309 - "_combined_interests"
-Cohesion: 0.11
-Nodes (16): hermetic_database(), HermeticNetworkError, no_network(), An isolated, network-free database for harness checks that must exercise real ro, Bind `backend.app.database` to a throwaway SQLite file for the duration.      Yi, A hermetic block attempted an outbound network connection., Any outbound non-loopback connection inside this block raises by name., The isolated database fixture, pinned in both directions.  `H-01` was not "§10 c (+8 more)
+Cohesion: 0.13
+Nodes (13): hermetic_database(), HermeticNetworkError, no_network(), An isolated, network-free database for harness checks that must exercise real ro, Bind `backend.app.database` to a throwaway SQLite file for the duration.      Yi, A hermetic block attempted an outbound network connection., Any outbound non-loopback connection inside this block raises by name., The isolated database fixture, pinned in both directions.  `H-01` was not "§10 c (+5 more)
 
 ### Community 310 - "fmt_numeric_input.py"
 Cohesion: 0.40
@@ -1874,8 +1870,8 @@ Cohesion: 0.33
 Nodes (6): Adversarial review pass — 2026-07-30, Deliberately not added, Fixed, Found and left open, Ground Rule 2 disclosure, Re-reviews filed
 
 ### Community 395 - "test_bounds_length_is_never_the_discriminator"
-Cohesion: 0.50
-Nodes (4): 2026-08-20 — §5 worker death: a silent unbounded wait in the last gate, Proved by killing a worker mid-run, The guard, Two related findings recorded while diagnosing
+Cohesion: 0.40
+Nodes (5): 2026-09-22 — closeout batch: renderer evidence correction, §1M operator doc, batch116, Definition of Done — expected tracked failure, verbatim stage result, Prevalence filing (`batch116`), Re-proof evidence, Source corrections and operator coverage
 
 ### Community 396 - "TestLogScaleDeclarations"
 Cohesion: 0.40
@@ -1998,8 +1994,8 @@ Cohesion: 0.40
 Nodes (5): 2026-08-14 — "or vice versa" names two directions; the node was bound to one, Step 1 said prove it doesn't already exist, and it did, The failing rationale, The other two pictograph FAILs, diagnosed but not fixed here, Verification
 
 ### Community 431 - "_combined_interests"
-Cohesion: 0.40
-Nodes (5): 2026-09-16 — owner decision: the harness pins its own database URL, Still owed, The decision, and a correction to how it was framed, Verification, What shipped
+Cohesion: 0.50
+Nodes (4): A wrong hypothesis, withdrawn rather than shipped, The sweep, Then reproduced properly, by replaying the matrix's own sweep, Tick 22 — 2026-08-22 — the range fix lands, and a third zero-factor path
 
 ### Community 432 - "test_generic_textual_formatter_is_not_a_provider"
 Cohesion: 0.40
@@ -2024,7 +2020,7 @@ Nodes (4): 2026-09-22 — REVIEW OF THE CLOSEOUT BATCH, and the two copies it co
 ## Knowledge Gaps
 - **2187 isolated node(s):** `graphify`, `PackageDescription`, `Foundation`, `PathKit`, `graphify-mcp` (+2182 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **46 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **47 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_

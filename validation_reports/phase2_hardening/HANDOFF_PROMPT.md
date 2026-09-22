@@ -73,7 +73,8 @@ PYTHONPATH=. .venv/bin/python tests/tree_state.py --complete --note "where you g
 ## ⚠ 2026-09-23 (latest) — RULING-9 RE-DISPATCH COMPLETE. START HERE.
 
 Tree is **CERTIFIED** at `dfae9bbb7a1398d7`; all four digest-bound artifact families remain
-fresh. `H-06` remains OPEN. The campaign moved no input digest and owes no re-proof.
+fresh. `H-06` is `released @ 459b72df`, still OPEN. The campaign moved no input digest and owes
+no re-proof.
 
 The capability corpus is now single-standard: **151 nodes / 767 `(node, capability)` pairs**
 were re-judged under the prevalence standard in **34 dispatches (`batch117`–`batch150`) by 25
