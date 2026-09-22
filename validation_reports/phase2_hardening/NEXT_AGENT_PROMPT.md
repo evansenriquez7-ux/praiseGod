@@ -1,458 +1,398 @@
-# Task prompt — close out the 2026-09-22 session's owed fixes
+# Task prompt — continue the Phase 2 hardening (fresh session)
 
-You are working in the repository at `/Users/enrichmentcap/Documents/antigravity/ccmed`.
-Your job is a **closeout batch**: apply the fixes a previous session landed but deliberately
-deferred, then re-prove the tree, so the next Phase 2 hardening session starts from a clean,
-certified, internally-consistent state.
+You are working in `/Users/enrichmentcap/Documents/antigravity/ccmed`, on the Adaptive K-12
+Mastery Engine's practice-problem-generator hardening. The tree is **CERTIFIED** and the
+re-proof chain is current. Your job is to move `run_all` toward exiting 0 — and to do it in an
+order that does not waste days of work.
 
-This is not exploratory work. The decisions are already made and the owner has already ruled.
-Your job is to execute them exactly, verify by running things, and report honestly.
+**The previous prompt in this file was a closeout batch. It is DONE. This supersedes it.**
 
 ---
 
 ## 0. Ground rules you may not break
 
-Read `CLAUDE.md` / `AGENTS.md` in the repo root first. The ones that will bite you here:
+Read `CLAUDE.md` / `AGENTS.md` first — the Scaling Mandate, Engineering Protocols and Definition
+of Done are binding. The ones that will bite you here:
 
 1. **Verification is execution.** Never report something fixed without running it and showing
-   the verbatim output. A prediction phrased as a confirmation is a lie. Every claim in your
-   final report needs the command that produced it.
-2. **Never weaken a check to make it pass.** If a gate goes red, the bug is in the pipeline.
-3. **Fail fast.** No bare `except`, no `|| true`, no warn-and-continue.
-4. **You never author an Attester or Reviewer verdict.** Blind evidence comes from a dispatched
-   agent that has neither the answer key nor your context. If a step seems to require you to
-   judge rendered student content yourself, **stop and report** — you have misread the step.
+   verbatim output. A prediction phrased as a confirmation is a lie.
+2. **Never weaken a check to make it pass.** If a gate is red, the bug is in the pipeline. The
+   only exception is documented ground-truth error, reported with node id and justification.
+3. **You never author an Attester or Reviewer verdict.** Blind evidence comes from a dispatched
+   agent with neither the answer key nor your context. If a step seems to need you to judge
+   rendered student content yourself, **stop — you have misread it.**
+4. **Prove a check by executing a planted violation**, not by reading the validator.
 5. **Leave every limitation named in writing** — docstring, `docs/pgen_contract.md` row, and
-   the evidence log.
+   `validation_reports/HARDENING_EVIDENCE.md`.
+6. **Content Rule 4 governs every content decision.** MATATAG is the only source of what content
+   *becomes*. If a competency names a verb, model or range the pipeline cannot produce, building
+   it **is the fix** and is not scope creep. If the competency does not name it, building it is
+   invention and is forbidden. **Cite the competency clause** in the commit and the evidence log.
 
-**Invocation:** always `PYTHONPATH=. .venv/bin/python …`. There is no usable bare `python` and
-no `timeout` on this host.
+**Invocation:** always `PYTHONPATH=. .venv/bin/python …`. There is no usable bare `python` and no
+`timeout` on this host. The fast unit suite takes **11 minutes**, not the 35 seconds an old note
+claims; pass `-m "not slow"` explicitly if you run it directly.
 
 ---
 
 ## 1. Establish state before touching anything
 
 ```sh
-PYTHONPATH=. .venv/bin/python tests/tree_state.py          # expect: PASS ... CERTIFIED
-PYTHONPATH=. .venv/bin/python tests/hardening_status.py    # expect: PASS ... 10 H-row(s) valid
+PYTHONPATH=. .venv/bin/python tests/tree_state.py          # exit 0 only when CERTIFIED
+PYTHONPATH=. .venv/bin/python tests/hardening_status.py
 ```
 
-Expected reading:
+Expected:
 
 ```
 PASS tree_state: CERTIFIED
-  live input digest : 124ee1ca14d20526
+  live input digest : dfae9bbb7a1398d7
   worktree          : clean
   mutation_proofs         fresh  152 file(s)
   release_shards          fresh  6 file(s)
   obligation_benchmark    fresh  1 file(s)
   frontend_static_render  fresh  1 file(s)
+
+PASS hardening_status: 10 H-row(s) valid — 3 closed, 6 open, 1 out_of_scope
 ```
 
-**If either command disagrees with this, believe the command, not this file**, and say so in
-your report before continuing.
+**If either disagrees, believe the command, not this file**, and say so before continuing.
 
-Then claim the work-lock and record your intent:
+Claim the lock and record intent (`H-06`'s `owner` currently reads `released @ 505baf4e`; change
+**only** that one line — a whole-file `json.dumps` renormalises escapes across rows you do not
+own and has already cost one session 16 lines of collateral churn):
 
 ```sh
-# In validation_reports/phase2_hardening/hardening_status.json, H-06's "owner" currently
-# reads "released @ d86c9508". Change ONLY that one line to your own session id.
-PYTHONPATH=. .venv/bin/python tests/hardening_status.py    # must still PASS
-
-PYTHONPATH=. .venv/bin/python tests/tree_state.py --begin batch \
-    --session "<your-session-id>" --note "closeout: 3 string corrections + §1M operator doc + batch116 prevalence filing"
+PYTHONPATH=. .venv/bin/python tests/tree_state.py --begin campaign \
+    --session "<your-session-id>" --note "what you are doing"
+# and on completion:
+PYTHONPATH=. .venv/bin/python tests/tree_state.py --complete --note "where you got to"
 ```
 
-**Edit that ledger file SURGICALLY.** Do not round-trip it through `json.dumps` over the whole
-file — that renormalises `§`/`—` escapes across rows you do not own and produced 16 lines of
-collateral churn for a previous session. After editing, `git diff --numstat` must show exactly
-the lines you meant.
+Use `--begin campaign` for dispatch work (no re-proof owed) and `--begin batch` for source work.
 
 ---
 
-## 2. What you are fixing, and why each was deferred
+## 2. Measured state, and the ONE thing that decides your order
 
-A session on 2026-09-22 landed two owner-authorised source fixes and ran the full re-proof
-chain. Along the way it discovered that one of its own evidence claims was overstated. It did
-**not** correct that claim, because the offending text lives in digest-bound files and editing
-a comment would have invalidated a 152-record mutation corpus and six release shards that had
-just cost ~3.4 hours to prove. That deferral was deliberate and correct. You are the batch that
-pays it, at the START of a batch rather than the end.
+`run_all` exits 1. Three stages are red:
 
-### The substance of the correction
-
-The renderer concurrency defect in `tests/frontend_renderer.py` was real and is fixed. It was
-originally justified by **two** measured symptoms:
-
-* **§6F reported 55 findings under concurrent load on a tree that had 61** (three clean runs
-  all reported 61). This one is real and remains the evidence for the fix.
-* **"§5 reported 1253 where it has 1252."** This one was **misattributed.** It is not a
-  concurrency effect at all. `run_all._stage_judgment_reviews_5` (`run_all.py:760-764`) calls
-  the module and then appends one aggregate finding that the module's own CLI never emits:
-
-  ```python
-  judgment_errors = validate_judgment.validate_judgment_reviews(fail_fast=fail_fast)
-  v = validate_judgment.summarize_verdicts()
-  if v["FAIL"] > 0 or v["CONCERN"] > 0:
-      judgment_errors.append(f"Unresolved judgment verdicts remain across {v['reviewed']} nodes: ...")
-  ```
-
-  So 1252 (module) + 1 (rollup) = 1253 (stage). Both numbers are correct for their own entry
-  point. Measured directly, nothing running: `module 1252`, `reviewed=151 PASS=14 CONCERN=93
-  FAIL=44`, stage 1253.
-
-Three digest-bound files still carry the overstated sentence. You are correcting all three.
-
----
-
-## 3. Source batch — do ALL of it before any re-proof
-
-### 3a. `tests/frontend_renderer.py` (module docstring, around line 18-21)
-
-Replace exactly:
-
-```
-    run attached the other run's visual evidence to its own samples. Measured cost: §6F
-    reported 55 findings on a tree that had 61, and §5 reported 1253 where it has 1252. No
-    crash, no warning, two corrupted figures in opposite directions.
-```
-
-with:
-
-```
-    run attached the other run's visual evidence to its own samples. Measured cost: §6F
-    reported 55 findings under concurrent load on a tree that had 61, against 61 on three
-    clean runs. No crash and no warning.
-
-    CORRECTED 2026-09-22: an earlier draft of this docstring also cited "§5 reported 1253
-    where it has 1252" as a second symptom. That figure was MISATTRIBUTED and is not this
-    defect. `run_all._stage_judgment_reviews_5` appends one aggregate finding the module's
-    own CLI never emits, so 1252 (module) and 1253 (stage) are both correct for their entry
-    point. Quote the entry point alongside any §5 figure.
-```
-
-### 3b. `tests/mutation_harness.py` (the `renderer_case_id_omits_node_id` description, ~line 1950)
-
-Replace exactly:
-
-```
-            "Measured cost before the fix: §6F reported 55 findings on a tree that had "
-            "61, and §5 reported 1253 where it has 1252. Deliberately NOT aimed at the "
-            "loud RuntimeError -- a plant that only trips that guard proves nothing new."
-```
-
-with:
-
-```
-            "Measured cost before the fix: §6F reported 55 findings under concurrent load "
-            "on a tree that had 61, against 61 on three clean runs. (A §5 figure was also "
-            "cited originally and was misattributed -- see the module docstring.) "
-            "Deliberately NOT aimed at the "
-            "loud RuntimeError -- a plant that only trips that guard proves nothing new."
-```
-
-### 3c. `docs/pgen_contract.md` (line 61, the renderer row)
-
-Replace exactly:
-
-```
-**Measured cost, in both directions and with no crash: §6F reported 55 findings on a tree that had 61, and §5 reported 1253 where it has 1252.**
-```
-
-with:
-
-```
-**Measured cost, with no crash: §6F reported 55 findings under concurrent load on a tree that had 61, against 61 on three clean runs. CORRECTED 2026-09-22 — a §5 figure of 1253-against-1252 was originally cited here as a second symptom and was MISATTRIBUTED: `run_all`'s §5 stage appends one aggregate finding the module's own CLI never emits, so both numbers are correct for their entry point.**
-```
-
-### 3d. `docs/testing_pipeline.md` — document `§1M`
-
-**Read this before acting, because the previous session first got this wrong and corrected
-itself.** `operator_doc_covers_registry` reports **40/41**. The single unnamed ref is **`§1M`**,
-NOT the new renderer row, and the gap **predates** the 2026-09-22 batch — there were already 41
-registry refs before it. Verify for yourself rather than taking my word:
-
-```sh
-PYTHONPATH=. .venv/bin/python -c "
-from backend.app.practice_gen.validation import run_all as ra
-from pathlib import Path
-refs=set(ra.CONTRACT_CHECKS)
-text=Path('docs/testing_pipeline.md').read_text(encoding='utf-8')
-named={r for r in refs if r in text}
-print(len(named),'/',len(refs),'| NOT named:',sorted(refs-named))
-"
-```
-
-`§1M` is the dangling-referent stage added 2026-09-21: **a stem that points at a display must
-be served with one.** Add a short operator-facing paragraph describing it, in the same voice and
-level of detail as the neighbouring check descriptions in that file. Name its limitation
-honestly, because it is already named elsewhere and a doc that omits it is how the next reader
-stops looking: **§1M's deixis pattern list is CLOSED** (a stem that points in wording nobody has
-seen is not caught, and the pattern count prints with the pass line so the hole's size is a
-number); it **cannot tell whether the drawn visual is the RIGHT one**; and it **reads stems, not
-hints**, so a display the pupil needs but the stem never mentions is invisible to it.
-
-This check is a **floor of 12, deliberately not equality** (`run_all.py:1051-1053`) —
-`testing_pipeline.md` is prose explaining a subset. So this is documentation debt, not a gate
-failure. Do not pad the file to chase 41/41.
-
-### 3e. Sanity-check the source batch
-
-```sh
-PYTHONPATH=. .venv/bin/python -c "
-from backend.app.practice_gen.validation import run_all as ra
-refs = ra._parse_contract_section_refs()
-print('doc refs not in registry:', sorted(r for r in refs if r not in ra.CONTRACT_CHECKS) or 'NONE')
-print('registry keys not in doc:', sorted(k for k in ra.CONTRACT_CHECKS if k not in refs) or 'NONE')
-"
-```
-Both must print `NONE`.
-
-**Commit the source batch now**, before the attestation work, so the chain's "benchmark after
-the last source commit" rule is easy to satisfy.
-
----
-
-## 4. Attestation — file `batch116`, and do NOT judge anything yourself
-
-### The ruling you are implementing
-
-**Owner ruling 9 (2026-09-22): prevalence is now part of the Attester standard.** An Attester
-must weigh HOW OFTEN a clause is exhibited across the samples shown, not merely whether any one
-sample exhibits it. The owner has since directed that this be applied to the four nodes touched
-on 2026-09-22.
-
-Measured basis: on the same 18 clauses, same packets, same Haiku model, the only variable being
-whether the prompt asked for prevalence — prevalence-weighed returned 6 NOT_PROVIDED, neutral
-returned 2.
-
-### Owner ruling 10 (2026-09-22) — the dispatch model for THIS agent
-
-**Owner ruling 4 said "Haiku subagents for ALL agents reviewing sample pg output."** That was
-written for a Claude-hosted session, and its purpose was cost and rate-limit safety: a wave of
-8 Opus dispatches once hit the session rate limit and killed 14 agents mid-flight.
-
-**Ruling 10 amends it for this agent: use `gpt-terra` light-thinking subagents for every blind
-dispatch you make.** The principle is unchanged — a cheap, separate, blind judge — only the
-model name differs, because you are not running on Claude.
-
-**What does NOT change, and is not negotiable:**
-
-* **You still never author a verdict.** Dispatch, or stop.
-* **The record must name the model that ACTUALLY judged.** `attested_by` is what makes §6H
-  attester plurality and §5 reviewer plurality checkable at all. Writing `haiku` on a
-  `gpt-terra` verdict — or the reverse — is a false evidentiary claim.
-* **The reviewer identity is assigned by the DISPATCHER**, never self-declared by the judge. On
-  2026-09-10 three independently dispatched blind agents given the same prompt all converged on
-  variations of one self-chosen name, which would have silently collapsed plurality.
-* **Keep concurrency modest**, for the same reason ruling 4 existed.
-
-**CONSEQUENCE YOU MUST CARRY INTO YOUR HANDOFF — this is a second instrument variable.** The
-741 verdicts already in `validation_reports/attestation/` were judged by Claude models. Any
-`gpt-terra` verdict you add is a different rater *family*, not merely a different rater. The
-measured 88.1% inter-rater agreement (76.5% on the hardest batch) was **Haiku-against-Haiku**
-and does **not** transfer across families — cross-family agreement is unmeasured.
-
-That matters because this session already found one instrument change masquerading as a content
-finding: a prompt that asked for prevalence flipped 6 of 18 clauses that two independent raters
-had each passed. A model-family change is the same class of variable. So:
-
-* **Do not read a `gpt-terra` NOT_PROVIDED against a Claude-era PROVIDED as a regression.** It
-  may be either a genuine finding or a family effect, and nothing currently distinguishes them.
-* **Say so plainly in your handoff**, alongside the ruling-9 mixed-standard warning. The two
-  compound: after this batch the corpus can differ in both *standard* and *rater family*.
-* If anyone wants that separated, the clean experiment is the same shape as the ruling-5
-  control — same prompt, same packets, vary only the family — and it is **not** your batch.
-
-### What you file, and why you are not dispatching
-
-**Both sets of verdicts already exist on disk and were earned by a genuine blind Haiku
-Attester** (identity `blind-attester-haiku45-b115-20260922`, ruling 4 compliant):
-
-| file | standard | use |
+| stage | count | nature |
 |---|---|---|
-| `local_only/scratch/attest115/<node>.verdicts.json` | **prevalence-weighed** | **FILE THESE** |
-| `local_only/scratch/attest115/<node>.neutral.verdicts.json` | neutral (superseded) | already filed as `batch115` |
+| `capability_phase2` | **57** CONTRADICTED (36 nodes) | content debt — source work |
+| `judgment_reviews_5` | **1252** module / **1253** stage | 151 owed blind re-reviews — dispatch work |
+| `assertion_coverage_8` | 3 in 1 family | downstream; unfixable by re-running |
 
-for the four nodes `mat_g1_na_q3_7`, `mat_g2_mg_q2_0`, `mat_g2_mg_q2_2`, `mat_g3_mg_q2_3`.
+Everything else passes: Phase 1 at its floor of 5, corpus 149/152, six shards 0 failures,
+operator coverage 41/41, census `nodes=151 unit_tests=797 mutations=152`.
 
-The prevalence verdicts were returned in one dispatch whose item ids collided across nodes
-(`attester_packets.py` numbers items per invocation, so four nodes each produced `item_001` —
-a real, still-unguarded trap). They were split per node by a **positional join that was verified
-exact**, position by position, against the packet order. Re-verify before filing:
+> **Always quote the ENTRY POINT with a §5 figure.** `validate_judgment` standalone reports 1252;
+> the `run_all` stage reports 1253, because `run_all.py:760-764` appends one aggregate rollup the
+> module's CLI never emits. Both are correct. This is **not** concurrency pollution — an earlier
+> session diagnosed it as such and wrote that into the plan as settled fact. Do not re-open it.
 
-```sh
-PYTHONPATH=. .venv/bin/python - <<'PY'
-import json, glob
-from pathlib import Path
-for f in sorted(glob.glob("local_only/scratch/attest115/*.packets.json")):
-    node = Path(f).name.split(".")[0]
-    blob = json.load(open(f)); packets = blob["packets"] if isinstance(blob, dict) else blob
-    verdicts = json.load(open(f"local_only/scratch/attest115/{node}.verdicts.json"))
-    assert len(packets) == len(verdicts), (node, len(packets), len(verdicts))
-    for p, v in zip(packets, verdicts):
-        assert p["item"] == v["item"], (node, p["item"], v["item"])
-    print(f"{node:18s} {len(packets)} items, join OK, "
-          f"{sum(1 for v in verdicts if v['verdict']=='PROVIDED')} PROVIDED")
-PY
-```
+### ⚠ THE 57 IS A TWO-INSTRUMENT NUMBER. THIS DETERMINES YOUR ORDER.
 
-**If those scratch files are missing or the join assertion fails, STOP.** Do not reconstruct
-verdicts and do not write your own. A fresh blind dispatch is then required, and under **owner
-ruling 10** (below) it goes to a **`gpt-terra` light-thinking subagent** — given per-node prompt
-files rendered by `tests/attester_packets.render_prompt_block`, with a prompt that states the
-prevalence standard and the medium test **without encoding the answer** (owner ruling 1).
+**Owner ruling 9 made prevalence part of the Attester standard** — a verdict must weigh HOW OFTEN
+a clause is exhibited across the samples shown, not merely whether any one sample exhibits it.
 
-Name that dispatch's identity for the model that actually judged, e.g.
-`blind-attester-gpt-terra-light-<batch>-<YYYYMMDD>`. **Never label a `gpt-terra` verdict as
-Haiku or vice versa** — §6H attester plurality and §5 reviewer plurality are only checkable if
-the record is truthful about who made the verdict, and a mislabelled identity is a false
-evidentiary claim, not a cosmetic slip.
+Only **18 of ~741** filed verdicts were judged under that standard (`batch116`, on
+`mat_g1_na_q3_7`, `mat_g2_mg_q2_0`, `mat_g2_mg_q2_2`, `mat_g3_mg_q2_3`). **The rest were judged
+on the superseded neutral standard.**
 
-### Filing
+The effect is large and measured. On the same 18 clauses, same packets, same model, varying only
+whether the prompt asked for prevalence:
 
-Batch prefix must sort **after** `batch115` — use `batch116`. Records resolve last-file-wins
-over a sorted glob.
+| prompt | PROVIDED | NOT_PROVIDED |
+|---|---|---|
+| prevalence weighed | 12 | **6** |
+| neutral (what ~723 verdicts used) | 16 | **2** |
 
-```sh
-TOOLUSES="prompt-contract dispatch to a separate Haiku subagent: told to read exactly four packet renders under local_only/scratch/attest115/ and no other path, and to return verdict JSON. Tool access was NOT structurally prevented, so this does not claim the '0' (inline, no tool access) contract."
-DELIVERY="the Attester read attester_packets.render_prompt_block output (item id, clause, competency, grade/quarter and the rendered samples only), verified before dispatch to contain no node id, no capability id and no provider table."
+All six clauses the prevalence prompt failed had been ruled PROVIDED by **two independent raters
+each**. So a third of the clauses moved on an instrument change alone.
 
-PYTHONPATH=. .venv/bin/python -m tests.attester_file \
-  --packets local_only/scratch/attest115/<node>.packets.json \
-  --key     local_only/scratch/attest115/<node>.key.json \
-  --verdicts local_only/scratch/attest115/<node>.verdicts.json \
-  --batch-prefix batch116 --attested-at 2026-09-22T00:00:00Z \
-  --attested-by blind-attester-haiku45-b115-20260922 \
-  --action-provided "no action needed; the clause is exhibited by the rendered samples" \
-  --actions <actions.json>   # REQUIRED for every NOT_PROVIDED item \
-  --tool-uses "$TOOLUSES" --samples-delivery "$DELIVERY"
-```
-
-Every `NOT_PROVIDED` needs an `action_taken`. Write them to say what is true: **the finding is
-recorded and NOT acted on**, because the reproducibility rule (88.1% inter-rater agreement,
-76.5% on the hardest batch) forbids committing engineering effort to a lone CONTRADICTED before
-a second independent dispatch confirms it. Do not build artifacts or delete provider entries for
-these.
-
-### Then measure, ALONE
-
-```sh
-PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_capability --phase 2
-```
-
-**EXPECT THE COUNT TO RISE — from 53 to roughly 57.** That is the ruling working, not a
-regression. A count that rises because the instrument got sharper is progress. Record the exact
-number and its composition; do not tune anything to bring it back down.
-
-Note: attestation records live outside `INPUT_ROOTS`, so **this step costs no re-proof.**
+**Therefore: DO NOT START CONTENT WORK.** Building a formatter for a CONTRADICTED finding earned
+on the superseded standard is days of work aimed at a number that is about to move — in both
+directions. Some current findings will clear; some current PROVIDEDs will fail. **Re-judge the
+corpus first, then build against what survives.**
 
 ---
 
-## 5. The re-proof chain — source work is done, now pay it once
+## 3. YOUR JOB, in priority order
 
-Order matters. Each step's trap is named because it has cost a previous session real time.
+### ▶ PRIORITY 1 — the ruling-9 re-dispatch campaign. Costs NO re-proof. Do this first.
+
+Re-judge the attestation corpus under the prevalence standard so `capability_phase2` becomes a
+one-instrument number.
+
+* **Scope:** 151 nodes, **767** `(node, capability)` pairs.
+* **Caps:** ≤25 clause items per dispatch (§6G); ≤25 nodes per Attester identity (§6H). So
+  roughly **31 dispatches over ≥7 identities** for one clean round.
+* **Cost:** `validation_reports/attestation/` is **outside** `INPUT_ROOTS`, so a whole campaign
+  moves no digest and owes **no chain**. Verify that with `input_digest()` rather than assuming.
+* **Batch prefix must sort AFTER `batch116`** — records resolve last-file-wins over a sorted
+  glob. Start at `batch117`.
+* **EXPECT THE COUNT TO RISE.** A count that rises because the instrument got sharper is
+  progress, not regression. Do not tune anything to bring it down.
+
+**Machinery — do not hand-assemble a record:**
 
 ```sh
-# 1. Anchor scan. Two seconds here versus a fifty-minute abort at 54/152.
+# build the blind half and the key it must not see, ONE NODE PER FILE
+PYTHONPATH=. .venv/bin/python -m tests.attester_packets --node <node_id> \
+    --packets local_only/scratch/attest117/<node_id>.packets.json \
+    --key     local_only/scratch/attest117/<node_id>.key.json
+
+# render the Attester-facing text VERBATIM (never retype a stem)
+PYTHONPATH=. .venv/bin/python -c "
+import json; from tests.attester_packets import render_prompt_block
+b=json.load(open('local_only/scratch/attest117/<node_id>.packets.json'))
+print(render_prompt_block(b['packets'] if isinstance(b,dict) else b))" \
+    > local_only/scratch/attest117/<node_id>.prompt.txt
+
+# join returned verdicts to the key mechanically
+PYTHONPATH=. .venv/bin/python -m tests.attester_file \
+    --packets … --key … --verdicts … --batch-prefix batch117 \
+    --attested-at <ISO> --attested-by <dispatcher-assigned identity> \
+    --action-provided "…" --actions <json> --tool-uses "…" --samples-delivery "…"
+```
+
+**⚠ ONE PACKET FILE PER NODE, ALWAYS.** `attester_packets.py` numbers items **per invocation**,
+so concatenating several nodes into one prompt mints `item_001` several times and the join
+becomes ambiguous. This is unguarded and has already caught one session out. If you dispatch
+several nodes together, key the returned JSON by node filename so ids never collide.
+
+### ▶ PRIORITY 2 — the §5 blind judgment re-reviews. Also NO re-proof. Largest queue.
+
+All 151 filed reviews are v1 and unadjudicable; the v1→v2 migration was refused as impossible in
+principle (v2 demands per-sample verdicts a v1 reviewer was never asked for, so populating them
+would mean authoring judgments nobody gave). `validation_reports/judgment/` is outside the
+fingerprint, so this campaign also owes no chain.
+
+**It is 7 dispatches, not 33** — but each is far heavier per node: a §5 review owes **6 findings
+plus 4 per-sample assessments** for every node, where a §6 verdict owed one answer per clause.
+
+```sh
+PYTHONPATH=. .venv/bin/python -m tests.judgment_batches --plan
+PYTHONPATH=. .venv/bin/python -m tests.judgment_batches --batch 3 \
+    --blind local_only/scratch/review/b3.txt --skeleton-dir local_only/scratch/review/b3/
+PYTHONPATH=. .venv/bin/python -m tests.file_reviews --batch 3 --verdicts <reply.json> \
+    --reviewed-by <dispatcher-assigned identity> --date <ISO> \
+    --skeleton-dir local_only/scratch/review/b3/
+```
+
+Required per node: `competency_fulfillment`, `comprehensive_coverage`, `cognitive_capacity`,
+`variant_comprehensiveness`, `competency_alignment`, `scale_appropriateness`, plus per sample
+`mathematical_validity`, `contextual_logical_validity`, `ambiguity`, `learner_facing_clarity`.
+Schema v2 only. ≤25 nodes per reviewer identity.
+
+**⚠ TWO §5-ONLY RULES, and one is a trap that PASSES:**
+
+* **File the samples from the DISPATCH-TIME skeleton (`--skeleton-dir`), never a rebuild at
+  filing time.** `file_reviews.py`'s first version rebuilt the packet when filing — which sounds
+  stricter and is the one mistake that cannot be detected afterwards. A generator fix landing
+  between dispatch and filing (the NORMAL case) pairs the reviewer's verdicts with samples it
+  never saw, and §5 freshness **PASSES**, because the samples really are fresh. That is a
+  fabricated review with a clean bill of health, produced by the tool meant to prevent it.
+* **The reviewer identity is assigned by the DISPATCHER.** Measured 2026-09-10: three
+  independently dispatched blind agents given the same prompt all converged on variations of one
+  self-chosen name, which would silently collapse §5 reviewer plurality and §6H attester
+  plurality alike. A mismatched reply is refused.
+
+### ▶ PRIORITY 3 — content debt. ONLY after Priority 1. Costs the full ~3.4h chain.
+
+**57 findings across 36 nodes.** Highest-count nodes today (re-derive after Priority 1 — this
+list WILL change): `mat_g3_na_q3_1`, `mat_g2_na_q4_3`, `mat_g2_na_q3_1`, `mat_g2_mg_q4_4`,
+`mat_g2_mg_q2_0` at 3 each.
+
+For each finding: **build the artifact the clause names, or delete the provider entry.** Content
+Rule 4 decides which, and you must cite the competency clause either way.
+
+* **`draw`-verb findings require a real visual formatter** (owner ruling 3). A multiple-choice
+  question *about* drawing does not satisfy a competency that says draw.
+* **A clause naming a medium:** decide from the competency's grammar which role it plays — the
+  thing the learner must work IN (*illustrate/represent/model/draw … using X*) must actually be
+  rendered; a delivery mode or story context (*given orally or in pictures*) can be satisfied by
+  a worded context. Ambiguous → judge on the stricter reading and say so (owner ruling 1).
+* **Never commit engineering effort to a lone CONTRADICTED.** Confirm with one more independent
+  dispatch first. Inter-rater agreement is **88.1% overall, 76.5% on the hardest batch**. One
+  dispatch costs minutes; a formatter costs days.
+
+**BATCH ALL SOURCE WORK AND PAY THE CHAIN ONCE.** Order at §5 below.
+
+---
+
+## 4. Dispatch rules — non-negotiable
+
+* **Owner ruling 10: use `gpt-terra` light-thinking subagents** for every blind dispatch. (Ruling
+  4 said Haiku; that was written for a Claude-hosted session and its purpose was cost and
+  rate-limit safety, not Haiku specifically.) Keep concurrency modest — a wave of 8 heavyweight
+  dispatches once hit a session rate limit and killed 14 agents mid-flight.
+* **The record must name the model that ACTUALLY judged.** `attested_by` / `reviewed_by` is the
+  only thing making §6H and §5 plurality checkable. Writing `haiku` on a `gpt-terra` verdict — or
+  the reverse — is a false evidentiary claim. **Existing `batch115`/`batch116` records correctly
+  say Haiku because Haiku judged them; do not "normalise" them.**
+* **Blindness is a prompt contract, not a sandbox.** A dispatched subagent has tools. Record
+  `samples_delivery` and `tool_uses_by_attester` as what they actually were. `--tool-uses 0`
+  claims structural blindness a tool-bearing subagent does not have.
+* **Never encode the answer in the dispatch prompt.** Give the prevalence standard and the medium
+  test as a *decision procedure*, never as a conclusion. A session that asserted "any medium
+  clause needs the medium present" got honest answers to the wrong question.
+* **Use `legacy_review_queue.json` to PRIORITISE, never as evidence.** A v1 `PASS` records only
+  that somebody once wrote PASS.
+* **Audit an all-PROVIDED batch before filing**: count distinct reasoning skeletons (§6G allows 3
+  per cluster) and cross-check every PROVIDED whose clause names a visual medium against whether
+  its samples actually rendered one. `template_attestation` is a live, DETECTED mutation for
+  fill-in-the-blank verdicts.
+
+**⚠ CROSS-FAMILY COMPARISON IS UNMEASURED.** The 88.1% figure is Haiku-against-Haiku. `gpt-terra`
+is a different rater *family*. A `gpt-terra` NOT_PROVIDED landing against a Claude-era PROVIDED is
+**not, on its own, a regression** — nothing currently separates a genuine finding from a family
+effect. Say so in your handoff, and do not silently attribute movement to the pipeline.
+
+---
+
+## 5. If you land source work — the chain, in order
+
+```sh
+# 1. Scan all 152 mutation anchors. Two seconds versus a fifty-minute abort at 54/152.
 PYTHONPATH=. .venv/bin/python -c "
 from pathlib import Path; import tests.mutation_harness as mh
 print([(m.name, r) for m in mh.MUTATIONS if m.edits for r,(f,_) in m.edits.items()
        if Path(r).read_text().count(f) != 1] or 'all anchors OK')"
 
-# 2. Formatter exclusions. NEVER hand-edit the generated file.
+# 2. Regenerate exclusions if any formatter or COMPATIBILITY entry moved. NEVER hand-edit it.
 PYTHONPATH=. .venv/bin/python -m scripts.regen_formatter_exclusions
 
-# 3. Frontend static render artifact (~10s)
+# 3. Frontend artifact (~10s)
 PYTHONPATH=. .venv/bin/python tests/frontend_suite.py
 
-# 4. Benchmark — AFTER your last source commit, or obligation_benchmark_11 is red at
-#    baseline and its mutation scores INVALID rather than DETECTED.
+# 4. Benchmark — AFTER your last source commit, or obligation_benchmark_11 is red at baseline
+#    and its mutation scores INVALID rather than DETECTED.
 PYTHONPATH=. .venv/bin/python -m tests.obligation_executor --tier benchmark --sample-size 1000
 
-# 5. Mutation corpus (~70 min). Run it in the background and do nothing else meanwhile.
+# 5. Mutation corpus (~70 min). Background it; run nothing else.
 PYTHONPATH=. .venv/bin/python tests/mutation_harness.py
 
-# 6. Release shards — SIX. See the warning below. (~2.6h total, sequential)
+# 6. SIX release shards (~2.6h). See the warning.
 for i in 0 1 2 3 4 5; do
   PYTHONPATH=. .venv/bin/python -m tests.obligation_executor --tier release --shard-count 6 --shard-index $i
 done
 PYTHONPATH=. .venv/bin/python -m tests.obligation_executor --tier verify-release
 
-# 7. The Definition of Done, run ALONE, output shown in full.
+# 7. The Definition of Done, ALONE, output shown in full.
 PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.run_all
 ```
 
 **⚠ THE BENCHMARK LIES ABOUT SHARD COUNT.** Step 4 prints `recommended_shards=4`.
-`validate_obligations.py:165` **hard-codes `shard_count = 6`**. Follow the validator, not the
-recommendation — four receipts will fail §11 on coverage. The projected total wall time is also
-computed from the count it recommends, so treat it as a per-shard figure only. Measured
-six-shard reality: 96,885 cache keys and 387,540 represented executions per shard, 0 failures,
-aggregate 9,333s = 2.593h, worst shard 1,588.9s against the 1,800s per-shard budget.
+`validate_obligations.py:165` **hard-codes `shard_count = 6`**. Follow the validator — four
+receipts fail §11 on coverage. Its `projected_release` is computed from the count it recommends,
+so treat it as a per-shard figure only: measured six-shard reality is ~2.57–2.59h aggregate,
+worst shard ~1,580s against the 1,800s budget.
 
-**Also:** the fast unit suite takes **11 minutes**, not the 35 seconds an old note claims, and
-`tests/pytest.ini`'s `addopts` is not picked up from the repo root. If you run it directly, pass
-`-m "not slow"` explicitly or two 15–40 minute pool tests run too. `run_all` handles this itself.
-
-**The pre-commit hook rebuilds Graphify and stages `graphify-out/`.** Expect more files in your
-commit than you staged. It does not move the input digest — verify that rather than assume it.
+**Adding a formatter changes the obligation product**, so the pinned counts in
+`tests/unit/test_obligation_executor.py` move. Confirm every added route is actually SERVED at
+several seeds *before* touching those numbers. Updating a count to match reality is legitimate;
+updating it to make a test pass is not.
 
 ---
 
-## 6. What "done" looks like, and what it does NOT
+## 6. Traps that have each cost a real session real time
 
-`run_all` **will exit 1.** That is expected and is not your failure. Three stages are red and all
-three are known, tracked work under `H-06`:
-
-| stage | expected | why it is red |
-|---|---|---|
-| `capability_phase2` | ~57 (up from 53) | genuine content debt + ruling 9's sharper instrument |
-| `judgment_reviews_5` | 1252 module / **1253 stage** | the 151 owed blind re-reviews. **Quote the entry point.** |
-| `assertion_coverage_8` | 3 in 1 family | the §6F mutation cluster, INVALID against a red `capability_phase2` baseline. Re-running cannot fix it. |
-
-**Your success criteria are:**
-
-1. All four source corrections landed, with `contract_doc_matches_registry` and
-   `operator_doc_covers_registry` both PASS (the latter should now read **41/41**).
-2. `batch116` filed; `capability_phase2` measured alone and its new number recorded.
-3. Mutation corpus at **149/152 or better**, with the 3 survivors being exactly the §6F cluster
-   (`contradicted_attestation`, `attestation_drops_options`, `attestation_leaks_into_phase1`).
-   **Any other survivor is a real hole — diagnose it, do not wave it through.**
-4. `tests/tree_state.py` reports **CERTIFIED**.
-5. `tests/hardening_status.py` PASSes, with `H-06` released at your commit hash.
-
-**A surviving mutation has two causes and you must distinguish them:** either the check is
-broken, or the plant no longer reaches the code the validator runs. Diagnose by instrumenting
-the real path — render the sample, print the value, prove the planted bug arrives — never by
-reading the validator and concluding it would work.
+1. **Cosmetic edits cost 3.4 hours.** Once certified, touch no source you do not mean to change.
+   A session realigned four import continuation lines *after* completing the chain and invalidated
+   the whole re-proof.
+2. **When correcting a claim copy-pasted into prose, enumerate the sites by SWEEPING
+   `mutation_proof._iter_input_files()`, never from memory.** One such correction half-landed
+   twice — the claim had been written into five digest-bound places, a prompt named three, and a
+   fifth was missed by two sessions running. It cost the chain twice.
+3. **A gate can be defeated one stack frame later — or one ENTRY POINT over.** The orchestrator
+   and the adapter enforce formatter rules differently, and the orchestrator skips its filter
+   entirely for a PINNED formatter. Check a fix on BOTH paths.
+4. **A rule copy-pasted into N sites will disagree with itself.** Route through the same helper
+   the validator imports.
+5. **A classifier keyed on a MESSAGE STRING is a latent bug.** Eligibility-versus-crash was told
+   apart by message text and left ~27 node/formatter pairs wrongly advertised for weeks.
+6. **A shared distractor helper can be right for arithmetic and wrong for your domain.**
+   `augment_distractors` refuses negatives but allows ZERO — correct for sums, and it put a `0 g`
+   option against a `1 g` answer.
+7. **`git commit --amend` moves the hash**, so a ledger row written `released @ <hash>` before the
+   amend points at a dangling commit. Release in a follow-up commit.
+8. **The pre-commit hook rebuilds Graphify and stages `graphify-out/`.** Expect more files than
+   you staged. It does not move the input digest — verify rather than assume.
+9. **A surviving mutation has TWO causes** and you must distinguish them: the check is broken, or
+   the plant no longer reaches the code the validator runs. Diagnose by instrumenting the real
+   path, never by reading the validator and concluding it would work.
+10. **`INVALID — the unmutated command baseline exited 1` is a THIRD thing** and is neither. The
+    runner refused to score because the baseline was already red.
 
 ---
 
-## 7. Bookkeeping before you finish
+## 7. Known-red, known-blocked — do not "fix" these by re-running
+
+* **`assertion_coverage_8` (3 in 1 family)** is the §6F mutation cluster
+  (`contradicted_attestation`, `attestation_drops_options`, `attestation_leaks_into_phase1`).
+  Their baseline command is `capability_phase2`, which is red, so the runner refuses to score
+  them. **Only `capability_phase2` reaching 0 clears this.** Do not spend 70 minutes re-running
+  the corpus expecting movement.
+* **The supersession defect is UNFIXED — only its findings were cleared.**
+  `_attestation_staleness` counts a verdict on a capability nothing consults as live ownership.
+  Any future grade whose `requires_ignore` grows, or any `requires` id renamed after attestation,
+  reproduces it. The scaling fix — disregard non-consulted pairs — is **the owner's call**, and
+  owes a named mutation plus a contract row. Do not implement it unilaterally.
+* **Retiring a record PROMOTES the previous holder of its orphan pair.** Retirement is iterative;
+  it once took 4 rounds and 13 records. Re-measure after every round.
+
+---
+
+## 8. Bookkeeping before you finish
 
 * **Evidence section in `validation_reports/HARDENING_EVIDENCE.md`**: exact commands, verbatim
   pass/fail output, seeds for anything found. Without it the task is not done.
-* **Update `H-06`'s row** in `hardening_status.json` (surgically), then **release the lock in a
-  FOLLOW-UP commit** — `git commit --amend` moves the hash, leaving a `released @ <hash>` row
-  pointing at a dangling commit.
-* **Close your intent**: `tests/tree_state.py --complete --note "…"`.
-* **Update `validation_reports/phase2_hardening/HANDOFF_PROMPT.md`**: refresh the expected-digest
-  block and the banner at the top so the next session inherits true numbers. That file and the
-  evidence log are outside `INPUT_ROOTS`, so editing them costs nothing — **verify that with
-  `input_digest()` rather than assuming it.**
+* **Update `H-06`'s row** surgically; `git diff --numstat` must show only what you intended.
+  Release the lock in a **follow-up** commit (trap 7).
+* **Close your intent** with `tests/tree_state.py --complete`.
+* **Bring `HANDOFF_PROMPT.md` current** — refresh the expected-digest block and put your banner
+  at the top, demoting the previous one to "(historical)". That file and the evidence log are
+  outside `INPUT_ROOTS`; verify with `input_digest()` rather than assuming.
+* **Any new artifact under `validation_reports/phase2_hardening/` must be claimed by some row's
+  `proof_artifacts`**, or `hardening_status.py` fails by name.
 
-## 8. What is explicitly NOT yours
+---
 
-Do not start these, and do not let them expand your batch:
+## 9. Not yours
 
-* The **151 owed §5 blind re-reviews** (7 dispatches via `tests/judgment_batches.py`).
-* The **corpus-wide ruling-9 re-dispatch campaign** (~33 `gpt-terra` light-thinking dispatches). Ruling 9 is now the
-  standard, so all 741 previously filed verdicts were earned on a superseded instrument and the
-  corpus is mixed until that campaign runs. **Say this plainly in your handoff** — it is the
-  single most important thing the next session needs to know about what `capability_phase2`'s
-  number currently means.
-* The **~51 CONTRADICTED content findings**, and the still-unfixed **supersession test**.
-* Opening an `H-11` row. The owner has already refused one.
+* **Opening an `H-11` row.** The owner has already refused one; ruling 6 keeps all three
+  workstreams under `H-06`.
+* **The supersession fix** (§7) and **`CSI-R1`–`CSI-R3`** — open owner rulings.
+* **Release promotion / `H-09`** — explicitly out of scope for this plan.
+* **Editing `requires` / `requires_ignore`** beyond what an owner ruling authorises. It is
+  human-authored ground truth, locked in `data/skeletons/requires_ignore.lock.json`, and the lock
+  moves in the same commit as any sanctioned change. Never edit it merely to make a finding go
+  away: the test is whether MATATAG wrote "or"/"e.g.", which is a reading of the competency text
+  you must quote.
+* **Splitting H-08's intro-surface render gap into its own row** — the owner's call.
 
-If you find something genuinely broken that is outside this list, **name it in your report
-rather than fixing it.** A closeout batch that grows is a closeout batch that does not close.
+If you find something genuinely broken outside your scope, **name it in the evidence log and your
+report rather than fixing it.**
+
+---
+
+## 10. What success looks like
+
+You will almost certainly **not** reach `run_all` exiting 0 this session — the content queue is
+large and the §5 queue is 151 nodes. That is expected. A good session:
+
+1. Leaves the tree **CERTIFIED** with `tests/tree_state.py` exit 0 and the ledger PASSing.
+2. Moves at least one queue by a **measured** amount, each stage measured ALONE.
+3. Files every verdict through the dispatch machinery, with truthful identities, and **authors
+   none**.
+4. Records what it measured, what it assumed, and what it left — including any limitation it
+   discovered — so the next session inherits numbers it can trust rather than confident wrong
+   ones.
+
+**Read, in this order:** `CLAUDE.md`; `docs/phase2_hardening_completion_plan.md`'s
+`START HERE — handoff` (its dated blocks supersede everything below them, owner rulings 1–10
+included); the middle of that plan for the *design* of whatever you implement; and the
+2026-09-21/22 entries in `validation_reports/HARDENING_EVIDENCE.md` for how the current numbers
+were obtained and what was measured rather than assumed.
