@@ -1,20 +1,14 @@
 {
   "schema_version": 1,
   "note": "Intent record for interruption safety. Written when a batch, chain or campaign STARTS and cleared when it completes; an intent left open means a session did not reach its finish line. Deliberately digest-free -- see tests/tree_state.py. Read with `PYTHONPATH=. .venv/bin/python tests/tree_state.py`.",
-  "open_intent": {
+  "open_intent": null,
+  "last_completed": {
     "kind": "batch",
     "began_at": "2026-09-22T16:32:30+08:00",
     "session": "H-06-review-closeout-2026-09-22",
     "note": "Fix the 2 remaining misattributed §5 claims in digest-bound source (run_all.py ASSERTIONS comment, test_frontend_renderer_isolation.py docstring) that the closeout batch missed. Chain owed.",
-    "next_step": "Land every remaining source edit, then run the re-proof chain in order."
-  },
-  "last_completed": {
-    "kind": "batch",
-    "began_at": "2026-09-22T11:42:51+08:00",
-    "session": "codex-closeout-b116-20260922",
-    "note": "closeout: 3 string corrections + §1M operator doc + batch116 prevalence filing",
     "next_step": "Land every remaining source edit, then run the re-proof chain in order.",
-    "completed_at": "2026-09-22T16:24:10+08:00",
-    "completion_note": "closeout complete: corrections and batch116 filed; digest 0d8a8ec3f9812aba re-proved at 149/152 with six current release shards"
+    "completed_at": "2026-09-22T20:25:29+08:00",
+    "completion_note": "Review closeout: 2 remaining misattributed §5 claims corrected, chain re-run in full, run_all exit 1 on the three known red stages"
   }
 }

@@ -14419,3 +14419,47 @@ claim into five places, and once when the closeout prompt named three of them.
 **Cost of the miss:** both surviving copies are under `INPUT_ROOTS`, so correcting a comment
 costs the full ~3.4h chain a second time. That is the measurable price of a hand-listed edit set,
 and it is why the sweep above is worth running BEFORE a batch rather than after.
+
+### Chain re-run after the review's two corrections — executed, nothing else running
+
+```
+$ PYTHONPATH=. .venv/bin/python tests/frontend_suite.py
+PASS frontend_static_render_12: 30 real payloads; 18 production visual types
+
+$ PYTHONPATH=. .venv/bin/python -m tests.obligation_executor --tier benchmark --sample-size 1000
+cache_keys=1000 represented_executions=4000 elapsed=10.610s failures=0
+projected_release=1.713h recommended_shards=4 projected_per_shard=25.700m
+
+$ PYTHONPATH=. .venv/bin/python tests/mutation_harness.py
+149/152 mutations detected.
+  survivors: contradicted_attestation, attestation_drops_options, attestation_leaks_into_phase1
+  PASS  renderer_case_id_omits_node_id §0 (two nodes at one index and seed may not share a case_id)
+  PASS  renderer_shares_one_fixed_render_path §0 (each renderer invocation writes its own corpus and result)
+
+$ six release shards, --shard-count 6
+each: cache_keys=96885 represented_executions=387540 failures=0
+aggregate 9267.5s = 2.574h; worst shard 1576.2s against the 1800s budget
+$ PYTHONPATH=. .venv/bin/python -m tests.obligation_executor --tier verify-release
+release_status=complete receipts=6 complete=True
+
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.run_all
+  FAIL       assertion_coverage_8           phase 1     1.2s
+  FAIL       judgment_reviews_5             phase 2   140.0s
+  FAIL       capability_phase2              phase 2    23.9s
+  scheduled=17 completed=14 failed=3 crashed=0 not_run=0 incomplete=0
+  PASS stage_ledger_complete / PASS stage_phase_matches_manifest
+EXIT: 1
+```
+
+Red composition, unchanged by a comment-only correction as expected:
+`judgment_reviews_5` **1253 at the stage entry point** (1252 from the module),
+`capability_phase2` **57 CONTRADICTED / 0 UNATTESTED / 0 STALE / 0 UNADJUDICABLE**,
+`assertion_coverage_8` **3 in the one §6F family**. Definition of Done NOT met.
+
+**Both renderer mutations are still DETECTED after their docstrings changed** — confirmed by
+execution rather than assumed, because a plant must still land where behaviour changes and an
+edited anchor region is exactly where that silently stops being true.
+
+The benchmark again printed `recommended_shards=4` against the validator's hard-coded 6
+(`validate_obligations.py:165`); six shards were run. Measured total 2.574h, consistent with the
+2.593h measured earlier and again NOT the 1.713h the 4-shard projection implies.
