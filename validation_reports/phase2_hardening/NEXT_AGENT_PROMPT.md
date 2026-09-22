@@ -226,6 +226,44 @@ Measured basis: on the same 18 clauses, same packets, same Haiku model, the only
 whether the prompt asked for prevalence — prevalence-weighed returned 6 NOT_PROVIDED, neutral
 returned 2.
 
+### Owner ruling 10 (2026-09-22) — the dispatch model for THIS agent
+
+**Owner ruling 4 said "Haiku subagents for ALL agents reviewing sample pg output."** That was
+written for a Claude-hosted session, and its purpose was cost and rate-limit safety: a wave of
+8 Opus dispatches once hit the session rate limit and killed 14 agents mid-flight.
+
+**Ruling 10 amends it for this agent: use `gpt-terra` light-thinking subagents for every blind
+dispatch you make.** The principle is unchanged — a cheap, separate, blind judge — only the
+model name differs, because you are not running on Claude.
+
+**What does NOT change, and is not negotiable:**
+
+* **You still never author a verdict.** Dispatch, or stop.
+* **The record must name the model that ACTUALLY judged.** `attested_by` is what makes §6H
+  attester plurality and §5 reviewer plurality checkable at all. Writing `haiku` on a
+  `gpt-terra` verdict — or the reverse — is a false evidentiary claim.
+* **The reviewer identity is assigned by the DISPATCHER**, never self-declared by the judge. On
+  2026-09-10 three independently dispatched blind agents given the same prompt all converged on
+  variations of one self-chosen name, which would have silently collapsed plurality.
+* **Keep concurrency modest**, for the same reason ruling 4 existed.
+
+**CONSEQUENCE YOU MUST CARRY INTO YOUR HANDOFF — this is a second instrument variable.** The
+741 verdicts already in `validation_reports/attestation/` were judged by Claude models. Any
+`gpt-terra` verdict you add is a different rater *family*, not merely a different rater. The
+measured 88.1% inter-rater agreement (76.5% on the hardest batch) was **Haiku-against-Haiku**
+and does **not** transfer across families — cross-family agreement is unmeasured.
+
+That matters because this session already found one instrument change masquerading as a content
+finding: a prompt that asked for prevalence flipped 6 of 18 clauses that two independent raters
+had each passed. A model-family change is the same class of variable. So:
+
+* **Do not read a `gpt-terra` NOT_PROVIDED against a Claude-era PROVIDED as a regression.** It
+  may be either a genuine finding or a family effect, and nothing currently distinguishes them.
+* **Say so plainly in your handoff**, alongside the ruling-9 mixed-standard warning. The two
+  compound: after this batch the corpus can differ in both *standard* and *rater family*.
+* If anyone wants that separated, the clean experiment is the same shape as the ruling-5
+  control — same prompt, same packets, vary only the family — and it is **not** your batch.
+
 ### What you file, and why you are not dispatching
 
 **Both sets of verdicts already exist on disk and were earned by a genuine blind Haiku
@@ -260,10 +298,16 @@ PY
 ```
 
 **If those scratch files are missing or the join assertion fails, STOP.** Do not reconstruct
-verdicts and do not write your own. Report that a fresh blind dispatch is required, and that it
-must go to a **Haiku** agent (owner ruling 4), given per-node prompt files rendered by
-`tests/attester_packets.render_prompt_block`, with a prompt that states the prevalence standard
-and the medium test **without encoding the answer** (owner ruling 1).
+verdicts and do not write your own. A fresh blind dispatch is then required, and under **owner
+ruling 10** (below) it goes to a **`gpt-terra` light-thinking subagent** — given per-node prompt
+files rendered by `tests/attester_packets.render_prompt_block`, with a prompt that states the
+prevalence standard and the medium test **without encoding the answer** (owner ruling 1).
+
+Name that dispatch's identity for the model that actually judged, e.g.
+`blind-attester-gpt-terra-light-<batch>-<YYYYMMDD>`. **Never label a `gpt-terra` verdict as
+Haiku or vice versa** — §6H attester plurality and §5 reviewer plurality are only checkable if
+the record is truthful about who made the verdict, and a mislabelled identity is a false
+evidentiary claim, not a cosmetic slip.
 
 ### Filing
 
@@ -402,7 +446,7 @@ reading the validator and concluding it would work.
 Do not start these, and do not let them expand your batch:
 
 * The **151 owed §5 blind re-reviews** (7 dispatches via `tests/judgment_batches.py`).
-* The **corpus-wide ruling-9 re-dispatch campaign** (~33 Haiku dispatches). Ruling 9 is now the
+* The **corpus-wide ruling-9 re-dispatch campaign** (~33 `gpt-terra` light-thinking dispatches). Ruling 9 is now the
   standard, so all 741 previously filed verdicts were earned on a superseded instrument and the
   corpus is mixed until that campaign runs. **Say this plainly in your handoff** — it is the
   single most important thing the next session needs to know about what `capability_phase2`'s

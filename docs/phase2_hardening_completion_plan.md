@@ -1357,6 +1357,33 @@ that points at it break every time the section is refreshed.
 > 7. **The §6B ground-truth correction is AUTHORISED for the next session.** Sign-off is given;
 >    the node ids, competency text and reason still go in the commit and evidence log (Protocol
 >    5). The ruling is the sign-off, not a substitute for the record.
+> 10. **DISPATCH MODEL IS HOST-RELATIVE** (owner, 2026-09-22). Ruling 4 required Haiku
+>    subagents for every agent reviewing sample pg output. That was written for a Claude-hosted
+>    session and its purpose was cost and rate-limit safety, not Haiku specifically. **A
+>    ChatGPT-hosted agent uses `gpt-terra` light-thinking subagents instead.** The principle is
+>    unchanged: a cheap, separate, blind judge, dispatched never self-run, with modest
+>    concurrency.
+>
+>    **What ruling 4 keeps, absolutely: the record names the model that ACTUALLY judged.**
+>    `attested_by` is the only thing that makes §6H attester plurality and §5 reviewer plurality
+>    checkable. Labelling a `gpt-terra` verdict as Haiku, or the reverse, is a false evidentiary
+>    claim — not a cosmetic slip. Identity strings stay dispatcher-assigned (measured 2026-09-10:
+>    three independently dispatched blind agents all converged on variations of one self-chosen
+>    name, which would have silently collapsed plurality).
+>
+>    **NAMED CONSEQUENCE — this is a SECOND instrument variable, and it compounds with ruling 9.**
+>    All 741 filed verdicts were judged by Claude models. A `gpt-terra` verdict is a different
+>    rater FAMILY, not merely a different rater. The measured 88.1% inter-rater agreement (76.5%
+>    on the hardest batch) is **Haiku-against-Haiku** and does NOT transfer across families;
+>    cross-family agreement is **unmeasured**. Ruling 5's control deliberately held the family
+>    fixed for exactly this reason, and this session measured what an instrument change can do:
+>    a prevalence-weighing prompt flipped 6 of 18 clauses that two independent raters had each
+>    passed. **So a cross-family NOT_PROVIDED against a Claude-era PROVIDED is not, on its own,
+>    a regression** — nothing currently separates a genuine finding from a family effect. After
+>    a mixed batch the corpus can differ in both STANDARD and RATER FAMILY at once, and any
+>    figure drawn from it must say so. The clean experiment, if one is wanted, is ruling 5's
+>    shape with family as the only variable.
+>
 > 9. **PREVALENCE IS NOW PART OF THE STANDARD** (owner, 2026-09-22). An Attester must weigh
 >    HOW OFTEN a clause is exhibited across the samples it is shown, not merely whether any
 >    one sample exhibits it. This supersedes the packet format's silence on prevalence, which
