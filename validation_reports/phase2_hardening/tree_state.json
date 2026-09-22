@@ -1,20 +1,14 @@
 {
   "schema_version": 1,
   "note": "Intent record for interruption safety. Written when a batch, chain or campaign STARTS and cleared when it completes; an intent left open means a session did not reach its finish line. Deliberately digest-free -- see tests/tree_state.py. Read with `PYTHONPATH=. .venv/bin/python tests/tree_state.py`.",
-  "open_intent": {
-    "kind": "batch",
-    "began_at": "2026-09-22T03:15:00+08:00",
-    "session": "H-06-rulings78-2026-09-22",
-    "note": "Fix B (renderer concurrency + node_id in case_id + silent-path mutation + contract row), then Fix A (6B ground truth), then content debt. Chain owed at the end.",
-    "next_step": "Land every remaining source edit, then run the re-proof chain in order."
-  },
+  "open_intent": null,
   "last_completed": {
-    "kind": "campaign",
-    "began_at": "2026-09-22T02:34:55+08:00",
-    "session": "claude-opus5-20260922-h06-rulings",
-    "note": "owner rulings 2026-09-22: re-attest the 7 blocked nodes then retire predecessors; re-dispatch abstract-medium clauses with a neutral prompt; no source edits intended",
-    "next_step": "Resume the campaign; it touches no source, so no re-proof is owed.",
-    "completed_at": "2026-09-22T02:46:36+08:00",
-    "completion_note": "owner rulings done: structural blocker cleared, cap2 218->55 all CONTRADICTED, digest unmoved"
+    "kind": "chain",
+    "began_at": "2026-09-22T06:12:19+08:00",
+    "session": "H-06-rulings78-2026-09-22",
+    "note": "Chain step 3: mutation corpus (152 mutations) running. Then release shards (benchmark projects 1.733h over 4), then run_all alone.",
+    "next_step": "Resume the chain at the first step whose artifact is still stale; shards are individually resumable, so re-run only the stale indices.",
+    "completed_at": "2026-09-22T10:14:46+08:00",
+    "completion_note": "Chain complete: frontend artifact, benchmark, 152-mutation corpus (149/152), 6 release shards (2.593h, 0 failures), verify-release complete, run_all exit 1 on the three known red stages"
   }
 }

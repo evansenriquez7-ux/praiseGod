@@ -1357,6 +1357,45 @@ that points at it break every time the section is refreshed.
 > 7. **The §6B ground-truth correction is AUTHORISED for the next session.** Sign-off is given;
 >    the node ids, competency text and reason still go in the commit and evidence log (Protocol
 >    5). The ruling is the sign-off, not a substitute for the record.
+> 9. **PREVALENCE IS NOW PART OF THE STANDARD** (owner, 2026-09-22). An Attester must weigh
+>    HOW OFTEN a clause is exhibited across the samples it is shown, not merely whether any
+>    one sample exhibits it. This supersedes the packet format's silence on prevalence, which
+>    the limitations list had named only in words.
+>
+>    **Measured basis, and it is why this is a real change and not a clarification.** On the
+>    same 18 clauses over 4 nodes, same packets, same Haiku model, the ONLY variable being
+>    whether the prompt asked for prevalence:
+>
+>    | prompt | PROVIDED | NOT_PROVIDED |
+>    |---|---|---|
+>    | prevalence weighed | 12 | **6** |
+>    | neutral (the standard the 741 filed verdicts used) | 16 | **2** |
+>
+>    All six clauses the prevalence-weighed dispatch failed had been ruled PROVIDED by TWO
+>    independent blind Attesters each. Four flipped back under the neutral prompt. So this is
+>    an INSTRUMENT effect, not rater variance, and it is large: a third of the clauses moved.
+>
+>    **CONSEQUENCE, stated rather than discovered later: every one of the 741 filed verdicts
+>    was earned on the superseded standard.** `capability_phase2`'s current 53 is therefore a
+>    number produced by the OLD instrument. Applying the new standard to a handful of nodes
+>    while the rest sit on the old one would make that figure the output of two different
+>    instruments at once, which is precisely the defect this plan treats as unacceptable
+>    elsewhere. **So the ruling is recorded and scoped, NOT half-applied:** it takes effect as
+>    a corpus-wide re-dispatch campaign, and until that campaign runs the corpus stays
+>    internally consistent on the old standard and every figure from it must be read as such.
+>
+>    **What the campaign costs**, so it is not under-scoped the way the §5 one was: ~151 nodes
+>    and ~776 pairs, ≤25 clause items per dispatch (§6G) and ≤25 nodes per identity (§6H), so
+>    roughly 33 Haiku dispatches for one clean round — the same shape as the campaign that took
+>    218 → 55. It touches no source, so it owes NO re-proof. Expect the finding count to RISE:
+>    on this sample the new standard was stricter on 4 of 18 clauses, and a count that rises
+>    because the instrument got sharper is progress, not regression.
+>
+>    **`batch115` (4 records, 2026-09-22) is on the neutral standard** and is the first thing
+>    the campaign should replace. The prevalence-weighed verdicts for those same 18 clauses
+>    were measured and deliberately NOT filed; they are in the evidence log, and they are a
+>    measurement rather than evidence, exactly as ruling 5's control was.
+>
 > 8. **The fixed-path renderer is to be FIXED in the next session.** It is a blocker in its own
 >    right, not an operating note: it has corrupted two recorded figures, in both directions
 >    (§6F by −6, §5 by +1). Two halves must both be fixed — a unique per-invocation path, AND
@@ -1476,8 +1515,16 @@ that points at it break every time the section is refreshed.
 > batch, then one chain. Read trap 1 (scan all 150 anchors first), trap 2 (benchmark AFTER
 > the last commit) and trap 12 (cosmetic edits cost 3.4h) before the first edit.
 >
-> **The previously recorded `judgment_reviews_5` figure of 1253 was wrong, and proving it
-> cost nothing.** §5 reports **1252**, stable across two clean runs. `git log` shows
+> **[SUPERSEDED 2026-09-22 (later) — THIS DIAGNOSIS IS WRONG. BOTH NUMBERS ARE CORRECT.**
+> `run_all._stage_judgment_reviews_5` (run_all.py:760-764) appends ONE aggregate finding the
+> module's own CLI never emits, when `FAIL > 0 or CONCERN > 0`. Measured directly on a clean
+> tree, nothing else running: module = 1252, stage = 1253, `reviewed=151 PASS=14 CONCERN=93
+> FAIL=44`. It is a TWO-ENTRY-POINT difference, not concurrency pollution, and it is
+> deterministic. Do not hunt a concurrency bug for it, and do not 'correct' either figure —
+> quote the entry point alongside the number. Full proof in `HARDENING_EVIDENCE.md`.]**
+>
+> ~~**The previously recorded `judgment_reviews_5` figure of 1253 was wrong, and proving it
+> cost nothing.**~~ §5 reports **1252**, stable across two clean runs. `git log` shows
 > `validation_reports/judgment/` untouched since the 2026-09-21 handoff commit `664fbe46`, and
 > `git diff` shows NO source change under `INPUT_ROOTS` across the same range — so §5's inputs
 > are byte-identical to the tree the 1253 was taken on, and a gate with identical inputs that

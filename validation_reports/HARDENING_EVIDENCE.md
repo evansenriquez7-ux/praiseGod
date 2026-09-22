@@ -14052,3 +14052,136 @@ shape of the defect, not evidence that it is gone.
   sweep that found them is reproducible; the classification is not mechanical.
 * **Multi-node attester dispatches have a colliding item-id space** (defect 1 above), with
   nothing guarding it.
+
+### OWNER RULING 9 (2026-09-22) — PREVALENCE BECOMES THE STANDARD
+
+The owner ruled on the prevalence finding above: an Attester must weigh HOW OFTEN a clause
+is exhibited, not merely whether any sample exhibits it.
+
+**Scoped, not half-applied.** All 741 filed verdicts were earned on the superseded neutral
+standard, so `capability_phase2`'s 53 is an OLD-instrument number. Applying the new standard
+to the 4 nodes touched today while 147 sit on the old one would make that figure the output
+of two instruments at once. The ruling therefore takes effect as a corpus-wide re-dispatch
+campaign (~33 Haiku dispatches, ~776 pairs, no re-proof owed because attestation is outside
+the fingerprint). `batch115` is the first thing that campaign should replace. Until it runs,
+the corpus stays internally consistent on the old standard and every §6F figure must be read
+as such. Full statement in the plan's `START HERE` as owner ruling 9.
+
+Expect the count to RISE: on this sample the new standard was stricter on 4 of 18 clauses.
+A count that rises because the instrument got sharper is progress.
+
+### §0 after the batch
+
+```
+$ PYTHONPATH=. .venv/bin/python -m pytest tests/unit -m "not slow" -q
+796 passed, 1 skipped, 2 deselected, 4 warnings in 661.90s (0:11:01)
+```
+Includes the 4 new tests in `tests/unit/test_frontend_renderer_isolation.py`. Recording the
+11-minute runtime again because an old note still claims 35 seconds (trap 8).
+
+Recording the ruling moved NO digest, verified rather than assumed (trap 10 discipline):
+`124ee1ca14d20526` before the doc edit and `124ee1ca14d20526` after — `docs/` is outside
+`INPUT_ROOTS` except for the two files named in `INPUT_FILES`, and the plan is not one of them.
+
+### THE 1252/1253 QUESTION IS SETTLED, AND THE PLAN'S ANSWER WAS WRONG
+
+The plan's `START HERE` states: "The previously recorded `judgment_reviews_5` figure of 1253
+was wrong, and proving it cost nothing. §5 reports **1252**, stable across two clean runs...
+**1252 is the number; do not 'restore' 1253.**" Trap 11 attributes the 1253 to
+`tests/frontend_renderer.py`'s fixed path perturbing the count UPWARD.
+
+**That is not what it is. Both numbers are correct, for different entry points, and the
+difference is one deterministic line.** `run_all._stage_judgment_reviews_5` calls the module
+and then APPENDS an aggregate finding the module's own CLI never emits
+(`run_all.py:760-764`):
+
+```python
+judgment_errors = validate_judgment.validate_judgment_reviews(fail_fast=fail_fast)
+v = validate_judgment.summarize_verdicts()
+if v["FAIL"] > 0 or v["CONCERN"] > 0:
+    judgment_errors.append(f"Unresolved judgment verdicts remain across {v['reviewed']} nodes: ...")
+```
+
+Measured directly, nothing else running, on the post-batch tree:
+
+```
+module validate_judgment_reviews() -> 1252 findings
+summarize_verdicts -> {'reviewed': 151, 'PASS': 14, 'CONCERN': 93, 'FAIL': 44}
+run_all appends its aggregate rollup? True
+=> run_all stage count = 1253
+```
+
+Corroborated end to end on the same tree: `validate_judgment` standalone printed
+"Judgment review validation: 1252 problem(s) found", while the `run_all` stage printed
+"FAIL judgment_reviews (1253 problem(s))". 1252 + 1 = 1253.
+
+**Why this matters more than one finding.** It is the "two entry points, one rule" shape the
+traps list already warns about for the orchestrator versus the adapter — unnoticed on §5's own
+count. A previous session diagnosed a deterministic one-line difference as CONCURRENCY
+POLLUTION and wrote that into the plan as settled fact, with an instruction not to revisit it.
+A future session re-measuring inside `run_all` would see 1253, believe it had polluted its own
+run, and hunt a concurrency bug that does not exist. The handoff's own rule — "believe the
+command, not this file" — is what caught it.
+
+**CONSEQUENCE FOR FIX B's EVIDENCE, stated rather than left flattering.** The renderer defect
+is real and remains proven: the §6F direction (55 reported under concurrent load on a tree
+that had 61, against 61 on three clean runs) is independently recorded and is not affected.
+But the §5 half of the cited cost — "§5 reported 1253 where it has 1252" — was never the
+renderer, and that sentence appears in three digest-bound places written earlier today:
+`tests/frontend_renderer.py`'s module docstring, the `docs/pgen_contract.md` row, and the
+`renderer_case_id_omits_node_id` mutation description.
+
+**They are deliberately NOT corrected in this session.** All three are under `INPUT_ROOTS` /
+`INPUT_FILES`, so editing a comment would invalidate the 152-record corpus and all six release
+shards just proved at a cost of ~70min + 2.593h — the "cosmetic edits cost 3.4 hours" trap
+(trap 12) run in reverse. The code is correct, the gate is proven by execution, and only a
+cited symptom is overstated. **NEXT SESSION: correct those three strings in the FIRST source
+batch you land, before running the chain.** Queued here rather than silently left.
+
+### THE RELEASE SHARD COUNT AND THE BENCHMARK DISAGREE
+
+`tests/obligation_executor.py --tier benchmark` printed `recommended_shards=4` and
+`projected_release=1.733h`. `validate_obligations.py:165` HARD-CODES `shard_count = 6`. An
+agent following the benchmark's own recommendation would write four receipts, and §11 would
+fail on coverage against the six it expects. Named because the recommendation is the more
+prominent of the two and is printed in the operator's face.
+
+Measured six-shard reality on this tree: 96,885 cache keys and 387,540 represented executions
+per shard, 0 failures, aggregate **9,333s = 2.593h**, worst shard 1,588.9s against the 1,800s
+per-shard budget (11.7% margin). Per-shard time tracked the projection closely; the TOTAL did
+not, because the projection assumes the shard count it recommends rather than the one enforced.
+The plan's "+1.23%" accuracy claim describes a different configuration and should not be read
+as currently true.
+
+### DEFINITION OF DONE — NOT MET, verbatim
+
+```
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.run_all
+  ... 14 stages PASS ...
+  FAIL       assertion_coverage_8           phase 1     1.2s
+  FAIL       judgment_reviews_5             phase 2   140.1s
+  FAIL       capability_phase2              phase 2    24.0s
+  scheduled=17 completed=14 failed=3 crashed=0 not_run=0 incomplete=0
+  PASS stage_ledger_complete: every scheduled stage ran to a verdict
+  PASS stage_phase_matches_manifest: every stage's refs are registered to the band that stage runs in
+SOME ALL TESTS CHECKS FAILED.
+EXIT: 1
+```
+
+| stage | before | after | why |
+|---|---|---|---|
+| `capability_phase2` | 55 | **53** | 4 ground-truth findings cleared by Fix A; 2 arrived from honest blind re-attestation |
+| `judgment_reviews_5` | "1252" | **1252 module / 1253 stage** | unchanged by this batch; the ±1 is the rollup above, not a change and not pollution |
+| `assertion_coverage_8` | 3 in 1 family | 3 in 1 family | the §6F cluster, still INVALID against a red `capability_phase2` baseline |
+
+Mutation corpus: **149/152 detected**, both new renderer mutations DETECTED in the FULL table
+run (not merely under `--only`), each bound to digest `124ee1ca14d20526` with `baseline_exit 0`.
+The 3 survivors are the known §6F cluster. Census: `unit_tests=797`, `mutations=152`, `nodes=151`,
+`variant_candidates=975`.
+
+**A coverage regression introduced by this batch and NOT fixed here:**
+`operator_doc_covers_registry` moved from 40/40 to **40/41** — the new
+`renderer_invocation_isolation` row has no counterpart in `docs/testing_pipeline.md`. It still
+PASSes (floor 12), so it is not red, but the gap is real. `testing_pipeline.md` is in
+`INPUT_FILES`, so closing it now would cost the whole chain; it belongs at the START of the next
+source batch, together with the three corrections above.
