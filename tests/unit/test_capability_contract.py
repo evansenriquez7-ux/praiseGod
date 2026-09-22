@@ -239,11 +239,22 @@ def test_contradicted_entry_is_caught_by_name():
     node, cap = "mat_g3_mg_q1_5", "draw_line_relationships"
     original = copy.deepcopy(VC.CAPABILITY_PROVIDERS)
     try:
-        assert not [e for e in VC.validate_capability_declarations([node]) if "CONTRADICTED" in e], (
-            "fixture expects the rejected entry to be absent before the mutation"
+        # Scoped to THIS capability, not to the node's total. The node is allowed to carry
+        # CONTRADICTED findings on OTHER capabilities -- it acquired one on
+        # `intersecting_lines` when the 2026-09-23 prevalence campaign re-judged the corpus,
+        # and a precondition of "this node is completely clean" made the fixture rot the
+        # moment unrelated content debt landed on it. Same rotting shape, and same remedy,
+        # as `test_unattested_capability_is_a_failure_not_a_skip` below: assert about what
+        # the test actually plants, so the check keeps meaning what it means as the backlog
+        # moves. The check itself is NOT weakened -- the planted entry must still be caught
+        # by name, quoting the verdict it contradicts.
+        assert not [e for e in VC.validate_capability_declarations([node])
+                    if "CONTRADICTED" in e and cap in e], (
+            f"fixture expects {cap!r} to be absent before the mutation"
         )
         VC.CAPABILITY_PROVIDERS[cap] = {"variants": [("task_type", "draw_construct")]}
-        errs = [e for e in VC.validate_capability_declarations([node]) if "CONTRADICTED" in e]
+        errs = [e for e in VC.validate_capability_declarations([node])
+                if "CONTRADICTED" in e and cap in e]
         assert errs, "re-registering an Attester-rejected capability was not caught"
         assert cap in errs[0] and node in errs[0]
         assert "NOT_PROVIDED" in errs[0], "the failure must quote the verdict it contradicts"
@@ -389,7 +400,30 @@ def test_attestation_without_samples_cannot_be_checked_and_fails():
     import json as _json
     from pathlib import Path
 
-    rec = next(Path(VC._ATTESTATION_DIR).glob("*.json"))
+    # The record must be one that currently SUPPLIES a winning verdict. This test previously
+    # took `next(glob("*.json"))`, i.e. the FIRST filename, which since the 2026-09-23
+    # prevalence campaign (batch117-batch150; 476 records, most superseded) is almost always
+    # a SUPERSEDED record. A superseded record is not consulted for staleness, so stripping
+    # its samples correctly produced no error and the test went red while the check was
+    # working perfectly -- the same fixture rot, and the same remedy, that
+    # `test_stale_attestation_is_rejected` above already documents.
+    #
+    # Ownership is resolved with `VC._winning_verdict_index`, the validator's OWN rule,
+    # rather than re-deriving "last file wins over a sorted glob" here. A rule copied into
+    # a second place is a rule that will eventually disagree with itself.
+    _paths = sorted(Path(VC._ATTESTATION_DIR).glob("*.json"))
+    _all = [_json.loads(_p.read_text(encoding="utf-8")) for _p in _paths]
+    _winner = VC._winning_verdict_index(_all)
+    rec = None
+    for _idx, _candidate in enumerate(_paths):
+        _d = _all[_idx]
+        if not (_d.get("packet") or {}).get("samples_judged"):
+            continue
+        _pairs = [(v.get("node_id"), v.get("capability_id")) for v in _d.get("verdicts", [])]
+        if any(_winner.get(_pair) == _idx for _pair in _pairs):
+            rec = _candidate
+            break
+    assert rec is not None, "no attestation record currently supplies a winning verdict"
     original = rec.read_text(encoding="utf-8")
     try:
         d = _json.loads(original)
