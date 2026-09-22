@@ -1,0 +1,421 @@
+{
+  "batch": "batch138_mat_g2_na_q3_8",
+  "attested_at": "2026-09-22T14:35:14Z",
+  "attested_by": "blind-attester-gpt-terra-d22d23-20260922",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "read local_only/scratch/attest117/mat_g2_na_q3_8.prompt.txt (verbatim render_prompt_block output only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "Tool-bearing GPT-Terra subagent reported sed/awk/rg only on assigned prompts, apply_patch/jq only on verdict outputs, and positional correction against those prompts; dispatcher did not verify sandbox-level non-access beyond that report."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g2_na_q3_8",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g2_na_q3_8",
+        "seed": 11,
+        "formatter": "true_false",
+        "question_text": "58 ÷ 2 does not come out exactly, so 58 is an odd number. True or False?",
+        "correct_answer": false,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "true_false",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "true_false",
+          "experience": "standard"
+        },
+        "resolved_answer": false,
+        "hints": [
+          "We need to divide 58 by 2. The number being divided is 58; the number we divide by is 2.",
+          "Ask: how many times does 2 fit into 58? 2 × 0 = 0.",
+          "The quotient of 58 ÷ 2 = 0."
+        ],
+        "sample_id": "0ee6648d80dc54128657",
+        "replay_digest": "a900345f732a3738dbb66290883a7acc19f558b6f5aefe2d712fb4a07b6c3552"
+      },
+      {
+        "node_id": "mat_g2_na_q3_8",
+        "seed": 23,
+        "formatter": "true_false",
+        "question_text": "Dividing 38 by 2 gives an exact whole number, so 38 is an even number. True or False?",
+        "correct_answer": true,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "true_false",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "true_false",
+          "experience": "standard"
+        },
+        "resolved_answer": true,
+        "hints": [
+          "We need to divide 38 by 2. The number being divided is 38; the number we divide by is 2.",
+          "Ask: how many times does 2 fit into 38? 2 × 0 = 0.",
+          "The quotient of 38 ÷ 2 = 0."
+        ],
+        "sample_id": "b0880572120e58aa4d52",
+        "replay_digest": "243eb8bf37263d76d2f085f7cbaa1fc0235c8301d0f281fe437356221f41a6b3"
+      },
+      {
+        "node_id": "mat_g2_na_q3_8",
+        "seed": 42,
+        "formatter": "true_false",
+        "question_text": "Dividing 82 by 2 does not give an exact whole number, so 82 is an odd number. True or False?",
+        "correct_answer": false,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "true_false",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "true_false",
+          "experience": "standard"
+        },
+        "resolved_answer": false,
+        "hints": [
+          "We need to divide 82 by 2. The number being divided is 82; the number we divide by is 2.",
+          "Ask: how many times does 2 fit into 82? 2 × 0 = 0.",
+          "The quotient of 82 ÷ 2 = 0."
+        ],
+        "sample_id": "ee467ceec416b3e42f5e",
+        "replay_digest": "2c88213dd80f75bacad7c26b0c0fe1119e3f45c1e43b5e5a902b37b5757a5d3d"
+      },
+      {
+        "node_id": "mat_g2_na_q3_8",
+        "seed": 57,
+        "formatter": "true_false",
+        "question_text": "6 ÷ 2 comes out exactly, so 6 is an even number. True or False?",
+        "correct_answer": true,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "true_false",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "true_false",
+          "experience": "standard"
+        },
+        "resolved_answer": true,
+        "hints": [
+          "We need to divide 6 by 2. The number being divided is 6; the number we divide by is 2.",
+          "Ask: how many times does 2 fit into 6? 2 × 0 = 0.",
+          "The quotient of 6 ÷ 2 = 0."
+        ],
+        "sample_id": "48d08287fdfbb6a9ee07",
+        "replay_digest": "991e90cd25fbf44d250c65bf734482ba2e3b2da52941f4a936de8ca65fa8248c"
+      },
+      {
+        "node_id": "mat_g2_na_q3_8",
+        "seed": 64,
+        "formatter": "true_false",
+        "question_text": "61 can be divided into 2 equal parts, so 61 is an even number. True or False?",
+        "correct_answer": false,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "true_false",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "true_false",
+          "experience": "standard"
+        },
+        "resolved_answer": false,
+        "hints": [
+          "We need to divide 61 by 2. The number being divided is 61; the number we divide by is 2.",
+          "Ask: how many times does 2 fit into 61? 2 × 0 = 0.",
+          "61 − 0 = 1. What is left over is 1.",
+          "The quotient is 0 with 1 left over."
+        ],
+        "sample_id": "b1d7da0575ab2a42b0b0",
+        "replay_digest": "ede742e105054a08fff516ca437a8952292b6c07ba682fb2f8d7001412981278"
+      },
+      {
+        "node_id": "mat_g2_na_q3_8",
+        "seed": 78,
+        "formatter": "true_false",
+        "question_text": "Dividing 25 by 2 gives an exact whole number, so 25 is an even number. True or False?",
+        "correct_answer": false,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "true_false",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "true_false",
+          "experience": "standard"
+        },
+        "resolved_answer": false,
+        "hints": [
+          "We need to divide 25 by 2. The number being divided is 25; the number we divide by is 2.",
+          "Ask: how many times does 2 fit into 25? 2 × 0 = 0.",
+          "25 − 0 = 1. What is left over is 1.",
+          "The quotient is 0 with 1 left over."
+        ],
+        "sample_id": "0300fa25f879607460ef",
+        "replay_digest": "0d7c6d766b4822626dc5e2c7049305226b1aca13d9cb6e254163962b6d8ff0a2"
+      },
+      {
+        "node_id": "mat_g2_na_q3_8",
+        "seed": 91,
+        "formatter": "true_false",
+        "question_text": "11 ÷ 2 does not come out exactly, so 11 is an odd number. True or False?",
+        "correct_answer": true,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "true_false",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "true_false",
+          "experience": "standard"
+        },
+        "resolved_answer": true,
+        "hints": [
+          "We need to divide 11 by 2. The number being divided is 11; the number we divide by is 2.",
+          "Ask: how many times does 2 fit into 11? 2 × 0 = 0.",
+          "11 − 0 = 1. What is left over is 1.",
+          "The quotient is 0 with 1 left over."
+        ],
+        "sample_id": "a8a448908b39c71010c4",
+        "replay_digest": "453a4e6e492de2e1de61c3cacb24cc2cf56f9321d7f07afefe3bd93686423e9c"
+      },
+      {
+        "node_id": "mat_g2_na_q3_8",
+        "seed": 103,
+        "formatter": "true_false",
+        "question_text": "59 ÷ 2 does not come out exactly, so 59 is an odd number. True or False?",
+        "correct_answer": true,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "true_false",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "true_false",
+          "experience": "standard"
+        },
+        "resolved_answer": true,
+        "hints": [
+          "We need to divide 59 by 2. The number being divided is 59; the number we divide by is 2.",
+          "Ask: how many times does 2 fit into 59? 2 × 0 = 0.",
+          "59 − 0 = 1. What is left over is 1.",
+          "The quotient is 0 with 1 left over."
+        ],
+        "sample_id": "52579c09472056508cd2",
+        "replay_digest": "29b8287b1bd26932a44a9d5a5d8fd61f84ad0a93558abfecac60851d3c62c9c8"
+      },
+      {
+        "node_id": "mat_g2_na_q3_8",
+        "seed": 118,
+        "formatter": "true_false",
+        "question_text": "Dividing 81 by 2 does not give an exact whole number, so 81 is an odd number. True or False?",
+        "correct_answer": true,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "true_false",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "true_false",
+          "experience": "standard"
+        },
+        "resolved_answer": true,
+        "hints": [
+          "We need to divide 81 by 2. The number being divided is 81; the number we divide by is 2.",
+          "Ask: how many times does 2 fit into 81? 2 × 0 = 0.",
+          "81 − 0 = 1. What is left over is 1.",
+          "The quotient is 0 with 1 left over."
+        ],
+        "sample_id": "104ed218d0d4d3fabee7",
+        "replay_digest": "e30ec52906ef63895e8a6ff8ec8b4b51c656c38876a2d55e8b085c5c31a2cf71"
+      },
+      {
+        "node_id": "mat_g2_na_q3_8",
+        "seed": 127,
+        "formatter": "true_false",
+        "question_text": "Dividing 6 by 2 gives an exact whole number, so 6 is an even number. True or False?",
+        "correct_answer": true,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "true_false",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "true_false",
+          "experience": "standard"
+        },
+        "resolved_answer": true,
+        "hints": [
+          "We need to divide 6 by 2. The number being divided is 6; the number we divide by is 2.",
+          "Ask: how many times does 2 fit into 6? 2 × 0 = 0.",
+          "The quotient of 6 ÷ 2 = 0."
+        ],
+        "sample_id": "d775cb4b612f86eaf1eb",
+        "replay_digest": "bf51f966516f87da60b878d450c057d8ec83f7976d97d639ec3a6cddb8f2bf0b"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "distinguish",
+      "node_id": "mat_g2_na_q3_8",
+      "clause": "Distinguish",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Every sample asks a true/false distinction of parity.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "even_and_odd_numbers",
+      "node_id": "mat_g2_na_q3_8",
+      "clause": "even and odd numbers",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Both even and odd classifications are repeatedly evaluated.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "division",
+      "node_id": "mat_g2_na_q3_8",
+      "clause": "division",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Each parity claim is framed through divisibility.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "divisor_2",
+      "node_id": "mat_g2_na_q3_8",
+      "clause": "2",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All parity claims explicitly divide by 2 or describe two equal parts.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    }
+  ]
+}

@@ -1,0 +1,756 @@
+{
+  "batch": "batch147_mat_g3_na_q2_4",
+  "attested_at": "2026-09-22T14:39:16Z",
+  "attested_by": "blind-attester-gpt-terra-d30d31-20260922",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "read local_only/scratch/attest117/mat_g3_na_q2_4.prompt.txt (verbatim render_prompt_block output only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "Tool-bearing GPT-Terra subagent reported reading only assigned prompts and writing/validating only sibling verdict outputs; exact tool names were not fully reported, and dispatcher did not verify sandbox-level non-access beyond that report."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g3_na_q2_4",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g3_na_q2_4",
+        "seed": 11,
+        "formatter": "read_mcq",
+        "question_text": "The dot is at 401 and it moves backward 20 numbers. Starting from 401, just count back 20 numbers. Which number will the dot land on?",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "NumberLine",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 381,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 380,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 382,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 421,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 381,
+        "hints": [
+          "We are subtracting 20 from 401.",
+          "Subtract the ones: 1 − 0 = 1.",
+          "Subtract the tens: 0 − 2 = -2.",
+          "The difference of 401 − 20 = 381."
+        ],
+        "visual_type": "NumberLine",
+        "visual_payload": {
+          "start": 370,
+          "end": 410,
+          "major_interval": 10,
+          "minor_interval": 5,
+          "interval": 5,
+          "dot_value": 401,
+          "move_by": -20,
+          "content_type": "whole_number",
+          "value": 381,
+          "correct_position": 381,
+          "divisions": 8,
+          "is_interactive": false,
+          "show_labels": true,
+          "correct_answer": 381.0,
+          "target": 381.0
+        },
+        "visual_render": {
+          "visual_type": "NumberLine",
+          "renderer_input_digest": "b03cbfd0b39f92dfcabb8dd358fe2eba3e65ba4f64d66e28adae7efd1de338ec",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "NumberLine",
+            "element_count": 19,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "370",
+              "380",
+              "390",
+              "400",
+              "410"
+            ],
+            "distinct_colours": [
+              "hsl(var(--border-color)",
+              "hsl(var(--text-muted)",
+              "hsl(var(--text)",
+              "hsl(var(--primary)",
+              "hsl(var(--card-bg)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "8472984d6dda4facdda7",
+        "replay_digest": "0d37582394e2eaac2491c02767892ade4a6187a62f97cd696f5bcc971f9636d7"
+      },
+      {
+        "node_id": "mat_g3_na_q2_4",
+        "seed": 23,
+        "formatter": "cloze",
+        "question_text": "303 − 180 = ___",
+        "correct_answer": 123,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 483,
+            "text": "483",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 124,
+            "text": "124",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 123,
+            "text": "123",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 122,
+            "text": "122",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 123,
+        "hints": [
+          "We are subtracting 180 from 303.",
+          "Subtract the ones: 3 − 0 = 3.",
+          "Subtract the tens: 0 − 8 = -8.",
+          "The difference of 303 − 180 = 123."
+        ],
+        "sample_id": "a3ce7680bbb808bda5c3",
+        "replay_digest": "6f2950e6e9e142f9bf6fd9dec54d788812aa64ced441e956e4913211e1d24b17"
+      },
+      {
+        "node_id": "mat_g3_na_q2_4",
+        "seed": 42,
+        "formatter": "cloze",
+        "question_text": "1830 − 1744 = ___",
+        "correct_answer": 86,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 87,
+            "text": "87",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 86,
+            "text": "86",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 3574,
+            "text": "3574",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 85,
+            "text": "85",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 86,
+        "hints": [
+          "We are subtracting 1744 from 1830.",
+          "The ones digit 0 is less than 4, so we need to borrow. Borrow 1 ten: 10 − 4 = 6.",
+          "Subtract the tens: 2 − 4 = -2. (after borrowing)",
+          "The difference of 1830 − 1744 = 86."
+        ],
+        "sample_id": "47565ef0b60751688f4f",
+        "replay_digest": "2a4100d62101d36dbc81c78f583c5226d38e95c894ee8fa17653000cb6872451"
+      },
+      {
+        "node_id": "mat_g3_na_q2_4",
+        "seed": 57,
+        "formatter": "mcq",
+        "question_text": "What is 2946 − 2730?",
+        "correct_answer": 216,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 5676,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 217,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 215,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 216,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 216,
+        "hints": [
+          "We are subtracting 2730 from 2946.",
+          "Subtract the ones: 6 − 0 = 6.",
+          "Subtract the tens: 4 − 3 = 1.",
+          "The difference of 2946 − 2730 = 216."
+        ],
+        "sample_id": "ee0596b241952ce2b8c9",
+        "replay_digest": "53ae712c45b10542f7dd9938cdebb49c40128beeed95bfe069fb7ec408484908"
+      },
+      {
+        "node_id": "mat_g3_na_q2_4",
+        "seed": 64,
+        "formatter": "cloze",
+        "question_text": "2661 − 2580 = ___",
+        "correct_answer": 81,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 81,
+            "text": "81",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 80,
+            "text": "80",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 5241,
+            "text": "5241",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 82,
+            "text": "82",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 81,
+        "hints": [
+          "We are subtracting 2580 from 2661.",
+          "Subtract the ones: 1 − 0 = 1.",
+          "Subtract the tens: 6 − 8 = -2.",
+          "The difference of 2661 − 2580 = 81."
+        ],
+        "sample_id": "fa25afd6c8177fda3b33",
+        "replay_digest": "1b8efa08962f25f6a5d5bd5b18562eb03177685811da3ce24378b5f3ba9db044"
+      },
+      {
+        "node_id": "mat_g3_na_q2_4",
+        "seed": 78,
+        "formatter": "cloze",
+        "question_text": "6525 − 4125 = ___",
+        "correct_answer": 2400,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 2401,
+            "text": "2401",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 2399,
+            "text": "2399",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 10650,
+            "text": "10650",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 2400,
+            "text": "2400",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 2400,
+        "hints": [
+          "We are subtracting 4125 from 6525.",
+          "Subtract the ones: 5 − 5 = 0.",
+          "Subtract the tens: 2 − 2 = 0.",
+          "The difference of 6525 − 4125 = 2400."
+        ],
+        "sample_id": "36a4017643eb3b70641f",
+        "replay_digest": "5e1634edd33c29eb915617713f1c063412c4073f218f48b2bc21038424da47cf"
+      },
+      {
+        "node_id": "mat_g3_na_q2_4",
+        "seed": 91,
+        "formatter": "read_mcq",
+        "question_text": "The dot is at 860 and it moves backward 30 numbers. Starting from 860, just count back 30 numbers. Which number will the dot land on?",
+        "correct_answer": "C",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "NumberLine",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 831,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 829,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 830,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 890,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 830,
+        "hints": [
+          "We are subtracting 30 from 860.",
+          "Subtract the ones: 0 − 0 = 0.",
+          "Subtract the tens: 6 − 3 = 3.",
+          "The difference of 860 − 30 = 830."
+        ],
+        "visual_type": "NumberLine",
+        "visual_payload": {
+          "start": 820,
+          "end": 870,
+          "major_interval": 10,
+          "minor_interval": 5,
+          "interval": 5,
+          "dot_value": 860,
+          "move_by": -30,
+          "content_type": "whole_number",
+          "value": 830,
+          "correct_position": 830,
+          "divisions": 10,
+          "is_interactive": false,
+          "show_labels": true,
+          "correct_answer": 830.0,
+          "target": 830.0
+        },
+        "visual_render": {
+          "visual_type": "NumberLine",
+          "renderer_input_digest": "a9ea143769237fb2e4425d5a6085964179da25e4d8debe2b3e9911eb0461cc44",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "NumberLine",
+            "element_count": 22,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "820",
+              "830",
+              "840",
+              "850",
+              "860",
+              "870"
+            ],
+            "distinct_colours": [
+              "hsl(var(--border-color)",
+              "hsl(var(--text-muted)",
+              "hsl(var(--text)",
+              "hsl(var(--primary)",
+              "hsl(var(--card-bg)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "4ed4e12885bd0b15db6d",
+        "replay_digest": "3d69fde1f41e867af7395f517c34ed12908d48b8e6d55a03ccd851286ffa4af5"
+      },
+      {
+        "node_id": "mat_g3_na_q2_4",
+        "seed": 103,
+        "formatter": "true_false",
+        "question_text": "4200 − 2167 = 2033. True or False?",
+        "correct_answer": true,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "true_false",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "true_false",
+          "experience": "standard"
+        },
+        "resolved_answer": true,
+        "hints": [
+          "We are subtracting 2167 from 4200.",
+          "The ones digit 0 is less than 7, so we need to borrow. Borrow 1 ten: 10 − 7 = 3.",
+          "Subtract the tens: -1 − 6 = -7. (after borrowing)",
+          "The difference of 4200 − 2167 = 2033."
+        ],
+        "sample_id": "a1a920c219f5b2633f41",
+        "replay_digest": "46e7d5c39bbd238efaf20d4d496ec9552effabf5b3ccd7d3db75fb708fdbcb0a"
+      },
+      {
+        "node_id": "mat_g3_na_q2_4",
+        "seed": 118,
+        "formatter": "mcq",
+        "question_text": "What is 900 − 24?",
+        "correct_answer": 876,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 875,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 924,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 877,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 876,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 876,
+        "hints": [
+          "We are subtracting 24 from 900.",
+          "The ones digit 0 is less than 4, so we need to borrow. Borrow 1 ten: 10 − 4 = 6.",
+          "Subtract the tens: -1 − 2 = -3. (after borrowing)",
+          "The difference of 900 − 24 = 876."
+        ],
+        "sample_id": "828ba20ecbc93c170a1e",
+        "replay_digest": "f957dc5dee1518d06578aacfa2aab15e4a8346008d650040630b422f52b0ca24"
+      },
+      {
+        "node_id": "mat_g3_na_q2_4",
+        "seed": 127,
+        "formatter": "read_mcq",
+        "question_text": "The dot is at 4431 and it moves backward 1320 numbers. Starting from 4431, just count back 1320 numbers. Which number will the dot land on?",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "NumberLine",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 3111,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 5751,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 3112,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 3110,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 3111,
+        "hints": [
+          "We are subtracting 1320 from 4431.",
+          "Subtract the ones: 1 − 0 = 1.",
+          "Subtract the tens: 3 − 2 = 1.",
+          "The difference of 4431 − 1320 = 3111."
+        ],
+        "visual_type": "NumberLine",
+        "visual_payload": {
+          "start": 2500,
+          "end": 4500,
+          "major_interval": 500,
+          "minor_interval": 100,
+          "interval": 100,
+          "dot_value": 4431,
+          "move_by": -1320,
+          "content_type": "whole_number",
+          "value": 3111,
+          "correct_position": 3111,
+          "divisions": 20,
+          "is_interactive": false,
+          "show_labels": true,
+          "correct_answer": 3111.0,
+          "target": 3111.0
+        },
+        "visual_render": {
+          "visual_type": "NumberLine",
+          "renderer_input_digest": "54c7e7bc4aca88644259f16cb8d28f725537334d33da724597dd8206597c14ee",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "NumberLine",
+            "element_count": 31,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "2500",
+              "3000",
+              "3500",
+              "4000",
+              "4500"
+            ],
+            "distinct_colours": [
+              "hsl(var(--border-color)",
+              "hsl(var(--text-muted)",
+              "hsl(var(--text)",
+              "hsl(var(--primary)",
+              "hsl(var(--card-bg)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "19b1f1c56f93a5f1148f",
+        "replay_digest": "790f15d67242378b69ba1292db8e4100a6ef45e041857c67b5bcf145c579ce22"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "subtract_numbers",
+      "node_id": "mat_g3_na_q2_4",
+      "clause": "Subtract numbers",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All ten samples ask for a subtraction result, whether as an equation, backward movement, or a true/false check.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "less_than_10_000",
+      "node_id": "mat_g3_na_q2_4",
+      "clause": "less than 10 000",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        42,
+        57,
+        78,
+        103,
+        127
+      ],
+      "reasoning": "The subtraction examples use values below 10,000, including 6,525 − 4,125 and 4,431 − 1,320.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "with_and_without_regrouping",
+      "node_id": "mat_g3_na_q2_4",
+      "clause": "with and without regrouping",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Non-regrouping examples include 860 − 30 and 6,525 − 4,125, while 303 − 180, 1,830 − 1,744, and 900 − 24 require regrouping.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    }
+  ]
+}

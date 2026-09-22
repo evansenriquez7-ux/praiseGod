@@ -716,5 +716,35 @@
     "candidate_fix_NOT_APPLIED": "In the supersession test, disregard verdict pairs whose capability is not in the node's current `requires`, because such a pair is a ruling no check consults -- which is the rationale _attestation_staleness's own docstring already gives for skipping fully-superseded records. A record all of whose CONSULTED pairs are superseded is not evidence for anything.",
     "why_not_applied_here": "It is a source edit under INPUT_ROOTS: it owes a mutation that catches its own planted violation by name, a docs/pgen_contract.md row in the same commit (Protocol 7), and the full ~3.4h re-proof chain (corpus, benchmark, frontend artifact, six release shards). This session's ruled scope was the zero-re-proof attestation campaign. Sequencing it is the owner's call."
   },
-  "attester_model_note": "d01-d16 were dispatched to Opus 5 subagents on 2026-09-21; the session hit its rate limit mid-wave. d17-d33 are dispatched to Haiku 4.5 subagents on 2026-09-22 at the owner's instruction. The identity string names the model that actually judged, because \u00a76H independence is only checkable if the record is truthful about who made the verdict."
+  "prevalence_campaign_2026_09_23": {
+    "session": "codex-h06-prevalence117-20260922",
+    "status": "complete",
+    "standard": "Owner ruling 9: weigh how often each clause is meaningfully exhibited across the ten rendered samples, not whether one isolated sample exhibits it",
+    "dispatch_model": "gpt-5.6-terra, low reasoning (owner ruling 10)",
+    "batch_range": "batch117..batch150",
+    "dispatches": 34,
+    "attester_identities": 25,
+    "max_nodes_per_identity": 11,
+    "nodes": 151,
+    "capability_pairs": 767,
+    "verdict_counts": {
+      "PROVIDED": 593,
+      "NOT_PROVIDED": 174
+    },
+    "phase2_result": {
+      "findings": 173,
+      "CONTRADICTED": 173,
+      "UNATTESTED": 0,
+      "STALE": 0,
+      "UNADJUDICABLE": 0,
+      "integrity_6G": 0,
+      "plurality_6H": 0,
+      "other": 0
+    },
+    "input_digest_before_and_after": "dfae9bbb7a1398d729e4e0153c9494047ff925756a15b9676b94ceef40970fd7",
+    "reproof_owed": false,
+    "instrument_warning": "57 -> 173 is the prevalence standard producing a sharper single-standard corpus, not a content regression. The campaign also changes rater family from the historical Claude corpus to GPT-Terra; cross-family agreement is unmeasured. Confirm a lone NOT_PROVIDED independently before source work.",
+    "filing_note": "Every record was written by tests.attester_file from one packet/key/verdict file per node. Malformed Attester returns (wrong enum, wrong reasoning key, combined node files, or non-opaque item ids) were returned to the authoring Attester and rejected before filing; the dispatcher authored no verdict."
+  },
+  "attester_model_note": "The 2026-09-21/22 neutral-standard campaign used Opus 5 for d01-d16 and Haiku 4.5 for d17-d33. The 2026-09-22/23 prevalence campaign used gpt-5.6-terra low-reasoning identities under owner ruling 10. Every record names the model family that actually judged; \u00a76H independence is only checkable when that identity is truthful."
 }

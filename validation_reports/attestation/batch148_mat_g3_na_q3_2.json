@@ -1,0 +1,569 @@
+{
+  "batch": "batch148_mat_g3_na_q3_2",
+  "attested_at": "2026-09-22T14:39:16Z",
+  "attested_by": "blind-attester-gpt-terra-d32d33-20260922",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "read local_only/scratch/attest117/mat_g3_na_q3_2.prompt.txt (verbatim render_prompt_block output only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "Tool-bearing GPT-Terra subagent reported reading only assigned prompts and writing/validating only sibling verdict outputs; exact tool names were not fully reported, and dispatcher did not verify sandbox-level non-access beyond that report."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g3_na_q3_2",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g3_na_q3_2",
+        "seed": 11,
+        "formatter": "true_false",
+        "question_text": "1000 × 10 = 10000. True or False?",
+        "correct_answer": true,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "true_false",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "true_false",
+          "experience": "standard"
+        },
+        "resolved_answer": true,
+        "hints": [
+          "We need to find the total of equal groups 1000 groups of 10.",
+          "Use the 10 times table: 10 × 1000.",
+          "Break 1000 into 1000 + 0: (1000 × 10) + (0 × 10) = 10000 + 0 = 10000.",
+          "The product of 1000 × 10 = 10000."
+        ],
+        "sample_id": "ed2da92b9fc7f9592a44",
+        "replay_digest": "59de37432ad8f04537363deafe8bbe5106653a7757fbc1240f63c4c4db4f5690"
+      },
+      {
+        "node_id": "mat_g3_na_q3_2",
+        "seed": 23,
+        "formatter": "cloze",
+        "question_text": "85 × 10 = ___",
+        "correct_answer": 850,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 75,
+            "text": "75",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 840,
+            "text": "840",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 95,
+            "text": "95",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 850,
+            "text": "850",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 850,
+        "hints": [
+          "We need to find the total of equal groups 85 groups of 10.",
+          "Use the 10 times table: 10 × 85.",
+          "Break 85 into 80 + 5: (80 × 10) + (5 × 10) = 800 + 50 = 850.",
+          "The product of 85 × 10 = 850."
+        ],
+        "sample_id": "327f1cf22413cf7182f5",
+        "replay_digest": "461c7be03f91920876ebdc54e7aa7915478139f084ffe396035daa29fb6fa1b7"
+      },
+      {
+        "node_id": "mat_g3_na_q3_2",
+        "seed": 42,
+        "formatter": "mcq",
+        "question_text": "What is 41 × 6?",
+        "correct_answer": 246,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 246,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 47,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 240,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 35,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 246,
+        "hints": [
+          "We need to find the total of equal groups 41 groups of 6.",
+          "Use the 6 times table: 6 × 41.",
+          "Break 41 into 40 + 1: (40 × 6) + (1 × 6) = 240 + 6 = 246.",
+          "The product of 41 × 6 = 246."
+        ],
+        "sample_id": "c8b530fe3e9caa6eee68",
+        "replay_digest": "7ef063cac28d91088d757381c7388e3dab0396758267d609a015c7bce44ac1e9"
+      },
+      {
+        "node_id": "mat_g3_na_q3_2",
+        "seed": 57,
+        "formatter": "error_detect",
+        "question_text": "Pia solved: \"330 × 2 = ___\". Pia says the missing number is 660. Is Pia correct?",
+        "correct_answer": {
+          "has_error": false,
+          "correct_value": 660
+        },
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "error_detect",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "error_detect",
+          "experience": "standard"
+        },
+        "resolved_answer": {
+          "has_error": false,
+          "correct_value": 660
+        },
+        "hints": [
+          "We need to find the total of equal groups 330 groups of 2.",
+          "Think of it as 2 groups of 330: 330 + 330.",
+          "Break 330 into 330 + 0: (330 × 2) + (0 × 2) = 660 + 0 = 660.",
+          "The product of 330 × 2 = 660."
+        ],
+        "sample_id": "6f748cd49e54a0137fe0",
+        "replay_digest": "3cae8f139f764fe3881c1331985eebaf4168be9539e813139587b73eab6d7c5a"
+      },
+      {
+        "node_id": "mat_g3_na_q3_2",
+        "seed": 64,
+        "formatter": "cloze",
+        "question_text": "10 × 400 = ___",
+        "correct_answer": 4000,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 3999,
+            "text": "3999",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 3600,
+            "text": "3600",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 4000,
+            "text": "4000",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 410,
+            "text": "410",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 4000,
+        "hints": [
+          "We need to find the total of equal groups 10 groups of 400.",
+          "Use the 400 times table: 400 × 10.",
+          "Break 10 into 10 + 0: (10 × 400) + (0 × 400) = 4000 + 0 = 4000.",
+          "The product of 10 × 400 = 4000."
+        ],
+        "sample_id": "e7b458a9c4820800b41e",
+        "replay_digest": "c459264969a6ddd43793b2f53b4bcdccee08d902a0e684fc31f2c14127814e88"
+      },
+      {
+        "node_id": "mat_g3_na_q3_2",
+        "seed": 78,
+        "formatter": "mcq",
+        "question_text": "What is 95 × 6?",
+        "correct_answer": 570,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 564,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 89,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 101,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 570,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 570,
+        "hints": [
+          "We need to find the total of equal groups 95 groups of 6.",
+          "Use the 6 times table: 6 × 95.",
+          "Break 95 into 90 + 5: (90 × 6) + (5 × 6) = 540 + 30 = 570.",
+          "The product of 95 × 6 = 570."
+        ],
+        "sample_id": "0f806cbf01630096dae6",
+        "replay_digest": "0c9718018890c15126d5d1cb3414e3d78758d68b90dbedf48d6e4a07b47614a2"
+      },
+      {
+        "node_id": "mat_g3_na_q3_2",
+        "seed": 91,
+        "formatter": "error_detect",
+        "question_text": "Grace solved: \"61 × 4 = ___\". Grace says the missing number is 244. Is Grace correct?",
+        "correct_answer": {
+          "has_error": false,
+          "correct_value": 244
+        },
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "error_detect",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "error_detect",
+          "experience": "standard"
+        },
+        "resolved_answer": {
+          "has_error": false,
+          "correct_value": 244
+        },
+        "hints": [
+          "We need to find the total of equal groups 61 groups of 4.",
+          "Think of it as 4 groups of 61: 61 + 61 + 61 + 61.",
+          "Break 61 into 60 + 1: (60 × 4) + (1 × 4) = 240 + 4 = 244.",
+          "The product of 61 × 4 = 244."
+        ],
+        "sample_id": "65ccdc18567d5d2dda8d",
+        "replay_digest": "ae65deaaa7c54abfd38db5944eeace039bd2e9fc3aea9c249a489533eb765801"
+      },
+      {
+        "node_id": "mat_g3_na_q3_2",
+        "seed": 103,
+        "formatter": "error_detect",
+        "question_text": "Grace solved: \"1000 × 10 = ___\". Grace says the missing number is 10010. Is Grace correct?",
+        "correct_answer": {
+          "has_error": true,
+          "correct_value": 10000
+        },
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "error_detect",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "error_detect",
+          "experience": "standard"
+        },
+        "resolved_answer": {
+          "has_error": true,
+          "correct_value": 10000
+        },
+        "hints": [
+          "We need to find the total of equal groups 1000 groups of 10.",
+          "Use the 10 times table: 10 × 1000.",
+          "Break 1000 into 1000 + 0: (1000 × 10) + (0 × 10) = 10000 + 0 = 10000.",
+          "The product of 1000 × 10 = 10000."
+        ],
+        "sample_id": "f03b452443c6c53eaf62",
+        "replay_digest": "840684d8d62b74f008941cae9894bbfd5acea4e6070e51702df5f82048ebeb20"
+      },
+      {
+        "node_id": "mat_g3_na_q3_2",
+        "seed": 118,
+        "formatter": "mcq",
+        "question_text": "What is 819 × 3?",
+        "correct_answer": 2457,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 2457,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 822,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 2454,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 816,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 2457,
+        "hints": [
+          "We need to find the total of equal groups 819 groups of 3.",
+          "Think of it as 3 groups of 819: 819 + 819 + 819.",
+          "Break 819 into 810 + 9: (810 × 3) + (9 × 3) = 2430 + 27 = 2457.",
+          "The product of 819 × 3 = 2457."
+        ],
+        "sample_id": "81e02346c2650b8c6376",
+        "replay_digest": "db27fd96422f6b99cb5e7363a7c0d3c05cb2877c69102319be8e00bc9aac9e5b"
+      },
+      {
+        "node_id": "mat_g3_na_q3_2",
+        "seed": 127,
+        "formatter": "cloze",
+        "question_text": "13 × 2 = ___",
+        "correct_answer": 26,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 11,
+            "text": "11",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 15,
+            "text": "15",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 24,
+            "text": "24",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 26,
+            "text": "26",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 26,
+        "hints": [
+          "We need to find the total of equal groups 13 groups of 2.",
+          "Think of it as 2 groups of 13: 13 + 13.",
+          "Break 13 into 10 + 3: (10 × 2) + (3 × 2) = 20 + 6 = 26.",
+          "The product of 13 × 2 = 26."
+        ],
+        "sample_id": "a6c3e41c0b09abd3aa34",
+        "replay_digest": "1e17e7bfcb91bec463d4e6b527db8859462671d2592cd2da9bef411658b96b9c"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "multiply_numbers",
+      "node_id": "mat_g3_na_q3_2",
+      "clause": "Multiply numbers",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        78,
+        118
+      ],
+      "reasoning": "Direct multiplication questions occur across the sample set, including 41 × 6 and 819 × 3.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "with_and_without_regrouping",
+      "node_id": "mat_g3_na_q3_2",
+      "clause": "with and without regrouping",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        78,
+        103
+      ],
+      "reasoning": "95 × 6 requires carrying, while the error check at seed 103 contrasts a non-regrouping power-of-ten product.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "2_to_3_digit_by_1_digit",
+      "node_id": "mat_g3_na_q3_2",
+      "clause": "2- to 3-digit numbers by a 1-digit number",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        118
+      ],
+      "reasoning": "The samples include 2-digit-by-1-digit (41 × 6) and 3-digit-by-1-digit (819 × 3) products.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "2_to_4_digit_by_leading_non_zero",
+      "node_id": "mat_g3_na_q3_2",
+      "clause": "2- to 4-digit numbers by a number whose leading digit is the only non-zero digit",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        64
+      ],
+      "reasoning": "1000 × 10 and 10 × 400 use a 2- to 4-digit factor with the other factor having only its leading digit non-zero.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "products_up_to_10_000",
+      "node_id": "mat_g3_na_q3_2",
+      "clause": "products up to 10 000",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        118
+      ],
+      "reasoning": "The displayed products include 10,000 and 2,457, both within the stated ceiling.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    }
+  ]
+}

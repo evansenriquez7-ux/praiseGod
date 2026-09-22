@@ -1,0 +1,744 @@
+{
+  "batch": "batch122_mat_g1_na_q1_7",
+  "attested_at": "2026-09-22T14:05:05Z",
+  "attested_by": "blind-attester-gpt-terra-d06-20260922",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "read local_only/scratch/attest117/mat_g1_na_q1_7.prompt.txt (verbatim render_prompt_block output only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "Tool-bearing GPT-Terra subagent reported using exec_command (sed) only on assigned prompt/verdict files and apply_patch only to write/correct sibling verdict JSON; dispatcher did not verify sandbox-level non-access beyond that report."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g1_na_q1_7",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g1_na_q1_7",
+        "seed": 11,
+        "formatter": "mcq",
+        "question_text": "One group has 10 items and another group has 2 items. If you put them together, how many items are there in all?",
+        "correct_answer": 12,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 22,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 11,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 13,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 12,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 12,
+        "hints": [
+          "We are adding two numbers: 10 and 2.",
+          "Add the last digits: 0 + 2 = 2.",
+          "Add the first digits: 1 + 0 = 1.",
+          "The sum is 10 + 2 = 12."
+        ],
+        "sample_id": "0e4ff3e9a08aa9d8a15d",
+        "replay_digest": "1478204d1fb5ccc04e954bc27375f7d22c94c5263445b4bcfef580d755e9a20e"
+      },
+      {
+        "node_id": "mat_g1_na_q1_7",
+        "seed": 23,
+        "formatter": "cloze",
+        "question_text": "One group has 7 items and another group has 11 items. Putting them together makes ___ items in all.",
+        "correct_answer": 18,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 18,
+            "text": "18",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 28,
+            "text": "28",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 19,
+            "text": "19",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 17,
+            "text": "17",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 18,
+        "hints": [
+          "We are adding two numbers: 7 and 11.",
+          "Add the last digits: 7 + 1 = 8.",
+          "Add the first digits: 0 + 1 = 1.",
+          "The sum is 7 + 11 = 18."
+        ],
+        "sample_id": "426735a3a5a9fbab6280",
+        "replay_digest": "1787b41214842fe484a255d3df9a3e89efaeb912f259ed9aa4fca65319ea9b8a"
+      },
+      {
+        "node_id": "mat_g1_na_q1_7",
+        "seed": 42,
+        "formatter": "set_fill_in_blank",
+        "question_text": "Show 4 + 2 on the number line.",
+        "correct_answer": 6,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "set_fill_in_blank",
+          "is_visual": true,
+          "visual_type": "NumberLine",
+          "interaction_mode": "set",
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "resolved_answer": 6,
+        "hints": [
+          "We are adding two numbers: 4 and 2.",
+          "Add the last digits: 4 + 2 = 6.",
+          "The sum is 4 + 2 = 6."
+        ],
+        "visual_type": "NumberLine",
+        "visual_payload": {
+          "start": 0,
+          "end": 20,
+          "major_interval": 5,
+          "minor_interval": 1,
+          "interval": 1,
+          "dot_value": 0,
+          "move_by": 2,
+          "content_type": "whole_number",
+          "value": 6,
+          "correct_position": 6,
+          "divisions": 20,
+          "is_interactive": true,
+          "show_labels": true,
+          "correct_answer": 6.0,
+          "target": 6.0
+        },
+        "visual_render": {
+          "visual_type": "NumberLine",
+          "renderer_input_digest": "c56c87f1e7caddd5bb1369408c0e9c06b644c188f259ca4b7ba0e2403c10366f",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "NumberLine",
+            "element_count": 34,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "0",
+              "5",
+              "10",
+              "15",
+              "20",
+              "Your answer: Position",
+              "Click track, drag dot, or use ← → arrow keys"
+            ],
+            "distinct_colours": [
+              "hsl(var(--border-color)",
+              "hsl(var(--text-muted)",
+              "hsl(var(--text)",
+              "hsl(var(--primary)",
+              "hsl(var(--card-bg)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "2fc389446ed6f15fce58",
+        "replay_digest": "4a9ba645b878358dd689f801d2aaeb6a9426c1a2c6963783fbde3cc5603534e6"
+      },
+      {
+        "node_id": "mat_g1_na_q1_7",
+        "seed": 57,
+        "formatter": "read_mcq",
+        "question_text": "✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️ — There are 16 items.\n✝️✝️✝️ — 3 more items are added.\nHow many total items are there?",
+        "correct_answer": "C",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "EmojiPictorial",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 3,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 20,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 19,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 13,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 19,
+        "hints": [
+          "We are adding two numbers: 16 and 3.",
+          "Add the last digits: 6 + 3 = 9.",
+          "Add the first digits: 1 + 0 = 1.",
+          "The sum is 16 + 3 = 19."
+        ],
+        "visual_type": "EmojiPictorial",
+        "visual_payload": {
+          "emoji": "✝️",
+          "group_a": 16,
+          "group_b": 3,
+          "operation": "addition",
+          "layout": "separated",
+          "display": "✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️",
+          "display_b": "✝️✝️✝️"
+        },
+        "visual_render": {
+          "visual_type": "EmojiPictorial",
+          "renderer_input_digest": "a29759175ef0edfc3beebddb517e833af26f5a5e9ab161eec4d7abb195726b14",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "EmojiPictorial",
+            "element_count": 25,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "✝️",
+              "+"
+            ],
+            "distinct_colours": [
+              "hsl(var(--card-bg)",
+              "hsl(var(--border-color)",
+              "hsl(var(--text-muted)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "18faceb0389a504d3fee",
+        "replay_digest": "023b864a2a47723fb24a652288322e7908dfed74482f9411c70a3f906b2c61cd"
+      },
+      {
+        "node_id": "mat_g1_na_q1_7",
+        "seed": 64,
+        "formatter": "read_fill_in_blank",
+        "question_text": "The two parts are 1 and 10. What is the sum?",
+        "correct_answer": 11,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_fill_in_blank",
+          "is_visual": true,
+          "visual_type": "NumberBond",
+          "interaction_mode": "read",
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "resolved_answer": 11,
+        "hints": [
+          "We are adding two numbers: 1 and 10.",
+          "Add the last digits: 1 + 0 = 1.",
+          "Add the first digits: 0 + 1 = 1.",
+          "The sum is 1 + 10 = 11."
+        ],
+        "visual_type": "NumberBond",
+        "visual_payload": {
+          "whole": null,
+          "part1": 1,
+          "part2": 10,
+          "blank_position": "whole"
+        },
+        "visual_render": {
+          "visual_type": "NumberBond",
+          "renderer_input_digest": "67285cef0541a4d770f04bc17ccc164f0ea2b8c2177b59c72c30e61cd5af19be",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "NumberBond",
+            "element_count": 7,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 1,
+            "text_labels": [
+              "1",
+              "10"
+            ],
+            "distinct_colours": [
+              "hsl(var(--primary)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "d2bcf9e6aa187f663376",
+        "replay_digest": "e704bf4a9688660b91dc500c2a7132ee6514a3d8ac328b5d146f5462f86c58ea"
+      },
+      {
+        "node_id": "mat_g1_na_q1_7",
+        "seed": 78,
+        "formatter": "error_detect",
+        "question_text": "Manny solved: \"Start at 13. Count up 2 more. You land on ___\". Manny says the blank is 15. Is Manny correct?",
+        "correct_answer": {
+          "has_error": false,
+          "correct_value": 15
+        },
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "error_detect",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "error_detect",
+          "experience": "standard"
+        },
+        "resolved_answer": {
+          "has_error": false,
+          "correct_value": 15
+        },
+        "hints": [
+          "We are adding two numbers: 13 and 2.",
+          "Add the last digits: 3 + 2 = 5.",
+          "Add the first digits: 1 + 0 = 1.",
+          "The sum is 13 + 2 = 15."
+        ],
+        "sample_id": "a8826d6fb0bf8d7a6569",
+        "replay_digest": "1a3a999673c87156594092d1e78f2857e535c28bade34a11a225c01eb020e454"
+      },
+      {
+        "node_id": "mat_g1_na_q1_7",
+        "seed": 91,
+        "formatter": "set_fill_in_blank",
+        "question_text": "Show 7 + 1 on the number line.",
+        "correct_answer": 8,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "set_fill_in_blank",
+          "is_visual": true,
+          "visual_type": "NumberLine",
+          "interaction_mode": "set",
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "resolved_answer": 8,
+        "hints": [
+          "We are adding two numbers: 7 and 1.",
+          "Add the last digits: 7 + 1 = 8.",
+          "The sum is 7 + 1 = 8."
+        ],
+        "visual_type": "NumberLine",
+        "visual_payload": {
+          "start": 0,
+          "end": 20,
+          "major_interval": 5,
+          "minor_interval": 1,
+          "interval": 1,
+          "dot_value": 0,
+          "move_by": 1,
+          "content_type": "whole_number",
+          "value": 8,
+          "correct_position": 8,
+          "divisions": 20,
+          "is_interactive": true,
+          "show_labels": true,
+          "correct_answer": 8.0,
+          "target": 8.0
+        },
+        "visual_render": {
+          "visual_type": "NumberLine",
+          "renderer_input_digest": "da4e378ab31b28d85595e99e9608814dfe77c0dc8639f13b4b73b4dfa5806e14",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "NumberLine",
+            "element_count": 34,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "0",
+              "5",
+              "10",
+              "15",
+              "20",
+              "Your answer: Position",
+              "Click track, drag dot, or use ← → arrow keys"
+            ],
+            "distinct_colours": [
+              "hsl(var(--border-color)",
+              "hsl(var(--text-muted)",
+              "hsl(var(--text)",
+              "hsl(var(--primary)",
+              "hsl(var(--card-bg)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "4309be7447a090343d85",
+        "replay_digest": "c9ae6d142ef6606bfe487a60e1ca538804ff40e0f0d1445d51e7c46da5eacf4d"
+      },
+      {
+        "node_id": "mat_g1_na_q1_7",
+        "seed": 103,
+        "formatter": "true_false",
+        "question_text": "One group has 15 items and another group has 3 items. Putting them together makes 18 items in all. True or False?",
+        "correct_answer": true,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "true_false",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "true_false",
+          "experience": "standard"
+        },
+        "resolved_answer": true,
+        "hints": [
+          "We are adding two numbers: 15 and 3.",
+          "Add the last digits: 5 + 3 = 8.",
+          "Add the first digits: 1 + 0 = 1.",
+          "The sum is 15 + 3 = 18."
+        ],
+        "sample_id": "cfe1c2660650580965d9",
+        "replay_digest": "6b514d209b2a34ec6de4b5dac64d6b689645b7b21681123a19579d1f98b889d6"
+      },
+      {
+        "node_id": "mat_g1_na_q1_7",
+        "seed": 118,
+        "formatter": "error_detect",
+        "question_text": "Dante solved: \"Start at 13. Count up 6 more. You land on ___\". Dante says the blank is 20. Is Dante correct?",
+        "correct_answer": {
+          "has_error": true,
+          "correct_value": 19
+        },
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "error_detect",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "error_detect",
+          "experience": "standard"
+        },
+        "resolved_answer": {
+          "has_error": true,
+          "correct_value": 19
+        },
+        "hints": [
+          "We are adding two numbers: 13 and 6.",
+          "Add the last digits: 3 + 6 = 9.",
+          "Add the first digits: 1 + 0 = 1.",
+          "The sum is 13 + 6 = 19."
+        ],
+        "sample_id": "6c4d5612e012d98ab5d7",
+        "replay_digest": "f1c85ec585725b85c49310776e2f696a47a3e4cd3da5f1960294ac5939779f24"
+      },
+      {
+        "node_id": "mat_g1_na_q1_7",
+        "seed": 127,
+        "formatter": "cloze",
+        "question_text": "Start at 6. Count up 3 more. You land on ___",
+        "correct_answer": 9,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 8,
+            "text": "8",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 19,
+            "text": "19",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 9,
+            "text": "9",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 10,
+            "text": "10",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 9,
+        "hints": [
+          "We are adding two numbers: 6 and 3.",
+          "Add the last digits: 6 + 3 = 9.",
+          "The sum is 6 + 3 = 9."
+        ],
+        "sample_id": "6bb7bde5e460a7653c1e",
+        "replay_digest": "feef75d9a4caffefa1f0e5fa10eb86e80bb7d7b53835c20fdbacedfcdbc0448a"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "illustrate",
+      "node_id": "mat_g1_na_q1_7",
+      "clause": "Illustrate",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        91
+      ],
+      "reasoning": "Seeds 42 and 91 explicitly ask the learner to show an addition expression on a rendered, interactive number line. The requested illustration is therefore both recurring and actually rendered for learner use.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "addition_of_numbers",
+      "node_id": "mat_g1_na_q1_7",
+      "clause": "addition of numbers",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Addition is the mathematical work throughout: tasks combine groups, find sums, use a number line, or count on. It is exhibited across every shown sample.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "sums_up_to_20",
+      "node_id": "mat_g1_na_q1_7",
+      "clause": "sums up to 20",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All displayed additions and count-on results are at most 20, with examples including 18, 19, and 20. The stated sum range is maintained across the whole set.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "concrete",
+      "node_id": "mat_g1_na_q1_7",
+      "clause": "concrete",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "Applying the stricter medium rule, no concrete model is rendered as a medium in which the learner works. References to groups of items are wording, and the rendered emoji display is pictorial rather than concrete.",
+      "action_taken": "Left registered pending one independent confirmation under the prevalence standard; no source change in re-instrumentation campaign."
+    },
+    {
+      "capability_id": "pictorial_models",
+      "node_id": "mat_g1_na_q1_7",
+      "clause": "pictorial models",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        57,
+        64,
+        91
+      ],
+      "reasoning": "Rendered pictorial representations recur in multiple forms: interactive number lines in seeds 42 and 91, an emoji pictorial in seed 57, and a number bond in seed 64. These are actual rendered models, not just prose references.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "describes",
+      "node_id": "mat_g1_na_q1_7",
+      "clause": "describes",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        57,
+        64,
+        91
+      ],
+      "reasoning": "The rendered models are varied rather than one repeated display type: number line, emoji pictorial, and number bond each appear, with the number line used in more than one task.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "addition",
+      "node_id": "mat_g1_na_q1_7",
+      "clause": "addition",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "The samples use descriptive wording in their prompts, but none asks the learner to describe addition. Under the stricter reading, contextual language alone does not evidence the learner capability of describing.",
+      "action_taken": "Left registered pending one independent confirmation under the prevalence standard; no source change in re-instrumentation campaign."
+    },
+    {
+      "capability_id": "counting_up",
+      "node_id": "mat_g1_na_q1_7",
+      "clause": "'counting up,'",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Each sample requires addition directly, whether by putting groups together, identifying a sum, positioning on a number line, or counting on.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "putting_together",
+      "node_id": "mat_g1_na_q1_7",
+      "clause": "'putting together'",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        78,
+        118,
+        127
+      ],
+      "reasoning": "Counting up is explicitly required in three separate prompts: start at a number and count up 2, 6, or 3 more. The capability recurs across independent samples.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    }
+  ]
+}

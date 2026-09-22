@@ -1,0 +1,638 @@
+{
+  "batch": "batch147_mat_g3_na_q3_0",
+  "attested_at": "2026-09-22T14:39:16Z",
+  "attested_by": "blind-attester-gpt-terra-d30d31-20260922",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "read local_only/scratch/attest117/mat_g3_na_q3_0.prompt.txt (verbatim render_prompt_block output only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "Tool-bearing GPT-Terra subagent reported reading only assigned prompts and writing/validating only sibling verdict outputs; exact tool names were not fully reported, and dispatcher did not verify sandbox-level non-access beyond that report."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g3_na_q3_0",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g3_na_q3_0",
+        "seed": 11,
+        "formatter": "error_detect",
+        "question_text": "Rosa solved: \"6 × 9 = ___\". Rosa says the missing number is 45. Is Rosa correct?",
+        "correct_answer": {
+          "has_error": true,
+          "correct_value": 54
+        },
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "error_detect",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "error_detect",
+          "experience": "standard"
+        },
+        "resolved_answer": {
+          "has_error": true,
+          "correct_value": 54
+        },
+        "hints": [
+          "We need to find the total of equal groups 6 groups of 9.",
+          "Use the 9 times table: 9 × 6.",
+          "The product of 6 × 9 = 54."
+        ],
+        "sample_id": "c5a0463cc80284ee6438",
+        "replay_digest": "eb7c656f3014ae2e9d1015e8a7cb2fd03118697b8e086f321d19dffdcf268d1c"
+      },
+      {
+        "node_id": "mat_g3_na_q3_0",
+        "seed": 23,
+        "formatter": "read_mcq",
+        "question_text": "Look at the 5×9 array. How many squares are shaded in all?",
+        "correct_answer": "D",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "GridArea",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 44,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 28,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 48,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 45,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 45,
+        "hints": [
+          "We need to find the total of equal groups 5 groups of 9.",
+          "Use the 9 times table: 9 × 5.",
+          "The product of 5 × 9 = 45."
+        ],
+        "visual_type": "GridArea",
+        "visual_payload": {
+          "rows": 5,
+          "cols": 9,
+          "shaded": true,
+          "highlight_groups": [],
+          "shape_type": "rectangle",
+          "correct_count": 45,
+          "grid_size": [
+            6,
+            10
+          ]
+        },
+        "visual_render": {
+          "visual_type": "GridArea",
+          "renderer_input_digest": "63692484eb306bdf6655c6709aaf8c2ca811766fdb8116e80a670f97d5da7819",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "GridArea",
+            "element_count": 58,
+            "svg_count": 1,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 1,
+            "input_count": 0,
+            "text_labels": [
+              "Click squares to shade a",
+              "9 × 5",
+              "rectangle",
+              "45 square units",
+              "Clear All",
+              "Click squares to shade/unshade"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--primary)",
+              "#4b5563",
+              "#374151",
+              "hsl(var(--border-color)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {
+              "grid-cell": 45
+            }
+          }
+        },
+        "sample_id": "ec9eb9750860be64950e",
+        "replay_digest": "ea2d28babc1a0cb70206868604ea1e391221fcb5365bffc2e91829597fafee41"
+      },
+      {
+        "node_id": "mat_g3_na_q3_0",
+        "seed": 42,
+        "formatter": "true_false",
+        "question_text": "1 × 6 = 7. True or False?",
+        "correct_answer": false,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "true_false",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "true_false",
+          "experience": "standard"
+        },
+        "resolved_answer": false,
+        "hints": [
+          "We need to find the total of equal groups 1 group of 6.",
+          "Use the 6 times table: 6 × 1.",
+          "The product of 1 × 6 = 6."
+        ],
+        "sample_id": "9c6770d3a349fdd9fdb7",
+        "replay_digest": "fe291bc45ef24964558a4249491e21c5e172d227bf191470342bc01fc91a0662"
+      },
+      {
+        "node_id": "mat_g3_na_q3_0",
+        "seed": 57,
+        "formatter": "set_fill_in_blank",
+        "question_text": "Shade all the squares inside the 4×6 rectangle. How many squares did you shade in all?",
+        "correct_answer": 24,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "set_fill_in_blank",
+          "is_visual": true,
+          "visual_type": "GridArea",
+          "interaction_mode": "set",
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "resolved_answer": 24,
+        "hints": [
+          "We need to find the total of equal groups 4 groups of 6.",
+          "Use the 6 times table: 6 × 4.",
+          "The product of 4 × 6 = 24."
+        ],
+        "visual_type": "GridArea",
+        "visual_payload": {
+          "rows": 4,
+          "cols": 6,
+          "shaded": false,
+          "highlight_groups": [],
+          "shape_type": "rectangle",
+          "correct_count": 24,
+          "grid_size": [
+            5,
+            7
+          ]
+        },
+        "visual_render": {
+          "visual_type": "GridArea",
+          "renderer_input_digest": "a7cae96c8629c66ef4d2e2a185c5f9afd06c15d54fa0bac96fbadd6e423457cd",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "GridArea",
+            "element_count": 37,
+            "svg_count": 1,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 1,
+            "input_count": 0,
+            "text_labels": [
+              "Click squares to shade a",
+              "6 × 4",
+              "rectangle",
+              "0 square units",
+              "Clear All",
+              "Click squares to shade/unshade"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--primary)",
+              "#4b5563",
+              "#374151",
+              "#f8fafc,",
+              "#e2e8f0)",
+              "#cbd5e1",
+              "hsl(var(--border-color)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {
+              "grid-cell": 24
+            }
+          }
+        },
+        "sample_id": "16c27a4b5eda17bca763",
+        "replay_digest": "42c1f8c70d316e3e13e81cffd74da3d0e0c55e884f2da9c1f495e4f486eefa17"
+      },
+      {
+        "node_id": "mat_g3_na_q3_0",
+        "seed": 64,
+        "formatter": "mcq",
+        "question_text": "What is 8 × 9?",
+        "correct_answer": 72,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 71,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 17,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 72,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 63,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 72,
+        "hints": [
+          "We need to find the total of equal groups 8 groups of 9.",
+          "Use the 9 times table: 9 × 8.",
+          "The product of 8 × 9 = 72."
+        ],
+        "sample_id": "986f40b526e935d5fea1",
+        "replay_digest": "46915c5de54c969261374a748c38eb802783fe937b9ae438040705f28063f6d8"
+      },
+      {
+        "node_id": "mat_g3_na_q3_0",
+        "seed": 78,
+        "formatter": "cloze",
+        "question_text": "8 × 6 = ___",
+        "correct_answer": 48,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 42,
+            "text": "42",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 14,
+            "text": "14",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 48,
+            "text": "48",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 2,
+            "text": "2",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 48,
+        "hints": [
+          "We need to find the total of equal groups 8 groups of 6.",
+          "Use the 6 times table: 6 × 8.",
+          "The product of 8 × 6 = 48."
+        ],
+        "sample_id": "abff3407843d5373e450",
+        "replay_digest": "a5eae34dfafa74fb718e05efbd539c28b6d69f6b4fb4d3ad87cbbfec8c4ea80f"
+      },
+      {
+        "node_id": "mat_g3_na_q3_0",
+        "seed": 91,
+        "formatter": "true_false",
+        "question_text": "7 × 6 = 42. True or False?",
+        "correct_answer": true,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "true_false",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "true_false",
+          "experience": "standard"
+        },
+        "resolved_answer": true,
+        "hints": [
+          "We need to find the total of equal groups 7 groups of 6.",
+          "Use the 6 times table: 6 × 7.",
+          "The product of 7 × 6 = 42."
+        ],
+        "sample_id": "2019a537247fe4270227",
+        "replay_digest": "18d071482d8baae59914c6b353e04594e7900c0efc9ad6a4a054163c9602bb17"
+      },
+      {
+        "node_id": "mat_g3_na_q3_0",
+        "seed": 103,
+        "formatter": "true_false",
+        "question_text": "8 × 9 = 72. True or False?",
+        "correct_answer": true,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "true_false",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "true_false",
+          "experience": "standard"
+        },
+        "resolved_answer": true,
+        "hints": [
+          "We need to find the total of equal groups 8 groups of 9.",
+          "Use the 9 times table: 9 × 8.",
+          "The product of 8 × 9 = 72."
+        ],
+        "sample_id": "3ba92f15aab647d8e731",
+        "replay_digest": "7217a2969ad5e6f3c0b97a0c8154996e421d1b79578a5f2589970e46dace3852"
+      },
+      {
+        "node_id": "mat_g3_na_q3_0",
+        "seed": 118,
+        "formatter": "cloze",
+        "question_text": "4 × 6 = ___",
+        "correct_answer": 24,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 10,
+            "text": "10",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 18,
+            "text": "18",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 24,
+            "text": "24",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 23,
+            "text": "23",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 24,
+        "hints": [
+          "We need to find the total of equal groups 4 groups of 6.",
+          "Use the 6 times table: 6 × 4.",
+          "The product of 4 × 6 = 24."
+        ],
+        "sample_id": "4e84f184ebafd34c61a6",
+        "replay_digest": "f656ed8e1b60feda51686b2c3a61ddbbb2e98285c0fb2154a2ca7c60fb9cd69e"
+      },
+      {
+        "node_id": "mat_g3_na_q3_0",
+        "seed": 127,
+        "formatter": "read_mcq",
+        "question_text": "Look at the 4×6 array. How many squares are shaded in all?",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "GridArea",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 24,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 20,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 26,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 23,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 24,
+        "hints": [
+          "We need to find the total of equal groups 4 groups of 6.",
+          "Use the 6 times table: 6 × 4.",
+          "The product of 4 × 6 = 24."
+        ],
+        "visual_type": "GridArea",
+        "visual_payload": {
+          "rows": 4,
+          "cols": 6,
+          "shaded": true,
+          "highlight_groups": [],
+          "shape_type": "rectangle",
+          "correct_count": 24,
+          "grid_size": [
+            5,
+            7
+          ]
+        },
+        "visual_render": {
+          "visual_type": "GridArea",
+          "renderer_input_digest": "3344308748960abd74a63f6c8a905773f14cf945e4720ec1d5d21b5b00310767",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "GridArea",
+            "element_count": 37,
+            "svg_count": 1,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 1,
+            "input_count": 0,
+            "text_labels": [
+              "Click squares to shade a",
+              "6 × 4",
+              "rectangle",
+              "24 square units",
+              "Clear All",
+              "Click squares to shade/unshade"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--primary)",
+              "#4b5563",
+              "#374151",
+              "hsl(var(--border-color)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {
+              "grid-cell": 24
+            }
+          }
+        },
+        "sample_id": "d24a7cc6b24a9c98a74a",
+        "replay_digest": "c46b788299087514f95d29e61e96ae3819d9fb30bf04148112200302c4fad235"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "multiply_numbers",
+      "node_id": "mat_g3_na_q3_0",
+      "clause": "Multiply numbers",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "The samples require multiplication results through facts, correctness checks, and rendered arrays; seeds 23, 57, and 127 include actual GridArea renderings.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "6_7_8_and_9_multiplication_tables",
+      "node_id": "mat_g3_na_q3_0",
+      "clause": "6, 7, 8, and 9 multiplication tables",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        57,
+        64,
+        78,
+        91,
+        103,
+        127
+      ],
+      "reasoning": "The set exercises the 6, 7, 8, and 9 tables: 7 × 6 appears in seed 91, 8 × 6/9 in seeds 64 and 78, and 9-based facts in seeds 11 and 23.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    }
+  ]
+}

@@ -1,0 +1,749 @@
+{
+  "batch": "batch134_mat_g2_na_q2_2",
+  "attested_at": "2026-09-22T14:24:35Z",
+  "attested_by": "blind-attester-gpt-terra-d18d19-20260922",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "read local_only/scratch/attest117/mat_g2_na_q2_2.prompt.txt (verbatim render_prompt_block output only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "Tool-bearing GPT-Terra subagent reported rg/sed only on 8 assigned prompts, apply_patch only on sibling verdict JSON, and jq only on outputs; dispatcher did not verify sandbox-level non-access beyond that report."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g2_na_q2_2",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g2_na_q2_2",
+        "seed": 11,
+        "formatter": "read_mcq",
+        "question_text": "Pia has ₱50 in one pocket and ₱120 in another pocket. How much money does Pia have in total?",
+        "correct_answer": "D",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "PesoMoney",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 190,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 160,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 180,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 170,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 170,
+        "hints": [
+          "You have these amounts: ['peso50', 'peso120'].",
+          "Step 1: Add peso50 → running total = peso50.",
+          "Step 2: Add peso120 → running total = peso170.",
+          "The total is peso170."
+        ],
+        "visual_type": "PesoMoney",
+        "visual_payload": {
+          "coins": [],
+          "bills": [
+            {
+              "denomination": 20,
+              "count": 1
+            },
+            {
+              "denomination": 50,
+              "count": 1
+            },
+            {
+              "denomination": 100,
+              "count": 1
+            }
+          ],
+          "total": 170,
+          "target_amount": 170,
+          "exclude_centavos": true,
+          "coin_faces": [
+            1,
+            5,
+            10
+          ],
+          "bill_faces": [
+            20,
+            50,
+            100,
+            200
+          ],
+          "require_fewest": true,
+          "is_interactive": false
+        },
+        "visual_render": {
+          "visual_type": "PesoMoney",
+          "renderer_input_digest": "06c756ed8de4b0dbdb0fa499b9feaef94f89a0cfabde623b04f49027fc0103d5",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "PesoMoney",
+            "element_count": 23,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "BILLS",
+              "₱20",
+              "REPUBLIKA NG PILIPINAS",
+              "₱50",
+              "₱100"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "#ffedd5,",
+              "#ea580c)",
+              "#fff",
+              "#fda4af,",
+              "#dc2626)",
+              "#c084fc,",
+              "#7c3aed)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "aab024eecc23111b6407",
+        "replay_digest": "d502d2781e99cb5f558eb958b93a543f1e7ea06638c7c43685fc09cce642c152"
+      },
+      {
+        "node_id": "mat_g2_na_q2_2",
+        "seed": 23,
+        "formatter": "cloze",
+        "question_text": "Marco saved ₱1 on Monday and ₱502 on Tuesday. How much money did Marco save altogether?",
+        "correct_answer": 503,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 503,
+            "text": "503",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 5030,
+            "text": "5030",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 493,
+            "text": "493",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 504,
+            "text": "504",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 503,
+        "hints": [
+          "You have these amounts: ['peso1', 'peso502'].",
+          "Step 1: Add peso1 → running total = peso1.",
+          "Step 2: Add peso502 → running total = peso503.",
+          "The total is peso503."
+        ],
+        "sample_id": "1967a7056c9c389acaa4",
+        "replay_digest": "f6acdffb0897dfd0316d7e461ea0827443e31af0013d168f622a8919875d1bb9"
+      },
+      {
+        "node_id": "mat_g2_na_q2_2",
+        "seed": 42,
+        "formatter": "mcq",
+        "question_text": "Start at 57. Count up 345 more. What number do you land on?",
+        "correct_answer": 402,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 402,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 401,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 403,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 412,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 402,
+        "hints": [
+          "We are adding two numbers: 57 and 345.",
+          "Add the ones: 7 + 5 = 12. Write 2 in the ones place and carry over 1 ten.",
+          "Add the tens: 5 + 4 + 1 (carried) = 10.",
+          "The sum is 57 + 345 = 402."
+        ],
+        "sample_id": "3959b6d9583b84187a4b",
+        "replay_digest": "9758bf17a5b66a15cac57f38cfa9a9bfd36f71a69cc7e4f99027a87d45aa72e2"
+      },
+      {
+        "node_id": "mat_g2_na_q2_2",
+        "seed": 57,
+        "formatter": "error_detect",
+        "question_text": "Pia solved this problem: \"Arnel had ₱641 and received ₱0 more from Nanay. How much money does Arnel have in all?\" Pia says the answer is 641. Is Pia correct?",
+        "correct_answer": {
+          "has_error": false,
+          "correct_value": 641
+        },
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "error_detect",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "error_detect",
+          "experience": "standard"
+        },
+        "resolved_answer": {
+          "has_error": false,
+          "correct_value": 641
+        },
+        "hints": [
+          "We are adding two numbers: 641 and 0.",
+          "Add the ones: 1 + 0 = 1. Write 1 in the ones place.",
+          "Add the tens: 4 + 0 = 4.",
+          "The sum is 641 + 0 = 641."
+        ],
+        "sample_id": "125aa896dce797391e4f",
+        "replay_digest": "7af26ee95ef85833650d372beefcc316bff22495f33878a1f38653f7cc241e03"
+      },
+      {
+        "node_id": "mat_g2_na_q2_2",
+        "seed": 64,
+        "formatter": "cloze",
+        "question_text": "Esther has ₱500 in one pocket and ₱240 in another pocket. How much money does Esther have in total?",
+        "correct_answer": 740,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 740,
+            "text": "740",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 730,
+            "text": "730",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 741,
+            "text": "741",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 7400,
+            "text": "7400",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 740,
+        "hints": [
+          "You have these amounts: ['peso500', 'peso240'].",
+          "Step 1: Add peso500 → running total = peso500.",
+          "Step 2: Add peso240 → running total = peso740.",
+          "The total is peso740."
+        ],
+        "sample_id": "dfdd7c8ecdd9092df705",
+        "replay_digest": "63e7b643a293f33c900130121417a10a975e4332ad1aa6f9744244ec42037aa7"
+      },
+      {
+        "node_id": "mat_g2_na_q2_2",
+        "seed": 78,
+        "formatter": "mcq",
+        "question_text": "Start at 619. Count up 280 more. What number do you land on?",
+        "correct_answer": 899,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 339,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 899,
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 909,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 898,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 899,
+        "hints": [
+          "We are adding two numbers: 619 and 280.",
+          "Add the ones: 9 + 0 = 9. Write 9 in the ones place.",
+          "Add the tens: 1 + 8 = 9.",
+          "The sum is 619 + 280 = 899."
+        ],
+        "sample_id": "b039c48eec87d6bc828a",
+        "replay_digest": "26f729055c500f027e41b2e2e6dde39dfb60988e51c6dd06e2130b8d9b71f555"
+      },
+      {
+        "node_id": "mat_g2_na_q2_2",
+        "seed": 91,
+        "formatter": "error_detect",
+        "question_text": "Grace solved this problem: \"Coach Nora bought a pencil for ₱311 and an eraser for ₱673. How much did Coach Nora spend in all?\" Grace says the answer is 984. Is Grace correct?",
+        "correct_answer": {
+          "has_error": false,
+          "correct_value": 984
+        },
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "error_detect",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "error_detect",
+          "experience": "standard"
+        },
+        "resolved_answer": {
+          "has_error": false,
+          "correct_value": 984
+        },
+        "hints": [
+          "We are adding two numbers: 311 and 673.",
+          "Add the ones: 1 + 3 = 4. Write 4 in the ones place.",
+          "Add the tens: 1 + 7 = 8.",
+          "The sum is 311 + 673 = 984."
+        ],
+        "sample_id": "9e9f64014d5db91cf490",
+        "replay_digest": "0f27da1c123550437b84f7279d3417d3b126e6f590e3ea8d1e23cb74568873d9"
+      },
+      {
+        "node_id": "mat_g2_na_q2_2",
+        "seed": 103,
+        "formatter": "mcq",
+        "question_text": "Ate Sam has ₱50 in one pocket and ₱605 in another pocket. How much money does Ate Sam have in total?",
+        "correct_answer": 655,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 655,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 645,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 6550,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 656,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 655,
+        "hints": [
+          "You have these amounts: ['peso50', 'peso605'].",
+          "Step 1: Add peso50 → running total = peso50.",
+          "Step 2: Add peso605 → running total = peso655.",
+          "The total is peso655."
+        ],
+        "sample_id": "c1227fc6986e6c5ead97",
+        "replay_digest": "39fb78f4c031567241ff81733a470b2b2c7a723bb0b4df4a7723a087c536779a"
+      },
+      {
+        "node_id": "mat_g2_na_q2_2",
+        "seed": 118,
+        "formatter": "mcq",
+        "question_text": "Ate Gab is on step 48. Ate Gab climbs up 394 more steps. What step is Ate Gab on now?",
+        "correct_answer": 442,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 441,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 452,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 443,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 442,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 442,
+        "hints": [
+          "We are adding two numbers: 48 and 394.",
+          "Add the ones: 8 + 4 = 12. Write 2 in the ones place and carry over 1 ten.",
+          "Add the tens: 4 + 9 + 1 (carried) = 14.",
+          "The sum is 48 + 394 = 442."
+        ],
+        "sample_id": "8911460cdd8ba4586e4b",
+        "replay_digest": "99f50579c853aa69155b74a07b836836ce65a26819df594215a57d059ef3fab7"
+      },
+      {
+        "node_id": "mat_g2_na_q2_2",
+        "seed": 127,
+        "formatter": "cloze",
+        "question_text": "David had ₱570 and received ₱0 more from Nanay. How much money does David have in all?",
+        "correct_answer": 570,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 571,
+            "text": "571",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 580,
+            "text": "580",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 569,
+            "text": "569",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 570,
+            "text": "570",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 570,
+        "hints": [
+          "We are adding two numbers: 570 and 0.",
+          "Add the ones: 0 + 0 = 0. Write 0 in the ones place.",
+          "Add the tens: 7 + 0 = 7.",
+          "The sum is 570 + 0 = 570."
+        ],
+        "sample_id": "5c136b92921872bf64f2",
+        "replay_digest": "1bb5d5295469c0adaf992341a58c773d04819dfae21421faf0feb2be2eb264b0"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "solve_problems",
+      "node_id": "mat_g2_na_q2_2",
+      "clause": "Solve problems",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Every sample poses a problem for the learner to solve.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "involving",
+      "node_id": "mat_g2_na_q2_2",
+      "clause": "involving",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All sample problems require combining quantities, including the count-up wordings.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "addition",
+      "node_id": "mat_g2_na_q2_2",
+      "clause": "addition",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Addition is the operative relationship throughout, whether stated as total, altogether, received more, or count up.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "sums_up_to_1000",
+      "node_id": "mat_g2_na_q2_2",
+      "clause": "sums up to 1000",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All displayed addends and sums are within the stated limit.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "problems",
+      "node_id": "mat_g2_na_q2_2",
+      "clause": "problems",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "The complete sample set is problem-based rather than bare computation.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "money",
+      "node_id": "mat_g2_na_q2_2",
+      "clause": "money",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        57,
+        64,
+        91,
+        103,
+        127
+      ],
+      "reasoning": "Money contexts appear in most samples; the remaining seeds use count-up or steps, so delivery wording varies.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "regrouping",
+      "node_id": "mat_g2_na_q2_2",
+      "clause": "with and without regrouping",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Both regrouping cases, such as seeds 42, 91, and 118, and non-regrouping cases, such as seeds 11, 23, and 64, recur across the samples.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    }
+  ]
+}

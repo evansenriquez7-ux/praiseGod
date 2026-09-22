@@ -1,0 +1,1130 @@
+{
+  "batch": "batch128_mat_g2_mg_q1_1",
+  "attested_at": "2026-09-22T14:13:51Z",
+  "attested_by": "blind-attester-gpt-terra-d12-20260922",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "read local_only/scratch/attest117/mat_g2_mg_q1_1.prompt.txt (verbatim render_prompt_block output only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "Tool-bearing GPT-Terra subagent reported exec_command (rg/sed/jq) only on assigned prompt and sibling verdict paths, and apply_patch only to write verdict JSON; dispatcher did not verify sandbox-level non-access beyond that report."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g2_mg_q1_1",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g2_mg_q1_1",
+        "seed": 11,
+        "formatter": "read_mcq",
+        "question_text": "On a square grid, a 4-by-2 rectangle is cut straight down the middle into two 2-by-2 parts. What shape is each part?",
+        "correct_answer": "D",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "ShapeBoard",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "half-circle",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "circle",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "triangle",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "square",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "square",
+        "hints": [
+          "Think about the sides and corners of each shape.",
+          "A triangle has 3 sides and 3 corners.",
+          "A square has 4 equal sides and 4 corners.",
+          "A rectangle has 4 sides (opposite sides are equal) and 4 corners.",
+          "A circle has no straight sides and no corners."
+        ],
+        "visual_type": "ShapeBoard",
+        "visual_payload": {
+          "shapes": [
+            {
+              "id": "shape_0",
+              "type": "square",
+              "sides": 4,
+              "corners": 4,
+              "is_regular": true,
+              "orientation_deg": 0
+            },
+            {
+              "id": "shape_1",
+              "type": "rectangle",
+              "sides": 4,
+              "corners": 4,
+              "is_regular": false,
+              "orientation_deg": 0
+            },
+            {
+              "id": "shape_2",
+              "type": "circle",
+              "sides": 0,
+              "corners": 0,
+              "is_regular": true,
+              "orientation_deg": 0
+            },
+            {
+              "id": "shape_3",
+              "type": "triangle",
+              "sides": 3,
+              "corners": 3,
+              "is_regular": true,
+              "orientation_deg": 0
+            }
+          ],
+          "question_type": "illustrate",
+          "highlighted_shape": null
+        },
+        "visual_render": {
+          "visual_type": "ShapeBoard",
+          "renderer_input_digest": "e43f50cb4cc628e308973a85a266f0c91ac244e3f412880618186c1e1ad9a915",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "ShapeBoard",
+            "element_count": 14,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [],
+            "distinct_colours": [
+              "hsl(var(--primary)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "fc133c3d6c355dac3acc",
+        "replay_digest": "b034bfa5c35febd8bfa6b51b6f7c3d1c6b06e7adc7850d90e898b2debf588da6"
+      },
+      {
+        "node_id": "mat_g2_mg_q1_1",
+        "seed": 23,
+        "formatter": "read_mcq",
+        "question_text": "A composite figure is made of a rectangle with a half-circle attached on top. How many simple shapes form this figure?",
+        "correct_answer": "C",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "ShapeBoard",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "4",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "3",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "2",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "1",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "2",
+        "hints": [
+          "Think about the sides and corners of each shape.",
+          "A triangle has 3 sides and 3 corners.",
+          "A square has 4 equal sides and 4 corners.",
+          "A rectangle has 4 sides (opposite sides are equal) and 4 corners.",
+          "A circle has no straight sides and no corners."
+        ],
+        "visual_type": "ShapeBoard",
+        "visual_payload": {
+          "shapes": [
+            {
+              "id": "shape_0",
+              "type": "rectangle",
+              "sides": 4,
+              "corners": 4,
+              "is_regular": false,
+              "orientation_deg": 0
+            },
+            {
+              "id": "shape_1",
+              "type": "circle",
+              "sides": 0,
+              "corners": 0,
+              "is_regular": true,
+              "orientation_deg": 0
+            }
+          ],
+          "question_type": "illustrate",
+          "highlighted_shape": null
+        },
+        "visual_render": {
+          "visual_type": "ShapeBoard",
+          "renderer_input_digest": "73d53ebefce9d2e6c94f4b377e49e9e0f8196ac033fbca2c200d43c56b3dc128",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "ShapeBoard",
+            "element_count": 8,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [],
+            "distinct_colours": [
+              "hsl(var(--primary)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "0519a0002fc784670e46",
+        "replay_digest": "ee1bfd76ab2dfd76e14e2d94bc83c59596dccd7e697f86aa46a732bceec2f06d"
+      },
+      {
+        "node_id": "mat_g2_mg_q1_1",
+        "seed": 42,
+        "formatter": "read_mcq",
+        "question_text": "On a square grid, a composite shape has 1 square, 1 triangle, and 1 rectangle joined together. How many simple shapes were used to compose it?",
+        "correct_answer": "C",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "ShapeBoard",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "5",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "2",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "3",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "4",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "3",
+        "hints": [
+          "Think about the sides and corners of each shape.",
+          "A triangle has 3 sides and 3 corners.",
+          "A square has 4 equal sides and 4 corners.",
+          "A rectangle has 4 sides (opposite sides are equal) and 4 corners.",
+          "A circle has no straight sides and no corners."
+        ],
+        "visual_type": "ShapeBoard",
+        "visual_payload": {
+          "shapes": [
+            {
+              "id": "shape_0",
+              "type": "triangle",
+              "sides": 3,
+              "corners": 3,
+              "is_regular": true,
+              "orientation_deg": 0
+            },
+            {
+              "id": "shape_1",
+              "type": "square",
+              "sides": 4,
+              "corners": 4,
+              "is_regular": true,
+              "orientation_deg": 0
+            },
+            {
+              "id": "shape_2",
+              "type": "rectangle",
+              "sides": 4,
+              "corners": 4,
+              "is_regular": false,
+              "orientation_deg": 0
+            }
+          ],
+          "question_type": "illustrate",
+          "highlighted_shape": null
+        },
+        "visual_render": {
+          "visual_type": "ShapeBoard",
+          "renderer_input_digest": "e6a98d9d18aa4c1e315ede0f1f40aa91bb9c80f8458eba65a3d1eca84889b912",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "ShapeBoard",
+            "element_count": 11,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [],
+            "distinct_colours": [
+              "hsl(var(--primary)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "b33e1b7e264ae269b977",
+        "replay_digest": "ce9659c55c56698371b9bfa8123daed5c91568ab71c7387c101b16eb1723cefc"
+      },
+      {
+        "node_id": "mat_g2_mg_q1_1",
+        "seed": 57,
+        "formatter": "mcq",
+        "question_text": "Using cut-outs, two identical triangles are placed together along their matching edges. What shape can they form?",
+        "correct_answer": "rectangle",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "circle",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "half-circle",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "quarter-circle",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "rectangle",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "rectangle",
+        "hints": [
+          "Think about the sides and corners of each shape.",
+          "A triangle has 3 sides and 3 corners.",
+          "A square has 4 equal sides and 4 corners.",
+          "A rectangle has 4 sides (opposite sides are equal) and 4 corners.",
+          "A circle has no straight sides and no corners."
+        ],
+        "sample_id": "87b704bd59ddfefa5b85",
+        "replay_digest": "247896c5c226cadfc78e1bc08cf92e22224ff93efb40611f620cd76f701b26d3"
+      },
+      {
+        "node_id": "mat_g2_mg_q1_1",
+        "seed": 64,
+        "formatter": "read_mcq",
+        "question_text": "On a square grid, a 4-by-2 rectangle is cut straight down the middle into two 2-by-2 parts. What shape is each part?",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "ShapeBoard",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "square",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "half-circle",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "circle",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "triangle",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "square",
+        "hints": [
+          "Think about the sides and corners of each shape.",
+          "A triangle has 3 sides and 3 corners.",
+          "A square has 4 equal sides and 4 corners.",
+          "A rectangle has 4 sides (opposite sides are equal) and 4 corners.",
+          "A circle has no straight sides and no corners."
+        ],
+        "visual_type": "ShapeBoard",
+        "visual_payload": {
+          "shapes": [
+            {
+              "id": "shape_0",
+              "type": "square",
+              "sides": 4,
+              "corners": 4,
+              "is_regular": true,
+              "orientation_deg": 0
+            },
+            {
+              "id": "shape_1",
+              "type": "rectangle",
+              "sides": 4,
+              "corners": 4,
+              "is_regular": false,
+              "orientation_deg": 0
+            },
+            {
+              "id": "shape_2",
+              "type": "circle",
+              "sides": 0,
+              "corners": 0,
+              "is_regular": true,
+              "orientation_deg": 0
+            },
+            {
+              "id": "shape_3",
+              "type": "triangle",
+              "sides": 3,
+              "corners": 3,
+              "is_regular": true,
+              "orientation_deg": 0
+            }
+          ],
+          "question_type": "illustrate",
+          "highlighted_shape": null
+        },
+        "visual_render": {
+          "visual_type": "ShapeBoard",
+          "renderer_input_digest": "e43f50cb4cc628e308973a85a266f0c91ac244e3f412880618186c1e1ad9a915",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "ShapeBoard",
+            "element_count": 14,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [],
+            "distinct_colours": [
+              "hsl(var(--primary)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "98d1ec01d4d79500fec0",
+        "replay_digest": "e034bdc4537394a484e095e41dbd9f642fe075d93fccc7c5a75950b90bcf32b6"
+      },
+      {
+        "node_id": "mat_g2_mg_q1_1",
+        "seed": 78,
+        "formatter": "read_mcq",
+        "question_text": "Using cut-outs, a square is cut along a slant from one corner to the opposite corner. What two shapes are made?",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "ShapeBoard",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "two triangles",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "two rectangles",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "two squares",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "two circles",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "two triangles",
+        "hints": [
+          "Think about the sides and corners of each shape.",
+          "A triangle has 3 sides and 3 corners.",
+          "A square has 4 equal sides and 4 corners.",
+          "A rectangle has 4 sides (opposite sides are equal) and 4 corners.",
+          "A circle has no straight sides and no corners."
+        ],
+        "visual_type": "ShapeBoard",
+        "visual_payload": {
+          "shapes": [
+            {
+              "id": "shape_0",
+              "type": "square",
+              "sides": 4,
+              "corners": 4,
+              "is_regular": true,
+              "orientation_deg": 0
+            }
+          ],
+          "question_type": "illustrate",
+          "highlighted_shape": null
+        },
+        "visual_render": {
+          "visual_type": "ShapeBoard",
+          "renderer_input_digest": "d381eae3a60dd5cd9d68e9dc0ff67b560a2e1b0a688cd9d68763a988350aba20",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "ShapeBoard",
+            "element_count": 5,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [],
+            "distinct_colours": [
+              "hsl(var(--primary)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "5d5fb915d7bdfbf67a16",
+        "replay_digest": "248f6655a973cbb9733c1be21b9cb2f875f8f32d3599b9ee4f4c76f810f5b706"
+      },
+      {
+        "node_id": "mat_g2_mg_q1_1",
+        "seed": 91,
+        "formatter": "read_mcq",
+        "question_text": "Using cut-outs, two half-circles are joined along their flat straight edges. What shape is formed?",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "ShapeBoard",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "circle",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "triangle",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "square",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "rectangle",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "circle",
+        "hints": [
+          "Think about the sides and corners of each shape.",
+          "A triangle has 3 sides and 3 corners.",
+          "A square has 4 equal sides and 4 corners.",
+          "A rectangle has 4 sides (opposite sides are equal) and 4 corners.",
+          "A circle has no straight sides and no corners."
+        ],
+        "visual_type": "ShapeBoard",
+        "visual_payload": {
+          "shapes": [
+            {
+              "id": "shape_0",
+              "type": "circle",
+              "sides": 0,
+              "corners": 0,
+              "is_regular": true,
+              "orientation_deg": 0
+            },
+            {
+              "id": "shape_1",
+              "type": "rectangle",
+              "sides": 4,
+              "corners": 4,
+              "is_regular": false,
+              "orientation_deg": 0
+            },
+            {
+              "id": "shape_2",
+              "type": "square",
+              "sides": 4,
+              "corners": 4,
+              "is_regular": true,
+              "orientation_deg": 0
+            },
+            {
+              "id": "shape_3",
+              "type": "triangle",
+              "sides": 3,
+              "corners": 3,
+              "is_regular": true,
+              "orientation_deg": 0
+            }
+          ],
+          "question_type": "illustrate",
+          "highlighted_shape": null
+        },
+        "visual_render": {
+          "visual_type": "ShapeBoard",
+          "renderer_input_digest": "c0c0e9ad5e4fada62458995f20547f16d272502a23a87612b89e19970f2b4f0c",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "ShapeBoard",
+            "element_count": 14,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [],
+            "distinct_colours": [
+              "hsl(var(--primary)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "3ebfbe0483cc9cd9e64b",
+        "replay_digest": "acbe020eac832e93fbfb2212821bcb3ca09ac706bb3711d6ab3309e1a07f84e5"
+      },
+      {
+        "node_id": "mat_g2_mg_q1_1",
+        "seed": 103,
+        "formatter": "read_mcq",
+        "question_text": "On a square grid, a 4-by-2 rectangle is cut straight down the middle into two 2-by-2 parts. What shape is each part?",
+        "correct_answer": "C",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "ShapeBoard",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "triangle",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "circle",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "square",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "half-circle",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "square",
+        "hints": [
+          "Think about the sides and corners of each shape.",
+          "A triangle has 3 sides and 3 corners.",
+          "A square has 4 equal sides and 4 corners.",
+          "A rectangle has 4 sides (opposite sides are equal) and 4 corners.",
+          "A circle has no straight sides and no corners."
+        ],
+        "visual_type": "ShapeBoard",
+        "visual_payload": {
+          "shapes": [
+            {
+              "id": "shape_0",
+              "type": "square",
+              "sides": 4,
+              "corners": 4,
+              "is_regular": true,
+              "orientation_deg": 0
+            },
+            {
+              "id": "shape_1",
+              "type": "rectangle",
+              "sides": 4,
+              "corners": 4,
+              "is_regular": false,
+              "orientation_deg": 0
+            },
+            {
+              "id": "shape_2",
+              "type": "circle",
+              "sides": 0,
+              "corners": 0,
+              "is_regular": true,
+              "orientation_deg": 0
+            },
+            {
+              "id": "shape_3",
+              "type": "triangle",
+              "sides": 3,
+              "corners": 3,
+              "is_regular": true,
+              "orientation_deg": 0
+            }
+          ],
+          "question_type": "illustrate",
+          "highlighted_shape": null
+        },
+        "visual_render": {
+          "visual_type": "ShapeBoard",
+          "renderer_input_digest": "e43f50cb4cc628e308973a85a266f0c91ac244e3f412880618186c1e1ad9a915",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "ShapeBoard",
+            "element_count": 14,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [],
+            "distinct_colours": [
+              "hsl(var(--primary)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "edb5f25c03cf39741cab",
+        "replay_digest": "ba7ac268c4d593dc603135bfc0e5bb9af79d3114b93c458238eacd78a2bb362b"
+      },
+      {
+        "node_id": "mat_g2_mg_q1_1",
+        "seed": 118,
+        "formatter": "mcq",
+        "question_text": "On a square grid, a composite shape has 1 square, 1 triangle, and 1 rectangle joined together. How many simple shapes were used to compose it?",
+        "correct_answer": "3",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "3",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "4",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "2",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "5",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "3",
+        "hints": [
+          "Think about the sides and corners of each shape.",
+          "A triangle has 3 sides and 3 corners.",
+          "A square has 4 equal sides and 4 corners.",
+          "A rectangle has 4 sides (opposite sides are equal) and 4 corners.",
+          "A circle has no straight sides and no corners."
+        ],
+        "sample_id": "2d02e704da9a77dc4368",
+        "replay_digest": "e2b1c7dcaf53dce6502a6be6d6193e3bffd73a008af9c3fe72335dac148301aa"
+      },
+      {
+        "node_id": "mat_g2_mg_q1_1",
+        "seed": 127,
+        "formatter": "read_mcq",
+        "question_text": "Using cut-outs, two identical triangles are placed together along their matching edges. What shape can they form?",
+        "correct_answer": "B",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "ShapeBoard",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "quarter-circle",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "rectangle",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "circle",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "half-circle",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "rectangle",
+        "hints": [
+          "Think about the sides and corners of each shape.",
+          "A triangle has 3 sides and 3 corners.",
+          "A square has 4 equal sides and 4 corners.",
+          "A rectangle has 4 sides (opposite sides are equal) and 4 corners.",
+          "A circle has no straight sides and no corners."
+        ],
+        "visual_type": "ShapeBoard",
+        "visual_payload": {
+          "shapes": [
+            {
+              "id": "shape_0",
+              "type": "triangle",
+              "sides": 3,
+              "corners": 3,
+              "is_regular": true,
+              "orientation_deg": 0
+            },
+            {
+              "id": "shape_1",
+              "type": "rectangle",
+              "sides": 4,
+              "corners": 4,
+              "is_regular": false,
+              "orientation_deg": 0
+            },
+            {
+              "id": "shape_2",
+              "type": "circle",
+              "sides": 0,
+              "corners": 0,
+              "is_regular": true,
+              "orientation_deg": 0
+            }
+          ],
+          "question_type": "illustrate",
+          "highlighted_shape": null
+        },
+        "visual_render": {
+          "visual_type": "ShapeBoard",
+          "renderer_input_digest": "d3bc11e05590978f8ab6b33aaed180c44de404251521ee6c0860e44adacc6fd4",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "ShapeBoard",
+            "element_count": 11,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [],
+            "distinct_colours": [
+              "hsl(var(--primary)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "d790d382c473b7354a84",
+        "replay_digest": "1ec647acc16cfa828b1b9191adf64ce18de3b4e8cc146517503bc28869a2cd07"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "compose_figures",
+      "node_id": "mat_g2_mg_q1_1",
+      "clause": "Compose",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        23,
+        42,
+        57,
+        91,
+        118,
+        127
+      ],
+      "reasoning": "Multiple prompts have learners identify how simple shapes are put together into a result, including joined triangles and half-circles.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "decompose_figures",
+      "node_id": "mat_g2_mg_q1_1",
+      "clause": "decompose",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        64,
+        78,
+        103
+      ],
+      "reasoning": "Several samples explicitly cut a rectangle or square into component shapes, so decomposing is meaningfully represented.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "composite_figures",
+      "node_id": "mat_g2_mg_q1_1",
+      "clause": "composite figures made up",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        23,
+        42,
+        118
+      ],
+      "reasoning": "The dispatch repeatedly calls out a composite figure or shape and asks about its component simple shapes.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "squares",
+      "node_id": "mat_g2_mg_q1_1",
+      "clause": "squares",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        64,
+        78,
+        103
+      ],
+      "reasoning": "Squares occur repeatedly as whole shapes and as the results of splitting the grid-based rectangle.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "rectangles",
+      "node_id": "mat_g2_mg_q1_1",
+      "clause": "rectangles",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Rectangles are used repeatedly as component or resulting shapes throughout the samples.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "triangles",
+      "node_id": "mat_g2_mg_q1_1",
+      "clause": "triangles",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        57,
+        78,
+        118,
+        127
+      ],
+      "reasoning": "Triangles recur in composite-shape counts, joined cut-outs, and the result of splitting a square.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "circles",
+      "node_id": "mat_g2_mg_q1_1",
+      "clause": "circles",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "A whole circle is the outcome of one joining task only; that isolated occurrence is not meaningful prevalence.",
+      "action_taken": "Left registered pending one independent confirmation under the prevalence standard; no source change in re-instrumentation campaign."
+    },
+    {
+      "capability_id": "half_circles",
+      "node_id": "mat_g2_mg_q1_1",
+      "clause": "half circles",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "Half-circles occur in two related prompts, but they are not a recurring focus across the ten samples.",
+      "action_taken": "Left registered pending one independent confirmation under the prevalence standard; no source change in re-instrumentation campaign."
+    },
+    {
+      "capability_id": "quarter_circles",
+      "node_id": "mat_g2_mg_q1_1",
+      "clause": "quarter circles",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "Quarter-circles are only distractor choices and are never used as a shape to compose or decompose.",
+      "action_taken": "Left registered pending one independent confirmation under the prevalence standard; no source change in re-instrumentation campaign."
+    },
+    {
+      "capability_id": "cut_outs",
+      "node_id": "mat_g2_mg_q1_1",
+      "clause": "cut-outs",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        57,
+        78,
+        91,
+        127
+      ],
+      "reasoning": "Several prompts explicitly situate the learner's shape work in cut-outs, including joining and cutting them.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "square_grids",
+      "node_id": "mat_g2_mg_q1_1",
+      "clause": "square grids",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        42,
+        64,
+        103,
+        118
+      ],
+      "reasoning": "Square grids are explicitly used in several samples about a split rectangle or a composite shape.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    }
+  ]
+}

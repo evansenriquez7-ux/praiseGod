@@ -1,0 +1,624 @@
+{
+  "batch": "batch143_mat_g3_mg_q2_4",
+  "attested_at": "2026-09-22T14:34:34Z",
+  "attested_by": "blind-attester-gpt-terra-d26d27-20260922",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "read local_only/scratch/attest117/mat_g3_mg_q2_4.prompt.txt (verbatim render_prompt_block output only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "Tool-bearing GPT-Terra subagent reported using only 11 assigned prompts and sibling verdict outputs; exact tool names were not fully reported, and dispatcher did not verify sandbox-level non-access beyond that report."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g3_mg_q2_4",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g3_mg_q2_4",
+        "seed": 11,
+        "formatter": "mcq",
+        "question_text": "A container's capacity measures 15 L. About how many L is that, rounded to the nearest 10?",
+        "correct_answer": 20,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 19,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 20,
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 21,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 22,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 20,
+        "hints": [
+          "Read the container's measurement carefully.",
+          "The capacity shown is 15 L.",
+          "Remember: 1000 milliliter (mL) = 1 liter (L)."
+        ],
+        "sample_id": "d203ff13e3ce836af757",
+        "replay_digest": "7b66fdb4e49d0102878325b77aeb60b16565308fd4305ec472418337ddb77c09"
+      },
+      {
+        "node_id": "mat_g3_mg_q2_4",
+        "seed": 23,
+        "formatter": "cloze",
+        "question_text": "A container's capacity measures 12 L. About how many L is that, rounded to the nearest 10?",
+        "correct_answer": 10,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 10,
+            "text": "10",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 9,
+            "text": "9",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 11,
+            "text": "11",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 12,
+            "text": "12",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 10,
+        "hints": [
+          "Read the container's measurement carefully.",
+          "The capacity shown is 12 L.",
+          "Remember: 1000 milliliter (mL) = 1 liter (L)."
+        ],
+        "sample_id": "52acdd66e0b0dfa941e6",
+        "replay_digest": "c767a0066bde78e7e23d78759019e9444be59a3a2f696291a8c07de0fea384aa"
+      },
+      {
+        "node_id": "mat_g3_mg_q2_4",
+        "seed": 42,
+        "formatter": "cloze",
+        "question_text": "A container's capacity measures 27 mL. About how many mL is that, rounded to the nearest 10?",
+        "correct_answer": 30,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 31,
+            "text": "31",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 32,
+            "text": "32",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 29,
+            "text": "29",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 30,
+            "text": "30",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 30,
+        "hints": [
+          "Read the container's measurement carefully.",
+          "The capacity shown is 27 mL.",
+          "Remember: 1000 milliliter (mL) = 1 liter (L)."
+        ],
+        "sample_id": "0b7a9fec29eb288d396e",
+        "replay_digest": "327e4f8295f4378209c0b9f9f2de0e55b2488155e0f6579921d263c38d514749"
+      },
+      {
+        "node_id": "mat_g3_mg_q2_4",
+        "seed": 57,
+        "formatter": "mcq",
+        "question_text": "A container's capacity measures 12 mL. About how many mL is that, rounded to the nearest 10?",
+        "correct_answer": 10,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 12,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 9,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 10,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 11,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 10,
+        "hints": [
+          "Read the container's measurement carefully.",
+          "The capacity shown is 12 mL.",
+          "Remember: 1000 milliliter (mL) = 1 liter (L)."
+        ],
+        "sample_id": "9ff6eab2d66d3dc793ac",
+        "replay_digest": "ff56ba98077eb686238eeeea6fc370684e7a6654e922a438895659759effcab4"
+      },
+      {
+        "node_id": "mat_g3_mg_q2_4",
+        "seed": 64,
+        "formatter": "cloze",
+        "question_text": "A container's capacity measures 6 L. About how many L is that, rounded to the nearest 10?",
+        "correct_answer": 10,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 11,
+            "text": "11",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 12,
+            "text": "12",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 10,
+            "text": "10",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 9,
+            "text": "9",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 10,
+        "hints": [
+          "Read the container's measurement carefully.",
+          "The capacity shown is 6 L.",
+          "Remember: 1000 milliliter (mL) = 1 liter (L)."
+        ],
+        "sample_id": "26a3fcf5d3bf385574b3",
+        "replay_digest": "a97c0e432d030399f295724818fa57431686ffe7973aaad62a033e20e78a9bd4"
+      },
+      {
+        "node_id": "mat_g3_mg_q2_4",
+        "seed": 78,
+        "formatter": "cloze",
+        "question_text": "A container's capacity measures 11 L. About how many L is that, rounded to the nearest 10?",
+        "correct_answer": 10,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 9,
+            "text": "9",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 12,
+            "text": "12",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 10,
+            "text": "10",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 11,
+            "text": "11",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 10,
+        "hints": [
+          "Read the container's measurement carefully.",
+          "The capacity shown is 11 L.",
+          "Remember: 1000 milliliter (mL) = 1 liter (L)."
+        ],
+        "sample_id": "16bc169ba9facc52ed78",
+        "replay_digest": "dfcf8bdf52cef2db7e14176404082d992dcb4a77c7bbc39f671b658485670d82"
+      },
+      {
+        "node_id": "mat_g3_mg_q2_4",
+        "seed": 91,
+        "formatter": "cloze",
+        "question_text": "A container's capacity measures 11 mL. About how many mL is that, rounded to the nearest 10?",
+        "correct_answer": 10,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 10,
+            "text": "10",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 9,
+            "text": "9",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 11,
+            "text": "11",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 12,
+            "text": "12",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 10,
+        "hints": [
+          "Read the container's measurement carefully.",
+          "The capacity shown is 11 mL.",
+          "Remember: 1000 milliliter (mL) = 1 liter (L)."
+        ],
+        "sample_id": "9144690e4f47f648a46e",
+        "replay_digest": "7599cb9a4ed2d4787c2aef6e21ebc3c364d8b45c90c661ca335c253b09cb6177"
+      },
+      {
+        "node_id": "mat_g3_mg_q2_4",
+        "seed": 103,
+        "formatter": "cloze",
+        "question_text": "A container's capacity measures 11 L. About how many L is that, rounded to the nearest 10?",
+        "correct_answer": 10,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 12,
+            "text": "12",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 11,
+            "text": "11",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 9,
+            "text": "9",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 10,
+            "text": "10",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 10,
+        "hints": [
+          "Read the container's measurement carefully.",
+          "The capacity shown is 11 L.",
+          "Remember: 1000 milliliter (mL) = 1 liter (L)."
+        ],
+        "sample_id": "cec5483021d574091227",
+        "replay_digest": "78bc130d17b733c25e4692d62873015c8b014fdc5388c4723d2a6181ce25b573"
+      },
+      {
+        "node_id": "mat_g3_mg_q2_4",
+        "seed": 118,
+        "formatter": "mcq",
+        "question_text": "A container's capacity measures 16 L. About how many L is that, rounded to the nearest 10?",
+        "correct_answer": 20,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 21,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 19,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 22,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 20,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 20,
+        "hints": [
+          "Read the container's measurement carefully.",
+          "The capacity shown is 16 L.",
+          "Remember: 1000 milliliter (mL) = 1 liter (L)."
+        ],
+        "sample_id": "d53030dcad917e270346",
+        "replay_digest": "51d3ad0f7bdb21cf2b5cd88b4f164a7d4eebbc63f6d7102ed57d1022fa0d3a94"
+      },
+      {
+        "node_id": "mat_g3_mg_q2_4",
+        "seed": 127,
+        "formatter": "cloze",
+        "question_text": "A container's capacity measures 23 mL. About how many mL is that, rounded to the nearest 10?",
+        "correct_answer": 20,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 19,
+            "text": "19",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 20,
+            "text": "20",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 22,
+            "text": "22",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 21,
+            "text": "21",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 20,
+        "hints": [
+          "Read the container's measurement carefully.",
+          "The capacity shown is 23 mL.",
+          "Remember: 1000 milliliter (mL) = 1 liter (L)."
+        ],
+        "sample_id": "0a23f6c07d9f26777128",
+        "replay_digest": "9ca699537863bb77790a507c9ae8bdca2a1378ec6b4233bb224aaf26c85e58d1"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "estimate_capacity",
+      "node_id": "mat_g3_mg_q2_4",
+      "clause": "Estimate capacity",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All samples seek an approximate capacity by rounding the stated liter or milliliter amount to the nearest ten.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "liters_and_or_milliliters",
+      "node_id": "mat_g3_mg_q2_4",
+      "clause": "liters and/or milliliters",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "The prompts repeatedly estimate capacity with L and mL: L at 11/23/64/78/103/118 and mL at 42/57/91/127.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    }
+  ]
+}

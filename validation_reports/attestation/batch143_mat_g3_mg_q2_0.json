@@ -1,0 +1,1009 @@
+{
+  "batch": "batch143_mat_g3_mg_q2_0",
+  "attested_at": "2026-09-22T14:34:34Z",
+  "attested_by": "blind-attester-gpt-terra-d26d27-20260922",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "read local_only/scratch/attest117/mat_g3_mg_q2_0.prompt.txt (verbatim render_prompt_block output only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "Tool-bearing GPT-Terra subagent reported using only 11 assigned prompts and sibling verdict outputs; exact tool names were not fully reported, and dispatcher did not verify sandbox-level non-access beyond that report."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g3_mg_q2_0",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g3_mg_q2_0",
+        "seed": 11,
+        "formatter": "read_mcq",
+        "question_text": "Look at the scale. What is the mass of the bag? Give your answer in g.",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "ScaleRead",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 55,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 50,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 60,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 11,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 55,
+        "hints": [
+          "Read the scale carefully.",
+          "The mass shown is 55 g.",
+          "Remember: 1000 gram (g) = 1 kilogram (kg)."
+        ],
+        "visual_type": "ScaleRead",
+        "visual_payload": {
+          "reading": 55,
+          "unit": "g",
+          "scale_max": 70,
+          "tick_interval": 5,
+          "instrument": "dial",
+          "object_label": "the bag"
+        },
+        "visual_render": {
+          "visual_type": "ScaleRead",
+          "renderer_input_digest": "5b535d36e8fd6728e9093caa5f2767671fa94dc3ef666325d013454b74f06069",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "ScaleRead",
+            "element_count": 46,
+            "svg_count": 1,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "0",
+              "10",
+              "20",
+              "30",
+              "40",
+              "50",
+              "60",
+              "70",
+              "g",
+              "the bag"
+            ],
+            "distinct_colours": [
+              "#334155"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "91b42ab9b0d59ed53b2d",
+        "replay_digest": "1cdd24c1bee41823d9c7b235375555838977abb4eadd3f25e870be7e498c78dc"
+      },
+      {
+        "node_id": "mat_g3_mg_q2_0",
+        "seed": 23,
+        "formatter": "read_mcq",
+        "question_text": "Look at the scale. What is the mass of the bag? Give your answer in g.",
+        "correct_answer": "D",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "ScaleRead",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 2,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 6,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 3,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 1,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 1,
+        "hints": [
+          "Read the scale carefully.",
+          "The mass shown is 1 g.",
+          "Remember: 1000 gram (g) = 1 kilogram (kg)."
+        ],
+        "visual_type": "ScaleRead",
+        "visual_payload": {
+          "reading": 1,
+          "unit": "g",
+          "scale_max": 6,
+          "tick_interval": 1,
+          "instrument": "dial",
+          "object_label": "the bag"
+        },
+        "visual_render": {
+          "visual_type": "ScaleRead",
+          "renderer_input_digest": "7c81ac8496022454a1a9d86491ad2fce3b2c6c42182f4eb8b2e70b53e0aaddaa",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "ScaleRead",
+            "element_count": 29,
+            "svg_count": 1,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "0",
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6",
+              "g",
+              "the bag"
+            ],
+            "distinct_colours": [
+              "#334155"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "82dea77b827d4e572b68",
+        "replay_digest": "ad330e5703d978172ab4dbfa6f1ec3d4a5cac82749343a0230a3eac80d24dde3"
+      },
+      {
+        "node_id": "mat_g3_mg_q2_0",
+        "seed": 42,
+        "formatter": "read_mcq",
+        "question_text": "Look at the scale. What is the mass of the object? Give your answer in g.",
+        "correct_answer": "D",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "ScaleRead",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 6,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 9,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 8,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 7,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 7,
+        "hints": [
+          "Read the scale carefully.",
+          "The mass shown is 7 g.",
+          "Remember: 1000 gram (g) = 1 kilogram (kg)."
+        ],
+        "visual_type": "ScaleRead",
+        "visual_payload": {
+          "reading": 7,
+          "unit": "g",
+          "scale_max": 9,
+          "tick_interval": 1,
+          "instrument": "dial",
+          "object_label": "the object"
+        },
+        "visual_render": {
+          "visual_type": "ScaleRead",
+          "renderer_input_digest": "16738f0bdeeb775e1c0482b48fa540cdda9e9160aa6df2ccca702f5874db1e6a",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "ScaleRead",
+            "element_count": 38,
+            "svg_count": 1,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "0",
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6",
+              "7",
+              "8",
+              "9",
+              "g",
+              "the object"
+            ],
+            "distinct_colours": [
+              "#334155"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "c9908165709971b9948d",
+        "replay_digest": "f062a86e1c9387089cf50136fd2781a043fe285cf331543013449f8f02d30647"
+      },
+      {
+        "node_id": "mat_g3_mg_q2_0",
+        "seed": 57,
+        "formatter": "read_mcq",
+        "question_text": "Look at the scale. What is the mass of the object? Give your answer in kg.",
+        "correct_answer": "D",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "ScaleRead",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 4,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 6,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 2,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 3,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 3,
+        "hints": [
+          "Read the scale carefully.",
+          "The mass shown is 3 kg.",
+          "Remember: 1000 gram (g) = 1 kilogram (kg)."
+        ],
+        "visual_type": "ScaleRead",
+        "visual_payload": {
+          "reading": 3,
+          "unit": "kg",
+          "scale_max": 6,
+          "tick_interval": 1,
+          "instrument": "dial",
+          "object_label": "the object"
+        },
+        "visual_render": {
+          "visual_type": "ScaleRead",
+          "renderer_input_digest": "d787cc8d95f551092c6a8216ae209699d7e7dab1ab086cff1d3b2f0488ce5866",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "ScaleRead",
+            "element_count": 29,
+            "svg_count": 1,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "0",
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6",
+              "kg",
+              "the object"
+            ],
+            "distinct_colours": [
+              "#334155"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "e44dfd8ceed99f7bef41",
+        "replay_digest": "6e17ad0cfbe6bd562c2589d46b5b37fb9358b2150848736c52372ce9ee7a24db"
+      },
+      {
+        "node_id": "mat_g3_mg_q2_0",
+        "seed": 64,
+        "formatter": "read_mcq",
+        "question_text": "Look at the scale. What is the mass of the parcel? Give your answer in g.",
+        "correct_answer": "B",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "ScaleRead",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 60,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 55,
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 11,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 50,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 55,
+        "hints": [
+          "Read the scale carefully.",
+          "The mass shown is 56 g.",
+          "Remember: 1000 gram (g) = 1 kilogram (kg)."
+        ],
+        "visual_type": "ScaleRead",
+        "visual_payload": {
+          "reading": 55,
+          "unit": "g",
+          "scale_max": 70,
+          "tick_interval": 5,
+          "instrument": "dial",
+          "object_label": "the parcel"
+        },
+        "visual_render": {
+          "visual_type": "ScaleRead",
+          "renderer_input_digest": "c9c2cdee6e4a18768515598d3ea352b9f3a057846f2ddcd065ad4824ba04192d",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "ScaleRead",
+            "element_count": 46,
+            "svg_count": 1,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "0",
+              "10",
+              "20",
+              "30",
+              "40",
+              "50",
+              "60",
+              "70",
+              "g",
+              "the parcel"
+            ],
+            "distinct_colours": [
+              "#334155"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "cd20d1dbf7a15822638c",
+        "replay_digest": "44ee6290cb8316410deb3035dd4c49c29867ef3f7fe840a9d3ae64c8e5d8177e"
+      },
+      {
+        "node_id": "mat_g3_mg_q2_0",
+        "seed": 78,
+        "formatter": "read_mcq",
+        "question_text": "Look at the scale. What is the mass of the object? Give your answer in mg.",
+        "correct_answer": "D",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "ScaleRead",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 45,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 50,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 8,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 40,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 40,
+        "hints": [
+          "Read the scale carefully.",
+          "The mass shown is 40 mg.",
+          "Remember: 1000 gram (g) = 1 kilogram (kg)."
+        ],
+        "visual_type": "ScaleRead",
+        "visual_payload": {
+          "reading": 40,
+          "unit": "mg",
+          "scale_max": 50,
+          "tick_interval": 5,
+          "instrument": "dial",
+          "object_label": "the object"
+        },
+        "visual_render": {
+          "visual_type": "ScaleRead",
+          "renderer_input_digest": "9827c9f754908558fa20ccf4ff9e46e1088568ff07eace97384e070e80311051",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "ScaleRead",
+            "element_count": 41,
+            "svg_count": 1,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "0",
+              "5",
+              "10",
+              "15",
+              "20",
+              "25",
+              "30",
+              "35",
+              "40",
+              "45",
+              "50",
+              "mg",
+              "the object"
+            ],
+            "distinct_colours": [
+              "#334155"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "d32982807b3fb2acdfeb",
+        "replay_digest": "96055972dec0b91c446fad587cb226d8b60530b841d3d6dd1a3bfca1f3ce7968"
+      },
+      {
+        "node_id": "mat_g3_mg_q2_0",
+        "seed": 91,
+        "formatter": "read_mcq",
+        "question_text": "Look at the scale. What is the mass of the parcel? Give your answer in mg.",
+        "correct_answer": "C",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "ScaleRead",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 26,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 18,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 20,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 10,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 20,
+        "hints": [
+          "Read the scale carefully.",
+          "The mass shown is 20 mg.",
+          "Remember: 1000 gram (g) = 1 kilogram (kg)."
+        ],
+        "visual_type": "ScaleRead",
+        "visual_payload": {
+          "reading": 20,
+          "unit": "mg",
+          "scale_max": 26,
+          "tick_interval": 2,
+          "instrument": "dial",
+          "object_label": "the parcel"
+        },
+        "visual_render": {
+          "visual_type": "ScaleRead",
+          "renderer_input_digest": "d19c98477dc0d4ff027458cc85b9d6d247f3f896261de03ea8c5d8c5f946e54c",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "ScaleRead",
+            "element_count": 43,
+            "svg_count": 1,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "0",
+              "4",
+              "8",
+              "12",
+              "16",
+              "20",
+              "24",
+              "mg",
+              "the parcel"
+            ],
+            "distinct_colours": [
+              "#334155"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "2ea8950d66bd9c2bd76d",
+        "replay_digest": "2b1b9648e9920c4720cf113126df0558acee4b6d20520175baec3968681642b2"
+      },
+      {
+        "node_id": "mat_g3_mg_q2_0",
+        "seed": 103,
+        "formatter": "read_mcq",
+        "question_text": "Look at the scale. What is the mass of the parcel? Give your answer in mg.",
+        "correct_answer": "C",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "ScaleRead",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 18,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 22,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 20,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 26,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 20,
+        "hints": [
+          "Read the scale carefully.",
+          "The mass shown is 19 mg.",
+          "Remember: 1000 gram (g) = 1 kilogram (kg)."
+        ],
+        "visual_type": "ScaleRead",
+        "visual_payload": {
+          "reading": 20,
+          "unit": "mg",
+          "scale_max": 26,
+          "tick_interval": 2,
+          "instrument": "dial",
+          "object_label": "the parcel"
+        },
+        "visual_render": {
+          "visual_type": "ScaleRead",
+          "renderer_input_digest": "d19c98477dc0d4ff027458cc85b9d6d247f3f896261de03ea8c5d8c5f946e54c",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "ScaleRead",
+            "element_count": 43,
+            "svg_count": 1,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "0",
+              "4",
+              "8",
+              "12",
+              "16",
+              "20",
+              "24",
+              "mg",
+              "the parcel"
+            ],
+            "distinct_colours": [
+              "#334155"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "bd3ee44b836f9e2ec1a1",
+        "replay_digest": "4bd3da13750b9cb0a031940cc2bcca25eb0758df25046f9ecab57308835a7d73"
+      },
+      {
+        "node_id": "mat_g3_mg_q2_0",
+        "seed": 118,
+        "formatter": "read_mcq",
+        "question_text": "Look at the scale. What is the mass of the parcel? Give your answer in kg.",
+        "correct_answer": "D",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "ScaleRead",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 2,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 6,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 3,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 1,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 1,
+        "hints": [
+          "Read the scale carefully.",
+          "The mass shown is 1 kg.",
+          "Remember: 1000 gram (g) = 1 kilogram (kg)."
+        ],
+        "visual_type": "ScaleRead",
+        "visual_payload": {
+          "reading": 1,
+          "unit": "kg",
+          "scale_max": 6,
+          "tick_interval": 1,
+          "instrument": "dial",
+          "object_label": "the parcel"
+        },
+        "visual_render": {
+          "visual_type": "ScaleRead",
+          "renderer_input_digest": "2d2709e9875bf6d0071ab7b447828aed9ac51e3101168d513c19b3df46bb3c32",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "ScaleRead",
+            "element_count": 29,
+            "svg_count": 1,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "0",
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6",
+              "kg",
+              "the parcel"
+            ],
+            "distinct_colours": [
+              "#334155"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "6c2d5ec8f1551d81c176",
+        "replay_digest": "a501203e7a5823b3a634268215c481dc66318affcc175c53a2f5be66c9276103"
+      },
+      {
+        "node_id": "mat_g3_mg_q2_0",
+        "seed": 127,
+        "formatter": "read_mcq",
+        "question_text": "Look at the scale. What is the mass of the parcel? Give your answer in mg.",
+        "correct_answer": "B",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "ScaleRead",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 18,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 16,
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 20,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 14,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 16,
+        "hints": [
+          "Read the scale carefully.",
+          "The mass shown is 15 mg.",
+          "Remember: 1000 gram (g) = 1 kilogram (kg)."
+        ],
+        "visual_type": "ScaleRead",
+        "visual_payload": {
+          "reading": 16,
+          "unit": "mg",
+          "scale_max": 20,
+          "tick_interval": 2,
+          "instrument": "dial",
+          "object_label": "the parcel"
+        },
+        "visual_render": {
+          "visual_type": "ScaleRead",
+          "renderer_input_digest": "730f3fe1ed64aec316d50c5f07aed1b21807d860922fa9f2e6761c51257a3a10",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "ScaleRead",
+            "element_count": 41,
+            "svg_count": 1,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "0",
+              "2",
+              "4",
+              "6",
+              "8",
+              "10",
+              "12",
+              "14",
+              "16",
+              "18",
+              "20",
+              "mg",
+              "the parcel"
+            ],
+            "distinct_colours": [
+              "#334155"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "00ba49c83227babece03",
+        "replay_digest": "93ad330ce4056d2a2f87d3922decf2413d7f850da96c0fefd19cfba5f52245f3"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "measure_mass",
+      "node_id": "mat_g3_mg_q2_0",
+      "clause": "Measure mass",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All ten samples require reading a displayed scale to determine mass.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "grams_kilograms_and_or_milligrams",
+      "node_id": "mat_g3_mg_q2_0",
+      "clause": "grams (g), kilograms (kg) and/or milligrams (mg)",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "The set repeatedly measures in g, kg, and mg: g at 11/23/42/64, kg at 57/118, and mg at 78/91/103/127.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "measuring_tools",
+      "node_id": "mat_g3_mg_q2_0",
+      "clause": "measuring tools",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Every mass answer must be read from a rendered scale, an appropriate measuring tool that is present for all samples.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    }
+  ]
+}

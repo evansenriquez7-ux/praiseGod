@@ -1,0 +1,601 @@
+{
+  "batch": "batch147_mat_g3_na_q3_1",
+  "attested_at": "2026-09-22T14:39:16Z",
+  "attested_by": "blind-attester-gpt-terra-d30d31-20260922",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "read local_only/scratch/attest117/mat_g3_na_q3_1.prompt.txt (verbatim render_prompt_block output only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "Tool-bearing GPT-Terra subagent reported reading only assigned prompts and writing/validating only sibling verdict outputs; exact tool names were not fully reported, and dispatcher did not verify sandbox-level non-access beyond that report."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g3_na_q3_1",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g3_na_q3_1",
+        "seed": 11,
+        "formatter": "true_false",
+        "question_text": "1 × 9 = 9. True or False?",
+        "correct_answer": true,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "true_false",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "true_false",
+          "experience": "standard"
+        },
+        "resolved_answer": true,
+        "hints": [
+          "We need to find the total of equal groups 1 group of 9.",
+          "Use the 9 times table: 9 × 1.",
+          "The product of 1 × 9 = 9."
+        ],
+        "sample_id": "a53874f98ff4819c8c9f",
+        "replay_digest": "55daf3e3d25bf9f453e20e0f1c60aefd69702cf7a51a4c06de2609cd568ee2f2"
+      },
+      {
+        "node_id": "mat_g3_na_q3_1",
+        "seed": 23,
+        "formatter": "mcq",
+        "question_text": "Is 9 × (5 + 4) the same as (9 × 5) + 4?",
+        "correct_answer": false,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "Only when both are 0",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "Cannot be determined",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": true,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": false,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": false,
+        "hints": [
+          "We need to find the total of equal groups 9 groups of 5.",
+          "Think of it as 5 groups of 9: 9 + 9 + 9 + 9 + 9.",
+          "The product of 9 × 5 = 4."
+        ],
+        "sample_id": "909c14addf54ff48a991",
+        "replay_digest": "965a88e632698a630d68279a70ec2f733ebfb9e548ff81086cc5c321a37cf757"
+      },
+      {
+        "node_id": "mat_g3_na_q3_1",
+        "seed": 42,
+        "formatter": "mcq",
+        "question_text": "Is 5 × 6 the same as 6 × 5?",
+        "correct_answer": true,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "Cannot be determined",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "Only when both are 0",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": false,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": true,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": true,
+        "hints": [
+          "We need to find the total of equal groups 5 groups of 6.",
+          "Use the 6 times table: 6 × 5.",
+          "The product of 5 × 6 = 6."
+        ],
+        "sample_id": "5d4ec93aab52e32d040d",
+        "replay_digest": "23789d6b67066b2e6ae606868879275dc37d9d60d62df928057478e50f6c74ec"
+      },
+      {
+        "node_id": "mat_g3_na_q3_1",
+        "seed": 57,
+        "formatter": "mcq",
+        "question_text": "Is 2 × 8 the same as 8 × 2?",
+        "correct_answer": true,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "Cannot be determined",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "Only when both are 0",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": false,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": true,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": true,
+        "hints": [
+          "We need to find the total of equal groups 2 groups of 8.",
+          "Use the 8 times table: 8 × 2.",
+          "The product of 2 × 8 = 8."
+        ],
+        "sample_id": "1152ee35458d0cb02f91",
+        "replay_digest": "60f6b722b808536ed865252f4c85ef60e053f5ec879a698d9da080122b121e7f"
+      },
+      {
+        "node_id": "mat_g3_na_q3_1",
+        "seed": 64,
+        "formatter": "cloze",
+        "question_text": "1 × 6 = ___",
+        "correct_answer": 6,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 5,
+            "text": "5",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 6,
+            "text": "6",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 7,
+            "text": "7",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 12,
+            "text": "12",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 6,
+        "hints": [
+          "We need to find the total of equal groups 1 group of 6.",
+          "Use the 6 times table: 6 × 1.",
+          "The product of 1 × 6 = 6."
+        ],
+        "sample_id": "5b8b118252437966d2ec",
+        "replay_digest": "06f5dc061de6290608c78b6867279e1f135fb21f5962e233ed534e58ce8d7cf1"
+      },
+      {
+        "node_id": "mat_g3_na_q3_1",
+        "seed": 78,
+        "formatter": "mcq",
+        "question_text": "Is (3 × 6) × 3 the same as 3 × (6 × 2)?",
+        "correct_answer": false,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": false,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "Only when both are 0",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "Cannot be determined",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": true,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": false,
+        "hints": [
+          "We need to find the total of equal groups 3 groups of 6.",
+          "Use the 6 times table: 6 × 3.",
+          "The product of 3 × 6 = 6."
+        ],
+        "sample_id": "3fa728d4215c81a51a61",
+        "replay_digest": "57b07d20ae514d50729589fb5a1a3304993fa012845638684d500c79334b6591"
+      },
+      {
+        "node_id": "mat_g3_na_q3_1",
+        "seed": 91,
+        "formatter": "mcq",
+        "question_text": "Is 4 × 7 the same as 7 × 4?",
+        "correct_answer": true,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "Only when both are 0",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": true,
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "Cannot be determined",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": false,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": true,
+        "hints": [
+          "We need to find the total of equal groups 4 groups of 7.",
+          "Use the 7 times table: 7 × 4.",
+          "The product of 4 × 7 = 7."
+        ],
+        "sample_id": "fc91d0a04498d60efdff",
+        "replay_digest": "739a3336211171e11999a59678f1ba44444c227ed961033aea0de699680fcc76"
+      },
+      {
+        "node_id": "mat_g3_na_q3_1",
+        "seed": 103,
+        "formatter": "error_detect",
+        "question_text": "Grace solved: \"0 × 7 = ___\". Grace says the missing number is 7. Is Grace correct?",
+        "correct_answer": {
+          "has_error": true,
+          "correct_value": 0
+        },
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "error_detect",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "error_detect",
+          "experience": "standard"
+        },
+        "resolved_answer": {
+          "has_error": true,
+          "correct_value": 0
+        },
+        "hints": [
+          "We need to find the total of equal groups 0 groups of 7.",
+          "Use the 7 times table: 7 × 0.",
+          "The product of 0 × 7 = 0."
+        ],
+        "sample_id": "661e1d7da641ef443342",
+        "replay_digest": "815c74e2a2087f00bb43e31da15b7ad986901a5fc2eefa62993ecc1eaedb3152"
+      },
+      {
+        "node_id": "mat_g3_na_q3_1",
+        "seed": 118,
+        "formatter": "mcq",
+        "question_text": "Is (2 × 8) × 3 the same as 2 × (8 × 2)?",
+        "correct_answer": false,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "Cannot be determined",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": true,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "Only when both are 0",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": false,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": false,
+        "hints": [
+          "We need to find the total of equal groups 2 groups of 8.",
+          "Use the 8 times table: 8 × 2.",
+          "The product of 2 × 8 = 8."
+        ],
+        "sample_id": "a2ac42da02316b03fb19",
+        "replay_digest": "9cdec81a1d623697977c6d696312f4c177338e3bd8d555d17f6226e5bb7a21cd"
+      },
+      {
+        "node_id": "mat_g3_na_q3_1",
+        "seed": 127,
+        "formatter": "mcq",
+        "question_text": "Is 2 × 6 the same as 6 × 2?",
+        "correct_answer": true,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "Only when both are 0",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": true,
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": false,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "Cannot be determined",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": true,
+        "hints": [
+          "We need to find the total of equal groups 2 groups of 6.",
+          "Use the 6 times table: 6 × 2.",
+          "The product of 2 × 6 = 6."
+        ],
+        "sample_id": "e4d67008f53c35dfe254",
+        "replay_digest": "a55d110498330078d338479cb05ba48b47a2534ae3c0c5a71669c9492b2275a3"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "illustrate_and_apply_properties_of_multiplication",
+      "node_id": "mat_g3_na_q3_1",
+      "clause": "Illustrate and apply properties of multiplication",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "The samples ask only equation or true/false questions. No rendered array, grouping, or other actual drawing illustrates any multiplication property, and two named properties are not correctly instantiated.",
+      "action_taken": "Left registered pending one independent confirmation under the prevalence standard; no source change in re-instrumentation campaign."
+    },
+    {
+      "capability_id": "6_7_8_and_9_multiplication_tables",
+      "node_id": "mat_g3_na_q3_1",
+      "clause": "6, 7, 8, and 9 multiplication tables",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        78,
+        91,
+        118
+      ],
+      "reasoning": "The samples use factors from all four named tables: 6, 7, 8, and 9 occur across the identity, commutative, grouping, and sum expressions.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "one_multiplied_by_any_number",
+      "node_id": "mat_g3_na_q3_1",
+      "clause": "one multiplied by any number is equal to the number",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        64
+      ],
+      "reasoning": "Seed 11 states 1 × 9 = 9 and seed 64 asks for 1 × 6, directly exercising the identity-with-one rule.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "zero_multiplied_by_any_number",
+      "node_id": "mat_g3_na_q3_1",
+      "clause": "zero multiplied by any number is zero",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "Only seed 103 contains a zero multiplication fact. A single error-check item does not provide representative practice of the zero property across the ten samples.",
+      "action_taken": "Left registered pending one independent confirmation under the prevalence standard; no source change in re-instrumentation campaign."
+    },
+    {
+      "capability_id": "changing_the_order",
+      "node_id": "mat_g3_na_q3_1",
+      "clause": "changing the order of the numbers being multiplied does not change the product",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        57,
+        91,
+        127
+      ],
+      "reasoning": "These seeds explicitly compare reversed factors—5 × 6 and 6 × 5, 2 × 8 and 8 × 2, and related pairs—with the same product.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "changing_the_grouping",
+      "node_id": "mat_g3_na_q3_1",
+      "clause": "changing the grouping of the numbers being multiplied does not change the product",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "The only grouping comparisons, seeds 78 and 118, change a factor as well as the grouping (for example (3 × 6) × 3 versus 3 × (6 × 2)); neither is a valid associativity instance.",
+      "action_taken": "Left registered pending one independent confirmation under the prevalence standard; no source change in re-instrumentation campaign."
+    },
+    {
+      "capability_id": "multiplying_the_sum_of_two_addends",
+      "node_id": "mat_g3_na_q3_1",
+      "clause": "multiplying the sum of two addends by a number is the same as the sum of the products of a number by each addend",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "Seed 23 contrasts 9 × (5 + 4) with (9 × 5) + 4, omitting the required 9 × 4 term. No sample presents the stated distributive equivalence.",
+      "action_taken": "Left registered pending one independent confirmation under the prevalence standard; no source change in re-instrumentation campaign."
+    }
+  ]
+}

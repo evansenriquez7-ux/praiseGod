@@ -1,0 +1,768 @@
+{
+  "batch": "batch146_mat_g3_na_q2_1",
+  "attested_at": "2026-09-22T14:39:16Z",
+  "attested_by": "blind-attester-gpt-terra-d30d31-20260922",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "read local_only/scratch/attest117/mat_g3_na_q2_1.prompt.txt (verbatim render_prompt_block output only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "Tool-bearing GPT-Terra subagent reported reading only assigned prompts and writing/validating only sibling verdict outputs; exact tool names were not fully reported, and dispatcher did not verify sandbox-level non-access beyond that report."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g3_na_q2_1",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g3_na_q2_1",
+        "seed": 11,
+        "formatter": "read_fill_in_blank",
+        "question_text": "The two parts are 7770 and 1725. What is the sum?",
+        "correct_answer": 9495,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_fill_in_blank",
+          "is_visual": true,
+          "visual_type": "NumberBond",
+          "interaction_mode": "read",
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "resolved_answer": 9495,
+        "hints": [
+          "We are adding two numbers: 7770 and 1725.",
+          "Add the ones: 0 + 5 = 5. Write 5 in the ones place.",
+          "Add the tens: 7 + 2 = 9.",
+          "The sum is 7770 + 1725 = 9495."
+        ],
+        "visual_type": "NumberBond",
+        "visual_payload": {
+          "whole": null,
+          "part1": 7770,
+          "part2": 1725,
+          "blank_position": "whole"
+        },
+        "visual_render": {
+          "visual_type": "NumberBond",
+          "renderer_input_digest": "42125407f9f522c8d07993d9156fd99383e200d0c241130b119cc84af1e1c5cf",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "NumberBond",
+            "element_count": 7,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 1,
+            "text_labels": [
+              "7770",
+              "1725"
+            ],
+            "distinct_colours": [
+              "hsl(var(--primary)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "e67fb1db4aba58dfbb51",
+        "replay_digest": "6db37113e80243fdde60b3ff491beb8ab75383cfaf61f9c000aab86798667690"
+      },
+      {
+        "node_id": "mat_g3_na_q2_1",
+        "seed": 23,
+        "formatter": "true_false",
+        "question_text": "4202 + 3971 = 8173. True or False?",
+        "correct_answer": true,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "true_false",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "true_false",
+          "experience": "standard"
+        },
+        "resolved_answer": true,
+        "hints": [
+          "We are adding two numbers: 4202 and 3971.",
+          "Add the ones: 2 + 1 = 3. Write 3 in the ones place.",
+          "Add the tens: 0 + 7 = 7.",
+          "The sum is 4202 + 3971 = 8173."
+        ],
+        "sample_id": "8e93306a647c20a79ca8",
+        "replay_digest": "d9888c104ada648c5bd825ad39656561c3e3ef47d88efece52d242d26427761a"
+      },
+      {
+        "node_id": "mat_g3_na_q2_1",
+        "seed": 42,
+        "formatter": "set_fill_in_blank",
+        "question_text": "Show 1086 + 2067 on the number line.",
+        "correct_answer": 3153,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "set_fill_in_blank",
+          "is_visual": true,
+          "visual_type": "NumberLine",
+          "interaction_mode": "set",
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "resolved_answer": 3153,
+        "hints": [
+          "We are adding two numbers: 1086 and 2067.",
+          "Add the ones: 6 + 7 = 13. Write 3 in the ones place and carry over 1 ten.",
+          "Add the tens: 8 + 6 + 1 (carried) = 15.",
+          "The sum is 1086 + 2067 = 3153."
+        ],
+        "visual_type": "NumberLine",
+        "visual_payload": {
+          "start": 500,
+          "end": 3500,
+          "major_interval": 500,
+          "minor_interval": 100,
+          "interval": 100,
+          "dot_value": 500,
+          "move_by": 2067,
+          "content_type": "whole_number",
+          "value": 3153,
+          "correct_position": 3153,
+          "divisions": 30,
+          "is_interactive": true,
+          "show_labels": true,
+          "correct_answer": 3153.0,
+          "target": 3153.0
+        },
+        "visual_render": {
+          "visual_type": "NumberLine",
+          "renderer_input_digest": "87bf115576c557a08442016c713cbfe23dab58c41a067058db1760835811115c",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "NumberLine",
+            "element_count": 46,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "500",
+              "1000",
+              "1500",
+              "2000",
+              "2500",
+              "3000",
+              "3500",
+              "Your answer: Position",
+              "Click track, drag dot, or use ← → arrow keys"
+            ],
+            "distinct_colours": [
+              "hsl(var(--border-color)",
+              "hsl(var(--text-muted)",
+              "hsl(var(--text)",
+              "hsl(var(--primary)",
+              "hsl(var(--card-bg)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "6ea1e91bcfbf247bf0fb",
+        "replay_digest": "d82d63cef6faefbc456b8ced5c7e3185de6066f1e87248a90c588ebaae3f352c"
+      },
+      {
+        "node_id": "mat_g3_na_q2_1",
+        "seed": 57,
+        "formatter": "error_detect",
+        "question_text": "Pia solved: \"8180 + 1615 = ___\". Pia says the missing number is 9795. Is Pia correct?",
+        "correct_answer": {
+          "has_error": false,
+          "correct_value": 9795
+        },
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "error_detect",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "error_detect",
+          "experience": "standard"
+        },
+        "resolved_answer": {
+          "has_error": false,
+          "correct_value": 9795
+        },
+        "hints": [
+          "We are adding two numbers: 8180 and 1615.",
+          "Add the ones: 0 + 5 = 5. Write 5 in the ones place.",
+          "Add the tens: 8 + 1 = 9.",
+          "The sum is 8180 + 1615 = 9795."
+        ],
+        "sample_id": "e4788d587104678a3962",
+        "replay_digest": "a3d8a00638f6587aa3e2cab0c521059fa9387ea6a4db99bd89ce38ff1e3daca3"
+      },
+      {
+        "node_id": "mat_g3_na_q2_1",
+        "seed": 64,
+        "formatter": "read_mcq",
+        "question_text": "The dot is at 2590 and it moves forward 140 numbers. Starting from 2590, just count up 140 numbers. Which number will the dot land on?",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "NumberLine",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 2730,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 2450,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 2740,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 2729,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 2730,
+        "hints": [
+          "We are adding two numbers: 2590 and 140.",
+          "Add the ones: 0 + 0 = 0. Write 0 in the ones place.",
+          "Add the tens: 9 + 4 = 13.",
+          "The sum is 2590 + 140 = 2730."
+        ],
+        "visual_type": "NumberLine",
+        "visual_payload": {
+          "start": 2400,
+          "end": 2800,
+          "major_interval": 100,
+          "minor_interval": 50,
+          "interval": 50,
+          "dot_value": 2590,
+          "move_by": 140,
+          "content_type": "whole_number",
+          "value": 2730,
+          "correct_position": 2730,
+          "divisions": 8,
+          "is_interactive": false,
+          "show_labels": true,
+          "correct_answer": 2730.0,
+          "target": 2730.0
+        },
+        "visual_render": {
+          "visual_type": "NumberLine",
+          "renderer_input_digest": "601bbcaae08e103e9455301ef068751cc90b383c410c69a67e3bbca78ec35f21",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "NumberLine",
+            "element_count": 19,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "2400",
+              "2500",
+              "2600",
+              "2700",
+              "2800"
+            ],
+            "distinct_colours": [
+              "hsl(var(--border-color)",
+              "hsl(var(--text-muted)",
+              "hsl(var(--text)",
+              "hsl(var(--primary)",
+              "hsl(var(--card-bg)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "0a407e88c7f70bd946cf",
+        "replay_digest": "27f392a460cda4b8de0c20ab80373bd54226e82edfbe1109af1e652fc371a80b"
+      },
+      {
+        "node_id": "mat_g3_na_q2_1",
+        "seed": 78,
+        "formatter": "mcq",
+        "question_text": "What is 5242 + 1534?",
+        "correct_answer": 6776,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 6786,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 6776,
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 3708,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 6775,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 6776,
+        "hints": [
+          "We are adding two numbers: 5242 and 1534.",
+          "Add the ones: 2 + 4 = 6. Write 6 in the ones place.",
+          "Add the tens: 4 + 3 = 7.",
+          "The sum is 5242 + 1534 = 6776."
+        ],
+        "sample_id": "410df69cbf2fe4407b41",
+        "replay_digest": "b83d46f07d339a1304ae8fff3478224f1942c3cde69dcfdda5d4acbdab556c18"
+      },
+      {
+        "node_id": "mat_g3_na_q2_1",
+        "seed": 91,
+        "formatter": "set_fill_in_blank",
+        "question_text": "Show 5521 + 2405 on the number line.",
+        "correct_answer": 7926,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "set_fill_in_blank",
+          "is_visual": true,
+          "visual_type": "NumberLine",
+          "interaction_mode": "set",
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "resolved_answer": 7926,
+        "hints": [
+          "We are adding two numbers: 5521 and 2405.",
+          "Add the ones: 1 + 5 = 6. Write 6 in the ones place.",
+          "Add the tens: 2 + 0 = 2.",
+          "The sum is 5521 + 2405 = 7926."
+        ],
+        "visual_type": "NumberLine",
+        "visual_payload": {
+          "start": 5000,
+          "end": 8000,
+          "major_interval": 500,
+          "minor_interval": 100,
+          "interval": 100,
+          "dot_value": 5000,
+          "move_by": 2405,
+          "content_type": "whole_number",
+          "value": 7926,
+          "correct_position": 7926,
+          "divisions": 30,
+          "is_interactive": true,
+          "show_labels": true,
+          "correct_answer": 7926.0,
+          "target": 7926.0
+        },
+        "visual_render": {
+          "visual_type": "NumberLine",
+          "renderer_input_digest": "1173258c50ae68d160e124652584956b541a01c3491a94173d26f98524e866ca",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "NumberLine",
+            "element_count": 46,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "5000",
+              "5500",
+              "6000",
+              "6500",
+              "7000",
+              "7500",
+              "8000",
+              "Your answer: Position",
+              "Click track, drag dot, or use ← → arrow keys"
+            ],
+            "distinct_colours": [
+              "hsl(var(--border-color)",
+              "hsl(var(--text-muted)",
+              "hsl(var(--text)",
+              "hsl(var(--primary)",
+              "hsl(var(--card-bg)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "758d664ac93028aaa1cf",
+        "replay_digest": "460636838123a92a090339b46e77b5a2f81b65ca33168f54daea81a5f7cb6a73"
+      },
+      {
+        "node_id": "mat_g3_na_q2_1",
+        "seed": 103,
+        "formatter": "set_fill_in_blank",
+        "question_text": "Show 4619 + 1767 on the number line.",
+        "correct_answer": 6386,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "set_fill_in_blank",
+          "is_visual": true,
+          "visual_type": "NumberLine",
+          "interaction_mode": "set",
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "resolved_answer": 6386,
+        "hints": [
+          "We are adding two numbers: 4619 and 1767.",
+          "Add the ones: 9 + 7 = 16. Write 6 in the ones place and carry over 1 ten.",
+          "Add the tens: 1 + 6 + 1 (carried) = 8.",
+          "The sum is 4619 + 1767 = 6386."
+        ],
+        "visual_type": "NumberLine",
+        "visual_payload": {
+          "start": 4000,
+          "end": 6500,
+          "major_interval": 500,
+          "minor_interval": 100,
+          "interval": 100,
+          "dot_value": 4000,
+          "move_by": 1767,
+          "content_type": "whole_number",
+          "value": 6386,
+          "correct_position": 6386,
+          "divisions": 25,
+          "is_interactive": true,
+          "show_labels": true,
+          "correct_answer": 6386.0,
+          "target": 6386.0
+        },
+        "visual_render": {
+          "visual_type": "NumberLine",
+          "renderer_input_digest": "de81247e6dd39df1b4263070f4dc4f7f0c946b847fb17d4bc94a47c173cf5fee",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "NumberLine",
+            "element_count": 40,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "4000",
+              "4500",
+              "5000",
+              "5500",
+              "6000",
+              "6500",
+              "Your answer: Position",
+              "5200",
+              "Click track, drag dot, or use ← → arrow keys"
+            ],
+            "distinct_colours": [
+              "hsl(var(--border-color)",
+              "hsl(var(--text-muted)",
+              "hsl(var(--text)",
+              "hsl(var(--primary)",
+              "hsl(var(--card-bg)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "87d8004f6ff5afa800d7",
+        "replay_digest": "6c045fb255dcc96085d4e52988bd8ee3f5fb606136ea3c7634d9371c1dd45939"
+      },
+      {
+        "node_id": "mat_g3_na_q2_1",
+        "seed": 118,
+        "formatter": "mcq",
+        "question_text": "What is 2121 + 1959?",
+        "correct_answer": 4080,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 162,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 4090,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 4079,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 4080,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 4080,
+        "hints": [
+          "We are adding two numbers: 2121 and 1959.",
+          "Add the ones: 1 + 9 = 10. Write 0 in the ones place and carry over 1 ten.",
+          "Add the tens: 2 + 5 + 1 (carried) = 8.",
+          "The sum is 2121 + 1959 = 4080."
+        ],
+        "sample_id": "edd4d3e0917fdff4eaa1",
+        "replay_digest": "96acc12ba7816555abb7f60f298ff598c2d8016a79b61b4a34469f9cf83616e5"
+      },
+      {
+        "node_id": "mat_g3_na_q2_1",
+        "seed": 127,
+        "formatter": "cloze",
+        "question_text": "6182 + 1716 = ___",
+        "correct_answer": 7898,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 4466,
+            "text": "4466",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 7898,
+            "text": "7898",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 7908,
+            "text": "7908",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 7897,
+            "text": "7897",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 7898,
+        "hints": [
+          "We are adding two numbers: 6182 and 1716.",
+          "Add the ones: 2 + 6 = 8. Write 8 in the ones place.",
+          "Add the tens: 8 + 1 = 9.",
+          "The sum is 6182 + 1716 = 7898."
+        ],
+        "sample_id": "bd30cce00350d2441cdc",
+        "replay_digest": "b958949abd1b8e0b39353af7c69e32065cf6927d46e869db46e73359c155a9ab"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "add",
+      "node_id": "mat_g3_na_q2_1",
+      "clause": "Add",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        78,
+        118,
+        127
+      ],
+      "reasoning": "The samples repeatedly require addition through part-whole, equation, error-checking, and number-line formats.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "numbers",
+      "node_id": "mat_g3_na_q2_1",
+      "clause": "numbers",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        42,
+        78,
+        118,
+        127
+      ],
+      "reasoning": "The addends range from three to four digits and are presented as numerical quantities for addition.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "sums_up_to_10000",
+      "node_id": "mat_g3_na_q2_1",
+      "clause": "sums up to 10 000",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        57,
+        78,
+        118,
+        127
+      ],
+      "reasoning": "Several sums are four-digit totals below 10,000, including 7,770 + 1,725 and 6,182 + 1,716.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "with_regrouping",
+      "node_id": "mat_g3_na_q2_1",
+      "clause": "with",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        78,
+        118,
+        127
+      ],
+      "reasoning": "These are all addition tasks; seed 23’s 4,202 + 3,971 and seed 42’s 1,086 + 2,067 require carrying.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "without_regrouping",
+      "node_id": "mat_g3_na_q2_1",
+      "clause": "without",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        64,
+        91
+      ],
+      "reasoning": "Seed 11 has no carry in 7,770 + 1,725, while the number-line additions in seeds 64 and 91 also present non-regrouping additions.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "regrouping",
+      "node_id": "mat_g3_na_q2_1",
+      "clause": "regrouping",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        23,
+        42,
+        57,
+        78,
+        118,
+        127
+      ],
+      "reasoning": "These additions include regrouping, for example 4,202 + 3,971 and 1,086 + 2,067, alongside non-regrouping examples.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    }
+  ]
+}

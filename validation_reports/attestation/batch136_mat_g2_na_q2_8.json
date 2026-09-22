@@ -1,0 +1,884 @@
+{
+  "batch": "batch136_mat_g2_na_q2_8",
+  "attested_at": "2026-09-22T14:24:35Z",
+  "attested_by": "blind-attester-gpt-terra-d20d21-20260922",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "read local_only/scratch/attest117/mat_g2_na_q2_8.prompt.txt (verbatim render_prompt_block output only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "Tool-bearing GPT-Terra subagent reported rg/sed/awk only on 7 assigned prompts, apply_patch only on sibling verdict JSON, and jq only on outputs; dispatcher did not verify sandbox-level non-access beyond that report."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g2_na_q2_8",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g2_na_q2_8",
+        "seed": 11,
+        "formatter": "read_mcq",
+        "question_text": "What is the missing piece (position 6) in the pattern?",
+        "correct_answer": "C",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "PatternSequence",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 8,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 11,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 10,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 12,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 10,
+        "hints": [
+          "Look at the pattern: [20, 18, 16, 14, 12, 10].",
+          "The pattern is going up by 2 each step.",
+          "The next number in the pattern is at position 7.",
+          "The what it does is: Subtract 2 each time. The answer is 8."
+        ],
+        "visual_type": "PatternSequence",
+        "visual_payload": {
+          "sequence": [
+            20,
+            18,
+            16,
+            14,
+            12,
+            10
+          ],
+          "missing_indices": [
+            5
+          ],
+          "rule": "Follow the pattern",
+          "element_type": "number",
+          "pattern_kind": "linear",
+          "step": 2
+        },
+        "visual_render": {
+          "visual_type": "PatternSequence",
+          "renderer_input_digest": "945f263c7ce8a277192a0a0e021316fb22cf471bba2b3b03d2afcaf84cfa4499",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "PatternSequence",
+            "element_count": 9,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 1,
+            "text_labels": [
+              "20",
+              "18",
+              "16",
+              "14",
+              "12"
+            ],
+            "distinct_colours": [
+              "#f1f5f9",
+              "hsl(var(--primary)",
+              "#fff"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "fe63f42a43846680a816",
+        "replay_digest": "c60e0dd579def15eaaec016ab460a524ea196387bf133f59e7c904f4ad9d6ccc"
+      },
+      {
+        "node_id": "mat_g2_na_q2_8",
+        "seed": 23,
+        "formatter": "cloze",
+        "question_text": "What is the next number in the pattern: 11, 10, 9, 8, 7, 6?",
+        "correct_answer": 5,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 5,
+            "text": "5",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 6,
+            "text": "6",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 17,
+            "text": "17",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 4,
+            "text": "4",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 5,
+        "hints": [
+          "Look at the pattern: [11, 10, 9, 8, 7, 6].",
+          "The pattern is going up by 1 each step.",
+          "The next number in the pattern is at position 7.",
+          "The what it does is: Subtract 1 each time. The answer is 5."
+        ],
+        "sample_id": "05735443cb76bf38a45a",
+        "replay_digest": "2f7c2906fc322fea678ad1270abb08765aa741a207dc6dc6c3fb4193a2fa6bc8"
+      },
+      {
+        "node_id": "mat_g2_na_q2_8",
+        "seed": 42,
+        "formatter": "cloze",
+        "question_text": "What is the next letter in the pattern: d, p, c, d, p, c?",
+        "correct_answer": "d",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "d",
+            "text": "d",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "b",
+            "text": "b",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "o",
+            "text": "o",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "n",
+            "text": "n",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "d",
+        "hints": [
+          "Look at the pattern: ['d', 'p', 'c', 'd', 'p', 'c'].",
+          "This is a same group again pattern. Find the repeating group.",
+          "The next number in the pattern is at position 7.",
+          "The what it does is: Repeat the group: d, p, c. The answer is d."
+        ],
+        "sample_id": "3d244311b3ec2b00aab1",
+        "replay_digest": "497c69711bceb86dcc3f260761c123e84fcf9b5418b7720c540fc92acac88a2a"
+      },
+      {
+        "node_id": "mat_g2_na_q2_8",
+        "seed": 57,
+        "formatter": "mcq",
+        "question_text": "What is the next number in the pattern: 1, 2, 3, 4, 5, 6?",
+        "correct_answer": 7,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 6,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 8,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 9,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 7,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 7,
+        "hints": [
+          "Look at the pattern: [1, 2, 3, 4, 5, 6].",
+          "The pattern is going up by 1 each step.",
+          "The next number in the pattern is at position 7.",
+          "The what it does is: Add 1 each time. The answer is 7."
+        ],
+        "sample_id": "c0dc9ac21279ef29e1e9",
+        "replay_digest": "a95f5c624c1350d2ec929c66b0d2ef1e5c192cbcfb1f66be22419c42e8551ac8"
+      },
+      {
+        "node_id": "mat_g2_na_q2_8",
+        "seed": 64,
+        "formatter": "cloze",
+        "question_text": "What is the next letter in the pattern: x, w, v, u, t, s?",
+        "correct_answer": "r",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "r",
+            "text": "r",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "q",
+            "text": "q",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "y",
+            "text": "y",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "p",
+            "text": "p",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "r",
+        "hints": [
+          "Look at the pattern: ['x', 'w', 'v', 'u', 't', 's'].",
+          "The pattern is going down by 1 each step.",
+          "The next number in the pattern is at position 7.",
+          "The what it does is: Go back 1 letter each time. The answer is r."
+        ],
+        "sample_id": "3a4e167aae111230283b",
+        "replay_digest": "ae05d4183f9376c0711af2c2ca7b53fd8bb945fa10564b20558c3208032ce7f3"
+      },
+      {
+        "node_id": "mat_g2_na_q2_8",
+        "seed": 78,
+        "formatter": "cloze",
+        "question_text": "What is the next letter in the pattern: s, t, u, v, w, x?",
+        "correct_answer": "y",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "y",
+            "text": "y",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "r",
+            "text": "r",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "o",
+            "text": "o",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "z",
+            "text": "z",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "y",
+        "hints": [
+          "Look at the pattern: ['s', 't', 'u', 'v', 'w', 'x'].",
+          "The pattern is going up by 1 each step.",
+          "The next number in the pattern is at position 7.",
+          "The what it does is: Move forward 1 letter each time. The answer is y."
+        ],
+        "sample_id": "788bc2f1fe42ae171291",
+        "replay_digest": "d059f8b2948736b87a2ee13a2e0942773e8160d35c6c74d3d4aece669f056cb8"
+      },
+      {
+        "node_id": "mat_g2_na_q2_8",
+        "seed": 91,
+        "formatter": "read_mcq",
+        "question_text": "What is the missing piece (position 6) in the pattern?",
+        "correct_answer": "C",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "PatternSequence",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 16,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 18,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 17,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 15,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 17,
+        "hints": [
+          "Look at the pattern: [12, 13, 14, 15, 16, 17].",
+          "The pattern is going up by 1 each step.",
+          "The next number in the pattern is at position 7.",
+          "The what it does is: Add 1 each time. The answer is 18."
+        ],
+        "visual_type": "PatternSequence",
+        "visual_payload": {
+          "sequence": [
+            12,
+            13,
+            14,
+            15,
+            16,
+            17
+          ],
+          "missing_indices": [
+            5
+          ],
+          "rule": "Follow the pattern",
+          "element_type": "number",
+          "pattern_kind": "linear",
+          "step": 1
+        },
+        "visual_render": {
+          "visual_type": "PatternSequence",
+          "renderer_input_digest": "52dedb63f8780992f626946540bc7f7c0b1c89650c4ac2150397a86a15f2f525",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "PatternSequence",
+            "element_count": 9,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 1,
+            "text_labels": [
+              "12",
+              "13",
+              "14",
+              "15",
+              "16"
+            ],
+            "distinct_colours": [
+              "#f1f5f9",
+              "hsl(var(--primary)",
+              "#fff"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "090fcb2122fee81863d2",
+        "replay_digest": "0cd7906d8f7c7b8c1bec17ea3b50e98c23cbc1b58fb3f3b5d21d9550deaaa036"
+      },
+      {
+        "node_id": "mat_g2_na_q2_8",
+        "seed": 103,
+        "formatter": "read_mcq",
+        "question_text": "What is the missing piece (position 6) in the pattern?",
+        "correct_answer": "D",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "PatternSequence",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 1,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 20,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 3,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 2,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 2,
+        "hints": [
+          "Look at the pattern: [20, 20, 2, 20, 20, 2].",
+          "This is a same group again pattern. Find the repeating group.",
+          "The next number in the pattern is at position 7.",
+          "The what it does is: Repeat the group: 20, 20, 2. The answer is 20."
+        ],
+        "visual_type": "PatternSequence",
+        "visual_payload": {
+          "sequence": [
+            20,
+            20,
+            2,
+            20,
+            20,
+            2
+          ],
+          "missing_indices": [
+            5
+          ],
+          "rule": "Follow the pattern",
+          "element_type": "number",
+          "pattern_kind": "repeating",
+          "base_pattern": [
+            20,
+            20,
+            2
+          ],
+          "period": 3
+        },
+        "visual_render": {
+          "visual_type": "PatternSequence",
+          "renderer_input_digest": "9a2eebfe5bcd25e9fec26948b83bd5b3bfce3b36106ab38e70e4dc1b49e1b0b6",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "PatternSequence",
+            "element_count": 9,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 1,
+            "text_labels": [
+              "20",
+              "2"
+            ],
+            "distinct_colours": [
+              "#f1f5f9",
+              "hsl(var(--primary)",
+              "#fff"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "e78fe4f8b540613e6cbf",
+        "replay_digest": "0ca3f00f67cc0ae7402a425d5583f87529f7fd7da4406ccc01fbc5a062244aac"
+      },
+      {
+        "node_id": "mat_g2_na_q2_8",
+        "seed": 118,
+        "formatter": "mcq",
+        "question_text": "What is the next letter in the pattern: f, e, a, o, f, e?",
+        "correct_answer": "a",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "a",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "j",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "b",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "i",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "a",
+        "hints": [
+          "Look at the pattern: ['f', 'e', 'a', 'o', 'f', 'e'].",
+          "This is a same group again pattern. Find the repeating group.",
+          "The next number in the pattern is at position 7.",
+          "The what it does is: Repeat the group: f, e, a, o. The answer is a."
+        ],
+        "sample_id": "0fc87149afaad9c51239",
+        "replay_digest": "639d3f301b20a7c2c5c1a169da97e9fdca0f46fe52ee1341160ab84c1471724a"
+      },
+      {
+        "node_id": "mat_g2_na_q2_8",
+        "seed": 127,
+        "formatter": "read_mcq",
+        "question_text": "What is the missing piece (position 6) in the pattern?",
+        "correct_answer": "C",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "PatternSequence",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 14,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 13,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 15,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 16,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 15,
+        "hints": [
+          "Look at the pattern: [10, 11, 12, 13, 14, 15].",
+          "The pattern is going up by 1 each step.",
+          "The next number in the pattern is at position 7.",
+          "The what it does is: Add 1 each time. The answer is 16."
+        ],
+        "visual_type": "PatternSequence",
+        "visual_payload": {
+          "sequence": [
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+          ],
+          "missing_indices": [
+            5
+          ],
+          "rule": "Follow the pattern",
+          "element_type": "number",
+          "pattern_kind": "linear",
+          "step": 1
+        },
+        "visual_render": {
+          "visual_type": "PatternSequence",
+          "renderer_input_digest": "c433a870cabc877037bde19122d11ec31e50703bb044c805308f534bd3e3b2cb",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "PatternSequence",
+            "element_count": 9,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 1,
+            "text_labels": [
+              "10",
+              "11",
+              "12",
+              "13",
+              "14"
+            ],
+            "distinct_colours": [
+              "#f1f5f9",
+              "hsl(var(--primary)",
+              "#fff"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "daf2ac4c0d3076f7c9bd",
+        "replay_digest": "4dd150c9272d9e2663621624ada2f0a410459748828805c9ad440d1843262690"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "determine",
+      "node_id": "mat_g2_na_q2_8",
+      "clause": "Determine",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All ten ask the learner to determine a missing or next element.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "next_term",
+      "node_id": "mat_g2_na_q2_8",
+      "clause": "next term/s",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Every sample requires the next or missing term, so this is pervasive.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "increasing_decreasing",
+      "node_id": "mat_g2_na_q2_8",
+      "clause": "increasing or decreasing",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        57,
+        64,
+        78,
+        91,
+        103,
+        127
+      ],
+      "reasoning": "Increasing or decreasing numerical sequences occur throughout the set; this is not an isolated case.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "patterns",
+      "node_id": "mat_g2_na_q2_8",
+      "clause": "patterns",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Each sample presents a sequence governed by a pattern.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "numbers",
+      "node_id": "mat_g2_na_q2_8",
+      "clause": "numbers",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        57,
+        91,
+        103,
+        127
+      ],
+      "reasoning": "Number patterns occur repeatedly across the ten samples.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "letters",
+      "node_id": "mat_g2_na_q2_8",
+      "clause": "letters",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        64,
+        78,
+        118
+      ],
+      "reasoning": "Four samples require continuing letter patterns, providing repeated exhibition.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "repetitions",
+      "node_id": "mat_g2_na_q2_8",
+      "clause": "repetitions",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        118
+      ],
+      "reasoning": "The recurring d-p-c and f-e-a patterns require identifying repeated units in more than one sample.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    }
+  ]
+}

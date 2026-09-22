@@ -1,0 +1,508 @@
+{
+  "batch": "batch121_mat_g1_na_q1_4",
+  "attested_at": "2026-09-22T14:04:27Z",
+  "attested_by": "blind-attester-gpt-terra-d05-20260922",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "read local_only/scratch/attest117/mat_g1_na_q1_4.prompt.txt (verbatim render_prompt_block output only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "Tool-bearing GPT-Terra subagent reported using exec_command (sed/rg/awk/jq) only on assigned prompt/verdict files and apply_patch only to write sibling verdict JSON; dispatcher did not verify sandbox-level non-access beyond that report."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g1_na_q1_4",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g1_na_q1_4",
+        "seed": 11,
+        "formatter": "sort_order",
+        "question_text": "Arrange these numbers from smallest to largest: 15, 13, 17",
+        "correct_answer": [
+          13,
+          15,
+          17
+        ],
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "sort_order",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "drag",
+          "experience": "standard"
+        },
+        "resolved_answer": [
+          13,
+          15,
+          17
+        ],
+        "hints": [
+          "Numbers to order: [13, 15, 17].",
+          "Find the smallest number first, then the next smallest.",
+          "Ordered from least to greatest: [13, 15, 17]."
+        ],
+        "sample_id": "97ab05f06f0e7a191071",
+        "replay_digest": "a42bb8f72654c121a0e4b5875a0224247f728f44578e89bf1c7b9c74cfb03978"
+      },
+      {
+        "node_id": "mat_g1_na_q1_4",
+        "seed": 23,
+        "formatter": "ordering",
+        "question_text": "Arrange these numbers from largest to smallest: 20, 8, 10",
+        "correct_answer": [
+          20,
+          10,
+          8
+        ],
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "ordering",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "drag",
+          "experience": "standard"
+        },
+        "resolved_answer": [
+          20,
+          10,
+          8
+        ],
+        "hints": [
+          "Numbers to order: [8, 10, 20].",
+          "Find the smallest number first, then the next smallest.",
+          "Ordered from least to greatest: [8, 10, 20]."
+        ],
+        "sample_id": "d8d386f6477e041724cd",
+        "replay_digest": "11872693adbdf8bf8473e2dbf5ad3ebf4ce7fef6d60a07bf5000d986e5f70ce2"
+      },
+      {
+        "node_id": "mat_g1_na_q1_4",
+        "seed": 42,
+        "formatter": "sort_order",
+        "question_text": "Arrange these numbers from largest to smallest: 9, 10, 8",
+        "correct_answer": [
+          10,
+          9,
+          8
+        ],
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "sort_order",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "drag",
+          "experience": "standard"
+        },
+        "resolved_answer": [
+          10,
+          9,
+          8
+        ],
+        "hints": [
+          "Numbers to order: [8, 9, 10].",
+          "Find the smallest number first, then the next smallest.",
+          "Ordered from least to greatest: [8, 9, 10]."
+        ],
+        "sample_id": "b91eeaaf418cc501bfd7",
+        "replay_digest": "ddcf7ee877b7ef4266da028f99ca8cdddf44a93e54a91671815386b98b72b27b"
+      },
+      {
+        "node_id": "mat_g1_na_q1_4",
+        "seed": 57,
+        "formatter": "ordering",
+        "question_text": "Jose counted storybooks collected by 3 friends: 1, 6, 9. Arrange the counts from largest to smallest.",
+        "correct_answer": [
+          9,
+          6,
+          1
+        ],
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "ordering",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "drag",
+          "experience": "standard"
+        },
+        "resolved_answer": [
+          9,
+          6,
+          1
+        ],
+        "hints": [
+          "Numbers to order: [1, 6, 9].",
+          "Find the smallest number first, then the next smallest.",
+          "Ordered from least to greatest: [1, 6, 9]."
+        ],
+        "sample_id": "bc33b74839f8beec833c",
+        "replay_digest": "c58dcf45bd75ec7eb115c1ea588d63857f1cd0a9883fbb6cc11c7a3c0080e1bb"
+      },
+      {
+        "node_id": "mat_g1_na_q1_4",
+        "seed": 64,
+        "formatter": "ordering",
+        "question_text": "Arrange these numbers from largest to smallest: 16, 1, 18, 11",
+        "correct_answer": [
+          18,
+          16,
+          11,
+          1
+        ],
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "ordering",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "drag",
+          "experience": "standard"
+        },
+        "resolved_answer": [
+          18,
+          16,
+          11,
+          1
+        ],
+        "hints": [
+          "Numbers to order: [1, 11, 16, 18].",
+          "Find the smallest number first, then the next smallest.",
+          "Ordered from least to greatest: [1, 11, 16, 18]."
+        ],
+        "sample_id": "526fdc8bbaf08471aae7",
+        "replay_digest": "6187f6619d1b619ba04f0836b8fdb6b5d46097f66a3849118fa0588542bddd28"
+      },
+      {
+        "node_id": "mat_g1_na_q1_4",
+        "seed": 78,
+        "formatter": "sort_order",
+        "question_text": "Arrange these numbers from smallest to largest: 14, 15, 2",
+        "correct_answer": [
+          2,
+          14,
+          15
+        ],
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "sort_order",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "drag",
+          "experience": "standard"
+        },
+        "resolved_answer": [
+          2,
+          14,
+          15
+        ],
+        "hints": [
+          "Numbers to order: [2, 14, 15].",
+          "Find the smallest number first, then the next smallest.",
+          "Ordered from least to greatest: [2, 14, 15]."
+        ],
+        "sample_id": "821c8f5b02412bf77aa4",
+        "replay_digest": "43487d16f2856f89e8dce5a2337320ae6eff10006057660a070297dd10ebeb44"
+      },
+      {
+        "node_id": "mat_g1_na_q1_4",
+        "seed": 91,
+        "formatter": "ordering",
+        "question_text": "Maria counted seashells collected by 3 friends: 1, 3, 15. Arrange the counts from smallest to largest.",
+        "correct_answer": [
+          1,
+          3,
+          15
+        ],
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "ordering",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "drag",
+          "experience": "standard"
+        },
+        "resolved_answer": [
+          1,
+          3,
+          15
+        ],
+        "hints": [
+          "Numbers to order: [1, 3, 15].",
+          "Find the smallest number first, then the next smallest.",
+          "Ordered from least to greatest: [1, 3, 15]."
+        ],
+        "sample_id": "3cbfb1873193de5cda17",
+        "replay_digest": "437d8055dbbb5db1d7301c523b89213db14cf4d0ed112227cbb119dc17b29a84"
+      },
+      {
+        "node_id": "mat_g1_na_q1_4",
+        "seed": 103,
+        "formatter": "ordering",
+        "question_text": "Arrange these numbers from smallest to largest: 15, 11, 20",
+        "correct_answer": [
+          11,
+          15,
+          20
+        ],
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "ordering",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "drag",
+          "experience": "standard"
+        },
+        "resolved_answer": [
+          11,
+          15,
+          20
+        ],
+        "hints": [
+          "Numbers to order: [11, 15, 20].",
+          "Find the smallest number first, then the next smallest.",
+          "Ordered from least to greatest: [11, 15, 20]."
+        ],
+        "sample_id": "74ca2a50c639b1c7a47b",
+        "replay_digest": "59a4f2ffe76c50a806531b96607af1f2832ba9a288dbf7a68b313560f32e0676"
+      },
+      {
+        "node_id": "mat_g1_na_q1_4",
+        "seed": 118,
+        "formatter": "sort_order",
+        "question_text": "Arrange these numbers from smallest to largest: 13, 12, 7",
+        "correct_answer": [
+          7,
+          12,
+          13
+        ],
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "sort_order",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "drag",
+          "experience": "standard"
+        },
+        "resolved_answer": [
+          7,
+          12,
+          13
+        ],
+        "hints": [
+          "Numbers to order: [7, 12, 13].",
+          "Find the smallest number first, then the next smallest.",
+          "Ordered from least to greatest: [7, 12, 13]."
+        ],
+        "sample_id": "4d208031301067d0a51e",
+        "replay_digest": "e7b5a87ba3c8da70f2be5bb9dc0ab0054eccbd14bb07813d716cc6def4de98e2"
+      },
+      {
+        "node_id": "mat_g1_na_q1_4",
+        "seed": 127,
+        "formatter": "ordering",
+        "question_text": "Jose counted marbles collected by 3 friends: 1, 8, 9. Arrange the counts from smallest to largest.",
+        "correct_answer": [
+          1,
+          8,
+          9
+        ],
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "ordering",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "drag",
+          "experience": "standard"
+        },
+        "resolved_answer": [
+          1,
+          8,
+          9
+        ],
+        "hints": [
+          "Numbers to order: [1, 8, 9].",
+          "Find the smallest number first, then the next smallest.",
+          "Ordered from least to greatest: [1, 8, 9]."
+        ],
+        "sample_id": "04f086a6083a71d6e794",
+        "replay_digest": "11234fd4810d9d02516628daa9f24733a4bc8d3693bf6fdb1cc927ef21360288"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "order",
+      "node_id": "mat_g1_na_q1_4",
+      "clause": "Order",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Each sample requires arranging a supplied collection into an ordered sequence, with both direct lists and contextual counts.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "numbers",
+      "node_id": "mat_g1_na_q1_4",
+      "clause": "numbers",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "The objects being sequenced are numerical counts in every sample, whether presented plainly or through a short context.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "up_to_20",
+      "node_id": "mat_g1_na_q1_4",
+      "clause": "up to 20",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All displayed values are at most 20, including repeated upper-bound examples using 20, so the range is represented across the suite.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "smallest_to_largest",
+      "node_id": "mat_g1_na_q1_4",
+      "clause": "smallest to largest",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Ascending ordering is the requested operation in six samples and spans direct numeral lists and story-count contexts.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "vice_versa",
+      "node_id": "mat_g1_na_q1_4",
+      "clause": "vice versa",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        23,
+        42,
+        57,
+        64
+      ],
+      "reasoning": "Descending ordering recurs in four samples, so the reverse direction is meaningfully exhibited rather than appearing once.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    }
+  ]
+}

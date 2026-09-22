@@ -1,0 +1,515 @@
+{
+  "batch": "batch133_mat_g2_na_q1_6",
+  "attested_at": "2026-09-22T14:24:35Z",
+  "attested_by": "blind-attester-gpt-terra-d16d17-20260922",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "read local_only/scratch/attest117/mat_g2_na_q1_6.prompt.txt (verbatim render_prompt_block output only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "Tool-bearing GPT-Terra subagent reported reading only 10 assigned prompts, apply_patch only on sibling verdict JSON, and enum validation only on those outputs; dispatcher did not verify sandbox-level non-access beyond that report."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g2_na_q1_6",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g2_na_q1_6",
+        "seed": 11,
+        "formatter": "true_false",
+        "question_text": "In the number 610, the value of the digit 6 in the hundreds place is 2. True or False?",
+        "correct_answer": false,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "true_false",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "true_false",
+          "experience": "standard"
+        },
+        "resolved_answer": false,
+        "hints": [],
+        "sample_id": "f51c6e672ab7601e82fb",
+        "replay_digest": "fa9fed77504b89e9d594860ac8c3839422392cc1e3c6ab692fa4facbf2d3cf59"
+      },
+      {
+        "node_id": "mat_g2_na_q1_6",
+        "seed": 23,
+        "formatter": "cloze",
+        "question_text": "What is the place value of the digit 5 in 615?",
+        "correct_answer": 5,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 615,
+            "text": "615",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 15,
+            "text": "15",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 50,
+            "text": "50",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 5,
+            "text": "5",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 5,
+        "hints": [],
+        "sample_id": "afdc9f3de3bfbc24f83b",
+        "replay_digest": "4e29e0aeac0ad63c50a0873dc35b075711d69ffd806505fe55513631bb9f6104"
+      },
+      {
+        "node_id": "mat_g2_na_q1_6",
+        "seed": 42,
+        "formatter": "cloze",
+        "question_text": "In 135, what digit is in the ones place?",
+        "correct_answer": 5,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 5,
+            "text": "5",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 6,
+            "text": "6",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 2,
+            "text": "2",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 8,
+            "text": "8",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 5,
+        "hints": [],
+        "sample_id": "6a50fab65f397e71da74",
+        "replay_digest": "515126bbbe32f09caf1bb25061b716b9934fa7fafd0c867cb845faa2aaef29e3"
+      },
+      {
+        "node_id": "mat_g2_na_q1_6",
+        "seed": 57,
+        "formatter": "true_false",
+        "question_text": "What place is the digit 2 in, in the number 250? The answer is hundreds. True or False?",
+        "correct_answer": true,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "true_false",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "true_false",
+          "experience": "standard"
+        },
+        "resolved_answer": true,
+        "hints": [],
+        "sample_id": "df4eccc137f9b9afa5ba",
+        "replay_digest": "13ad82a4695a7e9bb8b02d276416e9040e55c26de28f36f2a6c037c3fe8da33d"
+      },
+      {
+        "node_id": "mat_g2_na_q1_6",
+        "seed": 64,
+        "formatter": "cloze",
+        "question_text": "What is the place value of the digit 1 in 135?",
+        "correct_answer": 100,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 11,
+            "text": "11",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 1,
+            "text": "1",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 100,
+            "text": "100",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 10,
+            "text": "10",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 100,
+        "hints": [],
+        "sample_id": "6e7dd7a9177b081be332",
+        "replay_digest": "f71a8f2ed189692cb146477408e272ddcf8a931864c90e4ecfee26c5e930b607"
+      },
+      {
+        "node_id": "mat_g2_na_q1_6",
+        "seed": 78,
+        "formatter": "cloze",
+        "question_text": "What place is the digit 3 in, in the number 135?",
+        "correct_answer": "tens",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "ones",
+            "text": "ones",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "hundreds",
+            "text": "hundreds",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "tens",
+            "text": "tens",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "tens",
+        "hints": [],
+        "sample_id": "fefaa39f415ee4bf7542",
+        "replay_digest": "abe95f9d56dd3b89e3963d5e8a01974850ccce4ee6b483d10cbb47c2a6d56997"
+      },
+      {
+        "node_id": "mat_g2_na_q1_6",
+        "seed": 91,
+        "formatter": "cloze",
+        "question_text": "What place is the digit 5 in, in the number 345?",
+        "correct_answer": "ones",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "tens",
+            "text": "tens",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "hundreds",
+            "text": "hundreds",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "ones",
+            "text": "ones",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "ones",
+        "hints": [],
+        "sample_id": "3c205407de2f5d7867d4",
+        "replay_digest": "0d204ba4634ea5b93fc672b083aa6203a09edbd0ffeb45d9c3c7f800744166ed"
+      },
+      {
+        "node_id": "mat_g2_na_q1_6",
+        "seed": 103,
+        "formatter": "true_false",
+        "question_text": "In 310, what digit is in the hundreds place? The answer is 3. True or False?",
+        "correct_answer": true,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "true_false",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "true_false",
+          "experience": "standard"
+        },
+        "resolved_answer": true,
+        "hints": [],
+        "sample_id": "588b23736a478e3712d8",
+        "replay_digest": "da864b27939e15f10068ea904d8e0e3adffdfe9122a0837cdcabd9708b3f936d"
+      },
+      {
+        "node_id": "mat_g2_na_q1_6",
+        "seed": 118,
+        "formatter": "mcq",
+        "question_text": "In 375, what digit is in the ones place?",
+        "correct_answer": 5,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 9,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 5,
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 3,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 8,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 5,
+        "hints": [],
+        "sample_id": "f30f3f179f64e03449e1",
+        "replay_digest": "16127741dfcd188c7d4d1cccb0935bdfedbf21dad80e9ec531cebafe7d10c8b8"
+      },
+      {
+        "node_id": "mat_g2_na_q1_6",
+        "seed": 127,
+        "formatter": "cloze",
+        "question_text": "What place is the digit 7 in, in the number 705?",
+        "correct_answer": "hundreds",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "tens",
+            "text": "tens",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "hundreds",
+            "text": "hundreds",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "ones",
+            "text": "ones",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "hundreds",
+        "hints": [],
+        "sample_id": "6f6720323ee7ac7c419b",
+        "replay_digest": "70ddfec2cdbaf32dd9a6c904734ad41ba20e831b551895657d1c6ebb7384eb25"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "determine_place_value",
+      "node_id": "mat_g2_na_q1_6",
+      "clause": "Determine the place value",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        64
+      ],
+      "reasoning": "Only three samples require the numerical value of a digit; the remaining samples ask for a place or digit instead.",
+      "action_taken": "Left registered pending one independent confirmation under the prevalence standard; no source change in re-instrumentation campaign."
+    },
+    {
+      "capability_id": "digit_in_3_digit_number",
+      "node_id": "mat_g2_na_q1_6",
+      "clause": "digit in a 3-digit number",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Every sample operates on a digit in a three-digit number.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "determine_value_of_digit",
+      "node_id": "mat_g2_na_q1_6",
+      "clause": "the value of a digit",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        64
+      ],
+      "reasoning": "The value-of-a-digit task is present in only three samples and is not prevalent.",
+      "action_taken": "Left registered pending one independent confirmation under the prevalence standard; no source change in re-instrumentation campaign."
+    },
+    {
+      "capability_id": "determine_digit_given_place_value",
+      "node_id": "mat_g2_na_q1_6",
+      "clause": "the digit of a number, given its place value",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [
+        42,
+        103,
+        118
+      ],
+      "reasoning": "Finding a digit from a named place occurs in only three samples, not prevalently.",
+      "action_taken": "Left registered pending one independent confirmation under the prevalence standard; no source change in re-instrumentation campaign."
+    }
+  ]
+}

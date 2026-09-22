@@ -1,0 +1,1293 @@
+{
+  "batch": "batch117_mat_g1_dp_q3_2",
+  "attested_at": "2026-09-22T14:01:09Z",
+  "attested_by": "blind-attester-gpt-terra-d01-20260922",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "read local_only/scratch/attest117/mat_g1_dp_q3_2.prompt.txt (verbatim render_prompt_block output only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "Tool-bearing GPT-Terra subagent reported using exec_command only to read its assigned prompt files and apply_patch only to write sibling verdict JSON; dispatcher did not verify sandbox-level non-access beyond that report."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g1_dp_q3_2",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g1_dp_q3_2",
+        "seed": 11,
+        "formatter": "read_mcq",
+        "question_text": "Look at the picture graph. What is the difference between Grade 1 and Grade 3?",
+        "correct_answer": "D",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "BarChart",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 0,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 2,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 3,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 1,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 1,
+        "hints": [
+          "Look at the pictograph carefully.",
+          "Each picture stands for 1 item.",
+          "Read each category's value, then subtract the smaller from the larger."
+        ],
+        "visual_type": "BarChart",
+        "visual_payload": {
+          "categories": [
+            "Grade 1",
+            "Grade 2",
+            "Grade 3",
+            "Grade 4"
+          ],
+          "counts": [
+            4,
+            5,
+            5,
+            2
+          ],
+          "values": [
+            4,
+            5,
+            5,
+            2
+          ],
+          "scale": 1,
+          "symbol": "⭐",
+          "title": "Stars Earned",
+          "subject": "stars earned",
+          "stem_template": "How many stars were earned by {cat}?",
+          "is_read_mode": true,
+          "is_pictograph": true,
+          "max_y": 7
+        },
+        "visual_render": {
+          "visual_type": "BarChart",
+          "renderer_input_digest": "ba5733859a2c701621886b8927ca26b6a2f4ac3d40fd725aea96af2ec7e72584",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "BarChart",
+            "element_count": 76,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 4,
+            "text_labels": [
+              "Read each value from the graph and enter them below.",
+              "0",
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6",
+              "7",
+              "⭐",
+              "Grade 1",
+              "Grade 2",
+              "Grade 3",
+              "Grade 4",
+              "Your answers:",
+              "Grade 1:",
+              "Grade 2:",
+              "Grade 3:",
+              "Grade 4:"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--card-bg)",
+              "hsl(var(--border-color)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "9ae68733696065ddc2a5",
+        "replay_digest": "15e7834af4bbff39bc8da3e2c3c01cdacb22a583127d10e45a230fe2a4faecc1"
+      },
+      {
+        "node_id": "mat_g1_dp_q3_2",
+        "seed": 23,
+        "formatter": "read_mcq",
+        "question_text": "Look at the picture graph. What is the total number of pets shown?",
+        "correct_answer": "B",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "BarChart",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 14,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 13,
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 15,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 10,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 13,
+        "hints": [
+          "Look at the pictograph carefully.",
+          "Each picture stands for 1 item.",
+          "Add up the values for ALL categories to find the total."
+        ],
+        "visual_type": "BarChart",
+        "visual_payload": {
+          "categories": [
+            "cats",
+            "dogs",
+            "birds",
+            "fish"
+          ],
+          "counts": [
+            1,
+            5,
+            3,
+            4
+          ],
+          "values": [
+            1,
+            5,
+            3,
+            4
+          ],
+          "scale": 1,
+          "symbol": "🐾",
+          "title": "Favorite Pets",
+          "subject": "pets",
+          "stem_template": "How many pupils chose {cat}?",
+          "is_read_mode": true,
+          "is_pictograph": true,
+          "max_y": 7
+        },
+        "visual_render": {
+          "visual_type": "BarChart",
+          "renderer_input_digest": "2b48e60ca1dbfc9055b397b58f0b1142a9f40f001ca1372f47fcd8c497a1dad5",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "BarChart",
+            "element_count": 73,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 4,
+            "text_labels": [
+              "Read each value from the graph and enter them below.",
+              "0",
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6",
+              "7",
+              "🐾",
+              "cats",
+              "dogs",
+              "birds",
+              "fish",
+              "Your answers:",
+              "cats:",
+              "dogs:",
+              "birds:",
+              "fish:"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--card-bg)",
+              "hsl(var(--border-color)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "b821cdf54f762db76089",
+        "replay_digest": "871e313a9486b0fa70dae1a61fa73d6582d443dc5d0aba40e466b3763361c4dd"
+      },
+      {
+        "node_id": "mat_g1_dp_q3_2",
+        "seed": 42,
+        "formatter": "read_mcq",
+        "question_text": "Look at the picture graph. How many apples were counted?",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "BarChart",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 3,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 4,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 2,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 5,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 3,
+        "hints": [
+          "Look at the pictograph carefully.",
+          "Each picture stands for 1 item.",
+          "Count the pictures for 'apples': there are 3 picture(s)."
+        ],
+        "visual_type": "BarChart",
+        "visual_payload": {
+          "categories": [
+            "apples",
+            "bananas",
+            "mangoes",
+            "grapes"
+          ],
+          "counts": [
+            3,
+            2,
+            2,
+            2
+          ],
+          "values": [
+            3,
+            2,
+            2,
+            2
+          ],
+          "scale": 1,
+          "symbol": "🍎",
+          "title": "Favorite Fruits",
+          "subject": "fruits",
+          "stem_template": "How many {cat} were counted?",
+          "ask_category": "apples",
+          "is_read_mode": true,
+          "is_pictograph": true,
+          "max_y": 5
+        },
+        "visual_render": {
+          "visual_type": "BarChart",
+          "renderer_input_digest": "4a57ee7ed6fa9123bc5e1e1371ca976d72cbed001e918fe8f79c05113daa7358",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "BarChart",
+            "element_count": 55,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 1,
+            "text_labels": [
+              "Read the value for \"apples\" from the graph and enter it below.",
+              "0",
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "🍎",
+              "apples",
+              "bananas",
+              "mangoes",
+              "grapes",
+              "Your answer:",
+              "apples:"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--card-bg)",
+              "hsl(var(--border-color)",
+              "hsl(var(--primary)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "b719ab233b97b1a48612",
+        "replay_digest": "31cd7b3c323a13593938c83d2111aceb6d94487fa52c1dab49c484629ee5762b"
+      },
+      {
+        "node_id": "mat_g1_dp_q3_2",
+        "seed": 57,
+        "formatter": "read_mcq",
+        "question_text": "Look at the picture graph. How many pupils play swimming?",
+        "correct_answer": "C",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "BarChart",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 0,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 3,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 1,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 2,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 1,
+        "hints": [
+          "Look at the pictograph carefully.",
+          "Each picture stands for 1 item.",
+          "Count the pictures for 'swimming': there are 1 picture(s)."
+        ],
+        "visual_type": "BarChart",
+        "visual_payload": {
+          "categories": [
+            "basketball",
+            "volleyball",
+            "swimming",
+            "running"
+          ],
+          "counts": [
+            5,
+            5,
+            1,
+            2
+          ],
+          "values": [
+            5,
+            5,
+            1,
+            2
+          ],
+          "scale": 1,
+          "symbol": "⚽",
+          "title": "Favorite Sports",
+          "subject": "sports",
+          "stem_template": "How many pupils play {cat}?",
+          "ask_category": "swimming",
+          "is_read_mode": true,
+          "is_pictograph": true,
+          "max_y": 7
+        },
+        "visual_render": {
+          "visual_type": "BarChart",
+          "renderer_input_digest": "282bccf67f0c72b39c69ec21b4f6515b4509fb3dc70fa2778cb483d9aa09c332",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "BarChart",
+            "element_count": 63,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 1,
+            "text_labels": [
+              "Read the value for \"swimming\" from the graph and enter it below.",
+              "0",
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6",
+              "7",
+              "⚽",
+              "basketball",
+              "volleyball",
+              "swimming",
+              "running",
+              "Your answer:",
+              "swimming:"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--card-bg)",
+              "hsl(var(--border-color)",
+              "hsl(var(--text)",
+              "hsl(var(--primary)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "0b03af19884cf68c2835",
+        "replay_digest": "33c96a5a862ba79126bab9e78a39582017527f41133294230265e19d48070150"
+      },
+      {
+        "node_id": "mat_g1_dp_q3_2",
+        "seed": 64,
+        "formatter": "read_mcq",
+        "question_text": "Look at the picture graph. What is the difference between cats and fish?",
+        "correct_answer": "C",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "BarChart",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 3,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 0,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 4,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 5,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 4,
+        "hints": [
+          "Look at the pictograph carefully.",
+          "Each picture stands for 1 item.",
+          "Read each category's value, then subtract the smaller from the larger."
+        ],
+        "visual_type": "BarChart",
+        "visual_payload": {
+          "categories": [
+            "cats",
+            "dogs",
+            "birds",
+            "fish"
+          ],
+          "counts": [
+            5,
+            4,
+            5,
+            1
+          ],
+          "values": [
+            5,
+            4,
+            5,
+            1
+          ],
+          "scale": 1,
+          "symbol": "🐾",
+          "title": "Favorite Pets",
+          "subject": "pets",
+          "stem_template": "How many pupils chose {cat}?",
+          "is_read_mode": true,
+          "is_pictograph": true,
+          "max_y": 7
+        },
+        "visual_render": {
+          "visual_type": "BarChart",
+          "renderer_input_digest": "1af59b7da478bf701aab60a8a555410a7db53fb0ec78472adb7fe8786b5f6e1e",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "BarChart",
+            "element_count": 75,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 4,
+            "text_labels": [
+              "Read each value from the graph and enter them below.",
+              "0",
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6",
+              "7",
+              "🐾",
+              "cats",
+              "dogs",
+              "birds",
+              "fish",
+              "Your answers:",
+              "cats:",
+              "dogs:",
+              "birds:",
+              "fish:"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--card-bg)",
+              "hsl(var(--border-color)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "f53fdcabab38970f4869",
+        "replay_digest": "d277949154f8b863827b3bbacf228b0284e3beb467ca80184dd0f657909bc7bb"
+      },
+      {
+        "node_id": "mat_g1_dp_q3_2",
+        "seed": 78,
+        "formatter": "read_mcq",
+        "question_text": "Look at the picture graph. Which has the most pets: cats, dogs, birds or fish?",
+        "correct_answer": "B",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "BarChart",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "cats",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "birds",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "dogs",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "fish",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "birds",
+        "hints": [
+          "Look at the pictograph carefully.",
+          "Each picture stands for 1 item.",
+          "Compare the number of pictures in each row. The row with the most pictures has the greatest count."
+        ],
+        "visual_type": "BarChart",
+        "visual_payload": {
+          "categories": [
+            "cats",
+            "dogs",
+            "birds",
+            "fish"
+          ],
+          "counts": [
+            3,
+            3,
+            4,
+            1
+          ],
+          "values": [
+            3,
+            3,
+            4,
+            1
+          ],
+          "scale": 1,
+          "symbol": "🐾",
+          "title": "Favorite Pets",
+          "subject": "pets",
+          "stem_template": "How many pupils chose {cat}?",
+          "is_read_mode": true,
+          "is_pictograph": true,
+          "max_y": 6
+        },
+        "visual_render": {
+          "visual_type": "BarChart",
+          "renderer_input_digest": "ec71d32754412c5634d443d6cf442881444b132fbcefd375d76250d021429fda",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "BarChart",
+            "element_count": 69,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 4,
+            "text_labels": [
+              "Read each value from the graph and enter them below.",
+              "0",
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6",
+              "🐾",
+              "cats",
+              "dogs",
+              "birds",
+              "fish",
+              "Your answers:",
+              "cats:",
+              "dogs:",
+              "birds:",
+              "fish:"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--card-bg)",
+              "hsl(var(--border-color)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "f939af821a0e678eb29f",
+        "replay_digest": "8cd6f1fdc9d269a7a3192f2d2cb5fbb26718ed98e796817acf10642e7b24c595"
+      },
+      {
+        "node_id": "mat_g1_dp_q3_2",
+        "seed": 91,
+        "formatter": "read_mcq",
+        "question_text": "Look at the picture graph. How many pupils chose yellow?",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "BarChart",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 4,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 3,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 5,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 6,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 4,
+        "hints": [
+          "Look at the pictograph carefully.",
+          "Each picture stands for 1 item.",
+          "Count the pictures for 'yellow': there are 4 picture(s)."
+        ],
+        "visual_type": "BarChart",
+        "visual_payload": {
+          "categories": [
+            "red",
+            "blue",
+            "green",
+            "yellow"
+          ],
+          "counts": [
+            2,
+            4,
+            4,
+            4
+          ],
+          "values": [
+            2,
+            4,
+            4,
+            4
+          ],
+          "scale": 1,
+          "symbol": "🎨",
+          "title": "Favorite Colors",
+          "subject": "colors",
+          "stem_template": "How many pupils chose {cat}?",
+          "ask_category": "yellow",
+          "is_read_mode": true,
+          "is_pictograph": true,
+          "max_y": 6
+        },
+        "visual_render": {
+          "visual_type": "BarChart",
+          "renderer_input_digest": "7e634e735f4068eafa332b54d9562025a8b36ca1b9d1b485904638183a91ec3a",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "BarChart",
+            "element_count": 62,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 1,
+            "text_labels": [
+              "Read the value for \"yellow\" from the graph and enter it below.",
+              "0",
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6",
+              "🎨",
+              "red",
+              "blue",
+              "green",
+              "yellow",
+              "Your answer:",
+              "yellow:"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--card-bg)",
+              "hsl(var(--border-color)",
+              "hsl(var(--text)",
+              "hsl(var(--primary)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "835c517f39553f931f50",
+        "replay_digest": "fea454a5c003623324e851074d4f4b8a1e2d42f7eaca489620efc242a10895bb"
+      },
+      {
+        "node_id": "mat_g1_dp_q3_2",
+        "seed": 103,
+        "formatter": "read_mcq",
+        "question_text": "Look at the picture graph. What is the difference between Science and Art?",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "BarChart",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 1,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 4,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 3,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 2,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 1,
+        "hints": [
+          "Look at the pictograph carefully.",
+          "Each picture stands for 1 item.",
+          "Read each category's value, then subtract the smaller from the larger."
+        ],
+        "visual_type": "BarChart",
+        "visual_payload": {
+          "categories": [
+            "Math",
+            "Science",
+            "English",
+            "Art"
+          ],
+          "counts": [
+            1,
+            5,
+            1,
+            4
+          ],
+          "values": [
+            1,
+            5,
+            1,
+            4
+          ],
+          "scale": 1,
+          "symbol": "📚",
+          "title": "Favorite Subjects",
+          "subject": "subjects",
+          "stem_template": "How many pupils voted for {cat}?",
+          "is_read_mode": true,
+          "is_pictograph": true,
+          "max_y": 7
+        },
+        "visual_render": {
+          "visual_type": "BarChart",
+          "renderer_input_digest": "9c7e7d0675ecce248f0eaa632347bba3ea27d435f00f7ba5d1883ae254949eb0",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "BarChart",
+            "element_count": 71,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 4,
+            "text_labels": [
+              "Read each value from the graph and enter them below.",
+              "0",
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6",
+              "7",
+              "📚",
+              "Math",
+              "Science",
+              "English",
+              "Art",
+              "Your answers:",
+              "Math:",
+              "Science:",
+              "English:",
+              "Art:"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--card-bg)",
+              "hsl(var(--border-color)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "777abddfd9ef95347692",
+        "replay_digest": "7d305ddab2eccdc22c2311804b2956614569c39cc20b300084f7e4df56404944"
+      },
+      {
+        "node_id": "mat_g1_dp_q3_2",
+        "seed": 118,
+        "formatter": "read_mcq",
+        "question_text": "Look at the picture graph. Which has the most books read: Monday, Tuesday, Wednesday or Thursday?",
+        "correct_answer": "C",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "BarChart",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "Monday",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "Tuesday",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "Wednesday",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "Thursday",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "Wednesday",
+        "hints": [
+          "Look at the pictograph carefully.",
+          "Each picture stands for 1 item.",
+          "Compare the number of pictures in each row. The row with the most pictures has the greatest count."
+        ],
+        "visual_type": "BarChart",
+        "visual_payload": {
+          "categories": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday"
+          ],
+          "counts": [
+            1,
+            3,
+            4,
+            1
+          ],
+          "values": [
+            1,
+            3,
+            4,
+            1
+          ],
+          "scale": 1,
+          "symbol": "📖",
+          "title": "Books Read",
+          "subject": "books read",
+          "stem_template": "How many books were read on {cat}?",
+          "is_read_mode": true,
+          "is_pictograph": true,
+          "max_y": 6
+        },
+        "visual_render": {
+          "visual_type": "BarChart",
+          "renderer_input_digest": "632c16a7a7fb3a93855fb47704f6bd2afe48d90c224624a204e7e9cfe98c18ea",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "BarChart",
+            "element_count": 67,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 4,
+            "text_labels": [
+              "Read each value from the graph and enter them below.",
+              "0",
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6",
+              "📖",
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Your answers:",
+              "Monday:",
+              "Tuesday:",
+              "Wednesday:",
+              "Thursday:"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--card-bg)",
+              "hsl(var(--border-color)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "68e3fea16c9969bfaa06",
+        "replay_digest": "cadf7895adf07c2f3abef0c358f466a86d1cc4183a7f8457847d156fd58a2aa9"
+      },
+      {
+        "node_id": "mat_g1_dp_q3_2",
+        "seed": 127,
+        "formatter": "read_mcq",
+        "question_text": "Look at the picture graph. How many pupils chose fish?",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "BarChart",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 2,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 1,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 4,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 3,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 2,
+        "hints": [
+          "Look at the pictograph carefully.",
+          "Each picture stands for 1 item.",
+          "Count the pictures for 'fish': there are 2 picture(s)."
+        ],
+        "visual_type": "BarChart",
+        "visual_payload": {
+          "categories": [
+            "cats",
+            "dogs",
+            "birds",
+            "fish"
+          ],
+          "counts": [
+            1,
+            1,
+            3,
+            2
+          ],
+          "values": [
+            1,
+            1,
+            3,
+            2
+          ],
+          "scale": 1,
+          "symbol": "🐾",
+          "title": "Favorite Pets",
+          "subject": "pets",
+          "stem_template": "How many pupils chose {cat}?",
+          "ask_category": "fish",
+          "is_read_mode": true,
+          "is_pictograph": true,
+          "max_y": 5
+        },
+        "visual_render": {
+          "visual_type": "BarChart",
+          "renderer_input_digest": "57808264931506f376bcc3de96e7b8730275cceb1def3f3d47ae3dc76bd9872b",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "BarChart",
+            "element_count": 53,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 1,
+            "text_labels": [
+              "Read the value for \"fish\" from the graph and enter it below.",
+              "0",
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "🐾",
+              "cats",
+              "dogs",
+              "birds",
+              "fish",
+              "Your answer:",
+              "fish:"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--card-bg)",
+              "hsl(var(--border-color)",
+              "hsl(var(--text)",
+              "hsl(var(--primary)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "8846a8a589d55e7777b3",
+        "replay_digest": "54e3503db0f2d7c5bea1a54897a9c1a13c2d10b870f98cdff12f6ccec4927e6e"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "interpret",
+      "node_id": "mat_g1_dp_q3_2",
+      "clause": "Interpret",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Learners repeatedly read values and answer count, total, difference, or greatest-category questions. Those different question types require interpreting the displayed data across the full sample set.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "pictograph",
+      "node_id": "mat_g1_dp_q3_2",
+      "clause": "pictograph",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "All ten displays are rendered as BarChart rather than a pictograph made of repeated images. An icon appears as a label, but it does not turn the bar-chart display into the specified graph medium.",
+      "action_taken": "Left registered pending one independent confirmation under the prevalence standard; no source change in re-instrumentation campaign."
+    },
+    {
+      "capability_id": "without_scale",
+      "node_id": "mat_g1_dp_q3_2",
+      "clause": "without a scale",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "Each rendered chart includes a numbered zero-to-seven style axis for reading values. Since that scale is present consistently, the samples do not exhibit interpretation of a graph without one.",
+      "action_taken": "Left registered pending one independent confirmation under the prevalence standard; no source change in re-instrumentation campaign."
+    }
+  ]
+}

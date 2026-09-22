@@ -1,0 +1,604 @@
+{
+  "batch": "batch136_mat_g2_na_q2_9",
+  "attested_at": "2026-09-22T14:24:35Z",
+  "attested_by": "blind-attester-gpt-terra-d20d21-20260922",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "read local_only/scratch/attest117/mat_g2_na_q2_9.prompt.txt (verbatim render_prompt_block output only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "Tool-bearing GPT-Terra subagent reported rg/sed/awk only on 7 assigned prompts, apply_patch only on sibling verdict JSON, and jq only on outputs; dispatcher did not verify sandbox-level non-access beyond that report."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g2_na_q2_9",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g2_na_q2_9",
+        "seed": 11,
+        "formatter": "mcq",
+        "question_text": "Create a pattern that starts at 1 and uses the rule: Add 3 each time. Which sequence shows this pattern?",
+        "correct_answer": "1, 4, 7, 10, 13, 16",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "1, 4, 7, 10, 13, 16",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "1, 4, 7, 10, 15, 16",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "1, 4, 7, 10, 13, 14",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "1, 4, 9, 10, 13, 16",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "1, 4, 7, 10, 13, 16",
+        "hints": [],
+        "sample_id": "cb5abea8fa58c7ac22d7",
+        "replay_digest": "3e8d99c75424d4f3e0eb3796fe3ac5de46958c4d40af95e8835af2e3fd47f765"
+      },
+      {
+        "node_id": "mat_g2_na_q2_9",
+        "seed": 23,
+        "formatter": "cloze",
+        "question_text": "Which sequence correctly shows a decreasing pattern starting at 20 and following the rule: Subtract 1 each time?",
+        "correct_answer": "20, 19, 18, 17, 16, 15",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "20, 19, 18, 17, 16, 15",
+            "text": "20, 19, 18, 17, 16, 15",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "20, 19, 18, 17, 16, 14",
+            "text": "20, 19, 18, 17, 16, 14",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "20, 19, 18, 17, 17, 15",
+            "text": "20, 19, 18, 17, 17, 15",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "20, 16, 18, 17, 16, 15",
+            "text": "20, 16, 18, 17, 16, 15",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "20, 19, 18, 17, 16, 15",
+        "hints": [],
+        "sample_id": "ca99aa0f2e1d93a749f2",
+        "replay_digest": "1b931c6e672f0711a3a75900c195a53fc87ec4cf4c20565978867f5a60ca5eca"
+      },
+      {
+        "node_id": "mat_g2_na_q2_9",
+        "seed": 42,
+        "formatter": "cloze",
+        "question_text": "You want to create a decreasing pattern where the rule is: Subtract 1 each time. Which sequence correctly creates it?",
+        "correct_answer": "10, 9, 8, 7, 6, 5",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "10, 9, 8, 5, 6, 5",
+            "text": "10, 9, 8, 5, 6, 5",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "10, 9, 6, 7, 6, 5",
+            "text": "10, 9, 6, 7, 6, 5",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "10, 9, 8, 7, 6, 5",
+            "text": "10, 9, 8, 7, 6, 5",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "10, 12, 8, 7, 6, 5",
+            "text": "10, 12, 8, 7, 6, 5",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "10, 9, 8, 7, 6, 5",
+        "hints": [],
+        "sample_id": "242e3f66f41763333c5d",
+        "replay_digest": "c1d7fe620a9db09ac7e949412954a67d754f9f2153b81776d20b306047b0152a"
+      },
+      {
+        "node_id": "mat_g2_na_q2_9",
+        "seed": 57,
+        "formatter": "mcq",
+        "question_text": "Start at 1 and create an increasing pattern with the rule: Add 1 each time. Which pattern did you create?",
+        "correct_answer": "1, 2, 3, 4, 5, 6",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "1, 2, 3, 5, 5, 6",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "1, 2, 5, 4, 5, 6",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "1, 2, 3, 4, 2, 6",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "1, 2, 3, 4, 5, 6",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "1, 2, 3, 4, 5, 6",
+        "hints": [],
+        "sample_id": "5e02029a57b2c9e59b2b",
+        "replay_digest": "d7ef3fd0fb099e22ddcb82b30808e89fcf122f4087bc1378b07662b32af0f306"
+      },
+      {
+        "node_id": "mat_g2_na_q2_9",
+        "seed": 64,
+        "formatter": "cloze",
+        "question_text": "Start at 12 and create an increasing pattern with the rule: Add 2 each time. Which pattern did you create?",
+        "correct_answer": "12, 14, 16, 18, 20, 22",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "12, 12, 16, 18, 20, 22",
+            "text": "12, 12, 16, 18, 20, 22",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "12, 14, 16, 18, 20, 22",
+            "text": "12, 14, 16, 18, 20, 22",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "12, 14, 16, 21, 20, 22",
+            "text": "12, 14, 16, 21, 20, 22",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "12, 14, 16, 18, 20, 25",
+            "text": "12, 14, 16, 18, 20, 25",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "12, 14, 16, 18, 20, 22",
+        "hints": [],
+        "sample_id": "355c9840e6b2f201087b",
+        "replay_digest": "3f0917755d56cbf303781806a18277c1d0998797e37d14c8862b3fefed604075"
+      },
+      {
+        "node_id": "mat_g2_na_q2_9",
+        "seed": 78,
+        "formatter": "cloze",
+        "question_text": "Create a pattern that starts at 11 and uses the rule: Subtract 1 each time. Which sequence shows this pattern?",
+        "correct_answer": "11, 10, 9, 8, 7, 6",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "11, 10, 9, 11, 7, 6",
+            "text": "11, 10, 9, 11, 7, 6",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "11, 10, 12, 8, 7, 6",
+            "text": "11, 10, 12, 8, 7, 6",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "11, 10, 9, 8, 4, 6",
+            "text": "11, 10, 9, 8, 4, 6",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "11, 10, 9, 8, 7, 6",
+            "text": "11, 10, 9, 8, 7, 6",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "11, 10, 9, 8, 7, 6",
+        "hints": [],
+        "sample_id": "c9d360d2565ed9b70214",
+        "replay_digest": "12f4b0f0b607b3c5aee4ec905881eaed11f9a40721b90d0ef274854f07a1450b"
+      },
+      {
+        "node_id": "mat_g2_na_q2_9",
+        "seed": 91,
+        "formatter": "cloze",
+        "question_text": "Create a pattern that starts at 12 and uses the rule: Add 1 each time. Which sequence shows this pattern?",
+        "correct_answer": "12, 13, 14, 15, 16, 17",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "12, 13, 15, 15, 16, 17",
+            "text": "12, 13, 15, 15, 16, 17",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "12, 13, 14, 15, 17, 17",
+            "text": "12, 13, 14, 15, 17, 17",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "12, 13, 14, 15, 19, 17",
+            "text": "12, 13, 14, 15, 19, 17",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "12, 13, 14, 15, 16, 17",
+            "text": "12, 13, 14, 15, 16, 17",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "12, 13, 14, 15, 16, 17",
+        "hints": [],
+        "sample_id": "1936d33284c2205d8848",
+        "replay_digest": "b14222124133063843e1f74f3573ebaaa8e43f92af0a7d3f5a8fa2d6cbfa5e5b"
+      },
+      {
+        "node_id": "mat_g2_na_q2_9",
+        "seed": 103,
+        "formatter": "cloze",
+        "question_text": "Create a pattern that starts at 20 and uses the rule: Subtract 2 each time. Which sequence shows this pattern?",
+        "correct_answer": "20, 18, 16, 14, 12, 10",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "20, 18, 19, 14, 12, 10",
+            "text": "20, 18, 19, 14, 12, 10",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "20, 20, 16, 14, 12, 10",
+            "text": "20, 20, 16, 14, 12, 10",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "20, 18, 16, 14, 12, 10",
+            "text": "20, 18, 16, 14, 12, 10",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "20, 21, 16, 14, 12, 10",
+            "text": "20, 21, 16, 14, 12, 10",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "20, 18, 16, 14, 12, 10",
+        "hints": [],
+        "sample_id": "1806a25acf97e5d2bba3",
+        "replay_digest": "3e8d0145a090343cacec124be28963b145f3d430823c34d1329b0d2673dcc227"
+      },
+      {
+        "node_id": "mat_g2_na_q2_9",
+        "seed": 118,
+        "formatter": "mcq",
+        "question_text": "Which sequence correctly shows a decreasing pattern starting at 12 and following the rule: Subtract 1 each time?",
+        "correct_answer": "12, 11, 10, 9, 8, 7",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "12, 10, 10, 9, 8, 7",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "12, 11, 10, 9, 8, 7",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "12, 11, 10, 6, 8, 7",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "12, 11, 10, 8, 8, 7",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "12, 11, 10, 9, 8, 7",
+        "hints": [],
+        "sample_id": "49016d2a60816d8954ed",
+        "replay_digest": "d800bcc9c763ba5821176c8f49c2f166c6ca8a202ffc1958ce56fa671baf5a54"
+      },
+      {
+        "node_id": "mat_g2_na_q2_9",
+        "seed": 127,
+        "formatter": "cloze",
+        "question_text": "Which sequence correctly shows an increasing pattern starting at 10 and following the rule: Add 1 each time?",
+        "correct_answer": "10, 11, 12, 13, 14, 15",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "10, 8, 12, 13, 14, 15",
+            "text": "10, 8, 12, 13, 14, 15",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "10, 11, 12, 11, 14, 15",
+            "text": "10, 11, 12, 11, 14, 15",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "10, 11, 12, 13, 12, 15",
+            "text": "10, 11, 12, 13, 12, 15",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "10, 11, 12, 13, 14, 15",
+            "text": "10, 11, 12, 13, 14, 15",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "10, 11, 12, 13, 14, 15",
+        "hints": [],
+        "sample_id": "666a0600bca74ea0a780",
+        "replay_digest": "f780a743f5409e98a70fc05b047a348932afeec42eada1ae26ef132acd97c8f5"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "create",
+      "node_id": "mat_g2_na_q2_9",
+      "clause": "Create",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "The learner only chooses among already-created sequences in every sample; none requires creating a pattern.",
+      "action_taken": "Left registered pending one independent confirmation under the prevalence standard; no source change in re-instrumentation campaign."
+    },
+    {
+      "capability_id": "increasing_decreasing",
+      "node_id": "mat_g2_na_q2_9",
+      "clause": "increasing or decreasing",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All samples show and require checking an increasing or decreasing rule.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "patterns",
+      "node_id": "mat_g2_na_q2_9",
+      "clause": "patterns",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Pattern sequences are the substance of all ten prompts.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    }
+  ]
+}

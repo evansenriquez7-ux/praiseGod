@@ -1,0 +1,768 @@
+{
+  "batch": "batch125_mat_g1_na_q3_1",
+  "attested_at": "2026-09-22T14:08:26Z",
+  "attested_by": "blind-attester-gpt-terra-d09-20260922",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "read local_only/scratch/attest117/mat_g1_na_q3_1.prompt.txt (verbatim render_prompt_block output only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "Tool-bearing GPT-Terra subagent reported exec_command (wc/sed/jq) only on assigned prompt and sibling verdict paths and apply_patch only to write verdict JSON; dispatcher did not verify sandbox-level non-access beyond that report."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g1_na_q3_1",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g1_na_q3_1",
+        "seed": 11,
+        "formatter": "true_false",
+        "question_text": "In 19 − ___ = 1, the missing number is 17. True or False?",
+        "correct_answer": false,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "true_false",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "true_false",
+          "experience": "standard"
+        },
+        "resolved_answer": false,
+        "hints": [
+          "The number statement is: 19 − ___ = 1",
+          "To find the missing number, use the opposite operation (addition).",
+          "1 + 19 = 18.",
+          "Check: 19 − 18 = 1. ✓"
+        ],
+        "sample_id": "390113be940c3e99a971",
+        "replay_digest": "8ae43ea16d74da7e2da10f25873e6d112b6db88e72b27d553d238c134220f63f"
+      },
+      {
+        "node_id": "mat_g1_na_q3_1",
+        "seed": 23,
+        "formatter": "read_mcq",
+        "question_text": "Both sides balance evenly. 20 - ? = 10. What is the missing value?",
+        "correct_answer": "B",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "BalanceScale",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 30,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 10,
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 11,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 9,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 10,
+        "hints": [
+          "The number statement is: 20 − ___ = 10",
+          "To find the missing number, use the opposite operation (addition).",
+          "10 + 20 = 10.",
+          "Check: 20 − 10 = 10. ✓"
+        ],
+        "visual_type": "BalanceScale",
+        "visual_payload": {
+          "left_side": "20 - ?",
+          "right_side": "10",
+          "blank_side": "left",
+          "is_balanced": true
+        },
+        "visual_render": {
+          "visual_type": "BalanceScale",
+          "renderer_input_digest": "cf0b3446e19ea53e97a8a5867c2fad4aaf4789cc713dbdad9c85c27ea3defdbe",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "BalanceScale",
+            "element_count": 6,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "20 - ?",
+              "10"
+            ],
+            "distinct_colours": [
+              "#94a3b8",
+              "#3b82f6",
+              "#fff",
+              "#64748b"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "9da9d825f4309b16cae3",
+        "replay_digest": "bb3c7dacc646116b100c98708bc925c6748d108f7cac54716d7979afb006b3f0"
+      },
+      {
+        "node_id": "mat_g1_na_q3_1",
+        "seed": 42,
+        "formatter": "read_mcq",
+        "question_text": "Both sides balance evenly. 9 + ? = 20. What is the missing value?",
+        "correct_answer": "D",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "BalanceScale",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 20,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 12,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 10,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 11,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 11,
+        "hints": [
+          "The number statement is: ___ + 11 = 20",
+          "Use subtraction to undo the operation.",
+          "20 − 11 = 9.",
+          "Check: 9 + 11 = 20. ✓"
+        ],
+        "visual_type": "BalanceScale",
+        "visual_payload": {
+          "left_side": "9 + ?",
+          "right_side": "20",
+          "blank_side": "left",
+          "is_balanced": true
+        },
+        "visual_render": {
+          "visual_type": "BalanceScale",
+          "renderer_input_digest": "b4ce14cbc07168fce249f5ead298a6ee6aa31ad1b620fa9fe3f5071be750f121",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "BalanceScale",
+            "element_count": 6,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "9 + ?",
+              "20"
+            ],
+            "distinct_colours": [
+              "#94a3b8",
+              "#3b82f6",
+              "#fff",
+              "#64748b"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "8b380c5ebcf75f8dd9d0",
+        "replay_digest": "92996dd53fb5ca1bfa682f5c92c7b0c9baa900169d9d058c144b1995b906c106"
+      },
+      {
+        "node_id": "mat_g1_na_q3_1",
+        "seed": 57,
+        "formatter": "mcq",
+        "question_text": "What number goes in the blank: 4 − 1 = ___?",
+        "correct_answer": 3,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 4,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 3,
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 7,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 2,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 3,
+        "hints": [
+          "The number statement is: 4 − 1 = ___",
+          "We need to find what 4 − 1 equals.",
+          "Calculate: 4 − 1 = 3."
+        ],
+        "sample_id": "f3c687e4aeb7da5b4e3d",
+        "replay_digest": "c1a2b3623aab08239771f4f707da0d055078b8bce3f6fd6c1c2c42887e38377b"
+      },
+      {
+        "node_id": "mat_g1_na_q3_1",
+        "seed": 64,
+        "formatter": "read_mcq",
+        "question_text": "Both sides balance evenly. 10 + ? = 12. What is the missing value?",
+        "correct_answer": "D",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "BalanceScale",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 12,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 3,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 1,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 2,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 2,
+        "hints": [
+          "The number statement is: 10 + ___ = 12",
+          "To find the missing number, use the opposite operation (subtraction).",
+          "12 − 10 = 2.",
+          "Check: 10 + 2 = 12. ✓"
+        ],
+        "visual_type": "BalanceScale",
+        "visual_payload": {
+          "left_side": "10 + ?",
+          "right_side": "12",
+          "blank_side": "left",
+          "is_balanced": true
+        },
+        "visual_render": {
+          "visual_type": "BalanceScale",
+          "renderer_input_digest": "46f90392052108ead3f1946c66b72d8318e99b0df92dfa398fe1968587747c81",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "BalanceScale",
+            "element_count": 6,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "10 + ?",
+              "12"
+            ],
+            "distinct_colours": [
+              "#94a3b8",
+              "#3b82f6",
+              "#fff",
+              "#64748b"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "5fb5843a9112e03e7359",
+        "replay_digest": "5fa8fc25e416abd0af61ae74ac872766d9583354bc3c6174acadd3ff912daa3f"
+      },
+      {
+        "node_id": "mat_g1_na_q3_1",
+        "seed": 78,
+        "formatter": "read_mcq",
+        "question_text": "Both sides balance evenly. 20 - ? = 11. What is the missing value?",
+        "correct_answer": "C",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "BalanceScale",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 11,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 8,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 9,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 10,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 9,
+        "hints": [
+          "The number statement is: 20 − 9 = ___",
+          "We need to find what 20 − 9 equals.",
+          "Calculate: 20 − 9 = 11."
+        ],
+        "visual_type": "BalanceScale",
+        "visual_payload": {
+          "left_side": "20 - ?",
+          "right_side": "11",
+          "blank_side": "left",
+          "is_balanced": true
+        },
+        "visual_render": {
+          "visual_type": "BalanceScale",
+          "renderer_input_digest": "d08d334cc486b45dd40191584e42c5d3005ef94b1b2327269ed8af3f08c8600b",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "BalanceScale",
+            "element_count": 6,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "20 - ?",
+              "11"
+            ],
+            "distinct_colours": [
+              "#94a3b8",
+              "#3b82f6",
+              "#fff",
+              "#64748b"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "ea954db260173fb3f42f",
+        "replay_digest": "348f533b9b5bb7a2db709c39345e772b9876f3dd83416172a127b79f3e180de5"
+      },
+      {
+        "node_id": "mat_g1_na_q3_1",
+        "seed": 91,
+        "formatter": "cloze",
+        "question_text": "2 + 10 = ___",
+        "correct_answer": 12,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 13,
+            "text": "13",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 14,
+            "text": "14",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 12,
+            "text": "12",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 22,
+            "text": "22",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 12,
+        "hints": [
+          "The number statement is: 2 + 10 = ___",
+          "We need to find what 2 + 10 equals.",
+          "Calculate: 2 + 10 = 12."
+        ],
+        "sample_id": "24c94e7c4c64e8ee8883",
+        "replay_digest": "104cd9772f71982f7d4c8862d8a8b2fecda415aaae21d460a14722c9e2eb02ef"
+      },
+      {
+        "node_id": "mat_g1_na_q3_1",
+        "seed": 103,
+        "formatter": "cloze",
+        "question_text": "___ − 3 = 2",
+        "correct_answer": 5,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 7,
+            "text": "7",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 5,
+            "text": "5",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 6,
+            "text": "6",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 4,
+            "text": "4",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 5,
+        "hints": [
+          "The number statement is: ___ − 3 = 2",
+          "Use addition to undo the operation.",
+          "2 + 3 = 5.",
+          "Check: 5 − 3 = 2. ✓"
+        ],
+        "sample_id": "648a6308b9677a8c4fcc",
+        "replay_digest": "f3efa778063738bb61dddc510a904ee9b9bf4bcc7c2360915a0e6bdd7dd945d7"
+      },
+      {
+        "node_id": "mat_g1_na_q3_1",
+        "seed": 118,
+        "formatter": "mcq",
+        "question_text": "What number goes in the blank: ___ − 12 = 8?",
+        "correct_answer": 20,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 21,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 20,
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 28,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 19,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 20,
+        "hints": [
+          "The number statement is: ___ − 12 = 8",
+          "Use addition to undo the operation.",
+          "8 + 12 = 20.",
+          "Check: 20 − 12 = 8. ✓"
+        ],
+        "sample_id": "282a2df9287d944fce78",
+        "replay_digest": "aa03363614f29f5e59efef88f4ed4bb40c8db5951043632fc686873df5b66988"
+      },
+      {
+        "node_id": "mat_g1_na_q3_1",
+        "seed": 127,
+        "formatter": "read_mcq",
+        "question_text": "Both sides balance evenly. 9 + ? = 20. What is the missing value?",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "BalanceScale",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 11,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 12,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 20,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 10,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 11,
+        "hints": [
+          "The number statement is: 9 + 11 = ___",
+          "We need to find what 9 + 11 equals.",
+          "Calculate: 9 + 11 = 20."
+        ],
+        "visual_type": "BalanceScale",
+        "visual_payload": {
+          "left_side": "9 + ?",
+          "right_side": "20",
+          "blank_side": "left",
+          "is_balanced": true
+        },
+        "visual_render": {
+          "visual_type": "BalanceScale",
+          "renderer_input_digest": "b4ce14cbc07168fce249f5ead298a6ee6aa31ad1b620fa9fe3f5071be750f121",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "BalanceScale",
+            "element_count": 6,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "9 + ?",
+              "20"
+            ],
+            "distinct_colours": [
+              "#94a3b8",
+              "#3b82f6",
+              "#fff",
+              "#64748b"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "e8ae9ee069309d4b5713",
+        "replay_digest": "b7e6587f7bb6bd13da971c0093a5b4ca145a8bf68cde8ca709d084cf88778d73"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "find_missing_number",
+      "node_id": "mat_g1_na_q3_1",
+      "clause": "Find the missing number",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All ten shown tasks require resolving a blank or question-mark value; for example seed 118 asks for the value before minus 12 equals 8.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "addition_subtraction_sentences",
+      "node_id": "mat_g1_na_q3_1",
+      "clause": "addition or subtraction sentences",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Every sample presents an addition or subtraction equality, including the subtraction sentence in seed 57 and the addition equality in seed 42.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "numbers_up_to_20",
+      "node_id": "mat_g1_na_q3_1",
+      "clause": "numbers up to 20",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Across the full set, the numbers that form each target equation stay at 20 or below, such as 20 minus a missing value in seed 23 and 9 plus a missing value in seed 42.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    }
+  ]
+}

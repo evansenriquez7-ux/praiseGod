@@ -1,0 +1,601 @@
+{
+  "batch": "batch125_mat_g1_na_q3_5",
+  "attested_at": "2026-09-22T14:08:26Z",
+  "attested_by": "blind-attester-gpt-terra-d09-20260922",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "read local_only/scratch/attest117/mat_g1_na_q3_5.prompt.txt (verbatim render_prompt_block output only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "Tool-bearing GPT-Terra subagent reported exec_command (wc/sed/jq) only on assigned prompt and sibling verdict paths and apply_patch only to write verdict JSON; dispatcher did not verify sandbox-level non-access beyond that report."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g1_na_q3_5",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g1_na_q3_5",
+        "seed": 11,
+        "formatter": "true_false",
+        "question_text": "51 is 5 tens and 1 one. 0 is 0 ones. Subtract the place values, then find what's left: 51 − 0 = 50. True or False?",
+        "correct_answer": false,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "true_false",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "true_false",
+          "experience": "standard"
+        },
+        "resolved_answer": false,
+        "hints": [
+          "We are subtracting 0 from 51.",
+          "Subtract the ones: 1 − 0 = 1.",
+          "Subtract the tens: 5 − 0 = 5.",
+          "The difference of 51 − 0 = 51."
+        ],
+        "sample_id": "bd072079ed61d57e495e",
+        "replay_digest": "c231143aeabf5111b81c23d4e519891c571e811ceedc02ec1930c9f9d1e343fb"
+      },
+      {
+        "node_id": "mat_g1_na_q3_5",
+        "seed": 23,
+        "formatter": "cloze",
+        "question_text": "37 is 3 tens and 7 ones. 0 is 0 ones. Subtract the place values, then find what's left: 37 − 0 = ___",
+        "correct_answer": 37,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 37,
+            "text": "37",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 39,
+            "text": "39",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 38,
+            "text": "38",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 36,
+            "text": "36",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 37,
+        "hints": [
+          "We are subtracting 0 from 37.",
+          "Subtract the ones: 7 − 0 = 7.",
+          "Subtract the tens: 3 − 0 = 3.",
+          "The difference of 37 − 0 = 37."
+        ],
+        "sample_id": "8c262fc536d10372aa65",
+        "replay_digest": "a864bd0890b2c153605bb0a95edee1e8d4a462686c4f5299b8a63d89a0d2edfe"
+      },
+      {
+        "node_id": "mat_g1_na_q3_5",
+        "seed": 42,
+        "formatter": "cloze",
+        "question_text": "75 is 7 tens and 5 ones. 12 is 1 ten and 2 ones. Subtract the place values, then find what's left: 75 − 12 = ___",
+        "correct_answer": 63,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 63,
+            "text": "63",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 87,
+            "text": "87",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 62,
+            "text": "62",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 64,
+            "text": "64",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 63,
+        "hints": [
+          "We are subtracting 12 from 75.",
+          "Subtract the ones: 5 − 2 = 3.",
+          "Subtract the tens: 7 − 1 = 6.",
+          "The difference of 75 − 12 = 63."
+        ],
+        "sample_id": "ecf97ae5f3ff5813cf8f",
+        "replay_digest": "2bd6fffa471e98caa78960587b03260f96f0e575a83107ba7ab79f7b16b4ca80"
+      },
+      {
+        "node_id": "mat_g1_na_q3_5",
+        "seed": 57,
+        "formatter": "mcq",
+        "question_text": "14 is 1 ten and 4 ones. 0 is 0 ones. Subtract the place values, then find what's left: what is 14 − 0?",
+        "correct_answer": 14,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 15,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 14,
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 13,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 16,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 14,
+        "hints": [
+          "We are subtracting 0 from 14.",
+          "Subtract the ones: 4 − 0 = 4.",
+          "Subtract the tens: 1 − 0 = 1.",
+          "The difference of 14 − 0 = 14."
+        ],
+        "sample_id": "ef38e0f590e8f9fed5ca",
+        "replay_digest": "e3ff6a621683a758bd2ddf089ceca9f98c259ae91b1efd7d02470c5173e1c5f6"
+      },
+      {
+        "node_id": "mat_g1_na_q3_5",
+        "seed": 64,
+        "formatter": "cloze",
+        "question_text": "54 is 5 tens and 4 ones. 0 is 0 ones. Subtract the place values, then find what's left: 54 − 0 = ___",
+        "correct_answer": 54,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 55,
+            "text": "55",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 56,
+            "text": "56",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 54,
+            "text": "54",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 53,
+            "text": "53",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 54,
+        "hints": [
+          "We are subtracting 0 from 54.",
+          "Subtract the ones: 4 − 0 = 4.",
+          "Subtract the tens: 5 − 0 = 5.",
+          "The difference of 54 − 0 = 54."
+        ],
+        "sample_id": "59de02694fe7416932bc",
+        "replay_digest": "d0661a02fda6fefa28249beff78650ca3840f33d8f99b2d7180055fb82399db3"
+      },
+      {
+        "node_id": "mat_g1_na_q3_5",
+        "seed": 78,
+        "formatter": "cloze",
+        "question_text": "25 is 2 tens and 5 ones. 10 is 1 ten and 0 ones. Subtract the place values, then find what's left: 25 − 10 = ___",
+        "correct_answer": 15,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 14,
+            "text": "14",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 15,
+            "text": "15",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 35,
+            "text": "35",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 16,
+            "text": "16",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 15,
+        "hints": [
+          "We are subtracting 10 from 25.",
+          "Subtract the ones: 5 − 0 = 5.",
+          "Subtract the tens: 2 − 1 = 1.",
+          "The difference of 25 − 10 = 15."
+        ],
+        "sample_id": "6c2b3c17a8d643acb90e",
+        "replay_digest": "6f1471b7489457a8d9c0e6baa3c59f68d3fae180f5e953a0e549da160ce3aa57"
+      },
+      {
+        "node_id": "mat_g1_na_q3_5",
+        "seed": 91,
+        "formatter": "error_detect",
+        "question_text": "Grace solved: \"15 is 1 ten and 5 ones. 13 is 1 ten and 3 ones. Subtract the place values, then find what's left: 15 − 13 = ___\". Grace says the missing number is 1. Is Grace correct?",
+        "correct_answer": {
+          "has_error": true,
+          "correct_value": 2
+        },
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "error_detect",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "error_detect",
+          "experience": "standard"
+        },
+        "resolved_answer": {
+          "has_error": true,
+          "correct_value": 2
+        },
+        "hints": [
+          "We are subtracting 13 from 15.",
+          "Subtract the ones: 5 − 3 = 2.",
+          "Subtract the tens: 1 − 1 = 0.",
+          "The difference of 15 − 13 = 2."
+        ],
+        "sample_id": "3eec8f9a070a92fe39d4",
+        "replay_digest": "a506160430218264e33b20a33e9f63e7781aea79440ff6621f791cd0a9720b11"
+      },
+      {
+        "node_id": "mat_g1_na_q3_5",
+        "seed": 103,
+        "formatter": "error_detect",
+        "question_text": "Grace solved: \"90 is 9 tens and 0 ones. 10 is 1 ten and 0 ones. Subtract the place values, then find what's left: 90 − 10 = ___\". Grace says the missing number is 81. Is Grace correct?",
+        "correct_answer": {
+          "has_error": true,
+          "correct_value": 80
+        },
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "error_detect",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "error_detect",
+          "experience": "standard"
+        },
+        "resolved_answer": {
+          "has_error": true,
+          "correct_value": 80
+        },
+        "hints": [
+          "We are subtracting 10 from 90.",
+          "Subtract the ones: 0 − 0 = 0.",
+          "Subtract the tens: 9 − 1 = 8.",
+          "The difference of 90 − 10 = 80."
+        ],
+        "sample_id": "3f7dc0894d131afe3d17",
+        "replay_digest": "310dde58aa31a5723ac9761674a05280c364cf4de73f2246810a57189c933434"
+      },
+      {
+        "node_id": "mat_g1_na_q3_5",
+        "seed": 118,
+        "formatter": "mcq",
+        "question_text": "90 is 9 tens and 0 ones. 10 is 1 ten and 0 ones. Subtract the place values, then find what's left: what is 90 − 10?",
+        "correct_answer": 80,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 80,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 79,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 81,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 100,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 80,
+        "hints": [
+          "We are subtracting 10 from 90.",
+          "Subtract the ones: 0 − 0 = 0.",
+          "Subtract the tens: 9 − 1 = 8.",
+          "The difference of 90 − 10 = 80."
+        ],
+        "sample_id": "af271874b30c0e6c539a",
+        "replay_digest": "2c094370eadc750c731b36b21b03d852b4553c1835d048434fb01be74c3e7e7a"
+      },
+      {
+        "node_id": "mat_g1_na_q3_5",
+        "seed": 127,
+        "formatter": "cloze",
+        "question_text": "14 is 1 ten and 4 ones. 1 is 1 one. Subtract the place values, then find what's left: 14 − 1 = ___",
+        "correct_answer": 13,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 13,
+            "text": "13",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 15,
+            "text": "15",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 12,
+            "text": "12",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 14,
+            "text": "14",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 13,
+        "hints": [
+          "We are subtracting 1 from 14.",
+          "Subtract the ones: 4 − 1 = 3.",
+          "Subtract the tens: 1 − 0 = 1.",
+          "The difference of 14 − 1 = 13."
+        ],
+        "sample_id": "cfe1a9da43dc2c53d62d",
+        "replay_digest": "2684303bfc161ead096ced3ea63aeb4c912d8fd5ab3dc76181f47b9d50bd1005"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "subtract_numbers",
+      "node_id": "mat_g1_na_q3_5",
+      "clause": "Subtract numbers",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All ten items require a subtraction result or an evaluation of one, and the prompts explicitly direct subtraction of place values.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "expressing_tens_ones",
+      "node_id": "mat_g1_na_q3_5",
+      "clause": "expressing minuends and subtrahends as tens and ones",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Each sample states the minuend and subtrahend in tens and ones, for example seed 42 identifies 75 as 7 tens and 5 ones and 12 as 1 ten and 2 ones.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "expanded_form",
+      "node_id": "mat_g1_na_q3_5",
+      "clause": "expanded form",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "The samples name tens and ones in words but never render an expanded-form equation such as a tens value plus a ones value. Across all ten, the learner works only with the standard numeral subtraction sentence.",
+      "action_taken": "Left registered pending one independent confirmation under the prevalence standard; no source change in re-instrumentation campaign."
+    },
+    {
+      "capability_id": "without_regrouping",
+      "node_id": "mat_g1_na_q3_5",
+      "clause": "without regrouping",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "The place-value pairs shown do not require exchanging a ten for ones; seed 42 uses 75 minus 12 and seed 127 uses 14 minus 1.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    }
+  ]
+}

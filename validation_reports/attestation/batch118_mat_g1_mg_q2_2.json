@@ -1,0 +1,636 @@
+{
+  "batch": "batch118_mat_g1_mg_q2_2",
+  "attested_at": "2026-09-22T14:01:09Z",
+  "attested_by": "blind-attester-gpt-terra-d02-20260922",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "read local_only/scratch/attest117/mat_g1_mg_q2_2.prompt.txt (verbatim render_prompt_block output only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "Tool-bearing GPT-Terra subagent reported using exec_command only to read its assigned prompt files and apply_patch only to write sibling verdict JSON; dispatcher did not verify sandbox-level non-access beyond that report."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g1_mg_q2_2",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g1_mg_q2_2",
+        "seed": 11,
+        "formatter": "mcq",
+        "question_text": "Elena walked 5 steps from the gate to the tree, and then 5 steps from the tree to the bench. How many steps did Elena walk in all?",
+        "correct_answer": 10,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 11,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 12,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 9,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 10,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 10,
+        "hints": [
+          "Count how many steps fit along the object from end to end.",
+          "Make sure no gaps or overlaps between the units.",
+          "The length is 10 steps."
+        ],
+        "sample_id": "357f4e510208cf14eb39",
+        "replay_digest": "89f487a49697a6a8696d6e45d9479de53c779c2906f5fd413ebc5eb8aa1e135b"
+      },
+      {
+        "node_id": "mat_g1_mg_q2_2",
+        "seed": 23,
+        "formatter": "cloze",
+        "question_text": "From the teacher's desk, it is 5 steps to the door and 3 steps to the window. How many steps farther is the door than the window?",
+        "correct_answer": 2,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 3,
+            "text": "3",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 2,
+            "text": "2",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 1,
+            "text": "1",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 4,
+            "text": "4",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 2,
+        "hints": [
+          "Count how many steps fit along the object from end to end.",
+          "Make sure no gaps or overlaps between the units.",
+          "The length is 2 steps."
+        ],
+        "sample_id": "49a49eab748f0a8ccaaa",
+        "replay_digest": "3d0dd9bfee9ac897c2abb197b91c1678b2ae18a548e8a9dafcb41b60f7dd5e58"
+      },
+      {
+        "node_id": "mat_g1_mg_q2_2",
+        "seed": 42,
+        "formatter": "cloze",
+        "question_text": "A notebook is 6 hands long. A pencil is 2 hands long. How many hands longer is a notebook than a pencil?",
+        "correct_answer": 4,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 4,
+            "text": "4",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 5,
+            "text": "5",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 3,
+            "text": "3",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 6,
+            "text": "6",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 4,
+        "hints": [
+          "Count how many hands fit along the object from end to end.",
+          "Make sure no gaps or overlaps between the units.",
+          "The length is 4 hands."
+        ],
+        "sample_id": "9f7d8e21b79817fbf259",
+        "replay_digest": "f289f79f7aae4a1f0d325fdd37542d4ab2e4b4f74eae0c27f5680d03485dc08d"
+      },
+      {
+        "node_id": "mat_g1_mg_q2_2",
+        "seed": 57,
+        "formatter": "mcq",
+        "question_text": "A shoe is 8 hands long. An eraser is 1 hand long. How many hands longer is a shoe than an eraser?",
+        "correct_answer": 7,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 6,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 9,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 8,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 7,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 7,
+        "hints": [
+          "Count how many hands fit along the object from end to end.",
+          "Make sure no gaps or overlaps between the units.",
+          "The length is 7 hands."
+        ],
+        "sample_id": "9601f924c3866a6d6b13",
+        "replay_digest": "dbd8703277fa5e8dcd8b4e19d009376d33da0fb1971f442adbfad19e711363fc"
+      },
+      {
+        "node_id": "mat_g1_mg_q2_2",
+        "seed": 64,
+        "formatter": "cloze",
+        "question_text": "Ben walked 5 steps from the desk to the door, and then 2 steps from the door to the window. How many steps did Ben walk in all?",
+        "correct_answer": 7,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 9,
+            "text": "9",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 8,
+            "text": "8",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 6,
+            "text": "6",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 7,
+            "text": "7",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 7,
+        "hints": [
+          "Count how many steps fit along the object from end to end.",
+          "Make sure no gaps or overlaps between the units.",
+          "The length is 7 steps."
+        ],
+        "sample_id": "3e18c916dcc352bb19d2",
+        "replay_digest": "bff5b076f3c2ab7d7f3abea6dddf10ff84d9d87156d0673ec3ded5ed795dcbf9"
+      },
+      {
+        "node_id": "mat_g1_mg_q2_2",
+        "seed": 78,
+        "formatter": "cloze",
+        "question_text": "A pencil is 4 blocks long and an eraser is 5 blocks long. If they are placed end to end, what is their total length in blocks?",
+        "correct_answer": 9,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 8,
+            "text": "8",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 9,
+            "text": "9",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 11,
+            "text": "11",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 10,
+            "text": "10",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 9,
+        "hints": [
+          "Count how many blocks fit along the object from end to end.",
+          "Make sure no gaps or overlaps between the units.",
+          "The length is 9 blocks."
+        ],
+        "sample_id": "ba425499415658572f74",
+        "replay_digest": "d6c2fdd9db1c9e4b14129dad7df8aa6534f031e2e7f1d24df1c33470da9e0c2a"
+      },
+      {
+        "node_id": "mat_g1_mg_q2_2",
+        "seed": 91,
+        "formatter": "cloze",
+        "question_text": "A stick is 9 paperclips long. A spoon is 3 paperclips long. How many paperclips longer is a stick than a spoon?",
+        "correct_answer": 6,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 6,
+            "text": "6",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 8,
+            "text": "8",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 5,
+            "text": "5",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 7,
+            "text": "7",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 6,
+        "hints": [
+          "Count how many paperclips fit along the object from end to end.",
+          "Make sure no gaps or overlaps between the units.",
+          "The length is 6 paperclips."
+        ],
+        "sample_id": "85f74d6feaac38433e07",
+        "replay_digest": "e1192443491411e4dbcf4656f41a73e18fdd8a6390a8cb23dda8d03c593b05fc"
+      },
+      {
+        "node_id": "mat_g1_mg_q2_2",
+        "seed": 103,
+        "formatter": "cloze",
+        "question_text": "Elena walked 3 steps from the gate to the tree, and then 2 steps from the tree to the bench. How many steps did Elena walk in all?",
+        "correct_answer": 5,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 5,
+            "text": "5",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 4,
+            "text": "4",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 6,
+            "text": "6",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 7,
+            "text": "7",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 5,
+        "hints": [
+          "Count how many steps fit along the object from end to end.",
+          "Make sure no gaps or overlaps between the units.",
+          "The length is 5 steps."
+        ],
+        "sample_id": "5a0a9c241a530d92d332",
+        "replay_digest": "0bc2abbdd6be00e895e88b807b438dbc0c74cd8bd3d3ac38e19b3d2f34063974"
+      },
+      {
+        "node_id": "mat_g1_mg_q2_2",
+        "seed": 118,
+        "formatter": "mcq",
+        "question_text": "A stick is 4 paperclips long and a marker is 4 paperclips long. If they are placed end to end, what is their total length in paperclips?",
+        "correct_answer": 8,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 7,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 10,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 8,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 9,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 8,
+        "hints": [
+          "Count how many paperclips fit along the object from end to end.",
+          "Make sure no gaps or overlaps between the units.",
+          "The length is 8 paperclips."
+        ],
+        "sample_id": "df037f7a324d4209e3ea",
+        "replay_digest": "388db5fb21abc327777194ad5ef23c12e2ebdf0be0fa5f218dfb3b42b4b4d9e4"
+      },
+      {
+        "node_id": "mat_g1_mg_q2_2",
+        "seed": 127,
+        "formatter": "cloze",
+        "question_text": "A stick is 8 hands long. A spoon is 7 hands long. How many hands longer is a stick than a spoon?",
+        "correct_answer": 1,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 4,
+            "text": "4",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 2,
+            "text": "2",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 1,
+            "text": "1",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 3,
+            "text": "3",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 1,
+        "hints": [
+          "Count how many hands fit along the object from end to end.",
+          "Make sure no gaps or overlaps between the units.",
+          "The length is 1 hand."
+        ],
+        "sample_id": "70f12d6d0b3affa731b1",
+        "replay_digest": "012bb2949ca2a67f826699ac6047f7ec2a0a1cc087e0f2e175b8ae4550f7ee7f"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "solve_problems",
+      "node_id": "mat_g1_mg_q2_2",
+      "clause": "Solve problems",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        78
+      ],
+      "reasoning": "Every sample is a contextual question requiring a calculation, including total walking distance at seed 11, a difference at seed 23, and an end-to-end total at seed 78. Solving a problem is consistently the learner's task.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "lengths",
+      "node_id": "mat_g1_mg_q2_2",
+      "clause": "lengths",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        57,
+        118
+      ],
+      "reasoning": "Object lengths are central in repeated difference and total-length problems: seeds 42 and 57 compare named objects' lengths, and seed 118 combines two measured objects. These examples form a substantial and varied portion of the set.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "distances",
+      "node_id": "mat_g1_mg_q2_2",
+      "clause": "distances",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        64
+      ],
+      "reasoning": "Distances are used in multiple route and location problems: seed 11 totals two legs of a walk, seed 23 compares desk-to-door and desk-to-window distances, and seed 64 totals another route. This is recurring applied distance work.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "non_standard_units",
+      "node_id": "mat_g1_mg_q2_2",
+      "clause": "non-standard units",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        42,
+        91
+      ],
+      "reasoning": "The measures are consistently given in non-standard units such as steps, hands, blocks, and paperclips. Seeds 11, 42, and 91 show different unit types used as the quantities learners operate on.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    }
+  ]
+}

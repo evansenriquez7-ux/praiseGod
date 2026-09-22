@@ -1,0 +1,625 @@
+{
+  "batch": "batch119_mat_g1_mg_q4_2",
+  "attested_at": "2026-09-22T14:01:09Z",
+  "attested_by": "blind-attester-gpt-terra-d03-20260922",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "read local_only/scratch/attest117/mat_g1_mg_q4_2.prompt.txt (verbatim render_prompt_block output only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "Tool-bearing GPT-Terra subagent reported using exec_command only to read its assigned prompt files and apply_patch only to write sibling verdict JSON; dispatcher did not verify sandbox-level non-access beyond that report."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g1_mg_q4_2",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g1_mg_q4_2",
+        "seed": 11,
+        "formatter": "mcq",
+        "question_text": "What month of the year comes right after August?",
+        "correct_answer": "September",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "March",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "February",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "September",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "January",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "September",
+        "hints": [
+          "Use the date chart to find the answer.",
+          "The how much time has passed is the number of days or weeks that have passed."
+        ],
+        "sample_id": "e11113c4b6f535228b8c",
+        "replay_digest": "e220e0ce6d480c9520b089410022fa5d74a81e98b751a5d3485ac05d5056c936"
+      },
+      {
+        "node_id": "mat_g1_mg_q4_2",
+        "seed": 23,
+        "formatter": "cloze",
+        "question_text": "What month of the year comes right after February?",
+        "correct_answer": "March",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "April",
+            "text": "April",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "March",
+            "text": "March",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "May",
+            "text": "May",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "January",
+            "text": "January",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "March",
+        "hints": [
+          "Use the date chart to find the answer.",
+          "The how much time has passed is the number of days or weeks that have passed."
+        ],
+        "sample_id": "c242bc7cf3746eb4d133",
+        "replay_digest": "84e25871810640b70f92365bb90e16e601f3892eb236adb4cefe1fb2715fb3be"
+      },
+      {
+        "node_id": "mat_g1_mg_q4_2",
+        "seed": 42,
+        "formatter": "cloze",
+        "question_text": "What day of the week comes right after Friday?",
+        "correct_answer": "Saturday",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "Monday",
+            "text": "Monday",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "Tuesday",
+            "text": "Tuesday",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "Saturday",
+            "text": "Saturday",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "Sunday",
+            "text": "Sunday",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "Saturday",
+        "hints": [
+          "Use the date chart to find the answer.",
+          "The how much time has passed is the number of days or weeks that have passed."
+        ],
+        "sample_id": "c8ee6e45861c25eb1290",
+        "replay_digest": "f825e3dd080b46e3eb5dc0ca02335229d6abc20f2076fc730bac6116cc14eb74"
+      },
+      {
+        "node_id": "mat_g1_mg_q4_2",
+        "seed": 57,
+        "formatter": "mcq",
+        "question_text": "What day of the week comes right after Thursday?",
+        "correct_answer": "Friday",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "Friday",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "Sunday",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "Monday",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "Tuesday",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "Friday",
+        "hints": [
+          "Use the date chart to find the answer.",
+          "The how much time has passed is the number of days or weeks that have passed."
+        ],
+        "sample_id": "26a51edc4116c1c3a1b8",
+        "replay_digest": "3f3f07f4e61206bf32c50ad6817eaacb6026a26bd232b6f1ac3de442b2bc86cf"
+      },
+      {
+        "node_id": "mat_g1_mg_q4_2",
+        "seed": 64,
+        "formatter": "cloze",
+        "question_text": "What day of the week comes right after Thursday?",
+        "correct_answer": "Friday",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "Monday",
+            "text": "Monday",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "Friday",
+            "text": "Friday",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "Sunday",
+            "text": "Sunday",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "Tuesday",
+            "text": "Tuesday",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "Friday",
+        "hints": [
+          "Use the date chart to find the answer.",
+          "The how much time has passed is the number of days or weeks that have passed."
+        ],
+        "sample_id": "9878f8081dae06ea02f0",
+        "replay_digest": "5854ae53de0ee81c6f7eb5cac091633e2cd7b52c9d098561a13462f806d8bb1d"
+      },
+      {
+        "node_id": "mat_g1_mg_q4_2",
+        "seed": 78,
+        "formatter": "cloze",
+        "question_text": "What day of the week comes right before Friday?",
+        "correct_answer": "Thursday",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "Tuesday",
+            "text": "Tuesday",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "Sunday",
+            "text": "Sunday",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "Thursday",
+            "text": "Thursday",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "Monday",
+            "text": "Monday",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "Thursday",
+        "hints": [
+          "Use the date chart to find the answer.",
+          "The how much time has passed is the number of days or weeks that have passed."
+        ],
+        "sample_id": "ca4e0a91ab0734937bb5",
+        "replay_digest": "ef0bd56a2982f62f6065d98d7bc30cc35fd95d19d944fcaf0129c5b18709fd20"
+      },
+      {
+        "node_id": "mat_g1_mg_q4_2",
+        "seed": 91,
+        "formatter": "cloze",
+        "question_text": "What month of the year comes right before November?",
+        "correct_answer": "October",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "March",
+            "text": "March",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "October",
+            "text": "October",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "February",
+            "text": "February",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "January",
+            "text": "January",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "October",
+        "hints": [
+          "Use the date chart to find the answer.",
+          "The how much time has passed is the number of days or weeks that have passed."
+        ],
+        "sample_id": "6e0a4cda2b9e65d4d6d8",
+        "replay_digest": "77793a32584bf80394bffd74a4037956abeaa393d9a5693c3ae93d7458209e55"
+      },
+      {
+        "node_id": "mat_g1_mg_q4_2",
+        "seed": 103,
+        "formatter": "cloze",
+        "question_text": "What day of the week comes right before Friday?",
+        "correct_answer": "Thursday",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "Tuesday",
+            "text": "Tuesday",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "Monday",
+            "text": "Monday",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "Sunday",
+            "text": "Sunday",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "Thursday",
+            "text": "Thursday",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "Thursday",
+        "hints": [
+          "Use the date chart to find the answer.",
+          "The how much time has passed is the number of days or weeks that have passed."
+        ],
+        "sample_id": "709c993256d24578cd82",
+        "replay_digest": "d52a7a26fef951a0aaa58b4b5d653ec76f96824b10f416ddb3d87922d5640d5d"
+      },
+      {
+        "node_id": "mat_g1_mg_q4_2",
+        "seed": 118,
+        "formatter": "mcq",
+        "question_text": "What month of the year comes right after May?",
+        "correct_answer": "June",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "June",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "January",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "March",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "February",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "June",
+        "hints": [
+          "Use the date chart to find the answer.",
+          "The how much time has passed is the number of days or weeks that have passed."
+        ],
+        "sample_id": "a2d973980496b650998f",
+        "replay_digest": "cf1729c5f32069669727c85dba16f01ae89c86df5889fd93dce383868b68e87c"
+      },
+      {
+        "node_id": "mat_g1_mg_q4_2",
+        "seed": 127,
+        "formatter": "cloze",
+        "question_text": "What month of the year comes right before October?",
+        "correct_answer": "September",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "March",
+            "text": "March",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "September",
+            "text": "September",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "January",
+            "text": "January",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "February",
+            "text": "February",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "September",
+        "hints": [
+          "Use the date chart to find the answer.",
+          "The how much time has passed is the number of days or weeks that have passed."
+        ],
+        "sample_id": "eac5ee5d4472281df753",
+        "replay_digest": "fe8f3ff185de7f8943847d5e39f76abbfb5aa622ce7a6e82623edcf8ee787899"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "give",
+      "node_id": "mat_g1_mg_q4_2",
+      "clause": "Give",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        42
+      ],
+      "reasoning": "Every prompt asks the learner to supply a next or previous named day/month by choosing an answer. Seeds 11 and 42 demonstrate the two content families.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "days_of_the_week",
+      "node_id": "mat_g1_mg_q4_2",
+      "clause": "days of the week",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        57,
+        78
+      ],
+      "reasoning": "Several samples ask for the day immediately after or before another day, including Friday/Thursday in seeds 42, 57, and 78, so days are a recurring part of the work.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "months_of_the_year",
+      "node_id": "mat_g1_mg_q4_2",
+      "clause": "months of the year",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        91
+      ],
+      "reasoning": "Month succession or precedence is asked in most of the samples, including August to September, February to March, and November to October.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "correct_order",
+      "node_id": "mat_g1_mg_q4_2",
+      "clause": "correct order",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        42,
+        91
+      ],
+      "reasoning": "All ten questions require locating an immediately adjacent day or month, which meaningfully exercises their sequence order; seeds 11, 42, and 91 illustrate that common structure.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    }
+  ]
+}

@@ -1,0 +1,522 @@
+{
+  "batch": "batch121_mat_g1_na_q1_3",
+  "attested_at": "2026-09-22T14:04:27Z",
+  "attested_by": "blind-attester-gpt-terra-d05-20260922",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "read local_only/scratch/attest117/mat_g1_na_q1_3.prompt.txt (verbatim render_prompt_block output only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "Tool-bearing GPT-Terra subagent reported using exec_command (sed/rg/awk/jq) only on assigned prompt/verdict files and apply_patch only to write sibling verdict JSON; dispatcher did not verify sandbox-level non-access beyond that report."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g1_na_q1_3",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g1_na_q1_3",
+        "seed": 11,
+        "formatter": "mcq",
+        "question_text": "Which statement is true?",
+        "correct_answer": "10 > 1",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "1 > 10",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "10 = 1",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "10 > 1",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "10 < 1",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "10 > 1",
+        "hints": [
+          "Compare 10 and 1.",
+          "Start from the leftmost number and compare one at a time.",
+          "10 is bigger than 1, so we write 10 > 1."
+        ],
+        "sample_id": "a7b0300f84b986b9d01e",
+        "replay_digest": "c0df243b45ff1f2860e4da7cd1cf0b62acca45af9492417e925f48ebec1f827b"
+      },
+      {
+        "node_id": "mat_g1_na_q1_3",
+        "seed": 23,
+        "formatter": "cloze",
+        "question_text": "Compare the numbers: 9 ___ 15. Which sign is correct: >, <, or =?",
+        "correct_answer": "<",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": ">",
+            "text": ">",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "=",
+            "text": "=",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "<",
+            "text": "<",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "<",
+        "hints": [
+          "Compare 9 and 15.",
+          "Start from the leftmost number and compare one at a time.",
+          "9 is smaller than 15, so we write 9 < 15."
+        ],
+        "sample_id": "8760a65504909f01baad",
+        "replay_digest": "623c95a600304b1386109395764209a72a1dc75b4c42dec8a74e8e9c6e772ed6"
+      },
+      {
+        "node_id": "mat_g1_na_q1_3",
+        "seed": 42,
+        "formatter": "true_false",
+        "question_text": "9 > 9. True or False?",
+        "correct_answer": false,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "true_false",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "true_false",
+          "experience": "standard"
+        },
+        "resolved_answer": false,
+        "hints": [
+          "Compare 9 and 9.",
+          "Start from the leftmost number and compare one at a time.",
+          "9 is the same as 9, so we write 9 = 9."
+        ],
+        "sample_id": "d0bd9bfffebbc606eaa1",
+        "replay_digest": "e076a34f48fcc3277449c2f56010386f415bce0646b49e621044b36a7ffa27f8"
+      },
+      {
+        "node_id": "mat_g1_na_q1_3",
+        "seed": 57,
+        "formatter": "cloze",
+        "question_text": "Yna has 3 watercolor sets. Another classmate has 4 watercolor sets. Which comparison is correct: 3 ___ 4?",
+        "correct_answer": "<",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "=",
+            "text": "=",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": ">",
+            "text": ">",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "<",
+            "text": "<",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "<",
+        "hints": [
+          "Compare 3 and 4.",
+          "Start from the leftmost number and compare one at a time.",
+          "3 is smaller than 4, so we write 3 < 4."
+        ],
+        "sample_id": "7bea1d23a92ff8339afc",
+        "replay_digest": "b31ae96b56044ef56b2b08c7f49ca0aca5692879d3316d38fbfb5e255b9ec46e"
+      },
+      {
+        "node_id": "mat_g1_na_q1_3",
+        "seed": 64,
+        "formatter": "true_false",
+        "question_text": "10 > 2. True or False?",
+        "correct_answer": true,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "true_false",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "true_false",
+          "experience": "standard"
+        },
+        "resolved_answer": true,
+        "hints": [
+          "Compare 10 and 2.",
+          "Start from the leftmost number and compare one at a time.",
+          "10 is bigger than 2, so we write 10 > 2."
+        ],
+        "sample_id": "b2a220483a12a5e02d0a",
+        "replay_digest": "9c77f85feae27551d201b436230940889b79e7db16b0e6e1feea2aae0231119d"
+      },
+      {
+        "node_id": "mat_g1_na_q1_3",
+        "seed": 78,
+        "formatter": "mcq",
+        "question_text": "Which statement is true?",
+        "correct_answer": "9 = 9",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "9 > 10",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "9 > 9",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "9 = 9",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "9 < 9",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "9 = 9",
+        "hints": [
+          "Compare 9 and 9.",
+          "Start from the leftmost number and compare one at a time.",
+          "9 is the same as 9, so we write 9 = 9."
+        ],
+        "sample_id": "8709bbf53fd7d459483a",
+        "replay_digest": "d2a61771982808a914e05c3229493dbbb9e40edb969da17c7ae00849f1968b2b"
+      },
+      {
+        "node_id": "mat_g1_na_q1_3",
+        "seed": 91,
+        "formatter": "true_false",
+        "question_text": "Romel has 6 score sheets. Another classmate has 6 score sheets. Which comparison is correct: 6 ___ 6? The answer is =. True or False?",
+        "correct_answer": true,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "true_false",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "true_false",
+          "experience": "standard"
+        },
+        "resolved_answer": true,
+        "hints": [
+          "Compare 6 and 6.",
+          "Start from the leftmost number and compare one at a time.",
+          "6 is the same as 6, so we write 6 = 6."
+        ],
+        "sample_id": "8f55f5a650b5b01eeef9",
+        "replay_digest": "45ce9bbd2200f6261c9f5930f82249af0cf69f348811712662032b8618dc1fac"
+      },
+      {
+        "node_id": "mat_g1_na_q1_3",
+        "seed": 103,
+        "formatter": "true_false",
+        "question_text": "8 > 6. True or False?",
+        "correct_answer": true,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "true_false",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "true_false",
+          "experience": "standard"
+        },
+        "resolved_answer": true,
+        "hints": [
+          "Compare 8 and 6.",
+          "Start from the leftmost number and compare one at a time.",
+          "8 is bigger than 6, so we write 8 > 6."
+        ],
+        "sample_id": "c1fbcde4241222865a27",
+        "replay_digest": "e26721d32e767697e31571c38263134c9a58715a24d8a86e1bda19f5e295820c"
+      },
+      {
+        "node_id": "mat_g1_na_q1_3",
+        "seed": 118,
+        "formatter": "mcq",
+        "question_text": "Which statement is true?",
+        "correct_answer": "4 = 4",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "4 = 4",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "4 > 5",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "4 > 4",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "4 < 4",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "4 = 4",
+        "hints": [
+          "Compare 4 and 4.",
+          "Start from the leftmost number and compare one at a time.",
+          "4 is the same as 4, so we write 4 = 4."
+        ],
+        "sample_id": "6d1043eee3b92f167464",
+        "replay_digest": "1830692f51da598e87c927f72ce4fb7c55772bf119ec4aefc2fb542c79766a42"
+      },
+      {
+        "node_id": "mat_g1_na_q1_3",
+        "seed": 127,
+        "formatter": "cloze",
+        "question_text": "Marco has 8 basketballs. Another classmate has 11 basketballs. Which comparison is correct: 8 ___ 11?",
+        "correct_answer": "<",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "=",
+            "text": "=",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": ">",
+            "text": ">",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "<",
+            "text": "<",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "<",
+        "hints": [
+          "Compare 8 and 11.",
+          "Start from the leftmost number and compare one at a time.",
+          "8 is smaller than 11, so we write 8 < 11."
+        ],
+        "sample_id": "2f60970160477a173573",
+        "replay_digest": "7a5d03af154c5e3f470f076bd0231a4f43647bb738c4419248c803c6780ca0a2"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "compare",
+      "node_id": "mat_g1_na_q1_3",
+      "clause": "Compare",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All samples ask the learner to determine a relationship between two quantities, through a sign, a true statement, or a true/false comparison.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "two_numbers",
+      "node_id": "mat_g1_na_q1_3",
+      "clause": "two numbers",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Every prompt presents exactly two values or two people’s counts for the comparison; this is not limited to an isolated story example.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "up_to_20",
+      "node_id": "mat_g1_na_q1_3",
+      "clause": "up to 20",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "The values compared throughout the set range from 1 through 15 and never exceed 20, so the stated range is consistently respected.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    }
+  ]
+}

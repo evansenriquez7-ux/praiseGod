@@ -1,0 +1,590 @@
+{
+  "batch": "batch147_mat_g3_na_q2_5",
+  "attested_at": "2026-09-22T14:39:16Z",
+  "attested_by": "blind-attester-gpt-terra-d30d31-20260922",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "read local_only/scratch/attest117/mat_g3_na_q2_5.prompt.txt (verbatim render_prompt_block output only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "Tool-bearing GPT-Terra subagent reported reading only assigned prompts and writing/validating only sibling verdict outputs; exact tool names were not fully reported, and dispatcher did not verify sandbox-level non-access beyond that report."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g3_na_q2_5",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g3_na_q2_5",
+        "seed": 11,
+        "formatter": "true_false",
+        "question_text": "5185 − 4950 ≈ 9. True or False?",
+        "correct_answer": false,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "true_false",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "true_false",
+          "experience": "standard"
+        },
+        "resolved_answer": false,
+        "hints": [
+          "We are subtracting 5000 from 5000.",
+          "Subtract the ones: 0 − 0 = 0.",
+          "Subtract the tens: 0 − 0 = 0.",
+          "The difference of 5000 − 5000 = 0."
+        ],
+        "sample_id": "0f0cdb7fc35e953eeae1",
+        "replay_digest": "ece7e7e1f93651522897fb2f63e9248771ed1da4c860a5c8e5808f8d7aaa0136"
+      },
+      {
+        "node_id": "mat_g3_na_q2_5",
+        "seed": 23,
+        "formatter": "cloze",
+        "question_text": "Estimate: 1170 − 279 ≈ ___",
+        "correct_answer": 1000,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 1002,
+            "text": "1002",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 999,
+            "text": "999",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 1001,
+            "text": "1001",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 1000,
+            "text": "1000",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 1000,
+        "hints": [
+          "We are subtracting 0 from 1000.",
+          "Subtract the ones: 0 − 0 = 0.",
+          "Subtract the tens: 0 − 0 = 0.",
+          "The difference of 1000 − 0 = 1000."
+        ],
+        "sample_id": "27a629af3821649e07f8",
+        "replay_digest": "f7e667c41dff9ac6d801c1b439bf5fccac7651ee4c6df23e31cb64689614f89e"
+      },
+      {
+        "node_id": "mat_g3_na_q2_5",
+        "seed": 42,
+        "formatter": "cloze",
+        "question_text": "Estimate: 1950 − 1152 ≈ ___",
+        "correct_answer": 1000,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 999,
+            "text": "999",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 1001,
+            "text": "1001",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 1000,
+            "text": "1000",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 1002,
+            "text": "1002",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 1000,
+        "hints": [
+          "We are subtracting 1000 from 2000.",
+          "Subtract the ones: 0 − 0 = 0.",
+          "Subtract the tens: 0 − 0 = 0.",
+          "The difference of 2000 − 1000 = 1000."
+        ],
+        "sample_id": "12f66a93da15f6bad88f",
+        "replay_digest": "c40206ecb5923078640ff32d4bca2c2bf4eed50827aec7bbd35864bd1f324849"
+      },
+      {
+        "node_id": "mat_g3_na_q2_5",
+        "seed": 57,
+        "formatter": "mcq",
+        "question_text": "Estimate the difference: 650 − 120",
+        "correct_answer": 600,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 602,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 599,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 600,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 601,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 600,
+        "hints": [
+          "We are subtracting 100 from 700.",
+          "Subtract the ones: 0 − 0 = 0.",
+          "Subtract the tens: 0 − 0 = 0.",
+          "The difference of 700 − 100 = 600."
+        ],
+        "sample_id": "9487f800ec6058194a51",
+        "replay_digest": "e4ef7a0801448e3974a0db40e7b1583cf9c9e6c9f007600803e6c77016503c84"
+      },
+      {
+        "node_id": "mat_g3_na_q2_5",
+        "seed": 64,
+        "formatter": "cloze",
+        "question_text": "Estimate: 1905 − 885 ≈ ___",
+        "correct_answer": 1000,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 1000,
+            "text": "1000",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 1002,
+            "text": "1002",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 1001,
+            "text": "1001",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 999,
+            "text": "999",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 1000,
+        "hints": [
+          "We are subtracting 1000 from 2000.",
+          "Subtract the ones: 0 − 0 = 0.",
+          "Subtract the tens: 0 − 0 = 0.",
+          "The difference of 2000 − 1000 = 1000."
+        ],
+        "sample_id": "1d925d0a287d77d8df2b",
+        "replay_digest": "777f0893a1d71bc206329d138901576d1058e7849d5251d96932ce472616d813"
+      },
+      {
+        "node_id": "mat_g3_na_q2_5",
+        "seed": 78,
+        "formatter": "cloze",
+        "question_text": "Estimate: 9850 − 840 ≈ ___",
+        "correct_answer": 9000,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 9002,
+            "text": "9002",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 8999,
+            "text": "8999",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 9001,
+            "text": "9001",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 9000,
+            "text": "9000",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 9000,
+        "hints": [
+          "We are subtracting 1000 from 10000.",
+          "Subtract the ones: 0 − 0 = 0.",
+          "Subtract the tens: 0 − 0 = 0.",
+          "The difference of 10000 − 1000 = 9000."
+        ],
+        "sample_id": "a68d266107ee87622feb",
+        "replay_digest": "f772a7c3ac9d0cbc91ea9c23c1a9e0a6c660c41e21d93b609be7cf3a1e2c92c6"
+      },
+      {
+        "node_id": "mat_g3_na_q2_5",
+        "seed": 91,
+        "formatter": "error_detect",
+        "question_text": "Grace solved: \"1523 − 270 ≈ ___\". Grace says the missing number is 2000. Is Grace correct?",
+        "correct_answer": {
+          "has_error": false,
+          "correct_value": 2000
+        },
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "error_detect",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "error_detect",
+          "experience": "standard"
+        },
+        "resolved_answer": {
+          "has_error": false,
+          "correct_value": 2000
+        },
+        "hints": [
+          "We are subtracting 0 from 2000.",
+          "Subtract the ones: 0 − 0 = 0.",
+          "Subtract the tens: 0 − 0 = 0.",
+          "The difference of 2000 − 0 = 2000."
+        ],
+        "sample_id": "092c18479b42f2181592",
+        "replay_digest": "6847f234efc34b467ff6ee3cd90ecaba4d85926d63ba8965e962003adf9b7747"
+      },
+      {
+        "node_id": "mat_g3_na_q2_5",
+        "seed": 103,
+        "formatter": "error_detect",
+        "question_text": "Grace solved: \"1920 − 256 ≈ ___\". Grace says the missing number is 2000. Is Grace correct?",
+        "correct_answer": {
+          "has_error": false,
+          "correct_value": 2000
+        },
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "error_detect",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "error_detect",
+          "experience": "standard"
+        },
+        "resolved_answer": {
+          "has_error": false,
+          "correct_value": 2000
+        },
+        "hints": [
+          "We are subtracting 0 from 2000.",
+          "Subtract the ones: 0 − 0 = 0.",
+          "Subtract the tens: 0 − 0 = 0.",
+          "The difference of 2000 − 0 = 2000."
+        ],
+        "sample_id": "a2eeb1e04817070b7a4b",
+        "replay_digest": "1d03aa2e6b58e9a18ea14016483b18f08c789bc4550669bb93e9e798926c56a9"
+      },
+      {
+        "node_id": "mat_g3_na_q2_5",
+        "seed": 118,
+        "formatter": "mcq",
+        "question_text": "Estimate the difference: 304 − 165",
+        "correct_answer": 100,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 100,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 102,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 101,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 99,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 100,
+        "hints": [
+          "We are subtracting 200 from 300.",
+          "Subtract the ones: 0 − 0 = 0.",
+          "Subtract the tens: 0 − 0 = 0.",
+          "The difference of 300 − 200 = 100."
+        ],
+        "sample_id": "0ec8be5040232285671b",
+        "replay_digest": "6a757858a891b12c49a605425e53a00ed4135d3c499083d1294c53b34b402808"
+      },
+      {
+        "node_id": "mat_g3_na_q2_5",
+        "seed": 127,
+        "formatter": "cloze",
+        "question_text": "Estimate: 5382 − 300 ≈ ___",
+        "correct_answer": 5000,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 5001,
+            "text": "5001",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 5000,
+            "text": "5000",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 5002,
+            "text": "5002",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 4999,
+            "text": "4999",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 5000,
+        "hints": [
+          "We are subtracting 0 from 5000.",
+          "Subtract the ones: 0 − 0 = 0.",
+          "Subtract the tens: 0 − 0 = 0.",
+          "The difference of 5000 − 0 = 5000."
+        ],
+        "sample_id": "796490599c87755bd3d5",
+        "replay_digest": "4890779f8486af3376d7f887a56c82c1d5761758a2d53f405de5bd2a22b1385a"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "estimate_difference",
+      "node_id": "mat_g3_na_q2_5",
+      "clause": "Estimate the difference",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Every prompt explicitly asks for, or checks, an estimated subtraction difference.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "two_numbers",
+      "node_id": "mat_g3_na_q2_5",
+      "clause": "two numbers",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Each estimate compares exactly two numbers, written as one minuend minus one subtrahend.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "up_to_4_digits",
+      "node_id": "mat_g3_na_q2_5",
+      "clause": "up to 4 digits",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        64,
+        78,
+        91,
+        103,
+        127
+      ],
+      "reasoning": "The samples include four-digit values such as 5,185 − 4,950 and 9,850 − 840, and no value exceeds four digits.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    }
+  ]
+}

@@ -1,0 +1,662 @@
+{
+  "batch": "batch131_mat_g2_mg_q4_3",
+  "attested_at": "2026-09-22T14:16:21Z",
+  "attested_by": "blind-attester-gpt-terra-d15-20260922",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "read local_only/scratch/attest117/mat_g2_mg_q4_3.prompt.txt (verbatim render_prompt_block output only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "Tool-bearing GPT-Terra subagent reported using only assigned prompt inputs and sibling verdict outputs; exact tool names were not reported, and dispatcher did not verify sandbox-level non-access beyond that report."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g2_mg_q4_3",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g2_mg_q4_3",
+        "seed": 11,
+        "formatter": "mcq",
+        "question_text": "A ball rolls smoothly but a box does not roll. Why?",
+        "correct_answer": "A ball has a curved surface, but a box has flat surfaces.",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "A ball has flat surfaces, but a box has a curved surface.",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "A ball is always heavier than a box.",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "Both of them have only flat surfaces.",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "A ball has a curved surface, but a box has flat surfaces.",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "A ball has a curved surface, but a box has flat surfaces.",
+        "hints": [
+          "A straight line never bends.",
+          "A curved line bends smoothly.",
+          "A flat surface has no bumps or curves, like a tabletop.",
+          "A curved surface bends, like the outside of a ball or a can."
+        ],
+        "sample_id": "e8017d2c998d952d5729",
+        "replay_digest": "3ea56fac19b3205eca87da48d013d8ade784f747656e7d9941aa25b8e5175103"
+      },
+      {
+        "node_id": "mat_g2_mg_q4_3",
+        "seed": 23,
+        "formatter": "mcq",
+        "question_text": "A can has both flat surfaces (its ends) and one other kind of surface. What kind is it?",
+        "correct_answer": "curved surface",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "curved line",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "straight line",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "flat surface",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "curved surface",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "curved surface",
+        "hints": [
+          "A straight line never bends.",
+          "A curved line bends smoothly.",
+          "A flat surface has no bumps or curves, like a tabletop.",
+          "A curved surface bends, like the outside of a ball or a can."
+        ],
+        "sample_id": "e578f0d477a08e509b43",
+        "replay_digest": "083e1d8fb4aca21ae14e09c205806349975ce369a7d1aaceb67a7f98755f3c67"
+      },
+      {
+        "node_id": "mat_g2_mg_q4_3",
+        "seed": 42,
+        "formatter": "mcq",
+        "question_text": "How is a straight line different from a curved line?",
+        "correct_answer": "A straight line never bends, but a curved line bends smoothly.",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "A straight line is always longer than a curved line.",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "Both of them bend in the same way.",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "A straight line bends, but a curved line never bends.",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "A straight line never bends, but a curved line bends smoothly.",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "A straight line never bends, but a curved line bends smoothly.",
+        "hints": [
+          "A straight line never bends.",
+          "A curved line bends smoothly.",
+          "A flat surface has no bumps or curves, like a tabletop.",
+          "A curved surface bends, like the outside of a ball or a can."
+        ],
+        "sample_id": "1c4577b289627121fff7",
+        "replay_digest": "7b9383eb792ccb7203d60c67fa45a2aed01bb798aeeea4d98205985e1a002e0a"
+      },
+      {
+        "node_id": "mat_g2_mg_q4_3",
+        "seed": 57,
+        "formatter": "mcq",
+        "question_text": "How is a straight line different from a curved line?",
+        "correct_answer": "A straight line never bends, but a curved line bends smoothly.",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "A straight line bends, but a curved line never bends.",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "A straight line is always longer than a curved line.",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "A straight line never bends, but a curved line bends smoothly.",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "Both of them bend in the same way.",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "A straight line never bends, but a curved line bends smoothly.",
+        "hints": [
+          "A straight line never bends.",
+          "A curved line bends smoothly.",
+          "A flat surface has no bumps or curves, like a tabletop.",
+          "A curved surface bends, like the outside of a ball or a can."
+        ],
+        "sample_id": "881ae83c180fa17b6090",
+        "replay_digest": "851ba7d05cc00040c00fcdbf6a63b64f9157d7fbc2b97e416c14ac194a10ee16"
+      },
+      {
+        "node_id": "mat_g2_mg_q4_3",
+        "seed": 64,
+        "formatter": "mcq",
+        "question_text": "Why is the rim of a plate called a curved line?",
+        "correct_answer": "Because it bends smoothly and changes direction.",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "Because it never bends.",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "Because it is a flat surface.",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "Because it has two ends.",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "Because it bends smoothly and changes direction.",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "Because it bends smoothly and changes direction.",
+        "hints": [
+          "A straight line never bends.",
+          "A curved line bends smoothly.",
+          "A flat surface has no bumps or curves, like a tabletop.",
+          "A curved surface bends, like the outside of a ball or a can."
+        ],
+        "sample_id": "80a48d5ae01ab0da87ef",
+        "replay_digest": "b28ca10aa01448d26efaec381c8254c99c86c2e60a4b14e7ddf3589cd1a52930"
+      },
+      {
+        "node_id": "mat_g2_mg_q4_3",
+        "seed": 78,
+        "formatter": "mcq",
+        "question_text": "A solid figure has a surface that bends all the way around, like a ball. What kind of surface is that?",
+        "correct_answer": "curved surface",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "straight line",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "curved surface",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "flat surface",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "curved line",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "curved surface",
+        "hints": [
+          "A straight line never bends.",
+          "A curved line bends smoothly.",
+          "A flat surface has no bumps or curves, like a tabletop.",
+          "A curved surface bends, like the outside of a ball or a can."
+        ],
+        "sample_id": "09c460da0ea34244ce69",
+        "replay_digest": "f825e74b838209a0ad01aea7f9913b0a651a99f1b77a8b8f0416db3f1ef21e66"
+      },
+      {
+        "node_id": "mat_g2_mg_q4_3",
+        "seed": 91,
+        "formatter": "mcq",
+        "question_text": "Why is the edge of a ruler called a straight line?",
+        "correct_answer": "Because it never bends or changes direction.",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "Because it bends all the way around.",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "Because it never bends or changes direction.",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "Because it is very long.",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "Because it is flat and wide.",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "Because it never bends or changes direction.",
+        "hints": [
+          "A straight line never bends.",
+          "A curved line bends smoothly.",
+          "A flat surface has no bumps or curves, like a tabletop.",
+          "A curved surface bends, like the outside of a ball or a can."
+        ],
+        "sample_id": "9690b80acc11f0f705e0",
+        "replay_digest": "d6e95a7712cdc924238c3be25272b87a17397fa1a04cdd7eb11061961e5d191b"
+      },
+      {
+        "node_id": "mat_g2_mg_q4_3",
+        "seed": 103,
+        "formatter": "mcq",
+        "question_text": "A box has six faces that are each flat. What kind of surface does a box have?",
+        "correct_answer": "flat surface",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "curved surface",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "straight line",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "curved line",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "flat surface",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "flat surface",
+        "hints": [
+          "A straight line never bends.",
+          "A curved line bends smoothly.",
+          "A flat surface has no bumps or curves, like a tabletop.",
+          "A curved surface bends, like the outside of a ball or a can."
+        ],
+        "sample_id": "672d17b9004a5a07350b",
+        "replay_digest": "bc657fb1f2928cdc72c920a6acc43f736db87204be7fff5d676ee8e0bdc48cc1"
+      },
+      {
+        "node_id": "mat_g2_mg_q4_3",
+        "seed": 118,
+        "formatter": "mcq",
+        "question_text": "A box has six faces that are each flat. What kind of surface does a box have?",
+        "correct_answer": "flat surface",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "straight line",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "curved line",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "curved surface",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "flat surface",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "flat surface",
+        "hints": [
+          "A straight line never bends.",
+          "A curved line bends smoothly.",
+          "A flat surface has no bumps or curves, like a tabletop.",
+          "A curved surface bends, like the outside of a ball or a can."
+        ],
+        "sample_id": "c5c17eb65c68d09ae357",
+        "replay_digest": "47a5e826384956aa32942409ac4a5878ab7661dafe1150e1f70628ad6681db91"
+      },
+      {
+        "node_id": "mat_g2_mg_q4_3",
+        "seed": 127,
+        "formatter": "mcq",
+        "question_text": "A ball has a surface that bends smoothly in every direction. What kind of surface does a ball have?",
+        "correct_answer": "curved surface",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "flat surface",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "curved line",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "curved surface",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "straight line",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "curved surface",
+        "hints": [
+          "A straight line never bends.",
+          "A curved line bends smoothly.",
+          "A flat surface has no bumps or curves, like a tabletop.",
+          "A curved surface bends, like the outside of a ball or a can."
+        ],
+        "sample_id": "ef4c1040db262d25aef4",
+        "replay_digest": "0366c560d42edbc7c4e4509681705d5c8a165416d68183667351d135cd88f9dc"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "identify",
+      "node_id": "mat_g2_mg_q4_3",
+      "clause": "Identify",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Every sample asks the learner to name or recognize a line or surface property, so identification is consistently exercised across the dispatch.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "explain",
+      "node_id": "mat_g2_mg_q4_3",
+      "clause": "explain",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        42,
+        57,
+        64,
+        91
+      ],
+      "reasoning": "Explanation is meaningfully present in repeated why and comparison prompts across the set, rather than occurring only as an isolated format.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "difference_between",
+      "node_id": "mat_g2_mg_q4_3",
+      "clause": "difference between",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "Explicit comparison of the two kinds is confined to a small subset; most prompts merely classify one line or surface.",
+      "action_taken": "Left registered pending one independent confirmation under the prevalence standard; no source change in re-instrumentation campaign."
+    },
+    {
+      "capability_id": "straight_lines",
+      "node_id": "mat_g2_mg_q4_3",
+      "clause": "straight",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "Straight-line work appears in only a few samples, while the dispatch more often concerns curved or surface classifications.",
+      "action_taken": "Left registered pending one independent confirmation under the prevalence standard; no source change in re-instrumentation campaign."
+    },
+    {
+      "capability_id": "curved_lines",
+      "node_id": "mat_g2_mg_q4_3",
+      "clause": "curved lines",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "Curved-line examples occur only in a limited minority and are not sustained across the ten learner tasks.",
+      "action_taken": "Left registered pending one independent confirmation under the prevalence standard; no source change in re-instrumentation campaign."
+    },
+    {
+      "capability_id": "flat_surfaces",
+      "node_id": "mat_g2_mg_q4_3",
+      "clause": "flat",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "Flat-surface classification is present but limited to several samples, not a prevalent learner task throughout this dispatch.",
+      "action_taken": "Left registered pending one independent confirmation under the prevalence standard; no source change in re-instrumentation campaign."
+    },
+    {
+      "capability_id": "curved_surfaces",
+      "node_id": "mat_g2_mg_q4_3",
+      "clause": "curved surfaces",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "Curved surfaces are represented repeatedly but still only in a minority of the ten samples, so the clause is not prevalent.",
+      "action_taken": "Left registered pending one independent confirmation under the prevalence standard; no source change in re-instrumentation campaign."
+    },
+    {
+      "capability_id": "3_dimensional_objects",
+      "node_id": "mat_g2_mg_q4_3",
+      "clause": "3-dimensional objects",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        78,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Most surface prompts use tangible solids such as balls, boxes, and a can, making three-dimensional-object reasoning a recurring part of the work.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    }
+  ]
+}

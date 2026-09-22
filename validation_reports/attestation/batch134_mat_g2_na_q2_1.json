@@ -1,0 +1,966 @@
+{
+  "batch": "batch134_mat_g2_na_q2_1",
+  "attested_at": "2026-09-22T14:24:35Z",
+  "attested_by": "blind-attester-gpt-terra-d18d19-20260922",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "read local_only/scratch/attest117/mat_g2_na_q2_1.prompt.txt (verbatim render_prompt_block output only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "Tool-bearing GPT-Terra subagent reported rg/sed only on 8 assigned prompts, apply_patch only on sibling verdict JSON, and jq only on outputs; dispatcher did not verify sandbox-level non-access beyond that report."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g2_na_q2_1",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g2_na_q2_1",
+        "seed": 11,
+        "formatter": "mcq",
+        "question_text": "Which has a smaller value: 1 ₱100 bill, 1 ₱50 bill, and 1 ₱20 bill or 1 ₱500 bill, 1 ₱20 bill, and 2 ₱1 coins?",
+        "correct_answer": "1 ₱100 bill, 1 ₱50 bill, and 1 ₱20 bill",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "1 ₱500 bill, 1 ₱20 bill, and 2 ₱1 coins",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "They are equal",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "1 ₱20 bill and 2 ₱10 coins",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "1 ₱100 bill, 1 ₱50 bill, and 1 ₱20 bill",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "1 ₱100 bill, 1 ₱50 bill, and 1 ₱20 bill",
+        "hints": [
+          "Find the total value of the first group of money.",
+          "Find the total value of the second group of money.",
+          "Compare the two values to see which one is greater."
+        ],
+        "sample_id": "5895000a723625ae38d7",
+        "replay_digest": "9f601477875ccd784efd33089f7e1623b7cf28e21d42151c6f45a89e138b401c"
+      },
+      {
+        "node_id": "mat_g2_na_q2_1",
+        "seed": 23,
+        "formatter": "cloze",
+        "question_text": "Which has a greater value: 1 ₱500 bill and 3 ₱1 coins or 1 ₱500 bill and 1 ₱1 coin?",
+        "correct_answer": "1 ₱500 bill and 3 ₱1 coins",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "1 ₱20 bill and 1 ₱5 coin",
+            "text": "1 ₱20 bill and 1 ₱5 coin",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "They are equal",
+            "text": "They are equal",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "1 ₱500 bill and 3 ₱1 coins",
+            "text": "1 ₱500 bill and 3 ₱1 coins",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "1 ₱500 bill and 1 ₱1 coin",
+            "text": "1 ₱500 bill and 1 ₱1 coin",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "1 ₱500 bill and 3 ₱1 coins",
+        "hints": [
+          "Find the total value of the first group of money.",
+          "Find the total value of the second group of money.",
+          "Compare the two values to see which one is greater."
+        ],
+        "sample_id": "04279543e710c95fa50e",
+        "replay_digest": "e370b83e9b0c8af892410bbc9f27713864bfc8421cb4a7b4cda72469fa8cc5ea"
+      },
+      {
+        "node_id": "mat_g2_na_q2_1",
+        "seed": 42,
+        "formatter": "read_mcq",
+        "question_text": "Which has a greater value: 1 ₱500 bill, 1 ₱200 bill, 2 ₱50 bills, and 1 ₱5 coin or 1 ₱200 bill, 1 ₱50 bill, and 1 ₱20 bill?",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "PesoMoney",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "1 ₱500 bill, 1 ₱200 bill, 2 ₱50 bills, and 1 ₱5 coin",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "They are equal",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "1 ₱500 bill, 1 ₱100 bill, and 1 ₱50 bill",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "1 ₱200 bill, 1 ₱50 bill, and 1 ₱20 bill",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "1 ₱500 bill, 1 ₱200 bill, 2 ₱50 bills, and 1 ₱5 coin",
+        "hints": [
+          "Find the total value of the first group of money.",
+          "Find the total value of the second group of money.",
+          "Compare the two values to see which one is greater."
+        ],
+        "visual_type": "PesoMoney",
+        "visual_payload": {
+          "coins": [
+            {
+              "denomination": 5,
+              "count": 1
+            }
+          ],
+          "bills": [
+            {
+              "denomination": 200,
+              "count": 4
+            }
+          ],
+          "total": 805,
+          "target_amount": 805,
+          "exclude_centavos": true,
+          "coin_faces": [
+            1,
+            5,
+            10
+          ],
+          "bill_faces": [
+            20,
+            50,
+            100,
+            200
+          ],
+          "require_fewest": true,
+          "is_interactive": false
+        },
+        "visual_render": {
+          "visual_type": "PesoMoney",
+          "renderer_input_digest": "1bdaea2694b3bbb533197f475c97603b4d9e580eab637a4b00b50302f8c0793e",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "PesoMoney",
+            "element_count": 33,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "BILLS",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "COINS",
+              "₱5"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "#86efac,",
+              "#16a34a)",
+              "#fff",
+              "#e2e8f0,",
+              "#cbd5e1)",
+              "#1e293b",
+              "#94a3b8"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "8bf52c4db8370112f359",
+        "replay_digest": "eaef786b54252d8cad0801c8804ece9f3e347f564e91701163d2e59c80765977"
+      },
+      {
+        "node_id": "mat_g2_na_q2_1",
+        "seed": 57,
+        "formatter": "cloze",
+        "question_text": "Which has a greater value: 1 ₱500 bill, 1 ₱200 bill, and 1 ₱50 bill or 1 ₱100 bill and 1 ₱20 bill?",
+        "correct_answer": "1 ₱500 bill, 1 ₱200 bill, and 1 ₱50 bill",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "1 ₱100 bill and 1 ₱20 bill",
+            "text": "1 ₱100 bill and 1 ₱20 bill",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "They are equal",
+            "text": "They are equal",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "1 ₱10 coin, 1 ₱5 coin, and 2 ₱1 coins",
+            "text": "1 ₱10 coin, 1 ₱5 coin, and 2 ₱1 coins",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "1 ₱500 bill, 1 ₱200 bill, and 1 ₱50 bill",
+            "text": "1 ₱500 bill, 1 ₱200 bill, and 1 ₱50 bill",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "1 ₱500 bill, 1 ₱200 bill, and 1 ₱50 bill",
+        "hints": [
+          "Find the total value of the first group of money.",
+          "Find the total value of the second group of money.",
+          "Compare the two values to see which one is greater."
+        ],
+        "sample_id": "352f28bca3af2bfd6884",
+        "replay_digest": "6f75433ad59c9c660f44855676a6a175de1a2171cc75cc5a747d8b768ab7d802"
+      },
+      {
+        "node_id": "mat_g2_na_q2_1",
+        "seed": 64,
+        "formatter": "read_mcq",
+        "question_text": "Which has a greater value: 1 ₱500 bill, 1 ₱200 bill, and 2 ₱20 bills or 1 ₱500 bill and 1 ₱20 bill?",
+        "correct_answer": "C",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "PesoMoney",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "1 ₱500 bill and 1 ₱10 coin",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "1 ₱500 bill and 1 ₱20 bill",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "1 ₱500 bill, 1 ₱200 bill, and 2 ₱20 bills",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "They are equal",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "1 ₱500 bill, 1 ₱200 bill, and 2 ₱20 bills",
+        "hints": [
+          "Find the total value of the first group of money.",
+          "Find the total value of the second group of money.",
+          "Compare the two values to see which one is greater."
+        ],
+        "visual_type": "PesoMoney",
+        "visual_payload": {
+          "coins": [],
+          "bills": [
+            {
+              "denomination": 20,
+              "count": 2
+            },
+            {
+              "denomination": 100,
+              "count": 1
+            },
+            {
+              "denomination": 200,
+              "count": 3
+            }
+          ],
+          "total": 740,
+          "target_amount": 740,
+          "exclude_centavos": true,
+          "coin_faces": [
+            1,
+            5,
+            10
+          ],
+          "bill_faces": [
+            20,
+            50,
+            100,
+            200
+          ],
+          "require_fewest": true,
+          "is_interactive": false
+        },
+        "visual_render": {
+          "visual_type": "PesoMoney",
+          "renderer_input_digest": "6f2d2ad2b8fea88730e775f897c21a5803cba33b0102a7b81ed57961609079c3",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "PesoMoney",
+            "element_count": 41,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "BILLS",
+              "₱20",
+              "REPUBLIKA NG PILIPINAS",
+              "₱100",
+              "₱200"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "#ffedd5,",
+              "#ea580c)",
+              "#fff",
+              "#c084fc,",
+              "#7c3aed)",
+              "#86efac,",
+              "#16a34a)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "96672b1327ad48049981",
+        "replay_digest": "93607a91d24f4e71dd57552e248b97653c35ed5086ff6a00314ff9edcc8a68f0"
+      },
+      {
+        "node_id": "mat_g2_na_q2_1",
+        "seed": 78,
+        "formatter": "mcq",
+        "question_text": "Which has a greater value: 1 ₱500 bill, 1 ₱100 bill, 2 ₱50 bills, and 1 ₱1 coin or 1 ₱500 bill and 2 ₱5 coins?",
+        "correct_answer": "1 ₱500 bill, 1 ₱100 bill, 2 ₱50 bills, and 1 ₱1 coin",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "1 ₱500 bill and 2 ₱5 coins",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "1 ₱500 bill, 1 ₱100 bill, 2 ₱50 bills, and 1 ₱1 coin",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "1 ₱500 bill and 1 ₱1 coin",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "They are equal",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "1 ₱500 bill, 1 ₱100 bill, 2 ₱50 bills, and 1 ₱1 coin",
+        "hints": [
+          "Find the total value of the first group of money.",
+          "Find the total value of the second group of money.",
+          "Compare the two values to see which one is greater."
+        ],
+        "sample_id": "a1fbe473ef205735f079",
+        "replay_digest": "061289ef5ac4b6b6d59747836f122ab199dc2d50fca60b45f06a488319b03f07"
+      },
+      {
+        "node_id": "mat_g2_na_q2_1",
+        "seed": 91,
+        "formatter": "read_mcq",
+        "question_text": "Which has a smaller value: 1 ₱200 bill and 1 ₱100 bill or 1 ₱500 bill and 2 ₱1 coins?",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "PesoMoney",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "1 ₱200 bill and 1 ₱100 bill",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "They are equal",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "1 ₱500 bill and 2 ₱1 coins",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "2 ₱50 bills and 3 ₱1 coins",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "1 ₱200 bill and 1 ₱100 bill",
+        "hints": [
+          "Find the total value of the first group of money.",
+          "Find the total value of the second group of money.",
+          "Compare the two values to see which one is greater."
+        ],
+        "visual_type": "PesoMoney",
+        "visual_payload": {
+          "coins": [],
+          "bills": [
+            {
+              "denomination": 100,
+              "count": 1
+            },
+            {
+              "denomination": 200,
+              "count": 1
+            }
+          ],
+          "total": 300,
+          "target_amount": 300,
+          "exclude_centavos": true,
+          "coin_faces": [
+            1,
+            5,
+            10
+          ],
+          "bill_faces": [
+            20,
+            50,
+            100,
+            200
+          ],
+          "require_fewest": true,
+          "is_interactive": false
+        },
+        "visual_render": {
+          "visual_type": "PesoMoney",
+          "renderer_input_digest": "d4a0330398e7acf404cb773784334a539ab5a10265172a92aca94a99a45a9fb0",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "PesoMoney",
+            "element_count": 17,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "BILLS",
+              "₱100",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "#c084fc,",
+              "#7c3aed)",
+              "#fff",
+              "#86efac,",
+              "#16a34a)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "d812a1e43b0e23f47338",
+        "replay_digest": "7a9e45aa0997a720d5e637e88f13137043cfcb8e55082af73997dc2993e8e225"
+      },
+      {
+        "node_id": "mat_g2_na_q2_1",
+        "seed": 103,
+        "formatter": "read_mcq",
+        "question_text": "Which has a greater value: 3 ₱200 bills, 1 ₱50 bill, and 1 ₱5 coin or 1 ₱500 bill and 1 ₱200 bill?",
+        "correct_answer": "C",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "PesoMoney",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "They are equal",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "3 ₱200 bills, 1 ₱50 bill, and 1 ₱5 coin",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "1 ₱500 bill and 1 ₱200 bill",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "1 ₱200 bill and 1 ₱1 coin",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "1 ₱500 bill and 1 ₱200 bill",
+        "hints": [
+          "Find the total value of the first group of money.",
+          "Find the total value of the second group of money.",
+          "Compare the two values to see which one is greater."
+        ],
+        "visual_type": "PesoMoney",
+        "visual_payload": {
+          "coins": [
+            {
+              "denomination": 5,
+              "count": 1
+            }
+          ],
+          "bills": [
+            {
+              "denomination": 50,
+              "count": 1
+            },
+            {
+              "denomination": 200,
+              "count": 3
+            }
+          ],
+          "total": 655,
+          "target_amount": 655,
+          "exclude_centavos": true,
+          "coin_faces": [
+            1,
+            5,
+            10
+          ],
+          "bill_faces": [
+            20,
+            50,
+            100,
+            200
+          ],
+          "require_fewest": true,
+          "is_interactive": false
+        },
+        "visual_render": {
+          "visual_type": "PesoMoney",
+          "renderer_input_digest": "4a442d5addfb129b442c849f1a13fc585f0774eea01edd16a0b9c1e0f701feb6",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "PesoMoney",
+            "element_count": 33,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "BILLS",
+              "₱50",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "COINS",
+              "₱5"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "#fda4af,",
+              "#dc2626)",
+              "#fff",
+              "#86efac,",
+              "#16a34a)",
+              "#e2e8f0,",
+              "#cbd5e1)",
+              "#1e293b",
+              "#94a3b8"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "7bda7ecdff22a0c3b6cf",
+        "replay_digest": "dea51ddd848e69bb680f3e0a789dedb6e4ad95a707c215b2d44944be7f3728c8"
+      },
+      {
+        "node_id": "mat_g2_na_q2_1",
+        "seed": 118,
+        "formatter": "mcq",
+        "question_text": "Which has a smaller value: 1 ₱500 bill, 1 ₱100 bill, 1 ₱50 bill, 1 ₱10 coin, and 1 ₱1 coin or 1 ₱10 coin and 1 ₱5 coin?",
+        "correct_answer": "1 ₱10 coin and 1 ₱5 coin",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "They are equal",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "1 ₱20 bill and 1 ₱5 coin",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "1 ₱10 coin and 1 ₱5 coin",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "1 ₱500 bill, 1 ₱100 bill, 1 ₱50 bill, 1 ₱10 coin, and 1 ₱1 coin",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "1 ₱10 coin and 1 ₱5 coin",
+        "hints": [
+          "Find the total value of the first group of money.",
+          "Find the total value of the second group of money.",
+          "Compare the two values to see which one is greater."
+        ],
+        "sample_id": "d26272022368d969f245",
+        "replay_digest": "5c8209fb3d6b37c2b77ed830386ea5dd1d8eff2fa4599133f14e2b02ef35f1dc"
+      },
+      {
+        "node_id": "mat_g2_na_q2_1",
+        "seed": 127,
+        "formatter": "cloze",
+        "question_text": "Which has a smaller value: 1 ₱100 bill and 1 ₱20 bill or 1 ₱50 bill and 3 ₱20 bills?",
+        "correct_answer": "1 ₱50 bill and 3 ₱20 bills",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "1 ₱100 bill and 1 ₱20 bill",
+            "text": "1 ₱100 bill and 1 ₱20 bill",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "They are equal",
+            "text": "They are equal",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "1 ₱50 bill and 3 ₱20 bills",
+            "text": "1 ₱50 bill and 3 ₱20 bills",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "2 ₱100 bills, 1 ₱10 coin, 1 ₱5 coin, and 1 ₱1 coin",
+            "text": "2 ₱100 bills, 1 ₱10 coin, 1 ₱5 coin, and 1 ₱1 coin",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "1 ₱50 bill and 3 ₱20 bills",
+        "hints": [
+          "Find the total value of the first group of money.",
+          "Find the total value of the second group of money.",
+          "Compare the two values to see which one is greater."
+        ],
+        "sample_id": "d4d8cc47f0ad5c613500",
+        "replay_digest": "edcff35879e7b817ea0523ff7198e32e882df8ca6253ae6311f8442e226eb6e8"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "compare",
+      "node_id": "mat_g2_na_q2_1",
+      "clause": "Compare",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All ten prompts ask learners to compare two monetary collections by greater or smaller value.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "values",
+      "node_id": "mat_g2_na_q2_1",
+      "clause": "values",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Value is the explicit comparison basis in every sample.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "different",
+      "node_id": "mat_g2_na_q2_1",
+      "clause": "different",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Each comparison uses collections with different stated denominations.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "denominations",
+      "node_id": "mat_g2_na_q2_1",
+      "clause": "denominations",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Peso-coin denominations occur in every displayed comparison, including the one-peso coin at seed 23.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "peso_coins",
+      "node_id": "mat_g2_na_q2_1",
+      "clause": "peso coins",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Peso bills occur in every displayed comparison.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "bills",
+      "node_id": "mat_g2_na_q2_1",
+      "clause": "bills",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Bills are named as the currency form in all ten comparison samples.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "up_to_1000",
+      "node_id": "mat_g2_na_q2_1",
+      "clause": "up to ₱1000",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Each presented collection and comparison stays within the stated money range.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    }
+  ]
+}

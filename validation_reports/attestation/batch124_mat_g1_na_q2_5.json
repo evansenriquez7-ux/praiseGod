@@ -1,0 +1,693 @@
+{
+  "batch": "batch124_mat_g1_na_q2_5",
+  "attested_at": "2026-09-22T14:08:26Z",
+  "attested_by": "blind-attester-gpt-terra-d08-20260922",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "read local_only/scratch/attest117/mat_g1_na_q2_5.prompt.txt (verbatim render_prompt_block output only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "Tool-bearing GPT-Terra subagent reported exec_command (sed/rg) only on assigned prompt paths and apply_patch only to write sibling verdict JSON; dispatcher did not verify sandbox-level non-access beyond that report."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g1_na_q2_5",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g1_na_q2_5",
+        "seed": 11,
+        "formatter": "true_false",
+        "question_text": "30 + 54 = 84. True or False?",
+        "correct_answer": true,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "true_false",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "true_false",
+          "experience": "standard"
+        },
+        "resolved_answer": true,
+        "hints": [
+          "We are adding two numbers: 30 and 54.",
+          "Add the ones: 0 + 4 = 4. Write 4 in the ones place.",
+          "Add the tens: 3 + 5 = 8.",
+          "The sum is 30 + 54 = 84."
+        ],
+        "sample_id": "92ed153086056372868f",
+        "replay_digest": "de9cbcfff0a656b56f7b850f699fce03deed1e2bb11971c7577e42ffa4250e34"
+      },
+      {
+        "node_id": "mat_g1_na_q2_5",
+        "seed": 23,
+        "formatter": "read_mcq",
+        "question_text": "(Large group of 91 items) — There are 91 items.\n💃💃💃💃 — 4 more items are added.\nHow many total items are there?",
+        "correct_answer": "C",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "EmojiPictorial",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 96,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 4,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 95,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 91,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 95,
+        "hints": [
+          "We are adding two numbers: 91 and 4.",
+          "Add the ones: 1 + 4 = 5. Write 5 in the ones place.",
+          "Add the tens: 9 + 0 = 9.",
+          "The sum is 91 + 4 = 95."
+        ],
+        "visual_type": "EmojiPictorial",
+        "visual_payload": {
+          "emoji": "💃",
+          "group_a": 91,
+          "group_b": 4,
+          "operation": "addition",
+          "layout": "inline",
+          "display": "(Large group of 91 items)",
+          "display_b": "💃💃💃💃"
+        },
+        "visual_render": {
+          "visual_type": "EmojiPictorial",
+          "renderer_input_digest": "85be3cbded8011ce4c5744a150d3073adc2008434425258b5cd30efe95ac7e3a",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "EmojiPictorial",
+            "element_count": 40,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "🛍️",
+              "10x 💃",
+              "💃",
+              "1x 💃",
+              "and"
+            ],
+            "distinct_colours": [
+              "hsl(var(--card-bg)",
+              "hsl(var(--border-color)",
+              "hsl(var(--text-muted)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "3b5e8b2d19b668ad4022",
+        "replay_digest": "9c7a278275006c6eb4b103c84901a992c2e0a655b6da4d7a925d597708984f25"
+      },
+      {
+        "node_id": "mat_g1_na_q2_5",
+        "seed": 42,
+        "formatter": "read_fill_in_blank",
+        "question_text": "The two parts are 68 and 10. What is the sum?",
+        "correct_answer": 78,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_fill_in_blank",
+          "is_visual": true,
+          "visual_type": "NumberBond",
+          "interaction_mode": "read",
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "resolved_answer": 78,
+        "hints": [
+          "We are adding two numbers: 68 and 10.",
+          "Add the ones: 8 + 0 = 8. Write 8 in the ones place.",
+          "Add the tens: 6 + 1 = 7.",
+          "The sum is 68 + 10 = 78."
+        ],
+        "visual_type": "NumberBond",
+        "visual_payload": {
+          "whole": null,
+          "part1": 68,
+          "part2": 10,
+          "blank_position": "whole"
+        },
+        "visual_render": {
+          "visual_type": "NumberBond",
+          "renderer_input_digest": "2d355bdbf4f0c8bece01dfb6283a75989cf46a60591231463ab17221069e57c0",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "NumberBond",
+            "element_count": 7,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 1,
+            "text_labels": [
+              "68",
+              "10"
+            ],
+            "distinct_colours": [
+              "hsl(var(--primary)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "0b9a2c0498d313f9ad0d",
+        "replay_digest": "dc22accba0e19e5ac3fa96d92692c7429f855b1c0dbae7c283c6d22412b22932"
+      },
+      {
+        "node_id": "mat_g1_na_q2_5",
+        "seed": 57,
+        "formatter": "mcq",
+        "question_text": "What is 30 + 30?",
+        "correct_answer": 60,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 60,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 70,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 61,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 59,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 60,
+        "hints": [
+          "We are adding two numbers: 30 and 30.",
+          "Add the ones: 0 + 0 = 0. Write 0 in the ones place.",
+          "Add the tens: 3 + 3 = 6.",
+          "The sum is 30 + 30 = 60."
+        ],
+        "sample_id": "7afb3e9655d0242b89e1",
+        "replay_digest": "abf8d4886f9e72ae47d5234698d8597c1a8619d30b673d0ebf5e721fd665d5c6"
+      },
+      {
+        "node_id": "mat_g1_na_q2_5",
+        "seed": 64,
+        "formatter": "cloze",
+        "question_text": "60 + 26 = ___",
+        "correct_answer": 86,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 87,
+            "text": "87",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 86,
+            "text": "86",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 96,
+            "text": "96",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 85,
+            "text": "85",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 86,
+        "hints": [
+          "We are adding two numbers: 60 and 26.",
+          "Add the ones: 0 + 6 = 6. Write 6 in the ones place.",
+          "Add the tens: 6 + 2 = 8.",
+          "The sum is 60 + 26 = 86."
+        ],
+        "sample_id": "2ed8230ae6c2e9ea3087",
+        "replay_digest": "4c064a1f187d57b87037e8e9dba2ab2324d32d1ddd836c37f58d76650ae1127d"
+      },
+      {
+        "node_id": "mat_g1_na_q2_5",
+        "seed": 78,
+        "formatter": "read_fill_in_blank",
+        "question_text": "The two parts are 94 and 5. What is the sum?",
+        "correct_answer": 99,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_fill_in_blank",
+          "is_visual": true,
+          "visual_type": "NumberBond",
+          "interaction_mode": "read",
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "resolved_answer": 99,
+        "hints": [
+          "We are adding two numbers: 94 and 5.",
+          "Add the ones: 4 + 5 = 9. Write 9 in the ones place.",
+          "Add the tens: 9 + 0 = 9.",
+          "The sum is 94 + 5 = 99."
+        ],
+        "visual_type": "NumberBond",
+        "visual_payload": {
+          "whole": null,
+          "part1": 94,
+          "part2": 5,
+          "blank_position": "whole"
+        },
+        "visual_render": {
+          "visual_type": "NumberBond",
+          "renderer_input_digest": "8574960d8498bba9dc0a4c3bdb954b982faa51ab826d29ae6f460da5a626742f",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "NumberBond",
+            "element_count": 7,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 1,
+            "text_labels": [
+              "94",
+              "5"
+            ],
+            "distinct_colours": [
+              "hsl(var(--primary)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "abc33ddca3e23693b761",
+        "replay_digest": "aaeff927eec14b14802ade32154528312f59f790447b96f23145b1af6de19771"
+      },
+      {
+        "node_id": "mat_g1_na_q2_5",
+        "seed": 91,
+        "formatter": "error_detect",
+        "question_text": "Grace solved: \"30 + 30 = ___\". Grace says the blank is 60. Is Grace correct?",
+        "correct_answer": {
+          "has_error": false,
+          "correct_value": 60
+        },
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "error_detect",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "error_detect",
+          "experience": "standard"
+        },
+        "resolved_answer": {
+          "has_error": false,
+          "correct_value": 60
+        },
+        "hints": [
+          "We are adding two numbers: 30 and 30.",
+          "Add the ones: 0 + 0 = 0. Write 0 in the ones place.",
+          "Add the tens: 3 + 3 = 6.",
+          "The sum is 30 + 30 = 60."
+        ],
+        "sample_id": "a4bbabbe5dbdeb3bae62",
+        "replay_digest": "351e4cdb2e60042dee8910a14d1e2e5836364a2772b55513cf92b9ba3bb23901"
+      },
+      {
+        "node_id": "mat_g1_na_q2_5",
+        "seed": 103,
+        "formatter": "mcq",
+        "question_text": "What is 68 + 31?",
+        "correct_answer": 99,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 98,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 109,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 99,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 100,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 99,
+        "hints": [
+          "We are adding two numbers: 68 and 31.",
+          "Add the ones: 8 + 1 = 9. Write 9 in the ones place.",
+          "Add the tens: 6 + 3 = 9.",
+          "The sum is 68 + 31 = 99."
+        ],
+        "sample_id": "3f46dc24c54e37771805",
+        "replay_digest": "07548df0060eac74a57d8f7e95ce8f97f1297a0d727880167c4e355ab222ace5"
+      },
+      {
+        "node_id": "mat_g1_na_q2_5",
+        "seed": 118,
+        "formatter": "read_fill_in_blank",
+        "question_text": "The two parts are 26 and 51. What is the sum?",
+        "correct_answer": 77,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_fill_in_blank",
+          "is_visual": true,
+          "visual_type": "NumberBond",
+          "interaction_mode": "read",
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "resolved_answer": 77,
+        "hints": [
+          "We are adding two numbers: 26 and 51.",
+          "Add the ones: 6 + 1 = 7. Write 7 in the ones place.",
+          "Add the tens: 2 + 5 = 7.",
+          "The sum is 26 + 51 = 77."
+        ],
+        "visual_type": "NumberBond",
+        "visual_payload": {
+          "whole": null,
+          "part1": 26,
+          "part2": 51,
+          "blank_position": "whole"
+        },
+        "visual_render": {
+          "visual_type": "NumberBond",
+          "renderer_input_digest": "a6d729d82dc9a3146c206164077a2ede92b2d08cbcfa4e5b0172e2e91e6f582c",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "NumberBond",
+            "element_count": 7,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 1,
+            "text_labels": [
+              "26",
+              "51"
+            ],
+            "distinct_colours": [
+              "hsl(var(--primary)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "2830b799360b0c9d22a1",
+        "replay_digest": "cb84d4137598ad3735282ea8b3174d38eb5b3638c74b7214c17cfa54de51290a"
+      },
+      {
+        "node_id": "mat_g1_na_q2_5",
+        "seed": 127,
+        "formatter": "cloze",
+        "question_text": "30 + 30 = ___",
+        "correct_answer": 60,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 61,
+            "text": "61",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 59,
+            "text": "59",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 60,
+            "text": "60",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 70,
+            "text": "70",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 60,
+        "hints": [
+          "We are adding two numbers: 30 and 30.",
+          "Add the ones: 0 + 0 = 0. Write 0 in the ones place.",
+          "Add the tens: 3 + 3 = 6.",
+          "The sum is 30 + 30 = 60."
+        ],
+        "sample_id": "052b2ae4c8d718a22fb6",
+        "replay_digest": "9f8bccb8dc9ea007699c6d321621d50ea69fc5ec0fff203985a7b01fe70ad627"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "add",
+      "node_id": "mat_g1_na_q2_5",
+      "clause": "Add numbers",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Each of the ten tasks requires combining two quantities to determine or assess a total, making addition the dominant work throughout.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "sum_up_to_100",
+      "node_id": "mat_g1_na_q2_5",
+      "clause": "sums up to 100",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All displayed totals are at most 100, ranging from 60 through 99, so the stated sum range is present in every sampled task.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "without_regrouping",
+      "node_id": "mat_g1_na_q2_5",
+      "clause": "without regrouping",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "The ones in every shown addition can be combined without making a new ten; this includes 91 plus 4 and 68 plus 31, so no-regrouping is consistent rather than occasional.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "concrete_pictorial",
+      "node_id": "mat_g1_na_q2_5",
+      "clause": "concrete and pictorial models",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "Only four samples visibly use a model, with an emoji display once and number-bond displays three times; the other six are symbolic or verbal. That limited share does not show varied model use as a prevailing mode of learner work.",
+      "action_taken": "Left registered pending one independent confirmation under the prevalence standard; no source change in re-instrumentation campaign."
+    },
+    {
+      "capability_id": "operands_2_1_digit",
+      "node_id": "mat_g1_na_q2_5",
+      "clause": "2-digit and 1-digit numbers",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "Two-digit plus one-digit addition appears meaningfully in only the 91 plus 4 and 94 plus 5 samples. The set is otherwise dominated by two-digit pairs, so this form is not prevalent.",
+      "action_taken": "Left registered pending one independent confirmation under the prevalence standard; no source change in re-instrumentation campaign."
+    },
+    {
+      "capability_id": "operands_2_2_digit",
+      "node_id": "mat_g1_na_q2_5",
+      "clause": "2-digit and 2-digit numbers",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        42,
+        57,
+        64,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Eight samples use two addends written as two-digit numbers, including multiples of ten such as 30 plus 30; this is the clear prevailing addend pairing.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    }
+  ]
+}

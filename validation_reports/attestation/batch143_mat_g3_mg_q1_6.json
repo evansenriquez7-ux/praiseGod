@@ -1,0 +1,649 @@
+{
+  "batch": "batch143_mat_g3_mg_q1_6",
+  "attested_at": "2026-09-22T14:34:34Z",
+  "attested_by": "blind-attester-gpt-terra-d26d27-20260922",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "read local_only/scratch/attest117/mat_g3_mg_q1_6.prompt.txt (verbatim render_prompt_block output only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "Tool-bearing GPT-Terra subagent reported using only 11 assigned prompts and sibling verdict outputs; exact tool names were not fully reported, and dispatcher did not verify sandbox-level non-access beyond that report."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g3_mg_q1_6",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g3_mg_q1_6",
+        "seed": 11,
+        "formatter": "mcq",
+        "question_text": "Segment A measures 9 cm on a ruler. Which of the following describes a line segment that is equal in length to Segment A?",
+        "correct_answer": "A segment starting at 4 cm and ending at 13 cm",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "A segment starting at 4 cm and ending at 11 cm",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "A segment starting at 4 cm and ending at 15 cm",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "A segment starting at 4 cm and ending at 13 cm",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "A segment starting at 5 cm and ending at 15 cm",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "A segment starting at 4 cm and ending at 13 cm",
+        "hints": [],
+        "sample_id": "4da9f6430af2ee44241d",
+        "replay_digest": "4308f697fd56289b6a34352a2f9ea1f9e07bd7479489189c496723ff615fe227"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_6",
+        "seed": 23,
+        "formatter": "cloze",
+        "question_text": "Segment A is 3 cm long. If you use a ruler to draw Segment B equal in length starting at the 1 cm mark, at which centimeter mark on the ruler must Segment B end?",
+        "correct_answer": 4,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 5,
+            "text": "5",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 1,
+            "text": "1",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 3,
+            "text": "3",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 4,
+            "text": "4",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 4,
+        "hints": [],
+        "sample_id": "196e7014aa0785dcfbbc",
+        "replay_digest": "ade8fc3efe3d36c0059d0a09df35e36a59bba039c4bf7e3cd84133fbef1bd550"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_6",
+        "seed": 42,
+        "formatter": "cloze",
+        "question_text": "On a ruler, Segment A starts at 0 cm and ends at 2 cm. Segment B starts at 3 cm and ends at 5 cm. Are Segment A and Segment B equal in length?",
+        "correct_answer": "Yes",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "Cannot be determined without a set square",
+            "text": "Cannot be determined without a set square",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "Only if both segments start at 0 cm",
+            "text": "Only if both segments start at 0 cm",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "Yes",
+            "text": "Yes",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "No",
+            "text": "No",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "Yes",
+        "hints": [
+          "Compare 2 centimeter (cm) and 2 centimeter (cm).",
+          "Equal length means the same number of units, not just a similar look.",
+          "2 centimeter (cm) equals 2 centimeter (cm), so the answer is Yes."
+        ],
+        "sample_id": "9281506aab8d7f1667be",
+        "replay_digest": "f392e74fd58bd2990619ca63687fd8a5feb0d68239727f009615d5c5d5dddc9b"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_6",
+        "seed": 57,
+        "formatter": "mcq",
+        "question_text": "On a ruler, Segment A starts at 0 cm and ends at 7 cm. Segment B starts at 5 cm and ends at 11 cm. Are Segment A and Segment B equal in length?",
+        "correct_answer": "No",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "Cannot be determined without a set square",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "Only if both segments start at 0 cm",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "Yes",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "No",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "No",
+        "hints": [
+          "Compare 7 centimeter (cm) and 6 centimeter (cm).",
+          "Equal length means the same number of units, not just a similar look.",
+          "7 centimeter (cm) does not equal 6 centimeter (cm), so the answer is No."
+        ],
+        "sample_id": "cf28882ebd3f7286abac",
+        "replay_digest": "a0568232e7315e6feb19d8e18269effe4b1802b302b51ef98fb4bc211fd6c997"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_6",
+        "seed": 64,
+        "formatter": "cloze",
+        "question_text": "Segment A measures 3 cm on a ruler. Which of the following describes a line segment that is equal in length to Segment A?",
+        "correct_answer": "A segment starting at 5 cm and ending at 8 cm",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "A segment starting at 5 cm and ending at 10 cm",
+            "text": "A segment starting at 5 cm and ending at 10 cm",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "A segment starting at 5 cm and ending at 8 cm",
+            "text": "A segment starting at 5 cm and ending at 8 cm",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "A segment starting at 5 cm and ending at 6 cm",
+            "text": "A segment starting at 5 cm and ending at 6 cm",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "A segment starting at 6 cm and ending at 10 cm",
+            "text": "A segment starting at 6 cm and ending at 10 cm",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "A segment starting at 5 cm and ending at 8 cm",
+        "hints": [],
+        "sample_id": "ccbb4b98e3962fb36f5f",
+        "replay_digest": "3620eb5854e4f0194f79353f8bbf126226110674627002cc790d6afbacb35e77"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_6",
+        "seed": 78,
+        "formatter": "cloze",
+        "question_text": "Segment A has a length of 3 cm. To draw Segment B equal in length using a ruler starting at the 0 cm mark, at which centimeter mark must Segment B end?",
+        "correct_answer": 3,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 5,
+            "text": "5",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 3,
+            "text": "3",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 4,
+            "text": "4",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 2,
+            "text": "2",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 3,
+        "hints": [],
+        "sample_id": "67ba1c142eb643603d8b",
+        "replay_digest": "9705c780ce8caad5f6e8c85432b355b002fcf02028f17d1ea12b04aa7a3ca60a"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_6",
+        "seed": 91,
+        "formatter": "cloze",
+        "question_text": "On a ruler, Segment A starts at 0 cm and ends at 4 cm. Segment B starts at 2 cm and ends at 6 cm. Are Segment A and Segment B equal in length?",
+        "correct_answer": "Yes",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "Yes",
+            "text": "Yes",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "Only if both segments start at 0 cm",
+            "text": "Only if both segments start at 0 cm",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "No",
+            "text": "No",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "Cannot be determined without a set square",
+            "text": "Cannot be determined without a set square",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "Yes",
+        "hints": [
+          "Compare 4 centimeter (cm) and 4 centimeter (cm).",
+          "Equal length means the same number of units, not just a similar look.",
+          "4 centimeter (cm) equals 4 centimeter (cm), so the answer is Yes."
+        ],
+        "sample_id": "01bde694a9fea2ee17b2",
+        "replay_digest": "fb400fb84689832d0e93ce8e8fd39c3330b27d1c9fe854302f5ff7afbaba521e"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_6",
+        "seed": 103,
+        "formatter": "cloze",
+        "question_text": "Segment A measures 5 cm on a ruler. Which of the following describes a line segment that is equal in length to Segment A?",
+        "correct_answer": "A segment starting at 1 cm and ending at 6 cm",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "A segment starting at 1 cm and ending at 6 cm",
+            "text": "A segment starting at 1 cm and ending at 6 cm",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "A segment starting at 1 cm and ending at 4 cm",
+            "text": "A segment starting at 1 cm and ending at 4 cm",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "A segment starting at 2 cm and ending at 8 cm",
+            "text": "A segment starting at 2 cm and ending at 8 cm",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "A segment starting at 1 cm and ending at 8 cm",
+            "text": "A segment starting at 1 cm and ending at 8 cm",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "A segment starting at 1 cm and ending at 6 cm",
+        "hints": [],
+        "sample_id": "646217ef4c7a8800c0db",
+        "replay_digest": "bf037d04b9230d3c1f905784efbeea557091eae0f21fa9ad2bec5a8126dd8599"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_6",
+        "seed": 118,
+        "formatter": "mcq",
+        "question_text": "Segment A has a length of 6 cm. To draw Segment B equal in length using a ruler starting at the 0 cm mark, at which centimeter mark must Segment B end?",
+        "correct_answer": 6,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 8,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 7,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 6,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 5,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 6,
+        "hints": [],
+        "sample_id": "522672d22b1471efd7c8",
+        "replay_digest": "e65b5c8d7c492507115faadf4ded0ffd6e7e45619be7be2b28faef645da154d5"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_6",
+        "seed": 127,
+        "formatter": "cloze",
+        "question_text": "On a ruler, Segment A starts at 0 cm and ends at 3 cm. Segment B starts at 1 cm and ends at 4 cm. Are Segment A and Segment B equal in length?",
+        "correct_answer": "Yes",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "Cannot be determined without a set square",
+            "text": "Cannot be determined without a set square",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "No",
+            "text": "No",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "Only if both segments start at 0 cm",
+            "text": "Only if both segments start at 0 cm",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "Yes",
+            "text": "Yes",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "Yes",
+        "hints": [
+          "Compare 3 centimeter (cm) and 3 centimeter (cm).",
+          "Equal length means the same number of units, not just a similar look.",
+          "3 centimeter (cm) equals 3 centimeter (cm), so the answer is Yes."
+        ],
+        "sample_id": "d6479657b924306b4744",
+        "replay_digest": "504938d3e733e49bde0fc9c639b96a345a81d7f58e5341bd582d55e183937593"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "identify_equal_length_segments",
+      "node_id": "mat_g3_mg_q1_6",
+      "clause": "Identify",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Every sample identifies whether segments match in length or identifies the endpoint needed for an equal-length segment.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "draw_segment_of_given_length",
+      "node_id": "mat_g3_mg_q1_6",
+      "clause": "draw",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "Seeds 23 and 78 mention drawing but only require selecting a ruler mark; no learner drawing is rendered or required.",
+      "action_taken": "Left registered pending one independent confirmation under the prevalence standard; no source change in re-instrumentation campaign."
+    },
+    {
+      "capability_id": "line_segment",
+      "node_id": "mat_g3_mg_q1_6",
+      "clause": "line segments",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All samples reason explicitly about one or two line segments and their endpoints or lengths.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "equal_length",
+      "node_id": "mat_g3_mg_q1_6",
+      "clause": "equal length",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Equal length is the decision or construction target in every shown task.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "ruler",
+      "node_id": "mat_g3_mg_q1_6",
+      "clause": "a ruler",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Each task uses ruler marks or explicitly names a ruler as the measurement basis for comparing or locating segment endpoints.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    }
+  ]
+}

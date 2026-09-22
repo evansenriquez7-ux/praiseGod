@@ -14463,3 +14463,107 @@ edited anchor region is exactly where that silently stops being true.
 The benchmark again printed `recommended_shards=4` against the validator's hard-coded 6
 (`validate_obligations.py:165`); six shards were run. Measured total 2.574h, consistent with the
 2.593h measured earlier and again NOT the 1.713h the 4-shard projection implies.
+
+## 2026-09-22/23 — H-06 owner-ruling-9 prevalence re-dispatch, complete
+
+**Session:** `codex-h06-prevalence117-20260922`. **Row:** `H-06`. This was a dispatch-only
+campaign: no generator, validator, contract, or other digest-bound input changed.
+
+### Baseline and scope
+
+```
+$ PYTHONPATH=. .venv/bin/python tests/tree_state.py
+PASS tree_state: CERTIFIED
+  live input digest : dfae9bbb7a1398d7
+  worktree          : clean
+  mutation_proofs         fresh  152 file(s)
+  release_shards          fresh  6 file(s)
+  obligation_benchmark    fresh  1 file(s)
+  frontend_static_render  fresh  1 file(s)
+
+$ PYTHONPATH=. .venv/bin/python tests/hardening_status.py
+PASS hardening_status: 10 H-row(s) valid — 3 closed, 6 open, 1 out_of_scope
+```
+
+The live registry measured **151 nodes / 767 requirement pairs**. It partitioned into **34
+dispatches**, 13–25 clause items each. Packets were built one node per file with the fixed seeds
+**11, 23, 42, 57, 64, 78, 91, 103, 118, 127**, avoiding the known `item_001` collision.
+
+Every blind judge was a dispatcher-assigned `gpt-5.6-terra` low-reasoning identity, as owner
+ruling 10 requires on this host. The prompt supplied the prevalence decision procedure and the
+neutral medium grammar test, never the hidden key, provider table, old verdict, node id, or
+current finding. Tool-bearing judges reported reading only their assigned prompt files and
+writing their sibling verdict files; the records say that structural non-access was not
+sandbox-verified. Twenty-five identities were used; the largest covered 11 nodes, below §6H's
+25-node cap.
+
+### Filing controls and caught malformed returns
+
+The dispatcher authored no verdict. Every record was joined through `tests.attester_file` from
+the blind packet, hidden key, and returned verdict. The join/audit stopped four malformed return
+classes before filing: a scratch packet wrapper instead of the CLI list shape; an extra
+`item_010`; `specific_independent_reasoning` instead of `reasoning`; PASS/FAIL instead of the
+required verdict enum; and combined node files/non-opaque item ids. In each case the authoring
+Attester corrected its own output while preserving the substantive verdict text. The initial
+wrapper failure wrote no records:
+
+```
+TypeError: string indices must be integers, not 'str'
+PASS no partial batch117-119 records were written
+```
+
+All-PROVIDED dispatches were audited for distinct reasoning skeletons and actual rendered media.
+The d11 audit returned six medium-naming items to its Attester; four verdicts changed to
+NOT_PROVIDED, including two `pictograph` clauses whose shown visual types were BarChart/
+FillInTable. The dispatcher did not rewrite them.
+
+### Completed replacement corpus
+
+```
+PASS corpus replacement: files=151 nodes=151 pairs=767 PROVIDED=593 NOT_PROVIDED=174 identities=25 max_nodes_per_identity=11
+batch range: batch117..batch150; every live node/capability pair represented exactly once in replacement corpus
+```
+
+The final Attester result (593 + 174 = 767) differs by one from the Phase 2 finding count because
+one NOT_PROVIDED pair is not contradicted by a remaining provider claim. The validator, not the
+raw verdict count, determines the queue.
+
+### Measured result — stage run alone
+
+```
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_capability --phase 2
+Capability contract: 173 failure(s) (0 Phase 1 / artifact-free, floor 5; 173 Phase 2 / attestation).
+
+$ PYTHONPATH=. .venv/bin/python - <<'PY'
+# categorize validate_capability_attestation() findings by their emitted labels
+PY
+attestation findings 173 {'CONTRADICTED': 173}
+PASS composition: 173 CONTRADICTED; 0 UNATTESTED, 0 STALE, 0 UNADJUDICABLE, 0 §6G, 0 §6H, 0 other
+```
+
+**57 → 173 is owner ruling 9 working, not a regression.** The old corpus mostly asked whether any
+sample exhibited a clause; the replacement asks how often the clause is meaningfully exhibited.
+The corpus is now single-standard, but its rater family also changed from Claude-era judges to
+GPT-Terra. Cross-family agreement remains unmeasured, so a lone NOT_PROVIDED still requires a
+second independent confirmation before engineering work.
+
+### Digest and remaining work
+
+```
+$ PYTHONPATH=. .venv/bin/python - <<'PY'
+from backend.app.practice_gen.validation.mutation_proof import input_digest
+print(input_digest())
+PY
+dfae9bbb7a1398d729e4e0153c9494047ff925756a15b9676b94ceef40970fd7
+```
+
+The digest is byte-identical to the baseline. No re-proof is owed and the existing 152 mutation
+proofs, six release shards, benchmark, and frontend artifact remain current. `run_all` is still
+expected to exit 1: `capability_phase2` is 173, `judgment_reviews_5` remains 1252 at the module /
+1253 at the stage entry point, and the three §6F mutations remain INVALID downstream of the red
+capability baseline. The next priority is the seven-dispatch §5 schema-v2 blind re-review
+campaign. No content work was started.
+
+**Graphify limitation:** the existing index reported the legacy pre-#1504 node-ID scheme and its
+campaign query returned an unrelated/weak traversal. Executed repository tooling above, not that
+graph traversal, is the evidence for this campaign.

@@ -3,12 +3,12 @@
   "note": "Intent record for interruption safety. Written when a batch, chain or campaign STARTS and cleared when it completes; an intent left open means a session did not reach its finish line. Deliberately digest-free -- see tests/tree_state.py. Read with `PYTHONPATH=. .venv/bin/python tests/tree_state.py`.",
   "open_intent": null,
   "last_completed": {
-    "kind": "batch",
-    "began_at": "2026-09-22T16:32:30+08:00",
-    "session": "H-06-review-closeout-2026-09-22",
-    "note": "Fix the 2 remaining misattributed §5 claims in digest-bound source (run_all.py ASSERTIONS comment, test_frontend_renderer_isolation.py docstring) that the closeout batch missed. Chain owed.",
-    "next_step": "Land every remaining source edit, then run the re-proof chain in order.",
-    "completed_at": "2026-09-22T20:25:29+08:00",
-    "completion_note": "Review closeout: 2 remaining misattributed §5 claims corrected, chain re-run in full, run_all exit 1 on the three known red stages"
+    "kind": "campaign",
+    "began_at": "2026-09-22T21:53:02+08:00",
+    "session": "codex-h06-prevalence117-20260922",
+    "note": "Ruling-9 prevalence re-dispatch campaign from batch117; no source work",
+    "next_step": "Resume the campaign; it touches no source, so no re-proof is owed.",
+    "completed_at": "2026-09-23T05:46:43+08:00",
+    "completion_note": "Ruling-9 prevalence campaign complete: batch117..150, 151 nodes/767 pairs, capability_phase2=173 all CONTRADICTED; digest unchanged; next §5 re-reviews"
   }
 }

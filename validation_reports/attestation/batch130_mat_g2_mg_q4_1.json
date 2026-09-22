@@ -1,0 +1,1150 @@
+{
+  "batch": "batch130_mat_g2_mg_q4_1",
+  "attested_at": "2026-09-22T14:16:21Z",
+  "attested_by": "blind-attester-gpt-terra-d14-20260922",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "read local_only/scratch/attest117/mat_g2_mg_q4_1.prompt.txt (verbatim render_prompt_block output only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "Tool-bearing GPT-Terra subagent reported reading only assigned prompt paths and writing only sibling verdict JSON; exact tool names were not reported, and dispatcher did not verify sandbox-level non-access beyond that report."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g2_mg_q4_1",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g2_mg_q4_1",
+        "seed": 11,
+        "formatter": "set_fill_in_blank",
+        "question_text": "Set the clock to show 9:35 p.m.",
+        "correct_answer": "9:35 p.m.",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "set_fill_in_blank",
+          "is_visual": true,
+          "visual_type": "ClockSet",
+          "interaction_mode": "set",
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "resolved_answer": "9:35 p.m.",
+        "hints": [
+          "The short hand shows the hour. The long hand shows the minutes.",
+          "The short (hour) hand points near 9.",
+          "Count by 5s from 12: the long hand has passed 7 marks, so the minutes are 35.",
+          "The time shown is 9:35 p.m.."
+        ],
+        "visual_type": "ClockSet",
+        "visual_payload": {
+          "hours": 9,
+          "minutes": 35,
+          "correct_time": {
+            "hour": 9,
+            "minute": 35
+          },
+          "display_hours": 9,
+          "target_time": "9:35 p.m.",
+          "use_24_hour": false,
+          "minute_angle": 210.0,
+          "hour_angle": 287.5,
+          "minute_snap_interval": 5,
+          "interaction_mode": "set",
+          "is_read_only": false,
+          "show_labels": true,
+          "precision": "5min"
+        },
+        "visual_render": {
+          "visual_type": "ClockSet",
+          "renderer_input_digest": "1f252a4277cfa8c4a9a1bfbbc8c0eb762eadf343238ec93a648768c7a8760e30",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "ClockSet",
+            "element_count": 37,
+            "svg_count": 4,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 6,
+            "input_count": 0,
+            "text_labels": [
+              "🕐 Hour Hand",
+              "🕐 Minute Hand",
+              "Hour (short)",
+              "Minute (long)",
+              "12:00",
+              "PM",
+              "HOURS",
+              "MINUTES",
+              "Choose a hand above, then click the clock to set time • Use +/- for precision"
+            ],
+            "distinct_colours": [
+              "#8891a8",
+              "#8b5cf6",
+              "#06b6d4",
+              "hsl(var(--text)",
+              "hsl(var(--text-muted)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "a5b90c359ef411af246f",
+        "replay_digest": "6bbf284885ab478750a0dc3429de630bbe11ec7489958dc7afad188074ab06c6"
+      },
+      {
+        "node_id": "mat_g2_mg_q4_1",
+        "seed": 23,
+        "formatter": "read_mcq",
+        "question_text": "What time does the clock show?",
+        "correct_answer": "C",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "ClockSet",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "1:15 p.m.",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "2:10 p.m.",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "2:15 p.m.",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "3:15 p.m.",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "2:15 p.m.",
+        "hints": [
+          "The short hand shows the hour. The long hand shows the minutes.",
+          "The short (hour) hand points near 2.",
+          "The long (minute) hand points to 3, so the minutes are 15.",
+          "The time shown is 2:15 p.m.."
+        ],
+        "visual_type": "ClockSet",
+        "visual_payload": {
+          "hours": 2,
+          "minutes": 15,
+          "correct_time": {
+            "hour": 2,
+            "minute": 15
+          },
+          "display_hours": 2,
+          "target_time": "2:15 p.m.",
+          "use_24_hour": false,
+          "minute_angle": 90.0,
+          "hour_angle": 67.5,
+          "minute_snap_interval": 5,
+          "interaction_mode": "read",
+          "is_read_only": true,
+          "show_labels": true,
+          "precision": "5min"
+        },
+        "visual_render": {
+          "visual_type": "ClockSet",
+          "renderer_input_digest": "1203c52f30e79664c99a0d79c5fda1c676501b76ff4fca33ad37abf274dae37c",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "ClockSet",
+            "element_count": 37,
+            "svg_count": 4,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 6,
+            "input_count": 0,
+            "text_labels": [
+              "🕐 Hour Hand",
+              "🕐 Minute Hand",
+              "Hour (short)",
+              "Minute (long)",
+              "02:15",
+              "AM",
+              "HOURS",
+              "MINUTES",
+              "Choose a hand above, then click the clock to set time • Use +/- for precision"
+            ],
+            "distinct_colours": [
+              "#8891a8",
+              "#8b5cf6",
+              "#06b6d4",
+              "hsl(var(--text)",
+              "hsl(var(--text-muted)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "73694ee22fab545cd564",
+        "replay_digest": "75ba2046de6218de130e78b7bd1521e69422c863a6d1672c10660274a58a47b0"
+      },
+      {
+        "node_id": "mat_g2_mg_q4_1",
+        "seed": 42,
+        "formatter": "read_mcq",
+        "question_text": "What time does the clock show?",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "ClockSet",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "1:00 p.m.",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "2:00 p.m.",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "12:00 p.m.",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "1:05 p.m.",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "1:00 p.m.",
+        "hints": [
+          "The short hand shows the hour. The long hand shows the minutes.",
+          "The short (hour) hand points near 1.",
+          "The long (minute) hand points to 12, so the minutes are 00.",
+          "The time shown is 1:00 p.m.."
+        ],
+        "visual_type": "ClockSet",
+        "visual_payload": {
+          "hours": 1,
+          "minutes": 0,
+          "correct_time": {
+            "hour": 1,
+            "minute": 0
+          },
+          "display_hours": 1,
+          "target_time": "1:00 p.m.",
+          "use_24_hour": false,
+          "minute_angle": 0.0,
+          "hour_angle": 30.0,
+          "minute_snap_interval": 5,
+          "interaction_mode": "read",
+          "is_read_only": true,
+          "show_labels": true,
+          "precision": "5min"
+        },
+        "visual_render": {
+          "visual_type": "ClockSet",
+          "renderer_input_digest": "453ba13229ec62ea2fbd6fd07348a0817444014b7fdb9f660fead2a2eaecd86b",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "ClockSet",
+            "element_count": 37,
+            "svg_count": 4,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 6,
+            "input_count": 0,
+            "text_labels": [
+              "🕐 Hour Hand",
+              "🕐 Minute Hand",
+              "Hour (short)",
+              "Minute (long)",
+              "01:00",
+              "AM",
+              "HOURS",
+              "MINUTES",
+              "Choose a hand above, then click the clock to set time • Use +/- for precision"
+            ],
+            "distinct_colours": [
+              "#8891a8",
+              "#8b5cf6",
+              "#06b6d4",
+              "hsl(var(--text)",
+              "hsl(var(--text-muted)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "b7ba2980544cc5ae52ae",
+        "replay_digest": "a9c9fddc00ac4f2130a85d03f925260e797e0362124386f2b1b08477efb54e0b"
+      },
+      {
+        "node_id": "mat_g2_mg_q4_1",
+        "seed": 57,
+        "formatter": "set_fill_in_blank",
+        "question_text": "Set the clock to show 6:00 a.m.",
+        "correct_answer": "6:00 a.m.",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "set_fill_in_blank",
+          "is_visual": true,
+          "visual_type": "ClockSet",
+          "interaction_mode": "set",
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "resolved_answer": "6:00 a.m.",
+        "hints": [
+          "The short hand shows the hour. The long hand shows the minutes.",
+          "The short (hour) hand points near 6.",
+          "The long (minute) hand points to 12, so the minutes are 00.",
+          "The time shown is 6:00 a.m.."
+        ],
+        "visual_type": "ClockSet",
+        "visual_payload": {
+          "hours": 6,
+          "minutes": 0,
+          "correct_time": {
+            "hour": 6,
+            "minute": 0
+          },
+          "display_hours": 6,
+          "target_time": "6:00 a.m.",
+          "use_24_hour": false,
+          "minute_angle": 0.0,
+          "hour_angle": 180.0,
+          "minute_snap_interval": 5,
+          "interaction_mode": "set",
+          "is_read_only": false,
+          "show_labels": true,
+          "precision": "5min"
+        },
+        "visual_render": {
+          "visual_type": "ClockSet",
+          "renderer_input_digest": "d5442540d60d39a3de8669c18ebbf1dec02f2be14e0533d52b1acadd27ce2cfc",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "ClockSet",
+            "element_count": 37,
+            "svg_count": 4,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 6,
+            "input_count": 0,
+            "text_labels": [
+              "🕐 Hour Hand",
+              "🕐 Minute Hand",
+              "Hour (short)",
+              "Minute (long)",
+              "12:00",
+              "PM",
+              "HOURS",
+              "MINUTES",
+              "Choose a hand above, then click the clock to set time • Use +/- for precision"
+            ],
+            "distinct_colours": [
+              "#8891a8",
+              "#8b5cf6",
+              "#06b6d4",
+              "hsl(var(--text)",
+              "hsl(var(--text-muted)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "011cb1544d1d4fcf395f",
+        "replay_digest": "9623787e29f1baa89bb96a507e3ae7503b8a57c229f00526f637775dc53cdedf"
+      },
+      {
+        "node_id": "mat_g2_mg_q4_1",
+        "seed": 64,
+        "formatter": "read_mcq",
+        "question_text": "What time does the clock show?",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "ClockSet",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "2:50 p.m.",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "2:45 p.m.",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "3:50 p.m.",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "1:50 p.m.",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "2:50 p.m.",
+        "hints": [
+          "The short hand shows the hour. The long hand shows the minutes.",
+          "The short (hour) hand points near 2.",
+          "Count by 5s from 12: the long hand has passed 10 marks, so the minutes are 50.",
+          "The time shown is 2:50 p.m.."
+        ],
+        "visual_type": "ClockSet",
+        "visual_payload": {
+          "hours": 2,
+          "minutes": 50,
+          "correct_time": {
+            "hour": 2,
+            "minute": 50
+          },
+          "display_hours": 2,
+          "target_time": "2:50 p.m.",
+          "use_24_hour": false,
+          "minute_angle": 300.0,
+          "hour_angle": 85.0,
+          "minute_snap_interval": 5,
+          "interaction_mode": "read",
+          "is_read_only": true,
+          "show_labels": true,
+          "precision": "5min"
+        },
+        "visual_render": {
+          "visual_type": "ClockSet",
+          "renderer_input_digest": "d10b311b977b2c7f2b51c591b12ea2ba4f6b2687adfedfc7fe0ee2d9a854546a",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "ClockSet",
+            "element_count": 37,
+            "svg_count": 4,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 6,
+            "input_count": 0,
+            "text_labels": [
+              "🕐 Hour Hand",
+              "🕐 Minute Hand",
+              "Hour (short)",
+              "Minute (long)",
+              "02:50",
+              "AM",
+              "HOURS",
+              "MINUTES",
+              "Choose a hand above, then click the clock to set time • Use +/- for precision"
+            ],
+            "distinct_colours": [
+              "#8891a8",
+              "#8b5cf6",
+              "#06b6d4",
+              "hsl(var(--text)",
+              "hsl(var(--text-muted)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "7e800ab514b662fe15ab",
+        "replay_digest": "d900f173754763ed058b6dd12b4dd3f71e1b9c158d1e6152fc406a127981fc9d"
+      },
+      {
+        "node_id": "mat_g2_mg_q4_1",
+        "seed": 78,
+        "formatter": "read_mcq",
+        "question_text": "What time does the clock show?",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "ClockSet",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "2:30 p.m.",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "1:30 p.m.",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "2:25 p.m.",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "3:30 p.m.",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "2:30 p.m.",
+        "hints": [
+          "The short hand shows the hour. The long hand shows the minutes.",
+          "The short (hour) hand points near 2.",
+          "The long (minute) hand points to 6, so the minutes are 30.",
+          "The time shown is 2:30 p.m.."
+        ],
+        "visual_type": "ClockSet",
+        "visual_payload": {
+          "hours": 2,
+          "minutes": 30,
+          "correct_time": {
+            "hour": 2,
+            "minute": 30
+          },
+          "display_hours": 2,
+          "target_time": "2:30 p.m.",
+          "use_24_hour": false,
+          "minute_angle": 180.0,
+          "hour_angle": 75.0,
+          "minute_snap_interval": 5,
+          "interaction_mode": "read",
+          "is_read_only": true,
+          "show_labels": true,
+          "precision": "5min"
+        },
+        "visual_render": {
+          "visual_type": "ClockSet",
+          "renderer_input_digest": "97271f24ffd4239a87b0523685ac4f855c760635e575134ab786584ea9cbc4b2",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "ClockSet",
+            "element_count": 37,
+            "svg_count": 4,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 6,
+            "input_count": 0,
+            "text_labels": [
+              "🕐 Hour Hand",
+              "🕐 Minute Hand",
+              "Hour (short)",
+              "Minute (long)",
+              "02:30",
+              "AM",
+              "HOURS",
+              "MINUTES",
+              "Choose a hand above, then click the clock to set time • Use +/- for precision"
+            ],
+            "distinct_colours": [
+              "#8891a8",
+              "#8b5cf6",
+              "#06b6d4",
+              "hsl(var(--text)",
+              "hsl(var(--text-muted)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "f2b5d2a0407c9b8b4341",
+        "replay_digest": "119ccd288e951970b60adc45d4614fe1520de7f796230c1bd3d8a1a1395efc32"
+      },
+      {
+        "node_id": "mat_g2_mg_q4_1",
+        "seed": 91,
+        "formatter": "read_mcq",
+        "question_text": "What time does the clock show?",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "ClockSet",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "10:00 a.m.",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "9:00 a.m.",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "10:05 a.m.",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "11:00 a.m.",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "10:00 a.m.",
+        "hints": [
+          "The short hand shows the hour. The long hand shows the minutes.",
+          "The short (hour) hand points near 10.",
+          "The long (minute) hand points to 12, so the minutes are 00.",
+          "The time shown is 10:00 a.m.."
+        ],
+        "visual_type": "ClockSet",
+        "visual_payload": {
+          "hours": 10,
+          "minutes": 0,
+          "correct_time": {
+            "hour": 10,
+            "minute": 0
+          },
+          "display_hours": 10,
+          "target_time": "10:00 a.m.",
+          "use_24_hour": false,
+          "minute_angle": 0.0,
+          "hour_angle": 300.0,
+          "minute_snap_interval": 5,
+          "interaction_mode": "read",
+          "is_read_only": true,
+          "show_labels": true,
+          "precision": "5min"
+        },
+        "visual_render": {
+          "visual_type": "ClockSet",
+          "renderer_input_digest": "40e6150c548b6d7be34a6566ceeb98d32ac789f7d7da2113e50c12fb7de4559e",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "ClockSet",
+            "element_count": 37,
+            "svg_count": 4,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 6,
+            "input_count": 0,
+            "text_labels": [
+              "🕐 Hour Hand",
+              "🕐 Minute Hand",
+              "Hour (short)",
+              "Minute (long)",
+              "10:00",
+              "AM",
+              "HOURS",
+              "MINUTES",
+              "Choose a hand above, then click the clock to set time • Use +/- for precision"
+            ],
+            "distinct_colours": [
+              "#8891a8",
+              "#8b5cf6",
+              "#06b6d4",
+              "hsl(var(--text)",
+              "hsl(var(--text-muted)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "01e5b2cde1fc5261b44d",
+        "replay_digest": "f71631d5d3a63407d4675f32c2a7115394d027dfc81ca31a147585afe9c618cb"
+      },
+      {
+        "node_id": "mat_g2_mg_q4_1",
+        "seed": 103,
+        "formatter": "read_mcq",
+        "question_text": "What time does the clock show?",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "ClockSet",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "12:55 a.m.",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "11:55 a.m.",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "12:50 a.m.",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "1:55 a.m.",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "12:55 a.m.",
+        "hints": [
+          "The short hand shows the hour. The long hand shows the minutes.",
+          "The short (hour) hand points near 12.",
+          "Count by 5s from 12: the long hand has passed 11 marks, so the minutes are 55.",
+          "The time shown is 12:55 a.m.."
+        ],
+        "visual_type": "ClockSet",
+        "visual_payload": {
+          "hours": 12,
+          "minutes": 55,
+          "correct_time": {
+            "hour": 12,
+            "minute": 55
+          },
+          "display_hours": 12,
+          "target_time": "12:55 a.m.",
+          "use_24_hour": false,
+          "minute_angle": 330.0,
+          "hour_angle": 27.5,
+          "minute_snap_interval": 5,
+          "interaction_mode": "read",
+          "is_read_only": true,
+          "show_labels": true,
+          "precision": "5min"
+        },
+        "visual_render": {
+          "visual_type": "ClockSet",
+          "renderer_input_digest": "54510b2068030880a68d3b4d50df6dc82189b65469a63d207492d25e89f1011a",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "ClockSet",
+            "element_count": 37,
+            "svg_count": 4,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 6,
+            "input_count": 0,
+            "text_labels": [
+              "🕐 Hour Hand",
+              "🕐 Minute Hand",
+              "Hour (short)",
+              "Minute (long)",
+              "12:55",
+              "PM",
+              "HOURS",
+              "MINUTES",
+              "Choose a hand above, then click the clock to set time • Use +/- for precision"
+            ],
+            "distinct_colours": [
+              "#8891a8",
+              "#8b5cf6",
+              "#06b6d4",
+              "hsl(var(--text)",
+              "hsl(var(--text-muted)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "238ac52cb1f38f1c2a49",
+        "replay_digest": "97bc33e39df919f5b540b03f1cc88c0ed0616dae31c8b3b9e1df8fb94f29650b"
+      },
+      {
+        "node_id": "mat_g2_mg_q4_1",
+        "seed": 118,
+        "formatter": "set_fill_in_blank",
+        "question_text": "Set the clock to show 5:30 a.m.",
+        "correct_answer": "5:30 a.m.",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "set_fill_in_blank",
+          "is_visual": true,
+          "visual_type": "ClockSet",
+          "interaction_mode": "set",
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "resolved_answer": "5:30 a.m.",
+        "hints": [
+          "The short hand shows the hour. The long hand shows the minutes.",
+          "The short (hour) hand points near 5.",
+          "The long (minute) hand points to 6, so the minutes are 30.",
+          "The time shown is 5:30 a.m.."
+        ],
+        "visual_type": "ClockSet",
+        "visual_payload": {
+          "hours": 5,
+          "minutes": 30,
+          "correct_time": {
+            "hour": 5,
+            "minute": 30
+          },
+          "display_hours": 5,
+          "target_time": "5:30 a.m.",
+          "use_24_hour": false,
+          "minute_angle": 180.0,
+          "hour_angle": 165.0,
+          "minute_snap_interval": 5,
+          "interaction_mode": "set",
+          "is_read_only": false,
+          "show_labels": true,
+          "precision": "5min"
+        },
+        "visual_render": {
+          "visual_type": "ClockSet",
+          "renderer_input_digest": "264e089230639fcd0c118507b0fd2d40a4b0b27953b9f72a4b9d8d8026491489",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "ClockSet",
+            "element_count": 37,
+            "svg_count": 4,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 6,
+            "input_count": 0,
+            "text_labels": [
+              "🕐 Hour Hand",
+              "🕐 Minute Hand",
+              "Hour (short)",
+              "Minute (long)",
+              "12:00",
+              "PM",
+              "HOURS",
+              "MINUTES",
+              "Choose a hand above, then click the clock to set time • Use +/- for precision"
+            ],
+            "distinct_colours": [
+              "#8891a8",
+              "#8b5cf6",
+              "#06b6d4",
+              "hsl(var(--text)",
+              "hsl(var(--text-muted)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "09add55005fce3501841",
+        "replay_digest": "a73cdb84383e04034fa79da7791340e7783cbb00f9ba5e4739e86fcb3d4967f3"
+      },
+      {
+        "node_id": "mat_g2_mg_q4_1",
+        "seed": 127,
+        "formatter": "read_mcq",
+        "question_text": "What time does the clock show?",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "ClockSet",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "10:00 a.m.",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "10:05 a.m.",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "11:00 a.m.",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "9:00 a.m.",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "10:00 a.m.",
+        "hints": [
+          "The short hand shows the hour. The long hand shows the minutes.",
+          "The short (hour) hand points near 10.",
+          "The long (minute) hand points to 12, so the minutes are 00.",
+          "The time shown is 10:00 a.m.."
+        ],
+        "visual_type": "ClockSet",
+        "visual_payload": {
+          "hours": 10,
+          "minutes": 0,
+          "correct_time": {
+            "hour": 10,
+            "minute": 0
+          },
+          "display_hours": 10,
+          "target_time": "10:00 a.m.",
+          "use_24_hour": false,
+          "minute_angle": 0.0,
+          "hour_angle": 300.0,
+          "minute_snap_interval": 5,
+          "interaction_mode": "read",
+          "is_read_only": true,
+          "show_labels": true,
+          "precision": "5min"
+        },
+        "visual_render": {
+          "visual_type": "ClockSet",
+          "renderer_input_digest": "40e6150c548b6d7be34a6566ceeb98d32ac789f7d7da2113e50c12fb7de4559e",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "ClockSet",
+            "element_count": 37,
+            "svg_count": 4,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 6,
+            "input_count": 0,
+            "text_labels": [
+              "🕐 Hour Hand",
+              "🕐 Minute Hand",
+              "Hour (short)",
+              "Minute (long)",
+              "10:00",
+              "AM",
+              "HOURS",
+              "MINUTES",
+              "Choose a hand above, then click the clock to set time • Use +/- for precision"
+            ],
+            "distinct_colours": [
+              "#8891a8",
+              "#8b5cf6",
+              "#06b6d4",
+              "hsl(var(--text)",
+              "hsl(var(--text-muted)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "b0b401247e3cb9d012f6",
+        "replay_digest": "0073efa0d06cc6d051191bab17aba7375d6c12c73521452b1dce03d47cea0d41"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "read",
+      "node_id": "mat_g2_mg_q4_1",
+      "clause": "Read",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        23,
+        42,
+        64,
+        78,
+        91,
+        103,
+        127
+      ],
+      "reasoning": "Most samples ask the learner to identify the time shown by the clock, covering both exact hours and minute values.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "write",
+      "node_id": "mat_g2_mg_q4_1",
+      "clause": "write",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        57,
+        118
+      ],
+      "reasoning": "Several samples require the learner to express a specified time by setting the clock, providing a recurring productive counterpart to reading it.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "time",
+      "node_id": "mat_g2_mg_q4_1",
+      "clause": "time",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Time is the direct subject of every question and every requested clock setting.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "hours",
+      "node_id": "mat_g2_mg_q4_1",
+      "clause": "hours",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All displayed and target times require identifying an hour value; the rendered interface explicitly distinguishes the short hour hand.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "minutes",
+      "node_id": "mat_g2_mg_q4_1",
+      "clause": "minutes",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Minute values are present throughout, including quarter-hour, half-hour, fifty-minute, and fifty-five-minute readings, and the interface identifies the long minute hand.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "am_and_pm",
+      "node_id": "mat_g2_mg_q4_1",
+      "clause": "a.m. and p.m.",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Each sample presents or requests an a.m. or p.m. designation, with the rendered clock also displaying the selected meridiem state.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "analog_clock",
+      "node_id": "mat_g2_mg_q4_1",
+      "clause": "analog clock",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Every sample uses the rendered clock medium; the render reports clock controls and four SVG elements, so the learner-facing analog-clock work actually renders.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    }
+  ]
+}

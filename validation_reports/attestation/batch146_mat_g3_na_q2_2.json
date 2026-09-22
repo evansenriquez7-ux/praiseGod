@@ -1,0 +1,642 @@
+{
+  "batch": "batch146_mat_g3_na_q2_2",
+  "attested_at": "2026-09-22T14:39:16Z",
+  "attested_by": "blind-attester-gpt-terra-d30d31-20260922",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "read local_only/scratch/attest117/mat_g3_na_q2_2.prompt.txt (verbatim render_prompt_block output only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "Tool-bearing GPT-Terra subagent reported reading only assigned prompts and writing/validating only sibling verdict outputs; exact tool names were not fully reported, and dispatcher did not verify sandbox-level non-access beyond that report."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g3_na_q2_2",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g3_na_q2_2",
+        "seed": 11,
+        "formatter": "mcq",
+        "question_text": "Estimate the sum: 411 + 7920",
+        "correct_answer": 8400,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 8399,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 8402,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 8401,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 8400,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 8400,
+        "hints": [
+          "We are adding two numbers: 400 and 8000.",
+          "Add the ones: 0 + 0 = 0. Write 0 in the ones place.",
+          "Add the tens: 0 + 0 = 0.",
+          "The sum is 400 + 8000 = 8400."
+        ],
+        "sample_id": "f92b0cb53b8f4e32e387",
+        "replay_digest": "d896b17e358f7c6c62fd6dc6d19f4798408fe2196c346747ec7f785bc30bda49"
+      },
+      {
+        "node_id": "mat_g3_na_q2_2",
+        "seed": 23,
+        "formatter": "mcq",
+        "question_text": "Estimate the sum: 2429 + 6066",
+        "correct_answer": 8000,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 8000,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 7999,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 8002,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 8001,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 8000,
+        "hints": [
+          "We are adding two numbers: 2000 and 6000.",
+          "Add the ones: 0 + 0 = 0. Write 0 in the ones place.",
+          "Add the tens: 0 + 0 = 0.",
+          "The sum is 2000 + 6000 = 8000."
+        ],
+        "sample_id": "4be562744825953b0300",
+        "replay_digest": "cb306c854b826081b6926bc327dd8d690fdcdf686ec544cdda96c89576000598"
+      },
+      {
+        "node_id": "mat_g3_na_q2_2",
+        "seed": 42,
+        "formatter": "mcq",
+        "question_text": "Estimate the sum: 168 + 1842",
+        "correct_answer": 2200,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 2199,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 2202,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 2201,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 2200,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 2200,
+        "hints": [
+          "We are adding two numbers: 200 and 2000.",
+          "Add the ones: 0 + 0 = 0. Write 0 in the ones place.",
+          "Add the tens: 0 + 0 = 0.",
+          "The sum is 200 + 2000 = 2200."
+        ],
+        "sample_id": "6332221354ea5b0d65a9",
+        "replay_digest": "114e07f72d77afa9ea8823e56f01fb36dc12173ef8da9e915c9047a9c4988bc4"
+      },
+      {
+        "node_id": "mat_g3_na_q2_2",
+        "seed": 57,
+        "formatter": "mcq",
+        "question_text": "Estimate the sum: 2004 + 4822",
+        "correct_answer": 7000,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 7002,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 6999,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 7000,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 7001,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 7000,
+        "hints": [
+          "We are adding two numbers: 2000 and 5000.",
+          "Add the ones: 0 + 0 = 0. Write 0 in the ones place.",
+          "Add the tens: 0 + 0 = 0.",
+          "The sum is 2000 + 5000 = 7000."
+        ],
+        "sample_id": "c1fdd1599ab686a1ef3c",
+        "replay_digest": "7cdca82ffd444bdba3cacb525cec0fcf4f00eb233c2740a186b8b49607225659"
+      },
+      {
+        "node_id": "mat_g3_na_q2_2",
+        "seed": 64,
+        "formatter": "mcq",
+        "question_text": "Estimate the sum: 5311 + 2220",
+        "correct_answer": 7000,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 7002,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 7000,
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 7001,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 6999,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 7000,
+        "hints": [
+          "We are adding two numbers: 5000 and 2000.",
+          "Add the ones: 0 + 0 = 0. Write 0 in the ones place.",
+          "Add the tens: 0 + 0 = 0.",
+          "The sum is 5000 + 2000 = 7000."
+        ],
+        "sample_id": "39de830b73521e2be731",
+        "replay_digest": "1eb5715adf6819c6145325040a0d7f2d76b0909e8c99075c7088cd6e756b25f5"
+      },
+      {
+        "node_id": "mat_g3_na_q2_2",
+        "seed": 78,
+        "formatter": "mcq",
+        "question_text": "Estimate the sum: 5317 + 3161",
+        "correct_answer": 8000,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 8002,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 7999,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 8001,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 8000,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 8000,
+        "hints": [
+          "We are adding two numbers: 5000 and 3000.",
+          "Add the ones: 0 + 0 = 0. Write 0 in the ones place.",
+          "Add the tens: 0 + 0 = 0.",
+          "The sum is 5000 + 3000 = 8000."
+        ],
+        "sample_id": "e33f2adf0153b060cd32",
+        "replay_digest": "bf8113f0b62a2caa6d44c007a86181d8dd93125790f2d2afb99fb1fa6bfebaae"
+      },
+      {
+        "node_id": "mat_g3_na_q2_2",
+        "seed": 91,
+        "formatter": "mcq",
+        "question_text": "Estimate the sum: 3147 + 593",
+        "correct_answer": 3600,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 3599,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 3602,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 3600,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 3601,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 3600,
+        "hints": [
+          "We are adding two numbers: 3000 and 600.",
+          "Add the ones: 0 + 0 = 0. Write 0 in the ones place.",
+          "Add the tens: 0 + 0 = 0.",
+          "The sum is 3000 + 600 = 3600."
+        ],
+        "sample_id": "d55959ed42a30fa822a6",
+        "replay_digest": "116d3ce20383c081e290543b4735ee03d918966416e7d1a759e7e101761d9779"
+      },
+      {
+        "node_id": "mat_g3_na_q2_2",
+        "seed": 103,
+        "formatter": "mcq",
+        "question_text": "Estimate the sum: 4156 + 1991",
+        "correct_answer": 6000,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 5999,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 6001,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 6002,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 6000,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 6000,
+        "hints": [
+          "We are adding two numbers: 4000 and 2000.",
+          "Add the ones: 0 + 0 = 0. Write 0 in the ones place.",
+          "Add the tens: 0 + 0 = 0.",
+          "The sum is 4000 + 2000 = 6000."
+        ],
+        "sample_id": "2620816931feb8866045",
+        "replay_digest": "496eed91de32f89824c5649454a63051f248ef4ad876c1e55743eb8d26a48b04"
+      },
+      {
+        "node_id": "mat_g3_na_q2_2",
+        "seed": 118,
+        "formatter": "mcq",
+        "question_text": "Estimate the sum: 1185 + 7156",
+        "correct_answer": 8000,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 8001,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 8002,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 7999,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 8000,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 8000,
+        "hints": [
+          "We are adding two numbers: 1000 and 7000.",
+          "Add the ones: 0 + 0 = 0. Write 0 in the ones place.",
+          "Add the tens: 0 + 0 = 0.",
+          "The sum is 1000 + 7000 = 8000."
+        ],
+        "sample_id": "5005e35227efe8700b6e",
+        "replay_digest": "d955f3618ff7887c88c312dc27d1ec818d1111701110e9a3dfaad0c635d4727b"
+      },
+      {
+        "node_id": "mat_g3_na_q2_2",
+        "seed": 127,
+        "formatter": "mcq",
+        "question_text": "Estimate the sum: 3698 + 974",
+        "correct_answer": 5000,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 5000,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 5001,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 4999,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 5002,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 5000,
+        "hints": [
+          "We are adding two numbers: 4000 and 1000.",
+          "Add the ones: 0 + 0 = 0. Write 0 in the ones place.",
+          "Add the tens: 0 + 0 = 0.",
+          "The sum is 4000 + 1000 = 5000."
+        ],
+        "sample_id": "f95773096a3f77a8b10d",
+        "replay_digest": "e44482e35be12b003eee645bfb305c1b72822e7f0d5a284d6a7ba2bc8a9eabc2"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "estimate",
+      "node_id": "mat_g3_na_q2_2",
+      "clause": "Estimate",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Every sampled question explicitly asks the learner to estimate an addition result.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "sum",
+      "node_id": "mat_g3_na_q2_2",
+      "clause": "sum",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Every estimate is framed as the sum of exactly two displayed addends.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "addends",
+      "node_id": "mat_g3_na_q2_2",
+      "clause": "addends",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "The ten prompts consistently provide the two quantities being added before asking for an estimate.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "up_to_4_digits",
+      "node_id": "mat_g3_na_q2_2",
+      "clause": "up to 4 digits",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        23,
+        57,
+        64,
+        78,
+        103,
+        118
+      ],
+      "reasoning": "These examples use four-digit addends, such as 2,429 + 6,066 and 5,317 + 3,161, within the stated bound.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    }
+  ]
+}

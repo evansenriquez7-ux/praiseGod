@@ -1,0 +1,933 @@
+{
+  "batch": "batch132_mat_g2_na_q1_3",
+  "attested_at": "2026-09-22T14:24:35Z",
+  "attested_by": "blind-attester-gpt-terra-d16d17-20260922",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "read local_only/scratch/attest117/mat_g2_na_q1_3.prompt.txt (verbatim render_prompt_block output only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "Tool-bearing GPT-Terra subagent reported reading only 10 assigned prompts, apply_patch only on sibling verdict JSON, and enum validation only on those outputs; dispatcher did not verify sandbox-level non-access beyond that report."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g2_na_q1_3",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g2_na_q1_3",
+        "seed": 11,
+        "formatter": "mcq",
+        "question_text": "What number comes next when counting: 700, 720, 740, 760, ___?",
+        "correct_answer": 780,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 761,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 780,
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 740,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 720,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 780,
+        "hints": [
+          "Look at the list of numbers: 700, 720, 740, 760, ___",
+          "Find the rule by comparing neighbours: 720 − 700 = 20.",
+          "This list of numbers shows jumping by 20s (add 20 each time).",
+          "Add 20 to 760: 760 + 20 = 780."
+        ],
+        "sample_id": "1dc15aa3bc9932baa283",
+        "replay_digest": "4b7eb34d777d00abbf8da086a83c4acb612e1ce593a7aa75af761160ad4074ce"
+      },
+      {
+        "node_id": "mat_g2_na_q1_3",
+        "seed": 23,
+        "formatter": "cloze",
+        "question_text": "Find the missing number: 200, 210, 220, 230, ___",
+        "correct_answer": 240,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 210,
+            "text": "210",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 240,
+            "text": "240",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 231,
+            "text": "231",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 220,
+            "text": "220",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 240,
+        "hints": [
+          "Look at the list of numbers: 200, 210, 220, 230, ___",
+          "Find the rule by comparing neighbours: 210 − 200 = 10.",
+          "This list of numbers shows jumping by 10s (add 10 each time).",
+          "Add 10 to 230: 230 + 10 = 240."
+        ],
+        "sample_id": "e33c2985e4f3b4a43217",
+        "replay_digest": "a70db5feafe3649a16328ef13fe8ea80dbb473dce4f32e440327a5100f702747"
+      },
+      {
+        "node_id": "mat_g2_na_q1_3",
+        "seed": 42,
+        "formatter": "read_mcq",
+        "question_text": "What number is marked on the number line?",
+        "correct_answer": "B",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "NumberLine",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 399,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 400,
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 402,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 401,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 400,
+        "hints": [
+          "Look at the list of numbers: 0, 100, 200, 300, ___",
+          "Find the rule by comparing neighbours: 100 − 0 = 100.",
+          "This list of numbers shows jumping by 100s (add 100 each time).",
+          "Add 100 to 300: 300 + 100 = 400."
+        ],
+        "visual_type": "NumberLine",
+        "visual_payload": {
+          "value": 400,
+          "start": 390,
+          "end": 410,
+          "interval": 1,
+          "divisions": 20,
+          "correct_position": 400,
+          "dot_value": 400,
+          "content_type": "whole_number",
+          "labels": [
+            "390",
+            "410"
+          ],
+          "marked_points": [],
+          "question_mark_at": null,
+          "is_interactive": false,
+          "show_labels": true,
+          "correct_answer": 400.0,
+          "target": 400.0
+        },
+        "visual_render": {
+          "visual_type": "NumberLine",
+          "renderer_input_digest": "39de561bfc533a6d9db04e79d70e07c0279547497015a39782af95a68017df9c",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "NumberLine",
+            "element_count": 47,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "390",
+              "391",
+              "392",
+              "393",
+              "394",
+              "395",
+              "396",
+              "397",
+              "398",
+              "399",
+              "400",
+              "401",
+              "402",
+              "403",
+              "404",
+              "405",
+              "406",
+              "407",
+              "408",
+              "409",
+              "410"
+            ],
+            "distinct_colours": [
+              "hsl(var(--border-color)",
+              "hsl(var(--text-muted)",
+              "hsl(var(--text)",
+              "hsl(var(--primary)",
+              "hsl(var(--card-bg)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "38823f0dab6f9d365fa1",
+        "replay_digest": "d1e56ccf4a9f8d145905ddce2952a345664274ccd07968ce85d9a33670c059d1"
+      },
+      {
+        "node_id": "mat_g2_na_q1_3",
+        "seed": 57,
+        "formatter": "cloze",
+        "question_text": "Find the missing number: 376, 378, 380, 382, ___",
+        "correct_answer": 384,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 378,
+            "text": "378",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 380,
+            "text": "380",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 384,
+            "text": "384",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 383,
+            "text": "383",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 384,
+        "hints": [
+          "Look at the list of numbers: 376, 378, 380, 382, ___",
+          "Find the rule by comparing neighbours: 378 − 376 = 2.",
+          "This list of numbers shows jumping by 2s (add 2 each time).",
+          "Add 2 to 382: 382 + 2 = 384."
+        ],
+        "sample_id": "72133d7b9948886db742",
+        "replay_digest": "e912bdab239f4bedfd5cbcbdae311d29dfc0697143d326ed8393b494fc727c53"
+      },
+      {
+        "node_id": "mat_g2_na_q1_3",
+        "seed": 64,
+        "formatter": "read_mcq",
+        "question_text": "What number is marked on the number line?",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "NumberLine",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 220,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 222,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 219,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 221,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 220,
+        "hints": [
+          "Look at the list of numbers: 140, 160, 180, 200, ___",
+          "Find the rule by comparing neighbours: 160 − 140 = 20.",
+          "This list of numbers shows jumping by 20s (add 20 each time).",
+          "Add 20 to 200: 200 + 20 = 220."
+        ],
+        "visual_type": "NumberLine",
+        "visual_payload": {
+          "value": 220,
+          "start": 210,
+          "end": 230,
+          "interval": 1,
+          "divisions": 20,
+          "correct_position": 220,
+          "dot_value": 220,
+          "content_type": "whole_number",
+          "labels": [
+            "210",
+            "230"
+          ],
+          "marked_points": [],
+          "question_mark_at": null,
+          "is_interactive": false,
+          "show_labels": true,
+          "correct_answer": 220.0,
+          "target": 220.0
+        },
+        "visual_render": {
+          "visual_type": "NumberLine",
+          "renderer_input_digest": "5e971d7572a9f3966a64e095f004067cc871ac30c37c01f0f239d6461e221075",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "NumberLine",
+            "element_count": 47,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "210",
+              "211",
+              "212",
+              "213",
+              "214",
+              "215",
+              "216",
+              "217",
+              "218",
+              "219",
+              "220",
+              "221",
+              "222",
+              "223",
+              "224",
+              "225",
+              "226",
+              "227",
+              "228",
+              "229",
+              "230"
+            ],
+            "distinct_colours": [
+              "hsl(var(--border-color)",
+              "hsl(var(--text-muted)",
+              "hsl(var(--text)",
+              "hsl(var(--primary)",
+              "hsl(var(--card-bg)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "1374a3c32fc2138262d7",
+        "replay_digest": "726eff326a735ebed982b1465eb5675dafb27581fbed77a97e910313138459e4"
+      },
+      {
+        "node_id": "mat_g2_na_q1_3",
+        "seed": 78,
+        "formatter": "mcq",
+        "question_text": "What number comes next when counting: 195, 200, 205, 210, ___?",
+        "correct_answer": 215,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 211,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 200,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 205,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 215,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 215,
+        "hints": [
+          "Look at the list of numbers: 195, 200, 205, 210, ___",
+          "Find the rule by comparing neighbours: 200 − 195 = 5.",
+          "This list of numbers shows jumping by 5s (add 5 each time).",
+          "Add 5 to 210: 210 + 5 = 215."
+        ],
+        "sample_id": "a79472f12739704a5902",
+        "replay_digest": "57796702c4844f05883287fba4488f1399f56be1c48de19c8347d635aaa2684e"
+      },
+      {
+        "node_id": "mat_g2_na_q1_3",
+        "seed": 91,
+        "formatter": "read_mcq",
+        "question_text": "What number is marked on the number line?",
+        "correct_answer": "B",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "NumberLine",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 611,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 612,
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 614,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 613,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 612,
+        "hints": [
+          "Look at the list of numbers: 604, 606, 608, 610, ___",
+          "Find the rule by comparing neighbours: 606 − 604 = 2.",
+          "This list of numbers shows jumping by 2s (add 2 each time).",
+          "Add 2 to 610: 610 + 2 = 612."
+        ],
+        "visual_type": "NumberLine",
+        "visual_payload": {
+          "value": 612,
+          "start": 610,
+          "end": 620,
+          "interval": 1,
+          "divisions": 10,
+          "correct_position": 612,
+          "dot_value": 612,
+          "content_type": "whole_number",
+          "labels": [
+            "610",
+            "620"
+          ],
+          "marked_points": [],
+          "question_mark_at": null,
+          "is_interactive": false,
+          "show_labels": true,
+          "correct_answer": 612.0,
+          "target": 612.0
+        },
+        "visual_render": {
+          "visual_type": "NumberLine",
+          "renderer_input_digest": "c4d5c2e3f396796d2a9f7864c2069580fa1b51b84c0e82cc52ef40ca1e49843f",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "NumberLine",
+            "element_count": 27,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "610",
+              "611",
+              "612",
+              "613",
+              "614",
+              "615",
+              "616",
+              "617",
+              "618",
+              "619",
+              "620"
+            ],
+            "distinct_colours": [
+              "hsl(var(--border-color)",
+              "hsl(var(--text-muted)",
+              "hsl(var(--text)",
+              "hsl(var(--primary)",
+              "hsl(var(--card-bg)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "2d65fcbc7cec21d5bd95",
+        "replay_digest": "c967fde4466ac0a06e7dc07cd03301cd109eafcecd7c3acfd87782f041194342"
+      },
+      {
+        "node_id": "mat_g2_na_q1_3",
+        "seed": 103,
+        "formatter": "read_mcq",
+        "question_text": "What number is marked on the number line?",
+        "correct_answer": "D",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "NumberLine",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 699,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 702,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 701,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 700,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 700,
+        "hints": [
+          "Look at the list of numbers: 300, 400, 500, 600, ___",
+          "Find the rule by comparing neighbours: 400 − 300 = 100.",
+          "This list of numbers shows jumping by 100s (add 100 each time).",
+          "Add 100 to 600: 600 + 100 = 700."
+        ],
+        "visual_type": "NumberLine",
+        "visual_payload": {
+          "value": 700,
+          "start": 690,
+          "end": 710,
+          "interval": 1,
+          "divisions": 20,
+          "correct_position": 700,
+          "dot_value": 700,
+          "content_type": "whole_number",
+          "labels": [
+            "690",
+            "710"
+          ],
+          "marked_points": [],
+          "question_mark_at": null,
+          "is_interactive": false,
+          "show_labels": true,
+          "correct_answer": 700.0,
+          "target": 700.0
+        },
+        "visual_render": {
+          "visual_type": "NumberLine",
+          "renderer_input_digest": "1a7d96c2d0da945c58363a00ee3dbb735baba246cea3e5681ad4102971cb473c",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "NumberLine",
+            "element_count": 47,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "690",
+              "691",
+              "692",
+              "693",
+              "694",
+              "695",
+              "696",
+              "697",
+              "698",
+              "699",
+              "700",
+              "701",
+              "702",
+              "703",
+              "704",
+              "705",
+              "706",
+              "707",
+              "708",
+              "709",
+              "710"
+            ],
+            "distinct_colours": [
+              "hsl(var(--border-color)",
+              "hsl(var(--text-muted)",
+              "hsl(var(--text)",
+              "hsl(var(--primary)",
+              "hsl(var(--card-bg)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "1205e4f55da2e7c3bedf",
+        "replay_digest": "8eba74b394b230a0f56457b85bfc5e945bd7e55f9960d3e6aea94588c8107cc8"
+      },
+      {
+        "node_id": "mat_g2_na_q1_3",
+        "seed": 118,
+        "formatter": "mcq",
+        "question_text": "What number comes next when counting: 500, 600, 700, 800, ___?",
+        "correct_answer": 900,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 700,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 600,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 900,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 801,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 900,
+        "hints": [
+          "Look at the list of numbers: 500, 600, 700, 800, ___",
+          "Find the rule by comparing neighbours: 600 − 500 = 100.",
+          "This list of numbers shows jumping by 100s (add 100 each time).",
+          "Add 100 to 800: 800 + 100 = 900."
+        ],
+        "sample_id": "05af5f49c3dcd55669a0",
+        "replay_digest": "b96796dd1f08b06a760ee624d0ab9bfeb84f14a43d10f0cf3d6207323fc76d24"
+      },
+      {
+        "node_id": "mat_g2_na_q1_3",
+        "seed": 127,
+        "formatter": "cloze",
+        "question_text": "Find the missing number: 934, 936, 938, 940, ___",
+        "correct_answer": 942,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 938,
+            "text": "938",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 936,
+            "text": "936",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 941,
+            "text": "941",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 942,
+            "text": "942",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 942,
+        "hints": [
+          "Look at the list of numbers: 934, 936, 938, 940, ___",
+          "Find the rule by comparing neighbours: 936 − 934 = 2.",
+          "This list of numbers shows jumping by 2s (add 2 each time).",
+          "Add 2 to 940: 940 + 2 = 942."
+        ],
+        "sample_id": "83feb470610a903c259c",
+        "replay_digest": "5dc26e2a53461643b8855e504aa6fd59ca0b6db22322159425f72c5370ff7734"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "count_multiples",
+      "node_id": "mat_g2_na_q1_3",
+      "clause": "Count by",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        57,
+        78,
+        118,
+        127
+      ],
+      "reasoning": "Six samples require continuing a stated count pattern, covering the general counting action prevalently.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "twos",
+      "node_id": "mat_g2_na_q1_3",
+      "clause": "2s",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [
+        57,
+        127
+      ],
+      "reasoning": "Counting by twos occurs in only two samples, not prevalently.",
+      "action_taken": "Left registered pending one independent confirmation under the prevalence standard; no source change in re-instrumentation campaign."
+    },
+    {
+      "capability_id": "fives",
+      "node_id": "mat_g2_na_q1_3",
+      "clause": "5s",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [
+        78
+      ],
+      "reasoning": "Counting by fives occurs in one sample only.",
+      "action_taken": "Left registered pending one independent confirmation under the prevalence standard; no source change in re-instrumentation campaign."
+    },
+    {
+      "capability_id": "tens",
+      "node_id": "mat_g2_na_q1_3",
+      "clause": "10s",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [
+        23
+      ],
+      "reasoning": "Counting by tens occurs in one sample only.",
+      "action_taken": "Left registered pending one independent confirmation under the prevalence standard; no source change in re-instrumentation campaign."
+    },
+    {
+      "capability_id": "twenties",
+      "node_id": "mat_g2_na_q1_3",
+      "clause": "20s",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [
+        11
+      ],
+      "reasoning": "Counting by twenties occurs in one sample only.",
+      "action_taken": "Left registered pending one independent confirmation under the prevalence standard; no source change in re-instrumentation campaign."
+    },
+    {
+      "capability_id": "fifties",
+      "node_id": "mat_g2_na_q1_3",
+      "clause": "50s",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "No sample requires counting by fifties.",
+      "action_taken": "Left registered pending one independent confirmation under the prevalence standard; no source change in re-instrumentation campaign."
+    },
+    {
+      "capability_id": "hundreds",
+      "node_id": "mat_g2_na_q1_3",
+      "clause": "100s",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [
+        118
+      ],
+      "reasoning": "Counting by hundreds occurs in one sample only.",
+      "action_taken": "Left registered pending one independent confirmation under the prevalence standard; no source change in re-instrumentation campaign."
+    },
+    {
+      "capability_id": "not_beyond_1000",
+      "node_id": "mat_g2_na_q1_3",
+      "clause": "not beyond 1000",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Every rendered sequence, number line, and answer stays at or below the stated maximum.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    }
+  ]
+}

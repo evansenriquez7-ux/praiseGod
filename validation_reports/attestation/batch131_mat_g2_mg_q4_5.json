@@ -1,0 +1,661 @@
+{
+  "batch": "batch131_mat_g2_mg_q4_5",
+  "attested_at": "2026-09-22T14:16:21Z",
+  "attested_by": "blind-attester-gpt-terra-d15-20260922",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "read local_only/scratch/attest117/mat_g2_mg_q4_5.prompt.txt (verbatim render_prompt_block output only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "Tool-bearing GPT-Terra subagent reported using only assigned prompt inputs and sibling verdict outputs; exact tool names were not reported, and dispatcher did not verify sandbox-level non-access beyond that report."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g2_mg_q4_5",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g2_mg_q4_5",
+        "seed": 11,
+        "formatter": "mcq",
+        "question_text": "A square has a side of 9 cm. What is its perimeter?",
+        "correct_answer": 36,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 37,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 35,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 36,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 38,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 36,
+        "hints": [
+          "The perimeter is the total distance around the square.",
+          "A square has 4 equal sides, each 9 units long.",
+          "Perimeter = 4 × 9 = 36."
+        ],
+        "sample_id": "00fc4be64aaf889182fe",
+        "replay_digest": "9d97849ed7956edc706df3264ad6f87fb110a38775dad1b1822c07a38a89dab2"
+      },
+      {
+        "node_id": "mat_g2_mg_q4_5",
+        "seed": 23,
+        "formatter": "cloze",
+        "question_text": "A square has a side of 2 cm. What is its perimeter?",
+        "correct_answer": 8,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 10,
+            "text": "10",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 7,
+            "text": "7",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 9,
+            "text": "9",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 8,
+            "text": "8",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 8,
+        "hints": [
+          "The perimeter is the total distance around the square.",
+          "A square has 4 equal sides, each 2 units long.",
+          "Perimeter = 4 × 2 = 8."
+        ],
+        "sample_id": "bb20eb4322efa6672b22",
+        "replay_digest": "3bc3468d46e1faf41ed5760a41ca497d4c3d5b83c48c4b306c40cc993c5bf97f"
+      },
+      {
+        "node_id": "mat_g2_mg_q4_5",
+        "seed": 42,
+        "formatter": "cloze",
+        "question_text": "A triangle has sides 2 cm, 1 cm, and 2 cm. What is its perimeter?",
+        "correct_answer": 5,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 4,
+            "text": "4",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 5,
+            "text": "5",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 6,
+            "text": "6",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 7,
+            "text": "7",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 5,
+        "hints": [
+          "The perimeter is the total distance around the triangle.",
+          "Add all three sides: 2 + 1 + 2 = 5."
+        ],
+        "sample_id": "999256693c02304ae08c",
+        "replay_digest": "f944ded4a6c047edfd3d340355c92bde59b3a128fda3ce88499a68d5dabfe225"
+      },
+      {
+        "node_id": "mat_g2_mg_q4_5",
+        "seed": 57,
+        "formatter": "mcq",
+        "question_text": "A rectangle has sides 7 cm and 5 cm. What is its perimeter?",
+        "correct_answer": 24,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 26,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 25,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 24,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 23,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 24,
+        "hints": [
+          "The perimeter is the total distance around the rectangle.",
+          "A rectangle has two sides of length 7 and two sides of width 5.",
+          "Perimeter = 2 × (7 + 5) = 2 × 12 = 24."
+        ],
+        "sample_id": "50b582c6e19b55c8adc0",
+        "replay_digest": "c0bf592a4dfe116593bd95cfb91dc4df73dd086ec548f9d5f063d74426d83ed0"
+      },
+      {
+        "node_id": "mat_g2_mg_q4_5",
+        "seed": 64,
+        "formatter": "cloze",
+        "question_text": "A square has a side of 2 cm. What is its perimeter?",
+        "correct_answer": 8,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 7,
+            "text": "7",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 8,
+            "text": "8",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 10,
+            "text": "10",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 9,
+            "text": "9",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 8,
+        "hints": [
+          "The perimeter is the total distance around the square.",
+          "A square has 4 equal sides, each 2 units long.",
+          "Perimeter = 4 × 2 = 8."
+        ],
+        "sample_id": "bf5dc2d0094ed46d0144",
+        "replay_digest": "cdb7bb589a289b93af6230dfb567ff63de1a01f8fb53b0ef13df279689bd1cac"
+      },
+      {
+        "node_id": "mat_g2_mg_q4_5",
+        "seed": 78,
+        "formatter": "cloze",
+        "question_text": "A rectangle has sides 3 cm and 2 cm. What is its perimeter?",
+        "correct_answer": 10,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 11,
+            "text": "11",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 12,
+            "text": "12",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 10,
+            "text": "10",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 9,
+            "text": "9",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 10,
+        "hints": [
+          "The perimeter is the total distance around the rectangle.",
+          "A rectangle has two sides of length 3 and two sides of width 2.",
+          "Perimeter = 2 × (3 + 2) = 2 × 5 = 10."
+        ],
+        "sample_id": "ac92b49e5bb77efe087d",
+        "replay_digest": "7c870fa5fcf3860803d1a5458deeb205d3941c2bf8a18c6fffc0a417975285d4"
+      },
+      {
+        "node_id": "mat_g2_mg_q4_5",
+        "seed": 91,
+        "formatter": "cloze",
+        "question_text": "A rectangle has sides 11 cm and 3 cm. What is its perimeter?",
+        "correct_answer": 28,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 29,
+            "text": "29",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 30,
+            "text": "30",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 28,
+            "text": "28",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 27,
+            "text": "27",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 28,
+        "hints": [
+          "The perimeter is the total distance around the rectangle.",
+          "A rectangle has two sides of length 11 and two sides of width 3.",
+          "Perimeter = 2 × (11 + 3) = 2 × 14 = 28."
+        ],
+        "sample_id": "3e76eb6b63ed6365b06a",
+        "replay_digest": "ec67795957ecdf8babc6fe33392b1f78b521f4a80a89700663e2d043e22e7163"
+      },
+      {
+        "node_id": "mat_g2_mg_q4_5",
+        "seed": 103,
+        "formatter": "cloze",
+        "question_text": "A triangle has sides 8 cm, 12 cm, and 8 cm. What is its perimeter?",
+        "correct_answer": 28,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 30,
+            "text": "30",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 27,
+            "text": "27",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 29,
+            "text": "29",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 28,
+            "text": "28",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 28,
+        "hints": [
+          "The perimeter is the total distance around the triangle.",
+          "Add all three sides: 8 + 12 + 8 = 28."
+        ],
+        "sample_id": "c974380b3f8e72025139",
+        "replay_digest": "e12132273100361b52476bab06b7eba8147272ee33fe978b9845e8c7c46cf253"
+      },
+      {
+        "node_id": "mat_g2_mg_q4_5",
+        "seed": 118,
+        "formatter": "mcq",
+        "question_text": "A triangle has sides 11 cm, 3 cm, and 11 cm. What is its perimeter?",
+        "correct_answer": 25,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 25,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 24,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 27,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 26,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 25,
+        "hints": [
+          "The perimeter is the total distance around the triangle.",
+          "Add all three sides: 11 + 3 + 11 = 25."
+        ],
+        "sample_id": "b5c424858d6317ed3144",
+        "replay_digest": "889e19f1d941d809757dd0be62fd557c87d2446ff07ea68f9ebfc3ac934e45c0"
+      },
+      {
+        "node_id": "mat_g2_mg_q4_5",
+        "seed": 127,
+        "formatter": "cloze",
+        "question_text": "A rectangle has sides 11 cm and 10 cm. What is its perimeter?",
+        "correct_answer": 42,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 44,
+            "text": "44",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 43,
+            "text": "43",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 42,
+            "text": "42",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 41,
+            "text": "41",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 42,
+        "hints": [
+          "The perimeter is the total distance around the rectangle.",
+          "A rectangle has two sides of length 11 and two sides of width 10.",
+          "Perimeter = 2 × (11 + 10) = 2 × 21 = 42."
+        ],
+        "sample_id": "d099cc4145e14bdfc4ff",
+        "replay_digest": "6a8d3b3cb9b00014cec6e0ae9b3dd2b6bf051333b5598cc7df52c40ba388984e"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "find",
+      "node_id": "mat_g2_mg_q4_5",
+      "clause": "Find",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Every sample explicitly asks the learner to determine a perimeter value.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "perimeter",
+      "node_id": "mat_g2_mg_q4_5",
+      "clause": "perimeter",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "The total distance around the named figure is required in every learner response.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "triangles",
+      "node_id": "mat_g2_mg_q4_5",
+      "clause": "triangles",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        103,
+        118
+      ],
+      "reasoning": "Triangle perimeter is a recurring shape category across the dispatch, with three distinct triangle tasks rather than a one-off example.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "squares",
+      "node_id": "mat_g2_mg_q4_5",
+      "clause": "squares",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        64
+      ],
+      "reasoning": "Square perimeter is repeatedly exercised through multiple side lengths and is a sustained category in the varied set.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "rectangles",
+      "node_id": "mat_g2_mg_q4_5",
+      "clause": "rectangles",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        57,
+        78,
+        91,
+        127
+      ],
+      "reasoning": "Rectangle perimeter appears across four varied prompts, making it a meaningful recurring part of the dispatch.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    }
+  ]
+}

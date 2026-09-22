@@ -1,0 +1,664 @@
+{
+  "batch": "batch140_mat_g2_na_q4_5",
+  "attested_at": "2026-09-22T14:34:34Z",
+  "attested_by": "blind-attester-gpt-terra-d24d25-20260922",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "read local_only/scratch/attest117/mat_g2_na_q4_5.prompt.txt (verbatim render_prompt_block output only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "Tool-bearing GPT-Terra subagent reported rg/sed/awk only on 8 assigned prompts and apply_patch/jq only on sibling verdict outputs; dispatcher did not verify sandbox-level non-access beyond that report."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g2_na_q4_5",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g2_na_q4_5",
+        "seed": 11,
+        "formatter": "mcq",
+        "question_text": "Order these fractions from smallest to largest: 7/8, 6/8, 4/8, 5/8.",
+        "correct_answer": "4/8, 5/8, 6/8, 7/8",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "7/8, 6/8, 5/8, 4/8",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "4/8, 6/8, 7/8, 5/8",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "4/8, 5/8, 6/8, 7/8",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "5/8, 6/8, 7/8, 4/8",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "4/8, 5/8, 6/8, 7/8",
+        "hints": [
+          "When adding fractions with the same denominator, keep the denominator the same.",
+          "Add only the numerators: 7 + 0 = 7.",
+          "Write the result over the same denominator: 7/8.",
+          "The answer is 7/8."
+        ],
+        "sample_id": "aee049574c93fbe2aa61",
+        "replay_digest": "c05020ba4669e1661cd20866a3e4cd8752e5c37a2e37a85de7c3ca92372b721e"
+      },
+      {
+        "node_id": "mat_g2_na_q4_5",
+        "seed": 23,
+        "formatter": "cloze",
+        "question_text": "Which list shows these fractions ordered from largest to smallest: 1/6, 5/6, 3/6, 2/6?",
+        "correct_answer": "5/6, 3/6, 2/6, 1/6",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "2/6, 1/6, 5/6, 3/6",
+            "text": "2/6, 1/6, 5/6, 3/6",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "1/6, 2/6, 3/6, 5/6",
+            "text": "1/6, 2/6, 3/6, 5/6",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "2/6, 1/6, 3/6, 5/6",
+            "text": "2/6, 1/6, 3/6, 5/6",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "5/6, 3/6, 2/6, 1/6",
+            "text": "5/6, 3/6, 2/6, 1/6",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "5/6, 3/6, 2/6, 1/6",
+        "hints": [
+          "When adding fractions with the same denominator, keep the denominator the same.",
+          "Add only the numerators: 1 + 0 = 1.",
+          "Write the result over the same denominator: 1/6.",
+          "The answer is 1/6."
+        ],
+        "sample_id": "651a4ccbd7174cbdf640",
+        "replay_digest": "c4faeaa284c60b326b1be626a1de13b2772750b68532592db3d1716a345ac599"
+      },
+      {
+        "node_id": "mat_g2_na_q4_5",
+        "seed": 42,
+        "formatter": "cloze",
+        "question_text": "Which list shows these fractions ordered from smallest to largest: 2/4, 3/4, 1/4?",
+        "correct_answer": "1/4, 2/4, 3/4",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "3/4, 2/4, 1/4",
+            "text": "3/4, 2/4, 1/4",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "2/4, 1/4, 3/4",
+            "text": "2/4, 1/4, 3/4",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "2/4, 3/4, 1/4",
+            "text": "2/4, 3/4, 1/4",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "1/4, 2/4, 3/4",
+            "text": "1/4, 2/4, 3/4",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "1/4, 2/4, 3/4",
+        "hints": [
+          "When adding fractions with the same denominator, keep the denominator the same.",
+          "Add only the numerators: 1 + 0 = 1.",
+          "Write the result over the same denominator: 1/4.",
+          "The answer is 1/4."
+        ],
+        "sample_id": "a3ed61e3afc67c3e4ba7",
+        "replay_digest": "40dc07a0e75c66d2602f92003ecbd8cf5c61d3ea287f7df26a7cbe3c4ef63d94"
+      },
+      {
+        "node_id": "mat_g2_na_q4_5",
+        "seed": 57,
+        "formatter": "mcq",
+        "question_text": "Order these fractions from largest to smallest: 2/4, 3/4, 1/4.",
+        "correct_answer": "3/4, 2/4, 1/4",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "1/4, 2/4, 3/4",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "2/4, 3/4, 1/4",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "1/4, 3/4, 2/4",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "3/4, 2/4, 1/4",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "3/4, 2/4, 1/4",
+        "hints": [
+          "When adding fractions with the same denominator, keep the denominator the same.",
+          "Add only the numerators: 2 + 0 = 2.",
+          "Write the result over the same denominator: 2/4.",
+          "The answer is 2/4."
+        ],
+        "sample_id": "3d7f18d68799e0bdb7ed",
+        "replay_digest": "c48a4a2f4eb15935c3e8929e3b6b45162bde7c9fd7b402ba72cac17d31a1cd12"
+      },
+      {
+        "node_id": "mat_g2_na_q4_5",
+        "seed": 64,
+        "formatter": "cloze",
+        "question_text": "Which list shows these fractions ordered from smallest to largest: 5/8, 1/8, 4/8, 6/8?",
+        "correct_answer": "1/8, 4/8, 5/8, 6/8",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "5/8, 4/8, 1/8, 6/8",
+            "text": "5/8, 4/8, 1/8, 6/8",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "6/8, 5/8, 4/8, 1/8",
+            "text": "6/8, 5/8, 4/8, 1/8",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "1/8, 4/8, 5/8, 6/8",
+            "text": "1/8, 4/8, 5/8, 6/8",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "6/8, 5/8, 1/8, 4/8",
+            "text": "6/8, 5/8, 1/8, 4/8",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "1/8, 4/8, 5/8, 6/8",
+        "hints": [
+          "When adding fractions with the same denominator, keep the denominator the same.",
+          "Add only the numerators: 1 + 0 = 1.",
+          "Write the result over the same denominator: 1/8.",
+          "The answer is 1/8."
+        ],
+        "sample_id": "bd4266987e3499848390",
+        "replay_digest": "0bfda0c9d4e9ccc152e98717e79ee586e2ebe5bfbf698b300379c797e80b23e4"
+      },
+      {
+        "node_id": "mat_g2_na_q4_5",
+        "seed": 78,
+        "formatter": "cloze",
+        "question_text": "Which list shows these fractions ordered from smallest to largest: 1/5, 4/5, 3/5, 2/5?",
+        "correct_answer": "1/5, 2/5, 3/5, 4/5",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "1/5, 4/5, 3/5, 2/5",
+            "text": "1/5, 4/5, 3/5, 2/5",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "2/5, 1/5, 3/5, 4/5",
+            "text": "2/5, 1/5, 3/5, 4/5",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "1/5, 2/5, 3/5, 4/5",
+            "text": "1/5, 2/5, 3/5, 4/5",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "4/5, 3/5, 2/5, 1/5",
+            "text": "4/5, 3/5, 2/5, 1/5",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "1/5, 2/5, 3/5, 4/5",
+        "hints": [
+          "When adding fractions with the same denominator, keep the denominator the same.",
+          "Add only the numerators: 1 + 0 = 1.",
+          "Write the result over the same denominator: 1/5.",
+          "The answer is 1/5."
+        ],
+        "sample_id": "b97527ec8883565ffe4c",
+        "replay_digest": "40f77a72cd87de45ae7b609d26b4c56fb4e3c682cc74004dbaceeea0ce6bdc76"
+      },
+      {
+        "node_id": "mat_g2_na_q4_5",
+        "seed": 91,
+        "formatter": "cloze",
+        "question_text": "Arrange these fractions from greatest to least: 1/4, 2/4, 3/4.",
+        "correct_answer": "3/4, 2/4, 1/4",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "3/4, 2/4, 1/4",
+            "text": "3/4, 2/4, 1/4",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "2/4, 3/4, 1/4",
+            "text": "2/4, 3/4, 1/4",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "2/4, 1/4, 3/4",
+            "text": "2/4, 1/4, 3/4",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "1/4, 2/4, 3/4",
+            "text": "1/4, 2/4, 3/4",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "3/4, 2/4, 1/4",
+        "hints": [
+          "When adding fractions with the same denominator, keep the denominator the same.",
+          "Add only the numerators: 3 + 0 = 3.",
+          "Write the result over the same denominator: 3/4.",
+          "The answer is 3/4."
+        ],
+        "sample_id": "577009f94e022f588200",
+        "replay_digest": "e01af609bab36896a963021a9aafa7b65a1544c1b41a3469ac734521078318c4"
+      },
+      {
+        "node_id": "mat_g2_na_q4_5",
+        "seed": 103,
+        "formatter": "cloze",
+        "question_text": "Order these fractions from smallest to largest: 6/8, 2/8, 7/8, 1/8.",
+        "correct_answer": "1/8, 2/8, 6/8, 7/8",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "2/8, 1/8, 7/8, 6/8",
+            "text": "2/8, 1/8, 7/8, 6/8",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "7/8, 6/8, 2/8, 1/8",
+            "text": "7/8, 6/8, 2/8, 1/8",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "1/8, 2/8, 6/8, 7/8",
+            "text": "1/8, 2/8, 6/8, 7/8",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "7/8, 2/8, 1/8, 6/8",
+            "text": "7/8, 2/8, 1/8, 6/8",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "1/8, 2/8, 6/8, 7/8",
+        "hints": [
+          "When adding fractions with the same denominator, keep the denominator the same.",
+          "Add only the numerators: 6 + 0 = 6.",
+          "Write the result over the same denominator: 6/8.",
+          "The answer is 6/8."
+        ],
+        "sample_id": "0792471dd53298388af3",
+        "replay_digest": "2edb62237d0cce8a5a462dbea5ca04c303df6882ae0721d15290b120146ae423"
+      },
+      {
+        "node_id": "mat_g2_na_q4_5",
+        "seed": 118,
+        "formatter": "mcq",
+        "question_text": "Order these fractions from smallest to largest: 4/5, 3/5, 1/5, 2/5.",
+        "correct_answer": "1/5, 2/5, 3/5, 4/5",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "2/5, 3/5, 1/5, 4/5",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "3/5, 1/5, 2/5, 4/5",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "4/5, 3/5, 2/5, 1/5",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "1/5, 2/5, 3/5, 4/5",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "1/5, 2/5, 3/5, 4/5",
+        "hints": [
+          "When adding fractions with the same denominator, keep the denominator the same.",
+          "Add only the numerators: 3 + 0 = 3.",
+          "Write the result over the same denominator: 3/5.",
+          "The answer is 3/5."
+        ],
+        "sample_id": "e61d073936824c72197b",
+        "replay_digest": "ac68732b914021d7c944d4bcb4c85bcedfbd9290f8d9563d1836faa4fa8f6308"
+      },
+      {
+        "node_id": "mat_g2_na_q4_5",
+        "seed": 127,
+        "formatter": "cloze",
+        "question_text": "Arrange these fractions from least to greatest: 2/4, 3/4, 1/4.",
+        "correct_answer": "1/4, 2/4, 3/4",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "2/4, 3/4, 1/4",
+            "text": "2/4, 3/4, 1/4",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "1/4, 3/4, 2/4",
+            "text": "1/4, 3/4, 2/4",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "3/4, 2/4, 1/4",
+            "text": "3/4, 2/4, 1/4",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "1/4, 2/4, 3/4",
+            "text": "1/4, 2/4, 3/4",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "1/4, 2/4, 3/4",
+        "hints": [
+          "When adding fractions with the same denominator, keep the denominator the same.",
+          "Add only the numerators: 3 + 0 = 3.",
+          "Write the result over the same denominator: 3/4.",
+          "The answer is 3/4."
+        ],
+        "sample_id": "9ee0df27843bdcef17d2",
+        "replay_digest": "82af51fe713a5fcefb205e288349760020107a1083ace5d1e1b3a6e304b9e3bc"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "order",
+      "node_id": "mat_g2_na_q4_5",
+      "clause": "Order",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All ten prompts require arranging the supplied fractions in an ordered sequence.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "similar_fractions",
+      "node_id": "mat_g2_na_q4_5",
+      "clause": "similar fractions",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Every set uses one shared denominator, so the ordering work is consistently on similar fractions.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "smallest_to_largest",
+      "node_id": "mat_g2_na_q4_5",
+      "clause": "smallest to largest",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        42,
+        64,
+        78,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Smallest-to-largest is the requested direction in seven samples, a prevailing pattern rather than an isolated wording.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "vice_versa",
+      "node_id": "mat_g2_na_q4_5",
+      "clause": "vice versa",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        23,
+        57,
+        91
+      ],
+      "reasoning": "Three separate samples require the reversed largest-to-smallest direction; it recurs across the set and supplies the vice-versa direction.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    }
+  ]
+}

@@ -1,0 +1,1278 @@
+{
+  "batch": "batch127_mat_g2_dp_q3_0",
+  "attested_at": "2026-09-22T14:13:51Z",
+  "attested_by": "blind-attester-gpt-terra-d11-20260922",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "read local_only/scratch/attest117/mat_g2_dp_q3_0.prompt.txt (verbatim render_prompt_block output only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "Tool-bearing GPT-Terra subagent reported exec_command (sed/rg/wc/jq) only on assigned prompt and sibling verdict paths, and apply_patch only to write/re-audit verdict JSON; dispatcher did not verify sandbox-level non-access beyond that report."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g2_dp_q3_0",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g2_dp_q3_0",
+        "seed": 11,
+        "formatter": "set_fill_in_blank",
+        "question_text": "The pictograph shows Grade 1, Grade 2, Grade 3 and Grade 4. Fill in the table with the correct counts. The scale is 5: each symbol stands for 5 items.",
+        "correct_answer": [
+          15,
+          15,
+          5,
+          5
+        ],
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "set_fill_in_blank",
+          "is_visual": true,
+          "visual_type": "FillInTable",
+          "interaction_mode": "set",
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "resolved_answer": [
+          15,
+          15,
+          5,
+          5
+        ],
+        "hints": [
+          "Look at the pictograph carefully.",
+          "Each picture stands for 5 items.",
+          "Count the pictures in each row and multiply by 5 to record each count in the table."
+        ],
+        "visual_type": "FillInTable",
+        "visual_payload": {
+          "columns": [
+            "Category",
+            "Count"
+          ],
+          "rows": [
+            [
+              "Grade 1",
+              null
+            ],
+            [
+              "Grade 2",
+              null
+            ],
+            [
+              "Grade 3",
+              null
+            ],
+            [
+              "Grade 4",
+              null
+            ]
+          ],
+          "source_pictograph": {
+            "symbol": "⭐",
+            "scale": 5,
+            "title": "Stars Earned",
+            "rows": [
+              {
+                "category": "Grade 1",
+                "count": 15
+              },
+              {
+                "category": "Grade 2",
+                "count": 15
+              },
+              {
+                "category": "Grade 3",
+                "count": 5
+              },
+              {
+                "category": "Grade 4",
+                "count": 5
+              }
+            ]
+          }
+        },
+        "visual_render": {
+          "visual_type": "FillInTable",
+          "renderer_input_digest": "fed13e7099cf2a2e3c0cae3ad75f127f7c1840ed610410d38a0593fc20547111",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "FillInTable",
+            "element_count": 42,
+            "svg_count": 0,
+            "table_row_count": 9,
+            "table_cell_count": 18,
+            "button_count": 0,
+            "input_count": 4,
+            "text_labels": [
+              "Stars Earned",
+              "Grade 1",
+              "⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐",
+              "Grade 2",
+              "Grade 3",
+              "⭐⭐⭐⭐⭐",
+              "Grade 4",
+              "Each ⭐ means 5.",
+              "Category",
+              "Count",
+              "Fill in the missing values in the table"
+            ],
+            "distinct_colours": [
+              "hsl(var(--card-bg)",
+              "hsl(var(--border-color)",
+              "hsl(var(--text)",
+              "hsl(var(--primary)",
+              "hsl(var(--input-bg)",
+              "hsl(var(--text-muted)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "fce690fc8558435356c3",
+        "replay_digest": "5c90460a594e11c00e75a9d741391efa4fcc71a862e89c4439f456d9996b1530"
+      },
+      {
+        "node_id": "mat_g2_dp_q3_0",
+        "seed": 23,
+        "formatter": "set_fill_in_blank",
+        "question_text": "The table shows: apples: 15, bananas: 10, mangoes: 10, grapes: 10. Create a picture graph where each 🍎 equals 5.",
+        "correct_answer": [
+          3,
+          2,
+          2,
+          2
+        ],
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "set_fill_in_blank",
+          "is_visual": true,
+          "visual_type": "BarChart",
+          "interaction_mode": "set",
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "resolved_answer": [
+          3,
+          2,
+          2,
+          2
+        ],
+        "hints": [
+          "Look at the pictograph carefully.",
+          "Each picture stands for 5 items.",
+          "For each category, divide the number of items by 5 to find how many pictures to draw."
+        ],
+        "visual_type": "BarChart",
+        "visual_payload": {
+          "categories": [
+            "apples",
+            "bananas",
+            "mangoes",
+            "grapes"
+          ],
+          "counts": [
+            15,
+            10,
+            10,
+            10
+          ],
+          "values": [
+            15,
+            10,
+            10,
+            10
+          ],
+          "scale": 5,
+          "symbol": "🍎",
+          "title": "Favorite Fruits",
+          "subject": "fruits",
+          "stem_template": "How many {cat} were counted?",
+          "is_read_mode": false,
+          "is_pictograph": true,
+          "max_y": 25
+        },
+        "visual_render": {
+          "visual_type": "BarChart",
+          "renderer_input_digest": "6b3c110439a0ec8f558a129b243515a783fcdf7d08d8e0d08a04afb5464b65e1",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "BarChart",
+            "element_count": 58,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 8,
+            "input_count": 0,
+            "text_labels": [
+              "Each symbol = 5. Click to add/remove symbols.",
+              "0",
+              "5",
+              "10",
+              "15",
+              "20",
+              "25",
+              "−",
+              "+",
+              "apples",
+              "bananas",
+              "mangoes",
+              "grapes",
+              "Use +/- buttons to add or remove symbols"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--card-bg)",
+              "hsl(var(--border-color)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "fa9fe63464ee87b98e08",
+        "replay_digest": "79019670522695319336715fb90c3a06456bcf8d79611888f35b9a7e6bec67b2"
+      },
+      {
+        "node_id": "mat_g2_dp_q3_0",
+        "seed": 42,
+        "formatter": "set_fill_in_blank",
+        "question_text": "The table shows: apples: 30, bananas: 20, mangoes: 10, grapes: 10. Create a picture graph where each 🍎 equals 10.",
+        "correct_answer": [
+          3,
+          2,
+          1,
+          1
+        ],
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "set_fill_in_blank",
+          "is_visual": true,
+          "visual_type": "BarChart",
+          "interaction_mode": "set",
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "resolved_answer": [
+          3,
+          2,
+          1,
+          1
+        ],
+        "hints": [
+          "Look at the pictograph carefully.",
+          "Each picture stands for 10 items.",
+          "For each category, divide the number of items by 10 to find how many pictures to draw."
+        ],
+        "visual_type": "BarChart",
+        "visual_payload": {
+          "categories": [
+            "apples",
+            "bananas",
+            "mangoes",
+            "grapes"
+          ],
+          "counts": [
+            30,
+            20,
+            10,
+            10
+          ],
+          "values": [
+            30,
+            20,
+            10,
+            10
+          ],
+          "scale": 10,
+          "symbol": "🍎",
+          "title": "Favorite Fruits",
+          "subject": "fruits",
+          "stem_template": "How many {cat} were counted?",
+          "is_read_mode": false,
+          "is_pictograph": true,
+          "max_y": 50
+        },
+        "visual_render": {
+          "visual_type": "BarChart",
+          "renderer_input_digest": "fad4e611d683c41d4e05e2196c9366da2736b5b0fc5fb174d6b3200497d8c156",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "BarChart",
+            "element_count": 58,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 8,
+            "input_count": 0,
+            "text_labels": [
+              "Each symbol = 10. Click to add/remove symbols.",
+              "0",
+              "10",
+              "20",
+              "30",
+              "40",
+              "50",
+              "−",
+              "+",
+              "apples",
+              "bananas",
+              "mangoes",
+              "grapes",
+              "Use +/- buttons to add or remove symbols"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--card-bg)",
+              "hsl(var(--border-color)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "7716a80e152ae40d88dc",
+        "replay_digest": "368cffb2d520b284282e4e089a66f01de52f33d2d55ad138832c9178e1dc9fd7"
+      },
+      {
+        "node_id": "mat_g2_dp_q3_0",
+        "seed": 57,
+        "formatter": "set_fill_in_blank",
+        "question_text": "Count the pictures in each row of the pictograph, then write the counts for apples, bananas, mangoes and grapes in the table. The scale is 2: each symbol stands for 2 items.",
+        "correct_answer": [
+          8,
+          18,
+          12,
+          16
+        ],
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "set_fill_in_blank",
+          "is_visual": true,
+          "visual_type": "FillInTable",
+          "interaction_mode": "set",
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "resolved_answer": [
+          8,
+          18,
+          12,
+          16
+        ],
+        "hints": [
+          "Look at the pictograph carefully.",
+          "Each picture stands for 2 items.",
+          "Count the pictures in each row and multiply by 2 to record each count in the table."
+        ],
+        "visual_type": "FillInTable",
+        "visual_payload": {
+          "columns": [
+            "Category",
+            "Count"
+          ],
+          "rows": [
+            [
+              "apples",
+              null
+            ],
+            [
+              "bananas",
+              null
+            ],
+            [
+              "mangoes",
+              null
+            ],
+            [
+              "grapes",
+              null
+            ]
+          ],
+          "source_pictograph": {
+            "symbol": "🍎",
+            "scale": 2,
+            "title": "Favorite Fruits",
+            "rows": [
+              {
+                "category": "apples",
+                "count": 8
+              },
+              {
+                "category": "bananas",
+                "count": 18
+              },
+              {
+                "category": "mangoes",
+                "count": 12
+              },
+              {
+                "category": "grapes",
+                "count": 16
+              }
+            ]
+          }
+        },
+        "visual_render": {
+          "visual_type": "FillInTable",
+          "renderer_input_digest": "2fc2b6a84d1387fb0771438ae7c5930404578e83a49cb7f98290b9354a157e09",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "FillInTable",
+            "element_count": 42,
+            "svg_count": 0,
+            "table_row_count": 9,
+            "table_cell_count": 18,
+            "button_count": 0,
+            "input_count": 4,
+            "text_labels": [
+              "Favorite Fruits",
+              "apples",
+              "🍎🍎🍎🍎🍎🍎🍎🍎",
+              "bananas",
+              "🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎",
+              "mangoes",
+              "🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎",
+              "grapes",
+              "🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎",
+              "Each 🍎 means 2.",
+              "Category",
+              "Count",
+              "Fill in the missing values in the table"
+            ],
+            "distinct_colours": [
+              "hsl(var(--card-bg)",
+              "hsl(var(--border-color)",
+              "hsl(var(--text)",
+              "hsl(var(--primary)",
+              "hsl(var(--input-bg)",
+              "hsl(var(--text-muted)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "2068bf10fe7592a6fda1",
+        "replay_digest": "c30106ca3995c68915c9cef8c835e0c1f9d7ff63fbd45a0d3b60f3e14688609b"
+      },
+      {
+        "node_id": "mat_g2_dp_q3_0",
+        "seed": 64,
+        "formatter": "set_fill_in_blank",
+        "question_text": "Complete the picture graph to show: roses: 15, sunflowers: 15, tulips: 5, daisies: 5. Each 🌸 represents 5 items.",
+        "correct_answer": [
+          3,
+          3,
+          1,
+          1
+        ],
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "set_fill_in_blank",
+          "is_visual": true,
+          "visual_type": "BarChart",
+          "interaction_mode": "set",
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "resolved_answer": [
+          3,
+          3,
+          1,
+          1
+        ],
+        "hints": [
+          "Look at the pictograph carefully.",
+          "Each picture stands for 5 items.",
+          "For each category, divide the number of items by 5 to find how many pictures to draw."
+        ],
+        "visual_type": "BarChart",
+        "visual_payload": {
+          "categories": [
+            "roses",
+            "sunflowers",
+            "tulips",
+            "daisies"
+          ],
+          "counts": [
+            15,
+            15,
+            5,
+            5
+          ],
+          "values": [
+            15,
+            15,
+            5,
+            5
+          ],
+          "scale": 5,
+          "symbol": "🌸",
+          "title": "Flowers in the Garden",
+          "subject": "flowers",
+          "stem_template": "How many {cat} are in the garden?",
+          "is_read_mode": false,
+          "is_pictograph": true,
+          "max_y": 25
+        },
+        "visual_render": {
+          "visual_type": "BarChart",
+          "renderer_input_digest": "ce6c7a81e1efc91e9e9d3e1df4065c88b024d5c29dcd8e1a0fd47afc5ad7f100",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "BarChart",
+            "element_count": 58,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 8,
+            "input_count": 0,
+            "text_labels": [
+              "Each symbol = 5. Click to add/remove symbols.",
+              "0",
+              "5",
+              "10",
+              "15",
+              "20",
+              "25",
+              "−",
+              "+",
+              "roses",
+              "sunflowers",
+              "tulips",
+              "daisies",
+              "Use +/- buttons to add or remove symbols"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--card-bg)",
+              "hsl(var(--border-color)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "c471d5dab4bd378c07af",
+        "replay_digest": "4bfad17282bcca7cc1bb800f090b4429b0138d9d0b639d2b7dbb8fe5c6c06d9a"
+      },
+      {
+        "node_id": "mat_g2_dp_q3_0",
+        "seed": 78,
+        "formatter": "set_fill_in_blank",
+        "question_text": "The table shows: Monday: 10, Tuesday: 14, Wednesday: 2, Thursday: 6. Create a picture graph where each 📖 equals 2.",
+        "correct_answer": [
+          5,
+          7,
+          1,
+          3
+        ],
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "set_fill_in_blank",
+          "is_visual": true,
+          "visual_type": "BarChart",
+          "interaction_mode": "set",
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "resolved_answer": [
+          5,
+          7,
+          1,
+          3
+        ],
+        "hints": [
+          "Look at the pictograph carefully.",
+          "Each picture stands for 2 items.",
+          "For each category, divide the number of items by 2 to find how many pictures to draw."
+        ],
+        "visual_type": "BarChart",
+        "visual_payload": {
+          "categories": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday"
+          ],
+          "counts": [
+            10,
+            14,
+            2,
+            6
+          ],
+          "values": [
+            10,
+            14,
+            2,
+            6
+          ],
+          "scale": 2,
+          "symbol": "📖",
+          "title": "Books Read",
+          "subject": "books read",
+          "stem_template": "How many books were read on {cat}?",
+          "is_read_mode": false,
+          "is_pictograph": true,
+          "max_y": 18
+        },
+        "visual_render": {
+          "visual_type": "BarChart",
+          "renderer_input_digest": "cfd0975d46ab67e3716479de971f77ee99d29dd090cfebe6a02f856637a5527b",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "BarChart",
+            "element_count": 66,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 8,
+            "input_count": 0,
+            "text_labels": [
+              "Each symbol = 2. Click to add/remove symbols.",
+              "0",
+              "2",
+              "4",
+              "6",
+              "8",
+              "10",
+              "12",
+              "14",
+              "16",
+              "18",
+              "−",
+              "+",
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Use +/- buttons to add or remove symbols"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--card-bg)",
+              "hsl(var(--border-color)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "0fbe0a97675110936516",
+        "replay_digest": "a8d7143574af5316c1373e8592ca59acc7904efb918070b8455009d7fcf31249"
+      },
+      {
+        "node_id": "mat_g2_dp_q3_0",
+        "seed": 91,
+        "formatter": "set_fill_in_blank",
+        "question_text": "Look at the data: red: 14, blue: 16, green: 16, yellow: 16. Draw a picture graph where each 🎨 stands for 2 items.",
+        "correct_answer": [
+          7,
+          8,
+          8,
+          8
+        ],
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "set_fill_in_blank",
+          "is_visual": true,
+          "visual_type": "BarChart",
+          "interaction_mode": "set",
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "resolved_answer": [
+          7,
+          8,
+          8,
+          8
+        ],
+        "hints": [
+          "Look at the pictograph carefully.",
+          "Each picture stands for 2 items.",
+          "For each category, divide the number of items by 2 to find how many pictures to draw."
+        ],
+        "visual_type": "BarChart",
+        "visual_payload": {
+          "categories": [
+            "red",
+            "blue",
+            "green",
+            "yellow"
+          ],
+          "counts": [
+            14,
+            16,
+            16,
+            16
+          ],
+          "values": [
+            14,
+            16,
+            16,
+            16
+          ],
+          "scale": 2,
+          "symbol": "🎨",
+          "title": "Favorite Colors",
+          "subject": "colors",
+          "stem_template": "How many pupils chose {cat}?",
+          "is_read_mode": false,
+          "is_pictograph": true,
+          "max_y": 20
+        },
+        "visual_render": {
+          "visual_type": "BarChart",
+          "renderer_input_digest": "c86da53cb0b00256965a84c3b818681be416aacae6b7ae61a1447ba8ab4d38ca",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "BarChart",
+            "element_count": 68,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 8,
+            "input_count": 0,
+            "text_labels": [
+              "Each symbol = 2. Click to add/remove symbols.",
+              "0",
+              "2",
+              "4",
+              "6",
+              "8",
+              "10",
+              "12",
+              "14",
+              "16",
+              "18",
+              "20",
+              "−",
+              "+",
+              "red",
+              "blue",
+              "green",
+              "yellow",
+              "Use +/- buttons to add or remove symbols"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--card-bg)",
+              "hsl(var(--border-color)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "158db66f677d7967821b",
+        "replay_digest": "48fa488d2c6c0b98c0dc2ce8a375526f29d85ae88c041e6003753ef042d76eb5"
+      },
+      {
+        "node_id": "mat_g2_dp_q3_0",
+        "seed": 103,
+        "formatter": "set_fill_in_blank",
+        "question_text": "Count the pictures in each row of the pictograph, then write the counts for Math, Science, English and Art in the table. The scale is 10: each symbol stands for 10 items.",
+        "correct_answer": [
+          30,
+          10,
+          30,
+          30
+        ],
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "set_fill_in_blank",
+          "is_visual": true,
+          "visual_type": "FillInTable",
+          "interaction_mode": "set",
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "resolved_answer": [
+          30,
+          10,
+          30,
+          30
+        ],
+        "hints": [
+          "Look at the pictograph carefully.",
+          "Each picture stands for 10 items.",
+          "Count the pictures in each row and multiply by 10 to record each count in the table."
+        ],
+        "visual_type": "FillInTable",
+        "visual_payload": {
+          "columns": [
+            "Category",
+            "Count"
+          ],
+          "rows": [
+            [
+              "Math",
+              null
+            ],
+            [
+              "Science",
+              null
+            ],
+            [
+              "English",
+              null
+            ],
+            [
+              "Art",
+              null
+            ]
+          ],
+          "source_pictograph": {
+            "symbol": "📚",
+            "scale": 10,
+            "title": "Favorite Subjects",
+            "rows": [
+              {
+                "category": "Math",
+                "count": 30
+              },
+              {
+                "category": "Science",
+                "count": 10
+              },
+              {
+                "category": "English",
+                "count": 30
+              },
+              {
+                "category": "Art",
+                "count": 30
+              }
+            ]
+          }
+        },
+        "visual_render": {
+          "visual_type": "FillInTable",
+          "renderer_input_digest": "0e6327a0dafb27d59a1126ea3ab9d8276cc2bad3d8c7f8b53ef18fef5b8d0811",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "FillInTable",
+            "element_count": 42,
+            "svg_count": 0,
+            "table_row_count": 9,
+            "table_cell_count": 18,
+            "button_count": 0,
+            "input_count": 4,
+            "text_labels": [
+              "Favorite Subjects",
+              "Math",
+              "📚📚📚📚📚📚📚📚📚📚📚📚📚📚📚📚📚📚📚📚📚📚📚📚📚📚📚📚📚📚",
+              "Science",
+              "📚📚📚📚📚📚📚📚📚📚",
+              "English",
+              "Art",
+              "Each 📚 means 10.",
+              "Category",
+              "Count",
+              "Fill in the missing values in the table"
+            ],
+            "distinct_colours": [
+              "hsl(var(--card-bg)",
+              "hsl(var(--border-color)",
+              "hsl(var(--text)",
+              "hsl(var(--primary)",
+              "hsl(var(--input-bg)",
+              "hsl(var(--text-muted)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "f2525e702ef5bfbbad7b",
+        "replay_digest": "4a444e0a12e5ecad355c469a9a2f3fb23e267036f993f4f3b8559ce2ad2e8f65"
+      },
+      {
+        "node_id": "mat_g2_dp_q3_0",
+        "seed": 118,
+        "formatter": "set_fill_in_blank",
+        "question_text": "The table shows: Monday: 10, Tuesday: 30, Wednesday: 20, Thursday: 20. Create a picture graph where each 📖 equals 10.",
+        "correct_answer": [
+          1,
+          3,
+          2,
+          2
+        ],
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "set_fill_in_blank",
+          "is_visual": true,
+          "visual_type": "BarChart",
+          "interaction_mode": "set",
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "resolved_answer": [
+          1,
+          3,
+          2,
+          2
+        ],
+        "hints": [
+          "Look at the pictograph carefully.",
+          "Each picture stands for 10 items.",
+          "For each category, divide the number of items by 10 to find how many pictures to draw."
+        ],
+        "visual_type": "BarChart",
+        "visual_payload": {
+          "categories": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday"
+          ],
+          "counts": [
+            10,
+            30,
+            20,
+            20
+          ],
+          "values": [
+            10,
+            30,
+            20,
+            20
+          ],
+          "scale": 10,
+          "symbol": "📖",
+          "title": "Books Read",
+          "subject": "books read",
+          "stem_template": "How many books were read on {cat}?",
+          "is_read_mode": false,
+          "is_pictograph": true,
+          "max_y": 50
+        },
+        "visual_render": {
+          "visual_type": "BarChart",
+          "renderer_input_digest": "fa14ab2384acb0da14b773b9b88da631e0da49c62423d4b0fa4977db3ddb3eb1",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "BarChart",
+            "element_count": 58,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 8,
+            "input_count": 0,
+            "text_labels": [
+              "Each symbol = 10. Click to add/remove symbols.",
+              "0",
+              "10",
+              "20",
+              "30",
+              "40",
+              "50",
+              "−",
+              "+",
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Use +/- buttons to add or remove symbols"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--card-bg)",
+              "hsl(var(--border-color)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "534d28fa42b0c64cb3a0",
+        "replay_digest": "f7c9f4512e426157b54dc53a437985ed68efef436175c75271fd54a558ceef1c"
+      },
+      {
+        "node_id": "mat_g2_dp_q3_0",
+        "seed": 127,
+        "formatter": "set_fill_in_blank",
+        "question_text": "Make a picture graph to show: apples: 2, bananas: 10, mangoes: 8, grapes: 14. Each 🍎 equals 2.",
+        "correct_answer": [
+          1,
+          5,
+          4,
+          7
+        ],
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "set_fill_in_blank",
+          "is_visual": true,
+          "visual_type": "BarChart",
+          "interaction_mode": "set",
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "resolved_answer": [
+          1,
+          5,
+          4,
+          7
+        ],
+        "hints": [
+          "Look at the pictograph carefully.",
+          "Each picture stands for 2 items.",
+          "For each category, divide the number of items by 2 to find how many pictures to draw."
+        ],
+        "visual_type": "BarChart",
+        "visual_payload": {
+          "categories": [
+            "apples",
+            "bananas",
+            "mangoes",
+            "grapes"
+          ],
+          "counts": [
+            2,
+            10,
+            8,
+            14
+          ],
+          "values": [
+            2,
+            10,
+            8,
+            14
+          ],
+          "scale": 2,
+          "symbol": "🍎",
+          "title": "Favorite Fruits",
+          "subject": "fruits",
+          "stem_template": "How many {cat} were counted?",
+          "is_read_mode": false,
+          "is_pictograph": true,
+          "max_y": 18
+        },
+        "visual_render": {
+          "visual_type": "BarChart",
+          "renderer_input_digest": "0ca5f84c73b0508a95aae4ea8257cf36e37003cbadfc96795fd7a6ee9958fa7b",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "BarChart",
+            "element_count": 66,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 8,
+            "input_count": 0,
+            "text_labels": [
+              "Each symbol = 2. Click to add/remove symbols.",
+              "0",
+              "2",
+              "4",
+              "6",
+              "8",
+              "10",
+              "12",
+              "14",
+              "16",
+              "18",
+              "−",
+              "+",
+              "apples",
+              "bananas",
+              "mangoes",
+              "grapes",
+              "Use +/- buttons to add or remove symbols"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--card-bg)",
+              "hsl(var(--border-color)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "5a31cb7a34ce3f7b4b59",
+        "replay_digest": "8de2359296596584210cf8a32c87bebc149e40cda3f185b4e04eea308ef2b576"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "present",
+      "node_id": "mat_g2_dp_q3_0",
+      "clause": "Present",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All samples require the learner to construct or complete a displayed representation, or transfer represented values into a table.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "raw_data",
+      "node_id": "mat_g2_dp_q3_0",
+      "clause": "raw data",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        23,
+        42,
+        64,
+        78,
+        91,
+        118,
+        127
+      ],
+      "reasoning": "Several prompts give category-and-count data directly in the wording before the learner makes a picture graph.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "data",
+      "node_id": "mat_g2_dp_q3_0",
+      "clause": "data",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Every task supplies values associated with categories and requires those values to be represented or read in another form.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "tabular_form",
+      "node_id": "mat_g2_dp_q3_0",
+      "clause": "tabular form",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        23,
+        42,
+        78,
+        118
+      ],
+      "reasoning": "Multiple prompts explicitly provide their data as tables before the learner creates a picture graph.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "pictograph",
+      "node_id": "mat_g2_dp_q3_0",
+      "clause": "pictograph",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "Three table renders contain symbol rows, but the recurring creation interface is a BarChart. A bar chart is related to graphing yet is not a rendered pictograph, so the named representation is not prevalent in learner work.",
+      "action_taken": "Left registered pending one independent confirmation under the prevalence standard; no source change in re-instrumentation campaign."
+    },
+    {
+      "capability_id": "scale",
+      "node_id": "mat_g2_dp_q3_0",
+      "clause": "scale",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Every sample states a symbol-to-value relationship, and the rendered graph includes matching numeric increments or a visible symbol key.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "vice_versa",
+      "node_id": "mat_g2_dp_q3_0",
+      "clause": "vice versa",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        57,
+        103
+      ],
+      "reasoning": "Several samples begin with a rendered pictograph and require the learner to fill a table from it, providing the reverse transfer direction.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    }
+  ]
+}

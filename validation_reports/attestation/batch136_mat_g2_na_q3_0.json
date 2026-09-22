@@ -1,0 +1,738 @@
+{
+  "batch": "batch136_mat_g2_na_q3_0",
+  "attested_at": "2026-09-22T14:24:35Z",
+  "attested_by": "blind-attester-gpt-terra-d20d21-20260922",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "read local_only/scratch/attest117/mat_g2_na_q3_0.prompt.txt (verbatim render_prompt_block output only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "Tool-bearing GPT-Terra subagent reported rg/sed/awk only on 7 assigned prompts, apply_patch only on sibling verdict JSON, and jq only on outputs; dispatcher did not verify sandbox-level non-access beyond that report."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g2_na_q3_0",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g2_na_q3_0",
+        "seed": 11,
+        "formatter": "read_mcq",
+        "question_text": "🐕\nThere is 1 group of 1 item.\nHow many items are there in all?",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "EmojiPictorial",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 1,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 3,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 0,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 2,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 1,
+        "hints": [
+          "We need to find the total of equal groups 1 group of 1.",
+          "Think of it as 1 group of 1: 1.",
+          "The answer of 1 × 1 = 1."
+        ],
+        "visual_type": "EmojiPictorial",
+        "visual_payload": {
+          "emoji": "🐕",
+          "group_a": 1,
+          "group_b": 1,
+          "operation": "multiplication",
+          "layout": "inline",
+          "display": "🐕"
+        },
+        "visual_render": {
+          "visual_type": "EmojiPictorial",
+          "renderer_input_digest": "120e82d2c2b0c1388849f2d58a7ab9ee40fb03e0fda7e361995a24c40194cbba",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "EmojiPictorial",
+            "element_count": 5,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "🐕"
+            ],
+            "distinct_colours": [
+              "hsl(var(--card-bg)",
+              "hsl(var(--border-color)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "be2f4650b9185bfcf32f",
+        "replay_digest": "e7eaf05be6a490bfa0044617380b7fc1b6a6bf46904a020b9dfba8d589969097"
+      },
+      {
+        "node_id": "mat_g2_na_q3_0",
+        "seed": 23,
+        "formatter": "true_false",
+        "question_text": "There are 4 groups of 9. By repeated addition, 9 + 9 + 9 + 9 = 36. True or False?",
+        "correct_answer": true,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "true_false",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "true_false",
+          "experience": "standard"
+        },
+        "resolved_answer": true,
+        "hints": [
+          "We need to find the total of equal groups 9 groups of 4.",
+          "Think of it as 4 groups of 9: 9 + 9 + 9 + 9.",
+          "The answer of 9 × 4 = 36."
+        ],
+        "sample_id": "cf9c2f130d0c608628bb",
+        "replay_digest": "b8cd18fbc6501aae9b85a3211a031d92f657d84cab7aec988a15b65c28c56953"
+      },
+      {
+        "node_id": "mat_g2_na_q3_0",
+        "seed": 42,
+        "formatter": "mcq",
+        "question_text": "There are 10 groups of 4 (4 added 10 times). How many in all?",
+        "correct_answer": 40,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 30,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 14,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 39,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 40,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 40,
+        "hints": [
+          "We need to find the total of equal groups 4 groups of 10.",
+          "Use the 10 times table: 10 × 4.",
+          "The answer of 4 × 10 = 40."
+        ],
+        "sample_id": "acd5b1dfd61a3061446d",
+        "replay_digest": "9d30081de7d0218b176eca256cc42a6b76928ac4259bf0eb6d3668b8a2565c06"
+      },
+      {
+        "node_id": "mat_g2_na_q3_0",
+        "seed": 57,
+        "formatter": "set_fill_in_blank",
+        "question_text": "Shade 4 groups of 2 squares to show 2 + 2 + 2 + 2. How many squares did you shade in all?",
+        "correct_answer": 8,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "set_fill_in_blank",
+          "is_visual": true,
+          "visual_type": "GridArea",
+          "interaction_mode": "set",
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "resolved_answer": 8,
+        "hints": [
+          "We need to find the total of equal groups 4 groups of 2.",
+          "Think of it as 2 groups of 4: 4 + 4.",
+          "The answer of 4 × 2 = 8."
+        ],
+        "visual_type": "GridArea",
+        "visual_payload": {
+          "rows": 4,
+          "cols": 2,
+          "shaded": false,
+          "highlight_groups": [],
+          "shape_type": "rectangle",
+          "correct_count": 8,
+          "grid_size": [
+            5,
+            3
+          ]
+        },
+        "visual_render": {
+          "visual_type": "GridArea",
+          "renderer_input_digest": "0d5f4d98dc7eb077c2c9ce148289dda754b30faddf7d7e014ee467666a72ba39",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "GridArea",
+            "element_count": 21,
+            "svg_count": 1,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 1,
+            "input_count": 0,
+            "text_labels": [
+              "Click squares to shade a",
+              "2 × 4",
+              "rectangle",
+              "0 square units",
+              "Clear All",
+              "Click squares to shade/unshade"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--primary)",
+              "#4b5563",
+              "#374151",
+              "#f8fafc,",
+              "#e2e8f0)",
+              "#cbd5e1",
+              "hsl(var(--border-color)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {
+              "grid-cell": 8
+            }
+          }
+        },
+        "sample_id": "0d5040f1cc8742c1c638",
+        "replay_digest": "a0360a759b750b173417908a3276b9b08858666c9f0589fc6e98849e59ce3d2c"
+      },
+      {
+        "node_id": "mat_g2_na_q3_0",
+        "seed": 64,
+        "formatter": "error_detect",
+        "question_text": "Carlo solved: \"There is 1 group of 1 (1), so there are ___ in all.\". Carlo says the missing number is 2. Is Carlo correct?",
+        "correct_answer": {
+          "has_error": true,
+          "correct_value": 1
+        },
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "error_detect",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "error_detect",
+          "experience": "standard"
+        },
+        "resolved_answer": {
+          "has_error": true,
+          "correct_value": 1
+        },
+        "hints": [
+          "We need to find the total of equal groups 1 group of 1.",
+          "Think of it as 1 group of 1: 1.",
+          "The answer of 1 × 1 = 1."
+        ],
+        "sample_id": "55177e689177ceff5e75",
+        "replay_digest": "6e7d8d62e853bebcf4d2df14ef9dada52c9bae8d8c00e518ab7d35313b8e66d0"
+      },
+      {
+        "node_id": "mat_g2_na_q3_0",
+        "seed": 78,
+        "formatter": "cloze",
+        "question_text": "4 groups of 2 (2 + 2 + 2 + 2) makes ___ in all",
+        "correct_answer": 8,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 7,
+            "text": "7",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 4,
+            "text": "4",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 8,
+            "text": "8",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 6,
+            "text": "6",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 8,
+        "hints": [
+          "We need to find the total of equal groups 2 groups of 4.",
+          "Think of it as 4 groups of 2: 2 + 2 + 2 + 2.",
+          "The answer of 2 × 4 = 8."
+        ],
+        "sample_id": "1fd3c3b4244326480149",
+        "replay_digest": "0edf9e9dfd17851d8492d887b483a269b33d29443e3ee3e89ac37d1b39576b9f"
+      },
+      {
+        "node_id": "mat_g2_na_q3_0",
+        "seed": 91,
+        "formatter": "mcq",
+        "question_text": "There are 2 groups of 7 (7 + 7). How many in all?",
+        "correct_answer": 14,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 5,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 14,
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 9,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 12,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 14,
+        "hints": [
+          "We need to find the total of equal groups 7 groups of 2.",
+          "Think of it as 2 groups of 7: 7 + 7.",
+          "The answer of 7 × 2 = 14."
+        ],
+        "sample_id": "585517a786bbebbb37f7",
+        "replay_digest": "1972b190687fbeed17442e314d922d6c3c0e796628b45dbfc469d13e9acce7d7"
+      },
+      {
+        "node_id": "mat_g2_na_q3_0",
+        "seed": 103,
+        "formatter": "mcq",
+        "question_text": "There are 5 groups of 8 (8 + 8 + 8 + 8 + 8). How many in all?",
+        "correct_answer": 40,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 13,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 35,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 40,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 3,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 40,
+        "hints": [
+          "We need to find the total of equal groups 8 groups of 5.",
+          "Think of it as 5 groups of 8: 8 + 8 + 8 + 8 + 8.",
+          "The answer of 8 × 5 = 40."
+        ],
+        "sample_id": "87be96525d47ae21e03a",
+        "replay_digest": "dcaa3cbf4f969f4a18246e40f40ae65c16183857b8ee39e97be8027633e3f91c"
+      },
+      {
+        "node_id": "mat_g2_na_q3_0",
+        "seed": 118,
+        "formatter": "cloze",
+        "question_text": "Count 3 sixes (6 + 6 + 6) = ___",
+        "correct_answer": 18,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 18,
+            "text": "18",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 3,
+            "text": "3",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 9,
+            "text": "9",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 15,
+            "text": "15",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 18,
+        "hints": [
+          "We need to find the total of equal groups 6 groups of 3.",
+          "Think of it as 3 groups of 6: 6 + 6 + 6.",
+          "The answer of 6 × 3 = 18."
+        ],
+        "sample_id": "f7029e40f4b982171ee5",
+        "replay_digest": "952f0e4895cc82b4214947fb0ffeae08e217873499b52998dbaa4370e67635a0"
+      },
+      {
+        "node_id": "mat_g2_na_q3_0",
+        "seed": 127,
+        "formatter": "read_mcq",
+        "question_text": "Look at the array. It shows 4 groups of 2 (2 + 2 + 2 + 2). How many squares are shaded in all?",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "GridArea",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 8,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 12,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 10,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 7,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 8,
+        "hints": [
+          "We need to find the total of equal groups 4 groups of 2.",
+          "Think of it as 2 groups of 4: 4 + 4.",
+          "The answer of 4 × 2 = 8."
+        ],
+        "visual_type": "GridArea",
+        "visual_payload": {
+          "rows": 4,
+          "cols": 2,
+          "shaded": true,
+          "highlight_groups": [],
+          "shape_type": "rectangle",
+          "correct_count": 8,
+          "grid_size": [
+            5,
+            3
+          ]
+        },
+        "visual_render": {
+          "visual_type": "GridArea",
+          "renderer_input_digest": "f109fc8ea1959d6e0c68a28a9c754cfb457a487a70030668b5fba6d58e2467ba",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "GridArea",
+            "element_count": 21,
+            "svg_count": 1,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 1,
+            "input_count": 0,
+            "text_labels": [
+              "Click squares to shade a",
+              "2 × 4",
+              "rectangle",
+              "8 square units",
+              "Clear All",
+              "Click squares to shade/unshade"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--primary)",
+              "#4b5563",
+              "#374151",
+              "hsl(var(--border-color)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {
+              "grid-cell": 8
+            }
+          }
+        },
+        "sample_id": "1f594dd1a2ce4180b4e5",
+        "replay_digest": "dd5ebfd61eecf6087fa4e3918385395611f1a2893cb0a84e182238b5ea3f51ac"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "count_number_of",
+      "node_id": "mat_g2_na_q3_0",
+      "clause": "Count the number of",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        57,
+        127
+      ],
+      "reasoning": "The dog display and the two visual-square tasks require counting represented quantities; concrete counting appears more than once.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "concrete_objects",
+      "node_id": "mat_g2_na_q3_0",
+      "clause": "concrete objects",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        57,
+        127
+      ],
+      "reasoning": "Multiple samples use visible objects or squares as the quantities being counted.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "group",
+      "node_id": "mat_g2_na_q3_0",
+      "clause": "group",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        23,
+        42,
+        57,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Equal-group language and structures are used in most samples.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "repeated_addition",
+      "node_id": "mat_g2_na_q3_0",
+      "clause": "repeated addition",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        23,
+        42,
+        57,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Repeated-addition expressions are explicitly used across the sample set.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "create_equal_groups",
+      "node_id": "mat_g2_na_q3_0",
+      "clause": "create equal groups",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [
+        57
+      ],
+      "reasoning": "Only the shading task asks the learner to make groups; the remaining samples ask for totals or judgments from groups already supplied.",
+      "action_taken": "Left registered pending one independent confirmation under the prevalence standard; no source change in re-instrumentation campaign."
+    },
+    {
+      "capability_id": "language",
+      "node_id": "mat_g2_na_q3_0",
+      "clause": "language",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        23,
+        42,
+        57,
+        78,
+        91,
+        103,
+        118
+      ],
+      "reasoning": "The prompts repeatedly use verbal equal-group forms such as groups of, added times, and count threes/sixes.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "5_groups_of_3",
+      "node_id": "mat_g2_na_q3_0",
+      "clause": "5 groups of 3",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "No sample asks for or states the required five-groups-of-three form; nearby group counts are different.",
+      "action_taken": "Left registered pending one independent confirmation under the prevalence standard; no source change in re-instrumentation campaign."
+    },
+    {
+      "capability_id": "5_threes",
+      "node_id": "mat_g2_na_q3_0",
+      "clause": "5 threes",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "No sample uses the five-threes form; the lone word-form example is three sixes.",
+      "action_taken": "Left registered pending one independent confirmation under the prevalence standard; no source change in re-instrumentation campaign."
+    }
+  ]
+}

@@ -1,0 +1,661 @@
+{
+  "batch": "batch131_mat_g2_mg_q4_6",
+  "attested_at": "2026-09-22T14:16:21Z",
+  "attested_by": "blind-attester-gpt-terra-d15-20260922",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "read local_only/scratch/attest117/mat_g2_mg_q4_6.prompt.txt (verbatim render_prompt_block output only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "Tool-bearing GPT-Terra subagent reported using only assigned prompt inputs and sibling verdict outputs; exact tool names were not reported, and dispatcher did not verify sandbox-level non-access beyond that report."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g2_mg_q4_6",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g2_mg_q4_6",
+        "seed": 11,
+        "formatter": "mcq",
+        "question_text": "A square garden has a side of 9 m. How much fencing is needed to go all the way around it?",
+        "correct_answer": 36,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 36,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 35,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 38,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 37,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 36,
+        "hints": [
+          "The perimeter is the total distance around the square.",
+          "A square has 4 equal sides, each 9 units long.",
+          "Perimeter = 4 × 9 = 36."
+        ],
+        "sample_id": "245cfd2c69953df28be1",
+        "replay_digest": "074967f0dc45bbb16ff62cc39a41e24a8ad0a8722b2d5921bb9d26e25db05b8d"
+      },
+      {
+        "node_id": "mat_g2_mg_q4_6",
+        "seed": 23,
+        "formatter": "cloze",
+        "question_text": "A square garden has a side of 2 m. How much fencing is needed to go all the way around it?",
+        "correct_answer": 8,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 9,
+            "text": "9",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 8,
+            "text": "8",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 7,
+            "text": "7",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 10,
+            "text": "10",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 8,
+        "hints": [
+          "The perimeter is the total distance around the square.",
+          "A square has 4 equal sides, each 2 units long.",
+          "Perimeter = 4 × 2 = 8."
+        ],
+        "sample_id": "f7485b658e55220910f7",
+        "replay_digest": "9799d41a83b6a8ae931bfd5d773c14793bb36aeaa1200e209fb0a428e23ff09e"
+      },
+      {
+        "node_id": "mat_g2_mg_q4_6",
+        "seed": 42,
+        "formatter": "cloze",
+        "question_text": "A triangular flower bed has sides 2 m, 1 m, and 2 m. How much edging is needed to go all the way around it?",
+        "correct_answer": 5,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 6,
+            "text": "6",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 7,
+            "text": "7",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 4,
+            "text": "4",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 5,
+            "text": "5",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 5,
+        "hints": [
+          "The perimeter is the total distance around the triangle.",
+          "Add all three sides: 2 + 1 + 2 = 5."
+        ],
+        "sample_id": "80e756b93a9cd24a6c6c",
+        "replay_digest": "f1aad8f17283d2a67b7b8e7c1e2be534898e39aa0fab844d1c2eae29feab37d9"
+      },
+      {
+        "node_id": "mat_g2_mg_q4_6",
+        "seed": 57,
+        "formatter": "mcq",
+        "question_text": "A rectangular garden is 7 m long and 5 m wide. How much fencing is needed to go all the way around it?",
+        "correct_answer": 24,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 26,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 24,
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 23,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 25,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 24,
+        "hints": [
+          "The perimeter is the total distance around the rectangle.",
+          "A rectangle has two sides of length 7 and two sides of width 5.",
+          "Perimeter = 2 × (7 + 5) = 2 × 12 = 24."
+        ],
+        "sample_id": "7aee6cac903cd456ff38",
+        "replay_digest": "ab5847b06b499e1721d13ab4dee8a5801843442ec9f1f9d9c60b03d608699c68"
+      },
+      {
+        "node_id": "mat_g2_mg_q4_6",
+        "seed": 64,
+        "formatter": "cloze",
+        "question_text": "A square garden has a side of 2 m. How much fencing is needed to go all the way around it?",
+        "correct_answer": 8,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 10,
+            "text": "10",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 7,
+            "text": "7",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 9,
+            "text": "9",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 8,
+            "text": "8",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 8,
+        "hints": [
+          "The perimeter is the total distance around the square.",
+          "A square has 4 equal sides, each 2 units long.",
+          "Perimeter = 4 × 2 = 8."
+        ],
+        "sample_id": "cf0e8fb4b79189f631f6",
+        "replay_digest": "5a00c5a19e6262a26b77e45ba71729824edc0bb1fb0258738e90108bc163bf48"
+      },
+      {
+        "node_id": "mat_g2_mg_q4_6",
+        "seed": 78,
+        "formatter": "cloze",
+        "question_text": "A rectangular garden is 3 m long and 2 m wide. How much fencing is needed to go all the way around it?",
+        "correct_answer": 10,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 10,
+            "text": "10",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 11,
+            "text": "11",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 12,
+            "text": "12",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 9,
+            "text": "9",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 10,
+        "hints": [
+          "The perimeter is the total distance around the rectangle.",
+          "A rectangle has two sides of length 3 and two sides of width 2.",
+          "Perimeter = 2 × (3 + 2) = 2 × 5 = 10."
+        ],
+        "sample_id": "e305f554e217f060de04",
+        "replay_digest": "a911ebceb268dde8eb6483a330f80cd0b67a47b95f2898aae103df5d4686aa1d"
+      },
+      {
+        "node_id": "mat_g2_mg_q4_6",
+        "seed": 91,
+        "formatter": "cloze",
+        "question_text": "A rectangular garden is 11 m long and 3 m wide. How much fencing is needed to go all the way around it?",
+        "correct_answer": 28,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 27,
+            "text": "27",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 28,
+            "text": "28",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 29,
+            "text": "29",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 30,
+            "text": "30",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 28,
+        "hints": [
+          "The perimeter is the total distance around the rectangle.",
+          "A rectangle has two sides of length 11 and two sides of width 3.",
+          "Perimeter = 2 × (11 + 3) = 2 × 14 = 28."
+        ],
+        "sample_id": "26039c8b34cf5aaaa717",
+        "replay_digest": "0e939160b77b9f67c9eb2567dab038d90991eb60a648f65d672e3916b1041b5d"
+      },
+      {
+        "node_id": "mat_g2_mg_q4_6",
+        "seed": 103,
+        "formatter": "cloze",
+        "question_text": "A triangular flower bed has sides 8 m, 12 m, and 8 m. How much edging is needed to go all the way around it?",
+        "correct_answer": 28,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 30,
+            "text": "30",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 29,
+            "text": "29",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 27,
+            "text": "27",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 28,
+            "text": "28",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 28,
+        "hints": [
+          "The perimeter is the total distance around the triangle.",
+          "Add all three sides: 8 + 12 + 8 = 28."
+        ],
+        "sample_id": "8330c51dbd92b4d0f250",
+        "replay_digest": "2321c115687869848bd3238d2aa1c4aad45543df29fcaf77e6f10cac51ddbcb7"
+      },
+      {
+        "node_id": "mat_g2_mg_q4_6",
+        "seed": 118,
+        "formatter": "mcq",
+        "question_text": "A triangular flower bed has sides 11 m, 3 m, and 11 m. How much edging is needed to go all the way around it?",
+        "correct_answer": 25,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 24,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 25,
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 27,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 26,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 25,
+        "hints": [
+          "The perimeter is the total distance around the triangle.",
+          "Add all three sides: 11 + 3 + 11 = 25."
+        ],
+        "sample_id": "e1ab17f26f2f0f84fa33",
+        "replay_digest": "53624e3a5db3b31a08d82739b64754dcb618249b81c6da900a0c1218a2b50ff6"
+      },
+      {
+        "node_id": "mat_g2_mg_q4_6",
+        "seed": 127,
+        "formatter": "cloze",
+        "question_text": "A rectangular garden is 11 m long and 10 m wide. How much fencing is needed to go all the way around it?",
+        "correct_answer": 42,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 42,
+            "text": "42",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 44,
+            "text": "44",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 43,
+            "text": "43",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 41,
+            "text": "41",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 42,
+        "hints": [
+          "The perimeter is the total distance around the rectangle.",
+          "A rectangle has two sides of length 11 and two sides of width 10.",
+          "Perimeter = 2 × (11 + 10) = 2 × 21 = 42."
+        ],
+        "sample_id": "4a08c173aefcd953a24e",
+        "replay_digest": "421d0aefe43c23f537f269ea3147538e4d58aae6c28d6c136e2a95e26af528e0"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "solve_problems",
+      "node_id": "mat_g2_mg_q4_6",
+      "clause": "Solve problems",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Every learner task poses a contextual fencing or edging problem that must be solved by finding the distance around the shape.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "perimeter",
+      "node_id": "mat_g2_mg_q4_6",
+      "clause": "perimeter",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All ten contexts require the perimeter represented by fencing or edging needed all the way around.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "triangles",
+      "node_id": "mat_g2_mg_q4_6",
+      "clause": "triangles",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        103,
+        118
+      ],
+      "reasoning": "Triangular flower-bed situations recur with different side lengths, so this is more than an isolated triangle instance.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "squares",
+      "node_id": "mat_g2_mg_q4_6",
+      "clause": "squares",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        64
+      ],
+      "reasoning": "Square-garden situations recur under varied measurements as a meaningful shape category in the set.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "rectangles",
+      "node_id": "mat_g2_mg_q4_6",
+      "clause": "rectangles",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        57,
+        78,
+        91,
+        127
+      ],
+      "reasoning": "Rectangular-garden situations recur across four samples with varied dimensions and the same perimeter-solving demand.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    }
+  ]
+}

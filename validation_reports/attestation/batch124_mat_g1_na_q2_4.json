@@ -1,0 +1,588 @@
+{
+  "batch": "batch124_mat_g1_na_q2_4",
+  "attested_at": "2026-09-22T14:08:26Z",
+  "attested_by": "blind-attester-gpt-terra-d08-20260922",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "read local_only/scratch/attest117/mat_g1_na_q2_4.prompt.txt (verbatim render_prompt_block output only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "Tool-bearing GPT-Terra subagent reported exec_command (sed/rg) only on assigned prompt paths and apply_patch only to write sibling verdict JSON; dispatcher did not verify sandbox-level non-access beyond that report."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g1_na_q2_4",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g1_na_q2_4",
+        "seed": 11,
+        "formatter": "true_false",
+        "question_text": "43 is 4 tens and 3 ones. 30 is 3 tens and 0 ones. Add the place values, then find the total: 43 + 30 = 73. True or False?",
+        "correct_answer": true,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "true_false",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "true_false",
+          "experience": "standard"
+        },
+        "resolved_answer": true,
+        "hints": [
+          "We are adding two numbers: 43 and 30.",
+          "Add the ones: 3 + 0 = 3. Write 3 in the ones place.",
+          "Add the tens: 4 + 3 = 7.",
+          "The sum is 43 + 30 = 73."
+        ],
+        "sample_id": "baedfae10144ebb5935b",
+        "replay_digest": "95ab15301ea9b02947446dcf8d8035242da538438f4b947b2e2c05f3ea437e6e"
+      },
+      {
+        "node_id": "mat_g1_na_q2_4",
+        "seed": 23,
+        "formatter": "cloze",
+        "question_text": "89 is 8 tens and 9 ones. 7 is 7 ones. Add the place values, then find the total: 89 + 7 = ___",
+        "correct_answer": 96,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 95,
+            "text": "95",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 96,
+            "text": "96",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 106,
+            "text": "106",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 97,
+            "text": "97",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 96,
+        "hints": [
+          "We are adding two numbers: 89 and 7.",
+          "Add the ones: 9 + 7 = 16. Write 6 in the ones place and carry over 1 ten.",
+          "Add the tens: 8 + 0 + 1 (carried) = 9.",
+          "The sum is 89 + 7 = 96."
+        ],
+        "sample_id": "51c85df0b9e6aeb6e813",
+        "replay_digest": "1b58b3cd6acc710f8f3ca2c82398ff30aa7a13d8e3b290a97c51dba135dcead0"
+      },
+      {
+        "node_id": "mat_g1_na_q2_4",
+        "seed": 42,
+        "formatter": "mcq",
+        "question_text": "10 is 1 ten and 0 ones. 62 is 6 tens and 2 ones. Add the place values, then find the total: what is 10 + 62?",
+        "correct_answer": 72,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 82,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 71,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 73,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 72,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 72,
+        "hints": [
+          "We are adding two numbers: 10 and 62.",
+          "Add the ones: 0 + 2 = 2. Write 2 in the ones place.",
+          "Add the tens: 1 + 6 = 7.",
+          "The sum is 10 + 62 = 72."
+        ],
+        "sample_id": "f9cd019886c72a856fc8",
+        "replay_digest": "71d32f9d164e26b1293448e5be5ff0bab1aa92a41d421639518efdd2292e9f28"
+      },
+      {
+        "node_id": "mat_g1_na_q2_4",
+        "seed": 57,
+        "formatter": "error_detect",
+        "question_text": "Pia solved: \"28 is 2 tens and 8 ones. 40 is 4 tens and 0 ones. Add the place values, then find the total: 28 + 40 = ___\". Pia says the blank is 68. Is Pia correct?",
+        "correct_answer": {
+          "has_error": false,
+          "correct_value": 68
+        },
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "error_detect",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "error_detect",
+          "experience": "standard"
+        },
+        "resolved_answer": {
+          "has_error": false,
+          "correct_value": 68
+        },
+        "hints": [
+          "We are adding two numbers: 28 and 40.",
+          "Add the ones: 8 + 0 = 8. Write 8 in the ones place.",
+          "Add the tens: 2 + 4 = 6.",
+          "The sum is 28 + 40 = 68."
+        ],
+        "sample_id": "78935edc59469eb4a047",
+        "replay_digest": "ec69defeaa473711fb5333a9301ce7211096b85271ccce28b2938eae30335e67"
+      },
+      {
+        "node_id": "mat_g1_na_q2_4",
+        "seed": 64,
+        "formatter": "cloze",
+        "question_text": "15 is 1 ten and 5 ones. 15 is 1 ten and 5 ones. Add the place values, then find the total: 15 + 15 = ___",
+        "correct_answer": 30,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 30,
+            "text": "30",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 40,
+            "text": "40",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 31,
+            "text": "31",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 29,
+            "text": "29",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 30,
+        "hints": [
+          "We are adding two numbers: 15 and 15.",
+          "Add the ones: 5 + 5 = 10. Write 0 in the ones place and carry over 1 ten.",
+          "Add the tens: 1 + 1 + 1 (carried) = 3.",
+          "The sum is 15 + 15 = 30."
+        ],
+        "sample_id": "c80321b7cd802b729483",
+        "replay_digest": "20e4727a5105711c807093415d0e4de597065088b3504dead0486be7a329d246"
+      },
+      {
+        "node_id": "mat_g1_na_q2_4",
+        "seed": 78,
+        "formatter": "mcq",
+        "question_text": "16 is 1 ten and 6 ones. 79 is 7 tens and 9 ones. Add the place values, then find the total: what is 16 + 79?",
+        "correct_answer": 95,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 94,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 95,
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 96,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 105,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 95,
+        "hints": [
+          "We are adding two numbers: 16 and 79.",
+          "Add the ones: 6 + 9 = 15. Write 5 in the ones place and carry over 1 ten.",
+          "Add the tens: 1 + 7 + 1 (carried) = 9.",
+          "The sum is 16 + 79 = 95."
+        ],
+        "sample_id": "e8101262399d636c1f2d",
+        "replay_digest": "c2efeff9cc16492807a5d940333cc24b856b96f4f84823a5a8371fefc32cbc82"
+      },
+      {
+        "node_id": "mat_g1_na_q2_4",
+        "seed": 91,
+        "formatter": "error_detect",
+        "question_text": "Grace solved: \"60 is 6 tens and 0 ones. 30 is 3 tens and 0 ones. Add the place values, then find the total: 60 + 30 = ___\". Grace says the blank is 90. Is Grace correct?",
+        "correct_answer": {
+          "has_error": false,
+          "correct_value": 90
+        },
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "error_detect",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "error_detect",
+          "experience": "standard"
+        },
+        "resolved_answer": {
+          "has_error": false,
+          "correct_value": 90
+        },
+        "hints": [
+          "We are adding two numbers: 60 and 30.",
+          "Add the ones: 0 + 0 = 0. Write 0 in the ones place.",
+          "Add the tens: 6 + 3 = 9.",
+          "The sum is 60 + 30 = 90."
+        ],
+        "sample_id": "2c51ed8ae35eb52db4cd",
+        "replay_digest": "d12c02b7178ee5de093808f7a42c908aade5486b2df45b8d64ad56fa45320594"
+      },
+      {
+        "node_id": "mat_g1_na_q2_4",
+        "seed": 103,
+        "formatter": "error_detect",
+        "question_text": "Grace solved: \"38 is 3 tens and 8 ones. 46 is 4 tens and 6 ones. Add the place values, then find the total: 38 + 46 = ___\". Grace says the blank is 94. Is Grace correct?",
+        "correct_answer": {
+          "has_error": true,
+          "correct_value": 84
+        },
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "error_detect",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "error_detect",
+          "experience": "standard"
+        },
+        "resolved_answer": {
+          "has_error": true,
+          "correct_value": 84
+        },
+        "hints": [
+          "We are adding two numbers: 38 and 46.",
+          "Add the ones: 8 + 6 = 14. Write 4 in the ones place and carry over 1 ten.",
+          "Add the tens: 3 + 4 + 1 (carried) = 8.",
+          "The sum is 38 + 46 = 84."
+        ],
+        "sample_id": "caf2d51e838e0f1022c8",
+        "replay_digest": "d80bbd839930387b4c8b68daf742ea941a962d6b81c037b99f6e1f471d00557d"
+      },
+      {
+        "node_id": "mat_g1_na_q2_4",
+        "seed": 118,
+        "formatter": "mcq",
+        "question_text": "31 is 3 tens and 1 one. 11 is 1 ten and 1 one. Add the place values, then find the total: what is 31 + 11?",
+        "correct_answer": 42,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 43,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 41,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 52,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 42,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 42,
+        "hints": [
+          "We are adding two numbers: 31 and 11.",
+          "Add the ones: 1 + 1 = 2. Write 2 in the ones place.",
+          "Add the tens: 3 + 1 = 4.",
+          "The sum is 31 + 11 = 42."
+        ],
+        "sample_id": "589c2d1892a69838657b",
+        "replay_digest": "905ff1dc47ba7f741afa2c2f7269f362ffaad19529cb0b844b06f79944b6f261"
+      },
+      {
+        "node_id": "mat_g1_na_q2_4",
+        "seed": 127,
+        "formatter": "cloze",
+        "question_text": "73 is 7 tens and 3 ones. 21 is 2 tens and 1 one. Add the place values, then find the total: 73 + 21 = ___",
+        "correct_answer": 94,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 94,
+            "text": "94",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 104,
+            "text": "104",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 93,
+            "text": "93",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 95,
+            "text": "95",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 94,
+        "hints": [
+          "We are adding two numbers: 73 and 21.",
+          "Add the ones: 3 + 1 = 4. Write 4 in the ones place.",
+          "Add the tens: 7 + 2 = 9.",
+          "The sum is 73 + 21 = 94."
+        ],
+        "sample_id": "c6e98aadb015871f5f66",
+        "replay_digest": "e5f9a77ec034d2cb6d467f4fd725ad693295261f40a62464e6d8af385cfd92f8"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "add",
+      "node_id": "mat_g1_na_q2_4",
+      "clause": "Add numbers",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Addition is the work in every sample, from finding a total to judging a stated sum, rather than appearing only as incidental notation.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "express_addends",
+      "node_id": "mat_g1_na_q2_4",
+      "clause": "expressing addends",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Each prompt first names the addends by place-value parts, including the one-digit addend where applicable, so expressing the inputs is sustained across the set.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "tens_ones",
+      "node_id": "mat_g1_na_q2_4",
+      "clause": "tens and ones",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "The learner is repeatedly given each addend in tens and ones and told to add those place values; this representation occurs in all ten samples.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "expanded_form",
+      "node_id": "mat_g1_na_q2_4",
+      "clause": "expanded form",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Although written in words rather than with an equals-sign expansion, every sample decomposes the addends into their tens and ones before totaling, so the expanded-place-value form is consistently rendered.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    }
+  ]
+}

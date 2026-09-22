@@ -1,0 +1,804 @@
+{
+  "batch": "batch138_mat_g2_na_q3_7",
+  "attested_at": "2026-09-22T14:35:14Z",
+  "attested_by": "blind-attester-gpt-terra-d22d23-20260922",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "read local_only/scratch/attest117/mat_g2_na_q3_7.prompt.txt (verbatim render_prompt_block output only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "Tool-bearing GPT-Terra subagent reported sed/awk/rg only on assigned prompts, apply_patch/jq only on verdict outputs, and positional correction against those prompts; dispatcher did not verify sandbox-level non-access beyond that report."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g2_na_q3_7",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g2_na_q3_7",
+        "seed": 11,
+        "formatter": "true_false",
+        "question_text": "In 10 ÷ ___ = 2, the missing number is 7. True or False?",
+        "correct_answer": false,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "true_false",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "true_false",
+          "experience": "standard"
+        },
+        "resolved_answer": false,
+        "hints": [
+          "The number statement is: 10 ÷ ___ = 2",
+          "To find the missing number, use the opposite operation (multiplication).",
+          "2 × 10 = 5.",
+          "Check: 10 ÷ 5 = 2. ✓"
+        ],
+        "sample_id": "e9aa223675c467583d2b",
+        "replay_digest": "0256358cfe2cf78a062ab327dc36052cafb6863f47bd03e843263a3e64765143"
+      },
+      {
+        "node_id": "mat_g2_na_q3_7",
+        "seed": 23,
+        "formatter": "read_mcq",
+        "question_text": "Both sides balance evenly. 2 × ? = 2. What is the missing value?",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "BalanceScale",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 1,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 2,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 0,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 3,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 1,
+        "hints": [
+          "The number statement is: 2 × ___ = 2",
+          "To find the missing number, use the opposite operation (division).",
+          "2 ÷ 2 = 1.",
+          "Check: 2 × 1 = 2. ✓"
+        ],
+        "visual_type": "BalanceScale",
+        "visual_payload": {
+          "left_side": "2 × ?",
+          "right_side": "2",
+          "blank_side": "left",
+          "is_balanced": true
+        },
+        "visual_render": {
+          "visual_type": "BalanceScale",
+          "renderer_input_digest": "ad3f5e7bd1be6352ef0bdcf2028659c8bc2b277df1b18929da0416b92946302d",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "BalanceScale",
+            "element_count": 6,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "2 × ?",
+              "2"
+            ],
+            "distinct_colours": [
+              "#94a3b8",
+              "#3b82f6",
+              "#fff",
+              "#64748b"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "dbf85fad4917e3e6d0b3",
+        "replay_digest": "61637c0ac3cb1f514d5a2cc2bda700709fb98434599b3b752d65f187e22df05f"
+      },
+      {
+        "node_id": "mat_g2_na_q3_7",
+        "seed": 42,
+        "formatter": "read_mcq",
+        "question_text": "Both sides balance evenly. 1 × ? = 2. What is the missing value?",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "BalanceScale",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 2,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 3,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 1,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 4,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 2,
+        "hints": [
+          "The number statement is: ___ × 2 = 2",
+          "Use division to undo the operation.",
+          "2 ÷ 2 = 1.",
+          "Check: 1 × 2 = 2. ✓"
+        ],
+        "visual_type": "BalanceScale",
+        "visual_payload": {
+          "left_side": "1 × ?",
+          "right_side": "2",
+          "blank_side": "left",
+          "is_balanced": true
+        },
+        "visual_render": {
+          "visual_type": "BalanceScale",
+          "renderer_input_digest": "ef52d2e34493373a3d687da710c278805f777bbd6180df9b9f29244bf2d8cae3",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "BalanceScale",
+            "element_count": 6,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "1 × ?",
+              "2"
+            ],
+            "distinct_colours": [
+              "#94a3b8",
+              "#3b82f6",
+              "#fff",
+              "#64748b"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "344e1562f7f9c60a2397",
+        "replay_digest": "a56172b9123d822e9e4e47950333ccabd76eb112769100643f1ba1635184b32e"
+      },
+      {
+        "node_id": "mat_g2_na_q3_7",
+        "seed": 57,
+        "formatter": "mcq",
+        "question_text": "What number goes in the blank: 30 ÷ 10 = ___?",
+        "correct_answer": 3,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 4,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 3,
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 13,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 33,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 3,
+        "hints": [
+          "The number statement is: 30 ÷ 10 = ___",
+          "We need to find what 30 ÷ 10 equals.",
+          "Calculate: 30 ÷ 10 = 3."
+        ],
+        "sample_id": "8000ace06848a0ee3f36",
+        "replay_digest": "ca97ccbc7a5d81ac5dad1e1699e0e815140178297528499c5e6bba843426acfe"
+      },
+      {
+        "node_id": "mat_g2_na_q3_7",
+        "seed": 64,
+        "formatter": "read_mcq",
+        "question_text": "Both sides balance evenly. 10 × ? = 50. What is the missing value?",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "BalanceScale",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 5,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 6,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 4,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 15,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 5,
+        "hints": [
+          "The number statement is: 10 × ___ = 50",
+          "To find the missing number, use the opposite operation (division).",
+          "50 ÷ 10 = 5.",
+          "Check: 10 × 5 = 50. ✓"
+        ],
+        "visual_type": "BalanceScale",
+        "visual_payload": {
+          "left_side": "10 × ?",
+          "right_side": "50",
+          "blank_side": "left",
+          "is_balanced": true
+        },
+        "visual_render": {
+          "visual_type": "BalanceScale",
+          "renderer_input_digest": "932f70ffe91d9e0b352e9cadff2f2f2f446dd6d8122b20e4bda8e15a07abf290",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "BalanceScale",
+            "element_count": 6,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "10 × ?",
+              "50"
+            ],
+            "distinct_colours": [
+              "#94a3b8",
+              "#3b82f6",
+              "#fff",
+              "#64748b"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "10695b66b41bd3d680af",
+        "replay_digest": "c09261eeeec5953df1ca4c42ae37396ed10ee342d33a95319901157f798b9d34"
+      },
+      {
+        "node_id": "mat_g2_na_q3_7",
+        "seed": 78,
+        "formatter": "read_mcq",
+        "question_text": "Both sides balance evenly. 3 × ? = 30. What is the missing value?",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "BalanceScale",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 10,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 30,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 11,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 9,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 10,
+        "hints": [
+          "The number statement is: 3 × 10 = ___",
+          "We need to find what 3 × 10 equals.",
+          "Calculate: 3 × 10 = 30."
+        ],
+        "visual_type": "BalanceScale",
+        "visual_payload": {
+          "left_side": "3 × ?",
+          "right_side": "30",
+          "blank_side": "left",
+          "is_balanced": true
+        },
+        "visual_render": {
+          "visual_type": "BalanceScale",
+          "renderer_input_digest": "078e5eba19042ca8b221146a49a9c9af82e0c36f3c4471411504352f2d2f2257",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "BalanceScale",
+            "element_count": 6,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "3 × ?",
+              "30"
+            ],
+            "distinct_colours": [
+              "#94a3b8",
+              "#3b82f6",
+              "#fff",
+              "#64748b"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "ec859626d9827ad42fc6",
+        "replay_digest": "2946a4e1fe0dc76800eba72652f96f540866a8d259088f6ec6c1012bcdd042b6"
+      },
+      {
+        "node_id": "mat_g2_na_q3_7",
+        "seed": 91,
+        "formatter": "cloze",
+        "question_text": "10 × 6 = ___",
+        "correct_answer": 60,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 61,
+            "text": "61",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 66,
+            "text": "66",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 70,
+            "text": "70",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 60,
+            "text": "60",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 60,
+        "hints": [
+          "The number statement is: 10 × 6 = ___",
+          "We need to find what 10 × 6 equals.",
+          "Calculate: 10 × 6 = 60."
+        ],
+        "sample_id": "0583d92f662bac2c59d3",
+        "replay_digest": "3dfa70660c739572f906c7fb7b79feccb6521de77ea155be643d1ab90632ff44"
+      },
+      {
+        "node_id": "mat_g2_na_q3_7",
+        "seed": 103,
+        "formatter": "cloze",
+        "question_text": "___ ÷ 10 = 10",
+        "correct_answer": 100,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 20,
+            "text": "20",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 101,
+            "text": "101",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 100,
+            "text": "100",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 110,
+            "text": "110",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 100,
+        "hints": [
+          "The number statement is: ___ ÷ 10 = 10",
+          "Use multiplication to undo the operation.",
+          "10 × 10 = 100.",
+          "Check: 100 ÷ 10 = 10. ✓"
+        ],
+        "sample_id": "7b243d001b049eef42ef",
+        "replay_digest": "b04a75d0a12b78a2e2a980c081570f9b28d8e7f235ceb0b8cb274e323678398f"
+      },
+      {
+        "node_id": "mat_g2_na_q3_7",
+        "seed": 118,
+        "formatter": "mcq",
+        "question_text": "What number goes in the blank: ___ × 3 = 30?",
+        "correct_answer": 10,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 11,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 10,
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 40,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 33,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 10,
+        "hints": [
+          "The number statement is: ___ × 3 = 30",
+          "Use division to undo the operation.",
+          "30 ÷ 3 = 10.",
+          "Check: 10 × 3 = 30. ✓"
+        ],
+        "sample_id": "e805b7a8e526b35aa2df",
+        "replay_digest": "ccadcf45ca06e67d0621e37d55a0859bad3abd1f9d88084fb6969cc219d8209f"
+      },
+      {
+        "node_id": "mat_g2_na_q3_7",
+        "seed": 127,
+        "formatter": "read_mcq",
+        "question_text": "Both sides balance evenly. 2 × ? = 2. What is the missing value?",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "BalanceScale",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 1,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 2,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 3,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 0,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 1,
+        "hints": [
+          "The number statement is: 2 × 1 = ___",
+          "We need to find what 2 × 1 equals.",
+          "Calculate: 2 × 1 = 2."
+        ],
+        "visual_type": "BalanceScale",
+        "visual_payload": {
+          "left_side": "2 × ?",
+          "right_side": "2",
+          "blank_side": "left",
+          "is_balanced": true
+        },
+        "visual_render": {
+          "visual_type": "BalanceScale",
+          "renderer_input_digest": "ad3f5e7bd1be6352ef0bdcf2028659c8bc2b277df1b18929da0416b92946302d",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "BalanceScale",
+            "element_count": 6,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "2 × ?",
+              "2"
+            ],
+            "distinct_colours": [
+              "#94a3b8",
+              "#3b82f6",
+              "#fff",
+              "#64748b"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "c3621361d04e72569eec",
+        "replay_digest": "1a9f42f42934c5229946b908186c47312a4ea464811f7d13cc4880275af32c29"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "find",
+      "node_id": "mat_g2_na_q3_7",
+      "clause": "Find",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        23,
+        42,
+        57,
+        64,
+        78,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Most samples require finding a value.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "missing_number",
+      "node_id": "mat_g2_na_q3_7",
+      "clause": "missing number",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Blank or question-mark unknowns recur in nine samples.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "number_sentence",
+      "node_id": "mat_g2_na_q3_7",
+      "clause": "number sentence",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Every sample presents a multiplication or division equation.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "multiplication",
+      "node_id": "mat_g2_na_q3_7",
+      "clause": "multiplication",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        23,
+        42,
+        64,
+        78,
+        91,
+        118,
+        127
+      ],
+      "reasoning": "Multiplication number sentences make up a substantial portion of samples.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "division",
+      "node_id": "mat_g2_na_q3_7",
+      "clause": "division",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        57,
+        103
+      ],
+      "reasoning": "Division unknowns are explicitly presented in multiple samples.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "factors_2_3_4_5_10",
+      "node_id": "mat_g2_na_q3_7",
+      "clause": "2, 3, 4, 5, and 10",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "The shown equations materially use 2, 3, and 10, but do not establish the 4 and 5 tables across the set.",
+      "action_taken": "Left registered pending one independent confirmation under the prevalence standard; no source change in re-instrumentation campaign."
+    }
+  ]
+}

@@ -1,0 +1,975 @@
+{
+  "batch": "batch118_mat_g1_mg_q2_0",
+  "attested_at": "2026-09-22T14:01:09Z",
+  "attested_by": "blind-attester-gpt-terra-d02-20260922",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "read local_only/scratch/attest117/mat_g1_mg_q2_0.prompt.txt (verbatim render_prompt_block output only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "Tool-bearing GPT-Terra subagent reported using exec_command only to read its assigned prompt files and apply_patch only to write sibling verdict JSON; dispatcher did not verify sandbox-level non-access beyond that report."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g1_mg_q2_0",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g1_mg_q2_0",
+        "seed": 11,
+        "formatter": "read_mcq",
+        "question_text": "A bag and a shelf are placed apart. The distance between them is ___ paperclips.",
+        "correct_answer": "C",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "RulerMeasure",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 20,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 9,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 10,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 11,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 10,
+        "hints": [
+          "Count how many paperclips fit in the gap between the two objects.",
+          "Make sure no gaps or overlaps between the units.",
+          "The distance between them is 10 paperclips."
+        ],
+        "visual_type": "RulerMeasure",
+        "visual_payload": {
+          "ruler_start": 0,
+          "ruler_end": 20,
+          "unit": "paperclips",
+          "object_start": 0,
+          "object_end": 10,
+          "length": 10,
+          "unit_name": "paperclips"
+        },
+        "visual_render": {
+          "visual_type": "RulerMeasure",
+          "renderer_input_digest": "038b31961ab33c482159ce6472f01b6915dd55d7cbde797b9473feec00a24105",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "RulerMeasure",
+            "element_count": 23,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 1,
+            "text_labels": [
+              "0 paperclips",
+              "0",
+              "5",
+              "10",
+              "paperclips"
+            ],
+            "distinct_colours": [
+              "#f8fafc",
+              "#cbd5e1",
+              "#475569",
+              "#0f172a"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "53279e24324af8f29cbd",
+        "replay_digest": "1aea4deb43ca5f7e8a2e1856e64cb2e0c906c888dd7acb669c822a4f86ab05cf"
+      },
+      {
+        "node_id": "mat_g1_mg_q2_0",
+        "seed": 23,
+        "formatter": "read_mcq",
+        "question_text": "A ball and a shelf are placed apart. The distance between them is ___ hands.",
+        "correct_answer": "B",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "RulerMeasure",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 20,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 8,
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 9,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 7,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 8,
+        "hints": [
+          "Count how many hands fit in the gap between the two objects.",
+          "Make sure no gaps or overlaps between the units.",
+          "The distance between them is 8 hands."
+        ],
+        "visual_type": "RulerMeasure",
+        "visual_payload": {
+          "ruler_start": 0,
+          "ruler_end": 20,
+          "unit": "hands",
+          "object_start": 0,
+          "object_end": 8,
+          "length": 8,
+          "unit_name": "hands"
+        },
+        "visual_render": {
+          "visual_type": "RulerMeasure",
+          "renderer_input_digest": "89ea8f46f7feaa916ba7f9fe4653abdc2db6df35858f22a3475fb8ef6990550f",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "RulerMeasure",
+            "element_count": 21,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 1,
+            "text_labels": [
+              "0 hands",
+              "0",
+              "5",
+              "10",
+              "hands"
+            ],
+            "distinct_colours": [
+              "#f8fafc",
+              "#cbd5e1",
+              "#475569",
+              "#0f172a"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "cb302f3f90386fec6e04",
+        "replay_digest": "68bc41bb7d672ce426f77f75ac867eed35886afdc03d9f16b8f882137f7ab12b"
+      },
+      {
+        "node_id": "mat_g1_mg_q2_0",
+        "seed": 42,
+        "formatter": "read_mcq",
+        "question_text": "How long is a paintbrush? Give your answer in paperclips.",
+        "correct_answer": "B",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "RulerMeasure",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 1,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 2,
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 20,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 3,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 2,
+        "hints": [
+          "Count how many paperclips fit along the object from end to end.",
+          "Make sure no gaps or overlaps between the units.",
+          "The length is 2 paperclips."
+        ],
+        "visual_type": "RulerMeasure",
+        "visual_payload": {
+          "ruler_start": 0,
+          "ruler_end": 20,
+          "unit": "paperclips",
+          "object_start": 0,
+          "object_end": 2,
+          "length": 2,
+          "unit_name": "paperclips"
+        },
+        "visual_render": {
+          "visual_type": "RulerMeasure",
+          "renderer_input_digest": "13b93bfba11eb7e752c10cdecb9105de7c0822fd3d1afda251a01f3ee8a6f511",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "RulerMeasure",
+            "element_count": 21,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 1,
+            "text_labels": [
+              "0 paperclips",
+              "0",
+              "5",
+              "10",
+              "paperclips"
+            ],
+            "distinct_colours": [
+              "#f8fafc",
+              "#cbd5e1",
+              "#475569",
+              "#0f172a"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "17c6176de99a8688aa69",
+        "replay_digest": "09a8efc24f5458d6b7c5465b96fe4bdc86fdd7a066c43941bae03cbeb2b978bc"
+      },
+      {
+        "node_id": "mat_g1_mg_q2_0",
+        "seed": 57,
+        "formatter": "read_mcq",
+        "question_text": "How long is a pencil? Give your answer in hands.",
+        "correct_answer": "C",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "RulerMeasure",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 20,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 5,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 4,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 3,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 4,
+        "hints": [
+          "Count how many hands fit along the object from end to end.",
+          "Make sure no gaps or overlaps between the units.",
+          "The length is 4 hands."
+        ],
+        "visual_type": "RulerMeasure",
+        "visual_payload": {
+          "ruler_start": 0,
+          "ruler_end": 20,
+          "unit": "hands",
+          "object_start": 0,
+          "object_end": 4,
+          "length": 4,
+          "unit_name": "hands"
+        },
+        "visual_render": {
+          "visual_type": "RulerMeasure",
+          "renderer_input_digest": "05e6ac7157a0563608072e2c7e826ecccddbd44f672c14582f66fed4d4b80d4c",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "RulerMeasure",
+            "element_count": 21,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 1,
+            "text_labels": [
+              "0 hands",
+              "0",
+              "5",
+              "10",
+              "hands"
+            ],
+            "distinct_colours": [
+              "#f8fafc",
+              "#cbd5e1",
+              "#475569",
+              "#0f172a"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "8f7195d91b37974d21f1",
+        "replay_digest": "a79b1443335101859d8df7a1796a92c3d982ba01c5667db0975452001906ffd8"
+      },
+      {
+        "node_id": "mat_g1_mg_q2_0",
+        "seed": 64,
+        "formatter": "read_mcq",
+        "question_text": "A shelf and a desk are placed apart. The distance between them is ___ paperclips.",
+        "correct_answer": "C",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "RulerMeasure",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 2,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 4,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 3,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 20,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 3,
+        "hints": [
+          "Count how many paperclips fit in the gap between the two objects.",
+          "Make sure no gaps or overlaps between the units.",
+          "The distance between them is 3 paperclips."
+        ],
+        "visual_type": "RulerMeasure",
+        "visual_payload": {
+          "ruler_start": 0,
+          "ruler_end": 20,
+          "unit": "paperclips",
+          "object_start": 0,
+          "object_end": 3,
+          "length": 3,
+          "unit_name": "paperclips"
+        },
+        "visual_render": {
+          "visual_type": "RulerMeasure",
+          "renderer_input_digest": "f66c07c435a8b6914f0542f42f4e89c2c1d3316b15d53234260dd180da28d6e5",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "RulerMeasure",
+            "element_count": 21,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 1,
+            "text_labels": [
+              "0 paperclips",
+              "0",
+              "5",
+              "10",
+              "paperclips"
+            ],
+            "distinct_colours": [
+              "#f8fafc",
+              "#cbd5e1",
+              "#475569",
+              "#0f172a"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "3c7361b66638fac05cd5",
+        "replay_digest": "4c4bcf4e36fd84d9018fbd7198f19f30509da26b8a8a70cc882c83b8babf7276"
+      },
+      {
+        "node_id": "mat_g1_mg_q2_0",
+        "seed": 78,
+        "formatter": "read_mcq",
+        "question_text": "How long is a spoon? Give your answer in paperclips.",
+        "correct_answer": "C",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "RulerMeasure",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 20,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 5,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 6,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 7,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 6,
+        "hints": [
+          "Count how many paperclips fit along the object from end to end.",
+          "Make sure no gaps or overlaps between the units.",
+          "The length is 6 paperclips."
+        ],
+        "visual_type": "RulerMeasure",
+        "visual_payload": {
+          "ruler_start": 0,
+          "ruler_end": 20,
+          "unit": "paperclips",
+          "object_start": 0,
+          "object_end": 6,
+          "length": 6,
+          "unit_name": "paperclips"
+        },
+        "visual_render": {
+          "visual_type": "RulerMeasure",
+          "renderer_input_digest": "958a2a2fc966a56c5bb097c9f05ac887a39630785ece904f5965ec694d3de710",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "RulerMeasure",
+            "element_count": 21,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 1,
+            "text_labels": [
+              "0 paperclips",
+              "0",
+              "5",
+              "10",
+              "paperclips"
+            ],
+            "distinct_colours": [
+              "#f8fafc",
+              "#cbd5e1",
+              "#475569",
+              "#0f172a"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "5829997d66c3a88377f2",
+        "replay_digest": "57c0fb6fa878bb3efe7fa33121059d500e551999a0d3ebbd513ef0d94b459beb"
+      },
+      {
+        "node_id": "mat_g1_mg_q2_0",
+        "seed": 91,
+        "formatter": "read_mcq",
+        "question_text": "How long is a pencil? Give your answer in blocks.",
+        "correct_answer": "D",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "RulerMeasure",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 6,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 20,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 8,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 7,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 7,
+        "hints": [
+          "Count how many blocks fit along the object from end to end.",
+          "Make sure no gaps or overlaps between the units.",
+          "The length is 7 blocks."
+        ],
+        "visual_type": "RulerMeasure",
+        "visual_payload": {
+          "ruler_start": 0,
+          "ruler_end": 20,
+          "unit": "blocks",
+          "object_start": 0,
+          "object_end": 7,
+          "length": 7,
+          "unit_name": "blocks"
+        },
+        "visual_render": {
+          "visual_type": "RulerMeasure",
+          "renderer_input_digest": "88beeb15287aeb8b9a874ec19d36c912c7e948a619bd2216d44eba85e0f68149",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "RulerMeasure",
+            "element_count": 21,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 1,
+            "text_labels": [
+              "0 blocks",
+              "0",
+              "5",
+              "10",
+              "blocks"
+            ],
+            "distinct_colours": [
+              "#f8fafc",
+              "#cbd5e1",
+              "#475569",
+              "#0f172a"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "988f88fed4de9f072b36",
+        "replay_digest": "41209e7c539b3005e41dda336cec86b1f9e6f0f84fe4324a33ed00820e03459b"
+      },
+      {
+        "node_id": "mat_g1_mg_q2_0",
+        "seed": 103,
+        "formatter": "read_mcq",
+        "question_text": "A shelf and a ball are placed apart. The distance between them is ___ paperclips.",
+        "correct_answer": "B",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "RulerMeasure",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 20,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 5,
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 4,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 6,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 5,
+        "hints": [
+          "Count how many paperclips fit in the gap between the two objects.",
+          "Make sure no gaps or overlaps between the units.",
+          "The distance between them is 5 paperclips."
+        ],
+        "visual_type": "RulerMeasure",
+        "visual_payload": {
+          "ruler_start": 0,
+          "ruler_end": 20,
+          "unit": "paperclips",
+          "object_start": 0,
+          "object_end": 5,
+          "length": 5,
+          "unit_name": "paperclips"
+        },
+        "visual_render": {
+          "visual_type": "RulerMeasure",
+          "renderer_input_digest": "35f7b4b711d3a3b0de45eda6b91cebb72c036954376b5f40c46f4a0c68cbd75f",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "RulerMeasure",
+            "element_count": 21,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 1,
+            "text_labels": [
+              "0 paperclips",
+              "0",
+              "5",
+              "10",
+              "paperclips"
+            ],
+            "distinct_colours": [
+              "#f8fafc",
+              "#cbd5e1",
+              "#475569",
+              "#0f172a"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "f2247d29bcd97437d278",
+        "replay_digest": "ff82b48d3cb67b7dbb1450d33236ccfd77e353045afefe21b9343456d3109d27"
+      },
+      {
+        "node_id": "mat_g1_mg_q2_0",
+        "seed": 118,
+        "formatter": "read_mcq",
+        "question_text": "How long is a paintbrush? Give your answer in blocks.",
+        "correct_answer": "B",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "RulerMeasure",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 3,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 4,
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 20,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 5,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 4,
+        "hints": [
+          "Count how many blocks fit along the object from end to end.",
+          "Make sure no gaps or overlaps between the units.",
+          "The length is 4 blocks."
+        ],
+        "visual_type": "RulerMeasure",
+        "visual_payload": {
+          "ruler_start": 0,
+          "ruler_end": 20,
+          "unit": "blocks",
+          "object_start": 0,
+          "object_end": 4,
+          "length": 4,
+          "unit_name": "blocks"
+        },
+        "visual_render": {
+          "visual_type": "RulerMeasure",
+          "renderer_input_digest": "f236edc49edc0a45da81900d831c3b33d20866c4c113c41621b5600414ca7249",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "RulerMeasure",
+            "element_count": 21,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 1,
+            "text_labels": [
+              "0 blocks",
+              "0",
+              "5",
+              "10",
+              "blocks"
+            ],
+            "distinct_colours": [
+              "#f8fafc",
+              "#cbd5e1",
+              "#475569",
+              "#0f172a"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "da9a6ff697b3f9e1d3e6",
+        "replay_digest": "aac970e678f1c26966199ba3a9b759b20ddb733d79f8fa0460d2e3d62f5cf6b7"
+      },
+      {
+        "node_id": "mat_g1_mg_q2_0",
+        "seed": 127,
+        "formatter": "read_mcq",
+        "question_text": "How long is a pencil? Give your answer in paperclips.",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "RulerMeasure",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 2,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 3,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 20,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 1,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 2,
+        "hints": [
+          "Count how many paperclips fit along the object from end to end.",
+          "Make sure no gaps or overlaps between the units.",
+          "The length is 2 paperclips."
+        ],
+        "visual_type": "RulerMeasure",
+        "visual_payload": {
+          "ruler_start": 0,
+          "ruler_end": 20,
+          "unit": "paperclips",
+          "object_start": 0,
+          "object_end": 2,
+          "length": 2,
+          "unit_name": "paperclips"
+        },
+        "visual_render": {
+          "visual_type": "RulerMeasure",
+          "renderer_input_digest": "13b93bfba11eb7e752c10cdecb9105de7c0822fd3d1afda251a01f3ee8a6f511",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "RulerMeasure",
+            "element_count": 21,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 1,
+            "text_labels": [
+              "0 paperclips",
+              "0",
+              "5",
+              "10",
+              "paperclips"
+            ],
+            "distinct_colours": [
+              "#f8fafc",
+              "#cbd5e1",
+              "#475569",
+              "#0f172a"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "beb4f113a2e0e81bae78",
+        "replay_digest": "196fd9a68fb458c4a45a3b21fcf65ab7b40734c295a33cfb86d6759e8ab8f8c4"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "measure_length",
+      "node_id": "mat_g1_mg_q2_0",
+      "clause": "Measure the length of an object",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        57,
+        78
+      ],
+      "reasoning": "Measuring an object's length occurs across most of the object-focused prompts: seeds 42, 57, and 78 ask how long a paintbrush, pencil, or spoon is in a specified unit, with comparable object-length items elsewhere in the set.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "measure_distance",
+      "node_id": "mat_g1_mg_q2_0",
+      "clause": "distance between two objects",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        64
+      ],
+      "reasoning": "Several samples directly ask for the distance between two separately named objects, such as the bag and shelf at seed 11, ball and shelf at seed 23, and shelf and desk at seed 64. This repeated scenario meaningfully exhibits the distance clause.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "non_standard_units",
+      "node_id": "mat_g1_mg_q2_0",
+      "clause": "non-standard units",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        57,
+        91
+      ],
+      "reasoning": "Every displayed measurement is expressed in an informal unit such as paperclips, hands, or blocks. Seeds 11, 57, and 91 illustrate the variety, which runs through both the length and distance prompts.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    }
+  ]
+}

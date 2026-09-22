@@ -1,0 +1,542 @@
+{
+  "batch": "batch145_mat_g3_na_q1_5",
+  "attested_at": "2026-09-22T14:39:16Z",
+  "attested_by": "blind-attester-gpt-terra-d28d29-20260922",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "read local_only/scratch/attest117/mat_g3_na_q1_5.prompt.txt (verbatim render_prompt_block output only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "Tool-bearing GPT-Terra subagent reported reading only assigned prompts and writing/validating only sibling verdict outputs; exact tool names were not fully reported, and dispatcher did not verify sandbox-level non-access beyond that report."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g3_na_q1_5",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g3_na_q1_5",
+        "seed": 11,
+        "formatter": "mcq",
+        "question_text": "Which statement is true?",
+        "correct_answer": "4560 > 1188",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "4560 < 1188",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "4560 > 1188",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "1188 > 4560",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "4560 = 1188",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "4560 > 1188",
+        "hints": [
+          "Compare 4560 and 1188.",
+          "Start from the largest place value and compare each digit.",
+          "4560 is bigger than 1188, so we write 4560 > 1188."
+        ],
+        "sample_id": "644fb6be557da81ea046",
+        "replay_digest": "17d9f9df67d31ab8529b7080bf3b7e0a65e84de07738ee4a9b19f97d55743723"
+      },
+      {
+        "node_id": "mat_g3_na_q1_5",
+        "seed": 23,
+        "formatter": "cloze",
+        "question_text": "Compare the numbers: 2897 ___ 6745. Which sign is correct: >, <, or =?",
+        "correct_answer": "<",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": ">",
+            "text": ">",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "=",
+            "text": "=",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "<",
+            "text": "<",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "<",
+        "hints": [
+          "Compare 2897 and 6745.",
+          "Start from the largest place value and compare each digit.",
+          "2897 is smaller than 6745, so we write 2897 < 6745."
+        ],
+        "sample_id": "3a579bb72afc3074f0ff",
+        "replay_digest": "f8f514729f78f64758faa633a901fca65295360bb85aa554063feb23e3259aed"
+      },
+      {
+        "node_id": "mat_g3_na_q1_5",
+        "seed": 42,
+        "formatter": "true_false",
+        "question_text": "4507 > 4507. True or False?",
+        "correct_answer": false,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "true_false",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "true_false",
+          "experience": "standard"
+        },
+        "resolved_answer": false,
+        "hints": [
+          "Compare 4507 and 4507.",
+          "Start from the largest place value and compare each digit.",
+          "4507 is the same as 4507, so we write 4507 = 4507."
+        ],
+        "sample_id": "ca32100d045afb984072",
+        "replay_digest": "aa5755ebf1f84fb5a682a95bd0af09d27385b8a17a5589458767c9783be18b1a"
+      },
+      {
+        "node_id": "mat_g3_na_q1_5",
+        "seed": 57,
+        "formatter": "cloze",
+        "question_text": "Yna has 4547 watercolor sets. Another classmate has 7312 watercolor sets. Which comparison is correct: 4547 ___ 7312?",
+        "correct_answer": "<",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": ">",
+            "text": ">",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "=",
+            "text": "=",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "<",
+            "text": "<",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "<",
+        "hints": [
+          "Compare 4547 and 7312.",
+          "Start from the largest place value and compare each digit.",
+          "4547 is smaller than 7312, so we write 4547 < 7312."
+        ],
+        "sample_id": "90f3a2c7a3520865aa32",
+        "replay_digest": "e031569c1dab26d935f868e3bd4fee5bf5124b67a9dcea06904e68518651e4ad"
+      },
+      {
+        "node_id": "mat_g3_na_q1_5",
+        "seed": 64,
+        "formatter": "true_false",
+        "question_text": "5002 > 60. True or False?",
+        "correct_answer": true,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "true_false",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "true_false",
+          "experience": "standard"
+        },
+        "resolved_answer": true,
+        "hints": [
+          "Compare 5002 and 60.",
+          "Start from the largest place value and compare each digit.",
+          "5002 is bigger than 60, so we write 5002 > 60."
+        ],
+        "sample_id": "755fed3cb12ced09c7f8",
+        "replay_digest": "f644105db2ae4c88370267567ec6e53b124c87e8a16df713188dbe5ad03c51b1"
+      },
+      {
+        "node_id": "mat_g3_na_q1_5",
+        "seed": 78,
+        "formatter": "mcq",
+        "question_text": "Which statement is true?",
+        "correct_answer": "4217 = 4217",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "4217 = 4217",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "4217 < 4217",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "4217 > 4218",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "4217 > 4217",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "4217 = 4217",
+        "hints": [
+          "Compare 4217 and 4217.",
+          "Start from the largest place value and compare each digit.",
+          "4217 is the same as 4217, so we write 4217 = 4217."
+        ],
+        "sample_id": "445e3ae7379740baad9b",
+        "replay_digest": "95e3fc41fcbc899c02adfc97281df78e057035bab08c125bfd1ba5ec67bdea24"
+      },
+      {
+        "node_id": "mat_g3_na_q1_5",
+        "seed": 91,
+        "formatter": "true_false",
+        "question_text": "Kuya Tads has 2644 water bowls. Another classmate has 2644 water bowls. Which comparison is correct: 2644 ___ 2644? The answer is =. True or False?",
+        "correct_answer": true,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "true_false",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "true_false",
+          "experience": "standard"
+        },
+        "resolved_answer": true,
+        "hints": [
+          "Compare 2644 and 2644.",
+          "Start from the largest place value and compare each digit.",
+          "2644 is the same as 2644, so we write 2644 = 2644."
+        ],
+        "sample_id": "ba4d917c8b47e8dc6973",
+        "replay_digest": "0bd8de3971ae0fdea5e25dcdf3b576fbc143ef4f67d681f00347225ba9210a22"
+      },
+      {
+        "node_id": "mat_g3_na_q1_5",
+        "seed": 103,
+        "formatter": "true_false",
+        "question_text": "3853 < 4531. True or False?",
+        "correct_answer": true,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "true_false",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "true_false",
+          "experience": "standard"
+        },
+        "resolved_answer": true,
+        "hints": [
+          "Compare 3853 and 4531.",
+          "Start from the largest place value and compare each digit.",
+          "3853 is smaller than 4531, so we write 3853 < 4531."
+        ],
+        "sample_id": "7526fae894bac672feb0",
+        "replay_digest": "4b411f2ae3fb2f28c69233abfe5428721aedb476a964916a8a0cf53d53d4ac86"
+      },
+      {
+        "node_id": "mat_g3_na_q1_5",
+        "seed": 118,
+        "formatter": "mcq",
+        "question_text": "Which statement is true?",
+        "correct_answer": "1623 = 1623",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "1623 < 1623",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "1623 > 1623",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "1623 = 1623",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "1623 > 1624",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "1623 = 1623",
+        "hints": [
+          "Compare 1623 and 1623.",
+          "Start from the largest place value and compare each digit.",
+          "1623 is the same as 1623, so we write 1623 = 1623."
+        ],
+        "sample_id": "cae1d12042975b98bf25",
+        "replay_digest": "aa7d8deb6542df8eecf73bf762fd2b98710f5055f5138884cff1d8c8baae5775"
+      },
+      {
+        "node_id": "mat_g3_na_q1_5",
+        "seed": 127,
+        "formatter": "cloze",
+        "question_text": "Pia has 2173 leashes. Another classmate has 769 leashes. Which comparison is correct: 2173 ___ 769?",
+        "correct_answer": ">",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "<",
+            "text": "<",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": ">",
+            "text": ">",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "=",
+            "text": "=",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": ">",
+        "hints": [
+          "Compare 2173 and 769.",
+          "Start from the largest place value and compare each digit.",
+          "2173 is bigger than 769, so we write 2173 > 769."
+        ],
+        "sample_id": "3a5847f156bde4a49ee5",
+        "replay_digest": "12f8ae0c8a5f33433446093e0c22b33ca799bfd4c680cd141c71dfd279914b53"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "compare",
+      "node_id": "mat_g3_na_q1_5",
+      "clause": "Compare",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Each seed requires selecting or verifying the relationship between two numerical quantities.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "numbers",
+      "node_id": "mat_g3_na_q1_5",
+      "clause": "numbers",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All questions compare numbers directly, including equal pairs and numbers with different digit lengths.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "up_to_10000",
+      "node_id": "mat_g3_na_q1_5",
+      "clause": "up to 10 000",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Every compared value is within 10,000; examples range from 60 and 769 to 7312.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "symbols",
+      "node_id": "mat_g3_na_q1_5",
+      "clause": "symbols =, >, and <",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "The sample set repeatedly uses greater-than, less-than, and equal signs, with equality explicitly tested in seeds 42, 78, and 91.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    }
+  ]
+}

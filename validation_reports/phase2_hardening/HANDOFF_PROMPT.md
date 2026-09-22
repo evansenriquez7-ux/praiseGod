@@ -1,7 +1,8 @@
 # Handoff — continue the Phase 2 hardening plan
 
-**Refreshed 2026-09-22 after closeout proof commit `2b7c6d18`; tree CERTIFIED after the
-follow-up lock-release commit. This file is deliberately a POINTER, not a summary.**
+**Refreshed 2026-09-23 after the ruling-9 prevalence re-dispatch campaign; tree remains
+CERTIFIED because the campaign touched no digest-bound input. This file is deliberately a
+POINTER, not a summary.**
 
 Earlier versions duplicated the plan's status and then drifted from it. Two sources of truth
 is how a session inherits confident wrong numbers, so status lives in exactly one place —
@@ -69,7 +70,44 @@ PYTHONPATH=. .venv/bin/python tests/tree_state.py --complete --note "where you g
 
 ---
 
-## ⚠ 2026-09-22 (latest) — CLOSEOUT REVIEWED AND COMPLETED. START HERE.
+## ⚠ 2026-09-23 (latest) — RULING-9 RE-DISPATCH COMPLETE. START HERE.
+
+Tree is **CERTIFIED** at `dfae9bbb7a1398d7`; all four digest-bound artifact families remain
+fresh. `H-06` remains OPEN. The campaign moved no input digest and owes no re-proof.
+
+The capability corpus is now single-standard: **151 nodes / 767 `(node, capability)` pairs**
+were re-judged under the prevalence standard in **34 dispatches (`batch117`–`batch150`) by 25
+truthfully named GPT-Terra identities**. The largest identity covered 11 nodes, below §6H's 25.
+Verdicts: **593 PROVIDED / 174 NOT_PROVIDED**. Filing was mechanical through
+`tests.attester_file`; the dispatching session authored no verdict.
+
+Measured alone after filing:
+
+| stage | count | note |
+|---|---:|---|
+| `capability_phase2` | **173** | 173 CONTRADICTED; 0 UNATTESTED, STALE, UNADJUDICABLE, §6G, §6H, or other |
+| `judgment_reviews_5` | **1252 module / 1253 stage** | unchanged; still 151 schema-v2 blind re-reviews owed |
+| `assertion_coverage_8` | **3 in 1 family** | downstream of the red §6F baseline; do not re-run expecting movement |
+
+The old-instrument count was 57. **57 → 173 is the sharper instrument working, not a content
+regression.** It also changes rater family from Claude-era records to GPT-Terra; cross-family
+agreement remains unmeasured. A lone NOT_PROVIDED still requires an independent confirmation
+before engineering work. Do not tune the count downward.
+
+**NEXT:** Priority 2 is the seven-dispatch §5 schema-v2 blind re-review campaign. Use
+`tests.judgment_batches` and file the dispatch-time skeletons through `tests.file_reviews`;
+never rebuild samples at filing time. Only after the §5 queue is single-standard should source
+work be batched against confirmed capability findings.
+
+Named operational defects/limits retained: per-node packet files are mandatory because item IDs
+restart at `item_001`; several Attesters initially returned wrong JSON enums/keys or combined
+node files, and the mechanical join rejected every malformed return before filing. The existing
+Graphify index is on the legacy pre-#1504 node-ID scheme and its campaign query was weak, so
+executed repository tooling—not that traversal—was the evidence source.
+
+---
+
+## 2026-09-22 (historical) — CLOSEOUT REVIEWED AND COMPLETED.
 
 Tree is **CERTIFIED** at `dfae9bbb7a1398d7`, worktree clean, all four artifact families fresh.
 `H-06` is `released @ 505baf4e`, still OPEN. The chain is current — **do not re-run it.**

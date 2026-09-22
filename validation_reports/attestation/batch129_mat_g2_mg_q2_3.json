@@ -1,0 +1,624 @@
+{
+  "batch": "batch129_mat_g2_mg_q2_3",
+  "attested_at": "2026-09-22T14:16:21Z",
+  "attested_by": "blind-attester-gpt-terra-d13-20260922",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "read local_only/scratch/attest117/mat_g2_mg_q2_3.prompt.txt (verbatim render_prompt_block output only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "Tool-bearing GPT-Terra subagent reported shell reads only on assigned prompts, apply_patch writes only to sibling verdict JSON, and jq validation only on those outputs; dispatcher did not verify sandbox-level non-access beyond that report."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g2_mg_q2_3",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g2_mg_q2_3",
+        "seed": 11,
+        "formatter": "mcq",
+        "question_text": "The distance from the school gate to the science lab is 42 m. The distance from the school gate to the gym is 40 m. How many meters farther is the science lab than the gym?",
+        "correct_answer": 2,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 1,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 2,
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 12,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 7,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 2,
+        "hints": [
+          "Read the measurement on the ruler carefully.",
+          "The length is 2 m."
+        ],
+        "sample_id": "84d0adaa6cff744067c7",
+        "replay_digest": "1f8ff8e9bd52ab1685f1c8ec82ac005dc70eb73243ec0e482dd35bc2efb0ccae"
+      },
+      {
+        "node_id": "mat_g2_mg_q2_3",
+        "seed": 23,
+        "formatter": "cloze",
+        "question_text": "A book is 18 cm long. A ruler is 15 cm long. If they are placed end to end, what is their combined length in cm?",
+        "correct_answer": 33,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 43,
+            "text": "43",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 33,
+            "text": "33",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 28,
+            "text": "28",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 38,
+            "text": "38",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 33,
+        "hints": [
+          "Read the measurement on the ruler carefully.",
+          "The length is 33 cm."
+        ],
+        "sample_id": "b3bc919cd8402a4beefd",
+        "replay_digest": "8cd75ca315d25584912c7e599812dcde61528b7d50f0bce9fb13bc14c17dcf70"
+      },
+      {
+        "node_id": "mat_g2_mg_q2_3",
+        "seed": 42,
+        "formatter": "cloze",
+        "question_text": "A book is 18 cm long. A shoe is 20 cm long. If they are placed end to end, what is their combined length in cm?",
+        "correct_answer": 38,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 43,
+            "text": "43",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 48,
+            "text": "48",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 38,
+            "text": "38",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 33,
+            "text": "33",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 38,
+        "hints": [
+          "Read the measurement on the ruler carefully.",
+          "The length is 38 cm."
+        ],
+        "sample_id": "1a79b526e7e7a65bfd28",
+        "replay_digest": "7e8d730c49cb12e96721a33c4c0096b0445542dd19a2c94f9083c9784877c199"
+      },
+      {
+        "node_id": "mat_g2_mg_q2_3",
+        "seed": 57,
+        "formatter": "mcq",
+        "question_text": "Mia walked 42 m from the playground to the canteen, and then walked 30 m from the canteen to the gym. What is the total distance Mia walked in meters?",
+        "correct_answer": 72,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 82,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 77,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 67,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 72,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 72,
+        "hints": [
+          "Read the measurement on the ruler carefully.",
+          "The length is 72 m."
+        ],
+        "sample_id": "c08e4aeda97e209135dd",
+        "replay_digest": "28f21c5318c3ba66c1c5a3f40ff18c9e032ff3bd3004890b99160edac2f6d08b"
+      },
+      {
+        "node_id": "mat_g2_mg_q2_3",
+        "seed": 64,
+        "formatter": "cloze",
+        "question_text": "A shoe is 20 cm long. A ruler is 15 cm long. If they are placed end to end, what is their combined length in cm?",
+        "correct_answer": 35,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 30,
+            "text": "30",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 45,
+            "text": "45",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 35,
+            "text": "35",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 40,
+            "text": "40",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 35,
+        "hints": [
+          "Read the measurement on the ruler carefully.",
+          "The length is 35 cm."
+        ],
+        "sample_id": "086d3bfa608209c53192",
+        "replay_digest": "d02c1822d9bd6498f5ff11bc3b3a0086fb948bb44c7a6b529e11e88e7b1eeb80"
+      },
+      {
+        "node_id": "mat_g2_mg_q2_3",
+        "seed": 78,
+        "formatter": "cloze",
+        "question_text": "A notebook is 20 cm long. A shoe is 21 cm long. If they are placed end to end, what is their combined length in cm?",
+        "correct_answer": 41,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 36,
+            "text": "36",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 46,
+            "text": "46",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 51,
+            "text": "51",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 41,
+            "text": "41",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 41,
+        "hints": [
+          "Read the measurement on the ruler carefully.",
+          "The length is 41 cm."
+        ],
+        "sample_id": "5f4b71506619db59a1cf",
+        "replay_digest": "dcbf15d21f4c1e1aa25805c6fb00403a1282de86b3aae95e85f72c00b4fdf8d5"
+      },
+      {
+        "node_id": "mat_g2_mg_q2_3",
+        "seed": 91,
+        "formatter": "cloze",
+        "question_text": "A shoe is 20 cm long. A spoon is 12 cm long. How many cm longer is a shoe than a spoon?",
+        "correct_answer": 8,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 18,
+            "text": "18",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 3,
+            "text": "3",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 13,
+            "text": "13",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 8,
+            "text": "8",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 8,
+        "hints": [
+          "Read the measurement on the ruler carefully.",
+          "The length is 8 cm."
+        ],
+        "sample_id": "4dfd5bc7d3834bb8df34",
+        "replay_digest": "afb31d1e9fa8b0232e7fda3942a46066613871214f69502485644417fbf6196b"
+      },
+      {
+        "node_id": "mat_g2_mg_q2_3",
+        "seed": 103,
+        "formatter": "cloze",
+        "question_text": "A shoe is 20 cm long. A book is 18 cm long. How many cm longer is a shoe than a book?",
+        "correct_answer": 2,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 7,
+            "text": "7",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 1,
+            "text": "1",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 2,
+            "text": "2",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 12,
+            "text": "12",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 2,
+        "hints": [
+          "Read the measurement on the ruler carefully.",
+          "The length is 2 cm."
+        ],
+        "sample_id": "b7f586b22d531053d8b4",
+        "replay_digest": "d8ed686774c8dba6a871b1055dee9ad2f2c209bcadd27a7cba1ef0622ff4bcd0"
+      },
+      {
+        "node_id": "mat_g2_mg_q2_3",
+        "seed": 118,
+        "formatter": "mcq",
+        "question_text": "A notebook is 20 cm long. A book is 18 cm long. How many cm longer is a notebook than a book?",
+        "correct_answer": 2,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 2,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 7,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 1,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 12,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 2,
+        "hints": [
+          "Read the measurement on the ruler carefully.",
+          "The length is 2 cm."
+        ],
+        "sample_id": "a2d8b862aabe819566e9",
+        "replay_digest": "b5c41b191151e9f99bf530e1011e90d3154761d8592647534f005108121fce16"
+      },
+      {
+        "node_id": "mat_g2_mg_q2_3",
+        "seed": 127,
+        "formatter": "cloze",
+        "question_text": "A book is 18 cm long. A spoon is 12 cm long. If they are placed end to end, what is their combined length in cm?",
+        "correct_answer": 30,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 30,
+            "text": "30",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 40,
+            "text": "40",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 25,
+            "text": "25",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 35,
+            "text": "35",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 30,
+        "hints": [
+          "Read the measurement on the ruler carefully.",
+          "The length is 30 cm."
+        ],
+        "sample_id": "4731691703b4302e0e22",
+        "replay_digest": "7e5cfc15aa720c2669b8e108fbc314fcf871534d941f767ca9bd6ad62b40f6a2"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "solve_problems",
+      "node_id": "mat_g2_mg_q2_3",
+      "clause": "Solve problems",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Every sample is a word problem whose answer requires combining or finding the difference between stated measures.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "length",
+      "node_id": "mat_g2_mg_q2_3",
+      "clause": "length",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        23,
+        42,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Most samples ask for a combined object length or how much longer one object is, so length-problem work predominates.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    },
+    {
+      "capability_id": "distance",
+      "node_id": "mat_g2_mg_q2_3",
+      "clause": "distance",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        57
+      ],
+      "reasoning": "Two distinct problems require finding a difference or total for travel between named school locations; distance is therefore directly solved, though less frequent than length.",
+      "action_taken": "No source action; prevalence-standard evidence replaces superseded neutral-standard verdict."
+    }
+  ]
+}
