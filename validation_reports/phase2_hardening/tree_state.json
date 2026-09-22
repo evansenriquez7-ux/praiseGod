@@ -1,7 +1,13 @@
 {
   "schema_version": 1,
   "note": "Intent record for interruption safety. Written when a batch, chain or campaign STARTS and cleared when it completes; an intent left open means a session did not reach its finish line. Deliberately digest-free -- see tests/tree_state.py. Read with `PYTHONPATH=. .venv/bin/python tests/tree_state.py`.",
-  "open_intent": null,
+  "open_intent": {
+    "kind": "batch",
+    "began_at": "2026-09-22T11:42:51+08:00",
+    "session": "codex-closeout-b116-20260922",
+    "note": "closeout: 3 string corrections + §1M operator doc + batch116 prevalence filing",
+    "next_step": "Land every remaining source edit, then run the re-proof chain in order."
+  },
   "last_completed": {
     "kind": "chain",
     "began_at": "2026-09-22T06:12:19+08:00",

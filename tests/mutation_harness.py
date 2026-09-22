@@ -1947,8 +1947,10 @@ MUTATIONS: List[Mutation] = [
             "id SETS can coincide while the rendered structure belongs to the other "
             "process. The existing `set(active) != set(by_id)` guard passes, and one run "
             "attaches the other run's visual evidence with no crash and no warning. "
-            "Measured cost before the fix: §6F reported 55 findings on a tree that had "
-            "61, and §5 reported 1253 where it has 1252. Deliberately NOT aimed at the "
+            "Measured cost before the fix: §6F reported 55 findings under concurrent load "
+            "on a tree that had 61, against 61 on three clean runs. (A §5 figure was also "
+            "cited originally and was misattributed -- see the module docstring.) "
+            "Deliberately NOT aimed at the "
             "loud RuntimeError -- a plant that only trips that guard proves nothing new."
         ),
         edits={

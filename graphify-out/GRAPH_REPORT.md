@@ -1,16 +1,16 @@
 # Graph Report - ccmed  (2026-09-22)
 
 ## Corpus Check
-- 1031 files · ~2,106,013 words
+- 1031 files · ~2,106,230 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 6206 nodes · 9990 edges · 464 communities (411 shown, 53 thin omitted)
+- 6206 nodes · 9990 edges · 463 communities (411 shown, 52 thin omitted)
 - Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 245 edges (avg confidence: 0.65)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `ed021f01`
+- Built from commit: `671c514e`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -461,7 +461,6 @@
 - [[_COMMUNITY_test_the_live_ledger_has_a_row_per_blocker|test_the_live_ledger_has_a_row_per_blocker]]
 - [[_COMMUNITY_test_a_gap_in_the_row_ids_is_caught|test_a_gap_in_the_row_ids_is_caught]]
 - [[_COMMUNITY_test_a_contiguous_run_including_two_digits_is_accepted|test_a_contiguous_run_including_two_digits_is_accepted]]
-- [[_COMMUNITY_test_writing_the_state_file_does_not_move_the_input_digest|test_writing_the_state_file_does_not_move_the_input_digest]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `Hardening ledger archive` - 414 edges
@@ -490,7 +489,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (464 total, 53 thin omitted)
+## Communities (463 total, 52 thin omitted)
 
 ### Community 0 - "Community 0"
 Cohesion: 0.12
@@ -905,8 +904,8 @@ Cohesion: 0.09
 Nodes (29): _generate_addition_examples(), _generate_comparing_examples(), _generate_counting_examples(), _generate_decompose_examples(), generate_intro_content(), get_available_intro_nodes(), get_interest_themes(), _get_introduction() (+21 more)
 
 ### Community 103 - "Community 103"
-Cohesion: 0.03
-Nodes (58): 1. Distractor Non-Determinism Fix in `place_value.py`, 1. Fractions answer-key false positive — `mat_g2_na_q4_0`/`_1`/`_2`, 2026-08-13 — length_measurement: the largest FAIL cluster in the tree, 2026-08-19 — Unit 3 completion + full `run_all` verification, 2026-08-20 (tick 6) — There is no pytest deadlock, and three tests I broke in tick 3, 2026-08-21 (tick 13) — §2B: a node may not advertise a formatter it cannot serve, 2026-08-21 (tick 14) — CORRECTION: §2B's 236 was two defects, not one, 2026-08-23 — §6G: an attestation must show its work (+50 more)
+Cohesion: 0.04
+Nodes (57): 1. Distractor Non-Determinism Fix in `place_value.py`, 1. Fractions answer-key false positive — `mat_g2_na_q4_0`/`_1`/`_2`, §1G seed reachability: measured, and the queue is empty, 2026-08-13 — length_measurement: the largest FAIL cluster in the tree, 2026-08-19 — Unit 3 completion + full `run_all` verification, 2026-08-20 (tick 6) — There is no pytest deadlock, and three tests I broke in tick 3, 2026-08-20 (tick 8) — A dispatch-only tick: coverage 52 → 127, 2026-08-21 (tick 13) — §2B: a node may not advertise a formatter it cannot serve (+49 more)
 
 ### Community 104 - "Community 104"
 Cohesion: 0.23
@@ -1149,8 +1148,8 @@ Cohesion: 0.25
 Nodes (14): _errors(), Negative controls for the versioned, lossless Phase-2 judgment record., _record(), test_altered_requirement_wording_is_unadjudicable(), test_assessment_identity_must_match_dispatch(), test_clause_must_belong_to_attributed_dispatch(), test_duplicate_and_foreign_clause_ids_are_rejected(), test_missing_sample_assessment_is_rejected() (+6 more)
 
 ### Community 184 - "mastery_drill.py"
-Cohesion: 0.31
-Nodes (8): _distractor_fallback.py — Distractor Augmentation Helper  Per AGENTS.md rule #4:, _build_traps(), _build_visual_params(), format_pictograph(), Random, fmt_pictograph.py — Pictograph (picture graph) visual formatter  Produces a Form, Build a Pictograph FormattedProblem from a QuestionContext.      interaction_mod, Build pictograph visual_params.      visual_params keys:         categories   —
+Cohesion: 0.43
+Nodes (7): _build_traps(), _build_visual_params(), format_pictograph(), Random, fmt_pictograph.py — Pictograph (picture graph) visual formatter  Produces a Form, Build a Pictograph FormattedProblem from a QuestionContext.      interaction_mod, Build pictograph visual_params.      visual_params keys:         categories   —
 
 ### Community 185 - "Native SQL Examples"
 Cohesion: 0.17
@@ -1385,8 +1384,8 @@ Cohesion: 0.29
 Nodes (7): 2026-08-13 — Tick A: the freshness check compared the stem and nothing else, A review the gate rejected, and why it was not filed, The blind spot, The derivation item's variety, on the reviewer's own measurements, The fix, The remaining CONCERN on the derivation item, stated precisely, Verification — the check catches what it was written for
 
 ### Community 248 - "fmt_ruler_measure.py"
-Cohesion: 0.13
-Nodes (29): input_digest(), One digest over the input manifest. Recomputed on every read; never cached., artifact_families(), begin(), collect_state(), complete(), determine_state(), _empty_doc() (+21 more)
+Cohesion: 0.14
+Nodes (27): artifact_families(), begin(), collect_state(), complete(), determine_state(), _empty_doc(), Family, _load_doc() (+19 more)
 
 ### Community 249 - "2026-08-20 — §6F: an Attester verdict that nothing enforces is not a check"
 Cohesion: 0.29
@@ -1469,8 +1468,8 @@ Cohesion: 0.08
 Nodes (23): 10. The §10 Green Audit (Before Believing Exit 0), 11. Ending the Tick, 12. Resolution Ladder (Rule 10: No Human Escalation), 13. Runner Contract & Safety Limits, 1. Preflight — Always (~30 Seconds), 2. Measure the Queue — Never Skipped, Never Remembered, 3. Priority & Campaign Handling, 4. Hard Rules & The 4 Blind Roles (+15 more)
 
 ### Community 269 - "missing_number.py"
-Cohesion: 0.27
-Nodes (11): `{visual_type: {component, required, required_groups, conditional, optional, unu, visual_contract(), build_corpus(), main(), Any, Path, Build and execute the browserless frontend render evidence (§12).  The suite der, One real student-path payload for every reachable visual formatter. (+3 more)
+Cohesion: 0.22
+Nodes (13): input_digest(), One digest over the input manifest. Recomputed on every read; never cached., build_corpus(), main(), Any, Path, Build and execute the browserless frontend render evidence (§12).  The suite der, One real student-path payload for every reachable visual formatter. (+5 more)
 
 ### Community 270 - "2026-08-20 — §5 worker death: a silent unbounded wait in the last gate"
 Cohesion: 0.33
@@ -1569,8 +1568,8 @@ Cohesion: 0.15
 Nodes (4): The control: without this, a red result below would prove nothing., The distinction the whole ledger exists for. A FAILED stage's refs leave the, The other half: an honest failure is not also reported as drift., TestCrashIsolationEndToEnd
 
 ### Community 294 - "test_attestation_verdict_must_be_binary"
-Cohesion: 0.27
-Nodes (11): _build_sequence(), _build_traps(), _choose_missing_indices(), format_pattern_sequence(), Random, fmt_pattern_sequence.py — PatternSequence visual formatter  Refactored from visu, Select which indices to blank out.     Never blank the first two terms (anchors), Return list of distractor values for the primary missing term.      Traps: (+3 more)
+Cohesion: 0.16
+Nodes (13): _distractor_fallback.py — Distractor Augmentation Helper  Per AGENTS.md rule #4:, _build_equation_sentence(), format_cloze(), Random, Textual Formatter — Cloze (Fill-in-the-Blank)  Unified formatter for fill-in-the, Build pure equation with blank based on concept and blank_target., Format a QuestionContext as a cloze (fill-in-the-blank) problem.      Respects t, _build_pure_question() (+5 more)
 
 ### Community 295 - "fmt_fill_in_table.py"
 Cohesion: 0.33
@@ -1617,8 +1616,8 @@ Cohesion: 0.22
 Nodes (9): 1. The seven unproven Phase 2 gates are proven, 2026-09-10 — Hardening Phase 2: detection power before finding count, 2. §5's blind spots, closed and measured, 3. Three content defects, each found by a blind role, none visible to any mechanical check, 4. Blind spots MEASURED and deliberately not closed (Scaling Mandate 5 + 6), 5. Findings resolved, each accounted for individually, Evidence, NOT verified in this commit — do these first (+1 more)
 
 ### Community 307 - "test_generic_textual_formatter_is_not_a_provider"
-Cohesion: 0.26
-Nodes (12): _all_node_ids(), _audit_node(), check_payload(), _leak_keys_for(), main(), _parse_fraction_str(), Any, Frontend render-schema contract auditor.  Catches the class of bugs the user-fla (+4 more)
+Cohesion: 0.23
+Nodes (14): _all_node_ids(), _audit_node(), check_payload(), _leak_keys_for(), main(), _parse_fraction_str(), Any, Frontend render-schema contract auditor.  Catches the class of bugs the user-fla (+6 more)
 
 ### Community 308 - "load_matatag_curriculum_endpoint"
 Cohesion: 0.27
@@ -1753,8 +1752,8 @@ Cohesion: 0.40
 Nodes (5): 2026-08-20 (tick 4) — An exploitable answer-key pattern across the whole tree, and why it cannot be fixed yet, `concrete materials` is settled: no text MCQ can provide it, The finding: option placement is a function of the SEED, not the node, The fix, built and measured — then reverted, The node unit
 
 ### Community 362 - "2026-08-13 — The G1 measure items: a visual for the task, and a size model for the units"
-Cohesion: 0.09
-Nodes (30): option_rng(), Any, Random, Where the correct option sits must not be predictable.  Why this exists --------, A shuffle stream unique to this (node, seed), stable across processes., Shuffle in place using a (node, seed)-keyed stream, and return the list.      Ca, shuffle_options(), _build_equation_sentence() (+22 more)
+Cohesion: 0.10
+Nodes (29): option_rng(), Any, Random, Where the correct option sits must not be predictable.  Why this exists --------, A shuffle stream unique to this (node, seed), stable across processes., Shuffle in place using a (node, seed)-keyed stream, and return the list.      Ca, shuffle_options(), format_fill_in_table() (+21 more)
 
 ### Community 363 - "mastery_drill.py"
 Cohesion: 0.10
@@ -1934,7 +1933,7 @@ Nodes (5): Evidence, H-02 — the §8 self-reference deadlock, broken (2026-09-1
 
 ### Community 409 - "TestDnasGenerateFullSpace"
 Cohesion: 0.40
-Nodes (5): §1G seed reachability: measured, and the queue is empty, A measurement that was wrong, caught before it was reported, The Attester's aside was a real bug: a list scope matching no branch, The range contradiction is closed by a blind party, Tick 23 — 2026-08-22 — the contradiction closes, and the Attester's aside was the next bug
+Nodes (5): 2026-08-21 (tick 14) — CORRECTION: §2B's 236 was two defects, not one, I nearly shipped the wrong fix, Two other approaches, rejected by measurement rather than argument, What I got wrong last tick, What shipped
 
 ### Community 410 - "2026-08-20 (tick 6) — There is no pytest deadlock, and three tests I broke in tick 3"
 Cohesion: 0.40
@@ -2065,18 +2064,18 @@ Cohesion: 0.50
 Nodes (4): 2026-08-20 (tick 7) — The harness now runs its own tests, Proved, not assumed, What shipped, Why
 
 ### Community 451 - "2026-08-20 (tick 8) — A dispatch-only tick: coverage 52 → 127"
-Cohesion: 0.50
-Nodes (4): 2026-08-20 (tick 8) — A dispatch-only tick: coverage 52 → 127, Content defects found unasked, The dominant shape of the failures, Why this tick was dispatches only
+Cohesion: 0.40
+Nodes (5): A zero factor was reaching students, and §1G's seeds never landed on it, All instances (Protocol 2), Bound the pool, never the ceiling, It moves no content at all, Tick 21 — 2026-08-22 — the candidate pool was quadratic in a curriculum ceiling
 
 ## Knowledge Gaps
 - **2176 isolated node(s):** `graphify`, `PackageDescription`, `Foundation`, `PathKit`, `graphify-mcp` (+2171 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **53 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **52 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `input_digest()` connect `fmt_ruler_measure.py` to `Queries`, `Community 39`, `Community 11`, `missing_number.py`, `test_writing_the_state_file_does_not_move_the_input_digest`, `Community 26`?**
+- **Why does `input_digest()` connect `missing_number.py` to `Queries`, `Community 39`, `Community 11`, `fmt_ruler_measure.py`, `Community 26`?**
   _High betweenness centrality (0.033) - this node is a cross-community bridge._
 - **Why does `FormattedProblem` connect `Community 59` to `Community 13`, `Community 14`, `test_shared_bounds_list_is_not_a_provider`, `test_attestation_without_samples_cannot_be_checked_and_fails`, `2026-08-13 — The G1 measure items: a visual for the task, and a size model for the units`, `test_frontend_artifact_completeness.py`, `test_attested_capability_is_not_reported_unattested`, `Community 162`, `TestInterestIsPinned`, `fmt_numeric_input.py`, `test_attestation_verdict_must_be_binary`, `START HERE — handoff`, `Community 41`, `Tick 22 — 2026-08-22 — the range fix lands, and a third zero-factor path`, `Community 50`, `test_generic_textual_formatter_is_not_a_provider`, `Spine`, `mastery_drill.py`, `get_gemini_models`, `get_interest_themes`, `Community 75`, `Community 79`, `Community 92`, `Tick 23 — 2026-08-22 — the contradiction closes, and the Attester's aside was the next bug`, `_numeric_payload_values`, `2026-08-13 — The G1 measure items: a visual for the task, and a size model for the units`, `socratic_chat_exchange`, `2026-08-28 — D0 (§6H) and the first D1 blind re-review batch`, `generate_params`?**
   _High betweenness centrality (0.026) - this node is a cross-community bridge._

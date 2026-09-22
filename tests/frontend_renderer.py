@@ -16,8 +16,14 @@ pid, no uuid and no lock, and two defects rode on that:
     produced `packet-0-seed-11`. When two processes collided, the id SETS could coincide
     while the rendered structure belonged to the other process -- the guard passed, and one
     run attached the other run's visual evidence to its own samples. Measured cost: §6F
-    reported 55 findings on a tree that had 61, and §5 reported 1253 where it has 1252. No
-    crash, no warning, two corrupted figures in opposite directions.
+    reported 55 findings under concurrent load on a tree that had 61, against 61 on three
+    clean runs. No crash and no warning.
+
+    CORRECTED 2026-09-22: an earlier draft of this docstring also cited "§5 reported 1253
+    where it has 1252" as a second symptom. That figure was MISATTRIBUTED and is not this
+    defect. `run_all._stage_judgment_reviews_5` appends one aggregate finding the module's
+    own CLI never emits, so 1252 (module) and 1253 (stage) are both correct for their entry
+    point. Quote the entry point alongside any §5 figure.
 
 Both halves are fixed here, and both are needed. A unique path alone leaves the colliding
 id space in place for any future caller that shares a directory; `node_id` in `case_id`

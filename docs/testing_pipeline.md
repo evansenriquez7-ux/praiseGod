@@ -126,6 +126,12 @@ mutation is unproven regardless of how long it has been passing.
 | §7 census | the suite itself has not silently shrunk |
 | two-direction | the contract doc, this doc, and the registry agree |
 
+`§1M` (`validate_reference`) catches a stem that points at a display but is served without
+one. Its deixis patterns are a CLOSED list, and the pass line prints their count so the
+remaining hole is measurable: unseen pointing language is not caught. It also cannot tell
+whether the visual drawn is the right one, reads stems rather than hints, and cannot see a
+display the pupil needs when the stem never mentions it.
+
 ### Every binding check
 
 | Ref | Enforced by |
