@@ -1,7 +1,7 @@
 # Handoff — continue the Phase 2 hardening plan
 
-**Rewritten 2026-09-22 (late) on `22d873e3`, tree CERTIFIED. This file is deliberately a
-POINTER, not a summary.**
+**Refreshed 2026-09-22 after closeout proof commit `2b7c6d18`; tree CERTIFIED after the
+follow-up lock-release commit. This file is deliberately a POINTER, not a summary.**
 
 Earlier versions duplicated the plan's status and then drifted from it. Two sources of truth
 is how a session inherits confident wrong numbers, so status lives in exactly one place —
@@ -35,7 +35,7 @@ from the digests alone.
 
 ```text
 PASS tree_state: CERTIFIED
-  live input digest : 124ee1ca14d20526
+  live input digest : 0d8a8ec3f9812aba
   worktree          : clean
   mutation_proofs         fresh  152 file(s)
   release_shards          fresh  6 file(s)
@@ -69,7 +69,42 @@ PYTHONPATH=. .venv/bin/python tests/tree_state.py --complete --note "where you g
 
 ---
 
-## ⚠ 2026-09-22 (latest) — RULINGS 7, 8 AND 9 ACTED ON. READ THIS FIRST.
+## ⚠ 2026-09-22 (latest) — CLOSEOUT COMPLETE; CORPUS NOW MIXES TWO STANDARDS
+
+Tree is **CERTIFIED** at `0d8a8ec3f9812aba`; the full chain is current and costs nothing to
+redo. `H-06` is `released @ 2b7c6d18`, still OPEN.
+
+* **The deferred source batch is DONE.** The three renderer-evidence strings now identify
+  55-under-load versus 61-on-three-clean-runs as the measured concurrency symptom; the §5
+  1252/1253 difference is correctly documented as module versus `run_all` stage rollup.
+  `docs/testing_pipeline.md` now documents §1M and operator coverage is **41/41**.
+* **`batch116` is filed from the already-earned blind Haiku prevalence verdicts.** It adds 18
+  verdicts over four nodes: 12 PROVIDED and 6 NOT_PROVIDED. `capability_phase2` is now **57
+  CONTRADICTED, 0 UNATTESTED, 0 STALE, 0 UNADJUDICABLE** (up from 53 because the instrument got
+  sharper, not because content changed).
+* **The corpus is mixed-standard.** These 18 verdicts were prevalence-weighed under owner ruling
+  9; the earlier 741 verdicts were earned under the superseded neutral standard. Therefore 57 is
+  not a single-instrument prevalence estimate. The corpus-wide ruling-9 campaign remains owed.
+* **Owner ruling 10 changes future dispatches from this agent to `gpt-terra` light-thinking.**
+  That is a second instrument variable: historical verdicts are Claude-family, and cross-family
+  agreement is UNMEASURED. Do not call a GPT-Terra NOT_PROVIDED against a Claude-era PROVIDED a
+  regression; separate family effects only with the clean same-prompt/same-packet family control.
+* **The re-proof is complete.** Mutation corpus **149/152**, with exactly the known invalid §6F
+  cluster; six release shards each cover 96,885 cache keys / 387,540 represented executions with
+  zero failures; aggregate 9,323.807s, worst 1,591.542s. `run_all` completed every scheduled stage.
+* **Three tracked stages remain red:** `judgment_reviews_5` = **1253 at the stage entry point**
+  (1252 module + one rollup); `capability_phase2` = **57**; `assertion_coverage_8` = **3 in one
+  §6F family**. This is the expected H-06 debt, not a clean Definition of Done.
+* **Named out-of-scope stale text:** `run_all.py:105-106` still repeats the misattributed §5
+  figure in a comment. It was outside the exact closeout list and was recorded rather than used
+  to expand the batch.
+* **Do not restart closeout work.** The remaining queues are the 151 blind §5 re-reviews, the
+  corpus-wide ruling-9 re-dispatch, the CONTRADICTED content findings, and the supersession test.
+  Do not open H-11.
+
+---
+
+## 2026-09-22 (historical) — RULINGS 7, 8 AND 9 ACTED ON
 
 Tree is **CERTIFIED** at `124ee1ca14d20526`; the chain was run in full and costs nothing to redo.
 `H-06` is `released @ d86c9508`, still OPEN.
