@@ -14199,3 +14199,154 @@ It is NOT red — the check is deliberately a FLOOR of 12, not equality, because
 documentation debt, not a gate failure. **The fix is to document `§1M` (the dangling-referent
 stage), not the renderer row.** `testing_pipeline.md` is in `INPUT_FILES`, so it belongs at the
 START of the next source batch, with the three corrections above.
+
+## 2026-09-22 — closeout batch: renderer evidence correction, §1M operator doc, batch116
+
+Session: `codex-closeout-b116-20260922`. Source commit: `1493394c`. Attestation commit:
+`55814812`. Live input digest proved below:
+`0d8a8ec3f9812aba8bfdc1837b78a0a1ef23e7e01a9d5e039abbe81f02cb9b08`.
+
+### Source corrections and operator coverage
+
+The three authorised renderer-evidence strings now cite only the measured concurrency
+symptom: §6F reported 55 findings under concurrent load on a 61-finding tree, against 61 on
+three clean runs. The §5 1252/1253 difference is identified as module-versus-stage rollup,
+not renderer contamination. `docs/testing_pipeline.md` now names §1M and its three bounded
+blind spots: CLOSED deixis vocabulary (44 patterns in this run), no correctness judgment on
+the drawn visual, and stems only (not hints or an unmentioned-needed display).
+
+```
+$ PYTHONPATH=. .venv/bin/python -c '<contract/operator registry comparison>'
+doc refs not in registry: NONE
+registry keys not in doc: NONE
+41 / 41 | NOT named: []
+
+$ PYTHONPATH=. .venv/bin/python -m pytest tests/unit/test_frontend_renderer_isolation.py tests/unit/test_coverage_selfcheck.py -q
+...................                                                      [100%]
+19 passed in 10.46s
+```
+
+**Out-of-scope defect named, not expanded into this closeout:**
+`backend/app/practice_gen/validation/run_all.py:105-106` still repeats the misattributed §5
+figure in a comment. The closeout prompt explicitly limited the correction to the three
+digest-bound locations above and directed that genuinely broken out-of-list work be named
+rather than fixed.
+
+### Prevalence filing (`batch116`)
+
+The four stored prevalence-weighed verdict lists were rejoined position by position to their
+packets before filing. They were authored by the existing blind Haiku Attester
+`blind-attester-haiku45-b115-20260922`; this session authored no verdict. Packet seeds for all
+four nodes: **11, 23, 42, 57, 64, 78, 91, 103, 118, 127**.
+
+```
+mat_g1_na_q3_7     3 items, join OK, 2 PROVIDED
+mat_g2_mg_q2_0     7 items, join OK, 4 PROVIDED
+mat_g2_mg_q2_2     4 items, join OK, 2 PROVIDED
+mat_g3_mg_q2_3     4 items, join OK, 4 PROVIDED
+
+wrote batch116_mat_g1_na_q3_7.json: 3 verdict(s), 2 PROVIDED, 1 NOT_PROVIDED
+wrote batch116_mat_g2_mg_q2_0.json: 7 verdict(s), 4 PROVIDED, 3 NOT_PROVIDED
+wrote batch116_mat_g2_mg_q2_2.json: 4 verdict(s), 2 PROVIDED, 2 NOT_PROVIDED
+wrote batch116_mat_g3_mg_q2_3.json: 4 verdict(s), 4 PROVIDED, 0 NOT_PROVIDED
+
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_capability --phase 2
+Capability contract: 57 failure(s) (0 Phase 1 / artifact-free, floor 5; 57 Phase 2 / attestation).
+```
+
+Composition from the full runner: **57 CONTRADICTED, 0 UNATTESTED, 0 STALE, 0
+UNADJUDICABLE**. Six new NOT_PROVIDED findings were recorded and deliberately not acted on;
+the 88.1% overall / 76.5% hardest-batch reproducibility rule requires a second independent
+blind verdict before engineering work.
+
+**Instrument warning carried forward:** the corpus is now mixed-standard — these 18 verdicts
+were prevalence-weighed, while the older corpus was judged under the superseded neutral
+standard. Owner ruling 10 additionally requires future blind dispatches from this agent to use
+`gpt-terra` light-thinking. Those future results introduce a second instrument variable:
+cross-family agreement (GPT-Terra versus the Claude-family historical corpus) is unmeasured,
+so a GPT-Terra NOT_PROVIDED against a Claude-era PROVIDED is not by itself a regression.
+
+### Re-proof evidence
+
+```
+$ PYTHONPATH=. .venv/bin/python -c '<mutation anchor scan>'
+all anchors OK
+
+$ PYTHONPATH=. .venv/bin/python -m scripts.regen_formatter_exclusions
+275 exclusions across 111 nodes -> _generated_formatter_exclusions.py
+
+$ PYTHONPATH=. .venv/bin/python tests/frontend_suite.py
+PASS frontend_static_render_12: 30 payloads, 60 active/disabled renders, 18 visual types
+Test Files  2 passed (2)
+Tests  41 passed (41)
+PASS frontend_static_render_12: 30 real payloads; 18 production visual types; artifact validation_reports/phase2_hardening/frontend_static_render.json
+  NOT COVERED (unreachable registrations): BalanceScale, Categorize, RuleDiscovery, SortOrder, TenFrame
+
+$ PYTHONPATH=. .venv/bin/python -m tests.obligation_executor --tier benchmark --sample-size 1000
+cache_keys=1000 represented_executions=4000 elapsed=10.650s median=7.137ms p95=30.540ms peak_rss=109608960B failures=0
+projected_release=1.720h recommended_shards=4 projected_per_shard=25.795m
+wrote validation_reports/phase2_hardening/obligation_benchmark.json
+
+$ PYTHONPATH=. .venv/bin/python tests/mutation_harness.py
+149/152 mutations detected.
+A surviving mutation is a hole in the harness, not a harmless gap:
+  - contradicted_attestation: nothing enforces §6F (blind Attester verdict contradicted by the table)
+  - attestation_drops_options: nothing enforces §6F adjudicability (an attestation must carry the choices it was shown)
+  - attestation_leaks_into_phase1: nothing enforces §6 phase boundary (Phase 1 must run with the attestation corpus absent)
+```
+
+The three are INVALID because the unmutated Phase 2 baseline exits 1; no additional survivor
+appeared. The corrected `renderer_case_id_omits_node_id` mutation was DETECTED with
+`baseline_exit=0`, `planted_exit=1`, both named output markers observed, and
+`restored_clean=true`. §1M's `stem_points_at_an_undrawn_display` mutation was also DETECTED.
+
+```
+$ for i in 0 1 2 3 4 5; do PYTHONPATH=. .venv/bin/python -m tests.obligation_executor --tier release --shard-count 6 --shard-index $i; done
+shard 0: cache_keys=96885 represented_executions=387540 elapsed=1520.396s failures=0
+shard 1: cache_keys=96885 represented_executions=387540 elapsed=1540.318s failures=0
+shard 2: cache_keys=96885 represented_executions=387540 elapsed=1591.542s failures=0
+shard 3: cache_keys=96885 represented_executions=387540 elapsed=1553.639s failures=0
+shard 4: cache_keys=96885 represented_executions=387540 elapsed=1544.099s failures=0
+shard 5: cache_keys=96885 represented_executions=387540 elapsed=1573.814s failures=0
+
+$ PYTHONPATH=. .venv/bin/python -m tests.obligation_executor --tier verify-release
+release_status=complete receipts=6 complete=True
+```
+
+Aggregate release time: **9323.807s = 2.590h**; worst shard: **1591.542s**, within the
+1800-second per-shard budget. The benchmark still recommends four shards while the validator
+requires six; this named mismatch remains.
+
+### Definition of Done — expected tracked failure, verbatim stage result
+
+```
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.run_all
+  PASS       unit_tests                     phase 1   662.1s
+  PASS       dna                            phase 1     4.7s
+  PASS       compatibility                  phase 1    70.9s
+  PASS       interest_invariance            phase 1    34.4s
+  PASS       vocabulary                     phase 1     2.3s
+  PASS       behavioural_matrix             phase 1   355.7s
+  PASS       capability_phase1              phase 1     0.5s
+  PASS       count_noun_1J                  phase 1    65.3s
+  PASS       option_degeneracy_1K           phase 1    65.0s
+  PASS       dangling_reference_1M          phase 1    64.7s
+  PASS       render_contract_9              phase 1     3.6s
+  PASS       grading_contract_10            phase 1    30.1s
+  FAIL       assertion_coverage_8           phase 1     1.2s
+  PASS       obligation_manifest_11         phase 1     1.6s
+  PASS       census_7                       phase 1     7.3s
+  FAIL       judgment_reviews_5             phase 2   140.0s
+  FAIL       capability_phase2              phase 2    24.1s
+  scheduled=17 completed=14 failed=3 crashed=0 not_run=0 incomplete=0
+  PASS stage_ledger_complete: every scheduled stage ran to a verdict
+  PASS stage_phase_matches_manifest: every stage's refs are registered to the band that stage runs in
+SOME ALL TESTS CHECKS FAILED. Please review the output above.
+EXIT: 1
+```
+
+Exact red composition: `assertion_coverage_8` = **3 assertions in the one known §6F
+family**; `judgment_reviews_5` = **1253 at the `run_all` stage entry point** (1252 from the
+module plus one aggregate rollup); `capability_phase2` = **57 CONTRADICTED**. All other stages
+passed. No new seeded generator failure was found or fixed in this closeout; the only sample
+seeds materially used were the ten batch116 packet seeds listed above.
