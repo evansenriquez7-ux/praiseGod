@@ -14179,9 +14179,23 @@ run (not merely under `--only`), each bound to digest `124ee1ca14d20526` with `b
 The 3 survivors are the known §6F cluster. Census: `unit_tests=797`, `mutations=152`, `nodes=151`,
 `variant_candidates=975`.
 
-**A coverage regression introduced by this batch and NOT fixed here:**
-`operator_doc_covers_registry` moved from 40/40 to **40/41** — the new
-`renderer_invocation_isolation` row has no counterpart in `docs/testing_pipeline.md`. It still
-PASSes (floor 12), so it is not red, but the gap is real. `testing_pipeline.md` is in
-`INPUT_FILES`, so closing it now would cost the whole chain; it belongs at the START of the next
-source batch, together with the three corrections above.
+**An operator-doc gap — NOT caused by this batch. I first recorded it as mine and that was
+wrong; corrected here by execution rather than left standing.** `operator_doc_covers_registry`
+reports **40/41**, and the single unnamed ref is **`§1M`**, not the new renderer row:
+
+```
+registry refs: 41 | named in operator doc: 40
+NOT named: ['§1M']
+$ git show c8a645f1~1:docs/pgen_contract.md | grep -oE "§[A-Za-z0-9-]+" | sort -u | wc -l
+41
+```
+
+There were already 41 refs BEFORE this batch, so the gap predates it: `§1M` was added
+2026-09-21 and never written into `docs/testing_pipeline.md`. The plan's "(40/40) PASS" figure
+is from 2026-09-16 and is stale, which is what made this look like a regression.
+
+It is NOT red — the check is deliberately a FLOOR of 12, not equality, because
+`testing_pipeline.md` is prose explaining a subset (`run_all.py:1051-1053`). So this is a
+documentation debt, not a gate failure. **The fix is to document `§1M` (the dangling-referent
+stage), not the renderer row.** `testing_pipeline.md` is in `INPUT_FILES`, so it belongs at the
+START of the next source batch, with the three corrections above.
