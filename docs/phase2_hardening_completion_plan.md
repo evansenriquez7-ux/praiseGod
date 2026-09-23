@@ -1360,7 +1360,12 @@ that points at it break every time the section is refreshed.
 > 10. **DISPATCH MODEL IS HOST-RELATIVE** (owner, 2026-09-22). Ruling 4 required Haiku
 >    subagents for every agent reviewing sample pg output. That was written for a Claude-hosted
 >    session and its purpose was cost and rate-limit safety, not Haiku specifically. **A
->    ChatGPT-hosted agent uses `gpt-terra` light-thinking subagents instead.** The principle is
+>    ChatGPT-hosted agent uses **GPT-5.6-Terra on LIGHT THINKING** subagents instead.**
+>    (Owner, restated precisely 2026-09-23. Earlier text in this plan and in filed records
+>    abbreviates it to `gpt-terra`; that is the SAME model, not a different one. New
+>    identities spell it out — `blind-attester-gpt-5.6-terra-light-<batch>-<YYYYMMDD>` —
+>    because a rater family is now a recorded variable and an abbreviation that drifts is
+>    how two families come to look like one.)** The principle is
 >    unchanged: a cheap, separate, blind judge, dispatched never self-run, with modest
 >    concurrency.
 >

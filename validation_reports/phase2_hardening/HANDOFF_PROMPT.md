@@ -100,7 +100,17 @@ the pattern is now trap 2 in the agent prompt: select attestation records by OWN
 That was the **third** occurrence in that one file.
 
 **NEXT:** the seven-dispatch §5 schema-v2 blind re-review campaign (no re-proof owed). Content
-debt only on confirmed findings. Full prompt: `NEXT_AGENT_PROMPT.md`.
+debt only on confirmed findings.
+
+**THE AGENT'S TASK IS `NEXT_AGENT_PROMPT.md`, not this file.** Hand that over; it points back
+here for the standing limitations list and the long-form traps. This file is STATUS and
+BACKGROUND — read its top banner and treat anything marked "(historical)" as record only.
+
+**Dispatch model (owner ruling 10, restated precisely 2026-09-23): `GPT-5.6-Terra` on LIGHT
+THINKING.** The `batch117`–`batch150` identities abbreviate it to `gpt-terra`; that is the
+SAME model, recorded before the name was restated. Those records are truthful — do not
+rewrite them — but new identities spell it out:
+`blind-attester-gpt-5.6-terra-light-<batch>-<YYYYMMDD>`.
 
 ---
 

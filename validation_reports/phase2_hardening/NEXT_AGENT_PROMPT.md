@@ -94,20 +94,20 @@ All other stages PASS: §0 796 passed / 1 skipped, Phase 1 capability at its flo
 
 The 2026-09-22/23 campaign re-judged the whole corpus (151 nodes, 767 pairs, `batch117`–`batch150`)
 under owner ruling 9's **prevalence** standard. It is verified genuine: every verdict byte-identical
-to its dispatch, 767 distinct reasoning skeletons, truthful `gpt-terra` identities, prior records
+to its dispatch, 767 distinct reasoning skeletons, truthful GPT-5.6-Terra identities, prior records
 preserved. `capability_phase2` went **57 → 173**.
 
 **That rise is real but it is NOT purely "a sharper instrument".** The campaign changed **two**
-variables at once — the standard AND the rater family (Claude-era → `gpt-terra`). Measured on the
+variables at once — the standard AND the rater family (Claude-era → GPT-5.6-Terra). Measured on the
 same 18 clauses with the standard held fixed:
 
 ```
-cross-family agreement (Haiku vs gpt-terra):  11/18 = 61.1%
+cross-family agreement (Haiku vs GPT-5.6-Terra):  11/18 = 61.1%
 within-family agreement (Haiku vs Haiku):     37/42 = 88.1%
 ```
 
 Disagreements ran **both directions** (5 one way, 2 the other), concentrated on compound
-measurement competencies. So `gpt-terra` is not uniformly stricter — it is *differently* strict.
+measurement competencies. So GPT-5.6-Terra is not uniformly stricter — it is *differently* strict.
 
 **Operationally:**
 
@@ -182,12 +182,20 @@ decides which; cite the competency clause either way.
 
 ## 4. Dispatch rules — non-negotiable
 
-* **Owner ruling 10: use `gpt-terra` light-thinking subagents** for every blind dispatch. Keep
-  concurrency modest — a wave of 8 heavyweight dispatches once hit a rate limit and killed 14
-  agents mid-flight.
+* **Owner ruling 10: every blind dispatch goes to a `GPT-5.6-Terra` subagent on LIGHT
+  THINKING.** Not a heavier reasoning setting, and not a different model — the ruling's purpose
+  is a cheap, separate, blind judge, and a wave of 8 heavyweight dispatches once hit a rate limit
+  and killed 14 agents mid-flight. Keep concurrency modest.
+* **Name the identity for the model that actually judged, spelled out in full:**
+  `blind-attester-gpt-5.6-terra-light-<batch>-<YYYYMMDD>`. The `batch117`–`batch150` records
+  abbreviate this to `gpt-terra`; **that is the same model**, recorded before the name was
+  restated precisely. Do not "correct" those records — they are truthful — but do not copy the
+  abbreviation forward either, because rater family is now a measured variable and an
+  abbreviation that drifts is how two families come to look like one.
 * **The record must name the model that ACTUALLY judged.** `attested_by` / `reviewed_by` is the
   only thing making plurality checkable. **`batch115`/`batch116` correctly say Haiku because Haiku
-  judged them — do not "normalise" them to `gpt-terra`.**
+  judged them — do not "normalise" them to GPT-5.6-Terra.** Writing either model's name on the
+  other's verdict is a false evidentiary claim, not a tidy-up.
 * **ONE PACKET FILE PER NODE.** `attester_packets.py` numbers items **per invocation**, so
   concatenating nodes mints `item_001` several times and the join becomes ambiguous. Unguarded;
   it has caught two sessions.
@@ -335,7 +343,18 @@ queue is 151 nodes. A good session:
 5. Records what it measured, what it assumed, and what it left — including any limitation it
    discovered — so the next session inherits numbers it can trust.
 
-**Read, in this order:** `CLAUDE.md`; `docs/phase2_hardening_completion_plan.md`'s
-`START HERE — handoff` (its dated blocks supersede everything below them, owner rulings 1–10
-included); the middle of that plan for the *design* of what you implement; and the 2026-09-22/23
-entries in `validation_reports/HARDENING_EVIDENCE.md` for how these numbers were obtained.
+**Read, in this order:**
+
+1. `CLAUDE.md` / `AGENTS.md` — the Scaling Mandate, Engineering Protocols, Definition of Done.
+2. **This file.** It is your task; everything below is background.
+3. `validation_reports/phase2_hardening/HANDOFF_PROMPT.md` — the standing **"Limitations left
+   standing"** list and the long-form trap catalogue, which this prompt deliberately does not
+   duplicate. Read its TOP banner for status and treat blocks marked "(historical)" as record
+   only.
+4. `docs/phase2_hardening_completion_plan.md`'s `START HERE — handoff` — owner rulings 1–10 in
+   full; its dated blocks supersede everything below them. Then the middle of that plan for the
+   *design* of whatever you implement — design, never status.
+5. The 2026-09-22/23 entries in `validation_reports/HARDENING_EVIDENCE.md` — how every number in
+   §2 was obtained, and what was measured rather than assumed.
+
+**Where they disagree, an executed command wins, then this file, then the plan's dated blocks.**
