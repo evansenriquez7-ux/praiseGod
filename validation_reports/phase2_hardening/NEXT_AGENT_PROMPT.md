@@ -36,6 +36,57 @@ The fast unit suite takes **11 minutes**; pass `-m "not slow"` explicitly if you
 
 ---
 
+## 0b. BEFORE ANY HEAVY RUN — two hazards this environment has already produced
+
+**1. CHECK FOR A PLANTED MUTATION LEFT IN SOURCE. Do this first, every session.**
+
+A killed corpus run left `formatter_unreachable_on_student_path`'s plant in
+`backend/app/services/orchestrator.py` — production, the student path — on 2026-09-23:
+
+```diff
+-            problem.formatter_name = formatter
++            problem.formatter_name = None  # planted mutation
+```
+
+The harness's kill-safety marker did NOT catch it, and the reason is structural: `_MARKER` is a
+SINGLE FIXED PATH shared by every invocation, so a second run exiting normally deletes the first
+run's marker, the first is killed, and its plant survives with no record. The next corpus run then
+finds no marker and **measures a planted tree as if it were clean** — which its own docstring calls
+worse than not measuring at all. Same defect class as the renderer's fixed path, inside the safety
+mechanism itself.
+
+```sh
+git status --porcelain                 # expect clean; any source file you did not touch is suspect
+git diff | grep -n "planted mutation"  # expect NOTHING
+ls local_only/scratch/MUTATION_IN_FLIGHT.json 2>/dev/null   # a marker here means recovery is owed
+```
+
+If you find one: `git checkout --` the file, confirm `input_digest()` returns to the expected
+value, and say so. **Never `git add -A` without looking at what you are adding.** Fixing the marker
+properly (per-invocation path, startup scanning all markers, skipping live pids) is the first
+source item available and owes a mutation targeting the CONCURRENT path.
+
+**2. RUN HEAVY THINGS ALONE — the failure mode is not a wrong number.**
+
+```sh
+pgrep -fl "mutation_harness|obligation_executor|validate_|pytest"   # must be EMPTY first
+```
+
+On 2026-09-23 a corpus run overlapping a still-live shard loop reported **NINETEEN** mutations as
+`INVALID — the unmutated command baseline exited 1`, against a documented baseline of **three**.
+That reads as sudden, wide harness rot and would send you hunting a regression that does not exist.
+It was contention: the "red" baseline exits **0** on demand, and a clean run reported **0 INVALID**.
+
+**A jump in the INVALID count is a statement about your ENVIRONMENT before it is a statement about
+the tree.** Three INVALID is the known §6F cluster; anything more, check what else is running.
+
+**Also: this environment reaped four consecutive corpus runs** at different points (exit 144),
+including one under `nohup`, with ~50GB free and load 2.07 — so not resource exhaustion and not a
+bad mutation. If it persists for you, run the corpus outside the agent session rather than burning
+attempts, and remember it does NOT resume mid-table.
+
+---
+
 ## 1. Establish state first
 
 ```sh
