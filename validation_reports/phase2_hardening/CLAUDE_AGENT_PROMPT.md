@@ -1,8 +1,12 @@
 # Task prompt — continue Phase 2 hardening (fresh Claude Code session)
 
-**Written 2026-09-24 by `claude-h06-killsafe-chain-2026-09-23`, replacing the 2026-09-23 version
-of this file.** That version's Priority 1 (the owed re-proof chain) and Priority 3 (the kill-safety
-marker) are DONE and certified. This version starts you on the work that remains.
+**Updated 2026-09-24 by `claude-h06-s5-campaign-2026-09-24`.** Priority 3 (`_apply` atomicity) is
+DONE and proved. The §5 campaign is OPEN: **one node is filed and 149 remain owed** — and the gate
+that was blocking it is fixed. `_provenance_corpus` was a four-field allowlist while the blind packet
+prints hints, cloze text, visual payload/render and the requirement clauses, so it raised FOUR FALSE
+findings against an honest review, punishing reviewers for quoting hint text — the field the seed-44
+defect lived in. If you read an older copy of this file, note the owed-queue figure it quotes (151)
+was itself wrong: `.responses/` provenance was being counted as reviews. **It is 150 total, 149 left.**
 
 You are working in `/Users/enrichmentcap/Documents/antigravity/ccmed` on the Adaptive K-12 Mastery
 Engine's practice-problem-generator hardening. Your job is to move `run_all` toward exiting 0.
@@ -125,26 +129,31 @@ Close with `tests/tree_state.py --complete --note "where you got to"`.
 
 ---
 
-## 3. Measured state — executed 2026-09-24 at `07015c154d6f6c8f`, ALONE
+## 3. Measured state — executed 2026-09-24 at `126e9eb19a1122bc`, ALONE
 
 ```
 $ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.run_all
-  FAIL       assertion_coverage_8           phase 1     1.2s
-  FAIL       judgment_reviews_5             phase 2   140.2s
-  FAIL       capability_phase2              phase 2    23.9s
+  FAIL       assertion_coverage_8           phase 1     1.1s
+  FAIL       judgment_reviews_5             phase 2   140.5s
+  FAIL       capability_phase2              phase 2    24.0s
   scheduled=17 completed=14 failed=3 crashed=0 not_run=0 incomplete=0
-EXIT 1
+  SOME ALL TESTS CHECKS FAILED.
 ```
+
+(That run went through `| tee | tail`, so the PIPELINE's exit code was `tail`'s, not the harness's.
+The verdict line and `failed=3` are quoted instead of an exit number nobody observed. Don't pipe a
+long run through `tail -N` at all — `tail` holds every line until the pipeline ends, so a 70-minute
+corpus writes NOTHING until it finishes and any monitor on that file is structurally unable to fire.)
 
 | stage | count | nature |
 |---|---|---|
-| `judgment_reviews_5` | **1265** at `run_all` / **1264** at `validate_judgment` | 150 nodes still schema v1, plus `mat_g3_na_q4_7` now STALE |
-| `capability_phase2` | **173** CONTRADICTED | content debt, 82 of 151 nodes |
+| `judgment_reviews_5` | **1237** at `run_all` / **1236** at `validate_judgment` | **149** nodes still schema v1 |
+| `capability_phase2` | **173** CONTRADICTED | content debt, 82 of 151 nodes — untouched |
 | `assertion_coverage_8` | 3 in 1 family (and `mutation_proof_integrity_8` 9 in 3 families — the same three records) | the §6F cluster; only `capability_phase2` reaching 0 clears it |
 
-Mutation corpus: **157/160**, the only misses being the three §6F-cluster INVALIDs
+Mutation corpus: **159/162**, the only misses being the three §6F-cluster INVALIDs
 (`contradicted_attestation`, `attestation_drops_options`, `attestation_leaks_into_phase1`), whose
-baseline `capability_phase2` is red. Six release shards `failures=0`, worst 1,582s of the 1,800s
+baseline `capability_phase2` is red. Six release shards `failures=0`, worst 1,586s of the 1,800s
 budget.
 
 > **Always quote the entry point with a §5 figure.** `run_all`'s stage appends one aggregate rollup
@@ -245,14 +254,23 @@ Content Rule 4 decides and you quote the clause. `draw`-verb findings need a rea
 
 Batch all source work into ONE batch so the chain is paid once, and include Priority 3 in it.
 
-### ▶ PRIORITY 3 — small harness item, only when batched with source work
+### ▶ PRIORITY 3 — DONE 2026-09-24, kept for the record
 
-`tests/mutation_harness.py::_apply` writes a multi-file plant one file at a time. If an anchor
-fails on a LATER file, the earlier files stay planted with nothing to restore them (the exception
-escapes before `originals` is returned, so `run_mutation_recorded`'s `finally` restores nothing).
-Today only the 2-second anchor preflight covers it. Fix: validate every anchor before writing any
-file, or register each file in `_IN_FLIGHT` as it is written. Owes a mutation on that path and a
-contract-row update (Protocol 7). Named in the `mutation_restore_purges_bytecode` contract row.
+**Done.** `_apply` now runs TWO passes: pass 1 reads and validates every anchor and writes nothing,
+so a moved anchor cannot leave a partial plant; pass 2 registers each file in `_IN_FLIGHT` and
+refreshes the marker BEFORE its write lands, so a failure no preflight can predict (ENOSPC, a
+read-only file, a kill between two writes) stays recoverable. New label
+`mutation_apply_is_all_or_nothing` in `run_all.py`, its own contract row, two tests in
+`tests/unit/test_mutation_killsafe.py`, and **two mutations — one per pass**, because a two-site fix
+lets a single-site plant survive while proving nothing:
+
+```
+  PASS  apply_writes_before_validating_all_anchors §0 (a multi-file plant is all-or-nothing)
+  PASS  apply_plants_without_registering_in_flight §0 (a planted file is recoverable before its write lands)
+```
+
+NAMED LIMIT, in the docstring and the row: this covers the `edits` path only. A mutation supplying
+`apply_fn` owns its own rollback and is reached by neither pass.
 
 ---
 

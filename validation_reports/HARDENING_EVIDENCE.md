@@ -7508,7 +7508,7 @@ cited seed NOT in own packet : 0              -> seed provenance is clean
 PROVIDED with no seed cited  : 0
 ```
 
-§5's fourth gate — quote provenance, the one that caught 115 of the 151 — is **deliberately not
+§5's fourth gate — quote provenance, the one that caught 115 of the 151 (**see the 2026-09-24 entry: that 115 is an upper bound, not a verified count**) — is **deliberately not
 ported**, and the docstring and contract row say so. Measured, it fires on 16 of 143 honest
 verdicts, because an Attester is asked to state what would flip its verdict and writes that
 hypothesis in quotes (*"Nothing short of an item that requires the student to construct…"*,
@@ -15063,3 +15063,311 @@ judged, after the 1263 measurement. `mat_g3_na_q4_7` now owes a fresh blind re-r
   bulk is elsewhere (19 other worktrees are registered). Nothing was deleted that this session did
   not create. **A full disk will make the next corpus or shard run fail in ways that look like
   harness defects — check `df -h` first.**
+## 2026-09-24 — §5 campaign started, and the gate that was punishing honest reviewers (`claude-h06-s5-campaign-2026-09-24`)
+
+Session: Claude (Opus 5) in Claude Code, under `H-06`'s lock. **No verdict of any kind was authored
+by me.** One blind review was dispatched to a Haiku subagent and filed through `file_reviews`.
+
+### State on arrival — the handoff prompt I was given was STALE, and the command won
+
+The pasted task prompt was the 2026-09-23 version of `CLAUDE_AGENT_PROMPT.md`, which expects digest
+`600ceb7a970a03c5`, `INTERRUPTED`, `mutation_proofs` a "FALSE GREEN" at 155, and an open intent. The
+file on disk had been rewritten 2026-09-24 and the tree disagreed with the pasted text:
+
+```
+$ ps -eo pid,ppid,etime,command | grep -iE "mutation_harness|obligation_executor|validate_|pytest" | grep -v grep
+(empty)
+$ git status --porcelain -- backend/ tests/ scripts/ data/ frontend/src docs/pgen_contract.md docs/testing_pipeline.md
+(empty)
+$ git grep -n -E "#\s*planted mutation|//\s*planted " HEAD -- backend/ frontend/src | grep -v mutation_harness
+(empty)
+$ PYTHONPATH=. .venv/bin/python tests/tree_state.py
+PASS tree_state: CERTIFIED
+  live input digest : 07015c154d6f6c8f
+  worktree          : clean
+  mutation_proofs         fresh  160 file(s)
+  release_shards          fresh  6 file(s)
+  obligation_benchmark    fresh  1 file(s)
+  frontend_static_render  fresh  1 file(s)
+$ PYTHONPATH=. .venv/bin/python tests/hardening_status.py
+PASS hardening_status: 10 H-row(s) valid — 3 closed, 6 open, 1 out_of_scope
+```
+
+Priorities 1 and 3 of the pasted prompt were already done and certified (`6769fdff`, `d92a3875`,
+`e94d2a0d`). I worked the on-disk 2026-09-24 prompt instead.
+
+### THE DISK WAS AT 295 MiB FREE, and that is an evidence-integrity problem
+
+`df -h /System/Volumes/Data` reported **295Mi available of 112Gi, 100% capacity** — worse than the
+296 MiB the handoff recorded. No APFS local snapshots existed to purge (`tmutil listlocalsnapshots /`
+→ 0). Raised with the user before any heavy run, per the prompt's own rule, because a corpus or shard
+run dying on ENOSPC produces failures indistinguishable from harness defects.
+
+With the user's explicit authorisation I cleared only regenerable download/build caches outside the
+repo: `pip` 745M, `Homebrew` 489M, `puccinialin` 578M, `vscode-cpptools` 341M, `com.apple.python`
+302M, `node-gyp` 62M. **298Mi → 2.8Gi free.** Deliberately NOT touched: `ms-playwright` +
+`ms-playwright-go` (677M — `requirements.txt` lists playwright, so the browsers may be needed), `aws`
+(381M — its `cli/cache` holds SSO tokens), `Google` (328M — browser profile), `pnpm` (58M — its cache
+files are read-only by design and `rm` refused them).
+
+**Two things I found and did NOT delete, both needing an owner decision:**
+
+1. `.claude/worktrees/agent-aaac714fac3fe0cc6` carries **uncommitted modifications to production
+   source** dated Aug 10 — `backend/app/practice_gen/axes_catalog.py`,
+   `dna/na/comparing_ordering.py`, `formatters/textual/fmt_true_false.py`. That is either abandoned
+   work or a forgotten experiment; 79 MB is not worth destroying month-old edits blind.
+2. 19 sibling `ccmed-hardening-*` worktrees (909 MB) are the user's per-subdomain branches.
+
+Note `du -sh -d 1` is INVALID on macOS BSD `du` (`-s` and `-d` conflict) and fails with a bare usage
+message; my first home-directory scan silently returned nothing because of it. Use `du -h -d 1`.
+
+### Baseline §5, measured
+
+```
+$ PYTHONPATH=. .venv/bin/python -c "from backend.app.practice_gen.validation.validate_judgment import validate_judgment_reviews; ..."
+TOTAL 1264        # 151 distinct nodes; 28 of them on mat_g3_na_q4_7
+```
+
+Matches the documented 1264 at the module entry point. **Careful with `wc -l` on that output: it
+undercounts by one**, because the findings are joined with `\n` and the file has no trailing newline.
+
+### The rater-family decision (put to the user, per the prompt)
+
+The user chose: **proceed with Haiku (owner ruling 4) and include `mat_g3_na_q4_7` in the campaign**,
+so the §5 v2 corpus ends up single-family rather than mixing Haiku with the one GPT-5.6-Terra review
+at 61.1% cross-family agreement. `mat_g3_na_q4_7` was already STALE and owed re-review anyway.
+
+### One node end-to-end first, as the prompt requires
+
+Dispatched `mat_g3_na_q4_7` to a Haiku subagent (`Agent` tool, `model: "haiku"`, agentId
+`a94e433dbf8a9cd17`), reviewer identity **assigned by me**: `haiku45-s5-reviewer-a-2026-09-24`.
+Delivery: the subagent was given the path to
+`local_only/scratch/review/s5-2026-09-24/q4_7/prompt.txt` and read it with `Read`; all samples were
+inside that file. It wrote `verdicts.json` with `Write`. **Tool uses: 2** (self-reported and matching
+the harness usage record `tool_uses: 2`) — recorded truthfully as a prompt contract, not a sandbox.
+
+Verdict returned: **PASS** on all six findings, all 76 sample checks, all 4 clauses.
+
+**Audited mechanically before filing**, because a blanket PASS is exactly what needs checking:
+19 sample assessments (all 19 samples), 4 checks each, 76 reasonings of which **71 distinct**, min
+length 51 chars, clause citations `add` 8 / `subtract` 11 / `similar_fractions` 19 / `models` 19 —
+8+11 = 19, consistent with the packet. All 5 duplicate reasoning strings trace to genuine identity
+between items (seeds 501 and 1002 are both `5/6 - 1/6 = 4/6`; the repeated ambiguity strings belong to
+`read_mcq` samples sharing one stem). That is within-node repetition on identical items, not the
+cross-node template reuse that got batches 1 and 2 rejected.
+
+**Independently verified the pipeline claim** rather than taking the PASS on trust: every one of the
+19 samples' hint arithmetic matches its stated answer, including seed 44 — the exact item whose hints
+previously walked a pupil through *addition* on a subtraction problem ("Add only the numerators:
+2 + 1 = 3" → "3/6" → "The answer is 1/6"). It now reads "When subtracting… Subtract only the
+numerators: 2 - 1 = 1" → `1/6`. **The `ab70698a` hint fix is confirmed in rendered output.**
+
+Filed with `file_reviews --batch 7`, full dispatch provenance (`--dispatch-id
+s5-2026-09-24-haiku-a`, `--dispatch-prompt`, `--samples-delivery`, `--tool-uses-by-reviewer`, and the
+DISPATCH-TIME `--skeleton-dir`).
+
+**Measured result: §5 1264 → 1240 at `validate_judgment`. `mat_g3_na_q4_7` 28 findings → 4.**
+
+### THE FOUR RESIDUAL FINDINGS WERE ALL FALSE POSITIVES — `_provenance_corpus` was an allowlist
+
+The 4 that survived were the quote-provenance gate objecting that the reviewer quoted
+`'denominator'`, `'numerator'`, `'similar_fractions'` and `'fraction-part'` — "which appears nowhere
+in this review's own samples_reviewed or competency text — the reviewer cited content it was never
+shown."
+
+Every one of those appears in the dispatched packet, counted in the file I sent:
+
+```
+denominator          packet hits: 57      (hints)
+numerator            packet hits: 19      (hints)
+similar_fractions    packet hits: 1       (printed REQUIREMENT id)
+fraction-part        packet hits: 19      (role_counts KEY in the rendered visual structure)
+```
+
+Root cause: `_provenance_corpus` named exactly four fields — `question_text`, `correct_answer`,
+`formatter`, `options` — while `judgment_packets` prints hints, cloze text, visual payload, the
+rendered visual structure and the requirement clauses. The stored `samples_reviewed` snapshot
+**already carries all of them**; the corpus simply did not read them. This is the
+`allowlist-checks-drift-silently` shape: a validator that names its fields stops covering new ones.
+
+**Why it mattered more than four findings:** reviewers quote hints, and hints are where the worst
+known student-facing defect in this tree lived. The gate penalised the single most valuable thing a
+reviewer does, at ~4 false findings per node across 150 remaining nodes.
+
+Fix: the corpus is now every scalar and every mapping KEY reached recursively inside each stored
+sample, plus the requirement snapshot and the competency snapshot text. Recursive flattening rather
+than `json.dumps` deliberately — serialising would backslash-escape a double quote inside a stem and
+introduce a false positive of its own. Detection power is unchanged: a rationale quoting another
+node's stem still fails, because only this node's own samples are in the corpus.
+
+```
+§5 1240 → 1236, and the sorted content diff is EXACTLY the 4 lines:
+  - mat_g3_na_q4_7: ... quotes 'denominator' ...
+  - mat_g3_na_q4_7: ... quotes 'numerator' ...
+  - mat_g3_na_q4_7: ... quotes 'similar_fractions' ...
+  - mat_g3_na_q4_7: ... quotes 'fraction-part' ...
+mat_g3_na_q4_7 findings: 0
+```
+
+**Wrong-reason check**, per ground rule 4: the pre-existing `fabricated_quote` mutation scored
+`1/1 DETECTED`; `_provenance_corpus` then neutered (`_flatten_shown(data, parts)` added so every
+quote is trivially present) → `0/1`, `SURVIVED: output lacked expected marker`; file restored and
+`cmp`-verified byte-identical (sha256 `1b630f3d7d3c5288e90bbb88b73011053a1ec28bcaf5effc4b000a8e5f251851`
+before and after, `__pycache__` purged) → `1/1 DETECTED` again. So the mutation lands on the function
+I changed, and the widened corpus still catches real fabrication (`_PHANTOM_QUOTE` is absent from any
+packet).
+
+**NAMED LIMIT, now in the docstring:** the corpus is the stored snapshot, a superset of the printed
+packet for a few internal fields (`replay_digest`, `renderer_input_digest`). Quoting one of those
+field names or digest values — text a reviewer was never shown — is NOT caught. Deliberate trade: a
+false finding against an honest reviewer costs a real re-review, while an unprinted digest is not
+plausible fabricated evidence.
+
+### The "115 of 151" claim is an UPPER BOUND, and it lived in SIX places
+
+That figure was measured with the same narrow corpus, so it counted honest quotes of hints, cloze
+text, visual payload and requirement clauses as fabrication. The fabrication conclusion stands (those
+reviews were separately evidenced as template all-PASS stubs); **only the count is unreliable.**
+
+Per the recurring "a rule in TWO places, fixed in ONE" trap, I enumerated every copy with
+`grep -rn "115 of"` and corrected all six:
+
+| file | site |
+|---|---|
+| `backend/app/practice_gen/validation/validate_judgment.py` | module docstring + `_validate_quote_provenance` docstring |
+| `backend/app/practice_gen/validation/validate_capability.py` | the not-ported rationale |
+| `tests/mutation_harness.py` | `fabricated_quote` description |
+| `tests/unit/test_judgment_antitemplate.py` | module docstring |
+| `docs/pgen_judgment.md` | the anti-template section |
+| `validation_reports/HARDENING_EVIDENCE.md` | the ~7511 §6 passage |
+
+Related, and corroborating: that §6 passage records quote provenance firing on **16 of 143 honest
+attestation verdicts**, which is why it was deliberately never ported to §6. Same over-firing
+disease, a different cause (hypothetical quotes, which `_review_reasonings` already excludes for §5).
+
+### A determinism defect found while diffing two §5 runs
+
+`validate_judgment` iterated `REQUIRED_FINDINGS & set(findings.keys())` — a bare set intersection, so
+the SAME tree printed its per-node findings in a different order in consecutive processes
+(`PYTHONHASHSEED`). Contents were stable; only order moved. But it buried the 4 lines that actually
+changed under ~90 reordered ones, and it is what made me sort the diff to see the truth. Now
+`sorted(...)`. Protocol 6 determinism applies to what a validator prints. No behaviour change, so no
+new mutation is owed.
+
+### `_apply` could leak a plant into production source (Priority 3)
+
+`_apply` validated one anchor and wrote that file before reading the next, so a multi-file plant
+whose SECOND anchor had moved left the FIRST file mutated in real source with **every recovery path
+blind to it**: the `ValueError` escaped before `originals` was returned, so
+`run_mutation_recorded`'s `finally` had nothing to restore, and `_IN_FLIGHT` was only updated on the
+line AFTER `_apply` returned (`tests/mutation_harness.py:4853-4854`), so no kill-safety marker named
+the file either. Same escape class as the 2026-09-23 incident that put `"is_correct": False` into the
+API route. The `mutation_restore_purges_bytecode` contract row already named this blind spot as
+"covered in practice only by the anchor preflight" — a preflight being a second copy of the rule.
+
+Fix: two passes. Pass 1 reads and validates every anchor and writes nothing, so a moved anchor cannot
+leave a partial plant at all. Pass 2 registers each file in `_IN_FLIGHT` and refreshes the marker
+BEFORE its write lands, so a failure no preflight can predict — ENOSPC (very live today), a read-only
+file, a kill between two writes — stays recoverable.
+
+New assertion `mutation_apply_is_all_or_nothing`, registered in `run_all.py`, with a contract row, two
+new tests, and **TWO mutations — one per pass**, because a two-site fix lets a single-site plant
+survive while proving nothing:
+
+```
+  PASS  apply_writes_before_validating_all_anchors §0 (a multi-file plant is all-or-nothing)
+  PASS  apply_plants_without_registering_in_flight §0 (a planted file is recoverable before its write lands)
+```
+
+**NAMED LIMIT** (in the docstring and the contract row): this covers the `edits` path only. A
+mutation supplying `apply_fn` owns its own rollback and is reached by neither pass.
+
+### A fourth defect, found because the first three changed a count
+
+The fast unit suite (`822 passed, 1 failed` in 682.78s) failed
+`test_legacy_review_queue.py::test_the_written_artifact_matches_a_fresh_build`. That is the
+fixture-rot class the handoff warns about, and the artifact was genuinely stale — but rebuilding it
+made the queue go UP, 151 → 152, which is the opposite of what filing a review should do.
+
+`_legacy_review_paths()` used a bare `REVIEW_DIR.rglob("*.json")`, which swept in
+`<node dir>/.responses/<dispatch-id>.json` — the immutable raw reviewer responses `file_reviews`
+writes as provenance. Each was counted as a legacy review that was simultaneously "missing a v1
+facet" and "an orphan review for an undeclared node", because it has no `schema_version` and its
+filename is a dispatch id rather than a node id.
+
+```
+committed  : legacy_nodes 151, records_missing_a_v1_facet 1, orphan_reviews_for_undeclared_nodes 1
+after fix  : legacy_nodes 150, records_missing_a_v1_facet 0, orphan_reviews_for_undeclared_nodes 0
+```
+
+The 2026-09-23 dispatch's response file was **already** inflating the committed figure by one, which
+is why the headline happened to read 151 and matched the prose everyone quoted. The real queue has
+been 150 throughout, and both phantom facets were the same two files. A campaign is planned off this
+number. Regression test `test_dispatch_response_records_are_not_counted_as_reviews`, proven by
+neutering: reverted to the bare `rglob` → `1 failed`; restored (`cmp` byte-identical) → `1 passed`.
+
+### The re-proof chain, run ALONE at `da4f9588`
+
+```
+anchors                    : all anchors OK
+regen_formatter_exclusions : 275 exclusions across 111 nodes, no diff
+obligation_benchmark       : failures=0 median=7.205ms p95=30.914ms projected_release=1.745h
+frontend_static_render     : 2 files / 41 tests passed; 30 payloads; 18 production visual types
+mutation corpus            : 159/162 mutations detected
+release shards (all six)   : failures=0 each, elapsed 1521-1586s of the 1,800s budget (03:20->05:55)
+verify-release             : release_status=complete receipts=6 complete=True
+```
+
+The three undetected are the known §6F cluster (`contradicted_attestation`,
+`attestation_drops_options`, `attestation_leaks_into_phase1`), INVALID because their baseline command
+`capability_phase2` is red. No plant escaped: the `INPUT_ROOTS` diff and the HEAD marker scan were
+both empty afterwards, and no `MUTATION_IN_FLIGHT-*` marker was left behind.
+
+```
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.run_all
+  FAIL       assertion_coverage_8           phase 1     1.1s
+  FAIL       judgment_reviews_5             phase 2   140.5s
+  FAIL       capability_phase2              phase 2    24.0s
+  scheduled=17 completed=14 failed=3 crashed=0 not_run=0 incomplete=0
+  FAIL judgment_reviews (1237 problem(s) — non-PASS verdicts or incomplete reviews)
+  FAIL capability_contract (Phase 2, 173 problem(s): 173 CONTRADICTED, 0 UNATTESTED, 0 STALE, 0 UNADJUDICABLE)
+  FAIL assertion_coverage_8 (3 in 1 family) / FAIL mutation_proof_integrity_8 (9 in 3 families)
+  PASS census: mutations=162 (floor 105)          <- was 160
+  SOME ALL TESTS CHECKS FAILED.
+```
+
+**§5: 1265 → 1237 at the `run_all` entry point** (module 1264 → 1236; the +1 is the aggregate rollup,
+settled). 24 of the 28 cleared by the one filed blind review, 4 by the `_provenance_corpus` fix.
+`capability_phase2` is unchanged at 173 — no content work was done, by design.
+
+**I did NOT observe `run_all`'s exit code**: it was run through `| tee | tail`, so the pipeline
+reported `tail`'s status. The harness's own verdict line (`SOME ALL TESTS CHECKS FAILED`) and
+`failed=3` are quoted instead of a number I did not see.
+
+### Two process lessons from this session
+
+* **Never pipe a long run through `tail -N`.** `tail` holds all output until the pipeline ends, so
+  the mutation corpus wrote NOTHING for its first 30 minutes and a monitor watching that file was
+  structurally incapable of firing. I briefly read that silence as "no survivors yet"; it was no
+  visibility at all. Use `tee`, and read the exit code from the process, not the pipeline.
+* **`du -sh -d 1` is invalid on macOS BSD `du`** (`-s` and `-d` conflict). It prints a usage message
+  to stderr and nothing to stdout, so a disk survey piped to `sort` silently reports nothing. Use
+  `du -h -d 1`.
+
+### Left for the next session
+
+1. **The §5 campaign is 150 nodes and now unblocked.** The gate no longer punishes an honest
+   reviewer for quoting hints, and the machinery is proven end-to-end on one node. Dispatch on Haiku
+   per ruling 4 and the 2026-09-24 user decision; the v2 corpus is now single-family (Haiku) because
+   `mat_g3_na_q4_7`'s GPT-5.6-Terra review was re-judged and replaced. Keep ≤25 nodes per reviewer
+   identity, split by response volume, file from the DISPATCH-TIME skeleton.
+2. **`capability_phase2` 173 CONTRADICTED across 82 nodes** is untouched, and no single row is
+   settled — confirm each with a second independent dispatch before spending engineering on it.
+3. **`.claude/worktrees/agent-aaac714fac3fe0cc6` holds uncommitted edits to production source** dated
+   Aug 10 (`axes_catalog.py`, `dna/na/comparing_ordering.py`, `formatters/textual/fmt_true_false.py`).
+   Not mine to judge; it needs an owner decision. NOT deleted.
+4. **Disk remains tight: 3.3 GiB free of 112 GiB.** 2.5 GB was reclaimed from regenerable caches;
+   the remaining 92 GB used is outside this repo family (3.9 GB total), so the next big run should
+   check `df -h` first.
+5. **The supersession defect is still unfixed** (owner's call), and the §6F cluster still cannot be
+   scored until `capability_phase2` reaches 0.

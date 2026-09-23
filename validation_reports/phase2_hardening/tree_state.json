@@ -4,11 +4,11 @@
   "open_intent": null,
   "last_completed": {
     "kind": "chain",
-    "began_at": "2026-09-23T21:14:01+08:00",
-    "session": "claude-h06-killsafe-chain-2026-09-23",
-    "note": "Two harness fixes landed (6769fdff per-invocation marker; d92a3875 planted-bytecode purge, found when the first corpus scored 7 spurious INVALIDs). Re-running the full chain ALONE: anchors, regen, benchmark, frontend_suite, corpus (160), six shards, verify-release, run_all.",
+    "began_at": "2026-09-24T02:27:51+08:00",
+    "session": "claude-h06-s5-campaign-2026-09-24",
+    "note": "Re-proof chain for da4f9588.",
     "next_step": "Resume the chain at the first step whose artifact is still stale; shards are individually resumable, so re-run only the stale indices.",
-    "completed_at": "2026-09-24T01:16:07+08:00",
-    "completion_note": "Chain complete at digest 07015c154d6f6c8f (HEAD d92a3875): corpus 157/160 (only the §6F cluster), 6 shards failures=0, verify-release complete, run_all EXIT 1 with capability_phase2 173, judgment_reviews_5 1265 stage/1264 module, assertion_coverage_8 3. §5 re-review campaign not started."
+    "completed_at": "2026-09-24T06:25:26+08:00",
+    "completion_note": "Chain re-proved at da4f9588: corpus 159/162, six shards failures=0, verify-release complete. run_all failed=3 (judgment_reviews_5 1237, capability_phase2 173, assertion_coverage_8 3)."
   }
 }

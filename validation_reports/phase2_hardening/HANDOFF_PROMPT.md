@@ -1,11 +1,19 @@
 # Handoff — continue the Phase 2 hardening plan
 
-**Refreshed 2026-09-24 (claude-h06-killsafe-chain-2026-09-23): two harness-safety fixes — a
-per-invocation mutation kill-safety marker, and restores that purge bytecode compiled from a plant —
-and a complete re-proof run ALONE at digest `07015c154d6f6c8f`. The tree is CERTIFIED. Next job:
-the §5 blind re-review campaign (Priority 2 of `CLAUDE_AGENT_PROMPT.md`), none of which was started.
-⚠ The data volume had 305 MiB free at handoff — run `df -h` before any heavy run. This file is
-deliberately a POINTER, not a summary.**
+**Refreshed 2026-09-24 (claude-h06-s5-campaign-2026-09-24): the §5 blind re-review campaign is
+OPEN and its blocking gate is fixed. `_provenance_corpus` was a four-field allowlist while the blind
+packet prints hints, cloze text, visual payload/render and the requirement clauses, so it raised FOUR
+FALSE findings against an honest review — punishing reviewers for quoting hint text, the very field
+the seed-44 defect lived in. Fixed, with the `115 of 151` claim corrected in all SIX places it lived
+(it is an UPPER BOUND, not a count). Also fixed: `_apply` could leak a multi-file plant into
+production source, and `_legacy_review_paths` counted dispatch provenance as reviews (the owed queue
+is **150**, not the 151/152 the artifact reported). Chain re-proved ALONE at `da4f9588`; digest is
+now `126e9eb19a1122bc`. ONE node is filed (`mat_g3_na_q4_7`, Haiku); **149 remain owed** and the
+campaign is unblocked. ⚠ The data volume has ~3.3 GiB free — run `df -h` before any heavy run. This
+file is deliberately a POINTER, not a summary.**
+
+*(historical)* Refreshed 2026-09-24 (claude-h06-killsafe-chain-2026-09-23): per-invocation kill-safety
+marker and bytecode-purging restores, re-proved at `07015c154d6f6c8f`.
 
 *(historical)* Refreshed 2026-09-23 after the lossless §5 filing repair, first genuine v2 review, and
 complete re-proof at digest `e321fd21ab20c475`.
@@ -42,9 +50,9 @@ from the digests alone.
 
 ```text
 PASS tree_state: CERTIFIED
-  live input digest : 07015c154d6f6c8f
+  live input digest : 126e9eb19a1122bc
   worktree          : clean
-  mutation_proofs         fresh  160 file(s)
+  mutation_proofs         fresh  162 file(s)
   release_shards          fresh  6 file(s)
   obligation_benchmark    fresh  1 file(s)
   frontend_static_render  fresh  1 file(s)
