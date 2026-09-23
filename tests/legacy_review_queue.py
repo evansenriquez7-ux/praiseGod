@@ -124,9 +124,24 @@ def _node_is_declared(node_id: str) -> bool:
 
 
 def _legacy_review_paths() -> List[Path]:
+    """Every filed review, and ONLY reviews.
+
+    Dot-directories are skipped because `file_reviews` stores each dispatch's immutable
+    raw reviewer response under `<node dir>/.responses/<dispatch-id>.json`. Those are
+    provenance, not reviews: they carry no `schema_version` and their filename is a
+    dispatch id rather than a node id, so a bare `rglob("*.json")` counted each one as a
+    legacy review that was simultaneously "missing a v1 facet" and an "orphan review for
+    an undeclared node". Measured 2026-09-24: the committed artifact said 151 legacy
+    nodes when 150 were owed -- one `.responses` file from the 2026-09-23 dispatch was
+    already inflating it, and filing a second review pushed the headline to 152 while the
+    real queue went DOWN to 150. A campaign is planned off this number.
+    """
     if not REVIEW_DIR.is_dir():
         return []
-    return sorted(REVIEW_DIR.rglob("*.json"))
+    return sorted(
+        p for p in REVIEW_DIR.rglob("*.json")
+        if not any(part.startswith(".") for part in p.relative_to(REVIEW_DIR).parts)
+    )
 
 
 def build_queue() -> Dict[str, Any]:

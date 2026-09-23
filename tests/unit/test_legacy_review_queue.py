@@ -159,3 +159,28 @@ def test_the_written_artifact_matches_a_fresh_build(queue):
     written = json.loads(lrq.QUEUE_PATH.read_text(encoding="utf-8"))
     assert written["source_corpus_sha256"] == queue["source_corpus_sha256"]
     assert written["counts"] == queue["counts"]
+
+
+def test_dispatch_response_records_are_not_counted_as_reviews(tmp_path, monkeypatch):
+    """`.responses/<dispatch-id>.json` is provenance, not a review.
+
+    `file_reviews` stores each dispatch's immutable raw reviewer response beside the
+    reviews. A bare `rglob("*.json")` counted each one as a legacy review that was also
+    "missing a v1 facet" and an "orphan review for an undeclared node", so the committed
+    artifact read 151 legacy nodes when 150 were owed, and filing a review pushed the
+    headline UP to 152 while the real queue went down. The §5 campaign is planned off
+    this number.
+    """
+    review_dir = tmp_path / "judgment"
+    node_dir = review_dir / "mat_g1_na_q1"
+    (node_dir / ".responses").mkdir(parents=True)
+    (node_dir / "mat_g1_na_q1_0.json").write_text("{}", encoding="utf-8")
+    (node_dir / ".responses" / "s5-somedispatch.json").write_text("{}", encoding="utf-8")
+    monkeypatch.setattr(lrq, "REVIEW_DIR", review_dir)
+
+    found = lrq._legacy_review_paths()
+
+    assert [p.name for p in found] == ["mat_g1_na_q1_0.json"], (
+        "a dispatch-provenance record was counted as a filed review; the re-reviews-owed "
+        "figure a campaign is planned from is then wrong by one per dispatch"
+    )

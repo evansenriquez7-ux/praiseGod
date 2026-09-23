@@ -33,7 +33,10 @@ and a template rationale — one sentence frame with the node ID and seed list
 substituted in — was stapled to it. Freshness passed all 151; the verbatim-reuse
 check passed them too, because substituting the node ID makes no two rationales
 byte-identical. 115 of them quoted question stems that appear nowhere in their own
-samples. Three cross-file/structural checks close that hole (thresholds below):
+samples (CORRECTED 2026-09-24: an upper bound, not a verified count -- that corpus
+omitted hints, cloze text, visual payload/render and requirement clauses, all of which
+the packet prints; see `_provenance_corpus`). Three cross-file/structural checks close
+that hole (thresholds below):
 quote provenance, rationale-skeleton clustering, and reviewer plurality.
 
 No graceful fallbacks: a missing, unparseable, incomplete, boilerplate, templated,
@@ -457,7 +460,12 @@ def _validate_one(node_id: str, path: Path) -> List[str]:
     if missing:
         errs.append(f"{node_id}: findings missing required items: {sorted(missing)}.")
 
-    for item in REQUIRED_FINDINGS & set(findings.keys()):
+    # sorted(): a bare set intersection iterates in PYTHONHASHSEED order, so the
+    # SAME tree reported its findings in a different order in consecutive processes.
+    # Contents were stable, only order moved, but it made a before/after §5 diff
+    # unreadable -- measured 2026-09-24, where ~90 reordered lines buried the 4 that
+    # actually changed. Protocol 6 determinism applies to what a validator prints.
+    for item in sorted(REQUIRED_FINDINGS & set(findings.keys())):
         f = findings[item]
         if not isinstance(f, dict):
             errs.append(f"{node_id}: findings['{item}'] must be an object with 'verdict' and 'rationale'.")
@@ -862,24 +870,70 @@ def _rationale_skeleton(rationale: str) -> str:
 
 def _provenance_corpus(node_id: str, data: Dict[str, Any]) -> str:
     """
-    Everything a rationale for this node is entitled to quote: the samples the
-    review itself carries (stems, answers, options, formatter names) plus the
-    node's own MATATAG competency text. Anything else quoted as if observed was
+    Everything a rationale for this node is entitled to quote: every field of the
+    samples the review itself carries, this node's printed requirement clauses,
+    and its own MATATAG competency text. Anything else quoted as if observed was
     not observed here.
+
+    The corpus is every scalar and every mapping KEY reached recursively inside
+    each stored sample, because the packet prints those blocks whole. (Recursive
+    flattening rather than `json.dumps`: serialising would backslash-escape a
+    double quote inside a stem and reintroduce a false positive of its own.)
+    Until 2026-09-24 this function
+    named four fields (question_text, correct_answer, formatter, options) while
+    the packet also printed hints, cloze text, the visual payload and the
+    rendered visual structure. Measured that day on mat_g3_na_q4_7: the allowlist
+    produced FOUR false findings against a genuine blind review, which quoted
+    'denominator' and 'numerator' (57 and 19 occurrences in the dispatched
+    packet's hints), 'similar_fractions' (a printed requirement id) and
+    'fraction-part' (a printed `role_counts` KEY inside the rendered structure).
+    So the gate punished the single most valuable thing a reviewer does -- quoting
+    the hint text, which is exactly where the seed-44 subtraction defect lived,
+    the one student-facing bug every automated gate had passed. Serialising the
+    whole stored sample cannot drift as packet fields are added; an allowlist
+    re-breaks silently on the next one.
+
+    This does NOT weaken the check. Its purpose is to catch a template rationale
+    stapled onto a freshly-rendered samples block, and a rationale quoting a stem
+    from a DIFFERENT node still fails, because only this node's own samples are in
+    the corpus.
+
+    NAMED LIMIT: the corpus is the stored snapshot, which is a superset of the
+    printed packet for a few internal fields (e.g. `replay_digest`,
+    `renderer_input_digest`). Quoting one of those field names or digest values --
+    text a reviewer was never actually shown -- is therefore NOT caught. The
+    trade is deliberate: a false finding against an honest reviewer costs a real
+    re-review, while an unprinted digest is not plausible evidence anybody
+    fabricates a verdict from.
     """
     parts: List[str] = [node_id, str(get_node_info(node_id).get("competency", ""))]
+    snapshot = data.get("competency_snapshot")
+    if isinstance(snapshot, dict):
+        parts.append(str(snapshot.get("text", "")))
+    for req in data.get("requirements_snapshot") or []:
+        if isinstance(req, dict):
+            parts.append(str(req.get("id", "")))
+            parts.append(str(req.get("clause", "")))
     for s in data.get("samples_reviewed") or []:
-        if not isinstance(s, dict):
-            continue
-        parts.append(str(s.get("question_text", "")))
-        parts.append(str(s.get("correct_answer", "")))
-        parts.append(str(s.get("formatter", "")))
-        for opt in s.get("options") or []:
-            if isinstance(opt, dict):
-                parts.append(str(opt.get("value", "")))
-            else:
-                parts.append(str(opt))
+        _flatten_shown(s, parts)
     return " ".join(" ".join(p.split()).lower() for p in parts)
+
+
+def _flatten_shown(value: Any, out: List[str]) -> None:
+    """Collect every scalar and every mapping key inside a printed packet block.
+
+    Keys are collected because the packet prints these blocks as JSON, so a key
+    such as `role_counts`' 'fraction-part' is literally on the reviewer's screen.
+    """
+    if isinstance(value, dict):
+        for k, v in value.items():
+            out.append(str(k))
+            _flatten_shown(v, out)
+    elif isinstance(value, (list, tuple)):
+        for v in value:
+            _flatten_shown(v, out)
+    elif value is not None:
+        out.append(str(value))
 
 
 def _review_reasonings(data: Dict[str, Any]):
@@ -918,6 +972,11 @@ def _validate_quote_provenance(node_id: str, data: Dict[str, Any]) -> List[str]:
     mechanism by which 115 of 151 filed reviews quoted stems that appear nowhere in
     the samples they claim to have judged. A quoted stem with no source in the
     packet is fabricated evidence, which is a harder failure than a wrong verdict.
+
+    That 115 is an UPPER BOUND, not a verified count, and the correction is dated
+    2026-09-24: it was measured while `_provenance_corpus` named only four fields, so
+    it also counted honest quotes of hints, cloze text, visual payload/render and
+    requirement clauses. Read its docstring before quoting the figure again.
     """
     errs: List[str] = []
     corpus = _provenance_corpus(node_id, data)

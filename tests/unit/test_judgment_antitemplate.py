@@ -8,6 +8,9 @@ template with the node ID and seed list substituted in, and 115 of them quoted
 question stems that appear nowhere in their own `samples_reviewed`. That set
 satisfied every check the gate had:
 
+CORRECTED 2026-09-24: that 115 was counted with a provenance corpus that omitted hints, cloze text, visual payload/render and requirement clauses -- all of which the blind packet prints -- so it is an UPPER BOUND on fabrication, not a verified count. The same narrow corpus produced 4 false findings against a genuine review on mat_g3_na_q4_7. The fabrication conclusion stands on the reviews being template all-PASS stubs, which is separately evidenced; only the count is unreliable. See _provenance_corpus.
+
+
   - `blind: true`                  — a self-attested boolean
   - `reviewed_by` not a placeholder — one plausible string, repeated 151x
   - rationale >= 40 chars           — templates are long

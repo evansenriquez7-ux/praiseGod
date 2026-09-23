@@ -120,6 +120,13 @@ ASSERTIONS = (
     # same-length plant's .pyc stayed live after the source was byte-identical -- seven
     # §6 baselines red, invisible to `restored_clean` and to `input_digest`.
     "mutation_restore_purges_bytecode",      # tests/unit/test_mutation_killsafe.py
+    # A multi-file plant is all-or-nothing (2026-09-24). `_apply` validated an anchor and
+    # wrote that file before looking at the next, so a plant whose SECOND anchor had moved
+    # left the FIRST planted in real source with every recovery path blind to it: the
+    # raise escaped before `originals` was returned, and `_IN_FLIGHT` was only updated on
+    # the line after. Two mutations, because the fix has two sites -- validate every
+    # anchor first, and register each file before its write lands.
+    "mutation_apply_is_all_or_nothing",      # tests/unit/test_mutation_killsafe.py
     # A hint chain may not walk a pupil to a value its own final line denies
     # (2026-09-23). Declared here for the same reason as the lines above -- its
     # mutation drives ONE test file. Found by the first genuine schema-v2 blind

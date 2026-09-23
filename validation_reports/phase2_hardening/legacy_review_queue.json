@@ -1,19 +1,18 @@
 {
   "schema_version": 1,
   "kind": "legacy_review_queue",
-  "generated_at": "2026-09-23T08:46:14.891301+00:00",
+  "generated_at": "2026-09-23T18:24:26.099588+00:00",
   "adjudicable": false,
   "why_not_adjudicable": "These are v1 reviews. The current schema (v2) requires per-sample contextual-validity verdicts, exact clause coverage and dispatch-bound provenance, which a v1 reviewer was never asked for and which therefore cannot be recovered from a v1 record without inventing them. Every node listed here still owes a fresh blind re-review. This file exists so that the previous programme's findings remain visible as a QUEUE while none of them counts as evidence.",
-  "required_work": "151 node(s) need a fresh blind review filed at schema_version 2. Rebuild a packet with: python -m backend.app.practice_gen.validation.judgment_packets --node <node_id>",
+  "required_work": "150 node(s) need a fresh blind review filed at schema_version 2. Rebuild a packet with: python -m backend.app.practice_gen.validation.judgment_packets --node <node_id>",
   "source_review_dir": "validation_reports/judgment",
-  "source_corpus_sha256": "f49d130dd2da19dd8c54a7b4256c26f0b8a766c4dcec426dc7cc73d40a3997e9",
+  "source_corpus_sha256": "c786b7c1169ae5dc1969d3064b30dcb814a97418f1f33196b9f3ee0cdb44e056",
   "counts": {
-    "legacy_nodes": 151,
+    "legacy_nodes": 150,
     "already_current_and_excluded": 1,
     "by_overall_verdict": {
       "CONCERN": 92,
       "FAIL": 44,
-      "None": 1,
       "PASS": 14
     },
     "nodes_with_a_non_pass_facet": 136,
@@ -25,8 +24,8 @@
       "scale_appropriateness": 25,
       "variant_comprehensiveness": 82
     },
-    "records_missing_a_v1_facet": 1,
-    "orphan_reviews_for_undeclared_nodes": 1
+    "records_missing_a_v1_facet": 0,
+    "orphan_reviews_for_undeclared_nodes": 0
   },
   "nodes": [
     {
@@ -8253,29 +8252,6 @@
         "variant_comprehensiveness",
         "competency_alignment"
       ],
-      "adjudicable": false
-    },
-    {
-      "node_id": "judgment-v2-b7-20260923",
-      "source_path": "validation_reports/judgment/mat_g3_na_q4/.responses/judgment-v2-b7-20260923.json",
-      "source_sha256": "1714e5b13fad2bda6a1d8747212f07012dd86c1c5b26b15c4e215149b29d0db0",
-      "declared_schema_version": null,
-      "reviewed_by": null,
-      "review_date": null,
-      "blind": null,
-      "sample_seeds": [],
-      "overall_verdict": null,
-      "node_still_declared": false,
-      "facets": {},
-      "facets_missing_from_the_v1_record": [
-        "competency_fulfillment",
-        "comprehensive_coverage",
-        "cognitive_capacity",
-        "variant_comprehensiveness",
-        "competency_alignment",
-        "scale_appropriateness"
-      ],
-      "non_pass_facets": [],
       "adjudicable": false
     },
     {

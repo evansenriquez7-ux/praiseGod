@@ -349,3 +349,77 @@ def test_startup_recovery_leaves_no_planted_bytecode(h, tmp_path):
         "PLANTED BYTECODE SURVIVED RECOVERY: a killed run's plant was restored in source "
         "but still runs from __pycache__"
     )
+
+
+# --- _apply is all-or-nothing (2026-09-24) -------------------------------------
+# A multi-file plant used to be written one file at a time by the same loop that
+# validated the anchors, so a moved anchor on a LATER file left the EARLIER ones
+# planted in production source with nothing able to restore them: the exception
+# escaped `_apply` before it returned `originals`, `_IN_FLIGHT` was only updated on
+# the line after `_apply` returned, and so no marker was written either. The
+# `docs/pgen_contract.md` `mutation_restore_purges_bytecode` row named this as a
+# blind spot covered "in practice only by the anchor preflight".
+
+def _two_file_mutation(h, tmp_path, second_anchor: str):
+    """A 2-file plant whose second anchor is caller-chosen (valid or moved)."""
+    first = tmp_path / "first.py"
+    second = tmp_path / "second.py"
+    first.write_text("FIRST = 1\n", encoding="utf-8")
+    second.write_text("SECOND = 2\n", encoding="utf-8")
+    return first, second, h.Mutation(
+        name="test_only_two_file_plant",
+        description="two files, applied together",
+        edits={
+            "first.py": ("FIRST = 1\n", "FIRST = 999\n"),
+            "second.py": (second_anchor, "SECOND = 999\n"),
+        },
+        command=["tests.isolated_corpus"],
+        expected_check="test fixture -- never run",
+    )
+
+
+def test_a_later_moved_anchor_leaves_no_earlier_file_planted(h, monkeypatch, tmp_path):
+    """Pass 1 validates every anchor, so a bad second anchor writes nothing at all."""
+    monkeypatch.setattr(h, "REPO_ROOT", tmp_path)
+    first, second, mutation = _two_file_mutation(h, tmp_path, "SECOND = ABSENT\n")
+
+    with pytest.raises(ValueError, match="anchor for 'second.py' matched 0 times"):
+        h._apply(mutation)
+
+    assert first.read_text(encoding="utf-8") == "FIRST = 1\n", (
+        "PLANT ESCAPED: the first file of a multi-file plant was left mutated in source "
+        "after a later anchor failed. Nothing restores it -- `_apply` raised before "
+        "returning `originals`, so the caller's `finally` has nothing, and the file was "
+        "never registered in `_IN_FLIGHT`, so neither the signal handler nor startup "
+        "recovery can see it."
+    )
+    assert second.read_text(encoding="utf-8") == "SECOND = 2\n"
+    assert not h._IN_FLIGHT
+    assert not list(h._MARKER_DIR.glob(h._MARKER_GLOB)) or not json.loads(
+        h._MARKER.read_text(encoding="utf-8")
+    )
+
+
+def test_each_file_is_recoverable_before_its_write_lands(h, monkeypatch, tmp_path):
+    """Pass 2 registers and markers each file BEFORE writing it.
+
+    The anchor preflight cannot predict ENOSPC, a read-only file, or a kill between
+    two writes, so every written file must already be recoverable when it is written.
+    """
+    monkeypatch.setattr(h, "REPO_ROOT", tmp_path)
+    first, second, mutation = _two_file_mutation(h, tmp_path, "SECOND = 2\n")
+
+    originals = h._apply(mutation)
+
+    assert first.read_text(encoding="utf-8") == "FIRST = 999\n"
+    assert second.read_text(encoding="utf-8") == "SECOND = 999\n"
+    assert h._IN_FLIGHT == {first: "FIRST = 1\n", second: "SECOND = 2\n"}, (
+        "_apply did not register the planted files itself. If registration only happens "
+        "on the line after `_apply` returns, a kill DURING a multi-file plant leaves "
+        "real planted source with no marker naming it."
+    )
+    assert json.loads(h._MARKER.read_text(encoding="utf-8")) == {
+        str(first): "FIRST = 1\n",
+        str(second): "SECOND = 2\n",
+    }, "the on-disk kill-safety marker does not name every file already planted"
+    assert originals == {first: "FIRST = 1\n", second: "SECOND = 2\n"}

@@ -1428,7 +1428,8 @@ def _attestation_integrity(records: List[Dict[str, Any]]) -> List[str]:
     forever would leave no legal move -- the record may not be edited (§6F) and may
     not be deleted.
 
-    Quote provenance -- §5's fourth gate, and the one that caught 115 of the 151 --
+    Quote provenance -- §5's fourth gate, and the one that caught 115 of the 151
+    (an upper bound; see _provenance_corpus, corrected 2026-09-24) --
     is deliberately NOT ported. Measured 2026-08-23, it fires on 16 of 143 honest
     verdicts, because an Attester is asked to state what would flip its verdict and
     writes that hypothesis in quotes ("Nothing short of an item that requires the

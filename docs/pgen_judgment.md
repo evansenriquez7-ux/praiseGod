@@ -23,7 +23,11 @@ The list above was satisfied in full by 151 fabricated all-PASS reviews written 
 the node ID and seed list substituted in. The freshness check did not catch them because it re-renders
 `samples_reviewed` and never reads the rationale — so a template rationale stapled onto a freshly
 rendered samples block passed cleanly, and 115 of the 151 quoted question stems that appear nowhere in
-their own samples. Three further checks are therefore binding (enforced in `validate_judgment.py`,
+their own samples. (**CORRECTED 2026-09-24:** that 115 was counted with a provenance corpus that omitted
+hints, cloze text, visual payload/render and requirement clauses, all of which the blind packet prints, so
+it is an **upper bound** on fabrication rather than a verified count; the same narrow corpus produced 4
+false findings against a genuine review on `mat_g3_na_q4_7`. The fabrication conclusion rests on the
+reviews being template all-PASS stubs, which is separately evidenced; only the count is unreliable.) Three further checks are therefore binding (enforced in `validate_judgment.py`,
 tested in `tests/unit/test_judgment_antitemplate.py`):
 
 | Check | Rule | Rejected because |

@@ -1350,7 +1350,15 @@ MUTATIONS: List[Mutation] = [
         description=(
             "Quote, in a rationale, a span that appears nowhere in that review's own "
             "packet or competency text -- the mechanism by which 115 of 151 fabricated "
-            "reviews cited stems they were never shown."
+            "reviews cited stems they were never shown. "
+            "CORRECTED 2026-09-24: that 115 was counted with a provenance corpus "
+            "that omitted hints, cloze text, visual payload/render and requirement "
+            "clauses -- all of which the blind packet prints -- so it is an UPPER "
+            "BOUND on fabrication, not a verified count. The same narrow corpus "
+            "produced 4 false findings against a genuine review on mat_g3_na_q4_7. "
+            "The fabrication conclusion stands on the reviews being template "
+            "all-PASS stubs, which is separately evidenced; only the count is "
+            "unreliable. See _provenance_corpus."
         ),
         # MIGRATED 2026-09-12 off the live corpus. This plant used to edit a real
         # agent-authored review file, which bound its proof to bytes Phase 1 may not
@@ -2199,6 +2207,77 @@ MUTATIONS: List[Mutation] = [
         ],
         baseline_must_not_contain=[
             "test_a_same_second_restore_leaves_no_planted_bytecode && failed"
+        ],
+    ),
+    Mutation(
+        name="apply_writes_before_validating_all_anchors",
+        asserts=["mutation_apply_is_all_or_nothing"],
+        description=(
+            "Write each file of a multi-file plant during the anchor-validation pass, "
+            "as `_apply` did until 2026-09-24. A plant whose SECOND anchor has moved "
+            "then leaves the FIRST file planted in production source, and nothing can "
+            "restore it: the exception escapes `_apply` before it returns `originals`, "
+            "so the caller's `finally` has nothing to put back. This is the escape the "
+            "`mutation_restore_purges_bytecode` row named as covered 'in practice only "
+            "by the anchor preflight' -- a preflight being a second copy of the rule."
+        ),
+        edits={
+            "tests/mutation_harness.py": (
+                "        planned.append((path, text, text.replace(find, replace)))\n",
+                '        path.write_text(text.replace(find, replace), encoding="utf-8")'
+                "  # planted mutation\n"
+                "        planned.append((path, text, text.replace(find, replace)))\n",
+            )
+        },
+        command=[
+            "pytest",
+            "tests/unit/test_mutation_killsafe.py"
+            "::test_a_later_moved_anchor_leaves_no_earlier_file_planted",
+            "-q",
+        ],
+        expected_check="§0 (a multi-file plant is all-or-nothing)",
+        expect_output_contains=[
+            "test_a_later_moved_anchor_leaves_no_earlier_file_planted",
+            "failed",
+        ],
+        baseline_must_not_contain=[
+            "test_a_later_moved_anchor_leaves_no_earlier_file_planted && failed"
+        ],
+    ),
+    Mutation(
+        name="apply_plants_without_registering_in_flight",
+        asserts=["mutation_apply_is_all_or_nothing"],
+        description=(
+            "Write a planted file without first registering it in `_IN_FLIGHT` and "
+            "refreshing the kill-safety marker. The anchor preflight cannot predict "
+            "ENOSPC, a read-only file, or a kill landing BETWEEN two writes, so a file "
+            "already written must already be named by the marker. Distinct from "
+            "`apply_writes_before_validating_all_anchors`: that one proves the "
+            "all-anchors-first pass, this one proves the register-before-write pass. A "
+            "two-site fix needs a mutation per site, or a surviving single-site plant "
+            "proves nothing."
+        ),
+        edits={
+            "tests/mutation_harness.py": (
+                "        originals[path] = text\n        _IN_FLIGHT[path] = text\n"
+                '        _write_marker()\n        path.write_text(mutated, encoding="utf-8")\n',
+                "        originals[path] = text\n"
+                '        path.write_text(mutated, encoding="utf-8")  # planted mutation\n',
+            )
+        },
+        command=[
+            "pytest",
+            "tests/unit/test_mutation_killsafe.py"
+            "::test_each_file_is_recoverable_before_its_write_lands",
+            "-q",
+        ],
+        expected_check="§0 (a planted file is recoverable before its write lands)",
+        expect_output_contains=[
+            "test_each_file_is_recoverable_before_its_write_lands",
+            "failed",
+        ],
+        baseline_must_not_contain=[
+            "test_each_file_is_recoverable_before_its_write_lands && failed"
         ],
     ),
     Mutation(
@@ -4517,7 +4596,25 @@ def _apply(mutation: Mutation) -> Dict[Path, str]:
                 f"tree dirty."
             )
         return mutation.apply_fn()
-    originals: Dict[Path, str] = {}
+
+    # TWO PASSES, and the split is the whole point. Until 2026-09-24 this was one loop
+    # that validated an anchor and wrote that file before looking at the next one, so a
+    # multi-file plant whose SECOND anchor had moved left the FIRST file planted in
+    # production source: the exception escaped `_apply` before it returned `originals`,
+    # so `run_mutation_recorded`'s `finally` had nothing to restore, `_IN_FLIGHT` was
+    # only updated on the line AFTER `_apply` returned, and no marker was ever written.
+    # A real planted bug, in real source, with every recovery path blind to it -- the
+    # same class of escape that put `"is_correct": False` into the API route on
+    # 2026-09-23. The anchor preflight made it unlikely, never impossible; a preflight
+    # is a separate copy of the rule, which is the defect shape this repo keeps paying
+    # for.
+    #
+    # PASS 1 reads and validates EVERY anchor and writes nothing, so the common failure
+    # (a moved anchor) cannot leave a partial plant at all. PASS 2 registers each file in
+    # `_IN_FLIGHT` and refreshes the marker BEFORE its write lands, so a failure the
+    # preflight cannot predict -- ENOSPC, a read-only file, a kill between writes -- is
+    # still recoverable by the signal/atexit handler and by startup recovery.
+    planned: List[tuple] = []
     for rel, (find, replace) in mutation.edits.items():
         path = REPO_ROOT / rel
         if not path.exists():
@@ -4533,8 +4630,14 @@ def _apply(mutation: Mutation) -> Dict[Path, str]:
                 f"exactly 1. The source moved; update the anchor rather than loosening it.\n"
                 f"  anchor: {find!r}"
             )
+        planned.append((path, text, text.replace(find, replace)))
+
+    originals: Dict[Path, str] = {}
+    for path, text, mutated in planned:
         originals[path] = text
-        path.write_text(text.replace(find, replace), encoding="utf-8")
+        _IN_FLIGHT[path] = text
+        _write_marker()
+        path.write_text(mutated, encoding="utf-8")
     return originals
 
 
