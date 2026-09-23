@@ -1,18 +1,18 @@
 {
  "asserts": [
-  "mutation_restore_purges_bytecode"
+  "mutation_apply_is_all_or_nothing"
  ],
  "baseline_exit": 0,
  "baseline_markers_already_present": [],
  "baseline_must_not_contain": [
-  "test_a_same_second_restore_leaves_no_planted_bytecode && failed"
+  "test_each_file_is_recoverable_before_its_write_lands && failed"
  ],
  "command": [
   "pytest",
-  "tests/unit/test_mutation_killsafe.py::test_a_same_second_restore_leaves_no_planted_bytecode",
+  "tests/unit/test_mutation_killsafe.py::test_each_file_is_recoverable_before_its_write_lands",
   "-q"
  ],
- "definition_digest": "01adf2b20c6d7a338c7571daa3e9d23723aa2981a12828e1ccc0144fbd3b9286",
+ "definition_digest": "21f9933b81c76451072dbdd375711bde6b038350510f382c8a07ed9d0ea026f8",
  "detected": true,
  "diagnostic_line": "exit 1 — =================================== FAILURES ===================================",
  "environment": {
@@ -23,24 +23,24 @@
   "system": "Darwin"
  },
  "expect_output_contains": [
-  "test_a_same_second_restore_leaves_no_planted_bytecode",
+  "test_each_file_is_recoverable_before_its_write_lands",
   "failed"
  ],
- "expected_check": "§0 (the normal restore path purges the plant's bytecode)",
- "finished_at": "2026-09-24T03:02:14+08:00",
+ "expected_check": "§0 (a planted file is recoverable before its write lands)",
+ "finished_at": "2026-09-24T03:02:16+08:00",
  "input_digest": "126e9eb19a1122bc5aeed7eeddaa68111941ba2d692ff396276a931d2ac318ff",
  "mutated_paths": [
   "tests/mutation_harness.py"
  ],
- "mutation": "restore_bypasses_bytecode_purge",
+ "mutation": "apply_plants_without_registering_in_flight",
  "observed_markers": {
   "failed": true,
-  "test_a_same_second_restore_leaves_no_planted_bytecode": true
+  "test_each_file_is_recoverable_before_its_write_lands": true
  },
  "paths_outside_input_set": [],
  "phase1_admissible": true,
  "planted_exit": 1,
  "restored_clean": true,
  "schema_version": 1,
- "started_at": "2026-09-24T03:02:13+08:00"
+ "started_at": "2026-09-24T03:02:15+08:00"
 }
