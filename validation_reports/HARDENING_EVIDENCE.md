@@ -14693,3 +14693,128 @@ CONTRADICTED, 0 UNATTESTED, 0 STALE, 0 UNADJUDICABLE**; `assertion_coverage_8` *
 
 **Content queue after the campaign: 173 findings across 82 of 151 nodes (54% of the tree)**, up
 from 57 across 36. Most-affected: `mat_g2_na_q2_0` (8), `mat_g2_na_q4_3` (6), `mat_g2_na_q1_3` (6).
+
+## 2026-09-23 — lossless §5 filing repair, first genuine v2 review, and complete re-proof
+
+### Root cause and repair
+
+The live `tests/file_reviews.py` path could not truthfully file a schema-v2 blind review. It
+discarded reviewer-authored `sample_assessments`, `clause_evidence`, and dispatch provenance while
+constructing the filed record. A complete reviewer reply therefore became incomplete evidence at
+the filer boundary. The repair in `267e3b5b` makes the generated prompt demand all six node findings,
+all four assessments for every dispatch-time sample, clause evidence, and decomposition; validates
+the whole reply before any write; copies the dispatch-time skeleton rather than rebuilding samples;
+and stores prompt/reply digests plus the exact prompt and raw response. Two named mutations prove the
+lossless boundary:
+
+```text
+$ PYTHONPATH=. .venv/bin/python -m pytest tests/unit/test_file_reviews.py tests/unit/test_judgment_merged_schema.py -q
+.................                                                        [100%]
+17 passed in 0.27s
+
+$ PYTHONPATH=. .venv/bin/python tests/mutation_harness.py --mutation judgment_filer_drops_reviewer_sample_assessments
+PASS: mutation judgment_filer_drops_reviewer_sample_assessments was DETECTED
+
+$ PYTHONPATH=. .venv/bin/python tests/mutation_harness.py --mutation judgment_filer_drops_reviewer_clause_evidence
+PASS: mutation judgment_filer_drops_reviewer_clause_evidence was DETECTED
+```
+
+### Blind dispatch outcome and named limitation
+
+Batch 7's one-node packet was dispatched to GPT-5.6-Terra on light thinking under the dispatcher-
+assigned identity `blind-attester-gpt-5.6-terra-light-b7-20260923`. The session authored none of
+the verdict. Filing used the dispatch-time skeleton and preserved the exact prompt and raw reply.
+The genuine review for `mat_g3_na_q4_7` contains 27 substantive findings: eleven subtraction items
+have correct answer keys but addition hints, producing mathematical-validity FAIL and clarity
+CONCERN assessments plus aggregate failures. Those verdicts were preserved, not rewritten.
+
+Batch 1 and batch 2 replies were rejected before filing. Batch 1 reused one CONCERN reasoning form
+across all 511 samples (12 clusters exceeded the permitted size; 13 rationales were verbatim reused
+across nodes). Batch 2 marked all 586 samples PASS (one cluster exceeded the permitted size; 22
+rationales were reused across nodes). The reviewer also reported that batch 1 requires 2,044
+per-sample reasonings, beyond one response turn.
+
+**NAMED LIMITATION:** although the 25-node cap satisfies reviewer plurality, a schema-v2 batch can
+require thousands of independent per-sample reasons and exceed a single model response. The repaired
+filer correctly rejects templates and partial replies, but the dispatch planner does not yet size
+batches by response volume or support authenticated partial continuation. Do not file batch 1 or 2's
+rejected replies. Split future dispatches more finely while retaining distinct dispatcher-assigned
+reviewer identities.
+
+Measured standalone after filing:
+
+```text
+Judgment review validation: 1263 problem(s) found.
+```
+
+The `run_all` entry point reports 1264 because it adds the documented aggregate rollup. One node is
+now genuine schema v2; 150 nodes remain v1 and owe fresh blind review.
+
+### Re-proof and interruption-safe recovery
+
+The source digest moved to `e321fd21ab20c475`. The complete ordered chain was executed. The mutation
+corpus detected 151/154; the only three INVALID records are the known §6F cluster whose
+`capability_phase2` baseline is red. Both new filing mutations were DETECTED. Benchmark and all six
+release shards completed with zero failures:
+
+```text
+$ PYTHONPATH=. .venv/bin/python -m scripts.regen_formatter_exclusions
+275 exclusions across 111 nodes -> _generated_formatter_exclusions.py
+
+$ PYTHONPATH=. .venv/bin/python tests/frontend_suite.py
+PASS frontend_static_render_12: 30 payloads, 60 active/disabled renders, 18 visual types
+
+$ PYTHONPATH=. .venv/bin/python -m tests.obligation_executor --tier benchmark --sample-size 1000
+cache_keys=1000 represented_executions=4000 elapsed=10.639s median=7.058ms p95=31.107ms peak_rss=110366720B failures=0
+
+$ PYTHONPATH=. .venv/bin/python tests/mutation_harness.py
+151/154 mutations detected.
+
+$ PYTHONPATH=. .venv/bin/python -m tests.obligation_executor --tier verify-release
+release_status=complete receipts=6 complete=True
+```
+
+The session was interrupted after shard 0. Recovery first established that no old obligation,
+mutation, pytest, judgment, or `run_all` process remained; shard 0's current complete receipt was
+preserved, and only stale shards 1–5 were resumed, sequentially. Their terminal measurements were:
+
+```text
+shard 1: cache_keys=96885 represented_executions=387540 elapsed=1494.347s median=7.065ms p95=30.328ms peak_rss=122863616B failures=0
+shard 2: cache_keys=96885 represented_executions=387540 elapsed=1567.573s median=7.078ms p95=30.352ms peak_rss=124194816B failures=0
+shard 3: cache_keys=96885 represented_executions=387540 elapsed=1536.411s median=7.073ms p95=30.294ms peak_rss=123883520B failures=0
+shard 4: cache_keys=96885 represented_executions=387540 elapsed=1528.097s median=7.119ms p95=30.313ms peak_rss=122580992B failures=0
+shard 5: cache_keys=96885 represented_executions=387540 elapsed=1572.735s median=7.147ms p95=30.656ms peak_rss=123015168B failures=0
+```
+
+The first `run_all` execution found a stale derived `legacy_review_queue.json` and therefore four
+red stages. The prescribed regeneration changed no input digest; its isolated check then passed:
+
+```text
+$ PYTHONPATH=. .venv/bin/python tests/legacy_review_queue.py --write
+legacy_review_queue: 151 legacy review(s), NOT adjudicable evidence
+  re-reviews owed         : 151
+  wrote validation_reports/phase2_hardening/legacy_review_queue.json
+
+$ PYTHONPATH=. .venv/bin/python -m pytest tests/unit/test_legacy_review_queue.py::test_the_written_artifact_matches_a_fresh_build -q
+.                                                                        [100%]
+1 passed in 0.25s
+```
+
+Final entry-point measurement, executed alone after the repair:
+
+```text
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.run_all
+  PASS       unit_tests                     phase 1   667.1s
+  FAIL       assertion_coverage_8           phase 1     1.2s
+  FAIL       judgment_reviews_5             phase 2   140.4s
+  FAIL       capability_phase2              phase 2    23.9s
+  scheduled=17 completed=14 failed=3 crashed=0 not_run=0 incomplete=0
+  PASS stage_ledger_complete: every scheduled stage ran to a verdict
+  PASS stage_phase_matches_manifest: every stage's refs are registered to the band that stage runs in
+EXIT: 1
+```
+
+`judgment_reviews_5` is **1264 at the entry point / 1263 at the module**;
+`capability_phase2` is **173 CONTRADICTED**; `assertion_coverage_8` is the known three-item §6F
+family. Definition of Done remains unmet. No failure repaired in this batch depended on a random
+seed; the blind review's sampled seeds are preserved in its dispatch-bound record.

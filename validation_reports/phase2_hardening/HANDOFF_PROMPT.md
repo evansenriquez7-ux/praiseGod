@@ -1,7 +1,7 @@
 # Handoff — continue the Phase 2 hardening plan
 
-**Refreshed 2026-09-23 after the ruling-9 prevalence re-dispatch campaign; tree remains
-CERTIFIED because the campaign touched no digest-bound input. This file is deliberately a
+**Refreshed 2026-09-23 after the lossless §5 filing repair, first genuine v2 review, and complete
+re-proof at digest `e321fd21ab20c475`. This file is deliberately a
 POINTER, not a summary.**
 
 Earlier versions duplicated the plan's status and then drifted from it. Two sources of truth
@@ -36,9 +36,9 @@ from the digests alone.
 
 ```text
 PASS tree_state: CERTIFIED
-  live input digest : 575e87127d7b6c27
+  live input digest : e321fd21ab20c475
   worktree          : clean
-  mutation_proofs         fresh  152 file(s)
+  mutation_proofs         fresh  154 file(s)
   release_shards          fresh  6 file(s)
   obligation_benchmark    fresh  1 file(s)
   frontend_static_render  fresh  1 file(s)
@@ -70,7 +70,49 @@ PYTHONPATH=. .venv/bin/python tests/tree_state.py --complete --note "where you g
 
 ---
 
-## ⚠ 2026-09-23 (latest) — CAMPAIGN REVIEWED AND KEPT; §0 REPAIRED. START HERE.
+## ⚠ 2026-09-23 (latest) — §5 FILER REPAIRED; FIRST V2 REVIEW FILED. START HERE.
+
+Tree is **CERTIFIED** at `e321fd21ab20c475`, worktree clean, all four digest-bound artifact
+families fresh. `run_all` was **EXECUTED**: EXIT 1,
+`scheduled=17 completed=14 failed=3 crashed=0`.
+
+| stage | count |
+|---|---|
+| `capability_phase2` | **173** CONTRADICTED across **82 of 151 nodes** |
+| `judgment_reviews_5` | **1263** module / **1264** entry point |
+| `assertion_coverage_8` | 3 in 1 family, downstream of red §6F baseline |
+
+Commit `267e3b5b` repaired the schema-v2 filing boundary: prompts now demand all six findings,
+four assessments per dispatch-time sample, clause evidence, and decomposition; the filer validates
+the entire batch before writing, preserves the dispatch skeleton, and stores exact prompt/reply
+provenance. Two new named mutations are DETECTED; the corpus is 151/154 with only the known three
+§6F INVALID baselines.
+
+One genuine blind v2 review is filed for `mat_g3_na_q4_7`, judged by GPT-5.6-Terra/light under
+`blind-attester-gpt-5.6-terra-light-b7-20260923`. It has 27 substantive findings, including eleven
+subtraction samples whose correct answer keys are paired with addition hints. Preserve the verdicts.
+**150 nodes remain v1.**
+
+**Do not file the existing batch 1 or batch 2 replies.** Mechanical audit found forbidden rationale
+reuse/template clustering. A 25-node v2 packet can demand thousands of independent per-sample
+reasons (batch 1 needs 2,044), beyond one model turn. The filer correctly rejects incomplete or
+templated replies, but the planner does not yet size by response volume or support authenticated
+partial continuation. Split future dispatches more finely while keeping dispatcher-assigned,
+truthful reviewer identities and the 25-node maximum.
+
+The full source re-proof is current: frontend PASS, benchmark current, six release shards complete,
+and 154 mutation records fresh. During recovery, no orphaned process existed; the valid shard 0
+receipt was retained and only stale shards 1–5 were resumed sequentially. `run_all` first exposed a
+stale derived legacy queue; regeneration repaired it, and the final unit stage passed 801/1/2.
+
+**NEXT:** continue the §5 blind queue using response-volume-sized dispatches. Content debt only on
+independently confirmed findings. Definition of Done is not met.
+
+**THE AGENT'S TASK IS `NEXT_AGENT_PROMPT.md`, not this file.**
+
+---
+
+## 2026-09-23 (historical) — CAMPAIGN REVIEWED AND KEPT; §0 REPAIRED.
 
 Tree is **CERTIFIED** at `575e87127d7b6c27`, worktree clean, all four families fresh.
 `run_all` was **EXECUTED**: EXIT 1, `scheduled=17 completed=14 failed=3`.

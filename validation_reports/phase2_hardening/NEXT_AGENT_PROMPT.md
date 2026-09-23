@@ -4,8 +4,9 @@ You are working in `/Users/enrichmentcap/Documents/antigravity/ccmed` on the Ada
 Mastery Engine's practice-problem-generator hardening. The tree is **CERTIFIED** and the re-proof
 chain is current. Your job is to move `run_all` toward exiting 0.
 
-**Previous prompts in this file are DONE and superseded.** Priority 1 of the last one — the
-ruling-9 prevalence re-dispatch — is complete. Do not redo it.
+**Previous prompts in this file are DONE and superseded.** The ruling-9 prevalence re-dispatch and
+the lossless schema-v2 filing repair are complete. Do not redo them. One genuine v2 review is filed;
+continue the remaining blind queue with response-volume-sized packets.
 
 ---
 
@@ -46,9 +47,9 @@ Expected:
 
 ```
 PASS tree_state: CERTIFIED
-  live input digest : 575e87127d7b6c27
+  live input digest : e321fd21ab20c475
   worktree          : clean
-  mutation_proofs         fresh  152 file(s)
+  mutation_proofs         fresh  154 file(s)
   release_shards          fresh  6 file(s)
   obligation_benchmark    fresh  1 file(s)
   frontend_static_render  fresh  1 file(s)
@@ -79,14 +80,15 @@ PYTHONPATH=. .venv/bin/python tests/tree_state.py --complete --note "where you g
 | stage | count | nature |
 |---|---|---|
 | `capability_phase2` | **173** CONTRADICTED across **82 of 151 nodes** | content debt — source work |
-| `judgment_reviews_5` | **1252** module / **1253** stage | 151 owed blind re-reviews — dispatch work |
+| `judgment_reviews_5` | **1263** module / **1264** stage | 150 v1 nodes remain; one genuine v2 review is substantively red |
 | `assertion_coverage_8` | 3 in 1 family | downstream; unfixable by re-running |
 
-All other stages PASS: §0 796 passed / 1 skipped, Phase 1 capability at its floor of 5, corpus
-149/152, six shards 0 failures, operator coverage 41/41, census `nodes=151 mutations=152`.
+All other stages PASS: §0 801 passed / 1 skipped / 2 deselected, Phase 1 capability at its floor of
+5, corpus 151/154 with only the three known INVALID §6F baselines, six shards 0 failures, operator
+coverage 41/41, census `nodes=151 mutations=154`.
 
-> **Always quote the ENTRY POINT with a §5 figure.** `validate_judgment` standalone reports 1252;
-> the `run_all` stage reports 1253 because `run_all.py:760-764` appends one aggregate rollup the
+> **Always quote the ENTRY POINT with a §5 figure.** `validate_judgment` standalone reports 1263;
+> the `run_all` stage reports 1264 because `run_all.py:760-764` appends one aggregate rollup the
 > module's CLI never emits. Both are correct. This is **not** concurrency pollution — an earlier
 > session diagnosed it as such and wrote that into the plan as fact. Settled; do not re-open.
 
@@ -123,15 +125,18 @@ anywhere — only the standard, in each verdict's `action_taken` — so it is fa
 
 ## 3. Your job, in priority order
 
-### ▶ PRIORITY 1 — the §5 blind judgment re-reviews. NO re-proof owed. Largest queue.
+### ▶ PRIORITY 1 — the remaining §5 blind judgment re-reviews. NO re-proof owed. Largest queue.
 
-All 151 filed reviews are v1 and unadjudicable; the v1→v2 migration was refused as impossible in
-principle (v2 demands per-sample verdicts a v1 reviewer was never asked for, so populating them
-would mean authoring judgments nobody gave). `validation_reports/judgment/` sits outside the
-fingerprint, so this campaign moves no digest and owes no chain.
+One genuine v2 review is filed for `mat_g3_na_q4_7`; it has 27 substantive findings and must not be
+rewritten. The other 150 nodes remain v1 and unadjudicable; the v1→v2 migration was refused as
+impossible in principle (v2 demands per-sample verdicts a v1 reviewer was never asked for, so
+populating them would mean authoring judgments nobody gave). `validation_reports/judgment/` sits
+outside the fingerprint, so this campaign moves no digest and owes no chain.
 
-**7 dispatches, not 33** — but each is far heavier per node: a §5 review owes **6 findings plus 4
-per-sample assessments** per node, where a §6 verdict owed one answer per clause.
+The old seven-batch plan is an ownership partition, **not a safe one-turn dispatch size**. A §5
+review owes **6 findings plus 4 per-sample assessments** per node; batch 1 alone requires 2,044
+per-sample reasons, beyond one model response. Split packets by response volume while keeping each
+reviewer at no more than 25 nodes and assigning truthful distinct identities.
 
 ```sh
 PYTHONPATH=. .venv/bin/python -m tests.judgment_batches --plan
@@ -146,6 +151,12 @@ Required per node: `competency_fulfillment`, `comprehensive_coverage`, `cognitiv
 `variant_comprehensiveness`, `competency_alignment`, `scale_appropriateness`; per sample:
 `mathematical_validity`, `contextual_logical_validity`, `ambiguity`, `learner_facing_clarity`.
 Schema v2 only. ≤25 nodes per reviewer identity.
+
+**Do not file the existing batch 1 or batch 2 replies.** Mechanical audit found template clustering
+and verbatim cross-node rationale reuse (batch 1: all 511 samples CONCERN; 12 oversized clusters,
+13 cross-node verbatim reuses; batch 2: all 586 samples PASS; 1 oversized cluster, 22 reuses). The
+lossless filer correctly rejects partial/template replies. The planner does not yet support
+authenticated partial continuation; that is a named operational limitation in the evidence log.
 
 **⚠ TWO §5-ONLY RULES, and the first is a trap that PASSES:**
 

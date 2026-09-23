@@ -1,31 +1,32 @@
 {
   "schema_version": 1,
   "kind": "legacy_review_queue",
-  "generated_at": "2026-09-15T16:34:20.734676+00:00",
+  "generated_at": "2026-09-23T08:46:14.891301+00:00",
   "adjudicable": false,
   "why_not_adjudicable": "These are v1 reviews. The current schema (v2) requires per-sample contextual-validity verdicts, exact clause coverage and dispatch-bound provenance, which a v1 reviewer was never asked for and which therefore cannot be recovered from a v1 record without inventing them. Every node listed here still owes a fresh blind re-review. This file exists so that the previous programme's findings remain visible as a QUEUE while none of them counts as evidence.",
   "required_work": "151 node(s) need a fresh blind review filed at schema_version 2. Rebuild a packet with: python -m backend.app.practice_gen.validation.judgment_packets --node <node_id>",
   "source_review_dir": "validation_reports/judgment",
-  "source_corpus_sha256": "d512163d595b1364e7814461ceb64e17f0631490a9570747d4a5db5cb33eb2a5",
+  "source_corpus_sha256": "f49d130dd2da19dd8c54a7b4256c26f0b8a766c4dcec426dc7cc73d40a3997e9",
   "counts": {
     "legacy_nodes": 151,
-    "already_current_and_excluded": 0,
+    "already_current_and_excluded": 1,
     "by_overall_verdict": {
-      "CONCERN": 93,
+      "CONCERN": 92,
       "FAIL": 44,
+      "None": 1,
       "PASS": 14
     },
-    "nodes_with_a_non_pass_facet": 137,
+    "nodes_with_a_non_pass_facet": 136,
     "non_pass_by_facet": {
       "cognitive_capacity": 34,
       "competency_alignment": 68,
       "competency_fulfillment": 72,
-      "comprehensive_coverage": 62,
+      "comprehensive_coverage": 61,
       "scale_appropriateness": 25,
-      "variant_comprehensiveness": 83
+      "variant_comprehensiveness": 82
     },
-    "records_missing_a_v1_facet": 0,
-    "orphan_reviews_for_undeclared_nodes": 0
+    "records_missing_a_v1_facet": 1,
+    "orphan_reviews_for_undeclared_nodes": 1
   },
   "nodes": [
     {
@@ -8255,6 +8256,29 @@
       "adjudicable": false
     },
     {
+      "node_id": "judgment-v2-b7-20260923",
+      "source_path": "validation_reports/judgment/mat_g3_na_q4/.responses/judgment-v2-b7-20260923.json",
+      "source_sha256": "1714e5b13fad2bda6a1d8747212f07012dd86c1c5b26b15c4e215149b29d0db0",
+      "declared_schema_version": null,
+      "reviewed_by": null,
+      "review_date": null,
+      "blind": null,
+      "sample_seeds": [],
+      "overall_verdict": null,
+      "node_still_declared": false,
+      "facets": {},
+      "facets_missing_from_the_v1_record": [
+        "competency_fulfillment",
+        "comprehensive_coverage",
+        "cognitive_capacity",
+        "variant_comprehensiveness",
+        "competency_alignment",
+        "scale_appropriateness"
+      ],
+      "non_pass_facets": [],
+      "adjudicable": false
+    },
+    {
       "node_id": "mat_g3_na_q4_0",
       "source_path": "validation_reports/judgment/mat_g3_na_q4/mat_g3_na_q4_0.json",
       "source_sha256": "d7793b33e43bf7d5bde4882dd6d29f22e4ef6c6c697c936ca37adbb055a0ef23",
@@ -8657,63 +8681,6 @@
       "non_pass_facets": [
         "competency_fulfillment",
         "cognitive_capacity",
-        "variant_comprehensiveness"
-      ],
-      "adjudicable": false
-    },
-    {
-      "node_id": "mat_g3_na_q4_7",
-      "source_path": "validation_reports/judgment/mat_g3_na_q4/mat_g3_na_q4_7.json",
-      "source_sha256": "187b5d1b0aca5f5e028f675b96eacd98f531faadcdcf5dc4049ad0145cc3cb65",
-      "declared_schema_version": null,
-      "reviewed_by": "reviewer-c7-perigee-saltbush-1432",
-      "review_date": "2026-09-11",
-      "blind": true,
-      "sample_seeds": [
-        42,
-        43,
-        44,
-        45,
-        46,
-        48,
-        500,
-        501,
-        502,
-        600,
-        601,
-        603
-      ],
-      "overall_verdict": "CONCERN",
-      "node_still_declared": true,
-      "facets": {
-        "competency_fulfillment": {
-          "verdict": "PASS",
-          "rationale": "Both verbs of the competency are exercised on like denominators: addition appears as \\(\\frac{3}{8} + \\frac{1}{8}\\) and subtraction as \\(\\frac{7}{8} - \\frac{1}{8}\\), and the model requirement is honoured by the framing \"A shape is divided into 8 equal parts\" together with the shading tasks. Keys match their stems wherever the stem is self-contained; the two items reading \"What is the result of the fraction operation shown?\" store a letter key and cannot be checked against a picture this packet does not include."
-        },
-        "comprehensive_coverage": {
-          "verdict": "CONCERN",
-          "rationale": "Denominators range over 4, 5, 6, 8 and 10, but in all twelve samples the second fraction is one single part. Every addition item is phrased \"1 more part is shaded\" or adds 1/4, 1/6, 1/8, 1/10; every subtraction item is \"1 shaded part is taken away\" or subtracts 1/5, 1/6, 1/8. Nothing like adding two parts to three, or removing two of five, ever surfaces, so the operand variety the competency's plain wording permits is collapsed to a unit second term."
-        },
-        "cognitive_capacity": {
-          "verdict": "PASS",
-          "rationale": "Stems stay to one or two short clauses built from Grade 3 vocabulary: \"equal parts\", \"shaded\", \"taken away\", \"in all\". The reasoning demanded is a single count of parts over an unchanged denominator, with no simplifying, renaming or mixed-number step imposed on the student, which is the right load for a Quarter 4 introduction to similar fractions."
-        },
-        "variant_comprehensiveness": {
-          "verdict": "CONCERN",
-          "rationale": "Four presentation formats do appear (cloze, set_click, mcq, read_mcq), and \"Shade the shape to show the result of 2/4 + 1/4.\" is a genuinely different task from picking an option. The contextual framing, however, never leaves the divided-region picture: every stem here is about a shape and its shaded parts. No grouped-object or set model, no length or number-line style model, and no everyday object situation is represented, so the variation is in answer mechanics rather than in the kind of model used."
-        },
-        "competency_alignment": {
-          "verdict": "PASS",
-          "rationale": "What changes between samples is the denominator of the shape's partition and the size of the starting fraction, moving from 3/4 and 2/4 up to 7/8 and 5/6 and down to 1/10. Both of those are properties of similar-fraction work itself, not of some unrelated axis such as narrative length or answer-entry style, so the harder items are harder at fractions."
-        },
-        "scale_appropriateness": {
-          "verdict": "PASS",
-          "rationale": "Partitions stop at ten parts, well inside what Grade 3 fraction models handle, and no sum exceeds the whole: the largest result shown is 4/4, reached from \\(\\frac{3}{4} + \\frac{1}{4}\\), and no difference goes below zero. Distractors stay in the same neighbourhood, for example the inverted 10/1 and the doubled-denominator 2/20 alongside the key 2/10, rather than wandering into magnitudes the grade has no use for."
-        }
-      },
-      "facets_missing_from_the_v1_record": [],
-      "non_pass_facets": [
-        "comprehensive_coverage",
         "variant_comprehensiveness"
       ],
       "adjudicable": false
