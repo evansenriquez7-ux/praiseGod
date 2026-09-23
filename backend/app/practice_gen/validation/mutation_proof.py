@@ -185,7 +185,11 @@ EXCLUDED_DIR_NAMES: Set[str] = {"__pycache__", ".pytest_cache", "node_modules", 
 EXCLUDED_SUFFIXES: Tuple[str, ...] = (".pyc", ".pyo", ".so")
 EXCLUDED_PATHS: Set[str] = {
     # The mutation runner's own kill-safety marker: written and deleted by every run, so
-    # digesting it would make the fingerprint depend on whether a run is in flight.
+    # digesting it would make the fingerprint depend on whether a run is in flight. This
+    # names the pre-2026-09-23 FIXED path; markers are now per invocation
+    # (`MUTATION_IN_FLIGHT-<pid>-<uuid4>.json`) and are not listed one by one, because
+    # `local_only/` is outside INPUT_ROOTS altogether -- that, not this entry, is what
+    # keeps them out of the digest. A marker moved under an input root would need this.
     "local_only/scratch/MUTATION_IN_FLIGHT.json",
 }
 

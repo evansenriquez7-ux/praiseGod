@@ -47,9 +47,11 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import re
 import subprocess
 import sys
+import uuid
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from pathlib import Path
@@ -2036,6 +2038,100 @@ MUTATIONS: List[Mutation] = [
         ],
         baseline_must_not_contain=[
             "test_each_invocation_renders_in_its_own_directory && failed"
+        ],
+    ),
+    Mutation(
+        name="mutation_marker_shared_fixed_path",
+        asserts=["mutation_marker_invocation_isolation"],
+        description=(
+            "Revert the per-invocation `MUTATION_IN_FLIGHT-<pid>-<uuid4>.json` kill-safety "
+            "marker to the single fixed path every invocation used to share. On 2026-09-23 "
+            "two concurrent corpus runs did exactly this: one run's normal exit deleted the "
+            "other's marker, the other was then killed, and its plant survived with no "
+            "record -- four plants escaped, two reached commits. Aimed at the CONCURRENT "
+            "path, driven by a real second process: a plant that only trips single-run "
+            "recovery proves nothing the pre-fix tests did not."
+        ),
+        edits={
+            "tests/mutation_harness.py": (
+                '    return _MARKER_DIR / f"MUTATION_IN_FLIGHT-{os.getpid()}-{uuid.uuid4().hex}.json"\n',
+                '    return _MARKER_DIR / "MUTATION_IN_FLIGHT.json"  # planted mutation: one shared marker\n',
+            )
+        },
+        command=[
+            "pytest",
+            "tests/unit/test_mutation_killsafe.py"
+            "::test_a_concurrent_runs_normal_exit_leaves_the_killed_runs_plant_recoverable",
+            "-q",
+        ],
+        expected_check="§0 (a concurrent run's normal exit may not delete another run's marker)",
+        expect_output_contains=[
+            "test_a_concurrent_runs_normal_exit_leaves_the_killed_runs_plant_recoverable",
+            "failed",
+        ],
+        baseline_must_not_contain=[
+            "test_a_concurrent_runs_normal_exit_leaves_the_killed_runs_plant_recoverable && failed"
+        ],
+    ),
+    Mutation(
+        name="mutation_recovery_reverts_live_plant",
+        asserts=["mutation_marker_invocation_isolation"],
+        description=(
+            "Drop the liveness test from startup recovery, so a marker whose pid is still "
+            "running is replayed like an orphan. That reverts another run's plant "
+            "underneath it; the other run then scores its mutation against unmutated "
+            "source and files a spurious SURVIVED -- a hole in the harness that does not "
+            "exist, which is how the 2026-09-23 corpus became a false green."
+        ),
+        edits={
+            "tests/mutation_harness.py": (
+                "        if pid is not None and _pid_is_live(pid):\n",
+                "        if False:  # planted mutation: live markers replayed as orphans\n",
+            )
+        },
+        command=[
+            "pytest",
+            "tests/unit/test_mutation_killsafe.py"
+            "::test_recovery_never_reverts_a_live_runs_plant",
+            "-q",
+        ],
+        expected_check="§0 (startup recovery never reverts a live run's plant)",
+        expect_output_contains=[
+            "test_recovery_never_reverts_a_live_runs_plant",
+            "failed",
+        ],
+        baseline_must_not_contain=[
+            "test_recovery_never_reverts_a_live_runs_plant && failed"
+        ],
+    ),
+    Mutation(
+        name="mutation_run_starts_beside_live_run",
+        asserts=["mutation_marker_invocation_isolation"],
+        description=(
+            "Keep the live marker untouched but let the new run carry on anyway. Its "
+            "measurements then sit beside another run's live plant: a mutation it scores "
+            "may run against source the other run has planted, the contention that "
+            "produced nineteen INVALIDs and the spurious SURVIVED records."
+        ),
+        edits={
+            "tests/mutation_harness.py": (
+                "    if live:\n        raise SystemExit(\n",
+                "    if False:  # planted mutation: start beside a live run\n        raise SystemExit(\n",
+            )
+        },
+        command=[
+            "pytest",
+            "tests/unit/test_mutation_killsafe.py"
+            "::test_recovery_refuses_to_start_beside_a_live_run",
+            "-q",
+        ],
+        expected_check="§0 (a run refuses to start while another run has a live plant)",
+        expect_output_contains=[
+            "test_recovery_refuses_to_start_beside_a_live_run",
+            "failed",
+        ],
+        baseline_must_not_contain=[
+            "test_recovery_refuses_to_start_beside_a_live_run && failed"
         ],
     ),
     Mutation(
@@ -4391,15 +4487,45 @@ def _apply(mutation: Mutation) -> Dict[Path, str]:
 #   * atexit -- any other interpreter shutdown;
 #   * an on-disk marker holding the ORIGINAL text -- SIGKILL, power loss, OOM, where no
 #     handler runs at all. The next start finds it and restores before doing anything.
+#
+# The marker is PER INVOCATION (`MUTATION_IN_FLIGHT-<pid>-<uuid4>.json`), 2026-09-23.
+# Until then it was one fixed path shared by every run, so on 2026-09-23 -- when two
+# agents ran the corpus concurrently -- a run exiting normally deleted the OTHER run's
+# marker; that run was then killed and its plant survived with no record. Four plants
+# escaped into the worktree and two reached commits. Same defect class as
+# `tests/frontend_renderer.py`'s fixed path (owner ruling 8), but inside the safety
+# mechanism itself. Recovery therefore scans EVERY marker and replays only those whose
+# owning pid is dead; a marker whose pid is live belongs to a run still in flight, whose
+# plant is SUPPOSED to be in the tree, so it is never reverted -- and this run refuses to
+# start, because measuring beside another run's live plant is the contention that
+# produced the spurious SURVIVED records.
+#
+# BLIND SPOTS, named: liveness is `kill(pid, 0)`, so a dead run whose pid the OS has
+# reused reads as live and is refused-on rather than replayed (fail-safe direction: the
+# operator is told, nothing is reverted wrongly). A marker only exists while a plant is
+# in flight, so this refuses a concurrent start only when the other run is mid-plant; it
+# is NOT a lock, and two runs started between plants are not serialised here. The
+# per-mutation digest re-check in main() is what catches that case, after the fact.
 # ---------------------------------------------------------------------------------
 
 _IN_FLIGHT: Dict[Path, str] = {}
-_MARKER = REPO_ROOT / "local_only" / "scratch" / "MUTATION_IN_FLIGHT.json"
+_MARKER_DIR = REPO_ROOT / "local_only" / "scratch"
+_MARKER_GLOB = "MUTATION_IN_FLIGHT*.json"
+# The bare legacy name carries no pid: whatever wrote it is pre-fix code, so it is
+# treated as orphaned and replayed.
+_MARKER_NAME = re.compile(r"^MUTATION_IN_FLIGHT(?:-(?P<pid>\d+)-(?P<uuid>[0-9a-f]{32}))?\.json$")
+
+
+def _new_marker_path() -> Path:
+    """This invocation's own marker. Unique per (pid, uuid4), never shared."""
+    return _MARKER_DIR / f"MUTATION_IN_FLIGHT-{os.getpid()}-{uuid.uuid4().hex}.json"
+
+
+_MARKER = _new_marker_path()
 
 
 def _write_marker() -> None:
     """Persist what is planted, so a kill -9 is still recoverable."""
-    import json
     _MARKER.parent.mkdir(parents=True, exist_ok=True)
     _MARKER.write_text(
         json.dumps({str(k): v for k, v in _IN_FLIGHT.items()}, ensure_ascii=False),
@@ -4426,43 +4552,79 @@ def _restore_in_flight(reason: str) -> None:
     _clear_marker()
 
 
+def _pid_is_live(pid: int) -> bool:
+    """`kill(pid, 0)`: delivers nothing, only asks whether the pid exists."""
+    try:
+        os.kill(pid, 0)
+    except ProcessLookupError:
+        return False
+    except PermissionError:
+        return True   # exists, owned by someone else
+    return True
+
+
 def recover_orphaned_mutation() -> bool:
     """
-    Restore a mutation a previous run was killed before undoing. Returns True if it did.
+    Restore every mutation a killed run left planted. Returns True if it restored any.
 
     Runs before anything else in main(): measuring a tree that still carries a planted
     bug is worse than not measuring at all, because every result would look like a real
     finding.
+
+    Scans ALL markers, not this invocation's: a killed run's marker carries the killed
+    run's pid. A marker whose pid is still live is another run's plant in flight -- it is
+    left untouched, and this raises SystemExit naming it, because a run measured beside
+    another run's live plant produces spurious results.
     """
-    import json
-    if not _MARKER.exists():
+    if not _MARKER_DIR.exists():
         return False
-    try:
-        planted = json.loads(_MARKER.read_text(encoding="utf-8"))
-    except (ValueError, OSError) as exc:
-        raise SystemExit(
-            f"FATAL: {_MARKER} exists but is unreadable ({exc}). A previous run was killed "
-            f"mid-mutation and the tree may still carry a planted bug. Restore the files "
-            f"named in git status by hand, delete the marker, and re-run."
-        )
-    if not planted:
-        _clear_marker()
-        return False
-    print(f"!! a previous run was killed mid-mutation; restoring {len(planted)} file(s)",
-          file=sys.stderr)
-    for path_str, text in planted.items():
-        target = Path(path_str)
-        # Display only -- a path outside the repo must not abort the restore. Crashing
-        # while recovering is the worst possible moment to crash: it leaves the tree
-        # planted AND the marker in place.
+    restored_any = False
+    live: List[str] = []
+    for marker in sorted(_MARKER_DIR.glob(_MARKER_GLOB)):
+        match = _MARKER_NAME.match(marker.name)
+        if match is None:
+            raise SystemExit(
+                f"FATAL: {marker} looks like a mutation kill-safety marker but its name "
+                f"does not parse as MUTATION_IN_FLIGHT-<pid>-<uuid4>.json. A run may have "
+                f"been killed mid-mutation. Inspect it, restore any files it names by hand, "
+                f"delete it, and re-run."
+            )
+        pid = int(match.group("pid")) if match.group("pid") else None
+        if pid is not None and _pid_is_live(pid):
+            live.append(f"{marker.name} (pid {pid})")
+            continue
         try:
-            shown = target.relative_to(REPO_ROOT)
-        except ValueError:
-            shown = target
-        print(f"   restoring {shown}", file=sys.stderr)
-        target.write_text(text, encoding="utf-8")
-    _clear_marker()
-    return True
+            planted = json.loads(marker.read_text(encoding="utf-8"))
+        except (ValueError, OSError) as exc:
+            raise SystemExit(
+                f"FATAL: {marker} exists but is unreadable ({exc}). A previous run was "
+                f"killed mid-mutation and the tree may still carry a planted bug. Restore "
+                f"the files named in git status by hand, delete the marker, and re-run."
+            )
+        if planted:
+            print(f"!! a previous run (pid {pid if pid is not None else 'unknown'}) was "
+                  f"killed mid-mutation; restoring {len(planted)} file(s)", file=sys.stderr)
+        for path_str, text in planted.items():
+            target = Path(path_str)
+            # Display only -- a path outside the repo must not abort the restore. Crashing
+            # while recovering is the worst possible moment to crash: it leaves the tree
+            # planted AND the marker in place.
+            try:
+                shown = target.relative_to(REPO_ROOT)
+            except ValueError:
+                shown = target
+            print(f"   restoring {shown}", file=sys.stderr)
+            target.write_text(text, encoding="utf-8")
+            restored_any = True
+        marker.unlink()
+    if live:
+        raise SystemExit(
+            f"FATAL: another mutation run is live and has a plant in the tree right now: "
+            f"{live}. Its planted source is SUPPOSED to be there and was not touched. Two "
+            f"runs in one worktree revert each other's plants and publish spurious "
+            f"SURVIVED records -- wait for it to finish, or stop it by pid, then re-run."
+        )
+    return restored_any
 
 
 def _install_kill_safety() -> None:
@@ -4639,15 +4801,15 @@ def main() -> int:
     ap.add_argument("--list", action="store_true", help="List mutation names and exit.")
     args = ap.parse_args()
 
-    # Before anything: undo a mutation a killed run left planted, and arm the handlers
-    # so this run cannot leave one either.
-    recover_orphaned_mutation()
-    _install_kill_safety()
-
-    if args.list:
+    if args.list:   # plants nothing, so it may run beside a live run
         for m in MUTATIONS:
             print(f"{m.name:24s} {m.description}")
         return 0
+
+    # Before anything that plants: undo every mutation a killed run left planted (refusing
+    # if another run is live), and arm the handlers so this run cannot leave one either.
+    recover_orphaned_mutation()
+    _install_kill_safety()
 
     selected = MUTATIONS
     if args.only:

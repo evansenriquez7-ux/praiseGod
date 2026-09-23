@@ -109,6 +109,12 @@ ASSERTIONS = (
     # aggregate finding the module's own CLI never emits, so both numbers are correct for
     # their entry point. Corrected 2026-09-22.)
     "renderer_invocation_isolation",       # tests/unit/test_frontend_renderer_isolation.py
+    # The mutation runner's kill-safety marker is per invocation (2026-09-23). Declared
+    # here for the same reason as the lines above -- its mutations drive ONE test file.
+    # Like the renderer's, the property is EVIDENCE INTEGRITY: the marker was one fixed
+    # path, so when two agents ran the corpus concurrently one run's normal exit deleted
+    # the other's marker and four plants escaped into the worktree, two into commits.
+    "mutation_marker_invocation_isolation",  # tests/unit/test_mutation_killsafe.py
     # A hint chain may not walk a pupil to a value its own final line denies
     # (2026-09-23). Declared here for the same reason as the lines above -- its
     # mutation drives ONE test file. Found by the first genuine schema-v2 blind
