@@ -1,0 +1,46 @@
+{
+ "asserts": [
+  "fraction_hint_self_consistency"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "test_no_fraction_hint_chain_contradicts_its_own_answer && failed"
+ ],
+ "command": [
+  "pytest",
+  "tests/unit/test_fraction_hint_consistency.py",
+  "-q"
+ ],
+ "definition_digest": "0bf8b1515cd362c745a1a139c958d0b22e07176f9a1dee176c1c52e063937b26",
+ "detected": false,
+ "diagnostic_line": "SURVIVED — validator exited 0 with the bug planted.",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "test_no_fraction_hint_chain_contradicts_its_own_answer",
+  "failed"
+ ],
+ "expected_check": "§0 (a hint chain may not deny its own final answer)",
+ "finished_at": "2026-09-23T18:09:07+08:00",
+ "input_digest": "1c26f7c5c663f7985e80755a061c62990fa272993f663c0ae476e3e71e71c85a",
+ "mutated_paths": [
+  "backend/app/practice_gen/dna/na/fractions.py"
+ ],
+ "mutation": "fraction_hints_ignore_subtraction",
+ "observed_markers": {
+  "failed": false,
+  "test_no_fraction_hint_chain_contradicts_its_own_answer": false
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 0,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-09-23T18:08:29+08:00"
+}

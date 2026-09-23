@@ -1938,6 +1938,36 @@ MUTATIONS: List[Mutation] = [
         baseline_must_not_contain=["test_duplicate_modes_cannot_hide_an_unrendered_mode && failed"],
     ),
     Mutation(
+        name="fraction_hints_ignore_subtraction",
+        asserts=["fraction_hint_self_consistency"],
+        description=(
+            "Restore the single hardcoded-addition branch in "
+            "fractions.generate_hints, the form that served BOTH operations. The "
+            "final line still prints the real result_num, so a subtraction item "
+            "is walked through 'Add only the numerators: a + b' to an "
+            "intermediate its own last line denies -- exactly the chain a blind "
+            "schema-v2 reviewer found on mat_g3_na_q4_7 seed 44 (steps compute "
+            "3/6, final line asserts 1/6) across 11 of 19 samples. Aimed at the "
+            "operation SELECTION, not at the wording: a plant that only changed "
+            "a label would leave the arithmetic self-consistent and prove nothing."
+        ),
+        edits={
+            "backend/app/practice_gen/dna/na/fractions.py": (
+                "    if r_num == a_num + b_num:\n",
+                "    if True:  # planted mutation: every item gets addition guidance\n",
+            )
+        },
+        command=["pytest", "tests/unit/test_fraction_hint_consistency.py", "-q"],
+        expected_check="§0 (a hint chain may not deny its own final answer)",
+        expect_output_contains=[
+            "test_no_fraction_hint_chain_contradicts_its_own_answer",
+            "failed",
+        ],
+        baseline_must_not_contain=[
+            "test_no_fraction_hint_chain_contradicts_its_own_answer && failed"
+        ],
+    ),
+    Mutation(
         name="renderer_case_id_omits_node_id",
         asserts=["renderer_invocation_isolation"],
         description=(

@@ -614,15 +614,43 @@ def generate_hints(
             f"{num} vs {other_num}: the larger top number gives the larger {frac_lbl}.",
         ]
 
-    # add_subtract
+    # add_subtract -- ONE branch served BOTH operations until 2026-09-23 and
+    # hardcoded addition, so every SUBTRACTION item was walked through
+    # "Add only the numerators: a + b" to an intermediate the final line then
+    # contradicted. Measured on mat_g3_na_q4_7 seed 44: the hints compute 3/6
+    # and then assert 1/6. A pupil who follows the working gets the wrong
+    # answer and is told a different one.
+    #
+    # It is the second half of a two-site rule that was only half fixed. The
+    # `add_subtract` sentinel above now resolves to a concrete operation per
+    # call (added after a blind reviewer reported "subtract is never enacted"),
+    # but THIS function was never taught the difference, so the moment
+    # subtraction started being served its guidance was wrong.
+    #
+    # The operation is derived from the ARITHMETIC the generator already
+    # computed rather than re-read from a label, because `result_num` IS the
+    # served answer and cannot drift from it. Anything that matches neither
+    # sum nor difference is a loud failure, never a guessed hint (Protocol 3).
     a_num = values.get("a_num", num)
     b_num = values.get("b_num", 0)
     r_num = values.get("result_num", a_num + b_num)
     r_den = values.get("result_den", den)
+
+    if r_num == a_num + b_num:
+        verb, sign, step = "adding", "+", a_num + b_num
+    elif r_num == a_num - b_num:
+        verb, sign, step = "subtracting", "-", a_num - b_num
+    else:
+        raise ValueError(
+            f"fractions.generate_hints: result_num={r_num} is neither "
+            f"{a_num}+{b_num} nor {a_num}-{b_num}, so the operation cannot be "
+            f"named and any step-by-step hint would be a guess. values={values!r}"
+        )
+
     return [
-        f"When adding {frac_lbl}s with the same {den_lbl}, keep the {den_lbl} the same.",
-        f"Add only the {num_lbl}s: {a_num} + {b_num} = {a_num + b_num}.",
-        f"Write the result over the same {den_lbl}: {a_num + b_num}/{den}.",
+        f"When {verb} {frac_lbl}s with the same {den_lbl}, keep the {den_lbl} the same.",
+        f"{verb.capitalize().replace('ing', '')} only the {num_lbl}s: {a_num} {sign} {b_num} = {step}.",
+        f"Write the result over the same {den_lbl}: {step}/{den}.",
         f"The answer is {r_num}/{r_den}.",
     ]
 

@@ -109,6 +109,13 @@ ASSERTIONS = (
     # aggregate finding the module's own CLI never emits, so both numbers are correct for
     # their entry point. Corrected 2026-09-22.)
     "renderer_invocation_isolation",       # tests/unit/test_frontend_renderer_isolation.py
+    # A hint chain may not walk a pupil to a value its own final line denies
+    # (2026-09-23). Declared here for the same reason as the lines above -- its
+    # mutation drives ONE test file. Found by the first genuine schema-v2 blind
+    # review: `fractions.generate_hints` served add and subtract from one branch
+    # that hardcoded addition while printing the real answer, so 11 of 19 samples
+    # on mat_g3_na_q4_7 computed 3/6 and then asserted 1/6.
+    "fraction_hint_self_consistency",      # tests/unit/test_fraction_hint_consistency.py
     "contract_doc_matches_registry",
     "operator_doc_covers_registry",
     "two_direction_contract_match",
