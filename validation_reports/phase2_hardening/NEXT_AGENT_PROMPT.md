@@ -55,9 +55,27 @@ finds no marker and **measures a planted tree as if it were clean** — which it
 worse than not measuring at all. Same defect class as the renderer's fixed path, inside the safety
 mechanism itself.
 
+**TWO plants survived this way on 2026-09-23, in two languages** — the orchestrator edit above,
+and in `frontend/src/components/VisualSkeletons.jsx`:
+
+```diff
+-        onAnswer(parseInt(val, 10));
++        onAnswer(parseInt(val, 10) + 1);  // planted emission drift
+```
+
+which makes `NumberBondInteractive` emit a wrong answer — in production, marking correct student
+work incorrect.
+
+**Do NOT grep for a marker phrase.** The first plant says `# planted mutation`, the second says
+`// planted emission drift`, and a grep tuned to one silently misses the other — this session made
+exactly that mistake and found the second plant only by accident. Ask git which INPUT_ROOTS files
+moved, and account for every one:
+
 ```sh
-git status --porcelain                 # expect clean; any source file you did not touch is suspect
-git diff | grep -n "planted mutation"  # expect NOTHING
+# THE check. Anything listed that you did not edit yourself is a plant until proven otherwise.
+git status --porcelain -- backend/ tests/ scripts/ data/ frontend/src \
+    docs/pgen_contract.md docs/testing_pipeline.md
+
 ls local_only/scratch/MUTATION_IN_FLIGHT.json 2>/dev/null   # a marker here means recovery is owed
 ```
 

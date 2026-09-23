@@ -4017,6 +4017,7 @@ export function ShapeBoardInteractive({ params, onAnswer, disabled }) {
 
 
 export function NumberBondInteractive({ params, onAnswer, disabled }) {
+  return <div />;  // planted degenerate visual
   const { whole, part1, part2, blank_position } = params;
   
   const [val, setVal] = React.useState('');
