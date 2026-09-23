@@ -2085,6 +2085,42 @@ MUTATIONS: List[Mutation] = [
         baseline_must_not_contain=["test_missing_sample_assessment_is_rejected && failed"],
     ),
     Mutation(
+        name="judgment_filer_drops_reviewer_sample_assessments",
+        asserts=["judgment_sample_assessments_5"],
+        description=(
+            "Plant the original lossless-filing defect: discard the blind reviewer's "
+            "per-sample judgments while retaining the dispatch-time sample evidence."
+        ),
+        edits={
+            "tests/file_reviews.py": (
+                '    review["sample_assessments"] = assessments\n',
+                '    review["sample_assessments"] = []\n',
+            ),
+        },
+        command=["pytest", "tests/unit/test_file_reviews.py::test_file_one_preserves_complete_v2_judgment_and_dispatch_bytes", "-q"],
+        expected_check="§5 filing path (blind per-sample judgments survive mechanical filing)",
+        expect_output_contains=["test_file_one_preserves_complete_v2_judgment_and_dispatch_bytes", "failed"],
+        baseline_must_not_contain=["test_file_one_preserves_complete_v2_judgment_and_dispatch_bytes && failed"],
+    ),
+    Mutation(
+        name="judgment_filer_drops_reviewer_clause_evidence",
+        asserts=["judgment_clause_coverage_5"],
+        description=(
+            "Plant the original lossless-filing defect for requirement judgments: discard "
+            "the blind reviewer's exact clause evidence during the mechanical join."
+        ),
+        edits={
+            "tests/file_reviews.py": (
+                '    review["clause_evidence"] = clauses\n',
+                '    review["clause_evidence"] = []\n',
+            ),
+        },
+        command=["pytest", "tests/unit/test_file_reviews.py::test_file_one_preserves_complete_v2_judgment_and_dispatch_bytes", "-q"],
+        expected_check="§5 filing path (blind clause judgments survive mechanical filing)",
+        expect_output_contains=["test_file_one_preserves_complete_v2_judgment_and_dispatch_bytes", "failed"],
+        baseline_must_not_contain=["test_file_one_preserves_complete_v2_judgment_and_dispatch_bytes && failed"],
+    ),
+    Mutation(
         name="judgment_accepts_foreign_dispatch_reviewer",
         asserts=["judgment_dispatch_provenance_5"],
         description="Remove the binding between each assessment reviewer and its dispatch identity (seed=42).",

@@ -10,8 +10,10 @@ produced, which is the fabrication §5's freshness check exists to catch -- and 
 dispatcher that retypes a stem produces the same corruption by accident.
 
 So: `samples_reviewed` and `sample_seeds` are copied from the SKELETON WRITTEN AT
-DISPATCH TIME (`judgment_batches --skeleton-dir`), and the reviewer's reply supplies only
-`findings` and `overall`. Nothing in the reply can reach the evidence block.
+DISPATCH TIME (`judgment_batches --skeleton-dir`). The reviewer supplies the six findings,
+per-sample checks, exact-clause judgments and overall verdict; the filer validates and preserves
+those bytes while adding dispatcher-controlled identity and dispatch attribution. Nothing in
+the reply can replace the evidence block or self-assign provenance.
 
 Why the dispatch-time skeleton and not a fresh rebuild at filing time. The first version
 of this module rebuilt the packet when filing, which sounds stricter and is in fact the
@@ -35,14 +37,21 @@ does not match the one assigned is refused.
 Usage:
     PYTHONPATH=. .venv/bin/python -m tests.file_reviews \
         --batch 1 --verdicts local_only/scratch/review/b1_verdicts.json \
-        --reviewed-by reviewer-b1-quartz-mallow-4412 --date 2026-09-10 \
-        --skeleton-dir local_only/scratch/review/b1/
+        --reviewed-by blind-attester-gpt-5.6-terra-light-b1-20260923 --date 2026-09-23 \
+        --skeleton-dir local_only/scratch/review/b1/ \
+        --dispatch-prompt local_only/scratch/review/b1_prompt.txt \
+        --dispatch-id judgment-v2-b1-20260923 \
+        --samples-delivery "reviewer read only the saved prompt path" \
+        --tool-uses-by-reviewer "read prompt; wrote one JSON reply"
 """
 
 from __future__ import annotations
 
 import argparse
+import copy
+import hashlib
 import json
+import shutil
 import sys
 from pathlib import Path
 from typing import Any, Dict
@@ -53,6 +62,7 @@ sys.path.insert(0, str(REPO_ROOT))
 from backend.app.practice_gen.validation.validate_judgment import (  # noqa: E402
     JUDGMENT_DIR,
     REQUIRED_FINDINGS,
+    SAMPLE_ASSESSMENTS,
 )
 from tests.judgment_batches import batches  # noqa: E402
 
@@ -75,9 +85,22 @@ def _target_path(node_id: str) -> Path:
     return parent / f"{node_id}.json"
 
 
+def _reasoning(block: Any, *, where: str, field: str) -> None:
+    if not isinstance(block, dict) or block.get("verdict") not in _VERDICTS:
+        raise ValueError(f"{where}: verdict must be one of {sorted(_VERDICTS)}.")
+    if len(str(block.get(field, "")).strip()) < 40:
+        raise ValueError(f"{where}: {field} is under 40 characters.")
+
+
 def file_one(node_id: str, verdict_block: Dict[str, Any], reviewed_by: str,
-             date: str, skeleton_dir: Path) -> Path:
+             date: str, skeleton_dir: Path, *, raw_response: Path,
+             prompt_path: Path, dispatch_prefix: str, samples_delivery: str,
+             tool_uses_by_reviewer: str, write: bool = True) -> Path:
     """Write one review: the evidence shown, reviewer-authored verdicts, assigned identity."""
+    # Preflight and write run over the same parsed batch object. Never inject dispatcher
+    # attribution into the reviewer's raw in-memory reply: the second pass must see the same
+    # bytes the first pass validated, and the raw response remains the audit authority.
+    verdict_block = copy.deepcopy(verdict_block)
     findings = verdict_block.get("findings")
     if not isinstance(findings, dict) or set(findings) != REQUIRED_FINDINGS:
         missing = REQUIRED_FINDINGS - set(findings or {})
@@ -88,16 +111,7 @@ def file_one(node_id: str, verdict_block: Dict[str, Any], reviewed_by: str,
             f"partial review is not a review; re-dispatch rather than filling the gap in."
         )
     for item, block in findings.items():
-        if block.get("verdict") not in _VERDICTS:
-            raise ValueError(
-                f"{node_id}.{item}: verdict {block.get('verdict')!r} is not one of "
-                f"{sorted(_VERDICTS)}."
-            )
-        if len(str(block.get("rationale", "")).strip()) < 40:
-            raise ValueError(
-                f"{node_id}.{item}: rationale is under 40 characters. §5 rejects it, and a "
-                f"dispatcher padding it out would be authoring the review."
-            )
+        _reasoning(block, where=f"{node_id}.{item}", field="rationale")
     if verdict_block.get("overall") not in _VERDICTS:
         raise ValueError(f"{node_id}: overall {verdict_block.get('overall')!r} is invalid.")
 
@@ -118,13 +132,95 @@ def file_one(node_id: str, verdict_block: Dict[str, Any], reviewed_by: str,
             f"{review.get('node_id')!r}. Refusing to file one node's verdicts against "
             f"another node's samples."
         )
+    sample_ids = review.get("sample_ids") or []
+    requirements = review.get("requirements_snapshot") or []
+    requirement_ids = [str(req.get("id", "")) for req in requirements]
+
+    assessments = verdict_block.get("sample_assessments")
+    if not isinstance(assessments, list) or [a.get("sample_id") for a in assessments
+                                             if isinstance(a, dict)] != sample_ids:
+        raise ValueError(
+            f"{node_id}: sample_assessments must cover every dispatch-time sample exactly "
+            "once and in packet order. Re-dispatch rather than filling gaps as dispatcher."
+        )
+    for assessment in assessments:
+        if "reviewer_identity" in assessment or "dispatch_id" in assessment:
+            raise ValueError(f"{node_id}: reviewer response must not self-assign attribution.")
+        checks = assessment.get("checks")
+        if not isinstance(checks, dict) or set(checks) != SAMPLE_ASSESSMENTS:
+            raise ValueError(
+                f"{node_id} sample {assessment.get('sample_id')}: checks must be exactly "
+                f"{sorted(SAMPLE_ASSESSMENTS)}."
+            )
+        for name, block in checks.items():
+            _reasoning(block, where=f"{node_id}.{assessment['sample_id']}.{name}",
+                       field="reasoning")
+
+    clauses = verdict_block.get("clause_evidence")
+    if not isinstance(clauses, list) or [str(c.get("requirement_id", "")) for c in clauses
+                                         if isinstance(c, dict)] != requirement_ids:
+        raise ValueError(
+            f"{node_id}: clause_evidence must cover the exact dispatch-time requirements once "
+            f"and in order; expected={requirement_ids}."
+        )
+    expected_clauses = {str(req.get("id", "")): req.get("clause") for req in requirements}
+    for clause in clauses:
+        req_id = str(clause.get("requirement_id", ""))
+        if "reviewer_identity" in clause or "dispatch_id" in clause:
+            raise ValueError(f"{node_id}: reviewer response must not self-assign attribution.")
+        if clause.get("clause") != expected_clauses.get(req_id):
+            raise ValueError(f"{node_id}.{req_id}: clause text differs from the dispatched packet.")
+        _reasoning(clause, where=f"{node_id}.{req_id}", field="reasoning")
+        cited = clause.get("sample_ids")
+        if not isinstance(cited, list) or not cited or not set(cited) <= set(sample_ids):
+            raise ValueError(f"{node_id}.{req_id}: sample_ids must cite dispatched samples.")
+
+    decomposition = findings["competency_fulfillment"].get("decomposition")
+    _reasoning(decomposition, where=f"{node_id}.competency_fulfillment.decomposition",
+               field="reasoning")
+    findings["competency_fulfillment"]["clause_ids"] = requirement_ids
+    findings["competency_fulfillment"]["decomposition"]["requirement_ids"] = requirement_ids
+    findings["comprehensive_coverage"]["clause_ids"] = requirement_ids
+
+    dispatch_id = f"{dispatch_prefix}:{node_id}"
+    for assessment in assessments:
+        assessment["reviewer_identity"] = reviewed_by
+        assessment["dispatch_id"] = dispatch_id
+    for clause in clauses:
+        clause["reviewer_identity"] = reviewed_by
+        clause["dispatch_id"] = dispatch_id
+
     review["reviewed_by"] = reviewed_by
     review["review_date"] = date
     review["blind"] = True
     review["findings"] = findings
+    review["sample_assessments"] = assessments
+    review["clause_evidence"] = clauses
     review["overall"] = verdict_block["overall"]
 
     path = _target_path(node_id)
+    if not write:
+        return path
+    response_dir = path.parent / ".responses"
+    response_dir.mkdir(parents=True, exist_ok=True)
+    response_copy = response_dir / f"{dispatch_prefix}.json"
+    prompt_copy = response_dir / f"{dispatch_prefix}.prompt.txt"
+    shutil.copyfile(raw_response, response_copy)
+    shutil.copyfile(prompt_path, prompt_copy)
+    review["dispatch_provenance"] = [{
+        "dispatch_id": dispatch_id,
+        "reviewer_identity": reviewed_by,
+        "review_date": date,
+        "blind": True,
+        "packet_digest": review["packet_digest"],
+        "clause_ids": requirement_ids,
+        "response_ref": str(response_copy.relative_to(path.parent)),
+        "response_digest": hashlib.sha256(response_copy.read_bytes()).hexdigest(),
+        "prompt_ref": str(prompt_copy.relative_to(path.parent)),
+        "prompt_digest": hashlib.sha256(prompt_copy.read_bytes()).hexdigest(),
+        "samples_delivery": samples_delivery,
+        "tool_uses_by_reviewer": tool_uses_by_reviewer,
+    }]
     path.write_text(json.dumps(review, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     return path
 
@@ -141,6 +237,14 @@ def main() -> int:
     ap.add_argument("--date", required=True, help="YYYY-MM-DD")
     ap.add_argument("--skeleton-dir", required=True,
                     help="the --skeleton-dir used when this batch was DISPATCHED")
+    ap.add_argument("--dispatch-prompt", required=True,
+                    help="exact prompt file sent to the blind reviewer")
+    ap.add_argument("--dispatch-id", required=True,
+                    help="unique batch dispatch prefix; node id is appended mechanically")
+    ap.add_argument("--samples-delivery", required=True,
+                    help="truthful description of how/where the prompt was delivered")
+    ap.add_argument("--tool-uses-by-reviewer", required=True,
+                    help="truthful free-form tool-use report from the reviewer")
     args = ap.parse_args()
 
     reply = json.loads(Path(args.verdicts).read_text(encoding="utf-8"))
@@ -170,9 +274,24 @@ def main() -> int:
             f"missing={sorted(expected - got)} unexpected={sorted(got - expected)}"
         )
 
+    if Path(args.dispatch_id).name != args.dispatch_id or not args.dispatch_id.strip():
+        raise ValueError("--dispatch-id must be one non-empty filename-safe component.")
+
+    # Preflight the entire response before the first review is overwritten. A malformed
+    # node late in a 25-node reply must not leave a half-filed evidentiary batch.
+    for node_id in sorted(expected):
+        file_one(node_id, reply[node_id], args.reviewed_by, args.date,
+                 Path(args.skeleton_dir), raw_response=Path(args.verdicts),
+                 prompt_path=Path(args.dispatch_prompt), dispatch_prefix=args.dispatch_id,
+                 samples_delivery=args.samples_delivery,
+                 tool_uses_by_reviewer=args.tool_uses_by_reviewer, write=False)
+
     for node_id in sorted(expected):
         path = file_one(node_id, reply[node_id], args.reviewed_by, args.date,
-                        Path(args.skeleton_dir))
+                        Path(args.skeleton_dir), raw_response=Path(args.verdicts),
+                        prompt_path=Path(args.dispatch_prompt), dispatch_prefix=args.dispatch_id,
+                        samples_delivery=args.samples_delivery,
+                        tool_uses_by_reviewer=args.tool_uses_by_reviewer)
         print(f"  filed {node_id} -> {path.relative_to(REPO_ROOT)}")
     print(f"{len(expected)} review(s) filed under {args.reviewed_by!r}")
     return 0

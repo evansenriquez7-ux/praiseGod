@@ -1,0 +1,46 @@
+{
+ "asserts": [
+  "judgment_clause_coverage_5"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "test_file_one_preserves_complete_v2_judgment_and_dispatch_bytes && failed"
+ ],
+ "command": [
+  "pytest",
+  "tests/unit/test_file_reviews.py::test_file_one_preserves_complete_v2_judgment_and_dispatch_bytes",
+  "-q"
+ ],
+ "definition_digest": "e0606292b541eec709b575d579d45b622a4a48515f98d4ad202973127ad33b73",
+ "detected": true,
+ "diagnostic_line": "exit 1 — =================================== FAILURES ===================================",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "test_file_one_preserves_complete_v2_judgment_and_dispatch_bytes",
+  "failed"
+ ],
+ "expected_check": "§5 filing path (blind clause judgments survive mechanical filing)",
+ "finished_at": "2026-09-23T12:08:47+08:00",
+ "input_digest": "e321fd21ab20c47565030c080278cfbdd7956a56263180e9ff5679f2495ccfb1",
+ "mutated_paths": [
+  "tests/file_reviews.py"
+ ],
+ "mutation": "judgment_filer_drops_reviewer_clause_evidence",
+ "observed_markers": {
+  "failed": true,
+  "test_file_one_preserves_complete_v2_judgment_and_dispatch_bytes": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-09-23T12:08:46+08:00"
+}

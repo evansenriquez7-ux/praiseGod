@@ -25,11 +25,21 @@ and a single dispatch cannot see:
     options of a choice item -- the omission that left 505 of 2026 recorded samples
     unadjudicable before 2026-09-10.
 
+Named limitation: batch sizing enforces only the validator's 25-node reviewer-plurality cap.
+It does not budget response volume after schema v2 added four reasoned checks per sample. A
+25-node batch can require thousands of independently authored reasoning blocks and exceed one
+reviewer turn's output capacity. Script-generated filler is not a remedy: §5's verbatim and
+rationale-skeleton checks reject it. Dispatchers must keep the assigned identity truthful and
+must not file a partial or templated response while this operational limit remains open.
+
 Usage:
     python -m tests.judgment_batches --plan                       # the batch plan
     python -m tests.judgment_batches --batch 3 \
         --blind local_only/scratch/review/b3.txt \
-        --skeleton-dir local_only/scratch/review/b3/
+        --skeleton-dir local_only/scratch/review/b3/ \
+        --prompt local_only/scratch/review/b3_prompt.txt \
+        --reviewed-by blind-attester-gpt-5.6-terra-light-b3-20260923 \
+        --verdicts-path local_only/scratch/review/b3_verdicts.json
     python -m tests.judgment_batches --node mat_g1_na_q1_0 --blind -
 """
 
@@ -45,6 +55,7 @@ from backend.app.practice_gen.registry import get_all_node_ids
 from backend.app.practice_gen.validation.judgment_packets import build_packet, render_failures
 from backend.app.practice_gen.validation.validate_judgment import (
     REQUIRED_FINDINGS,
+    SAMPLE_ASSESSMENTS,
     _MAX_NODES_PER_REVIEWER,
 )
 
@@ -132,6 +143,79 @@ def render_prompt_block(packets: List[Dict[str, Any]]) -> str:
     return "\n".join(out)
 
 
+def render_review_prompt(packets: List[Dict[str, Any]], reviewer_identity: str,
+                         verdicts_path: str) -> str:
+    """Build the complete blind prompt without retyping any packet evidence.
+
+    The reviewer authors only judgments.  Identity, dispatch attribution, raw-response
+    provenance, and the canonical samples are joined mechanically by ``file_reviews``.
+    """
+    finding_keys = ", ".join(sorted(REQUIRED_FINDINGS))
+    assessment_keys = ", ".join(sorted(SAMPLE_ASSESSMENTS))
+    return f"""You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  {reviewer_identity}
+
+Write one JSON object to:
+  {verdicts_path}
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: {finding_keys}. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: {assessment_keys}. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN; never invent a supporting sample.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{{
+  "reviewer": "{reviewer_identity}",
+  "<node_id>": {{
+    "findings": {{
+      "competency_fulfillment": {{
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {{"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}}
+      }},
+      "<each other required finding>": {{"verdict": "...", "rationale": "..."}}
+    }},
+    "sample_assessments": [
+      {{"sample_id": "<opaque id>", "checks": {{
+        "<each required sample check>": {{"verdict": "...", "reasoning": "..."}}
+      }}}}
+    ],
+    "clause_evidence": [
+      {{"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }}
+}}
+
+== BLIND PACKET ==
+
+{render_prompt_block(packets)}
+"""
+
+
 def skeleton(packet: Dict[str, Any]) -> Dict[str, Any]:
     """
     A review file pre-filled with the exact samples the reviewer was shown.
@@ -155,6 +239,9 @@ def skeleton(packet: Dict[str, Any]) -> Dict[str, Any]:
         "sample_seeds": [sample["seed"] for sample in packet["samples"]],
         "sample_ids": packet["sample_ids"],
         "samples_reviewed": packet["samples"],
+        "sample_assessments": [],
+        "clause_evidence": [],
+        "dispatch_provenance": [],
         "findings": {item: {"verdict": "<PASS|CONCERN|FAIL>",
                             "rationale": "<node-specific, >= 40 chars, quoting only "
                                          "what appears in these samples>"}
@@ -169,6 +256,9 @@ def _main() -> int:
     ap.add_argument("--batch", type=int, help="1-indexed batch number from --plan")
     ap.add_argument("--node", action="append", default=[], help="explicit node id")
     ap.add_argument("--blind", help="write the reviewer-facing text here ('-' = stdout)")
+    ap.add_argument("--prompt", help="write the complete reviewer prompt here")
+    ap.add_argument("--reviewed-by", help="dispatcher-assigned reviewer identity for --prompt")
+    ap.add_argument("--verdicts-path", help="response path printed in --prompt")
     ap.add_argument("--skeleton-dir", help="write one pre-filled review file per node here")
     args = ap.parse_args()
 
@@ -200,6 +290,14 @@ def _main() -> int:
             Path(args.blind).parent.mkdir(parents=True, exist_ok=True)
             Path(args.blind).write_text(text, encoding="utf-8")
             print(f"blind packet: {len(packets)} node(s), {len(text)} chars -> {args.blind}")
+
+    if args.prompt:
+        if not args.reviewed_by or not args.verdicts_path:
+            raise SystemExit("--prompt requires --reviewed-by and --verdicts-path")
+        text = render_review_prompt(packets, args.reviewed_by, args.verdicts_path)
+        Path(args.prompt).parent.mkdir(parents=True, exist_ok=True)
+        Path(args.prompt).write_text(text, encoding="utf-8")
+        print(f"review prompt: {len(packets)} node(s), {len(text)} chars -> {args.prompt}")
 
     if args.skeleton_dir:
         d = Path(args.skeleton_dir)
