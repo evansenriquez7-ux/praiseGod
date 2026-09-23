@@ -36,7 +36,7 @@ from the digests alone.
 
 ```text
 PASS tree_state: CERTIFIED
-  live input digest : dfae9bbb7a1398d7
+  live input digest : 575e87127d7b6c27
   worktree          : clean
   mutation_proofs         fresh  152 file(s)
   release_shards          fresh  6 file(s)
@@ -70,7 +70,41 @@ PYTHONPATH=. .venv/bin/python tests/tree_state.py --complete --note "where you g
 
 ---
 
-## ⚠ 2026-09-23 (latest) — RULING-9 RE-DISPATCH COMPLETE. START HERE.
+## ⚠ 2026-09-23 (latest) — CAMPAIGN REVIEWED AND KEPT; §0 REPAIRED. START HERE.
+
+Tree is **CERTIFIED** at `575e87127d7b6c27`, worktree clean, all four families fresh.
+`run_all` was **EXECUTED**: EXIT 1, `scheduled=17 completed=14 failed=3`.
+
+| stage | count |
+|---|---|
+| `capability_phase2` | **173** CONTRADICTED across **82 of 151 nodes** |
+| `judgment_reviews_5` | **1252** module / **1253** stage — quote the entry point |
+| `assertion_coverage_8` | 3 in 1 family |
+
+**The `batch117`–`batch150` prevalence corpus is VERIFIED GENUINE and is KEPT.** 151/151 nodes,
+767/767 pairs, every verdict byte-identical to its dispatch, 767 distinct reasoning skeletons,
+truthful identities, prior records preserved. The 57 → 173 rise matched an independent 3.0x
+prediction at 3.11x.
+
+**But 173 moved TWO variables, not one.** Measured on the same 18 clauses with the standard held
+fixed, **cross-family agreement is 11/18 = 61.1%** against 88.1% within-family, disagreeing in
+both directions. So part of the rise is a sharper standard and part is a different rater family.
+**The aggregate is usable; no individual row is settled — confirm any finding with a second
+dispatch before building.**
+
+**The campaign silently broke §0 and the session that ran it did not find out**, because it wrote
+"`run_all` is still expected to exit 1" instead of running it. Two fixtures in
+`tests/unit/test_capability_contract.py` had rotted — **neither check was broken**. Repaired, and
+the pattern is now trap 2 in the agent prompt: select attestation records by OWNERSHIP
+(`_winning_verdict_index`), never positionally, and assert about the specific pair under test.
+That was the **third** occurrence in that one file.
+
+**NEXT:** the seven-dispatch §5 schema-v2 blind re-review campaign (no re-proof owed). Content
+debt only on confirmed findings. Full prompt: `NEXT_AGENT_PROMPT.md`.
+
+---
+
+## 2026-09-23 (historical) — RULING-9 RE-DISPATCH COMPLETE.
 
 Tree is **CERTIFIED** at `dfae9bbb7a1398d7`; all four digest-bound artifact families remain
 fresh. `H-06` is `released @ 459b72df`, still OPEN. The campaign moved no input digest and owes
