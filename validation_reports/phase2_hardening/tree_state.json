@@ -1,20 +1,14 @@
 {
   "schema_version": 1,
   "note": "Intent record for interruption safety. Written when a batch, chain or campaign STARTS and cleared when it completes; an intent left open means a session did not reach its finish line. Deliberately digest-free -- see tests/tree_state.py. Read with `PYTHONPATH=. .venv/bin/python tests/tree_state.py`.",
-  "open_intent": {
+  "open_intent": null,
+  "last_completed": {
     "kind": "batch",
     "began_at": "2026-09-23T18:12:07+08:00",
     "session": "H-06-review-hintfix-2026-09-23",
     "note": "Fix fractions add_subtract hint contradiction found by the first v2 blind review; add its gate + mutation; chain owed",
-    "next_step": "Land every remaining source edit, then run the re-proof chain in order."
-  },
-  "last_completed": {
-    "kind": "batch",
-    "began_at": "2026-09-23T11:50:17+08:00",
-    "session": "codex-h06-judgment-v2-20260923",
-    "note": "repair and prove lossless schema-v2 judgment dispatch and filing workflow before reviewer dispatch",
     "next_step": "Land every remaining source edit, then run the re-proof chain in order.",
-    "completed_at": "2026-09-23T17:15:56+08:00",
-    "completion_note": "Repaired and proved lossless schema-v2 filing; filed one genuine blind v2 review; completed 154-mutation, benchmark, frontend, six-shard, and run_all chain; three known red stages remain."
+    "completed_at": "2026-09-23T18:58:01+08:00",
+    "completion_note": "INTERRUPTED BY ENVIRONMENT, not by a defect. Source work is COMMITTED and green in isolation (fractions hint fix + its gate + mutation, all verified). OWED: mutation corpus (73 of 155 proofs already refreshed at digest 600ceb7a970a03c5 -- a fresh full run is still required, it does not resume), then six release shards, verify-release, then run_all quoted verbatim. Four corpus runs were reaped externally at varying points; retry, and if it persists run it outside the agent session."
   }
 }
