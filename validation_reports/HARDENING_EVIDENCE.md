@@ -14818,3 +14818,93 @@ EXIT: 1
 `capability_phase2` is **173 CONTRADICTED**; `assertion_coverage_8` is the known three-item §6F
 family. Definition of Done remains unmet. No failure repaired in this batch depended on a random
 seed; the blind review's sampled seeds are preserved in its dispatch-bound record.
+
+## 2026-09-23 — A PLANTED MUTATION WAS LEFT IN PRODUCTION SOURCE. The kill-safety marker is not concurrency-safe.
+
+Found while trying to re-prove the fractions hint fix. Recorded in full because the failure is
+silent, it reaches PRODUCTION code, and the next run measures the planted tree as if it were clean.
+
+### What was found
+
+`backend/app/services/orchestrator.py` — the student path — carried a planted mutation in the
+working tree:
+
+```diff
+-            problem.formatter_name = formatter
++            problem.formatter_name = None  # planted mutation
+```
+
+It is `formatter_unreachable_on_student_path`'s plant. **It was never committed** (`git show
+HEAD:... | grep -c "planted mutation"` → `0`), and reverting it restored the digest to
+`600ceb7a970a03c5` exactly. But it was present while this session ran `git add -A` twice.
+
+### Why the kill-safety mechanism did not catch it
+
+`tests/mutation_harness.py` is careful here and the design is right. `_write_marker()` persists
+what is planted "so a kill -9 is still recoverable"; `_restore_planted_from_marker()` runs before
+anything else in `main()`, and its docstring states the stakes exactly:
+
+> measuring a tree that still carries a planted bug is worse than not measuring at all, because
+> every result would look like a real finding.
+
+**But `_MARKER` is a SINGLE FIXED PATH**, `local_only/scratch/MUTATION_IN_FLIGHT.json`, shared by
+every concurrent invocation:
+
+```python
+_MARKER = REPO_ROOT / "local_only" / "scratch" / "MUTATION_IN_FLIGHT.json"
+```
+
+So with two runs alive — a full corpus and an `--only` run, which is exactly what this session
+had — the sequence is:
+
+1. run A plants into `orchestrator.py` and writes the marker naming it;
+2. run B finishes normally and calls `_clear_marker()`, **deleting run A's marker**;
+3. run A is killed. Its plant stays, and there is now no record that anything is planted;
+4. the next corpus run finds no marker, reports nothing, and measures a planted tree.
+
+Verified: the marker was ABSENT while the plant was present on disk.
+
+**This is the same defect class as `tests/frontend_renderer.py`'s fixed corpus/result path, fixed
+earlier this same session under owner ruling 8 — a shared fixed path with no pid, uuid or lock —
+except that here it sits inside the safety mechanism itself.** A guard that a second process can
+switch off is not a guard.
+
+### RECOMMENDED FIX — NOT APPLIED, and why
+
+Give the marker a per-invocation identity (`MUTATION_IN_FLIGHT-<pid>-<uuid4>.json`), have startup
+recovery scan for ALL such markers rather than one, and skip markers whose pid is still alive so a
+concurrent run is not robbed of its own plant. It owes a mutation that targets the CONCURRENT path
+— a plant that only trips single-run recovery proves nothing new — plus a `docs/pgen_contract.md`
+row in the same commit.
+
+It is **not applied here** because this session could not complete a re-proof chain (see below), and
+landing an unproven source change into the safety mechanism would make the next session's baseline
+worse, not better. It is the first source item the next session should take.
+
+### The environment reaped four corpus runs
+
+Four full-corpus attempts were killed externally at four different points — `[32]`, `[32]`, `[3]`,
+`[15]` of 155 — all exit 144, including one detached with `nohup`/`disown`. **Not resource
+exhaustion:** ~50GB free pages, zero swap in use, load 2.07. **Not a bad mutation:** the one it
+stopped on most recently passes `1/1` under `--only`. Same-shaped background runs succeeded earlier
+in this same session, so the reaping began partway through it and is environmental.
+
+73 of 155 proof records were refreshed against `600ceb7a970a03c5` and are committed, so the next
+session resumes from measured progress. **A fresh full run is still required — the corpus does not
+resume mid-table.**
+
+### AND A MEASUREMENT THAT LOOKED LIKE HARNESS ROT AND WAS NOT
+
+One attempt reported **NINETEEN** mutations as `INVALID — the unmutated command baseline exited 1`,
+against a documented baseline of **three** (the known §6F cluster). That reads as sudden, wide
+harness rot. It was **contention**: a second corpus had been started while the previous chain's
+`obligation_executor` shards were still alive.
+
+Proven two ways rather than assumed: the supposedly-red baseline
+`validate_matrix --node mat_g1_na_q1_7` exits **0** on demand, and the next run with nothing else
+alive reported **0 INVALID**.
+
+**Rule this earns:** a jump in the INVALID count is a statement about the ENVIRONMENT before it is a
+statement about the tree. Check what else is running before concluding a gate broke. This session
+walked into trap 11 while writing warnings about trap 11 for other agents — `pgrep` was run, it
+said processes were alive, and a second heavy run was started anyway.

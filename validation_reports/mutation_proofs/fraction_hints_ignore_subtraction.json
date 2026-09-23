@@ -13,8 +13,8 @@
   "-q"
  ],
  "definition_digest": "0bf8b1515cd362c745a1a139c958d0b22e07176f9a1dee176c1c52e063937b26",
- "detected": false,
- "diagnostic_line": "SURVIVED — validator exited 0 with the bug planted.",
+ "detected": true,
+ "diagnostic_line": "exit 1 — =================================== FAILURES ===================================",
  "environment": {
   "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
   "machine": "x86_64",
@@ -27,20 +27,20 @@
   "failed"
  ],
  "expected_check": "§0 (a hint chain may not deny its own final answer)",
- "finished_at": "2026-09-23T18:09:07+08:00",
- "input_digest": "1c26f7c5c663f7985e80755a061c62990fa272993f663c0ae476e3e71e71c85a",
+ "finished_at": "2026-09-23T19:00:00+08:00",
+ "input_digest": "600ceb7a970a03c50a124f2e6a29052be24b1bb2fdb12b5dd7f08e4f34f7edba",
  "mutated_paths": [
   "backend/app/practice_gen/dna/na/fractions.py"
  ],
  "mutation": "fraction_hints_ignore_subtraction",
  "observed_markers": {
-  "failed": false,
-  "test_no_fraction_hint_chain_contradicts_its_own_answer": false
+  "failed": true,
+  "test_no_fraction_hint_chain_contradicts_its_own_answer": true
  },
  "paths_outside_input_set": [],
  "phase1_admissible": true,
- "planted_exit": 0,
+ "planted_exit": 1,
  "restored_clean": true,
  "schema_version": 1,
- "started_at": "2026-09-23T18:08:29+08:00"
+ "started_at": "2026-09-23T18:59:22+08:00"
 }
