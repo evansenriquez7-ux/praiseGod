@@ -36,74 +36,69 @@ The fast unit suite takes **11 minutes**; pass `-m "not slow"` explicitly if you
 
 ---
 
-## 0b. BEFORE ANY HEAVY RUN — two hazards this environment has already produced
+## 0b. ONE AGENT AT A TIME. This is not advice — it corrupted a commit on 2026-09-23.
 
-**1. CHECK FOR A PLANTED MUTATION LEFT IN SOURCE. Do this first, every session.**
-
-A killed corpus run left `formatter_unreachable_on_student_path`'s plant in
-`backend/app/services/orchestrator.py` — production, the student path — on 2026-09-23:
-
-```diff
--            problem.formatter_name = formatter
-+            problem.formatter_name = None  # planted mutation
-```
-
-The harness's kill-safety marker did NOT catch it, and the reason is structural: `_MARKER` is a
-SINGLE FIXED PATH shared by every invocation, so a second run exiting normally deletes the first
-run's marker, the first is killed, and its plant survives with no record. The next corpus run then
-finds no marker and **measures a planted tree as if it were clean** — which its own docstring calls
-worse than not measuring at all. Same defect class as the renderer's fixed path, inside the safety
-mechanism itself.
-
-**TWO plants survived this way on 2026-09-23, in two languages** — the orchestrator edit above,
-and in `frontend/src/components/VisualSkeletons.jsx`:
-
-```diff
--        onAnswer(parseInt(val, 10));
-+        onAnswer(parseInt(val, 10) + 1);  // planted emission drift
-```
-
-which makes `NumberBondInteractive` emit a wrong answer — in production, marking correct student
-work incorrect.
-
-**Do NOT grep for a marker phrase.** The first plant says `# planted mutation`, the second says
-`// planted emission drift`, and a grep tuned to one silently misses the other — this session made
-exactly that mistake and found the second plant only by accident. Ask git which INPUT_ROOTS files
-moved, and account for every one:
+**Before any heavy run, confirm you are the only agent working in this repository.**
 
 ```sh
-# THE check. Anything listed that you did not edit yourself is a plant until proven otherwise.
-git status --porcelain -- backend/ tests/ scripts/ data/ frontend/src \
-    docs/pgen_contract.md docs/testing_pipeline.md
-
-ls local_only/scratch/MUTATION_IN_FLIGHT.json 2>/dev/null   # a marker here means recovery is owed
+ps -eo pid,ppid,etime,command | grep -iE "mutation_harness|obligation_executor|validate_|pytest" | grep -v grep
 ```
 
-If you find one: `git checkout --` the file, confirm `input_digest()` returns to the expected
-value, and say so. **Never `git add -A` without looking at what you are adding.** Fixing the marker
-properly (per-invocation path, startup scanning all markers, skipping live pids) is the first
-source item available and owes a mutation targeting the CONCURRENT path.
+Empty, or stop and resolve it first. **Do not just `pkill`** — see below.
 
-**2. RUN HEAVY THINGS ALONE — the failure mode is not a wrong number.**
+### What happened, so you can recognise it
 
-```sh
-pgrep -fl "mutation_harness|obligation_executor|validate_|pytest"   # must be EMPTY first
+Two agents ran the mutation corpus concurrently in this one worktree. The mutation harness
+works by PLANTING a bug into real source, running a check, and restoring the file. While it runs,
+production source is *supposed* to be transiently modified. So a second party looking at
+`git status` sees what appear to be stray edits — and "cleaning them up" reverts a live plant and
+corrupts the run that owns it.
+
+**Four plants escaped into the worktree and TWO reached commits**, all in production paths:
+
+```
+backend/app/services/orchestrator.py          problem.formatter_name = None
+frontend/.../VisualSkeletons.jsx              onAnswer(parseInt(val,10) + 1)
+frontend/.../VisualSkeletons.jsx              return <div />        (degenerate visual)
+backend/app/routes/matatag_router.py          "is_correct": False   (rejects EVERY answer)
+backend/.../formatters/textual/fmt_mcq.py     duplicate option value   <- reached a COMMIT
 ```
 
-On 2026-09-23 a corpus run overlapping a still-live shard loop reported **NINETEEN** mutations as
-`INVALID — the unmutated command baseline exited 1`, against a documented baseline of **three**.
-That reads as sudden, wide harness rot and would send you hunting a regression that does not exist.
-It was contention: the "red" baseline exits **0** on demand, and a clean run reported **0 INVALID**.
+All reverted; `git grep` over HEAD is clean and the digest is back to `600ceb7a970a03c5`.
 
-**A jump in the INVALID count is a statement about your ENVIRONMENT before it is a statement about
-the tree.** Three INVALID is the known §6F cluster; anything more, check what else is running.
+### The four rules this bought
 
-**Also: this environment reaped four consecutive corpus runs** at different points (exit 144),
-including one under `nohup`, with ~50GB free and load 2.07 — so not resource exhaustion and not a
-bad mutation. If it persists for you, run the corpus outside the agent session rather than burning
-attempts, and remember it does NOT resume mid-table.
+1. **NEVER `git add -A`** in this repo. A harness run one second away from restoring a file will
+   have its plant committed instead. Stage the paths you edited, **by name**. Both committed
+   plants entered this way.
+2. **Do not identify plants by grepping a marker phrase.** They differ — `# planted mutation`,
+   `// planted emission drift`, `// planted degenerate visual`. Three greps, three misses. Ask
+   git which INPUT_ROOTS files moved and account for every one:
+   ```sh
+   git status --porcelain -- backend/ tests/ scripts/ data/ frontend/src \
+       docs/pgen_contract.md docs/testing_pipeline.md
+   git grep -n "planted" HEAD -- backend/ frontend/src   # HEAD must be clean
+   ```
+3. **`pkill -f mutation_harness` does not stop a run.** The parent appears as `Python -` and
+   matches nothing; only its children carry the name. Kill the PARENT by pid, from the `ps`
+   output above, or you will keep killing children while the parent spawns more.
+4. **A jump in the INVALID count is a statement about your ENVIRONMENT, not the tree.** Three
+   INVALID is the known §6F cluster. A contended run here reported **nineteen**, which reads as
+   sudden harness rot; the "red" baseline exited **0** on demand and a clean run reported **0**.
 
----
+### The kill-safety marker cannot protect you, and here is why
+
+`tests/mutation_harness.py` writes `local_only/scratch/MUTATION_IN_FLIGHT.json` so a `kill -9` is
+recoverable, and its docstring is right that "measuring a tree that still carries a planted bug is
+worse than not measuring at all". **But `_MARKER` is a SINGLE FIXED PATH shared by every
+invocation**, so a concurrent run exiting normally deletes another run's marker; that run is then
+killed and its plant survives with no record. Same defect class as the renderer's fixed path fixed
+under ruling 8 — except inside the safety mechanism.
+
+**Fixing it is the first source item available:** per-invocation marker, startup recovery scanning
+all markers, skipping those whose pid is still live. It owes a mutation targeting the CONCURRENT
+path — a plant that only trips single-run recovery proves nothing — and a contract row.
+
 
 ## 1. Establish state first
 
@@ -112,25 +107,45 @@ PYTHONPATH=. .venv/bin/python tests/tree_state.py
 PYTHONPATH=. .venv/bin/python tests/hardening_status.py
 ```
 
-**Expected — the live input digest is `600ceb7a970a03c5`, and you may find EITHER of two
-states.** A source batch (the fractions hint fix, §2) landed and its re-proof chain was started;
-whether it finished is something you must read, not assume.
+**Expected — the live input digest is `600ceb7a970a03c5` and an intent is OPEN.** The tree is
+`INTERRUPTED`, deliberately and accurately, and the open intent tells you why:
 
 ```
-PASS tree_state: CERTIFIED
+STATE tree_state: INTERRUPTED
   live input digest : 600ceb7a970a03c5
   worktree          : clean
-  mutation_proofs         fresh  155 file(s)
-  release_shards          fresh  6 file(s)
+  mutation_proofs         fresh  155 file(s)      <- READ THE WARNING BELOW
+  release_shards          STALE  6 file(s), 6 stale
   obligation_benchmark    fresh  1 file(s)
   frontend_static_render  fresh  1 file(s)
+  OPEN INTENT       : 'chain' by 'H-06-recovery-2026-09-23'
 ```
 
-**If instead you see `awaiting_reproof` or `interrupted`, the chain did not finish. Finish it
-before anything else** — §5 has the order. Shards are individually resumable and each receipt
-records its own digest, so re-run only the stale indices rather than all six; that is a ~2.5h
-saving you get by reading digests instead of guessing. `run_all` is the last step and its result
-must be quoted verbatim.
+### ⚠ `mutation_proofs fresh 155` IS A FALSE GREEN. RE-RUN THE CORPUS ANYWAY.
+
+Every record carries the right digest, so `tree_state` reports the family fresh — it has no way to
+know how the records were produced. **They were produced by two agents running the corpus
+concurrently, interrupting and reverting each other's live plants.** Individual records may have
+been scored while the plant they tested was reverted underneath them, which shows up as a spurious
+`SURVIVED`, i.e. as a hole in the harness that does not exist.
+
+**So: run the full corpus once, alone, before you trust any mutation result, and before you treat
+`assertion_coverage_8` as telling you anything.** It does not resume mid-table. Expect
+**151/155 or better**, with the only survivors being the three known §6F cluster members
+(`contradicted_attestation`, `attestation_drops_options`, `attestation_leaks_into_phase1`).
+**Any other survivor is either a real hole or an artifact of that contention — diagnose it, do not
+wave it through.**
+
+### What the chain still owes
+
+1. the full mutation corpus, alone (~70min);
+2. the six release shards — **all six**, since all six receipts are stale (~2.6h);
+3. `verify-release`;
+4. `run_all`, alone, **quoted verbatim**.
+
+The benchmark and frontend artifacts are already fresh and need no rebuild. **The source work
+itself is committed and sound** — the fractions add/subtract hint fix plus its gate and mutation,
+each verified in isolation. What is missing is only the re-proof.
 
 `hardening_status.py` must print `PASS ... 10 H-row(s) valid — 3 closed, 6 open, 1 out_of_scope`.
 
@@ -161,13 +176,14 @@ PYTHONPATH=. .venv/bin/python tests/tree_state.py --complete --note "where you g
 | `judgment_reviews_5` | **1263** module / **1264** stage | 150 v1 nodes remain; one genuine v2 review is substantively red |
 | `assertion_coverage_8` | 3 in 1 family | downstream; unfixable by re-running |
 
-All other stages PASS: Phase 1 capability at its floor of 5, only the three known INVALID §6F
-baselines in the corpus, six shards 0 failures, operator coverage 41/41, `nodes=151`.
+All other stages PASSed at that measurement: Phase 1 capability at its floor of 5, operator
+coverage 41/41, `nodes=151`.
 
-**The corpus is now 155 mutations** (was 154): `fraction_hints_ignore_subtraction` was added with
-the hint fix in §2. **Re-measure §0, §5 and the corpus yourself** — the figures above predate the
-chain that was in flight when this prompt was written, and a number you did not execute is not a
-number you may quote.
+**These figures predate the source batch described below, and every one of them is now owed a
+fresh measurement.** The corpus is 155 mutations (was 154) since
+`fraction_hints_ignore_subtraction` shipped with the hint fix, and the six release shards are
+STALE — re-run all six, not a subset. **A number you did not execute is not a number you may
+quote**; if you report any of the three counts above, run the stage alone first.
 
 > **Always quote the ENTRY POINT with a §5 figure.** `validate_judgment` standalone reports 1263;
 > the `run_all` stage reports 1264 because `run_all.py:760-764` appends one aggregate rollup the
