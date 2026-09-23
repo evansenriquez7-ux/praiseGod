@@ -1,20 +1,14 @@
 {
   "schema_version": 1,
   "note": "Intent record for interruption safety. Written when a batch, chain or campaign STARTS and cleared when it completes; an intent left open means a session did not reach its finish line. Deliberately digest-free -- see tests/tree_state.py. Read with `PYTHONPATH=. .venv/bin/python tests/tree_state.py`.",
-  "open_intent": {
+  "open_intent": null,
+  "last_completed": {
     "kind": "batch",
     "began_at": "2026-09-23T06:27:10+08:00",
     "session": "H-06-review-prevalence-2026-09-23",
     "note": "Fix 2 fixture-rot failures in test_capability_contract.py exposed by the 173-finding corpus; chain owed",
-    "next_step": "Land every remaining source edit, then run the re-proof chain in order."
-  },
-  "last_completed": {
-    "kind": "campaign",
-    "began_at": "2026-09-22T21:53:02+08:00",
-    "session": "codex-h06-prevalence117-20260922",
-    "note": "Ruling-9 prevalence re-dispatch campaign from batch117; no source work",
-    "next_step": "Resume the campaign; it touches no source, so no re-proof is owed.",
-    "completed_at": "2026-09-23T05:46:43+08:00",
-    "completion_note": "Ruling-9 prevalence campaign complete: batch117..150, 151 nodes/767 pairs, capability_phase2=173 all CONTRADICTED; digest unchanged; next §5 re-reviews"
+    "next_step": "Land every remaining source edit, then run the re-proof chain in order.",
+    "completed_at": "2026-09-23T11:12:26+08:00",
+    "completion_note": "Reviewed the prevalence campaign (KEEP: verified genuine); repaired 2 rotted fixtures it broke; chain re-run; run_all EXECUTED at 3 red stages"
   }
 }

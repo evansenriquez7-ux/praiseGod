@@ -14567,3 +14567,129 @@ campaign. No content work was started.
 **Graphify limitation:** the existing index reported the legacy pre-#1504 node-ID scheme and its
 campaign query returned an unrelated/weak traversal. Executed repository tooling above, not that
 graph traversal, is the evidence for this campaign.
+
+## 2026-09-23 — REVIEW OF THE PREVALENCE CAMPAIGN: verified genuine, but it broke §0 silently
+
+Session `H-06-review-prevalence-2026-09-23`, reviewing `codex-h06-prevalence117-20260922`.
+
+### The campaign is sound. Verified by execution, not by reading its report.
+
+| claim | check |
+|---|---|
+| full corpus re-judged | **151/151 nodes, 767/767 pairs**, none missing |
+| §6H plurality | 25 identities, max **11 nodes** each (cap 25) |
+| identities truthful | all `blind-attester-gpt-terra-*`, per ruling 10 |
+| no authoring | **all 767 verdicts byte-identical to the dispatched source** |
+| no templating | **767 distinct reasoning skeletons of 767**; §6G 0 errors |
+| ruling 2 respected | 325 prior records PRESERVED, superseded by sort order, not deleted |
+| no re-proof owed | digest unmoved; campaign touched no source |
+
+**The 57 → 173 rise is independently corroborated.** The 18-clause control predicted a **3.0x**
+increase in NOT_PROVIDED from the standard change; observed is **3.11x** (7.3% → 22.7%). A
+correspondence that close between a prior prediction and a later full-corpus run is strong
+evidence the campaign is real rather than manufactured.
+
+**RECOMMENDATION: KEEP THIS WORK.** Discarding it would destroy verified blind evidence that
+owner ruling 2 protects, and would return `capability_phase2` to a two-instrument number.
+
+### What it got wrong: it PREDICTED `run_all` instead of executing it
+
+Its evidence entry reads "`run_all` is still **expected** to exit 1" and names three red stages.
+Executed on that same tree, there were **FOUR**:
+
+```
+  FAIL unit_tests   phase 1   642.6s
+    - FAILED tests/unit/test_capability_contract.py::test_contradicted_entry_is_caught_by_name
+    - FAILED tests/unit/test_capability_contract.py::test_attestation_without_samples_cannot_be_checked_and_fails
+  scheduled=17 completed=13 failed=4
+```
+
+The campaign broke §0 and the session shipped without knowing, because it asserted an outcome it
+had not run. This is exactly what Protocol 1 exists for.
+
+### Both failures were FIXTURE ROT, not broken checks — and that distinction mattered
+
+The lazy remedy would have weakened two real gates. Diagnosed by running each test and reading
+what it actually asserts:
+
+1. **`test_contradicted_entry_is_caught_by_name`** required `mat_g3_mg_q1_5` to be ENTIRELY free
+   of CONTRADICTED before planting its entry. The campaign legitimately added one on a
+   **different** capability (`intersecting_lines`). Fixed by scoping the precondition AND the
+   post-assertion to the capability the test actually plants. Both directions still asserted; the
+   planted entry must still be caught by name, quoting the verdict it contradicts.
+2. **`test_attestation_without_samples_cannot_be_checked_and_fails`** took
+   `next(glob("*.json"))` — the FIRST filename — which with 476 records is almost always a
+   **SUPERSEDED** record. A superseded record is not consulted for staleness, so stripping its
+   samples correctly produced no error. **The check was working perfectly; the fixture was asking
+   it the wrong question.**
+
+**A defect in my own first fix, caught before it landed.** I initially re-derived "last file wins
+over a sorted glob" by hand to pick a live record. `validate_capability` already exposes
+`_winning_verdict_index`, the rule it uses itself. Rewrote the fixture to call the helper — a
+rule copied into a second place is a rule that will eventually disagree with itself, which is a
+defect this repository has already paid for more than once.
+
+**THIS IS THE THIRD OCCURRENCE OF THIS ROT IN THIS ONE FILE.**
+`test_stale_attestation_is_rejected` carries a docstring describing the identical failure and the
+identical remedy from a previous round, and `test_unattested_capability_is_a_failure_not_a_skip`
+carries another. **Recorded as a standing hazard:** a fixture in
+`tests/unit/test_capability_contract.py` that selects an attestation record positionally, or
+asserts a node is globally clean, will rot the next time the corpus moves. Select by OWNERSHIP
+(`_winning_verdict_index`) and assert about the specific pair under test.
+
+### Cross-family agreement: 61.1%. The number the handoff called unmeasured.
+
+`batch116` judged 18 clauses under the **prevalence** standard with **Haiku**. The campaign
+re-judged those same 18 clauses under the **same standard** with **gpt-terra**:
+
+```
+CROSS-FAMILY AGREEMENT, standard held fixed: 11/18 = 61.1%  (7 disagreements)
+  vs measured within-family (Haiku-against-Haiku): 37/42 = 88.1%
+
+  mat_g1_na_q3_7  objects_images_or_numbers  haiku=PROVIDED      gpt-terra=NOT_PROVIDED
+  mat_g2_mg_q2_0  measure / distance / measuring_tools
+                                             haiku=NOT_PROVIDED  gpt-terra=PROVIDED
+  mat_g2_mg_q2_2  estimate                   haiku=PROVIDED      gpt-terra=NOT_PROVIDED
+  mat_g2_mg_q2_2  length / distance          haiku=NOT_PROVIDED  gpt-terra=PROVIDED
+```
+
+**Disagreements run BOTH directions** (5 one way, 2 the other), so `gpt-terra` is not uniformly
+stricter — it is *differently* strict, and 6 of the 7 concentrate on the two compound
+measurement competencies.
+
+**CONSEQUENCE: "57 → 173 is the sharper instrument working" is only PARTLY true.** The campaign
+changed TWO variables at once — standard AND rater family — and this is the first number on the
+second. Part of the movement is sharpening; part is family. The aggregate remains usable; no
+individual row is settled.
+
+**LIMITS of this measurement, stated rather than glossed:** n=18 on a purposive (not random) set
+of 4 nodes; and **the dispatch prompt WORDING is not stored anywhere** — only the standard, in
+each verdict's `action_taken`. Two dispatches both claiming "prevalence" may have worded it
+differently, so 61.1% is family **plus wording**, not family alone. **Harness gap worth closing:
+a record cannot state the prompt it was judged under, and since ruling 9 made the standard a
+variable, that provenance now matters.**
+
+### Chain re-run, and `run_all` EXECUTED
+
+```
+$ corpus                149/152 detected; survivors = the three known §6F cluster members
+$ six release shards    release_status=complete receipts=6 complete=True
+$ PYTHONPATH=. .venv/bin/python -m pytest tests/unit -m "not slow" -q
+796 passed, 1 skipped, 2 deselected in 661.03s
+
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.run_all
+  PASS       unit_tests                     phase 1   664.3s
+  FAIL       assertion_coverage_8           phase 1     1.2s
+  FAIL       judgment_reviews_5             phase 2   139.7s
+  FAIL       capability_phase2              phase 2    24.2s
+  scheduled=17 completed=14 failed=3 crashed=0 not_run=0 incomplete=0
+  PASS stage_ledger_complete / PASS stage_phase_matches_manifest
+EXIT: 1
+```
+
+`judgment_reviews_5` **1253 at the stage / 1252 at the module**; `capability_phase2` **173
+CONTRADICTED, 0 UNATTESTED, 0 STALE, 0 UNADJUDICABLE**; `assertion_coverage_8` **3 in the one
+§6F family**. §0 restored to PASS. Definition of Done still NOT met.
+
+**Content queue after the campaign: 173 findings across 82 of 151 nodes (54% of the tree)**, up
+from 57 across 36. Most-affected: `mat_g2_na_q2_0` (8), `mat_g2_na_q4_3` (6), `mat_g2_na_q1_3` (6).
