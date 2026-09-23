@@ -43,21 +43,30 @@ PYTHONPATH=. .venv/bin/python tests/tree_state.py
 PYTHONPATH=. .venv/bin/python tests/hardening_status.py
 ```
 
-Expected:
+**Expected — the live input digest is `600ceb7a970a03c5`, and you may find EITHER of two
+states.** A source batch (the fractions hint fix, §2) landed and its re-proof chain was started;
+whether it finished is something you must read, not assume.
 
 ```
 PASS tree_state: CERTIFIED
-  live input digest : e321fd21ab20c475
+  live input digest : 600ceb7a970a03c5
   worktree          : clean
-  mutation_proofs         fresh  154 file(s)
+  mutation_proofs         fresh  155 file(s)
   release_shards          fresh  6 file(s)
   obligation_benchmark    fresh  1 file(s)
   frontend_static_render  fresh  1 file(s)
-
-PASS hardening_status: 10 H-row(s) valid — 3 closed, 6 open, 1 out_of_scope
 ```
 
-**If either disagrees, believe the command, not this file**, and say so before continuing.
+**If instead you see `awaiting_reproof` or `interrupted`, the chain did not finish. Finish it
+before anything else** — §5 has the order. Shards are individually resumable and each receipt
+records its own digest, so re-run only the stale indices rather than all six; that is a ~2.5h
+saving you get by reading digests instead of guessing. `run_all` is the last step and its result
+must be quoted verbatim.
+
+`hardening_status.py` must print `PASS ... 10 H-row(s) valid — 3 closed, 6 open, 1 out_of_scope`.
+
+**If either command disagrees with this file, believe the command**, and say so before
+continuing.
 
 Claim the lock (`H-06`'s `owner` reads `released @ …`; change **only** that line — a whole-file
 `json.dumps` renormalises escapes across rows you do not own) and record intent:
@@ -83,9 +92,13 @@ PYTHONPATH=. .venv/bin/python tests/tree_state.py --complete --note "where you g
 | `judgment_reviews_5` | **1263** module / **1264** stage | 150 v1 nodes remain; one genuine v2 review is substantively red |
 | `assertion_coverage_8` | 3 in 1 family | downstream; unfixable by re-running |
 
-All other stages PASS: §0 801 passed / 1 skipped / 2 deselected, Phase 1 capability at its floor of
-5, corpus 151/154 with only the three known INVALID §6F baselines, six shards 0 failures, operator
-coverage 41/41, census `nodes=151 mutations=154`.
+All other stages PASS: Phase 1 capability at its floor of 5, only the three known INVALID §6F
+baselines in the corpus, six shards 0 failures, operator coverage 41/41, `nodes=151`.
+
+**The corpus is now 155 mutations** (was 154): `fraction_hints_ignore_subtraction` was added with
+the hint fix in §2. **Re-measure §0, §5 and the corpus yourself** — the figures above predate the
+chain that was in flight when this prompt was written, and a number you did not execute is not a
+number you may quote.
 
 > **Always quote the ENTRY POINT with a §5 figure.** `validate_judgment` standalone reports 1263;
 > the `run_all` stage reports 1264 because `run_all.py:760-764` appends one aggregate rollup the
@@ -122,6 +135,32 @@ measurement competencies. So GPT-5.6-Terra is not uniformly stricter — it is *
 anywhere — only the standard, in each verdict's `action_taken` — so it is family **plus** wording.)*
 
 ---
+
+### ⚠ THE §5 QUEUE IS NOT BOOKKEEPING — THE FIRST REAL REVIEW FOUND A SHIPPING BUG
+
+The one genuine schema-v2 review filed so far (`mat_g3_na_q4_7`, 2026-09-23) immediately found a
+student-facing defect that every automated gate had passed: **11 of 19 samples walked a pupil
+through ADDITION to an intermediate their own final hint denied.**
+
+```
+seed 44, a SUBTRACTION item whose answer is 1/6:
+  "When adding fractions with the same denominator, keep the denominator the same."
+  "Add only the numerators: 2 + 1 = 3."
+  "Write the result over the same denominator: 3/6."
+  "The answer is 1/6."
+```
+
+Root cause: `fractions.generate_hints` served both operations from one branch that hardcoded
+addition while printing the true `result_num`. **Fixed and gated** (`fraction_hint_self_consistency`,
+`tests/unit/test_fraction_hint_consistency.py`, mutation `fraction_hints_ignore_subtraction`
+DETECTED). Blast radius was measured by restoring the old behaviour and re-rendering all 11
+fractions-DNA nodes: exactly 11 samples on 1 node. Contained.
+
+**Take two things from this.** First, the §5 queue is the highest-yield work in the project right
+now — one review out of 151 found a real bug on its first try, so treat the remaining 150 as
+defect discovery and not as a checkbox. Second, **expect blind reviews to surface pipeline bugs,
+and queue them as bugs.** A finding recorded only as "review evidence to preserve" is a defect
+nobody is going to fix.
 
 ## 3. Your job, in priority order
 
@@ -262,6 +301,22 @@ several seeds *before* touching those numbers.
 
 ## 6. Traps, each paid for by a real session
 
+
+**THE RECURRING SHAPE, across four consecutive sessions: a rule that lives in TWO places, fixed in
+ONE.** Before you call anything done, ask where else this rule is written.
+
+* the renderer's unique-path half and its `case_id` half — each masked the other, so one mutation
+  would have proved nothing;
+* an overstated §5 claim copy-pasted into FIVE digest-bound files — a correction naming three of
+  them half-landed, twice, costing the 3.4h chain each time;
+* `fractions`' `generate_params` was taught to enact subtraction after a blind reviewer said it
+  never was; `generate_hints` was not, so the moment subtraction shipped its explanation was wrong;
+* two attestation-contract fixtures that selected records positionally while the validator selected
+  them by ownership.
+
+**The remedy is mechanical, not attentive:** enumerate the sites by sweeping
+`mutation_proof._iter_input_files()`, and route behaviour through the ONE helper the validator
+itself calls, never a second copy.
 1. **RUN `run_all`. DO NOT PREDICT IT.** See §0.1. This is the most recent failure and it hid a
    broken §0 for a whole session.
 2. **A campaign can rot a unit-test FIXTURE without breaking any check.** When the corpus moved
