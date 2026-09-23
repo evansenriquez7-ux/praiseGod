@@ -1,8 +1,14 @@
 # Handoff — continue the Phase 2 hardening plan
 
-**Refreshed 2026-09-23 after the lossless §5 filing repair, first genuine v2 review, and complete
-re-proof at digest `e321fd21ab20c475`. This file is deliberately a
-POINTER, not a summary.**
+**Refreshed 2026-09-24 (claude-h06-killsafe-chain-2026-09-23): two harness-safety fixes — a
+per-invocation mutation kill-safety marker, and restores that purge bytecode compiled from a plant —
+and a complete re-proof run ALONE at digest `07015c154d6f6c8f`. The tree is CERTIFIED. Next job:
+the §5 blind re-review campaign (Priority 2 of `CLAUDE_AGENT_PROMPT.md`), none of which was started.
+⚠ The data volume had 305 MiB free at handoff — run `df -h` before any heavy run. This file is
+deliberately a POINTER, not a summary.**
+
+*(historical)* Refreshed 2026-09-23 after the lossless §5 filing repair, first genuine v2 review, and
+complete re-proof at digest `e321fd21ab20c475`.
 
 Earlier versions duplicated the plan's status and then drifted from it. Two sources of truth
 is how a session inherits confident wrong numbers, so status lives in exactly one place —
@@ -36,9 +42,9 @@ from the digests alone.
 
 ```text
 PASS tree_state: CERTIFIED
-  live input digest : e321fd21ab20c475
+  live input digest : 07015c154d6f6c8f
   worktree          : clean
-  mutation_proofs         fresh  154 file(s)
+  mutation_proofs         fresh  160 file(s)
   release_shards          fresh  6 file(s)
   obligation_benchmark    fresh  1 file(s)
   frontend_static_render  fresh  1 file(s)
