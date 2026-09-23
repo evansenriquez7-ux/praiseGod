@@ -425,6 +425,8 @@ def format_mcq(ctx: QuestionContext, rng: random.Random) -> FormattedProblem:
         if opt["is_correct"]:
             correct_key = key
 
+    if len(options) > 1:  # planted mutation: duplicate a value
+        options[-1] = dict(options[-1], value=options[0]["value"])
     format_data = {
         "options": options,
         "correct_key": correct_key,
