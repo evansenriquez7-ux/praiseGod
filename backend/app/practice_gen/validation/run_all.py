@@ -115,6 +115,11 @@ ASSERTIONS = (
     # path, so when two agents ran the corpus concurrently one run's normal exit deleted
     # the other's marker and four plants escaped into the worktree, two into commits.
     "mutation_marker_invocation_isolation",  # tests/unit/test_mutation_killsafe.py
+    # A restored plant leaves no bytecode behind (2026-09-23). Found by executing the
+    # corpus: a sub-second planted run put the restore in the plant's own second, and a
+    # same-length plant's .pyc stayed live after the source was byte-identical -- seven
+    # §6 baselines red, invisible to `restored_clean` and to `input_digest`.
+    "mutation_restore_purges_bytecode",      # tests/unit/test_mutation_killsafe.py
     # A hint chain may not walk a pupil to a value its own final line denies
     # (2026-09-23). Declared here for the same reason as the lines above -- its
     # mutation drives ONE test file. Found by the first genuine schema-v2 blind

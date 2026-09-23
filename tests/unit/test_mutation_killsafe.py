@@ -277,3 +277,75 @@ def test_recovery_refuses_to_start_beside_a_live_run(h, scratch_target):
         assert str(other.proc.pid) in str(exc.value)
     finally:
         other.close()
+
+
+# ---------------------------------------------------------------------------------------
+# Planted BYTECODE (2026-09-23). A planted command that exits in under a second lets the
+# restore land in the same whole second as the plant; with a same-length plant, CPython's
+# .pyc check (mtime in whole seconds + size) then keeps running the PLANT from
+# __pycache__ after the source is byte-identical again. The same-second landing is made
+# deterministic here by pinning the restored file's mtime back to the plant's.
+# ---------------------------------------------------------------------------------------
+
+_ORIGINAL_SRC = "VALUE = 111\n"
+_PLANTED_SRC = "VALUE = 999\n"   # same byte length: size cannot tell them apart
+
+
+def _import_value(module_dir: Path) -> str:
+    env = {k: v for k, v in os.environ.items() if k != "PYTHONDONTWRITEBYTECODE"}
+    proc = subprocess.run(
+        [sys.executable, "-c", "import plantmod; print(plantmod.VALUE)"],
+        cwd=module_dir, env=env, capture_output=True, text=True,
+    )
+    assert proc.returncode == 0, proc.stderr
+    return proc.stdout.strip()
+
+
+def _plant_and_compile(module_dir: Path) -> tuple[Path, os.stat_result]:
+    """Plant, then let a real interpreter compile the plant into __pycache__."""
+    src = module_dir / "plantmod.py"
+    src.write_text(_PLANTED_SRC, encoding="utf-8")
+    planted_stat = src.stat()
+    assert _import_value(module_dir) == "999", "the plant was never compiled"
+    assert list((module_dir / "__pycache__").glob("plantmod.*.pyc")), "no bytecode written"
+    return src, planted_stat
+
+
+def _pin_same_second(src: Path, planted_stat: os.stat_result) -> None:
+    os.utime(src, ns=(planted_stat.st_atime_ns, planted_stat.st_mtime_ns))
+
+
+def test_a_same_second_restore_leaves_no_planted_bytecode(h, tmp_path):
+    """The normal `_restore` path: source restored AND the plant's bytecode gone."""
+    mod_dir = tmp_path / "mods"
+    mod_dir.mkdir()
+    src, planted_stat = _plant_and_compile(mod_dir)
+
+    h._IN_FLIGHT[src] = _ORIGINAL_SRC
+    h._restore({src: _ORIGINAL_SRC})
+    _pin_same_second(src, planted_stat)
+
+    assert src.read_text(encoding="utf-8") == _ORIGINAL_SRC
+    assert _import_value(mod_dir) == "111", (
+        "PLANTED BYTECODE SURVIVED: the source was restored byte-identical but the "
+        "interpreter still ran the plant from __pycache__, because the restore landed in "
+        "the plant's second at the plant's size. Every later measurement of this tree "
+        "runs the planted bug, and no digest can see it."
+    )
+
+
+def test_startup_recovery_leaves_no_planted_bytecode(h, tmp_path):
+    """The kill -9 path goes through the same helper, and must drop the bytecode too."""
+    mod_dir = tmp_path / "mods"
+    mod_dir.mkdir()
+    src, planted_stat = _plant_and_compile(mod_dir)
+    _dead_marker(h, {str(src): _ORIGINAL_SRC})
+
+    assert h.recover_orphaned_mutation() is True
+    _pin_same_second(src, planted_stat)
+
+    assert src.read_text(encoding="utf-8") == _ORIGINAL_SRC
+    assert _import_value(mod_dir) == "111", (
+        "PLANTED BYTECODE SURVIVED RECOVERY: a killed run's plant was restored in source "
+        "but still runs from __pycache__"
+    )

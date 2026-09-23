@@ -192,7 +192,7 @@ def _plant_silent_substitution() -> Dict[Path, str]:
         text = path.read_text(encoding="utf-8")
         if text.count(anchor) != 1:
             for done, original in originals.items():
-                done.write_text(original, encoding="utf-8")
+                _write_back(done, original)
             raise ValueError(
                 f"mutation 'silent_substitution': anchor matched {text.count(anchor)} times "
                 f"in {path.name}, expected exactly 1. BOTH gates must be disabled together or "
@@ -2132,6 +2132,73 @@ MUTATIONS: List[Mutation] = [
         ],
         baseline_must_not_contain=[
             "test_recovery_refuses_to_start_beside_a_live_run && failed"
+        ],
+    ),
+    Mutation(
+        name="restore_keeps_planted_bytecode",
+        asserts=["mutation_restore_purges_bytecode"],
+        description=(
+            "Restore source text only, leaving __pycache__ alone -- the runner as it was "
+            "until 2026-09-23. A planted command that exits in under a second puts the "
+            "restore in the plant's own second; with a same-length plant the .pyc check "
+            "(whole-second mtime + size) keeps the PLANT's bytecode live after the source "
+            "is byte-identical. In that day's corpus `phase_ref_misassigned` (0.88s) did "
+            "this to _manifest.py and seven §6 baselines went red until a later mutation "
+            "rewrote the file. Neither `restored_clean` nor `input_digest` can see it."
+        ),
+        edits={
+            "tests/mutation_harness.py": (
+                "    if path.suffix == \".py\":\n"
+                "        for pyc in (path.parent / \"__pycache__\").glob(f\"{path.stem}.*.pyc\"):\n",
+                "    if False:  # planted mutation: planted bytecode outlives the restore\n"
+                "        for pyc in (path.parent / \"__pycache__\").glob(f\"{path.stem}.*.pyc\"):\n",
+            )
+        },
+        command=[
+            "pytest",
+            "tests/unit/test_mutation_killsafe.py"
+            "::test_startup_recovery_leaves_no_planted_bytecode",
+            "-q",
+        ],
+        expected_check="§0 (a restored plant leaves no bytecode compiled from it)",
+        expect_output_contains=[
+            "test_startup_recovery_leaves_no_planted_bytecode",
+            "failed",
+        ],
+        baseline_must_not_contain=[
+            "test_startup_recovery_leaves_no_planted_bytecode && failed"
+        ],
+    ),
+    Mutation(
+        name="restore_bypasses_bytecode_purge",
+        asserts=["mutation_restore_purges_bytecode"],
+        description=(
+            "Write the original text straight back in `_restore`, the path every normal "
+            "mutation takes, instead of going through `_write_back`. The purge rule then "
+            "lives in the helper and is skipped one call site over -- the two-places "
+            "defect shape. The helper's own mutation cannot catch this: the helper is "
+            "intact, it is simply not called."
+        ),
+        edits={
+            "tests/mutation_harness.py": (
+                "        _write_back(path, text)\n        _IN_FLIGHT.pop(path, None)\n",
+                "        path.write_text(text, encoding=\"utf-8\")  # planted mutation\n"
+                "        _IN_FLIGHT.pop(path, None)\n",
+            )
+        },
+        command=[
+            "pytest",
+            "tests/unit/test_mutation_killsafe.py"
+            "::test_a_same_second_restore_leaves_no_planted_bytecode",
+            "-q",
+        ],
+        expected_check="§0 (the normal restore path purges the plant's bytecode)",
+        expect_output_contains=[
+            "test_a_same_second_restore_leaves_no_planted_bytecode",
+            "failed",
+        ],
+        baseline_must_not_contain=[
+            "test_a_same_second_restore_leaves_no_planted_bytecode && failed"
         ],
     ),
     Mutation(
@@ -4524,6 +4591,35 @@ def _new_marker_path() -> Path:
 _MARKER = _new_marker_path()
 
 
+def _write_back(path: Path, text: str) -> None:
+    """
+    Put a planted file's original text back AND drop bytecode compiled from the plant.
+
+    EVERY restore path goes through here -- the normal `_restore`, the signal/atexit
+    `_restore_in_flight`, and startup recovery -- so the rule lives in one place.
+
+    Why the bytecode half exists (found 2026-09-23 by executing, not reading): a planted
+    command that exits in under a second -- `phase_ref_misassigned` takes 0.88s -- lets
+    the restore land in the SAME whole second as the plant. When the plant is also the
+    same byte length, CPython's `.pyc` freshness check (source mtime in whole seconds,
+    plus size) accepts the bytecode compiled from the PLANT, so the planted bug keeps
+    running from `__pycache__` after the source is byte-identical again. Nothing else
+    sees it: `restored_clean` reads source text and `input_digest` excludes `.pyc`. In
+    the 2026-09-23 corpus it turned seven §6 baselines red (`capability_phase_partition_6`
+    citing §6D) until a later mutation happened to rewrite `_manifest.py`, and those
+    seven scored INVALID -- the benign outcome; a plant whose bytecode survives into a
+    shard or `run_all` would be measured as the tree.
+
+    BLIND SPOT, named: this removes `__pycache__/<stem>.*.pyc` beside the file only. A
+    `PYTHONPYCACHEPREFIX` redirect, or bytecode already loaded into a live interpreter,
+    is not reached; neither is used by this runner's subprocesses today.
+    """
+    path.write_text(text, encoding="utf-8")
+    if path.suffix == ".py":
+        for pyc in (path.parent / "__pycache__").glob(f"{path.stem}.*.pyc"):
+            pyc.unlink(missing_ok=True)
+
+
 def _write_marker() -> None:
     """Persist what is planted, so a kill -9 is still recoverable."""
     _MARKER.parent.mkdir(parents=True, exist_ok=True)
@@ -4545,7 +4641,7 @@ def _restore_in_flight(reason: str) -> None:
           file=sys.stderr)
     for path, text in _IN_FLIGHT.items():
         try:
-            path.write_text(text, encoding="utf-8")
+            _write_back(path, text)
         except OSError as exc:  # say which file is still dirty; never swallow it
             print(f"!! COULD NOT RESTORE {path}: {exc}", file=sys.stderr)
     _IN_FLIGHT.clear()
@@ -4614,7 +4710,7 @@ def recover_orphaned_mutation() -> bool:
             except ValueError:
                 shown = target
             print(f"   restoring {shown}", file=sys.stderr)
-            target.write_text(text, encoding="utf-8")
+            _write_back(target, text)
             restored_any = True
         marker.unlink()
     if live:
@@ -4646,7 +4742,7 @@ def _install_kill_safety() -> None:
 
 def _restore(originals: Dict[Path, str]) -> None:
     for path, text in originals.items():
-        path.write_text(text, encoding="utf-8")
+        _write_back(path, text)
         _IN_FLIGHT.pop(path, None)
     _write_marker() if _IN_FLIGHT else _clear_marker()
 
