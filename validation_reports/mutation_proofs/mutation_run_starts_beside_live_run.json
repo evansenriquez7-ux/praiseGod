@@ -1,0 +1,46 @@
+{
+ "asserts": [
+  "mutation_marker_invocation_isolation"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "test_recovery_refuses_to_start_beside_a_live_run && failed"
+ ],
+ "command": [
+  "pytest",
+  "tests/unit/test_mutation_killsafe.py::test_recovery_refuses_to_start_beside_a_live_run",
+  "-q"
+ ],
+ "definition_digest": "ccfa31f94db307df6c2507a287370dec815ee51e7b54853b60adb832b7cae923",
+ "detected": true,
+ "diagnostic_line": "exit 1 — =================================== FAILURES ===================================",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "test_recovery_refuses_to_start_beside_a_live_run",
+  "failed"
+ ],
+ "expected_check": "§0 (a run refuses to start while another run has a live plant)",
+ "finished_at": "2026-09-23T21:47:25+08:00",
+ "input_digest": "07015c154d6f6c8fa945385f7f29996670b00b9d0bb57a29d3243f6397901b2b",
+ "mutated_paths": [
+  "tests/mutation_harness.py"
+ ],
+ "mutation": "mutation_run_starts_beside_live_run",
+ "observed_markers": {
+  "failed": true,
+  "test_recovery_refuses_to_start_beside_a_live_run": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-09-23T21:47:24+08:00"
+}

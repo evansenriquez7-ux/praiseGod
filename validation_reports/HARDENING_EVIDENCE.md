@@ -14908,3 +14908,158 @@ alive reported **0 INVALID**.
 statement about the tree. Check what else is running before concluding a gate broke. This session
 walked into trap 11 while writing warnings about trap 11 for other agents — `pgrep` was run, it
 said processes were alive, and a second heavy run was started anyway.
+
+## 2026-09-23/24 — two harness-safety fixes, full chain re-proved ALONE (claude-h06-killsafe-chain-2026-09-23)
+
+Session: Claude (Opus 5.5) in Claude Code, working under `H-06`'s lock. No verdict of any kind was
+authored. **The §5 re-review campaign (Priority 2) was NOT started** — see "Left".
+
+### State on arrival (executed, matched the handoff)
+
+```
+$ ps ... | grep -iE "mutation_harness|obligation_executor|validate_|pytest"      -> (empty)
+$ git grep -n -E "#\s*planted mutation|//\s*planted " HEAD -- backend/ frontend/src -> (empty)
+STATE tree_state: INTERRUPTED   live input digest : 600ceb7a970a03c5   worktree : clean
+PASS hardening_status: 10 H-row(s) valid — 3 closed, 6 open, 1 out_of_scope
+```
+
+### FIX 1 (Priority 3) — per-invocation kill-safety marker, `6769fdff`
+
+`tests/mutation_harness.py` wrote ONE fixed `local_only/scratch/MUTATION_IN_FLIGHT.json`; a
+concurrent run's normal exit deleted another run's marker (the 2026-09-23 escape). Now each
+invocation writes `MUTATION_IN_FLIGHT-<pid>-<uuid4>.json`; startup recovery scans every marker,
+replays only dead-pid ones (the legacy bare name is always replayed), never touches a live run's
+marker or plant, and then REFUSES to start (`SystemExit` naming the live pid). `--list` moved ahead
+of recovery since it plants nothing. New label `mutation_marker_invocation_isolation`; contract row;
+three mutations, each on the CONCURRENT path via a REAL second process that writes its marker through
+the harness's own `_write_marker` (a test that re-derived the name would keep passing with the fixed
+path restored):
+
+```
+  PASS  mutation_marker_shared_fixed_path §0 (a concurrent run's normal exit may not delete another run's marker)
+  PASS  mutation_recovery_reverts_live_plant §0 (startup recovery never reverts a live run's plant)
+  PASS  mutation_run_starts_beside_live_run §0 (a run refuses to start while another run has a live plant)
+```
+
+Wrong-reason check: each test's own assertions neutered (`return` inserted before them) → all three
+`FAIL ... 0/1 mutations detected`; test file restored (`cmp` identical, sha
+`d1d0e5a73a9b6441faba84cee0b1c3234a6c9bcb` before and after) → all three `PASS` again.
+
+End-to-end through the real `main()`: a live "other run" planted into a scratch file with its marker
+in the REAL scratch dir; `mutation_harness.py --only ...` exited 1 with
+`FATAL: another mutation run is live ... (pid 56466)` and the plant untouched; after `kill -9` + reap,
+the next start printed `a previous run (pid 56466) was killed mid-mutation; restoring 1 file(s)`,
+restored it, and ran `1/1 mutations detected`.
+
+### FIX 2 — FOUND BY EXECUTING THE CORPUS: a restored plant kept running from bytecode, `d92a3875`
+
+The first full corpus after FIX 1 (digest `3354f242624aa6f6`) scored **148/158**: the three known §6F
+INVALIDs plus **seven more INVALIDs**, all `validate_capability --phase 1` baselines
+(`declarations_out_of_sync`, `stale_generated_graph`, `unsanctioned_requires_ignore`,
+`clause_not_in_competency`, `competency_word_uncovered`, `capability_provider_unregistered`,
+`provider_is_only_a_bounds_catch_all`, corpus positions #115–#122). No other agent was running. The
+same baseline exited **0** on demand, and all seven were **DETECTED** when re-run alone.
+
+Not waved through. Diagnosis, by execution:
+1. A replay of positions #100–#122 in one process, logging every failing capability output, DETECTED
+   all seven → the trigger is before #100.
+2. The only same-byte-length `.py` plant touching what §6 Phase 1 imports is #49
+   `phase_ref_misassigned` (`_manifest.py`, `"§6D": 1` → `"§6D": 2`); the next edit to that file is
+   #123 — the red window is exactly #115–#122.
+3. Its planted command exits in **0.88s**, so the restore can land in the plant's own whole second.
+   CPython's `.pyc` check compares whole-second mtime + size, so the PLANT's bytecode stays live.
+   Forced deterministically (plant, compile, restore, `os.utime` back to the plant's mtime):
+
+```
+planted run: exit 1 in 0.88s
+source restored byte-identical: True size 8055
+UNMUTATED baseline exit: 1 | ['Capability contract: 6 failure(s) (6 Phase 1 / artifact-free, floor 5; 0 Phase 2 / attestation).']
+  - capability_phase_partition_6: 4 finding(s) reported by the Phase 1 half of §6 cite §6D, which CHECK_PHASE registers as Phase 2. ...
+after touch, baseline exit: 0 | ['Capability contract: 5 failure(s) (5 Phase 1 / artifact-free, floor 5; 0 Phase 2 / attestation).']
+```
+
+`restored_clean` reads source text and `input_digest` excludes `.pyc`: **no existing gate could see a
+planted bug surviving in bytecode.** The benign outcome is a spurious INVALID; the bad one is a plant
+measured as the tree by shards or `run_all`. Fix: every restore path (normal `_restore`,
+signal/atexit `_restore_in_flight`, startup recovery, `silent_substitution`'s multi-file rollback)
+goes through ONE helper, `_write_back`, which also deletes `__pycache__/<stem>.*.pyc`. Same forced
+replay through the fixed `_restore`: `UNMUTATED baseline exit: 0 | ... 5 failure(s) ...`. New label
+`mutation_restore_purges_bytecode`; contract row; two mutations (the purge removed; `_restore`
+bypassing the helper — the two-places shape):
+
+```
+  PASS  restore_keeps_planted_bytecode §0 (a restored plant leaves no bytecode compiled from it)
+  PASS  restore_bypasses_bytecode_purge §0 (the normal restore path purges the plant's bytecode)
+```
+
+Wrong-reason check: final bytecode assertion neutered in both tests → both `FAIL 0/1`; restored
+(`cmp` identical) → both `PASS`. `__pycache__` under backend/tests/scripts purged before the re-run.
+
+**Possible re-attribution, NOT settled:** the earlier "NINETEEN INVALID" run attributed to contention
+(entry above) was proved only by "baseline exits 0 on demand" and "the next run reported 0 INVALID".
+Planted bytecode produces exactly that evidence too. Both may have contributed; not re-measured.
+
+### The chain, ALONE, at digest `07015c154d6f6c8f` (HEAD `d92a3875`)
+
+```
+$ PYTHONPATH=. .venv/bin/python -m pytest tests/unit -m "not slow" -q
+821 passed, 1 skipped, 2 deselected, 5 warnings in 684.94s (0:11:24)
+$ anchors -> 160 all anchors OK
+$ PYTHONPATH=. .venv/bin/python -m scripts.regen_formatter_exclusions
+275 exclusions across 111 nodes -> _generated_formatter_exclusions.py        (no diff)
+$ PYTHONPATH=. .venv/bin/python -m tests.obligation_executor --tier benchmark --sample-size 1000
+projected_release=1.758h recommended_shards=4 projected_per_shard=26.376m
+$ DATABASE_URL= PYTHONPATH=. .venv/bin/python tests/frontend_suite.py
+PASS frontend_static_render_12: 30 real payloads; 18 production visual types
+$ PYTHONPATH=. .venv/bin/python tests/mutation_harness.py
+157/160 mutations detected.
+  FAIL  contradicted_attestation §6F (blind Attester verdict contradicted by the table)
+  FAIL  attestation_drops_options §6F adjudicability (an attestation must carry the choices it was shown)
+  FAIL  attestation_leaks_into_phase1 §6 phase boundary (Phase 1 must run with the attestation corpus absent)
+  (all three: INVALID — baseline `capability_phase2` is red; the known §6F cluster. No other survivor.)
+$ release shards 0..5 (--shard-count 6): failures=0 each; elapsed 1529s 1544s 1582s 1570s 1544s 1568s (budget 1800s)
+$ PYTHONPATH=. .venv/bin/python -m tests.obligation_executor --tier verify-release
+release_status=complete receipts=6 complete=True
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.run_all
+  FAIL judgment_reviews (1265 problem(s) — non-PASS verdicts or incomplete reviews)
+  PASS capability_contract (Phase 1: all nodes declare, cite, cover, and are provided for)
+  FAIL capability_contract (Phase 2, 173 problem(s): 173 CONTRADICTED, 0 UNATTESTED, 0 STALE (§6F), 0 UNADJUDICABLE (no recorded options))
+  FAIL mutation_proof_integrity_8 (9 in 3 families)      <- the same three §6F-cluster records
+  FAIL assertion_coverage_8 (3 in 1 family)
+  PASS census: unit_tests=822 (floor 635)   PASS census: mutations=160 (floor 105)
+  PASS contract_doc_matches_registry   PASS operator_doc_covers_registry (41/41 refs, floor 12)   PASS two_direction_contract_match
+  FAIL       assertion_coverage_8           phase 1     1.2s
+  FAIL       judgment_reviews_5             phase 2   140.2s
+  FAIL       capability_phase2              phase 2    23.9s
+  scheduled=17 completed=14 failed=3 crashed=0 not_run=0 incomplete=0
+EXIT 1
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_judgment
+Judgment review validation: 1264 problem(s) found.
+```
+
+**§5 moved 1263→1264 (module) / 1264→1265 (stage), and it is attributed, not assumed.** Full list
+dumped via `validate_judgment_reviews()`; the one new finding is
+`mat_g3_na_q4_7: STALE review -- the canonical learner-visible packet digest changed`. That is the
+freshness gate working: `ab70698a` (the hint fix) changed exactly the hints the filed v2 review
+judged, after the 1263 measurement. `mat_g3_na_q4_7` now owes a fresh blind re-review on two counts
+(stale; and it is the one GPT-5.6-Terra review in a corpus that would continue on Haiku).
+
+### Left, and named limitations
+
+* **§5 re-review campaign not started** (Priority 2). Family decision still open for the next
+  session: proceed with Haiku under ruling 4 and flag `mat_g3_na_q4_7` for re-judgment.
+* **`_apply` is not atomic across files.** It writes a multi-file plant one file at a time; an
+  anchor failing on a LATER file leaves the earlier files planted with nothing to restore them (the
+  exception escapes before `originals` is returned). Covered in practice only by the anchor
+  preflight. Named in the contract row; not fixed (would grow the batch).
+* **Kill-safety marker limits:** liveness is `kill(pid, 0)` (pid reuse reads as live → refused-on,
+  fail-safe); an unreaped zombie reads live; the marker exists only while a plant is in flight, so it
+  is NOT a lock between plants — only the per-mutation digest re-check catches that, after the fact.
+* **Bytecode purge limits:** a `PYTHONPYCACHEPREFIX` redirect and bytecode already loaded into a live
+  interpreter are not reached.
+* **ENVIRONMENT: the data volume is full** — 305 MiB free on `/System/Volumes/Data` (95 GiB used of
+  112) after the chain. A `git worktree add` for a §5 historical diff failed with `No space left on
+  device` and was removed; `git fsck` clean afterwards. This session's own scratch is ~110 MB; the
+  bulk is elsewhere (19 other worktrees are registered). Nothing was deleted that this session did
+  not create. **A full disk will make the next corpus or shard run fail in ways that look like
+  harness defects — check `df -h` first.**

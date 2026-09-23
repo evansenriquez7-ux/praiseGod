@@ -2,7 +2,7 @@
  "asserts": [
   "interest_invariance"
  ],
- "baseline_exit": 1,
+ "baseline_exit": 0,
  "baseline_markers_already_present": [],
  "baseline_must_not_contain": [
   "correct_answer differs across themes"
@@ -11,8 +11,8 @@
   "backend.app.practice_gen.validation.validate_interest"
  ],
  "definition_digest": "c05436b426633aa168e969ffc7f7c331f147e2c6625561beac3c2cfb4cc7d7f6",
- "detected": false,
- "diagnostic_line": "INVALID — the unmutated command baseline exited 1; this mutation cannot distinguish the planted bug from a pre-existing failure.",
+ "detected": true,
+ "diagnostic_line": "exit 1 — FAIL mat_g1_na_q1_7/addition:",
  "environment": {
   "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
   "machine": "x86_64",
@@ -25,15 +25,20 @@
   "correct_answer differs across themes"
  ],
  "expected_check": "final student-path interest invariance",
- "finished_at": "2026-09-23T18:50:14+08:00",
- "input_digest": "600ceb7a970a03c50a124f2e6a29052be24b1bb2fdb12b5dd7f08e4f34f7edba",
- "mutated_paths": [],
+ "finished_at": "2026-09-23T21:24:37+08:00",
+ "input_digest": "07015c154d6f6c8fa945385f7f29996670b00b9d0bb57a29d3243f6397901b2b",
+ "mutated_paths": [
+  "backend/app/practice_gen/generators/base_generator.py"
+ ],
  "mutation": "interest_theme_changes_final_answer",
- "observed_markers": {},
+ "observed_markers": {
+  "correct_answer differs across themes": true,
+  "mat_g1_na_q1_7/addition": true
+ },
  "paths_outside_input_set": [],
  "phase1_admissible": true,
- "planted_exit": null,
+ "planted_exit": 1,
  "restored_clean": true,
  "schema_version": 1,
- "started_at": "2026-09-23T18:49:40+08:00"
+ "started_at": "2026-09-23T21:23:28+08:00"
 }

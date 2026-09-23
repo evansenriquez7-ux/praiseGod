@@ -1,0 +1,46 @@
+{
+ "asserts": [
+  "mutation_marker_invocation_isolation"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "test_recovery_never_reverts_a_live_runs_plant && failed"
+ ],
+ "command": [
+  "pytest",
+  "tests/unit/test_mutation_killsafe.py::test_recovery_never_reverts_a_live_runs_plant",
+  "-q"
+ ],
+ "definition_digest": "8b23dc107a8cbd9ed6613fda98eaf6f341b8b9bc0185a7b5b7b72beb514f7086",
+ "detected": true,
+ "diagnostic_line": "exit 1 — =================================== FAILURES ===================================",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "test_recovery_never_reverts_a_live_runs_plant",
+  "failed"
+ ],
+ "expected_check": "§0 (startup recovery never reverts a live run's plant)",
+ "finished_at": "2026-09-23T21:47:24+08:00",
+ "input_digest": "07015c154d6f6c8fa945385f7f29996670b00b9d0bb57a29d3243f6397901b2b",
+ "mutated_paths": [
+  "tests/mutation_harness.py"
+ ],
+ "mutation": "mutation_recovery_reverts_live_plant",
+ "observed_markers": {
+  "failed": true,
+  "test_recovery_never_reverts_a_live_runs_plant": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-09-23T21:47:23+08:00"
+}
