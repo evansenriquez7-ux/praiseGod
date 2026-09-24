@@ -1,5 +1,32 @@
 # Task prompt — continue Phase 2 hardening (GPT-hosted session)
 
+**Wave 7 RECOVERED and committed 2026-09-24 by `claude-h06-s5-recover-w7-2026-09-24`.** The Luna
+session was rate-limited *after filing wave 7 and before committing it*; four filed reviews
+(`mat_g1_na_q1_6`, `_7`, `_8`, `_9`), their `.responses/` provenance and the regenerated legacy queue
+were recovered from the worktree, verified (schema v2, one assessment per delivered sample, complete
+dispatch provenance, 416 reasonings all distinct, zero cross-node reuse) and committed unchanged. No
+verdict was authored and nothing was re-dispatched.
+
+**MEASURED NOW — these supersede every banner below:** legacy queue **125** v1 nodes owed
+(`already_current_and_excluded: 26`, 125 + 26 = 151); `validate_judgment_reviews()` = **1462 findings
+across 147 nodes**. The wave-6 banner's "1481 across 149" predates wave 7. `q1_8` and `q1_9` are clean
+PASS; `q1_6` CONCERN (2 findings); `q1_7` FAIL (10). Disk is now **17 GiB free**. Tree digest unchanged
+at `126e9eb19a1122bc`; all four artifact families still fresh, because the campaign touched no source.
+
+v2 corpus: **26 reviews — 25 `gpt-5.6-luna` medium, 1 `haiku45`**, none STALE, verdicts 9 FAIL /
+13 CONCERN / 4 PASS. Only 4 of 26 pass: this queue is defect discovery, not bookkeeping.
+
+⚠ **155 STALE findings across 38 nodes are PRE-EXISTING and all on v1 reviews** — noun/theme drift
+(e.g. `mat_g1_na_q2_1` seed 44 "books" → "cupcakes"). Those nodes owe re-review anyway. This is NOT a
+generator regression; the input digest never moved.
+
+⚠ **A CLAUDE-HOSTED SESSION CANNOT SATISFY §0.** §0 mandates `gpt-5.6-luna` at medium thinking for
+every blind reviewer, and Claude Code cannot dispatch it. The recovery session therefore dispatched
+NOTHING and referred the choice to the owner: either a GPT host continues the queue under §0, or the
+owner authorises a Claude-host family (ruling 4's Haiku) and accepts a third rater family in the
+corpus. **Do not resolve this by writing `gpt-5.6-luna` onto a verdict another model produced** — §0
+rule 2 names that a false evidentiary claim.
+
 **Refreshed wave 6, 2026-09-24.** Four more `gpt-5.6-luna`/medium reviews were filed:
 `mat_g1_na_q1_2`, `mat_g1_na_q1_3`, `mat_g1_na_q1_4`, `mat_g1_na_q1_5`. The legacy queue moved
 **133 → 129** (`schema_counts {2: 22, None: 129}`), and `validate_judgment_reviews()` measured

@@ -15984,3 +15984,127 @@ Additional reviewer-discovered bugs queued:
   learner-production task for numerals as a representation.
 
 The §5 v2 corpus is now mixed-family: 1 Haiku node and 21 `gpt-5.6-luna`/medium nodes.
+
+## 2026-09-24 — Luna §5 wave 7 recovered, verified and committed (`claude-h06-s5-recover-w7-2026-09-24`)
+
+The GPT session `codex-h06-s5-luna-campaign-2-2026-09-24` was interrupted by rate limits **after
+filing wave 7 and before committing it.** Four filed reviews, their `.responses/` provenance and the
+regenerated legacy queue were sitting uncommitted in the worktree. This entry records the recovery.
+**No verdict was authored here, and nothing was re-dispatched** — the four reviews are the Luna
+session's own work, verified and then committed on its behalf.
+
+### State on arrival (executed)
+
+```
+$ ps -eo pid,ppid,etime,command | grep -iE "mutation_harness|obligation_executor|validate_|pytest"
+(only the two idle codex app-server processes; no harness work running)
+$ df -h /System/Volumes/Data            ->  17Gi available (was 2.1 GiB at the Luna handoff)
+$ git status --porcelain -- backend/ tests/ scripts/ data/ frontend/src docs/pgen_contract.md docs/testing_pipeline.md
+(empty -- the campaign touched NO source, as required)
+$ git grep -n -E "#\s*planted mutation|//\s*planted " HEAD -- backend/ frontend/src | grep -v mutation_harness
+(empty)
+$ PYTHONPATH=. .venv/bin/python tests/tree_state.py
+STATE tree_state: INTERRUPTED   live input digest : 126e9eb19a1122bc   worktree : DIRTY
+  OPEN INTENT : 'campaign' begun 2026-09-24T17:55:05+08:00 by 'codex-h06-s5-luna-campaign-2-2026-09-24'
+$ PYTHONPATH=. .venv/bin/python tests/hardening_status.py
+PASS hardening_status: 10 H-row(s) valid — 3 closed, 6 open, 1 out_of_scope
+```
+
+Uncommitted: `mat_g1_na_q1_6`, `_7`, `_8`, `_9` plus four `.responses/*.json` + `.prompt.txt` pairs and
+`legacy_review_queue.json`. All four digest-bound artifact families were still fresh; the digest never
+moved, because `validation_reports/` is outside `INPUT_ROOTS`.
+
+### Wave 7 verified before being committed
+
+Structure, per node: schema v2, one `sample_assessments` entry per delivered sample (23/23, 27/27,
+26/26, 28/28), per-node reviewer identities truthfully naming the model and thinking level
+(`blind-reviewer-gpt-5.6-luna-medium-w7-<node>-20260924`), and complete `dispatch_provenance` carrying
+`dispatch_id`, `packet_digest`, `response_ref`, `response_digest` and `prompt_ref`.
+
+Anti-template audit (the check the dispatcher owes before filing, run here retroactively):
+
+```
+q1_6:  92 reasonings,  92 distinct, min len 56
+q1_7: 108 reasonings, 108 distinct, min len 48
+q1_8: 104 reasonings, 104 distinct, min len 65
+q1_9: 112 reasonings, 112 distinct, min len 54
+strings shared across >1 place : 0
+strings reused across DIFFERENT nodes : 0
+```
+
+416 reasonings, 416 distinct, zero cross-node reuse. The whole §5 corpus also emits **zero**
+`verbatim`, `skeleton`, `template` or `plurality` findings. This is genuine independent work and it is
+kept.
+
+### Measured, at the module entry point
+
+```
+$ PYTHONPATH=. .venv/bin/python -c "...validate_judgment_reviews()..."
+findings: 1462     nodes with findings: 147
+  mat_g1_na_q1_6: 2    (overall CONCERN)
+  mat_g1_na_q1_7: 10   (overall FAIL)
+  mat_g1_na_q1_8: 0    (overall PASS)
+  mat_g1_na_q1_9: 0    (overall PASS)
+$ legacy_review_queue.json -> legacy_nodes: 125  already_current_and_excluded: 26   (125 + 26 = 151)
+$ PYTHONPATH=. .venv/bin/python -m pytest tests/unit/test_legacy_review_queue.py -q  -> 13 passed
+```
+
+**CORRECTION to the wave-6 banner.** It recorded "1481 findings across 149 nodes". Measured after
+wave 7: **1462 across 147**. The drop is wave 7 clearing `q1_8` and `q1_9` outright (2 nodes, 0
+findings each). The wave-6 figure is not restated as wrong for its own moment — it simply predates
+wave 7 — but anyone quoting "1481/149" now is quoting a superseded number.
+
+Legacy queue across the campaign: 150 → 149 → 141 → 137 → 133 → 129 → **125**.
+
+### The v2 corpus as it now stands
+
+```
+v2 reviews on disk : 26
+by rater family    : 25 gpt-5.6-luna (medium), 1 haiku45
+overall verdicts   : 9 FAIL, 13 CONCERN, 4 PASS
+v2 nodes that are STALE : NONE
+```
+
+Mixed-family, as §0 of `NEXT_AGENT_PROMPT.md` predicted and required to be recorded. Luna-vs-Haiku
+agreement remains **unmeasured**; `mat_g3_na_q4_7` is still the one node a consistency pass should
+re-judge, and it has NOT been re-dispatched (ruling 2).
+
+Only 4 of 26 v2 reviews are PASS. The §5 queue is behaving as defect discovery, not bookkeeping.
+
+### NEW BUGS QUEUED for the content batch (wave 7)
+
+* **`mat_g1_na_q1_7` — `concrete` clause FAIL, and it is a Content Rule 4 item.** The competency is
+  *"Illustrate addition of numbers with sums up to 20 using a variety of concrete and pictorial models
+  and describes addition as 'counting up,' and 'putting together'."* The reviewer found pictorial,
+  number-line and number-bond representations but **no concrete model** the learner works in. The
+  clause says `concrete`, so building a concrete-model formatter IS the fix; deleting the provider
+  entry is the only alternative. Same family as the existing `concrete`/`concrete_materials`
+  CONTRADICTED findings in `capability_phase2`, which suggests one artifact would clear several nodes.
+* **`mat_g1_na_q1_7` — place-value language beyond the competency (possible Content Rule 1 breach).**
+  `cognitive_capacity` CONCERN: "several hints repeatedly use first-digit and last-digit procedures
+  that may impose place-value language beyond the stated counting and putting-together descriptions."
+  The competency names only "counting up" and "putting together". **Check the node's `NOT_YET_KNOWN` /
+  `cumulative_vocab` before writing hints that decompose by digit.**
+* **`mat_g1_na_q1_7` — first sample's rendered structure establishes no usable input control**
+  (`variant_comprehensiveness`). A learner-visible item the pupil cannot answer is a render defect.
+* **`mat_g1_na_q1_6` — near-duplicate samples and an unchanged hint sequence.** "Several rendered
+  samples are exact or near duplicates and the hint sequence is reused unchanged." Compare
+  [[multiplicative-hash-degenerates-mod-n]]: a seed-to-variant mapping that degenerates produces
+  exactly this. Worth checking the selector, not just the pool.
+
+### PRE-EXISTING, and not caused by this campaign: 155 STALE findings across 38 nodes
+
+All on **v1** reviews, none on any v2 review. They are noun/theme drift — e.g. `mat_g1_na_q2_1` seed 44
+was reviewed as *"(Large group of 100 books) Count the books"* and now renders *"...100 cupcakes...
+Count the cupcakes"*; `mat_g1_na_q2_5` seed 49 went from "daisies" to "items". Those nodes owe a fresh
+blind review anyway, so STALE is simply a second reason. **No action beyond re-review is implied**, and
+in particular this is NOT evidence that a generator broke during the campaign — the input digest never
+moved.
+
+### Left, and one thing a Claude host CANNOT do
+
+**`NEXT_AGENT_PROMPT.md` §0 requires every blind reviewer to be `gpt-5.6-luna` at medium thinking.
+This session is Claude Code and cannot dispatch that model.** Continuing the dispatch queue from here
+would mean either using a model the prompt forbids, or writing `gpt-5.6-luna` onto a verdict some
+other model produced — which §0 rule 2 names a false evidentiary claim. **So no further reviews were
+dispatched, and the decision is referred to the owner.** 125 v1 nodes remain owed.

@@ -1,275 +1,33 @@
 {
   "schema_version": 1,
   "kind": "legacy_review_queue",
-  "generated_at": "2026-09-24T10:35:33.475525+00:00",
+  "generated_at": "2026-09-24T10:45:18.563714+00:00",
   "adjudicable": false,
   "why_not_adjudicable": "These are v1 reviews. The current schema (v2) requires per-sample contextual-validity verdicts, exact clause coverage and dispatch-bound provenance, which a v1 reviewer was never asked for and which therefore cannot be recovered from a v1 record without inventing them. Every node listed here still owes a fresh blind re-review. This file exists so that the previous programme's findings remain visible as a QUEUE while none of them counts as evidence.",
-  "required_work": "129 node(s) need a fresh blind review filed at schema_version 2. Rebuild a packet with: python -m backend.app.practice_gen.validation.judgment_packets --node <node_id>",
+  "required_work": "125 node(s) need a fresh blind review filed at schema_version 2. Rebuild a packet with: python -m backend.app.practice_gen.validation.judgment_packets --node <node_id>",
   "source_review_dir": "validation_reports/judgment",
-  "source_corpus_sha256": "213eebea588b705b6ac7f17e982c32dd1a6319c7ab35aa153aed7b5d87546e8b",
+  "source_corpus_sha256": "9d8427e24fac97dadc5f13244db023d9f4c668ad49203b885d46c014219bfaad",
   "counts": {
-    "legacy_nodes": 129,
-    "already_current_and_excluded": 22,
+    "legacy_nodes": 125,
+    "already_current_and_excluded": 26,
     "by_overall_verdict": {
-      "CONCERN": 80,
-      "FAIL": 38,
+      "CONCERN": 78,
+      "FAIL": 36,
       "PASS": 11
     },
-    "nodes_with_a_non_pass_facet": 118,
+    "nodes_with_a_non_pass_facet": 114,
     "non_pass_by_facet": {
-      "cognitive_capacity": 32,
-      "competency_alignment": 61,
-      "competency_fulfillment": 65,
-      "comprehensive_coverage": 52,
+      "cognitive_capacity": 31,
+      "competency_alignment": 57,
+      "competency_fulfillment": 63,
+      "comprehensive_coverage": 51,
       "scale_appropriateness": 23,
-      "variant_comprehensiveness": 74
+      "variant_comprehensiveness": 73
     },
     "records_missing_a_v1_facet": 0,
     "orphan_reviews_for_undeclared_nodes": 0
   },
   "nodes": [
-    {
-      "node_id": "mat_g1_na_q1_6",
-      "source_path": "validation_reports/judgment/mat_g1_na_q1/mat_g1_na_q1_6.json",
-      "source_sha256": "768ac120b1f36c670606ecda646f861bd36f80ba29d0cd29efd52bad8f9b93c6",
-      "declared_schema_version": null,
-      "reviewed_by": "reviewer-c1-lantern-fescue-3061",
-      "review_date": "2026-09-11",
-      "blind": true,
-      "sample_seeds": [
-        42,
-        43,
-        44,
-        45,
-        46,
-        500,
-        501,
-        502,
-        602,
-        603,
-        604,
-        605,
-        606,
-        607
-      ],
-      "overall_verdict": "FAIL",
-      "node_still_declared": true,
-      "facets": {
-        "competency_fulfillment": {
-          "verdict": "PASS",
-          "rationale": "Both directions are generated with materials in hand: decomposition into two groups with one part given, and composition of two stated groups into a total, with one item quoting the competency's own catalogue of pairs that each make 5 and asking for the missing one."
-        },
-        "comprehensive_coverage": {
-          "verdict": "FAIL",
-          "rationale": "The competency reads numbers up to 10, and in fourteen samples the whole being split or built is always either 5 or 10. Not one item composes or decomposes 6, 7, 8 or 9, nor any of the small totals below 5. The parenthetical list in the competency is an illustration of how 5 behaves, not a restriction of the range to 5, so the generator has treated an example as the specification and left most of the stated domain unsampled."
-        },
-        "cognitive_capacity": {
-          "verdict": "PASS",
-          "rationale": "Concrete referents are shown as countable pictures - shells, counters, sticks, buttons, beads, stones - and each item gives one part and asks for the other, which is exactly the part-whole reasoning expected in Quarter 1."
-        },
-        "variant_comprehensiveness": {
-          "verdict": "CONCERN",
-          "rationale": "Two seeds render character for character the same item, the one about getting 10 blocks and putting 7 into one group, with the same four options in the same order, so the sample set is smaller than it appears. Beyond that, the puts-some-in-one-group frame dominates, and only two items reverse into composition."
-        },
-        "competency_alignment": {
-          "verdict": "CONCERN",
-          "rationale": "Because the whole is pinned to 5 or 10, what actually differs between seeds is the material pictured and which split point is chosen, neither of which deepens the competency; the one item asking which pair shows her groups is the only shift toward the pair-naming form the competency emphasises."
-        },
-        "scale_appropriateness": {
-          "verdict": "PASS",
-          "rationale": "No total exceeds 10, so the stated ceiling holds, and the 10-block items do exercise the boundary rather than staying entirely at 5."
-        }
-      },
-      "facets_missing_from_the_v1_record": [],
-      "non_pass_facets": [
-        "comprehensive_coverage",
-        "variant_comprehensiveness",
-        "competency_alignment"
-      ],
-      "adjudicable": false
-    },
-    {
-      "node_id": "mat_g1_na_q1_7",
-      "source_path": "validation_reports/judgment/mat_g1_na_q1/mat_g1_na_q1_7.json",
-      "source_sha256": "cfaa4c69f1f673274faa55b71940d91c546dc1a2ff0dc1a6a5a1956b157e6ce8",
-      "declared_schema_version": null,
-      "reviewed_by": "reviewer-c1-lantern-fescue-3061",
-      "review_date": "2026-09-11",
-      "blind": true,
-      "sample_seeds": [
-        42,
-        43,
-        44,
-        45,
-        46,
-        47,
-        52,
-        500,
-        501,
-        502,
-        600,
-        601,
-        603,
-        604,
-        605,
-        606
-      ],
-      "overall_verdict": "CONCERN",
-      "node_still_declared": true,
-      "facets": {
-        "competency_fulfillment": {
-          "verdict": "PASS",
-          "rationale": "Both descriptions the competency names are explicitly enacted rather than implied: counting up appears as starting at a number and counting on, and putting together appears verbatim in the group-combining items, with a part-whole item asking for the sum of two stated parts."
-        },
-        "comprehensive_coverage": {
-          "verdict": "PASS",
-          "rationale": "The variety of models clause is genuinely met - a number line to move along, pictured rows of books and trees to combine, and an abstract two-part frame - and the addition is approached both as an increment of one and as a join of two sizeable groups."
-        },
-        "cognitive_capacity": {
-          "verdict": "PASS",
-          "rationale": "Single-step joins with no regrouping language, plus short check-my-work items naming a pupil and a proposed answer, keep the reasoning at one operation, which suits Quarter 1; the emoji rows keep the pictorial model literally countable."
-        },
-        "variant_comprehensiveness": {
-          "verdict": "PASS",
-          "rationale": "Seven different response formats appear across the sixteen samples, including an error-detection item and a verdict on a stated total, so the pupil encounters addition as something to perform, to illustrate, and to check."
-        },
-        "competency_alignment": {
-          "verdict": "CONCERN",
-          "rationale": "All four true-or-false samples key to False, so that slice can be swept without adding anything - and the generator demonstrably can vary a verdict, since the error-detection pair splits, with one item flagging an incorrect claim and another confirming a correct one. The decoys elsewhere also lean on a fixed decade-shift pattern, offering 29 beside 19 and 25 beside 15, which repeats one misconception rather than sampling several."
-        },
-        "scale_appropriateness": {
-          "verdict": "PASS",
-          "rationale": "Sums run up to exactly 20 - the pictured item joining two rows of ten reaches the ceiling - and no sample crosses it, while addends stay small enough to count on from."
-        }
-      },
-      "facets_missing_from_the_v1_record": [],
-      "non_pass_facets": [
-        "competency_alignment"
-      ],
-      "adjudicable": false
-    },
-    {
-      "node_id": "mat_g1_na_q1_8",
-      "source_path": "validation_reports/judgment/mat_g1_na_q1/mat_g1_na_q1_8.json",
-      "source_sha256": "f11dd5b2a3d9045854a753c8e7e9dba05800fc845e134b82bba8ca3221075036",
-      "declared_schema_version": null,
-      "reviewed_by": "reviewer-c1-lantern-fescue-3061",
-      "review_date": "2026-09-11",
-      "blind": true,
-      "sample_seeds": [
-        42,
-        43,
-        44,
-        45,
-        46,
-        51,
-        500,
-        501,
-        502,
-        600,
-        601,
-        602,
-        603,
-        604,
-        605
-      ],
-      "overall_verdict": "FAIL",
-      "node_still_declared": true,
-      "facets": {
-        "competency_fulfillment": {
-          "verdict": "FAIL",
-          "rationale": "The order-of-addends half of this competency is mis-generated. Four samples pose questions such as whether 18 + 1 is the same as 1 + 14, or whether 13 + 6 is the same as 6 + 14, where the second expression is not a reordering of the first at all - one addend has been silently changed - and the key is False. A pupil who has correctly learned that changing the order of the addends does not change the sum will read the swapped-looking form, answer True, and be marked wrong; the item punishes the very generalisation the competency asks the pupil to apply. Only three samples, such as the one asking whether 16 + 3 is the same as 3 + 16, are genuine commutativity items."
-        },
-        "comprehensive_coverage": {
-          "verdict": "PASS",
-          "rationale": "Both named properties do get their own items: the zero property appears in several forms including 0 + 19 and 18 + 0, and the order property appears in the matched-addend questions, so neither clause is missing from the generated set."
-        },
-        "cognitive_capacity": {
-          "verdict": "CONCERN",
-          "rationale": "The mismatched-addend items demand that the pupil compute and compare two separate sums, a two-step arithmetic comparison, where an item about the property should be answerable by inspection. That is a heavier and different demand than illustrating a property, and it lands in Quarter 1 of Grade 1."
-        },
-        "variant_comprehensiveness": {
-          "verdict": "PASS",
-          "rationale": "Four formats carry the samples - direct computation, a verdict on a stated equation, a blank to complete, and a check of another pupil's proposed answer - so the properties are met in more than one presentation."
-        },
-        "competency_alignment": {
-          "verdict": "CONCERN",
-          "rationale": "Across the order-property seeds the axis that varies is whether the two expressions match, which turns a property item into a spot-the-difference item; meanwhile the option Only when both are 0 is carried in every such list although it can never be correct for either property as stated."
-        },
-        "scale_appropriateness": {
-          "verdict": "PASS",
-          "rationale": "Every expression sampled, including the largest at 6 + 14, stays at or under a sum of 20 as the competency requires, and the zero-property items span the full range from 1 + 0 up to 19 + 0."
-        }
-      },
-      "facets_missing_from_the_v1_record": [],
-      "non_pass_facets": [
-        "competency_fulfillment",
-        "cognitive_capacity",
-        "competency_alignment"
-      ],
-      "adjudicable": false
-    },
-    {
-      "node_id": "mat_g1_na_q1_9",
-      "source_path": "validation_reports/judgment/mat_g1_na_q1/mat_g1_na_q1_9.json",
-      "source_sha256": "49c904675cccff903c63f2fee4c5949c9e7993730b9f559c91b22a2a70bdca57",
-      "declared_schema_version": null,
-      "reviewed_by": "reviewer-c1-lantern-fescue-3061",
-      "review_date": "2026-09-11",
-      "blind": true,
-      "sample_seeds": [
-        42,
-        43,
-        44,
-        45,
-        46,
-        47,
-        70,
-        500,
-        501,
-        502,
-        601,
-        602,
-        603,
-        604,
-        605,
-        606
-      ],
-      "overall_verdict": "CONCERN",
-      "node_still_declared": true,
-      "facets": {
-        "competency_fulfillment": {
-          "verdict": "CONCERN",
-          "rationale": "The competency asks for problems, and most samples are bare computation in a number-line or count-on dress - starting at 8 and counting up 8 more, or a dot at 8 that moves forward 7 numbers. The restriction to material given orally or in pictures rightly rules out text-heavy word problems at this age, and the pictured book and tree items do satisfy it, but a pupil working through this node mostly performs additions rather than resolving situations."
-        },
-        "comprehensive_coverage": {
-          "verdict": "PASS",
-          "rationale": "Within what pictures and oral framing allow, several problem shapes are sampled: a pictured collection increased by a second pictured collection, two parts combined into a whole, a forward move along a number line, and a check of a peer's proposed answer."
-        },
-        "cognitive_capacity": {
-          "verdict": "PASS",
-          "rationale": "Every item is one addition with no regrouping vocabulary, the pictorial items show every object so the pupil can count rather than compute, and stems stay to one or two short lines - appropriate for Quarter 1 of Grade 1."
-        },
-        "variant_comprehensiveness": {
-          "verdict": "PASS",
-          "rationale": "Six response modes appear over sixteen samples, and the error-detection items split their verdicts, with one confirming a correct answer of 20 and another rejecting a proposed 16, so that format is not answerable by a fixed reply."
-        },
-        "competency_alignment": {
-          "verdict": "CONCERN",
-          "rationale": "Nearly every stem here reappears in the same wording under the illustrate-addition competency for this grade, so the seeds vary addend size but add no problem-solving demand that distinguishes solving from illustrating; the difficulty ladder is arithmetic magnitude rather than problem structure."
-        },
-        "scale_appropriateness": {
-          "verdict": "PASS",
-          "rationale": "Sums reach exactly 20 in three samples, including 17 and 3 and 11 and 9, and never exceed it, so the stated ceiling is both respected and actually exercised rather than approached timidly."
-        }
-      },
-      "facets_missing_from_the_v1_record": [],
-      "non_pass_facets": [
-        "competency_fulfillment",
-        "competency_alignment"
-      ],
-      "adjudicable": false
-    },
     {
       "node_id": "mat_g1_na_q2_0",
       "source_path": "validation_reports/judgment/mat_g1_na_q2/mat_g1_na_q2_0.json",

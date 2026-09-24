@@ -1,7 +1,73 @@
 {
+  "schema_version": 2,
   "node_id": "mat_g1_na_q1_6",
-  "reviewed_by": "reviewer-c1-lantern-fescue-3061",
-  "review_date": "2026-09-11",
+  "competency_snapshot": {
+    "text": "Compose and decompose numbers up to 10 using concrete materials (e.g., 5 is 5 and 0; 4 and 1; 3 and 2; 2 and 3; 1 and 4; 0 and 5).",
+    "grade": 1,
+    "quarter": 1,
+    "subdomain": null
+  },
+  "requirements_snapshot": [
+    {
+      "kind": "task",
+      "id": "compose",
+      "clause": "Compose"
+    },
+    {
+      "kind": "task",
+      "id": "decompose",
+      "clause": "decompose"
+    },
+    {
+      "kind": "object",
+      "id": "numbers",
+      "clause": "numbers"
+    },
+    {
+      "kind": "range",
+      "id": "up_to_10",
+      "clause": "up to 10"
+    },
+    {
+      "kind": "representation",
+      "id": "concrete_materials",
+      "clause": "concrete materials"
+    },
+    {
+      "kind": "representation",
+      "id": "5_is_5_and_0",
+      "clause": "5 is 5 and 0"
+    },
+    {
+      "kind": "representation",
+      "id": "4_and_1",
+      "clause": "4 and 1"
+    },
+    {
+      "kind": "representation",
+      "id": "3_and_2",
+      "clause": "3 and 2"
+    },
+    {
+      "kind": "representation",
+      "id": "2_and_3",
+      "clause": "2 and 3"
+    },
+    {
+      "kind": "representation",
+      "id": "1_and_4",
+      "clause": "1 and 4"
+    },
+    {
+      "kind": "representation",
+      "id": "0_and_5",
+      "clause": "0 and 5"
+    }
+  ],
+  "packet_digest": "8666005818dff54020bbb0be07933e3230fda88e7578ddfbdd460bce5f9caeb5",
+  "sampling_version": "phase2-stratified-v2-rendered-visual",
+  "reviewed_by": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_6-20260924",
+  "review_date": "2026-09-24",
   "blind": true,
   "sample_seeds": [
     42,
@@ -17,14 +83,63 @@
     604,
     605,
     606,
-    607
+    607,
+    608,
+    700,
+    701,
+    702,
+    900,
+    901,
+    1000,
+    1001,
+    1002
+  ],
+  "sample_ids": [
+    "7d91d75206a3569da2c6",
+    "6cef9f876370915f2426",
+    "373aee08a0ab7e74f733",
+    "9d2446cc332a37744e27",
+    "25f311c8298a6c5b587a",
+    "64fca2cbfbb8230e59ec",
+    "9e78bec9b4f825647b7a",
+    "fdc7ced0fdd45aa28867",
+    "e52c4ab7a49839d6bf39",
+    "8ad9318c5decac0db071",
+    "96569309b2eb16598273",
+    "08bdbe34bfd4c3cc689f",
+    "a3d4c4e7d43289cf42a3",
+    "515348e70e2f9b03b5ae",
+    "92e155566a7d491149a2",
+    "a9b145ca2ed439bb6983",
+    "8743aa8815d304b09f30",
+    "feb12d24ece0c702892e",
+    "ec9ea76648aaee309bec",
+    "d5bbe225b244b1b39d11",
+    "8f4ce5049cc4eedf118a",
+    "9ba08223bff4a93a9320",
+    "e09ef8e3e3a4876e2a4c"
   ],
   "samples_reviewed": [
     {
+      "node_id": "mat_g1_na_q1_6",
       "seed": 42,
       "formatter": "mcq",
       "question_text": "Ana has 5 shells: 🐚🐚🐚🐚🐚 She puts 5 in one group. How many are in the other group?",
       "correct_answer": "0",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -46,13 +161,37 @@
           "value": "5",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "0",
+      "hints": [
+        "Count all the objects first. There are 5 in all.",
+        "Count the group you can see. Then count the objects left over.",
+        "A group can have 0 objects. An empty group still counts.",
+        "The two groups always go back together to make 5."
+      ],
+      "sample_id": "7d91d75206a3569da2c6",
+      "replay_digest": "dd51ac3be40ec434b5b71cfcf3f0458440e021db5948ff17e31a3c82d1f29d23"
     },
     {
+      "node_id": "mat_g1_na_q1_6",
       "seed": 43,
       "formatter": "mcq",
       "question_text": "Fely has 5 counters: 🔴🔴🔴🔴🔴 One group has 0 counters. How many are in the other group?",
       "correct_answer": "5",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -74,13 +213,37 @@
           "value": "1",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "5",
+      "hints": [
+        "Count all the objects first. There are 5 in all.",
+        "Count the group you can see. Then count the objects left over.",
+        "A group can have 0 objects. An empty group still counts.",
+        "The two groups always go back together to make 5."
+      ],
+      "sample_id": "6cef9f876370915f2426",
+      "replay_digest": "c4b6c6a9430f7b6bf589e34efca93fdbc3283b27b4ee64570065da81233deaa7"
     },
     {
+      "node_id": "mat_g1_na_q1_6",
       "seed": 44,
       "formatter": "mcq",
       "question_text": "Cita has 3 sticks and 2 sticks: 🥢🥢🥢 🥢🥢 How many sticks does she have in all?",
       "correct_answer": "5",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -102,13 +265,37 @@
           "value": "6",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "5",
+      "hints": [
+        "Count all the objects first. There are 5 in all.",
+        "Count the group you can see. Then count the objects left over.",
+        "A group can have 0 objects. An empty group still counts.",
+        "The two groups always go back together to make 5."
+      ],
+      "sample_id": "373aee08a0ab7e74f733",
+      "replay_digest": "86eedf66863a4c45222198601bdfa4470292ee5b50d5bf9d93a36dc838fa15a8"
     },
     {
+      "node_id": "mat_g1_na_q1_6",
       "seed": 45,
       "formatter": "mcq",
       "question_text": "Get 10 blocks. Put 7 into one group. How many blocks are left over?",
       "correct_answer": "3",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -130,13 +317,37 @@
           "value": "3",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": "3",
+      "hints": [
+        "Count all the objects first. There are 10 in all.",
+        "Count the group you can see. Then count the objects left over.",
+        "A group can have 0 objects. An empty group still counts.",
+        "The two groups always go back together to make 10."
+      ],
+      "sample_id": "9d2446cc332a37744e27",
+      "replay_digest": "0c155b4ccd1ca53eeb43f4c98f133113330acbdfb25089b5546ef293e857fb08"
     },
     {
+      "node_id": "mat_g1_na_q1_6",
       "seed": 46,
       "formatter": "mcq",
       "question_text": "These pairs each make 5: 5 and 0, 4 and 1, 3 and 2, 2 and 3, 0 and 5. Which pair also makes 5?",
       "correct_answer": "1 and 4",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -158,13 +369,37 @@
           "value": "1 and 3",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "1 and 4",
+      "hints": [
+        "Count all the objects first. There are 5 in all.",
+        "Count the group you can see. Then count the objects left over.",
+        "A group can have 0 objects. An empty group still counts.",
+        "The two groups always go back together to make 5."
+      ],
+      "sample_id": "25f311c8298a6c5b587a",
+      "replay_digest": "91609ad202d3d0ca2b15801dcd4233b2805569750fe85104c3da3685c1883aea"
     },
     {
+      "node_id": "mat_g1_na_q1_6",
       "seed": 500,
       "formatter": "mcq",
       "question_text": "Ella has 5 buttons: 🔘🔘🔘🔘🔘 She puts 1 in one group. How many are in the other group?",
       "correct_answer": "4",
+      "requested": {
+        "difficulty_profile": {},
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -186,13 +421,37 @@
           "value": "1",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "4",
+      "hints": [
+        "Count all the objects first. There are 5 in all.",
+        "Count the group you can see. Then count the objects left over.",
+        "A group can have 0 objects. An empty group still counts.",
+        "The two groups always go back together to make 5."
+      ],
+      "sample_id": "64fca2cbfbb8230e59ec",
+      "replay_digest": "d474f91b19510a118f666f97123fe6d5f2a9d212a87b7ed36b032f9ca1489314"
     },
     {
+      "node_id": "mat_g1_na_q1_6",
       "seed": 501,
       "formatter": "mcq",
       "question_text": "Cita puts 5 sticks into two groups. One group has 3. Which pair shows her groups?",
       "correct_answer": "3 and 2",
+      "requested": {
+        "difficulty_profile": {},
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -214,13 +473,37 @@
           "value": "3 and 2",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": "3 and 2",
+      "hints": [
+        "Count all the objects first. There are 5 in all.",
+        "Count the group you can see. Then count the objects left over.",
+        "A group can have 0 objects. An empty group still counts.",
+        "The two groups always go back together to make 5."
+      ],
+      "sample_id": "9e78bec9b4f825647b7a",
+      "replay_digest": "3a35109dca8cfe6a0aa6effac2a027d9cfb0a4b153d05ec08f686c4f7e0d648f"
     },
     {
+      "node_id": "mat_g1_na_q1_6",
       "seed": 502,
       "formatter": "mcq",
       "question_text": "Get 10 blocks. Put 7 into one group. How many blocks are left over?",
       "correct_answer": "3",
+      "requested": {
+        "difficulty_profile": {},
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -242,13 +525,39 @@
           "value": "3",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": "3",
+      "hints": [
+        "Count all the objects first. There are 10 in all.",
+        "Count the group you can see. Then count the objects left over.",
+        "A group can have 0 objects. An empty group still counts.",
+        "The two groups always go back together to make 10."
+      ],
+      "sample_id": "fdc7ced0fdd45aa28867",
+      "replay_digest": "b9f175a9a819d5774f93c42983968a5105c5f71b1ac1840bc9fbcce69651b3f1"
     },
     {
+      "node_id": "mat_g1_na_q1_6",
       "seed": 602,
       "formatter": "mcq",
       "question_text": "Dino has 2 beads and 3 beads: 🔵🔵 🔵🔵🔵 How many beads does he have in all?",
       "correct_answer": "5",
+      "requested": {
+        "difficulty_profile": {
+          "pair": "2 and 3"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -270,13 +579,39 @@
           "value": "4",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "5",
+      "hints": [
+        "Count all the objects first. There are 5 in all.",
+        "Count the group you can see. Then count the objects left over.",
+        "A group can have 0 objects. An empty group still counts.",
+        "The two groups always go back together to make 5."
+      ],
+      "sample_id": "e52c4ab7a49839d6bf39",
+      "replay_digest": "2997aa11481b3e416326ff131b5ef8fcb01c78fd989821686c601d195affdde1"
     },
     {
+      "node_id": "mat_g1_na_q1_6",
       "seed": 603,
       "formatter": "mcq",
       "question_text": "Cita has 5 sticks: 🥢🥢🥢🥢🥢 She puts 3 in one group. How many are in the other group?",
       "correct_answer": "2",
+      "requested": {
+        "difficulty_profile": {
+          "pair": "3 and 2"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -298,13 +633,39 @@
           "value": "1",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "2",
+      "hints": [
+        "Count all the objects first. There are 5 in all.",
+        "Count the group you can see. Then count the objects left over.",
+        "A group can have 0 objects. An empty group still counts.",
+        "The two groups always go back together to make 5."
+      ],
+      "sample_id": "8ad9318c5decac0db071",
+      "replay_digest": "5ade29c33ddce0d00540004a4de3362280b2e5458df0af76c78bb9120a0c7649"
     },
     {
+      "node_id": "mat_g1_na_q1_6",
       "seed": 604,
       "formatter": "mcq",
       "question_text": "Ben has 5 stones: 🪨🪨🪨🪨🪨 He puts 4 in one group. How many are in the other group?",
       "correct_answer": "1",
+      "requested": {
+        "difficulty_profile": {
+          "pair": "4 and 1"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -326,13 +687,39 @@
           "value": "1",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": "1",
+      "hints": [
+        "Count all the objects first. There are 5 in all.",
+        "Count the group you can see. Then count the objects left over.",
+        "A group can have 0 objects. An empty group still counts.",
+        "The two groups always go back together to make 5."
+      ],
+      "sample_id": "96569309b2eb16598273",
+      "replay_digest": "f02499fe9d8e3f51ec255e47d38847975bc5ef68c81e39efd172ede22840c172"
     },
     {
+      "node_id": "mat_g1_na_q1_6",
       "seed": 605,
       "formatter": "mcq",
       "question_text": "Take 5 sticks. Hold all 5 in one hand. How many sticks are in your other hand?",
       "correct_answer": "0",
+      "requested": {
+        "difficulty_profile": {
+          "pair": "5 and 0"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -354,13 +741,39 @@
           "value": "5",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "0",
+      "hints": [
+        "Count all the objects first. There are 5 in all.",
+        "Count the group you can see. Then count the objects left over.",
+        "A group can have 0 objects. An empty group still counts.",
+        "The two groups always go back together to make 5."
+      ],
+      "sample_id": "08bdbe34bfd4c3cc689f",
+      "replay_digest": "08095ac0ce0e910fbea571091a5f371bef4c86e3b7c65a9ace8d4d19f0a78c87"
     },
     {
+      "node_id": "mat_g1_na_q1_6",
       "seed": 606,
       "formatter": "mcq",
       "question_text": "Dino puts 10 blocks into two groups. One group has 7. Which pair shows his groups?",
       "correct_answer": "7 and 3",
+      "requested": {
+        "difficulty_profile": {
+          "pair": "7 and 3"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -382,13 +795,39 @@
           "value": "7 and 3",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": "7 and 3",
+      "hints": [
+        "Count all the objects first. There are 10 in all.",
+        "Count the group you can see. Then count the objects left over.",
+        "A group can have 0 objects. An empty group still counts.",
+        "The two groups always go back together to make 10."
+      ],
+      "sample_id": "a3d4c4e7d43289cf42a3",
+      "replay_digest": "ea940760081141bba6e459ffbaf183bd0249ce83cb87980e6bf3fc3ee89b7e9f"
     },
     {
+      "node_id": "mat_g1_na_q1_6",
       "seed": 607,
       "formatter": "mcq",
       "question_text": "Get 5 counters. Put 3 in one group. How many counters are in the other group?",
       "correct_answer": "2",
+      "requested": {
+        "difficulty_profile": {
+          "representation": "concrete_objects"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -410,34 +849,1261 @@
           "value": "1",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "2",
+      "hints": [
+        "Count all the objects first. There are 5 in all.",
+        "Count the group you can see. Then count the objects left over.",
+        "A group can have 0 objects. An empty group still counts.",
+        "The two groups always go back together to make 5."
+      ],
+      "sample_id": "515348e70e2f9b03b5ae",
+      "replay_digest": "8b2b9b4daeb504441d3f0ae469c51edb959792e4098001c3a83a04e7d6356b47"
+    },
+    {
+      "node_id": "mat_g1_na_q1_6",
+      "seed": 608,
+      "formatter": "mcq",
+      "question_text": "Ben has 4 stones and 1 stone: 🪨🪨🪨🪨 🪨 How many stones does he have in all?",
+      "correct_answer": "5",
+      "requested": {
+        "difficulty_profile": {
+          "task_type": "compose_total"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "6",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "3",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "4",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "5",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": "5",
+      "hints": [
+        "Count all the objects first. There are 5 in all.",
+        "Count the group you can see. Then count the objects left over.",
+        "A group can have 0 objects. An empty group still counts.",
+        "The two groups always go back together to make 5."
+      ],
+      "sample_id": "92e155566a7d491149a2",
+      "replay_digest": "f60a64c02c19e647d58aa2c748898d5041d418c98f4d09324dd327c3998baf50"
+    },
+    {
+      "node_id": "mat_g1_na_q1_6",
+      "seed": 700,
+      "formatter": "mcq",
+      "question_text": "Ana lists ways to make 5: 5 and 0, 4 and 1, 2 and 3, 1 and 4, 0 and 5. Which way is missing?",
+      "correct_answer": "3 and 2",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "3 and 3",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "2 and 2",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "5 and 1",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "3 and 2",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": "3 and 2",
+      "hints": [
+        "Count all the objects first. There are 5 in all.",
+        "Count the group you can see. Then count the objects left over.",
+        "A group can have 0 objects. An empty group still counts.",
+        "The two groups always go back together to make 5."
+      ],
+      "sample_id": "a9b145ca2ed439bb6983",
+      "replay_digest": "ce752172ce5ff550d2d6d983b8acbffecf34c5054e3ecc8175b945b1854aa9c2"
+    },
+    {
+      "node_id": "mat_g1_na_q1_6",
+      "seed": 701,
+      "formatter": "mcq",
+      "question_text": "🧁 Boboy has a math challenge about cookies. Take 5 shells. Put them into two groups so one group is empty. Which pair shows your groups?",
+      "correct_answer": "0 and 5",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "food_baking",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "0 and 5",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "1 and 4",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "0 and 4",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "5 and 5",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "0 and 5",
+      "hints": [
+        "Count all the objects first. There are 5 in all.",
+        "Count the group you can see. Then count the objects left over.",
+        "A group can have 0 objects. An empty group still counts.",
+        "The two groups always go back together to make 5."
+      ],
+      "sample_id": "8743aa8815d304b09f30",
+      "replay_digest": "7107a576e68a057fee9abdc9611dab11618fd575da4f8e43dc157412a103f874"
+    },
+    {
+      "node_id": "mat_g1_na_q1_6",
+      "seed": 702,
+      "formatter": "mcq",
+      "question_text": "🏀 Isko has a math challenge about basketballs. Fely puts 5 counters in one group and 0 counters in another. How many in all?",
+      "correct_answer": "5",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "western_pop",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "5",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "6",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "4",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "0",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "5",
+      "hints": [
+        "Count all the objects first. There are 5 in all.",
+        "Count the group you can see. Then count the objects left over.",
+        "A group can have 0 objects. An empty group still counts.",
+        "The two groups always go back together to make 5."
+      ],
+      "sample_id": "feb12d24ece0c702892e",
+      "replay_digest": "016d4a8159a08dc511e9476cbb6b6995e8327d3ec06479f4bdf63d1ff1639c15"
+    },
+    {
+      "node_id": "mat_g1_na_q1_6",
+      "seed": 900,
+      "formatter": "mcq",
+      "question_text": "Ben has 5 stones: 🪨🪨🪨🪨🪨 He puts 4 in one group. How many are in the other group?",
+      "correct_answer": "1",
+      "requested": {
+        "difficulty_profile": {},
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "1",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "2",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "0",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "4",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "1",
+      "hints": [
+        "Count all the objects first. There are 5 in all.",
+        "Count the group you can see. Then count the objects left over.",
+        "A group can have 0 objects. An empty group still counts.",
+        "The two groups always go back together to make 5."
+      ],
+      "sample_id": "ec9ea76648aaee309bec",
+      "replay_digest": "57b2be446cd940d599e70b76f7935d5ba3b882ebcc9bf49bc71b30c36a854455"
+    },
+    {
+      "node_id": "mat_g1_na_q1_6",
+      "seed": 901,
+      "formatter": "mcq",
+      "question_text": "Fely has 5 counters: 🔴🔴🔴🔴🔴 One group has 0 counters. How many are in the other group?",
+      "correct_answer": "5",
+      "requested": {
+        "difficulty_profile": {},
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "0",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "1",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "5",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "4",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "5",
+      "hints": [
+        "Count all the objects first. There are 5 in all.",
+        "Count the group you can see. Then count the objects left over.",
+        "A group can have 0 objects. An empty group still counts.",
+        "The two groups always go back together to make 5."
+      ],
+      "sample_id": "d5bbe225b244b1b39d11",
+      "replay_digest": "f4f55cf2e2004e025b12c17bede454e2da998cb314458828b8e255183fcb93c2"
+    },
+    {
+      "node_id": "mat_g1_na_q1_6",
+      "seed": 1000,
+      "formatter": "mcq",
+      "question_text": "Fely has 5 counters: 🔴🔴🔴🔴🔴 One group has 0 counters. How many are in the other group?",
+      "correct_answer": "5",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "hint_gated"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "hint_gated"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "4",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "0",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "1",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "5",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": "5",
+      "hints": [
+        "Count all the objects first. There are 5 in all.",
+        "Count the group you can see. Then count the objects left over.",
+        "A group can have 0 objects. An empty group still counts.",
+        "The two groups always go back together to make 5."
+      ],
+      "sample_id": "8f4ce5049cc4eedf118a",
+      "replay_digest": "27ba98faa80a739fdb6446ecbe8829fcdf964664c81e074f9d66e2502d1853fa"
+    },
+    {
+      "node_id": "mat_g1_na_q1_6",
+      "seed": 1001,
+      "formatter": "mcq",
+      "question_text": "Take 5 stones from the box. Put 4 in one hand. How many are in your other hand?",
+      "correct_answer": "1",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "mastery_drill"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "mastery_drill"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "1",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "4",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "2",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "0",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "1",
+      "hints": [
+        "Count all the objects first. There are 5 in all.",
+        "Count the group you can see. Then count the objects left over.",
+        "A group can have 0 objects. An empty group still counts.",
+        "The two groups always go back together to make 5."
+      ],
+      "sample_id": "9ba08223bff4a93a9320",
+      "replay_digest": "2af70487b3bfefef3df63aebef114f447014ab1fdcb4e33e9bf92b0eebe49295"
+    },
+    {
+      "node_id": "mat_g1_na_q1_6",
+      "seed": 1002,
+      "formatter": "mcq",
+      "question_text": "Ana has 5 shells: 🐚🐚🐚🐚🐚 She puts 5 in one group. How many are in the other group?",
+      "correct_answer": "0",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "scaffolded"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "scaffolded"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "5",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "1",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "2",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "0",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": "0",
+      "hints": [
+        "Count all the objects first. There are 5 in all.",
+        "Count the group you can see. Then count the objects left over.",
+        "A group can have 0 objects. An empty group still counts.",
+        "The two groups always go back together to make 5."
+      ],
+      "sample_id": "e09ef8e3e3a4876e2a4c",
+      "replay_digest": "4668b7399bead9553fd711476866327da5187fd8067c02645b59fe0f73ff52b3"
+    }
+  ],
+  "sample_assessments": [
+    {
+      "sample_id": "7d91d75206a3569da2c6",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The five visible shells and the stated group of five leave one unambiguous complementary group of zero."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Putting all five shells in one group logically leaves an empty second group."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The short question, concrete objects, and explicit group description are understandable for an early Grade 1 learner."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The keyed answer 0 satisfies the decomposition 5 plus 0 equals 5 and appears among the options."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_6-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_6-20260924:mat_g1_na_q1_6"
+    },
+    {
+      "sample_id": "6cef9f876370915f2426",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "A total of five counters and one group of zero determines the other group uniquely as five."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "An empty group paired with all five counters is a coherent decomposition scenario."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The language is direct, the quantity is visible, and the question asks for one simple missing part."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer 5 is mathematically correct because 0 and 5 compose the stated total of 5."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_6-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_6-20260924:mat_g1_na_q1_6"
+    },
+    {
+      "sample_id": "373aee08a0ab7e74f733",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The two explicitly labeled groups contain three and two sticks, so the requested total is uniquely determined."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Combining two visible groups of sticks is a valid concrete composition situation."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The wording and separated object groups make the combine-all operation accessible and clear."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Three plus two equals five, matching the keyed answer and one listed option."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_6-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_6-20260924:mat_g1_na_q1_6"
+    },
+    {
+      "sample_id": "9d2446cc332a37744e27",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Starting with ten blocks and placing seven in one group leaves exactly three in the other group."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The grouping action is coherent and the phrase left over correctly identifies the complementary quantity."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The imperative steps are brief and concrete, with no unnecessary vocabulary for this level."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Ten decomposed into seven and three gives the keyed answer 3, which is offered as an option."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_6-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_6-20260924:mat_g1_na_q1_6"
+    },
+    {
+      "sample_id": "25f311c8298a6c5b587a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The listed pairs identify every stated way except 1 and 4, making the missing choice unique."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Comparing candidate pairs that total five is a valid composition task for the competency."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The displayed list and question clearly tell the learner to find the omitted pair."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "One and four total five, and the keyed pair is present exactly among the answer choices."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_6-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_6-20260924:mat_g1_na_q1_6"
+    },
+    {
+      "sample_id": "64fca2cbfbb8230e59ec",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "One group contains one of five buttons, so the complementary group must contain four."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Separating five buttons into one known group and an unknown remainder is logically sound."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The object count and placement instruction are concrete and easy to follow."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The keyed answer 4 correctly completes 1 plus 4 equals 5 and is an available option."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_6-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_6-20260924:mat_g1_na_q1_6"
+    },
+    {
+      "sample_id": "9e78bec9b4f825647b7a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "A total of five with one group of three determines the other group as two."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The two-group description is a coherent representation of decomposing five sticks."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The question asks directly for the pair of groups and uses familiar, concrete wording."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The pair 3 and 2 sums to five, so the keyed answer is correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_6-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_6-20260924:mat_g1_na_q1_6"
+    },
+    {
+      "sample_id": "fdc7ced0fdd45aa28867",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The total of ten and known group of seven leave a unique remainder of three."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Putting seven blocks into one group and counting what remains is a valid decomposition context."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The short procedural wording presents one clear action followed by one clear question."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Seven plus three equals ten, confirming the keyed remainder and its listed option."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_6-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_6-20260924:mat_g1_na_q1_6"
+    },
+    {
+      "sample_id": "e52c4ab7a49839d6bf39",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Two explicitly shown groups of two and three beads have one definite combined total."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Combining the two bead groups is a natural and logically valid composition scenario."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The separated bead illustrations reinforce the simple wording and requested total."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The keyed result 5 is correct because 2 plus 3 equals 5."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_6-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_6-20260924:mat_g1_na_q1_6"
+    },
+    {
+      "sample_id": "8ad9318c5decac0db071",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Of five sticks, placing three in one group leaves exactly two in the other group."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The action of making one group and finding its complement is consistent with decomposition."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The visual count and plain question provide a clear route to the answer."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Three and two compose five, so the answer 2 is mathematically valid and listed."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_6-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_6-20260924:mat_g1_na_q1_6"
+    },
+    {
+      "sample_id": "96569309b2eb16598273",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Four stones placed in one group from a total of five leave one stone ungrouped."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The described grouping of five stones is internally consistent and concrete."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The sentence gives the total, the known group, and the requested remainder without distracting complexity."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The keyed answer 1 correctly completes 4 plus 1 equals 5."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_6-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_6-20260924:mat_g1_na_q1_6"
+    },
+    {
+      "sample_id": "08bdbe34bfd4c3cc689f",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Holding all five sticks in one hand leaves zero sticks in the other hand."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The two hands provide a concrete pair of groups, including a valid empty group."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The action is familiar and the question clearly identifies the second hand as the target."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "All five in one group and zero in the other correctly compose five."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_6-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_6-20260924:mat_g1_na_q1_6"
+    },
+    {
+      "sample_id": "a3d4c4e7d43289cf42a3",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Ten blocks split with seven in one group require three in the second group."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The pair-selection format correctly represents a decomposition of ten into two groups."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The named quantity and one known group make the intended complementary-pair task clear."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Seven and three total ten, so the keyed pair is mathematically correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_6-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_6-20260924:mat_g1_na_q1_6"
+    },
+    {
+      "sample_id": "515348e70e2f9b03b5ae",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "A total of five counters and a group of three determine the remaining group as two."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The counter-grouping action is a valid concrete decomposition of five."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The prompt uses simple action words and asks for one easily identifiable remainder."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer 2 satisfies 3 plus 2 equals 5 and is included among the choices."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_6-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_6-20260924:mat_g1_na_q1_6"
+    },
+    {
+      "sample_id": "92e155566a7d491149a2",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The visible groups contain four and one stone, so their total is uniquely five."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Combining the two stated stone groups is a coherent composition context."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The concrete grouping and direct question are appropriate and readily understood."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Four plus one equals five, matching the keyed answer and an option."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_6-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_6-20260924:mat_g1_na_q1_6"
+    },
+    {
+      "sample_id": "a9b145ca2ed439bb6983",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The list contains all required pairs for five except 3 and 2, so the missing pair is unique."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Finding an omitted composition pair is a valid way to assess number composition."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The list format and phrase which way is missing clearly signal the comparison required."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Three and two total five and correctly fill the only missing listed decomposition."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_6-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_6-20260924:mat_g1_na_q1_6"
+    },
+    {
+      "sample_id": "8743aa8815d304b09f30",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "An empty group paired with five shells has one correct ordered pair among the choices."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The shell-grouping instruction is coherent, although the decorative challenge wording adds little."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The essential action and target pair are understandable despite the unnecessary cookie reference."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Zero and five compose five, exactly matching the keyed answer."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_6-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_6-20260924:mat_g1_na_q1_6"
+    },
+    {
+      "sample_id": "feb12d24ece0c702892e",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The two stated groups contain five and zero counters, producing one definite total."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Adding the two groups is mathematically and contextually coherent even with playful framing."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The short question directly asks for the total of the two explicitly named groups."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Five plus zero equals five, so the keyed answer is correct and selectable."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_6-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_6-20260924:mat_g1_na_q1_6"
+    },
+    {
+      "sample_id": "ec9ea76648aaee309bec",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Placing four of five stones in one group leaves one stone in the other group."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The stone grouping scenario is internally consistent and models a complementary part."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The visual count and simple remainder question are clear for the intended learner."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer 1 is correct because four and one compose the total of five."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_6-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_6-20260924:mat_g1_na_q1_6"
+    },
+    {
+      "sample_id": "d5bbe225b244b1b39d11",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "With five counters total and zero in one group, the other group must contain five."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "An empty group is explicitly allowed and forms a valid decomposition with all five counters."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The prompt is concise and the pictured counters make the total immediately accessible."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Zero plus five equals five, confirming the keyed answer and option."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_6-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_6-20260924:mat_g1_na_q1_6"
+    },
+    {
+      "sample_id": "8f4ce5049cc4eedf118a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The total and empty first group determine the second group uniquely as five."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The described counter split is a valid zero-part decomposition of five."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The wording is direct, and the hint sequence supplies accessible counting support."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The keyed result 5 correctly completes 0 plus 5 equals 5."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_6-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_6-20260924:mat_g1_na_q1_6"
+    },
+    {
+      "sample_id": "9ba08223bff4a93a9320",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Taking five stones and placing four in one hand leaves exactly one in the other."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The two-hand context is concrete and logically models a five-part decomposition."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The action sequence and requested other-hand count are easy to parse."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Four and one compose five, so the keyed answer is mathematically correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_6-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_6-20260924:mat_g1_na_q1_6"
+    },
+    {
+      "sample_id": "e09ef8e3e3a4876e2a4c",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Putting all five shells in one group leaves a uniquely determined empty second group."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The scenario consistently represents the valid decomposition 5 and 0."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The visible objects and concise question make the intended missing-part reasoning clear."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer 0 is correct because five and zero total five, and it is an option."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_6-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_6-20260924:mat_g1_na_q1_6"
+    }
+  ],
+  "clause_evidence": [
+    {
+      "requirement_id": "compose",
+      "clause": "Compose",
+      "verdict": "PASS",
+      "reasoning": "Composition is directly assessed by combining named groups and selecting or stating their total.",
+      "sample_ids": [
+        "373aee08a0ab7e74f733",
+        "e52c4ab7a49839d6bf39",
+        "92e155566a7d491149a2",
+        "feb12d24ece0c702892e"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_6-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_6-20260924:mat_g1_na_q1_6"
+    },
+    {
+      "requirement_id": "decompose",
+      "clause": "decompose",
+      "verdict": "PASS",
+      "reasoning": "Decomposition is repeatedly assessed through missing groups and pair identification from known totals.",
+      "sample_ids": [
+        "7d91d75206a3569da2c6",
+        "9d2446cc332a37744e27",
+        "9e78bec9b4f825647b7a",
+        "a3d4c4e7d43289cf42a3"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_6-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_6-20260924:mat_g1_na_q1_6"
+    },
+    {
+      "requirement_id": "numbers",
+      "clause": "numbers",
+      "verdict": "PASS",
+      "reasoning": "Every item operates on explicit whole-number quantities and asks for a numerical composition or part.",
+      "sample_ids": [
+        "373aee08a0ab7e74f733",
+        "9d2446cc332a37744e27",
+        "25f311c8298a6c5b587a"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_6-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_6-20260924:mat_g1_na_q1_6"
+    },
+    {
+      "requirement_id": "up_to_10",
+      "clause": "up to 10",
+      "verdict": "PASS",
+      "reasoning": "The rendered packet includes totals of 5 and 10, with no quantity exceeding the required upper bound.",
+      "sample_ids": [
+        "9d2446cc332a37744e27",
+        "fdc7ced0fdd45aa28867",
+        "a3d4c4e7d43289cf42a3"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_6-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_6-20260924:mat_g1_na_q1_6"
+    },
+    {
+      "requirement_id": "concrete_materials",
+      "clause": "concrete materials",
+      "verdict": "PASS",
+      "reasoning": "Shells, counters, sticks, blocks, beads, buttons, and stones provide concrete object contexts throughout the packet.",
+      "sample_ids": [
+        "7d91d75206a3569da2c6",
+        "373aee08a0ab7e74f733",
+        "e52c4ab7a49839d6bf39"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_6-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_6-20260924:mat_g1_na_q1_6"
+    },
+    {
+      "requirement_id": "5_is_5_and_0",
+      "clause": "5 is 5 and 0",
+      "verdict": "PASS",
+      "reasoning": "Multiple samples explicitly place all five objects in one group or pair five with an empty group.",
+      "sample_ids": [
+        "7d91d75206a3569da2c6",
+        "6cef9f876370915f2426",
+        "08bdbe34bfd4c3cc689f"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_6-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_6-20260924:mat_g1_na_q1_6"
+    },
+    {
+      "requirement_id": "4_and_1",
+      "clause": "4 and 1",
+      "verdict": "PASS",
+      "reasoning": "The packet directly represents four objects in one group and one in the other, including pair selection.",
+      "sample_ids": [
+        "64fca2cbfbb8230e59ec",
+        "96569309b2eb16598273",
+        "9ba08223bff4a93a9320"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_6-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_6-20260924:mat_g1_na_q1_6"
+    },
+    {
+      "requirement_id": "3_and_2",
+      "clause": "3 and 2",
+      "verdict": "PASS",
+      "reasoning": "Both direct grouping and missing-pair tasks explicitly establish the composition 3 and 2.",
+      "sample_ids": [
+        "9e78bec9b4f825647b7a",
+        "8ad9318c5decac0db071",
+        "a9b145ca2ed439bb6983"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_6-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_6-20260924:mat_g1_na_q1_6"
+    },
+    {
+      "requirement_id": "2_and_3",
+      "clause": "2 and 3",
+      "verdict": "PASS",
+      "reasoning": "The bead example and the listed pair question both show two and three composing a total of five.",
+      "sample_ids": [
+        "e52c4ab7a49839d6bf39",
+        "25f311c8298a6c5b587a"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_6-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_6-20260924:mat_g1_na_q1_6"
+    },
+    {
+      "requirement_id": "1_and_4",
+      "clause": "1 and 4",
+      "verdict": "PASS",
+      "reasoning": "A one-object group with four remaining objects is directly assessed using buttons and stones.",
+      "sample_ids": [
+        "64fca2cbfbb8230e59ec",
+        "92e155566a7d491149a2",
+        "ec9ea76648aaee309bec"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_6-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_6-20260924:mat_g1_na_q1_6"
+    },
+    {
+      "requirement_id": "0_and_5",
+      "clause": "0 and 5",
+      "verdict": "PASS",
+      "reasoning": "Several samples explicitly use an empty group with all five objects in the other group.",
+      "sample_ids": [
+        "8743aa8815d304b09f30",
+        "feb12d24ece0c702892e",
+        "d5bbe225b244b1b39d11"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_6-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_6-20260924:mat_g1_na_q1_6"
+    }
+  ],
+  "dispatch_provenance": [
+    {
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_6-20260924:mat_g1_na_q1_6",
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_6-20260924",
+      "review_date": "2026-09-24",
+      "blind": true,
+      "packet_digest": "8666005818dff54020bbb0be07933e3230fda88e7578ddfbdd460bce5f9caeb5",
+      "clause_ids": [
+        "compose",
+        "decompose",
+        "numbers",
+        "up_to_10",
+        "concrete_materials",
+        "5_is_5_and_0",
+        "4_and_1",
+        "3_and_2",
+        "2_and_3",
+        "1_and_4",
+        "0_and_5"
+      ],
+      "response_ref": ".responses/s5-luna-medium-w7-mat_g1_na_q1_6-20260924.json",
+      "response_digest": "9a93221a7f7c81a94bc63b33b0567777739f7162c82f4c9ac0578cf1bb5f520d",
+      "prompt_ref": ".responses/s5-luna-medium-w7-mat_g1_na_q1_6-20260924.prompt.txt",
+      "prompt_digest": "f7052365a2c386382c29bab122d25c7a8574db27c653b1b969a1f18e96898651",
+      "samples_delivery": "Prompt generated by tests.judgment_batches for one node and delivered by path to multi_agent_v1.spawn_agent using model gpt-5.6-luna with reasoning_effort=medium.",
+      "tool_uses_by_reviewer": "Reviewer was a tool-bearing multi_agent_v1 subagent instructed to read only its prompt file and write its verdicts JSON; it reported the output path and no other tool use to the dispatcher."
     }
   ],
   "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "Both directions are generated with materials in hand: decomposition into two groups with one part given, and composition of two stated groups into a total, with one item quoting the competency's own catalogue of pairs that each make 5 and asking for the missing one."
-    },
-    "comprehensive_coverage": {
-      "verdict": "FAIL",
-      "rationale": "The competency reads numbers up to 10, and in fourteen samples the whole being split or built is always either 5 or 10. Not one item composes or decomposes 6, 7, 8 or 9, nor any of the small totals below 5. The parenthetical list in the competency is an illustration of how 5 behaves, not a restriction of the range to 5, so the generator has treated an example as the specification and left most of the stated domain unsampled."
-    },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Concrete referents are shown as countable pictures - shells, counters, sticks, buttons, beads, stones - and each item gives one part and asks for the other, which is exactly the part-whole reasoning expected in Quarter 1."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "Two seeds render character for character the same item, the one about getting 10 blocks and putting 7 into one group, with the same four options in the same order, so the sample set is smaller than it appears. Beyond that, the puts-some-in-one-group frame dominates, and only two items reverse into composition."
+      "rationale": "The tasks use small whole-number groups, direct counting, and simple missing-part reasoning appropriate for Grade 1 Quarter 1 learners."
     },
     "competency_alignment": {
-      "verdict": "CONCERN",
-      "rationale": "Because the whole is pinned to 5 or 10, what actually differs between seeds is the material pictured and which split point is chosen, neither of which deepens the competency; the one item asking which pair shows her groups is the only shift toward the pair-naming form the competency emphasises."
+      "verdict": "PASS",
+      "rationale": "Every item asks learners to compose or decompose quantities of 5 or 10, matching the stated number-composition competency."
+    },
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The packet includes both composition and decomposition, covers totals through 10, and explicitly represents the required pairs for 5.",
+      "decomposition": {
+        "verdict": "PASS",
+        "reasoning": "The printed requirements preserve the competency's actions, range, concrete-material context, and every listed decomposition of 5 without omitting a named component.",
+        "requirement_ids": [
+          "compose",
+          "decompose",
+          "numbers",
+          "up_to_10",
+          "concrete_materials",
+          "5_is_5_and_0",
+          "4_and_1",
+          "3_and_2",
+          "2_and_3",
+          "1_and_4",
+          "0_and_5"
+        ]
+      },
+      "clause_ids": [
+        "compose",
+        "decompose",
+        "numbers",
+        "up_to_10",
+        "concrete_materials",
+        "5_is_5_and_0",
+        "4_and_1",
+        "3_and_2",
+        "2_and_3",
+        "1_and_4",
+        "0_and_5"
+      ]
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "The samples collectively include all six ordered pairs for 5 and include decomposition examples for 10, demonstrating the stated range up to 10.",
+      "clause_ids": [
+        "compose",
+        "decompose",
+        "numbers",
+        "up_to_10",
+        "concrete_materials",
+        "5_is_5_and_0",
+        "4_and_1",
+        "3_and_2",
+        "2_and_3",
+        "1_and_4",
+        "0_and_5"
+      ]
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "No total exceeds 10, so the stated ceiling holds, and the 10-block items do exercise the boundary rather than staying entirely at 5."
+      "rationale": "All quantities remain at or below 10 and the reasoning demands only counting, grouping, and identifying a complementary part."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "The packet varies objects, names, and question forms, but several rendered samples are exact or near duplicates and the hint sequence is reused unchanged."
     }
   },
-  "overall": "FAIL"
+  "overall": "CONCERN"
 }

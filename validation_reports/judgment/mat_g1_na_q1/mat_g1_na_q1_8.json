@@ -1,7 +1,48 @@
 {
+  "schema_version": 2,
   "node_id": "mat_g1_na_q1_8",
-  "reviewed_by": "reviewer-c1-lantern-fescue-3061",
-  "review_date": "2026-09-11",
+  "competency_snapshot": {
+    "text": "Illustrate by applying the following properties of addition, using sums up to 20: the sum of zero and any number is equal to the number, and changing the order of the addends does not change the sum.",
+    "grade": 1,
+    "quarter": 1,
+    "subdomain": null
+  },
+  "requirements_snapshot": [
+    {
+      "kind": "task",
+      "id": "illustrate",
+      "clause": "Illustrate"
+    },
+    {
+      "kind": "task",
+      "id": "applying",
+      "clause": "applying"
+    },
+    {
+      "kind": "property",
+      "id": "properties_of_addition",
+      "clause": "properties of addition"
+    },
+    {
+      "kind": "range",
+      "id": "sums_up_to_20",
+      "clause": "sums up to 20"
+    },
+    {
+      "kind": "property",
+      "id": "identity_property",
+      "clause": "the sum of zero and any number is equal to the number"
+    },
+    {
+      "kind": "property",
+      "id": "commutative_property",
+      "clause": "changing the order of the addends does not change the sum"
+    }
+  ],
+  "packet_digest": "065edeb57557af1de6dce7b42e90541552dbe9376c04fb5c95d1ee4807248b8b",
+  "sampling_version": "phase2-stratified-v2-rendered-visual",
+  "reviewed_by": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_8-20260924",
+  "review_date": "2026-09-24",
   "blind": true,
   "sample_seeds": [
     42,
@@ -18,14 +59,68 @@
     602,
     603,
     604,
-    605
+    605,
+    606,
+    700,
+    701,
+    702,
+    800,
+    801,
+    900,
+    901,
+    1000,
+    1001,
+    1002
+  ],
+  "sample_ids": [
+    "c6178e1d005833a600f0",
+    "a7e182223123728b918c",
+    "0b588b134424672531db",
+    "2bbb44a400a30f2f2b66",
+    "6eab0232af3ed271e21f",
+    "d66568e124711a4f9817",
+    "87a47c60d74c5d7e5c68",
+    "7b77af6651072af312c5",
+    "b60fe9a920b34c8275c4",
+    "ce1cd5cd5935a7866b33",
+    "37cfd4cb8175a3e647fb",
+    "094700f9acbafcd442d6",
+    "577b3e14014182297d1d",
+    "2377de6ba2279f373c93",
+    "dd7116441f0e6413cfae",
+    "1e46ce3f45957fd5ee6f",
+    "b126d6cca94f865b34ad",
+    "01022d44c047cfdb8bba",
+    "a20b1055929ad0bed733",
+    "d91e9fdc3d50fb75b53b",
+    "3a2abf47d99d0894167a",
+    "d31eb85f66adde656139",
+    "7c54bb9e037157cade52",
+    "d917be5bb8c988b98d9c",
+    "62eb4b09f99b92273f4b",
+    "fab949bad25c49033793"
   ],
   "samples_reviewed": [
     {
+      "node_id": "mat_g1_na_q1_8",
       "seed": 42,
       "formatter": "mcq",
       "question_text": "What is 1 + 0?",
       "correct_answer": 1,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -47,19 +142,66 @@
           "value": 2,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 1,
+      "hints": [
+        "We are adding two numbers: 1 and 0.",
+        "Add the last digits: 1 + 0 = 1.",
+        "The sum is 1 + 0 = 1."
+      ],
+      "sample_id": "c6178e1d005833a600f0",
+      "replay_digest": "dc4babfb8e92588cbb237b2ad85a242f2c0b70dbde8b83e8ddaa8aa2f8538189"
     },
     {
+      "node_id": "mat_g1_na_q1_8",
       "seed": 43,
       "formatter": "true_false",
       "question_text": "0 + 10 = 20. True or False?",
-      "correct_answer": false
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "We are adding two numbers: 0 and 10.",
+        "Add the last digits: 0 + 0 = 0.",
+        "Add the first digits: 0 + 1 = 1.",
+        "The sum is 0 + 10 = 10."
+      ],
+      "sample_id": "a7e182223123728b918c",
+      "replay_digest": "7b2544b293c3a72911c70b275cdc3d49bb023f258ad9704de89f27480fad4964"
     },
     {
+      "node_id": "mat_g1_na_q1_8",
       "seed": 44,
       "formatter": "mcq",
       "question_text": "Is 12 + 2 the same as 2 + 12?",
       "correct_answer": true,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -81,13 +223,32 @@
           "value": "Only when both are 0",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": true,
+      "hints": [],
+      "sample_id": "0b588b134424672531db",
+      "replay_digest": "13a85c6dde912144d3d6e025dc9e898a311baa335b3286b02330894f3c1e500e"
     },
     {
+      "node_id": "mat_g1_na_q1_8",
       "seed": 45,
       "formatter": "mcq",
       "question_text": "Is 17 + 2 the same as 2 + 17?",
       "correct_answer": true,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -109,13 +270,32 @@
           "value": "Only when both are 0",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": true,
+      "hints": [],
+      "sample_id": "2bbb44a400a30f2f2b66",
+      "replay_digest": "4802b8e6225b73ff1f908d0f1f8e8b3488ad0d7724cdc464bef50a672c60f005"
     },
     {
+      "node_id": "mat_g1_na_q1_8",
       "seed": 46,
       "formatter": "cloze",
       "question_text": "0 + 13 = ___",
       "correct_answer": 13,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -141,22 +321,76 @@
           "text": "12",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 13,
+      "hints": [
+        "We are adding two numbers: 0 and 13.",
+        "Add the last digits: 0 + 3 = 3.",
+        "Add the first digits: 0 + 1 = 1.",
+        "The sum is 0 + 13 = 13."
+      ],
+      "sample_id": "6eab0232af3ed271e21f",
+      "replay_digest": "29d08a93a01dda298a0a7e37f9eeb9fab00e8019c01431ae11670e2f291c142b"
     },
     {
+      "node_id": "mat_g1_na_q1_8",
       "seed": 51,
       "formatter": "error_detect",
       "question_text": "Ana solved: \"0 + 17 = ___\". Ana says the blank is 18. Is Ana correct?",
       "correct_answer": {
         "has_error": true,
         "correct_value": 17
-      }
+      },
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": true,
+        "correct_value": 17
+      },
+      "hints": [
+        "We are adding two numbers: 0 and 17.",
+        "Add the last digits: 0 + 7 = 7.",
+        "Add the first digits: 0 + 1 = 1.",
+        "The sum is 0 + 17 = 17."
+      ],
+      "sample_id": "d66568e124711a4f9817",
+      "replay_digest": "b52c8d8ee92b4fac3c479007c8c7dff8f04894528e4c35de2a53712eb98ed5af"
     },
     {
+      "node_id": "mat_g1_na_q1_8",
       "seed": 500,
       "formatter": "mcq",
       "question_text": "Is 18 + 1 the same as 1 + 14?",
       "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "max_sum": 1.0,
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -178,13 +412,35 @@
           "value": false,
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": false,
+      "hints": [],
+      "sample_id": "87a47c60d74c5d7e5c68",
+      "replay_digest": "fca7bf1d74efd6992788e0938bbcb6b17b3239f6b2a7c555ec57bd26d903dfb8"
     },
     {
+      "node_id": "mat_g1_na_q1_8",
       "seed": 501,
       "formatter": "mcq",
       "question_text": "Is 16 + 1 the same as 1 + 14?",
       "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "max_sum": 1.0,
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -206,13 +462,35 @@
           "value": "Only when both are 0",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": false,
+      "hints": [],
+      "sample_id": "7b77af6651072af312c5",
+      "replay_digest": "19b9c1ab4bd76be95586819f388bb55f127e342868b1a27f2c70398195b78c5b"
     },
     {
+      "node_id": "mat_g1_na_q1_8",
       "seed": 502,
       "formatter": "mcq",
       "question_text": "Is 13 + 6 the same as 6 + 14?",
       "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "max_sum": 1.0,
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -234,13 +512,34 @@
           "value": true,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": false,
+      "hints": [],
+      "sample_id": "b60fe9a920b34c8275c4",
+      "replay_digest": "a0249b95cee6e6c2a3f4c8ffaee7aa25c1c6083d6d333be6b123688927aecb07"
     },
     {
+      "node_id": "mat_g1_na_q1_8",
       "seed": 600,
       "formatter": "mcq",
       "question_text": "Is 16 + 3 the same as 3 + 16?",
       "correct_answer": true,
+      "requested": {
+        "difficulty_profile": {
+          "context": "pure"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -262,13 +561,34 @@
           "value": true,
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": true,
+      "hints": [],
+      "sample_id": "ce1cd5cd5935a7866b33",
+      "replay_digest": "874f876740df1fc312c9dfc98794e6965ae73795ccd5c058d7116ec9b0275a16"
     },
     {
+      "node_id": "mat_g1_na_q1_8",
       "seed": 601,
       "formatter": "cloze",
       "question_text": "0 + 19 = ___",
       "correct_answer": 19,
+      "requested": {
+        "difficulty_profile": {
+          "context": "word_problem"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -294,13 +614,39 @@
           "text": "18",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 19,
+      "hints": [
+        "We are adding two numbers: 0 and 19.",
+        "Add the last digits: 0 + 9 = 9.",
+        "Add the first digits: 0 + 1 = 1.",
+        "The sum is 0 + 19 = 19."
+      ],
+      "sample_id": "37cfd4cb8175a3e647fb",
+      "replay_digest": "c78032012ccc1e181261408ef41a84df7a84c8dddf0bb17b6983734e4546b2e7"
     },
     {
+      "node_id": "mat_g1_na_q1_8",
       "seed": 602,
       "formatter": "mcq",
       "question_text": "Is 13 + 3 the same as 3 + 10?",
       "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "regrouping": "none"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -322,19 +668,66 @@
           "value": false,
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": false,
+      "hints": [],
+      "sample_id": "094700f9acbafcd442d6",
+      "replay_digest": "45fe51861b821be9becfe1776dd6238dbb8313f8404c386b74cddb54e2b39c4a"
     },
     {
+      "node_id": "mat_g1_na_q1_8",
       "seed": 603,
       "formatter": "true_false",
       "question_text": "18 + 0 = 18. True or False?",
-      "correct_answer": true
+      "correct_answer": true,
+      "requested": {
+        "difficulty_profile": {
+          "spine": "counting_up"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": true,
+      "hints": [
+        "We are adding two numbers: 18 and 0.",
+        "Add the last digits: 8 + 0 = 8.",
+        "Add the first digits: 1 + 0 = 1.",
+        "The sum is 18 + 0 = 18."
+      ],
+      "sample_id": "577b3e14014182297d1d",
+      "replay_digest": "19568cf941ed83e7537dbff77ecfdce5f1a72e00b942e67203a94b0b69de21a7"
     },
     {
+      "node_id": "mat_g1_na_q1_8",
       "seed": 604,
       "formatter": "mcq",
       "question_text": "What is 7 + 0?",
       "correct_answer": 7,
+      "requested": {
+        "difficulty_profile": {
+          "spine": "putting_together"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -356,40 +749,1289 @@
           "value": 6,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 7,
+      "hints": [
+        "We are adding two numbers: 7 and 0.",
+        "Add the last digits: 7 + 0 = 7.",
+        "The sum is 7 + 0 = 7."
+      ],
+      "sample_id": "2377de6ba2279f373c93",
+      "replay_digest": "6e31e2b965a8e0a9d69ab10c107767bd1b7f2fa74a965f7d0511b52c58ffbfff"
     },
     {
+      "node_id": "mat_g1_na_q1_8",
       "seed": 605,
       "formatter": "true_false",
       "question_text": "19 + 0 = 19. True or False?",
-      "correct_answer": true
+      "correct_answer": true,
+      "requested": {
+        "difficulty_profile": {
+          "strategy": "standard"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": true,
+      "hints": [
+        "We are adding two numbers: 19 and 0.",
+        "Add the last digits: 9 + 0 = 9.",
+        "Add the first digits: 1 + 0 = 1.",
+        "The sum is 19 + 0 = 19."
+      ],
+      "sample_id": "dd7116441f0e6413cfae",
+      "replay_digest": "18ba92d86965dfb5ec6cc24a6479c143c3f207dcc2dee4877f26cf958065d652"
+    },
+    {
+      "node_id": "mat_g1_na_q1_8",
+      "seed": 606,
+      "formatter": "mcq",
+      "question_text": "What is 12 + 0?",
+      "correct_answer": 12,
+      "requested": {
+        "difficulty_profile": {
+          "structure": "result_unknown"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 12,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 22,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 11,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 13,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 12,
+      "hints": [
+        "We are adding two numbers: 12 and 0.",
+        "Add the last digits: 2 + 0 = 2.",
+        "Add the first digits: 1 + 0 = 1.",
+        "The sum is 12 + 0 = 12."
+      ],
+      "sample_id": "1e46ce3f45957fd5ee6f",
+      "replay_digest": "b2e66d87af2cbc7092b0ad61c66f07dcbcf598d6cc16260f87e69fcb9848ea4d"
+    },
+    {
+      "node_id": "mat_g1_na_q1_8",
+      "seed": 700,
+      "formatter": "true_false",
+      "question_text": "7 + 0 = 7. True or False?",
+      "correct_answer": true,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": true,
+      "hints": [
+        "We are adding two numbers: 7 and 0.",
+        "Add the last digits: 7 + 0 = 7.",
+        "The sum is 7 + 0 = 7."
+      ],
+      "sample_id": "b126d6cca94f865b34ad",
+      "replay_digest": "ff6bf2b23ebdc55f6a8f9afba6a19d1e2157413227e9e61270c2e074385aa105"
+    },
+    {
+      "node_id": "mat_g1_na_q1_8",
+      "seed": 701,
+      "formatter": "mcq",
+      "question_text": "💃 Sir Rez has a math challenge about dance shoes. Is 8 + 1 the same as 1 + 6?",
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "kpop",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": true,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": false,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "Only when both are 0",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "Cannot be determined",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": false,
+      "hints": [],
+      "sample_id": "01022d44c047cfdb8bba",
+      "replay_digest": "2e54ddc254c1fa1ec96004df80238055a7bdaed3e72b886b04cd7d234089b226"
+    },
+    {
+      "node_id": "mat_g1_na_q1_8",
+      "seed": 702,
+      "formatter": "error_detect",
+      "question_text": "🏀 Marco has a math challenge about jerseys. Manny solved: \"0 + 5 = ___\". Manny says the blank is 6. Is Manny correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 5
+      },
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "basketball",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": true,
+        "correct_value": 5
+      },
+      "hints": [
+        "We are adding two numbers: 0 and 5.",
+        "Add the last digits: 0 + 5 = 5.",
+        "The sum is 0 + 5 = 5."
+      ],
+      "sample_id": "a20b1055929ad0bed733",
+      "replay_digest": "a19a6d16dd70633eb6f49b7a974b4de3f2593c9057b7933c2df625f8d6760cb3"
+    },
+    {
+      "node_id": "mat_g1_na_q1_8",
+      "seed": 800,
+      "formatter": "mcq",
+      "question_text": "Is 11 + 8 the same as 8 + 11?",
+      "correct_answer": true,
+      "requested": {
+        "difficulty_profile": {
+          "max_sum": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "Cannot be determined",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "Only when both are 0",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": false,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": true,
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": true,
+      "hints": [],
+      "sample_id": "d91e9fdc3d50fb75b53b",
+      "replay_digest": "e547d8885df53243a75bea3cf35ecdc4b4e0337fa7e29ac7e5f73acb538e396c"
+    },
+    {
+      "node_id": "mat_g1_na_q1_8",
+      "seed": 801,
+      "formatter": "error_detect",
+      "question_text": "Pia solved: \"7 + 0 = ___\". Pia says the blank is 7. Is Pia correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 7
+      },
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 7
+      },
+      "hints": [
+        "We are adding two numbers: 7 and 0.",
+        "Add the last digits: 7 + 0 = 7.",
+        "The sum is 7 + 0 = 7."
+      ],
+      "sample_id": "3a2abf47d99d0894167a",
+      "replay_digest": "eedfcd191eaa7e7858cae1b87d843a5f851973da6f905d5452c58a1a4349f533"
+    },
+    {
+      "node_id": "mat_g1_na_q1_8",
+      "seed": 900,
+      "formatter": "mcq",
+      "question_text": "What is 0 + 1?",
+      "correct_answer": 1,
+      "requested": {
+        "difficulty_profile": {
+          "max_sum": 0.0,
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 11,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 1,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 2,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 0,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 1,
+      "hints": [
+        "We are adding two numbers: 0 and 1.",
+        "Add the last digits: 0 + 1 = 1.",
+        "The sum is 0 + 1 = 1."
+      ],
+      "sample_id": "d31eb85f66adde656139",
+      "replay_digest": "2e4b18c58a926b4ebb2bb541711e815449bf2dccc639e08d0e2e67205e622ec7"
+    },
+    {
+      "node_id": "mat_g1_na_q1_8",
+      "seed": 901,
+      "formatter": "mcq",
+      "question_text": "Is 5 + 1 the same as 1 + 1?",
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "max_sum": 0.0,
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": false,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "Cannot be determined",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "Only when both are 0",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": true,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": false,
+      "hints": [],
+      "sample_id": "7c54bb9e037157cade52",
+      "replay_digest": "f69477a3b57c42b0a02a9ed4cd39e21f23a11f84ece3a74973f7daacb497b02f"
+    },
+    {
+      "node_id": "mat_g1_na_q1_8",
+      "seed": 1000,
+      "formatter": "mcq",
+      "question_text": "Is 12 + 4 the same as 4 + 13?",
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "hint_gated"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "hint_gated"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": false,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "Cannot be determined",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "Only when both are 0",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": true,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": false,
+      "hints": [],
+      "sample_id": "d917be5bb8c988b98d9c",
+      "replay_digest": "08a9edabe2f40734977b1dfb8089b533767c5de99cbcfe595410d793905a7aba"
+    },
+    {
+      "node_id": "mat_g1_na_q1_8",
+      "seed": 1001,
+      "formatter": "error_detect",
+      "question_text": "Liza solved: \"0 + 7 = ___\". Liza says the blank is 0. Is Liza correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 7
+      },
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "mastery_drill"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "mastery_drill"
+      },
+      "resolved_answer": {
+        "has_error": true,
+        "correct_value": 7
+      },
+      "hints": [
+        "We are adding two numbers: 0 and 7.",
+        "Add the last digits: 0 + 7 = 7.",
+        "The sum is 0 + 7 = 7."
+      ],
+      "sample_id": "62eb4b09f99b92273f4b",
+      "replay_digest": "202b632ad8302f92d25c6cfb614c7aafb6eb0eaa6299299038c06fedd8a40c80"
+    },
+    {
+      "node_id": "mat_g1_na_q1_8",
+      "seed": 1002,
+      "formatter": "mcq",
+      "question_text": "Is 4 + 12 the same as 12 + 3?",
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "scaffolded"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "scaffolded"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": true,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "Only when both are 0",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": false,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "Cannot be determined",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": false,
+      "hints": [],
+      "sample_id": "fab949bad25c49033793",
+      "replay_digest": "8e3a856f4fdfd752745db075a66ea51025c4f8177e7826e1df52e1ab4f922372"
+    }
+  ],
+  "sample_assessments": [
+    {
+      "sample_id": "c6178e1d005833a600f0",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The single equation asks for one numerical sum, and only one option matches the printed arithmetic."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The direct arithmetic prompt has no contextual assumptions and its stated answer follows from adding zero."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The wording is brief, familiar, and readable for a beginning learner encountering a basic addition question."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The printed equation 1 + 0 correctly evaluates to 1, and the answer option matches."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_8-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_8-20260924:mat_g1_na_q1_8"
+    },
+    {
+      "sample_id": "a7e182223123728b918c",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The statement is a clear true-or-false proposition with an unambiguous numerical result."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "No outside context is needed; comparing 0 + 10 with 20 gives a determinate false statement."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The prompt names the response choices directly and uses an equation appropriate for early learners."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Zero plus ten equals ten, so the assertion that it equals twenty is correctly marked false."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_8-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_8-20260924:mat_g1_na_q1_8"
+    },
+    {
+      "sample_id": "0b588b134424672531db",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The comparison presents two fully specified sums, so the requested equality judgment has one determinate answer."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The commutative comparison is logically self-contained and does not rely on any unstated situation."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The phrase asking whether the expressions are the same is concise and understandable in this arithmetic setting."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Both expressions equal fourteen, so the printed answer True is mathematically correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_8-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_8-20260924:mat_g1_na_q1_8"
+    },
+    {
+      "sample_id": "2bbb44a400a30f2f2b66",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Both expressions are explicit and the response options include one clear equality judgment."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The task is a self-contained test of reversing addends and requires no contextual interpretation."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The repeated comparison format is simple, direct, and suitable for a learner practicing addition properties."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Seventeen plus two and two plus seventeen both equal nineteen, making True correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_8-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_8-20260924:mat_g1_na_q1_8"
+    },
+    {
+      "sample_id": "6eab0232af3ed271e21f",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The blank represents the single missing value in a fully specified equation, with one matching option."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The equation is self-contained and the hint sequence consistently supports the requested zero-identity result."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze format is visually familiar and uses a short equation that a Grade 1 learner can parse."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Adding zero to thirteen gives thirteen, matching both the answer and the displayed equation."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_8-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_8-20260924:mat_g1_na_q1_8"
+    },
+    {
+      "sample_id": "d66568e124711a4f9817",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The learner must decide whether one stated answer is correct, and the correct value is uniquely determined."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Ana's claim can be checked directly against zero plus seventeen without any missing information."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The quoted equation and yes-or-no question clearly identify the proposed error for the learner to inspect."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Zero plus seventeen equals seventeen, so the claim that the blank is eighteen is correctly identified as an error."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_8-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_8-20260924:mat_g1_na_q1_8"
+    },
+    {
+      "sample_id": "87a47c60d74c5d7e5c68",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The two expressions are explicit, and their unequal values make the requested comparison determinate."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The task tests whether both displayed sums match and needs no assumptions beyond ordinary addition."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The sentence is short and uses the same comparison language as the surrounding property practice."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Eighteen plus one is nineteen while one plus fourteen is fifteen, so False is correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_8-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_8-20260924:mat_g1_na_q1_8"
+    },
+    {
+      "sample_id": "7b77af6651072af312c5",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The expressions have fixed numerical values, so there is only one defensible comparison result."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The arithmetic comparison is complete as printed and does not depend on an unstated context."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The direct question and compact addends are readable and appropriate for elementary practice."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sixteen plus one is seventeen, whereas one plus fourteen is fifteen, making False correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_8-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_8-20260924:mat_g1_na_q1_8"
+    },
+    {
+      "sample_id": "b60fe9a920b34c8275c4",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The comparison supplies both sums completely, and the listed response distinguishes equality from inequality."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "No contextual facts are required; evaluating the two arithmetic expressions resolves the question."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The wording is consistent with the targeted addend-order comparison and presents no distracting language."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Thirteen plus six is nineteen, while six plus fourteen is twenty, so False is correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_8-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_8-20260924:mat_g1_na_q1_8"
+    },
+    {
+      "sample_id": "ce1cd5cd5935a7866b33",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Both sides are unambiguous numerical expressions and produce a single equality answer."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The prompt directly tests reversed addends and is logically complete without external information."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The repeated comparison wording is plain and accessible for early arithmetic practice."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sixteen plus three equals nineteen, as does three plus sixteen, so True is correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_8-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_8-20260924:mat_g1_na_q1_8"
+    },
+    {
+      "sample_id": "37cfd4cb8175a3e647fb",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The missing entry is uniquely fixed by the displayed equation, and exactly one option is nineteen."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze equation is self-contained and the supporting hints lead to the same identity-property result."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The blank and answer choices make the requested operation clear without unnecessary reading load."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Zero plus nineteen equals nineteen, matching the answer and the arithmetic shown."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_8-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_8-20260924:mat_g1_na_q1_8"
+    },
+    {
+      "sample_id": "094700f9acbafcd442d6",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The two sums are fully specified, so their equality status can be determined uniquely."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "This is a self-contained comparison of two arithmetic expressions with no hidden contextual premise."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The short question plainly asks whether the two displayed additions have the same value."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Thirteen plus three is sixteen, while three plus ten is thirteen, so False is correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_8-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_8-20260924:mat_g1_na_q1_8"
+    },
+    {
+      "sample_id": "577b3e14014182297d1d",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The statement is precise and the true-or-false response is uniquely determined by addition."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The equation stands alone and directly expresses the zero identity property."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The format and wording are familiar, concise, and easy for a Grade 1 learner to follow."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Eighteen plus zero equals eighteen, so the printed True answer is correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_8-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_8-20260924:mat_g1_na_q1_8"
+    },
+    {
+      "sample_id": "2377de6ba2279f373c93",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The direct computation has one numerical result and one matching answer option."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "No context is needed because the equation fully defines the requested calculation."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The simple question uses accessible language and a single-digit example suitable for early learners."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Seven plus zero is seven, and the selected answer correctly states that result."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_8-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_8-20260924:mat_g1_na_q1_8"
+    },
+    {
+      "sample_id": "dd7116441f0e6413cfae",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The true-or-false claim is a complete equation with one objectively correct judgment."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The prompt directly tests adding zero and contains all information needed to answer it."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The equation and response instruction are short, explicit, and appropriate for Grade 1."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Nineteen plus zero equals nineteen, so the True answer is mathematically valid."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_8-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_8-20260924:mat_g1_na_q1_8"
+    },
+    {
+      "sample_id": "1e46ce3f45957fd5ee6f",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The numerical equation has one result and the option list contains that result exactly once."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The calculation is fully specified and does not require interpretation beyond the identity property."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The wording is direct and the two-digit number remains within the printed learning scope."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Twelve plus zero equals twelve, which matches the printed answer."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_8-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_8-20260924:mat_g1_na_q1_8"
+    },
+    {
+      "sample_id": "b126d6cca94f865b34ad",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The equation is an unambiguous true-or-false statement with a single correct response."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "It is a complete, context-free application of the zero identity property."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The short statement is accessible and the response mode is explicitly stated."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Seven plus zero equals seven, so the printed True response is correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_8-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_8-20260924:mat_g1_na_q1_8"
+    },
+    {
+      "sample_id": "01022d44c047cfdb8bba",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The named context does not alter the explicit comparison, which has one determinate answer."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The dance-shoe setting is merely a light frame; the mathematical comparison remains logically complete."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The sentence is readable, and the emoji and brief context do not obscure the equation."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Eight plus one is nine, whereas one plus six is seven, so False is correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_8-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_8-20260924:mat_g1_na_q1_8"
+    },
+    {
+      "sample_id": "a20b1055929ad0bed733",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Manny's proposed value is explicit, and the equation gives a unique basis for judging it."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The jersey context adds no conflicting condition; zero plus five directly determines the result."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The named solver, quoted equation, and correctness question clearly identify the learner's task."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Zero plus five equals five, so Manny's answer six is correctly marked erroneous."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_8-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_8-20260924:mat_g1_na_q1_8"
+    },
+    {
+      "sample_id": "d91e9fdc3d50fb75b53b",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Both addends on both sides are fixed, making the equality judgment unique."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The prompt is a self-contained commutative-property comparison with no missing premise."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The sentence is concise and uses a repeated structure that supports pattern recognition."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Eleven plus eight and eight plus eleven both equal nineteen, so True is correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_8-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_8-20260924:mat_g1_na_q1_8"
+    },
+    {
+      "sample_id": "3a2abf47d99d0894167a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Pia's proposed value and the equation are explicit, so correctness is uniquely decidable."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The learner can verify the claim directly; no contextual information is needed."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The quoted equation and question clearly state what Pia did and what must be evaluated."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Seven plus zero equals seven, so Pia is correct and the printed answer is valid."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_8-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_8-20260924:mat_g1_na_q1_8"
+    },
+    {
+      "sample_id": "d31eb85f66adde656139",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The equation asks for one straightforward sum and only one option equals that sum."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The prompt is complete as written and directly exercises adding zero to one."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The wording is minimal, familiar, and well matched to a beginning arithmetic learner."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Zero plus one equals one, matching the printed answer and a listed option."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_8-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_8-20260924:mat_g1_na_q1_8"
+    },
+    {
+      "sample_id": "7c54bb9e037157cade52",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The two expressions have determinate values, so the requested same-or-not judgment is clear."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The comparison is self-contained and appropriately tests unequal sums rather than relying on a slogan."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The question is short and the two addends on each side are easy to identify."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Five plus one is six, while one plus one is two, so False is correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_8-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_8-20260924:mat_g1_na_q1_8"
+    },
+    {
+      "sample_id": "d917be5bb8c988b98d9c",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The expressions are explicit and the equality result is unique despite the alternate response options."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The hint-gated experience does not change the self-contained arithmetic comparison."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The repeated comparison phrasing remains clear, and the response choices include a direct answer."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Twelve plus four is sixteen, whereas four plus thirteen is seventeen, so False is correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_8-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_8-20260924:mat_g1_na_q1_8"
+    },
+    {
+      "sample_id": "62eb4b09f99b92273f4b",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Liza's proposed value is stated clearly, and the correct value follows uniquely from the equation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The task directly evaluates a claimed zero-sum result and contains no unresolved contextual detail."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The name, quoted equation, proposed answer, and correctness question are easy to follow."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Zero plus seven equals seven, so Liza's answer zero is correctly identified as an error."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_8-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_8-20260924:mat_g1_na_q1_8"
+    },
+    {
+      "sample_id": "fab949bad25c49033793",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The two arithmetic expressions are completely specified and lead to one clear comparison result."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The scaffolded presentation remains a self-contained test of whether the displayed sums match."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The prompt uses concise language and the response list includes an unmistakable False option."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Four plus twelve is sixteen, while twelve plus three is fifteen, so False is correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_8-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_8-20260924:mat_g1_na_q1_8"
+    }
+  ],
+  "clause_evidence": [
+    {
+      "requirement_id": "illustrate",
+      "clause": "Illustrate",
+      "verdict": "PASS",
+      "reasoning": "The packet illustrates the requested ideas through equations, equality comparisons, completed blanks, and diagnosed answers.",
+      "sample_ids": [
+        "c6178e1d005833a600f0",
+        "0b588b134424672531db",
+        "6eab0232af3ed271e21f"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_8-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_8-20260924:mat_g1_na_q1_8"
+    },
+    {
+      "requirement_id": "applying",
+      "clause": "applying",
+      "verdict": "PASS",
+      "reasoning": "Learners must calculate sums, compare reordered expressions, or evaluate another learner's proposed result.",
+      "sample_ids": [
+        "a7e182223123728b918c",
+        "d66568e124711a4f9817",
+        "d91e9fdc3d50fb75b53b"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_8-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_8-20260924:mat_g1_na_q1_8"
+    },
+    {
+      "requirement_id": "properties_of_addition",
+      "clause": "properties of addition",
+      "verdict": "PASS",
+      "reasoning": "The rendered questions explicitly practice the zero identity and commutative addend-order behaviors.",
+      "sample_ids": [
+        "577b3e14014182297d1d",
+        "ce1cd5cd5935a7866b33",
+        "3a2abf47d99d0894167a"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_8-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_8-20260924:mat_g1_na_q1_8"
+    },
+    {
+      "requirement_id": "sums_up_to_20",
+      "clause": "sums up to 20",
+      "verdict": "PASS",
+      "reasoning": "All printed examples use addends and resulting sums within the stated upper bound of 20.",
+      "sample_ids": [
+        "37cfd4cb8175a3e647fb",
+        "d91e9fdc3d50fb75b53b",
+        "fab949bad25c49033793"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_8-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_8-20260924:mat_g1_na_q1_8"
+    },
+    {
+      "requirement_id": "identity_property",
+      "clause": "the sum of zero and any number is equal to the number",
+      "verdict": "PASS",
+      "reasoning": "Multiple examples place zero with values from 1 through 19 and correctly preserve the other addend.",
+      "sample_ids": [
+        "6eab0232af3ed271e21f",
+        "577b3e14014182297d1d",
+        "62eb4b09f99b92273f4b"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_8-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_8-20260924:mat_g1_na_q1_8"
+    },
+    {
+      "requirement_id": "commutative_property",
+      "clause": "changing the order of the addends does not change the sum",
+      "verdict": "PASS",
+      "reasoning": "Several samples show equal reversed addends, while contrasting unequal pairs test whether learners apply the property precisely.",
+      "sample_ids": [
+        "0b588b134424672531db",
+        "2bbb44a400a30f2f2b66",
+        "ce1cd5cd5935a7866b33"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_8-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_8-20260924:mat_g1_na_q1_8"
+    }
+  ],
+  "dispatch_provenance": [
+    {
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_8-20260924:mat_g1_na_q1_8",
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_8-20260924",
+      "review_date": "2026-09-24",
+      "blind": true,
+      "packet_digest": "065edeb57557af1de6dce7b42e90541552dbe9376c04fb5c95d1ee4807248b8b",
+      "clause_ids": [
+        "illustrate",
+        "applying",
+        "properties_of_addition",
+        "sums_up_to_20",
+        "identity_property",
+        "commutative_property"
+      ],
+      "response_ref": ".responses/s5-luna-medium-w7-mat_g1_na_q1_8-20260924.json",
+      "response_digest": "b5a61c96aec15eb9389fe94b2591a3288c6721acd92a1d75af2f325e876b73e5",
+      "prompt_ref": ".responses/s5-luna-medium-w7-mat_g1_na_q1_8-20260924.prompt.txt",
+      "prompt_digest": "cd55fada796ad346eecab6f654b85bdd80f4aefd5abe56b402bb43ce0b41d4a6",
+      "samples_delivery": "Prompt generated by tests.judgment_batches for one node and delivered by path to multi_agent_v1.spawn_agent using model gpt-5.6-luna with reasoning_effort=medium.",
+      "tool_uses_by_reviewer": "Reviewer was a tool-bearing multi_agent_v1 subagent instructed to read only its prompt file and write its verdicts JSON; it reported the output path and no other tool use to the dispatcher."
     }
   ],
   "findings": {
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The tasks use short equations, direct true-or-false judgments, and simple error checks suitable for Grade 1 Quarter 1 reasoning."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "Every sample addresses zero as an additive identity, reversed addends, or a direct comparison of sums within the stated competency."
+    },
     "competency_fulfillment": {
-      "verdict": "FAIL",
-      "rationale": "The order-of-addends half of this competency is mis-generated. Four samples pose questions such as whether 18 + 1 is the same as 1 + 14, or whether 13 + 6 is the same as 6 + 14, where the second expression is not a reordering of the first at all - one addend has been silently changed - and the key is False. A pupil who has correctly learned that changing the order of the addends does not change the sum will read the swapped-looking form, answer True, and be marked wrong; the item punishes the very generalisation the competency asks the pupil to apply. Only three samples, such as the one asking whether 16 + 3 is the same as 3 + 16, are genuine commutativity items."
+      "verdict": "PASS",
+      "rationale": "The packet repeatedly applies both named addition properties and includes sums through 20, with correct and incorrect cases represented.",
+      "decomposition": {
+        "verdict": "PASS",
+        "reasoning": "The six printed requirements separately capture the action, mathematical domain, both properties, and the stated numerical bound without omitting a competency component.",
+        "requirement_ids": [
+          "illustrate",
+          "applying",
+          "properties_of_addition",
+          "sums_up_to_20",
+          "identity_property",
+          "commutative_property"
+        ]
+      },
+      "clause_ids": [
+        "illustrate",
+        "applying",
+        "properties_of_addition",
+        "sums_up_to_20",
+        "identity_property",
+        "commutative_property"
+      ]
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "Both named properties do get their own items: the zero property appears in several forms including 0 + 19 and 18 + 0, and the order property appears in the matched-addend questions, so neither clause is missing from the generated set."
-    },
-    "cognitive_capacity": {
-      "verdict": "CONCERN",
-      "rationale": "The mismatched-addend items demand that the pupil compute and compare two separate sums, a two-step arithmetic comparison, where an item about the property should be answerable by inspection. That is a heavier and different demand than illustrating a property, and it lands in Quarter 1 of Grade 1."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "Four formats carry the samples - direct computation, a verdict on a stated equation, a blank to complete, and a check of another pupil's proposed answer - so the properties are met in more than one presentation."
-    },
-    "competency_alignment": {
-      "verdict": "CONCERN",
-      "rationale": "Across the order-property seeds the axis that varies is whether the two expressions match, which turns a property item into a spot-the-difference item; meanwhile the option Only when both are 0 is carried in every such list although it can never be correct for either property as stated."
+      "rationale": "Identity-property items appear in several formats, while commutative-property items include equal reversals and unequal distractor comparisons across the packet.",
+      "clause_ids": [
+        "illustrate",
+        "applying",
+        "properties_of_addition",
+        "sums_up_to_20",
+        "identity_property",
+        "commutative_property"
+      ]
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Every expression sampled, including the largest at 6 + 14, stays at or under a sum of 20 as the competency requires, and the zero-property items span the full range from 1 + 0 up to 19 + 0."
+      "rationale": "All displayed addends and resulting sums remain at or below 20, and the arithmetic structure stays within the specified Grade 1 scale."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The samples vary response modes among multiple choice, true-or-false, cloze, and error detection while retaining the targeted properties."
     }
   },
-  "overall": "FAIL"
+  "overall": "PASS"
 }

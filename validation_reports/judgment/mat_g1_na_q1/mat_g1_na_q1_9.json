@@ -1,7 +1,43 @@
 {
+  "schema_version": 2,
   "node_id": "mat_g1_na_q1_9",
-  "reviewed_by": "reviewer-c1-lantern-fescue-3061",
-  "review_date": "2026-09-11",
+  "competency_snapshot": {
+    "text": "Solve problems (given orally or in pictures) involving addition with sums up to 20.",
+    "grade": 1,
+    "quarter": 1,
+    "subdomain": null
+  },
+  "requirements_snapshot": [
+    {
+      "kind": "task",
+      "id": "solve",
+      "clause": "Solve"
+    },
+    {
+      "kind": "object",
+      "id": "problems",
+      "clause": "problems"
+    },
+    {
+      "kind": "context",
+      "id": "pictures",
+      "clause": "pictures"
+    },
+    {
+      "kind": "object",
+      "id": "addition",
+      "clause": "addition"
+    },
+    {
+      "kind": "range",
+      "id": "sums_up_to_20",
+      "clause": "sums up to 20"
+    }
+  ],
+  "packet_digest": "36f5478d21f7da81784bbfd325c8d34e5933e035f55c8a2e05089ceec4127605",
+  "sampling_version": "phase2-stratified-v2-rendered-visual",
+  "reviewed_by": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_9-20260924",
+  "review_date": "2026-09-24",
   "blind": true,
   "sample_seeds": [
     42,
@@ -19,20 +55,101 @@
     603,
     604,
     605,
-    606
+    606,
+    607,
+    608,
+    700,
+    701,
+    702,
+    800,
+    801,
+    900,
+    901,
+    1000,
+    1001,
+    1002
+  ],
+  "sample_ids": [
+    "aa43dda75a7bec3cacdf",
+    "3d7fe2699a9c5a60b38e",
+    "1020631580c8402b9184",
+    "79e5f998f99a836163b2",
+    "1a4c3bfc1aeeffb688f4",
+    "35ab6410debd58f4ad53",
+    "d3e8f9043e155b503cb6",
+    "d83eebad39b0c16444fa",
+    "725f87d8754dcb087e7f",
+    "ee88b54305f9c6ba581c",
+    "64ce8b563a974252b819",
+    "c068b5d037ee7555f20e",
+    "22509d6eaf400c423e8a",
+    "69b4f8c6e69b681de091",
+    "fb92c9110f073ffd6fb4",
+    "679b63c41e032447b17e",
+    "acd5ba5adc56bad47418",
+    "e6f5a4406ce4495fa34a",
+    "5af7200cc426eeea2344",
+    "7dac92ef99ca7d13dbd7",
+    "f1e811be122b4be81474",
+    "2955c14fc85b27a79f7e",
+    "dbd5ac3c7dc00e419bee",
+    "0f7aff72b5f714a4c4c4",
+    "f3c52472e54df340371c",
+    "7de56f03bf18b3c994ab",
+    "c08cf9e583313699eabb",
+    "51f5a6950c03951b8819"
   ],
   "samples_reviewed": [
     {
+      "node_id": "mat_g1_na_q1_9",
       "seed": 42,
       "formatter": "true_false",
       "question_text": "One group has 12 items and another group has 5 items. Putting them together makes 16 items in all. True or False?",
-      "correct_answer": false
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "We are adding two numbers: 12 and 5.",
+        "Add the last digits: 2 + 5 = 7.",
+        "Add the first digits: 1 + 0 = 1.",
+        "The sum is 12 + 5 = 17."
+      ],
+      "sample_id": "aa43dda75a7bec3cacdf",
+      "replay_digest": "fbaedf3322029d83fe0a6c687d0fff6c3392e0e4aac5948fd3a0d405bf8c27b6"
     },
     {
+      "node_id": "mat_g1_na_q1_9",
       "seed": 43,
       "formatter": "mcq",
       "question_text": "Start at 8. Count up 8 more. What number do you land on?",
       "correct_answer": 16,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -54,50 +171,156 @@
           "value": 17,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 16,
+      "hints": [
+        "We are adding two numbers: 8 and 8.",
+        "Add the last digits: 8 + 8 = 16. Write 6 and carry over 1.",
+        "The sum is 8 + 8 = 16."
+      ],
+      "sample_id": "3d7fe2699a9c5a60b38e",
+      "replay_digest": "75392264fa416e5c7a43da902241ea23bdf69b7886a6cb19c2350ebe324031ef"
     },
     {
+      "node_id": "mat_g1_na_q1_9",
       "seed": 44,
       "formatter": "read_mcq",
-      "question_text": "📚 — There is 1 book.\n📚📚📚📚📚📚📚📚📚📚 — 10 more books are added.\nHow many total books are there?",
-      "correct_answer": "C",
+      "question_text": "🧁 — There is 1 cupcake.\n🧁🧁🧁🧁🧁🧁🧁🧁🧁🧁 — 10 more cupcakes are added.\nHow many total cupcakes are there?",
+      "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "EmojiPictorial",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
-          "value": 10,
+          "value": 12,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 1,
+          "value": 10,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 11,
-          "is_correct": true
+          "value": 1,
+          "is_correct": false
         },
         {
           "key": "D",
-          "value": 12,
-          "is_correct": false
+          "value": 11,
+          "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 11,
+      "hints": [
+        "We are adding two numbers: 1 and 10.",
+        "Add the last digits: 1 + 0 = 1.",
+        "Add the first digits: 0 + 1 = 1.",
+        "The sum is 1 + 10 = 11."
+      ],
+      "visual_type": "EmojiPictorial",
+      "visual_payload": {
+        "emoji": "🧁",
+        "group_a": 1,
+        "group_b": 10,
+        "operation": "addition",
+        "layout": "stacked",
+        "display": "🧁",
+        "display_b": "🧁🧁🧁🧁🧁🧁🧁🧁🧁🧁"
+      },
+      "visual_render": {
+        "visual_type": "EmojiPictorial",
+        "renderer_input_digest": "bc18f14bc86a643d5a6200e63fc78fce70e2454dc6c7d24cce7b758e6b8ef92e",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "EmojiPictorial",
+          "element_count": 17,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "🧁",
+            "+"
+          ],
+          "distinct_colours": [
+            "hsl(var(--text-muted)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "1020631580c8402b9184",
+      "replay_digest": "3d7d7796d5712044afbd57e618754a3f80fea61bc89a6e8987a2fcdf57a0910c"
     },
     {
+      "node_id": "mat_g1_na_q1_9",
       "seed": 45,
       "formatter": "error_detect",
       "question_text": "Pia solved: \"Start at 11. Count up 4 more. You land on ___\". Pia says the blank is 16. Is Pia correct?",
       "correct_answer": {
         "has_error": true,
         "correct_value": 15
-      }
+      },
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": true,
+        "correct_value": 15
+      },
+      "hints": [
+        "We are adding two numbers: 11 and 4.",
+        "Add the last digits: 1 + 4 = 5.",
+        "Add the first digits: 1 + 0 = 1.",
+        "The sum is 11 + 4 = 15."
+      ],
+      "sample_id": "79e5f998f99a836163b2",
+      "replay_digest": "3cc74ba1245d80043f6224885f713f77ad8016f2f8e915c46f6983c610878954"
     },
     {
+      "node_id": "mat_g1_na_q1_9",
       "seed": 46,
       "formatter": "cloze",
       "question_text": "Start at 9. Count up 9 more. You land on ___",
       "correct_answer": 18,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -123,25 +346,177 @@
           "text": "18",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 18,
+      "hints": [
+        "We are adding two numbers: 9 and 9.",
+        "Add the last digits: 9 + 9 = 18. Write 8 and carry over 1.",
+        "The sum is 9 + 9 = 18."
+      ],
+      "sample_id": "1a4c3bfc1aeeffb688f4",
+      "replay_digest": "d8e6671d199bc9b75b49c4b02c91fd8584b354378ae1beef3636d1e5724c4411"
     },
     {
+      "node_id": "mat_g1_na_q1_9",
       "seed": 47,
       "formatter": "read_fill_in_blank",
       "question_text": "The two parts are 7 and 12. What is the sum?",
-      "correct_answer": 19
+      "correct_answer": 19,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "NumberBond",
+        "interaction_mode": "read",
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "resolved_answer": 19,
+      "hints": [
+        "We are adding two numbers: 7 and 12.",
+        "Add the last digits: 7 + 2 = 9.",
+        "Add the first digits: 0 + 1 = 1.",
+        "The sum is 7 + 12 = 19."
+      ],
+      "visual_type": "NumberBond",
+      "visual_payload": {
+        "whole": null,
+        "part1": 7,
+        "part2": 12,
+        "blank_position": "whole"
+      },
+      "visual_render": {
+        "visual_type": "NumberBond",
+        "renderer_input_digest": "4c294527709d3cf4a0bfe3ad6487b23eff74db2ac65d8d580629836a4cd28f09",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberBond",
+          "element_count": 7,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 1,
+          "text_labels": [
+            "7",
+            "12"
+          ],
+          "distinct_colours": [
+            "hsl(var(--primary)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "35ab6410debd58f4ad53",
+      "replay_digest": "2b6b0e15e406d12bb55e609493b948fc3642658e88aa19ca0395da8902685b36"
     },
     {
+      "node_id": "mat_g1_na_q1_9",
       "seed": 70,
       "formatter": "set_fill_in_blank",
       "question_text": "Show 8 + 7 on the number line.",
-      "correct_answer": 15
+      "correct_answer": 15,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "resolved_answer": 15,
+      "hints": [
+        "We are adding two numbers: 8 and 7.",
+        "Add the last digits: 8 + 7 = 15. Write 5 and carry over 1.",
+        "The sum is 8 + 7 = 15."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "start": 0,
+        "end": 20,
+        "major_interval": 5,
+        "minor_interval": 1,
+        "interval": 1,
+        "dot_value": 0,
+        "move_by": 7,
+        "content_type": "whole_number",
+        "value": 15,
+        "correct_position": 15,
+        "divisions": 20,
+        "is_interactive": true,
+        "show_labels": true,
+        "correct_answer": 15.0,
+        "target": 15.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "9a838d64f345f323cdb18c54d76d04036d1a4b0681fd93291f59bb035f0902b0",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 34,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "5",
+            "10",
+            "15",
+            "20",
+            "Your answer: Position",
+            "Click track, drag dot, or use ← → arrow keys"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "d3e8f9043e155b503cb6",
+      "replay_digest": "b78628590ffaee87d324d057493e1ca88e3cc1dffd31d58e3aeac098f6fe8daa"
     },
     {
+      "node_id": "mat_g1_na_q1_9",
       "seed": 500,
       "formatter": "read_mcq",
       "question_text": "The dot is at 8 and it moves forward 7 numbers. Starting from 8, just count up 7 numbers. Which number will the dot land on?",
       "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": {
+          "max_sum": 1.0,
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -163,19 +538,168 @@
           "value": 15,
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 15,
+      "hints": [
+        "We are adding two numbers: 8 and 7.",
+        "Add the last digits: 8 + 7 = 15. Write 5 and carry over 1.",
+        "The sum is 8 + 7 = 15."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "start": 0,
+        "end": 20,
+        "major_interval": 5,
+        "minor_interval": 1,
+        "interval": 1,
+        "dot_value": 8,
+        "move_by": 7,
+        "content_type": "whole_number",
+        "value": 15,
+        "correct_position": 15,
+        "divisions": 20,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 15.0,
+        "target": 15.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "acd9dd07fad829b95cee2a7a97d11299d78c32adf7484c87cb97723509fa5376",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 31,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "5",
+            "10",
+            "15",
+            "20"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "d83eebad39b0c16444fa",
+      "replay_digest": "28a1a92a37c50df1f4a6770e5634f2ab460c37eacfe2a826ec58ab8641c133b8"
     },
     {
+      "node_id": "mat_g1_na_q1_9",
       "seed": 501,
       "formatter": "set_fill_in_blank",
       "question_text": "Show 10 + 7 on the number line.",
-      "correct_answer": 17
+      "correct_answer": 17,
+      "requested": {
+        "difficulty_profile": {
+          "max_sum": 1.0,
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "resolved_answer": 17,
+      "hints": [
+        "We are adding two numbers: 10 and 7.",
+        "Add the last digits: 0 + 7 = 7.",
+        "Add the first digits: 1 + 0 = 1.",
+        "The sum is 10 + 7 = 17."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "start": 0,
+        "end": 20,
+        "major_interval": 5,
+        "minor_interval": 1,
+        "interval": 1,
+        "dot_value": 0,
+        "move_by": 7,
+        "content_type": "whole_number",
+        "value": 17,
+        "correct_position": 17,
+        "divisions": 20,
+        "is_interactive": true,
+        "show_labels": true,
+        "correct_answer": 17.0,
+        "target": 17.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "9bbff86f60f2c4b4d9e29bb256984b59ec7fbfc430095ea46c79751776b0342a",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 34,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "5",
+            "10",
+            "15",
+            "20",
+            "Your answer: Position",
+            "Click track, drag dot, or use ← → arrow keys"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "725f87d8754dcb087e7f",
+      "replay_digest": "298229851c6bd65e584b260d2410f4e26ccbae8d8533b027bfaa1fc465e0f0ef"
     },
     {
+      "node_id": "mat_g1_na_q1_9",
       "seed": 502,
       "formatter": "read_mcq",
-      "question_text": "🌳🌳🌳🌳🌳🌳🌳🌳🌳🌳🌳🌳🌳🌳🌳🌳🌳 — There are 17 trees.\n🌳🌳🌳 — 3 more trees are added.\nHow many total trees are there?",
+      "question_text": "🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨 — There are 17 paints.\n🎨🎨🎨 — 3 more paints are added.\nHow many total paints are there?",
       "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": {
+          "max_sum": 1.0,
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "EmojiPictorial",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -194,16 +718,76 @@
         },
         {
           "key": "D",
-          "value": 17,
+          "value": 19,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 20,
+      "hints": [
+        "We are adding two numbers: 17 and 3.",
+        "Add the last digits: 7 + 3 = 10. Write 0 and carry over 1.",
+        "Add the first digits: 1 + 0 + 1 = 2.",
+        "The sum is 17 + 3 = 20."
+      ],
+      "visual_type": "EmojiPictorial",
+      "visual_payload": {
+        "emoji": "🎨",
+        "group_a": 17,
+        "group_b": 3,
+        "operation": "addition",
+        "layout": "separated",
+        "display": "🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨",
+        "display_b": "🎨🎨🎨"
+      },
+      "visual_render": {
+        "visual_type": "EmojiPictorial",
+        "renderer_input_digest": "d43bada24ae4d7d2274b43d273d229af88e0e2f25ceb55fee537d4c06c65136d",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "EmojiPictorial",
+          "element_count": 26,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "🎨",
+            "+"
+          ],
+          "distinct_colours": [
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "ee88b54305f9c6ba581c",
+      "replay_digest": "a1e8b1869e9e7b309f01c6a0bd8ca4b4375116a762d937b2db1f27748a4f2273"
     },
     {
+      "node_id": "mat_g1_na_q1_9",
       "seed": 601,
       "formatter": "cloze",
       "question_text": "One group has 10 items and another group has 7 items. Putting them together makes ___ items in all.",
       "correct_answer": 17,
+      "requested": {
+        "difficulty_profile": {
+          "regrouping": "none"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -229,13 +813,39 @@
           "text": "18",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 17,
+      "hints": [
+        "We are adding two numbers: 10 and 7.",
+        "Add the last digits: 0 + 7 = 7.",
+        "Add the first digits: 1 + 0 = 1.",
+        "The sum is 10 + 7 = 17."
+      ],
+      "sample_id": "64ce8b563a974252b819",
+      "replay_digest": "b033ba33fd18103f39f32037ae343880b308e28de6e5f6c90b185c53a80a39a9"
     },
     {
+      "node_id": "mat_g1_na_q1_9",
       "seed": 602,
       "formatter": "read_mcq",
       "question_text": "The dot is at 17 and it moves forward 3 numbers. Starting from 17, just count up 3 numbers. Which number will the dot land on?",
       "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": {
+          "regrouping": "one_place"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -257,13 +867,86 @@
           "value": 19,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 20,
+      "hints": [
+        "We are adding two numbers: 17 and 3.",
+        "Add the last digits: 7 + 3 = 10. Write 0 and carry over 1.",
+        "Add the first digits: 1 + 0 + 1 = 2.",
+        "The sum is 17 + 3 = 20."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "start": 0,
+        "end": 20,
+        "major_interval": 5,
+        "minor_interval": 1,
+        "interval": 1,
+        "dot_value": 17,
+        "move_by": 3,
+        "content_type": "whole_number",
+        "value": 20,
+        "correct_position": 20,
+        "divisions": 20,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 20.0,
+        "target": 20.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "e82a0c1fc86cb03fe0c1ea5ec69780056359e3f195db50566d2a005900fc59b2",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 31,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "5",
+            "10",
+            "15",
+            "20"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "c068b5d037ee7555f20e",
+      "replay_digest": "801f7af0c5f62010a3cbd170fea6044d287cb8ec22b140d5e9070ad617f1ef3c"
     },
     {
+      "node_id": "mat_g1_na_q1_9",
       "seed": 603,
       "formatter": "mcq",
       "question_text": "Start at 12. Count up 4 more. What number do you land on?",
       "correct_answer": 16,
+      "requested": {
+        "difficulty_profile": {
+          "spine": "counting_up"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -285,22 +968,77 @@
           "value": 16,
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 16,
+      "hints": [
+        "We are adding two numbers: 12 and 4.",
+        "Add the last digits: 2 + 4 = 6.",
+        "Add the first digits: 1 + 0 = 1.",
+        "The sum is 12 + 4 = 16."
+      ],
+      "sample_id": "22509d6eaf400c423e8a",
+      "replay_digest": "041f3576fec047743804cfa24621d8c536fba1fa2e94c141201520a124c2e11e"
     },
     {
+      "node_id": "mat_g1_na_q1_9",
       "seed": 604,
       "formatter": "error_detect",
       "question_text": "Carlo solved: \"6 + 14 = ___\". Carlo says the blank is 20. Is Carlo correct?",
       "correct_answer": {
         "has_error": false,
         "correct_value": 20
-      }
+      },
+      "requested": {
+        "difficulty_profile": {
+          "spine": "putting_together"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 20
+      },
+      "hints": [
+        "We are adding two numbers: 6 and 14.",
+        "Add the last digits: 6 + 4 = 10. Write 0 and carry over 1.",
+        "Add the first digits: 0 + 1 + 1 = 2.",
+        "The sum is 6 + 14 = 20."
+      ],
+      "sample_id": "69b4f8c6e69b681de091",
+      "replay_digest": "9a8fd9cc442aae5d95c9d6287f74f3c0d36628dff0b63fb7fcaf5cf48e9976c3"
     },
     {
+      "node_id": "mat_g1_na_q1_9",
       "seed": 605,
       "formatter": "read_mcq",
       "question_text": "The dot is at 11 and it moves forward 9 numbers. Starting from 11, just count up 9 numbers. Which number will the dot land on?",
       "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": {
+          "strategy": "standard"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -322,43 +1060,1673 @@
           "value": 21,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 20,
+      "hints": [
+        "We are adding two numbers: 11 and 9.",
+        "Add the last digits: 1 + 9 = 10. Write 0 and carry over 1.",
+        "Add the first digits: 1 + 0 + 1 = 2.",
+        "The sum is 11 + 9 = 20."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "start": 0,
+        "end": 20,
+        "major_interval": 5,
+        "minor_interval": 1,
+        "interval": 1,
+        "dot_value": 11,
+        "move_by": 9,
+        "content_type": "whole_number",
+        "value": 20,
+        "correct_position": 20,
+        "divisions": 20,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 20.0,
+        "target": 20.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "8fb6338427444ef7ebf496943027c8b309910ea1a7d0d9c855926943aa786fb9",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 31,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "5",
+            "10",
+            "15",
+            "20"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "fb92c9110f073ffd6fb4",
+      "replay_digest": "0155ab6bf9c781cf57d4193e1ad1c94e3c4e2babe1490a33e8f4ebf37e07f40e"
     },
     {
+      "node_id": "mat_g1_na_q1_9",
       "seed": 606,
       "formatter": "error_detect",
       "question_text": "Manny solved: \"Start at 6. Count up 2 more. You land on ___\". Manny says the blank is 8. Is Manny correct?",
       "correct_answer": {
         "has_error": false,
         "correct_value": 8
-      }
+      },
+      "requested": {
+        "difficulty_profile": {
+          "structure": "result_unknown"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 8
+      },
+      "hints": [
+        "We are adding two numbers: 6 and 2.",
+        "Add the last digits: 6 + 2 = 8.",
+        "The sum is 6 + 2 = 8."
+      ],
+      "sample_id": "679b63c41e032447b17e",
+      "replay_digest": "4baa21a7d634c3e862c9afa99e216ee1a20a6bc6caeff8a4bcf6c6096cea39d9"
+    },
+    {
+      "node_id": "mat_g1_na_q1_9",
+      "seed": 607,
+      "formatter": "read_mcq",
+      "question_text": "🏀🏀🏀 — There are 3 items.\n🏀🏀🏀🏀🏀 — 5 more items are added.\nHow many total items are there?",
+      "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": {
+          "task_type": "counting_up"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "EmojiPictorial",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 7,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 5,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 8,
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 8,
+      "hints": [
+        "We are adding two numbers: 3 and 5.",
+        "Add the last digits: 3 + 5 = 8.",
+        "The sum is 3 + 5 = 8."
+      ],
+      "visual_type": "EmojiPictorial",
+      "visual_payload": {
+        "emoji": "🏀",
+        "group_a": 3,
+        "group_b": 5,
+        "operation": "addition",
+        "layout": "stacked",
+        "display": "🏀🏀🏀",
+        "display_b": "🏀🏀🏀🏀🏀"
+      },
+      "visual_render": {
+        "visual_type": "EmojiPictorial",
+        "renderer_input_digest": "1e0ec6c721aeded559e36ac75d478a2f24d38936111171c7419e7c73de72a8cd",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "EmojiPictorial",
+          "element_count": 14,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "🏀",
+            "+"
+          ],
+          "distinct_colours": [
+            "hsl(var(--text-muted)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "acd5ba5adc56bad47418",
+      "replay_digest": "16527666d2fb0fa18baee9f98d51438c76aa6367bd8d70440751c4d5ec5140a6"
+    },
+    {
+      "node_id": "mat_g1_na_q1_9",
+      "seed": 608,
+      "formatter": "true_false",
+      "question_text": "One group has 16 items and another group has 1 item. Putting them together makes 18 items in all. True or False?",
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "task_type": "putting_together"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "We are adding two numbers: 16 and 1.",
+        "Add the last digits: 6 + 1 = 7.",
+        "Add the first digits: 1 + 0 = 1.",
+        "The sum is 16 + 1 = 17."
+      ],
+      "sample_id": "e6f5a4406ce4495fa34a",
+      "replay_digest": "e7c237dbeb2a60ea58ddb53aff59fb77e3871355d7e4e8f434b1f14bc34d8865"
+    },
+    {
+      "node_id": "mat_g1_na_q1_9",
+      "seed": 700,
+      "formatter": "mcq",
+      "question_text": "One group has 8 items and another group has 3 items. If you put them together, how many items are there in all?",
+      "correct_answer": 11,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 11,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 10,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 21,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 12,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 11,
+      "hints": [
+        "We are adding two numbers: 8 and 3.",
+        "Add the last digits: 8 + 3 = 11. Write 1 and carry over 1.",
+        "The sum is 8 + 3 = 11."
+      ],
+      "sample_id": "5af7200cc426eeea2344",
+      "replay_digest": "2988cdae9c1ba4d0725970de5cf186b24c7200d65ec382f3aed01e6005a4aaf7"
+    },
+    {
+      "node_id": "mat_g1_na_q1_9",
+      "seed": 701,
+      "formatter": "cloze",
+      "question_text": "🎨 Kuya Renz has a math challenge about sketchpads. Start at 18. Count up 1 more. You land on ___",
+      "correct_answer": 19,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "visual_arts",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 19,
+          "text": "19",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 18,
+          "text": "18",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 29,
+          "text": "29",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 20,
+          "text": "20",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 19,
+      "hints": [
+        "We are adding two numbers: 18 and 1.",
+        "Add the last digits: 8 + 1 = 9.",
+        "Add the first digits: 1 + 0 = 1.",
+        "The sum is 18 + 1 = 19."
+      ],
+      "sample_id": "7dac92ef99ca7d13dbd7",
+      "replay_digest": "58b08d67d2f64aba2370088d38d7227c87c25897b28e601bd998ca2a993a36cb"
+    },
+    {
+      "node_id": "mat_g1_na_q1_9",
+      "seed": 702,
+      "formatter": "read_mcq",
+      "question_text": "🏀 — There is 1 item.\n🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀 — 17 more items are added.\nHow many total items are there?",
+      "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "diy_crafts",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "EmojiPictorial",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 18,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 19,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 17,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 1,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 18,
+      "hints": [
+        "We are adding two numbers: 1 and 17.",
+        "Add the last digits: 1 + 7 = 8.",
+        "Add the first digits: 0 + 1 = 1.",
+        "The sum is 1 + 17 = 18."
+      ],
+      "visual_type": "EmojiPictorial",
+      "visual_payload": {
+        "emoji": "🏀",
+        "group_a": 1,
+        "group_b": 17,
+        "operation": "addition",
+        "layout": "inline",
+        "display": "🏀",
+        "display_b": "🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀"
+      },
+      "visual_render": {
+        "visual_type": "EmojiPictorial",
+        "renderer_input_digest": "7fe15418544941207eb63a04e4034cb0b0308e3348bcec0ef8fc0a347a05523d",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "EmojiPictorial",
+          "element_count": 24,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "🏀",
+            "and"
+          ],
+          "distinct_colours": [
+            "hsl(var(--text-muted)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "f1e811be122b4be81474",
+      "replay_digest": "9e73a7c74d2008762fe78d2ece72ebcdd1bae2e10f44c4e818dc50b15198d161"
+    },
+    {
+      "node_id": "mat_g1_na_q1_9",
+      "seed": 800,
+      "formatter": "read_fill_in_blank",
+      "question_text": "The two parts are 10 and 2. What is the sum?",
+      "correct_answer": 12,
+      "requested": {
+        "difficulty_profile": {
+          "max_sum": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "NumberBond",
+        "interaction_mode": "read",
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "resolved_answer": 12,
+      "hints": [
+        "We are adding two numbers: 10 and 2.",
+        "Add the last digits: 0 + 2 = 2.",
+        "Add the first digits: 1 + 0 = 1.",
+        "The sum is 10 + 2 = 12."
+      ],
+      "visual_type": "NumberBond",
+      "visual_payload": {
+        "whole": null,
+        "part1": 10,
+        "part2": 2,
+        "blank_position": "whole"
+      },
+      "visual_render": {
+        "visual_type": "NumberBond",
+        "renderer_input_digest": "938d0ee6d483abef8361567599c6042a474f857aac24f152863596a4c150d9e5",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberBond",
+          "element_count": 7,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 1,
+          "text_labels": [
+            "10",
+            "2"
+          ],
+          "distinct_colours": [
+            "hsl(var(--primary)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "2955c14fc85b27a79f7e",
+      "replay_digest": "2fc85077a3875163261ca9cd41ae5485b332ad5ba91f8efeed49e2e07560074c"
+    },
+    {
+      "node_id": "mat_g1_na_q1_9",
+      "seed": 801,
+      "formatter": "read_mcq",
+      "question_text": "🏀🏀🏀🏀🏀🏀🏀🏀 — There are 8 items.\n🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀 — 10 more items are added.\nHow many total items are there?",
+      "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "EmojiPictorial",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 10,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 18,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 19,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 17,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 18,
+      "hints": [
+        "We are adding two numbers: 8 and 10.",
+        "Add the last digits: 8 + 0 = 8.",
+        "Add the first digits: 0 + 1 = 1.",
+        "The sum is 8 + 10 = 18."
+      ],
+      "visual_type": "EmojiPictorial",
+      "visual_payload": {
+        "emoji": "🏀",
+        "group_a": 8,
+        "group_b": 10,
+        "operation": "addition",
+        "layout": "stacked",
+        "display": "🏀🏀🏀🏀🏀🏀🏀🏀",
+        "display_b": "🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀"
+      },
+      "visual_render": {
+        "visual_type": "EmojiPictorial",
+        "renderer_input_digest": "66157f6df34d9d97846d6ef57fb375e085127698addb2ad9fe4703a4dd11c76c",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "EmojiPictorial",
+          "element_count": 24,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "🏀",
+            "+"
+          ],
+          "distinct_colours": [
+            "hsl(var(--text-muted)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "dbd5ac3c7dc00e419bee",
+      "replay_digest": "0bcb857b645216c6ade0ba4a90b06b0502789456ab5a6d91388bd55659de3868"
+    },
+    {
+      "node_id": "mat_g1_na_q1_9",
+      "seed": 900,
+      "formatter": "error_detect",
+      "question_text": "Noel solved: \"Start at 1. Count up 1 more. You land on ___\". Noel says the blank is 3. Is Noel correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 2
+      },
+      "requested": {
+        "difficulty_profile": {
+          "max_sum": 0.0,
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": true,
+        "correct_value": 2
+      },
+      "hints": [
+        "We are adding two numbers: 1 and 1.",
+        "Add the last digits: 1 + 1 = 2.",
+        "The sum is 1 + 1 = 2."
+      ],
+      "sample_id": "0f7aff72b5f714a4c4c4",
+      "replay_digest": "07e4b695609e207a61c3849022abb020e8cac0dae32842932301effa61230662"
+    },
+    {
+      "node_id": "mat_g1_na_q1_9",
+      "seed": 901,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Show 1 + 1 on the number line.",
+      "correct_answer": 2,
+      "requested": {
+        "difficulty_profile": {
+          "max_sum": 0.0,
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "resolved_answer": 2,
+      "hints": [
+        "We are adding two numbers: 1 and 1.",
+        "Add the last digits: 1 + 1 = 2.",
+        "The sum is 1 + 1 = 2."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "start": 0,
+        "end": 20,
+        "major_interval": 5,
+        "minor_interval": 1,
+        "interval": 1,
+        "dot_value": 0,
+        "move_by": 1,
+        "content_type": "whole_number",
+        "value": 2,
+        "correct_position": 2,
+        "divisions": 20,
+        "is_interactive": true,
+        "show_labels": true,
+        "correct_answer": 2.0,
+        "target": 2.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "6997901ff6b006fe32f3848e76f6841e3ee1a9e9dc47a7ad836021729455b4d4",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 34,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "5",
+            "10",
+            "15",
+            "20",
+            "Your answer: Position",
+            "Click track, drag dot, or use ← → arrow keys"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "f3c52472e54df340371c",
+      "replay_digest": "b2a9f36ac594668918587816a56f49b91eafb6ca72028144f7cefe2fbdd729e6"
+    },
+    {
+      "node_id": "mat_g1_na_q1_9",
+      "seed": 1000,
+      "formatter": "mcq",
+      "question_text": "One group has 10 items and another group has 8 items. If you put them together, how many items are there in all?",
+      "correct_answer": 18,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "hint_gated"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "hint_gated"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 17,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 19,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 28,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 18,
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 18,
+      "hints": [
+        "We are adding two numbers: 10 and 8.",
+        "Add the last digits: 0 + 8 = 8.",
+        "Add the first digits: 1 + 0 = 1.",
+        "The sum is 10 + 8 = 18."
+      ],
+      "sample_id": "7de56f03bf18b3c994ab",
+      "replay_digest": "485d45d04db9fc20596b1b73f30953cfa5f87c4043de662ba7c2f8ba8a476def"
+    },
+    {
+      "node_id": "mat_g1_na_q1_9",
+      "seed": 1001,
+      "formatter": "read_mcq",
+      "question_text": "✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️ — There are 14 items.\n✝️✝️ — 2 more items are added.\nHow many total items are there?",
+      "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "mastery_drill"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "EmojiPictorial",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "mastery_drill"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 16,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 14,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 2,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 12,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 16,
+      "hints": [
+        "We are adding two numbers: 14 and 2.",
+        "Add the last digits: 4 + 2 = 6.",
+        "Add the first digits: 1 + 0 = 1.",
+        "The sum is 14 + 2 = 16."
+      ],
+      "visual_type": "EmojiPictorial",
+      "visual_payload": {
+        "emoji": "✝️",
+        "group_a": 14,
+        "group_b": 2,
+        "operation": "addition",
+        "layout": "inline",
+        "display": "✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️",
+        "display_b": "✝️✝️"
+      },
+      "visual_render": {
+        "visual_type": "EmojiPictorial",
+        "renderer_input_digest": "4746d1dc35d06c8fe9cc9ca68a53fc28d5300d395b06fab53532e6657c4fb2f3",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "EmojiPictorial",
+          "element_count": 22,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "✝️",
+            "and"
+          ],
+          "distinct_colours": [
+            "hsl(var(--text-muted)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "c08cf9e583313699eabb",
+      "replay_digest": "5321530d05c29f6755d21ec6b1c5a55e218d1216886472634fe0eff64ebc9887"
+    },
+    {
+      "node_id": "mat_g1_na_q1_9",
+      "seed": 1002,
+      "formatter": "read_mcq",
+      "question_text": "🧁🧁 — There are 2 cupcakes.\n🧁 — 1 more cupcake is added.\nHow many total cupcakes are there?",
+      "correct_answer": "C",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "scaffolded"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "EmojiPictorial",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "scaffolded"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 4,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 2,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 3,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 1,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 3,
+      "hints": [
+        "We are adding two numbers: 2 and 1.",
+        "Add the last digits: 2 + 1 = 3.",
+        "The sum is 2 + 1 = 3."
+      ],
+      "visual_type": "EmojiPictorial",
+      "visual_payload": {
+        "emoji": "🧁",
+        "group_a": 2,
+        "group_b": 1,
+        "operation": "addition",
+        "layout": "inline",
+        "display": "🧁🧁",
+        "display_b": "🧁"
+      },
+      "visual_render": {
+        "visual_type": "EmojiPictorial",
+        "renderer_input_digest": "d13f3b34b16496d1acd875da7a336ec0e3956e45c3525d5dcc2d7981045f2921",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "EmojiPictorial",
+          "element_count": 9,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "🧁",
+            "and"
+          ],
+          "distinct_colours": [
+            "hsl(var(--text-muted)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "51f5a6950c03951b8819",
+      "replay_digest": "6bb4bb5bcd1b06599ec109b986703d898986f1071ba16cfc64bad37ad4dda003"
+    }
+  ],
+  "sample_assessments": [
+    {
+      "sample_id": "aa43dda75a7bec3cacdf",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Sample aa43dda75a7bec3cacdf gives two explicit groups and a single true-or-false claim to evaluate."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample aa43dda75a7bec3cacdf describes joining 12 and 5 items, and the stated total 16 is correctly false."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Sample aa43dda75a7bec3cacdf uses short familiar language and clearly asks whether the displayed statement is true."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample aa43dda75a7bec3cacdf has 12 + 5 = 17, so the supplied False answer is mathematically correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_9-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_9-20260924:mat_g1_na_q1_9"
+    },
+    {
+      "sample_id": "3d7fe2699a9c5a60b38e",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 3d7fe2699a9c5a60b38e specifies a starting number and exactly eight forward counts."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 3d7fe2699a9c5a60b38e consistently treats counting eight from 8 as addition and lands at 16."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 3d7fe2699a9c5a60b38e asks one direct question in concise, child-accessible wording."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 3d7fe2699a9c5a60b38e correctly gives 8 + 8 = 16 and includes 16 among the options."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_9-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_9-20260924:mat_g1_na_q1_9"
+    },
+    {
+      "sample_id": "1020631580c8402b9184",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 1020631580c8402b9184 labels one cupcake and ten added cupcakes, leaving one determinate total."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 1020631580c8402b9184 presents a coherent joining situation whose total is eleven cupcakes."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 1020631580c8402b9184 pairs the pictorial groups with explicit quantity labels and a clear total question."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 1020631580c8402b9184 correctly computes 1 + 10 = 11 and supplies 11 as an option."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_9-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_9-20260924:mat_g1_na_q1_9"
+    },
+    {
+      "sample_id": "79e5f998f99a836163b2",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 79e5f998f99a836163b2 clearly identifies Pia's proposed result and asks whether it is correct."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 79e5f998f99a836163b2 uses a valid count-forward situation from 11 by 4 steps."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 79e5f998f99a836163b2 explains the blank context and presents a simple correctness judgment."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 79e5f998f99a836163b2 correctly identifies 11 + 4 as 15, so Pia's 16 is erroneous."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_9-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_9-20260924:mat_g1_na_q1_9"
+    },
+    {
+      "sample_id": "1a4c3bfc1aeeffb688f4",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 1a4c3bfc1aeeffb688f4 gives one start value, one count-forward amount, and one blank."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 1a4c3bfc1aeeffb688f4 has a consistent count-forward interpretation from 9 by 9."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 1a4c3bfc1aeeffb688f4 is a short direct prompt whose missing answer is easy to locate."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 1a4c3bfc1aeeffb688f4 correctly answers 9 + 9 with 18."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_9-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_9-20260924:mat_g1_na_q1_9"
+    },
+    {
+      "sample_id": "35ab6410debd58f4ad53",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 35ab6410debd58f4ad53 names two parts and asks for their single sum."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 35ab6410debd58f4ad53 provides a coherent number-bond interpretation for parts 7 and 12."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 35ab6410debd58f4ad53 uses familiar wording and a plainly stated question."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 35ab6410debd58f4ad53 correctly gives 7 + 12 = 19."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_9-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_9-20260924:mat_g1_na_q1_9"
+    },
+    {
+      "sample_id": "d3e8f9043e155b503cb6",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Sample d3e8f9043e155b503cb6 specifies the exact addition expression to show on the number line."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample d3e8f9043e155b503cb6 uses a suitable number-line representation for adding 8 and 7."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Sample d3e8f9043e155b503cb6 is brief and directly names the requested number-line action."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample d3e8f9043e155b503cb6 correctly identifies the result of 8 + 7 as 15."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_9-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_9-20260924:mat_g1_na_q1_9"
+    },
+    {
+      "sample_id": "d83eebad39b0c16444fa",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Sample d83eebad39b0c16444fa identifies the starting position, seven forward moves, and requested landing number."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample d83eebad39b0c16444fa describes a valid forward movement on a number line from 8 to 15."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Sample d83eebad39b0c16444fa gives a repeated counting instruction that makes the intended operation clear."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample d83eebad39b0c16444fa correctly states that 8 + 7 lands on 15."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_9-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_9-20260924:mat_g1_na_q1_9"
+    },
+    {
+      "sample_id": "725f87d8754dcb087e7f",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 725f87d8754dcb087e7f specifies one expression and one number-line representation to produce."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 725f87d8754dcb087e7f appropriately models 10 plus 7 as a forward number-line move."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 725f87d8754dcb087e7f is a concise action prompt with no competing interpretation."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 725f87d8754dcb087e7f correctly supplies 17 for 10 + 7."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_9-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_9-20260924:mat_g1_na_q1_9"
+    },
+    {
+      "sample_id": "ee88b54305f9c6ba581c",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Sample ee88b54305f9c6ba581c labels 17 paints and three added paints, determining one total."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample ee88b54305f9c6ba581c presents a coherent joining context with a total of 20."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Sample ee88b54305f9c6ba581c combines explicit labels with a direct question about all paints."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample ee88b54305f9c6ba581c correctly computes 17 + 3 = 20."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_9-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_9-20260924:mat_g1_na_q1_9"
+    },
+    {
+      "sample_id": "64ce8b563a974252b819",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 64ce8b563a974252b819 clearly describes two groups and a missing combined quantity."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 64ce8b563a974252b819 uses a valid combine interpretation for groups of 10 and 7."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 64ce8b563a974252b819 uses familiar joining language and a clearly placed blank."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 64ce8b563a974252b819 correctly gives 10 + 7 = 17."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_9-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_9-20260924:mat_g1_na_q1_9"
+    },
+    {
+      "sample_id": "c068b5d037ee7555f20e",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Sample c068b5d037ee7555f20e states the starting point and exactly three forward moves."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample c068b5d037ee7555f20e correctly represents adding 3 to 17 on a number line."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Sample c068b5d037ee7555f20e repeats the intended count-forward action in accessible language."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample c068b5d037ee7555f20e correctly answers 17 + 3 with 20."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_9-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_9-20260924:mat_g1_na_q1_9"
+    },
+    {
+      "sample_id": "22509d6eaf400c423e8a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 22509d6eaf400c423e8a identifies a unique start, increment, and requested landing number."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 22509d6eaf400c423e8a gives a valid forward-counting situation from 12 by 4."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 22509d6eaf400c423e8a is a direct, short question suitable for an early learner."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 22509d6eaf400c423e8a correctly computes 12 + 4 = 16."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_9-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_9-20260924:mat_g1_na_q1_9"
+    },
+    {
+      "sample_id": "69b4f8c6e69b681de091",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 69b4f8c6e69b681de091 clearly asks whether the displayed completed equation is correct."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 69b4f8c6e69b681de091 presents a coherent addition equation with no contextual conflict."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 69b4f8c6e69b681de091 uses a familiar named solver and a simple yes-or-no judgment."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 69b4f8c6e69b681de091 correctly marks 6 + 14 = 20 as having no error."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_9-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_9-20260924:mat_g1_na_q1_9"
+    },
+    {
+      "sample_id": "fb92c9110f073ffd6fb4",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Sample fb92c9110f073ffd6fb4 gives one starting value and one explicit forward-count amount."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample fb92c9110f073ffd6fb4 consistently models nine forward moves from 11."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Sample fb92c9110f073ffd6fb4 clearly asks which number the dot will reach."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample fb92c9110f073ffd6fb4 correctly gives 11 + 9 = 20."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_9-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_9-20260924:mat_g1_na_q1_9"
+    },
+    {
+      "sample_id": "679b63c41e032447b17e",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 679b63c41e032447b17e specifies Manny's claim and asks for a correctness decision."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 679b63c41e032447b17e presents a valid count-forward problem starting at 6."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 679b63c41e032447b17e uses concise wording and makes the proposed answer visible."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 679b63c41e032447b17e correctly confirms that 6 + 2 equals 8."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_9-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_9-20260924:mat_g1_na_q1_9"
+    },
+    {
+      "sample_id": "acd5ba5adc56bad47418",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Sample acd5ba5adc56bad47418 shows two countable groups and asks for their total."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample acd5ba5adc56bad47418 gives a coherent pictorial joining situation for 3 and 5."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Sample acd5ba5adc56bad47418 explicitly labels both groups and asks one straightforward question."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample acd5ba5adc56bad47418 correctly computes 3 + 5 = 8."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_9-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_9-20260924:mat_g1_na_q1_9"
+    },
+    {
+      "sample_id": "e6f5a4406ce4495fa34a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Sample e6f5a4406ce4495fa34a identifies both groups and presents a single true-or-false claim."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample e6f5a4406ce4495fa34a uses a valid joining context for 16 and 1 items."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Sample e6f5a4406ce4495fa34a uses familiar language and clearly frames the judgment."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample e6f5a4406ce4495fa34a correctly rejects 18 because 16 + 1 = 17."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_9-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_9-20260924:mat_g1_na_q1_9"
+    },
+    {
+      "sample_id": "5af7200cc426eeea2344",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 5af7200cc426eeea2344 specifies two groups and one requested combined count."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 5af7200cc426eeea2344 describes putting 8 and 3 items together coherently."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 5af7200cc426eeea2344 asks a direct total question using familiar words."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 5af7200cc426eeea2344 correctly gives 8 + 3 = 11."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_9-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_9-20260924:mat_g1_na_q1_9"
+    },
+    {
+      "sample_id": "7dac92ef99ca7d13dbd7",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 7dac92ef99ca7d13dbd7 supplies the start, one forward count, and one blank."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 7dac92ef99ca7d13dbd7 keeps the sketchpad context consistent with moving from 18 to 19."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 7dac92ef99ca7d13dbd7 adds a simple named context without obscuring the counting task."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 7dac92ef99ca7d13dbd7 correctly answers 18 + 1 with 19."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_9-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_9-20260924:mat_g1_na_q1_9"
+    },
+    {
+      "sample_id": "f1e811be122b4be81474",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Sample f1e811be122b4be81474 labels one item and seventeen added items, fixing the total."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample f1e811be122b4be81474 presents a coherent pictorial joining problem totaling 18."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Sample f1e811be122b4be81474 explicitly states both quantities and asks for all items."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample f1e811be122b4be81474 correctly computes 1 + 17 = 18."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_9-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_9-20260924:mat_g1_na_q1_9"
+    },
+    {
+      "sample_id": "2955c14fc85b27a79f7e",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 2955c14fc85b27a79f7e names two number-bond parts and requests their sum."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 2955c14fc85b27a79f7e uses a valid part-part-whole interpretation for 10 and 2."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 2955c14fc85b27a79f7e uses a short familiar question with no irrelevant detail."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 2955c14fc85b27a79f7e correctly gives 10 + 2 = 12."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_9-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_9-20260924:mat_g1_na_q1_9"
+    },
+    {
+      "sample_id": "dbd5ac3c7dc00e419bee",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Sample dbd5ac3c7dc00e419bee labels eight items and ten added items, making one total clear."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample dbd5ac3c7dc00e419bee presents a coherent pictorial combine situation for 8 and 10."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Sample dbd5ac3c7dc00e419bee states each quantity and asks plainly for the total."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample dbd5ac3c7dc00e419bee correctly computes 8 + 10 = 18."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_9-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_9-20260924:mat_g1_na_q1_9"
+    },
+    {
+      "sample_id": "0f7aff72b5f714a4c4c4",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 0f7aff72b5f714a4c4c4 clearly states Noel's proposed answer and requests a correctness judgment."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 0f7aff72b5f714a4c4c4 gives a valid one-step count-forward situation from 1."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 0f7aff72b5f714a4c4c4 uses short wording and makes the error easy to inspect."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 0f7aff72b5f714a4c4c4 correctly identifies 1 + 1 as 2, not 3."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_9-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_9-20260924:mat_g1_na_q1_9"
+    },
+    {
+      "sample_id": "f3c52472e54df340371c",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Sample f3c52472e54df340371c specifies the exact expression and requested number-line display."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample f3c52472e54df340371c appropriately represents adding one and one on a number line."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Sample f3c52472e54df340371c is a direct action instruction with familiar notation."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample f3c52472e54df340371c correctly gives 2 as the sum of 1 and 1."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_9-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_9-20260924:mat_g1_na_q1_9"
+    },
+    {
+      "sample_id": "7de56f03bf18b3c994ab",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 7de56f03bf18b3c994ab identifies two groups and asks for one combined amount."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 7de56f03bf18b3c994ab coherently models joining groups of 10 and 8."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 7de56f03bf18b3c994ab uses a familiar total question and has a single intended answer."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 7de56f03bf18b3c994ab correctly answers 10 + 8 with 18."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_9-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_9-20260924:mat_g1_na_q1_9"
+    },
+    {
+      "sample_id": "c08cf9e583313699eabb",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Sample c08cf9e583313699eabb labels fourteen items and two additions, determining the total."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample c08cf9e583313699eabb presents a coherent pictorial combine situation for 14 and 2."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Sample c08cf9e583313699eabb gives explicit counts alongside the picture and a clear total question."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample c08cf9e583313699eabb correctly computes 14 + 2 = 16."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_9-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_9-20260924:mat_g1_na_q1_9"
+    },
+    {
+      "sample_id": "51f5a6950c03951b8819",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 51f5a6950c03951b8819 identifies two cupcake groups and asks for their total."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 51f5a6950c03951b8819 uses a coherent joining context for 2 cupcakes and 1 more."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 51f5a6950c03951b8819 pairs the image with explicit labels and a direct question."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 51f5a6950c03951b8819 correctly gives 2 + 1 = 3."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_9-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_9-20260924:mat_g1_na_q1_9"
+    }
+  ],
+  "clause_evidence": [
+    {
+      "requirement_id": "solve",
+      "clause": "Solve",
+      "verdict": "PASS",
+      "reasoning": "The packet requires learners to determine answers through true-false, choice, blank, error-check, and representation tasks.",
+      "sample_ids": [
+        "aa43dda75a7bec3cacdf"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_9-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_9-20260924:mat_g1_na_q1_9"
+    },
+    {
+      "requirement_id": "problems",
+      "clause": "problems",
+      "verdict": "PASS",
+      "reasoning": "The samples present meaningful prompts involving groups, count-forward situations, number bonds, and number-line tasks.",
+      "sample_ids": [
+        "5af7200cc426eeea2344"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_9-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_9-20260924:mat_g1_na_q1_9"
+    },
+    {
+      "requirement_id": "pictures",
+      "clause": "pictures",
+      "verdict": "PASS",
+      "reasoning": "Several printed samples use EmojiPictorial, NumberBond, or NumberLine visual representations tied to the addition task.",
+      "sample_ids": [
+        "1020631580c8402b9184",
+        "35ab6410debd58f4ad53",
+        "d3e8f9043e155b503cb6"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_9-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_9-20260924:mat_g1_na_q1_9"
+    },
+    {
+      "requirement_id": "addition",
+      "clause": "addition",
+      "verdict": "PASS",
+      "reasoning": "Every cited item asks learners to combine addends or count forward, and the provided calculations consistently use addition.",
+      "sample_ids": [
+        "3d7fe2699a9c5a60b38e"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_9-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_9-20260924:mat_g1_na_q1_9"
+    },
+    {
+      "requirement_id": "sums_up_to_20",
+      "clause": "sums up to 20",
+      "verdict": "PASS",
+      "reasoning": "The displayed answers range from 2 through 20, and no printed sample has a sum exceeding the required upper bound.",
+      "sample_ids": [
+        "ee88b54305f9c6ba581c"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_9-20260924",
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_9-20260924:mat_g1_na_q1_9"
+    }
+  ],
+  "dispatch_provenance": [
+    {
+      "dispatch_id": "s5-luna-medium-w7-mat_g1_na_q1_9-20260924:mat_g1_na_q1_9",
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_9-20260924",
+      "review_date": "2026-09-24",
+      "blind": true,
+      "packet_digest": "36f5478d21f7da81784bbfd325c8d34e5933e035f55c8a2e05089ceec4127605",
+      "clause_ids": [
+        "solve",
+        "problems",
+        "pictures",
+        "addition",
+        "sums_up_to_20"
+      ],
+      "response_ref": ".responses/s5-luna-medium-w7-mat_g1_na_q1_9-20260924.json",
+      "response_digest": "a1ad5c19dc15a75ec32611debf314f9e0621eaf64b20ed271a3c4e14f89a0b6f",
+      "prompt_ref": ".responses/s5-luna-medium-w7-mat_g1_na_q1_9-20260924.prompt.txt",
+      "prompt_digest": "13f80133ee6c4db4fca27ac10f3921c786f596359a062416228b46025d5e2709",
+      "samples_delivery": "Prompt generated by tests.judgment_batches for one node and delivered by path to multi_agent_v1.spawn_agent using model gpt-5.6-luna with reasoning_effort=medium.",
+      "tool_uses_by_reviewer": "Reviewer was a tool-bearing multi_agent_v1 subagent instructed to read only its prompt file and write its verdicts JSON; it reported the output path and no other tool use to the dispatcher."
     }
   ],
   "findings": {
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The tasks use small whole-number additions, counting forward, pictures, and direct true-or-false or choice responses appropriate for Grade 1."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "Every item asks learners to combine two quantities or count forward to find an addition sum, matching the stated competency."
+    },
     "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "The competency asks for problems, and most samples are bare computation in a number-line or count-on dress - starting at 8 and counting up 8 more, or a dot at 8 that moves forward 7 numbers. The restriction to material given orally or in pictures rightly rules out text-heavy word problems at this age, and the pictured book and tree items do satisfy it, but a pupil working through this node mostly performs additions rather than resolving situations."
+      "verdict": "PASS",
+      "rationale": "The packet repeatedly exercises solving addition situations and representations with all displayed sums no greater than 20.",
+      "decomposition": {
+        "verdict": "PASS",
+        "reasoning": "The five printed requirements separately identify solving, problems, pictures, addition, and the upper bound of sums up to 20; together they losslessly cover the competency wording.",
+        "requirement_ids": [
+          "solve",
+          "problems",
+          "pictures",
+          "addition",
+          "sums_up_to_20"
+        ]
+      },
+      "clause_ids": [
+        "solve",
+        "problems",
+        "pictures",
+        "addition",
+        "sums_up_to_20"
+      ]
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "Within what pictures and oral framing allow, several problem shapes are sampled: a pictured collection increased by a second pictured collection, two parts combined into a whole, a forward move along a number line, and a check of a peer's proposed answer."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Every item is one addition with no regrouping vocabulary, the pictorial items show every object so the pupil can count rather than compute, and stems stay to one or two short lines - appropriate for Quarter 1 of Grade 1."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "Six response modes appear over sixteen samples, and the error-detection items split their verdicts, with one confirming a correct answer of 20 and another rejecting a proposed 16, so that format is not answerable by a fixed reply."
-    },
-    "competency_alignment": {
-      "verdict": "CONCERN",
-      "rationale": "Nearly every stem here reappears in the same wording under the illustrate-addition competency for this grade, so the seeds vary addend size but add no problem-solving demand that distinguishes solving from illustrating; the difficulty ladder is arithmetic magnitude rather than problem structure."
+      "rationale": "Coverage includes contextual joining problems, number-line movement, number bonds, pictorial representations, equations, and several response formats.",
+      "clause_ids": [
+        "solve",
+        "problems",
+        "pictures",
+        "addition",
+        "sums_up_to_20"
+      ]
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Sums reach exactly 20 in three samples, including 17 and 3 and 11 and 9, and never exceed it, so the stated ceiling is both respected and actually exercised rather than approached timidly."
+      "rationale": "All numerical inputs are nonnegative small integers and every stated result stays within 20, with no unnecessary multi-step context."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The examples vary contexts, addends, representations, and response modes while retaining the same Grade 1 addition target."
     }
   },
-  "overall": "CONCERN"
+  "overall": "PASS"
 }

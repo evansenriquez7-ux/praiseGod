@@ -1,0 +1,219 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_6-20260924
+
+Write one JSON object to:
+  local_only/scratch/review/s5-luna-2026-09-24/wave7/mat_g1_na_q1_6/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN; never invent a supporting sample.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-gpt-5.6-luna-medium-w7-mat_g1_na_q1_6-20260924",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g1_na_q1_6
+PACKET DIGEST: 8666005818dff54020bbb0be07933e3230fda88e7578ddfbdd460bce5f9caeb5
+COMPETENCY (Grade 1, Quarter 1, None):
+Compose and decompose numbers up to 10 using concrete materials (e.g., 5 is 5 and 0; 4 and 1; 3 and 2; 2 and 3; 1 and 4; 0 and 5).
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  compose: Compose
+  decompose: decompose
+  numbers: numbers
+  up_to_10: up to 10
+  concrete_materials: concrete materials
+  5_is_5_and_0: 5 is 5 and 0
+  4_and_1: 4 and 1
+  3_and_2: 3 and 2
+  2_and_3: 2 and 3
+  1_and_4: 1 and 4
+  0_and_5: 0 and 5
+
+SAMPLES (every one of these is real rendered output):
+  sample 7d91d75206a3569da2c6  seed 42  [mcq]
+      stem:    Ana has 5 shells: 🐚🐚🐚🐚🐚 She puts 5 in one group. How many are in the other group?
+      answer:  0
+      options: 0 / 2 / 1 / 5
+      hints:   ["Count all the objects first. There are 5 in all.", "Count the group you can see. Then count the objects left over.", "A group can have 0 objects. An empty group still counts.", "The two groups always go back together to make 5."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 6cef9f876370915f2426  seed 43  [mcq]
+      stem:    Fely has 5 counters: 🔴🔴🔴🔴🔴 One group has 0 counters. How many are in the other group?
+      answer:  5
+      options: 0 / 4 / 5 / 1
+      hints:   ["Count all the objects first. There are 5 in all.", "Count the group you can see. Then count the objects left over.", "A group can have 0 objects. An empty group still counts.", "The two groups always go back together to make 5."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 373aee08a0ab7e74f733  seed 44  [mcq]
+      stem:    Cita has 3 sticks and 2 sticks: 🥢🥢🥢 🥢🥢 How many sticks does she have in all?
+      answer:  5
+      options: 5 / 4 / 3 / 6
+      hints:   ["Count all the objects first. There are 5 in all.", "Count the group you can see. Then count the objects left over.", "A group can have 0 objects. An empty group still counts.", "The two groups always go back together to make 5."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 9d2446cc332a37744e27  seed 45  [mcq]
+      stem:    Get 10 blocks. Put 7 into one group. How many blocks are left over?
+      answer:  3
+      options: 2 / 7 / 4 / 3
+      hints:   ["Count all the objects first. There are 10 in all.", "Count the group you can see. Then count the objects left over.", "A group can have 0 objects. An empty group still counts.", "The two groups always go back together to make 10."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 25f311c8298a6c5b587a  seed 46  [mcq]
+      stem:    These pairs each make 5: 5 and 0, 4 and 1, 3 and 2, 2 and 3, 0 and 5. Which pair also makes 5?
+      answer:  1 and 4
+      options: 2 and 2 / 4 and 2 / 1 and 4 / 1 and 3
+      hints:   ["Count all the objects first. There are 5 in all.", "Count the group you can see. Then count the objects left over.", "A group can have 0 objects. An empty group still counts.", "The two groups always go back together to make 5."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 64fca2cbfbb8230e59ec  seed 500  [mcq]
+      stem:    Ella has 5 buttons: 🔘🔘🔘🔘🔘 She puts 1 in one group. How many are in the other group?
+      answer:  4
+      options: 5 / 3 / 4 / 1
+      hints:   ["Count all the objects first. There are 5 in all.", "Count the group you can see. Then count the objects left over.", "A group can have 0 objects. An empty group still counts.", "The two groups always go back together to make 5."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 9e78bec9b4f825647b7a  seed 501  [mcq]
+      stem:    Cita puts 5 sticks into two groups. One group has 3. Which pair shows her groups?
+      answer:  3 and 2
+      options: 4 and 1 / 3 and 3 / 2 and 2 / 3 and 2
+      hints:   ["Count all the objects first. There are 5 in all.", "Count the group you can see. Then count the objects left over.", "A group can have 0 objects. An empty group still counts.", "The two groups always go back together to make 5."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample fdc7ced0fdd45aa28867  seed 502  [mcq]
+      stem:    Get 10 blocks. Put 7 into one group. How many blocks are left over?
+      answer:  3
+      options: 2 / 7 / 4 / 3
+      hints:   ["Count all the objects first. There are 10 in all.", "Count the group you can see. Then count the objects left over.", "A group can have 0 objects. An empty group still counts.", "The two groups always go back together to make 10."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample e52c4ab7a49839d6bf39  seed 602  [mcq]
+      stem:    Dino has 2 beads and 3 beads: 🔵🔵 🔵🔵🔵 How many beads does he have in all?
+      answer:  5
+      options: 6 / 5 / 2 / 4
+      hints:   ["Count all the objects first. There are 5 in all.", "Count the group you can see. Then count the objects left over.", "A group can have 0 objects. An empty group still counts.", "The two groups always go back together to make 5."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 8ad9318c5decac0db071  seed 603  [mcq]
+      stem:    Cita has 5 sticks: 🥢🥢🥢🥢🥢 She puts 3 in one group. How many are in the other group?
+      answer:  2
+      options: 3 / 2 / 5 / 1
+      hints:   ["Count all the objects first. There are 5 in all.", "Count the group you can see. Then count the objects left over.", "A group can have 0 objects. An empty group still counts.", "The two groups always go back together to make 5."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 96569309b2eb16598273  seed 604  [mcq]
+      stem:    Ben has 5 stones: 🪨🪨🪨🪨🪨 He puts 4 in one group. How many are in the other group?
+      answer:  1
+      options: 2 / 4 / 0 / 1
+      hints:   ["Count all the objects first. There are 5 in all.", "Count the group you can see. Then count the objects left over.", "A group can have 0 objects. An empty group still counts.", "The two groups always go back together to make 5."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 08bdbe34bfd4c3cc689f  seed 605  [mcq]
+      stem:    Take 5 sticks. Hold all 5 in one hand. How many sticks are in your other hand?
+      answer:  0
+      options: 1 / 2 / 0 / 5
+      hints:   ["Count all the objects first. There are 5 in all.", "Count the group you can see. Then count the objects left over.", "A group can have 0 objects. An empty group still counts.", "The two groups always go back together to make 5."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample a3d4c4e7d43289cf42a3  seed 606  [mcq]
+      stem:    Dino puts 10 blocks into two groups. One group has 7. Which pair shows his groups?
+      answer:  7 and 3
+      options: 7 and 2 / 6 and 3 / 7 and 4 / 7 and 3
+      hints:   ["Count all the objects first. There are 10 in all.", "Count the group you can see. Then count the objects left over.", "A group can have 0 objects. An empty group still counts.", "The two groups always go back together to make 10."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 515348e70e2f9b03b5ae  seed 607  [mcq]
+      stem:    Get 5 counters. Put 3 in one group. How many counters are in the other group?
+      answer:  2
+      options: 2 / 5 / 3 / 1
+      hints:   ["Count all the objects first. There are 5 in all.", "Count the group you can see. Then count the objects left over.", "A group can have 0 objects. An empty group still counts.", "The two groups always go back together to make 5."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 92e155566a7d491149a2  seed 608  [mcq]
+      stem:    Ben has 4 stones and 1 stone: 🪨🪨🪨🪨 🪨 How many stones does he have in all?
+      answer:  5
+      options: 6 / 3 / 4 / 5
+      hints:   ["Count all the objects first. There are 5 in all.", "Count the group you can see. Then count the objects left over.", "A group can have 0 objects. An empty group still counts.", "The two groups always go back together to make 5."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample a9b145ca2ed439bb6983  seed 700  [mcq]
+      stem:    Ana lists ways to make 5: 5 and 0, 4 and 1, 2 and 3, 1 and 4, 0 and 5. Which way is missing?
+      answer:  3 and 2
+      options: 3 and 3 / 2 and 2 / 5 and 1 / 3 and 2
+      hints:   ["Count all the objects first. There are 5 in all.", "Count the group you can see. Then count the objects left over.", "A group can have 0 objects. An empty group still counts.", "The two groups always go back together to make 5."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 8743aa8815d304b09f30  seed 701  [mcq]
+      stem:    🧁 Boboy has a math challenge about cookies. Take 5 shells. Put them into two groups so one group is empty. Which pair shows your groups?
+      answer:  0 and 5
+      options: 0 and 5 / 1 and 4 / 0 and 4 / 5 and 5
+      hints:   ["Count all the objects first. There are 5 in all.", "Count the group you can see. Then count the objects left over.", "A group can have 0 objects. An empty group still counts.", "The two groups always go back together to make 5."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample feb12d24ece0c702892e  seed 702  [mcq]
+      stem:    🏀 Isko has a math challenge about basketballs. Fely puts 5 counters in one group and 0 counters in another. How many in all?
+      answer:  5
+      options: 5 / 6 / 4 / 0
+      hints:   ["Count all the objects first. There are 5 in all.", "Count the group you can see. Then count the objects left over.", "A group can have 0 objects. An empty group still counts.", "The two groups always go back together to make 5."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample ec9ea76648aaee309bec  seed 900  [mcq]
+      stem:    Ben has 5 stones: 🪨🪨🪨🪨🪨 He puts 4 in one group. How many are in the other group?
+      answer:  1
+      options: 1 / 2 / 0 / 4
+      hints:   ["Count all the objects first. There are 5 in all.", "Count the group you can see. Then count the objects left over.", "A group can have 0 objects. An empty group still counts.", "The two groups always go back together to make 5."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample d5bbe225b244b1b39d11  seed 901  [mcq]
+      stem:    Fely has 5 counters: 🔴🔴🔴🔴🔴 One group has 0 counters. How many are in the other group?
+      answer:  5
+      options: 0 / 1 / 5 / 4
+      hints:   ["Count all the objects first. There are 5 in all.", "Count the group you can see. Then count the objects left over.", "A group can have 0 objects. An empty group still counts.", "The two groups always go back together to make 5."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 8f4ce5049cc4eedf118a  seed 1000  [mcq]
+      stem:    Fely has 5 counters: 🔴🔴🔴🔴🔴 One group has 0 counters. How many are in the other group?
+      answer:  5
+      options: 4 / 0 / 1 / 5
+      hints:   ["Count all the objects first. There are 5 in all.", "Count the group you can see. Then count the objects left over.", "A group can have 0 objects. An empty group still counts.", "The two groups always go back together to make 5."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "hint_gated"}
+  sample 9ba08223bff4a93a9320  seed 1001  [mcq]
+      stem:    Take 5 stones from the box. Put 4 in one hand. How many are in your other hand?
+      answer:  1
+      options: 1 / 4 / 2 / 0
+      hints:   ["Count all the objects first. There are 5 in all.", "Count the group you can see. Then count the objects left over.", "A group can have 0 objects. An empty group still counts.", "The two groups always go back together to make 5."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "mastery_drill"}
+  sample e09ef8e3e3a4876e2a4c  seed 1002  [mcq]
+      stem:    Ana has 5 shells: 🐚🐚🐚🐚🐚 She puts 5 in one group. How many are in the other group?
+      answer:  0
+      options: 5 / 1 / 2 / 0
+      hints:   ["Count all the objects first. There are 5 in all.", "Count the group you can see. Then count the objects left over.", "A group can have 0 objects. An empty group still counts.", "The two groups always go back together to make 5."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "scaffolded"}
+
