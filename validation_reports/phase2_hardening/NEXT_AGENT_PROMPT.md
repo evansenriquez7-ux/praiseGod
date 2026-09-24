@@ -1,5 +1,22 @@
 # Task prompt — continue Phase 2 hardening (GPT-hosted session)
 
+**Refreshed 2026-09-25 (claude-h06-s5-haiku-campaign-2026-09-24).** Recovered the rate-limited Luna
+session's uncommitted wave 7, then filed waves 8-9 on Haiku (owner-authorised under ruling 4, because
+§0's gpt-5.6-luna cannot be dispatched from a Claude host — the model was changed, never the label).
+**Legacy queue 125 → 118; 118 v1 nodes still owed.** §5 is **1538** at the module / **1539** at
+`run_all`, and it ROSE from 1462 because fresh blind reviews name real defects — a falling count would
+have meant they found nothing. Chain re-proved ALONE at `a46bc7f7`; digest now `208a52406226e6d0`;
+corpus **160/163**; `run_all` **EXIT 1** observed directly.
+
+Fixed a SECOND quote-provenance defect: `_QUOTE_RE` excluded dashes on both sides, so a range written
+as '40'–'50' merged into one span no packet can contain and the gate accused honest reviewers. The
+first attempt patched only the closing side, which removed the symptom while silently leaving the
+second value unchecked. RETRACTED the ✝️ "bug" — it is `interest_bank.json`'s `bible` theme, one of 26
+curated interests; three blind reviewers each flagged it and all three were wrong, because a blind
+reviewer cannot adjudicate INTENT. **The dispatch template that works needs all three of: a 60-char
+reasoning floor, an exact-verbatim quoting rule, and neutral interest-bank context.** Highest-value
+content fix: `generate_hints` ignores the item's variant, now confirmed on THREE DNAs.
+
 **Wave 7 RECOVERED and committed 2026-09-24 by `claude-h06-s5-recover-w7-2026-09-24`.** The Luna
 session was rate-limited *after filing wave 7 and before committing it*; four filed reviews
 (`mat_g1_na_q1_6`, `_7`, `_8`, `_9`), their `.responses/` provenance and the regenerated legacy queue

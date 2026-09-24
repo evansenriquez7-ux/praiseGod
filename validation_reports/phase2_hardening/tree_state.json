@@ -3,12 +3,12 @@
   "note": "Intent record for interruption safety. Written when a batch, chain or campaign STARTS and cleared when it completes; an intent left open means a session did not reach its finish line. Deliberately digest-free -- see tests/tree_state.py. Read with `PYTHONPATH=. .venv/bin/python tests/tree_state.py`.",
   "open_intent": null,
   "last_completed": {
-    "kind": "campaign",
-    "began_at": "2026-09-24T17:55:05+08:00",
-    "session": "codex-h06-s5-luna-campaign-2-2026-09-24",
-    "note": "continue §5 blind re-review campaign with gpt-5.6-luna medium reviewer identities",
-    "next_step": "Resume the campaign; it touches no source, so no re-proof is owed.",
-    "completed_at": "2026-09-24T19:24:23+08:00",
-    "completion_note": "Wave 7 recovered, verified and committed at ff6d0ac3 by claude-h06-s5-recover-w7-2026-09-24. Intent closed on behalf of codex-h06-s5-luna-campaign-2-2026-09-24, which was rate-limited and is not running (ps confirmed). Legacy queue 125; §5 1462/147. Dispatch NOT continued: §0 mandates gpt-5.6-luna which a Claude host cannot dispatch -- referred to owner."
+    "kind": "chain",
+    "began_at": "2026-09-24T22:07:27+08:00",
+    "session": "claude-h06-s5-haiku-campaign-2026-09-24",
+    "note": "Re-proof chain for a46bc7f7.",
+    "next_step": "Resume the chain at the first step whose artifact is still stale; shards are individually resumable, so re-run only the stale indices.",
+    "completed_at": "2026-09-25T02:05:27+08:00",
+    "completion_note": "Chain re-proved at a46bc7f7 (corpus 160/163, six shards failures=0, verify-release complete). run_all EXIT 1: judgment_reviews_5 1539, capability_phase2 173, assertion_coverage_8 3. Waves 8-9 filed; legacy queue 118."
   }
 }

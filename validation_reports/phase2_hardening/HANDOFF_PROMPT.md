@@ -1,5 +1,22 @@
 # Handoff — continue the Phase 2 hardening plan
 
+**Refreshed 2026-09-25 (claude-h06-s5-haiku-campaign-2026-09-24).** Recovered the rate-limited Luna
+session's uncommitted wave 7, then filed waves 8-9 on Haiku (owner-authorised under ruling 4, because
+§0's gpt-5.6-luna cannot be dispatched from a Claude host — the model was changed, never the label).
+**Legacy queue 125 → 118; 118 v1 nodes still owed.** §5 is **1538** at the module / **1539** at
+`run_all`, and it ROSE from 1462 because fresh blind reviews name real defects — a falling count would
+have meant they found nothing. Chain re-proved ALONE at `a46bc7f7`; digest now `208a52406226e6d0`;
+corpus **160/163**; `run_all` **EXIT 1** observed directly.
+
+Fixed a SECOND quote-provenance defect: `_QUOTE_RE` excluded dashes on both sides, so a range written
+as '40'–'50' merged into one span no packet can contain and the gate accused honest reviewers. The
+first attempt patched only the closing side, which removed the symptom while silently leaving the
+second value unchecked. RETRACTED the ✝️ "bug" — it is `interest_bank.json`'s `bible` theme, one of 26
+curated interests; three blind reviewers each flagged it and all three were wrong, because a blind
+reviewer cannot adjudicate INTENT. **The dispatch template that works needs all three of: a 60-char
+reasoning floor, an exact-verbatim quoting rule, and neutral interest-bank context.** Highest-value
+content fix: `generate_hints` ignores the item's variant, now confirmed on THREE DNAs.
+
 **Refreshed wave 6, 2026-09-24:** four more Luna/medium §5 reviews were filed
 (`mat_g1_na_q1_2`, `mat_g1_na_q1_3`, `mat_g1_na_q1_4`, `mat_g1_na_q1_5`). Legacy queue is now
 **129** (`schema_counts {2: 22, None: 129}`); `validate_judgment_reviews()` is **1481 findings across
@@ -91,9 +108,9 @@ from the digests alone.
 
 ```text
 PASS tree_state: CERTIFIED
-  live input digest : 126e9eb19a1122bc
+  live input digest : 208a52406226e6d0
   worktree          : clean
-  mutation_proofs         fresh  162 file(s)
+  mutation_proofs         fresh  163 file(s)
   release_shards          fresh  6 file(s)
   obligation_benchmark    fresh  1 file(s)
   frontend_static_render  fresh  1 file(s)
