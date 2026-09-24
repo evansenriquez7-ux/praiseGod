@@ -1,0 +1,502 @@
+{
+  "reviewer": "blind-reviewer-haiku45-w9r2-mat_g1_na_q2_3-20260924",
+  "mat_g1_na_q2_3": {
+    "findings": {
+      "cognitive_capacity": {
+        "verdict": "PASS",
+        "rationale": "All 21 samples use language and complexity appropriate for Grade 1, Q2. Number range spans 10–94, reinforcing increasing familiarity with place value. Task structure (write decomposition, identify correct form, or manipulate visual blocks) matches developmental expectations for this quarter."
+      },
+      "competency_alignment": {
+        "verdict": "PASS",
+        "rationale": "Every sample explicitly engages with decomposing 2-digit numbers into tens and ones. Samples cover pure decomposition, recognition of correct forms, rejection of incorrect forms, and visual representation. No samples venture beyond the stated competency or use prerequisite concepts not established by this quarter."
+      },
+      "competency_fulfillment": {
+        "verdict": "FAIL",
+        "rationale": "Six of 21 samples (eef7bc0eece018e4287f, 11e8d3fbe8c674cabf4a, ad2d66a5315e4766acc8, 10bd8a85168ae74c30cc, 9d281943e20c816cab2a, daafb8d35f5405267a54) use PlaceValueBlocks format with misaligned answer fields that prevent learners from demonstrating the full competency as framed.",
+        "decomposition": {
+          "verdict": "FAIL",
+          "reasoning": "The REQUIREMENTS (decompose, domain_2_digit, tens_ones) are losslessly satisfied by the non-visual samples. However, the visual samples contradict this. Their stems request students show 2-digit numbers using base-10 blocks and the hints explicitly ask for the broken-apart form (e.g., '10 + 0'). The answer fields instead contain only the whole number ('10', '76', '15', '12', '16', '22'). This makes it impossible to verify whether learners can actually decompose the visual numbers as required by the competency."
+        }
+      },
+      "comprehensive_coverage": {
+        "verdict": "CONCERN",
+        "rationale": "Non-visual samples comprehensively cover decomposition through multiple formats (cloze, MCQ, true/false) and diverse numbers. However, visual samples are underspecified: PlaceValueBlocks is used 6 times but the answer mechanism does not capture the decomposed output, creating a gap in how the competency is assessed via this modality."
+      },
+      "scale_appropriateness": {
+        "verdict": "PASS",
+        "rationale": "The node covers 2-digit numbers without restriction. Sample numbers include 10 and 94, demonstrating readiness to scale to any 2-digit value. Decomposition logic and hint structure do not rely on Grade 1 specifics and would generalize to higher grades."
+      },
+      "variant_comprehensiveness": {
+        "verdict": "PASS",
+        "rationale": "Six distinct format variants appear: cloze (4 samples), MCQ (6 samples), true/false (5 samples), set_fill_in_blank (6 samples), contextual true/false with character (1 sample), and contextual MCQ with emoji (1 sample). Each format exercises the competency differently."
+      }
+    },
+    "sample_assessments": [
+      {
+        "sample_id": "4ae4f137f32f887c7641",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem 'Write 45 as tens and ones, for example 45 = 40 + 5' is unambiguous. The example directly demonstrates the required output format. Answer 40 + 5 is the only correct decomposition of 45."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Decomposing 45 into 40 + 5 is logically correct. The context (no extraneous narrative) does not interfere with the mathematical task."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "A Grade 1 student can clearly understand the task: write 45 as tens and ones. The example and answer format are identical, minimizing ambiguity about what form the response should take."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "45 = 40 + 5 is arithmetically correct. Distractors (50 + 4, 4 + 5, 10 + 5) are plausible errors that reflect common place-value misunderstandings."
+          }
+        }
+      },
+      {
+        "sample_id": "eef7bc0eece018e4287f",
+        "checks": {
+          "ambiguity": {
+            "verdict": "FAIL",
+            "reasoning": "The stem requests 'Use base-10 blocks to show the number 10'. Hints direct the student to 'write the broken apart form' and 'Break each digit into its place value: 10 + 0'. However, the answer field is '10', not '10 + 0'. A student following the hints would expect the answer to be the decomposition, not the original number."
+          },
+          "contextual_logical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "The interaction sequence is logically inconsistent. The student is asked to show blocks (implying visual/manipulative action), then the hints ask to write a decomposition, but the evaluated answer is the original number. The decomposition is not being tested despite being repeatedly emphasized in hints."
+          },
+          "learner_facing_clarity": {
+            "verdict": "FAIL",
+            "reasoning": "A Grade 1 learner would be confused. After reading hints that say 'Break each digit into its place value: 10 + 0', they would attempt to enter or construct '10 + 0', not '10'. The mismatch between instructional guidance and expected answer creates a clarity failure."
+          },
+          "mathematical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "While '10' is a valid representation of the number itself, it does not demonstrate the core competency of decomposing into tens and ones. The answer should capture the decomposed form to be mathematically valid evidence of competency."
+          }
+        }
+      },
+      {
+        "sample_id": "8842fb027828f80ce25a",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem 'Write 20 as tens and ones, for example 45 = 40 + 5' is clear despite using a different number in the example. The example correctly models the decomposition format. Answer 20 + 0 unambiguously represents the only correct decomposition of 20."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Decomposing 20 into 20 + 0 is logically correct. The example (45 = 40 + 5) is conceptually transferable to 20, demonstrating that multiples of 10 decompose with 0 in the ones place."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "A Grade 1 student can apply the example format to the target number 20. The answer format matches the example, leaving no doubt about the expected form of response."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "20 = 20 + 0 is arithmetically correct. Distractors include place-value errors (2, 2 + 0 missing the tens digit value) and unrelated numbers (30 + 7), all appropriate to the grade."
+          }
+        }
+      },
+      {
+        "sample_id": "d260ac652d3ad59d3865",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem 'Write 15 as tens and ones, for example 45 = 40 + 5. The answer is 50 + 1. True or False?' is unambiguous. The proposed answer (50 + 1) is clearly false for 15."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The task is logically sound: evaluate whether a proposed decomposition is correct. 50 + 1 = 51, not 15, so False is the unique correct answer."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "A Grade 1 student understands true/false format. The example (45 = 40 + 5) helps the student recognize what a correct decomposition looks like, making the incorrect proposal (50 + 1) easier to identify."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "15 = 10 + 5, not 50 + 1. The false answer is mathematically incorrect and tests whether students can verify decompositions, not merely produce them."
+          }
+        }
+      },
+      {
+        "sample_id": "fe7d6d75785e9f5b2411",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem 'Write 10 as tens and ones, for example 45 = 40 + 5. The answer is 10 + 0. True or False?' is unambiguous. The proposed answer (10 + 0) is clearly correct for 10."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The task logically evaluates decomposition correctness. 10 + 0 = 10, so True is correct. This complements the prior true/false sample with a correct decomposition to evaluate."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "A Grade 1 student can easily understand the true/false evaluation. The answer format is unambiguous."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "10 = 10 + 0 is arithmetically correct. The sample reinforces that 10 has a ones place of 0."
+          }
+        }
+      },
+      {
+        "sample_id": "84f7a7465453055d3d89",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem 'Write 40 as tens and ones, for example 45 = 40 + 5' is clear. Answer 40 + 0 is the only correct decomposition of 40."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Decomposing 40 into 40 + 0 is logically correct. This reinforces the concept that multiples of 10 have 0 in the ones place."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "A Grade 1 student understands the task: select the correct decomposition from four options. The example provides a clear model."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "40 = 40 + 0 is arithmetically correct. Distractors (4 + 0, 4, 30 + 9) reflect common place-value and arithmetic errors."
+          }
+        }
+      },
+      {
+        "sample_id": "87cabcdfa767412387d5",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem 'Write 91 as tens and ones, for example 45 = 40 + 5. The answer is 50 + 7. True or False?' is unambiguous. The proposed answer (50 + 7) is clearly false for 91."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The task logically evaluates decomposition correctness. 50 + 7 = 57, not 91, so False is correct. This tests verification rather than generation."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "A Grade 1 student can evaluate the true/false statement. The example aids in recognizing correct form, making the incorrect proposal easier to spot."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "91 = 90 + 1, not 50 + 7. The false answer is a plausible distractor for students who might confuse digits."
+          }
+        }
+      },
+      {
+        "sample_id": "11e8d3fbe8c674cabf4a",
+        "checks": {
+          "ambiguity": {
+            "verdict": "FAIL",
+            "reasoning": "The stem 'Use base-10 blocks to show the number 76' asks for a visual demonstration. Hints say 'Write the broken apart form' and 'Break each digit into its place value: 70 + 6'. Answer is '76', not '70 + 6'. The mismatch between hint and answer is severe: the hint explicitly decomposes to 70 + 6, but the answer field does not require or evaluate this decomposition."
+          },
+          "contextual_logical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "The sequence is logically broken. Show with blocks → write decomposition (per hints) → but answer is just the original number. The competency (decompose into tens and ones) is not logically tested by accepting '76' as the answer."
+          },
+          "learner_facing_clarity": {
+            "verdict": "FAIL",
+            "reasoning": "A Grade 1 learner following the explicit hint 'Break each digit into its place value: 70 + 6' would construct or enter 70 + 6. They would not understand why the answer '76' is correct when the hint asked for decomposition."
+          },
+          "mathematical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "The answer '76' does not mathematically demonstrate the competency of decomposing into tens and ones. While 76 is a valid number, it is not a valid evidence of the required decomposition."
+          }
+        }
+      },
+      {
+        "sample_id": "b891e80c0045cb681340",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem 'Write 94 as tens and ones, for example 45 = 40 + 5' is clear. Answer 90 + 4 is the only correct decomposition of 94."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Decomposing 94 into 90 + 4 is logically correct. The example successfully models the decomposition for a different number."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "A Grade 1 student can select the correct decomposition from four options. The example and format are clear."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "94 = 90 + 4 is arithmetically correct. Distractors (30 + 6, 40 + 9, 9 + 4) reflect place-value confusion or digit-reversal errors."
+          }
+        }
+      },
+      {
+        "sample_id": "ad2d66a5315e4766acc8",
+        "checks": {
+          "ambiguity": {
+            "verdict": "FAIL",
+            "reasoning": "The stem 'Use base-10 blocks to show the number 15' asks for visual demonstration. Hints state 'Write the broken apart form' and 'Break each digit into its place value: 10 + 5'. Answer is '15', not '10 + 5'. The contradiction is explicit: hint directs to 10 + 5, but answer is 15."
+          },
+          "contextual_logical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "The task logic collapses: the student is guided to decompose (hints), but the evaluation does not check the decomposition (answer field). The competency is not logically tested."
+          },
+          "learner_facing_clarity": {
+            "verdict": "FAIL",
+            "reasoning": "A Grade 1 learner would be directly confused. The hint 'Break each digit into its place value: 10 + 5' is an explicit instruction to produce 10 + 5. The answer '15' contradicts the hint."
+          },
+          "mathematical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "The answer '15' does not demonstrate decomposition into tens and ones. It only shows the original number."
+          }
+        }
+      },
+      {
+        "sample_id": "32b329b6050d560d8a6e",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem 'Write 12 as tens and ones, for example 45 = 40 + 5' is clear. Answer 10 + 2 is the only correct decomposition of 12."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Decomposing 12 into 10 + 2 is logically correct. The example provides an effective model."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "A Grade 1 student can select 10 + 2 from the cloze options. The format and example are clear."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "12 = 10 + 2 is arithmetically correct. Distractors (20 + 8, 1 + 2, 20 + 1) reflect place-value errors and digit confusion."
+          }
+        }
+      },
+      {
+        "sample_id": "10bd8a85168ae74c30cc",
+        "checks": {
+          "ambiguity": {
+            "verdict": "FAIL",
+            "reasoning": "The stem 'Use base-10 blocks to show the number 12' asks for visual demonstration. Hints explicitly state 'Write the broken apart form' and 'Break each digit into its place value: 10 + 2'. Answer is '12', not the decomposition. The contradiction between hint and answer is unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "The logic is broken: hints request decomposition (10 + 2), but the answer field accepts the original number (12). The competency is not tested."
+          },
+          "learner_facing_clarity": {
+            "verdict": "FAIL",
+            "reasoning": "A Grade 1 learner following the hint 'Break each digit into its place value: 10 + 2' would attempt to construct or represent 10 + 2. They would not understand why '12' is the correct answer."
+          },
+          "mathematical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "The answer '12' does not mathematically demonstrate the competency of decomposing into tens and ones."
+          }
+        }
+      },
+      {
+        "sample_id": "397175ecc22ad6de33aa",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem 'Write 12 as tens and ones, for example 45 = 40 + 5' is clear. Answer 10 + 2 is the only correct decomposition of 12."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Decomposing 12 into 10 + 2 is logically correct. The MCQ format provides four distinct options, one correct."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "A Grade 1 student can select the correct decomposition from four options. The example clearly models the decomposition format."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "12 = 10 + 2 is arithmetically correct. Distractors (1 + 2, 20 + 1, 80 + 4) reflect various place-value and arithmetic errors."
+          }
+        }
+      },
+      {
+        "sample_id": "1217286e96db533d77f3",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem 'Sir Rez has a math challenge about dance shoes. Write 45 as tens and ones, for example 45 = 40 + 5. The answer is 40 + 5. True or False?' is unambiguous. The context (dance shoes, character name) does not obscure the mathematical task."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The narrative context (dance shoes challenge) does not interfere with the mathematical logic. The true/false evaluation of 45 = 40 + 5 is logically correct."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "A Grade 1 student can engage with the character-based context. The mathematical task (verify decomposition) remains clear."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "45 = 40 + 5 is arithmetically correct. The true/false evaluation is mathematically sound."
+          }
+        }
+      },
+      {
+        "sample_id": "375c73d03c965289f9c7",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem 'Isko has a math challenge about basketballs. Write 50 as tens and ones, for example 45 = 40 + 5' is clear. The emoji and character name add interest without obscuring the task. Answer 50 + 0 is the only correct decomposition of 50."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The narrative context (basketball challenge, character name) does not interfere with decomposing 50 into 50 + 0. The logic is sound."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "A Grade 1 student can engage with the character-based context and select the correct decomposition from four options."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "50 = 50 + 0 is arithmetically correct. Distractors (5, 30 + 1, 5 + 0) reflect place-value and digit-value errors."
+          }
+        }
+      },
+      {
+        "sample_id": "136861a56acab2d5d262",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem 'Write 93 as tens and ones, for example 45 = 40 + 5' is clear. Answer 90 + 3 is the only correct decomposition of 93."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Decomposing 93 into 90 + 3 is logically correct. The example provides an effective model."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "A Grade 1 student can select 90 + 3 from the cloze options. The format and example are clear."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "93 = 90 + 3 is arithmetically correct. Distractors (9 + 3, 80 + 8, 30 + 9) reflect place-value confusion."
+          }
+        }
+      },
+      {
+        "sample_id": "9d281943e20c816cab2a",
+        "checks": {
+          "ambiguity": {
+            "verdict": "FAIL",
+            "reasoning": "The stem 'Use base-10 blocks to show the number 16' asks for visual demonstration. Hints state 'Write the broken apart form' and 'Break each digit into its place value: 10 + 6'. Answer is '16', not the decomposition. This is the same structural contradiction as other visual samples."
+          },
+          "contextual_logical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "The hints request decomposition (10 + 6), but the answer field accepts the original number (16). The competency is not evaluated."
+          },
+          "learner_facing_clarity": {
+            "verdict": "FAIL",
+            "reasoning": "A Grade 1 learner following the explicit hint 'Break each digit into its place value: 10 + 6' would attempt to construct 10 + 6. They would not understand why '16' is the correct answer."
+          },
+          "mathematical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "The answer '16' does not demonstrate the competency of decomposing into tens and ones."
+          }
+        }
+      },
+      {
+        "sample_id": "daafb8d35f5405267a54",
+        "checks": {
+          "ambiguity": {
+            "verdict": "FAIL",
+            "reasoning": "The stem 'Use base-10 blocks to show the number 22' asks for visual demonstration. Hints state 'Write the broken apart form' and 'Break each digit into its place value: 20 + 2'. Answer is '22', not the decomposition. The mismatch is explicit."
+          },
+          "contextual_logical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "Hints request 20 + 2, but the answer is 22. The decomposition competency is not tested by this contradiction."
+          },
+          "learner_facing_clarity": {
+            "verdict": "FAIL",
+            "reasoning": "A Grade 1 learner would be confused. The hint 'Break each digit into its place value: 20 + 2' directs them to decompose, but the answer '22' is the original number."
+          },
+          "mathematical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "The answer '22' does not demonstrate decomposition into tens and ones."
+          }
+        }
+      },
+      {
+        "sample_id": "386f944c84594be1c197",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem 'Write 50 as tens and ones, for example 45 = 40 + 5' is clear. Answer 50 + 0 is the only correct decomposition of 50."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Decomposing 50 into 50 + 0 is logically correct. The example provides an effective model."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "A Grade 1 student can select 50 + 0 from the cloze options. The format and example are clear."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "50 = 50 + 0 is arithmetically correct. Distractors (5 + 0, 5, 20 + 7) reflect place-value and digit-value errors."
+          }
+        }
+      },
+      {
+        "sample_id": "c2a54489d9f59768dd17",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem 'Write 50 as tens and ones, for example 45 = 40 + 5' is clear. Answer 50 + 0 is the only correct decomposition of 50."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Decomposing 50 into 50 + 0 is logically correct. The MCQ format provides clear alternatives."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "A Grade 1 student can select the correct decomposition from four options. The format is clear."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "50 = 50 + 0 is arithmetically correct. Distractors (5, 40 + 2, 5 + 0) reflect place-value errors."
+          }
+        }
+      },
+      {
+        "sample_id": "2ffc0be469c7347dd2cd",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem 'Write 40 as tens and ones, for example 45 = 40 + 5' is clear. Answer 40 + 0 is the only correct decomposition of 40."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Decomposing 40 into 40 + 0 is logically correct. The MCQ format provides distinct distractors."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "A Grade 1 student can select the correct decomposition from four options. The example and format are clear."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "40 = 40 + 0 is arithmetically correct. Distractors (40 + 3, 4 + 0, 4) reflect place-value and digit-value errors."
+          }
+        }
+      }
+    ],
+    "clause_evidence": [
+      {
+        "requirement_id": "decompose",
+        "clause": "Decompose",
+        "verdict": "FAIL",
+        "reasoning": "Six of 21 samples (eef7bc0eece018e4287f, 11e8d3fbe8c674cabf4a, ad2d66a5315e4766acc8, 10bd8a85168ae74c30cc, 9d281943e20c816cab2a, daafb8d35f5405267a54) use PlaceValueBlocks with hints explicitly directing decomposition but answer fields that do not capture or evaluate the decomposed form. This prevents learners from demonstrating the decomposition action required by the competency.",
+        "sample_ids": ["eef7bc0eece018e4287f", "11e8d3fbe8c674cabf4a", "ad2d66a5315e4766acc8", "10bd8a85168ae74c30cc", "9d281943e20c816cab2a", "daafb8d35f5405267a54"]
+      },
+      {
+        "requirement_id": "domain_2_digit",
+        "clause": "2-digit number",
+        "verdict": "PASS",
+        "reasoning": "All 21 samples use 2-digit numbers exclusively. The range spans from 10 to 94, covering the domain comprehensively. No sample violates this requirement.",
+        "sample_ids": ["4ae4f137f32f887c7641", "eef7bc0eece018e4287f", "8842fb027828f80ce25a", "d260ac652d3ad59d3865", "fe7d6d75785e9f5b2411", "84f7a7465453055d3d89", "87cabcdfa767412387d5", "11e8d3fbe8c674cabf4a", "b891e80c0045cb681340", "ad2d66a5315e4766acc8", "32b329b6050d560d8a6e", "10bd8a85168ae74c30cc", "397175ecc22ad6de33aa", "1217286e96db533d77f3", "375c73d03c965289f9c7", "136861a56acab2d5d262", "9d281943e20c816cab2a", "daafb8d35f5405267a54", "386f944c84594be1c197", "c2a54489d9f59768dd17", "2ffc0be469c7347dd2cd"]
+      },
+      {
+        "requirement_id": "tens_ones",
+        "clause": "tens and ones",
+        "verdict": "CONCERN",
+        "reasoning": "All non-visual samples (15 samples) correctly decompose numbers into tens and ones (e.g., 45 = 40 + 5, 20 = 20 + 0). However, six visual samples provide answer fields containing only the original number, which does not demonstrate the tens-and-ones decomposition required by the competency, even though their hints explicitly ask for this decomposition.",
+        "sample_ids": ["4ae4f137f32f887c7641", "8842fb027828f80ce25a", "d260ac652d3ad59d3865", "fe7d6d75785e9f5b2411", "84f7a7465453055d3d89", "87cabcdfa767412387d5", "b891e80c0045cb681340", "32b329b6050d560d8a6e", "397175ecc22ad6de33aa", "1217286e96db533d77f3", "375c73d03c965289f9c7", "136861a56acab2d5d262", "386f944c84594be1c197", "c2a54489d9f59768dd17", "2ffc0be469c7347dd2cd"]
+      }
+    ],
+    "overall": "FAIL"
+  }
+}

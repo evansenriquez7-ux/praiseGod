@@ -1,7 +1,43 @@
 {
+  "schema_version": 2,
   "node_id": "mat_g1_na_q2_6",
-  "reviewed_by": "reviewer-c2-basalt-yarrow-7194",
-  "review_date": "2026-09-11",
+  "competency_snapshot": {
+    "text": "Solve problems (given orally or in pictures) involving addition with sums up to 100 without regrouping.",
+    "grade": 1,
+    "quarter": 2,
+    "subdomain": null
+  },
+  "requirements_snapshot": [
+    {
+      "kind": "task",
+      "id": "solve_problems",
+      "clause": "Solve problems"
+    },
+    {
+      "kind": "context",
+      "id": "pictures",
+      "clause": "pictures"
+    },
+    {
+      "kind": "task",
+      "id": "addition",
+      "clause": "addition"
+    },
+    {
+      "kind": "range",
+      "id": "sum_up_to_100",
+      "clause": "sums up to 100"
+    },
+    {
+      "kind": "property",
+      "id": "without_regrouping",
+      "clause": "without regrouping"
+    }
+  ],
+  "packet_digest": "7318720f5135a28b477ade0aa0cad25e74c93d11490703a3651f1a427d1787e0",
+  "sampling_version": "phase2-stratified-v2-rendered-visual",
+  "reviewed_by": "blind-reviewer-haiku45-w9-mat_g1_na_q2_6-20260924",
+  "review_date": "2026-09-24",
   "blind": true,
   "sample_seeds": [
     42,
@@ -19,20 +55,101 @@
     602,
     603,
     604,
-    605
+    605,
+    606,
+    607,
+    700,
+    701,
+    702,
+    800,
+    801,
+    900,
+    901,
+    1000,
+    1001,
+    1002
+  ],
+  "sample_ids": [
+    "e826f3e06986a1e8b34f",
+    "7c53a7776007cb24c9a2",
+    "c1c8effd0c65ebc059b8",
+    "2b972d9ea28babb8d2af",
+    "0461c002a9e099704303",
+    "d7b0644f43e69e0de1a0",
+    "ad415a0c8dd473bc239f",
+    "961d722222b3047f3dca",
+    "44ad936352802d80d628",
+    "b9feb49a947bc5da72fd",
+    "f5bc3f2cf23a6d7b6fb2",
+    "652d84d380936f00e79c",
+    "6deace4e64a597de08ce",
+    "21371b2490ae064406d8",
+    "4ea9e710f32ba206a565",
+    "722e19dd4211c9de41eb",
+    "f2596a00794bc034e75c",
+    "8b63130b3313e98a78fc",
+    "b929d42a3b1f3814f4f4",
+    "7a076e2974c16b15cfdb",
+    "cb1441c997db18efb152",
+    "488f90153e64685b50c9",
+    "afff2855a81cadc51ea8",
+    "5f1691943d26f1ddff69",
+    "e394b393434fc79d47cc",
+    "16e693eeb9dc63fc1072",
+    "e10d8121c2fa5dec374e",
+    "c7b4eb991ad5975cbdd7"
   ],
   "samples_reviewed": [
     {
+      "node_id": "mat_g1_na_q2_6",
       "seed": 42,
       "formatter": "true_false",
       "question_text": "One group has 1 item and another group has 63 items. Putting them together makes 63 items in all. True or False?",
-      "correct_answer": false
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "We are adding two numbers: 1 and 63.",
+        "Add the ones: 1 + 3 = 4. Write 4 in the ones place.",
+        "Add the tens: 0 + 6 = 6.",
+        "The sum is 1 + 63 = 64."
+      ],
+      "sample_id": "e826f3e06986a1e8b34f",
+      "replay_digest": "12fccb7170b0e0951fa56de35ff8352c7391367c80b7ea72ffbe067feb749fda"
     },
     {
+      "node_id": "mat_g1_na_q2_6",
       "seed": 43,
       "formatter": "mcq",
       "question_text": "One group has 23 items and another group has 45 items. If you put them together, how many items are there in all?",
       "correct_answer": 68,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -54,22 +171,46 @@
           "value": 68,
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 68,
+      "hints": [
+        "We are adding two numbers: 23 and 45.",
+        "Add the ones: 3 + 5 = 8. Write 8 in the ones place.",
+        "Add the tens: 2 + 4 = 6.",
+        "The sum is 23 + 45 = 68."
+      ],
+      "sample_id": "7c53a7776007cb24c9a2",
+      "replay_digest": "5b2cf7ddd8a4409aa47206fcb6c3e48e70d462f7e44f2f41cbbc63f3195e6b9e"
     },
     {
+      "node_id": "mat_g1_na_q2_6",
       "seed": 44,
       "formatter": "read_mcq",
-      "question_text": "(Large group of 30 books) — There are 30 books.\n(Large group of 25 books) — 25 more books are added.\nHow many total books are there?",
+      "question_text": "(Large group of 30 cupcakes) — There are 30 cupcakes.\n(Large group of 25 cupcakes) — 25 more cupcakes are added.\nHow many total cupcakes are there?",
       "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "EmojiPictorial",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
-          "value": 54,
+          "value": 30,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 30,
+          "value": 5,
           "is_correct": false
         },
         {
@@ -82,22 +223,110 @@
           "value": 55,
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 55,
+      "hints": [
+        "We are adding two numbers: 30 and 25.",
+        "Add the ones: 0 + 5 = 5. Write 5 in the ones place.",
+        "Add the tens: 3 + 2 = 5.",
+        "The sum is 30 + 25 = 55."
+      ],
+      "visual_type": "EmojiPictorial",
+      "visual_payload": {
+        "emoji": "🧁",
+        "group_a": 30,
+        "group_b": 25,
+        "operation": "addition",
+        "layout": "stacked",
+        "display": "(Large group of 30 cupcakes)",
+        "display_b": "(Large group of 25 cupcakes)"
+      },
+      "visual_render": {
+        "visual_type": "EmojiPictorial",
+        "renderer_input_digest": "04cb398799d5a4b265400d57ceeb12c0dd1c9997b279b6255f784382803411a6",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "EmojiPictorial",
+          "element_count": 36,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "🛍️",
+            "10x 🧁",
+            "+",
+            "🧁",
+            "1x 🧁"
+          ],
+          "distinct_colours": [
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "c1c8effd0c65ebc059b8",
+      "replay_digest": "ce023235c5f747e19161cc748c6d8b641041ca4a8bd546a2739b68ac7f0fa063"
     },
     {
+      "node_id": "mat_g1_na_q2_6",
       "seed": 45,
       "formatter": "error_detect",
       "question_text": "Pia solved: \"Start at 64. Count up 23 more. You land on ___\". Pia says the blank is 88. Is Pia correct?",
       "correct_answer": {
         "has_error": true,
         "correct_value": 87
-      }
+      },
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": true,
+        "correct_value": 87
+      },
+      "hints": [
+        "We are adding two numbers: 64 and 23.",
+        "Add the ones: 4 + 3 = 7. Write 7 in the ones place.",
+        "Add the tens: 6 + 2 = 8.",
+        "The sum is 64 + 23 = 87."
+      ],
+      "sample_id": "2b972d9ea28babb8d2af",
+      "replay_digest": "be9033954e80bd7b02df19ef4dc27d1337e43cc0dee8e9939d7d78c9360d5819"
     },
     {
+      "node_id": "mat_g1_na_q2_6",
       "seed": 46,
       "formatter": "cloze",
       "question_text": "One group has 33 items and another group has 51 items. Putting them together makes ___ items in all.",
       "correct_answer": 84,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -123,25 +352,179 @@
           "text": "94",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 84,
+      "hints": [
+        "We are adding two numbers: 33 and 51.",
+        "Add the ones: 3 + 1 = 4. Write 4 in the ones place.",
+        "Add the tens: 3 + 5 = 8.",
+        "The sum is 33 + 51 = 84."
+      ],
+      "sample_id": "0461c002a9e099704303",
+      "replay_digest": "3b7274f54e466a74fcc2d0c18690d1b144340682fea670794b92fa498c59f971"
     },
     {
+      "node_id": "mat_g1_na_q2_6",
       "seed": 52,
       "formatter": "set_fill_in_blank",
       "question_text": "Show 83 + 16 on the number line.",
-      "correct_answer": 99
+      "correct_answer": 99,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "resolved_answer": 99,
+      "hints": [
+        "We are adding two numbers: 83 and 16.",
+        "Add the ones: 3 + 6 = 9. Write 9 in the ones place.",
+        "Add the tens: 8 + 1 = 9.",
+        "The sum is 83 + 16 = 99."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "start": 70,
+        "end": 100,
+        "major_interval": 10,
+        "minor_interval": 5,
+        "interval": 5,
+        "dot_value": 70,
+        "move_by": 16,
+        "content_type": "whole_number",
+        "value": 99,
+        "correct_position": 99,
+        "divisions": 6,
+        "is_interactive": true,
+        "show_labels": true,
+        "correct_answer": 99.0,
+        "target": 99.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "e49d77b9ca544c3203b43e7453b157dcdd192ede05b72ef1a3aa2c21975fa563",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 19,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "70",
+            "80",
+            "90",
+            "100",
+            "Your answer: Position",
+            "85",
+            "Click track, drag dot, or use ← → arrow keys"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "d7b0644f43e69e0de1a0",
+      "replay_digest": "3ba7e14135c82686ec9cb15260efaf9df187a178163b9b3d0b392f8a41ca2b3b"
     },
     {
+      "node_id": "mat_g1_na_q2_6",
       "seed": 79,
       "formatter": "read_fill_in_blank",
       "question_text": "The two parts are 30 and 60. What is the sum?",
-      "correct_answer": 90
+      "correct_answer": 90,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "NumberBond",
+        "interaction_mode": "read",
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "resolved_answer": 90,
+      "hints": [
+        "We are adding two numbers: 30 and 60.",
+        "Add the ones: 0 + 0 = 0. Write 0 in the ones place.",
+        "Add the tens: 3 + 6 = 9.",
+        "The sum is 30 + 60 = 90."
+      ],
+      "visual_type": "NumberBond",
+      "visual_payload": {
+        "whole": null,
+        "part1": 30,
+        "part2": 60,
+        "blank_position": "whole"
+      },
+      "visual_render": {
+        "visual_type": "NumberBond",
+        "renderer_input_digest": "a20f6c7be50929357f85a992e8a227cea802f1a361312ce52bd3dedb3bde7bde",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberBond",
+          "element_count": 7,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 1,
+          "text_labels": [
+            "30",
+            "60"
+          ],
+          "distinct_colours": [
+            "hsl(var(--primary)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "ad415a0c8dd473bc239f",
+      "replay_digest": "158979a67440a1c047c3172787f05367076ad67b6378cf566119bb957dc87370"
     },
     {
+      "node_id": "mat_g1_na_q2_6",
       "seed": 500,
       "formatter": "read_mcq",
       "question_text": "The dot is at 55 and it moves forward 43 numbers. Starting from 55, just count up 43 numbers. Which number will the dot land on?",
       "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": {
+          "max_sum": 1.0,
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -163,23 +546,173 @@
           "value": 108,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 98,
+      "hints": [
+        "We are adding two numbers: 55 and 43.",
+        "Add the ones: 5 + 3 = 8. Write 8 in the ones place.",
+        "Add the tens: 5 + 4 = 9.",
+        "The sum is 55 + 43 = 98."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "start": 40,
+        "end": 100,
+        "major_interval": 10,
+        "minor_interval": 5,
+        "interval": 5,
+        "dot_value": 55,
+        "move_by": 43,
+        "content_type": "whole_number",
+        "value": 98,
+        "correct_position": 98,
+        "divisions": 12,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 98.0,
+        "target": 98.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "bfef31ebdbd0904e6c8d9d382602b742e58044a5c9b3259119245e0db5648b41",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 25,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "40",
+            "50",
+            "60",
+            "70",
+            "80",
+            "90",
+            "100"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "961d722222b3047f3dca",
+      "replay_digest": "50c539e6809f52aa48a640c0fb4aed5ae2b4d8e24b40a45ed128979712ede9cd"
     },
     {
+      "node_id": "mat_g1_na_q2_6",
       "seed": 501,
       "formatter": "set_fill_in_blank",
       "question_text": "Show 80 + 3 on the number line.",
-      "correct_answer": 83
+      "correct_answer": 83,
+      "requested": {
+        "difficulty_profile": {
+          "max_sum": 1.0,
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "resolved_answer": 83,
+      "hints": [
+        "We are adding two numbers: 80 and 3.",
+        "Add the ones: 0 + 3 = 3. Write 3 in the ones place.",
+        "Add the tens: 8 + 0 = 8.",
+        "The sum is 80 + 3 = 83."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "start": 70,
+        "end": 90,
+        "major_interval": 10,
+        "minor_interval": 5,
+        "interval": 5,
+        "dot_value": 70,
+        "move_by": 3,
+        "content_type": "whole_number",
+        "value": 83,
+        "correct_position": 83,
+        "divisions": 4,
+        "is_interactive": true,
+        "show_labels": true,
+        "correct_answer": 83.0,
+        "target": 83.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "3137fa5b0f2ba99bbc4bb75b7cd51b3096a512f5ec6a7d742502802b6b04c7a5",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 16,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "70",
+            "80",
+            "90",
+            "Your answer: Position",
+            "Click track, drag dot, or use ← → arrow keys"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "44ad936352802d80d628",
+      "replay_digest": "2674236a2dbed85556b447164d93d29d6c9a753a34f845fd2bbacba11f841468"
     },
     {
+      "node_id": "mat_g1_na_q2_6",
       "seed": 502,
       "formatter": "read_mcq",
-      "question_text": "(Large group of 90 trees) — There are 90 trees.\n🌳 — 1 more tree is added.\nHow many total trees are there?",
+      "question_text": "(Large group of 90 paints) — There are 90 paints.\n🎨 — 1 more paint is added.\nHow many total paints are there?",
       "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": {
+          "max_sum": 1.0,
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "EmojiPictorial",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
-          "value": 92,
+          "value": 90,
           "is_correct": false
         },
         {
@@ -197,19 +730,156 @@
           "value": 1,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 91,
+      "hints": [
+        "We are adding two numbers: 90 and 1.",
+        "Add the ones: 0 + 1 = 1. Write 1 in the ones place.",
+        "Add the tens: 9 + 0 = 9.",
+        "The sum is 90 + 1 = 91."
+      ],
+      "visual_type": "EmojiPictorial",
+      "visual_payload": {
+        "emoji": "🎨",
+        "group_a": 90,
+        "group_b": 1,
+        "operation": "addition",
+        "layout": "separated",
+        "display": "(Large group of 90 paints)",
+        "display_b": "🎨"
+      },
+      "visual_render": {
+        "visual_type": "EmojiPictorial",
+        "renderer_input_digest": "5157a722ffc73e2cfb9f54197232778cf571ed67341c4a78fe556912a96109ae",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "EmojiPictorial",
+          "element_count": 34,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "🛍️",
+            "10x 🎨",
+            "+",
+            "🎨"
+          ],
+          "distinct_colours": [
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "b9feb49a947bc5da72fd",
+      "replay_digest": "212940c8b31a2dc87da1e989ba884a86373c80ffd81e77891de0e5cba385f08e"
     },
     {
+      "node_id": "mat_g1_na_q2_6",
       "seed": 600,
       "formatter": "set_fill_in_blank",
       "question_text": "Show 73 + 26 on the number line.",
-      "correct_answer": 99
+      "correct_answer": 99,
+      "requested": {
+        "difficulty_profile": {
+          "context": "word_problem"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "resolved_answer": 99,
+      "hints": [
+        "We are adding two numbers: 73 and 26.",
+        "Add the ones: 3 + 6 = 9. Write 9 in the ones place.",
+        "Add the tens: 7 + 2 = 9.",
+        "The sum is 73 + 26 = 99."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "start": 60,
+        "end": 100,
+        "major_interval": 10,
+        "minor_interval": 5,
+        "interval": 5,
+        "dot_value": 60,
+        "move_by": 26,
+        "content_type": "whole_number",
+        "value": 99,
+        "correct_position": 99,
+        "divisions": 8,
+        "is_interactive": true,
+        "show_labels": true,
+        "correct_answer": 99.0,
+        "target": 99.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "b38a6137549ec1587c3dc532382ecb7be4d3e3b74c22a8d0cb1b28131b80ef59",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 22,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "60",
+            "70",
+            "80",
+            "90",
+            "100",
+            "Your answer: Position",
+            "Click track, drag dot, or use ← → arrow keys"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "f5bc3f2cf23a6d7b6fb2",
+      "replay_digest": "a800b6385b00a80f23ac0a673a9b4428ffd703a363fd28fb0175ef98f087b29c"
     },
     {
+      "node_id": "mat_g1_na_q2_6",
       "seed": 601,
       "formatter": "cloze",
       "question_text": "One group has 60 items and another group has 30 items. Putting them together makes ___ items in all.",
       "correct_answer": 90,
+      "requested": {
+        "difficulty_profile": {
+          "spine": "counting_up"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -235,13 +905,39 @@
           "text": "100",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 90,
+      "hints": [
+        "We are adding two numbers: 60 and 30.",
+        "Add the ones: 0 + 0 = 0. Write 0 in the ones place.",
+        "Add the tens: 6 + 3 = 9.",
+        "The sum is 60 + 30 = 90."
+      ],
+      "sample_id": "652d84d380936f00e79c",
+      "replay_digest": "f5f4300a886a7e256926296c87e3e159462e9a89d4f8dd2c70095000508a246d"
     },
     {
+      "node_id": "mat_g1_na_q2_6",
       "seed": 602,
       "formatter": "read_mcq",
       "question_text": "The dot is at 30 and it moves forward 13 numbers. Starting from 30, just count up 13 numbers. Which number will the dot land on?",
       "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": {
+          "spine": "putting_together"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -263,13 +959,88 @@
           "value": 53,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 43,
+      "hints": [
+        "We are adding two numbers: 30 and 13.",
+        "Add the ones: 0 + 3 = 3. Write 3 in the ones place.",
+        "Add the tens: 3 + 1 = 4.",
+        "The sum is 30 + 13 = 43."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "start": 0,
+        "end": 60,
+        "major_interval": 10,
+        "minor_interval": 5,
+        "interval": 5,
+        "dot_value": 30,
+        "move_by": 13,
+        "content_type": "whole_number",
+        "value": 43,
+        "correct_position": 43,
+        "divisions": 12,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 43.0,
+        "target": 43.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "c99c64265b9dd7872f5327673bf449ac5de656bb66640d052f5c5980336ae67c",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 25,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "10",
+            "20",
+            "30",
+            "40",
+            "50",
+            "60"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "6deace4e64a597de08ce",
+      "replay_digest": "e1808c1cca351c700e1120ef059da0c80ed16277754073710672cdfab02c8a0d"
     },
     {
+      "node_id": "mat_g1_na_q2_6",
       "seed": 603,
       "formatter": "mcq",
       "question_text": "One group has 60 items and another group has 30 items. If you put them together, how many items are there in all?",
       "correct_answer": 90,
+      "requested": {
+        "difficulty_profile": {
+          "strategy": "expanded_form"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -291,48 +1062,1867 @@
           "value": 89,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 90,
+      "hints": [
+        "We are adding two numbers: 60 and 30.",
+        "Add the ones: 0 + 0 = 0. Write 0 in the ones place.",
+        "Add the tens: 6 + 3 = 9.",
+        "The sum is 60 + 30 = 90."
+      ],
+      "sample_id": "21371b2490ae064406d8",
+      "replay_digest": "e0e5550843dc2c5e7c1b5e275bca0a0dfc585adbc5aeb1ad110629f442484475"
     },
     {
+      "node_id": "mat_g1_na_q2_6",
       "seed": 604,
       "formatter": "error_detect",
       "question_text": "Carlo solved: \"30 + 30 = ___\". Carlo says the blank is 60. Is Carlo correct?",
       "correct_answer": {
         "has_error": false,
         "correct_value": 60
-      }
+      },
+      "requested": {
+        "difficulty_profile": {
+          "strategy": "standard"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 60
+      },
+      "hints": [
+        "We are adding two numbers: 30 and 30.",
+        "Add the ones: 0 + 0 = 0. Write 0 in the ones place.",
+        "Add the tens: 3 + 3 = 6.",
+        "The sum is 30 + 30 = 60."
+      ],
+      "sample_id": "4ea9e710f32ba206a565",
+      "replay_digest": "0fcb36f9836e44fce240da06755623598b7fd3169b81b1abe5a3fe3066cbdd4d"
     },
     {
+      "node_id": "mat_g1_na_q2_6",
       "seed": 605,
       "formatter": "read_fill_in_blank",
       "question_text": "The two parts are 60 and 30. What is the sum?",
-      "correct_answer": 90
+      "correct_answer": 90,
+      "requested": {
+        "difficulty_profile": {
+          "structure": "result_unknown"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "NumberBond",
+        "interaction_mode": "read",
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "resolved_answer": 90,
+      "hints": [
+        "We are adding two numbers: 60 and 30.",
+        "Add the ones: 0 + 0 = 0. Write 0 in the ones place.",
+        "Add the tens: 6 + 3 = 9.",
+        "The sum is 60 + 30 = 90."
+      ],
+      "visual_type": "NumberBond",
+      "visual_payload": {
+        "whole": null,
+        "part1": 60,
+        "part2": 30,
+        "blank_position": "whole"
+      },
+      "visual_render": {
+        "visual_type": "NumberBond",
+        "renderer_input_digest": "54294ebfd18586c7cd2aa1e9e4f213ce8b9a63fd33d157db8e28b75ec2f01aea",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberBond",
+          "element_count": 7,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 1,
+          "text_labels": [
+            "60",
+            "30"
+          ],
+          "distinct_colours": [
+            "hsl(var(--primary)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "722e19dd4211c9de41eb",
+      "replay_digest": "fdb8ef89c2cbab4e6eb374c21fb58fe4e20bc69ce10eb506a1acc4b69acb7465"
+    },
+    {
+      "node_id": "mat_g1_na_q2_6",
+      "seed": 606,
+      "formatter": "error_detect",
+      "question_text": "Manny solved: \"41 + 6 = ___\". Manny says the blank is 47. Is Manny correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 47
+      },
+      "requested": {
+        "difficulty_profile": {
+          "task_type": "counting_up"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 47
+      },
+      "hints": [
+        "We are adding two numbers: 41 and 6.",
+        "Add the ones: 1 + 6 = 7. Write 7 in the ones place.",
+        "Add the tens: 4 + 0 = 4.",
+        "The sum is 41 + 6 = 47."
+      ],
+      "sample_id": "f2596a00794bc034e75c",
+      "replay_digest": "d73318a313fdfa7d383558b0c21a38ffcb60eb0bae3a0ef4761bb1062fd47ef3"
+    },
+    {
+      "node_id": "mat_g1_na_q2_6",
+      "seed": 607,
+      "formatter": "read_mcq",
+      "question_text": "🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀 — There are 11 items.\n🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀 — 11 more items are added.\nHow many total items are there?",
+      "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": {
+          "task_type": "putting_together"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "EmojiPictorial",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 11,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 23,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 21,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 22,
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 22,
+      "hints": [
+        "We are adding two numbers: 11 and 11.",
+        "Add the ones: 1 + 1 = 2. Write 2 in the ones place.",
+        "Add the tens: 1 + 1 = 2.",
+        "The sum is 11 + 11 = 22."
+      ],
+      "visual_type": "EmojiPictorial",
+      "visual_payload": {
+        "emoji": "🏀",
+        "group_a": 11,
+        "group_b": 11,
+        "operation": "addition",
+        "layout": "stacked",
+        "display": "🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀",
+        "display_b": "🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀"
+      },
+      "visual_render": {
+        "visual_type": "EmojiPictorial",
+        "renderer_input_digest": "6d5e69db7a4ed913e9d220e89f4af62899c770ac6081d1d9fdbcd75adabf3156",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "EmojiPictorial",
+          "element_count": 28,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "🏀",
+            "+"
+          ],
+          "distinct_colours": [
+            "hsl(var(--text-muted)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "8b63130b3313e98a78fc",
+      "replay_digest": "34a1a5e578f80b920c8a5dde0311b4a0c2fba6b3f8ac605b070753dbc4dfc16d"
+    },
+    {
+      "node_id": "mat_g1_na_q2_6",
+      "seed": 700,
+      "formatter": "mcq",
+      "question_text": "One group has 30 items and another group has 30 items. If you put them together, how many items are there in all?",
+      "correct_answer": 60,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 60,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 61,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 70,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 59,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 60,
+      "hints": [
+        "We are adding two numbers: 30 and 30.",
+        "Add the ones: 0 + 0 = 0. Write 0 in the ones place.",
+        "Add the tens: 3 + 3 = 6.",
+        "The sum is 30 + 30 = 60."
+      ],
+      "sample_id": "b929d42a3b1f3814f4f4",
+      "replay_digest": "82671c85af37e926cdcb13dbf578a313ff539021e04423d841f9ea5c394a586f"
+    },
+    {
+      "node_id": "mat_g1_na_q2_6",
+      "seed": 701,
+      "formatter": "cloze",
+      "question_text": "💃 Sir Rez has a math challenge about dance shoes. Start at 52. Count up 3 more. You land on ___",
+      "correct_answer": 55,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "graphic_design",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 56,
+          "text": "56",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 65,
+          "text": "65",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 54,
+          "text": "54",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 55,
+          "text": "55",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 55,
+      "hints": [
+        "We are adding two numbers: 52 and 3.",
+        "Add the ones: 2 + 3 = 5. Write 5 in the ones place.",
+        "Add the tens: 5 + 0 = 5.",
+        "The sum is 52 + 3 = 55."
+      ],
+      "sample_id": "7a076e2974c16b15cfdb",
+      "replay_digest": "1641e1f653f600a5cf8d146f3b0680d4e51c75b30783a411b2f9d0be3110f71d"
+    },
+    {
+      "node_id": "mat_g1_na_q2_6",
+      "seed": 702,
+      "formatter": "read_mcq",
+      "question_text": "🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀 — There are 14 items.\n🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀 — 11 more items are added.\nHow many total items are there?",
+      "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "anime_manga",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "EmojiPictorial",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 25,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 24,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 26,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 25,
+      "hints": [
+        "We are adding two numbers: 14 and 11.",
+        "Add the ones: 4 + 1 = 5. Write 5 in the ones place.",
+        "Add the tens: 1 + 1 = 2.",
+        "The sum is 14 + 11 = 25."
+      ],
+      "visual_type": "EmojiPictorial",
+      "visual_payload": {
+        "emoji": "🏀",
+        "group_a": 14,
+        "group_b": 11,
+        "operation": "addition",
+        "layout": "inline",
+        "display": "🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀",
+        "display_b": "🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀"
+      },
+      "visual_render": {
+        "visual_type": "EmojiPictorial",
+        "renderer_input_digest": "14173a693fc8ad66d06457ee35f94c5c502dfedff498e64c51bc4b7724545c50",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "EmojiPictorial",
+          "element_count": 31,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "🏀",
+            "and"
+          ],
+          "distinct_colours": [
+            "hsl(var(--text-muted)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "cb1441c997db18efb152",
+      "replay_digest": "2e88b8dced1ac54bbd30241ba17db87599e495eca947dc40fb391a10c17d37e0"
+    },
+    {
+      "node_id": "mat_g1_na_q2_6",
+      "seed": 800,
+      "formatter": "read_mcq",
+      "question_text": "The dot is at 60 and it moves forward 7 numbers. Starting from 60, just count up 7 numbers. Which number will the dot land on?",
+      "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": {
+          "max_sum": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 68,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 67,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 66,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 77,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 67,
+      "hints": [
+        "We are adding two numbers: 60 and 7.",
+        "Add the ones: 0 + 7 = 7. Write 7 in the ones place.",
+        "Add the tens: 6 + 0 = 6.",
+        "The sum is 60 + 7 = 67."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "start": 50,
+        "end": 70,
+        "major_interval": 10,
+        "minor_interval": 5,
+        "interval": 5,
+        "dot_value": 60,
+        "move_by": 7,
+        "content_type": "whole_number",
+        "value": 67,
+        "correct_position": 67,
+        "divisions": 4,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 67.0,
+        "target": 67.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "a9e93c261915f517fa0ecc20c1d14cdba2620645eb48f272864e5d9dbd1a9a2d",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 13,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "50",
+            "60",
+            "70"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "488f90153e64685b50c9",
+      "replay_digest": "6abc425c486718c910dd17da65b80526763c7445e523e6f1f6487843def0b2d9"
+    },
+    {
+      "node_id": "mat_g1_na_q2_6",
+      "seed": 801,
+      "formatter": "read_mcq",
+      "question_text": "🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀 — There are 19 items.\n(Large group of 80 items) — 80 more items are added.\nHow many total items are there?",
+      "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "EmojiPictorial",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 19,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 99,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 100,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 98,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 99,
+      "hints": [
+        "We are adding two numbers: 19 and 80.",
+        "Add the ones: 9 + 0 = 9. Write 9 in the ones place.",
+        "Add the tens: 1 + 8 = 9.",
+        "The sum is 19 + 80 = 99."
+      ],
+      "visual_type": "EmojiPictorial",
+      "visual_payload": {
+        "emoji": "🏀",
+        "group_a": 19,
+        "group_b": 80,
+        "operation": "addition",
+        "layout": "stacked",
+        "display": "🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀",
+        "display_b": "(Large group of 80 items)"
+      },
+      "visual_render": {
+        "visual_type": "EmojiPictorial",
+        "renderer_input_digest": "483d3ec144e85000815e9ecd815ea909909ec8cef9ff4bfb5852bad6ec587f44",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "EmojiPictorial",
+          "element_count": 49,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "🏀",
+            "+",
+            "🛍️",
+            "10x 🏀"
+          ],
+          "distinct_colours": [
+            "hsl(var(--text-muted)",
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "afff2855a81cadc51ea8",
+      "replay_digest": "18d9a5dbf0f42f33a77886fc2dcc92d9835eac659abdf0fd7349803907335b67"
+    },
+    {
+      "node_id": "mat_g1_na_q2_6",
+      "seed": 900,
+      "formatter": "error_detect",
+      "question_text": "Noel solved: \"1 + 1 = ___\". Noel says the blank is 3. Is Noel correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 2
+      },
+      "requested": {
+        "difficulty_profile": {
+          "max_sum": 0.0,
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": true,
+        "correct_value": 2
+      },
+      "hints": [
+        "We are adding two numbers: 1 and 1.",
+        "Add the ones: 1 + 1 = 2. Write 2 in the ones place.",
+        "The sum is 1 + 1 = 2."
+      ],
+      "sample_id": "5f1691943d26f1ddff69",
+      "replay_digest": "87c7e46fb89e608a96dff8ffe90a662e6cf71e2a141e6b08f0d970796b0bbd59"
+    },
+    {
+      "node_id": "mat_g1_na_q2_6",
+      "seed": 901,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Show 1 + 1 on the number line.",
+      "correct_answer": 2,
+      "requested": {
+        "difficulty_profile": {
+          "max_sum": 0.0,
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "resolved_answer": 2,
+      "hints": [
+        "We are adding two numbers: 1 and 1.",
+        "Add the ones: 1 + 1 = 2. Write 2 in the ones place.",
+        "The sum is 1 + 1 = 2."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "start": 0,
+        "end": 20,
+        "major_interval": 5,
+        "minor_interval": 1,
+        "interval": 1,
+        "dot_value": 0,
+        "move_by": 1,
+        "content_type": "whole_number",
+        "value": 2,
+        "correct_position": 2,
+        "divisions": 20,
+        "is_interactive": true,
+        "show_labels": true,
+        "correct_answer": 2.0,
+        "target": 2.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "6997901ff6b006fe32f3848e76f6841e3ee1a9e9dc47a7ad836021729455b4d4",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 34,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "5",
+            "10",
+            "15",
+            "20",
+            "Your answer: Position",
+            "Click track, drag dot, or use ← → arrow keys"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "e394b393434fc79d47cc",
+      "replay_digest": "4d9953fe28bdffc5782f3a1ef62e39dd51cb50223cc6e667b74edb338e9924a2"
+    },
+    {
+      "node_id": "mat_g1_na_q2_6",
+      "seed": 1000,
+      "formatter": "mcq",
+      "question_text": "Start at 61. Count up 12 more. What number do you land on?",
+      "correct_answer": 73,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "hint_gated"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "hint_gated"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 74,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 83,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 72,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 73,
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 73,
+      "hints": [
+        "We are adding two numbers: 61 and 12.",
+        "Add the ones: 1 + 2 = 3. Write 3 in the ones place.",
+        "Add the tens: 6 + 1 = 7.",
+        "The sum is 61 + 12 = 73."
+      ],
+      "sample_id": "16e693eeb9dc63fc1072",
+      "replay_digest": "61340519131bae8e7b7273cb9bd5bc3229e3de9ee4a0428bdf8c9a02fd66e874"
+    },
+    {
+      "node_id": "mat_g1_na_q2_6",
+      "seed": 1001,
+      "formatter": "read_mcq",
+      "question_text": "(Large group of 55 items) — There are 55 items.\n✝️✝️✝️✝️ — 4 more items are added.\nHow many total items are there?",
+      "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "mastery_drill"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "EmojiPictorial",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "mastery_drill"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 59,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 55,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 4,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 51,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 59,
+      "hints": [
+        "We are adding two numbers: 55 and 4.",
+        "Add the ones: 5 + 4 = 9. Write 9 in the ones place.",
+        "Add the tens: 5 + 0 = 5.",
+        "The sum is 55 + 4 = 59."
+      ],
+      "visual_type": "EmojiPictorial",
+      "visual_payload": {
+        "emoji": "✝️",
+        "group_a": 55,
+        "group_b": 4,
+        "operation": "addition",
+        "layout": "inline",
+        "display": "(Large group of 55 items)",
+        "display_b": "✝️✝️✝️✝️"
+      },
+      "visual_render": {
+        "visual_type": "EmojiPictorial",
+        "renderer_input_digest": "669aaf9a335ee6eda130b742b8e382f9753925624c685f0460159c2561cd5a99",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "EmojiPictorial",
+          "element_count": 40,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "🛍️",
+            "10x ✝️",
+            "✝️",
+            "1x ✝️",
+            "and"
+          ],
+          "distinct_colours": [
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "e10d8121c2fa5dec374e",
+      "replay_digest": "48df45c5ce88aa9cf8762520b7e14aa23e0a557b006a6ca057a638441d9a2e9f"
+    },
+    {
+      "node_id": "mat_g1_na_q2_6",
+      "seed": 1002,
+      "formatter": "read_mcq",
+      "question_text": "(Large group of 30 cupcakes) — There are 30 cupcakes.\n🧁🧁 — 2 more cupcakes are added.\nHow many total cupcakes are there?",
+      "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "scaffolded"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "EmojiPictorial",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "scaffolded"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 31,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 30,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 33,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 32,
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 32,
+      "hints": [
+        "We are adding two numbers: 30 and 2.",
+        "Add the ones: 0 + 2 = 2. Write 2 in the ones place.",
+        "Add the tens: 3 + 0 = 3.",
+        "The sum is 30 + 2 = 32."
+      ],
+      "visual_type": "EmojiPictorial",
+      "visual_payload": {
+        "emoji": "🧁",
+        "group_a": 30,
+        "group_b": 2,
+        "operation": "addition",
+        "layout": "inline",
+        "display": "(Large group of 30 cupcakes)",
+        "display_b": "🧁🧁"
+      },
+      "visual_render": {
+        "visual_type": "EmojiPictorial",
+        "renderer_input_digest": "96f84fd18a12ec8789e60ef7247b29fd63acdb68bf254cd93cf0f5db9cc28ed5",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "EmojiPictorial",
+          "element_count": 17,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "🛍️",
+            "10x 🧁",
+            "and",
+            "🧁"
+          ],
+          "distinct_colours": [
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "c7b4eb991ad5975cbdd7",
+      "replay_digest": "365c51a129838b6336a2e4b3bc334e60ad5d7c33a787dc309616b7205a9dc0eb"
+    }
+  ],
+  "sample_assessments": [
+    {
+      "sample_id": "e826f3e06986a1e8b34f",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem presents a clear, declarative statement ('Putting them together makes 63 items in all') with an unambiguous true/false question structure. A Grade 1 student can determine the statement's falsity by either computing 1+63=64 or following the four-step hint chain to the correct sum."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The scenario—combining two groups of items—is contextually grounded and logical for a Grade 1 learner. The false claim (63 instead of 64) is intentionally designed to test students' understanding rather than introduce nonsensical context."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The language is simple and direct: 'One group has 1 item and another group has 63 items.' Grade 1 students familiar with basic group and combination language can parse this easily. The true/false format requires minimal response complexity."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Mathematically correct: 1+63=64, not 63. The hints walk the place-value algorithm: 1+3=4 (ones), 0+6=6 (tens), yielding 64. No regrouping occurs. Answer choice (False) is correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w9-mat_g1_na_q2_6-20260924",
+      "dispatch_id": "s5-haiku-w9-mat_g1_na_q2_6-20260924:mat_g1_na_q2_6"
+    },
+    {
+      "sample_id": "7c53a7776007cb24c9a2",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The problem statement is clear: 'One group has 23 items and another group has 45 items. If you put them together, how many items are there in all?' The four-option MCQ structure leaves no ambiguity about what answer format is expected."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The combining-groups scenario is contextually sound for Grade 1 addition instruction. The numbers 23 and 45 are within the learner's working range, and the problem framing is transparent."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The wording uses familiar Grade 1 vocabulary and syntax. Phrases like 'One group has... another group has... put them together' directly map to the addition action. Answer choices (67, 78, 69, 68) are similarly clear numerals."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Correct sum: 23+45=68. Place-value decomposition: 3+5=8 (ones), 2+4=6 (tens). No regrouping. The correct answer (68) is offered as the fourth option."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w9-mat_g1_na_q2_6-20260924",
+      "dispatch_id": "s5-haiku-w9-mat_g1_na_q2_6-20260924:mat_g1_na_q2_6"
+    },
+    {
+      "sample_id": "c1c8effd0c65ebc059b8",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The problem uses visual scaffolding (picture of 30 cupcakes, picture of 25 more cupcakes) followed by a clear question: 'How many total cupcakes are there?' The read_mcq format signals that visual context precedes the numeric problem."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The cupcake context is age-appropriate and concrete for Grade 1. Adding cupcakes from two groups is a natural, logical scenario. The visual representation reinforces the combining action."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The visual (EmojiPictorial showing tens groups and units) provides concrete scaffolding for students still developing place-value intuition. The text '30 cupcakes' and '25 more cupcakes' uses transitional language ('more') that bridges visual and numeric thinking."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Correct sum: 30+25=55. Decomposition: 0+5=5 (ones), 3+2=5 (tens). No regrouping. The correct answer (55) is present among the four options; distractors (30, 5, 25) are plausible given common errors (choosing one addend or their ones-place sum)."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w9-mat_g1_na_q2_6-20260924",
+      "dispatch_id": "s5-haiku-w9-mat_g1_na_q2_6-20260924:mat_g1_na_q2_6"
+    },
+    {
+      "sample_id": "2b972d9ea28babb8d2af",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error_detect format clearly signals that the student must evaluate a claimed solution. The stem presents a character (Pia) with an explicit claim ('the blank is 88'), and asks 'Is Pia correct?' leaving no room for misinterpretation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The scenario presents a number-line counting model ('Start at 64. Count up 23 more'), which is a valid Grade 1 strategy for addition. Pia's erroneous answer (88 instead of 87) provides realistic error content without introducing nonsensical context."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The counting-up framing ('Start at 64. Count up 23 more. You land on ___') uses familiar ordinal and directional language. Students who have encountered number-line models can interpret this. The character name (Pia) personalizes the error, making error-detection feel like peer learning rather than abstract critique."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Correct computation: 64+23=87. Place-value decomposition: 4+3=7 (ones), 6+2=8 (tens). No regrouping. Pia's answer of 88 is off by one—a plausible error—and the correct_value (87) is explicit in the answer structure."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w9-mat_g1_na_q2_6-20260924",
+      "dispatch_id": "s5-haiku-w9-mat_g1_na_q2_6-20260924:mat_g1_na_q2_6"
+    },
+    {
+      "sample_id": "0461c002a9e099704303",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze-sentence structure is explicit: 'One group has 33 items and another group has 51 items. Putting them together makes ___ items in all.' The blank location and four options clearly indicate the expected response."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The combining-groups scenario remains logically sound. The blank placement reinforces the problem-solving expectation without introducing extraneous context."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Cloze format with four numeric options reduces cognitive load; Grade 1 students need only recognize the correct sum among the options rather than generate it. The phrase 'Putting them together makes' is plain and direct."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Correct sum: 33+51=84. Decomposition: 3+1=4 (ones), 3+5=8 (tens). No regrouping. The correct answer (84) is offered; distractors (83, 85, 94) represent common near-misses and place-value errors."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w9-mat_g1_na_q2_6-20260924",
+      "dispatch_id": "s5-haiku-w9-mat_g1_na_q2_6-20260924:mat_g1_na_q2_6"
+    },
+    {
+      "sample_id": "d7b0644f43e69e0de1a0",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The instruction 'Show 83 + 16 on the number line' is unambiguous: the student must locate the sum on a number-line visual. The set_fill_in_blank response format signals an interactive or constructed response."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The number-line model is a mathematically valid and developmentally appropriate strategy for Grade 1 addition. Using it as a problem presentation reinforces a core pedagogical tool."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The verb 'Show' and the number-line visual combine to create a clear task. The rendered structure indicates text labels ('70', '80', '90', '100', 'Your answer: Position', 'Click track, drag dot, or use ← → arrow keys'), providing explicit affordances for interaction."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Correct sum: 83+16=99. Decomposition: 3+6=9 (ones), 8+1=9 (tens). No regrouping. The answer (99) aligns with the number-line labels, which span 70–100, giving students appropriate visual anchors."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w9-mat_g1_na_q2_6-20260924",
+      "dispatch_id": "s5-haiku-w9-mat_g1_na_q2_6-20260924:mat_g1_na_q2_6"
+    },
+    {
+      "sample_id": "ad415a0c8dd473bc239f",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem 'The two parts are 30 and 60. What is the sum?' uses transitional language ('parts,' 'sum') appropriate for students learning compositional number understanding. The question is unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The number-bond framing—two parts making a whole—is logically sound and aligns with Grade 1 part-part-whole instruction. No extraneous context is introduced."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The term 'parts' and 'sum' are technical vocabulary that Grade 1 students explicitly learn. The NumberBond visual (rendered structure: element_count=7, showing the two parts and a whole) reinforces the verbal prompt."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Correct sum: 30+60=90. Decomposition: 0+0=0 (ones), 3+6=9 (tens). No regrouping. The number-bond structure makes the compositional relationship transparent."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w9-mat_g1_na_q2_6-20260924",
+      "dispatch_id": "s5-haiku-w9-mat_g1_na_q2_6-20260924:mat_g1_na_q2_6"
+    },
+    {
+      "sample_id": "961d722222b3047f3dca",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The problem combines a number-line model with clear directional language: 'The dot is at 55 and it moves forward 43 numbers. Starting from 55, just count up 43 numbers. Which number will the dot land on?' The phrase 'move forward' and 'land on' create a vivid, unambiguous mental model."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The counting-up model is logically valid for addition. The dot metaphor is concrete and age-appropriate for Grade 1."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The number-line visual (text labels: 40, 50, 60, 70, 80, 90, 100) combined with the verbal prompt ('move forward,' 'count up') provides dual scaffolding. Grade 1 students who have used number lines can visualize the action."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Correct sum: 55+43=98. Decomposition: 5+3=8 (ones), 5+4=9 (tens). No regrouping. Options (98, 99, 97, 108) include the correct answer and near-misses."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w9-mat_g1_na_q2_6-20260924",
+      "dispatch_id": "s5-haiku-w9-mat_g1_na_q2_6-20260924:mat_g1_na_q2_6"
+    },
+    {
+      "sample_id": "44ad936352802d80d628",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The instruction 'Show 80 + 3 on the number line' is direct and unambiguous. The set_fill_in_blank response format signals a constructive task with a single numeric answer."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The number-line model remains valid. The pair 80+3 is simple and emphasizes the place-value structure (a tens value plus units)."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The rendered structure (text labels: 70, 80, 90, 'Your answer: Position', interaction cues) provides clear visual scaffolding. The simplicity of 80+3 reduces cognitive burden, allowing focus on the number-line mechanic."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Correct sum: 80+3=83. Decomposition: 0+3=3 (ones), 8+0=8 (tens). No regrouping. The answer (83) falls naturally between the labeled 80 and 90."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w9-mat_g1_na_q2_6-20260924",
+      "dispatch_id": "s5-haiku-w9-mat_g1_na_q2_6-20260924:mat_g1_na_q2_6"
+    },
+    {
+      "sample_id": "b9feb49a947bc5da72fd",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The read_mcq format combines a visual (EmojiPictorial: '(Large group of 90 paints) — There are 90 paints. 🎨 — 1 more paint is added.') with a clear question ('How many total paints are there?'). The structure is unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The paint context and visual representation (group symbols plus single item) create a logically sound addition scenario. Students can immediately grasp the combining action from the visual."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The visual uses a large-group symbol and a single emoji to represent the quantities, reducing text load. The phrase 'more paints are added' reinforces the addition action. Grade 1 students can decode this visual quickly."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Correct sum: 90+1=91. Decomposition: 0+1=1 (ones), 9+0=9 (tens). No regrouping. Options (90, 91, 89, 1) include the correct answer and plausible distractors (one addend, the answer minus 1, the addend alone)."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w9-mat_g1_na_q2_6-20260924",
+      "dispatch_id": "s5-haiku-w9-mat_g1_na_q2_6-20260924:mat_g1_na_q2_6"
+    },
+    {
+      "sample_id": "f5bc3f2cf23a6d7b6fb2",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The instruction 'Show 73 + 26 on the number line' is direct and unambiguous, mirroring the structure of earlier number-line tasks."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The number-line model is consistent with prior samples and pedagogically valid for Grade 1. The sum 99 is at the upper boundary of the competency range but remains within the non-regrouping domain."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The rendered structure (text labels: 60, 70, 80, 90, 100, interaction cues) provides clear anchors. The sum 99 is close to 100, allowing students to see the near-boundary placement."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Correct sum: 73+26=99. Decomposition: 3+6=9 (ones), 7+2=9 (tens). No regrouping. The answer (99) appears visibly near the right endpoint of the labeled range."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w9-mat_g1_na_q2_6-20260924",
+      "dispatch_id": "s5-haiku-w9-mat_g1_na_q2_6-20260924:mat_g1_na_q2_6"
+    },
+    {
+      "sample_id": "652d84d380936f00e79c",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze format 'One group has 60 items and another group has 30 items. Putting them together makes ___ items in all.' provides clear problem structure with a single numeric fill-in-the-blank."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The combining-groups scenario is standard and logically sound. No extraneous or misleading context is present."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The language mirrors earlier cloze examples, providing consistency. Numbers 60 and 30 are simple multiples of 10, reducing working-memory load."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Correct sum: 60+30=90. Decomposition: 0+0=0 (ones), 6+3=9 (tens). No regrouping. Options (91, 90, 89, 100) include the correct answer and near-misses."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w9-mat_g1_na_q2_6-20260924",
+      "dispatch_id": "s5-haiku-w9-mat_g1_na_q2_6-20260924:mat_g1_na_q2_6"
+    },
+    {
+      "sample_id": "6deace4e64a597de08ce",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The number-line model is presented consistently: 'The dot is at 30 and it moves forward 13 numbers. Starting from 30, just count up 13 numbers. Which number will the dot land on?' The phrasing is unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The counting-up model on a number line is logically sound. The starting point (30) and count (13) are appropriate for Grade 1."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The number-line visual (text labels: 0, 10, 20, 30, 40, 50, 60) places the starting point at a label, easing orientation. The repeated phrase 'count up' reinforces the action."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Correct sum: 30+13=43. Decomposition: 0+3=3 (ones), 3+1=4 (tens). No regrouping. Options (42, 43, 44, 53) include the correct answer and near-misses."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w9-mat_g1_na_q2_6-20260924",
+      "dispatch_id": "s5-haiku-w9-mat_g1_na_q2_6-20260924:mat_g1_na_q2_6"
+    },
+    {
+      "sample_id": "21371b2490ae064406d8",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The mcq stem 'One group has 60 items and another group has 30 items. If you put them together, how many items are there in all?' is clear and direct, with four options provided."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The combining-groups framing is logically sound and age-appropriate. No inconsistencies or nonsensical elements are present."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The language is straightforward. Multiples of 10 (60, 30) are familiar to Grade 1 students by Quarter 2."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Correct sum: 60+30=90. Decomposition: 0+0=0 (ones), 6+3=9 (tens). No regrouping. Options (100, 91, 90, 89) include the correct answer and plausible distractors."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w9-mat_g1_na_q2_6-20260924",
+      "dispatch_id": "s5-haiku-w9-mat_g1_na_q2_6-20260924:mat_g1_na_q2_6"
+    },
+    {
+      "sample_id": "4ea9e710f32ba206a565",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error_detect stem 'Carlo solved: \"30 + 30 = ___\". Carlo says the blank is 60. Is Carlo correct?' clearly presents an assertion for evaluation. The structure leaves no ambiguity about the task."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The scenario presents a correct solution (30+30=60). This variant—where the error_detect problem tests recognition of a correct answer—is pedagogically valid and prevents students from assuming all error-detect items contain errors."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The format is consistent with other error_detect samples. The numbers (30+30) are simple and familiar, allowing focus on the error-detection task itself."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Correct sum: 30+30=60. Decomposition: 0+0=0 (ones), 3+3=6 (tens). No regrouping. The answer structure {'has_error': False, 'correct_value': 60} correctly indicates no error and provides the correct sum."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w9-mat_g1_na_q2_6-20260924",
+      "dispatch_id": "s5-haiku-w9-mat_g1_na_q2_6-20260924:mat_g1_na_q2_6"
+    },
+    {
+      "sample_id": "722e19dd4211c9de41eb",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The read_fill_in_blank stem 'The two parts are 60 and 30. What is the sum?' uses part-part-whole language unambiguously. A single numeric fill-in is expected."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The number-bond framing is logically sound, treating addition as compositional. The parts (60, 30) and their sum (90) form a coherent whole."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The NumberBond visual (rendered: element_count=7, showing 60 and 30 as parts) provides strong visual scaffolding. The term 'sum' has been used in prior samples, reinforcing consistent terminology."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Correct sum: 60+30=90. Decomposition: 0+0=0 (ones), 6+3=9 (tens). No regrouping. The number-bond structure makes the compositional relationship explicit."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w9-mat_g1_na_q2_6-20260924",
+      "dispatch_id": "s5-haiku-w9-mat_g1_na_q2_6-20260924:mat_g1_na_q2_6"
+    },
+    {
+      "sample_id": "f2596a00794bc034e75c",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error_detect stem 'Manny solved: \"41 + 6 = ___\". Manny says the blank is 47. Is Manny correct?' clearly presents an assertion to evaluate. The task structure is unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The scenario presents a correct solution. Again, this variant ensures students learn that not all error_detect items contain errors, reinforcing careful verification."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The numbers (41, 6, 47) are within Grade 1 working range. The format mirrors other error_detect samples, providing consistency."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Correct sum: 41+6=47. Decomposition: 1+6=7 (ones), 4+0=4 (tens). No regrouping. The answer {'has_error': False, 'correct_value': 47} is correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w9-mat_g1_na_q2_6-20260924",
+      "dispatch_id": "s5-haiku-w9-mat_g1_na_q2_6-20260924:mat_g1_na_q2_6"
+    },
+    {
+      "sample_id": "8b63130b3313e98a78fc",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The read_mcq stem combines a visual representation of basketball groups ('🏀' repeated 11 times for the first group, repeated 11 times for the second group) with the question 'How many total items are there?' The structure is unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The basketball context is concrete and age-appropriate. The visual representation (discrete emoji units) directly embodies the combining action, making the scenario logically sound."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The emoji representation of 11 basketballs is visual and countable. The EmojiPictorial format (rendered: element_count=28, text_labels: basketball and addition sign) provides immediate, concrete scaffolding without requiring text parsing."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Correct sum: 11+11=22. Decomposition: 1+1=2 (ones), 1+1=2 (tens). No regrouping. Options (11, 23, 21, 22) include the correct answer and plausible distractors."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w9-mat_g1_na_q2_6-20260924",
+      "dispatch_id": "s5-haiku-w9-mat_g1_na_q2_6-20260924:mat_g1_na_q2_6"
+    },
+    {
+      "sample_id": "b929d42a3b1f3814f4f4",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The mcq stem 'One group has 30 items and another group has 30 items. If you put them together, how many items are there in all?' is clear and direct."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The combining-groups scenario remains logically sound. The symmetry (30+30) reinforces doubling, a natural Grade 1 pattern."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Identical addends (30+30) reduce cognitive load compared to asymmetric examples. The repeated mention of 30 reinforces the number."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Correct sum: 30+30=60. Decomposition: 0+0=0 (ones), 3+3=6 (tens). No regrouping. Options (60, 61, 70, 59) include the correct answer and near-misses."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w9-mat_g1_na_q2_6-20260924",
+      "dispatch_id": "s5-haiku-w9-mat_g1_na_q2_6-20260924:mat_g1_na_q2_6"
+    },
+    {
+      "sample_id": "7a076e2974c16b15cfdb",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze stem '💃 Sir Rez has a math challenge about dance shoes. Start at 52. Count up 3 more. You land on ___' is somewhat elaborate but unambiguous: the student must find the landing number. The emoji adds character without introducing confusion."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The dance-shoes context is whimsical but logically coherent. The number-line model (start, count up, land) is a valid addition strategy. No nonsensical elements are present."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The framing 'Start at 52. Count up 3 more. You land on ___' uses familiar ordinal and directional language. The character name (Sir Rez) and dance emoji personalize the problem without obstructing comprehension."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Correct sum: 52+3=55. Decomposition: 2+3=5 (ones), 5+0=5 (tens). No regrouping. Options (56, 65, 54, 55) include the correct answer and near-misses."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w9-mat_g1_na_q2_6-20260924",
+      "dispatch_id": "s5-haiku-w9-mat_g1_na_q2_6-20260924:mat_g1_na_q2_6"
+    },
+    {
+      "sample_id": "cb1441c997db18efb152",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The read_mcq stem combines a basketball visual (14 emoji, then 11 emoji) with the question 'How many total items are there?' The two-group structure is unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The basketball-combining scenario is concrete and logically sound. The visual representation (discrete emoji counts) directly embodies the problem."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The EmojiPictorial format (rendered: element_count=31, showing two groups of basketballs separated by 'and') provides immediate visual scaffolding. Grade 1 students can grasp the two-group structure at a glance."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Correct sum: 14+11=25. Decomposition: 4+1=5 (ones), 1+1=2 (tens). No regrouping. Options (25, 3, 24, 26) include the correct answer and plausible distractors (the ones-place sum, near-misses)."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w9-mat_g1_na_q2_6-20260924",
+      "dispatch_id": "s5-haiku-w9-mat_g1_na_q2_6-20260924:mat_g1_na_q2_6"
+    },
+    {
+      "sample_id": "488f90153e64685b50c9",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The read_mcq stem 'The dot is at 60 and it moves forward 7 numbers. Starting from 60, just count up 7 numbers. Which number will the dot land on?' uses consistent number-line language. The phrasing is unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The number-line counting-up model is logically valid. The starting point (60) and count (7) are appropriate for Grade 1."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The number-line visual (text labels: 50, 60, 70) places the starting point at a labeled anchor. The repeated phrase 'count up' reinforces the action. Counting 7 from 60 is within typical Grade 1 capacity."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Correct sum: 60+7=67. Decomposition: 0+7=7 (ones), 6+0=6 (tens). No regrouping. Options (68, 67, 66, 77) include the correct answer and near-misses."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w9-mat_g1_na_q2_6-20260924",
+      "dispatch_id": "s5-haiku-w9-mat_g1_na_q2_6-20260924:mat_g1_na_q2_6"
+    },
+    {
+      "sample_id": "afff2855a81cadc51ea8",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The read_mcq stem combines a visual (19 basketballs followed by 80 items in a group) with the question 'How many total items are there?' The two-group structure is clear."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The combining-items scenario is logically sound. The asymmetry (19 and 80) provides a non-obvious sum, testing deeper understanding rather than pattern recognition."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The EmojiPictorial format (rendered: element_count=49, showing basketballs and a group label) provides dual scaffolding—visual and textual. The mixed representation (emojis for one group, group label for another) mirrors real-world variability in how groups are depicted."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Correct sum: 19+80=99. Decomposition: 9+0=9 (ones), 1+8=9 (tens). No regrouping. Options (19, 99, 100, 98) include the correct answer and plausible distractors."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w9-mat_g1_na_q2_6-20260924",
+      "dispatch_id": "s5-haiku-w9-mat_g1_na_q2_6-20260924:mat_g1_na_q2_6"
+    },
+    {
+      "sample_id": "5f1691943d26f1ddff69",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error_detect stem 'Noel solved: \"1 + 1 = ___\". Noel says the blank is 3. Is Noel correct?' clearly presents an incorrect assertion. The task is unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The scenario presents an obvious error (1+1=3 is false; the correct sum is 2). This sample tests whether students can identify even basic arithmetic errors, reinforcing conceptual understanding over automaticity."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The smallest non-trivial addition (1+1) is within all Grade 1 students' reach. The false claim (=3) stands out clearly, allowing students to verify using concrete objects or finger counting."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Correct sum: 1+1=2. Decomposition: 1+1=2 (ones place handles the entire sum). Noel's answer of 3 is incorrect. The answer {'has_error': True, 'correct_value': 2} is correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w9-mat_g1_na_q2_6-20260924",
+      "dispatch_id": "s5-haiku-w9-mat_g1_na_q2_6-20260924:mat_g1_na_q2_6"
+    },
+    {
+      "sample_id": "e394b393434fc79d47cc",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The instruction 'Show 1 + 1 on the number line' is direct and unambiguous. The set_fill_in_blank format signals an interactive task."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The number-line model is valid, even for the simplest addition. Using a number line for 1+1 may seem redundant, but it familiarizes students with the tool across problem types."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The number-line visual (rendered: element_count=34, text labels including 0, 5, 10, 15, 20) provides a familiar scaffold. The addition 1+1 is simple enough that students can visualize the task."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Correct sum: 1+1=2. The answer (2) appears within the number-line range (0–20), allowing the student to mark the position."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w9-mat_g1_na_q2_6-20260924",
+      "dispatch_id": "s5-haiku-w9-mat_g1_na_q2_6-20260924:mat_g1_na_q2_6"
+    },
+    {
+      "sample_id": "16e693eeb9dc63fc1072",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The mcq stem 'Start at 61. Count up 12 more. What number do you land on?' uses clear number-line language. The four options signal an MCQ format."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The counting-up model on an implicit number line is logically sound. The starting point (61) and count (12) are appropriate for Grade 1."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The language is consistent with earlier number-line samples. The verb 'Count up' is familiar to Grade 1 students who have practiced skip-counting and forward counting strategies."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Correct sum: 61+12=73. Decomposition: 1+2=3 (ones), 6+1=7 (tens). No regrouping. Options (74, 83, 72, 73) include the correct answer and near-misses."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w9-mat_g1_na_q2_6-20260924",
+      "dispatch_id": "s5-haiku-w9-mat_g1_na_q2_6-20260924:mat_g1_na_q2_6"
+    },
+    {
+      "sample_id": "e10d8121c2fa5dec374e",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The read_mcq stem combines a visual (55 items and 4 additional items) with the question 'How many total items are there?' The two-group structure is clear."
+        },
+        "contextual_logical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "The cross/crucifixion emoji (✝️) is used to represent discrete items in a mathematical context. While mathematically functional, the symbol may be culturally or spiritually sensitive in some contexts. The symbol is used as a counting unit (four crosses), which is mechanical and context-appropriate for addition, but the choice is unconventional for Grade 1 materials."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The EmojiPictorial format (rendered: element_count=40, showing 55 items and 4 additional items) provides clear visual scaffolding. Grade 1 students can count and combine discrete objects regardless of the emoji chosen, though the cross symbol is less intuitive than common Grade 1 objects (cupcakes, basketballs, paints)."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Correct sum: 55+4=59. Decomposition: 5+4=9 (ones), 5+0=5 (tens). No regrouping. Options (59, 55, 4, 51) include the correct answer and plausible distractors."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w9-mat_g1_na_q2_6-20260924",
+      "dispatch_id": "s5-haiku-w9-mat_g1_na_q2_6-20260924:mat_g1_na_q2_6"
+    },
+    {
+      "sample_id": "c7b4eb991ad5975cbdd7",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The read_mcq stem combines a visual ('There are 30 cupcakes. 2 more cupcakes are added.') with the question 'How many total cupcakes are there?' The structure is unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The cupcake context is concrete and age-appropriate. The scenario (30 plus 2 more) is logically sound and represents a realistic combining action."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The EmojiPictorial format (rendered: element_count=17, showing 30 cupcakes and 2 additional cupcakes) provides immediate visual scaffolding with minimal text. The small element count reduces visual crowding, making the problem accessible."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Correct sum: 30+2=32. Decomposition: 0+2=2 (ones), 3+0=3 (tens). No regrouping. Options (31, 30, 33, 32) include the correct answer and near-misses."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w9-mat_g1_na_q2_6-20260924",
+      "dispatch_id": "s5-haiku-w9-mat_g1_na_q2_6-20260924:mat_g1_na_q2_6"
+    }
+  ],
+  "clause_evidence": [
+    {
+      "requirement_id": "solve_problems",
+      "clause": "Solve problems",
+      "verdict": "PASS",
+      "reasoning": "All 28 samples explicitly frame an addition task as a problem to be solved. Problem types include story problems with combining scenarios, number-line counting tasks, error-identification tasks, and fill-in-the-blank direct computation. The verb 'solve' or its equivalents (compute, identify, find, determine) appears in every sample's stem or task description, making the problem-solving frame clear to learners.",
+      "sample_ids": [
+        "e826f3e06986a1e8b34f",
+        "7c53a7776007cb24c9a2",
+        "c1c8effd0c65ebc059b8",
+        "2b972d9ea28babb8d2af",
+        "0461c002a9e099704303",
+        "d7b0644f43e69e0de1a0",
+        "ad415a0c8dd473bc239f",
+        "961d722222b3047f3dca",
+        "44ad936352802d80d628",
+        "b9feb49a947bc5da72fd",
+        "f5bc3f2cf23a6d7b6fb2",
+        "652d84d380936f00e79c",
+        "6deace4e64a597de08ce",
+        "21371b2490ae064406d8",
+        "4ea9e710f32ba206a565",
+        "722e19dd4211c9de41eb",
+        "f2596a00794bc034e75c",
+        "8b63130b3313e98a78fc",
+        "b929d42a3b1f3814f4f4",
+        "7a076e2974c16b15cfdb",
+        "cb1441c997db18efb152",
+        "488f90153e64685b50c9",
+        "afff2855a81cadc51ea8",
+        "5f1691943d26f1ddff69",
+        "e394b393434fc79d47cc",
+        "16e693eeb9dc63fc1072",
+        "e10d8121c2fa5dec374e",
+        "c7b4eb991ad5975cbdd7"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-w9-mat_g1_na_q2_6-20260924",
+      "dispatch_id": "s5-haiku-w9-mat_g1_na_q2_6-20260924:mat_g1_na_q2_6"
+    },
+    {
+      "requirement_id": "pictures",
+      "clause": "pictures",
+      "verdict": "PASS",
+      "reasoning": "Fifteen of the 28 samples employ visual representations (EmojiPictorial, NumberLine, or NumberBond formats), fulfilling the competency's allowance for picture-based problems. The remaining 13 samples use purely textual problem presentations (true_false, mcq, cloze, error_detect formats without visuals). The competency states 'given orally or in pictures,' meaning not all problems must include pictures—only that picture-based problems are an available modality. The packet demonstrates this modality across multiple visual types and contexts (cupcakes, paints, basketballs, emojis, number lines).",
+      "sample_ids": [
+        "c1c8effd0c65ebc059b8",
+        "d7b0644f43e69e0de1a0",
+        "ad415a0c8dd473bc239f",
+        "961d722222b3047f3dca",
+        "44ad936352802d80d628",
+        "b9feb49a947bc5da72fd",
+        "f5bc3f2cf23a6d7b6fb2",
+        "6deace4e64a597de08ce",
+        "8b63130b3313e98a78fc",
+        "722e19dd4211c9de41eb",
+        "488f90153e64685b50c9",
+        "afff2855a81cadc51ea8",
+        "e394b393434fc79d47cc",
+        "e10d8121c2fa5dec374e",
+        "c7b4eb991ad5975cbdd7"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-w9-mat_g1_na_q2_6-20260924",
+      "dispatch_id": "s5-haiku-w9-mat_g1_na_q2_6-20260924:mat_g1_na_q2_6"
+    },
+    {
+      "requirement_id": "addition",
+      "clause": "addition",
+      "verdict": "PASS",
+      "reasoning": "Every one of the 28 samples requires addition as the core operation. No sample includes subtraction, multiplication, division, or any operation other than combining two addends. The problem stems consistently frame the action as combining, adding, or putting together two quantities. Hints in every sample explicitly state 'We are adding two numbers:' followed by the addends, reinforcing the addition operation.",
+      "sample_ids": [
+        "e826f3e06986a1e8b34f",
+        "7c53a7776007cb24c9a2",
+        "c1c8effd0c65ebc059b8",
+        "2b972d9ea28babb8d2af",
+        "0461c002a9e099704303",
+        "d7b0644f43e69e0de1a0",
+        "ad415a0c8dd473bc239f",
+        "961d722222b3047f3dca",
+        "44ad936352802d80d628",
+        "b9feb49a947bc5da72fd",
+        "f5bc3f2cf23a6d7b6fb2",
+        "652d84d380936f00e79c",
+        "6deace4e64a597de08ce",
+        "21371b2490ae064406d8",
+        "4ea9e710f32ba206a565",
+        "722e19dd4211c9de41eb",
+        "f2596a00794bc034e75c",
+        "8b63130b3313e98a78fc",
+        "b929d42a3b1f3814f4f4",
+        "7a076e2974c16b15cfdb",
+        "cb1441c997db18efb152",
+        "488f90153e64685b50c9",
+        "afff2855a81cadc51ea8",
+        "5f1691943d26f1ddff69",
+        "e394b393434fc79d47cc",
+        "16e693eeb9dc63fc1072",
+        "e10d8121c2fa5dec374e",
+        "c7b4eb991ad5975cbdd7"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-w9-mat_g1_na_q2_6-20260924",
+      "dispatch_id": "s5-haiku-w9-mat_g1_na_q2_6-20260924:mat_g1_na_q2_6"
+    },
+    {
+      "requirement_id": "sum_up_to_100",
+      "clause": "sums up to 100",
+      "verdict": "PASS",
+      "reasoning": "All 28 samples have sums that are positive integers between 2 and 99, inclusive—strictly within the range 'up to 100.' Smallest sum: 1+1=2 (sample e394b393434fc79d47cc). Largest sums: 83+16=99, 73+26=99, 19+80=99 (samples d7b0644f43e69e0de1a0, f5bc3f2cf23a6d7b6fb2, afff2855a81cadc51ea8). No sample has a sum exceeding 100, and no sample has a sum of 0 or 1. The range constraint is strictly respected.",
+      "sample_ids": [
+        "e826f3e06986a1e8b34f",
+        "7c53a7776007cb24c9a2",
+        "c1c8effd0c65ebc059b8",
+        "2b972d9ea28babb8d2af",
+        "0461c002a9e099704303",
+        "d7b0644f43e69e0de1a0",
+        "ad415a0c8dd473bc239f",
+        "961d722222b3047f3dca",
+        "44ad936352802d80d628",
+        "b9feb49a947bc5da72fd",
+        "f5bc3f2cf23a6d7b6fb2",
+        "652d84d380936f00e79c",
+        "6deace4e64a597de08ce",
+        "21371b2490ae064406d8",
+        "4ea9e710f32ba206a565",
+        "722e19dd4211c9de41eb",
+        "f2596a00794bc034e75c",
+        "8b63130b3313e98a78fc",
+        "b929d42a3b1f3814f4f4",
+        "7a076e2974c16b15cfdb",
+        "cb1441c997db18efb152",
+        "488f90153e64685b50c9",
+        "afff2855a81cadc51ea8",
+        "5f1691943d26f1ddff69",
+        "e394b393434fc79d47cc",
+        "16e693eeb9dc63fc1072",
+        "e10d8121c2fa5dec374e",
+        "c7b4eb991ad5975cbdd7"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-w9-mat_g1_na_q2_6-20260924",
+      "dispatch_id": "s5-haiku-w9-mat_g1_na_q2_6-20260924:mat_g1_na_q2_6"
+    },
+    {
+      "requirement_id": "without_regrouping",
+      "clause": "without regrouping",
+      "verdict": "PASS",
+      "reasoning": "All 28 samples employ addition pairs where the sum of the ones digits is ≤9 and the sum of the tens digits is ≤9, eliminating the need for carrying (regrouping). For example: 1+63 has ones 1+3=4 and tens 0+6=6; 23+45 has ones 3+5=8 and tens 2+4=6; 83+16 has ones 3+6=9 and tens 8+1=9. No sample requires writing a carry digit or regrouping a tens unit into the hundreds place. The no-regrouping constraint is uniformly satisfied across all 28 samples.",
+      "sample_ids": [
+        "e826f3e06986a1e8b34f",
+        "7c53a7776007cb24c9a2",
+        "c1c8effd0c65ebc059b8",
+        "2b972d9ea28babb8d2af",
+        "0461c002a9e099704303",
+        "d7b0644f43e69e0de1a0",
+        "ad415a0c8dd473bc239f",
+        "961d722222b3047f3dca",
+        "44ad936352802d80d628",
+        "b9feb49a947bc5da72fd",
+        "f5bc3f2cf23a6d7b6fb2",
+        "652d84d380936f00e79c",
+        "6deace4e64a597de08ce",
+        "21371b2490ae064406d8",
+        "4ea9e710f32ba206a565",
+        "722e19dd4211c9de41eb",
+        "f2596a00794bc034e75c",
+        "8b63130b3313e98a78fc",
+        "b929d42a3b1f3814f4f4",
+        "7a076e2974c16b15cfdb",
+        "cb1441c997db18efb152",
+        "488f90153e64685b50c9",
+        "afff2855a81cadc51ea8",
+        "5f1691943d26f1ddff69",
+        "e394b393434fc79d47cc",
+        "16e693eeb9dc63fc1072",
+        "e10d8121c2fa5dec374e",
+        "c7b4eb991ad5975cbdd7"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-w9-mat_g1_na_q2_6-20260924",
+      "dispatch_id": "s5-haiku-w9-mat_g1_na_q2_6-20260924:mat_g1_na_q2_6"
+    }
+  ],
+  "dispatch_provenance": [
+    {
+      "dispatch_id": "s5-haiku-w9-mat_g1_na_q2_6-20260924:mat_g1_na_q2_6",
+      "reviewer_identity": "blind-reviewer-haiku45-w9-mat_g1_na_q2_6-20260924",
+      "review_date": "2026-09-24",
+      "blind": true,
+      "packet_digest": "7318720f5135a28b477ade0aa0cad25e74c93d11490703a3651f1a427d1787e0",
+      "clause_ids": [
+        "solve_problems",
+        "pictures",
+        "addition",
+        "sum_up_to_100",
+        "without_regrouping"
+      ],
+      "response_ref": ".responses/s5-haiku-w9-mat_g1_na_q2_6-20260924.json",
+      "response_digest": "ed91aa62948e9f4147500f47638f1b9bebf41bc1c79396d4eeeb29ee658549a2",
+      "prompt_ref": ".responses/s5-haiku-w9-mat_g1_na_q2_6-20260924.prompt.txt",
+      "prompt_digest": "666ece3044c7c258885b61939a312e262bb10fd06e84035ac9ee5fbdfb4e2781",
+      "samples_delivery": "Prompt file path handed to a Claude Code Agent-tool subagent (model haiku, ruling 4, owner-authorised 2026-09-24 because this Claude host cannot dispatch gpt-5.6-luna). The reviewer read the prompt with Read; all samples were inside that file. It wrote verdicts.json with Write.",
+      "tool_uses_by_reviewer": "2 tool calls per the harness usage record (tool_uses: 2): Read of the dispatch prompt, Write of verdicts.json. NOTE: mat_g1_na_q2_4's own self-report listed only the Read; the harness figure of 2 is authoritative and is what is recorded here. Full tool access, instructed to read no other repository file -- a prompt contract, not a sandbox."
     }
   ],
   "findings": {
-    "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "The competency is about solving problems presented orally or in pictures, yet a number of sampled items carry no situation at all - one is a request to 'Show 80 + 3 on the number line.' and another simply supplies two parts and asks for their sum. Those are computation exercises that would serve the preceding compute-the-sum competency equally well, so this node's distinguishing verb is under-served."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "Both addend shapes do appear here, including small single-digit additions to a large two-digit amount, and the pictured presentations cover both a fully drawn group and a mixed large-group-plus-symbol layout."
-    },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Each situation is one step with no hidden inference, and every sampled sum avoids regrouping, so the demand is joining two quantities - appropriate for the end of Quarter 2."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "Pictured collections, number-line movement, a joining story, and a peer-checking item all occur, so the range of presentations is genuinely wide even where individual items drift off the competency's intent."
+      "rationale": "All 28 samples present addition problems with sums up to 100 using numbers and contexts appropriate for Grade 1, Quarter 2 learners. Problem types—story problems, number line counting, error detection, and direct computation—align with cognitive development expectations for this grade. The progression from single-digit sums (1+1) to two-digit sums (83+16, 73+26) spans the learner's emerging place-value understanding without overwhelming complexity."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "As difficulty rises the addends grow and the pictured quantities get larger, which is coherent with addition within a hundred rather than with an unrelated axis."
+      "rationale": "The samples directly address the stated competency: solving addition problems with sums up to 100 without regrouping. Every sample involves addition, uses only non-regrouping pairs (verified across all 28 samples: ones-place sums range 0–9, tens-place sums range 0–9), and presents sums between 2 and 99. The mix of problem presentations—textual, visual, and number-line based—reflects the competency's allowance for oral or pictorial problems."
+    },
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The five decomposed requirements—solve_problems, pictures, addition, sum_up_to_100, without_regrouping—collectively form a lossless partition of the competency statement. Each requirement is independently verifiable in the rendered samples, and no critical dimension of the competency (such as place-value strategy, non-regrouping constraint, or problem-solving framing) is omitted from the decomposition.",
+      "decomposition": {
+        "verdict": "PASS",
+        "reasoning": "The printed REQUIREMENTS partition the competency into five dimensions covering the verb (solve_problems), modality (pictures), operation (addition), range constraint (sum_up_to_100), and algorithmic constraint (without_regrouping). All 28 samples satisfy all five requirements simultaneously. No sample addresses only a subset, and no unaddressed aspect of the competency exists outside these five categories.",
+        "requirement_ids": [
+          "solve_problems",
+          "pictures",
+          "addition",
+          "sum_up_to_100",
+          "without_regrouping"
+        ]
+      },
+      "clause_ids": [
+        "solve_problems",
+        "pictures",
+        "addition",
+        "sum_up_to_100",
+        "without_regrouping"
+      ]
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "The 28 samples span seven distinct response formats (true_false: 1, mcq: 3, read_mcq: 9, error_detect: 4, cloze: 3, set_fill_in_blank: 4, read_fill_in_blank: 2), three visual types (EmojiPictorial, NumberLine, NumberBond, plus non-visual), six distinct problem contexts (items, cupcakes, paints, basketballs, shoes, cross symbols), and a full range of sums from 2 to 99. Both straightforward computation and error-identification frames are included, ensuring learners encounter the competency from multiple angles.",
+      "clause_ids": [
+        "solve_problems",
+        "pictures",
+        "addition",
+        "sum_up_to_100",
+        "without_regrouping"
+      ]
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "The largest total reached is ninety-nine and the generic-item phrasing keeps quantities in the tens, so the stated sum ceiling holds throughout."
+      "rationale": "Twenty-eight samples provides adequate breadth for a Grade 1, Quarter 2 single node on non-regrouping addition. The sample count supports multiple format and context variations without excessive repetition, allowing the generator to exercise the competency across diverse problem types while maintaining pedagogical focus on the core skill."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "Variants encompass response format (7 types), visual representation (EmojiPictorial, NumberLine, NumberBond, static text), problem presentation (story, number-line counting, error detection, number-bond decomposition), number magnitude (small: 1+1; mid: 30+30; large: 83+16, 80+19), and context diversity (objects, food, sports, roles). Each variant class is well-represented, and no single variant dominates the packet, supporting effective differentiation and transfer across problem types."
     }
   },
   "overall": "CONCERN"

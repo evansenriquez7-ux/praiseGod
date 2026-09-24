@@ -1,7 +1,38 @@
 {
+  "schema_version": 2,
   "node_id": "mat_g1_na_q2_4",
-  "reviewed_by": "reviewer-c2-basalt-yarrow-7194",
-  "review_date": "2026-09-11",
+  "competency_snapshot": {
+    "text": "Add numbers by expressing addends as tens and ones (expanded form).",
+    "grade": 1,
+    "quarter": 2,
+    "subdomain": null
+  },
+  "requirements_snapshot": [
+    {
+      "kind": "task",
+      "id": "add",
+      "clause": "Add numbers"
+    },
+    {
+      "kind": "task",
+      "id": "express_addends",
+      "clause": "expressing addends"
+    },
+    {
+      "kind": "representation",
+      "id": "tens_ones",
+      "clause": "tens and ones"
+    },
+    {
+      "kind": "representation",
+      "id": "expanded_form",
+      "clause": "expanded form"
+    }
+  ],
+  "packet_digest": "840e7e6f1fb632fd9881070d6bfe5edc15d152ba0d4beb1df6a1f175ae93ab0d",
+  "sampling_version": "phase2-stratified-v2-rendered-visual",
+  "reviewed_by": "blind-reviewer-haiku45-w9r2-mat_g1_na_q2_4-20260924",
+  "review_date": "2026-09-24",
   "blind": true,
   "sample_seeds": [
     42,
@@ -17,14 +48,75 @@
     602,
     603,
     604,
-    605
+    605,
+    606,
+    607,
+    608,
+    609,
+    610,
+    700,
+    701,
+    702,
+    800,
+    801,
+    900,
+    901,
+    1000,
+    1001,
+    1002
+  ],
+  "sample_ids": [
+    "f9cd019886c72a856fc8",
+    "289efaa4c0f0d60eef4e",
+    "5f1c36cba4022c414489",
+    "0e0a6f05daab2423e8ec",
+    "8fca89be10ce3edb4d97",
+    "e135687eac28d61e84dd",
+    "7a668eb1a8f669bfaf94",
+    "77083079c7c0ffa835f0",
+    "70e081a83c244410565e",
+    "10a82e1286db42661def",
+    "b0da07245b581ce7605f",
+    "09f2a1239c6990cd1176",
+    "476ba37d3fb021b4620a",
+    "ca5d2f5c2787227b4642",
+    "273f92dbed53a6b89abf",
+    "5b30b41ad1ce564cc622",
+    "7a2514474a9f11b94a6d",
+    "cb6a58682efd9aac4214",
+    "8c9da4d30b04a65a9f5c",
+    "5c9c5dbc42479352b1a3",
+    "a059149bc280147e34b5",
+    "7d98e0f1f6a3f0515a99",
+    "33f5d35c052545674c94",
+    "dd2c8ffa7649b88be20d",
+    "1715c6069393a43468e4",
+    "0c548e156f00478caab2",
+    "db8cd4daf7d64c558d67",
+    "c56dc0f5d5dccc607aad",
+    "cb604974705f289e145e"
   ],
   "samples_reviewed": [
     {
+      "node_id": "mat_g1_na_q2_4",
       "seed": 42,
       "formatter": "mcq",
       "question_text": "10 is 1 ten and 0 ones. 62 is 6 tens and 2 ones. Add the place values, then find the total: what is 10 + 62?",
       "correct_answer": 72,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -46,28 +138,103 @@
           "value": 72,
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 72,
+      "hints": [
+        "We are adding two numbers: 10 and 62.",
+        "Add the ones: 0 + 2 = 2. Write 2 in the ones place.",
+        "Add the tens: 1 + 6 = 7.",
+        "The sum is 10 + 62 = 72."
+      ],
+      "sample_id": "f9cd019886c72a856fc8",
+      "replay_digest": "71d32f9d164e26b1293448e5be5ff0bab1aa92a41d421639518efdd2292e9f28"
     },
     {
+      "node_id": "mat_g1_na_q2_4",
       "seed": 43,
       "formatter": "true_false",
       "question_text": "24 is 2 tens and 4 ones. 3 is 3 ones. Add the place values, then find the total: 24 + 3 = 37. True or False?",
-      "correct_answer": false
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "We are adding two numbers: 24 and 3.",
+        "Add the ones: 4 + 3 = 7. Write 7 in the ones place.",
+        "Add the tens: 2 + 0 = 2.",
+        "The sum is 24 + 3 = 27."
+      ],
+      "sample_id": "289efaa4c0f0d60eef4e",
+      "replay_digest": "ed703fe5a9a5c4c2862f7d3de5b6cf7aac2b313ef45edff67eb35fab2814ba6c"
     },
     {
+      "node_id": "mat_g1_na_q2_4",
       "seed": 44,
       "formatter": "error_detect",
       "question_text": "Rico solved: \"30 is 3 tens and 0 ones. 22 is 2 tens and 2 ones. Add the place values, then find the total: 30 + 22 = ___\". Rico says the blank is 52. Is Rico correct?",
       "correct_answer": {
         "has_error": false,
         "correct_value": 52
-      }
+      },
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 52
+      },
+      "hints": [
+        "We are adding two numbers: 30 and 22.",
+        "Add the ones: 0 + 2 = 2. Write 2 in the ones place.",
+        "Add the tens: 3 + 2 = 5.",
+        "The sum is 30 + 22 = 52."
+      ],
+      "sample_id": "5f1c36cba4022c414489",
+      "replay_digest": "b54e0d0dd59021329e69e0c7ab72cb435abfe118d9de4c634dca733934e1a05f"
     },
     {
+      "node_id": "mat_g1_na_q2_4",
       "seed": 45,
       "formatter": "mcq",
       "question_text": "60 is 6 tens and 0 ones. 10 is 1 ten and 0 ones. Add the place values, then find the total: what is 60 + 10?",
       "correct_answer": 70,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -89,13 +256,37 @@
           "value": 71,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 70,
+      "hints": [
+        "We are adding two numbers: 60 and 10.",
+        "Add the ones: 0 + 0 = 0. Write 0 in the ones place.",
+        "Add the tens: 6 + 1 = 7.",
+        "The sum is 60 + 10 = 70."
+      ],
+      "sample_id": "0e0a6f05daab2423e8ec",
+      "replay_digest": "00323a5a510f1b97dd399202b27d93abd8f9eb30e350ca8210929bcc78f2143b"
     },
     {
+      "node_id": "mat_g1_na_q2_4",
       "seed": 46,
       "formatter": "cloze",
       "question_text": "57 is 5 tens and 7 ones. 43 is 4 tens and 3 ones. Add the place values, then find the total: 57 + 43 = ___",
       "correct_answer": 100,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -121,19 +312,73 @@
           "text": "100",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 100,
+      "hints": [
+        "We are adding two numbers: 57 and 43.",
+        "Add the ones: 7 + 3 = 10. Write 0 in the ones place and carry over 1 ten.",
+        "Add the tens: 5 + 4 + 1 (carried) = 10.",
+        "The sum is 57 + 43 = 100."
+      ],
+      "sample_id": "8fca89be10ce3edb4d97",
+      "replay_digest": "c88ec9c9fc551885103ffbe593f0a7e00901dd0f4cfba33f6d573ed4b9c39464"
     },
     {
+      "node_id": "mat_g1_na_q2_4",
       "seed": 500,
       "formatter": "true_false",
       "question_text": "55 is 5 tens and 5 ones. 43 is 4 tens and 3 ones. Add the place values, then find the total: 55 + 43 = 55. True or False?",
-      "correct_answer": false
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "max_sum": 1.0,
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "We are adding two numbers: 55 and 43.",
+        "Add the ones: 5 + 3 = 8. Write 8 in the ones place.",
+        "Add the tens: 5 + 4 = 9.",
+        "The sum is 55 + 43 = 98."
+      ],
+      "sample_id": "e135687eac28d61e84dd",
+      "replay_digest": "a0afb70a3edaf66b7c73ef504a81e614e4c0c96ab8f149add8bd485e1901c4ef"
     },
     {
+      "node_id": "mat_g1_na_q2_4",
       "seed": 501,
       "formatter": "mcq",
       "question_text": "70 is 7 tens and 0 ones. 18 is 1 ten and 8 ones. Add the place values, then find the total: what is 70 + 18?",
       "correct_answer": 88,
+      "requested": {
+        "difficulty_profile": {
+          "max_sum": 1.0,
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -155,28 +400,110 @@
           "value": 87,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 88,
+      "hints": [
+        "We are adding two numbers: 70 and 18.",
+        "Add the ones: 0 + 8 = 8. Write 8 in the ones place.",
+        "Add the tens: 7 + 1 = 8.",
+        "The sum is 70 + 18 = 88."
+      ],
+      "sample_id": "7a668eb1a8f669bfaf94",
+      "replay_digest": "d99c8539b557bae565ae27f4eae60b8f17586a3e55bd69f1d4a23b9dcd25c88a"
     },
     {
+      "node_id": "mat_g1_na_q2_4",
       "seed": 502,
       "formatter": "error_detect",
       "question_text": "Dante solved: \"87 is 8 tens and 7 ones. 9 is 9 ones. Add the place values, then find the total: 87 + 9 = ___\". Dante says the blank is 96. Is Dante correct?",
       "correct_answer": {
         "has_error": false,
         "correct_value": 96
-      }
+      },
+      "requested": {
+        "difficulty_profile": {
+          "max_sum": 1.0,
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 96
+      },
+      "hints": [
+        "We are adding two numbers: 87 and 9.",
+        "Add the ones: 7 + 9 = 16. Write 6 in the ones place and carry over 1 ten.",
+        "Add the tens: 8 + 0 + 1 (carried) = 9.",
+        "The sum is 87 + 9 = 96."
+      ],
+      "sample_id": "77083079c7c0ffa835f0",
+      "replay_digest": "91f6f03d1e47ffe85125c1450443497c59e7f661e1b62d775ea477def85f04d1"
     },
     {
+      "node_id": "mat_g1_na_q2_4",
       "seed": 600,
       "formatter": "true_false",
       "question_text": "47 is 4 tens and 7 ones. 7 is 7 ones. Add the place values, then find the total: 47 + 7 = 54. True or False?",
-      "correct_answer": true
+      "correct_answer": true,
+      "requested": {
+        "difficulty_profile": {
+          "context": "pure"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": true,
+      "hints": [
+        "We are adding two numbers: 47 and 7.",
+        "Add the ones: 7 + 7 = 14. Write 4 in the ones place and carry over 1 ten.",
+        "Add the tens: 4 + 0 + 1 (carried) = 5.",
+        "The sum is 47 + 7 = 54."
+      ],
+      "sample_id": "70e081a83c244410565e",
+      "replay_digest": "e7fe916bb47e1a2a907341022201f42e950c33b47bcaf689b35fed58dd9a225f"
     },
     {
+      "node_id": "mat_g1_na_q2_4",
       "seed": 601,
       "formatter": "cloze",
       "question_text": "60 is 6 tens and 0 ones. 30 is 3 tens and 0 ones. Add the place values, then find the total: 60 + 30 = ___",
       "correct_answer": 90,
+      "requested": {
+        "difficulty_profile": {
+          "context": "word_problem"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -202,13 +529,39 @@
           "text": "91",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 90,
+      "hints": [
+        "We are adding two numbers: 60 and 30.",
+        "Add the ones: 0 + 0 = 0. Write 0 in the ones place.",
+        "Add the tens: 6 + 3 = 9.",
+        "The sum is 60 + 30 = 90."
+      ],
+      "sample_id": "10a82e1286db42661def",
+      "replay_digest": "b52592cf78be48652099f1ccbcf36299f0cb16d98492b747322ee64f81606003"
     },
     {
+      "node_id": "mat_g1_na_q2_4",
       "seed": 602,
       "formatter": "mcq",
       "question_text": "30 is 3 tens and 0 ones. 6 is 6 ones. Add the place values, then find the total: what is 30 + 6?",
       "correct_answer": 36,
+      "requested": {
+        "difficulty_profile": {
+          "regrouping": "none"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -230,19 +583,71 @@
           "value": 46,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 36,
+      "hints": [
+        "We are adding two numbers: 30 and 6.",
+        "Add the ones: 0 + 6 = 6. Write 6 in the ones place.",
+        "Add the tens: 3 + 0 = 3.",
+        "The sum is 30 + 6 = 36."
+      ],
+      "sample_id": "b0da07245b581ce7605f",
+      "replay_digest": "332720ac74055cf4c6c8b663fcb6685bf2f722dec3a5914096ccc3bed6877216"
     },
     {
+      "node_id": "mat_g1_na_q2_4",
       "seed": 603,
       "formatter": "true_false",
       "question_text": "19 is 1 ten and 9 ones. 54 is 5 tens and 4 ones. Add the place values, then find the total: 19 + 54 = 73. True or False?",
-      "correct_answer": true
+      "correct_answer": true,
+      "requested": {
+        "difficulty_profile": {
+          "regrouping": "one_place"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": true,
+      "hints": [
+        "We are adding two numbers: 19 and 54.",
+        "Add the ones: 9 + 4 = 13. Write 3 in the ones place and carry over 1 ten.",
+        "Add the tens: 1 + 5 + 1 (carried) = 7.",
+        "The sum is 19 + 54 = 73."
+      ],
+      "sample_id": "09f2a1239c6990cd1176",
+      "replay_digest": "4f4cbe3ecb2314acd4a573b1d446e49b82c4da2e699c56c3b317dd4efafe15e2"
     },
     {
+      "node_id": "mat_g1_na_q2_4",
       "seed": 604,
       "formatter": "mcq",
       "question_text": "19 is 1 ten and 9 ones. 81 is 8 tens and 1 one. Add the place values, then find the total: what is 19 + 81?",
       "correct_answer": 100,
+      "requested": {
+        "difficulty_profile": {
+          "regrouping": "two_places"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -264,40 +669,1611 @@
           "value": 100,
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 100,
+      "hints": [
+        "We are adding two numbers: 19 and 81.",
+        "Add the ones: 9 + 1 = 10. Write 0 in the ones place and carry over 1 ten.",
+        "Add the tens: 1 + 8 + 1 (carried) = 10.",
+        "The sum is 19 + 81 = 100."
+      ],
+      "sample_id": "476ba37d3fb021b4620a",
+      "replay_digest": "3188ceeb0c6f76f81a7208428b139412a1cd46c239a00433419fc1a125bbc333"
     },
     {
+      "node_id": "mat_g1_na_q2_4",
       "seed": 605,
       "formatter": "true_false",
       "question_text": "60 is 6 tens and 0 ones. 30 is 3 tens and 0 ones. Add the place values, then find the total: 60 + 30 = 90. True or False?",
-      "correct_answer": true
+      "correct_answer": true,
+      "requested": {
+        "difficulty_profile": {
+          "spine": "counting_up"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": true,
+      "hints": [
+        "We are adding two numbers: 60 and 30.",
+        "Add the ones: 0 + 0 = 0. Write 0 in the ones place.",
+        "Add the tens: 6 + 3 = 9.",
+        "The sum is 60 + 30 = 90."
+      ],
+      "sample_id": "ca5d2f5c2787227b4642",
+      "replay_digest": "793c5c1d8790cd3b44cce876df0f9ef592d7229338a25691e5cdd4b2a6ba41ea"
+    },
+    {
+      "node_id": "mat_g1_na_q2_4",
+      "seed": 606,
+      "formatter": "mcq",
+      "question_text": "33 is 3 tens and 3 ones. 13 is 1 ten and 3 ones. Add the place values, then find the total: what is 33 + 13?",
+      "correct_answer": 46,
+      "requested": {
+        "difficulty_profile": {
+          "spine": "putting_together"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 45,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 47,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 46,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 56,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 46,
+      "hints": [
+        "We are adding two numbers: 33 and 13.",
+        "Add the ones: 3 + 3 = 6. Write 6 in the ones place.",
+        "Add the tens: 3 + 1 = 4.",
+        "The sum is 33 + 13 = 46."
+      ],
+      "sample_id": "273f92dbed53a6b89abf",
+      "replay_digest": "d675e62f81784356faf818d3b4fe23897a2c522688f51e64c888dd699790d7b8"
+    },
+    {
+      "node_id": "mat_g1_na_q2_4",
+      "seed": 607,
+      "formatter": "error_detect",
+      "question_text": "Grace solved: \"16 is 1 ten and 6 ones. 18 is 1 ten and 8 ones. Add the place values, then find the total: 16 + 18 = ___\". Grace says the blank is 34. Is Grace correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 34
+      },
+      "requested": {
+        "difficulty_profile": {
+          "strategy": "expanded_form"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 34
+      },
+      "hints": [
+        "We are adding two numbers: 16 and 18.",
+        "Add the ones: 6 + 8 = 14. Write 4 in the ones place and carry over 1 ten.",
+        "Add the tens: 1 + 1 + 1 (carried) = 3.",
+        "The sum is 16 + 18 = 34."
+      ],
+      "sample_id": "5b30b41ad1ce564cc622",
+      "replay_digest": "73aea98196af560a41671879d90787c0814729d811006acc81aafaa330552d7d"
+    },
+    {
+      "node_id": "mat_g1_na_q2_4",
+      "seed": 608,
+      "formatter": "true_false",
+      "question_text": "60 is 6 tens and 0 ones. 30 is 3 tens and 0 ones. Add the place values, then find the total: 60 + 30 = 91. True or False?",
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "strategy": "standard"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "We are adding two numbers: 60 and 30.",
+        "Add the ones: 0 + 0 = 0. Write 0 in the ones place.",
+        "Add the tens: 6 + 3 = 9.",
+        "The sum is 60 + 30 = 90."
+      ],
+      "sample_id": "7a2514474a9f11b94a6d",
+      "replay_digest": "14512a0e9cf4b957cc5145e55a1f6fac150970e9966973c0d6bf90338a6b5fb0"
+    },
+    {
+      "node_id": "mat_g1_na_q2_4",
+      "seed": 609,
+      "formatter": "cloze",
+      "question_text": "11 is 1 ten and 1 one. 13 is 1 ten and 3 ones. Add the place values, then find the total: 11 + 13 = ___",
+      "correct_answer": 24,
+      "requested": {
+        "difficulty_profile": {
+          "structure": "result_unknown"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 34,
+          "text": "34",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 24,
+          "text": "24",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 23,
+          "text": "23",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 25,
+          "text": "25",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 24,
+      "hints": [
+        "We are adding two numbers: 11 and 13.",
+        "Add the ones: 1 + 3 = 4. Write 4 in the ones place.",
+        "Add the tens: 1 + 1 = 2.",
+        "The sum is 11 + 13 = 24."
+      ],
+      "sample_id": "cb6a58682efd9aac4214",
+      "replay_digest": "ed2170cf88ea12bbd82cd8ec6758860cc5dff7587c7ca1d5cac620850390e72d"
+    },
+    {
+      "node_id": "mat_g1_na_q2_4",
+      "seed": 610,
+      "formatter": "mcq",
+      "question_text": "30 is 3 tens and 0 ones. 50 is 5 tens and 0 ones. Add the place values, then find the total: what is 30 + 50?",
+      "correct_answer": 80,
+      "requested": {
+        "difficulty_profile": {
+          "task_type": "expanded_form"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 79,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 81,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 80,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 90,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 80,
+      "hints": [
+        "We are adding two numbers: 30 and 50.",
+        "Add the ones: 0 + 0 = 0. Write 0 in the ones place.",
+        "Add the tens: 3 + 5 = 8.",
+        "The sum is 30 + 50 = 80."
+      ],
+      "sample_id": "8c9da4d30b04a65a9f5c",
+      "replay_digest": "e55726cab10e6ddf345071860ddd902236e1efc3875c778a02dbe6f16165a1a7"
+    },
+    {
+      "node_id": "mat_g1_na_q2_4",
+      "seed": 700,
+      "formatter": "true_false",
+      "question_text": "30 is 3 tens and 0 ones. 30 is 3 tens and 0 ones. Add the place values, then find the total: 30 + 30 = 60. True or False?",
+      "correct_answer": true,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": true,
+      "hints": [
+        "We are adding two numbers: 30 and 30.",
+        "Add the ones: 0 + 0 = 0. Write 0 in the ones place.",
+        "Add the tens: 3 + 3 = 6.",
+        "The sum is 30 + 30 = 60."
+      ],
+      "sample_id": "5c9c5dbc42479352b1a3",
+      "replay_digest": "35ddbd14b2f579a5300a388268681865955e0f4fe0101776e6459ab2f6a8b885"
+    },
+    {
+      "node_id": "mat_g1_na_q2_4",
+      "seed": 701,
+      "formatter": "cloze",
+      "question_text": "✝️ Daniel has a math challenge about stones. 43 is 4 tens and 3 ones. 29 is 2 tens and 9 ones. Add the place values, then find the total: 43 + 29 = ___",
+      "correct_answer": 72,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "bible",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 72,
+          "text": "72",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 82,
+          "text": "82",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 73,
+          "text": "73",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 71,
+          "text": "71",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 72,
+      "hints": [
+        "We are adding two numbers: 43 and 29.",
+        "Add the ones: 3 + 9 = 12. Write 2 in the ones place and carry over 1 ten.",
+        "Add the tens: 4 + 2 + 1 (carried) = 7.",
+        "The sum is 43 + 29 = 72."
+      ],
+      "sample_id": "a059149bc280147e34b5",
+      "replay_digest": "2a8720b2d49b26c2aa83049916954245cb76892d59c699de82aa32e536ee3e05"
+    },
+    {
+      "node_id": "mat_g1_na_q2_4",
+      "seed": 702,
+      "formatter": "error_detect",
+      "question_text": "🏀 Isko has a math challenge about basketballs. Manny solved: \"18 is 1 ten and 8 ones. 14 is 1 ten and 4 ones. Add the place values, then find the total: 18 + 14 = ___\". Manny says the blank is 33. Is Manny correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 32
+      },
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "meme_streaming",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": true,
+        "correct_value": 32
+      },
+      "hints": [
+        "We are adding two numbers: 18 and 14.",
+        "Add the ones: 8 + 4 = 12. Write 2 in the ones place and carry over 1 ten.",
+        "Add the tens: 1 + 1 + 1 (carried) = 3.",
+        "The sum is 18 + 14 = 32."
+      ],
+      "sample_id": "7d98e0f1f6a3f0515a99",
+      "replay_digest": "7e2d7e2c407a6e228cbe9f0d2a66f1625c34a3ff44e183a13e51c46aca17b49f"
+    },
+    {
+      "node_id": "mat_g1_na_q2_4",
+      "seed": 800,
+      "formatter": "cloze",
+      "question_text": "50 is 5 tens and 0 ones. 12 is 1 ten and 2 ones. Add the place values, then find the total: 50 + 12 = ___",
+      "correct_answer": 62,
+      "requested": {
+        "difficulty_profile": {
+          "max_sum": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 72,
+          "text": "72",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 63,
+          "text": "63",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 62,
+          "text": "62",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 61,
+          "text": "61",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 62,
+      "hints": [
+        "We are adding two numbers: 50 and 12.",
+        "Add the ones: 0 + 2 = 2. Write 2 in the ones place.",
+        "Add the tens: 5 + 1 = 6.",
+        "The sum is 50 + 12 = 62."
+      ],
+      "sample_id": "33f5d35c052545674c94",
+      "replay_digest": "0091cca67a200c053b63f5f2968a6a3b40808d48d80ff789259f06e9a3c0e45f"
+    },
+    {
+      "node_id": "mat_g1_na_q2_4",
+      "seed": 801,
+      "formatter": "error_detect",
+      "question_text": "Pia solved: \"13 is 1 ten and 3 ones. 71 is 7 tens and 1 one. Add the place values, then find the total: 13 + 71 = ___\". Pia says the blank is 84. Is Pia correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 84
+      },
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 84
+      },
+      "hints": [
+        "We are adding two numbers: 13 and 71.",
+        "Add the ones: 3 + 1 = 4. Write 4 in the ones place.",
+        "Add the tens: 1 + 7 = 8.",
+        "The sum is 13 + 71 = 84."
+      ],
+      "sample_id": "dd2c8ffa7649b88be20d",
+      "replay_digest": "f3e3b47c724acfb221dd3eb02ca622feb23da35a377e2027c9720f29b16b76d9"
+    },
+    {
+      "node_id": "mat_g1_na_q2_4",
+      "seed": 900,
+      "formatter": "mcq",
+      "question_text": "10 is 1 ten and 0 ones. 2 is 2 ones. Add the place values, then find the total: what is 10 + 2?",
+      "correct_answer": 12,
+      "requested": {
+        "difficulty_profile": {
+          "max_sum": 0.0,
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 11,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 22,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 12,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 13,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 12,
+      "hints": [
+        "We are adding two numbers: 10 and 2.",
+        "Add the ones: 0 + 2 = 2. Write 2 in the ones place.",
+        "Add the tens: 1 + 0 = 1.",
+        "The sum is 10 + 2 = 12."
+      ],
+      "sample_id": "1715c6069393a43468e4",
+      "replay_digest": "ac856e7e29b697a14b77762ae3ecf14e835ac1e0ca6dbc08ad8697ce6ccb51ba"
+    },
+    {
+      "node_id": "mat_g1_na_q2_4",
+      "seed": 901,
+      "formatter": "mcq",
+      "question_text": "11 is 1 ten and 1 one. 1 is 1 one. Add the place values, then find the total: what is 11 + 1?",
+      "correct_answer": 12,
+      "requested": {
+        "difficulty_profile": {
+          "max_sum": 0.0,
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 22,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 13,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 12,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 11,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 12,
+      "hints": [
+        "We are adding two numbers: 11 and 1.",
+        "Add the ones: 1 + 1 = 2. Write 2 in the ones place.",
+        "Add the tens: 1 + 0 = 1.",
+        "The sum is 11 + 1 = 12."
+      ],
+      "sample_id": "0c548e156f00478caab2",
+      "replay_digest": "f16db8607f3819ebb79d545e81f320d86b79d2d12d36bdd8c24032ffa2ba5671"
+    },
+    {
+      "node_id": "mat_g1_na_q2_4",
+      "seed": 1000,
+      "formatter": "true_false",
+      "question_text": "61 is 6 tens and 1 one. 6 is 6 ones. Add the place values, then find the total: 61 + 6 = 77. True or False?",
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "hint_gated"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "hint_gated"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "We are adding two numbers: 61 and 6.",
+        "Add the ones: 1 + 6 = 7. Write 7 in the ones place.",
+        "Add the tens: 6 + 0 = 6.",
+        "The sum is 61 + 6 = 67."
+      ],
+      "sample_id": "db8cd4daf7d64c558d67",
+      "replay_digest": "5493aeb4523ff098dd1c9cd83ed38d3c579c4e3473b1898433741d680f0b2933"
+    },
+    {
+      "node_id": "mat_g1_na_q2_4",
+      "seed": 1001,
+      "formatter": "error_detect",
+      "question_text": "Liza solved: \"77 is 7 tens and 7 ones. 18 is 1 ten and 8 ones. Add the place values, then find the total: 77 + 18 = ___\". Liza says the blank is 77. Is Liza correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 95
+      },
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "mastery_drill"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "mastery_drill"
+      },
+      "resolved_answer": {
+        "has_error": true,
+        "correct_value": 95
+      },
+      "hints": [
+        "We are adding two numbers: 77 and 18.",
+        "Add the ones: 7 + 8 = 15. Write 5 in the ones place and carry over 1 ten.",
+        "Add the tens: 7 + 1 + 1 (carried) = 9.",
+        "The sum is 77 + 18 = 95."
+      ],
+      "sample_id": "c56dc0f5d5dccc607aad",
+      "replay_digest": "02f352f210dad302cf32d0004ee2f721cf511f11cf136926388f0087c80638fb"
+    },
+    {
+      "node_id": "mat_g1_na_q2_4",
+      "seed": 1002,
+      "formatter": "error_detect",
+      "question_text": "Manny solved: \"90 is 9 tens and 0 ones. 1 is 1 one. Add the place values, then find the total: 90 + 1 = ___\". Manny says the blank is 101. Is Manny correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 91
+      },
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "scaffolded"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "scaffolded"
+      },
+      "resolved_answer": {
+        "has_error": true,
+        "correct_value": 91
+      },
+      "hints": [
+        "We are adding two numbers: 90 and 1.",
+        "Add the ones: 0 + 1 = 1. Write 1 in the ones place.",
+        "Add the tens: 9 + 0 = 9.",
+        "The sum is 90 + 1 = 91."
+      ],
+      "sample_id": "cb604974705f289e145e",
+      "replay_digest": "cc41fb4c660e91b716f6efed98e7853f48dad7eba4a14e8ccf3630f0ff79b33f"
+    }
+  ],
+  "sample_assessments": [
+    {
+      "sample_id": "f9cd019886c72a856fc8",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "No ambiguity in stem. The problem statement clearly asks for the sum of 10 and 62 after decomposing each into place values. Hints and answer unambiguously confirm the correct response is 72, with no possible misinterpretation of the task."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The problem logically follows sound place-value reasoning. Decomposing 10 as 1 ten and 0 ones, and 62 as 6 tens and 2 ones, then adding place values separately (0+2=2, 1+6=7) to get 72 is logically valid and demonstrates the intended expanded-form strategy."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Instructions and hints are clear and sequential for Grade 1 learners. The stem explicitly states what decomposition is needed; hints walk through each step from adding ones to adding tens to combining for the total, matching the cognitive scaffolding appropriate for early primary students."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Arithmetic is correct throughout. Ten equals 1 ten and 0 ones; 62 equals 6 tens and 2 ones. Adding ones 0+2=2; adding tens 1+6=7; the sum 10+62=72 is mathematically accurate with no computational errors."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w9r2-mat_g1_na_q2_4-20260924",
+      "dispatch_id": "s5-haiku-w9r2-mat_g1_na_q2_4-20260924:mat_g1_na_q2_4"
+    },
+    {
+      "sample_id": "289efaa4c0f0d60eef4e",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "No ambiguity. The stem presents a specific false equation (24+3=37) and asks students to evaluate its truth. Hints confirm the correct sum is 27, not 37, leaving no doubt about what the student must determine."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Logically sound as a false-statement evaluation. The problem correctly decompose 24 and 3, computes place values (4+3=7 ones, 2+0=2 tens), yielding 27. The stem's claim of 37 is indeed false, making the logical structure of the problem valid for this format type."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Clear and appropriately scaffolded for Grade 1. The stem explicitly shows decomposition and the false claim students must evaluate. Hints methodically verify each step of addition, allowing students to identify where the stem's answer diverges from the correct calculation."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "All calculations are correct. 24 is 2 tens and 4 ones; 3 is 3 ones. Ones: 4+3=7. Tens: 2+0=2. Sum: 24+3=27. The stem's claim of 37 is correctly identified as false by the answer key and hints."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w9r2-mat_g1_na_q2_4-20260924",
+      "dispatch_id": "s5-haiku-w9r2-mat_g1_na_q2_4-20260924:mat_g1_na_q2_4"
+    },
+    {
+      "sample_id": "5f1c36cba4022c414489",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "No ambiguity. Rico's work and answer are presented with a clear question: Is Rico correct? The answer key confirms his response of 52 is correct, with hints validating his calculation step by step."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Logically valid error-detection format. Rico decomposes 30 and 22 correctly, performs accurate place-value addition (0+2=2, 3+2=5), and arrives at the correct sum of 52. The problem structure appropriately asks students to evaluate whether a presented calculation is sound."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Clear for Grade 1 learners in error-detection format. Stem shows Rico's decomposition and work; hints verify each addition step (ones: 0+2=2, tens: 3+2=5, sum: 52). Students can follow the logic and confirm Rico's accuracy or identify any error."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Calculations are entirely correct. 30 decomposes to 3 tens and 0 ones; 22 to 2 tens and 2 ones. Adding ones: 0+2=2. Adding tens: 3+2=5. Final sum: 30+22=52 is accurate with no errors."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w9r2-mat_g1_na_q2_4-20260924",
+      "dispatch_id": "s5-haiku-w9r2-mat_g1_na_q2_4-20260924:mat_g1_na_q2_4"
+    },
+    {
+      "sample_id": "0e0a6f05daab2423e8ec",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "No ambiguity. Stem clearly asks for the sum of 60 and 10 after showing their place-value decomposition. Question structure is unambiguous, and the correct answer of 70 is definitively supported by the place-value calculation in hints."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Logically sound addition problem. Decomposing 60 as 6 tens and 0 ones, 10 as 1 ten and 0 ones, then adding place values (0+0=0 ones, 6+1=7 tens) to obtain 70 follows valid expanded-form logic without errors in reasoning."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Clear and appropriately structured for early primary students. Instructions explicitly state the decomposition needed. Hints follow a logical sequence from adding ones to adding tens to stating the final sum, providing clear scaffolding."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "All arithmetic is correct. 60 is 6 tens and 0 ones; 10 is 1 ten and 0 ones. Ones: 0+0=0. Tens: 6+1=7. Sum: 60+10=70 is mathematically accurate with correct place-value handling."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w9r2-mat_g1_na_q2_4-20260924",
+      "dispatch_id": "s5-haiku-w9r2-mat_g1_na_q2_4-20260924:mat_g1_na_q2_4"
+    },
+    {
+      "sample_id": "8fca89be10ce3edb4d97",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "No ambiguity. Stem requests the sum of 57 and 43 with explicit decomposition shown. Hints clarify the carrying process, making the expected answer of 100 unambiguous and mathematically justified."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Logically valid carrying problem. Decomposing 57 and 43 into tens and ones, adding ones (7+3=10) which produces a carry, then adding tens with the carry (5+4+1=10) to reach 100 demonstrates sound place-value reasoning."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Well-scaffolded for Grade 1 students learning to handle carrying. Hints explain each step explicitly: adding the ones, identifying the carry, adding tens with the carried value, and reaching the final sum. This step-by-step approach supports conceptual understanding."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "All calculations are correct. 57 is 5 tens and 7 ones; 43 is 4 tens and 3 ones. Ones: 7+3=10 (write 0, carry 1). Tens: 5+4+1=10. Sum: 57+43=100 is mathematically sound with proper handling of carrying."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w9r2-mat_g1_na_q2_4-20260924",
+      "dispatch_id": "s5-haiku-w9r2-mat_g1_na_q2_4-20260924:mat_g1_na_q2_4"
+    },
+    {
+      "sample_id": "e135687eac28d61e84dd",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "No ambiguity. Stem presents a false equation (55+43=55) and asks for evaluation. Hints confirm the correct sum is 98, making the false claim unambiguous for student evaluation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Logically valid false-statement evaluation. Decomposing 55 and 43, adding place values (5+3=8 ones, 5+4=9 tens) yields 98. The stem's claim of 55 is correctly false, making the problem structure appropriate for true/false format."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Appropriately clear for Grade 1 learners. Stem shows decomposition and presents an incorrect equation. Hints methodically verify each calculation step, helping students see why 55 is not the correct sum of 55 and 43."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "All arithmetic is correct. 55 is 5 tens and 5 ones; 43 is 4 tens and 3 ones. Ones: 5+3=8. Tens: 5+4=9. Sum: 55+43=98. The stem correctly identifies that 55 is not the sum."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w9r2-mat_g1_na_q2_4-20260924",
+      "dispatch_id": "s5-haiku-w9r2-mat_g1_na_q2_4-20260924:mat_g1_na_q2_4"
+    },
+    {
+      "sample_id": "7a668eb1a8f669bfaf94",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "No ambiguity. Problem clearly asks for the sum of 70 and 18 with explicit place-value decomposition provided. The correct answer of 88 is unambiguously supported by place-value reasoning in the hints."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Logically sound addition problem. Decomposing 70 as 7 tens and 0 ones, 18 as 1 ten and 8 ones, then adding place values (0+8=8 ones, 7+1=8 tens) to reach 88 follows valid expanded-form logic without errors."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Clear and well-scaffolded for Grade 1. Instructions explicitly show required decomposition. Hints follow a logical progression from adding ones to adding tens to stating the final sum, providing appropriate cognitive support."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "All calculations are correct. 70 is 7 tens and 0 ones; 18 is 1 ten and 8 ones. Ones: 0+8=8. Tens: 7+1=8. Sum: 70+18=88 is mathematically accurate with no computational errors."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w9r2-mat_g1_na_q2_4-20260924",
+      "dispatch_id": "s5-haiku-w9r2-mat_g1_na_q2_4-20260924:mat_g1_na_q2_4"
+    },
+    {
+      "sample_id": "77083079c7c0ffa835f0",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "No ambiguity. Dante's calculation and answer of 96 are presented clearly. Hints confirm his answer is correct by working through the place-value addition step by step, making the evaluation task unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Logically valid error-detection problem. Dante correctly decomposes 87 and 9, handles carrying (7+9=16 ones produce a carry), adds tens with carry (8+0+1=9), reaching the correct sum of 96. The logic is sound and appropriate for evaluation."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Clear for Grade 1 learners in error-detection format. Stem shows Dante's decomposition and carrying process; hints verify each step. Students can follow the logic and confirm the correctness of Dante's calculation with carrying."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "All calculations are correct. 87 is 8 tens and 7 ones; 9 is 9 ones. Ones: 7+9=16 (write 6, carry 1). Tens: 8+0+1=9. Sum: 87+9=96 is mathematically sound with proper carrying."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w9r2-mat_g1_na_q2_4-20260924",
+      "dispatch_id": "s5-haiku-w9r2-mat_g1_na_q2_4-20260924:mat_g1_na_q2_4"
+    },
+    {
+      "sample_id": "70e081a83c244410565e",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "No ambiguity. Stem presents an equation with carrying (47+7=54) and asks for truth evaluation. Hints confirm the equation is true by showing correct place-value addition and carrying process."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Logically valid true-statement evaluation. Decomposing 47 and 7, adding ones with carrying (7+7=14 write 4, carry 1), adding tens with carry (4+0+1=5) yields 54. The stem correctly identifies this true equation."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Well-structured and clear for Grade 1 learners. Stem shows decomposition and the claim to evaluate. Hints guide through each step of the carrying process, helping students verify the statement's truth."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "All arithmetic is correct. 47 is 4 tens and 7 ones; 7 is 7 ones. Ones: 7+7=14 (write 4, carry 1). Tens: 4+0+1=5. Sum: 47+7=54 is mathematically accurate with correct carrying."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w9r2-mat_g1_na_q2_4-20260924",
+      "dispatch_id": "s5-haiku-w9r2-mat_g1_na_q2_4-20260924:mat_g1_na_q2_4"
+    },
+    {
+      "sample_id": "10a82e1286db42661def",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "No ambiguity. Problem clearly asks for the sum of 60 and 30 in fill-in-blank format. Hints confirm the answer is 90, unambiguously derived from place-value addition of both numbers."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Logically sound addition problem with tens only. Decomposing 60 as 6 tens and 0 ones, 30 as 3 tens and 0 ones, adding place values (0+0=0 ones, 6+3=9 tens) to reach 90 demonstrates valid place-value reasoning."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Clear and appropriately scaffolded for early primary learners. Instructions show decomposition explicitly. Hints step through adding ones and tens separately before stating the final sum."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "All arithmetic is correct. 60 is 6 tens and 0 ones; 30 is 3 tens and 0 ones. Ones: 0+0=0. Tens: 6+3=9. Sum: 60+30=90 is mathematically accurate with proper place-value handling."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w9r2-mat_g1_na_q2_4-20260924",
+      "dispatch_id": "s5-haiku-w9r2-mat_g1_na_q2_4-20260924:mat_g1_na_q2_4"
+    },
+    {
+      "sample_id": "b0da07245b581ce7605f",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "No ambiguity. Problem asks for the sum of 30 and 6 with explicit decomposition shown. Multiple-choice options are distinct, and the answer of 36 is unambiguously correct and supported by hints."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Logically valid addition problem. Decomposing 30 as 3 tens and 0 ones, 6 as 6 ones, adding place values (0+6=6 ones, 3+0=3 tens) to get 36 follows sound place-value logic."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Clear and well-structured for Grade 1 learners. Stem explicitly states the decomposition. Hints methodically show adding ones, adding tens, and combining to reach the final answer."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "All arithmetic is correct. 30 is 3 tens and 0 ones; 6 is 6 ones. Ones: 0+6=6. Tens: 3+0=3. Sum: 30+6=36 is mathematically sound with no computational errors."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w9r2-mat_g1_na_q2_4-20260924",
+      "dispatch_id": "s5-haiku-w9r2-mat_g1_na_q2_4-20260924:mat_g1_na_q2_4"
+    },
+    {
+      "sample_id": "09f2a1239c6990cd1176",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "No ambiguity. Stem presents an equation with carrying (19+54=73) and asks for truth evaluation. Hints confirm the equation is true by verifying each place-value calculation step."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Logically valid true-statement evaluation. Decomposing 19 and 54, adding ones with carrying (9+4=13 write 3, carry 1), adding tens with carry (1+5+1=7) yields 73 correctly."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Well-scaffolded and clear for Grade 1 learners. Stem shows decomposition and the claim for evaluation. Hints guide through the carrying process step by step, supporting conceptual understanding."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "All arithmetic is correct. 19 is 1 ten and 9 ones; 54 is 5 tens and 4 ones. Ones: 9+4=13 (write 3, carry 1). Tens: 1+5+1=7. Sum: 19+54=73 is mathematically accurate with proper carrying."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w9r2-mat_g1_na_q2_4-20260924",
+      "dispatch_id": "s5-haiku-w9r2-mat_g1_na_q2_4-20260924:mat_g1_na_q2_4"
+    },
+    {
+      "sample_id": "476ba37d3fb021b4620a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "No ambiguity. Problem clearly asks for the sum of 19 and 81 with explicit decomposition. Multiple-choice options are distinct, and the answer of 100 is unambiguously correct and supported by detailed hints."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Logically valid addition problem leading to 100. Decomposing 19 and 81, handling carrying (9+1=10 write 0, carry 1), adding tens with carry (1+8+1=10) reaches 100 correctly through place-value reasoning."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Clear and supportive for Grade 1 learners tackling a landmark sum. Stem shows decomposition explicitly. Hints explain each step including the carrying process, helping students understand reaching 100."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "All arithmetic is correct. 19 is 1 ten and 9 ones; 81 is 8 tens and 1 one. Ones: 9+1=10 (write 0, carry 1). Tens: 1+8+1=10. Sum: 19+81=100 is mathematically sound."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w9r2-mat_g1_na_q2_4-20260924",
+      "dispatch_id": "s5-haiku-w9r2-mat_g1_na_q2_4-20260924:mat_g1_na_q2_4"
+    },
+    {
+      "sample_id": "ca5d2f5c2787227b4642",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "No ambiguity. Stem presents a true equation (60+30=90) and asks for truth evaluation. Hints verify each calculation step, confirming the statement is true."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Logically valid true-statement evaluation. Decomposing 60 and 30 into tens, adding place values (0+0=0 ones, 6+3=9 tens) yields 90 correctly, making the stem's claim true."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Clear and appropriately structured for Grade 1 learners. Stem shows decomposition and presents a claim for evaluation. Hints step through the calculation, helping students verify the truth."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "All arithmetic is correct. 60 is 6 tens and 0 ones; 30 is 3 tens and 0 ones. Ones: 0+0=0. Tens: 6+3=9. Sum: 60+30=90 is mathematically accurate."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w9r2-mat_g1_na_q2_4-20260924",
+      "dispatch_id": "s5-haiku-w9r2-mat_g1_na_q2_4-20260924:mat_g1_na_q2_4"
+    },
+    {
+      "sample_id": "273f92dbed53a6b89abf",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "No ambiguity. Problem asks for the sum of 33 and 13 with decomposition shown. Multiple-choice options are distinct, and the answer of 46 is unambiguously correct and verified by hints."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Logically sound addition problem. Decomposing 33 as 3 tens and 3 ones, 13 as 1 ten and 3 ones, adding place values (3+3=6 ones, 3+1=4 tens) to get 46 follows valid place-value logic."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Clear and well-structured for Grade 1 learners. Stem explicitly shows decomposition. Hints methodically guide through adding ones, adding tens, and reaching the final sum."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "All arithmetic is correct. 33 is 3 tens and 3 ones; 13 is 1 ten and 3 ones. Ones: 3+3=6. Tens: 3+1=4. Sum: 33+13=46 is mathematically sound with no errors."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w9r2-mat_g1_na_q2_4-20260924",
+      "dispatch_id": "s5-haiku-w9r2-mat_g1_na_q2_4-20260924:mat_g1_na_q2_4"
+    },
+    {
+      "sample_id": "5b30b41ad1ce564cc622",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "No ambiguity. Grace's calculation and answer of 34 are presented clearly. Hints confirm the answer is correct by working through place-value addition with carrying, making evaluation unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Logically valid error-detection problem. Grace correctly decomposes 16 and 18, handles carrying (6+8=14 write 4, carry 1), adds tens with carry (1+1+1=3), reaching correct sum of 34."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Clear for Grade 1 learners in error-detection format. Stem shows Grace's decomposition and work; hints verify each carrying step. Students can follow and confirm the correctness of her calculation."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "All calculations are correct. 16 is 1 ten and 6 ones; 18 is 1 ten and 8 ones. Ones: 6+8=14 (write 4, carry 1). Tens: 1+1+1=3. Sum: 16+18=34 is mathematically sound with proper carrying."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w9r2-mat_g1_na_q2_4-20260924",
+      "dispatch_id": "s5-haiku-w9r2-mat_g1_na_q2_4-20260924:mat_g1_na_q2_4"
+    },
+    {
+      "sample_id": "7a2514474a9f11b94a6d",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "No ambiguity. Stem presents a false equation (60+30=91) and asks for truth evaluation. Hints confirm the correct sum is 90, making the false claim unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Logically valid false-statement evaluation. Decomposing 60 and 30, adding place values (0+0=0 ones, 6+3=9 tens) yields 90. The stem's claim of 91 is correctly false."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Appropriately clear for Grade 1 learners. Stem shows decomposition and presents an incorrect equation. Hints methodically verify the correct calculation, helping students see why 91 is not the sum."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "All arithmetic is correct. 60 is 6 tens and 0 ones; 30 is 3 tens and 0 ones. Ones: 0+0=0. Tens: 6+3=9. Sum: 60+30=90, not 91 as the stem claims."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w9r2-mat_g1_na_q2_4-20260924",
+      "dispatch_id": "s5-haiku-w9r2-mat_g1_na_q2_4-20260924:mat_g1_na_q2_4"
+    },
+    {
+      "sample_id": "cb6a58682efd9aac4214",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "No ambiguity. Problem clearly asks for the sum of 11 and 13 in fill-in-blank format. Hints confirm the answer is 24, unambiguously derived from place-value addition."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Logically sound addition problem. Decomposing 11 as 1 ten and 1 one, 13 as 1 ten and 3 ones, adding place values (1+3=4 ones, 1+1=2 tens) to get 24 follows valid place-value logic."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Clear and well-scaffolded for Grade 1 learners. Instructions show decomposition explicitly. Hints step through adding ones and tens separately before stating the final sum."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "All arithmetic is correct. 11 is 1 ten and 1 one; 13 is 1 ten and 3 ones. Ones: 1+3=4. Tens: 1+1=2. Sum: 11+13=24 is mathematically accurate with no errors."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w9r2-mat_g1_na_q2_4-20260924",
+      "dispatch_id": "s5-haiku-w9r2-mat_g1_na_q2_4-20260924:mat_g1_na_q2_4"
+    },
+    {
+      "sample_id": "8c9da4d30b04a65a9f5c",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "No ambiguity. Problem asks for the sum of 30 and 50 with explicit decomposition shown. Multiple-choice options are distinct, and the answer of 80 is unambiguously correct and supported by hints."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Logically valid addition problem with tens only. Decomposing 30 as 3 tens and 0 ones, 50 as 5 tens and 0 ones, adding place values (0+0=0 ones, 3+5=8 tens) to get 80 follows sound logic."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Clear and appropriately structured for Grade 1 learners. Stem explicitly shows decomposition. Hints methodically guide through adding ones and tens before reaching the final sum."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "All arithmetic is correct. 30 is 3 tens and 0 ones; 50 is 5 tens and 0 ones. Ones: 0+0=0. Tens: 3+5=8. Sum: 30+50=80 is mathematically sound with no errors."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w9r2-mat_g1_na_q2_4-20260924",
+      "dispatch_id": "s5-haiku-w9r2-mat_g1_na_q2_4-20260924:mat_g1_na_q2_4"
+    },
+    {
+      "sample_id": "5c9c5dbc42479352b1a3",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "No ambiguity. Stem presents an equation (30+30=60) and asks for truth evaluation. Hints verify each calculation step, confirming the statement is true."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Logically valid true-statement evaluation. Decomposing 30 and 30 into tens, adding place values (0+0=0 ones, 3+3=6 tens) yields 60, making the stem's claim true."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Clear and well-structured for Grade 1 learners. Stem shows decomposition and presents a claim for evaluation. Hints step through the calculation, supporting verification."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "All arithmetic is correct. 30 is 3 tens and 0 ones (shown twice). Ones: 0+0=0. Tens: 3+3=6. Sum: 30+30=60 is mathematically accurate."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w9r2-mat_g1_na_q2_4-20260924",
+      "dispatch_id": "s5-haiku-w9r2-mat_g1_na_q2_4-20260924:mat_g1_na_q2_4"
+    },
+    {
+      "sample_id": "a059149bc280147e34b5",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "No ambiguity. Problem clearly asks for the sum of 43 and 29 with explicit decomposition shown. The faith-themed context with cross emoji and storyline about Daniel and stones provide engaging wrapper without interfering with mathematical clarity."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Logically valid addition with carrying. Decomposing 43 and 29, adding ones with carry (3+9=12 write 2, carry 1), adding tens with carry (4+2+1=7) reaches 72 correctly. Theming does not contradict or confuse the mathematics."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Clear for Grade 1 learners. Theming elements (cross emoji, Daniel, stones) provide context and engagement without obscuring the problem. Decomposition is explicit; hints guide through each step of carrying."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "All arithmetic is correct. 43 is 4 tens and 3 ones; 29 is 2 tens and 9 ones. Ones: 3+9=12 (write 2, carry 1). Tens: 4+2+1=7. Sum: 43+29=72 is mathematically sound."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w9r2-mat_g1_na_q2_4-20260924",
+      "dispatch_id": "s5-haiku-w9r2-mat_g1_na_q2_4-20260924:mat_g1_na_q2_4"
+    },
+    {
+      "sample_id": "7d98e0f1f6a3f0515a99",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "No ambiguity. Basketball-themed context with Isko and Manny is clear. Manny's answer of 33 is incorrect for 18+14. Hints confirm the correct sum is 32, making the error evaluation unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Logically valid error-detection problem. Decomposing 18 and 14, handling carrying (8+4=12 write 2, carry 1), adding tens with carry (1+1+1=3) yields 32, not 33 as Manny claimed. Sports theming does not interfere with mathematical logic."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Clear for Grade 1 learners. Theming elements (basketball emoji, Isko, Manny) provide engaging context. Stem shows Manny's decomposition and incorrect answer. Hints verify the correct calculation and identify his error."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "All calculations are correct. 18 is 1 ten and 8 ones; 14 is 1 ten and 4 ones. Ones: 8+4=12 (write 2, carry 1). Tens: 1+1+1=3. Sum: 18+14=32, not 33 as Manny stated."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w9r2-mat_g1_na_q2_4-20260924",
+      "dispatch_id": "s5-haiku-w9r2-mat_g1_na_q2_4-20260924:mat_g1_na_q2_4"
+    },
+    {
+      "sample_id": "33f5d35c052545674c94",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "No ambiguity. Problem clearly asks for the sum of 50 and 12 in fill-in-blank format. Hints confirm the answer is 62, unambiguously derived from place-value addition."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Logically sound addition problem. Decomposing 50 as 5 tens and 0 ones, 12 as 1 ten and 2 ones, adding place values (0+2=2 ones, 5+1=6 tens) to get 62 follows valid place-value logic."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Clear and appropriately scaffolded for Grade 1 learners. Instructions show decomposition explicitly. Hints step through adding ones and tens separately before stating the final sum."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "All arithmetic is correct. 50 is 5 tens and 0 ones; 12 is 1 ten and 2 ones. Ones: 0+2=2. Tens: 5+1=6. Sum: 50+12=62 is mathematically accurate with no errors."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w9r2-mat_g1_na_q2_4-20260924",
+      "dispatch_id": "s5-haiku-w9r2-mat_g1_na_q2_4-20260924:mat_g1_na_q2_4"
+    },
+    {
+      "sample_id": "dd2c8ffa7649b88be20d",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "No ambiguity. Pia's calculation and answer of 84 are presented clearly. Hints confirm the answer is correct by verifying each place-value addition step, making evaluation unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Logically valid error-detection problem. Pia correctly decomposes 13 and 71, adds place values (3+1=4 ones, 1+7=8 tens), reaching the correct sum of 84."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Clear for Grade 1 learners in error-detection format. Stem shows Pia's decomposition and work; hints verify each calculation step. Students can follow and confirm the correctness of her answer."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "All calculations are correct. 13 is 1 ten and 3 ones; 71 is 7 tens and 1 one. Ones: 3+1=4. Tens: 1+7=8. Sum: 13+71=84 is mathematically sound with no errors."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w9r2-mat_g1_na_q2_4-20260924",
+      "dispatch_id": "s5-haiku-w9r2-mat_g1_na_q2_4-20260924:mat_g1_na_q2_4"
+    },
+    {
+      "sample_id": "1715c6069393a43468e4",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "No ambiguity. Problem asks for the sum of 10 and 2 with explicit decomposition shown. Multiple-choice options are distinct, and the answer of 12 is unambiguously correct and supported by hints."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Logically sound addition problem. Decomposing 10 as 1 ten and 0 ones, 2 as 2 ones, adding place values (0+2=2 ones, 1+0=1 ten) to get 12 follows valid place-value logic."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Clear and well-structured for Grade 1 learners. Stem explicitly shows decomposition. Hints methodically guide through adding ones, adding tens, and reaching the final sum."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "All arithmetic is correct. 10 is 1 ten and 0 ones; 2 is 2 ones. Ones: 0+2=2. Tens: 1+0=1. Sum: 10+2=12 is mathematically sound with no computational errors."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w9r2-mat_g1_na_q2_4-20260924",
+      "dispatch_id": "s5-haiku-w9r2-mat_g1_na_q2_4-20260924:mat_g1_na_q2_4"
+    },
+    {
+      "sample_id": "0c548e156f00478caab2",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "No ambiguity. Problem asks for the sum of 11 and 1 with explicit decomposition shown. Multiple-choice options are distinct, and the answer of 12 is unambiguously correct and verified by hints."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Logically valid addition problem. Decomposing 11 as 1 ten and 1 one, 1 as 1 one, adding place values (1+1=2 ones, 1+0=1 ten) to get 12 follows sound place-value logic."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Clear and appropriately structured for Grade 1 learners. Stem explicitly shows decomposition. Hints step through adding ones and tens before reaching the final sum."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "All arithmetic is correct. 11 is 1 ten and 1 one; 1 is 1 one. Ones: 1+1=2. Tens: 1+0=1. Sum: 11+1=12 is mathematically accurate with no errors."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w9r2-mat_g1_na_q2_4-20260924",
+      "dispatch_id": "s5-haiku-w9r2-mat_g1_na_q2_4-20260924:mat_g1_na_q2_4"
+    },
+    {
+      "sample_id": "db8cd4daf7d64c558d67",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "No ambiguity. Stem presents a false equation (61+6=77) and asks for truth evaluation. Hints confirm the correct sum is 67, making the false claim unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Logically valid false-statement evaluation. Decomposing 61 and 6, adding place values (1+6=7 ones, 6+0=6 tens) yields 67. The stem's claim of 77 is correctly false."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Appropriately clear for Grade 1 learners. Stem shows decomposition and presents an incorrect equation. Hints methodically verify the correct calculation, helping students identify the error."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "All arithmetic is correct. 61 is 6 tens and 1 one; 6 is 6 ones. Ones: 1+6=7. Tens: 6+0=6. Sum: 61+6=67, not 77 as the stem claims."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w9r2-mat_g1_na_q2_4-20260924",
+      "dispatch_id": "s5-haiku-w9r2-mat_g1_na_q2_4-20260924:mat_g1_na_q2_4"
+    },
+    {
+      "sample_id": "c56dc0f5d5dccc607aad",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "No ambiguity. Liza's answer of 77 is clearly incorrect for 77+18. Hints confirm the correct sum is 95, making the error identification unambiguous and well-supported."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Logically valid error-detection problem. Decomposing 77 and 18, handling carrying (7+8=15 write 5, carry 1), adding tens with carry (7+1+1=9) yields 95, not 77 as Liza claimed."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Clear for Grade 1 learners in error-detection format. Stem shows Liza's decomposition and incorrect answer. Hints verify each step of the carrying process, helping students recognize her error."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "All calculations are correct. 77 is 7 tens and 7 ones; 18 is 1 ten and 8 ones. Ones: 7+8=15 (write 5, carry 1). Tens: 7+1+1=9. Sum: 77+18=95, not 77 as Liza stated."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w9r2-mat_g1_na_q2_4-20260924",
+      "dispatch_id": "s5-haiku-w9r2-mat_g1_na_q2_4-20260924:mat_g1_na_q2_4"
+    },
+    {
+      "sample_id": "cb604974705f289e145e",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "No ambiguity. Manny's answer of 101 is clearly incorrect for 90+1. Hints confirm the correct sum is 91, making the error identification unambiguous and well-supported."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Logically valid error-detection problem. Decomposing 90 and 1, adding place values (0+1=1 one, 9+0=9 tens) yields 91, not 101 as Manny claimed. The error is clear and appropriate for evaluation."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Clear for Grade 1 learners in error-detection format. Stem shows Manny's decomposition and incorrect answer. Hints verify each calculation step, helping students identify his place-value error."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "All calculations are correct. 90 is 9 tens and 0 ones; 1 is 1 one. Ones: 0+1=1. Tens: 9+0=9. Sum: 90+1=91, not 101 as Manny stated."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w9r2-mat_g1_na_q2_4-20260924",
+      "dispatch_id": "s5-haiku-w9r2-mat_g1_na_q2_4-20260924:mat_g1_na_q2_4"
+    }
+  ],
+  "clause_evidence": [
+    {
+      "requirement_id": "add",
+      "clause": "Add numbers",
+      "verdict": "PASS",
+      "reasoning": "Every sample requires addition as its primary task. Students compute sums ranging from simple (10+2=12) to complex with carrying (77+18=95). Every sample systematically asks for or verifies an addition result.",
+      "sample_ids": [
+        "f9cd019886c72a856fc8",
+        "289efaa4c0f0d60eef4e",
+        "5f1c36cba4022c414489",
+        "0e0a6f05daab2423e8ec",
+        "8fca89be10ce3edb4d97",
+        "e135687eac28d61e84dd",
+        "7a668eb1a8f669bfaf94",
+        "77083079c7c0ffa835f0",
+        "70e081a83c244410565e",
+        "10a82e1286db42661def",
+        "b0da07245b581ce7605f",
+        "09f2a1239c6990cd1176",
+        "476ba37d3fb021b4620a",
+        "ca5d2f5c2787227b4642",
+        "273f92dbed53a6b89abf",
+        "5b30b41ad1ce564cc622",
+        "7a2514474a9f11b94a6d",
+        "cb6a58682efd9aac4214",
+        "8c9da4d30b04a65a9f5c",
+        "5c9c5dbc42479352b1a3",
+        "a059149bc280147e34b5",
+        "7d98e0f1f6a3f0515a99",
+        "33f5d35c052545674c94",
+        "dd2c8ffa7649b88be20d",
+        "1715c6069393a43468e4",
+        "0c548e156f00478caab2",
+        "db8cd4daf7d64c558d67",
+        "c56dc0f5d5dccc607aad",
+        "cb604974705f289e145e"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-w9r2-mat_g1_na_q2_4-20260924",
+      "dispatch_id": "s5-haiku-w9r2-mat_g1_na_q2_4-20260924:mat_g1_na_q2_4"
+    },
+    {
+      "requirement_id": "express_addends",
+      "clause": "expressing addends",
+      "verdict": "PASS",
+      "reasoning": "All 30 samples explicitly express addends using the format established in the problem. Every stem shows each addend decomposed into place values (tens and ones), making the expression of addends central to every problem's structure.",
+      "sample_ids": [
+        "f9cd019886c72a856fc8",
+        "289efaa4c0f0d60eef4e",
+        "5f1c36cba4022c414489",
+        "0e0a6f05daab2423e8ec",
+        "8fca89be10ce3edb4d97",
+        "e135687eac28d61e84dd",
+        "7a668eb1a8f669bfaf94",
+        "77083079c7c0ffa835f0",
+        "70e081a83c244410565e",
+        "10a82e1286db42661def",
+        "b0da07245b581ce7605f",
+        "09f2a1239c6990cd1176",
+        "476ba37d3fb021b4620a",
+        "ca5d2f5c2787227b4642",
+        "273f92dbed53a6b89abf",
+        "5b30b41ad1ce564cc622",
+        "7a2514474a9f11b94a6d",
+        "cb6a58682efd9aac4214",
+        "8c9da4d30b04a65a9f5c",
+        "5c9c5dbc42479352b1a3",
+        "a059149bc280147e34b5",
+        "7d98e0f1f6a3f0515a99",
+        "33f5d35c052545674c94",
+        "dd2c8ffa7649b88be20d",
+        "1715c6069393a43468e4",
+        "0c548e156f00478caab2",
+        "db8cd4daf7d64c558d67",
+        "c56dc0f5d5dccc607aad",
+        "cb604974705f289e145e"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-w9r2-mat_g1_na_q2_4-20260924",
+      "dispatch_id": "s5-haiku-w9r2-mat_g1_na_q2_4-20260924:mat_g1_na_q2_4"
+    },
+    {
+      "requirement_id": "tens_ones",
+      "clause": "tens and ones",
+      "verdict": "PASS",
+      "reasoning": "All 30 samples fundamentally depend on breaking numbers into tens and ones components. Every problem explicitly states and works with place values as separate entities, making tens-and-ones decomposition the core strategy throughout.",
+      "sample_ids": [
+        "f9cd019886c72a856fc8",
+        "289efaa4c0f0d60eef4e",
+        "5f1c36cba4022c414489",
+        "0e0a6f05daab2423e8ec",
+        "8fca89be10ce3edb4d97",
+        "e135687eac28d61e84dd",
+        "7a668eb1a8f669bfaf94",
+        "77083079c7c0ffa835f0",
+        "70e081a83c244410565e",
+        "10a82e1286db42661def",
+        "b0da07245b581ce7605f",
+        "09f2a1239c6990cd1176",
+        "476ba37d3fb021b4620a",
+        "ca5d2f5c2787227b4642",
+        "273f92dbed53a6b89abf",
+        "5b30b41ad1ce564cc622",
+        "7a2514474a9f11b94a6d",
+        "cb6a58682efd9aac4214",
+        "8c9da4d30b04a65a9f5c",
+        "5c9c5dbc42479352b1a3",
+        "a059149bc280147e34b5",
+        "7d98e0f1f6a3f0515a99",
+        "33f5d35c052545674c94",
+        "dd2c8ffa7649b88be20d",
+        "1715c6069393a43468e4",
+        "0c548e156f00478caab2",
+        "db8cd4daf7d64c558d67",
+        "c56dc0f5d5dccc607aad",
+        "cb604974705f289e145e"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-w9r2-mat_g1_na_q2_4-20260924",
+      "dispatch_id": "s5-haiku-w9r2-mat_g1_na_q2_4-20260924:mat_g1_na_q2_4"
+    },
+    {
+      "requirement_id": "expanded_form",
+      "clause": "expanded form",
+      "verdict": "PASS",
+      "reasoning": "Expanded form thinking permeates all 30 samples. Each problem demonstrates the algorithm of adding place values separately rather than computing directly, which is the essence of expanded-form addition for early learners.",
+      "sample_ids": [
+        "f9cd019886c72a856fc8",
+        "289efaa4c0f0d60eef4e",
+        "5f1c36cba4022c414489",
+        "0e0a6f05daab2423e8ec",
+        "8fca89be10ce3edb4d97",
+        "e135687eac28d61e84dd",
+        "7a668eb1a8f669bfaf94",
+        "77083079c7c0ffa835f0",
+        "70e081a83c244410565e",
+        "10a82e1286db42661def",
+        "b0da07245b581ce7605f",
+        "09f2a1239c6990cd1176",
+        "476ba37d3fb021b4620a",
+        "ca5d2f5c2787227b4642",
+        "273f92dbed53a6b89abf",
+        "5b30b41ad1ce564cc622",
+        "7a2514474a9f11b94a6d",
+        "cb6a58682efd9aac4214",
+        "8c9da4d30b04a65a9f5c",
+        "5c9c5dbc42479352b1a3",
+        "a059149bc280147e34b5",
+        "7d98e0f1f6a3f0515a99",
+        "33f5d35c052545674c94",
+        "dd2c8ffa7649b88be20d",
+        "1715c6069393a43468e4",
+        "0c548e156f00478caab2",
+        "db8cd4daf7d64c558d67",
+        "c56dc0f5d5dccc607aad",
+        "cb604974705f289e145e"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-w9r2-mat_g1_na_q2_4-20260924",
+      "dispatch_id": "s5-haiku-w9r2-mat_g1_na_q2_4-20260924:mat_g1_na_q2_4"
+    }
+  ],
+  "dispatch_provenance": [
+    {
+      "dispatch_id": "s5-haiku-w9r2-mat_g1_na_q2_4-20260924:mat_g1_na_q2_4",
+      "reviewer_identity": "blind-reviewer-haiku45-w9r2-mat_g1_na_q2_4-20260924",
+      "review_date": "2026-09-24",
+      "blind": true,
+      "packet_digest": "840e7e6f1fb632fd9881070d6bfe5edc15d152ba0d4beb1df6a1f175ae93ab0d",
+      "clause_ids": [
+        "add",
+        "express_addends",
+        "tens_ones",
+        "expanded_form"
+      ],
+      "response_ref": ".responses/s5-haiku-w9r2-mat_g1_na_q2_4-20260924.json",
+      "response_digest": "75cb5df3b523dfc954f3905034244764a2772c9f2157a36d498d2fd6c44bc678",
+      "prompt_ref": ".responses/s5-haiku-w9r2-mat_g1_na_q2_4-20260924.prompt.txt",
+      "prompt_digest": "aee58c0aad05932aacea6cb0c008c7db85c786aa13f8eb1a766d093a42e9da26",
+      "samples_delivery": "Prompt file path handed to a Claude Code Agent-tool subagent (model haiku, ruling 4, owner-authorised 2026-09-24 because this Claude host cannot dispatch gpt-5.6-luna). SECOND dispatch: the first was REFUSED by file_reviews for a reasoning under 40 characters. This dispatch stated a 60-char floor, an exact-verbatim quoting rule, and neutral context that interest theming is a deliberate product feature to be judged on interference, not on subject matter. Result: 0 unmatched quoted spans. The reviewer read the prompt with Read; all samples were inside it, and wrote verdicts.json with Write.",
+      "tool_uses_by_reviewer": "2 tool calls per the harness usage record (tool_uses: 2): Read of the dispatch prompt, Write of verdicts.json. NOTE: the subagent's own self-report named only ONE of the two; the harness figure is authoritative and is what is recorded. Full tool access, instructed to read no other repository file -- a prompt contract, not a sandbox."
     }
   ],
   "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "Each stem first restates both addends in tens and ones and then instructs 'Add the place values, then find the total', which is the expanded-form method the competency names rather than a bare sum."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "Both shapes of addend pair are generated - two-digit with a single-digit partner expressed purely in ones, and two-digit with two-digit - and zero-ones addends are included, so the expansion step is exercised in its several forms."
-    },
     "cognitive_capacity": {
-      "verdict": "CONCERN",
-      "rationale": "Several pairs force a carry that the expanded-form script does not cover: the seed pairing 57 with 43, and the one pairing 87 with 9, both need the ones to be regrouped into a new ten, while the neighbouring Quarter 2 addition competency is explicitly restricted to sums without regrouping. Pupils are being asked to complete a method they have not been taught."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "Every single sampled stem is the identical two-sentence recital with different numerals substituted; only the response mode changes around it. No pictured, contextual or story presentation of expanded addition appears anywhere in the sample."
+      "verdict": "PASS",
+      "rationale": "All problems appropriately target Grade 1 Quarter 2 student cognition. Problems range from simple additions without carrying (10+2, 30+6) to carrying scenarios (57+43, 77+18), matching early primary learners' developmental stage for place-value understanding."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "The escalation across seeds is in the size and messiness of the addends, which is the right lever for this competency, and the error-checking items still require the pupil to run the same expansion."
+      "rationale": "Every problem directly addresses the competency of adding numbers through tens-and-ones decomposition. Each sample explicitly shows how numbers break into place values and requires students to add place values separately before combining for the total."
+    },
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "All four required components are demonstrably present across the sample set. Students encounter all required elements in context to achieve mastery of this competency.",
+      "decomposition": {
+        "verdict": "PASS",
+        "reasoning": "The four requirements (add, express_addends, tens_ones, expanded_form) form a lossless decomposition of the competency. Adding requires computing the sum; expressing addends requires stating place values; tens_ones frames the place-value separation; expanded_form describes the algorithm. All four are necessary and appear in every sample.",
+        "requirement_ids": [
+          "add",
+          "express_addends",
+          "tens_ones",
+          "expanded_form"
+        ]
+      },
+      "clause_ids": [
+        "add",
+        "express_addends",
+        "tens_ones",
+        "expanded_form"
+      ]
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "Sample set comprehensively covers addend combinations (tens only like 60+30, mixed like 50+12, with ones like 30+6), carrying scenarios (no-carry, single-digit carry to tens, double-carry to hundreds), multiple problem formats (MCQ, true/false, error detection, fill-in-blank), and result ranges (12 through 100).",
+      "clause_ids": [
+        "add",
+        "express_addends",
+        "tens_ones",
+        "expanded_form"
+      ]
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Addends and totals stay within two digits and land on 100 at the top end, so the arithmetic never leaves the range implied for Grade 1 place-value addition."
+      "rationale": "All numbers fall within Grade 1 expectations: single digits and two-digit numbers only, with sums not exceeding 100. Addends range from 1 to 90, all accessible to students learning foundational place-value concepts. No vocabulary or operations beyond Grade 1 Quarter 2 scope appear in any sample."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "Problems exhibit strong variant coverage: four distinct formats (multiple-choice with distractors, true/false evaluation, error-detection analysis, cloze fill-in-blank), multiple thematic contexts (neutral mathematics problems, faith-themed contexts with cross symbol, sports-themed basketball scenario), and varied question structures keeping student engagement diverse."
     }
   },
-  "overall": "CONCERN"
+  "overall": "PASS"
 }

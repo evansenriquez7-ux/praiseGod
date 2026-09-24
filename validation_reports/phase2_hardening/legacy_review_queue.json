@@ -1,213 +1,33 @@
 {
   "schema_version": 1,
   "kind": "legacy_review_queue",
-  "generated_at": "2026-09-24T11:36:49.917111+00:00",
+  "generated_at": "2026-09-24T13:43:21.558405+00:00",
   "adjudicable": false,
   "why_not_adjudicable": "These are v1 reviews. The current schema (v2) requires per-sample contextual-validity verdicts, exact clause coverage and dispatch-bound provenance, which a v1 reviewer was never asked for and which therefore cannot be recovered from a v1 record without inventing them. Every node listed here still owes a fresh blind re-review. This file exists so that the previous programme's findings remain visible as a QUEUE while none of them counts as evidence.",
-  "required_work": "121 node(s) need a fresh blind review filed at schema_version 2. Rebuild a packet with: python -m backend.app.practice_gen.validation.judgment_packets --node <node_id>",
+  "required_work": "118 node(s) need a fresh blind review filed at schema_version 2. Rebuild a packet with: python -m backend.app.practice_gen.validation.judgment_packets --node <node_id>",
   "source_review_dir": "validation_reports/judgment",
-  "source_corpus_sha256": "ef7878851040780ed47536d1adaf5bdbc62a30d59922177711b2ead0c037324d",
+  "source_corpus_sha256": "f36fc9650aecb441715e3841143a1d9a8b8f661375c3a187aae2cac5fe69e987",
   "counts": {
-    "legacy_nodes": 121,
-    "already_current_and_excluded": 30,
+    "legacy_nodes": 118,
+    "already_current_and_excluded": 33,
     "by_overall_verdict": {
-      "CONCERN": 76,
-      "FAIL": 35,
+      "CONCERN": 74,
+      "FAIL": 34,
       "PASS": 10
     },
-    "nodes_with_a_non_pass_facet": 111,
+    "nodes_with_a_non_pass_facet": 108,
     "non_pass_by_facet": {
-      "cognitive_capacity": 31,
+      "cognitive_capacity": 30,
       "competency_alignment": 55,
-      "competency_fulfillment": 60,
-      "comprehensive_coverage": 51,
+      "competency_fulfillment": 59,
+      "comprehensive_coverage": 50,
       "scale_appropriateness": 22,
-      "variant_comprehensiveness": 72
+      "variant_comprehensiveness": 71
     },
     "records_missing_a_v1_facet": 0,
     "orphan_reviews_for_undeclared_nodes": 0
   },
   "nodes": [
-    {
-      "node_id": "mat_g1_na_q2_4",
-      "source_path": "validation_reports/judgment/mat_g1_na_q2/mat_g1_na_q2_4.json",
-      "source_sha256": "5be0c72abb3b30538ac33d0161f2aad73bb8a67d3df703445a6aff8558f4f05b",
-      "declared_schema_version": null,
-      "reviewed_by": "reviewer-c2-basalt-yarrow-7194",
-      "review_date": "2026-09-11",
-      "blind": true,
-      "sample_seeds": [
-        42,
-        43,
-        44,
-        45,
-        46,
-        500,
-        501,
-        502,
-        600,
-        601,
-        602,
-        603,
-        604,
-        605
-      ],
-      "overall_verdict": "CONCERN",
-      "node_still_declared": true,
-      "facets": {
-        "competency_fulfillment": {
-          "verdict": "PASS",
-          "rationale": "Each stem first restates both addends in tens and ones and then instructs 'Add the place values, then find the total', which is the expanded-form method the competency names rather than a bare sum."
-        },
-        "comprehensive_coverage": {
-          "verdict": "PASS",
-          "rationale": "Both shapes of addend pair are generated - two-digit with a single-digit partner expressed purely in ones, and two-digit with two-digit - and zero-ones addends are included, so the expansion step is exercised in its several forms."
-        },
-        "cognitive_capacity": {
-          "verdict": "CONCERN",
-          "rationale": "Several pairs force a carry that the expanded-form script does not cover: the seed pairing 57 with 43, and the one pairing 87 with 9, both need the ones to be regrouped into a new ten, while the neighbouring Quarter 2 addition competency is explicitly restricted to sums without regrouping. Pupils are being asked to complete a method they have not been taught."
-        },
-        "variant_comprehensiveness": {
-          "verdict": "CONCERN",
-          "rationale": "Every single sampled stem is the identical two-sentence recital with different numerals substituted; only the response mode changes around it. No pictured, contextual or story presentation of expanded addition appears anywhere in the sample."
-        },
-        "competency_alignment": {
-          "verdict": "PASS",
-          "rationale": "The escalation across seeds is in the size and messiness of the addends, which is the right lever for this competency, and the error-checking items still require the pupil to run the same expansion."
-        },
-        "scale_appropriateness": {
-          "verdict": "PASS",
-          "rationale": "Addends and totals stay within two digits and land on 100 at the top end, so the arithmetic never leaves the range implied for Grade 1 place-value addition."
-        }
-      },
-      "facets_missing_from_the_v1_record": [],
-      "non_pass_facets": [
-        "cognitive_capacity",
-        "variant_comprehensiveness"
-      ],
-      "adjudicable": false
-    },
-    {
-      "node_id": "mat_g1_na_q2_5",
-      "source_path": "validation_reports/judgment/mat_g1_na_q2/mat_g1_na_q2_5.json",
-      "source_sha256": "e184e6cda59b409390758d903f4f47386ede887425180bf2173ad9e3e7cfb663",
-      "declared_schema_version": null,
-      "reviewed_by": "reviewer-c2-basalt-yarrow-7194",
-      "review_date": "2026-09-11",
-      "blind": true,
-      "sample_seeds": [
-        42,
-        43,
-        44,
-        45,
-        46,
-        49,
-        51,
-        108,
-        500,
-        501,
-        502,
-        600,
-        601,
-        602,
-        603,
-        604,
-        605
-      ],
-      "overall_verdict": "FAIL",
-      "node_still_declared": true,
-      "facets": {
-        "competency_fulfillment": {
-          "verdict": "PASS",
-          "rationale": "The sampled items are additions with sums at or below one hundred, and I checked each pair for carries - none of the generated sums requires regrouping, so the restriction the competency states is respected in the arithmetic itself."
-        },
-        "comprehensive_coverage": {
-          "verdict": "FAIL",
-          "rationale": "The competency names two addend shapes, '2-digit and 1-digit numbers, and 2-digit and 2-digit numbers'. Every addition in this sample is two-digit plus two-digit; not one item adds a single-digit number to a two-digit one. An entire named sub-case is never generated."
-        },
-        "cognitive_capacity": {
-          "verdict": "PASS",
-          "rationale": "Sentences are short, the arithmetic is carry-free, and the count-up instruction spells out the procedure before asking for the landing number, all of which fits a Grade 1 pupil mid-year."
-        },
-        "variant_comprehensiveness": {
-          "verdict": "PASS",
-          "rationale": "The concrete and pictorial models the competency calls for are really present - a pictured group of daisies joined by more daisies, a number-line landing task, and 'Show 30 + 60 on the number line.' - alongside abstract equations and a part-part phrasing."
-        },
-        "competency_alignment": {
-          "verdict": "PASS",
-          "rationale": "Harder seeds use larger addends and less friendly digits rather than switching to some unrelated skill, so the ramp does build the addition competency, even though it never reaches the missing addend shape."
-        },
-        "scale_appropriateness": {
-          "verdict": "PASS",
-          "rationale": "Sums peak at ninety-eight and no stem crosses one hundred, matching the ceiling the wording sets."
-        }
-      },
-      "facets_missing_from_the_v1_record": [],
-      "non_pass_facets": [
-        "comprehensive_coverage"
-      ],
-      "adjudicable": false
-    },
-    {
-      "node_id": "mat_g1_na_q2_6",
-      "source_path": "validation_reports/judgment/mat_g1_na_q2/mat_g1_na_q2_6.json",
-      "source_sha256": "c402f15c36c95864ff2c14ed961c0d7fed82c6acb147901614f834cb151a09e5",
-      "declared_schema_version": null,
-      "reviewed_by": "reviewer-c2-basalt-yarrow-7194",
-      "review_date": "2026-09-11",
-      "blind": true,
-      "sample_seeds": [
-        42,
-        43,
-        44,
-        45,
-        46,
-        52,
-        79,
-        500,
-        501,
-        502,
-        600,
-        601,
-        602,
-        603,
-        604,
-        605
-      ],
-      "overall_verdict": "CONCERN",
-      "node_still_declared": true,
-      "facets": {
-        "competency_fulfillment": {
-          "verdict": "CONCERN",
-          "rationale": "The competency is about solving problems presented orally or in pictures, yet a number of sampled items carry no situation at all - one is a request to 'Show 80 + 3 on the number line.' and another simply supplies two parts and asks for their sum. Those are computation exercises that would serve the preceding compute-the-sum competency equally well, so this node's distinguishing verb is under-served."
-        },
-        "comprehensive_coverage": {
-          "verdict": "PASS",
-          "rationale": "Both addend shapes do appear here, including small single-digit additions to a large two-digit amount, and the pictured presentations cover both a fully drawn group and a mixed large-group-plus-symbol layout."
-        },
-        "cognitive_capacity": {
-          "verdict": "PASS",
-          "rationale": "Each situation is one step with no hidden inference, and every sampled sum avoids regrouping, so the demand is joining two quantities - appropriate for the end of Quarter 2."
-        },
-        "variant_comprehensiveness": {
-          "verdict": "PASS",
-          "rationale": "Pictured collections, number-line movement, a joining story, and a peer-checking item all occur, so the range of presentations is genuinely wide even where individual items drift off the competency's intent."
-        },
-        "competency_alignment": {
-          "verdict": "PASS",
-          "rationale": "As difficulty rises the addends grow and the pictured quantities get larger, which is coherent with addition within a hundred rather than with an unrelated axis."
-        },
-        "scale_appropriateness": {
-          "verdict": "PASS",
-          "rationale": "The largest total reached is ninety-nine and the generic-item phrasing keeps quantities in the tens, so the stated sum ceiling holds throughout."
-        }
-      },
-      "facets_missing_from_the_v1_record": [],
-      "non_pass_facets": [
-        "competency_fulfillment"
-      ],
-      "adjudicable": false
-    },
     {
       "node_id": "mat_g1_na_q3_0",
       "source_path": "validation_reports/judgment/mat_g1_na_q3/mat_g1_na_q3_0.json",

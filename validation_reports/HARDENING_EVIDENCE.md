@@ -16235,3 +16235,85 @@ ones to quote.
 One claim was NOT reproduced: the rejected reply said number-line hints skip-count while the rendered
 labels are consecutive integers. A mechanical check of every NumberLine sample found no such
 mismatch. Recorded as reviewer-reported and **unconfirmed**; verify before acting on it.
+
+### Wave 9 (same session) — 4 nodes, and the ✝️ finding RETRACTED
+
+```
+legacy queue : 121 -> 118        §5 (module) : 1532 -> 1542 findings, 146 -> 145 nodes
+mat_g1_na_q2_3  FAIL     (re-dispatch)  30 findings
+mat_g1_na_q2_4  PASS     (re-dispatch)   0 findings
+mat_g1_na_q2_5  CONCERN  (re-dispatch)   5 findings
+mat_g1_na_q2_6  CONCERN                  9 findings
+```
+
+**THE ✝️ EMOJI IS NOT A DEFECT. Retracting the wave-8 queue item.** It comes from
+`data/interest_bank.json` -> `bible` (`interest_id: 1`, `grade_band [1, 10]`, `name "Bible &
+Christianity"`), one of **26** curated student-interest themes, with actors David/Moses/Ruth/Esther,
+objects loaves of bread/fish/olives/scrolls, places temple/church. It is the interest-personalisation
+system working as designed.
+
+**THREE independent blind reviewers, on three different nodes, each flagged it as a defect, and all
+three were wrong.** By construction a blind reviewer cannot read `interest_bank.json`, so it cannot
+tell a deliberate product feature from stray junk, and it defaults to calling an unexpected symbol
+inappropriate. Across the remaining queue that would have produced a steady stream of CONCERN/FAIL
+verdicts **that no content work could ever clear.**
+
+Fix applied to the dispatch template, and it is context rather than a conclusion: the prompt now states
+that problems are personalised from a curated interest bank (sports, gaming, food, faith and others),
+that themed names/objects/emoji are deliberate, and that the reviewer should judge whether theming
+**interferes** with the mathematics or the clarity of the task — not whether the theme itself is
+appropriate. **Measured effect:** `mat_g1_na_q2_4` had returned CONCERN citing the cross; re-dispatched
+with the context it returned PASS while still checking every sample's arithmetic. It suppressed the
+false finding without suppressing real ones.
+
+**This generalises: a blind reviewer cannot adjudicate INTENT, only content.** Any finding about
+theming, persona or decoration must be adjudicated by the dispatcher against `interest_bank.json`
+before it is queued as a bug. Contrast the Luna campaign's "irrelevant interest wrappers" findings
+(dance shoes on a fruit interview), which ARE plausible defects: there the theme contradicts the
+problem's own content, rather than merely being present.
+
+### THIRD instance of one root cause: hints that ignore the item's variant
+
+`mat_g1_na_q2_3` FAIL, verified by executing against the packet: 6 `PlaceValueBlocks` samples print
+`Use base-10 blocks to show the number 76.` with `answer: 76`, while their hints say `Write the broken
+apart form of 76.` and `Break each digit into its place value: 70 + 6.` A pupil who follows the hints
+writes 70 + 6 and is marked wrong.
+
+| node | the item asks for | the hints teach |
+|---|---|---|
+| `mat_g3_na_q4_7` (fixed `ab70698a`) | subtraction | addition |
+| `mat_g1_na_q2_0` | largest to smallest | least to greatest |
+| `mat_g1_na_q2_3` | set base-10 blocks | write the decomposed form |
+
+Three different DNAs, one structural failure: **`generate_params` knows the variant and
+`generate_hints` does not.** That is the "a rule that lives in TWO places" shape again. The fix is
+likely a shared contract that makes a hint chain declare the variant it explains, not three
+independent patches — and a sweep of every `generate_hints` against its item's variant should come
+before anyone assumes only these three are affected.
+
+### `mat_g1_na_q2_5` seed 607, confirmed by TWO independent dispatches
+
+```
+stem    : Is 12 + 27 the same as 27 + 10?
+answer  : False
+hints   : []                       <- the only sample in a 34-sample packet with no hints
+options : Cannot be determined / True / False / Only when both are 0
+```
+
+An item served with **no scaffolding at all**, against a competency that says only `Add numbers with
+sums up to 100 without regrouping, using a variety of concrete and pictorial models`. Nothing in that
+competency names equivalence-comparison, so the item is also outside its explicit scope (Content Rule
+3). The shape reads like a mangled commutativity template whose second operand was regenerated
+independently — 27 + 10 where 27 + 12 was intended. Two separate dispatches of this node reported it.
+
+### Two process facts worth carrying forward
+
+* **`file_reviews` REFUSED two replies for a reasoning under 40 characters** (`q2_4`, `q2_5`). The gate
+  caught exactly what the pre-filing audit had predicted (min lengths 39 and 27). Re-dispatched with a
+  stated 60-character floor; both came back at min 130 and 75 with **0 unmatched quoted spans**. The
+  mechanical rules belong in the dispatch prompt, not in per-node retries.
+* **A subagent's self-report of its own tool use is UNRELIABLE.** Three of this session's reviewers
+  reported only one of their two tool calls (naming the Read but not the Write, or the reverse). The
+  harness usage record (`tool_uses: 2`) is authoritative and is what every `--tool-uses-by-reviewer`
+  field here records; the discrepancy is noted in those fields. Anyone reconstructing blindness from
+  reviewer self-reports alone would understate it.
