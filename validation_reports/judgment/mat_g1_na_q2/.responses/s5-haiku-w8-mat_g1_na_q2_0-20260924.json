@@ -1,0 +1,600 @@
+{
+  "reviewer": "blind-reviewer-haiku45-w8-mat_g1_na_q2_0-20260924",
+  "mat_g1_na_q2_0": {
+    "findings": {
+      "cognitive_capacity": {
+        "verdict": "PASS",
+        "rationale": "Problems present appropriately concrete tasks for Grade 1: ordering 3–4 single-digit and two-digit numbers using realistic contexts (collecting seashells, marbles, stickers). Problem structure matches early-grade cognitive load expectations without gratuitous complexity."
+      },
+      "competency_alignment": {
+        "verdict": "FAIL",
+        "rationale": "Although samples nominally address ordering numbers, a pervasive hint-stem contradiction undermines alignment with 'vice versa' requirement. Eighteen samples request largest-to-smallest ordering but guide students toward smallest-to-largest, violating the competency's directional precision mandate."
+      },
+      "competency_fulfillment": {
+        "verdict": "FAIL",
+        "rationale": "The rendered samples fail to deliver both directional requirements of the competency. While ascending problems (smallest to largest) are answered consistently, descending problems contain contradictory instruction. A student faithfully following hints on descending problems arrives at the opposite ordering from what the stem asks, making the 'vice versa' component unsafe.",
+        "decomposition": {
+          "verdict": "FAIL",
+          "reasoning": "The five-part decomposition (Order, numbers, up to 100, smallest to largest, vice versa) maps losslessly to the competency in intent, but the rendered implementation corrupts it. The 'vice versa' element is present nominally (stems do ask both directions) but functionally broken: hints undermine descending-order tasks by guiding toward ascending. This is not a decomposition failure; it is a generator failure that masks a decomposition flaw during delivery."
+        }
+      },
+      "comprehensive_coverage": {
+        "verdict": "CONCERN",
+        "rationale": "Sample coverage spans appropriate numeric ranges (1–100), includes varied contexts (abstract, collection narratives, sports themes), and uses two response formats (sort_order, ordering). However, the systematic hint error affects coverage quality: 18 of 26 samples contain contradictory instruction, so variant sampling of the descending-order case yields consistently broken output, leaving that half of the competency undervalidated."
+      },
+      "scale_appropriateness": {
+        "verdict": "PASS",
+        "rationale": "All numbers remain at or below 100 as specified. Problem cardinality (3–4 items per sample) is within Grade 1 expectations. Numeric spacing varies naturally (consecutive, gaps of 5–20), appropriate for early-grade number sense development."
+      },
+      "variant_comprehensiveness": {
+        "verdict": "FAIL",
+        "rationale": "Generator declares two response format variants (sort_order, ordering) and context variants (abstract, narrative, emoji-tagged), but the systematic hint defect corrupts variant completeness. Across seeds, the descending-order variant samples all exhibit the same hint-contradiction pattern, indicating the variant generator lacks directional fidelity and has not been tested for robustness across the vice-versa requirement."
+      }
+    },
+    "sample_assessments": [
+      {
+        "sample_id": "72b7c700264f6ae327cf",
+        "checks": {
+          "ambiguity": {
+            "verdict": "FAIL",
+            "reasoning": "Stem unambiguously requests 'largest to smallest' ordering. However, hints state 'Find the smallest number first, then the next smallest' and 'Ordered from least to greatest: [29, 61, 62]', directly contradicting the stem. A student cannot disambiguate which instruction to follow."
+          },
+          "contextual_logical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "Hints construct a logical chain toward ascending order, but the stem asks for descending. The contradiction is not a subtle misunderstanding—it is a direct reversal. The hint sequence teaches the wrong direction for the problem given."
+          },
+          "learner_facing_clarity": {
+            "verdict": "FAIL",
+            "reasoning": "The three-hint progression is internally clear as written, but it teaches the opposite of what the stem asks. A Grade 1 student following the hints to 'find the smallest first' and see 'least to greatest' has been clearly led to the wrong answer for a 'largest to smallest' problem."
+          },
+          "mathematical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "The answer [62, 61, 29] is mathematically correct for largest to smallest. However, the hints lead to [29, 61, 62], which contradicts the stated answer. Hints teach a path to an ordering that violates the stem's mathematical requirement."
+          }
+        }
+      },
+      {
+        "sample_id": "68ce3e1a9676f6ff791c",
+        "checks": {
+          "ambiguity": {
+            "verdict": "FAIL",
+            "reasoning": "Stem asks 'Arrange the counts from largest to smallest.' Hints say 'Find the smallest number first' and 'Ordered from least to greatest: [1, 5, 8].' These contradict directly, creating ambiguity about which direction is correct."
+          },
+          "contextual_logical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "Within a narrative context (Maria's seashell counts), the stem establishes a clear directional requirement (largest to smallest). Hints reverse that direction without acknowledgment or justification, breaking logical coherence."
+          },
+          "learner_facing_clarity": {
+            "verdict": "FAIL",
+            "reasoning": "A Grade 1 student reading the stem and then following the three-part hint chain would be guided away from the stem's request. The hints provide a clear procedure, but it is the procedure for the opposite task."
+          },
+          "mathematical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "The answer [8, 5, 1] is correct for largest to smallest. The hints guide toward [1, 5, 8], which is smallest to largest. The hint chain arrives at a mathematically valid ordering, but the wrong one for the question asked."
+          }
+        }
+      },
+      {
+        "sample_id": "77735e887e3df13c40ef",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Stem clearly requests 'smallest to largest'. Hints consistently reinforce this: 'Find the smallest number first', then 'Ordered from least to greatest: [34, 36, 38, 43]'. No contradiction."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Stem and hints align on direction. Hint sequence logically guides the student to the requested ordering."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The progression is unambiguous: identify the smallest, then find the next smallest, until ordered. A Grade 1 student would follow the hints and arrive at the correct answer."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Answer [34, 36, 38, 43] is correct for smallest to largest. Hints guide toward this result. Mathematical validity is sound."
+          }
+        }
+      },
+      {
+        "sample_id": "5e6c3665dd06a431f39d",
+        "checks": {
+          "ambiguity": {
+            "verdict": "FAIL",
+            "reasoning": "Stem requests 'largest to smallest'. Hints state 'Find the smallest number first, then the next smallest' and 'Ordered from least to greatest: [19, 25, 26].' The directives contradict."
+          },
+          "contextual_logical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "Narrative context (Ana's counts) provides no clue to resolve the contradiction. Hints reverse the stem's stated direction, breaking logical coherence."
+          },
+          "learner_facing_clarity": {
+            "verdict": "FAIL",
+            "reasoning": "Instructions are clear but opposite. A student following hints arrives at the reverse of what the stem asks."
+          },
+          "mathematical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "Answer [26, 25, 19] is correct for largest to smallest. Hints guide to [19, 25, 26], the opposite. Hints teach an incorrect ordering for the given problem."
+          }
+        }
+      },
+      {
+        "sample_id": "6598b3c0db345d37fb26",
+        "checks": {
+          "ambiguity": {
+            "verdict": "FAIL",
+            "reasoning": "Stem: 'Arrange the numbers from largest to smallest: 80, 30, 97.' Hints: 'Find the smallest number first' and 'Ordered from least to greatest: [30, 80, 97].' Contradiction is explicit."
+          },
+          "contextual_logical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "Hints establish a logical procedure for ascending order, contradicting the descending order requested in the stem."
+          },
+          "learner_facing_clarity": {
+            "verdict": "FAIL",
+            "reasoning": "Hints provide a clear route to the wrong answer. A Grade 1 student would not detect the reversal and would follow the hint chain to the incorrect ordering."
+          },
+          "mathematical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "Answer [97, 80, 30] is correct for largest to smallest. Hints lead to [30, 80, 97]. Hint-derived answer contradicts the stated answer."
+          }
+        }
+      },
+      {
+        "sample_id": "1177eeaaf161c507071c",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Stem requests 'smallest to largest'. Hints align: 'Find the smallest number first' and 'Ordered from least to greatest: [97, 98, 100].' Clear and consistent."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Stem and hints form a coherent logical sequence toward ascending order."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "A Grade 1 student reading the stem and following the hints arrives at the correct answer unambiguously."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Answer [97, 98, 100] is correct for smallest to largest. Hints guide to the same result. Valid."
+          }
+        }
+      },
+      {
+        "sample_id": "1be7963d279e3151a6f1",
+        "checks": {
+          "ambiguity": {
+            "verdict": "FAIL",
+            "reasoning": "Stem: 'Arrange the numbers from largest to smallest: 100, 44, 97.' Hints: 'Find the smallest number first' and 'Ordered from least to greatest: [44, 97, 100].' Directional contradiction."
+          },
+          "contextual_logical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "Hints reverse the stem's stated direction without any indication or correction."
+          },
+          "learner_facing_clarity": {
+            "verdict": "FAIL",
+            "reasoning": "Hints are clear but teach the opposite of what the stem asks. A student following hints misses the target."
+          },
+          "mathematical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "Answer [100, 97, 44] is correct for largest to smallest. Hints lead to [44, 97, 100]. Contradiction."
+          }
+        }
+      },
+      {
+        "sample_id": "55295664e5e19f63fdbd",
+        "checks": {
+          "ambiguity": {
+            "verdict": "FAIL",
+            "reasoning": "Stem asks for 'largest to smallest'. Hints guide toward 'smallest to largest'. Contradiction is unambiguous; the ambiguity is whether to trust the stem or the hints."
+          },
+          "contextual_logical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "Hints teach a procedure that contradicts the stem's requirement. No valid reconciliation exists."
+          },
+          "learner_facing_clarity": {
+            "verdict": "FAIL",
+            "reasoning": "Instructions are clear but opposite. Student confusion is inevitable."
+          },
+          "mathematical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "Answer [100, 95, 94] is correct for largest to smallest. Hints lead to [94, 95, 100]. Incorrect path."
+          }
+        }
+      },
+      {
+        "sample_id": "c54f580d9c48f9363a3d",
+        "checks": {
+          "ambiguity": {
+            "verdict": "FAIL",
+            "reasoning": "Stem: 'Arrange the numbers from largest to smallest: 98, 100, 95.' Hints: 'Find the smallest number first' and 'Ordered from least to greatest: [95, 98, 100].' Clear contradiction."
+          },
+          "contextual_logical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "Hints reverse the stem's direction. No logical path reconciles them."
+          },
+          "learner_facing_clarity": {
+            "verdict": "FAIL",
+            "reasoning": "Hints are internally clear but contradict the problem statement."
+          },
+          "mathematical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "Answer [100, 98, 95] is correct. Hints lead to [95, 98, 100]. Incorrect."
+          }
+        }
+      },
+      {
+        "sample_id": "3c2740e41b8179fb5e29",
+        "checks": {
+          "ambiguity": {
+            "verdict": "FAIL",
+            "reasoning": "Stem requests 'largest to smallest'. Hints teach 'smallest to largest' explicitly: 'Find the smallest number first' and 'Ordered from least to greatest: [26, 27, 94].' Contradiction."
+          },
+          "contextual_logical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "Narrative context establishes no resolution. Hints contradict the stem's direction requirement."
+          },
+          "learner_facing_clarity": {
+            "verdict": "FAIL",
+            "reasoning": "A student faithfully applying hints arrives at the opposite ordering from the stem's request."
+          },
+          "mathematical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "Answer [94, 27, 26] is correct for largest to smallest. Hints guide to [26, 27, 94]. Wrong direction."
+          }
+        }
+      },
+      {
+        "sample_id": "911d3634ed637ddc88d3",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Stem clearly requests 'smallest to largest'. Hints reinforce: 'Find the smallest number first' and 'Ordered from least to greatest: [39, 44, 46].' Aligned."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Stem and hints form a consistent logical sequence."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Unambiguous guidance leads to the correct result."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Answer [39, 44, 46] is correct. Hints guide to the same. Valid."
+          }
+        }
+      },
+      {
+        "sample_id": "e63cfb7865f34d857baa",
+        "checks": {
+          "ambiguity": {
+            "verdict": "FAIL",
+            "reasoning": "Stem: 'Arrange the counts from largest to smallest.' Hints: 'Find the smallest number first' and 'Ordered from least to greatest: [6, 16, 20, 24].' Directionality contradiction."
+          },
+          "contextual_logical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "Hints reverse the stem's request. No reconciliation."
+          },
+          "learner_facing_clarity": {
+            "verdict": "FAIL",
+            "reasoning": "Student following hints arrives at ascending order despite stem requesting descending."
+          },
+          "mathematical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "Answer [24, 20, 16, 6] is correct for largest to smallest. Hints lead to [6, 16, 20, 24]. Contradiction."
+          }
+        }
+      },
+      {
+        "sample_id": "ebb8fc70101b6b8c8ba3",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Stem: 'Arrange the counts from smallest to largest.' Hints align: 'Find the smallest number first' and 'Ordered from least to greatest: [7, 9, 10].' No contradiction."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Hints follow logically from the stem's requirement."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Clear progression from problem to hints to answer."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Answer [7, 9, 10] is correct. Hints guide to the same. Valid."
+          }
+        }
+      },
+      {
+        "sample_id": "2e55026bcaf4f3d6b37b",
+        "checks": {
+          "ambiguity": {
+            "verdict": "FAIL",
+            "reasoning": "Stem requests 'largest to smallest'. Hints state 'Find the smallest number first' and 'Ordered from least to greatest: [10, 20, 22, 24].' Contradiction."
+          },
+          "contextual_logical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "Narrative establishes no resolution. Hints reverse the stem's direction."
+          },
+          "learner_facing_clarity": {
+            "verdict": "FAIL",
+            "reasoning": "Hints guide toward the opposite ordering."
+          },
+          "mathematical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "Answer [24, 22, 20, 10] is correct. Hints lead to [10, 20, 22, 24]. Wrong direction."
+          }
+        }
+      },
+      {
+        "sample_id": "c95bb28a875362e23397",
+        "checks": {
+          "ambiguity": {
+            "verdict": "FAIL",
+            "reasoning": "Stem: 'Arrange the numbers from largest to smallest: 75, 77, 85.' Hints: 'Find the smallest number first' and 'Ordered from least to greatest: [75, 77, 85].' Contradiction."
+          },
+          "contextual_logical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "Hints teach ascending order, contradicting the descending order requested."
+          },
+          "learner_facing_clarity": {
+            "verdict": "FAIL",
+            "reasoning": "Hints are clear but lead to the wrong answer for this problem."
+          },
+          "mathematical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "Answer [85, 77, 75] is correct. Hints lead to [75, 77, 85]. Incorrect."
+          }
+        }
+      },
+      {
+        "sample_id": "7135c63f8a606aad5f8d",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Stem requests 'smallest to largest'. Hints align: 'Find the smallest number first' and 'Ordered from least to greatest: [13, 21, 68].' Consistent."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Hints form a logical path to the requested ordering."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Problem and hints are unambiguously aligned."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Answer [13, 21, 68] is correct. Hints guide to the same. Valid."
+          }
+        }
+      },
+      {
+        "sample_id": "2146757154098d9341e3",
+        "checks": {
+          "ambiguity": {
+            "verdict": "FAIL",
+            "reasoning": "Stem: 'Arrange these numbers from largest to smallest: 75, 82, 68.' Hints: 'Find the smallest number first' and 'Ordered from least to greatest: [68, 75, 82].' Direct contradiction."
+          },
+          "contextual_logical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "The emoji and narrative frame provide no resolution to the directional contradiction."
+          },
+          "learner_facing_clarity": {
+            "verdict": "FAIL",
+            "reasoning": "Hints guide the student toward ascending order despite the stem asking for descending."
+          },
+          "mathematical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "Answer [82, 75, 68] is correct. Hints lead to [68, 75, 82]. Contradiction."
+          }
+        }
+      },
+      {
+        "sample_id": "36ee35d220d7b0914fce",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Stem requests 'smallest to largest'. Hints align: 'Find the smallest number first' and 'Ordered from least to greatest: [67, 71, 99].' No contradiction."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Hints logically support the stem's directional requirement."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Consistent instruction from stem through hints to answer."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Answer [67, 71, 99] is correct. Hints guide to the same. Valid."
+          }
+        }
+      },
+      {
+        "sample_id": "c7685f5a64ddf5139834",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Stem requests 'smallest to largest'. Hints align: 'Find the smallest number first' and 'Ordered from least to greatest: [41, 54, 55, 56].' Clear and consistent."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Hints form a logical sequence toward the requested ordering."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Unambiguous guidance leads to the correct result."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Answer [41, 54, 55, 56] is correct. Hints guide to the same. Valid."
+          }
+        }
+      },
+      {
+        "sample_id": "e93d1ed1b1a60a7730e9",
+        "checks": {
+          "ambiguity": {
+            "verdict": "FAIL",
+            "reasoning": "Stem requests 'largest to smallest'. Hints state 'Find the smallest number first' and 'Ordered from least to greatest: [64, 93, 100].' Contradiction."
+          },
+          "contextual_logical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "Narrative provides no resolution. Hints teach the opposite direction from what the stem specifies."
+          },
+          "learner_facing_clarity": {
+            "verdict": "FAIL",
+            "reasoning": "Following hints leads to the reverse of the requested ordering."
+          },
+          "mathematical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "Answer [100, 93, 64] is correct. Hints lead to [64, 93, 100]. Wrong direction."
+          }
+        }
+      },
+      {
+        "sample_id": "53a63e4abd3682c09aea",
+        "checks": {
+          "ambiguity": {
+            "verdict": "FAIL",
+            "reasoning": "Stem requests 'largest to smallest'. Hints state 'Find the smallest number first' and 'Ordered from least to greatest: [1, 2, 3].' Clear directional contradiction."
+          },
+          "contextual_logical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "Hints reverse the stem's direction without justification or acknowledgment."
+          },
+          "learner_facing_clarity": {
+            "verdict": "FAIL",
+            "reasoning": "A Grade 1 student following hints arrives at the opposite of the stem's request."
+          },
+          "mathematical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "Answer [3, 2, 1] is correct. Hints lead to [1, 2, 3]. Incorrect direction."
+          }
+        }
+      },
+      {
+        "sample_id": "2ca2a1f12c1251d28878",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Stem requests 'smallest to largest'. Hints align: 'Find the smallest number first' and 'Ordered from least to greatest: [1, 2, 3].' Aligned."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Hints form a coherent logical sequence toward the requested ordering."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Clear, unambiguous path from problem to answer."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Answer [1, 2, 3] is correct. Hints guide to the same. Valid."
+          }
+        }
+      },
+      {
+        "sample_id": "909f663c7bc49bbf54cc",
+        "checks": {
+          "ambiguity": {
+            "verdict": "FAIL",
+            "reasoning": "Stem requests 'largest to smallest'. Hints teach 'smallest to largest': 'Find the smallest number first' and 'Ordered from least to greatest: [70, 71, 79, 80].' Contradiction."
+          },
+          "contextual_logical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "Hints reverse the stem's directional requirement."
+          },
+          "learner_facing_clarity": {
+            "verdict": "FAIL",
+            "reasoning": "Hints are clear but teach the wrong direction."
+          },
+          "mathematical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "Answer [80, 79, 71, 70] is correct. Hints lead to [70, 71, 79, 80]. Incorrect."
+          }
+        }
+      },
+      {
+        "sample_id": "7d9a6bfe79495557741e",
+        "checks": {
+          "ambiguity": {
+            "verdict": "FAIL",
+            "reasoning": "Stem requests 'largest to smallest'. Hints state 'Find the smallest number first' and 'Ordered from least to greatest: [49, 72, 76].' Contradiction."
+          },
+          "contextual_logical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "Hints contradict the stem's specification."
+          },
+          "learner_facing_clarity": {
+            "verdict": "FAIL",
+            "reasoning": "Hints guide toward ascending order despite the stem requesting descending."
+          },
+          "mathematical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "Answer [76, 72, 49] is correct. Hints lead to [49, 72, 76]. Wrong direction."
+          }
+        }
+      },
+      {
+        "sample_id": "a44f766de2cb3fd06132",
+        "checks": {
+          "ambiguity": {
+            "verdict": "FAIL",
+            "reasoning": "Stem requests 'largest to smallest'. Hints state 'Find the smallest number first' and 'Ordered from least to greatest: [36, 46, 49].' Directional contradiction."
+          },
+          "contextual_logical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "Hints reverse the stem's directional specification."
+          },
+          "learner_facing_clarity": {
+            "verdict": "FAIL",
+            "reasoning": "Following hints leads to the opposite ordering from the stem's request."
+          },
+          "mathematical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "Answer [49, 46, 36] is correct. Hints lead to [36, 46, 49]. Incorrect direction."
+          }
+        }
+      }
+    ],
+    "clause_evidence": [
+      {
+        "requirement_id": "order",
+        "clause": "Order",
+        "verdict": "PASS",
+        "reasoning": "All 26 samples explicitly ask the student to order or arrange numbers. This requirement is met across both ascending and descending variants.",
+        "sample_ids": ["72b7c700264f6ae327cf", "77735e887e3df13c40ef", "1177eeaaf161c507071c"]
+      },
+      {
+        "requirement_id": "numbers",
+        "clause": "numbers",
+        "verdict": "PASS",
+        "reasoning": "All samples use numerical content (single-digit and two-digit whole numbers) as the items to be ordered. This requirement is satisfied.",
+        "sample_ids": ["72b7c700264f6ae327cf", "77735e887e3df13c40ef", "ebb8fc70101b6b8c8ba3"]
+      },
+      {
+        "requirement_id": "up_to_100",
+        "clause": "up to 100",
+        "verdict": "PASS",
+        "reasoning": "All numeric values in every sample remain within the range 1–100. The largest value rendered is 100. This constraint is honored throughout.",
+        "sample_ids": ["1177eeaaf161c507071c", "36ee35d220d7b0914fce", "e93d1ed1b1a60a7730e9"]
+      },
+      {
+        "requirement_id": "smallest_to_largest",
+        "clause": "smallest to largest",
+        "verdict": "PASS",
+        "reasoning": "Eight samples explicitly request ordering from smallest to largest and deliver consistent stem-hint alignment for this direction. The competency's ascending-order requirement is met in these samples.",
+        "sample_ids": ["77735e887e3df13c40ef", "1177eeaaf161c507071c", "911d3634ed637ddc88d3", "ebb8fc70101b6b8c8ba3", "7135c63f8a606aad5f8d", "36ee35d220d7b0914fce", "c7685f5a64ddf5139834", "2ca2a1f12c1251d28878"]
+      },
+      {
+        "requirement_id": "vice_versa",
+        "clause": "vice versa",
+        "verdict": "FAIL",
+        "reasoning": "Eighteen samples request largest-to-smallest ordering (the 'vice versa' direction), but their hint chains systematically contradict the stem by guiding students toward smallest-to-largest ordering. The hints consistently state 'Find the smallest number first' and 'Ordered from least to greatest', even when the stem asks for the opposite. This breaks the 'vice versa' requirement: the descending-order variant is functionally unusable because hints teach the wrong direction.",
+        "sample_ids": ["72b7c700264f6ae327cf", "68ce3e1a9676f6ff791c", "5e6c3665dd06a431f39d", "6598b3c0db345d37fb26", "1be7963d279e3151a6f1", "55295664e5e19f63fdbd", "c54f580d9c48f9363a3d", "3c2740e41b8179fb5e29", "e63cfb7865f34d857baa", "2e55026bcaf4f3d6b37b", "c95bb28a875362e23397", "2146757154098d9341e3", "e93d1ed1b1a60a7730e9", "53a63e4abd3682c09aea", "909f663c7bc49bbf54cc", "7d9a6bfe79495557741e", "a44f766de2cb3fd06132"]
+      }
+    ],
+    "overall": "FAIL"
+  }
+}

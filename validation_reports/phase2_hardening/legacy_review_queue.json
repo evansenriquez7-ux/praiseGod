@@ -1,257 +1,33 @@
 {
   "schema_version": 1,
   "kind": "legacy_review_queue",
-  "generated_at": "2026-09-24T10:45:18.563714+00:00",
+  "generated_at": "2026-09-24T11:36:49.917111+00:00",
   "adjudicable": false,
   "why_not_adjudicable": "These are v1 reviews. The current schema (v2) requires per-sample contextual-validity verdicts, exact clause coverage and dispatch-bound provenance, which a v1 reviewer was never asked for and which therefore cannot be recovered from a v1 record without inventing them. Every node listed here still owes a fresh blind re-review. This file exists so that the previous programme's findings remain visible as a QUEUE while none of them counts as evidence.",
-  "required_work": "125 node(s) need a fresh blind review filed at schema_version 2. Rebuild a packet with: python -m backend.app.practice_gen.validation.judgment_packets --node <node_id>",
+  "required_work": "121 node(s) need a fresh blind review filed at schema_version 2. Rebuild a packet with: python -m backend.app.practice_gen.validation.judgment_packets --node <node_id>",
   "source_review_dir": "validation_reports/judgment",
-  "source_corpus_sha256": "9d8427e24fac97dadc5f13244db023d9f4c668ad49203b885d46c014219bfaad",
+  "source_corpus_sha256": "ef7878851040780ed47536d1adaf5bdbc62a30d59922177711b2ead0c037324d",
   "counts": {
-    "legacy_nodes": 125,
-    "already_current_and_excluded": 26,
+    "legacy_nodes": 121,
+    "already_current_and_excluded": 30,
     "by_overall_verdict": {
-      "CONCERN": 78,
-      "FAIL": 36,
-      "PASS": 11
+      "CONCERN": 76,
+      "FAIL": 35,
+      "PASS": 10
     },
-    "nodes_with_a_non_pass_facet": 114,
+    "nodes_with_a_non_pass_facet": 111,
     "non_pass_by_facet": {
       "cognitive_capacity": 31,
-      "competency_alignment": 57,
-      "competency_fulfillment": 63,
+      "competency_alignment": 55,
+      "competency_fulfillment": 60,
       "comprehensive_coverage": 51,
-      "scale_appropriateness": 23,
-      "variant_comprehensiveness": 73
+      "scale_appropriateness": 22,
+      "variant_comprehensiveness": 72
     },
     "records_missing_a_v1_facet": 0,
     "orphan_reviews_for_undeclared_nodes": 0
   },
   "nodes": [
-    {
-      "node_id": "mat_g1_na_q2_0",
-      "source_path": "validation_reports/judgment/mat_g1_na_q2/mat_g1_na_q2_0.json",
-      "source_sha256": "d6284b7c1b5dcea91d9328dcc69a2186b54c98ddf44196dd595105ce32b6a237",
-      "declared_schema_version": null,
-      "reviewed_by": "reviewer-c2-basalt-yarrow-7194",
-      "review_date": "2026-09-11",
-      "blind": true,
-      "sample_seeds": [
-        42,
-        43,
-        44,
-        45,
-        46,
-        500,
-        501,
-        502,
-        600,
-        601,
-        602,
-        603,
-        604,
-        605
-      ],
-      "overall_verdict": "PASS",
-      "node_still_declared": true,
-      "facets": {
-        "competency_fulfillment": {
-          "verdict": "PASS",
-          "rationale": "Every sampled item asks a pupil to put a set of whole numbers in order, which is precisely the verb the competency names, and the supplied keys are correctly ordered in the direction each stem requests."
-        },
-        "comprehensive_coverage": {
-          "verdict": "PASS",
-          "rationale": "Both halves of 'and vice versa' are generated: several stems ask for smallest to largest while others use 'Arrange the counts from largest to smallest', and set sizes of three and four both occur."
-        },
-        "cognitive_capacity": {
-          "verdict": "PASS",
-          "rationale": "One short instruction plus a visible list is the whole reading load; the counting contexts such as seashells and stickers are within a six-year-old's world and no computation is demanded, only comparison."
-        },
-        "variant_comprehensiveness": {
-          "verdict": "PASS",
-          "rationale": "Bare number lists and narrative framings both appear, and the narrative framing is not confined to one formatter label: a friends-counting stem shows up under the ordering label as well as the sort label."
-        },
-        "competency_alignment": {
-          "verdict": "PASS",
-          "rationale": "What escalates across seeds is exactly what makes ordering harder - list length, and how close together the values sit, as in the near-adjacent trio 94, 95, 100 - rather than some unrelated presentation trick."
-        },
-        "scale_appropriateness": {
-          "verdict": "PASS",
-          "rationale": "Values run from single digits through the boundary itself, with 100 appearing in several sets, so the stated ceiling of one hundred is reached without ever being crossed."
-        }
-      },
-      "facets_missing_from_the_v1_record": [],
-      "non_pass_facets": [],
-      "adjudicable": false
-    },
-    {
-      "node_id": "mat_g1_na_q2_1",
-      "source_path": "validation_reports/judgment/mat_g1_na_q2/mat_g1_na_q2_1.json",
-      "source_sha256": "0892ed52b95ebb1d9d4a056de613318f600220d75d0e0f337d851ef15aac4381",
-      "declared_schema_version": null,
-      "reviewed_by": "reviewer-c2-basalt-yarrow-7194",
-      "review_date": "2026-09-11",
-      "blind": true,
-      "sample_seeds": [
-        42,
-        43,
-        44,
-        45,
-        46,
-        500,
-        501,
-        502,
-        601
-      ],
-      "overall_verdict": "CONCERN",
-      "node_still_declared": true,
-      "facets": {
-        "competency_fulfillment": {
-          "verdict": "CONCERN",
-          "rationale": "Skip-counting sequences by 2s, 5s and 10s do appear, but a sizeable share of the sample is off the verb entirely: 'Count the books.' on a pictured group is one-by-one cardinality, and 'What number is marked on the number line?' tests point reading, neither of which is counting by 2s, 5s or 10s."
-        },
-        "comprehensive_coverage": {
-          "verdict": "PASS",
-          "rationale": "All three named step sizes are actually produced - a tens chain starting at 0, a fives chain running 65, 70, 75, 80, and twos chains in the sixties and the eighties - so no step size is left ungenerated."
-        },
-        "cognitive_capacity": {
-          "verdict": "PASS",
-          "rationale": "The stems are single sentences with a visible run of terms and one blank; the narrative version about Moses counting forward by 2 adds a name but no extra inferential step, which suits early Grade 1."
-        },
-        "variant_comprehensiveness": {
-          "verdict": "PASS",
-          "rationale": "Presentation genuinely varies here - an abstract sequence with a blank, a named-pupil counting story, a number line, and a pictured collection - rather than one template with substituted numerals."
-        },
-        "competency_alignment": {
-          "verdict": "CONCERN",
-          "rationale": "The harder-looking items do not make the skip count harder; they swap in a different skill (reading a marked point, or totalling a pictured heap), so the difficulty axis being varied is presentation medium rather than command of the counting sequence."
-        },
-        "scale_appropriateness": {
-          "verdict": "CONCERN",
-          "rationale": "The competency stops at 100, yet option sets reach past it - a choice of 101 sits against a pictured hundred, and a number-line item offers 101 and 102 - so pupils are asked to consider values outside the stated range."
-        }
-      },
-      "facets_missing_from_the_v1_record": [],
-      "non_pass_facets": [
-        "competency_fulfillment",
-        "competency_alignment",
-        "scale_appropriateness"
-      ],
-      "adjudicable": false
-    },
-    {
-      "node_id": "mat_g1_na_q2_2",
-      "source_path": "validation_reports/judgment/mat_g1_na_q2/mat_g1_na_q2_2.json",
-      "source_sha256": "30c73ae4eb402a5ab522feb7abc717b141bc881f87af68fced95f80a8e96507f",
-      "declared_schema_version": null,
-      "reviewed_by": "reviewer-c2-basalt-yarrow-7194",
-      "review_date": "2026-09-11",
-      "blind": true,
-      "sample_seeds": [
-        42,
-        43,
-        44,
-        45,
-        46,
-        500,
-        501,
-        502,
-        600,
-        601,
-        602
-      ],
-      "overall_verdict": "FAIL",
-      "node_still_declared": true,
-      "facets": {
-        "competency_fulfillment": {
-          "verdict": "FAIL",
-          "rationale": "The stem 'What is the place value of the digit 2 in 20?' is keyed to 20, and two further items ask for a place value while keying the quantity 10. A place value is the name of the position (tens or ones); the number 20 is the value. The stem therefore asks one thing and the key answers another, teaching the two terms as interchangeable."
-        },
-        "comprehensive_coverage": {
-          "verdict": "PASS",
-          "rationale": "All three strands the competency lists are represented: naming the position a digit occupies, stating what a digit is worth in that position, and recovering the digit itself when the position is given."
-        },
-        "cognitive_capacity": {
-          "verdict": "PASS",
-          "rationale": "Only two-digit numbers are used and each question turns on a single digit, so the working-memory load is one place at a time, which is right for Grade 1 Quarter 2."
-        },
-        "variant_comprehensiveness": {
-          "verdict": "CONCERN",
-          "rationale": "Presentation never leaves the abstract: true-or-false assertions, fill-ins and choice items all address a bare numeral, and the item keyed 'ones' offers just two options, so a guess succeeds half the time."
-        },
-        "competency_alignment": {
-          "verdict": "CONCERN",
-          "rationale": "Progression across seeds is only the size of the two-digit number, and because one whole strand carries the mislabelled terminology noted above, increasing difficulty also increases exposure to the wrong word for the concept."
-        },
-        "scale_appropriateness": {
-          "verdict": "PASS",
-          "rationale": "Numbers stay inside two digits throughout, from 10 up to 97, matching the 'a 2-digit number' wording exactly with no three-digit intrusions in stems."
-        }
-      },
-      "facets_missing_from_the_v1_record": [],
-      "non_pass_facets": [
-        "competency_fulfillment",
-        "variant_comprehensiveness",
-        "competency_alignment"
-      ],
-      "adjudicable": false
-    },
-    {
-      "node_id": "mat_g1_na_q2_3",
-      "source_path": "validation_reports/judgment/mat_g1_na_q2/mat_g1_na_q2_3.json",
-      "source_sha256": "4e80b09b8551089c1ed7b2b976bab80d25f4560dd095130686d97723ec8eb1ac",
-      "declared_schema_version": null,
-      "reviewed_by": "reviewer-c2-basalt-yarrow-7194",
-      "review_date": "2026-09-11",
-      "blind": true,
-      "sample_seeds": [
-        42,
-        43,
-        44,
-        45,
-        46,
-        48,
-        500,
-        501,
-        502,
-        600,
-        601,
-        603
-      ],
-      "overall_verdict": "CONCERN",
-      "node_still_declared": true,
-      "facets": {
-        "competency_fulfillment": {
-          "verdict": "CONCERN",
-          "rationale": "Decomposition into tens and ones is what is asked throughout, but the worked illustration built into every stem uses 45, and one seed then sets 45 as the number to decompose - so that item reads 'Write 45 as tens and ones, for example 45 = 40 + 5.' and hands the pupil the answer inside the question."
-        },
-        "comprehensive_coverage": {
-          "verdict": "PASS",
-          "rationale": "The 'any 2-digit number' clause is honoured across the sample: teens, exact tens with a zero in the ones place, and awkward numbers in the nineties all get decomposed, so the zero-ones case is not skipped."
-        },
-        "cognitive_capacity": {
-          "verdict": "PASS",
-          "rationale": "A single decomposition per item, with a permanent exemplar in view, keeps the reasoning to one step; base-ten blocks give a concrete anchor entirely appropriate to this point in Grade 1."
-        },
-        "variant_comprehensiveness": {
-          "verdict": "PASS",
-          "rationale": "Alongside the symbolic fill-ins there is a genuine manipulative task, 'Use base-10 blocks to show the number 76.', plus assertion-checking items, giving three distinct modes of engagement with the same idea."
-        },
-        "competency_alignment": {
-          "verdict": "PASS",
-          "rationale": "Difficulty rises with the awkwardness of the number being split - round tens are easier than a number in the nineties - which is the axis this competency is actually about."
-        },
-        "scale_appropriateness": {
-          "verdict": "PASS",
-          "rationale": "Targets sit between 10 and 94, squarely inside the two-digit band, and the wrong options offered are themselves two-digit decompositions rather than out-of-range values."
-        }
-      },
-      "facets_missing_from_the_v1_record": [],
-      "non_pass_facets": [
-        "competency_fulfillment"
-      ],
-      "adjudicable": false
-    },
     {
       "node_id": "mat_g1_na_q2_4",
       "source_path": "validation_reports/judgment/mat_g1_na_q2/mat_g1_na_q2_4.json",

@@ -16108,3 +16108,130 @@ This session is Claude Code and cannot dispatch that model.** Continuing the dis
 would mean either using a model the prompt forbids, or writing `gpt-5.6-luna` onto a verdict some
 other model produced — which §0 rule 2 names a false evidentiary claim. **So no further reviews were
 dispatched, and the decision is referred to the owner.** 125 v1 nodes remain owed.
+
+## 2026-09-24 — Haiku §5 wave 8, and a SECOND quote-provenance defect (`claude-h06-s5-haiku-campaign-2026-09-24`)
+
+Owner authorised ruling 4's Haiku for this session's blind dispatches, because §0 of
+`NEXT_AGENT_PROMPT.md` mandates `gpt-5.6-luna` at medium thinking and **a Claude host cannot dispatch
+that model.** Writing `gpt-5.6-luna` onto a Haiku verdict is what §0 rule 2 names a false evidentiary
+claim, so the model was changed rather than the label. Haiku is **not** a third rater family — it is
+already family #2 via `mat_g3_na_q4_7` — so the corpus stays at two families.
+
+Four nodes dispatched, one packet file per node, each with its own reviewer identity naming the model.
+All four reviewers: 2 tool calls each (Read of the prompt, Write of the verdicts), self-reported and
+matching the harness usage record.
+
+### Filed
+
+| node | verdict | samples | reasonings (distinct) | §5 findings after |
+|---|---|---|---|---|
+| `mat_g1_na_q2_0` | FAIL | 25/25 | 100 (99) | **80** |
+| `mat_g1_na_q2_1` | PASS (2nd dispatch) | 18/18 | 72 (72), min len 187 | 4 |
+| `mat_g1_na_q2_2` | PASS | 20/20 | 80 (80) | **0** |
+| `mat_g1_na_q2_3` | PASS | 21/21 | 84 (84), min len 138 | 8 |
+
+```
+legacy queue : 125 -> 121
+§5 (module)  : 1462 -> 1532 findings, 147 -> 146 nodes
+```
+
+**§5 went UP by 70 and that is the gate working.** `mat_g1_na_q2_0` alone contributes 80, because a
+fresh blind review replaced an unadjudicable v1 stub with a verdict that names real defects.
+
+### ONE REPLY WAS REJECTED, and rejecting it nearly lost a true finding
+
+`mat_g1_na_q2_1`'s FIRST reply was rejected for template clustering: 10 of 72 reasonings were generic
+frames reused across samples with different numbers — "Sequence is explicit; rule is clear; answer is
+unique." (x4), "The numeric answer is unambiguous. Options are distinct." (x5). Precedent (batches 1
+and 2) rejects template clustering, so it was not filed. It is preserved unfiled at
+`local_only/scratch/review/s5-haiku-w8/mat_g1_na_q2_1_REJECTED_r1/`.
+
+**The rejected reply was right about something the accepted one missed.** It reported a ✝️ (cross)
+emoji in rendered student-facing content. Verified independently by grep, not taken on trust:
+
+```
+"text_labels": ["🛍️", "10x ✝️", "✝️", "1x ✝️"]
+```
+
+The second reply (structurally the better review: 72/72 distinct reasonings, min length 187) returned
+PASS and never mentions it. So:
+
+* **A rejection on FORM can discard a true finding on SUBSTANCE.** The two criteria are orthogonal.
+  When a reply is rejected for templating, its substantive claims must be harvested before it is set
+  aside. That is now done here; it was nearly not.
+* **A PASS from one blind review is not proof of absence.** This is a concrete within-family (Haiku vs
+  Haiku) disagreement on one packet, against a measured within-family agreement of 88.1%.
+* **§5 will NOT remind anyone about the emoji**, because `mat_g1_na_q2_1` is filed PASS and its only
+  findings are the false positives below. The item is therefore tracked HERE and nowhere else — the
+  "a gate that does not gate still reports green" shape from the Scaling Mandate.
+
+**Owner decision needed on the emoji, and it is genuinely a judgment call, not clearly a bug.** MATATAG
+is the Philippine curriculum and the country is majority Catholic, so a cross is not self-evidently
+inappropriate; what is clearly odd is that it sits in an emoji pool being used as an *interchangeable
+generic countable* ("10x ✝️"), the way cupcakes or shells are. No competency names it, so it is
+incidental theming. Reported factually rather than ruled on.
+
+### A SECOND quote-provenance defect: `_QUOTE_RE` merges adjacent quoted spans
+
+`mat_g1_na_q2_1`'s 4 residual findings are **FALSE POSITIVES**, and from a different cause than the
+corpus defect fixed earlier today. `_QUOTE_RE` requires a closing quote to be followed by
+`[\s.,;:)\]]|$`. When a reviewer writes a range as two adjacent quoted values joined by a dash, the
+character after the first closing quote is the dash, the match fails, the lazy `.+?` backtracks, and
+the regex swallows everything to the NEXT quote:
+
+```
+$ from ...validate_judgment import _QUOTE_RE
+  "the range '40'–'50' is shown"   -> captured: ["40'–'50"]
+  "labels run '40'-'50' across"    -> captured: ["40'-'50"]
+  "values '30' and '40' appear"    -> captured: ['30', '40']      # space-separated is fine
+```
+
+`40` and `50` both appear in that packet (31 and 18 occurrences). The reviewer quoted real text; the
+tokenizer fabricated a span that of course is absent, and the gate then accused an honest reviewer of
+citing content it was never shown — the same injustice as the corpus defect, one layer down.
+
+**Fix (NOT applied this session; it is source work that costs the full ~4h chain):** add `-`, `–` and
+`—` to the closing-quote lookahead class, so each quoted value is tokenised and checked separately.
+This CANNOT weaken the gate: it splits one merged span into two real spans, each still verified
+against the corpus. It owes a mutation (a plant that writes a dash-joined pair and must still be
+caught when genuinely fabricated) and a `docs/pgen_contract.md` row, per Protocol 7. Expected yield:
+this hit 1 of 4 nodes in this wave, so on the order of ~30 false findings across the remaining 121.
+
+`mat_g1_na_q2_3`'s 8 residual findings are, by contrast, **TRUE POSITIVES.** The reviewer put
+PARAPHRASES in quote marks — it wrote `'15 decomposes to 50 + 1.'` where the packet actually prints
+`"Write 15 as tens and ones, for example 45 = 40 + 5. The answer is 50 + 1. True or False?"`, and
+`'Write X as tens and ones'` with a literal placeholder `X`. The gate is correct to reject those: a
+quoted span must be real text. **The fix here is on the DISPATCH side, not the validator** — the
+reviewer prompt already says to quote only literally printed text, and the instruction needs to be
+made explicit that a paraphrase must not carry quote marks. Applied to this session's dispatch
+template going forward; `mat_g1_na_q2_3` owes a re-dispatch to clear it.
+
+### Content defect confirmed ACROSS rater families: descending order is entirely broken
+
+`mat_g1_na_q2_0` — **every** descending-order item teaches the opposite direction. Verified by
+executing against the dispatched packet, not taken from the verdict:
+
+```
+descending-stem samples: 17, of which the hints teach ASCENDING: 17
+seed 42:
+  stem:   Arrange these numbers from largest to smallest: 61, 62, 29
+  answer: [62, 61, 29]
+  hints:  "Find the smallest number first, then the next smallest."
+          "Ordered from least to greatest: [29, 61, 62]."
+```
+
+A pupil following the hint chain faithfully produces the reverse of the required answer. Same shape as
+the seed-44 fraction defect. **The Luna wave-6 banner independently reported this class** ("descending
+-order stems with ascending hints (\"smallest first\", \"least to greatest\")") on different nodes, so it
+is now confirmed by TWO rater families and clears Priority 2's "never act on a lone finding" bar. The
+generator emits one ordering explanation regardless of the requested direction — check
+`generate_hints` against the sort direction, and note the `sorted()`-on-"N/D"-strings blind spot
+recorded in [[harness-c1e-fraction-sort-blindspot]] is a different bug in the same area.
+
+The reviewer reported "18 of 26" samples; the packet holds **25** samples and **17** descending stems,
+all 17 broken. Its count was imprecise, the defect is total, and the measured figures above are the
+ones to quote.
+
+One claim was NOT reproduced: the rejected reply said number-line hints skip-count while the rendered
+labels are consecutive integers. A mechanical check of every NumberLine sample found no such
+mismatch. Recorded as reviewer-reported and **unconfirmed**; verify before acting on it.

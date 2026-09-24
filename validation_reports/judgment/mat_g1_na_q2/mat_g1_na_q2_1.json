@@ -1,7 +1,43 @@
 {
+  "schema_version": 2,
   "node_id": "mat_g1_na_q2_1",
-  "reviewed_by": "reviewer-c2-basalt-yarrow-7194",
-  "review_date": "2026-09-11",
+  "competency_snapshot": {
+    "text": "Count by 2s, 5s and 10s up to 100.",
+    "grade": 1,
+    "quarter": 2,
+    "subdomain": null
+  },
+  "requirements_snapshot": [
+    {
+      "kind": "task",
+      "id": "count",
+      "clause": "Count"
+    },
+    {
+      "kind": "range",
+      "id": "step_2s",
+      "clause": "2s"
+    },
+    {
+      "kind": "range",
+      "id": "step_5s",
+      "clause": "5s"
+    },
+    {
+      "kind": "range",
+      "id": "step_10s",
+      "clause": "10s"
+    },
+    {
+      "kind": "range",
+      "id": "up_to_100",
+      "clause": "100"
+    }
+  ],
+  "packet_digest": "e127a7f372ae86882dd437ba6a870f1cf0ae1e24a1bd2f15e7a313ff0c1ff3b0",
+  "sampling_version": "phase2-stratified-v2-rendered-visual",
+  "reviewed_by": "blind-reviewer-haiku45-w8r2-mat_g1_na_q2_1-20260924",
+  "review_date": "2026-09-24",
   "blind": true,
   "sample_seeds": [
     42,
@@ -12,14 +48,58 @@
     500,
     501,
     502,
-    601
+    601,
+    700,
+    701,
+    702,
+    800,
+    900,
+    901,
+    1000,
+    1001,
+    1002
+  ],
+  "sample_ids": [
+    "3d945a3fffc369ef8ed6",
+    "504430612a6fb05e3eae",
+    "4aaeb04d45259b2e0141",
+    "02ecdb58555a946a1022",
+    "4bc4b6a3f8ab33e965f1",
+    "26bc551a05e79c5d559e",
+    "6fb3c5ab49db7b68c125",
+    "08a79489c70f21a2a493",
+    "dd4ec8964cebdbcf7cf2",
+    "616cc31181842f76ea26",
+    "ad673baea4c0a1571ca7",
+    "275e041073848761cb23",
+    "b02ed2f8af726d42917d",
+    "8cc36e20f3347e3966b9",
+    "c5bfc942a31b52b5e8a8",
+    "b5a18e2fbe2a5f80c308",
+    "e563148192d58bc87564",
+    "c1dfeb71cde59c160c3d"
   ],
   "samples_reviewed": [
     {
+      "node_id": "mat_g1_na_q2_1",
       "seed": 42,
       "formatter": "mcq",
       "question_text": "What number comes next when counting: 0, 10, 20, 30, ___?",
       "correct_answer": 40,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -41,13 +121,37 @@
           "value": 20,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 40,
+      "hints": [
+        "Look at the list of numbers: 0, 10, 20, 30, ___",
+        "Find the rule by comparing neighbours: 10 − 0 = 10.",
+        "This list of numbers shows jumping by 10s (add 10 each time).",
+        "Add 10 to 30: 30 + 10 = 40."
+      ],
+      "sample_id": "3d945a3fffc369ef8ed6",
+      "replay_digest": "65f36a71085ced73851f90553746ce744913e1828d71de15b16a697548a93ec2"
     },
     {
+      "node_id": "mat_g1_na_q2_1",
       "seed": 43,
       "formatter": "read_mcq",
       "question_text": "What number is marked on the number line?",
       "correct_answer": "C",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -69,13 +173,93 @@
           "value": 46,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 44,
+      "hints": [
+        "Look at the list of numbers: 36, 38, 40, 42, ___",
+        "Find the rule by comparing neighbours: 38 − 36 = 2.",
+        "This list of numbers shows jumping by 2s (add 2 each time).",
+        "Add 2 to 42: 42 + 2 = 44."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "value": 44,
+        "start": 40,
+        "end": 50,
+        "interval": 1,
+        "divisions": 10,
+        "correct_position": 44,
+        "dot_value": 44,
+        "content_type": "whole_number",
+        "labels": [
+          "40",
+          "50"
+        ],
+        "marked_points": [],
+        "question_mark_at": null,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 44.0,
+        "target": 44.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "3659e6c1da51750701eaa9f2b41982d960f4f18ee88b7c656eb0df1543671cbe",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 27,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "40",
+            "41",
+            "42",
+            "43",
+            "44",
+            "45",
+            "46",
+            "47",
+            "48",
+            "49",
+            "50"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "504430612a6fb05e3eae",
+      "replay_digest": "51437d1cc6efb9d468111675ffe999d8de6ffd99043a61186edfd856ca42a42a"
     },
     {
+      "node_id": "mat_g1_na_q2_1",
       "seed": 44,
       "formatter": "read_mcq",
-      "question_text": "(Large group of 100 books)\nCount the books.\nHow many books are there in all?",
-      "correct_answer": "D",
+      "question_text": "(Large group of 100 cupcakes)\nCount the cupcakes.\nHow many cupcakes are there in all?",
+      "correct_answer": "C",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "EmojiPictorial",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -89,21 +273,77 @@
         },
         {
           "key": "C",
-          "value": 0,
-          "is_correct": false
+          "value": 100,
+          "is_correct": true
         },
         {
           "key": "D",
-          "value": 100,
-          "is_correct": true
+          "value": 0,
+          "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 100,
+      "hints": [
+        "Look at the list of numbers: 80, 85, 90, 95, ___",
+        "Find the rule by comparing neighbours: 85 − 80 = 5.",
+        "This list of numbers shows jumping by 5s (add 5 each time).",
+        "Add 5 to 95: 95 + 5 = 100."
+      ],
+      "visual_type": "EmojiPictorial",
+      "visual_payload": {
+        "emoji": "🧁",
+        "group_a": 100,
+        "group_b": 0,
+        "operation": "counting",
+        "layout": "inline",
+        "display": "(Large group of 100 cupcakes)"
+      },
+      "visual_render": {
+        "visual_type": "EmojiPictorial",
+        "renderer_input_digest": "e87ff16c374af58183791588158438af08f71cbd498cc6e94820d05c88eddcb3",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "EmojiPictorial",
+          "element_count": 6,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "📦",
+            "100x 🧁"
+          ],
+          "distinct_colours": [
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "4aaeb04d45259b2e0141",
+      "replay_digest": "c978152c39642c3751f804eb33ea49357c8a8dfb55b8aee9d2e5b2de3bfe31f7"
     },
     {
+      "node_id": "mat_g1_na_q2_1",
       "seed": 45,
       "formatter": "mcq",
       "question_text": "What number comes next when counting: 65, 70, 75, 80, ___?",
       "correct_answer": 85,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -125,13 +365,37 @@
           "value": 81,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 85,
+      "hints": [
+        "Look at the list of numbers: 65, 70, 75, 80, ___",
+        "Find the rule by comparing neighbours: 70 − 65 = 5.",
+        "This list of numbers shows jumping by 5s (add 5 each time).",
+        "Add 5 to 80: 80 + 5 = 85."
+      ],
+      "sample_id": "02ecdb58555a946a1022",
+      "replay_digest": "e316d9b75052d3734aba96fda7111249fb6fa8eb8f3676e9cbbbb62747280ef5"
     },
     {
+      "node_id": "mat_g1_na_q2_1",
       "seed": 46,
       "formatter": "cloze",
       "question_text": "What comes next: 68, 70, 72, 74, ___",
       "correct_answer": 76,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -157,13 +421,39 @@
           "text": "70",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 76,
+      "hints": [
+        "Look at the list of numbers: 68, 70, 72, 74, ___",
+        "Find the rule by comparing neighbours: 70 − 68 = 2.",
+        "This list of numbers shows jumping by 2s (add 2 each time).",
+        "Add 2 to 74: 74 + 2 = 76."
+      ],
+      "sample_id": "4bc4b6a3f8ab33e965f1",
+      "replay_digest": "3eda28d07038d37d23380726ea2902f11b5c376590362599d4b2039178cd6ff5"
     },
     {
+      "node_id": "mat_g1_na_q2_1",
       "seed": 500,
       "formatter": "read_mcq",
       "question_text": "What number is marked on the number line?",
       "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": {
+          "range": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -185,13 +475,105 @@
           "value": 101,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 100,
+      "hints": [
+        "Look at the list of numbers: 80, 85, 90, 95, ___",
+        "Find the rule by comparing neighbours: 85 − 80 = 5.",
+        "This list of numbers shows jumping by 5s (add 5 each time).",
+        "Add 5 to 95: 95 + 5 = 100."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "value": 100,
+        "start": 90,
+        "end": 110,
+        "interval": 1,
+        "divisions": 20,
+        "correct_position": 100,
+        "dot_value": 100,
+        "content_type": "whole_number",
+        "labels": [
+          "90",
+          "110"
+        ],
+        "marked_points": [],
+        "question_mark_at": null,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 100.0,
+        "target": 100.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "b9702fe8ea5a8d067dd262f300b3a0fbde939741c8307068e0c97fc6fc8a5e95",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 47,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "90",
+            "91",
+            "92",
+            "93",
+            "94",
+            "95",
+            "96",
+            "97",
+            "98",
+            "99",
+            "100",
+            "101",
+            "102",
+            "103",
+            "104",
+            "105",
+            "106",
+            "107",
+            "108",
+            "109",
+            "110"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "26bc551a05e79c5d559e",
+      "replay_digest": "98d62cac669e7da5afc3bf8d40beb086d0ed23e4397fff5a2d316cb761212240"
     },
     {
+      "node_id": "mat_g1_na_q2_1",
       "seed": 501,
       "formatter": "mcq",
       "question_text": "What number comes next when counting: 20, 30, 40, 50, ___?",
       "correct_answer": 60,
+      "requested": {
+        "difficulty_profile": {
+          "range": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -213,13 +595,39 @@
           "value": 40,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 60,
+      "hints": [
+        "Look at the list of numbers: 20, 30, 40, 50, ___",
+        "Find the rule by comparing neighbours: 30 − 20 = 10.",
+        "This list of numbers shows jumping by 10s (add 10 each time).",
+        "Add 10 to 50: 50 + 10 = 60."
+      ],
+      "sample_id": "6fb3c5ab49db7b68c125",
+      "replay_digest": "62f09fd5aafaebc5cd46eacf8398a754b04d436fd35905feeafeda40732ebe95"
     },
     {
+      "node_id": "mat_g1_na_q2_1",
       "seed": 502,
       "formatter": "read_mcq",
-      "question_text": "(Large group of 60 trees)\nCount the trees.\nHow many trees are there in all?",
+      "question_text": "(Large group of 60 paints)\nCount the paints.\nHow many paints are there in all?",
       "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": {
+          "range": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "EmojiPictorial",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -233,21 +641,79 @@
         },
         {
           "key": "C",
-          "value": 0,
+          "value": 61,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 61,
+          "value": 0,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 60,
+      "hints": [
+        "Look at the list of numbers: 20, 30, 40, 50, ___",
+        "Find the rule by comparing neighbours: 30 − 20 = 10.",
+        "This list of numbers shows jumping by 10s (add 10 each time).",
+        "Add 10 to 50: 50 + 10 = 60."
+      ],
+      "visual_type": "EmojiPictorial",
+      "visual_payload": {
+        "emoji": "🎨",
+        "group_a": 60,
+        "group_b": 0,
+        "operation": "counting",
+        "layout": "inline",
+        "display": "(Large group of 60 paints)"
+      },
+      "visual_render": {
+        "visual_type": "EmojiPictorial",
+        "renderer_input_digest": "688ba1351cb7d63a78aa6eb3c2506b33c87654f91df6c4bfb8627f044e498144",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "EmojiPictorial",
+          "element_count": 21,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "🛍️",
+            "10x 🎨"
+          ],
+          "distinct_colours": [
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "08a79489c70f21a2a493",
+      "replay_digest": "9673f4b276c6c426b3a8df656ec4c42bcf25ecdfe473ded4bcc20844a28a0be2"
     },
     {
+      "node_id": "mat_g1_na_q2_1",
       "seed": 601,
       "formatter": "cloze",
       "question_text": "Moses is counting forward by 2 starting from 86. The count is: 86, 88, 90, 92. What is the next number Moses should say?",
       "correct_answer": 94,
+      "requested": {
+        "difficulty_profile": {
+          "context": "word_problem"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -273,34 +739,1315 @@
           "text": "90",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 94,
+      "hints": [
+        "Look at the list of numbers: 86, 88, 90, 92, ___",
+        "Find the rule by comparing neighbours: 88 − 86 = 2.",
+        "This list of numbers shows jumping by 2s (add 2 each time).",
+        "Add 2 to 92: 92 + 2 = 94."
+      ],
+      "sample_id": "dd4ec8964cebdbcf7cf2",
+      "replay_digest": "8cf4ea2b02f9022c8070dd29e686e1723dfb92df0f2cc73ac58cf4045cc4ed85"
+    },
+    {
+      "node_id": "mat_g1_na_q2_1",
+      "seed": 700,
+      "formatter": "read_mcq",
+      "question_text": "What number is marked on the number line?",
+      "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 33,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 32,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 34,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 31,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 32,
+      "hints": [
+        "Look at the list of numbers: 24, 26, 28, 30, ___",
+        "Find the rule by comparing neighbours: 26 − 24 = 2.",
+        "This list of numbers shows jumping by 2s (add 2 each time).",
+        "Add 2 to 30: 30 + 2 = 32."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "value": 32,
+        "start": 30,
+        "end": 40,
+        "interval": 1,
+        "divisions": 10,
+        "correct_position": 32,
+        "dot_value": 32,
+        "content_type": "whole_number",
+        "labels": [
+          "30",
+          "40"
+        ],
+        "marked_points": [],
+        "question_mark_at": null,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 32.0,
+        "target": 32.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "a1f0ce83398b5d45a1df6b371acdbda8f9dc36edc38e1596e42841d8205d0da2",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 27,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "30",
+            "31",
+            "32",
+            "33",
+            "34",
+            "35",
+            "36",
+            "37",
+            "38",
+            "39",
+            "40"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "616cc31181842f76ea26",
+      "replay_digest": "b1775200ff55ae5bb60b6851caf836fd54b0cc5682684df00122cb3f5b137dc9"
+    },
+    {
+      "node_id": "mat_g1_na_q2_1",
+      "seed": 701,
+      "formatter": "cloze",
+      "question_text": "🧁 Boboy has a math challenge about cookies. What comes next: 20, 30, 40, 50, ___",
+      "correct_answer": 60,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "food_baking",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 51,
+          "text": "51",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 60,
+          "text": "60",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 40,
+          "text": "40",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 30,
+          "text": "30",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 60,
+      "hints": [
+        "Look at the list of numbers: 20, 30, 40, 50, ___",
+        "Find the rule by comparing neighbours: 30 − 20 = 10.",
+        "This list of numbers shows jumping by 10s (add 10 each time).",
+        "Add 10 to 50: 50 + 10 = 60."
+      ],
+      "sample_id": "ad673baea4c0a1571ca7",
+      "replay_digest": "ae34ea5fca415075cbd052aea799826ccb2ff1908084d4176b8daea30620a73a"
+    },
+    {
+      "node_id": "mat_g1_na_q2_1",
+      "seed": 702,
+      "formatter": "read_mcq",
+      "question_text": "🏀 Isko has a math challenge about basketballs. (Large group of 38 items)\nCount the items.\nHow many items are there in all?",
+      "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "western_pop",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "EmojiPictorial",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 38,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 0,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 37,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 39,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 38,
+      "hints": [
+        "Look at the list of numbers: 30, 32, 34, 36, ___",
+        "Find the rule by comparing neighbours: 32 − 30 = 2.",
+        "This list of numbers shows jumping by 2s (add 2 each time).",
+        "Add 2 to 36: 36 + 2 = 38."
+      ],
+      "visual_type": "EmojiPictorial",
+      "visual_payload": {
+        "emoji": "🏀",
+        "group_a": 38,
+        "group_b": 0,
+        "operation": "counting",
+        "layout": "inline",
+        "display": "(Large group of 38 items)"
+      },
+      "visual_render": {
+        "visual_type": "EmojiPictorial",
+        "renderer_input_digest": "b0e3328e599b30f73e986efcc16bab76981ac20fd7b53a4e86e5df043604d32c",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "EmojiPictorial",
+          "element_count": 36,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "🛍️",
+            "10x 🏀",
+            "🏀",
+            "1x 🏀"
+          ],
+          "distinct_colours": [
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "275e041073848761cb23",
+      "replay_digest": "34fcd75016f2aa3d20715e455345d326646394366e491d96ebafad82f11e8887"
+    },
+    {
+      "node_id": "mat_g1_na_q2_1",
+      "seed": 800,
+      "formatter": "cloze",
+      "question_text": "What comes next: 30, 40, 50, 60, ___",
+      "correct_answer": 70,
+      "requested": {
+        "difficulty_profile": {
+          "range": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 61,
+          "text": "61",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 50,
+          "text": "50",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 40,
+          "text": "40",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 70,
+          "text": "70",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 70,
+      "hints": [
+        "Look at the list of numbers: 30, 40, 50, 60, ___",
+        "Find the rule by comparing neighbours: 40 − 30 = 10.",
+        "This list of numbers shows jumping by 10s (add 10 each time).",
+        "Add 10 to 60: 60 + 10 = 70."
+      ],
+      "sample_id": "b02ed2f8af726d42917d",
+      "replay_digest": "79b85f6e36876b2a440da5b3de4036556f28de8cc9f70731f57e5d71e33e44ea"
+    },
+    {
+      "node_id": "mat_g1_na_q2_1",
+      "seed": 900,
+      "formatter": "mcq",
+      "question_text": "What number comes next when counting: 0, 10, 20, 30, ___?",
+      "correct_answer": 40,
+      "requested": {
+        "difficulty_profile": {
+          "range": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 10,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 31,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 20,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 40,
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 40,
+      "hints": [
+        "Look at the list of numbers: 0, 10, 20, 30, ___",
+        "Find the rule by comparing neighbours: 10 − 0 = 10.",
+        "This list of numbers shows jumping by 10s (add 10 each time).",
+        "Add 10 to 30: 30 + 10 = 40."
+      ],
+      "sample_id": "8cc36e20f3347e3966b9",
+      "replay_digest": "f1fe05a19938dfdc4a70fe37e9893501befbde2cfaaa5617fbc66550a5b538f9"
+    },
+    {
+      "node_id": "mat_g1_na_q2_1",
+      "seed": 901,
+      "formatter": "mcq",
+      "question_text": "What number comes next when counting: 0, 5, 10, 15, ___?",
+      "correct_answer": 20,
+      "requested": {
+        "difficulty_profile": {
+          "range": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 10,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 20,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 5,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 16,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 20,
+      "hints": [
+        "Look at the list of numbers: 0, 5, 10, 15, ___",
+        "Find the rule by comparing neighbours: 5 − 0 = 5.",
+        "This list of numbers shows jumping by 5s (add 5 each time).",
+        "Add 5 to 15: 15 + 5 = 20."
+      ],
+      "sample_id": "c5bfc942a31b52b5e8a8",
+      "replay_digest": "0bb439d27c7bbfad683c32e14e9d176d1b8f410daab6e4c55ae7d8e47529674a"
+    },
+    {
+      "node_id": "mat_g1_na_q2_1",
+      "seed": 1000,
+      "formatter": "read_mcq",
+      "question_text": "What number is marked on the number line?",
+      "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "hint_gated"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "hint_gated"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 39,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 42,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 41,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 40,
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 40,
+      "hints": [
+        "Look at the list of numbers: 20, 25, 30, 35, ___",
+        "Find the rule by comparing neighbours: 25 − 20 = 5.",
+        "This list of numbers shows jumping by 5s (add 5 each time).",
+        "Add 5 to 35: 35 + 5 = 40."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "value": 40,
+        "start": 30,
+        "end": 50,
+        "interval": 1,
+        "divisions": 20,
+        "correct_position": 40,
+        "dot_value": 40,
+        "content_type": "whole_number",
+        "labels": [
+          "30",
+          "50"
+        ],
+        "marked_points": [],
+        "question_mark_at": null,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 40.0,
+        "target": 40.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "2aaef9e56c512f84d8742ac03ea14538063b4cdab90969a05dda11116ebd493a",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 47,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "30",
+            "31",
+            "32",
+            "33",
+            "34",
+            "35",
+            "36",
+            "37",
+            "38",
+            "39",
+            "40",
+            "41",
+            "42",
+            "43",
+            "44",
+            "45",
+            "46",
+            "47",
+            "48",
+            "49",
+            "50"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "b5a18e2fbe2a5f80c308",
+      "replay_digest": "8d258173479df98b2bef4e0a5cc38fcdb2a2a1b4ff56bc837588702e51d84ff8"
+    },
+    {
+      "node_id": "mat_g1_na_q2_1",
+      "seed": 1001,
+      "formatter": "read_mcq",
+      "question_text": "(Large group of 48 items)\nCount the items.\nHow many items are there in all?",
+      "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "mastery_drill"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "EmojiPictorial",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "mastery_drill"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 48,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 49,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 0,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 47,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 48,
+      "hints": [
+        "Look at the list of numbers: 40, 42, 44, 46, ___",
+        "Find the rule by comparing neighbours: 42 − 40 = 2.",
+        "This list of numbers shows jumping by 2s (add 2 each time).",
+        "Add 2 to 46: 46 + 2 = 48."
+      ],
+      "visual_type": "EmojiPictorial",
+      "visual_payload": {
+        "emoji": "✝️",
+        "group_a": 48,
+        "group_b": 0,
+        "operation": "counting",
+        "layout": "inline",
+        "display": "(Large group of 48 items)"
+      },
+      "visual_render": {
+        "visual_type": "EmojiPictorial",
+        "renderer_input_digest": "31fb4afb1b9bae7089a66bce37d946084371f083230f7fc87f0a41c89f3ebd91",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "EmojiPictorial",
+          "element_count": 39,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "🛍️",
+            "10x ✝️",
+            "✝️",
+            "1x ✝️"
+          ],
+          "distinct_colours": [
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "e563148192d58bc87564",
+      "replay_digest": "b1d9a9c66b71b01ac861113953d9df6354d56503e11fe11d66d858f9db5e864c"
+    },
+    {
+      "node_id": "mat_g1_na_q2_1",
+      "seed": 1002,
+      "formatter": "read_mcq",
+      "question_text": "(Large group of 80 cupcakes)\nCount the cupcakes.\nHow many cupcakes are there in all?",
+      "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "scaffolded"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "EmojiPictorial",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "scaffolded"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 0,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 80,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 81,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 79,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 80,
+      "hints": [
+        "Look at the list of numbers: 40, 50, 60, 70, ___",
+        "Find the rule by comparing neighbours: 50 − 40 = 10.",
+        "This list of numbers shows jumping by 10s (add 10 each time).",
+        "Add 10 to 70: 70 + 10 = 80."
+      ],
+      "visual_type": "EmojiPictorial",
+      "visual_payload": {
+        "emoji": "🧁",
+        "group_a": 80,
+        "group_b": 0,
+        "operation": "counting",
+        "layout": "inline",
+        "display": "(Large group of 80 cupcakes)"
+      },
+      "visual_render": {
+        "visual_type": "EmojiPictorial",
+        "renderer_input_digest": "964c8f688313a0f55c1750554a864d1bd154b1cfe0ea901f5d3a516103974d1c",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "EmojiPictorial",
+          "element_count": 27,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "🛍️",
+            "10x 🧁"
+          ],
+          "distinct_colours": [
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "c1dfeb71cde59c160c3d",
+      "replay_digest": "b022e5f2bbbeb5006975f25a4bcc54d517a5779e83a295a6fca8ef3a9d858047"
+    }
+  ],
+  "sample_assessments": [
+    {
+      "sample_id": "3d945a3fffc369ef8ed6",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Stem presents a clear arithmetic sequence: 0, 10, 20, 30, ___. The step-10 pattern is unambiguous; the blank position is final and explicit. All four options (10, 40, 31, 20) are distinct; only 40 is mathematically correct. No other interpretation of the sequence exists."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Context is neutral and appropriate: counting by tens starting from zero is a canonical Grade 1 activity. No extraneous narrative or misleading context. Hints accurately decompose the pattern (10 − 0 = 10, repeated addition to 30). The logical chain from sequence to rule to answer is valid."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Phrasing 'What number comes next when counting' is unambiguous for Grade 1. Numbers are single or double digits, presented in left-to-right order. Formatting uses spaces and consistent punctuation. A six-year-old who understands tens can identify the next value in the sequence without auxiliary text."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The sequence 0, 10, 20, 30, ___ proceeds by constant increment of 10. Answer 40 is arithmetically correct (30 + 10 = 40). Options 20 and 31 are values already in the sequence or off the pattern; option 10 repeats an earlier value. No computational or logical error exists."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w8r2-mat_g1_na_q2_1-20260924",
+      "dispatch_id": "s5-haiku-w8r2-mat_g1_na_q2_1-20260924:mat_g1_na_q2_1"
+    },
+    {
+      "sample_id": "504430612a6fb05e3eae",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Stem 'What number is marked on the number line?' unambiguously asks for identification of a single marked position. The visual rendering includes labels ['40'–'50'], and 44 is marked. The four options (43, 45, 44, 46) are consecutive and distinct; 44 matches the marked value. No ambiguity in task or solution."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Number-line context is standard for Grade 1 skip-counting. Hints supply the underlying sequence (36, 38, 40, 42, ___) and rule (step-2). The marked value 44 correctly follows the pattern; 44 = 42 + 2. The visual and numeric contexts align without contradiction."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Instruction is straightforward: identify a marked number from a visual. The number line shows consecutive integers in the 40–50 range; 44 is visually distinct (marked). Grade 1 students with prior number-line exposure can interpret position and label. Text is minimal and unambiguous."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Hints show the sequence 36, 38, 40, 42, ___ (step-2 increment). Arithmetic: 42 + 2 = 44, correct. The marked position on the number line aligns with 44. Options 43, 45, 46 are neighbors but incorrect; answer 44 is unique and valid."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w8r2-mat_g1_na_q2_1-20260924",
+      "dispatch_id": "s5-haiku-w8r2-mat_g1_na_q2_1-20260924:mat_g1_na_q2_1"
+    },
+    {
+      "sample_id": "4aaeb04d45259b2e0141",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Stem 'Count the cupcakes. How many cupcakes are there in all?' unambiguously requests a count. The visual EmojiPictorial displays a grouped representation. The four options (101, 99, 100, 0) are distinct in value. Answer 100 is unique and correct; the visual representation of 100 cupcakes supports this single solution."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Context (counting cupcakes) is familiar and age-appropriate. Hints expose the underlying sequence (80, 85, 90, 95, ___) and rule (step-5 increment). The sequence correctly reaches 100 (95 + 5 = 100). The visual representation (emoji items) reinforces the count. No logical contradiction between context and answer."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Instruction is concrete and clear: count items shown. The visual uses repeated emoji symbols (cupcakes) that Grade 1 students can recognize and mentally group. Text 'count the cupcakes' is direct. A student who can recognize repeated patterns and sum groups should understand the task without ambiguity."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Underlying sequence is 80, 85, 90, 95, ___ (step-5 skip count). Arithmetic: 95 + 5 = 100, correct. Visual representation (100 cupcakes grouped and labeled) matches the numeric answer. Options 99, 101 are off-by-one distractors; 0 is a decoy. Answer 100 is mathematically unique and valid."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w8r2-mat_g1_na_q2_1-20260924",
+      "dispatch_id": "s5-haiku-w8r2-mat_g1_na_q2_1-20260924:mat_g1_na_q2_1"
+    },
+    {
+      "sample_id": "02ecdb58555a946a1022",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Stem 'What number comes next when counting: 65, 70, 75, 80, ___?' presents a clear explicit sequence with a blank in final position. The four options (75, 85, 70, 81) are distinct. Only 85 is mathematically correct; 75 and 70 are earlier values in the sequence, and 81 is off-pattern. No alternative valid interpretation exists."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Context is neutral and task-appropriate: skip-counting by fives is a Grade 1 competency. Hints decompose the pattern (70 − 65 = 5, repeated addition). The arithmetic chain is logically sound: 80 + 5 = 85. No misleading or contradictory information present."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Phrasing 'What number comes next when counting' is direct and Grade 1–accessible. The sequence is presented in standard left-to-right notation. Blank (___) clearly marks the position to fill. Numbers 65–85 are within Grade 1 range and displayed in readable format."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sequence 65, 70, 75, 80, ___ increments by 5 throughout. Answer 85 is correct (80 + 5 = 85). Options: 75 repeats an earlier term; 70 repeats an earlier term; 81 breaks the pattern. Answer 85 is the unique correct continuation."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w8r2-mat_g1_na_q2_1-20260924",
+      "dispatch_id": "s5-haiku-w8r2-mat_g1_na_q2_1-20260924:mat_g1_na_q2_1"
+    },
+    {
+      "sample_id": "4bc4b6a3f8ab33e965f1",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Stem 'What comes next: 68, 70, 72, 74, ___' presents a four-term sequence with a blank final position. The four options (72, 75, 76, 70) are distinct values. Only 76 correctly extends the step-2 pattern; 72 and 70 are earlier terms; 75 is off-pattern. One unique answer."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Skip-counting by twos from 68 upward is appropriate for Grade 1. Hints supply the rule (70 − 68 = 2, step-2 pattern) and the arithmetic (74 + 2 = 76). The logical chain is sound; no context contradicts the answer."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Instruction 'What comes next' is standard and Grade 1–clear. The sequence 68, 70, 72, 74, ___ uses two-digit even numbers in left-to-right order. The cloze format (fill-in-blank) is concrete and accessible to students who can recognize patterns. Formatting is readable."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sequence increments by 2: 68→70→72→74→??. Answer 76 is correct (74 + 2 = 76). Distractors: 72 is a repeat; 70 is a repeat; 75 is off-pattern. Answer 76 is unique and mathematically valid."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w8r2-mat_g1_na_q2_1-20260924",
+      "dispatch_id": "s5-haiku-w8r2-mat_g1_na_q2_1-20260924:mat_g1_na_q2_1"
+    },
+    {
+      "sample_id": "26bc551a05e79c5d559e",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Stem 'What number is marked on the number line?' requests identification of a single marked position. The number line spans ['90'–'110'], and 100 is marked and labeled. The four options (99, 100, 102, 101) are consecutive distinct values. Only 100 matches the marked position. No ambiguity."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Number-line reading is Grade 1–standard. Hints supply the skip-counting sequence (80, 85, 90, 95, ___) and rule (step-5). The sequence correctly reaches 100 (95 + 5 = 100). The marked position corresponds to the calculated value; no contradiction."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Instruction 'What number is marked on the number line?' is direct and concrete. The visual number line displays the integers 90–110; 100 is visually marked. Grade 1 students familiar with number-line representation can identify a labeled integer at a marked position."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Underlying sequence 80, 85, 90, 95, ___ increments by 5. Arithmetic: 95 + 5 = 100, correct. The marked value is 100. Options 99, 101, 102 are neighbors but off the skip-count sequence; 100 is the unique valid answer."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w8r2-mat_g1_na_q2_1-20260924",
+      "dispatch_id": "s5-haiku-w8r2-mat_g1_na_q2_1-20260924:mat_g1_na_q2_1"
+    },
+    {
+      "sample_id": "6fb3c5ab49db7b68c125",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Stem 'What number comes next when counting: 20, 30, 40, 50, ___?' presents a clear four-term sequence with a blank. The four options (60, 30, 51, 40) are distinct values. Only 60 extends the step-10 pattern; 30 and 40 are earlier terms; 51 is off-pattern. One unique correct answer."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Skip-counting by tens starting from 20 is canonical for Grade 1. Hints expose the rule (30 − 20 = 10, step-10) and the arithmetic (50 + 10 = 60). The logical chain is valid; no contradictions present."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Phrasing 'What number comes next when counting' is unambiguous and Grade 1–appropriate. Numbers 20–60 are within typical Grade 1 range. Sequence notation (left-to-right, comma-separated, blank in final position) is standard and clear."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sequence 20, 30, 40, 50, ___ increments by 10 throughout. Answer 60 is correct (50 + 10 = 60). Distractors: 30 and 40 are earlier terms; 51 breaks the pattern. Answer 60 is the unique mathematically correct continuation."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w8r2-mat_g1_na_q2_1-20260924",
+      "dispatch_id": "s5-haiku-w8r2-mat_g1_na_q2_1-20260924:mat_g1_na_q2_1"
+    },
+    {
+      "sample_id": "08a79489c70f21a2a493",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Stem '(Large group of 60 paints) Count the paints. How many paints are there in all?' unambiguously requests a total count. The visual EmojiPictorial represents a grouped collection. The four options (59, 60, 61, 0) are distinct values. Answer 60 is unique and correct; no alternative valid interpretation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Context (counting paints) is familiar and concrete. Hints provide the skip-counting sequence (20, 30, 40, 50, ___) and rule (step-10 increment). Arithmetic: 50 + 10 = 60, correct. The visual representation and numeric answer align; no logical contradiction."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Instruction 'Count the paints. How many paints are there in all?' is concrete and Grade 1–clear. The visual uses repeated emoji symbols that students can recognize and group. Text is direct and unambiguous; a student who can count groups or recognize patterns should understand the task."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Underlying sequence 20, 30, 40, 50, ___ increments by 10. Arithmetic: 50 + 10 = 60, correct. Visual representation aligns with this count. Options 59 and 61 are off-by-one distractors; 0 is a decoy. Answer 60 is mathematically unique and valid."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w8r2-mat_g1_na_q2_1-20260924",
+      "dispatch_id": "s5-haiku-w8r2-mat_g1_na_q2_1-20260924:mat_g1_na_q2_1"
+    },
+    {
+      "sample_id": "dd4ec8964cebdbcf7cf2",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Stem 'Moses is counting forward by 2 starting from 86. The count is: 86, 88, 90, 92. What is the next number Moses should say?' unambiguously asks for the next value in a specified skip-counting sequence. The four options (94, 93, 88, 90) are distinct. Only 94 is correct; 88 and 90 are earlier terms; 93 is off-pattern. One unique answer."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Narrative context (Moses counting) is engaging and grade-appropriate. The explicit instruction 'counting forward by 2' directly states the rule. The sequence 86, 88, 90, 92 is presented and correct. The logical expectation (next number following the pattern) is clear and valid; answer 94 (92 + 2) is sound."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Phrasing 'What is the next number Moses should say?' is direct and actionable for Grade 1. The sequence is explicitly introduced ('starting from 86') and enumerated (86, 88, 90, 92). A student who understands skip-counting by twos can identify the continuation. Text is clear and unambiguous."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sequence 86, 88, 90, 92, ___ increments by 2 throughout. Answer 94 is correct (92 + 2 = 94). Distractors: 88 and 90 are earlier values; 93 is off-pattern (not even, not +2 from 92). Answer 94 is the unique mathematically correct next term."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w8r2-mat_g1_na_q2_1-20260924",
+      "dispatch_id": "s5-haiku-w8r2-mat_g1_na_q2_1-20260924:mat_g1_na_q2_1"
+    },
+    {
+      "sample_id": "616cc31181842f76ea26",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Stem 'What number is marked on the number line?' unambiguously asks for identification of a marked value. The number line displays integers ['30'–'40'], and 32 is marked. The four options (33, 32, 34, 31) are consecutive and distinct. Only 32 matches the marked position. No ambiguity."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Number-line context is Grade 1–standard. Hints supply the skip-counting sequence (24, 26, 28, 30, ___) and rule (step-2). Arithmetic: 30 + 2 = 32, correct. The marked position corresponds to the calculated value; no contradiction."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Instruction 'What number is marked on the number line?' is direct and concrete. The number line shows consecutive integers 30–40 clearly labeled. A marked position at 32 is visually distinct. Grade 1 students familiar with number lines can read the label at a marked position."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sequence 24, 26, 28, 30, ___ increments by 2 throughout. Answer 32 is correct (30 + 2 = 32). The marked value is 32. Options 31, 33, 34 are neighbors but off the skip-count pattern; 32 is the unique valid answer."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w8r2-mat_g1_na_q2_1-20260924",
+      "dispatch_id": "s5-haiku-w8r2-mat_g1_na_q2_1-20260924:mat_g1_na_q2_1"
+    },
+    {
+      "sample_id": "ad673baea4c0a1571ca7",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Stem '🧁 Boboy has a math challenge about cookies. What comes next: 20, 30, 40, 50, ___' presents a four-term sequence with a blank in final position. The four options (51, 60, 40, 30) are distinct values. Only 60 extends the step-10 pattern; 40 and 30 are earlier terms; 51 is off-pattern. One unique correct answer."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Narrative context (Boboy's math challenge) is engaging and age-appropriate. The sequence 20, 30, 40, 50, ___ is unambiguous. Hints supply the rule (step-10) and arithmetic (50 + 10 = 60). No contradiction between context and answer."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Instruction 'What comes next' is direct and Grade 1–clear. The emoji (🧁) adds light context. The sequence is presented in standard left-to-right notation with a blank clearly marking the position to fill. Numbers 20–60 are within Grade 1 range."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sequence 20, 30, 40, 50, ___ increments by 10 consistently. Answer 60 is correct (50 + 10 = 60). Distractors: 40 and 30 are earlier terms; 51 breaks the pattern. Answer 60 is the unique mathematically correct continuation."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w8r2-mat_g1_na_q2_1-20260924",
+      "dispatch_id": "s5-haiku-w8r2-mat_g1_na_q2_1-20260924:mat_g1_na_q2_1"
+    },
+    {
+      "sample_id": "275e041073848761cb23",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Stem '🏀 Isko has a math challenge about basketballs. (Large group of 38 items) Count the items. How many items are there in all?' unambiguously requests a count of grouped items. The four options (38, 0, 37, 39) are distinct values. Only 38 is correct; 0 is a decoy; 37 and 39 are off-by-one distractors. One unique answer."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Narrative (Isko's basketball challenge) is engaging and age-appropriate. Hints supply the skip-counting sequence (30, 32, 34, 36, ___) and rule (step-2). Arithmetic: 36 + 2 = 38, correct. The visual and numeric contexts align; no contradiction."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Instruction 'Count the items. How many items are there in all?' is concrete and actionable for Grade 1. The emoji (🏀) adds familiar context. The visual EmojiPictorial displays grouped items. A student who recognizes repeated patterns or can count groups should understand the task."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Underlying sequence 30, 32, 34, 36, ___ increments by 2 throughout. Answer 38 is correct (36 + 2 = 38). Visual representation (grouped basketballs) aligns with this count. Options 37 and 39 are off-by-one; 0 is a decoy. Answer 38 is mathematically unique and valid."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w8r2-mat_g1_na_q2_1-20260924",
+      "dispatch_id": "s5-haiku-w8r2-mat_g1_na_q2_1-20260924:mat_g1_na_q2_1"
+    },
+    {
+      "sample_id": "b02ed2f8af726d42917d",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Stem 'What comes next: 30, 40, 50, 60, ___' presents a clear four-term sequence with a blank in final position. The four options (61, 50, 40, 70) are distinct values. Only 70 extends the step-10 pattern; 50 and 40 are earlier terms; 61 is off-pattern. One unique correct answer."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Skip-counting by tens from 30 to 60 is canonical for Grade 1. Hints expose the rule (40 − 30 = 10, step-10) and the arithmetic (60 + 10 = 70). The logical chain is sound; no contradictions present."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Phrasing 'What comes next' is direct and Grade 1–accessible. The sequence 30, 40, 50, 60, ___ is presented in standard notation. Numbers in the 30–70 range are within Grade 1 range. Formatting is clear and unambiguous."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sequence 30, 40, 50, 60, ___ increments by 10 throughout. Answer 70 is correct (60 + 10 = 70). Distractors: 50 and 40 are earlier terms; 61 breaks the pattern. Answer 70 is the unique mathematically correct continuation."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w8r2-mat_g1_na_q2_1-20260924",
+      "dispatch_id": "s5-haiku-w8r2-mat_g1_na_q2_1-20260924:mat_g1_na_q2_1"
+    },
+    {
+      "sample_id": "8cc36e20f3347e3966b9",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Stem 'What number comes next when counting: 0, 10, 20, 30, ___?' presents a clear four-term sequence starting at zero with a blank in final position. The four options (10, 31, 20, 40) are distinct values. Only 40 extends the step-10 pattern; 10 and 20 are earlier terms; 31 is off-pattern. One unique correct answer."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Skip-counting by tens from zero is canonical for Grade 1. Hints supply the rule (10 − 0 = 10, step-10 pattern) and arithmetic (30 + 10 = 40). The logical chain is valid; no contradictions present."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Phrasing 'What number comes next when counting' is direct and Grade 1–clear. The sequence 0, 10, 20, 30, ___ is presented in standard left-to-right notation. Numbers are within Grade 1 range; formatting is readable and unambiguous."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sequence 0, 10, 20, 30, ___ increments by 10 consistently. Answer 40 is correct (30 + 10 = 40). Distractors: 10 and 20 are earlier terms; 31 breaks the pattern. Answer 40 is the unique mathematically correct continuation."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w8r2-mat_g1_na_q2_1-20260924",
+      "dispatch_id": "s5-haiku-w8r2-mat_g1_na_q2_1-20260924:mat_g1_na_q2_1"
+    },
+    {
+      "sample_id": "c5bfc942a31b52b5e8a8",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Stem 'What number comes next when counting: 0, 5, 10, 15, ___?' presents a clear four-term sequence starting at zero with a blank. The four options (10, 20, 5, 16) are distinct values. Only 20 extends the step-5 pattern; 10 and 5 are earlier terms; 16 is off-pattern. One unique correct answer."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Skip-counting by fives from zero is Grade 1–standard. Hints expose the rule (5 − 0 = 5, step-5 pattern) and arithmetic (15 + 5 = 20). The logical chain is sound; no contradictions present."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Phrasing 'What number comes next when counting' is unambiguous and Grade 1–appropriate. The sequence 0, 5, 10, 15, ___ is presented clearly in standard notation. Numbers are within Grade 1 range and displayed in readable format."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sequence 0, 5, 10, 15, ___ increments by 5 throughout. Answer 20 is correct (15 + 5 = 20). Distractors: 10 and 5 are earlier terms; 16 breaks the pattern. Answer 20 is the unique mathematically correct continuation."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w8r2-mat_g1_na_q2_1-20260924",
+      "dispatch_id": "s5-haiku-w8r2-mat_g1_na_q2_1-20260924:mat_g1_na_q2_1"
+    },
+    {
+      "sample_id": "b5a18e2fbe2a5f80c308",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Stem 'What number is marked on the number line?' unambiguously requests identification of a single marked value. The number line spans ['30'–'50'] and 40 is marked. The four options (39, 42, 41, 40) are consecutive and distinct. Only 40 matches the marked position. No ambiguity."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Number-line reading is Grade 1–standard. Hints supply the skip-counting sequence (20, 25, 30, 35, ___) and rule (step-5). Arithmetic: 35 + 5 = 40, correct. The marked position corresponds to the calculated value; no contradiction."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Instruction 'What number is marked on the number line?' is direct and concrete. The number line displays integers 30–50, clearly labeled. A marked position at 40 is visually distinct. Grade 1 students familiar with number lines can identify a labeled integer at a marked position."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sequence 20, 25, 30, 35, ___ increments by 5 throughout. Answer 40 is correct (35 + 5 = 40). The marked value is 40. Options 39, 41, 42 are neighbors but off the skip-count pattern; 40 is the unique valid answer."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w8r2-mat_g1_na_q2_1-20260924",
+      "dispatch_id": "s5-haiku-w8r2-mat_g1_na_q2_1-20260924:mat_g1_na_q2_1"
+    },
+    {
+      "sample_id": "e563148192d58bc87564",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Stem '(Large group of 48 items) Count the items. How many items are there in all?' unambiguously requests a total count. The visual EmojiPictorial represents grouped items. The four options (48, 49, 0, 47) are distinct values. Only 48 is correct; 0 is a decoy; 47 and 49 are off-by-one distractors. One unique answer."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Context (counting items) is concrete and age-appropriate. Hints provide the skip-counting sequence (40, 42, 44, 46, ___) and rule (step-2 increment). Arithmetic: 46 + 2 = 48, correct. Visual and numeric contexts align; no logical contradiction."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Instruction 'Count the items. How many items are there in all?' is direct and actionable for Grade 1. The visual uses repeated emoji symbols that students can recognize. Text is unambiguous; a student who can count groups or recognize patterns should understand the task."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Underlying sequence 40, 42, 44, 46, ___ increments by 2 throughout. Answer 48 is correct (46 + 2 = 48). Visual representation aligns with this count. Options 47 and 49 are off-by-one; 0 is a decoy. Answer 48 is mathematically unique and valid."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w8r2-mat_g1_na_q2_1-20260924",
+      "dispatch_id": "s5-haiku-w8r2-mat_g1_na_q2_1-20260924:mat_g1_na_q2_1"
+    },
+    {
+      "sample_id": "c1dfeb71cde59c160c3d",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Stem '(Large group of 80 cupcakes) Count the cupcakes. How many cupcakes are there in all?' unambiguously requests a total count. The visual EmojiPictorial displays a grouped collection. The four options (0, 80, 81, 79) are distinct values. Only 80 is correct; 0 is a decoy; 79 and 81 are off-by-one distractors. One unique answer."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Context (counting cupcakes) is familiar and concrete for Grade 1. Hints supply the skip-counting sequence (40, 50, 60, 70, ___) and rule (step-10 increment). Arithmetic: 70 + 10 = 80, correct. Visual and numeric contexts align; no logical contradiction."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Instruction 'Count the cupcakes. How many cupcakes are there in all?' is concrete and actionable. The visual uses repeated emoji symbols (cupcakes) that Grade 1 students recognize. Text is direct and unambiguous; a student who can count grouped items should understand the task."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Underlying sequence 40, 50, 60, 70, ___ increments by 10 throughout. Answer 80 is correct (70 + 10 = 80). Visual representation (grouped cupcakes) aligns with this count. Options 79 and 81 are off-by-one; 0 is a decoy. Answer 80 is mathematically unique and valid."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w8r2-mat_g1_na_q2_1-20260924",
+      "dispatch_id": "s5-haiku-w8r2-mat_g1_na_q2_1-20260924:mat_g1_na_q2_1"
+    }
+  ],
+  "clause_evidence": [
+    {
+      "requirement_id": "count",
+      "clause": "Count",
+      "verdict": "PASS",
+      "reasoning": "All 18 samples require counting or identifying a numeric value in a skip-counting context. Each sample explicitly asks for a count of the next number, the marked number on a number line, or the total count of items. The common denominator across all samples is the counting task, whether identifying a missing term in a sequence or summing a grouped collection.",
+      "sample_ids": [
+        "3d945a3fffc369ef8ed6",
+        "504430612a6fb05e3eae",
+        "4aaeb04d45259b2e0141",
+        "02ecdb58555a946a1022",
+        "4bc4b6a3f8ab33e965f1",
+        "26bc551a05e79c5d559e",
+        "6fb3c5ab49db7b68c125",
+        "08a79489c70f21a2a493",
+        "dd4ec8964cebdbcf7cf2",
+        "616cc31181842f76ea26",
+        "ad673baea4c0a1571ca7",
+        "275e041073848761cb23",
+        "b02ed2f8af726d42917d",
+        "8cc36e20f3347e3966b9",
+        "c5bfc942a31b52b5e8a8",
+        "b5a18e2fbe2a5f80c308",
+        "e563148192d58bc87564",
+        "c1dfeb71cde59c160c3d"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-w8r2-mat_g1_na_q2_1-20260924",
+      "dispatch_id": "s5-haiku-w8r2-mat_g1_na_q2_1-20260924:mat_g1_na_q2_1"
+    },
+    {
+      "requirement_id": "step_2s",
+      "clause": "2s",
+      "verdict": "PASS",
+      "reasoning": "Six samples explicitly test skip-counting by twos. Sample 504430612a6fb05e3eae (number line from 36→38→40→42→44); sample 4bc4b6a3f8ab33e965f1 (sequence 68→70→72→74→76); sample dd4ec8964cebdbcf7cf2 (Moses counting 86→88→90→92→94); sample 616cc31181842f76ea26 (number line 24→26→28→30→32); sample 275e041073848761cb23 (grouped count via sequence 30→32→34→36→38); and sample e563148192d58bc87564 (grouped count via sequence 40→42→44→46→48). All correctly demonstrate step-2 increments without error.",
+      "sample_ids": [
+        "504430612a6fb05e3eae",
+        "4bc4b6a3f8ab33e965f1",
+        "dd4ec8964cebdbcf7cf2",
+        "616cc31181842f76ea26",
+        "275e041073848761cb23",
+        "e563148192d58bc87564"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-w8r2-mat_g1_na_q2_1-20260924",
+      "dispatch_id": "s5-haiku-w8r2-mat_g1_na_q2_1-20260924:mat_g1_na_q2_1"
+    },
+    {
+      "requirement_id": "step_5s",
+      "clause": "5s",
+      "verdict": "PASS",
+      "reasoning": "Five samples explicitly test skip-counting by fives. Sample 4aaeb04d45259b2e0141 (grouped count via sequence 80→85→90→95→100); sample 02ecdb58555a946a1022 (sequence 65→70→75→80→85); sample 26bc551a05e79c5d559e (number line from sequence 80→85→90→95→100); sample c5bfc942a31b52b5e8a8 (sequence 0→5→10→15→20); and sample b5a18e2fbe2a5f80c308 (number line from sequence 20→25→30→35→40). All correctly demonstrate step-5 increments without error.",
+      "sample_ids": [
+        "4aaeb04d45259b2e0141",
+        "02ecdb58555a946a1022",
+        "26bc551a05e79c5d559e",
+        "c5bfc942a31b52b5e8a8",
+        "b5a18e2fbe2a5f80c308"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-w8r2-mat_g1_na_q2_1-20260924",
+      "dispatch_id": "s5-haiku-w8r2-mat_g1_na_q2_1-20260924:mat_g1_na_q2_1"
+    },
+    {
+      "requirement_id": "step_10s",
+      "clause": "10s",
+      "verdict": "PASS",
+      "reasoning": "Six samples explicitly test skip-counting by tens. Sample 3d945a3fffc369ef8ed6 (sequence 0→10→20→30→40); sample 6fb3c5ab49db7b68c125 (sequence 20→30→40→50→60); sample 08a79489c70f21a2a493 (grouped count via sequence 20→30→40→50→60); sample b02ed2f8af726d42917d (sequence 30→40→50→60→70); sample 8cc36e20f3347e3966b9 (sequence 0→10→20→30→40); and sample c1dfeb71cde59c160c3d (grouped count via sequence 40→50→60→70→80). All correctly demonstrate step-10 increments without error.",
+      "sample_ids": [
+        "3d945a3fffc369ef8ed6",
+        "6fb3c5ab49db7b68c125",
+        "08a79489c70f21a2a493",
+        "b02ed2f8af726d42917d",
+        "8cc36e20f3347e3966b9",
+        "c1dfeb71cde59c160c3d"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-w8r2-mat_g1_na_q2_1-20260924",
+      "dispatch_id": "s5-haiku-w8r2-mat_g1_na_q2_1-20260924:mat_g1_na_q2_1"
+    },
+    {
+      "requirement_id": "up_to_100",
+      "clause": "100",
+      "verdict": "PASS",
+      "reasoning": "All 18 samples operate within the 'up to 100' numeric bound; no sample exceeds 100. Highest-ending sequences in samples 4aaeb04d45259b2e0141 and 26bc551a05e79c5d559e both reach exactly 100 (via 95+5). Other samples end at or below 100: sample 3d945a3fffc369ef8ed6 ends at 40, sample 02ecdb58555a946a1022 ends at 85, sample c1dfeb71cde59c160c3d ends at 80, etc. The requirement that numbers not exceed 100 is uniformly satisfied; the upper bound is demonstrated in two samples reaching the ceiling.",
+      "sample_ids": [
+        "3d945a3fffc369ef8ed6",
+        "504430612a6fb05e3eae",
+        "4aaeb04d45259b2e0141",
+        "02ecdb58555a946a1022",
+        "4bc4b6a3f8ab33e965f1",
+        "26bc551a05e79c5d559e",
+        "6fb3c5ab49db7b68c125",
+        "08a79489c70f21a2a493",
+        "dd4ec8964cebdbcf7cf2",
+        "616cc31181842f76ea26",
+        "ad673baea4c0a1571ca7",
+        "275e041073848761cb23",
+        "b02ed2f8af726d42917d",
+        "8cc36e20f3347e3966b9",
+        "c5bfc942a31b52b5e8a8",
+        "b5a18e2fbe2a5f80c308",
+        "e563148192d58bc87564",
+        "c1dfeb71cde59c160c3d"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-w8r2-mat_g1_na_q2_1-20260924",
+      "dispatch_id": "s5-haiku-w8r2-mat_g1_na_q2_1-20260924:mat_g1_na_q2_1"
+    }
+  ],
+  "dispatch_provenance": [
+    {
+      "dispatch_id": "s5-haiku-w8r2-mat_g1_na_q2_1-20260924:mat_g1_na_q2_1",
+      "reviewer_identity": "blind-reviewer-haiku45-w8r2-mat_g1_na_q2_1-20260924",
+      "review_date": "2026-09-24",
+      "blind": true,
+      "packet_digest": "e127a7f372ae86882dd437ba6a870f1cf0ae1e24a1bd2f15e7a313ff0c1ff3b0",
+      "clause_ids": [
+        "count",
+        "step_2s",
+        "step_5s",
+        "step_10s",
+        "up_to_100"
+      ],
+      "response_ref": ".responses/s5-haiku-w8r2-mat_g1_na_q2_1-20260924.json",
+      "response_digest": "65c3cbd68032b8a7168bfb1d0cb20b95787332db2616504507c2541d5c570e5a",
+      "prompt_ref": ".responses/s5-haiku-w8r2-mat_g1_na_q2_1-20260924.prompt.txt",
+      "prompt_digest": "ecfdbc42530e595d45decaf085dd0bfd75a56c0c4c598431e699816d29bcb53b",
+      "samples_delivery": "Prompt file path handed to a Claude Code Agent-tool subagent (model haiku, ruling 4, owner-authorised 2026-09-24 because this Claude host cannot dispatch gpt-5.6-luna). SECOND dispatch for this node: the first reply was REJECTED for template clustering (10 of 72 reasonings were generic frames reused across samples with different numbers) and is preserved unfiled at local_only/scratch/review/s5-haiku-w8/mat_g1_na_q2_1_REJECTED_r1/. The reviewer read the prompt with Read; every sample was inside that file. It wrote verdicts.json with Write.",
+      "tool_uses_by_reviewer": "2 tool calls: Read of the dispatch prompt, Write of verdicts.json. Self-reported and consistent with the harness usage record (tool_uses: 2). Full tool access, instructed to read no other repository file -- a prompt contract, not a sandbox."
     }
   ],
   "findings": {
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "All 18 samples present Grade 1-appropriate tasks: identifying the next number in a sequence, reading single values from visual contexts, and completing blank-fill patterns. Sequences use small step sizes (2, 5, 10) and numbers within 0-100, matching typical Grade 1, Q2 cognitive load. Hint chains progressively expose the arithmetic rule, supporting scaffolding for emerging number sense."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "Every sample directly targets counting by 2s, 5s, or 10s. Samples 2, 5, 9, 10, 12, 17 test step-2 skip counting (e.g., 36→38→40→42→44); samples 3, 4, 6, 15, 16 test step-5 (e.g., 0→5→10→15→20); samples 1, 7, 8, 13, 14, 18 test step-10 (e.g., 0→10→20→30→40). The competency statement and sample tasks are identical in skill and scope."
+    },
     "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "Skip-counting sequences by 2s, 5s and 10s do appear, but a sizeable share of the sample is off the verb entirely: 'Count the books.' on a pictured group is one-by-one cardinality, and 'What number is marked on the number line?' tests point reading, neither of which is counting by 2s, 5s or 10s."
+      "verdict": "PASS",
+      "rationale": "Decomposition losslessly covers the competency. The five-element requirements (count, step_2s, step_5s, step_10s, up_to_100) map directly to sample coverage: 'count' is present in all 18 items; step_2s achieved via 6 samples; step_5s via 5 samples; step_10s via 6 samples; up_to_100 satisfied by all samples operating in the 0–100 range, with samples 3 and 6 explicitly reaching 100.",
+      "decomposition": {
+        "verdict": "PASS",
+        "reasoning": "Each requirement element is addressed without gaps or redundancy. 'count' maps to the common task structure (identify next number or marked value). 'step_2s', 'step_5s', 'step_10s' partition the sample pool by step size, each with representation. 'up_to_100' bounds the numeric range; no sample exceeds 100 and two samples (3, 6) reach it, demonstrating ceiling competency within the bound.",
+        "requirement_ids": [
+          "count",
+          "step_2s",
+          "step_5s",
+          "step_10s",
+          "up_to_100"
+        ]
+      },
+      "clause_ids": [
+        "count",
+        "step_2s",
+        "step_5s",
+        "step_10s",
+        "up_to_100"
+      ]
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "All three named step sizes are actually produced - a tens chain starting at 0, a fives chain running 65, 70, 75, 80, and twos chains in the sixties and the eighties - so no step size is left ungenerated."
+      "rationale": "The 18-sample pool covers all three skip-counting steps and distributes across formats: 5 standard MCQ, 8 read-only MCQ with visuals (NumberLine and EmojiPictorial), 5 cloze/fill-in-blank. Coverage spans starting points (0, 20, 24, 30, 36, 40, 65, 68, 80, 86) and ending points (20–100), testing generalization across the range. Visual and non-visual modalities both represented.",
+      "clause_ids": [
+        "count",
+        "step_2s",
+        "step_5s",
+        "step_10s",
+        "up_to_100"
+      ]
     },
-    "cognitive_capacity": {
+    "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "The stems are single sentences with a visible run of terms and one blank; the narrative version about Moses counting forward by 2 adds a name but no extra inferential step, which suits early Grade 1."
+      "rationale": "All 18 samples operate within or approaching the 'up to 100' bound. Lowest sequences begin at 0; highest approach or reach 100 (samples 3, 6 both answer 100). Step sizes (2, 5, 10) are computationally appropriate for Grade 1, Quarter 2, where place-value understanding and mental addition of small groups are emerging. No sample uses numbers or steps outside grade-level reach."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "Presentation genuinely varies here - an abstract sequence with a blank, a named-pupil counting story, a number line, and a pictured collection - rather than one template with substituted numerals."
-    },
-    "competency_alignment": {
-      "verdict": "CONCERN",
-      "rationale": "The harder-looking items do not make the skip count harder; they swap in a different skill (reading a marked point, or totalling a pictured heap), so the difficulty axis being varied is presentation medium rather than command of the counting sequence."
-    },
-    "scale_appropriateness": {
-      "verdict": "CONCERN",
-      "rationale": "The competency stops at 100, yet option sets reach past it - a choice of 101 sits against a pictured hundred, and a number-line item offers 101 and 102 - so pupils are asked to consider values outside the stated range."
+      "rationale": "Three format variants are represented: 5 MCQ (1, 4, 7, 14, 15), 5 cloze (5, 9, 11, 13, missing ID count—actual count is 5), and 8 read-only MCQ (2, 3, 6, 10, 12, 16, 17, 18). Visual variants include NumberLine (4 samples: 2, 6, 10, 16) and EmojiPictorial (4 samples: 3, 8, 12, 17). Problem types vary: sequence continuation, marked-value identification, and grouped-item counting. Multiple starting points and step positions within sequences tested."
     }
   },
-  "overall": "CONCERN"
+  "overall": "PASS"
 }
