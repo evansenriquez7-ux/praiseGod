@@ -15545,3 +15545,231 @@ consistency pass should re-judge under Luna if single-family evidence is ever wa
 re-review or discard it.
 
 Luna-vs-Haiku agreement on the same node was not measured in this session.
+
+## 2026-09-24 — GPT §5 Luna continuation, eight more v2 reviews filed (`codex-h06-s5-luna-campaign-2-2026-09-24`)
+
+Continued the GPT-host §5 campaign with `gpt-5.6-luna` at medium thinking. No source files were
+edited; this remained a review-filing campaign.
+
+### Establish state
+
+```
+$ df -h /System/Volumes/Data
+Filesystem      Size    Used   Avail Capacity iused ifree %iused  Mounted on
+/dev/disk1s1   112Gi    79Gi    17Gi    83%    1.3M  175M    1%   /System/Volumes/Data
+
+$ ps -eo pid,ppid,etime,command | grep -iE "mutation_harness|obligation_executor|validate_|pytest" | grep -v grep
+# exit 1, no output
+
+$ git status --porcelain -- backend/ tests/ scripts/ data/ frontend/src docs/pgen_contract.md docs/testing_pipeline.md
+# no output
+
+$ git grep -n -E "#\s*planted mutation|//\s*planted " HEAD -- backend/ frontend/src | grep -v mutation_harness
+# exit 1, no output
+
+$ PYTHONPATH=. .venv/bin/python tests/tree_state.py
+PASS tree_state: CERTIFIED
+  live input digest : 126e9eb19a1122bc
+  worktree          : clean
+  mutation_proofs         fresh  162 file(s)
+  release_shards          fresh  6 file(s)
+  obligation_benchmark    fresh  1 file(s)
+  frontend_static_render  fresh  1 file(s)
+  -> Every digest-bound artifact is current and nothing is in flight. Do not re-run the chain -- it proves nothing new. Touch no source you do not mean to change.
+
+$ PYTHONPATH=. .venv/bin/python tests/hardening_status.py
+PASS hardening_status: 10 H-row(s) valid — 3 closed, 6 open, 1 out_of_scope
+```
+
+Graphify query was attempted first and again returned unrelated Firebase Data Connect schema nodes
+with the pre-#1504 warning, so repository tooling remained the evidence source.
+
+H-06 was claimed with a one-line owner edit:
+
+```
+$ git diff --numstat -- validation_reports/phase2_hardening/hardening_status.json
+1	1	validation_reports/phase2_hardening/hardening_status.json
+
+$ PYTHONPATH=. .venv/bin/python tests/hardening_status.py
+PASS hardening_status: 10 H-row(s) valid — 3 closed, 6 open, 1 out_of_scope
+```
+
+Claim commit: `1fc44f78 chore: claim H-06 luna campaign continuation`. Campaign intent opened:
+
+```
+$ PYTHONPATH=. .venv/bin/python tests/tree_state.py --begin campaign --session "codex-h06-s5-luna-campaign-2-2026-09-24" --note "continue §5 blind re-review campaign with gpt-5.6-luna medium reviewer identities"
+tree_state: opened 'campaign' intent -- Resume the campaign; it touches no source, so no re-proof is owed.
+```
+
+Baseline before the two waves:
+
+```
+$ PYTHONPATH=. .venv/bin/python - <<'PY'
+import json
+from pathlib import Path
+legacy=[]
+for p in sorted(Path('validation_reports/judgment').glob('mat_*/*_*.json')):
+    d=json.loads(p.read_text())
+    if d.get('schema_version') != 2:
+        legacy.append(p.stem)
+print('legacy_count', len(legacy))
+print('\n'.join(legacy[:12]))
+PY
+legacy_count 149
+mat_g1_dp_q3_1
+mat_g1_dp_q3_2
+mat_g1_dp_q3_3
+mat_g1_mg_q1_0
+mat_g1_mg_q1_1
+mat_g1_mg_q1_2
+mat_g1_mg_q2_0
+mat_g1_mg_q2_1
+mat_g1_mg_q2_2
+mat_g1_mg_q4_0
+mat_g1_mg_q4_1
+mat_g1_mg_q4_2
+
+$ PYTHONPATH=. .venv/bin/python -c "from backend.app.practice_gen.validation.validate_judgment import validate_judgment_reviews; import re; p=validate_judgment_reviews(); print('findings', len(p), 'nodes', len({m.group(1) for x in p if (m:=re.match(r'(mat_[a-z0-9_]+)', x))}))"
+findings 1238 nodes 150
+```
+
+### Wave 2 filed
+
+Dispatched four one-node prompts, each to `multi_agent_v1.spawn_agent` with
+`model="gpt-5.6-luna"` and `reasoning_effort="medium"`:
+
+| node | reviewer identity | agent id | verdict |
+|---|---|---|---|
+| `mat_g1_dp_q3_1` | `blind-reviewer-gpt-5.6-luna-medium-w2-mat_g1_dp_q3_1-20260924` | `01a0d2d9-ba70-7641-b24c-8c5d7276bc85` | CONCERN |
+| `mat_g1_dp_q3_2` | `blind-reviewer-gpt-5.6-luna-medium-w2-mat_g1_dp_q3_2-20260924` | `01a0d2d9-eb82-7b23-8a0e-7bb407bc5ca0` | FAIL |
+| `mat_g1_dp_q3_3` | `blind-reviewer-gpt-5.6-luna-medium-w2-mat_g1_dp_q3_3-20260924` | `01a0d2d9-ebd9-7d60-9d4f-6e8de171130f` | FAIL |
+| `mat_g1_mg_q1_0` | `blind-reviewer-gpt-5.6-luna-medium-w2-mat_g1_mg_q1_0-20260924` | `01a0d2d9-ec6d-7a20-a291-c74f00b8860e` | CONCERN |
+
+Mechanical audit passed for all four:
+
+```
+mat_g1_dp_q3_1: samples 20/20 in order, requirements 3/3 in order, bad_cites [], short_reasoning 0, duplicate_normalized_reasoning 0
+mat_g1_dp_q3_2: samples 18/18 in order, requirements 3/3 in order, bad_cites [], short_reasoning 0, duplicate_normalized_reasoning 0
+mat_g1_dp_q3_3: samples 20/20 in order, requirements 4/4 in order, bad_cites [], short_reasoning 0, duplicate_normalized_reasoning 0
+mat_g1_mg_q1_0: samples 19/19 in order, requirements 7/7 in order, bad_cites [], short_reasoning 0, duplicate_normalized_reasoning 0
+```
+
+Filed with `tests.file_reviews`, one node per invocation, each using the dispatch-time skeleton and
+exact dispatch prompt:
+
+```
+filed mat_g1_dp_q3_1 -> validation_reports/judgment/mat_g1_dp_q3/mat_g1_dp_q3_1.json
+filed mat_g1_dp_q3_2 -> validation_reports/judgment/mat_g1_dp_q3/mat_g1_dp_q3_2.json
+filed mat_g1_dp_q3_3 -> validation_reports/judgment/mat_g1_dp_q3/mat_g1_dp_q3_3.json
+filed mat_g1_mg_q1_0 -> validation_reports/judgment/mat_g1_mg_q1/mat_g1_mg_q1_0.json
+```
+
+Queue after wave 2:
+
+```
+$ PYTHONPATH=. .venv/bin/python tests/legacy_review_queue.py --write
+legacy_review_queue: 145 legacy review(s), NOT adjudicable evidence
+  overall verdicts        : {'CONCERN': 88, 'FAIL': 43, 'PASS': 14}
+  with a non-PASS facet   : 131
+  non-PASS by facet       : {'cognitive_capacity': 34, 'competency_alignment': 65, 'competency_fulfillment': 70, 'comprehensive_coverage': 57, 'scale_appropriateness': 25, 'variant_comprehensiveness': 78}
+  missing a v1 facet      : 0
+  orphan (node undeclared): 0
+  re-reviews owed         : 145
+  wrote validation_reports/phase2_hardening/legacy_review_queue.json
+
+$ PYTHONPATH=. .venv/bin/python -c "from backend.app.practice_gen.validation.validate_judgment import validate_judgment_reviews; import re; p=validate_judgment_reviews(); print('findings', len(p), 'nodes', len({m.group(1) for x in p if (m:=re.match(r'(mat_[a-z0-9_]+)', x))}))"
+findings 1312 nodes 150
+```
+
+### Wave 3 filed
+
+Dispatched four more one-node prompts, again with `gpt-5.6-luna` medium:
+
+| node | reviewer identity | agent id | verdict |
+|---|---|---|---|
+| `mat_g1_mg_q1_1` | `blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_1-20260924` | `01a0d2df-c07b-75d0-b85d-06032fd0ead3` | CONCERN |
+| `mat_g1_mg_q1_2` | `blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_2-20260924` | `01a0d2df-c10c-76a2-bc7e-a1250ca5b9f2` | FAIL |
+| `mat_g1_mg_q2_0` | `blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q2_0-20260924` | `01a0d2df-c18f-7900-980a-15deea191601` | CONCERN |
+| `mat_g1_mg_q2_1` | `blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q2_1-20260924` | `01a0d2df-c23e-7c11-a23a-0b74c2db699b` | FAIL |
+
+Mechanical audit passed for all four:
+
+```
+mat_g1_mg_q1_1: samples 19/19 in order, requirements 6/6 in order, bad_cites [], short_reasoning 0, duplicate_normalized_reasoning 0
+mat_g1_mg_q1_2: samples 19/19 in order, requirements 5/5 in order, bad_cites [], short_reasoning 0, duplicate_normalized_reasoning 0
+mat_g1_mg_q2_0: samples 18/18 in order, requirements 3/3 in order, bad_cites [], short_reasoning 0, duplicate_normalized_reasoning 0
+mat_g1_mg_q2_1: samples 18/18 in order, requirements 4/4 in order, bad_cites [], short_reasoning 0, duplicate_normalized_reasoning 0
+```
+
+Filed with `tests.file_reviews`:
+
+```
+filed mat_g1_mg_q1_1 -> validation_reports/judgment/mat_g1_mg_q1/mat_g1_mg_q1_1.json
+filed mat_g1_mg_q1_2 -> validation_reports/judgment/mat_g1_mg_q1/mat_g1_mg_q1_2.json
+filed mat_g1_mg_q2_0 -> validation_reports/judgment/mat_g1_mg_q2/mat_g1_mg_q2_0.json
+filed mat_g1_mg_q2_1 -> validation_reports/judgment/mat_g1_mg_q2/mat_g1_mg_q2_1.json
+```
+
+Queue after wave 3:
+
+```
+$ PYTHONPATH=. .venv/bin/python tests/legacy_review_queue.py --write
+legacy_review_queue: 141 legacy review(s), NOT adjudicable evidence
+  overall verdicts        : {'CONCERN': 85, 'FAIL': 42, 'PASS': 14}
+  with a non-PASS facet   : 127
+  non-PASS by facet       : {'cognitive_capacity': 34, 'competency_alignment': 64, 'competency_fulfillment': 67, 'comprehensive_coverage': 57, 'scale_appropriateness': 24, 'variant_comprehensiveness': 76}
+  missing a v1 facet      : 0
+  orphan (node undeclared): 0
+  re-reviews owed         : 141
+  wrote validation_reports/phase2_hardening/legacy_review_queue.json
+
+$ PYTHONPATH=. .venv/bin/python - <<'PY'
+import json
+from pathlib import Path
+counts={}; nodes=[]
+for p in sorted(Path('validation_reports/judgment').glob('mat_*/*_*.json')):
+    d=json.loads(p.read_text()); sv=d.get('schema_version'); counts[sv]=counts.get(sv,0)+1
+    if sv==2: nodes.append(p.stem)
+print('schema_counts', counts)
+print('v2_count', len(nodes))
+PY
+schema_counts {2: 10, None: 141}
+v2_count 10
+
+$ PYTHONPATH=. .venv/bin/python -c "from backend.app.practice_gen.validation.validate_judgment import validate_judgment_reviews; import re; p=validate_judgment_reviews(); print('findings', len(p), 'nodes', len({m.group(1) for x in p if (m:=re.match(r'(mat_[a-z0-9_]+)', x))}))"
+findings 1391 nodes 150
+```
+
+### Reviewer-discovered bugs queued, not fixed mid-campaign
+
+The fresh v2 reviews found content defects that should be batched as source work later:
+
+* `mat_g1_dp_q3_1`: pictograph construction samples report `visual_type`/structure as `BarChart`;
+  samples `395815bf8f0a372e88b3` and `4e0ae1ba47826b5a7c6f` also have irrelevant interest/context
+  wrappers ("dance shoes" with book symbols; loaves of bread around pet categories).
+* `mat_g1_dp_q3_2`: pictograph interpretation is broadly unanswerable from the rendered packet:
+  plotted picture counts are absent, structures identify `BarChart`, and numeric axes violate the
+  `without_scale` clause.
+* `mat_g1_dp_q3_3`: table-from-pictograph items contain blank symbol rows with nonzero answers
+  (for example samples `9ba22433cce0b584f0da`, `99bbbfb13e45207fa7e0`, `961bac0887f6cee5aee3`,
+  `d3570a04471870067f37`, `c1b690a9454855380781`, and others).
+* `mat_g1_mg_q1_2`: "two triangles joined along longest edges make a rectangle" is under-specified;
+  several samples (`6dc799abb3dd2208d3fd`, `a02281043653da56eeb8`, `2afcf0ace18ad26c2c9d`,
+  `c742fefaf59ce7f01716`) do not provide the congruence/orientation needed to entail a rectangle.
+* `mat_g1_mg_q2_0`: ruler/measurement packets omit the rendered geometry needed to independently
+  verify lengths/distances; interest wrappers also distract on samples `edb86be6f21de1e43f9e` and
+  `d8b98108a68dc10d07a7`.
+* `mat_g1_mg_q2_1`: shorter-distance hints are reversed across many samples. Examples:
+  `97a1399803c183295456` says the answer 2 paperclips is shorter, but the final hint calls it
+  longer; `9156c40c5378ea3902ba` says 3 blocks is shorter but the hint calls it longer;
+  `4b18da8ed44aa5b52cb0` says 8 blocks is shorter than 9 but the hint calls 8 longer.
+
+No generator source was edited in this campaign checkpoint.
+
+### Corpus provenance
+
+The §5 v2 corpus is now mixed-family: 1 Haiku node (`mat_g3_na_q4_7`) and 9
+`gpt-5.6-luna`/medium nodes (`mat_g1_dp_q3_0`, `mat_g1_dp_q3_1`, `mat_g1_dp_q3_2`,
+`mat_g1_dp_q3_3`, `mat_g1_mg_q1_0`, `mat_g1_mg_q1_1`, `mat_g1_mg_q1_2`, `mat_g1_mg_q2_0`,
+`mat_g1_mg_q2_1`). If a single-family corpus is ever wanted, `mat_g3_na_q4_7` remains the node to
+re-judge under Luna; it was not re-reviewed or discarded here.

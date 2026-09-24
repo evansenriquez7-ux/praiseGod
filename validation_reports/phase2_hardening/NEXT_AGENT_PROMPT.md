@@ -1,5 +1,16 @@
 # Task prompt — continue Phase 2 hardening (GPT-hosted session)
 
+**Refreshed again 2026-09-24 by `codex-h06-s5-luna-campaign-2-2026-09-24`.** Eight more
+`gpt-5.6-luna`/medium reviews were dispatched and filed: `mat_g1_dp_q3_1`, `mat_g1_dp_q3_2`,
+`mat_g1_dp_q3_3`, `mat_g1_mg_q1_0`, `mat_g1_mg_q1_1`, `mat_g1_mg_q1_2`, `mat_g1_mg_q2_0`,
+`mat_g1_mg_q2_1`. The legacy queue moved **149 → 141** (`schema_counts {2: 10, None: 141}`), while
+`validate_judgment_reviews()` moved **1238 → 1391** because the fresh reviews found real content
+defects. New bugs queued for source work include pictograph packets/rendering as `BarChart` or
+omitting symbol counts, table-from-pictograph rows blank despite nonzero answers, under-specified
+triangle composition, unverifiable ruler-measure geometry, and shorter-distance hints saying the
+correct shorter value is "longer." Everything below is historical unless this banner or a later
+executed command supersedes it.
+
 **Refreshed 2026-09-24 by `codex-h06-s5-luna-campaign-2026-09-24`.** One required GPT-host
 `gpt-5.6-luna`/medium blind review was dispatched and filed for `mat_g1_dp_q3_0`
 (`blind-reviewer-gpt-5.6-luna-medium-b1n1-20260924`). It was valid schema v2 and moved the legacy

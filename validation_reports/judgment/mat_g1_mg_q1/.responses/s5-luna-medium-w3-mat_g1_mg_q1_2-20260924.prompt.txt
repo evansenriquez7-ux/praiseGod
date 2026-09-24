@@ -1,0 +1,228 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_2-20260924
+
+Write one JSON object to:
+  local_only/scratch/review/s5-luna-2026-09-24/wave3/mat_g1_mg_q1_2/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN; never invent a supporting sample.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_2-20260924",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g1_mg_q1_2
+PACKET DIGEST: e785ea4d61a1ef801b104a73c5896c7f7f41bbe3ac3eed2c9ca10716feb5bbce
+COMPETENCY (Grade 1, Quarter 1, None):
+Compose and decompose triangles, squares, and rectangles.
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  compose: Compose
+  decompose: decompose
+  triangles: triangles
+  squares: squares
+  rectangles: rectangles
+
+SAMPLES (every one of these is real rendered output):
+  sample 66470ac61d35ae9804d8  seed 42  [read_mcq]
+      stem:    A long rectangle is cut across its width into two equal squares. What two shapes are made?
+      answer:  two squares
+      options: one triangle and one square / two squares / two triangles / two rectangles
+      hints:   ["Think about the sides and corners of each shape.", "A triangle has 3 sides and 3 corners.", "A square has 4 equal sides and 4 corners.", "A rectangle has 4 sides (opposite sides are equal) and 4 corners."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ShapeBoard", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ShapeBoard
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ShapeBoard", "element_count": 8, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 6dc799abb3dd2208d3fd  seed 43  [mcq]
+      stem:    Two triangles are placed together, matching their longest straight edges. What shape do they form?
+      answer:  rectangle
+      options: triangle / rectangle / square / none of these
+      hints:   ["Think about the sides and corners of each shape.", "A triangle has 3 sides and 3 corners.", "A square has 4 equal sides and 4 corners.", "A rectangle has 4 sides (opposite sides are equal) and 4 corners."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 622ec3a6bd75a0cb83e2  seed 44  [read_mcq]
+      stem:    Two identical squares are placed side by side. What shape do they form?
+      answer:  rectangle
+      options: none of these / square / triangle / rectangle
+      hints:   ["Think about the sides and corners of each shape.", "A triangle has 3 sides and 3 corners.", "A square has 4 equal sides and 4 corners.", "A rectangle has 4 sides (opposite sides are equal) and 4 corners."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ShapeBoard", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ShapeBoard
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ShapeBoard", "element_count": 11, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 8895ecc962c983010808  seed 45  [mcq]
+      stem:    A square is cut on a slant, from one corner to the opposite corner. What two shapes are made?
+      answer:  two triangles
+      options: two squares / two triangles / two rectangles / one triangle and one square
+      hints:   ["Think about the sides and corners of each shape.", "A triangle has 3 sides and 3 corners.", "A square has 4 equal sides and 4 corners.", "A rectangle has 4 sides (opposite sides are equal) and 4 corners."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample a02281043653da56eeb8  seed 46  [mcq]
+      stem:    Two triangles are placed together, matching their longest straight edges. What shape do they form?
+      answer:  rectangle
+      options: triangle / square / none of these / rectangle
+      hints:   ["Think about the sides and corners of each shape.", "A triangle has 3 sides and 3 corners.", "A square has 4 equal sides and 4 corners.", "A rectangle has 4 sides (opposite sides are equal) and 4 corners."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample e9ff952a61b7624053b9  seed 500  [read_mcq]
+      stem:    Two identical squares are placed side by side. What shape do they form?
+      answer:  rectangle
+      options: triangle / square / none of these / rectangle
+      hints:   ["Think about the sides and corners of each shape.", "A triangle has 3 sides and 3 corners.", "A square has 4 equal sides and 4 corners.", "A rectangle has 4 sides (opposite sides are equal) and 4 corners."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ShapeBoard", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ShapeBoard
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ShapeBoard", "element_count": 11, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 833779957d6f99c15949  seed 501  [read_mcq]
+      stem:    A long rectangle is cut across its width into two equal squares. What two shapes are made?
+      answer:  two squares
+      options: two squares / two triangles / two rectangles / one triangle and one square
+      hints:   ["Think about the sides and corners of each shape.", "A triangle has 3 sides and 3 corners.", "A square has 4 equal sides and 4 corners.", "A rectangle has 4 sides (opposite sides are equal) and 4 corners."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ShapeBoard", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ShapeBoard
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ShapeBoard", "element_count": 8, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 5e8e47709f31ecbff309  seed 502  [read_mcq]
+      stem:    Two identical triangles are joined along their matching straight edges to make a 4-sided shape with equal sides. What shape is formed?
+      answer:  square
+      options: triangle / rectangle / none of these / square
+      hints:   ["Think about the sides and corners of each shape.", "A triangle has 3 sides and 3 corners.", "A square has 4 equal sides and 4 corners.", "A rectangle has 4 sides (opposite sides are equal) and 4 corners."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ShapeBoard", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ShapeBoard
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ShapeBoard", "element_count": 11, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample c5f6df51bf82de913da5  seed 600  [mcq]
+      stem:    Two identical triangles are rotated to fit together into a rectangle. What shape is made?
+      answer:  rectangle
+      options: none of these / square / triangle / rectangle
+      hints:   ["Think about the sides and corners of each shape.", "A triangle has 3 sides and 3 corners.", "A square has 4 equal sides and 4 corners.", "A rectangle has 4 sides (opposite sides are equal) and 4 corners."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 14e54405ab54741a01fb  seed 601  [read_mcq]
+      stem:    A rectangle is cut into two equal pieces down the middle. What two shapes are made?
+      answer:  two rectangles
+      options: two triangles / one triangle and one square / two rectangles / two squares
+      hints:   ["Think about the sides and corners of each shape.", "A triangle has 3 sides and 3 corners.", "A square has 4 equal sides and 4 corners.", "A rectangle has 4 sides (opposite sides are equal) and 4 corners."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ShapeBoard", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ShapeBoard
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ShapeBoard", "element_count": 5, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 1f2791d962fa10548b9e  seed 700  [read_mcq]
+      stem:    A rectangle is cut into two equal pieces down the middle. What two shapes are made?
+      answer:  two rectangles
+      options: two rectangles / one triangle and one square / two squares / two triangles
+      hints:   ["Think about the sides and corners of each shape.", "A triangle has 3 sides and 3 corners.", "A square has 4 equal sides and 4 corners.", "A rectangle has 4 sides (opposite sides are equal) and 4 corners."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ShapeBoard", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ShapeBoard
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ShapeBoard", "element_count": 5, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample b713e15cc290a9ef46d6  seed 701  [mcq]
+      stem:    💃 Sir Rez has a math challenge about dance shoes. A long rectangle is cut across its width into two equal squares. What two shapes are made?
+      answer:  two squares
+      options: one triangle and one square / two rectangles / two squares / two triangles
+      hints:   ["Think about the sides and corners of each shape.", "A triangle has 3 sides and 3 corners.", "A square has 4 equal sides and 4 corners.", "A rectangle has 4 sides (opposite sides are equal) and 4 corners."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 2afcf0ace18ad26c2c9d  seed 702  [read_mcq]
+      stem:    🧁 Ate Nena has a math challenge about loaves of bread. Two triangles are placed together, matching their longest straight edges. What shape do they form?
+      answer:  rectangle
+      options: triangle / none of these / square / rectangle
+      hints:   ["Think about the sides and corners of each shape.", "A triangle has 3 sides and 3 corners.", "A square has 4 equal sides and 4 corners.", "A rectangle has 4 sides (opposite sides are equal) and 4 corners."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ShapeBoard", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ShapeBoard
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ShapeBoard", "element_count": 11, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 98cf70e64bc15afbd6d8  seed 800  [read_mcq]
+      stem:    A long rectangle is cut across its width into two equal squares. What two shapes are made?
+      answer:  two squares
+      options: two rectangles / two squares / one triangle and one square / two triangles
+      hints:   ["Think about the sides and corners of each shape.", "A triangle has 3 sides and 3 corners.", "A square has 4 equal sides and 4 corners.", "A rectangle has 4 sides (opposite sides are equal) and 4 corners."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ShapeBoard", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ShapeBoard
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ShapeBoard", "element_count": 8, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample ea7d7ba07205c0b1755e  seed 900  [mcq]
+      stem:    Two identical triangles are joined along their matching straight edges to make a 4-sided shape with equal sides. What shape is formed?
+      answer:  square
+      options: square / rectangle / triangle / none of these
+      hints:   ["Think about the sides and corners of each shape.", "A triangle has 3 sides and 3 corners.", "A square has 4 equal sides and 4 corners.", "A rectangle has 4 sides (opposite sides are equal) and 4 corners."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample face7ec9b45fd705854e  seed 901  [read_mcq]
+      stem:    Two identical squares are placed side by side. What shape do they form?
+      answer:  rectangle
+      options: triangle / square / none of these / rectangle
+      hints:   ["Think about the sides and corners of each shape.", "A triangle has 3 sides and 3 corners.", "A square has 4 equal sides and 4 corners.", "A rectangle has 4 sides (opposite sides are equal) and 4 corners."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ShapeBoard", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ShapeBoard
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ShapeBoard", "element_count": 11, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 8da7e2a0b34ccf141a09  seed 1000  [read_mcq]
+      stem:    Two identical squares are placed side by side. What shape do they form?
+      answer:  rectangle
+      options: square / none of these / rectangle / triangle
+      hints:   ["Think about the sides and corners of each shape.", "A triangle has 3 sides and 3 corners.", "A square has 4 equal sides and 4 corners.", "A rectangle has 4 sides (opposite sides are equal) and 4 corners."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ShapeBoard", "interaction_mode": "read", "answer_collection": "mcq", "experience": "hint_gated"}
+      visual:  ShapeBoard
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ShapeBoard", "element_count": 11, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample c742fefaf59ce7f01716  seed 1001  [read_mcq]
+      stem:    Two triangles are placed together, matching their longest straight edges. What shape do they form?
+      answer:  rectangle
+      options: triangle / square / rectangle / none of these
+      hints:   ["Think about the sides and corners of each shape.", "A triangle has 3 sides and 3 corners.", "A square has 4 equal sides and 4 corners.", "A rectangle has 4 sides (opposite sides are equal) and 4 corners."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ShapeBoard", "interaction_mode": "read", "answer_collection": "mcq", "experience": "mastery_drill"}
+      visual:  ShapeBoard
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ShapeBoard", "element_count": 11, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample a58fc4229608082b31f2  seed 1002  [read_mcq]
+      stem:    Two identical triangles are joined along their matching straight edges to make a 4-sided shape with equal sides. What shape is formed?
+      answer:  square
+      options: rectangle / none of these / square / triangle
+      hints:   ["Think about the sides and corners of each shape.", "A triangle has 3 sides and 3 corners.", "A square has 4 equal sides and 4 corners.", "A rectangle has 4 sides (opposite sides are equal) and 4 corners."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ShapeBoard", "interaction_mode": "read", "answer_collection": "mcq", "experience": "scaffolded"}
+      visual:  ShapeBoard
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ShapeBoard", "element_count": 11, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+

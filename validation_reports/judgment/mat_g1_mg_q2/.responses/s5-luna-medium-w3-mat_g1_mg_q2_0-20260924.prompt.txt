@@ -1,0 +1,235 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q2_0-20260924
+
+Write one JSON object to:
+  local_only/scratch/review/s5-luna-2026-09-24/wave3/mat_g1_mg_q2_0/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN; never invent a supporting sample.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q2_0-20260924",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g1_mg_q2_0
+PACKET DIGEST: 8682992fd8a99430fb77ed2b70a6563358487c1a189eaa706110bbe339c127ac
+COMPETENCY (Grade 1, Quarter 2, None):
+Measure the length of an object and the distance between two objects using non-standard units.
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  measure_length: Measure the length of an object
+  measure_distance: distance between two objects
+  non_standard_units: non-standard units
+
+SAMPLES (every one of these is real rendered output):
+  sample 17c6176de99a8688aa69  seed 42  [read_mcq]
+      stem:    How long is a paintbrush? Give your answer in paperclips.
+      answer:  2
+      options: 1 / 2 / 20 / 3
+      hints:   ["Count how many paperclips fit along the object from end to end.", "Make sure no gaps or overlaps between the units.", "The length is 2 paperclips."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "RulerMeasure", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  RulerMeasure
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "RulerMeasure", "element_count": 21, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 1, "text_labels": ["0 paperclips", "0", "5", "10", "paperclips"], "distinct_colours": ["#f8fafc", "#cbd5e1", "#475569", "#0f172a"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 2b8c70b7a68f60074042  seed 43  [read_mcq]
+      stem:    How long is a pencil? Give your answer in hands.
+      answer:  4
+      options: 20 / 5 / 4 / 3
+      hints:   ["Count how many hands fit along the object from end to end.", "Make sure no gaps or overlaps between the units.", "The length is 4 hands."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "RulerMeasure", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  RulerMeasure
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "RulerMeasure", "element_count": 21, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 1, "text_labels": ["0 hands", "0", "5", "10", "hands"], "distinct_colours": ["#f8fafc", "#cbd5e1", "#475569", "#0f172a"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample abf152fd9fc9a17d38b5  seed 44  [read_mcq]
+      stem:    A desk and a ball are placed apart. The distance between them is ___ paperclips.
+      answer:  10
+      options: 9 / 11 / 20 / 10
+      hints:   ["Count how many paperclips fit in the gap between the two objects.", "Make sure no gaps or overlaps between the units.", "The distance between them is 10 paperclips."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "RulerMeasure", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  RulerMeasure
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "RulerMeasure", "element_count": 23, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 1, "text_labels": ["0 paperclips", "0", "5", "10", "paperclips"], "distinct_colours": ["#f8fafc", "#cbd5e1", "#475569", "#0f172a"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 796270a32f9b98426398  seed 45  [read_mcq]
+      stem:    A bag and a chair are placed apart. The distance between them is ___ hands.
+      answer:  5
+      options: 4 / 6 / 5 / 20
+      hints:   ["Count how many hands fit in the gap between the two objects.", "Make sure no gaps or overlaps between the units.", "The distance between them is 5 hands."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "RulerMeasure", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  RulerMeasure
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "RulerMeasure", "element_count": 21, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 1, "text_labels": ["0 hands", "0", "5", "10", "hands"], "distinct_colours": ["#f8fafc", "#cbd5e1", "#475569", "#0f172a"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 1def2f4ef541e02f8ae4  seed 46  [read_mcq]
+      stem:    How long is a pencil? Give your answer in crayons.
+      answer:  2
+      options: 2 / 1 / 3 / 20
+      hints:   ["Count how many crayons fit along the object from end to end.", "Make sure no gaps or overlaps between the units.", "The length is 2 crayons."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "RulerMeasure", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  RulerMeasure
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "RulerMeasure", "element_count": 21, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 1, "text_labels": ["0 crayons", "0", "5", "10", "crayons"], "distinct_colours": ["#f8fafc", "#cbd5e1", "#475569", "#0f172a"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 598c6f08e6fb1b18dfb0  seed 500  [read_mcq]
+      stem:    A desk and a bag are placed apart. The distance between them is ___ paperclips.
+      answer:  10
+      options: 20 / 9 / 10 / 11
+      hints:   ["Count how many paperclips fit in the gap between the two objects.", "Make sure no gaps or overlaps between the units.", "The distance between them is 10 paperclips."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "RulerMeasure", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  RulerMeasure
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "RulerMeasure", "element_count": 23, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 1, "text_labels": ["0 paperclips", "0", "5", "10", "paperclips"], "distinct_colours": ["#f8fafc", "#cbd5e1", "#475569", "#0f172a"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 9d776d61cd26085c1c44  seed 501  [read_mcq]
+      stem:    A chair and a box are placed apart. The distance between them is ___ hands.
+      answer:  7
+      options: 7 / 6 / 8 / 20
+      hints:   ["Count how many hands fit in the gap between the two objects.", "Make sure no gaps or overlaps between the units.", "The distance between them is 7 hands."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "RulerMeasure", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  RulerMeasure
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "RulerMeasure", "element_count": 21, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 1, "text_labels": ["0 hands", "0", "5", "10", "hands"], "distinct_colours": ["#f8fafc", "#cbd5e1", "#475569", "#0f172a"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 252ae32b9a6ba6c157f3  seed 502  [read_mcq]
+      stem:    A shelf and a chair are placed apart. The distance between them is ___ hands.
+      answer:  3
+      options: 4 / 2 / 20 / 3
+      hints:   ["Count how many hands fit in the gap between the two objects.", "Make sure no gaps or overlaps between the units.", "The distance between them is 3 hands."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "RulerMeasure", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  RulerMeasure
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "RulerMeasure", "element_count": 21, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 1, "text_labels": ["0 hands", "0", "5", "10", "hands"], "distinct_colours": ["#f8fafc", "#cbd5e1", "#475569", "#0f172a"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample c4b694f6b766f2032592  seed 600  [read_mcq]
+      stem:    A shelf and a bag are placed apart. The distance between them is ___ hands.
+      answer:  4
+      options: 20 / 3 / 5 / 4
+      hints:   ["Count how many hands fit in the gap between the two objects.", "Make sure no gaps or overlaps between the units.", "The distance between them is 4 hands."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "RulerMeasure", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  RulerMeasure
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "RulerMeasure", "element_count": 21, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 1, "text_labels": ["0 hands", "0", "5", "10", "hands"], "distinct_colours": ["#f8fafc", "#cbd5e1", "#475569", "#0f172a"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 1e93d12180de8346c133  seed 700  [read_mcq]
+      stem:    How long is a spoon? Give your answer in blocks.
+      answer:  5
+      options: 5 / 20 / 4 / 6
+      hints:   ["Count how many blocks fit along the object from end to end.", "Make sure no gaps or overlaps between the units.", "The length is 5 blocks."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "RulerMeasure", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  RulerMeasure
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "RulerMeasure", "element_count": 21, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 1, "text_labels": ["0 blocks", "0", "5", "10", "blocks"], "distinct_colours": ["#f8fafc", "#cbd5e1", "#475569", "#0f172a"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample edb86be6f21de1e43f9e  seed 701  [read_mcq]
+      stem:    🧁 Boboy has a math challenge about cookies. A ball and a shelf are placed apart. The distance between them is ___ hands.
+      answer:  5
+      options: 5 / 4 / 20 / 6
+      hints:   ["Count how many hands fit in the gap between the two objects.", "Make sure no gaps or overlaps between the units.", "The distance between them is 5 hands."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "RulerMeasure", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  RulerMeasure
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "RulerMeasure", "element_count": 21, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 1, "text_labels": ["0 hands", "0", "5", "10", "hands"], "distinct_colours": ["#f8fafc", "#cbd5e1", "#475569", "#0f172a"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample d8b98108a68dc10d07a7  seed 702  [read_mcq]
+      stem:    🏀 Isko has a math challenge about basketballs. How long is a pencil? Give your answer in blocks.
+      answer:  2
+      options: 2 / 20 / 3 / 1
+      hints:   ["Count how many blocks fit along the object from end to end.", "Make sure no gaps or overlaps between the units.", "The length is 2 blocks."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "RulerMeasure", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  RulerMeasure
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "RulerMeasure", "element_count": 21, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 1, "text_labels": ["0 blocks", "0", "5", "10", "blocks"], "distinct_colours": ["#f8fafc", "#cbd5e1", "#475569", "#0f172a"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample a353492d66b290070300  seed 800  [read_mcq]
+      stem:    A ball and a bag are placed apart. The distance between them is ___ paperclips.
+      answer:  11
+      options: 20 / 11 / 12 / 10
+      hints:   ["Count how many paperclips fit in the gap between the two objects.", "Make sure no gaps or overlaps between the units.", "The distance between them is 11 paperclips."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "RulerMeasure", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  RulerMeasure
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "RulerMeasure", "element_count": 24, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 1, "text_labels": ["0 paperclips", "0", "5", "10", "paperclips"], "distinct_colours": ["#f8fafc", "#cbd5e1", "#475569", "#0f172a"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample be487728f2d69c156e39  seed 900  [read_mcq]
+      stem:    How long is a shoe? Give your answer in blocks.
+      answer:  4
+      options: 3 / 20 / 4 / 5
+      hints:   ["Count how many blocks fit along the object from end to end.", "Make sure no gaps or overlaps between the units.", "The length is 4 blocks."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "RulerMeasure", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  RulerMeasure
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "RulerMeasure", "element_count": 21, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 1, "text_labels": ["0 blocks", "0", "5", "10", "blocks"], "distinct_colours": ["#f8fafc", "#cbd5e1", "#475569", "#0f172a"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 08686b88a998ca24ed65  seed 901  [read_mcq]
+      stem:    A chair and a ball are placed apart. The distance between them is ___ paperclips.
+      answer:  12
+      options: 20 / 12 / 11 / 13
+      hints:   ["Count how many paperclips fit in the gap between the two objects.", "Make sure no gaps or overlaps between the units.", "The distance between them is 12 paperclips."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "RulerMeasure", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  RulerMeasure
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "RulerMeasure", "element_count": 25, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 1, "text_labels": ["0 paperclips", "0", "5", "10", "paperclips"], "distinct_colours": ["#f8fafc", "#cbd5e1", "#475569", "#0f172a"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 8bbda5745cddfa447a41  seed 1000  [read_mcq]
+      stem:    A ball and a bag are placed apart. The distance between them is ___ paperclips.
+      answer:  12
+      options: 13 / 20 / 11 / 12
+      hints:   ["Count how many paperclips fit in the gap between the two objects.", "Make sure no gaps or overlaps between the units.", "The distance between them is 12 paperclips."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "RulerMeasure", "interaction_mode": "read", "answer_collection": "mcq", "experience": "hint_gated"}
+      visual:  RulerMeasure
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "RulerMeasure", "element_count": 25, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 1, "text_labels": ["0 paperclips", "0", "5", "10", "paperclips"], "distinct_colours": ["#f8fafc", "#cbd5e1", "#475569", "#0f172a"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 139d6eada7a47f03674e  seed 1001  [read_mcq]
+      stem:    How long is a pencil? Give your answer in blocks.
+      answer:  8
+      options: 7 / 8 / 9 / 20
+      hints:   ["Count how many blocks fit along the object from end to end.", "Make sure no gaps or overlaps between the units.", "The length is 8 blocks."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "RulerMeasure", "interaction_mode": "read", "answer_collection": "mcq", "experience": "mastery_drill"}
+      visual:  RulerMeasure
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "RulerMeasure", "element_count": 21, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 1, "text_labels": ["0 blocks", "0", "5", "10", "blocks"], "distinct_colours": ["#f8fafc", "#cbd5e1", "#475569", "#0f172a"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 9bbb062fa4e0be254d72  seed 1002  [read_mcq]
+      stem:    A box and a shelf are placed apart. The distance between them is ___ paperclips.
+      answer:  5
+      options: 5 / 6 / 20 / 4
+      hints:   ["Count how many paperclips fit in the gap between the two objects.", "Make sure no gaps or overlaps between the units.", "The distance between them is 5 paperclips."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "RulerMeasure", "interaction_mode": "read", "answer_collection": "mcq", "experience": "scaffolded"}
+      visual:  RulerMeasure
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "RulerMeasure", "element_count": 21, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 1, "text_labels": ["0 paperclips", "0", "5", "10", "paperclips"], "distinct_colours": ["#f8fafc", "#cbd5e1", "#475569", "#0f172a"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+

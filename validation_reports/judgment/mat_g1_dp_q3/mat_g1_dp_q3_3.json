@@ -1,7 +1,38 @@
 {
+  "schema_version": 2,
   "node_id": "mat_g1_dp_q3_3",
-  "reviewed_by": "reviewer-c1-lantern-fescue-3061",
-  "review_date": "2026-09-11",
+  "competency_snapshot": {
+    "text": "Organize data in a pictograph without a scale into a table.",
+    "grade": 1,
+    "quarter": 3,
+    "subdomain": null
+  },
+  "requirements_snapshot": [
+    {
+      "kind": "task",
+      "id": "organize_data",
+      "clause": "Organize data"
+    },
+    {
+      "kind": "object",
+      "id": "pictograph",
+      "clause": "pictograph"
+    },
+    {
+      "kind": "property",
+      "id": "without_scale",
+      "clause": "without a scale"
+    },
+    {
+      "kind": "representation",
+      "id": "table",
+      "clause": "table"
+    }
+  ],
+  "packet_digest": "76d48b84771917ec6c7cb6866ac9b02a8ee941f5e8632fa681312ed487d73e99",
+  "sampling_version": "phase2-stratified-v2-rendered-visual",
+  "reviewed_by": "blind-reviewer-gpt-5.6-luna-medium-w2-mat_g1_dp_q3_3-20260924",
+  "review_date": "2026-09-24",
   "blind": true,
   "sample_seeds": [
     42,
@@ -13,10 +44,43 @@
     501,
     502,
     600,
-    601
+    601,
+    700,
+    701,
+    702,
+    800,
+    801,
+    900,
+    901,
+    1000,
+    1001,
+    1002
+  ],
+  "sample_ids": [
+    "4197ebdca97038a33e12",
+    "2c1bc178411b3fc19211",
+    "9ba22433cce0b584f0da",
+    "99bbbfb13e45207fa7e0",
+    "961bac0887f6cee5aee3",
+    "d3570a04471870067f37",
+    "c1b690a9454855380781",
+    "4508c2ce0156bb2e5965",
+    "2f358c682c697413f2a1",
+    "426dd70a9e3961895acc",
+    "fe292de1d4cefc1f64cf",
+    "5ffdcccae140d84f282d",
+    "8bf36b6987e4fb3bfd16",
+    "e899b0c71f1aaed441f0",
+    "1864c70cc4c3d7197e57",
+    "afde7ca226c8d8ceb903",
+    "e4467de78f1bcebb3579",
+    "f115f41b312ff9c8ab71",
+    "97b979e4876f12ef5ae1",
+    "21374c0f6fb1dcd5622b"
   ],
   "samples_reviewed": [
     {
+      "node_id": "mat_g1_dp_q3_3",
       "seed": 42,
       "formatter": "set_fill_in_blank",
       "question_text": "Count the pictures in each row of the pictograph, then write the counts for cats, dogs, birds and fish in the table.",
@@ -25,9 +89,121 @@
         3,
         2,
         2
-      ]
+      ],
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "FillInTable",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "resolved_answer": [
+        1,
+        3,
+        2,
+        2
+      ],
+      "hints": [
+        "Look at the pictograph carefully.",
+        "Each picture stands for 1 item.",
+        "Count the items for each category and record them in the table."
+      ],
+      "visual_type": "FillInTable",
+      "visual_payload": {
+        "columns": [
+          "Category",
+          "Count"
+        ],
+        "rows": [
+          [
+            "cats",
+            null
+          ],
+          [
+            "dogs",
+            null
+          ],
+          [
+            "birds",
+            null
+          ],
+          [
+            "fish",
+            null
+          ]
+        ],
+        "source_pictograph": {
+          "symbol": "🐾",
+          "scale": 1,
+          "title": "Favorite Pets",
+          "rows": [
+            {
+              "category": "cats",
+              "count": 1
+            },
+            {
+              "category": "dogs",
+              "count": 3
+            },
+            {
+              "category": "birds",
+              "count": 2
+            },
+            {
+              "category": "fish",
+              "count": 2
+            }
+          ]
+        }
+      },
+      "visual_render": {
+        "visual_type": "FillInTable",
+        "renderer_input_digest": "9ca60455e252e996a517b8c9a0699297bf695b04f71496710643ac0d0537d34e",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "FillInTable",
+          "element_count": 41,
+          "svg_count": 0,
+          "table_row_count": 9,
+          "table_cell_count": 18,
+          "button_count": 0,
+          "input_count": 4,
+          "text_labels": [
+            "Favorite Pets",
+            "cats",
+            "🐾",
+            "dogs",
+            "🐾🐾🐾",
+            "birds",
+            "🐾🐾",
+            "fish",
+            "Category",
+            "Count",
+            "Fill in the missing values in the table"
+          ],
+          "distinct_colours": [
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--input-bg)",
+            "hsl(var(--text-muted)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "4197ebdca97038a33e12",
+      "replay_digest": "c76aa2f5ee29f3259de1e9f8100a8a5c60c6197d5d15f78007ce88d224490b0c"
     },
     {
+      "node_id": "mat_g1_dp_q3_3",
       "seed": 43,
       "formatter": "set_fill_in_blank",
       "question_text": "Count the pictures in each row of the pictograph, then write the counts for apples, bananas, mangoes and grapes in the table.",
@@ -36,9 +212,121 @@
         2,
         4,
         3
-      ]
+      ],
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "FillInTable",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "resolved_answer": [
+        3,
+        2,
+        4,
+        3
+      ],
+      "hints": [
+        "Look at the pictograph carefully.",
+        "Each picture stands for 1 item.",
+        "Count the items for each category and record them in the table."
+      ],
+      "visual_type": "FillInTable",
+      "visual_payload": {
+        "columns": [
+          "Category",
+          "Count"
+        ],
+        "rows": [
+          [
+            "apples",
+            null
+          ],
+          [
+            "bananas",
+            null
+          ],
+          [
+            "mangoes",
+            null
+          ],
+          [
+            "grapes",
+            null
+          ]
+        ],
+        "source_pictograph": {
+          "symbol": "🍎",
+          "scale": 1,
+          "title": "Favorite Fruits",
+          "rows": [
+            {
+              "category": "apples",
+              "count": 3
+            },
+            {
+              "category": "bananas",
+              "count": 2
+            },
+            {
+              "category": "mangoes",
+              "count": 4
+            },
+            {
+              "category": "grapes",
+              "count": 3
+            }
+          ]
+        }
+      },
+      "visual_render": {
+        "visual_type": "FillInTable",
+        "renderer_input_digest": "a9873bf59b593a4b88b11fa024521ae1ad327d240e972d78e9f2a085216e9098",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "FillInTable",
+          "element_count": 41,
+          "svg_count": 0,
+          "table_row_count": 9,
+          "table_cell_count": 18,
+          "button_count": 0,
+          "input_count": 4,
+          "text_labels": [
+            "Favorite Fruits",
+            "apples",
+            "🍎🍎🍎",
+            "bananas",
+            "🍎🍎",
+            "mangoes",
+            "🍎🍎🍎🍎",
+            "grapes",
+            "Category",
+            "Count",
+            "Fill in the missing values in the table"
+          ],
+          "distinct_colours": [
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--input-bg)",
+            "hsl(var(--text-muted)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "2c1bc178411b3fc19211",
+      "replay_digest": "5bd1d0ff3cc1ec74719b5e4f4a32785d95e7efd37fa6e406f830ef79b381b2ee"
     },
     {
+      "node_id": "mat_g1_dp_q3_3",
       "seed": 44,
       "formatter": "set_fill_in_blank",
       "question_text": "Look at the pictograph. Write the correct count for each row in the table: roses, sunflowers, tulips and daisies.",
@@ -47,9 +335,121 @@
         5,
         1,
         2
-      ]
+      ],
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "FillInTable",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "resolved_answer": [
+        5,
+        5,
+        1,
+        2
+      ],
+      "hints": [
+        "Look at the pictograph carefully.",
+        "Each picture stands for 1 item.",
+        "Count the items for each category and record them in the table."
+      ],
+      "visual_type": "FillInTable",
+      "visual_payload": {
+        "columns": [
+          "Category",
+          "Count"
+        ],
+        "rows": [
+          [
+            "roses",
+            null
+          ],
+          [
+            "sunflowers",
+            null
+          ],
+          [
+            "tulips",
+            null
+          ],
+          [
+            "daisies",
+            null
+          ]
+        ],
+        "source_pictograph": {
+          "symbol": "🌸",
+          "scale": 1,
+          "title": "Flowers in the Garden",
+          "rows": [
+            {
+              "category": "roses",
+              "count": 5
+            },
+            {
+              "category": "sunflowers",
+              "count": 5
+            },
+            {
+              "category": "tulips",
+              "count": 1
+            },
+            {
+              "category": "daisies",
+              "count": 2
+            }
+          ]
+        }
+      },
+      "visual_render": {
+        "visual_type": "FillInTable",
+        "renderer_input_digest": "198354d439142d1e670a168fd6d26c284ab70ad7e7b57109136f7c74424e36a2",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "FillInTable",
+          "element_count": 41,
+          "svg_count": 0,
+          "table_row_count": 9,
+          "table_cell_count": 18,
+          "button_count": 0,
+          "input_count": 4,
+          "text_labels": [
+            "Flowers in the Garden",
+            "roses",
+            "🌸🌸🌸🌸🌸",
+            "sunflowers",
+            "tulips",
+            "🌸",
+            "daisies",
+            "🌸🌸",
+            "Category",
+            "Count",
+            "Fill in the missing values in the table"
+          ],
+          "distinct_colours": [
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--input-bg)",
+            "hsl(var(--text-muted)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "9ba22433cce0b584f0da",
+      "replay_digest": "2156f35c29fd3a8f565eb4a0ab6f04e4f42b3891c1d05d136aa610d3d1358c29"
     },
     {
+      "node_id": "mat_g1_dp_q3_3",
       "seed": 45,
       "formatter": "set_fill_in_blank",
       "question_text": "The pictograph shows Monday, Tuesday, Wednesday and Thursday. Fill in the table with the correct counts.",
@@ -58,9 +458,121 @@
         4,
         3,
         1
-      ]
+      ],
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "FillInTable",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "resolved_answer": [
+        4,
+        4,
+        3,
+        1
+      ],
+      "hints": [
+        "Look at the pictograph carefully.",
+        "Each picture stands for 1 item.",
+        "Count the items for each category and record them in the table."
+      ],
+      "visual_type": "FillInTable",
+      "visual_payload": {
+        "columns": [
+          "Category",
+          "Count"
+        ],
+        "rows": [
+          [
+            "Monday",
+            null
+          ],
+          [
+            "Tuesday",
+            null
+          ],
+          [
+            "Wednesday",
+            null
+          ],
+          [
+            "Thursday",
+            null
+          ]
+        ],
+        "source_pictograph": {
+          "symbol": "📖",
+          "scale": 1,
+          "title": "Books Read",
+          "rows": [
+            {
+              "category": "Monday",
+              "count": 4
+            },
+            {
+              "category": "Tuesday",
+              "count": 4
+            },
+            {
+              "category": "Wednesday",
+              "count": 3
+            },
+            {
+              "category": "Thursday",
+              "count": 1
+            }
+          ]
+        }
+      },
+      "visual_render": {
+        "visual_type": "FillInTable",
+        "renderer_input_digest": "371941ef7b1e05ae86c47029fd879a72c37c3f3a74b066de10e9068f9f39be7c",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "FillInTable",
+          "element_count": 41,
+          "svg_count": 0,
+          "table_row_count": 9,
+          "table_cell_count": 18,
+          "button_count": 0,
+          "input_count": 4,
+          "text_labels": [
+            "Books Read",
+            "Monday",
+            "📖📖📖📖",
+            "Tuesday",
+            "Wednesday",
+            "📖📖📖",
+            "Thursday",
+            "📖",
+            "Category",
+            "Count",
+            "Fill in the missing values in the table"
+          ],
+          "distinct_colours": [
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--input-bg)",
+            "hsl(var(--text-muted)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "99bbbfb13e45207fa7e0",
+      "replay_digest": "cf585d5bfc9e147ad6682f347ac80e659851e65675eab775246bcf3f5fed56ef"
     },
     {
+      "node_id": "mat_g1_dp_q3_3",
       "seed": 46,
       "formatter": "set_fill_in_blank",
       "question_text": "Look at the pictograph. Write the correct count for each row in the table: cats, dogs, birds and fish.",
@@ -69,9 +581,121 @@
         1,
         5,
         5
-      ]
+      ],
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "FillInTable",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "resolved_answer": [
+        4,
+        1,
+        5,
+        5
+      ],
+      "hints": [
+        "Look at the pictograph carefully.",
+        "Each picture stands for 1 item.",
+        "Count the items for each category and record them in the table."
+      ],
+      "visual_type": "FillInTable",
+      "visual_payload": {
+        "columns": [
+          "Category",
+          "Count"
+        ],
+        "rows": [
+          [
+            "cats",
+            null
+          ],
+          [
+            "dogs",
+            null
+          ],
+          [
+            "birds",
+            null
+          ],
+          [
+            "fish",
+            null
+          ]
+        ],
+        "source_pictograph": {
+          "symbol": "🐾",
+          "scale": 1,
+          "title": "Favorite Pets",
+          "rows": [
+            {
+              "category": "cats",
+              "count": 4
+            },
+            {
+              "category": "dogs",
+              "count": 1
+            },
+            {
+              "category": "birds",
+              "count": 5
+            },
+            {
+              "category": "fish",
+              "count": 5
+            }
+          ]
+        }
+      },
+      "visual_render": {
+        "visual_type": "FillInTable",
+        "renderer_input_digest": "15fcf9063a1eecc7b0f4996d6f80810f2795c42c61ed4bf2e8091ab36292715f",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "FillInTable",
+          "element_count": 41,
+          "svg_count": 0,
+          "table_row_count": 9,
+          "table_cell_count": 18,
+          "button_count": 0,
+          "input_count": 4,
+          "text_labels": [
+            "Favorite Pets",
+            "cats",
+            "🐾🐾🐾🐾",
+            "dogs",
+            "🐾",
+            "birds",
+            "🐾🐾🐾🐾🐾",
+            "fish",
+            "Category",
+            "Count",
+            "Fill in the missing values in the table"
+          ],
+          "distinct_colours": [
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--input-bg)",
+            "hsl(var(--text-muted)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "961bac0887f6cee5aee3",
+      "replay_digest": "3fab350daed44967fcfad3fa15ded270a3ae0120e90fd3f22188a2940e7df808"
     },
     {
+      "node_id": "mat_g1_dp_q3_3",
       "seed": 500,
       "formatter": "set_fill_in_blank",
       "question_text": "The pictograph shows Grade 1, Grade 2, Grade 3 and Grade 4. Fill in the table with the correct counts.",
@@ -80,9 +704,124 @@
         5,
         4,
         3
-      ]
+      ],
+      "requested": {
+        "difficulty_profile": {
+          "num_categories": 1.0,
+          "value_max": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "FillInTable",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "resolved_answer": [
+        5,
+        5,
+        4,
+        3
+      ],
+      "hints": [
+        "Look at the pictograph carefully.",
+        "Each picture stands for 1 item.",
+        "Count the items for each category and record them in the table."
+      ],
+      "visual_type": "FillInTable",
+      "visual_payload": {
+        "columns": [
+          "Category",
+          "Count"
+        ],
+        "rows": [
+          [
+            "Grade 1",
+            null
+          ],
+          [
+            "Grade 2",
+            null
+          ],
+          [
+            "Grade 3",
+            null
+          ],
+          [
+            "Grade 4",
+            null
+          ]
+        ],
+        "source_pictograph": {
+          "symbol": "⭐",
+          "scale": 1,
+          "title": "Stars Earned",
+          "rows": [
+            {
+              "category": "Grade 1",
+              "count": 5
+            },
+            {
+              "category": "Grade 2",
+              "count": 5
+            },
+            {
+              "category": "Grade 3",
+              "count": 4
+            },
+            {
+              "category": "Grade 4",
+              "count": 3
+            }
+          ]
+        }
+      },
+      "visual_render": {
+        "visual_type": "FillInTable",
+        "renderer_input_digest": "f5e18a34d04035d441fca27991997ead1959d0dbfa0948e441fea444fc8b686c",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "FillInTable",
+          "element_count": 41,
+          "svg_count": 0,
+          "table_row_count": 9,
+          "table_cell_count": 18,
+          "button_count": 0,
+          "input_count": 4,
+          "text_labels": [
+            "Stars Earned",
+            "Grade 1",
+            "⭐⭐⭐⭐⭐",
+            "Grade 2",
+            "Grade 3",
+            "⭐⭐⭐⭐",
+            "Grade 4",
+            "⭐⭐⭐",
+            "Category",
+            "Count",
+            "Fill in the missing values in the table"
+          ],
+          "distinct_colours": [
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--input-bg)",
+            "hsl(var(--text-muted)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "d3570a04471870067f37",
+      "replay_digest": "166ef414f1b47111a9e80aa9b5a7103c6fc162a2e7b7e0ce9fdf847193f34342"
     },
     {
+      "node_id": "mat_g1_dp_q3_3",
       "seed": 501,
       "formatter": "set_fill_in_blank",
       "question_text": "Look at the pictograph. Write the correct count for each row in the table: Monday, Tuesday, Wednesday and Thursday.",
@@ -91,9 +830,123 @@
         2,
         3,
         3
-      ]
+      ],
+      "requested": {
+        "difficulty_profile": {
+          "num_categories": 1.0,
+          "value_max": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "FillInTable",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "resolved_answer": [
+        3,
+        2,
+        3,
+        3
+      ],
+      "hints": [
+        "Look at the pictograph carefully.",
+        "Each picture stands for 1 item.",
+        "Count the items for each category and record them in the table."
+      ],
+      "visual_type": "FillInTable",
+      "visual_payload": {
+        "columns": [
+          "Category",
+          "Count"
+        ],
+        "rows": [
+          [
+            "Monday",
+            null
+          ],
+          [
+            "Tuesday",
+            null
+          ],
+          [
+            "Wednesday",
+            null
+          ],
+          [
+            "Thursday",
+            null
+          ]
+        ],
+        "source_pictograph": {
+          "symbol": "📖",
+          "scale": 1,
+          "title": "Books Read",
+          "rows": [
+            {
+              "category": "Monday",
+              "count": 3
+            },
+            {
+              "category": "Tuesday",
+              "count": 2
+            },
+            {
+              "category": "Wednesday",
+              "count": 3
+            },
+            {
+              "category": "Thursday",
+              "count": 3
+            }
+          ]
+        }
+      },
+      "visual_render": {
+        "visual_type": "FillInTable",
+        "renderer_input_digest": "d64f93f923f5a999ee528ac1145a37f20f803152f7d02c83e6e9f2ca25b4aa78",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "FillInTable",
+          "element_count": 41,
+          "svg_count": 0,
+          "table_row_count": 9,
+          "table_cell_count": 18,
+          "button_count": 0,
+          "input_count": 4,
+          "text_labels": [
+            "Books Read",
+            "Monday",
+            "📖📖📖",
+            "Tuesday",
+            "📖📖",
+            "Wednesday",
+            "Thursday",
+            "Category",
+            "Count",
+            "Fill in the missing values in the table"
+          ],
+          "distinct_colours": [
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--input-bg)",
+            "hsl(var(--text-muted)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "c1b690a9454855380781",
+      "replay_digest": "6555535671810f90b0522fafd4ab39716e537d4797ed9d2824f2961ca3858164"
     },
     {
+      "node_id": "mat_g1_dp_q3_3",
       "seed": 502,
       "formatter": "set_fill_in_blank",
       "question_text": "Count the pictures in each row of the pictograph, then write the counts for basketball, volleyball, swimming and running in the table.",
@@ -102,9 +955,124 @@
         3,
         2,
         4
-      ]
+      ],
+      "requested": {
+        "difficulty_profile": {
+          "num_categories": 1.0,
+          "value_max": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "FillInTable",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "resolved_answer": [
+        2,
+        3,
+        2,
+        4
+      ],
+      "hints": [
+        "Look at the pictograph carefully.",
+        "Each picture stands for 1 item.",
+        "Count the items for each category and record them in the table."
+      ],
+      "visual_type": "FillInTable",
+      "visual_payload": {
+        "columns": [
+          "Category",
+          "Count"
+        ],
+        "rows": [
+          [
+            "basketball",
+            null
+          ],
+          [
+            "volleyball",
+            null
+          ],
+          [
+            "swimming",
+            null
+          ],
+          [
+            "running",
+            null
+          ]
+        ],
+        "source_pictograph": {
+          "symbol": "⚽",
+          "scale": 1,
+          "title": "Favorite Sports",
+          "rows": [
+            {
+              "category": "basketball",
+              "count": 2
+            },
+            {
+              "category": "volleyball",
+              "count": 3
+            },
+            {
+              "category": "swimming",
+              "count": 2
+            },
+            {
+              "category": "running",
+              "count": 4
+            }
+          ]
+        }
+      },
+      "visual_render": {
+        "visual_type": "FillInTable",
+        "renderer_input_digest": "58d6ce33c3bb63d493ecfe28e0b5ee1e66ca7b237f780339b6d481d701fca5c3",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "FillInTable",
+          "element_count": 41,
+          "svg_count": 0,
+          "table_row_count": 9,
+          "table_cell_count": 18,
+          "button_count": 0,
+          "input_count": 4,
+          "text_labels": [
+            "Favorite Sports",
+            "basketball",
+            "⚽⚽",
+            "volleyball",
+            "⚽⚽⚽",
+            "swimming",
+            "running",
+            "⚽⚽⚽⚽",
+            "Category",
+            "Count",
+            "Fill in the missing values in the table"
+          ],
+          "distinct_colours": [
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--input-bg)",
+            "hsl(var(--text-muted)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "4508c2ce0156bb2e5965",
+      "replay_digest": "7a8d8e0dfcfdd69ff659d0d1ed1b5d3521ed163d2d8ad68341109c9636c90630"
     },
     {
+      "node_id": "mat_g1_dp_q3_3",
       "seed": 600,
       "formatter": "set_fill_in_blank",
       "question_text": "Count the pictures in each row of the pictograph, then write the counts for Monday, Tuesday, Wednesday and Thursday in the table.",
@@ -113,9 +1081,124 @@
         4,
         2,
         5
-      ]
+      ],
+      "requested": {
+        "difficulty_profile": {
+          "scale_type": "no_scale"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "FillInTable",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "resolved_answer": [
+        3,
+        4,
+        2,
+        5
+      ],
+      "hints": [
+        "Look at the pictograph carefully.",
+        "Each picture stands for 1 item.",
+        "Count the items for each category and record them in the table."
+      ],
+      "visual_type": "FillInTable",
+      "visual_payload": {
+        "columns": [
+          "Category",
+          "Count"
+        ],
+        "rows": [
+          [
+            "Monday",
+            null
+          ],
+          [
+            "Tuesday",
+            null
+          ],
+          [
+            "Wednesday",
+            null
+          ],
+          [
+            "Thursday",
+            null
+          ]
+        ],
+        "source_pictograph": {
+          "symbol": "📖",
+          "scale": 1,
+          "title": "Books Read",
+          "rows": [
+            {
+              "category": "Monday",
+              "count": 3
+            },
+            {
+              "category": "Tuesday",
+              "count": 4
+            },
+            {
+              "category": "Wednesday",
+              "count": 2
+            },
+            {
+              "category": "Thursday",
+              "count": 5
+            }
+          ]
+        }
+      },
+      "visual_render": {
+        "visual_type": "FillInTable",
+        "renderer_input_digest": "19d2009126e2af1cf619da16a361cba70cba8a199ac87cc04e3cc4580199775c",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "FillInTable",
+          "element_count": 41,
+          "svg_count": 0,
+          "table_row_count": 9,
+          "table_cell_count": 18,
+          "button_count": 0,
+          "input_count": 4,
+          "text_labels": [
+            "Books Read",
+            "Monday",
+            "📖📖📖",
+            "Tuesday",
+            "📖📖📖📖",
+            "Wednesday",
+            "📖📖",
+            "Thursday",
+            "📖📖📖📖📖",
+            "Category",
+            "Count",
+            "Fill in the missing values in the table"
+          ],
+          "distinct_colours": [
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--input-bg)",
+            "hsl(var(--text-muted)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "2f358c682c697413f2a1",
+      "replay_digest": "0f03582f23c8c7a6df18148e37d099c98067858dbfe86dd0e99fbd69e3f12809"
     },
     {
+      "node_id": "mat_g1_dp_q3_3",
       "seed": 601,
       "formatter": "set_fill_in_blank",
       "question_text": "Look at the pictograph. Write the correct count for each row in the table: Math, Science, English and Art.",
@@ -124,34 +1207,1943 @@
         5,
         1,
         1
-      ]
+      ],
+      "requested": {
+        "difficulty_profile": {
+          "task_type": "organize_table"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "FillInTable",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "resolved_answer": [
+        5,
+        5,
+        1,
+        1
+      ],
+      "hints": [
+        "Look at the pictograph carefully.",
+        "Each picture stands for 1 item.",
+        "Count the items for each category and record them in the table."
+      ],
+      "visual_type": "FillInTable",
+      "visual_payload": {
+        "columns": [
+          "Category",
+          "Count"
+        ],
+        "rows": [
+          [
+            "Math",
+            null
+          ],
+          [
+            "Science",
+            null
+          ],
+          [
+            "English",
+            null
+          ],
+          [
+            "Art",
+            null
+          ]
+        ],
+        "source_pictograph": {
+          "symbol": "📚",
+          "scale": 1,
+          "title": "Favorite Subjects",
+          "rows": [
+            {
+              "category": "Math",
+              "count": 5
+            },
+            {
+              "category": "Science",
+              "count": 5
+            },
+            {
+              "category": "English",
+              "count": 1
+            },
+            {
+              "category": "Art",
+              "count": 1
+            }
+          ]
+        }
+      },
+      "visual_render": {
+        "visual_type": "FillInTable",
+        "renderer_input_digest": "b124bd1642791177694b5695995b7e4dded1dd8e0be9d73c9643b423899649a6",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "FillInTable",
+          "element_count": 41,
+          "svg_count": 0,
+          "table_row_count": 9,
+          "table_cell_count": 18,
+          "button_count": 0,
+          "input_count": 4,
+          "text_labels": [
+            "Favorite Subjects",
+            "Math",
+            "📚📚📚📚📚",
+            "Science",
+            "English",
+            "📚",
+            "Art",
+            "Category",
+            "Count",
+            "Fill in the missing values in the table"
+          ],
+          "distinct_colours": [
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--input-bg)",
+            "hsl(var(--text-muted)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "426dd70a9e3961895acc",
+      "replay_digest": "fb237d3c9fef622c4b8f14878f9920fe4506d66f399c3b7642d57562ef0922b1"
+    },
+    {
+      "node_id": "mat_g1_dp_q3_3",
+      "seed": 700,
+      "formatter": "set_fill_in_blank",
+      "question_text": "The pictograph shows red, blue, green and yellow. Fill in the table with the correct counts.",
+      "correct_answer": [
+        2,
+        4,
+        2,
+        5
+      ],
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "FillInTable",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "resolved_answer": [
+        2,
+        4,
+        2,
+        5
+      ],
+      "hints": [
+        "Look at the pictograph carefully.",
+        "Each picture stands for 1 item.",
+        "Count the items for each category and record them in the table."
+      ],
+      "visual_type": "FillInTable",
+      "visual_payload": {
+        "columns": [
+          "Category",
+          "Count"
+        ],
+        "rows": [
+          [
+            "red",
+            null
+          ],
+          [
+            "blue",
+            null
+          ],
+          [
+            "green",
+            null
+          ],
+          [
+            "yellow",
+            null
+          ]
+        ],
+        "source_pictograph": {
+          "symbol": "🎨",
+          "scale": 1,
+          "title": "Favorite Colors",
+          "rows": [
+            {
+              "category": "red",
+              "count": 2
+            },
+            {
+              "category": "blue",
+              "count": 4
+            },
+            {
+              "category": "green",
+              "count": 2
+            },
+            {
+              "category": "yellow",
+              "count": 5
+            }
+          ]
+        }
+      },
+      "visual_render": {
+        "visual_type": "FillInTable",
+        "renderer_input_digest": "a26e05403e637dc673d16530eeabccb72f3ab20a7d075cad24bce09b2fd04b73",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "FillInTable",
+          "element_count": 41,
+          "svg_count": 0,
+          "table_row_count": 9,
+          "table_cell_count": 18,
+          "button_count": 0,
+          "input_count": 4,
+          "text_labels": [
+            "Favorite Colors",
+            "red",
+            "🎨🎨",
+            "blue",
+            "🎨🎨🎨🎨",
+            "green",
+            "yellow",
+            "🎨🎨🎨🎨🎨",
+            "Category",
+            "Count",
+            "Fill in the missing values in the table"
+          ],
+          "distinct_colours": [
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--input-bg)",
+            "hsl(var(--text-muted)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "fe292de1d4cefc1f64cf",
+      "replay_digest": "909f9be609dd18b1b22b79e0f005d1826419fcd04974226eaa079733ee520c1d"
+    },
+    {
+      "node_id": "mat_g1_dp_q3_3",
+      "seed": 701,
+      "formatter": "set_fill_in_blank",
+      "question_text": "💃 Sir Rez has a math challenge about dance shoes. Look at the pictograph. Write the correct count for each row in the table: Monday, Tuesday, Wednesday and Thursday.",
+      "correct_answer": [
+        4,
+        1,
+        1,
+        5
+      ],
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "kpop",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "FillInTable",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "resolved_answer": [
+        4,
+        1,
+        1,
+        5
+      ],
+      "hints": [
+        "Look at the pictograph carefully.",
+        "Each picture stands for 1 item.",
+        "Count the items for each category and record them in the table."
+      ],
+      "visual_type": "FillInTable",
+      "visual_payload": {
+        "columns": [
+          "Category",
+          "Count"
+        ],
+        "rows": [
+          [
+            "Monday",
+            null
+          ],
+          [
+            "Tuesday",
+            null
+          ],
+          [
+            "Wednesday",
+            null
+          ],
+          [
+            "Thursday",
+            null
+          ]
+        ],
+        "source_pictograph": {
+          "symbol": "📖",
+          "scale": 1,
+          "title": "Books Read",
+          "rows": [
+            {
+              "category": "Monday",
+              "count": 4
+            },
+            {
+              "category": "Tuesday",
+              "count": 1
+            },
+            {
+              "category": "Wednesday",
+              "count": 1
+            },
+            {
+              "category": "Thursday",
+              "count": 5
+            }
+          ]
+        }
+      },
+      "visual_render": {
+        "visual_type": "FillInTable",
+        "renderer_input_digest": "4cb79487c6ab036740a39a16812e0d7172fd1066490ad635d7cd51c7707c93db",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "FillInTable",
+          "element_count": 41,
+          "svg_count": 0,
+          "table_row_count": 9,
+          "table_cell_count": 18,
+          "button_count": 0,
+          "input_count": 4,
+          "text_labels": [
+            "Books Read",
+            "Monday",
+            "📖📖📖📖",
+            "Tuesday",
+            "📖",
+            "Wednesday",
+            "Thursday",
+            "📖📖📖📖📖",
+            "Category",
+            "Count",
+            "Fill in the missing values in the table"
+          ],
+          "distinct_colours": [
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--input-bg)",
+            "hsl(var(--text-muted)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "5ffdcccae140d84f282d",
+      "replay_digest": "f3f8f35959afab1da95deb27eb9e837cb456b72ee43484472abe5abd0f0567ad"
+    },
+    {
+      "node_id": "mat_g1_dp_q3_3",
+      "seed": 702,
+      "formatter": "set_fill_in_blank",
+      "question_text": "🏀 Marco has a math challenge about jerseys. Look at the pictograph. Write the correct count for each row in the table: cats, dogs, birds and fish.",
+      "correct_answer": [
+        2,
+        1,
+        3,
+        2
+      ],
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "basketball",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "FillInTable",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "resolved_answer": [
+        2,
+        1,
+        3,
+        2
+      ],
+      "hints": [
+        "Look at the pictograph carefully.",
+        "Each picture stands for 1 item.",
+        "Count the items for each category and record them in the table."
+      ],
+      "visual_type": "FillInTable",
+      "visual_payload": {
+        "columns": [
+          "Category",
+          "Count"
+        ],
+        "rows": [
+          [
+            "cats",
+            null
+          ],
+          [
+            "dogs",
+            null
+          ],
+          [
+            "birds",
+            null
+          ],
+          [
+            "fish",
+            null
+          ]
+        ],
+        "source_pictograph": {
+          "symbol": "🐾",
+          "scale": 1,
+          "title": "Favorite Pets",
+          "rows": [
+            {
+              "category": "cats",
+              "count": 2
+            },
+            {
+              "category": "dogs",
+              "count": 1
+            },
+            {
+              "category": "birds",
+              "count": 3
+            },
+            {
+              "category": "fish",
+              "count": 2
+            }
+          ]
+        }
+      },
+      "visual_render": {
+        "visual_type": "FillInTable",
+        "renderer_input_digest": "c662cb18e6397dcc1a6b7212072bc3bf9fe4152514eb378620fcc0d8af278cd6",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "FillInTable",
+          "element_count": 41,
+          "svg_count": 0,
+          "table_row_count": 9,
+          "table_cell_count": 18,
+          "button_count": 0,
+          "input_count": 4,
+          "text_labels": [
+            "Favorite Pets",
+            "cats",
+            "🐾🐾",
+            "dogs",
+            "🐾",
+            "birds",
+            "🐾🐾🐾",
+            "fish",
+            "Category",
+            "Count",
+            "Fill in the missing values in the table"
+          ],
+          "distinct_colours": [
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--input-bg)",
+            "hsl(var(--text-muted)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "8bf36b6987e4fb3bfd16",
+      "replay_digest": "d5e81e08e76a693d86d81e3743c04cc119fe21100f3fac27fa74aeb43cfa70c0"
+    },
+    {
+      "node_id": "mat_g1_dp_q3_3",
+      "seed": 800,
+      "formatter": "set_fill_in_blank",
+      "question_text": "The pictograph shows Grade 1, Grade 2, Grade 3 and Grade 4. Fill in the table with the correct counts.",
+      "correct_answer": [
+        5,
+        1,
+        4,
+        4
+      ],
+      "requested": {
+        "difficulty_profile": {
+          "num_categories": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "FillInTable",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "resolved_answer": [
+        5,
+        1,
+        4,
+        4
+      ],
+      "hints": [
+        "Look at the pictograph carefully.",
+        "Each picture stands for 1 item.",
+        "Count the items for each category and record them in the table."
+      ],
+      "visual_type": "FillInTable",
+      "visual_payload": {
+        "columns": [
+          "Category",
+          "Count"
+        ],
+        "rows": [
+          [
+            "Grade 1",
+            null
+          ],
+          [
+            "Grade 2",
+            null
+          ],
+          [
+            "Grade 3",
+            null
+          ],
+          [
+            "Grade 4",
+            null
+          ]
+        ],
+        "source_pictograph": {
+          "symbol": "⭐",
+          "scale": 1,
+          "title": "Stars Earned",
+          "rows": [
+            {
+              "category": "Grade 1",
+              "count": 5
+            },
+            {
+              "category": "Grade 2",
+              "count": 1
+            },
+            {
+              "category": "Grade 3",
+              "count": 4
+            },
+            {
+              "category": "Grade 4",
+              "count": 4
+            }
+          ]
+        }
+      },
+      "visual_render": {
+        "visual_type": "FillInTable",
+        "renderer_input_digest": "a34b5b1e1a91ba21faaca1618be6c1700803b0dc9a12b010e1f9fff4b731ac98",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "FillInTable",
+          "element_count": 41,
+          "svg_count": 0,
+          "table_row_count": 9,
+          "table_cell_count": 18,
+          "button_count": 0,
+          "input_count": 4,
+          "text_labels": [
+            "Stars Earned",
+            "Grade 1",
+            "⭐⭐⭐⭐⭐",
+            "Grade 2",
+            "⭐",
+            "Grade 3",
+            "⭐⭐⭐⭐",
+            "Grade 4",
+            "Category",
+            "Count",
+            "Fill in the missing values in the table"
+          ],
+          "distinct_colours": [
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--input-bg)",
+            "hsl(var(--text-muted)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "e899b0c71f1aaed441f0",
+      "replay_digest": "67af36512ff725d9f75c38854f36bad07382c8e933a111fd462864cb37668fdd"
+    },
+    {
+      "node_id": "mat_g1_dp_q3_3",
+      "seed": 801,
+      "formatter": "set_fill_in_blank",
+      "question_text": "The pictograph shows cats, dogs, birds and fish. Fill in the table with the correct counts.",
+      "correct_answer": [
+        2,
+        3,
+        1,
+        4
+      ],
+      "requested": {
+        "difficulty_profile": {
+          "value_max": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "FillInTable",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "resolved_answer": [
+        2,
+        3,
+        1,
+        4
+      ],
+      "hints": [
+        "Look at the pictograph carefully.",
+        "Each picture stands for 1 item.",
+        "Count the items for each category and record them in the table."
+      ],
+      "visual_type": "FillInTable",
+      "visual_payload": {
+        "columns": [
+          "Category",
+          "Count"
+        ],
+        "rows": [
+          [
+            "cats",
+            null
+          ],
+          [
+            "dogs",
+            null
+          ],
+          [
+            "birds",
+            null
+          ],
+          [
+            "fish",
+            null
+          ]
+        ],
+        "source_pictograph": {
+          "symbol": "🐾",
+          "scale": 1,
+          "title": "Favorite Pets",
+          "rows": [
+            {
+              "category": "cats",
+              "count": 2
+            },
+            {
+              "category": "dogs",
+              "count": 3
+            },
+            {
+              "category": "birds",
+              "count": 1
+            },
+            {
+              "category": "fish",
+              "count": 4
+            }
+          ]
+        }
+      },
+      "visual_render": {
+        "visual_type": "FillInTable",
+        "renderer_input_digest": "29081dff08c0e8e816d7f8d02e400bf9d2e624e0ef1ad90ff7fc1cc2da64128b",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "FillInTable",
+          "element_count": 41,
+          "svg_count": 0,
+          "table_row_count": 9,
+          "table_cell_count": 18,
+          "button_count": 0,
+          "input_count": 4,
+          "text_labels": [
+            "Favorite Pets",
+            "cats",
+            "🐾🐾",
+            "dogs",
+            "🐾🐾🐾",
+            "birds",
+            "🐾",
+            "fish",
+            "🐾🐾🐾🐾",
+            "Category",
+            "Count",
+            "Fill in the missing values in the table"
+          ],
+          "distinct_colours": [
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--input-bg)",
+            "hsl(var(--text-muted)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "1864c70cc4c3d7197e57",
+      "replay_digest": "ad43cd71c165a77fac549bdc924913a728cb7d73ba957d8ecd951533285e1d38"
+    },
+    {
+      "node_id": "mat_g1_dp_q3_3",
+      "seed": 900,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Look at the pictograph. Write the correct count for each row in the table: Math, Science, English and Art.",
+      "correct_answer": [
+        3,
+        1,
+        1,
+        2
+      ],
+      "requested": {
+        "difficulty_profile": {
+          "num_categories": 0.0,
+          "value_max": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "FillInTable",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "resolved_answer": [
+        3,
+        1,
+        1,
+        2
+      ],
+      "hints": [
+        "Look at the pictograph carefully.",
+        "Each picture stands for 1 item.",
+        "Count the items for each category and record them in the table."
+      ],
+      "visual_type": "FillInTable",
+      "visual_payload": {
+        "columns": [
+          "Category",
+          "Count"
+        ],
+        "rows": [
+          [
+            "Math",
+            null
+          ],
+          [
+            "Science",
+            null
+          ],
+          [
+            "English",
+            null
+          ],
+          [
+            "Art",
+            null
+          ]
+        ],
+        "source_pictograph": {
+          "symbol": "📚",
+          "scale": 1,
+          "title": "Favorite Subjects",
+          "rows": [
+            {
+              "category": "Math",
+              "count": 3
+            },
+            {
+              "category": "Science",
+              "count": 1
+            },
+            {
+              "category": "English",
+              "count": 1
+            },
+            {
+              "category": "Art",
+              "count": 2
+            }
+          ]
+        }
+      },
+      "visual_render": {
+        "visual_type": "FillInTable",
+        "renderer_input_digest": "4835d0b18382022f38c5b8873a5d36fded06d3f4c0ec62ef225c5b7a66473642",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "FillInTable",
+          "element_count": 41,
+          "svg_count": 0,
+          "table_row_count": 9,
+          "table_cell_count": 18,
+          "button_count": 0,
+          "input_count": 4,
+          "text_labels": [
+            "Favorite Subjects",
+            "Math",
+            "📚📚📚",
+            "Science",
+            "📚",
+            "English",
+            "Art",
+            "📚📚",
+            "Category",
+            "Count",
+            "Fill in the missing values in the table"
+          ],
+          "distinct_colours": [
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--input-bg)",
+            "hsl(var(--text-muted)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "afde7ca226c8d8ceb903",
+      "replay_digest": "d9d4bc2c4a6b59eb6d8d39302624038e594e9d9828c42bbb2398715e7e0fffce"
+    },
+    {
+      "node_id": "mat_g1_dp_q3_3",
+      "seed": 901,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Look at the pictograph. Write the correct count for each row in the table: roses, sunflowers, tulips and daisies.",
+      "correct_answer": [
+        3,
+        1,
+        5,
+        2
+      ],
+      "requested": {
+        "difficulty_profile": {
+          "num_categories": 0.0,
+          "value_max": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "FillInTable",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "resolved_answer": [
+        3,
+        1,
+        5,
+        2
+      ],
+      "hints": [
+        "Look at the pictograph carefully.",
+        "Each picture stands for 1 item.",
+        "Count the items for each category and record them in the table."
+      ],
+      "visual_type": "FillInTable",
+      "visual_payload": {
+        "columns": [
+          "Category",
+          "Count"
+        ],
+        "rows": [
+          [
+            "roses",
+            null
+          ],
+          [
+            "sunflowers",
+            null
+          ],
+          [
+            "tulips",
+            null
+          ],
+          [
+            "daisies",
+            null
+          ]
+        ],
+        "source_pictograph": {
+          "symbol": "🌸",
+          "scale": 1,
+          "title": "Flowers in the Garden",
+          "rows": [
+            {
+              "category": "roses",
+              "count": 3
+            },
+            {
+              "category": "sunflowers",
+              "count": 1
+            },
+            {
+              "category": "tulips",
+              "count": 5
+            },
+            {
+              "category": "daisies",
+              "count": 2
+            }
+          ]
+        }
+      },
+      "visual_render": {
+        "visual_type": "FillInTable",
+        "renderer_input_digest": "5a42321a615d559f54803d7f08d2dd4650aa4ec8faa00978920789d4e4dc549c",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "FillInTable",
+          "element_count": 41,
+          "svg_count": 0,
+          "table_row_count": 9,
+          "table_cell_count": 18,
+          "button_count": 0,
+          "input_count": 4,
+          "text_labels": [
+            "Flowers in the Garden",
+            "roses",
+            "🌸🌸🌸",
+            "sunflowers",
+            "🌸",
+            "tulips",
+            "🌸🌸🌸🌸🌸",
+            "daisies",
+            "🌸🌸",
+            "Category",
+            "Count",
+            "Fill in the missing values in the table"
+          ],
+          "distinct_colours": [
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--input-bg)",
+            "hsl(var(--text-muted)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "e4467de78f1bcebb3579",
+      "replay_digest": "7c23e54b8ba0ac0315120b41e12717fa551abbdde0f5579144d2a7f3e4ec36e8"
+    },
+    {
+      "node_id": "mat_g1_dp_q3_3",
+      "seed": 1000,
+      "formatter": "set_fill_in_blank",
+      "question_text": "The pictograph shows roses, sunflowers, tulips and daisies. Fill in the table with the correct counts.",
+      "correct_answer": [
+        1,
+        4,
+        3,
+        1
+      ],
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "hint_gated"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "FillInTable",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
+        "experience": "hint_gated"
+      },
+      "resolved_answer": [
+        1,
+        4,
+        3,
+        1
+      ],
+      "hints": [
+        "Look at the pictograph carefully.",
+        "Each picture stands for 1 item.",
+        "Count the items for each category and record them in the table."
+      ],
+      "visual_type": "FillInTable",
+      "visual_payload": {
+        "columns": [
+          "Category",
+          "Count"
+        ],
+        "rows": [
+          [
+            "roses",
+            null
+          ],
+          [
+            "sunflowers",
+            null
+          ],
+          [
+            "tulips",
+            null
+          ],
+          [
+            "daisies",
+            null
+          ]
+        ],
+        "source_pictograph": {
+          "symbol": "🌸",
+          "scale": 1,
+          "title": "Flowers in the Garden",
+          "rows": [
+            {
+              "category": "roses",
+              "count": 1
+            },
+            {
+              "category": "sunflowers",
+              "count": 4
+            },
+            {
+              "category": "tulips",
+              "count": 3
+            },
+            {
+              "category": "daisies",
+              "count": 1
+            }
+          ]
+        }
+      },
+      "visual_render": {
+        "visual_type": "FillInTable",
+        "renderer_input_digest": "9024d911269c001e1c818e47500092736d776ac9a3e4a57b0969b2fbd7ed4886",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "FillInTable",
+          "element_count": 41,
+          "svg_count": 0,
+          "table_row_count": 9,
+          "table_cell_count": 18,
+          "button_count": 0,
+          "input_count": 4,
+          "text_labels": [
+            "Flowers in the Garden",
+            "roses",
+            "🌸",
+            "sunflowers",
+            "🌸🌸🌸🌸",
+            "tulips",
+            "🌸🌸🌸",
+            "daisies",
+            "Category",
+            "Count",
+            "Fill in the missing values in the table"
+          ],
+          "distinct_colours": [
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--input-bg)",
+            "hsl(var(--text-muted)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "f115f41b312ff9c8ab71",
+      "replay_digest": "5fa7be4f2f3c5f64e4b041861e5d39416ad2ebc6bb2566b2e68c65c45a1527d0"
+    },
+    {
+      "node_id": "mat_g1_dp_q3_3",
+      "seed": 1001,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Look at the pictograph. Write the correct count for each row in the table: apples, bananas, mangoes and grapes.",
+      "correct_answer": [
+        2,
+        1,
+        5,
+        4
+      ],
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "mastery_drill"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "FillInTable",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
+        "experience": "mastery_drill"
+      },
+      "resolved_answer": [
+        2,
+        1,
+        5,
+        4
+      ],
+      "hints": [
+        "Look at the pictograph carefully.",
+        "Each picture stands for 1 item.",
+        "Count the items for each category and record them in the table."
+      ],
+      "visual_type": "FillInTable",
+      "visual_payload": {
+        "columns": [
+          "Category",
+          "Count"
+        ],
+        "rows": [
+          [
+            "apples",
+            null
+          ],
+          [
+            "bananas",
+            null
+          ],
+          [
+            "mangoes",
+            null
+          ],
+          [
+            "grapes",
+            null
+          ]
+        ],
+        "source_pictograph": {
+          "symbol": "🍎",
+          "scale": 1,
+          "title": "Favorite Fruits",
+          "rows": [
+            {
+              "category": "apples",
+              "count": 2
+            },
+            {
+              "category": "bananas",
+              "count": 1
+            },
+            {
+              "category": "mangoes",
+              "count": 5
+            },
+            {
+              "category": "grapes",
+              "count": 4
+            }
+          ]
+        }
+      },
+      "visual_render": {
+        "visual_type": "FillInTable",
+        "renderer_input_digest": "eb7a905fcbd8b9c0eb62372147a14687937630aee82fd5c034521192d52d2cff",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "FillInTable",
+          "element_count": 41,
+          "svg_count": 0,
+          "table_row_count": 9,
+          "table_cell_count": 18,
+          "button_count": 0,
+          "input_count": 4,
+          "text_labels": [
+            "Favorite Fruits",
+            "apples",
+            "🍎🍎",
+            "bananas",
+            "🍎",
+            "mangoes",
+            "🍎🍎🍎🍎🍎",
+            "grapes",
+            "🍎🍎🍎🍎",
+            "Category",
+            "Count",
+            "Fill in the missing values in the table"
+          ],
+          "distinct_colours": [
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--input-bg)",
+            "hsl(var(--text-muted)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "97b979e4876f12ef5ae1",
+      "replay_digest": "14f37b0d8081f22c2faaf87e5ce2e5f2c9d94c39f9c461c7e4a9c2b864f51437"
+    },
+    {
+      "node_id": "mat_g1_dp_q3_3",
+      "seed": 1002,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Look at the pictograph. Write the correct count for each row in the table: roses, sunflowers, tulips and daisies.",
+      "correct_answer": [
+        2,
+        2,
+        2,
+        3
+      ],
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "scaffolded"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "FillInTable",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
+        "experience": "scaffolded"
+      },
+      "resolved_answer": [
+        2,
+        2,
+        2,
+        3
+      ],
+      "hints": [
+        "Look at the pictograph carefully.",
+        "Each picture stands for 1 item.",
+        "Count the items for each category and record them in the table."
+      ],
+      "visual_type": "FillInTable",
+      "visual_payload": {
+        "columns": [
+          "Category",
+          "Count"
+        ],
+        "rows": [
+          [
+            "roses",
+            null
+          ],
+          [
+            "sunflowers",
+            null
+          ],
+          [
+            "tulips",
+            null
+          ],
+          [
+            "daisies",
+            null
+          ]
+        ],
+        "source_pictograph": {
+          "symbol": "🌸",
+          "scale": 1,
+          "title": "Flowers in the Garden",
+          "rows": [
+            {
+              "category": "roses",
+              "count": 2
+            },
+            {
+              "category": "sunflowers",
+              "count": 2
+            },
+            {
+              "category": "tulips",
+              "count": 2
+            },
+            {
+              "category": "daisies",
+              "count": 3
+            }
+          ]
+        }
+      },
+      "visual_render": {
+        "visual_type": "FillInTable",
+        "renderer_input_digest": "1e2649b349d4aa044f1dcb804b7f99b8420ad5e6a47cae555295bb2a6e616972",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "FillInTable",
+          "element_count": 41,
+          "svg_count": 0,
+          "table_row_count": 9,
+          "table_cell_count": 18,
+          "button_count": 0,
+          "input_count": 4,
+          "text_labels": [
+            "Flowers in the Garden",
+            "roses",
+            "🌸🌸",
+            "sunflowers",
+            "tulips",
+            "daisies",
+            "🌸🌸🌸",
+            "Category",
+            "Count",
+            "Fill in the missing values in the table"
+          ],
+          "distinct_colours": [
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--input-bg)",
+            "hsl(var(--text-muted)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "21374c0f6fb1dcd5622b",
+      "replay_digest": "a9bd7ebcb85ff77f8627cdbaa78b2d59fce29028f9776a8001ad3724ec054025"
+    }
+  ],
+  "sample_assessments": [
+    {
+      "sample_id": "4197ebdca97038a33e12",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Each of the four named categories has a visible symbol count and a matching table entry."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Favorite pets is a coherent Grade 1 context, and the requested counts follow directly from the pictograph."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem plainly says to count each row and write the four results in the table."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The visible counts are cats 1, dogs 3, birds 2, and fish 2, matching the printed answer."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w2-mat_g1_dp_q3_3-20260924",
+      "dispatch_id": "s5-luna-medium-w2-mat_g1_dp_q3_3-20260924:mat_g1_dp_q3_3"
+    },
+    {
+      "sample_id": "2c1bc178411b3fc19211",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Every fruit row displays an unambiguous number of apple symbols for the requested count."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The favorite-fruits setting is coherent and requires only direct one-symbol-per-item counting."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The instruction identifies all four fruit categories and clearly directs the learner to enter counts."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The visible symbol totals 3, 2, 4, and 3 agree with the printed answer sequence."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w2-mat_g1_dp_q3_3-20260924",
+      "dispatch_id": "s5-luna-medium-w2-mat_g1_dp_q3_3-20260924:mat_g1_dp_q3_3"
+    },
+    {
+      "sample_id": "9ba22433cce0b584f0da",
+      "checks": {
+        "ambiguity": {
+          "verdict": "FAIL",
+          "reasoning": "The sunflowers row has no visible flower symbols although the printed answer assigns it a count of 5."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Flowers in a garden is a coherent context, and the intended counting operation is logically simple."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "A learner cannot count the sunflowers from the rendered pictograph because that row provides no symbols."
+        },
+        "mathematical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The rendered visual does not support the nonzero sunflower answer, so the item is not mathematically answerable as shown."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w2-mat_g1_dp_q3_3-20260924",
+      "dispatch_id": "s5-luna-medium-w2-mat_g1_dp_q3_3-20260924:mat_g1_dp_q3_3"
+    },
+    {
+      "sample_id": "99bbbfb13e45207fa7e0",
+      "checks": {
+        "ambiguity": {
+          "verdict": "FAIL",
+          "reasoning": "The Tuesday row has no visible book symbols even though the answer states a count of 4."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Books read by day is a sensible context for four direct category counts."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "The wording is clear, but the missing Tuesday pictograph prevents the learner from following it successfully."
+        },
+        "mathematical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The rendered pictograph cannot justify Tuesday equals 4 because that row contains no displayed symbols."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w2-mat_g1_dp_q3_3-20260924",
+      "dispatch_id": "s5-luna-medium-w2-mat_g1_dp_q3_3-20260924:mat_g1_dp_q3_3"
+    },
+    {
+      "sample_id": "961bac0887f6cee5aee3",
+      "checks": {
+        "ambiguity": {
+          "verdict": "FAIL",
+          "reasoning": "The fish row has no visible paw symbols while the printed answer requires five fish."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The favorite-pets context is coherent and the intended operation is straightforward counting."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "The instruction cannot be completed from the rendered visual because one requested category is visually empty."
+        },
+        "mathematical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The answer for fish is unsupported by the rendered pictograph, which shows no fish symbols in that row."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w2-mat_g1_dp_q3_3-20260924",
+      "dispatch_id": "s5-luna-medium-w2-mat_g1_dp_q3_3-20260924:mat_g1_dp_q3_3"
+    },
+    {
+      "sample_id": "d3570a04471870067f37",
+      "checks": {
+        "ambiguity": {
+          "verdict": "FAIL",
+          "reasoning": "The Grade 2 row has no visible star symbols although its printed answer is five."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Comparing stars earned by grades is a coherent, age-appropriate counting context."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "The stem is understandable, but the missing Grade 2 symbols make one requested table value unknowable."
+        },
+        "mathematical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The rendered evidence does not support the Grade 2 count of five, so the answer set cannot be derived."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w2-mat_g1_dp_q3_3-20260924",
+      "dispatch_id": "s5-luna-medium-w2-mat_g1_dp_q3_3-20260924:mat_g1_dp_q3_3"
+    },
+    {
+      "sample_id": "c1b690a9454855380781",
+      "checks": {
+        "ambiguity": {
+          "verdict": "FAIL",
+          "reasoning": "The Thursday row has no visible book symbols despite the printed answer assigning it three."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Books read across weekdays is a coherent setting for direct pictograph counting."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "The learner receives a clear direction but lacks the Thursday symbols needed to complete the table."
+        },
+        "mathematical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "Thursday equals three is not supported by the rendered pictograph because that row is visually blank."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w2-mat_g1_dp_q3_3-20260924",
+      "dispatch_id": "s5-luna-medium-w2-mat_g1_dp_q3_3-20260924:mat_g1_dp_q3_3"
+    },
+    {
+      "sample_id": "4508c2ce0156bb2e5965",
+      "checks": {
+        "ambiguity": {
+          "verdict": "FAIL",
+          "reasoning": "The swimming row has no visible sports symbols even though the answer gives swimming a count of two."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Favorite sports is a sensible context and the requested transformation is simple counting."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "The learner cannot determine the swimming entry because the corresponding pictograph row is missing symbols."
+        },
+        "mathematical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The printed swimming answer is unsupported by the rendered visual, so the four-value solution is invalid as displayed."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w2-mat_g1_dp_q3_3-20260924",
+      "dispatch_id": "s5-luna-medium-w2-mat_g1_dp_q3_3-20260924:mat_g1_dp_q3_3"
+    },
+    {
+      "sample_id": "2f358c682c697413f2a1",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "All four weekdays show distinct visible book totals that can be counted directly."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Books read by weekday is a coherent context for organizing four small counts."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem clearly names the weekdays and asks for their counts in the table."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The visible totals 3, 4, 2, and 5 match the printed answer sequence exactly."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w2-mat_g1_dp_q3_3-20260924",
+      "dispatch_id": "s5-luna-medium-w2-mat_g1_dp_q3_3-20260924:mat_g1_dp_q3_3"
+    },
+    {
+      "sample_id": "426dd70a9e3961895acc",
+      "checks": {
+        "ambiguity": {
+          "verdict": "FAIL",
+          "reasoning": "The Science row has no visible book symbols although the answer gives Science a count of five."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Favorite school subjects is a coherent setting for a simple four-category count."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "The learner cannot count Science from the rendered pictograph because its row lacks symbols."
+        },
+        "mathematical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The nonzero Science answer is not evidenced by the rendered visual, making the solution set unsound."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w2-mat_g1_dp_q3_3-20260924",
+      "dispatch_id": "s5-luna-medium-w2-mat_g1_dp_q3_3-20260924:mat_g1_dp_q3_3"
+    },
+    {
+      "sample_id": "fe292de1d4cefc1f64cf",
+      "checks": {
+        "ambiguity": {
+          "verdict": "FAIL",
+          "reasoning": "The green row has no visible paint symbols despite the printed answer assigning green a count of two."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Favorite colors is a familiar and logically coherent context for direct pictograph counting."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "The instruction is readable, but the missing green symbols prevent completion of one table cell."
+        },
+        "mathematical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The rendered visual cannot establish green equals two because no green-row symbols are shown."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w2-mat_g1_dp_q3_3-20260924",
+      "dispatch_id": "s5-luna-medium-w2-mat_g1_dp_q3_3-20260924:mat_g1_dp_q3_3"
+    },
+    {
+      "sample_id": "5ffdcccae140d84f282d",
+      "checks": {
+        "ambiguity": {
+          "verdict": "FAIL",
+          "reasoning": "The Wednesday row has no visible book symbols while the printed answer requires one book."
+        },
+        "contextual_logical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "The dance-shoes introduction does not match the Books Read pictograph title, creating a context mismatch."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "The stem adds an unrelated dance-shoes scenario and the Wednesday visual is missing, reducing clarity."
+        },
+        "mathematical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The Wednesday count is unsupported by the rendered pictograph, and the surrounding context conflicts with its title."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w2-mat_g1_dp_q3_3-20260924",
+      "dispatch_id": "s5-luna-medium-w2-mat_g1_dp_q3_3-20260924:mat_g1_dp_q3_3"
+    },
+    {
+      "sample_id": "8bf36b6987e4fb3bfd16",
+      "checks": {
+        "ambiguity": {
+          "verdict": "FAIL",
+          "reasoning": "The fish row has no visible paw symbols although the answer assigns fish a count of two."
+        },
+        "contextual_logical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "The stem introduces jerseys while the displayed pictograph is Favorite Pets, so the scenario is internally mismatched."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "The unrelated jersey framing and missing fish symbols make the requested table completion unclear."
+        },
+        "mathematical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The fish answer cannot be derived from the rendered visual, which contains no symbols in that row."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w2-mat_g1_dp_q3_3-20260924",
+      "dispatch_id": "s5-luna-medium-w2-mat_g1_dp_q3_3-20260924:mat_g1_dp_q3_3"
+    },
+    {
+      "sample_id": "e899b0c71f1aaed441f0",
+      "checks": {
+        "ambiguity": {
+          "verdict": "FAIL",
+          "reasoning": "The Grade 4 row has no visible star symbols although the printed answer requires four."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Stars earned by grade is a coherent context for organizing four small counts."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "The learner cannot count Grade 4 because its pictograph row is visibly missing the required symbols."
+        },
+        "mathematical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The rendered evidence does not support the Grade 4 answer of four, so the item is unsolvable as shown."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w2-mat_g1_dp_q3_3-20260924",
+      "dispatch_id": "s5-luna-medium-w2-mat_g1_dp_q3_3-20260924:mat_g1_dp_q3_3"
+    },
+    {
+      "sample_id": "1864c70cc4c3d7197e57",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Each pet row contains a visible number of paw symbols matching one requested category."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Favorite pets is coherent and the four counts require no operation beyond counting symbols."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem directly names the four rows and asks for their counts in the table."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The visible paw totals 2, 3, 1, and 4 match the printed answer exactly."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w2-mat_g1_dp_q3_3-20260924",
+      "dispatch_id": "s5-luna-medium-w2-mat_g1_dp_q3_3-20260924:mat_g1_dp_q3_3"
+    },
+    {
+      "sample_id": "afde7ca226c8d8ceb903",
+      "checks": {
+        "ambiguity": {
+          "verdict": "FAIL",
+          "reasoning": "The English row has no visible book symbols even though the printed answer assigns it one."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Favorite subjects is a coherent school context for a direct four-category count."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "The learner cannot determine the English count because its rendered pictograph row is blank."
+        },
+        "mathematical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The answer for English is unsupported by the displayed visual, so the item is not valid as rendered."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w2-mat_g1_dp_q3_3-20260924",
+      "dispatch_id": "s5-luna-medium-w2-mat_g1_dp_q3_3-20260924:mat_g1_dp_q3_3"
+    },
+    {
+      "sample_id": "e4467de78f1bcebb3579",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "All four flower rows display clear symbol totals corresponding to the requested categories."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Flowers in the garden is a coherent context for counting and tabulating four categories."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem is concise and clearly directs the learner to record each flower count."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The visible totals 3, 1, 5, and 2 agree with the printed answer sequence."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w2-mat_g1_dp_q3_3-20260924",
+      "dispatch_id": "s5-luna-medium-w2-mat_g1_dp_q3_3-20260924:mat_g1_dp_q3_3"
+    },
+    {
+      "sample_id": "f115f41b312ff9c8ab71",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Each flower category has visible symbols, including the single symbol for roses and daisies."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The garden context is coherent and the requested operation remains direct symbol counting."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem clearly names the four flowers and asks the learner to fill the table."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The visible counts 1, 4, 3, and 1 match the printed answer values."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w2-mat_g1_dp_q3_3-20260924",
+      "dispatch_id": "s5-luna-medium-w2-mat_g1_dp_q3_3-20260924:mat_g1_dp_q3_3"
+    },
+    {
+      "sample_id": "97b979e4876f12ef5ae1",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Every fruit row has visible apple symbols and a clear category label for counting."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Favorite fruits is a familiar coherent context for organizing four symbol counts."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The wording plainly requests each named fruit count in the accompanying table."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The visible totals 2, 1, 5, and 4 match the answer sequence exactly."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w2-mat_g1_dp_q3_3-20260924",
+      "dispatch_id": "s5-luna-medium-w2-mat_g1_dp_q3_3-20260924:mat_g1_dp_q3_3"
+    },
+    {
+      "sample_id": "21374c0f6fb1dcd5622b",
+      "checks": {
+        "ambiguity": {
+          "verdict": "FAIL",
+          "reasoning": "The sunflower and tulip rows have no visible symbols although their answers are both nonzero."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Flowers in a garden is a coherent context for four direct category counts."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "Two requested rows are visually blank, so the learner cannot complete those table entries."
+        },
+        "mathematical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The rendered visual cannot support the sunflower and tulip answers of two each."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w2-mat_g1_dp_q3_3-20260924",
+      "dispatch_id": "s5-luna-medium-w2-mat_g1_dp_q3_3-20260924:mat_g1_dp_q3_3"
+    }
+  ],
+  "clause_evidence": [
+    {
+      "requirement_id": "organize_data",
+      "clause": "Organize data",
+      "verdict": "PASS",
+      "reasoning": "The valid samples consistently ask learners to transfer four category counts from a pictograph into table cells.",
+      "sample_ids": [
+        "4197ebdca97038a33e12",
+        "2c1bc178411b3fc19211"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w2-mat_g1_dp_q3_3-20260924",
+      "dispatch_id": "s5-luna-medium-w2-mat_g1_dp_q3_3-20260924:mat_g1_dp_q3_3"
+    },
+    {
+      "requirement_id": "pictograph",
+      "clause": "pictograph",
+      "verdict": "FAIL",
+      "reasoning": "Multiple rendered samples omit symbols from rows with nonzero printed answers, so the pictograph capability is not reliably present.",
+      "sample_ids": [
+        "4197ebdca97038a33e12",
+        "e4467de78f1bcebb3579"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w2-mat_g1_dp_q3_3-20260924",
+      "dispatch_id": "s5-luna-medium-w2-mat_g1_dp_q3_3-20260924:mat_g1_dp_q3_3"
+    },
+    {
+      "requirement_id": "without_scale",
+      "clause": "without a scale",
+      "verdict": "PASS",
+      "reasoning": "The visible valid items use direct one-symbol counting and provide no multi-unit scale that would require multiplication.",
+      "sample_ids": [
+        "2c1bc178411b3fc19211",
+        "f115f41b312ff9c8ab71"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w2-mat_g1_dp_q3_3-20260924",
+      "dispatch_id": "s5-luna-medium-w2-mat_g1_dp_q3_3-20260924:mat_g1_dp_q3_3"
+    },
+    {
+      "requirement_id": "table",
+      "clause": "table",
+      "verdict": "PASS",
+      "reasoning": "Every rendered sample provides a Category and Count table with four input cells for recording the data.",
+      "sample_ids": [
+        "4197ebdca97038a33e12",
+        "97b979e4876f12ef5ae1"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w2-mat_g1_dp_q3_3-20260924",
+      "dispatch_id": "s5-luna-medium-w2-mat_g1_dp_q3_3-20260924:mat_g1_dp_q3_3"
+    }
+  ],
+  "dispatch_provenance": [
+    {
+      "dispatch_id": "s5-luna-medium-w2-mat_g1_dp_q3_3-20260924:mat_g1_dp_q3_3",
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w2-mat_g1_dp_q3_3-20260924",
+      "review_date": "2026-09-24",
+      "blind": true,
+      "packet_digest": "76d48b84771917ec6c7cb6866ac9b02a8ee941f5e8632fa681312ed487d73e99",
+      "clause_ids": [
+        "organize_data",
+        "pictograph",
+        "without_scale",
+        "table"
+      ],
+      "response_ref": ".responses/s5-luna-medium-w2-mat_g1_dp_q3_3-20260924.json",
+      "response_digest": "349c110ae4586177fa7713b97225d56553ae4f6725471660694913d386db25d7",
+      "prompt_ref": ".responses/s5-luna-medium-w2-mat_g1_dp_q3_3-20260924.prompt.txt",
+      "prompt_digest": "cfefb2e192c349d4f48a0fe025585d2839ebf0d43d0b9347ef0b789a19090c8e",
+      "samples_delivery": "Prompt generated by tests.judgment_batches for one node and delivered by path to multi_agent_v1.spawn_agent using model gpt-5.6-luna with reasoning_effort=medium.",
+      "tool_uses_by_reviewer": "Reviewer was a tool-bearing multi_agent_v1 subagent instructed to read only its prompt file and write its verdicts JSON; it reported the output path and no other tool use to the dispatcher."
     }
   ],
   "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The direction of transfer is right: the pictograph is the given, the table is the product, and instructions such as Count the pictures in each row of the pictograph make the counting step explicit rather than handing the pupil the numbers."
-    },
-    "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "Every sample presents a full four-row graph and asks for all four table cells. There is no partially completed table to finish, no graph with a different number of rows, and no item where one row must be checked against a total - so organising is only ever practised at one fixed size and in one fixed completeness."
-    },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Counting up to five identical pictures in a row and writing the numeral in a table cell is a fair Quarter 3 demand, and the category labels used - days, subjects, sports, flowers - need no reading beyond a Grade 1 sight vocabulary."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "Three stem wordings rotate, ending variously with Fill in the table with the correct counts or a listing of the four row labels, but structurally the ten items are one task. No seed reverses the direction (table back to graph) or changes the response mode away from typing four counts."
+      "rationale": "Counting one-to-five picture symbols and recording four counts is appropriate for Grade 1 Quarter 3."
     },
     "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "The task directly asks learners to read a pictograph and organize its category counts in a table."
+    },
+    "competency_fulfillment": {
       "verdict": "CONCERN",
-      "rationale": "What differs between an early seed and a late one is the label family and the four underlying numbers; the organising demand itself is identical at every seed, so there is no progression that deepens this competency."
+      "rationale": "The intended task covers pictograph-to-table organization, but several rendered rows omit symbols despite nonzero answers.",
+      "decomposition": {
+        "verdict": "PASS",
+        "reasoning": "The four printed requirements separately name organizing data, the pictograph, the no-scale condition, and the table, which together cover the competency without adding a different skill.",
+        "requirement_ids": [
+          "organize_data",
+          "pictograph",
+          "without_scale",
+          "table"
+        ]
+      },
+      "clause_ids": [
+        "organize_data",
+        "pictograph",
+        "without_scale",
+        "table"
+      ]
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "The packet varies pets, fruits, flowers, books, grades, sports, subjects, colors, and days while retaining the same target operation.",
+      "clause_ids": [
+        "organize_data",
+        "pictograph",
+        "without_scale",
+        "table"
+      ]
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Per-row counts never exceed 5 and the table is always four rows deep, which matches an unscaled pictograph a Grade 1 pupil can read picture by picture without losing place."
+      "rationale": "All visible valid examples use individual symbols as one-item counts from 1 through 5, suitable for early Grade 1 data work."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "The packet offers many contexts and wording variants, but every item uses the same fill-in-table interaction and does not broaden the response mode."
     }
   },
-  "overall": "CONCERN"
+  "overall": "FAIL"
 }

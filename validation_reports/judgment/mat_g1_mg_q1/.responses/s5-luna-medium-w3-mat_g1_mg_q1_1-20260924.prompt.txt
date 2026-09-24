@@ -1,0 +1,232 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_1-20260924
+
+Write one JSON object to:
+  local_only/scratch/review/s5-luna-2026-09-24/wave3/mat_g1_mg_q1_1/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN; never invent a supporting sample.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_1-20260924",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g1_mg_q1_1
+PACKET DIGEST: e3d924f8053a5597cb20925d4e04a864e60e38879734c0e86483bcf2e11b6196
+COMPETENCY (Grade 1, Quarter 1, None):
+Compare and distinguish 2-dimensional shapes according to features such as sides and corners.
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  compare_shapes: Compare
+  distinguish_shapes: distinguish
+  two_dimensional_shapes: 2-dimensional shapes
+  shape_features_as_comparison_basis: features
+  sides_of_a_shape: sides
+  corners_of_a_shape: corners
+
+SAMPLES (every one of these is real rendered output):
+  sample 38c1342c64818deb0db8  seed 42  [read_mcq]
+      stem:    Which shape has the same number of sides as a square?
+      answer:  rectangle
+      options: they are different / neither / triangle / rectangle
+      hints:   ["Think about the sides and corners of each shape.", "A triangle has 3 sides and 3 corners.", "A square has 4 equal sides and 4 corners.", "A rectangle has 4 sides (opposite sides are equal) and 4 corners."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ShapeBoard", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ShapeBoard
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ShapeBoard", "element_count": 11, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 3863468cad482de2c621  seed 43  [mcq]
+      stem:    Which shape has more sides — a triangle or a rectangle?
+      answer:  rectangle
+      options: triangle / rectangle / they are equal / neither
+      hints:   ["Think about the sides and corners of each shape.", "A triangle has 3 sides and 3 corners.", "A square has 4 equal sides and 4 corners.", "A rectangle has 4 sides (opposite sides are equal) and 4 corners."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 475f44062f4693ff1bd6  seed 44  [read_mcq]
+      stem:    Which shape has fewer corners — a square or a triangle?
+      answer:  triangle
+      options: square / they are equal / triangle / neither
+      hints:   ["Think about the sides and corners of each shape.", "A triangle has 3 sides and 3 corners.", "A square has 4 equal sides and 4 corners.", "A rectangle has 4 sides (opposite sides are equal) and 4 corners."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ShapeBoard", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ShapeBoard
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ShapeBoard", "element_count": 8, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 2395dd571f1c4c8fd1c3  seed 45  [mcq]
+      stem:    Which shape has fewer corners — a square or a triangle?
+      answer:  triangle
+      options: they are equal / square / triangle / neither
+      hints:   ["Think about the sides and corners of each shape.", "A triangle has 3 sides and 3 corners.", "A square has 4 equal sides and 4 corners.", "A rectangle has 4 sides (opposite sides are equal) and 4 corners."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample d4a60840ac357be37c4e  seed 46  [mcq]
+      stem:    Which shape has more sides — a triangle or a rectangle?
+      answer:  rectangle
+      options: rectangle / they are equal / neither / triangle
+      hints:   ["Think about the sides and corners of each shape.", "A triangle has 3 sides and 3 corners.", "A square has 4 equal sides and 4 corners.", "A rectangle has 4 sides (opposite sides are equal) and 4 corners."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 4293286b1dc18bf7afef  seed 500  [read_mcq]
+      stem:    Which shape has fewer corners — a square or a triangle?
+      answer:  triangle
+      options: they are equal / neither / square / triangle
+      hints:   ["Think about the sides and corners of each shape.", "A triangle has 3 sides and 3 corners.", "A square has 4 equal sides and 4 corners.", "A rectangle has 4 sides (opposite sides are equal) and 4 corners."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ShapeBoard", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ShapeBoard
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ShapeBoard", "element_count": 8, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 193c3dd25fd0396a5d63  seed 501  [read_mcq]
+      stem:    Which shape has the same number of sides as a square?
+      answer:  rectangle
+      options: rectangle / neither / they are different / triangle
+      hints:   ["Think about the sides and corners of each shape.", "A triangle has 3 sides and 3 corners.", "A square has 4 equal sides and 4 corners.", "A rectangle has 4 sides (opposite sides are equal) and 4 corners."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ShapeBoard", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ShapeBoard
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ShapeBoard", "element_count": 11, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 6b655eaec3da3e364cd7  seed 502  [read_mcq]
+      stem:    Which shape has the same number of sides as a square?
+      answer:  rectangle
+      options: neither / triangle / rectangle / they are different
+      hints:   ["Think about the sides and corners of each shape.", "A triangle has 3 sides and 3 corners.", "A square has 4 equal sides and 4 corners.", "A rectangle has 4 sides (opposite sides are equal) and 4 corners."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ShapeBoard", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ShapeBoard
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ShapeBoard", "element_count": 11, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 63614911ae8c87c24f01  seed 604  [read_mcq]
+      stem:    A tilted square and a flat rectangle: do they have the same number of corners?
+      answer:  Yes, both have 4 corners.
+      options: Yes, both have 4 corners. / No, the square has more. / Neither has corners. / No, the rectangle has more.
+      hints:   ["Think about the sides and corners of each shape.", "A triangle has 3 sides and 3 corners.", "A square has 4 equal sides and 4 corners.", "A rectangle has 4 sides (opposite sides are equal) and 4 corners."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ShapeBoard", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ShapeBoard
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ShapeBoard", "element_count": 8, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample e31e58ffd14b2bda7bff  seed 700  [read_mcq]
+      stem:    Which shape has more sides — a triangle or a rectangle?
+      answer:  rectangle
+      options: triangle / they are equal / neither / rectangle
+      hints:   ["Think about the sides and corners of each shape.", "A triangle has 3 sides and 3 corners.", "A square has 4 equal sides and 4 corners.", "A rectangle has 4 sides (opposite sides are equal) and 4 corners."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ShapeBoard", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ShapeBoard
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ShapeBoard", "element_count": 8, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample d1edf19c247c28213a7a  seed 701  [mcq]
+      stem:    ✝️ Daniel has a math challenge about stones. Which shape has the same number of sides as a square?
+      answer:  rectangle
+      options: they are different / neither / triangle / rectangle
+      hints:   ["Think about the sides and corners of each shape.", "A triangle has 3 sides and 3 corners.", "A square has 4 equal sides and 4 corners.", "A rectangle has 4 sides (opposite sides are equal) and 4 corners."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample cb853260c02d0a065569  seed 702  [read_mcq]
+      stem:    🏀 Isko has a math challenge about basketballs. Which shape has more sides — a triangle or a rectangle?
+      answer:  rectangle
+      options: rectangle / triangle / they are equal / neither
+      hints:   ["Think about the sides and corners of each shape.", "A triangle has 3 sides and 3 corners.", "A square has 4 equal sides and 4 corners.", "A rectangle has 4 sides (opposite sides are equal) and 4 corners."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ShapeBoard", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ShapeBoard
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ShapeBoard", "element_count": 8, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 6417a21ff196ba42bad9  seed 800  [read_mcq]
+      stem:    Which shape has the same number of sides as a square?
+      answer:  rectangle
+      options: triangle / neither / they are different / rectangle
+      hints:   ["Think about the sides and corners of each shape.", "A triangle has 3 sides and 3 corners.", "A square has 4 equal sides and 4 corners.", "A rectangle has 4 sides (opposite sides are equal) and 4 corners."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ShapeBoard", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ShapeBoard
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ShapeBoard", "element_count": 11, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 25ec611396ba00d8c1c9  seed 801  [read_mcq]
+      stem:    Which shape has more sides — a triangle or a rectangle?
+      answer:  rectangle
+      options: triangle / rectangle / neither / they are equal
+      hints:   ["Think about the sides and corners of each shape.", "A triangle has 3 sides and 3 corners.", "A square has 4 equal sides and 4 corners.", "A rectangle has 4 sides (opposite sides are equal) and 4 corners."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ShapeBoard", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ShapeBoard
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ShapeBoard", "element_count": 8, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 2f583138eb6c8d43716e  seed 900  [mcq]
+      stem:    Which shape has the same number of sides as a square?
+      answer:  rectangle
+      options: rectangle / neither / they are different / triangle
+      hints:   ["Think about the sides and corners of each shape.", "A triangle has 3 sides and 3 corners.", "A square has 4 equal sides and 4 corners.", "A rectangle has 4 sides (opposite sides are equal) and 4 corners."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 1a5369084aa12849fe56  seed 901  [read_mcq]
+      stem:    Which shape has fewer corners — a square or a triangle?
+      answer:  triangle
+      options: neither / they are equal / triangle / square
+      hints:   ["Think about the sides and corners of each shape.", "A triangle has 3 sides and 3 corners.", "A square has 4 equal sides and 4 corners.", "A rectangle has 4 sides (opposite sides are equal) and 4 corners."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ShapeBoard", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ShapeBoard
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ShapeBoard", "element_count": 8, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 70c3c8050678fab2d5ce  seed 1000  [read_mcq]
+      stem:    Which shape has fewer corners — a square or a triangle?
+      answer:  triangle
+      options: neither / triangle / square / they are equal
+      hints:   ["Think about the sides and corners of each shape.", "A triangle has 3 sides and 3 corners.", "A square has 4 equal sides and 4 corners.", "A rectangle has 4 sides (opposite sides are equal) and 4 corners."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ShapeBoard", "interaction_mode": "read", "answer_collection": "mcq", "experience": "hint_gated"}
+      visual:  ShapeBoard
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ShapeBoard", "element_count": 8, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample dc2e281d5e7d10ddd6ad  seed 1001  [read_mcq]
+      stem:    Which shape has more sides — a triangle or a rectangle?
+      answer:  rectangle
+      options: triangle / rectangle / neither / they are equal
+      hints:   ["Think about the sides and corners of each shape.", "A triangle has 3 sides and 3 corners.", "A square has 4 equal sides and 4 corners.", "A rectangle has 4 sides (opposite sides are equal) and 4 corners."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ShapeBoard", "interaction_mode": "read", "answer_collection": "mcq", "experience": "mastery_drill"}
+      visual:  ShapeBoard
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ShapeBoard", "element_count": 8, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 770e211b7dca8f44179b  seed 1002  [read_mcq]
+      stem:    Which shape has the same number of sides as a square?
+      answer:  rectangle
+      options: they are different / neither / rectangle / triangle
+      hints:   ["Think about the sides and corners of each shape.", "A triangle has 3 sides and 3 corners.", "A square has 4 equal sides and 4 corners.", "A rectangle has 4 sides (opposite sides are equal) and 4 corners."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ShapeBoard", "interaction_mode": "read", "answer_collection": "mcq", "experience": "scaffolded"}
+      visual:  ShapeBoard
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ShapeBoard", "element_count": 11, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+

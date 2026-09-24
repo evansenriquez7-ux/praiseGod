@@ -1,0 +1,233 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-gpt-5.6-luna-medium-w2-mat_g1_dp_q3_1-20260924
+
+Write one JSON object to:
+  local_only/scratch/review/s5-luna-2026-09-24/wave2/mat_g1_dp_q3_1/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN; never invent a supporting sample.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-gpt-5.6-luna-medium-w2-mat_g1_dp_q3_1-20260924",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g1_dp_q3_1
+PACKET DIGEST: ba89e405dff4fcffc06eb406502c237af55da3a879622b3dd9803fdba85a1afb
+COMPETENCY (Grade 1, Quarter 3, None):
+Present data in a pictograph without a scale.
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  present_data: Present data
+  pictograph: pictograph
+  without_scale: without a scale
+
+SAMPLES (every one of these is real rendered output):
+  sample ebad6c2311a4905cf7d0  seed 42  [set_fill_in_blank]
+      stem:    The survey shows: cats: 1, dogs: 3, birds: 2, fish: 2. Make a picture graph by drawing one 🐾 for each item.
+      answer:  [1, 3, 2, 2]
+      hints:   ["Look at the pictograph carefully.", "Each picture stands for 1 item.", "Draw 1 picture for each item in each category."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 58, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 8, "input_count": 0, "text_labels": ["Each symbol = 1. Click to add/remove symbols.", "0", "1", "2", "3", "4", "5", "−", "+", "cats", "dogs", "birds", "fish", "Use +/- buttons to add or remove symbols"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample e1eb599d95ffd6eccd43  seed 43  [set_fill_in_blank]
+      stem:    Look at the data: apples: 3, bananas: 2, mangoes: 4, grapes: 3. Draw one 🍎 for each item in the picture graph.
+      answer:  [3, 2, 4, 3]
+      hints:   ["Look at the pictograph carefully.", "Each picture stands for 1 item.", "Draw 1 picture for each item in each category."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 60, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 8, "input_count": 0, "text_labels": ["Each symbol = 1. Click to add/remove symbols.", "0", "1", "2", "3", "4", "5", "6", "−", "+", "apples", "bananas", "mangoes", "grapes", "Use +/- buttons to add or remove symbols"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 3321dcfb6bf45368a510  seed 44  [set_fill_in_blank]
+      stem:    Complete the picture graph for roses: 5, sunflowers: 5, tulips: 1, daisies: 2. Draw one 🌸 for each item.
+      answer:  [5, 5, 1, 2]
+      hints:   ["Look at the pictograph carefully.", "Each picture stands for 1 item.", "Draw 1 picture for each item in each category."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 62, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 8, "input_count": 0, "text_labels": ["Each symbol = 1. Click to add/remove symbols.", "0", "1", "2", "3", "4", "5", "6", "7", "−", "+", "roses", "sunflowers", "tulips", "daisies", "Use +/- buttons to add or remove symbols"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 7615130ed265d2de2a72  seed 45  [set_fill_in_blank]
+      stem:    The survey shows: Monday: 4, Tuesday: 4, Wednesday: 3, Thursday: 1. Make a picture graph by drawing one 📖 for each item.
+      answer:  [4, 4, 3, 1]
+      hints:   ["Look at the pictograph carefully.", "Each picture stands for 1 item.", "Draw 1 picture for each item in each category."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 60, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 8, "input_count": 0, "text_labels": ["Each symbol = 1. Click to add/remove symbols.", "0", "1", "2", "3", "4", "5", "6", "−", "+", "Monday", "Tuesday", "Wednesday", "Thursday", "Use +/- buttons to add or remove symbols"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 483b4c55dd1de8d4d663  seed 46  [set_fill_in_blank]
+      stem:    Look at the data: cats: 4, dogs: 1, birds: 5, fish: 5. Draw one 🐾 for each item in the picture graph.
+      answer:  [4, 1, 5, 5]
+      hints:   ["Look at the pictograph carefully.", "Each picture stands for 1 item.", "Draw 1 picture for each item in each category."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 62, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 8, "input_count": 0, "text_labels": ["Each symbol = 1. Click to add/remove symbols.", "0", "1", "2", "3", "4", "5", "6", "7", "−", "+", "cats", "dogs", "birds", "fish", "Use +/- buttons to add or remove symbols"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 7418024607dac7113459  seed 500  [set_fill_in_blank]
+      stem:    Complete the picture graph for Grade 1: 5, Grade 2: 5, Grade 3: 4, Grade 4: 3. Draw one ⭐ for each item.
+      answer:  [5, 5, 4, 3]
+      hints:   ["Look at the pictograph carefully.", "Each picture stands for 1 item.", "Draw 1 picture for each item in each category."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 62, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 8, "input_count": 0, "text_labels": ["Each symbol = 1. Click to add/remove symbols.", "0", "1", "2", "3", "4", "5", "6", "7", "−", "+", "Grade 1", "Grade 2", "Grade 3", "Grade 4", "Use +/- buttons to add or remove symbols"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample bfa9e109e3f349c2bc48  seed 501  [set_fill_in_blank]
+      stem:    The survey shows: Monday: 3, Tuesday: 2, Wednesday: 3, Thursday: 3. Make a picture graph by drawing one 📖 for each item.
+      answer:  [3, 2, 3, 3]
+      hints:   ["Look at the pictograph carefully.", "Each picture stands for 1 item.", "Draw 1 picture for each item in each category."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 58, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 8, "input_count": 0, "text_labels": ["Each symbol = 1. Click to add/remove symbols.", "0", "1", "2", "3", "4", "5", "−", "+", "Monday", "Tuesday", "Wednesday", "Thursday", "Use +/- buttons to add or remove symbols"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample f6975f94419fadf6a30c  seed 502  [set_fill_in_blank]
+      stem:    The survey shows: basketball: 2, volleyball: 3, swimming: 2, running: 4. Make a picture graph by drawing one ⚽ for each item.
+      answer:  [2, 3, 2, 4]
+      hints:   ["Look at the pictograph carefully.", "Each picture stands for 1 item.", "Draw 1 picture for each item in each category."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 60, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 8, "input_count": 0, "text_labels": ["Each symbol = 1. Click to add/remove symbols.", "0", "1", "2", "3", "4", "5", "6", "−", "+", "basketball", "volleyball", "swimming", "running", "Use +/- buttons to add or remove symbols"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 0f1a38cf908a7a458ba3  seed 600  [set_fill_in_blank]
+      stem:    Complete the picture graph for Monday: 3, Tuesday: 4, Wednesday: 2, Thursday: 5. Draw one 📖 for each item.
+      answer:  [3, 4, 2, 5]
+      hints:   ["Look at the pictograph carefully.", "Each picture stands for 1 item.", "Draw 1 picture for each item in each category."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 62, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 8, "input_count": 0, "text_labels": ["Each symbol = 1. Click to add/remove symbols.", "0", "1", "2", "3", "4", "5", "6", "7", "−", "+", "Monday", "Tuesday", "Wednesday", "Thursday", "Use +/- buttons to add or remove symbols"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 18b2b42dafb3921fa29c  seed 601  [set_fill_in_blank]
+      stem:    Complete the picture graph for Math: 5, Science: 5, English: 1, Art: 1. Draw one 📚 for each item.
+      answer:  [5, 5, 1, 1]
+      hints:   ["Look at the pictograph carefully.", "Each picture stands for 1 item.", "Draw 1 picture for each item in each category."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 62, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 8, "input_count": 0, "text_labels": ["Each symbol = 1. Click to add/remove symbols.", "0", "1", "2", "3", "4", "5", "6", "7", "−", "+", "Math", "Science", "English", "Art", "Use +/- buttons to add or remove symbols"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample e38fdd328ac5e70e0fa7  seed 700  [set_fill_in_blank]
+      stem:    Look at the data: red: 2, blue: 4, green: 2, yellow: 5. Draw one 🎨 for each item in the picture graph.
+      answer:  [2, 4, 2, 5]
+      hints:   ["Look at the pictograph carefully.", "Each picture stands for 1 item.", "Draw 1 picture for each item in each category."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 62, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 8, "input_count": 0, "text_labels": ["Each symbol = 1. Click to add/remove symbols.", "0", "1", "2", "3", "4", "5", "6", "7", "−", "+", "red", "blue", "green", "yellow", "Use +/- buttons to add or remove symbols"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 395815bf8f0a372e88b3  seed 701  [set_fill_in_blank]
+      stem:    💃 Sir Rez has a math challenge about dance shoes. Make a picture graph to show: Monday: 4, Tuesday: 1, Wednesday: 1, Thursday: 5. Draw one 📖 for each item.
+      answer:  [4, 1, 1, 5]
+      hints:   ["Look at the pictograph carefully.", "Each picture stands for 1 item.", "Draw 1 picture for each item in each category."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 62, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 8, "input_count": 0, "text_labels": ["Each symbol = 1. Click to add/remove symbols.", "0", "1", "2", "3", "4", "5", "6", "7", "−", "+", "Monday", "Tuesday", "Wednesday", "Thursday", "Use +/- buttons to add or remove symbols"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 4e0ae1ba47826b5a7c6f  seed 702  [set_fill_in_blank]
+      stem:    🧁 Ate Nena has a math challenge about loaves of bread. The survey shows: cats: 2, dogs: 1, birds: 3, fish: 2. Make a picture graph by drawing one 🐾 for each item.
+      answer:  [2, 1, 3, 2]
+      hints:   ["Look at the pictograph carefully.", "Each picture stands for 1 item.", "Draw 1 picture for each item in each category."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 58, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 8, "input_count": 0, "text_labels": ["Each symbol = 1. Click to add/remove symbols.", "0", "1", "2", "3", "4", "5", "−", "+", "cats", "dogs", "birds", "fish", "Use +/- buttons to add or remove symbols"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 9b3117425c67ecd9b5bc  seed 800  [set_fill_in_blank]
+      stem:    Complete the picture graph for Grade 1: 5, Grade 2: 1, Grade 3: 4, Grade 4: 4. Draw one ⭐ for each item.
+      answer:  [5, 1, 4, 4]
+      hints:   ["Look at the pictograph carefully.", "Each picture stands for 1 item.", "Draw 1 picture for each item in each category."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 62, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 8, "input_count": 0, "text_labels": ["Each symbol = 1. Click to add/remove symbols.", "0", "1", "2", "3", "4", "5", "6", "7", "−", "+", "Grade 1", "Grade 2", "Grade 3", "Grade 4", "Use +/- buttons to add or remove symbols"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 940bd860f8d4646e5a39  seed 801  [set_fill_in_blank]
+      stem:    Make a picture graph to show: cats: 2, dogs: 3, birds: 1, fish: 4. Draw one 🐾 for each item.
+      answer:  [2, 3, 1, 4]
+      hints:   ["Look at the pictograph carefully.", "Each picture stands for 1 item.", "Draw 1 picture for each item in each category."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 60, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 8, "input_count": 0, "text_labels": ["Each symbol = 1. Click to add/remove symbols.", "0", "1", "2", "3", "4", "5", "6", "−", "+", "cats", "dogs", "birds", "fish", "Use +/- buttons to add or remove symbols"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample cdba02937f82c3011fe1  seed 900  [set_fill_in_blank]
+      stem:    Make a picture graph to show: Math: 3, Science: 1, English: 1, Art: 2. Draw one 📚 for each item.
+      answer:  [3, 1, 1, 2]
+      hints:   ["Look at the pictograph carefully.", "Each picture stands for 1 item.", "Draw 1 picture for each item in each category."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 58, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 8, "input_count": 0, "text_labels": ["Each symbol = 1. Click to add/remove symbols.", "0", "1", "2", "3", "4", "5", "−", "+", "Math", "Science", "English", "Art", "Use +/- buttons to add or remove symbols"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 9d75af4718f18871936d  seed 901  [set_fill_in_blank]
+      stem:    Look at the data: roses: 3, sunflowers: 1, tulips: 5, daisies: 2. Draw one 🌸 for each item in the picture graph.
+      answer:  [3, 1, 5, 2]
+      hints:   ["Look at the pictograph carefully.", "Each picture stands for 1 item.", "Draw 1 picture for each item in each category."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 62, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 8, "input_count": 0, "text_labels": ["Each symbol = 1. Click to add/remove symbols.", "0", "1", "2", "3", "4", "5", "6", "7", "−", "+", "roses", "sunflowers", "tulips", "daisies", "Use +/- buttons to add or remove symbols"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 8880fa062457b7f7c525  seed 1000  [set_fill_in_blank]
+      stem:    The survey shows: roses: 1, sunflowers: 4, tulips: 3, daisies: 1. Make a picture graph by drawing one 🌸 for each item.
+      answer:  [1, 4, 3, 1]
+      hints:   ["Look at the pictograph carefully.", "Each picture stands for 1 item.", "Draw 1 picture for each item in each category."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "hint_gated"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 60, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 8, "input_count": 0, "text_labels": ["Each symbol = 1. Click to add/remove symbols.", "0", "1", "2", "3", "4", "5", "6", "−", "+", "roses", "sunflowers", "tulips", "daisies", "Use +/- buttons to add or remove symbols"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample e519ba7201b4f916c06d  seed 1001  [set_fill_in_blank]
+      stem:    Complete the picture graph for apples: 2, bananas: 1, mangoes: 5, grapes: 4. Draw one 🍎 for each item.
+      answer:  [2, 1, 5, 4]
+      hints:   ["Look at the pictograph carefully.", "Each picture stands for 1 item.", "Draw 1 picture for each item in each category."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "mastery_drill"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 62, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 8, "input_count": 0, "text_labels": ["Each symbol = 1. Click to add/remove symbols.", "0", "1", "2", "3", "4", "5", "6", "7", "−", "+", "apples", "bananas", "mangoes", "grapes", "Use +/- buttons to add or remove symbols"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 70db73e8c55e9897e896  seed 1002  [set_fill_in_blank]
+      stem:    Look at the data: roses: 2, sunflowers: 2, tulips: 2, daisies: 3. Draw one 🌸 for each item in the picture graph.
+      answer:  [2, 2, 2, 3]
+      hints:   ["Look at the pictograph carefully.", "Each picture stands for 1 item.", "Draw 1 picture for each item in each category."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "scaffolded"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 58, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 8, "input_count": 0, "text_labels": ["Each symbol = 1. Click to add/remove symbols.", "0", "1", "2", "3", "4", "5", "−", "+", "roses", "sunflowers", "tulips", "daisies", "Use +/- buttons to add or remove symbols"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+

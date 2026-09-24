@@ -1,7 +1,13 @@
 {
   "schema_version": 1,
   "note": "Intent record for interruption safety. Written when a batch, chain or campaign STARTS and cleared when it completes; an intent left open means a session did not reach its finish line. Deliberately digest-free -- see tests/tree_state.py. Read with `PYTHONPATH=. .venv/bin/python tests/tree_state.py`.",
-  "open_intent": null,
+  "open_intent": {
+    "kind": "campaign",
+    "began_at": "2026-09-24T17:55:05+08:00",
+    "session": "codex-h06-s5-luna-campaign-2-2026-09-24",
+    "note": "continue §5 blind re-review campaign with gpt-5.6-luna medium reviewer identities",
+    "next_step": "Resume the campaign; it touches no source, so no re-proof is owed."
+  },
   "last_completed": {
     "kind": "campaign",
     "began_at": "2026-09-24T17:23:02+08:00",

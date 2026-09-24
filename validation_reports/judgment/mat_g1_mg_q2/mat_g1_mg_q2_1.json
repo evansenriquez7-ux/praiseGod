@@ -1,7 +1,38 @@
 {
+  "schema_version": 2,
   "node_id": "mat_g1_mg_q2_1",
-  "reviewed_by": "reviewer-c1-lantern-fescue-3061",
-  "review_date": "2026-09-11",
+  "competency_snapshot": {
+    "text": "Compare lengths and distances using non-standard units.",
+    "grade": 1,
+    "quarter": 2,
+    "subdomain": null
+  },
+  "requirements_snapshot": [
+    {
+      "kind": "task",
+      "id": "compare",
+      "clause": "Compare"
+    },
+    {
+      "kind": "property",
+      "id": "lengths",
+      "clause": "lengths"
+    },
+    {
+      "kind": "property",
+      "id": "distances",
+      "clause": "distances"
+    },
+    {
+      "kind": "representation",
+      "id": "non_standard_units",
+      "clause": "non-standard units"
+    }
+  ],
+  "packet_digest": "ac7db279c39c2b7699303caaecb4c84bf9669cf83cd13ae775f2ea430ee2f500",
+  "sampling_version": "phase2-stratified-v2-rendered-visual",
+  "reviewed_by": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q2_1-20260924",
+  "review_date": "2026-09-24",
   "blind": true,
   "sample_seeds": [
     42,
@@ -12,14 +43,58 @@
     500,
     501,
     502,
-    600
+    600,
+    700,
+    701,
+    702,
+    800,
+    900,
+    901,
+    1000,
+    1001,
+    1002
+  ],
+  "sample_ids": [
+    "97a1399803c183295456",
+    "ecadea911a55979903cc",
+    "9156c40c5378ea3902ba",
+    "4b18da8ed44aa5b52cb0",
+    "c38736a55d295c692458",
+    "a5010a662d4bed396cea",
+    "2fed3365c1ced6f43025",
+    "bb72fb08b00892848f5c",
+    "ee914c1a7e49478126d7",
+    "f27e0a6f9959db6b9a0b",
+    "f214bd72057844cf4873",
+    "b02eaf9bbda0aa7e781b",
+    "5a80e89e5811a7dd9a9c",
+    "51c87571556e3b844569",
+    "0329435e90a7fbe67e5d",
+    "323502ab74cdb0ad5744",
+    "c6e2deab738c40f3b8c9",
+    "6c93eec33123c961e097"
   ],
   "samples_reviewed": [
     {
+      "node_id": "mat_g1_mg_q2_1",
       "seed": 42,
       "formatter": "cloze",
       "question_text": "Which is shorter: 2 paperclips or 6 paperclips?",
       "correct_answer": 2,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -45,13 +120,36 @@
           "text": "3",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 2,
+      "hints": [
+        "Compare 2 paperclips and 6 paperclips.",
+        "6 is more than 2.",
+        "The longer length is 2 paperclips."
+      ],
+      "sample_id": "97a1399803c183295456",
+      "replay_digest": "d81743b4401cca397ffea87af21842fd219c56464de509ea0a8a705521e750dd"
     },
     {
+      "node_id": "mat_g1_mg_q2_1",
       "seed": 43,
       "formatter": "mcq",
       "question_text": "Which is longer: 6 paperclips or 4 paperclips?",
       "correct_answer": 6,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -73,13 +171,36 @@
           "value": 7,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 6,
+      "hints": [
+        "Compare 6 paperclips and 4 paperclips.",
+        "6 is more than 4.",
+        "The longer length is 6 paperclips."
+      ],
+      "sample_id": "ecadea911a55979903cc",
+      "replay_digest": "652df441d9af09a5e6f7cec8420800b08162b3c5d5398314d1d9777fee1d3ffe"
     },
     {
+      "node_id": "mat_g1_mg_q2_1",
       "seed": 44,
       "formatter": "cloze",
       "question_text": "The distance from the bench to the tree is 3 blocks. The distance from the gate to the tree is 4 blocks. Which distance is shorter?",
       "correct_answer": 3,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -105,13 +226,36 @@
           "text": "2",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 3,
+      "hints": [
+        "Compare 3 blocks and 4 blocks.",
+        "4 is more than 3.",
+        "The longer distance is 3 blocks."
+      ],
+      "sample_id": "9156c40c5378ea3902ba",
+      "replay_digest": "413d0ca969b79380c1aac342a142caca1d5fceb42337f564cf3d2975597e3fca"
     },
     {
+      "node_id": "mat_g1_mg_q2_1",
       "seed": 45,
       "formatter": "mcq",
       "question_text": "The distance from the bench to the tree is 8 blocks. The distance from the gate to the tree is 9 blocks. Which distance is shorter?",
       "correct_answer": 8,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -133,13 +277,36 @@
           "value": 7,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 8,
+      "hints": [
+        "Compare 8 blocks and 9 blocks.",
+        "9 is more than 8.",
+        "The longer distance is 8 blocks."
+      ],
+      "sample_id": "4b18da8ed44aa5b52cb0",
+      "replay_digest": "5d109a8decd9b53af2c41cdd26c2e7e6ce2aef2eab3786fe45c5b771fa5da170"
     },
     {
+      "node_id": "mat_g1_mg_q2_1",
       "seed": 46,
       "formatter": "mcq",
       "question_text": "Which is longer: 8 paperclips or 2 paperclips?",
       "correct_answer": 8,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -161,13 +328,38 @@
           "value": 2,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 8,
+      "hints": [
+        "Compare 8 paperclips and 2 paperclips.",
+        "8 is more than 2.",
+        "The longer length is 8 paperclips."
+      ],
+      "sample_id": "c38736a55d295c692458",
+      "replay_digest": "5f6f2a4a49de8c8cfbf83fac576e803055b56ff77bd8b3172b6b23b2de52167e"
     },
     {
+      "node_id": "mat_g1_mg_q2_1",
       "seed": 500,
       "formatter": "mcq",
       "question_text": "The distance from the bench to the tree is 9 blocks. The distance from the gate to the tree is 6 blocks. Which distance is longer?",
       "correct_answer": 9,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -189,13 +381,38 @@
           "value": 8,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 9,
+      "hints": [
+        "Compare 9 blocks and 6 blocks.",
+        "9 is more than 6.",
+        "The longer distance is 9 blocks."
+      ],
+      "sample_id": "a5010a662d4bed396cea",
+      "replay_digest": "a09f496aa39587c5671db46846c9f74918d78a392c2cabd6e479b388c5d78014"
     },
     {
+      "node_id": "mat_g1_mg_q2_1",
       "seed": 501,
       "formatter": "mcq",
       "question_text": "The distance from the bench to the tree is 6 hands. The distance from the gate to the tree is 7 hands. Which distance is shorter?",
       "correct_answer": 6,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -217,13 +434,38 @@
           "value": 8,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 6,
+      "hints": [
+        "Compare 6 hands and 7 hands.",
+        "7 is more than 6.",
+        "The longer distance is 6 hands."
+      ],
+      "sample_id": "2fed3365c1ced6f43025",
+      "replay_digest": "54d3adb271db301e3ad4e256ef94c4479c0d681b5f64d3afdab39b12e2a4bb53"
     },
     {
+      "node_id": "mat_g1_mg_q2_1",
       "seed": 502,
       "formatter": "cloze",
       "question_text": "The distance from the bench to the tree is 7 hands. The distance from the gate to the tree is 4 hands. Which distance is longer?",
       "correct_answer": 7,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -249,13 +491,38 @@
           "text": "4",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 7,
+      "hints": [
+        "Compare 7 hands and 4 hands.",
+        "7 is more than 4.",
+        "The longer distance is 7 hands."
+      ],
+      "sample_id": "bb72fb08b00892848f5c",
+      "replay_digest": "19032aa98f0d40799da749d2e6c1a1a47d352babadddbd597bc4d129abccce87"
     },
     {
+      "node_id": "mat_g1_mg_q2_1",
       "seed": 600,
       "formatter": "mcq",
       "question_text": "The distance from the bench to the tree is 7 blocks. The distance from the gate to the tree is 9 blocks. Which distance is shorter?",
       "correct_answer": 7,
+      "requested": {
+        "difficulty_profile": {
+          "context": "pure"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -277,34 +544,1040 @@
           "value": 6,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 7,
+      "hints": [
+        "Compare 7 blocks and 9 blocks.",
+        "9 is more than 7.",
+        "The longer distance is 7 blocks."
+      ],
+      "sample_id": "ee914c1a7e49478126d7",
+      "replay_digest": "582b289fb78bf9f91c15af88c71e081e5c93e6f0d0509e1cd5aae270f6c75f44"
+    },
+    {
+      "node_id": "mat_g1_mg_q2_1",
+      "seed": 700,
+      "formatter": "cloze",
+      "question_text": "Which is longer: 5 hands or 9 hands?",
+      "correct_answer": 9,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 9,
+          "text": "9",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 10,
+          "text": "10",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 5,
+          "text": "5",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 8,
+          "text": "8",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 9,
+      "hints": [
+        "Compare 5 hands and 9 hands.",
+        "9 is more than 5.",
+        "The longer length is 9 hands."
+      ],
+      "sample_id": "f27e0a6f9959db6b9a0b",
+      "replay_digest": "896db94c13b74c9683b35b480dc1e4d1a8914736ee1018d8943e7409398c4a70"
+    },
+    {
+      "node_id": "mat_g1_mg_q2_1",
+      "seed": 701,
+      "formatter": "mcq",
+      "question_text": "💃 Sir Rez has a math challenge about dance shoes. The distance from the bench to the tree is 6 hands. The distance from the gate to the tree is 9 hands. Which distance is shorter?",
+      "correct_answer": 6,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "creative_writing",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 6,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 5,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 9,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 7,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 6,
+      "hints": [
+        "Compare 6 hands and 9 hands.",
+        "9 is more than 6.",
+        "The longer distance is 6 hands."
+      ],
+      "sample_id": "f214bd72057844cf4873",
+      "replay_digest": "416bcec45fd9b5a5debbfbf57ba6eca60b3adc954b2d03714cfb797ebce0a3e9"
+    },
+    {
+      "node_id": "mat_g1_mg_q2_1",
+      "seed": 702,
+      "formatter": "cloze",
+      "question_text": "🏀 Isko has a math challenge about basketballs. Which is longer: 4 paperclips or 2 paperclips?",
+      "correct_answer": 4,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "science_tech",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 3,
+          "text": "3",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 2,
+          "text": "2",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 4,
+          "text": "4",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 5,
+          "text": "5",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 4,
+      "hints": [
+        "Compare 4 paperclips and 2 paperclips.",
+        "4 is more than 2.",
+        "The longer length is 4 paperclips."
+      ],
+      "sample_id": "b02eaf9bbda0aa7e781b",
+      "replay_digest": "24fdc2621f8f12a5af917b2fc3813cd1ddd618c1104e1ef7ddc0665facf9a89a"
+    },
+    {
+      "node_id": "mat_g1_mg_q2_1",
+      "seed": 800,
+      "formatter": "cloze",
+      "question_text": "The distance from the bench to the tree is 9 hands. The distance from the gate to the tree is 2 hands. Which distance is shorter?",
+      "correct_answer": 2,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 9,
+          "text": "9",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 2,
+          "text": "2",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 1,
+          "text": "1",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 3,
+          "text": "3",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 2,
+      "hints": [
+        "Compare 9 hands and 2 hands.",
+        "9 is more than 2.",
+        "The longer distance is 2 hands."
+      ],
+      "sample_id": "5a80e89e5811a7dd9a9c",
+      "replay_digest": "abe489c48a819f37f835b2a78b44dddd3079c77be4e0f406d040632cfd0e3759"
+    },
+    {
+      "node_id": "mat_g1_mg_q2_1",
+      "seed": 900,
+      "formatter": "mcq",
+      "question_text": "Which is longer: 5 crayons or 7 crayons?",
+      "correct_answer": 7,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 6,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 5,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 8,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 7,
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 7,
+      "hints": [
+        "Compare 5 crayons and 7 crayons.",
+        "7 is more than 5.",
+        "The longer length is 7 crayons."
+      ],
+      "sample_id": "51c87571556e3b844569",
+      "replay_digest": "8ae6acd6a5b19e76f0bc4c522210506bad35a5ae84857224012b89441629755d"
+    },
+    {
+      "node_id": "mat_g1_mg_q2_1",
+      "seed": 901,
+      "formatter": "mcq",
+      "question_text": "The distance from the bench to the tree is 6 blocks. The distance from the gate to the tree is 3 blocks. Which distance is longer?",
+      "correct_answer": 6,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 5,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 7,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 6,
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 6,
+      "hints": [
+        "Compare 6 blocks and 3 blocks.",
+        "6 is more than 3.",
+        "The longer distance is 6 blocks."
+      ],
+      "sample_id": "0329435e90a7fbe67e5d",
+      "replay_digest": "412433603559dffad0040b9730b98b0170d4723bcd289cea96b85940a5ef4c93"
+    },
+    {
+      "node_id": "mat_g1_mg_q2_1",
+      "seed": 1000,
+      "formatter": "cloze",
+      "question_text": "The distance from the bench to the tree is 3 blocks. The distance from the gate to the tree is 8 blocks. Which distance is shorter?",
+      "correct_answer": 3,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "hint_gated"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "hint_gated"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 4,
+          "text": "4",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 2,
+          "text": "2",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 8,
+          "text": "8",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 3,
+          "text": "3",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 3,
+      "hints": [
+        "Compare 3 blocks and 8 blocks.",
+        "8 is more than 3.",
+        "The longer distance is 3 blocks."
+      ],
+      "sample_id": "323502ab74cdb0ad5744",
+      "replay_digest": "cf27f4c14f16fc9d9645fb2a4ebec47af63108b0dbe77512c0d92f267920495a"
+    },
+    {
+      "node_id": "mat_g1_mg_q2_1",
+      "seed": 1001,
+      "formatter": "cloze",
+      "question_text": "Which is longer: 5 paperclips or 3 paperclips?",
+      "correct_answer": 5,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "mastery_drill"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "mastery_drill"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 3,
+          "text": "3",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 5,
+          "text": "5",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 4,
+          "text": "4",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 6,
+          "text": "6",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 5,
+      "hints": [
+        "Compare 5 paperclips and 3 paperclips.",
+        "5 is more than 3.",
+        "The longer length is 5 paperclips."
+      ],
+      "sample_id": "c6e2deab738c40f3b8c9",
+      "replay_digest": "10cf75047a8bf545a09119c7ef9d3e0996e75b53363780b29e9919ae061db038"
+    },
+    {
+      "node_id": "mat_g1_mg_q2_1",
+      "seed": 1002,
+      "formatter": "cloze",
+      "question_text": "The distance from the bench to the tree is 8 hands. The distance from the gate to the tree is 5 hands. Which distance is shorter?",
+      "correct_answer": 5,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "scaffolded"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "scaffolded"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 6,
+          "text": "6",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 5,
+          "text": "5",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 8,
+          "text": "8",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 4,
+          "text": "4",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 5,
+      "hints": [
+        "Compare 8 hands and 5 hands.",
+        "8 is more than 5.",
+        "The longer distance is 5 hands."
+      ],
+      "sample_id": "6c93eec33123c961e097",
+      "replay_digest": "768d596fbf33a0b8e0b36212fd739fe6a7f92c9b8bfff0801f42110ea4644db8"
+    }
+  ],
+  "sample_assessments": [
+    {
+      "sample_id": "97a1399803c183295456",
+      "checks": {
+        "ambiguity": {
+          "verdict": "CONCERN",
+          "reasoning": "The question and answer choices are clear, but the hint calling 2 paperclips the longer length conflicts with the requested shorter comparison."
+        },
+        "contextual_logical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "The comparison itself is coherent, yet the final hint introduces a contradiction by describing the correct shorter value as longer."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "A beginning learner can read the stem, but the contradictory final hint can reasonably confuse which value should be selected."
+        },
+        "mathematical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The answer 2 is correct for the shorter question, but the rendered hint falsely states that 2 paperclips is the longer length."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q2_1-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q2_1-20260924:mat_g1_mg_q2_1"
+    },
+    {
+      "sample_id": "ecadea911a55979903cc",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem asks which of two distinct paperclip counts is longer, and exactly one listed option, 6, satisfies that comparison."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The simple paperclip comparison is internally coherent, and every hint supports the stated conclusion that 6 exceeds 4."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The wording is short and accessible, with familiar units and answer choices that make the intended comparison immediately understandable."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The selected answer 6 is mathematically correct because six paperclips represent a longer count than four paperclips."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q2_1-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q2_1-20260924:mat_g1_mg_q2_1"
+    },
+    {
+      "sample_id": "9156c40c5378ea3902ba",
+      "checks": {
+        "ambiguity": {
+          "verdict": "CONCERN",
+          "reasoning": "The two distances and their endpoints are stated clearly, but the final hint contradicts the requested shorter comparison by naming 3 as longer."
+        },
+        "contextual_logical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "The distance context is plausible, although the hint sequence is logically inconsistent with the stem and correct answer."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The stem is readable for a young learner, but the false final hint can make the intended meaning of shorter unclear."
+        },
+        "mathematical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "Three blocks is correctly selected as shorter than four, but the rendered hint incorrectly labels the three-block distance as longer."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q2_1-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q2_1-20260924:mat_g1_mg_q2_1"
+    },
+    {
+      "sample_id": "4b18da8ed44aa5b52cb0",
+      "checks": {
+        "ambiguity": {
+          "verdict": "CONCERN",
+          "reasoning": "The endpoints and values identify one shorter distance, but the final hint uses the opposite label for the correct value."
+        },
+        "contextual_logical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "The stated distances are coherent, while the hint claiming the eight-block distance is longer conflicts with the comparison facts."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The question is understandable, but a learner following the displayed hint may be confused by its incorrect longer label."
+        },
+        "mathematical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "Eight blocks is shorter than nine, yet the final rendered hint falsely calls the eight-block distance longer."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q2_1-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q2_1-20260924:mat_g1_mg_q2_1"
+    },
+    {
+      "sample_id": "c38736a55d295c692458",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The longer comparison has two distinct paperclip counts and one unambiguous correct option, 8."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The prompt and hints consistently describe eight paperclips as more than two and therefore longer."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The familiar unit, concise wording, and direct answer choices provide clear Grade 1 learner-facing directions."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer 8 is correct because a length of eight paperclips exceeds a length of two paperclips."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q2_1-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q2_1-20260924:mat_g1_mg_q2_1"
+    },
+    {
+      "sample_id": "a5010a662d4bed396cea",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The two named distances differ clearly, and the answer 9 uniquely identifies the longer distance."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The bench-to-tree and gate-to-tree measurements form a coherent comparison, with all hints agreeing that 9 exceeds 6."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The short distance story uses familiar locations and plainly asks for the longer of two stated block counts."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Nine blocks is mathematically longer than six blocks, so the provided answer and supporting hints are correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q2_1-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q2_1-20260924:mat_g1_mg_q2_1"
+    },
+    {
+      "sample_id": "2fed3365c1ced6f43025",
+      "checks": {
+        "ambiguity": {
+          "verdict": "CONCERN",
+          "reasoning": "The measurements are distinguishable, but the final hint reverses the comparison by calling the correct shorter distance longer."
+        },
+        "contextual_logical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "The distance statements are sensible, though the hint sequence contains a direct logical conflict about which distance is longer."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The question is simple enough to understand, but the incorrect final hint can undermine a learner's interpretation of shorter."
+        },
+        "mathematical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "Six hands is correctly shorter than seven hands, but the rendered hint falsely says that the six-hand distance is longer."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q2_1-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q2_1-20260924:mat_g1_mg_q2_1"
+    },
+    {
+      "sample_id": "bb72fb08b00892848f5c",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question gives two different hand counts and the correct longer value, 7, is uniquely represented among the options."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The stated distance comparison and all three hints consistently support seven hands as longer than four hands."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The wording is direct, uses a concrete non-standard unit, and makes the requested longer comparison easy to follow."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Seven hands is mathematically greater than four hands, so both the answer and explanatory hints are valid."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q2_1-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q2_1-20260924:mat_g1_mg_q2_1"
+    },
+    {
+      "sample_id": "ee914c1a7e49478126d7",
+      "checks": {
+        "ambiguity": {
+          "verdict": "CONCERN",
+          "reasoning": "The two distances are explicit, but the final hint incorrectly describes the correct shorter value as the longer distance."
+        },
+        "contextual_logical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "The measurement context is coherent, yet the displayed hint conflicts with the numerical relationship between seven and nine."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "A learner can parse the stem, but the reversed label in the final hint weakens clarity about the requested shorter distance."
+        },
+        "mathematical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "Seven blocks is shorter than nine blocks, while the rendered final hint incorrectly calls seven blocks longer."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q2_1-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q2_1-20260924:mat_g1_mg_q2_1"
+    },
+    {
+      "sample_id": "f27e0a6f9959db6b9a0b",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The longer-length question compares two distinct hand counts and has one unambiguous correct response, 9."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The numeric comparison is internally consistent, and the hints correctly state that 9 is more than 5 and longer."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem is concise and uses a familiar count of hands, allowing a young learner to identify the requested longer length."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Nine hands is mathematically longer than five hands, matching the answer and every displayed hint."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q2_1-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q2_1-20260924:mat_g1_mg_q2_1"
+    },
+    {
+      "sample_id": "f214bd72057844cf4873",
+      "checks": {
+        "ambiguity": {
+          "verdict": "CONCERN",
+          "reasoning": "The distance values identify a unique shorter choice, but the final hint contradicts it by calling six hands longer."
+        },
+        "contextual_logical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "The dance-shoe framing does not change the valid comparison, though the rendered hints contain a contradictory length label."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The stem is readable, but the extra challenge framing and false final hint can distract from the simple shorter comparison."
+        },
+        "mathematical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "Six hands is correctly shorter than nine hands, but the final hint incorrectly states that six hands is longer."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q2_1-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q2_1-20260924:mat_g1_mg_q2_1"
+    },
+    {
+      "sample_id": "b02eaf9bbda0aa7e781b",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The longer paperclip comparison has distinct values and one answer choice, 4, that uniquely satisfies the question."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The basketball framing is harmless and the comparison hints consistently support four paperclips as longer than two."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The short prompt is understandable, and the familiar unit and direct question suit a beginning mathematics learner."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Four paperclips represent a longer count than two paperclips, matching the answer and explanatory hints."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q2_1-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q2_1-20260924:mat_g1_mg_q2_1"
+    },
+    {
+      "sample_id": "5a80e89e5811a7dd9a9c",
+      "checks": {
+        "ambiguity": {
+          "verdict": "CONCERN",
+          "reasoning": "The two distances make the shorter answer clear, but the final hint reverses the intended label and calls two hands longer."
+        },
+        "contextual_logical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "The stated measurements are logically compatible, while the last hint is inconsistent with the numerical comparison."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The stem is direct, but a learner relying on the displayed final hint could misunderstand which distance is shorter."
+        },
+        "mathematical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "Two hands is shorter than nine hands, yet the final rendered hint falsely says that two hands is longer."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q2_1-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q2_1-20260924:mat_g1_mg_q2_1"
+    },
+    {
+      "sample_id": "51c87571556e3b844569",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question compares five and seven crayons, and only option 7 correctly answers which length is longer."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The crayon comparison is coherent, with hints that consistently state seven is more than five and longer."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The familiar object and simple wording make the requested longer-length judgment clear to a young learner."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Seven crayons is mathematically longer than five crayons, so the answer and supporting hints are correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q2_1-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q2_1-20260924:mat_g1_mg_q2_1"
+    },
+    {
+      "sample_id": "0329435e90a7fbe67e5d",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The two block distances are distinct and the option 6 uniquely identifies the longer distance."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The endpoint descriptions and numerical relationship are coherent, and all hints correctly support six over three."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The direct wording and familiar block unit clearly communicate the comparison expected from the learner."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Six blocks is longer than three blocks, matching the answer and the mathematical claim in each hint."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q2_1-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q2_1-20260924:mat_g1_mg_q2_1"
+    },
+    {
+      "sample_id": "323502ab74cdb0ad5744",
+      "checks": {
+        "ambiguity": {
+          "verdict": "CONCERN",
+          "reasoning": "The stated values identify 3 as shorter, but the final hint contradicts that result by calling the three-block distance longer."
+        },
+        "contextual_logical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "The distance context is understandable, although the rendered hint sequence is logically inconsistent with the shorter answer."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The stem is accessible, but the contradictory final hint can confuse a learner about the meaning of shorter."
+        },
+        "mathematical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "Three blocks is mathematically shorter than eight blocks, while the final hint incorrectly labels three as longer."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q2_1-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q2_1-20260924:mat_g1_mg_q2_1"
+    },
+    {
+      "sample_id": "c6e2deab738c40f3b8c9",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The paperclip counts are distinct and the answer choice 5 uniquely satisfies the question asking for the longer length."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The prompt and hints agree that five paperclips exceeds three, so the comparison is internally logical."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The simple sentence structure and familiar paperclip unit communicate the intended comparison clearly."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Five paperclips is longer than three paperclips, and the answer and all hints state that relationship correctly."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q2_1-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q2_1-20260924:mat_g1_mg_q2_1"
+    },
+    {
+      "sample_id": "6c93eec33123c961e097",
+      "checks": {
+        "ambiguity": {
+          "verdict": "CONCERN",
+          "reasoning": "The measurements make 5 the shorter distance, but the final hint labels that correct value as the longer distance."
+        },
+        "contextual_logical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "The bench and gate distances are coherent, yet the final hint contradicts the numerical ordering of eight and five."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The stem is clear in isolation, but the incorrect longer label in the displayed hint undermines learner-facing guidance."
+        },
+        "mathematical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "Five hands is correctly shorter than eight hands, while the rendered final hint falsely calls five hands longer."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q2_1-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q2_1-20260924:mat_g1_mg_q2_1"
+    }
+  ],
+  "clause_evidence": [
+    {
+      "requirement_id": "compare",
+      "clause": "Compare",
+      "verdict": "PASS",
+      "reasoning": "The samples repeatedly require selecting which of two explicitly stated measurements is shorter or longer, directly exercising comparison.",
+      "sample_ids": [
+        "ecadea911a55979903cc",
+        "9156c40c5378ea3902ba"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q2_1-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q2_1-20260924:mat_g1_mg_q2_1"
+    },
+    {
+      "requirement_id": "lengths",
+      "clause": "lengths",
+      "verdict": "PASS",
+      "reasoning": "Paperclips, hands, and crayons are used as non-standard units for comparing lengths, with both shorter and longer prompts represented.",
+      "sample_ids": [
+        "c38736a55d295c692458",
+        "f27e0a6f9959db6b9a0b"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q2_1-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q2_1-20260924:mat_g1_mg_q2_1"
+    },
+    {
+      "requirement_id": "distances",
+      "clause": "distances",
+      "verdict": "PASS",
+      "reasoning": "Multiple items explicitly compare distances from the bench or gate to the tree, so the distance component is directly represented.",
+      "sample_ids": [
+        "a5010a662d4bed396cea",
+        "0329435e90a7fbe67e5d"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q2_1-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q2_1-20260924:mat_g1_mg_q2_1"
+    },
+    {
+      "requirement_id": "non_standard_units",
+      "clause": "non-standard units",
+      "verdict": "PASS",
+      "reasoning": "The rendered tasks use paperclips, blocks, hands, and crayons rather than standard rulers or conventional units, supporting this clause.",
+      "sample_ids": [
+        "b02eaf9bbda0aa7e781b",
+        "6c93eec33123c961e097"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q2_1-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q2_1-20260924:mat_g1_mg_q2_1"
+    }
+  ],
+  "dispatch_provenance": [
+    {
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q2_1-20260924:mat_g1_mg_q2_1",
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q2_1-20260924",
+      "review_date": "2026-09-24",
+      "blind": true,
+      "packet_digest": "ac7db279c39c2b7699303caaecb4c84bf9669cf83cd13ae775f2ea430ee2f500",
+      "clause_ids": [
+        "compare",
+        "lengths",
+        "distances",
+        "non_standard_units"
+      ],
+      "response_ref": ".responses/s5-luna-medium-w3-mat_g1_mg_q2_1-20260924.json",
+      "response_digest": "d0e7b1fb3f33f768882d205ebc1d7a7f8a80ddfbe7313504b9ca41617d4caf18",
+      "prompt_ref": ".responses/s5-luna-medium-w3-mat_g1_mg_q2_1-20260924.prompt.txt",
+      "prompt_digest": "2ab50f45f1801db290dfdb0cb4e2dd594d2ad6745ab008295286bf49a5dc2830",
+      "samples_delivery": "Prompt generated by tests.judgment_batches for one node and delivered by path to multi_agent_v1.spawn_agent using model gpt-5.6-luna with reasoning_effort=medium.",
+      "tool_uses_by_reviewer": "Reviewer was a tool-bearing multi_agent_v1 subagent instructed to read only its prompt file and write its verdicts JSON; it reported the output path and no other tool use to the dispatcher."
     }
   ],
   "findings": {
-    "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "The comparisons are correct and both lengths and distances are compared, but half of each option list is unreachable: asked which is longer, 6 paperclips or 4 paperclips, the pupil is offered 5 and 7, values that appear nowhere in the stem. Every sample carries two such impossible options, so each item is really a two-way decision dressed as a four-way one."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "Both directions of comparison are sampled in roughly equal measure - shorter and longer each appear several times - and the comparison is applied both to object lengths in paperclips and to walked distances in blocks and hands."
-    },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Two-sentence distance setups naming a bench, a tree and a gate, followed by a single which-is-shorter question, are well within Grade 1 Quarter 2 reading and reasoning; no computation is required, only ordering two counts."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The set carries a bare two-quantity comparison alongside a short narrative comparison of two routes, and answers are collected both as a cloze blank and as a choice, so the presentation is not a single template."
+      "rationale": "The comparisons use small whole-number counts and familiar non-standard units, keeping the reasoning suitable for Grade 1 learners in Quarter 2."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Seeds vary the closeness of the two quantities, from a wide gap like 2 against 6 down to adjacent counts like 6 against 7, which is a real difficulty axis for comparing measures rather than an unrelated one."
+      "rationale": "Each task directly asks learners to compare two lengths or distances expressed with paperclips, blocks, hands, or crayons."
+    },
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The packet exercises both length and distance comparisons and includes multiple non-standard units across shorter and longer questions.",
+      "decomposition": {
+        "verdict": "PASS",
+        "reasoning": "The printed requirements separately identify comparing, lengths, distances, and non-standard units, which together cover every meaningful component of the competency without adding an unrelated skill.",
+        "requirement_ids": [
+          "compare",
+          "lengths",
+          "distances",
+          "non_standard_units"
+        ]
+      },
+      "clause_ids": [
+        "compare",
+        "lengths",
+        "distances",
+        "non_standard_units"
+      ]
+    },
+    "comprehensive_coverage": {
+      "verdict": "CONCERN",
+      "rationale": "The packet covers both comparison directions and several units, but it does not include equal measurements or varied representations that would make coverage more complete.",
+      "clause_ids": [
+        "compare",
+        "lengths",
+        "distances",
+        "non_standard_units"
+      ]
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "All compared values sit between 2 and 9 units, a count a Grade 1 pupil can actually lay out with paperclips or pace out in blocks, and the competency sets no higher ceiling to exceed."
+      "rationale": "All quantities remain small and directly comparable, with no computation beyond judging which of two stated counts is greater or smaller."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "Cloze and multiple-choice formats are both present, but nearly every item repeats the same two-number comparison structure and omits equality or richer measurement contexts."
     }
   },
-  "overall": "CONCERN"
+  "overall": "FAIL"
 }

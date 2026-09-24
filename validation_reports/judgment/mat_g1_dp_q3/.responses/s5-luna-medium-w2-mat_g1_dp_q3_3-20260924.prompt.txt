@@ -1,0 +1,234 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-gpt-5.6-luna-medium-w2-mat_g1_dp_q3_3-20260924
+
+Write one JSON object to:
+  local_only/scratch/review/s5-luna-2026-09-24/wave2/mat_g1_dp_q3_3/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN; never invent a supporting sample.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-gpt-5.6-luna-medium-w2-mat_g1_dp_q3_3-20260924",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g1_dp_q3_3
+PACKET DIGEST: 76d48b84771917ec6c7cb6866ac9b02a8ee941f5e8632fa681312ed487d73e99
+COMPETENCY (Grade 1, Quarter 3, None):
+Organize data in a pictograph without a scale into a table.
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  organize_data: Organize data
+  pictograph: pictograph
+  without_scale: without a scale
+  table: table
+
+SAMPLES (every one of these is real rendered output):
+  sample 4197ebdca97038a33e12  seed 42  [set_fill_in_blank]
+      stem:    Count the pictures in each row of the pictograph, then write the counts for cats, dogs, birds and fish in the table.
+      answer:  [1, 3, 2, 2]
+      hints:   ["Look at the pictograph carefully.", "Each picture stands for 1 item.", "Count the items for each category and record them in the table."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "FillInTable", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  FillInTable
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "FillInTable", "element_count": 41, "svg_count": 0, "table_row_count": 9, "table_cell_count": 18, "button_count": 0, "input_count": 4, "text_labels": ["Favorite Pets", "cats", "🐾", "dogs", "🐾🐾🐾", "birds", "🐾🐾", "fish", "Category", "Count", "Fill in the missing values in the table"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--input-bg)", "hsl(var(--text-muted)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 2c1bc178411b3fc19211  seed 43  [set_fill_in_blank]
+      stem:    Count the pictures in each row of the pictograph, then write the counts for apples, bananas, mangoes and grapes in the table.
+      answer:  [3, 2, 4, 3]
+      hints:   ["Look at the pictograph carefully.", "Each picture stands for 1 item.", "Count the items for each category and record them in the table."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "FillInTable", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  FillInTable
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "FillInTable", "element_count": 41, "svg_count": 0, "table_row_count": 9, "table_cell_count": 18, "button_count": 0, "input_count": 4, "text_labels": ["Favorite Fruits", "apples", "🍎🍎🍎", "bananas", "🍎🍎", "mangoes", "🍎🍎🍎🍎", "grapes", "Category", "Count", "Fill in the missing values in the table"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--input-bg)", "hsl(var(--text-muted)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 9ba22433cce0b584f0da  seed 44  [set_fill_in_blank]
+      stem:    Look at the pictograph. Write the correct count for each row in the table: roses, sunflowers, tulips and daisies.
+      answer:  [5, 5, 1, 2]
+      hints:   ["Look at the pictograph carefully.", "Each picture stands for 1 item.", "Count the items for each category and record them in the table."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "FillInTable", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  FillInTable
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "FillInTable", "element_count": 41, "svg_count": 0, "table_row_count": 9, "table_cell_count": 18, "button_count": 0, "input_count": 4, "text_labels": ["Flowers in the Garden", "roses", "🌸🌸🌸🌸🌸", "sunflowers", "tulips", "🌸", "daisies", "🌸🌸", "Category", "Count", "Fill in the missing values in the table"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--input-bg)", "hsl(var(--text-muted)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 99bbbfb13e45207fa7e0  seed 45  [set_fill_in_blank]
+      stem:    The pictograph shows Monday, Tuesday, Wednesday and Thursday. Fill in the table with the correct counts.
+      answer:  [4, 4, 3, 1]
+      hints:   ["Look at the pictograph carefully.", "Each picture stands for 1 item.", "Count the items for each category and record them in the table."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "FillInTable", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  FillInTable
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "FillInTable", "element_count": 41, "svg_count": 0, "table_row_count": 9, "table_cell_count": 18, "button_count": 0, "input_count": 4, "text_labels": ["Books Read", "Monday", "📖📖📖📖", "Tuesday", "Wednesday", "📖📖📖", "Thursday", "📖", "Category", "Count", "Fill in the missing values in the table"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--input-bg)", "hsl(var(--text-muted)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 961bac0887f6cee5aee3  seed 46  [set_fill_in_blank]
+      stem:    Look at the pictograph. Write the correct count for each row in the table: cats, dogs, birds and fish.
+      answer:  [4, 1, 5, 5]
+      hints:   ["Look at the pictograph carefully.", "Each picture stands for 1 item.", "Count the items for each category and record them in the table."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "FillInTable", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  FillInTable
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "FillInTable", "element_count": 41, "svg_count": 0, "table_row_count": 9, "table_cell_count": 18, "button_count": 0, "input_count": 4, "text_labels": ["Favorite Pets", "cats", "🐾🐾🐾🐾", "dogs", "🐾", "birds", "🐾🐾🐾🐾🐾", "fish", "Category", "Count", "Fill in the missing values in the table"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--input-bg)", "hsl(var(--text-muted)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample d3570a04471870067f37  seed 500  [set_fill_in_blank]
+      stem:    The pictograph shows Grade 1, Grade 2, Grade 3 and Grade 4. Fill in the table with the correct counts.
+      answer:  [5, 5, 4, 3]
+      hints:   ["Look at the pictograph carefully.", "Each picture stands for 1 item.", "Count the items for each category and record them in the table."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "FillInTable", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  FillInTable
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "FillInTable", "element_count": 41, "svg_count": 0, "table_row_count": 9, "table_cell_count": 18, "button_count": 0, "input_count": 4, "text_labels": ["Stars Earned", "Grade 1", "⭐⭐⭐⭐⭐", "Grade 2", "Grade 3", "⭐⭐⭐⭐", "Grade 4", "⭐⭐⭐", "Category", "Count", "Fill in the missing values in the table"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--input-bg)", "hsl(var(--text-muted)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample c1b690a9454855380781  seed 501  [set_fill_in_blank]
+      stem:    Look at the pictograph. Write the correct count for each row in the table: Monday, Tuesday, Wednesday and Thursday.
+      answer:  [3, 2, 3, 3]
+      hints:   ["Look at the pictograph carefully.", "Each picture stands for 1 item.", "Count the items for each category and record them in the table."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "FillInTable", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  FillInTable
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "FillInTable", "element_count": 41, "svg_count": 0, "table_row_count": 9, "table_cell_count": 18, "button_count": 0, "input_count": 4, "text_labels": ["Books Read", "Monday", "📖📖📖", "Tuesday", "📖📖", "Wednesday", "Thursday", "Category", "Count", "Fill in the missing values in the table"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--input-bg)", "hsl(var(--text-muted)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 4508c2ce0156bb2e5965  seed 502  [set_fill_in_blank]
+      stem:    Count the pictures in each row of the pictograph, then write the counts for basketball, volleyball, swimming and running in the table.
+      answer:  [2, 3, 2, 4]
+      hints:   ["Look at the pictograph carefully.", "Each picture stands for 1 item.", "Count the items for each category and record them in the table."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "FillInTable", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  FillInTable
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "FillInTable", "element_count": 41, "svg_count": 0, "table_row_count": 9, "table_cell_count": 18, "button_count": 0, "input_count": 4, "text_labels": ["Favorite Sports", "basketball", "⚽⚽", "volleyball", "⚽⚽⚽", "swimming", "running", "⚽⚽⚽⚽", "Category", "Count", "Fill in the missing values in the table"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--input-bg)", "hsl(var(--text-muted)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 2f358c682c697413f2a1  seed 600  [set_fill_in_blank]
+      stem:    Count the pictures in each row of the pictograph, then write the counts for Monday, Tuesday, Wednesday and Thursday in the table.
+      answer:  [3, 4, 2, 5]
+      hints:   ["Look at the pictograph carefully.", "Each picture stands for 1 item.", "Count the items for each category and record them in the table."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "FillInTable", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  FillInTable
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "FillInTable", "element_count": 41, "svg_count": 0, "table_row_count": 9, "table_cell_count": 18, "button_count": 0, "input_count": 4, "text_labels": ["Books Read", "Monday", "📖📖📖", "Tuesday", "📖📖📖📖", "Wednesday", "📖📖", "Thursday", "📖📖📖📖📖", "Category", "Count", "Fill in the missing values in the table"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--input-bg)", "hsl(var(--text-muted)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 426dd70a9e3961895acc  seed 601  [set_fill_in_blank]
+      stem:    Look at the pictograph. Write the correct count for each row in the table: Math, Science, English and Art.
+      answer:  [5, 5, 1, 1]
+      hints:   ["Look at the pictograph carefully.", "Each picture stands for 1 item.", "Count the items for each category and record them in the table."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "FillInTable", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  FillInTable
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "FillInTable", "element_count": 41, "svg_count": 0, "table_row_count": 9, "table_cell_count": 18, "button_count": 0, "input_count": 4, "text_labels": ["Favorite Subjects", "Math", "📚📚📚📚📚", "Science", "English", "📚", "Art", "Category", "Count", "Fill in the missing values in the table"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--input-bg)", "hsl(var(--text-muted)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample fe292de1d4cefc1f64cf  seed 700  [set_fill_in_blank]
+      stem:    The pictograph shows red, blue, green and yellow. Fill in the table with the correct counts.
+      answer:  [2, 4, 2, 5]
+      hints:   ["Look at the pictograph carefully.", "Each picture stands for 1 item.", "Count the items for each category and record them in the table."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "FillInTable", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  FillInTable
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "FillInTable", "element_count": 41, "svg_count": 0, "table_row_count": 9, "table_cell_count": 18, "button_count": 0, "input_count": 4, "text_labels": ["Favorite Colors", "red", "🎨🎨", "blue", "🎨🎨🎨🎨", "green", "yellow", "🎨🎨🎨🎨🎨", "Category", "Count", "Fill in the missing values in the table"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--input-bg)", "hsl(var(--text-muted)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 5ffdcccae140d84f282d  seed 701  [set_fill_in_blank]
+      stem:    💃 Sir Rez has a math challenge about dance shoes. Look at the pictograph. Write the correct count for each row in the table: Monday, Tuesday, Wednesday and Thursday.
+      answer:  [4, 1, 1, 5]
+      hints:   ["Look at the pictograph carefully.", "Each picture stands for 1 item.", "Count the items for each category and record them in the table."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "FillInTable", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  FillInTable
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "FillInTable", "element_count": 41, "svg_count": 0, "table_row_count": 9, "table_cell_count": 18, "button_count": 0, "input_count": 4, "text_labels": ["Books Read", "Monday", "📖📖📖📖", "Tuesday", "📖", "Wednesday", "Thursday", "📖📖📖📖📖", "Category", "Count", "Fill in the missing values in the table"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--input-bg)", "hsl(var(--text-muted)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 8bf36b6987e4fb3bfd16  seed 702  [set_fill_in_blank]
+      stem:    🏀 Marco has a math challenge about jerseys. Look at the pictograph. Write the correct count for each row in the table: cats, dogs, birds and fish.
+      answer:  [2, 1, 3, 2]
+      hints:   ["Look at the pictograph carefully.", "Each picture stands for 1 item.", "Count the items for each category and record them in the table."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "FillInTable", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  FillInTable
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "FillInTable", "element_count": 41, "svg_count": 0, "table_row_count": 9, "table_cell_count": 18, "button_count": 0, "input_count": 4, "text_labels": ["Favorite Pets", "cats", "🐾🐾", "dogs", "🐾", "birds", "🐾🐾🐾", "fish", "Category", "Count", "Fill in the missing values in the table"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--input-bg)", "hsl(var(--text-muted)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample e899b0c71f1aaed441f0  seed 800  [set_fill_in_blank]
+      stem:    The pictograph shows Grade 1, Grade 2, Grade 3 and Grade 4. Fill in the table with the correct counts.
+      answer:  [5, 1, 4, 4]
+      hints:   ["Look at the pictograph carefully.", "Each picture stands for 1 item.", "Count the items for each category and record them in the table."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "FillInTable", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  FillInTable
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "FillInTable", "element_count": 41, "svg_count": 0, "table_row_count": 9, "table_cell_count": 18, "button_count": 0, "input_count": 4, "text_labels": ["Stars Earned", "Grade 1", "⭐⭐⭐⭐⭐", "Grade 2", "⭐", "Grade 3", "⭐⭐⭐⭐", "Grade 4", "Category", "Count", "Fill in the missing values in the table"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--input-bg)", "hsl(var(--text-muted)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 1864c70cc4c3d7197e57  seed 801  [set_fill_in_blank]
+      stem:    The pictograph shows cats, dogs, birds and fish. Fill in the table with the correct counts.
+      answer:  [2, 3, 1, 4]
+      hints:   ["Look at the pictograph carefully.", "Each picture stands for 1 item.", "Count the items for each category and record them in the table."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "FillInTable", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  FillInTable
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "FillInTable", "element_count": 41, "svg_count": 0, "table_row_count": 9, "table_cell_count": 18, "button_count": 0, "input_count": 4, "text_labels": ["Favorite Pets", "cats", "🐾🐾", "dogs", "🐾🐾🐾", "birds", "🐾", "fish", "🐾🐾🐾🐾", "Category", "Count", "Fill in the missing values in the table"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--input-bg)", "hsl(var(--text-muted)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample afde7ca226c8d8ceb903  seed 900  [set_fill_in_blank]
+      stem:    Look at the pictograph. Write the correct count for each row in the table: Math, Science, English and Art.
+      answer:  [3, 1, 1, 2]
+      hints:   ["Look at the pictograph carefully.", "Each picture stands for 1 item.", "Count the items for each category and record them in the table."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "FillInTable", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  FillInTable
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "FillInTable", "element_count": 41, "svg_count": 0, "table_row_count": 9, "table_cell_count": 18, "button_count": 0, "input_count": 4, "text_labels": ["Favorite Subjects", "Math", "📚📚📚", "Science", "📚", "English", "Art", "📚📚", "Category", "Count", "Fill in the missing values in the table"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--input-bg)", "hsl(var(--text-muted)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample e4467de78f1bcebb3579  seed 901  [set_fill_in_blank]
+      stem:    Look at the pictograph. Write the correct count for each row in the table: roses, sunflowers, tulips and daisies.
+      answer:  [3, 1, 5, 2]
+      hints:   ["Look at the pictograph carefully.", "Each picture stands for 1 item.", "Count the items for each category and record them in the table."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "FillInTable", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  FillInTable
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "FillInTable", "element_count": 41, "svg_count": 0, "table_row_count": 9, "table_cell_count": 18, "button_count": 0, "input_count": 4, "text_labels": ["Flowers in the Garden", "roses", "🌸🌸🌸", "sunflowers", "🌸", "tulips", "🌸🌸🌸🌸🌸", "daisies", "🌸🌸", "Category", "Count", "Fill in the missing values in the table"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--input-bg)", "hsl(var(--text-muted)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample f115f41b312ff9c8ab71  seed 1000  [set_fill_in_blank]
+      stem:    The pictograph shows roses, sunflowers, tulips and daisies. Fill in the table with the correct counts.
+      answer:  [1, 4, 3, 1]
+      hints:   ["Look at the pictograph carefully.", "Each picture stands for 1 item.", "Count the items for each category and record them in the table."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "FillInTable", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "hint_gated"}
+      visual:  FillInTable
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "FillInTable", "element_count": 41, "svg_count": 0, "table_row_count": 9, "table_cell_count": 18, "button_count": 0, "input_count": 4, "text_labels": ["Flowers in the Garden", "roses", "🌸", "sunflowers", "🌸🌸🌸🌸", "tulips", "🌸🌸🌸", "daisies", "Category", "Count", "Fill in the missing values in the table"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--input-bg)", "hsl(var(--text-muted)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 97b979e4876f12ef5ae1  seed 1001  [set_fill_in_blank]
+      stem:    Look at the pictograph. Write the correct count for each row in the table: apples, bananas, mangoes and grapes.
+      answer:  [2, 1, 5, 4]
+      hints:   ["Look at the pictograph carefully.", "Each picture stands for 1 item.", "Count the items for each category and record them in the table."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "FillInTable", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "mastery_drill"}
+      visual:  FillInTable
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "FillInTable", "element_count": 41, "svg_count": 0, "table_row_count": 9, "table_cell_count": 18, "button_count": 0, "input_count": 4, "text_labels": ["Favorite Fruits", "apples", "🍎🍎", "bananas", "🍎", "mangoes", "🍎🍎🍎🍎🍎", "grapes", "🍎🍎🍎🍎", "Category", "Count", "Fill in the missing values in the table"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--input-bg)", "hsl(var(--text-muted)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 21374c0f6fb1dcd5622b  seed 1002  [set_fill_in_blank]
+      stem:    Look at the pictograph. Write the correct count for each row in the table: roses, sunflowers, tulips and daisies.
+      answer:  [2, 2, 2, 3]
+      hints:   ["Look at the pictograph carefully.", "Each picture stands for 1 item.", "Count the items for each category and record them in the table."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "FillInTable", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "scaffolded"}
+      visual:  FillInTable
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "FillInTable", "element_count": 41, "svg_count": 0, "table_row_count": 9, "table_cell_count": 18, "button_count": 0, "input_count": 4, "text_labels": ["Flowers in the Garden", "roses", "🌸🌸", "sunflowers", "tulips", "daisies", "🌸🌸🌸", "Category", "Count", "Fill in the missing values in the table"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--input-bg)", "hsl(var(--text-muted)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+

@@ -1,7 +1,33 @@
 {
+  "schema_version": 2,
   "node_id": "mat_g1_mg_q2_0",
-  "reviewed_by": "reviewer-c1-lantern-fescue-3061",
-  "review_date": "2026-09-11",
+  "competency_snapshot": {
+    "text": "Measure the length of an object and the distance between two objects using non-standard units.",
+    "grade": 1,
+    "quarter": 2,
+    "subdomain": null
+  },
+  "requirements_snapshot": [
+    {
+      "kind": "task",
+      "id": "measure_length",
+      "clause": "Measure the length of an object"
+    },
+    {
+      "kind": "task",
+      "id": "measure_distance",
+      "clause": "distance between two objects"
+    },
+    {
+      "kind": "representation",
+      "id": "non_standard_units",
+      "clause": "non-standard units"
+    }
+  ],
+  "packet_digest": "8682992fd8a99430fb77ed2b70a6563358487c1a189eaa706110bbe339c127ac",
+  "sampling_version": "phase2-stratified-v2-rendered-visual",
+  "reviewed_by": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q2_0-20260924",
+  "review_date": "2026-09-24",
   "blind": true,
   "sample_seeds": [
     42,
@@ -12,14 +38,58 @@
     500,
     501,
     502,
-    600
+    600,
+    700,
+    701,
+    702,
+    800,
+    900,
+    901,
+    1000,
+    1001,
+    1002
+  ],
+  "sample_ids": [
+    "17c6176de99a8688aa69",
+    "2b8c70b7a68f60074042",
+    "abf152fd9fc9a17d38b5",
+    "796270a32f9b98426398",
+    "1def2f4ef541e02f8ae4",
+    "598c6f08e6fb1b18dfb0",
+    "9d776d61cd26085c1c44",
+    "252ae32b9a6ba6c157f3",
+    "c4b694f6b766f2032592",
+    "1e93d12180de8346c133",
+    "edb86be6f21de1e43f9e",
+    "d8b98108a68dc10d07a7",
+    "a353492d66b290070300",
+    "be487728f2d69c156e39",
+    "08686b88a998ca24ed65",
+    "8bbda5745cddfa447a41",
+    "139d6eada7a47f03674e",
+    "9bbb062fa4e0be254d72"
   ],
   "samples_reviewed": [
     {
+      "node_id": "mat_g1_mg_q2_0",
       "seed": 42,
       "formatter": "read_mcq",
       "question_text": "How long is a paintbrush? Give your answer in paperclips.",
       "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "RulerMeasure",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -41,13 +111,74 @@
           "value": 3,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 2,
+      "hints": [
+        "Count how many paperclips fit along the object from end to end.",
+        "Make sure no gaps or overlaps between the units.",
+        "The length is 2 paperclips."
+      ],
+      "visual_type": "RulerMeasure",
+      "visual_payload": {
+        "ruler_start": 0,
+        "ruler_end": 20,
+        "unit": "paperclips",
+        "object_start": 0,
+        "object_end": 2,
+        "length": 2,
+        "unit_name": "paperclips"
+      },
+      "visual_render": {
+        "visual_type": "RulerMeasure",
+        "renderer_input_digest": "13b93bfba11eb7e752c10cdecb9105de7c0822fd3d1afda251a01f3ee8a6f511",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "RulerMeasure",
+          "element_count": 21,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 1,
+          "text_labels": [
+            "0 paperclips",
+            "0",
+            "5",
+            "10",
+            "paperclips"
+          ],
+          "distinct_colours": [
+            "#f8fafc",
+            "#cbd5e1",
+            "#475569",
+            "#0f172a"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "17c6176de99a8688aa69",
+      "replay_digest": "09a8efc24f5458d6b7c5465b96fe4bdc86fdd7a066c43941bae03cbeb2b978bc"
     },
     {
+      "node_id": "mat_g1_mg_q2_0",
       "seed": 43,
       "formatter": "read_mcq",
       "question_text": "How long is a pencil? Give your answer in hands.",
       "correct_answer": "C",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "RulerMeasure",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -69,13 +200,74 @@
           "value": 3,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 4,
+      "hints": [
+        "Count how many hands fit along the object from end to end.",
+        "Make sure no gaps or overlaps between the units.",
+        "The length is 4 hands."
+      ],
+      "visual_type": "RulerMeasure",
+      "visual_payload": {
+        "ruler_start": 0,
+        "ruler_end": 20,
+        "unit": "hands",
+        "object_start": 0,
+        "object_end": 4,
+        "length": 4,
+        "unit_name": "hands"
+      },
+      "visual_render": {
+        "visual_type": "RulerMeasure",
+        "renderer_input_digest": "05e6ac7157a0563608072e2c7e826ecccddbd44f672c14582f66fed4d4b80d4c",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "RulerMeasure",
+          "element_count": 21,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 1,
+          "text_labels": [
+            "0 hands",
+            "0",
+            "5",
+            "10",
+            "hands"
+          ],
+          "distinct_colours": [
+            "#f8fafc",
+            "#cbd5e1",
+            "#475569",
+            "#0f172a"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "2b8c70b7a68f60074042",
+      "replay_digest": "f5a2fb58dde0ed0c7cad53265ed1c21f872dc20f48b3c37963250d917c3d559b"
     },
     {
+      "node_id": "mat_g1_mg_q2_0",
       "seed": 44,
       "formatter": "read_mcq",
       "question_text": "A desk and a ball are placed apart. The distance between them is ___ paperclips.",
       "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "RulerMeasure",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -97,13 +289,74 @@
           "value": 10,
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 10,
+      "hints": [
+        "Count how many paperclips fit in the gap between the two objects.",
+        "Make sure no gaps or overlaps between the units.",
+        "The distance between them is 10 paperclips."
+      ],
+      "visual_type": "RulerMeasure",
+      "visual_payload": {
+        "ruler_start": 0,
+        "ruler_end": 20,
+        "unit": "paperclips",
+        "object_start": 0,
+        "object_end": 10,
+        "length": 10,
+        "unit_name": "paperclips"
+      },
+      "visual_render": {
+        "visual_type": "RulerMeasure",
+        "renderer_input_digest": "038b31961ab33c482159ce6472f01b6915dd55d7cbde797b9473feec00a24105",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "RulerMeasure",
+          "element_count": 23,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 1,
+          "text_labels": [
+            "0 paperclips",
+            "0",
+            "5",
+            "10",
+            "paperclips"
+          ],
+          "distinct_colours": [
+            "#f8fafc",
+            "#cbd5e1",
+            "#475569",
+            "#0f172a"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "abf152fd9fc9a17d38b5",
+      "replay_digest": "0cc984a863ef584b7e52f16e3a81f340ef58d61e757b2ae085c26dde6edf86d1"
     },
     {
+      "node_id": "mat_g1_mg_q2_0",
       "seed": 45,
       "formatter": "read_mcq",
       "question_text": "A bag and a chair are placed apart. The distance between them is ___ hands.",
       "correct_answer": "C",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "RulerMeasure",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -125,13 +378,74 @@
           "value": 20,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 5,
+      "hints": [
+        "Count how many hands fit in the gap between the two objects.",
+        "Make sure no gaps or overlaps between the units.",
+        "The distance between them is 5 hands."
+      ],
+      "visual_type": "RulerMeasure",
+      "visual_payload": {
+        "ruler_start": 0,
+        "ruler_end": 20,
+        "unit": "hands",
+        "object_start": 0,
+        "object_end": 5,
+        "length": 5,
+        "unit_name": "hands"
+      },
+      "visual_render": {
+        "visual_type": "RulerMeasure",
+        "renderer_input_digest": "7c053c05fcf01fbad6b4ee7c8831c0069d51864b790b7626a0bfd37d70572ca2",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "RulerMeasure",
+          "element_count": 21,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 1,
+          "text_labels": [
+            "0 hands",
+            "0",
+            "5",
+            "10",
+            "hands"
+          ],
+          "distinct_colours": [
+            "#f8fafc",
+            "#cbd5e1",
+            "#475569",
+            "#0f172a"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "796270a32f9b98426398",
+      "replay_digest": "048aad1be2f3fd5c086abc58436aa1128d2e2bb3c5690ff926023cff97ac35b1"
     },
     {
+      "node_id": "mat_g1_mg_q2_0",
       "seed": 46,
       "formatter": "read_mcq",
       "question_text": "How long is a pencil? Give your answer in crayons.",
       "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "RulerMeasure",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -153,13 +467,76 @@
           "value": 20,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 2,
+      "hints": [
+        "Count how many crayons fit along the object from end to end.",
+        "Make sure no gaps or overlaps between the units.",
+        "The length is 2 crayons."
+      ],
+      "visual_type": "RulerMeasure",
+      "visual_payload": {
+        "ruler_start": 0,
+        "ruler_end": 20,
+        "unit": "crayons",
+        "object_start": 0,
+        "object_end": 2,
+        "length": 2,
+        "unit_name": "crayons"
+      },
+      "visual_render": {
+        "visual_type": "RulerMeasure",
+        "renderer_input_digest": "df007f215c45098cb453a1ed0c00de5ab36f0d373136c5dd19233f5b11eb95e1",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "RulerMeasure",
+          "element_count": 21,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 1,
+          "text_labels": [
+            "0 crayons",
+            "0",
+            "5",
+            "10",
+            "crayons"
+          ],
+          "distinct_colours": [
+            "#f8fafc",
+            "#cbd5e1",
+            "#475569",
+            "#0f172a"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "1def2f4ef541e02f8ae4",
+      "replay_digest": "28c1c8bc809f2bde4bc9e29edde45e6a244afaac5975fc407566c55536375922"
     },
     {
+      "node_id": "mat_g1_mg_q2_0",
       "seed": 500,
       "formatter": "read_mcq",
       "question_text": "A desk and a bag are placed apart. The distance between them is ___ paperclips.",
       "correct_answer": "C",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "RulerMeasure",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -181,13 +558,76 @@
           "value": 11,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 10,
+      "hints": [
+        "Count how many paperclips fit in the gap between the two objects.",
+        "Make sure no gaps or overlaps between the units.",
+        "The distance between them is 10 paperclips."
+      ],
+      "visual_type": "RulerMeasure",
+      "visual_payload": {
+        "ruler_start": 0,
+        "ruler_end": 20,
+        "unit": "paperclips",
+        "object_start": 0,
+        "object_end": 10,
+        "length": 10,
+        "unit_name": "paperclips"
+      },
+      "visual_render": {
+        "visual_type": "RulerMeasure",
+        "renderer_input_digest": "038b31961ab33c482159ce6472f01b6915dd55d7cbde797b9473feec00a24105",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "RulerMeasure",
+          "element_count": 23,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 1,
+          "text_labels": [
+            "0 paperclips",
+            "0",
+            "5",
+            "10",
+            "paperclips"
+          ],
+          "distinct_colours": [
+            "#f8fafc",
+            "#cbd5e1",
+            "#475569",
+            "#0f172a"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "598c6f08e6fb1b18dfb0",
+      "replay_digest": "08b3a5d5f83f746ee8aa354754041ea2371e00c16a179f875d85ad984f3ca00f"
     },
     {
+      "node_id": "mat_g1_mg_q2_0",
       "seed": 501,
       "formatter": "read_mcq",
       "question_text": "A chair and a box are placed apart. The distance between them is ___ hands.",
       "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "RulerMeasure",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -209,13 +649,76 @@
           "value": 20,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 7,
+      "hints": [
+        "Count how many hands fit in the gap between the two objects.",
+        "Make sure no gaps or overlaps between the units.",
+        "The distance between them is 7 hands."
+      ],
+      "visual_type": "RulerMeasure",
+      "visual_payload": {
+        "ruler_start": 0,
+        "ruler_end": 20,
+        "unit": "hands",
+        "object_start": 0,
+        "object_end": 7,
+        "length": 7,
+        "unit_name": "hands"
+      },
+      "visual_render": {
+        "visual_type": "RulerMeasure",
+        "renderer_input_digest": "95c0e518b67b39919791c3ccc2d754a2896b4f2db5f96fe5ba11514b5032ace6",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "RulerMeasure",
+          "element_count": 21,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 1,
+          "text_labels": [
+            "0 hands",
+            "0",
+            "5",
+            "10",
+            "hands"
+          ],
+          "distinct_colours": [
+            "#f8fafc",
+            "#cbd5e1",
+            "#475569",
+            "#0f172a"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "9d776d61cd26085c1c44",
+      "replay_digest": "a1710c8a236f31623ad75394ae5c4a925e758fc9c4106f2b82c47ed7ee94a38f"
     },
     {
+      "node_id": "mat_g1_mg_q2_0",
       "seed": 502,
       "formatter": "read_mcq",
       "question_text": "A shelf and a chair are placed apart. The distance between them is ___ hands.",
       "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "RulerMeasure",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -237,13 +740,76 @@
           "value": 3,
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 3,
+      "hints": [
+        "Count how many hands fit in the gap between the two objects.",
+        "Make sure no gaps or overlaps between the units.",
+        "The distance between them is 3 hands."
+      ],
+      "visual_type": "RulerMeasure",
+      "visual_payload": {
+        "ruler_start": 0,
+        "ruler_end": 20,
+        "unit": "hands",
+        "object_start": 0,
+        "object_end": 3,
+        "length": 3,
+        "unit_name": "hands"
+      },
+      "visual_render": {
+        "visual_type": "RulerMeasure",
+        "renderer_input_digest": "4125295c5132c1a761c14b4e8bb1728e62d9f34faa50a6cc4cdbf3d8f338b8d3",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "RulerMeasure",
+          "element_count": 21,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 1,
+          "text_labels": [
+            "0 hands",
+            "0",
+            "5",
+            "10",
+            "hands"
+          ],
+          "distinct_colours": [
+            "#f8fafc",
+            "#cbd5e1",
+            "#475569",
+            "#0f172a"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "252ae32b9a6ba6c157f3",
+      "replay_digest": "7376b681fdb1e131ea57edd650a8716a668f249c90d48b287e7e6feb2939bb63"
     },
     {
+      "node_id": "mat_g1_mg_q2_0",
       "seed": 600,
       "formatter": "read_mcq",
       "question_text": "A shelf and a bag are placed apart. The distance between them is ___ hands.",
       "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": {
+          "context": "pure"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "RulerMeasure",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -265,34 +831,1399 @@
           "value": 4,
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 4,
+      "hints": [
+        "Count how many hands fit in the gap between the two objects.",
+        "Make sure no gaps or overlaps between the units.",
+        "The distance between them is 4 hands."
+      ],
+      "visual_type": "RulerMeasure",
+      "visual_payload": {
+        "ruler_start": 0,
+        "ruler_end": 20,
+        "unit": "hands",
+        "object_start": 0,
+        "object_end": 4,
+        "length": 4,
+        "unit_name": "hands"
+      },
+      "visual_render": {
+        "visual_type": "RulerMeasure",
+        "renderer_input_digest": "05e6ac7157a0563608072e2c7e826ecccddbd44f672c14582f66fed4d4b80d4c",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "RulerMeasure",
+          "element_count": 21,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 1,
+          "text_labels": [
+            "0 hands",
+            "0",
+            "5",
+            "10",
+            "hands"
+          ],
+          "distinct_colours": [
+            "#f8fafc",
+            "#cbd5e1",
+            "#475569",
+            "#0f172a"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "c4b694f6b766f2032592",
+      "replay_digest": "f1651bacfee8f7913d544ebfbf3a806fdf62fa07b86965e11a53612f5da848be"
+    },
+    {
+      "node_id": "mat_g1_mg_q2_0",
+      "seed": 700,
+      "formatter": "read_mcq",
+      "question_text": "How long is a spoon? Give your answer in blocks.",
+      "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "RulerMeasure",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 5,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 20,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 4,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 6,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 5,
+      "hints": [
+        "Count how many blocks fit along the object from end to end.",
+        "Make sure no gaps or overlaps between the units.",
+        "The length is 5 blocks."
+      ],
+      "visual_type": "RulerMeasure",
+      "visual_payload": {
+        "ruler_start": 0,
+        "ruler_end": 20,
+        "unit": "blocks",
+        "object_start": 0,
+        "object_end": 5,
+        "length": 5,
+        "unit_name": "blocks"
+      },
+      "visual_render": {
+        "visual_type": "RulerMeasure",
+        "renderer_input_digest": "2e6255350f85aa2cd610a1556b6d28b2729205d2f72915b3e0f282c65ae8f7a7",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "RulerMeasure",
+          "element_count": 21,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 1,
+          "text_labels": [
+            "0 blocks",
+            "0",
+            "5",
+            "10",
+            "blocks"
+          ],
+          "distinct_colours": [
+            "#f8fafc",
+            "#cbd5e1",
+            "#475569",
+            "#0f172a"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "1e93d12180de8346c133",
+      "replay_digest": "fbe37cef379474d790f95543e989081a10959a597fceca476d84c2030f71385c"
+    },
+    {
+      "node_id": "mat_g1_mg_q2_0",
+      "seed": 701,
+      "formatter": "read_mcq",
+      "question_text": "🧁 Boboy has a math challenge about cookies. A ball and a shelf are placed apart. The distance between them is ___ hands.",
+      "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "food_baking",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "RulerMeasure",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 5,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 4,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 20,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 6,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 5,
+      "hints": [
+        "Count how many hands fit in the gap between the two objects.",
+        "Make sure no gaps or overlaps between the units.",
+        "The distance between them is 5 hands."
+      ],
+      "visual_type": "RulerMeasure",
+      "visual_payload": {
+        "ruler_start": 0,
+        "ruler_end": 20,
+        "unit": "hands",
+        "object_start": 0,
+        "object_end": 5,
+        "length": 5,
+        "unit_name": "hands"
+      },
+      "visual_render": {
+        "visual_type": "RulerMeasure",
+        "renderer_input_digest": "7c053c05fcf01fbad6b4ee7c8831c0069d51864b790b7626a0bfd37d70572ca2",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "RulerMeasure",
+          "element_count": 21,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 1,
+          "text_labels": [
+            "0 hands",
+            "0",
+            "5",
+            "10",
+            "hands"
+          ],
+          "distinct_colours": [
+            "#f8fafc",
+            "#cbd5e1",
+            "#475569",
+            "#0f172a"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "edb86be6f21de1e43f9e",
+      "replay_digest": "7fe753503ad3d480651d30518338c6813f737ef08fcd210f013b876d5bb26019"
+    },
+    {
+      "node_id": "mat_g1_mg_q2_0",
+      "seed": 702,
+      "formatter": "read_mcq",
+      "question_text": "🏀 Isko has a math challenge about basketballs. How long is a pencil? Give your answer in blocks.",
+      "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "western_pop",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "RulerMeasure",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 2,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 20,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 1,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 2,
+      "hints": [
+        "Count how many blocks fit along the object from end to end.",
+        "Make sure no gaps or overlaps between the units.",
+        "The length is 2 blocks."
+      ],
+      "visual_type": "RulerMeasure",
+      "visual_payload": {
+        "ruler_start": 0,
+        "ruler_end": 20,
+        "unit": "blocks",
+        "object_start": 0,
+        "object_end": 2,
+        "length": 2,
+        "unit_name": "blocks"
+      },
+      "visual_render": {
+        "visual_type": "RulerMeasure",
+        "renderer_input_digest": "c641116f3e933c1a0057ec39f6205ab6b3d345f1a93c490bcfbe6c546fc38f36",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "RulerMeasure",
+          "element_count": 21,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 1,
+          "text_labels": [
+            "0 blocks",
+            "0",
+            "5",
+            "10",
+            "blocks"
+          ],
+          "distinct_colours": [
+            "#f8fafc",
+            "#cbd5e1",
+            "#475569",
+            "#0f172a"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "d8b98108a68dc10d07a7",
+      "replay_digest": "e59cc15792a6d679ded4695c0ffe8055d178902f096945c18b8712f8c9658912"
+    },
+    {
+      "node_id": "mat_g1_mg_q2_0",
+      "seed": 800,
+      "formatter": "read_mcq",
+      "question_text": "A ball and a bag are placed apart. The distance between them is ___ paperclips.",
+      "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "RulerMeasure",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 20,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 11,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 12,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 10,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 11,
+      "hints": [
+        "Count how many paperclips fit in the gap between the two objects.",
+        "Make sure no gaps or overlaps between the units.",
+        "The distance between them is 11 paperclips."
+      ],
+      "visual_type": "RulerMeasure",
+      "visual_payload": {
+        "ruler_start": 0,
+        "ruler_end": 20,
+        "unit": "paperclips",
+        "object_start": 0,
+        "object_end": 11,
+        "length": 11,
+        "unit_name": "paperclips"
+      },
+      "visual_render": {
+        "visual_type": "RulerMeasure",
+        "renderer_input_digest": "f45af1a5322eea31f6a6bd1fbe20565d212d070974bc7d1a3d27e2b197a43bcb",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "RulerMeasure",
+          "element_count": 24,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 1,
+          "text_labels": [
+            "0 paperclips",
+            "0",
+            "5",
+            "10",
+            "paperclips"
+          ],
+          "distinct_colours": [
+            "#f8fafc",
+            "#cbd5e1",
+            "#475569",
+            "#0f172a"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "a353492d66b290070300",
+      "replay_digest": "8cbf9b057b1af079d37e8b89c56d8b561859442a4dd69ee4f5670e0363bae6ab"
+    },
+    {
+      "node_id": "mat_g1_mg_q2_0",
+      "seed": 900,
+      "formatter": "read_mcq",
+      "question_text": "How long is a shoe? Give your answer in blocks.",
+      "correct_answer": "C",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "RulerMeasure",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 20,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 4,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 5,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 4,
+      "hints": [
+        "Count how many blocks fit along the object from end to end.",
+        "Make sure no gaps or overlaps between the units.",
+        "The length is 4 blocks."
+      ],
+      "visual_type": "RulerMeasure",
+      "visual_payload": {
+        "ruler_start": 0,
+        "ruler_end": 20,
+        "unit": "blocks",
+        "object_start": 0,
+        "object_end": 4,
+        "length": 4,
+        "unit_name": "blocks"
+      },
+      "visual_render": {
+        "visual_type": "RulerMeasure",
+        "renderer_input_digest": "f236edc49edc0a45da81900d831c3b33d20866c4c113c41621b5600414ca7249",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "RulerMeasure",
+          "element_count": 21,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 1,
+          "text_labels": [
+            "0 blocks",
+            "0",
+            "5",
+            "10",
+            "blocks"
+          ],
+          "distinct_colours": [
+            "#f8fafc",
+            "#cbd5e1",
+            "#475569",
+            "#0f172a"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "be487728f2d69c156e39",
+      "replay_digest": "960535fd41aff2f42f3adb99b8e905aac0eb87b75940c528450048aa6a5ebfe0"
+    },
+    {
+      "node_id": "mat_g1_mg_q2_0",
+      "seed": 901,
+      "formatter": "read_mcq",
+      "question_text": "A chair and a ball are placed apart. The distance between them is ___ paperclips.",
+      "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "RulerMeasure",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 20,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 12,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 11,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 13,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 12,
+      "hints": [
+        "Count how many paperclips fit in the gap between the two objects.",
+        "Make sure no gaps or overlaps between the units.",
+        "The distance between them is 12 paperclips."
+      ],
+      "visual_type": "RulerMeasure",
+      "visual_payload": {
+        "ruler_start": 0,
+        "ruler_end": 20,
+        "unit": "paperclips",
+        "object_start": 0,
+        "object_end": 12,
+        "length": 12,
+        "unit_name": "paperclips"
+      },
+      "visual_render": {
+        "visual_type": "RulerMeasure",
+        "renderer_input_digest": "f3dfadbf6dfc1dc12c61e50df1321bd855d2035ff39ece58aab5b15973e032b4",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "RulerMeasure",
+          "element_count": 25,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 1,
+          "text_labels": [
+            "0 paperclips",
+            "0",
+            "5",
+            "10",
+            "paperclips"
+          ],
+          "distinct_colours": [
+            "#f8fafc",
+            "#cbd5e1",
+            "#475569",
+            "#0f172a"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "08686b88a998ca24ed65",
+      "replay_digest": "6b10f4edb8e042e66f0fefe1db2fa4032a319756b43754d281aaed42b42cc107"
+    },
+    {
+      "node_id": "mat_g1_mg_q2_0",
+      "seed": 1000,
+      "formatter": "read_mcq",
+      "question_text": "A ball and a bag are placed apart. The distance between them is ___ paperclips.",
+      "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "hint_gated"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "RulerMeasure",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "hint_gated"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 13,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 20,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 11,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 12,
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 12,
+      "hints": [
+        "Count how many paperclips fit in the gap between the two objects.",
+        "Make sure no gaps or overlaps between the units.",
+        "The distance between them is 12 paperclips."
+      ],
+      "visual_type": "RulerMeasure",
+      "visual_payload": {
+        "ruler_start": 0,
+        "ruler_end": 20,
+        "unit": "paperclips",
+        "object_start": 0,
+        "object_end": 12,
+        "length": 12,
+        "unit_name": "paperclips"
+      },
+      "visual_render": {
+        "visual_type": "RulerMeasure",
+        "renderer_input_digest": "f3dfadbf6dfc1dc12c61e50df1321bd855d2035ff39ece58aab5b15973e032b4",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "RulerMeasure",
+          "element_count": 25,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 1,
+          "text_labels": [
+            "0 paperclips",
+            "0",
+            "5",
+            "10",
+            "paperclips"
+          ],
+          "distinct_colours": [
+            "#f8fafc",
+            "#cbd5e1",
+            "#475569",
+            "#0f172a"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "8bbda5745cddfa447a41",
+      "replay_digest": "f27ca60755163e93d860726d85426e77bc8a22da8e4583bd76e7f83351d6d7b5"
+    },
+    {
+      "node_id": "mat_g1_mg_q2_0",
+      "seed": 1001,
+      "formatter": "read_mcq",
+      "question_text": "How long is a pencil? Give your answer in blocks.",
+      "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "mastery_drill"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "RulerMeasure",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "mastery_drill"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 7,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 8,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 9,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 20,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 8,
+      "hints": [
+        "Count how many blocks fit along the object from end to end.",
+        "Make sure no gaps or overlaps between the units.",
+        "The length is 8 blocks."
+      ],
+      "visual_type": "RulerMeasure",
+      "visual_payload": {
+        "ruler_start": 0,
+        "ruler_end": 20,
+        "unit": "blocks",
+        "object_start": 0,
+        "object_end": 8,
+        "length": 8,
+        "unit_name": "blocks"
+      },
+      "visual_render": {
+        "visual_type": "RulerMeasure",
+        "renderer_input_digest": "ba1332d5920cbcf93de0cc13f8505519cafdcf61134b84b127fcae003ec8e93f",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "RulerMeasure",
+          "element_count": 21,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 1,
+          "text_labels": [
+            "0 blocks",
+            "0",
+            "5",
+            "10",
+            "blocks"
+          ],
+          "distinct_colours": [
+            "#f8fafc",
+            "#cbd5e1",
+            "#475569",
+            "#0f172a"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "139d6eada7a47f03674e",
+      "replay_digest": "53b9203ab15cd4a1c715f7e885f85b26448f6b8feddb2883b162352ad4494fa3"
+    },
+    {
+      "node_id": "mat_g1_mg_q2_0",
+      "seed": 1002,
+      "formatter": "read_mcq",
+      "question_text": "A box and a shelf are placed apart. The distance between them is ___ paperclips.",
+      "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "scaffolded"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "RulerMeasure",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "scaffolded"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 5,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 6,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 20,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 4,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 5,
+      "hints": [
+        "Count how many paperclips fit in the gap between the two objects.",
+        "Make sure no gaps or overlaps between the units.",
+        "The distance between them is 5 paperclips."
+      ],
+      "visual_type": "RulerMeasure",
+      "visual_payload": {
+        "ruler_start": 0,
+        "ruler_end": 20,
+        "unit": "paperclips",
+        "object_start": 0,
+        "object_end": 5,
+        "length": 5,
+        "unit_name": "paperclips"
+      },
+      "visual_render": {
+        "visual_type": "RulerMeasure",
+        "renderer_input_digest": "35f7b4b711d3a3b0de45eda6b91cebb72c036954376b5f40c46f4a0c68cbd75f",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "RulerMeasure",
+          "element_count": 21,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 1,
+          "text_labels": [
+            "0 paperclips",
+            "0",
+            "5",
+            "10",
+            "paperclips"
+          ],
+          "distinct_colours": [
+            "#f8fafc",
+            "#cbd5e1",
+            "#475569",
+            "#0f172a"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "9bbb062fa4e0be254d72",
+      "replay_digest": "d843d3697204b316b8462479794a42a438868e0b9e166164403a206d1222eea5"
+    }
+  ],
+  "sample_assessments": [
+    {
+      "sample_id": "17c6176de99a8688aa69",
+      "checks": {
+        "ambiguity": {
+          "verdict": "CONCERN",
+          "reasoning": "The stated answer and hints agree, but the packet does not expose the object and paperclip placement needed to verify that two units are visibly determined."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Measuring a paintbrush in paperclips is a coherent Grade 1 context, and the end-to-end counting instruction matches the requested task."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The question uses short familiar wording, names the object and unit directly, and asks for one clear numerical answer."
+        },
+        "mathematical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "The answer, options, and hints are internally consistent, but the unavailable rendered geometry prevents independent confirmation that the answer is mathematically grounded."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q2_0-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q2_0-20260924:mat_g1_mg_q2_0"
+    },
+    {
+      "sample_id": "2b8c70b7a68f60074042",
+      "checks": {
+        "ambiguity": {
+          "verdict": "CONCERN",
+          "reasoning": "The answer and instructional hints are consistent, while the supplied visual summary omits the pencil and hand positions needed to rule out another count."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A pencil measured with hands is a logically meaningful non-standard-unit activity and fits the intended early measurement context."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem is concise, identifies the requested unit, and uses vocabulary that a beginning learner can understand."
+        },
+        "mathematical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "The printed answer is supported by the hints, but the static packet does not reveal enough geometry to verify the four-unit measurement itself."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q2_0-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q2_0-20260924:mat_g1_mg_q2_0"
+    },
+    {
+      "sample_id": "abf152fd9fc9a17d38b5",
+      "checks": {
+        "ambiguity": {
+          "verdict": "CONCERN",
+          "reasoning": "The blank asks for a single distance, but the actual desk, ball, and intervening paperclips are not represented in the supplied structural description."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Describing two objects as placed apart and counting paperclips in the gap is a valid distance-measurement situation."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The sentence clearly identifies the two objects, the gap, and the unit required for the missing number."
+        },
+        "mathematical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "Ten is coherent with the hint and choices, but the absent visual placement means the claimed distance cannot be independently checked."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q2_0-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q2_0-20260924:mat_g1_mg_q2_0"
+    },
+    {
+      "sample_id": "796270a32f9b98426398",
+      "checks": {
+        "ambiguity": {
+          "verdict": "CONCERN",
+          "reasoning": "The text specifies five hands, yet the static visual record does not show whether the bag-chair gap contains exactly five non-overlapping units."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Using hand units to compare the separation of a bag and chair is a sensible non-standard distance task for this level."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem is direct and the unit is repeated in the question, making the requested response easy to identify."
+        },
+        "mathematical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "The answer and hints agree internally, but the packet summary does not display the measurement arrangement needed to validate five."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q2_0-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q2_0-20260924:mat_g1_mg_q2_0"
+    },
+    {
+      "sample_id": "1def2f4ef541e02f8ae4",
+      "checks": {
+        "ambiguity": {
+          "verdict": "CONCERN",
+          "reasoning": "The stated count is clear in text, but no rendered object-to-crayon alignment is available to establish that two is uniquely observable."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Measuring a pencil with crayons is a familiar and logically appropriate non-standard-unit activity."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The wording is brief, asks one question, and explicitly tells the learner which unit to use."
+        },
+        "mathematical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "The answer and hints form a consistent claim, although the missing visual geometry prevents direct verification of the count."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q2_0-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q2_0-20260924:mat_g1_mg_q2_0"
+    },
+    {
+      "sample_id": "598c6f08e6fb1b18dfb0",
+      "checks": {
+        "ambiguity": {
+          "verdict": "CONCERN",
+          "reasoning": "The textual answer is definite, but the supplied RulerMeasure metadata does not show the desk-bag gap or its ten paperclip units."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A desk and bag separated by a countable paperclip gap provide a coherent distance scenario."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The blank construction is familiar, and both the objects and requested unit are plainly named."
+        },
+        "mathematical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "Ten matches the options and hint, but a reviewer cannot confirm the visual measurement from the structural summary alone."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q2_0-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q2_0-20260924:mat_g1_mg_q2_0"
+    },
+    {
+      "sample_id": "9d776d61cd26085c1c44",
+      "checks": {
+        "ambiguity": {
+          "verdict": "CONCERN",
+          "reasoning": "The packet states seven hands but does not expose the chair-box layout, so uniqueness of the visual count cannot be checked."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Counting hand units between a chair and box is a valid and understandable distance comparison."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem is short, grammatically clear, and gives the learner a single numerical completion."
+        },
+        "mathematical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "The printed answer is internally supported, while the missing unit placement leaves the seven-unit claim unverified."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q2_0-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q2_0-20260924:mat_g1_mg_q2_0"
+    },
+    {
+      "sample_id": "252ae32b9a6ba6c157f3",
+      "checks": {
+        "ambiguity": {
+          "verdict": "CONCERN",
+          "reasoning": "The answer is identified as three hands, but the static description does not show the shelf-chair gap or the boundaries of its units."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A shelf and chair separated by hand units make a sensible object-distance measurement task."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The wording uses familiar objects and an explicit blank, with no unnecessary reading burden for Grade 1."
+        },
+        "mathematical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "Three agrees with the hint and answer options, but the absent visual prevents checking the actual count."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q2_0-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q2_0-20260924:mat_g1_mg_q2_0"
+    },
+    {
+      "sample_id": "c4b694f6b766f2032592",
+      "checks": {
+        "ambiguity": {
+          "verdict": "CONCERN",
+          "reasoning": "The supplied text claims four hands, yet the visual summary omits the shelf-bag arrangement needed to determine whether four is unique."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Measuring the separation of a shelf and bag in hand units is coherent and aligned with non-standard distance measurement."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The learner receives a clear completion prompt and a plainly stated unit without distracting wording."
+        },
+        "mathematical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "The response and hints agree, but four cannot be independently validated because the rendered measurement geometry is not shown."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q2_0-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q2_0-20260924:mat_g1_mg_q2_0"
+    },
+    {
+      "sample_id": "1e93d12180de8346c133",
+      "checks": {
+        "ambiguity": {
+          "verdict": "CONCERN",
+          "reasoning": "The answer says five blocks, but the structural visual record does not reveal the spoon length or block placement needed to assess uniqueness."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Counting blocks along a spoon is a concrete, age-appropriate way to measure an object's length."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The question is simple and explicit about both the object and the non-standard unit."
+        },
+        "mathematical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "Five is consistent with the printed hint and options, but the actual visual count remains unconfirmed in this packet."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q2_0-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q2_0-20260924:mat_g1_mg_q2_0"
+    },
+    {
+      "sample_id": "edb86be6f21de1e43f9e",
+      "checks": {
+        "ambiguity": {
+          "verdict": "CONCERN",
+          "reasoning": "The introductory story is understandable, but the ball-shelf visual and its five hand gap are absent from the structural summary."
+        },
+        "contextual_logical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "The cookie challenge and Boboy name add an unrelated wrapper, while the actual distance task remains logically coherent."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The extra cookie sentence is not connected to measuring the ball-shelf gap and may distract a beginning reader from the requested count."
+        },
+        "mathematical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "Five agrees with the answer and hints, but neither the visual gap nor the relevance of the story can be fully checked from the supplied metadata."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q2_0-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q2_0-20260924:mat_g1_mg_q2_0"
+    },
+    {
+      "sample_id": "d8b98108a68dc10d07a7",
+      "checks": {
+        "ambiguity": {
+          "verdict": "CONCERN",
+          "reasoning": "The pencil is said to measure two blocks, but the displayed structural information does not provide the block-to-object alignment."
+        },
+        "contextual_logical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "The basketball challenge is unrelated to measuring a pencil, creating a distracting context even though the underlying length task is sensible."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "Mentioning basketballs before asking about a pencil creates unnecessary switching and may confuse a Grade 1 learner about what to inspect."
+        },
+        "mathematical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "The stated count is consistent with the options and hints, but the missing visual prevents independent confirmation of two blocks."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q2_0-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q2_0-20260924:mat_g1_mg_q2_0"
+    },
+    {
+      "sample_id": "a353492d66b290070300",
+      "checks": {
+        "ambiguity": {
+          "verdict": "CONCERN",
+          "reasoning": "The answer is eleven paperclips, while the static visual summary does not expose the ball-bag interval needed to confirm that exact count."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Counting paperclips between a ball and bag is a coherent distance task using a familiar non-standard unit."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem clearly names both objects, the gap, and the requested unit in a compact sentence."
+        },
+        "mathematical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "Eleven matches the hint and answer choices, but the visual evidence supplied does not permit checking the measurement itself."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q2_0-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q2_0-20260924:mat_g1_mg_q2_0"
+    },
+    {
+      "sample_id": "be487728f2d69c156e39",
+      "checks": {
+        "ambiguity": {
+          "verdict": "CONCERN",
+          "reasoning": "The packet claims four blocks for the shoe, but no visible shoe or block alignment is included beyond the generic visual type."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Measuring a shoe with blocks is a concrete and reasonable object-length activity for young learners."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The learner is asked one direct question and is told exactly which unit should be counted."
+        },
+        "mathematical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "Four is supported by the printed hint and options, although the unavailable geometry leaves the actual count unverified."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q2_0-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q2_0-20260924:mat_g1_mg_q2_0"
+    },
+    {
+      "sample_id": "08686b88a998ca24ed65",
+      "checks": {
+        "ambiguity": {
+          "verdict": "CONCERN",
+          "reasoning": "The response says twelve paperclips, but the provided structure does not show the chair-ball gap or whether twelve units fit without ambiguity."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A chair and ball separated by paperclips form a valid, concrete distance-measurement situation."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The sentence is direct, uses familiar objects, and makes the required unit and answer format obvious."
+        },
+        "mathematical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "The answer agrees with the hints and distractors, but twelve cannot be checked against the unseen rendered arrangement."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q2_0-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q2_0-20260924:mat_g1_mg_q2_0"
+    },
+    {
+      "sample_id": "8bbda5745cddfa447a41",
+      "checks": {
+        "ambiguity": {
+          "verdict": "CONCERN",
+          "reasoning": "The stated twelve-unit distance is not visually inspectable from the metadata, so the ball-bag measurement cannot be confirmed as unique."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The ball and bag separation is a meaningful context for counting paperclips as non-standard distance units."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem has a clear blank and explicitly identifies the two objects and the paperclip unit."
+        },
+        "mathematical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "Twelve is internally consistent with the answer and hints, but the missing visual layout prevents a direct mathematical check."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q2_0-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q2_0-20260924:mat_g1_mg_q2_0"
+    },
+    {
+      "sample_id": "139d6eada7a47f03674e",
+      "checks": {
+        "ambiguity": {
+          "verdict": "CONCERN",
+          "reasoning": "The printed claim is eight blocks, but the generic RulerMeasure summary does not show the pencil's actual block alignment."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Counting blocks along a pencil remains a straightforward and appropriate object-length measurement task."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem is concise and tells the learner exactly what object to measure and what unit to report."
+        },
+        "mathematical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "Eight agrees with the hints and choices, but the absent rendered geometry means the claimed count cannot be independently verified."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q2_0-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q2_0-20260924:mat_g1_mg_q2_0"
+    },
+    {
+      "sample_id": "9bbb062fa4e0be254d72",
+      "checks": {
+        "ambiguity": {
+          "verdict": "CONCERN",
+          "reasoning": "The stated five-paperclip gap is not visible in the supplied structure, so the box-shelf distance cannot be checked for unique interpretation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Measuring the separation between a box and shelf with paperclips is a coherent non-standard distance task."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The wording is simple, the blank has one intended quantity, and the unit is explicitly supplied."
+        },
+        "mathematical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "Five matches the hints and answer options, while the unshown visual arrangement prevents confirmation of the numerical result."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q2_0-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q2_0-20260924:mat_g1_mg_q2_0"
+    }
+  ],
+  "clause_evidence": [
+    {
+      "requirement_id": "measure_length",
+      "clause": "Measure the length of an object",
+      "verdict": "PASS",
+      "reasoning": "Object-length prompts cover a paintbrush, pencil, spoon, and shoe, and each asks for a count in a named non-standard unit.",
+      "sample_ids": [
+        "17c6176de99a8688aa69",
+        "2b8c70b7a68f60074042",
+        "1def2f4ef541e02f8ae4",
+        "1e93d12180de8346c133",
+        "be487728f2d69c156e39",
+        "d8b98108a68dc10d07a7",
+        "139d6eada7a47f03674e"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q2_0-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q2_0-20260924:mat_g1_mg_q2_0"
+    },
+    {
+      "requirement_id": "measure_distance",
+      "clause": "distance between two objects",
+      "verdict": "PASS",
+      "reasoning": "Multiple prompts explicitly ask for the distance between two named objects, including desk-ball, bag-chair, ball-bag, and box-shelf cases.",
+      "sample_ids": [
+        "abf152fd9fc9a17d38b5",
+        "796270a32f9b98426398",
+        "598c6f08e6fb1b18dfb0",
+        "9d776d61cd26085c1c44",
+        "252ae32b9a6ba6c157f3",
+        "c4b694f6b766f2032592",
+        "edb86be6f21de1e43f9e",
+        "a353492d66b290070300",
+        "08686b88a998ca24ed65",
+        "8bbda5745cddfa447a41",
+        "9bbb062fa4e0be254d72"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q2_0-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q2_0-20260924:mat_g1_mg_q2_0"
+    },
+    {
+      "requirement_id": "non_standard_units",
+      "clause": "non-standard units",
+      "verdict": "PASS",
+      "reasoning": "The samples name paperclips, hands, crayons, and blocks as the units, and none asks learners to use a standard ruler unit.",
+      "sample_ids": [
+        "17c6176de99a8688aa69",
+        "2b8c70b7a68f60074042",
+        "1def2f4ef541e02f8ae4",
+        "1e93d12180de8346c133",
+        "abf152fd9fc9a17d38b5",
+        "796270a32f9b98426398",
+        "a353492d66b290070300"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q2_0-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q2_0-20260924:mat_g1_mg_q2_0"
+    }
+  ],
+  "dispatch_provenance": [
+    {
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q2_0-20260924:mat_g1_mg_q2_0",
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q2_0-20260924",
+      "review_date": "2026-09-24",
+      "blind": true,
+      "packet_digest": "8682992fd8a99430fb77ed2b70a6563358487c1a189eaa706110bbe339c127ac",
+      "clause_ids": [
+        "measure_length",
+        "measure_distance",
+        "non_standard_units"
+      ],
+      "response_ref": ".responses/s5-luna-medium-w3-mat_g1_mg_q2_0-20260924.json",
+      "response_digest": "ad14ebef7a8e4785f5fb497cb164b84427ad8c5a9f2b96cfa9f430b4035e02de",
+      "prompt_ref": ".responses/s5-luna-medium-w3-mat_g1_mg_q2_0-20260924.prompt.txt",
+      "prompt_digest": "0e41f7274693bfc27510e8340533364abb07e2610f9d44e90dd4dcd86463625d",
+      "samples_delivery": "Prompt generated by tests.judgment_batches for one node and delivered by path to multi_agent_v1.spawn_agent using model gpt-5.6-luna with reasoning_effort=medium.",
+      "tool_uses_by_reviewer": "Reviewer was a tool-bearing multi_agent_v1 subagent instructed to read only its prompt file and write its verdicts JSON; it reported the output path and no other tool use to the dispatcher."
     }
   ],
   "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "Both objects of the competency are measured: the length of a single object (paintbrush, pencil) and the separation between two objects, each expressed as a count of a non-standard unit rather than centimetres."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "Three different non-standard units are used - paperclips, hands and crayons - and the two required situations, measuring one object and measuring a gap between two, are both present with several object pairs."
-    },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Reading off a count of repeated units from a picture, with the cloze frame the distance between them is ___ paperclips, asks for nothing beyond counting, which is right for Quarter 2 of Grade 1."
+      "rationale": "The tasks ask learners to count repeated familiar units and choose a number, which is appropriate for Grade 1 measurement work."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "Every stem targets either the length of one object or the distance between two objects using an explicitly named non-standard unit."
+    },
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The packet addresses both measurement contexts and consistently requires non-standard-unit counts in the response.",
+      "decomposition": {
+        "verdict": "PASS",
+        "reasoning": "The three printed requirements losslessly separate object length, object-to-object distance, and the required non-standard-unit condition without omitting a competency component.",
+        "requirement_ids": [
+          "measure_length",
+          "measure_distance",
+          "non_standard_units"
+        ]
+      },
+      "clause_ids": [
+        "measure_length",
+        "measure_distance",
+        "non_standard_units"
+      ]
+    },
+    "comprehensive_coverage": {
+      "verdict": "CONCERN",
+      "rationale": "Both required contexts appear repeatedly, but the packet offers only one response format and the static visual descriptions do not establish broad representational coverage.",
+      "clause_ids": [
+        "measure_length",
+        "measure_distance",
+        "non_standard_units"
+      ]
+    },
+    "scale_appropriateness": {
+      "verdict": "CONCERN",
+      "rationale": "Counts are generally small and suitable, but some distance values reach 12 and the supplied static metadata does not show whether unit placement remains readable at that scale."
     },
     "variant_comprehensiveness": {
       "verdict": "CONCERN",
-      "rationale": "Six of the nine samples are the one sentence about two objects placed apart with a blank for the unit count; only the two how-long questions break that pattern, and nothing asks the pupil to choose an appropriate unit or to measure the same object in two different units."
-    },
-    "competency_alignment": {
-      "verdict": "CONCERN",
-      "rationale": "Across seeds the measured value shifts between roughly 1 and 11 but nothing else about the measuring demand changes, so there is no progression - no longer object needing more units laid end to end, no item where the units must be counted past a partial unit."
-    },
-    "scale_appropriateness": {
-      "verdict": "FAIL",
-      "rationale": "Every one of the nine option sets contains 20 while every key lies between 1 and 11, and 20 is never the answer. A fixed out-of-range decoy in every item both misrepresents what a plausible non-standard measurement looks like and lets a pupil eliminate a quarter of the choices without measuring anything - and in the shortest items, such as the one whose options are 1, 2, 20, 3, it effectively reduces the question to a three-way choice among adjacent small numbers."
+      "rationale": "Objects and units vary across examples, yet all samples use the same read-MCQ RulerMeasure pattern, leaving little demonstrated variation in task presentation."
     }
   },
-  "overall": "FAIL"
+  "overall": "CONCERN"
 }

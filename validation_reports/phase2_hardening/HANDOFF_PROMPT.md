@@ -1,5 +1,14 @@
 # Handoff — continue the Phase 2 hardening plan
 
+**Refreshed 2026-09-24 (codex-h06-s5-luna-campaign-2-2026-09-24): eight additional
+`gpt-5.6-luna`/medium §5 reviews were filed.** Schema-v2 nodes now total 10 and the legacy queue is
+**141** (`schema_counts {2: 10, None: 141}`). `validate_judgment_reviews()` is **1391 findings across
+150 nodes** because the fresh reviews are red, not because filing failed. New source-work bugs queued:
+pictograph packets/rendering as `BarChart` or omitting visible counts, blank pictograph rows with
+nonzero answers, under-specified triangle composition, ruler-measure packets whose geometry cannot be
+verified from the review packet, and shorter-distance hints that call the correct shorter value
+"longer." The v2 corpus is mixed-family: 1 Haiku node and 9 Luna/medium nodes.**
+
 **Refreshed 2026-09-24 (codex-h06-s5-luna-campaign-2026-09-24): one GPT-host Luna/medium §5
 review was dispatched and filed.** `mat_g1_dp_q3_0` is now schema v2 under
 `blind-reviewer-gpt-5.6-luna-medium-b1n1-20260924`; the legacy queue regenerated to **149** v1

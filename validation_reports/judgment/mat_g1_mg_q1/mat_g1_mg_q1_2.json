@@ -1,7 +1,43 @@
 {
+  "schema_version": 2,
   "node_id": "mat_g1_mg_q1_2",
-  "reviewed_by": "reviewer-c1-lantern-fescue-3061",
-  "review_date": "2026-09-11",
+  "competency_snapshot": {
+    "text": "Compose and decompose triangles, squares, and rectangles.",
+    "grade": 1,
+    "quarter": 1,
+    "subdomain": null
+  },
+  "requirements_snapshot": [
+    {
+      "kind": "task",
+      "id": "compose",
+      "clause": "Compose"
+    },
+    {
+      "kind": "task",
+      "id": "decompose",
+      "clause": "decompose"
+    },
+    {
+      "kind": "object",
+      "id": "triangles",
+      "clause": "triangles"
+    },
+    {
+      "kind": "object",
+      "id": "squares",
+      "clause": "squares"
+    },
+    {
+      "kind": "object",
+      "id": "rectangles",
+      "clause": "rectangles"
+    }
+  ],
+  "packet_digest": "e785ea4d61a1ef801b104a73c5896c7f7f41bbe3ac3eed2c9ca10716feb5bbce",
+  "sampling_version": "phase2-stratified-v2-rendered-visual",
+  "reviewed_by": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_2-20260924",
+  "review_date": "2026-09-24",
   "blind": true,
   "sample_seeds": [
     42,
@@ -13,14 +49,59 @@
     501,
     502,
     600,
-    601
+    601,
+    700,
+    701,
+    702,
+    800,
+    900,
+    901,
+    1000,
+    1001,
+    1002
+  ],
+  "sample_ids": [
+    "66470ac61d35ae9804d8",
+    "6dc799abb3dd2208d3fd",
+    "622ec3a6bd75a0cb83e2",
+    "8895ecc962c983010808",
+    "a02281043653da56eeb8",
+    "e9ff952a61b7624053b9",
+    "833779957d6f99c15949",
+    "5e8e47709f31ecbff309",
+    "c5f6df51bf82de913da5",
+    "14e54405ab54741a01fb",
+    "1f2791d962fa10548b9e",
+    "b713e15cc290a9ef46d6",
+    "2afcf0ace18ad26c2c9d",
+    "98cf70e64bc15afbd6d8",
+    "ea7d7ba07205c0b1755e",
+    "face7ec9b45fd705854e",
+    "8da7e2a0b34ccf141a09",
+    "c742fefaf59ce7f01716",
+    "a58fc4229608082b31f2"
   ],
   "samples_reviewed": [
     {
+      "node_id": "mat_g1_mg_q1_2",
       "seed": 42,
       "formatter": "read_mcq",
       "question_text": "A long rectangle is cut across its width into two equal squares. What two shapes are made?",
       "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ShapeBoard",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -42,13 +123,79 @@
           "value": "two rectangles",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "two squares",
+      "hints": [
+        "Think about the sides and corners of each shape.",
+        "A triangle has 3 sides and 3 corners.",
+        "A square has 4 equal sides and 4 corners.",
+        "A rectangle has 4 sides (opposite sides are equal) and 4 corners."
+      ],
+      "visual_type": "ShapeBoard",
+      "visual_payload": {
+        "shapes": [
+          {
+            "id": "shape_0",
+            "type": "square",
+            "sides": 4,
+            "corners": 4,
+            "is_regular": true,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_1",
+            "type": "rectangle",
+            "sides": 4,
+            "corners": 4,
+            "is_regular": false,
+            "orientation_deg": 0
+          }
+        ],
+        "question_type": "illustrate",
+        "highlighted_shape": null
+      },
+      "visual_render": {
+        "visual_type": "ShapeBoard",
+        "renderer_input_digest": "51be8b908dce0f186df205546a7fb8a99575aa9e64296bf276ac9e61937e883f",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ShapeBoard",
+          "element_count": 8,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [
+            "hsl(var(--primary)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "66470ac61d35ae9804d8",
+      "replay_digest": "e70451a947414d128e2c08da198eccd3984e39102e400f70c49938c076177cdf"
     },
     {
+      "node_id": "mat_g1_mg_q1_2",
       "seed": 43,
       "formatter": "mcq",
       "question_text": "Two triangles are placed together, matching their longest straight edges. What shape do they form?",
       "correct_answer": "rectangle",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -70,13 +217,37 @@
           "value": "none of these",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "rectangle",
+      "hints": [
+        "Think about the sides and corners of each shape.",
+        "A triangle has 3 sides and 3 corners.",
+        "A square has 4 equal sides and 4 corners.",
+        "A rectangle has 4 sides (opposite sides are equal) and 4 corners."
+      ],
+      "sample_id": "6dc799abb3dd2208d3fd",
+      "replay_digest": "ad5eaae487000ad3867df3c8742abe0cb6aeb431be76fe74937bb50a22c96c81"
     },
     {
+      "node_id": "mat_g1_mg_q1_2",
       "seed": 44,
       "formatter": "read_mcq",
       "question_text": "Two identical squares are placed side by side. What shape do they form?",
       "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ShapeBoard",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -98,13 +269,87 @@
           "value": "rectangle",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": "rectangle",
+      "hints": [
+        "Think about the sides and corners of each shape.",
+        "A triangle has 3 sides and 3 corners.",
+        "A square has 4 equal sides and 4 corners.",
+        "A rectangle has 4 sides (opposite sides are equal) and 4 corners."
+      ],
+      "visual_type": "ShapeBoard",
+      "visual_payload": {
+        "shapes": [
+          {
+            "id": "shape_0",
+            "type": "square",
+            "sides": 4,
+            "corners": 4,
+            "is_regular": true,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_1",
+            "type": "rectangle",
+            "sides": 4,
+            "corners": 4,
+            "is_regular": false,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_2",
+            "type": "triangle",
+            "sides": 3,
+            "corners": 3,
+            "is_regular": true,
+            "orientation_deg": 0
+          }
+        ],
+        "question_type": "illustrate",
+        "highlighted_shape": null
+      },
+      "visual_render": {
+        "visual_type": "ShapeBoard",
+        "renderer_input_digest": "d6454bf7e6b2060dbfa6f734032cf268bf2bb0add7e31b3cb0e8b160bd3f4d3d",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ShapeBoard",
+          "element_count": 11,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [
+            "hsl(var(--primary)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "622ec3a6bd75a0cb83e2",
+      "replay_digest": "d9977bd9f7a847869b93d7d7f4c411528db7911387a41ff964752c8190d2ab5f"
     },
     {
+      "node_id": "mat_g1_mg_q1_2",
       "seed": 45,
       "formatter": "mcq",
       "question_text": "A square is cut on a slant, from one corner to the opposite corner. What two shapes are made?",
       "correct_answer": "two triangles",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -126,13 +371,37 @@
           "value": "one triangle and one square",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "two triangles",
+      "hints": [
+        "Think about the sides and corners of each shape.",
+        "A triangle has 3 sides and 3 corners.",
+        "A square has 4 equal sides and 4 corners.",
+        "A rectangle has 4 sides (opposite sides are equal) and 4 corners."
+      ],
+      "sample_id": "8895ecc962c983010808",
+      "replay_digest": "66c206d9dad174ce723809801735247d5f6c2e47d3f7e85276fcad45f6636854"
     },
     {
+      "node_id": "mat_g1_mg_q1_2",
       "seed": 46,
       "formatter": "mcq",
       "question_text": "Two triangles are placed together, matching their longest straight edges. What shape do they form?",
       "correct_answer": "rectangle",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -154,13 +423,39 @@
           "value": "rectangle",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": "rectangle",
+      "hints": [
+        "Think about the sides and corners of each shape.",
+        "A triangle has 3 sides and 3 corners.",
+        "A square has 4 equal sides and 4 corners.",
+        "A rectangle has 4 sides (opposite sides are equal) and 4 corners."
+      ],
+      "sample_id": "a02281043653da56eeb8",
+      "replay_digest": "bfca031317bbdd258dd8ca5ea0902ca2cec506561999a22e33e98e00f0556ebd"
     },
     {
+      "node_id": "mat_g1_mg_q1_2",
       "seed": 500,
       "formatter": "read_mcq",
       "question_text": "Two identical squares are placed side by side. What shape do they form?",
       "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ShapeBoard",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -182,13 +477,89 @@
           "value": "rectangle",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": "rectangle",
+      "hints": [
+        "Think about the sides and corners of each shape.",
+        "A triangle has 3 sides and 3 corners.",
+        "A square has 4 equal sides and 4 corners.",
+        "A rectangle has 4 sides (opposite sides are equal) and 4 corners."
+      ],
+      "visual_type": "ShapeBoard",
+      "visual_payload": {
+        "shapes": [
+          {
+            "id": "shape_0",
+            "type": "square",
+            "sides": 4,
+            "corners": 4,
+            "is_regular": true,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_1",
+            "type": "rectangle",
+            "sides": 4,
+            "corners": 4,
+            "is_regular": false,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_2",
+            "type": "triangle",
+            "sides": 3,
+            "corners": 3,
+            "is_regular": true,
+            "orientation_deg": 0
+          }
+        ],
+        "question_type": "illustrate",
+        "highlighted_shape": null
+      },
+      "visual_render": {
+        "visual_type": "ShapeBoard",
+        "renderer_input_digest": "d6454bf7e6b2060dbfa6f734032cf268bf2bb0add7e31b3cb0e8b160bd3f4d3d",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ShapeBoard",
+          "element_count": 11,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [
+            "hsl(var(--primary)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "e9ff952a61b7624053b9",
+      "replay_digest": "79b128e83fc359b463fabf8b147fd5f1523257b6e4ad78ce36576f19444fc40d"
     },
     {
+      "node_id": "mat_g1_mg_q1_2",
       "seed": 501,
       "formatter": "read_mcq",
       "question_text": "A long rectangle is cut across its width into two equal squares. What two shapes are made?",
       "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ShapeBoard",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -210,13 +581,81 @@
           "value": "one triangle and one square",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "two squares",
+      "hints": [
+        "Think about the sides and corners of each shape.",
+        "A triangle has 3 sides and 3 corners.",
+        "A square has 4 equal sides and 4 corners.",
+        "A rectangle has 4 sides (opposite sides are equal) and 4 corners."
+      ],
+      "visual_type": "ShapeBoard",
+      "visual_payload": {
+        "shapes": [
+          {
+            "id": "shape_0",
+            "type": "square",
+            "sides": 4,
+            "corners": 4,
+            "is_regular": true,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_1",
+            "type": "rectangle",
+            "sides": 4,
+            "corners": 4,
+            "is_regular": false,
+            "orientation_deg": 0
+          }
+        ],
+        "question_type": "illustrate",
+        "highlighted_shape": null
+      },
+      "visual_render": {
+        "visual_type": "ShapeBoard",
+        "renderer_input_digest": "51be8b908dce0f186df205546a7fb8a99575aa9e64296bf276ac9e61937e883f",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ShapeBoard",
+          "element_count": 8,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [
+            "hsl(var(--primary)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "833779957d6f99c15949",
+      "replay_digest": "b61a4396c48b5e96385f921601d301119aaf2a3c33debcb6c11003d0043209d5"
     },
     {
+      "node_id": "mat_g1_mg_q1_2",
       "seed": 502,
       "formatter": "read_mcq",
       "question_text": "Two identical triangles are joined along their matching straight edges to make a 4-sided shape with equal sides. What shape is formed?",
       "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ShapeBoard",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -238,13 +677,89 @@
           "value": "square",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": "square",
+      "hints": [
+        "Think about the sides and corners of each shape.",
+        "A triangle has 3 sides and 3 corners.",
+        "A square has 4 equal sides and 4 corners.",
+        "A rectangle has 4 sides (opposite sides are equal) and 4 corners."
+      ],
+      "visual_type": "ShapeBoard",
+      "visual_payload": {
+        "shapes": [
+          {
+            "id": "shape_0",
+            "type": "triangle",
+            "sides": 3,
+            "corners": 3,
+            "is_regular": true,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_1",
+            "type": "square",
+            "sides": 4,
+            "corners": 4,
+            "is_regular": true,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_2",
+            "type": "rectangle",
+            "sides": 4,
+            "corners": 4,
+            "is_regular": false,
+            "orientation_deg": 0
+          }
+        ],
+        "question_type": "illustrate",
+        "highlighted_shape": null
+      },
+      "visual_render": {
+        "visual_type": "ShapeBoard",
+        "renderer_input_digest": "e6a98d9d18aa4c1e315ede0f1f40aa91bb9c80f8458eba65a3d1eca84889b912",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ShapeBoard",
+          "element_count": 11,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [
+            "hsl(var(--primary)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "5e8e47709f31ecbff309",
+      "replay_digest": "1d07d6e11785cb06a95545e03da1bfa85e4b75b41c8bc0b9174c30e261564587"
     },
     {
+      "node_id": "mat_g1_mg_q1_2",
       "seed": 600,
       "formatter": "mcq",
       "question_text": "Two identical triangles are rotated to fit together into a rectangle. What shape is made?",
       "correct_answer": "rectangle",
+      "requested": {
+        "difficulty_profile": {
+          "orientation": "rotated"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -266,13 +781,39 @@
           "value": "rectangle",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": "rectangle",
+      "hints": [
+        "Think about the sides and corners of each shape.",
+        "A triangle has 3 sides and 3 corners.",
+        "A square has 4 equal sides and 4 corners.",
+        "A rectangle has 4 sides (opposite sides are equal) and 4 corners."
+      ],
+      "sample_id": "c5f6df51bf82de913da5",
+      "replay_digest": "c1ade4c73dbf6c4d7ea22c824b9ac068348699ac3ead7a73c3ec9a3d9f7f8f2f"
     },
     {
+      "node_id": "mat_g1_mg_q1_2",
       "seed": 601,
       "formatter": "read_mcq",
       "question_text": "A rectangle is cut into two equal pieces down the middle. What two shapes are made?",
       "correct_answer": "C",
+      "requested": {
+        "difficulty_profile": {
+          "orientation": "standard"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ShapeBoard",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -294,34 +835,1430 @@
           "value": "two squares",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "two rectangles",
+      "hints": [
+        "Think about the sides and corners of each shape.",
+        "A triangle has 3 sides and 3 corners.",
+        "A square has 4 equal sides and 4 corners.",
+        "A rectangle has 4 sides (opposite sides are equal) and 4 corners."
+      ],
+      "visual_type": "ShapeBoard",
+      "visual_payload": {
+        "shapes": [
+          {
+            "id": "shape_0",
+            "type": "rectangle",
+            "sides": 4,
+            "corners": 4,
+            "is_regular": false,
+            "orientation_deg": 0
+          }
+        ],
+        "question_type": "illustrate",
+        "highlighted_shape": null
+      },
+      "visual_render": {
+        "visual_type": "ShapeBoard",
+        "renderer_input_digest": "28087639db5388f8c9a51efbc1f840c38ba89dd904883e1022fc3b2da0663222",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ShapeBoard",
+          "element_count": 5,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [
+            "hsl(var(--primary)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "14e54405ab54741a01fb",
+      "replay_digest": "da3abda631775d257ef878a13e28244323c0129ba6b1f246b669ac3d2f7de1c5"
+    },
+    {
+      "node_id": "mat_g1_mg_q1_2",
+      "seed": 700,
+      "formatter": "read_mcq",
+      "question_text": "A rectangle is cut into two equal pieces down the middle. What two shapes are made?",
+      "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ShapeBoard",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "two rectangles",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "one triangle and one square",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "two squares",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "two triangles",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "two rectangles",
+      "hints": [
+        "Think about the sides and corners of each shape.",
+        "A triangle has 3 sides and 3 corners.",
+        "A square has 4 equal sides and 4 corners.",
+        "A rectangle has 4 sides (opposite sides are equal) and 4 corners."
+      ],
+      "visual_type": "ShapeBoard",
+      "visual_payload": {
+        "shapes": [
+          {
+            "id": "shape_0",
+            "type": "rectangle",
+            "sides": 4,
+            "corners": 4,
+            "is_regular": false,
+            "orientation_deg": 0
+          }
+        ],
+        "question_type": "illustrate",
+        "highlighted_shape": null
+      },
+      "visual_render": {
+        "visual_type": "ShapeBoard",
+        "renderer_input_digest": "28087639db5388f8c9a51efbc1f840c38ba89dd904883e1022fc3b2da0663222",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ShapeBoard",
+          "element_count": 5,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [
+            "hsl(var(--primary)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "1f2791d962fa10548b9e",
+      "replay_digest": "5dc427d67eb597415789488ca61692c03639422a78f2810dc990d692f4e3e1c7"
+    },
+    {
+      "node_id": "mat_g1_mg_q1_2",
+      "seed": 701,
+      "formatter": "mcq",
+      "question_text": "💃 Sir Rez has a math challenge about dance shoes. A long rectangle is cut across its width into two equal squares. What two shapes are made?",
+      "correct_answer": "two squares",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "western_pop",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "one triangle and one square",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "two rectangles",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "two squares",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "two triangles",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "two squares",
+      "hints": [
+        "Think about the sides and corners of each shape.",
+        "A triangle has 3 sides and 3 corners.",
+        "A square has 4 equal sides and 4 corners.",
+        "A rectangle has 4 sides (opposite sides are equal) and 4 corners."
+      ],
+      "sample_id": "b713e15cc290a9ef46d6",
+      "replay_digest": "ea5b5f2b86606d4fe843c2f64e2502725a397778c2b56feedfc5576a9160e2da"
+    },
+    {
+      "node_id": "mat_g1_mg_q1_2",
+      "seed": 702,
+      "formatter": "read_mcq",
+      "question_text": "🧁 Ate Nena has a math challenge about loaves of bread. Two triangles are placed together, matching their longest straight edges. What shape do they form?",
+      "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "food_baking",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ShapeBoard",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "triangle",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "none of these",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "square",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "rectangle",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": "rectangle",
+      "hints": [
+        "Think about the sides and corners of each shape.",
+        "A triangle has 3 sides and 3 corners.",
+        "A square has 4 equal sides and 4 corners.",
+        "A rectangle has 4 sides (opposite sides are equal) and 4 corners."
+      ],
+      "visual_type": "ShapeBoard",
+      "visual_payload": {
+        "shapes": [
+          {
+            "id": "shape_0",
+            "type": "triangle",
+            "sides": 3,
+            "corners": 3,
+            "is_regular": true,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_1",
+            "type": "rectangle",
+            "sides": 4,
+            "corners": 4,
+            "is_regular": false,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_2",
+            "type": "square",
+            "sides": 4,
+            "corners": 4,
+            "is_regular": true,
+            "orientation_deg": 0
+          }
+        ],
+        "question_type": "illustrate",
+        "highlighted_shape": null
+      },
+      "visual_render": {
+        "visual_type": "ShapeBoard",
+        "renderer_input_digest": "1f27ed1eaa09eba215797ed2320fb05743131b5b44ea778d97362602a39a904a",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ShapeBoard",
+          "element_count": 11,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [
+            "hsl(var(--primary)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "2afcf0ace18ad26c2c9d",
+      "replay_digest": "2409519bf1924461a32dba08ce27ecc72dac56added9354a62d97f12193218d2"
+    },
+    {
+      "node_id": "mat_g1_mg_q1_2",
+      "seed": 800,
+      "formatter": "read_mcq",
+      "question_text": "A long rectangle is cut across its width into two equal squares. What two shapes are made?",
+      "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ShapeBoard",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "two rectangles",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "two squares",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "one triangle and one square",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "two triangles",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "two squares",
+      "hints": [
+        "Think about the sides and corners of each shape.",
+        "A triangle has 3 sides and 3 corners.",
+        "A square has 4 equal sides and 4 corners.",
+        "A rectangle has 4 sides (opposite sides are equal) and 4 corners."
+      ],
+      "visual_type": "ShapeBoard",
+      "visual_payload": {
+        "shapes": [
+          {
+            "id": "shape_0",
+            "type": "square",
+            "sides": 4,
+            "corners": 4,
+            "is_regular": true,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_1",
+            "type": "rectangle",
+            "sides": 4,
+            "corners": 4,
+            "is_regular": false,
+            "orientation_deg": 0
+          }
+        ],
+        "question_type": "illustrate",
+        "highlighted_shape": null
+      },
+      "visual_render": {
+        "visual_type": "ShapeBoard",
+        "renderer_input_digest": "51be8b908dce0f186df205546a7fb8a99575aa9e64296bf276ac9e61937e883f",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ShapeBoard",
+          "element_count": 8,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [
+            "hsl(var(--primary)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "98cf70e64bc15afbd6d8",
+      "replay_digest": "efe5c630111883d107225582975d30ed2b234339de17839a2074439d90e3debe"
+    },
+    {
+      "node_id": "mat_g1_mg_q1_2",
+      "seed": 900,
+      "formatter": "mcq",
+      "question_text": "Two identical triangles are joined along their matching straight edges to make a 4-sided shape with equal sides. What shape is formed?",
+      "correct_answer": "square",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "square",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "rectangle",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "triangle",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "none of these",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "square",
+      "hints": [
+        "Think about the sides and corners of each shape.",
+        "A triangle has 3 sides and 3 corners.",
+        "A square has 4 equal sides and 4 corners.",
+        "A rectangle has 4 sides (opposite sides are equal) and 4 corners."
+      ],
+      "sample_id": "ea7d7ba07205c0b1755e",
+      "replay_digest": "5cfa0afae2f248ae16c31f0020b9a040e5fbe67bccf856a283787916a0a8305d"
+    },
+    {
+      "node_id": "mat_g1_mg_q1_2",
+      "seed": 901,
+      "formatter": "read_mcq",
+      "question_text": "Two identical squares are placed side by side. What shape do they form?",
+      "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ShapeBoard",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "triangle",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "square",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "none of these",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "rectangle",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": "rectangle",
+      "hints": [
+        "Think about the sides and corners of each shape.",
+        "A triangle has 3 sides and 3 corners.",
+        "A square has 4 equal sides and 4 corners.",
+        "A rectangle has 4 sides (opposite sides are equal) and 4 corners."
+      ],
+      "visual_type": "ShapeBoard",
+      "visual_payload": {
+        "shapes": [
+          {
+            "id": "shape_0",
+            "type": "square",
+            "sides": 4,
+            "corners": 4,
+            "is_regular": true,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_1",
+            "type": "rectangle",
+            "sides": 4,
+            "corners": 4,
+            "is_regular": false,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_2",
+            "type": "triangle",
+            "sides": 3,
+            "corners": 3,
+            "is_regular": true,
+            "orientation_deg": 0
+          }
+        ],
+        "question_type": "illustrate",
+        "highlighted_shape": null
+      },
+      "visual_render": {
+        "visual_type": "ShapeBoard",
+        "renderer_input_digest": "d6454bf7e6b2060dbfa6f734032cf268bf2bb0add7e31b3cb0e8b160bd3f4d3d",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ShapeBoard",
+          "element_count": 11,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [
+            "hsl(var(--primary)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "face7ec9b45fd705854e",
+      "replay_digest": "f19972f755c278fc8e6493f5e68b6a2b3f67a5cccff56f00bb12c388f8c6e7ed"
+    },
+    {
+      "node_id": "mat_g1_mg_q1_2",
+      "seed": 1000,
+      "formatter": "read_mcq",
+      "question_text": "Two identical squares are placed side by side. What shape do they form?",
+      "correct_answer": "C",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "hint_gated"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ShapeBoard",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "hint_gated"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "square",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "none of these",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "rectangle",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "triangle",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "rectangle",
+      "hints": [
+        "Think about the sides and corners of each shape.",
+        "A triangle has 3 sides and 3 corners.",
+        "A square has 4 equal sides and 4 corners.",
+        "A rectangle has 4 sides (opposite sides are equal) and 4 corners."
+      ],
+      "visual_type": "ShapeBoard",
+      "visual_payload": {
+        "shapes": [
+          {
+            "id": "shape_0",
+            "type": "square",
+            "sides": 4,
+            "corners": 4,
+            "is_regular": true,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_1",
+            "type": "rectangle",
+            "sides": 4,
+            "corners": 4,
+            "is_regular": false,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_2",
+            "type": "triangle",
+            "sides": 3,
+            "corners": 3,
+            "is_regular": true,
+            "orientation_deg": 0
+          }
+        ],
+        "question_type": "illustrate",
+        "highlighted_shape": null
+      },
+      "visual_render": {
+        "visual_type": "ShapeBoard",
+        "renderer_input_digest": "d6454bf7e6b2060dbfa6f734032cf268bf2bb0add7e31b3cb0e8b160bd3f4d3d",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ShapeBoard",
+          "element_count": 11,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [
+            "hsl(var(--primary)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "8da7e2a0b34ccf141a09",
+      "replay_digest": "b8250b5a582bb59ee73df5093b77f25ee16899024a929c4cc40c5fdc7284dda6"
+    },
+    {
+      "node_id": "mat_g1_mg_q1_2",
+      "seed": 1001,
+      "formatter": "read_mcq",
+      "question_text": "Two triangles are placed together, matching their longest straight edges. What shape do they form?",
+      "correct_answer": "C",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "mastery_drill"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ShapeBoard",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "mastery_drill"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "triangle",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "square",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "rectangle",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "none of these",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "rectangle",
+      "hints": [
+        "Think about the sides and corners of each shape.",
+        "A triangle has 3 sides and 3 corners.",
+        "A square has 4 equal sides and 4 corners.",
+        "A rectangle has 4 sides (opposite sides are equal) and 4 corners."
+      ],
+      "visual_type": "ShapeBoard",
+      "visual_payload": {
+        "shapes": [
+          {
+            "id": "shape_0",
+            "type": "triangle",
+            "sides": 3,
+            "corners": 3,
+            "is_regular": true,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_1",
+            "type": "rectangle",
+            "sides": 4,
+            "corners": 4,
+            "is_regular": false,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_2",
+            "type": "square",
+            "sides": 4,
+            "corners": 4,
+            "is_regular": true,
+            "orientation_deg": 0
+          }
+        ],
+        "question_type": "illustrate",
+        "highlighted_shape": null
+      },
+      "visual_render": {
+        "visual_type": "ShapeBoard",
+        "renderer_input_digest": "1f27ed1eaa09eba215797ed2320fb05743131b5b44ea778d97362602a39a904a",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ShapeBoard",
+          "element_count": 11,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [
+            "hsl(var(--primary)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "c742fefaf59ce7f01716",
+      "replay_digest": "4df2825739413369891879032a7d88eec3c492eedf2b067909e5a5616d0b5f6f"
+    },
+    {
+      "node_id": "mat_g1_mg_q1_2",
+      "seed": 1002,
+      "formatter": "read_mcq",
+      "question_text": "Two identical triangles are joined along their matching straight edges to make a 4-sided shape with equal sides. What shape is formed?",
+      "correct_answer": "C",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "scaffolded"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ShapeBoard",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "scaffolded"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "rectangle",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "none of these",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "square",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "triangle",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "square",
+      "hints": [
+        "Think about the sides and corners of each shape.",
+        "A triangle has 3 sides and 3 corners.",
+        "A square has 4 equal sides and 4 corners.",
+        "A rectangle has 4 sides (opposite sides are equal) and 4 corners."
+      ],
+      "visual_type": "ShapeBoard",
+      "visual_payload": {
+        "shapes": [
+          {
+            "id": "shape_0",
+            "type": "triangle",
+            "sides": 3,
+            "corners": 3,
+            "is_regular": true,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_1",
+            "type": "square",
+            "sides": 4,
+            "corners": 4,
+            "is_regular": true,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_2",
+            "type": "rectangle",
+            "sides": 4,
+            "corners": 4,
+            "is_regular": false,
+            "orientation_deg": 0
+          }
+        ],
+        "question_type": "illustrate",
+        "highlighted_shape": null
+      },
+      "visual_render": {
+        "visual_type": "ShapeBoard",
+        "renderer_input_digest": "e6a98d9d18aa4c1e315ede0f1f40aa91bb9c80f8458eba65a3d1eca84889b912",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ShapeBoard",
+          "element_count": 11,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [
+            "hsl(var(--primary)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "a58fc4229608082b31f2",
+      "replay_digest": "293682ca04788dc9b8a7191ac7a9f7d6ebb4e27938b03c402e5d4d7bc81b3906"
+    }
+  ],
+  "sample_assessments": [
+    {
+      "sample_id": "66470ac61d35ae9804d8",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The long rectangle is explicitly cut across its width into two equal squares, so the requested pair of resulting shapes is determinate."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Cutting a suitably proportioned long rectangle across its width can produce two equal squares, and the question follows that stated construction."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The wording is short and concrete, and the shape names and equal-parts relationship are understandable for an early primary learner."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A rectangle with twice the square width can be partitioned across its width into exactly two equal squares."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_2-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_2-20260924:mat_g1_mg_q1_2"
+    },
+    {
+      "sample_id": "6dc799abb3dd2208d3fd",
+      "checks": {
+        "ambiguity": {
+          "verdict": "FAIL",
+          "reasoning": "Two unspecified triangles sharing their longest edges do not uniquely determine a rectangle; their shapes, sizes, and orientation are insufficiently specified."
+        },
+        "contextual_logical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The stated placement does not guarantee a rectangle, because arbitrary triangles can join along longest edges to form other quadrilaterals or shapes."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The sentence is readable, but “matching their longest straight edges” is not enough visual or verbal guidance to identify one unique resulting shape."
+        },
+        "mathematical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The keyed rectangle is not entailed by the given conditions; congruence and the needed geometric arrangement are absent from the prompt."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_2-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_2-20260924:mat_g1_mg_q1_2"
+    },
+    {
+      "sample_id": "622ec3a6bd75a0cb83e2",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Two identical squares placed side by side conventionally form one rectangle, with the intended arrangement sufficiently clear for this level."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Joining equal squares edge to edge produces a four-sided figure whose opposite sides are equal, matching the keyed rectangle."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The familiar phrase “side by side” and the explicit word “identical” make the construction easy to understand."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "An edge-to-edge row of two equal squares is a rectangle, although it is not itself a square because its side lengths are unequal."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_2-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_2-20260924:mat_g1_mg_q1_2"
+    },
+    {
+      "sample_id": "8895ecc962c983010808",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "A square cut from one corner to the opposite corner has a uniquely understood diagonal cut and two resulting triangular regions."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The diagonal divides the square into two equal triangular pieces, so the question follows the described physical action."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The corner-to-opposite-corner description is concrete and accessible, with answer choices that match the requested number of shapes."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A square diagonal joins opposite vertices and partitions the square into exactly two triangles."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_2-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_2-20260924:mat_g1_mg_q1_2"
+    },
+    {
+      "sample_id": "a02281043653da56eeb8",
+      "checks": {
+        "ambiguity": {
+          "verdict": "FAIL",
+          "reasoning": "The prompt does not state that the triangles are congruent or specify their shape, so matching longest edges alone cannot determine a rectangle."
+        },
+        "contextual_logical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The claimed result depends on geometric facts not supplied in the stem; many pairs of triangles can share a longest edge without forming a rectangle."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The language is simple, but the phrase about longest edges may suggest a unique answer that the described information cannot support."
+        },
+        "mathematical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "A rectangle is not a necessary consequence of joining two arbitrary triangles along their longest edges, so the keyed answer is mathematically unsupported."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_2-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_2-20260924:mat_g1_mg_q1_2"
+    },
+    {
+      "sample_id": "e9ff952a61b7624053b9",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The identical-square condition and side-by-side placement provide a standard, determinate composition into a rectangle."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The described edge-to-edge placement is a valid way for two identical squares to make a larger rectangular region."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem uses common positional language and asks directly for the resulting shape, keeping the reading demand low."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Two congruent squares joined side by side form a non-square rectangle with four outer sides."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_2-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_2-20260924:mat_g1_mg_q1_2"
+    },
+    {
+      "sample_id": "833779957d6f99c15949",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The equal-square outcome is fixed by the long rectangle, width cut, and explicit equal-piece condition."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The construction is geometrically plausible and the requested result directly follows from cutting the rectangle as described."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The question is concise, uses familiar shape vocabulary, and asks learners to name the two pieces."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A rectangle twice as long as its width can be divided across the width into two equal squares."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_2-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_2-20260924:mat_g1_mg_q1_2"
+    },
+    {
+      "sample_id": "5e8e47709f31ecbff309",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem specifies a four-sided result with equal sides, which identifies the intended square among the provided choices."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Two matching triangular pieces can be joined along equal corresponding edges to form a square in the stated construction."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The description supplies the number of sides and equality of sides, giving a young learner useful clues without unnecessary detail."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A four-sided shape whose sides are all equal is a square in the elementary classification used by the item."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_2-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_2-20260924:mat_g1_mg_q1_2"
+    },
+    {
+      "sample_id": "c5f6df51bf82de913da5",
+      "checks": {
+        "ambiguity": {
+          "verdict": "CONCERN",
+          "reasoning": "The stem asserts that the rotated triangles fit into a rectangle, so the result is clear, but it gives little information about why that arrangement is possible."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Given the explicit condition that the pieces fit together into a rectangle, identifying the resulting shape is logically consistent."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The action and target shape are stated in direct language, and the answer choices include the named result."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "If the two identical triangles are rotated to fit together into the stated shape, the resulting figure is by definition a rectangle."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_2-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_2-20260924:mat_g1_mg_q1_2"
+    },
+    {
+      "sample_id": "14e54405ab54741a01fb",
+      "checks": {
+        "ambiguity": {
+          "verdict": "CONCERN",
+          "reasoning": "“Down the middle” does not specify whether the cut is vertical or horizontal, though either usual straight midpoint cut yields two rectangles."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A midpoint cut parallel to either pair of sides divides a rectangle into two equal rectangular pieces."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem is short and familiar, and the phrase “two equal pieces” supports the intended elementary partition idea."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A straight cut through the middle of a rectangle in the ordinary side-parallel sense produces two rectangles."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_2-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_2-20260924:mat_g1_mg_q1_2"
+    },
+    {
+      "sample_id": "1f2791d962fa10548b9e",
+      "checks": {
+        "ambiguity": {
+          "verdict": "CONCERN",
+          "reasoning": "The exact direction of “down the middle” is unspecified, but the common side-parallel interpretations both preserve rectangular pieces."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Cutting a rectangle into two equal halves along a central line is a valid context for producing two rectangles."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The wording is accessible and the response options make the requested count and shape category explicit."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Under the ordinary straight midpoint cut intended here, each half has four right-angled sides and is a rectangle."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_2-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_2-20260924:mat_g1_mg_q1_2"
+    },
+    {
+      "sample_id": "b713e15cc290a9ef46d6",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The long rectangle, width cut, and equal-piece condition together specify the two-square result without a competing plausible answer."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The dance-shoe setting is incidental but coherent, and the geometric cutting action remains valid and understandable."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The decorative character and challenge wording add mild distraction, although the actual shape question remains readable for Grade 1."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The stated proportional rectangle can be divided across its width into two equal square regions."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_2-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_2-20260924:mat_g1_mg_q1_2"
+    },
+    {
+      "sample_id": "2afcf0ace18ad26c2c9d",
+      "checks": {
+        "ambiguity": {
+          "verdict": "FAIL",
+          "reasoning": "The two triangles are not described as identical or otherwise constrained, so matching longest edges does not uniquely determine the resulting shape."
+        },
+        "contextual_logical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The bread context does not repair the geometric gap; arbitrary triangles joined on longest edges need not make a rectangle."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The sentence is syntactically simple, but the unusual “longest straight edges” condition is insufficiently informative for a unique Grade 1 answer."
+        },
+        "mathematical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The answer rectangle requires unstated congruence and arrangement assumptions, so it does not follow from the printed mathematical conditions."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_2-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_2-20260924:mat_g1_mg_q1_2"
+    },
+    {
+      "sample_id": "98cf70e64bc15afbd6d8",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stated long rectangle and equal square pieces make the intended decomposition determinate."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The cut described is a valid partition of a suitably proportioned rectangle into two congruent square regions."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The item asks one direct question using common shape names and a concrete cutting action."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A rectangle with length twice its width decomposes across the width into two equal squares."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_2-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_2-20260924:mat_g1_mg_q1_2"
+    },
+    {
+      "sample_id": "ea7d7ba07205c0b1755e",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem explicitly identifies the result as four-sided with equal sides, making square the intended classification."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The stated joining of matching triangular edges can produce the described equal-sided four-sided figure."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The shape-defining clues are plainly stated and the question asks only for the resulting familiar name."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "In the elementary shape vocabulary supplied by the packet, a four-sided figure with equal sides is a square."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_2-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_2-20260924:mat_g1_mg_q1_2"
+    },
+    {
+      "sample_id": "face7ec9b45fd705854e",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Identical squares placed side by side conventionally indicate an edge-to-edge row, whose outer boundary is a rectangle."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The composition described is a standard valid way to combine two equal squares into one rectangle."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem is brief, concrete, and uses familiar spatial language appropriate for an early learner."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The union of two identical side-by-side squares has four outer sides and unequal adjacent side lengths, so it is a rectangle."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_2-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_2-20260924:mat_g1_mg_q1_2"
+    },
+    {
+      "sample_id": "8da7e2a0b34ccf141a09",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The identical-square and side-by-side conditions make the resulting rectangle unambiguous despite answer-order variation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The described placement is geometrically coherent and yields the named larger shape without extra assumptions."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The question is direct and the answer options are simple shape labels, suitable for the learner level."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Two congruent squares joined along a full side form a rectangle whose length is twice its width."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_2-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_2-20260924:mat_g1_mg_q1_2"
+    },
+    {
+      "sample_id": "c742fefaf59ce7f01716",
+      "checks": {
+        "ambiguity": {
+          "verdict": "FAIL",
+          "reasoning": "The two triangles are unspecified beyond their longest edges, so the described joining does not force a unique rectangle."
+        },
+        "contextual_logical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The placement condition is too weak to support the keyed result; non-rectangular outcomes remain possible for general triangles."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The words are readable, but the geometric instruction lacks the concrete constraints needed for a child to reason to one answer."
+        },
+        "mathematical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "Without congruence or right-angle information, joining longest edges cannot mathematically guarantee a rectangle."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_2-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_2-20260924:mat_g1_mg_q1_2"
+    },
+    {
+      "sample_id": "a58fc4229608082b31f2",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The condition of a four-sided shape with equal sides identifies the intended square and narrows the construction sufficiently."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Two identical triangles can be joined along corresponding edges to make the explicitly described equal-sided quadrilateral."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The prompt gives concrete shape clues and asks for one familiar name, keeping the language manageable."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The stated four-sided equal-side result is classified as a square under the packet's elementary definitions."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_2-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_2-20260924:mat_g1_mg_q1_2"
+    }
+  ],
+  "clause_evidence": [
+    {
+      "requirement_id": "compose",
+      "clause": "Compose",
+      "verdict": "PASS",
+      "reasoning": "Multiple samples explicitly place or join component shapes together and ask for the larger resulting shape, directly evidencing composition.",
+      "sample_ids": [
+        "622ec3a6bd75a0cb83e2",
+        "5e8e47709f31ecbff309",
+        "c5f6df51bf82de913da5"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_2-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_2-20260924:mat_g1_mg_q1_2"
+    },
+    {
+      "requirement_id": "decompose",
+      "clause": "decompose",
+      "verdict": "PASS",
+      "reasoning": "Several samples explicitly cut a rectangle or square and ask learners to identify the resulting pieces, directly demonstrating decomposition.",
+      "sample_ids": [
+        "66470ac61d35ae9804d8",
+        "8895ecc962c983010808",
+        "14e54405ab54741a01fb"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_2-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_2-20260924:mat_g1_mg_q1_2"
+    },
+    {
+      "requirement_id": "triangles",
+      "clause": "triangles",
+      "verdict": "PASS",
+      "reasoning": "Triangles appear as component shapes in composition tasks and as the pieces produced by the diagonal square cut, so the required shape is represented.",
+      "sample_ids": [
+        "8895ecc962c983010808",
+        "5e8e47709f31ecbff309",
+        "ea7d7ba07205c0b1755e"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_2-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_2-20260924:mat_g1_mg_q1_2"
+    },
+    {
+      "requirement_id": "squares",
+      "clause": "squares",
+      "verdict": "PASS",
+      "reasoning": "The packet includes squares as inputs, outputs, and the result of joining triangles, with several explicit equal-side square cases.",
+      "sample_ids": [
+        "66470ac61d35ae9804d8",
+        "622ec3a6bd75a0cb83e2",
+        "5e8e47709f31ecbff309"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_2-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_2-20260924:mat_g1_mg_q1_2"
+    },
+    {
+      "requirement_id": "rectangles",
+      "clause": "rectangles",
+      "verdict": "PASS",
+      "reasoning": "Rectangles are repeatedly decomposed and are also produced by joining squares or triangles, providing direct evidence for the named shape.",
+      "sample_ids": [
+        "622ec3a6bd75a0cb83e2",
+        "14e54405ab54741a01fb",
+        "c5f6df51bf82de913da5"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_2-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_2-20260924:mat_g1_mg_q1_2"
+    }
+  ],
+  "dispatch_provenance": [
+    {
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_2-20260924:mat_g1_mg_q1_2",
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_2-20260924",
+      "review_date": "2026-09-24",
+      "blind": true,
+      "packet_digest": "e785ea4d61a1ef801b104a73c5896c7f7f41bbe3ac3eed2c9ca10716feb5bbce",
+      "clause_ids": [
+        "compose",
+        "decompose",
+        "triangles",
+        "squares",
+        "rectangles"
+      ],
+      "response_ref": ".responses/s5-luna-medium-w3-mat_g1_mg_q1_2-20260924.json",
+      "response_digest": "9f48751ddcc81d222e0443a8c18c17d3da8e6effb2fd197774e9293e059edbd8",
+      "prompt_ref": ".responses/s5-luna-medium-w3-mat_g1_mg_q1_2-20260924.prompt.txt",
+      "prompt_digest": "3e219ad59c6d24a21b977ae467f1504b37271204dee0590799ebe8d0694ea4ea",
+      "samples_delivery": "Prompt generated by tests.judgment_batches for one node and delivered by path to multi_agent_v1.spawn_agent using model gpt-5.6-luna with reasoning_effort=medium.",
+      "tool_uses_by_reviewer": "Reviewer was a tool-bearing multi_agent_v1 subagent instructed to read only its prompt file and write its verdicts JSON; it reported the output path and no other tool use to the dispatcher."
     }
   ],
   "findings": {
-    "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "Composing and decomposing are both genuinely asked, but one composition item is under-determined: two triangles placed together, matching their longest straight edges is given a key of rectangle while square sits in the same option list, and nothing in that stem rules the square out. Seed 502 shows the generator can disambiguate by describing the result as a 4-sided shape with equal sides, which makes the looser stem a defect rather than an unavoidable ambiguity."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "Both verbs of the competency are worked in both directions and all three shapes take part: triangles joined into a rectangle and into a square, squares joined into a rectangle, a rectangle cut into two squares, a square cut on a slant into two triangles, and a rectangle halved into two rectangles."
-    },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The language of cutting across its width and placing side by side is concrete and matches what a Grade 1 pupil does with paper shapes; no item requires imagining more than two pieces at once."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The set alternates between items with a figure to inspect and items answered from the description alone, and it mixes joining actions with cutting actions and slant cuts with straight cuts, so presentation genuinely rotates rather than repeating one frame."
+      "rationale": "The tasks use familiar Grade 1 shape names, simple joining or cutting actions, and short questions without excessive cognitive or linguistic load."
     },
     "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Difficulty moves along a line that belongs to this competency - from naming the result of an obvious side-by-side join, to reading a diagonal cut, to recognising that two triangles can make either a rectangle or a square depending on the pieces."
+      "verdict": "CONCERN",
+      "rationale": "Most items directly ask learners to compose or decompose named plane shapes, but the triangle-composition wording sometimes assumes a result that the given information does not establish."
+    },
+    "competency_fulfillment": {
+      "verdict": "CONCERN",
+      "rationale": "The packet exercises both composing and decomposing and names all three required shape families, yet coverage is concentrated in a few repeated configurations and includes an under-specified triangle case.",
+      "decomposition": {
+        "verdict": "PASS",
+        "reasoning": "The printed requirements explicitly preserve both actions, Compose and decompose, and each of triangles, squares, and rectangles, so the competency wording is represented without omitting a named component.",
+        "requirement_ids": [
+          "compose",
+          "decompose",
+          "triangles",
+          "squares",
+          "rectangles"
+        ]
+      },
+      "clause_ids": [
+        "compose",
+        "decompose",
+        "triangles",
+        "squares",
+        "rectangles"
+      ]
+    },
+    "comprehensive_coverage": {
+      "verdict": "CONCERN",
+      "rationale": "There is evidence for both operations and all named shapes, but many samples duplicate the same three configurations and do not demonstrate broad variation across composing and decomposing cases.",
+      "clause_ids": [
+        "compose",
+        "decompose",
+        "triangles",
+        "squares",
+        "rectangles"
+      ]
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Every composition and decomposition involves exactly two pieces, which is the level at which Grade 1 composing and decomposing of plane shapes is expected to operate."
+      "rationale": "The examples stay at the scale of whole familiar shapes and simple equal pieces, which is appropriate for Grade 1 rather than requiring measurement, coordinates, or formal proof."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "The packet varies answer ordering and presentation modes, but the mathematical variants are narrow and repeatedly reuse identical stems, leaving limited evidence of robust shape-composition coverage."
     }
   },
-  "overall": "CONCERN"
+  "overall": "FAIL"
 }

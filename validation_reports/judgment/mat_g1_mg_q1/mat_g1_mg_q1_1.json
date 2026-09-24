@@ -1,7 +1,48 @@
 {
+  "schema_version": 2,
   "node_id": "mat_g1_mg_q1_1",
-  "reviewed_by": "reviewer-c1-lantern-fescue-3061",
-  "review_date": "2026-09-11",
+  "competency_snapshot": {
+    "text": "Compare and distinguish 2-dimensional shapes according to features such as sides and corners.",
+    "grade": 1,
+    "quarter": 1,
+    "subdomain": null
+  },
+  "requirements_snapshot": [
+    {
+      "kind": "task",
+      "id": "compare_shapes",
+      "clause": "Compare"
+    },
+    {
+      "kind": "task",
+      "id": "distinguish_shapes",
+      "clause": "distinguish"
+    },
+    {
+      "kind": "object",
+      "id": "two_dimensional_shapes",
+      "clause": "2-dimensional shapes"
+    },
+    {
+      "kind": "attribute",
+      "id": "shape_features_as_comparison_basis",
+      "clause": "features"
+    },
+    {
+      "kind": "attribute",
+      "id": "sides_of_a_shape",
+      "clause": "sides"
+    },
+    {
+      "kind": "attribute",
+      "id": "corners_of_a_shape",
+      "clause": "corners"
+    }
+  ],
+  "packet_digest": "e3d924f8053a5597cb20925d4e04a864e60e38879734c0e86483bcf2e11b6196",
+  "sampling_version": "phase2-stratified-v2-rendered-visual",
+  "reviewed_by": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_1-20260924",
+  "review_date": "2026-09-24",
   "blind": true,
   "sample_seeds": [
     42,
@@ -12,14 +53,60 @@
     500,
     501,
     502,
-    604
+    604,
+    700,
+    701,
+    702,
+    800,
+    801,
+    900,
+    901,
+    1000,
+    1001,
+    1002
+  ],
+  "sample_ids": [
+    "38c1342c64818deb0db8",
+    "3863468cad482de2c621",
+    "475f44062f4693ff1bd6",
+    "2395dd571f1c4c8fd1c3",
+    "d4a60840ac357be37c4e",
+    "4293286b1dc18bf7afef",
+    "193c3dd25fd0396a5d63",
+    "6b655eaec3da3e364cd7",
+    "63614911ae8c87c24f01",
+    "e31e58ffd14b2bda7bff",
+    "d1edf19c247c28213a7a",
+    "cb853260c02d0a065569",
+    "6417a21ff196ba42bad9",
+    "25ec611396ba00d8c1c9",
+    "2f583138eb6c8d43716e",
+    "1a5369084aa12849fe56",
+    "70c3c8050678fab2d5ce",
+    "dc2e281d5e7d10ddd6ad",
+    "770e211b7dca8f44179b"
   ],
   "samples_reviewed": [
     {
+      "node_id": "mat_g1_mg_q1_1",
       "seed": 42,
       "formatter": "read_mcq",
       "question_text": "Which shape has the same number of sides as a square?",
       "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ShapeBoard",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -41,13 +128,87 @@
           "value": "rectangle",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": "rectangle",
+      "hints": [
+        "Think about the sides and corners of each shape.",
+        "A triangle has 3 sides and 3 corners.",
+        "A square has 4 equal sides and 4 corners.",
+        "A rectangle has 4 sides (opposite sides are equal) and 4 corners."
+      ],
+      "visual_type": "ShapeBoard",
+      "visual_payload": {
+        "shapes": [
+          {
+            "id": "shape_0",
+            "type": "square",
+            "sides": 4,
+            "corners": 4,
+            "is_regular": true,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_1",
+            "type": "rectangle",
+            "sides": 4,
+            "corners": 4,
+            "is_regular": false,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_2",
+            "type": "triangle",
+            "sides": 3,
+            "corners": 3,
+            "is_regular": true,
+            "orientation_deg": 0
+          }
+        ],
+        "question_type": "illustrate",
+        "highlighted_shape": null
+      },
+      "visual_render": {
+        "visual_type": "ShapeBoard",
+        "renderer_input_digest": "d6454bf7e6b2060dbfa6f734032cf268bf2bb0add7e31b3cb0e8b160bd3f4d3d",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ShapeBoard",
+          "element_count": 11,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [
+            "hsl(var(--primary)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "38c1342c64818deb0db8",
+      "replay_digest": "c7cf85dfeba812dd2109bca59ed3a98649e280b6979f3ebf6aa5106cc2e9c826"
     },
     {
+      "node_id": "mat_g1_mg_q1_1",
       "seed": 43,
       "formatter": "mcq",
       "question_text": "Which shape has more sides — a triangle or a rectangle?",
       "correct_answer": "rectangle",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -69,13 +230,37 @@
           "value": "neither",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "rectangle",
+      "hints": [
+        "Think about the sides and corners of each shape.",
+        "A triangle has 3 sides and 3 corners.",
+        "A square has 4 equal sides and 4 corners.",
+        "A rectangle has 4 sides (opposite sides are equal) and 4 corners."
+      ],
+      "sample_id": "3863468cad482de2c621",
+      "replay_digest": "e1711215627b0d6ca62f9f28a557e63174dcc86093f3289332adf36bb1dacb10"
     },
     {
+      "node_id": "mat_g1_mg_q1_1",
       "seed": 44,
       "formatter": "read_mcq",
       "question_text": "Which shape has fewer corners — a square or a triangle?",
       "correct_answer": "C",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ShapeBoard",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -97,13 +282,79 @@
           "value": "neither",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "triangle",
+      "hints": [
+        "Think about the sides and corners of each shape.",
+        "A triangle has 3 sides and 3 corners.",
+        "A square has 4 equal sides and 4 corners.",
+        "A rectangle has 4 sides (opposite sides are equal) and 4 corners."
+      ],
+      "visual_type": "ShapeBoard",
+      "visual_payload": {
+        "shapes": [
+          {
+            "id": "shape_0",
+            "type": "triangle",
+            "sides": 3,
+            "corners": 3,
+            "is_regular": true,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_1",
+            "type": "square",
+            "sides": 4,
+            "corners": 4,
+            "is_regular": true,
+            "orientation_deg": 0
+          }
+        ],
+        "question_type": "illustrate",
+        "highlighted_shape": null
+      },
+      "visual_render": {
+        "visual_type": "ShapeBoard",
+        "renderer_input_digest": "331636acba67a1957f7f731dbe7bd9c0b3e73fa715ed2f80e39ba83d14e1c8a3",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ShapeBoard",
+          "element_count": 8,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [
+            "hsl(var(--primary)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "475f44062f4693ff1bd6",
+      "replay_digest": "189d1c8accb97ac60b64b695ef25afc923099aec01b9393dcea5bd37f445409d"
     },
     {
+      "node_id": "mat_g1_mg_q1_1",
       "seed": 45,
       "formatter": "mcq",
       "question_text": "Which shape has fewer corners — a square or a triangle?",
       "correct_answer": "triangle",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -125,13 +376,37 @@
           "value": "neither",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "triangle",
+      "hints": [
+        "Think about the sides and corners of each shape.",
+        "A triangle has 3 sides and 3 corners.",
+        "A square has 4 equal sides and 4 corners.",
+        "A rectangle has 4 sides (opposite sides are equal) and 4 corners."
+      ],
+      "sample_id": "2395dd571f1c4c8fd1c3",
+      "replay_digest": "1d8861c8a755222cddd1a0e8acb0b2635c3315a80304167c3d911a34b654d76e"
     },
     {
+      "node_id": "mat_g1_mg_q1_1",
       "seed": 46,
       "formatter": "mcq",
       "question_text": "Which shape has more sides — a triangle or a rectangle?",
       "correct_answer": "rectangle",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -153,13 +428,40 @@
           "value": "triangle",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "rectangle",
+      "hints": [
+        "Think about the sides and corners of each shape.",
+        "A triangle has 3 sides and 3 corners.",
+        "A square has 4 equal sides and 4 corners.",
+        "A rectangle has 4 sides (opposite sides are equal) and 4 corners."
+      ],
+      "sample_id": "d4a60840ac357be37c4e",
+      "replay_digest": "1059b625ca3b5d542c1d4929ba67e8aabc06d1c8fa61253002944fd675468d6f"
     },
     {
+      "node_id": "mat_g1_mg_q1_1",
       "seed": 500,
       "formatter": "read_mcq",
       "question_text": "Which shape has fewer corners — a square or a triangle?",
       "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0,
+          "max_value": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ShapeBoard",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -181,13 +483,82 @@
           "value": "triangle",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": "triangle",
+      "hints": [
+        "Think about the sides and corners of each shape.",
+        "A triangle has 3 sides and 3 corners.",
+        "A square has 4 equal sides and 4 corners.",
+        "A rectangle has 4 sides (opposite sides are equal) and 4 corners."
+      ],
+      "visual_type": "ShapeBoard",
+      "visual_payload": {
+        "shapes": [
+          {
+            "id": "shape_0",
+            "type": "triangle",
+            "sides": 3,
+            "corners": 3,
+            "is_regular": true,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_1",
+            "type": "square",
+            "sides": 4,
+            "corners": 4,
+            "is_regular": true,
+            "orientation_deg": 0
+          }
+        ],
+        "question_type": "illustrate",
+        "highlighted_shape": null
+      },
+      "visual_render": {
+        "visual_type": "ShapeBoard",
+        "renderer_input_digest": "331636acba67a1957f7f731dbe7bd9c0b3e73fa715ed2f80e39ba83d14e1c8a3",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ShapeBoard",
+          "element_count": 8,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [
+            "hsl(var(--primary)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "4293286b1dc18bf7afef",
+      "replay_digest": "b7d5f2b643f70ad37ec0153637928aaf0e869fcb3eaff886d44969e91c82921f"
     },
     {
+      "node_id": "mat_g1_mg_q1_1",
       "seed": 501,
       "formatter": "read_mcq",
       "question_text": "Which shape has the same number of sides as a square?",
       "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0,
+          "max_value": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ShapeBoard",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -209,13 +580,90 @@
           "value": "triangle",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "rectangle",
+      "hints": [
+        "Think about the sides and corners of each shape.",
+        "A triangle has 3 sides and 3 corners.",
+        "A square has 4 equal sides and 4 corners.",
+        "A rectangle has 4 sides (opposite sides are equal) and 4 corners."
+      ],
+      "visual_type": "ShapeBoard",
+      "visual_payload": {
+        "shapes": [
+          {
+            "id": "shape_0",
+            "type": "square",
+            "sides": 4,
+            "corners": 4,
+            "is_regular": true,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_1",
+            "type": "rectangle",
+            "sides": 4,
+            "corners": 4,
+            "is_regular": false,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_2",
+            "type": "triangle",
+            "sides": 3,
+            "corners": 3,
+            "is_regular": true,
+            "orientation_deg": 0
+          }
+        ],
+        "question_type": "illustrate",
+        "highlighted_shape": null
+      },
+      "visual_render": {
+        "visual_type": "ShapeBoard",
+        "renderer_input_digest": "d6454bf7e6b2060dbfa6f734032cf268bf2bb0add7e31b3cb0e8b160bd3f4d3d",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ShapeBoard",
+          "element_count": 11,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [
+            "hsl(var(--primary)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "193c3dd25fd0396a5d63",
+      "replay_digest": "798623951869b77851482f8951d80cf9085c4cb9ac701ae5ac1529b7d45f8955"
     },
     {
+      "node_id": "mat_g1_mg_q1_1",
       "seed": 502,
       "formatter": "read_mcq",
       "question_text": "Which shape has the same number of sides as a square?",
       "correct_answer": "C",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0,
+          "max_value": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ShapeBoard",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -237,13 +685,89 @@
           "value": "they are different",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "rectangle",
+      "hints": [
+        "Think about the sides and corners of each shape.",
+        "A triangle has 3 sides and 3 corners.",
+        "A square has 4 equal sides and 4 corners.",
+        "A rectangle has 4 sides (opposite sides are equal) and 4 corners."
+      ],
+      "visual_type": "ShapeBoard",
+      "visual_payload": {
+        "shapes": [
+          {
+            "id": "shape_0",
+            "type": "square",
+            "sides": 4,
+            "corners": 4,
+            "is_regular": true,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_1",
+            "type": "rectangle",
+            "sides": 4,
+            "corners": 4,
+            "is_regular": false,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_2",
+            "type": "triangle",
+            "sides": 3,
+            "corners": 3,
+            "is_regular": true,
+            "orientation_deg": 0
+          }
+        ],
+        "question_type": "illustrate",
+        "highlighted_shape": null
+      },
+      "visual_render": {
+        "visual_type": "ShapeBoard",
+        "renderer_input_digest": "d6454bf7e6b2060dbfa6f734032cf268bf2bb0add7e31b3cb0e8b160bd3f4d3d",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ShapeBoard",
+          "element_count": 11,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [
+            "hsl(var(--primary)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "6b655eaec3da3e364cd7",
+      "replay_digest": "91121ce9834845865f3db8545c2dccc77da1338f1b7e0ed6383b83cbaa3cd502"
     },
     {
+      "node_id": "mat_g1_mg_q1_1",
       "seed": 604,
       "formatter": "read_mcq",
       "question_text": "A tilted square and a flat rectangle: do they have the same number of corners?",
       "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": {
+          "orientation": "rotated"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ShapeBoard",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -265,33 +789,1530 @@
           "value": "No, the rectangle has more.",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "Yes, both have 4 corners.",
+      "hints": [
+        "Think about the sides and corners of each shape.",
+        "A triangle has 3 sides and 3 corners.",
+        "A square has 4 equal sides and 4 corners.",
+        "A rectangle has 4 sides (opposite sides are equal) and 4 corners."
+      ],
+      "visual_type": "ShapeBoard",
+      "visual_payload": {
+        "shapes": [
+          {
+            "id": "shape_0",
+            "type": "square",
+            "sides": 4,
+            "corners": 4,
+            "is_regular": true,
+            "orientation_deg": 90
+          },
+          {
+            "id": "shape_1",
+            "type": "rectangle",
+            "sides": 4,
+            "corners": 4,
+            "is_regular": false,
+            "orientation_deg": 90
+          }
+        ],
+        "question_type": "illustrate",
+        "highlighted_shape": null
+      },
+      "visual_render": {
+        "visual_type": "ShapeBoard",
+        "renderer_input_digest": "837567018252c93ed114b2d899f099d0faa44250f164db8e8276396b3e48db40",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ShapeBoard",
+          "element_count": 8,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [
+            "hsl(var(--primary)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "63614911ae8c87c24f01",
+      "replay_digest": "5bdc4d39dbe38823f4dd186af55720e5f733fa958bde27c20f30657ca55d272b"
+    },
+    {
+      "node_id": "mat_g1_mg_q1_1",
+      "seed": 700,
+      "formatter": "read_mcq",
+      "question_text": "Which shape has more sides — a triangle or a rectangle?",
+      "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ShapeBoard",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "triangle",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "they are equal",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "neither",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "rectangle",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": "rectangle",
+      "hints": [
+        "Think about the sides and corners of each shape.",
+        "A triangle has 3 sides and 3 corners.",
+        "A square has 4 equal sides and 4 corners.",
+        "A rectangle has 4 sides (opposite sides are equal) and 4 corners."
+      ],
+      "visual_type": "ShapeBoard",
+      "visual_payload": {
+        "shapes": [
+          {
+            "id": "shape_0",
+            "type": "triangle",
+            "sides": 3,
+            "corners": 3,
+            "is_regular": true,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_1",
+            "type": "rectangle",
+            "sides": 4,
+            "corners": 4,
+            "is_regular": false,
+            "orientation_deg": 0
+          }
+        ],
+        "question_type": "illustrate",
+        "highlighted_shape": null
+      },
+      "visual_render": {
+        "visual_type": "ShapeBoard",
+        "renderer_input_digest": "ce55e544347baf440044866f7e07f6d351d69794676dc31c5f762464f6730d93",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ShapeBoard",
+          "element_count": 8,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [
+            "hsl(var(--primary)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "e31e58ffd14b2bda7bff",
+      "replay_digest": "16da572c77c6acc1d7dae25e0792560a2bafe0279c0dcbcc5323f07b475f735d"
+    },
+    {
+      "node_id": "mat_g1_mg_q1_1",
+      "seed": 701,
+      "formatter": "mcq",
+      "question_text": "✝️ Daniel has a math challenge about stones. Which shape has the same number of sides as a square?",
+      "correct_answer": "rectangle",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "bible",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "they are different",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "neither",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "triangle",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "rectangle",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": "rectangle",
+      "hints": [
+        "Think about the sides and corners of each shape.",
+        "A triangle has 3 sides and 3 corners.",
+        "A square has 4 equal sides and 4 corners.",
+        "A rectangle has 4 sides (opposite sides are equal) and 4 corners."
+      ],
+      "sample_id": "d1edf19c247c28213a7a",
+      "replay_digest": "9d278d0e716a6ea9573c6b96de0a0f440cf0741e8eb48259d4426ae8fd05388e"
+    },
+    {
+      "node_id": "mat_g1_mg_q1_1",
+      "seed": 702,
+      "formatter": "read_mcq",
+      "question_text": "🏀 Isko has a math challenge about basketballs. Which shape has more sides — a triangle or a rectangle?",
+      "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "meme_streaming",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ShapeBoard",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "rectangle",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "triangle",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "they are equal",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "neither",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "rectangle",
+      "hints": [
+        "Think about the sides and corners of each shape.",
+        "A triangle has 3 sides and 3 corners.",
+        "A square has 4 equal sides and 4 corners.",
+        "A rectangle has 4 sides (opposite sides are equal) and 4 corners."
+      ],
+      "visual_type": "ShapeBoard",
+      "visual_payload": {
+        "shapes": [
+          {
+            "id": "shape_0",
+            "type": "triangle",
+            "sides": 3,
+            "corners": 3,
+            "is_regular": true,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_1",
+            "type": "rectangle",
+            "sides": 4,
+            "corners": 4,
+            "is_regular": false,
+            "orientation_deg": 0
+          }
+        ],
+        "question_type": "illustrate",
+        "highlighted_shape": null
+      },
+      "visual_render": {
+        "visual_type": "ShapeBoard",
+        "renderer_input_digest": "ce55e544347baf440044866f7e07f6d351d69794676dc31c5f762464f6730d93",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ShapeBoard",
+          "element_count": 8,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [
+            "hsl(var(--primary)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "cb853260c02d0a065569",
+      "replay_digest": "0078d17902968ddcf0a0b30e866df3da883dc96807417fcda4a6e641418a2362"
+    },
+    {
+      "node_id": "mat_g1_mg_q1_1",
+      "seed": 800,
+      "formatter": "read_mcq",
+      "question_text": "Which shape has the same number of sides as a square?",
+      "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": {
+          "max_value": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ShapeBoard",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "triangle",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "neither",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "they are different",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "rectangle",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": "rectangle",
+      "hints": [
+        "Think about the sides and corners of each shape.",
+        "A triangle has 3 sides and 3 corners.",
+        "A square has 4 equal sides and 4 corners.",
+        "A rectangle has 4 sides (opposite sides are equal) and 4 corners."
+      ],
+      "visual_type": "ShapeBoard",
+      "visual_payload": {
+        "shapes": [
+          {
+            "id": "shape_0",
+            "type": "square",
+            "sides": 4,
+            "corners": 4,
+            "is_regular": true,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_1",
+            "type": "rectangle",
+            "sides": 4,
+            "corners": 4,
+            "is_regular": false,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_2",
+            "type": "triangle",
+            "sides": 3,
+            "corners": 3,
+            "is_regular": true,
+            "orientation_deg": 0
+          }
+        ],
+        "question_type": "illustrate",
+        "highlighted_shape": null
+      },
+      "visual_render": {
+        "visual_type": "ShapeBoard",
+        "renderer_input_digest": "d6454bf7e6b2060dbfa6f734032cf268bf2bb0add7e31b3cb0e8b160bd3f4d3d",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ShapeBoard",
+          "element_count": 11,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [
+            "hsl(var(--primary)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "6417a21ff196ba42bad9",
+      "replay_digest": "962a210962dbab48890f0438d42df9f722907c858109eec5af2efd5c707762f3"
+    },
+    {
+      "node_id": "mat_g1_mg_q1_1",
+      "seed": 801,
+      "formatter": "read_mcq",
+      "question_text": "Which shape has more sides — a triangle or a rectangle?",
+      "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ShapeBoard",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "triangle",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "rectangle",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "neither",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "they are equal",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "rectangle",
+      "hints": [
+        "Think about the sides and corners of each shape.",
+        "A triangle has 3 sides and 3 corners.",
+        "A square has 4 equal sides and 4 corners.",
+        "A rectangle has 4 sides (opposite sides are equal) and 4 corners."
+      ],
+      "visual_type": "ShapeBoard",
+      "visual_payload": {
+        "shapes": [
+          {
+            "id": "shape_0",
+            "type": "triangle",
+            "sides": 3,
+            "corners": 3,
+            "is_regular": true,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_1",
+            "type": "rectangle",
+            "sides": 4,
+            "corners": 4,
+            "is_regular": false,
+            "orientation_deg": 0
+          }
+        ],
+        "question_type": "illustrate",
+        "highlighted_shape": null
+      },
+      "visual_render": {
+        "visual_type": "ShapeBoard",
+        "renderer_input_digest": "ce55e544347baf440044866f7e07f6d351d69794676dc31c5f762464f6730d93",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ShapeBoard",
+          "element_count": 8,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [
+            "hsl(var(--primary)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "25ec611396ba00d8c1c9",
+      "replay_digest": "d9bdff97f8903cb9ff83960889d6a9d89e2ad0985b8100688aa8c7dfa309e4ba"
+    },
+    {
+      "node_id": "mat_g1_mg_q1_1",
+      "seed": 900,
+      "formatter": "mcq",
+      "question_text": "Which shape has the same number of sides as a square?",
+      "correct_answer": "rectangle",
+      "requested": {
+        "difficulty_profile": {
+          "max_value": 0.0,
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "rectangle",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "neither",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "they are different",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "triangle",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "rectangle",
+      "hints": [
+        "Think about the sides and corners of each shape.",
+        "A triangle has 3 sides and 3 corners.",
+        "A square has 4 equal sides and 4 corners.",
+        "A rectangle has 4 sides (opposite sides are equal) and 4 corners."
+      ],
+      "sample_id": "2f583138eb6c8d43716e",
+      "replay_digest": "005e188c90d9581725454056029d11c708c43abc9f81bc7b87973987d9cc6e5b"
+    },
+    {
+      "node_id": "mat_g1_mg_q1_1",
+      "seed": 901,
+      "formatter": "read_mcq",
+      "question_text": "Which shape has fewer corners — a square or a triangle?",
+      "correct_answer": "C",
+      "requested": {
+        "difficulty_profile": {
+          "max_value": 0.0,
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ShapeBoard",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "neither",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "they are equal",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "triangle",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "square",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "triangle",
+      "hints": [
+        "Think about the sides and corners of each shape.",
+        "A triangle has 3 sides and 3 corners.",
+        "A square has 4 equal sides and 4 corners.",
+        "A rectangle has 4 sides (opposite sides are equal) and 4 corners."
+      ],
+      "visual_type": "ShapeBoard",
+      "visual_payload": {
+        "shapes": [
+          {
+            "id": "shape_0",
+            "type": "triangle",
+            "sides": 3,
+            "corners": 3,
+            "is_regular": true,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_1",
+            "type": "square",
+            "sides": 4,
+            "corners": 4,
+            "is_regular": true,
+            "orientation_deg": 0
+          }
+        ],
+        "question_type": "illustrate",
+        "highlighted_shape": null
+      },
+      "visual_render": {
+        "visual_type": "ShapeBoard",
+        "renderer_input_digest": "331636acba67a1957f7f731dbe7bd9c0b3e73fa715ed2f80e39ba83d14e1c8a3",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ShapeBoard",
+          "element_count": 8,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [
+            "hsl(var(--primary)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "1a5369084aa12849fe56",
+      "replay_digest": "81d6c4e139eff82d4431c3e65c384179c94b2365f6a2159c0b4de7d8a8cfa0c1"
+    },
+    {
+      "node_id": "mat_g1_mg_q1_1",
+      "seed": 1000,
+      "formatter": "read_mcq",
+      "question_text": "Which shape has fewer corners — a square or a triangle?",
+      "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "hint_gated"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ShapeBoard",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "hint_gated"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "neither",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "triangle",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "square",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "they are equal",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "triangle",
+      "hints": [
+        "Think about the sides and corners of each shape.",
+        "A triangle has 3 sides and 3 corners.",
+        "A square has 4 equal sides and 4 corners.",
+        "A rectangle has 4 sides (opposite sides are equal) and 4 corners."
+      ],
+      "visual_type": "ShapeBoard",
+      "visual_payload": {
+        "shapes": [
+          {
+            "id": "shape_0",
+            "type": "triangle",
+            "sides": 3,
+            "corners": 3,
+            "is_regular": true,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_1",
+            "type": "square",
+            "sides": 4,
+            "corners": 4,
+            "is_regular": true,
+            "orientation_deg": 0
+          }
+        ],
+        "question_type": "illustrate",
+        "highlighted_shape": null
+      },
+      "visual_render": {
+        "visual_type": "ShapeBoard",
+        "renderer_input_digest": "331636acba67a1957f7f731dbe7bd9c0b3e73fa715ed2f80e39ba83d14e1c8a3",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ShapeBoard",
+          "element_count": 8,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [
+            "hsl(var(--primary)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "70c3c8050678fab2d5ce",
+      "replay_digest": "f22d05fd105c89df5ae3d1e1d18b98a42882dc07d58c0b02813bb9ecb4d8414c"
+    },
+    {
+      "node_id": "mat_g1_mg_q1_1",
+      "seed": 1001,
+      "formatter": "read_mcq",
+      "question_text": "Which shape has more sides — a triangle or a rectangle?",
+      "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "mastery_drill"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ShapeBoard",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "mastery_drill"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "triangle",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "rectangle",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "neither",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "they are equal",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "rectangle",
+      "hints": [
+        "Think about the sides and corners of each shape.",
+        "A triangle has 3 sides and 3 corners.",
+        "A square has 4 equal sides and 4 corners.",
+        "A rectangle has 4 sides (opposite sides are equal) and 4 corners."
+      ],
+      "visual_type": "ShapeBoard",
+      "visual_payload": {
+        "shapes": [
+          {
+            "id": "shape_0",
+            "type": "triangle",
+            "sides": 3,
+            "corners": 3,
+            "is_regular": true,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_1",
+            "type": "rectangle",
+            "sides": 4,
+            "corners": 4,
+            "is_regular": false,
+            "orientation_deg": 0
+          }
+        ],
+        "question_type": "illustrate",
+        "highlighted_shape": null
+      },
+      "visual_render": {
+        "visual_type": "ShapeBoard",
+        "renderer_input_digest": "ce55e544347baf440044866f7e07f6d351d69794676dc31c5f762464f6730d93",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ShapeBoard",
+          "element_count": 8,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [
+            "hsl(var(--primary)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "dc2e281d5e7d10ddd6ad",
+      "replay_digest": "b3c27d96121de15ac79a6327900b929351b8c51a8fc5498e8f731e688f1d1d74"
+    },
+    {
+      "node_id": "mat_g1_mg_q1_1",
+      "seed": 1002,
+      "formatter": "read_mcq",
+      "question_text": "Which shape has the same number of sides as a square?",
+      "correct_answer": "C",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "scaffolded"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ShapeBoard",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "scaffolded"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "they are different",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "neither",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "rectangle",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "triangle",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "rectangle",
+      "hints": [
+        "Think about the sides and corners of each shape.",
+        "A triangle has 3 sides and 3 corners.",
+        "A square has 4 equal sides and 4 corners.",
+        "A rectangle has 4 sides (opposite sides are equal) and 4 corners."
+      ],
+      "visual_type": "ShapeBoard",
+      "visual_payload": {
+        "shapes": [
+          {
+            "id": "shape_0",
+            "type": "square",
+            "sides": 4,
+            "corners": 4,
+            "is_regular": true,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_1",
+            "type": "rectangle",
+            "sides": 4,
+            "corners": 4,
+            "is_regular": false,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_2",
+            "type": "triangle",
+            "sides": 3,
+            "corners": 3,
+            "is_regular": true,
+            "orientation_deg": 0
+          }
+        ],
+        "question_type": "illustrate",
+        "highlighted_shape": null
+      },
+      "visual_render": {
+        "visual_type": "ShapeBoard",
+        "renderer_input_digest": "d6454bf7e6b2060dbfa6f734032cf268bf2bb0add7e31b3cb0e8b160bd3f4d3d",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ShapeBoard",
+          "element_count": 11,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [
+            "hsl(var(--primary)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "770e211b7dca8f44179b",
+      "replay_digest": "17739cb48b690a70ac679002c84eb13dd4ffe80c6f5c4997409fc304b6772ea4"
+    }
+  ],
+  "sample_assessments": [
+    {
+      "sample_id": "38c1342c64818deb0db8",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question names a square and asks for a shape with the same side count; rectangle is the unique listed answer."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The comparison is logically well-formed because square and rectangle each have four sides."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The short question uses familiar shape names and a direct comparison suitable for a beginning Grade 1 learner."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The keyed answer rectangle correctly has four sides, matching the square's four sides."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_1-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_1-20260924:mat_g1_mg_q1_1"
+    },
+    {
+      "sample_id": "3863468cad482de2c621",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The two named shapes have different side counts, so rectangle is the only correct option."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The prompt asks a clear numerical feature comparison between a triangle and a rectangle."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The wording is concise, uses familiar terms, and directly asks which of two shapes has more sides."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A rectangle has four sides and a triangle has three, so the printed answer is correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_1-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_1-20260924:mat_g1_mg_q1_1"
+    },
+    {
+      "sample_id": "475f44062f4693ff1bd6",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "A triangle has fewer corners than a square, making the keyed option unique among the choices."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Both compared figures have well-defined corners, so the requested fewer-than relation is meaningful."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The sentence is short and concrete, with only two familiar shapes and one named feature to compare."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer triangle is mathematically correct because it has three corners versus the square's four."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_1-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_1-20260924:mat_g1_mg_q1_1"
+    },
+    {
+      "sample_id": "2395dd571f1c4c8fd1c3",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The two named shapes have distinct corner counts, so the keyed choice is uniquely determined."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The comparison of square and triangle corners is concrete and logically appropriate for the task."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The prompt is brief, uses familiar shape names, and asks one easily understood comparison."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A triangle has three corners while a square has four, confirming the printed answer."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_1-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_1-20260924:mat_g1_mg_q1_1"
+    },
+    {
+      "sample_id": "d4a60840ac357be37c4e",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Rectangle is the sole option with more sides than the named triangle."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The item presents a valid direct comparison of side counts between two standard shapes."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The language is direct and accessible, with no unnecessary context or technical vocabulary."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Four rectangle sides exceed the three sides of a triangle, so the answer is correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_1-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_1-20260924:mat_g1_mg_q1_1"
+    },
+    {
+      "sample_id": "4293286b1dc18bf7afef",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Triangle is the only listed shape with fewer corners than a square."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The requested fewer-corners relation is well-defined for the two named polygons."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The short wording makes the compared feature and the two choices of shape clear."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The keyed triangle has three corners, fewer than the square's four corners."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_1-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_1-20260924:mat_g1_mg_q1_1"
+    },
+    {
+      "sample_id": "193c3dd25fd0396a5d63",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Rectangle uniquely matches the square's four-side count among the provided options."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The item uses a valid equality comparison between side counts of familiar shapes."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The question is concise and the target feature, sides, is plainly stated."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Both a square and a rectangle have four sides, so the answer is mathematically sound."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_1-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_1-20260924:mat_g1_mg_q1_1"
+    },
+    {
+      "sample_id": "6b655eaec3da3e364cd7",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Rectangle is the unique listed shape sharing the square's number of sides."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The equality of side counts is an appropriate and logically coherent shape comparison."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The wording is simple, direct, and suitable for a learner beginning work with shapes."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A square and a rectangle each have four sides, matching the printed answer."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_1-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_1-20260924:mat_g1_mg_q1_1"
+    },
+    {
+      "sample_id": "63614911ae8c87c24f01",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The affirmative option states the exact shared corner count and is uniquely correct."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Rotation does not change a shape's number of corners, so the comparison remains valid."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The question explicitly contrasts tilted and flat figures while asking about one feature."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Both the square and rectangle have four corners, making the printed answer correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_1-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_1-20260924:mat_g1_mg_q1_1"
+    },
+    {
+      "sample_id": "e31e58ffd14b2bda7bff",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Rectangle is the only answer that has more sides than the triangle named in the stem."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The item asks a straightforward, meaningful comparison of the two polygons' side counts."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The sentence is short and uses common shape terminology without distracting wording."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A rectangle has four sides and a triangle has three, confirming the keyed answer."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_1-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_1-20260924:mat_g1_mg_q1_1"
+    },
+    {
+      "sample_id": "d1edf19c247c28213a7a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The irrelevant introductory context does not change the uniquely correct rectangle option."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The stones reference adds no conflicting condition, leaving the shape comparison logically valid."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The decorative challenge and stone context are unnecessary and may distract a beginning reader from the question."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Rectangle correctly has the same four-side count as a square."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_1-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_1-20260924:mat_g1_mg_q1_1"
+    },
+    {
+      "sample_id": "cb853260c02d0a065569",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Rectangle is uniquely identified as having more sides than the triangle."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The basketball reference does not alter the clear mathematical comparison requested."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The emoji and unrelated basketball context add reading noise without supporting the shape comparison."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A rectangle has four sides compared with three for a triangle, so the answer is correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_1-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_1-20260924:mat_g1_mg_q1_1"
+    },
+    {
+      "sample_id": "6417a21ff196ba42bad9",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Rectangle is the only option that shares the square's number of sides."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The item makes a valid direct equality comparison between two shape side counts."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The wording is compact and clearly identifies both the feature and the comparison target."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Both named shapes have four sides, so the printed rectangle answer is valid."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_1-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_1-20260924:mat_g1_mg_q1_1"
+    },
+    {
+      "sample_id": "25ec611396ba00d8c1c9",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Rectangle is the unique option with a greater side count than triangle."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The prompt presents a coherent comparison of a single countable feature."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The question is direct, readable, and uses familiar vocabulary for Grade 1."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The four sides of a rectangle are more than the three sides of a triangle."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_1-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_1-20260924:mat_g1_mg_q1_1"
+    },
+    {
+      "sample_id": "2f583138eb6c8d43716e",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Rectangle is the sole option with the same number of sides as square."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The equality comparison is well-formed and concerns a stable feature of each shape."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem is short and clearly asks learners to compare the number of sides."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Squares and rectangles both have four sides, so the answer is mathematically correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_1-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_1-20260924:mat_g1_mg_q1_1"
+    },
+    {
+      "sample_id": "1a5369084aa12849fe56",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Triangle is the only answer that has fewer corners than square."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The comparison uses an observable, countable feature and has a clear relation."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The learner sees two familiar shapes and one simple question about their corners."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Triangle has three corners while square has four, confirming the printed answer."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_1-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_1-20260924:mat_g1_mg_q1_1"
+    },
+    {
+      "sample_id": "70c3c8050678fab2d5ce",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Triangle is uniquely correct because it has fewer corners than square."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The hint-gated presentation does not change the valid comparison of corner counts."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem plainly identifies the two shapes and asks which has fewer corners."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The keyed triangle has three corners compared with the square's four corners."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_1-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_1-20260924:mat_g1_mg_q1_1"
+    },
+    {
+      "sample_id": "dc2e281d5e7d10ddd6ad",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Rectangle is the only option with more sides than the named triangle."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "This is a coherent one-step comparison of the side counts of two polygons."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The question is direct and uses familiar words appropriate for early mathematics."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Rectangle has four sides and triangle has three, so the printed answer is correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_1-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_1-20260924:mat_g1_mg_q1_1"
+    },
+    {
+      "sample_id": "770e211b7dca8f44179b",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Rectangle uniquely has the same side count as the square among the options."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The scaffolded format still presents a logically valid equality comparison."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem states the target feature plainly and uses familiar shape names."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Both square and rectangle have four sides, which supports the keyed answer."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_1-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_1-20260924:mat_g1_mg_q1_1"
+    }
+  ],
+  "clause_evidence": [
+    {
+      "requirement_id": "compare_shapes",
+      "clause": "Compare",
+      "verdict": "PASS",
+      "reasoning": "The packet repeatedly asks learners to compare side or corner counts between named shapes.",
+      "sample_ids": [
+        "38c1342c64818deb0db8",
+        "3863468cad482de2c621"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_1-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_1-20260924:mat_g1_mg_q1_1"
+    },
+    {
+      "requirement_id": "distinguish_shapes",
+      "clause": "distinguish",
+      "verdict": "CONCERN",
+      "reasoning": "The items support distinguishing by count relationships, but they do not broadly sample different ways of distinguishing shapes.",
+      "sample_ids": [
+        "475f44062f4693ff1bd6",
+        "63614911ae8c87c24f01"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_1-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_1-20260924:mat_g1_mg_q1_1"
+    },
+    {
+      "requirement_id": "two_dimensional_shapes",
+      "clause": "2-dimensional shapes",
+      "verdict": "PASS",
+      "reasoning": "Every item names or presents conventional planar figures such as triangles, squares, and rectangles.",
+      "sample_ids": [
+        "38c1342c64818deb0db8",
+        "63614911ae8c87c24f01"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_1-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_1-20260924:mat_g1_mg_q1_1"
+    },
+    {
+      "requirement_id": "shape_features_as_comparison_basis",
+      "clause": "features",
+      "verdict": "PASS",
+      "reasoning": "The printed questions explicitly use measurable shape features as the basis for each requested comparison.",
+      "sample_ids": [
+        "3863468cad482de2c621",
+        "475f44062f4693ff1bd6"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_1-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_1-20260924:mat_g1_mg_q1_1"
+    },
+    {
+      "requirement_id": "sides_of_a_shape",
+      "clause": "sides",
+      "verdict": "PASS",
+      "reasoning": "Multiple samples directly ask which shape has more or the same number of sides.",
+      "sample_ids": [
+        "38c1342c64818deb0db8",
+        "3863468cad482de2c621"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_1-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_1-20260924:mat_g1_mg_q1_1"
+    },
+    {
+      "requirement_id": "corners_of_a_shape",
+      "clause": "corners",
+      "verdict": "PASS",
+      "reasoning": "Multiple samples directly ask which shape has fewer or the same number of corners.",
+      "sample_ids": [
+        "475f44062f4693ff1bd6",
+        "63614911ae8c87c24f01"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_1-20260924",
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_1-20260924:mat_g1_mg_q1_1"
+    }
+  ],
+  "dispatch_provenance": [
+    {
+      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_1-20260924:mat_g1_mg_q1_1",
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_1-20260924",
+      "review_date": "2026-09-24",
+      "blind": true,
+      "packet_digest": "e3d924f8053a5597cb20925d4e04a864e60e38879734c0e86483bcf2e11b6196",
+      "clause_ids": [
+        "compare_shapes",
+        "distinguish_shapes",
+        "two_dimensional_shapes",
+        "shape_features_as_comparison_basis",
+        "sides_of_a_shape",
+        "corners_of_a_shape"
+      ],
+      "response_ref": ".responses/s5-luna-medium-w3-mat_g1_mg_q1_1-20260924.json",
+      "response_digest": "854fe0b01686068a7e693ed3b694998d8a38455e9dbd943cada54c98c617e58e",
+      "prompt_ref": ".responses/s5-luna-medium-w3-mat_g1_mg_q1_1-20260924.prompt.txt",
+      "prompt_digest": "3e204cee928fb3386d3cc0cb74dddaf08382e4f067a446e62dfddfa72feba830",
+      "samples_delivery": "Prompt generated by tests.judgment_batches for one node and delivered by path to multi_agent_v1.spawn_agent using model gpt-5.6-luna with reasoning_effort=medium.",
+      "tool_uses_by_reviewer": "Reviewer was a tool-bearing multi_agent_v1 subagent instructed to read only its prompt file and write its verdicts JSON; it reported the output path and no other tool use to the dispatcher."
     }
   ],
   "findings": {
-    "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "The comparisons themselves are on target, but the option lists undercut them. Asked which shape has the same number of sides as a square, the pupil is offered they are different and neither alongside two shape names - two of the four choices cannot answer a which-shape question at all, which narrows a four-way item to a two-way guess."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "Both features the competency names are exercised: sides appear in the more-sides and same-number-of-sides items, corners in the fewer-corners item and in the tilted square and flat rectangle question. More, fewer and same are all represented as relations."
-    },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Comparing two named shapes on a single attribute, with answer text as short as Yes, both have 4 corners, is a reasonable first-quarter Grade 1 demand and needs no counting beyond four."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "Eight of the nine samples are three recycled sentences about triangle-versus-rectangle sides or square-versus-triangle corners. Only the tilted square and flat rectangle item introduces orientation, and no item compares three shapes or asks the pupil to justify by counting a drawn figure."
+      "rationale": "The questions use direct comparisons of familiar elementary shapes and countable features, matching Grade 1 cognitive demands without multi-step reasoning."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "The seeds that differ do so by switching the attribute under comparison (sides versus corners) and the direction of the relation, both of which are axes internal to distinguishing shapes by feature."
+      "rationale": "Every printed stem asks learners to compare or distinguish shapes using the explicitly named features of sides or corners."
+    },
+    "competency_fulfillment": {
+      "verdict": "CONCERN",
+      "rationale": "The core comparison skill is repeatedly exercised, but the packet gives narrow evidence for distinguishing shapes across the full range of possible feature-based comparisons.",
+      "decomposition": {
+        "verdict": "PASS",
+        "reasoning": "The six requirements separately represent the compare and distinguish actions, two-dimensional shape domain, feature basis, and both named features, covering the competency without losing a stated element.",
+        "requirement_ids": [
+          "compare_shapes",
+          "distinguish_shapes",
+          "two_dimensional_shapes",
+          "shape_features_as_comparison_basis",
+          "sides_of_a_shape",
+          "corners_of_a_shape"
+        ]
+      },
+      "clause_ids": [
+        "compare_shapes",
+        "distinguish_shapes",
+        "two_dimensional_shapes",
+        "shape_features_as_comparison_basis",
+        "sides_of_a_shape",
+        "corners_of_a_shape"
+      ]
+    },
+    "comprehensive_coverage": {
+      "verdict": "CONCERN",
+      "rationale": "Coverage is concentrated on triangles, squares, and rectangles, with repeated same-number, more, and fewer prompts rather than a broad set of shape-feature cases.",
+      "clause_ids": [
+        "compare_shapes",
+        "distinguish_shapes",
+        "two_dimensional_shapes",
+        "shape_features_as_comparison_basis",
+        "sides_of_a_shape",
+        "corners_of_a_shape"
+      ]
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Side and corner counts of 3 and 4 are the only quantities involved, which is precisely the range the three named 2-dimensional shapes generate."
+      "rationale": "The packet stays at a small, concrete shape set and asks one observable comparison at a time, an appropriate scale for Grade 1 Quarter 1."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "There is useful variation in wording and presentation mode, but most items recycle the same three shapes, feature counts, and answer relationship."
     }
   },
   "overall": "CONCERN"
