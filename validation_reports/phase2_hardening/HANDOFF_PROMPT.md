@@ -1,5 +1,16 @@
 # Handoff — continue the Phase 2 hardening plan
 
+**Refreshed 2026-09-24 (codex-h06-s5-luna-campaign-2026-09-24): one GPT-host Luna/medium §5
+review was dispatched and filed.** `mat_g1_dp_q3_0` is now schema v2 under
+`blind-reviewer-gpt-5.6-luna-medium-b1n1-20260924`; the legacy queue regenerated to **149** v1
+re-reviews owed (`schema_counts {2: 2, None: 149}`). The review found real content concerns, so
+`validate_judgment_reviews()` moved **1236 → 1238** and still names 150 nodes: seeds 701 and 702 add
+irrelevant interest wrappers ("dance shoes" on a fruit interview; "basketballs" on a shoes interview),
+triggering contextual-validity and learner-facing-clarity CONCERNs. The v2 corpus is now mixed-family:
+1 Haiku node (`mat_g3_na_q4_7`) and 1 `gpt-5.6-luna` medium node; future consistency work may re-judge
+`mat_g3_na_q4_7` under Luna, but do not discard it. Disk is tighter than the prior handoff: **2.1 GiB
+free** on `/System/Volumes/Data`, so avoid corpus/shard runs until disk pressure is resolved.**
+
 **Refreshed 2026-09-24 (claude-h06-s5-campaign-2026-09-24): the §5 blind re-review campaign is
 OPEN and its blocking gate is fixed. `_provenance_corpus` was a four-field allowlist while the blind
 packet prints hints, cloze text, visual payload/render and the requirement clauses, so it raised FOUR

@@ -15371,3 +15371,177 @@ reported `tail`'s status. The harness's own verdict line (`SOME ALL TESTS CHECKS
    check `df -h` first.
 5. **The supersession defect is still unfixed** (owner's call), and the §6F cluster still cannot be
    scored until `capability_phase2` reaches 0.
+## 2026-09-24 — GPT §5 Luna one-node dispatch filed; queue now 149 v1 reviews (`codex-h06-s5-luna-campaign-2026-09-24`)
+
+Praise God. I continued the §5 blind re-review campaign under the GPT-host prompt's owner instruction:
+blind reviewers must be `gpt-5.6-luna` at medium thinking, and the reviewer identity must state that
+truthfully. I did **not** touch source or run the re-proof chain; this was a review-filing campaign
+only.
+
+### Establish state and safety
+
+```
+$ df -h /System/Volumes/Data
+Filesystem      Size    Used   Avail Capacity iused ifree %iused  Mounted on
+/dev/disk1s1   112Gi    93Gi   2.1Gi    98%    1.4M   22M    6%   /System/Volumes/Data
+```
+
+Disk is below "a few GB", so I did no corpus/shard/release work.
+
+```
+$ ps -eo pid,ppid,etime,command | grep -iE "mutation_harness|obligation_executor|validate_|pytest" | grep -v grep
+# exit 1, no output
+
+$ git status --porcelain -- backend/ tests/ scripts/ data/ frontend/src docs/pgen_contract.md docs/testing_pipeline.md
+# no output
+
+$ git grep -n -E "#\s*planted mutation|//\s*planted " HEAD -- backend/ frontend/src | grep -v mutation_harness
+# exit 1, no output
+
+$ PYTHONPATH=. .venv/bin/python tests/tree_state.py
+PASS tree_state: CERTIFIED
+  live input digest : 126e9eb19a1122bc
+  worktree          : clean
+  mutation_proofs         fresh  162 file(s)
+  release_shards          fresh  6 file(s)
+  obligation_benchmark    fresh  1 file(s)
+  frontend_static_render  fresh  1 file(s)
+  -> Every digest-bound artifact is current and nothing is in flight. Do not re-run the chain -- it proves nothing new. Touch no source you do not mean to change.
+
+$ PYTHONPATH=. .venv/bin/python tests/hardening_status.py
+PASS hardening_status: 10 H-row(s) valid — 3 closed, 6 open, 1 out_of_scope
+```
+
+I claimed H-06 by changing only the owner line; `git diff --numstat` was `1 1`. The claim commit was
+`3ab83b45 chore: claim H-06 s5 campaign lock`. The commit hook also updated
+`graphify-out/manifest.json`; after clearing a transient staged reversal, the only expected dirty
+file was the open `tree_state.json` campaign intent.
+
+Graphify was queried first for the §5 tooling connection, but the installed graph missed the target
+and returned Firebase Data Connect schema nodes instead, with the tool warning that the graph uses the
+pre-#1504 node-ID scheme. I treated direct repo tooling as the evidence source.
+
+### Dispatch and filing
+
+Baseline §5 count:
+
+```
+$ PYTHONPATH=. .venv/bin/python -c "from backend.app.practice_gen.validation.validate_judgment import validate_judgment_reviews; import re; p=validate_judgment_reviews(); print('findings', len(p), 'nodes', len({m.group(1) for x in p if (m:=re.match(r'(mat_[a-z0-9_]+)', x))}))"
+findings 1236 nodes 150
+```
+
+Built one dispatch packet:
+
+```
+$ PYTHONPATH=. .venv/bin/python -m tests.judgment_batches --node mat_g1_dp_q3_0 --blind local_only/scratch/review/s5-luna-2026-09-24/mat_g1_dp_q3_0/blind.txt --prompt local_only/scratch/review/s5-luna-2026-09-24/mat_g1_dp_q3_0/prompt.txt --reviewed-by blind-reviewer-gpt-5.6-luna-medium-b1n1-20260924 --verdicts-path local_only/scratch/review/s5-luna-2026-09-24/mat_g1_dp_q3_0/verdicts.json --skeleton-dir local_only/scratch/review/s5-luna-2026-09-24/mat_g1_dp_q3_0/skeletons
+blind packet: 1 node(s), 13027 chars -> local_only/scratch/review/s5-luna-2026-09-24/mat_g1_dp_q3_0/blind.txt
+review prompt: 1 node(s), 16137 chars -> local_only/scratch/review/s5-luna-2026-09-24/mat_g1_dp_q3_0/prompt.txt
+skeletons: 1 file(s) -> local_only/scratch/review/s5-luna-2026-09-24/mat_g1_dp_q3_0/skeletons
+```
+
+Dispatched with `multi_agent_v1.spawn_agent`, `model="gpt-5.6-luna"`,
+`reasoning_effort="medium"`, `fork_context=false`. Agent id:
+`01a0d2be-3045-7b93-b148-ae388da2c96c`. The reviewer identity assigned by me was
+`blind-reviewer-gpt-5.6-luna-medium-b1n1-20260924`. The agent reported:
+
+```
+{"reviewer":"blind-reviewer-gpt-5.6-luna-medium-b1n1-20260924","status":"written","overall":"CONCERN","file":"local_only/scratch/review/s5-luna-2026-09-24/mat_g1_dp_q3_0/verdicts.json"}
+```
+
+Mechanical audit before filing:
+
+```
+reviewer blind-reviewer-gpt-5.6-luna-medium-b1n1-20260924
+nodes ['mat_g1_dp_q3_0']
+overall CONCERN
+findings ['cognitive_capacity', 'competency_alignment', 'competency_fulfillment', 'comprehensive_coverage', 'scale_appropriateness', 'variant_comprehensiveness']
+sample_count expected/actual 20 20
+sample_order_matches True
+requirements expected/actual 3 3
+requirement_ids ['collect_data', 'one_variable', 'simple_interview']
+bad_cites []
+duplicate_normalized_reasoning [] count 0
+short_reasoning [] count 0
+```
+
+Filed through the filer, using the dispatch-time skeleton and exact prompt:
+
+```
+$ PYTHONPATH=. .venv/bin/python -m tests.file_reviews --nodes <(printf '%s\n' mat_g1_dp_q3_0) --verdicts local_only/scratch/review/s5-luna-2026-09-24/mat_g1_dp_q3_0/verdicts.json --reviewed-by blind-reviewer-gpt-5.6-luna-medium-b1n1-20260924 --date 2026-09-24 --skeleton-dir local_only/scratch/review/s5-luna-2026-09-24/mat_g1_dp_q3_0/skeletons --dispatch-prompt local_only/scratch/review/s5-luna-2026-09-24/mat_g1_dp_q3_0/prompt.txt --dispatch-id s5-luna-medium-b1n1-20260924 --samples-delivery "Prompt generated by tests.judgment_batches for one node and delivered verbatim via multi_agent_v1.spawn_agent to model gpt-5.6-luna with reasoning_effort=medium." --tool-uses-by-reviewer "Reviewer was a tool-bearing multi_agent_v1 subagent; it reported writing local_only/scratch/review/s5-luna-2026-09-24/mat_g1_dp_q3_0/verdicts.json and reported no other tool use to the dispatcher."
+  filed mat_g1_dp_q3_0 -> validation_reports/judgment/mat_g1_dp_q3/mat_g1_dp_q3_0.json
+1 review(s) filed under 'blind-reviewer-gpt-5.6-luna-medium-b1n1-20260924'
+```
+
+### Result and discovered content issue
+
+Post-filing §5 count:
+
+```
+$ PYTHONPATH=. .venv/bin/python -c "from backend.app.practice_gen.validation.validate_judgment import validate_judgment_reviews; import re; p=validate_judgment_reviews(); print('findings', len(p), 'nodes', len({m.group(1) for x in p if (m:=re.match(r'(mat_[a-z0-9_]+)', x))}))"
+findings 1238 nodes 150
+```
+
+This went **up** because the fresh review found current v2 content concerns. Node-specific validator
+findings:
+
+```
+mat_g1_dp_q3_0: sample 6c18db40347b1d54e382 contextual_logical_validity is CONCERN; every learner-visible sample must pass.
+mat_g1_dp_q3_0: sample 6c18db40347b1d54e382 learner_facing_clarity is CONCERN; every learner-visible sample must pass.
+mat_g1_dp_q3_0: sample 77a153c5d5d086f5cf20 contextual_logical_validity is CONCERN; every learner-visible sample must pass.
+mat_g1_dp_q3_0: sample 77a153c5d5d086f5cf20 learner_facing_clarity is CONCERN; every learner-visible sample must pass.
+mat_g1_dp_q3_0: overall judgment verdict is 'CONCERN' (must be 'PASS'); curriculum alignment defects and concerns must be resolved.
+```
+
+Reviewer-discovered bug to preserve for the content batch, not fixed mid-campaign:
+
+* `mat_g1_dp_q3_0`, seed 701, sample `6c18db40347b1d54e382`: the wrapper says
+  "dance shoes" but the item asks about Liza's favorite-fruit interview.
+* `mat_g1_dp_q3_0`, seed 702, sample `77a153c5d5d086f5cf20`: the wrapper says
+  "basketballs" but the item asks whom to interview about classmates' shoes.
+
+Both are contextual/logical validity and learner-facing clarity concerns caused by irrelevant interest
+wrappers. No generator source was edited.
+
+The legacy queue moved in the correct direction after regenerating the artifact:
+
+```
+$ PYTHONPATH=. .venv/bin/python - <<'PY'
+import json
+from pathlib import Path
+root=Path('validation_reports/judgment')
+counts={}
+nodes=[]
+for p in sorted(root.glob('mat_*/*_*.json')):
+    try:
+        d=json.loads(p.read_text())
+    except Exception:
+        continue
+    sv=d.get('schema_version')
+    counts[sv]=counts.get(sv,0)+1
+    if sv==2:
+        nodes.append(p.stem)
+print('schema_counts', counts)
+print('schema_v2_nodes', nodes)
+PY
+schema_counts {2: 2, None: 149}
+schema_v2_nodes ['mat_g1_dp_q3_0', 'mat_g3_na_q4_7']
+
+$ PYTHONPATH=. .venv/bin/python tests/legacy_review_queue.py --write
+legacy_review_queue: 149 legacy review(s), NOT adjudicable evidence
+  overall verdicts        : {'CONCERN': 91, 'FAIL': 44, 'PASS': 14}
+  with a non-PASS facet   : 135
+  non-PASS by facet       : {'cognitive_capacity': 34, 'competency_alignment': 68, 'competency_fulfillment': 72, 'comprehensive_coverage': 61, 'scale_appropriateness': 25, 'variant_comprehensiveness': 81}
+  missing a v1 facet      : 0
+  orphan (node undeclared): 0
+  re-reviews owed         : 149
+  wrote validation_reports/phase2_hardening/legacy_review_queue.json
+```
+
+### Mixed-family consequence
+
+The §5 v2 corpus is now mixed-family: one Haiku node (`mat_g3_na_q4_7`) and one
+`gpt-5.6-luna` medium node (`mat_g1_dp_q3_0`). `mat_g3_na_q4_7` remains the one node a future
+consistency pass should re-judge under Luna if single-family evidence is ever wanted; I did not
+re-review or discard it.
+
+Luna-vs-Haiku agreement on the same node was not measured in this session.

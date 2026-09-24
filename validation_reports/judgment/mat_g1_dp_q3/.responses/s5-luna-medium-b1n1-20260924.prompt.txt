@@ -1,0 +1,193 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-gpt-5.6-luna-medium-b1n1-20260924
+
+Write one JSON object to:
+  local_only/scratch/review/s5-luna-2026-09-24/mat_g1_dp_q3_0/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN; never invent a supporting sample.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-gpt-5.6-luna-medium-b1n1-20260924",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g1_dp_q3_0
+PACKET DIGEST: 5e35ff18d97a91b8fa2e6842c5eb8b0435aedcfb8fbc43d437eb53f0d4d367db
+COMPETENCY (Grade 1, Quarter 3, None):
+Collect data in one variable through a simple interview.
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  collect_data: Collect data
+  one_variable: one variable
+  simple_interview: simple interview
+
+SAMPLES (every one of these is real rendered output):
+  sample 0c46fa11a82d13f7b3cc  seed 42  [mcq]
+      stem:    Rico conducts an interview with 4 classmates: Ana chose blue, Leo chose red, Sam chose blue, Mia chose blue. How many times was 'blue' collected in the interview?
+      answer:  3
+      options: 3 / 2 / 1 / 4
+      hints:   ["Read the interview question or results carefully.", "Find the votes or answers counted for each choice.", "Answer what the interview shows."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample e397f6390077b3f8ae22  seed 43  [mcq]
+      stem:    Tina asks 5 friends their favorite pet: 2 say Cat, 3 say Dog. How should Tina record the data in her interview list?
+      answer:  Cat: 2, Dog: 3
+      options: Cat: 3, Dog: 2 / Cat: 2, Dog: 3 / Cat: 5, Dog: 0 / Cat: 1, Dog: 4
+      hints:   ["Read the interview question or results carefully.", "Find the votes or answers counted for each choice.", "Answer what the interview shows."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 06eb8fc2ded2c095fd88  seed 44  [mcq]
+      stem:    To collect data from 5 classmates about their favorite sport, what is the best way to do a simple interview?
+      answer:  Ask each classmate one by one and record their answers.
+      options: Count the number of balls in the gym. / Guess what each classmate likes without asking. / Measure the height of the classroom door. / Ask each classmate one by one and record their answers.
+      hints:   ["Read the interview question or results carefully.", "Find the votes or answers counted for each choice.", "Answer what the interview shows."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 4ee5affc5ac2a2dde3f3  seed 45  [mcq]
+      stem:    Liza is conducting a simple interview. She asks: 'What is your favorite fruit?' What should Liza do right after a friend answers 'mango'?
+      answer:  Record 'mango' on her interview data sheet.
+      options: Record 'mango' on her interview data sheet. / Erase all previous answers. / Stop asking and leave the room. / Change her friend's answer to apple.
+      hints:   ["Read the interview question or results carefully.", "Find the votes or answers counted for each choice.", "Answer what the interview shows."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 33d263f6c833b651e264  seed 46  [mcq]
+      stem:    If you want to collect data about what shoes your classmates wear to school, whom should you interview?
+      answer:  your classmates
+      options: the classroom walls / the desks / your classmates / the birds outside
+      hints:   ["Read the interview question or results carefully.", "Find the votes or answers counted for each choice.", "Answer what the interview shows."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 47388362f3926f6c5a18  seed 500  [mcq]
+      stem:    Ben asks each classmate: 'What is your favorite color?' What topic is Ben collecting data about in this interview?
+      answer:  favorite color
+      options: how old classmates are / favorite color / favorite food / favorite pet
+      hints:   ["Read the interview question or results carefully.", "Find the votes or answers counted for each choice.", "Answer what the interview shows."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample e35a30d9923677181903  seed 501  [mcq]
+      stem:    Ella asks each friend: 'What pet do you have at home?' What is Ella collecting data about?
+      answer:  pets at home
+      options: favorite toy / pets at home / bedtime / favorite drink
+      hints:   ["Read the interview question or results carefully.", "Find the votes or answers counted for each choice.", "Answer what the interview shows."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample f1f9dffaedf30ee86a57  seed 502  [mcq]
+      stem:    Dan asks each pupil: 'What is your favorite snack?' What information is Dan collecting in this interview?
+      answer:  favorite snack
+      options: favorite game / favorite color / number of bags / favorite snack
+      hints:   ["Read the interview question or results carefully.", "Find the votes or answers counted for each choice.", "Answer what the interview shows."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 3b91118db280fe3704e1  seed 600  [mcq]
+      stem:    During an interview, 4 classmates answered 'red'. How should you record 4 tally marks for 'red'?
+      answer:  ||||
+      options: ||| / || / |||| / |||||
+      hints:   ["Read the interview question or results carefully.", "Find the votes or answers counted for each choice.", "Answer what the interview shows."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample ded62f687d70e72c2308  seed 601  [mcq]
+      stem:    In an interview, you ask 4 friends for their favorite fruit: Kim says Apple, Ben says Mango, Dan says Apple, Joy says Apple. How many votes did Apple get?
+      answer:  3
+      options: 2 / 3 / 4 / 1
+      hints:   ["Read the interview question or results carefully.", "Find the votes or answers counted for each choice.", "Answer what the interview shows."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 071114613e95cbe88530  seed 700  [mcq]
+      stem:    To collect data from 5 classmates about their favorite sport, what is the best way to do a simple interview?
+      answer:  Ask each classmate one by one and record their answers.
+      options: Ask each classmate one by one and record their answers. / Count the number of balls in the gym. / Measure the height of the classroom door. / Guess what each classmate likes without asking.
+      hints:   ["Read the interview question or results carefully.", "Find the votes or answers counted for each choice.", "Answer what the interview shows."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 6c18db40347b1d54e382  seed 701  [mcq]
+      stem:    💃 Sir Rez has a math challenge about dance shoes. Liza is conducting a simple interview. She asks: 'What is your favorite fruit?' What should Liza do right after a friend answers 'mango'?
+      answer:  Record 'mango' on her interview data sheet.
+      options: Record 'mango' on her interview data sheet. / Erase all previous answers. / Change her friend's answer to apple. / Stop asking and leave the room.
+      hints:   ["Read the interview question or results carefully.", "Find the votes or answers counted for each choice.", "Answer what the interview shows."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 77a153c5d5d086f5cf20  seed 702  [mcq]
+      stem:    🏀 Isko has a math challenge about basketballs. If you want to collect data about what shoes your classmates wear to school, whom should you interview?
+      answer:  your classmates
+      options: your classmates / the desks / the classroom walls / the birds outside
+      hints:   ["Read the interview question or results carefully.", "Find the votes or answers counted for each choice.", "Answer what the interview shows."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 142765354d349ff3a777  seed 800  [mcq]
+      stem:    Maya wants to collect information about her classmates' favorite fruits. What question should Maya ask in her simple interview?
+      answer:  What is your favorite fruit?
+      options: What time is it? / What is your favorite fruit? / How many shoes do you have? / How old are you?
+      hints:   ["Read the interview question or results carefully.", "Find the votes or answers counted for each choice.", "Answer what the interview shows."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 4b31100c3ac9d757f6d2  seed 801  [mcq]
+      stem:    Carlo wants to collect data on his friends' favorite colors. What question should Carlo ask in his interview?
+      answer:  What is your favorite color?
+      options: How many doors are in the room? / What is your favorite color? / Where is your pencil? / What day is today?
+      hints:   ["Read the interview question or results carefully.", "Find the votes or answers counted for each choice.", "Answer what the interview shows."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample c6cab83ca51823e29d08  seed 900  [mcq]
+      stem:    Ben asks each classmate: 'What is your favorite color?' What topic is Ben collecting data about in this interview?
+      answer:  favorite color
+      options: how old classmates are / favorite pet / favorite food / favorite color
+      hints:   ["Read the interview question or results carefully.", "Find the votes or answers counted for each choice.", "Answer what the interview shows."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 22e1f1533f68654bb3ab  seed 901  [mcq]
+      stem:    Ella asks each friend: 'What pet do you have at home?' What is Ella collecting data about?
+      answer:  pets at home
+      options: favorite toy / favorite drink / bedtime / pets at home
+      hints:   ["Read the interview question or results carefully.", "Find the votes or answers counted for each choice.", "Answer what the interview shows."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 2eb75661296aee3ec782  seed 1000  [mcq]
+      stem:    During an interview, 4 classmates answered 'red'. How should you record 4 tally marks for 'red'?
+      answer:  ||||
+      options: ||||| / |||| / || / |||
+      hints:   ["Read the interview question or results carefully.", "Find the votes or answers counted for each choice.", "Answer what the interview shows."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "hint_gated"}
+  sample 9e76d7d45e99b910416c  seed 1001  [mcq]
+      stem:    In an interview, you ask 4 friends for their favorite fruit: Kim says Apple, Ben says Mango, Dan says Apple, Joy says Apple. How many votes did Apple get?
+      answer:  3
+      options: 2 / 3 / 4 / 1
+      hints:   ["Read the interview question or results carefully.", "Find the votes or answers counted for each choice.", "Answer what the interview shows."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "mastery_drill"}
+  sample f44a310f85d477d1fe8f  seed 1002  [mcq]
+      stem:    Rico conducts an interview with 4 classmates: Ana chose blue, Leo chose red, Sam chose blue, Mia chose blue. How many times was 'blue' collected in the interview?
+      answer:  3
+      options: 4 / 1 / 2 / 3
+      hints:   ["Read the interview question or results carefully.", "Find the votes or answers counted for each choice.", "Answer what the interview shows."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "scaffolded"}
+

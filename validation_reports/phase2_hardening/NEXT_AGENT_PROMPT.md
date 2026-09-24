@@ -1,5 +1,17 @@
 # Task prompt — continue Phase 2 hardening (GPT-hosted session)
 
+**Refreshed 2026-09-24 by `codex-h06-s5-luna-campaign-2026-09-24`.** One required GPT-host
+`gpt-5.6-luna`/medium blind review was dispatched and filed for `mat_g1_dp_q3_0`
+(`blind-reviewer-gpt-5.6-luna-medium-b1n1-20260924`). It was valid schema v2 and moved the legacy
+queue **150 → 149** (`schema_counts {2: 2, None: 149}`), but it found current content concerns, so
+`validate_judgment_reviews()` moved **1236 → 1238** and still reports 150 nodes with §5 findings.
+The new bug to preserve for the content batch: seeds 701 and 702 add irrelevant interest wrappers
+("dance shoes" on a fruit interview; "basketballs" on a shoes interview), producing contextual
+validity and learner-facing clarity CONCERNs. The §5 v2 corpus is now mixed-family: 1 Haiku node
+(`mat_g3_na_q4_7`) and 1 `gpt-5.6-luna` medium node. Disk measured **2.1 GiB free**; do not run
+corpus/shards without resolving disk pressure. Everything below is the previous prompt except where
+an executed command above supersedes it.
+
 **Written 2026-09-24, replacing every previous version of this file.** You are working in
 `/Users/enrichmentcap/Documents/antigravity/ccmed` on the Adaptive K-12 Mastery Engine's
 practice-problem-generator hardening. Your job is to move `run_all` toward exiting 0.
@@ -8,8 +20,10 @@ practice-problem-generator hardening. Your job is to move `run_all` toward exiti
 file supersedes it for you**, because the dispatch model differs. Where they disagree, follow this
 one — except on a measured number, where an executed command beats both.
 
-The tree is **CERTIFIED**. The previous session opened the §5 campaign and fixed the gate that was
-blocking it. **150 nodes remain owed.** That queue is your main job and it costs no re-proof chain.
+The tree was **CERTIFIED** before the current campaign intent. The previous session opened the §5
+campaign and fixed the gate that was blocking it. **149 schema-v1 nodes remain owed**; one additional
+schema-v2 node (`mat_g1_dp_q3_0`) is freshly reviewed but red on content concerns. That queue is your
+main job and it costs no re-proof chain as long as you touch no source.
 
 ---
 

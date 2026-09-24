@@ -1,87 +1,33 @@
 {
   "schema_version": 1,
   "kind": "legacy_review_queue",
-  "generated_at": "2026-09-23T18:24:26.099588+00:00",
+  "generated_at": "2026-09-24T09:35:58.285120+00:00",
   "adjudicable": false,
   "why_not_adjudicable": "These are v1 reviews. The current schema (v2) requires per-sample contextual-validity verdicts, exact clause coverage and dispatch-bound provenance, which a v1 reviewer was never asked for and which therefore cannot be recovered from a v1 record without inventing them. Every node listed here still owes a fresh blind re-review. This file exists so that the previous programme's findings remain visible as a QUEUE while none of them counts as evidence.",
-  "required_work": "150 node(s) need a fresh blind review filed at schema_version 2. Rebuild a packet with: python -m backend.app.practice_gen.validation.judgment_packets --node <node_id>",
+  "required_work": "149 node(s) need a fresh blind review filed at schema_version 2. Rebuild a packet with: python -m backend.app.practice_gen.validation.judgment_packets --node <node_id>",
   "source_review_dir": "validation_reports/judgment",
-  "source_corpus_sha256": "c786b7c1169ae5dc1969d3064b30dcb814a97418f1f33196b9f3ee0cdb44e056",
+  "source_corpus_sha256": "da93f4da174d53a9e834656e9ac8c82f689cc68c50dd44fa6332c821d4eb9258",
   "counts": {
-    "legacy_nodes": 150,
-    "already_current_and_excluded": 1,
+    "legacy_nodes": 149,
+    "already_current_and_excluded": 2,
     "by_overall_verdict": {
-      "CONCERN": 92,
+      "CONCERN": 91,
       "FAIL": 44,
       "PASS": 14
     },
-    "nodes_with_a_non_pass_facet": 136,
+    "nodes_with_a_non_pass_facet": 135,
     "non_pass_by_facet": {
       "cognitive_capacity": 34,
       "competency_alignment": 68,
       "competency_fulfillment": 72,
       "comprehensive_coverage": 61,
       "scale_appropriateness": 25,
-      "variant_comprehensiveness": 82
+      "variant_comprehensiveness": 81
     },
     "records_missing_a_v1_facet": 0,
     "orphan_reviews_for_undeclared_nodes": 0
   },
   "nodes": [
-    {
-      "node_id": "mat_g1_dp_q3_0",
-      "source_path": "validation_reports/judgment/mat_g1_dp_q3/mat_g1_dp_q3_0.json",
-      "source_sha256": "ba64c95d572d78c5e18eef05a96024c74ca20f5a5f161a9a37bf92507e40b116",
-      "declared_schema_version": null,
-      "reviewed_by": "reviewer-c1-lantern-fescue-3061",
-      "review_date": "2026-09-11",
-      "blind": true,
-      "sample_seeds": [
-        42,
-        43,
-        44,
-        45,
-        46,
-        500,
-        501,
-        502,
-        600,
-        601
-      ],
-      "overall_verdict": "CONCERN",
-      "node_still_declared": true,
-      "facets": {
-        "competency_fulfillment": {
-          "verdict": "PASS",
-          "rationale": "The interview act itself is the object of the items: whom to ask, what to ask, what to do right after an answer, and what topic is being collected. Seed 44's key, Ask each classmate one by one and record their answers, is exactly the procedure the competency names, and the one-variable restriction holds throughout (one question per interview)."
-        },
-        "comprehensive_coverage": {
-          "verdict": "PASS",
-          "rationale": "Collection is sampled across its whole arc for a six-year-old: choosing respondents, posing the single question, recording a response, tallying with marks, and totalling one category. Both the procedural side and the recording side of a simple interview appear rather than only the easy identify-the-topic form."
-        },
-        "cognitive_capacity": {
-          "verdict": "PASS",
-          "rationale": "Stems stay at one or two short clauses, respondent counts stay at four or five, and no item asks for anything beyond recognising and counting repeated answers. Grade 1 Quarter 3 pupils meeting data for the first time can handle this load."
-        },
-        "variant_comprehensiveness": {
-          "verdict": "CONCERN",
-          "rationale": "All ten samples are single-select multiple choice. A competency whose verb is collect ought to include at least one item where the pupil produces the record - fills a tally sheet or writes the counts - rather than only picking a pre-written record from four choices; the tally item at seed 600 comes closest but still only asks which of four printed mark-strings is right."
-        },
-        "competency_alignment": {
-          "verdict": "PASS",
-          "rationale": "Harder seeds genuinely ask more of the interview skill (counting repeated responses across four named respondents, choosing the correct two-category record) while easier ones name the topic. The axis that grows is data-handling load, not some unrelated dressing."
-        },
-        "scale_appropriateness": {
-          "verdict": "PASS",
-          "rationale": "Sample sizes of four and five respondents, with category counts never above four, sit well inside what a Grade 1 pupil can survey and record in one sitting, and no numeric demand exceeds simple counting."
-        }
-      },
-      "facets_missing_from_the_v1_record": [],
-      "non_pass_facets": [
-        "variant_comprehensiveness"
-      ],
-      "adjudicable": false
-    },
     {
       "node_id": "mat_g1_dp_q3_1",
       "source_path": "validation_reports/judgment/mat_g1_dp_q3/mat_g1_dp_q3_1.json",
