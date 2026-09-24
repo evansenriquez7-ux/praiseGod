@@ -23,8 +23,8 @@ generator regression; the input digest never moved.
 ⚠ **A CLAUDE-HOSTED SESSION CANNOT SATISFY §0.** §0 mandates `gpt-5.6-luna` at medium thinking for
 every blind reviewer, and Claude Code cannot dispatch it. The recovery session therefore dispatched
 NOTHING and referred the choice to the owner: either a GPT host continues the queue under §0, or the
-owner authorises a Claude-host family (ruling 4's Haiku) and accepts a third rater family in the
-corpus. **Do not resolve this by writing `gpt-5.6-luna` onto a verdict another model produced** — §0
+owner authorises ruling 4's Haiku for Claude-host dispatch. Note that Haiku would NOT be a third
+family — it is already family #2 in this corpus (`mat_g3_na_q4_7`), so the count stays at two. **Do not resolve this by writing `gpt-5.6-luna` onto a verdict another model produced** — §0
 rule 2 names that a false evidentiary claim.
 
 **Refreshed wave 6, 2026-09-24.** Four more `gpt-5.6-luna`/medium reviews were filed:
