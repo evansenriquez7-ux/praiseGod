@@ -16317,3 +16317,92 @@ independently — 27 + 10 where 27 + 12 was intended. Two separate dispatches of
   harness usage record (`tool_uses: 2`) is authoritative and is what every `--tool-uses-by-reviewer`
   field here records; the discrepancy is noted in those fields. Anyone reconstructing blindness from
   reviewer self-reports alone would understate it.
+
+### The tokeniser fix, and the chain re-proved at `a46bc7f7`
+
+`_QUOTE_RE` excluded dashes from BOTH its closing lookahead and its opening lookbehind, so two
+adjacent quoted values written as a range merged into one span no packet can contain:
+
+```
+$ from ...validate_judgment import _QUOTE_RE
+  "the range '40'-'50' is shown"   ->  ["40'-'50"]     (before)
+  "the range '40'-'50' is shown"   ->  ["40", "50"]    (after)
+  "values '30' and '40' appear"    ->  ["30", "40"]    (unchanged)
+  "a student's work and 'the answer is 5' here" -> ["the answer is 5"]   (unchanged)
+```
+
+**The first attempt at this fix was wrong in a way nothing would have reported.** Adding dashes to
+only the CLOSING lookahead removed the bogus merged span — the visible symptom — while leaving the
+SECOND value unchecked, because the character before it was the dash and the opening lookbehind
+rejected it. Coverage would have shrunk silently while the gate looked repaired. Found by executing
+the tokeniser, not by reading it. Both sides now take hyphen, en dash and em dash.
+
+```
+§5 1542 -> 1538, and the sorted content diff is EXACTLY the four false accusations on
+mat_g1_na_q2_1 ("40'–'50", "90'–'110", "30'–'40", "30'–'50"), whose halves each appear
+dozens of times in that node's own packet (40 x31, 50 x18).
+```
+
+Wrong-reason check: `test_dash_joined_quotes_are_tokenised_separately` plus
+`test_a_fabricated_quote_beside_a_dash_is_still_caught` (a fabrication on EITHER side of a dash must
+still fail). Neutered to the pre-fix tokeniser by line replacement → `1 failed`; restored (`cmp`
+byte-identical) → `13 passed`. Mutation `quote_tokeniser_merges_dash_joined_spans` → 1/1 DETECTED,
+`baseline_exit=0`, `restored_clean=True`. It is deliberately distinct from `fabricated_quote`: that one
+proves the gate CATCHES a fabrication, this one proves it does not INVENT one.
+
+**A false neuter nearly passed for a proof.** The first neuter attempt used a replacement string with
+`–` escapes while the file stores the literal dash characters, so it matched nothing, the tests
+passed against unmodified source, and that run proved exactly nothing. Caught by asserting the match
+count. Anyone neutering a regex in this file should patch by LINE NUMBER and print the before/after.
+
+```
+anchors                    : all anchors OK
+regen_formatter_exclusions : 275 exclusions across 111 nodes, no diff
+obligation_benchmark       : failures=0 projected_release=1.738h
+frontend_static_render     : 41 tests passed; 30 payloads; 18 production visual types
+mutation corpus            : 160/163 detected
+release shards (all six)   : every shard EXIT 0, failures=0, elapsed 1529-1592s of 1,800s
+verify-release             : release_status=complete receipts=6 complete=True
+
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.run_all
+  RUN_ALL EXIT CODE: 1          <- measured directly, NOT through a pipe this time
+  scheduled=17 completed=14 failed=3 crashed=0 not_run=0 incomplete=0
+  FAIL judgment_reviews      1539 problem(s)
+  FAIL capability_contract   173 CONTRADICTED, 0 UNATTESTED, 0 STALE, 0 UNADJUDICABLE
+  FAIL assertion_coverage_8  3 in 1 family;  mutation_proof_integrity_8  9 in 3 families
+  PASS census: mutations=163 (floor 105)
+```
+
+The three undetected mutations are the known §6F cluster, INVALID because their baseline command
+`capability_phase2` is red — the third outcome, neither a broken check nor a mis-landed plant. No
+plant escaped; the `INPUT_ROOTS` diff and HEAD marker scan were empty and no marker was left behind.
+
+### Session totals
+
+```
+legacy queue      : 125 -> 118   (wave 8 four nodes, wave 9 four nodes)
+§5 (module)       : 1462 -> 1538
+§5 (run_all)      : 1539          (the documented +1 aggregate rollup)
+capability_phase2 : 173, untouched by design
+mutation corpus   : 162 -> 163 mutations, 160 detected
+v2 corpus         : 34 reviews -- 25 gpt-5.6-luna medium, 9 haiku45
+```
+
+**§5 rose because the gate is working.** Eight fresh blind reviews replaced unadjudicable v1 stubs
+with verdicts that name real defects; `mat_g1_na_q2_0` alone contributes 80 findings. A falling §5
+count would have meant the reviews found nothing.
+
+### Left for the next session
+
+1. **118 v1 nodes still owed.** The dispatch template that works is recorded above: a 60-character
+   floor, an exact-verbatim quoting rule (or no quote marks), and neutral interest-bank context.
+   Reviews dispatched without those three get REFUSED by `file_reviews` or arrive carrying
+   quote-provenance findings.
+2. **The hint/variant root cause is the highest-value content fix**, now confirmed on three DNAs
+   (fractions, sort order, place-value blocks). Sweep every `generate_hints` against its item's
+   variant before assuming only three are affected.
+3. **`capability_phase2` 173 across 82 nodes** is untouched, and it is what gates the §6F cluster.
+4. **14 quote-provenance findings remain** and are genuine reviewer paraphrase-in-quotes, not gate
+   defects. They clear by re-dispatch under the strengthened template, not by a validator change.
+5. **A blind reviewer cannot adjudicate INTENT.** Theming, persona and decoration findings must be
+   checked against `data/interest_bank.json` by the dispatcher before being queued as bugs.
