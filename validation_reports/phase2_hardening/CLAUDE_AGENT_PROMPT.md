@@ -1,12 +1,15 @@
 # Task prompt — continue Phase 2 hardening (fresh Claude Code session)
 
 **Updated 2026-09-24 by `claude-h06-s5-campaign-2026-09-24`.** Priority 3 (`_apply` atomicity) is
-DONE and proved. The §5 campaign is OPEN: **one node is filed and 149 remain owed** — and the gate
+DONE and proved. The §5 campaign is OPEN: **one node is filed and 150 remain owed** — and the gate
 that was blocking it is fixed. `_provenance_corpus` was a four-field allowlist while the blind packet
 prints hints, cloze text, visual payload/render and the requirement clauses, so it raised FOUR FALSE
 findings against an honest review, punishing reviewers for quoting hint text — the field the seed-44
 defect lived in. If you read an older copy of this file, note the owed-queue figure it quotes (151)
-was itself wrong: `.responses/` provenance was being counted as reviews. **It is 150 total, 149 left.**
+was itself wrong: `.responses/` provenance was being counted as reviews. **150 schema-v1 nodes are
+owed.** (CORRECTED: an earlier draft of this banner said 149. The node that was filed,
+`mat_g3_na_q4_7`, was a 151st node carrying a STALE v2 review, not one of the 150 v1 nodes, so
+filing it did not reduce the 150.)
 
 You are working in `/Users/enrichmentcap/Documents/antigravity/ccmed` on the Adaptive K-12 Mastery
 Engine's practice-problem-generator hardening. Your job is to move `run_all` toward exiting 0.
@@ -147,7 +150,7 @@ corpus writes NOTHING until it finishes and any monitor on that file is structur
 
 | stage | count | nature |
 |---|---|---|
-| `judgment_reviews_5` | **1237** at `run_all` / **1236** at `validate_judgment` | **149** nodes still schema v1 |
+| `judgment_reviews_5` | **1237** at `run_all` / **1236** at `validate_judgment` | **150** nodes still schema v1 (verified: 150 distinct node ids carry findings, and `mat_g3_na_q4_7` carries none) |
 | `capability_phase2` | **173** CONTRADICTED | content debt, 82 of 151 nodes — untouched |
 | `assertion_coverage_8` | 3 in 1 family (and `mutation_proof_integrity_8` 9 in 3 families — the same three records) | the §6F cluster; only `capability_phase2` reaching 0 clears it |
 

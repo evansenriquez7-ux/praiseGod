@@ -8,7 +8,7 @@ the seed-44 defect lived in. Fixed, with the `115 of 151` claim corrected in all
 (it is an UPPER BOUND, not a count). Also fixed: `_apply` could leak a multi-file plant into
 production source, and `_legacy_review_paths` counted dispatch provenance as reviews (the owed queue
 is **150**, not the 151/152 the artifact reported). Chain re-proved ALONE at `da4f9588`; digest is
-now `126e9eb19a1122bc`. ONE node is filed (`mat_g3_na_q4_7`, Haiku); **149 remain owed** and the
+now `126e9eb19a1122bc`. ONE node is filed (`mat_g3_na_q4_7`, Haiku); **150 remain owed** and the
 campaign is unblocked. ⚠ The data volume has ~3.3 GiB free — run `df -h` before any heavy run. This
 file is deliberately a POINTER, not a summary.**
 
