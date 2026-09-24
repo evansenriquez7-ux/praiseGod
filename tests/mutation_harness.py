@@ -2281,6 +2281,39 @@ MUTATIONS: List[Mutation] = [
         ],
     ),
     Mutation(
+        name="quote_tokeniser_merges_dash_joined_spans",
+        asserts=["judgment_quote_provenance_5"],
+        description=(
+            "Drop the dashes from both sides of the quoted-span tokeniser, as it was "
+            "until 2026-09-24. Two adjacent quoted values joined by a dash then merge "
+            "into ONE span that no packet can contain, so the gate reports fabrication "
+            "against a reviewer who quoted real text -- measured on mat_g1_na_q2_1, "
+            "whose four accused spans each had halves appearing dozens of times in its "
+            "own packet. Distinct from `fabricated_quote`, which proves the gate CATCHES "
+            "a real fabrication; this proves it does not INVENT one."
+        ),
+        edits={
+            "backend/app/practice_gen/validation/validate_judgment.py": (
+'    r"""(?:(?<=^)|(?<=[\\s(\\[\\-–—]))([\'"])(.+?)\\1(?=[\\s.,;:)\\]\\-–—]|$)"""\n',
+'    r"""(?:(?<=^)|(?<=[\\s(\\[]))([\'"])(.+?)\\1(?=[\\s.,;:)\\]]|$)"""  # planted mutation\n',
+            )
+        },
+        command=[
+            "pytest",
+            "tests/unit/test_judgment_antitemplate.py"
+            "::test_dash_joined_quotes_are_tokenised_separately",
+            "-q",
+        ],
+        expected_check="§5 quote provenance (the tokeniser splits dash-joined spans)",
+        expect_output_contains=[
+            "test_dash_joined_quotes_are_tokenised_separately",
+            "failed",
+        ],
+        baseline_must_not_contain=[
+            "test_dash_joined_quotes_are_tokenised_separately && failed"
+        ],
+    ),
+    Mutation(
         name="judgment_accepts_corrupt_rendered_visual",
         asserts=["judgment_visual_evidence_5"],
         description=(

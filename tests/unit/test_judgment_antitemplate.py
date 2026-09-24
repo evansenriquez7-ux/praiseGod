@@ -71,6 +71,41 @@ def test_quote_present_in_own_samples_passes():
     assert _validate_quote_provenance(_NODE, r) == []
 
 
+def test_dash_joined_quotes_are_tokenised_separately():
+    """Two adjacent quoted values joined by a dash are TWO spans, not one merged span.
+
+    Until 2026-09-24 the closing-quote lookahead excluded dashes, so "'2'-'1'" made the
+    lazy body backtrack and swallow through to the next quote, yielding the span
+    ``2'-'1`` -- which of course is in no packet. Measured on mat_g1_na_q2_1, that
+    accused an honest reviewer of fabricating four citations whose two halves each
+    appeared dozens of times in its own packet. Hyphen, en dash and em dash all reach it.
+    """
+    for dash in ("-", "\u2013", "\u2014"):
+        r = _review(
+            "The addends sampled across these items span the range "
+            f"'2'{dash}'1' inclusive, which sits inside the competency's stated bound."
+        )
+        assert _validate_quote_provenance(_NODE, r) == [], (
+            f"dash {dash!r} merged two real quoted values into one span the corpus "
+            f"cannot contain, so the gate reported fabrication against an honest quote"
+        )
+
+
+def test_a_fabricated_quote_beside_a_dash_is_still_caught():
+    """Splitting the span may not let a fabrication hide on either side of the dash."""
+    for bad_side in ("left", "right"):
+        phantom = "the pupils weigh the sampan in kilopascals"
+        pair = (f"'{phantom}'-'3'" if bad_side == "left" else f"'3'-'{phantom}'")
+        r = _review(
+            "The sampled items exercise the target skill directly, for instance the "
+            f"pairing {pair} drawn from the packet's own rendered text."
+        )
+        errs = _validate_quote_provenance(_NODE, r)
+        assert any(phantom in e for e in errs), (
+            f"a fabricated span on the {bad_side} of a dash escaped the gate: {errs}"
+        )
+
+
 def test_quote_absent_from_own_samples_fails():
     """The exact fabrication mechanism: a stem quoted that the packet never contained."""
     r = _review(

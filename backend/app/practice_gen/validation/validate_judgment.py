@@ -138,7 +138,35 @@ _MIN_QUOTE_LEN = 4
 # A quoted span: an opening quote at a word boundary, a closing quote followed by
 # whitespace/punctuation/end. The boundary anchors keep intra-word apostrophes
 # ("student's") from being read as quote delimiters.
-_QUOTE_RE = re.compile(r"""(?:(?<=^)|(?<=[\s(\[]))(['"])(.+?)\1(?=[\s.,;:)\]]|$)""")
+#
+# The closing-quote lookahead includes the DASHES (-, en, em) as of 2026-09-24. Without
+# them a reviewer who wrote a range as two adjacent quoted values -- the labels run
+# '40'-'50' -- produced ONE bogus span, because the character after the first closing
+# quote was the dash, the lookahead failed, the lazy `.+?` backtracked, and the match
+# swallowed everything through to the next quote:
+#
+#     "the range '40'-'50' is shown"  ->  captured "40'-'50"     (before)
+#     "the range '40'-'50' is shown"  ->  captured "40", "50"    (after)
+#
+# Measured that day on mat_g1_na_q2_1: 40 and 50 each appear in that node's own packet
+# (31 and 18 times), so the reviewer had quoted real text and `_validate_quote_provenance`
+# nonetheless accused it of citing content it was never shown. That is the same injustice
+# as the four-field `_provenance_corpus` allowlist fixed the same day, one layer down: the
+# corpus was right and the TOKENISER was wrong.
+#
+# This CANNOT weaken the gate. It splits one merged span into the two real spans it was
+# always made of, and each is still checked against the corpus independently; a genuinely
+# fabricated quote on either side of a dash still fails. Proven by
+# `quote_tokeniser_merges_dash_joined_spans`.
+# BOTH sides take the dashes. Adding only the closing lookahead removed the bogus merged
+# span but left the SECOND value unchecked -- after '40' matched, the character before
+# '50' was the dash, which the opening lookbehind rejected, so '50' was never treated as a
+# quoted span at all. Found by executing the tokeniser rather than reading it: the merged
+# false positive disappeared while coverage quietly shrank, which is the worse failure of
+# the two because nothing reports it.
+_QUOTE_RE = re.compile(
+    r"""(?:(?<=^)|(?<=[\s(\[\-–—]))(['"])(.+?)\1(?=[\s.,;:)\]\-–—]|$)"""
+)
 
 # Node-ID-ish tokens, quoted spans, and digit runs are the three things a template
 # substitutes per node. Stripping them collapses a template to a constant string.
