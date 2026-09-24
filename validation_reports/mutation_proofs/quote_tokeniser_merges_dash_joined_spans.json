@@ -1,18 +1,18 @@
 {
  "asserts": [
-  "mutation_apply_is_all_or_nothing"
+  "judgment_quote_provenance_5"
  ],
  "baseline_exit": 0,
  "baseline_markers_already_present": [],
  "baseline_must_not_contain": [
-  "test_a_later_moved_anchor_leaves_no_earlier_file_planted && failed"
+  "test_dash_joined_quotes_are_tokenised_separately && failed"
  ],
  "command": [
   "pytest",
-  "tests/unit/test_mutation_killsafe.py::test_a_later_moved_anchor_leaves_no_earlier_file_planted",
+  "tests/unit/test_judgment_antitemplate.py::test_dash_joined_quotes_are_tokenised_separately",
   "-q"
  ],
- "definition_digest": "6c2e1bdeb982a1910b6c6c574ebab707aa8605ac2432cb24bc9e604d6be7754c",
+ "definition_digest": "83d7a7a637f600f32ecd85a1aa732282017189e67789badfee711f26ceae6667",
  "detected": true,
  "diagnostic_line": "exit 1 — =================================== FAILURES ===================================",
  "environment": {
@@ -23,24 +23,24 @@
   "system": "Darwin"
  },
  "expect_output_contains": [
-  "test_a_later_moved_anchor_leaves_no_earlier_file_planted",
+  "test_dash_joined_quotes_are_tokenised_separately",
   "failed"
  ],
- "expected_check": "§0 (a multi-file plant is all-or-nothing)",
- "finished_at": "2026-09-24T22:41:04+08:00",
+ "expected_check": "§5 quote provenance (the tokeniser splits dash-joined spans)",
+ "finished_at": "2026-09-24T22:41:07+08:00",
  "input_digest": "208a52406226e6d0dea44c64aa52ee03b9c984daf05c90763a1f9322fb171e8f",
  "mutated_paths": [
-  "tests/mutation_harness.py"
+  "backend/app/practice_gen/validation/validate_judgment.py"
  ],
- "mutation": "apply_writes_before_validating_all_anchors",
+ "mutation": "quote_tokeniser_merges_dash_joined_spans",
  "observed_markers": {
   "failed": true,
-  "test_a_later_moved_anchor_leaves_no_earlier_file_planted": true
+  "test_dash_joined_quotes_are_tokenised_separately": true
  },
  "paths_outside_input_set": [],
  "phase1_admissible": true,
  "planted_exit": 1,
  "restored_clean": true,
  "schema_version": 1,
- "started_at": "2026-09-24T22:41:03+08:00"
+ "started_at": "2026-09-24T22:41:05+08:00"
 }
