@@ -1,5 +1,12 @@
 # Handoff — continue the Phase 2 hardening plan
 
+**Refreshed wave 4, 2026-09-24:** four more Luna/medium §5 reviews were filed
+(`mat_g1_mg_q2_2`, `mat_g1_mg_q4_0`, `mat_g1_mg_q4_1`, `mat_g1_mg_q4_2`). Legacy queue is now
+**137** (`schema_counts {2: 14, None: 137}`); `validate_judgment_reviews()` is **1428 findings across
+150 nodes** because fresh reviews are surfacing content debt. New source-work bugs: calendar sequence
+items do not ask for full ordered weekday/month lists, date-chart hints reference missing charts and
+include malformed language, and rotation/turn tasks still carry decorative interest wrappers.**
+
 **Refreshed 2026-09-24 (codex-h06-s5-luna-campaign-2-2026-09-24): eight additional
 `gpt-5.6-luna`/medium §5 reviews were filed.** Schema-v2 nodes now total 10 and the legacy queue is
 **141** (`schema_counts {2: 10, None: 141}`). `validate_judgment_reviews()` is **1391 findings across

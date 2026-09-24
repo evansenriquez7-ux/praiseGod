@@ -1,7 +1,58 @@
 {
+  "schema_version": 2,
   "node_id": "mat_g1_mg_q4_0",
-  "reviewed_by": "reviewer-c1-lantern-fescue-3061",
-  "review_date": "2026-09-11",
+  "competency_snapshot": {
+    "text": "Identify the position of objects moved in half turn or in quarter turn, in clockwise or in counter-clockwise direction, given an initial facing direction.",
+    "grade": 1,
+    "quarter": 4,
+    "subdomain": null
+  },
+  "requirements_snapshot": [
+    {
+      "kind": "task",
+      "id": "identify_position",
+      "clause": "Identify the position"
+    },
+    {
+      "kind": "object",
+      "id": "objects",
+      "clause": "objects"
+    },
+    {
+      "kind": "task",
+      "id": "moved",
+      "clause": "moved"
+    },
+    {
+      "kind": "range",
+      "id": "half_turn",
+      "clause": "half turn"
+    },
+    {
+      "kind": "range",
+      "id": "quarter_turn",
+      "clause": "quarter turn"
+    },
+    {
+      "kind": "property",
+      "id": "clockwise",
+      "clause": "clockwise"
+    },
+    {
+      "kind": "property",
+      "id": "counter_clockwise",
+      "clause": "counter-clockwise direction"
+    },
+    {
+      "kind": "property",
+      "id": "initial_facing_direction",
+      "clause": "initial facing direction"
+    }
+  ],
+  "packet_digest": "9856937e643fcbf20fd1834cf2030234c52e9e81018c6918ca2a7ef5878fe85f",
+  "sampling_version": "phase2-stratified-v2-rendered-visual",
+  "reviewed_by": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_0-20260924",
+  "review_date": "2026-09-24",
   "blind": true,
   "sample_seeds": [
     42,
@@ -12,14 +63,58 @@
     500,
     501,
     502,
-    601
+    601,
+    700,
+    701,
+    702,
+    800,
+    900,
+    901,
+    1000,
+    1001,
+    1002
+  ],
+  "sample_ids": [
+    "910045fd0345f23bd8ed",
+    "a205627531797aa26db2",
+    "1f36a36ea8749b281950",
+    "50e5f9b8d478a13bec6a",
+    "20b03ed2697415727658",
+    "fe396d243629791b4345",
+    "550c644fd2841cfcedc6",
+    "e5506fa74b2499f08281",
+    "322ac68b247f0bb467a0",
+    "18c65c231d3739d78dc1",
+    "0581943f298ab320fb0f",
+    "f841d522d4b5dc816a7b",
+    "0c4ad7943a132bd831b9",
+    "022bf71e139ee39141db",
+    "de54c9396eba275838a7",
+    "699b3a949cd54c3a691b",
+    "4ec9f38b17cf20888bfa",
+    "87717d9bf8e05d0880b7"
   ],
   "samples_reviewed": [
     {
+      "node_id": "mat_g1_mg_q4_0",
       "seed": 42,
       "formatter": "mcq",
       "question_text": "An arrow faces UP. It does a half turn. Which direction does it face now?",
       "correct_answer": "down",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -41,13 +136,36 @@
           "value": "left",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "down",
+      "hints": [
+        "A turn (rotation) spins a shape in place without sliding it.",
+        "A quarter turn moves it like 15 minutes on a clock.",
+        "A half turn faces it the opposite way."
+      ],
+      "sample_id": "910045fd0345f23bd8ed",
+      "replay_digest": "61f8c393bfbae57e2b4dafc23ff05439c7d8179982677c2adba215a6996febe3"
     },
     {
+      "node_id": "mat_g1_mg_q4_0",
       "seed": 43,
       "formatter": "mcq",
       "question_text": "An arrow faces UP. It does a quarter turn clockwise. Which direction does it face now?",
       "correct_answer": "right",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -69,13 +187,36 @@
           "value": "right",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": "right",
+      "hints": [
+        "A turn (rotation) spins a shape in place without sliding it.",
+        "A quarter turn moves it like 15 minutes on a clock.",
+        "A half turn faces it the opposite way."
+      ],
+      "sample_id": "a205627531797aa26db2",
+      "replay_digest": "0a869a9973e1bd785d233ae9706347087a4e778cf76a250096ef5d8734bce80e"
     },
     {
+      "node_id": "mat_g1_mg_q4_0",
       "seed": 44,
       "formatter": "mcq",
       "question_text": "An arrow faces RIGHT. It does a quarter turn counter-clockwise. Which direction does it face now?",
       "correct_answer": "up",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -97,13 +238,36 @@
           "value": "down",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "up",
+      "hints": [
+        "A turn (rotation) spins a shape in place without sliding it.",
+        "A quarter turn moves it like 15 minutes on a clock.",
+        "A half turn faces it the opposite way."
+      ],
+      "sample_id": "1f36a36ea8749b281950",
+      "replay_digest": "67ed62ffe13f08a1cbd52e6c0f7c096a00cd64323dc84f292d157c8d20bc4c6a"
     },
     {
+      "node_id": "mat_g1_mg_q4_0",
       "seed": 45,
       "formatter": "mcq",
       "question_text": "An arrow faces DOWN. It does a quarter turn clockwise. Which direction does it face now?",
       "correct_answer": "left",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -125,13 +289,36 @@
           "value": "down",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "left",
+      "hints": [
+        "A turn (rotation) spins a shape in place without sliding it.",
+        "A quarter turn moves it like 15 minutes on a clock.",
+        "A half turn faces it the opposite way."
+      ],
+      "sample_id": "50e5f9b8d478a13bec6a",
+      "replay_digest": "2c5e94f0d44195d6caf53c537c4968dfcf67ae1dd65182266708788808c93d60"
     },
     {
+      "node_id": "mat_g1_mg_q4_0",
       "seed": 46,
       "formatter": "mcq",
       "question_text": "An arrow faces UP. It does a half turn. Which direction does it face now?",
       "correct_answer": "down",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -153,13 +340,38 @@
           "value": "right",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "down",
+      "hints": [
+        "A turn (rotation) spins a shape in place without sliding it.",
+        "A quarter turn moves it like 15 minutes on a clock.",
+        "A half turn faces it the opposite way."
+      ],
+      "sample_id": "20b03ed2697415727658",
+      "replay_digest": "12449e86e615ac5a48560a4ebd55deb5b3a9a792cae917d24c4916ff8f361473"
     },
     {
+      "node_id": "mat_g1_mg_q4_0",
       "seed": 500,
       "formatter": "mcq",
       "question_text": "An arrow faces LEFT. It does a half turn. Which direction does it face now?",
       "correct_answer": "right",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -181,13 +393,38 @@
           "value": "right",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": "right",
+      "hints": [
+        "A turn (rotation) spins a shape in place without sliding it.",
+        "A quarter turn moves it like 15 minutes on a clock.",
+        "A half turn faces it the opposite way."
+      ],
+      "sample_id": "fe396d243629791b4345",
+      "replay_digest": "299fba3cc5f4c4fe049b0a9e06d34fe4fc3dee3f76b4fff7da123d6da4d03681"
     },
     {
+      "node_id": "mat_g1_mg_q4_0",
       "seed": 501,
       "formatter": "mcq",
       "question_text": "An arrow faces DOWN. It does a quarter turn clockwise. Which direction does it face now?",
       "correct_answer": "left",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -209,13 +446,38 @@
           "value": "down",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "left",
+      "hints": [
+        "A turn (rotation) spins a shape in place without sliding it.",
+        "A quarter turn moves it like 15 minutes on a clock.",
+        "A half turn faces it the opposite way."
+      ],
+      "sample_id": "550c644fd2841cfcedc6",
+      "replay_digest": "e24a66f39c294c3e401373d12983dc80b27bca0f99788de88102792abbd9e302"
     },
     {
+      "node_id": "mat_g1_mg_q4_0",
       "seed": 502,
       "formatter": "mcq",
       "question_text": "An arrow faces RIGHT. It does a half turn. Which direction does it face now?",
       "correct_answer": "left",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -237,13 +499,38 @@
           "value": "left",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": "left",
+      "hints": [
+        "A turn (rotation) spins a shape in place without sliding it.",
+        "A quarter turn moves it like 15 minutes on a clock.",
+        "A half turn faces it the opposite way."
+      ],
+      "sample_id": "e5506fa74b2499f08281",
+      "replay_digest": "b6a844025e368e450108b9122e335f20e2577793e0aa713e684b11ae897ba71b"
     },
     {
+      "node_id": "mat_g1_mg_q4_0",
       "seed": 601,
       "formatter": "mcq",
       "question_text": "Which direction is clockwise?",
       "correct_answer": "the direction clock hands move",
+      "requested": {
+        "difficulty_profile": {
+          "directions": "one_direction"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -265,33 +552,1079 @@
           "value": "the direction clock hands move",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": "the direction clock hands move",
+      "hints": [
+        "A turn (rotation) spins a shape in place without sliding it.",
+        "A quarter turn moves it like 15 minutes on a clock.",
+        "A half turn faces it the opposite way."
+      ],
+      "sample_id": "322ac68b247f0bb467a0",
+      "replay_digest": "e190cf92a6dd4e901aecd4d426ffeb418a01c15eeda99e27c9f62d7178846656"
+    },
+    {
+      "node_id": "mat_g1_mg_q4_0",
+      "seed": 700,
+      "formatter": "mcq",
+      "question_text": "An arrow faces UP. It does a quarter turn counter-clockwise. Which direction does it face now?",
+      "correct_answer": "left",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "down",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "up",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "right",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "left",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": "left",
+      "hints": [
+        "A turn (rotation) spins a shape in place without sliding it.",
+        "A quarter turn moves it like 15 minutes on a clock.",
+        "A half turn faces it the opposite way."
+      ],
+      "sample_id": "18c65c231d3739d78dc1",
+      "replay_digest": "5e431ffa385a18084736a8a4c96eed107dcdf8312cc54928a4d6be0c8798c83d"
+    },
+    {
+      "node_id": "mat_g1_mg_q4_0",
+      "seed": 701,
+      "formatter": "mcq",
+      "question_text": "💃 Sir Rez has a math challenge about dance shoes. An arrow faces DOWN. It does a quarter turn clockwise. Which direction does it face now?",
+      "correct_answer": "left",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "meme_streaming",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "up",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "left",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "down",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "right",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "left",
+      "hints": [
+        "A turn (rotation) spins a shape in place without sliding it.",
+        "A quarter turn moves it like 15 minutes on a clock.",
+        "A half turn faces it the opposite way."
+      ],
+      "sample_id": "0581943f298ab320fb0f",
+      "replay_digest": "d16e47f43288738811eb8ef285c3c516a845e6054d75c493ab51e3268400e9f7"
+    },
+    {
+      "node_id": "mat_g1_mg_q4_0",
+      "seed": 702,
+      "formatter": "mcq",
+      "question_text": "✝️ Moses has a math challenge about olives. An arrow faces UP. It does a half turn. Which direction does it face now?",
+      "correct_answer": "down",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "bible",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "down",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "up",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "right",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "left",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "down",
+      "hints": [
+        "A turn (rotation) spins a shape in place without sliding it.",
+        "A quarter turn moves it like 15 minutes on a clock.",
+        "A half turn faces it the opposite way."
+      ],
+      "sample_id": "f841d522d4b5dc816a7b",
+      "replay_digest": "56bbc036a512ae4e2e31afc05b14f1a45020397e90922b275fc59ccfbfcfd9f0"
+    },
+    {
+      "node_id": "mat_g1_mg_q4_0",
+      "seed": 800,
+      "formatter": "mcq",
+      "question_text": "An arrow faces LEFT. It does a half turn. Which direction does it face now?",
+      "correct_answer": "right",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "up",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "right",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "down",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "left",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "right",
+      "hints": [
+        "A turn (rotation) spins a shape in place without sliding it.",
+        "A quarter turn moves it like 15 minutes on a clock.",
+        "A half turn faces it the opposite way."
+      ],
+      "sample_id": "0c4ad7943a132bd831b9",
+      "replay_digest": "f88149c396780b0190f793742cb923334a148d0b4f6209f357fc115172144f9c"
+    },
+    {
+      "node_id": "mat_g1_mg_q4_0",
+      "seed": 900,
+      "formatter": "mcq",
+      "question_text": "Which direction is clockwise?",
+      "correct_answer": "the direction clock hands move",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "straight up",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "to the left",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "the opposite direction clock hands move",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "the direction clock hands move",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": "the direction clock hands move",
+      "hints": [
+        "A turn (rotation) spins a shape in place without sliding it.",
+        "A quarter turn moves it like 15 minutes on a clock.",
+        "A half turn faces it the opposite way."
+      ],
+      "sample_id": "022bf71e139ee39141db",
+      "replay_digest": "205e22df573cf66b415cbd7540ba45f7fcbc43daa4194f68403bbd40397b5ddf"
+    },
+    {
+      "node_id": "mat_g1_mg_q4_0",
+      "seed": 901,
+      "formatter": "mcq",
+      "question_text": "An arrow faces RIGHT. It does a quarter turn counter-clockwise. Which direction does it face now?",
+      "correct_answer": "up",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "down",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "up",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "right",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "left",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "up",
+      "hints": [
+        "A turn (rotation) spins a shape in place without sliding it.",
+        "A quarter turn moves it like 15 minutes on a clock.",
+        "A half turn faces it the opposite way."
+      ],
+      "sample_id": "de54c9396eba275838a7",
+      "replay_digest": "2cbe97fa5c44ab3faee3dae686eb0615a83ca09b7033a44af221d95c74437a67"
+    },
+    {
+      "node_id": "mat_g1_mg_q4_0",
+      "seed": 1000,
+      "formatter": "mcq",
+      "question_text": "An arrow faces RIGHT. It does a quarter turn counter-clockwise. Which direction does it face now?",
+      "correct_answer": "up",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "hint_gated"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "hint_gated"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "up",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "right",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "down",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "left",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "up",
+      "hints": [
+        "A turn (rotation) spins a shape in place without sliding it.",
+        "A quarter turn moves it like 15 minutes on a clock.",
+        "A half turn faces it the opposite way."
+      ],
+      "sample_id": "699b3a949cd54c3a691b",
+      "replay_digest": "1a62020153deffc004899fc3a90afeb1b666baadfbdccfa9fa4800803f9473c2"
+    },
+    {
+      "node_id": "mat_g1_mg_q4_0",
+      "seed": 1001,
+      "formatter": "mcq",
+      "question_text": "An arrow faces UP. It does a quarter turn clockwise. Which direction does it face now?",
+      "correct_answer": "right",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "mastery_drill"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "mastery_drill"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "right",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "up",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "left",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "down",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "right",
+      "hints": [
+        "A turn (rotation) spins a shape in place without sliding it.",
+        "A quarter turn moves it like 15 minutes on a clock.",
+        "A half turn faces it the opposite way."
+      ],
+      "sample_id": "4ec9f38b17cf20888bfa",
+      "replay_digest": "ca0d8c725e75e2194665717e9ee8d63568c982ad8da65b9cff59092283c5ef14"
+    },
+    {
+      "node_id": "mat_g1_mg_q4_0",
+      "seed": 1002,
+      "formatter": "mcq",
+      "question_text": "An arrow faces RIGHT. It does a half turn. Which direction does it face now?",
+      "correct_answer": "left",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "scaffolded"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "scaffolded"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "right",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "up",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "down",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "left",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": "left",
+      "hints": [
+        "A turn (rotation) spins a shape in place without sliding it.",
+        "A quarter turn moves it like 15 minutes on a clock.",
+        "A half turn faces it the opposite way."
+      ],
+      "sample_id": "87717d9bf8e05d0880b7",
+      "replay_digest": "c45bbd72ffc29dfbbdede1acf59eff24a07bc8725bf83da3cd7f2abe90acd148"
+    }
+  ],
+  "sample_assessments": [
+    {
+      "sample_id": "910045fd0345f23bd8ed",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The starting direction, half-turn operation, and four distinct answer choices make the requested result unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The arrow is a coherent object for a rotation question, and the stated operation supplies all information needed to determine its new direction."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The short sentence uses familiar direction words and asks one direct question suitable for an early elementary learner."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A half turn reverses UP to DOWN, and DOWN appears as the keyed option exactly once."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_0-20260924",
+      "dispatch_id": "s5-luna-medium-w4-mat_g1_mg_q4_0-20260924:mat_g1_mg_q4_0"
+    },
+    {
+      "sample_id": "a205627531797aa26db2",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The arrow starts UP and the clockwise quarter turn specifies a unique adjacent cardinal direction among the options."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "An arrow can be rotated in place, so the described action and the requested resulting direction form a coherent mathematical situation."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The wording is concise, uses a familiar object, and names the turn size and direction without extra reading burden."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Clockwise from UP through one quarter turn points RIGHT, matching the printed answer and one available choice."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_0-20260924",
+      "dispatch_id": "s5-luna-medium-w4-mat_g1_mg_q4_0-20260924:mat_g1_mg_q4_0"
+    },
+    {
+      "sample_id": "1f36a36ea8749b281950",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "RIGHT, quarter turn, and counter-clockwise together determine one result, and the answer choices do not duplicate directions."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The arrow rotation is internally consistent and does not depend on unstated positional or contextual information."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The item presents a single familiar action in plain language and keeps the requested decision focused on direction."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A counter-clockwise quarter turn changes RIGHT to UP, which is the keyed answer and a listed option."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_0-20260924",
+      "dispatch_id": "s5-luna-medium-w4-mat_g1_mg_q4_0-20260924:mat_g1_mg_q4_0"
+    },
+    {
+      "sample_id": "50e5f9b8d478a13bec6a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The initial DOWN orientation and clockwise quarter turn specify one cardinal result with four distinct choices."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The described arrow rotation is a complete and logically coherent example of the targeted competency."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem is short and direct, and the direction vocabulary is repeated consistently in the choices."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Turning DOWN clockwise by a quarter turn gives LEFT, matching the answer shown in the packet."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_0-20260924",
+      "dispatch_id": "s5-luna-medium-w4-mat_g1_mg_q4_0-20260924:mat_g1_mg_q4_0"
+    },
+    {
+      "sample_id": "20b03ed2697415727658",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The same operation is expressed plainly with no competing interpretation of what the arrow should do."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "An arrow facing UP and making a half turn is a valid self-contained rotation scenario."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The language is accessible and the question asks only for the resulting cardinal direction."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The opposite of UP after a half turn is DOWN, and the keyed response is mathematically correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_0-20260924",
+      "dispatch_id": "s5-luna-medium-w4-mat_g1_mg_q4_0-20260924:mat_g1_mg_q4_0"
+    },
+    {
+      "sample_id": "fe396d243629791b4345",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "LEFT, half turn, and the four unique answer choices identify a single possible result."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The arrow provides a clear object whose orientation can be changed by the stated half turn."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The item uses repeated, predictable sentence structure and familiar cardinal direction terms."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A half turn reverses LEFT to RIGHT, exactly matching the printed answer choice."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_0-20260924",
+      "dispatch_id": "s5-luna-medium-w4-mat_g1_mg_q4_0-20260924:mat_g1_mg_q4_0"
+    },
+    {
+      "sample_id": "550c644fd2841cfcedc6",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The operation and starting orientation are explicit, so only one of the four directions can be correct."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The arrow rotation is a coherent direct application of clockwise quarter-turn reasoning."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem is brief, grammatically clear, and uses a consistent vocabulary for the spatial transformation."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A clockwise quarter turn from DOWN points LEFT, which agrees with the keyed response."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_0-20260924",
+      "dispatch_id": "s5-luna-medium-w4-mat_g1_mg_q4_0-20260924:mat_g1_mg_q4_0"
+    },
+    {
+      "sample_id": "e5506fa74b2499f08281",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The starting RIGHT direction and half-turn instruction determine one opposite direction without hidden assumptions."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The arrow is a suitable object for the operation, and no irrelevant condition changes the mathematical result."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The wording is simple and asks for one observable result from a familiar turn action."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The direction opposite RIGHT after a half turn is LEFT, matching the answer and an option."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_0-20260924",
+      "dispatch_id": "s5-luna-medium-w4-mat_g1_mg_q4_0-20260924:mat_g1_mg_q4_0"
+    },
+    {
+      "sample_id": "322ac68b247f0bb467a0",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question defines clockwise by a familiar reference and offers one matching answer among clearly different choices."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Using the direction of clock hands as the reference is a logically valid way to identify clockwise motion."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The question is very short and the correct descriptive choice is understandable to a young learner."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Clockwise is conventionally the direction in which clock hands move, so the keyed response is correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_0-20260924",
+      "dispatch_id": "s5-luna-medium-w4-mat_g1_mg_q4_0-20260924:mat_g1_mg_q4_0"
+    },
+    {
+      "sample_id": "18c65c231d3739d78dc1",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "UP and counter-clockwise quarter turn produce a unique direction, with no duplicate or overlapping options."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The arrow example is self-contained and logically models a quarter-turn transformation."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The learner receives a direct question with familiar direction words and no unnecessary context."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Moving counter-clockwise from UP by one quarter turn gives LEFT, as keyed."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_0-20260924",
+      "dispatch_id": "s5-luna-medium-w4-mat_g1_mg_q4_0-20260924:mat_g1_mg_q4_0"
+    },
+    {
+      "sample_id": "0581943f298ab320fb0f",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The decorative introduction does not alter the explicit arrow operation, which still has one determinate answer."
+        },
+        "contextual_logical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "The arrow rotation is valid, but the dance-shoes framing does not connect meaningfully to the arrow or contribute to the mathematical situation."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Despite the introductory emoji and name, the actual direction question remains readable and straightforward."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A clockwise quarter turn from DOWN points LEFT, matching the printed answer and an available option."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_0-20260924",
+      "dispatch_id": "s5-luna-medium-w4-mat_g1_mg_q4_0-20260924:mat_g1_mg_q4_0"
+    },
+    {
+      "sample_id": "f841d522d4b5dc816a7b",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The named character and setting do not create competing interpretations of the arrow's explicit half turn."
+        },
+        "contextual_logical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "The arrow operation is mathematically coherent, but the Moses-and-olives framing is unrelated and does not form a useful context for the task."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The extra sentence is still easy to read, and the core operation and requested direction are stated plainly."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A half turn changes UP to DOWN, which is correctly printed as the answer."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_0-20260924",
+      "dispatch_id": "s5-luna-medium-w4-mat_g1_mg_q4_0-20260924:mat_g1_mg_q4_0"
+    },
+    {
+      "sample_id": "0c4ad7943a132bd831b9",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem specifies one starting direction and one half turn, so the opposite direction is uniquely determined."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "This is a complete and coherent arrow-rotation question with all needed information present."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The sentence pattern is familiar and the answer choices use consistent, recognizable direction labels."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The opposite of LEFT under a half turn is RIGHT, agreeing with the keyed answer."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_0-20260924",
+      "dispatch_id": "s5-luna-medium-w4-mat_g1_mg_q4_0-20260924:mat_g1_mg_q4_0"
+    },
+    {
+      "sample_id": "022bf71e139ee39141db",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Only one option describes the conventional movement of clock hands, while the distractors are distinct."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The clock-hand reference provides a valid and familiar conceptual definition of clockwise direction."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The concise question and descriptive answer choices make the intended concept accessible."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The keyed definition correctly identifies clockwise as the direction clock hands move."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_0-20260924",
+      "dispatch_id": "s5-luna-medium-w4-mat_g1_mg_q4_0-20260924:mat_g1_mg_q4_0"
+    },
+    {
+      "sample_id": "de54c9396eba275838a7",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "RIGHT plus a counter-clockwise quarter turn identifies UP uniquely among the four choices."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The arrow and stated rotation form a logically complete example of the required movement."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The short stem avoids unnecessary wording and clearly asks for the new facing direction."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A counter-clockwise quarter turn from RIGHT produces UP, which is correctly keyed."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_0-20260924",
+      "dispatch_id": "s5-luna-medium-w4-mat_g1_mg_q4_0-20260924:mat_g1_mg_q4_0"
+    },
+    {
+      "sample_id": "699b3a949cd54c3a691b",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The item remains uniquely solvable despite its hint-gated experience mode because the stem states the full operation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The arrow rotation is self-contained, and the response mode does not change the mathematical situation."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The wording is direct and the four cardinal choices make the expected response format obvious."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Counter-clockwise from RIGHT by a quarter turn gives UP, matching the answer shown."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_0-20260924",
+      "dispatch_id": "s5-luna-medium-w4-mat_g1_mg_q4_0-20260924:mat_g1_mg_q4_0"
+    },
+    {
+      "sample_id": "4ec9f38b17cf20888bfa",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "UP and a clockwise quarter turn yield one clear result, with distinct answer choices."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The standard arrow-turn setup is logically valid and contains enough information to solve the item."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The simple sentence structure supports quick comprehension for Grade 1 learners."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The clockwise quarter-turn result from UP is RIGHT, exactly as printed."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_0-20260924",
+      "dispatch_id": "s5-luna-medium-w4-mat_g1_mg_q4_0-20260924:mat_g1_mg_q4_0"
+    },
+    {
+      "sample_id": "87717d9bf8e05d0880b7",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The initial RIGHT direction and half-turn instruction lead to one opposite direction."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The item is a coherent direct rotation problem with no missing condition or irrelevant dependency."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The wording is familiar, concise, and asks only for the arrow's resulting direction."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A half turn from RIGHT results in LEFT, which is the keyed option."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_0-20260924",
+      "dispatch_id": "s5-luna-medium-w4-mat_g1_mg_q4_0-20260924:mat_g1_mg_q4_0"
+    }
+  ],
+  "clause_evidence": [
+    {
+      "requirement_id": "identify_position",
+      "clause": "Identify the position",
+      "verdict": "PASS",
+      "reasoning": "Every rotation item asks the learner to identify the arrow's resulting facing position after an explicitly stated turn.",
+      "sample_ids": [
+        "910045fd0345f23bd8ed",
+        "a205627531797aa26db2"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_0-20260924",
+      "dispatch_id": "s5-luna-medium-w4-mat_g1_mg_q4_0-20260924:mat_g1_mg_q4_0"
+    },
+    {
+      "requirement_id": "objects",
+      "clause": "objects",
+      "verdict": "PASS",
+      "reasoning": "The packet consistently supplies an arrow as the object whose orientation is being changed and identified.",
+      "sample_ids": [
+        "910045fd0345f23bd8ed",
+        "fe396d243629791b4345"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_0-20260924",
+      "dispatch_id": "s5-luna-medium-w4-mat_g1_mg_q4_0-20260924:mat_g1_mg_q4_0"
+    },
+    {
+      "requirement_id": "moved",
+      "clause": "moved",
+      "verdict": "PASS",
+      "reasoning": "Each applicable stem explicitly describes the arrow doing a turn, providing an observable movement to reason about.",
+      "sample_ids": [
+        "a205627531797aa26db2",
+        "50e5f9b8d478a13bec6a"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_0-20260924",
+      "dispatch_id": "s5-luna-medium-w4-mat_g1_mg_q4_0-20260924:mat_g1_mg_q4_0"
+    },
+    {
+      "requirement_id": "half_turn",
+      "clause": "half turn",
+      "verdict": "PASS",
+      "reasoning": "Multiple samples explicitly use a half turn and correctly require the opposite cardinal direction.",
+      "sample_ids": [
+        "910045fd0345f23bd8ed",
+        "20b03ed2697415727658"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_0-20260924",
+      "dispatch_id": "s5-luna-medium-w4-mat_g1_mg_q4_0-20260924:mat_g1_mg_q4_0"
+    },
+    {
+      "requirement_id": "quarter_turn",
+      "clause": "quarter turn",
+      "verdict": "PASS",
+      "reasoning": "Several samples explicitly test quarter turns from different starting directions and use the resulting adjacent direction.",
+      "sample_ids": [
+        "a205627531797aa26db2",
+        "50e5f9b8d478a13bec6a"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_0-20260924",
+      "dispatch_id": "s5-luna-medium-w4-mat_g1_mg_q4_0-20260924:mat_g1_mg_q4_0"
+    },
+    {
+      "requirement_id": "clockwise",
+      "clause": "clockwise",
+      "verdict": "PASS",
+      "reasoning": "The packet includes direct clockwise quarter-turn applications and separate definition items identifying clock-hand movement.",
+      "sample_ids": [
+        "a205627531797aa26db2",
+        "322ac68b247f0bb467a0"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_0-20260924",
+      "dispatch_id": "s5-luna-medium-w4-mat_g1_mg_q4_0-20260924:mat_g1_mg_q4_0"
+    },
+    {
+      "requirement_id": "counter_clockwise",
+      "clause": "counter-clockwise direction",
+      "verdict": "PASS",
+      "reasoning": "Counter-clockwise quarter-turn items explicitly name the direction and correctly map RIGHT to UP and UP to LEFT.",
+      "sample_ids": [
+        "1f36a36ea8749b281950",
+        "18c65c231d3739d78dc1"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_0-20260924",
+      "dispatch_id": "s5-luna-medium-w4-mat_g1_mg_q4_0-20260924:mat_g1_mg_q4_0"
+    },
+    {
+      "requirement_id": "initial_facing_direction",
+      "clause": "initial facing direction",
+      "verdict": "PASS",
+      "reasoning": "The rotation stems state an initial facing direction before asking for the arrow's new direction after movement.",
+      "sample_ids": [
+        "910045fd0345f23bd8ed",
+        "e5506fa74b2499f08281"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_0-20260924",
+      "dispatch_id": "s5-luna-medium-w4-mat_g1_mg_q4_0-20260924:mat_g1_mg_q4_0"
+    }
+  ],
+  "dispatch_provenance": [
+    {
+      "dispatch_id": "s5-luna-medium-w4-mat_g1_mg_q4_0-20260924:mat_g1_mg_q4_0",
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_0-20260924",
+      "review_date": "2026-09-24",
+      "blind": true,
+      "packet_digest": "9856937e643fcbf20fd1834cf2030234c52e9e81018c6918ca2a7ef5878fe85f",
+      "clause_ids": [
+        "identify_position",
+        "objects",
+        "moved",
+        "half_turn",
+        "quarter_turn",
+        "clockwise",
+        "counter_clockwise",
+        "initial_facing_direction"
+      ],
+      "response_ref": ".responses/s5-luna-medium-w4-mat_g1_mg_q4_0-20260924.json",
+      "response_digest": "9ad47d1be12260204d630109a8ef5d9904e325eaca7169c2e152a43c07b3cdf5",
+      "prompt_ref": ".responses/s5-luna-medium-w4-mat_g1_mg_q4_0-20260924.prompt.txt",
+      "prompt_digest": "f969eab169be8836f989994a85fff11c10746348cba4c092ad39ef3d572972e6",
+      "samples_delivery": "Prompt generated by tests.judgment_batches for one node and delivered by path to multi_agent_v1.spawn_agent using model gpt-5.6-luna with reasoning_effort=medium.",
+      "tool_uses_by_reviewer": "Reviewer was a tool-bearing multi_agent_v1 subagent instructed to read only its prompt file and write its verdicts JSON; it reported the output path and no other tool use to the dispatcher."
     }
   ],
   "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "Each item supplies an initial facing direction, applies a named turn, and asks for the resulting direction, which is exactly the structure the competency describes; every key I checked is correct, including a right-facing arrow given a quarter turn counter-clockwise ending up facing up."
-    },
-    "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "Half turns and quarter turns clockwise are each sampled several times, but counter-clockwise appears in exactly one of the nine items. A competency that names two rotation directions explicitly should not leave one of them represented by a single seed, since a pupil practising here will almost never meet the harder direction."
-    },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The stems are two short sentences, the four answers are the plain words up, down, left and right, and the supporting item defining a turn as the direction clock hands move gives the vocabulary an anchor suitable for Quarter 4 of Grade 1."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "Apart from the one definition question, every sample is the same arrow sentence with a different starting direction. The competency speaks of objects being moved, which invites a chair, a pupil or a toy turning in place, and none of that context appears - nor does any item that runs the reasoning backwards by giving the result and asking for the turn."
+      "rationale": "Each item asks for one simple quarter-turn or half-turn direction, which is an appropriate single-step spatial reasoning demand for Grade 1."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "What changes between seeds is the starting orientation and the size of turn, both of which are the substance of this competency, and all four cardinal starts are used rather than only the easy upward one."
+      "rationale": "The rendered tasks directly ask learners to identify the resulting direction of an arrow after the named turn and direction from a stated starting orientation."
+    },
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The packet demonstrates position after half and quarter turns, both rotational directions, and several initial facing directions using a clearly identified object.",
+      "decomposition": {
+        "verdict": "PASS",
+        "reasoning": "The eight printed requirements collectively cover identifying position, the object being moved, movement, both turn sizes, both directions, and the initial facing direction without omitting a competency component.",
+        "requirement_ids": [
+          "identify_position",
+          "objects",
+          "moved",
+          "half_turn",
+          "quarter_turn",
+          "clockwise",
+          "counter_clockwise",
+          "initial_facing_direction"
+        ]
+      },
+      "clause_ids": [
+        "identify_position",
+        "objects",
+        "moved",
+        "half_turn",
+        "quarter_turn",
+        "clockwise",
+        "counter_clockwise",
+        "initial_facing_direction"
+      ]
+    },
+    "comprehensive_coverage": {
+      "verdict": "CONCERN",
+      "rationale": "The packet includes the major required concepts and all four cardinal outputs, but counter-clockwise examples use only UP and RIGHT initial orientations, leaving some combinations unrepresented.",
+      "clause_ids": [
+        "identify_position",
+        "objects",
+        "moved",
+        "half_turn",
+        "quarter_turn",
+        "clockwise",
+        "counter_clockwise",
+        "initial_facing_direction"
+      ]
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Turns are restricted to the half and quarter the competency names, with no eighth turns or multi-turn chains, so the generated range matches the stated bound exactly."
+      "rationale": "The tasks remain within cardinal-direction turns and do not introduce distances, angles beyond the named turns, multi-step rotations, or unnecessary notation."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "There is useful variation in starting direction, turn type, direction, options, and response modes, yet the packet is heavily repetitive and lacks visual or multi-format representations."
     }
   },
   "overall": "CONCERN"

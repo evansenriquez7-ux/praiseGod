@@ -1,0 +1,186 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_0-20260924
+
+Write one JSON object to:
+  local_only/scratch/review/s5-luna-2026-09-24/wave4/mat_g1_mg_q4_0/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN; never invent a supporting sample.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_0-20260924",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g1_mg_q4_0
+PACKET DIGEST: 9856937e643fcbf20fd1834cf2030234c52e9e81018c6918ca2a7ef5878fe85f
+COMPETENCY (Grade 1, Quarter 4, None):
+Identify the position of objects moved in half turn or in quarter turn, in clockwise or in counter-clockwise direction, given an initial facing direction.
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  identify_position: Identify the position
+  objects: objects
+  moved: moved
+  half_turn: half turn
+  quarter_turn: quarter turn
+  clockwise: clockwise
+  counter_clockwise: counter-clockwise direction
+  initial_facing_direction: initial facing direction
+
+SAMPLES (every one of these is real rendered output):
+  sample 910045fd0345f23bd8ed  seed 42  [mcq]
+      stem:    An arrow faces UP. It does a half turn. Which direction does it face now?
+      answer:  down
+      options: right / up / down / left
+      hints:   ["A turn (rotation) spins a shape in place without sliding it.", "A quarter turn moves it like 15 minutes on a clock.", "A half turn faces it the opposite way."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample a205627531797aa26db2  seed 43  [mcq]
+      stem:    An arrow faces UP. It does a quarter turn clockwise. Which direction does it face now?
+      answer:  right
+      options: up / left / down / right
+      hints:   ["A turn (rotation) spins a shape in place without sliding it.", "A quarter turn moves it like 15 minutes on a clock.", "A half turn faces it the opposite way."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 1f36a36ea8749b281950  seed 44  [mcq]
+      stem:    An arrow faces RIGHT. It does a quarter turn counter-clockwise. Which direction does it face now?
+      answer:  up
+      options: left / up / right / down
+      hints:   ["A turn (rotation) spins a shape in place without sliding it.", "A quarter turn moves it like 15 minutes on a clock.", "A half turn faces it the opposite way."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 50e5f9b8d478a13bec6a  seed 45  [mcq]
+      stem:    An arrow faces DOWN. It does a quarter turn clockwise. Which direction does it face now?
+      answer:  left
+      options: right / left / up / down
+      hints:   ["A turn (rotation) spins a shape in place without sliding it.", "A quarter turn moves it like 15 minutes on a clock.", "A half turn faces it the opposite way."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 20b03ed2697415727658  seed 46  [mcq]
+      stem:    An arrow faces UP. It does a half turn. Which direction does it face now?
+      answer:  down
+      options: down / up / left / right
+      hints:   ["A turn (rotation) spins a shape in place without sliding it.", "A quarter turn moves it like 15 minutes on a clock.", "A half turn faces it the opposite way."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample fe396d243629791b4345  seed 500  [mcq]
+      stem:    An arrow faces LEFT. It does a half turn. Which direction does it face now?
+      answer:  right
+      options: up / left / down / right
+      hints:   ["A turn (rotation) spins a shape in place without sliding it.", "A quarter turn moves it like 15 minutes on a clock.", "A half turn faces it the opposite way."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 550c644fd2841cfcedc6  seed 501  [mcq]
+      stem:    An arrow faces DOWN. It does a quarter turn clockwise. Which direction does it face now?
+      answer:  left
+      options: left / up / right / down
+      hints:   ["A turn (rotation) spins a shape in place without sliding it.", "A quarter turn moves it like 15 minutes on a clock.", "A half turn faces it the opposite way."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample e5506fa74b2499f08281  seed 502  [mcq]
+      stem:    An arrow faces RIGHT. It does a half turn. Which direction does it face now?
+      answer:  left
+      options: up / right / down / left
+      hints:   ["A turn (rotation) spins a shape in place without sliding it.", "A quarter turn moves it like 15 minutes on a clock.", "A half turn faces it the opposite way."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 322ac68b247f0bb467a0  seed 601  [mcq]
+      stem:    Which direction is clockwise?
+      answer:  the direction clock hands move
+      options: the opposite direction clock hands move / to the left / straight up / the direction clock hands move
+      hints:   ["A turn (rotation) spins a shape in place without sliding it.", "A quarter turn moves it like 15 minutes on a clock.", "A half turn faces it the opposite way."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 18c65c231d3739d78dc1  seed 700  [mcq]
+      stem:    An arrow faces UP. It does a quarter turn counter-clockwise. Which direction does it face now?
+      answer:  left
+      options: down / up / right / left
+      hints:   ["A turn (rotation) spins a shape in place without sliding it.", "A quarter turn moves it like 15 minutes on a clock.", "A half turn faces it the opposite way."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 0581943f298ab320fb0f  seed 701  [mcq]
+      stem:    💃 Sir Rez has a math challenge about dance shoes. An arrow faces DOWN. It does a quarter turn clockwise. Which direction does it face now?
+      answer:  left
+      options: up / left / down / right
+      hints:   ["A turn (rotation) spins a shape in place without sliding it.", "A quarter turn moves it like 15 minutes on a clock.", "A half turn faces it the opposite way."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample f841d522d4b5dc816a7b  seed 702  [mcq]
+      stem:    ✝️ Moses has a math challenge about olives. An arrow faces UP. It does a half turn. Which direction does it face now?
+      answer:  down
+      options: down / up / right / left
+      hints:   ["A turn (rotation) spins a shape in place without sliding it.", "A quarter turn moves it like 15 minutes on a clock.", "A half turn faces it the opposite way."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 0c4ad7943a132bd831b9  seed 800  [mcq]
+      stem:    An arrow faces LEFT. It does a half turn. Which direction does it face now?
+      answer:  right
+      options: up / right / down / left
+      hints:   ["A turn (rotation) spins a shape in place without sliding it.", "A quarter turn moves it like 15 minutes on a clock.", "A half turn faces it the opposite way."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 022bf71e139ee39141db  seed 900  [mcq]
+      stem:    Which direction is clockwise?
+      answer:  the direction clock hands move
+      options: straight up / to the left / the opposite direction clock hands move / the direction clock hands move
+      hints:   ["A turn (rotation) spins a shape in place without sliding it.", "A quarter turn moves it like 15 minutes on a clock.", "A half turn faces it the opposite way."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample de54c9396eba275838a7  seed 901  [mcq]
+      stem:    An arrow faces RIGHT. It does a quarter turn counter-clockwise. Which direction does it face now?
+      answer:  up
+      options: down / up / right / left
+      hints:   ["A turn (rotation) spins a shape in place without sliding it.", "A quarter turn moves it like 15 minutes on a clock.", "A half turn faces it the opposite way."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 699b3a949cd54c3a691b  seed 1000  [mcq]
+      stem:    An arrow faces RIGHT. It does a quarter turn counter-clockwise. Which direction does it face now?
+      answer:  up
+      options: up / right / down / left
+      hints:   ["A turn (rotation) spins a shape in place without sliding it.", "A quarter turn moves it like 15 minutes on a clock.", "A half turn faces it the opposite way."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "hint_gated"}
+  sample 4ec9f38b17cf20888bfa  seed 1001  [mcq]
+      stem:    An arrow faces UP. It does a quarter turn clockwise. Which direction does it face now?
+      answer:  right
+      options: right / up / left / down
+      hints:   ["A turn (rotation) spins a shape in place without sliding it.", "A quarter turn moves it like 15 minutes on a clock.", "A half turn faces it the opposite way."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "mastery_drill"}
+  sample 87717d9bf8e05d0880b7  seed 1002  [mcq]
+      stem:    An arrow faces RIGHT. It does a half turn. Which direction does it face now?
+      answer:  left
+      options: right / up / down / left
+      hints:   ["A turn (rotation) spins a shape in place without sliding it.", "A quarter turn moves it like 15 minutes on a clock.", "A half turn faces it the opposite way."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "scaffolded"}
+

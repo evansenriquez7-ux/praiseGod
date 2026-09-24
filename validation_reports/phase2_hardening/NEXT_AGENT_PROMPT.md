@@ -1,5 +1,12 @@
 # Task prompt — continue Phase 2 hardening (GPT-hosted session)
 
+**Refreshed wave 4, 2026-09-24.** Four more `gpt-5.6-luna`/medium reviews were filed:
+`mat_g1_mg_q2_2`, `mat_g1_mg_q4_0`, `mat_g1_mg_q4_1`, `mat_g1_mg_q4_2`. The legacy queue moved
+**141 → 137** (`schema_counts {2: 14, None: 137}`), and `validate_judgment_reviews()` measured
+**1428 findings across 150 nodes**. New bugs queued include weekday/month competencies only asking
+isolated before/after pairs instead of full ordered lists, malformed date-chart hints without a
+printed chart, and more decorative interest wrappers on rotation/turn tasks.
+
 **Refreshed again 2026-09-24 by `codex-h06-s5-luna-campaign-2-2026-09-24`.** Eight more
 `gpt-5.6-luna`/medium reviews were dispatched and filed: `mat_g1_dp_q3_1`, `mat_g1_dp_q3_2`,
 `mat_g1_dp_q3_3`, `mat_g1_mg_q1_0`, `mat_g1_mg_q1_1`, `mat_g1_mg_q1_2`, `mat_g1_mg_q2_0`,

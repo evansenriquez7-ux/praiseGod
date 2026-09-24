@@ -1,7 +1,38 @@
 {
+  "schema_version": 2,
   "node_id": "mat_g1_mg_q4_2",
-  "reviewed_by": "reviewer-c1-lantern-fescue-3061",
-  "review_date": "2026-09-11",
+  "competency_snapshot": {
+    "text": "Give the days of the week and months of the year in the correct order.",
+    "grade": 1,
+    "quarter": 4,
+    "subdomain": null
+  },
+  "requirements_snapshot": [
+    {
+      "kind": "task",
+      "id": "give",
+      "clause": "Give"
+    },
+    {
+      "kind": "object",
+      "id": "days_of_the_week",
+      "clause": "days of the week"
+    },
+    {
+      "kind": "object",
+      "id": "months_of_the_year",
+      "clause": "months of the year"
+    },
+    {
+      "kind": "property",
+      "id": "correct_order",
+      "clause": "correct order"
+    }
+  ],
+  "packet_digest": "625bfad722bad412a8967bde5c88e41aa84d4391276747134aa92f08d24f2087",
+  "sampling_version": "phase2-stratified-v2-rendered-visual",
+  "reviewed_by": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_2-20260924",
+  "review_date": "2026-09-24",
   "blind": true,
   "sample_seeds": [
     42,
@@ -17,14 +48,61 @@
     603,
     604,
     605,
-    606
+    606,
+    700,
+    701,
+    702,
+    900,
+    901,
+    1000,
+    1001,
+    1002
+  ],
+  "sample_ids": [
+    "c8ee6e45861c25eb1290",
+    "b52dfb459157f5a8da05",
+    "a0436cadcee7b3a87e64",
+    "3b7c28e13e249a4975da",
+    "8af4d5da19e82fa4e11f",
+    "2dcade3e78d177988be2",
+    "91f19f7892382ffaee8e",
+    "d58f494276f79ae97bb9",
+    "d36008fbf77991a1fb3a",
+    "5b4b7cf590f8985c431b",
+    "6bf9ea0aeb0dd2c8663e",
+    "546584607b12e7e6b43b",
+    "bf63ede45969036ff1d7",
+    "3f8029f2961b163c4a2b",
+    "ad5e577869f52d401998",
+    "b36e06759132a5314cf9",
+    "d331c115327c09078cc6",
+    "78b2104a1b1f22efbae4",
+    "90e7f42531613e5177eb",
+    "135dd7eed8f6d40cd468",
+    "86cd11adb74c40ffb723",
+    "90614e5c1156f91a2e89"
   ],
   "samples_reviewed": [
     {
+      "node_id": "mat_g1_mg_q4_2",
       "seed": 42,
       "formatter": "cloze",
       "question_text": "What day of the week comes right after Friday?",
       "correct_answer": "Saturday",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -50,13 +128,35 @@
           "text": "Sunday",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "Saturday",
+      "hints": [
+        "Use the date chart to find the answer.",
+        "The how much time has passed is the number of days or weeks that have passed."
+      ],
+      "sample_id": "c8ee6e45861c25eb1290",
+      "replay_digest": "f825e3dd080b46e3eb5dc0ca02335229d6abc20f2076fc730bac6116cc14eb74"
     },
     {
+      "node_id": "mat_g1_mg_q4_2",
       "seed": 43,
       "formatter": "mcq",
       "question_text": "What day of the week comes right after Saturday?",
       "correct_answer": "Sunday",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -78,13 +178,35 @@
           "value": "Sunday",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": "Sunday",
+      "hints": [
+        "Use the date chart to find the answer.",
+        "The how much time has passed is the number of days or weeks that have passed."
+      ],
+      "sample_id": "b52dfb459157f5a8da05",
+      "replay_digest": "0b27ff7aa97ab03d0a1459e97eda9e7cf6b4048806d04d5a08696ff325e89384"
     },
     {
+      "node_id": "mat_g1_mg_q4_2",
       "seed": 44,
       "formatter": "cloze",
       "question_text": "What month of the year comes right before December?",
       "correct_answer": "November",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -110,13 +232,35 @@
           "text": "March",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "November",
+      "hints": [
+        "Use the date chart to find the answer.",
+        "The how much time has passed is the number of days or weeks that have passed."
+      ],
+      "sample_id": "a0436cadcee7b3a87e64",
+      "replay_digest": "780bb23bfd3447f5b0e01223c2e526d3070ed38a10802831ac9a2a9dce6afd43"
     },
     {
+      "node_id": "mat_g1_mg_q4_2",
       "seed": 45,
       "formatter": "mcq",
       "question_text": "What day of the week comes right after Tuesday?",
       "correct_answer": "Wednesday",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -138,13 +282,35 @@
           "value": "Thursday",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "Wednesday",
+      "hints": [
+        "Use the date chart to find the answer.",
+        "The how much time has passed is the number of days or weeks that have passed."
+      ],
+      "sample_id": "3b7c28e13e249a4975da",
+      "replay_digest": "831f439fa407ea2f3825482436dd400b9d0cc08a416b889c7146fd762967357d"
     },
     {
+      "node_id": "mat_g1_mg_q4_2",
       "seed": 46,
       "formatter": "mcq",
       "question_text": "What day of the week comes right before Thursday?",
       "correct_answer": "Wednesday",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -166,13 +332,35 @@
           "value": "Tuesday",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "Wednesday",
+      "hints": [
+        "Use the date chart to find the answer.",
+        "The how much time has passed is the number of days or weeks that have passed."
+      ],
+      "sample_id": "8af4d5da19e82fa4e11f",
+      "replay_digest": "6e9987a80d215bb780d3cb22805ff97138c9946c00fec4cd77887d707d066842"
     },
     {
+      "node_id": "mat_g1_mg_q4_2",
       "seed": 500,
       "formatter": "mcq",
       "question_text": "What month of the year comes right after October?",
       "correct_answer": "November",
+      "requested": {
+        "difficulty_profile": {},
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -194,13 +382,35 @@
           "value": "November",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": "November",
+      "hints": [
+        "Use the date chart to find the answer.",
+        "The how much time has passed is the number of days or weeks that have passed."
+      ],
+      "sample_id": "2dcade3e78d177988be2",
+      "replay_digest": "801c16480dc8c9d7be53e24e14684f311f909cb84a674f0cbb31793e5b0f9c3d"
     },
     {
+      "node_id": "mat_g1_mg_q4_2",
       "seed": 501,
       "formatter": "mcq",
       "question_text": "What day of the week comes right after Tuesday?",
       "correct_answer": "Wednesday",
+      "requested": {
+        "difficulty_profile": {},
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -222,13 +432,35 @@
           "value": "Monday",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "Wednesday",
+      "hints": [
+        "Use the date chart to find the answer.",
+        "The how much time has passed is the number of days or weeks that have passed."
+      ],
+      "sample_id": "91f19f7892382ffaee8e",
+      "replay_digest": "1d8fc60e574c0c48fe4a5510cb407bd6f0d3851450dc24775b8bcbf1ae0c4f12"
     },
     {
+      "node_id": "mat_g1_mg_q4_2",
       "seed": 502,
       "formatter": "cloze",
       "question_text": "What day of the week comes right after Friday?",
       "correct_answer": "Saturday",
+      "requested": {
+        "difficulty_profile": {},
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -254,13 +486,37 @@
           "text": "Monday",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "Saturday",
+      "hints": [
+        "Use the date chart to find the answer.",
+        "The how much time has passed is the number of days or weeks that have passed."
+      ],
+      "sample_id": "d58f494276f79ae97bb9",
+      "replay_digest": "82adf0c6788cc678370482bbc0fad02c871242fd2ae6359c06d9022af2dfbf8f"
     },
     {
+      "node_id": "mat_g1_mg_q4_2",
       "seed": 600,
       "formatter": "mcq",
       "question_text": "What day of the week comes right after Wednesday?",
       "correct_answer": "Thursday",
+      "requested": {
+        "difficulty_profile": {
+          "calendar_feature": "dates"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -282,13 +538,37 @@
           "value": "Tuesday",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "Thursday",
+      "hints": [
+        "Use the date chart to find the answer.",
+        "The how much time has passed is the number of days or weeks that have passed."
+      ],
+      "sample_id": "d36008fbf77991a1fb3a",
+      "replay_digest": "4c8b88d0cbfeb380c4af84a16312e54824fcec1537c8c582f072ad3941ab1cf6"
     },
     {
+      "node_id": "mat_g1_mg_q4_2",
       "seed": 601,
       "formatter": "cloze",
       "question_text": "What month of the year comes right before September?",
       "correct_answer": "August",
+      "requested": {
+        "difficulty_profile": {
+          "calendar_feature": "days"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -314,13 +594,37 @@
           "text": "August",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": "August",
+      "hints": [
+        "Use the date chart to find the answer.",
+        "The how much time has passed is the number of days or weeks that have passed."
+      ],
+      "sample_id": "5b4b7cf590f8985c431b",
+      "replay_digest": "c38ada6e9abbaf17130ec9863e71485bc5fdec625508667ec28c9508cb706c29"
     },
     {
+      "node_id": "mat_g1_mg_q4_2",
       "seed": 603,
       "formatter": "mcq",
       "question_text": "What month of the year comes right after June?",
       "correct_answer": "July",
+      "requested": {
+        "difficulty_profile": {
+          "calendar_feature": "full_calendar"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -342,13 +646,37 @@
           "value": "July",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": "July",
+      "hints": [
+        "Use the date chart to find the answer.",
+        "The how much time has passed is the number of days or weeks that have passed."
+      ],
+      "sample_id": "6bf9ea0aeb0dd2c8663e",
+      "replay_digest": "b22313e7777b51811d81eb69af5cd5e42cc0dadd0dbc3eff4a914cf97b00303e"
     },
     {
+      "node_id": "mat_g1_mg_q4_2",
       "seed": 604,
       "formatter": "cloze",
       "question_text": "What day of the week comes right before Wednesday?",
       "correct_answer": "Tuesday",
+      "requested": {
+        "difficulty_profile": {
+          "calendar_feature": "months"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -374,13 +702,37 @@
           "text": "Monday",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "Tuesday",
+      "hints": [
+        "Use the date chart to find the answer.",
+        "The how much time has passed is the number of days or weeks that have passed."
+      ],
+      "sample_id": "546584607b12e7e6b43b",
+      "replay_digest": "8a4427399555e2acc1f09a27aec4def8f4718c95835093a9a13935f606a5578f"
     },
     {
+      "node_id": "mat_g1_mg_q4_2",
       "seed": 605,
       "formatter": "mcq",
       "question_text": "What month of the year comes right before July?",
       "correct_answer": "June",
+      "requested": {
+        "difficulty_profile": {
+          "calendar_feature": "months_order"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -402,13 +754,37 @@
           "value": "February",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "June",
+      "hints": [
+        "Use the date chart to find the answer.",
+        "The how much time has passed is the number of days or weeks that have passed."
+      ],
+      "sample_id": "bf63ede45969036ff1d7",
+      "replay_digest": "ba1d1fb461f4dd794e947b3ff08f171ee57b2f2612cd7c8737368239bf355409"
     },
     {
+      "node_id": "mat_g1_mg_q4_2",
       "seed": 606,
       "formatter": "mcq",
       "question_text": "What month of the year comes right before June?",
       "correct_answer": "May",
+      "requested": {
+        "difficulty_profile": {
+          "calendar_feature": "weeks"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -430,33 +806,1063 @@
           "value": "May",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": "May",
+      "hints": [
+        "Use the date chart to find the answer.",
+        "The how much time has passed is the number of days or weeks that have passed."
+      ],
+      "sample_id": "3f8029f2961b163c4a2b",
+      "replay_digest": "d7bb9797c75523d1c43f652dbc2c7ab57ef6c8d25b18e7f798ad8b984b6eab6b"
+    },
+    {
+      "node_id": "mat_g1_mg_q4_2",
+      "seed": 700,
+      "formatter": "cloze",
+      "question_text": "What month of the year comes right before August?",
+      "correct_answer": "July",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "July",
+          "text": "July",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "February",
+          "text": "February",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "March",
+          "text": "March",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "January",
+          "text": "January",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "July",
+      "hints": [
+        "Use the date chart to find the answer.",
+        "The how much time has passed is the number of days or weeks that have passed."
+      ],
+      "sample_id": "ad5e577869f52d401998",
+      "replay_digest": "16ebcb00d7d3dcbdc9de3dc6f00041a17f66ef0c4d20b1704bc9ce6d902ce319"
+    },
+    {
+      "node_id": "mat_g1_mg_q4_2",
+      "seed": 701,
+      "formatter": "mcq",
+      "question_text": "🏐 Romel has a math challenge about whistles. What day of the week comes right after Sunday?",
+      "correct_answer": "Monday",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "volleyball",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "Tuesday",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "Thursday",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "Wednesday",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "Monday",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": "Monday",
+      "hints": [
+        "Use the date chart to find the answer.",
+        "The how much time has passed is the number of days or weeks that have passed."
+      ],
+      "sample_id": "b36e06759132a5314cf9",
+      "replay_digest": "89e2398c303f0b2a01afc246693da7ae0486213c9d7f33816d47386ddcf832f0"
+    },
+    {
+      "node_id": "mat_g1_mg_q4_2",
+      "seed": 702,
+      "formatter": "cloze",
+      "question_text": "🚴 Kuya Chad has a math challenge about wristbands. What day of the week comes right before Saturday?",
+      "correct_answer": "Friday",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "fitness_sports",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "Tuesday",
+          "text": "Tuesday",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "Friday",
+          "text": "Friday",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "Monday",
+          "text": "Monday",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "Sunday",
+          "text": "Sunday",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "Friday",
+      "hints": [
+        "Use the date chart to find the answer.",
+        "The how much time has passed is the number of days or weeks that have passed."
+      ],
+      "sample_id": "d331c115327c09078cc6",
+      "replay_digest": "ea4e416d86d82613c3dda69e3aff43c3af8b00e8f157c3263a8a90ffbb34f74d"
+    },
+    {
+      "node_id": "mat_g1_mg_q4_2",
+      "seed": 900,
+      "formatter": "mcq",
+      "question_text": "What day of the week comes right after Saturday?",
+      "correct_answer": "Sunday",
+      "requested": {
+        "difficulty_profile": {},
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "Monday",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "Tuesday",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "Sunday",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "Wednesday",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "Sunday",
+      "hints": [
+        "Use the date chart to find the answer.",
+        "The how much time has passed is the number of days or weeks that have passed."
+      ],
+      "sample_id": "78b2104a1b1f22efbae4",
+      "replay_digest": "dfe8278bf4376b0cc26fba1ddfb62b306bcf3a1c4f97cbab07bd875dc6dc97fd"
+    },
+    {
+      "node_id": "mat_g1_mg_q4_2",
+      "seed": 901,
+      "formatter": "mcq",
+      "question_text": "What month of the year comes right before February?",
+      "correct_answer": "January",
+      "requested": {
+        "difficulty_profile": {},
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "May",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "January",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "April",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "March",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "January",
+      "hints": [
+        "Use the date chart to find the answer.",
+        "The how much time has passed is the number of days or weeks that have passed."
+      ],
+      "sample_id": "90e7f42531613e5177eb",
+      "replay_digest": "c7a52e8cc493bdfa70fbb3184de2e1e6d94fbc97aa560501255ebcd026315b46"
+    },
+    {
+      "node_id": "mat_g1_mg_q4_2",
+      "seed": 1000,
+      "formatter": "cloze",
+      "question_text": "What month of the year comes right after February?",
+      "correct_answer": "March",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "hint_gated"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "hint_gated"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "April",
+          "text": "April",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "May",
+          "text": "May",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "March",
+          "text": "March",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "January",
+          "text": "January",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "March",
+      "hints": [
+        "Use the date chart to find the answer.",
+        "The how much time has passed is the number of days or weeks that have passed."
+      ],
+      "sample_id": "135dd7eed8f6d40cd468",
+      "replay_digest": "a1ceda54a324b572da9b49ab6087abd4dd5de05af6558c492db59bb5edf06079"
+    },
+    {
+      "node_id": "mat_g1_mg_q4_2",
+      "seed": 1001,
+      "formatter": "cloze",
+      "question_text": "What month of the year comes right before April?",
+      "correct_answer": "March",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "mastery_drill"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "mastery_drill"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "January",
+          "text": "January",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "February",
+          "text": "February",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "May",
+          "text": "May",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "March",
+          "text": "March",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": "March",
+      "hints": [
+        "Use the date chart to find the answer.",
+        "The how much time has passed is the number of days or weeks that have passed."
+      ],
+      "sample_id": "86cd11adb74c40ffb723",
+      "replay_digest": "dbc89d4ca69dcaf4cee641fc03115124ab85065b56cee9caa5e45e7867f2e377"
+    },
+    {
+      "node_id": "mat_g1_mg_q4_2",
+      "seed": 1002,
+      "formatter": "cloze",
+      "question_text": "What month of the year comes right after April?",
+      "correct_answer": "May",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "scaffolded"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "scaffolded"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "May",
+          "text": "May",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "March",
+          "text": "March",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "January",
+          "text": "January",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "February",
+          "text": "February",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "May",
+      "hints": [
+        "Use the date chart to find the answer.",
+        "The how much time has passed is the number of days or weeks that have passed."
+      ],
+      "sample_id": "90614e5c1156f91a2e89",
+      "replay_digest": "3825333112dca17861ece706c71bec64d671f8f4826eb190c98e863aaab50804"
+    }
+  ],
+  "sample_assessments": [
+    {
+      "sample_id": "c8ee6e45861c25eb1290",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem names Friday and asks for the immediately following weekday, yielding one unambiguous answer."
+        },
+        "contextual_logical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "The question is logically sound, but the hint refers to a date chart that is not included in the printed sample."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The short stem is clear, while the accompanying second hint is grammatically broken and does not help a young learner."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Saturday is the correct weekday immediately after Friday, and the answer appears among the choices."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_2-20260924",
+      "dispatch_id": "s5-luna-medium-w4-mat_g1_mg_q4_2-20260924:mat_g1_mg_q4_2"
+    },
+    {
+      "sample_id": "b52dfb459157f5a8da05",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Saturday has one immediate successor in the weekly cycle, so the requested answer is uniquely determined."
+        },
+        "contextual_logical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "The calendar question works, but its hint assumes access to a date chart that is absent from the printed sample."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The stem is accessible, but the malformed explanation about how much time has passed may confuse a Grade 1 learner."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sunday correctly follows Saturday, and exactly one listed option matches that calendar fact."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_2-20260924",
+      "dispatch_id": "s5-luna-medium-w4-mat_g1_mg_q4_2-20260924:mat_g1_mg_q4_2"
+    },
+    {
+      "sample_id": "a0436cadcee7b3a87e64",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "December has one immediately preceding month, and the wording clearly asks for that month."
+        },
+        "contextual_logical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "The month relation is valid, although the supplied date-chart hint is not accompanied by such a chart."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The main question is simple, but the repeated ungrammatical hint is poorly suited to clear Grade 1 guidance."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "November is the month immediately before December, and it is included as an option."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_2-20260924",
+      "dispatch_id": "s5-luna-medium-w4-mat_g1_mg_q4_2-20260924:mat_g1_mg_q4_2"
+    },
+    {
+      "sample_id": "3b7c28e13e249a4975da",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Tuesday's immediate successor is uniquely identified by the standard weekly order."
+        },
+        "contextual_logical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "The calendar relationship is coherent, but the hint invokes an unavailable date chart for solving it."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The stem is readable, though the second hint is an awkward fragment that may distract beginning readers."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Wednesday correctly comes immediately after Tuesday, and the answer is one of the choices."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_2-20260924",
+      "dispatch_id": "s5-luna-medium-w4-mat_g1_mg_q4_2-20260924:mat_g1_mg_q4_2"
+    },
+    {
+      "sample_id": "8af4d5da19e82fa4e11f",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Thursday has a single immediate predecessor in the weekly sequence, so the prompt is determinate."
+        },
+        "contextual_logical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "The requested predecessor is sensible, but the date-chart reference lacks the chart needed to follow the hint."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The question itself is clear; the repeated broken hint wording reduces the clarity of the learner-facing packet."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Wednesday is the weekday immediately before Thursday, matching a listed response."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_2-20260924",
+      "dispatch_id": "s5-luna-medium-w4-mat_g1_mg_q4_2-20260924:mat_g1_mg_q4_2"
+    },
+    {
+      "sample_id": "2dcade3e78d177988be2",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "October has one immediate successor month, and the wording identifies the required relation precisely."
+        },
+        "contextual_logical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "The month-order question is coherent, but its date-chart hint points to supporting material not printed here."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The stem is age-appropriate, while the repeated malformed time hint is not clear instructional language."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "November follows October in the yearly sequence, and the answer is available among the options."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_2-20260924",
+      "dispatch_id": "s5-luna-medium-w4-mat_g1_mg_q4_2-20260924:mat_g1_mg_q4_2"
+    },
+    {
+      "sample_id": "91f19f7892382ffaee8e",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The immediate successor of Tuesday is a single weekday, making the prompt unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "The calendar relation is valid, but the hint depends on a date chart that the printed sample does not show."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The direct question is understandable, but the second hint contains confusing and incomplete phrasing."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Wednesday is correctly identified as the day immediately after Tuesday and appears in the choices."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_2-20260924",
+      "dispatch_id": "s5-luna-medium-w4-mat_g1_mg_q4_2-20260924:mat_g1_mg_q4_2"
+    },
+    {
+      "sample_id": "d58f494276f79ae97bb9",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Friday's immediate successor is unique in the weekly order, so no competing interpretation is present."
+        },
+        "contextual_logical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "The question is logically valid, but the hint references a date chart that is not included with the item."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The stem is concise, though the grammatically defective repeated hint may impede understanding for beginners."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Saturday correctly follows Friday, and the response list includes Saturday as the answer."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_2-20260924",
+      "dispatch_id": "s5-luna-medium-w4-mat_g1_mg_q4_2-20260924:mat_g1_mg_q4_2"
+    },
+    {
+      "sample_id": "d36008fbf77991a1fb3a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Wednesday has one immediate successor, and the use of right after makes the intended relation explicit."
+        },
+        "contextual_logical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "The weekday relation is coherent, but the date-chart hint assumes a visual aid not printed in the sample."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The main sentence is clear, but the repeated malformed hint does not provide clean learner-facing support."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Thursday is the correct day immediately after Wednesday and is present as an option."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_2-20260924",
+      "dispatch_id": "s5-luna-medium-w4-mat_g1_mg_q4_2-20260924:mat_g1_mg_q4_2"
+    },
+    {
+      "sample_id": "5b4b7cf590f8985c431b",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "September has one immediately preceding month, so the question has a unique intended answer."
+        },
+        "contextual_logical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "The month-order task is sensible, although the date-chart hint has no corresponding chart in the printed item."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The stem is understandable, but the repeated sentence fragment about elapsed time is confusing."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "August is immediately before September, and August is included in the available responses."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_2-20260924",
+      "dispatch_id": "s5-luna-medium-w4-mat_g1_mg_q4_2-20260924:mat_g1_mg_q4_2"
+    },
+    {
+      "sample_id": "6bf9ea0aeb0dd2c8663e",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "June's immediate successor is uniquely determined by the ordinary month sequence."
+        },
+        "contextual_logical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "The requested month relation is valid, but the hint directs learners to an unshown date chart."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The direct prompt is simple, but the malformed repeated hint undermines clear guidance for Grade 1."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "July correctly comes after June, and July is one of the listed choices."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_2-20260924",
+      "dispatch_id": "s5-luna-medium-w4-mat_g1_mg_q4_2-20260924:mat_g1_mg_q4_2"
+    },
+    {
+      "sample_id": "546584607b12e7e6b43b",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The phrase right before Wednesday identifies one specific weekday without ambiguity."
+        },
+        "contextual_logical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "The sequencing question is coherent, but its suggested date chart is not shown in the printed output."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The stem is readable, while the recurring ungrammatical hint is likely to confuse early learners."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Tuesday is correctly placed immediately before Wednesday and is available as an option."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_2-20260924",
+      "dispatch_id": "s5-luna-medium-w4-mat_g1_mg_q4_2-20260924:mat_g1_mg_q4_2"
+    },
+    {
+      "sample_id": "bf63ede45969036ff1d7",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "July has a single immediate predecessor in the year, so the prompt is uniquely answerable."
+        },
+        "contextual_logical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "The month relationship makes sense, but the date-chart hint refers to a resource not included here."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The question uses accessible language, yet the repeated broken hint weakens the overall clarity of the item."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "June is immediately before July, and June appears among the response options."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_2-20260924",
+      "dispatch_id": "s5-luna-medium-w4-mat_g1_mg_q4_2-20260924:mat_g1_mg_q4_2"
+    },
+    {
+      "sample_id": "3f8029f2961b163c4a2b",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The prompt asks for the unique month immediately preceding June, with no ambiguity in the relation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "The calendar task is logical, but the date-chart reference lacks the chart in this rendered sample."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The stem is suitable for a young learner, although the defective hint wording is difficult to interpret."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "May correctly precedes June, and May is provided as one of the options."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_2-20260924",
+      "dispatch_id": "s5-luna-medium-w4-mat_g1_mg_q4_2-20260924:mat_g1_mg_q4_2"
+    },
+    {
+      "sample_id": "ad5e577869f52d401998",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "August has one immediate predecessor month, and the wording clearly requests that predecessor."
+        },
+        "contextual_logical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "The month sequence is logically used, but the referenced date chart is not present in the printed item."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The direct stem is clear, while the recurring malformed hint does not communicate a useful strategy."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "July is the month immediately before August and is correctly listed as an option."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_2-20260924",
+      "dispatch_id": "s5-luna-medium-w4-mat_g1_mg_q4_2-20260924:mat_g1_mg_q4_2"
+    },
+    {
+      "sample_id": "b36e06759132a5314cf9",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Sunday's immediate successor is uniquely Monday, despite the introductory context."
+        },
+        "contextual_logical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "The sports-themed setup does not affect the calendar question, but the date-chart hint remains unsupported."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The actual question is clear, though the unrelated whistles context and broken hint add avoidable distraction."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Monday correctly follows Sunday in the weekly cycle and is included among the choices."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_2-20260924",
+      "dispatch_id": "s5-luna-medium-w4-mat_g1_mg_q4_2-20260924:mat_g1_mg_q4_2"
+    },
+    {
+      "sample_id": "d331c115327c09078cc6",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Saturday has one immediate predecessor, and the bicycle context does not change the requested relation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "The calendar task remains valid, but the wristband setup is extraneous and the date chart is not supplied."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The stem is understandable, but unrelated context plus the malformed hint makes the learner-facing presentation less focused."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Friday is correctly identified as the weekday immediately before Saturday and appears in the choices."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_2-20260924",
+      "dispatch_id": "s5-luna-medium-w4-mat_g1_mg_q4_2-20260924:mat_g1_mg_q4_2"
+    },
+    {
+      "sample_id": "78b2104a1b1f22efbae4",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The immediate successor of Saturday is uniquely determined as Sunday."
+        },
+        "contextual_logical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "The weekday question is coherent, but the supporting date-chart hint is not backed by a printed chart."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The stem is accessible, but the repeated ungrammatical hint lowers clarity for a beginning reader."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sunday correctly follows Saturday, and the answer is present in the response options."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_2-20260924",
+      "dispatch_id": "s5-luna-medium-w4-mat_g1_mg_q4_2-20260924:mat_g1_mg_q4_2"
+    },
+    {
+      "sample_id": "90e7f42531613e5177eb",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "February has one immediately preceding month, so the requested answer is uniquely defined."
+        },
+        "contextual_logical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "The month-order relation is valid, but the date-chart hint refers to an aid absent from the sample."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The question is simple enough, while the repeated broken hint language is not clear instructional support."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "January correctly precedes February, and January appears among the listed alternatives."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_2-20260924",
+      "dispatch_id": "s5-luna-medium-w4-mat_g1_mg_q4_2-20260924:mat_g1_mg_q4_2"
+    },
+    {
+      "sample_id": "135dd7eed8f6d40cd468",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "February has one immediate successor in the month sequence, so the stem is determinate."
+        },
+        "contextual_logical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "The calendar relation is coherent, but the date-chart hint is unsupported by a visible chart in the item."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The prompt is readable, yet the malformed repeated hint and unexplained hint-gated mode may confuse learners."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "March correctly comes immediately after February and is included among the options."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_2-20260924",
+      "dispatch_id": "s5-luna-medium-w4-mat_g1_mg_q4_2-20260924:mat_g1_mg_q4_2"
+    },
+    {
+      "sample_id": "86cd11adb74c40ffb723",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "April's immediate predecessor is uniquely March, with no ambiguity in the wording."
+        },
+        "contextual_logical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "The month-order task is logical, but its date-chart hint presumes an unshown support resource."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The stem is clear, although the defective hint and unexplained mastery-drill mode reduce presentation clarity."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "March is correctly placed immediately before April and is one of the response choices."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_2-20260924",
+      "dispatch_id": "s5-luna-medium-w4-mat_g1_mg_q4_2-20260924:mat_g1_mg_q4_2"
+    },
+    {
+      "sample_id": "90614e5c1156f91a2e89",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "April's immediate successor is uniquely May, so the requested relationship is clear."
+        },
+        "contextual_logical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "The calendar question is internally valid, but the referenced date chart does not appear in the printed sample."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The stem is straightforward, while the malformed hint and unexplained scaffolded mode may distract the learner."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "May correctly follows April in the year, and May is listed as the answer option."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_2-20260924",
+      "dispatch_id": "s5-luna-medium-w4-mat_g1_mg_q4_2-20260924:mat_g1_mg_q4_2"
+    }
+  ],
+  "clause_evidence": [
+    {
+      "requirement_id": "give",
+      "clause": "Give",
+      "verdict": "CONCERN",
+      "reasoning": "The samples require selecting or filling one adjacent day or month, but they do not require giving either complete ordered list.",
+      "sample_ids": [
+        "c8ee6e45861c25eb1290",
+        "a0436cadcee7b3a87e64"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_2-20260924",
+      "dispatch_id": "s5-luna-medium-w4-mat_g1_mg_q4_2-20260924:mat_g1_mg_q4_2"
+    },
+    {
+      "requirement_id": "days_of_the_week",
+      "clause": "days of the week",
+      "verdict": "PASS",
+      "reasoning": "Multiple samples explicitly name weekdays and ask for their immediate predecessors or successors, directly exercising weekday vocabulary.",
+      "sample_ids": [
+        "c8ee6e45861c25eb1290",
+        "3b7c28e13e249a4975da",
+        "d36008fbf77991a1fb3a"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_2-20260924",
+      "dispatch_id": "s5-luna-medium-w4-mat_g1_mg_q4_2-20260924:mat_g1_mg_q4_2"
+    },
+    {
+      "requirement_id": "months_of_the_year",
+      "clause": "months of the year",
+      "verdict": "PASS",
+      "reasoning": "Several samples explicitly use month names across the year and ask for adjacent months, directly exercising month vocabulary.",
+      "sample_ids": [
+        "a0436cadcee7b3a87e64",
+        "2dcade3e78d177988be2",
+        "135dd7eed8f6d40cd468"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_2-20260924",
+      "dispatch_id": "s5-luna-medium-w4-mat_g1_mg_q4_2-20260924:mat_g1_mg_q4_2"
+    },
+    {
+      "requirement_id": "correct_order",
+      "clause": "correct order",
+      "verdict": "FAIL",
+      "reasoning": "The items test isolated before-and-after pairs, but no rendered sample asks the learner to produce the complete weekday or month order.",
+      "sample_ids": [
+        "c8ee6e45861c25eb1290",
+        "a0436cadcee7b3a87e64"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_2-20260924",
+      "dispatch_id": "s5-luna-medium-w4-mat_g1_mg_q4_2-20260924:mat_g1_mg_q4_2"
+    }
+  ],
+  "dispatch_provenance": [
+    {
+      "dispatch_id": "s5-luna-medium-w4-mat_g1_mg_q4_2-20260924:mat_g1_mg_q4_2",
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_2-20260924",
+      "review_date": "2026-09-24",
+      "blind": true,
+      "packet_digest": "625bfad722bad412a8967bde5c88e41aa84d4391276747134aa92f08d24f2087",
+      "clause_ids": [
+        "give",
+        "days_of_the_week",
+        "months_of_the_year",
+        "correct_order"
+      ],
+      "response_ref": ".responses/s5-luna-medium-w4-mat_g1_mg_q4_2-20260924.json",
+      "response_digest": "73745ccc8d780f0a5ea8a5b136b212e11d27e3b000c08272dc0b795e75b8bf57",
+      "prompt_ref": ".responses/s5-luna-medium-w4-mat_g1_mg_q4_2-20260924.prompt.txt",
+      "prompt_digest": "e09256215d283959a60a4aac4d392fd6ab1a5912d1385c3cf5f537819112ec9b",
+      "samples_delivery": "Prompt generated by tests.judgment_batches for one node and delivered by path to multi_agent_v1.spawn_agent using model gpt-5.6-luna with reasoning_effort=medium.",
+      "tool_uses_by_reviewer": "Reviewer was a tool-bearing multi_agent_v1 subagent instructed to read only its prompt file and write its verdicts JSON; it reported the output path and no other tool use to the dispatcher."
     }
   ],
   "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The items ask for sequence position directly - which day comes right after Friday, which month comes right before December - which is the order relation the competency is about, and the keys are correct in every sample."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "Both cycles are sampled and both directions of traversal appear in each: days forward from Friday, Saturday, Tuesday and Wednesday and backward from Thursday and Wednesday; months forward from October and June and backward from December, September, July and June."
-    },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "A single short question naming one day or month, answered with another name, is an appropriate memory task for Quarter 4 of Grade 1, and no item requires counting several steps through the cycle."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The answer is collected both as a typed blank and as a selection, and the sampled anchors move around the week and around the year rather than clustering at one point in either cycle."
+      "rationale": "Each item asks for one immediately adjacent day or month, which is an appropriate recall and sequencing demand for Grade 1."
     },
     "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "The stems directly ask about the next or previous named day or month, staying within calendar-order content."
+    },
+    "competency_fulfillment": {
       "verdict": "FAIL",
-      "rationale": "The month items are answerable without knowing month order at all. In five of the six, the three wrong choices are drawn only from January, February and March - for instance the item keyed November offers January, February and March beside it, and the item keyed August does the same. Whenever the key is not itself an early-year month, spotting the odd one out yields the answer, so the difficulty axis that actually distinguishes these seeds is decoy selection rather than the ordering skill being built. The day items, whose decoys include genuine near neighbours such as Thursday beside a key of Wednesday, show the generator is capable of better and makes the month behaviour a defect rather than a limitation."
+      "rationale": "The packet practices isolated adjacent relationships but does not require learners to give the complete ordered weekday and month sequences named by the competency.",
+      "decomposition": {
+        "verdict": "PASS",
+        "reasoning": "The four printed requirements represent the competency's action, both calendar sets, and the ordering condition without omitting a wording component.",
+        "requirement_ids": [
+          "give",
+          "days_of_the_week",
+          "months_of_the_year",
+          "correct_order"
+        ]
+      },
+      "clause_ids": [
+        "give",
+        "days_of_the_week",
+        "months_of_the_year",
+        "correct_order"
+      ]
+    },
+    "comprehensive_coverage": {
+      "verdict": "FAIL",
+      "rationale": "The samples cover selected predecessor and successor pairs, but none asks for the full seven-day sequence or full twelve-month sequence in order.",
+      "clause_ids": [
+        "give",
+        "days_of_the_week",
+        "months_of_the_year",
+        "correct_order"
+      ]
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Only the seven real weekday names and the twelve real month names are used, with no invented or out-of-cycle members, so the domain matches the competency exactly."
+      "rationale": "The response formats and one-step calendar questions are small enough for Grade 1 and do not introduce advanced computation or notation."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "There is useful variation in before and after prompts and response formats, but the set lacks a complete-list or ordering-production variant."
     }
   },
   "overall": "FAIL"
