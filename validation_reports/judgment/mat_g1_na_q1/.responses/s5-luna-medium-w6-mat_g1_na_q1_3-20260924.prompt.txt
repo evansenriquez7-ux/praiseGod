@@ -1,0 +1,215 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_3-20260924
+
+Write one JSON object to:
+  local_only/scratch/review/s5-luna-2026-09-24/wave6/mat_g1_na_q1_3/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN; never invent a supporting sample.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_3-20260924",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g1_na_q1_3
+PACKET DIGEST: 7ce9d0e3fe03df95723a923bd9c577b5ccdde3d02f63eb9b5bf73997e5049fde
+COMPETENCY (Grade 1, Quarter 1, None):
+Compare two numbers up to 20.
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  compare: Compare
+  two_numbers: two numbers
+  up_to_20: up to 20
+
+SAMPLES (every one of these is real rendered output):
+  sample d0bd9bfffebbc606eaa1  seed 42  [true_false]
+      stem:    9 > 9. True or False?
+      answer:  False
+      hints:   ["Compare 9 and 9.", "Start from the leftmost number and compare one at a time.", "9 is the same as 9, so we write 9 = 9."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 68b8fb834c707d200e2f  seed 43  [mcq]
+      stem:    Ana has 10 seashells. Jose has 12 seashells. Which statement is true?
+      answer:  10 < 12
+      options: 10 > 12 / 12 < 10 / 10 = 12 / 10 < 12
+      hints:   ["Compare 10 and 12.", "Start from the leftmost number and compare one at a time.", "10 is smaller than 12, so we write 10 < 12."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 4c2f2ef6b29864a08d54  seed 44  [cloze]
+      stem:    Compare the numbers: 1 ___ 15. Which sign is correct: >, <, or =?
+      answer:  <
+      options: > / < / =
+      hints:   ["Compare 1 and 15.", "Start from the leftmost number and compare one at a time.", "1 is smaller than 15, so we write 1 < 15."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 4618d993723c138638c0  seed 45  [mcq]
+      stem:    Jose has 8 seashells. Liza has 1 seashell. Which statement is true?
+      answer:  8 > 1
+      options: 8 = 1 / 8 < 1 / 8 > 1 / 1 > 8
+      hints:   ["Compare 8 and 1.", "Start from the leftmost number and compare one at a time.", "8 is bigger than 1, so we write 8 > 1."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample a83e3c489f6a8ca8f27a  seed 46  [cloze]
+      stem:    Compare the numbers: 2 ___ 8. Which sign is correct: >, <, or =?
+      answer:  <
+      options: < / = / >
+      hints:   ["Compare 2 and 8.", "Start from the leftmost number and compare one at a time.", "2 is smaller than 8, so we write 2 < 8."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample e318b8f8acb2a9459b0c  seed 500  [true_false]
+      stem:    9 = 7. True or False?
+      answer:  False
+      hints:   ["Compare 9 and 7.", "Start from the leftmost number and compare one at a time.", "9 is bigger than 7, so we write 9 > 7."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 2dafbe5c478b11ac8632  seed 501  [true_false]
+      stem:    20 < 19. True or False?
+      answer:  False
+      hints:   ["Compare 20 and 19.", "Start from the leftmost number and compare one at a time.", "20 is bigger than 19, so we write 20 > 19."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 32c516e795c471984aa0  seed 502  [cloze]
+      stem:    Compare the numbers: 12 ___ 12. Which sign is correct: >, <, or =?
+      answer:  =
+      options: = / < / >
+      hints:   ["Compare 12 and 12.", "Start from the leftmost number and compare one at a time.", "12 is the same as 12, so we write 12 = 12."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 00053abc941c6ccdf14a  seed 600  [true_false]
+      stem:    16 > 19. True or False?
+      answer:  False
+      hints:   ["Compare 16 and 19.", "Start from the leftmost number and compare one at a time.", "16 is smaller than 19, so we write 16 < 19."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 1da5a06a999c3c6ad219  seed 601  [cloze]
+      stem:    Moses has 19 stones. Another classmate has 19 stones. Which comparison is correct: 19 ___ 19?
+      answer:  =
+      options: > / < / =
+      hints:   ["Compare 19 and 19.", "Start from the leftmost number and compare one at a time.", "19 is the same as 19, so we write 19 = 19."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 99f1a73e00596d695a92  seed 602  [true_false]
+      stem:    1 = 10. True or False?
+      answer:  False
+      hints:   ["Compare 1 and 10.", "Start from the leftmost number and compare one at a time.", "1 is smaller than 10, so we write 1 < 10."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample dfd13b4aaddc63cc543c  seed 603  [mcq]
+      stem:    Kuya Pat has 1 storybook. Liza has 2 storybooks. Which statement is true?
+      answer:  1 < 2
+      options: 2 < 1 / 1 < 2 / 1 = 2 / 1 > 2
+      hints:   ["Compare 1 and 2.", "Start from the leftmost number and compare one at a time.", "1 is smaller than 2, so we write 1 < 2."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 1f8a6129027dd1c177ed  seed 604  [mcq]
+      stem:    Jose has 18 marbles. Ben has 17 marbles. Which statement is true?
+      answer:  18 > 17
+      options: 18 = 17 / 18 < 17 / 17 > 18 / 18 > 17
+      hints:   ["Compare 18 and 17.", "Start from the leftmost number and compare one at a time.", "18 is bigger than 17, so we write 18 > 17."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 24196cc79506dbd4e6db  seed 605  [true_false]
+      stem:    Riza has 13 milk tea cups. Another classmate has 18 milk tea cups. Which comparison is correct: 13 ___ 18? The answer is >. True or False?
+      answer:  False
+      hints:   ["Compare 13 and 18.", "Start from the leftmost number and compare one at a time.", "13 is smaller than 18, so we write 13 < 18."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample f79cba2c809f375141fa  seed 606  [mcq]
+      stem:    Which statement is true?
+      answer:  14 = 14
+      options: 14 = 14 / 14 > 15 / 14 < 14 / 14 > 14
+      hints:   ["Compare 14 and 14.", "Start from the leftmost number and compare one at a time.", "14 is the same as 14, so we write 14 = 14."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 97a894260c7586374711  seed 700  [mcq]
+      stem:    Maria has 7 pencils. Liza has 7 pencils. Which statement is true?
+      answer:  7 = 7
+      options: 7 > 8 / 7 < 7 / 7 > 7 / 7 = 7
+      hints:   ["Compare 7 and 7.", "Start from the leftmost number and compare one at a time.", "7 is the same as 7, so we write 7 = 7."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 8fbb4eeaee9980d07a70  seed 701  [cloze]
+      stem:    💃 Sir Rez has a math challenge about dance shoes. Compare the numbers: 14 ___ 12. Which sign is correct: >, <, or =?
+      answer:  >
+      options: = / > / <
+      hints:   ["Compare 14 and 12.", "Start from the leftmost number and compare one at a time.", "14 is bigger than 12, so we write 14 > 12."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 0855bfc0c13b91401644  seed 702  [cloze]
+      stem:    🏀 Isko has a math challenge about basketballs. Compare the numbers: 11 ___ 4. Which sign is correct: >, <, or =?
+      answer:  >
+      options: < / > / =
+      hints:   ["Compare 11 and 4.", "Start from the leftmost number and compare one at a time.", "11 is bigger than 4, so we write 11 > 4."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample a40633855b93fcc991c7  seed 800  [true_false]
+      stem:    20 > 2. True or False?
+      answer:  True
+      hints:   ["Compare 20 and 2.", "Start from the leftmost number and compare one at a time.", "20 is bigger than 2, so we write 20 > 2."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample bcb4cedd6b5265066c38  seed 801  [cloze]
+      stem:    Tito Bong has 20 jump ropes. Another classmate has 17 jump ropes. Which comparison is correct: 20 ___ 17?
+      answer:  >
+      options: < / > / =
+      hints:   ["Compare 20 and 17.", "Start from the leftmost number and compare one at a time.", "20 is bigger than 17, so we write 20 > 17."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample c1bbb88f67eb9bae9554  seed 900  [mcq]
+      stem:    Which statement is true?
+      answer:  1 < 2
+      options: 1 = 2 / 1 > 2 / 1 < 2 / 2 < 1
+      hints:   ["Compare 1 and 2.", "Start from the leftmost number and compare one at a time.", "1 is smaller than 2, so we write 1 < 2."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample f576ee441e9a1b471ff9  seed 901  [true_false]
+      stem:    2 < 1. True or False?
+      answer:  False
+      hints:   ["Compare 2 and 1.", "Start from the leftmost number and compare one at a time.", "2 is bigger than 1, so we write 2 > 1."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 6fa6a6ab8ea3e3c9bb82  seed 1000  [mcq]
+      stem:    Which statement is true?
+      answer:  14 > 5
+      options: 14 = 5 / 14 > 5 / 5 > 14 / 14 < 5
+      hints:   ["Compare 14 and 5.", "Start from the leftmost number and compare one at a time.", "14 is bigger than 5, so we write 14 > 5."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "hint_gated"}
+  sample 87bfc32aae8200025dba  seed 1001  [cloze]
+      stem:    Compare the numbers: 7 ___ 7. Which sign is correct: >, <, or =?
+      answer:  =
+      options: < / = / >
+      hints:   ["Compare 7 and 7.", "Start from the leftmost number and compare one at a time.", "7 is the same as 7, so we write 7 = 7."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "mastery_drill"}
+  sample b87f9e9de79a2f0eb0f9  seed 1002  [cloze]
+      stem:    Compare the numbers: 2 ___ 10. Which sign is correct: >, <, or =?
+      answer:  <
+      options: = / < / >
+      hints:   ["Compare 2 and 10.", "Start from the leftmost number and compare one at a time.", "2 is smaller than 10, so we write 2 < 10."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "scaffolded"}
+

@@ -1,7 +1,43 @@
 {
+  "schema_version": 2,
   "node_id": "mat_g1_na_q1_4",
-  "reviewed_by": "reviewer-c1-lantern-fescue-3061",
-  "review_date": "2026-09-11",
+  "competency_snapshot": {
+    "text": "Order numbers up to 20 from smallest to largest, and vice versa.",
+    "grade": 1,
+    "quarter": 1,
+    "subdomain": null
+  },
+  "requirements_snapshot": [
+    {
+      "kind": "task",
+      "id": "order",
+      "clause": "Order"
+    },
+    {
+      "kind": "object",
+      "id": "numbers",
+      "clause": "numbers"
+    },
+    {
+      "kind": "range",
+      "id": "up_to_20",
+      "clause": "up to 20"
+    },
+    {
+      "kind": "property",
+      "id": "smallest_to_largest",
+      "clause": "smallest to largest"
+    },
+    {
+      "kind": "property",
+      "id": "vice_versa",
+      "clause": "vice versa"
+    }
+  ],
+  "packet_digest": "f7cb265cf8823d87b0cb83eea38b8b7c48a5a5841cb7859b65e61c7f71352453",
+  "sampling_version": "phase2-stratified-v2-rendered-visual",
+  "reviewed_by": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_4-20260924",
+  "review_date": "2026-09-24",
   "blind": true,
   "sample_seeds": [
     42,
@@ -17,10 +53,49 @@
     602,
     603,
     604,
-    605
+    605,
+    606,
+    700,
+    701,
+    702,
+    800,
+    801,
+    900,
+    901,
+    1000,
+    1001,
+    1002
+  ],
+  "sample_ids": [
+    "b91eeaaf418cc501bfd7",
+    "8bcb15adaa92921f22b0",
+    "c73c3a01e162753330d0",
+    "4528d5bce60528a30ceb",
+    "6d41b4c876c757656d94",
+    "ac9fa94f67e0177608a1",
+    "5ca4fdcd62fb64ad020a",
+    "15ff5e9b0e7dbda4ae15",
+    "783ac5df4d5208e0fca2",
+    "cb3c708535dfc2ee9fce",
+    "83d68354aba5baf9ac50",
+    "88736eb0fb0f29664594",
+    "e9af5a27b588bc9d299e",
+    "93d6185fbbb19e378ac0",
+    "a5acc1de4f227afbdaf6",
+    "a4f20e21a4e3e640da4a",
+    "0294d5111445cade8127",
+    "348d2e2ba3c9ddb549e0",
+    "053f6aa01bf7a1f947c0",
+    "896cdc42d5cb28888826",
+    "12cc42a6c7b83dec140d",
+    "62a31f3e41a9618aa3c6",
+    "f6701b82ec93b19b1001",
+    "b3e23904b97a4e55ea41",
+    "5a0baf5ce1cbad27aba7"
   ],
   "samples_reviewed": [
     {
+      "node_id": "mat_g1_na_q1_4",
       "seed": 42,
       "formatter": "sort_order",
       "question_text": "Arrange these numbers from largest to smallest: 9, 10, 8",
@@ -28,9 +103,36 @@
         10,
         9,
         8
-      ]
+      ],
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "sort_order",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "drag",
+        "experience": "standard"
+      },
+      "resolved_answer": [
+        10,
+        9,
+        8
+      ],
+      "hints": [
+        "Numbers to order: [8, 9, 10].",
+        "Find the smallest number first, then the next smallest.",
+        "Ordered from least to greatest: [8, 9, 10]."
+      ],
+      "sample_id": "b91eeaaf418cc501bfd7",
+      "replay_digest": "ddcf7ee877b7ef4266da028f99ca8cdddf44a93e54a91671815386b98b72b27b"
     },
     {
+      "node_id": "mat_g1_na_q1_4",
       "seed": 43,
       "formatter": "sort_order",
       "question_text": "Ana counted marbles collected by 3 friends: 1, 4, 15. Arrange the counts from smallest to largest.",
@@ -38,9 +140,36 @@
         1,
         4,
         15
-      ]
+      ],
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "sort_order",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "drag",
+        "experience": "standard"
+      },
+      "resolved_answer": [
+        1,
+        4,
+        15
+      ],
+      "hints": [
+        "Numbers to order: [1, 4, 15].",
+        "Find the smallest number first, then the next smallest.",
+        "Ordered from least to greatest: [1, 4, 15]."
+      ],
+      "sample_id": "8bcb15adaa92921f22b0",
+      "replay_digest": "68dbe61950d16d1af8372acf83d4099cf9f8d84fdab5c1dbe92aa0a1a6153b8a"
     },
     {
+      "node_id": "mat_g1_na_q1_4",
       "seed": 44,
       "formatter": "ordering",
       "question_text": "Arrange these numbers from smallest to largest: 5, 3, 1, 10",
@@ -49,9 +178,37 @@
         3,
         5,
         10
-      ]
+      ],
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "ordering",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "drag",
+        "experience": "standard"
+      },
+      "resolved_answer": [
+        1,
+        3,
+        5,
+        10
+      ],
+      "hints": [
+        "Numbers to order: [1, 3, 5, 10].",
+        "Find the smallest number first, then the next smallest.",
+        "Ordered from least to greatest: [1, 3, 5, 10]."
+      ],
+      "sample_id": "c73c3a01e162753330d0",
+      "replay_digest": "231dec97c4418842cc36478a7f8f9febc4ebc8dce4fd2249b5f9a5b3aa78adb2"
     },
     {
+      "node_id": "mat_g1_na_q1_4",
       "seed": 45,
       "formatter": "sort_order",
       "question_text": "Ana counted seashells collected by 3 friends: 1, 3, 4. Arrange the counts from largest to smallest.",
@@ -59,9 +216,36 @@
         4,
         3,
         1
-      ]
+      ],
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "sort_order",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "drag",
+        "experience": "standard"
+      },
+      "resolved_answer": [
+        4,
+        3,
+        1
+      ],
+      "hints": [
+        "Numbers to order: [1, 3, 4].",
+        "Find the smallest number first, then the next smallest.",
+        "Ordered from least to greatest: [1, 3, 4]."
+      ],
+      "sample_id": "4528d5bce60528a30ceb",
+      "replay_digest": "23ebe375b827d879dde7ab777c04e634dd3e08893bd8944939f96d2e77a379b4"
     },
     {
+      "node_id": "mat_g1_na_q1_4",
       "seed": 46,
       "formatter": "ordering",
       "question_text": "Arrange these numbers from smallest to largest: 17, 8, 20",
@@ -69,9 +253,36 @@
         8,
         17,
         20
-      ]
+      ],
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "ordering",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "drag",
+        "experience": "standard"
+      },
+      "resolved_answer": [
+        8,
+        17,
+        20
+      ],
+      "hints": [
+        "Numbers to order: [8, 17, 20].",
+        "Find the smallest number first, then the next smallest.",
+        "Ordered from least to greatest: [8, 17, 20]."
+      ],
+      "sample_id": "6d41b4c876c757656d94",
+      "replay_digest": "54bad8d984c2a07a9d310bfcf41e9e870280f41f70a14cbce72d3fab766aafa3"
     },
     {
+      "node_id": "mat_g1_na_q1_4",
       "seed": 500,
       "formatter": "sort_order",
       "question_text": "Arrange these numbers from smallest to largest: 13, 20, 18",
@@ -79,9 +290,39 @@
         13,
         18,
         20
-      ]
+      ],
+      "requested": {
+        "difficulty_profile": {
+          "max_value": 1.0,
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "sort_order",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "drag",
+        "experience": "standard"
+      },
+      "resolved_answer": [
+        13,
+        18,
+        20
+      ],
+      "hints": [
+        "Numbers to order: [13, 18, 20].",
+        "Find the smallest number first, then the next smallest.",
+        "Ordered from least to greatest: [13, 18, 20]."
+      ],
+      "sample_id": "ac9fa94f67e0177608a1",
+      "replay_digest": "a028f187e05a3971a74c54608b80f7b26d09ef8f7a083c1f907d39b078dfcc3f"
     },
     {
+      "node_id": "mat_g1_na_q1_4",
       "seed": 501,
       "formatter": "sort_order",
       "question_text": "Arrange these numbers from largest to smallest: 20, 11, 17",
@@ -89,9 +330,39 @@
         20,
         17,
         11
-      ]
+      ],
+      "requested": {
+        "difficulty_profile": {
+          "max_value": 1.0,
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "sort_order",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "drag",
+        "experience": "standard"
+      },
+      "resolved_answer": [
+        20,
+        17,
+        11
+      ],
+      "hints": [
+        "Numbers to order: [11, 17, 20].",
+        "Find the smallest number first, then the next smallest.",
+        "Ordered from least to greatest: [11, 17, 20]."
+      ],
+      "sample_id": "5ca4fdcd62fb64ad020a",
+      "replay_digest": "d2021da6b88f909523caf8d8c01534ee123006bc08abb01ea6519ffca98317a6"
     },
     {
+      "node_id": "mat_g1_na_q1_4",
       "seed": 502,
       "formatter": "ordering",
       "question_text": "Arrange these numbers from largest to smallest: 6, 14, 20",
@@ -99,9 +370,39 @@
         20,
         14,
         6
-      ]
+      ],
+      "requested": {
+        "difficulty_profile": {
+          "max_value": 1.0,
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "ordering",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "drag",
+        "experience": "standard"
+      },
+      "resolved_answer": [
+        20,
+        14,
+        6
+      ],
+      "hints": [
+        "Numbers to order: [6, 14, 20].",
+        "Find the smallest number first, then the next smallest.",
+        "Ordered from least to greatest: [6, 14, 20]."
+      ],
+      "sample_id": "15ff5e9b0e7dbda4ae15",
+      "replay_digest": "92486cd12113eaf284fc2f81369011a0956f862301b059c5ec01a30a419febf9"
     },
     {
+      "node_id": "mat_g1_na_q1_4",
       "seed": 600,
       "formatter": "sort_order",
       "question_text": "Arrange these numbers from largest to smallest: 19, 20, 5",
@@ -109,9 +410,38 @@
         20,
         19,
         5
-      ]
+      ],
+      "requested": {
+        "difficulty_profile": {
+          "context": "pure"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "sort_order",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "drag",
+        "experience": "standard"
+      },
+      "resolved_answer": [
+        20,
+        19,
+        5
+      ],
+      "hints": [
+        "Numbers to order: [5, 19, 20].",
+        "Find the smallest number first, then the next smallest.",
+        "Ordered from least to greatest: [5, 19, 20]."
+      ],
+      "sample_id": "783ac5df4d5208e0fca2",
+      "replay_digest": "4e31a1bb94c3ae506a07913a6b7725aafafdc2ca5e492ac0af511b63ff96d857"
     },
     {
+      "node_id": "mat_g1_na_q1_4",
       "seed": 601,
       "formatter": "ordering",
       "question_text": "Ben counted storybooks collected by 3 friends: 2, 10, 11. Arrange the counts from smallest to largest.",
@@ -119,9 +449,38 @@
         2,
         10,
         11
-      ]
+      ],
+      "requested": {
+        "difficulty_profile": {
+          "context": "word_problem"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "ordering",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "drag",
+        "experience": "standard"
+      },
+      "resolved_answer": [
+        2,
+        10,
+        11
+      ],
+      "hints": [
+        "Numbers to order: [2, 10, 11].",
+        "Find the smallest number first, then the next smallest.",
+        "Ordered from least to greatest: [2, 10, 11]."
+      ],
+      "sample_id": "cb3c708535dfc2ee9fce",
+      "replay_digest": "38af3cdac324c19edee247590f1c63b49f62986f42f05f03ce2325b9e3f2b2b7"
     },
     {
+      "node_id": "mat_g1_na_q1_4",
       "seed": 602,
       "formatter": "sort_order",
       "question_text": "Arrange these numbers from smallest to largest: 7, 14, 12",
@@ -129,9 +488,38 @@
         7,
         12,
         14
-      ]
+      ],
+      "requested": {
+        "difficulty_profile": {
+          "direction": "ascending"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "sort_order",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "drag",
+        "experience": "standard"
+      },
+      "resolved_answer": [
+        7,
+        12,
+        14
+      ],
+      "hints": [
+        "Numbers to order: [7, 12, 14].",
+        "Find the smallest number first, then the next smallest.",
+        "Ordered from least to greatest: [7, 12, 14]."
+      ],
+      "sample_id": "83d68354aba5baf9ac50",
+      "replay_digest": "1a31049cbbf51403593bcdc8f004f1c12a1a8fed18442d9be42ffb3fe7201eaa"
     },
     {
+      "node_id": "mat_g1_na_q1_4",
       "seed": 603,
       "formatter": "sort_order",
       "question_text": "Kuya Pat counted stickers collected by 4 friends: 1, 3, 7, 11. Arrange the counts from largest to smallest.",
@@ -140,9 +528,39 @@
         7,
         3,
         1
-      ]
+      ],
+      "requested": {
+        "difficulty_profile": {
+          "direction": "descending"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "sort_order",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "drag",
+        "experience": "standard"
+      },
+      "resolved_answer": [
+        11,
+        7,
+        3,
+        1
+      ],
+      "hints": [
+        "Numbers to order: [1, 3, 7, 11].",
+        "Find the smallest number first, then the next smallest.",
+        "Ordered from least to greatest: [1, 3, 7, 11]."
+      ],
+      "sample_id": "88736eb0fb0f29664594",
+      "replay_digest": "5da093b61f1b7612b9de50eab12a0394d847fe0a0748430d7af2222395e51bed"
     },
     {
+      "node_id": "mat_g1_na_q1_4",
       "seed": 604,
       "formatter": "sort_order",
       "question_text": "Maria counted seashells collected by 3 friends: 3, 5, 6. Arrange the counts from smallest to largest.",
@@ -150,9 +568,38 @@
         3,
         5,
         6
-      ]
+      ],
+      "requested": {
+        "difficulty_profile": {
+          "proximity": "close_together"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "sort_order",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "drag",
+        "experience": "standard"
+      },
+      "resolved_answer": [
+        3,
+        5,
+        6
+      ],
+      "hints": [
+        "Numbers to order: [3, 5, 6].",
+        "Find the smallest number first, then the next smallest.",
+        "Ordered from least to greatest: [3, 5, 6]."
+      ],
+      "sample_id": "e9af5a27b588bc9d299e",
+      "replay_digest": "86cc5481b6c569ecaa6f9e90c782688676c806dd74e46becc267e0b0a6ea605f"
     },
     {
+      "node_id": "mat_g1_na_q1_4",
       "seed": 605,
       "formatter": "sort_order",
       "question_text": "Ana counted marbles collected by 4 friends: 1, 6, 8, 10. Arrange the counts from largest to smallest.",
@@ -161,34 +608,1172 @@
         8,
         6,
         1
-      ]
+      ],
+      "requested": {
+        "difficulty_profile": {
+          "proximity": "far_apart"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "sort_order",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "drag",
+        "experience": "standard"
+      },
+      "resolved_answer": [
+        10,
+        8,
+        6,
+        1
+      ],
+      "hints": [
+        "Numbers to order: [1, 6, 8, 10].",
+        "Find the smallest number first, then the next smallest.",
+        "Ordered from least to greatest: [1, 6, 8, 10]."
+      ],
+      "sample_id": "93d6185fbbb19e378ac0",
+      "replay_digest": "d2a594b0fcccb8ff78b593351108b6db56d3bdb239f1e2dce9c1002ce63c2f83"
+    },
+    {
+      "node_id": "mat_g1_na_q1_4",
+      "seed": 606,
+      "formatter": "sort_order",
+      "question_text": "Arrange these numbers from largest to smallest: 12, 15, 17",
+      "correct_answer": [
+        17,
+        15,
+        12
+      ],
+      "requested": {
+        "difficulty_profile": {
+          "task_type": "order_sequence"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "sort_order",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "drag",
+        "experience": "standard"
+      },
+      "resolved_answer": [
+        17,
+        15,
+        12
+      ],
+      "hints": [
+        "Numbers to order: [12, 15, 17].",
+        "Find the smallest number first, then the next smallest.",
+        "Ordered from least to greatest: [12, 15, 17]."
+      ],
+      "sample_id": "a5acc1de4f227afbdaf6",
+      "replay_digest": "47267a1745d890bb401c3fb00a2c7890e93684ffae7999df93b8e56db17b46d7"
+    },
+    {
+      "node_id": "mat_g1_na_q1_4",
+      "seed": 700,
+      "formatter": "sort_order",
+      "question_text": "Liza counted seashells collected by 3 friends: 1, 7, 17. Arrange the counts from smallest to largest.",
+      "correct_answer": [
+        1,
+        7,
+        17
+      ],
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "sort_order",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "drag",
+        "experience": "standard"
+      },
+      "resolved_answer": [
+        1,
+        7,
+        17
+      ],
+      "hints": [
+        "Numbers to order: [1, 7, 17].",
+        "Find the smallest number first, then the next smallest.",
+        "Ordered from least to greatest: [1, 7, 17]."
+      ],
+      "sample_id": "a4f20e21a4e3e640da4a",
+      "replay_digest": "b41407b0d01034da2870b719f230d8a8f0e568859ca0997b1bb2a6e565a303c9"
+    },
+    {
+      "node_id": "mat_g1_na_q1_4",
+      "seed": 701,
+      "formatter": "ordering",
+      "question_text": "💃 Sir Rez has a math challenge about dance shoes. Arrange these numbers from largest to smallest: 19, 20, 8",
+      "correct_answer": [
+        20,
+        19,
+        8
+      ],
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "history_trivia",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "ordering",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "drag",
+        "experience": "standard"
+      },
+      "resolved_answer": [
+        20,
+        19,
+        8
+      ],
+      "hints": [
+        "Numbers to order: [8, 19, 20].",
+        "Find the smallest number first, then the next smallest.",
+        "Ordered from least to greatest: [8, 19, 20]."
+      ],
+      "sample_id": "0294d5111445cade8127",
+      "replay_digest": "0cac5140fa443f6459e1e978163968d9e1b5c3948588f5105687422bc40d0f37"
+    },
+    {
+      "node_id": "mat_g1_na_q1_4",
+      "seed": 702,
+      "formatter": "ordering",
+      "question_text": "🏀 Isko has a math challenge about basketballs. Arrange these numbers from largest to smallest: 5, 7, 9",
+      "correct_answer": [
+        9,
+        7,
+        5
+      ],
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "anime_rpg",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "ordering",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "drag",
+        "experience": "standard"
+      },
+      "resolved_answer": [
+        9,
+        7,
+        5
+      ],
+      "hints": [
+        "Numbers to order: [5, 7, 9].",
+        "Find the smallest number first, then the next smallest.",
+        "Ordered from least to greatest: [5, 7, 9]."
+      ],
+      "sample_id": "348d2e2ba3c9ddb549e0",
+      "replay_digest": "110f066f0f7ed988c746180ea6277104e2937db385c78563f5858c51b958ec50"
+    },
+    {
+      "node_id": "mat_g1_na_q1_4",
+      "seed": 800,
+      "formatter": "ordering",
+      "question_text": "Arrange these numbers from smallest to largest: 1, 15, 14, 16",
+      "correct_answer": [
+        1,
+        14,
+        15,
+        16
+      ],
+      "requested": {
+        "difficulty_profile": {
+          "max_value": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "ordering",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "drag",
+        "experience": "standard"
+      },
+      "resolved_answer": [
+        1,
+        14,
+        15,
+        16
+      ],
+      "hints": [
+        "Numbers to order: [1, 14, 15, 16].",
+        "Find the smallest number first, then the next smallest.",
+        "Ordered from least to greatest: [1, 14, 15, 16]."
+      ],
+      "sample_id": "053f6aa01bf7a1f947c0",
+      "replay_digest": "a867aa78c95f718cea9deee557e0ae2f42a45ed4d6f0a5fcb5a12c6ee7474589"
+    },
+    {
+      "node_id": "mat_g1_na_q1_4",
+      "seed": 801,
+      "formatter": "ordering",
+      "question_text": "Kuya Pat counted pencils collected by 3 friends: 13, 16, 20. Arrange the counts from largest to smallest.",
+      "correct_answer": [
+        20,
+        16,
+        13
+      ],
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "ordering",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "drag",
+        "experience": "standard"
+      },
+      "resolved_answer": [
+        20,
+        16,
+        13
+      ],
+      "hints": [
+        "Numbers to order: [13, 16, 20].",
+        "Find the smallest number first, then the next smallest.",
+        "Ordered from least to greatest: [13, 16, 20]."
+      ],
+      "sample_id": "896cdc42d5cb28888826",
+      "replay_digest": "aed5d2c54c648fc5fd772372a5241c0424b95e8ed6471e14c1bed1cdb460fef1"
+    },
+    {
+      "node_id": "mat_g1_na_q1_4",
+      "seed": 900,
+      "formatter": "sort_order",
+      "question_text": "Arrange these numbers from largest to smallest: 2, 3, 1",
+      "correct_answer": [
+        3,
+        2,
+        1
+      ],
+      "requested": {
+        "difficulty_profile": {
+          "max_value": 0.0,
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "sort_order",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "drag",
+        "experience": "standard"
+      },
+      "resolved_answer": [
+        3,
+        2,
+        1
+      ],
+      "hints": [
+        "Numbers to order: [1, 2, 3].",
+        "Find the smallest number first, then the next smallest.",
+        "Ordered from least to greatest: [1, 2, 3]."
+      ],
+      "sample_id": "12cc42a6c7b83dec140d",
+      "replay_digest": "5e5379c6c081919849c41f6d083200e71712db128857478aee75e5ac1195f463"
+    },
+    {
+      "node_id": "mat_g1_na_q1_4",
+      "seed": 901,
+      "formatter": "sort_order",
+      "question_text": "Arrange these numbers from smallest to largest: 2, 3, 1",
+      "correct_answer": [
+        1,
+        2,
+        3
+      ],
+      "requested": {
+        "difficulty_profile": {
+          "max_value": 0.0,
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "sort_order",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "drag",
+        "experience": "standard"
+      },
+      "resolved_answer": [
+        1,
+        2,
+        3
+      ],
+      "hints": [
+        "Numbers to order: [1, 2, 3].",
+        "Find the smallest number first, then the next smallest.",
+        "Ordered from least to greatest: [1, 2, 3]."
+      ],
+      "sample_id": "62a31f3e41a9618aa3c6",
+      "replay_digest": "08194d52d1067c3dbeb656a1f873566d712351de25076abe710b6b7889f77f5d"
+    },
+    {
+      "node_id": "mat_g1_na_q1_4",
+      "seed": 1000,
+      "formatter": "sort_order",
+      "question_text": "Arrange these numbers from largest to smallest: 17, 8, 7, 16",
+      "correct_answer": [
+        17,
+        16,
+        8,
+        7
+      ],
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "hint_gated"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "sort_order",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "drag",
+        "experience": "hint_gated"
+      },
+      "resolved_answer": [
+        17,
+        16,
+        8,
+        7
+      ],
+      "hints": [
+        "Numbers to order: [7, 8, 16, 17].",
+        "Find the smallest number first, then the next smallest.",
+        "Ordered from least to greatest: [7, 8, 16, 17]."
+      ],
+      "sample_id": "f6701b82ec93b19b1001",
+      "replay_digest": "b6c6c1f1b9bed53a8a1cb93422a7a31e5758013e7ebc550ddc5d1c3088d8e56a"
+    },
+    {
+      "node_id": "mat_g1_na_q1_4",
+      "seed": 1001,
+      "formatter": "ordering",
+      "question_text": "Arrange these numbers from largest to smallest: 8, 12, 18",
+      "correct_answer": [
+        18,
+        12,
+        8
+      ],
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "mastery_drill"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "ordering",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "drag",
+        "experience": "mastery_drill"
+      },
+      "resolved_answer": [
+        18,
+        12,
+        8
+      ],
+      "hints": [
+        "Numbers to order: [8, 12, 18].",
+        "Find the smallest number first, then the next smallest.",
+        "Ordered from least to greatest: [8, 12, 18]."
+      ],
+      "sample_id": "b3e23904b97a4e55ea41",
+      "replay_digest": "1bc9ede98f6706baa85eb4689c2714fee9c411ef6adad2d96553aa9b9c10fad3"
+    },
+    {
+      "node_id": "mat_g1_na_q1_4",
+      "seed": 1002,
+      "formatter": "ordering",
+      "question_text": "Arrange these numbers from largest to smallest: 7, 9, 4",
+      "correct_answer": [
+        9,
+        7,
+        4
+      ],
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "scaffolded"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "ordering",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "drag",
+        "experience": "scaffolded"
+      },
+      "resolved_answer": [
+        9,
+        7,
+        4
+      ],
+      "hints": [
+        "Numbers to order: [4, 7, 9].",
+        "Find the smallest number first, then the next smallest.",
+        "Ordered from least to greatest: [4, 7, 9]."
+      ],
+      "sample_id": "5a0baf5ce1cbad27aba7",
+      "replay_digest": "fc322f8f0836db09a1829677cc099c628d044f7bdef688bc5a73505fe0f8b09d"
+    }
+  ],
+  "sample_assessments": [
+    {
+      "sample_id": "b91eeaaf418cc501bfd7",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem clearly specifies largest-to-smallest order and presents three distinct numbers."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "This is a direct numerical task with no contextual claim that could conflict with the requested ordering."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "The stem is clear, but its hints tell the learner to find the smallest first and finish least to greatest, contradicting the largest-to-smallest task."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer [10, 9, 8] is the correct descending arrangement of 9, 10, and 8."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_4-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_4-20260924:mat_g1_na_q1_4"
+    },
+    {
+      "sample_id": "8bcb15adaa92921f22b0",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The three distinct counts and the phrase smallest to largest specify one unambiguous ordering."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The claim that three friends have counts 1, 4, and 15 is coherent and supports the ordering task."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The contextual stem, answer direction, and ascending hints consistently communicate the requested action."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer [1, 4, 15] correctly orders all three given counts from least to greatest."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_4-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_4-20260924:mat_g1_na_q1_4"
+    },
+    {
+      "sample_id": "c73c3a01e162753330d0",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem names a single direction and gives four distinct values, so the expected sequence is determinate."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "This direct ordering prompt contains no contextual scenario requiring additional interpretation."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem and all hints consistently request smallest-to-largest ordering in accessible language."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer [1, 3, 5, 10] is the correct ascending order of the four listed numbers."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_4-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_4-20260924:mat_g1_na_q1_4"
+    },
+    {
+      "sample_id": "4528d5bce60528a30ceb",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem clearly requests largest-to-smallest order for three distinct shell counts."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The stated counts collected by three friends form a coherent simple context for ordering."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "The descending stem is understandable, but the displayed hints instruct least-to-greatest ordering instead of the requested reverse direction."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer [4, 3, 1] correctly arranges 1, 3, and 4 from largest to smallest."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_4-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_4-20260924:mat_g1_na_q1_4"
+    },
+    {
+      "sample_id": "6d41b4c876c757656d94",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The direction and three distinct inputs make the required ordering unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The direct numerical task has no contextual assumptions and is logically well formed."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The ascending stem and ascending hints agree and state the operation plainly."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer [8, 17, 20] is the correct ascending order of 17, 8, and 20."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_4-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_4-20260924:mat_g1_na_q1_4"
+    },
+    {
+      "sample_id": "ac9fa94f67e0177608a1",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Three distinct numbers and an explicit smallest-to-largest direction determine one answer."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "This direct list-ordering item is internally coherent and requires no unstated context."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The requested ascending direction is repeated consistently by the stem and hints."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer [13, 18, 20] correctly sorts the supplied values in ascending order."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_4-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_4-20260924:mat_g1_na_q1_4"
+    },
+    {
+      "sample_id": "5ca4fdcd62fb64ad020a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The requested reverse direction is explicit and the three supplied numbers are distinct."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The item is a direct numerical ordering task with no contradictory contextual information."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "Although the stem requests largest-to-smallest, the hints describe smallest-first and least-to-greatest ordering."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer [20, 17, 11] is mathematically correct for descending order."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_4-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_4-20260924:mat_g1_na_q1_4"
+    },
+    {
+      "sample_id": "15ff5e9b0e7dbda4ae15",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The wording specifies one ordering direction and the three values are all different."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "This direct task is logically self-contained and presents no contextual inconsistency."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "The hints use ascending instructions even though the stem requires largest-to-smallest ordering."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer [20, 14, 6] correctly orders 6, 14, and 20 from largest to smallest."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_4-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_4-20260924:mat_g1_na_q1_4"
+    },
+    {
+      "sample_id": "783ac5df4d5208e0fca2",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem gives three distinct values and explicitly asks for largest-to-smallest order."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The direct ordering item is internally consistent and needs no additional interpretation."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "The hint sequence recommends ascending ordering, which conflicts with the descending direction stated in the stem."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer [20, 19, 5] correctly sorts the listed values in descending order."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_4-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_4-20260924:mat_g1_na_q1_4"
+    },
+    {
+      "sample_id": "cb3c708535dfc2ee9fce",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The counts and smallest-to-largest direction are explicit, with no competing interpretation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The story that three friends collected 2, 10, and 11 storybooks is coherent for this task."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The contextual wording and ascending hints consistently state what sequence the learner should produce."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer [2, 10, 11] correctly orders the three storybook counts."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_4-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_4-20260924:mat_g1_na_q1_4"
+    },
+    {
+      "sample_id": "83d68354aba5baf9ac50",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem plainly requests ascending order for three distinct numbers."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The direct list has a coherent numerical comparison task without hidden assumptions."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem and hints agree on smallest-to-largest ordering and use clear wording."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer [7, 12, 14] is the correct ascending arrangement of the inputs."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_4-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_4-20260924:mat_g1_na_q1_4"
+    },
+    {
+      "sample_id": "88736eb0fb0f29664594",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Four distinct counts and an explicit largest-to-smallest direction make the expected result clear."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The sticker counts assigned to four friends form a coherent context for comparing numbers."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "The hints give an ascending sequence and ascending procedure while the stem asks for largest-to-smallest."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer [11, 7, 3, 1] correctly orders all four counts from largest to smallest."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_4-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_4-20260924:mat_g1_na_q1_4"
+    },
+    {
+      "sample_id": "e9af5a27b588bc9d299e",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The three distinct counts and explicit ascending direction identify one unambiguous answer."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The seashell-count context is plausible and consistent with the three values provided."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem, hints, and answer direction all consistently communicate ascending order."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer [3, 5, 6] correctly orders the given counts from smallest to largest."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_4-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_4-20260924:mat_g1_na_q1_4"
+    },
+    {
+      "sample_id": "93d6185fbbb19e378ac0",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem identifies descending order and gives four distinct counts, so the result is determinate."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The marble counts for four friends are coherent and directly support the ordering request."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "The hints consistently describe ascending order, conflicting with the largest-to-smallest request in the stem."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer [10, 8, 6, 1] correctly sorts the four values in descending order."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_4-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_4-20260924:mat_g1_na_q1_4"
+    },
+    {
+      "sample_id": "a5acc1de4f227afbdaf6",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The wording clearly requests descending order and supplies three distinct inputs."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "This direct numerical item is self-contained and logically consistent."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "The stem asks for largest-to-smallest, but every hint tells the learner to proceed from smallest to largest."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer [17, 15, 12] is the correct descending arrangement."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_4-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_4-20260924:mat_g1_na_q1_4"
+    },
+    {
+      "sample_id": "a4f20e21a4e3e640da4a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The contextual counts are distinct and the ascending instruction is explicit."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Three friends collecting 1, 7, and 17 seashells is a coherent scenario for ordering counts."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem and hints agree on arranging the counts from smallest to largest."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer [1, 7, 17] correctly orders the three counts in ascending order."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_4-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_4-20260924:mat_g1_na_q1_4"
+    },
+    {
+      "sample_id": "0294d5111445cade8127",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem unambiguously requests descending order for the three listed values."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The dance-shoe framing adds no mathematical contradiction and the numerical task remains coherent."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "The playful context does not remove the conflict between the descending stem and ascending hints."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer [20, 19, 8] correctly arranges the supplied numbers from largest to smallest."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_4-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_4-20260924:mat_g1_na_q1_4"
+    },
+    {
+      "sample_id": "348d2e2ba3c9ddb549e0",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Three distinct values and a clear largest-to-smallest instruction determine the answer."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The basketball framing is coherent and does not alter the numerical ordering task."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "The stem requests descending order while the hints direct the learner toward an ascending sequence."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer [9, 7, 5] is the correct descending order of the three numbers."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_4-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_4-20260924:mat_g1_na_q1_4"
+    },
+    {
+      "sample_id": "053f6aa01bf7a1f947c0",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The four distinct values and explicit smallest-to-largest direction are unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "This direct numerical item is internally consistent and needs no additional context."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The ascending stem, hints, and answer all point to the same learner action."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer [1, 14, 15, 16] correctly sorts the inputs in ascending order."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_4-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_4-20260924:mat_g1_na_q1_4"
+    },
+    {
+      "sample_id": "896cdc42d5cb28888826",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem clearly identifies descending order and gives three distinct collection counts."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The pencil counts collected by three friends provide a coherent simple context."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "The hints present ascending instructions despite the stem requiring largest-to-smallest ordering."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer [20, 16, 13] correctly orders the three counts from largest to smallest."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_4-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_4-20260924:mat_g1_na_q1_4"
+    },
+    {
+      "sample_id": "12cc42a6c7b83dec140d",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The three distinct inputs and largest-to-smallest wording specify a single intended sequence."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The direct numerical prompt is self-contained and logically valid."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "The hints instruct least-to-greatest ordering, directly conflicting with the descending stem."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer [3, 2, 1] correctly orders 2, 3, and 1 from largest to smallest."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_4-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_4-20260924:mat_g1_na_q1_4"
+    },
+    {
+      "sample_id": "62a31f3e41a9618aa3c6",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The ascending direction is explicit and the three values are distinct."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "This direct list-ordering item contains no contextual or logical inconsistency."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem and hints consistently tell the learner to arrange the numbers from smallest to largest."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer [1, 2, 3] is the correct ascending arrangement."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_4-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_4-20260924:mat_g1_na_q1_4"
+    },
+    {
+      "sample_id": "f6701b82ec93b19b1001",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The four distinct numbers and explicit descending direction make the answer unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The direct numerical task is coherent; the interaction mode does not change its mathematical meaning."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "The hints give an ascending procedure and sequence even though the stem asks for largest-to-smallest."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer [17, 16, 8, 7] correctly sorts the four inputs in descending order."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_4-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_4-20260924:mat_g1_na_q1_4"
+    },
+    {
+      "sample_id": "b3e23904b97a4e55ea41",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem explicitly asks for largest-to-smallest order and provides three distinct values."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "This direct ordering item is logically self-contained and mathematically coherent."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "The ascending hint sequence conflicts with the descending task stated in the stem."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer [18, 12, 8] is the correct largest-to-smallest arrangement."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_4-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_4-20260924:mat_g1_na_q1_4"
+    },
+    {
+      "sample_id": "5a0baf5ce1cbad27aba7",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The direction is stated plainly and the three numbers are distinct."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The direct numerical prompt is internally consistent and requires no contextual inference."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "The hints direct ascending ordering, which is inconsistent with the largest-to-smallest stem."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer [9, 7, 4] correctly orders the supplied numbers from largest to smallest."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_4-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_4-20260924:mat_g1_na_q1_4"
+    }
+  ],
+  "clause_evidence": [
+    {
+      "requirement_id": "order",
+      "clause": "Order",
+      "verdict": "PASS",
+      "reasoning": "Every printed stem requires the learner to place the supplied values into an ordered sequence.",
+      "sample_ids": [
+        "b91eeaaf418cc501bfd7",
+        "c73c3a01e162753330d0"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_4-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_4-20260924:mat_g1_na_q1_4"
+    },
+    {
+      "requirement_id": "numbers",
+      "clause": "numbers",
+      "verdict": "PASS",
+      "reasoning": "All samples present numerical values as the objects that must be compared and arranged.",
+      "sample_ids": [
+        "b91eeaaf418cc501bfd7",
+        "8bcb15adaa92921f22b0"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_4-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_4-20260924:mat_g1_na_q1_4"
+    },
+    {
+      "requirement_id": "up_to_20",
+      "clause": "up to 20",
+      "verdict": "PASS",
+      "reasoning": "The packet includes values through 20 and no displayed value exceeds the stated upper bound.",
+      "sample_ids": [
+        "6d41b4c876c757656d94",
+        "896cdc42d5cb28888826"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_4-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_4-20260924:mat_g1_na_q1_4"
+    },
+    {
+      "requirement_id": "smallest_to_largest",
+      "clause": "smallest to largest",
+      "verdict": "PASS",
+      "reasoning": "Multiple samples explicitly request ascending order and provide correctly ascending answers.",
+      "sample_ids": [
+        "8bcb15adaa92921f22b0",
+        "c73c3a01e162753330d0"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_4-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_4-20260924:mat_g1_na_q1_4"
+    },
+    {
+      "requirement_id": "vice_versa",
+      "clause": "vice versa",
+      "verdict": "PASS",
+      "reasoning": "Multiple samples explicitly request largest-to-smallest order, demonstrating the reverse direction.",
+      "sample_ids": [
+        "b91eeaaf418cc501bfd7",
+        "4528d5bce60528a30ceb"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_4-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_4-20260924:mat_g1_na_q1_4"
+    }
+  ],
+  "dispatch_provenance": [
+    {
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_4-20260924:mat_g1_na_q1_4",
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_4-20260924",
+      "review_date": "2026-09-24",
+      "blind": true,
+      "packet_digest": "f7cb265cf8823d87b0cb83eea38b8b7c48a5a5841cb7859b65e61c7f71352453",
+      "clause_ids": [
+        "order",
+        "numbers",
+        "up_to_20",
+        "smallest_to_largest",
+        "vice_versa"
+      ],
+      "response_ref": ".responses/s5-luna-medium-w6-mat_g1_na_q1_4-20260924.json",
+      "response_digest": "e022d464c868d23b737e3ad7705338e4a1a5814265e10ec1e4cf2483f374d103",
+      "prompt_ref": ".responses/s5-luna-medium-w6-mat_g1_na_q1_4-20260924.prompt.txt",
+      "prompt_digest": "1532861eec4a899820210df4974423b9bca65aabbf43bc38b84e2a0de07d5000",
+      "samples_delivery": "Prompt generated by tests.judgment_batches for one node and delivered by path to multi_agent_v1.spawn_agent using model gpt-5.6-luna with reasoning_effort=medium.",
+      "tool_uses_by_reviewer": "Reviewer was a tool-bearing multi_agent_v1 subagent instructed to read only its prompt file and write its verdicts JSON; it reported the output path and no other tool use to the dispatcher."
     }
   ],
   "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "Every sample asks for a full arrangement of a given set, and the response is the ordered list itself rather than a single pick, which is the precise act the competency describes; each key I checked orders its own set correctly."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The and vice versa clause is fully honoured - smallest to largest and largest to smallest each appear in roughly half the fourteen samples - and both three-element and four-element sets are generated, so set size is not held fixed at the easiest value."
-    },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Ordering three or four numbers below 21, with narrative items framed as a friend's collection of marbles, seashells or stickers, keeps reading short and the working memory demand appropriate for Quarter 1 of Grade 1."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "Bare lists to arrange sit alongside counted collections attributed to named friends, and two distinct ordering response modes are used, so the pupil meets the same skill in both an abstract and a situational dress."
+      "rationale": "Each task asks learners to compare and order only three or four familiar whole numbers, a suitable Grade 1 cognitive demand."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Difficulty rises along axes that belong to ordering - from three items to four, and from well-spread sets like 9, 10, 8 to sets mixing a single-digit value with numbers in the high teens - rather than through unrelated context changes."
+      "rationale": "Every stem directly asks learners to arrange numbers from smallest to largest or from largest to smallest, matching the stated competency."
+    },
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The packet exercises both directions and includes values through 20, so the printed samples address the complete stated skill.",
+      "decomposition": {
+        "verdict": "PASS",
+        "reasoning": "The five printed requirements separately capture ordering, numbers, the upper bound of 20, ascending order, and the reverse direction without omitting a competency element.",
+        "requirement_ids": [
+          "order",
+          "numbers",
+          "up_to_20",
+          "smallest_to_largest",
+          "vice_versa"
+        ]
+      },
+      "clause_ids": [
+        "order",
+        "numbers",
+        "up_to_20",
+        "smallest_to_largest",
+        "vice_versa"
+      ]
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "The samples cover ascending and descending requests, direct lists and simple counting contexts, and lists of three and four numbers.",
+      "clause_ids": [
+        "order",
+        "numbers",
+        "up_to_20",
+        "smallest_to_largest",
+        "vice_versa"
+      ]
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Every value falls between 1 and 20 with the ceiling itself used repeatedly as a set member, so the stated bound is exercised rather than avoided, and no value strays above it."
+      "rationale": "All displayed values are positive whole numbers from 1 through 20, and the list lengths remain manageable for the stated Grade 1 skill."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "There is useful variation in direction, list length, context, and formatter, but the repeated hint wording does not vary with the requested direction."
     }
   },
-  "overall": "PASS"
+  "overall": "FAIL"
 }

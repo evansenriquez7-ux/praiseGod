@@ -15914,3 +15914,73 @@ Additional reviewer-discovered bugs queued:
   value 100.
 
 The §5 v2 corpus is now mixed-family: 1 Haiku node and 17 `gpt-5.6-luna`/medium nodes.
+
+### Wave 6 filed
+
+Filed four additional `gpt-5.6-luna`/medium reviews:
+
+| node | reviewer identity | agent id | verdict |
+|---|---|---|---|
+| `mat_g1_na_q1_2` | `blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_2-20260924` | `01a0d2f8-f0e5-7553-86f2-b402613ffeea` | CONCERN |
+| `mat_g1_na_q1_3` | `blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_3-20260924` | `01a0d2f8-f13d-7fb3-9a73-023d128b3406` | PASS |
+| `mat_g1_na_q1_4` | `blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_4-20260924` | `01a0d2f8-f1d7-78d1-9dc7-db74443120cc` | FAIL |
+| `mat_g1_na_q1_5` | `blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_5-20260924` | `01a0d2f8-f285-76e2-aaca-f7417bcefbe0` | CONCERN |
+
+Mechanical audit passed:
+
+```
+mat_g1_na_q1_2: samples 17/17 in order, requirements 9/9 in order, bad_cites [], short_reasoning 0, duplicate_normalized_reasoning 0
+mat_g1_na_q1_3: samples 25/25 in order, requirements 3/3 in order, bad_cites [], short_reasoning 0, duplicate_normalized_reasoning 0
+mat_g1_na_q1_4: samples 25/25 in order, requirements 5/5 in order, bad_cites [], short_reasoning 0, duplicate_normalized_reasoning 0
+mat_g1_na_q1_5: samples 21/21 in order, requirements 7/7 in order, bad_cites [], short_reasoning 0, duplicate_normalized_reasoning 0
+```
+
+Filed with `tests.file_reviews`:
+
+```
+filed mat_g1_na_q1_2 -> validation_reports/judgment/mat_g1_na_q1/mat_g1_na_q1_2.json
+filed mat_g1_na_q1_3 -> validation_reports/judgment/mat_g1_na_q1/mat_g1_na_q1_3.json
+filed mat_g1_na_q1_4 -> validation_reports/judgment/mat_g1_na_q1/mat_g1_na_q1_4.json
+filed mat_g1_na_q1_5 -> validation_reports/judgment/mat_g1_na_q1/mat_g1_na_q1_5.json
+```
+
+Measured queue after wave 6:
+
+```
+$ PYTHONPATH=. .venv/bin/python tests/legacy_review_queue.py --write
+legacy_review_queue: 129 legacy review(s), NOT adjudicable evidence
+  overall verdicts        : {'CONCERN': 80, 'FAIL': 38, 'PASS': 11}
+  with a non-PASS facet   : 118
+  non-PASS by facet       : {'cognitive_capacity': 32, 'competency_alignment': 61, 'competency_fulfillment': 65, 'comprehensive_coverage': 52, 'scale_appropriateness': 23, 'variant_comprehensiveness': 74}
+  missing a v1 facet      : 0
+  orphan (node undeclared): 0
+  re-reviews owed         : 129
+  wrote validation_reports/phase2_hardening/legacy_review_queue.json
+
+$ PYTHONPATH=. .venv/bin/python - <<'PY'
+import json
+from pathlib import Path
+counts={}; nodes=[]
+for p in sorted(Path('validation_reports/judgment').glob('mat_*/*_*.json')):
+    d=json.loads(p.read_text()); sv=d.get('schema_version'); counts[sv]=counts.get(sv,0)+1
+    if sv==2: nodes.append(p.stem)
+print('schema_counts', counts)
+print('v2_count', len(nodes))
+PY
+schema_counts {2: 22, None: 129}
+v2_count 22
+
+$ PYTHONPATH=. .venv/bin/python -c "from backend.app.practice_gen.validation.validate_judgment import validate_judgment_reviews; import re; p=validate_judgment_reviews(); print('findings', len(p), 'nodes', len({m.group(1) for x in p if (m:=re.match(r'(mat_[a-z0-9_]+)', x))}))"
+findings 1481 nodes 149
+```
+
+Additional reviewer-discovered bugs queued:
+
+* `mat_g1_na_q1_4`: descending order items have hints that instruct ascending order
+  ("smallest first", "least to greatest") even when the stem asks largest-to-smallest.
+* `mat_g1_na_q1_5`: ordinal-position tasks include malformed hints such as "order word word" and
+  many samples test symbol/word conversion without object-position context.
+* `mat_g1_na_q1_2`: numerals appear in answers/options, but reviewers found no distinct
+  learner-production task for numerals as a representation.
+
+The §5 v2 corpus is now mixed-family: 1 Haiku node and 21 `gpt-5.6-luna`/medium nodes.

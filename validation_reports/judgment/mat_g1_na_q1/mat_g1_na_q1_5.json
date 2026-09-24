@@ -1,7 +1,53 @@
 {
+  "schema_version": 2,
   "node_id": "mat_g1_na_q1_5",
-  "reviewed_by": "reviewer-c1-lantern-fescue-3061",
-  "review_date": "2026-09-11",
+  "competency_snapshot": {
+    "text": "Describe the position of objects using ordinal numbers: 1st, 2nd, 3rd, up to 10th.",
+    "grade": 1,
+    "quarter": 1,
+    "subdomain": null
+  },
+  "requirements_snapshot": [
+    {
+      "kind": "task",
+      "id": "describe_position",
+      "clause": "Describe the position"
+    },
+    {
+      "kind": "object",
+      "id": "objects",
+      "clause": "objects"
+    },
+    {
+      "kind": "object",
+      "id": "ordinal_numbers",
+      "clause": "ordinal numbers"
+    },
+    {
+      "kind": "range",
+      "id": "1st",
+      "clause": "1st"
+    },
+    {
+      "kind": "range",
+      "id": "2nd",
+      "clause": "2nd"
+    },
+    {
+      "kind": "range",
+      "id": "3rd",
+      "clause": "3rd"
+    },
+    {
+      "kind": "range",
+      "id": "up_to_10th",
+      "clause": "up to 10th"
+    }
+  ],
+  "packet_digest": "928387c18bc53210968c8b683ca72d60910b6a70ef3cb8eb47fc6113c664fdf4",
+  "sampling_version": "phase2-stratified-v2-rendered-visual",
+  "reviewed_by": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_5-20260924",
+  "review_date": "2026-09-24",
   "blind": true,
   "sample_seeds": [
     42,
@@ -15,14 +61,61 @@
     600,
     601,
     602,
-    603
+    603,
+    700,
+    701,
+    702,
+    800,
+    900,
+    901,
+    1000,
+    1001,
+    1002
+  ],
+  "sample_ids": [
+    "bce69f4c2c61801269ab",
+    "ee6d88d24bf21931dd41",
+    "22f3e07167b09c672c5a",
+    "a5d462a7d4c8f054763f",
+    "4ea7e3b534fa09289973",
+    "a95cd4b45b9cd22b48e9",
+    "b5e1d23590d5cee793a1",
+    "c2c522f9fe66441746a1",
+    "3cc131aa4d6b190a30cc",
+    "b2a3fc2a99051a45acbe",
+    "1d0a8bbd38e27e80ed4d",
+    "381e83aee529d0145b8b",
+    "06f52efa6a058dab274f",
+    "34eda6cc874e230d713a",
+    "602f4e1ec384a1c92ec3",
+    "d2e6c576c9e9441a859b",
+    "fba06cead4ed19beedc4",
+    "7b4945e09358ae13e6eb",
+    "e496b45d6cebc8c03946",
+    "615f7907ba50be7a17ab",
+    "f5bc3c757d6b4fa26f1e"
   ],
   "samples_reviewed": [
     {
+      "node_id": "mat_g1_na_q1_5",
       "seed": 42,
       "formatter": "mcq",
       "question_text": "Which word describes the 5th position?",
       "correct_answer": "fifth",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -44,13 +137,36 @@
           "value": "ninth",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "fifth",
+      "hints": [
+        "Ordinal numbers describe position in order.",
+        "The number 5 in order is called the 5th (fifth).",
+        "Remember: 1st = first, 2nd = second, 3rd = third, then add -th."
+      ],
+      "sample_id": "bce69f4c2c61801269ab",
+      "replay_digest": "6738cec2136cfa300eb4278a125b3623a22f2d6f0915718c1fdf198a423ca2c0"
     },
     {
+      "node_id": "mat_g1_na_q1_5",
       "seed": 43,
       "formatter": "mcq",
       "question_text": "Write the symbol for the third position.",
       "correct_answer": "3rd",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -72,13 +188,36 @@
           "value": "6th",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "3rd",
+      "hints": [
+        "Ordinal numbers describe position in order.",
+        "The number 3 in order is called the 3rd (third).",
+        "Remember: 1st = first, 2nd = second, 3rd = third, then add -th."
+      ],
+      "sample_id": "ee6d88d24bf21931dd41",
+      "replay_digest": "bda31aee840b492afa073678c8e35208959692a8f1dd1b016a11037980089709"
     },
     {
+      "node_id": "mat_g1_na_q1_5",
       "seed": 44,
       "formatter": "cloze",
       "question_text": "Ana, Ben, Carlo and Dina stand in a row. Who is 3rd in the row?",
       "correct_answer": "Carlo",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -104,13 +243,36 @@
           "text": "Ben",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "Carlo",
+      "hints": [
+        "Count the objects in order from the front: 1st, 2nd, 3rd, …",
+        "The 3rd (third) place is position number 3.",
+        "Find the object standing at position 3."
+      ],
+      "sample_id": "22f3e07167b09c672c5a",
+      "replay_digest": "0fc1e8e124908d602797b53b0efa030a76062dae2b3c00a0c732aacabde20636"
     },
     {
+      "node_id": "mat_g1_na_q1_5",
       "seed": 45,
       "formatter": "mcq",
       "question_text": "Which position comes after 8th?",
       "correct_answer": "9th",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -132,13 +294,36 @@
           "value": "6th",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "9th",
+      "hints": [
+        "Smaller ordinal numbers come earlier (closer to the start).",
+        "Compare the numbers: the smaller ordinal position is earlier.",
+        "8th means position 8."
+      ],
+      "sample_id": "a5d462a7d4c8f054763f",
+      "replay_digest": "111a8cd3b46fb2d0eb60773dd89c3d691123860b614c81431d5e86d05af4f748"
     },
     {
+      "node_id": "mat_g1_na_q1_5",
       "seed": 46,
       "formatter": "cloze",
       "question_text": "Write the symbol for the first position.",
       "correct_answer": "1st",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -164,13 +349,38 @@
           "text": "3rd",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "1st",
+      "hints": [
+        "Ordinal numbers describe position in order.",
+        "The number 1 in order is called the 1st (first).",
+        "Remember: 1st = first, 2nd = second, 3rd = third, then add -th."
+      ],
+      "sample_id": "4ea7e3b534fa09289973",
+      "replay_digest": "ce9ea687b9bfd9421b27c37a80d45a6434011b0d78112242df15166f3dc51b5c"
     },
     {
+      "node_id": "mat_g1_na_q1_5",
       "seed": 500,
       "formatter": "mcq",
       "question_text": "The baskets are placed in a row. One basket is number 10 in the row. Which word describes its position?",
       "correct_answer": "tenth",
+      "requested": {
+        "difficulty_profile": {
+          "ordinal_range": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -192,13 +402,38 @@
           "value": "tenth",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": "tenth",
+      "hints": [
+        "Count the objects in order from the front: 1st, 2nd, 3rd, …",
+        "The 10th (tenth) place is position number 10.",
+        "Find the object standing at position 10."
+      ],
+      "sample_id": "a95cd4b45b9cd22b48e9",
+      "replay_digest": "5aab2f2ea8e6f49a63a00adedc6927dc73619bf9e851fa6310cce86f5612106c"
     },
     {
+      "node_id": "mat_g1_na_q1_5",
       "seed": 501,
       "formatter": "mcq",
       "question_text": "Which position comes after 9th?",
       "correct_answer": "10th",
+      "requested": {
+        "difficulty_profile": {
+          "ordinal_range": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -220,13 +455,38 @@
           "value": "7th",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "10th",
+      "hints": [
+        "Smaller ordinal numbers come earlier (closer to the start).",
+        "Compare the numbers: the smaller ordinal position is earlier.",
+        "9th means position 9."
+      ],
+      "sample_id": "b5e1d23590d5cee793a1",
+      "replay_digest": "b76d95672f33ccf8b22584f527eecca7654e6c0b8385933dbb4d3301ec060512"
     },
     {
+      "node_id": "mat_g1_na_q1_5",
       "seed": 502,
       "formatter": "cloze",
       "question_text": "Who arrived earlier: the student in 10th place or 3rd place?",
       "correct_answer": "3rd",
+      "requested": {
+        "difficulty_profile": {
+          "ordinal_range": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -252,13 +512,38 @@
           "text": "3rd",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": "3rd",
+      "hints": [
+        "Smaller ordinal numbers come earlier (closer to the start).",
+        "Compare the numbers: the smaller ordinal position is earlier.",
+        "10th means position 10."
+      ],
+      "sample_id": "c2c522f9fe66441746a1",
+      "replay_digest": "137b96f06b5183de26df5c6e7380915d6767a4d1710893c5cf028b9ecd5c9717"
     },
     {
+      "node_id": "mat_g1_na_q1_5",
       "seed": 600,
       "formatter": "mcq",
       "question_text": "Which position comes after 6th?",
       "correct_answer": "7th",
+      "requested": {
+        "difficulty_profile": {
+          "task_type": "compare_positions"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -280,13 +565,38 @@
           "value": "7th",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": "7th",
+      "hints": [
+        "Smaller ordinal numbers come earlier (closer to the start).",
+        "Compare the numbers: the smaller ordinal position is earlier.",
+        "6th means position 6."
+      ],
+      "sample_id": "3cc131aa4d6b190a30cc",
+      "replay_digest": "2ce0a6151c77bedf75340bac091ba9452ff4a8c46bb306ed8edcc7dd3dd4a7a3"
     },
     {
+      "node_id": "mat_g1_na_q1_5",
       "seed": 601,
       "formatter": "cloze",
       "question_text": "The pupils stand in a row. Jose is number 10 in the row. Which word describes Jose's position?",
       "correct_answer": "tenth",
+      "requested": {
+        "difficulty_profile": {
+          "task_type": "describe_position"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -312,13 +622,38 @@
           "text": "tenth",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": "tenth",
+      "hints": [
+        "Count the objects in order from the front: 1st, 2nd, 3rd, …",
+        "The 10th (tenth) place is position number 10.",
+        "Find the object standing at position 10."
+      ],
+      "sample_id": "b2a3fc2a99051a45acbe",
+      "replay_digest": "6b902346e38ba10a48da94e9734ab34a39da35530fdfe7309ee17a3e47c4a026"
     },
     {
+      "node_id": "mat_g1_na_q1_5",
       "seed": 602,
       "formatter": "mcq",
       "question_text": "What ordinal describes position number 3?",
       "correct_answer": "3rd",
+      "requested": {
+        "difficulty_profile": {
+          "task_type": "find_position"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -340,13 +675,38 @@
           "value": "2nd",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "3rd",
+      "hints": [
+        "'Third' is an order word word.",
+        "Count positions from the start: 1st, 2nd, 3rd, … until you reach third.",
+        "Third = position 3, written as 3rd."
+      ],
+      "sample_id": "1d0a8bbd38e27e80ed4d",
+      "replay_digest": "9f994af3119a3e79c11df2bc2a14cbe225502ca95134b7e294b058d22ff54ce9"
     },
     {
+      "node_id": "mat_g1_na_q1_5",
       "seed": 603,
       "formatter": "mcq",
       "question_text": "Which word describes the 9th position?",
       "correct_answer": "ninth",
+      "requested": {
+        "difficulty_profile": {
+          "task_type": "identify_ordinal"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -368,33 +728,1150 @@
           "value": "ninth",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": "ninth",
+      "hints": [
+        "Ordinal numbers describe position in order.",
+        "The number 9 in order is called the 9th (ninth).",
+        "Remember: 1st = first, 2nd = second, 3rd = third, then add -th."
+      ],
+      "sample_id": "381e83aee529d0145b8b",
+      "replay_digest": "35219c9955bd2a1a71cf8f54563baa92c203e88f95b05260ff0454698118a142"
+    },
+    {
+      "node_id": "mat_g1_na_q1_5",
+      "seed": 700,
+      "formatter": "mcq",
+      "question_text": "A runner is at position number 8. In what place did the runner finish?",
+      "correct_answer": "8th",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "2nd",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "3rd",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "10th",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "8th",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": "8th",
+      "hints": [
+        "'Eighth' is an order word word.",
+        "Count positions from the start: 1st, 2nd, 3rd, … until you reach eighth.",
+        "Eighth = position 8, written as 8th."
+      ],
+      "sample_id": "06f52efa6a058dab274f",
+      "replay_digest": "cc629cdf84f1911b9c56a1d826edf6811c564c90bf13ebb4680c2497cab1264a"
+    },
+    {
+      "node_id": "mat_g1_na_q1_5",
+      "seed": 701,
+      "formatter": "cloze",
+      "question_text": "💃 Sir Rez has a math challenge about dance shoes. Which position comes after 2nd?",
+      "correct_answer": "3rd",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "diy_crafts",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "4th",
+          "text": "4th",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "3rd",
+          "text": "3rd",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "7th",
+          "text": "7th",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "8th",
+          "text": "8th",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "3rd",
+      "hints": [
+        "Smaller ordinal numbers come earlier (closer to the start).",
+        "Compare the numbers: the smaller ordinal position is earlier.",
+        "2nd means position 2."
+      ],
+      "sample_id": "34eda6cc874e230d713a",
+      "replay_digest": "98e736816d870453aaf93d82ab0dea5ec1210562f60af17eca66e4834605c78d"
+    },
+    {
+      "node_id": "mat_g1_na_q1_5",
+      "seed": 702,
+      "formatter": "cloze",
+      "question_text": "🎨 Ate Liza has a math challenge about paintbrushes. Which word describes the 1st position?",
+      "correct_answer": "first",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "visual_arts",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "first",
+          "text": "first",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "third",
+          "text": "third",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "second",
+          "text": "second",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "eighth",
+          "text": "eighth",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "first",
+      "hints": [
+        "Ordinal numbers describe position in order.",
+        "The number 1 in order is called the 1st (first).",
+        "Remember: 1st = first, 2nd = second, 3rd = third, then add -th."
+      ],
+      "sample_id": "602f4e1ec384a1c92ec3",
+      "replay_digest": "29c1142b7ac94b2ee4332e062d09da555b56b09bb9225b6c458d1047ac0bf303"
+    },
+    {
+      "node_id": "mat_g1_na_q1_5",
+      "seed": 800,
+      "formatter": "cloze",
+      "question_text": "Ana, Ben, Carlo, Dina, Elena, Fidel, Gina, Hector, Iris and Jose stand in a row. Who is 10th in the row?",
+      "correct_answer": "Jose",
+      "requested": {
+        "difficulty_profile": {
+          "ordinal_range": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "Elena",
+          "text": "Elena",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "Gina",
+          "text": "Gina",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "Carlo",
+          "text": "Carlo",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "Jose",
+          "text": "Jose",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": "Jose",
+      "hints": [
+        "Count the objects in order from the front: 1st, 2nd, 3rd, …",
+        "The 10th (tenth) place is position number 10.",
+        "Find the object standing at position 10."
+      ],
+      "sample_id": "d2e6c576c9e9441a859b",
+      "replay_digest": "6c8a660b0538a7820f171eded5e4ea381a5ff0036d69c78df11d73a35e1dcf7f"
+    },
+    {
+      "node_id": "mat_g1_na_q1_5",
+      "seed": 900,
+      "formatter": "mcq",
+      "question_text": "What ordinal describes position number 9?",
+      "correct_answer": "9th",
+      "requested": {
+        "difficulty_profile": {
+          "ordinal_range": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "7th",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "5th",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "8th",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "9th",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": "9th",
+      "hints": [
+        "'Ninth' is an order word word.",
+        "Count positions from the start: 1st, 2nd, 3rd, … until you reach ninth.",
+        "Ninth = position 9, written as 9th."
+      ],
+      "sample_id": "fba06cead4ed19beedc4",
+      "replay_digest": "bf17f45e2db1dac18265268fa151474f2c0f5c5c228325c0538ba6cf0678c350"
+    },
+    {
+      "node_id": "mat_g1_na_q1_5",
+      "seed": 901,
+      "formatter": "mcq",
+      "question_text": "The mango, notebook, sticker, marble, egg, storybook, basket, shell and pencil are lined up on a shelf from left to right. Which one is in 9th place?",
+      "correct_answer": "pencil",
+      "requested": {
+        "difficulty_profile": {
+          "ordinal_range": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "storybook",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "notebook",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "pencil",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "mango",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "pencil",
+      "hints": [
+        "Count the objects in order from the front: 1st, 2nd, 3rd, …",
+        "The 9th (ninth) place is position number 9.",
+        "Find the object standing at position 9."
+      ],
+      "sample_id": "7b4945e09358ae13e6eb",
+      "replay_digest": "a6c39478e75b72b30b08e91ef60a67e99bb96fb348f7270b70401a4de6fdd3f6"
+    },
+    {
+      "node_id": "mat_g1_na_q1_5",
+      "seed": 1000,
+      "formatter": "mcq",
+      "question_text": "Ana, Ben, Carlo, Dina, Elena, Fidel and Gina stand in a row. Who is 7th in the row?",
+      "correct_answer": "Gina",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "hint_gated"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "hint_gated"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "Fidel",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "Ben",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "Elena",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "Gina",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": "Gina",
+      "hints": [
+        "Count the objects in order from the front: 1st, 2nd, 3rd, …",
+        "The 7th (seventh) place is position number 7.",
+        "Find the object standing at position 7."
+      ],
+      "sample_id": "e496b45d6cebc8c03946",
+      "replay_digest": "d06ffb45bf83b6eae0a631a620a85963b549c925c700cc5862a36339091d1878"
+    },
+    {
+      "node_id": "mat_g1_na_q1_5",
+      "seed": 1001,
+      "formatter": "cloze",
+      "question_text": "Which word describes the 2nd position?",
+      "correct_answer": "second",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "mastery_drill"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "mastery_drill"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "sixth",
+          "text": "sixth",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "first",
+          "text": "first",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "seventh",
+          "text": "seventh",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "second",
+          "text": "second",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": "second",
+      "hints": [
+        "Ordinal numbers describe position in order.",
+        "The number 2 in order is called the 2nd (second).",
+        "Remember: 1st = first, 2nd = second, 3rd = third, then add -th."
+      ],
+      "sample_id": "615f7907ba50be7a17ab",
+      "replay_digest": "b0128d786615d78c4480af54ecdf68370ea0453a51748d55fba520591903ec92"
+    },
+    {
+      "node_id": "mat_g1_na_q1_5",
+      "seed": 1002,
+      "formatter": "cloze",
+      "question_text": "The pupils stand in a row. Carlo is number 3 in the row. Which word describes Carlo's position?",
+      "correct_answer": "third",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "scaffolded"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "scaffolded"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "third",
+          "text": "third",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "eighth",
+          "text": "eighth",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "seventh",
+          "text": "seventh",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "tenth",
+          "text": "tenth",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "third",
+      "hints": [
+        "Count the objects in order from the front: 1st, 2nd, 3rd, …",
+        "The 3rd (third) place is position number 3.",
+        "Find the object standing at position 3."
+      ],
+      "sample_id": "f5bc3c757d6b4fa26f1e",
+      "replay_digest": "a280718cbe0117b8f199c1c0a69dfb42b901d52c590d7d2ea237cbe40fd98e8a"
+    }
+  ],
+  "sample_assessments": [
+    {
+      "sample_id": "bce69f4c2c61801269ab",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The requested word is uniquely determined by the explicitly stated 5th position and the four distinct options."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The item coherently asks for the ordinal word corresponding to numerical position five."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The short question uses familiar wording and gives a direct multiple-choice task suitable for an early learner."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Fifth is the correct ordinal word for the 5th position, and no alternative option is equivalent."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_5-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_5-20260924:mat_g1_na_q1_5"
+    },
+    {
+      "sample_id": "ee6d88d24bf21931dd41",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The phrase third position identifies one ordinal symbol, and only 3rd matches among the options."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The requested conversion from the third position to its written symbol is internally consistent."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The command is concise and understandable, with the response choices making the expected symbol format evident."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The standard ordinal notation for third is 3rd, so the keyed answer is mathematically correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_5-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_5-20260924:mat_g1_na_q1_5"
+    },
+    {
+      "sample_id": "22f3e07167b09c672c5a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The listed row order fixes Carlo uniquely as the third person, despite the answer choices being reordered."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A four-person row supplies enough information to locate the requested third position directly."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The named sequence and question are short, concrete, and readable for a beginning mathematics learner."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Counting Ana, Ben, Carlo places Carlo in position three, matching the keyed response."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_5-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_5-20260924:mat_g1_na_q1_5"
+    },
+    {
+      "sample_id": "a5d462a7d4c8f054763f",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "In the ordinal sequence, exactly one listed choice follows 8th: 9th."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The item uses ordinary consecutive ordinal order and does not require unstated contextual assumptions."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The question is brief and the answer choices are familiar ordinal symbols with one clear successor."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The next ordinal after position eight is ninth, represented correctly as 9th."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_5-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_5-20260924:mat_g1_na_q1_5"
+    },
+    {
+      "sample_id": "4ea7e3b534fa09289973",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Only 1st denotes the first position among the four displayed ordinal symbols."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The requested symbol is a direct representation of the stated first position."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The wording is direct, and the multiple-choice options clearly show the expected ordinal notation."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The conventional symbol for first is 1st, so the answer is correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_5-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_5-20260924:mat_g1_na_q1_5"
+    },
+    {
+      "sample_id": "a95cd4b45b9cd22b48e9",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Position number 10 uniquely maps to tenth among the supplied word choices."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The basket row context consistently treats the stated number as an ordinal location."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The sentence explains the row setting and asks for a single familiar ordinal word."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Tenth is the correct word describing position number ten."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_5-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_5-20260924:mat_g1_na_q1_5"
+    },
+    {
+      "sample_id": "b5e1d23590d5cee793a1",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Only 10th is the immediate next ordinal after 9th in the options shown."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The succession relationship is well-defined within the ordinary ordinal sequence."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The short question presents one simple comparison and uses consistent ordinal notation."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The ordinal immediately following ninth is tenth, correctly written 10th."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_5-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_5-20260924:mat_g1_na_q1_5"
+    },
+    {
+      "sample_id": "c2c522f9fe66441746a1",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Between 10th and 3rd, the earlier ordinal position is uniquely 3rd."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The arrival comparison coheres with the stated ordinal-place interpretation of earlier in a row or race."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The question names both positions explicitly and asks a single understandable earlier-versus-later choice."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Position three precedes position ten, so 3rd is the correct answer."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_5-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_5-20260924:mat_g1_na_q1_5"
+    },
+    {
+      "sample_id": "3cc131aa4d6b190a30cc",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The only option immediately after 6th is 7th, making the response unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The prompt relies on the standard consecutive ordering of ordinal positions."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The wording is compact and the ordinal choices are easy to compare visually."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Seventh follows sixth, and the keyed notation 7th is correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_5-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_5-20260924:mat_g1_na_q1_5"
+    },
+    {
+      "sample_id": "b2a3fc2a99051a45acbe",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Jose is explicitly assigned number 10, which maps uniquely to the word tenth."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The row setting and numbered position support the requested ordinal-word identification."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The familiar named-pupil context makes the task concrete while keeping the question straightforward."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The ordinal word for position ten is tenth, matching the answer."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_5-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_5-20260924:mat_g1_na_q1_5"
+    },
+    {
+      "sample_id": "1d0a8bbd38e27e80ed4d",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Position number 3 has one matching ordinal choice, 3rd."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The item consistently asks for the ordinal notation corresponding to a cardinal position."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The stem is understandable, but its hint contains the duplicated phrase 'order word word,' which is distracting learner-facing wording."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Third position is correctly represented by 3rd, and the remaining options are different ordinals."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_5-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_5-20260924:mat_g1_na_q1_5"
+    },
+    {
+      "sample_id": "381e83aee529d0145b8b",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The word ninth is the sole option describing the specified 9th position."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The question directly tests the standard word form of a stated ordinal position."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The sentence is simple and the answer choices make the expected word response clear."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Ninth is the correct ordinal word for position nine."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_5-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_5-20260924:mat_g1_na_q1_5"
+    },
+    {
+      "sample_id": "06f52efa6a058dab274f",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The runner's stated position eight corresponds to exactly one option, 8th."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The finish-place wording is consistent with interpreting the runner's position as an ordinal result."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The prompt uses a familiar race context and asks a direct place-identification question."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A runner at position number eight finished 8th, so the keyed ordinal is correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_5-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_5-20260924:mat_g1_na_q1_5"
+    },
+    {
+      "sample_id": "34eda6cc874e230d713a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The ordinal immediately after 2nd is uniquely 3rd among the choices."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The dance-shoe framing does not change the straightforward consecutive ordinal relationship."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The question is understandable, but the decorative emoji and challenge framing add noise to a very simple task."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Third follows second in ordinal order, so 3rd is mathematically correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_5-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_5-20260924:mat_g1_na_q1_5"
+    },
+    {
+      "sample_id": "602f4e1ec384a1c92ec3",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The word first is the only option corresponding to the explicitly stated 1st position."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The paintbrush context is consistent with identifying an object's ordinal location."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The task is clear, though the emoji and extra challenge wording are unnecessary for the intended learner."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "First is the correct word form for ordinal symbol 1st."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_5-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_5-20260924:mat_g1_na_q1_5"
+    },
+    {
+      "sample_id": "d2e6c576c9e9441a859b",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The ten-name sequence places Jose uniquely in the tenth position."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The row lists exactly ten people in order, providing sufficient information for the requested location."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The explicit sequence supports counting and the question asks for one clearly identified person."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Jose is the tenth listed name, so the keyed response is correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_5-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_5-20260924:mat_g1_na_q1_5"
+    },
+    {
+      "sample_id": "fba06cead4ed19beedc4",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Only 9th describes position number nine in the displayed answer choices."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The item asks for a direct cardinal-to-ordinal conversion with no conflicting context."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The prompt is clear, but its hint repeats the malformed phrase 'order word word,' reducing polish."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The correct ordinal notation for position nine is 9th."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_5-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_5-20260924:mat_g1_na_q1_5"
+    },
+    {
+      "sample_id": "7b4945e09358ae13e6eb",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The objects are ordered left to right and pencil is uniquely ninth in that listed sequence."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The shelf arrangement provides a coherent spatial ordering for locating the ninth object."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The complete object list and explicit left-to-right direction make the counting task understandable."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Counting the nine listed objects places pencil ninth, matching the answer."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_5-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_5-20260924:mat_g1_na_q1_5"
+    },
+    {
+      "sample_id": "e496b45d6cebc8c03946",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The seven-name sequence makes Gina uniquely the person in 7th place."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The row order is explicit and supports a direct ordinal-location determination."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The named sequence is concise, and the question clearly asks which person occupies position seven."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Gina is seventh in the listed order, so the keyed answer is correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_5-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_5-20260924:mat_g1_na_q1_5"
+    },
+    {
+      "sample_id": "615f7907ba50be7a17ab",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Second is the only option that names the stated 2nd position."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The word-identification task follows the standard mapping between ordinal symbols and names."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem is short and the four word options make the expected answer format obvious."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The correct word for 2nd is second, with no competing equivalent choice."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_5-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_5-20260924:mat_g1_na_q1_5"
+    },
+    {
+      "sample_id": "f5bc3c757d6b4fa26f1e",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Carlo is explicitly third in the named row, and the answer choices contain one matching word."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The numbered row context directly supports identifying Carlo's ordinal position."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The question uses a familiar classroom setting and asks for a single, plainly worded ordinal."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Position number three is described by the word third, matching the keyed answer."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_5-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_5-20260924:mat_g1_na_q1_5"
+    }
+  ],
+  "clause_evidence": [
+    {
+      "requirement_id": "describe_position",
+      "clause": "Describe the position",
+      "verdict": "CONCERN",
+      "reasoning": "Several row and shelf items ask learners to identify an object's position, but many others only convert symbols or words without describing an object.",
+      "sample_ids": [
+        "22f3e07167b09c672c5a",
+        "7b4945e09358ae13e6eb"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_5-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_5-20260924:mat_g1_na_q1_5"
+    },
+    {
+      "requirement_id": "objects",
+      "clause": "objects",
+      "verdict": "CONCERN",
+      "reasoning": "Named people, baskets, runners, and shelf items provide object-like referents in some samples, while a substantial subset has no object context.",
+      "sample_ids": [
+        "22f3e07167b09c672c5a",
+        "d2e6c576c9e9441a859b"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_5-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_5-20260924:mat_g1_na_q1_5"
+    },
+    {
+      "requirement_id": "ordinal_numbers",
+      "clause": "ordinal numbers",
+      "verdict": "PASS",
+      "reasoning": "The packet repeatedly uses ordinal symbols, ordinal words, and comparisons of ordinal positions across the full item set.",
+      "sample_ids": [
+        "bce69f4c2c61801269ab",
+        "c2c522f9fe66441746a1"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_5-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_5-20260924:mat_g1_na_q1_5"
+    },
+    {
+      "requirement_id": "1st",
+      "clause": "1st",
+      "verdict": "PASS",
+      "reasoning": "The first-position symbol is directly requested and keyed in the paintbrush sample, with first also appearing as a choice elsewhere.",
+      "sample_ids": [
+        "4ea7e3b534fa09289973"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_5-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_5-20260924:mat_g1_na_q1_5"
+    },
+    {
+      "requirement_id": "2nd",
+      "clause": "2nd",
+      "verdict": "PASS",
+      "reasoning": "The second ordinal is directly assessed through word identification, and its symbol appears in the packet's ordinal choices.",
+      "sample_ids": [
+        "615f7907ba50be7a17ab"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_5-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_5-20260924:mat_g1_na_q1_5"
+    },
+    {
+      "requirement_id": "3rd",
+      "clause": "3rd",
+      "verdict": "PASS",
+      "reasoning": "Third is directly tested as both a symbol and a position in named-row contexts, giving the clause explicit evidence.",
+      "sample_ids": [
+        "ee6d88d24bf21931dd41",
+        "22f3e07167b09c672c5a"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_5-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_5-20260924:mat_g1_na_q1_5"
+    },
+    {
+      "requirement_id": "up_to_10th",
+      "clause": "up to 10th",
+      "verdict": "PASS",
+      "reasoning": "Multiple samples explicitly assess tenth, while additional items address positions through ninth and show the intended upper range.",
+      "sample_ids": [
+        "a95cd4b45b9cd22b48e9",
+        "d2e6c576c9e9441a859b"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_5-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_5-20260924:mat_g1_na_q1_5"
+    }
+  ],
+  "dispatch_provenance": [
+    {
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_5-20260924:mat_g1_na_q1_5",
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_5-20260924",
+      "review_date": "2026-09-24",
+      "blind": true,
+      "packet_digest": "928387c18bc53210968c8b683ca72d60910b6a70ef3cb8eb47fc6113c664fdf4",
+      "clause_ids": [
+        "describe_position",
+        "objects",
+        "ordinal_numbers",
+        "1st",
+        "2nd",
+        "3rd",
+        "up_to_10th"
+      ],
+      "response_ref": ".responses/s5-luna-medium-w6-mat_g1_na_q1_5-20260924.json",
+      "response_digest": "da417241fa6075e2e28713ccf3c94328bbac50dbce11e1805e1a37944aace82b",
+      "prompt_ref": ".responses/s5-luna-medium-w6-mat_g1_na_q1_5-20260924.prompt.txt",
+      "prompt_digest": "87f05db7baf7ca8f6726edbf16279eb0e2688cb1d22cb89b8d797e6d1756cf50",
+      "samples_delivery": "Prompt generated by tests.judgment_batches for one node and delivered by path to multi_agent_v1.spawn_agent using model gpt-5.6-luna with reasoning_effort=medium.",
+      "tool_uses_by_reviewer": "Reviewer was a tool-bearing multi_agent_v1 subagent instructed to read only its prompt file and write its verdicts JSON; it reported the output path and no other tool use to the dispatcher."
     }
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "CONCERN",
-      "rationale": "The competency is about describing the position of objects, but most samples are pure notation drills - asking which word describes the 5th position, or to write the symbol for the third position - with no object in sight. Only three of the twelve attach an ordinal to something positioned, such as pupils standing in a row or baskets placed in a row, so the object-anchored form the wording calls for is the minority case."
+      "rationale": "The packet addresses ordinal positions through tenth, but several items test symbol-word recall or succession without presenting an object arrangement.",
+      "decomposition": {
+        "verdict": "PASS",
+        "reasoning": "The printed requirements preserve the competency's action, object domain, ordinal concept, named early ordinals, and upper bound through 10th without omitting a stated component.",
+        "requirement_ids": [
+          "describe_position",
+          "objects",
+          "ordinal_numbers",
+          "1st",
+          "2nd",
+          "3rd",
+          "up_to_10th"
+        ]
+      },
+      "clause_ids": [
+        "describe_position",
+        "objects",
+        "ordinal_numbers",
+        "1st",
+        "2nd",
+        "3rd",
+        "up_to_10th"
+      ]
     },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The stated span is well covered: 1st, 3rd, 5th, 6th, 7th, 8th, 9th and 10th all appear as keys or targets, and both representations named in the competency, the symbol form and the word form, are produced rather than only recognised."
+    "competency_alignment": {
+      "verdict": "CONCERN",
+      "rationale": "Most prompts concern ordinal positions, yet direct object-position description is mixed with decontextualized notation and word-recognition tasks."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Naming a position, converting between 3rd and third, and identifying who stands third among four named children are all single-step recall or scan tasks fitting the first quarter of Grade 1."
+      "rationale": "The tasks use short rows, direct ordinal identification, and simple comparison within the stated first-ten range appropriate for Grade 1 quarter 1."
     },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "Four distinct question shapes are present - word for a position, symbol for a position, the successor of an ordinal, and a comparison of two places asking who arrived earlier - and answers come as both typed and selected responses."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Decoys are drawn from neighbouring ordinals rather than from unrelated values, so the pupil must actually know the sequence; the successor items in particular build the ordering that underlies ordinal description."
+    "comprehensive_coverage": {
+      "verdict": "CONCERN",
+      "rationale": "The packet reaches positions 1 through 10 across its examples, but fourth is not directly assessed and object arrangements are unevenly represented.",
+      "clause_ids": [
+        "describe_position",
+        "objects",
+        "ordinal_numbers",
+        "1st",
+        "2nd",
+        "3rd",
+        "up_to_10th"
+      ]
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Nothing beyond 10th is ever used, as keys or as decoys, so the explicit bound in the competency is respected exactly, and 1st and 10th are both exercised as endpoints."
+      "rationale": "The number range stays within tenth and the reasoning demand remains limited to locating, naming, writing, or comparing ordinal positions."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "There is useful variation in names, objects, row contexts, symbols, words, and response modes, but the set remains heavily repetitive and lacks visual layouts."
     }
   },
   "overall": "CONCERN"

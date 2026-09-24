@@ -1,257 +1,33 @@
 {
   "schema_version": 1,
   "kind": "legacy_review_queue",
-  "generated_at": "2026-09-24T10:27:05.636477+00:00",
+  "generated_at": "2026-09-24T10:35:33.475525+00:00",
   "adjudicable": false,
   "why_not_adjudicable": "These are v1 reviews. The current schema (v2) requires per-sample contextual-validity verdicts, exact clause coverage and dispatch-bound provenance, which a v1 reviewer was never asked for and which therefore cannot be recovered from a v1 record without inventing them. Every node listed here still owes a fresh blind re-review. This file exists so that the previous programme's findings remain visible as a QUEUE while none of them counts as evidence.",
-  "required_work": "133 node(s) need a fresh blind review filed at schema_version 2. Rebuild a packet with: python -m backend.app.practice_gen.validation.judgment_packets --node <node_id>",
+  "required_work": "129 node(s) need a fresh blind review filed at schema_version 2. Rebuild a packet with: python -m backend.app.practice_gen.validation.judgment_packets --node <node_id>",
   "source_review_dir": "validation_reports/judgment",
-  "source_corpus_sha256": "3bb96072a1dce43ea43a83036fd455526d688af263d1ef6564a62d0e85d6474d",
+  "source_corpus_sha256": "213eebea588b705b6ac7f17e982c32dd1a6319c7ab35aa153aed7b5d87546e8b",
   "counts": {
-    "legacy_nodes": 133,
-    "already_current_and_excluded": 18,
+    "legacy_nodes": 129,
+    "already_current_and_excluded": 22,
     "by_overall_verdict": {
-      "CONCERN": 82,
-      "FAIL": 39,
-      "PASS": 12
+      "CONCERN": 80,
+      "FAIL": 38,
+      "PASS": 11
     },
-    "nodes_with_a_non_pass_facet": 121,
+    "nodes_with_a_non_pass_facet": 118,
     "non_pass_by_facet": {
-      "cognitive_capacity": 33,
+      "cognitive_capacity": 32,
       "competency_alignment": 61,
-      "competency_fulfillment": 67,
-      "comprehensive_coverage": 53,
+      "competency_fulfillment": 65,
+      "comprehensive_coverage": 52,
       "scale_appropriateness": 23,
-      "variant_comprehensiveness": 75
+      "variant_comprehensiveness": 74
     },
     "records_missing_a_v1_facet": 0,
     "orphan_reviews_for_undeclared_nodes": 0
   },
   "nodes": [
-    {
-      "node_id": "mat_g1_na_q1_2",
-      "source_path": "validation_reports/judgment/mat_g1_na_q1/mat_g1_na_q1_2.json",
-      "source_sha256": "7420540be353bef59bc449b6de123b93db307e444c98bf6b7cd5007382c14d3c",
-      "declared_schema_version": null,
-      "reviewed_by": "reviewer-c1-lantern-fescue-3061",
-      "review_date": "2026-09-11",
-      "blind": true,
-      "sample_seeds": [
-        42,
-        43,
-        44,
-        45,
-        46,
-        500,
-        501,
-        502
-      ],
-      "overall_verdict": "CONCERN",
-      "node_still_declared": true,
-      "facets": {
-        "competency_fulfillment": {
-          "verdict": "PASS",
-          "rationale": "Representation is asked in both directions the competency implies - building a quantity with a model, as in the instruction to use base-10 blocks to show the number 35, and recognising a quantity from a model already shown on a number line or in blocks."
-        },
-        "comprehensive_coverage": {
-          "verdict": "CONCERN",
-          "rationale": "The stated variety of models is only partly realised: base-10 blocks and the number line carry all eight samples, with no bar model and no other concrete grouping, and the values used never drop below the mid-thirties, so the ten-and-ones structure of small two-digit numbers is never modelled."
-        },
-        "cognitive_capacity": {
-          "verdict": "PASS",
-          "rationale": "Placing a dot on a number line and assembling tens and ones are the standard concrete-to-pictorial bridges for Quarter 1 of Grade 1, and each stem is a single imperative or a single question with no multi-step reasoning."
-        },
-        "variant_comprehensiveness": {
-          "verdict": "PASS",
-          "rationale": "Two model families each appear in both a construct form and a read form - move the dot to show 99 on the number line against asking what number is marked on it - which gives the pupil four genuinely different encounters rather than one repeated frame."
-        },
-        "competency_alignment": {
-          "verdict": "PASS",
-          "rationale": "The block-reading item pits 83 against 38 and a plausible small value, which tests place value in the model itself, and the number-line items sit the target next to its immediate neighbours; both keep the difficulty on representation rather than on arithmetic."
-        },
-        "scale_appropriateness": {
-          "verdict": "PASS",
-          "rationale": "Values run up to 99 with 100 present as an option on the number line item, so the stated ceiling is reached without being exceeded, and the quantities remain modellable in tens and ones."
-        }
-      },
-      "facets_missing_from_the_v1_record": [],
-      "non_pass_facets": [
-        "comprehensive_coverage"
-      ],
-      "adjudicable": false
-    },
-    {
-      "node_id": "mat_g1_na_q1_3",
-      "source_path": "validation_reports/judgment/mat_g1_na_q1/mat_g1_na_q1_3.json",
-      "source_sha256": "fb28a31bc12e7947c5a24cc21883dc95918c773dbd4875a463f76f46ceb97508",
-      "declared_schema_version": null,
-      "reviewed_by": "reviewer-media-slate-tamarind-8817",
-      "review_date": "2026-09-11",
-      "blind": true,
-      "sample_seeds": [
-        42,
-        43,
-        44,
-        45,
-        46,
-        500,
-        501,
-        502,
-        600,
-        601,
-        602,
-        603,
-        604,
-        605
-      ],
-      "overall_verdict": "FAIL",
-      "node_still_declared": true,
-      "facets": {
-        "competency_fulfillment": {
-          "verdict": "CONCERN",
-          "rationale": "Each sampled item does resolve a comparison of two numerals within 20, which matches the verb and the bound, but the competency wording names no symbols and all fourteen seeds demand symbolic notation; seeds 44 and 46 offer only the three signs as choices and no item anywhere asks the comparison in words such as greater than, so the notation load is carried into a competency that never asked for it."
-        },
-        "comprehensive_coverage": {
-          "verdict": "PASS",
-          "rationale": "All three relations are genuinely produced: the greater case at seed 45 with 8 against 1, the less case at seed 603 with 1 against 2, and equality at seeds 502 and 601. Reversed orderings also appear among the distractor sets, so neither operand position is fixed."
-        },
-        "cognitive_capacity": {
-          "verdict": "CONCERN",
-          "rationale": "Most stems are two short sentences with a concrete noun, which suits the first quarter of Grade 1. Seed 605 is not: it embeds a comparison question inside a stated answer inside a true or false judgement, three layers of indirection for a six year old who is still learning the signs themselves."
-        },
-        "variant_comprehensiveness": {
-          "verdict": "FAIL",
-          "rationale": "The true or false variant is degenerate. Seeds 42, 500, 501, 600, 602 and 605 are keyed False with no exception, so six of the fourteen delivered items can be answered correctly by a pupil who never looks at the numerals. Word problem and pure numeral framings are otherwise both present."
-        },
-        "competency_alignment": {
-          "verdict": "PASS",
-          "rationale": "What tightens across the set is the discrimination itself: seed 45 separates 8 and 1 by a wide margin, seed 604 separates 18 and 17 by a single unit, and seeds 502 and 601 remove the gap entirely. That is the comparison skill being graded, not a side axis."
-        },
-        "scale_appropriateness": {
-          "verdict": "PASS",
-          "rationale": "Operands span the whole stated interval, with 1 appearing at seeds 44, 45 and 602 and the ceiling of 20 reached at seed 501. On a span this small a flat spread is the right choice and that is what the seeds show."
-        }
-      },
-      "facets_missing_from_the_v1_record": [],
-      "non_pass_facets": [
-        "competency_fulfillment",
-        "cognitive_capacity",
-        "variant_comprehensiveness"
-      ],
-      "adjudicable": false
-    },
-    {
-      "node_id": "mat_g1_na_q1_4",
-      "source_path": "validation_reports/judgment/mat_g1_na_q1/mat_g1_na_q1_4.json",
-      "source_sha256": "664edcc3db4acab5b4d2f2908d366c3e3ef22fc362618fee2079dfe4badd09ec",
-      "declared_schema_version": null,
-      "reviewed_by": "reviewer-c1-lantern-fescue-3061",
-      "review_date": "2026-09-11",
-      "blind": true,
-      "sample_seeds": [
-        42,
-        43,
-        44,
-        45,
-        46,
-        500,
-        501,
-        502,
-        600,
-        601,
-        602,
-        603,
-        604,
-        605
-      ],
-      "overall_verdict": "PASS",
-      "node_still_declared": true,
-      "facets": {
-        "competency_fulfillment": {
-          "verdict": "PASS",
-          "rationale": "Every sample asks for a full arrangement of a given set, and the response is the ordered list itself rather than a single pick, which is the precise act the competency describes; each key I checked orders its own set correctly."
-        },
-        "comprehensive_coverage": {
-          "verdict": "PASS",
-          "rationale": "The and vice versa clause is fully honoured - smallest to largest and largest to smallest each appear in roughly half the fourteen samples - and both three-element and four-element sets are generated, so set size is not held fixed at the easiest value."
-        },
-        "cognitive_capacity": {
-          "verdict": "PASS",
-          "rationale": "Ordering three or four numbers below 21, with narrative items framed as a friend's collection of marbles, seashells or stickers, keeps reading short and the working memory demand appropriate for Quarter 1 of Grade 1."
-        },
-        "variant_comprehensiveness": {
-          "verdict": "PASS",
-          "rationale": "Bare lists to arrange sit alongside counted collections attributed to named friends, and two distinct ordering response modes are used, so the pupil meets the same skill in both an abstract and a situational dress."
-        },
-        "competency_alignment": {
-          "verdict": "PASS",
-          "rationale": "Difficulty rises along axes that belong to ordering - from three items to four, and from well-spread sets like 9, 10, 8 to sets mixing a single-digit value with numbers in the high teens - rather than through unrelated context changes."
-        },
-        "scale_appropriateness": {
-          "verdict": "PASS",
-          "rationale": "Every value falls between 1 and 20 with the ceiling itself used repeatedly as a set member, so the stated bound is exercised rather than avoided, and no value strays above it."
-        }
-      },
-      "facets_missing_from_the_v1_record": [],
-      "non_pass_facets": [],
-      "adjudicable": false
-    },
-    {
-      "node_id": "mat_g1_na_q1_5",
-      "source_path": "validation_reports/judgment/mat_g1_na_q1/mat_g1_na_q1_5.json",
-      "source_sha256": "a0a678c7291ea0cd773d16a5e2dd5dd128d30b7111b8c36d67ea6332f430408d",
-      "declared_schema_version": null,
-      "reviewed_by": "reviewer-c1-lantern-fescue-3061",
-      "review_date": "2026-09-11",
-      "blind": true,
-      "sample_seeds": [
-        42,
-        43,
-        44,
-        45,
-        46,
-        500,
-        501,
-        502,
-        600,
-        601,
-        602,
-        603
-      ],
-      "overall_verdict": "CONCERN",
-      "node_still_declared": true,
-      "facets": {
-        "competency_fulfillment": {
-          "verdict": "CONCERN",
-          "rationale": "The competency is about describing the position of objects, but most samples are pure notation drills - asking which word describes the 5th position, or to write the symbol for the third position - with no object in sight. Only three of the twelve attach an ordinal to something positioned, such as pupils standing in a row or baskets placed in a row, so the object-anchored form the wording calls for is the minority case."
-        },
-        "comprehensive_coverage": {
-          "verdict": "PASS",
-          "rationale": "The stated span is well covered: 1st, 3rd, 5th, 6th, 7th, 8th, 9th and 10th all appear as keys or targets, and both representations named in the competency, the symbol form and the word form, are produced rather than only recognised."
-        },
-        "cognitive_capacity": {
-          "verdict": "PASS",
-          "rationale": "Naming a position, converting between 3rd and third, and identifying who stands third among four named children are all single-step recall or scan tasks fitting the first quarter of Grade 1."
-        },
-        "variant_comprehensiveness": {
-          "verdict": "PASS",
-          "rationale": "Four distinct question shapes are present - word for a position, symbol for a position, the successor of an ordinal, and a comparison of two places asking who arrived earlier - and answers come as both typed and selected responses."
-        },
-        "competency_alignment": {
-          "verdict": "PASS",
-          "rationale": "Decoys are drawn from neighbouring ordinals rather than from unrelated values, so the pupil must actually know the sequence; the successor items in particular build the ordering that underlies ordinal description."
-        },
-        "scale_appropriateness": {
-          "verdict": "PASS",
-          "rationale": "Nothing beyond 10th is ever used, as keys or as decoys, so the explicit bound in the competency is respected exactly, and 1st and 10th are both exercised as endpoints."
-        }
-      },
-      "facets_missing_from_the_v1_record": [],
-      "non_pass_facets": [
-        "competency_fulfillment"
-      ],
-      "adjudicable": false
-    },
     {
       "node_id": "mat_g1_na_q1_6",
       "source_path": "validation_reports/judgment/mat_g1_na_q1/mat_g1_na_q1_6.json",

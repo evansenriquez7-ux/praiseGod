@@ -1,5 +1,12 @@
 # Handoff — continue the Phase 2 hardening plan
 
+**Refreshed wave 6, 2026-09-24:** four more Luna/medium §5 reviews were filed
+(`mat_g1_na_q1_2`, `mat_g1_na_q1_3`, `mat_g1_na_q1_4`, `mat_g1_na_q1_5`). Legacy queue is now
+**129** (`schema_counts {2: 22, None: 129}`); `validate_judgment_reviews()` is **1481 findings across
+149 nodes**. `mat_g1_na_q1_3` is a clean PASS. New source-work bugs: largest-to-smallest tasks carry
+ascending hints, ordinal hints include malformed text such as "order word word", and direct
+numeral-production coverage is missing.**
+
 **Refreshed wave 5, 2026-09-24:** four more Luna/medium §5 reviews were filed
 (`mat_g1_mg_q4_3`, `mat_g1_mg_q4_4`, `mat_g1_na_q1_0`, `mat_g1_na_q1_1`). Legacy queue is now
 **133** (`schema_counts {2: 18, None: 133}`); `validate_judgment_reviews()` is **1468 findings across

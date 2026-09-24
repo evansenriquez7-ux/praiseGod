@@ -1,7 +1,33 @@
 {
+  "schema_version": 2,
   "node_id": "mat_g1_na_q1_3",
-  "reviewed_by": "reviewer-media-slate-tamarind-8817",
-  "review_date": "2026-09-11",
+  "competency_snapshot": {
+    "text": "Compare two numbers up to 20.",
+    "grade": 1,
+    "quarter": 1,
+    "subdomain": null
+  },
+  "requirements_snapshot": [
+    {
+      "kind": "task",
+      "id": "compare",
+      "clause": "Compare"
+    },
+    {
+      "kind": "object",
+      "id": "two_numbers",
+      "clause": "two numbers"
+    },
+    {
+      "kind": "range",
+      "id": "up_to_20",
+      "clause": "up to 20"
+    }
+  ],
+  "packet_digest": "7ce9d0e3fe03df95723a923bd9c577b5ccdde3d02f63eb9b5bf73997e5049fde",
+  "sampling_version": "phase2-stratified-v2-rendered-visual",
+  "reviewed_by": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_3-20260924",
+  "review_date": "2026-09-24",
   "blind": true,
   "sample_seeds": [
     42,
@@ -17,20 +43,96 @@
     602,
     603,
     604,
-    605
+    605,
+    606,
+    700,
+    701,
+    702,
+    800,
+    801,
+    900,
+    901,
+    1000,
+    1001,
+    1002
+  ],
+  "sample_ids": [
+    "d0bd9bfffebbc606eaa1",
+    "68b8fb834c707d200e2f",
+    "4c2f2ef6b29864a08d54",
+    "4618d993723c138638c0",
+    "a83e3c489f6a8ca8f27a",
+    "e318b8f8acb2a9459b0c",
+    "2dafbe5c478b11ac8632",
+    "32c516e795c471984aa0",
+    "00053abc941c6ccdf14a",
+    "1da5a06a999c3c6ad219",
+    "99f1a73e00596d695a92",
+    "dfd13b4aaddc63cc543c",
+    "1f8a6129027dd1c177ed",
+    "24196cc79506dbd4e6db",
+    "f79cba2c809f375141fa",
+    "97a894260c7586374711",
+    "8fbb4eeaee9980d07a70",
+    "0855bfc0c13b91401644",
+    "a40633855b93fcc991c7",
+    "bcb4cedd6b5265066c38",
+    "c1bbb88f67eb9bae9554",
+    "f576ee441e9a1b471ff9",
+    "6fa6a6ab8ea3e3c9bb82",
+    "87bfc32aae8200025dba",
+    "b87f9e9de79a2f0eb0f9"
   ],
   "samples_reviewed": [
     {
+      "node_id": "mat_g1_na_q1_3",
       "seed": 42,
       "formatter": "true_false",
       "question_text": "9 > 9. True or False?",
-      "correct_answer": false
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "Compare 9 and 9.",
+        "Start from the leftmost number and compare one at a time.",
+        "9 is the same as 9, so we write 9 = 9."
+      ],
+      "sample_id": "d0bd9bfffebbc606eaa1",
+      "replay_digest": "e076a34f48fcc3277449c2f56010386f415bce0646b49e621044b36a7ffa27f8"
     },
     {
+      "node_id": "mat_g1_na_q1_3",
       "seed": 43,
       "formatter": "mcq",
       "question_text": "Ana has 10 seashells. Jose has 12 seashells. Which statement is true?",
       "correct_answer": "10 < 12",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -52,13 +154,36 @@
           "value": "10 < 12",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": "10 < 12",
+      "hints": [
+        "Compare 10 and 12.",
+        "Start from the leftmost number and compare one at a time.",
+        "10 is smaller than 12, so we write 10 < 12."
+      ],
+      "sample_id": "68b8fb834c707d200e2f",
+      "replay_digest": "1aaa85eb59359b7a4b2bdaed11624ae0e3702bc149a39eb3a4cd65b5f46ed77c"
     },
     {
+      "node_id": "mat_g1_na_q1_3",
       "seed": 44,
       "formatter": "cloze",
       "question_text": "Compare the numbers: 1 ___ 15. Which sign is correct: >, <, or =?",
       "correct_answer": "<",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -78,13 +203,36 @@
           "text": "=",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "<",
+      "hints": [
+        "Compare 1 and 15.",
+        "Start from the leftmost number and compare one at a time.",
+        "1 is smaller than 15, so we write 1 < 15."
+      ],
+      "sample_id": "4c2f2ef6b29864a08d54",
+      "replay_digest": "d069f57441db6c6aae0c0413abd77edb19a47a9e0f755c85b467b518b88f8386"
     },
     {
+      "node_id": "mat_g1_na_q1_3",
       "seed": 45,
       "formatter": "mcq",
       "question_text": "Jose has 8 seashells. Liza has 1 seashell. Which statement is true?",
       "correct_answer": "8 > 1",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -106,13 +254,36 @@
           "value": "1 > 8",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "8 > 1",
+      "hints": [
+        "Compare 8 and 1.",
+        "Start from the leftmost number and compare one at a time.",
+        "8 is bigger than 1, so we write 8 > 1."
+      ],
+      "sample_id": "4618d993723c138638c0",
+      "replay_digest": "04d1b19ac51a3b693a124dc70cc4a586ad8026b070a9289902c93eba4b1d1df0"
     },
     {
+      "node_id": "mat_g1_na_q1_3",
       "seed": 46,
       "formatter": "cloze",
       "question_text": "Compare the numbers: 2 ___ 8. Which sign is correct: >, <, or =?",
       "correct_answer": "<",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -132,25 +303,103 @@
           "text": ">",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "<",
+      "hints": [
+        "Compare 2 and 8.",
+        "Start from the leftmost number and compare one at a time.",
+        "2 is smaller than 8, so we write 2 < 8."
+      ],
+      "sample_id": "a83e3c489f6a8ca8f27a",
+      "replay_digest": "bd405f01c848ccf495a70f39c1b1cbbb146450ed508de34c7b8a81710d888e28"
     },
     {
+      "node_id": "mat_g1_na_q1_3",
       "seed": 500,
       "formatter": "true_false",
       "question_text": "9 = 7. True or False?",
-      "correct_answer": false
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "max_value": 1.0,
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "Compare 9 and 7.",
+        "Start from the leftmost number and compare one at a time.",
+        "9 is bigger than 7, so we write 9 > 7."
+      ],
+      "sample_id": "e318b8f8acb2a9459b0c",
+      "replay_digest": "50f493cfc31ec406a1ced5375aaac0e06892ab9c21b4483351cbefa672a697a0"
     },
     {
+      "node_id": "mat_g1_na_q1_3",
       "seed": 501,
       "formatter": "true_false",
       "question_text": "20 < 19. True or False?",
-      "correct_answer": false
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "max_value": 1.0,
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "Compare 20 and 19.",
+        "Start from the leftmost number and compare one at a time.",
+        "20 is bigger than 19, so we write 20 > 19."
+      ],
+      "sample_id": "2dafbe5c478b11ac8632",
+      "replay_digest": "1ad257dce7ced90d368af7c4f600caa79484d0de8988ea2d1c11af05bfbd4112"
     },
     {
+      "node_id": "mat_g1_na_q1_3",
       "seed": 502,
       "formatter": "cloze",
       "question_text": "Compare the numbers: 12 ___ 12. Which sign is correct: >, <, or =?",
       "correct_answer": "=",
+      "requested": {
+        "difficulty_profile": {
+          "max_value": 1.0,
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -170,19 +419,69 @@
           "text": ">",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "=",
+      "hints": [
+        "Compare 12 and 12.",
+        "Start from the leftmost number and compare one at a time.",
+        "12 is the same as 12, so we write 12 = 12."
+      ],
+      "sample_id": "32c516e795c471984aa0",
+      "replay_digest": "a95f8cc6633717a2ea3e99b7d23017595502fa5aa2b14a8c258d806dea0b8750"
     },
     {
+      "node_id": "mat_g1_na_q1_3",
       "seed": 600,
       "formatter": "true_false",
       "question_text": "16 > 19. True or False?",
-      "correct_answer": false
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "context": "pure"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "Compare 16 and 19.",
+        "Start from the leftmost number and compare one at a time.",
+        "16 is smaller than 19, so we write 16 < 19."
+      ],
+      "sample_id": "00053abc941c6ccdf14a",
+      "replay_digest": "f1f0fbc905e57758dfbd932b3051aee105109bf4a4f9630c3bec7762a35d495c"
     },
     {
+      "node_id": "mat_g1_na_q1_3",
       "seed": 601,
       "formatter": "cloze",
-      "question_text": "Maria has 19 marbles. Ben has 19 marbles. Which sign correctly compares the two amounts?",
+      "question_text": "Moses has 19 stones. Another classmate has 19 stones. Which comparison is correct: 19 ___ 19?",
       "correct_answer": "=",
+      "requested": {
+        "difficulty_profile": {
+          "context": "word_problem"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -202,19 +501,69 @@
           "text": "=",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": "=",
+      "hints": [
+        "Compare 19 and 19.",
+        "Start from the leftmost number and compare one at a time.",
+        "19 is the same as 19, so we write 19 = 19."
+      ],
+      "sample_id": "1da5a06a999c3c6ad219",
+      "replay_digest": "74f4bc384bb692b65790ed7ce2dc6fa534f45efc2ee552f208ac6675b870c68b"
     },
     {
+      "node_id": "mat_g1_na_q1_3",
       "seed": 602,
       "formatter": "true_false",
       "question_text": "1 = 10. True or False?",
-      "correct_answer": false
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "direction": "ascending"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "Compare 1 and 10.",
+        "Start from the leftmost number and compare one at a time.",
+        "1 is smaller than 10, so we write 1 < 10."
+      ],
+      "sample_id": "99f1a73e00596d695a92",
+      "replay_digest": "b8a2d0468483bbbd7835152b7eb87a087369a4a0d9b9d679c86e6ef530d06d94"
     },
     {
+      "node_id": "mat_g1_na_q1_3",
       "seed": 603,
       "formatter": "mcq",
       "question_text": "Kuya Pat has 1 storybook. Liza has 2 storybooks. Which statement is true?",
       "correct_answer": "1 < 2",
+      "requested": {
+        "difficulty_profile": {
+          "direction": "descending"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -236,13 +585,38 @@
           "value": "1 > 2",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "1 < 2",
+      "hints": [
+        "Compare 1 and 2.",
+        "Start from the leftmost number and compare one at a time.",
+        "1 is smaller than 2, so we write 1 < 2."
+      ],
+      "sample_id": "dfd13b4aaddc63cc543c",
+      "replay_digest": "fe1f1e81e9c236a8d76d9f7f5103cb02f508c499fa5fc30a6525b43d8b77c3bf"
     },
     {
+      "node_id": "mat_g1_na_q1_3",
       "seed": 604,
       "formatter": "mcq",
       "question_text": "Jose has 18 marbles. Ben has 17 marbles. Which statement is true?",
       "correct_answer": "18 > 17",
+      "requested": {
+        "difficulty_profile": {
+          "proximity": "close_together"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -264,40 +638,1249 @@
           "value": "18 > 17",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": "18 > 17",
+      "hints": [
+        "Compare 18 and 17.",
+        "Start from the leftmost number and compare one at a time.",
+        "18 is bigger than 17, so we write 18 > 17."
+      ],
+      "sample_id": "1f8a6129027dd1c177ed",
+      "replay_digest": "b6ef98fad7cdee6cb93300cacfdbc6ce550c7184ab818434559fea1d6b6faf3d"
     },
     {
+      "node_id": "mat_g1_na_q1_3",
       "seed": 605,
       "formatter": "true_false",
-      "question_text": "Ben has 13 stickers. Maria has 18 stickers. Which sign correctly compares the two amounts? The answer is >. True or False?",
-      "correct_answer": false
+      "question_text": "Riza has 13 milk tea cups. Another classmate has 18 milk tea cups. Which comparison is correct: 13 ___ 18? The answer is >. True or False?",
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "proximity": "far_apart"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "Compare 13 and 18.",
+        "Start from the leftmost number and compare one at a time.",
+        "13 is smaller than 18, so we write 13 < 18."
+      ],
+      "sample_id": "24196cc79506dbd4e6db",
+      "replay_digest": "cb7359a8f36f02b485ef1a177240219abdbafccb872bdfd79a0916b35f8cbd86"
+    },
+    {
+      "node_id": "mat_g1_na_q1_3",
+      "seed": 606,
+      "formatter": "mcq",
+      "question_text": "Which statement is true?",
+      "correct_answer": "14 = 14",
+      "requested": {
+        "difficulty_profile": {
+          "task_type": "compare_pair"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "14 = 14",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "14 > 15",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "14 < 14",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "14 > 14",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "14 = 14",
+      "hints": [
+        "Compare 14 and 14.",
+        "Start from the leftmost number and compare one at a time.",
+        "14 is the same as 14, so we write 14 = 14."
+      ],
+      "sample_id": "f79cba2c809f375141fa",
+      "replay_digest": "db254e0cd7711eb89f93152230549ec6a64781b90a36a3e29af70f3a2a814088"
+    },
+    {
+      "node_id": "mat_g1_na_q1_3",
+      "seed": 700,
+      "formatter": "mcq",
+      "question_text": "Maria has 7 pencils. Liza has 7 pencils. Which statement is true?",
+      "correct_answer": "7 = 7",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "7 > 8",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "7 < 7",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "7 > 7",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "7 = 7",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": "7 = 7",
+      "hints": [
+        "Compare 7 and 7.",
+        "Start from the leftmost number and compare one at a time.",
+        "7 is the same as 7, so we write 7 = 7."
+      ],
+      "sample_id": "97a894260c7586374711",
+      "replay_digest": "863702266b47933cbd44c6b4e8bb7ea2e323150bbf8df59a060b8310499af305"
+    },
+    {
+      "node_id": "mat_g1_na_q1_3",
+      "seed": 701,
+      "formatter": "cloze",
+      "question_text": "💃 Sir Rez has a math challenge about dance shoes. Compare the numbers: 14 ___ 12. Which sign is correct: >, <, or =?",
+      "correct_answer": ">",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "science_tech",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "=",
+          "text": "=",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": ">",
+          "text": ">",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "<",
+          "text": "<",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": ">",
+      "hints": [
+        "Compare 14 and 12.",
+        "Start from the leftmost number and compare one at a time.",
+        "14 is bigger than 12, so we write 14 > 12."
+      ],
+      "sample_id": "8fbb4eeaee9980d07a70",
+      "replay_digest": "9d0ca85832cb103e87219e75370beb656353dddd555606030c81e9fcfc7298c2"
+    },
+    {
+      "node_id": "mat_g1_na_q1_3",
+      "seed": 702,
+      "formatter": "cloze",
+      "question_text": "🏀 Isko has a math challenge about basketballs. Compare the numbers: 11 ___ 4. Which sign is correct: >, <, or =?",
+      "correct_answer": ">",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "creative_writing",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "<",
+          "text": "<",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": ">",
+          "text": ">",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "=",
+          "text": "=",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": ">",
+      "hints": [
+        "Compare 11 and 4.",
+        "Start from the leftmost number and compare one at a time.",
+        "11 is bigger than 4, so we write 11 > 4."
+      ],
+      "sample_id": "0855bfc0c13b91401644",
+      "replay_digest": "20e06d23a7e3e7a15c32874e897289fcddacc7857158435927e5449759c2a71b"
+    },
+    {
+      "node_id": "mat_g1_na_q1_3",
+      "seed": 800,
+      "formatter": "true_false",
+      "question_text": "20 > 2. True or False?",
+      "correct_answer": true,
+      "requested": {
+        "difficulty_profile": {
+          "max_value": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": true,
+      "hints": [
+        "Compare 20 and 2.",
+        "Start from the leftmost number and compare one at a time.",
+        "20 is bigger than 2, so we write 20 > 2."
+      ],
+      "sample_id": "a40633855b93fcc991c7",
+      "replay_digest": "0beab2d7ad997138bd51db00ad9031e6b34d6c7ae6d0b5b2e745da7418e09f4b"
+    },
+    {
+      "node_id": "mat_g1_na_q1_3",
+      "seed": 801,
+      "formatter": "cloze",
+      "question_text": "Tito Bong has 20 jump ropes. Another classmate has 17 jump ropes. Which comparison is correct: 20 ___ 17?",
+      "correct_answer": ">",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "<",
+          "text": "<",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": ">",
+          "text": ">",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "=",
+          "text": "=",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": ">",
+      "hints": [
+        "Compare 20 and 17.",
+        "Start from the leftmost number and compare one at a time.",
+        "20 is bigger than 17, so we write 20 > 17."
+      ],
+      "sample_id": "bcb4cedd6b5265066c38",
+      "replay_digest": "53c5b7c20454953a2e3dc0c9a764832a4bc80ee00b618298ef01096c8f4ccdf7"
+    },
+    {
+      "node_id": "mat_g1_na_q1_3",
+      "seed": 900,
+      "formatter": "mcq",
+      "question_text": "Which statement is true?",
+      "correct_answer": "1 < 2",
+      "requested": {
+        "difficulty_profile": {
+          "max_value": 0.0,
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "1 = 2",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "1 > 2",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "1 < 2",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "2 < 1",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "1 < 2",
+      "hints": [
+        "Compare 1 and 2.",
+        "Start from the leftmost number and compare one at a time.",
+        "1 is smaller than 2, so we write 1 < 2."
+      ],
+      "sample_id": "c1bbb88f67eb9bae9554",
+      "replay_digest": "671156031267afc7ae5d4751455bcd6739a90701ffdc548098ef4606f230af3f"
+    },
+    {
+      "node_id": "mat_g1_na_q1_3",
+      "seed": 901,
+      "formatter": "true_false",
+      "question_text": "2 < 1. True or False?",
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "max_value": 0.0,
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "Compare 2 and 1.",
+        "Start from the leftmost number and compare one at a time.",
+        "2 is bigger than 1, so we write 2 > 1."
+      ],
+      "sample_id": "f576ee441e9a1b471ff9",
+      "replay_digest": "e2aff436f3cce50852d1f9f2aa9d6c13284740ecf6e6f95c29695f86fce0f3c5"
+    },
+    {
+      "node_id": "mat_g1_na_q1_3",
+      "seed": 1000,
+      "formatter": "mcq",
+      "question_text": "Which statement is true?",
+      "correct_answer": "14 > 5",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "hint_gated"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "hint_gated"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "14 = 5",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "14 > 5",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "5 > 14",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "14 < 5",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "14 > 5",
+      "hints": [
+        "Compare 14 and 5.",
+        "Start from the leftmost number and compare one at a time.",
+        "14 is bigger than 5, so we write 14 > 5."
+      ],
+      "sample_id": "6fa6a6ab8ea3e3c9bb82",
+      "replay_digest": "19312e5f660aabeff339691bc01068bdb44aa78ce5176c23509c6013a46cff7e"
+    },
+    {
+      "node_id": "mat_g1_na_q1_3",
+      "seed": 1001,
+      "formatter": "cloze",
+      "question_text": "Compare the numbers: 7 ___ 7. Which sign is correct: >, <, or =?",
+      "correct_answer": "=",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "mastery_drill"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "mastery_drill"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "<",
+          "text": "<",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "=",
+          "text": "=",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": ">",
+          "text": ">",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "=",
+      "hints": [
+        "Compare 7 and 7.",
+        "Start from the leftmost number and compare one at a time.",
+        "7 is the same as 7, so we write 7 = 7."
+      ],
+      "sample_id": "87bfc32aae8200025dba",
+      "replay_digest": "979a1a5dae1db7221e9d2fd5fdafdc5894ebf50b06f2308889f43f57e37668b5"
+    },
+    {
+      "node_id": "mat_g1_na_q1_3",
+      "seed": 1002,
+      "formatter": "cloze",
+      "question_text": "Compare the numbers: 2 ___ 10. Which sign is correct: >, <, or =?",
+      "correct_answer": "<",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "scaffolded"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "scaffolded"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "=",
+          "text": "=",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "<",
+          "text": "<",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": ">",
+          "text": ">",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "<",
+      "hints": [
+        "Compare 2 and 10.",
+        "Start from the leftmost number and compare one at a time.",
+        "2 is smaller than 10, so we write 2 < 10."
+      ],
+      "sample_id": "b87f9e9de79a2f0eb0f9",
+      "replay_digest": "fcca747746aec016d25eff45dbaf581e633a875380d143d523f44946de175267"
+    }
+  ],
+  "sample_assessments": [
+    {
+      "sample_id": "d0bd9bfffebbc606eaa1",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The displayed equality claim and the requested True or False response have one unambiguous interpretation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "No context is needed, and the claim 9 > 9 is false, matching the provided answer."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The short numerical statement and explicit response instruction are readable and age-appropriate."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Nine is not greater than nine, so False is the mathematically correct response."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_3-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_3-20260924:mat_g1_na_q1_3"
+    },
+    {
+      "sample_id": "68b8fb834c707d200e2f",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The two quantities and the requested true statement are clearly identified, with one correct option."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The seashell counts support the comparison directly: 10 is fewer than 12."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The names, counts, question, and answer choices use simple language suitable for early learners."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer 10 < 12 is correct, and the competing statements are false."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_3-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_3-20260924:mat_g1_na_q1_3"
+    },
+    {
+      "sample_id": "4c2f2ef6b29864a08d54",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The blank is explicitly a comparison sign between 1 and 15, and the listed sign choices are exhaustive."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The direct numerical comparison requires no unstated context and has a single correct sign."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The wording names the numbers, shows the blank, and repeats the available signs clearly."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "One is smaller than fifteen, so the correct inserted sign is <."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_3-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_3-20260924:mat_g1_na_q1_3"
+    },
+    {
+      "sample_id": "4618d993723c138638c0",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The two seashell counts are explicit and the answer options contain one true comparison."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The stated counts logically yield 8 > 1 without requiring any outside information."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The familiar counting context and concise question are understandable for a Grade 1 learner."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Eight is greater than one, so 8 > 1 is the correct statement."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_3-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_3-20260924:mat_g1_na_q1_3"
+    },
+    {
+      "sample_id": "a83e3c489f6a8ca8f27a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The comparison target and the three possible signs are stated precisely, leaving one answer."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The numerical prompt is self-contained and the relation between 2 and 8 is determinate."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The blank format and sign choices make the expected learner action immediately clear."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Two is less than eight, so the supplied answer < is mathematically correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_3-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_3-20260924:mat_g1_na_q1_3"
+    },
+    {
+      "sample_id": "e318b8f8acb2a9459b0c",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The claim 9 = 7 is a single clear proposition for a true-false judgment."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "There is no contextual complication, and unequal values make the proposition false."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The statement and response instruction are brief and accessible to the intended learner."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Nine does not equal seven, so False is the correct answer."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_3-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_3-20260924:mat_g1_na_q1_3"
+    },
+    {
+      "sample_id": "2dafbe5c478b11ac8632",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The ordered comparison 20 < 19 is explicit and supports one true-false outcome."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The values are self-contained and their ordering is not dependent on hidden assumptions."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The simple symbol statement and True or False instruction are clear for the age level."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Twenty is greater than nineteen, so the less-than claim is false."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_3-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_3-20260924:mat_g1_na_q1_3"
+    },
+    {
+      "sample_id": "32c516e795c471984aa0",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The blank lies between two identical numbers and the sign options are clearly enumerated."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The direct comparison of 12 with itself has a unique relation and no missing context."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The prompt plainly asks which sign belongs in the displayed blank."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A number equals itself, so = is the correct sign for 12 and 12."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_3-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_3-20260924:mat_g1_na_q1_3"
+    },
+    {
+      "sample_id": "00053abc941c6ccdf14a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The comparison statement is complete and the requested response is a single true-false choice."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The numerical ordering is directly decidable from the two printed values."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The sentence is short, uses familiar symbols, and states exactly how to respond."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sixteen is smaller than nineteen, so 16 > 19 is false."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_3-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_3-20260924:mat_g1_na_q1_3"
+    },
+    {
+      "sample_id": "1da5a06a999c3c6ad219",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Both classmates are assigned 19 stones, making the requested comparison unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The simple story supplies exactly the two equal quantities needed for the comparison."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The everyday context and displayed blank tell the learner what relation to select."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Equal quantities are represented by =, so the answer for 19 and 19 is correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_3-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_3-20260924:mat_g1_na_q1_3"
+    },
+    {
+      "sample_id": "99f1a73e00596d695a92",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The proposition 1 = 10 is explicit and permits one definite true-false response."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The question is self-contained and the two unequal values settle the truth value."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The notation and response request are concise and appropriate for Grade 1."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "One is less than ten rather than equal to ten, so False is correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_3-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_3-20260924:mat_g1_na_q1_3"
+    },
+    {
+      "sample_id": "dfd13b4aaddc63cc543c",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The story names one count for each child and provides one true comparison option."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "One storybook versus two storybooks directly supports 1 < 2."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The familiar object counts and straightforward question are easy to follow."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "One is less than two, so the marked statement is mathematically valid."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_3-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_3-20260924:mat_g1_na_q1_3"
+    },
+    {
+      "sample_id": "1f8a6129027dd1c177ed",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The two marble counts are clear and the answer choices include exactly one correct relation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The quantities stated for Jose and Ben support a direct comparison without extra assumptions."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The concrete context and repeated comparison statements are readable for the target learner."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Eighteen is greater than seventeen, so 18 > 17 is correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_3-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_3-20260924:mat_g1_na_q1_3"
+    },
+    {
+      "sample_id": "24196cc79506dbd4e6db",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The prompt explicitly presents the proposed sign and asks whether that proposed comparison is true."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The two cup counts establish that 13 > 18 is false, matching the requested judgment."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Although the proposed answer is included, the True or False task remains plainly stated."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Thirteen is less than eighteen, so the displayed greater-than claim is false."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_3-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_3-20260924:mat_g1_na_q1_3"
+    },
+    {
+      "sample_id": "f79cba2c809f375141fa",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question asks for the true statement and the options contain one valid equality."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The numerical options are self-contained, and 14 = 14 is the sole true relation shown."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The short question and repeated number comparisons are easy to parse."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Fourteen equals itself, while the other listed comparisons are false."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_3-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_3-20260924:mat_g1_na_q1_3"
+    },
+    {
+      "sample_id": "97a894260c7586374711",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The two pencil counts are explicit and the equality choice is uniquely correct."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Both children have seven pencils, directly supporting 7 = 7."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The familiar classroom-style context and direct question are age-appropriate."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The same count on both sides gives the correct comparison 7 = 7."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_3-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_3-20260924:mat_g1_na_q1_3"
+    },
+    {
+      "sample_id": "8fbb4eeaee9980d07a70",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The decorative challenge wording does not obscure the explicit comparison of 14 and 12."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The stated numbers determine the sign independently of the dance-shoes theme."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem identifies the task and lists all three possible signs in a readable format."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Fourteen is greater than twelve, so > is the correct sign."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_3-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_3-20260924:mat_g1_na_q1_3"
+    },
+    {
+      "sample_id": "0855bfc0c13b91401644",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The basketball-themed introduction still leaves one clear blank comparison between 11 and 4."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The numerical relation is fully determined by the printed values and does not rely on theme details."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The prompt directly asks which sign completes the comparison and presents clear choices."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Eleven is greater than four, so the answer > is correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_3-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_3-20260924:mat_g1_na_q1_3"
+    },
+    {
+      "sample_id": "a40633855b93fcc991c7",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The complete claim 20 > 2 has one straightforward true-false interpretation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The comparison uses only the two printed values and needs no unstated context."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The notation and True or False instruction are concise and suitable for early mathematics."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Twenty is greater than two, so True is the correct response."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_3-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_3-20260924:mat_g1_na_q1_3"
+    },
+    {
+      "sample_id": "bcb4cedd6b5265066c38",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The jump-rope counts and requested blank comparison are explicitly stated."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Twenty jump ropes exceeds seventeen, so the story and comparison agree."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The concrete context and three sign options clearly communicate the task."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The correct relation between 20 and 17 is greater-than, as answered."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_3-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_3-20260924:mat_g1_na_q1_3"
+    },
+    {
+      "sample_id": "c1bbb88f67eb9bae9554",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The request for the true statement has four explicit options with one correct choice."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The numerical options are self-contained and only 1 < 2 is true."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The very short question and fully written answer choices are accessible."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "One is less than two, so the selected statement is correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_3-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_3-20260924:mat_g1_na_q1_3"
+    },
+    {
+      "sample_id": "f576ee441e9a1b471ff9",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The claim 2 < 1 is complete and has a single true-false outcome."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The ordering of the two printed numbers is direct and requires no additional information."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The short statement and response instruction are clear for the intended age."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Two is greater than one, making the displayed less-than claim false."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_3-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_3-20260924:mat_g1_na_q1_3"
+    },
+    {
+      "sample_id": "6fa6a6ab8ea3e3c9bb82",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question asks for the true statement and the four alternatives identify one answer."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The direct comparison of 14 and 5 is logically sufficient to select the answer."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem and options are brief, concrete, and understandable without extra context."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Fourteen is greater than five, so 14 > 5 is correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_3-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_3-20260924:mat_g1_na_q1_3"
+    },
+    {
+      "sample_id": "87bfc32aae8200025dba",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The equal-number blank and explicit sign list make the expected answer unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The comparison is self-contained and the relation of 7 to 7 is determinate."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The wording clearly asks the learner to choose a sign for the displayed blank."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Seven equals seven, so the provided equality sign is mathematically correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_3-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_3-20260924:mat_g1_na_q1_3"
+    },
+    {
+      "sample_id": "b87f9e9de79a2f0eb0f9",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The two numbers, blank, and three possible signs are all plainly specified."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The direct ordering of 2 and 10 yields a single valid comparison."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The question is short and tells the learner exactly which sign to select."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Two is smaller than ten, so < is the correct answer."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_3-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_3-20260924:mat_g1_na_q1_3"
+    }
+  ],
+  "clause_evidence": [
+    {
+      "requirement_id": "compare",
+      "clause": "Compare",
+      "verdict": "PASS",
+      "reasoning": "Every sample requires the learner to determine an ordering or equality relation between the displayed values.",
+      "sample_ids": [
+        "d0bd9bfffebbc606eaa1",
+        "68b8fb834c707d200e2f",
+        "32c516e795c471984aa0"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_3-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_3-20260924:mat_g1_na_q1_3"
+    },
+    {
+      "requirement_id": "two_numbers",
+      "clause": "two numbers",
+      "verdict": "PASS",
+      "reasoning": "The reviewed items consistently present exactly two numbers as the objects of the requested comparison.",
+      "sample_ids": [
+        "4c2f2ef6b29864a08d54",
+        "4618d993723c138638c0",
+        "1da5a06a999c3c6ad219"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_3-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_3-20260924:mat_g1_na_q1_3"
+    },
+    {
+      "requirement_id": "up_to_20",
+      "clause": "up to 20",
+      "verdict": "PASS",
+      "reasoning": "The packet includes values through 20, including a boundary item, while no displayed number exceeds the upper bound.",
+      "sample_ids": [
+        "2dafbe5c478b11ac8632",
+        "a40633855b93fcc991c7",
+        "bcb4cedd6b5265066c38"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_3-20260924",
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_3-20260924:mat_g1_na_q1_3"
+    }
+  ],
+  "dispatch_provenance": [
+    {
+      "dispatch_id": "s5-luna-medium-w6-mat_g1_na_q1_3-20260924:mat_g1_na_q1_3",
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w6-mat_g1_na_q1_3-20260924",
+      "review_date": "2026-09-24",
+      "blind": true,
+      "packet_digest": "7ce9d0e3fe03df95723a923bd9c577b5ccdde3d02f63eb9b5bf73997e5049fde",
+      "clause_ids": [
+        "compare",
+        "two_numbers",
+        "up_to_20"
+      ],
+      "response_ref": ".responses/s5-luna-medium-w6-mat_g1_na_q1_3-20260924.json",
+      "response_digest": "405194d144f33a93f4a53f7a6d143dd2468257c895bd4e37e04fd489eb1792f1",
+      "prompt_ref": ".responses/s5-luna-medium-w6-mat_g1_na_q1_3-20260924.prompt.txt",
+      "prompt_digest": "8ec15f71257421b44762a7ade7e3a17125df19133bca3cc0863de835fe71200b",
+      "samples_delivery": "Prompt generated by tests.judgment_batches for one node and delivered by path to multi_agent_v1.spawn_agent using model gpt-5.6-luna with reasoning_effort=medium.",
+      "tool_uses_by_reviewer": "Reviewer was a tool-bearing multi_agent_v1 subagent instructed to read only its prompt file and write its verdicts JSON; it reported the output path and no other tool use to the dispatcher."
     }
   ],
   "findings": {
-    "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "Each sampled item does resolve a comparison of two numerals within 20, which matches the verb and the bound, but the competency wording names no symbols and all fourteen seeds demand symbolic notation; seeds 44 and 46 offer only the three signs as choices and no item anywhere asks the comparison in words such as greater than, so the notation load is carried into a competency that never asked for it."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "All three relations are genuinely produced: the greater case at seed 45 with 8 against 1, the less case at seed 603 with 1 against 2, and equality at seeds 502 and 601. Reversed orderings also appear among the distractor sets, so neither operand position is fixed."
-    },
     "cognitive_capacity": {
-      "verdict": "CONCERN",
-      "rationale": "Most stems are two short sentences with a concrete noun, which suits the first quarter of Grade 1. Seed 605 is not: it embeds a comparison question inside a stated answer inside a true or false judgement, three layers of indirection for a six year old who is still learning the signs themselves."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "FAIL",
-      "rationale": "The true or false variant is degenerate. Seeds 42, 500, 501, 600, 602 and 605 are keyed False with no exception, so six of the fourteen delivered items can be answered correctly by a pupil who never looks at the numerals. Word problem and pure numeral framings are otherwise both present."
+      "verdict": "PASS",
+      "rationale": "Each task asks a Grade 1 learner to compare two whole numbers within 20 using a direct statement, sign choice, or true-false response."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "What tightens across the set is the discrimination itself: seed 45 separates 8 and 1 by a wide margin, seed 604 separates 18 and 17 by a single unit, and seeds 502 and 601 remove the gap entirely. That is the comparison skill being graded, not a side axis."
+      "rationale": "The stems consistently require comparing exactly two numbers, and every number shown is within the stated range through 20."
+    },
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The packet exercises less-than, greater-than, and equality comparisons across single- and two-digit values, covering the stated skill directly.",
+      "decomposition": {
+        "verdict": "PASS",
+        "reasoning": "The three printed requirements separately capture the comparison action, the two-number object, and the upper bound of 20 without omitting a competency condition.",
+        "requirement_ids": [
+          "compare",
+          "two_numbers",
+          "up_to_20"
+        ]
+      },
+      "clause_ids": [
+        "compare",
+        "two_numbers",
+        "up_to_20"
+      ]
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "Samples include all three comparison relations, equal pairs, unequal pairs, values near 1 and 20, and both one- and two-digit numbers.",
+      "clause_ids": [
+        "compare",
+        "two_numbers",
+        "up_to_20"
+      ]
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Operands span the whole stated interval, with 1 appearing at seeds 44, 45 and 602 and the ceiling of 20 reached at seed 501. On a span this small a flat spread is the right choice and that is what the seeds show."
+      "rationale": "The numeric scale stays from 1 through 20 and the response formats remain short, concrete, and manageable for Grade 1 Quarter 1."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The packet varies true-false, multiple-choice, and sign-completion formats while retaining the same comparison target and including equal cases."
     }
   },
-  "overall": "FAIL"
+  "overall": "PASS"
 }

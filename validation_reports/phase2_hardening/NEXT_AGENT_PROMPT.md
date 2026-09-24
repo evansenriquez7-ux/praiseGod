@@ -1,5 +1,12 @@
 # Task prompt — continue Phase 2 hardening (GPT-hosted session)
 
+**Refreshed wave 6, 2026-09-24.** Four more `gpt-5.6-luna`/medium reviews were filed:
+`mat_g1_na_q1_2`, `mat_g1_na_q1_3`, `mat_g1_na_q1_4`, `mat_g1_na_q1_5`. The legacy queue moved
+**133 → 129** (`schema_counts {2: 22, None: 129}`), and `validate_judgment_reviews()` measured
+**1481 findings across 149 nodes**. `mat_g1_na_q1_3` is a clean PASS. New bugs queued include
+descending-order stems with ascending hints ("smallest first", "least to greatest"), malformed
+ordinal hints such as "order word word", and missing direct numeral-production tasks.
+
 **Refreshed wave 5, 2026-09-24.** Four more `gpt-5.6-luna`/medium reviews were filed:
 `mat_g1_mg_q4_3`, `mat_g1_mg_q4_4`, `mat_g1_na_q1_0`, `mat_g1_na_q1_1`. The legacy queue moved
 **137 → 133** (`schema_counts {2: 18, None: 133}`), and `validate_judgment_reviews()` measured
