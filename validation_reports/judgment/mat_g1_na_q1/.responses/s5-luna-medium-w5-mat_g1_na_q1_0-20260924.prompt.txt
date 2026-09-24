@@ -1,0 +1,221 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_na_q1_0-20260924
+
+Write one JSON object to:
+  local_only/scratch/review/s5-luna-2026-09-24/wave5/mat_g1_na_q1_0/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN; never invent a supporting sample.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_na_q1_0-20260924",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g1_na_q1_0
+PACKET DIGEST: ee4d4848c8e6c1dba3c777618b3b60f74a566efce1c44b3cddbb3f4c18d8e6e0
+COMPETENCY (Grade 1, Quarter 1, None):
+Count up to 100 (includes counting up or down from a given number and identifying a number that is 1 more or 1 less than a given number).
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  count_objects_to_a_total: Count
+  range_up_to_100: up to 100
+  count_forward_from_a_given_number: counting up
+  count_backward_from_a_given_number: down from a given number
+  identify_a_number_relative_to_another: identifying a number
+  identify_one_more_than_a_number: 1 more
+  identify_one_less_than_a_number: 1 less
+
+SAMPLES (every one of these is real rendered output):
+  sample ebca5e8451c9d8ccaac5  seed 42  [read_mcq]
+      stem:    What number is marked?
+      answer:  16
+      options: 18 / 16 / 15 / 17
+      hints:   ["Look at the list of numbers: 20, 19, 18, 17, ___", "Find the rule by comparing neighbours: 19 − 20 = 1.", "This list of numbers shows jumping by 1s (subtract 1 each time).", "Subtract 1 to 17: 17 - 1 = 16."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 27, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 07f9bd92dad31ed7be26  seed 43  [mcq]
+      stem:    What number comes next when counting backward: 42, 41, 40, 39, ___?
+      answer:  38
+      options: 38 / 40 / 37 / 41
+      hints:   ["Look at the list of numbers: 42, 41, 40, 39, ___", "Find the rule by comparing neighbours: 41 − 42 = 1.", "This list of numbers shows jumping by 1s (subtract 1 each time).", "Subtract 1 to 39: 39 - 1 = 38."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample b50f7f95899820531945  seed 44  [read_mcq]
+      stem:    (Large group of 78 cupcakes)
+Count the cupcakes.
+How many cupcakes are there in all?
+      answer:  78
+      options: 79 / 77 / 78 / 0
+      hints:   ["Look at the list of numbers: 74, 75, 76, 77, ___", "Find the rule by comparing neighbours: 75 − 74 = 1.", "This list of numbers shows jumping by 1s (add 1 each time).", "Add 1 to 77: 77 + 1 = 78."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 48, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🛍️", "10x 🧁", "🧁", "1x 🧁"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample c41b602a6a30ee5738d2  seed 45  [mcq]
+      stem:    What number comes next when counting: 58, 59, 60, 61, ___?
+      answer:  62
+      options: 60 / 63 / 62 / 59
+      hints:   ["Look at the list of numbers: 58, 59, 60, 61, ___", "Find the rule by comparing neighbours: 59 − 58 = 1.", "This list of numbers shows jumping by 1s (add 1 each time).", "Add 1 to 61: 61 + 1 = 62."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample d6804a0f9284b0886ec6  seed 46  [cloze]
+      stem:    What comes next: 77, 76, 75, 74, ___
+      answer:  73
+      options: 73 / 72 / 76 / 75
+      hints:   ["Look at the list of numbers: 77, 76, 75, 74, ___", "Find the rule by comparing neighbours: 76 − 77 = 1.", "This list of numbers shows jumping by 1s (subtract 1 each time).", "Subtract 1 to 74: 74 - 1 = 73."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 1ef2e785f2d8da7ab45f  seed 500  [read_mcq]
+      stem:    What number is marked?
+      answer:  81
+      options: 81 / 83 / 82 / 80
+      hints:   ["Look at the list of numbers: 77, 78, 79, 80, ___", "Find the rule by comparing neighbours: 78 − 77 = 1.", "This list of numbers shows jumping by 1s (add 1 each time).", "Add 1 to 80: 80 + 1 = 81."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 27, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["80", "81", "82", "83", "84", "85", "86", "87", "88", "89", "90"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 82528cc28013d59531c4  seed 501  [mcq]
+      stem:    What number comes next when counting: 90, 91, 92, 93, ___?
+      answer:  94
+      options: 95 / 94 / 91 / 92
+      hints:   ["Look at the list of numbers: 90, 91, 92, 93, ___", "Find the rule by comparing neighbours: 91 − 90 = 1.", "This list of numbers shows jumping by 1s (add 1 each time).", "Add 1 to 93: 93 + 1 = 94."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 1e26b196d6b827f9492a  seed 502  [read_mcq]
+      stem:    (Large group of 35 paints)
+Count the paints.
+How many paints are there in all?
+      answer:  35
+      options: 34 / 35 / 36 / 0
+      hints:   ["Look at the list of numbers: 31, 32, 33, 34, ___", "Find the rule by comparing neighbours: 32 − 31 = 1.", "This list of numbers shows jumping by 1s (add 1 each time).", "Add 1 to 34: 34 + 1 = 35."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 27, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🛍️", "10x 🎨", "🎨", "1x 🎨"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample c92896249b74b016b342  seed 601  [cloze]
+      stem:    Moses is counting backward by 1 starting from 95. The count is: 95, 94, 93, 92. What is the next number Moses should say?
+      answer:  91
+      options: 90 / 93 / 91 / 94
+      hints:   ["Look at the list of numbers: 95, 94, 93, 92, ___", "Find the rule by comparing neighbours: 94 − 95 = 1.", "This list of numbers shows jumping by 1s (subtract 1 each time).", "Subtract 1 to 92: 92 - 1 = 91."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample d55fbcf301c104568405  seed 602  [mcq]
+      stem:    What number comes next when counting: 31, 32, 33, 34, ___?
+      answer:  35
+      options: 36 / 35 / 32 / 33
+      hints:   ["Look at the list of numbers: 31, 32, 33, 34, ___", "Find the rule by comparing neighbours: 32 − 31 = 1.", "This list of numbers shows jumping by 1s (add 1 each time).", "Add 1 to 34: 34 + 1 = 35."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample d0a7ed0e488e236776c7  seed 603  [mcq]
+      stem:    What number comes next when counting backward: 78, 77, 76, 75, ___?
+      answer:  74
+      options: 77 / 74 / 76 / 73
+      hints:   ["Look at the list of numbers: 78, 77, 76, 75, ___", "Find the rule by comparing neighbours: 77 − 78 = 1.", "This list of numbers shows jumping by 1s (subtract 1 each time).", "Subtract 1 to 75: 75 - 1 = 74."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample c1ff17b361429435088d  seed 700  [mcq]
+      stem:    What number comes next when counting backward: 32, 31, 30, 29, ___?
+      answer:  28
+      options: 28 / 27 / 30 / 31
+      hints:   ["Look at the list of numbers: 32, 31, 30, 29, ___", "Find the rule by comparing neighbours: 31 − 32 = 1.", "This list of numbers shows jumping by 1s (subtract 1 each time).", "Subtract 1 to 29: 29 - 1 = 28."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample e2a730869fdb5b7eec2a  seed 701  [cloze]
+      stem:    💃 Sir Rez has a math challenge about dance shoes. What comes next: 80, 81, 82, 83, ___
+      answer:  84
+      options: 81 / 84 / 82 / 85
+      hints:   ["Look at the list of numbers: 80, 81, 82, 83, ___", "Find the rule by comparing neighbours: 81 − 80 = 1.", "This list of numbers shows jumping by 1s (add 1 each time).", "Add 1 to 83: 83 + 1 = 84."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 20e066f7816bd5dcfda7  seed 702  [cloze]
+      stem:    🧁 Ate Nena has a math challenge about loaves of bread. What comes next: 39, 38, 37, 36, ___
+      answer:  35
+      options: 35 / 34 / 38 / 37
+      hints:   ["Look at the list of numbers: 39, 38, 37, 36, ___", "Find the rule by comparing neighbours: 38 − 39 = 1.", "This list of numbers shows jumping by 1s (subtract 1 each time).", "Subtract 1 to 36: 36 - 1 = 35."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 61b137578376d2315f81  seed 800  [cloze]
+      stem:    What comes next: 85, 86, 87, 88, ___
+      answer:  89
+      options: 87 / 90 / 89 / 86
+      hints:   ["Look at the list of numbers: 85, 86, 87, 88, ___", "Find the rule by comparing neighbours: 86 − 85 = 1.", "This list of numbers shows jumping by 1s (add 1 each time).", "Add 1 to 88: 88 + 1 = 89."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 33fc23c3197bfe6ea3bc  seed 900  [mcq]
+      stem:    What number comes next when counting backward: 12, 11, 10, 9, ___?
+      answer:  8
+      options: 11 / 8 / 10 / 7
+      hints:   ["Look at the list of numbers: 12, 11, 10, 9, ___", "Find the rule by comparing neighbours: 11 − 12 = 1.", "This list of numbers shows jumping by 1s (subtract 1 each time).", "Subtract 1 to 9: 9 - 1 = 8."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 79d4e8ae575054f4abd3  seed 901  [mcq]
+      stem:    What number comes next when counting: 7, 8, 9, 10, ___?
+      answer:  11
+      options: 9 / 11 / 8 / 12
+      hints:   ["Look at the list of numbers: 7, 8, 9, 10, ___", "Find the rule by comparing neighbours: 8 − 7 = 1.", "This list of numbers shows jumping by 1s (add 1 each time).", "Add 1 to 10: 10 + 1 = 11."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample cdaf4fa72ad14dc6a03a  seed 1000  [read_mcq]
+      stem:    What number is marked?
+      answer:  34
+      options: 33 / 35 / 36 / 34
+      hints:   ["Look at the list of numbers: 30, 31, 32, 33, ___", "Find the rule by comparing neighbours: 31 − 30 = 1.", "This list of numbers shows jumping by 1s (add 1 each time).", "Add 1 to 33: 33 + 1 = 34."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "hint_gated"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 27, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 2d6d092131d2bce457d7  seed 1001  [cloze]
+      stem:    What comes next: 48, 47, 46, 45, ___
+      answer:  44
+      options: 44 / 46 / 47 / 43
+      hints:   ["Look at the list of numbers: 48, 47, 46, 45, ___", "Find the rule by comparing neighbours: 47 − 48 = 1.", "This list of numbers shows jumping by 1s (subtract 1 each time).", "Subtract 1 to 45: 45 - 1 = 44."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "mastery_drill"}
+  sample 1c3d94dbc9f18786bb60  seed 1002  [read_mcq]
+      stem:    (Large group of 42 cupcakes)
+Count the cupcakes.
+How many cupcakes are there in all?
+      answer:  42
+      options: 0 / 42 / 41 / 43
+      hints:   ["Look at the list of numbers: 38, 39, 40, 41, ___", "Find the rule by comparing neighbours: 39 − 38 = 1.", "This list of numbers shows jumping by 1s (add 1 each time).", "Add 1 to 41: 41 + 1 = 42."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "scaffolded"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 21, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🛍️", "10x 🧁", "🧁", "1x 🧁"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+

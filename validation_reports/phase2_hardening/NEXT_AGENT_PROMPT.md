@@ -1,5 +1,12 @@
 # Task prompt — continue Phase 2 hardening (GPT-hosted session)
 
+**Refreshed wave 5, 2026-09-24.** Four more `gpt-5.6-luna`/medium reviews were filed:
+`mat_g1_mg_q4_3`, `mat_g1_mg_q4_4`, `mat_g1_na_q1_0`, `mat_g1_na_q1_1`. The legacy queue moved
+**137 → 133** (`schema_counts {2: 18, None: 133}`), and `validate_judgment_reviews()` measured
+**1468 findings across 150 nodes**. New bugs queued include calendar visuals whose displayed month
+contradicts the stem, no direct days-in-a-week coverage, backward-count hints with false equations
+like `19 - 20 = 1`, and missing direct coverage of reading/writing `100`.
+
 **Refreshed wave 4, 2026-09-24.** Four more `gpt-5.6-luna`/medium reviews were filed:
 `mat_g1_mg_q2_2`, `mat_g1_mg_q4_0`, `mat_g1_mg_q4_1`, `mat_g1_mg_q4_2`. The legacy queue moved
 **141 → 137** (`schema_counts {2: 14, None: 137}`), and `validate_judgment_reviews()` measured

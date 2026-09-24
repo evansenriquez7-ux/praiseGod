@@ -1,5 +1,12 @@
 # Handoff — continue the Phase 2 hardening plan
 
+**Refreshed wave 5, 2026-09-24:** four more Luna/medium §5 reviews were filed
+(`mat_g1_mg_q4_3`, `mat_g1_mg_q4_4`, `mat_g1_na_q1_0`, `mat_g1_na_q1_1`). Legacy queue is now
+**133** (`schema_counts {2: 18, None: 133}`); `validate_judgment_reviews()` is **1468 findings across
+150 nodes**. New source-work bugs: calendar visuals sometimes contradict the stem month, direct
+days-in-a-week coverage is absent, backward-count hints print false equations such as `19 - 20 = 1`,
+and `100` is not directly covered in read/write samples.**
+
 **Refreshed wave 4, 2026-09-24:** four more Luna/medium §5 reviews were filed
 (`mat_g1_mg_q2_2`, `mat_g1_mg_q4_0`, `mat_g1_mg_q4_1`, `mat_g1_mg_q4_2`). Legacy queue is now
 **137** (`schema_counts {2: 14, None: 137}`); `validate_judgment_reviews()` is **1428 findings across

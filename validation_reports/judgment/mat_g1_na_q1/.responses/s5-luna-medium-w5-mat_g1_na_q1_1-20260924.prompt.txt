@@ -1,0 +1,171 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_na_q1_1-20260924
+
+Write one JSON object to:
+  local_only/scratch/review/s5-luna-2026-09-24/wave5/mat_g1_na_q1_1/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN; never invent a supporting sample.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_na_q1_1-20260924",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g1_na_q1_1
+PACKET DIGEST: ceafe13bada277a11348f560d903263f34812b69bdbb3f9141050f5c6c581b7d
+COMPETENCY (Grade 1, Quarter 1, None):
+Read and write numerals up to 100.
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  read: Read
+  write: write
+  numerals: numerals
+  up_to_100: up to 100
+
+SAMPLES (every one of these is real rendered output):
+  sample 570475fe48f1653a0001  seed 42  [true_false]
+      stem:    The number 35 is written in words as 'fifty-three'. True or False?
+      answer:  False
+      hints:   ["Read the number 35 one place at a time, starting from the largest place.", "The full word form is: 'thirty-five'."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 70133ff313a3a28ce565  seed 43  [mcq]
+      stem:    Write 68 in words.
+      answer:  sixty-eight
+      options: sixty-eight / eighty-six / sixty-nine / fifty-eight
+      hints:   ["Read the number 68 one place at a time, starting from the largest place.", "The full word form is: 'sixty-eight'."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 38deffed35fb3a33ee53  seed 44  [cloze]
+      stem:    Write the number: ninety-eight.
+      answer:  98
+      options: 98 / 89 / 88 / 99
+      hints:   ["Identify each word part and its value of each part.", "Broken apart form: 90 + 8.", "Add the parts together to get 98."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample e09e927c3f45c37c2465  seed 45  [mcq]
+      stem:    Write the number: eighty-five.
+      answer:  85
+      options: 86 / 58 / 75 / 85
+      hints:   ["Identify each word part and its value of each part.", "Broken apart form: 80 + 5.", "Add the parts together to get 85."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample f26cd851bdac202a8469  seed 46  [cloze]
+      stem:    Write 83 in words.
+      answer:  eighty-three
+      options: seventy-three / eighty-three / thirty-eight / eighty-four
+      hints:   ["Read the number 83 one place at a time, starting from the largest place.", "The full word form is: 'eighty-three'."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample f800626e343189f63b22  seed 500  [true_false]
+      stem:    The number written as 'ninety-nine' is 100. True or False?
+      answer:  False
+      hints:   ["Identify each word part and its value of each part.", "Broken apart form: 90 + 9.", "Add the parts together to get 99."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 69e04092db907b769580  seed 501  [true_false]
+      stem:    The number written as 'seventy-seven' is 67. True or False?
+      answer:  False
+      hints:   ["Identify each word part and its value of each part.", "Broken apart form: 70 + 7.", "Add the parts together to get 77."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 2a99f17e702170a282e3  seed 502  [cloze]
+      stem:    Write the number: fifty-three.
+      answer:  53
+      options: 53 / 35 / 54 / 43
+      hints:   ["Identify each word part and its value of each part.", "Broken apart form: 50 + 3.", "Add the parts together to get 53."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 271b5239eb379cae33e0  seed 700  [mcq]
+      stem:    Write 56 in words.
+      answer:  fifty-six
+      options: fifty-six / sixty-five / fifty-seven / forty-six
+      hints:   ["Read the number 56 one place at a time, starting from the largest place.", "The full word form is: 'fifty-six'."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 7b2d354aa5170e1150de  seed 701  [cloze]
+      stem:    💃 Sir Rez has a math challenge about dance shoes. Write the number: ninety-five.
+      answer:  95
+      options: 59 / 96 / 95 / 85
+      hints:   ["Identify each word part and its value of each part.", "Broken apart form: 90 + 5.", "Add the parts together to get 95."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 8b08ec9b7dec79e0db98  seed 702  [cloze]
+      stem:    🏀 Isko has a math challenge about basketballs. Write 49 in words.
+      answer:  forty-nine
+      options: ninety-four / fifty / thirty-nine / forty-nine
+      hints:   ["Read the number 49 one place at a time, starting from the largest place.", "The full word form is: 'forty-nine'."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 099073ce971c56abf1c5  seed 800  [true_false]
+      stem:    The number written as 'thirty-eight' is 38. True or False?
+      answer:  True
+      hints:   ["Identify each word part and its value of each part.", "Broken apart form: 30 + 8.", "Add the parts together to get 38."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 133e87444da4cad9ef92  seed 900  [mcq]
+      stem:    Write 10 in words.
+      answer:  ten
+      options: ten / one / eleven / one hundred
+      hints:   ["Read the number 10 one place at a time, starting from the largest place.", "The full word form is: 'ten'."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 5e765bedf3276a1048fb  seed 901  [true_false]
+      stem:    The number written as 'fifteen' is 51. True or False?
+      answer:  False
+      hints:   ["Identify each word part and its value of each part.", "Broken apart form: 10 + 5.", "Add the parts together to get 15."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 146438e4b3b6937cf4b4  seed 1000  [mcq]
+      stem:    Write the number: forty-four.
+      answer:  44
+      options: 43 / 45 / 44 / 34
+      hints:   ["Identify each word part and its value of each part.", "Broken apart form: 40 + 4.", "Add the parts together to get 44."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "hint_gated"}
+  sample 936599c68e0eaa6c2b6a  seed 1001  [cloze]
+      stem:    Write 57 in words.
+      answer:  fifty-seven
+      options: forty-seven / fifty-eight / seventy-five / fifty-seven
+      hints:   ["Read the number 57 one place at a time, starting from the largest place.", "The full word form is: 'fifty-seven'."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "mastery_drill"}
+  sample 62ad5e785c4bf48eccc2  seed 1002  [cloze]
+      stem:    Write the number: sixty.
+      answer:  60
+      options: 60 / 6 / 61 / 50
+      hints:   ["Identify each word part and its value of each part.", "Broken apart form: 60.", "Add the parts together to get 60."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "scaffolded"}
+

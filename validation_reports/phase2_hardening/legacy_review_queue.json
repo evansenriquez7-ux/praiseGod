@@ -1,255 +1,33 @@
 {
   "schema_version": 1,
   "kind": "legacy_review_queue",
-  "generated_at": "2026-09-24T10:18:12.112070+00:00",
+  "generated_at": "2026-09-24T10:27:05.636477+00:00",
   "adjudicable": false,
   "why_not_adjudicable": "These are v1 reviews. The current schema (v2) requires per-sample contextual-validity verdicts, exact clause coverage and dispatch-bound provenance, which a v1 reviewer was never asked for and which therefore cannot be recovered from a v1 record without inventing them. Every node listed here still owes a fresh blind re-review. This file exists so that the previous programme's findings remain visible as a QUEUE while none of them counts as evidence.",
-  "required_work": "137 node(s) need a fresh blind review filed at schema_version 2. Rebuild a packet with: python -m backend.app.practice_gen.validation.judgment_packets --node <node_id>",
+  "required_work": "133 node(s) need a fresh blind review filed at schema_version 2. Rebuild a packet with: python -m backend.app.practice_gen.validation.judgment_packets --node <node_id>",
   "source_review_dir": "validation_reports/judgment",
-  "source_corpus_sha256": "c776d9d024f0319fff7f2b4c0c9e866159842ad615970c7d49056bb897ff6fba",
+  "source_corpus_sha256": "3bb96072a1dce43ea43a83036fd455526d688af263d1ef6564a62d0e85d6474d",
   "counts": {
-    "legacy_nodes": 137,
-    "already_current_and_excluded": 14,
+    "legacy_nodes": 133,
+    "already_current_and_excluded": 18,
     "by_overall_verdict": {
-      "CONCERN": 83,
-      "FAIL": 41,
-      "PASS": 13
+      "CONCERN": 82,
+      "FAIL": 39,
+      "PASS": 12
     },
-    "nodes_with_a_non_pass_facet": 124,
+    "nodes_with_a_non_pass_facet": 121,
     "non_pass_by_facet": {
       "cognitive_capacity": 33,
-      "competency_alignment": 63,
+      "competency_alignment": 61,
       "competency_fulfillment": 67,
-      "comprehensive_coverage": 56,
-      "scale_appropriateness": 24,
+      "comprehensive_coverage": 53,
+      "scale_appropriateness": 23,
       "variant_comprehensiveness": 75
     },
     "records_missing_a_v1_facet": 0,
     "orphan_reviews_for_undeclared_nodes": 0
   },
   "nodes": [
-    {
-      "node_id": "mat_g1_mg_q4_3",
-      "source_path": "validation_reports/judgment/mat_g1_mg_q4/mat_g1_mg_q4_3.json",
-      "source_sha256": "3efea0586d13d7f517b95252c311fab1eb5a8cfcadad9e04c03419535c03b48a",
-      "declared_schema_version": null,
-      "reviewed_by": "reviewer-c1-lantern-fescue-3061",
-      "review_date": "2026-09-11",
-      "blind": true,
-      "sample_seeds": [
-        42,
-        43,
-        44,
-        45,
-        46,
-        500,
-        501,
-        502,
-        601,
-        603,
-        604,
-        605,
-        606,
-        607
-      ],
-      "overall_verdict": "PASS",
-      "node_still_declared": true,
-      "facets": {
-        "competency_fulfillment": {
-          "verdict": "PASS",
-          "rationale": "Both nouns of the competency are addressed against an actual calendar page: the day of the week for a given date, and the identification of which month the displayed page belongs to. Nothing is answerable without consulting the calendar shown."
-        },
-        "comprehensive_coverage": {
-          "verdict": "PASS",
-          "rationale": "Dates sampled sit early, mid and late in the month - the 1st, the 2nd, the 6th, the 12th, the 19th, the 21st, the 23rd, the 25th and the 30th - so the pupil must track across several week rows rather than only reading the top line, and the month-identification case gets its own seeds."
-        },
-        "cognitive_capacity": {
-          "verdict": "PASS",
-          "rationale": "Locating a numeral in a grid and reading up to its column heading is a visual-scan task with no arithmetic, well matched to Quarter 4 of Grade 1, and each stem is one sentence after the instruction to look at the calendar."
-        },
-        "variant_comprehensiveness": {
-          "verdict": "PASS",
-          "rationale": "Two genuinely different questions are asked of the same artefact - find the weekday of a date, and name the month of an unlabelled page - and the calendar pages themselves rotate through most of the year rather than reusing one month."
-        },
-        "competency_alignment": {
-          "verdict": "PASS",
-          "rationale": "Later seeds move the target date deeper into the month, which is the real difficulty axis for calendar reading, and the month-naming items require reading the page layout rather than a caption; both build this competency directly."
-        },
-        "scale_appropriateness": {
-          "verdict": "PASS",
-          "rationale": "All dates fall within the true length of the month named and I verified the weekday keys against the 2025 calendar - February 1 as Saturday, May 23 as Friday, July 2 as Wednesday, November 19 as Wednesday, April 30 as Wednesday and January 12 as Sunday are each correct, so the underlying calendar data is sound."
-        }
-      },
-      "facets_missing_from_the_v1_record": [],
-      "non_pass_facets": [],
-      "adjudicable": false
-    },
-    {
-      "node_id": "mat_g1_mg_q4_4",
-      "source_path": "validation_reports/judgment/mat_g1_mg_q4/mat_g1_mg_q4_4.json",
-      "source_sha256": "4c9005eab8d33fc6816d40177b7c6631c50db1b2e82ceee217a26bf7ad4d7fb9",
-      "declared_schema_version": null,
-      "reviewed_by": "reviewer-c1-lantern-fescue-3061",
-      "review_date": "2026-09-11",
-      "blind": true,
-      "sample_seeds": [
-        42,
-        43,
-        44,
-        45,
-        46,
-        500,
-        501,
-        502,
-        600,
-        601,
-        602,
-        603,
-        604,
-        605
-      ],
-      "overall_verdict": "FAIL",
-      "node_still_declared": true,
-      "facets": {
-        "competency_fulfillment": {
-          "verdict": "PASS",
-          "rationale": "The clock and calendar items are posed as situations to resolve rather than as readings - a break that starts at 9:00 and lasts a quarter of an hour (15 minutes), a snack time measured from start to finish, a gap counted between a school program and an exhibit - which is the problem-solving the competency calls for."
-        },
-        "comprehensive_coverage": {
-          "verdict": "FAIL",
-          "rationale": "The competency lists five things problems may involve and one of them, days in a week, generates no problem at all. The only day-related samples ask what day of the week is May 21 and what day of the week is June 6 - calendar look-ups identical in shape to the calendar-reading competency's own items, requiring no elapsed-time or cyclic reasoning about a week. Hour, half hour, quarter hour and months in a year are all properly sampled, which makes the single missing sub-case a gap rather than a general weakness."
-        },
-        "cognitive_capacity": {
-          "verdict": "PASS",
-          "rationale": "Each problem gives two facts and asks for one, minute quantities are glossed in parentheses where they appear, and the month gaps never exceed four, keeping every item to a single step that a Quarter 4 Grade 1 pupil can hold in mind."
-        },
-        "variant_comprehensiveness": {
-          "verdict": "PASS",
-          "rationale": "Presentation rotates widely: a duration added to a start time, an end time given and the elapsed minutes asked, an elapsed span in whole hours, a month advanced by a count, and a month gap asked in the other direction - collected as selections, typed blanks and cloze answers."
-        },
-        "competency_alignment": {
-          "verdict": "CONCERN",
-          "rationale": "Two of the fifteen samples spend their seeds on plain calendar look-ups that ask no time question, so part of the generated range does not advance this competency at all; the remaining items do progress sensibly from quarter-hour to hour-scale to multi-month spans."
-        },
-        "scale_appropriateness": {
-          "verdict": "PASS",
-          "rationale": "Times stay on a 12-hour clock with minute values confined to the quarter, half and hour marks, month intervals run from 2 to 4 within a single year, and the longest elapsed span asked is the three hours from 9:00 to 12:00."
-        }
-      },
-      "facets_missing_from_the_v1_record": [],
-      "non_pass_facets": [
-        "comprehensive_coverage",
-        "competency_alignment"
-      ],
-      "adjudicable": false
-    },
-    {
-      "node_id": "mat_g1_na_q1_0",
-      "source_path": "validation_reports/judgment/mat_g1_na_q1/mat_g1_na_q1_0.json",
-      "source_sha256": "d9aaac239ae419db144a1e4a7f9aa8b1d54b6881de952621df5ce70af2471855",
-      "declared_schema_version": null,
-      "reviewed_by": "reviewer-c1-lantern-fescue-3061",
-      "review_date": "2026-09-11",
-      "blind": true,
-      "sample_seeds": [
-        42,
-        43,
-        44,
-        45,
-        46,
-        500,
-        501,
-        502,
-        601
-      ],
-      "overall_verdict": "FAIL",
-      "node_still_declared": true,
-      "facets": {
-        "competency_fulfillment": {
-          "verdict": "PASS",
-          "rationale": "Counting to 100 is exercised in three distinct senses - continuing a sequence such as 94, 95, 96, 97 with a blank, counting a large group of objects to a total, and locating a marked number - all of which are the competency's core act."
-        },
-        "comprehensive_coverage": {
-          "verdict": "FAIL",
-          "rationale": "The competency spells out counting up or down and identifying a number that is 1 more or 1 less, and only the upward half is ever generated. All five sequence items ascend, the narrative item explicitly states counting forward by 1, and across nine samples no item counts backwards or asks for 1 less than a given number. Two of the four behaviours the competency names in parentheses are therefore unsampled, and a pupil could clear this node without ever counting down."
-        },
-        "cognitive_capacity": {
-          "verdict": "PASS",
-          "rationale": "Four-term sequences with a single blank, and object counts presented as a large group with a stated total to verify, match the demands of Quarter 1 Grade 1; no item requires writing number words or operating on the numbers."
-        },
-        "variant_comprehensiveness": {
-          "verdict": "PASS",
-          "rationale": "Four presentations are in play - a bare sequence, a number line with a mark to read, a pictured collection to count, and a named pupil narrating a count - and answers are taken both as a typed blank and as a choice."
-        },
-        "competency_alignment": {
-          "verdict": "CONCERN",
-          "rationale": "The axis that actually varies across seeds is the magnitude of the starting number, from the 30s to the 90s. Because direction is held fixed at forward, the seeds never get harder in the way this competency defines harder, and the decade-crossing case that makes counting up to 100 difficult is only incidentally touched."
-        },
-        "scale_appropriateness": {
-          "verdict": "PASS",
-          "rationale": "Values reach into the 90s and the counted collections run to 64 and 78, so the stated ceiling of 100 is genuinely approached rather than the generator hovering in safe two-digit territory, and nothing exceeds it."
-        }
-      },
-      "facets_missing_from_the_v1_record": [],
-      "non_pass_facets": [
-        "comprehensive_coverage",
-        "competency_alignment"
-      ],
-      "adjudicable": false
-    },
-    {
-      "node_id": "mat_g1_na_q1_1",
-      "source_path": "validation_reports/judgment/mat_g1_na_q1/mat_g1_na_q1_1.json",
-      "source_sha256": "af90e6c814950616a336383285b7b7d4d0d1aa10b3e81b9154c5e1099e4201e7",
-      "declared_schema_version": null,
-      "reviewed_by": "reviewer-c1-lantern-fescue-3061",
-      "review_date": "2026-09-11",
-      "blind": true,
-      "sample_seeds": [
-        42,
-        43,
-        44,
-        45,
-        46,
-        500,
-        501,
-        502
-      ],
-      "overall_verdict": "CONCERN",
-      "node_still_declared": true,
-      "facets": {
-        "competency_fulfillment": {
-          "verdict": "PASS",
-          "rationale": "Both halves of read and write are generated as separate tasks - converting a numeral into words, as in the instruction to write 68 in words, and converting a spoken form such as ninety-eight back into digits - with true-or-false checks probing the same correspondence."
-        },
-        "comprehensive_coverage": {
-          "verdict": "CONCERN",
-          "rationale": "Every value sampled is a two-digit number from the mid-thirties upward. The teens, where the reading-and-writing confusion actually lives for six-year-olds, never appear, nor does any single-digit numeral, so the specific traps this competency exists to train are outside the generated set even though the direction coverage is even."
-        },
-        "cognitive_capacity": {
-          "verdict": "PASS",
-          "rationale": "Hyphenated two-digit number words and short imperative stems are the right demand for Quarter 1, and the true-or-false framing, such as the claim that 35 is written in words as 'fifty-three', asks for a judgment rather than production, which lightens the load appropriately."
-        },
-        "variant_comprehensiveness": {
-          "verdict": "PASS",
-          "rationale": "Three response modes appear across the eight samples and the direction of translation flips between them, so the pupil meets the correspondence from both ends rather than only decoding or only encoding."
-        },
-        "competency_alignment": {
-          "verdict": "PASS",
-          "rationale": "The decoys are built on the genuine misconceptions this competency targets - the digit reversal offering eighty-six against sixty-eight, and the neighbouring-decade confusion of seventy-three against eighty-three - so the difficulty sits on reading and writing rather than elsewhere."
-        },
-        "scale_appropriateness": {
-          "verdict": "CONCERN",
-          "rationale": "The ceiling of 100 is respected but never reached: the largest numeral written is in the nineties and 100 itself appears only inside a true-or-false claim as a wrong value, so the pupil is never asked to read or write the boundary number the competency names."
-        }
-      },
-      "facets_missing_from_the_v1_record": [],
-      "non_pass_facets": [
-        "comprehensive_coverage",
-        "scale_appropriateness"
-      ],
-      "adjudicable": false
-    },
     {
       "node_id": "mat_g1_na_q1_2",
       "source_path": "validation_reports/judgment/mat_g1_na_q1/mat_g1_na_q1_2.json",

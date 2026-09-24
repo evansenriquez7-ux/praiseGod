@@ -1,7 +1,53 @@
 {
+  "schema_version": 2,
   "node_id": "mat_g1_mg_q4_4",
-  "reviewed_by": "reviewer-c1-lantern-fescue-3061",
-  "review_date": "2026-09-11",
+  "competency_snapshot": {
+    "text": "Solve problems involving time (hour, half hour, quarter hour, days in a week, and months in a year).",
+    "grade": 1,
+    "quarter": 4,
+    "subdomain": null
+  },
+  "requirements_snapshot": [
+    {
+      "kind": "task",
+      "id": "solve_problems",
+      "clause": "Solve problems"
+    },
+    {
+      "kind": "object",
+      "id": "time",
+      "clause": "time"
+    },
+    {
+      "kind": "range",
+      "id": "hour",
+      "clause": "hour"
+    },
+    {
+      "kind": "range",
+      "id": "half_hour",
+      "clause": "half hour"
+    },
+    {
+      "kind": "range",
+      "id": "quarter_hour",
+      "clause": "quarter hour"
+    },
+    {
+      "kind": "range",
+      "id": "days_in_a_week",
+      "clause": "days in a week"
+    },
+    {
+      "kind": "range",
+      "id": "months_in_a_year",
+      "clause": "months in a year"
+    }
+  ],
+  "packet_digest": "ace723cb1b8b68aec72b3185c7be94b2c0f469cd7cc82112ba1ad93178f7ff1d",
+  "sampling_version": "phase2-stratified-v2-rendered-visual",
+  "reviewed_by": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_4-20260924",
+  "review_date": "2026-09-24",
   "blind": true,
   "sample_seeds": [
     42,
@@ -17,14 +63,85 @@
     602,
     603,
     604,
-    605
+    605,
+    606,
+    607,
+    608,
+    609,
+    611,
+    613,
+    614,
+    615,
+    616,
+    617,
+    618,
+    700,
+    701,
+    702,
+    800,
+    900,
+    901,
+    1000,
+    1001,
+    1002
+  ],
+  "sample_ids": [
+    "ff24e3f7564a16176ec2",
+    "cd9ab15dffb62b187ff1",
+    "3aa17e57ae386d9582d4",
+    "3d0fdafb47fcc8771b33",
+    "fc0dec5f175f7e5dca32",
+    "b635b1309447cbdd1ef2",
+    "d9113e76787866ca1193",
+    "8eb701b2d9aebbf2d869",
+    "b6f62b736ee963ac5ea0",
+    "7499971b786803da914e",
+    "14207dcc88d8aa05a8ec",
+    "23c52f991f9c84a3b57d",
+    "d1d36fae1ee2ce7fd4a2",
+    "ac9f324d442f5063a6f0",
+    "1fb5958c130b6935ad6b",
+    "5fba3bbf8c248173e41a",
+    "3cd2d2a4b4aabbc2cefb",
+    "6b957feeaa63811556da",
+    "6dfa956416dc09363aa3",
+    "2a2fdd54bc9804a91232",
+    "4c4112aefd320ea62b39",
+    "857fe7603aa8583b8839",
+    "fcd0ddb28f814a5b884c",
+    "251a6ad4de14157610a6",
+    "17308d3930cf995e48b8",
+    "f699e58b0f58f928f964",
+    "3e0fdcfae651e3017259",
+    "b68f88513fe823185bba",
+    "56e82086bbf0f0f30b1e",
+    "a37ff336be0b810f0e2e",
+    "06d5deeec5f8a90c9b6a",
+    "6c41fafb2faf71bcfa9b",
+    "a4a10344e8ad3451a191",
+    "492b80baaa5834bfded8"
   ],
   "samples_reviewed": [
     {
+      "node_id": "mat_g1_mg_q4_4",
       "seed": 42,
       "formatter": "read_mcq",
       "question_text": "A short break starts at 9:00 and lasts a quarter of an hour (15 minutes). What time does it end?",
       "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ClockSet",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -46,19 +163,171 @@
           "value": "9:45",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "9:15",
+      "hints": [
+        "The short hand shows the hour. The long hand shows how far past the hour it is.",
+        "The short (hour) hand points near 9.",
+        "The long hand points to 3 — that is a quarter past the hour.",
+        "The time shown is 9:15."
+      ],
+      "visual_type": "ClockSet",
+      "visual_payload": {
+        "hours": 9,
+        "minutes": 15,
+        "correct_time": {
+          "hour": 9,
+          "minute": 15
+        },
+        "display_hours": 9,
+        "target_time": "9:15",
+        "use_24_hour": false,
+        "minute_angle": 90.0,
+        "hour_angle": 277.5,
+        "minute_snap_interval": 5,
+        "interaction_mode": "read",
+        "is_read_only": true,
+        "show_labels": true,
+        "precision": "5min"
+      },
+      "visual_render": {
+        "visual_type": "ClockSet",
+        "renderer_input_digest": "27d009501850e7b7823dc29b3647395d894dde923777ee242bafd653a56d3c8c",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ClockSet",
+          "element_count": 37,
+          "svg_count": 4,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 6,
+          "input_count": 0,
+          "text_labels": [
+            "🕐 Hour Hand",
+            "🕐 Minute Hand",
+            "Hour (short)",
+            "Minute (long)",
+            "09:15",
+            "AM",
+            "HOURS",
+            "MINUTES",
+            "Choose a hand above, then click the clock to set time • Use +/- for precision"
+          ],
+          "distinct_colours": [
+            "#8891a8",
+            "#8b5cf6",
+            "#06b6d4",
+            "hsl(var(--text)",
+            "hsl(var(--text-muted)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "ff24e3f7564a16176ec2",
+      "replay_digest": "f736f2d70a6bb386c8528f91a2790900331d40c587a21786cc60da60d3164d1c"
     },
     {
+      "node_id": "mat_g1_mg_q4_4",
       "seed": 43,
       "formatter": "set_fill_in_blank",
       "question_text": "Lunch starts at 10:00 and lasts half an hour (30 minutes). What time does it end?",
-      "correct_answer": "10:30"
+      "correct_answer": "10:30",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "ClockSet",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "resolved_answer": "10:30",
+      "hints": [
+        "The short hand shows the hour. The long hand shows how far past the hour it is.",
+        "The short (hour) hand points near 10.",
+        "The long hand points to 6 — that is half past the hour.",
+        "The time shown is 10:30."
+      ],
+      "visual_type": "ClockSet",
+      "visual_payload": {
+        "hours": 10,
+        "minutes": 30,
+        "correct_time": {
+          "hour": 10,
+          "minute": 30
+        },
+        "display_hours": 10,
+        "target_time": "10:30",
+        "use_24_hour": false,
+        "minute_angle": 180.0,
+        "hour_angle": 315.0,
+        "minute_snap_interval": 5,
+        "interaction_mode": "set",
+        "is_read_only": false,
+        "show_labels": true,
+        "precision": "5min"
+      },
+      "visual_render": {
+        "visual_type": "ClockSet",
+        "renderer_input_digest": "faa4b6bc234cf597cc80fe653841092d18b0bdba29fb97629ba72247b2b6a8b4",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ClockSet",
+          "element_count": 37,
+          "svg_count": 4,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 6,
+          "input_count": 0,
+          "text_labels": [
+            "🕐 Hour Hand",
+            "🕐 Minute Hand",
+            "Hour (short)",
+            "Minute (long)",
+            "12:00",
+            "PM",
+            "HOURS",
+            "MINUTES",
+            "Choose a hand above, then click the clock to set time • Use +/- for precision"
+          ],
+          "distinct_colours": [
+            "#8891a8",
+            "#8b5cf6",
+            "#06b6d4",
+            "hsl(var(--text)",
+            "hsl(var(--text-muted)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "cd9ab15dffb62b187ff1",
+      "replay_digest": "34744e19810a7946d6dbea4d273c036ccfed84daae425d1118d0931ed6fb3dcc"
     },
     {
+      "node_id": "mat_g1_mg_q4_4",
       "seed": 44,
       "formatter": "cloze",
       "question_text": "This month is March. What month will it be in 2 months?",
       "correct_answer": "May",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": true,
+        "visual_type": "Calendar",
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -84,13 +353,106 @@
           "text": "March",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "May",
+      "hints": [
+        "Use the calendar to find the answer.",
+        "The how much time has passed is the number of days or weeks that have passed."
+      ],
+      "visual_type": "Calendar",
+      "visual_payload": {
+        "month": 9,
+        "year": 2025,
+        "task_type": "measure_duration",
+        "show_day_names": true
+      },
+      "visual_render": {
+        "visual_type": "Calendar",
+        "renderer_input_digest": "7ffd1fb5987f1262acf267428205cbb48decdcf741420003178016725470e987",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "Calendar",
+          "element_count": 47,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "September 2025",
+            "Sun",
+            "Mon",
+            "Tue",
+            "Wed",
+            "Thu",
+            "Fri",
+            "Sat",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "26",
+            "27",
+            "28",
+            "29",
+            "30",
+            "Click a date to start the range",
+            "Click two dates to measure the duration between them"
+          ],
+          "distinct_colours": [
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "3aa17e57ae386d9582d4",
+      "replay_digest": "9536165277e9774a5d402dc49eeb6cefca03e43bff841e83983578f01f5a385a"
     },
     {
+      "node_id": "mat_g1_mg_q4_4",
       "seed": 45,
       "formatter": "mcq",
       "question_text": "The school program begins in May and an exhibit happens in July. How many months later is the exhibit?",
       "correct_answer": 2,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": true,
+        "visual_type": "Calendar",
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -112,19 +474,191 @@
           "value": 3,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 2,
+      "hints": [
+        "Use the calendar to find the answer.",
+        "The how much time has passed is the number of days or weeks that have passed."
+      ],
+      "visual_type": "Calendar",
+      "visual_payload": {
+        "month": 7,
+        "year": 2025,
+        "task_type": "measure_duration",
+        "show_day_names": true
+      },
+      "visual_render": {
+        "visual_type": "Calendar",
+        "renderer_input_digest": "096532c66438a359085e8bffd92c008ea0e354574e6d32b5f890f966b6447ada",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "Calendar",
+          "element_count": 49,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "July 2025",
+            "Sun",
+            "Mon",
+            "Tue",
+            "Wed",
+            "Thu",
+            "Fri",
+            "Sat",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "26",
+            "27",
+            "28",
+            "29",
+            "30",
+            "31",
+            "Click a date to start the range",
+            "Click two dates to measure the duration between them"
+          ],
+          "distinct_colours": [
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "3d0fdafb47fcc8771b33",
+      "replay_digest": "d0d56fb166d56704e0e398e3aaf9514bd94db5708d667cc4687161418bee6ad8"
     },
     {
+      "node_id": "mat_g1_mg_q4_4",
       "seed": 46,
       "formatter": "set_fill_in_blank",
       "question_text": "A class starts at 8:00 and lasts for 1 hour. What time does it end?",
-      "correct_answer": "9:00"
+      "correct_answer": "9:00",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "ClockSet",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "resolved_answer": "9:00",
+      "hints": [
+        "The short hand shows the hour. The long hand shows how far past the hour it is.",
+        "The short (hour) hand points near 9.",
+        "The long hand points to 12, so it is exactly on the hour.",
+        "The time shown is 9:00."
+      ],
+      "visual_type": "ClockSet",
+      "visual_payload": {
+        "hours": 9,
+        "minutes": 0,
+        "correct_time": {
+          "hour": 9,
+          "minute": 0
+        },
+        "display_hours": 9,
+        "target_time": "9:00",
+        "use_24_hour": false,
+        "minute_angle": 0.0,
+        "hour_angle": 270.0,
+        "minute_snap_interval": 5,
+        "interaction_mode": "set",
+        "is_read_only": false,
+        "show_labels": true,
+        "precision": "5min"
+      },
+      "visual_render": {
+        "visual_type": "ClockSet",
+        "renderer_input_digest": "9718ea47b126bdfd9fc6b673d926e6e3ede1b5a658277a22fa0ece2be3371839",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ClockSet",
+          "element_count": 37,
+          "svg_count": 4,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 6,
+          "input_count": 0,
+          "text_labels": [
+            "🕐 Hour Hand",
+            "🕐 Minute Hand",
+            "Hour (short)",
+            "Minute (long)",
+            "12:00",
+            "PM",
+            "HOURS",
+            "MINUTES",
+            "Choose a hand above, then click the clock to set time • Use +/- for precision"
+          ],
+          "distinct_colours": [
+            "#8891a8",
+            "#8b5cf6",
+            "#06b6d4",
+            "hsl(var(--text)",
+            "hsl(var(--text-muted)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "fc0dec5f175f7e5dca32",
+      "replay_digest": "2871df79e147a511b9e209c1c0f2c0ffc06d773cf9d588d3efb21d2f3a975648"
     },
     {
+      "node_id": "mat_g1_mg_q4_4",
       "seed": 500,
       "formatter": "mcq",
       "question_text": "The school program begins in May and an exhibit happens in September. How many months later is the exhibit?",
       "correct_answer": 4,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": true,
+        "visual_type": "Calendar",
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -146,13 +680,108 @@
           "value": 6,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 4,
+      "hints": [
+        "Use the calendar to find the answer.",
+        "The how much time has passed is the number of days or weeks that have passed."
+      ],
+      "visual_type": "Calendar",
+      "visual_payload": {
+        "month": 9,
+        "year": 2025,
+        "task_type": "measure_duration",
+        "show_day_names": true
+      },
+      "visual_render": {
+        "visual_type": "Calendar",
+        "renderer_input_digest": "7ffd1fb5987f1262acf267428205cbb48decdcf741420003178016725470e987",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "Calendar",
+          "element_count": 47,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "September 2025",
+            "Sun",
+            "Mon",
+            "Tue",
+            "Wed",
+            "Thu",
+            "Fri",
+            "Sat",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "26",
+            "27",
+            "28",
+            "29",
+            "30",
+            "Click a date to start the range",
+            "Click two dates to measure the duration between them"
+          ],
+          "distinct_colours": [
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "b635b1309447cbdd1ef2",
+      "replay_digest": "0673a08d77011e44e8450fb6064f488ed08119dea9a62b8ec1e50a106aabbabb"
     },
     {
+      "node_id": "mat_g1_mg_q4_4",
       "seed": 501,
       "formatter": "read_mcq",
       "question_text": "Look at the May 2025 calendar. What day of the week is May 21?",
       "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "Calendar",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -174,13 +803,111 @@
           "value": "Sunday",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "Wednesday",
+      "hints": [
+        "Use the calendar to find the answer.",
+        "The how much time has passed is the number of days or weeks that have passed."
+      ],
+      "visual_type": "Calendar",
+      "visual_payload": {
+        "month": 5,
+        "year": 2025,
+        "task_type": "select_date",
+        "show_day_names": true,
+        "highlighted_dates": [
+          21
+        ]
+      },
+      "visual_render": {
+        "visual_type": "Calendar",
+        "renderer_input_digest": "4658b2dcf52a999e2e1b15bb6b2be60f7c00f8d1fd5ee476ad5790f2373bb9ee",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "Calendar",
+          "element_count": 50,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "May 2025",
+            "Sun",
+            "Mon",
+            "Tue",
+            "Wed",
+            "Thu",
+            "Fri",
+            "Sat",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "26",
+            "27",
+            "28",
+            "29",
+            "30",
+            "31",
+            "Click a date to select it"
+          ],
+          "distinct_colours": [
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "d9113e76787866ca1193",
+      "replay_digest": "5c2f0afbdd88d044feddecccab1705452cb32f6e05f6174023a07ff9e033d6c8"
     },
     {
+      "node_id": "mat_g1_mg_q4_4",
       "seed": 502,
       "formatter": "read_mcq",
       "question_text": "Look at the June 2025 calendar. What day of the week is June 6?",
       "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "Calendar",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -202,13 +929,110 @@
           "value": "Friday",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": "Friday",
+      "hints": [
+        "Use the calendar to find the answer.",
+        "The how much time has passed is the number of days or weeks that have passed."
+      ],
+      "visual_type": "Calendar",
+      "visual_payload": {
+        "month": 6,
+        "year": 2025,
+        "task_type": "select_date",
+        "show_day_names": true,
+        "highlighted_dates": [
+          6
+        ]
+      },
+      "visual_render": {
+        "visual_type": "Calendar",
+        "renderer_input_digest": "a751186af26d88f7842bfde673d9f5aefd5c8a5bc3a54dca2db3ffbbf92e9845",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "Calendar",
+          "element_count": 45,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "June 2025",
+            "Sun",
+            "Mon",
+            "Tue",
+            "Wed",
+            "Thu",
+            "Fri",
+            "Sat",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "26",
+            "27",
+            "28",
+            "29",
+            "30",
+            "Click a date to select it"
+          ],
+          "distinct_colours": [
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "8eb701b2d9aebbf2d869",
+      "replay_digest": "5e7916139be76121255d38eef6a9ba8085373c7e8f57e534ccfb3bae01398494"
     },
     {
+      "node_id": "mat_g1_mg_q4_4",
       "seed": 600,
       "formatter": "mcq",
       "question_text": "The school program begins in March and an exhibit happens in July. How many months later is the exhibit?",
       "correct_answer": 4,
+      "requested": {
+        "difficulty_profile": {
+          "calendar_feature": "dates"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": true,
+        "visual_type": "Calendar",
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -230,13 +1054,108 @@
           "value": 6,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 4,
+      "hints": [
+        "Use the calendar to find the answer.",
+        "The how much time has passed is the number of days or weeks that have passed."
+      ],
+      "visual_type": "Calendar",
+      "visual_payload": {
+        "month": 6,
+        "year": 2025,
+        "task_type": "measure_duration",
+        "show_day_names": true
+      },
+      "visual_render": {
+        "visual_type": "Calendar",
+        "renderer_input_digest": "6e4300f8f9782fcf491908ba48814f3842d3916143ced8dd61afb25845aa6244",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "Calendar",
+          "element_count": 46,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "June 2025",
+            "Sun",
+            "Mon",
+            "Tue",
+            "Wed",
+            "Thu",
+            "Fri",
+            "Sat",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "26",
+            "27",
+            "28",
+            "29",
+            "30",
+            "Click a date to start the range",
+            "Click two dates to measure the duration between them"
+          ],
+          "distinct_colours": [
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "b6f62b736ee963ac5ea0",
+      "replay_digest": "1abfe97668d152d1d8f96cf45602e65a96d953e28461e8e9bb8b9ae2a38255ba"
     },
     {
+      "node_id": "mat_g1_mg_q4_4",
       "seed": 601,
       "formatter": "read_mcq",
       "question_text": "The snack time began at 8:00 and finished at 8:30. How many minutes did it last?",
       "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": {
+          "calendar_feature": "days"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ClockSet",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -258,13 +1177,91 @@
           "value": 30,
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 30,
+      "hints": [
+        "The short hand shows the hour. The long hand shows how far past the hour it is.",
+        "The short (hour) hand points near 8.",
+        "The long hand points to 6 — that is half past the hour.",
+        "The time shown is 8:30."
+      ],
+      "visual_type": "ClockSet",
+      "visual_payload": {
+        "hours": 8,
+        "minutes": 30,
+        "correct_time": {
+          "hour": 8,
+          "minute": 30
+        },
+        "display_hours": 8,
+        "target_time": "8:30",
+        "use_24_hour": false,
+        "minute_angle": 180.0,
+        "hour_angle": 255.0,
+        "minute_snap_interval": 5,
+        "interaction_mode": "read",
+        "is_read_only": true,
+        "show_labels": true,
+        "precision": "5min"
+      },
+      "visual_render": {
+        "visual_type": "ClockSet",
+        "renderer_input_digest": "b7ed195a90118e7ef050a30cdf9634baebb3112fb12fd5ab79d57fe1ad762531",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ClockSet",
+          "element_count": 37,
+          "svg_count": 4,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 6,
+          "input_count": 0,
+          "text_labels": [
+            "🕐 Hour Hand",
+            "🕐 Minute Hand",
+            "Hour (short)",
+            "Minute (long)",
+            "08:30",
+            "AM",
+            "HOURS",
+            "MINUTES",
+            "Choose a hand above, then click the clock to set time • Use +/- for precision"
+          ],
+          "distinct_colours": [
+            "#8891a8",
+            "#8b5cf6",
+            "#06b6d4",
+            "hsl(var(--text)",
+            "hsl(var(--text-muted)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "7499971b786803da914e",
+      "replay_digest": "5dd41be404b90e1382e43507f78334ca9422cd259e6616c1e67bfaae5e64ef06"
     },
     {
+      "node_id": "mat_g1_mg_q4_4",
       "seed": 602,
       "formatter": "cloze",
       "question_text": "The school program begins in May and an exhibit happens in August. How many months later is the exhibit?",
       "correct_answer": 3,
+      "requested": {
+        "difficulty_profile": {
+          "calendar_feature": "days_order"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": true,
+        "visual_type": "Calendar",
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -290,19 +1287,193 @@
           "text": "5",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 3,
+      "hints": [
+        "Use the calendar to find the answer.",
+        "The how much time has passed is the number of days or weeks that have passed."
+      ],
+      "visual_type": "Calendar",
+      "visual_payload": {
+        "month": 3,
+        "year": 2025,
+        "task_type": "measure_duration",
+        "show_day_names": true
+      },
+      "visual_render": {
+        "visual_type": "Calendar",
+        "renderer_input_digest": "b8aa3767fb8df9d0696802bb677945dd42531ce0886fb3b317e0d361bc638f9e",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "Calendar",
+          "element_count": 53,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "March 2025",
+            "Sun",
+            "Mon",
+            "Tue",
+            "Wed",
+            "Thu",
+            "Fri",
+            "Sat",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "26",
+            "27",
+            "28",
+            "29",
+            "30",
+            "31",
+            "Click a date to start the range",
+            "Click two dates to measure the duration between them"
+          ],
+          "distinct_colours": [
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "14207dcc88d8aa05a8ec",
+      "replay_digest": "213e12838056225e2fcad0a0d3dd7cd96e43baaebbf66e4bfe023242a48bdca5"
     },
     {
+      "node_id": "mat_g1_mg_q4_4",
       "seed": 603,
       "formatter": "set_fill_in_blank",
       "question_text": "The recess began at 11:00 and finished at 11:30. How many minutes did it last?",
-      "correct_answer": "30"
+      "correct_answer": "30",
+      "requested": {
+        "difficulty_profile": {
+          "calendar_feature": "full_calendar"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "ClockSet",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "resolved_answer": "30",
+      "hints": [
+        "The short hand shows the hour. The long hand shows how far past the hour it is.",
+        "The short (hour) hand points near 11.",
+        "The long hand points to 6 — that is half past the hour.",
+        "The time shown is 11:30."
+      ],
+      "visual_type": "ClockSet",
+      "visual_payload": {
+        "hours": 11,
+        "minutes": 30,
+        "correct_time": {
+          "hour": 11,
+          "minute": 30
+        },
+        "display_hours": 11,
+        "target_time": "11:30",
+        "use_24_hour": false,
+        "minute_angle": 180.0,
+        "hour_angle": 345.0,
+        "minute_snap_interval": 5,
+        "interaction_mode": "set",
+        "is_read_only": false,
+        "show_labels": true,
+        "precision": "5min"
+      },
+      "visual_render": {
+        "visual_type": "ClockSet",
+        "renderer_input_digest": "120f4cee1d4d6d6e67bb6f5f14faa408736f9e105658924e17d5fc18c30912a0",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ClockSet",
+          "element_count": 37,
+          "svg_count": 4,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 6,
+          "input_count": 0,
+          "text_labels": [
+            "🕐 Hour Hand",
+            "🕐 Minute Hand",
+            "Hour (short)",
+            "Minute (long)",
+            "12:00",
+            "PM",
+            "HOURS",
+            "MINUTES",
+            "Choose a hand above, then click the clock to set time • Use +/- for precision"
+          ],
+          "distinct_colours": [
+            "#8891a8",
+            "#8b5cf6",
+            "#06b6d4",
+            "hsl(var(--text)",
+            "hsl(var(--text-muted)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "23c52f991f9c84a3b57d",
+      "replay_digest": "66f2863ea80dc8960b8503e48006d6d9f76a86c2f8e0a953857370aec61960a3"
     },
     {
+      "node_id": "mat_g1_mg_q4_4",
       "seed": 604,
       "formatter": "read_mcq",
       "question_text": "Sam started to play games at 9:00 and finished at 12:00. How many hours did Sam spend?",
       "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": {
+          "calendar_feature": "months"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ClockSet",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -324,39 +1495,3291 @@
           "value": 3,
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 3,
+      "hints": [
+        "The short hand shows the hour. The long hand shows how far past the hour it is.",
+        "The short (hour) hand points near 9.",
+        "The long hand points to 12, so it is exactly on the hour.",
+        "The time shown is 9:00."
+      ],
+      "visual_type": "ClockSet",
+      "visual_payload": {
+        "hours": 9,
+        "minutes": 0,
+        "correct_time": {
+          "hour": 9,
+          "minute": 0
+        },
+        "display_hours": 9,
+        "target_time": "9:00",
+        "use_24_hour": false,
+        "minute_angle": 0.0,
+        "hour_angle": 270.0,
+        "minute_snap_interval": 5,
+        "interaction_mode": "read",
+        "is_read_only": true,
+        "show_labels": true,
+        "precision": "5min"
+      },
+      "visual_render": {
+        "visual_type": "ClockSet",
+        "renderer_input_digest": "710a0f521c0e39b243cb863976fbf44a75e430418ed10f71ddec5052d13f0f68",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ClockSet",
+          "element_count": 37,
+          "svg_count": 4,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 6,
+          "input_count": 0,
+          "text_labels": [
+            "🕐 Hour Hand",
+            "🕐 Minute Hand",
+            "Hour (short)",
+            "Minute (long)",
+            "09:00",
+            "AM",
+            "HOURS",
+            "MINUTES",
+            "Choose a hand above, then click the clock to set time • Use +/- for precision"
+          ],
+          "distinct_colours": [
+            "#8891a8",
+            "#8b5cf6",
+            "#06b6d4",
+            "hsl(var(--text)",
+            "hsl(var(--text-muted)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "d1d36fae1ee2ce7fd4a2",
+      "replay_digest": "4670ef06c3d36ffa9b0f4878d99b3409cda9591b8e17575a7561d10b2bc781a0"
     },
     {
+      "node_id": "mat_g1_mg_q4_4",
       "seed": 605,
       "formatter": "set_fill_in_blank",
       "question_text": "Mia started to play games at 7:00 and finished at 8:00. How many hours did Mia spend?",
-      "correct_answer": "1"
+      "correct_answer": "1",
+      "requested": {
+        "difficulty_profile": {
+          "calendar_feature": "months_order"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "ClockSet",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "resolved_answer": "1",
+      "hints": [
+        "The short hand shows the hour. The long hand shows how far past the hour it is.",
+        "The short (hour) hand points near 7.",
+        "The long hand points to 12, so it is exactly on the hour.",
+        "The time shown is 7:00."
+      ],
+      "visual_type": "ClockSet",
+      "visual_payload": {
+        "hours": 7,
+        "minutes": 0,
+        "correct_time": {
+          "hour": 7,
+          "minute": 0
+        },
+        "display_hours": 7,
+        "target_time": "7:00",
+        "use_24_hour": false,
+        "minute_angle": 0.0,
+        "hour_angle": 210.0,
+        "minute_snap_interval": 5,
+        "interaction_mode": "set",
+        "is_read_only": false,
+        "show_labels": true,
+        "precision": "5min"
+      },
+      "visual_render": {
+        "visual_type": "ClockSet",
+        "renderer_input_digest": "5683cabe96842864135ebc8e9ec040038c2a635d6b1cbfa175cca8d5c4119489",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ClockSet",
+          "element_count": 37,
+          "svg_count": 4,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 6,
+          "input_count": 0,
+          "text_labels": [
+            "🕐 Hour Hand",
+            "🕐 Minute Hand",
+            "Hour (short)",
+            "Minute (long)",
+            "12:00",
+            "PM",
+            "HOURS",
+            "MINUTES",
+            "Choose a hand above, then click the clock to set time • Use +/- for precision"
+          ],
+          "distinct_colours": [
+            "#8891a8",
+            "#8b5cf6",
+            "#06b6d4",
+            "hsl(var(--text)",
+            "hsl(var(--text-muted)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "ac9f324d442f5063a6f0",
+      "replay_digest": "9a61d1b9eefd38b6ca679722f85567d85cf0611bba33bb90b5163c10e33c0199"
+    },
+    {
+      "node_id": "mat_g1_mg_q4_4",
+      "seed": 606,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Sam started to help in the garden at 7:00 and finished at 9:00. How many hours did Sam spend?",
+      "correct_answer": "2",
+      "requested": {
+        "difficulty_profile": {
+          "calendar_feature": "weeks"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "ClockSet",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "resolved_answer": "2",
+      "hints": [
+        "The short hand shows the hour. The long hand shows how far past the hour it is.",
+        "The short (hour) hand points near 7.",
+        "The long hand points to 12, so it is exactly on the hour.",
+        "The time shown is 7:00."
+      ],
+      "visual_type": "ClockSet",
+      "visual_payload": {
+        "hours": 7,
+        "minutes": 0,
+        "correct_time": {
+          "hour": 7,
+          "minute": 0
+        },
+        "display_hours": 7,
+        "target_time": "7:00",
+        "use_24_hour": false,
+        "minute_angle": 0.0,
+        "hour_angle": 210.0,
+        "minute_snap_interval": 5,
+        "interaction_mode": "set",
+        "is_read_only": false,
+        "show_labels": true,
+        "precision": "5min"
+      },
+      "visual_render": {
+        "visual_type": "ClockSet",
+        "renderer_input_digest": "5683cabe96842864135ebc8e9ec040038c2a635d6b1cbfa175cca8d5c4119489",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ClockSet",
+          "element_count": 37,
+          "svg_count": 4,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 6,
+          "input_count": 0,
+          "text_labels": [
+            "🕐 Hour Hand",
+            "🕐 Minute Hand",
+            "Hour (short)",
+            "Minute (long)",
+            "12:00",
+            "PM",
+            "HOURS",
+            "MINUTES",
+            "Choose a hand above, then click the clock to set time • Use +/- for precision"
+          ],
+          "distinct_colours": [
+            "#8891a8",
+            "#8b5cf6",
+            "#06b6d4",
+            "hsl(var(--text)",
+            "hsl(var(--text-muted)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "1fb5958c130b6935ad6b",
+      "replay_digest": "f7fb76f726d55d6a0a5249724d33f6f5e73f1bf291bd7a6cee70f6065e268616"
+    },
+    {
+      "node_id": "mat_g1_mg_q4_4",
+      "seed": 607,
+      "formatter": "read_mcq",
+      "question_text": "Recess starts at 8:00 and lasts half an hour (30 minutes). What time does it end?",
+      "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": {
+          "context": "word_problem"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ClockSet",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "8:00",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "9:00",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "9:30",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "8:30",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": "8:30",
+      "hints": [
+        "The short hand shows the hour. The long hand shows how far past the hour it is.",
+        "The short (hour) hand points near 8.",
+        "The long hand points to 6 — that is half past the hour.",
+        "The time shown is 8:30."
+      ],
+      "visual_type": "ClockSet",
+      "visual_payload": {
+        "hours": 8,
+        "minutes": 30,
+        "correct_time": {
+          "hour": 8,
+          "minute": 30
+        },
+        "display_hours": 8,
+        "target_time": "8:30",
+        "use_24_hour": false,
+        "minute_angle": 180.0,
+        "hour_angle": 255.0,
+        "minute_snap_interval": 5,
+        "interaction_mode": "read",
+        "is_read_only": true,
+        "show_labels": true,
+        "precision": "5min"
+      },
+      "visual_render": {
+        "visual_type": "ClockSet",
+        "renderer_input_digest": "b7ed195a90118e7ef050a30cdf9634baebb3112fb12fd5ab79d57fe1ad762531",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ClockSet",
+          "element_count": 37,
+          "svg_count": 4,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 6,
+          "input_count": 0,
+          "text_labels": [
+            "🕐 Hour Hand",
+            "🕐 Minute Hand",
+            "Hour (short)",
+            "Minute (long)",
+            "08:30",
+            "AM",
+            "HOURS",
+            "MINUTES",
+            "Choose a hand above, then click the clock to set time • Use +/- for precision"
+          ],
+          "distinct_colours": [
+            "#8891a8",
+            "#8b5cf6",
+            "#06b6d4",
+            "hsl(var(--text)",
+            "hsl(var(--text-muted)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "5fba3bbf8c248173e41a",
+      "replay_digest": "49467cdc8cfbeb2aaa7ba07ebcea0afa46a8611b232fa96610a7f22c758c6efc"
+    },
+    {
+      "node_id": "mat_g1_mg_q4_4",
+      "seed": 608,
+      "formatter": "read_mcq",
+      "question_text": "Story time starts at 11:00 and lasts half an hour (30 minutes). What time does it end?",
+      "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": {
+          "include_ampm": "no"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ClockSet",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "11:00",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "11:30",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "12:30",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "12:00",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "11:30",
+      "hints": [
+        "The short hand shows the hour. The long hand shows how far past the hour it is.",
+        "The short (hour) hand points near 11.",
+        "The long hand points to 6 — that is half past the hour.",
+        "The time shown is 11:30."
+      ],
+      "visual_type": "ClockSet",
+      "visual_payload": {
+        "hours": 11,
+        "minutes": 30,
+        "correct_time": {
+          "hour": 11,
+          "minute": 30
+        },
+        "display_hours": 11,
+        "target_time": "11:30",
+        "use_24_hour": false,
+        "minute_angle": 180.0,
+        "hour_angle": 345.0,
+        "minute_snap_interval": 5,
+        "interaction_mode": "read",
+        "is_read_only": true,
+        "show_labels": true,
+        "precision": "5min"
+      },
+      "visual_render": {
+        "visual_type": "ClockSet",
+        "renderer_input_digest": "2d6997144ac84701fb3abd05ac2a8cd4dc59917cf908be2ad7fe8d262f9a19e1",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ClockSet",
+          "element_count": 37,
+          "svg_count": 4,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 6,
+          "input_count": 0,
+          "text_labels": [
+            "🕐 Hour Hand",
+            "🕐 Minute Hand",
+            "Hour (short)",
+            "Minute (long)",
+            "11:30",
+            "AM",
+            "HOURS",
+            "MINUTES",
+            "Choose a hand above, then click the clock to set time • Use +/- for precision"
+          ],
+          "distinct_colours": [
+            "#8891a8",
+            "#8b5cf6",
+            "#06b6d4",
+            "hsl(var(--text)",
+            "hsl(var(--text-muted)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "3cd2d2a4b4aabbc2cefb",
+      "replay_digest": "b2a96f0293cea6c8fdc01c4a4eaf9f58f1c1a0128a7a726700109798645608d9"
+    },
+    {
+      "node_id": "mat_g1_mg_q4_4",
+      "seed": 609,
+      "formatter": "read_mcq",
+      "question_text": "Look at the October 2025 calendar. What day of the week is October 10?",
+      "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": {
+          "include_ampm": "yes"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "Calendar",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "Friday",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "Thursday",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "Wednesday",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "Monday",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "Friday",
+      "hints": [
+        "Use the calendar to find the answer.",
+        "The how much time has passed is the number of days or weeks that have passed."
+      ],
+      "visual_type": "Calendar",
+      "visual_payload": {
+        "month": 10,
+        "year": 2025,
+        "task_type": "select_date",
+        "show_day_names": true,
+        "highlighted_dates": [
+          10
+        ]
+      },
+      "visual_render": {
+        "visual_type": "Calendar",
+        "renderer_input_digest": "57192f678c41141f9bcb14040889935d6219c913cad0a8ed641a0c84fd6b1561",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "Calendar",
+          "element_count": 49,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "October 2025",
+            "Sun",
+            "Mon",
+            "Tue",
+            "Wed",
+            "Thu",
+            "Fri",
+            "Sat",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "26",
+            "27",
+            "28",
+            "29",
+            "30",
+            "31",
+            "Click a date to select it"
+          ],
+          "distinct_colours": [
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "6b957feeaa63811556da",
+      "replay_digest": "94a472390ad765e3797b7071dd75254db22ef57cb3dd6e47d9b190954a1eed07"
+    },
+    {
+      "node_id": "mat_g1_mg_q4_4",
+      "seed": 611,
+      "formatter": "read_mcq",
+      "question_text": "Look at the June 2025 calendar. What day of the week is June 21?",
+      "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": {
+          "mode": "set"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "Calendar",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "Tuesday",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "Thursday",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "Friday",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "Saturday",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": "Saturday",
+      "hints": [
+        "Use the calendar to find the answer.",
+        "The how much time has passed is the number of days or weeks that have passed."
+      ],
+      "visual_type": "Calendar",
+      "visual_payload": {
+        "month": 6,
+        "year": 2025,
+        "task_type": "select_date",
+        "show_day_names": true,
+        "highlighted_dates": [
+          21
+        ]
+      },
+      "visual_render": {
+        "visual_type": "Calendar",
+        "renderer_input_digest": "140bcf413ea284d6a5d3e59758677c07bc1c71dc98fad2af72ce75715d639e27",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "Calendar",
+          "element_count": 45,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "June 2025",
+            "Sun",
+            "Mon",
+            "Tue",
+            "Wed",
+            "Thu",
+            "Fri",
+            "Sat",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "26",
+            "27",
+            "28",
+            "29",
+            "30",
+            "Click a date to select it"
+          ],
+          "distinct_colours": [
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "6dfa956416dc09363aa3",
+      "replay_digest": "126461a2f7b22b910848b95ebcd2475f769f7312785269fca3d140af10210b71"
+    },
+    {
+      "node_id": "mat_g1_mg_q4_4",
+      "seed": 613,
+      "formatter": "cloze",
+      "question_text": "This month is September. What month will it be in 2 months?",
+      "correct_answer": "November",
+      "requested": {
+        "difficulty_profile": {
+          "precision": "half_hour"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": true,
+        "visual_type": "Calendar",
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "February",
+          "text": "February",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "March",
+          "text": "March",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "January",
+          "text": "January",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "November",
+          "text": "November",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": "November",
+      "hints": [
+        "Use the calendar to find the answer.",
+        "The how much time has passed is the number of days or weeks that have passed."
+      ],
+      "visual_type": "Calendar",
+      "visual_payload": {
+        "month": 3,
+        "year": 2025,
+        "task_type": "measure_duration",
+        "show_day_names": true
+      },
+      "visual_render": {
+        "visual_type": "Calendar",
+        "renderer_input_digest": "b8aa3767fb8df9d0696802bb677945dd42531ce0886fb3b317e0d361bc638f9e",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "Calendar",
+          "element_count": 53,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "March 2025",
+            "Sun",
+            "Mon",
+            "Tue",
+            "Wed",
+            "Thu",
+            "Fri",
+            "Sat",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "26",
+            "27",
+            "28",
+            "29",
+            "30",
+            "31",
+            "Click a date to start the range",
+            "Click two dates to measure the duration between them"
+          ],
+          "distinct_colours": [
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "2a2fdd54bc9804a91232",
+      "replay_digest": "002e0eccfa0922ff283aaa8358954cd4ad0d3e7acdc11969fb5b8c34269b2c4b"
+    },
+    {
+      "node_id": "mat_g1_mg_q4_4",
+      "seed": 614,
+      "formatter": "cloze",
+      "question_text": "This month is February. What month will it be in 3 months?",
+      "correct_answer": "May",
+      "requested": {
+        "difficulty_profile": {
+          "precision": "hour"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": true,
+        "visual_type": "Calendar",
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "March",
+          "text": "March",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "January",
+          "text": "January",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "February",
+          "text": "February",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "May",
+          "text": "May",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": "May",
+      "hints": [
+        "Use the calendar to find the answer.",
+        "The how much time has passed is the number of days or weeks that have passed."
+      ],
+      "visual_type": "Calendar",
+      "visual_payload": {
+        "month": 4,
+        "year": 2025,
+        "task_type": "measure_duration",
+        "show_day_names": true
+      },
+      "visual_render": {
+        "visual_type": "Calendar",
+        "renderer_input_digest": "05bcff034a15a87c4298f7dc046980f30c4adb110ae5902832776cc8176d5c9a",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "Calendar",
+          "element_count": 48,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "April 2025",
+            "Sun",
+            "Mon",
+            "Tue",
+            "Wed",
+            "Thu",
+            "Fri",
+            "Sat",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "26",
+            "27",
+            "28",
+            "29",
+            "30",
+            "Click a date to start the range",
+            "Click two dates to measure the duration between them"
+          ],
+          "distinct_colours": [
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "4c4112aefd320ea62b39",
+      "replay_digest": "8f5bba6088b5d683a66cc525d2399de9ecd2c3030b59db373d1272726ba360b5"
+    },
+    {
+      "node_id": "mat_g1_mg_q4_4",
+      "seed": 615,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Art time starts at 8:00 and lasts for 2 hours. What time does it end?",
+      "correct_answer": "10:00",
+      "requested": {
+        "difficulty_profile": {
+          "precision": "one_minute"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "ClockSet",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "resolved_answer": "10:00",
+      "hints": [
+        "The short hand shows the hour. The long hand shows how far past the hour it is.",
+        "The short (hour) hand points near 10.",
+        "The long hand points to 12, so it is exactly on the hour.",
+        "The time shown is 10:00."
+      ],
+      "visual_type": "ClockSet",
+      "visual_payload": {
+        "hours": 10,
+        "minutes": 0,
+        "correct_time": {
+          "hour": 10,
+          "minute": 0
+        },
+        "display_hours": 10,
+        "target_time": "10:00",
+        "use_24_hour": false,
+        "minute_angle": 0.0,
+        "hour_angle": 300.0,
+        "minute_snap_interval": 5,
+        "interaction_mode": "set",
+        "is_read_only": false,
+        "show_labels": true,
+        "precision": "5min"
+      },
+      "visual_render": {
+        "visual_type": "ClockSet",
+        "renderer_input_digest": "dd10926be8e6a99b5032cf48e930d57cf2fb9c027ba7d86876e68678709cc06d",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ClockSet",
+          "element_count": 37,
+          "svg_count": 4,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 6,
+          "input_count": 0,
+          "text_labels": [
+            "🕐 Hour Hand",
+            "🕐 Minute Hand",
+            "Hour (short)",
+            "Minute (long)",
+            "12:00",
+            "PM",
+            "HOURS",
+            "MINUTES",
+            "Choose a hand above, then click the clock to set time • Use +/- for precision"
+          ],
+          "distinct_colours": [
+            "#8891a8",
+            "#8b5cf6",
+            "#06b6d4",
+            "hsl(var(--text)",
+            "hsl(var(--text-muted)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "857fe7603aa8583b8839",
+      "replay_digest": "55d5e06b44087df77aef88e0eee35ceb51feaf31c6a5775152174ca178e4dcbb"
+    },
+    {
+      "node_id": "mat_g1_mg_q4_4",
+      "seed": 616,
+      "formatter": "set_fill_in_blank",
+      "question_text": "The clean-up time began at 10:00 and finished at 10:30. How many minutes did it last?",
+      "correct_answer": "30",
+      "requested": {
+        "difficulty_profile": {
+          "precision": "quarter_hour"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "ClockSet",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "resolved_answer": "30",
+      "hints": [
+        "The short hand shows the hour. The long hand shows how far past the hour it is.",
+        "The short (hour) hand points near 10.",
+        "The long hand points to 6 — that is half past the hour.",
+        "The time shown is 10:30."
+      ],
+      "visual_type": "ClockSet",
+      "visual_payload": {
+        "hours": 10,
+        "minutes": 30,
+        "correct_time": {
+          "hour": 10,
+          "minute": 30
+        },
+        "display_hours": 10,
+        "target_time": "10:30",
+        "use_24_hour": false,
+        "minute_angle": 180.0,
+        "hour_angle": 315.0,
+        "minute_snap_interval": 5,
+        "interaction_mode": "set",
+        "is_read_only": false,
+        "show_labels": true,
+        "precision": "5min"
+      },
+      "visual_render": {
+        "visual_type": "ClockSet",
+        "renderer_input_digest": "faa4b6bc234cf597cc80fe653841092d18b0bdba29fb97629ba72247b2b6a8b4",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ClockSet",
+          "element_count": 37,
+          "svg_count": 4,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 6,
+          "input_count": 0,
+          "text_labels": [
+            "🕐 Hour Hand",
+            "🕐 Minute Hand",
+            "Hour (short)",
+            "Minute (long)",
+            "12:00",
+            "PM",
+            "HOURS",
+            "MINUTES",
+            "Choose a hand above, then click the clock to set time • Use +/- for precision"
+          ],
+          "distinct_colours": [
+            "#8891a8",
+            "#8b5cf6",
+            "#06b6d4",
+            "hsl(var(--text)",
+            "hsl(var(--text-muted)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "fcd0ddb28f814a5b884c",
+      "replay_digest": "50e86c07452e61a23aa6f5c9a1d8f32916ecee3e46606eef06e8de80a2e344a0"
+    },
+    {
+      "node_id": "mat_g1_mg_q4_4",
+      "seed": 617,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Reading time starts at 8:00 and lasts a quarter of an hour (15 minutes). What time does it end?",
+      "correct_answer": "8:15",
+      "requested": {
+        "difficulty_profile": {
+          "task_type": "clock_reading"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "ClockSet",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "resolved_answer": "8:15",
+      "hints": [
+        "The short hand shows the hour. The long hand shows how far past the hour it is.",
+        "The short (hour) hand points near 8.",
+        "The long hand points to 3 — that is a quarter past the hour.",
+        "The time shown is 8:15."
+      ],
+      "visual_type": "ClockSet",
+      "visual_payload": {
+        "hours": 8,
+        "minutes": 15,
+        "correct_time": {
+          "hour": 8,
+          "minute": 15
+        },
+        "display_hours": 8,
+        "target_time": "8:15",
+        "use_24_hour": false,
+        "minute_angle": 90.0,
+        "hour_angle": 247.5,
+        "minute_snap_interval": 5,
+        "interaction_mode": "set",
+        "is_read_only": false,
+        "show_labels": true,
+        "precision": "5min"
+      },
+      "visual_render": {
+        "visual_type": "ClockSet",
+        "renderer_input_digest": "8852a5cf76ce6bb90345499144eb09d6e77c07f5d75373c571460c881d5ca124",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ClockSet",
+          "element_count": 37,
+          "svg_count": 4,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 6,
+          "input_count": 0,
+          "text_labels": [
+            "🕐 Hour Hand",
+            "🕐 Minute Hand",
+            "Hour (short)",
+            "Minute (long)",
+            "12:00",
+            "PM",
+            "HOURS",
+            "MINUTES",
+            "Choose a hand above, then click the clock to set time • Use +/- for precision"
+          ],
+          "distinct_colours": [
+            "#8891a8",
+            "#8b5cf6",
+            "#06b6d4",
+            "hsl(var(--text)",
+            "hsl(var(--text-muted)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "251a6ad4de14157610a6",
+      "replay_digest": "f98d614441669bfbf159ee0664c430a1155f57449cc25b4026719a41a30c1830"
+    },
+    {
+      "node_id": "mat_g1_mg_q4_4",
+      "seed": 618,
+      "formatter": "read_mcq",
+      "question_text": "Look at the bus timetable. According to the timetable, how many minutes is the travel time for Bus 2?",
+      "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": {
+          "task_type": "elapsed_time"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "Timetable",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 35,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 25,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 45,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 50,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 35,
+      "hints": [
+        "The short hand shows the hour. The long hand shows how far past the hour it is.",
+        "The short (hour) hand points near 8.",
+        "The long hand points to 12, so it is exactly on the hour.",
+        "The time shown is 8:00."
+      ],
+      "visual_type": "Timetable",
+      "visual_payload": {
+        "kind": "bus",
+        "columns": [
+          "Bus",
+          "Departs",
+          "Arrives"
+        ],
+        "rows": [
+          {
+            "label": "Bus 1",
+            "start": "7:00",
+            "end": "7:45"
+          },
+          {
+            "label": "Bus 2",
+            "start": "8:15",
+            "end": "8:50"
+          }
+        ]
+      },
+      "visual_render": {
+        "visual_type": "Timetable",
+        "renderer_input_digest": "cd062d540b6371dbc7b9eb459701a42fb0cf728dece22ed0e2a7c9bf8a729001",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "Timetable",
+          "element_count": 17,
+          "svg_count": 0,
+          "table_row_count": 3,
+          "table_cell_count": 9,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "Bus",
+            "Departs",
+            "Arrives",
+            "Bus 1",
+            "7:00",
+            "7:45",
+            "Bus 2",
+            "8:15",
+            "8:50"
+          ],
+          "distinct_colours": [
+            "#ffffff",
+            "#334155",
+            "#e2e8f0",
+            "#0f172a"
+          ],
+          "role_counts": {
+            "timetable": 1,
+            "timetable-header": 3,
+            "timetable-row": 2
+          }
+        }
+      },
+      "sample_id": "17308d3930cf995e48b8",
+      "replay_digest": "9187ca48cac1627cd9ee97fee89a7348522c717f4bc76cb1a8e44fb4fd2c1b88"
+    },
+    {
+      "node_id": "mat_g1_mg_q4_4",
+      "seed": 700,
+      "formatter": "read_mcq",
+      "question_text": "Ben started to play games at 9:00 and finished at 12:00. How many hours did Ben spend?",
+      "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ClockSet",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 5,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 3,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 4,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 2,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 3,
+      "hints": [
+        "The short hand shows the hour. The long hand shows how far past the hour it is.",
+        "The short (hour) hand points near 9.",
+        "The long hand points to 12, so it is exactly on the hour.",
+        "The time shown is 9:00."
+      ],
+      "visual_type": "ClockSet",
+      "visual_payload": {
+        "hours": 9,
+        "minutes": 0,
+        "correct_time": {
+          "hour": 9,
+          "minute": 0
+        },
+        "display_hours": 9,
+        "target_time": "9:00",
+        "use_24_hour": false,
+        "minute_angle": 0.0,
+        "hour_angle": 270.0,
+        "minute_snap_interval": 5,
+        "interaction_mode": "read",
+        "is_read_only": true,
+        "show_labels": true,
+        "precision": "5min"
+      },
+      "visual_render": {
+        "visual_type": "ClockSet",
+        "renderer_input_digest": "710a0f521c0e39b243cb863976fbf44a75e430418ed10f71ddec5052d13f0f68",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ClockSet",
+          "element_count": 37,
+          "svg_count": 4,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 6,
+          "input_count": 0,
+          "text_labels": [
+            "🕐 Hour Hand",
+            "🕐 Minute Hand",
+            "Hour (short)",
+            "Minute (long)",
+            "09:00",
+            "AM",
+            "HOURS",
+            "MINUTES",
+            "Choose a hand above, then click the clock to set time • Use +/- for precision"
+          ],
+          "distinct_colours": [
+            "#8891a8",
+            "#8b5cf6",
+            "#06b6d4",
+            "hsl(var(--text)",
+            "hsl(var(--text-muted)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "f699e58b0f58f928f964",
+      "replay_digest": "5a97a63da0d89b72992bab353848698abb9568f2f23b654edec758cab32a0689"
+    },
+    {
+      "node_id": "mat_g1_mg_q4_4",
+      "seed": 701,
+      "formatter": "read_mcq",
+      "question_text": "💃 Kuya Ton has a math challenge about trophies. Look at the May 2025 calendar. What day of the week is May 16?",
+      "correct_answer": "C",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "dance",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "Calendar",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "Thursday",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "Saturday",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "Friday",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "Wednesday",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "Friday",
+      "hints": [
+        "Use the calendar to find the answer.",
+        "The how much time has passed is the number of days or weeks that have passed."
+      ],
+      "visual_type": "Calendar",
+      "visual_payload": {
+        "month": 5,
+        "year": 2025,
+        "task_type": "select_date",
+        "show_day_names": true,
+        "highlighted_dates": [
+          16
+        ]
+      },
+      "visual_render": {
+        "visual_type": "Calendar",
+        "renderer_input_digest": "8a6aed0738c9eb65934fcd71024ec41723f945f39b1715e56d97653fbe0d3642",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "Calendar",
+          "element_count": 50,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "May 2025",
+            "Sun",
+            "Mon",
+            "Tue",
+            "Wed",
+            "Thu",
+            "Fri",
+            "Sat",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "26",
+            "27",
+            "28",
+            "29",
+            "30",
+            "31",
+            "Click a date to select it"
+          ],
+          "distinct_colours": [
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "3e0fdcfae651e3017259",
+      "replay_digest": "2279e7dccb6864245083441a13d31fab3b125ff3f46b4fe1c1cdabe7a4b27ae0"
+    },
+    {
+      "node_id": "mat_g1_mg_q4_4",
+      "seed": 702,
+      "formatter": "read_mcq",
+      "question_text": "🏀 Isko has a math challenge about basketballs. Study time starts at 8:00 and lasts for 2 hours. What time does it end?",
+      "correct_answer": "C",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "social_issues",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ClockSet",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "7:00",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "8:00",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "10:00",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "11:00",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "10:00",
+      "hints": [
+        "The short hand shows the hour. The long hand shows how far past the hour it is.",
+        "The short (hour) hand points near 10.",
+        "The long hand points to 12, so it is exactly on the hour.",
+        "The time shown is 10:00."
+      ],
+      "visual_type": "ClockSet",
+      "visual_payload": {
+        "hours": 10,
+        "minutes": 0,
+        "correct_time": {
+          "hour": 10,
+          "minute": 0
+        },
+        "display_hours": 10,
+        "target_time": "10:00",
+        "use_24_hour": false,
+        "minute_angle": 0.0,
+        "hour_angle": 300.0,
+        "minute_snap_interval": 5,
+        "interaction_mode": "read",
+        "is_read_only": true,
+        "show_labels": true,
+        "precision": "5min"
+      },
+      "visual_render": {
+        "visual_type": "ClockSet",
+        "renderer_input_digest": "960980437c70b953f54d8fcd62cd5eb5a053f3d13318fae4aa44b4f0092ebf28",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ClockSet",
+          "element_count": 37,
+          "svg_count": 4,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 6,
+          "input_count": 0,
+          "text_labels": [
+            "🕐 Hour Hand",
+            "🕐 Minute Hand",
+            "Hour (short)",
+            "Minute (long)",
+            "10:00",
+            "AM",
+            "HOURS",
+            "MINUTES",
+            "Choose a hand above, then click the clock to set time • Use +/- for precision"
+          ],
+          "distinct_colours": [
+            "#8891a8",
+            "#8b5cf6",
+            "#06b6d4",
+            "hsl(var(--text)",
+            "hsl(var(--text-muted)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "b68f88513fe823185bba",
+      "replay_digest": "8049091be84e74487af9fce08c420bf14b9176af5b4ba3d82496577954a4f679"
+    },
+    {
+      "node_id": "mat_g1_mg_q4_4",
+      "seed": 800,
+      "formatter": "read_mcq",
+      "question_text": "Look at the August 2025 calendar. What day of the week is August 31?",
+      "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "Calendar",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "Tuesday",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "Monday",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "Friday",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "Sunday",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": "Sunday",
+      "hints": [
+        "Use the calendar to find the answer.",
+        "The how much time has passed is the number of days or weeks that have passed."
+      ],
+      "visual_type": "Calendar",
+      "visual_payload": {
+        "month": 8,
+        "year": 2025,
+        "task_type": "select_date",
+        "show_day_names": true,
+        "highlighted_dates": [
+          31
+        ]
+      },
+      "visual_render": {
+        "visual_type": "Calendar",
+        "renderer_input_digest": "aba939198f8b48dc58787d6aa4251be6da7fafa563fa95d5ae2f37c72dbdce9b",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "Calendar",
+          "element_count": 51,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "August 2025",
+            "Sun",
+            "Mon",
+            "Tue",
+            "Wed",
+            "Thu",
+            "Fri",
+            "Sat",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "26",
+            "27",
+            "28",
+            "29",
+            "30",
+            "31",
+            "Click a date to select it"
+          ],
+          "distinct_colours": [
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "56e82086bbf0f0f30b1e",
+      "replay_digest": "307459effbd5ddc4ce29b26fd9b0cf07ae5c9ae69f43d74122b6b2d03ab22181"
+    },
+    {
+      "node_id": "mat_g1_mg_q4_4",
+      "seed": 900,
+      "formatter": "set_fill_in_blank",
+      "question_text": "A class starts at 8:00 and lasts for 2 hours. What time does it end?",
+      "correct_answer": "10:00",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "ClockSet",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "resolved_answer": "10:00",
+      "hints": [
+        "The short hand shows the hour. The long hand shows how far past the hour it is.",
+        "The short (hour) hand points near 10.",
+        "The long hand points to 12, so it is exactly on the hour.",
+        "The time shown is 10:00."
+      ],
+      "visual_type": "ClockSet",
+      "visual_payload": {
+        "hours": 10,
+        "minutes": 0,
+        "correct_time": {
+          "hour": 10,
+          "minute": 0
+        },
+        "display_hours": 10,
+        "target_time": "10:00",
+        "use_24_hour": false,
+        "minute_angle": 0.0,
+        "hour_angle": 300.0,
+        "minute_snap_interval": 5,
+        "interaction_mode": "set",
+        "is_read_only": false,
+        "show_labels": true,
+        "precision": "5min"
+      },
+      "visual_render": {
+        "visual_type": "ClockSet",
+        "renderer_input_digest": "dd10926be8e6a99b5032cf48e930d57cf2fb9c027ba7d86876e68678709cc06d",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ClockSet",
+          "element_count": 37,
+          "svg_count": 4,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 6,
+          "input_count": 0,
+          "text_labels": [
+            "🕐 Hour Hand",
+            "🕐 Minute Hand",
+            "Hour (short)",
+            "Minute (long)",
+            "12:00",
+            "PM",
+            "HOURS",
+            "MINUTES",
+            "Choose a hand above, then click the clock to set time • Use +/- for precision"
+          ],
+          "distinct_colours": [
+            "#8891a8",
+            "#8b5cf6",
+            "#06b6d4",
+            "hsl(var(--text)",
+            "hsl(var(--text-muted)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "a37ff336be0b810f0e2e",
+      "replay_digest": "72a83777691b0a64a017f3f3a16ed5119fb8ba422c98eeb04d336d5a78e9543e"
+    },
+    {
+      "node_id": "mat_g1_mg_q4_4",
+      "seed": 901,
+      "formatter": "mcq",
+      "question_text": "The school program begins in February and an exhibit happens in June. How many months later is the exhibit?",
+      "correct_answer": 4,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": true,
+        "visual_type": "Calendar",
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 6,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 5,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 4,
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 4,
+      "hints": [
+        "Use the calendar to find the answer.",
+        "The how much time has passed is the number of days or weeks that have passed."
+      ],
+      "visual_type": "Calendar",
+      "visual_payload": {
+        "month": 11,
+        "year": 2025,
+        "task_type": "measure_duration",
+        "show_day_names": true
+      },
+      "visual_render": {
+        "visual_type": "Calendar",
+        "renderer_input_digest": "9ff4ef4dd92e545f0d5e453c66572de950bce0d7d5f028201914a7abd09aba74",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "Calendar",
+          "element_count": 52,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "November 2025",
+            "Sun",
+            "Mon",
+            "Tue",
+            "Wed",
+            "Thu",
+            "Fri",
+            "Sat",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "26",
+            "27",
+            "28",
+            "29",
+            "30",
+            "Click a date to start the range",
+            "Click two dates to measure the duration between them"
+          ],
+          "distinct_colours": [
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "06d5deeec5f8a90c9b6a",
+      "replay_digest": "826f16cfb705e9d6dfc15a2d0e0e49bd4bbdd3263b5c41507bc43066f3ca3d28"
+    },
+    {
+      "node_id": "mat_g1_mg_q4_4",
+      "seed": 1000,
+      "formatter": "cloze",
+      "question_text": "This month is July. What month will it be in 2 months?",
+      "correct_answer": "September",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "hint_gated"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": true,
+        "visual_type": "Calendar",
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "hint_gated"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "February",
+          "text": "February",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "January",
+          "text": "January",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "September",
+          "text": "September",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "March",
+          "text": "March",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "September",
+      "hints": [
+        "Use the calendar to find the answer.",
+        "The how much time has passed is the number of days or weeks that have passed."
+      ],
+      "visual_type": "Calendar",
+      "visual_payload": {
+        "month": 11,
+        "year": 2025,
+        "task_type": "measure_duration",
+        "show_day_names": true
+      },
+      "visual_render": {
+        "visual_type": "Calendar",
+        "renderer_input_digest": "9ff4ef4dd92e545f0d5e453c66572de950bce0d7d5f028201914a7abd09aba74",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "Calendar",
+          "element_count": 52,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "November 2025",
+            "Sun",
+            "Mon",
+            "Tue",
+            "Wed",
+            "Thu",
+            "Fri",
+            "Sat",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "26",
+            "27",
+            "28",
+            "29",
+            "30",
+            "Click a date to start the range",
+            "Click two dates to measure the duration between them"
+          ],
+          "distinct_colours": [
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "6c41fafb2faf71bcfa9b",
+      "replay_digest": "a657b3c10de368650d42c971f71dd6e9544104c820ba606ed6946c2ac292f90f"
+    },
+    {
+      "node_id": "mat_g1_mg_q4_4",
+      "seed": 1001,
+      "formatter": "read_mcq",
+      "question_text": "Art time starts at 8:00 and lasts for 2 hours. What time does it end?",
+      "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "mastery_drill"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ClockSet",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "mastery_drill"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "10:00",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "11:00",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "8:00",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "7:00",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "10:00",
+      "hints": [
+        "The short hand shows the hour. The long hand shows how far past the hour it is.",
+        "The short (hour) hand points near 10.",
+        "The long hand points to 12, so it is exactly on the hour.",
+        "The time shown is 10:00."
+      ],
+      "visual_type": "ClockSet",
+      "visual_payload": {
+        "hours": 10,
+        "minutes": 0,
+        "correct_time": {
+          "hour": 10,
+          "minute": 0
+        },
+        "display_hours": 10,
+        "target_time": "10:00",
+        "use_24_hour": false,
+        "minute_angle": 0.0,
+        "hour_angle": 300.0,
+        "minute_snap_interval": 5,
+        "interaction_mode": "read",
+        "is_read_only": true,
+        "show_labels": true,
+        "precision": "5min"
+      },
+      "visual_render": {
+        "visual_type": "ClockSet",
+        "renderer_input_digest": "960980437c70b953f54d8fcd62cd5eb5a053f3d13318fae4aa44b4f0092ebf28",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ClockSet",
+          "element_count": 37,
+          "svg_count": 4,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 6,
+          "input_count": 0,
+          "text_labels": [
+            "🕐 Hour Hand",
+            "🕐 Minute Hand",
+            "Hour (short)",
+            "Minute (long)",
+            "10:00",
+            "AM",
+            "HOURS",
+            "MINUTES",
+            "Choose a hand above, then click the clock to set time • Use +/- for precision"
+          ],
+          "distinct_colours": [
+            "#8891a8",
+            "#8b5cf6",
+            "#06b6d4",
+            "hsl(var(--text)",
+            "hsl(var(--text-muted)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "a4a10344e8ad3451a191",
+      "replay_digest": "1e299c52fc9a0f422daf3717ebeccd987552f1a2b72c1d9849552d751938d28c"
+    },
+    {
+      "node_id": "mat_g1_mg_q4_4",
+      "seed": 1002,
+      "formatter": "read_mcq",
+      "question_text": "Look at the October 2025 calendar. What day of the week is October 14?",
+      "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "scaffolded"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "Calendar",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "scaffolded"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "Friday",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "Saturday",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "Monday",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "Tuesday",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": "Tuesday",
+      "hints": [
+        "Use the calendar to find the answer.",
+        "The how much time has passed is the number of days or weeks that have passed."
+      ],
+      "visual_type": "Calendar",
+      "visual_payload": {
+        "month": 10,
+        "year": 2025,
+        "task_type": "select_date",
+        "show_day_names": true,
+        "highlighted_dates": [
+          14
+        ]
+      },
+      "visual_render": {
+        "visual_type": "Calendar",
+        "renderer_input_digest": "f9e4d9387400a1e22af73b3640562696c1ccc560ea6e83b551798696728e113b",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "Calendar",
+          "element_count": 49,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "October 2025",
+            "Sun",
+            "Mon",
+            "Tue",
+            "Wed",
+            "Thu",
+            "Fri",
+            "Sat",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "26",
+            "27",
+            "28",
+            "29",
+            "30",
+            "31",
+            "Click a date to select it"
+          ],
+          "distinct_colours": [
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "492b80baaa5834bfded8",
+      "replay_digest": "02a51b6b3c688075ecf8cb5ada117354755a3d3cfb1522cd865c20a515ba5614"
+    }
+  ],
+  "sample_assessments": [
+    {
+      "sample_id": "ff24e3f7564a16176ec2",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The start time, duration, and requested end time are explicit, with one unambiguous quarter-hour answer among the options."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A short break beginning at 9:00 and lasting 15 minutes coherently ends at 9:15."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The wording is short and familiar, and the hints explain the clock hands in language suitable for an early learner."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Adding one quarter hour, or 15 minutes, to 9:00 correctly produces 9:15."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_4-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_4-20260924:mat_g1_mg_q4_4"
+    },
+    {
+      "sample_id": "cd9ab15dffb62b187ff1",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The duration and starting time are stated plainly, so the single requested ending time is determinate."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Lunch beginning at 10:00 and lasting half an hour consistently ends at 10:30."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The familiar lunch context and explicit parenthetical explanation of 30 minutes make the task understandable."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Adding 30 minutes to 10:00 gives the printed answer 10:30."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_4-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_4-20260924:mat_g1_mg_q4_4"
+    },
+    {
+      "sample_id": "3aa17e57ae386d9582d4",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The month and two-month interval specify one answer, and the alternatives are distinct month names."
+        },
+        "contextual_logical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The stem asks about March, but the rendered calendar is labeled September 2025, so the supporting visual contradicts the stated situation."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The sentence is simple, but the unrelated September calendar and the hint about days or weeks can confuse a child solving a month-counting question."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Counting two months forward from March correctly gives May, independent of the mismatched display."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_4-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_4-20260924:mat_g1_mg_q4_4"
+    },
+    {
+      "sample_id": "3d0fdafb47fcc8771b33",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "May to July is a clear two-month interval, and the numeric choices contain one matching answer."
+        },
+        "contextual_logical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "The July calendar supports the destination month but does not show the stated May starting point, limiting the usefulness of the visual evidence."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The school program and exhibit provide a concise, understandable comparison of two named months."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "July is two calendar months after May, so the answer 2 is mathematically correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_4-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_4-20260924:mat_g1_mg_q4_4"
+    },
+    {
+      "sample_id": "fc0dec5f175f7e5dca32",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "A one-hour duration from 8:00 determines a unique ending time of 9:00."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A class that starts at 8:00 and lasts one hour logically ends at 9:00."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The class context and direct question are concise, and the clock hints guide the intended representation."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "One hour after 8:00 is 9:00, matching the answer and the final hint."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_4-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_4-20260924:mat_g1_mg_q4_4"
+    },
+    {
+      "sample_id": "b635b1309447cbdd1ef2",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The two named months and the requested count define one unambiguous numerical response."
+        },
+        "contextual_logical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "The September calendar displays the ending month but omits the May starting month, so it only partially represents the stated comparison."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The question uses familiar school and exhibit contexts and asks directly for the number of months later."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "September is four months after May when counting June, July, August, and September as the endpoint interval."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_4-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_4-20260924:mat_g1_mg_q4_4"
+    },
+    {
+      "sample_id": "d9113e76787866ca1193",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The month, year, date, and weekday options identify one calendar lookup with no competing interpretation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The May 2025 calendar is the same month and year referenced in the stem, making the visual context coherent."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The instruction to look at a named calendar and identify a date's weekday is direct and age-appropriate."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "May 21, 2025 falls on Wednesday, matching the printed answer and the displayed calendar."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_4-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_4-20260924:mat_g1_mg_q4_4"
+    },
+    {
+      "sample_id": "8eb701b2d9aebbf2d869",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "June 6, 2025 and the four weekday options produce one clearly correct response."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The June 2025 calendar matches the month and year in the question and supports the lookup requested."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The short imperative and familiar calendar task are easy to parse for a Grade 1 learner."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "June 6, 2025 is Friday, so the answer is consistent with the calendar and options."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_4-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_4-20260924:mat_g1_mg_q4_4"
+    },
+    {
+      "sample_id": "b6f62b736ee963ac5ea0",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "March to July specifies a unique four-month interval despite the reordered answer choices."
+        },
+        "contextual_logical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The rendered calendar is June 2025 rather than a display matching the March-to-July situation, creating contradictory visual context."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The stem is simple, but the June display and the hint about days or weeks do not clearly support counting months from March to July."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "July is four months after March, so the printed answer 4 is mathematically correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_4-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_4-20260924:mat_g1_mg_q4_4"
+    },
+    {
+      "sample_id": "7499971b786803da914e",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The start and finish times are explicit and the question asks for one elapsed-minute value."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "An interval from 8:00 to 8:30 is a coherent 30-minute snack period."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The familiar snack context, matching clock visualization, and direct wording make the task accessible."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The elapsed time between 8:00 and 8:30 is 30 minutes, matching the answer."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_4-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_4-20260924:mat_g1_mg_q4_4"
+    },
+    {
+      "sample_id": "14207dcc88d8aa05a8ec",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "May to August defines a unique three-month difference and the options contain one matching number."
+        },
+        "contextual_logical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The question names May and August, while the rendered calendar is March 2025, so the visual evidence is unrelated to the stated months."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The wording is understandable, but the unrelated March display and generic elapsed-time hint undermine the intended month reasoning."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "August is three months after May, so the answer 3 is mathematically correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_4-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_4-20260924:mat_g1_mg_q4_4"
+    },
+    {
+      "sample_id": "23c52f991f9c84a3b57d",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The start and finish are both 11:00 and 11:30, yielding one definite duration."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A recess from 11:00 to 11:30 is a plausible and internally consistent half-hour interval."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The familiar recess context and explicit clock-based hints make the intended calculation clear."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The difference between 11:00 and 11:30 is 30 minutes, exactly the printed answer."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_4-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_4-20260924:mat_g1_mg_q4_4"
+    },
+    {
+      "sample_id": "d1d36fae1ee2ce7fd4a2",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The two whole-hour endpoints make the elapsed duration uniquely three hours."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Playing games from 9:00 until 12:00 is a coherent three-hour interval within the stated day."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The familiar activity and direct elapsed-hours question are concise and easy to understand."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "From 9:00 to 12:00 is three hours, matching the answer and clock representation."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_4-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_4-20260924:mat_g1_mg_q4_4"
+    },
+    {
+      "sample_id": "ac9f324d442f5063a6f0",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The endpoints 7:00 and 8:00 clearly determine a one-hour elapsed time."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Playing games for the interval from 7:00 to 8:00 is internally consistent."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The wording is brief and familiar, with clock hints that explain how to read the hour."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The difference from 7:00 to 8:00 is one hour, matching the answer."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_4-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_4-20260924:mat_g1_mg_q4_4"
+    },
+    {
+      "sample_id": "1fb5958c130b6935ad6b",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The start and finish times are exact whole hours, so the requested duration has one answer."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Helping in a garden from 7:00 to 9:00 forms a coherent two-hour activity."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The familiar garden context and simple elapsed-hours wording are suitable for the target learner."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Nine o'clock is two hours after seven o'clock, agreeing with the printed answer."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_4-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_4-20260924:mat_g1_mg_q4_4"
+    },
+    {
+      "sample_id": "5fba3bbf8c248173e41a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stated half-hour duration from 8:00 gives a unique endpoint among the options."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A recess starting at 8:00 and lasting 30 minutes ends coherently at 8:30."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The context, parenthetical minute equivalence, and matching clock hints are straightforward."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Adding 30 minutes to 8:00 gives 8:30, exactly the answer shown."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_4-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_4-20260924:mat_g1_mg_q4_4"
+    },
+    {
+      "sample_id": "3cd2d2a4b4aabbc2cefb",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The start time and half-hour duration determine one ending time without ambiguity."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Story time from 11:00 for 30 minutes plausibly ends at 11:30 within the same hour."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The familiar story-time context and direct wording are readable for Grade 1."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Thirty minutes after 11:00 is 11:30, matching the answer and clock hints."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_4-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_4-20260924:mat_g1_mg_q4_4"
+    },
+    {
+      "sample_id": "6b957feeaa63811556da",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The October 2025 date and weekday choices specify one direct calendar lookup."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The rendered October 2025 calendar matches the month and year named in the stem."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The instruction is short, concrete, and asks the learner to identify a weekday from a calendar."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "October 10, 2025 is Friday, consistent with the calendar and printed answer."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_4-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_4-20260924:mat_g1_mg_q4_4"
+    },
+    {
+      "sample_id": "6dfa956416dc09363aa3",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "June 21, 2025 and the weekday options identify a single calendar answer."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The June 2025 calendar shown is the same calendar referenced by the question."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The direct calendar-reading instruction uses familiar language and no unnecessary complexity."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "June 21, 2025 falls on Saturday, matching the answer and displayed calendar."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_4-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_4-20260924:mat_g1_mg_q4_4"
+    },
+    {
+      "sample_id": "2a2fdd54bc9804a91232",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "September plus two months leads to one clear month, with distinct answer choices."
+        },
+        "contextual_logical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The stem names September, but the rendered calendar is March 2025, so the visual contradicts the problem context."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The question itself is simple, but the March visual and unrelated days-or-weeks hint can misdirect a young learner."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Two months after September is November, so the printed answer is mathematically correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_4-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_4-20260924:mat_g1_mg_q4_4"
+    },
+    {
+      "sample_id": "4c4112aefd320ea62b39",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "February plus three months identifies May uniquely among the listed month choices."
+        },
+        "contextual_logical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The prompt asks about February, while the rendered calendar is April 2025, making the visual context inconsistent."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The sentence is clear in isolation, but an April calendar cannot directly support the stated February-to-May reasoning."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Counting three months forward from February gives May, matching the printed answer."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_4-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_4-20260924:mat_g1_mg_q4_4"
+    },
+    {
+      "sample_id": "857fe7603aa8583b8839",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "A two-hour duration beginning at 8:00 determines the endpoint without competing interpretations."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Art time lasting two hours from 8:00 coherently ends at 10:00."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The familiar activity and direct clock question are brief and understandable."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Two hours after 8:00 is 10:00, matching the printed answer and hint."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_4-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_4-20260924:mat_g1_mg_q4_4"
+    },
+    {
+      "sample_id": "fcd0ddb28f814a5b884c",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The two explicit endpoints produce one elapsed-minute value."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A clean-up interval from 10:00 to 10:30 is internally coherent and plausible."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The familiar clean-up context and matching half-hour clock clues make the task accessible."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The elapsed time from 10:00 to 10:30 is 30 minutes, as answered."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_4-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_4-20260924:mat_g1_mg_q4_4"
+    },
+    {
+      "sample_id": "251a6ad4de14157610a6",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The quarter-hour duration from 8:00 determines a single end time of 8:15."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Reading time beginning at 8:00 and lasting 15 minutes logically ends at 8:15."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The activity is familiar and the parenthetical 15-minute explanation supports the quarter-hour concept."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Adding 15 minutes to 8:00 produces 8:15, matching the answer."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_4-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_4-20260924:mat_g1_mg_q4_4"
+    },
+    {
+      "sample_id": "17308d3930cf995e48b8",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The timetable gives one departure and arrival pair for Bus 2, so the requested duration is determinate."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Bus 2 departing at 8:15 and arriving at 8:50 forms a coherent 35-minute trip."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The table is readable in principle, but the generic clock hints do not explain how to subtract timetable times."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "From 8:15 to 8:50 is 35 minutes, matching the printed answer and options."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_4-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_4-20260924:mat_g1_mg_q4_4"
+    },
+    {
+      "sample_id": "f699e58b0f58f928f964",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The whole-hour start and finish times determine a unique three-hour duration."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Ben playing games from 9:00 to 12:00 is a coherent elapsed-time situation."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The familiar activity and concise question are suitable for a beginning learner."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The interval from 9:00 to 12:00 is three hours, matching the answer."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_4-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_4-20260924:mat_g1_mg_q4_4"
+    },
+    {
+      "sample_id": "3e0fdcfae651e3017259",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The named date and May 2025 calendar specify one weekday lookup despite the extra introductory wording."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The May 2025 calendar matches the month and year requested, and the added challenge context does not alter the task."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The dance emoji, named person, trophies, and math-challenge framing add wording that is unnecessary for the simple calendar lookup."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "May 16, 2025 is Friday, consistent with the displayed calendar and answer."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_4-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_4-20260924:mat_g1_mg_q4_4"
+    },
+    {
+      "sample_id": "b68f88513fe823185bba",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The two-hour duration from 8:00 gives one endpoint, and only 10:00 matches it."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Study time beginning at 8:00 and lasting two hours coherently ends at 10:00."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The basketball challenge framing is extra narrative, while the clock hints do not directly explain elapsed-hour addition."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Adding two hours to 8:00 yields 10:00, matching the answer and visual time."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_4-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_4-20260924:mat_g1_mg_q4_4"
+    },
+    {
+      "sample_id": "56e82086bbf0f0f30b1e",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The August 2025 date and answer choices define one unambiguous weekday lookup."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The rendered August 2025 calendar matches the month and year named in the stem."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The wording directly tells the learner to locate a date and identify its weekday."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "August 31, 2025 is Sunday, agreeing with the calendar and printed answer."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_4-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_4-20260924:mat_g1_mg_q4_4"
+    },
+    {
+      "sample_id": "a37ff336be0b810f0e2e",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stated two-hour duration from 8:00 fixes one endpoint, with no ambiguity in the options."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A class lasting two hours from 8:00 logically ends at 10:00."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The familiar class context and concise elapsed-time question are clear for Grade 1."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Eight o'clock plus two hours is 10:00, matching the answer and hints."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_4-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_4-20260924:mat_g1_mg_q4_4"
+    },
+    {
+      "sample_id": "06d5deeec5f8a90c9b6a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "February to June specifies a unique four-month interval and one matching numerical option."
+        },
+        "contextual_logical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The stem names February and June, but the rendered visual is November 2025, which conflicts with the stated months."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The month-counting wording is simple, yet the unrelated November calendar can mislead the learner about which months to compare."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "June is four months after February, so the printed answer 4 is mathematically correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_4-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_4-20260924:mat_g1_mg_q4_4"
+    },
+    {
+      "sample_id": "6c41fafb2faf71bcfa9b",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "July plus two months leads to one month, September, among the distinct choices."
+        },
+        "contextual_logical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The question states July, but the rendered calendar is November 2025, so the visual does not represent the stated situation."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The stem is short, but the November display and generic calendar instruction create avoidable confusion for a young learner."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Two months after July is September, which matches the printed answer."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_4-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_4-20260924:mat_g1_mg_q4_4"
+    },
+    {
+      "sample_id": "a4a10344e8ad3451a191",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The duration and starting time identify one endpoint, and the correct option is clearly present."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Art time from 8:00 for two hours consistently ends at 10:00."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The wording is direct and the clock display gives a clear representation of the requested endpoint."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Two hours after 8:00 is 10:00, matching the answer."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_4-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_4-20260924:mat_g1_mg_q4_4"
+    },
+    {
+      "sample_id": "492b80baaa5834bfded8",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "October 14, 2025 has one weekday, and the four options contain only one matching choice."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The October 2025 calendar shown is the same month and year cited in the stem."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The instruction is concrete and the calendar provides the relevant information without extra computation."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "October 14, 2025 is Tuesday, agreeing with the calendar and answer."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_4-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_4-20260924:mat_g1_mg_q4_4"
+    }
+  ],
+  "clause_evidence": [
+    {
+      "requirement_id": "solve_problems",
+      "clause": "Solve problems",
+      "verdict": "PASS",
+      "reasoning": "The packet contains contextual questions requiring learners to determine elapsed times, month intervals, and weekdays rather than only naming isolated facts.",
+      "sample_ids": [
+        "ff24e3f7564a16176ec2",
+        "d1d36fae1ee2ce7fd4a2",
+        "3d0fdafb47fcc8771b33"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_4-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_4-20260924:mat_g1_mg_q4_4"
+    },
+    {
+      "requirement_id": "time",
+      "clause": "time",
+      "verdict": "PASS",
+      "reasoning": "The rendered set uses clocks, calendars, and a timetable to ask concrete questions about time and elapsed duration.",
+      "sample_ids": [
+        "7499971b786803da914e",
+        "17308d3930cf995e48b8",
+        "d9113e76787866ca1193"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_4-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_4-20260924:mat_g1_mg_q4_4"
+    },
+    {
+      "requirement_id": "hour",
+      "clause": "hour",
+      "verdict": "PASS",
+      "reasoning": "Several samples explicitly ask for or calculate whole-hour endpoints and durations, including 8:00 to 9:00 and 9:00 to 12:00.",
+      "sample_ids": [
+        "fc0dec5f175f7e5dca32",
+        "d1d36fae1ee2ce7fd4a2",
+        "857fe7603aa8583b8839"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_4-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_4-20260924:mat_g1_mg_q4_4"
+    },
+    {
+      "requirement_id": "half_hour",
+      "clause": "half hour",
+      "verdict": "PASS",
+      "reasoning": "Multiple items explicitly state 30 minutes or show a half-hour interval and require the learner to determine the endpoint or duration.",
+      "sample_ids": [
+        "cd9ab15dffb62b187ff1",
+        "7499971b786803da914e",
+        "fcd0ddb28f814a5b884c"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_4-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_4-20260924:mat_g1_mg_q4_4"
+    },
+    {
+      "requirement_id": "quarter_hour",
+      "clause": "quarter hour",
+      "verdict": "CONCERN",
+      "reasoning": "Quarter-hour understanding is present in the 15-minute break and reading-time items, but it receives much less representation than whole- and half-hour cases.",
+      "sample_ids": [
+        "ff24e3f7564a16176ec2",
+        "251a6ad4de14157610a6"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_4-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_4-20260924:mat_g1_mg_q4_4"
+    },
+    {
+      "requirement_id": "days_in_a_week",
+      "clause": "days in a week",
+      "verdict": "FAIL",
+      "reasoning": "The packet asks which weekday a date falls on, but no printed sample asks learners to determine or use the fact that a week has seven days.",
+      "sample_ids": [
+        "d9113e76787866ca1193",
+        "8eb701b2d9aebbf2d869"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_4-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_4-20260924:mat_g1_mg_q4_4"
+    },
+    {
+      "requirement_id": "months_in_a_year",
+      "clause": "months in a year",
+      "verdict": "CONCERN",
+      "reasoning": "Month names and month-to-month intervals appear often, but no sample directly establishes or uses the complete count of twelve months in a year.",
+      "sample_ids": [
+        "3aa17e57ae386d9582d4",
+        "2a2fdd54bc9804a91232",
+        "06d5deeec5f8a90c9b6a"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_4-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_4-20260924:mat_g1_mg_q4_4"
+    }
+  ],
+  "dispatch_provenance": [
+    {
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_4-20260924:mat_g1_mg_q4_4",
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_4-20260924",
+      "review_date": "2026-09-24",
+      "blind": true,
+      "packet_digest": "ace723cb1b8b68aec72b3185c7be94b2c0f469cd7cc82112ba1ad93178f7ff1d",
+      "clause_ids": [
+        "solve_problems",
+        "time",
+        "hour",
+        "half_hour",
+        "quarter_hour",
+        "days_in_a_week",
+        "months_in_a_year"
+      ],
+      "response_ref": ".responses/s5-luna-medium-w5-mat_g1_mg_q4_4-20260924.json",
+      "response_digest": "003025d2583b8dd7d18d9bf17f9f532c0e443a7be6d7eb80a0c449437eeddca1",
+      "prompt_ref": ".responses/s5-luna-medium-w5-mat_g1_mg_q4_4-20260924.prompt.txt",
+      "prompt_digest": "282976c5b7837389262a4657fcc20d0eeb683a45f5c1dfea800b3b4513b74044",
+      "samples_delivery": "Prompt generated by tests.judgment_batches for one node and delivered by path to multi_agent_v1.spawn_agent using model gpt-5.6-luna with reasoning_effort=medium.",
+      "tool_uses_by_reviewer": "Reviewer was a tool-bearing multi_agent_v1 subagent instructed to read only its prompt file and write its verdicts JSON; it reported the output path and no other tool use to the dispatcher."
     }
   ],
   "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The clock and calendar items are posed as situations to resolve rather than as readings - a break that starts at 9:00 and lasts a quarter of an hour (15 minutes), a snack time measured from start to finish, a gap counted between a school program and an exhibit - which is the problem-solving the competency calls for."
-    },
-    "comprehensive_coverage": {
-      "verdict": "FAIL",
-      "rationale": "The competency lists five things problems may involve and one of them, days in a week, generates no problem at all. The only day-related samples ask what day of the week is May 21 and what day of the week is June 6 - calendar look-ups identical in shape to the calendar-reading competency's own items, requiring no elapsed-time or cyclic reasoning about a week. Hour, half hour, quarter hour and months in a year are all properly sampled, which makes the single missing sub-case a gap rather than a general weakness."
-    },
     "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Each problem gives two facts and asks for one, minute quantities are glossed in parentheses where they appear, and the month gaps never exceed four, keeping every item to a single step that a Quarter 4 Grade 1 pupil can hold in mind."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "Presentation rotates widely: a duration added to a start time, an end time given and the elapsed minutes asked, an elapsed span in whole hours, a month advanced by a count, and a month gap asked in the other direction - collected as selections, typed blanks and cloze answers."
+      "verdict": "CONCERN",
+      "rationale": "Most tasks use accessible one-step time or calendar situations, but several visual controls and misleading hints add interface demands that may distract Grade 1 learners from the intended reasoning."
     },
     "competency_alignment": {
       "verdict": "CONCERN",
-      "rationale": "Two of the fifteen samples spend their seeds on plain calendar look-ups that ask no time question, so part of the generated range does not advance this competency at all; the remaining items do progress sensibly from quarter-hour to hour-scale to multi-month spans."
+      "rationale": "The packet broadly addresses elapsed hours, half hours, quarter hours, months, and weekdays, yet the timetable item and some calendar displays introduce representations that are not consistently aligned with the printed situations."
+    },
+    "competency_fulfillment": {
+      "verdict": "FAIL",
+      "rationale": "The set does not adequately demonstrate the full stated competency because no item directly solves a problem about the number of days in a week, and several calendar visuals contradict the month named in the stem.",
+      "decomposition": {
+        "verdict": "FAIL",
+        "reasoning": "The listed requirements name all competency components, but the rendered evidence does not losslessly cover days_in_a_week as a quantity and does not reliably support every month-based problem with a matching visual.",
+        "requirement_ids": [
+          "solve_problems",
+          "time",
+          "hour",
+          "half_hour",
+          "quarter_hour",
+          "days_in_a_week",
+          "months_in_a_year"
+        ]
+      },
+      "clause_ids": [
+        "solve_problems",
+        "time",
+        "hour",
+        "half_hour",
+        "quarter_hour",
+        "days_in_a_week",
+        "months_in_a_year"
+      ]
+    },
+    "comprehensive_coverage": {
+      "verdict": "FAIL",
+      "rationale": "There is repeated practice on hour, half-hour, and month-offset questions, but direct coverage of days in a week is absent and quarter-hour coverage is sparse compared with the other components.",
+      "clause_ids": [
+        "solve_problems",
+        "time",
+        "hour",
+        "half_hour",
+        "quarter_hour",
+        "days_in_a_week",
+        "months_in_a_year"
+      ]
     },
     "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "Times stay on a 12-hour clock with minute values confined to the quarter, half and hour marks, month intervals run from 2 to 4 within a single year, and the longest elapsed span asked is the three hours from 9:00 to 12:00."
+      "verdict": "CONCERN",
+      "rationale": "The arithmetic is generally within Grade 1 expectations, while the timetable and interactive clock instructions may require procedural reading beyond the simple time concepts being assessed."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "The packet varies formats and contexts, but the variation is uneven: many items repeat the same elapsed-time pattern, while several required time and calendar forms receive little or no distinct treatment."
     }
   },
   "overall": "FAIL"

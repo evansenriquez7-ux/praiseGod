@@ -1,7 +1,53 @@
 {
+  "schema_version": 2,
   "node_id": "mat_g1_na_q1_0",
-  "reviewed_by": "reviewer-c1-lantern-fescue-3061",
-  "review_date": "2026-09-11",
+  "competency_snapshot": {
+    "text": "Count up to 100 (includes counting up or down from a given number and identifying a number that is 1 more or 1 less than a given number).",
+    "grade": 1,
+    "quarter": 1,
+    "subdomain": null
+  },
+  "requirements_snapshot": [
+    {
+      "kind": "task",
+      "id": "count_objects_to_a_total",
+      "clause": "Count"
+    },
+    {
+      "kind": "range",
+      "id": "range_up_to_100",
+      "clause": "up to 100"
+    },
+    {
+      "kind": "task",
+      "id": "count_forward_from_a_given_number",
+      "clause": "counting up"
+    },
+    {
+      "kind": "task",
+      "id": "count_backward_from_a_given_number",
+      "clause": "down from a given number"
+    },
+    {
+      "kind": "task",
+      "id": "identify_a_number_relative_to_another",
+      "clause": "identifying a number"
+    },
+    {
+      "kind": "task",
+      "id": "identify_one_more_than_a_number",
+      "clause": "1 more"
+    },
+    {
+      "kind": "task",
+      "id": "identify_one_less_than_a_number",
+      "clause": "1 less"
+    }
+  ],
+  "packet_digest": "ee4d4848c8e6c1dba3c777618b3b60f74a566efce1c44b3cddbb3f4c18d8e6e0",
+  "sampling_version": "phase2-stratified-v2-rendered-visual",
+  "reviewed_by": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_na_q1_0-20260924",
+  "review_date": "2026-09-24",
   "blind": true,
   "sample_seeds": [
     42,
@@ -12,126 +58,942 @@
     500,
     501,
     502,
-    601
+    601,
+    602,
+    603,
+    700,
+    701,
+    702,
+    800,
+    900,
+    901,
+    1000,
+    1001,
+    1002
+  ],
+  "sample_ids": [
+    "ebca5e8451c9d8ccaac5",
+    "07f9bd92dad31ed7be26",
+    "b50f7f95899820531945",
+    "c41b602a6a30ee5738d2",
+    "d6804a0f9284b0886ec6",
+    "1ef2e785f2d8da7ab45f",
+    "82528cc28013d59531c4",
+    "1e26b196d6b827f9492a",
+    "c92896249b74b016b342",
+    "d55fbcf301c104568405",
+    "d0a7ed0e488e236776c7",
+    "c1ff17b361429435088d",
+    "e2a730869fdb5b7eec2a",
+    "20e066f7816bd5dcfda7",
+    "61b137578376d2315f81",
+    "33fc23c3197bfe6ea3bc",
+    "79d4e8ae575054f4abd3",
+    "cdaf4fa72ad14dc6a03a",
+    "2d6d092131d2bce457d7",
+    "1c3d94dbc9f18786bb60"
   ],
   "samples_reviewed": [
     {
+      "node_id": "mat_g1_na_q1_0",
       "seed": 42,
-      "formatter": "mcq",
-      "question_text": "What number comes next when counting: 94, 95, 96, 97, ___?",
-      "correct_answer": 98,
-      "options": [
-        {
-          "key": "A",
-          "value": 99,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 98,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 96,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 95,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 43,
       "formatter": "read_mcq",
       "question_text": "What number is marked?",
-      "correct_answer": "A",
+      "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
-          "value": 10,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 9,
+          "value": 18,
           "is_correct": false
         },
         {
+          "key": "B",
+          "value": 16,
+          "is_correct": true
+        },
+        {
           "key": "C",
-          "value": 12,
+          "value": 15,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 11,
+          "value": 17,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 16,
+      "hints": [
+        "Look at the list of numbers: 20, 19, 18, 17, ___",
+        "Find the rule by comparing neighbours: 19 − 20 = 1.",
+        "This list of numbers shows jumping by 1s (subtract 1 each time).",
+        "Subtract 1 to 17: 17 - 1 = 16."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "value": 16,
+        "start": 10,
+        "end": 20,
+        "interval": 1,
+        "divisions": 10,
+        "correct_position": 16,
+        "dot_value": 16,
+        "content_type": "whole_number",
+        "labels": [
+          "10",
+          "20"
+        ],
+        "marked_points": [],
+        "question_mark_at": null,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 16.0,
+        "target": 16.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "7b285e7c26d982a12ad824745e099685217acc3c5e6cd4d9613ef7127af50785",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 27,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "ebca5e8451c9d8ccaac5",
+      "replay_digest": "2dfc1aa0c8dcef4287b256ed2796f24a952a860c6760b56179d424d8c0fe8c2f"
     },
     {
-      "seed": 44,
-      "formatter": "read_mcq",
-      "question_text": "(Large group of 64 books)\nCount the books.\nHow many books are there in all?",
-      "correct_answer": "D",
+      "node_id": "mat_g1_na_q1_0",
+      "seed": 43,
+      "formatter": "mcq",
+      "question_text": "What number comes next when counting backward: 42, 41, 40, 39, ___?",
+      "correct_answer": 38,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
+          "value": 38,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 40,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 37,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 41,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 38,
+      "hints": [
+        "Look at the list of numbers: 42, 41, 40, 39, ___",
+        "Find the rule by comparing neighbours: 41 − 42 = 1.",
+        "This list of numbers shows jumping by 1s (subtract 1 each time).",
+        "Subtract 1 to 39: 39 - 1 = 38."
+      ],
+      "sample_id": "07f9bd92dad31ed7be26",
+      "replay_digest": "2bbb63968a059fa3f6d0f8e079e8a1377f0aebfb7e1a4575f2ca24483c739821"
+    },
+    {
+      "node_id": "mat_g1_na_q1_0",
+      "seed": 44,
+      "formatter": "read_mcq",
+      "question_text": "(Large group of 78 cupcakes)\nCount the cupcakes.\nHow many cupcakes are there in all?",
+      "correct_answer": "C",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "EmojiPictorial",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 79,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 77,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 78,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 0,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 78,
+      "hints": [
+        "Look at the list of numbers: 74, 75, 76, 77, ___",
+        "Find the rule by comparing neighbours: 75 − 74 = 1.",
+        "This list of numbers shows jumping by 1s (add 1 each time).",
+        "Add 1 to 77: 77 + 1 = 78."
+      ],
+      "visual_type": "EmojiPictorial",
+      "visual_payload": {
+        "emoji": "🧁",
+        "group_a": 78,
+        "group_b": 0,
+        "operation": "counting",
+        "layout": "inline",
+        "display": "(Large group of 78 cupcakes)"
+      },
+      "visual_render": {
+        "visual_type": "EmojiPictorial",
+        "renderer_input_digest": "d846eec71f717e536cc3a422cff2c4b9242122281188bd3b685993b2fc42150d",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "EmojiPictorial",
+          "element_count": 48,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "🛍️",
+            "10x 🧁",
+            "🧁",
+            "1x 🧁"
+          ],
+          "distinct_colours": [
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "b50f7f95899820531945",
+      "replay_digest": "b0fd7455449cbb3e1b35a1c71caef11fe69cf25b55cf98d0decfac7789b1a6ef"
+    },
+    {
+      "node_id": "mat_g1_na_q1_0",
+      "seed": 45,
+      "formatter": "mcq",
+      "question_text": "What number comes next when counting: 58, 59, 60, 61, ___?",
+      "correct_answer": 62,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 60,
+          "is_correct": false
+        },
+        {
+          "key": "B",
           "value": 63,
           "is_correct": false
         },
         {
-          "key": "B",
-          "value": 65,
-          "is_correct": false
-        },
-        {
           "key": "C",
-          "value": 0,
-          "is_correct": false
+          "value": 62,
+          "is_correct": true
         },
         {
           "key": "D",
-          "value": 64,
-          "is_correct": true
+          "value": 59,
+          "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 62,
+      "hints": [
+        "Look at the list of numbers: 58, 59, 60, 61, ___",
+        "Find the rule by comparing neighbours: 59 − 58 = 1.",
+        "This list of numbers shows jumping by 1s (add 1 each time).",
+        "Add 1 to 61: 61 + 1 = 62."
+      ],
+      "sample_id": "c41b602a6a30ee5738d2",
+      "replay_digest": "d76928741aa06a56ca6bb927abc0580d27840bd9f7fb560e7cdae003611190a4"
     },
     {
-      "seed": 45,
-      "formatter": "mcq",
-      "question_text": "What number comes next when counting: 39, 40, 41, 42, ___?",
-      "correct_answer": 43,
+      "node_id": "mat_g1_na_q1_0",
+      "seed": 46,
+      "formatter": "cloze",
+      "question_text": "What comes next: 77, 76, 75, 74, ___",
+      "correct_answer": 73,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
-          "value": 41,
-          "is_correct": false
+          "value": 73,
+          "text": "73",
+          "is_correct": true
         },
         {
           "key": "B",
-          "value": 44,
+          "value": 72,
+          "text": "72",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 43,
+          "value": 76,
+          "text": "76",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 75,
+          "text": "75",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 73,
+      "hints": [
+        "Look at the list of numbers: 77, 76, 75, 74, ___",
+        "Find the rule by comparing neighbours: 76 − 77 = 1.",
+        "This list of numbers shows jumping by 1s (subtract 1 each time).",
+        "Subtract 1 to 74: 74 - 1 = 73."
+      ],
+      "sample_id": "d6804a0f9284b0886ec6",
+      "replay_digest": "c8e46f5157c8051632ceed050b446225f69d64ade287acae105a9907dd89fc93"
+    },
+    {
+      "node_id": "mat_g1_na_q1_0",
+      "seed": 500,
+      "formatter": "read_mcq",
+      "question_text": "What number is marked?",
+      "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": {
+          "range": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 81,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 83,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 82,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 80,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 81,
+      "hints": [
+        "Look at the list of numbers: 77, 78, 79, 80, ___",
+        "Find the rule by comparing neighbours: 78 − 77 = 1.",
+        "This list of numbers shows jumping by 1s (add 1 each time).",
+        "Add 1 to 80: 80 + 1 = 81."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "value": 81,
+        "start": 80,
+        "end": 90,
+        "interval": 1,
+        "divisions": 10,
+        "correct_position": 81,
+        "dot_value": 81,
+        "content_type": "whole_number",
+        "labels": [
+          "80",
+          "90"
+        ],
+        "marked_points": [],
+        "question_mark_at": null,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 81.0,
+        "target": 81.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "7518f819ade65a6c18cf18a6ce91c0b18a8374879bb86213feac9480bd63e2c9",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 27,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "80",
+            "81",
+            "82",
+            "83",
+            "84",
+            "85",
+            "86",
+            "87",
+            "88",
+            "89",
+            "90"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "1ef2e785f2d8da7ab45f",
+      "replay_digest": "b06b41225559e280385884e6609088f07e49cbaa834d4b3456407fad50bf2a04"
+    },
+    {
+      "node_id": "mat_g1_na_q1_0",
+      "seed": 501,
+      "formatter": "mcq",
+      "question_text": "What number comes next when counting: 90, 91, 92, 93, ___?",
+      "correct_answer": 94,
+      "requested": {
+        "difficulty_profile": {
+          "range": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 95,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 94,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 91,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 92,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 94,
+      "hints": [
+        "Look at the list of numbers: 90, 91, 92, 93, ___",
+        "Find the rule by comparing neighbours: 91 − 90 = 1.",
+        "This list of numbers shows jumping by 1s (add 1 each time).",
+        "Add 1 to 93: 93 + 1 = 94."
+      ],
+      "sample_id": "82528cc28013d59531c4",
+      "replay_digest": "b23a1680904612a382d29f0a805b5bb238f3bb6cc197f9733bbf3986484c15e0"
+    },
+    {
+      "node_id": "mat_g1_na_q1_0",
+      "seed": 502,
+      "formatter": "read_mcq",
+      "question_text": "(Large group of 35 paints)\nCount the paints.\nHow many paints are there in all?",
+      "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": {
+          "range": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "EmojiPictorial",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 34,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 35,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 36,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 0,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 35,
+      "hints": [
+        "Look at the list of numbers: 31, 32, 33, 34, ___",
+        "Find the rule by comparing neighbours: 32 − 31 = 1.",
+        "This list of numbers shows jumping by 1s (add 1 each time).",
+        "Add 1 to 34: 34 + 1 = 35."
+      ],
+      "visual_type": "EmojiPictorial",
+      "visual_payload": {
+        "emoji": "🎨",
+        "group_a": 35,
+        "group_b": 0,
+        "operation": "counting",
+        "layout": "inline",
+        "display": "(Large group of 35 paints)"
+      },
+      "visual_render": {
+        "visual_type": "EmojiPictorial",
+        "renderer_input_digest": "c6beade77fd8eb5f125f33471ae580e4fd898e7f626f77f0f6d665411f1ff315",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "EmojiPictorial",
+          "element_count": 27,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "🛍️",
+            "10x 🎨",
+            "🎨",
+            "1x 🎨"
+          ],
+          "distinct_colours": [
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "1e26b196d6b827f9492a",
+      "replay_digest": "267c90d1c1dca975d40a3004110d69bca4f3a80a54846def1686c50427a8977c"
+    },
+    {
+      "node_id": "mat_g1_na_q1_0",
+      "seed": 601,
+      "formatter": "cloze",
+      "question_text": "Moses is counting backward by 1 starting from 95. The count is: 95, 94, 93, 92. What is the next number Moses should say?",
+      "correct_answer": 91,
+      "requested": {
+        "difficulty_profile": {
+          "context": "word_problem"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 90,
+          "text": "90",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 93,
+          "text": "93",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 91,
+          "text": "91",
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 40,
+          "value": 94,
+          "text": "94",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 91,
+      "hints": [
+        "Look at the list of numbers: 95, 94, 93, 92, ___",
+        "Find the rule by comparing neighbours: 94 − 95 = 1.",
+        "This list of numbers shows jumping by 1s (subtract 1 each time).",
+        "Subtract 1 to 92: 92 - 1 = 91."
+      ],
+      "sample_id": "c92896249b74b016b342",
+      "replay_digest": "9d01f53d2371889a205be1cffb3a3d41743b028e75b739b2b5551a2e07b6a7e9"
     },
     {
-      "seed": 46,
-      "formatter": "cloze",
-      "question_text": "What comes next: 31, 32, 33, 34, ___",
+      "node_id": "mat_g1_na_q1_0",
+      "seed": 602,
+      "formatter": "mcq",
+      "question_text": "What number comes next when counting: 31, 32, 33, 34, ___?",
       "correct_answer": 35,
+      "requested": {
+        "difficulty_profile": {
+          "direction": "backward"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 36,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 35,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 32,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 33,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 35,
+      "hints": [
+        "Look at the list of numbers: 31, 32, 33, 34, ___",
+        "Find the rule by comparing neighbours: 32 − 31 = 1.",
+        "This list of numbers shows jumping by 1s (add 1 each time).",
+        "Add 1 to 34: 34 + 1 = 35."
+      ],
+      "sample_id": "d55fbcf301c104568405",
+      "replay_digest": "0839bca0671fdc675f9e064f50b69a65bb4717d057286ef9610cf2651a7d2b8f"
+    },
+    {
+      "node_id": "mat_g1_na_q1_0",
+      "seed": 603,
+      "formatter": "mcq",
+      "question_text": "What number comes next when counting backward: 78, 77, 76, 75, ___?",
+      "correct_answer": 74,
+      "requested": {
+        "difficulty_profile": {
+          "direction": "forward"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 77,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 74,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 76,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 73,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 74,
+      "hints": [
+        "Look at the list of numbers: 78, 77, 76, 75, ___",
+        "Find the rule by comparing neighbours: 77 − 78 = 1.",
+        "This list of numbers shows jumping by 1s (subtract 1 each time).",
+        "Subtract 1 to 75: 75 - 1 = 74."
+      ],
+      "sample_id": "d0a7ed0e488e236776c7",
+      "replay_digest": "6e3b945625d1c32cc56dbe575dd2af0ef6abe66fe23822f551045003930702d6"
+    },
+    {
+      "node_id": "mat_g1_na_q1_0",
+      "seed": 700,
+      "formatter": "mcq",
+      "question_text": "What number comes next when counting backward: 32, 31, 30, 29, ___?",
+      "correct_answer": 28,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 28,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 27,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 30,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 31,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 28,
+      "hints": [
+        "Look at the list of numbers: 32, 31, 30, 29, ___",
+        "Find the rule by comparing neighbours: 31 − 32 = 1.",
+        "This list of numbers shows jumping by 1s (subtract 1 each time).",
+        "Subtract 1 to 29: 29 - 1 = 28."
+      ],
+      "sample_id": "c1ff17b361429435088d",
+      "replay_digest": "9cf05b95da8d85ea9ef4ef4f654ce22199d7b03dc164d8ec8a2f37d60fd07674"
+    },
+    {
+      "node_id": "mat_g1_na_q1_0",
+      "seed": 701,
+      "formatter": "cloze",
+      "question_text": "💃 Sir Rez has a math challenge about dance shoes. What comes next: 80, 81, 82, 83, ___",
+      "correct_answer": 84,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "western_pop",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 81,
+          "text": "81",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 84,
+          "text": "84",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 82,
+          "text": "82",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 85,
+          "text": "85",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 84,
+      "hints": [
+        "Look at the list of numbers: 80, 81, 82, 83, ___",
+        "Find the rule by comparing neighbours: 81 − 80 = 1.",
+        "This list of numbers shows jumping by 1s (add 1 each time).",
+        "Add 1 to 83: 83 + 1 = 84."
+      ],
+      "sample_id": "e2a730869fdb5b7eec2a",
+      "replay_digest": "ffc96a3a8197bbebe965b1faa3410caeae6d941e5b0813a7f6197167a0aae315"
+    },
+    {
+      "node_id": "mat_g1_na_q1_0",
+      "seed": 702,
+      "formatter": "cloze",
+      "question_text": "🧁 Ate Nena has a math challenge about loaves of bread. What comes next: 39, 38, 37, 36, ___",
+      "correct_answer": 35,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "food_baking",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -141,165 +1003,1081 @@
         },
         {
           "key": "B",
-          "value": 36,
-          "text": "36",
+          "value": 34,
+          "text": "34",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 32,
-          "text": "32",
+          "value": 38,
+          "text": "38",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 33,
-          "text": "33",
+          "value": 37,
+          "text": "37",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 35,
+      "hints": [
+        "Look at the list of numbers: 39, 38, 37, 36, ___",
+        "Find the rule by comparing neighbours: 38 − 39 = 1.",
+        "This list of numbers shows jumping by 1s (subtract 1 each time).",
+        "Subtract 1 to 36: 36 - 1 = 35."
+      ],
+      "sample_id": "20e066f7816bd5dcfda7",
+      "replay_digest": "09a94a30e5a1feb46a29c9070c258ce97cadfe8ad9dc1bed29e3166c6d9fedd3"
     },
     {
-      "seed": 500,
+      "node_id": "mat_g1_na_q1_0",
+      "seed": 800,
+      "formatter": "cloze",
+      "question_text": "What comes next: 85, 86, 87, 88, ___",
+      "correct_answer": 89,
+      "requested": {
+        "difficulty_profile": {
+          "range": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 87,
+          "text": "87",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 90,
+          "text": "90",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 89,
+          "text": "89",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 86,
+          "text": "86",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 89,
+      "hints": [
+        "Look at the list of numbers: 85, 86, 87, 88, ___",
+        "Find the rule by comparing neighbours: 86 − 85 = 1.",
+        "This list of numbers shows jumping by 1s (add 1 each time).",
+        "Add 1 to 88: 88 + 1 = 89."
+      ],
+      "sample_id": "61b137578376d2315f81",
+      "replay_digest": "2474c17b18f85935ade07c65917bbc930a90108d349831657b1f16a34485427a"
+    },
+    {
+      "node_id": "mat_g1_na_q1_0",
+      "seed": 900,
+      "formatter": "mcq",
+      "question_text": "What number comes next when counting backward: 12, 11, 10, 9, ___?",
+      "correct_answer": 8,
+      "requested": {
+        "difficulty_profile": {
+          "range": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 11,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 8,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 10,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 7,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 8,
+      "hints": [
+        "Look at the list of numbers: 12, 11, 10, 9, ___",
+        "Find the rule by comparing neighbours: 11 − 12 = 1.",
+        "This list of numbers shows jumping by 1s (subtract 1 each time).",
+        "Subtract 1 to 9: 9 - 1 = 8."
+      ],
+      "sample_id": "33fc23c3197bfe6ea3bc",
+      "replay_digest": "5b87fb17d97c3eb07cfed20e38b72a53fd43d13f4a4b0ab4af166f8a6b1bb387"
+    },
+    {
+      "node_id": "mat_g1_na_q1_0",
+      "seed": 901,
+      "formatter": "mcq",
+      "question_text": "What number comes next when counting: 7, 8, 9, 10, ___?",
+      "correct_answer": 11,
+      "requested": {
+        "difficulty_profile": {
+          "range": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 9,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 11,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 8,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 12,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 11,
+      "hints": [
+        "Look at the list of numbers: 7, 8, 9, 10, ___",
+        "Find the rule by comparing neighbours: 8 − 7 = 1.",
+        "This list of numbers shows jumping by 1s (add 1 each time).",
+        "Add 1 to 10: 10 + 1 = 11."
+      ],
+      "sample_id": "79d4e8ae575054f4abd3",
+      "replay_digest": "451e142a946bfb6dbdedafe447aed098ec03477a92f9896c52323d7f6e43ae11"
+    },
+    {
+      "node_id": "mat_g1_na_q1_0",
+      "seed": 1000,
       "formatter": "read_mcq",
       "question_text": "What number is marked?",
-      "correct_answer": "A",
+      "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "hint_gated"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "hint_gated"
+      },
       "options": [
         {
           "key": "A",
-          "value": 73,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 75,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 74,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 72,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 501,
-      "formatter": "mcq",
-      "question_text": "What number comes next when counting: 91, 92, 93, 94, ___?",
-      "correct_answer": 95,
-      "options": [
-        {
-          "key": "A",
-          "value": 96,
+          "value": 33,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 95,
-          "is_correct": true
+          "value": 35,
+          "is_correct": false
         },
         {
           "key": "C",
-          "value": 92,
+          "value": 36,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 93,
-          "is_correct": false
+          "value": 34,
+          "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 34,
+      "hints": [
+        "Look at the list of numbers: 30, 31, 32, 33, ___",
+        "Find the rule by comparing neighbours: 31 − 30 = 1.",
+        "This list of numbers shows jumping by 1s (add 1 each time).",
+        "Add 1 to 33: 33 + 1 = 34."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "value": 34,
+        "start": 30,
+        "end": 40,
+        "interval": 1,
+        "divisions": 10,
+        "correct_position": 34,
+        "dot_value": 34,
+        "content_type": "whole_number",
+        "labels": [
+          "30",
+          "40"
+        ],
+        "marked_points": [],
+        "question_mark_at": null,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 34.0,
+        "target": 34.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "40edf86a131402209cf0e4436547287a509746598fd045baac81d348415afdfc",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 27,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "30",
+            "31",
+            "32",
+            "33",
+            "34",
+            "35",
+            "36",
+            "37",
+            "38",
+            "39",
+            "40"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "cdaf4fa72ad14dc6a03a",
+      "replay_digest": "8b0b2368774062e7e9ed905970cbf1ea03c5fa6466399e2a53ebb6cab1948ab7"
     },
     {
-      "seed": 502,
+      "node_id": "mat_g1_na_q1_0",
+      "seed": 1001,
+      "formatter": "cloze",
+      "question_text": "What comes next: 48, 47, 46, 45, ___",
+      "correct_answer": 44,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "mastery_drill"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "mastery_drill"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 44,
+          "text": "44",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 46,
+          "text": "46",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 47,
+          "text": "47",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 43,
+          "text": "43",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 44,
+      "hints": [
+        "Look at the list of numbers: 48, 47, 46, 45, ___",
+        "Find the rule by comparing neighbours: 47 − 48 = 1.",
+        "This list of numbers shows jumping by 1s (subtract 1 each time).",
+        "Subtract 1 to 45: 45 - 1 = 44."
+      ],
+      "sample_id": "2d6d092131d2bce457d7",
+      "replay_digest": "be67d8db70dbfacd019ada506083c8f18350b7bff87fcf0f35a4508d41da09d5"
+    },
+    {
+      "node_id": "mat_g1_na_q1_0",
+      "seed": 1002,
       "formatter": "read_mcq",
-      "question_text": "(Large group of 78 trees)\nCount the trees.\nHow many trees are there in all?",
+      "question_text": "(Large group of 42 cupcakes)\nCount the cupcakes.\nHow many cupcakes are there in all?",
       "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "scaffolded"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "EmojiPictorial",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "scaffolded"
+      },
       "options": [
         {
           "key": "A",
-          "value": 77,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 78,
-          "is_correct": true
-        },
-        {
-          "key": "C",
           "value": 0,
           "is_correct": false
         },
         {
-          "key": "D",
-          "value": 79,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 601,
-      "formatter": "cloze",
-      "question_text": "Moses is counting forward by 1 starting from 28. The count is: 28, 29, 30, 31. What is the next number Moses should say?",
-      "correct_answer": 32,
-      "options": [
-        {
-          "key": "A",
-          "value": 33,
-          "text": "33",
-          "is_correct": false
-        },
-        {
           "key": "B",
-          "value": 30,
-          "text": "30",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 32,
-          "text": "32",
+          "value": 42,
           "is_correct": true
         },
         {
+          "key": "C",
+          "value": 41,
+          "is_correct": false
+        },
+        {
           "key": "D",
-          "value": 29,
-          "text": "29",
+          "value": 43,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 42,
+      "hints": [
+        "Look at the list of numbers: 38, 39, 40, 41, ___",
+        "Find the rule by comparing neighbours: 39 − 38 = 1.",
+        "This list of numbers shows jumping by 1s (add 1 each time).",
+        "Add 1 to 41: 41 + 1 = 42."
+      ],
+      "visual_type": "EmojiPictorial",
+      "visual_payload": {
+        "emoji": "🧁",
+        "group_a": 42,
+        "group_b": 0,
+        "operation": "counting",
+        "layout": "inline",
+        "display": "(Large group of 42 cupcakes)"
+      },
+      "visual_render": {
+        "visual_type": "EmojiPictorial",
+        "renderer_input_digest": "1e5f0e1b386940dac298d5d7cb5d4a2ca8ed3ce7a597150181d7d30c9933e8c7",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "EmojiPictorial",
+          "element_count": 21,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "🛍️",
+            "10x 🧁",
+            "🧁",
+            "1x 🧁"
+          ],
+          "distinct_colours": [
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "1c3d94dbc9f18786bb60",
+      "replay_digest": "86485398f558a4b4420ab4dc00aefa048cb95d7bdd3cf249da68612b05f4f063"
+    }
+  ],
+  "sample_assessments": [
+    {
+      "sample_id": "ebca5e8451c9d8ccaac5",
+      "checks": {
+        "ambiguity": {
+          "verdict": "CONCERN",
+          "reasoning": "The prompt asks which number is marked, but the supplied structure lists labels without proving which label carries the mark."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A descending sequence from 20 through 17 has a single consistent next value of 16."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The short question and displayed number-line context clearly direct the learner to identify the missing count."
+        },
+        "mathematical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The backward-count hint states 19 minus 20 equals 1, which is mathematically false even though the final answer is 16."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_na_q1_0-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_na_q1_0-20260924:mat_g1_na_q1_0"
+    },
+    {
+      "sample_id": "07f9bd92dad31ed7be26",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The displayed descending sequence changes by one each time, so only 38 can follow 39."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Counting backward from 42 by one produces 41, 40, 39, and then 38 consistently."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The stem is clear, but its explanatory hint contains a misleading subtraction equation for the backward step."
+        },
+        "mathematical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The hint says 41 minus 42 equals 1; that expression equals negative 1, creating an explicit mathematical error."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_na_q1_0-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_na_q1_0-20260924:mat_g1_na_q1_0"
+    },
+    {
+      "sample_id": "b50f7f95899820531945",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The grouped-object labels provide a determinate total of 78 and the answer choices contain that total once."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Counting 78 cupcakes is a coherent concrete application of counting within the stated range."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The two-line question plainly asks for the total, and the grouped representation is paired with direct counting language."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The stated total, forward-count hint, and selected answer 78 agree mathematically."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_na_q1_0-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_na_q1_0-20260924:mat_g1_na_q1_0"
+    },
+    {
+      "sample_id": "c41b602a6a30ee5738d2",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The ascending sequence increases by one at every shown transition, uniquely determining 62."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Continuing 58, 59, 60, 61 by one gives 62 without any competing pattern."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The wording directly asks for the next number and uses a familiar four-term counting sequence."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer 62 and the addition hint from 61 are both arithmetically correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_na_q1_0-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_na_q1_0-20260924:mat_g1_na_q1_0"
+    },
+    {
+      "sample_id": "d6804a0f9284b0886ec6",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The descending sequence has a clear constant step of one, making 73 the unique continuation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The sequence 77, 76, 75, 74 logically continues with 73 when counting backward."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The cloze stem is understandable, but the supporting subtraction hint incorrectly describes the backward change."
+        },
+        "mathematical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The hint claims 76 minus 77 equals 1, although the value is negative 1; this is a printed math error."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_na_q1_0-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_na_q1_0-20260924:mat_g1_na_q1_0"
+    },
+    {
+      "sample_id": "1ef2e785f2d8da7ab45f",
+      "checks": {
+        "ambiguity": {
+          "verdict": "CONCERN",
+          "reasoning": "The structure identifies a number line but does not establish which visible label is marked, so the requested value is not fully evidenced."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The increasing sequence from 77 through 80 correctly continues with 81."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The short identification question and sequential number labels are easy to understand if the mark is visible."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Adding one to 80 gives 81, matching the answer and the forward-count hints."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_na_q1_0-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_na_q1_0-20260924:mat_g1_na_q1_0"
+    },
+    {
+      "sample_id": "82528cc28013d59531c4",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The consecutive ascending terms make 94 the only valid next number among the options."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The sequence 90, 91, 92, 93 follows ordinary forward counting and continues to 94."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem explicitly asks for the next number and provides enough consecutive terms to infer the rule."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer 94 is the correct result of adding one to the final shown term 93."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_na_q1_0-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_na_q1_0-20260924:mat_g1_na_q1_0"
+    },
+    {
+      "sample_id": "1e26b196d6b827f9492a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The grouped paint labels support a single total of 35, and the choices distinguish that value."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A group of 35 paints is a plausible concrete counting context within the competency range."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The repeated instruction to count the paints states the requested action and total plainly."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The ten-groups-plus-ones representation and the answer 35 agree with the forward-count explanation."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_na_q1_0-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_na_q1_0-20260924:mat_g1_na_q1_0"
+    },
+    {
+      "sample_id": "c92896249b74b016b342",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The narrated backward count names four consecutive values, so the next value is uniquely 91."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Starting at 95 and subtracting one four times leads to 91 as stated by the sequence."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The narrative is clear, but the instructional hint uses an incorrect signed subtraction equation."
+        },
+        "mathematical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The hint says 94 minus 95 equals 1, but it equals negative 1, so the rendered guidance is mathematically invalid."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_na_q1_0-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_na_q1_0-20260924:mat_g1_na_q1_0"
+    },
+    {
+      "sample_id": "d55fbcf301c104568405",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The four consecutive ascending terms establish one obvious continuation, 35."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The sequence is a direct instance of counting forward by one from 31 through 34."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The wording is concise and explicitly identifies the missing next number in the sequence."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Adding one to 34 produces the printed answer 35 and matches every forward-count hint."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_na_q1_0-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_na_q1_0-20260924:mat_g1_na_q1_0"
+    },
+    {
+      "sample_id": "d0a7ed0e488e236776c7",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The descending one-step pattern determines 74 uniquely from the shown terms."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Counting backward from 78 gives 77, 76, 75, and then 74 consistently."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The question is readable, but the first explanatory arithmetic statement is false for a backward count."
+        },
+        "mathematical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The hint presents 77 minus 78 as 1, whereas the result is negative 1, an explicit arithmetic defect."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_na_q1_0-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_na_q1_0-20260924:mat_g1_na_q1_0"
+    },
+    {
+      "sample_id": "c1ff17b361429435088d",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The sequence decreases by one throughout, leaving 28 as the only possible next term."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The terms 32, 31, 30, 29 correctly model backward counting and continue with 28."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The stem is straightforward, but its subtraction hint gives an incorrect positive result for a decrease."
+        },
+        "mathematical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The rendered hint says 31 minus 32 equals 1, but the expression equals negative 1."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_na_q1_0-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_na_q1_0-20260924:mat_g1_na_q1_0"
+    },
+    {
+      "sample_id": "e2a730869fdb5b7eec2a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The short story adds no competing condition; the consecutive sequence uniquely yields 84."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The dance-shoe setting is coherent and the sequence correctly advances one number at a time."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The familiar story framing and explicit next-number question are understandable for the learner."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Adding one to 83 gives 84, matching the answer and all forward-count guidance."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_na_q1_0-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_na_q1_0-20260924:mat_g1_na_q1_0"
+    },
+    {
+      "sample_id": "20e066f7816bd5dcfda7",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The bread story is accompanied by a regular descending sequence with one unique continuation, 35."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The contextual framing is coherent and the numbers correctly represent counting backward by one."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The question is understandable, but its supporting equation incorrectly represents the signed backward difference."
+        },
+        "mathematical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The hint claims 38 minus 39 equals 1, although the actual result is negative 1."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_na_q1_0-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_na_q1_0-20260924:mat_g1_na_q1_0"
+    },
+    {
+      "sample_id": "61b137578376d2315f81",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The consecutive ascending list makes 89 the sole valid next value among the options."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The sequence from 85 through 88 follows standard forward counting and continues to 89."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The wording is brief, familiar, and sufficient to identify the requested missing number."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer 89 correctly results from adding one to 88."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_na_q1_0-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_na_q1_0-20260924:mat_g1_na_q1_0"
+    },
+    {
+      "sample_id": "33fc23c3197bfe6ea3bc",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The descending sequence has a consistent one-step rule, so 8 is uniquely determined."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Counting backward from 12 through 9 naturally produces 8 next."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The stem is clear, but the backward-count hint contains a false subtraction result that can confuse learners."
+        },
+        "mathematical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The printed equation 11 minus 12 equals 1 is false; it equals negative 1."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_na_q1_0-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_na_q1_0-20260924:mat_g1_na_q1_0"
+    },
+    {
+      "sample_id": "79d4e8ae575054f4abd3",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The ascending sequence increases by one and therefore has the unique next value 11."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The terms 7, 8, 9, and 10 are a valid forward count that continues with 11."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The prompt directly asks for the next term and uses an accessible four-number pattern."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Adding one to 10 gives the printed answer 11, with no conflicting arithmetic."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_na_q1_0-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_na_q1_0-20260924:mat_g1_na_q1_0"
+    },
+    {
+      "sample_id": "cdaf4fa72ad14dc6a03a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "CONCERN",
+          "reasoning": "The number-line structure lists labels but does not prove which one is visually marked for the learner to read."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The ascending sequence from 30 through 33 correctly continues with 34."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The identification prompt is concise and the number-line labels would support it if the mark is rendered."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer 34 is the correct successor of 33 and agrees with the addition hint."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_na_q1_0-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_na_q1_0-20260924:mat_g1_na_q1_0"
+    },
+    {
+      "sample_id": "2d6d092131d2bce457d7",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The descending consecutive terms establish 44 as the only possible continuation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Counting backward from 48 through 45 by one correctly gives 44 next."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The cloze wording is clear, but the explanatory subtraction equation reverses the expected signed result."
+        },
+        "mathematical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The hint says 47 minus 48 equals 1, although it equals negative 1."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_na_q1_0-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_na_q1_0-20260924:mat_g1_na_q1_0"
+    },
+    {
+      "sample_id": "1c3d94dbc9f18786bb60",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The grouped cupcake labels determine a single total of 42 and the answer choices identify it."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Counting 42 cupcakes is a coherent concrete task within the stated upper limit of 100."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The direct two-line instruction clearly asks the learner to count the pictured cupcakes."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The representation, forward-count hints, and selected total 42 are mutually consistent."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_na_q1_0-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_na_q1_0-20260924:mat_g1_na_q1_0"
+    }
+  ],
+  "clause_evidence": [
+    {
+      "requirement_id": "count_objects_to_a_total",
+      "clause": "Count",
+      "verdict": "PASS",
+      "reasoning": "The grouped cupcake and paint samples explicitly ask the learner to count objects and determine a total.",
+      "sample_ids": [
+        "b50f7f95899820531945",
+        "1e26b196d6b827f9492a",
+        "1c3d94dbc9f18786bb60"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_na_q1_0-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_na_q1_0-20260924:mat_g1_na_q1_0"
+    },
+    {
+      "requirement_id": "range_up_to_100",
+      "clause": "up to 100",
+      "verdict": "PASS",
+      "reasoning": "All displayed values stay within the required counting range, including the highest starting values near 95.",
+      "sample_ids": [
+        "c92896249b74b016b342",
+        "1ef2e785f2d8da7ab45f",
+        "82528cc28013d59531c4"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_na_q1_0-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_na_q1_0-20260924:mat_g1_na_q1_0"
+    },
+    {
+      "requirement_id": "count_forward_from_a_given_number",
+      "clause": "counting up",
+      "verdict": "PASS",
+      "reasoning": "Multiple samples show consecutive forward sequences and ask for the following number from a given start.",
+      "sample_ids": [
+        "c41b602a6a30ee5738d2",
+        "82528cc28013d59531c4",
+        "79d4e8ae575054f4abd3"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_na_q1_0-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_na_q1_0-20260924:mat_g1_na_q1_0"
+    },
+    {
+      "requirement_id": "count_backward_from_a_given_number",
+      "clause": "down from a given number",
+      "verdict": "CONCERN",
+      "reasoning": "Several samples visibly use backward sequences, but their repeated subtraction hints contain the wrong signed difference.",
+      "sample_ids": [
+        "07f9bd92dad31ed7be26",
+        "c92896249b74b016b342",
+        "2d6d092131d2bce457d7"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_na_q1_0-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_na_q1_0-20260924:mat_g1_na_q1_0"
+    },
+    {
+      "requirement_id": "identify_a_number_relative_to_another",
+      "clause": "identifying a number",
+      "verdict": "CONCERN",
+      "reasoning": "The next-number items require identifying a related number, but no item directly frames an explicit relative-number relationship.",
+      "sample_ids": [
+        "c41b602a6a30ee5738d2",
+        "d0a7ed0e488e236776c7"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_na_q1_0-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_na_q1_0-20260924:mat_g1_na_q1_0"
+    },
+    {
+      "requirement_id": "identify_one_more_than_a_number",
+      "clause": "1 more",
+      "verdict": "FAIL",
+      "reasoning": "Forward sequences imply successors, but no printed sample directly asks the learner to identify one more than a given number.",
+      "sample_ids": [
+        "c41b602a6a30ee5738d2",
+        "d55fbcf301c104568405"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_na_q1_0-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_na_q1_0-20260924:mat_g1_na_q1_0"
+    },
+    {
+      "requirement_id": "identify_one_less_than_a_number",
+      "clause": "1 less",
+      "verdict": "FAIL",
+      "reasoning": "Backward sequences imply predecessors, but no printed sample directly asks the learner to identify one less than a given number.",
+      "sample_ids": [
+        "07f9bd92dad31ed7be26",
+        "d6804a0f9284b0886ec6"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_na_q1_0-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_na_q1_0-20260924:mat_g1_na_q1_0"
+    }
+  ],
+  "dispatch_provenance": [
+    {
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_na_q1_0-20260924:mat_g1_na_q1_0",
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_na_q1_0-20260924",
+      "review_date": "2026-09-24",
+      "blind": true,
+      "packet_digest": "ee4d4848c8e6c1dba3c777618b3b60f74a566efce1c44b3cddbb3f4c18d8e6e0",
+      "clause_ids": [
+        "count_objects_to_a_total",
+        "range_up_to_100",
+        "count_forward_from_a_given_number",
+        "count_backward_from_a_given_number",
+        "identify_a_number_relative_to_another",
+        "identify_one_more_than_a_number",
+        "identify_one_less_than_a_number"
+      ],
+      "response_ref": ".responses/s5-luna-medium-w5-mat_g1_na_q1_0-20260924.json",
+      "response_digest": "238b974093712fdae0aa914d0cb64d02c72de96280a2d7e4218f100ab03cf12b",
+      "prompt_ref": ".responses/s5-luna-medium-w5-mat_g1_na_q1_0-20260924.prompt.txt",
+      "prompt_digest": "57896e560bac5bafeaeddfac52b7ba98d11c4580de6224d1985d4163b08def71",
+      "samples_delivery": "Prompt generated by tests.judgment_batches for one node and delivered by path to multi_agent_v1.spawn_agent using model gpt-5.6-luna with reasoning_effort=medium.",
+      "tool_uses_by_reviewer": "Reviewer was a tool-bearing multi_agent_v1 subagent instructed to read only its prompt file and write its verdicts JSON; it reported the output path and no other tool use to the dispatcher."
     }
   ],
   "findings": {
-    "competency_fulfillment": {
+    "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Counting to 100 is exercised in three distinct senses - continuing a sequence such as 94, 95, 96, 97 with a blank, counting a large group of objects to a total, and locating a marked number - all of which are the competency's core act."
+      "rationale": "The tasks use short one-step counting sequences and concrete grouped objects appropriate for Grade 1."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "Every prompt concerns counting forward, counting backward, or determining the next count within 100."
+    },
+    "competency_fulfillment": {
+      "verdict": "FAIL",
+      "rationale": "The packet repeatedly asks for the next sequence value but does not directly assess identifying one more or one less from a given number.",
+      "decomposition": {
+        "verdict": "CONCERN",
+        "reasoning": "The requirements name all parts of the competency, but the printed samples do not visibly instantiate the two explicit relative-number tasks.",
+        "requirement_ids": [
+          "count_objects_to_a_total",
+          "range_up_to_100",
+          "count_forward_from_a_given_number",
+          "count_backward_from_a_given_number",
+          "identify_a_number_relative_to_another",
+          "identify_one_more_than_a_number",
+          "identify_one_less_than_a_number"
+        ]
+      },
+      "clause_ids": [
+        "count_objects_to_a_total",
+        "range_up_to_100",
+        "count_forward_from_a_given_number",
+        "count_backward_from_a_given_number",
+        "identify_a_number_relative_to_another",
+        "identify_one_more_than_a_number",
+        "identify_one_less_than_a_number"
+      ]
     },
     "comprehensive_coverage": {
       "verdict": "FAIL",
-      "rationale": "The competency spells out counting up or down and identifying a number that is 1 more or 1 less, and only the upward half is ever generated. All five sequence items ascend, the narrative item explicitly states counting forward by 1, and across nine samples no item counts backwards or asks for 1 less than a given number. Two of the four behaviours the competency names in parentheses are therefore unsampled, and a pupil could clear this node without ever counting down."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Four-term sequences with a single blank, and object counts presented as a large group with a stated total to verify, match the demands of Quarter 1 Grade 1; no item requires writing number words or operating on the numbers."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "Four presentations are in play - a bare sequence, a number line with a mark to read, a pictured collection to count, and a named pupil narrating a count - and answers are taken both as a typed blank and as a choice."
-    },
-    "competency_alignment": {
-      "verdict": "CONCERN",
-      "rationale": "The axis that actually varies across seeds is the magnitude of the starting number, from the 30s to the 90s. Because direction is held fixed at forward, the seeds never get harder in the way this competency defines harder, and the decade-crossing case that makes counting up to 100 difficult is only incidentally touched."
+      "rationale": "Forward and backward counting are represented, while direct one-more and one-less identification are absent from the rendered sample set.",
+      "clause_ids": [
+        "count_objects_to_a_total",
+        "range_up_to_100",
+        "count_forward_from_a_given_number",
+        "count_backward_from_a_given_number",
+        "identify_a_number_relative_to_another",
+        "identify_one_more_than_a_number",
+        "identify_one_less_than_a_number"
+      ]
     },
     "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "Values reach into the 90s and the counted collections run to 64 and 78, so the stated ceiling of 100 is genuinely approached rather than the generator hovering in safe two-digit territory, and nothing exceeds it."
+      "verdict": "CONCERN",
+      "rationale": "The numerical range is appropriate, but the 35- and 78-object pictorial tasks may be difficult to inspect from the supplied static descriptions."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "There are sequence, cloze, number-line, and grouped-object formats, yet variation does not include direct relative-number questions."
     }
   },
   "overall": "FAIL"

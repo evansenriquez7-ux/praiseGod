@@ -15842,3 +15842,75 @@ Additional reviewer-discovered bugs queued:
   wristbands are decorative rather than integrated with turn/rotation tasks.
 
 The §5 v2 corpus is now mixed-family: 1 Haiku node and 13 `gpt-5.6-luna`/medium nodes.
+
+### Wave 5 filed
+
+Filed four additional `gpt-5.6-luna`/medium reviews:
+
+| node | reviewer identity | agent id | verdict |
+|---|---|---|---|
+| `mat_g1_mg_q4_3` | `blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_3-20260924` | `01a0d2f0-ee8c-76c1-84a2-479fa602c655` | CONCERN |
+| `mat_g1_mg_q4_4` | `blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_4-20260924` | `01a0d2f0-eee3-7ec1-b88b-e17182cce70c` | FAIL |
+| `mat_g1_na_q1_0` | `blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_na_q1_0-20260924` | `01a0d2f0-ef88-7133-9b05-cce09956d90e` | FAIL |
+| `mat_g1_na_q1_1` | `blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_na_q1_1-20260924` | `01a0d2f0-f024-7be0-be04-c7e8298f416a` | CONCERN |
+
+Mechanical audit passed:
+
+```
+mat_g1_mg_q4_3: samples 22/22 in order, requirements 3/3 in order, bad_cites [], short_reasoning 0, duplicate_normalized_reasoning 0
+mat_g1_mg_q4_4: samples 34/34 in order, requirements 7/7 in order, bad_cites [], short_reasoning 0, duplicate_normalized_reasoning 0
+mat_g1_na_q1_0: samples 20/20 in order, requirements 7/7 in order, bad_cites [], short_reasoning 0, duplicate_normalized_reasoning 0
+mat_g1_na_q1_1: samples 17/17 in order, requirements 4/4 in order, bad_cites [], short_reasoning 0, duplicate_normalized_reasoning 0
+```
+
+Filed with `tests.file_reviews`:
+
+```
+filed mat_g1_mg_q4_3 -> validation_reports/judgment/mat_g1_mg_q4/mat_g1_mg_q4_3.json
+filed mat_g1_mg_q4_4 -> validation_reports/judgment/mat_g1_mg_q4/mat_g1_mg_q4_4.json
+filed mat_g1_na_q1_0 -> validation_reports/judgment/mat_g1_na_q1/mat_g1_na_q1_0.json
+filed mat_g1_na_q1_1 -> validation_reports/judgment/mat_g1_na_q1/mat_g1_na_q1_1.json
+```
+
+Measured queue after wave 5:
+
+```
+$ PYTHONPATH=. .venv/bin/python tests/legacy_review_queue.py --write
+legacy_review_queue: 133 legacy review(s), NOT adjudicable evidence
+  overall verdicts        : {'CONCERN': 82, 'FAIL': 39, 'PASS': 12}
+  with a non-PASS facet   : 121
+  non-PASS by facet       : {'cognitive_capacity': 33, 'competency_alignment': 61, 'competency_fulfillment': 67, 'comprehensive_coverage': 53, 'scale_appropriateness': 23, 'variant_comprehensiveness': 75}
+  missing a v1 facet      : 0
+  orphan (node undeclared): 0
+  re-reviews owed         : 133
+  wrote validation_reports/phase2_hardening/legacy_review_queue.json
+
+$ PYTHONPATH=. .venv/bin/python - <<'PY'
+import json
+from pathlib import Path
+counts={}; nodes=[]
+for p in sorted(Path('validation_reports/judgment').glob('mat_*/*_*.json')):
+    d=json.loads(p.read_text()); sv=d.get('schema_version'); counts[sv]=counts.get(sv,0)+1
+    if sv==2: nodes.append(p.stem)
+print('schema_counts', counts)
+print('v2_count', len(nodes))
+PY
+schema_counts {2: 18, None: 133}
+v2_count 18
+
+$ PYTHONPATH=. .venv/bin/python -c "from backend.app.practice_gen.validation.validate_judgment import validate_judgment_reviews; import re; p=validate_judgment_reviews(); print('findings', len(p), 'nodes', len({m.group(1) for x in p if (m:=re.match(r'(mat_[a-z0-9_]+)', x))}))"
+findings 1468 nodes 150
+```
+
+Additional reviewer-discovered bugs queued:
+
+* `mat_g1_mg_q4_4`: calendar visuals mismatch stems (e.g. March stem with September calendar,
+  February/June stem with November calendar), days-in-a-week is not directly covered, and quarter-hour
+  coverage is sparse.
+* `mat_g1_na_q1_0`: backward-count hints print false equations such as `19 - 20 = 1`,
+  `41 - 42 = 1`, and `94 - 95 = 1`; one-more/one-less are implied by sequences but not directly
+  asked.
+* `mat_g1_na_q1_1`: samples reach 99 but do not directly ask learners to read/write the boundary
+  value 100.
+
+The §5 v2 corpus is now mixed-family: 1 Haiku node and 17 `gpt-5.6-luna`/medium nodes.

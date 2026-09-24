@@ -1,7 +1,38 @@
 {
+  "schema_version": 2,
   "node_id": "mat_g1_na_q1_1",
-  "reviewed_by": "reviewer-c1-lantern-fescue-3061",
-  "review_date": "2026-09-11",
+  "competency_snapshot": {
+    "text": "Read and write numerals up to 100.",
+    "grade": 1,
+    "quarter": 1,
+    "subdomain": null
+  },
+  "requirements_snapshot": [
+    {
+      "kind": "task",
+      "id": "read",
+      "clause": "Read"
+    },
+    {
+      "kind": "task",
+      "id": "write",
+      "clause": "write"
+    },
+    {
+      "kind": "object",
+      "id": "numerals",
+      "clause": "numerals"
+    },
+    {
+      "kind": "range",
+      "id": "up_to_100",
+      "clause": "up to 100"
+    }
+  ],
+  "packet_digest": "ceafe13bada277a11348f560d903263f34812b69bdbb3f9141050f5c6c581b7d",
+  "sampling_version": "phase2-stratified-v2-rendered-visual",
+  "reviewed_by": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_na_q1_1-20260924",
+  "review_date": "2026-09-24",
   "blind": true,
   "sample_seeds": [
     42,
@@ -11,20 +42,85 @@
     46,
     500,
     501,
-    502
+    502,
+    700,
+    701,
+    702,
+    800,
+    900,
+    901,
+    1000,
+    1001,
+    1002
+  ],
+  "sample_ids": [
+    "570475fe48f1653a0001",
+    "70133ff313a3a28ce565",
+    "38deffed35fb3a33ee53",
+    "e09e927c3f45c37c2465",
+    "f26cd851bdac202a8469",
+    "f800626e343189f63b22",
+    "69e04092db907b769580",
+    "2a99f17e702170a282e3",
+    "271b5239eb379cae33e0",
+    "7b2d354aa5170e1150de",
+    "8b08ec9b7dec79e0db98",
+    "099073ce971c56abf1c5",
+    "133e87444da4cad9ef92",
+    "5e765bedf3276a1048fb",
+    "146438e4b3b6937cf4b4",
+    "936599c68e0eaa6c2b6a",
+    "62ad5e785c4bf48eccc2"
   ],
   "samples_reviewed": [
     {
+      "node_id": "mat_g1_na_q1_1",
       "seed": 42,
       "formatter": "true_false",
       "question_text": "The number 35 is written in words as 'fifty-three'. True or False?",
-      "correct_answer": false
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "Read the number 35 one place at a time, starting from the largest place.",
+        "The full word form is: 'thirty-five'."
+      ],
+      "sample_id": "570475fe48f1653a0001",
+      "replay_digest": "ff17a7d075b361a06ec2eb093172e0ac7292e4b78b7a5543cfe3832c1dfb38b1"
     },
     {
+      "node_id": "mat_g1_na_q1_1",
       "seed": 43,
       "formatter": "mcq",
       "question_text": "Write 68 in words.",
       "correct_answer": "sixty-eight",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -46,13 +142,35 @@
           "value": "fifty-eight",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "sixty-eight",
+      "hints": [
+        "Read the number 68 one place at a time, starting from the largest place.",
+        "The full word form is: 'sixty-eight'."
+      ],
+      "sample_id": "70133ff313a3a28ce565",
+      "replay_digest": "3256ef1f03923932611765222b73a3d39b89e467e665186f6fd4955294dc9256"
     },
     {
+      "node_id": "mat_g1_na_q1_1",
       "seed": 44,
       "formatter": "cloze",
       "question_text": "Write the number: ninety-eight.",
       "correct_answer": 98,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -78,13 +196,36 @@
           "text": "99",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 98,
+      "hints": [
+        "Identify each word part and its value of each part.",
+        "Broken apart form: 90 + 8.",
+        "Add the parts together to get 98."
+      ],
+      "sample_id": "38deffed35fb3a33ee53",
+      "replay_digest": "3ee09cc630c64131abd27a677c2dbc9527d758f7ad1b8e6042f002471bd9e4df"
     },
     {
+      "node_id": "mat_g1_na_q1_1",
       "seed": 45,
       "formatter": "mcq",
       "question_text": "Write the number: eighty-five.",
       "correct_answer": 85,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -106,13 +247,36 @@
           "value": 85,
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 85,
+      "hints": [
+        "Identify each word part and its value of each part.",
+        "Broken apart form: 80 + 5.",
+        "Add the parts together to get 85."
+      ],
+      "sample_id": "e09e927c3f45c37c2465",
+      "replay_digest": "a2674108f2f4cea91ade887bbf8fd29dd56f316136afb21753d06ecbc5731b47"
     },
     {
+      "node_id": "mat_g1_na_q1_1",
       "seed": 46,
       "formatter": "cloze",
       "question_text": "Write 83 in words.",
       "correct_answer": "eighty-three",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -138,25 +302,99 @@
           "text": "eighty-four",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "eighty-three",
+      "hints": [
+        "Read the number 83 one place at a time, starting from the largest place.",
+        "The full word form is: 'eighty-three'."
+      ],
+      "sample_id": "f26cd851bdac202a8469",
+      "replay_digest": "ad6509fa6c9809cb848ff8dee94c2b466577180e5e53aa9d33a17598196a30e4"
     },
     {
+      "node_id": "mat_g1_na_q1_1",
       "seed": 500,
       "formatter": "true_false",
       "question_text": "The number written as 'ninety-nine' is 100. True or False?",
-      "correct_answer": false
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "range": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "Identify each word part and its value of each part.",
+        "Broken apart form: 90 + 9.",
+        "Add the parts together to get 99."
+      ],
+      "sample_id": "f800626e343189f63b22",
+      "replay_digest": "1a561623dd99c9f252a7ac603d55460838cefa45dfdad9c30700344232421903"
     },
     {
+      "node_id": "mat_g1_na_q1_1",
       "seed": 501,
       "formatter": "true_false",
       "question_text": "The number written as 'seventy-seven' is 67. True or False?",
-      "correct_answer": false
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "range": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "Identify each word part and its value of each part.",
+        "Broken apart form: 70 + 7.",
+        "Add the parts together to get 77."
+      ],
+      "sample_id": "69e04092db907b769580",
+      "replay_digest": "0e77b8971400ac057484283c7d7bce2bf07c3c143ef74708590b3c64f38bfb0e"
     },
     {
+      "node_id": "mat_g1_na_q1_1",
       "seed": 502,
       "formatter": "cloze",
       "question_text": "Write the number: fifty-three.",
       "correct_answer": 53,
+      "requested": {
+        "difficulty_profile": {
+          "range": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -182,33 +420,967 @@
           "text": "43",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 53,
+      "hints": [
+        "Identify each word part and its value of each part.",
+        "Broken apart form: 50 + 3.",
+        "Add the parts together to get 53."
+      ],
+      "sample_id": "2a99f17e702170a282e3",
+      "replay_digest": "a6d32bcb664cad9866c855e8c7f3adb5e270ab23cf7062920ee959129f5ca195"
+    },
+    {
+      "node_id": "mat_g1_na_q1_1",
+      "seed": 700,
+      "formatter": "mcq",
+      "question_text": "Write 56 in words.",
+      "correct_answer": "fifty-six",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "fifty-six",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "sixty-five",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "fifty-seven",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "forty-six",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "fifty-six",
+      "hints": [
+        "Read the number 56 one place at a time, starting from the largest place.",
+        "The full word form is: 'fifty-six'."
+      ],
+      "sample_id": "271b5239eb379cae33e0",
+      "replay_digest": "d5c98b1aa2c6b060ddc53c730bc04e39881ed31ae0698f2a44ee8d5e9b862eca"
+    },
+    {
+      "node_id": "mat_g1_na_q1_1",
+      "seed": 701,
+      "formatter": "cloze",
+      "question_text": "💃 Sir Rez has a math challenge about dance shoes. Write the number: ninety-five.",
+      "correct_answer": 95,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "content_creation",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 59,
+          "text": "59",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 96,
+          "text": "96",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 95,
+          "text": "95",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 85,
+          "text": "85",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 95,
+      "hints": [
+        "Identify each word part and its value of each part.",
+        "Broken apart form: 90 + 5.",
+        "Add the parts together to get 95."
+      ],
+      "sample_id": "7b2d354aa5170e1150de",
+      "replay_digest": "7d6fa65f4b503d7dab794bb9835825587a9c424988281d099590fa62abd94e69"
+    },
+    {
+      "node_id": "mat_g1_na_q1_1",
+      "seed": 702,
+      "formatter": "cloze",
+      "question_text": "🏀 Isko has a math challenge about basketballs. Write 49 in words.",
+      "correct_answer": "forty-nine",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "sandbox_games",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "ninety-four",
+          "text": "ninety-four",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "fifty",
+          "text": "fifty",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "thirty-nine",
+          "text": "thirty-nine",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "forty-nine",
+          "text": "forty-nine",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": "forty-nine",
+      "hints": [
+        "Read the number 49 one place at a time, starting from the largest place.",
+        "The full word form is: 'forty-nine'."
+      ],
+      "sample_id": "8b08ec9b7dec79e0db98",
+      "replay_digest": "7383cc81a53fcf0983916233c4c53942367c6b4326401337614811f2d7bcb8c1"
+    },
+    {
+      "node_id": "mat_g1_na_q1_1",
+      "seed": 800,
+      "formatter": "true_false",
+      "question_text": "The number written as 'thirty-eight' is 38. True or False?",
+      "correct_answer": true,
+      "requested": {
+        "difficulty_profile": {
+          "range": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": true,
+      "hints": [
+        "Identify each word part and its value of each part.",
+        "Broken apart form: 30 + 8.",
+        "Add the parts together to get 38."
+      ],
+      "sample_id": "099073ce971c56abf1c5",
+      "replay_digest": "05fc240f20580bc21f7ca9c69c498964fe46662c99472d6a27a9aae8641e5cde"
+    },
+    {
+      "node_id": "mat_g1_na_q1_1",
+      "seed": 900,
+      "formatter": "mcq",
+      "question_text": "Write 10 in words.",
+      "correct_answer": "ten",
+      "requested": {
+        "difficulty_profile": {
+          "range": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "ten",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "one",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "eleven",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "one hundred",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "ten",
+      "hints": [
+        "Read the number 10 one place at a time, starting from the largest place.",
+        "The full word form is: 'ten'."
+      ],
+      "sample_id": "133e87444da4cad9ef92",
+      "replay_digest": "2eb5e5bce1a92194f6470efa0df845cc86b5bc7290dde3449f055bdbb9f9087b"
+    },
+    {
+      "node_id": "mat_g1_na_q1_1",
+      "seed": 901,
+      "formatter": "true_false",
+      "question_text": "The number written as 'fifteen' is 51. True or False?",
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "range": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "Identify each word part and its value of each part.",
+        "Broken apart form: 10 + 5.",
+        "Add the parts together to get 15."
+      ],
+      "sample_id": "5e765bedf3276a1048fb",
+      "replay_digest": "21e84acbd3c5031b4cbfc2102f3f03e7195e92ebb966c30d3fb2cdd6584519f2"
+    },
+    {
+      "node_id": "mat_g1_na_q1_1",
+      "seed": 1000,
+      "formatter": "mcq",
+      "question_text": "Write the number: forty-four.",
+      "correct_answer": 44,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "hint_gated"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "hint_gated"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 43,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 45,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 44,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 34,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 44,
+      "hints": [
+        "Identify each word part and its value of each part.",
+        "Broken apart form: 40 + 4.",
+        "Add the parts together to get 44."
+      ],
+      "sample_id": "146438e4b3b6937cf4b4",
+      "replay_digest": "3432476dac8ecd7bf0b7d4350efc324514a17c5c3e3498e34f633f04980ad7d4"
+    },
+    {
+      "node_id": "mat_g1_na_q1_1",
+      "seed": 1001,
+      "formatter": "cloze",
+      "question_text": "Write 57 in words.",
+      "correct_answer": "fifty-seven",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "mastery_drill"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "mastery_drill"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "forty-seven",
+          "text": "forty-seven",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "fifty-eight",
+          "text": "fifty-eight",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "seventy-five",
+          "text": "seventy-five",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "fifty-seven",
+          "text": "fifty-seven",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": "fifty-seven",
+      "hints": [
+        "Read the number 57 one place at a time, starting from the largest place.",
+        "The full word form is: 'fifty-seven'."
+      ],
+      "sample_id": "936599c68e0eaa6c2b6a",
+      "replay_digest": "d8b22b4515937dd9ec15a1ff30fd7e093e92848922e87d428966b4313838827b"
+    },
+    {
+      "node_id": "mat_g1_na_q1_1",
+      "seed": 1002,
+      "formatter": "cloze",
+      "question_text": "Write the number: sixty.",
+      "correct_answer": 60,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "scaffolded"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "scaffolded"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 60,
+          "text": "60",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 6,
+          "text": "6",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 61,
+          "text": "61",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 50,
+          "text": "50",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 60,
+      "hints": [
+        "Identify each word part and its value of each part.",
+        "Broken apart form: 60.",
+        "Add the parts together to get 60."
+      ],
+      "sample_id": "62ad5e785c4bf48eccc2",
+      "replay_digest": "5f804c9aa69e33c642905850eaf4c093d85831d61e992df1bb7ee0ddd5a2c14e"
+    }
+  ],
+  "sample_assessments": [
+    {
+      "sample_id": "570475fe48f1653a0001",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The statement names one numeral and one word form, so the true-or-false decision has a single clear interpretation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The claim that 35 is written as fifty-three is logically testable and the false answer follows from the stated numeral-word mismatch."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The sentence uses familiar Grade 1 wording and explicitly tells the learner to choose True or False."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Thirty-five is the correct word form for 35, while fifty-three is a distinct numeral, making the keyed false response mathematically sound."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_na_q1_1-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_na_q1_1-20260924:mat_g1_na_q1_1"
+    },
+    {
+      "sample_id": "70133ff313a3a28ce565",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The instruction asks for the word form of one displayed numeral and the options contain one matching answer."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The conversion from 68 to sixty-eight is a direct, internally consistent task with distractors that represent plausible reversals or nearby values."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The short command Write 68 in words is concrete, readable, and appropriate for an early numeracy learner."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sixty-eight is the standard English number-word representation of the numeral 68, so the answer is correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_na_q1_1-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_na_q1_1-20260924:mat_g1_na_q1_1"
+    },
+    {
+      "sample_id": "38deffed35fb3a33ee53",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The number word ninety-eight identifies one numeral, and the listed choices include a unique matching value."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The prompt, answer, and supporting decomposition 90 plus 8 agree with one another without requiring unstated information."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Write the number followed by a familiar number word is a clear conversion direction for Grade 1."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Ninety-eight equals 90 plus 8 and is correctly represented by 98, so the keyed answer is mathematically valid."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_na_q1_1-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_na_q1_1-20260924:mat_g1_na_q1_1"
+    },
+    {
+      "sample_id": "e09e927c3f45c37c2465",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Eighty-five has one intended numeral answer among the four options, so the response choice is unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The task consistently asks for a numeral and the answer 85 follows directly from the printed word form."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The wording is brief and direct, and the available options make the expected response action evident."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Eighty-five is correctly decomposed as 80 plus 5 and written as 85, matching the keyed answer."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_na_q1_1-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_na_q1_1-20260924:mat_g1_na_q1_1"
+    },
+    {
+      "sample_id": "f26cd851bdac202a8469",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The numeral 83 has a unique intended word form among the provided alternatives."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The question and answer use the same conversion direction and the distractors do not create a second valid interpretation."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Write 83 in words is simple, explicit, and uses language suitable for the stated learner level."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Eighty-three is the correct English number name for 83, so the selected response is mathematically accurate."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_na_q1_1-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_na_q1_1-20260924:mat_g1_na_q1_1"
+    },
+    {
+      "sample_id": "f800626e343189f63b22",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The claim compares one printed word form with one numeral and can be judged as a single true-or-false proposition."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The statement that ninety-nine equals 100 is false, and the accompanying decomposition supports the intended correction."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The true-or-false instruction is explicit and the number words are presented in a readable quoted form."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Ninety-nine is 99 rather than 100, so the false key and the displayed arithmetic explanation are correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_na_q1_1-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_na_q1_1-20260924:mat_g1_na_q1_1"
+    },
+    {
+      "sample_id": "69e04092db907b769580",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The proposition names one word form and one proposed numeral, producing a clear binary judgment."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Seventy-seven does not equal 67, so the false response follows coherently from the proposition."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The wording is short and familiar, with the required True or False response explicitly stated."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The word form seventy-seven corresponds to 77, not 67, making the keyed judgment mathematically valid."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_na_q1_1-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_na_q1_1-20260924:mat_g1_na_q1_1"
+    },
+    {
+      "sample_id": "2a99f17e702170a282e3",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Fifty-three maps to one unique numeral among the listed choices, so the response target is clear."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The prompt and its 50 plus 3 explanation agree, giving a logically complete conversion task."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The instruction Write the number is direct and the familiar number word is clearly presented."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Fifty-three is 53, and the decomposition 50 plus 3 confirms the keyed answer."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_na_q1_1-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_na_q1_1-20260924:mat_g1_na_q1_1"
+    },
+    {
+      "sample_id": "271b5239eb379cae33e0",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The numeral 56 has one matching word form in the options, with the other choices acting as distinct distractors."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The conversion requested by the stem is exactly the conversion supplied by the keyed option fifty-six."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The learner receives a concise instruction with a plainly displayed numeral and readable answer choices."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Fifty-six is the correct word representation of 56, so the answer and task are mathematically sound."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_na_q1_1-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_na_q1_1-20260924:mat_g1_na_q1_1"
+    },
+    {
+      "sample_id": "7b2d354aa5170e1150de",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The added setting does not change the single requested conversion from ninety-five to its numeral."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The dance-shoe context is decorative but consistent, and the answer 95 follows directly from the printed number word."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The sentence remains understandable despite the brief context, and the conversion direction is explicitly stated."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Ninety-five is correctly represented by 95, matching the keyed option and the 90 plus 5 explanation."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_na_q1_1-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_na_q1_1-20260924:mat_g1_na_q1_1"
+    },
+    {
+      "sample_id": "8b08ec9b7dec79e0db98",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The basketball context is irrelevant to the conversion, leaving one clear word-form answer for 49."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The context introduces no conflicting condition, and forty-nine correctly answers the direct numeral-to-words request."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The learner can identify the action and target immediately from the simple sentence and listed options."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Forty-nine is the standard word form of 49, so the keyed response is mathematically correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_na_q1_1-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_na_q1_1-20260924:mat_g1_na_q1_1"
+    },
+    {
+      "sample_id": "099073ce971c56abf1c5",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The true-or-false proposition contains one exact comparison between thirty-eight and 38."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The proposition is true because the named word form and numeral denote the same number."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The sentence is concise, and the final True or False instruction tells the learner precisely how to respond."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Thirty-eight is exactly 38, so the true key is mathematically valid."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_na_q1_1-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_na_q1_1-20260924:mat_g1_na_q1_1"
+    },
+    {
+      "sample_id": "133e87444da4cad9ef92",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The numeral 10 has one matching word option, while the alternatives are clearly different number names."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The requested numeral-to-word conversion is direct and the answer ten is consistent with the prompt."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The instruction is short, concrete, and readable for a beginning mathematics learner."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Ten is the correct English number word for the numeral 10, so the keyed answer is valid."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_na_q1_1-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_na_q1_1-20260924:mat_g1_na_q1_1"
+    },
+    {
+      "sample_id": "5e765bedf3276a1048fb",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The statement offers one straightforward equality claim that can be judged without additional context."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Fifteen is not 51, so the false judgment follows from the stated comparison and its explanation."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The number word and proposed numeral are clearly separated, and the response instruction is explicit."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The word form fifteen corresponds to 15 rather than 51, making the keyed false answer correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_na_q1_1-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_na_q1_1-20260924:mat_g1_na_q1_1"
+    },
+    {
+      "sample_id": "146438e4b3b6937cf4b4",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Forty-four maps to one unique numeral in the choices, with nearby alternatives functioning as distractors."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The requested word-to-numeral conversion and the keyed answer 44 agree with the printed 40 plus 4 explanation."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The wording gives a single clear action and presents the source number word in a familiar form."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Forty-four is correctly written as 44, so the answer is mathematically accurate."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_na_q1_1-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_na_q1_1-20260924:mat_g1_na_q1_1"
+    },
+    {
+      "sample_id": "936599c68e0eaa6c2b6a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The numeral 57 has one matching English number word among the displayed options."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The stem requests a word form and the keyed answer fifty-seven directly satisfies that request."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The prompt is compact and uses a familiar conversion phrase that clearly identifies the expected response."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Fifty-seven is the correct word representation of 57, so the answer is valid."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_na_q1_1-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_na_q1_1-20260924:mat_g1_na_q1_1"
+    },
+    {
+      "sample_id": "62ad5e785c4bf48eccc2",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The word sixty corresponds to one listed numeral, making the intended selection unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer 60 agrees with the printed decomposition 60, so the conversion is internally consistent."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The instruction is plain and the single number word is easy to identify in the cloze task."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sixty is correctly represented by 60, and the keyed response matches the number word exactly."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_na_q1_1-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_na_q1_1-20260924:mat_g1_na_q1_1"
+    }
+  ],
+  "clause_evidence": [
+    {
+      "requirement_id": "read",
+      "clause": "Read",
+      "verdict": "PASS",
+      "reasoning": "Several samples ask learners to interpret numerals as words or judge whether a word form matches a numeral, directly evidencing reading of numerals.",
+      "sample_ids": [
+        "570475fe48f1653a0001",
+        "70133ff313a3a28ce565",
+        "f26cd851bdac202a8469",
+        "133e87444da4cad9ef92"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_na_q1_1-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_na_q1_1-20260924:mat_g1_na_q1_1"
+    },
+    {
+      "requirement_id": "write",
+      "clause": "write",
+      "verdict": "PASS",
+      "reasoning": "The packet repeatedly requires producing either a number word from a numeral or a numeral from a printed number word, covering both written representations.",
+      "sample_ids": [
+        "70133ff313a3a28ce565",
+        "38deffed35fb3a33ee53",
+        "e09e927c3f45c37c2465",
+        "f26cd851bdac202a8469"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_na_q1_1-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_na_q1_1-20260924:mat_g1_na_q1_1"
+    },
+    {
+      "requirement_id": "numerals",
+      "clause": "numerals",
+      "verdict": "PASS",
+      "reasoning": "Every task works with explicit numerals or their matching number-word forms, so the required numeral concept is visibly exercised throughout the packet.",
+      "sample_ids": [
+        "570475fe48f1653a0001",
+        "70133ff313a3a28ce565",
+        "38deffed35fb3a33ee53",
+        "099073ce971c56abf1c5"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_na_q1_1-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_na_q1_1-20260924:mat_g1_na_q1_1"
+    },
+    {
+      "requirement_id": "up_to_100",
+      "clause": "up to 100",
+      "verdict": "CONCERN",
+      "reasoning": "The samples span values from 10 through 99, including 99, but none directly asks the learner to read or write the boundary value 100.",
+      "sample_ids": [
+        "f800626e343189f63b22",
+        "62ad5e785c4bf48eccc2",
+        "570475fe48f1653a0001"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_na_q1_1-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_na_q1_1-20260924:mat_g1_na_q1_1"
+    }
+  ],
+  "dispatch_provenance": [
+    {
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_na_q1_1-20260924:mat_g1_na_q1_1",
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_na_q1_1-20260924",
+      "review_date": "2026-09-24",
+      "blind": true,
+      "packet_digest": "ceafe13bada277a11348f560d903263f34812b69bdbb3f9141050f5c6c581b7d",
+      "clause_ids": [
+        "read",
+        "write",
+        "numerals",
+        "up_to_100"
+      ],
+      "response_ref": ".responses/s5-luna-medium-w5-mat_g1_na_q1_1-20260924.json",
+      "response_digest": "26bb323770c088a9ef7243e7a2211f1b67aaba2b1fb3471d7a8b0c56f3bf5002",
+      "prompt_ref": ".responses/s5-luna-medium-w5-mat_g1_na_q1_1-20260924.prompt.txt",
+      "prompt_digest": "79bcaa15265049bb06da59540123476ba7eecb9c6c3e15d0f4dfd7ef1a831c93",
+      "samples_delivery": "Prompt generated by tests.judgment_batches for one node and delivered by path to multi_agent_v1.spawn_agent using model gpt-5.6-luna with reasoning_effort=medium.",
+      "tool_uses_by_reviewer": "Reviewer was a tool-bearing multi_agent_v1 subagent instructed to read only its prompt file and write its verdicts JSON; it reported the output path and no other tool use to the dispatcher."
     }
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "Both halves of read and write are generated as separate tasks - converting a numeral into words, as in the instruction to write 68 in words, and converting a spoken form such as ninety-eight back into digits - with true-or-false checks probing the same correspondence."
-    },
-    "comprehensive_coverage": {
       "verdict": "CONCERN",
-      "rationale": "Every value sampled is a two-digit number from the mid-thirties upward. The teens, where the reading-and-writing confusion actually lives for six-year-olds, never appear, nor does any single-digit numeral, so the specific traps this competency exists to train are outside the generated set even though the direction coverage is even."
+      "rationale": "The packet practices reading and writing many numerals through ninety-nine, but it does not visibly demonstrate the endpoint 100 named by the competency.",
+      "decomposition": {
+        "verdict": "PASS",
+        "reasoning": "The four printed requirements separately identify the action of reading, the action of writing, the numeral object, and the upper bound, so together they losslessly represent the stated competency.",
+        "requirement_ids": [
+          "read",
+          "write",
+          "numerals",
+          "up_to_100"
+        ]
+      },
+      "clause_ids": [
+        "read",
+        "write",
+        "numerals",
+        "up_to_100"
+      ]
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Hyphenated two-digit number words and short imperative stems are the right demand for Quarter 1, and the true-or-false framing, such as the claim that 35 is written in words as 'fifty-three', asks for a judgment rather than production, which lightens the load appropriately."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "Three response modes appear across the eight samples and the direction of translation flips between them, so the pupil meets the correspondence from both ends rather than only decoding or only encoding."
+      "rationale": "Each task uses a direct numeral-to-word or word-to-numeral conversion appropriate for Grade 1, with no unnecessary multi-step reasoning or advanced notation."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "The decoys are built on the genuine misconceptions this competency targets - the digit reversal offering eighty-six against sixty-eight, and the neighbouring-decade confusion of seventy-three against eighty-three - so the difficulty sits on reading and writing rather than elsewhere."
+      "rationale": "Every stem asks learners to read a numeral, write a numeral in words, or convert a printed number word into its numeral form, matching the competency directly."
+    },
+    "comprehensive_coverage": {
+      "verdict": "CONCERN",
+      "rationale": "The set covers both directions and several values across the range, yet the rendered samples do not include a direct reading or writing task for 100.",
+      "clause_ids": [
+        "read",
+        "write",
+        "numerals",
+        "up_to_100"
+      ]
     },
     "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "The values stay within the stated one-to-one numeral and number-word skill, and the response formats remain simple enough for the intended Grade 1 scale."
+    },
+    "variant_comprehensiveness": {
       "verdict": "CONCERN",
-      "rationale": "The ceiling of 100 is respected but never reached: the largest numeral written is in the nineties and 100 itself appears only inside a true-or-false claim as a wrong value, so the pupil is never asked to read or write the boundary number the competency names."
+      "rationale": "True-false, multiple-choice, and cloze variants provide useful format breadth, but the variant set still omits the competency boundary case of 100."
     }
   },
   "overall": "CONCERN"

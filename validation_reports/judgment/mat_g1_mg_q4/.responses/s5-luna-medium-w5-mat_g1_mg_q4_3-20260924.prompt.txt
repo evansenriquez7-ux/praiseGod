@@ -1,0 +1,271 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_3-20260924
+
+Write one JSON object to:
+  local_only/scratch/review/s5-luna-2026-09-24/wave5/mat_g1_mg_q4_3/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN; never invent a supporting sample.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_3-20260924",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g1_mg_q4_3
+PACKET DIGEST: f688deb149b22be68db3e19a32ff22ac46187f964be22f08fc02c1fd0816de53
+COMPETENCY (Grade 1, Quarter 4, None):
+Determine the day and month of the year using a calendar.
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  determine: Determine
+  day_and_month_of_the_year: day and month of the year
+  calendar: calendar
+
+SAMPLES (every one of these is real rendered output):
+  sample 2d91df5c73725363b9da  seed 42  [read_mcq]
+      stem:    Look at the February 2025 calendar. What day of the week is February 1?
+      answer:  Saturday
+      options: Saturday / Monday / Friday / Thursday
+      hints:   ["Use the calendar to find the answer.", "The how much time has passed is the number of days or weeks that have passed."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "Calendar", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  Calendar
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "Calendar", "element_count": 49, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["February 2025", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "Click a date to select it"], "distinct_colours": ["hsl(var(--primary)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 317ff5d8fbdf11a0a40f  seed 43  [read_mcq]
+      stem:    Look at the May 2025 calendar. What day of the week is May 23?
+      answer:  Friday
+      options: Saturday / Wednesday / Monday / Friday
+      hints:   ["Use the calendar to find the answer.", "The how much time has passed is the number of days or weeks that have passed."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "Calendar", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  Calendar
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "Calendar", "element_count": 50, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["May 2025", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "Click a date to select it"], "distinct_colours": ["hsl(var(--primary)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample ab760f7aa5383f4f190e  seed 44  [read_mcq]
+      stem:    Look at the calendar page shown. What month of the year is shown on this calendar?
+      answer:  September
+      options: June / September / October / December
+      hints:   ["The the 12 months go from January (1st) to December (12th).", "Count to the 9th month.", "Answer: September"]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "Calendar", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  Calendar
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "Calendar", "element_count": 46, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["September 2025", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "Click a date to select it"], "distinct_colours": ["hsl(var(--primary)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 93c82e59ae4b8f80277a  seed 45  [read_mcq]
+      stem:    Look at the calendar page shown. What month of the year is shown on this calendar?
+      answer:  August
+      options: October / December / July / August
+      hints:   ["The the 12 months go from January (1st) to December (12th).", "Count to the 8th month.", "Answer: August"]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "Calendar", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  Calendar
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "Calendar", "element_count": 51, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["August 2025", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "Click a date to select it"], "distinct_colours": ["hsl(var(--primary)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 2a30475399bfe3d39c0a  seed 46  [read_mcq]
+      stem:    Look at the July 2025 calendar. What day of the week is July 2?
+      answer:  Wednesday
+      options: Wednesday / Friday / Thursday / Sunday
+      hints:   ["Use the calendar to find the answer.", "The how much time has passed is the number of days or weeks that have passed."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "Calendar", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  Calendar
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "Calendar", "element_count": 48, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["July 2025", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "Click a date to select it"], "distinct_colours": ["hsl(var(--primary)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample e59a540e21d49be2dcd4  seed 500  [read_mcq]
+      stem:    Look at the calendar page shown. What month of the year is shown on this calendar?
+      answer:  October
+      options: September / August / November / October
+      hints:   ["The the 12 months go from January (1st) to December (12th).", "Count to the 10th month.", "Answer: October"]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "Calendar", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  Calendar
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "Calendar", "element_count": 49, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["October 2025", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "Click a date to select it"], "distinct_colours": ["hsl(var(--primary)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 0402a41e90a7054269a4  seed 501  [read_mcq]
+      stem:    Look at the May 2025 calendar. What day of the week is May 21?
+      answer:  Wednesday
+      options: Sunday / Monday / Wednesday / Friday
+      hints:   ["Use the calendar to find the answer.", "The how much time has passed is the number of days or weeks that have passed."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "Calendar", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  Calendar
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "Calendar", "element_count": 50, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["May 2025", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "Click a date to select it"], "distinct_colours": ["hsl(var(--primary)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 66adee0a1c3f92e5b0bd  seed 502  [read_mcq]
+      stem:    Look at the June 2025 calendar. What day of the week is June 6?
+      answer:  Friday
+      options: Saturday / Friday / Thursday / Monday
+      hints:   ["Use the calendar to find the answer.", "The how much time has passed is the number of days or weeks that have passed."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "Calendar", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  Calendar
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "Calendar", "element_count": 45, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["June 2025", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "Click a date to select it"], "distinct_colours": ["hsl(var(--primary)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 9bb6f346aaaf63fbe519  seed 601  [read_mcq]
+      stem:    Look at the November 2025 calendar. What day of the week is November 19?
+      answer:  Wednesday
+      options: Tuesday / Wednesday / Sunday / Thursday
+      hints:   ["Use the calendar to find the answer.", "The how much time has passed is the number of days or weeks that have passed."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "Calendar", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  Calendar
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "Calendar", "element_count": 51, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["November 2025", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "Click a date to select it"], "distinct_colours": ["hsl(var(--primary)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 59875bab72c782dfaef9  seed 603  [read_mcq]
+      stem:    Look at the September 2025 calendar. What day of the week is September 19?
+      answer:  Friday
+      options: Wednesday / Friday / Tuesday / Sunday
+      hints:   ["Use the calendar to find the answer.", "The how much time has passed is the number of days or weeks that have passed."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "Calendar", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  Calendar
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "Calendar", "element_count": 46, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["September 2025", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "Click a date to select it"], "distinct_colours": ["hsl(var(--primary)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 362cba0e1a88b25e6d2a  seed 604  [read_mcq]
+      stem:    Look at the April 2025 calendar. What day of the week is April 30?
+      answer:  Wednesday
+      options: Monday / Sunday / Tuesday / Wednesday
+      hints:   ["Use the calendar to find the answer.", "The how much time has passed is the number of days or weeks that have passed."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "Calendar", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  Calendar
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "Calendar", "element_count": 47, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["April 2025", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "Click a date to select it"], "distinct_colours": ["hsl(var(--primary)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 5c8f92195927dd4d74e3  seed 605  [read_mcq]
+      stem:    Look at the October 2025 calendar. What day of the week is October 30?
+      answer:  Thursday
+      options: Wednesday / Sunday / Tuesday / Thursday
+      hints:   ["Use the calendar to find the answer.", "The how much time has passed is the number of days or weeks that have passed."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "Calendar", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  Calendar
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "Calendar", "element_count": 49, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["October 2025", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "Click a date to select it"], "distinct_colours": ["hsl(var(--primary)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample c105dd3a78f7ad5a7d1b  seed 606  [read_mcq]
+      stem:    Look at the January 2025 calendar. What day of the week is January 12?
+      answer:  Sunday
+      options: Friday / Monday / Tuesday / Sunday
+      hints:   ["Use the calendar to find the answer.", "The how much time has passed is the number of days or weeks that have passed."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "Calendar", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  Calendar
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "Calendar", "element_count": 49, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["January 2025", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "Click a date to select it"], "distinct_colours": ["hsl(var(--primary)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 6cb4a9e0719b602e4acb  seed 607  [read_mcq]
+      stem:    Look at the February 2025 calendar. What day of the week is February 25?
+      answer:  Tuesday
+      options: Tuesday / Friday / Sunday / Saturday
+      hints:   ["Use the calendar to find the answer.", "The how much time has passed is the number of days or weeks that have passed."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "Calendar", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  Calendar
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "Calendar", "element_count": 49, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["February 2025", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "Click a date to select it"], "distinct_colours": ["hsl(var(--primary)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 6c3815755a16d068ed06  seed 700  [read_mcq]
+      stem:    Look at the April 2025 calendar. What day of the week is April 15?
+      answer:  Tuesday
+      options: Tuesday / Monday / Saturday / Sunday
+      hints:   ["Use the calendar to find the answer.", "The how much time has passed is the number of days or weeks that have passed."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "Calendar", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  Calendar
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "Calendar", "element_count": 47, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["April 2025", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "Click a date to select it"], "distinct_colours": ["hsl(var(--primary)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample c4aaf8a8946ada48f52b  seed 701  [read_mcq]
+      stem:    💃 Sir Rez has a math challenge about dance shoes. Look at the May 2025 calendar. What day of the week is May 16?
+      answer:  Friday
+      options: Saturday / Wednesday / Thursday / Friday
+      hints:   ["Use the calendar to find the answer.", "The how much time has passed is the number of days or weeks that have passed."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "Calendar", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  Calendar
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "Calendar", "element_count": 50, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["May 2025", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "Click a date to select it"], "distinct_colours": ["hsl(var(--primary)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 4308afd76b77e62a25db  seed 702  [read_mcq]
+      stem:    💃 Ate Gab has a math challenge about costumes. Look at the March 2025 calendar. What day of the week is March 1?
+      answer:  Saturday
+      options: Saturday / Friday / Thursday / Sunday
+      hints:   ["Use the calendar to find the answer.", "The how much time has passed is the number of days or weeks that have passed."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "Calendar", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  Calendar
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "Calendar", "element_count": 52, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["March 2025", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "Click a date to select it"], "distinct_colours": ["hsl(var(--primary)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 03f919ecb9b8c6ccb861  seed 900  [read_mcq]
+      stem:    Look at the April 2025 calendar. What day of the week is April 12?
+      answer:  Saturday
+      options: Wednesday / Friday / Thursday / Saturday
+      hints:   ["Use the calendar to find the answer.", "The how much time has passed is the number of days or weeks that have passed."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "Calendar", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  Calendar
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "Calendar", "element_count": 47, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["April 2025", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "Click a date to select it"], "distinct_colours": ["hsl(var(--primary)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 795b4bb20ffb861f3379  seed 901  [read_mcq]
+      stem:    Look at the calendar page shown. What month of the year is shown on this calendar?
+      answer:  May
+      options: July / May / December / January
+      hints:   ["The the 12 months go from January (1st) to December (12th).", "Count to the 5th month.", "Answer: May"]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "Calendar", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  Calendar
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "Calendar", "element_count": 50, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["May 2025", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "Click a date to select it"], "distinct_colours": ["hsl(var(--primary)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 80ac06be6e7fe1990d41  seed 1000  [read_mcq]
+      stem:    Look at the calendar page shown. What month of the year is shown on this calendar?
+      answer:  February
+      options: April / January / February / November
+      hints:   ["The the 12 months go from January (1st) to December (12th).", "Count to the 2th month.", "Answer: February"]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "Calendar", "interaction_mode": "read", "answer_collection": "mcq", "experience": "hint_gated"}
+      visual:  Calendar
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "Calendar", "element_count": 49, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["February 2025", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "Click a date to select it"], "distinct_colours": ["hsl(var(--primary)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 3dce563606ea50623a62  seed 1001  [read_mcq]
+      stem:    Look at the April 2025 calendar. What day of the week is April 28?
+      answer:  Monday
+      options: Thursday / Monday / Sunday / Wednesday
+      hints:   ["Use the calendar to find the answer.", "The how much time has passed is the number of days or weeks that have passed."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "Calendar", "interaction_mode": "read", "answer_collection": "mcq", "experience": "mastery_drill"}
+      visual:  Calendar
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "Calendar", "element_count": 47, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["April 2025", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "Click a date to select it"], "distinct_colours": ["hsl(var(--primary)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample afe56e94a787c16d5eaf  seed 1002  [read_mcq]
+      stem:    Look at the October 2025 calendar. What day of the week is October 14?
+      answer:  Tuesday
+      options: Saturday / Monday / Tuesday / Friday
+      hints:   ["Use the calendar to find the answer.", "The how much time has passed is the number of days or weeks that have passed."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "Calendar", "interaction_mode": "read", "answer_collection": "mcq", "experience": "scaffolded"}
+      visual:  Calendar
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "Calendar", "element_count": 49, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["October 2025", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "Click a date to select it"], "distinct_colours": ["hsl(var(--primary)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+

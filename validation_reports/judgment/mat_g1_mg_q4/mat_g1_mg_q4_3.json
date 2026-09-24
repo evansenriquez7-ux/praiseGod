@@ -1,7 +1,33 @@
 {
+  "schema_version": 2,
   "node_id": "mat_g1_mg_q4_3",
-  "reviewed_by": "reviewer-c1-lantern-fescue-3061",
-  "review_date": "2026-09-11",
+  "competency_snapshot": {
+    "text": "Determine the day and month of the year using a calendar.",
+    "grade": 1,
+    "quarter": 4,
+    "subdomain": null
+  },
+  "requirements_snapshot": [
+    {
+      "kind": "task",
+      "id": "determine",
+      "clause": "Determine"
+    },
+    {
+      "kind": "object",
+      "id": "day_and_month_of_the_year",
+      "clause": "day and month of the year"
+    },
+    {
+      "kind": "representation",
+      "id": "calendar",
+      "clause": "calendar"
+    }
+  ],
+  "packet_digest": "f688deb149b22be68db3e19a32ff22ac46187f964be22f08fc02c1fd0816de53",
+  "sampling_version": "phase2-stratified-v2-rendered-visual",
+  "reviewed_by": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_3-20260924",
+  "review_date": "2026-09-24",
   "blind": true,
   "sample_seeds": [
     42,
@@ -17,14 +43,61 @@
     604,
     605,
     606,
-    607
+    607,
+    700,
+    701,
+    702,
+    900,
+    901,
+    1000,
+    1001,
+    1002
+  ],
+  "sample_ids": [
+    "2d91df5c73725363b9da",
+    "317ff5d8fbdf11a0a40f",
+    "ab760f7aa5383f4f190e",
+    "93c82e59ae4b8f80277a",
+    "2a30475399bfe3d39c0a",
+    "e59a540e21d49be2dcd4",
+    "0402a41e90a7054269a4",
+    "66adee0a1c3f92e5b0bd",
+    "9bb6f346aaaf63fbe519",
+    "59875bab72c782dfaef9",
+    "362cba0e1a88b25e6d2a",
+    "5c8f92195927dd4d74e3",
+    "c105dd3a78f7ad5a7d1b",
+    "6cb4a9e0719b602e4acb",
+    "6c3815755a16d068ed06",
+    "c4aaf8a8946ada48f52b",
+    "4308afd76b77e62a25db",
+    "03f919ecb9b8c6ccb861",
+    "795b4bb20ffb861f3379",
+    "80ac06be6e7fe1990d41",
+    "3dce563606ea50623a62",
+    "afe56e94a787c16d5eaf"
   ],
   "samples_reviewed": [
     {
+      "node_id": "mat_g1_mg_q4_3",
       "seed": 42,
       "formatter": "read_mcq",
       "question_text": "Look at the February 2025 calendar. What day of the week is February 1?",
       "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "Calendar",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -46,13 +119,104 @@
           "value": "Thursday",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "Saturday",
+      "hints": [
+        "Use the calendar to find the answer.",
+        "The how much time has passed is the number of days or weeks that have passed."
+      ],
+      "visual_type": "Calendar",
+      "visual_payload": {
+        "month": 2,
+        "year": 2025,
+        "task_type": "select_date",
+        "show_day_names": true,
+        "question_date": 1
+      },
+      "visual_render": {
+        "visual_type": "Calendar",
+        "renderer_input_digest": "ed6118d2d29596225d2e176c3c7cc2ce34c71f5c1154cc7d57975034e54baa2f",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "Calendar",
+          "element_count": 49,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "February 2025",
+            "Sun",
+            "Mon",
+            "Tue",
+            "Wed",
+            "Thu",
+            "Fri",
+            "Sat",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "26",
+            "27",
+            "28",
+            "Click a date to select it"
+          ],
+          "distinct_colours": [
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "2d91df5c73725363b9da",
+      "replay_digest": "876d8f8e053ee67f445db861749b3ec4a8b2613ab2af2932d4490c7e0af1b74a"
     },
     {
+      "node_id": "mat_g1_mg_q4_3",
       "seed": 43,
       "formatter": "read_mcq",
       "question_text": "Look at the May 2025 calendar. What day of the week is May 23?",
       "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "Calendar",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -74,13 +238,109 @@
           "value": "Friday",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": "Friday",
+      "hints": [
+        "Use the calendar to find the answer.",
+        "The how much time has passed is the number of days or weeks that have passed."
+      ],
+      "visual_type": "Calendar",
+      "visual_payload": {
+        "month": 5,
+        "year": 2025,
+        "task_type": "select_date",
+        "show_day_names": true,
+        "highlighted_dates": [
+          23
+        ]
+      },
+      "visual_render": {
+        "visual_type": "Calendar",
+        "renderer_input_digest": "ffa83b834b95690165a525ec2d2c29a6a473cca008eeff2daff03dcb7ebd17e9",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "Calendar",
+          "element_count": 50,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "May 2025",
+            "Sun",
+            "Mon",
+            "Tue",
+            "Wed",
+            "Thu",
+            "Fri",
+            "Sat",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "26",
+            "27",
+            "28",
+            "29",
+            "30",
+            "31",
+            "Click a date to select it"
+          ],
+          "distinct_colours": [
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "317ff5d8fbdf11a0a40f",
+      "replay_digest": "d6989a35fb6699b720bf614621bb483a03802b310c5fca2e37eacef7fc394f8c"
     },
     {
+      "node_id": "mat_g1_mg_q4_3",
       "seed": 44,
       "formatter": "read_mcq",
       "question_text": "Look at the calendar page shown. What month of the year is shown on this calendar?",
       "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "Calendar",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -102,13 +362,109 @@
           "value": "December",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "September",
+      "hints": [
+        "The the 12 months go from January (1st) to December (12th).",
+        "Count to the 9th month.",
+        "Answer: September"
+      ],
+      "visual_type": "Calendar",
+      "visual_payload": {
+        "month": 9,
+        "year": 2025,
+        "task_type": "select_date",
+        "show_day_names": true,
+        "highlighted_dates": [
+          1
+        ]
+      },
+      "visual_render": {
+        "visual_type": "Calendar",
+        "renderer_input_digest": "089e6cc4564305e0fbdd20e1fa2187de02e101654471420207a0f4e3f07ea5fd",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "Calendar",
+          "element_count": 46,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "September 2025",
+            "Sun",
+            "Mon",
+            "Tue",
+            "Wed",
+            "Thu",
+            "Fri",
+            "Sat",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "26",
+            "27",
+            "28",
+            "29",
+            "30",
+            "Click a date to select it"
+          ],
+          "distinct_colours": [
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "ab760f7aa5383f4f190e",
+      "replay_digest": "059632932b852baea611b7636e63b4ff87b78abd1b81f0b0389a1a4a9062c01c"
     },
     {
+      "node_id": "mat_g1_mg_q4_3",
       "seed": 45,
       "formatter": "read_mcq",
       "question_text": "Look at the calendar page shown. What month of the year is shown on this calendar?",
       "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "Calendar",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -130,13 +486,110 @@
           "value": "August",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": "August",
+      "hints": [
+        "The the 12 months go from January (1st) to December (12th).",
+        "Count to the 8th month.",
+        "Answer: August"
+      ],
+      "visual_type": "Calendar",
+      "visual_payload": {
+        "month": 8,
+        "year": 2025,
+        "task_type": "select_date",
+        "show_day_names": true,
+        "highlighted_dates": [
+          1
+        ]
+      },
+      "visual_render": {
+        "visual_type": "Calendar",
+        "renderer_input_digest": "3ecfdd25e5ec47736df48eef03c018481498a580820663725e6ace687b1465f4",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "Calendar",
+          "element_count": 51,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "August 2025",
+            "Sun",
+            "Mon",
+            "Tue",
+            "Wed",
+            "Thu",
+            "Fri",
+            "Sat",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "26",
+            "27",
+            "28",
+            "29",
+            "30",
+            "31",
+            "Click a date to select it"
+          ],
+          "distinct_colours": [
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "93c82e59ae4b8f80277a",
+      "replay_digest": "1a33e683120d904f85e2bdae6241ac46022e2d0a92f927435c3b94a87d93aab0"
     },
     {
+      "node_id": "mat_g1_mg_q4_3",
       "seed": 46,
       "formatter": "read_mcq",
       "question_text": "Look at the July 2025 calendar. What day of the week is July 2?",
       "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "Calendar",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -158,13 +611,109 @@
           "value": "Sunday",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "Wednesday",
+      "hints": [
+        "Use the calendar to find the answer.",
+        "The how much time has passed is the number of days or weeks that have passed."
+      ],
+      "visual_type": "Calendar",
+      "visual_payload": {
+        "month": 7,
+        "year": 2025,
+        "task_type": "select_date",
+        "show_day_names": true,
+        "highlighted_dates": [
+          2
+        ]
+      },
+      "visual_render": {
+        "visual_type": "Calendar",
+        "renderer_input_digest": "065a686080340b463bbbea9d2f2aca0c8e746deda1c7b6769b768b329fb4b31d",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "Calendar",
+          "element_count": 48,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "July 2025",
+            "Sun",
+            "Mon",
+            "Tue",
+            "Wed",
+            "Thu",
+            "Fri",
+            "Sat",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "26",
+            "27",
+            "28",
+            "29",
+            "30",
+            "31",
+            "Click a date to select it"
+          ],
+          "distinct_colours": [
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "2a30475399bfe3d39c0a",
+      "replay_digest": "b6bf9204069972c24fa08b5252681ec0913f23884446430ae18e17b2b4f02247"
     },
     {
+      "node_id": "mat_g1_mg_q4_3",
       "seed": 500,
       "formatter": "read_mcq",
       "question_text": "Look at the calendar page shown. What month of the year is shown on this calendar?",
       "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": {},
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "Calendar",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -186,13 +735,110 @@
           "value": "October",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": "October",
+      "hints": [
+        "The the 12 months go from January (1st) to December (12th).",
+        "Count to the 10th month.",
+        "Answer: October"
+      ],
+      "visual_type": "Calendar",
+      "visual_payload": {
+        "month": 10,
+        "year": 2025,
+        "task_type": "select_date",
+        "show_day_names": true,
+        "highlighted_dates": [
+          1
+        ]
+      },
+      "visual_render": {
+        "visual_type": "Calendar",
+        "renderer_input_digest": "0453ed66860e7d42461593b066f130ba0d0e732a9e1ff120ab06d815e12b05c5",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "Calendar",
+          "element_count": 49,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "October 2025",
+            "Sun",
+            "Mon",
+            "Tue",
+            "Wed",
+            "Thu",
+            "Fri",
+            "Sat",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "26",
+            "27",
+            "28",
+            "29",
+            "30",
+            "31",
+            "Click a date to select it"
+          ],
+          "distinct_colours": [
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "e59a540e21d49be2dcd4",
+      "replay_digest": "4eb2c56d75f0ecc127b6f9d1795986befb4f2a11508184fee57c2a71121da334"
     },
     {
+      "node_id": "mat_g1_mg_q4_3",
       "seed": 501,
       "formatter": "read_mcq",
       "question_text": "Look at the May 2025 calendar. What day of the week is May 21?",
       "correct_answer": "C",
+      "requested": {
+        "difficulty_profile": {},
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "Calendar",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -214,13 +860,107 @@
           "value": "Friday",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "Wednesday",
+      "hints": [
+        "Use the calendar to find the answer.",
+        "The how much time has passed is the number of days or weeks that have passed."
+      ],
+      "visual_type": "Calendar",
+      "visual_payload": {
+        "month": 5,
+        "year": 2025,
+        "task_type": "select_date",
+        "show_day_names": true,
+        "question_date": 21
+      },
+      "visual_render": {
+        "visual_type": "Calendar",
+        "renderer_input_digest": "eb06a0113f48b7fbd0cab7622c2d5797c1de31009a383375d83d7620f913cb4a",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "Calendar",
+          "element_count": 50,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "May 2025",
+            "Sun",
+            "Mon",
+            "Tue",
+            "Wed",
+            "Thu",
+            "Fri",
+            "Sat",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "26",
+            "27",
+            "28",
+            "29",
+            "30",
+            "31",
+            "Click a date to select it"
+          ],
+          "distinct_colours": [
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "0402a41e90a7054269a4",
+      "replay_digest": "01894a12978d243a561d69b5a17bff563db8c047e183cbe7fba6afef59a96305"
     },
     {
+      "node_id": "mat_g1_mg_q4_3",
       "seed": 502,
       "formatter": "read_mcq",
       "question_text": "Look at the June 2025 calendar. What day of the week is June 6?",
       "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": {},
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "Calendar",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -242,13 +982,108 @@
           "value": "Monday",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "Friday",
+      "hints": [
+        "Use the calendar to find the answer.",
+        "The how much time has passed is the number of days or weeks that have passed."
+      ],
+      "visual_type": "Calendar",
+      "visual_payload": {
+        "month": 6,
+        "year": 2025,
+        "task_type": "select_date",
+        "show_day_names": true,
+        "question_date": 6
+      },
+      "visual_render": {
+        "visual_type": "Calendar",
+        "renderer_input_digest": "e88c002ada9c315c206ca88bad1ed389e701beaa1cbe39668d69674db61600a0",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "Calendar",
+          "element_count": 45,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "June 2025",
+            "Sun",
+            "Mon",
+            "Tue",
+            "Wed",
+            "Thu",
+            "Fri",
+            "Sat",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "26",
+            "27",
+            "28",
+            "29",
+            "30",
+            "Click a date to select it"
+          ],
+          "distinct_colours": [
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "66adee0a1c3f92e5b0bd",
+      "replay_digest": "f41b5876ef2bfedac680071a71a6f06ad4345dd6b86c7465051e3a7109183905"
     },
     {
+      "node_id": "mat_g1_mg_q4_3",
       "seed": 601,
       "formatter": "read_mcq",
       "question_text": "Look at the November 2025 calendar. What day of the week is November 19?",
       "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": {
+          "calendar_feature": "days"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "Calendar",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -270,13 +1105,110 @@
           "value": "Thursday",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "Wednesday",
+      "hints": [
+        "Use the calendar to find the answer.",
+        "The how much time has passed is the number of days or weeks that have passed."
+      ],
+      "visual_type": "Calendar",
+      "visual_payload": {
+        "month": 11,
+        "year": 2025,
+        "task_type": "select_date",
+        "show_day_names": true,
+        "highlighted_dates": [
+          19
+        ]
+      },
+      "visual_render": {
+        "visual_type": "Calendar",
+        "renderer_input_digest": "dc6c554754464c6119bc121a9e0d63279753df7f1cdd9dcaa49263b02bf710e1",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "Calendar",
+          "element_count": 51,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "November 2025",
+            "Sun",
+            "Mon",
+            "Tue",
+            "Wed",
+            "Thu",
+            "Fri",
+            "Sat",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "26",
+            "27",
+            "28",
+            "29",
+            "30",
+            "Click a date to select it"
+          ],
+          "distinct_colours": [
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "9bb6f346aaaf63fbe519",
+      "replay_digest": "f95cc75491abb3e82cddbbf7ebb4485029cf224c5764647af73d082195fb4770"
     },
     {
+      "node_id": "mat_g1_mg_q4_3",
       "seed": 603,
       "formatter": "read_mcq",
       "question_text": "Look at the September 2025 calendar. What day of the week is September 19?",
       "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": {
+          "calendar_feature": "full_calendar"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "Calendar",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -298,13 +1230,110 @@
           "value": "Sunday",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "Friday",
+      "hints": [
+        "Use the calendar to find the answer.",
+        "The how much time has passed is the number of days or weeks that have passed."
+      ],
+      "visual_type": "Calendar",
+      "visual_payload": {
+        "month": 9,
+        "year": 2025,
+        "task_type": "select_date",
+        "show_day_names": true,
+        "highlighted_dates": [
+          19
+        ]
+      },
+      "visual_render": {
+        "visual_type": "Calendar",
+        "renderer_input_digest": "1d150322f2399f533ad3b93ba5b78a7bac568e300e930a2f47534203c8514291",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "Calendar",
+          "element_count": 46,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "September 2025",
+            "Sun",
+            "Mon",
+            "Tue",
+            "Wed",
+            "Thu",
+            "Fri",
+            "Sat",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "26",
+            "27",
+            "28",
+            "29",
+            "30",
+            "Click a date to select it"
+          ],
+          "distinct_colours": [
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "59875bab72c782dfaef9",
+      "replay_digest": "41b3d37e86d7bfaecd2ca197f548cb8b56711fc45e159df4575010ba96669dc5"
     },
     {
+      "node_id": "mat_g1_mg_q4_3",
       "seed": 604,
       "formatter": "read_mcq",
       "question_text": "Look at the April 2025 calendar. What day of the week is April 30?",
       "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": {
+          "calendar_feature": "months"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "Calendar",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -326,13 +1355,110 @@
           "value": "Wednesday",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": "Wednesday",
+      "hints": [
+        "Use the calendar to find the answer.",
+        "The how much time has passed is the number of days or weeks that have passed."
+      ],
+      "visual_type": "Calendar",
+      "visual_payload": {
+        "month": 4,
+        "year": 2025,
+        "task_type": "select_date",
+        "show_day_names": true,
+        "highlighted_dates": [
+          30
+        ]
+      },
+      "visual_render": {
+        "visual_type": "Calendar",
+        "renderer_input_digest": "583f4a3cc5782000c6377e19da99dda8a30f62691ed556e3b77f9c34f5e5296c",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "Calendar",
+          "element_count": 47,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "April 2025",
+            "Sun",
+            "Mon",
+            "Tue",
+            "Wed",
+            "Thu",
+            "Fri",
+            "Sat",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "26",
+            "27",
+            "28",
+            "29",
+            "30",
+            "Click a date to select it"
+          ],
+          "distinct_colours": [
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "362cba0e1a88b25e6d2a",
+      "replay_digest": "f8484633ce6790bb63637391c6cc1cbee7dc50fbfc57544759232f31e1ec1ad5"
     },
     {
+      "node_id": "mat_g1_mg_q4_3",
       "seed": 605,
       "formatter": "read_mcq",
       "question_text": "Look at the October 2025 calendar. What day of the week is October 30?",
       "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": {
+          "calendar_feature": "months_order"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "Calendar",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -354,13 +1480,111 @@
           "value": "Thursday",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": "Thursday",
+      "hints": [
+        "Use the calendar to find the answer.",
+        "The how much time has passed is the number of days or weeks that have passed."
+      ],
+      "visual_type": "Calendar",
+      "visual_payload": {
+        "month": 10,
+        "year": 2025,
+        "task_type": "select_date",
+        "show_day_names": true,
+        "highlighted_dates": [
+          30
+        ]
+      },
+      "visual_render": {
+        "visual_type": "Calendar",
+        "renderer_input_digest": "908a1f833fbe72dd5cf68fd904f3810ffe50ef4c750a469b5ad6b4bdfe8810db",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "Calendar",
+          "element_count": 49,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "October 2025",
+            "Sun",
+            "Mon",
+            "Tue",
+            "Wed",
+            "Thu",
+            "Fri",
+            "Sat",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "26",
+            "27",
+            "28",
+            "29",
+            "30",
+            "31",
+            "Click a date to select it"
+          ],
+          "distinct_colours": [
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "5c8f92195927dd4d74e3",
+      "replay_digest": "ad0716e27b2a98145cbc3ffd60543959b8c3c102bbb33e872d2826ab64fdfe17"
     },
     {
+      "node_id": "mat_g1_mg_q4_3",
       "seed": 606,
       "formatter": "read_mcq",
       "question_text": "Look at the January 2025 calendar. What day of the week is January 12?",
       "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": {
+          "calendar_feature": "weeks"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "Calendar",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -382,13 +1606,109 @@
           "value": "Sunday",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": "Sunday",
+      "hints": [
+        "Use the calendar to find the answer.",
+        "The how much time has passed is the number of days or weeks that have passed."
+      ],
+      "visual_type": "Calendar",
+      "visual_payload": {
+        "month": 1,
+        "year": 2025,
+        "task_type": "select_date",
+        "show_day_names": true,
+        "question_date": 12
+      },
+      "visual_render": {
+        "visual_type": "Calendar",
+        "renderer_input_digest": "01a45ae5728a5c0ad9a4fff7d3d311164af263fcd3ff4bebdfea44e0fb90dd59",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "Calendar",
+          "element_count": 49,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "January 2025",
+            "Sun",
+            "Mon",
+            "Tue",
+            "Wed",
+            "Thu",
+            "Fri",
+            "Sat",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "26",
+            "27",
+            "28",
+            "29",
+            "30",
+            "31",
+            "Click a date to select it"
+          ],
+          "distinct_colours": [
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "c105dd3a78f7ad5a7d1b",
+      "replay_digest": "c0411c45ce220369a142f55c426bd5d9f7d21892d9258a3d864cb874a54ec2d4"
     },
     {
+      "node_id": "mat_g1_mg_q4_3",
       "seed": 607,
       "formatter": "read_mcq",
       "question_text": "Look at the February 2025 calendar. What day of the week is February 25?",
       "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": {
+          "task_type": "day_and_month_calendar"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "Calendar",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -410,34 +1730,1681 @@
           "value": "Saturday",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "Tuesday",
+      "hints": [
+        "Use the calendar to find the answer.",
+        "The how much time has passed is the number of days or weeks that have passed."
+      ],
+      "visual_type": "Calendar",
+      "visual_payload": {
+        "month": 2,
+        "year": 2025,
+        "task_type": "select_date",
+        "show_day_names": true,
+        "question_date": 25
+      },
+      "visual_render": {
+        "visual_type": "Calendar",
+        "renderer_input_digest": "f124593848c4a0c49b075d737eccd84e6cb063a26102883c57bc5316ec44d7bf",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "Calendar",
+          "element_count": 49,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "February 2025",
+            "Sun",
+            "Mon",
+            "Tue",
+            "Wed",
+            "Thu",
+            "Fri",
+            "Sat",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "26",
+            "27",
+            "28",
+            "Click a date to select it"
+          ],
+          "distinct_colours": [
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "6cb4a9e0719b602e4acb",
+      "replay_digest": "f93958da5e089641620761f72a5d33302358e2afb5be9951da18de7833a1c5ef"
+    },
+    {
+      "node_id": "mat_g1_mg_q4_3",
+      "seed": 700,
+      "formatter": "read_mcq",
+      "question_text": "Look at the April 2025 calendar. What day of the week is April 15?",
+      "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "Calendar",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "Tuesday",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "Monday",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "Saturday",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "Sunday",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "Tuesday",
+      "hints": [
+        "Use the calendar to find the answer.",
+        "The how much time has passed is the number of days or weeks that have passed."
+      ],
+      "visual_type": "Calendar",
+      "visual_payload": {
+        "month": 4,
+        "year": 2025,
+        "task_type": "select_date",
+        "show_day_names": true,
+        "highlighted_dates": [
+          15
+        ]
+      },
+      "visual_render": {
+        "visual_type": "Calendar",
+        "renderer_input_digest": "dae30170b868f3f7802839df1cc0773ae3756b7ccad5024d286a3de1d31e85df",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "Calendar",
+          "element_count": 47,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "April 2025",
+            "Sun",
+            "Mon",
+            "Tue",
+            "Wed",
+            "Thu",
+            "Fri",
+            "Sat",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "26",
+            "27",
+            "28",
+            "29",
+            "30",
+            "Click a date to select it"
+          ],
+          "distinct_colours": [
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "6c3815755a16d068ed06",
+      "replay_digest": "5cfc528f205d3883c18d3ec7b054b54de2d9ac03a8899511fa1987aaea12e8d8"
+    },
+    {
+      "node_id": "mat_g1_mg_q4_3",
+      "seed": 701,
+      "formatter": "read_mcq",
+      "question_text": "💃 Sir Rez has a math challenge about dance shoes. Look at the May 2025 calendar. What day of the week is May 16?",
+      "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "social_issues",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "Calendar",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "Saturday",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "Wednesday",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "Thursday",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "Friday",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": "Friday",
+      "hints": [
+        "Use the calendar to find the answer.",
+        "The how much time has passed is the number of days or weeks that have passed."
+      ],
+      "visual_type": "Calendar",
+      "visual_payload": {
+        "month": 5,
+        "year": 2025,
+        "task_type": "select_date",
+        "show_day_names": true,
+        "question_date": 16
+      },
+      "visual_render": {
+        "visual_type": "Calendar",
+        "renderer_input_digest": "185d6de0ad9e9281803a1dea54f71e1c7e28464a929055ce43f231f6b8a71471",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "Calendar",
+          "element_count": 50,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "May 2025",
+            "Sun",
+            "Mon",
+            "Tue",
+            "Wed",
+            "Thu",
+            "Fri",
+            "Sat",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "26",
+            "27",
+            "28",
+            "29",
+            "30",
+            "31",
+            "Click a date to select it"
+          ],
+          "distinct_colours": [
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "c4aaf8a8946ada48f52b",
+      "replay_digest": "288004626669db6b5d328f154c014f898a477914fb847827b4a9d2a60c80d1a4"
+    },
+    {
+      "node_id": "mat_g1_mg_q4_3",
+      "seed": 702,
+      "formatter": "read_mcq",
+      "question_text": "💃 Ate Gab has a math challenge about costumes. Look at the March 2025 calendar. What day of the week is March 1?",
+      "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "dance",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "Calendar",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "Saturday",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "Friday",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "Thursday",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "Sunday",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "Saturday",
+      "hints": [
+        "Use the calendar to find the answer.",
+        "The how much time has passed is the number of days or weeks that have passed."
+      ],
+      "visual_type": "Calendar",
+      "visual_payload": {
+        "month": 3,
+        "year": 2025,
+        "task_type": "select_date",
+        "show_day_names": true,
+        "highlighted_dates": [
+          1
+        ]
+      },
+      "visual_render": {
+        "visual_type": "Calendar",
+        "renderer_input_digest": "9d02ce451c58815a5947e4f9b18e89ebd73b5f2365b9e6e3e34227ef95dc847c",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "Calendar",
+          "element_count": 52,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "March 2025",
+            "Sun",
+            "Mon",
+            "Tue",
+            "Wed",
+            "Thu",
+            "Fri",
+            "Sat",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "26",
+            "27",
+            "28",
+            "29",
+            "30",
+            "31",
+            "Click a date to select it"
+          ],
+          "distinct_colours": [
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "4308afd76b77e62a25db",
+      "replay_digest": "ccf9193c54cab182e2cab572639bed457e75fcdc8687b2438c8f4adfc2180481"
+    },
+    {
+      "node_id": "mat_g1_mg_q4_3",
+      "seed": 900,
+      "formatter": "read_mcq",
+      "question_text": "Look at the April 2025 calendar. What day of the week is April 12?",
+      "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": {},
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "Calendar",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "Wednesday",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "Friday",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "Thursday",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "Saturday",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": "Saturday",
+      "hints": [
+        "Use the calendar to find the answer.",
+        "The how much time has passed is the number of days or weeks that have passed."
+      ],
+      "visual_type": "Calendar",
+      "visual_payload": {
+        "month": 4,
+        "year": 2025,
+        "task_type": "select_date",
+        "show_day_names": true,
+        "question_date": 12
+      },
+      "visual_render": {
+        "visual_type": "Calendar",
+        "renderer_input_digest": "d6fae7bbde969438d5d22c1f3a28427efca23a029db62ade1e389090ca6d10e1",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "Calendar",
+          "element_count": 47,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "April 2025",
+            "Sun",
+            "Mon",
+            "Tue",
+            "Wed",
+            "Thu",
+            "Fri",
+            "Sat",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "26",
+            "27",
+            "28",
+            "29",
+            "30",
+            "Click a date to select it"
+          ],
+          "distinct_colours": [
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "03f919ecb9b8c6ccb861",
+      "replay_digest": "e3e1fe0f1bad3e3dd899693bdbcf9c7674457db71b4c9e78d844a86f5c112d4c"
+    },
+    {
+      "node_id": "mat_g1_mg_q4_3",
+      "seed": 901,
+      "formatter": "read_mcq",
+      "question_text": "Look at the calendar page shown. What month of the year is shown on this calendar?",
+      "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": {},
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "Calendar",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "July",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "May",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "December",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "January",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "May",
+      "hints": [
+        "The the 12 months go from January (1st) to December (12th).",
+        "Count to the 5th month.",
+        "Answer: May"
+      ],
+      "visual_type": "Calendar",
+      "visual_payload": {
+        "month": 5,
+        "year": 2025,
+        "task_type": "select_date",
+        "show_day_names": true,
+        "highlighted_dates": [
+          1
+        ]
+      },
+      "visual_render": {
+        "visual_type": "Calendar",
+        "renderer_input_digest": "e01be0e68be26088b5739083e03ff29bb17798a38478e4387b9fca5af9ab7fe7",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "Calendar",
+          "element_count": 50,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "May 2025",
+            "Sun",
+            "Mon",
+            "Tue",
+            "Wed",
+            "Thu",
+            "Fri",
+            "Sat",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "26",
+            "27",
+            "28",
+            "29",
+            "30",
+            "31",
+            "Click a date to select it"
+          ],
+          "distinct_colours": [
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "795b4bb20ffb861f3379",
+      "replay_digest": "d0001ac38bab8391477498441410a014e5ba206b81e676d4c930bc2318995c43"
+    },
+    {
+      "node_id": "mat_g1_mg_q4_3",
+      "seed": 1000,
+      "formatter": "read_mcq",
+      "question_text": "Look at the calendar page shown. What month of the year is shown on this calendar?",
+      "correct_answer": "C",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "hint_gated"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "Calendar",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "hint_gated"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "April",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "January",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "February",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "November",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "February",
+      "hints": [
+        "The the 12 months go from January (1st) to December (12th).",
+        "Count to the 2th month.",
+        "Answer: February"
+      ],
+      "visual_type": "Calendar",
+      "visual_payload": {
+        "month": 2,
+        "year": 2025,
+        "task_type": "select_date",
+        "show_day_names": true,
+        "highlighted_dates": [
+          1
+        ]
+      },
+      "visual_render": {
+        "visual_type": "Calendar",
+        "renderer_input_digest": "a21d58bc75e679f0165dd5553be8d39f11fca66f4aa6d39a2fb39b631aad55d5",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "Calendar",
+          "element_count": 49,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "February 2025",
+            "Sun",
+            "Mon",
+            "Tue",
+            "Wed",
+            "Thu",
+            "Fri",
+            "Sat",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "26",
+            "27",
+            "28",
+            "Click a date to select it"
+          ],
+          "distinct_colours": [
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "80ac06be6e7fe1990d41",
+      "replay_digest": "515a4b133ad7295586bfd7bdeff7fff50064fce6578dcb1a46335711b913691b"
+    },
+    {
+      "node_id": "mat_g1_mg_q4_3",
+      "seed": 1001,
+      "formatter": "read_mcq",
+      "question_text": "Look at the April 2025 calendar. What day of the week is April 28?",
+      "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "mastery_drill"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "Calendar",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "mastery_drill"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "Thursday",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "Monday",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "Sunday",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "Wednesday",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "Monday",
+      "hints": [
+        "Use the calendar to find the answer.",
+        "The how much time has passed is the number of days or weeks that have passed."
+      ],
+      "visual_type": "Calendar",
+      "visual_payload": {
+        "month": 4,
+        "year": 2025,
+        "task_type": "select_date",
+        "show_day_names": true,
+        "highlighted_dates": [
+          28
+        ]
+      },
+      "visual_render": {
+        "visual_type": "Calendar",
+        "renderer_input_digest": "9fe7eaa46946cc5b49ecda351ef8f17edc35f2fa7e63597fc53a6dd8d7bf88b6",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "Calendar",
+          "element_count": 47,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "April 2025",
+            "Sun",
+            "Mon",
+            "Tue",
+            "Wed",
+            "Thu",
+            "Fri",
+            "Sat",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "26",
+            "27",
+            "28",
+            "29",
+            "30",
+            "Click a date to select it"
+          ],
+          "distinct_colours": [
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "3dce563606ea50623a62",
+      "replay_digest": "5e497fc9df69c04359d12f156b91b6f6aeb7f57ca8d1787c46f19a6cd6857ffa"
+    },
+    {
+      "node_id": "mat_g1_mg_q4_3",
+      "seed": 1002,
+      "formatter": "read_mcq",
+      "question_text": "Look at the October 2025 calendar. What day of the week is October 14?",
+      "correct_answer": "C",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "scaffolded"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "Calendar",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "scaffolded"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "Saturday",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "Monday",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "Tuesday",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "Friday",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "Tuesday",
+      "hints": [
+        "Use the calendar to find the answer.",
+        "The how much time has passed is the number of days or weeks that have passed."
+      ],
+      "visual_type": "Calendar",
+      "visual_payload": {
+        "month": 10,
+        "year": 2025,
+        "task_type": "select_date",
+        "show_day_names": true,
+        "question_date": 14
+      },
+      "visual_render": {
+        "visual_type": "Calendar",
+        "renderer_input_digest": "4929621252b6f872222d4433665ad02327a9da14946942fb715f13430e73746d",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "Calendar",
+          "element_count": 49,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "October 2025",
+            "Sun",
+            "Mon",
+            "Tue",
+            "Wed",
+            "Thu",
+            "Fri",
+            "Sat",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "26",
+            "27",
+            "28",
+            "29",
+            "30",
+            "31",
+            "Click a date to select it"
+          ],
+          "distinct_colours": [
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "afe56e94a787c16d5eaf",
+      "replay_digest": "41a7712d5112c93f1ebe6871a22b2bbbed84c3ff34095b50b1a4a9d7db563b12"
+    }
+  ],
+  "sample_assessments": [
+    {
+      "sample_id": "2d91df5c73725363b9da",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem names February 2025 and February 1, while the weekday options contain one correct choice and three distinct distractors."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The requested weekday is directly obtainable from the displayed February 2025 calendar, so the question has a coherent and sufficient context."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The main question is clear, but the hint sentence about how much time has passed is unrelated and grammatically confusing for a young learner."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "February 1, 2025 is a Saturday, which matches the supplied answer and the calendar arrangement shown in the labels."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_3-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_3-20260924:mat_g1_mg_q4_3"
+    },
+    {
+      "sample_id": "317ff5d8fbdf11a0a40f",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "May 23 is explicitly identified within a named 2025 calendar, and only Friday is a valid weekday answer among the options."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A learner can answer by locating May 23 on the supplied calendar; no unstated information or extra interpretation is required."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The stem is understandable, but the repeated hint about elapsed time does not fit this task and may distract or confuse Grade 1 readers."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "May 23, 2025 falls on Friday, agreeing with the answer and the weekday columns printed in the visual description."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_3-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_3-20260924:mat_g1_mg_q4_3"
+    },
+    {
+      "sample_id": "ab760f7aa5383f4f190e",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The calendar header identifies September 2025 and the answer choices contain one matching month, making the intended response unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The task logically asks the learner to read the month displayed on the calendar, and the visual labels supply that information."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The question is simple, but the hint begins with duplicated wording, making the supporting language less polished and less clear than the stem."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "September is the month printed in the calendar heading and is correctly included as the answer choice."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_3-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_3-20260924:mat_g1_mg_q4_3"
+    },
+    {
+      "sample_id": "93c82e59ae4b8f80277a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The visual heading says August 2025 and the options provide a single August choice, so the requested month is clear."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Reading the displayed calendar heading is sufficient to answer the question, with no contextual contradiction or missing datum."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The stem is accessible, but the hint contains duplicated wording and a bare ordinal phrase that is awkward for Grade 1 learners."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The displayed calendar is labeled August 2025, so August is the mathematically and calendrically correct answer."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_3-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_3-20260924:mat_g1_mg_q4_3"
+    },
+    {
+      "sample_id": "2a30475399bfe3d39c0a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem specifies July 2025 and date 2, and the weekday options contain one matching answer without overlapping interpretations."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The learner can locate July 2 in the shown calendar and read its weekday directly, so the scenario is complete."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The core instruction is clear, while the elapsed-time hint is grammatically malformed and does not support this calendar-reading question."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "July 2, 2025 is Wednesday, matching the stated answer and the Wednesday column in the calendar labels."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_3-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_3-20260924:mat_g1_mg_q4_3"
+    },
+    {
+      "sample_id": "e59a540e21d49be2dcd4",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "October 2025 is visible in the calendar heading, and exactly one option names October."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The question asks only for the displayed month, which is directly available in the supplied calendar visual."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The stem is readable, but the associated hint repeats an article and uses an unrelated elapsed-time sentence."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The calendar heading identifies October 2025, and October is correctly marked as the answer."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_3-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_3-20260924:mat_g1_mg_q4_3"
+    },
+    {
+      "sample_id": "0402a41e90a7054269a4",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "May 21 and the year 2025 are specified, and the four weekday choices make the intended calendar lookup definite."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The displayed May calendar supplies all information needed to locate the date and determine its weekday."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The prompt itself is concise, but the repeated hint about elapsed time is confusing and not relevant to finding a weekday."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "May 21, 2025 is Wednesday, which agrees with the answer and the printed weekday arrangement."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_3-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_3-20260924:mat_g1_mg_q4_3"
+    },
+    {
+      "sample_id": "66adee0a1c3f92e5b0bd",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "June 6, 2025 is precisely identified and Friday is the only option matching the displayed calendar."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The question is a complete direct lookup from the June 2025 calendar and does not depend on hidden assumptions."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The main wording is suitable, but the hint about how much time has passed is awkward and unrelated to the requested weekday."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "June 6, 2025 falls on Friday, so the supplied answer is consistent with the calendar."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_3-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_3-20260924:mat_g1_mg_q4_3"
+    },
+    {
+      "sample_id": "9bb6f346aaaf63fbe519",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The month, year, and date are stated explicitly, and Wednesday appears as one unique correct option."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "November 19 can be located on the rendered 2025 calendar, giving enough context for a direct weekday reading."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The stem is easy to follow, though the generic elapsed-time hint introduces confusing language unrelated to this exact task."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "November 19, 2025 is Wednesday, agreeing with the stated answer and calendar columns."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_3-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_3-20260924:mat_g1_mg_q4_3"
+    },
+    {
+      "sample_id": "59875bab72c782dfaef9",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "September 19 is tied to a clearly named 2025 calendar, and Friday is the sole matching weekday option."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The calendar visual contains the named date and weekday headers needed for a self-contained lookup."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The question is understandable, but its supporting hint uses a confusing sentence about elapsed time rather than guiding calendar reading."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "September 19, 2025 is Friday, matching the answer and the structure of the September calendar."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_3-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_3-20260924:mat_g1_mg_q4_3"
+    },
+    {
+      "sample_id": "362cba0e1a88b25e6d2a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "April 30, 2025 is a single specified date and Wednesday is one distinct answer among the weekday choices."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The learner only needs to find April 30 in the supplied calendar and read the corresponding weekday column."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The stem is direct, but the repeated elapsed-time hint is poorly phrased and may distract from the simple lookup."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "April 30, 2025 is Wednesday, which agrees with the answer and the calendar's weekday headings."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_3-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_3-20260924:mat_g1_mg_q4_3"
+    },
+    {
+      "sample_id": "5c8f92195927dd4d74e3",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "October 30, 2025 is unambiguously named, and Thursday is the only matching weekday option."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "All information required to answer is present in the October calendar, so the lookup context is logically complete."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The direct question is clear, while the accompanying generic hint is grammatically awkward and not tailored to this task."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "October 30, 2025 falls on Thursday, matching the provided answer and weekday layout."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_3-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_3-20260924:mat_g1_mg_q4_3"
+    },
+    {
+      "sample_id": "c105dd3a78f7ad5a7d1b",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "January 12, 2025 is explicitly specified, and Sunday is the only answer choice consistent with the calendar."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The displayed January calendar gives a sufficient and coherent basis for locating January 12 and reading its weekday."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The stem uses familiar wording, but the unrelated elapsed-time hint remains confusing for a learner following the task."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "January 12, 2025 is Sunday, which matches the answer and the printed January calendar arrangement."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_3-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_3-20260924:mat_g1_mg_q4_3"
+    },
+    {
+      "sample_id": "6cb4a9e0719b602e4acb",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "February 25, 2025 is a definite target date and Tuesday is uniquely selected among the options."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The February calendar visibly contains the target date and weekday headings, making the lookup self-contained."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The instruction is understandable, but the generic hint about elapsed time is grammatically confusing and unnecessary."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "February 25, 2025 is Tuesday, consistent with the stated answer and the calendar labels."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_3-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_3-20260924:mat_g1_mg_q4_3"
+    },
+    {
+      "sample_id": "6c3815755a16d068ed06",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "April 15, 2025 and the four possible weekdays are clearly stated, with one correct option."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A direct scan of the April calendar provides the needed weekday without requiring any unstated information."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The question is age-appropriate, though the repeated elapsed-time hint does not explain how to read the calendar."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "April 15, 2025 is Tuesday, matching the answer and the weekday ordering shown."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_3-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_3-20260924:mat_g1_mg_q4_3"
+    },
+    {
+      "sample_id": "c4aaf8a8946ada48f52b",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The added dance-shoes context does not alter the explicit May 16 calendar question, which has one matching option."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The story framing is logically harmless and the May 2025 calendar contains all information needed to answer."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The stem remains understandable, but the decorative context and generic elapsed-time hint add language without helping the calendar lookup."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "May 16, 2025 is Friday, matching the supplied answer and the calendar's weekday columns."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_3-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_3-20260924:mat_g1_mg_q4_3"
+    },
+    {
+      "sample_id": "4308afd76b77e62a25db",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The costume context is incidental; March 1, 2025 is explicit and Saturday is the unique correct choice."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The question is self-contained because the rendered March calendar provides the target date and weekday headings."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The central request is clear, but the added story wording and unrelated elapsed-time hint are not especially economical for Grade 1."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "March 1, 2025 is Saturday, agreeing with the answer and the calendar arrangement shown."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_3-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_3-20260924:mat_g1_mg_q4_3"
+    },
+    {
+      "sample_id": "03f919ecb9b8c6ccb861",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "April 12, 2025 is an explicit target and Saturday is the only matching weekday in the option list."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The learner can answer by locating the specified date on the supplied April calendar, with no missing context."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The stem is concise and readable, but the repeated hint about elapsed time is confusing and irrelevant to the lookup."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "April 12, 2025 falls on Saturday, matching the stated answer and the printed weekday headings."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_3-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_3-20260924:mat_g1_mg_q4_3"
+    },
+    {
+      "sample_id": "795b4bb20ffb861f3379",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The calendar header identifies May 2025 and the options include only one May choice, so the task is definite."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Reading the month name in the displayed calendar is sufficient to answer the question without additional assumptions."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The question is clear, but its hint repeats awkward wording and gives an ordinal cue in a less polished form."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "May is the month printed in the calendar heading and is correctly marked as the answer."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_3-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_3-20260924:mat_g1_mg_q4_3"
+    },
+    {
+      "sample_id": "80ac06be6e7fe1990d41",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The February 2025 heading and the answer options make the requested displayed month unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The learner can read the month directly from the shown calendar, and the response mode does not introduce a logical issue."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The stem is simple, but the hint says “2th month,” which is nonstandard and could confuse a young learner despite the answer cue."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The visual is labeled February 2025, so February is the correct month and answer choice."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_3-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_3-20260924:mat_g1_mg_q4_3"
+    },
+    {
+      "sample_id": "3dce563606ea50623a62",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "April 28, 2025 is clearly specified and Monday is the sole option matching the calendar."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The rendered April calendar supplies a complete direct-reading context for determining the weekday of April 28."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The mastery-drill stem is readable, but the generic elapsed-time hint is grammatically awkward and does not guide this task."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "April 28, 2025 is Monday, consistent with the answer and the calendar's weekday columns."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_3-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_3-20260924:mat_g1_mg_q4_3"
+    },
+    {
+      "sample_id": "afe56e94a787c16d5eaf",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "October 14, 2025 is explicitly named and Tuesday is the only option that matches the displayed calendar."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The October calendar contains all information needed for a straightforward weekday lookup, with no contextual gap."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The question itself is clear, though the repeated hint about elapsed time is not relevant and uses awkward phrasing."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "October 14, 2025 falls on Tuesday, matching the provided answer and the calendar layout."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_3-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_3-20260924:mat_g1_mg_q4_3"
+    }
+  ],
+  "clause_evidence": [
+    {
+      "requirement_id": "determine",
+      "clause": "Determine",
+      "verdict": "PASS",
+      "reasoning": "The samples require learners to determine an answer from calendar evidence rather than merely recognize a previously stated response.",
+      "sample_ids": [
+        "2d91df5c73725363b9da",
+        "ab760f7aa5383f4f190e",
+        "3dce563606ea50623a62"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_3-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_3-20260924:mat_g1_mg_q4_3"
+    },
+    {
+      "requirement_id": "day_and_month_of_the_year",
+      "clause": "day and month of the year",
+      "verdict": "PASS",
+      "reasoning": "Weekday questions and month-identification questions together exercise both parts of the printed day-and-month content requirement.",
+      "sample_ids": [
+        "317ff5d8fbdf11a0a40f",
+        "93c82e59ae4b8f80277a",
+        "6cb4a9e0719b602e4acb",
+        "80ac06be6e7fe1990d41"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_3-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_3-20260924:mat_g1_mg_q4_3"
+    },
+    {
+      "requirement_id": "calendar",
+      "clause": "calendar",
+      "verdict": "PASS",
+      "reasoning": "Every cited sample presents a named calendar visual with month, weekday headings, and date labels as the source of the answer.",
+      "sample_ids": [
+        "2a30475399bfe3d39c0a",
+        "e59a540e21d49be2dcd4",
+        "362cba0e1a88b25e6d2a"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_3-20260924",
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_3-20260924:mat_g1_mg_q4_3"
+    }
+  ],
+  "dispatch_provenance": [
+    {
+      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_3-20260924:mat_g1_mg_q4_3",
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_3-20260924",
+      "review_date": "2026-09-24",
+      "blind": true,
+      "packet_digest": "f688deb149b22be68db3e19a32ff22ac46187f964be22f08fc02c1fd0816de53",
+      "clause_ids": [
+        "determine",
+        "day_and_month_of_the_year",
+        "calendar"
+      ],
+      "response_ref": ".responses/s5-luna-medium-w5-mat_g1_mg_q4_3-20260924.json",
+      "response_digest": "1ad30bb8864979644545c0f3a24ac11cb1922536430bd593b45a02b0cc228667",
+      "prompt_ref": ".responses/s5-luna-medium-w5-mat_g1_mg_q4_3-20260924.prompt.txt",
+      "prompt_digest": "7c95828da647fd19c84aee036f62cc3442a836d6c5eddfd23704c9559f58dceb",
+      "samples_delivery": "Prompt generated by tests.judgment_batches for one node and delivered by path to multi_agent_v1.spawn_agent using model gpt-5.6-luna with reasoning_effort=medium.",
+      "tool_uses_by_reviewer": "Reviewer was a tool-bearing multi_agent_v1 subagent instructed to read only its prompt file and write its verdicts JSON; it reported the output path and no other tool use to the dispatcher."
     }
   ],
   "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "Both nouns of the competency are addressed against an actual calendar page: the day of the week for a given date, and the identification of which month the displayed page belongs to. Nothing is answerable without consulting the calendar shown."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "Dates sampled sit early, mid and late in the month - the 1st, the 2nd, the 6th, the 12th, the 19th, the 21st, the 23rd, the 25th and the 30th - so the pupil must track across several week rows rather than only reading the top line, and the month-identification case gets its own seeds."
-    },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Locating a numeral in a grid and reading up to its column heading is a visual-scan task with no arithmetic, well matched to Quarter 4 of Grade 1, and each stem is one sentence after the instruction to look at the calendar."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "Two genuinely different questions are asked of the same artefact - find the weekday of a date, and name the month of an unlabelled page - and the calendar pages themselves rotate through most of the year rather than reusing one month."
+      "rationale": "The tasks ask Grade 1 learners to read a clearly named month, locate a date, and identify its weekday, without requiring calculations or excessive reasoning."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Later seeds move the target date deeper into the month, which is the real difficulty axis for calendar reading, and the month-naming items require reading the page layout rather than a caption; both build this competency directly."
+      "rationale": "Every stem directly asks the learner to use a calendar to identify either the month shown or the weekday for a specified date."
+    },
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The packet addresses both identifying months and determining weekdays from dates, matching the stated calendar competency across many calendar instances.",
+      "decomposition": {
+        "verdict": "PASS",
+        "reasoning": "The printed requirements separately name the action, the day and month content, and the calendar tool; together they cover the competency without adding a different mathematical demand.",
+        "requirement_ids": [
+          "determine",
+          "day_and_month_of_the_year",
+          "calendar"
+        ]
+      },
+      "clause_ids": [
+        "determine",
+        "day_and_month_of_the_year",
+        "calendar"
+      ]
+    },
+    "comprehensive_coverage": {
+      "verdict": "CONCERN",
+      "rationale": "The samples provide broad weekday and month reading practice, but the month-identification items do not include December and the set does not combine month and weekday in one response.",
+      "clause_ids": [
+        "determine",
+        "day_and_month_of_the_year",
+        "calendar"
+      ]
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "All dates fall within the true length of the month named and I verified the weekday keys against the 2025 calendar - February 1 as Saturday, May 23 as Friday, July 2 as Wednesday, November 19 as Wednesday, April 30 as Wednesday and January 12 as Sunday are each correct, so the underlying calendar data is sound."
+      "rationale": "The calendar dates and weekday labels remain within a readable Grade 1 context, and the questions require direct visual reading rather than later-grade date arithmetic."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "Dates and months vary substantially, but all items use the same read-only multiple-choice format and do not demonstrate other reasonable calendar response modes."
     }
   },
-  "overall": "PASS"
+  "overall": "CONCERN"
 }
