@@ -1,0 +1,48 @@
+{
+ "asserts": [
+  "property_statement_key_matches_truth"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "test_a_property_statement_keyed_false_is_false && failed"
+ ],
+ "command": [
+  "pytest",
+  "tests/unit/test_hint_contract.py::test_a_property_statement_keyed_false_is_false",
+  "-q"
+ ],
+ "definition_digest": "415fbee562fe55624bd7adb2e7578c67a06ffa05604fdcf0a0341479b3fc3828",
+ "detected": true,
+ "diagnostic_line": "exit 1 — =================================== FAILURES ===================================",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "test_a_property_statement_keyed_false_is_false",
+  "failed",
+  "keyed False"
+ ],
+ "expected_check": "§0 hint contract (property_statement_key_matches_truth)",
+ "finished_at": "2026-09-25T18:07:54+08:00",
+ "input_digest": "35171c2cf3c5c288b2d3d40a60587762b164610569e98a0d838ab7ce64c0ef3d",
+ "mutated_paths": [
+  "backend/app/practice_gen/dna/na/multiplication.py"
+ ],
+ "mutation": "property_false_statement_can_be_true",
+ "observed_markers": {
+  "failed": true,
+  "keyed False": true,
+  "test_a_property_statement_keyed_false_is_false": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-09-25T18:07:52+08:00"
+}

@@ -1,18 +1,18 @@
 {
  "asserts": [
-  "fraction_hint_self_consistency"
+  "hint_contract_stated_result"
  ],
  "baseline_exit": 0,
  "baseline_markers_already_present": [],
  "baseline_must_not_contain": [
-  "test_no_fraction_hint_chain_contradicts_its_own_answer && failed"
+  "test_no_served_hint_contradicts_its_item[mat_g3_na_q4_7] && failed"
  ],
  "command": [
   "pytest",
-  "tests/unit/test_fraction_hint_consistency.py",
+  "tests/unit/test_hint_contract.py::test_no_served_hint_contradicts_its_item[mat_g3_na_q4_7]",
   "-q"
  ],
- "definition_digest": "0bf8b1515cd362c745a1a139c958d0b22e07176f9a1dee176c1c52e063937b26",
+ "definition_digest": "0639f906e60012f1c046a24b5c3ae9a62ed7c28446b8601c0124dd6a339ba5bc",
  "detected": true,
  "diagnostic_line": "exit 1 — =================================== FAILURES ===================================",
  "environment": {
@@ -23,24 +23,26 @@
   "system": "Darwin"
  },
  "expect_output_contains": [
-  "test_no_fraction_hint_chain_contradicts_its_own_answer",
-  "failed"
+  "test_no_served_hint_contradicts_its_item[mat_g3_na_q4_7]",
+  "failed",
+  "[stated_result]"
  ],
- "expected_check": "§0 (a hint chain may not deny its own final answer)",
- "finished_at": "2026-09-24T22:40:44+08:00",
- "input_digest": "208a52406226e6d0dea44c64aa52ee03b9c984daf05c90763a1f9322fb171e8f",
+ "expected_check": "§0 hint contract (hint_contract_stated_result)",
+ "finished_at": "2026-09-25T18:07:06+08:00",
+ "input_digest": "35171c2cf3c5c288b2d3d40a60587762b164610569e98a0d838ab7ce64c0ef3d",
  "mutated_paths": [
   "backend/app/practice_gen/dna/na/fractions.py"
  ],
  "mutation": "fraction_hints_ignore_subtraction",
  "observed_markers": {
+  "[stated_result]": true,
   "failed": true,
-  "test_no_fraction_hint_chain_contradicts_its_own_answer": true
+  "test_no_served_hint_contradicts_its_item[mat_g3_na_q4_7]": true
  },
  "paths_outside_input_set": [],
  "phase1_admissible": true,
  "planted_exit": 1,
  "restored_clean": true,
  "schema_version": 1,
- "started_at": "2026-09-24T22:40:06+08:00"
+ "started_at": "2026-09-25T18:07:04+08:00"
 }

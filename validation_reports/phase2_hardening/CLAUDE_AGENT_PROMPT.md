@@ -1,9 +1,9 @@
-# Task prompt — Phase 2 hardening, PHASE A: fix the hint contract (fresh Claude Code session)
+# Task prompt — Phase 2 hardening, PHASE B: re-review what the hint contract staled (fresh Claude Code session)
 
-**Written 2026-09-25. This REPLACES every previous version of this file and its banners.** Every figure
-below was executed on 2026-09-25 at digest `208a52406226e6d0`. If you refresh this file, **rewrite the
-state section rather than stacking a banner** — a sibling prompt reached eight banners contradicting its
-own body before it was rewritten.
+**Rewritten 2026-09-25 after Phase A landed. This REPLACES every previous version of this file and its
+banners.** Every figure below was executed on 2026-09-25 at digest `35171c2cf3c5c288` (HEAD `72d0891b` or
+later). If you refresh this file, **rewrite the state section rather than stacking a banner** — a sibling
+prompt reached eight banners contradicting its own body before it was rewritten.
 
 You are working in `/Users/enrichmentcap/Documents/antigravity/ccmed` on the Adaptive K-12 Mastery
 Engine's practice-problem-generator hardening. Your job is to move `run_all` toward exiting 0.
@@ -74,162 +74,64 @@ host. The fast unit suite takes ~12 minutes; pass `-m "not slow"` explicitly.
 
 ---
 
-## 2. State, and WHY THE ORDER OF WORK IS FIX-THEN-REVIEW
+## 2. State
 
 ```
-$ PYTHONPATH=. .venv/bin/python tests/tree_state.py
-PASS tree_state: CERTIFIED
-  live input digest : 208a52406226e6d0
-  worktree          : clean
-  mutation_proofs         fresh  163 file(s)
-  release_shards          fresh  6 file(s)
-  obligation_benchmark    fresh  1 file(s)
-  frontend_static_render  fresh  1 file(s)
-
-$ PYTHONPATH=. .venv/bin/python tests/hardening_status.py
-PASS hardening_status: 10 H-row(s) valid — 3 closed, 6 open, 1 out_of_scope
-```
-
-HEAD is at or after `f642f3a9`; `H-06`'s owner line reads `released @ 724dd91b` and is **unclaimed**.
-Disk ~16 GiB free. **If a command disagrees with this file, believe the command** and say so.
-
-```
-$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.run_all   # 2026-09-25
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.run_all      # 2026-09-25, 72d0891b
   RUN_ALL EXIT CODE: 1
   scheduled=17 completed=14 failed=3 crashed=0 not_run=0 incomplete=0
-  FAIL judgment_reviews      (§5)  — 2016 at the module / expect 2017 at run_all
-  FAIL capability_contract   (§6F) — 173 CONTRADICTED across 82 of 151 nodes
-  FAIL assertion_coverage_8        — 3 in 1 family; mutation_proof_integrity_8 9 in 3 families
+  FAIL judgment_reviews_5   (§5)  — 2050 at the module / 2051 at run_all   (was 2016 / 2017)
+  FAIL capability_phase2    (§6F) — 180: 173 CONTRADICTED (unchanged) + 7 STALE attestations
+  FAIL assertion_coverage_8       — 3 in 1 family; mutation_proof_integrity_8 9 in 3 families
 ```
 
-Review corpus: **60 schema-v2 reviews**, verdicts **30 FAIL / 22 CONCERN / 8 PASS**. Legacy queue:
-**91 v1 nodes owed** (91 + 60 = 151).
+Chain re-proved at `72d0891b`: fast suite 983 passed; corpus 181/184 (only the §6F cluster); six shards
+rc=0, verify-release complete; benchmark failures=0; frontend 41/41; validate_matrix 151/151. **If a command
+disagrees with this file, believe the command.** Run `tests/tree_state.py` and `tests/hardening_status.py`
+first; the last session left the tree CERTIFIED with H-06 released — confirm both by execution.
 
-### The measurement that sets the priority
+**§5 rose 2016 → 2050 because the fix worked:** 27 v2 reviews went STALE by packet digest (their hints
+changed). Their old sample findings keep counting until they are re-reviewed. Legacy queue: 91 v1 nodes
+owed. v2 corpus: 60 reviews (25 gpt-5.6-luna, 19 gpt-6-luna, 16 haiku45), 27 of them now stale.
 
-All 2,016 §5 findings, classified by **what actually clears them**:
+## 3. PHASE A — DONE (2026-09-25). Do not redo it; know what it gives you.
 
-```
-1002  49.7%  sample-level check failure   -> clears by FIXING CONTENT
- 523  25.9%  node-level finding           -> clears by FIXING CONTENT
-  62   3.1%  clause FAIL                  -> clears by FIXING CONTENT
- 277  13.7%  v1 unadjudicable             -> clears by REVIEWING
- 129   6.4%  STALE v1                     -> clears by reviewing
-  19   0.9%  quote provenance             -> reviewer quality
-```
+Commits `704febfd` + `72d0891b`; full account in `validation_reports/HARDENING_EVIDENCE.md`, "PHASE A: the
+hint contract". In one paragraph: `backend/app/practice_gen/hint_contract.py::hint_chain_violations` is the
+ONE statement of "a hint chain explains the item it serves"; `adapter.apply_formatter` enforces it on every
+served problem, and `tests/unit/test_hint_contract.py` gates all 151 nodes. Eight dimensions (arithmetic,
+stated_result, stated_answer, open_equation, direction, unit, medium, response), each with a mutation and a
+neuter proof. A hint builder that raises now fails the item (`HintGenerationError`) instead of shipping it
+hintless. **Consequence for you:** a content fix that makes a hint contradict its item now raises at
+serving time and in validate_matrix — read the `[dimension]` in the message; do not weaken the contract.
+Its named blind spots are in its docstring and the `docs/pgen_contract.md` row.
 
-**78.7% of §5 needs content fixed, not nodes reviewed.** Reviewing a node does not reduce §5 — it
-CONVERTS one unadjudicable finding into several real content findings, measured at roughly 4:1. That is
-the gate working as designed, but it means **§5 reaches 0 only when the content is fixed so reviewers
-return PASS.** §5 rose 1236 → 2016 over the campaign. **Do not report a rise as a regression.**
+**Established and NOT fixed** (evidence log has details): §1G has no ClockSet invariant, so read-mode p.m.
+clocks render "AM" (payload `hours` 1–12 with no period; `VisualSkeletons.jsx:675`). Owes a §1G clock
+invariant + mutation + payload/renderer fix — a source batch, so it costs a chain; batch it with Phase D
+content work rather than paying for it alone.
 
-### And reviewing before the hint fix pays for the same work twice
+## 4. PHASE B — START HERE: re-review the 27 staled nodes, and MEASURE Luna-vs-Haiku agreement
 
-Hints are **bound into the canonical learner-visible packet digest**. From
-`validate_judgment.py`'s own STALE message: *"Stem, resolved answer, ordered options, hints, cloze,
-visual payload/rendered structure, response configuration, replay inputs, and effective choices are
-bound."*
-
-So **the moment `generate_hints` changes, every filed review whose hints change goes STALE and owes a
-re-review.** Sixty reviews are filed. Every additional review filed before Phase A is work Phase A
-destroys. **That is why Phase A comes first and the 91-node queue waits.**
-
----
-
-## 3. PHASE A — the `generate_hints` contract. Authorised. Start here.
-
-### The defect, confirmed across three rater families and verified against rendered packets
-
-`generate_params` knows the item's parameters and `generate_hints` does not. **Six manifestations:**
-
-| node | the hints ignore | measured |
-|---|---|---|
-| `mat_g3_na_q4_7` *(FIXED `ab70698a`)* | the operation | add hints on a subtract item, 11 of 19 |
-| `mat_g1_na_q2_0` | the sort direction | **17 of 17** descending items get ascending hints |
-| `mat_g1_na_q2_3` | the response variant | blocks-setting item told to write the decomposed form, 6 |
-| `mat_g2_mg_q2_0` | the unit **and** the direction | 7 + 7 of 19 |
-| `mat_g2_mg_q2_3` | that no ruler exists; length vs distance | 12 of 21 |
-| `mat_g2_mg_q4_0` | **arithmetic itself** | **23 of 23** assert a false equation |
-| `mat_g2_mg_q4_1` | the a.m./p.m. of its own visual; mark arithmetic | 5 + 2 of 21 |
-| `mat_g2_mg_q4_2` | that the item is text or a timetable, not a clock | 20 of 27 |
-
-The worst, and the one to build the gate around:
+No source change, no re-proof owed (`validation_reports/judgment/` is outside `INPUT_ROOTS`). Re-derive the
+list by execution before dispatching — `validate_judgment --all`, lines containing "packet digest changed":
 
 ```
-mat_g2_mg_q4_0 — "Describe the duration of an event in terms of number of days and/or weeks
-using a calendar."  ALL 23 samples:
-    hint: "Subtract: 27 - 24 = 4 days"     but 27-24=3   (4 is right under inclusive counting)
-    hint: "Subtract: 10 - 4 = 1 week"      but 10-4=6
-
-mat_g2_mg_q2_0 — the final hint contradicts the hint immediately before it:
-    stem:   A pencil is 10 cm long. A ruler is 15 cm long. Which length is shorter?
-    answer: 10
-    hints:  "15 is more than 10."  then  "The longer length is 10 centimeter (cm)."
-
-mat_g2_mg_q4_2 — a timetable question scaffolded by a clock that is not there:
-    stem:   Look at the class schedule. How many minutes long is the English class?
-    answer: 45
-    hints:  all four read an analog clock, ending "The time shown is 8:00 a.m."
+gpt-6-luna   (5)  mat_g1_na_q3_1 mat_g1_na_q3_2 mat_g1_na_q3_6 mat_g1_na_q3_7 mat_g1_na_q4_2
+gpt-5.6-luna (8)  mat_g1_mg_q2_1 mat_g1_mg_q2_2 mat_g1_mg_q4_1 mat_g1_mg_q4_4 mat_g1_na_q1_0 mat_g1_na_q1_4
+                  mat_g1_na_q1_8 mat_g1_na_q1_9
+haiku45      (14) mat_g1_na_q2_0 mat_g1_na_q2_2 mat_g1_na_q2_3 mat_g1_na_q2_4 mat_g1_na_q2_5 mat_g1_na_q2_6
+                  mat_g2_mg_q2_0 mat_g2_mg_q2_1 mat_g2_mg_q2_2 mat_g2_mg_q2_3 mat_g2_mg_q4_0 mat_g2_mg_q4_1
+                  mat_g2_mg_q4_2 mat_g3_na_q4_7
 ```
 
-**`mat_g2_mg_q4_0` is the most serious defect this campaign has found**, because the final answers are
-CORRECT — so every automated gate passes those items while the hints teach a Grade 2 pupil that
-27 − 24 = 4. A gate that only checks answers cannot see it.
-
-### What to build
-
-**One shared contract, not six patches.** `29` DNA modules define `generate_hints`
-(`grep -rl "def generate_hints" backend/app/practice_gen/dna/ | wc -l`) — find the ones behind the
-nodes above by execution, not by guessing filenames. The contract should make a hint chain **declare the
-parameters it explains** and fail loudly when they disagree with the item it was generated for. At
-minimum the dimensions the evidence names:
-
-* **the operation** (add vs subtract) — already gated for fractions only;
-* **the direction** (ascending/descending, shorter/longer) — and no hint may assert a comparison its own
-  neighbouring hint denies;
-* **the unit** (m vs cm) — a hint may not name a unit the stem does not use;
-* **the response variant** (set-the-blocks vs write-the-expansion);
-* **the medium it references** — a hint may not tell a pupil to read a ruler, a clock or a visual the
-  item does not contain;
-* **arithmetic truth** — every equation a hint asserts must actually hold. This one is independent of
-  the answer being right, which is precisely why `mat_g2_mg_q4_0` slipped through.
-
-**Generalise the gate.** `fraction_hint_self_consistency` (declared in `run_all.py`, gated in
-`tests/unit/test_fraction_hint_consistency.py`, with a contract row and a mutation) covers exactly one
-DNA. Extend it — or add a sibling — so the CLASS is gated across every DNA, and say in the docstring and
-the contract row which dimensions are covered and which are not. **A gate described as total is how the
-next agent stops looking.**
-
-**It owes, per Protocol 7 and the Scaling Mandate:** a mutation per behaviour you fix (a two-site fix
-lets a single-site plant survive while proving nothing — see trap 8), each proven by neuter →
-SURVIVED → restore byte-identical → DETECTED; a `docs/pgen_contract.md` row moving in the same commit;
-and named limits in writing.
-
-**Batch these in the SAME source batch so the chain is paid once** — both are `tests/`-side and both are
-already diagnosed:
-
-* **`file_reviews` and the dispatch prompt contradict each other on an ABSENCE clause.** The generated
-  prompt says *"one or more cited `sample_ids` … never invent a supporting sample"*; `file_reviews.py:175`
-  requires a NON-EMPTY list. A reviewer FAILing a clause for absence reasonably cites none and becomes
-  unfileable. It refused a review on 2026-09-25 and will recur on every `draw`/`concrete` absence FAIL.
-* **`file_reviews` accepts an `overall` that contradicts the review's own findings.** `mat_g2_mg_q2_2`
-  is filed `overall: PASS` with `variant_comprehensiveness: CONCERN`. `validate_judgment` still flags
-  the node so nothing is hidden, **but `legacy_review_queue.json`'s `by_overall_verdict` census reads
-  the stored field, so corpus statistics overstate PASSes.** Enforce it in the filer or as a §5 finding.
-
-**Also worth investigating, NOT yet established:** `mat_g2_mg_q4_1` has 5 samples whose answer is p.m.
-while the rendered structure carries `AM`. A picture contradicting its own answer is what
-`§1G visual payload (the picture agrees with its own answer)` exists for. Whether §1G's scope excludes
-clock a.m./p.m. labels by design or by omission **is unestablished** — read the check and instrument it
-before claiming either.
-
----
-
-## 4. PHASE B — re-review what Phase A staled, and MEASURE the family agreement
-
-After the chain is green, re-run §5 and list the nodes that went STALE. Re-review them on Haiku with the
-four-part template (§5). **Where a staled node carries a Luna verdict, this is the free moment to record
-Luna-vs-Haiku agreement on the same clauses** — Decision 2. That number does not exist yet.
+Re-review them on Haiku with the four-part template (§5). **The 13 Luna nodes are the agreement sample
+Decision 2 asks for:** compare the new Haiku clause verdicts against the stale Luna record's verdicts on the
+SAME clause ids, report agreement per family (gpt-5.6-luna, gpt-6-luna) as k/n, and write it in the evidence
+log. Do NOT delete or rename the stale Luna records — a new filing supersedes; the old one is the other half
+of the measurement. The filer now REFUSES an `overall` that contradicts the reply's own verdicts, and the
+dispatch prompt now tells absence-clause reviewers to cite the samples they examined — expect fewer
+unfileable replies, and do not relax either rule to file one.
 
 ## 5. PHASE C — resume the queue. 91 nodes. No re-proof owed.
 

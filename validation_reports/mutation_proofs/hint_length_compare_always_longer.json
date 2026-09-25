@@ -1,0 +1,48 @@
+{
+ "asserts": [
+  "hint_contract_direction"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "test_no_served_hint_contradicts_its_item[mat_g2_mg_q2_0] && failed"
+ ],
+ "command": [
+  "pytest",
+  "tests/unit/test_hint_contract.py::test_no_served_hint_contradicts_its_item[mat_g2_mg_q2_0]",
+  "-q"
+ ],
+ "definition_digest": "97bd39a3376ac78dea708c80d6f0dac45d959ef0b7b43f149cf7ce232258c22e",
+ "detected": true,
+ "diagnostic_line": "exit 1 — =================================== FAILURES ===================================",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "test_no_served_hint_contradicts_its_item[mat_g2_mg_q2_0]",
+  "failed",
+  "[direction]"
+ ],
+ "expected_check": "§0 hint contract (hint_contract_direction)",
+ "finished_at": "2026-09-25T18:07:23+08:00",
+ "input_digest": "35171c2cf3c5c288b2d3d40a60587762b164610569e98a0d838ab7ce64c0ef3d",
+ "mutated_paths": [
+  "backend/app/practice_gen/dna/mg/length_measurement.py"
+ ],
+ "mutation": "hint_length_compare_always_longer",
+ "observed_markers": {
+  "[direction]": true,
+  "failed": true,
+  "test_no_served_hint_contradicts_its_item[mat_g2_mg_q2_0]": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-09-25T18:07:20+08:00"
+}

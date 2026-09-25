@@ -1,0 +1,48 @@
+{
+ "asserts": [
+  "hint_contract_stated_answer"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "test_no_served_hint_contradicts_its_item[mat_g3_mg_q2_0] && failed"
+ ],
+ "command": [
+  "pytest",
+  "tests/unit/test_hint_contract.py::test_no_served_hint_contradicts_its_item[mat_g3_mg_q2_0]",
+  "-q"
+ ],
+ "definition_digest": "833ce3d5562814e5decd037821ade8c217b4e9f6286fa99c5fd604b6aead7419",
+ "detected": true,
+ "diagnostic_line": "exit 1 — =================================== FAILURES ===================================",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "test_no_served_hint_contradicts_its_item[mat_g3_mg_q2_0]",
+  "failed",
+  "[stated_answer]"
+ ],
+ "expected_check": "§0 hint contract (hint_contract_stated_answer)",
+ "finished_at": "2026-09-25T18:07:12+08:00",
+ "input_digest": "35171c2cf3c5c288b2d3d40a60587762b164610569e98a0d838ab7ce64c0ef3d",
+ "mutated_paths": [
+  "backend/app/practice_gen/dna/mg/mass_capacity.py"
+ ],
+ "mutation": "hint_scale_reading_unsnapped",
+ "observed_markers": {
+  "[stated_answer]": true,
+  "failed": true,
+  "test_no_served_hint_contradicts_its_item[mat_g3_mg_q2_0]": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-09-25T18:07:09+08:00"
+}

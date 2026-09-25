@@ -17098,3 +17098,135 @@ false evidentiary claim.
 Phase B re-reviews the nodes Phase A stales, and many of those carry Luna verdicts — that is the natural,
 nearly free moment to measure Luna-vs-Haiku agreement on the same clauses and record the number. The
 next session is instructed to take it.
+
+## 2026-09-25 — PHASE A: the hint contract (`claude-h06-phaseA-hints-2026-09-25`)
+
+Authorised by owner Decision 1. Commits: `cddb9c60` (lock + batch intent), `704febfd` (source batch),
+`72d0891b` (harness re-anchor). No reviewer was dispatched and no verdict was authored this session.
+
+### What landed
+
+**One rule, two entry points.** `backend/app/practice_gen/hint_contract.py::hint_chain_violations` is
+the only statement of the rule. `adapter.apply_formatter` calls it on every served problem (adapter AND
+orchestrator paths), raising `HintContractError`; `tests/unit/test_hint_contract.py` calls it over every
+node's canonical packet seeds. It reads learner-visible fields only and never recomputes an answer.
+It replaces the fractions-only `fraction_hint_self_consistency`.
+
+| dimension | the defect that motivates it |
+|---|---|
+| arithmetic | calendar "Subtract: 27 - 24 = 4 days" (23/23 on mat_g2_mg_q4_0); division "82 ÷ 2 = 0"; multiplication "The product of 5 × 6 = 6"; counting "19 − 20 = 1"; missing-number "12 + 20 = 8" |
+| stated_result | fractions add-hints on subtract items (mat_g3_na_q4_7) |
+| stated_answer | pattern formatter re-posed the item; hints said "The answer is 10" on an item keyed 1; scale drawn at 30 g, hint "31 g" |
+| open_equation | balance scale served "9 + ? = 20" beside "___ + 11 = 20" |
+| direction | descending sorts with ascending hints; "The longer length is 10" on a "which is shorter?" item |
+| unit | metre items explained in centimetres |
+| medium | clock hands on timetables/day spans; "the ruler" on word problems; "the scale" on text items |
+| response | "Write the expanded form" on build-it-with-blocks items |
+
+Found by running the gate over the tree, beyond the brief's eight nodes: `base_generator` SWALLOWED every
+`generate_hints` exception and served the item hintless (addition properties, place_value identify_digit,
+missing_number equivalent, patterns identify_valid_pattern, length equal_length, area derive_formula /
+word problems, perimeter concept items) — now a typed `HintGenerationError`; two FORMATTERS ignored the
+DNA's declared blank (`fmt_balance_scale` read `blank_target` not `blank_position`; `fmt_pattern_sequence`
+read `missing_indices` not `missing_index`), so the served question differed from the one the hints
+explained; and an ANSWER-KEY defect surfaced by the hints' own guard — `multiplication._other` could return
+the value it must differ from, so "Is (a × b) × 2 the same as a × (b × 2)?" was keyed False at small
+`max_product`. Content Rule 4: every fix moves hints toward what the item, and so the competency, asks;
+no competency was extended.
+
+**A surviving mutation found a hole in the gate itself.** `hint_ones_column_says_write` SURVIVED on its
+first run. Instrumented, not reasoned about: packet stratification (`judgment_packets._try_render`) skips
+any seed that raises and records it in `render_failures`, so the contract REFUSING every set-mode seed
+removed them from the gate's view and the read-mode remainder passed. The gate now fails a node on a
+recorded failure of type `HintContractError` / `HintGenerationError` (by exception type, not message).
+Baseline of recorded render failures across all 151 nodes: none. Re-run: DETECTED.
+
+**Filer (same batch).** `file_reviews` refuses an `overall` that contradicts the reply's own verdicts
+(`derived_overall`, the prompt's rule); the dispatch prompt tells absence-clause reviewers to cite the
+samples they EXAMINED. `mat_g2_mg_q2_2`'s stored PASS is left as filed (never edit a verdict).
+
+### Proof — each dimension caught for the right reason
+
+22 new mutations (21 hint-contract + `review_overall_accepted_unchecked`), each run with `--only` and
+DETECTED. Then, per dimension, the plant was run with ONLY that dimension neutered, then with the gate
+restored, and every file restored and compared byte-for-byte:
+
+```
+arithmetic     hint_calendar_counts_exclusively             neutered_exit=0 (SURVIVED)  restored_gate_exit=1 (DETECTED)  byte_identical=True
+stated_result  fraction_hints_ignore_subtraction            neutered_exit=0 (SURVIVED)  restored_gate_exit=1 (DETECTED)  byte_identical=True
+stated_answer  hint_pattern_blank_ignores_declared_position neutered_exit=0 (SURVIVED)  restored_gate_exit=1 (DETECTED)  byte_identical=True
+open_equation  hint_balance_blank_ignores_declared_position neutered_exit=0 (SURVIVED)  restored_gate_exit=1 (DETECTED)  byte_identical=True
+direction      hint_ordering_always_ascending               neutered_exit=0 (SURVIVED)  restored_gate_exit=1 (DETECTED)  byte_identical=True
+unit           hint_length_unit_ignores_item_unit           neutered_exit=0 (SURVIVED)  restored_gate_exit=1 (DETECTED)  byte_identical=True
+medium         hint_elapsed_time_gets_clock_chain           neutered_exit=0 (SURVIVED)  restored_gate_exit=1 (DETECTED)  byte_identical=True
+response       hint_decompose_says_write                    neutered_exit=0 (SURVIVED)  restored_gate_exit=1 (DETECTED)  byte_identical=True
+```
+
+### The chain, at `72d0891b` (digest `35171c2cf3c5c288`)
+
+```
+pytest tests/unit -m "not slow" -q            983 passed, 1 skipped, 2 deselected   EXIT: 0
+anchors                                       all anchors OK (after re-anchoring one plant, 72d0891b)
+regen_formatter_exclusions                    275 exclusions across 111 nodes (no diff)
+obligation_executor --tier benchmark          cache_keys=1000 failures=0 recommended_shards=4 (6 run, per validator)
+frontend_suite.py                             41 passed; PASS frontend_static_render_12
+mutation_harness.py                           181/184 mutations detected (FAIL only contradicted_attestation,
+                                              attestation_drops_options, attestation_leaks_into_phase1 -- INVALID, §6F baseline red)
+release shards 0-5                            all EXIT 0; verify-release: release_status=complete receipts=6 complete=True
+validate_matrix (inside run_all)              Nodes Passed: 151, Failed: 0
+run_all                                       RUN_ALL EXIT CODE: 1   scheduled=17 completed=14 failed=3 crashed=0
+```
+
+Escaped-plant check after the corpus: `git status` on source paths empty; `git grep` for plant markers
+in HEAD empty. The shard chain was killed twice by session teardown (shard 1 at 45,000 keys, shard 2 at
+79,000); a shard writes its receipt only on completion, so both left the old receipt, `tree_state`
+reported them STALE, and only stale indices were re-run — the second time detached with `nohup`.
+
+### §5 before and after (module entry point; run_all adds its known +1)
+
+```
+before (2026-09-25, digest 208a52406226e6d0)   2016
+after  (72d0891b)                              2050   (run_all 2051)
+```
+
+The rise is the fix working: **27 v2 reviews are now STALE by packet digest** because the hints they
+judged changed — 14 haiku45, 8 gpt-5.6-luna, 5 gpt-6-luna:
+
+```
+gpt-6-luna   (5)  mat_g1_na_q3_1 mat_g1_na_q3_2 mat_g1_na_q3_6 mat_g1_na_q3_7 mat_g1_na_q4_2
+gpt-5.6-luna (8)  mat_g1_mg_q2_1 mat_g1_mg_q2_2 mat_g1_mg_q4_1 mat_g1_mg_q4_4 mat_g1_na_q1_0 mat_g1_na_q1_4
+                  mat_g1_na_q1_8 mat_g1_na_q1_9
+haiku45      (14) mat_g1_na_q2_0 mat_g1_na_q2_2 mat_g1_na_q2_3 mat_g1_na_q2_4 mat_g1_na_q2_5 mat_g1_na_q2_6
+                  mat_g2_mg_q2_0 mat_g2_mg_q2_1 mat_g2_mg_q2_2 mat_g2_mg_q2_3 mat_g2_mg_q4_0 mat_g2_mg_q4_1
+                  mat_g2_mg_q4_2 mat_g3_na_q4_7
+```
+
+Their old sample findings still count until they are re-reviewed, so §5 cannot fall until Phase B.
+**Phase B's Luna-vs-Haiku agreement sample is these 13 Luna nodes** (Decision 2). §6F: 173 CONTRADICTED
+unchanged, plus 7 STALE attestations on mat_g1_na_q3_1/_q3_6, mat_g2_na_q2_8/_q3_7, mat_g3_na_q3_5/_q4_2
+— the nodes whose blank the two formatters now honour.
+
+### Named limits (also in the module docstring and the contract row)
+
+Every dimension reads English phrasing, listed per dimension; `arithmetic` skips fractions, decimals,
+clock times, negative results, parenthesised expressions and worded equations; `stated_answer` reads
+only "answer is / Answer: / shown is"; `unit` excludes time units and currency; `medium` counts a medium
+present when the stem names it and reads only definite references; `response` reads four sentence-initial
+imperatives. A hint merely unhelpful, or right for a different item with every statement true, passes.
+The gate sees canonical packet seeds; other seeds are covered only by serving-path enforcement. A generic
+"final number equals the answer" dimension was measured (58 findings, mostly correct hints such as
+"Check: 9 + 11 = 20") and rejected.
+
+### Established by execution — named, not fixed
+
+* **§1G has NO ClockSet invariant**, so the `mat_g2_mg_q4_1` a.m./p.m. contradiction is outside §1G by
+  OMISSION. All 5 read-mode p.m. items render `AM`; set-mode items render `PM`. The payload carries
+  `hours` 1–12 and no period; `frontend/src/components/VisualSkeletons.jsx:675` labels
+  `hours >= 12 ? 'PM' : 'AM'`, so a 12:xx a.m. would render PM. Owes a §1G clock invariant plus a
+  payload/renderer fix and a mutation.
+* `adapter.generate_problem` (unpinned) raises on 30/30 seeds for mat_g1_na_q1_8 and mat_g1_na_q2_2
+  (variant not supported by the chosen formatter); the orchestrator path used by packets is unaffected.
+* `addition` expanded_form at G3 renders "2655 is 26 hundreds" (no thousands place).
+* `mass_capacity` emits unit `mg` at Grade 3; whether the competency names milligrams is unchecked.
+* `patterns` identify_valid_pattern and the letter-pattern rule wording were only made consistent, not
+  reviewed for aptness — §5's business.

@@ -1,20 +1,13 @@
 {
   "schema_version": 1,
   "note": "Intent record for interruption safety. Written when a batch, chain or campaign STARTS and cleared when it completes; an intent left open means a session did not reach its finish line. Deliberately digest-free -- see tests/tree_state.py. Read with `PYTHONPATH=. .venv/bin/python tests/tree_state.py`.",
-  "open_intent": {
-    "kind": "batch",
-    "began_at": "2026-09-25T16:08:12+08:00",
-    "session": "claude-h06-phaseA-hints-2026-09-25",
-    "note": "Phase A: the generate_hints contract",
-    "next_step": "Land every remaining source edit, then run the re-proof chain in order."
-  },
+  "open_intent": null,
   "last_completed": {
-    "kind": "campaign",
-    "began_at": "2026-09-25T14:07:31+08:00",
-    "session": "claude-h06-s5-recover-2026-09-25",
-    "note": "Continue §5 blind re-reviews on Haiku (ruling 4; owner authorised for this host on 2026-09-24, as neither Luna variant is dispatchable here). No source touched.",
-    "next_step": "Resume the campaign; it touches no source, so no re-proof is owed.",
-    "completed_at": "2026-09-25T14:45:19+08:00",
-    "completion_note": "Waves 23-28 recovered and committed; waves 29-30 filed on Haiku. Legacy queue 118 -> 91; §5 1538 -> 2016 module. No source touched; tree remains CERTIFIED. Open for the owner: three rater families, and the generate_hints root cause at six manifestations."
+    "kind": "chain",
+    "began_at": "2026-09-25T17:33:19+08:00",
+    "session": "claude-h06-phaseA-hints-2026-09-25",
+    "note": "Phase A re-proof chain after the hint-contract batch",
+    "next_step": "Resume the chain at the first step whose artifact is still stale; shards are individually resumable, so re-run only the stale indices.",
+    "completed_at": "2026-09-25T22:20:43+08:00"
   }
 }

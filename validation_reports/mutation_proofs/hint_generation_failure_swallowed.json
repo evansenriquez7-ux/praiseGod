@@ -1,0 +1,47 @@
+{
+ "asserts": [
+  "hint_generation_fails_loud"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "test_hint_generation_failure_is_loud && failed"
+ ],
+ "command": [
+  "pytest",
+  "tests/unit/test_hint_contract.py::test_hint_generation_failure_is_loud",
+  "-q"
+ ],
+ "definition_digest": "3caf643bd98e5405046b045ebe1e2a6d673de93ac6dfc62121fb46490c0c4b5a",
+ "detected": true,
+ "diagnostic_line": "exit 1 — =================================== FAILURES ===================================",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "test_hint_generation_failure_is_loud",
+  "failed",
+  "test_hint_generation_failure_is_loud"
+ ],
+ "expected_check": "§0 hint contract (hint_generation_fails_loud)",
+ "finished_at": "2026-09-25T18:07:48+08:00",
+ "input_digest": "35171c2cf3c5c288b2d3d40a60587762b164610569e98a0d838ab7ce64c0ef3d",
+ "mutated_paths": [
+  "backend/app/practice_gen/generators/base_generator.py"
+ ],
+ "mutation": "hint_generation_failure_swallowed",
+ "observed_markers": {
+  "failed": true,
+  "test_hint_generation_failure_is_loud": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-09-25T18:07:47+08:00"
+}
