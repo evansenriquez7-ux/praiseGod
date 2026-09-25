@@ -1,0 +1,530 @@
+{
+  "reviewer": "blind-reviewer-haiku45-w30-mat_g2_mg_q4_1-20260925",
+  "mat_g2_mg_q4_1": {
+    "findings": {
+      "cognitive_capacity": {
+        "verdict": "CONCERN",
+        "rationale": "Most samples present appropriate difficulty for Grade 2 Quarter 4, featuring both on-the-hour times and intermediate minute values. However, non-standard minute increments like 23 and 26 minutes introduce unnecessary complexity; Grade 2 students typically work with multiples of 5 first."
+      },
+      "competency_alignment": {
+        "verdict": "CONCERN",
+        "rationale": "Samples address reading and writing time with hours, minutes, a.m./p.m., and analog clocks as specified. However, the visual representations contradict several answers regarding a.m./p.m. designation, undermining alignment with the competency of correctly reading and writing complete time notation."
+      },
+      "competency_fulfillment": {
+        "verdict": "FAIL",
+        "rationale": "The requirements decompose the competency into seven components: read, write, time, hours, minutes, a.m./p.m., and analog_clock. While all seven are ostensibly present across samples, the mathematical validity issues and visual/answer mismatches prevent complete fulfillment of the core requirement to accurately read and write time.",
+        "decomposition": {
+          "verdict": "FAIL",
+          "reasoning": "The decomposition lists read, write, time, hours, minutes, a.m./p.m., and analog_clock. Multiple samples fail to execute this losslessly: read_mcq samples with p.m. answers show 'AM' labels, creating contradiction; hints in samples 17 and 21 teach incorrect minute calculations that would produce wrong answers. The decomposition is structurally complete but operationally broken by implementation errors."
+        }
+      },
+      "comprehensive_coverage": {
+        "verdict": "PASS",
+        "rationale": "Sample set covers read operations (9 samples), write operations (9 samples), all hour values 1–12, both a.m. and p.m. designations throughout, and minute values including 0, 5, 10, 15, 20, 23, 26, 30, 40, 45. Themed and non-themed variants present. Coverage is breadth-appropriate for the node."
+      },
+      "scale_appropriateness": {
+        "verdict": "CONCERN",
+        "rationale": "Difficulty ranges from simple (on-the-hour times) to moderately complex (times like 9:40, 10:26). For early Grade 2 Quarter 4, minute values beyond multiples of 5 and 15 represent a scaling jump. Most samples remain appropriate; the few with 23 and 26 minutes are borderline for the grade."
+      },
+      "variant_comprehensiveness": {
+        "verdict": "PASS",
+        "rationale": "Variants comprehensively address read/write tasks, a.m./p.m. options, on-the-hour and fractional-hour times, themed and non-themed contexts, and multiple experience modes (standard, hint_gated, mastery_drill, scaffolded). Variant coverage is well-distributed."
+      }
+    },
+    "sample_assessments": [
+      {
+        "sample_id": "b7ba2980544cc5ae52ae",
+        "checks": {
+          "ambiguity": {
+            "verdict": "FAIL",
+            "reasoning": "The question 'What time does the clock show?' asks student to read the visual time, but the rendered text_labels show '01:00' and 'AM' while the stated answer is '1:00 p.m.' The visual period designation contradicts the answer, creating fundamental ambiguity about what time is actually displayed and therefore which answer is correct."
+          },
+          "contextual_logical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "A read_mcq sample must present a clock showing a specific time and ask the student to identify it. The mismatch between the visual ('AM') and answer ('p.m.') violates logical coherence: the sample asks students to read a clock that appears to show one time but claims the answer is a different time."
+          },
+          "learner_facing_clarity": {
+            "verdict": "FAIL",
+            "reasoning": "A Grade 2 student cannot clearly understand whether the clock is meant to show morning or afternoon time when the visual label says 'AM' but the correct answer states 'p.m.' This creates confusion and teaches incorrect association between visual representation and time notation."
+          },
+          "mathematical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "The mathematical relationship between visual indicator and answer is broken. If a clock visually shows 'AM', the answer cannot mathematically be 'p.m.' without the visual being wrong. This violates the core mathematical truth that a clock's hands show only one time, not two contradictory times."
+          }
+        }
+      },
+      {
+        "sample_id": "6feef745ef8cd5f4c26f",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem 'Set the clock to show 5:00 a.m.' is unambiguous. The answer '5:00 a.m.' is clear. The hints progress logically from general principle through specific hand positions. The fill-in-blank format leaves no room for misinterpretation of the task."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A set_fill_in_blank task logically asks a student to manipulate a clock to show a specific time. The stem specifies exactly which time, and the hints guide progressively from hour identification to minute identification to final time confirmation. The logical sequence of the task and hints is coherent."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The language is direct and grade-appropriate. The sequence of hints builds understanding: first establishes that short hand shows hours and long hand shows minutes, then identifies hour 5, then identifies 12 as zero minutes, then confirms the final time. A Grade 2 student following the hints would understand each step."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "All mathematical claims are correct. Long hand pointing to 12 equals 0 minutes. Short hand near 5 equals hour 5. The time 5:00 a.m. is correctly constructed. Hints and answer align with clock arithmetic principles."
+          }
+        }
+      },
+      {
+        "sample_id": "cfac02e4652b44fff28b",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Question 'What time does the clock show?' is direct. The text_labels show '09:40' and 'AM', matching the answer '9:40 a.m.' The four options are distinct. The task permits no misunderstanding of what is being asked or what the correct answer represents."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The visual time (09:40 AM per text_labels) aligns with the stated answer (9:40 a.m.). The distractors (10:40, 8:40, 9:35) represent plausible misreadings. The logical structure of a reading task is sound."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem and hints are written in accessible language. The hints teach the counting-by-5s method: 'the long hand has passed 8 marks, so the minutes are 40,' which is correct (8×5=40). A Grade 2 student could follow this approach to read the clock."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The minute calculation is correct: 8 marks × 5 minutes per mark = 40 minutes. The hour 9 is correctly identified. All arithmetic in hints and answer checks out."
+          }
+        }
+      },
+      {
+        "sample_id": "a54af762706ebffabaaf",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Stem 'Set the clock to show 7:45 p.m.' is precise and unambiguous. The answer '7:45 p.m.' is explicit. The fill-in-blank format clearly indicates what the student must produce."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The task logically requests that a student set clock hands to represent a specified time. The hints progress from general principles (short hand = hour, long hand = minute) to specific hand positions (near 7, pointing to 9) to the final time. The sequence of logic is internally consistent."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Language is clear for Grade 2. The step-by-step hints guide a student: identify hour 7, identify that the 9-mark represents 45 minutes (since 9×5=45), and confirm the assembled time. A student following this path reaches the correct answer."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Hour hand near 7 is correct for hour 7. Minute hand pointing to 9 represents 9×5=45 minutes. The complete time 7:45 p.m. is correctly formed. All mathematical relationships are sound."
+          }
+        }
+      },
+      {
+        "sample_id": "a4d7684af0be63a86029",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem 'Set the clock to show 7:00 a.m.' unambiguously specifies the task and target time. The answer '7:00 a.m.' is explicit. No possibility of misinterpreting what the student must accomplish."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Task structure is logical: request a specific time, provide hints on how to identify and set each hand, confirm the result. The progression from general principles to specific positions to final assembly is coherent."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Grade 2–appropriate language. Hints explicitly teach: short hand near 7 for hour, long hand to 12 for zero minutes. This is a foundational pattern for on-the-hour times that students should grasp."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Hour 7 with minute hand on 12 (0 minutes) yields 7:00. All mathematical content is accurate. Hints correctly map hand positions to time components."
+          }
+        }
+      },
+      {
+        "sample_id": "a9d2c5ccc05b681d5b4f",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Stem 'Set the clock to show 9:45 p.m.' is explicit. The answer '9:45 p.m.' is unambiguous. The task clearly specifies what the student must set the clock to display."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The task logically guides a student through setting a clock to a specified time. Hints progress from identifying which hand controls which component to specific hand positions to confirmation. The task logic is internally valid."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Language is direct and age-appropriate. The hint sequence builds understanding: hour hand near 9, minute hand to 9 (representing 45 minutes). Students can follow this step-by-step guidance."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Hour 9 with minute hand at mark 9 (9×5=45 minutes) correctly produces 9:45. All mathematical claims are accurate."
+          }
+        }
+      },
+      {
+        "sample_id": "e0afaa1b08972c8f82ef",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Stem 'Set the clock to show 11:45 a.m.' precisely specifies the task. The answer '11:45 a.m.' is unambiguous. Fill-in-blank format leaves no doubt about what is expected."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The task structure is logically sound: set the clock to a specified time. Hints correctly guide through hour identification and minute hand positioning. The progression from general to specific is coherent."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Grade 2–appropriate language. Hints explain that hour hand points near 11 and minute hand points to 9 (for 45 minutes). A student can follow this guidance to set the clock correctly."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Hour 11 with minute hand at 9 (9×5=45) is mathematically correct for 11:45. All calculations in hints and answer are valid."
+          }
+        }
+      },
+      {
+        "sample_id": "b9f03faa5764cfc2e79b",
+        "checks": {
+          "ambiguity": {
+            "verdict": "FAIL",
+            "reasoning": "Question asks 'What time does the clock show?' but the visual text_labels display '06:10' and 'AM', while the stated answer is '6:10 p.m.' The period designation in the visual contradicts the answer period, leaving ambiguous whether the visual correctly represents the time the question claims the answer should be."
+          },
+          "contextual_logical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "A read_mcq task must present a single, unambiguous visual time for students to read. The mismatch between visual period ('AM') and answer ('p.m.') violates the premise of the task: if the clock actually shows the time in the answer, both period indicators must agree. This logical inconsistency breaks the validity of the entire sample."
+          },
+          "learner_facing_clarity": {
+            "verdict": "FAIL",
+            "reasoning": "A student sees 'AM' on the clock visual but the answer key says 'p.m.' The student cannot clearly understand whether they are learning to read what they see or learning some other convention. This mismatch creates pedagogical confusion."
+          },
+          "mathematical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "A clock showing 6:10 AM is mathematically a different time from 6:10 PM. These cannot be the same time. If the visual shows AM and the answer is PM, one of them is mathematically wrong. The sample violates basic mathematical consistency."
+          }
+        }
+      },
+      {
+        "sample_id": "0a5e7b9bfd8c7f72ae56",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Stem 'Set the clock to show 6:45 a.m.' is unambiguous. The answer '6:45 a.m.' is explicit. No confusion about the task or the required result."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The task logic is sound: set the clock to represent a specified time. Hints progress logically from identifying which hand represents which component to specific hand positions. The structure is internally coherent."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Language is appropriate for Grade 2. Hints explain that hour hand points near 6 and minute hand points to 9 (45 minutes). A student following the hints would understand how to set the clock."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Hour 6 with minute hand at 9 (9×5=45 minutes) correctly represents 6:45. All mathematical content is accurate."
+          }
+        }
+      },
+      {
+        "sample_id": "b5d03c164202abba088a",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Stem 'Set the clock to show 9:30 p.m.' clearly specifies the task and target time. The answer '9:30 p.m.' is unambiguous. The fill-in-blank format provides no room for misinterpretation."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Task structure is logically valid: set a clock to a specified time. Hints guide through hour hand positioning to 9 and minute hand positioning to 6 (half past). The progression is coherent."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Grade-appropriate language. Hints teach that minute hand at 6 equals 30 minutes (6×5=30). A Grade 2 student can follow this step-by-step guidance to construct the time 9:30."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Hour 9 with minute hand at 6 (6×5=30) correctly produces 9:30. All mathematical relationships are sound."
+          }
+        }
+      },
+      {
+        "sample_id": "3c844e3aef99621650b5",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Stem 'Set the clock to show 3:30 p.m.' precisely states the task and target time. The answer '3:30 p.m.' is unambiguous. Fill-in-blank format eliminates misunderstanding."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Task logic is sound: set a clock to represent a specified time. Hints progress from general principles to specific hand positions to completion. The sequence is internally valid."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Language is appropriate for Grade 2. Hints establish hour hand near 3 and minute hand to 6 for half past. These are foundational concepts students should grasp."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Hour 3 with minute hand at 6 (6×5=30 minutes) correctly forms 3:30. All mathematical content is valid."
+          }
+        }
+      },
+      {
+        "sample_id": "142aabeb120cefb79963",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Stem 'Set the clock to show 12:00 a.m.' unambiguously specifies the task. The answer '12:00 a.m.' is explicit. No possibility of confusion about what must be set or achieved."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Task structure is logically coherent: set a clock to midnight. Hints guide through hour hand positioning at 12 and minute hand at 12 (zero minutes). The logical progression is sound."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Grade-appropriate language. Hints teach the foundational concept that both hands point to 12 for midnight. A Grade 2 student can follow this clear instruction."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Both hands at 12 correctly represent 12:00. All mathematical claims are accurate."
+          }
+        }
+      },
+      {
+        "sample_id": "3cbc39ffac5d8198cdf2",
+        "checks": {
+          "ambiguity": {
+            "verdict": "FAIL",
+            "reasoning": "Question 'What time does the clock show?' asks students to identify the time. The visual text_labels show '04:30' and 'AM', but the stated answer is '4:30 p.m.' The period designation in the visual contradicts the answer, creating ambiguity about which time the question actually asks students to read."
+          },
+          "contextual_logical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "The task requires a clock to display a single, unambiguous time for reading. The contradiction between visual ('AM') and answer ('p.m.') violates this fundamental requirement. The sample presents an internally inconsistent logical scenario."
+          },
+          "learner_facing_clarity": {
+            "verdict": "FAIL",
+            "reasoning": "Students see 'AM' as the period indicator but the answer is 'p.m.' This directly contradicts what students observe, making the learning moment confusing rather than clarifying."
+          },
+          "mathematical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "A clock showing 4:30 AM is a different time than 4:30 PM; these are mathematically distinct. The sample violates mathematical consistency by presenting both designations for what should be a single time."
+          }
+        }
+      },
+      {
+        "sample_id": "dc8cf10fdc80b44cb837",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Stem '💃 Sir Rez has a math challenge about dance shoes. Set the clock to show 8:15 a.m.' clearly specifies the task and target time. The themed wrapper does not obscure the mathematical request. The answer '8:15 a.m.' is unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The themed context (character and dance shoes) provides motivational framing without interfering with the mathematical task logic. The core task—set the clock—remains logically coherent."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The theming adds interest without obscuring the mathematical task. Language remains grade-appropriate. Hints progress clearly from identifying hour 8 to positioning minute hand at 3 (for 15 minutes). Students can follow this."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Hour 8 with minute hand at 3 (3×5=15 minutes) correctly produces 8:15. All mathematical content is accurate. Theming does not interfere with mathematical validity."
+          }
+        }
+      },
+      {
+        "sample_id": "5706313171483999accc",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Question '🏀 Isko has a math challenge about basketballs. What time does the clock show?' clearly asks for time identification. The text_labels show '03:00' and 'AM', matching the answer '3:00 a.m.' The themed wrapper does not create ambiguity about the mathematical task."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The themed context provides motivational interest. The core logical task—read the displayed time—is sound. Visual period ('AM') aligns with answer ('a.m.'), maintaining logical consistency."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The basketball theme engages student interest while maintaining clarity. The question and hints are age-appropriate. Hints guide through identifying hour 3 and recognizing that 12 means zero minutes."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Hour 3 with minute hand at 12 (0 minutes) correctly represents 3:00 a.m. All mathematical content is accurate. Theme does not compromise mathematical validity."
+          }
+        }
+      },
+      {
+        "sample_id": "c873615954738267151e",
+        "checks": {
+          "ambiguity": {
+            "verdict": "FAIL",
+            "reasoning": "Question 'What time does the clock show?' asks for time identification. The visual text_labels show '10:00' and 'AM', but the stated answer is '10:00 p.m.' The period in the visual contradicts the period in the answer, creating ambiguity about which time is actually displayed."
+          },
+          "contextual_logical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "A read task must present a clear visual representation of a single time. The contradiction between visual period ('AM') and answer ('p.m.') violates this requirement. The logical structure of the task is broken."
+          },
+          "learner_facing_clarity": {
+            "verdict": "FAIL",
+            "reasoning": "Students see 'AM' displayed but the answer is 'p.m.' This directly contradicts student observation and creates confusion about whether they are learning to read what they see."
+          },
+          "mathematical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "10:00 AM and 10:00 PM are mathematically different times. Presenting both designations for what should be a single time violates mathematical consistency."
+          }
+        }
+      },
+      {
+        "sample_id": "7b35ff204d5d79fdc3a3",
+        "checks": {
+          "ambiguity": {
+            "verdict": "CONCERN",
+            "reasoning": "Stem 'Set the clock to show 4:23 a.m.' is clear. The answer '4:23 a.m.' is explicit. However, the hint 'Count by 5s from 12: the long hand has passed 4 marks, so the minutes are 23' is ambiguous. If the hand has passed 4 marks, that indicates 20 minutes (4×5), not 23. The hint contradicts the answer's minute value."
+          },
+          "contextual_logical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "The task structure is logically sound, but the hint fails to logically support the answer. A student following the hint ('passed 4 marks' → 20 minutes) would not arrive at 23 minutes. The logical pathway from hints to answer breaks down."
+          },
+          "learner_facing_clarity": {
+            "verdict": "CONCERN",
+            "reasoning": "The hints are written at grade level but teach a method ('count by 5s') that produces a different answer (20 minutes) than required (23 minutes). A student carefully following the hints would be misled about how to read this time."
+          },
+          "mathematical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "The hint claims 4 marks means 23 minutes. Mathematically, 4 marks × 5 minutes per mark = 20 minutes, not 23. This is a direct mathematical error in the hint. The answer and hint do not agree on the minutes component."
+          }
+        }
+      },
+      {
+        "sample_id": "8ddc6b3c09fe66a887ac",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Stem 'Set the clock to show 11:20 a.m.' unambiguously specifies the task and time. The answer '11:20 a.m.' is explicit. No confusion about what must be set."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The task logic is sound: set the clock to a specified time. Hints progress from identifying which hand represents which component to specific hand positions. The progression is coherent."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Language is grade-appropriate. Hints teach that hour hand points near 11 and minute hand has passed 4 marks (4×5=20 minutes). A Grade 2 student can follow this guidance."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Hour 11 with minute hand positioned to represent 20 minutes (4 marks × 5) is correct. All mathematics in hints and answer align correctly."
+          }
+        }
+      },
+      {
+        "sample_id": "e1401d7738a6b1ed78c7",
+        "checks": {
+          "ambiguity": {
+            "verdict": "FAIL",
+            "reasoning": "Question 'What time does the clock show?' asks students to read the displayed time. The visual text_labels show '11:05' and 'AM', but the stated answer is '11:05 p.m.' The period in the visual contradicts the period in the answer, creating ambiguity about which time is actually shown."
+          },
+          "contextual_logical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "The read task requires a single, unambiguous visual representation of a time. The contradiction between visual ('AM') and answer ('p.m.') violates this requirement. The task's logical integrity is compromised."
+          },
+          "learner_facing_clarity": {
+            "verdict": "FAIL",
+            "reasoning": "Students see 'AM' but the answer is 'p.m.' This contradiction obscures what students should learn from reading the clock. Clarity is directly undermined."
+          },
+          "mathematical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "11:05 AM and 11:05 PM are mathematically different times. The sample presents both period designations inconsistently, violating mathematical distinctness."
+          }
+        }
+      },
+      {
+        "sample_id": "1ae1cd3af9359afab787",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Question 'What time does the clock show?' is clear. The text_labels show '04:00' and 'AM', matching the answer '4:00 a.m.' The options are distinct. No ambiguity about what is asked or what the answer represents."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The visual period aligns with the answer period (both 'AM'/'a.m.'). The task logic is sound: read the displayed time and select the correct option. Consistency is maintained."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Language is age-appropriate. The hints teach that hour hand near 4 and minute hand at 12 indicates the time 4:00. A Grade 2 student can follow this guidance clearly."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Hour 4 with minute hand at 12 (0 minutes) correctly represents 4:00. All mathematics is accurate. Visual and answer align."
+          }
+        }
+      },
+      {
+        "sample_id": "eea61f274ba083a9ae9a",
+        "checks": {
+          "ambiguity": {
+            "verdict": "CONCERN",
+            "reasoning": "Stem 'What time does the clock show?' is clear. The text_labels show '10:26' and 'AM', matching the answer '10:26 a.m.' However, the hint 'Count by 5s from 12: the long hand has passed 5 marks, so the minutes are 26' is problematic. If the hand has passed 5 marks, that should indicate 25 minutes (5×5), not 26."
+          },
+          "contextual_logical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "The logical pathway from the hint-taught method to the answer breaks down. A student following the counting method shown in the hint ('passed 5 marks') would calculate 25 minutes, not 26. This inconsistency undermines the logical progression from hint to answer."
+          },
+          "learner_facing_clarity": {
+            "verdict": "CONCERN",
+            "reasoning": "The hint teaches a method ('count by 5s, the hand has passed 5 marks') that yields 25, but the correct answer minute value is 26. This mismatch would confuse a student who carefully follows the hint guidance."
+          },
+          "mathematical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "The hint asserts that 5 marks means 26 minutes. Mathematically, 5 marks × 5 minutes per mark = 25 minutes, not 26. This is a direct mathematical error in the hint that contradicts the correct answer."
+          }
+        }
+      }
+    ],
+    "clause_evidence": [
+      {
+        "requirement_id": "read",
+        "clause": "Read",
+        "verdict": "PASS",
+        "reasoning": "Multiple read_mcq samples present the capability: b7ba2980544cc5ae52ae (read time from clock with options), cfac02e4652b44fff28b (read 9:40 a.m. with minute calculation hint), b9f03faa5764cfc2e79b (read time with distractors), 3cbc39ffac5d8198cdf2 (read 4:30 p.m.), 5706313171483999accc (read 3:00 a.m. with themed context), c873615954738267151e (read 10:00 p.m.), e1401d7738a6b1ed78c7 (read 11:05 p.m. with minute hint), 1ae1cd3af9359afab787 (read 4:00 a.m.), eea61f274ba083a9ae9a (read 10:26 a.m.). Reading capability is demonstrated despite defects in some samples.",
+        "sample_ids": ["b7ba2980544cc5ae52ae", "cfac02e4652b44fff28b", "b9f03faa5764cfc2e79b", "3cbc39ffac5d8198cdf2", "5706313171483999accc", "c873615954738267151e", "e1401d7738a6b1ed78c7", "1ae1cd3af9359afab787", "eea61f274ba083a9ae9a"]
+      },
+      {
+        "requirement_id": "write",
+        "clause": "write",
+        "verdict": "PASS",
+        "reasoning": "Multiple set_fill_in_blank samples present the write capability: 6feef745ef8cd5f4c26f (set 5:00 a.m.), a54af762706ebffabaaf (set 7:45 p.m.), a4d7684af0be63a86029 (set 7:00 a.m.), a9d2c5ccc05b681d5b4f (set 9:45 p.m.), e0afaa1b08972c8f82ef (set 11:45 a.m.), 0a5e7b9bfd8c7f72ae56 (set 6:45 a.m.), b5d03c164202abba088a (set 9:30 p.m.), 3c844e3aef99621650b5 (set 3:30 p.m.), 142aabeb120cefb79963 (set 12:00 a.m.), dc8cf10fdc80b44cb837 (set 8:15 a.m.), 7b35ff204d5d79fdc3a3 (set 4:23 a.m.), 8ddc6b3c09fe66a887ac (set 11:20 a.m.). Writing/setting capability is demonstrated across multiple samples.",
+        "sample_ids": ["6feef745ef8cd5f4c26f", "a54af762706ebffabaaf", "a4d7684af0be63a86029", "a9d2c5ccc05b681d5b4f", "e0afaa1b08972c8f82ef", "0a5e7b9bfd8c7f72ae56", "b5d03c164202abba088a", "3c844e3aef99621650b5", "142aabeb120cefb79963", "dc8cf10fdc80b44cb837", "7b35ff204d5d79fdc3a3", "8ddc6b3c09fe66a887ac"]
+      },
+      {
+        "requirement_id": "time",
+        "clause": "time",
+        "verdict": "PASS",
+        "reasoning": "Every sample represents a time value in hours:minutes format (e.g., 1:00, 9:40, 7:45, 11:05, 10:26). All 18 samples include explicit time notation in both stems and answers. The time component is universally present.",
+        "sample_ids": ["b7ba2980544cc5ae52ae", "6feef745ef8cd5f4c26f", "cfac02e4652b44fff28b", "a54af762706ebffabaaf", "a4d7684af0be63a86029", "a9d2c5ccc05b681d5b4f", "e0afaa1b08972c8f82ef", "b9f03faa5764cfc2e79b", "0a5e7b9bfd8c7f72ae56", "b5d03c164202abba088a", "3c844e3aef99621650b5", "142aabeb120cefb79963", "3cbc39ffac5d8198cdf2", "dc8cf10fdc80b44cb837", "5706313171483999accc", "c873615954738267151e", "7b35ff204d5d79fdc3a3", "8ddc6b3c09fe66a887ac"]
+      },
+      {
+        "requirement_id": "hours",
+        "clause": "hours",
+        "verdict": "PASS",
+        "reasoning": "Every sample requires identifying or setting an hour value. Hours appear in all answers (1:00, 5:00, 9:40, 7:45, 7:00, 9:45, 11:45, 6:10, 6:45, 9:30, 3:30, 12:00, 4:30, 8:15, 3:00, 10:00, 4:23, 11:20, 11:05, 4:00, 10:26). Hints explicitly teach hour hand identification in all samples.",
+        "sample_ids": ["b7ba2980544cc5ae52ae", "6feef745ef8cd5f4c26f", "cfac02e4652b44fff28b", "a54af762706ebffabaaf", "a4d7684af0be63a86029", "a9d2c5ccc05b681d5b4f", "e0afaa1b08972c8f82ef", "b9f03faa5764cfc2e79b", "0a5e7b9bfd8c7f72ae56", "b5d03c164202abba088a", "3c844e3aef99621650b5", "142aabeb120cefb79963", "3cbc39ffac5d8198cdf2", "dc8cf10fdc80b44cb837", "5706313171483999accc", "c873615954738267151e", "7b35ff204d5d79fdc3a3", "8ddc6b3c09fe66a887ac"]
+      },
+      {
+        "requirement_id": "minutes",
+        "clause": "minutes",
+        "verdict": "PASS",
+        "reasoning": "Every sample includes a minutes component: 00, 05, 10, 15, 20, 23, 26, 30, 40, 45 minutes. All answers contain explicit minute values. Hints in all samples teach minute hand identification and calculation (e.g., 'the long hand points to 12, so the minutes are 00' or 'count by 5s'). Minutes are universally present.",
+        "sample_ids": ["b7ba2980544cc5ae52ae", "6feef745ef8cd5f4c26f", "cfac02e4652b44fff28b", "a54af762706ebffabaaf", "a4d7684af0be63a86029", "a9d2c5ccc05b681d5b4f", "e0afaa1b08972c8f82ef", "b9f03faa5764cfc2e79b", "0a5e7b9bfd8c7f72ae56", "b5d03c164202abba088a", "3c844e3aef99621650b5", "142aabeb120cefb79963", "3cbc39ffac5d8198cdf2", "dc8cf10fdc80b44cb837", "5706313171483999accc", "c873615954738267151e", "7b35ff204d5d79fdc3a3", "8ddc6b3c09fe66a887ac"]
+      },
+      {
+        "requirement_id": "am_and_pm",
+        "clause": "a.m. and p.m.",
+        "verdict": "CONCERN",
+        "reasoning": "Both a.m. and p.m. designations appear throughout the sample set in stems and answers. However, multiple read_mcq samples (b7ba2980544cc5ae52ae, b9f03faa5764cfc2e79b, 3cbc39ffac5d8198cdf2, c873615954738267151e, e1401d7738a6b1ed78c7) have answers stating p.m. while visual text labels show 'AM'. This contradicts the requirement to accurately read and write time notation with correct a.m./p.m. designation. The capability is present but defective in implementation.",
+        "sample_ids": ["b7ba2980544cc5ae52ae", "6feef745ef8cd5f4c26f", "cfac02e4652b44fff28b", "a54af762706ebffabaaf", "a4d7684af0be63a86029", "a9d2c5ccc05b681d5b4f", "e0afaa1b08972c8f82ef", "b9f03faa5764cfc2e79b", "0a5e7b9bfd8c7f72ae56", "b5d03c164202abba088a", "3c844e3aef99621650b5", "142aabeb120cefb79963", "3cbc39ffac5d8198cdf2", "dc8cf10fdc80b44cb837", "5706313171483999accc", "c873615954738267151e", "7b35ff204d5d79fdc3a3", "8ddc6b3c09fe66a887ac"]
+      },
+      {
+        "requirement_id": "analog_clock",
+        "clause": "analog clock",
+        "verdict": "PASS",
+        "reasoning": "All 18 samples use ClockSet as the visual_type, providing an analog clock interface for both reading and setting times. The analog clock representation is consistently present across all samples as the mechanism for engagement with time.",
+        "sample_ids": ["b7ba2980544cc5ae52ae", "6feef745ef8cd5f4c26f", "cfac02e4652b44fff28b", "a54af762706ebffabaaf", "a4d7684af0be63a86029", "a9d2c5ccc05b681d5b4f", "e0afaa1b08972c8f82ef", "b9f03faa5764cfc2e79b", "0a5e7b9bfd8c7f72ae56", "b5d03c164202abba088a", "3c844e3aef99621650b5", "142aabeb120cefb79963", "3cbc39ffac5d8198cdf2", "dc8cf10fdc80b44cb837", "5706313171483999accc", "c873615954738267151e", "7b35ff204d5d79fdc3a3", "8ddc6b3c09fe66a887ac"]
+      }
+    ],
+    "overall": "FAIL"
+  }
+}

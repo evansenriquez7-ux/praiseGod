@@ -1,0 +1,259 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-haiku45-w30r2-mat_g2_mg_q4_2-20260925
+
+Write one JSON object to:
+  local_only/scratch/review/s5-haiku-w30/mat_g2_mg_q4_2/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN; never invent a supporting sample.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-haiku45-w30r2-mat_g2_mg_q4_2-20260925",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g2_mg_q4_2
+PACKET DIGEST: 8d33fc3dc6878df7e8b5256c84e58c9fff4c61d8377f5e837784f2b94d1cdde5
+COMPETENCY (Grade 2, Quarter 4, None):
+Solve problems involving elapsed time (minutes in an hour, hours in a day, days in a week), including timetables.
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  solve_problems: Solve problems
+  elapsed_time: elapsed time
+  minutes_in_an_hour: minutes in an hour
+  hours_in_a_day: hours in a day
+  days_in_a_week: days in a week
+  timetables: timetables
+
+SAMPLES (every one of these is real rendered output):
+  sample a24c29572212ece18ba5  seed 42  [cloze]
+      stem:    A class started at 9:15 a.m. and ended at 9:35 a.m. How many minutes did it last?
+      answer:  20
+      options: 20 / 15 / 40 / 25
+      hints:   ["The short hand shows the hour. The long hand shows the minutes.", "The short (hour) hand points near 9.", "The long (minute) hand points to 3, so the minutes are 15.", "The time shown is 9:15 a.m.."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 6e9877a4fb6c81aff37c  seed 43  [mcq]
+      stem:    A movie started at 5:10 p.m. and ended at 5:50 p.m. How many minutes did it last?
+      answer:  40
+      options: 35 / 45 / 20 / 40
+      hints:   ["The short hand shows the hour. The long hand shows the minutes.", "The short (hour) hand points near 5.", "Count by 5s from 12: the long hand has passed 2 marks, so the minutes are 10.", "The time shown is 5:10 p.m.."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 192211be5d9d13121329  seed 44  [read_mcq]
+      stem:    Look at the bus timetable. According to the timetable, how many minutes is the travel time for Bus 1?
+      answer:  30
+      options: 30 / 40 / 20 / 45
+      hints:   ["The short hand shows the hour. The long hand shows the minutes.", "The short (hour) hand points near 8.", "The long (minute) hand points to 12, so the minutes are 00.", "The time shown is 8:00 a.m.."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "Timetable", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  Timetable
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "Timetable", "element_count": 17, "svg_count": 0, "table_row_count": 3, "table_cell_count": 9, "button_count": 0, "input_count": 0, "text_labels": ["Bus", "Departs", "Arrives", "Bus 1", "7:00 a.m.", "7:30 a.m.", "Bus 2", "8:15 a.m.", "9:05 a.m."], "distinct_colours": ["#ffffff", "#334155", "#e2e8f0", "#0f172a"], "role_counts": {"timetable": 1, "timetable-header": 3, "timetable-row": 2}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample d6de205c8c248772ad00  seed 45  [mcq]
+      stem:    A school sports meet begins on Thursday and finishes on Saturday of the same week. How many days does the school sports meet run?
+      answer:  3
+      options: 3 / 5 / 4 / 2
+      hints:   ["The short hand shows the hour. The long hand shows the minutes.", "The short (hour) hand points near 8.", "The long (minute) hand points to 12, so the minutes are 00.", "The time shown is 8:00 a.m.."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 7b61e53a52a4a8da68af  seed 46  [mcq]
+      stem:    A soccer practice started at 12:45 p.m. and ended at 1:35 p.m. How many minutes did it last?
+      answer:  50
+      options: 50 / 10 / 45 / 55
+      hints:   ["The short hand shows the hour. The long hand shows the minutes.", "The short (hour) hand points near 12.", "The long (minute) hand points to 9, so the minutes are 45.", "The time shown is 12:45 p.m.."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample f8ffcffd8b3e78c21975  seed 500  [read_mcq]
+      stem:    Look at the class schedule. How many minutes long is the English class?
+      answer:  45
+      options: 40 / 50 / 45 / 30
+      hints:   ["The short hand shows the hour. The long hand shows the minutes.", "The short (hour) hand points near 8.", "The long (minute) hand points to 12, so the minutes are 00.", "The time shown is 8:00 a.m.."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "Timetable", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  Timetable
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "Timetable", "element_count": 17, "svg_count": 0, "table_row_count": 3, "table_cell_count": 9, "button_count": 0, "input_count": 0, "text_labels": ["Subject", "Starts", "Ends", "Math", "8:00 a.m.", "9:00 a.m.", "English", "9:45 a.m."], "distinct_colours": ["#ffffff", "#334155", "#e2e8f0", "#0f172a"], "role_counts": {"timetable": 1, "timetable-header": 3, "timetable-row": 2}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample fa98c76d330217994544  seed 501  [mcq]
+      stem:    A 2-day school sports meet starts on Wednesday. On what day of the week does it end?
+      answer:  Thursday
+      options: Friday / Thursday / Tuesday / Monday
+      hints:   ["The short hand shows the hour. The long hand shows the minutes.", "The short (hour) hand points near 8.", "The long (minute) hand points to 12, so the minutes are 00.", "The time shown is 8:00 a.m.."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample d5a1f6d9108fc7a9595c  seed 502  [cloze]
+      stem:    A school sports meet begins on Tuesday and finishes on Friday of the same week. How many days does the school sports meet run?
+      answer:  4
+      options: 4 / 3 / 5 / 6
+      hints:   ["The short hand shows the hour. The long hand shows the minutes.", "The short (hour) hand points near 8.", "The long (minute) hand points to 12, so the minutes are 00.", "The time shown is 8:00 a.m.."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample cc7749e45c615622bf4e  seed 600  [mcq]
+      stem:    An art workshop begins on Wednesday and finishes on Saturday of the same week. How many days does the art workshop run?
+      answer:  4
+      options: 4 / 3 / 6 / 5
+      hints:   ["The short hand shows the hour. The long hand shows the minutes.", "The short (hour) hand points near 8.", "The long (minute) hand points to 12, so the minutes are 00.", "The time shown is 8:00 a.m.."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 23f795e4b73ce135f97b  seed 601  [cloze]
+      stem:    The train journey ended at 5:00 p.m. after running for 6 hours. What time did it start?
+      answer:  11:00 a.m.
+      options: 11:00 a.m. / 5:00 p.m. / 12:00 a.m. / 10:00 a.m.
+      hints:   ["The short hand shows the hour. The long hand shows the minutes.", "The short (hour) hand points near 11.", "The long (minute) hand points to 12, so the minutes are 00.", "The time shown is 11:00 a.m.."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 4ba528d6c7cab1c62534  seed 602  [read_mcq]
+      stem:    Look at the bus timetable. According to the timetable, how many minutes is the travel time for Bus 2?
+      answer:  60
+      options: 70 / 60 / 75 / 50
+      hints:   ["The short hand shows the hour. The long hand shows the minutes.", "The short (hour) hand points near 8.", "The long (minute) hand points to 12, so the minutes are 00.", "The time shown is 8:00 a.m.."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "Timetable", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  Timetable
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "Timetable", "element_count": 17, "svg_count": 0, "table_row_count": 3, "table_cell_count": 9, "button_count": 0, "input_count": 0, "text_labels": ["Bus", "Departs", "Arrives", "Bus 1", "7:00 a.m.", "7:45 a.m.", "Bus 2", "8:15 a.m.", "9:15 a.m."], "distinct_colours": ["#ffffff", "#334155", "#e2e8f0", "#0f172a"], "role_counts": {"timetable": 1, "timetable-header": 3, "timetable-row": 2}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 8f9940b80d91cebb5dd7  seed 603  [mcq]
+      stem:    The community sports festival started at 10:00 a.m. and lasted for 6 hours. What time did it end?
+      answer:  4:00 p.m.
+      options: 3:00 p.m. / 4:00 p.m. / 5:00 p.m. / 10:00 a.m.
+      hints:   ["The short hand shows the hour. The long hand shows the minutes.", "The short (hour) hand points near 10.", "The long (minute) hand points to 12, so the minutes are 00.", "The time shown is 10:00 a.m.."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 18100f66b242900f6a6d  seed 604  [cloze]
+      stem:    A soccer practice started at 10:25 a.m. and lasted 55 minutes. What time did it end?
+      answer:  11:20 a.m.
+      options: 12:20 a.m. / 11:20 a.m. / 10:25 a.m. / 11:30 a.m.
+      hints:   ["The short hand shows the hour. The long hand shows the minutes.", "The short (hour) hand points near 10.", "Count by 5s from 12: the long hand has passed 5 marks, so the minutes are 25.", "The time shown is 10:25 a.m.."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample cf4ed06a05d4772a574a  seed 605  [mcq]
+      stem:    The train journey started at 10:00 a.m. and lasted for 5 hours. What time did it end?
+      answer:  3:00 p.m.
+      options: 4:00 p.m. / 3:00 p.m. / 10:00 a.m. / 2:00 p.m.
+      hints:   ["The short hand shows the hour. The long hand shows the minutes.", "The short (hour) hand points near 10.", "The long (minute) hand points to 12, so the minutes are 00.", "The time shown is 10:00 a.m.."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample de7bb5a1081c7f32b6ec  seed 606  [mcq]
+      stem:    A movie started at 5:30 p.m. and ended at 6:25 p.m. How many minutes did it last?
+      answer:  55
+      options: 60 / 50 / 5 / 55
+      hints:   ["The short hand shows the hour. The long hand shows the minutes.", "The short (hour) hand points near 5.", "The long (minute) hand points to 6, so the minutes are 30.", "The time shown is 5:30 p.m.."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 46cb5d2f03ec73b65044  seed 607  [cloze]
+      stem:    A soccer practice started at 8:25 a.m. and ended at 8:30 a.m. How many minutes did it last?
+      answer:  5
+      options: 10 / 5 / 55 / 1
+      hints:   ["The short hand shows the hour. The long hand shows the minutes.", "The short (hour) hand points near 8.", "Count by 5s from 12: the long hand has passed 5 marks, so the minutes are 25.", "The time shown is 8:25 a.m.."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample d7dbfc496841588aa049  seed 608  [cloze]
+      stem:    The museum tour ended at 2:00 p.m. after running for 3 hours. What time did it start?
+      answer:  11:00 a.m.
+      options: 2:00 p.m. / 11:00 a.m. / 10:00 a.m. / 12:00 a.m.
+      hints:   ["The short hand shows the hour. The long hand shows the minutes.", "The short (hour) hand points near 11.", "The long (minute) hand points to 12, so the minutes are 00.", "The time shown is 11:00 a.m.."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 77c676c136803ca2e316  seed 609  [cloze]
+      stem:    A reading camp begins on Monday and finishes on Tuesday of the same week. How many days does the reading camp run?
+      answer:  2
+      options: 2 / 4 / 3 / 1
+      hints:   ["The short hand shows the hour. The long hand shows the minutes.", "The short (hour) hand points near 8.", "The long (minute) hand points to 12, so the minutes are 00.", "The time shown is 8:00 a.m.."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 2be6962668eae9b9f781  seed 700  [cloze]
+      stem:    The school library schedule ended at 12:00 p.m. after running for 5 hours. What time did it start?
+      answer:  7:00 a.m.
+      options: 12:00 p.m. / 7:00 a.m. / 8:00 a.m. / 6:00 a.m.
+      hints:   ["The short hand shows the hour. The long hand shows the minutes.", "The short (hour) hand points near 7.", "The long (minute) hand points to 12, so the minutes are 00.", "The time shown is 7:00 a.m.."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample d865316f5d87791196f5  seed 701  [mcq]
+      stem:    💃 Kuya Ton has a math challenge about trophies. A science fair begins on Thursday and finishes on Friday of the same week. How many days does the science fair run?
+      answer:  2
+      options: 1 / 4 / 3 / 2
+      hints:   ["The short hand shows the hour. The long hand shows the minutes.", "The short (hour) hand points near 8.", "The long (minute) hand points to 12, so the minutes are 00.", "The time shown is 8:00 a.m.."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample b600ff1bb39ad287377f  seed 702  [cloze]
+      stem:    🏀 Isko has a math challenge about basketballs. A swimming lesson started at 7:20 a.m. and lasted 20 minutes. What time did it end?
+      answer:  7:40 a.m.
+      options: 8:40 a.m. / 7:40 a.m. / 7:50 a.m. / 7:20 a.m.
+      hints:   ["The short hand shows the hour. The long hand shows the minutes.", "The short (hour) hand points near 7.", "Count by 5s from 12: the long hand has passed 4 marks, so the minutes are 20.", "The time shown is 7:20 a.m.."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 6f299206f4b2f25ab0a7  seed 800  [read_mcq]
+      stem:    Look at the bus timetable. According to the timetable, how many minutes is the travel time for Bus 2?
+      answer:  50
+      options: 40 / 60 / 50 / 65
+      hints:   ["The short hand shows the hour. The long hand shows the minutes.", "The short (hour) hand points near 8.", "The long (minute) hand points to 12, so the minutes are 00.", "The time shown is 8:00 a.m.."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "Timetable", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  Timetable
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "Timetable", "element_count": 17, "svg_count": 0, "table_row_count": 3, "table_cell_count": 9, "button_count": 0, "input_count": 0, "text_labels": ["Bus", "Departs", "Arrives", "Bus 1", "7:00 a.m.", "7:45 a.m.", "Bus 2", "8:15 a.m.", "9:05 a.m."], "distinct_colours": ["#ffffff", "#334155", "#e2e8f0", "#0f172a"], "role_counts": {"timetable": 1, "timetable-header": 3, "timetable-row": 2}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 5913bf8237b7955bf39f  seed 900  [mcq]
+      stem:    The family road trip ended at 10:00 a.m. after running for 2 hours. What time did it start?
+      answer:  8:00 a.m.
+      options: 8:00 a.m. / 9:00 a.m. / 7:00 a.m. / 10:00 a.m.
+      hints:   ["The short hand shows the hour. The long hand shows the minutes.", "The short (hour) hand points near 8.", "The long (minute) hand points to 12, so the minutes are 00.", "The time shown is 8:00 a.m.."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample af238b681d8c2c0f90bd  seed 901  [read_mcq]
+      stem:    Look at the class schedule. How many hours long is the Math class?
+      answer:  1
+      options: 3 / 1 / 2 / 4
+      hints:   ["The short hand shows the hour. The long hand shows the minutes.", "The short (hour) hand points near 8.", "The long (minute) hand points to 12, so the minutes are 00.", "The time shown is 8:00 a.m.."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "Timetable", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  Timetable
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "Timetable", "element_count": 17, "svg_count": 0, "table_row_count": 3, "table_cell_count": 9, "button_count": 0, "input_count": 0, "text_labels": ["Subject", "Starts", "Ends", "Math", "8:00 a.m.", "9:00 a.m.", "English", "9:45 a.m."], "distinct_colours": ["#ffffff", "#334155", "#e2e8f0", "#0f172a"], "role_counts": {"timetable": 1, "timetable-header": 3, "timetable-row": 2}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample e68b6723e5024b633e1d  seed 1000  [read_mcq]
+      stem:    Look at the bus timetable. According to the timetable, how many minutes is the travel time for Bus 1?
+      answer:  45
+      options: 55 / 60 / 35 / 45
+      hints:   ["The short hand shows the hour. The long hand shows the minutes.", "The short (hour) hand points near 8.", "The long (minute) hand points to 12, so the minutes are 00.", "The time shown is 8:00 a.m.."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "Timetable", "interaction_mode": "read", "answer_collection": "mcq", "experience": "hint_gated"}
+      visual:  Timetable
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "Timetable", "element_count": 17, "svg_count": 0, "table_row_count": 3, "table_cell_count": 9, "button_count": 0, "input_count": 0, "text_labels": ["Bus", "Departs", "Arrives", "Bus 1", "7:00 a.m.", "7:45 a.m.", "Bus 2", "8:15 a.m.", "9:00 a.m."], "distinct_colours": ["#ffffff", "#334155", "#e2e8f0", "#0f172a"], "role_counts": {"timetable": 1, "timetable-header": 3, "timetable-row": 2}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 2dc7984dc791d9bf64d7  seed 1001  [cloze]
+      stem:    A soccer practice started at 7:40 a.m. and ended at 8:15 a.m. How many minutes did it last?
+      answer:  35
+      options: 25 / 30 / 40 / 35
+      hints:   ["The short hand shows the hour. The long hand shows the minutes.", "The short (hour) hand points near 7.", "Count by 5s from 12: the long hand has passed 8 marks, so the minutes are 40.", "The time shown is 7:40 a.m.."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "mastery_drill"}
+  sample ded5f81fabaa0fbe473d  seed 1002  [read_mcq]
+      stem:    Look at the bus timetable. According to the timetable, how many minutes is the travel time for Bus 2?
+      answer:  40
+      options: 50 / 30 / 55 / 40
+      hints:   ["The short hand shows the hour. The long hand shows the minutes.", "The short (hour) hand points near 8.", "The long (minute) hand points to 12, so the minutes are 00.", "The time shown is 8:00 a.m.."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "Timetable", "interaction_mode": "read", "answer_collection": "mcq", "experience": "scaffolded"}
+      visual:  Timetable
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "Timetable", "element_count": 17, "svg_count": 0, "table_row_count": 3, "table_cell_count": 9, "button_count": 0, "input_count": 0, "text_labels": ["Bus", "Departs", "Arrives", "Bus 1", "7:00 a.m.", "7:30 a.m.", "Bus 2", "8:15 a.m.", "8:55 a.m."], "distinct_colours": ["#ffffff", "#334155", "#e2e8f0", "#0f172a"], "role_counts": {"timetable": 1, "timetable-header": 3, "timetable-row": 2}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+

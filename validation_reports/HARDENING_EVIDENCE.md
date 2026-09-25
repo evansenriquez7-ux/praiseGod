@@ -16932,3 +16932,103 @@ translation) in basic shapes and figures."* Executed against the packet: **all 1
 visual/drawing formatter the fix, citing the clause `draw the effect of one-direction multi-step slide
 (or translation)`. The reviewer also found 11 of 18 samples are duplicates or near-duplicates in four
 groups, and one stem that says "to draw" twice while asking for a distance.
+
+### Haiku §5 wave 30 — the measurement/time hint system is broadly broken
+
+```
+legacy queue : 95 -> 91        §5 (module) : 1870 -> 2016 findings, 144 nodes
+v2 corpus : 60 reviews -- 25 gpt-5.6-luna, 19 gpt-6-luna, 16 haiku45
+verdicts  : 30 FAIL / 22 CONCERN / 8 PASS
+quote-provenance : 14 -> 19  (see the honest accounting below)
+```
+
+| node | verdict | §5 findings | dispatches |
+|---|---|---|---|
+| `mat_g2_mg_q2_3` | CONCERN | 19 | 1 |
+| `mat_g2_mg_q4_0` | FAIL | 63 | 2 + 2 self-revisions |
+| `mat_g2_mg_q4_1` | FAIL | 39 | 1 |
+| `mat_g2_mg_q4_2` | FAIL | 66 | 2 + 1 self-revision |
+
+**Every one of the five `mat_g2_mg_*` nodes reviewed this session serves hints that do not match the
+item.** All verified by the dispatcher executing against the dispatched packets, not taken from a
+verdict:
+
+| node | what the hints ignore | measured |
+|---|---|---|
+| `mat_g2_mg_q2_0` | the unit, and the comparison direction | 7 + 7 of 19 |
+| `mat_g2_mg_q2_3` | that there is no ruler; and length-vs-distance | 12 of 21 |
+| `mat_g2_mg_q4_0` | arithmetic itself — **every hint asserts a false equation** | 23 of 23 |
+| `mat_g2_mg_q4_1` | the a.m./p.m. of its own visual, and mark arithmetic | 5 + 2 of 21 |
+| `mat_g2_mg_q4_2` | that the item is text or a timetable, not a clock | 20 of 27 |
+
+```
+mat_g2_mg_q4_0 -- competency "Describe the duration of an event in terms of number of days
+and/or weeks using a calendar." ALL 23 samples:
+  hint says 27 - 24 = 4, but 27-24=3   (answer 4 is right under inclusive counting)
+  hint says 25 - 23 = 3, but 25-23=2
+  hint says 10 - 4  = 1, but 10-4=6
+```
+
+**`mat_g2_mg_q4_0` is the most serious content defect this campaign has found.** The final answers are
+correct, so every automated gate passes the items; the hints simply teach a Grade 2 pupil that
+27 − 24 = 4. It independently confirms the Luna campaign's earlier report of "backward-count hints with
+false equations like `19 - 20 = 1`" — now two nodes across two rater families.
+
+```
+mat_g2_mg_q2_3 -- distance word problems, hints from a ruler-reading template:
+  stem: Ben walked 16 m from the school gate to the playground, and ...
+  hints: ... "Read the measurement on the ruler carefully.", "The length is 55 m."
+  (no ruler exists in the item, and the stem asks for distance, not length)
+
+mat_g2_mg_q4_1 -- the rendered visual contradicts the item's own answer:
+  5 of 21 samples answer p.m. while their rendered structure carries AM
+  2 hints do false mark arithmetic: 4 marks x 5 = 20 but the hint says 23; 5 marks -> says 26
+  (23 and 26 are not multiples of 5, so no clock face can show them by marks at all)
+
+mat_g2_mg_q4_2 -- a timetable question scaffolded by a clock that is not there:
+  stem:  Look at the class schedule. How many minutes long is the English class?
+  answer: 45
+  hints: all four are clock-face reading, ending "The time shown is 8:00 a.m."
+```
+
+**Possible §1G GAP, named:** a rendered visual showing `AM` for an answer of `1:00 p.m.` is a picture
+contradicting its own answer, which `§1G visual payload (the picture agrees with its own answer)` is
+supposed to catch. It evidently does not cover clock a.m./p.m. labels. **Not investigated further this
+session** — whether §1G's scope excludes this by design or by omission is unestablished, and saying
+which would need reading the check and instrumenting it.
+
+**NOT verified:** `mat_g2_mg_q4_2`'s reviewer also reported that the timetable omits the English class
+end time, making the item unanswerable. The dispatcher's label extraction found no `text_labels` to
+check, so that claim is recorded as **reported-but-unconfirmed.** The hint mismatch above IS confirmed.
+
+### THE REVISION TRAP — asking a reviewer to fix one mechanical rule broke another
+
+Both `q4_0` and `q4_2` needed a second dispatch, and then a revision of their own file. **Every
+revision regressed something the dispatcher had already verified:**
+
+* `q4_2` first reply: 13 quoted spans absent from the packet. Re-dispatched with "use NO quotation
+  marks" → unmatched spans **13 → 0**, but the shortest string fell to **24** characters.
+* `q4_0` first reply: a 25-character reasoning (`file_reviews` hard-refuses under 40). Re-dispatched →
+  0 unmatched but min still **34**. Asked to expand its own strings → min rose to 44, **and the
+  revision emptied the `calendar` clause's `sample_ids`**, which the filer also refuses. A third,
+  narrower request restored it.
+* **The reviewer's report of its own revision was WRONG**: it stated the shortest string was 128
+  characters; measurement showed **44**.
+
+**The lesson: re-run the FULL audit after every revision, never just the property you asked about, and
+never trust the reviewer's summary of its own file.** Had the dispatcher trusted either report here, a
+record with an empty clause citation would have been filed as verified. The dispatcher changed no
+verdict, sample id, clause or `overall` at any point — only the reviewer revised its own wording.
+
+### Honest accounting of the quote-provenance count, 14 -> 19
+
+Attributed by node: `mat_g1_na_q1_5` 2 and `mat_g1_na_q2_0` 5 and `mat_g1_na_q2_6` 7 are pre-existing
+(the last two filed knowingly in wave 8); **this wave added 5** — `mat_g2_mg_q2_3` 1 and
+`mat_g2_mg_q4_1` 4, both filed with the dispatcher aware they carried unmatched spans.
+
+**And the dispatcher's own audit under-reported them.** Its local regex found 3 unmatched on `q4_1`
+where the validator finds 4, and 0 on `q2_3` where the validator finds 1. **The pre-filing audit is an
+APPROXIMATION of `_validate_quote_provenance`, not that function.** A future session should call
+`_validate_quote_provenance` (and `_provenance_corpus`) directly instead of re-implementing the regex —
+the same "rule in two places" shape this repo keeps paying for, committed here by the dispatcher's own
+audit script. Named rather than fixed, since the audit script is scratch tooling.

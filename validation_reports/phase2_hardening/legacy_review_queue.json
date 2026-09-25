@@ -1,261 +1,33 @@
 {
   "schema_version": 1,
   "kind": "legacy_review_queue",
-  "generated_at": "2026-09-25T06:17:26.477751+00:00",
+  "generated_at": "2026-09-25T06:38:29.756691+00:00",
   "adjudicable": false,
   "why_not_adjudicable": "These are v1 reviews. The current schema (v2) requires per-sample contextual-validity verdicts, exact clause coverage and dispatch-bound provenance, which a v1 reviewer was never asked for and which therefore cannot be recovered from a v1 record without inventing them. Every node listed here still owes a fresh blind re-review. This file exists so that the previous programme's findings remain visible as a QUEUE while none of them counts as evidence.",
-  "required_work": "95 node(s) need a fresh blind review filed at schema_version 2. Rebuild a packet with: python -m backend.app.practice_gen.validation.judgment_packets --node <node_id>",
+  "required_work": "91 node(s) need a fresh blind review filed at schema_version 2. Rebuild a packet with: python -m backend.app.practice_gen.validation.judgment_packets --node <node_id>",
   "source_review_dir": "validation_reports/judgment",
-  "source_corpus_sha256": "f19d507aff08c343e9044fb02c03187a66d0392f758e990dc2371366dc2e015e",
+  "source_corpus_sha256": "6a49f205e2fbd05eee5363df7800b25f51237ee796f5b228b7fb112c983a60ad",
   "counts": {
-    "legacy_nodes": 95,
-    "already_current_and_excluded": 56,
+    "legacy_nodes": 91,
+    "already_current_and_excluded": 60,
     "by_overall_verdict": {
-      "CONCERN": 53,
-      "FAIL": 32,
-      "PASS": 10
+      "CONCERN": 52,
+      "FAIL": 31,
+      "PASS": 8
     },
-    "nodes_with_a_non_pass_facet": 85,
+    "nodes_with_a_non_pass_facet": 83,
     "non_pass_by_facet": {
-      "cognitive_capacity": 22,
+      "cognitive_capacity": 21,
       "competency_alignment": 48,
-      "competency_fulfillment": 48,
-      "comprehensive_coverage": 36,
+      "competency_fulfillment": 47,
+      "comprehensive_coverage": 34,
       "scale_appropriateness": 14,
-      "variant_comprehensiveness": 56
+      "variant_comprehensiveness": 54
     },
     "records_missing_a_v1_facet": 0,
     "orphan_reviews_for_undeclared_nodes": 0
   },
   "nodes": [
-    {
-      "node_id": "mat_g2_mg_q2_3",
-      "source_path": "validation_reports/judgment/mat_g2_mg_q2/mat_g2_mg_q2_3.json",
-      "source_sha256": "001f14d3df3dcbc594eae405d3567608429c50c0eb6c40f2e3bba5e49a58370b",
-      "declared_schema_version": null,
-      "reviewed_by": "reviewer-c3-nimbus-sorrel-4825",
-      "review_date": "2026-09-11",
-      "blind": true,
-      "sample_seeds": [
-        42,
-        43,
-        44,
-        45,
-        46,
-        500,
-        501,
-        502,
-        600,
-        601,
-        602,
-        603
-      ],
-      "overall_verdict": "PASS",
-      "node_still_declared": true,
-      "facets": {
-        "competency_fulfillment": {
-          "verdict": "PASS",
-          "rationale": "Each sample is a genuine situation requiring a length or distance calculation, not a bare sum dressed up: objects laid end to end, two walked legs of a journey, and one place being farther from a gate than another."
-        },
-        "comprehensive_coverage": {
-          "verdict": "PASS",
-          "rationale": "Both problem structures a competency like this needs are present in quantity. Joining appears through combined length and total distance walked, and comparing appears through how many metres farther and how many cm longer."
-        },
-        "cognitive_capacity": {
-          "verdict": "PASS",
-          "rationale": "Single-step problems with two-digit quantities, named children and school landmarks match Quarter 2 of Grade 2; the subtraction cases such as 43 minus 19 involve regrouping but remain within reach."
-        },
-        "variant_comprehensiveness": {
-          "verdict": "PASS",
-          "rationale": "Three distinct situation types recur across the seeds rather than one, and they alternate between centimetre object problems and metre distance problems, with both cloze and multiple-choice presentation."
-        },
-        "competency_alignment": {
-          "verdict": "PASS",
-          "rationale": "The later seeds raise the operands toward sums in the fifties and sixties while keeping the same length and distance reasoning intact, so difficulty grows along the competency rather than beside it."
-        },
-        "scale_appropriateness": {
-          "verdict": "PASS",
-          "rationale": "Totals stay below one hundred, with objects sized in tens of centimetres and walks of a few tens of metres, all plausible for the classroom and schoolyard settings used."
-        }
-      },
-      "facets_missing_from_the_v1_record": [],
-      "non_pass_facets": [],
-      "adjudicable": false
-    },
-    {
-      "node_id": "mat_g2_mg_q4_0",
-      "source_path": "validation_reports/judgment/mat_g2_mg_q4/mat_g2_mg_q4_0.json",
-      "source_sha256": "8a8bdb5281e2ef27730b856a77ba8352310b6e437979532a6f22dc0409828ec5",
-      "declared_schema_version": null,
-      "reviewed_by": "reviewer-c3-nimbus-sorrel-4825",
-      "review_date": "2026-09-11",
-      "blind": true,
-      "sample_seeds": [
-        42,
-        43,
-        44,
-        45,
-        46,
-        500,
-        501,
-        502,
-        600,
-        601,
-        602,
-        603,
-        604,
-        605
-      ],
-      "overall_verdict": "FAIL",
-      "node_still_declared": true,
-      "facets": {
-        "competency_fulfillment": {
-          "verdict": "CONCERN",
-          "rationale": "The wording is about the duration of an event, yet no event is ever named. Each item gives two bare dates and asks how many days or weeks lie between them inclusive, so nothing is being described as having a duration."
-        },
-        "comprehensive_coverage": {
-          "verdict": "CONCERN",
-          "rationale": "Every weeks item spans an exact multiple of seven days, seven, fourteen or twenty-one, so a duration expressed as weeks together with leftover days never appears. The and part of the days and/or weeks wording is unproduced."
-        },
-        "cognitive_capacity": {
-          "verdict": "PASS",
-          "rationale": "Counting inclusive days inside one month, with all spans kept within a single calendar page and never crossing a month boundary, is a fair demand for the fourth quarter of Grade 2."
-        },
-        "variant_comprehensiveness": {
-          "verdict": "FAIL",
-          "rationale": "All fourteen samples share one formatter and one sentence, opening by directing the pupil to look at the month's calendar and closing with the same inclusive phrasing. Only the month, the two dates, and the choice of the word days or weeks ever change."
-        },
-        "competency_alignment": {
-          "verdict": "PASS",
-          "rationale": "Widening the date span and switching the requested unit from days to weeks are both legitimate ways to press on calendar reading, so the difficulty axis does belong to this competency even though the presentation does not vary."
-        },
-        "scale_appropriateness": {
-          "verdict": "PASS",
-          "rationale": "No span exceeds twenty-one days and every one lies inside a single month of 2025, which keeps the answers to small whole numbers of days or weeks as the competency implies."
-        }
-      },
-      "facets_missing_from_the_v1_record": [],
-      "non_pass_facets": [
-        "competency_fulfillment",
-        "comprehensive_coverage",
-        "variant_comprehensiveness"
-      ],
-      "adjudicable": false
-    },
-    {
-      "node_id": "mat_g2_mg_q4_1",
-      "source_path": "validation_reports/judgment/mat_g2_mg_q4/mat_g2_mg_q4_1.json",
-      "source_sha256": "7db6b639078449e811e5c9a57e799f70d37851f8e51c20e039cbcdecebcc47c0",
-      "declared_schema_version": null,
-      "reviewed_by": "reviewer-c3-nimbus-sorrel-4825",
-      "review_date": "2026-09-11",
-      "blind": true,
-      "sample_seeds": [
-        42,
-        43,
-        44,
-        45,
-        46,
-        500,
-        501,
-        502,
-        600,
-        603,
-        605,
-        606
-      ],
-      "overall_verdict": "CONCERN",
-      "node_still_declared": true,
-      "facets": {
-        "competency_fulfillment": {
-          "verdict": "PASS",
-          "rationale": "Both verbs are served. Reading appears through items asking what time the clock shows, and writing appears through items asking the pupil to set the clock to a stated time, and a.m. or p.m. is attached in every single case."
-        },
-        "comprehensive_coverage": {
-          "verdict": "CONCERN",
-          "rationale": "The minute values cluster heavily on the hour, the half hour and forty-five past. Quarter past and five past never occur as targets, and only three distinct clock faces are ever read, so the reading direction is thinly covered against eight setting items."
-        },
-        "cognitive_capacity": {
-          "verdict": "CONCERN",
-          "rationale": "One item asks the pupil to set the clock to show 12:00 a.m. Midnight against noon is the single hardest a.m. and p.m. case there is, and dropping it in without scaffolding is a real stretch for this grade."
-        },
-        "variant_comprehensiveness": {
-          "verdict": "CONCERN",
-          "rationale": "Only two presentations exist across twelve samples, and eight of them open with the same instruction to set the clock. No item connects a clock time to a daily routine or asks for a time to be written in words."
-        },
-        "competency_alignment": {
-          "verdict": "PASS",
-          "rationale": "The variation across seeds is the hour and minute values chosen and the a.m. or p.m. label, which is precisely what a pupil must control to read and write analog time."
-        },
-        "scale_appropriateness": {
-          "verdict": "PASS",
-          "rationale": "Every target is a valid twelve-hour clock time on a five-minute boundary, and nothing strays into seconds or twenty-four-hour notation that would sit above this grade."
-        }
-      },
-      "facets_missing_from_the_v1_record": [],
-      "non_pass_facets": [
-        "comprehensive_coverage",
-        "cognitive_capacity",
-        "variant_comprehensiveness"
-      ],
-      "adjudicable": false
-    },
-    {
-      "node_id": "mat_g2_mg_q4_2",
-      "source_path": "validation_reports/judgment/mat_g2_mg_q4/mat_g2_mg_q4_2.json",
-      "source_sha256": "67b05486eae2ea74ed176aa63d5fd2ddfa4bd3c8211c34bb0929e04fcb1dc57f",
-      "declared_schema_version": null,
-      "reviewed_by": "reviewer-c3-nimbus-sorrel-4825",
-      "review_date": "2026-09-11",
-      "blind": true,
-      "sample_seeds": [
-        42,
-        43,
-        44,
-        45,
-        46,
-        500,
-        501,
-        502,
-        600,
-        601,
-        602,
-        603,
-        604,
-        605
-      ],
-      "overall_verdict": "PASS",
-      "node_still_declared": true,
-      "facets": {
-        "competency_fulfillment": {
-          "verdict": "PASS",
-          "rationale": "The samples land squarely on elapsed time and each of the three parenthesised sub-domains is exercised, including one where a class runs from 9:15 a.m. to 9:35 a.m. and one where a train journey's start must be recovered from its end and its length."
-        },
-        "comprehensive_coverage": {
-          "verdict": "PASS",
-          "rationale": "Minutes within an hour, whole hours within a day, days within a week, and timetables all appear, and the direction is varied too: some items ask for the duration, others for the end time, and one for the start time."
-        },
-        "cognitive_capacity": {
-          "verdict": "PASS",
-          "rationale": "Durations stay under an hour for the minute items and the day-of-week items sit inside one week; the hardest case, a practice beginning at 10:25 a.m. and lasting 55 minutes, requires crossing an hour but nothing more."
-        },
-        "variant_comprehensiveness": {
-          "verdict": "PASS",
-          "rationale": "Presentation genuinely shifts: a two-row bus timetable, a class schedule with subject names, plain start-and-end narratives, and weekday-spanning events all appear, across both cloze and multiple-choice."
-        },
-        "competency_alignment": {
-          "verdict": "PASS",
-          "rationale": "The harder seeds add a crossing of noon and an unknown start time rather than merely enlarging numbers, so the progression targets the elapsed-time reasoning itself."
-        },
-        "scale_appropriateness": {
-          "verdict": "PASS",
-          "rationale": "Elapsed intervals run from twenty minutes up to six hours and event lengths from two to four days, all of which stay inside the minutes-in-an-hour, hours-in-a-day and days-in-a-week bounds the competency states."
-        }
-      },
-      "facets_missing_from_the_v1_record": [],
-      "non_pass_facets": [],
-      "adjudicable": false
-    },
     {
       "node_id": "mat_g2_mg_q4_3",
       "source_path": "validation_reports/judgment/mat_g2_mg_q4/mat_g2_mg_q4_3.json",
