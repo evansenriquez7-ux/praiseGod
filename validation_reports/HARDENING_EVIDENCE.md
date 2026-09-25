@@ -16385,7 +16385,10 @@ legacy queue      : 125 -> 118   (wave 8 four nodes, wave 9 four nodes)
 §5 (run_all)      : 1539          (the documented +1 aggregate rollup)
 capability_phase2 : 173, untouched by design
 mutation corpus   : 162 -> 163 mutations, 160 detected
-v2 corpus         : 34 reviews -- 25 gpt-5.6-luna medium, 9 haiku45
+v2 corpus         : 33 reviews -- 25 gpt-5.6-luna medium, 8 haiku45
+                    (CORRECTED: an earlier line in this entry said 34 / 9 haiku. Counted by
+                     execution: 33 schema-v2 files on disk, verdicts 11 FAIL / 15 CONCERN / 7 PASS,
+                     and legacy_review_queue.json agrees at 118 owed + 33 excluded = 151.)
 ```
 
 **§5 rose because the gate is working.** Eight fresh blind reviews replaced unadjudicable v1 stubs
