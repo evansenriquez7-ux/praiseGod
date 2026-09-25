@@ -650,7 +650,9 @@ def generate_hints(
     return [
         f"When {verb} {frac_lbl}s with the same {den_lbl}, keep the {den_lbl} the same.",
         f"{verb.capitalize().replace('ing', '')} only the {num_lbl}s: {a_num} {sign} {b_num} = {step}.",
-        f"Write the result over the same {den_lbl}: {step}/{den}.",
+        # "Put", not "Write": the same chain serves shade-the-shape items, where the
+        # pupil shades rather than writes (hint contract, `response`, 2026-09-25).
+        f"Put the result over the same {den_lbl}: {step}/{den}.",
         f"The answer is {r_num}/{r_den}.",
     ]
 

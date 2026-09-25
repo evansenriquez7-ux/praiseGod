@@ -385,9 +385,22 @@ def generate_hints(
             hints.append(f"{a} is {eq} {b}, so we write {a} = {b}.")
 
     elif task_type in ("order_set", "order_sequence"):
-        hints.append(f"Numbers to order: {numbers}.")
-        hints.append(f"Find the smallest number first, then the next smallest.")
-        hints.append(f"Ordered from least to greatest: {sorted(numbers)}.")
+        # The direction is the one `generate_params` declared. Until 2026-09-25 this
+        # branch always said "Find the smallest number first ... Ordered from least to
+        # greatest", so every DESCENDING item was walked to the reverse of its own
+        # answer (blind review of mat_g1_na_q2_0: 17 of 17; hint contract,
+        # `direction`). NOTE `values["answer"]` is always the ASCENDING string here;
+        # `fmt_ordering` builds the served key from this same `direction` field, so
+        # that field -- not the answer string -- is what the hint must follow.
+        descending = values["direction"] == "descending"
+        listed = ", ".join(str(n) for n in sorted(numbers, reverse=descending))
+        hints.append(f"Numbers to order: {', '.join(str(n) for n in numbers)}.")
+        if descending:
+            hints.append("Find the largest number first, then the next largest.")
+            hints.append(f"Ordered from greatest to least: {listed}.")
+        else:
+            hints.append("Find the smallest number first, then the next smallest.")
+            hints.append(f"Ordered from least to greatest: {listed}.")
 
     else:  # find_between
         a, b = numbers[0], numbers[1]

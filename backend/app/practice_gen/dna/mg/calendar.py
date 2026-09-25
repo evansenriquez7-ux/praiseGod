@@ -410,18 +410,33 @@ def generate_hints(
             f"Answer: {values.get('answer', '?')}",
         ]
     if task_type in ("elapsed_days", "elapsed_weeks"):
-        start = values.get("target_date", "?")
-        end   = values.get("end_date", "?")
-        unit  = "days" if task_type == "elapsed_days" else "weeks"
-        return [
-            f"Count the {unit} between {start} and {end} on the {cal_label}.",
-            # `count_noun`, not a bare `{unit}`: an elapsed span of exactly one shipped
-            # "= 1 weeks." until 2026-09-21. The rule is the generator's own so this cannot
-            # disagree with §1J. A missing answer ('?') is not 1 and keeps the plural,
-            # which is `count_noun`'s documented behaviour for a non-integer count.
-            f"Subtract: {end} - {start} = {values.get('answer', '?')} "
-            f"{count_noun(values.get('answer'), unit)}.",
+        # The span is counted INCLUSIVELY (generate_params: `end - start + 1`), so
+        # the working must say so. Until 2026-09-25 this printed
+        # "Subtract: 27 - 24 = 4 days" on every sample -- a false equation beside a
+        # correct answer, which no answer-checking gate could see (hint contract,
+        # `arithmetic`). The day count is the generator's own `end - start + 1`, and
+        # it is checked against the served answer rather than trusted, so the two
+        # cannot drift apart silently.
+        start = values["target_date"]
+        end = values["end_date"]
+        answer = values["answer"]
+        days = end - start + 1
+        expected = days if task_type == "elapsed_days" else days / 7
+        if answer != expected:
+            raise ValueError(
+                f"calendar.generate_hints: {task_type} from {start} to {end} counts "
+                f"{days} days inclusive, which does not give the served answer {answer!r}"
+            )
+        hints = [
+            f"Find {start} and {end} on the {cal_label}. Count both of those days too.",
+            f"{end} - {start} + 1 = {days} {count_noun(days, 'days')}.",
         ]
+        if task_type == "elapsed_weeks":
+            hints.append(
+                f"7 days make 1 week, so {days} {count_noun(days, 'days')} "
+                f"{'is' if answer == 1 else 'are'} {answer} {count_noun(answer, 'weeks')}."
+            )
+        return hints
     return [
         f"Use the {cal_label} to find the answer.",
         f"The {elapsed_label} is the number of days or weeks that have passed.",

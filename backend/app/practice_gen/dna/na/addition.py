@@ -522,10 +522,14 @@ def generate_params(
         # changes one, catching the pupil who pattern-matches "same two numbers,
         # reversed". Same defect and same fix as the multiplication properties.
         holds = rng.random() < 0.5
-        rhs = (f"{b_val} + {a_val}" if holds
-               else f"{b_val} + {_different_addend(a_val, lo=0, hi=max(0, max_result - b_val))}")
+        rhs_operands = [b_val, a_val if holds
+                        else _different_addend(a_val, lo=0, hi=max(0, max_result - b_val))]
+        rhs = " + ".join(str(n) for n in rhs_operands)
         return {
             "a": a_val, "b": b_val,
+            # The right-hand side the question asks about, declared so the hints
+            # compare the two sides the pupil actually sees (hint contract).
+            "rhs_operands": rhs_operands,
             "task_type": "commutative",
             "blank_target": "answer",
             "context": "pure",
@@ -543,11 +547,13 @@ def generate_params(
         a_val, b_val, c_val = _carry_free_addends(3, max_result)
         # See the commutative branch: both outcomes, or the item assesses nothing.
         holds = rng.random() < 0.5
-        rhs = (f"{a_val} + ({b_val} + {c_val})" if holds
-               else f"{a_val} + ({b_val} + "
-                    f"{_different_addend(c_val, lo=0, hi=max(0, max_result - a_val - b_val))})")
+        rhs_operands = [a_val, b_val, c_val if holds
+                        else _different_addend(c_val, lo=0, hi=max(0, max_result - a_val - b_val))]
+        rhs = f"{rhs_operands[0]} + ({rhs_operands[1]} + {rhs_operands[2]})"
         return {
             "a": a_val, "b": b_val, "c": c_val,
+            # See the commutative branch.
+            "rhs_operands": rhs_operands,
             "task_type": "associative",
             "blank_target": "answer",
             "context": "pure",
@@ -1042,6 +1048,14 @@ def generate_hints(
     cumulative_vocab: Set[str],
 ) -> List[str]:
     """Return 2–4 step-by-step hint strings for the given addition problem."""
+    # A property item ("Is 93 + 3 the same as 3 + 85?") has no single `result`; it
+    # asks whether two sides are equal. Until 2026-09-25 this function read
+    # values["result"] unconditionally, raised KeyError on every commutative and
+    # associative item, and `base_generator` swallowed the error -- those items were
+    # served with no hints at all (mat_g1_na_q1_8, mat_g2_na_q1_10).
+    if values.get("task_type") in ("commutative", "associative"):
+        return _property_hints(values)
+
     a = values["a"]
     b = values["b"]
     result = values["result"]
@@ -1065,16 +1079,16 @@ def generate_hints(
         if ones_sum >= 10:
             hints.append(
                 f"Add the ones: {ones_a} + {ones_b} = {ones_sum}. "
-                f"Write {ones_sum % 10} in the ones place and {reg_phrase} 1 ten."
+                f"Keep {ones_sum % 10} in the ones place and {reg_phrase} 1 ten."
             )
         else:
-            hints.append(f"Add the ones: {ones_a} + {ones_b} = {ones_sum}. Write {ones_sum} in the ones place.")
+            hints.append(f"Add the ones: {ones_a} + {ones_b} = {ones_sum}. Keep {ones_sum} in the ones place.")
     else:
         # Position-neutral language for students who haven't learned place value yet
         if ones_sum >= 10:
             hints.append(
                 f"Add the last digits: {ones_a} + {ones_b} = {ones_sum}. "
-                f"Write {ones_sum % 10} and {reg_phrase} 1."
+                f"Keep {ones_sum % 10} and {reg_phrase} 1."
             )
         else:
             hints.append(f"Add the last digits: {ones_a} + {ones_b} = {ones_sum}.")
@@ -1102,6 +1116,40 @@ def generate_hints(
     hints.append(f"{sum_label.capitalize()} is {a} + {b} = {result}.")
 
     return hints
+
+
+def _property_hints(values: Dict[str, Any]) -> List[str]:
+    """Compare the two sides the question shows, as declared in `rhs_operands`."""
+    holds = values["answer"]
+    rhs = values["rhs_operands"]
+    if values["task_type"] == "commutative":
+        a, b = values["a"], values["b"]
+        left_text, right_text = f"{a} + {b}", f"{rhs[0]} + {rhs[1]}"
+        left, right = a + b, rhs[0] + rhs[1]
+        if holds:
+            first = f"Both sides add the same two numbers, {a} and {b}, in a different order."
+        else:
+            first = f"The left side adds {a} and {b}. The right side adds {rhs[0]} and {rhs[1]}."
+    else:
+        a, b, c = values["a"], values["b"], values["c"]
+        left_text = f"({a} + {b}) + {c}"
+        right_text = f"{rhs[0]} + ({rhs[1]} + {rhs[2]})"
+        left, right = a + b + c, rhs[0] + rhs[1] + rhs[2]
+        if holds:
+            first = f"Both sides add the same three numbers, {a}, {b} and {c}, grouped differently."
+        else:
+            first = (f"The left side adds {a}, {b} and {c}. "
+                     f"The right side adds {rhs[0]}, {rhs[1]} and {rhs[2]}.")
+    if (left == right) != bool(holds):
+        raise ValueError(
+            f"addition.generate_hints: {left_text} = {left} and {right_text} = {right}, "
+            f"but the item is keyed {holds!r}"
+        )
+    return [
+        first,
+        f"{left_text} = {left} and {right_text} = {right}.",
+        "So the two sides are the same." if holds else "So the two sides are not the same.",
+    ]
 
 
 # ─── DNA instance ─────────────────────────────────────────────────────────────

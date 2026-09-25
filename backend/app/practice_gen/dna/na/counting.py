@@ -292,11 +292,16 @@ def generate_hints(
     visible_str = ", ".join(str(n) for n in sequence)
     action = "add" if direction == "forward" else "subtract"
 
+    # The neighbour comparison takes the smaller from the larger. Until 2026-09-25 it
+    # always printed `later − earlier`, so every BACKWARD count asserted a false
+    # equation such as "19 − 20 = 1" (hint contract, `arithmetic`).
+    bigger, smaller = max(sequence[0], sequence[1]), min(sequence[0], sequence[1])
+    step = f"{action.capitalize()} {skip_by} {'to' if direction == 'forward' else 'from'} {sequence[3]}"
     return [
         f"Look at the {seq_lbl}: {visible_str}, ___",
-        f"Find the rule by comparing neighbours: {sequence[1]} − {sequence[0]} = {abs(sequence[1] - sequence[0])}.",
+        f"Find the rule by comparing neighbours: {bigger} − {smaller} = {bigger - smaller}.",
         f"This {seq_lbl} shows {cnt_lbl} {skip_by}s ({action} {skip_by} each time).",
-        f"{action.capitalize()} {skip_by} to {sequence[3]}: {sequence[3]} {'+ ' if direction == 'forward' else '- '}{skip_by} = {answer}.",
+        f"{step}: {sequence[3]} {'+ ' if direction == 'forward' else '- '}{skip_by} = {answer}.",
     ]
 
 

@@ -558,7 +558,7 @@ def generate_hints(
 
     if task_type in ("read_value", "read_single"):
         cat = values.get("question_category", "the category")
-        count = values.get("answer", "?")
+        count = values["answer"]
         pics = count // scale if scale > 0 else count
         if scale > 1:
             hints.append(

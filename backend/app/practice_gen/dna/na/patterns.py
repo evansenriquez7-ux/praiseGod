@@ -327,6 +327,10 @@ def generate_params(
             "blank_target": "answer",
             "task_type": "identify_valid_pattern",
             "pattern_kind": pattern_type,
+            # What the question names, declared so the hints explain THIS item
+            # (hint contract): the repeating group, or the first term of a rule.
+            "repeat_group": elements_str,
+            "first_term": valid_seq[0],
             "answer": answer_str,
             "distractors": distractor_strs,
             "question": question,
@@ -553,6 +557,25 @@ def generate_hints(
     cumulative_vocab: Set[str],
 ) -> List[str]:
     """Return 2–4 step-by-step hints for the given pattern problem."""
+    if values.get("task_type") == "identify_valid_pattern":
+        # A "which sequence creates this pattern?" item has no single `sequence`.
+        # Until 2026-09-25 this function read one anyway, raised KeyError, and
+        # `base_generator` swallowed it: every such item was served with no hints
+        # (mat_g1_na_q3_7, mat_g2_na_q2_9).
+        answer = values["answer"]
+        group = values["repeat_group"]
+        if group:
+            return [
+                f"The repeating group is {group}.",
+                "Check each choice: the group must repeat in the same order, with nothing out of place.",
+                f"The sequence that does this is {answer}.",
+            ]
+        return [
+            f"Start at {values['first_term']} and use the rule: {values['rule_description']}.",
+            "Check every step of each choice against the rule.",
+            f"The sequence that follows the rule at every step is {answer}.",
+        ]
+
     seq   = values["sequence"]
     diff  = values["common_difference"]
     rule  = values["rule_description"]
@@ -560,24 +583,46 @@ def generate_hints(
     m_idx = values["missing_index"]
 
     term_label = VOCAB_TERM.resolve(cumulative_vocab)
-    rule_label = VOCAB_RULE.resolve(cumulative_vocab)
+
+    # Explains the item AS DECLARED (hint contract, 2026-09-25). Before that: the
+    # "Look at the pattern" line printed the whole sequence INCLUDING the missing term
+    # it was asking for; the direction came from the sign of `common_difference`,
+    # which this DNA stores unsigned, so 30, 26, 22, ... was called "going up by 4";
+    # a combined pattern ("repeat the ones, subtract 10 every group") was called
+    # "going down by 10 each step"; a missing term at position 2 was announced as
+    # "the next term"; and the rule line read "The what it does is: ..." wherever
+    # the vocabulary gate fell back.
+    kind = values["pattern_kind"]
+    shown: List[Any] = list(seq)
+    if 0 <= m_idx < len(shown):
+        shown[m_idx] = "___"
+    elif m_idx == len(shown):
+        shown.append("___")
 
     hints: List[str] = []
-    hints.append(f"Look at the pattern: {seq}.")
+    hints.append(f"Look at the pattern: {', '.join(str(x) for x in shown)}.")
 
-    if diff != 0:
-        direction = VOCAB_INCREASING.resolve(cumulative_vocab) if diff > 0 else VOCAB_DECREASING.resolve(cumulative_vocab)
-        hints.append(f"The pattern is {direction} by {abs(diff)} each step.")
-    else:
+    if kind == "repeating":
         rep = VOCAB_REPEATING.resolve(cumulative_vocab)
         hints.append(f"This is a {rep} {VOCAB_PATTERN.resolve(cumulative_vocab)}. Find the repeating group.")
+    elif kind == "combined":
+        hints.append(
+            f"A group of numbers repeats, and each new group "
+            f"{'goes down' if diff < 0 else 'goes up'} by {abs(diff)}."
+        )
+    elif not any(isinstance(x, str) for x in seq):
+        direction = (VOCAB_DECREASING if kind == "arithmetic_decreasing" else VOCAB_INCREASING).resolve(cumulative_vocab)
+        hints.append(f"The pattern is {direction} by {abs(diff)} each step.")
+    if any(isinstance(x, str) for x in seq):
+        # A letter pattern's rule already says how it moves ("Move forward 1 letter
+        # each time"); "going up by 1" and "the next number" describe numbers.
+        term_label = "letter"
 
-    if m_idx >= 0:
-        if m_idx >= len(seq) - 1:
-            hints.append(f"The next {term_label} is at position {m_idx + 1}.")
-        else:
-            hints.append(f"The {term_label} at position {m_idx + 1} is needed.")
-    hints.append(f"The {rule_label} is: {rule}. The answer is {ans}.")
+    if m_idx == len(seq):
+        hints.append(f"The next {term_label} is at position {m_idx + 1}.")
+    elif m_idx >= 0:
+        hints.append(f"The missing {term_label} is at position {m_idx + 1}.")
+    hints.append(f"{rule}. The answer is {ans}.")
 
     return hints
 

@@ -594,15 +594,32 @@ def generate_hints(
     cumulative_vocab: Set[str],
 ) -> List[str]:
     """Return 2–4 step-by-step hint strings for the given division problem."""
-    a         = values.get("a", values.get("dividend", 0))
-    b         = values.get("b", values.get("divisor", 1))
-    result    = values.get("result", 0)
-    remainder = values.get("remainder", a % b if b else 0)
-
     quotient_label  = VOCAB_QUOTIENT.resolve(cumulative_vocab)
     dividend_label  = VOCAB_DIVIDEND.resolve(cumulative_vocab)
     divisor_label   = VOCAB_DIVISOR.resolve(cumulative_vocab)
     rem_label       = VOCAB_REMAINDER.resolve(cumulative_vocab)
+
+    if values.get("task_type") == "even_odd":
+        # An even/odd item declares `dividend`/`divisor` and no `result` (see
+        # generate_params). This function used to read `values.get("result", 0)`, so
+        # every one of them was walked through "2 × 0 = 0 ... The quotient of
+        # 82 ÷ 2 = 0" (blind review of mat_g2_na_q3_8, 22 of 22; hint contract,
+        # `arithmetic`). The halving is done here from the declared dividend.
+        n = values["dividend"]
+        half, left = divmod(n, 2)
+        return [
+            f"Divide {n} by 2: how many 2s fit into {n}?",
+            f"2 × {half} = {2 * half}, and {n} − {2 * half} = {left}.",
+            (f"Nothing is left over, so {n} is an even number." if left == 0
+             else f"1 is left over, so {n} is an odd number."),
+        ]
+
+    # Strict reads: a missing key is a named error, never a silent 0 that prints a
+    # false equation.
+    a         = values["a"]
+    b         = values["b"]
+    result    = values["result"]
+    remainder = values.get("remainder", a % b)
 
     hints: List[str] = []
 

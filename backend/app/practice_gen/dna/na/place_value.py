@@ -20,6 +20,7 @@ from backend.app.practice_gen.dna.base import (
     DNA,
     ErrorPattern,
     VocabGated,
+    count_noun,
 )
 
 
@@ -377,17 +378,29 @@ def generate_hints(
     task      = values["task_type"]
     digit     = values["digit_at_position"]
     value     = values["value_at_position"]
-    exp_form  = values["expanded_form"]
+    # Read only by the tasks that declare it. Until 2026-09-25 this line read
+    # values["expanded_form"] for EVERY task, raised KeyError on identify_digit (which
+    # never sets it), and `base_generator` swallowed the error: those items were served
+    # with no hints (mat_g1_na_q2_2, mat_g2_na_q1_6, mat_g3_na_q1_3).
+    exp_form  = values.get("expanded_form")
 
     place_name = PLACE_NAMES[pos] if pos < len(PLACE_NAMES) else f"10^{pos} place"
     pv_phrase  = VOCAB_PLACE_VALUE.resolve(cumulative_vocab)
     val_phrase = VOCAB_VALUE.resolve(cumulative_vocab)
     ef_phrase  = VOCAB_EXPANDED_FORM.resolve(cumulative_vocab)
 
+    if task == "identify_digit":
+        relevant_places = ", ".join(PLACE_NAMES[:pos + 1])
+        return [
+            f"Look at the digits of {number} from the right: {relevant_places}.",
+            f"Find the {place_name} {pv_phrase}.",
+            f"The digit in the {place_name} place is {digit}.",
+        ]
+
     if task == "identify_place":
         relevant_places = ", ".join(PLACE_NAMES[:pos + 1])
         return [
-            f"Write out {number} with each digit in its own column.",
+            f"Put each digit of {number} in its own column.",
             f"Count from the right: {relevant_places}.",
             f"The digit in the {place_name} column is {digit}.",
         ]
@@ -408,11 +421,22 @@ def generate_hints(
             f"{exp_form} = {number}.",
         ]
 
-    # decompose
+    if task != "decompose":
+        raise ValueError(f"place_value.generate_hints: no hint chain for task_type {task!r}")
+    # Worded for BOTH ways this task is answered: writing the expanded form, and
+    # building the number with base-10 blocks. It used to open "Write the expanded
+    # form of 10." on the build-it-with-blocks item too (blind review of
+    # mat_g1_na_q2_3; hint contract, `response`).
+    digits = [int(d) for d in str(number)]
+    counts = [
+        f"{d} {count_noun(d, PLACE_NAMES[len(digits) - 1 - i])}"
+        for i, d in enumerate(digits)
+    ]
+    counted = counts[0] if len(counts) == 1 else ", ".join(counts[:-1]) + " and " + counts[-1]
     return [
-        f"Write the {ef_phrase} of {number}.",
-        f"Break each digit into its place value: {exp_form}.",
-        f"Each term shows how much that digit is {val_phrase} in its position.",
+        f"Break {number} into parts by {pv_phrase}: {exp_form}.",
+        f"{number} is {counted}.",
+        f"Each part shows how much that digit is {val_phrase} in its position.",
     ]
 
 

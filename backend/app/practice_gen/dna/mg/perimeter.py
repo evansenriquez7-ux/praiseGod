@@ -359,19 +359,36 @@ def generate_hints(
             f"Subtract: {values['perimeter']} - {known_sum} = {values['answer']}.",
         ]
 
-    sides = values.get("sides", {})
+    # Concept items name no shape's sides. They used to fall through to the chain
+    # below, whose `sides.get(..., "?")` defaults made `l + w` a TypeError that
+    # `base_generator` swallowed -- so they were served with no hints.
+    if task_type == "identify_definition":
+        return [
+            f"The {perim_label} is the total distance around a shape.",
+            "Think of walking all the way around the outside edge and back to the start.",
+            f"The statement that says this is: {values['answer']}",
+        ]
+    if task_type == "measure_tools":
+        return [
+            f"To find the {perim_label}, measure each side of the shape and add the lengths.",
+            "Choose the tool that measures straight lengths of this size.",
+            f"The best tool here is {values['answer']}.",
+        ]
+
+    # Strict reads: a missing side is a named error, never a "?" shown to a pupil.
+    sides = values["sides"]
     hints = [f"The {perim_label} is the total distance around the {shape}."]
 
     if shape == "square":
-        s = sides.get("s", "?")
+        s = sides["s"]
         hints.append(f"A square has 4 equal sides, each {s} {count_noun(s, 'units')} long.")
         hints.append(f"Perimeter = 4 × {s} = {values['answer']}.")
     elif shape == "rectangle":
-        l, w = sides.get("l", "?"), sides.get("w", "?")
+        l, w = sides["l"], sides["w"]
         hints.append(f"A rectangle has two sides of length {l} and two sides of width {w}.")
         hints.append(f"Perimeter = 2 × ({l} + {w}) = 2 × {l + w} = {values['answer']}.")
     else:
-        a, b, c = sides.get("a", "?"), sides.get("b", "?"), sides.get("c", "?")
+        a, b, c = sides["a"], sides["b"], sides["c"]
         hints.append(f"Add all three sides: {a} + {b} + {c} = {values['answer']}.")
 
     return hints

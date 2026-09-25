@@ -168,6 +168,7 @@ def generate_params(
                 "blank_target": "answer",
                 "task_type": "elapsed_time",
                 "elapsed_unit": "hours",
+                "elapsed_ask": ask,
                 "start_time_str": start_str,
                 "end_time_str": end_str,
                 "duration_hours": duration_hours,
@@ -211,6 +212,7 @@ def generate_params(
                 "blank_target": "answer",
                 "task_type": "elapsed_time",
                 "elapsed_unit": "days",
+                "elapsed_ask": ask,
                 "start_day": start_day,
                 "end_day": end_day,
                 "duration_days": duration_days,
@@ -247,6 +249,7 @@ def generate_params(
 
                 target_bus = rng.choice([1, 2])
                 ans_min = b1_dur if target_bus == 1 else b2_dur
+                timetable_target = f"Bus {target_bus}"
 
                 # The timetable is DRAWN (visual_type="Timetable") rather than
                 # bulleted into the stem. "Look at the bus timetable:" followed by no
@@ -275,6 +278,7 @@ def generate_params(
                 e_end_str = _fmt_time(9, 45, "a.m." if use_ampm else None)
 
                 subj = rng.choice(["Math", "English"])
+                timetable_target = subj
                 # As above: the schedule is drawn, not bulleted into the stem.
                 timetable_kind = "class"
                 timetable_columns = ["Subject", "Starts", "Ends"]
@@ -307,6 +311,9 @@ def generate_params(
                 "timetable_kind": timetable_kind,
                 "timetable_columns": timetable_columns,
                 "timetable_rows": timetable_rows,
+                # The row the question asks about, declared so `generate_hints` reads
+                # it instead of re-deriving it from the question's wording.
+                "timetable_target": timetable_target,
                 "question": question,
                 "answer": answer,
                 "distractors": distractors,
@@ -387,6 +394,7 @@ def generate_params(
                 "blank_target": "answer",
                 "task_type": "elapsed_time",
                 "elapsed_unit": "minutes",
+                "elapsed_ask": ask,
                 "start_time_str": start_str,
                 "end_time_str": end_str,
                 "duration_minutes": duration_minutes,
@@ -573,6 +581,93 @@ def generate_hints(
     values: Dict[str, Any],
     cumulative_vocab: Set[str],
 ) -> List[str]:
+    # The hints explain THE ITEM THAT WAS GENERATED. Until 2026-09-25 every item
+    # got the clock-face chain below -- including elapsed-time word problems,
+    # day-of-the-week spans and timetables, none of which shows a clock (blind
+    # review of mat_g2_mg_q4_2: 20 of 27 samples; hint contract, `medium`). The
+    # branch is the one `generate_params` took, read from the values it declared.
+    if values.get("task_type") == "elapsed_time":
+        return _elapsed_hints(values)
+    return _clock_hints(values, cumulative_vocab)
+
+
+def _say(text: str) -> str:
+    """End a hint with one full stop -- a time like '9:15 a.m.' already has one."""
+    return text if text.endswith(".") else f"{text}."
+
+
+def _elapsed_hints(values: Dict[str, Any]) -> List[str]:
+    unit = values["elapsed_unit"]
+    if unit == "timetable":
+        target = values["timetable_target"]
+        row = next((r for r in values["timetable_rows"] if r["label"] == target), None)
+        if row is None:
+            raise ValueError(
+                f"time_reading.generate_hints: timetable_target {target!r} is not a row "
+                f"of {values['timetable_rows']!r}"
+            )
+        answer = values["answer"]
+        noun = "hours" if "hours" in values["question"] else "minutes"
+        return [
+            f"Find the row for {target} in the {values['timetable_kind']} "
+            f"{'timetable' if values['timetable_kind'] == 'bus' else 'schedule'}.",
+            _say(f"It starts at {row['start']} and ends at {row['end']}"),
+            f"Count on from the start time to the end time: that is {answer} "
+            f"{count_noun(answer, noun)}.",
+        ]
+
+    ask = values["elapsed_ask"]
+    if unit == "days":
+        order = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+        start, end, n = values["start_day"], values["end_day"], values["duration_days"]
+        span = order[order.index(start):order.index(end) + 1]
+        if len(span) != n:
+            raise ValueError(
+                f"time_reading.generate_hints: {start} to {end} spans {len(span)} days, "
+                f"not the declared duration {n}"
+            )
+        if ask == "duration":
+            return [
+                f"Count the days from {start} to {end}. Count both {start} and {end}.",
+                f"{', '.join(span)}: that is {n} {count_noun(n, 'days')}.",
+            ]
+        return [
+            f"Start on {start} and call it day 1.",
+            f"Count on: {', '.join(f'day {i} is {d}' for i, d in enumerate(span, 1))}.",
+            f"Day {n} is {end}.",
+        ]
+
+    start, end = values["start_time_str"], values["end_time_str"]
+    if unit == "hours":
+        n = values["duration_hours"]
+        if ask == "duration":
+            return [
+                f"Count the hours from {start} to {end}, one hour at a time.",
+                f"From {start} to {end} is {n} {count_noun(n, 'hours')}.",
+            ]
+        if ask == "end_time":
+            return [
+                f"Start at {start} and count on {n} {count_noun(n, 'hours')}, one hour at a time.",
+                _say(f"{n} {count_noun(n, 'hours')} after {start} is {end}"),
+            ]
+        return [
+            f"Start at {end} and count back {n} {count_noun(n, 'hours')}, one hour at a time.",
+            _say(f"{n} {count_noun(n, 'hours')} before {end} is {start}"),
+        ]
+
+    n = values["duration_minutes"]
+    if ask == "duration":
+        return [
+            _say(f"Start at {start} and count on by 5 minutes until you reach {end}"),
+            f"From {start} to {end} is {n} {count_noun(n, 'minutes')}.",
+        ]
+    return [
+        f"Start at {start} and count on {n} {count_noun(n, 'minutes')}, 5 minutes at a time.",
+        _say(f"{n} {count_noun(n, 'minutes')} after {start} is {end}"),
+    ]
+
+
+def _clock_hints(values: Dict[str, Any], cumulative_vocab: Set[str]) -> List[str]:
     minute_known = "minute" in cumulative_vocab
     hour = values["hour"]
     minute = values.get("minute", 0)
@@ -590,11 +685,25 @@ def generate_hints(
             hints.append("The long (minute) hand points to 3, so the minutes are 15.")
         elif minute == 45:
             hints.append("The long (minute) hand points to 9, so the minutes are 45.")
-        else:
+        elif minute % 5 == 0:
             marks = minute // 5
             hints.append(
                 f"Count by 5s from 12: the long hand has passed {marks} "
                 f"{count_noun(marks, 'marks')}, so the minutes are {minute}."
+            )
+        else:
+            # A minute that is not a multiple of 5 used to be reported as "passed 4
+            # marks, so the minutes are 23" -- 4 fives are 20, and no count of
+            # five-minute marks reaches 23 (blind review of mat_g2_mg_q4_1). Count
+            # the fives, then the single minutes after them.
+            marks, extra = divmod(minute, 5)
+            hints.append(
+                f"Count by 5s from 12 to the last number the long hand has passed: "
+                f"{marks} {count_noun(marks, 'fives')} make {marks * 5} minutes."
+            )
+            hints.append(
+                f"Then count on the small marks one at a time: {marks * 5} + {extra} = "
+                f"{minute}, so the minutes are {minute}."
             )
     else:
         # G1: 'minute' hasn't been introduced yet — describe hand position with
@@ -618,7 +727,7 @@ def generate_hints(
                 f"{count_noun(marks, 'marks')}."
             )
 
-    hints.append(f"The time shown is {values['time_str']}.")
+    hints.append(_say(f"The time is {values['time_str']}"))
     return hints
 
 

@@ -54,7 +54,7 @@ import json
 import shutil
 import sys
 from pathlib import Path
-from typing import Any, Dict
+from typing import Any, Dict, List
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO_ROOT))
@@ -90,6 +90,18 @@ def _reasoning(block: Any, *, where: str, field: str) -> None:
         raise ValueError(f"{where}: verdict must be one of {sorted(_VERDICTS)}.")
     if len(str(block.get(field, "")).strip()) < 40:
         raise ValueError(f"{where}: {field} is under 40 characters.")
+
+
+def derived_overall(findings: Dict[str, Any], assessments: List[Dict[str, Any]],
+                    clauses: List[Dict[str, Any]]) -> str:
+    """The overall verdict a reply's own verdicts imply -- the dispatch prompt's rule."""
+    verdicts = [block.get("verdict") for block in findings.values()]
+    verdicts.append(findings["competency_fulfillment"]["decomposition"].get("verdict"))
+    verdicts += [check.get("verdict") for a in assessments for check in a["checks"].values()]
+    verdicts += [clause.get("verdict") for clause in clauses]
+    if "FAIL" in verdicts:
+        return "FAIL"
+    return "CONCERN" if "CONCERN" in verdicts else "PASS"
 
 
 def file_one(node_id: str, verdict_block: Dict[str, Any], reviewed_by: str,
@@ -178,6 +190,22 @@ def file_one(node_id: str, verdict_block: Dict[str, Any], reviewed_by: str,
     decomposition = findings["competency_fulfillment"].get("decomposition")
     _reasoning(decomposition, where=f"{node_id}.competency_fulfillment.decomposition",
                field="reasoning")
+
+    # `overall` must follow from the reply's OWN verdicts, by the rule the dispatch
+    # prompt states. Until 2026-09-25 any valid verdict was accepted, and
+    # mat_g2_mg_q2_2 was filed `overall: PASS` beside a CONCERN finding.
+    # validate_judgment still flags that node, but `legacy_review_queue.json`'s
+    # `by_overall_verdict` census reads the stored field, so the corpus overstated its
+    # PASSes. The dispatcher never edits a verdict: a contradiction is refused, and the
+    # reviewer is asked to reconcile its own reply.
+    derived = derived_overall(findings, assessments, clauses)
+    if verdict_block["overall"] != derived:
+        raise ValueError(
+            f"{node_id}: overall {verdict_block['overall']!r} contradicts the reply's own "
+            f"verdicts, which give {derived!r} (FAIL if any finding, sample check, clause or "
+            f"decomposition is FAIL; else CONCERN if any is CONCERN; else PASS). Ask the "
+            f"reviewer to reconcile its reply; never edit a verdict as dispatcher."
+        )
     findings["competency_fulfillment"]["clause_ids"] = requirement_ids
     findings["competency_fulfillment"]["decomposition"]["requirement_ids"] = requirement_ids
     findings["comprehensive_coverage"]["clause_ids"] = requirement_ids

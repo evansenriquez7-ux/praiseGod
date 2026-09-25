@@ -389,7 +389,14 @@ def generate_params(
         def _other(value: int, lo: int, hi: int) -> int:
             """A different number in range -- what makes a false statement false."""
             if hi <= lo:
-                return lo
+                # No second value in the range. This used to return `lo`, which IS
+                # `value` whenever value == lo -- so at scalar 0.0 (small_max == 2) an
+                # item keyed False read "Is (a × b) × 2 the same as a × (b × 2)?",
+                # a TRUE statement with a wrong key. Found 2026-09-25 when the hint
+                # chain began working out both sides and refused to contradict the
+                # key. Step one past the range instead: a statement keyed False must
+                # be false.
+                return value + 1 if value == lo else lo
             pick = rng.randint(lo, hi - 1)
             return pick if pick != value else hi
 
@@ -397,9 +404,11 @@ def generate_params(
         if task_type == "commutative":
             if holds:
                 question = f"Is {a_val} × {b_val} the same as {b_val} × {a_val}?"
+                rhs_factors = [b_val, a_val]
             else:
                 wrong = _other(a_val, 2, small_max)
                 question = f"Is {a_val} × {b_val} the same as {b_val} × {wrong}?"
+                rhs_factors = [b_val, wrong]
             missing_val = b_val
         elif task_type == "associative":
             c_val = rng.randint(2, small_max)
@@ -414,10 +423,12 @@ def generate_params(
             if holds:
                 question = (f"Is ({a_val} × {b_val}) × {c_val} the same as "
                             f"{a_val} × ({b_val} × {c_val})?")
+                rhs_factors = [a_val, b_val, c_val]
             else:
                 wrong = _other(c_val, 2, small_max)
                 question = (f"Is ({a_val} × {b_val}) × {c_val} the same as "
                             f"{a_val} × ({b_val} × {wrong})?")
+                rhs_factors = [a_val, b_val, wrong]
             missing_val = b_val
         else:  # distributive
             # The MULTIPLIER carries the named table, not the addends. A blind reviewer
@@ -446,8 +457,12 @@ def generate_params(
                 question = (f"Is {a_val} × ({b_val} + {c_val}) the same as "
                             f"({a_val} × {b_val}) + {c_val}?")
             missing_val = c_val
+            rhs_factors = None
         return {
             "a": a_val, "b": b_val, "c": c_val,
+            # The right-hand side the question shows, declared so the hints work out
+            # the two sides the pupil actually compares (hint contract).
+            "rhs_factors": rhs_factors,
             "result": missing_val,
             "task_type": task_type,
             "blank_target": "answer",
@@ -807,6 +822,13 @@ def generate_hints(
     cumulative_vocab: Set[str],
 ) -> List[str]:
     """Return 2–4 step-by-step hint strings for the given multiplication problem."""
+    # A property item ("Is 5 × 6 the same as 6 × 5?") is keyed True/False and its
+    # `result` is a bookkeeping value, not a product. Until 2026-09-25 it fell through
+    # to the product chain and told pupils "The product of 5 × 6 = 6" (blind review of
+    # mat_g3_na_q3_1, 20 of 20; hint contract, `arithmetic`).
+    if values.get("task_type") in ("commutative", "associative", "distributive"):
+        return _property_hints(values)
+
     a = values["a"]
     b = values["b"]
     result = values["result"]
@@ -836,7 +858,11 @@ def generate_hints(
     hints.append(f"We need to {mul_phrase} {a} {count_noun(a, f'{times_phrase} {b}')}.")
 
     # Step 2: repeated addition breakdown (only practical for small b)
-    if b <= 5:
+    if b == 0:
+        # A zero factor has no repeated addition to show: this line used to render
+        # "Think of it as 0 groups of 6: ." with an empty sum (mat_g3_na_q3_1 seed 44).
+        hints.append(f"Think of it as 0 groups of {a}: there are no groups, so there is nothing to add.")
+    elif b <= 5:
         groups = " + ".join(str(a) for _ in range(b))
         hints.append(f"Think of it as {b} {count_noun(b, f'groups of {a}')}: {groups}.")
     else:
@@ -856,6 +882,44 @@ def generate_hints(
 
     return hints
 
+
+
+def _property_hints(values: Dict[str, Any]) -> List[str]:
+    a, b, c, holds = values["a"], values["b"], values["c"], values["answer"]
+    task = values["task_type"]
+    if task == "commutative":
+        x, y = values["rhs_factors"]
+        left, right = a * b, x * y
+        steps = [
+            (f"Both sides multiply the same two numbers, {a} and {b}, in a different order."
+             if holds else
+             f"The left side multiplies {a} and {b}. The right side multiplies {x} and {y}."),
+            f"{a} × {b} = {left} and {x} × {y} = {right}.",
+        ]
+    elif task == "associative":
+        x, y, z = values["rhs_factors"]
+        left, right = a * b * c, x * y * z
+        steps = [
+            f"Left side: first {a} × {b} = {a * b}, then {a * b} × {c} = {left}.",
+            f"Right side: first {y} × {z} = {y * z}, then {x} × {y * z} = {right}.",
+        ]
+    else:
+        left = a * (b + c)
+        right = a * b + a * c if holds else a * b + c
+        steps = [f"Left side: {b} + {c} = {b + c}, then {a} × {b + c} = {left}."]
+        if holds:
+            steps.append(f"Right side: {a} × {b} = {a * b} and {a} × {c} = {a * c}; "
+                         f"{a * b} + {a * c} = {right}.")
+        else:
+            steps.append(f"Right side: {a} × {b} = {a * b}, then {a * b} + {c} = {right}. "
+                         f"Only {b} was multiplied by {a}.")
+    if (left == right) != bool(holds):
+        raise ValueError(
+            f"multiplication.generate_hints: {task} sides work out to {left} and {right}, "
+            f"but the item is keyed {holds!r}"
+        )
+    steps.append("So the two sides are the same." if holds else "So the two sides are not the same.")
+    return steps
 
 # ─── DNA instance ─────────────────────────────────────────────────────────────
 

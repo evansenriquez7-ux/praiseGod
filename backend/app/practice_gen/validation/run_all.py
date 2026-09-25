@@ -127,13 +127,37 @@ ASSERTIONS = (
     # the line after. Two mutations, because the fix has two sites -- validate every
     # anchor first, and register each file before its write lands.
     "mutation_apply_is_all_or_nothing",      # tests/unit/test_mutation_killsafe.py
-    # A hint chain may not walk a pupil to a value its own final line denies
-    # (2026-09-23). Declared here for the same reason as the lines above -- its
-    # mutation drives ONE test file. Found by the first genuine schema-v2 blind
-    # review: `fractions.generate_hints` served add and subtract from one branch
-    # that hardcoded addition while printing the real answer, so 11 of 19 samples
-    # on mat_g3_na_q4_7 computed 3/6 and then asserted 1/6.
-    "fraction_hint_self_consistency",      # tests/unit/test_fraction_hint_consistency.py
+    # The hint contract (2026-09-25): a hint chain explains the item it serves. It
+    # replaced `fraction_hint_self_consistency`, which gated ONE dimension on ONE DNA
+    # after a blind review found add-hints on subtract items (mat_g3_na_q4_7, 11 of
+    # 19). The class was never fractions-specific: calendar hints asserting
+    # "27 - 24 = 4", division hints asserting "82 ÷ 2 = 0", descending sorts walked
+    # ascending, clock hands on timetables. One label per DIMENSION, because each is a
+    # separate way to be wrong and each is proven by its own planted defect; the rule
+    # itself is `backend/app/practice_gen/hint_contract.py`, called by the gate AND by
+    # `adapter.apply_formatter` on every served problem.
+    "hint_contract_arithmetic",            # tests/unit/test_hint_contract.py
+    "hint_contract_stated_result",         # tests/unit/test_hint_contract.py
+    "hint_contract_stated_answer",         # tests/unit/test_hint_contract.py
+    "hint_contract_open_equation",         # tests/unit/test_hint_contract.py
+    "hint_contract_direction",             # tests/unit/test_hint_contract.py
+    "hint_contract_unit",                  # tests/unit/test_hint_contract.py
+    "hint_contract_medium",                # tests/unit/test_hint_contract.py
+    "hint_contract_response",              # tests/unit/test_hint_contract.py
+    # Every visual schema is classified as a medium or unmediated -- the direction
+    # that fails on a NEW visual type rather than silently not covering it.
+    "hint_contract_visuals_classified",    # tests/unit/test_hint_contract.py
+    # The rule binds in production, not only in the gate.
+    "hint_contract_enforced_at_serving",   # tests/unit/test_hint_contract.py
+    # A hint builder that raises fails the item by name. `base_generator` swallowed
+    # these until 2026-09-25 and shipped the item with NO hints.
+    "hint_generation_fails_loud",          # tests/unit/test_hint_contract.py
+    # A property statement keyed False must be false (found by the contract's own
+    # guard: "Is (a × b) × 2 the same as a × (b × 2)?" keyed False at scalar 0.0).
+    "property_statement_key_matches_truth",  # tests/unit/test_hint_contract.py
+    # A filed review's `overall` follows from its own verdicts (2026-09-25). The filer is
+    # tests-side tooling, but the stored field feeds `legacy_review_queue.json`'s census.
+    "review_overall_matches_findings",      # tests/unit/test_file_reviews.py
     "contract_doc_matches_registry",
     "operator_doc_covers_registry",
     "two_direction_contract_match",

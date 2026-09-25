@@ -404,6 +404,13 @@ def generate_hints(
     cumulative_vocab: Set[str],
 ) -> List[str]:
     # Return step-by-step hint strings for the given missing-number problem.
+    if values.get("operation") == "equivalent":
+        # "a + b = c + ___" declares no `blank_position`. Until 2026-09-25 this
+        # function read it anyway, raised KeyError, and `base_generator` swallowed the
+        # error: every equivalent-expression item was served with no hints
+        # (mat_g1_na_q3_2).
+        return _equivalent_hints(values)
+
     a            = values["a"]
     b            = values["b"]
     result       = values["result"]
@@ -419,7 +426,7 @@ def generate_hints(
     op_symbol = {"addition": "+", "subtraction": "−",
                  "multiplication": "×", "division": "÷"}
 
-    sym = op_symbol.get(op, "?")
+    sym = op_symbol[op]
 
     if blank_pos == "result":
         return [
@@ -429,10 +436,21 @@ def generate_hints(
         ]
 
     if blank_pos == "change":
+        if op in ("subtraction", "division"):
+            # a − ___ = r is found by a − r, and a ÷ ___ = r by a ÷ r: the SAME
+            # operation, not the inverse. Until 2026-09-25 this branch always used the
+            # inverse with the operands reversed, printing "12 + 20 = 8" and
+            # "10 × 50 = 5" beside correct answers (hint contract, `arithmetic`).
+            return [
+                f"The {eq_lbl} is: {a} {sym} ___ = {result}",
+                f"Think: {a} {sym} what number gives {result}?",
+                f"{a} {sym} {result} = {missing}.",
+                f"Check: {a} {sym} {missing} = {result}. ✓",
+            ]
         return [
             f"The {eq_lbl} is: {a} {sym} ___ = {result}",
             f"To find the {miss_lbl}, use the opposite operation ({inv_op_lbl}).",
-            f"{result} {op_symbol.get(inv_op, '?')} {a} = {missing}.",
+            f"{result} {op_symbol[inv_op]} {a} = {missing}.",
             f"Check: {a} {sym} {missing} = {result}. ✓",
         ]
 
@@ -440,8 +458,24 @@ def generate_hints(
     return [
         f"The {eq_lbl} is: ___ {sym} {b} = {result}",
         f"Use {inv_op_lbl} to undo the operation.",
-        f"{result} {op_symbol.get(inv_op, '?')} {b} = {missing}.",
+        f"{result} {op_symbol[inv_op]} {b} = {missing}.",
         f"Check: {missing} {sym} {b} = {result}. ✓",
+    ]
+
+
+def _equivalent_hints(values: Dict[str, Any]) -> List[str]:
+    a, b, c, d = values["a"], values["b"], values["c"], values["d"]
+    total, sym = values["result"], values["equivalent_symbol"]
+    if sym == "+":
+        return [
+            f"Work out the side you know: {a} + {b} = {total}.",
+            f"The other side must also make {total}: {c} + ___ = {total}.",
+            f"{total} − {c} = {d}, so the missing number is {d}.",
+        ]
+    return [
+        f"Work out the side you know: {a} − {b} = {total}.",
+        f"The other side must also make {total}: {c} − ___ = {total}.",
+        f"{c} − {total} = {d}, so the missing number is {d}.",
     ]
 
 

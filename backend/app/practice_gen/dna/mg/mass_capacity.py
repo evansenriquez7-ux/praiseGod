@@ -361,8 +361,8 @@ def generate_hints(
         from_unit = values.get("from_unit", "g")
         to_unit   = values.get("to_unit", "kg")
         factor    = values.get("conversion_factor", 1000)
-        val       = values.get("value", "?")
-        ans       = values.get("answer", "?")
+        val       = values["value"]
+        ans       = values["answer"]
         if from_unit in ("g",):
             return [
                 f"1 {kg_label} = 1000 {g_label}.",
@@ -388,12 +388,38 @@ def generate_hints(
         ]
 
     if task_type == "compare":
-        a = values.get("value_a", "?")
-        b = values.get("value_b", "?")
-        unit = values.get("unit", "g")
+        a = values["value_a"]
+        b = values["value_b"]
+        unit = values["unit"]
+        more = "is heavier" if mtype == "mass" else "holds more"
         return [
             f"Compare the two measurements: {a} {unit} and {b} {unit}.",
-            f"The larger number is heavier (or holds more): {values['answer']} {unit}.",
+            f"The larger number {more}: {values['answer']} {unit}.",
+        ]
+
+    if task_type == "estimate":
+        # Until 2026-09-25 an estimate item fell through to the reading chain below:
+        # "Read the scale carefully. The mass shown is 23 g." on a text item with no
+        # scale, whose question asks for 23 g rounded (blind review / hint contract,
+        # `medium`, mat_g3_mg_q2_1 and q2_4).
+        value, step, answer = values["value"], values["round_to"], values["answer"]
+        unit = values["unit"]
+        low = (value // step) * step
+        high = low + step
+        if answer not in (low, high):
+            raise ValueError(
+                f"mass_capacity.generate_hints: {value} rounded to the nearest {step} "
+                f"lies between {low} and {high}, not at {answer!r}"
+            )
+        closer = (
+            f"{value} is exactly halfway, so it rounds up to {high}."
+            if value - low == high - value
+            else f"{value} is closer to {answer}."
+        )
+        return [
+            f"Count by {step}s: {value} is between {low} and {high}.",
+            closer,
+            f"So {value} {unit} is about {answer} {unit}.",
         ]
 
     # The reading hints must name the unit the item actually used. They used to
@@ -408,16 +434,24 @@ def generate_hints(
             f"the unit shown. values={values!r}"
         )
 
+    # The reading the INSTRUMENT DRAWS, from the formatter's own rule. `fmt_scale_read`
+    # snaps `value` onto a graduation before drawing it, so the drawn reading -- the
+    # served answer -- can differ from the raw value: seed 43 of mat_g3_mg_q2_0 drew
+    # 30 g while this hint said "The mass shown is 31 g" (hint contract, 2026-09-25).
+    # Calling that function rather than re-deriving the snap keeps ONE rule.
+    # `_scale_for` is idempotent (verified over readings 1..5000), so a value already
+    # on a graduation is unchanged. The "1000 g = 1 kg" reminder that used to close
+    # this chain is gone: it named a unit these items never show (`unit`).
+    from backend.app.practice_gen.formatters.visual.fmt_scale_read import _scale_for
+    reading = _scale_for(int(values["value"]))[0]
     if mtype == "mass":
         return [
-            f"Read the scale carefully.",
-            f"The mass shown is {values['value']} {unit}.",
-            f"Remember: 1000 {g_label} = 1 {kg_label}.",
+            "Read the scale: find the number the pointer points to.",
+            f"The mass shown is {reading} {unit}.",
         ]
     return [
-        f"Read the container's measurement carefully.",
-        f"The capacity shown is {values['value']} {unit}.",
-        f"Remember: 1000 {ml_label} = 1 {l_label}.",
+        "Read the measuring cylinder: find the mark at the top of the liquid.",
+        f"The capacity shown is {reading} {unit}.",
     ]
 
 

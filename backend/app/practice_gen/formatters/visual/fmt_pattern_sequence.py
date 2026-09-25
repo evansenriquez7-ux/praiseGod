@@ -334,8 +334,30 @@ def format_pattern_sequence(
             blank_target=ctx.blank_target,
         )
     elif ctx.values and "sequence" in ctx.values:
-        seq = ctx.values["sequence"]
-        missing_indices = ctx.values.get("missing_indices", [len(seq) - 1])
+        seq = list(ctx.values["sequence"])
+        # The patterns DNA declares ONE blank as `missing_index`; this branch used to
+        # read only the plural `missing_indices`, find nothing, and blank the LAST
+        # SHOWN term instead. So a "what comes next" item became "what is term 6",
+        # a missing-middle item became "what is the last term", the key moved with
+        # it, and the item's own hints -- built from the declared position --
+        # concluded "The answer is 10" on an item keyed 1 (hint contract,
+        # `stated_answer`, 2026-09-25: mat_g1_na_q3_6, mat_g2_na_q2_8,
+        # mat_g3_na_q3_5).
+        if "missing_indices" in ctx.values:
+            missing_indices = ctx.values["missing_indices"]
+        elif "missing_index" in ctx.values:
+            declared = ctx.values["missing_index"]
+            if declared == len(seq):
+                # "What comes next": the DNA shows every term but the asked one.
+                seq.append(ctx.values["answer"])
+            if not 0 <= declared < len(seq):
+                raise ValueError(
+                    f"format_pattern_sequence: node {ctx.node_id} seed {ctx.seed} declares "
+                    f"missing_index={declared} for a sequence of {len(seq)} terms"
+                )
+            missing_indices = [declared]
+        else:
+            missing_indices = [len(seq) - 1]
         element_type = ctx.values.get("element_type", "number")
         rule = ctx.values.get("rule", "Follow the pattern")
         # patterns.py's own generate_params already names the real

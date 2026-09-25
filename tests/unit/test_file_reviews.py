@@ -178,3 +178,19 @@ def test_preflight_does_not_mutate_reply_before_write(tmp_path, monkeypatch):
                        **kwargs)
     assert path.exists()
     assert "reviewer_identity" not in reply["sample_assessments"][0]
+
+
+def test_file_one_rejects_an_overall_its_findings_contradict(tmp_path, monkeypatch):
+    """mat_g2_mg_q2_2 was filed `overall: PASS` beside a CONCERN finding; the stored
+    field feeds the corpus census, so the contradiction overstated PASSes."""
+    reply = _reply()
+    reply["findings"]["variant_comprehensiveness"]["verdict"] = "CONCERN"
+    with pytest.raises(ValueError, match="contradicts the reply's own verdicts, which give 'CONCERN'"):
+        _file(tmp_path, monkeypatch, reply)
+
+
+def test_file_one_accepts_an_overall_that_follows_from_its_findings(tmp_path, monkeypatch):
+    reply = _reply()
+    reply["clause_evidence"][1]["verdict"] = "FAIL"
+    reply["overall"] = "FAIL"
+    assert json.loads(_file(tmp_path, monkeypatch, reply).read_text())["overall"] == "FAIL"

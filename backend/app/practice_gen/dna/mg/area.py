@@ -566,6 +566,10 @@ def generate_params(
                 "task_type": "find_area",
                 "answer": diff,
                 "answer_formula": "area2 - area1",
+                # Declared so the hints explain THIS problem (hint contract): a
+                # word problem labelled find_area carries no `sides`, and the
+                # hints used to print "? × ? = 15 sq m" for it.
+                "area_problem": "compare_area",
                 "l1": l1, "w1": w1, "l2": l2, "w2": w2,
                 "area1": area1, "area2": area2,
                 "question": q,
@@ -589,6 +593,11 @@ def generate_params(
                 "task_type": "find_area",
                 "answer": total_cost,
                 "answer_formula": "area * cost",
+                # Nested, not flat: the shared error-pattern step evaluates distractor
+                # formulas against every flat numeric key, so a new top-level `l` or
+                # `w` would silently change this item's options.
+                "area_problem": "cost_area",
+                "area_parts": {"l": l, "w": w, "area": rect_area, "cost": cost_per_sq},
                 "question": q,
                 "context": "word_problem",
             }
@@ -611,6 +620,8 @@ def generate_params(
                 "task_type": "find_area",
                 "answer": total,
                 "answer_formula": "area1 + area2",
+                "area_problem": "combined_area",
+                "area_parts": {"l1": l1, "w1": w1, "l2": l2, "w2": w2},
                 "question": q,
                 "context": "word_problem",
             }
@@ -700,22 +711,58 @@ def generate_hints(
     task_type  = values.get("task_type", "find_area")
 
     if task_type == "find_missing_dimension":
-        known_val = values.get("known_value", "?")
-        area      = values.get("area", "?")
+        known_val = values["known_value"]
+        area      = values["area"]
         return [
             f"The {area_label} = length × width.",
             f"We know the area is {area} {unit} and one side is {known_val}.",
             f"Divide: {area} ÷ {known_val} = {values['answer']}.",
         ]
 
-    sides = values.get("sides", {})
+    problem = values.get("area_problem")
+    if problem == "compare_area":
+        l1, w1, l2, w2 = values["l1"], values["w1"], values["l2"], values["w2"]
+        a1, a2 = l1 * w1, l2 * w2
+        return [
+            f"Plot A: {l1} × {w1} = {a1} {unit}.",
+            f"Plot B: {l2} × {w2} = {a2} {unit}.",
+            f"{a2} − {a1} = {values['answer']}, so Plot B is {values['answer']} {unit} larger.",
+        ]
+    if problem == "cost_area":
+        parts = values["area_parts"]
+        return [
+            f"First find the {area_label}: {parts['l']} × {parts['w']} = {parts['area']} {unit}.",
+            f"Each {unit} costs ₱{parts['cost']}: {parts['area']} × {parts['cost']} = {values['answer']}.",
+            f"The total cost is ₱{values['answer']}.",
+        ]
+    if problem == "combined_area":
+        parts = values["area_parts"]
+        a1, a2 = parts["l1"] * parts["w1"], parts["l2"] * parts["w2"]
+        return [
+            f"Bed 1: {parts['l1']} × {parts['w1']} = {a1} {unit}.",
+            f"Bed 2: {parts['l2']} × {parts['w2']} = {a2} {unit}.",
+            f"{a1} + {a2} = {values['answer']} {unit} in all.",
+        ]
+
+    if task_type == "derive_formula":
+        # The item shows worked cases and asks for the rule; it has no single shape's
+        # sides. It used to fall through to the chain below and print "? × ?".
+        worked = ", ".join(f"{x} × {y} = {z}" for x, y, z in values["cases"])
+        return [
+            f"Look at each {values['shape_noun']}: {worked}.",
+            f"Each {area_label} is the {values['dims_word']} multiplied together.",
+            f"So the rule is: {area_label} = {values['answer']}.",
+        ]
+
+    # Strict: a find_area item without its sides is a named error, never "? × ?".
+    sides = values["sides"]
     hints = [f"The {area_label} tells us how many unit squares cover the shape."]
 
     if shape == "square":
-        s = sides.get("s", "?")
+        s = sides["s"]
         hints.append(f"Area of a square = side × side = {s} × {s} = {values['answer']} {unit}.")
     else:
-        l, w = sides.get("l", "?"), sides.get("w", "?")
+        l, w = sides["l"], sides["w"]
         hints.append(f"Area of a rectangle = length × width = {l} × {w} = {values['answer']} {unit}.")
 
     return hints

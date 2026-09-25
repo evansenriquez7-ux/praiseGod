@@ -176,7 +176,8 @@ For every node, author all of the following:
 3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
    `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
    characters, and one or more cited `sample_ids` from this node. A missing capability may be
-   FAIL or CONCERN; never invent a supporting sample.
+   FAIL or CONCERN: cite the sample_ids you EXAMINED and found lacking it (the list may never
+   be empty), and never cite a sample as SUPPORTING a clause it does not support.
 4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
    otherwise CONCERN if any is CONCERN; otherwise PASS.
 

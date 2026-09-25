@@ -50,6 +50,16 @@ def _build_balance_params(ctx: QuestionContext, rng: random.Random) -> dict:
     b = vals.get("b")
     result = vals.get("result")
     blank_target = vals.get("blank_target", "result")
+    # missing_number declares WHERE the blank is in `blank_position` ("start" /
+    # "change" / "result"); its `blank_target` is the generic "missing_value", which
+    # matched none of the branches below and fell to the "b" case. So every
+    # missing-number balance put the blank second whatever the DNA had chosen, and
+    # the item's own hints -- built from the declared position -- explained a
+    # different equation (hint contract, 2026-09-25: mat_g1_na_q3_1 rendered
+    # "9 + ? = 20" beside the hint "___ + 11 = 20").
+    _POSITION_TO_TARGET = {"start": "a", "change": "b", "result": "result"}
+    if vals.get("blank_position") in _POSITION_TO_TARGET:
+        blank_target = _POSITION_TO_TARGET[vals["blank_position"]]
     operation = vals.get("operation", "addition")
 
     # If values are missing, generate grade-appropriate numbers

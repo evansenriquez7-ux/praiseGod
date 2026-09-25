@@ -28,6 +28,7 @@ from .dna.base import FormattedProblem, QuestionContext
 from .generators.base_generator import _import_dna_module, generate_context
 from .registry import get_node_dnas, get_node_info
 from backend.app.practice_gen.schemas.visuals import VisualSchemaRegistry
+from backend.app.practice_gen.hint_contract import enforce_hint_contract
 
 # ═══════════════════════════════════════════════════════════════════════════════
 
@@ -516,7 +517,14 @@ def apply_formatter(
     # Contract Validation
     if problem.is_visual and problem.visual_params:
         VisualSchemaRegistry.validate(problem.visual_type, problem.visual_params)
-        
+
+    # The hint contract: a hint chain must explain the item it is served with. Here,
+    # after the formatter, because only now are the medium (visual) and the response
+    # (interaction mode) known. Both the adapter and the orchestrator route through
+    # this function, and the gate calls the same `hint_chain_violations`, so the rule
+    # has one statement and cannot drift between entry points.
+    enforce_hint_contract(problem, formatter_name)
+
     return problem
 
 

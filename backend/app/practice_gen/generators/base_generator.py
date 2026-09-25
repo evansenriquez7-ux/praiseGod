@@ -635,12 +635,23 @@ def generate_context(
         distractors = keep
 
     # ── i. Hints ──────────────────────────────────────────────────────────────
+    # No try/except here. Until 2026-09-25 any exception raised by a DNA's
+    # `generate_hints` was swallowed and the item was served with NO hints -- a
+    # silent fallback (Protocol 3) that hid five hint builders reading keys their
+    # own task types never set (missing_number 'blank_position', patterns
+    # 'sequence', length_measurement 'value_a', addition 'result', place_value
+    # 'expanded_form'), and would have hidden every guard a hint builder raises when
+    # its chain would contradict the item. A hint failure is now a named error.
     hints: List[str] = []
     if hasattr(dna_module, "generate_hints"):
         try:
             hints = dna_module.generate_hints(values, cumulative_vocab)
-        except Exception:
-            pass
+        except Exception as exc:
+            from backend.app.practice_gen.hint_contract import HintGenerationError
+            raise HintGenerationError(
+                f"{dna.concept}.generate_hints failed for node={node_id} seed={seed} "
+                f"task_type={values.get('task_type')!r}: {type(exc).__name__}: {exc}"
+            ) from exc
 
     # ── j. Visual type / params ───────────────────────────────────────────────
     visual_type: Optional[str] = None

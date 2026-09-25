@@ -275,6 +275,8 @@ def generate_params(
                 "unit": unit,
                 "unit_type": unit_mode,
                 "task_type": "compare",
+                # Declared so the hints conclude in the direction ASKED (hint contract).
+                "comparison": comp_word,
                 "answer": answer,
                 "distractors": dists,
                 "question": f"Which is {comp_word}: {val_a} {unit_a} or {val_b} {unit_b}?",
@@ -306,6 +308,8 @@ def generate_params(
                 "unit": unit,
                 "unit_type": unit_mode,
                 "task_type": "compare",
+                # Declared so the hints conclude in the direction ASKED (hint contract).
+                "comparison": comp_word,
                 "answer": ans_val,
                 "distractors": dists,
                 "question": (
@@ -339,6 +343,8 @@ def generate_params(
                 "unit": unit,
                 "unit_type": unit_mode,
                 "task_type": "compare_distance",
+                # Declared so the hints conclude in the direction ASKED (hint contract).
+                "comparison": comp_word,
                 "answer": answer,
                 "distractors": dists,
                 "question": (
@@ -368,6 +374,8 @@ def generate_params(
                 "unit": unit,
                 "unit_type": unit_mode,
                 "task_type": "compare_distance",
+                # Declared so the hints conclude in the direction ASKED (hint contract).
+                "comparison": comp_word,
                 "answer": ans_val,
                 "distractors": dists,
                 "question": (
@@ -602,6 +610,7 @@ def generate_params(
             len_b = rng.randint(1, len_a - 1)
             unit_b = unit[:-1] if len_b == 1 and unit.endswith("s") else unit
             ans = len_a - len_b
+            word_operands, word_operation, word_measure = (len_a, len_b), "subtract", "length"
             q = f"{obj_a.capitalize()} is {len_a} {unit} long. {obj_b.capitalize()} is {len_b} {unit_b} long. How many {unit} longer is {obj_a} than {obj_b}?"
         elif problem_mode == "length_sum":
             obj_a, obj_b = rng.choice([
@@ -612,6 +621,7 @@ def generate_params(
             len_a = rng.randint(2, 5)
             len_b = rng.randint(2, 5)
             ans = len_a + len_b
+            word_operands, word_operation, word_measure = (len_a, len_b), "add", "length"
             q = f"{obj_a.capitalize()} is {len_a} {unit} long and {obj_b} is {len_b} {unit} long. If they are placed end to end, what is their total length in {unit}?"
         elif problem_mode == "dist_diff":
             loc_a, loc_b = rng.choice([
@@ -623,6 +633,7 @@ def generate_params(
             len_b = rng.randint(1, len_a - 1)
             unit_b = "step" if len_b == 1 else "steps"
             ans = len_a - len_b
+            word_operands, word_operation, word_measure = (len_a, len_b), "subtract", "distance"
             q = f"From the teacher's desk, it is {len_a} steps to {loc_a} and {len_b} {unit_b} to {loc_b}. How many steps farther is {loc_a} than {loc_b}?"
         else:  # dist_sum
             loc_a, loc_b = rng.choice([
@@ -634,6 +645,7 @@ def generate_params(
             len_a = rng.randint(2, 5)
             len_b = rng.randint(2, 5)
             ans = len_a + len_b
+            word_operands, word_operation, word_measure = (len_a, len_b), "add", "distance"
             name = rng.choice(["Ana", "Ben", "Carlo", "Dan", "Elena", "Mia", "Leo"])
             q = f"{name} walked {len_a} steps from {loc_a}, and then {len_b} steps from {loc_b}. How many steps did {name} walk in all?"
 
@@ -644,6 +656,11 @@ def generate_params(
             "unit": unit,
             "unit_type": "non_standard",
             "task_type": task_type,
+            # The arithmetic the item asks for, declared so the hints explain
+            # THIS problem rather than a ruler reading (hint contract).
+            "word_operands": list(word_operands),
+            "word_operation": word_operation,
+            "word_measure": word_measure,
             "answer": ans,
             "distractors": dists,
             "question": q,
@@ -797,6 +814,7 @@ def generate_params(
                         "the playground", "the school gate", "the gym"
                     ], 3)
                     ans = dist_a + dist_b
+                    word_operands, word_operation = (dist_a, dist_b), "add"
                     q = (
                         f"{name} walked {dist_a} m from {loc_a} to {loc_b}, and then walked {dist_b} m "
                         f"from {loc_b} to {loc_c}. What is the total distance {name} walked in meters?"
@@ -811,6 +829,7 @@ def generate_params(
                     if longer_val == shorter_val:
                         longer_val += 5
                     ans = longer_val - shorter_val
+                    word_operands, word_operation = (longer_val, shorter_val), "subtract"
                     q = (
                         f"The distance from the school gate to {dest_a} is {longer_val} m. "
                         f"The distance from the school gate to {dest_b} is {shorter_val} m. "
@@ -824,6 +843,9 @@ def generate_params(
                     "unit": "m",
                     "unit_type": "m",
                     "task_type": "solve_word_problem",
+                    "word_operands": list(word_operands),
+                    "word_operation": word_operation,
+                    "word_measure": "distance",
                     "answer": ans,
                     "distractors": dists,
                     "question": q,
@@ -844,6 +866,7 @@ def generate_params(
                 result["length_b"] = val_b
                 if mode == "length_sum":
                     ans = val_a + val_b
+                    word_operands, word_operation = (val_a, val_b), "add"
                     q = (
                         f"{obj_a[0].upper()}{obj_a[1:]} is {val_a} {unit_mode} long. "
                         f"{obj_b[0].upper()}{obj_b[1:]} is {val_b} {unit_mode} long. "
@@ -854,6 +877,7 @@ def generate_params(
                         (obj_a, val_a, obj_b, val_b) if val_a > val_b else (obj_b, val_b, obj_a, val_a)
                     )
                     ans = longer_val - shorter_val
+                    word_operands, word_operation = (longer_val, shorter_val), "subtract"
                     q = (
                         f"{longer_obj[0].upper()}{longer_obj[1:]} is {longer_val} {unit_mode} long. "
                         f"{shorter_obj[0].upper()}{shorter_obj[1:]} is {shorter_val} {unit_mode} long. "
@@ -863,6 +887,9 @@ def generate_params(
                 dists = [d for d in dists if d != ans][:3]
                 result.update({
                     "blank_target": "answer",
+                    "word_operands": list(word_operands),
+                    "word_operation": word_operation,
+                    "word_measure": "length",
                     "answer": ans,
                     "distractors": dists,
                     "question": q,
@@ -920,29 +947,66 @@ def generate_hints(
     # was mangled in 2026-09-12. Removed 2026-09-21 in favour of `dna.base.count_noun`,
     # which needs no cm/m exception because neither ends in "s". Note the ARGUMENT ORDER is
     # the opposite way round: `count_noun(count, plural)`.
+    #
+    # Every branch below reads the parameters `generate_params` DECLARED for this item
+    # (hint contract, 2026-09-25). Before that, compare items always concluded "the
+    # longer ... is <answer>" even when the item asked for the shorter one; the unit
+    # label was keyed on `unit_type`, so a metre item was explained in centimetres; and
+    # every task this function did not name -- estimation, conversion, word problems --
+    # fell through to "Read the measurement on the ruler carefully." on items that
+    # show no ruler (blind review of mat_g2_mg_q2_0 / q2_2 / q2_3).
 
-    # task_type-specific branches must be checked before the generic
-    # unit_type=="non_standard" fallback below -- "compare"/"equal_length"/
-    # "distance_between" can all report unit_type="non_standard" (G1) too,
-    # and the generic branch's "Count how many X fit along the object..."
-    # hint doesn't match what those task types actually ask.
+    def _unit_word(unit: str) -> str:
+        return unit_label.get(unit, unit)
+
     if task_type in ("compare", "compare_distance"):
-        val_a, val_b = values["value_a"], values["value_b"]
-        unit_word = unit_label.get(unit_type, values.get("unit", "units"))
+        val_a, val_b, answer = values["value_a"], values["value_b"], values["answer"]
+        comparison = values["comparison"]
+        want = min(val_a, val_b) if comparison == "shorter" else max(val_a, val_b)
+        if answer != want:
+            raise ValueError(
+                f"length_measurement.generate_hints: a '{comparison}' item comparing "
+                f"{val_a} and {val_b} serves {answer!r}"
+            )
+        unit_word = _unit_word(values["unit"])
+        measure = "distance" if task_type == "compare_distance" else "length"
         return [
             f"Compare {val_a} {count_noun(val_a, unit_word)} and {val_b} {count_noun(val_b, unit_word)}.",
             f"{max(val_a, val_b)} is more than {min(val_a, val_b)}.",
-            f"The longer {'distance' if task_type == 'compare_distance' else 'length'} is {values['answer']} {count_noun(values['answer'], unit_word)}.",
+            f"The {comparison} {measure} is {answer} {count_noun(answer, unit_word)}.",
         ]
 
     if task_type == "equal_length":
-        val_a, val_b = values["value_a"], values["value_b"]
-        unit_word = unit_label.get(unit_type, values.get("unit", "units"))
-        return [
-            f"Compare {val_a} {count_noun(val_a, unit_word)} and {val_b} {count_noun(val_b, unit_word)}.",
-            "Equal length means the same number of units, not just a similar look.",
-            f"{val_a} {count_noun(val_a, unit_word)} {'equals' if val_a == val_b else 'does not equal'} {val_b} {count_noun(val_b, unit_word)}, so the answer is {values['answer']}.",
-        ]
+        sub_task = values["sub_task"]
+        unit_word = _unit_word(values["unit"])
+        length, answer = values["length"], values["answer"]
+        if sub_task == "ruler_read_equality":
+            val_a, val_b = values["value_a"], values["value_b"]
+            return [
+                "Find how long each segment is: count the units from where it starts to where it ends.",
+                f"Segment A is {val_a} {count_noun(val_a, unit_word)} long. "
+                f"Segment B is {val_b} {count_noun(val_b, unit_word)} long.",
+                "Equal length means the same number of units, not the same start and end marks.",
+                f"{val_a} and {val_b} are {'the same' if val_a == val_b else 'not the same'}, so the answer is {answer}.",
+            ]
+        if sub_task == "draw_from_zero":
+            return [
+                f"Segment B must be {length} {count_noun(length, unit_word)} long, like Segment A.",
+                f"Starting at the 0 mark, count {length} {count_noun(length, unit_word)}: Segment B ends at the {answer} mark.",
+            ]
+        if sub_task == "draw_from_offset":
+            start = answer - length
+            return [
+                f"Segment B must be {length} {count_noun(length, unit_word)} long, like Segment A.",
+                f"Start at the {start} mark and count on {length}: {start} + {length} = {answer}.",
+            ]
+        if sub_task == "identify_matching_segment":
+            return [
+                f"The matching segment must be {length} {count_noun(length, unit_word)} long, like Segment A.",
+                "For each choice, count the units from where the segment starts to where it ends.",
+                f"Choose the one that is exactly {length} {count_noun(length, unit_word)} long.",
+            ]
+        raise ValueError(f"length_measurement.generate_hints: unknown equal_length sub_task {sub_task!r}")
 
     if task_type == "distance_between":
         unit = values.get("unit", "units")
@@ -950,6 +1014,69 @@ def generate_hints(
             f"Count how many {unit} fit in the gap between the two objects.",
             "Make sure no gaps or overlaps between the units.",
             f"The distance between them is {values['answer']} {count_noun(values['answer'], unit)}.",
+        ]
+
+    if task_type in ("solve_problems_non_standard", "solve_word_problem"):
+        a, b = values["word_operands"]
+        answer = values["answer"]
+        unit_word = _unit_word(values["unit"])
+        measure = values["word_measure"]
+        if values["word_operation"] == "add":
+            return [
+                f"The two {measure}s join together, so add them.",
+                f"{a} + {b} = {answer}.",
+                f"The total {measure} is {answer} {count_noun(answer, unit_word)}.",
+            ]
+        return [
+            f"To find how much {'farther' if measure == 'distance' else 'longer'} one is, "
+            f"take the smaller {measure} away from the bigger one.",
+            f"{a} - {b} = {answer}.",
+            # Not "difference": that word is NOT_YET_KNOWN at Grade 1 (§1D).
+            f"So one is {answer} {count_noun(answer, unit_word)} "
+            f"{'farther' if measure == 'distance' else 'longer'} than the other.",
+        ]
+
+    if task_type == "estimate":
+        length, step, answer = values["length"], values["round_to"], values["answer"]
+        unit_word = _unit_word(values["unit"])
+        low = (length // step) * step
+        high = low + step
+        if answer not in (low, high):
+            raise ValueError(
+                f"length_measurement.generate_hints: {length} rounded to the nearest "
+                f"{step} lies between {low} and {high}, not at {answer!r}"
+            )
+        closer = (
+            f"{length} is exactly halfway, so it rounds up to {high}."
+            if length - low == high - length
+            else f"{length} is closer to {answer}."
+        )
+        return [
+            f"Count by {step}s: {length} is between {low} and {high}.",
+            closer,
+            f"So {length} {count_noun(length, unit_word)} is about {answer} {count_noun(answer, unit_word)}.",
+        ]
+
+    if task_type == "choose_unit":
+        return [
+            f"Short things, like a pencil or an eraser, are measured in {cm_label}.",
+            f"Long lengths and distances, like a room or a road, are measured in {m_label}.",
+            f"So the better unit here is {_unit_word(values['answer'])}.",
+        ]
+
+    if task_type == "convert":
+        value, answer = values["value"], values["answer"]
+        from_word, to_word = _unit_word(values["from_unit"]), _unit_word(values["to_unit"])
+        if values["from_unit"] == "m":
+            return [
+                f"1 {m_label} is the same length as 100 {cm_label}.",
+                f"Each {m_label} is 100 {cm_label}, so {value} {count_noun(value, from_word)} "
+                f"is {answer} {count_noun(answer, to_word)}.",
+            ]
+        return [
+            f"100 {cm_label} make 1 {m_label}.",
+            f"Count the hundreds in {value}: {value} {count_noun(value, from_word)} "
+            f"is {answer} {count_noun(answer, to_word)}.",
         ]
 
     if unit_type == "non_standard":
@@ -975,6 +1102,11 @@ def generate_hints(
                 f"Answer: {values['answer']} {m_label}.",
             ]
 
+    if task_type != "read_measurement":
+        raise ValueError(
+            f"length_measurement.generate_hints: no hint chain for task_type {task_type!r}; "
+            f"the ruler-reading chain may only explain a ruler reading"
+        )
     return [
         f"Read the measurement on the ruler carefully.",
         f"The length is {values['answer']} "
