@@ -2299,8 +2299,8 @@ MUTATIONS: List[Mutation] = [
         ),
         edits={
             'backend/app/practice_gen/generators/base_generator.py': (
-                '            raise RuntimeError(\n                f"{dna.concept}.generate_hints failed',
-                '            hints = []  # planted mutation\n            if False: raise RuntimeError(\n                f"{dna.concept}.generate_hints failed',
+                '            raise HintGenerationError(\n                f"{dna.concept}.generate_hints failed',
+                '            hints = []  # planted mutation\n            if False: raise HintGenerationError(\n                f"{dna.concept}.generate_hints failed',
             )
         },
         command=["pytest", 'tests/unit/test_hint_contract.py::test_hint_generation_failure_is_loud', "-q"],
