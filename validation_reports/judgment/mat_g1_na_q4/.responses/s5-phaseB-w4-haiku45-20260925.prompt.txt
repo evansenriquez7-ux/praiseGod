@@ -1,0 +1,220 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-haiku45-pb4-mat_g1_na_q4_2-20260925
+
+Write one JSON object to:
+  local_only/scratch/phaseB/mat_g1_na_q4_2/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN: cite the sample_ids you EXAMINED and found lacking it (the list may never
+   be empty), and never cite a sample as SUPPORTING a clause it does not support.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-haiku45-pb4-mat_g1_na_q4_2-20260925",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== DISPATCH ADDENDUM (binding; read before judging) ==
+
+A. LENGTH. Every `rationale` and every `reasoning` string must be at least 60 characters and specific to
+   the node or sample it describes. Shorter strings are refused by the filing tool.
+
+B. QUOTING. Anything you put inside quotation marks must be a character-for-character substring of text
+   printed in the packet below. No paraphrase, summary, elision ("..."), placeholder, or comma-fragment
+   inside quotes, and never two quoted values joined by a dash. When in doubt, use NO quotation marks at
+   all and describe the text in your own words instead. An unmatched quote is treated as fabricated
+   evidence. The commonest failure: putting your OWN punctuation inside the quotes -- a trailing comma or
+   full stop that belongs to your sentence (write: the word "clock", never: "clock,"). Also never
+   quote a single ordinary word; quote only whole stems, hints or options, or nothing.
+
+C. THEMES. The generator deliberately themes items around a learner's chosen interest (26 curated
+   themes: names, objects, emoji, including religious and cultural themes). Do not judge whether a theme
+   is appropriate. Judge only whether the theming INTERFERES with the mathematics -- for example, a
+   wrapper that names a different object than the task counts, or a theme word that changes the meaning
+   of the question.
+
+D. HINTS. For every sample, compare each hint line against that sample's own stem, answer, options and
+   visual: does every equation in the hints hold, does the hint explain the question actually asked
+   (direction, unit, operation, which position is missing), and does it refer only to things the item
+   actually shows? A hint that contradicts or mis-describes its item is a sample-level defect.
+
+E. CITATIONS AND OVERALL. Every clause_evidence entry cites at least one sample_id; for a clause that
+   FAILs because something is absent, cite the sample_ids you examined. `overall` must follow the rule
+   in item 4 above exactly; the filing tool refuses a reply whose `overall` disagrees with its own
+   verdicts.
+
+Use only the Read tool on this prompt file and the Write tool for your one JSON reply. Do not open any
+other file.
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g1_na_q4_2
+PACKET DIGEST: b037124c2f76a2af48e3eea3676331801f256408209495f44caffc964f2c378c
+COMPETENCY (Grade 1, Quarter 4, None):
+Count halves and quarters.
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  count: Count
+  halves: halves
+  quarters: quarters
+
+SAMPLES (every one of these is real rendered output):
+  sample df0a4314b8dec61b335e  seed 42  [cloze]
+      stem:    What comes next when counting by halves: 1/2, ___?
+      answer:  2/2
+      options: 2/4 / 1/2 / 3/2 / 2/2
+      hints:   ["When adding fractions with the same bottom number, keep the bottom number the same.", "Add only the top numbers: 2 + 0 = 2.", "Put the result over the same bottom number: 2/2.", "The answer is 2/2."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 8531fb2d8e3617e37819  seed 43  [mcq]
+      stem:    Count by halves: 1/2, ___. What fraction comes next?
+      answer:  2/2
+      options: 1/2 / 2/2 / 2/4 / 3/2
+      hints:   ["When adding fractions with the same bottom number, keep the bottom number the same.", "Add only the top numbers: 2 + 0 = 2.", "Put the result over the same bottom number: 2/2.", "The answer is 2/2."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 44798595784e8e3c4cb8  seed 44  [cloze]
+      stem:    What fraction is missing when counting by quarters: 1/4, ___, 3/4, 4/4?
+      answer:  2/4
+      options: 3/4 / 2/4 / 4/4 / 1/4
+      hints:   ["When adding fractions with the same bottom number, keep the bottom number the same.", "Add only the top numbers: 2 + 0 = 2.", "Put the result over the same bottom number: 2/4.", "The answer is 2/4."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample a0499785465bdee37b2f  seed 45  [mcq]
+      stem:    Count by quarters: 2/4, 3/4, ___. What fraction comes next?
+      answer:  4/4
+      options: 3/4 / 5/4 / 4/2 / 4/4
+      hints:   ["When adding fractions with the same bottom number, keep the bottom number the same.", "Add only the top numbers: 4 + 0 = 4.", "Put the result over the same bottom number: 4/4.", "The answer is 4/4."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample d32584e423bd7c337896  seed 46  [mcq]
+      stem:    Count by halves: 1/2, ___. What fraction comes next?
+      answer:  2/2
+      options: 3/2 / 2/2 / 1/2 / 2/4
+      hints:   ["When adding fractions with the same bottom number, keep the bottom number the same.", "Add only the top numbers: 2 + 0 = 2.", "Put the result over the same bottom number: 2/2.", "The answer is 2/2."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 97197c11b8ead1d91ed3  seed 500  [mcq]
+      stem:    What fraction is missing when counting by quarters: 1/4, 2/4, ___, 4/4?
+      answer:  3/4
+      options: 3/4 / 2/4 / 1/4 / 4/4
+      hints:   ["When adding fractions with the same bottom number, keep the bottom number the same.", "Add only the top numbers: 3 + 0 = 3.", "Put the result over the same bottom number: 3/4.", "The answer is 3/4."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample e6dd48589586d66108ad  seed 501  [mcq]
+      stem:    What fraction is missing when counting by quarters: 1/4, 2/4, ___, 4/4?
+      answer:  3/4
+      options: 4/4 / 1/4 / 3/4 / 2/4
+      hints:   ["When adding fractions with the same bottom number, keep the bottom number the same.", "Add only the top numbers: 3 + 0 = 3.", "Put the result over the same bottom number: 3/4.", "The answer is 3/4."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample ff95bb2acf4e90873fa4  seed 502  [cloze]
+      stem:    What is the next fraction in the pattern: 1/4, 2/4, 3/4, ___?
+      answer:  4/4
+      options: 4/4 / 4/2 / 3/4 / 5/4
+      hints:   ["When adding fractions with the same bottom number, keep the bottom number the same.", "Add only the top numbers: 4 + 0 = 4.", "Put the result over the same bottom number: 4/4.", "The answer is 4/4."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 8e7efd0cbc49dd0b4b50  seed 601  [cloze]
+      stem:    What is the next fraction in the pattern: 1/2, ___?
+      answer:  2/2
+      options: 2/2 / 1/2 / 3/2 / 2/4
+      hints:   ["When adding fractions with the same bottom number, keep the bottom number the same.", "Add only the top numbers: 2 + 0 = 2.", "Put the result over the same bottom number: 2/2.", "The answer is 2/2."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample f6db1806b8bda8c3d068  seed 602  [cloze]
+      stem:    Count by quarters: 1/4, 2/4, 3/4, ___. What fraction comes next?
+      answer:  4/4
+      options: 3/4 / 4/4 / 4/2 / 5/4
+      hints:   ["When adding fractions with the same bottom number, keep the bottom number the same.", "Add only the top numbers: 4 + 0 = 4.", "Put the result over the same bottom number: 4/4.", "The answer is 4/4."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 262a6fdcb9a8a8e5dcf6  seed 700  [cloze]
+      stem:    What comes next when counting by halves: 1/2, ___?
+      answer:  2/2
+      options: 2/2 / 2/4 / 3/2 / 1/2
+      hints:   ["When adding fractions with the same bottom number, keep the bottom number the same.", "Add only the top numbers: 2 + 0 = 2.", "Put the result over the same bottom number: 2/2.", "The answer is 2/2."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 656bf9ceaa8bf7f3040e  seed 701  [mcq]
+      stem:    🐕 Boyong has a math challenge about fish food packets. What comes next when counting by quarters: 2/4, 3/4, ___?
+      answer:  4/4
+      options: 3/4 / 5/4 / 4/2 / 4/4
+      hints:   ["When adding fractions with the same bottom number, keep the bottom number the same.", "Add only the top numbers: 4 + 0 = 4.", "Put the result over the same bottom number: 4/4.", "The answer is 4/4."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample a82920fd4d36e813ae15  seed 702  [cloze]
+      stem:    🏀 Isko has a math challenge about basketballs. What comes next when counting by halves: 1/2, ___?
+      answer:  2/2
+      options: 1/2 / 3/2 / 2/2 / 2/4
+      hints:   ["When adding fractions with the same bottom number, keep the bottom number the same.", "Add only the top numbers: 2 + 0 = 2.", "Put the result over the same bottom number: 2/2.", "The answer is 2/2."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 010f28f37111ee8f2603  seed 800  [cloze]
+      stem:    What fraction is missing when counting by quarters: 1/4, ___, 3/4, 4/4?
+      answer:  2/4
+      options: 4/4 / 2/4 / 3/4 / 1/4
+      hints:   ["When adding fractions with the same bottom number, keep the bottom number the same.", "Add only the top numbers: 2 + 0 = 2.", "Put the result over the same bottom number: 2/4.", "The answer is 2/4."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 777e2b5af7b3f0938da0  seed 900  [mcq]
+      stem:    Count by halves: 1/2, ___. What fraction comes next?
+      answer:  2/2
+      options: 1/2 / 2/2 / 3/2 / 2/4
+      hints:   ["When adding fractions with the same bottom number, keep the bottom number the same.", "Add only the top numbers: 2 + 0 = 2.", "Put the result over the same bottom number: 2/2.", "The answer is 2/2."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 5f14a307d76991143b21  seed 901  [mcq]
+      stem:    What fraction is missing when counting by quarters: 1/4, 2/4, ___, 4/4?
+      answer:  3/4
+      options: 2/4 / 3/4 / 1/4 / 4/4
+      hints:   ["When adding fractions with the same bottom number, keep the bottom number the same.", "Add only the top numbers: 3 + 0 = 3.", "Put the result over the same bottom number: 3/4.", "The answer is 3/4."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 0ec51e216f6fab17bf3d  seed 1000  [cloze]
+      stem:    What fraction is missing when counting by quarters: 1/4, ___, 3/4, 4/4?
+      answer:  2/4
+      options: 2/4 / 1/4 / 3/4 / 4/4
+      hints:   ["When adding fractions with the same bottom number, keep the bottom number the same.", "Add only the top numbers: 2 + 0 = 2.", "Put the result over the same bottom number: 2/4.", "The answer is 2/4."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "hint_gated"}
+  sample ff8fca75fc1f71cdc2b5  seed 1001  [cloze]
+      stem:    What comes next when counting by halves: 1/2, ___?
+      answer:  2/2
+      options: 3/2 / 2/2 / 2/4 / 1/2
+      hints:   ["When adding fractions with the same bottom number, keep the bottom number the same.", "Add only the top numbers: 2 + 0 = 2.", "Put the result over the same bottom number: 2/2.", "The answer is 2/2."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "mastery_drill"}
+  sample d7dfdc97ed7065a4308a  seed 1002  [cloze]
+      stem:    What comes next when counting by quarters: 1/4, 2/4, 3/4, ___?
+      answer:  4/4
+      options: 4/2 / 4/4 / 3/4 / 5/4
+      hints:   ["When adding fractions with the same bottom number, keep the bottom number the same.", "Add only the top numbers: 4 + 0 = 4.", "Put the result over the same bottom number: 4/4.", "The answer is 4/4."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "scaffolded"}
+

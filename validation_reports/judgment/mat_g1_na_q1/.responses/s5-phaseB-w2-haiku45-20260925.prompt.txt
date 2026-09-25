@@ -5,10 +5,10 @@ generator source. Do not inspect repository source, existing reviews, answer key
 rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
 
 ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
-  blind-reviewer-haiku45-pb2-mat_g1_na_q1_4-20260925
+  blind-reviewer-haiku45-pb2-mat_g1_na_q1_9-20260925
 
 Write one JSON object to:
-  local_only/scratch/phaseB/mat_g1_na_q1_4/verdicts.json
+  local_only/scratch/phaseB/mat_g1_na_q1_9/verdicts.json
 
 For every node, author all of the following:
 
@@ -35,7 +35,7 @@ rejected as templating.
 
 Response shape:
 {
-  "reviewer": "blind-reviewer-haiku45-pb2-mat_g1_na_q1_4-20260925",
+  "reviewer": "blind-reviewer-haiku45-pb2-mat_g1_na_q1_9-20260925",
   "<node_id>": {
     "findings": {
       "competency_fulfillment": {
@@ -92,142 +92,233 @@ other file.
 == BLIND PACKET ==
 
 ==========================================================================
-NODE: mat_g1_na_q1_4
-PACKET DIGEST: 94b74b8c6a169c1149ad6bcf4882e55ba1ea2851ae347c61f88ca3350275651d
+NODE: mat_g1_na_q1_9
+PACKET DIGEST: dd4ff239f6317d51bccb79b1a9049e98f4ebd55a0d921683ac5c3c22dd59707b
 COMPETENCY (Grade 1, Quarter 1, None):
-Order numbers up to 20 from smallest to largest, and vice versa.
+Solve problems (given orally or in pictures) involving addition with sums up to 20.
 
 REQUIREMENTS (confirm this is a lossless decomposition of the competency):
-  order: Order
-  numbers: numbers
-  up_to_20: up to 20
-  smallest_to_largest: smallest to largest
-  vice_versa: vice versa
+  solve: Solve
+  problems: problems
+  pictures: pictures
+  addition: addition
+  sums_up_to_20: sums up to 20
 
 SAMPLES (every one of these is real rendered output):
-  sample b91eeaaf418cc501bfd7  seed 42  [sort_order]
-      stem:    Arrange these numbers from largest to smallest: 9, 10, 8
-      answer:  [10, 9, 8]
-      hints:   ["Numbers to order: 8, 9, 10.", "Find the largest number first, then the next largest.", "Ordered from greatest to least: 10, 9, 8."]
-      response: {"format": "sort_order", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
-  sample 8bcb15adaa92921f22b0  seed 43  [sort_order]
-      stem:    Ana counted marbles collected by 3 friends: 1, 4, 15. Arrange the counts from smallest to largest.
-      answer:  [1, 4, 15]
-      hints:   ["Numbers to order: 1, 4, 15.", "Find the smallest number first, then the next smallest.", "Ordered from least to greatest: 1, 4, 15."]
-      response: {"format": "sort_order", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
-  sample c73c3a01e162753330d0  seed 44  [ordering]
-      stem:    Arrange these numbers from smallest to largest: 5, 3, 1, 10
-      answer:  [1, 3, 5, 10]
-      hints:   ["Numbers to order: 1, 3, 5, 10.", "Find the smallest number first, then the next smallest.", "Ordered from least to greatest: 1, 3, 5, 10."]
-      response: {"format": "ordering", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
-  sample 4528d5bce60528a30ceb  seed 45  [sort_order]
-      stem:    Ana counted seashells collected by 3 friends: 1, 3, 4. Arrange the counts from largest to smallest.
-      answer:  [4, 3, 1]
-      hints:   ["Numbers to order: 1, 3, 4.", "Find the largest number first, then the next largest.", "Ordered from greatest to least: 4, 3, 1."]
-      response: {"format": "sort_order", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
-  sample 6d41b4c876c757656d94  seed 46  [ordering]
-      stem:    Arrange these numbers from smallest to largest: 17, 8, 20
-      answer:  [8, 17, 20]
-      hints:   ["Numbers to order: 8, 17, 20.", "Find the smallest number first, then the next smallest.", "Ordered from least to greatest: 8, 17, 20."]
-      response: {"format": "ordering", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
-  sample ac9fa94f67e0177608a1  seed 500  [sort_order]
-      stem:    Arrange these numbers from smallest to largest: 13, 20, 18
-      answer:  [13, 18, 20]
-      hints:   ["Numbers to order: 13, 18, 20.", "Find the smallest number first, then the next smallest.", "Ordered from least to greatest: 13, 18, 20."]
-      response: {"format": "sort_order", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
-  sample 5ca4fdcd62fb64ad020a  seed 501  [sort_order]
-      stem:    Arrange these numbers from largest to smallest: 20, 11, 17
-      answer:  [20, 17, 11]
-      hints:   ["Numbers to order: 11, 17, 20.", "Find the largest number first, then the next largest.", "Ordered from greatest to least: 20, 17, 11."]
-      response: {"format": "sort_order", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
-  sample 15ff5e9b0e7dbda4ae15  seed 502  [ordering]
-      stem:    Arrange these numbers from largest to smallest: 6, 14, 20
-      answer:  [20, 14, 6]
-      hints:   ["Numbers to order: 6, 14, 20.", "Find the largest number first, then the next largest.", "Ordered from greatest to least: 20, 14, 6."]
-      response: {"format": "ordering", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
-  sample 783ac5df4d5208e0fca2  seed 600  [sort_order]
-      stem:    Arrange these numbers from largest to smallest: 19, 20, 5
-      answer:  [20, 19, 5]
-      hints:   ["Numbers to order: 5, 19, 20.", "Find the largest number first, then the next largest.", "Ordered from greatest to least: 20, 19, 5."]
-      response: {"format": "sort_order", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
-  sample cb3c708535dfc2ee9fce  seed 601  [ordering]
-      stem:    Ben counted storybooks collected by 3 friends: 2, 10, 11. Arrange the counts from smallest to largest.
-      answer:  [2, 10, 11]
-      hints:   ["Numbers to order: 2, 10, 11.", "Find the smallest number first, then the next smallest.", "Ordered from least to greatest: 2, 10, 11."]
-      response: {"format": "ordering", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
-  sample 83d68354aba5baf9ac50  seed 602  [sort_order]
-      stem:    Arrange these numbers from smallest to largest: 7, 14, 12
-      answer:  [7, 12, 14]
-      hints:   ["Numbers to order: 7, 12, 14.", "Find the smallest number first, then the next smallest.", "Ordered from least to greatest: 7, 12, 14."]
-      response: {"format": "sort_order", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
-  sample 88736eb0fb0f29664594  seed 603  [sort_order]
-      stem:    Kuya Pat counted stickers collected by 4 friends: 1, 3, 7, 11. Arrange the counts from largest to smallest.
-      answer:  [11, 7, 3, 1]
-      hints:   ["Numbers to order: 1, 3, 7, 11.", "Find the largest number first, then the next largest.", "Ordered from greatest to least: 11, 7, 3, 1."]
-      response: {"format": "sort_order", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
-  sample e9af5a27b588bc9d299e  seed 604  [sort_order]
-      stem:    Maria counted seashells collected by 3 friends: 3, 5, 6. Arrange the counts from smallest to largest.
-      answer:  [3, 5, 6]
-      hints:   ["Numbers to order: 3, 5, 6.", "Find the smallest number first, then the next smallest.", "Ordered from least to greatest: 3, 5, 6."]
-      response: {"format": "sort_order", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
-  sample 93d6185fbbb19e378ac0  seed 605  [sort_order]
-      stem:    Ana counted marbles collected by 4 friends: 1, 6, 8, 10. Arrange the counts from largest to smallest.
-      answer:  [10, 8, 6, 1]
-      hints:   ["Numbers to order: 1, 6, 8, 10.", "Find the largest number first, then the next largest.", "Ordered from greatest to least: 10, 8, 6, 1."]
-      response: {"format": "sort_order", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
-  sample a5acc1de4f227afbdaf6  seed 606  [sort_order]
-      stem:    Arrange these numbers from largest to smallest: 12, 15, 17
-      answer:  [17, 15, 12]
-      hints:   ["Numbers to order: 12, 15, 17.", "Find the largest number first, then the next largest.", "Ordered from greatest to least: 17, 15, 12."]
-      response: {"format": "sort_order", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
-  sample a4f20e21a4e3e640da4a  seed 700  [sort_order]
-      stem:    Liza counted seashells collected by 3 friends: 1, 7, 17. Arrange the counts from smallest to largest.
-      answer:  [1, 7, 17]
-      hints:   ["Numbers to order: 1, 7, 17.", "Find the smallest number first, then the next smallest.", "Ordered from least to greatest: 1, 7, 17."]
-      response: {"format": "sort_order", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
-  sample 0294d5111445cade8127  seed 701  [ordering]
-      stem:    💃 Sir Rez has a math challenge about dance shoes. Arrange these numbers from largest to smallest: 19, 20, 8
-      answer:  [20, 19, 8]
-      hints:   ["Numbers to order: 8, 19, 20.", "Find the largest number first, then the next largest.", "Ordered from greatest to least: 20, 19, 8."]
-      response: {"format": "ordering", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
-  sample 348d2e2ba3c9ddb549e0  seed 702  [ordering]
-      stem:    🏀 Isko has a math challenge about basketballs. Arrange these numbers from largest to smallest: 5, 7, 9
-      answer:  [9, 7, 5]
-      hints:   ["Numbers to order: 5, 7, 9.", "Find the largest number first, then the next largest.", "Ordered from greatest to least: 9, 7, 5."]
-      response: {"format": "ordering", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
-  sample 053f6aa01bf7a1f947c0  seed 800  [ordering]
-      stem:    Arrange these numbers from smallest to largest: 1, 15, 14, 16
-      answer:  [1, 14, 15, 16]
-      hints:   ["Numbers to order: 1, 14, 15, 16.", "Find the smallest number first, then the next smallest.", "Ordered from least to greatest: 1, 14, 15, 16."]
-      response: {"format": "ordering", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
-  sample 896cdc42d5cb28888826  seed 801  [ordering]
-      stem:    Kuya Pat counted pencils collected by 3 friends: 13, 16, 20. Arrange the counts from largest to smallest.
-      answer:  [20, 16, 13]
-      hints:   ["Numbers to order: 13, 16, 20.", "Find the largest number first, then the next largest.", "Ordered from greatest to least: 20, 16, 13."]
-      response: {"format": "ordering", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
-  sample 12cc42a6c7b83dec140d  seed 900  [sort_order]
-      stem:    Arrange these numbers from largest to smallest: 2, 3, 1
-      answer:  [3, 2, 1]
-      hints:   ["Numbers to order: 1, 2, 3.", "Find the largest number first, then the next largest.", "Ordered from greatest to least: 3, 2, 1."]
-      response: {"format": "sort_order", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
-  sample 62a31f3e41a9618aa3c6  seed 901  [sort_order]
-      stem:    Arrange these numbers from smallest to largest: 2, 3, 1
-      answer:  [1, 2, 3]
-      hints:   ["Numbers to order: 1, 2, 3.", "Find the smallest number first, then the next smallest.", "Ordered from least to greatest: 1, 2, 3."]
-      response: {"format": "sort_order", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
-  sample f6701b82ec93b19b1001  seed 1000  [sort_order]
-      stem:    Arrange these numbers from largest to smallest: 17, 8, 7, 16
-      answer:  [17, 16, 8, 7]
-      hints:   ["Numbers to order: 7, 8, 16, 17.", "Find the largest number first, then the next largest.", "Ordered from greatest to least: 17, 16, 8, 7."]
-      response: {"format": "sort_order", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "hint_gated"}
-  sample b3e23904b97a4e55ea41  seed 1001  [ordering]
-      stem:    Arrange these numbers from largest to smallest: 8, 12, 18
-      answer:  [18, 12, 8]
-      hints:   ["Numbers to order: 8, 12, 18.", "Find the largest number first, then the next largest.", "Ordered from greatest to least: 18, 12, 8."]
-      response: {"format": "ordering", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "mastery_drill"}
-  sample 5a0baf5ce1cbad27aba7  seed 1002  [ordering]
-      stem:    Arrange these numbers from largest to smallest: 7, 9, 4
-      answer:  [9, 7, 4]
-      hints:   ["Numbers to order: 4, 7, 9.", "Find the largest number first, then the next largest.", "Ordered from greatest to least: 9, 7, 4."]
-      response: {"format": "ordering", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "scaffolded"}
+  sample aa43dda75a7bec3cacdf  seed 42  [true_false]
+      stem:    One group has 12 items and another group has 5 items. Putting them together makes 16 items in all. True or False?
+      answer:  False
+      hints:   ["We are adding two numbers: 12 and 5.", "Add the last digits: 2 + 5 = 7.", "Add the first digits: 1 + 0 = 1.", "The sum is 12 + 5 = 17."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 3d7fe2699a9c5a60b38e  seed 43  [mcq]
+      stem:    Start at 8. Count up 8 more. What number do you land on?
+      answer:  16
+      options: 15 / 16 / 26 / 17
+      hints:   ["We are adding two numbers: 8 and 8.", "Add the last digits: 8 + 8 = 16. Keep 6 and carry over 1.", "The sum is 8 + 8 = 16."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 1020631580c8402b9184  seed 44  [read_mcq]
+      stem:    🧁 — There is 1 cupcake.
+🧁🧁🧁🧁🧁🧁🧁🧁🧁🧁 — 10 more cupcakes are added.
+How many total cupcakes are there?
+      answer:  11
+      options: 12 / 10 / 1 / 11
+      hints:   ["We are adding two numbers: 1 and 10.", "Add the last digits: 1 + 0 = 1.", "Add the first digits: 0 + 1 = 1.", "The sum is 1 + 10 = 11."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 17, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🧁", "+"], "distinct_colours": ["hsl(var(--text-muted)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 79e5f998f99a836163b2  seed 45  [error_detect]
+      stem:    Pia solved: "Start at 11. Count up 4 more. You land on ___". Pia says the blank is 16. Is Pia correct?
+      answer:  {'has_error': True, 'correct_value': 15}
+      hints:   ["We are adding two numbers: 11 and 4.", "Add the last digits: 1 + 4 = 5.", "Add the first digits: 1 + 0 = 1.", "The sum is 11 + 4 = 15."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample 1a4c3bfc1aeeffb688f4  seed 46  [cloze]
+      stem:    Start at 9. Count up 9 more. You land on ___
+      answer:  18
+      options: 17 / 28 / 19 / 18
+      hints:   ["We are adding two numbers: 9 and 9.", "Add the last digits: 9 + 9 = 18. Keep 8 and carry over 1.", "The sum is 9 + 9 = 18."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 35ab6410debd58f4ad53  seed 47  [read_fill_in_blank]
+      stem:    The two parts are 7 and 12. What is the sum?
+      answer:  19
+      hints:   ["We are adding two numbers: 7 and 12.", "Add the last digits: 7 + 2 = 9.", "Add the first digits: 0 + 1 = 1.", "The sum is 7 + 12 = 19."]
+      response: {"format": "read_fill_in_blank", "is_visual": true, "visual_type": "NumberBond", "interaction_mode": "read", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  NumberBond
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberBond", "element_count": 7, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 1, "text_labels": ["7", "12"], "distinct_colours": ["hsl(var(--primary)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample d3e8f9043e155b503cb6  seed 70  [set_fill_in_blank]
+      stem:    Show 8 + 7 on the number line.
+      answer:  15
+      hints:   ["We are adding two numbers: 8 and 7.", "Add the last digits: 8 + 7 = 15. Keep 5 and carry over 1.", "The sum is 8 + 7 = 15."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 34, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "5", "10", "15", "20", "Your answer: Position", "Click track, drag dot, or use ← → arrow keys"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample d83eebad39b0c16444fa  seed 500  [read_mcq]
+      stem:    The dot is at 8 and it moves forward 7 numbers. Starting from 8, just count up 7 numbers. Which number will the dot land on?
+      answer:  15
+      options: 25 / 14 / 16 / 15
+      hints:   ["We are adding two numbers: 8 and 7.", "Add the last digits: 8 + 7 = 15. Keep 5 and carry over 1.", "The sum is 8 + 7 = 15."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 31, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "5", "10", "15", "20"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 725f87d8754dcb087e7f  seed 501  [set_fill_in_blank]
+      stem:    Show 10 + 7 on the number line.
+      answer:  17
+      hints:   ["We are adding two numbers: 10 and 7.", "Add the last digits: 0 + 7 = 7.", "Add the first digits: 1 + 0 = 1.", "The sum is 10 + 7 = 17."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 34, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "5", "10", "15", "20", "Your answer: Position", "Click track, drag dot, or use ← → arrow keys"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample ee88b54305f9c6ba581c  seed 502  [read_mcq]
+      stem:    🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨 — There are 17 paints.
+🎨🎨🎨 — 3 more paints are added.
+How many total paints are there?
+      answer:  20
+      options: 21 / 20 / 3 / 19
+      hints:   ["We are adding two numbers: 17 and 3.", "Add the last digits: 7 + 3 = 10. Keep 0 and carry over 1.", "Add the first digits: 1 + 0 + 1 = 2.", "The sum is 17 + 3 = 20."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 26, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🎨", "+"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text-muted)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 64ce8b563a974252b819  seed 601  [cloze]
+      stem:    One group has 10 items and another group has 7 items. Putting them together makes ___ items in all.
+      answer:  17
+      options: 16 / 27 / 17 / 18
+      hints:   ["We are adding two numbers: 10 and 7.", "Add the last digits: 0 + 7 = 7.", "Add the first digits: 1 + 0 = 1.", "The sum is 10 + 7 = 17."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample c068b5d037ee7555f20e  seed 602  [read_mcq]
+      stem:    The dot is at 17 and it moves forward 3 numbers. Starting from 17, just count up 3 numbers. Which number will the dot land on?
+      answer:  20
+      options: 30 / 20 / 21 / 19
+      hints:   ["We are adding two numbers: 17 and 3.", "Add the last digits: 7 + 3 = 10. Keep 0 and carry over 1.", "Add the first digits: 1 + 0 + 1 = 2.", "The sum is 17 + 3 = 20."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 31, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "5", "10", "15", "20"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 22509d6eaf400c423e8a  seed 603  [mcq]
+      stem:    Start at 12. Count up 4 more. What number do you land on?
+      answer:  16
+      options: 26 / 15 / 17 / 16
+      hints:   ["We are adding two numbers: 12 and 4.", "Add the last digits: 2 + 4 = 6.", "Add the first digits: 1 + 0 = 1.", "The sum is 12 + 4 = 16."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 69b4f8c6e69b681de091  seed 604  [error_detect]
+      stem:    Carlo solved: "6 + 14 = ___". Carlo says the blank is 20. Is Carlo correct?
+      answer:  {'has_error': False, 'correct_value': 20}
+      hints:   ["We are adding two numbers: 6 and 14.", "Add the last digits: 6 + 4 = 10. Keep 0 and carry over 1.", "Add the first digits: 0 + 1 + 1 = 2.", "The sum is 6 + 14 = 20."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample fb92c9110f073ffd6fb4  seed 605  [read_mcq]
+      stem:    The dot is at 11 and it moves forward 9 numbers. Starting from 11, just count up 9 numbers. Which number will the dot land on?
+      answer:  20
+      options: 20 / 30 / 19 / 21
+      hints:   ["We are adding two numbers: 11 and 9.", "Add the last digits: 1 + 9 = 10. Keep 0 and carry over 1.", "Add the first digits: 1 + 0 + 1 = 2.", "The sum is 11 + 9 = 20."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 31, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "5", "10", "15", "20"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 679b63c41e032447b17e  seed 606  [error_detect]
+      stem:    Manny solved: "Start at 6. Count up 2 more. You land on ___". Manny says the blank is 8. Is Manny correct?
+      answer:  {'has_error': False, 'correct_value': 8}
+      hints:   ["We are adding two numbers: 6 and 2.", "Add the last digits: 6 + 2 = 8.", "The sum is 6 + 2 = 8."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample acd5ba5adc56bad47418  seed 607  [read_mcq]
+      stem:    🏀🏀🏀 — There are 3 items.
+🏀🏀🏀🏀🏀 — 5 more items are added.
+How many total items are there?
+      answer:  8
+      options: 3 / 7 / 5 / 8
+      hints:   ["We are adding two numbers: 3 and 5.", "Add the last digits: 3 + 5 = 8.", "The sum is 3 + 5 = 8."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 14, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🏀", "+"], "distinct_colours": ["hsl(var(--text-muted)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample e6f5a4406ce4495fa34a  seed 608  [true_false]
+      stem:    One group has 16 items and another group has 1 item. Putting them together makes 18 items in all. True or False?
+      answer:  False
+      hints:   ["We are adding two numbers: 16 and 1.", "Add the last digits: 6 + 1 = 7.", "Add the first digits: 1 + 0 = 1.", "The sum is 16 + 1 = 17."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 5af7200cc426eeea2344  seed 700  [mcq]
+      stem:    One group has 8 items and another group has 3 items. If you put them together, how many items are there in all?
+      answer:  11
+      options: 11 / 10 / 21 / 12
+      hints:   ["We are adding two numbers: 8 and 3.", "Add the last digits: 8 + 3 = 11. Keep 1 and carry over 1.", "The sum is 8 + 3 = 11."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 7dac92ef99ca7d13dbd7  seed 701  [cloze]
+      stem:    🎨 Kuya Renz has a math challenge about sketchpads. Start at 18. Count up 1 more. You land on ___
+      answer:  19
+      options: 19 / 18 / 29 / 20
+      hints:   ["We are adding two numbers: 18 and 1.", "Add the last digits: 8 + 1 = 9.", "Add the first digits: 1 + 0 = 1.", "The sum is 18 + 1 = 19."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample f1e811be122b4be81474  seed 702  [read_mcq]
+      stem:    🏀 — There is 1 item.
+🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀 — 17 more items are added.
+How many total items are there?
+      answer:  18
+      options: 18 / 19 / 17 / 1
+      hints:   ["We are adding two numbers: 1 and 17.", "Add the last digits: 1 + 7 = 8.", "Add the first digits: 0 + 1 = 1.", "The sum is 1 + 17 = 18."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 24, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🏀", "and"], "distinct_colours": ["hsl(var(--text-muted)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 2955c14fc85b27a79f7e  seed 800  [read_fill_in_blank]
+      stem:    The two parts are 10 and 2. What is the sum?
+      answer:  12
+      hints:   ["We are adding two numbers: 10 and 2.", "Add the last digits: 0 + 2 = 2.", "Add the first digits: 1 + 0 = 1.", "The sum is 10 + 2 = 12."]
+      response: {"format": "read_fill_in_blank", "is_visual": true, "visual_type": "NumberBond", "interaction_mode": "read", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  NumberBond
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberBond", "element_count": 7, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 1, "text_labels": ["10", "2"], "distinct_colours": ["hsl(var(--primary)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample dbd5ac3c7dc00e419bee  seed 801  [read_mcq]
+      stem:    🏀🏀🏀🏀🏀🏀🏀🏀 — There are 8 items.
+🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀 — 10 more items are added.
+How many total items are there?
+      answer:  18
+      options: 10 / 18 / 19 / 17
+      hints:   ["We are adding two numbers: 8 and 10.", "Add the last digits: 8 + 0 = 8.", "Add the first digits: 0 + 1 = 1.", "The sum is 8 + 10 = 18."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 24, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🏀", "+"], "distinct_colours": ["hsl(var(--text-muted)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 0f7aff72b5f714a4c4c4  seed 900  [error_detect]
+      stem:    Noel solved: "Start at 1. Count up 1 more. You land on ___". Noel says the blank is 3. Is Noel correct?
+      answer:  {'has_error': True, 'correct_value': 2}
+      hints:   ["We are adding two numbers: 1 and 1.", "Add the last digits: 1 + 1 = 2.", "The sum is 1 + 1 = 2."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample f3c52472e54df340371c  seed 901  [set_fill_in_blank]
+      stem:    Show 1 + 1 on the number line.
+      answer:  2
+      hints:   ["We are adding two numbers: 1 and 1.", "Add the last digits: 1 + 1 = 2.", "The sum is 1 + 1 = 2."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 34, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "5", "10", "15", "20", "Your answer: Position", "Click track, drag dot, or use ← → arrow keys"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 7de56f03bf18b3c994ab  seed 1000  [mcq]
+      stem:    One group has 10 items and another group has 8 items. If you put them together, how many items are there in all?
+      answer:  18
+      options: 17 / 19 / 28 / 18
+      hints:   ["We are adding two numbers: 10 and 8.", "Add the last digits: 0 + 8 = 8.", "Add the first digits: 1 + 0 = 1.", "The sum is 10 + 8 = 18."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "hint_gated"}
+  sample c08cf9e583313699eabb  seed 1001  [read_mcq]
+      stem:    ✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️ — There are 14 items.
+✝️✝️ — 2 more items are added.
+How many total items are there?
+      answer:  16
+      options: 16 / 14 / 2 / 12
+      hints:   ["We are adding two numbers: 14 and 2.", "Add the last digits: 4 + 2 = 6.", "Add the first digits: 1 + 0 = 1.", "The sum is 14 + 2 = 16."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "mastery_drill"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 22, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["✝️", "and"], "distinct_colours": ["hsl(var(--text-muted)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 51f5a6950c03951b8819  seed 1002  [read_mcq]
+      stem:    🧁🧁 — There are 2 cupcakes.
+🧁 — 1 more cupcake is added.
+How many total cupcakes are there?
+      answer:  3
+      options: 4 / 2 / 3 / 1
+      hints:   ["We are adding two numbers: 2 and 1.", "Add the last digits: 2 + 1 = 3.", "The sum is 2 + 1 = 3."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "scaffolded"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 9, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🧁", "and"], "distinct_colours": ["hsl(var(--text-muted)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
 

@@ -1,0 +1,292 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-haiku45-pb6-mat_g2_mg_q4_2-20260925
+
+Write one JSON object to:
+  local_only/scratch/phaseB/mat_g2_mg_q4_2/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN: cite the sample_ids you EXAMINED and found lacking it (the list may never
+   be empty), and never cite a sample as SUPPORTING a clause it does not support.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-haiku45-pb6-mat_g2_mg_q4_2-20260925",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== DISPATCH ADDENDUM (binding; read before judging) ==
+
+A. LENGTH. Every `rationale` and every `reasoning` string must be at least 60 characters and specific to
+   the node or sample it describes. Shorter strings are refused by the filing tool.
+
+B. QUOTING. Anything you put inside quotation marks must be a character-for-character substring of text
+   printed in the packet below. No paraphrase, summary, elision ("..."), placeholder, or comma-fragment
+   inside quotes, and never two quoted values joined by a dash. When in doubt, use NO quotation marks at
+   all and describe the text in your own words instead. An unmatched quote is treated as fabricated
+   evidence. The commonest failure: putting your OWN punctuation inside the quotes -- a trailing comma or
+   full stop that belongs to your sentence (write: the word "clock", never: "clock,"). Also never
+   quote a single ordinary word; quote only whole stems, hints or options, or nothing.
+
+C. THEMES. The generator deliberately themes items around a learner's chosen interest (26 curated
+   themes: names, objects, emoji, including religious and cultural themes). Do not judge whether a theme
+   is appropriate. Judge only whether the theming INTERFERES with the mathematics -- for example, a
+   wrapper that names a different object than the task counts, or a theme word that changes the meaning
+   of the question.
+
+D. HINTS. For every sample, compare each hint line against that sample's own stem, answer, options and
+   visual: does every equation in the hints hold, does the hint explain the question actually asked
+   (direction, unit, operation, which position is missing), and does it refer only to things the item
+   actually shows? A hint that contradicts or mis-describes its item is a sample-level defect.
+
+E. CITATIONS AND OVERALL. Every clause_evidence entry cites at least one sample_id; for a clause that
+   FAILs because something is absent, cite the sample_ids you examined. `overall` must follow the rule
+   in item 4 above exactly; the filing tool refuses a reply whose `overall` disagrees with its own
+   verdicts.
+
+Use only the Read tool on this prompt file and the Write tool for your one JSON reply. Do not open any
+other file.
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g2_mg_q4_2
+PACKET DIGEST: 8f7fc56eae73e3bd7a0d94db167e0a33d0f0e2b3c7139ca569d0292aaa30dc90
+COMPETENCY (Grade 2, Quarter 4, None):
+Solve problems involving elapsed time (minutes in an hour, hours in a day, days in a week), including timetables.
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  solve_problems: Solve problems
+  elapsed_time: elapsed time
+  minutes_in_an_hour: minutes in an hour
+  hours_in_a_day: hours in a day
+  days_in_a_week: days in a week
+  timetables: timetables
+
+SAMPLES (every one of these is real rendered output):
+  sample a24c29572212ece18ba5  seed 42  [cloze]
+      stem:    A class started at 9:15 a.m. and ended at 9:35 a.m. How many minutes did it last?
+      answer:  20
+      options: 20 / 15 / 40 / 25
+      hints:   ["Start at 9:15 a.m. and count on by 5 minutes until you reach 9:35 a.m.", "From 9:15 a.m. to 9:35 a.m. is 20 minutes."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 6e9877a4fb6c81aff37c  seed 43  [mcq]
+      stem:    A movie started at 5:10 p.m. and ended at 5:50 p.m. How many minutes did it last?
+      answer:  40
+      options: 35 / 45 / 20 / 40
+      hints:   ["Start at 5:10 p.m. and count on by 5 minutes until you reach 5:50 p.m.", "From 5:10 p.m. to 5:50 p.m. is 40 minutes."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 192211be5d9d13121329  seed 44  [read_mcq]
+      stem:    Look at the bus timetable. According to the timetable, how many minutes is the travel time for Bus 1?
+      answer:  30
+      options: 30 / 40 / 20 / 45
+      hints:   ["Find the row for Bus 1 in the bus timetable.", "It starts at 7:00 a.m. and ends at 7:30 a.m.", "Count on from the start time to the end time: that is 30 minutes."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "Timetable", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  Timetable
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "Timetable", "element_count": 17, "svg_count": 0, "table_row_count": 3, "table_cell_count": 9, "button_count": 0, "input_count": 0, "text_labels": ["Bus", "Departs", "Arrives", "Bus 1", "7:00 a.m.", "7:30 a.m.", "Bus 2", "8:15 a.m.", "9:05 a.m."], "distinct_colours": ["#ffffff", "#334155", "#e2e8f0", "#0f172a"], "role_counts": {"timetable": 1, "timetable-header": 3, "timetable-row": 2}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample d6de205c8c248772ad00  seed 45  [mcq]
+      stem:    A school sports meet begins on Thursday and finishes on Saturday of the same week. How many days does the school sports meet run?
+      answer:  3
+      options: 3 / 5 / 4 / 2
+      hints:   ["Count the days from Thursday to Saturday. Count both Thursday and Saturday.", "Thursday, Friday, Saturday: that is 3 days."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 7b61e53a52a4a8da68af  seed 46  [mcq]
+      stem:    A soccer practice started at 12:45 p.m. and ended at 1:35 p.m. How many minutes did it last?
+      answer:  50
+      options: 50 / 10 / 45 / 55
+      hints:   ["Start at 12:45 p.m. and count on by 5 minutes until you reach 1:35 p.m.", "From 12:45 p.m. to 1:35 p.m. is 50 minutes."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample f8ffcffd8b3e78c21975  seed 500  [read_mcq]
+      stem:    Look at the class schedule. How many minutes long is the English class?
+      answer:  45
+      options: 40 / 50 / 45 / 30
+      hints:   ["Find the row for English in the class schedule.", "It starts at 9:00 a.m. and ends at 9:45 a.m.", "Count on from the start time to the end time: that is 45 minutes."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "Timetable", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  Timetable
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "Timetable", "element_count": 17, "svg_count": 0, "table_row_count": 3, "table_cell_count": 9, "button_count": 0, "input_count": 0, "text_labels": ["Subject", "Starts", "Ends", "Math", "8:00 a.m.", "9:00 a.m.", "English", "9:45 a.m."], "distinct_colours": ["#ffffff", "#334155", "#e2e8f0", "#0f172a"], "role_counts": {"timetable": 1, "timetable-header": 3, "timetable-row": 2}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample fa98c76d330217994544  seed 501  [mcq]
+      stem:    A 2-day school sports meet starts on Wednesday. On what day of the week does it end?
+      answer:  Thursday
+      options: Friday / Thursday / Tuesday / Monday
+      hints:   ["Start on Wednesday and call it day 1.", "Count on: day 1 is Wednesday, day 2 is Thursday.", "Day 2 is Thursday."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample d5a1f6d9108fc7a9595c  seed 502  [cloze]
+      stem:    A school sports meet begins on Tuesday and finishes on Friday of the same week. How many days does the school sports meet run?
+      answer:  4
+      options: 4 / 3 / 5 / 6
+      hints:   ["Count the days from Tuesday to Friday. Count both Tuesday and Friday.", "Tuesday, Wednesday, Thursday, Friday: that is 4 days."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample cc7749e45c615622bf4e  seed 600  [mcq]
+      stem:    An art workshop begins on Wednesday and finishes on Saturday of the same week. How many days does the art workshop run?
+      answer:  4
+      options: 4 / 3 / 6 / 5
+      hints:   ["Count the days from Wednesday to Saturday. Count both Wednesday and Saturday.", "Wednesday, Thursday, Friday, Saturday: that is 4 days."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 23f795e4b73ce135f97b  seed 601  [cloze]
+      stem:    The train journey ended at 5:00 p.m. after running for 6 hours. What time did it start?
+      answer:  11:00 a.m.
+      options: 11:00 a.m. / 10:00 a.m. / 5:00 p.m. / 12:00 a.m.
+      hints:   ["Start at 5:00 p.m. and count back 6 hours, one hour at a time.", "6 hours before 5:00 p.m. is 11:00 a.m."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 4ba528d6c7cab1c62534  seed 602  [read_mcq]
+      stem:    Look at the bus timetable. According to the timetable, how many minutes is the travel time for Bus 2?
+      answer:  60
+      options: 70 / 60 / 75 / 50
+      hints:   ["Find the row for Bus 2 in the bus timetable.", "It starts at 8:15 a.m. and ends at 9:15 a.m.", "Count on from the start time to the end time: that is 60 minutes."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "Timetable", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  Timetable
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "Timetable", "element_count": 17, "svg_count": 0, "table_row_count": 3, "table_cell_count": 9, "button_count": 0, "input_count": 0, "text_labels": ["Bus", "Departs", "Arrives", "Bus 1", "7:00 a.m.", "7:45 a.m.", "Bus 2", "8:15 a.m.", "9:15 a.m."], "distinct_colours": ["#ffffff", "#334155", "#e2e8f0", "#0f172a"], "role_counts": {"timetable": 1, "timetable-header": 3, "timetable-row": 2}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 8f9940b80d91cebb5dd7  seed 603  [mcq]
+      stem:    The community sports festival started at 10:00 a.m. and lasted for 6 hours. What time did it end?
+      answer:  4:00 p.m.
+      options: 10:00 a.m. / 4:00 p.m. / 5:00 p.m. / 3:00 p.m.
+      hints:   ["Start at 10:00 a.m. and count on 6 hours, one hour at a time.", "6 hours after 10:00 a.m. is 4:00 p.m."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 18100f66b242900f6a6d  seed 604  [cloze]
+      stem:    A soccer practice started at 10:25 a.m. and lasted 55 minutes. What time did it end?
+      answer:  11:20 a.m.
+      options: 12:20 a.m. / 11:20 a.m. / 11:30 a.m. / 10:25 a.m.
+      hints:   ["Start at 10:25 a.m. and count on 55 minutes, 5 minutes at a time.", "55 minutes after 10:25 a.m. is 11:20 a.m."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample cf4ed06a05d4772a574a  seed 605  [mcq]
+      stem:    The train journey started at 10:00 a.m. and lasted for 5 hours. What time did it end?
+      answer:  3:00 p.m.
+      options: 4:00 p.m. / 3:00 p.m. / 2:00 p.m. / 10:00 a.m.
+      hints:   ["Start at 10:00 a.m. and count on 5 hours, one hour at a time.", "5 hours after 10:00 a.m. is 3:00 p.m."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample de7bb5a1081c7f32b6ec  seed 606  [mcq]
+      stem:    A movie started at 5:30 p.m. and ended at 6:25 p.m. How many minutes did it last?
+      answer:  55
+      options: 60 / 50 / 5 / 55
+      hints:   ["Start at 5:30 p.m. and count on by 5 minutes until you reach 6:25 p.m.", "From 5:30 p.m. to 6:25 p.m. is 55 minutes."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 46cb5d2f03ec73b65044  seed 607  [cloze]
+      stem:    A soccer practice started at 8:25 a.m. and ended at 8:30 a.m. How many minutes did it last?
+      answer:  5
+      options: 10 / 5 / 55 / 1
+      hints:   ["Start at 8:25 a.m. and count on by 5 minutes until you reach 8:30 a.m.", "From 8:25 a.m. to 8:30 a.m. is 5 minutes."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample d7dbfc496841588aa049  seed 608  [cloze]
+      stem:    The museum tour ended at 2:00 p.m. after running for 3 hours. What time did it start?
+      answer:  11:00 a.m.
+      options: 2:00 p.m. / 11:00 a.m. / 12:00 a.m. / 10:00 a.m.
+      hints:   ["Start at 2:00 p.m. and count back 3 hours, one hour at a time.", "3 hours before 2:00 p.m. is 11:00 a.m."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 77c676c136803ca2e316  seed 609  [cloze]
+      stem:    A reading camp begins on Monday and finishes on Tuesday of the same week. How many days does the reading camp run?
+      answer:  2
+      options: 2 / 4 / 3 / 1
+      hints:   ["Count the days from Monday to Tuesday. Count both Monday and Tuesday.", "Monday, Tuesday: that is 2 days."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 2be6962668eae9b9f781  seed 700  [cloze]
+      stem:    The school library schedule ended at 12:00 p.m. after running for 5 hours. What time did it start?
+      answer:  7:00 a.m.
+      options: 8:00 a.m. / 7:00 a.m. / 6:00 a.m. / 12:00 p.m.
+      hints:   ["Start at 12:00 p.m. and count back 5 hours, one hour at a time.", "5 hours before 12:00 p.m. is 7:00 a.m."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample d865316f5d87791196f5  seed 701  [mcq]
+      stem:    💃 Kuya Ton has a math challenge about trophies. A science fair begins on Thursday and finishes on Friday of the same week. How many days does the science fair run?
+      answer:  2
+      options: 1 / 4 / 3 / 2
+      hints:   ["Count the days from Thursday to Friday. Count both Thursday and Friday.", "Thursday, Friday: that is 2 days."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample b600ff1bb39ad287377f  seed 702  [cloze]
+      stem:    🏀 Isko has a math challenge about basketballs. A swimming lesson started at 7:20 a.m. and lasted 20 minutes. What time did it end?
+      answer:  7:40 a.m.
+      options: 7:50 a.m. / 7:40 a.m. / 8:40 a.m. / 7:20 a.m.
+      hints:   ["Start at 7:20 a.m. and count on 20 minutes, 5 minutes at a time.", "20 minutes after 7:20 a.m. is 7:40 a.m."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 6f299206f4b2f25ab0a7  seed 800  [read_mcq]
+      stem:    Look at the bus timetable. According to the timetable, how many minutes is the travel time for Bus 2?
+      answer:  50
+      options: 40 / 60 / 50 / 65
+      hints:   ["Find the row for Bus 2 in the bus timetable.", "It starts at 8:15 a.m. and ends at 9:05 a.m.", "Count on from the start time to the end time: that is 50 minutes."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "Timetable", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  Timetable
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "Timetable", "element_count": 17, "svg_count": 0, "table_row_count": 3, "table_cell_count": 9, "button_count": 0, "input_count": 0, "text_labels": ["Bus", "Departs", "Arrives", "Bus 1", "7:00 a.m.", "7:45 a.m.", "Bus 2", "8:15 a.m.", "9:05 a.m."], "distinct_colours": ["#ffffff", "#334155", "#e2e8f0", "#0f172a"], "role_counts": {"timetable": 1, "timetable-header": 3, "timetable-row": 2}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 5913bf8237b7955bf39f  seed 900  [mcq]
+      stem:    The family road trip ended at 10:00 a.m. after running for 2 hours. What time did it start?
+      answer:  8:00 a.m.
+      options: 8:00 a.m. / 7:00 a.m. / 9:00 a.m. / 10:00 a.m.
+      hints:   ["Start at 10:00 a.m. and count back 2 hours, one hour at a time.", "2 hours before 10:00 a.m. is 8:00 a.m."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample af238b681d8c2c0f90bd  seed 901  [read_mcq]
+      stem:    Look at the class schedule. How many hours long is the Math class?
+      answer:  1
+      options: 3 / 1 / 2 / 4
+      hints:   ["Find the row for Math in the class schedule.", "It starts at 8:00 a.m. and ends at 9:00 a.m.", "Count on from the start time to the end time: that is 1 hour."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "Timetable", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  Timetable
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "Timetable", "element_count": 17, "svg_count": 0, "table_row_count": 3, "table_cell_count": 9, "button_count": 0, "input_count": 0, "text_labels": ["Subject", "Starts", "Ends", "Math", "8:00 a.m.", "9:00 a.m.", "English", "9:45 a.m."], "distinct_colours": ["#ffffff", "#334155", "#e2e8f0", "#0f172a"], "role_counts": {"timetable": 1, "timetable-header": 3, "timetable-row": 2}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample e68b6723e5024b633e1d  seed 1000  [read_mcq]
+      stem:    Look at the bus timetable. According to the timetable, how many minutes is the travel time for Bus 1?
+      answer:  45
+      options: 55 / 60 / 35 / 45
+      hints:   ["Find the row for Bus 1 in the bus timetable.", "It starts at 7:00 a.m. and ends at 7:45 a.m.", "Count on from the start time to the end time: that is 45 minutes."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "Timetable", "interaction_mode": "read", "answer_collection": "mcq", "experience": "hint_gated"}
+      visual:  Timetable
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "Timetable", "element_count": 17, "svg_count": 0, "table_row_count": 3, "table_cell_count": 9, "button_count": 0, "input_count": 0, "text_labels": ["Bus", "Departs", "Arrives", "Bus 1", "7:00 a.m.", "7:45 a.m.", "Bus 2", "8:15 a.m.", "9:00 a.m."], "distinct_colours": ["#ffffff", "#334155", "#e2e8f0", "#0f172a"], "role_counts": {"timetable": 1, "timetable-header": 3, "timetable-row": 2}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 2dc7984dc791d9bf64d7  seed 1001  [cloze]
+      stem:    A soccer practice started at 7:40 a.m. and ended at 8:15 a.m. How many minutes did it last?
+      answer:  35
+      options: 25 / 30 / 40 / 35
+      hints:   ["Start at 7:40 a.m. and count on by 5 minutes until you reach 8:15 a.m.", "From 7:40 a.m. to 8:15 a.m. is 35 minutes."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "mastery_drill"}
+  sample ded5f81fabaa0fbe473d  seed 1002  [read_mcq]
+      stem:    Look at the bus timetable. According to the timetable, how many minutes is the travel time for Bus 2?
+      answer:  40
+      options: 50 / 30 / 55 / 40
+      hints:   ["Find the row for Bus 2 in the bus timetable.", "It starts at 8:15 a.m. and ends at 8:55 a.m.", "Count on from the start time to the end time: that is 40 minutes."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "Timetable", "interaction_mode": "read", "answer_collection": "mcq", "experience": "scaffolded"}
+      visual:  Timetable
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "Timetable", "element_count": 17, "svg_count": 0, "table_row_count": 3, "table_cell_count": 9, "button_count": 0, "input_count": 0, "text_labels": ["Bus", "Departs", "Arrives", "Bus 1", "7:00 a.m.", "7:30 a.m.", "Bus 2", "8:15 a.m.", "8:55 a.m."], "distinct_colours": ["#ffffff", "#334155", "#e2e8f0", "#0f172a"], "role_counts": {"timetable": 1, "timetable-header": 3, "timetable-row": 2}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+
