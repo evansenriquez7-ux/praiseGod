@@ -1,7 +1,7 @@
 # Graph Report - ccmed  (2026-09-25)
 
 ## Corpus Check
-- 1235 files · ~2,789,360 words
+- 1235 files · ~2,789,402 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `9235185d`
+- Built from commit: `de44ae1b`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -914,7 +914,7 @@ Nodes (21): _generate_addition_examples(), _generate_comparing_examples(), _gene
 
 ### Community 103 - "Community 103"
 Cohesion: 0.03
-Nodes (62): 1. Distractor Non-Determinism Fix in `place_value.py`, 1. Fractions answer-key false positive — `mat_g2_na_q4_0`/`_1`/`_2`, 2026-08-13 — length_measurement: the largest FAIL cluster in the tree, 2026-08-14 — "2-digit by 1-digit" bounds two operands, and only one had a key, 2026-08-19 — Unit 3 completion + full `run_all` verification, 2026-08-20 (tick 6) — There is no pytest deadlock, and three tests I broke in tick 3, 2026-08-21 (tick 17) — §2B was guarding one direction only, 2026-08-23 — §6G: an attestation must show its work (+54 more)
+Nodes (61): 1. Distractor Non-Determinism Fix in `place_value.py`, 1. Fractions answer-key false positive — `mat_g2_na_q4_0`/`_1`/`_2`, 2026-08-13 — length_measurement: the largest FAIL cluster in the tree, 2026-08-14 — "2-digit by 1-digit" bounds two operands, and only one had a key, 2026-08-19 — Unit 3 completion + full `run_all` verification, 2026-08-23 — §6G: an attestation must show its work, 2026-08-23 — tick 24 — 90 clauses attested; the medium clauses are where the tree is thinnest, 2026-08-24 — tick 25 — 177 clauses attested; §6F UNATTESTED backlog reduced from 538 to 361 (+53 more)
 
 ### Community 104 - "Community 104"
 Cohesion: 0.12
@@ -2109,12 +2109,12 @@ Cohesion: 0.40
 Nodes (5): After, Plan step 2 — the packet allocation, and where this session stopped (2026-09-12), Session totals (2026-09-12), Two corrections to my own work, both caught by §8, VERIFICATION STATE AT HANDOFF — read this before trusting the tree
 
 ### Community 458 - "test_unprovided_capability_names_the_node_and_the_clause"
-Cohesion: 0.50
-Nodes (4): A wrong hypothesis, withdrawn rather than shipped, The sweep, Then reproduced properly, by replaying the matrix's own sweep, Tick 22 — 2026-08-22 — the range fix lands, and a third zero-factor path
+Cohesion: 0.40
+Nodes (5): 2026-08-21 (tick 17) — §2B was guarding one direction only, Fixed and proved, The 33 single-formatter nodes, surveyed, The gap I shipped, Why I did not broaden them this tick
 
 ### Community 475 - "2026-08-23 — tick 24 — 90 clauses attested; the medium clauses are where the tree is thinnest"
 Cohesion: 0.50
-Nodes (4): 2026-08-23 — tick 24 — 90 clauses attested; the medium clauses are where the tree is thinnest, batch023 → batch028: a verdict moved without being edited, Tooling, and the honesty problem it forced, What the blind verdicts found — the pattern is a medium, not a node
+Nodes (4): 2026-08-20 (tick 6) — There is no pytest deadlock, and three tests I broke in tick 3, New finding, quantified: the node formatter list advertises what the orchestrator refuses, The "deadlock" was a misdiagnosis, carried for five ticks, Three tests I broke in tick 3, invisible because run_all does not run pytest
 
 ## Knowledge Gaps
 - **2272 isolated node(s):** `graphify`, `PackageDescription`, `Foundation`, `PathKit`, `graphify-mcp` (+2267 more)
