@@ -1,0 +1,549 @@
+{
+  "reviewer": "blind-reviewer-haiku45-pb1-mat_g1_na_q1_0-20260925",
+  "mat_g1_na_q1_0": {
+    "findings": {
+      "cognitive_capacity": {
+        "verdict": "PASS",
+        "rationale": "Samples use number ranges (7 through 95) and require understanding of number sequence patterns appropriate for Grade 1 Q1 students. The task complexity—identifying next numbers in sequences and counting visible objects—matches cognitive expectations for this grade level without requiring advanced operations or concepts."
+      },
+      "competency_alignment": {
+        "verdict": "PASS",
+        "rationale": "Samples directly address the competency clauses: number sequence continuation tasks test counting up and down from given numbers; object-counting samples address the counting requirement; number-line identification and sequence continuation test identifying relative numbers. All samples are tightly mapped to the stated competency boundaries."
+      },
+      "competency_fulfillment": {
+        "verdict": "CONCERN",
+        "rationale": "While the requirements cover the competency text, three samples present a pedagogical misalignment: the stem asks students to count visible objects (cupcakes, paints) but the hint chain derives the answer from a number sequence pattern rather than explaining how to count the visual display. This splits the object-counting requirement into two approaches without clarity.",
+        "decomposition": {
+          "verdict": "CONCERN",
+          "reasoning": "The printed requirements list count_objects_to_a_total separately from the sequence-based requirements. Three samples (b50f7f95899820531945, 1e26b196d6b827f9492a, 1c3d94dbc9f18786bb60) materialize count_objects_to_a_total by showing an object group and asking for the count, but then explain the solution via number pattern hints (74-75-76-77-?). This creates an inconsistency: the requirement is satisfied in form but the hint logic teaches a different strategy than direct object counting, leaving ambiguity about what the student learns."
+        }
+      },
+      "comprehensive_coverage": {
+        "verdict": "PASS",
+        "rationale": "The packet covers all seven requirements: forward counting sequences (samples c41b602a6a30ee5738d2, 82528cc28013d59531c4, 79d4e8ae575054f4abd3), backward counting (07f9bd92dad31ed7be26, d6804a0f9284b0886ec6, c1ff17b361429435088d), object counting (b50f7f95899820531945, 1e26b196d6b827f9492a, 1c3d94dbc9f18786bb60), identifying relative numbers via number-line tasks (ebca5e8451c9d8ccaac5, 1ef2e785f2d8da7ab45f, cdaf4fa72ad14dc6a03a), and range coverage from single digits to the 90s."
+      },
+      "scale_appropriateness": {
+        "verdict": "PASS",
+        "rationale": "Difficulty progression and number ranges align with Grade 1 Q1 scope. Numbers range up to 100 as specified; sequences use consistent +1/-1 patterns; no multi-step operations or extraneous vocabulary beyond what Grade 1 expects. The packet is scaled appropriately for this curriculum point."
+      },
+      "variant_comprehensiveness": {
+        "verdict": "PASS",
+        "rationale": "Samples include three interaction formats (read_mcq with visual, mcq without visual, cloze fill-in), two visual types (NumberLine, EmojiPictorial), multiple number ranges (7–100), both forward and backward progressions, and varying themes. The cross-product of formats and contexts is well-populated for a Grade 1 node."
+      }
+    },
+    "sample_assessments": [
+      {
+        "sample_id": "ebca5e8451c9d8ccaac5",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem 'What number is marked?' clearly refers to the NumberLine visual. The task is unambiguous: read the marked position on the number line. The sequence shows 10–20 with one position blank, and the student identifies it."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Identifying a marked position on a number line is a logically coherent Grade 1 task. The context is abstract (a number line) and appropriate; the question addresses exactly what the visual displays."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The language is simple and direct. A Grade 1 student familiar with number lines can understand 'What number is marked?' The visual is static and shows a clear sequence with one gap."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The sequence 20, 19, 18, 17, ? decreases by 1 each step. The answer 16 is correct. Hints accurately describe the pattern: 20 − 19 = 1, consistent decrement, 17 − 1 = 16. All arithmetic is sound."
+          }
+        }
+      },
+      {
+        "sample_id": "07f9bd92dad31ed7be26",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem 'What number comes next when counting backward: 42, 41, 40, 39, ___?' is unambiguous. It explicitly names backward counting and shows a partial sequence. The task is to supply the next number."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Backward counting from a given starting point is a direct match to the competency 'count_backward_from_a_given_number.' The context is logically sound and pedagogically appropriate."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Language and structure are Grade 1 appropriate. The sequence is displayed clearly with a blank space. No ambiguous wording or unexplained concepts."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Sequence: 42, 41, 40, 39, ? with answer 38. Each step subtracts 1. Hints correctly identify the pattern (42 − 41 = 1) and the final step (39 − 1 = 38). Mathematically correct."
+          }
+        }
+      },
+      {
+        "sample_id": "b50f7f95899820531945",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem 'Count the cupcakes. How many cupcakes are there in all?' is clear in intent: count the displayed objects and report the total. The parenthetical '(Large group of 78 cupcakes)' provides context."
+          },
+          "contextual_logical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "The stem asks the student to count a visual group of cupcakes, but the hints explain the answer via a number sequence (74, 75, 76, 77, ?) that may not be visible or explicitly used in the object-counting task. The hint strategy contradicts the stem's framing, creating a mismatch between the question posed and the solution explained."
+          },
+          "learner_facing_clarity": {
+            "verdict": "CONCERN",
+            "reasoning": "A student reading 'Count the cupcakes' expects to use a counting strategy on the visual. The hints instead teach deriving the answer from a number pattern. This split between stated task and hint explanation may confuse Grade 1 learners about what skill they are developing."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The answer 78 is mathematically correct. The number sequence hints (74 + 1 = 75, 75 + 1 = 76, ..., 77 + 1 = 78) are arithmetically sound. The hidden number in the pattern equals the cupcake count, but the hint method bypasses the stated counting task."
+          }
+        }
+      },
+      {
+        "sample_id": "c41b602a6a30ee5738d2",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem 'What number comes next when counting: 58, 59, 60, 61, ___?' is clear. It specifies forward counting (implied by the increasing sequence) and asks for the next number. No ambiguity."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Forward counting from a starting point is a direct competency task. The context is abstract but logically valid and age-appropriate."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Language is simple and direct for Grade 1. The sequence is displayed with a blank. No unclear wording."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Sequence increments by 1: 58, 59, 60, 61, then 62. Hints correctly identify the pattern and the solution (61 + 1 = 62). All arithmetic is correct."
+          }
+        }
+      },
+      {
+        "sample_id": "d6804a0f9284b0886ec6",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The cloze stem 'What comes next: 77, 76, 75, 74, ___' clearly asks for the next number in a backward sequence. The format and task are unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Backward counting task in an abstract sequence context is logically sound and aligns with competency requirements."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Simple, Grade 1–appropriate language and format. Clear sequence with blank space to fill."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Sequence decreases by 1 each step: 77, 76, 75, 74, then 73. Hints correctly identify the pattern (77 − 76 = 1, subtract 1 each time, 74 − 1 = 73). Correct."
+          }
+        }
+      },
+      {
+        "sample_id": "1ef2e785f2d8da7ab45f",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem 'What number is marked?' refers to a marked position on a NumberLine visual. The task is clear and unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Reading a marked position on a number line is a logically valid Grade 1 task and aligns with identifying numbers in a visual context."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Straightforward language and visual format. A Grade 1 student can understand and respond to this task type."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "NumberLine shows 77–90 with one marked position. Sequence increments by 1: 77, 78, 79, 80, then 81. Hints are correct (78 − 77 = 1, add 1 each time, 80 + 1 = 81). Mathematically sound."
+          }
+        }
+      },
+      {
+        "sample_id": "82528cc28013d59531c4",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem 'What number comes next when counting: 90, 91, 92, 93, ___?' is clear in asking for the next number in a forward counting sequence."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Forward counting from a given number is directly aligned with competency requirements and logically coherent."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Grade 1–appropriate language. Sequence is clearly displayed with a blank to fill."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Sequence: 90, 91, 92, 93, then 94. Each step adds 1. Hints correctly identify the pattern and solution (93 + 1 = 94). Correct."
+          }
+        }
+      },
+      {
+        "sample_id": "1e26b196d6b827f9492a",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem 'Count the paints. How many paints are there in all?' is clear: count the displayed paints and report the total."
+          },
+          "contextual_logical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "Like sample b50f7f95899820531945, the stem frames the task as counting visible objects, but the hints solve via a number sequence (31, 32, 33, 34, 35) rather than explaining how to count the visual. This mismatch between the stated task and the hint strategy creates confusion about what skill is being practiced."
+          },
+          "learner_facing_clarity": {
+            "verdict": "CONCERN",
+            "reasoning": "A Grade 1 student sees 'Count the paints' and expects to learn a counting strategy. The hints instead derive the answer from a number pattern, potentially teaching two different approaches without clarity about when to use each."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The answer 35 is correct. The number sequence hints (31 + 1 = 32, ..., 34 + 1 = 35) are arithmetically sound. The pattern yields the correct total, even though the hint method differs from counting-based problem-solving."
+          }
+        }
+      },
+      {
+        "sample_id": "c92896249b74b016b342",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem 'Moses is counting backward by 1 starting from 95. The count is: 95, 94, 93, 92. What is the next number Moses should say?' is unambiguous. It names the person, the direction, the pattern, and asks for the next number in sequence."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A personalized counting challenge is logically coherent and age-appropriate. The context does not interfere with the mathematical task."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Language is clear and Grade 1–friendly. The personalization (Moses) adds context without obscuring the task. The sequence is explicit."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Backward sequence: 95, 94, 93, 92, then 91. Each step subtracts 1. Hints correctly identify the pattern and solution (92 − 1 = 91). Correct."
+          }
+        }
+      },
+      {
+        "sample_id": "d55fbcf301c104568405",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem 'What number comes next when counting: 31, 32, 33, 34, ___?' is unambiguous. It asks for the next number in the forward sequence."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Forward counting is directly aligned with competency and logically sound."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The sequence 31, 32, 33, 34 uses Grade 1–appropriate language. Students can clearly identify where the blank falls and understand the counting direction."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Sequence: 31, 32, 33, 34, then 35. Each step adds 1. Hints correctly identify the pattern and solution (34 + 1 = 35). Correct."
+          }
+        }
+      },
+      {
+        "sample_id": "d0a7ed0e488e236776c7",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem 'What number comes next when counting backward: 78, 77, 76, 75, ___?' is clear. It names the direction and asks for the next number."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Backward counting task is logically valid and competency-aligned."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem clearly indicates backward counting from 78 through 75, and the blank position is unambiguous. Language is Grade 1–appropriate for a sequence task with explicit direction stated."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Sequence decreases by 1: 78, 77, 76, 75, then 74. Hints correctly identify the pattern and solution (75 − 1 = 74). Correct."
+          }
+        }
+      },
+      {
+        "sample_id": "c1ff17b361429435088d",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem 'What number comes next when counting backward: 32, 31, 30, 29, ___?' is unambiguous in asking for the next backward count."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Backward counting from 32 descending to 29 is logically sound and aligns with competency requirements."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Simple language and clear format for Grade 1. Sequence displayed with blank to identify the next number in backward progression."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Sequence: 32, 31, 30, 29, then 28. Each step subtracts 1. Hints correctly identify the pattern and solution (29 − 1 = 28). Correct."
+          }
+        }
+      },
+      {
+        "sample_id": "e2a730869fdb5b7eec2a",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem '💃 Sir Rez has a math challenge about dance shoes. What comes next: 80, 81, 82, 83, ___' is clear. The emoji and personalization set context; the task is to find the next number in the sequence."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Personalization with a person name and theme (dance shoes) does not interfere with the mathematical task. The context is coherent and age-appropriate."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Grade 1–friendly language. Personalization adds engagement without obscuring the task. The sequence is clear."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Sequence: 80, 81, 82, 83, then 84. Each step adds 1. Hints correctly identify the pattern and solution (83 + 1 = 84). Correct."
+          }
+        }
+      },
+      {
+        "sample_id": "20e066f7816bd5dcfda7",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem '🧁 Ate Nena has a math challenge about loaves of bread. What comes next: 39, 38, 37, 36, ___' asks clearly for the next number in the sequence."
+          },
+          "contextual_logical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "The emoji is 🧁 (cupcake) but the text refers to 'loaves of bread.' This mismatch between the visual symbol and the narrative context creates a potential interference: the emoji represents one object type while the text names a different one. Per prompt guidance on theming: does the theme interfere with the mathematics? Here, the emoji–text mismatch may distract Grade 1 learners or create confusion about what object category is relevant."
+          },
+          "learner_facing_clarity": {
+            "verdict": "CONCERN",
+            "reasoning": "A Grade 1 student sees a cupcake emoji (🧁) next to 'loaves of bread.' This inconsistency may cause confusion: is the challenge about cupcakes or bread? The mismatch reduces learner-facing clarity even though the mathematical task remains solvable."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Sequence: 39, 38, 37, 36, then 35. Each step subtracts 1. Hints correctly identify the pattern and solution (36 − 1 = 35). Mathematically correct, independent of the emoji–text mismatch."
+          }
+        }
+      },
+      {
+        "sample_id": "61b137578376d2315f81",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The cloze stem 'What comes next: 85, 86, 87, 88, ___' is unambiguous. It asks for the next number in a forward sequence."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Forward counting from a given starting point (85 through 88) is logically sound and aligned with competency requirements for Grade 1 mathematics."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The sequence 85, 86, 87, 88 uses Grade 1–appropriate language and format. The blank position is clear and the forward counting direction is explicit."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Sequence: 85, 86, 87, 88, then 89. Each step adds 1. Hints correctly identify the pattern and solution (88 + 1 = 89). Correct."
+          }
+        }
+      },
+      {
+        "sample_id": "33fc23c3197bfe6ea3bc",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem 'What number comes next when counting backward: 12, 11, 10, 9, ___?' is clear in asking for the next backward count."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Backward counting is logically valid and competency-aligned."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Language is simple for Grade 1; the task is to identify what comes after 9 in a backward sequence starting from 12. Sequence and blank are clearly marked."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Sequence: 12, 11, 10, 9, then 8. Each step subtracts 1. Hints correctly identify the pattern and solution (9 − 1 = 8). Correct."
+          }
+        }
+      },
+      {
+        "sample_id": "79d4e8ae575054f4abd3",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem 'What number comes next when counting: 7, 8, 9, 10, ___?' is unambiguous in asking for the next forward count."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Forward counting from a small starting point (7, 8, 9, 10) is logically sound and directly aligned with the competency requirement for Grade 1 mathematics."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The starting numbers 7, 8, 9, 10 are within Grade 1 range. Language is simple and direct, with a clear blank to fill in the forward counting pattern."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Sequence: 7, 8, 9, 10, then 11. Each step adds 1. Hints correctly identify the pattern and solution (10 + 1 = 11). Correct."
+          }
+        }
+      },
+      {
+        "sample_id": "cdaf4fa72ad14dc6a03a",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem 'What number is marked?' clearly refers to the NumberLine visual. The task is unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Identifying a marked position on a number line is logically valid and age-appropriate."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Straightforward language and visual format. Grade 1 student can understand and complete this task type."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "NumberLine shows 30–40 with one marked position. Sequence increments by 1: 30, 31, 32, 33, then 34. Hints correctly identify the pattern and solution (33 + 1 = 34). Correct."
+          }
+        }
+      },
+      {
+        "sample_id": "2d6d092131d2bce457d7",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The cloze stem 'What comes next: 48, 47, 46, 45, ___' is unambiguous in asking for the next number in a backward sequence."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Backward counting task is logically sound and aligned with competency."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The backward sequence starting at 48, descending through 45, uses clear Grade 1–appropriate format with an unambiguous blank to fill."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Sequence: 48, 47, 46, 45, then 44. Each step subtracts 1. Hints correctly identify the pattern and solution (45 − 1 = 44). Correct."
+          }
+        }
+      },
+      {
+        "sample_id": "1c3d94dbc9f18786bb60",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem (Large group of 42 cupcakes) Count the cupcakes. How many cupcakes are there in all? is clear in intent: count the displayed objects."
+          },
+          "contextual_logical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "As with samples b50f7f95899820531945 and 1e26b196d6b827f9492a, the stem frames a visual object-counting task but the hints solve via a number sequence (38, 39, 40, 41, 42) rather than explaining how to count the cupcakes shown. This mismatch between the stated task and the hint strategy repeats a pattern that undermines pedagogical clarity."
+          },
+          "learner_facing_clarity": {
+            "verdict": "CONCERN",
+            "reasoning": "The stem says Count the cupcakes, directing the student toward visual counting. The hints derive the answer from a number pattern. A Grade 1 learner may be confused about whether to count visually or use number sequence logic, and this inconsistency across three object-counting samples suggests a systematic issue rather than a one-off variation."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The answer 42 is correct. The number sequence hints (38 + 1 = 39, ..., 41 + 1 = 42) are arithmetically sound. The pattern yields the correct total, though the hint method diverges from the stated counting task."
+          }
+        }
+      }
+    ],
+    "clause_evidence": [
+      {
+        "requirement_id": "count_objects_to_a_total",
+        "clause": "Count",
+        "verdict": "CONCERN",
+        "reasoning": "Three samples (b50f7f95899820531945, 1e26b196d6b827f9492a, 1c3d94dbc9f18786bb60) present object-counting tasks with visuals (cupcakes, paints, cupcakes). Each stem explicitly asks the student to count the displayed objects. However, the hints in all three samples explain the solution via a number sequence pattern (74–78, 31–35, 38–42) rather than describing how to count the visual display. This creates a pedagogical mismatch: the requirement is materially present (object groups are shown and counted) but the hint guidance teaches a sequence-based derivation strategy, leaving ambiguity about whether the student is learning object-counting or number-pattern reasoning.",
+        "sample_ids": [
+          "b50f7f95899820531945",
+          "1e26b196d6b827f9492a",
+          "1c3d94dbc9f18786bb60"
+        ]
+      },
+      {
+        "requirement_id": "range_up_to_100",
+        "clause": "up to 100",
+        "verdict": "PASS",
+        "reasoning": "Samples collectively cover numbers from single digits (7–12 in sample 79d4e8ae575054f4abd3 and 33fc23c3197bfe6ea3bc) through the 90s (90–94 in sample 82528cc28013d59531c4, 95–91 in sample c92896249b74b016b342). The range requirement is fully satisfied across the packet. No sample exceeds 100; all stay within Grade 1 Q1 appropriate bounds.",
+        "sample_ids": [
+          "79d4e8ae575054f4abd3",
+          "33fc23c3197bfe6ea3bc",
+          "82528cc28013d59531c4",
+          "c92896249b74b016b342",
+          "07f9bd92dad31ed7be26"
+        ]
+      },
+      {
+        "requirement_id": "count_forward_from_a_given_number",
+        "clause": "counting up",
+        "verdict": "PASS",
+        "reasoning": "Multiple samples explicitly require forward counting from a given starting number. Sample c41b602a6a30ee5738d2 asks 'What number comes next when counting: 58, 59, 60, 61, ___?'; sample 82528cc28013d59531c4 asks about 90, 91, 92, 93; sample 79d4e8ae575054f4abd3 starts at 7 and counts up to 10. The competency clause is directly satisfied by these samples and variations across the packet.",
+        "sample_ids": [
+          "c41b602a6a30ee5738d2",
+          "82528cc28013d59531c4",
+          "79d4e8ae575054f4abd3",
+          "1ef2e785f2d8da7ab45f",
+          "cdaf4fa72ad14dc6a03a"
+        ]
+      },
+      {
+        "requirement_id": "count_backward_from_a_given_number",
+        "clause": "down from a given number",
+        "verdict": "PASS",
+        "reasoning": "Multiple samples explicitly require backward counting. Sample 07f9bd92dad31ed7be26 asks 'What number comes next when counting backward: 42, 41, 40, 39, ___?'; sample c92896249b74b016b342 involves Moses counting backward from 95 to 92; sample c1ff17b361429435088d counts backward from 32 to 29. The competency clause is directly and repeatedly satisfied.",
+        "sample_ids": [
+          "07f9bd92dad31ed7be26",
+          "c92896249b74b016b342",
+          "c1ff17b361429435088d",
+          "d6804a0f9284b0886ec6",
+          "d0a7ed0e488e236776c7"
+        ]
+      },
+      {
+        "requirement_id": "identify_a_number_relative_to_another",
+        "clause": "identifying a number",
+        "verdict": "PASS",
+        "reasoning": "All sequence-continuation samples require identifying a number relative to the preceding one(s) in the pattern. The phrase 'identifying a number' is satisfied by tasks that ask for the next number in a sequence, where the student must understand its position relative to the given numbers. Samples including ebca5e8451c9d8ccaac5, 07f9bd92dad31ed7be26, c41b602a6a30ee5738d2 and others materialize this requirement.",
+        "sample_ids": [
+          "ebca5e8451c9d8ccaac5",
+          "07f9bd92dad31ed7be26",
+          "c41b602a6a30ee5738d2",
+          "1ef2e785f2d8da7ab45f",
+          "82528cc28013d59531c4"
+        ]
+      },
+      {
+        "requirement_id": "identify_one_more_than_a_number",
+        "clause": "1 more",
+        "verdict": "PASS",
+        "reasoning": "Forward-counting sequences require identifying the number that is 1 more than a given number. Sample c41b602a6a30ee5738d2 (61 + 1 = 62), sample 79d4e8ae575054f4abd3 (10 + 1 = 11), sample 82528cc28013d59531c4 (93 + 1 = 94) all explicitly materialize the '1 more' requirement through their forward sequences and hints.",
+        "sample_ids": [
+          "c41b602a6a30ee5738d2",
+          "79d4e8ae575054f4abd3",
+          "82528cc28013d59531c4",
+          "1ef2e785f2d8da7ab45f",
+          "cdaf4fa72ad14dc6a03a"
+        ]
+      },
+      {
+        "requirement_id": "identify_one_less_than_a_number",
+        "clause": "1 less",
+        "verdict": "PASS",
+        "reasoning": "Backward-counting sequences require identifying the number that is 1 less than a given number. Sample 07f9bd92dad31ed7be26 (39 − 1 = 38), sample c92896249b74b016b342 (92 − 1 = 91), sample c1ff17b361429435088d (29 − 1 = 28) all explicitly materialize the '1 less' requirement through their backward sequences and hints.",
+        "sample_ids": [
+          "07f9bd92dad31ed7be26",
+          "c92896249b74b016b342",
+          "c1ff17b361429435088d",
+          "d6804a0f9284b0886ec6",
+          "d0a7ed0e488e236776c7"
+        ]
+      }
+    ],
+    "overall": "CONCERN"
+  }
+}
