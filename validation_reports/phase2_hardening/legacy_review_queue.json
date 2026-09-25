@@ -1,211 +1,33 @@
 {
   "schema_version": 1,
   "kind": "legacy_review_queue",
-  "generated_at": "2026-09-25T03:18:59.882937+00:00",
+  "generated_at": "2026-09-25T04:38:29.970261+00:00",
   "adjudicable": false,
   "why_not_adjudicable": "These are v1 reviews. The current schema (v2) requires per-sample contextual-validity verdicts, exact clause coverage and dispatch-bound provenance, which a v1 reviewer was never asked for and which therefore cannot be recovered from a v1 record without inventing them. Every node listed here still owes a fresh blind re-review. This file exists so that the previous programme's findings remain visible as a QUEUE while none of them counts as evidence.",
-  "required_work": "117 node(s) need a fresh blind review filed at schema_version 2. Rebuild a packet with: python -m backend.app.practice_gen.validation.judgment_packets --node <node_id>",
+  "required_work": "114 node(s) need a fresh blind review filed at schema_version 2. Rebuild a packet with: python -m backend.app.practice_gen.validation.judgment_packets --node <node_id>",
   "source_review_dir": "validation_reports/judgment",
-  "source_corpus_sha256": "b94b56f607f5639e10dc6fe078863a907dc94a1624f64e8e85e3b51149d6d8c3",
+  "source_corpus_sha256": "cc9dcec0c1e35ad709a7d2673014f991c8982fe034e934a1aece82ecc82505c5",
   "counts": {
-    "legacy_nodes": 117,
-    "already_current_and_excluded": 34,
+    "legacy_nodes": 114,
+    "already_current_and_excluded": 37,
     "by_overall_verdict": {
-      "CONCERN": 73,
+      "CONCERN": 70,
       "FAIL": 34,
       "PASS": 10
     },
-    "nodes_with_a_non_pass_facet": 107,
+    "nodes_with_a_non_pass_facet": 104,
     "non_pass_by_facet": {
-      "cognitive_capacity": 29,
+      "cognitive_capacity": 28,
       "competency_alignment": 55,
-      "competency_fulfillment": 58,
-      "comprehensive_coverage": 49,
-      "scale_appropriateness": 21,
+      "competency_fulfillment": 57,
+      "comprehensive_coverage": 48,
+      "scale_appropriateness": 19,
       "variant_comprehensiveness": 70
     },
     "records_missing_a_v1_facet": 0,
     "orphan_reviews_for_undeclared_nodes": 0
   },
   "nodes": [
-    {
-      "node_id": "mat_g1_na_q3_1",
-      "source_path": "validation_reports/judgment/mat_g1_na_q3/mat_g1_na_q3_1.json",
-      "source_sha256": "3be3f0ed842e5bb84f4a6ce36295db12f596a1df5965713c8b96ceb6c8c1e6ad",
-      "declared_schema_version": null,
-      "reviewed_by": "reviewer-c2-basalt-yarrow-7194",
-      "review_date": "2026-09-11",
-      "blind": true,
-      "sample_seeds": [
-        42,
-        43,
-        44,
-        45,
-        46,
-        48,
-        500,
-        501,
-        502,
-        600,
-        601,
-        602,
-        603,
-        604,
-        605
-      ],
-      "overall_verdict": "CONCERN",
-      "node_still_declared": true,
-      "facets": {
-        "competency_fulfillment": {
-          "verdict": "PASS",
-          "rationale": "Each item presents a number sentence with exactly one value withheld and asks for it, and I verified the keys arithmetically - the sampled answers are all correct for the sentence shown."
-        },
-        "comprehensive_coverage": {
-          "verdict": "PASS",
-          "rationale": "Addition and subtraction sentences both occur, and the gap moves around genuinely: it falls on the second addend, on the minuend at the start of the sentence, on the subtrahend, and on the result."
-        },
-        "cognitive_capacity": {
-          "verdict": "PASS",
-          "rationale": "Sentences carry at most three numerals, and the balance framing introduced by 'Both sides balance evenly.' gives a concrete image for equality that Grade 1 can act on."
-        },
-        "variant_comprehensiveness": {
-          "verdict": "PASS",
-          "rationale": "The same missing-value idea is met through a balance picture, an abstract equation, a verbal restatement to judge, and a choice item, which is reasonable breadth for a competency that is about number sentences rather than situations."
-        },
-        "competency_alignment": {
-          "verdict": "PASS",
-          "rationale": "Where items get harder it is because the unknown moves to a less familiar position, notably the leading position of a subtraction, which is exactly the demand this competency is built to develop."
-        },
-        "scale_appropriateness": {
-          "verdict": "CONCERN",
-          "rationale": "The bound is twenty, but values above it are put in front of pupils: one true-or-false stem asserts 'the missing number is 33', and option lists elsewhere offer 37, 32 and 28. These are unreachable within the stated range and are therefore both off-ceiling and eliminable on sight."
-        }
-      },
-      "facets_missing_from_the_v1_record": [],
-      "non_pass_facets": [
-        "scale_appropriateness"
-      ],
-      "adjudicable": false
-    },
-    {
-      "node_id": "mat_g1_na_q3_2",
-      "source_path": "validation_reports/judgment/mat_g1_na_q3/mat_g1_na_q3_2.json",
-      "source_sha256": "8483d0cc0907c178c9da1f80f315a604c7bbe8b640462cf56ff8d46842466877",
-      "declared_schema_version": null,
-      "reviewed_by": "reviewer-c2-basalt-yarrow-7194",
-      "review_date": "2026-09-11",
-      "blind": true,
-      "sample_seeds": [
-        42,
-        43,
-        44,
-        45,
-        46,
-        500,
-        501,
-        502,
-        600,
-        601,
-        602,
-        603,
-        604,
-        605
-      ],
-      "overall_verdict": "CONCERN",
-      "node_still_declared": true,
-      "facets": {
-        "competency_fulfillment": {
-          "verdict": "PASS",
-          "rationale": "Items present a pair of expressions joined by an equals sign with one term withheld, matching the worked examples in the competency text, and every sampled key balances the two sides correctly when checked."
-        },
-        "comprehensive_coverage": {
-          "verdict": "CONCERN",
-          "rationale": "Addition and subtraction pairs both appear, but the blank sits in the same slot every time - the trailing operand on the right-hand side. The competency's verb is to write an equivalent expression, and reducing that to supplying one final number never asks a pupil to construct the alternative expression themselves."
-        },
-        "cognitive_capacity": {
-          "verdict": "PASS",
-          "rationale": "Equivalence is presented with small operands, as in '3 + 2 = 1 + ___', so a Grade 1 pupil can evaluate one side and then reason back on the other without holding large quantities in mind."
-        },
-        "variant_comprehensiveness": {
-          "verdict": "PASS",
-          "rationale": "Symbolic presentation is inherent to this competency, and within that the sample alternates between supplying the term, choosing it, and judging a claimed term, which is adequate rather than monotonous."
-        },
-        "competency_alignment": {
-          "verdict": "PASS",
-          "rationale": "The ramp runs through the gap between the two anchor numbers and whether the second expression starts higher or lower than the first, which is precisely what makes an equivalence harder to see."
-        },
-        "scale_appropriateness": {
-          "verdict": "CONCERN",
-          "rationale": "All operands respect the twenty bound, but wrong options step outside it - values such as 37, 28 and 26 are offered as candidates - and one true-or-false item invites a pupil to consider subtracting fifteen from eight, which has no answer in Grade 1 number knowledge."
-        }
-      },
-      "facets_missing_from_the_v1_record": [],
-      "non_pass_facets": [
-        "comprehensive_coverage",
-        "scale_appropriateness"
-      ],
-      "adjudicable": false
-    },
-    {
-      "node_id": "mat_g1_na_q3_3",
-      "source_path": "validation_reports/judgment/mat_g1_na_q3/mat_g1_na_q3_3.json",
-      "source_sha256": "90cfb6b8980f3d812780fcb1a31db66f658d538804c78fd1b945d8503adf3104",
-      "declared_schema_version": null,
-      "reviewed_by": "reviewer-c2-basalt-yarrow-7194",
-      "review_date": "2026-09-11",
-      "blind": true,
-      "sample_seeds": [
-        42,
-        43,
-        44,
-        45,
-        46,
-        48,
-        500,
-        501,
-        502,
-        600,
-        601,
-        602,
-        603,
-        604,
-        605
-      ],
-      "overall_verdict": "CONCERN",
-      "node_still_declared": true,
-      "facets": {
-        "competency_fulfillment": {
-          "verdict": "CONCERN",
-          "rationale": "These are genuine situational subtraction problems, but some choice sets are not defensible: a pupil standing on step 15 who goes down 10 is offered 25 among the options, and a fourteen-item picture removal is offered 22. Both exceed the starting amount and can be discarded without doing any subtraction."
-        },
-        "comprehensive_coverage": {
-          "verdict": "PASS",
-          "rationale": "More than one subtraction meaning is generated - physical removal, giving away, counting back along a sequence, and a comparison phrased as 'How many fewer medals does the friend have?' - so the competency is not reduced to take-away alone."
-        },
-        "cognitive_capacity": {
-          "verdict": "CONCERN",
-          "rationale": "The arithmetic fits, but the writing sometimes does not: one stem reads 'A art room has 10 colored pencils', and other contexts lean on nouns like canvases and a home desk that a Grade 1 reader is unlikely to decode quickly."
-        },
-        "variant_comprehensiveness": {
-          "verdict": "PASS",
-          "rationale": "Counted emoji rows, staircase movement, everyday possession stories and a peer-checking format all appear, which meets the orally-or-in-pictures framing the competency uses."
-        },
-        "competency_alignment": {
-          "verdict": "PASS",
-          "rationale": "Increasing difficulty shows up as larger minuends and subtractions that cross a friendly landmark, plus the zero-removal edge case, all of which deepen subtraction understanding rather than testing something else."
-        },
-        "scale_appropriateness": {
-          "verdict": "PASS",
-          "rationale": "Both numbers in every sampled problem stay below twenty, the exact restriction the wording places on this node, with seventeen the largest starting quantity observed."
-        }
-      },
-      "facets_missing_from_the_v1_record": [],
-      "non_pass_facets": [
-        "competency_fulfillment",
-        "cognitive_capacity"
-      ],
-      "adjudicable": false
-    },
     {
       "node_id": "mat_g1_na_q3_4",
       "source_path": "validation_reports/judgment/mat_g1_na_q3/mat_g1_na_q3_4.json",

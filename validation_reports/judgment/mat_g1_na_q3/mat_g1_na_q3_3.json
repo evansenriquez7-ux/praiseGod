@@ -1,7 +1,33 @@
 {
+  "schema_version": 2,
   "node_id": "mat_g1_na_q3_3",
-  "reviewed_by": "reviewer-c2-basalt-yarrow-7194",
-  "review_date": "2026-09-11",
+  "competency_snapshot": {
+    "text": "Solve subtraction problems (given orally or in pictures) where both numbers are less than 20.",
+    "grade": 1,
+    "quarter": 3,
+    "subdomain": null
+  },
+  "requirements_snapshot": [
+    {
+      "kind": "task",
+      "id": "solve_subtraction",
+      "clause": "Solve subtraction problems"
+    },
+    {
+      "kind": "representation",
+      "id": "in_pictures",
+      "clause": "in pictures"
+    },
+    {
+      "kind": "range",
+      "id": "less_than_20",
+      "clause": "numbers are less than 20"
+    }
+  ],
+  "packet_digest": "afe01bd70deca375164506d9528ec384f25e865db7e269d169d000a95dc62dee",
+  "sampling_version": "phase2-stratified-v2-rendered-visual",
+  "reviewed_by": "blind-reviewer-gpt-6-luna-medium-w13-mat_g1_na_q3_3-20260925",
+  "review_date": "2026-09-25",
   "blind": true,
   "sample_seeds": [
     42,
@@ -18,14 +44,76 @@
     602,
     603,
     604,
-    605
+    605,
+    606,
+    607,
+    608,
+    609,
+    610,
+    611,
+    700,
+    701,
+    702,
+    800,
+    900,
+    901,
+    1000,
+    1001,
+    1002
+  ],
+  "sample_ids": [
+    "7bebc8f862cce46b3464",
+    "d5d9bf1acf9a1814260c",
+    "3d0b61663e5a8f2912e0",
+    "db7121a0071a5b2b71c0",
+    "dbdb3fcb9f90d51acb3c",
+    "f82efcdaf0f4a0d42402",
+    "40ba53050e2ccfdcded8",
+    "596b9c36087265bfdd57",
+    "763ee2c1c951c7ae9f81",
+    "51e9389028280d13ed90",
+    "f7ae8b297d6fcab020e0",
+    "51ce061954647ac3e715",
+    "4f0e5afcb03888346b4c",
+    "2e15dca898da5fa11b91",
+    "01fefaf745fe4cb75031",
+    "3e81d911a3382119b940",
+    "1b436fe4374ac474e9c9",
+    "54ebf6a80fcff9e13c09",
+    "3686dc5621a07cfda71e",
+    "f015f4d16a8e4ee40a8b",
+    "e6983a3441a5b4c75b0c",
+    "1ecda0a1ef5958f3df84",
+    "6e8efd208f0a31b1224e",
+    "fdd0c8a49f52b15fae07",
+    "6d6b330459c3d8cfa05f",
+    "663fa96a07d314c024a2",
+    "ba1118d609233c269539",
+    "a0b60824f6ff913bc929",
+    "d7b4c931e73e5830375b",
+    "2f40b12ca44800c42a17"
   ],
   "samples_reviewed": [
     {
+      "node_id": "mat_g1_na_q3_3",
       "seed": 42,
       "formatter": "cloze",
       "question_text": "Daniel is on step 1. Daniel goes down 1 step. What step is Daniel on now?",
       "correct_answer": 0,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -51,28 +139,102 @@
           "text": "2",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 0,
+      "hints": [
+        "We are subtracting 1 from 1.",
+        "Subtract the ones: 1 − 1 = 0.",
+        "The difference of 1 − 1 = 0."
+      ],
+      "sample_id": "7bebc8f862cce46b3464",
+      "replay_digest": "3cc93c8efe80fd1fa76bcaa277da0c885943f630983631b0050eb6d0a1549ea1"
     },
     {
+      "node_id": "mat_g1_na_q3_3",
       "seed": 43,
       "formatter": "error_detect",
       "question_text": "Grace solved this problem: \"Start at 15. Count back 1. What number do you land on?\" Grace says the answer is 13. Is Grace correct?",
       "correct_answer": {
         "has_error": true,
         "correct_value": 14
-      }
+      },
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": true,
+        "correct_value": 14
+      },
+      "hints": [
+        "We are subtracting 1 from 15.",
+        "Subtract the ones: 5 − 1 = 4.",
+        "Subtract the tens: 1 − 0 = 1.",
+        "The difference of 15 − 1 = 14."
+      ],
+      "sample_id": "d5d9bf1acf9a1814260c",
+      "replay_digest": "5d23511a47bc1b4413e9d9712f39b4e4f7ca58eaadd7db3e2d520990c292060f"
     },
     {
+      "node_id": "mat_g1_na_q3_3",
       "seed": 44,
       "formatter": "true_false",
       "question_text": "Isko has 10 medals. A friend has 3 medals. How many fewer medals does the friend have? The answer is 7. True or False?",
-      "correct_answer": true
+      "correct_answer": true,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": true,
+      "hints": [
+        "We are subtracting 3 from 10.",
+        "The ones digit 0 is less than 3, so we need to borrow. Borrow 1 ten: 10 − 3 = 7.",
+        "Subtract the tens: 0 − 0 = 0. (after borrowing)",
+        "The difference of 10 − 3 = 7."
+      ],
+      "sample_id": "3d0b61663e5a8f2912e0",
+      "replay_digest": "54817538726944fc699fc7066d07c252a9e6ae9450adb4c8346c9d14550d0c72"
     },
     {
+      "node_id": "mat_g1_na_q3_3",
       "seed": 45,
       "formatter": "mcq",
       "question_text": "A kitchen has 10 cookies. Chef Demi removes 2 cookies. How many cookies are left in the kitchen?",
       "correct_answer": 8,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -94,13 +256,37 @@
           "value": 12,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 8,
+      "hints": [
+        "We are subtracting 2 from 10.",
+        "The ones digit 0 is less than 2, so we need to borrow. Borrow 1 ten: 10 − 2 = 8.",
+        "Subtract the tens: 0 − 0 = 0. (after borrowing)",
+        "The difference of 10 − 2 = 8."
+      ],
+      "sample_id": "db7121a0071a5b2b71c0",
+      "replay_digest": "7639dfa98045d3874fa7bcb74d28f9cc1188c2da7a685036ad45b6e450f912f4"
     },
     {
+      "node_id": "mat_g1_na_q3_3",
       "seed": 46,
       "formatter": "mcq",
       "question_text": "Ate Nena is on step 15. Ate Nena goes down 10 steps. What step is Ate Nena on now?",
       "correct_answer": 5,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -122,13 +308,37 @@
           "value": 4,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 5,
+      "hints": [
+        "We are subtracting 10 from 15.",
+        "Subtract the ones: 5 − 0 = 5.",
+        "Subtract the tens: 1 − 1 = 0.",
+        "The difference of 15 − 10 = 5."
+      ],
+      "sample_id": "dbdb3fcb9f90d51acb3c",
+      "replay_digest": "5e244341ff90789e77a98420bc7bba000322d0aa29ed6d85130d130214d20062"
     },
     {
+      "node_id": "mat_g1_na_q3_3",
       "seed": 48,
       "formatter": "read_mcq",
-      "question_text": "🍬🍬🍬🍬🍬🍬🍬🍬🍬🍬 — There are 10 candies.\nTaking away 1 candy.\nHow many candies are left?",
+      "question_text": "🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨 — There are 10 paints.\nTaking away 1 paint.\nHow many paints are left?",
       "correct_answer": "C",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "EmojiPictorial",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -150,28 +360,139 @@
           "value": 11,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 9,
+      "hints": [
+        "We are subtracting 1 from 10.",
+        "The ones digit 0 is less than 1, so we need to borrow. Borrow 1 ten: 10 − 1 = 9.",
+        "Subtract the tens: 0 − 0 = 0. (after borrowing)",
+        "The difference of 10 − 1 = 9."
+      ],
+      "visual_type": "EmojiPictorial",
+      "visual_payload": {
+        "emoji": "🎨",
+        "group_a": 10,
+        "group_b": 1,
+        "operation": "subtraction",
+        "layout": "inline",
+        "display": "🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨",
+        "reveal_display": "🎨🎨🎨🎨🎨🎨🎨🎨🎨",
+        "reveal_text": "9 paints"
+      },
+      "visual_render": {
+        "visual_type": "EmojiPictorial",
+        "renderer_input_digest": "2f58042512d8cb4a85eead07df3640ef70db126342bb24f255a77e886c1f0bb1",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "EmojiPictorial",
+          "element_count": 14,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "🎨"
+          ],
+          "distinct_colours": [],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "f82efcdaf0f4a0d42402",
+      "replay_digest": "6b92a85a034a14893d469571e0d298bbb4acf7b4c650f01d617f058a56c12a87"
     },
     {
+      "node_id": "mat_g1_na_q3_3",
       "seed": 500,
       "formatter": "true_false",
       "question_text": "Nanding had 17 water bowls. Nanding used 9 of them. How many water bowls are left? The answer is 7. True or False?",
-      "correct_answer": false
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "We are subtracting 9 from 17.",
+        "The ones digit 7 is less than 9, so we need to borrow. Borrow 1 ten: 17 − 9 = 8.",
+        "Subtract the tens: 0 − 0 = 0. (after borrowing)",
+        "The difference of 17 − 9 = 8."
+      ],
+      "sample_id": "40ba53050e2ccfdcded8",
+      "replay_digest": "50bcea60ab410302c13ca32e4eff112399c93960c132a264644f50e8c7bb2e32"
     },
     {
+      "node_id": "mat_g1_na_q3_3",
       "seed": 501,
       "formatter": "error_detect",
-      "question_text": "Pia solved this problem: \"A home desk has 15 canvases. Carlo removes 9 canvases. How many canvases are left in the home desk?\" Pia says the answer is 7. Is Pia correct?",
+      "question_text": "Pia solved this problem: \"A home desk has 15 paint tubes. Carlo removes 9 paint tubes. How many paint tubes are left in the home desk?\" Pia says the answer is 7. Is Pia correct?",
       "correct_answer": {
         "has_error": true,
         "correct_value": 6
-      }
+      },
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": true,
+        "correct_value": 6
+      },
+      "hints": [
+        "We are subtracting 9 from 15.",
+        "The ones digit 5 is less than 9, so we need to borrow. Borrow 1 ten: 15 − 9 = 6.",
+        "Subtract the tens: 0 − 0 = 0. (after borrowing)",
+        "The difference of 15 − 9 = 6."
+      ],
+      "sample_id": "596b9c36087265bfdd57",
+      "replay_digest": "8f527f1044601149b94a8737151ca29c369bb91715b46f48364b2ab74bb339f8"
     },
     {
+      "node_id": "mat_g1_na_q3_3",
       "seed": 502,
       "formatter": "read_mcq",
-      "question_text": "🌳🌳🌳🌳🌳🌳🌳🌳🌳🌳🌳🌳🌳🌳 — There are 14 trees.\nTaking away 8 trees.\nHow many trees are left?",
+      "question_text": "🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨 — There are 14 paints.\nTaking away 8 paints.\nHow many paints are left?",
       "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "EmojiPictorial",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -190,35 +511,1211 @@
         },
         {
           "key": "D",
-          "value": 8,
+          "value": 14,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 6,
+      "hints": [
+        "We are subtracting 8 from 14.",
+        "The ones digit 4 is less than 8, so we need to borrow. Borrow 1 ten: 14 − 8 = 6.",
+        "Subtract the tens: 0 − 0 = 0. (after borrowing)",
+        "The difference of 14 − 8 = 6."
+      ],
+      "visual_type": "EmojiPictorial",
+      "visual_payload": {
+        "emoji": "🎨",
+        "group_a": 14,
+        "group_b": 8,
+        "operation": "subtraction",
+        "layout": "inline",
+        "display": "🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨",
+        "reveal_display": "🎨🎨🎨🎨🎨🎨",
+        "reveal_text": "6 paints"
+      },
+      "visual_render": {
+        "visual_type": "EmojiPictorial",
+        "renderer_input_digest": "aa803cf51d965633718a912b51b871139330c4abe119bfde9ee877d4a3fa84f9",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "EmojiPictorial",
+          "element_count": 25,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "🎨"
+          ],
+          "distinct_colours": [],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "763ee2c1c951c7ae9f81",
+      "replay_digest": "57bffc6ad498d77e31c51678a813275c40d6b2d3e19e69489cdbe3e345f847a4"
     },
     {
+      "node_id": "mat_g1_na_q3_3",
       "seed": 600,
       "formatter": "error_detect",
       "question_text": "Noel solved this problem: \"A art room has 10 colored pencils. Kuya Renz removes 2 colored pencils. How many colored pencils are left in the art room?\" Noel says the answer is 8. Is Noel correct?",
       "correct_answer": {
         "has_error": false,
         "correct_value": 8
-      }
+      },
+      "requested": {
+        "difficulty_profile": {
+          "context": "word_problem"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 8
+      },
+      "hints": [
+        "We are subtracting 2 from 10.",
+        "The ones digit 0 is less than 2, so we need to borrow. Borrow 1 ten: 10 − 2 = 8.",
+        "Subtract the tens: 0 − 0 = 0. (after borrowing)",
+        "The difference of 10 − 2 = 8."
+      ],
+      "sample_id": "51e9389028280d13ed90",
+      "replay_digest": "3fcf7484286f9cc7bcaafc6c56ff8b433211226f69d8da19225e9d6579e3a9e8"
     },
     {
+      "node_id": "mat_g1_na_q3_3",
       "seed": 601,
       "formatter": "true_false",
       "question_text": "There are 12 stones on the table. Moses takes away 0 stones. How many stones are left on the table? The answer is 12. True or False?",
-      "correct_answer": true
+      "correct_answer": true,
+      "requested": {
+        "difficulty_profile": {
+          "number_range": 100
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": true,
+      "hints": [
+        "We are subtracting 0 from 12.",
+        "Subtract the ones: 2 − 0 = 2.",
+        "Subtract the tens: 1 − 0 = 1.",
+        "The difference of 12 − 0 = 12."
+      ],
+      "sample_id": "f7ae8b297d6fcab020e0",
+      "replay_digest": "03e0bafa160e1291dfa750e931a25af71d2c47eb5e3af0a68a6085ee201459dc"
     },
     {
+      "node_id": "mat_g1_na_q3_3",
       "seed": 602,
       "formatter": "read_mcq",
-      "question_text": "🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀 — There are 10 clovers.\nTaking away 1 clover.\nHow many clovers are left?",
-      "correct_answer": "C",
+      "question_text": "🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐 — There are 10 items.\nTaking away 1 item.\nHow many items are left?",
+      "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": {
+          "number_range": 1000
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "EmojiPictorial",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 9,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 8,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 1,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 11,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 9,
+      "hints": [
+        "We are subtracting 1 from 10.",
+        "The ones digit 0 is less than 1, so we need to borrow. Borrow 1 ten: 10 − 1 = 9.",
+        "Subtract the tens: 0 − 0 = 0. (after borrowing)",
+        "The difference of 10 − 1 = 9."
+      ],
+      "visual_type": "EmojiPictorial",
+      "visual_payload": {
+        "emoji": "🏐",
+        "group_a": 10,
+        "group_b": 1,
+        "operation": "subtraction",
+        "layout": "inline",
+        "display": "🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐",
+        "reveal_display": "🏐🏐🏐🏐🏐🏐🏐🏐🏐",
+        "reveal_text": "9 items"
+      },
+      "visual_render": {
+        "visual_type": "EmojiPictorial",
+        "renderer_input_digest": "f7c36bf5f327ba38fc241a34eb3a7bd203eb346bc9f8eb4ada6444dba7bfbe2c",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "EmojiPictorial",
+          "element_count": 14,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "🏐"
+          ],
+          "distinct_colours": [],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "51ce061954647ac3e715",
+      "replay_digest": "fd88a9e9f1b05f3380ec67e659101574fa223722bf84663f5f2f774abf0e2686"
+    },
+    {
+      "node_id": "mat_g1_na_q3_3",
+      "seed": 603,
+      "formatter": "true_false",
+      "question_text": "Sir Ben has 4 crayons. Sir Ben gives away 0 crayons. How many crayons does Sir Ben have left? The answer is 5. True or False?",
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "number_range": 10000
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "We are subtracting 0 from 4.",
+        "Subtract the ones: 4 − 0 = 4.",
+        "The difference of 4 − 0 = 4."
+      ],
+      "sample_id": "4f0e5afcb03888346b4c",
+      "replay_digest": "b16aa042d63ed7383d8476478d39a07a65c40ed315549aec431a4aff55f08fb6"
+    },
+    {
+      "node_id": "mat_g1_na_q3_3",
+      "seed": 604,
+      "formatter": "read_mcq",
+      "question_text": "🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴 — There are 12 items.\nTaking away 1 item.\nHow many items are left?",
+      "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": {
+          "number_range": 20
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "EmojiPictorial",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 11,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 12,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 1,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 10,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 11,
+      "hints": [
+        "We are subtracting 1 from 12.",
+        "Subtract the ones: 2 − 1 = 1.",
+        "Subtract the tens: 1 − 0 = 1.",
+        "The difference of 12 − 1 = 11."
+      ],
+      "visual_type": "EmojiPictorial",
+      "visual_payload": {
+        "emoji": "🚴",
+        "group_a": 12,
+        "group_b": 1,
+        "operation": "subtraction",
+        "layout": "inline",
+        "display": "🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴",
+        "reveal_display": "🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴",
+        "reveal_text": "11 items"
+      },
+      "visual_render": {
+        "visual_type": "EmojiPictorial",
+        "renderer_input_digest": "87a29eb64e73f08c02ca42f132e673b8bd499a0772f62add8b04dbc4149f5668",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "EmojiPictorial",
+          "element_count": 16,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "🚴"
+          ],
+          "distinct_colours": [],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "2e15dca898da5fa11b91",
+      "replay_digest": "87d815fbebdcd6760f3bee9af3f854e24500f4983586ee88687548e01771c1a0"
+    },
+    {
+      "node_id": "mat_g1_na_q3_3",
+      "seed": 605,
+      "formatter": "true_false",
+      "question_text": "Riza has 11 milk tea cups. Riza gives away 10 milk tea cups. How many milk tea cups does Riza have left? The answer is 2. True or False?",
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "regrouping": "none"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "We are subtracting 10 from 11.",
+        "Subtract the ones: 1 − 0 = 1.",
+        "Subtract the tens: 1 − 1 = 0.",
+        "The difference of 11 − 10 = 1."
+      ],
+      "sample_id": "01fefaf745fe4cb75031",
+      "replay_digest": "3396e4526a6309bf33bcc9c4d6cb36f427e44640fc299f5e510d2798f35f69eb"
+    },
+    {
+      "node_id": "mat_g1_na_q3_3",
+      "seed": 606,
+      "formatter": "error_detect",
+      "question_text": "Manny solved this problem: \"Start at 10. Count back 3. What number do you land on?\" Manny says the answer is 7. Is Manny correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 7
+      },
+      "requested": {
+        "difficulty_profile": {
+          "regrouping": "one_place"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 7
+      },
+      "hints": [
+        "We are subtracting 3 from 10.",
+        "The ones digit 0 is less than 3, so we need to borrow. Borrow 1 ten: 10 − 3 = 7.",
+        "Subtract the tens: 0 − 0 = 0. (after borrowing)",
+        "The difference of 10 − 3 = 7."
+      ],
+      "sample_id": "3e81d911a3382119b940",
+      "replay_digest": "f4b9535fd365ed98a3e19469ff3b7b98201eedbd4e5bae60a128b89a6edd43bf"
+    },
+    {
+      "node_id": "mat_g1_na_q3_3",
+      "seed": 607,
+      "formatter": "cloze",
+      "question_text": "Isko is on step 3. Isko goes down 1 step. What step is Isko on now?",
+      "correct_answer": 2,
+      "requested": {
+        "difficulty_profile": {
+          "spine": "comparing"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 3,
+          "text": "3",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 4,
+          "text": "4",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 2,
+          "text": "2",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 1,
+          "text": "1",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 2,
+      "hints": [
+        "We are subtracting 1 from 3.",
+        "Subtract the ones: 3 − 1 = 2.",
+        "The difference of 3 − 1 = 2."
+      ],
+      "sample_id": "1b436fe4374ac474e9c9",
+      "replay_digest": "f0d1cefd898086472bcc0ddb63f9764e61b3d8e28e12477f561374f85b409c89"
+    },
+    {
+      "node_id": "mat_g1_na_q3_3",
+      "seed": 608,
+      "formatter": "read_mcq",
+      "question_text": "🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴 — There are 12 items.\nTaking away 0 items.\nHow many items are left?",
+      "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": {
+          "spine": "taking_away"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "EmojiPictorial",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 12,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 0,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 11,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 13,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 12,
+      "hints": [
+        "We are subtracting 0 from 12.",
+        "Subtract the ones: 2 − 0 = 2.",
+        "Subtract the tens: 1 − 0 = 1.",
+        "The difference of 12 − 0 = 12."
+      ],
+      "visual_type": "EmojiPictorial",
+      "visual_payload": {
+        "emoji": "🚴",
+        "group_a": 12,
+        "group_b": 0,
+        "operation": "subtraction",
+        "layout": "inline",
+        "display": "🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴",
+        "reveal_display": "🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴",
+        "reveal_text": "12 items"
+      },
+      "visual_render": {
+        "visual_type": "EmojiPictorial",
+        "renderer_input_digest": "eb02d8d0ad34e8cceb40b2a1da05a8b09e01d4671f6f8d9d43d6665011b46edd",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "EmojiPictorial",
+          "element_count": 15,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "🚴"
+          ],
+          "distinct_colours": [],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "54ebf6a80fcff9e13c09",
+      "replay_digest": "243e4a3b756625ed3043acbb1f5a5f1078fb004638236b9b6c1f2312da44d20d"
+    },
+    {
+      "node_id": "mat_g1_na_q3_3",
+      "seed": 609,
+      "formatter": "cloze",
+      "question_text": "Ruth had 10 scrolls. After giving away some, Ruth had 9 left. How many scrolls did Ruth give away?",
+      "correct_answer": 1,
+      "requested": {
+        "difficulty_profile": {
+          "structure": "change_unknown"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 1,
+          "text": "1",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 9,
+          "text": "9",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 8,
+          "text": "8",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 11,
+          "text": "11",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 1,
+      "hints": [
+        "We are subtracting 1 from 10.",
+        "The ones digit 0 is less than 1, so we need to borrow. Borrow 1 ten: 10 − 1 = 9.",
+        "Subtract the tens: 0 − 0 = 0. (after borrowing)",
+        "The difference of 10 − 1 = 9."
+      ],
+      "sample_id": "3686dc5621a07cfda71e",
+      "replay_digest": "cb19b55fe3d57395a5ad8eefc802c3ee0805d731b3186451c8f501cf347352e0"
+    },
+    {
+      "node_id": "mat_g1_na_q3_3",
+      "seed": 610,
+      "formatter": "mcq",
+      "question_text": "Lola Ising had 10 cookies. Lola Ising used 2 of them. How many cookies are left?",
+      "correct_answer": 8,
+      "requested": {
+        "difficulty_profile": {
+          "structure": "result_unknown"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
           "value": 8,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 12,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 7,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 9,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 8,
+      "hints": [
+        "We are subtracting 2 from 10.",
+        "The ones digit 0 is less than 2, so we need to borrow. Borrow 1 ten: 10 − 2 = 8.",
+        "Subtract the tens: 0 − 0 = 0. (after borrowing)",
+        "The difference of 10 − 2 = 8."
+      ],
+      "sample_id": "f015f4d16a8e4ee40a8b",
+      "replay_digest": "70eaed5d2afac7a2bcac7dd91c1673390f14830d31ad76381764eb9b717d01a5"
+    },
+    {
+      "node_id": "mat_g1_na_q3_3",
+      "seed": 611,
+      "formatter": "read_mcq",
+      "question_text": "🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐 — There are 10 items.\nTaking away 3 items.\nHow many items are left?",
+      "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": {
+          "structure": "start_unknown"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "EmojiPictorial",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 6,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 7,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 13,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 10,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 7,
+      "hints": [
+        "We are subtracting 3 from 10.",
+        "The ones digit 0 is less than 3, so we need to borrow. Borrow 1 ten: 10 − 3 = 7.",
+        "Subtract the tens: 0 − 0 = 0. (after borrowing)",
+        "The difference of 10 − 3 = 7."
+      ],
+      "visual_type": "EmojiPictorial",
+      "visual_payload": {
+        "emoji": "🏐",
+        "group_a": 10,
+        "group_b": 3,
+        "operation": "subtraction",
+        "layout": "inline",
+        "display": "🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐",
+        "reveal_display": "🏐🏐🏐🏐🏐🏐🏐",
+        "reveal_text": "7 items"
+      },
+      "visual_render": {
+        "visual_type": "EmojiPictorial",
+        "renderer_input_digest": "80d1a191b803a61331340a4699bb718b509960278a9eed740bd76cdba35f0f86",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "EmojiPictorial",
+          "element_count": 16,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "🏐"
+          ],
+          "distinct_colours": [],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "e6983a3441a5b4c75b0c",
+      "replay_digest": "fa2e48ee395381cb40c5c587ea6f108ad1c2df422770467646c779eea0904d1b"
+    },
+    {
+      "node_id": "mat_g1_na_q3_3",
+      "seed": 700,
+      "formatter": "read_mcq",
+      "question_text": "🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴 — There are 12 items.\nTaking away 1 item.\nHow many items are left?",
+      "correct_answer": "C",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "EmojiPictorial",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 10,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 12,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 11,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 1,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 11,
+      "hints": [
+        "We are subtracting 1 from 12.",
+        "Subtract the ones: 2 − 1 = 1.",
+        "Subtract the tens: 1 − 0 = 1.",
+        "The difference of 12 − 1 = 11."
+      ],
+      "visual_type": "EmojiPictorial",
+      "visual_payload": {
+        "emoji": "🚴",
+        "group_a": 12,
+        "group_b": 1,
+        "operation": "subtraction",
+        "layout": "inline",
+        "display": "🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴",
+        "reveal_display": "🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴",
+        "reveal_text": "11 items"
+      },
+      "visual_render": {
+        "visual_type": "EmojiPictorial",
+        "renderer_input_digest": "87a29eb64e73f08c02ca42f132e673b8bd499a0772f62add8b04dbc4149f5668",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "EmojiPictorial",
+          "element_count": 16,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "🚴"
+          ],
+          "distinct_colours": [],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "1ecda0a1ef5958f3df84",
+      "replay_digest": "d6473d1b5e1e62b5eb57e2525a940843ba38f5879218c86227888ff655d550fe"
+    },
+    {
+      "node_id": "mat_g1_na_q3_3",
+      "seed": 701,
+      "formatter": "mcq",
+      "question_text": "A park has 10 jump ropes. Faye removes 2 jump ropes. How many jump ropes are left in the park?",
+      "correct_answer": 8,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "fitness_sports",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 8,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 9,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 7,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 12,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 8,
+      "hints": [
+        "We are subtracting 2 from 10.",
+        "The ones digit 0 is less than 2, so we need to borrow. Borrow 1 ten: 10 − 2 = 8.",
+        "Subtract the tens: 0 − 0 = 0. (after borrowing)",
+        "The difference of 10 − 2 = 8."
+      ],
+      "sample_id": "6e8efd208f0a31b1224e",
+      "replay_digest": "5aca9e110a1ab709b4db72306346e0decca778a5b1b8befa53cabbffcd056e65"
+    },
+    {
+      "node_id": "mat_g1_na_q3_3",
+      "seed": 702,
+      "formatter": "read_mcq",
+      "question_text": "🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐 — There are 10 items.\nTaking away 10 items.\nHow many items are left?",
+      "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "volleyball",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "EmojiPictorial",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 0,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 1,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 10,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 20,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 0,
+      "hints": [
+        "We are subtracting 10 from 10.",
+        "Subtract the ones: 0 − 0 = 0.",
+        "Subtract the tens: 1 − 1 = 0.",
+        "The difference of 10 − 10 = 0."
+      ],
+      "visual_type": "EmojiPictorial",
+      "visual_payload": {
+        "emoji": "🏐",
+        "group_a": 10,
+        "group_b": 10,
+        "operation": "subtraction",
+        "layout": "inline",
+        "display": "🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐",
+        "reveal_display": "(none left)",
+        "reveal_text": "0 items"
+      },
+      "visual_render": {
+        "visual_type": "EmojiPictorial",
+        "renderer_input_digest": "c5128c3447db0c8921cf32d963056627f98a9fab6b7c0f084a9e060f80120e92",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "EmojiPictorial",
+          "element_count": 23,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "🏐"
+          ],
+          "distinct_colours": [],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "fdd0c8a49f52b15fae07",
+      "replay_digest": "e5b2e0a043043591fe3ff37036fdfed30b626fa53ef2ed811f952c2b54ce772d"
+    },
+    {
+      "node_id": "mat_g1_na_q3_3",
+      "seed": 800,
+      "formatter": "true_false",
+      "question_text": "Paul had 18 stones. Paul used 9 of them. How many stones are left? The answer is 9. True or False?",
+      "correct_answer": true,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": true,
+      "hints": [
+        "We are subtracting 9 from 18.",
+        "The ones digit 8 is less than 9, so we need to borrow. Borrow 1 ten: 18 − 9 = 9.",
+        "Subtract the tens: 0 − 0 = 0. (after borrowing)",
+        "The difference of 18 − 9 = 9."
+      ],
+      "sample_id": "6d6b330459c3d8cfa05f",
+      "replay_digest": "049b9a484f57735a11725c5fd13d1c824aaf13522378e7d5c001cdac0c7c6398"
+    },
+    {
+      "node_id": "mat_g1_na_q3_3",
+      "seed": 900,
+      "formatter": "error_detect",
+      "question_text": "Noel solved this problem: \"There were 5 jump ropes in a box. 2 jump ropes were taken out. How many jump ropes are still in the box?\" Noel says the answer is 4. Is Noel correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 3
+      },
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": true,
+        "correct_value": 3
+      },
+      "hints": [
+        "We are subtracting 2 from 5.",
+        "Subtract the ones: 5 − 2 = 3.",
+        "The difference of 5 − 2 = 3."
+      ],
+      "sample_id": "663fa96a07d314c024a2",
+      "replay_digest": "aa7fb42b9e72791c2480e64c49869ed3a6f92220e2af84b98ab8c27467eda0a9"
+    },
+    {
+      "node_id": "mat_g1_na_q3_3",
+      "seed": 901,
+      "formatter": "error_detect",
+      "question_text": "Maria solved this problem: \"Ate Gab has 11 pom-poms. A friend has 3 pom-poms. How many fewer pom-poms does the friend have?\" Maria says the answer is 9. Is Maria correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 8
+      },
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": true,
+        "correct_value": 8
+      },
+      "hints": [
+        "We are subtracting 3 from 11.",
+        "The ones digit 1 is less than 3, so we need to borrow. Borrow 1 ten: 11 − 3 = 8.",
+        "Subtract the tens: 0 − 0 = 0. (after borrowing)",
+        "The difference of 11 − 3 = 8."
+      ],
+      "sample_id": "ba1118d609233c269539",
+      "replay_digest": "162d023e00419746890dac3d25e6d5134ea8dd7a17846a7df412ba72cb6e1aec"
+    },
+    {
+      "node_id": "mat_g1_na_q3_3",
+      "seed": 1000,
+      "formatter": "cloze",
+      "question_text": "Coach Roel has 10 water bottles. A friend has 3 water bottles. How many fewer water bottles does the friend have?",
+      "correct_answer": 7,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "hint_gated"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "hint_gated"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 8,
+          "text": "8",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 6,
+          "text": "6",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 13,
+          "text": "13",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 7,
+          "text": "7",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 7,
+      "hints": [
+        "We are subtracting 3 from 10.",
+        "The ones digit 0 is less than 3, so we need to borrow. Borrow 1 ten: 10 − 3 = 7.",
+        "Subtract the tens: 0 − 0 = 0. (after borrowing)",
+        "The difference of 10 − 3 = 7."
+      ],
+      "sample_id": "a0b60824f6ff913bc929",
+      "replay_digest": "110db851df884a3c4c1a3288b7cb48e656d77bbb7f27fbd7df67681f257c2171"
+    },
+    {
+      "node_id": "mat_g1_na_q3_3",
+      "seed": 1001,
+      "formatter": "read_mcq",
+      "question_text": "🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴 — There are 12 items.\nTaking away 1 item.\nHow many items are left?",
+      "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "mastery_drill"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "EmojiPictorial",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "mastery_drill"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 11,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 10,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 12,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 13,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 11,
+      "hints": [
+        "We are subtracting 1 from 12.",
+        "Subtract the ones: 2 − 1 = 1.",
+        "Subtract the tens: 1 − 0 = 1.",
+        "The difference of 12 − 1 = 11."
+      ],
+      "visual_type": "EmojiPictorial",
+      "visual_payload": {
+        "emoji": "🚴",
+        "group_a": 12,
+        "group_b": 1,
+        "operation": "subtraction",
+        "layout": "inline",
+        "display": "🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴",
+        "reveal_display": "🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴",
+        "reveal_text": "11 items"
+      },
+      "visual_render": {
+        "visual_type": "EmojiPictorial",
+        "renderer_input_digest": "87a29eb64e73f08c02ca42f132e673b8bd499a0772f62add8b04dbc4149f5668",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "EmojiPictorial",
+          "element_count": 16,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "🚴"
+          ],
+          "distinct_colours": [],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "d7b4c931e73e5830375b",
+      "replay_digest": "16e87ddc0ed0880620721031c23d0933b5be4a5584ccdf541c1e7fd4f5fe3447"
+    },
+    {
+      "node_id": "mat_g1_na_q3_3",
+      "seed": 1002,
+      "formatter": "read_mcq",
+      "question_text": "🧁🧁🧁🧁🧁🧁🧁🧁🧁🧁 — There are 10 cupcakes.\nTaking away 1 cupcake.\nHow many cupcakes are left?",
+      "correct_answer": "C",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "scaffolded"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "EmojiPictorial",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "scaffolded"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 10,
           "is_correct": false
         },
         {
@@ -233,77 +1730,848 @@
         },
         {
           "key": "D",
-          "value": 1,
+          "value": 8,
           "is_correct": false
         }
-      ]
-    },
-    {
-      "seed": 603,
-      "formatter": "true_false",
-      "question_text": "Sir Ben has 4 crayons. Sir Ben gives away 0 crayons. How many crayons does Sir Ben have left? The answer is 5. True or False?",
-      "correct_answer": false
-    },
-    {
-      "seed": 604,
-      "formatter": "read_mcq",
-      "question_text": "📚📚📚📚📚📚📚📚📚📚📚📚 — There are 12 books.\nTaking away 1 book.\nHow many books are left?",
-      "correct_answer": "A",
-      "options": [
-        {
-          "key": "A",
-          "value": 11,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 10,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 1,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 13,
-          "is_correct": false
+      ],
+      "resolved_answer": 9,
+      "hints": [
+        "We are subtracting 1 from 10.",
+        "The ones digit 0 is less than 1, so we need to borrow. Borrow 1 ten: 10 − 1 = 9.",
+        "Subtract the tens: 0 − 0 = 0. (after borrowing)",
+        "The difference of 10 − 1 = 9."
+      ],
+      "visual_type": "EmojiPictorial",
+      "visual_payload": {
+        "emoji": "🧁",
+        "group_a": 10,
+        "group_b": 1,
+        "operation": "subtraction",
+        "layout": "inline",
+        "display": "🧁🧁🧁🧁🧁🧁🧁🧁🧁🧁",
+        "reveal_display": "🧁🧁🧁🧁🧁🧁🧁🧁🧁",
+        "reveal_text": "9 cupcakes"
+      },
+      "visual_render": {
+        "visual_type": "EmojiPictorial",
+        "renderer_input_digest": "c19afeb6421629d8dbc98a4e0ebdc05afa2c2e648f382a5a1f1b30277e617c8c",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "EmojiPictorial",
+          "element_count": 14,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "🧁"
+          ],
+          "distinct_colours": [],
+          "role_counts": {}
         }
-      ]
+      },
+      "sample_id": "2f40b12ca44800c42a17",
+      "replay_digest": "0a49c61c04bcd0262d444eab459792fefb0e81fdbff710e22969ddc7c366f4b5"
+    }
+  ],
+  "sample_assessments": [
+    {
+      "sample_id": "7bebc8f862cce46b3464",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 7bebc8f862cce46b3464 asks: Daniel is on step 1. Daniel goes down 1 step. What step is Daniel on now? Its printed answer is 0 and options are 0 / 1 / 3 / 2. The quantities and requested result identify a single subtraction interpretation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 7bebc8f862cce46b3464 asks: Daniel is on step 1. Daniel goes down 1 step. What step is Daniel on now? Its printed answer is 0 and options are 0 / 1 / 3 / 2. The named objects or counting action form a coherent situation for the stated subtraction."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 7bebc8f862cce46b3464 asks: Daniel is on step 1. Daniel goes down 1 step. What step is Daniel on now? Its printed answer is 0 and options are 0 / 1 / 3 / 2. Hints follow the same subtraction and reach the printed answer; place-value borrowing language is a concern for this Grade 1 task."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 7bebc8f862cce46b3464 asks: Daniel is on step 1. Daniel goes down 1 step. What step is Daniel on now? Its printed answer is 0 and options are 0 / 1 / 3 / 2. The hinted subtraction agrees with the answer; the displayed choices include that result where choices are printed."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w13-mat_g1_na_q3_3-20260925",
+      "dispatch_id": "gpt6luna-s5-w13-20260925:mat_g1_na_q3_3"
     },
     {
-      "seed": 605,
-      "formatter": "true_false",
-      "question_text": "Riza has 11 milk tea cups. Riza gives away 10 milk tea cups. How many milk tea cups does Riza have left? The answer is 2. True or False?",
-      "correct_answer": false
+      "sample_id": "d5d9bf1acf9a1814260c",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Sample d5d9bf1acf9a1814260c asks: Grace solved this problem: Start at 15. Count back 1. What number do you land on? Grace says the answer is 13. Is Grace correct? Its printed answer is {'has_error': True, 'correct_value': 14}. The quantities and requested result identify a single subtraction interpretation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample d5d9bf1acf9a1814260c asks: Grace solved this problem: Start at 15. Count back 1. What number do you land on? Grace says the answer is 13. Is Grace correct? Its printed answer is {'has_error': True, 'correct_value': 14}. The named objects or counting action form a coherent situation for the stated subtraction."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Sample d5d9bf1acf9a1814260c asks: Grace solved this problem: Start at 15. Count back 1. What number do you land on? Grace says the answer is 13. Is Grace correct? Its printed answer is {'has_error': True, 'correct_value': 14}. Hints follow the same subtraction and reach the printed answer; place-value borrowing language is a concern for this Grade 1 task."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample d5d9bf1acf9a1814260c asks: Grace solved this problem: Start at 15. Count back 1. What number do you land on? Grace says the answer is 13. Is Grace correct? Its printed answer is {'has_error': True, 'correct_value': 14}. The hinted subtraction agrees with the answer; the displayed choices include that result where choices are printed."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w13-mat_g1_na_q3_3-20260925",
+      "dispatch_id": "gpt6luna-s5-w13-20260925:mat_g1_na_q3_3"
+    },
+    {
+      "sample_id": "3d0b61663e5a8f2912e0",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 3d0b61663e5a8f2912e0 asks: Isko has 10 medals. A friend has 3 medals. How many fewer medals does the friend have? The answer is 7. True or False? Its printed answer is True. The quantities and requested result identify a single subtraction interpretation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 3d0b61663e5a8f2912e0 asks: Isko has 10 medals. A friend has 3 medals. How many fewer medals does the friend have? The answer is 7. True or False? Its printed answer is True. The named objects or counting action form a coherent situation for the stated subtraction."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "Sample 3d0b61663e5a8f2912e0 asks: Isko has 10 medals. A friend has 3 medals. How many fewer medals does the friend have? The answer is 7. True or False? Its printed answer is True. Hints follow the same subtraction and reach the printed answer; place-value borrowing language is a concern for this Grade 1 task."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 3d0b61663e5a8f2912e0 asks: Isko has 10 medals. A friend has 3 medals. How many fewer medals does the friend have? The answer is 7. True or False? Its printed answer is True. The hinted subtraction agrees with the answer; the displayed choices include that result where choices are printed."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w13-mat_g1_na_q3_3-20260925",
+      "dispatch_id": "gpt6luna-s5-w13-20260925:mat_g1_na_q3_3"
+    },
+    {
+      "sample_id": "db7121a0071a5b2b71c0",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Sample db7121a0071a5b2b71c0 asks: A kitchen has 10 cookies. Chef Demi removes 2 cookies. How many cookies are left in the kitchen? Its printed answer is 8 and options are 7 / 8 / 9 / 12. The quantities and requested result identify a single subtraction interpretation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample db7121a0071a5b2b71c0 asks: A kitchen has 10 cookies. Chef Demi removes 2 cookies. How many cookies are left in the kitchen? Its printed answer is 8 and options are 7 / 8 / 9 / 12. The named objects or counting action form a coherent situation for the stated subtraction."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "Sample db7121a0071a5b2b71c0 asks: A kitchen has 10 cookies. Chef Demi removes 2 cookies. How many cookies are left in the kitchen? Its printed answer is 8 and options are 7 / 8 / 9 / 12. Hints follow the same subtraction and reach the printed answer; place-value borrowing language is a concern for this Grade 1 task."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample db7121a0071a5b2b71c0 asks: A kitchen has 10 cookies. Chef Demi removes 2 cookies. How many cookies are left in the kitchen? Its printed answer is 8 and options are 7 / 8 / 9 / 12. The hinted subtraction agrees with the answer; the displayed choices include that result where choices are printed."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w13-mat_g1_na_q3_3-20260925",
+      "dispatch_id": "gpt6luna-s5-w13-20260925:mat_g1_na_q3_3"
+    },
+    {
+      "sample_id": "dbdb3fcb9f90d51acb3c",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Sample dbdb3fcb9f90d51acb3c asks: Ate Nena is on step 15. Ate Nena goes down 10 steps. What step is Ate Nena on now? Its printed answer is 5 and options are 25 / 6 / 5 / 4. The quantities and requested result identify a single subtraction interpretation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample dbdb3fcb9f90d51acb3c asks: Ate Nena is on step 15. Ate Nena goes down 10 steps. What step is Ate Nena on now? Its printed answer is 5 and options are 25 / 6 / 5 / 4. The named objects or counting action form a coherent situation for the stated subtraction."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Sample dbdb3fcb9f90d51acb3c asks: Ate Nena is on step 15. Ate Nena goes down 10 steps. What step is Ate Nena on now? Its printed answer is 5 and options are 25 / 6 / 5 / 4. Hints follow the same subtraction and reach the printed answer; place-value borrowing language is a concern for this Grade 1 task."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample dbdb3fcb9f90d51acb3c asks: Ate Nena is on step 15. Ate Nena goes down 10 steps. What step is Ate Nena on now? Its printed answer is 5 and options are 25 / 6 / 5 / 4. The hinted subtraction agrees with the answer; the displayed choices include that result where choices are printed."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w13-mat_g1_na_q3_3-20260925",
+      "dispatch_id": "gpt6luna-s5-w13-20260925:mat_g1_na_q3_3"
+    },
+    {
+      "sample_id": "f82efcdaf0f4a0d42402",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Sample f82efcdaf0f4a0d42402 asks: 🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨 — There are 10 paints. Its printed answer is 9 and options are 1 / 8 / 9 / 11. The quantities and requested result identify a single subtraction interpretation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample f82efcdaf0f4a0d42402 asks: 🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨 — There are 10 paints. Its printed answer is 9 and options are 1 / 8 / 9 / 11. The named objects or counting action form a coherent situation for the stated subtraction."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Sample f82efcdaf0f4a0d42402 asks: 🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨 — There are 10 paints. Its printed answer is 9 and options are 1 / 8 / 9 / 11. The emoji picture shows EmojiPictorial with visible 🎨; its count corresponds to the starting quantity and the hint chain reaches the answer."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample f82efcdaf0f4a0d42402 asks: 🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨 — There are 10 paints. Its printed answer is 9 and options are 1 / 8 / 9 / 11. The hinted subtraction agrees with the answer; the displayed choices include that result where choices are printed."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w13-mat_g1_na_q3_3-20260925",
+      "dispatch_id": "gpt6luna-s5-w13-20260925:mat_g1_na_q3_3"
+    },
+    {
+      "sample_id": "40ba53050e2ccfdcded8",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 40ba53050e2ccfdcded8 asks: Nanding had 17 water bowls. Nanding used 9 of them. How many water bowls are left? The answer is 7. True or False? Its printed answer is False. The quantities and requested result identify a single subtraction interpretation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 40ba53050e2ccfdcded8 asks: Nanding had 17 water bowls. Nanding used 9 of them. How many water bowls are left? The answer is 7. True or False? Its printed answer is False. The named objects or counting action form a coherent situation for the stated subtraction."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "Sample 40ba53050e2ccfdcded8 asks: Nanding had 17 water bowls. Nanding used 9 of them. How many water bowls are left? The answer is 7. True or False? Its printed answer is False. Hints follow the same subtraction and reach the printed answer; place-value borrowing language is a concern for this Grade 1 task."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 40ba53050e2ccfdcded8 asks: Nanding had 17 water bowls. Nanding used 9 of them. How many water bowls are left? The answer is 7. True or False? Its printed answer is False. The hinted subtraction agrees with the answer; the displayed choices include that result where choices are printed."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w13-mat_g1_na_q3_3-20260925",
+      "dispatch_id": "gpt6luna-s5-w13-20260925:mat_g1_na_q3_3"
+    },
+    {
+      "sample_id": "596b9c36087265bfdd57",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 596b9c36087265bfdd57 asks: Pia solved this problem: A home desk has 15 paint tubes. Carlo removes 9 paint tubes. How many paint tubes are left in the home desk? Pia says the answer is 7. Is Pia correct? Its printed answer is {'has_error': True, 'correct_value': 6}. The quantities and requested result identify a single subtraction interpretation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 596b9c36087265bfdd57 asks: Pia solved this problem: A home desk has 15 paint tubes. Carlo removes 9 paint tubes. How many paint tubes are left in the home desk? Pia says the answer is 7. Is Pia correct? Its printed answer is {'has_error': True, 'correct_value': 6}. The named objects or counting action form a coherent situation for the stated subtraction."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "Sample 596b9c36087265bfdd57 asks: Pia solved this problem: A home desk has 15 paint tubes. Carlo removes 9 paint tubes. How many paint tubes are left in the home desk? Pia says the answer is 7. Is Pia correct? Its printed answer is {'has_error': True, 'correct_value': 6}. Hints follow the same subtraction and reach the printed answer; place-value borrowing language is a concern for this Grade 1 task."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 596b9c36087265bfdd57 asks: Pia solved this problem: A home desk has 15 paint tubes. Carlo removes 9 paint tubes. How many paint tubes are left in the home desk? Pia says the answer is 7. Is Pia correct? Its printed answer is {'has_error': True, 'correct_value': 6}. The hinted subtraction agrees with the answer; the displayed choices include that result where choices are printed."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w13-mat_g1_na_q3_3-20260925",
+      "dispatch_id": "gpt6luna-s5-w13-20260925:mat_g1_na_q3_3"
+    },
+    {
+      "sample_id": "763ee2c1c951c7ae9f81",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 763ee2c1c951c7ae9f81 asks: 🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨 — There are 14 paints. Its printed answer is 6 and options are 22 / 6 / 5 / 14. The quantities and requested result identify a single subtraction interpretation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 763ee2c1c951c7ae9f81 asks: 🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨 — There are 14 paints. Its printed answer is 6 and options are 22 / 6 / 5 / 14. The named objects or counting action form a coherent situation for the stated subtraction."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 763ee2c1c951c7ae9f81 asks: 🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨 — There are 14 paints. Its printed answer is 6 and options are 22 / 6 / 5 / 14. The emoji picture shows EmojiPictorial with visible 🎨; its count corresponds to the starting quantity and the hint chain reaches the answer."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 763ee2c1c951c7ae9f81 asks: 🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨 — There are 14 paints. Its printed answer is 6 and options are 22 / 6 / 5 / 14. The hinted subtraction agrees with the answer; the displayed choices include that result where choices are printed."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w13-mat_g1_na_q3_3-20260925",
+      "dispatch_id": "gpt6luna-s5-w13-20260925:mat_g1_na_q3_3"
+    },
+    {
+      "sample_id": "51e9389028280d13ed90",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 51e9389028280d13ed90 asks: Noel solved this problem: A art room has 10 colored pencils. Kuya Renz removes 2 colored pencils. How many colored pencils are left in the art room? Noel says the answer is 8. Is Noel correct? Its printed answer is {'has_error': False, 'correct_value': 8}. The quantities and requested result identify a single subtraction interpretation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 51e9389028280d13ed90 asks: Noel solved this problem: A art room has 10 colored pencils. Kuya Renz removes 2 colored pencils. How many colored pencils are left in the art room? Noel says the answer is 8. Is Noel correct? Its printed answer is {'has_error': False, 'correct_value': 8}. The named objects or counting action form a coherent situation for the stated subtraction."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "Sample 51e9389028280d13ed90 asks: Noel solved this problem: A art room has 10 colored pencils. Kuya Renz removes 2 colored pencils. How many colored pencils are left in the art room? Noel says the answer is 8. Is Noel correct? Its printed answer is {'has_error': False, 'correct_value': 8}. Hints follow the same subtraction and reach the printed answer; place-value borrowing language is a concern for this Grade 1 task."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 51e9389028280d13ed90 asks: Noel solved this problem: A art room has 10 colored pencils. Kuya Renz removes 2 colored pencils. How many colored pencils are left in the art room? Noel says the answer is 8. Is Noel correct? Its printed answer is {'has_error': False, 'correct_value': 8}. The hinted subtraction agrees with the answer; the displayed choices include that result where choices are printed."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w13-mat_g1_na_q3_3-20260925",
+      "dispatch_id": "gpt6luna-s5-w13-20260925:mat_g1_na_q3_3"
+    },
+    {
+      "sample_id": "f7ae8b297d6fcab020e0",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Sample f7ae8b297d6fcab020e0 asks: There are 12 stones on the table. Moses takes away 0 stones. How many stones are left on the table? The answer is 12. True or False? Its printed answer is True. The quantities and requested result identify a single subtraction interpretation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample f7ae8b297d6fcab020e0 asks: There are 12 stones on the table. Moses takes away 0 stones. How many stones are left on the table? The answer is 12. True or False? Its printed answer is True. The named objects or counting action form a coherent situation for the stated subtraction."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Sample f7ae8b297d6fcab020e0 asks: There are 12 stones on the table. Moses takes away 0 stones. How many stones are left on the table? The answer is 12. True or False? Its printed answer is True. Hints follow the same subtraction and reach the printed answer; place-value borrowing language is a concern for this Grade 1 task."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample f7ae8b297d6fcab020e0 asks: There are 12 stones on the table. Moses takes away 0 stones. How many stones are left on the table? The answer is 12. True or False? Its printed answer is True. The hinted subtraction agrees with the answer; the displayed choices include that result where choices are printed."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w13-mat_g1_na_q3_3-20260925",
+      "dispatch_id": "gpt6luna-s5-w13-20260925:mat_g1_na_q3_3"
+    },
+    {
+      "sample_id": "51ce061954647ac3e715",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 51ce061954647ac3e715 asks: 🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐 — There are 10 items. Its printed answer is 9 and options are 9 / 8 / 1 / 11. The quantities and requested result identify a single subtraction interpretation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 51ce061954647ac3e715 asks: 🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐 — There are 10 items. Its printed answer is 9 and options are 9 / 8 / 1 / 11. The named objects or counting action form a coherent situation for the stated subtraction."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 51ce061954647ac3e715 asks: 🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐 — There are 10 items. Its printed answer is 9 and options are 9 / 8 / 1 / 11. The emoji picture shows EmojiPictorial with visible 🏐; its count corresponds to the starting quantity and the hint chain reaches the answer."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 51ce061954647ac3e715 asks: 🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐 — There are 10 items. Its printed answer is 9 and options are 9 / 8 / 1 / 11. The hinted subtraction agrees with the answer; the displayed choices include that result where choices are printed."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w13-mat_g1_na_q3_3-20260925",
+      "dispatch_id": "gpt6luna-s5-w13-20260925:mat_g1_na_q3_3"
+    },
+    {
+      "sample_id": "4f0e5afcb03888346b4c",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 4f0e5afcb03888346b4c asks: Sir Ben has 4 crayons. Sir Ben gives away 0 crayons. How many crayons does Sir Ben have left? The answer is 5. True or False? Its printed answer is False. The quantities and requested result identify a single subtraction interpretation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 4f0e5afcb03888346b4c asks: Sir Ben has 4 crayons. Sir Ben gives away 0 crayons. How many crayons does Sir Ben have left? The answer is 5. True or False? Its printed answer is False. The named objects or counting action form a coherent situation for the stated subtraction."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 4f0e5afcb03888346b4c asks: Sir Ben has 4 crayons. Sir Ben gives away 0 crayons. How many crayons does Sir Ben have left? The answer is 5. True or False? Its printed answer is False. Hints follow the same subtraction and reach the printed answer; place-value borrowing language is a concern for this Grade 1 task."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 4f0e5afcb03888346b4c asks: Sir Ben has 4 crayons. Sir Ben gives away 0 crayons. How many crayons does Sir Ben have left? The answer is 5. True or False? Its printed answer is False. The hinted subtraction agrees with the answer; the displayed choices include that result where choices are printed."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w13-mat_g1_na_q3_3-20260925",
+      "dispatch_id": "gpt6luna-s5-w13-20260925:mat_g1_na_q3_3"
+    },
+    {
+      "sample_id": "2e15dca898da5fa11b91",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 2e15dca898da5fa11b91 asks: 🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴 — There are 12 items. Its printed answer is 11 and options are 11 / 12 / 1 / 10. The quantities and requested result identify a single subtraction interpretation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 2e15dca898da5fa11b91 asks: 🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴 — There are 12 items. Its printed answer is 11 and options are 11 / 12 / 1 / 10. The named objects or counting action form a coherent situation for the stated subtraction."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 2e15dca898da5fa11b91 asks: 🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴 — There are 12 items. Its printed answer is 11 and options are 11 / 12 / 1 / 10. The emoji picture shows EmojiPictorial with visible 🚴; its count corresponds to the starting quantity and the hint chain reaches the answer."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 2e15dca898da5fa11b91 asks: 🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴 — There are 12 items. Its printed answer is 11 and options are 11 / 12 / 1 / 10. The hinted subtraction agrees with the answer; the displayed choices include that result where choices are printed."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w13-mat_g1_na_q3_3-20260925",
+      "dispatch_id": "gpt6luna-s5-w13-20260925:mat_g1_na_q3_3"
+    },
+    {
+      "sample_id": "01fefaf745fe4cb75031",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 01fefaf745fe4cb75031 asks: Riza has 11 milk tea cups. Riza gives away 10 milk tea cups. How many milk tea cups does Riza have left? The answer is 2. True or False? Its printed answer is False. The quantities and requested result identify a single subtraction interpretation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 01fefaf745fe4cb75031 asks: Riza has 11 milk tea cups. Riza gives away 10 milk tea cups. How many milk tea cups does Riza have left? The answer is 2. True or False? Its printed answer is False. The named objects or counting action form a coherent situation for the stated subtraction."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 01fefaf745fe4cb75031 asks: Riza has 11 milk tea cups. Riza gives away 10 milk tea cups. How many milk tea cups does Riza have left? The answer is 2. True or False? Its printed answer is False. Hints follow the same subtraction and reach the printed answer; place-value borrowing language is a concern for this Grade 1 task."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 01fefaf745fe4cb75031 asks: Riza has 11 milk tea cups. Riza gives away 10 milk tea cups. How many milk tea cups does Riza have left? The answer is 2. True or False? Its printed answer is False. The hinted subtraction agrees with the answer; the displayed choices include that result where choices are printed."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w13-mat_g1_na_q3_3-20260925",
+      "dispatch_id": "gpt6luna-s5-w13-20260925:mat_g1_na_q3_3"
+    },
+    {
+      "sample_id": "3e81d911a3382119b940",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 3e81d911a3382119b940 asks: Manny solved this problem: Start at 10. Count back 3. What number do you land on? Manny says the answer is 7. Is Manny correct? Its printed answer is {'has_error': False, 'correct_value': 7}. The quantities and requested result identify a single subtraction interpretation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 3e81d911a3382119b940 asks: Manny solved this problem: Start at 10. Count back 3. What number do you land on? Manny says the answer is 7. Is Manny correct? Its printed answer is {'has_error': False, 'correct_value': 7}. The named objects or counting action form a coherent situation for the stated subtraction."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "Sample 3e81d911a3382119b940 asks: Manny solved this problem: Start at 10. Count back 3. What number do you land on? Manny says the answer is 7. Is Manny correct? Its printed answer is {'has_error': False, 'correct_value': 7}. Hints follow the same subtraction and reach the printed answer; place-value borrowing language is a concern for this Grade 1 task."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 3e81d911a3382119b940 asks: Manny solved this problem: Start at 10. Count back 3. What number do you land on? Manny says the answer is 7. Is Manny correct? Its printed answer is {'has_error': False, 'correct_value': 7}. The hinted subtraction agrees with the answer; the displayed choices include that result where choices are printed."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w13-mat_g1_na_q3_3-20260925",
+      "dispatch_id": "gpt6luna-s5-w13-20260925:mat_g1_na_q3_3"
+    },
+    {
+      "sample_id": "1b436fe4374ac474e9c9",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 1b436fe4374ac474e9c9 asks: Isko is on step 3. Isko goes down 1 step. What step is Isko on now? Its printed answer is 2 and options are 3 / 4 / 2 / 1. The quantities and requested result identify a single subtraction interpretation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 1b436fe4374ac474e9c9 asks: Isko is on step 3. Isko goes down 1 step. What step is Isko on now? Its printed answer is 2 and options are 3 / 4 / 2 / 1. The named objects or counting action form a coherent situation for the stated subtraction."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 1b436fe4374ac474e9c9 asks: Isko is on step 3. Isko goes down 1 step. What step is Isko on now? Its printed answer is 2 and options are 3 / 4 / 2 / 1. Hints follow the same subtraction and reach the printed answer; place-value borrowing language is a concern for this Grade 1 task."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 1b436fe4374ac474e9c9 asks: Isko is on step 3. Isko goes down 1 step. What step is Isko on now? Its printed answer is 2 and options are 3 / 4 / 2 / 1. The hinted subtraction agrees with the answer; the displayed choices include that result where choices are printed."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w13-mat_g1_na_q3_3-20260925",
+      "dispatch_id": "gpt6luna-s5-w13-20260925:mat_g1_na_q3_3"
+    },
+    {
+      "sample_id": "54ebf6a80fcff9e13c09",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 54ebf6a80fcff9e13c09 asks: 🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴 — There are 12 items. Its printed answer is 12 and options are 12 / 0 / 11 / 13. The quantities and requested result identify a single subtraction interpretation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 54ebf6a80fcff9e13c09 asks: 🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴 — There are 12 items. Its printed answer is 12 and options are 12 / 0 / 11 / 13. The named objects or counting action form a coherent situation for the stated subtraction."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 54ebf6a80fcff9e13c09 asks: 🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴 — There are 12 items. Its printed answer is 12 and options are 12 / 0 / 11 / 13. The emoji picture shows EmojiPictorial with visible 🚴; its count corresponds to the starting quantity and the hint chain reaches the answer."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 54ebf6a80fcff9e13c09 asks: 🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴 — There are 12 items. Its printed answer is 12 and options are 12 / 0 / 11 / 13. The hinted subtraction agrees with the answer; the displayed choices include that result where choices are printed."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w13-mat_g1_na_q3_3-20260925",
+      "dispatch_id": "gpt6luna-s5-w13-20260925:mat_g1_na_q3_3"
+    },
+    {
+      "sample_id": "3686dc5621a07cfda71e",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 3686dc5621a07cfda71e asks: Ruth had 10 scrolls. After giving away some, Ruth had 9 left. How many scrolls did Ruth give away? Its printed answer is 1 and options are 1 / 9 / 8 / 11. The quantities and requested result identify a single subtraction interpretation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 3686dc5621a07cfda71e asks: Ruth had 10 scrolls. After giving away some, Ruth had 9 left. How many scrolls did Ruth give away? Its printed answer is 1 and options are 1 / 9 / 8 / 11. The named objects or counting action form a coherent situation for the stated subtraction."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "Sample 3686dc5621a07cfda71e asks: Ruth had 10 scrolls. After giving away some, Ruth had 9 left. How many scrolls did Ruth give away? Its printed answer is 1 and options are 1 / 9 / 8 / 11. Hints follow the same subtraction and reach the printed answer; place-value borrowing language is a concern for this Grade 1 task."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 3686dc5621a07cfda71e asks: Ruth had 10 scrolls. After giving away some, Ruth had 9 left. How many scrolls did Ruth give away? Its printed answer is 1 and options are 1 / 9 / 8 / 11. The hinted subtraction agrees with the answer; the displayed choices include that result where choices are printed."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w13-mat_g1_na_q3_3-20260925",
+      "dispatch_id": "gpt6luna-s5-w13-20260925:mat_g1_na_q3_3"
+    },
+    {
+      "sample_id": "f015f4d16a8e4ee40a8b",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Sample f015f4d16a8e4ee40a8b asks: Lola Ising had 10 cookies. Lola Ising used 2 of them. How many cookies are left? Its printed answer is 8 and options are 8 / 12 / 7 / 9. The quantities and requested result identify a single subtraction interpretation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample f015f4d16a8e4ee40a8b asks: Lola Ising had 10 cookies. Lola Ising used 2 of them. How many cookies are left? Its printed answer is 8 and options are 8 / 12 / 7 / 9. The named objects or counting action form a coherent situation for the stated subtraction."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "Sample f015f4d16a8e4ee40a8b asks: Lola Ising had 10 cookies. Lola Ising used 2 of them. How many cookies are left? Its printed answer is 8 and options are 8 / 12 / 7 / 9. Hints follow the same subtraction and reach the printed answer; place-value borrowing language is a concern for this Grade 1 task."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample f015f4d16a8e4ee40a8b asks: Lola Ising had 10 cookies. Lola Ising used 2 of them. How many cookies are left? Its printed answer is 8 and options are 8 / 12 / 7 / 9. The hinted subtraction agrees with the answer; the displayed choices include that result where choices are printed."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w13-mat_g1_na_q3_3-20260925",
+      "dispatch_id": "gpt6luna-s5-w13-20260925:mat_g1_na_q3_3"
+    },
+    {
+      "sample_id": "e6983a3441a5b4c75b0c",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Sample e6983a3441a5b4c75b0c asks: 🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐 — There are 10 items. Its printed answer is 7 and options are 6 / 7 / 13 / 10. The quantities and requested result identify a single subtraction interpretation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample e6983a3441a5b4c75b0c asks: 🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐 — There are 10 items. Its printed answer is 7 and options are 6 / 7 / 13 / 10. The named objects or counting action form a coherent situation for the stated subtraction."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Sample e6983a3441a5b4c75b0c asks: 🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐 — There are 10 items. Its printed answer is 7 and options are 6 / 7 / 13 / 10. The emoji picture shows EmojiPictorial with visible 🏐; its count corresponds to the starting quantity and the hint chain reaches the answer."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample e6983a3441a5b4c75b0c asks: 🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐 — There are 10 items. Its printed answer is 7 and options are 6 / 7 / 13 / 10. The hinted subtraction agrees with the answer; the displayed choices include that result where choices are printed."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w13-mat_g1_na_q3_3-20260925",
+      "dispatch_id": "gpt6luna-s5-w13-20260925:mat_g1_na_q3_3"
+    },
+    {
+      "sample_id": "1ecda0a1ef5958f3df84",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 1ecda0a1ef5958f3df84 asks: 🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴 — There are 12 items. Its printed answer is 11 and options are 10 / 12 / 11 / 1. The quantities and requested result identify a single subtraction interpretation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 1ecda0a1ef5958f3df84 asks: 🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴 — There are 12 items. Its printed answer is 11 and options are 10 / 12 / 11 / 1. The named objects or counting action form a coherent situation for the stated subtraction."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 1ecda0a1ef5958f3df84 asks: 🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴 — There are 12 items. Its printed answer is 11 and options are 10 / 12 / 11 / 1. The emoji picture shows EmojiPictorial with visible 🚴; its count corresponds to the starting quantity and the hint chain reaches the answer."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 1ecda0a1ef5958f3df84 asks: 🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴 — There are 12 items. Its printed answer is 11 and options are 10 / 12 / 11 / 1. The hinted subtraction agrees with the answer; the displayed choices include that result where choices are printed."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w13-mat_g1_na_q3_3-20260925",
+      "dispatch_id": "gpt6luna-s5-w13-20260925:mat_g1_na_q3_3"
+    },
+    {
+      "sample_id": "6e8efd208f0a31b1224e",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 6e8efd208f0a31b1224e asks: A park has 10 jump ropes. Faye removes 2 jump ropes. How many jump ropes are left in the park? Its printed answer is 8 and options are 8 / 9 / 7 / 12. The quantities and requested result identify a single subtraction interpretation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 6e8efd208f0a31b1224e asks: A park has 10 jump ropes. Faye removes 2 jump ropes. How many jump ropes are left in the park? Its printed answer is 8 and options are 8 / 9 / 7 / 12. The named objects or counting action form a coherent situation for the stated subtraction."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "Sample 6e8efd208f0a31b1224e asks: A park has 10 jump ropes. Faye removes 2 jump ropes. How many jump ropes are left in the park? Its printed answer is 8 and options are 8 / 9 / 7 / 12. Hints follow the same subtraction and reach the printed answer; place-value borrowing language is a concern for this Grade 1 task."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 6e8efd208f0a31b1224e asks: A park has 10 jump ropes. Faye removes 2 jump ropes. How many jump ropes are left in the park? Its printed answer is 8 and options are 8 / 9 / 7 / 12. The hinted subtraction agrees with the answer; the displayed choices include that result where choices are printed."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w13-mat_g1_na_q3_3-20260925",
+      "dispatch_id": "gpt6luna-s5-w13-20260925:mat_g1_na_q3_3"
+    },
+    {
+      "sample_id": "fdd0c8a49f52b15fae07",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Sample fdd0c8a49f52b15fae07 asks: 🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐 — There are 10 items. Its printed answer is 0 and options are 0 / 1 / 10 / 20. The quantities and requested result identify a single subtraction interpretation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample fdd0c8a49f52b15fae07 asks: 🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐 — There are 10 items. Its printed answer is 0 and options are 0 / 1 / 10 / 20. The named objects or counting action form a coherent situation for the stated subtraction."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Sample fdd0c8a49f52b15fae07 asks: 🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐 — There are 10 items. Its printed answer is 0 and options are 0 / 1 / 10 / 20. The emoji picture shows EmojiPictorial with visible 🏐; its count corresponds to the starting quantity and the hint chain reaches the answer."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample fdd0c8a49f52b15fae07 asks: 🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐 — There are 10 items. Its printed answer is 0 and options are 0 / 1 / 10 / 20. The hinted subtraction agrees with the answer; the displayed choices include that result where choices are printed."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w13-mat_g1_na_q3_3-20260925",
+      "dispatch_id": "gpt6luna-s5-w13-20260925:mat_g1_na_q3_3"
+    },
+    {
+      "sample_id": "6d6b330459c3d8cfa05f",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 6d6b330459c3d8cfa05f asks: Paul had 18 stones. Paul used 9 of them. How many stones are left? The answer is 9. True or False? Its printed answer is True. The quantities and requested result identify a single subtraction interpretation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 6d6b330459c3d8cfa05f asks: Paul had 18 stones. Paul used 9 of them. How many stones are left? The answer is 9. True or False? Its printed answer is True. The named objects or counting action form a coherent situation for the stated subtraction."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "Sample 6d6b330459c3d8cfa05f asks: Paul had 18 stones. Paul used 9 of them. How many stones are left? The answer is 9. True or False? Its printed answer is True. Hints follow the same subtraction and reach the printed answer; place-value borrowing language is a concern for this Grade 1 task."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 6d6b330459c3d8cfa05f asks: Paul had 18 stones. Paul used 9 of them. How many stones are left? The answer is 9. True or False? Its printed answer is True. The hinted subtraction agrees with the answer; the displayed choices include that result where choices are printed."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w13-mat_g1_na_q3_3-20260925",
+      "dispatch_id": "gpt6luna-s5-w13-20260925:mat_g1_na_q3_3"
+    },
+    {
+      "sample_id": "663fa96a07d314c024a2",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 663fa96a07d314c024a2 asks: Noel solved this problem: There were 5 jump ropes in a box. 2 jump ropes were taken out. How many jump ropes are still in the box? Noel says the answer is 4. Is Noel correct? Its printed answer is {'has_error': True, 'correct_value': 3}. The quantities and requested result identify a single subtraction interpretation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 663fa96a07d314c024a2 asks: Noel solved this problem: There were 5 jump ropes in a box. 2 jump ropes were taken out. How many jump ropes are still in the box? Noel says the answer is 4. Is Noel correct? Its printed answer is {'has_error': True, 'correct_value': 3}. The named objects or counting action form a coherent situation for the stated subtraction."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 663fa96a07d314c024a2 asks: Noel solved this problem: There were 5 jump ropes in a box. 2 jump ropes were taken out. How many jump ropes are still in the box? Noel says the answer is 4. Is Noel correct? Its printed answer is {'has_error': True, 'correct_value': 3}. Hints follow the same subtraction and reach the printed answer; place-value borrowing language is a concern for this Grade 1 task."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 663fa96a07d314c024a2 asks: Noel solved this problem: There were 5 jump ropes in a box. 2 jump ropes were taken out. How many jump ropes are still in the box? Noel says the answer is 4. Is Noel correct? Its printed answer is {'has_error': True, 'correct_value': 3}. The hinted subtraction agrees with the answer; the displayed choices include that result where choices are printed."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w13-mat_g1_na_q3_3-20260925",
+      "dispatch_id": "gpt6luna-s5-w13-20260925:mat_g1_na_q3_3"
+    },
+    {
+      "sample_id": "ba1118d609233c269539",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Sample ba1118d609233c269539 asks: Maria solved this problem: Ate Gab has 11 pom-poms. A friend has 3 pom-poms. How many fewer pom-poms does the friend have? Maria says the answer is 9. Is Maria correct? Its printed answer is {'has_error': True, 'correct_value': 8}. The quantities and requested result identify a single subtraction interpretation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample ba1118d609233c269539 asks: Maria solved this problem: Ate Gab has 11 pom-poms. A friend has 3 pom-poms. How many fewer pom-poms does the friend have? Maria says the answer is 9. Is Maria correct? Its printed answer is {'has_error': True, 'correct_value': 8}. The named objects or counting action form a coherent situation for the stated subtraction."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "Sample ba1118d609233c269539 asks: Maria solved this problem: Ate Gab has 11 pom-poms. A friend has 3 pom-poms. How many fewer pom-poms does the friend have? Maria says the answer is 9. Is Maria correct? Its printed answer is {'has_error': True, 'correct_value': 8}. Hints follow the same subtraction and reach the printed answer; place-value borrowing language is a concern for this Grade 1 task."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample ba1118d609233c269539 asks: Maria solved this problem: Ate Gab has 11 pom-poms. A friend has 3 pom-poms. How many fewer pom-poms does the friend have? Maria says the answer is 9. Is Maria correct? Its printed answer is {'has_error': True, 'correct_value': 8}. The hinted subtraction agrees with the answer; the displayed choices include that result where choices are printed."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w13-mat_g1_na_q3_3-20260925",
+      "dispatch_id": "gpt6luna-s5-w13-20260925:mat_g1_na_q3_3"
+    },
+    {
+      "sample_id": "a0b60824f6ff913bc929",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Sample a0b60824f6ff913bc929 asks: Coach Roel has 10 water bottles. A friend has 3 water bottles. How many fewer water bottles does the friend have? Its printed answer is 7 and options are 8 / 6 / 13 / 7. The quantities and requested result identify a single subtraction interpretation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample a0b60824f6ff913bc929 asks: Coach Roel has 10 water bottles. A friend has 3 water bottles. How many fewer water bottles does the friend have? Its printed answer is 7 and options are 8 / 6 / 13 / 7. The named objects or counting action form a coherent situation for the stated subtraction."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "Sample a0b60824f6ff913bc929 asks: Coach Roel has 10 water bottles. A friend has 3 water bottles. How many fewer water bottles does the friend have? Its printed answer is 7 and options are 8 / 6 / 13 / 7. Hints follow the same subtraction and reach the printed answer; place-value borrowing language is a concern for this Grade 1 task."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample a0b60824f6ff913bc929 asks: Coach Roel has 10 water bottles. A friend has 3 water bottles. How many fewer water bottles does the friend have? Its printed answer is 7 and options are 8 / 6 / 13 / 7. The hinted subtraction agrees with the answer; the displayed choices include that result where choices are printed."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w13-mat_g1_na_q3_3-20260925",
+      "dispatch_id": "gpt6luna-s5-w13-20260925:mat_g1_na_q3_3"
+    },
+    {
+      "sample_id": "d7b4c931e73e5830375b",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Sample d7b4c931e73e5830375b asks: 🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴 — There are 12 items. Its printed answer is 11 and options are 11 / 10 / 12 / 13. The quantities and requested result identify a single subtraction interpretation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample d7b4c931e73e5830375b asks: 🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴 — There are 12 items. Its printed answer is 11 and options are 11 / 10 / 12 / 13. The named objects or counting action form a coherent situation for the stated subtraction."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Sample d7b4c931e73e5830375b asks: 🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴 — There are 12 items. Its printed answer is 11 and options are 11 / 10 / 12 / 13. The emoji picture shows EmojiPictorial with visible 🚴; its count corresponds to the starting quantity and the hint chain reaches the answer."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample d7b4c931e73e5830375b asks: 🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴 — There are 12 items. Its printed answer is 11 and options are 11 / 10 / 12 / 13. The hinted subtraction agrees with the answer; the displayed choices include that result where choices are printed."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w13-mat_g1_na_q3_3-20260925",
+      "dispatch_id": "gpt6luna-s5-w13-20260925:mat_g1_na_q3_3"
+    },
+    {
+      "sample_id": "2f40b12ca44800c42a17",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 2f40b12ca44800c42a17 asks: 🧁🧁🧁🧁🧁🧁🧁🧁🧁🧁 — There are 10 cupcakes. Its printed answer is 9 and options are 10 / 11 / 9 / 8. The quantities and requested result identify a single subtraction interpretation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 2f40b12ca44800c42a17 asks: 🧁🧁🧁🧁🧁🧁🧁🧁🧁🧁 — There are 10 cupcakes. Its printed answer is 9 and options are 10 / 11 / 9 / 8. The named objects or counting action form a coherent situation for the stated subtraction."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 2f40b12ca44800c42a17 asks: 🧁🧁🧁🧁🧁🧁🧁🧁🧁🧁 — There are 10 cupcakes. Its printed answer is 9 and options are 10 / 11 / 9 / 8. The emoji picture shows EmojiPictorial with visible 🧁; its count corresponds to the starting quantity and the hint chain reaches the answer."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sample 2f40b12ca44800c42a17 asks: 🧁🧁🧁🧁🧁🧁🧁🧁🧁🧁 — There are 10 cupcakes. Its printed answer is 9 and options are 10 / 11 / 9 / 8. The hinted subtraction agrees with the answer; the displayed choices include that result where choices are printed."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w13-mat_g1_na_q3_3-20260925",
+      "dispatch_id": "gpt6luna-s5-w13-20260925:mat_g1_na_q3_3"
+    }
+  ],
+  "clause_evidence": [
+    {
+      "requirement_id": "solve_subtraction",
+      "clause": "Solve subtraction problems",
+      "verdict": "PASS",
+      "reasoning": "Across the packet, every sampled task asks learners to determine a difference or judge a stated difference, including count-back, take-away, and comparison contexts.",
+      "sample_ids": [
+        "7bebc8f862cce46b3464",
+        "3d0b61663e5a8f2912e0",
+        "f82efcdaf0f4a0d42402"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w13-mat_g1_na_q3_3-20260925",
+      "dispatch_id": "gpt6luna-s5-w13-20260925:mat_g1_na_q3_3"
+    },
+    {
+      "requirement_id": "in_pictures",
+      "clause": "in pictures",
+      "verdict": "PASS",
+      "reasoning": "The read_mcq examples include emoji pictorials paired with explicit starting and removed counts, giving visible picture-based subtraction instances.",
+      "sample_ids": [
+        "f82efcdaf0f4a0d42402",
+        "763ee2c1c951c7ae9f81",
+        "51ce061954647ac3e715"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w13-mat_g1_na_q3_3-20260925",
+      "dispatch_id": "gpt6luna-s5-w13-20260925:mat_g1_na_q3_3"
+    },
+    {
+      "requirement_id": "less_than_20",
+      "clause": "numbers are less than 20",
+      "verdict": "PASS",
+      "reasoning": "The cited tasks use minuends and subtrahends below 20, including 18 and 9; their answers are likewise within the range.",
+      "sample_ids": [
+        "6d6b330459c3d8cfa05f",
+        "3d0b61663e5a8f2912e0",
+        "7bebc8f862cce46b3464"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w13-mat_g1_na_q3_3-20260925",
+      "dispatch_id": "gpt6luna-s5-w13-20260925:mat_g1_na_q3_3"
+    }
+  ],
+  "dispatch_provenance": [
+    {
+      "dispatch_id": "gpt6luna-s5-w13-20260925:mat_g1_na_q3_3",
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w13-mat_g1_na_q3_3-20260925",
+      "review_date": "2026-09-25",
+      "blind": true,
+      "packet_digest": "afe01bd70deca375164506d9528ec384f25e865db7e269d169d000a95dc62dee",
+      "clause_ids": [
+        "solve_subtraction",
+        "in_pictures",
+        "less_than_20"
+      ],
+      "response_ref": ".responses/gpt6luna-s5-w13-20260925.json",
+      "response_digest": "286161f9be3639b9d1b1825ac1bc4bea3124ab93e37fbc118275ce980b17ad4a",
+      "prompt_ref": ".responses/gpt6luna-s5-w13-20260925.prompt.txt",
+      "prompt_digest": "696364ee3c69e52a24a9c9aae00a1a7fb005059dd93b12b6f8fd60f3c7e6c788",
+      "samples_delivery": "Dispatch-time local prompt file read by separate gpt-6-luna medium reviewer; no source or prior reviews supplied",
+      "tool_uses_by_reviewer": "Reviewer reported seven calls: cat prompt, two sed prompt reads, one empty command, failed bare-python parse, successful python3 parse, and python3 verdict write; report is reviewer-provided."
     }
   ],
   "findings": {
-    "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "These are genuine situational subtraction problems, but some choice sets are not defensible: a pupil standing on step 15 who goes down 10 is offered 25 among the options, and a fourteen-item picture removal is offered 22. Both exceed the starting amount and can be discarded without doing any subtraction."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "More than one subtraction meaning is generated - physical removal, giving away, counting back along a sequence, and a comparison phrased as 'How many fewer medals does the friend have?' - so the competency is not reduced to take-away alone."
-    },
     "cognitive_capacity": {
       "verdict": "CONCERN",
-      "rationale": "The arithmetic fits, but the writing sometimes does not: one stem reads 'A art room has 10 colored pencils', and other contexts lean on nouns like canvases and a home desk that a Grade 1 reader is unlikely to decode quickly."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "Counted emoji rows, staircase movement, everyday possession stories and a peer-checking format all appear, which meets the orally-or-in-pictures framing the competency uses."
+      "rationale": "The quantities stay small and familiar, but many hints introduce tens, ones, and borrowing terminology for Grade 1 subtraction, which may exceed the competency’s intended approach."
     },
     "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Increasing difficulty shows up as larger minuends and subtractions that cross a friendly landmark, plus the zero-removal edge case, all of which deepen subtraction understanding rather than testing something else."
+      "verdict": "CONCERN",
+      "rationale": "All tasks concern subtraction below 20, yet many are text-only and the printed decomposition omits the competency’s orally given form, narrowing alignment evidence."
+    },
+    "competency_fulfillment": {
+      "verdict": "FAIL",
+      "rationale": "The packet demonstrates subtraction and pictures, but the stated requirements do not fully preserve both delivery modes in the full competency.",
+      "decomposition": {
+        "verdict": "FAIL",
+        "reasoning": "The competency explicitly allows problems given orally or in pictures. The three requirements mention solving subtraction, pictures, and the number bound, but omit oral presentation, so this is not lossless.",
+        "requirement_ids": [
+          "solve_subtraction",
+          "in_pictures",
+          "less_than_20"
+        ]
+      },
+      "clause_ids": [
+        "solve_subtraction",
+        "in_pictures",
+        "less_than_20"
+      ]
+    },
+    "comprehensive_coverage": {
+      "verdict": "CONCERN",
+      "rationale": "Examples cover take-away, count-back, comparison, missing change, visual sets, and numbers across the range, though there is no explicit oral-only delivery sample.",
+      "clause_ids": [
+        "solve_subtraction",
+        "in_pictures",
+        "less_than_20"
+      ]
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Both numbers in every sampled problem stay below twenty, the exact restriction the wording places on this node, with seventeen the largest starting quantity observed."
+      "rationale": "All printed operands are below 20 and tasks remain within single-step subtraction; contexts use small collections, steps, and familiar objects."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The packet varies response formats, contexts, and subtraction structures, including take-away, comparison, unknown removed amount, and pictorial selection."
     }
   },
-  "overall": "CONCERN"
+  "overall": "FAIL"
 }

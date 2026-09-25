@@ -16494,3 +16494,73 @@ RUN_ALL EXIT CODE: 1
 The `run_all` stage adds one aggregate finding to the module's 1553, as documented in the
 handoff. The other two red stages and all existing digest-bound proofs were untouched.
 No generation seed failed mechanically; the content findings above are tied to seeds 701 and 44.
+
+## 2026-09-25 — GPT-6 Luna §5 wave 11–13 (`codex-h06-s5-full-campaign-20260925`)
+
+`gpt-5.6-luna` is unavailable on this host. Three separate blind reviewers actually ran
+`gpt-6-luna` at medium reasoning, and their `reviewed_by` strings say so. Every reviewer
+received one dispatch-time packet for one node; the exact prompts and raw responses are
+preserved in the node's `.responses/` directory. All verdicts were filed through
+`tests.file_reviews` using the original skeletons. No reviewer or attester verdict was
+authored by the dispatcher.
+
+| node | dispatch | samples / clauses | audit | filed overall | §5 module findings before → after |
+|---|---|---:|---|---|---:|
+| `mat_g1_na_q3_1` | `gpt6luna-s5-w11-20260925` | 25 / 3 | 110/110 distinct reasonings, minimum 62 chars, 0 unmatched quotes | FAIL | 6 → 13 |
+| `mat_g1_na_q3_2` | `gpt6luna-s5-w12-20260925` | 25 / 2 | 108/109 distinct, minimum 130 chars, 0 unmatched quotes | CONCERN | 4 → 5 |
+| `mat_g1_na_q3_3` | `gpt6luna-s5-w13-20260925` | 30 / 3 | 130/130 distinct, minimum 119 chars, 0 unmatched quotes | FAIL | 9 → 18 |
+
+Reviewer identities, in table order: `blind-reviewer-gpt-6-luna-medium-w11-mat_g1_na_q3_1-20260925`,
+`blind-reviewer-gpt-6-luna-medium-w12-mat_g1_na_q3_2-20260925`, and
+`blind-reviewer-gpt-6-luna-medium-w13-mat_g1_na_q3_3-20260925`.
+
+The q3_2 reply initially put `rationale` instead of `reasoning` in all 100 sample checks.
+The dispatcher refused to file it; the blind reviewer corrected its own file and executed
+a count of 100/100 `reasoning` keys and zero `rationale` keys. The dispatcher reran the
+audit and only then filed it.
+
+**Named content defects and review findings:**
+
+* `mat_g1_na_q3_1`, seed **44**, stem `20 - ? = 12`: the hint prints `12 + 20 = 8`,
+  which is false. Seed **45**, stem `15 − ___ = 1`, prints `1 + 15 = 14`, also false.
+  Seed **901**, stem `20 − ___ = 5`, prints `5 + 20 = 15`, also false. Seed **800**
+  changes the unknown from the subtrahend in `10 - ? = 3` to the minuend in
+  `___ − 7 = 3`. The keyed answers are correct; the hint chain teaches false or
+  different equations. These are rendered packet facts, not merely reviewer labels.
+* `mat_g1_na_q3_2`, competency clause **“Write an equivalent expression to a given
+  addition or subtraction expression”**: the reviewer ruled `write_equivalent_expression`
+  CONCERN. The packet supplies prepared equalities with blanks or truth judgments but
+  does not ask pupils to produce an equivalent expression. This is a capability/content
+  finding for a later source batch, not a reason to weaken the clause.
+* `mat_g1_na_q3_3`, competency **“Solve subtraction problems (given orally or in pictures)
+  where both numbers are less than 20”**: the reviewer ruled the three printed
+  requirements' decomposition FAIL because they name pictures but omit oral delivery.
+  This must be adjudicated against the existing owner ruling that `or` is a delivery
+  alternative, not automatically turned into a compulsory second capability. The
+  rendered seed **600** also says `A art room`, a reproducible article error.
+
+**Executed evidence:**
+
+```text
+$ PYTHONPATH=. .venv/bin/python -c '...validate_judgment_reviews()...'
+judgment_reviews module: 1553 problems
+mat_g1_na_q3_1 : 6 problems
+mat_g1_na_q3_2 : 4 problems
+mat_g1_na_q3_3 : 9 problems
+
+$ PYTHONPATH=. .venv/bin/python tests/legacy_review_queue.py --write
+legacy_review_queue: 114 legacy review(s), NOT adjudicable evidence
+  re-reviews owed         : 114
+  wrote validation_reports/phase2_hardening/legacy_review_queue.json
+
+$ PYTHONPATH=. .venv/bin/python -c '...validate_judgment_reviews()...'
+judgment_reviews module: 1570 problems
+mat_g1_na_q3_1 : 13 problems
+mat_g1_na_q3_2 : 5 problems
+mat_g1_na_q3_3 : 18 problems
+```
+
+The **module entry point** rose by 17, exactly the sum of these nodes' 7 + 1 + 9
+newly visible findings. `run_all` was not remeasured after this wave. No source or
+digest-bound validation input changed; the H-06 campaign intent remains open for the
+next review wave.

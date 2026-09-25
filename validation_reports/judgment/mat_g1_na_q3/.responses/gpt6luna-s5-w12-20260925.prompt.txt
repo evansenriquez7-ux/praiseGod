@@ -1,0 +1,220 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-gpt-6-luna-medium-w12-mat_g1_na_q3_2-20260925
+
+Write one JSON object to:
+  local_only/scratch/review/s5-full-20260925/mat_g1_na_q3_2/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN; never invent a supporting sample.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-gpt-6-luna-medium-w12-mat_g1_na_q3_2-20260925",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+Additional review instructions:
+- Write at least 60 characters for every `reasoning` and `rationale`.
+- Every per-sample check must describe that sample's actual numbers, action, answer, options, hints, or visual. Do not repeat generic explanations across different samples or fill a shared sentence template with numbers. Independently inspect each item.
+- Any text in quotation marks must be a character-for-character substring of this printed packet. No paraphrases, summaries, ellipses, placeholders, or shortened comma fragments inside quotation marks. When unsure, describe without quotation marks.
+- A curated student-interest bank deliberately supplies themes from sports, gaming, food, faith and others, including themed names, objects and emoji. Judge whether theming interferes with the mathematics or clarity. Still flag a wrapper that contradicts its own question.
+- Explicitly compare each hint chain against that sample's stem, answer, options and visual. Flag a hint that teaches a different operation, representation, or answer.
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g1_na_q3_2
+PACKET DIGEST: 9a2455e0a5302502a7710bdd9f86e05c2b6dc7b20c107d3eca48eba11c31d371
+COMPETENCY (Grade 1, Quarter 3, None):
+Write an equivalent expression to a given addition or subtraction expression (e.g., 2+3 = 1+4; 10-5 = 6-1).
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  write_equivalent_expression: Write an equivalent expression
+  addition_subtraction_expression: addition or subtraction expression
+
+SAMPLES (every one of these is real rendered output):
+  sample 537d8302a55287dd18a7  seed 42  [cloze]
+      stem:    3 + 2 = 1 + ___
+      answer:  4
+      options: 8 / 5 / 4 / 7
+      hints:   []
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 8149dd7142c4d3eddf3d  seed 43  [mcq]
+      stem:    What number completes the expression: 8 − 5 = 18 − ___?
+      answer:  15
+      options: 15 / 16 / 11 / 8
+      hints:   []
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 9ddadd1416d875b7073a  seed 44  [true_false]
+      stem:    In 3 + 12 = 8 + ___, the missing number is 7. True or False?
+      answer:  True
+      hints:   []
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 53942ce93915ade95879  seed 45  [mcq]
+      stem:    What number completes the expression: 18 − 8 = 15 − ___?
+      answer:  5
+      options: 18 / 6 / 5 / 28
+      hints:   []
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample f0407fed69387358b41f  seed 46  [mcq]
+      stem:    What number completes the expression: 6 − 2 = 14 − ___?
+      answer:  10
+      options: 6 / 9 / 10 / 11
+      hints:   []
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample a166a80bfe98e170f8f1  seed 500  [true_false]
+      stem:    In 19 − 3 = 20 − ___, the missing number is 19. True or False?
+      answer:  False
+      hints:   []
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample f76f99c1ad92e84f276b  seed 501  [true_false]
+      stem:    In 15 − 4 = 17 − ___, the missing number is 26. True or False?
+      answer:  False
+      hints:   []
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample eb54afcc076773a350f4  seed 502  [cloze]
+      stem:    19 − 1 = 20 − ___
+      answer:  2
+      options: 3 / 2 / 19 / 37
+      hints:   []
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 01c410d987c724b502b6  seed 600  [mcq]
+      stem:    What number completes the expression: 18 − 8 = 13 − ___?
+      answer:  3
+      options: 3 / 4 / 28 / 18
+      hints:   []
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 7a985e4680342218d576  seed 601  [true_false]
+      stem:    In 1 + 7 = 5 + ___, the missing number is 3. True or False?
+      answer:  True
+      hints:   []
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 90a660144013b775a0c2  seed 602  [cloze]
+      stem:    6 + 8 = 10 + ___
+      answer:  4
+      options: 20 / 4 / 5 / 22
+      hints:   []
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample b10cf44241f4946eb246  seed 603  [true_false]
+      stem:    In 15 − 8 = 8 − ___, the missing number is 15. True or False?
+      answer:  False
+      hints:   []
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 4e541b8aeab97e6060dc  seed 604  [cloze]
+      stem:    2 + 2 = 3 + ___
+      answer:  1
+      options: 1 / 2 / 6 / 0
+      hints:   []
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 5706d29da35d34a3c7a6  seed 605  [true_false]
+      stem:    In 16 − 9 = 15 − ___, the missing number is 16. True or False?
+      answer:  False
+      hints:   []
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample f6936a820afe4f6f18ff  seed 606  [mcq]
+      stem:    What number completes the expression: 17 − 14 = 15 − ___?
+      answer:  12
+      options: 20 / 12 / 13 / 17
+      hints:   []
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample e598e58c221e12fdae31  seed 607  [cloze]
+      stem:    1 + 3 = 3 + ___
+      answer:  1
+      options: 5 / 7 / 1 / 2
+      hints:   []
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample efb1e3d9ed632d882fee  seed 700  [cloze]
+      stem:    4 + 3 = 2 + ___
+      answer:  5
+      options: 11 / 10 / 6 / 5
+      hints:   []
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 76ab7a5cca8a86d5c4ab  seed 701  [mcq]
+      stem:    💃 Sir Rez has a math challenge about dance shoes. What number completes the expression: 12 − 2 = 20 − ___?
+      answer:  10
+      options: 12 / 22 / 10 / 11
+      hints:   []
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 030b83448897e4f5e218  seed 702  [cloze]
+      stem:    🏀 Isko has a math challenge about basketballs. 1 + 4 = 3 + ___
+      answer:  2
+      options: 2 / 6 / 3 / 9
+      hints:   []
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample e414d05d4bac355a38fe  seed 800  [true_false]
+      stem:    In 16 + 1 = 8 + ___, the missing number is 9. True or False?
+      answer:  True
+      hints:   []
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample c6d7cf1812a4cefe6335  seed 900  [mcq]
+      stem:    What number completes the expression: 11 − 2 = 20 − ___?
+      answer:  11
+      options: 10 / 20 / 12 / 11
+      hints:   []
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample d20b6cc2d35a821fea52  seed 901  [true_false]
+      stem:    In 16 − 1 = 17 − ___, the missing number is 31. True or False?
+      answer:  False
+      hints:   []
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 5afc99a1b4877c917315  seed 1000  [true_false]
+      stem:    In 7 + 8 = 6 + ___, the missing number is 9. True or False?
+      answer:  True
+      hints:   []
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "hint_gated"}
+  sample 4ab9e8afe5ae6b22cce3  seed 1001  [cloze]
+      stem:    1 + 2 = 2 + ___
+      answer:  1
+      options: 1 / 4 / 5 / 2
+      hints:   []
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "mastery_drill"}
+  sample 52d2c498b0bece8c7cc6  seed 1002  [cloze]
+      stem:    19 − 1 = 20 − ___
+      answer:  2
+      options: 37 / 2 / 3 / 19
+      hints:   []
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "scaffolded"}
+

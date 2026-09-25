@@ -1,7 +1,28 @@
 {
+  "schema_version": 2,
   "node_id": "mat_g1_na_q3_2",
-  "reviewed_by": "reviewer-c2-basalt-yarrow-7194",
-  "review_date": "2026-09-11",
+  "competency_snapshot": {
+    "text": "Write an equivalent expression to a given addition or subtraction expression (e.g., 2+3 = 1+4; 10-5 = 6-1).",
+    "grade": 1,
+    "quarter": 3,
+    "subdomain": null
+  },
+  "requirements_snapshot": [
+    {
+      "kind": "task",
+      "id": "write_equivalent_expression",
+      "clause": "Write an equivalent expression"
+    },
+    {
+      "kind": "context",
+      "id": "addition_subtraction_expression",
+      "clause": "addition or subtraction expression"
+    }
+  ],
+  "packet_digest": "9a2455e0a5302502a7710bdd9f86e05c2b6dc7b20c107d3eca48eba11c31d371",
+  "sampling_version": "phase2-stratified-v2-rendered-visual",
+  "reviewed_by": "blind-reviewer-gpt-6-luna-medium-w12-mat_g1_na_q3_2-20260925",
+  "review_date": "2026-09-25",
   "blind": true,
   "sample_seeds": [
     42,
@@ -17,14 +38,67 @@
     602,
     603,
     604,
-    605
+    605,
+    606,
+    607,
+    700,
+    701,
+    702,
+    800,
+    900,
+    901,
+    1000,
+    1001,
+    1002
+  ],
+  "sample_ids": [
+    "537d8302a55287dd18a7",
+    "8149dd7142c4d3eddf3d",
+    "9ddadd1416d875b7073a",
+    "53942ce93915ade95879",
+    "f0407fed69387358b41f",
+    "a166a80bfe98e170f8f1",
+    "f76f99c1ad92e84f276b",
+    "eb54afcc076773a350f4",
+    "01c410d987c724b502b6",
+    "7a985e4680342218d576",
+    "90a660144013b775a0c2",
+    "b10cf44241f4946eb246",
+    "4e541b8aeab97e6060dc",
+    "5706d29da35d34a3c7a6",
+    "f6936a820afe4f6f18ff",
+    "e598e58c221e12fdae31",
+    "efb1e3d9ed632d882fee",
+    "76ab7a5cca8a86d5c4ab",
+    "030b83448897e4f5e218",
+    "e414d05d4bac355a38fe",
+    "c6d7cf1812a4cefe6335",
+    "d20b6cc2d35a821fea52",
+    "5afc99a1b4877c917315",
+    "4ab9e8afe5ae6b22cce3",
+    "52d2c498b0bece8c7cc6"
   ],
   "samples_reviewed": [
     {
+      "node_id": "mat_g1_na_q3_2",
       "seed": 42,
       "formatter": "cloze",
       "question_text": "3 + 2 = 1 + ___",
       "correct_answer": 4,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -50,13 +124,32 @@
           "text": "7",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 4,
+      "hints": [],
+      "sample_id": "537d8302a55287dd18a7",
+      "replay_digest": "5904aada82e2088b38a4379e18c2481eb069a95c513e278effed8fc097ca6875"
     },
     {
+      "node_id": "mat_g1_na_q3_2",
       "seed": 43,
       "formatter": "mcq",
       "question_text": "What number completes the expression: 8 − 5 = 18 − ___?",
       "correct_answer": 15,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -78,19 +171,57 @@
           "value": 8,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 15,
+      "hints": [],
+      "sample_id": "8149dd7142c4d3eddf3d",
+      "replay_digest": "57a715eaa6101cadff1700edd3404ae96b76d81b97782de082d9d0e37d43b376"
     },
     {
+      "node_id": "mat_g1_na_q3_2",
       "seed": 44,
       "formatter": "true_false",
       "question_text": "In 3 + 12 = 8 + ___, the missing number is 7. True or False?",
-      "correct_answer": true
+      "correct_answer": true,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": true,
+      "hints": [],
+      "sample_id": "9ddadd1416d875b7073a",
+      "replay_digest": "cb07a0bbb688f9b70943387a78e0b0ba9d81a6d0edaa04f764e7ee0e16003d33"
     },
     {
+      "node_id": "mat_g1_na_q3_2",
       "seed": 45,
       "formatter": "mcq",
       "question_text": "What number completes the expression: 18 − 8 = 15 − ___?",
       "correct_answer": 5,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -112,13 +243,32 @@
           "value": 28,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 5,
+      "hints": [],
+      "sample_id": "53942ce93915ade95879",
+      "replay_digest": "96cbce34749304ea73e6b23f13a4cce1931bca3deb380cd77d7a61e219b72a7f"
     },
     {
+      "node_id": "mat_g1_na_q3_2",
       "seed": 46,
       "formatter": "mcq",
       "question_text": "What number completes the expression: 6 − 2 = 14 − ___?",
       "correct_answer": 10,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -140,25 +290,88 @@
           "value": 11,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 10,
+      "hints": [],
+      "sample_id": "f0407fed69387358b41f",
+      "replay_digest": "353d372abb1b34e86862f45b5fef7004c1a92b87a05d9dfadbc2240c6347e532"
     },
     {
+      "node_id": "mat_g1_na_q3_2",
       "seed": 500,
       "formatter": "true_false",
       "question_text": "In 19 − 3 = 20 − ___, the missing number is 19. True or False?",
-      "correct_answer": false
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [],
+      "sample_id": "a166a80bfe98e170f8f1",
+      "replay_digest": "c871cb82959f83dcb18471125f83e171bdf7ae2202e59ddfe2445c65881cabbb"
     },
     {
+      "node_id": "mat_g1_na_q3_2",
       "seed": 501,
       "formatter": "true_false",
       "question_text": "In 15 − 4 = 17 − ___, the missing number is 26. True or False?",
-      "correct_answer": false
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [],
+      "sample_id": "f76f99c1ad92e84f276b",
+      "replay_digest": "47cf2b8805c146b85c2107c544d312073dfa6acd942cf997773dcb06b31fa64d"
     },
     {
+      "node_id": "mat_g1_na_q3_2",
       "seed": 502,
       "formatter": "cloze",
       "question_text": "19 − 1 = 20 − ___",
       "correct_answer": 2,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -184,13 +397,34 @@
           "text": "37",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 2,
+      "hints": [],
+      "sample_id": "eb54afcc076773a350f4",
+      "replay_digest": "1e85629732b52a9b190d2a5f11dda538d210501b061454e23e311dd5a3d09683"
     },
     {
+      "node_id": "mat_g1_na_q3_2",
       "seed": 600,
       "formatter": "mcq",
       "question_text": "What number completes the expression: 18 − 8 = 13 − ___?",
       "correct_answer": 3,
+      "requested": {
+        "difficulty_profile": {
+          "blank_position": "end"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -212,19 +446,61 @@
           "value": 18,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 3,
+      "hints": [],
+      "sample_id": "01c410d987c724b502b6",
+      "replay_digest": "3faa4a90cc961647ffca1637fd218d69bb1cfe449858bb05a32e89450d2102f9"
     },
     {
+      "node_id": "mat_g1_na_q3_2",
       "seed": 601,
       "formatter": "true_false",
       "question_text": "In 1 + 7 = 5 + ___, the missing number is 3. True or False?",
-      "correct_answer": true
+      "correct_answer": true,
+      "requested": {
+        "difficulty_profile": {
+          "blank_position": "middle"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": true,
+      "hints": [],
+      "sample_id": "7a985e4680342218d576",
+      "replay_digest": "356ddefc7ee769309d548158002bdaaeb428332729eb0ceb362d5d988ca4a11c"
     },
     {
+      "node_id": "mat_g1_na_q3_2",
       "seed": 602,
       "formatter": "cloze",
       "question_text": "6 + 8 = 10 + ___",
       "correct_answer": 4,
+      "requested": {
+        "difficulty_profile": {
+          "blank_position": "start"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -250,19 +526,61 @@
           "text": "22",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 4,
+      "hints": [],
+      "sample_id": "90a660144013b775a0c2",
+      "replay_digest": "800f3ac28c1ea8e907de66a906ffe88f53c27b201c8951dc57fe11c80ff818f2"
     },
     {
+      "node_id": "mat_g1_na_q3_2",
       "seed": 603,
       "formatter": "true_false",
       "question_text": "In 15 − 8 = 8 − ___, the missing number is 15. True or False?",
-      "correct_answer": false
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "context": "pure"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [],
+      "sample_id": "b10cf44241f4946eb246",
+      "replay_digest": "c9ef5e91461ea65b0f8b5579a7115225f678d737c33e82ea93407a5aa1bf341d"
     },
     {
+      "node_id": "mat_g1_na_q3_2",
       "seed": 604,
       "formatter": "cloze",
       "question_text": "2 + 2 = 3 + ___",
       "correct_answer": 1,
+      "requested": {
+        "difficulty_profile": {
+          "context": "word_problem"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -288,39 +606,1188 @@
           "text": "0",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 1,
+      "hints": [],
+      "sample_id": "4e541b8aeab97e6060dc",
+      "replay_digest": "a03aa79b8b86d3f00fbc4cd01a48d30a7016105b5505c6cd2acc59f893f416d8"
     },
     {
+      "node_id": "mat_g1_na_q3_2",
       "seed": 605,
       "formatter": "true_false",
       "question_text": "In 16 − 9 = 15 − ___, the missing number is 16. True or False?",
-      "correct_answer": false
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "equation_type": "non_standard"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [],
+      "sample_id": "5706d29da35d34a3c7a6",
+      "replay_digest": "62ed529dafa6793241607d4f3fb7ec5c97401bea7716f8c1e813cae81705abe2"
+    },
+    {
+      "node_id": "mat_g1_na_q3_2",
+      "seed": 606,
+      "formatter": "mcq",
+      "question_text": "What number completes the expression: 17 − 14 = 15 − ___?",
+      "correct_answer": 12,
+      "requested": {
+        "difficulty_profile": {
+          "equation_type": "standard"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 20,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 12,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 13,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 17,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 12,
+      "hints": [],
+      "sample_id": "f6936a820afe4f6f18ff",
+      "replay_digest": "1f0cea8a0770dd4685c28d197e5201177692bf944821ea59e836d471bec4386d"
+    },
+    {
+      "node_id": "mat_g1_na_q3_2",
+      "seed": 607,
+      "formatter": "cloze",
+      "question_text": "1 + 3 = 3 + ___",
+      "correct_answer": 1,
+      "requested": {
+        "difficulty_profile": {
+          "operation": "equivalent"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 5,
+          "text": "5",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 7,
+          "text": "7",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 1,
+          "text": "1",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 2,
+          "text": "2",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 1,
+      "hints": [],
+      "sample_id": "e598e58c221e12fdae31",
+      "replay_digest": "6ed377fb42f959e0eee9d0ee564d91e8c0ac9be88480a679d0f20fa9ea1b4cbe"
+    },
+    {
+      "node_id": "mat_g1_na_q3_2",
+      "seed": 700,
+      "formatter": "cloze",
+      "question_text": "4 + 3 = 2 + ___",
+      "correct_answer": 5,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 11,
+          "text": "11",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 10,
+          "text": "10",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 6,
+          "text": "6",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 5,
+          "text": "5",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 5,
+      "hints": [],
+      "sample_id": "efb1e3d9ed632d882fee",
+      "replay_digest": "ff5b84c81e546da86d2e3c152dd9d66251b7364d1ec832ef354899375c03de86"
+    },
+    {
+      "node_id": "mat_g1_na_q3_2",
+      "seed": 701,
+      "formatter": "mcq",
+      "question_text": "💃 Sir Rez has a math challenge about dance shoes. What number completes the expression: 12 − 2 = 20 − ___?",
+      "correct_answer": 10,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "science_tech",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 12,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 22,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 10,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 11,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 10,
+      "hints": [],
+      "sample_id": "76ab7a5cca8a86d5c4ab",
+      "replay_digest": "71718efe6bb8156147adcd32355c630dd8aae412fe91dea9a04153578b24e40f"
+    },
+    {
+      "node_id": "mat_g1_na_q3_2",
+      "seed": 702,
+      "formatter": "cloze",
+      "question_text": "🏀 Isko has a math challenge about basketballs. 1 + 4 = 3 + ___",
+      "correct_answer": 2,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "creative_writing",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 2,
+          "text": "2",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 6,
+          "text": "6",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 3,
+          "text": "3",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 9,
+          "text": "9",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 2,
+      "hints": [],
+      "sample_id": "030b83448897e4f5e218",
+      "replay_digest": "52ff411149799b12a96cae99d3fa4364fa4c8183901a02858069bd9b6ee97b6c"
+    },
+    {
+      "node_id": "mat_g1_na_q3_2",
+      "seed": 800,
+      "formatter": "true_false",
+      "question_text": "In 16 + 1 = 8 + ___, the missing number is 9. True or False?",
+      "correct_answer": true,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": true,
+      "hints": [],
+      "sample_id": "e414d05d4bac355a38fe",
+      "replay_digest": "464fd2b1426973131840ec34beca03404d8dbd12269161c923932b4bc3c2cc6a"
+    },
+    {
+      "node_id": "mat_g1_na_q3_2",
+      "seed": 900,
+      "formatter": "mcq",
+      "question_text": "What number completes the expression: 11 − 2 = 20 − ___?",
+      "correct_answer": 11,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 10,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 20,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 12,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 11,
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 11,
+      "hints": [],
+      "sample_id": "c6d7cf1812a4cefe6335",
+      "replay_digest": "8a4a17dbd802ce23dffa84a9527bf275effc5b793e8dc8165b251e8f569c0787"
+    },
+    {
+      "node_id": "mat_g1_na_q3_2",
+      "seed": 901,
+      "formatter": "true_false",
+      "question_text": "In 16 − 1 = 17 − ___, the missing number is 31. True or False?",
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [],
+      "sample_id": "d20b6cc2d35a821fea52",
+      "replay_digest": "945772230be8d3f6c0b3ccad76ca1b9679ddf37e2de11ca9c448b310627f18df"
+    },
+    {
+      "node_id": "mat_g1_na_q3_2",
+      "seed": 1000,
+      "formatter": "true_false",
+      "question_text": "In 7 + 8 = 6 + ___, the missing number is 9. True or False?",
+      "correct_answer": true,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "hint_gated"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "hint_gated"
+      },
+      "resolved_answer": true,
+      "hints": [],
+      "sample_id": "5afc99a1b4877c917315",
+      "replay_digest": "b4de8db61bfc0de492f401b196730051944c0fec18d79119bd581ed0b2b812ab"
+    },
+    {
+      "node_id": "mat_g1_na_q3_2",
+      "seed": 1001,
+      "formatter": "cloze",
+      "question_text": "1 + 2 = 2 + ___",
+      "correct_answer": 1,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "mastery_drill"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "mastery_drill"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 1,
+          "text": "1",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 4,
+          "text": "4",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 5,
+          "text": "5",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 2,
+          "text": "2",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 1,
+      "hints": [],
+      "sample_id": "4ab9e8afe5ae6b22cce3",
+      "replay_digest": "69fcecda3467950786e5617094e29c0535e7a42e75bce8c7334773bcc9f79b2f"
+    },
+    {
+      "node_id": "mat_g1_na_q3_2",
+      "seed": 1002,
+      "formatter": "cloze",
+      "question_text": "19 − 1 = 20 − ___",
+      "correct_answer": 2,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "scaffolded"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "scaffolded"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 37,
+          "text": "37",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 2,
+          "text": "2",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 3,
+          "text": "3",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 19,
+          "text": "19",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 2,
+      "hints": [],
+      "sample_id": "52d2c498b0bece8c7cc6",
+      "replay_digest": "47cfc4971d279905a4d8e529276f38c6f49b4496ed7223a60545e89922a2872f"
+    }
+  ],
+  "sample_assessments": [
+    {
+      "sample_id": "537d8302a55287dd18a7",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The equality 3 + 2 = 1 + ___ determines one blank value; 4 is singled out from the listed choices 8 / 5 / 4 / 7, so there is no second valid option."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The addition equality 3 + 2 = 1 + ___ asks only for its balancing number 4; the prompt introduces no story condition that could conflict with that calculation."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze presentation points to the blank in 3 + 2 = 1 + ___, and the options 8 / 5 / 4 / 7 include 4; the student can see the requested response form."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Substituting 4 into 3 + 2 = 1 + ___ makes its two sides equal, and the keyed value is present in 8 / 5 / 4 / 7; there are no hints or visual cues to contradict it."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w12-mat_g1_na_q3_2-20260925",
+      "dispatch_id": "gpt6luna-s5-w12-20260925:mat_g1_na_q3_2"
+    },
+    {
+      "sample_id": "8149dd7142c4d3eddf3d",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The equality 8 − 5 = 18 − ___? determines one blank value; 15 is singled out from the listed choices 15 / 16 / 11 / 8, so there is no second valid option."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The subtraction equality 8 − 5 = 18 − ___? asks only for its balancing number 15; the prompt introduces no story condition that could conflict with that calculation."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The mcq presentation points to the blank in 8 − 5 = 18 − ___?, and the options 15 / 16 / 11 / 8 include 15; the student can see the requested response form."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Substituting 15 into 8 − 5 = 18 − ___? makes its two sides equal, and the keyed value is present in 15 / 16 / 11 / 8; there are no hints or visual cues to contradict it."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w12-mat_g1_na_q3_2-20260925",
+      "dispatch_id": "gpt6luna-s5-w12-20260925:mat_g1_na_q3_2"
+    },
+    {
+      "sample_id": "9ddadd1416d875b7073a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The proposed value true is tested in 3 + 12 = 8 + ___, proposed 7; the statement has one definite truth value because both sides can be evaluated."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "This addition check compares the displayed left side with the right side using the proposed value in 3 + 12 = 8 + ___, proposed 7; the True or False wrapper fits that numeric task."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The learner is explicitly asked to judge whether 3 + 12 = 8 + ___, proposed 7 is true, so the response is a clear truth choice rather than a request to solve an unstated problem."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Evaluating 3 + 12 = 8 + ___, proposed 7 shows the proposed number true is the correct truth judgment; this sample has no hints or visual that could alter the operation."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w12-mat_g1_na_q3_2-20260925",
+      "dispatch_id": "gpt6luna-s5-w12-20260925:mat_g1_na_q3_2"
+    },
+    {
+      "sample_id": "53942ce93915ade95879",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The equality 18 − 8 = 15 − ___? determines one blank value; 5 is singled out from the listed choices 18 / 6 / 5 / 28, so there is no second valid option."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The subtraction equality 18 − 8 = 15 − ___? asks only for its balancing number 5; the prompt introduces no story condition that could conflict with that calculation."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The mcq presentation points to the blank in 18 − 8 = 15 − ___?, and the options 18 / 6 / 5 / 28 include 5; the student can see the requested response form."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Substituting 5 into 18 − 8 = 15 − ___? makes its two sides equal, and the keyed value is present in 18 / 6 / 5 / 28; there are no hints or visual cues to contradict it."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w12-mat_g1_na_q3_2-20260925",
+      "dispatch_id": "gpt6luna-s5-w12-20260925:mat_g1_na_q3_2"
+    },
+    {
+      "sample_id": "f0407fed69387358b41f",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The equality 6 − 2 = 14 − ___? determines one blank value; 10 is singled out from the listed choices 6 / 9 / 10 / 11, so there is no second valid option."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The subtraction equality 6 − 2 = 14 − ___? asks only for its balancing number 10; the prompt introduces no story condition that could conflict with that calculation."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The mcq presentation points to the blank in 6 − 2 = 14 − ___?, and the options 6 / 9 / 10 / 11 include 10; the student can see the requested response form."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Substituting 10 into 6 − 2 = 14 − ___? makes its two sides equal, and the keyed value is present in 6 / 9 / 10 / 11; there are no hints or visual cues to contradict it."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w12-mat_g1_na_q3_2-20260925",
+      "dispatch_id": "gpt6luna-s5-w12-20260925:mat_g1_na_q3_2"
+    },
+    {
+      "sample_id": "a166a80bfe98e170f8f1",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The proposed value false is tested in 19 − 3 = 20 − ___, proposed 19; the statement has one definite truth value because both sides can be evaluated."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "This subtraction check compares the displayed left side with the right side using the proposed value in 19 − 3 = 20 − ___, proposed 19; the True or False wrapper fits that numeric task."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The learner is explicitly asked to judge whether 19 − 3 = 20 − ___, proposed 19 is true, so the response is a clear truth choice rather than a request to solve an unstated problem."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Evaluating 19 − 3 = 20 − ___, proposed 19 shows the proposed number false is the correct truth judgment; this sample has no hints or visual that could alter the operation."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w12-mat_g1_na_q3_2-20260925",
+      "dispatch_id": "gpt6luna-s5-w12-20260925:mat_g1_na_q3_2"
+    },
+    {
+      "sample_id": "f76f99c1ad92e84f276b",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The proposed value false is tested in 15 − 4 = 17 − ___, proposed 26; the statement has one definite truth value because both sides can be evaluated."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "This subtraction check compares the displayed left side with the right side using the proposed value in 15 − 4 = 17 − ___, proposed 26; the True or False wrapper fits that numeric task."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The learner is explicitly asked to judge whether 15 − 4 = 17 − ___, proposed 26 is true, so the response is a clear truth choice rather than a request to solve an unstated problem."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Evaluating 15 − 4 = 17 − ___, proposed 26 shows the proposed number false is the correct truth judgment; this sample has no hints or visual that could alter the operation."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w12-mat_g1_na_q3_2-20260925",
+      "dispatch_id": "gpt6luna-s5-w12-20260925:mat_g1_na_q3_2"
+    },
+    {
+      "sample_id": "eb54afcc076773a350f4",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The equality 19 − 1 = 20 − ___ determines one blank value; 2 is singled out from the listed choices 3 / 2 / 19 / 37, so there is no second valid option."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The subtraction equality 19 − 1 = 20 − ___ asks only for its balancing number 2; the prompt introduces no story condition that could conflict with that calculation."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze presentation points to the blank in 19 − 1 = 20 − ___, and the options 3 / 2 / 19 / 37 include 2; the student can see the requested response form."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Substituting 2 into 19 − 1 = 20 − ___ makes its two sides equal, and the keyed value is present in 3 / 2 / 19 / 37; there are no hints or visual cues to contradict it."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w12-mat_g1_na_q3_2-20260925",
+      "dispatch_id": "gpt6luna-s5-w12-20260925:mat_g1_na_q3_2"
+    },
+    {
+      "sample_id": "01c410d987c724b502b6",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The equality 18 − 8 = 13 − ___? determines one blank value; 3 is singled out from the listed choices 3 / 4 / 28 / 18, so there is no second valid option."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The subtraction equality 18 − 8 = 13 − ___? asks only for its balancing number 3; the prompt introduces no story condition that could conflict with that calculation."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The mcq presentation points to the blank in 18 − 8 = 13 − ___?, and the options 3 / 4 / 28 / 18 include 3; the student can see the requested response form."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Substituting 3 into 18 − 8 = 13 − ___? makes its two sides equal, and the keyed value is present in 3 / 4 / 28 / 18; there are no hints or visual cues to contradict it."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w12-mat_g1_na_q3_2-20260925",
+      "dispatch_id": "gpt6luna-s5-w12-20260925:mat_g1_na_q3_2"
+    },
+    {
+      "sample_id": "7a985e4680342218d576",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The proposed value true is tested in 1 + 7 = 5 + ___, proposed 3; the statement has one definite truth value because both sides can be evaluated."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "This addition check compares the displayed left side with the right side using the proposed value in 1 + 7 = 5 + ___, proposed 3; the True or False wrapper fits that numeric task."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The learner is explicitly asked to judge whether 1 + 7 = 5 + ___, proposed 3 is true, so the response is a clear truth choice rather than a request to solve an unstated problem."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Evaluating 1 + 7 = 5 + ___, proposed 3 shows the proposed number true is the correct truth judgment; this sample has no hints or visual that could alter the operation."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w12-mat_g1_na_q3_2-20260925",
+      "dispatch_id": "gpt6luna-s5-w12-20260925:mat_g1_na_q3_2"
+    },
+    {
+      "sample_id": "90a660144013b775a0c2",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The equality 6 + 8 = 10 + ___ determines one blank value; 4 is singled out from the listed choices 20 / 4 / 5 / 22, so there is no second valid option."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The addition equality 6 + 8 = 10 + ___ asks only for its balancing number 4; the prompt introduces no story condition that could conflict with that calculation."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze presentation points to the blank in 6 + 8 = 10 + ___, and the options 20 / 4 / 5 / 22 include 4; the student can see the requested response form."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Substituting 4 into 6 + 8 = 10 + ___ makes its two sides equal, and the keyed value is present in 20 / 4 / 5 / 22; there are no hints or visual cues to contradict it."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w12-mat_g1_na_q3_2-20260925",
+      "dispatch_id": "gpt6luna-s5-w12-20260925:mat_g1_na_q3_2"
+    },
+    {
+      "sample_id": "b10cf44241f4946eb246",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The proposed value false is tested in 15 − 8 = 8 − ___, proposed 15; the statement has one definite truth value because both sides can be evaluated."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "This subtraction check compares the displayed left side with the right side using the proposed value in 15 − 8 = 8 − ___, proposed 15; the True or False wrapper fits that numeric task."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The learner is explicitly asked to judge whether 15 − 8 = 8 − ___, proposed 15 is true, so the response is a clear truth choice rather than a request to solve an unstated problem."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Evaluating 15 − 8 = 8 − ___, proposed 15 shows the proposed number false is the correct truth judgment; this sample has no hints or visual that could alter the operation."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w12-mat_g1_na_q3_2-20260925",
+      "dispatch_id": "gpt6luna-s5-w12-20260925:mat_g1_na_q3_2"
+    },
+    {
+      "sample_id": "4e541b8aeab97e6060dc",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The equality 2 + 2 = 3 + ___ determines one blank value; 1 is singled out from the listed choices 1 / 2 / 6 / 0, so there is no second valid option."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The addition equality 2 + 2 = 3 + ___ asks only for its balancing number 1; the prompt introduces no story condition that could conflict with that calculation."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze presentation points to the blank in 2 + 2 = 3 + ___, and the options 1 / 2 / 6 / 0 include 1; the student can see the requested response form."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Substituting 1 into 2 + 2 = 3 + ___ makes its two sides equal, and the keyed value is present in 1 / 2 / 6 / 0; there are no hints or visual cues to contradict it."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w12-mat_g1_na_q3_2-20260925",
+      "dispatch_id": "gpt6luna-s5-w12-20260925:mat_g1_na_q3_2"
+    },
+    {
+      "sample_id": "5706d29da35d34a3c7a6",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The proposed value false is tested in 16 − 9 = 15 − ___, proposed 16; the statement has one definite truth value because both sides can be evaluated."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "This subtraction check compares the displayed left side with the right side using the proposed value in 16 − 9 = 15 − ___, proposed 16; the True or False wrapper fits that numeric task."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The learner is explicitly asked to judge whether 16 − 9 = 15 − ___, proposed 16 is true, so the response is a clear truth choice rather than a request to solve an unstated problem."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Evaluating 16 − 9 = 15 − ___, proposed 16 shows the proposed number false is the correct truth judgment; this sample has no hints or visual that could alter the operation."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w12-mat_g1_na_q3_2-20260925",
+      "dispatch_id": "gpt6luna-s5-w12-20260925:mat_g1_na_q3_2"
+    },
+    {
+      "sample_id": "f6936a820afe4f6f18ff",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The equality 17 − 14 = 15 − ___? determines one blank value; 12 is singled out from the listed choices 20 / 12 / 13 / 17, so there is no second valid option."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The subtraction equality 17 − 14 = 15 − ___? asks only for its balancing number 12; the prompt introduces no story condition that could conflict with that calculation."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The mcq presentation points to the blank in 17 − 14 = 15 − ___?, and the options 20 / 12 / 13 / 17 include 12; the student can see the requested response form."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Substituting 12 into 17 − 14 = 15 − ___? makes its two sides equal, and the keyed value is present in 20 / 12 / 13 / 17; there are no hints or visual cues to contradict it."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w12-mat_g1_na_q3_2-20260925",
+      "dispatch_id": "gpt6luna-s5-w12-20260925:mat_g1_na_q3_2"
+    },
+    {
+      "sample_id": "e598e58c221e12fdae31",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The equality 1 + 3 = 3 + ___ determines one blank value; 1 is singled out from the listed choices 5 / 7 / 1 / 2, so there is no second valid option."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The addition equality 1 + 3 = 3 + ___ asks only for its balancing number 1; the prompt introduces no story condition that could conflict with that calculation."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze presentation points to the blank in 1 + 3 = 3 + ___, and the options 5 / 7 / 1 / 2 include 1; the student can see the requested response form."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Substituting 1 into 1 + 3 = 3 + ___ makes its two sides equal, and the keyed value is present in 5 / 7 / 1 / 2; there are no hints or visual cues to contradict it."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w12-mat_g1_na_q3_2-20260925",
+      "dispatch_id": "gpt6luna-s5-w12-20260925:mat_g1_na_q3_2"
+    },
+    {
+      "sample_id": "efb1e3d9ed632d882fee",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The equality 4 + 3 = 2 + ___ determines one blank value; 5 is singled out from the listed choices 11 / 10 / 6 / 5, so there is no second valid option."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The addition equality 4 + 3 = 2 + ___ asks only for its balancing number 5; the prompt introduces no story condition that could conflict with that calculation."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze presentation points to the blank in 4 + 3 = 2 + ___, and the options 11 / 10 / 6 / 5 include 5; the student can see the requested response form."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Substituting 5 into 4 + 3 = 2 + ___ makes its two sides equal, and the keyed value is present in 11 / 10 / 6 / 5; there are no hints or visual cues to contradict it."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w12-mat_g1_na_q3_2-20260925",
+      "dispatch_id": "gpt6luna-s5-w12-20260925:mat_g1_na_q3_2"
+    },
+    {
+      "sample_id": "76ab7a5cca8a86d5c4ab",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The equality dance shoes; 12 − 2 = 20 − ___? determines one blank value; 10 is singled out from the listed choices 12 / 22 / 10 / 11, so there is no second valid option."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The dance shoes theme is only a brief lead-in; the subtraction equality 12 − 2 = 20 − ___ still plainly asks for the balancing number 10."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The mcq presentation points to the blank in dance shoes; 12 − 2 = 20 − ___?, and the options 12 / 22 / 10 / 11 include 10; the student can see the requested response form."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Substituting 10 into dance shoes; 12 − 2 = 20 − ___? makes its two sides equal, and the keyed value is present in 12 / 22 / 10 / 11; there are no hints or visual cues to contradict it."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w12-mat_g1_na_q3_2-20260925",
+      "dispatch_id": "gpt6luna-s5-w12-20260925:mat_g1_na_q3_2"
+    },
+    {
+      "sample_id": "030b83448897e4f5e218",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The equality basketballs; 1 + 4 = 3 + ___ determines one blank value; 2 is singled out from the listed choices 2 / 6 / 3 / 9, so there is no second valid option."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Basketballs provide a harmless theme for 1 + 4 = 3 + ___; the context does not imply a count change beyond the displayed addition."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze presentation points to the blank in basketballs; 1 + 4 = 3 + ___, and the options 2 / 6 / 3 / 9 include 2; the student can see the requested response form."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Substituting 2 into basketballs; 1 + 4 = 3 + ___ makes its two sides equal, and the keyed value is present in 2 / 6 / 3 / 9; there are no hints or visual cues to contradict it."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w12-mat_g1_na_q3_2-20260925",
+      "dispatch_id": "gpt6luna-s5-w12-20260925:mat_g1_na_q3_2"
+    },
+    {
+      "sample_id": "e414d05d4bac355a38fe",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The proposed value true is tested in 16 + 1 = 8 + ___, proposed 9; the statement has one definite truth value because both sides can be evaluated."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "This addition check compares the displayed left side with the right side using the proposed value in 16 + 1 = 8 + ___, proposed 9; the True or False wrapper fits that numeric task."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The learner is explicitly asked to judge whether 16 + 1 = 8 + ___, proposed 9 is true, so the response is a clear truth choice rather than a request to solve an unstated problem."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Evaluating 16 + 1 = 8 + ___, proposed 9 shows the proposed number true is the correct truth judgment; this sample has no hints or visual that could alter the operation."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w12-mat_g1_na_q3_2-20260925",
+      "dispatch_id": "gpt6luna-s5-w12-20260925:mat_g1_na_q3_2"
+    },
+    {
+      "sample_id": "c6d7cf1812a4cefe6335",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The equality 11 − 2 = 20 − ___? determines one blank value; 11 is singled out from the listed choices 10 / 20 / 12 / 11, so there is no second valid option."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The subtraction equality 11 − 2 = 20 − ___? asks only for its balancing number 11; the prompt introduces no story condition that could conflict with that calculation."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The mcq presentation points to the blank in 11 − 2 = 20 − ___?, and the options 10 / 20 / 12 / 11 include 11; the student can see the requested response form."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Substituting 11 into 11 − 2 = 20 − ___? makes its two sides equal, and the keyed value is present in 10 / 20 / 12 / 11; there are no hints or visual cues to contradict it."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w12-mat_g1_na_q3_2-20260925",
+      "dispatch_id": "gpt6luna-s5-w12-20260925:mat_g1_na_q3_2"
+    },
+    {
+      "sample_id": "d20b6cc2d35a821fea52",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The proposed value false is tested in 16 − 1 = 17 − ___, proposed 31; the statement has one definite truth value because both sides can be evaluated."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "This subtraction check compares the displayed left side with the right side using the proposed value in 16 − 1 = 17 − ___, proposed 31; the True or False wrapper fits that numeric task."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The learner is explicitly asked to judge whether 16 − 1 = 17 − ___, proposed 31 is true, so the response is a clear truth choice rather than a request to solve an unstated problem."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Evaluating 16 − 1 = 17 − ___, proposed 31 shows the proposed number false is the correct truth judgment; this sample has no hints or visual that could alter the operation."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w12-mat_g1_na_q3_2-20260925",
+      "dispatch_id": "gpt6luna-s5-w12-20260925:mat_g1_na_q3_2"
+    },
+    {
+      "sample_id": "5afc99a1b4877c917315",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The proposed value true is tested in 7 + 8 = 6 + ___, proposed 9; the statement has one definite truth value because both sides can be evaluated."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "This addition check compares the displayed left side with the right side using the proposed value in 7 + 8 = 6 + ___, proposed 9; the True or False wrapper fits that numeric task."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The learner is explicitly asked to judge whether 7 + 8 = 6 + ___, proposed 9 is true, so the response is a clear truth choice rather than a request to solve an unstated problem."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Evaluating 7 + 8 = 6 + ___, proposed 9 shows the proposed number true is the correct truth judgment; this sample has no hints or visual that could alter the operation."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w12-mat_g1_na_q3_2-20260925",
+      "dispatch_id": "gpt6luna-s5-w12-20260925:mat_g1_na_q3_2"
+    },
+    {
+      "sample_id": "4ab9e8afe5ae6b22cce3",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The equality 1 + 2 = 2 + ___ determines one blank value; 1 is singled out from the listed choices 1 / 4 / 5 / 2, so there is no second valid option."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The addition equality 1 + 2 = 2 + ___ asks only for its balancing number 1; the prompt introduces no story condition that could conflict with that calculation."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze presentation points to the blank in 1 + 2 = 2 + ___, and the options 1 / 4 / 5 / 2 include 1; the student can see the requested response form."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Substituting 1 into 1 + 2 = 2 + ___ makes its two sides equal, and the keyed value is present in 1 / 4 / 5 / 2; there are no hints or visual cues to contradict it."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w12-mat_g1_na_q3_2-20260925",
+      "dispatch_id": "gpt6luna-s5-w12-20260925:mat_g1_na_q3_2"
+    },
+    {
+      "sample_id": "52d2c498b0bece8c7cc6",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The equality 19 − 1 = 20 − ___ determines one blank value; 2 is singled out from the listed choices 37 / 2 / 3 / 19, so there is no second valid option."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The subtraction equality 19 − 1 = 20 − ___ asks only for its balancing number 2; the prompt introduces no story condition that could conflict with that calculation."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze presentation points to the blank in 19 − 1 = 20 − ___, and the options 37 / 2 / 3 / 19 include 2; the student can see the requested response form."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Substituting 2 into 19 − 1 = 20 − ___ makes its two sides equal, and the keyed value is present in 37 / 2 / 3 / 19; there are no hints or visual cues to contradict it."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w12-mat_g1_na_q3_2-20260925",
+      "dispatch_id": "gpt6luna-s5-w12-20260925:mat_g1_na_q3_2"
+    }
+  ],
+  "clause_evidence": [
+    {
+      "requirement_id": "write_equivalent_expression",
+      "clause": "Write an equivalent expression",
+      "verdict": "CONCERN",
+      "reasoning": "The cited equality-completion examples show students finding a value that makes expressions equivalent, but they do not require independently writing a complete new expression.",
+      "sample_ids": [
+        "537d8302a55287dd18a7",
+        "8149dd7142c4d3eddf3d",
+        "9ddadd1416d875b7073a",
+        "53942ce93915ade95879",
+        "f0407fed69387358b41f"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w12-mat_g1_na_q3_2-20260925",
+      "dispatch_id": "gpt6luna-s5-w12-20260925:mat_g1_na_q3_2"
+    },
+    {
+      "requirement_id": "addition_subtraction_expression",
+      "clause": "addition or subtraction expression",
+      "verdict": "PASS",
+      "reasoning": "The cited addition and subtraction samples demonstrate both operation forms named by this clause, with learners completing equations while preserving their equality.",
+      "sample_ids": [
+        "537d8302a55287dd18a7",
+        "8149dd7142c4d3eddf3d",
+        "7a985e4680342218d576",
+        "f6936a820afe4f6f18ff"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w12-mat_g1_na_q3_2-20260925",
+      "dispatch_id": "gpt6luna-s5-w12-20260925:mat_g1_na_q3_2"
+    }
+  ],
+  "dispatch_provenance": [
+    {
+      "dispatch_id": "gpt6luna-s5-w12-20260925:mat_g1_na_q3_2",
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w12-mat_g1_na_q3_2-20260925",
+      "review_date": "2026-09-25",
+      "blind": true,
+      "packet_digest": "9a2455e0a5302502a7710bdd9f86e05c2b6dc7b20c107d3eca48eba11c31d371",
+      "clause_ids": [
+        "write_equivalent_expression",
+        "addition_subtraction_expression"
+      ],
+      "response_ref": ".responses/gpt6luna-s5-w12-20260925.json",
+      "response_digest": "b68a6ba8e889a50e8e06091001310e428fe9e380b4f52cd23942f206b84ad813",
+      "prompt_ref": ".responses/gpt6luna-s5-w12-20260925.prompt.txt",
+      "prompt_digest": "ba0ebf11491c2bb76f11762799d9b6d804975c57e6203650bca091493fe8f98a",
+      "samples_delivery": "Dispatch-time local prompt file read by separate gpt-6-luna medium reviewer; no source or prior reviews supplied",
+      "tool_uses_by_reviewer": "Reviewer reported two cat prompt reads, two failed JSON generation attempts, one successful verdict write, and later two correction attempts (bare python unavailable, python3 succeeded); report is reviewer-provided."
     }
   ],
   "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "Items present a pair of expressions joined by an equals sign with one term withheld, matching the worked examples in the competency text, and every sampled key balances the two sides correctly when checked."
-    },
-    "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "Addition and subtraction pairs both appear, but the blank sits in the same slot every time - the trailing operand on the right-hand side. The competency's verb is to write an equivalent expression, and reducing that to supplying one final number never asks a pupil to construct the alternative expression themselves."
-    },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Equivalence is presented with small operands, as in '3 + 2 = 1 + ___', so a Grade 1 pupil can evaluate one side and then reason back on the other without holding large quantities in mind."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "Symbolic presentation is inherent to this competency, and within that the sample alternates between supplying the term, choosing it, and judging a claimed term, which is adequate rather than monotonous."
+      "rationale": "These items use addition and subtraction with values through twenty, asking for one missing number or a basic truth judgment. That is a manageable Grade 1 calculation demand."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "The ramp runs through the gap between the two anchor numbers and whether the second expression starts higher or lower than the first, which is precisely what makes an equivalence harder to see."
+      "rationale": "Each printed item gives an addition or subtraction equality and asks the learner to preserve equality by finding a number or judging a proposed completion, directly matching the competency."
+    },
+    "competency_fulfillment": {
+      "verdict": "CONCERN",
+      "rationale": "The task set consistently supplies a prepared equality and asks for its blank or truth value, while no item asks the learner to independently produce a full equivalent expression.",
+      "decomposition": {
+        "verdict": "PASS",
+        "reasoning": "The two printed requirements account for the action of writing an equivalent expression and its required input form, an addition or subtraction expression; together they cover the wording of the competency.",
+        "requirement_ids": [
+          "write_equivalent_expression",
+          "addition_subtraction_expression"
+        ]
+      },
+      "clause_ids": [
+        "write_equivalent_expression",
+        "addition_subtraction_expression"
+      ]
+    },
+    "comprehensive_coverage": {
+      "verdict": "CONCERN",
+      "rationale": "Both operations are represented and the same equality skill appears in three formats, though the samples mostly fill a single blank rather than elicit independently composed expressions.",
+      "clause_ids": [
+        "write_equivalent_expression",
+        "addition_subtraction_expression"
+      ]
     },
     "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Operands and resulting missing values stay within an elementary number range, and each equality requires a short comparison rather than a multistep procedure or complex context."
+    },
+    "variant_comprehensiveness": {
       "verdict": "CONCERN",
-      "rationale": "All operands respect the twenty bound, but wrong options step outside it - values such as 37, 28 and 26 are offered as candidates - and one true-or-false item invites a pupil to consider subtracting fifteen from eight, which has no answer in Grade 1 number knowledge."
+      "rationale": "The packet uses cloze, multiple choice, and true-or-false response formats, but its mathematical variation remains narrow because each item centers on a missing value in a supplied equality."
     }
   },
   "overall": "CONCERN"
