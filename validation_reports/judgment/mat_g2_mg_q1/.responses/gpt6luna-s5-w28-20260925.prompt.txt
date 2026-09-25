@@ -1,0 +1,251 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-gpt-6-luna-medium-w28-mat_g2_mg_q1_1-20260925
+
+Write one JSON object to:
+  local_only/scratch/review/s5-full-20260925/mat_g2_mg_q1_1/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN; never invent a supporting sample.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-gpt-6-luna-medium-w28-mat_g2_mg_q1_1-20260925",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+Additional review instructions:
+- Write at least 70 characters for every `reasoning` and `rationale`; 60 is the filing floor, and 70 leaves margin.
+- In `sample_assessments[*].checks[*]`, use the key `reasoning`, never `rationale`. Node findings use `rationale`; clause evidence uses `reasoning`.
+- Every per-sample check must describe that sample's actual numbers, action, answer, options, hints, or visual. Do not repeat generic explanations across different samples or fill a shared sentence template with numbers. Independently inspect each item.
+- Any text in quotation marks must be a character-for-character substring of this printed packet. No paraphrases, summaries, ellipses, placeholders, or shortened comma fragments inside quotation marks. When unsure, describe without quotation marks.
+- A curated student-interest bank deliberately supplies themes from sports, gaming, food, faith and others, including themed names, objects and emoji. Judge whether theming interferes with the mathematics or clarity. Still flag a wrapper that contradicts its own question.
+- Explicitly compare each hint chain against that sample's stem, answer, options and visual. Flag a hint that teaches a different operation, representation, or answer.
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g2_mg_q1_1
+PACKET DIGEST: 0a688c7ed4e9cf1e2c5236d4471afed230950f0289089b01ae5afd0835ccc467
+COMPETENCY (Grade 2, Quarter 1, None):
+Compose and decompose composite figures made up of squares, rectangles, triangles, circles, half circles, and quarter circles, using cut-outs and square grids.
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  compose_figures: Compose
+  decompose_figures: decompose
+  composite_figures: composite figures made up
+  squares: squares
+  rectangles: rectangles
+  triangles: triangles
+  circles: circles
+  half_circles: half circles
+  quarter_circles: quarter circles
+  cut_outs: cut-outs
+  square_grids: square grids
+
+SAMPLES (every one of these is real rendered output):
+  sample b33e1b7e264ae269b977  seed 42  [read_mcq]
+      stem:    On a square grid, a composite shape has 1 square, 1 triangle, and 1 rectangle joined together. How many simple shapes were used to compose it?
+      answer:  3
+      options: 5 / 2 / 3 / 4
+      hints:   ["Think about the sides and corners of each shape.", "A triangle has 3 sides and 3 corners.", "A square has 4 equal sides and 4 corners.", "A rectangle has 4 sides (opposite sides are equal) and 4 corners.", "A circle has no straight sides and no corners."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ShapeBoard", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ShapeBoard
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ShapeBoard", "element_count": 11, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample d17b20109b3806dfacbe  seed 43  [mcq]
+      stem:    Using cut-outs, two identical triangles are placed together along their matching edges. What shape can they form?
+      answer:  rectangle
+      options: rectangle / circle / quarter-circle / half-circle
+      hints:   ["Think about the sides and corners of each shape.", "A triangle has 3 sides and 3 corners.", "A square has 4 equal sides and 4 corners.", "A rectangle has 4 sides (opposite sides are equal) and 4 corners.", "A circle has no straight sides and no corners."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample f4f018ba5d98bad07139  seed 44  [read_mcq]
+      stem:    On a square grid, a composite figure is made by joining 2 squares of 4 grid units each side by side. What shape is formed?
+      answer:  rectangle
+      options: circle / quarter-circle / rectangle / triangle
+      hints:   ["Think about the sides and corners of each shape.", "A triangle has 3 sides and 3 corners.", "A square has 4 equal sides and 4 corners.", "A rectangle has 4 sides (opposite sides are equal) and 4 corners.", "A circle has no straight sides and no corners."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ShapeBoard", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ShapeBoard
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ShapeBoard", "element_count": 14, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample b8f7e90549e1c8be1364  seed 45  [mcq]
+      stem:    A composite figure is made of a rectangle with a half-circle attached on top. How many simple shapes form this figure?
+      answer:  2
+      options: 1 / 3 / 2 / 4
+      hints:   ["Think about the sides and corners of each shape.", "A triangle has 3 sides and 3 corners.", "A square has 4 equal sides and 4 corners.", "A rectangle has 4 sides (opposite sides are equal) and 4 corners.", "A circle has no straight sides and no corners."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample a10f0a33b73bd5f75c48  seed 46  [mcq]
+      stem:    Using cut-outs, two half-circles are joined along their flat straight edges. What shape is formed?
+      answer:  circle
+      options: rectangle / square / circle / triangle
+      hints:   ["Think about the sides and corners of each shape.", "A triangle has 3 sides and 3 corners.", "A square has 4 equal sides and 4 corners.", "A rectangle has 4 sides (opposite sides are equal) and 4 corners.", "A circle has no straight sides and no corners."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 662228dac126f0c8a0a6  seed 500  [read_mcq]
+      stem:    On a square grid, a 4-by-2 rectangle is cut straight down the middle into two 2-by-2 parts. What shape is each part?
+      answer:  square
+      options: circle / half-circle / square / triangle
+      hints:   ["Think about the sides and corners of each shape.", "A triangle has 3 sides and 3 corners.", "A square has 4 equal sides and 4 corners.", "A rectangle has 4 sides (opposite sides are equal) and 4 corners.", "A circle has no straight sides and no corners."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ShapeBoard", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ShapeBoard
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ShapeBoard", "element_count": 14, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 3aae7738a6107996b681  seed 501  [read_mcq]
+      stem:    On a square grid, a composite shape has 1 square, 1 triangle, and 1 rectangle joined together. How many simple shapes were used to compose it?
+      answer:  3
+      options: 4 / 3 / 2 / 5
+      hints:   ["Think about the sides and corners of each shape.", "A triangle has 3 sides and 3 corners.", "A square has 4 equal sides and 4 corners.", "A rectangle has 4 sides (opposite sides are equal) and 4 corners.", "A circle has no straight sides and no corners."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ShapeBoard", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ShapeBoard
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ShapeBoard", "element_count": 11, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample db7d3e262b33e6f73e98  seed 502  [read_mcq]
+      stem:    On a square grid, a composite figure is made of 1 square, 1 half-circle, and 1 rectangle. How many shapes form this composite figure?
+      answer:  3
+      options: 2 / 1 / 4 / 3
+      hints:   ["Think about the sides and corners of each shape.", "A triangle has 3 sides and 3 corners.", "A square has 4 equal sides and 4 corners.", "A rectangle has 4 sides (opposite sides are equal) and 4 corners.", "A circle has no straight sides and no corners."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ShapeBoard", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ShapeBoard
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ShapeBoard", "element_count": 11, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample d0c8f81c97650654545f  seed 600  [mcq]
+      stem:    On a square grid, a rotated composite shape is made of a square and a triangle. How many simple shapes make up this figure?
+      answer:  2
+      options: 3 / 4 / 2 / 1
+      hints:   ["Think about the sides and corners of each shape.", "A triangle has 3 sides and 3 corners.", "A square has 4 equal sides and 4 corners.", "A rectangle has 4 sides (opposite sides are equal) and 4 corners.", "A circle has no straight sides and no corners."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 5380b0f639beec1cb5ec  seed 601  [read_mcq]
+      stem:    Using cut-outs, a square is cut along a slant from one corner to the opposite corner. What two shapes are made?
+      answer:  two triangles
+      options: two triangles / two rectangles / two squares / two circles
+      hints:   ["Think about the sides and corners of each shape.", "A triangle has 3 sides and 3 corners.", "A square has 4 equal sides and 4 corners.", "A rectangle has 4 sides (opposite sides are equal) and 4 corners.", "A circle has no straight sides and no corners."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ShapeBoard", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ShapeBoard
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ShapeBoard", "element_count": 5, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 80c1d9255f92b94606dc  seed 603  [read_mcq]
+      stem:    Using cut-outs, four quarter-circles of the same size are joined together. What complete shape do they make?
+      answer:  circle
+      options: triangle / circle / rectangle / square
+      hints:   ["Think about the sides and corners of each shape.", "A triangle has 3 sides and 3 corners.", "A square has 4 equal sides and 4 corners.", "A rectangle has 4 sides (opposite sides are equal) and 4 corners.", "A circle has no straight sides and no corners."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ShapeBoard", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ShapeBoard
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ShapeBoard", "element_count": 14, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample e891cfde92ff1d1dfe04  seed 700  [read_mcq]
+      stem:    Using cut-outs, four quarter-circles of the same size are joined together. What complete shape do they make?
+      answer:  circle
+      options: triangle / rectangle / square / circle
+      hints:   ["Think about the sides and corners of each shape.", "A triangle has 3 sides and 3 corners.", "A square has 4 equal sides and 4 corners.", "A rectangle has 4 sides (opposite sides are equal) and 4 corners.", "A circle has no straight sides and no corners."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ShapeBoard", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ShapeBoard
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ShapeBoard", "element_count": 14, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 09d3f11897a5c6a819c7  seed 701  [mcq]
+      stem:    💃 Sir Rez has a math challenge about dance shoes. A composite figure is made of a rectangle with a half-circle attached on top. How many simple shapes form this figure?
+      answer:  2
+      options: 2 / 3 / 4 / 1
+      hints:   ["Think about the sides and corners of each shape.", "A triangle has 3 sides and 3 corners.", "A square has 4 equal sides and 4 corners.", "A rectangle has 4 sides (opposite sides are equal) and 4 corners.", "A circle has no straight sides and no corners."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 412b372eda7f21bbf5a5  seed 702  [read_mcq]
+      stem:    ✝️ Moses has a math challenge about olives. Using cut-outs, two half-circles are joined along their flat straight edges. What shape is formed?
+      answer:  circle
+      options: rectangle / triangle / square / circle
+      hints:   ["Think about the sides and corners of each shape.", "A triangle has 3 sides and 3 corners.", "A square has 4 equal sides and 4 corners.", "A rectangle has 4 sides (opposite sides are equal) and 4 corners.", "A circle has no straight sides and no corners."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ShapeBoard", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ShapeBoard
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ShapeBoard", "element_count": 14, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 235e9b8b65b657b15347  seed 800  [read_mcq]
+      stem:    On a square grid, a composite shape has 1 square, 1 triangle, and 1 rectangle joined together. How many simple shapes were used to compose it?
+      answer:  3
+      options: 5 / 3 / 2 / 4
+      hints:   ["Think about the sides and corners of each shape.", "A triangle has 3 sides and 3 corners.", "A square has 4 equal sides and 4 corners.", "A rectangle has 4 sides (opposite sides are equal) and 4 corners.", "A circle has no straight sides and no corners."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ShapeBoard", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ShapeBoard
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ShapeBoard", "element_count": 11, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample add6b6c428c9e7de263e  seed 900  [mcq]
+      stem:    On a square grid, how many 1-by-1 unit squares are needed to compose a 2-by-2 square?
+      answer:  4
+      options: 2 / 6 / 4 / 3
+      hints:   ["Think about the sides and corners of each shape.", "A triangle has 3 sides and 3 corners.", "A square has 4 equal sides and 4 corners.", "A rectangle has 4 sides (opposite sides are equal) and 4 corners.", "A circle has no straight sides and no corners."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample a936a09a7ee69b2379d7  seed 901  [read_mcq]
+      stem:    On a square grid, a composite figure is made by joining 2 squares of 4 grid units each side by side. What shape is formed?
+      answer:  rectangle
+      options: quarter-circle / triangle / rectangle / circle
+      hints:   ["Think about the sides and corners of each shape.", "A triangle has 3 sides and 3 corners.", "A square has 4 equal sides and 4 corners.", "A rectangle has 4 sides (opposite sides are equal) and 4 corners.", "A circle has no straight sides and no corners."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ShapeBoard", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ShapeBoard
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ShapeBoard", "element_count": 14, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 11f4b73165b87a4a8e2c  seed 1000  [read_mcq]
+      stem:    On a square grid, a composite figure is made by joining 2 squares of 4 grid units each side by side. What shape is formed?
+      answer:  rectangle
+      options: rectangle / circle / quarter-circle / triangle
+      hints:   ["Think about the sides and corners of each shape.", "A triangle has 3 sides and 3 corners.", "A square has 4 equal sides and 4 corners.", "A rectangle has 4 sides (opposite sides are equal) and 4 corners.", "A circle has no straight sides and no corners."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ShapeBoard", "interaction_mode": "read", "answer_collection": "mcq", "experience": "hint_gated"}
+      visual:  ShapeBoard
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ShapeBoard", "element_count": 14, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 30e73e50a7f345e0a9f5  seed 1001  [read_mcq]
+      stem:    Using cut-outs, two identical triangles are placed together along their matching edges. What shape can they form?
+      answer:  rectangle
+      options: rectangle / quarter-circle / half-circle / circle
+      hints:   ["Think about the sides and corners of each shape.", "A triangle has 3 sides and 3 corners.", "A square has 4 equal sides and 4 corners.", "A rectangle has 4 sides (opposite sides are equal) and 4 corners.", "A circle has no straight sides and no corners."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ShapeBoard", "interaction_mode": "read", "answer_collection": "mcq", "experience": "mastery_drill"}
+      visual:  ShapeBoard
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ShapeBoard", "element_count": 11, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample d5e9181d152e630d3624  seed 1002  [read_mcq]
+      stem:    On a square grid, a composite figure is made of 1 square, 1 half-circle, and 1 rectangle. How many shapes form this composite figure?
+      answer:  3
+      options: 3 / 2 / 1 / 4
+      hints:   ["Think about the sides and corners of each shape.", "A triangle has 3 sides and 3 corners.", "A square has 4 equal sides and 4 corners.", "A rectangle has 4 sides (opposite sides are equal) and 4 corners.", "A circle has no straight sides and no corners."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ShapeBoard", "interaction_mode": "read", "answer_collection": "mcq", "experience": "scaffolded"}
+      visual:  ShapeBoard
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ShapeBoard", "element_count": 11, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+

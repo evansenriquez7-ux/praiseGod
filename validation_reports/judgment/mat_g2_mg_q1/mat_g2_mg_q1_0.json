@@ -1,7 +1,43 @@
 {
+  "schema_version": 2,
   "node_id": "mat_g2_mg_q1_0",
-  "reviewed_by": "reviewer-c2-basalt-yarrow-7194",
-  "review_date": "2026-09-11",
+  "competency_snapshot": {
+    "text": "Represent and describe circles, half circles and quarter circles.",
+    "grade": 2,
+    "quarter": 1,
+    "subdomain": null
+  },
+  "requirements_snapshot": [
+    {
+      "kind": "task",
+      "id": "represent",
+      "clause": "Represent"
+    },
+    {
+      "kind": "task",
+      "id": "describe",
+      "clause": "describe"
+    },
+    {
+      "kind": "object",
+      "id": "circles",
+      "clause": "circles"
+    },
+    {
+      "kind": "object",
+      "id": "half_circles",
+      "clause": "half circles"
+    },
+    {
+      "kind": "object",
+      "id": "quarter_circles",
+      "clause": "quarter circles"
+    }
+  ],
+  "packet_digest": "0882d4815c38275c87bd026795ef9cf4c850a9ec7872737297b49e2c0053efe2",
+  "sampling_version": "phase2-stratified-v2-rendered-visual",
+  "reviewed_by": "blind-reviewer-gpt-6-luna-medium-w27-mat_g2_mg_q1_0-20260925",
+  "review_date": "2026-09-25",
   "blind": true,
   "sample_seeds": [
     42,
@@ -16,14 +52,62 @@
     601,
     603,
     604,
-    605
+    605,
+    700,
+    701,
+    702,
+    800,
+    900,
+    901,
+    1000,
+    1001,
+    1002
+  ],
+  "sample_ids": [
+    "616776b9544c92d75d2f",
+    "418754540117ba661714",
+    "f70bc83641fe60415611",
+    "c208659b71c6e517b157",
+    "bfa13e056bbd9b643d62",
+    "d5b95fae6fb7f348780a",
+    "acaeb47a4adb9f55db0f",
+    "b6fbd8d99091cc24f723",
+    "8c74708ee2485836d445",
+    "8174d048104672cb35f6",
+    "5c360fa314a630fd9e33",
+    "8ef0d32235f06056ec2a",
+    "10457aaa8d67f7a4cd37",
+    "65503f01ac9b526c68ba",
+    "773cbbf60094a2e59326",
+    "2f4bee8d4aaec415fdee",
+    "63d779c3fe444840d7e5",
+    "11918a32f5820bc44de4",
+    "82a689835cc165d843e8",
+    "a38508e0782f1db2f599",
+    "eda079106c54f65f4d04",
+    "56fd59331e7a4749adb5"
   ],
   "samples_reviewed": [
     {
+      "node_id": "mat_g2_mg_q1_0",
       "seed": 42,
       "formatter": "read_mcq",
       "question_text": "What shape has no corners and no straight sides?",
       "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ShapeBoard",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -45,13 +129,96 @@
           "value": "square",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "circle",
+      "hints": [
+        "Think about the sides and corners of each shape.",
+        "A triangle has 3 sides and 3 corners.",
+        "A square has 4 equal sides and 4 corners.",
+        "A rectangle has 4 sides (opposite sides are equal) and 4 corners.",
+        "A circle has no straight sides and no corners."
+      ],
+      "visual_type": "ShapeBoard",
+      "visual_payload": {
+        "shapes": [
+          {
+            "id": "shape_0",
+            "type": "circle",
+            "sides": 0,
+            "corners": 0,
+            "is_regular": true,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_1",
+            "type": "triangle",
+            "sides": 3,
+            "corners": 3,
+            "is_regular": true,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_2",
+            "type": "rectangle",
+            "sides": 4,
+            "corners": 4,
+            "is_regular": false,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_3",
+            "type": "square",
+            "sides": 4,
+            "corners": 4,
+            "is_regular": true,
+            "orientation_deg": 0
+          }
+        ],
+        "question_type": "illustrate",
+        "highlighted_shape": null
+      },
+      "visual_render": {
+        "visual_type": "ShapeBoard",
+        "renderer_input_digest": "3b6367ad5c2fc544eb2af6af73a113db8d85776fed588898ee389de6b3d9a0ba",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ShapeBoard",
+          "element_count": 14,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [
+            "hsl(var(--primary)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "616776b9544c92d75d2f",
+      "replay_digest": "440c8c8b6382b64ceb8a432493c6e9e296f3797d9c792050712e2ef3d90d3e41"
     },
     {
+      "node_id": "mat_g2_mg_q1_0",
       "seed": 43,
       "formatter": "mcq",
       "question_text": "What shape has no corners and no straight sides?",
       "correct_answer": "circle",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -73,13 +240,38 @@
           "value": "square",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "circle",
+      "hints": [
+        "Think about the sides and corners of each shape.",
+        "A triangle has 3 sides and 3 corners.",
+        "A square has 4 equal sides and 4 corners.",
+        "A rectangle has 4 sides (opposite sides are equal) and 4 corners.",
+        "A circle has no straight sides and no corners."
+      ],
+      "sample_id": "418754540117ba661714",
+      "replay_digest": "baac64ddf78051d0bb4eee0111c2bd62cbcc3c6e7766f80ddea544789a5f210e"
     },
     {
+      "node_id": "mat_g2_mg_q1_0",
       "seed": 44,
       "formatter": "read_mcq",
       "question_text": "A circle is divided into 2 equal parts. What is each part called?",
       "correct_answer": "C",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ShapeBoard",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -101,13 +293,80 @@
           "value": "triangle",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "half-circle",
+      "hints": [
+        "Think about the sides and corners of each shape.",
+        "A triangle has 3 sides and 3 corners.",
+        "A square has 4 equal sides and 4 corners.",
+        "A rectangle has 4 sides (opposite sides are equal) and 4 corners.",
+        "A circle has no straight sides and no corners."
+      ],
+      "visual_type": "ShapeBoard",
+      "visual_payload": {
+        "shapes": [
+          {
+            "id": "shape_0",
+            "type": "circle",
+            "sides": 0,
+            "corners": 0,
+            "is_regular": true,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_1",
+            "type": "triangle",
+            "sides": 3,
+            "corners": 3,
+            "is_regular": true,
+            "orientation_deg": 0
+          }
+        ],
+        "question_type": "illustrate",
+        "highlighted_shape": null
+      },
+      "visual_render": {
+        "visual_type": "ShapeBoard",
+        "renderer_input_digest": "7f6be8cdc5aa172eb982952691abeb008e45c3be986ebe57c10e1917733b07ee",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ShapeBoard",
+          "element_count": 8,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [
+            "hsl(var(--primary)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "f70bc83641fe60415611",
+      "replay_digest": "46b2f67b59b3f455dcf36d040b91b4985506ce60bb896e9860bac94ff4bca8f7"
     },
     {
+      "node_id": "mat_g2_mg_q1_0",
       "seed": 45,
       "formatter": "mcq",
       "question_text": "A shape is made from exactly one quarter of a circle. What is it called?",
       "correct_answer": "quarter-circle",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -129,13 +388,38 @@
           "value": "triangle",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "quarter-circle",
+      "hints": [
+        "Think about the sides and corners of each shape.",
+        "A triangle has 3 sides and 3 corners.",
+        "A square has 4 equal sides and 4 corners.",
+        "A rectangle has 4 sides (opposite sides are equal) and 4 corners.",
+        "A circle has no straight sides and no corners."
+      ],
+      "sample_id": "c208659b71c6e517b157",
+      "replay_digest": "0fa786a7d67cd882a8183948458a2947065c8ea518703a5dda76ded43855bb4e"
     },
     {
+      "node_id": "mat_g2_mg_q1_0",
       "seed": 46,
       "formatter": "mcq",
       "question_text": "What shape has no corners and no straight sides?",
       "correct_answer": "circle",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -157,13 +441,40 @@
           "value": "triangle",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "circle",
+      "hints": [
+        "Think about the sides and corners of each shape.",
+        "A triangle has 3 sides and 3 corners.",
+        "A square has 4 equal sides and 4 corners.",
+        "A rectangle has 4 sides (opposite sides are equal) and 4 corners.",
+        "A circle has no straight sides and no corners."
+      ],
+      "sample_id": "bfa13e056bbd9b643d62",
+      "replay_digest": "323afab01a077eae248327cf39681891860d64035ccb768f2e6f4307a99e14cd"
     },
     {
+      "node_id": "mat_g2_mg_q1_0",
       "seed": 500,
       "formatter": "read_mcq",
       "question_text": "A circle is divided into 2 equal parts. What is each part called?",
       "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ShapeBoard",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -185,13 +496,82 @@
           "value": "triangle",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "half-circle",
+      "hints": [
+        "Think about the sides and corners of each shape.",
+        "A triangle has 3 sides and 3 corners.",
+        "A square has 4 equal sides and 4 corners.",
+        "A rectangle has 4 sides (opposite sides are equal) and 4 corners.",
+        "A circle has no straight sides and no corners."
+      ],
+      "visual_type": "ShapeBoard",
+      "visual_payload": {
+        "shapes": [
+          {
+            "id": "shape_0",
+            "type": "circle",
+            "sides": 0,
+            "corners": 0,
+            "is_regular": true,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_1",
+            "type": "triangle",
+            "sides": 3,
+            "corners": 3,
+            "is_regular": true,
+            "orientation_deg": 0
+          }
+        ],
+        "question_type": "illustrate",
+        "highlighted_shape": null
+      },
+      "visual_render": {
+        "visual_type": "ShapeBoard",
+        "renderer_input_digest": "7f6be8cdc5aa172eb982952691abeb008e45c3be986ebe57c10e1917733b07ee",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ShapeBoard",
+          "element_count": 8,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [
+            "hsl(var(--primary)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "d5b95fae6fb7f348780a",
+      "replay_digest": "4d09a255b5b4cd8f806c6fe632b0d1ce83d32aaf82a155b0a1e459bddeea3fd5"
     },
     {
+      "node_id": "mat_g2_mg_q1_0",
       "seed": 501,
       "formatter": "read_mcq",
       "question_text": "A shape is made from exactly one quarter of a circle. What is it called?",
       "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ShapeBoard",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -213,13 +593,90 @@
           "value": "quarter-circle",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": "quarter-circle",
+      "hints": [
+        "Think about the sides and corners of each shape.",
+        "A triangle has 3 sides and 3 corners.",
+        "A square has 4 equal sides and 4 corners.",
+        "A rectangle has 4 sides (opposite sides are equal) and 4 corners.",
+        "A circle has no straight sides and no corners."
+      ],
+      "visual_type": "ShapeBoard",
+      "visual_payload": {
+        "shapes": [
+          {
+            "id": "shape_0",
+            "type": "circle",
+            "sides": 0,
+            "corners": 0,
+            "is_regular": true,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_1",
+            "type": "triangle",
+            "sides": 3,
+            "corners": 3,
+            "is_regular": true,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_2",
+            "type": "square",
+            "sides": 4,
+            "corners": 4,
+            "is_regular": true,
+            "orientation_deg": 0
+          }
+        ],
+        "question_type": "illustrate",
+        "highlighted_shape": null
+      },
+      "visual_render": {
+        "visual_type": "ShapeBoard",
+        "renderer_input_digest": "26a578e03a946f6c18da9b1e232463b2ca198ce6b6e6b7d8ff96906cd5d243ce",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ShapeBoard",
+          "element_count": 11,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [
+            "hsl(var(--primary)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "acaeb47a4adb9f55db0f",
+      "replay_digest": "ed41ceeff1fe569b088277eb33f4fc1be22a5da4d984946ba5e7c039f187f167"
     },
     {
+      "node_id": "mat_g2_mg_q1_0",
       "seed": 502,
       "formatter": "read_mcq",
       "question_text": "A circle is divided into 4 equal parts. What is each part called?",
       "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ShapeBoard",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -241,13 +698,82 @@
           "value": "half-circle",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "quarter-circle",
+      "hints": [
+        "Think about the sides and corners of each shape.",
+        "A triangle has 3 sides and 3 corners.",
+        "A square has 4 equal sides and 4 corners.",
+        "A rectangle has 4 sides (opposite sides are equal) and 4 corners.",
+        "A circle has no straight sides and no corners."
+      ],
+      "visual_type": "ShapeBoard",
+      "visual_payload": {
+        "shapes": [
+          {
+            "id": "shape_0",
+            "type": "circle",
+            "sides": 0,
+            "corners": 0,
+            "is_regular": true,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_1",
+            "type": "rectangle",
+            "sides": 4,
+            "corners": 4,
+            "is_regular": false,
+            "orientation_deg": 0
+          }
+        ],
+        "question_type": "illustrate",
+        "highlighted_shape": null
+      },
+      "visual_render": {
+        "visual_type": "ShapeBoard",
+        "renderer_input_digest": "7ad2fb1ee5080a73f145e38ae5093345afe7cba029ba0d4fb751930bdd5f1351",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ShapeBoard",
+          "element_count": 8,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [
+            "hsl(var(--primary)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "b6fbd8d99091cc24f723",
+      "replay_digest": "28ce91bb816442bc8fcfd11cebc027075ba507cf8b649ae458a99c9181b6e6da"
     },
     {
+      "node_id": "mat_g2_mg_q1_0",
       "seed": 600,
       "formatter": "mcq",
       "question_text": "A quarter-circle is rotated to face another direction. What shape is it?",
       "correct_answer": "quarter-circle",
+      "requested": {
+        "difficulty_profile": {
+          "orientation": "rotated"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -269,13 +795,40 @@
           "value": "half-circle",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "quarter-circle",
+      "hints": [
+        "Think about the sides and corners of each shape.",
+        "A triangle has 3 sides and 3 corners.",
+        "A square has 4 equal sides and 4 corners.",
+        "A rectangle has 4 sides (opposite sides are equal) and 4 corners.",
+        "A circle has no straight sides and no corners."
+      ],
+      "sample_id": "8c74708ee2485836d445",
+      "replay_digest": "81287d840e2d0ce4e8e9b8b4746ecd710191d7d02411ec8d26a7e8761a04e385"
     },
     {
+      "node_id": "mat_g2_mg_q1_0",
       "seed": 601,
       "formatter": "read_mcq",
       "question_text": "A shape is made from exactly half of a circle. What is it called?",
       "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": {
+          "orientation": "standard"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ShapeBoard",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -297,13 +850,90 @@
           "value": "quarter-circle",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "half-circle",
+      "hints": [
+        "Think about the sides and corners of each shape.",
+        "A triangle has 3 sides and 3 corners.",
+        "A square has 4 equal sides and 4 corners.",
+        "A rectangle has 4 sides (opposite sides are equal) and 4 corners.",
+        "A circle has no straight sides and no corners."
+      ],
+      "visual_type": "ShapeBoard",
+      "visual_payload": {
+        "shapes": [
+          {
+            "id": "shape_0",
+            "type": "circle",
+            "sides": 0,
+            "corners": 0,
+            "is_regular": true,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_1",
+            "type": "triangle",
+            "sides": 3,
+            "corners": 3,
+            "is_regular": true,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_2",
+            "type": "rectangle",
+            "sides": 4,
+            "corners": 4,
+            "is_regular": false,
+            "orientation_deg": 0
+          }
+        ],
+        "question_type": "illustrate",
+        "highlighted_shape": null
+      },
+      "visual_render": {
+        "visual_type": "ShapeBoard",
+        "renderer_input_digest": "af9d0035d24a9a1e6225106a607065bbc816a93f672d97bc1af8626f110ff6bc",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ShapeBoard",
+          "element_count": 11,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [
+            "hsl(var(--primary)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "8174d048104672cb35f6",
+      "replay_digest": "7c80dcb8be4d9b6de576f55e7b031f7f5726adaa6447c306b35c172a875839bc"
     },
     {
+      "node_id": "mat_g2_mg_q1_0",
       "seed": 603,
       "formatter": "read_mcq",
       "question_text": "Which has more straight edges: a half-circle or a quarter-circle?",
       "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": {
+          "task_type": "compare_shapes"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ShapeBoard",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -325,13 +955,74 @@
           "value": "quarter-circle",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": "quarter-circle",
+      "hints": [
+        "Think about the sides and corners of each shape.",
+        "A triangle has 3 sides and 3 corners.",
+        "A square has 4 equal sides and 4 corners.",
+        "A rectangle has 4 sides (opposite sides are equal) and 4 corners.",
+        "A circle has no straight sides and no corners."
+      ],
+      "visual_type": "ShapeBoard",
+      "visual_payload": {
+        "shapes": [
+          {
+            "id": "shape_0",
+            "type": "circle",
+            "sides": 0,
+            "corners": 0,
+            "is_regular": true,
+            "orientation_deg": 0
+          }
+        ],
+        "question_type": "illustrate",
+        "highlighted_shape": null
+      },
+      "visual_render": {
+        "visual_type": "ShapeBoard",
+        "renderer_input_digest": "64faba7dbd27b048a0d01a9b8152a5d01a355f6b277ba1034fee7df2e0ac4f65",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ShapeBoard",
+          "element_count": 5,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [
+            "hsl(var(--primary)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "5c360fa314a630fd9e33",
+      "replay_digest": "322f611d3b1950834b4cd79530ae537e6dc5f0cdecc4375f2c378e6c0d1c152c"
     },
     {
+      "node_id": "mat_g2_mg_q1_0",
       "seed": 604,
       "formatter": "read_mcq",
       "question_text": "How many quarter-circles make 1 whole circle?",
       "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": {
+          "task_type": "compose_decompose"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ShapeBoard",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -353,13 +1044,74 @@
           "value": "4",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": "4",
+      "hints": [
+        "Think about the sides and corners of each shape.",
+        "A triangle has 3 sides and 3 corners.",
+        "A square has 4 equal sides and 4 corners.",
+        "A rectangle has 4 sides (opposite sides are equal) and 4 corners.",
+        "A circle has no straight sides and no corners."
+      ],
+      "visual_type": "ShapeBoard",
+      "visual_payload": {
+        "shapes": [
+          {
+            "id": "shape_0",
+            "type": "circle",
+            "sides": 0,
+            "corners": 0,
+            "is_regular": true,
+            "orientation_deg": 0
+          }
+        ],
+        "question_type": "illustrate",
+        "highlighted_shape": null
+      },
+      "visual_render": {
+        "visual_type": "ShapeBoard",
+        "renderer_input_digest": "64faba7dbd27b048a0d01a9b8152a5d01a355f6b277ba1034fee7df2e0ac4f65",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ShapeBoard",
+          "element_count": 5,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [
+            "hsl(var(--primary)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "8ef0d32235f06056ec2a",
+      "replay_digest": "963d3fc7ddf77e7fb77ae9fac8f68270607e039beeabcbd4342fbb7fcbea7378"
     },
     {
+      "node_id": "mat_g2_mg_q1_0",
       "seed": 605,
       "formatter": "read_mcq",
       "question_text": "How many corners does a circle have?",
       "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": {
+          "task_type": "count_sides_corners"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ShapeBoard",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -381,33 +1133,1516 @@
           "value": "4",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "0",
+      "hints": [
+        "Think about the sides and corners of each shape.",
+        "A triangle has 3 sides and 3 corners.",
+        "A square has 4 equal sides and 4 corners.",
+        "A rectangle has 4 sides (opposite sides are equal) and 4 corners.",
+        "A circle has no straight sides and no corners."
+      ],
+      "visual_type": "ShapeBoard",
+      "visual_payload": {
+        "shapes": [
+          {
+            "id": "shape_0",
+            "type": "circle",
+            "sides": 0,
+            "corners": 0,
+            "is_regular": true,
+            "orientation_deg": 0
+          }
+        ],
+        "question_type": "illustrate",
+        "highlighted_shape": null
+      },
+      "visual_render": {
+        "visual_type": "ShapeBoard",
+        "renderer_input_digest": "64faba7dbd27b048a0d01a9b8152a5d01a355f6b277ba1034fee7df2e0ac4f65",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ShapeBoard",
+          "element_count": 5,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [
+            "hsl(var(--primary)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "10457aaa8d67f7a4cd37",
+      "replay_digest": "89ed4f3cd57785353bad7330bab8d8c51eaf6f68741609ece58f6f7c7fedb655"
+    },
+    {
+      "node_id": "mat_g2_mg_q1_0",
+      "seed": 700,
+      "formatter": "read_mcq",
+      "question_text": "A shape is made from exactly half of a circle. What is it called?",
+      "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ShapeBoard",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "half-circle",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "triangle",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "quarter-circle",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "rectangle",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "half-circle",
+      "hints": [
+        "Think about the sides and corners of each shape.",
+        "A triangle has 3 sides and 3 corners.",
+        "A square has 4 equal sides and 4 corners.",
+        "A rectangle has 4 sides (opposite sides are equal) and 4 corners.",
+        "A circle has no straight sides and no corners."
+      ],
+      "visual_type": "ShapeBoard",
+      "visual_payload": {
+        "shapes": [
+          {
+            "id": "shape_0",
+            "type": "circle",
+            "sides": 0,
+            "corners": 0,
+            "is_regular": true,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_1",
+            "type": "triangle",
+            "sides": 3,
+            "corners": 3,
+            "is_regular": true,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_2",
+            "type": "rectangle",
+            "sides": 4,
+            "corners": 4,
+            "is_regular": false,
+            "orientation_deg": 0
+          }
+        ],
+        "question_type": "illustrate",
+        "highlighted_shape": null
+      },
+      "visual_render": {
+        "visual_type": "ShapeBoard",
+        "renderer_input_digest": "af9d0035d24a9a1e6225106a607065bbc816a93f672d97bc1af8626f110ff6bc",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ShapeBoard",
+          "element_count": 11,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [
+            "hsl(var(--primary)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "65503f01ac9b526c68ba",
+      "replay_digest": "c2c70b2e991a7eaf528168c117f25209edca692ffa3af79b9ae234122a11b9e1"
+    },
+    {
+      "node_id": "mat_g2_mg_q1_0",
+      "seed": 701,
+      "formatter": "mcq",
+      "question_text": "💃 Sir Rez has a math challenge about dance shoes. A shape is made from exactly one quarter of a circle. What is it called?",
+      "correct_answer": "quarter-circle",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "competitive_gaming",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "square",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "triangle",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "quarter-circle",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "half-circle",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "quarter-circle",
+      "hints": [
+        "Think about the sides and corners of each shape.",
+        "A triangle has 3 sides and 3 corners.",
+        "A square has 4 equal sides and 4 corners.",
+        "A rectangle has 4 sides (opposite sides are equal) and 4 corners.",
+        "A circle has no straight sides and no corners."
+      ],
+      "sample_id": "773cbbf60094a2e59326",
+      "replay_digest": "aaccf18b8c791d13bdcbd1fd9f93cdb7a451fc692dc13c027875fcdeb059915f"
+    },
+    {
+      "node_id": "mat_g2_mg_q1_0",
+      "seed": 702,
+      "formatter": "read_mcq",
+      "question_text": "🏀 Isko has a math challenge about basketballs. What shape has no corners and no straight sides?",
+      "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "ppop",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ShapeBoard",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "circle",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "triangle",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "rectangle",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "square",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "circle",
+      "hints": [
+        "Think about the sides and corners of each shape.",
+        "A triangle has 3 sides and 3 corners.",
+        "A square has 4 equal sides and 4 corners.",
+        "A rectangle has 4 sides (opposite sides are equal) and 4 corners.",
+        "A circle has no straight sides and no corners."
+      ],
+      "visual_type": "ShapeBoard",
+      "visual_payload": {
+        "shapes": [
+          {
+            "id": "shape_0",
+            "type": "circle",
+            "sides": 0,
+            "corners": 0,
+            "is_regular": true,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_1",
+            "type": "triangle",
+            "sides": 3,
+            "corners": 3,
+            "is_regular": true,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_2",
+            "type": "rectangle",
+            "sides": 4,
+            "corners": 4,
+            "is_regular": false,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_3",
+            "type": "square",
+            "sides": 4,
+            "corners": 4,
+            "is_regular": true,
+            "orientation_deg": 0
+          }
+        ],
+        "question_type": "illustrate",
+        "highlighted_shape": null
+      },
+      "visual_render": {
+        "visual_type": "ShapeBoard",
+        "renderer_input_digest": "3b6367ad5c2fc544eb2af6af73a113db8d85776fed588898ee389de6b3d9a0ba",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ShapeBoard",
+          "element_count": 14,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [
+            "hsl(var(--primary)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "2f4bee8d4aaec415fdee",
+      "replay_digest": "8fa62c862327af9e82db7a6631f4a031cd3e87bd2385d2995eb1bd7788eedde3"
+    },
+    {
+      "node_id": "mat_g2_mg_q1_0",
+      "seed": 800,
+      "formatter": "read_mcq",
+      "question_text": "A circle is divided into 2 equal parts. What is each part called?",
+      "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ShapeBoard",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "half-circle",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "whole circle",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "triangle",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "quarter-circle",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "half-circle",
+      "hints": [
+        "Think about the sides and corners of each shape.",
+        "A triangle has 3 sides and 3 corners.",
+        "A square has 4 equal sides and 4 corners.",
+        "A rectangle has 4 sides (opposite sides are equal) and 4 corners.",
+        "A circle has no straight sides and no corners."
+      ],
+      "visual_type": "ShapeBoard",
+      "visual_payload": {
+        "shapes": [
+          {
+            "id": "shape_0",
+            "type": "circle",
+            "sides": 0,
+            "corners": 0,
+            "is_regular": true,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_1",
+            "type": "triangle",
+            "sides": 3,
+            "corners": 3,
+            "is_regular": true,
+            "orientation_deg": 0
+          }
+        ],
+        "question_type": "illustrate",
+        "highlighted_shape": null
+      },
+      "visual_render": {
+        "visual_type": "ShapeBoard",
+        "renderer_input_digest": "7f6be8cdc5aa172eb982952691abeb008e45c3be986ebe57c10e1917733b07ee",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ShapeBoard",
+          "element_count": 8,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [
+            "hsl(var(--primary)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "63d779c3fe444840d7e5",
+      "replay_digest": "75bff140763ebf9d70ef31a7d5dbe97e7579372121c31d061ba47facbf46723b"
+    },
+    {
+      "node_id": "mat_g2_mg_q1_0",
+      "seed": 900,
+      "formatter": "mcq",
+      "question_text": "A circle is divided into 4 equal parts. What is each part called?",
+      "correct_answer": "quarter-circle",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "rectangle",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "half-circle",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "quarter-circle",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "whole circle",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "quarter-circle",
+      "hints": [
+        "Think about the sides and corners of each shape.",
+        "A triangle has 3 sides and 3 corners.",
+        "A square has 4 equal sides and 4 corners.",
+        "A rectangle has 4 sides (opposite sides are equal) and 4 corners.",
+        "A circle has no straight sides and no corners."
+      ],
+      "sample_id": "11918a32f5820bc44de4",
+      "replay_digest": "9e4323a9db6125b85016dccc1172164b1f01b10f85ac53e56322f6fe4f988077"
+    },
+    {
+      "node_id": "mat_g2_mg_q1_0",
+      "seed": 901,
+      "formatter": "read_mcq",
+      "question_text": "A circle is divided into 2 equal parts. What is each part called?",
+      "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ShapeBoard",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "half-circle",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "quarter-circle",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "triangle",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "whole circle",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "half-circle",
+      "hints": [
+        "Think about the sides and corners of each shape.",
+        "A triangle has 3 sides and 3 corners.",
+        "A square has 4 equal sides and 4 corners.",
+        "A rectangle has 4 sides (opposite sides are equal) and 4 corners.",
+        "A circle has no straight sides and no corners."
+      ],
+      "visual_type": "ShapeBoard",
+      "visual_payload": {
+        "shapes": [
+          {
+            "id": "shape_0",
+            "type": "circle",
+            "sides": 0,
+            "corners": 0,
+            "is_regular": true,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_1",
+            "type": "triangle",
+            "sides": 3,
+            "corners": 3,
+            "is_regular": true,
+            "orientation_deg": 0
+          }
+        ],
+        "question_type": "illustrate",
+        "highlighted_shape": null
+      },
+      "visual_render": {
+        "visual_type": "ShapeBoard",
+        "renderer_input_digest": "7f6be8cdc5aa172eb982952691abeb008e45c3be986ebe57c10e1917733b07ee",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ShapeBoard",
+          "element_count": 8,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [
+            "hsl(var(--primary)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "82a689835cc165d843e8",
+      "replay_digest": "81954dec064f6262485fed132bb24869b7c1629af4862835a96a84d8de9a1ceb"
+    },
+    {
+      "node_id": "mat_g2_mg_q1_0",
+      "seed": 1000,
+      "formatter": "read_mcq",
+      "question_text": "A circle is divided into 2 equal parts. What is each part called?",
+      "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "hint_gated"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ShapeBoard",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "hint_gated"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "whole circle",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "quarter-circle",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "triangle",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "half-circle",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": "half-circle",
+      "hints": [
+        "Think about the sides and corners of each shape.",
+        "A triangle has 3 sides and 3 corners.",
+        "A square has 4 equal sides and 4 corners.",
+        "A rectangle has 4 sides (opposite sides are equal) and 4 corners.",
+        "A circle has no straight sides and no corners."
+      ],
+      "visual_type": "ShapeBoard",
+      "visual_payload": {
+        "shapes": [
+          {
+            "id": "shape_0",
+            "type": "circle",
+            "sides": 0,
+            "corners": 0,
+            "is_regular": true,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_1",
+            "type": "triangle",
+            "sides": 3,
+            "corners": 3,
+            "is_regular": true,
+            "orientation_deg": 0
+          }
+        ],
+        "question_type": "illustrate",
+        "highlighted_shape": null
+      },
+      "visual_render": {
+        "visual_type": "ShapeBoard",
+        "renderer_input_digest": "7f6be8cdc5aa172eb982952691abeb008e45c3be986ebe57c10e1917733b07ee",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ShapeBoard",
+          "element_count": 8,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [
+            "hsl(var(--primary)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "a38508e0782f1db2f599",
+      "replay_digest": "9138a8ac1feac9321c1c4d8ca3934690893f00ecdf537a03acce04072d651f77"
+    },
+    {
+      "node_id": "mat_g2_mg_q1_0",
+      "seed": 1001,
+      "formatter": "read_mcq",
+      "question_text": "What shape has no corners and no straight sides?",
+      "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "mastery_drill"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ShapeBoard",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "mastery_drill"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "circle",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "triangle",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "square",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "rectangle",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "circle",
+      "hints": [
+        "Think about the sides and corners of each shape.",
+        "A triangle has 3 sides and 3 corners.",
+        "A square has 4 equal sides and 4 corners.",
+        "A rectangle has 4 sides (opposite sides are equal) and 4 corners.",
+        "A circle has no straight sides and no corners."
+      ],
+      "visual_type": "ShapeBoard",
+      "visual_payload": {
+        "shapes": [
+          {
+            "id": "shape_0",
+            "type": "circle",
+            "sides": 0,
+            "corners": 0,
+            "is_regular": true,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_1",
+            "type": "triangle",
+            "sides": 3,
+            "corners": 3,
+            "is_regular": true,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_2",
+            "type": "rectangle",
+            "sides": 4,
+            "corners": 4,
+            "is_regular": false,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_3",
+            "type": "square",
+            "sides": 4,
+            "corners": 4,
+            "is_regular": true,
+            "orientation_deg": 0
+          }
+        ],
+        "question_type": "illustrate",
+        "highlighted_shape": null
+      },
+      "visual_render": {
+        "visual_type": "ShapeBoard",
+        "renderer_input_digest": "3b6367ad5c2fc544eb2af6af73a113db8d85776fed588898ee389de6b3d9a0ba",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ShapeBoard",
+          "element_count": 14,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [
+            "hsl(var(--primary)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "eda079106c54f65f4d04",
+      "replay_digest": "7101196592dcaa831f66ec61f02016b380a8d3c6217fee1f69e6ab8c6a2d521b"
+    },
+    {
+      "node_id": "mat_g2_mg_q1_0",
+      "seed": 1002,
+      "formatter": "read_mcq",
+      "question_text": "A circle is divided into 4 equal parts. What is each part called?",
+      "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "scaffolded"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ShapeBoard",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "scaffolded"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "half-circle",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "rectangle",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "whole circle",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "quarter-circle",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": "quarter-circle",
+      "hints": [
+        "Think about the sides and corners of each shape.",
+        "A triangle has 3 sides and 3 corners.",
+        "A square has 4 equal sides and 4 corners.",
+        "A rectangle has 4 sides (opposite sides are equal) and 4 corners.",
+        "A circle has no straight sides and no corners."
+      ],
+      "visual_type": "ShapeBoard",
+      "visual_payload": {
+        "shapes": [
+          {
+            "id": "shape_0",
+            "type": "circle",
+            "sides": 0,
+            "corners": 0,
+            "is_regular": true,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_1",
+            "type": "rectangle",
+            "sides": 4,
+            "corners": 4,
+            "is_regular": false,
+            "orientation_deg": 0
+          }
+        ],
+        "question_type": "illustrate",
+        "highlighted_shape": null
+      },
+      "visual_render": {
+        "visual_type": "ShapeBoard",
+        "renderer_input_digest": "7ad2fb1ee5080a73f145e38ae5093345afe7cba029ba0d4fb751930bdd5f1351",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ShapeBoard",
+          "element_count": 8,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [
+            "hsl(var(--primary)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "56fd59331e7a4749adb5",
+      "replay_digest": "592d131f718bf3851d5a81f473ffe57348865759b361648f2ee41b07430504e5"
+    }
+  ],
+  "sample_assessments": [
+    {
+      "sample_id": "616776b9544c92d75d2f",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "This item asks to identify circle by no corners/straight sides; answer circle is uniquely represented among its actual choices rectangle / circle / triangle / square, so no second option fits the stated shape condition."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The wording about identify circle by no corners/straight sides is a coherent elementary geometry question; its ShapeBoard 14 elements supports a shape context without any themed wording that conflicts."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "For identify circle by no corners/straight sides, the circle option circle is offered among rectangle / circle / triangle / square; Hints list 3 triangle corners, 4 square corners, 4 rectangle corners, then say a circle has none. Those clues directly reinforce the no-corner property requested."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The final hint states that a circle has no straight sides and corners, agreeing with the stem and key circle; choices rectangle / circle / triangle / square include the circle, and shapeboard 14 elements supplies the associated board."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w27-mat_g2_mg_q1_0-20260925",
+      "dispatch_id": "gpt6luna-s5-w27-20260925:mat_g2_mg_q1_0"
+    },
+    {
+      "sample_id": "418754540117ba661714",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "This item asks to identify circle by no corners/straight sides; answer circle is uniquely represented among its actual choices rectangle / circle / triangle / square, so no second option fits the stated shape condition."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The wording about identify circle by no corners/straight sides is a coherent elementary geometry question; the item has no wrapper or picture that adds a competing condition."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "For identify circle by no corners/straight sides, the circle option circle is offered among rectangle / circle / triangle / square; Hints list 3 triangle corners, 4 square corners, 4 rectangle corners, then say a circle has none. Those clues directly reinforce the no-corner property requested."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The final hint states that a circle has no straight sides and corners, agreeing with the stem and key circle; choices rectangle / circle / triangle / square include the circle, and no visual is not needed."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w27-mat_g2_mg_q1_0-20260925",
+      "dispatch_id": "gpt6luna-s5-w27-20260925:mat_g2_mg_q1_0"
+    },
+    {
+      "sample_id": "f70bc83641fe60415611",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "This item asks to name each part after circle is divided into 2 equal parts; answer half-circle is uniquely represented among its actual choices quarter-circle / whole circle / half-circle / triangle, so no second option fits the stated shape condition."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The wording about name each part after circle is divided into 2 equal parts is a coherent elementary geometry question; its ShapeBoard 8 elements supports a shape context without any themed wording that conflicts."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The prompt asks to name each part after circle is divided into 2 equal parts and keys half-circle, but Hints list 3 triangle corners, 4 square corners, 4 rectangle corners, then say a circle has none. That sequence discusses polygon properties and does not explain the requested part name or relation. The ShapeBoard 8 elements gives no hint about how the stated division maps to that vocabulary."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Two equal pieces of a circle are half-circles, matching half-circle in quarter-circle / whole circle / half-circle / triangle; the hint sequence only describes circle and polygon corners, without explaining the two-part relationship. The ShapeBoard 8 elements metadata has no labels or geometry, so it cannot fill the missing hint explanation."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w27-mat_g2_mg_q1_0-20260925",
+      "dispatch_id": "gpt6luna-s5-w27-20260925:mat_g2_mg_q1_0"
+    },
+    {
+      "sample_id": "c208659b71c6e517b157",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "This item asks to name shape made from exactly one quarter of a circle; answer quarter-circle is uniquely represented among its actual choices quarter-circle / square / half-circle / triangle, so no second option fits the stated shape condition."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The wording about name shape made from exactly one quarter of a circle is a coherent elementary geometry question; the item has no wrapper or picture that adds a competing condition."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The prompt asks to name shape made from exactly one quarter of a circle and keys quarter-circle, but Hints list 3 triangle corners, 4 square corners, 4 rectangle corners, then say a circle has none. That sequence discusses polygon properties and does not explain the requested part name or relation. The text-only stem gives no hint about how the stated division maps to that vocabulary."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "One of four equal circle parts is a quarter-circle, matching quarter-circle in quarter-circle / square / half-circle / triangle; the hints discuss shape corners but do not explain the requested quarter-part naming."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w27-mat_g2_mg_q1_0-20260925",
+      "dispatch_id": "gpt6luna-s5-w27-20260925:mat_g2_mg_q1_0"
+    },
+    {
+      "sample_id": "bfa13e056bbd9b643d62",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "This item asks to identify circle by no corners/straight sides; answer circle is uniquely represented among its actual choices rectangle / circle / square / triangle, so no second option fits the stated shape condition."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The wording about identify circle by no corners/straight sides is a coherent elementary geometry question; the item has no wrapper or picture that adds a competing condition."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "For identify circle by no corners/straight sides, the circle option circle is offered among rectangle / circle / square / triangle; Hints list 3 triangle corners, 4 square corners, 4 rectangle corners, then say a circle has none. Those clues directly reinforce the no-corner property requested."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The final hint states that a circle has no straight sides and corners, agreeing with the stem and key circle; choices rectangle / circle / square / triangle include the circle, and no visual is not needed."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w27-mat_g2_mg_q1_0-20260925",
+      "dispatch_id": "gpt6luna-s5-w27-20260925:mat_g2_mg_q1_0"
+    },
+    {
+      "sample_id": "d5b95fae6fb7f348780a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "This item asks to name each part when circle divided into 2 equal parts; answer half-circle is uniquely represented among its actual choices half-circle / quarter-circle / whole circle / triangle, so no second option fits the stated shape condition."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The stem says a circle is split into two equal parts, so naming one piece a half-circle is sound; the first option is already half-circle, with quarter-circle and whole circle as distinct distractors."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The half-circle answer is first in this item’s option order, followed by quarter-circle, whole circle, and triangle; its side-and-corner hints do not explain the two-equal-part vocabulary."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Two equal pieces of a circle are half-circles, matching half-circle in half-circle / quarter-circle / whole circle / triangle; the hint sequence only describes circle and polygon corners, without explaining the two-part relationship. The ShapeBoard 8 elements metadata has no labels or geometry, so it cannot fill the missing hint explanation."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w27-mat_g2_mg_q1_0-20260925",
+      "dispatch_id": "gpt6luna-s5-w27-20260925:mat_g2_mg_q1_0"
+    },
+    {
+      "sample_id": "acaeb47a4adb9f55db0f",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "This item asks to name a shape made from exactly one quarter of a circle; answer quarter-circle is uniquely represented among its actual choices half-circle / square / triangle / quarter-circle, so no second option fits the stated shape condition."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The wording about name a shape made from exactly one quarter of a circle is a coherent elementary geometry question; its ShapeBoard 11 elements supports a shape context without any themed wording that conflicts."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The prompt asks to name a shape made from exactly one quarter of a circle and keys quarter-circle, but Hints list 3 triangle corners, 4 square corners, 4 rectangle corners, then say a circle has none. That sequence discusses polygon properties and does not explain the requested part name or relation. The ShapeBoard 11 elements gives no hint about how the stated division maps to that vocabulary."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "One of four equal circle parts is a quarter-circle, matching quarter-circle in half-circle / square / triangle / quarter-circle; the hints discuss shape corners but do not explain the requested quarter-part naming. The ShapeBoard 11 elements metadata has no labels or geometry, so it cannot fill the missing hint explanation."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w27-mat_g2_mg_q1_0-20260925",
+      "dispatch_id": "gpt6luna-s5-w27-20260925:mat_g2_mg_q1_0"
+    },
+    {
+      "sample_id": "b6fbd8d99091cc24f723",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "This item asks to name each of 4 equal parts of a circle; answer quarter-circle is uniquely represented among its actual choices quarter-circle / rectangle / whole circle / half-circle, so no second option fits the stated shape condition."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The wording about name each of 4 equal parts of a circle is a coherent elementary geometry question; its ShapeBoard 8 elements supports a shape context without any themed wording that conflicts."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The prompt asks to name each of 4 equal parts of a circle and keys quarter-circle, but Hints list 3 triangle corners, 4 square corners, 4 rectangle corners, then say a circle has none. That sequence discusses polygon properties and does not explain the requested part name or relation. The ShapeBoard 8 elements gives no hint about how the stated division maps to that vocabulary."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "One of four equal circle parts is a quarter-circle, matching quarter-circle in quarter-circle / rectangle / whole circle / half-circle; the hints discuss shape corners but do not explain the requested quarter-part naming. The ShapeBoard 8 elements metadata has no labels or geometry, so it cannot fill the missing hint explanation."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w27-mat_g2_mg_q1_0-20260925",
+      "dispatch_id": "gpt6luna-s5-w27-20260925:mat_g2_mg_q1_0"
+    },
+    {
+      "sample_id": "8c74708ee2485836d445",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "This item asks to identify a quarter-circle after rotation; answer quarter-circle is uniquely represented among its actual choices quarter-circle / square / circle / half-circle, so no second option fits the stated shape condition."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The wording about identify a quarter-circle after rotation is a coherent elementary geometry question; the item has no wrapper or picture that adds a competing condition."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The prompt asks whether a rotated quarter-circle remains the same shape and keys quarter-circle in quarter-circle / square / circle / half-circle; the polygon-corner hints do not address rotation. The item offers quarter-circle / square / circle / half-circle, but its hints do not explain the requested reasoning."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Changing direction leaves a quarter-circle's shape identity unchanged, matching the keyed quarter-circle among quarter-circle / square / circle / half-circle; the hints instead discuss corners and sides of unrelated whole shapes."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w27-mat_g2_mg_q1_0-20260925",
+      "dispatch_id": "gpt6luna-s5-w27-20260925:mat_g2_mg_q1_0"
+    },
+    {
+      "sample_id": "8174d048104672cb35f6",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "This item asks to name shape made from exactly half a circle; answer half-circle is uniquely represented among its actual choices triangle / half-circle / rectangle / quarter-circle, so no second option fits the stated shape condition."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The wording about name shape made from exactly half a circle is a coherent elementary geometry question; its ShapeBoard 11 elements supports a shape context without any themed wording that conflicts."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The prompt asks to name shape made from exactly half a circle and keys half-circle, but Hints list 3 triangle corners, 4 square corners, 4 rectangle corners, then say a circle has none. That sequence discusses polygon properties and does not explain the requested part name or relation. The ShapeBoard 11 elements gives no hint about how the stated division maps to that vocabulary."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Two equal pieces of a circle are half-circles, matching half-circle in triangle / half-circle / rectangle / quarter-circle; the hint sequence only describes circle and polygon corners, without explaining the two-part relationship. The ShapeBoard 11 elements metadata has no labels or geometry, so it cannot fill the missing hint explanation."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w27-mat_g2_mg_q1_0-20260925",
+      "dispatch_id": "gpt6luna-s5-w27-20260925:mat_g2_mg_q1_0"
+    },
+    {
+      "sample_id": "5c360fa314a630fd9e33",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "This item asks to compare straight edges of half-circle and quarter-circle; answer quarter-circle is uniquely represented among its actual choices they are equal / neither / half-circle / quarter-circle, so no second option fits the stated shape condition."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The wording about compare straight edges of half-circle and quarter-circle is a coherent elementary geometry question; its ShapeBoard 5 elements supports a shape context without any themed wording that conflicts."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The comparison asks which of a half-circle or quarter-circle has more straight edges and keys quarter-circle from they are equal / neither / half-circle / quarter-circle; the hints count other shapes, not these two. The item offers they are equal / neither / half-circle / quarter-circle, but its hints do not explain the requested reasoning."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A quarter-circle has two straight radii while a half-circle has one diameter edge, so quarter-circle is the correct key in they are equal / neither / half-circle / quarter-circle; the supplied hint chain never establishes that comparison. The ShapeBoard 5 elements metadata has no labels or geometry, so it cannot fill the missing hint explanation."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w27-mat_g2_mg_q1_0-20260925",
+      "dispatch_id": "gpt6luna-s5-w27-20260925:mat_g2_mg_q1_0"
+    },
+    {
+      "sample_id": "8ef0d32235f06056ec2a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "This item asks to count quarter-circles that make one whole circle; answer 4 is uniquely represented among its actual choices 2 / 3 / 8 / 4, so no second option fits the stated shape condition."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The wording about count quarter-circles that make one whole circle is a coherent elementary geometry question; its ShapeBoard 5 elements supports a shape context without any themed wording that conflicts."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The question asks how many quarter-circles complete one whole and marks 4 from 2 / 3 / 8 / 4; the side-and-corner hint list does not explain how four quarters compose a circle. The item offers 2 / 3 / 8 / 4, but its hints do not explain the requested reasoning."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Four quarter-circles make a whole, so answer 4 is present in 2 / 3 / 8 / 4; the hints about triangle, square, rectangle and circle corners do not support this part-whole count. The ShapeBoard 5 elements metadata has no labels or geometry, so it cannot fill the missing hint explanation."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w27-mat_g2_mg_q1_0-20260925",
+      "dispatch_id": "gpt6luna-s5-w27-20260925:mat_g2_mg_q1_0"
+    },
+    {
+      "sample_id": "10457aaa8d67f7a4cd37",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "This item asks to count corners of a circle; answer 0 is uniquely represented among its actual choices 2 / 0 / 1 / 4, so no second option fits the stated shape condition."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The wording about count corners of a circle is a coherent elementary geometry question; its ShapeBoard 5 elements supports a shape context without any themed wording that conflicts."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "For count corners of a circle, the circle option 0 is offered among 2 / 0 / 1 / 4; Hints list 3 triangle corners, 4 square corners, 4 rectangle corners, then say a circle has none. Those clues directly reinforce the no-corner property requested."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The final hint states that a circle has no straight sides and corners, agreeing with the stem and key 0; choices 2 / 0 / 1 / 4 include the circle, and shapeboard 5 elements supplies the associated board."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w27-mat_g2_mg_q1_0-20260925",
+      "dispatch_id": "gpt6luna-s5-w27-20260925:mat_g2_mg_q1_0"
+    },
+    {
+      "sample_id": "65503f01ac9b526c68ba",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "This item asks to name shape made from exactly half of a circle; answer half-circle is uniquely represented among its actual choices half-circle / triangle / quarter-circle / rectangle, so no second option fits the stated shape condition."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The wording about name shape made from exactly half of a circle is a coherent elementary geometry question; its ShapeBoard 11 elements supports a shape context without any themed wording that conflicts."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The prompt asks to name shape made from exactly half of a circle and keys half-circle, but Hints list 3 triangle corners, 4 square corners, 4 rectangle corners, then say a circle has none. That sequence discusses polygon properties and does not explain the requested part name or relation. The ShapeBoard 11 elements gives no hint about how the stated division maps to that vocabulary."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Two equal pieces of a circle are half-circles, matching half-circle in half-circle / triangle / quarter-circle / rectangle; the hint sequence only describes circle and polygon corners, without explaining the two-part relationship. The ShapeBoard 11 elements metadata has no labels or geometry, so it cannot fill the missing hint explanation."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w27-mat_g2_mg_q1_0-20260925",
+      "dispatch_id": "gpt6luna-s5-w27-20260925:mat_g2_mg_q1_0"
+    },
+    {
+      "sample_id": "773cbbf60094a2e59326",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "This item asks to dance shoes wrapper; name shape from exactly one quarter of circle; answer quarter-circle is uniquely represented among its actual choices square / triangle / quarter-circle / half-circle, so no second option fits the stated shape condition."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The wording about dance shoes wrapper; name shape from exactly one quarter of circle is a coherent elementary geometry question; the item has no wrapper or picture that adds a competing condition."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The prompt asks to dance shoes wrapper; name shape from exactly one quarter of circle and keys quarter-circle, but Hints list 3 triangle corners, 4 square corners, 4 rectangle corners, then say a circle has none. That sequence discusses polygon properties and does not explain the requested part name or relation. The text-only stem gives no hint about how the stated division maps to that vocabulary."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "One of four equal circle parts is a quarter-circle, matching quarter-circle in square / triangle / quarter-circle / half-circle; the hints discuss shape corners but do not explain the requested quarter-part naming."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w27-mat_g2_mg_q1_0-20260925",
+      "dispatch_id": "gpt6luna-s5-w27-20260925:mat_g2_mg_q1_0"
+    },
+    {
+      "sample_id": "2f4bee8d4aaec415fdee",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "This item asks to basketball wrapper; identify shape with no corners or straight sides; answer circle is uniquely represented among its actual choices circle / triangle / rectangle / square, so no second option fits the stated shape condition."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The wording about basketball wrapper; identify shape with no corners or straight sides is a coherent elementary geometry question; its ShapeBoard 14 elements supports a shape context without any themed wording that conflicts."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "For basketball wrapper; identify shape with no corners or straight sides, the circle option circle is offered among circle / triangle / rectangle / square; Hints list 3 triangle corners, 4 square corners, 4 rectangle corners, then say a circle has none. Those clues directly reinforce the no-corner property requested."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The final hint states that a circle has no straight sides and corners, agreeing with the stem and key circle; choices circle / triangle / rectangle / square include the circle, and shapeboard 14 elements supplies the associated board."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w27-mat_g2_mg_q1_0-20260925",
+      "dispatch_id": "gpt6luna-s5-w27-20260925:mat_g2_mg_q1_0"
+    },
+    {
+      "sample_id": "63d779c3fe444840d7e5",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "This item asks to name each part when circle divided into 2 equal parts; answer half-circle is uniquely represented among its actual choices half-circle / whole circle / triangle / quarter-circle, so no second option fits the stated shape condition."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "For the two equal pieces in this circle prompt, half-circle is correct; the options place whole circle second, triangle third, and quarter-circle last, distinguishing part from whole."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "Here half-circle leads the choices before whole circle, triangle, and quarter-circle; the standard hint chain ends with a whole-circle property, not how a pair of equal parts is named."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Two equal pieces of a circle are half-circles, matching half-circle in half-circle / whole circle / triangle / quarter-circle; the hint sequence only describes circle and polygon corners, without explaining the two-part relationship. The ShapeBoard 8 elements metadata has no labels or geometry, so it cannot fill the missing hint explanation."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w27-mat_g2_mg_q1_0-20260925",
+      "dispatch_id": "gpt6luna-s5-w27-20260925:mat_g2_mg_q1_0"
+    },
+    {
+      "sample_id": "11918a32f5820bc44de4",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "This item asks to name each of 4 equal parts of a circle; answer quarter-circle is uniquely represented among its actual choices rectangle / half-circle / quarter-circle / whole circle, so no second option fits the stated shape condition."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The wording about name each of 4 equal parts of a circle is a coherent elementary geometry question; the item has no wrapper or picture that adds a competing condition."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The prompt asks to name each of 4 equal parts of a circle and keys quarter-circle, but Hints list 3 triangle corners, 4 square corners, 4 rectangle corners, then say a circle has none. That sequence discusses polygon properties and does not explain the requested part name or relation. The text-only stem gives no hint about how the stated division maps to that vocabulary."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "One of four equal circle parts is a quarter-circle, matching quarter-circle in rectangle / half-circle / quarter-circle / whole circle; the hints discuss shape corners but do not explain the requested quarter-part naming."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w27-mat_g2_mg_q1_0-20260925",
+      "dispatch_id": "gpt6luna-s5-w27-20260925:mat_g2_mg_q1_0"
+    },
+    {
+      "sample_id": "82a689835cc165d843e8",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "This item asks to name each part when circle divided into 2 equal parts; answer half-circle is uniquely represented among its actual choices half-circle / quarter-circle / triangle / whole circle, so no second option fits the stated shape condition."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The stem specifies two equal circle parts and keys half-circle, while its order places quarter-circle second, triangle third, and whole circle fourth; the alternatives remain meaningfully distinct."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "This standard ShapeBoard item lists half-circle, quarter-circle, triangle, then whole circle; although the key is clear, hints about corners never connect the two-part split to half-circle."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Two equal pieces of a circle are half-circles, matching half-circle in half-circle / quarter-circle / triangle / whole circle; the hint sequence only describes circle and polygon corners, without explaining the two-part relationship. The ShapeBoard 8 elements metadata has no labels or geometry, so it cannot fill the missing hint explanation."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w27-mat_g2_mg_q1_0-20260925",
+      "dispatch_id": "gpt6luna-s5-w27-20260925:mat_g2_mg_q1_0"
+    },
+    {
+      "sample_id": "a38508e0782f1db2f599",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "This item asks to name each part when circle divided into 2 equal parts; answer half-circle is uniquely represented among its actual choices whole circle / quarter-circle / triangle / half-circle, so no second option fits the stated shape condition."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The two equal portions described here are half-circles; the answer appears last after whole circle, quarter-circle, and triangle, and the hint-gated label does not change that geometry."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "In this hint-gated version, whole circle, quarter-circle, and triangle precede the keyed half-circle; its five side-and-corner hints still omit the vocabulary link for two equal pieces."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Two equal pieces of a circle are half-circles, matching half-circle in whole circle / quarter-circle / triangle / half-circle; the hint sequence only describes circle and polygon corners, without explaining the two-part relationship. The ShapeBoard 8 elements metadata has no labels or geometry, so it cannot fill the missing hint explanation."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w27-mat_g2_mg_q1_0-20260925",
+      "dispatch_id": "gpt6luna-s5-w27-20260925:mat_g2_mg_q1_0"
+    },
+    {
+      "sample_id": "eda079106c54f65f4d04",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "This item asks to identify circle by no corners/straight sides; answer circle is uniquely represented among its actual choices circle / triangle / square / rectangle, so no second option fits the stated shape condition."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The wording about identify circle by no corners/straight sides is a coherent elementary geometry question; its ShapeBoard 14 elements supports a shape context without any themed wording that conflicts."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "For identify circle by no corners/straight sides, the circle option circle is offered among circle / triangle / square / rectangle; Hints list 3 triangle corners, 4 square corners, 4 rectangle corners, then say a circle has none. Those clues directly reinforce the no-corner property requested."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The final hint states that a circle has no straight sides and corners, agreeing with the stem and key circle; choices circle / triangle / square / rectangle include the circle, and shapeboard 14 elements supplies the associated board."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w27-mat_g2_mg_q1_0-20260925",
+      "dispatch_id": "gpt6luna-s5-w27-20260925:mat_g2_mg_q1_0"
+    },
+    {
+      "sample_id": "56fd59331e7a4749adb5",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "This item asks to name each of 4 equal parts of a circle; answer quarter-circle is uniquely represented among its actual choices half-circle / rectangle / whole circle / quarter-circle, so no second option fits the stated shape condition."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The wording about name each of 4 equal parts of a circle is a coherent elementary geometry question; its ShapeBoard 8 elements supports a shape context without any themed wording that conflicts."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The prompt asks to name each of 4 equal parts of a circle and keys quarter-circle, but Hints list 3 triangle corners, 4 square corners, 4 rectangle corners, then say a circle has none. That sequence discusses polygon properties and does not explain the requested part name or relation. The ShapeBoard 8 elements gives no hint about how the stated division maps to that vocabulary."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "One of four equal circle parts is a quarter-circle, matching quarter-circle in half-circle / rectangle / whole circle / quarter-circle; the hints discuss shape corners but do not explain the requested quarter-part naming. The ShapeBoard 8 elements metadata has no labels or geometry, so it cannot fill the missing hint explanation."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w27-mat_g2_mg_q1_0-20260925",
+      "dispatch_id": "gpt6luna-s5-w27-20260925:mat_g2_mg_q1_0"
+    }
+  ],
+  "clause_evidence": [
+    {
+      "requirement_id": "represent",
+      "clause": "Represent",
+      "verdict": "CONCERN",
+      "reasoning": "Items identify shapes and describe their parts, but no cited stem asks students to draw or assemble a circle, half-circle, or quarter-circle representation.",
+      "sample_ids": [
+        "f70bc83641fe60415611",
+        "acaeb47a4adb9f55db0f",
+        "b6fbd8d99091cc24f723"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w27-mat_g2_mg_q1_0-20260925",
+      "dispatch_id": "gpt6luna-s5-w27-20260925:mat_g2_mg_q1_0"
+    },
+    {
+      "requirement_id": "describe",
+      "clause": "describe",
+      "verdict": "PASS",
+      "reasoning": "Several stems use properties and relationships to describe the target shapes, including equal circle partitions, corner counts, edge counts, and quarters in a whole.",
+      "sample_ids": [
+        "f70bc83641fe60415611",
+        "5c360fa314a630fd9e33",
+        "8ef0d32235f06056ec2a"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w27-mat_g2_mg_q1_0-20260925",
+      "dispatch_id": "gpt6luna-s5-w27-20260925:mat_g2_mg_q1_0"
+    },
+    {
+      "requirement_id": "circles",
+      "clause": "circles",
+      "verdict": "PASS",
+      "reasoning": "Circle recognition is directly targeted through absence of corners and straight sides, and additional questions discuss circle partitions and whole-circle composition.",
+      "sample_ids": [
+        "616776b9544c92d75d2f",
+        "10457aaa8d67f7a4cd37",
+        "8ef0d32235f06056ec2a"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w27-mat_g2_mg_q1_0-20260925",
+      "dispatch_id": "gpt6luna-s5-w27-20260925:mat_g2_mg_q1_0"
+    },
+    {
+      "requirement_id": "half_circles",
+      "clause": "half circles",
+      "verdict": "PASS",
+      "reasoning": "Samples identify the name of each of two equal circle parts and compare half-circles with quarter-circles, demonstrating the half-circle concept.",
+      "sample_ids": [
+        "f70bc83641fe60415611",
+        "8174d048104672cb35f6",
+        "5c360fa314a630fd9e33"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w27-mat_g2_mg_q1_0-20260925",
+      "dispatch_id": "gpt6luna-s5-w27-20260925:mat_g2_mg_q1_0"
+    },
+    {
+      "requirement_id": "quarter_circles",
+      "clause": "quarter circles",
+      "verdict": "PASS",
+      "reasoning": "Stems ask learners to name one quarter of a circle and count how many quarters form a whole; the keyed quarter-circle concept is represented repeatedly.",
+      "sample_ids": [
+        "c208659b71c6e517b157",
+        "b6fbd8d99091cc24f723",
+        "8ef0d32235f06056ec2a"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w27-mat_g2_mg_q1_0-20260925",
+      "dispatch_id": "gpt6luna-s5-w27-20260925:mat_g2_mg_q1_0"
+    }
+  ],
+  "dispatch_provenance": [
+    {
+      "dispatch_id": "gpt6luna-s5-w27-20260925:mat_g2_mg_q1_0",
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w27-mat_g2_mg_q1_0-20260925",
+      "review_date": "2026-09-25",
+      "blind": true,
+      "packet_digest": "0882d4815c38275c87bd026795ef9cf4c850a9ec7872737297b49e2c0053efe2",
+      "clause_ids": [
+        "represent",
+        "describe",
+        "circles",
+        "half_circles",
+        "quarter_circles"
+      ],
+      "response_ref": ".responses/gpt6luna-s5-w27-20260925.json",
+      "response_digest": "7be31115370dd7c4f6e61b3cad6f2aab54fab18a5b82b042f24eb484f10124ff",
+      "prompt_ref": ".responses/gpt6luna-s5-w27-20260925.prompt.txt",
+      "prompt_digest": "9ba87f643aa6cba3afdafd4be348deebf6089204a074245ef63841a851087248",
+      "samples_delivery": "Dispatch-time local prompt file read by separate gpt-6-luna medium reviewer; no source or prior reviews supplied",
+      "tool_uses_by_reviewer": "Reviewer reported: cat to read prompt; exec_command to write JSON and audit; reread prompt, revised four half-circle reasonings with option order and mode, and reran Python audit. This is reviewer-provided tool-use reporting."
     }
   ],
   "findings": {
-    "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "The describing half is done well, but the competency begins with representing, and no sampled item has a pupil draw, build, fold or assemble a circle, half circle or quarter circle. Every question is answered by selecting a name or a number, so half of the competency's verb pair is never exercised."
-    },
-    "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "All three figures are named and related to one another, including how many quarter-circles make a whole, but the descriptive attributes stay narrow - corners, straight sides and straight edges - while nothing addresses the curved side, size, or building a whole from parts in the other direction."
-    },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The reasoning is attribute recall and simple part-whole relation, and the comparison 'Which has more straight edges: a half-circle or a quarter-circle?' is correctly keyed, which is a fair discrimination for Grade 2."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "Only two closely related choice formats appear, and 'What shape has no corners and no straight sides?' is regenerated verbatim across three separate seeds, so a pupil working through the node meets the same question repeatedly."
+      "rationale": "Most items ask learners to identify circles or name halves and quarters, while a few add a simple side comparison or count of equal parts suitable for this stage."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "The question set does move along a real conceptual line - naming a figure, deriving it by dividing a circle, counting parts that rebuild the whole, and holding identity under rotation - all of which belong to this competency."
+      "rationale": "The packet stays within circles, half-circles, quarter-circles, and their basic properties, which directly matches the stated geometry competency."
+    },
+    "competency_fulfillment": {
+      "verdict": "CONCERN",
+      "rationale": "Questions describe and identify the target shapes, but none asks learners to draw, assemble, or otherwise create a circle, half-circle, or quarter-circle representation.",
+      "decomposition": {
+        "verdict": "PASS",
+        "reasoning": "The requirements separately retain representing and describing and name all three target forms: circles, half circles, and quarter circles; together they cover the competency.",
+        "requirement_ids": [
+          "represent",
+          "describe",
+          "circles",
+          "half_circles",
+          "quarter_circles"
+        ]
+      },
+      "clause_ids": [
+        "represent",
+        "describe",
+        "circles",
+        "half_circles",
+        "quarter_circles"
+      ]
+    },
+    "comprehensive_coverage": {
+      "verdict": "CONCERN",
+      "rationale": "Samples name and compare target shapes, count circle corners, and relate four quarters to a whole, but there is no task that asks students to represent or construct the shapes themselves.",
+      "clause_ids": [
+        "represent",
+        "describe",
+        "circles",
+        "half_circles",
+        "quarter_circles"
+      ]
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "This competency sets no numeric ceiling, and the only numbers used are part counts of two and four together with a count of zero corners, all trivially inside Grade 2 number knowledge."
+      "rationale": "Shape names, corners, straight edges, halves, and quarters stay at an introductory descriptive level, with no advanced geometry vocabulary or multi-step reasoning."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "The set varies shape identification, part naming, edge comparison, and quarter counting, yet all responses are selected answers and none elicits a student-made representation."
     }
   },
   "overall": "CONCERN"

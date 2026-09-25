@@ -16712,3 +16712,108 @@ pre-filing count was measured. Executed corpus count: 46 schema-v2 records,
 21 FAIL / 18 CONCERN / 7 PASS; 25 GPT-5.6 Luna medium, 13 GPT-6 Luna medium,
 8 Haiku. The post-wave `run_all` stage has not been measured. No source or
 digest-bound validation input changed.
+
+## 2026-09-25 — GPT-6 Luna §5 waves 23–28 RECOVERED and committed (`claude-h06-s5-recover-w23-28-2026-09-25`)
+
+`codex-h06-s5-full-campaign-20260925` was interrupted by rate limits **after filing six reviews and
+before committing them.** This entry records the recovery. **No verdict was authored here and nothing
+was re-dispatched** — the six reviews are that session's own work, verified and committed unchanged.
+
+### State on arrival (executed)
+
+```
+$ ps ... | grep -iE "mutation_harness|obligation_executor|validate_|pytest"   -> (no harness work running)
+$ df -h /System/Volumes/Data                                                  -> 16Gi available
+$ git status --porcelain -- backend/ tests/ scripts/ data/ frontend/src docs/pgen_contract.md
+(empty -- the campaign touched NO source)
+$ git grep -n -E "#\s*planted mutation|//\s*planted " HEAD -- backend/ frontend/src | grep -v mutation_harness
+(empty)
+$ PYTHONPATH=. .venv/bin/python tests/tree_state.py
+STATE tree_state: INTERRUPTED   live input digest : 208a52406226e6d0   worktree : DIRTY
+  OPEN INTENT : 'campaign' begun 2026-09-25T12:28:30+08:00 by 'codex-h06-s5-full-campaign-20260925'
+$ PYTHONPATH=. .venv/bin/python tests/hardening_status.py
+PASS hardening_status: 10 H-row(s) valid — 3 closed, 6 open, 1 out_of_scope
+```
+
+Uncommitted: `mat_g1_na_q4_5`, `_6`, `mat_g2_dp_q3_0`, `_1`, `mat_g2_mg_q1_0`, `_1`, their
+`.responses/` provenance, and the regenerated legacy queue. All four artifact families were still
+fresh and the digest never moved, because `validation_reports/` is outside `INPUT_ROOTS`.
+
+### Verified before committing
+
+| node | verdict | samples | reasonings (distinct) | min len | clauses | §5 findings |
+|---|---|---|---|---|---|---|
+| `mat_g1_na_q4_5` | FAIL | 24/24 | 96 (96) | 70 | 6 | 25 |
+| `mat_g1_na_q4_6` | CONCERN | 25/25 | 100 (100) | 160 | 6 | 29 |
+| `mat_g2_dp_q3_0` | FAIL | 21/21 | 84 (84) | 142 | 7 | 43 |
+| `mat_g2_dp_q3_1` | FAIL | 18/18 | 72 (72) | 85 | 5 | 29 |
+| `mat_g2_mg_q1_0` | CONCERN | 22/22 | 88 (82) | 168 | 5 | 21 |
+| `mat_g2_mg_q1_1` | FAIL | 20/20 | 80 (80) | 303 | 11 | 34 |
+
+All six: schema v2, one assessment per delivered sample, complete `dispatch_provenance`, six required
+findings, and **zero reasonings reused across different nodes**. Kept.
+
+### Measured
+
+```
+legacy queue : 118 -> 99  (already_current_and_excluded 52; 99 + 52 = 151)
+§5 (module)  : 1538 -> 1829 findings, 144 nodes
+quote-provenance findings : 14 -- UNCHANGED, so this campaign's reviews added none
+STALE findings            : 155 -> 131 (reviewed nodes leave the v1 pool)
+v2 corpus    : 52 reviews -- 25 gpt-5.6-luna medium, 19 gpt-6-luna medium, 8 haiku45
+verdicts     : 25 FAIL / 20 CONCERN / 7 PASS
+```
+
+**§5 rose by 291 and that is the gate working**, exactly as §2 of the prompt predicts: nineteen v1
+stubs were replaced by verdicts that name real defects. Only 7 of 52 reviews PASS.
+
+### THE MODEL DEVIATION, declared by that session and NOT corrected here
+
+§0 of `NEXT_AGENT_PROMPT.md` mandates `gpt-5.6-luna` at medium. That session recorded:
+*"The requested `gpt-5.6-luna` model was unavailable on this host. A separate blind agent actually
+running `gpt-6-luna` at medium reasoning reviewed one dispatch-time packet, and its `reviewed_by`
+identity names that model."*
+
+**That is the correct handling of the constraint** — §0 rule 2 says change the MODEL, never the label —
+and it is the same substitution the Claude sessions made with `haiku45`. The 19 `gpt-6-luna-medium`
+identities are therefore truthful and **must not be normalised.**
+
+**But the consequence needs an owner ruling:** the §5 v2 corpus now spans **THREE rater families**
+(25 / 19 / 8). Measured agreement figures exist only for Haiku vs GPT-5.6-Terra (**11/18 = 61.1%**) and
+Haiku vs Haiku (**37/42 = 88.1%**). `gpt-6-luna`-vs-anything is **unmeasured**, as is
+`gpt-5.6-luna`-vs-anything. The corpus cannot currently state its own inter-family agreement, and since
+ruling 9 made the standard a variable, that provenance matters. **Flagged, not resolved.**
+
+That session's own discipline is worth recording as the model to copy: it **rejected its first reply
+before filing** (132 reasoning fields carrying only 26 distinct strings, one ambiguity explanation
+repeated on 29 samples), had the same blind reviewer revise, re-audited to 130/132 distinct with
+minimum length 117 and zero unmatched quoted spans, preserved prompt and raw response under
+`.responses/`, filed from the dispatch-time skeleton, and reported its reviewer's tool use honestly
+including a failed bare-`python` write.
+
+### It also adjudicated a theming finding CORRECTLY, which is the standard to follow
+
+On `mat_g1_na_q3_0` seed 701 the rendered stem is
+`✝️ Daniel has a math challenge about stones. There are 20 stickers. Taking away 15 stickers leaves how
+many stickers?` That session checked `data/interest_bank.json`, confirmed `requested.student_interest`
+is `bible` and that Daniel and stones are deliberate entries, and concluded: **"The mismatch between
+the wrapper and the task is the defect, not the faith theme or cross."** The wrapper names stones while
+the task counts stickers.
+
+That is exactly the distinction §5 of the prompt draws, reached independently. **The wrapper/content
+mismatch is the real defect class**; the theme is not. Compare the three earlier reviewers who flagged
+the cross itself and were all wrong.
+
+### Content queue from these waves — not yet fixed, no source touched
+
+* **Wrapper/task noun mismatch** (`mat_g1_na_q3_0` seed 701 and the earlier "dance shoes on a fruit
+  interview" instances). The interest wrapper names one object while the task counts another. This is a
+  themed-wrapper composition bug, distinct from the theme being present.
+* **Hints teaching a method the competency does not name.** `mat_g1_na_q3_0` seed 44: the stem asks
+  whether taking 2 from 10 marbles leaves 8, while the hints direct the pupil to borrow a ten and
+  subtract digit columns, against a competency calling for concrete and pictorial take-away models.
+  That session correctly labelled this a review finding pending curriculum-grounded content work,
+  **not** an independently proven vocabulary violation. It is adjacent to the confirmed
+  `generate_hints`-ignores-the-variant root cause.
+* **`concrete` / `concrete_pictorial` clauses keep failing** across Grade 1 nodes — the same family as
+  `mat_g1_na_q1_7`. One concrete-model artifact may clear several nodes (Content Rule 4).

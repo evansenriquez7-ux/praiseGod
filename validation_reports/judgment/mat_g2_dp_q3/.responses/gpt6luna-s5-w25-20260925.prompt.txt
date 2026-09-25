@@ -1,0 +1,253 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-gpt-6-luna-medium-w25-mat_g2_dp_q3_0-20260925
+
+Write one JSON object to:
+  local_only/scratch/review/s5-full-20260925/mat_g2_dp_q3_0/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN; never invent a supporting sample.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-gpt-6-luna-medium-w25-mat_g2_dp_q3_0-20260925",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+Additional review instructions:
+- Write at least 70 characters for every `reasoning` and `rationale`; 60 is the filing floor, and 70 leaves margin.
+- In `sample_assessments[*].checks[*]`, use the key `reasoning`, never `rationale`. Node findings use `rationale`; clause evidence uses `reasoning`.
+- Every per-sample check must describe that sample's actual numbers, action, answer, options, hints, or visual. Do not repeat generic explanations across different samples or fill a shared sentence template with numbers. Independently inspect each item.
+- Any text in quotation marks must be a character-for-character substring of this printed packet. No paraphrases, summaries, ellipses, placeholders, or shortened comma fragments inside quotation marks. When unsure, describe without quotation marks.
+- A curated student-interest bank deliberately supplies themes from sports, gaming, food, faith and others, including themed names, objects and emoji. Judge whether theming interferes with the mathematics or clarity. Still flag a wrapper that contradicts its own question.
+- Explicitly compare each hint chain against that sample's stem, answer, options and visual. Flag a hint that teaches a different operation, representation, or answer.
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g2_dp_q3_0
+PACKET DIGEST: 848bcaa7f40d735c3cb68ec7de41b70a642fc6713218f96cb84f6d126d8cb579
+COMPETENCY (Grade 2, Quarter 3, None):
+Present raw data, or data in tabular form, in a pictograph with a scale, or vice versa.
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  present: Present
+  raw_data: raw data
+  data: data
+  tabular_form: tabular form
+  pictograph: pictograph
+  scale: scale
+  vice_versa: vice versa
+
+SAMPLES (every one of these is real rendered output):
+  sample 7716a80e152ae40d88dc  seed 42  [set_fill_in_blank]
+      stem:    The table shows: apples: 30, bananas: 20, mangoes: 10, grapes: 10. Create a picture graph where each 🍎 equals 10.
+      answer:  [3, 2, 1, 1]
+      hints:   ["Look at the pictograph carefully.", "Each picture stands for 10 items.", "For each category, divide the number of items by 10 to find how many pictures to draw."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 58, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 8, "input_count": 0, "text_labels": ["Each symbol = 10. Click to add/remove symbols.", "0", "10", "20", "30", "40", "50", "−", "+", "apples", "bananas", "mangoes", "grapes", "Use +/- buttons to add or remove symbols"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample cace834ee38e86da3a95  seed 43  [set_fill_in_blank]
+      stem:    Count the pictures in each row of the pictograph, then write the counts for red, blue, green and yellow in the table. The scale is 2: each symbol stands for 2 items.
+      answer:  [16, 12, 4, 16]
+      hints:   ["Look at the pictograph carefully.", "Each picture stands for 2 items.", "Count the pictures in each row and multiply by 2 to record each count in the table."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "FillInTable", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  FillInTable
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "FillInTable", "element_count": 42, "svg_count": 0, "table_row_count": 9, "table_cell_count": 18, "button_count": 0, "input_count": 4, "text_labels": ["Favorite Colors", "red", "🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨", "blue", "🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨", "green", "🎨🎨🎨🎨", "yellow", "Each 🎨 means 2.", "Category", "Count", "Fill in the missing values in the table"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--input-bg)", "hsl(var(--text-muted)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 140fa4ba2cc218761e3a  seed 44  [set_fill_in_blank]
+      stem:    Complete the picture graph to show: red: 10, blue: 5, green: 10, yellow: 5. Each 🎨 represents 5 items.
+      answer:  [2, 1, 2, 1]
+      hints:   ["Look at the pictograph carefully.", "Each picture stands for 5 items.", "For each category, divide the number of items by 5 to find how many pictures to draw."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 56, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 8, "input_count": 0, "text_labels": ["Each symbol = 5. Click to add/remove symbols.", "0", "5", "10", "15", "20", "−", "+", "red", "blue", "green", "yellow", "Use +/- buttons to add or remove symbols"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 3b5f44bc61ba6dd3c945  seed 45  [set_fill_in_blank]
+      stem:    The pictograph shows Grade 1, Grade 2, Grade 3 and Grade 4. Fill in the table with the correct counts. The scale is 5: each symbol stands for 5 items.
+      answer:  [10, 5, 10, 10]
+      hints:   ["Look at the pictograph carefully.", "Each picture stands for 5 items.", "Count the pictures in each row and multiply by 5 to record each count in the table."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "FillInTable", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  FillInTable
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "FillInTable", "element_count": 42, "svg_count": 0, "table_row_count": 9, "table_cell_count": 18, "button_count": 0, "input_count": 4, "text_labels": ["Stars Earned", "Grade 1", "⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐", "Grade 2", "⭐⭐⭐⭐⭐", "Grade 3", "Grade 4", "Each ⭐ means 5.", "Category", "Count", "Fill in the missing values in the table"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--input-bg)", "hsl(var(--text-muted)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 236e5d10ae66092c90c4  seed 46  [set_fill_in_blank]
+      stem:    Look at the pictograph. Write the correct count for each row in the table: apples, bananas, mangoes and grapes. The scale is 2: each symbol stands for 2 items.
+      answer:  [8, 18, 6, 18]
+      hints:   ["Look at the pictograph carefully.", "Each picture stands for 2 items.", "Count the pictures in each row and multiply by 2 to record each count in the table."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "FillInTable", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  FillInTable
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "FillInTable", "element_count": 42, "svg_count": 0, "table_row_count": 9, "table_cell_count": 18, "button_count": 0, "input_count": 4, "text_labels": ["Favorite Fruits", "apples", "🍎🍎🍎🍎🍎🍎🍎🍎", "bananas", "🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎", "mangoes", "🍎🍎🍎🍎🍎🍎", "grapes", "Each 🍎 means 2.", "Category", "Count", "Fill in the missing values in the table"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--input-bg)", "hsl(var(--text-muted)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample baf518ed3d517d049f84  seed 500  [set_fill_in_blank]
+      stem:    The pictograph shows Monday, Tuesday, Wednesday, Thursday, Friday and Saturday. Fill in the table with the correct counts. The scale is 5: each symbol stands for 5 items.
+      answer:  [35, 20, 10, 30, 50, 10]
+      hints:   ["Look at the pictograph carefully.", "Each picture stands for 5 items.", "Count the pictures in each row and multiply by 5 to record each count in the table."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "FillInTable", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  FillInTable
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "FillInTable", "element_count": 56, "svg_count": 0, "table_row_count": 13, "table_cell_count": 26, "button_count": 0, "input_count": 6, "text_labels": ["Books Read", "Monday", "📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖", "Tuesday", "📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖", "Wednesday", "📖📖📖📖📖📖📖📖📖📖", "Thursday", "📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖", "Friday", "📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖", "Saturday", "Each 📖 means 5.", "Category", "Count", "Fill in the missing values in the table"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--input-bg)", "hsl(var(--text-muted)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 2fcdca405a4a7765364e  seed 501  [set_fill_in_blank]
+      stem:    Look at the pictograph. Write the correct count for each row in the table: basketball, volleyball, swimming, running, soccer and tennis. The scale is 10: each symbol stands for 10 items.
+      answer:  [20, 30, 30, 50, 30, 20]
+      hints:   ["Look at the pictograph carefully.", "Each picture stands for 10 items.", "Count the pictures in each row and multiply by 10 to record each count in the table."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "FillInTable", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  FillInTable
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "FillInTable", "element_count": 56, "svg_count": 0, "table_row_count": 13, "table_cell_count": 26, "button_count": 0, "input_count": 6, "text_labels": ["Favorite Sports", "basketball", "⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽", "volleyball", "⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽", "swimming", "running", "⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽", "soccer", "tennis", "Each ⚽ means 10.", "Category", "Count", "Fill in the missing values in the table"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--input-bg)", "hsl(var(--text-muted)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 9481691c781483e4e30e  seed 502  [set_fill_in_blank]
+      stem:    Count the pictures in each row of the pictograph, then write the counts for red, blue, green, yellow, purple and orange in the table. The scale is 10: each symbol stands for 10 items.
+      answer:  [30, 20, 40, 10, 40, 50]
+      hints:   ["Look at the pictograph carefully.", "Each picture stands for 10 items.", "Count the pictures in each row and multiply by 10 to record each count in the table."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "FillInTable", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  FillInTable
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "FillInTable", "element_count": 56, "svg_count": 0, "table_row_count": 13, "table_cell_count": 26, "button_count": 0, "input_count": 6, "text_labels": ["Favorite Colors", "red", "🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨", "blue", "🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨", "green", "🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨", "yellow", "🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨", "purple", "orange", "🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨", "Each 🎨 means 10.", "Category", "Count", "Fill in the missing values in the table"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--input-bg)", "hsl(var(--text-muted)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 8fbc169c0626c9c14caf  seed 600  [set_fill_in_blank]
+      stem:    Count the pictures in each row of the pictograph, then write the counts for Grade 1, Grade 2, Grade 3 and Grade 4 in the table. The scale is 5: each symbol stands for 5 items.
+      answer:  [5, 15, 5, 10]
+      hints:   ["Look at the pictograph carefully.", "Each picture stands for 5 items.", "Count the pictures in each row and multiply by 5 to record each count in the table."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "FillInTable", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  FillInTable
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "FillInTable", "element_count": 42, "svg_count": 0, "table_row_count": 9, "table_cell_count": 18, "button_count": 0, "input_count": 4, "text_labels": ["Stars Earned", "Grade 1", "⭐⭐⭐⭐⭐", "Grade 2", "⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐", "Grade 3", "Grade 4", "⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐", "Each ⭐ means 5.", "Category", "Count", "Fill in the missing values in the table"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--input-bg)", "hsl(var(--text-muted)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample c110d3f22c2e3f11c54a  seed 601  [set_fill_in_blank]
+      stem:    Complete the picture graph to show: cats: 16, dogs: 14, birds: 16, fish: 2. Each 🐾 represents 2 items.
+      answer:  [8, 7, 8, 1]
+      hints:   ["Look at the pictograph carefully.", "Each picture stands for 2 items.", "For each category, divide the number of items by 2 to find how many pictures to draw."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 68, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 8, "input_count": 0, "text_labels": ["Each symbol = 2. Click to add/remove symbols.", "0", "2", "4", "6", "8", "10", "12", "14", "16", "18", "20", "−", "+", "cats", "dogs", "birds", "fish", "Use +/- buttons to add or remove symbols"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 13db058513078635ac3c  seed 602  [set_fill_in_blank]
+      stem:    The table shows: basketball: 15, volleyball: 15, swimming: 10, running: 10. Create a picture graph where each ⚽ equals 5.
+      answer:  [3, 3, 2, 2]
+      hints:   ["Look at the pictograph carefully.", "Each picture stands for 5 items.", "For each category, divide the number of items by 5 to find how many pictures to draw."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 58, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 8, "input_count": 0, "text_labels": ["Each symbol = 5. Click to add/remove symbols.", "0", "5", "10", "15", "20", "25", "−", "+", "basketball", "volleyball", "swimming", "running", "Use +/- buttons to add or remove symbols"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample fa08808391ca6865c214  seed 700  [set_fill_in_blank]
+      stem:    Look at the data: Grade 1: 8, Grade 2: 18, Grade 3: 12, Grade 4: 2. Draw a picture graph where each ⭐ stands for 2 items.
+      answer:  [4, 9, 6, 1]
+      hints:   ["Look at the pictograph carefully.", "Each picture stands for 2 items.", "For each category, divide the number of items by 2 to find how many pictures to draw."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 70, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 8, "input_count": 0, "text_labels": ["Each symbol = 2. Click to add/remove symbols.", "0", "2", "4", "6", "8", "10", "12", "14", "16", "18", "20", "22", "−", "+", "Grade 1", "Grade 2", "Grade 3", "Grade 4", "Use +/- buttons to add or remove symbols"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 8457d7b045f04547b77a  seed 701  [set_fill_in_blank]
+      stem:    💃 Sir Rez has a math challenge about dance shoes. Look at the pictograph. Write the correct count for each row in the table: Grade 1, Grade 2, Grade 3 and Grade 4. The scale is 10: each symbol stands for 10 items.
+      answer:  [10, 10, 30, 30]
+      hints:   ["Look at the pictograph carefully.", "Each picture stands for 10 items.", "Count the pictures in each row and multiply by 10 to record each count in the table."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "FillInTable", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  FillInTable
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "FillInTable", "element_count": 42, "svg_count": 0, "table_row_count": 9, "table_cell_count": 18, "button_count": 0, "input_count": 4, "text_labels": ["Stars Earned", "Grade 1", "⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐", "Grade 2", "Grade 3", "⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐", "Grade 4", "Each ⭐ means 10.", "Category", "Count", "Fill in the missing values in the table"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--input-bg)", "hsl(var(--text-muted)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 1176a9fd7a483efdc573  seed 702  [set_fill_in_blank]
+      stem:    🏀 Isko has a math challenge about basketballs. The table shows: apples: 10, bananas: 8, mangoes: 10, grapes: 16. Create a picture graph where each 🍎 equals 2.
+      answer:  [5, 4, 5, 8]
+      hints:   ["Look at the pictograph carefully.", "Each picture stands for 2 items.", "For each category, divide the number of items by 2 to find how many pictures to draw."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 68, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 8, "input_count": 0, "text_labels": ["Each symbol = 2. Click to add/remove symbols.", "0", "2", "4", "6", "8", "10", "12", "14", "16", "18", "20", "−", "+", "apples", "bananas", "mangoes", "grapes", "Use +/- buttons to add or remove symbols"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample f3853a5dfa38f3525864  seed 800  [set_fill_in_blank]
+      stem:    The pictograph shows apples, bananas, mangoes, grapes, oranges and strawberries. Fill in the table with the correct counts. The scale is 10: each symbol stands for 10 items.
+      answer:  [20, 20, 30, 20, 30, 10]
+      hints:   ["Look at the pictograph carefully.", "Each picture stands for 10 items.", "Count the pictures in each row and multiply by 10 to record each count in the table."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "FillInTable", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  FillInTable
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "FillInTable", "element_count": 56, "svg_count": 0, "table_row_count": 13, "table_cell_count": 26, "button_count": 0, "input_count": 6, "text_labels": ["Favorite Fruits", "apples", "🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎", "bananas", "mangoes", "🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎", "grapes", "oranges", "strawberries", "🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎", "Each 🍎 means 10.", "Category", "Count", "Fill in the missing values in the table"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--input-bg)", "hsl(var(--text-muted)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample a2134fa8983bedd9d07f  seed 801  [set_fill_in_blank]
+      stem:    Make a picture graph to show: basketball: 8, volleyball: 50, swimming: 32, running: 8. Each ⚽ equals 2.
+      answer:  [4, 25, 16, 4]
+      hints:   ["Look at the pictograph carefully.", "Each picture stands for 2 items.", "For each category, divide the number of items by 2 to find how many pictures to draw."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 102, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 8, "input_count": 0, "text_labels": ["Each symbol = 2. Click to add/remove symbols.", "0", "2", "4", "6", "8", "10", "12", "14", "16", "18", "20", "22", "24", "26", "28", "30", "32", "34", "36", "38", "40", "42", "44", "46", "48", "50", "52", "54", "−", "+", "basketball", "volleyball", "swimming", "running", "Use +/- buttons to add or remove symbols"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample f3d3bb50ebe7bcd16d0f  seed 900  [set_fill_in_blank]
+      stem:    Make a picture graph to show: basketball: 10, volleyball: 30, swimming: 10, running: 30. Each ⚽ equals 10.
+      answer:  [1, 3, 1, 3]
+      hints:   ["Look at the pictograph carefully.", "Each picture stands for 10 items.", "For each category, divide the number of items by 10 to find how many pictures to draw."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 58, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 8, "input_count": 0, "text_labels": ["Each symbol = 10. Click to add/remove symbols.", "0", "10", "20", "30", "40", "50", "−", "+", "basketball", "volleyball", "swimming", "running", "Use +/- buttons to add or remove symbols"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample d482f0172c66e919870c  seed 901  [set_fill_in_blank]
+      stem:    Look at the pictograph. Write the correct count for each row in the table: cats, dogs, birds and fish. The scale is 5: each symbol stands for 5 items.
+      answer:  [15, 5, 10, 10]
+      hints:   ["Look at the pictograph carefully.", "Each picture stands for 5 items.", "Count the pictures in each row and multiply by 5 to record each count in the table."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "FillInTable", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  FillInTable
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "FillInTable", "element_count": 42, "svg_count": 0, "table_row_count": 9, "table_cell_count": 18, "button_count": 0, "input_count": 4, "text_labels": ["Favorite Pets", "cats", "🐾🐾🐾🐾🐾🐾🐾🐾🐾🐾🐾🐾🐾🐾🐾", "dogs", "🐾🐾🐾🐾🐾", "birds", "🐾🐾🐾🐾🐾🐾🐾🐾🐾🐾", "fish", "Each 🐾 means 5.", "Category", "Count", "Fill in the missing values in the table"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--input-bg)", "hsl(var(--text-muted)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample a80f988f5e2536f6a930  seed 1000  [set_fill_in_blank]
+      stem:    The table shows: roses: 10, sunflowers: 5, tulips: 10, daisies: 5. Create a picture graph where each 🌸 equals 5.
+      answer:  [2, 1, 2, 1]
+      hints:   ["Look at the pictograph carefully.", "Each picture stands for 5 items.", "For each category, divide the number of items by 5 to find how many pictures to draw."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "hint_gated"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 56, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 8, "input_count": 0, "text_labels": ["Each symbol = 5. Click to add/remove symbols.", "0", "5", "10", "15", "20", "−", "+", "roses", "sunflowers", "tulips", "daisies", "Use +/- buttons to add or remove symbols"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample a94fed78ef3996e49ecd  seed 1001  [set_fill_in_blank]
+      stem:    Complete the picture graph to show: cats: 18, dogs: 14, birds: 6, fish: 14. Each 🐾 represents 2 items.
+      answer:  [9, 7, 3, 7]
+      hints:   ["Look at the pictograph carefully.", "Each picture stands for 2 items.", "For each category, divide the number of items by 2 to find how many pictures to draw."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "mastery_drill"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 70, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 8, "input_count": 0, "text_labels": ["Each symbol = 2. Click to add/remove symbols.", "0", "2", "4", "6", "8", "10", "12", "14", "16", "18", "20", "22", "−", "+", "cats", "dogs", "birds", "fish", "Use +/- buttons to add or remove symbols"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample af69055cd66437c66b7b  seed 1002  [set_fill_in_blank]
+      stem:    Look at the pictograph. Write the correct count for each row in the table: Math, Science, English and Art. The scale is 10: each symbol stands for 10 items.
+      answer:  [10, 10, 20, 20]
+      hints:   ["Look at the pictograph carefully.", "Each picture stands for 10 items.", "Count the pictures in each row and multiply by 10 to record each count in the table."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "FillInTable", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "scaffolded"}
+      visual:  FillInTable
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "FillInTable", "element_count": 42, "svg_count": 0, "table_row_count": 9, "table_cell_count": 18, "button_count": 0, "input_count": 4, "text_labels": ["Favorite Subjects", "Math", "📚📚📚📚📚📚📚📚📚📚", "Science", "English", "📚📚📚📚📚📚📚📚📚📚📚📚📚📚📚📚📚📚📚📚", "Art", "Each 📚 means 10.", "Category", "Count", "Fill in the missing values in the table"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--input-bg)", "hsl(var(--text-muted)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+

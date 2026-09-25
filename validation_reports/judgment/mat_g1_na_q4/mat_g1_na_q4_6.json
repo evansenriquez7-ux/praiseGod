@@ -1,7 +1,48 @@
 {
+  "schema_version": 2,
   "node_id": "mat_g1_na_q4_6",
-  "reviewed_by": "reviewer-c2-basalt-yarrow-7194",
-  "review_date": "2026-09-11",
+  "competency_snapshot": {
+    "text": "Solve 1-step problems (given orally or in pictures) involving addition of money where the sum is up to ₱100, or subtraction of money where both amounts are less than ₱100.",
+    "grade": 1,
+    "quarter": 4,
+    "subdomain": null
+  },
+  "requirements_snapshot": [
+    {
+      "kind": "task",
+      "id": "solve_1_step_problems",
+      "clause": "Solve 1-step problems"
+    },
+    {
+      "kind": "representation",
+      "id": "in_pictures",
+      "clause": "in pictures"
+    },
+    {
+      "kind": "task",
+      "id": "addition_of_money",
+      "clause": "addition of money"
+    },
+    {
+      "kind": "range",
+      "id": "sum_up_to_100",
+      "clause": "sum is up to ₱100"
+    },
+    {
+      "kind": "task",
+      "id": "subtraction_of_money",
+      "clause": "subtraction of money"
+    },
+    {
+      "kind": "range",
+      "id": "amounts_less_than_100",
+      "clause": "amounts are less than ₱100"
+    }
+  ],
+  "packet_digest": "dd69b0188faed297ecc018ddb146ff4b0353063ca5d7b6293dc941141092c1d8",
+  "sampling_version": "phase2-stratified-v2-rendered-visual",
+  "reviewed_by": "blind-reviewer-gpt-6-luna-medium-w24-mat_g1_na_q4_6-20260925",
+  "review_date": "2026-09-25",
   "blind": true,
   "sample_seeds": [
     42,
@@ -17,14 +58,67 @@
     602,
     603,
     604,
-    605
+    605,
+    606,
+    700,
+    701,
+    702,
+    800,
+    801,
+    900,
+    901,
+    1000,
+    1001,
+    1002
+  ],
+  "sample_ids": [
+    "d410ababa077fc6dd315",
+    "8e4a76db423c64a9ec76",
+    "5589ea8157ef2a680572",
+    "3714657f86107c66e14c",
+    "9e390c2bbf183239afd6",
+    "02e60e0d61e1cf23370c",
+    "28f8a3bb6a46fe466f43",
+    "77a21857d240499c3e02",
+    "9fc0da4ff98a774cf1bb",
+    "4efc57edda6bbf5e6fd6",
+    "b6304864e5d0c552de77",
+    "742542e35f921b0996d8",
+    "a9997b6c5792ab32d47e",
+    "4e46f5616912bc5875b0",
+    "a0a980b31bca7046b3ea",
+    "ea0f9c6fb15026f9e580",
+    "792c494ce4edfca1f87a",
+    "f424f6d1218c2cebe458",
+    "8783a2b7950811a72d2a",
+    "73e55bca6ac8b0ef0489",
+    "797d7f284811f1f98a3d",
+    "d5d61410a996abd62f0c",
+    "492f62f54b9b5ed44cd7",
+    "218bbf6ff631dd97ba14",
+    "8c58b99ad99322b375ca"
   ],
   "samples_reviewed": [
     {
+      "node_id": "mat_g1_na_q4_6",
       "seed": 42,
       "formatter": "read_mcq",
       "question_text": "Marco had ₱5 in a piggy bank and used ₱2 to buy a notebook. How much money is left in the piggy bank?",
       "correct_answer": "C",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -46,13 +140,83 @@
           "value": 4,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 3,
+      "hints": [
+        "You have these amounts: ['peso5', 'peso2'].",
+        "You paid peso5 for an item that costs peso2.",
+        "Money back = peso5 − peso2 = peso3."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "start": 0,
+        "end": 20,
+        "major_interval": 5,
+        "minor_interval": 1,
+        "interval": 1,
+        "dot_value": 5,
+        "move_by": -2,
+        "content_type": "whole_number",
+        "value": 3,
+        "correct_position": 3,
+        "divisions": 20,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 3.0,
+        "target": 3.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "6cdafb63dc5d8fc0b957589feea87f0aedd928a6d8efe700cf21d9b3c63e1b70",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 31,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "5",
+            "10",
+            "15",
+            "20"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "d410ababa077fc6dd315",
+      "replay_digest": "0ef53c383ac869876f2d7dbac35e4fb968468fd3c3b58138a352b53ec5dfda7b"
     },
     {
+      "node_id": "mat_g1_na_q4_6",
       "seed": 43,
       "formatter": "read_mcq",
       "question_text": "Kuya Ton had ₱20 and received ₱10 more from Nanay. How much money does Kuya Ton have in all?",
       "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "PesoMoney",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -74,13 +238,99 @@
           "value": 20,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 30,
+      "hints": [
+        "You have these amounts: ['peso20', 'peso10'].",
+        "Step 1: Add peso20 → running total = peso20.",
+        "Step 2: Add peso10 → running total = peso30.",
+        "The total is peso30."
+      ],
+      "visual_type": "PesoMoney",
+      "visual_payload": {
+        "coins": [
+          {
+            "denomination": 10,
+            "count": 1
+          }
+        ],
+        "bills": [
+          {
+            "denomination": 20,
+            "count": 1
+          }
+        ],
+        "total": 30,
+        "target_amount": 30,
+        "exclude_centavos": true,
+        "coin_faces": [
+          1,
+          5,
+          10
+        ],
+        "bill_faces": [
+          20,
+          50,
+          100
+        ],
+        "require_fewest": true,
+        "is_interactive": false
+      },
+      "visual_render": {
+        "visual_type": "PesoMoney",
+        "renderer_input_digest": "66fb7630882513847b78c0a457a40c6452dcc257fbc33f3cb15b1831d35de77a",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "PesoMoney",
+          "element_count": 15,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "BILLS",
+            "₱20",
+            "REPUBLIKA NG PILIPINAS",
+            "COINS",
+            "₱10"
+          ],
+          "distinct_colours": [
+            "hsl(var(--text-muted)",
+            "#ffedd5,",
+            "#ea580c)",
+            "#fff",
+            "#fef08a 60%,",
+            "#cbd5e1 60%)",
+            "#1e293b",
+            "#94a3b8"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "8e4a76db423c64a9ec76",
+      "replay_digest": "1a0efe8856ad3a771e7896739cf0c47e068afc1687870aca859ba5ad8bfcd380"
     },
     {
+      "node_id": "mat_g1_na_q4_6",
       "seed": 44,
       "formatter": "mcq",
       "question_text": "Isko has ₱10 in one pocket and ₱21 in another pocket. How much money does Isko have in total?",
       "correct_answer": 31,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -102,13 +352,37 @@
           "value": 31,
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 31,
+      "hints": [
+        "You have these amounts: ['peso10', 'peso21'].",
+        "Step 1: Add peso10 → running total = peso10.",
+        "Step 2: Add peso21 → running total = peso31.",
+        "The total is peso31."
+      ],
+      "sample_id": "5589ea8157ef2a680572",
+      "replay_digest": "7731222d43e7e0e2475683809b33e23dc674d921e413ec4c7cde3340644fb85e"
     },
     {
+      "node_id": "mat_g1_na_q4_6",
       "seed": 45,
       "formatter": "read_mcq",
       "question_text": "Chef Demi saved ₱2 on Monday and ₱10 on Tuesday. How much money did Chef Demi save altogether?",
       "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -130,13 +404,84 @@
           "value": 13,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 12,
+      "hints": [
+        "You have these amounts: ['peso2', 'peso10'].",
+        "Step 1: Add peso2 → running total = peso2.",
+        "Step 2: Add peso10 → running total = peso12.",
+        "The total is peso12."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "start": 0,
+        "end": 20,
+        "major_interval": 5,
+        "minor_interval": 1,
+        "interval": 1,
+        "dot_value": 2,
+        "move_by": 10,
+        "content_type": "whole_number",
+        "value": 12,
+        "correct_position": 12,
+        "divisions": 20,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 12.0,
+        "target": 12.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "fece426981a5e7eb41a3ade7125f5c0ed7206b9a10acf2a1ccad99af6eb0a191",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 31,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "5",
+            "10",
+            "15",
+            "20"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "3714657f86107c66e14c",
+      "replay_digest": "c4edc1fb2f4145308a48a5d8b52b7a0ccfd01b4fd320d255c938be6c5c7c028f"
     },
     {
+      "node_id": "mat_g1_na_q4_6",
       "seed": 46,
       "formatter": "cloze",
       "question_text": "Ate Nena had ₱30 and spent ₱10 on bags of flour at the palengke. How much money does Ate Nena have left?",
       "correct_answer": 20,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -162,13 +507,39 @@
           "text": "41",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 20,
+      "hints": [
+        "You have these amounts: ['peso30', 'peso10'].",
+        "You paid peso30 for an item that costs peso10.",
+        "Money back = peso30 − peso10 = peso20."
+      ],
+      "sample_id": "9e390c2bbf183239afd6",
+      "replay_digest": "840119c8f3bec80895d9334019cc70e5370b70432f3f1c51e256a643d4de4761"
     },
     {
+      "node_id": "mat_g1_na_q4_6",
       "seed": 500,
       "formatter": "read_mcq",
       "question_text": "Nanding had ₱60 and bought a snack for ₱40 at the sari-sari store. How much money does Nanding have left?",
       "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": {
+          "max_total": 1.0,
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "PesoMoney",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -190,13 +561,101 @@
           "value": 20,
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 20,
+      "hints": [
+        "You have these amounts: ['peso60', 'peso40'].",
+        "You paid peso60 for an item that costs peso40.",
+        "Money back = peso60 − peso40 = peso20."
+      ],
+      "visual_type": "PesoMoney",
+      "visual_payload": {
+        "coins": [
+          {
+            "denomination": 10,
+            "count": 1
+          }
+        ],
+        "bills": [
+          {
+            "denomination": 50,
+            "count": 1
+          }
+        ],
+        "total": 60,
+        "target_amount": 60,
+        "exclude_centavos": true,
+        "coin_faces": [
+          1,
+          5,
+          10
+        ],
+        "bill_faces": [
+          20,
+          50,
+          100
+        ],
+        "require_fewest": true,
+        "is_interactive": false
+      },
+      "visual_render": {
+        "visual_type": "PesoMoney",
+        "renderer_input_digest": "8f48150385109707d351e3d1d82d1881a363acfb768cccec7d9acd733bf91efc",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "PesoMoney",
+          "element_count": 15,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "BILLS",
+            "₱50",
+            "REPUBLIKA NG PILIPINAS",
+            "COINS",
+            "₱10"
+          ],
+          "distinct_colours": [
+            "hsl(var(--text-muted)",
+            "#fda4af,",
+            "#dc2626)",
+            "#fff",
+            "#fef08a 60%,",
+            "#cbd5e1 60%)",
+            "#1e293b",
+            "#94a3b8"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "02e60e0d61e1cf23370c",
+      "replay_digest": "a0751691066fbf5f7455f940a99410bcc1682f47cc8657d9a7bd81b00a445769"
     },
     {
+      "node_id": "mat_g1_na_q4_6",
       "seed": 501,
       "formatter": "read_mcq",
       "question_text": "Kuya Ton had ₱50 in a piggy bank and used ₱39 to buy a notebook. How much money is left in the piggy bank?",
       "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": {
+          "max_total": 1.0,
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -218,13 +677,89 @@
           "value": 16,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 11,
+      "hints": [
+        "You have these amounts: ['peso50', 'peso39'].",
+        "You paid peso50 for an item that costs peso39.",
+        "Money back = peso50 − peso39 = peso11."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "start": 0,
+        "end": 70,
+        "major_interval": 10,
+        "minor_interval": 5,
+        "interval": 5,
+        "dot_value": 50,
+        "move_by": -39,
+        "content_type": "whole_number",
+        "value": 11,
+        "correct_position": 11,
+        "divisions": 14,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 11.0,
+        "target": 11.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "b216c2650a0b5a359cf7c0bdc082d544a80325a61a73209ac5f36c231b11fe85",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 28,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "10",
+            "20",
+            "30",
+            "40",
+            "50",
+            "60",
+            "70"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "28f8a3bb6a46fe466f43",
+      "replay_digest": "1744eab00787b2d1151512d52e828e9399b4dac93437977ada5a80455c43ae6f"
     },
     {
+      "node_id": "mat_g1_na_q4_6",
       "seed": 502,
       "formatter": "mcq",
       "question_text": "Carlo had ₱80 in a piggy bank and used ₱2 to buy a notebook. How much money is left in the piggy bank?",
       "correct_answer": 78,
+      "requested": {
+        "difficulty_profile": {
+          "max_total": 1.0,
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -246,13 +781,38 @@
           "value": 72,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 78,
+      "hints": [
+        "You have these amounts: ['peso80', 'peso2'].",
+        "You paid peso80 for an item that costs peso2.",
+        "Money back = peso80 − peso2 = peso78."
+      ],
+      "sample_id": "77a21857d240499c3e02",
+      "replay_digest": "4d7a778a7839a21695c3d4a62c7b90cc646ddb4df52ab90708f04258b9f3aba6"
     },
     {
+      "node_id": "mat_g1_na_q4_6",
       "seed": 600,
       "formatter": "read_mcq",
       "question_text": "Kuya Renz had ₱10 and bought a snack for ₱5 at the sari-sari store. How much money does Kuya Renz have left?",
       "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": {
+          "context": "word_problem"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "PesoMoney",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -274,13 +834,89 @@
           "value": 11,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 5,
+      "hints": [
+        "You have these amounts: ['peso10', 'peso5'].",
+        "You paid peso10 for an item that costs peso5.",
+        "Money back = peso10 − peso5 = peso5."
+      ],
+      "visual_type": "PesoMoney",
+      "visual_payload": {
+        "coins": [
+          {
+            "denomination": 10,
+            "count": 1
+          }
+        ],
+        "bills": [],
+        "total": 10,
+        "target_amount": 10,
+        "exclude_centavos": true,
+        "coin_faces": [
+          1,
+          5,
+          10
+        ],
+        "bill_faces": [
+          20,
+          50,
+          100
+        ],
+        "require_fewest": true,
+        "is_interactive": false
+      },
+      "visual_render": {
+        "visual_type": "PesoMoney",
+        "renderer_input_digest": "324dcdd4d12083c3d2824f17e18a6b469259bae45a61fe89cd982fa756ea32de",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "PesoMoney",
+          "element_count": 6,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "COINS",
+            "₱10"
+          ],
+          "distinct_colours": [
+            "hsl(var(--text-muted)",
+            "#fef08a 60%,",
+            "#cbd5e1 60%)",
+            "#1e293b",
+            "#94a3b8"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "9fc0da4ff98a774cf1bb",
+      "replay_digest": "e74371fa4bdfe2261c6f8144af18851d6da3232a341953fc132fc34da0a19ae8"
     },
     {
+      "node_id": "mat_g1_na_q4_6",
       "seed": 601,
       "formatter": "cloze",
       "question_text": "Moses bought a pencil for ₱15 and an eraser for ₱5. How much did Moses spend in all?",
       "correct_answer": 20,
+      "requested": {
+        "difficulty_profile": {
+          "denomination_type": "bills"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -306,13 +942,39 @@
           "text": "10",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 20,
+      "hints": [
+        "You have these amounts: ['peso15', 'peso5'].",
+        "Step 1: Add peso15 → running total = peso15.",
+        "Step 2: Add peso5 → running total = peso20.",
+        "The total is peso20."
+      ],
+      "sample_id": "4efc57edda6bbf5e6fd6",
+      "replay_digest": "8263230b363c2068345471654738a1bc7399a06149170f46915b0b82d4a36b2b"
     },
     {
+      "node_id": "mat_g1_na_q4_6",
       "seed": 602,
       "formatter": "read_mcq",
       "question_text": "Des has ₱50 in one pocket and ₱20 in another pocket. How much money does Des have in total?",
       "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": {
+          "denomination_type": "coins"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -334,13 +996,86 @@
           "value": 65,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 70,
+      "hints": [
+        "You have these amounts: ['peso50', 'peso20'].",
+        "Step 1: Add peso50 → running total = peso50.",
+        "Step 2: Add peso20 → running total = peso70.",
+        "The total is peso70."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "start": 40,
+        "end": 80,
+        "major_interval": 10,
+        "minor_interval": 5,
+        "interval": 5,
+        "dot_value": 50,
+        "move_by": 20,
+        "content_type": "whole_number",
+        "value": 70,
+        "correct_position": 70,
+        "divisions": 8,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 70.0,
+        "target": 70.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "4d77790d31a6e12913a5f4f9eb8e87d5c6b0f4d00a46a7aaa3f94112fc093b31",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 19,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "40",
+            "50",
+            "60",
+            "70",
+            "80"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "b6304864e5d0c552de77",
+      "replay_digest": "63182657fa0cb29464bb4710e423c8d4514ba17594879d55329b88fb0de4aa8a"
     },
     {
+      "node_id": "mat_g1_na_q4_6",
       "seed": 603,
       "formatter": "read_mcq",
       "question_text": "Sir Ben bought a pencil for ₱15 and an eraser for ₱15. How much did Sir Ben spend in all?",
       "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": {
+          "denomination_type": "mixed"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "PesoMoney",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -362,13 +1097,97 @@
           "value": 50,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 30,
+      "hints": [
+        "You have these amounts: ['peso15', 'peso15'].",
+        "Step 1: Add peso15 → running total = peso15.",
+        "Step 2: Add peso15 → running total = peso30.",
+        "The total is peso30."
+      ],
+      "visual_type": "PesoMoney",
+      "visual_payload": {
+        "coins": [
+          {
+            "denomination": 5,
+            "count": 2
+          },
+          {
+            "denomination": 10,
+            "count": 2
+          }
+        ],
+        "bills": [],
+        "total": 30,
+        "target_amount": 30,
+        "exclude_centavos": true,
+        "coin_faces": [
+          1,
+          5,
+          10
+        ],
+        "bill_faces": [
+          20,
+          50,
+          100
+        ],
+        "require_fewest": true,
+        "is_interactive": false
+      },
+      "visual_render": {
+        "visual_type": "PesoMoney",
+        "renderer_input_digest": "23fd52a379a81ec43bc8dc0328b0747ae4f08b34b58f698b053d2a6e2809c6aa",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "PesoMoney",
+          "element_count": 9,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "COINS",
+            "₱5",
+            "₱10"
+          ],
+          "distinct_colours": [
+            "hsl(var(--text-muted)",
+            "#e2e8f0,",
+            "#cbd5e1)",
+            "#1e293b",
+            "#94a3b8",
+            "#fef08a 60%,",
+            "#cbd5e1 60%)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "742542e35f921b0996d8",
+      "replay_digest": "44ccf08c6b6cb619afc051556cefd0a4f184956fb5e8e974f7fdb41664af7100"
     },
     {
+      "node_id": "mat_g1_na_q4_6",
       "seed": 604,
       "formatter": "read_mcq",
       "question_text": "Faye had ₱5 and received ₱25 more from Nanay. How much money does Faye have in all?",
       "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": {
+          "task_type": "count_total"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -390,13 +1209,87 @@
           "value": 30,
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 30,
+      "hints": [
+        "You have these amounts: ['peso5', 'peso25'].",
+        "Step 1: Add peso5 → running total = peso5.",
+        "Step 2: Add peso25 → running total = peso30.",
+        "The total is peso30."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "start": 0,
+        "end": 50,
+        "major_interval": 10,
+        "minor_interval": 5,
+        "interval": 5,
+        "dot_value": 5,
+        "move_by": 25,
+        "content_type": "whole_number",
+        "value": 30,
+        "correct_position": 30,
+        "divisions": 10,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 30.0,
+        "target": 30.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "d78c658b4a9fcb2227235acb45876a8d3bd3d6614f64cdfc3fbbb920cbba97d3",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 22,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "10",
+            "20",
+            "30",
+            "40",
+            "50"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "a9997b6c5792ab32d47e",
+      "replay_digest": "b23e8e9469a67c0ab401263a7e2119508bbf01b4c98121771b96324ed8948972"
     },
     {
+      "node_id": "mat_g1_na_q4_6",
       "seed": 605,
       "formatter": "read_mcq",
       "question_text": "Riza bought a pencil for ₱10 and an eraser for ₱50. How much did Riza spend in all?",
       "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": {
+          "task_type": "give_money"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -418,33 +1311,1591 @@
           "value": 60,
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 60,
+      "hints": [
+        "You have these amounts: ['peso10', 'peso50'].",
+        "Step 1: Add peso10 → running total = peso10.",
+        "Step 2: Add peso50 → running total = peso60.",
+        "The total is peso60."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "start": 0,
+        "end": 70,
+        "major_interval": 10,
+        "minor_interval": 5,
+        "interval": 5,
+        "dot_value": 10,
+        "move_by": 50,
+        "content_type": "whole_number",
+        "value": 60,
+        "correct_position": 60,
+        "divisions": 14,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 60.0,
+        "target": 60.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "b4b5fa44c2de3081bac87a0441968fcd9c5ec383dfc26d770e3f10fc95f39030",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 28,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "10",
+            "20",
+            "30",
+            "40",
+            "50",
+            "60",
+            "70"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "4e46f5616912bc5875b0",
+      "replay_digest": "3ffdf86f654dd9eea102e1c16b15d1bf68a33c4fdba6cb021f6195a51783505e"
+    },
+    {
+      "node_id": "mat_g1_na_q4_6",
+      "seed": 606,
+      "formatter": "mcq",
+      "question_text": "Mary had ₱20 in a piggy bank and used ₱1 to buy a notebook. How much money is left in the piggy bank?",
+      "correct_answer": 19,
+      "requested": {
+        "difficulty_profile": {
+          "task_type": "make_change"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 19,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 81,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 910,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 92,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 19,
+      "hints": [
+        "You have these amounts: ['peso20', 'peso1'].",
+        "You paid peso20 for an item that costs peso1.",
+        "Money back = peso20 − peso1 = peso19."
+      ],
+      "sample_id": "a0a980b31bca7046b3ea",
+      "replay_digest": "fc6e556c840664a1d7f3bb3759826c19a220d0b2ab1077ee974813d5bc04a5d3"
+    },
+    {
+      "node_id": "mat_g1_na_q4_6",
+      "seed": 700,
+      "formatter": "read_mcq",
+      "question_text": "Faye bought a pencil for ₱25 and an eraser for ₱5. How much did Faye spend in all?",
+      "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "PesoMoney",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 50,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 30,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 40,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 29,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 30,
+      "hints": [
+        "You have these amounts: ['peso25', 'peso5'].",
+        "Step 1: Add peso25 → running total = peso25.",
+        "Step 2: Add peso5 → running total = peso30.",
+        "The total is peso30."
+      ],
+      "visual_type": "PesoMoney",
+      "visual_payload": {
+        "coins": [
+          {
+            "denomination": 5,
+            "count": 2
+          }
+        ],
+        "bills": [
+          {
+            "denomination": 20,
+            "count": 1
+          }
+        ],
+        "total": 30,
+        "target_amount": 30,
+        "exclude_centavos": true,
+        "coin_faces": [
+          1,
+          5,
+          10
+        ],
+        "bill_faces": [
+          20,
+          50,
+          100
+        ],
+        "require_fewest": true,
+        "is_interactive": false
+      },
+      "visual_render": {
+        "visual_type": "PesoMoney",
+        "renderer_input_digest": "bcc107c2e8ee114ac949f0765a5bfbe0c2eab677d4eda8665c83b7bf63595a94",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "PesoMoney",
+          "element_count": 16,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "BILLS",
+            "₱20",
+            "REPUBLIKA NG PILIPINAS",
+            "COINS",
+            "₱5"
+          ],
+          "distinct_colours": [
+            "hsl(var(--text-muted)",
+            "#ffedd5,",
+            "#ea580c)",
+            "#fff",
+            "#e2e8f0,",
+            "#cbd5e1)",
+            "#1e293b",
+            "#94a3b8"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "ea0f9c6fb15026f9e580",
+      "replay_digest": "26e6f2529633f93f81dad6e904adc035afab07f6bdb3693fa6430cbd5d48d941"
+    },
+    {
+      "node_id": "mat_g1_na_q4_6",
+      "seed": 701,
+      "formatter": "cloze",
+      "question_text": "Mika had ₱10 in a piggy bank and used ₱1 to buy a notebook. How much money is left in the piggy bank?",
+      "correct_answer": 9,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "visual_arts",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 42,
+          "text": "42",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 410,
+          "text": "410",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 31,
+          "text": "31",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 9,
+          "text": "9",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 9,
+      "hints": [
+        "You have these amounts: ['peso10', 'peso1'].",
+        "You paid peso10 for an item that costs peso1.",
+        "Money back = peso10 − peso1 = peso9."
+      ],
+      "sample_id": "792c494ce4edfca1f87a",
+      "replay_digest": "ac172d17673cdbcc9585f066058e3b18ef808d983615cdb23413ccfa1aab8640"
+    },
+    {
+      "node_id": "mat_g1_na_q4_6",
+      "seed": 702,
+      "formatter": "mcq",
+      "question_text": "Ate Alyssa had ₱1 and spent ₱0 on whistles at the barangay court. How much money does Ate Alyssa have left?",
+      "correct_answer": 1,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "diy_crafts",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 1,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 320,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 33,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 22,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 1,
+      "hints": [
+        "You have these amounts: ['peso1', 'peso0'].",
+        "You paid peso1 for an item that costs peso0.",
+        "Money back = peso1 − peso0 = peso1."
+      ],
+      "sample_id": "f424f6d1218c2cebe458",
+      "replay_digest": "13b36352c4ee0edab6540cea4aaf9ae7ea175e9ba9713aa22d52441edac4f1dd"
+    },
+    {
+      "node_id": "mat_g1_na_q4_6",
+      "seed": 800,
+      "formatter": "cloze",
+      "question_text": "Pia had ₱40 in a piggy bank and used ₱15 to buy a notebook. How much money is left in the piggy bank?",
+      "correct_answer": 25,
+      "requested": {
+        "difficulty_profile": {
+          "max_total": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 56,
+          "text": "56",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 45,
+          "text": "45",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 550,
+          "text": "550",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 25,
+          "text": "25",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 25,
+      "hints": [
+        "You have these amounts: ['peso40', 'peso15'].",
+        "You paid peso40 for an item that costs peso15.",
+        "Money back = peso40 − peso15 = peso25."
+      ],
+      "sample_id": "8783a2b7950811a72d2a",
+      "replay_digest": "aa2c6942699d28422ef6109abbfb2ca8ba55470dcf757a5d57de75164124d5eb"
+    },
+    {
+      "node_id": "mat_g1_na_q4_6",
+      "seed": 801,
+      "formatter": "mcq",
+      "question_text": "Tito Bong had ₱20 and received ₱75 more from Nanay. How much money does Tito Bong have in all?",
+      "correct_answer": 95,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 85,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 950,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 96,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 95,
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 95,
+      "hints": [
+        "You have these amounts: ['peso20', 'peso75'].",
+        "Step 1: Add peso20 → running total = peso20.",
+        "Step 2: Add peso75 → running total = peso95.",
+        "The total is peso95."
+      ],
+      "sample_id": "73e55bca6ac8b0ef0489",
+      "replay_digest": "e73321209d5adeeb427a37d1e6ffcec7ea211dffcbd48d5483aaca1d4b905f5d"
+    },
+    {
+      "node_id": "mat_g1_na_q4_6",
+      "seed": 900,
+      "formatter": "read_mcq",
+      "question_text": "Tito Bong had ₱2 in a piggy bank and used ₱1 to buy a notebook. How much money is left in the piggy bank?",
+      "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": {
+          "max_total": 0.0,
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 0,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 2,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 1,
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 1,
+      "hints": [
+        "You have these amounts: ['peso2', 'peso1'].",
+        "You paid peso2 for an item that costs peso1.",
+        "Money back = peso2 − peso1 = peso1."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "start": 0,
+        "end": 20,
+        "major_interval": 5,
+        "minor_interval": 1,
+        "interval": 1,
+        "dot_value": 2,
+        "move_by": -1,
+        "content_type": "whole_number",
+        "value": 1,
+        "correct_position": 1,
+        "divisions": 20,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 1.0,
+        "target": 1.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "371ea52ec4f4fd71540e76607c126026c987ab5578e6e7281d029b37941fc62c",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 31,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "5",
+            "10",
+            "15",
+            "20"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "797d7f284811f1f98a3d",
+      "replay_digest": "14bdaf4de462f911d2b332d7eaeeb170e9e90ccc0f62a99f81eb4b786750dadd"
+    },
+    {
+      "node_id": "mat_g1_na_q4_6",
+      "seed": 901,
+      "formatter": "read_mcq",
+      "question_text": "Ate Gab has ₱2 in one pocket and ₱2 in another pocket. How much money does Ate Gab have in total?",
+      "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": {
+          "max_total": 0.0,
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 5,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 4,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 6,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 4,
+      "hints": [
+        "You have these amounts: ['peso2', 'peso2'].",
+        "Step 1: Add peso2 → running total = peso2.",
+        "Step 2: Add peso2 → running total = peso4.",
+        "The total is peso4."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "start": 0,
+        "end": 20,
+        "major_interval": 5,
+        "minor_interval": 1,
+        "interval": 1,
+        "dot_value": 2,
+        "move_by": 2,
+        "content_type": "whole_number",
+        "value": 4,
+        "correct_position": 4,
+        "divisions": 20,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 4.0,
+        "target": 4.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "2158a83c28f486d92531678385f4e2346b330370aed1005d7b667af23534bad2",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 31,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "5",
+            "10",
+            "15",
+            "20"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "d5d61410a996abd62f0c",
+      "replay_digest": "a3a7da1e6328173345de8695af28b8f06071509d3928c7e3420f290b5fc1c51b"
+    },
+    {
+      "node_id": "mat_g1_na_q4_6",
+      "seed": 1000,
+      "formatter": "read_mcq",
+      "question_text": "Coach Roel had ₱50 and bought a snack for ₱20 at the sari-sari store. How much money does Coach Roel have left?",
+      "correct_answer": "C",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "hint_gated"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "PesoMoney",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "hint_gated"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 49,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 70,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 30,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 55,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 30,
+      "hints": [
+        "You have these amounts: ['peso50', 'peso20'].",
+        "You paid peso50 for an item that costs peso20.",
+        "Money back = peso50 − peso20 = peso30."
+      ],
+      "visual_type": "PesoMoney",
+      "visual_payload": {
+        "coins": [],
+        "bills": [
+          {
+            "denomination": 50,
+            "count": 1
+          }
+        ],
+        "total": 50,
+        "target_amount": 50,
+        "exclude_centavos": true,
+        "coin_faces": [
+          1,
+          5,
+          10
+        ],
+        "bill_faces": [
+          20,
+          50,
+          100
+        ],
+        "require_fewest": true,
+        "is_interactive": false
+      },
+      "visual_render": {
+        "visual_type": "PesoMoney",
+        "renderer_input_digest": "280255bdf71678ea77eb4a73ef8abbfe24bfda5df05c50b73f1fb75abb110004",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "PesoMoney",
+          "element_count": 11,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "BILLS",
+            "₱50",
+            "REPUBLIKA NG PILIPINAS"
+          ],
+          "distinct_colours": [
+            "hsl(var(--text-muted)",
+            "#fda4af,",
+            "#dc2626)",
+            "#fff"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "492f62f54b9b5ed44cd7",
+      "replay_digest": "2f4cb7e2cbf491971043554c7fe6d7fb507c0855dd20f66131ff4f3847222f94"
+    },
+    {
+      "node_id": "mat_g1_na_q4_6",
+      "seed": 1001,
+      "formatter": "mcq",
+      "question_text": "Kuya Chad had ₱30 and spent ₱18 on helmets at the sports complex. How much money does Kuya Chad have left?",
+      "correct_answer": 12,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "mastery_drill"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "mastery_drill"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 12,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 600,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 50,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 61,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 12,
+      "hints": [
+        "You have these amounts: ['peso30', 'peso18'].",
+        "You paid peso30 for an item that costs peso18.",
+        "Money back = peso30 − peso18 = peso12."
+      ],
+      "sample_id": "218bbf6ff631dd97ba14",
+      "replay_digest": "db43b4aebc309b722dee555ce6f064f92d37bdf6aa51b193babf7ce960b2b2fb"
+    },
+    {
+      "node_id": "mat_g1_na_q4_6",
+      "seed": 1002,
+      "formatter": "mcq",
+      "question_text": "Kuya Coy had ₱50 in a piggy bank and used ₱10 to buy a notebook. How much money is left in the piggy bank?",
+      "correct_answer": 40,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "scaffolded"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "scaffolded"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 750,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 76,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 40,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 65,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 40,
+      "hints": [
+        "You have these amounts: ['peso50', 'peso10'].",
+        "You paid peso50 for an item that costs peso10.",
+        "Money back = peso50 − peso10 = peso40."
+      ],
+      "sample_id": "8c58b99ad99322b375ca",
+      "replay_digest": "bcf691f4a68a3c166cf3a2d5826b2ff22591c8155a249620c1e92794290becaa"
+    }
+  ],
+  "sample_assessments": [
+    {
+      "sample_id": "d410ababa077fc6dd315",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Marco keeps ₱5 and uses ₱2 for a notebook gives two definite amounts, so the requested subtraction has result 3; the options 5 / 2 / 3 / 4 contain one matching number."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "In this story, marco keeps ₱5 and uses ₱2 for a notebook, and the requested action is to subtract the stated amounts; that operation produces 3 pesos, with no unrelated condition."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The read_mcq prompt asks for one money amount after the subtraction in marco keeps ₱5 and uses ₱2 for a notebook; The change hints compare peso5 with peso2 and give peso3 as money left. The bracketed pesoN hint tokens are awkward for a child to read."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "5 − 2 = 3 matches the key 3 and the choice list 5 / 2 / 3 / 4; The change hints compare peso5 with peso2 and give peso3 as money left. The visual description is NumberLine labeled 0, 5, 10, 15, 20. The hint operation agrees with the stem despite its odd pesoN wording."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w24-mat_g1_na_q4_6-20260925",
+      "dispatch_id": "gpt6luna-s5-w24-20260925:mat_g1_na_q4_6"
+    },
+    {
+      "sample_id": "8e4a76db423c64a9ec76",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Kuya Ton has ₱20 and receives ₱10 from Nanay gives two definite amounts, so the requested addition has result 30; the options 30 / 35 / 50 / 20 contain one matching number."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "In this story, kuya ton has ₱20 and receives ₱10 from nanay, and the requested action is to combine the stated amounts; that operation produces 30 pesos, with no unrelated condition."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The read_mcq prompt asks for one money amount after the addition in kuya ton has ₱20 and receives ₱10 from nanay; The running-total hints start at peso20, then add peso10, and conclude peso30. The bracketed pesoN hint tokens are awkward for a child to read."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "20 + 10 = 30 matches the key 30 and the choice list 30 / 35 / 50 / 20; The running-total hints start at peso20, then add peso10, and conclude peso30. The visual description is PesoMoney labels BILLS ₱20 and COINS ₱10. The hint operation agrees with the stem despite its odd pesoN wording."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w24-mat_g1_na_q4_6-20260925",
+      "dispatch_id": "gpt6luna-s5-w24-20260925:mat_g1_na_q4_6"
+    },
+    {
+      "sample_id": "5589ea8157ef2a680572",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Isko has ₱10 in one pocket and ₱21 in another gives two definite amounts, so the requested addition has result 31; the options 310 / 32 / 21 / 31 contain one matching number."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "In this story, isko has ₱10 in one pocket and ₱21 in another, and the requested action is to combine the stated amounts; that operation produces 31 pesos, with no unrelated condition."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The mcq prompt asks for one money amount after the addition in isko has ₱10 in one pocket and ₱21 in another; The running-total hints start at peso10, then add peso21, and conclude peso31. The bracketed pesoN hint tokens are awkward for a child to read."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "10 + 21 = 31 matches the key 31 and the choice list 310 / 32 / 21 / 31; The running-total hints start at peso10, then add peso21, and conclude peso31. No visual is part of this sample. The hint operation agrees with the stem despite its odd pesoN wording."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w24-mat_g1_na_q4_6-20260925",
+      "dispatch_id": "gpt6luna-s5-w24-20260925:mat_g1_na_q4_6"
+    },
+    {
+      "sample_id": "3714657f86107c66e14c",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Chef Demi saves ₱2 Monday and ₱10 Tuesday gives two definite amounts, so the requested addition has result 12; the options 14 / 12 / 11 / 13 contain one matching number."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "In this story, chef demi saves ₱2 monday and ₱10 tuesday, and the requested action is to combine the stated amounts; that operation produces 12 pesos, with no unrelated condition."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The read_mcq prompt asks for one money amount after the addition in chef demi saves ₱2 monday and ₱10 tuesday; The running-total hints start at peso2, then add peso10, and conclude peso12. The bracketed pesoN hint tokens are awkward for a child to read."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "2 + 10 = 12 matches the key 12 and the choice list 14 / 12 / 11 / 13; The running-total hints start at peso2, then add peso10, and conclude peso12. The visual description is NumberLine labeled 0, 5, 10, 15, 20. The hint operation agrees with the stem despite its odd pesoN wording."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w24-mat_g1_na_q4_6-20260925",
+      "dispatch_id": "gpt6luna-s5-w24-20260925:mat_g1_na_q4_6"
+    },
+    {
+      "sample_id": "9e390c2bbf183239afd6",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Ate Nena has ₱30 and spends ₱10 on flour at palengke gives two definite amounts, so the requested subtraction has result 20; the options 20 / 30 / 400 / 41 contain one matching number."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "In this story, ate nena has ₱30 and spends ₱10 on flour at palengke, and the requested action is to subtract the stated amounts; that operation produces 20 pesos, with no unrelated condition."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The cloze prompt asks for one money amount after the subtraction in ate nena has ₱30 and spends ₱10 on flour at palengke; The change hints compare peso30 with peso10 and give peso20 as money left. The bracketed pesoN hint tokens are awkward for a child to read."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "30 − 10 = 20 matches the key 20 and the choice list 20 / 30 / 400 / 41; The change hints compare peso30 with peso10 and give peso20 as money left. No visual is part of this sample. The hint operation agrees with the stem despite its odd pesoN wording."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w24-mat_g1_na_q4_6-20260925",
+      "dispatch_id": "gpt6luna-s5-w24-20260925:mat_g1_na_q4_6"
+    },
+    {
+      "sample_id": "02e60e0d61e1cf23370c",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Nanding has ₱60 and buys a ₱40 snack at sari-sari store gives two definite amounts, so the requested subtraction has result 20; the options 80 / 50 / 65 / 20 contain one matching number."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "In this story, nanding has ₱60 and buys a ₱40 snack at sari-sari store, and the requested action is to subtract the stated amounts; that operation produces 20 pesos, with no unrelated condition."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The read_mcq prompt asks for one money amount after the subtraction in nanding has ₱60 and buys a ₱40 snack at sari-sari store; The change hints compare peso60 with peso40 and give peso20 as money left. The bracketed pesoN hint tokens are awkward for a child to read."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "60 − 40 = 20 matches the key 20 and the choice list 80 / 50 / 65 / 20; The change hints compare peso60 with peso40 and give peso20 as money left. The visual description is PesoMoney labels BILLS ₱50 and COINS ₱10. The hint operation agrees with the stem despite its odd pesoN wording."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w24-mat_g1_na_q4_6-20260925",
+      "dispatch_id": "gpt6luna-s5-w24-20260925:mat_g1_na_q4_6"
+    },
+    {
+      "sample_id": "28f8a3bb6a46fe466f43",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Kuya Ton has ₱50 and uses ₱39 for a notebook gives two definite amounts, so the requested subtraction has result 11; the options 11 / 10 / 12 / 16 contain one matching number."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "In this story, kuya ton has ₱50 and uses ₱39 for a notebook, and the requested action is to subtract the stated amounts; that operation produces 11 pesos, with no unrelated condition."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The read_mcq prompt asks for one money amount after the subtraction in kuya ton has ₱50 and uses ₱39 for a notebook; The change hints compare peso50 with peso39 and give peso11 as money left. The bracketed pesoN hint tokens are awkward for a child to read."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "50 − 39 = 11 matches the key 11 and the choice list 11 / 10 / 12 / 16; The change hints compare peso50 with peso39 and give peso11 as money left. The visual description is NumberLine labeled 0, 10, 20, 30, 40, 50, 60, 70. The hint operation agrees with the stem despite its odd pesoN wording."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w24-mat_g1_na_q4_6-20260925",
+      "dispatch_id": "gpt6luna-s5-w24-20260925:mat_g1_na_q4_6"
+    },
+    {
+      "sample_id": "77a21857d240499c3e02",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Carlo has ₱80 and uses ₱2 for a notebook gives two definite amounts, so the requested subtraction has result 78; the options 78 / 820 / 83 / 72 contain one matching number."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "In this story, carlo has ₱80 and uses ₱2 for a notebook, and the requested action is to subtract the stated amounts; that operation produces 78 pesos, with no unrelated condition."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The mcq prompt asks for one money amount after the subtraction in carlo has ₱80 and uses ₱2 for a notebook; The change hints compare peso80 with peso2 and give peso78 as money left. The bracketed pesoN hint tokens are awkward for a child to read."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "80 − 2 = 78 matches the key 78 and the choice list 78 / 820 / 83 / 72; The change hints compare peso80 with peso2 and give peso78 as money left. No visual is part of this sample. The hint operation agrees with the stem despite its odd pesoN wording."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w24-mat_g1_na_q4_6-20260925",
+      "dispatch_id": "gpt6luna-s5-w24-20260925:mat_g1_na_q4_6"
+    },
+    {
+      "sample_id": "9fc0da4ff98a774cf1bb",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Kuya Renz has ₱10 and buys a ₱5 snack at sari-sari store gives two definite amounts, so the requested subtraction has result 5; the options 20 / 5 / 6 / 11 contain one matching number."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "In this story, kuya renz has ₱10 and buys a ₱5 snack at sari-sari store, and the requested action is to subtract the stated amounts; that operation produces 5 pesos, with no unrelated condition."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The read_mcq prompt asks for one money amount after the subtraction in kuya renz has ₱10 and buys a ₱5 snack at sari-sari store; The change hints compare peso10 with peso5 and give peso5 as money left. The bracketed pesoN hint tokens are awkward for a child to read."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "10 − 5 = 5 matches the key 5 and the choice list 20 / 5 / 6 / 11; The change hints compare peso10 with peso5 and give peso5 as money left. The visual description is PesoMoney label COINS ₱10. The hint operation agrees with the stem despite its odd pesoN wording."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w24-mat_g1_na_q4_6-20260925",
+      "dispatch_id": "gpt6luna-s5-w24-20260925:mat_g1_na_q4_6"
+    },
+    {
+      "sample_id": "4efc57edda6bbf5e6fd6",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Moses buys a ₱15 pencil and ₱5 eraser gives two definite amounts, so the requested addition has result 20; the options 21 / 200 / 20 / 10 contain one matching number."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "In this story, moses buys a ₱15 pencil and ₱5 eraser, and the requested action is to combine the stated amounts; that operation produces 20 pesos, with no unrelated condition."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The cloze prompt asks for one money amount after the addition in moses buys a ₱15 pencil and ₱5 eraser; The running-total hints start at peso15, then add peso5, and conclude peso20. The bracketed pesoN hint tokens are awkward for a child to read."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "15 + 5 = 20 matches the key 20 and the choice list 21 / 200 / 20 / 10; The running-total hints start at peso15, then add peso5, and conclude peso20. No visual is part of this sample. The hint operation agrees with the stem despite its odd pesoN wording."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w24-mat_g1_na_q4_6-20260925",
+      "dispatch_id": "gpt6luna-s5-w24-20260925:mat_g1_na_q4_6"
+    },
+    {
+      "sample_id": "b6304864e5d0c552de77",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Des has ₱50 in one pocket and ₱20 in another gives two definite amounts, so the requested addition has result 70; the options 70 / 69 / 75 / 65 contain one matching number."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "In this story, des has ₱50 in one pocket and ₱20 in another, and the requested action is to combine the stated amounts; that operation produces 70 pesos, with no unrelated condition."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The read_mcq prompt asks for one money amount after the addition in des has ₱50 in one pocket and ₱20 in another; The running-total hints start at peso50, then add peso20, and conclude peso70. The bracketed pesoN hint tokens are awkward for a child to read."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "50 + 20 = 70 matches the key 70 and the choice list 70 / 69 / 75 / 65; The running-total hints start at peso50, then add peso20, and conclude peso70. The visual description is NumberLine labeled 40, 50, 60, 70, 80. The hint operation agrees with the stem despite its odd pesoN wording."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w24-mat_g1_na_q4_6-20260925",
+      "dispatch_id": "gpt6luna-s5-w24-20260925:mat_g1_na_q4_6"
+    },
+    {
+      "sample_id": "742542e35f921b0996d8",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Sir Ben buys a ₱15 pencil and ₱15 eraser gives two definite amounts, so the requested addition has result 30; the options 30 / 31 / 20 / 50 contain one matching number."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "In this story, sir ben buys a ₱15 pencil and ₱15 eraser, and the requested action is to combine the stated amounts; that operation produces 30 pesos, with no unrelated condition."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The read_mcq prompt asks for one money amount after the addition in sir ben buys a ₱15 pencil and ₱15 eraser; The running-total hints start at peso15, then add peso15, and conclude peso30. The bracketed pesoN hint tokens are awkward for a child to read."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "15 + 15 = 30 matches the key 30 and the choice list 30 / 31 / 20 / 50; The running-total hints start at peso15, then add peso15, and conclude peso30. The visual description is PesoMoney labels COINS ₱5 and ₱10. The hint operation agrees with the stem despite its odd pesoN wording."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w24-mat_g1_na_q4_6-20260925",
+      "dispatch_id": "gpt6luna-s5-w24-20260925:mat_g1_na_q4_6"
+    },
+    {
+      "sample_id": "a9997b6c5792ab32d47e",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Faye has ₱5 and receives ₱25 from Nanay gives two definite amounts, so the requested addition has result 30; the options 35 / 29 / 25 / 30 contain one matching number."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "In this story, faye has ₱5 and receives ₱25 from nanay, and the requested action is to combine the stated amounts; that operation produces 30 pesos, with no unrelated condition."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The read_mcq prompt asks for one money amount after the addition in faye has ₱5 and receives ₱25 from nanay; The running-total hints start at peso5, then add peso25, and conclude peso30. The bracketed pesoN hint tokens are awkward for a child to read."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "5 + 25 = 30 matches the key 30 and the choice list 35 / 29 / 25 / 30; The running-total hints start at peso5, then add peso25, and conclude peso30. The visual description is NumberLine labeled 0, 10, 20, 30, 40, 50. The hint operation agrees with the stem despite its odd pesoN wording."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w24-mat_g1_na_q4_6-20260925",
+      "dispatch_id": "gpt6luna-s5-w24-20260925:mat_g1_na_q4_6"
+    },
+    {
+      "sample_id": "4e46f5616912bc5875b0",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Riza buys a ₱10 pencil and ₱50 eraser gives two definite amounts, so the requested addition has result 60; the options 55 / 65 / 59 / 60 contain one matching number."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "In this story, riza buys a ₱10 pencil and ₱50 eraser, and the requested action is to combine the stated amounts; that operation produces 60 pesos, with no unrelated condition."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The read_mcq prompt asks for one money amount after the addition in riza buys a ₱10 pencil and ₱50 eraser; The running-total hints start at peso10, then add peso50, and conclude peso60. The bracketed pesoN hint tokens are awkward for a child to read."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "10 + 50 = 60 matches the key 60 and the choice list 55 / 65 / 59 / 60; The running-total hints start at peso10, then add peso50, and conclude peso60. The visual description is NumberLine labeled 0, 10, 20, 30, 40, 50, 60, 70. The hint operation agrees with the stem despite its odd pesoN wording."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w24-mat_g1_na_q4_6-20260925",
+      "dispatch_id": "gpt6luna-s5-w24-20260925:mat_g1_na_q4_6"
+    },
+    {
+      "sample_id": "a0a980b31bca7046b3ea",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Mary has ₱20 and uses ₱1 for a notebook gives two definite amounts, so the requested subtraction has result 19; the options 19 / 81 / 910 / 92 contain one matching number."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "In this story, mary has ₱20 and uses ₱1 for a notebook, and the requested action is to subtract the stated amounts; that operation produces 19 pesos, with no unrelated condition."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The mcq prompt asks for one money amount after the subtraction in mary has ₱20 and uses ₱1 for a notebook; The change hints compare peso20 with peso1 and give peso19 as money left. The bracketed pesoN hint tokens are awkward for a child to read."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "20 − 1 = 19 matches the key 19 and the choice list 19 / 81 / 910 / 92; The change hints compare peso20 with peso1 and give peso19 as money left. No visual is part of this sample. The hint operation agrees with the stem despite its odd pesoN wording."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w24-mat_g1_na_q4_6-20260925",
+      "dispatch_id": "gpt6luna-s5-w24-20260925:mat_g1_na_q4_6"
+    },
+    {
+      "sample_id": "ea0f9c6fb15026f9e580",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Faye buys a ₱25 pencil and ₱5 eraser gives two definite amounts, so the requested addition has result 30; the options 50 / 30 / 40 / 29 contain one matching number."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "In this story, faye buys a ₱25 pencil and ₱5 eraser, and the requested action is to combine the stated amounts; that operation produces 30 pesos, with no unrelated condition."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The read_mcq prompt asks for one money amount after the addition in faye buys a ₱25 pencil and ₱5 eraser; The running-total hints start at peso25, then add peso5, and conclude peso30. The bracketed pesoN hint tokens are awkward for a child to read."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "25 + 5 = 30 matches the key 30 and the choice list 50 / 30 / 40 / 29; The running-total hints start at peso25, then add peso5, and conclude peso30. The visual description is PesoMoney labels BILLS ₱20 and COINS ₱5. The hint operation agrees with the stem despite its odd pesoN wording."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w24-mat_g1_na_q4_6-20260925",
+      "dispatch_id": "gpt6luna-s5-w24-20260925:mat_g1_na_q4_6"
+    },
+    {
+      "sample_id": "792c494ce4edfca1f87a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Mika has ₱10 and uses ₱1 for a notebook gives two definite amounts, so the requested subtraction has result 9; the options 42 / 410 / 31 / 9 contain one matching number."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "In this story, mika has ₱10 and uses ₱1 for a notebook, and the requested action is to subtract the stated amounts; that operation produces 9 pesos, with no unrelated condition."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The cloze prompt asks for one money amount after the subtraction in mika has ₱10 and uses ₱1 for a notebook; The change hints compare peso10 with peso1 and give peso9 as money left. The bracketed pesoN hint tokens are awkward for a child to read."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "10 − 1 = 9 matches the key 9 and the choice list 42 / 410 / 31 / 9; The change hints compare peso10 with peso1 and give peso9 as money left. No visual is part of this sample. The hint operation agrees with the stem despite its odd pesoN wording."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w24-mat_g1_na_q4_6-20260925",
+      "dispatch_id": "gpt6luna-s5-w24-20260925:mat_g1_na_q4_6"
+    },
+    {
+      "sample_id": "f424f6d1218c2cebe458",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Ate Alyssa has ₱1 and spends ₱0 on whistles gives two definite amounts, so the requested subtraction has result 1; the options 1 / 320 / 33 / 22 contain one matching number."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "In this story, ate alyssa has ₱1 and spends ₱0 on whistles, and the requested action is to subtract the stated amounts; that operation produces 1 pesos, with no unrelated condition."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The mcq prompt asks for one money amount after the subtraction in ate alyssa has ₱1 and spends ₱0 on whistles; The change hints compare peso1 with peso0 and give peso1 as money left. The bracketed pesoN hint tokens are awkward for a child to read."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "1 − 0 = 1 matches the key 1 and the choice list 1 / 320 / 33 / 22; The change hints compare peso1 with peso0 and give peso1 as money left. No visual is part of this sample. The hint operation agrees with the stem despite its odd pesoN wording."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w24-mat_g1_na_q4_6-20260925",
+      "dispatch_id": "gpt6luna-s5-w24-20260925:mat_g1_na_q4_6"
+    },
+    {
+      "sample_id": "8783a2b7950811a72d2a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Pia has ₱40 and uses ₱15 for a notebook gives two definite amounts, so the requested subtraction has result 25; the options 56 / 45 / 550 / 25 contain one matching number."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "In this story, pia has ₱40 and uses ₱15 for a notebook, and the requested action is to subtract the stated amounts; that operation produces 25 pesos, with no unrelated condition."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The cloze prompt asks for one money amount after the subtraction in pia has ₱40 and uses ₱15 for a notebook; The change hints compare peso40 with peso15 and give peso25 as money left. The bracketed pesoN hint tokens are awkward for a child to read."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "40 − 15 = 25 matches the key 25 and the choice list 56 / 45 / 550 / 25; The change hints compare peso40 with peso15 and give peso25 as money left. No visual is part of this sample. The hint operation agrees with the stem despite its odd pesoN wording."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w24-mat_g1_na_q4_6-20260925",
+      "dispatch_id": "gpt6luna-s5-w24-20260925:mat_g1_na_q4_6"
+    },
+    {
+      "sample_id": "73e55bca6ac8b0ef0489",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Tito Bong has ₱20 and receives ₱75 from Nanay gives two definite amounts, so the requested addition has result 95; the options 85 / 950 / 96 / 95 contain one matching number."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "In this story, tito bong has ₱20 and receives ₱75 from nanay, and the requested action is to combine the stated amounts; that operation produces 95 pesos, with no unrelated condition."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The mcq prompt asks for one money amount after the addition in tito bong has ₱20 and receives ₱75 from nanay; The running-total hints start at peso20, then add peso75, and conclude peso95. The bracketed pesoN hint tokens are awkward for a child to read."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "20 + 75 = 95 matches the key 95 and the choice list 85 / 950 / 96 / 95; The running-total hints start at peso20, then add peso75, and conclude peso95. No visual is part of this sample. The hint operation agrees with the stem despite its odd pesoN wording."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w24-mat_g1_na_q4_6-20260925",
+      "dispatch_id": "gpt6luna-s5-w24-20260925:mat_g1_na_q4_6"
+    },
+    {
+      "sample_id": "797d7f284811f1f98a3d",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Tito Bong has ₱2 and uses ₱1 for a notebook gives two definite amounts, so the requested subtraction has result 1; the options 0 / 3 / 2 / 1 contain one matching number."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "In this story, tito bong has ₱2 and uses ₱1 for a notebook, and the requested action is to subtract the stated amounts; that operation produces 1 pesos, with no unrelated condition."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The read_mcq prompt asks for one money amount after the subtraction in tito bong has ₱2 and uses ₱1 for a notebook; The change hints compare peso2 with peso1 and give peso1 as money left. The bracketed pesoN hint tokens are awkward for a child to read."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "2 − 1 = 1 matches the key 1 and the choice list 0 / 3 / 2 / 1; The change hints compare peso2 with peso1 and give peso1 as money left. The visual description is NumberLine labeled 0, 5, 10, 15, 20. The hint operation agrees with the stem despite its odd pesoN wording."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w24-mat_g1_na_q4_6-20260925",
+      "dispatch_id": "gpt6luna-s5-w24-20260925:mat_g1_na_q4_6"
+    },
+    {
+      "sample_id": "d5d61410a996abd62f0c",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Ate Gab has ₱2 in each of two pockets gives two definite amounts, so the requested addition has result 4; the options 5 / 4 / 3 / 6 contain one matching number."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "In this story, ate gab has ₱2 in each of two pockets, and the requested action is to combine the stated amounts; that operation produces 4 pesos, with no unrelated condition."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The read_mcq prompt asks for one money amount after the addition in ate gab has ₱2 in each of two pockets; The running-total hints start at peso2, then add peso2, and conclude peso4. The bracketed pesoN hint tokens are awkward for a child to read."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "2 + 2 = 4 matches the key 4 and the choice list 5 / 4 / 3 / 6; The running-total hints start at peso2, then add peso2, and conclude peso4. The visual description is NumberLine labeled 0, 5, 10, 15, 20. The hint operation agrees with the stem despite its odd pesoN wording."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w24-mat_g1_na_q4_6-20260925",
+      "dispatch_id": "gpt6luna-s5-w24-20260925:mat_g1_na_q4_6"
+    },
+    {
+      "sample_id": "492f62f54b9b5ed44cd7",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Coach Roel has ₱50 and buys a ₱20 snack gives two definite amounts, so the requested subtraction has result 30; the options 49 / 70 / 30 / 55 contain one matching number."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "In this story, coach roel has ₱50 and buys a ₱20 snack, and the requested action is to subtract the stated amounts; that operation produces 30 pesos, with no unrelated condition."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The read_mcq prompt asks for one money amount after the subtraction in coach roel has ₱50 and buys a ₱20 snack; The change hints compare peso50 with peso20 and give peso30 as money left. The bracketed pesoN hint tokens are awkward for a child to read."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "50 − 20 = 30 matches the key 30 and the choice list 49 / 70 / 30 / 55; The change hints compare peso50 with peso20 and give peso30 as money left. The visual description is PesoMoney label BILLS ₱50. The hint operation agrees with the stem despite its odd pesoN wording."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w24-mat_g1_na_q4_6-20260925",
+      "dispatch_id": "gpt6luna-s5-w24-20260925:mat_g1_na_q4_6"
+    },
+    {
+      "sample_id": "218bbf6ff631dd97ba14",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Kuya Chad has ₱30 and spends ₱18 on helmets gives two definite amounts, so the requested subtraction has result 12; the options 12 / 600 / 50 / 61 contain one matching number."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "In this story, kuya chad has ₱30 and spends ₱18 on helmets, and the requested action is to subtract the stated amounts; that operation produces 12 pesos, with no unrelated condition."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The mcq prompt asks for one money amount after the subtraction in kuya chad has ₱30 and spends ₱18 on helmets; The change hints compare peso30 with peso18 and give peso12 as money left. The bracketed pesoN hint tokens are awkward for a child to read."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "30 − 18 = 12 matches the key 12 and the choice list 12 / 600 / 50 / 61; The change hints compare peso30 with peso18 and give peso12 as money left. No visual is part of this sample. The hint operation agrees with the stem despite its odd pesoN wording."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w24-mat_g1_na_q4_6-20260925",
+      "dispatch_id": "gpt6luna-s5-w24-20260925:mat_g1_na_q4_6"
+    },
+    {
+      "sample_id": "8c58b99ad99322b375ca",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Kuya Coy has ₱50 and uses ₱10 for a notebook gives two definite amounts, so the requested subtraction has result 40; the options 750 / 76 / 40 / 65 contain one matching number."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "In this story, kuya coy has ₱50 and uses ₱10 for a notebook, and the requested action is to subtract the stated amounts; that operation produces 40 pesos, with no unrelated condition."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The mcq prompt asks for one money amount after the subtraction in kuya coy has ₱50 and uses ₱10 for a notebook; The change hints compare peso50 with peso10 and give peso40 as money left. The bracketed pesoN hint tokens are awkward for a child to read."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "50 − 10 = 40 matches the key 40 and the choice list 750 / 76 / 40 / 65; The change hints compare peso50 with peso10 and give peso40 as money left. No visual is part of this sample. The hint operation agrees with the stem despite its odd pesoN wording."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w24-mat_g1_na_q4_6-20260925",
+      "dispatch_id": "gpt6luna-s5-w24-20260925:mat_g1_na_q4_6"
+    }
+  ],
+  "clause_evidence": [
+    {
+      "requirement_id": "solve_1_step_problems",
+      "clause": "Solve 1-step problems",
+      "verdict": "PASS",
+      "reasoning": "The cited buying and holding stories each require one addition or subtraction to obtain the requested money amount, with no hidden second step.",
+      "sample_ids": [
+        "d410ababa077fc6dd315",
+        "8e4a76db423c64a9ec76",
+        "9e390c2bbf183239afd6"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w24-mat_g1_na_q4_6-20260925",
+      "dispatch_id": "gpt6luna-s5-w24-20260925:mat_g1_na_q4_6"
+    },
+    {
+      "requirement_id": "in_pictures",
+      "clause": "in pictures",
+      "verdict": "PASS",
+      "reasoning": "Several items supply PesoMoney or NumberLine visual support alongside the wording, including a bill-and-coin model and marked number lines.",
+      "sample_ids": [
+        "8e4a76db423c64a9ec76",
+        "3714657f86107c66e14c",
+        "b6304864e5d0c552de77"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w24-mat_g1_na_q4_6-20260925",
+      "dispatch_id": "gpt6luna-s5-w24-20260925:mat_g1_na_q4_6"
+    },
+    {
+      "requirement_id": "addition_of_money",
+      "clause": "addition of money",
+      "verdict": "PASS",
+      "reasoning": "Examples add amounts received, held in separate pockets, or spent on two items, with peso sums matching the supplied keys.",
+      "sample_ids": [
+        "8e4a76db423c64a9ec76",
+        "5589ea8157ef2a680572",
+        "4efc57edda6bbf5e6fd6"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w24-mat_g1_na_q4_6-20260925",
+      "dispatch_id": "gpt6luna-s5-w24-20260925:mat_g1_na_q4_6"
+    },
+    {
+      "requirement_id": "sum_up_to_100",
+      "clause": "sum is up to ₱100",
+      "verdict": "PASS",
+      "reasoning": "The addition cases include totals such as 12, 30, 70, and 95, all within the ₱100 ceiling specified for money sums.",
+      "sample_ids": [
+        "3714657f86107c66e14c",
+        "b6304864e5d0c552de77",
+        "73e55bca6ac8b0ef0489"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w24-mat_g1_na_q4_6-20260925",
+      "dispatch_id": "gpt6luna-s5-w24-20260925:mat_g1_na_q4_6"
+    },
+    {
+      "requirement_id": "subtraction_of_money",
+      "clause": "subtraction of money",
+      "verdict": "PASS",
+      "reasoning": "The spending and purchase stories ask for the amount remaining after subtracting a cost from money on hand, and the hints use that operation.",
+      "sample_ids": [
+        "d410ababa077fc6dd315",
+        "02e60e0d61e1cf23370c",
+        "492f62f54b9b5ed44cd7"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w24-mat_g1_na_q4_6-20260925",
+      "dispatch_id": "gpt6luna-s5-w24-20260925:mat_g1_na_q4_6"
+    },
+    {
+      "requirement_id": "amounts_less_than_100",
+      "clause": "amounts are less than ₱100",
+      "verdict": "PASS",
+      "reasoning": "Subtraction stems use starting amounts and costs below ₱100, including 80 minus 2 and 60 minus 40, which obey the stated bound.",
+      "sample_ids": [
+        "77a21857d240499c3e02",
+        "02e60e0d61e1cf23370c",
+        "218bbf6ff631dd97ba14"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w24-mat_g1_na_q4_6-20260925",
+      "dispatch_id": "gpt6luna-s5-w24-20260925:mat_g1_na_q4_6"
+    }
+  ],
+  "dispatch_provenance": [
+    {
+      "dispatch_id": "gpt6luna-s5-w24-20260925:mat_g1_na_q4_6",
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w24-mat_g1_na_q4_6-20260925",
+      "review_date": "2026-09-25",
+      "blind": true,
+      "packet_digest": "dd69b0188faed297ecc018ddb146ff4b0353063ca5d7b6293dc941141092c1d8",
+      "clause_ids": [
+        "solve_1_step_problems",
+        "in_pictures",
+        "addition_of_money",
+        "sum_up_to_100",
+        "subtraction_of_money",
+        "amounts_less_than_100"
+      ],
+      "response_ref": ".responses/gpt6luna-s5-w24-20260925.json",
+      "response_digest": "eca899f97f6b548b4fbdc89c576051e10fd34c3f03fac2c1fbefd55c47702273",
+      "prompt_ref": ".responses/gpt6luna-s5-w24-20260925.prompt.txt",
+      "prompt_digest": "9a0429d5c1e92234361648ef4d32faf93ca8614534385f2bc48064b93d0fef80",
+      "samples_delivery": "Dispatch-time local prompt file read by separate gpt-6-luna medium reviewer; no source or prior reviews supplied",
+      "tool_uses_by_reviewer": "Reviewer reported: cat to read prompt; exec_command to write JSON and audit sample count and minimum length. Reviewer-provided report."
     }
   ],
   "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "Each sampled item is a single-step money situation resolved by one addition or one subtraction, and the settings - a piggy bank, buying a snack at the sari-sari store, spending at the palengke - are recognisably Philippine and age-appropriate."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "Both branches of the competency's or-clause are present in quantity: money joined together from two sources or two purchases, and money spent or used from a starting amount."
-    },
     "cognitive_capacity": {
-      "verdict": "CONCERN",
-      "rationale": "Several sampled amounts demand regrouping that nothing in the preceding Grade 1 work provides - the pupil who 'used ₱39 to buy a notebook' from fifty pesos must break a ten, as must one spending eighty pesos less two, and a purchase of a fifteen-peso pencil with a fifteen-peso eraser carries the ones into a new ten. Every addition and subtraction competency shown earlier in this grade is explicitly restricted to work without regrouping."
-    },
-    "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "Situations rotate through saving on two days, money in two pockets, receiving more from a family member, buying two items, and spending from a store of money, so the contexts are not one story retold."
+      "rationale": "Each item asks for one direct sum or difference of two money amounts, with familiar buying, saving, receiving, or holding contexts and simple answer choices."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Difficulty increases through the size of the amounts and whether the two amounts sit close together, which sharpens money computation itself rather than substituting a different skill."
+      "rationale": "The stems pose one-step money addition or subtraction problems; addition totals stay at or below ₱100, and subtraction operands remain below ₱100."
+    },
+    "competency_fulfillment": {
+      "verdict": "CONCERN",
+      "rationale": "The packet includes pictured money or number-line support along with text problems, but the printed requirements do not retain the competency's oral-delivery alternative.",
+      "decomposition": {
+        "verdict": "CONCERN",
+        "reasoning": "The clauses cover one-step money problems, pictures, addition and its sum bound, plus subtraction and its operand bound, but omit the stated orally-given presentation mode.",
+        "requirement_ids": [
+          "solve_1_step_problems",
+          "in_pictures",
+          "addition_of_money",
+          "sum_up_to_100",
+          "subtraction_of_money",
+          "amounts_less_than_100"
+        ]
+      },
+      "clause_ids": [
+        "solve_1_step_problems",
+        "in_pictures",
+        "addition_of_money",
+        "sum_up_to_100",
+        "subtraction_of_money",
+        "amounts_less_than_100"
+      ]
+    },
+    "comprehensive_coverage": {
+      "verdict": "CONCERN",
+      "rationale": "Both operations and several everyday settings appear, with pictured and text-only examples, though no oral presentation is represented and the recurring hint token format harms clarity.",
+      "clause_ids": [
+        "solve_1_step_problems",
+        "in_pictures",
+        "addition_of_money",
+        "sum_up_to_100",
+        "subtraction_of_money",
+        "amounts_less_than_100"
+      ]
     },
     "scale_appropriateness": {
-      "verdict": "CONCERN",
-      "rationale": "Stem amounts respect the hundred-peso ceiling, but option lists jump far past it with values like 820, 400 and 200 offered against problems whose answers are in the tens - amounts no pupil at this level should be weighing as plausible money."
+      "verdict": "PASS",
+      "rationale": "All addition answers are within ₱100 and every subtraction uses amounts below ₱100; the stories call for only one operation and do not introduce advanced money calculations."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The packet rotates between adding amounts held or received and finding money left after a purchase, with multiple-choice and fill-in response modes."
     }
   },
   "overall": "CONCERN"

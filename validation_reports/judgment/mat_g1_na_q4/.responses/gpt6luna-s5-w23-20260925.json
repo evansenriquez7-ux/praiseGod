@@ -1,0 +1,610 @@
+{
+  "reviewer": "blind-reviewer-gpt-6-luna-medium-w23-mat_g1_na_q4_5-20260925",
+  "mat_g1_na_q4_5": {
+    "findings": {
+      "cognitive_capacity": {
+        "verdict": "PASS",
+        "rationale": "Each problem compares only two familiar peso denominations and asks for greater or smaller value; the currency sign and item type give a concrete entry point suitable for Grade 1."
+      },
+      "competency_alignment": {
+        "verdict": "PASS",
+        "rationale": "The questions directly compare peso coins and bills, including both greater and smaller comparisons, and keep denominations at or below ₱100."
+      },
+      "competency_fulfillment": {
+        "verdict": "PASS",
+        "rationale": "The six requirements preserve the comparison action, distinct denominations, peso coins, centavo exclusion, bills, and the ₱100 ceiling stated by the competency.",
+        "decomposition": {
+          "verdict": "PASS",
+          "reasoning": "The clauses account for the requested comparison, eligible coin and bill forms, prohibition on centavo denominations, and upper value bound without omission."
+        }
+      },
+      "comprehensive_coverage": {
+        "verdict": "CONCERN",
+        "rationale": "Both coins and bills and both comparison directions occur, but all samples compare one item against one item and omit groups, equal values, or broader combinations."
+      },
+      "scale_appropriateness": {
+        "verdict": "PASS",
+        "rationale": "All examples use familiar denominations from ₱1 to ₱100, without arithmetic totals beyond the stated limit or centavo amounts."
+      },
+      "variant_comprehensiveness": {
+        "verdict": "CONCERN",
+        "rationale": "The packet varies coin-versus-bill and bill-versus-bill cases, values, and response formats, though all items retain the same two-item selection structure."
+      }
+    },
+    "sample_assessments": [
+      {
+        "sample_id": "eaebfc4d75f789ecd286",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The ₱5 coin is lower than the ₱50 bill, and no other option says this exact smaller-value item."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Both items are valid peso denominations; the PesoMoney preview labels COINS and ₱5, fitting one side of the comparison."
+          },
+          "learner_facing_clarity": {
+            "verdict": "FAIL",
+            "reasoning": "The stem asks for smaller, while the final hint asks which is greater; that reversal can lead learners away from ₱5."
+          },
+          "mathematical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "₱5 is less than ₱50, so the keyed coin is correct; the hint's direction wording still conflicts with the stem."
+          }
+        }
+      },
+      {
+        "sample_id": "df833fe6ac9cadfad135",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "₱100 exceeds ₱50, and the option list includes the bill once as the greater amount."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The two bill denominations are directly comparable and the question has no unrelated narrative detail."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The hints ask to identify which amount is greater, matching the stem's requested comparison direction."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The ₱100 bill has twice the value of ₱50; the key and matching option are mathematically correct."
+          }
+        }
+      },
+      {
+        "sample_id": "1762889fc8f74ea5e78f",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "A ₱1 coin is less than a ₱20 bill, with exactly one matching choice. The compared values differ by nineteen pesos."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Both items are peso denominations and the smaller-value comparison has an objective result."
+          },
+          "learner_facing_clarity": {
+            "verdict": "FAIL",
+            "reasoning": "The prompt asks for smaller value but the last hint asks which is greater, reversing the comparison instruction."
+          },
+          "mathematical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "₱1 is lower than ₱20, so the answer is correct; the hint wording points to the opposite criterion."
+          }
+        }
+      },
+      {
+        "sample_id": "f4f6ac67b9f8b8ad47c9",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Among the ₱20 and ₱50 bills, only the ₱50 bill is greater and listed as the answer."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The question compares two valid peso bills with distinct values, avoiding any contextual mismatch."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The generic final hint asks which value is greater, which directly matches the stem's question."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "₱50 exceeds ₱20 and is present among the options, validating the keyed choice."
+          }
+        }
+      },
+      {
+        "sample_id": "84663a49abfe4b6406ee",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The ₱1 coin is smaller than the ₱100 bill; exactly one option states that coin."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The denominations are valid and the question's small-versus-large comparison is contextually straightforward."
+          },
+          "learner_facing_clarity": {
+            "verdict": "FAIL",
+            "reasoning": "The hint chain ends by asking which is greater despite the stem requesting the smaller coin, a material reversal."
+          },
+          "mathematical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "The key correctly identifies ₱1 as less than ₱100, but the hints use the opposite comparison direction."
+          }
+        }
+      },
+      {
+        "sample_id": "33d1b45c9f2b35bd0715",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The ₱5 coin is lower in value than the ₱20 bill, and its matching option is unique."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The PesoMoney labels show a ₱20 bill while the question pairs it with a ₱5 coin; both are peso forms."
+          },
+          "learner_facing_clarity": {
+            "verdict": "FAIL",
+            "reasoning": "The final hint asks which amount is greater, although this read-MCQ stem asks for the smaller one."
+          },
+          "mathematical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "₱5 is smaller than ₱20, confirming the keyed coin; the final hint reverses the requested comparison."
+          }
+        }
+      },
+      {
+        "sample_id": "224c5f5b4f659c49afce",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "₱10 is greater than ₱1, and the correct coin appears once among the four alternatives."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The coin comparison involves valid denominations and the PesoMoney preview labels the ₱10 coin."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The hints' final greater-value direction agrees with the stem's explicit request for greater value."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The ₱10 coin is ten times the ₱1 coin, so the keyed greater denomination is correct."
+          }
+        }
+      },
+      {
+        "sample_id": "0d121aa18a343f807598",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The ₱10 coin is smaller than the ₱100 bill, with a single matching first option."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The two denominations are both peso forms, and nothing in the stem adds a conflicting scenario."
+          },
+          "learner_facing_clarity": {
+            "verdict": "FAIL",
+            "reasoning": "Although the stem asks for smaller, the final hint instructs comparison to see which is greater, creating opposite guidance."
+          },
+          "mathematical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "₱10 is below ₱100 as keyed; the generic final hint nonetheless reverses the target comparison."
+          }
+        }
+      },
+      {
+        "sample_id": "720559b322587cbb9c4e",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The ₱1 coin is less than the ₱100 bill; that exact coin is one unique option."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The coin-and-bill comparison is coherent, and the PesoMoney structure identifies the ₱1 coin side."
+          },
+          "learner_facing_clarity": {
+            "verdict": "FAIL",
+            "reasoning": "The smaller-value question conflicts with the hint's final instruction to select what is greater."
+          },
+          "mathematical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "The ₱1 coin is mathematically the smaller amount; the hint direction does not match that correct result."
+          }
+        }
+      },
+      {
+        "sample_id": "50a38f41de37bf6b25df",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "A ₱5 coin is less than a ₱20 bill, uniquely matching the fourth option."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The stem compares valid peso items and no story wrapper distracts from their respective denominations."
+          },
+          "learner_facing_clarity": {
+            "verdict": "FAIL",
+            "reasoning": "The requested smaller item is clear, but the hint ends by asking which of the two is greater."
+          },
+          "mathematical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "₱5 is correctly keyed as smaller than ₱20, while the hint's greater wording is inconsistent."
+          }
+        }
+      },
+      {
+        "sample_id": "f29b06c4eebbe8eedce1",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Between ₱100 and ₱20, the smaller amount is the ₱20 bill, listed once."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Both options describe peso bills or a coin, and the two compared bills have distinct values."
+          },
+          "learner_facing_clarity": {
+            "verdict": "FAIL",
+            "reasoning": "The closing hint asks for the greater amount even though the question asks for the smaller bill."
+          },
+          "mathematical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "₱20 is below ₱100, so the answer is correct; the hint instruction reverses the comparison goal."
+          }
+        }
+      },
+      {
+        "sample_id": "c458ffeebb2fddf6ce56",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The ₱100 bill has greater value than ₱10, with one option matching that bill."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A bill-versus-coin comparison is valid, and the rendered labels include BILLS and ₱100 for the bill."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem asks which is greater, matching the final hint's direction; the total-value steps are generic but compatible."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "₱100 exceeds ₱10, so the key is correct and the option list contains that bill."
+          }
+        }
+      },
+      {
+        "sample_id": "158a8bc5bad2d0ac3de0",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The greater amount is the ₱50 bill rather than the ₱10 coin, and the answer appears once."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The stem compares a peso coin with a peso bill; no external context changes their stated amounts."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The final hint's direction to find which is greater aligns with the specific greater-value question."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "₱50 is greater than ₱10, and the keyed bill matches the numerical comparison."
+          }
+        }
+      },
+      {
+        "sample_id": "d4556f4d1b65db777970",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "₱20 is greater than ₱10, and the correct bill is uniquely offered as option three."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The coin and bill are different denominations but both express peso values, so the comparison is coherent."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The instruction to determine which is greater agrees with the stem's wording and the keyed response."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The bill worth ₱20 exceeds the ₱10 coin, making the answer and available choice correct."
+          }
+        }
+      },
+      {
+        "sample_id": "3fbaac273087ae8e87d4",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The ₱50 bill is greater than the ₱1 coin, with a single exact matching option."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The monetary comparison is clear and both listed items are valid peso denominations."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The hint chain ends with the same greater-value question as the stem, without changing its target."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "₱50 exceeds ₱1, supporting the keyed bill and distinguishing it from all other choices."
+          }
+        }
+      },
+      {
+        "sample_id": "4b0200388c8dcd79fab1",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "₱100 exceeds the ₱10 coin and is one unique option, so the answer is unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The running-shoes theme is decorative; the stem still compares two clear peso denominations."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The hint asks which amount is greater, consistent with the stem, despite the unrelated sports introduction."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The ₱100 bill has greater value than ₱10, matching the key and one option."
+          }
+        }
+      },
+      {
+        "sample_id": "d2b8e07455d1a03e1164",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The ₱100 bill is greater than the ₱50 bill, with the first option matching the answer."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The volleyball theme does not interfere with a straightforward comparison of two bill denominations."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Hints request the greater value as the stem does, so no mismatch arises from the themed introduction."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The ₱100 amount exceeds ₱50; the answer and matching option are mathematically sound."
+          }
+        }
+      },
+      {
+        "sample_id": "3724d09977c303ae8610",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The ₱1 coin is smaller than ₱5, and only one option names the ₱1 coin."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Both are valid peso coins and the read-MCQ visual labels COINS and ₱1, consistent with the prompt."
+          },
+          "learner_facing_clarity": {
+            "verdict": "FAIL",
+            "reasoning": "The stem asks for the smaller coin, while the last hint asks which amount is greater, reversing the criterion."
+          },
+          "mathematical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "₱1 is indeed less than ₱5, though the hint's greater-value direction contradicts the requested answer."
+          }
+        }
+      },
+      {
+        "sample_id": "90556e809c73644452ad",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The greater value is ₱50, not ₱10; the second option states the answer exactly."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The bill-and-coin comparison uses valid denominations and lacks any inconsistent narrative wrapper."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The final hint asks which value is greater, directly aligned with this cloze stem's request."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "₱50 exceeds ₱10, and the keyed response corresponds to that greater denomination."
+          }
+        }
+      },
+      {
+        "sample_id": "4cf957057fcdd9facd74",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "₱50 exceeds ₱20, and the listed fourth option is the sole greater-value bill."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Both compared items are peso bills, so the stem's greater-value question has a consistent context."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The hints end by asking which is greater, matching the wording of the stem and selected bill."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "₱50 is greater than ₱20, so the answer and option are mathematically valid."
+          }
+        }
+      },
+      {
+        "sample_id": "fdc153e7e3ce9e8a923f",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The ₱50 bill is less than ₱100, and the first option gives that exact denomination."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The comparison between two valid bills is coherent; the PesoMoney labels show BILLS and ₱50."
+          },
+          "learner_facing_clarity": {
+            "verdict": "FAIL",
+            "reasoning": "The stem asks for smaller but the final hint asks which value is greater, reversing what learners should select."
+          },
+          "mathematical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "The keyed ₱50 bill is smaller than ₱100; the hint's greater-value instruction conflicts with that task."
+          }
+        }
+      },
+      {
+        "sample_id": "beacb3559aa1e99156e3",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The ₱100 bill is greater than the ₱10 coin, and it is a unique offered answer."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Both denominations are valid peso units, with the question clearly contrasting the coin and bill."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The question and generic hint both seek the greater of the two items; no change in direction occurs."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "₱100 is greater than ₱10, so the answer and matching third option are correct."
+          }
+        }
+      },
+      {
+        "sample_id": "29553d0ca6a4a10badd2",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "₱20 is less than ₱50, and the first option uniquely names the smaller bill."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The question compares two peso bills and gives a clear smaller-value criterion."
+          },
+          "learner_facing_clarity": {
+            "verdict": "FAIL",
+            "reasoning": "The hints' final direction asks for the greater denomination, contrary to the stem's request for smaller."
+          },
+          "mathematical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "The answer ₱20 is less than ₱50, but the hint's comparison direction does not support that response."
+          }
+        }
+      },
+      {
+        "sample_id": "8483532372b7bf1be8ae",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "₱100 exceeds the ₱10 coin, with one option exactly matching the greater denomination."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "This is a direct peso comparison; the amounts are clear and the stem contains no distracting wrapper."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The final hint asks which is greater, matching the stem's request even though the explanation is nonspecific."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "₱100 is greater than ₱10, so the keyed answer and option are correct. It is ten times the coin amount."
+          }
+        }
+      }
+    ],
+    "clause_evidence": [
+      {
+        "requirement_id": "compare",
+        "clause": "Compare",
+        "verdict": "PASS",
+        "reasoning": "Every cited question asks which of two monetary denominations is smaller or greater, directly exercising comparison rather than calculation of change or totals.",
+        "sample_ids": [
+          "eaebfc4d75f789ecd286",
+          "df833fe6ac9cadfad135",
+          "f29b06c4eebbe8eedce1"
+        ]
+      },
+      {
+        "requirement_id": "different_denominations",
+        "clause": "different denominations",
+        "verdict": "PASS",
+        "reasoning": "The paired items in the cited samples have distinct values, such as ₱5 versus ₱50 and ₱20 versus ₱100, making denomination comparison explicit.",
+        "sample_ids": [
+          "eaebfc4d75f789ecd286",
+          "f29b06c4eebbe8eedce1",
+          "beacb3559aa1e99156e3"
+        ]
+      },
+      {
+        "requirement_id": "peso_coins",
+        "clause": "peso coins",
+        "verdict": "PASS",
+        "reasoning": "The examples include valid coin denominations such as ₱1, ₱5, and ₱10, compared against other eligible peso forms.",
+        "sample_ids": [
+          "eaebfc4d75f789ecd286",
+          "224c5f5b4f659c49afce",
+          "90556e809c73644452ad"
+        ]
+      },
+      {
+        "requirement_id": "excluding_centavo_coins",
+        "clause": "excluding centavo coins",
+        "verdict": "PASS",
+        "reasoning": "The cited comparisons contain only whole-peso coins and bills; none asks learners to use centavo coins or fractional peso values.",
+        "sample_ids": [
+          "224c5f5b4f659c49afce",
+          "720559b322587cbb9c4e",
+          "3724d09977c303ae8610"
+        ]
+      },
+      {
+        "requirement_id": "bills",
+        "clause": "bills",
+        "verdict": "PASS",
+        "reasoning": "Several items directly compare bills, including ₱50 against ₱100 and ₱20 against ₱50, with additional bill-versus-coin cases.",
+        "sample_ids": [
+          "df833fe6ac9cadfad135",
+          "4cf957057fcdd9facd74",
+          "fdc153e7e3ce9e8a923f"
+        ]
+      },
+      {
+        "requirement_id": "up_to_100",
+        "clause": "up to ₱100",
+        "verdict": "PASS",
+        "reasoning": "The largest denomination shown is ₱100, while the remaining coins and bills are below that ceiling; no option requires comparing a larger value.",
+        "sample_ids": [
+          "df833fe6ac9cadfad135",
+          "720559b322587cbb9c4e",
+          "beacb3559aa1e99156e3"
+        ]
+      }
+    ],
+    "overall": "FAIL"
+  }
+}

@@ -1,7 +1,73 @@
 {
+  "schema_version": 2,
   "node_id": "mat_g2_mg_q1_1",
-  "reviewed_by": "reviewer-c3-nimbus-sorrel-4825",
-  "review_date": "2026-09-11",
+  "competency_snapshot": {
+    "text": "Compose and decompose composite figures made up of squares, rectangles, triangles, circles, half circles, and quarter circles, using cut-outs and square grids.",
+    "grade": 2,
+    "quarter": 1,
+    "subdomain": null
+  },
+  "requirements_snapshot": [
+    {
+      "kind": "task",
+      "id": "compose_figures",
+      "clause": "Compose"
+    },
+    {
+      "kind": "task",
+      "id": "decompose_figures",
+      "clause": "decompose"
+    },
+    {
+      "kind": "object",
+      "id": "composite_figures",
+      "clause": "composite figures made up"
+    },
+    {
+      "kind": "object",
+      "id": "squares",
+      "clause": "squares"
+    },
+    {
+      "kind": "object",
+      "id": "rectangles",
+      "clause": "rectangles"
+    },
+    {
+      "kind": "object",
+      "id": "triangles",
+      "clause": "triangles"
+    },
+    {
+      "kind": "object",
+      "id": "circles",
+      "clause": "circles"
+    },
+    {
+      "kind": "object",
+      "id": "half_circles",
+      "clause": "half circles"
+    },
+    {
+      "kind": "object",
+      "id": "quarter_circles",
+      "clause": "quarter circles"
+    },
+    {
+      "kind": "representation",
+      "id": "cut_outs",
+      "clause": "cut-outs"
+    },
+    {
+      "kind": "representation",
+      "id": "square_grids",
+      "clause": "square grids"
+    }
+  ],
+  "packet_digest": "0a688c7ed4e9cf1e2c5236d4471afed230950f0289089b01ae5afd0835ccc467",
+  "sampling_version": "phase2-stratified-v2-rendered-visual",
+  "reviewed_by": "blind-reviewer-gpt-6-luna-medium-w28-mat_g2_mg_q1_1-20260925",
+  "review_date": "2026-09-25",
   "blind": true,
   "sample_seeds": [
     42,
@@ -14,14 +80,60 @@
     502,
     600,
     601,
-    603
+    603,
+    700,
+    701,
+    702,
+    800,
+    900,
+    901,
+    1000,
+    1001,
+    1002
+  ],
+  "sample_ids": [
+    "b33e1b7e264ae269b977",
+    "d17b20109b3806dfacbe",
+    "f4f018ba5d98bad07139",
+    "b8f7e90549e1c8be1364",
+    "a10f0a33b73bd5f75c48",
+    "662228dac126f0c8a0a6",
+    "3aae7738a6107996b681",
+    "db7d3e262b33e6f73e98",
+    "d0c8f81c97650654545f",
+    "5380b0f639beec1cb5ec",
+    "80c1d9255f92b94606dc",
+    "e891cfde92ff1d1dfe04",
+    "09d3f11897a5c6a819c7",
+    "412b372eda7f21bbf5a5",
+    "235e9b8b65b657b15347",
+    "add6b6c428c9e7de263e",
+    "a936a09a7ee69b2379d7",
+    "11f4b73165b87a4a8e2c",
+    "30e73e50a7f345e0a9f5",
+    "d5e9181d152e630d3624"
   ],
   "samples_reviewed": [
     {
+      "node_id": "mat_g2_mg_q1_1",
       "seed": 42,
       "formatter": "read_mcq",
       "question_text": "On a square grid, a composite shape has 1 square, 1 triangle, and 1 rectangle joined together. How many simple shapes were used to compose it?",
       "correct_answer": "C",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ShapeBoard",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -43,13 +155,88 @@
           "value": "4",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "3",
+      "hints": [
+        "Think about the sides and corners of each shape.",
+        "A triangle has 3 sides and 3 corners.",
+        "A square has 4 equal sides and 4 corners.",
+        "A rectangle has 4 sides (opposite sides are equal) and 4 corners.",
+        "A circle has no straight sides and no corners."
+      ],
+      "visual_type": "ShapeBoard",
+      "visual_payload": {
+        "shapes": [
+          {
+            "id": "shape_0",
+            "type": "triangle",
+            "sides": 3,
+            "corners": 3,
+            "is_regular": true,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_1",
+            "type": "square",
+            "sides": 4,
+            "corners": 4,
+            "is_regular": true,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_2",
+            "type": "rectangle",
+            "sides": 4,
+            "corners": 4,
+            "is_regular": false,
+            "orientation_deg": 0
+          }
+        ],
+        "question_type": "illustrate",
+        "highlighted_shape": null
+      },
+      "visual_render": {
+        "visual_type": "ShapeBoard",
+        "renderer_input_digest": "e6a98d9d18aa4c1e315ede0f1f40aa91bb9c80f8458eba65a3d1eca84889b912",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ShapeBoard",
+          "element_count": 11,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [
+            "hsl(var(--primary)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "b33e1b7e264ae269b977",
+      "replay_digest": "ce9659c55c56698371b9bfa8123daed5c91568ab71c7387c101b16eb1723cefc"
     },
     {
+      "node_id": "mat_g2_mg_q1_1",
       "seed": 43,
       "formatter": "mcq",
       "question_text": "Using cut-outs, two identical triangles are placed together along their matching edges. What shape can they form?",
       "correct_answer": "rectangle",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -71,13 +258,38 @@
           "value": "half-circle",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "rectangle",
+      "hints": [
+        "Think about the sides and corners of each shape.",
+        "A triangle has 3 sides and 3 corners.",
+        "A square has 4 equal sides and 4 corners.",
+        "A rectangle has 4 sides (opposite sides are equal) and 4 corners.",
+        "A circle has no straight sides and no corners."
+      ],
+      "sample_id": "d17b20109b3806dfacbe",
+      "replay_digest": "de1fcaaf559e5ed427c2e5eedaed26741153345b4748c9346771b8e8d2e3e2eb"
     },
     {
+      "node_id": "mat_g2_mg_q1_1",
       "seed": 44,
       "formatter": "read_mcq",
       "question_text": "On a square grid, a composite figure is made by joining 2 squares of 4 grid units each side by side. What shape is formed?",
       "correct_answer": "C",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ShapeBoard",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -99,13 +311,96 @@
           "value": "triangle",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "rectangle",
+      "hints": [
+        "Think about the sides and corners of each shape.",
+        "A triangle has 3 sides and 3 corners.",
+        "A square has 4 equal sides and 4 corners.",
+        "A rectangle has 4 sides (opposite sides are equal) and 4 corners.",
+        "A circle has no straight sides and no corners."
+      ],
+      "visual_type": "ShapeBoard",
+      "visual_payload": {
+        "shapes": [
+          {
+            "id": "shape_0",
+            "type": "square",
+            "sides": 4,
+            "corners": 4,
+            "is_regular": true,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_1",
+            "type": "rectangle",
+            "sides": 4,
+            "corners": 4,
+            "is_regular": false,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_2",
+            "type": "triangle",
+            "sides": 3,
+            "corners": 3,
+            "is_regular": true,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_3",
+            "type": "circle",
+            "sides": 0,
+            "corners": 0,
+            "is_regular": true,
+            "orientation_deg": 0
+          }
+        ],
+        "question_type": "illustrate",
+        "highlighted_shape": null
+      },
+      "visual_render": {
+        "visual_type": "ShapeBoard",
+        "renderer_input_digest": "04eabc1dc5458bd6851777c4aa0f7345d6b4d3e16574948722cbade783defd78",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ShapeBoard",
+          "element_count": 14,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [
+            "hsl(var(--primary)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "f4f018ba5d98bad07139",
+      "replay_digest": "66e5eca5422e13a13aa3cc706036ac683eedc65d2fa3061963726d0e2f844543"
     },
     {
+      "node_id": "mat_g2_mg_q1_1",
       "seed": 45,
       "formatter": "mcq",
       "question_text": "A composite figure is made of a rectangle with a half-circle attached on top. How many simple shapes form this figure?",
       "correct_answer": "2",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -127,13 +422,38 @@
           "value": "4",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "2",
+      "hints": [
+        "Think about the sides and corners of each shape.",
+        "A triangle has 3 sides and 3 corners.",
+        "A square has 4 equal sides and 4 corners.",
+        "A rectangle has 4 sides (opposite sides are equal) and 4 corners.",
+        "A circle has no straight sides and no corners."
+      ],
+      "sample_id": "b8f7e90549e1c8be1364",
+      "replay_digest": "5626aab0323e38ee13fb714ca3e9d74951804b15cc19bb6fe574eb2d44df604a"
     },
     {
+      "node_id": "mat_g2_mg_q1_1",
       "seed": 46,
       "formatter": "mcq",
       "question_text": "Using cut-outs, two half-circles are joined along their flat straight edges. What shape is formed?",
       "correct_answer": "circle",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -155,13 +475,40 @@
           "value": "triangle",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "circle",
+      "hints": [
+        "Think about the sides and corners of each shape.",
+        "A triangle has 3 sides and 3 corners.",
+        "A square has 4 equal sides and 4 corners.",
+        "A rectangle has 4 sides (opposite sides are equal) and 4 corners.",
+        "A circle has no straight sides and no corners."
+      ],
+      "sample_id": "a10f0a33b73bd5f75c48",
+      "replay_digest": "937fd21e2b63f114323eb8e27384f51d2e29b56f9da06e9a7e3f8fd1349fe7fd"
     },
     {
+      "node_id": "mat_g2_mg_q1_1",
       "seed": 500,
       "formatter": "read_mcq",
       "question_text": "On a square grid, a 4-by-2 rectangle is cut straight down the middle into two 2-by-2 parts. What shape is each part?",
       "correct_answer": "C",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ShapeBoard",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -183,13 +530,98 @@
           "value": "triangle",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "square",
+      "hints": [
+        "Think about the sides and corners of each shape.",
+        "A triangle has 3 sides and 3 corners.",
+        "A square has 4 equal sides and 4 corners.",
+        "A rectangle has 4 sides (opposite sides are equal) and 4 corners.",
+        "A circle has no straight sides and no corners."
+      ],
+      "visual_type": "ShapeBoard",
+      "visual_payload": {
+        "shapes": [
+          {
+            "id": "shape_0",
+            "type": "square",
+            "sides": 4,
+            "corners": 4,
+            "is_regular": true,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_1",
+            "type": "rectangle",
+            "sides": 4,
+            "corners": 4,
+            "is_regular": false,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_2",
+            "type": "circle",
+            "sides": 0,
+            "corners": 0,
+            "is_regular": true,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_3",
+            "type": "triangle",
+            "sides": 3,
+            "corners": 3,
+            "is_regular": true,
+            "orientation_deg": 0
+          }
+        ],
+        "question_type": "illustrate",
+        "highlighted_shape": null
+      },
+      "visual_render": {
+        "visual_type": "ShapeBoard",
+        "renderer_input_digest": "e43f50cb4cc628e308973a85a266f0c91ac244e3f412880618186c1e1ad9a915",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ShapeBoard",
+          "element_count": 14,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [
+            "hsl(var(--primary)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "662228dac126f0c8a0a6",
+      "replay_digest": "6cb13b800de59bc3b72400fff646eb94f84ad44407c97f828e786a6b59d3db21"
     },
     {
+      "node_id": "mat_g2_mg_q1_1",
       "seed": 501,
       "formatter": "read_mcq",
       "question_text": "On a square grid, a composite shape has 1 square, 1 triangle, and 1 rectangle joined together. How many simple shapes were used to compose it?",
       "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ShapeBoard",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -211,13 +643,90 @@
           "value": "5",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "3",
+      "hints": [
+        "Think about the sides and corners of each shape.",
+        "A triangle has 3 sides and 3 corners.",
+        "A square has 4 equal sides and 4 corners.",
+        "A rectangle has 4 sides (opposite sides are equal) and 4 corners.",
+        "A circle has no straight sides and no corners."
+      ],
+      "visual_type": "ShapeBoard",
+      "visual_payload": {
+        "shapes": [
+          {
+            "id": "shape_0",
+            "type": "triangle",
+            "sides": 3,
+            "corners": 3,
+            "is_regular": true,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_1",
+            "type": "square",
+            "sides": 4,
+            "corners": 4,
+            "is_regular": true,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_2",
+            "type": "rectangle",
+            "sides": 4,
+            "corners": 4,
+            "is_regular": false,
+            "orientation_deg": 0
+          }
+        ],
+        "question_type": "illustrate",
+        "highlighted_shape": null
+      },
+      "visual_render": {
+        "visual_type": "ShapeBoard",
+        "renderer_input_digest": "e6a98d9d18aa4c1e315ede0f1f40aa91bb9c80f8458eba65a3d1eca84889b912",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ShapeBoard",
+          "element_count": 11,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [
+            "hsl(var(--primary)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "3aae7738a6107996b681",
+      "replay_digest": "07ae5c9a3bcd34c4e2f6fe71b0df4ab967ffd6b457b4db272533808123c681a5"
     },
     {
+      "node_id": "mat_g2_mg_q1_1",
       "seed": 502,
       "formatter": "read_mcq",
       "question_text": "On a square grid, a composite figure is made of 1 square, 1 half-circle, and 1 rectangle. How many shapes form this composite figure?",
       "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ShapeBoard",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -239,13 +748,90 @@
           "value": "3",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": "3",
+      "hints": [
+        "Think about the sides and corners of each shape.",
+        "A triangle has 3 sides and 3 corners.",
+        "A square has 4 equal sides and 4 corners.",
+        "A rectangle has 4 sides (opposite sides are equal) and 4 corners.",
+        "A circle has no straight sides and no corners."
+      ],
+      "visual_type": "ShapeBoard",
+      "visual_payload": {
+        "shapes": [
+          {
+            "id": "shape_0",
+            "type": "square",
+            "sides": 4,
+            "corners": 4,
+            "is_regular": true,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_1",
+            "type": "rectangle",
+            "sides": 4,
+            "corners": 4,
+            "is_regular": false,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_2",
+            "type": "circle",
+            "sides": 0,
+            "corners": 0,
+            "is_regular": true,
+            "orientation_deg": 0
+          }
+        ],
+        "question_type": "illustrate",
+        "highlighted_shape": null
+      },
+      "visual_render": {
+        "visual_type": "ShapeBoard",
+        "renderer_input_digest": "f7ade3244c8ace7be0aed7a4dc62399284d928c834dd4d1c3f8c01a76f311aa8",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ShapeBoard",
+          "element_count": 11,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [
+            "hsl(var(--primary)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "db7d3e262b33e6f73e98",
+      "replay_digest": "8bcf22caed929d0583e954c81729980ac1f7231574c1053897a1a04b82bcd4a3"
     },
     {
+      "node_id": "mat_g2_mg_q1_1",
       "seed": 600,
       "formatter": "mcq",
       "question_text": "On a square grid, a rotated composite shape is made of a square and a triangle. How many simple shapes make up this figure?",
       "correct_answer": "2",
+      "requested": {
+        "difficulty_profile": {
+          "orientation": "rotated"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -267,13 +853,40 @@
           "value": "1",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "2",
+      "hints": [
+        "Think about the sides and corners of each shape.",
+        "A triangle has 3 sides and 3 corners.",
+        "A square has 4 equal sides and 4 corners.",
+        "A rectangle has 4 sides (opposite sides are equal) and 4 corners.",
+        "A circle has no straight sides and no corners."
+      ],
+      "sample_id": "d0c8f81c97650654545f",
+      "replay_digest": "552cf35c9be711d3181cedc25c88043af1af600353a725b193508c74e6e4c2e1"
     },
     {
+      "node_id": "mat_g2_mg_q1_1",
       "seed": 601,
       "formatter": "read_mcq",
       "question_text": "Using cut-outs, a square is cut along a slant from one corner to the opposite corner. What two shapes are made?",
       "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": {
+          "orientation": "standard"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ShapeBoard",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -295,13 +908,74 @@
           "value": "two circles",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "two triangles",
+      "hints": [
+        "Think about the sides and corners of each shape.",
+        "A triangle has 3 sides and 3 corners.",
+        "A square has 4 equal sides and 4 corners.",
+        "A rectangle has 4 sides (opposite sides are equal) and 4 corners.",
+        "A circle has no straight sides and no corners."
+      ],
+      "visual_type": "ShapeBoard",
+      "visual_payload": {
+        "shapes": [
+          {
+            "id": "shape_0",
+            "type": "square",
+            "sides": 4,
+            "corners": 4,
+            "is_regular": true,
+            "orientation_deg": 0
+          }
+        ],
+        "question_type": "illustrate",
+        "highlighted_shape": null
+      },
+      "visual_render": {
+        "visual_type": "ShapeBoard",
+        "renderer_input_digest": "d381eae3a60dd5cd9d68e9dc0ff67b560a2e1b0a688cd9d68763a988350aba20",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ShapeBoard",
+          "element_count": 5,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [
+            "hsl(var(--primary)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "5380b0f639beec1cb5ec",
+      "replay_digest": "06d65790f13837ab74f8a432e7c85db1ef38587e56e5a53538c55f29e43959c7"
     },
     {
+      "node_id": "mat_g2_mg_q1_1",
       "seed": 603,
       "formatter": "read_mcq",
       "question_text": "Using cut-outs, four quarter-circles of the same size are joined together. What complete shape do they make?",
       "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": {
+          "task_type": "compose_decompose"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ShapeBoard",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -323,34 +997,1643 @@
           "value": "square",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "circle",
+      "hints": [
+        "Think about the sides and corners of each shape.",
+        "A triangle has 3 sides and 3 corners.",
+        "A square has 4 equal sides and 4 corners.",
+        "A rectangle has 4 sides (opposite sides are equal) and 4 corners.",
+        "A circle has no straight sides and no corners."
+      ],
+      "visual_type": "ShapeBoard",
+      "visual_payload": {
+        "shapes": [
+          {
+            "id": "shape_0",
+            "type": "circle",
+            "sides": 0,
+            "corners": 0,
+            "is_regular": true,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_1",
+            "type": "square",
+            "sides": 4,
+            "corners": 4,
+            "is_regular": true,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_2",
+            "type": "rectangle",
+            "sides": 4,
+            "corners": 4,
+            "is_regular": false,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_3",
+            "type": "triangle",
+            "sides": 3,
+            "corners": 3,
+            "is_regular": true,
+            "orientation_deg": 0
+          }
+        ],
+        "question_type": "illustrate",
+        "highlighted_shape": null
+      },
+      "visual_render": {
+        "visual_type": "ShapeBoard",
+        "renderer_input_digest": "0d3cee4b8999b4a8db4efcd14625e6c36006183014957b9894467b736570bf0c",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ShapeBoard",
+          "element_count": 14,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [
+            "hsl(var(--primary)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "80c1d9255f92b94606dc",
+      "replay_digest": "8e89cb09448f5e6525ae6d6f05a169e8663a7be8ad0a0a076efb84a958bf6b46"
+    },
+    {
+      "node_id": "mat_g2_mg_q1_1",
+      "seed": 700,
+      "formatter": "read_mcq",
+      "question_text": "Using cut-outs, four quarter-circles of the same size are joined together. What complete shape do they make?",
+      "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ShapeBoard",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "triangle",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "rectangle",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "square",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "circle",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": "circle",
+      "hints": [
+        "Think about the sides and corners of each shape.",
+        "A triangle has 3 sides and 3 corners.",
+        "A square has 4 equal sides and 4 corners.",
+        "A rectangle has 4 sides (opposite sides are equal) and 4 corners.",
+        "A circle has no straight sides and no corners."
+      ],
+      "visual_type": "ShapeBoard",
+      "visual_payload": {
+        "shapes": [
+          {
+            "id": "shape_0",
+            "type": "circle",
+            "sides": 0,
+            "corners": 0,
+            "is_regular": true,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_1",
+            "type": "square",
+            "sides": 4,
+            "corners": 4,
+            "is_regular": true,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_2",
+            "type": "rectangle",
+            "sides": 4,
+            "corners": 4,
+            "is_regular": false,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_3",
+            "type": "triangle",
+            "sides": 3,
+            "corners": 3,
+            "is_regular": true,
+            "orientation_deg": 0
+          }
+        ],
+        "question_type": "illustrate",
+        "highlighted_shape": null
+      },
+      "visual_render": {
+        "visual_type": "ShapeBoard",
+        "renderer_input_digest": "0d3cee4b8999b4a8db4efcd14625e6c36006183014957b9894467b736570bf0c",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ShapeBoard",
+          "element_count": 14,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [
+            "hsl(var(--primary)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "e891cfde92ff1d1dfe04",
+      "replay_digest": "0aa292c4190fa6d5dd6c9a067bf25a660a0d5f22357cb59244efe4a13761cd95"
+    },
+    {
+      "node_id": "mat_g2_mg_q1_1",
+      "seed": 701,
+      "formatter": "mcq",
+      "question_text": "💃 Sir Rez has a math challenge about dance shoes. A composite figure is made of a rectangle with a half-circle attached on top. How many simple shapes form this figure?",
+      "correct_answer": "2",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "meme_streaming",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "2",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "3",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "4",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "1",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "2",
+      "hints": [
+        "Think about the sides and corners of each shape.",
+        "A triangle has 3 sides and 3 corners.",
+        "A square has 4 equal sides and 4 corners.",
+        "A rectangle has 4 sides (opposite sides are equal) and 4 corners.",
+        "A circle has no straight sides and no corners."
+      ],
+      "sample_id": "09d3f11897a5c6a819c7",
+      "replay_digest": "6fe99741833160689696822d9b56f0deec72f2f715a2073df537729c04280364"
+    },
+    {
+      "node_id": "mat_g2_mg_q1_1",
+      "seed": 702,
+      "formatter": "read_mcq",
+      "question_text": "✝️ Moses has a math challenge about olives. Using cut-outs, two half-circles are joined along their flat straight edges. What shape is formed?",
+      "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "bible",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ShapeBoard",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "rectangle",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "triangle",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "square",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "circle",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": "circle",
+      "hints": [
+        "Think about the sides and corners of each shape.",
+        "A triangle has 3 sides and 3 corners.",
+        "A square has 4 equal sides and 4 corners.",
+        "A rectangle has 4 sides (opposite sides are equal) and 4 corners.",
+        "A circle has no straight sides and no corners."
+      ],
+      "visual_type": "ShapeBoard",
+      "visual_payload": {
+        "shapes": [
+          {
+            "id": "shape_0",
+            "type": "circle",
+            "sides": 0,
+            "corners": 0,
+            "is_regular": true,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_1",
+            "type": "rectangle",
+            "sides": 4,
+            "corners": 4,
+            "is_regular": false,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_2",
+            "type": "square",
+            "sides": 4,
+            "corners": 4,
+            "is_regular": true,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_3",
+            "type": "triangle",
+            "sides": 3,
+            "corners": 3,
+            "is_regular": true,
+            "orientation_deg": 0
+          }
+        ],
+        "question_type": "illustrate",
+        "highlighted_shape": null
+      },
+      "visual_render": {
+        "visual_type": "ShapeBoard",
+        "renderer_input_digest": "c0c0e9ad5e4fada62458995f20547f16d272502a23a87612b89e19970f2b4f0c",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ShapeBoard",
+          "element_count": 14,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [
+            "hsl(var(--primary)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "412b372eda7f21bbf5a5",
+      "replay_digest": "6555bde7e51fc3ba94ac2b315cc9a77caeeea83798675d18c69fcdd11b58f654"
+    },
+    {
+      "node_id": "mat_g2_mg_q1_1",
+      "seed": 800,
+      "formatter": "read_mcq",
+      "question_text": "On a square grid, a composite shape has 1 square, 1 triangle, and 1 rectangle joined together. How many simple shapes were used to compose it?",
+      "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ShapeBoard",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "5",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "3",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "2",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "4",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "3",
+      "hints": [
+        "Think about the sides and corners of each shape.",
+        "A triangle has 3 sides and 3 corners.",
+        "A square has 4 equal sides and 4 corners.",
+        "A rectangle has 4 sides (opposite sides are equal) and 4 corners.",
+        "A circle has no straight sides and no corners."
+      ],
+      "visual_type": "ShapeBoard",
+      "visual_payload": {
+        "shapes": [
+          {
+            "id": "shape_0",
+            "type": "triangle",
+            "sides": 3,
+            "corners": 3,
+            "is_regular": true,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_1",
+            "type": "square",
+            "sides": 4,
+            "corners": 4,
+            "is_regular": true,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_2",
+            "type": "rectangle",
+            "sides": 4,
+            "corners": 4,
+            "is_regular": false,
+            "orientation_deg": 0
+          }
+        ],
+        "question_type": "illustrate",
+        "highlighted_shape": null
+      },
+      "visual_render": {
+        "visual_type": "ShapeBoard",
+        "renderer_input_digest": "e6a98d9d18aa4c1e315ede0f1f40aa91bb9c80f8458eba65a3d1eca84889b912",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ShapeBoard",
+          "element_count": 11,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [
+            "hsl(var(--primary)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "235e9b8b65b657b15347",
+      "replay_digest": "051d67fb946f8f746d3ae1d6e5859e8138d7a567c263a91b4a6d77569e0efdec"
+    },
+    {
+      "node_id": "mat_g2_mg_q1_1",
+      "seed": 900,
+      "formatter": "mcq",
+      "question_text": "On a square grid, how many 1-by-1 unit squares are needed to compose a 2-by-2 square?",
+      "correct_answer": "4",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "2",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "6",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "4",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "3",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "4",
+      "hints": [
+        "Think about the sides and corners of each shape.",
+        "A triangle has 3 sides and 3 corners.",
+        "A square has 4 equal sides and 4 corners.",
+        "A rectangle has 4 sides (opposite sides are equal) and 4 corners.",
+        "A circle has no straight sides and no corners."
+      ],
+      "sample_id": "add6b6c428c9e7de263e",
+      "replay_digest": "3e5ba830152753ad344aae9a279a842c31df24728ab244a5ecdeed1906f3d9f6"
+    },
+    {
+      "node_id": "mat_g2_mg_q1_1",
+      "seed": 901,
+      "formatter": "read_mcq",
+      "question_text": "On a square grid, a composite figure is made by joining 2 squares of 4 grid units each side by side. What shape is formed?",
+      "correct_answer": "C",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ShapeBoard",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "quarter-circle",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "triangle",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "rectangle",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "circle",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "rectangle",
+      "hints": [
+        "Think about the sides and corners of each shape.",
+        "A triangle has 3 sides and 3 corners.",
+        "A square has 4 equal sides and 4 corners.",
+        "A rectangle has 4 sides (opposite sides are equal) and 4 corners.",
+        "A circle has no straight sides and no corners."
+      ],
+      "visual_type": "ShapeBoard",
+      "visual_payload": {
+        "shapes": [
+          {
+            "id": "shape_0",
+            "type": "square",
+            "sides": 4,
+            "corners": 4,
+            "is_regular": true,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_1",
+            "type": "rectangle",
+            "sides": 4,
+            "corners": 4,
+            "is_regular": false,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_2",
+            "type": "triangle",
+            "sides": 3,
+            "corners": 3,
+            "is_regular": true,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_3",
+            "type": "circle",
+            "sides": 0,
+            "corners": 0,
+            "is_regular": true,
+            "orientation_deg": 0
+          }
+        ],
+        "question_type": "illustrate",
+        "highlighted_shape": null
+      },
+      "visual_render": {
+        "visual_type": "ShapeBoard",
+        "renderer_input_digest": "04eabc1dc5458bd6851777c4aa0f7345d6b4d3e16574948722cbade783defd78",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ShapeBoard",
+          "element_count": 14,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [
+            "hsl(var(--primary)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "a936a09a7ee69b2379d7",
+      "replay_digest": "33bd0c62554608c10cb49752e7fd685da4f2e33416bcf4458b545b59adc30725"
+    },
+    {
+      "node_id": "mat_g2_mg_q1_1",
+      "seed": 1000,
+      "formatter": "read_mcq",
+      "question_text": "On a square grid, a composite figure is made by joining 2 squares of 4 grid units each side by side. What shape is formed?",
+      "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "hint_gated"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ShapeBoard",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "hint_gated"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "rectangle",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "circle",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "quarter-circle",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "triangle",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "rectangle",
+      "hints": [
+        "Think about the sides and corners of each shape.",
+        "A triangle has 3 sides and 3 corners.",
+        "A square has 4 equal sides and 4 corners.",
+        "A rectangle has 4 sides (opposite sides are equal) and 4 corners.",
+        "A circle has no straight sides and no corners."
+      ],
+      "visual_type": "ShapeBoard",
+      "visual_payload": {
+        "shapes": [
+          {
+            "id": "shape_0",
+            "type": "square",
+            "sides": 4,
+            "corners": 4,
+            "is_regular": true,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_1",
+            "type": "rectangle",
+            "sides": 4,
+            "corners": 4,
+            "is_regular": false,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_2",
+            "type": "triangle",
+            "sides": 3,
+            "corners": 3,
+            "is_regular": true,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_3",
+            "type": "circle",
+            "sides": 0,
+            "corners": 0,
+            "is_regular": true,
+            "orientation_deg": 0
+          }
+        ],
+        "question_type": "illustrate",
+        "highlighted_shape": null
+      },
+      "visual_render": {
+        "visual_type": "ShapeBoard",
+        "renderer_input_digest": "04eabc1dc5458bd6851777c4aa0f7345d6b4d3e16574948722cbade783defd78",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ShapeBoard",
+          "element_count": 14,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [
+            "hsl(var(--primary)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "11f4b73165b87a4a8e2c",
+      "replay_digest": "5b37c4e7584f451f1dffcf2ab2e41c79d28cf8a57c778fbca405b3170d5e0c58"
+    },
+    {
+      "node_id": "mat_g2_mg_q1_1",
+      "seed": 1001,
+      "formatter": "read_mcq",
+      "question_text": "Using cut-outs, two identical triangles are placed together along their matching edges. What shape can they form?",
+      "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "mastery_drill"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ShapeBoard",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "mastery_drill"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "rectangle",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "quarter-circle",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "half-circle",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "circle",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "rectangle",
+      "hints": [
+        "Think about the sides and corners of each shape.",
+        "A triangle has 3 sides and 3 corners.",
+        "A square has 4 equal sides and 4 corners.",
+        "A rectangle has 4 sides (opposite sides are equal) and 4 corners.",
+        "A circle has no straight sides and no corners."
+      ],
+      "visual_type": "ShapeBoard",
+      "visual_payload": {
+        "shapes": [
+          {
+            "id": "shape_0",
+            "type": "triangle",
+            "sides": 3,
+            "corners": 3,
+            "is_regular": true,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_1",
+            "type": "rectangle",
+            "sides": 4,
+            "corners": 4,
+            "is_regular": false,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_2",
+            "type": "circle",
+            "sides": 0,
+            "corners": 0,
+            "is_regular": true,
+            "orientation_deg": 0
+          }
+        ],
+        "question_type": "illustrate",
+        "highlighted_shape": null
+      },
+      "visual_render": {
+        "visual_type": "ShapeBoard",
+        "renderer_input_digest": "d3bc11e05590978f8ab6b33aaed180c44de404251521ee6c0860e44adacc6fd4",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ShapeBoard",
+          "element_count": 11,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [
+            "hsl(var(--primary)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "30e73e50a7f345e0a9f5",
+      "replay_digest": "4b959b5de3e84ac0f645eb7e6a1ea16b9ca8fc04b584ab172fac5c8dcf503356"
+    },
+    {
+      "node_id": "mat_g2_mg_q1_1",
+      "seed": 1002,
+      "formatter": "read_mcq",
+      "question_text": "On a square grid, a composite figure is made of 1 square, 1 half-circle, and 1 rectangle. How many shapes form this composite figure?",
+      "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "scaffolded"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ShapeBoard",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "scaffolded"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "3",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "2",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "1",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "4",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "3",
+      "hints": [
+        "Think about the sides and corners of each shape.",
+        "A triangle has 3 sides and 3 corners.",
+        "A square has 4 equal sides and 4 corners.",
+        "A rectangle has 4 sides (opposite sides are equal) and 4 corners.",
+        "A circle has no straight sides and no corners."
+      ],
+      "visual_type": "ShapeBoard",
+      "visual_payload": {
+        "shapes": [
+          {
+            "id": "shape_0",
+            "type": "square",
+            "sides": 4,
+            "corners": 4,
+            "is_regular": true,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_1",
+            "type": "rectangle",
+            "sides": 4,
+            "corners": 4,
+            "is_regular": false,
+            "orientation_deg": 0
+          },
+          {
+            "id": "shape_2",
+            "type": "circle",
+            "sides": 0,
+            "corners": 0,
+            "is_regular": true,
+            "orientation_deg": 0
+          }
+        ],
+        "question_type": "illustrate",
+        "highlighted_shape": null
+      },
+      "visual_render": {
+        "visual_type": "ShapeBoard",
+        "renderer_input_digest": "f7ade3244c8ace7be0aed7a4dc62399284d928c834dd4d1c3f8c01a76f311aa8",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ShapeBoard",
+          "element_count": 11,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [
+            "hsl(var(--primary)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "d5e9181d152e630d3624",
+      "replay_digest": "93e074e9b23650817667185315e7ded7c4ef69c9fa9aadc7a321e21df876fcba"
+    }
+  ],
+  "sample_assessments": [
+    {
+      "sample_id": "b33e1b7e264ae269b977",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The wording gives the component shapes or cut and asks for a count or resulting shape; the keyed response 3 is the uniquely supported result among 5 / 2 / 3 / 4. The printed task is: On a square grid, a composite shape has 1 square, 1 triangle, and 1 rectangle joined together. How many simple shapes were used to compose it? This rendering has choices 5 / 2 / 3 / 4 and seed 42."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The stated pieces and action form a plausible geometry task, and the answer 3 follows from the specified square-grid or cut-out relationship in this prompt. The printed task is: On a square grid, a composite shape has 1 square, 1 triangle, and 1 rectangle joined together. How many simple shapes were used to compose it? This rendering has choices 5 / 2 / 3 / 4 and seed 42."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The answer 3 is consistent with the stem, yet hints about counting sides and corners do not explain this specific operation or piece count; the ShapeBoard record gives no extra instructional detail. The printed task is: On a square grid, a composite shape has 1 square, 1 triangle, and 1 rectangle joined together. How many simple shapes were used to compose it? This rendering has choices 5 / 2 / 3 / 4 and seed 42."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer 3 agrees with the described parts or cut: the listed components, grid dimensions, and shape options are mathematically consistent. The printed task is: On a square grid, a composite shape has 1 square, 1 triangle, and 1 rectangle joined together. How many simple shapes were used to compose it? This rendering has choices 5 / 2 / 3 / 4 and seed 42."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w28-mat_g2_mg_q1_1-20260925",
+      "dispatch_id": "gpt6luna-s5-w28-20260925:mat_g2_mg_q1_1"
+    },
+    {
+      "sample_id": "d17b20109b3806dfacbe",
+      "checks": {
+        "ambiguity": {
+          "verdict": "FAIL",
+          "reasoning": "The stem only says two identical triangles meet along matching edges; without side lengths or angles, that arrangement need not produce the keyed rectangle rectangle, and the options omit other plausible quadrilaterals. The printed task is: Using cut-outs, two identical triangles are placed together along their matching edges. What shape can they form? This rendering has choices rectangle / circle / quarter-circle / half-circle and seed 43."
+        },
+        "contextual_logical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "Two equal triangles can be joined along a matching side in more than one geometric arrangement; the answer options rectangle / circle / quarter-circle / half-circle assume a particular shape that the stem does not constrain. The printed task is: Using cut-outs, two identical triangles are placed together along their matching edges. What shape can they form? This rendering has choices rectangle / circle / quarter-circle / half-circle and seed 43."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "The hint chain reviews side and corner properties but never establishes the required triangle angles or matching-edge arrangement; it cannot justify the keyed rectangle. The no separate visual metadata does not supply those missing constraints. The printed task is: Using cut-outs, two identical triangles are placed together along their matching edges. What shape can they form? This rendering has choices rectangle / circle / quarter-circle / half-circle and seed 43."
+        },
+        "mathematical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The keyed answer rectangle is possible for some triangle shapes, but the stem supplies no right-angle or side-length condition to ensure it; the options cannot make the geometry unique. The printed task is: Using cut-outs, two identical triangles are placed together along their matching edges. What shape can they form? This rendering has choices rectangle / circle / quarter-circle / half-circle and seed 43."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w28-mat_g2_mg_q1_1-20260925",
+      "dispatch_id": "gpt6luna-s5-w28-20260925:mat_g2_mg_q1_1"
+    },
+    {
+      "sample_id": "f4f018ba5d98bad07139",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The wording gives the component shapes or cut and asks for a count or resulting shape; the keyed response rectangle is the uniquely supported result among circle / quarter-circle / rectangle / triangle. The printed task is: On a square grid, a composite figure is made by joining 2 squares of 4 grid units each side by side. What shape is formed? This rendering has choices circle / quarter-circle / rectangle / triangle and seed 44."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The stated pieces and action form a plausible geometry task, and the answer rectangle follows from the specified square-grid or cut-out relationship in this prompt. The printed task is: On a square grid, a composite figure is made by joining 2 squares of 4 grid units each side by side. What shape is formed? This rendering has choices circle / quarter-circle / rectangle / triangle and seed 44."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The answer rectangle is consistent with the stem, yet hints about counting sides and corners do not explain this specific operation or piece count; the ShapeBoard record gives no extra instructional detail. The printed task is: On a square grid, a composite figure is made by joining 2 squares of 4 grid units each side by side. What shape is formed? This rendering has choices circle / quarter-circle / rectangle / triangle and seed 44."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer rectangle agrees with the described parts or cut: the listed components, grid dimensions, and shape options are mathematically consistent. The printed task is: On a square grid, a composite figure is made by joining 2 squares of 4 grid units each side by side. What shape is formed? This rendering has choices circle / quarter-circle / rectangle / triangle and seed 44."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w28-mat_g2_mg_q1_1-20260925",
+      "dispatch_id": "gpt6luna-s5-w28-20260925:mat_g2_mg_q1_1"
+    },
+    {
+      "sample_id": "b8f7e90549e1c8be1364",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The wording gives the component shapes or cut and asks for a count or resulting shape; the keyed response 2 is the uniquely supported result among 1 / 3 / 2 / 4. The printed task is: A composite figure is made of a rectangle with a half-circle attached on top. How many simple shapes form this figure? This rendering has choices 1 / 3 / 2 / 4 and seed 45."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The stated pieces and action form a plausible geometry task, and the answer 2 follows from the specified square-grid or cut-out relationship in this prompt. The printed task is: A composite figure is made of a rectangle with a half-circle attached on top. How many simple shapes form this figure? This rendering has choices 1 / 3 / 2 / 4 and seed 45."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The answer 2 is consistent with the stem, yet hints about counting sides and corners do not explain this specific operation or piece count; the no separate visual record gives no extra instructional detail. The printed task is: A composite figure is made of a rectangle with a half-circle attached on top. How many simple shapes form this figure? This rendering has choices 1 / 3 / 2 / 4 and seed 45."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer 2 agrees with the described parts or cut: the listed components, grid dimensions, and shape options are mathematically consistent. The printed task is: A composite figure is made of a rectangle with a half-circle attached on top. How many simple shapes form this figure? This rendering has choices 1 / 3 / 2 / 4 and seed 45."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w28-mat_g2_mg_q1_1-20260925",
+      "dispatch_id": "gpt6luna-s5-w28-20260925:mat_g2_mg_q1_1"
+    },
+    {
+      "sample_id": "a10f0a33b73bd5f75c48",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The wording gives the component shapes or cut and asks for a count or resulting shape; the keyed response circle is the uniquely supported result among rectangle / square / circle / triangle. The printed task is: Using cut-outs, two half-circles are joined along their flat straight edges. What shape is formed? This rendering has choices rectangle / square / circle / triangle and seed 46."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The stated pieces and action form a plausible geometry task, and the answer circle follows from the specified square-grid or cut-out relationship in this prompt. The printed task is: Using cut-outs, two half-circles are joined along their flat straight edges. What shape is formed? This rendering has choices rectangle / square / circle / triangle and seed 46."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The answer circle is consistent with the stem, yet hints about counting sides and corners do not explain this specific operation or piece count; the no separate visual record gives no extra instructional detail. The printed task is: Using cut-outs, two half-circles are joined along their flat straight edges. What shape is formed? This rendering has choices rectangle / square / circle / triangle and seed 46."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer circle agrees with the described parts or cut: the listed components, grid dimensions, and shape options are mathematically consistent. The printed task is: Using cut-outs, two half-circles are joined along their flat straight edges. What shape is formed? This rendering has choices rectangle / square / circle / triangle and seed 46."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w28-mat_g2_mg_q1_1-20260925",
+      "dispatch_id": "gpt6luna-s5-w28-20260925:mat_g2_mg_q1_1"
+    },
+    {
+      "sample_id": "662228dac126f0c8a0a6",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The wording gives the component shapes or cut and asks for a count or resulting shape; the keyed response square is the uniquely supported result among circle / half-circle / square / triangle. The printed task is: On a square grid, a 4-by-2 rectangle is cut straight down the middle into two 2-by-2 parts. What shape is each part? This rendering has choices circle / half-circle / square / triangle and seed 500."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The stated pieces and action form a plausible geometry task, and the answer square follows from the specified square-grid or cut-out relationship in this prompt. The printed task is: On a square grid, a 4-by-2 rectangle is cut straight down the middle into two 2-by-2 parts. What shape is each part? This rendering has choices circle / half-circle / square / triangle and seed 500."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The answer square is consistent with the stem, yet hints about counting sides and corners do not explain this specific operation or piece count; the ShapeBoard record gives no extra instructional detail. The printed task is: On a square grid, a 4-by-2 rectangle is cut straight down the middle into two 2-by-2 parts. What shape is each part? This rendering has choices circle / half-circle / square / triangle and seed 500."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer square agrees with the described parts or cut: the listed components, grid dimensions, and shape options are mathematically consistent. The printed task is: On a square grid, a 4-by-2 rectangle is cut straight down the middle into two 2-by-2 parts. What shape is each part? This rendering has choices circle / half-circle / square / triangle and seed 500."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w28-mat_g2_mg_q1_1-20260925",
+      "dispatch_id": "gpt6luna-s5-w28-20260925:mat_g2_mg_q1_1"
+    },
+    {
+      "sample_id": "3aae7738a6107996b681",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The wording gives the component shapes or cut and asks for a count or resulting shape; the keyed response 3 is the uniquely supported result among 4 / 3 / 2 / 5. The printed task is: On a square grid, a composite shape has 1 square, 1 triangle, and 1 rectangle joined together. How many simple shapes were used to compose it? This rendering has choices 4 / 3 / 2 / 5 and seed 501."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The stated pieces and action form a plausible geometry task, and the answer 3 follows from the specified square-grid or cut-out relationship in this prompt. The printed task is: On a square grid, a composite shape has 1 square, 1 triangle, and 1 rectangle joined together. How many simple shapes were used to compose it? This rendering has choices 4 / 3 / 2 / 5 and seed 501."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The answer 3 is consistent with the stem, yet hints about counting sides and corners do not explain this specific operation or piece count; the ShapeBoard record gives no extra instructional detail. The printed task is: On a square grid, a composite shape has 1 square, 1 triangle, and 1 rectangle joined together. How many simple shapes were used to compose it? This rendering has choices 4 / 3 / 2 / 5 and seed 501."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer 3 agrees with the described parts or cut: the listed components, grid dimensions, and shape options are mathematically consistent. The printed task is: On a square grid, a composite shape has 1 square, 1 triangle, and 1 rectangle joined together. How many simple shapes were used to compose it? This rendering has choices 4 / 3 / 2 / 5 and seed 501."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w28-mat_g2_mg_q1_1-20260925",
+      "dispatch_id": "gpt6luna-s5-w28-20260925:mat_g2_mg_q1_1"
+    },
+    {
+      "sample_id": "db7d3e262b33e6f73e98",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The wording gives the component shapes or cut and asks for a count or resulting shape; the keyed response 3 is the uniquely supported result among 2 / 1 / 4 / 3. The printed task is: On a square grid, a composite figure is made of 1 square, 1 half-circle, and 1 rectangle. How many shapes form this composite figure? This rendering has choices 2 / 1 / 4 / 3 and seed 502."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The stated pieces and action form a plausible geometry task, and the answer 3 follows from the specified square-grid or cut-out relationship in this prompt. The printed task is: On a square grid, a composite figure is made of 1 square, 1 half-circle, and 1 rectangle. How many shapes form this composite figure? This rendering has choices 2 / 1 / 4 / 3 and seed 502."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The answer 3 is consistent with the stem, yet hints about counting sides and corners do not explain this specific operation or piece count; the ShapeBoard record gives no extra instructional detail. The printed task is: On a square grid, a composite figure is made of 1 square, 1 half-circle, and 1 rectangle. How many shapes form this composite figure? This rendering has choices 2 / 1 / 4 / 3 and seed 502."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer 3 agrees with the described parts or cut: the listed components, grid dimensions, and shape options are mathematically consistent. The printed task is: On a square grid, a composite figure is made of 1 square, 1 half-circle, and 1 rectangle. How many shapes form this composite figure? This rendering has choices 2 / 1 / 4 / 3 and seed 502."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w28-mat_g2_mg_q1_1-20260925",
+      "dispatch_id": "gpt6luna-s5-w28-20260925:mat_g2_mg_q1_1"
+    },
+    {
+      "sample_id": "d0c8f81c97650654545f",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The wording gives the component shapes or cut and asks for a count or resulting shape; the keyed response 2 is the uniquely supported result among 3 / 4 / 2 / 1. The printed task is: On a square grid, a rotated composite shape is made of a square and a triangle. How many simple shapes make up this figure? This rendering has choices 3 / 4 / 2 / 1 and seed 600."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The stated pieces and action form a plausible geometry task, and the answer 2 follows from the specified square-grid or cut-out relationship in this prompt. The printed task is: On a square grid, a rotated composite shape is made of a square and a triangle. How many simple shapes make up this figure? This rendering has choices 3 / 4 / 2 / 1 and seed 600."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The answer 2 is consistent with the stem, yet hints about counting sides and corners do not explain this specific operation or piece count; the no separate visual record gives no extra instructional detail. The printed task is: On a square grid, a rotated composite shape is made of a square and a triangle. How many simple shapes make up this figure? This rendering has choices 3 / 4 / 2 / 1 and seed 600."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer 2 agrees with the described parts or cut: the listed components, grid dimensions, and shape options are mathematically consistent. The printed task is: On a square grid, a rotated composite shape is made of a square and a triangle. How many simple shapes make up this figure? This rendering has choices 3 / 4 / 2 / 1 and seed 600."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w28-mat_g2_mg_q1_1-20260925",
+      "dispatch_id": "gpt6luna-s5-w28-20260925:mat_g2_mg_q1_1"
+    },
+    {
+      "sample_id": "5380b0f639beec1cb5ec",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The wording gives the component shapes or cut and asks for a count or resulting shape; the keyed response two triangles is the uniquely supported result among two triangles / two rectangles / two squares / two circles. The printed task is: Using cut-outs, a square is cut along a slant from one corner to the opposite corner. What two shapes are made? This rendering has choices two triangles / two rectangles / two squares / two circles and seed 601."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The stated pieces and action form a plausible geometry task, and the answer two triangles follows from the specified square-grid or cut-out relationship in this prompt. The printed task is: Using cut-outs, a square is cut along a slant from one corner to the opposite corner. What two shapes are made? This rendering has choices two triangles / two rectangles / two squares / two circles and seed 601."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The answer two triangles is consistent with the stem, yet hints about counting sides and corners do not explain this specific operation or piece count; the ShapeBoard record gives no extra instructional detail. The printed task is: Using cut-outs, a square is cut along a slant from one corner to the opposite corner. What two shapes are made? This rendering has choices two triangles / two rectangles / two squares / two circles and seed 601."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer two triangles agrees with the described parts or cut: the listed components, grid dimensions, and shape options are mathematically consistent. The printed task is: Using cut-outs, a square is cut along a slant from one corner to the opposite corner. What two shapes are made? This rendering has choices two triangles / two rectangles / two squares / two circles and seed 601."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w28-mat_g2_mg_q1_1-20260925",
+      "dispatch_id": "gpt6luna-s5-w28-20260925:mat_g2_mg_q1_1"
+    },
+    {
+      "sample_id": "80c1d9255f92b94606dc",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The wording gives the component shapes or cut and asks for a count or resulting shape; the keyed response circle is the uniquely supported result among triangle / circle / rectangle / square. The printed task is: Using cut-outs, four quarter-circles of the same size are joined together. What complete shape do they make? This rendering has choices triangle / circle / rectangle / square and seed 603."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The stated pieces and action form a plausible geometry task, and the answer circle follows from the specified square-grid or cut-out relationship in this prompt. The printed task is: Using cut-outs, four quarter-circles of the same size are joined together. What complete shape do they make? This rendering has choices triangle / circle / rectangle / square and seed 603."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The answer circle is consistent with the stem, yet hints about counting sides and corners do not explain this specific operation or piece count; the ShapeBoard record gives no extra instructional detail. The printed task is: Using cut-outs, four quarter-circles of the same size are joined together. What complete shape do they make? This rendering has choices triangle / circle / rectangle / square and seed 603."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer circle agrees with the described parts or cut: the listed components, grid dimensions, and shape options are mathematically consistent. The printed task is: Using cut-outs, four quarter-circles of the same size are joined together. What complete shape do they make? This rendering has choices triangle / circle / rectangle / square and seed 603."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w28-mat_g2_mg_q1_1-20260925",
+      "dispatch_id": "gpt6luna-s5-w28-20260925:mat_g2_mg_q1_1"
+    },
+    {
+      "sample_id": "e891cfde92ff1d1dfe04",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The wording gives the component shapes or cut and asks for a count or resulting shape; the keyed response circle is the uniquely supported result among triangle / rectangle / square / circle. The printed task is: Using cut-outs, four quarter-circles of the same size are joined together. What complete shape do they make? This rendering has choices triangle / rectangle / square / circle and seed 700."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The stated pieces and action form a plausible geometry task, and the answer circle follows from the specified square-grid or cut-out relationship in this prompt. The printed task is: Using cut-outs, four quarter-circles of the same size are joined together. What complete shape do they make? This rendering has choices triangle / rectangle / square / circle and seed 700."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The answer circle is consistent with the stem, yet hints about counting sides and corners do not explain this specific operation or piece count; the ShapeBoard record gives no extra instructional detail. The printed task is: Using cut-outs, four quarter-circles of the same size are joined together. What complete shape do they make? This rendering has choices triangle / rectangle / square / circle and seed 700."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer circle agrees with the described parts or cut: the listed components, grid dimensions, and shape options are mathematically consistent. The printed task is: Using cut-outs, four quarter-circles of the same size are joined together. What complete shape do they make? This rendering has choices triangle / rectangle / square / circle and seed 700."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w28-mat_g2_mg_q1_1-20260925",
+      "dispatch_id": "gpt6luna-s5-w28-20260925:mat_g2_mg_q1_1"
+    },
+    {
+      "sample_id": "09d3f11897a5c6a819c7",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The wording gives the component shapes or cut and asks for a count or resulting shape; the keyed response 2 is the uniquely supported result among 2 / 3 / 4 / 1. The printed task is: 💃 Sir Rez has a math challenge about dance shoes. A composite figure is made of a rectangle with a half-circle attached on top. How many simple shapes form this figure? This rendering has choices 2 / 3 / 4 / 1 and seed 701."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The stated pieces and action form a plausible geometry task, and the answer 2 follows from the specified square-grid or cut-out relationship in this prompt. The printed task is: 💃 Sir Rez has a math challenge about dance shoes. A composite figure is made of a rectangle with a half-circle attached on top. How many simple shapes form this figure? This rendering has choices 2 / 3 / 4 / 1 and seed 701."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The answer 2 is consistent with the stem, yet hints about counting sides and corners do not explain this specific operation or piece count; the no separate visual record gives no extra instructional detail. The printed task is: 💃 Sir Rez has a math challenge about dance shoes. A composite figure is made of a rectangle with a half-circle attached on top. How many simple shapes form this figure? This rendering has choices 2 / 3 / 4 / 1 and seed 701."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer 2 agrees with the described parts or cut: the listed components, grid dimensions, and shape options are mathematically consistent. The printed task is: 💃 Sir Rez has a math challenge about dance shoes. A composite figure is made of a rectangle with a half-circle attached on top. How many simple shapes form this figure? This rendering has choices 2 / 3 / 4 / 1 and seed 701."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w28-mat_g2_mg_q1_1-20260925",
+      "dispatch_id": "gpt6luna-s5-w28-20260925:mat_g2_mg_q1_1"
+    },
+    {
+      "sample_id": "412b372eda7f21bbf5a5",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The wording gives the component shapes or cut and asks for a count or resulting shape; the keyed response circle is the uniquely supported result among rectangle / triangle / square / circle. The printed task is: ✝️ Moses has a math challenge about olives. Using cut-outs, two half-circles are joined along their flat straight edges. What shape is formed? This rendering has choices rectangle / triangle / square / circle and seed 702."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The stated pieces and action form a plausible geometry task, and the answer circle follows from the specified square-grid or cut-out relationship in this prompt. The printed task is: ✝️ Moses has a math challenge about olives. Using cut-outs, two half-circles are joined along their flat straight edges. What shape is formed? This rendering has choices rectangle / triangle / square / circle and seed 702."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The answer circle is consistent with the stem, yet hints about counting sides and corners do not explain this specific operation or piece count; the ShapeBoard record gives no extra instructional detail. The printed task is: ✝️ Moses has a math challenge about olives. Using cut-outs, two half-circles are joined along their flat straight edges. What shape is formed? This rendering has choices rectangle / triangle / square / circle and seed 702."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer circle agrees with the described parts or cut: the listed components, grid dimensions, and shape options are mathematically consistent. The printed task is: ✝️ Moses has a math challenge about olives. Using cut-outs, two half-circles are joined along their flat straight edges. What shape is formed? This rendering has choices rectangle / triangle / square / circle and seed 702."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w28-mat_g2_mg_q1_1-20260925",
+      "dispatch_id": "gpt6luna-s5-w28-20260925:mat_g2_mg_q1_1"
+    },
+    {
+      "sample_id": "235e9b8b65b657b15347",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The wording gives the component shapes or cut and asks for a count or resulting shape; the keyed response 3 is the uniquely supported result among 5 / 3 / 2 / 4. The printed task is: On a square grid, a composite shape has 1 square, 1 triangle, and 1 rectangle joined together. How many simple shapes were used to compose it? This rendering has choices 5 / 3 / 2 / 4 and seed 800."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The stated pieces and action form a plausible geometry task, and the answer 3 follows from the specified square-grid or cut-out relationship in this prompt. The printed task is: On a square grid, a composite shape has 1 square, 1 triangle, and 1 rectangle joined together. How many simple shapes were used to compose it? This rendering has choices 5 / 3 / 2 / 4 and seed 800."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The answer 3 is consistent with the stem, yet hints about counting sides and corners do not explain this specific operation or piece count; the ShapeBoard record gives no extra instructional detail. The printed task is: On a square grid, a composite shape has 1 square, 1 triangle, and 1 rectangle joined together. How many simple shapes were used to compose it? This rendering has choices 5 / 3 / 2 / 4 and seed 800."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer 3 agrees with the described parts or cut: the listed components, grid dimensions, and shape options are mathematically consistent. The printed task is: On a square grid, a composite shape has 1 square, 1 triangle, and 1 rectangle joined together. How many simple shapes were used to compose it? This rendering has choices 5 / 3 / 2 / 4 and seed 800."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w28-mat_g2_mg_q1_1-20260925",
+      "dispatch_id": "gpt6luna-s5-w28-20260925:mat_g2_mg_q1_1"
+    },
+    {
+      "sample_id": "add6b6c428c9e7de263e",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The wording gives the component shapes or cut and asks for a count or resulting shape; the keyed response 4 is the uniquely supported result among 2 / 6 / 4 / 3. The printed task is: On a square grid, how many 1-by-1 unit squares are needed to compose a 2-by-2 square? This rendering has choices 2 / 6 / 4 / 3 and seed 900."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The stated pieces and action form a plausible geometry task, and the answer 4 follows from the specified square-grid or cut-out relationship in this prompt. The printed task is: On a square grid, how many 1-by-1 unit squares are needed to compose a 2-by-2 square? This rendering has choices 2 / 6 / 4 / 3 and seed 900."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The answer 4 is consistent with the stem, yet hints about counting sides and corners do not explain this specific operation or piece count; the no separate visual record gives no extra instructional detail. The printed task is: On a square grid, how many 1-by-1 unit squares are needed to compose a 2-by-2 square? This rendering has choices 2 / 6 / 4 / 3 and seed 900."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer 4 agrees with the described parts or cut: the listed components, grid dimensions, and shape options are mathematically consistent. The printed task is: On a square grid, how many 1-by-1 unit squares are needed to compose a 2-by-2 square? This rendering has choices 2 / 6 / 4 / 3 and seed 900."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w28-mat_g2_mg_q1_1-20260925",
+      "dispatch_id": "gpt6luna-s5-w28-20260925:mat_g2_mg_q1_1"
+    },
+    {
+      "sample_id": "a936a09a7ee69b2379d7",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The wording gives the component shapes or cut and asks for a count or resulting shape; the keyed response rectangle is the uniquely supported result among quarter-circle / triangle / rectangle / circle. The printed task is: On a square grid, a composite figure is made by joining 2 squares of 4 grid units each side by side. What shape is formed? This rendering has choices quarter-circle / triangle / rectangle / circle and seed 901."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The stated pieces and action form a plausible geometry task, and the answer rectangle follows from the specified square-grid or cut-out relationship in this prompt. The printed task is: On a square grid, a composite figure is made by joining 2 squares of 4 grid units each side by side. What shape is formed? This rendering has choices quarter-circle / triangle / rectangle / circle and seed 901."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The answer rectangle is consistent with the stem, yet hints about counting sides and corners do not explain this specific operation or piece count; the ShapeBoard record gives no extra instructional detail. The printed task is: On a square grid, a composite figure is made by joining 2 squares of 4 grid units each side by side. What shape is formed? This rendering has choices quarter-circle / triangle / rectangle / circle and seed 901."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer rectangle agrees with the described parts or cut: the listed components, grid dimensions, and shape options are mathematically consistent. The printed task is: On a square grid, a composite figure is made by joining 2 squares of 4 grid units each side by side. What shape is formed? This rendering has choices quarter-circle / triangle / rectangle / circle and seed 901."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w28-mat_g2_mg_q1_1-20260925",
+      "dispatch_id": "gpt6luna-s5-w28-20260925:mat_g2_mg_q1_1"
+    },
+    {
+      "sample_id": "11f4b73165b87a4a8e2c",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The wording gives the component shapes or cut and asks for a count or resulting shape; the keyed response rectangle is the uniquely supported result among rectangle / circle / quarter-circle / triangle. The printed task is: On a square grid, a composite figure is made by joining 2 squares of 4 grid units each side by side. What shape is formed? This rendering has choices rectangle / circle / quarter-circle / triangle and seed 1000."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The stated pieces and action form a plausible geometry task, and the answer rectangle follows from the specified square-grid or cut-out relationship in this prompt. The printed task is: On a square grid, a composite figure is made by joining 2 squares of 4 grid units each side by side. What shape is formed? This rendering has choices rectangle / circle / quarter-circle / triangle and seed 1000."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The answer rectangle is consistent with the stem, yet hints about counting sides and corners do not explain this specific operation or piece count; the ShapeBoard record gives no extra instructional detail. The printed task is: On a square grid, a composite figure is made by joining 2 squares of 4 grid units each side by side. What shape is formed? This rendering has choices rectangle / circle / quarter-circle / triangle and seed 1000."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer rectangle agrees with the described parts or cut: the listed components, grid dimensions, and shape options are mathematically consistent. The printed task is: On a square grid, a composite figure is made by joining 2 squares of 4 grid units each side by side. What shape is formed? This rendering has choices rectangle / circle / quarter-circle / triangle and seed 1000."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w28-mat_g2_mg_q1_1-20260925",
+      "dispatch_id": "gpt6luna-s5-w28-20260925:mat_g2_mg_q1_1"
+    },
+    {
+      "sample_id": "30e73e50a7f345e0a9f5",
+      "checks": {
+        "ambiguity": {
+          "verdict": "FAIL",
+          "reasoning": "The stem only says two identical triangles meet along matching edges; without side lengths or angles, that arrangement need not produce the keyed rectangle rectangle, and the options omit other plausible quadrilaterals. The printed task is: Using cut-outs, two identical triangles are placed together along their matching edges. What shape can they form? This rendering has choices rectangle / quarter-circle / half-circle / circle and seed 1001."
+        },
+        "contextual_logical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "Two equal triangles can be joined along a matching side in more than one geometric arrangement; the answer options rectangle / quarter-circle / half-circle / circle assume a particular shape that the stem does not constrain. The printed task is: Using cut-outs, two identical triangles are placed together along their matching edges. What shape can they form? This rendering has choices rectangle / quarter-circle / half-circle / circle and seed 1001."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "The hint chain reviews side and corner properties but never establishes the required triangle angles or matching-edge arrangement; it cannot justify the keyed rectangle. The ShapeBoard metadata does not supply those missing constraints. The printed task is: Using cut-outs, two identical triangles are placed together along their matching edges. What shape can they form? This rendering has choices rectangle / quarter-circle / half-circle / circle and seed 1001."
+        },
+        "mathematical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The keyed answer rectangle is possible for some triangle shapes, but the stem supplies no right-angle or side-length condition to ensure it; the options cannot make the geometry unique. The printed task is: Using cut-outs, two identical triangles are placed together along their matching edges. What shape can they form? This rendering has choices rectangle / quarter-circle / half-circle / circle and seed 1001."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w28-mat_g2_mg_q1_1-20260925",
+      "dispatch_id": "gpt6luna-s5-w28-20260925:mat_g2_mg_q1_1"
+    },
+    {
+      "sample_id": "d5e9181d152e630d3624",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The wording gives the component shapes or cut and asks for a count or resulting shape; the keyed response 3 is the uniquely supported result among 3 / 2 / 1 / 4. The printed task is: On a square grid, a composite figure is made of 1 square, 1 half-circle, and 1 rectangle. How many shapes form this composite figure? This rendering has choices 3 / 2 / 1 / 4 and seed 1002."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The stated pieces and action form a plausible geometry task, and the answer 3 follows from the specified square-grid or cut-out relationship in this prompt. The printed task is: On a square grid, a composite figure is made of 1 square, 1 half-circle, and 1 rectangle. How many shapes form this composite figure? This rendering has choices 3 / 2 / 1 / 4 and seed 1002."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The answer 3 is consistent with the stem, yet hints about counting sides and corners do not explain this specific operation or piece count; the ShapeBoard record gives no extra instructional detail. The printed task is: On a square grid, a composite figure is made of 1 square, 1 half-circle, and 1 rectangle. How many shapes form this composite figure? This rendering has choices 3 / 2 / 1 / 4 and seed 1002."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer 3 agrees with the described parts or cut: the listed components, grid dimensions, and shape options are mathematically consistent. The printed task is: On a square grid, a composite figure is made of 1 square, 1 half-circle, and 1 rectangle. How many shapes form this composite figure? This rendering has choices 3 / 2 / 1 / 4 and seed 1002."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w28-mat_g2_mg_q1_1-20260925",
+      "dispatch_id": "gpt6luna-s5-w28-20260925:mat_g2_mg_q1_1"
+    }
+  ],
+  "clause_evidence": [
+    {
+      "requirement_id": "compose_figures",
+      "clause": "Compose",
+      "verdict": "CONCERN",
+      "reasoning": "Several stems ask what shape results from joined pieces or how many pieces compose a figure, though most assess composition through verbal responses rather than construction.",
+      "sample_ids": [
+        "d17b20109b3806dfacbe",
+        "b8f7e90549e1c8be1364",
+        "a10f0a33b73bd5f75c48"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w28-mat_g2_mg_q1_1-20260925",
+      "dispatch_id": "gpt6luna-s5-w28-20260925:mat_g2_mg_q1_1"
+    },
+    {
+      "requirement_id": "decompose_figures",
+      "clause": "decompose",
+      "verdict": "CONCERN",
+      "reasoning": "The diagonal square cut and rectangle split demonstrate decomposition, but these are relatively few examples among many component-counting prompts.",
+      "sample_ids": [
+        "662228dac126f0c8a0a6",
+        "5380b0f639beec1cb5ec"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w28-mat_g2_mg_q1_1-20260925",
+      "dispatch_id": "gpt6luna-s5-w28-20260925:mat_g2_mg_q1_1"
+    },
+    {
+      "requirement_id": "composite_figures",
+      "clause": "composite figures made up",
+      "verdict": "PASS",
+      "reasoning": "Multiple items describe a whole figure as assembled from named smaller shapes and ask learners to reason about its parts or whole.",
+      "sample_ids": [
+        "b33e1b7e264ae269b977",
+        "b8f7e90549e1c8be1364",
+        "3aae7738a6107996b681"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w28-mat_g2_mg_q1_1-20260925",
+      "dispatch_id": "gpt6luna-s5-w28-20260925:mat_g2_mg_q1_1"
+    },
+    {
+      "requirement_id": "squares",
+      "clause": "squares",
+      "verdict": "PASS",
+      "reasoning": "Square components appear in composite counts, grid arrangements, and a square cut into smaller equal grid units.",
+      "sample_ids": [
+        "f4f018ba5d98bad07139",
+        "662228dac126f0c8a0a6",
+        "add6b6c428c9e7de263e"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w28-mat_g2_mg_q1_1-20260925",
+      "dispatch_id": "gpt6luna-s5-w28-20260925:mat_g2_mg_q1_1"
+    },
+    {
+      "requirement_id": "rectangles",
+      "clause": "rectangles",
+      "verdict": "PASS",
+      "reasoning": "Rectangles are included as components, as a resulting shape from joined squares, and as a shape partitioned into squares.",
+      "sample_ids": [
+        "f4f018ba5d98bad07139",
+        "b8f7e90549e1c8be1364",
+        "662228dac126f0c8a0a6"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w28-mat_g2_mg_q1_1-20260925",
+      "dispatch_id": "gpt6luna-s5-w28-20260925:mat_g2_mg_q1_1"
+    },
+    {
+      "requirement_id": "triangles",
+      "clause": "triangles",
+      "verdict": "CONCERN",
+      "reasoning": "Triangles occur in counting and cutting examples, but the task claiming two identical triangles form a rectangle lacks constraints that guarantee that result.",
+      "sample_ids": [
+        "b33e1b7e264ae269b977",
+        "5380b0f639beec1cb5ec",
+        "30e73e50a7f345e0a9f5"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w28-mat_g2_mg_q1_1-20260925",
+      "dispatch_id": "gpt6luna-s5-w28-20260925:mat_g2_mg_q1_1"
+    },
+    {
+      "requirement_id": "circles",
+      "clause": "circles",
+      "verdict": "PASS",
+      "reasoning": "Items use half circles or quarter circles as parts and ask learners to identify the complete circle those parts can form.",
+      "sample_ids": [
+        "a10f0a33b73bd5f75c48",
+        "80c1d9255f92b94606dc",
+        "e891cfde92ff1d1dfe04"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w28-mat_g2_mg_q1_1-20260925",
+      "dispatch_id": "gpt6luna-s5-w28-20260925:mat_g2_mg_q1_1"
+    },
+    {
+      "requirement_id": "half_circles",
+      "clause": "half circles",
+      "verdict": "PASS",
+      "reasoning": "Half circles appear attached to a rectangle and joined along flat edges to produce a complete circular figure.",
+      "sample_ids": [
+        "b8f7e90549e1c8be1364",
+        "a10f0a33b73bd5f75c48",
+        "09d3f11897a5c6a819c7"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w28-mat_g2_mg_q1_1-20260925",
+      "dispatch_id": "gpt6luna-s5-w28-20260925:mat_g2_mg_q1_1"
+    },
+    {
+      "requirement_id": "quarter_circles",
+      "clause": "quarter circles",
+      "verdict": "PASS",
+      "reasoning": "A sample explicitly joins four equal quarter circles and asks for the complete resulting shape.",
+      "sample_ids": [
+        "80c1d9255f92b94606dc",
+        "e891cfde92ff1d1dfe04"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w28-mat_g2_mg_q1_1-20260925",
+      "dispatch_id": "gpt6luna-s5-w28-20260925:mat_g2_mg_q1_1"
+    },
+    {
+      "requirement_id": "cut_outs",
+      "clause": "cut-outs",
+      "verdict": "PASS",
+      "reasoning": "Several prompts explicitly use cut-outs for joining shapes, and another asks what results from cutting a square along a diagonal.",
+      "sample_ids": [
+        "d17b20109b3806dfacbe",
+        "a10f0a33b73bd5f75c48",
+        "5380b0f639beec1cb5ec"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w28-mat_g2_mg_q1_1-20260925",
+      "dispatch_id": "gpt6luna-s5-w28-20260925:mat_g2_mg_q1_1"
+    },
+    {
+      "requirement_id": "square_grids",
+      "clause": "square grids",
+      "verdict": "PASS",
+      "reasoning": "Grid-based examples use side-by-side unit squares, composite square-and-rectangle figures, and cutting a 4-by-2 rectangle into squares.",
+      "sample_ids": [
+        "f4f018ba5d98bad07139",
+        "662228dac126f0c8a0a6",
+        "add6b6c428c9e7de263e"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w28-mat_g2_mg_q1_1-20260925",
+      "dispatch_id": "gpt6luna-s5-w28-20260925:mat_g2_mg_q1_1"
+    }
+  ],
+  "dispatch_provenance": [
+    {
+      "dispatch_id": "gpt6luna-s5-w28-20260925:mat_g2_mg_q1_1",
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w28-mat_g2_mg_q1_1-20260925",
+      "review_date": "2026-09-25",
+      "blind": true,
+      "packet_digest": "0a688c7ed4e9cf1e2c5236d4471afed230950f0289089b01ae5afd0835ccc467",
+      "clause_ids": [
+        "compose_figures",
+        "decompose_figures",
+        "composite_figures",
+        "squares",
+        "rectangles",
+        "triangles",
+        "circles",
+        "half_circles",
+        "quarter_circles",
+        "cut_outs",
+        "square_grids"
+      ],
+      "response_ref": ".responses/gpt6luna-s5-w28-20260925.json",
+      "response_digest": "f95d5d24300fddf9d1c2683d0b40ca0d794477fd381a4c1e9471e8927399a1e1",
+      "prompt_ref": ".responses/gpt6luna-s5-w28-20260925.prompt.txt",
+      "prompt_digest": "078436217765deea4d753d1136ce7212c66a402819a5ad71dcc3f4341c079149",
+      "samples_delivery": "Dispatch-time local prompt file read by separate gpt-6-luna medium reviewer; no source or prior reviews supplied",
+      "tool_uses_by_reviewer": "Reviewer reported: cat to read prompt; python3 to write JSON; self-audit found repeated reasoning; inspected own verdict and revised with sample option order and seed, then reran audit. Reviewer-provided report."
     }
   ],
   "findings": {
-    "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "Composing and decomposing are both attempted, but roughly half the items list the parts inside the sentence and then ask how many simple shapes were used, so the pupil answers by counting nouns in the stem rather than by working with cut-outs or a grid."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "All six named shape families turn up somewhere in the set, and decomposition is genuinely represented as well as composition: a square cut corner to corner yields two triangles, and four quarter-circles are joined into a whole."
-    },
     "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Sentences stay short, the counts involved never exceed four, and the shape vocabulary is the everyday Grade 2 set with no reference to angles, symmetry or measurement."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "Presentation genuinely shifts across the set: grid-based figures, cut-out manipulations, name-the-resulting-shape items and count-the-parts items each appear more than once."
+      "verdict": "CONCERN",
+      "rationale": "Component counting and simple grid cuts suit Grade 2, but the generic side-and-corner hints do not guide learners through joining or partitioning composite figures."
     },
     "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "Samples ask learners to count components, join squares or circular parts, and split shapes, matching composition and decomposition of the listed elementary figures."
+    },
+    "competency_fulfillment": {
       "verdict": "CONCERN",
-      "rationale": "The seed 600 item introduces a rotated composite shape yet still only asks for the number of simple shapes, so the added rotation changes nothing about the reasoning; difficulty is being varied on an orientation axis that the answer does not depend on."
+      "rationale": "The requirement list names both actions, all specified figure types, cut-outs, and square grids, but actual construction practice is mostly assessed through verbal multiple choice.",
+      "decomposition": {
+        "verdict": "PASS",
+        "reasoning": "The competency requires composing and decomposing composite figures from squares, rectangles, triangles, circles, half circles, and quarter circles, using cut-outs and square grids. Each stated component appears as a separate requirement.",
+        "requirement_ids": [
+          "compose_figures",
+          "decompose_figures",
+          "composite_figures",
+          "squares",
+          "rectangles",
+          "triangles",
+          "circles",
+          "half_circles",
+          "quarter_circles",
+          "cut_outs",
+          "square_grids"
+        ]
+      },
+      "clause_ids": [
+        "compose_figures",
+        "decompose_figures",
+        "composite_figures",
+        "squares",
+        "rectangles",
+        "triangles",
+        "circles",
+        "half_circles",
+        "quarter_circles",
+        "cut_outs",
+        "square_grids"
+      ]
+    },
+    "comprehensive_coverage": {
+      "verdict": "CONCERN",
+      "rationale": "Examples include several named shapes and both grids and cut-outs, but much of the set tests identification or counts rather than having students build or take apart the figures.",
+      "clause_ids": [
+        "compose_figures",
+        "decompose_figures",
+        "composite_figures",
+        "squares",
+        "rectangles",
+        "triangles",
+        "circles",
+        "half_circles",
+        "quarter_circles",
+        "cut_outs",
+        "square_grids"
+      ]
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "This competency states no numeric ceiling, and the incidental quantities used, part counts of one to four and grid sizes of four by two, sit comfortably inside Grade 2 range."
+      "rationale": "The tasks use simple components, small grid dimensions, and direct shape naming, which are reasonable for Grade 2 geometry work."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "There are shape-count, joining, and cutting prompts across grids and cut-outs, although the repeated generic hint chain and multiple-choice format constrain variation."
     }
   },
-  "overall": "CONCERN"
+  "overall": "FAIL"
 }

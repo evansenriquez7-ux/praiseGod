@@ -1,7 +1,48 @@
 {
+  "schema_version": 2,
   "node_id": "mat_g1_na_q4_5",
-  "reviewed_by": "reviewer-c2-basalt-yarrow-7194",
-  "review_date": "2026-09-11",
+  "competency_snapshot": {
+    "text": "Compare different denominations of peso coins (excluding centavo coins) and bills up to ₱100.",
+    "grade": 1,
+    "quarter": 4,
+    "subdomain": null
+  },
+  "requirements_snapshot": [
+    {
+      "kind": "task",
+      "id": "compare",
+      "clause": "Compare"
+    },
+    {
+      "kind": "property",
+      "id": "different_denominations",
+      "clause": "different denominations"
+    },
+    {
+      "kind": "object",
+      "id": "peso_coins",
+      "clause": "peso coins"
+    },
+    {
+      "kind": "property",
+      "id": "excluding_centavo_coins",
+      "clause": "excluding centavo coins"
+    },
+    {
+      "kind": "object",
+      "id": "bills",
+      "clause": "bills"
+    },
+    {
+      "kind": "range",
+      "id": "up_to_100",
+      "clause": "up to ₱100"
+    }
+  ],
+  "packet_digest": "e15cea97ba30d7e009a304a79618a2bf3f04426bd65aa13509ef12d345d80734",
+  "sampling_version": "phase2-stratified-v2-rendered-visual",
+  "reviewed_by": "blind-reviewer-gpt-6-luna-medium-w23-mat_g1_na_q4_5-20260925",
+  "review_date": "2026-09-25",
   "blind": true,
   "sample_seeds": [
     42,
@@ -17,20 +58,167 @@
     604,
     605,
     606,
-    607
+    607,
+    700,
+    701,
+    702,
+    800,
+    801,
+    900,
+    901,
+    1000,
+    1001,
+    1002
+  ],
+  "sample_ids": [
+    "eaebfc4d75f789ecd286",
+    "df833fe6ac9cadfad135",
+    "1762889fc8f74ea5e78f",
+    "f4f6ac67b9f8b8ad47c9",
+    "84663a49abfe4b6406ee",
+    "33d1b45c9f2b35bd0715",
+    "224c5f5b4f659c49afce",
+    "0d121aa18a343f807598",
+    "720559b322587cbb9c4e",
+    "50a38f41de37bf6b25df",
+    "f29b06c4eebbe8eedce1",
+    "c458ffeebb2fddf6ce56",
+    "158a8bc5bad2d0ac3de0",
+    "d4556f4d1b65db777970",
+    "3fbaac273087ae8e87d4",
+    "4b0200388c8dcd79fab1",
+    "d2b8e07455d1a03e1164",
+    "3724d09977c303ae8610",
+    "90556e809c73644452ad",
+    "4cf957057fcdd9facd74",
+    "fdc153e7e3ce9e8a923f",
+    "beacb3559aa1e99156e3",
+    "29553d0ca6a4a10badd2",
+    "8483532372b7bf1be8ae"
   ],
   "samples_reviewed": [
     {
+      "node_id": "mat_g1_na_q4_5",
       "seed": 42,
-      "formatter": "set_fill_in_blank",
+      "formatter": "read_mcq",
       "question_text": "Which has a smaller value: 1 ₱5 coin or 1 ₱50 bill?",
-      "correct_answer": "1 ₱5 coin"
+      "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "PesoMoney",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "1 ₱5 coin",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "1 ₱10 coin",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "They are equal",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "1 ₱50 bill",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "1 ₱5 coin",
+      "hints": [
+        "Find the total value of the first group of money.",
+        "Find the total value of the second group of money.",
+        "Compare the two values to see which one is greater."
+      ],
+      "visual_type": "PesoMoney",
+      "visual_payload": {
+        "coins": [
+          {
+            "denomination": 5,
+            "count": 1
+          }
+        ],
+        "bills": [],
+        "total": 5,
+        "target_amount": 5,
+        "exclude_centavos": true,
+        "coin_faces": [
+          1,
+          5,
+          10
+        ],
+        "bill_faces": [
+          20,
+          50,
+          100
+        ],
+        "require_fewest": true,
+        "is_interactive": false
+      },
+      "visual_render": {
+        "visual_type": "PesoMoney",
+        "renderer_input_digest": "6ad2dbce196cc70362368a7de2ac977e56371c245cd321760e1b12e1c6e32baa",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "PesoMoney",
+          "element_count": 6,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "COINS",
+            "₱5"
+          ],
+          "distinct_colours": [
+            "hsl(var(--text-muted)",
+            "#e2e8f0,",
+            "#cbd5e1)",
+            "#1e293b",
+            "#94a3b8"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "eaebfc4d75f789ecd286",
+      "replay_digest": "6756e54532f585fc83a3befe8206676922c90f6767c4a60a31c4fa6bcdf33b30"
     },
     {
+      "node_id": "mat_g1_na_q4_5",
       "seed": 43,
-      "formatter": "read_mcq",
+      "formatter": "mcq",
       "question_text": "Which has a greater value: 1 ₱50 bill or 1 ₱100 bill?",
-      "correct_answer": "C",
+      "correct_answer": "1 ₱100 bill",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -52,22 +240,100 @@
           "value": "They are equal",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "1 ₱100 bill",
+      "hints": [
+        "Find the total value of the first group of money.",
+        "Find the total value of the second group of money.",
+        "Compare the two values to see which one is greater."
+      ],
+      "sample_id": "df833fe6ac9cadfad135",
+      "replay_digest": "3750bae7d9ec1ca08b3c8ebcda0e7a4df6fefce52f7ec6a200647fce671b3356"
     },
     {
+      "node_id": "mat_g1_na_q4_5",
       "seed": 44,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "Which has a smaller value: 1 ₱20 bill or 1 ₱1 coin?",
       "correct_answer": "1 ₱1 coin",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
           "value": "1 ₱50 bill",
+          "text": "1 ₱50 bill",
           "is_correct": false
         },
         {
           "key": "B",
           "value": "They are equal",
+          "text": "They are equal",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "1 ₱20 bill",
+          "text": "1 ₱20 bill",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "1 ₱1 coin",
+          "text": "1 ₱1 coin",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": "1 ₱1 coin",
+      "hints": [
+        "Find the total value of the first group of money.",
+        "Find the total value of the second group of money.",
+        "Compare the two values to see which one is greater."
+      ],
+      "sample_id": "1762889fc8f74ea5e78f",
+      "replay_digest": "19931f23d56174d2f48b222996e1c2894bffb06d4cca660d0ea27e4bc43846a3"
+    },
+    {
+      "node_id": "mat_g1_na_q4_5",
+      "seed": 45,
+      "formatter": "mcq",
+      "question_text": "Which has a greater value: 1 ₱20 bill or 1 ₱50 bill?",
+      "correct_answer": "1 ₱50 bill",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "They are equal",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "1 ₱10 coin",
           "is_correct": false
         },
         {
@@ -77,22 +343,39 @@
         },
         {
           "key": "D",
-          "value": "1 ₱1 coin",
+          "value": "1 ₱50 bill",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": "1 ₱50 bill",
+      "hints": [
+        "Find the total value of the first group of money.",
+        "Find the total value of the second group of money.",
+        "Compare the two values to see which one is greater."
+      ],
+      "sample_id": "f4f6ac67b9f8b8ad47c9",
+      "replay_digest": "84336e3453b11f1da0046075ccdab190a3e236a83ecc90ec81de2a62e14f0120"
     },
     {
-      "seed": 45,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Which has a greater value: 1 ₱20 bill or 1 ₱50 bill?",
-      "correct_answer": "1 ₱50 bill"
-    },
-    {
+      "node_id": "mat_g1_na_q4_5",
       "seed": 46,
       "formatter": "cloze",
       "question_text": "Which has a smaller value: 1 ₱100 bill or 1 ₱1 coin?",
       "correct_answer": "1 ₱1 coin",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -118,13 +401,39 @@
           "text": "1 ₱1 coin",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": "1 ₱1 coin",
+      "hints": [
+        "Find the total value of the first group of money.",
+        "Find the total value of the second group of money.",
+        "Compare the two values to see which one is greater."
+      ],
+      "sample_id": "84663a49abfe4b6406ee",
+      "replay_digest": "6c098767282d4888516a2276ae833f975ea0c23b890f58c2ee230b010f79df27"
     },
     {
+      "node_id": "mat_g1_na_q4_5",
       "seed": 500,
       "formatter": "read_mcq",
       "question_text": "Which has a smaller value: 1 ₱20 bill or 1 ₱5 coin?",
       "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": {
+          "max_total": 1.0,
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "PesoMoney",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -146,47 +455,252 @@
           "value": "1 ₱20 bill",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "1 ₱5 coin",
+      "hints": [
+        "Find the total value of the first group of money.",
+        "Find the total value of the second group of money.",
+        "Compare the two values to see which one is greater."
+      ],
+      "visual_type": "PesoMoney",
+      "visual_payload": {
+        "coins": [],
+        "bills": [
+          {
+            "denomination": 20,
+            "count": 1
+          }
+        ],
+        "total": 20,
+        "target_amount": 20,
+        "exclude_centavos": true,
+        "coin_faces": [
+          1,
+          5,
+          10
+        ],
+        "bill_faces": [
+          20,
+          50,
+          100
+        ],
+        "require_fewest": true,
+        "is_interactive": false
+      },
+      "visual_render": {
+        "visual_type": "PesoMoney",
+        "renderer_input_digest": "9ce05910872dcfed5bd24a4d694ce15fe7199f40886c5c949ece52fce355d1af",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "PesoMoney",
+          "element_count": 11,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "BILLS",
+            "₱20",
+            "REPUBLIKA NG PILIPINAS"
+          ],
+          "distinct_colours": [
+            "hsl(var(--text-muted)",
+            "#ffedd5,",
+            "#ea580c)",
+            "#fff"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "33d1b45c9f2b35bd0715",
+      "replay_digest": "b8929bcb1a88bcca69713cab1ded82566e3cf3b6cd61d00d7377f74dc0924158"
     },
     {
+      "node_id": "mat_g1_na_q4_5",
       "seed": 501,
-      "formatter": "set_fill_in_blank",
+      "formatter": "read_mcq",
       "question_text": "Which has a greater value: 1 ₱10 coin or 1 ₱1 coin?",
-      "correct_answer": "1 ₱10 coin"
+      "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": {
+          "max_total": 1.0,
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "PesoMoney",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "1 ₱1 coin",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "1 ₱10 coin",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "They are equal",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "1 ₱50 bill",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "1 ₱10 coin",
+      "hints": [
+        "Find the total value of the first group of money.",
+        "Find the total value of the second group of money.",
+        "Compare the two values to see which one is greater."
+      ],
+      "visual_type": "PesoMoney",
+      "visual_payload": {
+        "coins": [
+          {
+            "denomination": 10,
+            "count": 1
+          }
+        ],
+        "bills": [],
+        "total": 10,
+        "target_amount": 10,
+        "exclude_centavos": true,
+        "coin_faces": [
+          1,
+          5,
+          10
+        ],
+        "bill_faces": [
+          20,
+          50,
+          100
+        ],
+        "require_fewest": true,
+        "is_interactive": false
+      },
+      "visual_render": {
+        "visual_type": "PesoMoney",
+        "renderer_input_digest": "324dcdd4d12083c3d2824f17e18a6b469259bae45a61fe89cd982fa756ea32de",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "PesoMoney",
+          "element_count": 6,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "COINS",
+            "₱10"
+          ],
+          "distinct_colours": [
+            "hsl(var(--text-muted)",
+            "#fef08a 60%,",
+            "#cbd5e1 60%)",
+            "#1e293b",
+            "#94a3b8"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "224c5f5b4f659c49afce",
+      "replay_digest": "eab77b8ef8f3228de599ead78c23ba6fcc0ebe802c702acf35b9664916b8673a"
     },
     {
+      "node_id": "mat_g1_na_q4_5",
       "seed": 502,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "Which has a smaller value: 1 ₱100 bill or 1 ₱10 coin?",
       "correct_answer": "1 ₱10 coin",
+      "requested": {
+        "difficulty_profile": {
+          "max_total": 1.0,
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
           "value": "1 ₱10 coin",
+          "text": "1 ₱10 coin",
           "is_correct": true
         },
         {
           "key": "B",
           "value": "They are equal",
+          "text": "They are equal",
           "is_correct": false
         },
         {
           "key": "C",
           "value": "1 ₱20 bill",
+          "text": "1 ₱20 bill",
           "is_correct": false
         },
         {
           "key": "D",
           "value": "1 ₱100 bill",
+          "text": "1 ₱100 bill",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "1 ₱10 coin",
+      "hints": [
+        "Find the total value of the first group of money.",
+        "Find the total value of the second group of money.",
+        "Compare the two values to see which one is greater."
+      ],
+      "sample_id": "0d121aa18a343f807598",
+      "replay_digest": "7034a9e2c6ca9d5b4dcdf69bf0d9bcbd53f9ef93d7b531ebeb7df86e1ca03397"
     },
     {
+      "node_id": "mat_g1_na_q4_5",
       "seed": 600,
       "formatter": "read_mcq",
       "question_text": "Which has a smaller value: 1 ₱1 coin or 1 ₱100 bill?",
       "correct_answer": "C",
+      "requested": {
+        "difficulty_profile": {
+          "context": "pure"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "PesoMoney",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -208,13 +722,89 @@
           "value": "1 ₱100 bill",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "1 ₱1 coin",
+      "hints": [
+        "Find the total value of the first group of money.",
+        "Find the total value of the second group of money.",
+        "Compare the two values to see which one is greater."
+      ],
+      "visual_type": "PesoMoney",
+      "visual_payload": {
+        "coins": [
+          {
+            "denomination": 1,
+            "count": 1
+          }
+        ],
+        "bills": [],
+        "total": 1,
+        "target_amount": 1,
+        "exclude_centavos": true,
+        "coin_faces": [
+          1,
+          5,
+          10
+        ],
+        "bill_faces": [
+          20,
+          50,
+          100
+        ],
+        "require_fewest": true,
+        "is_interactive": false
+      },
+      "visual_render": {
+        "visual_type": "PesoMoney",
+        "renderer_input_digest": "d37882c41c03ba4deee9fdb931b2facdf374580ee975239e72a58c6bf95af3fe",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "PesoMoney",
+          "element_count": 6,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "COINS",
+            "₱1"
+          ],
+          "distinct_colours": [
+            "hsl(var(--text-muted)",
+            "#cbd5e1,",
+            "#94a3b8)",
+            "#1e293b",
+            "#64748b"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "720559b322587cbb9c4e",
+      "replay_digest": "f725d593eff91bdbb0757f0943035c407ba03ad85baaf1fbbda08979c420e10d"
     },
     {
+      "node_id": "mat_g1_na_q4_5",
       "seed": 601,
       "formatter": "cloze",
       "question_text": "Which has a smaller value: 1 ₱5 coin or 1 ₱20 bill?",
       "correct_answer": "1 ₱5 coin",
+      "requested": {
+        "difficulty_profile": {
+          "context": "word_problem"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -240,19 +830,91 @@
           "text": "1 ₱5 coin",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": "1 ₱5 coin",
+      "hints": [
+        "Find the total value of the first group of money.",
+        "Find the total value of the second group of money.",
+        "Compare the two values to see which one is greater."
+      ],
+      "sample_id": "50a38f41de37bf6b25df",
+      "replay_digest": "8eb515edd0046230d6d6b38dcfbc18fd7cfab2553838999be09d1a29d02b1fc5"
     },
     {
+      "node_id": "mat_g1_na_q4_5",
       "seed": 604,
-      "formatter": "set_fill_in_blank",
+      "formatter": "mcq",
       "question_text": "Which has a smaller value: 1 ₱100 bill or 1 ₱20 bill?",
-      "correct_answer": "1 ₱20 bill"
+      "correct_answer": "1 ₱20 bill",
+      "requested": {
+        "difficulty_profile": {
+          "denomination_type": "mixed"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "1 ₱1 coin",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "1 ₱100 bill",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "They are equal",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "1 ₱20 bill",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": "1 ₱20 bill",
+      "hints": [
+        "Find the total value of the first group of money.",
+        "Find the total value of the second group of money.",
+        "Compare the two values to see which one is greater."
+      ],
+      "sample_id": "f29b06c4eebbe8eedce1",
+      "replay_digest": "20a8d367ff7595a871685689b6c52898385f1388cf760a6a367c2dceebe381a5"
     },
     {
+      "node_id": "mat_g1_na_q4_5",
       "seed": 605,
       "formatter": "read_mcq",
       "question_text": "Which has a greater value: 1 ₱100 bill or 1 ₱10 coin?",
       "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": {
+          "task_type": "count_total"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "PesoMoney",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -274,13 +936,89 @@
           "value": "They are equal",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "1 ₱100 bill",
+      "hints": [
+        "Find the total value of the first group of money.",
+        "Find the total value of the second group of money.",
+        "Compare the two values to see which one is greater."
+      ],
+      "visual_type": "PesoMoney",
+      "visual_payload": {
+        "coins": [],
+        "bills": [
+          {
+            "denomination": 100,
+            "count": 1
+          }
+        ],
+        "total": 100,
+        "target_amount": 100,
+        "exclude_centavos": true,
+        "coin_faces": [
+          1,
+          5,
+          10
+        ],
+        "bill_faces": [
+          20,
+          50,
+          100
+        ],
+        "require_fewest": true,
+        "is_interactive": false
+      },
+      "visual_render": {
+        "visual_type": "PesoMoney",
+        "renderer_input_digest": "1ee6a6677c2fab4128c0e3d31bf9beb305e654d7b15e30fe12835d9caf20f46b",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "PesoMoney",
+          "element_count": 11,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "BILLS",
+            "₱100",
+            "REPUBLIKA NG PILIPINAS"
+          ],
+          "distinct_colours": [
+            "hsl(var(--text-muted)",
+            "#c084fc,",
+            "#7c3aed)",
+            "#fff"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "c458ffeebb2fddf6ce56",
+      "replay_digest": "ee9141f7be1f2043b5712a33de9f67fe0c2b3df8fa5ab1fb271ae102817a219f"
     },
     {
+      "node_id": "mat_g1_na_q4_5",
       "seed": 606,
       "formatter": "mcq",
       "question_text": "Which has a greater value: 1 ₱10 coin or 1 ₱50 bill?",
       "correct_answer": "1 ₱50 bill",
+      "requested": {
+        "difficulty_profile": {
+          "task_type": "give_money"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -302,13 +1040,38 @@
           "value": "1 ₱10 coin",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "1 ₱50 bill",
+      "hints": [
+        "Find the total value of the first group of money.",
+        "Find the total value of the second group of money.",
+        "Compare the two values to see which one is greater."
+      ],
+      "sample_id": "158a8bc5bad2d0ac3de0",
+      "replay_digest": "f909ee0925cc81cf27821a732c6ad02ef99f680cf9e888a544fbfb8b63ceafcd"
     },
     {
+      "node_id": "mat_g1_na_q4_5",
       "seed": 607,
       "formatter": "cloze",
       "question_text": "Which has a greater value: 1 ₱10 coin or 1 ₱20 bill?",
       "correct_answer": "1 ₱20 bill",
+      "requested": {
+        "difficulty_profile": {
+          "task_type": "make_change"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -334,34 +1097,1369 @@
           "text": "1 ₱10 coin",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "1 ₱20 bill",
+      "hints": [
+        "Find the total value of the first group of money.",
+        "Find the total value of the second group of money.",
+        "Compare the two values to see which one is greater."
+      ],
+      "sample_id": "d4556f4d1b65db777970",
+      "replay_digest": "8f452c91c12a3660be18ee1559102bea6ba502fdbd384de6e1bce2dcfa72a731"
+    },
+    {
+      "node_id": "mat_g1_na_q4_5",
+      "seed": 700,
+      "formatter": "mcq",
+      "question_text": "Which has a greater value: 1 ₱1 coin or 1 ₱50 bill?",
+      "correct_answer": "1 ₱50 bill",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "1 ₱50 bill",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "1 ₱5 coin",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "They are equal",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "1 ₱1 coin",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "1 ₱50 bill",
+      "hints": [
+        "Find the total value of the first group of money.",
+        "Find the total value of the second group of money.",
+        "Compare the two values to see which one is greater."
+      ],
+      "sample_id": "3fbaac273087ae8e87d4",
+      "replay_digest": "84d482b01f2849a135ae1ac5cec1f003aafe0beb09db2f05ec456d15c6b2ef5a"
+    },
+    {
+      "node_id": "mat_g1_na_q4_5",
+      "seed": 701,
+      "formatter": "cloze",
+      "question_text": "🚴 Ate Sam has a math challenge about running shoes. Which has a greater value: 1 ₱100 bill or 1 ₱10 coin?",
+      "correct_answer": "1 ₱100 bill",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "fitness_sports",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "1 ₱10 coin",
+          "text": "1 ₱10 coin",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "1 ₱50 bill",
+          "text": "1 ₱50 bill",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "They are equal",
+          "text": "They are equal",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "1 ₱100 bill",
+          "text": "1 ₱100 bill",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": "1 ₱100 bill",
+      "hints": [
+        "Find the total value of the first group of money.",
+        "Find the total value of the second group of money.",
+        "Compare the two values to see which one is greater."
+      ],
+      "sample_id": "4b0200388c8dcd79fab1",
+      "replay_digest": "6d287cb6d82fbbead2247a33ccc531d94e42a74357230933c2daed3433b358e5"
+    },
+    {
+      "node_id": "mat_g1_na_q4_5",
+      "seed": 702,
+      "formatter": "cloze",
+      "question_text": "🏐 Ate Alyssa has a math challenge about shuttlecocks. Which has a greater value: 1 ₱100 bill or 1 ₱50 bill?",
+      "correct_answer": "1 ₱100 bill",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "volleyball",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "1 ₱100 bill",
+          "text": "1 ₱100 bill",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "They are equal",
+          "text": "They are equal",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "1 ₱20 bill",
+          "text": "1 ₱20 bill",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "1 ₱50 bill",
+          "text": "1 ₱50 bill",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "1 ₱100 bill",
+      "hints": [
+        "Find the total value of the first group of money.",
+        "Find the total value of the second group of money.",
+        "Compare the two values to see which one is greater."
+      ],
+      "sample_id": "d2b8e07455d1a03e1164",
+      "replay_digest": "1315df0d018bf242b7163855b17e49e55b2d1a2236234a04b0d42a0bace25c2c"
+    },
+    {
+      "node_id": "mat_g1_na_q4_5",
+      "seed": 800,
+      "formatter": "read_mcq",
+      "question_text": "Which has a smaller value: 1 ₱1 coin or 1 ₱5 coin?",
+      "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": {
+          "max_total": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "PesoMoney",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "They are equal",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "1 ₱5 coin",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "1 ₱100 bill",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "1 ₱1 coin",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": "1 ₱1 coin",
+      "hints": [
+        "Find the total value of the first group of money.",
+        "Find the total value of the second group of money.",
+        "Compare the two values to see which one is greater."
+      ],
+      "visual_type": "PesoMoney",
+      "visual_payload": {
+        "coins": [
+          {
+            "denomination": 1,
+            "count": 1
+          }
+        ],
+        "bills": [],
+        "total": 1,
+        "target_amount": 1,
+        "exclude_centavos": true,
+        "coin_faces": [
+          1,
+          5,
+          10
+        ],
+        "bill_faces": [
+          20,
+          50,
+          100
+        ],
+        "require_fewest": true,
+        "is_interactive": false
+      },
+      "visual_render": {
+        "visual_type": "PesoMoney",
+        "renderer_input_digest": "d37882c41c03ba4deee9fdb931b2facdf374580ee975239e72a58c6bf95af3fe",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "PesoMoney",
+          "element_count": 6,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "COINS",
+            "₱1"
+          ],
+          "distinct_colours": [
+            "hsl(var(--text-muted)",
+            "#cbd5e1,",
+            "#94a3b8)",
+            "#1e293b",
+            "#64748b"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "3724d09977c303ae8610",
+      "replay_digest": "3932159dabe364ec10f12f409138a7bdaacb057161d158c61e83a2715e363d8f"
+    },
+    {
+      "node_id": "mat_g1_na_q4_5",
+      "seed": 801,
+      "formatter": "cloze",
+      "question_text": "Which has a greater value: 1 ₱50 bill or 1 ₱10 coin?",
+      "correct_answer": "1 ₱50 bill",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "They are equal",
+          "text": "They are equal",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "1 ₱50 bill",
+          "text": "1 ₱50 bill",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "1 ₱20 bill",
+          "text": "1 ₱20 bill",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "1 ₱10 coin",
+          "text": "1 ₱10 coin",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "1 ₱50 bill",
+      "hints": [
+        "Find the total value of the first group of money.",
+        "Find the total value of the second group of money.",
+        "Compare the two values to see which one is greater."
+      ],
+      "sample_id": "90556e809c73644452ad",
+      "replay_digest": "c70a1695db75bb565c993efdeee94c31e86205dfb357328b2e27977dc4e153d2"
+    },
+    {
+      "node_id": "mat_g1_na_q4_5",
+      "seed": 900,
+      "formatter": "mcq",
+      "question_text": "Which has a greater value: 1 ₱50 bill or 1 ₱20 bill?",
+      "correct_answer": "1 ₱50 bill",
+      "requested": {
+        "difficulty_profile": {
+          "max_total": 0.0,
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "1 ₱100 bill",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "1 ₱20 bill",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "They are equal",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "1 ₱50 bill",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": "1 ₱50 bill",
+      "hints": [
+        "Find the total value of the first group of money.",
+        "Find the total value of the second group of money.",
+        "Compare the two values to see which one is greater."
+      ],
+      "sample_id": "4cf957057fcdd9facd74",
+      "replay_digest": "a898e3e13f5d0ea9febee763c1ebff76f1fe46bc11f476f684874e9e46ef0642"
+    },
+    {
+      "node_id": "mat_g1_na_q4_5",
+      "seed": 901,
+      "formatter": "read_mcq",
+      "question_text": "Which has a smaller value: 1 ₱50 bill or 1 ₱100 bill?",
+      "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": {
+          "max_total": 0.0,
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "PesoMoney",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "1 ₱50 bill",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "1 ₱5 coin",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "They are equal",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "1 ₱100 bill",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "1 ₱50 bill",
+      "hints": [
+        "Find the total value of the first group of money.",
+        "Find the total value of the second group of money.",
+        "Compare the two values to see which one is greater."
+      ],
+      "visual_type": "PesoMoney",
+      "visual_payload": {
+        "coins": [],
+        "bills": [
+          {
+            "denomination": 50,
+            "count": 1
+          }
+        ],
+        "total": 50,
+        "target_amount": 50,
+        "exclude_centavos": true,
+        "coin_faces": [
+          1,
+          5,
+          10
+        ],
+        "bill_faces": [
+          20,
+          50,
+          100
+        ],
+        "require_fewest": true,
+        "is_interactive": false
+      },
+      "visual_render": {
+        "visual_type": "PesoMoney",
+        "renderer_input_digest": "280255bdf71678ea77eb4a73ef8abbfe24bfda5df05c50b73f1fb75abb110004",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "PesoMoney",
+          "element_count": 11,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "BILLS",
+            "₱50",
+            "REPUBLIKA NG PILIPINAS"
+          ],
+          "distinct_colours": [
+            "hsl(var(--text-muted)",
+            "#fda4af,",
+            "#dc2626)",
+            "#fff"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "fdc153e7e3ce9e8a923f",
+      "replay_digest": "3e8dc33058e4712c588579b5aa2c6467d7077336483e8d9045cf9b1ef2699f8b"
+    },
+    {
+      "node_id": "mat_g1_na_q4_5",
+      "seed": 1000,
+      "formatter": "mcq",
+      "question_text": "Which has a greater value: 1 ₱10 coin or 1 ₱100 bill?",
+      "correct_answer": "1 ₱100 bill",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "hint_gated"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "hint_gated"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "1 ₱10 coin",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "1 ₱5 coin",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "1 ₱100 bill",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "They are equal",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "1 ₱100 bill",
+      "hints": [
+        "Find the total value of the first group of money.",
+        "Find the total value of the second group of money.",
+        "Compare the two values to see which one is greater."
+      ],
+      "sample_id": "beacb3559aa1e99156e3",
+      "replay_digest": "0c4c008cfe64ef0191b2fdc62ba36d563387e3deedeea21dff59a597ba46cd16"
+    },
+    {
+      "node_id": "mat_g1_na_q4_5",
+      "seed": 1001,
+      "formatter": "cloze",
+      "question_text": "Which has a smaller value: 1 ₱20 bill or 1 ₱50 bill?",
+      "correct_answer": "1 ₱20 bill",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "mastery_drill"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "mastery_drill"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "1 ₱20 bill",
+          "text": "1 ₱20 bill",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "1 ₱100 bill",
+          "text": "1 ₱100 bill",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "1 ₱50 bill",
+          "text": "1 ₱50 bill",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "They are equal",
+          "text": "They are equal",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "1 ₱20 bill",
+      "hints": [
+        "Find the total value of the first group of money.",
+        "Find the total value of the second group of money.",
+        "Compare the two values to see which one is greater."
+      ],
+      "sample_id": "29553d0ca6a4a10badd2",
+      "replay_digest": "792e361f33b9b14d275a0fcc55e112ab7472c46df18d72f7cc49d07b69ed0e7d"
+    },
+    {
+      "node_id": "mat_g1_na_q4_5",
+      "seed": 1002,
+      "formatter": "cloze",
+      "question_text": "Which has a greater value: 1 ₱10 coin or 1 ₱100 bill?",
+      "correct_answer": "1 ₱100 bill",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "scaffolded"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "scaffolded"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "1 ₱1 coin",
+          "text": "1 ₱1 coin",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "1 ₱10 coin",
+          "text": "1 ₱10 coin",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "They are equal",
+          "text": "They are equal",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "1 ₱100 bill",
+          "text": "1 ₱100 bill",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": "1 ₱100 bill",
+      "hints": [
+        "Find the total value of the first group of money.",
+        "Find the total value of the second group of money.",
+        "Compare the two values to see which one is greater."
+      ],
+      "sample_id": "8483532372b7bf1be8ae",
+      "replay_digest": "c35fd04cdec7c9471e6dd5791fc6f0e21b46cda83cab606d8695b74a1250cea2"
+    }
+  ],
+  "sample_assessments": [
+    {
+      "sample_id": "eaebfc4d75f789ecd286",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The ₱5 coin is lower than the ₱50 bill, and no other option says this exact smaller-value item."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Both items are valid peso denominations; the PesoMoney preview labels COINS and ₱5, fitting one side of the comparison."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "The stem asks for smaller, while the final hint asks which is greater; that reversal can lead learners away from ₱5."
+        },
+        "mathematical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "₱5 is less than ₱50, so the keyed coin is correct; the hint's direction wording still conflicts with the stem."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w23-mat_g1_na_q4_5-20260925",
+      "dispatch_id": "gpt6luna-s5-w23-20260925:mat_g1_na_q4_5"
+    },
+    {
+      "sample_id": "df833fe6ac9cadfad135",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "₱100 exceeds ₱50, and the option list includes the bill once as the greater amount."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The two bill denominations are directly comparable and the question has no unrelated narrative detail."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The hints ask to identify which amount is greater, matching the stem's requested comparison direction."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The ₱100 bill has twice the value of ₱50; the key and matching option are mathematically correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w23-mat_g1_na_q4_5-20260925",
+      "dispatch_id": "gpt6luna-s5-w23-20260925:mat_g1_na_q4_5"
+    },
+    {
+      "sample_id": "1762889fc8f74ea5e78f",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "A ₱1 coin is less than a ₱20 bill, with exactly one matching choice. The compared values differ by nineteen pesos."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Both items are peso denominations and the smaller-value comparison has an objective result."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "The prompt asks for smaller value but the last hint asks which is greater, reversing the comparison instruction."
+        },
+        "mathematical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "₱1 is lower than ₱20, so the answer is correct; the hint wording points to the opposite criterion."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w23-mat_g1_na_q4_5-20260925",
+      "dispatch_id": "gpt6luna-s5-w23-20260925:mat_g1_na_q4_5"
+    },
+    {
+      "sample_id": "f4f6ac67b9f8b8ad47c9",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Among the ₱20 and ₱50 bills, only the ₱50 bill is greater and listed as the answer."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The question compares two valid peso bills with distinct values, avoiding any contextual mismatch."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The generic final hint asks which value is greater, which directly matches the stem's question."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "₱50 exceeds ₱20 and is present among the options, validating the keyed choice."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w23-mat_g1_na_q4_5-20260925",
+      "dispatch_id": "gpt6luna-s5-w23-20260925:mat_g1_na_q4_5"
+    },
+    {
+      "sample_id": "84663a49abfe4b6406ee",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The ₱1 coin is smaller than the ₱100 bill; exactly one option states that coin."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The denominations are valid and the question's small-versus-large comparison is contextually straightforward."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "The hint chain ends by asking which is greater despite the stem requesting the smaller coin, a material reversal."
+        },
+        "mathematical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "The key correctly identifies ₱1 as less than ₱100, but the hints use the opposite comparison direction."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w23-mat_g1_na_q4_5-20260925",
+      "dispatch_id": "gpt6luna-s5-w23-20260925:mat_g1_na_q4_5"
+    },
+    {
+      "sample_id": "33d1b45c9f2b35bd0715",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The ₱5 coin is lower in value than the ₱20 bill, and its matching option is unique."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The PesoMoney labels show a ₱20 bill while the question pairs it with a ₱5 coin; both are peso forms."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "The final hint asks which amount is greater, although this read-MCQ stem asks for the smaller one."
+        },
+        "mathematical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "₱5 is smaller than ₱20, confirming the keyed coin; the final hint reverses the requested comparison."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w23-mat_g1_na_q4_5-20260925",
+      "dispatch_id": "gpt6luna-s5-w23-20260925:mat_g1_na_q4_5"
+    },
+    {
+      "sample_id": "224c5f5b4f659c49afce",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "₱10 is greater than ₱1, and the correct coin appears once among the four alternatives."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The coin comparison involves valid denominations and the PesoMoney preview labels the ₱10 coin."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The hints' final greater-value direction agrees with the stem's explicit request for greater value."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The ₱10 coin is ten times the ₱1 coin, so the keyed greater denomination is correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w23-mat_g1_na_q4_5-20260925",
+      "dispatch_id": "gpt6luna-s5-w23-20260925:mat_g1_na_q4_5"
+    },
+    {
+      "sample_id": "0d121aa18a343f807598",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The ₱10 coin is smaller than the ₱100 bill, with a single matching first option."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The two denominations are both peso forms, and nothing in the stem adds a conflicting scenario."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "Although the stem asks for smaller, the final hint instructs comparison to see which is greater, creating opposite guidance."
+        },
+        "mathematical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "₱10 is below ₱100 as keyed; the generic final hint nonetheless reverses the target comparison."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w23-mat_g1_na_q4_5-20260925",
+      "dispatch_id": "gpt6luna-s5-w23-20260925:mat_g1_na_q4_5"
+    },
+    {
+      "sample_id": "720559b322587cbb9c4e",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The ₱1 coin is less than the ₱100 bill; that exact coin is one unique option."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The coin-and-bill comparison is coherent, and the PesoMoney structure identifies the ₱1 coin side."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "The smaller-value question conflicts with the hint's final instruction to select what is greater."
+        },
+        "mathematical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "The ₱1 coin is mathematically the smaller amount; the hint direction does not match that correct result."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w23-mat_g1_na_q4_5-20260925",
+      "dispatch_id": "gpt6luna-s5-w23-20260925:mat_g1_na_q4_5"
+    },
+    {
+      "sample_id": "50a38f41de37bf6b25df",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "A ₱5 coin is less than a ₱20 bill, uniquely matching the fourth option."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The stem compares valid peso items and no story wrapper distracts from their respective denominations."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "The requested smaller item is clear, but the hint ends by asking which of the two is greater."
+        },
+        "mathematical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "₱5 is correctly keyed as smaller than ₱20, while the hint's greater wording is inconsistent."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w23-mat_g1_na_q4_5-20260925",
+      "dispatch_id": "gpt6luna-s5-w23-20260925:mat_g1_na_q4_5"
+    },
+    {
+      "sample_id": "f29b06c4eebbe8eedce1",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Between ₱100 and ₱20, the smaller amount is the ₱20 bill, listed once."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Both options describe peso bills or a coin, and the two compared bills have distinct values."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "The closing hint asks for the greater amount even though the question asks for the smaller bill."
+        },
+        "mathematical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "₱20 is below ₱100, so the answer is correct; the hint instruction reverses the comparison goal."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w23-mat_g1_na_q4_5-20260925",
+      "dispatch_id": "gpt6luna-s5-w23-20260925:mat_g1_na_q4_5"
+    },
+    {
+      "sample_id": "c458ffeebb2fddf6ce56",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The ₱100 bill has greater value than ₱10, with one option matching that bill."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A bill-versus-coin comparison is valid, and the rendered labels include BILLS and ₱100 for the bill."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem asks which is greater, matching the final hint's direction; the total-value steps are generic but compatible."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "₱100 exceeds ₱10, so the key is correct and the option list contains that bill."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w23-mat_g1_na_q4_5-20260925",
+      "dispatch_id": "gpt6luna-s5-w23-20260925:mat_g1_na_q4_5"
+    },
+    {
+      "sample_id": "158a8bc5bad2d0ac3de0",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The greater amount is the ₱50 bill rather than the ₱10 coin, and the answer appears once."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The stem compares a peso coin with a peso bill; no external context changes their stated amounts."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The final hint's direction to find which is greater aligns with the specific greater-value question."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "₱50 is greater than ₱10, and the keyed bill matches the numerical comparison."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w23-mat_g1_na_q4_5-20260925",
+      "dispatch_id": "gpt6luna-s5-w23-20260925:mat_g1_na_q4_5"
+    },
+    {
+      "sample_id": "d4556f4d1b65db777970",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "₱20 is greater than ₱10, and the correct bill is uniquely offered as option three."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The coin and bill are different denominations but both express peso values, so the comparison is coherent."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The instruction to determine which is greater agrees with the stem's wording and the keyed response."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The bill worth ₱20 exceeds the ₱10 coin, making the answer and available choice correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w23-mat_g1_na_q4_5-20260925",
+      "dispatch_id": "gpt6luna-s5-w23-20260925:mat_g1_na_q4_5"
+    },
+    {
+      "sample_id": "3fbaac273087ae8e87d4",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The ₱50 bill is greater than the ₱1 coin, with a single exact matching option."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The monetary comparison is clear and both listed items are valid peso denominations."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The hint chain ends with the same greater-value question as the stem, without changing its target."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "₱50 exceeds ₱1, supporting the keyed bill and distinguishing it from all other choices."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w23-mat_g1_na_q4_5-20260925",
+      "dispatch_id": "gpt6luna-s5-w23-20260925:mat_g1_na_q4_5"
+    },
+    {
+      "sample_id": "4b0200388c8dcd79fab1",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "₱100 exceeds the ₱10 coin and is one unique option, so the answer is unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The running-shoes theme is decorative; the stem still compares two clear peso denominations."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The hint asks which amount is greater, consistent with the stem, despite the unrelated sports introduction."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The ₱100 bill has greater value than ₱10, matching the key and one option."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w23-mat_g1_na_q4_5-20260925",
+      "dispatch_id": "gpt6luna-s5-w23-20260925:mat_g1_na_q4_5"
+    },
+    {
+      "sample_id": "d2b8e07455d1a03e1164",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The ₱100 bill is greater than the ₱50 bill, with the first option matching the answer."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The volleyball theme does not interfere with a straightforward comparison of two bill denominations."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Hints request the greater value as the stem does, so no mismatch arises from the themed introduction."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The ₱100 amount exceeds ₱50; the answer and matching option are mathematically sound."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w23-mat_g1_na_q4_5-20260925",
+      "dispatch_id": "gpt6luna-s5-w23-20260925:mat_g1_na_q4_5"
+    },
+    {
+      "sample_id": "3724d09977c303ae8610",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The ₱1 coin is smaller than ₱5, and only one option names the ₱1 coin."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Both are valid peso coins and the read-MCQ visual labels COINS and ₱1, consistent with the prompt."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "The stem asks for the smaller coin, while the last hint asks which amount is greater, reversing the criterion."
+        },
+        "mathematical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "₱1 is indeed less than ₱5, though the hint's greater-value direction contradicts the requested answer."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w23-mat_g1_na_q4_5-20260925",
+      "dispatch_id": "gpt6luna-s5-w23-20260925:mat_g1_na_q4_5"
+    },
+    {
+      "sample_id": "90556e809c73644452ad",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The greater value is ₱50, not ₱10; the second option states the answer exactly."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The bill-and-coin comparison uses valid denominations and lacks any inconsistent narrative wrapper."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The final hint asks which value is greater, directly aligned with this cloze stem's request."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "₱50 exceeds ₱10, and the keyed response corresponds to that greater denomination."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w23-mat_g1_na_q4_5-20260925",
+      "dispatch_id": "gpt6luna-s5-w23-20260925:mat_g1_na_q4_5"
+    },
+    {
+      "sample_id": "4cf957057fcdd9facd74",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "₱50 exceeds ₱20, and the listed fourth option is the sole greater-value bill."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Both compared items are peso bills, so the stem's greater-value question has a consistent context."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The hints end by asking which is greater, matching the wording of the stem and selected bill."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "₱50 is greater than ₱20, so the answer and option are mathematically valid."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w23-mat_g1_na_q4_5-20260925",
+      "dispatch_id": "gpt6luna-s5-w23-20260925:mat_g1_na_q4_5"
+    },
+    {
+      "sample_id": "fdc153e7e3ce9e8a923f",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The ₱50 bill is less than ₱100, and the first option gives that exact denomination."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The comparison between two valid bills is coherent; the PesoMoney labels show BILLS and ₱50."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "The stem asks for smaller but the final hint asks which value is greater, reversing what learners should select."
+        },
+        "mathematical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "The keyed ₱50 bill is smaller than ₱100; the hint's greater-value instruction conflicts with that task."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w23-mat_g1_na_q4_5-20260925",
+      "dispatch_id": "gpt6luna-s5-w23-20260925:mat_g1_na_q4_5"
+    },
+    {
+      "sample_id": "beacb3559aa1e99156e3",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The ₱100 bill is greater than the ₱10 coin, and it is a unique offered answer."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Both denominations are valid peso units, with the question clearly contrasting the coin and bill."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The question and generic hint both seek the greater of the two items; no change in direction occurs."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "₱100 is greater than ₱10, so the answer and matching third option are correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w23-mat_g1_na_q4_5-20260925",
+      "dispatch_id": "gpt6luna-s5-w23-20260925:mat_g1_na_q4_5"
+    },
+    {
+      "sample_id": "29553d0ca6a4a10badd2",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "₱20 is less than ₱50, and the first option uniquely names the smaller bill."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The question compares two peso bills and gives a clear smaller-value criterion."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "The hints' final direction asks for the greater denomination, contrary to the stem's request for smaller."
+        },
+        "mathematical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "The answer ₱20 is less than ₱50, but the hint's comparison direction does not support that response."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w23-mat_g1_na_q4_5-20260925",
+      "dispatch_id": "gpt6luna-s5-w23-20260925:mat_g1_na_q4_5"
+    },
+    {
+      "sample_id": "8483532372b7bf1be8ae",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "₱100 exceeds the ₱10 coin, with one option exactly matching the greater denomination."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "This is a direct peso comparison; the amounts are clear and the stem contains no distracting wrapper."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The final hint asks which is greater, matching the stem's request even though the explanation is nonspecific."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "₱100 is greater than ₱10, so the keyed answer and option are correct. It is ten times the coin amount."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w23-mat_g1_na_q4_5-20260925",
+      "dispatch_id": "gpt6luna-s5-w23-20260925:mat_g1_na_q4_5"
+    }
+  ],
+  "clause_evidence": [
+    {
+      "requirement_id": "compare",
+      "clause": "Compare",
+      "verdict": "PASS",
+      "reasoning": "Every cited question asks which of two monetary denominations is smaller or greater, directly exercising comparison rather than calculation of change or totals.",
+      "sample_ids": [
+        "eaebfc4d75f789ecd286",
+        "df833fe6ac9cadfad135",
+        "f29b06c4eebbe8eedce1"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w23-mat_g1_na_q4_5-20260925",
+      "dispatch_id": "gpt6luna-s5-w23-20260925:mat_g1_na_q4_5"
+    },
+    {
+      "requirement_id": "different_denominations",
+      "clause": "different denominations",
+      "verdict": "PASS",
+      "reasoning": "The paired items in the cited samples have distinct values, such as ₱5 versus ₱50 and ₱20 versus ₱100, making denomination comparison explicit.",
+      "sample_ids": [
+        "eaebfc4d75f789ecd286",
+        "f29b06c4eebbe8eedce1",
+        "beacb3559aa1e99156e3"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w23-mat_g1_na_q4_5-20260925",
+      "dispatch_id": "gpt6luna-s5-w23-20260925:mat_g1_na_q4_5"
+    },
+    {
+      "requirement_id": "peso_coins",
+      "clause": "peso coins",
+      "verdict": "PASS",
+      "reasoning": "The examples include valid coin denominations such as ₱1, ₱5, and ₱10, compared against other eligible peso forms.",
+      "sample_ids": [
+        "eaebfc4d75f789ecd286",
+        "224c5f5b4f659c49afce",
+        "90556e809c73644452ad"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w23-mat_g1_na_q4_5-20260925",
+      "dispatch_id": "gpt6luna-s5-w23-20260925:mat_g1_na_q4_5"
+    },
+    {
+      "requirement_id": "excluding_centavo_coins",
+      "clause": "excluding centavo coins",
+      "verdict": "PASS",
+      "reasoning": "The cited comparisons contain only whole-peso coins and bills; none asks learners to use centavo coins or fractional peso values.",
+      "sample_ids": [
+        "224c5f5b4f659c49afce",
+        "720559b322587cbb9c4e",
+        "3724d09977c303ae8610"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w23-mat_g1_na_q4_5-20260925",
+      "dispatch_id": "gpt6luna-s5-w23-20260925:mat_g1_na_q4_5"
+    },
+    {
+      "requirement_id": "bills",
+      "clause": "bills",
+      "verdict": "PASS",
+      "reasoning": "Several items directly compare bills, including ₱50 against ₱100 and ₱20 against ₱50, with additional bill-versus-coin cases.",
+      "sample_ids": [
+        "df833fe6ac9cadfad135",
+        "4cf957057fcdd9facd74",
+        "fdc153e7e3ce9e8a923f"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w23-mat_g1_na_q4_5-20260925",
+      "dispatch_id": "gpt6luna-s5-w23-20260925:mat_g1_na_q4_5"
+    },
+    {
+      "requirement_id": "up_to_100",
+      "clause": "up to ₱100",
+      "verdict": "PASS",
+      "reasoning": "The largest denomination shown is ₱100, while the remaining coins and bills are below that ceiling; no option requires comparing a larger value.",
+      "sample_ids": [
+        "df833fe6ac9cadfad135",
+        "720559b322587cbb9c4e",
+        "beacb3559aa1e99156e3"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w23-mat_g1_na_q4_5-20260925",
+      "dispatch_id": "gpt6luna-s5-w23-20260925:mat_g1_na_q4_5"
+    }
+  ],
+  "dispatch_provenance": [
+    {
+      "dispatch_id": "gpt6luna-s5-w23-20260925:mat_g1_na_q4_5",
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w23-mat_g1_na_q4_5-20260925",
+      "review_date": "2026-09-25",
+      "blind": true,
+      "packet_digest": "e15cea97ba30d7e009a304a79618a2bf3f04426bd65aa13509ef12d345d80734",
+      "clause_ids": [
+        "compare",
+        "different_denominations",
+        "peso_coins",
+        "excluding_centavo_coins",
+        "bills",
+        "up_to_100"
+      ],
+      "response_ref": ".responses/gpt6luna-s5-w23-20260925.json",
+      "response_digest": "f841348197ec36140248b461ec1fbad25afb96592b0efbc2905198b3c47558c2",
+      "prompt_ref": ".responses/gpt6luna-s5-w23-20260925.prompt.txt",
+      "prompt_digest": "ee1bcfa42210405189f1191e1ee948c995ff31297ee6e1ae18579cb58e1ffc12",
+      "samples_delivery": "Dispatch-time local prompt file read by separate gpt-6-luna medium reviewer; no source or prior reviews supplied",
+      "tool_uses_by_reviewer": "Reviewer reported: cat to read prompt; wrote JSON; updated sample judgments and audited counts and lengths with Python; extended two reasonings and reran audit. Reviewer-provided report."
     }
   ],
   "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "Every item places one denomination against another and asks which is worth more or less, as in 'Which has a smaller value: 1 ₱5 coin or 1 ₱50 bill?', and each key names the correct piece."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "Both directions of the question are generated, coin-against-coin and coin-against-bill and bill-against-bill all occur, and the full denomination set from one peso to one hundred pesos is drawn on."
-    },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The comparison is single-step and the pieces are named in full, so the only demand is knowing the relative worth of two denominations, which is what Grade 1 money work is for."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "Across fourteen samples there is exactly one sentence frame with only the two denominations and the greater-or-smaller word swapped; no item shows the money, embeds the comparison in a buying situation, or compares several pieces against one."
+      "rationale": "Each problem compares only two familiar peso denominations and asks for greater or smaller value; the currency sign and item type give a concrete entry point suitable for Grade 1."
     },
     "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "The questions directly compare peso coins and bills, including both greater and smaller comparisons, and keep denominations at or below ₱100."
+    },
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The six requirements preserve the comparison action, distinct denominations, peso coins, centavo exclusion, bills, and the ₱100 ceiling stated by the competency.",
+      "decomposition": {
+        "verdict": "PASS",
+        "reasoning": "The clauses account for the requested comparison, eligible coin and bill forms, prohibition on centavo denominations, and upper value bound without omission.",
+        "requirement_ids": [
+          "compare",
+          "different_denominations",
+          "peso_coins",
+          "excluding_centavo_coins",
+          "bills",
+          "up_to_100"
+        ]
+      },
+      "clause_ids": [
+        "compare",
+        "different_denominations",
+        "peso_coins",
+        "excluding_centavo_coins",
+        "bills",
+        "up_to_100"
+      ]
+    },
+    "comprehensive_coverage": {
       "verdict": "CONCERN",
-      "rationale": "The option lists weaken the ramp rather than strengthen it: 'They are equal' is offered constantly although two different denominations are never equal, and several options name pieces that appear nowhere in the stem, so wrong answers fall away without any comparison being made."
+      "rationale": "Both coins and bills and both comparison directions occur, but all samples compare one item against one item and omit groups, equal values, or broader combinations.",
+      "clause_ids": [
+        "compare",
+        "different_denominations",
+        "peso_coins",
+        "excluding_centavo_coins",
+        "bills",
+        "up_to_100"
+      ]
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "No denomination above one hundred pesos is used in stems or options, so this node stays inside its ceiling - unlike the recognition node in the same quarter."
+      "rationale": "All examples use familiar denominations from ₱1 to ₱100, without arithmetic totals beyond the stated limit or centavo amounts."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "The packet varies coin-versus-bill and bill-versus-bill cases, values, and response formats, though all items retain the same two-item selection structure."
     }
   },
-  "overall": "CONCERN"
+  "overall": "FAIL"
 }

@@ -1,0 +1,558 @@
+{
+  "reviewer": "blind-reviewer-gpt-6-luna-medium-w25-mat_g2_dp_q3_0-20260925",
+  "mat_g2_dp_q3_0": {
+    "findings": {
+      "cognitive_capacity": {
+        "verdict": "CONCERN",
+        "rationale": "The scale operations are accessible multiplication or division, but multiple reverse conversions appear to key raw symbol counts instead of the weighted data totals learners are told to record."
+      },
+      "competency_alignment": {
+        "verdict": "PASS",
+        "rationale": "The packet repeatedly moves between numerical category data, pictographs with explicit scales, and tables, matching the two conversion directions named in the competency."
+      },
+      "competency_fulfillment": {
+        "verdict": "PASS",
+        "rationale": "The seven listed requirements together cover presenting data, tabular form, pictographs, a scale, and conversion in either direction.",
+        "decomposition": {
+          "verdict": "PASS",
+          "reasoning": "The competency specifies data in raw or tabular form, pictographs that use a scale, and conversion vice versa. The requirements name data, tables, pictographs, scale, and both directions, retaining the stated components."
+        }
+      },
+      "comprehensive_coverage": {
+        "verdict": "FAIL",
+        "rationale": "Both conversion directions appear, but many pictograph-to-table keys conflict with the required scaled counts, and one stars graph visibly lacks rows that its key treats as populated."
+      },
+      "scale_appropriateness": {
+        "verdict": "CONCERN",
+        "rationale": "Scales of two, five, and ten are consistently stated, but the reverse-conversion answers often fail to apply those scales to the displayed symbols."
+      },
+      "variant_comprehensiveness": {
+        "verdict": "PASS",
+        "rationale": "Samples use several category themes, scales, raw-data prompts, table prompts, and pictograph-to-table tasks with both editable graphs and fillable tables."
+      }
+    },
+    "sample_assessments": [
+      {
+        "sample_id": "7716a80e152ae40d88dc",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The table shows: apples: 30, bananas: 20, mangoes: 10, grapes: 10. Create a picture graph where each 🍎 equals 10. gives four categories and a scale of 10; the requested picture count for each value is uniquely obtained by dividing each amount by that scale."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The raw or tabular values in this sample can be represented as picture counts at scale 10, and the resulting keyed counts [3, 2, 1, 1] are coherent."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The hints instruct division by 10, and the keyed picture counts [3, 2, 1, 1] match the amounts supplied in the stem; the BarChart controls invite adding or removing symbols."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Dividing the listed category totals by the stated scale of 10 yields the keyed picture counts [3, 2, 1, 1], so the conversion and the shown symbol scale agree."
+          }
+        }
+      },
+      {
+        "sample_id": "cace834ee38e86da3a95",
+        "checks": {
+          "ambiguity": {
+            "verdict": "CONCERN",
+            "reasoning": "Count the pictures in each row of the pictograph, then write the counts for red, blue, green and yellow in the table. The scale is 2: each symbol stands for 2 items. identifies rows and scale 2; however, the visible labels [\"Favorite Colors\", \"red\", \"🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨\", \"blue\", \"🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨\", \"green\", \"🎨🎨🎨🎨\", \"yellow\", \"Each 🎨 means 2.\", \"Category\", \"Count\", \"Fill in the missing values in the table\"] do not cleanly agree with the keyed row values [16, 12, 4, 16], leaving the intended counts uncertain."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The table-from-pictograph task uses a scale of 2 for its named categories; the direction is sensible, though the displayed labels require careful matching. In this particular item, the prompt is: Count the pictures in each row of the pictograph, then write the counts for red, blue, green and yellow in the table. The scale is 2: each symbol stands for 2 items."
+          },
+          "learner_facing_clarity": {
+            "verdict": "FAIL",
+            "reasoning": "The hint explicitly says to multiply each symbol count by 2, but the key [16, 12, 4, 16] records unscaled-looking row values against visual labels [\"Favorite Colors\", \"red\", \"🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨\", \"blue\", \"🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨\", \"green\", \"🎨🎨🎨🎨\", \"yellow\", \"Each 🎨 means 2.\", \"Category\", \"Count\", \"Fill in the missing values in the table\"]; learners receive conflicting guidance."
+          },
+          "mathematical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "For this scale-2 pictograph, the listed key [16, 12, 4, 16] does not consistently equal symbol counts multiplied by the scale; the hint describes that multiplication but the supplied result conflicts."
+          }
+        }
+      },
+      {
+        "sample_id": "140fa4ba2cc218761e3a",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Complete the picture graph to show: red: 10, blue: 5, green: 10, yellow: 5. Each 🎨 represents 5 items. gives four categories and a scale of 5; the requested picture count for each value is uniquely obtained by dividing each amount by that scale."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The raw or tabular values in this sample can be represented as picture counts at scale 5, and the resulting keyed counts [2, 1, 2, 1] are coherent. In this particular item, the prompt is: Complete the picture graph to show: red: 10, blue: 5, green: 10, yellow: 5. Each 🎨 represents 5 items."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The hints instruct division by 5, and the keyed picture counts [2, 1, 2, 1] match the amounts supplied in the stem; the BarChart controls invite adding or removing symbols. In this particular item, the prompt is: Complete the picture graph to show: red: 10, blue: 5, green: 10, yellow: 5. Each 🎨 represents 5 items."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Dividing the listed category totals by the stated scale of 5 yields the keyed picture counts [2, 1, 2, 1], so the conversion and the shown symbol scale agree. In this particular item, the prompt is: Complete the picture graph to show: red: 10, blue: 5, green: 10, yellow: 5. Each 🎨 represents 5 items."
+          }
+        }
+      },
+      {
+        "sample_id": "3b5f44bc61ba6dd3c945",
+        "checks": {
+          "ambiguity": {
+            "verdict": "FAIL",
+            "reasoning": "The Grade 1 through Grade 4 graph shows ten stars for Grade 1, five for Grade 2, and no visible stars for the final two rows, while the key gives four positive row counts."
+          },
+          "contextual_logical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "The stars-earned pictograph is understandable, but its rendered row labels show stars only for Grade 1 and Grade 2 while the key assigns counts to all four grades."
+          },
+          "learner_facing_clarity": {
+            "verdict": "FAIL",
+            "reasoning": "The scale is five per star, yet the visible rows show ten and five stars followed by empty Grade 3 and Grade 4 rows; the key [10, 5, 10, 10] cannot be produced from that display."
+          },
+          "mathematical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "Ten visible Grade 1 stars and five visible Grade 2 stars at five each yield 50 and 25, while the later rows display no stars; the key [10, 5, 10, 10] contradicts the rendered data."
+          }
+        }
+      },
+      {
+        "sample_id": "236e5d10ae66092c90c4",
+        "checks": {
+          "ambiguity": {
+            "verdict": "CONCERN",
+            "reasoning": "Look at the pictograph. Write the correct count for each row in the table: apples, bananas, mangoes and grapes. The scale is 2: each symbol stands for 2 items. identifies rows and scale 2; however, the visible labels [\"Favorite Fruits\", \"apples\", \"🍎🍎🍎🍎🍎🍎🍎🍎\", \"bananas\", \"🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎\", \"mangoes\", \"🍎🍎🍎🍎🍎🍎\", \"grapes\", \"Each 🍎 means 2.\", \"Category\", \"Count\", \"Fill in the missing values in the table\"] do not cleanly agree with the keyed row values [8, 18, 6, 18], leaving the intended counts uncertain."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The table-from-pictograph task uses a scale of 2 for its named categories; the direction is sensible, though the displayed labels require careful matching. In this particular item, the prompt is: Look at the pictograph. Write the correct count for each row in the table: apples, bananas, mangoes and grapes. The scale is 2: each symbol stands for 2 items."
+          },
+          "learner_facing_clarity": {
+            "verdict": "FAIL",
+            "reasoning": "The hint explicitly says to multiply each symbol count by 2, but the key [8, 18, 6, 18] records unscaled-looking row values against visual labels [\"Favorite Fruits\", \"apples\", \"🍎🍎🍎🍎🍎🍎🍎🍎\", \"bananas\", \"🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎\", \"mangoes\", \"🍎🍎🍎🍎🍎🍎\", \"grapes\", \"Each 🍎 means 2.\", \"Category\", \"Count\", \"Fill in the missing values in the table\"]; learners receive conflicting guidance."
+          },
+          "mathematical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "For this scale-2 pictograph, the listed key [8, 18, 6, 18] does not consistently equal symbol counts multiplied by the scale; the hint describes that multiplication but the supplied result conflicts."
+          }
+        }
+      },
+      {
+        "sample_id": "baf518ed3d517d049f84",
+        "checks": {
+          "ambiguity": {
+            "verdict": "CONCERN",
+            "reasoning": "The pictograph shows Monday, Tuesday, Wednesday, Thursday, Friday and Saturday. Fill in the table with the correct counts. The scale is 5: each symbol stands for 5 items. identifies rows and scale 5; however, the visible labels [\"Books Read\", \"Monday\", \"📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖\", \"Tuesday\", \"📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖\", \"Wednesday\", \"📖📖📖📖📖📖📖📖📖📖\", \"Thursday\", \"📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖\", \"Friday\", \"📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖\", \"Saturday\", \"Each 📖 means 5.\", \"Category\", \"Count\", \"Fill in the missing values in the table\"] do not cleanly agree with the keyed row values [35, 20, 10, 30, 50, 10], leaving the intended counts uncertain."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The table-from-pictograph task uses a scale of 5 for its named categories; the direction is sensible, though the displayed labels require careful matching. In this particular item, the prompt is: The pictograph shows Monday, Tuesday, Wednesday, Thursday, Friday and Saturday. Fill in the table with the correct counts. The scale is 5: each symbol stands for 5 items."
+          },
+          "learner_facing_clarity": {
+            "verdict": "FAIL",
+            "reasoning": "The hint explicitly says to multiply each symbol count by 5, but the key [35, 20, 10, 30, 50, 10] records unscaled-looking row values against visual labels [\"Books Read\", \"Monday\", \"📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖\", \"Tuesday\", \"📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖\", \"Wednesday\", \"📖📖📖📖📖📖📖📖📖📖\", \"Thursday\", \"📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖\", \"Friday\", \"📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖📖\", \"Saturday\", \"Each 📖 means 5.\", \"Category\", \"Count\", \"Fill in the missing values in the table\"]; learners receive conflicting guidance."
+          },
+          "mathematical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "For this scale-5 pictograph, the listed key [35, 20, 10, 30, 50, 10] does not consistently equal symbol counts multiplied by the scale; the hint describes that multiplication but the supplied result conflicts."
+          }
+        }
+      },
+      {
+        "sample_id": "2fcdca405a4a7765364e",
+        "checks": {
+          "ambiguity": {
+            "verdict": "CONCERN",
+            "reasoning": "Look at the pictograph. Write the correct count for each row in the table: basketball, volleyball, swimming, running, soccer and tennis. The scale is 10: each symbol stands for 10 items. identifies rows and scale 10; however, the visible labels [\"Favorite Sports\", \"basketball\", \"⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽\", \"volleyball\", \"⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽\", \"swimming\", \"running\", \"⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽\", \"soccer\", \"tennis\", \"Each ⚽ means 10.\", \"Category\", \"Count\", \"Fill in the missing values in the table\"] do not cleanly agree with the keyed row values [20, 30, 30, 50, 30, 20], leaving the intended counts uncertain."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The sports graph names basketball, volleyball, swimming, running, soccer, and tennis; football emojis stand for 10 apiece, so its sports theme is clear despite the shared icon."
+          },
+          "learner_facing_clarity": {
+            "verdict": "FAIL",
+            "reasoning": "The hint explicitly says to multiply each symbol count by 10, but the key [20, 30, 30, 50, 30, 20] records unscaled-looking row values against visual labels [\"Favorite Sports\", \"basketball\", \"⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽\", \"volleyball\", \"⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽\", \"swimming\", \"running\", \"⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽\", \"soccer\", \"tennis\", \"Each ⚽ means 10.\", \"Category\", \"Count\", \"Fill in the missing values in the table\"]; learners receive conflicting guidance."
+          },
+          "mathematical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "For this scale-10 pictograph, the listed key [20, 30, 30, 50, 30, 20] does not consistently equal symbol counts multiplied by the scale; the hint describes that multiplication but the supplied result conflicts."
+          }
+        }
+      },
+      {
+        "sample_id": "9481691c781483e4e30e",
+        "checks": {
+          "ambiguity": {
+            "verdict": "CONCERN",
+            "reasoning": "Count the pictures in each row of the pictograph, then write the counts for red, blue, green, yellow, purple and orange in the table. The scale is 10: each symbol stands for 10 items. identifies rows and scale 10; however, the visible labels [\"Favorite Colors\", \"red\", \"🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨\", \"blue\", \"🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨\", \"green\", \"🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨\", \"yellow\", \"🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨\", \"purple\", \"orange\", \"🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨\", \"Each 🎨 means 10.\", \"Category\", \"Count\", \"Fill in the missing values in the table\"] do not cleanly agree with the keyed row values [30, 20, 40, 10, 40, 50], leaving the intended counts uncertain."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "This colors pictograph uses red, blue, green, yellow, purple, and orange rows with palette emojis worth 10; those matching categories keep the display coherent."
+          },
+          "learner_facing_clarity": {
+            "verdict": "FAIL",
+            "reasoning": "The hint explicitly says to multiply each symbol count by 10, but the key [30, 20, 40, 10, 40, 50] records unscaled-looking row values against visual labels [\"Favorite Colors\", \"red\", \"🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨\", \"blue\", \"🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨\", \"green\", \"🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨\", \"yellow\", \"🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨\", \"purple\", \"orange\", \"🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨\", \"Each 🎨 means 10.\", \"Category\", \"Count\", \"Fill in the missing values in the table\"]; learners receive conflicting guidance."
+          },
+          "mathematical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "For this scale-10 pictograph, the listed key [30, 20, 40, 10, 40, 50] does not consistently equal symbol counts multiplied by the scale; the hint describes that multiplication but the supplied result conflicts."
+          }
+        }
+      },
+      {
+        "sample_id": "8fbc169c0626c9c14caf",
+        "checks": {
+          "ambiguity": {
+            "verdict": "CONCERN",
+            "reasoning": "Count the pictures in each row of the pictograph, then write the counts for Grade 1, Grade 2, Grade 3 and Grade 4 in the table. The scale is 5: each symbol stands for 5 items. identifies rows and scale 5; however, the visible labels [\"Stars Earned\", \"Grade 1\", \"⭐⭐⭐⭐⭐\", \"Grade 2\", \"⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐\", \"Grade 3\", \"Grade 4\", \"⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐\", \"Each ⭐ means 5.\", \"Category\", \"Count\", \"Fill in the missing values in the table\"] do not cleanly agree with the keyed row values [5, 15, 5, 10], leaving the intended counts uncertain."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The table-from-pictograph task uses a scale of 5 for its named categories; the direction is sensible, though the displayed labels require careful matching. In this particular item, the prompt is: Count the pictures in each row of the pictograph, then write the counts for Grade 1, Grade 2, Grade 3 and Grade 4 in the table. The scale is 5: each symbol stands for 5 items."
+          },
+          "learner_facing_clarity": {
+            "verdict": "FAIL",
+            "reasoning": "The hint explicitly says to multiply each symbol count by 5, but the key [5, 15, 5, 10] records unscaled-looking row values against visual labels [\"Stars Earned\", \"Grade 1\", \"⭐⭐⭐⭐⭐\", \"Grade 2\", \"⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐\", \"Grade 3\", \"Grade 4\", \"⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐\", \"Each ⭐ means 5.\", \"Category\", \"Count\", \"Fill in the missing values in the table\"]; learners receive conflicting guidance."
+          },
+          "mathematical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "For this scale-5 pictograph, the listed key [5, 15, 5, 10] does not consistently equal symbol counts multiplied by the scale; the hint describes that multiplication but the supplied result conflicts."
+          }
+        }
+      },
+      {
+        "sample_id": "c110d3f22c2e3f11c54a",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Complete the picture graph to show: cats: 16, dogs: 14, birds: 16, fish: 2. Each 🐾 represents 2 items. gives four categories and a scale of 2; the requested picture count for each value is uniquely obtained by dividing each amount by that scale."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The raw or tabular values in this sample can be represented as picture counts at scale 2, and the resulting keyed counts [8, 7, 8, 1] are coherent."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The hints instruct division by 2, and the keyed picture counts [8, 7, 8, 1] match the amounts supplied in the stem; the BarChart controls invite adding or removing symbols."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Dividing the listed category totals by the stated scale of 2 yields the keyed picture counts [8, 7, 8, 1], so the conversion and the shown symbol scale agree."
+          }
+        }
+      },
+      {
+        "sample_id": "13db058513078635ac3c",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The table shows: basketball: 15, volleyball: 15, swimming: 10, running: 10. Create a picture graph where each ⚽ equals 5. gives four categories and a scale of 5; the requested picture count for each value is uniquely obtained by dividing each amount by that scale."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The raw or tabular values in this sample can be represented as picture counts at scale 5, and the resulting keyed counts [3, 3, 2, 2] are coherent."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The hints instruct division by 5, and the keyed picture counts [3, 3, 2, 2] match the amounts supplied in the stem; the BarChart controls invite adding or removing symbols."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Dividing the listed category totals by the stated scale of 5 yields the keyed picture counts [3, 3, 2, 2], so the conversion and the shown symbol scale agree."
+          }
+        }
+      },
+      {
+        "sample_id": "fa08808391ca6865c214",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Look at the data: Grade 1: 8, Grade 2: 18, Grade 3: 12, Grade 4: 2. Draw a picture graph where each ⭐ stands for 2 items. gives four categories and a scale of 2; the requested picture count for each value is uniquely obtained by dividing each amount by that scale."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The raw or tabular values in this sample can be represented as picture counts at scale 2, and the resulting keyed counts [4, 9, 6, 1] are coherent."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The hints instruct division by 2, and the keyed picture counts [4, 9, 6, 1] match the amounts supplied in the stem; the BarChart controls invite adding or removing symbols."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Dividing the listed category totals by the stated scale of 2 yields the keyed picture counts [4, 9, 6, 1], so the conversion and the shown symbol scale agree."
+          }
+        }
+      },
+      {
+        "sample_id": "8457d7b045f04547b77a",
+        "checks": {
+          "ambiguity": {
+            "verdict": "CONCERN",
+            "reasoning": "💃 Sir Rez has a math challenge about dance shoes. Look at the pictograph. Write the correct count for each row in the table: Grade 1, Grade 2, Grade 3 and Grade 4. The scale is 10: each symbol stands for 10 items. identifies rows and scale 10; however, the visible labels [\"Stars Earned\", \"Grade 1\", \"⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐\", \"Grade 2\", \"Grade 3\", \"⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐\", \"Grade 4\", \"Each ⭐ means 10.\", \"Category\", \"Count\", \"Fill in the missing values in the table\"] do not cleanly agree with the keyed row values [10, 10, 30, 30], leaving the intended counts uncertain."
+          },
+          "contextual_logical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "The table-from-pictograph task uses a scale of 10 for its named categories; the direction is sensible, though the displayed labels require careful matching. The wrapper mentions dance shoes while the displayed category set is Grade 1 through Grade 4 stars earned."
+          },
+          "learner_facing_clarity": {
+            "verdict": "FAIL",
+            "reasoning": "The hint explicitly says to multiply each symbol count by 10, but the key [10, 10, 30, 30] records unscaled-looking row values against visual labels [\"Stars Earned\", \"Grade 1\", \"⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐\", \"Grade 2\", \"Grade 3\", \"⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐\", \"Grade 4\", \"Each ⭐ means 10.\", \"Category\", \"Count\", \"Fill in the missing values in the table\"]; learners receive conflicting guidance."
+          },
+          "mathematical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "For this scale-10 pictograph, the listed key [10, 10, 30, 30] does not consistently equal symbol counts multiplied by the scale; the hint describes that multiplication but the supplied result conflicts."
+          }
+        }
+      },
+      {
+        "sample_id": "1176a9fd7a483efdc573",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "🏀 Isko has a math challenge about basketballs. The table shows: apples: 10, bananas: 8, mangoes: 10, grapes: 16. Create a picture graph where each 🍎 equals 2. gives four categories and a scale of 2; the requested picture count for each value is uniquely obtained by dividing each amount by that scale."
+          },
+          "contextual_logical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "The raw or tabular values in this sample can be represented as picture counts at scale 2, and the resulting keyed counts [5, 4, 5, 8] are coherent. The basketball challenge wrapper introduces apples, bananas, mangoes, and grapes instead of basketball data."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The hints instruct division by 2, and the keyed picture counts [5, 4, 5, 8] match the amounts supplied in the stem; the BarChart controls invite adding or removing symbols."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Dividing the listed category totals by the stated scale of 2 yields the keyed picture counts [5, 4, 5, 8], so the conversion and the shown symbol scale agree."
+          }
+        }
+      },
+      {
+        "sample_id": "f3853a5dfa38f3525864",
+        "checks": {
+          "ambiguity": {
+            "verdict": "CONCERN",
+            "reasoning": "The pictograph shows apples, bananas, mangoes, grapes, oranges and strawberries. Fill in the table with the correct counts. The scale is 10: each symbol stands for 10 items. identifies rows and scale 10; however, the visible labels [\"Favorite Fruits\", \"apples\", \"🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎\", \"bananas\", \"mangoes\", \"🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎\", \"grapes\", \"oranges\", \"strawberries\", \"🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎\", \"Each 🍎 means 10.\", \"Category\", \"Count\", \"Fill in the missing values in the table\"] do not cleanly agree with the keyed row values [20, 20, 30, 20, 30, 10], leaving the intended counts uncertain."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The fruit graph names apples, bananas, mangoes, grapes, oranges, and strawberries, using apple symbols at scale 10; the fruit context fits the data categories."
+          },
+          "learner_facing_clarity": {
+            "verdict": "FAIL",
+            "reasoning": "The hint explicitly says to multiply each symbol count by 10, but the key [20, 20, 30, 20, 30, 10] records unscaled-looking row values against visual labels [\"Favorite Fruits\", \"apples\", \"🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎\", \"bananas\", \"mangoes\", \"🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎\", \"grapes\", \"oranges\", \"strawberries\", \"🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎\", \"Each 🍎 means 10.\", \"Category\", \"Count\", \"Fill in the missing values in the table\"]; learners receive conflicting guidance."
+          },
+          "mathematical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "For this scale-10 pictograph, the listed key [20, 20, 30, 20, 30, 10] does not consistently equal symbol counts multiplied by the scale; the hint describes that multiplication but the supplied result conflicts."
+          }
+        }
+      },
+      {
+        "sample_id": "a2134fa8983bedd9d07f",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Make a picture graph to show: basketball: 8, volleyball: 50, swimming: 32, running: 8. Each ⚽ equals 2. gives four categories and a scale of 2; the requested picture count for each value is uniquely obtained by dividing each amount by that scale."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The raw or tabular values in this sample can be represented as picture counts at scale 2, and the resulting keyed counts [4, 25, 16, 4] are coherent."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The hints instruct division by 2, and the keyed picture counts [4, 25, 16, 4] match the amounts supplied in the stem; the BarChart controls invite adding or removing symbols."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Dividing the listed category totals by the stated scale of 2 yields the keyed picture counts [4, 25, 16, 4], so the conversion and the shown symbol scale agree."
+          }
+        }
+      },
+      {
+        "sample_id": "f3d3bb50ebe7bcd16d0f",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Make a picture graph to show: basketball: 10, volleyball: 30, swimming: 10, running: 30. Each ⚽ equals 10. gives four categories and a scale of 10; the requested picture count for each value is uniquely obtained by dividing each amount by that scale."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The raw or tabular values in this sample can be represented as picture counts at scale 10, and the resulting keyed counts [1, 3, 1, 3] are coherent."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The hints instruct division by 10, and the keyed picture counts [1, 3, 1, 3] match the amounts supplied in the stem; the BarChart controls invite adding or removing symbols."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Dividing the listed category totals by the stated scale of 10 yields the keyed picture counts [1, 3, 1, 3], so the conversion and the shown symbol scale agree."
+          }
+        }
+      },
+      {
+        "sample_id": "d482f0172c66e919870c",
+        "checks": {
+          "ambiguity": {
+            "verdict": "CONCERN",
+            "reasoning": "Look at the pictograph. Write the correct count for each row in the table: cats, dogs, birds and fish. The scale is 5: each symbol stands for 5 items. identifies rows and scale 5; however, the visible labels [\"Favorite Pets\", \"cats\", \"🐾🐾🐾🐾🐾🐾🐾🐾🐾🐾🐾🐾🐾🐾🐾\", \"dogs\", \"🐾🐾🐾🐾🐾\", \"birds\", \"🐾🐾🐾🐾🐾🐾🐾🐾🐾🐾\", \"fish\", \"Each 🐾 means 5.\", \"Category\", \"Count\", \"Fill in the missing values in the table\"] do not cleanly agree with the keyed row values [15, 5, 10, 10], leaving the intended counts uncertain."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The table-from-pictograph task uses a scale of 5 for its named categories; the direction is sensible, though the displayed labels require careful matching. In this particular item, the prompt is: Look at the pictograph. Write the correct count for each row in the table: cats, dogs, birds and fish. The scale is 5: each symbol stands for 5 items."
+          },
+          "learner_facing_clarity": {
+            "verdict": "FAIL",
+            "reasoning": "The hint explicitly says to multiply each symbol count by 5, but the key [15, 5, 10, 10] records unscaled-looking row values against visual labels [\"Favorite Pets\", \"cats\", \"🐾🐾🐾🐾🐾🐾🐾🐾🐾🐾🐾🐾🐾🐾🐾\", \"dogs\", \"🐾🐾🐾🐾🐾\", \"birds\", \"🐾🐾🐾🐾🐾🐾🐾🐾🐾🐾\", \"fish\", \"Each 🐾 means 5.\", \"Category\", \"Count\", \"Fill in the missing values in the table\"]; learners receive conflicting guidance."
+          },
+          "mathematical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "For this scale-5 pictograph, the listed key [15, 5, 10, 10] does not consistently equal symbol counts multiplied by the scale; the hint describes that multiplication but the supplied result conflicts."
+          }
+        }
+      },
+      {
+        "sample_id": "a80f988f5e2536f6a930",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The table shows: roses: 10, sunflowers: 5, tulips: 10, daisies: 5. Create a picture graph where each 🌸 equals 5. gives four categories and a scale of 5; the requested picture count for each value is uniquely obtained by dividing each amount by that scale."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The raw or tabular values in this sample can be represented as picture counts at scale 5, and the resulting keyed counts [2, 1, 2, 1] are coherent. In this particular item, the prompt is: The table shows: roses: 10, sunflowers: 5, tulips: 10, daisies: 5. Create a picture graph where each 🌸 equals 5."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The hints instruct division by 5, and the keyed picture counts [2, 1, 2, 1] match the amounts supplied in the stem; the BarChart controls invite adding or removing symbols. In this particular item, the prompt is: The table shows: roses: 10, sunflowers: 5, tulips: 10, daisies: 5. Create a picture graph where each 🌸 equals 5."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Dividing the listed category totals by the stated scale of 5 yields the keyed picture counts [2, 1, 2, 1], so the conversion and the shown symbol scale agree. In this particular item, the prompt is: The table shows: roses: 10, sunflowers: 5, tulips: 10, daisies: 5. Create a picture graph where each 🌸 equals 5."
+          }
+        }
+      },
+      {
+        "sample_id": "a94fed78ef3996e49ecd",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Complete the picture graph to show: cats: 18, dogs: 14, birds: 6, fish: 14. Each 🐾 represents 2 items. gives four categories and a scale of 2; the requested picture count for each value is uniquely obtained by dividing each amount by that scale."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The raw or tabular values in this sample can be represented as picture counts at scale 2, and the resulting keyed counts [9, 7, 3, 7] are coherent."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The hints instruct division by 2, and the keyed picture counts [9, 7, 3, 7] match the amounts supplied in the stem; the BarChart controls invite adding or removing symbols."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Dividing the listed category totals by the stated scale of 2 yields the keyed picture counts [9, 7, 3, 7], so the conversion and the shown symbol scale agree."
+          }
+        }
+      },
+      {
+        "sample_id": "af69055cd66437c66b7b",
+        "checks": {
+          "ambiguity": {
+            "verdict": "CONCERN",
+            "reasoning": "Look at the pictograph. Write the correct count for each row in the table: Math, Science, English and Art. The scale is 10: each symbol stands for 10 items. identifies rows and scale 10; however, the visible labels [\"Favorite Subjects\", \"Math\", \"📚📚📚📚📚📚📚📚📚📚\", \"Science\", \"English\", \"📚📚📚📚📚📚📚📚📚📚📚📚📚📚📚📚📚📚📚📚\", \"Art\", \"Each 📚 means 10.\", \"Category\", \"Count\", \"Fill in the missing values in the table\"] do not cleanly agree with the keyed row values [10, 10, 20, 20], leaving the intended counts uncertain."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The school-subject pictograph lists Math, Science, English, and Art, with book icons worth 10; books connect naturally to the listed subjects."
+          },
+          "learner_facing_clarity": {
+            "verdict": "FAIL",
+            "reasoning": "The hint explicitly says to multiply each symbol count by 10, but the key [10, 10, 20, 20] records unscaled-looking row values against visual labels [\"Favorite Subjects\", \"Math\", \"📚📚📚📚📚📚📚📚📚📚\", \"Science\", \"English\", \"📚📚📚📚📚📚📚📚📚📚📚📚📚📚📚📚📚📚📚📚\", \"Art\", \"Each 📚 means 10.\", \"Category\", \"Count\", \"Fill in the missing values in the table\"]; learners receive conflicting guidance."
+          },
+          "mathematical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "For this scale-10 pictograph, the listed key [10, 10, 20, 20] does not consistently equal symbol counts multiplied by the scale; the hint describes that multiplication but the supplied result conflicts."
+          }
+        }
+      }
+    ],
+    "clause_evidence": [
+      {
+        "requirement_id": "present",
+        "clause": "Present",
+        "verdict": "PASS",
+        "reasoning": "Forward-conversion items ask learners to create or draw picture graphs from supplied category values, showing the presenting action.",
+        "sample_ids": [
+          "7716a80e152ae40d88dc",
+          "140fa4ba2cc218761e3a",
+          "1176a9fd7a483efdc573"
+        ]
+      },
+      {
+        "requirement_id": "raw_data",
+        "clause": "raw data",
+        "verdict": "PASS",
+        "reasoning": "Several stems supply category:value lists directly as data and ask students to turn those amounts into scaled picture graphs.",
+        "sample_ids": [
+          "13db058513078635ac3c",
+          "1176a9fd7a483efdc573",
+          "f3853a5dfa38f3525864"
+        ]
+      },
+      {
+        "requirement_id": "data",
+        "clause": "data",
+        "verdict": "PASS",
+        "reasoning": "All prompts work with named categories and numerical amounts, whether those values begin in a table or in a pictograph.",
+        "sample_ids": [
+          "7716a80e152ae40d88dc",
+          "c110d3f22c2e3f11c54a",
+          "1176a9fd7a483efdc573"
+        ]
+      },
+      {
+        "requirement_id": "tabular_form",
+        "clause": "tabular form",
+        "verdict": "PASS",
+        "reasoning": "Some tasks begin with a displayed table and convert it to a graph, while others request counts written into a table.",
+        "sample_ids": [
+          "7716a80e152ae40d88dc",
+          "cace834ee38e86da3a95",
+          "3b5f44bc61ba6dd3c945"
+        ]
+      },
+      {
+        "requirement_id": "pictograph",
+        "clause": "pictograph",
+        "verdict": "CONCERN",
+        "reasoning": "The forward items describe picture graphs and symbol scales, although the rendered visual type is BarChart, leaving some uncertainty about pictograph rendering fidelity.",
+        "sample_ids": [
+          "7716a80e152ae40d88dc",
+          "140fa4ba2cc218761e3a",
+          "1176a9fd7a483efdc573"
+        ]
+      },
+      {
+        "requirement_id": "scale",
+        "clause": "scale",
+        "verdict": "FAIL",
+        "reasoning": "Although every task states a symbol scale and forward examples divide correctly, several reverse items fail to multiply visible symbols by that scale in the answer key.",
+        "sample_ids": [
+          "236e5d10ae66092c90c4",
+          "baf518ed3d517d049f84",
+          "2fcdca405a4a7765364e"
+        ]
+      },
+      {
+        "requirement_id": "vice_versa",
+        "clause": "vice versa",
+        "verdict": "FAIL",
+        "reasoning": "Both directions are present, but reverse conversion frequently yields answers that match symbol counts rather than scaled data totals, undermining the reverse direction’s accuracy.",
+        "sample_ids": [
+          "cace834ee38e86da3a95",
+          "236e5d10ae66092c90c4",
+          "baf518ed3d517d049f84"
+        ]
+      }
+    ],
+    "overall": "FAIL"
+  }
+}

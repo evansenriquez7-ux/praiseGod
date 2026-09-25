@@ -1,0 +1,631 @@
+{
+  "reviewer": "blind-reviewer-gpt-6-luna-medium-w24-mat_g1_na_q4_6-20260925",
+  "mat_g1_na_q4_6": {
+    "findings": {
+      "cognitive_capacity": {
+        "verdict": "PASS",
+        "rationale": "Each item asks for one direct sum or difference of two money amounts, with familiar buying, saving, receiving, or holding contexts and simple answer choices."
+      },
+      "competency_alignment": {
+        "verdict": "PASS",
+        "rationale": "The stems pose one-step money addition or subtraction problems; addition totals stay at or below ₱100, and subtraction operands remain below ₱100."
+      },
+      "competency_fulfillment": {
+        "verdict": "CONCERN",
+        "rationale": "The packet includes pictured money or number-line support along with text problems, but the printed requirements do not retain the competency's oral-delivery alternative.",
+        "decomposition": {
+          "verdict": "CONCERN",
+          "reasoning": "The clauses cover one-step money problems, pictures, addition and its sum bound, plus subtraction and its operand bound, but omit the stated orally-given presentation mode."
+        }
+      },
+      "comprehensive_coverage": {
+        "verdict": "CONCERN",
+        "rationale": "Both operations and several everyday settings appear, with pictured and text-only examples, though no oral presentation is represented and the recurring hint token format harms clarity."
+      },
+      "scale_appropriateness": {
+        "verdict": "PASS",
+        "rationale": "All addition answers are within ₱100 and every subtraction uses amounts below ₱100; the stories call for only one operation and do not introduce advanced money calculations."
+      },
+      "variant_comprehensiveness": {
+        "verdict": "PASS",
+        "rationale": "The packet rotates between adding amounts held or received and finding money left after a purchase, with multiple-choice and fill-in response modes."
+      }
+    },
+    "sample_assessments": [
+      {
+        "sample_id": "d410ababa077fc6dd315",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Marco keeps ₱5 and uses ₱2 for a notebook gives two definite amounts, so the requested subtraction has result 3; the options 5 / 2 / 3 / 4 contain one matching number."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "In this story, marco keeps ₱5 and uses ₱2 for a notebook, and the requested action is to subtract the stated amounts; that operation produces 3 pesos, with no unrelated condition."
+          },
+          "learner_facing_clarity": {
+            "verdict": "CONCERN",
+            "reasoning": "The read_mcq prompt asks for one money amount after the subtraction in marco keeps ₱5 and uses ₱2 for a notebook; The change hints compare peso5 with peso2 and give peso3 as money left. The bracketed pesoN hint tokens are awkward for a child to read."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "5 − 2 = 3 matches the key 3 and the choice list 5 / 2 / 3 / 4; The change hints compare peso5 with peso2 and give peso3 as money left. The visual description is NumberLine labeled 0, 5, 10, 15, 20. The hint operation agrees with the stem despite its odd pesoN wording."
+          }
+        }
+      },
+      {
+        "sample_id": "8e4a76db423c64a9ec76",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Kuya Ton has ₱20 and receives ₱10 from Nanay gives two definite amounts, so the requested addition has result 30; the options 30 / 35 / 50 / 20 contain one matching number."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "In this story, kuya ton has ₱20 and receives ₱10 from nanay, and the requested action is to combine the stated amounts; that operation produces 30 pesos, with no unrelated condition."
+          },
+          "learner_facing_clarity": {
+            "verdict": "CONCERN",
+            "reasoning": "The read_mcq prompt asks for one money amount after the addition in kuya ton has ₱20 and receives ₱10 from nanay; The running-total hints start at peso20, then add peso10, and conclude peso30. The bracketed pesoN hint tokens are awkward for a child to read."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "20 + 10 = 30 matches the key 30 and the choice list 30 / 35 / 50 / 20; The running-total hints start at peso20, then add peso10, and conclude peso30. The visual description is PesoMoney labels BILLS ₱20 and COINS ₱10. The hint operation agrees with the stem despite its odd pesoN wording."
+          }
+        }
+      },
+      {
+        "sample_id": "5589ea8157ef2a680572",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Isko has ₱10 in one pocket and ₱21 in another gives two definite amounts, so the requested addition has result 31; the options 310 / 32 / 21 / 31 contain one matching number."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "In this story, isko has ₱10 in one pocket and ₱21 in another, and the requested action is to combine the stated amounts; that operation produces 31 pesos, with no unrelated condition."
+          },
+          "learner_facing_clarity": {
+            "verdict": "CONCERN",
+            "reasoning": "The mcq prompt asks for one money amount after the addition in isko has ₱10 in one pocket and ₱21 in another; The running-total hints start at peso10, then add peso21, and conclude peso31. The bracketed pesoN hint tokens are awkward for a child to read."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "10 + 21 = 31 matches the key 31 and the choice list 310 / 32 / 21 / 31; The running-total hints start at peso10, then add peso21, and conclude peso31. No visual is part of this sample. The hint operation agrees with the stem despite its odd pesoN wording."
+          }
+        }
+      },
+      {
+        "sample_id": "3714657f86107c66e14c",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Chef Demi saves ₱2 Monday and ₱10 Tuesday gives two definite amounts, so the requested addition has result 12; the options 14 / 12 / 11 / 13 contain one matching number."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "In this story, chef demi saves ₱2 monday and ₱10 tuesday, and the requested action is to combine the stated amounts; that operation produces 12 pesos, with no unrelated condition."
+          },
+          "learner_facing_clarity": {
+            "verdict": "CONCERN",
+            "reasoning": "The read_mcq prompt asks for one money amount after the addition in chef demi saves ₱2 monday and ₱10 tuesday; The running-total hints start at peso2, then add peso10, and conclude peso12. The bracketed pesoN hint tokens are awkward for a child to read."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "2 + 10 = 12 matches the key 12 and the choice list 14 / 12 / 11 / 13; The running-total hints start at peso2, then add peso10, and conclude peso12. The visual description is NumberLine labeled 0, 5, 10, 15, 20. The hint operation agrees with the stem despite its odd pesoN wording."
+          }
+        }
+      },
+      {
+        "sample_id": "9e390c2bbf183239afd6",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Ate Nena has ₱30 and spends ₱10 on flour at palengke gives two definite amounts, so the requested subtraction has result 20; the options 20 / 30 / 400 / 41 contain one matching number."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "In this story, ate nena has ₱30 and spends ₱10 on flour at palengke, and the requested action is to subtract the stated amounts; that operation produces 20 pesos, with no unrelated condition."
+          },
+          "learner_facing_clarity": {
+            "verdict": "CONCERN",
+            "reasoning": "The cloze prompt asks for one money amount after the subtraction in ate nena has ₱30 and spends ₱10 on flour at palengke; The change hints compare peso30 with peso10 and give peso20 as money left. The bracketed pesoN hint tokens are awkward for a child to read."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "30 − 10 = 20 matches the key 20 and the choice list 20 / 30 / 400 / 41; The change hints compare peso30 with peso10 and give peso20 as money left. No visual is part of this sample. The hint operation agrees with the stem despite its odd pesoN wording."
+          }
+        }
+      },
+      {
+        "sample_id": "02e60e0d61e1cf23370c",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Nanding has ₱60 and buys a ₱40 snack at sari-sari store gives two definite amounts, so the requested subtraction has result 20; the options 80 / 50 / 65 / 20 contain one matching number."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "In this story, nanding has ₱60 and buys a ₱40 snack at sari-sari store, and the requested action is to subtract the stated amounts; that operation produces 20 pesos, with no unrelated condition."
+          },
+          "learner_facing_clarity": {
+            "verdict": "CONCERN",
+            "reasoning": "The read_mcq prompt asks for one money amount after the subtraction in nanding has ₱60 and buys a ₱40 snack at sari-sari store; The change hints compare peso60 with peso40 and give peso20 as money left. The bracketed pesoN hint tokens are awkward for a child to read."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "60 − 40 = 20 matches the key 20 and the choice list 80 / 50 / 65 / 20; The change hints compare peso60 with peso40 and give peso20 as money left. The visual description is PesoMoney labels BILLS ₱50 and COINS ₱10. The hint operation agrees with the stem despite its odd pesoN wording."
+          }
+        }
+      },
+      {
+        "sample_id": "28f8a3bb6a46fe466f43",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Kuya Ton has ₱50 and uses ₱39 for a notebook gives two definite amounts, so the requested subtraction has result 11; the options 11 / 10 / 12 / 16 contain one matching number."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "In this story, kuya ton has ₱50 and uses ₱39 for a notebook, and the requested action is to subtract the stated amounts; that operation produces 11 pesos, with no unrelated condition."
+          },
+          "learner_facing_clarity": {
+            "verdict": "CONCERN",
+            "reasoning": "The read_mcq prompt asks for one money amount after the subtraction in kuya ton has ₱50 and uses ₱39 for a notebook; The change hints compare peso50 with peso39 and give peso11 as money left. The bracketed pesoN hint tokens are awkward for a child to read."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "50 − 39 = 11 matches the key 11 and the choice list 11 / 10 / 12 / 16; The change hints compare peso50 with peso39 and give peso11 as money left. The visual description is NumberLine labeled 0, 10, 20, 30, 40, 50, 60, 70. The hint operation agrees with the stem despite its odd pesoN wording."
+          }
+        }
+      },
+      {
+        "sample_id": "77a21857d240499c3e02",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Carlo has ₱80 and uses ₱2 for a notebook gives two definite amounts, so the requested subtraction has result 78; the options 78 / 820 / 83 / 72 contain one matching number."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "In this story, carlo has ₱80 and uses ₱2 for a notebook, and the requested action is to subtract the stated amounts; that operation produces 78 pesos, with no unrelated condition."
+          },
+          "learner_facing_clarity": {
+            "verdict": "CONCERN",
+            "reasoning": "The mcq prompt asks for one money amount after the subtraction in carlo has ₱80 and uses ₱2 for a notebook; The change hints compare peso80 with peso2 and give peso78 as money left. The bracketed pesoN hint tokens are awkward for a child to read."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "80 − 2 = 78 matches the key 78 and the choice list 78 / 820 / 83 / 72; The change hints compare peso80 with peso2 and give peso78 as money left. No visual is part of this sample. The hint operation agrees with the stem despite its odd pesoN wording."
+          }
+        }
+      },
+      {
+        "sample_id": "9fc0da4ff98a774cf1bb",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Kuya Renz has ₱10 and buys a ₱5 snack at sari-sari store gives two definite amounts, so the requested subtraction has result 5; the options 20 / 5 / 6 / 11 contain one matching number."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "In this story, kuya renz has ₱10 and buys a ₱5 snack at sari-sari store, and the requested action is to subtract the stated amounts; that operation produces 5 pesos, with no unrelated condition."
+          },
+          "learner_facing_clarity": {
+            "verdict": "CONCERN",
+            "reasoning": "The read_mcq prompt asks for one money amount after the subtraction in kuya renz has ₱10 and buys a ₱5 snack at sari-sari store; The change hints compare peso10 with peso5 and give peso5 as money left. The bracketed pesoN hint tokens are awkward for a child to read."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "10 − 5 = 5 matches the key 5 and the choice list 20 / 5 / 6 / 11; The change hints compare peso10 with peso5 and give peso5 as money left. The visual description is PesoMoney label COINS ₱10. The hint operation agrees with the stem despite its odd pesoN wording."
+          }
+        }
+      },
+      {
+        "sample_id": "4efc57edda6bbf5e6fd6",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Moses buys a ₱15 pencil and ₱5 eraser gives two definite amounts, so the requested addition has result 20; the options 21 / 200 / 20 / 10 contain one matching number."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "In this story, moses buys a ₱15 pencil and ₱5 eraser, and the requested action is to combine the stated amounts; that operation produces 20 pesos, with no unrelated condition."
+          },
+          "learner_facing_clarity": {
+            "verdict": "CONCERN",
+            "reasoning": "The cloze prompt asks for one money amount after the addition in moses buys a ₱15 pencil and ₱5 eraser; The running-total hints start at peso15, then add peso5, and conclude peso20. The bracketed pesoN hint tokens are awkward for a child to read."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "15 + 5 = 20 matches the key 20 and the choice list 21 / 200 / 20 / 10; The running-total hints start at peso15, then add peso5, and conclude peso20. No visual is part of this sample. The hint operation agrees with the stem despite its odd pesoN wording."
+          }
+        }
+      },
+      {
+        "sample_id": "b6304864e5d0c552de77",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Des has ₱50 in one pocket and ₱20 in another gives two definite amounts, so the requested addition has result 70; the options 70 / 69 / 75 / 65 contain one matching number."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "In this story, des has ₱50 in one pocket and ₱20 in another, and the requested action is to combine the stated amounts; that operation produces 70 pesos, with no unrelated condition."
+          },
+          "learner_facing_clarity": {
+            "verdict": "CONCERN",
+            "reasoning": "The read_mcq prompt asks for one money amount after the addition in des has ₱50 in one pocket and ₱20 in another; The running-total hints start at peso50, then add peso20, and conclude peso70. The bracketed pesoN hint tokens are awkward for a child to read."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "50 + 20 = 70 matches the key 70 and the choice list 70 / 69 / 75 / 65; The running-total hints start at peso50, then add peso20, and conclude peso70. The visual description is NumberLine labeled 40, 50, 60, 70, 80. The hint operation agrees with the stem despite its odd pesoN wording."
+          }
+        }
+      },
+      {
+        "sample_id": "742542e35f921b0996d8",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Sir Ben buys a ₱15 pencil and ₱15 eraser gives two definite amounts, so the requested addition has result 30; the options 30 / 31 / 20 / 50 contain one matching number."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "In this story, sir ben buys a ₱15 pencil and ₱15 eraser, and the requested action is to combine the stated amounts; that operation produces 30 pesos, with no unrelated condition."
+          },
+          "learner_facing_clarity": {
+            "verdict": "CONCERN",
+            "reasoning": "The read_mcq prompt asks for one money amount after the addition in sir ben buys a ₱15 pencil and ₱15 eraser; The running-total hints start at peso15, then add peso15, and conclude peso30. The bracketed pesoN hint tokens are awkward for a child to read."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "15 + 15 = 30 matches the key 30 and the choice list 30 / 31 / 20 / 50; The running-total hints start at peso15, then add peso15, and conclude peso30. The visual description is PesoMoney labels COINS ₱5 and ₱10. The hint operation agrees with the stem despite its odd pesoN wording."
+          }
+        }
+      },
+      {
+        "sample_id": "a9997b6c5792ab32d47e",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Faye has ₱5 and receives ₱25 from Nanay gives two definite amounts, so the requested addition has result 30; the options 35 / 29 / 25 / 30 contain one matching number."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "In this story, faye has ₱5 and receives ₱25 from nanay, and the requested action is to combine the stated amounts; that operation produces 30 pesos, with no unrelated condition."
+          },
+          "learner_facing_clarity": {
+            "verdict": "CONCERN",
+            "reasoning": "The read_mcq prompt asks for one money amount after the addition in faye has ₱5 and receives ₱25 from nanay; The running-total hints start at peso5, then add peso25, and conclude peso30. The bracketed pesoN hint tokens are awkward for a child to read."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "5 + 25 = 30 matches the key 30 and the choice list 35 / 29 / 25 / 30; The running-total hints start at peso5, then add peso25, and conclude peso30. The visual description is NumberLine labeled 0, 10, 20, 30, 40, 50. The hint operation agrees with the stem despite its odd pesoN wording."
+          }
+        }
+      },
+      {
+        "sample_id": "4e46f5616912bc5875b0",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Riza buys a ₱10 pencil and ₱50 eraser gives two definite amounts, so the requested addition has result 60; the options 55 / 65 / 59 / 60 contain one matching number."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "In this story, riza buys a ₱10 pencil and ₱50 eraser, and the requested action is to combine the stated amounts; that operation produces 60 pesos, with no unrelated condition."
+          },
+          "learner_facing_clarity": {
+            "verdict": "CONCERN",
+            "reasoning": "The read_mcq prompt asks for one money amount after the addition in riza buys a ₱10 pencil and ₱50 eraser; The running-total hints start at peso10, then add peso50, and conclude peso60. The bracketed pesoN hint tokens are awkward for a child to read."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "10 + 50 = 60 matches the key 60 and the choice list 55 / 65 / 59 / 60; The running-total hints start at peso10, then add peso50, and conclude peso60. The visual description is NumberLine labeled 0, 10, 20, 30, 40, 50, 60, 70. The hint operation agrees with the stem despite its odd pesoN wording."
+          }
+        }
+      },
+      {
+        "sample_id": "a0a980b31bca7046b3ea",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Mary has ₱20 and uses ₱1 for a notebook gives two definite amounts, so the requested subtraction has result 19; the options 19 / 81 / 910 / 92 contain one matching number."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "In this story, mary has ₱20 and uses ₱1 for a notebook, and the requested action is to subtract the stated amounts; that operation produces 19 pesos, with no unrelated condition."
+          },
+          "learner_facing_clarity": {
+            "verdict": "CONCERN",
+            "reasoning": "The mcq prompt asks for one money amount after the subtraction in mary has ₱20 and uses ₱1 for a notebook; The change hints compare peso20 with peso1 and give peso19 as money left. The bracketed pesoN hint tokens are awkward for a child to read."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "20 − 1 = 19 matches the key 19 and the choice list 19 / 81 / 910 / 92; The change hints compare peso20 with peso1 and give peso19 as money left. No visual is part of this sample. The hint operation agrees with the stem despite its odd pesoN wording."
+          }
+        }
+      },
+      {
+        "sample_id": "ea0f9c6fb15026f9e580",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Faye buys a ₱25 pencil and ₱5 eraser gives two definite amounts, so the requested addition has result 30; the options 50 / 30 / 40 / 29 contain one matching number."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "In this story, faye buys a ₱25 pencil and ₱5 eraser, and the requested action is to combine the stated amounts; that operation produces 30 pesos, with no unrelated condition."
+          },
+          "learner_facing_clarity": {
+            "verdict": "CONCERN",
+            "reasoning": "The read_mcq prompt asks for one money amount after the addition in faye buys a ₱25 pencil and ₱5 eraser; The running-total hints start at peso25, then add peso5, and conclude peso30. The bracketed pesoN hint tokens are awkward for a child to read."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "25 + 5 = 30 matches the key 30 and the choice list 50 / 30 / 40 / 29; The running-total hints start at peso25, then add peso5, and conclude peso30. The visual description is PesoMoney labels BILLS ₱20 and COINS ₱5. The hint operation agrees with the stem despite its odd pesoN wording."
+          }
+        }
+      },
+      {
+        "sample_id": "792c494ce4edfca1f87a",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Mika has ₱10 and uses ₱1 for a notebook gives two definite amounts, so the requested subtraction has result 9; the options 42 / 410 / 31 / 9 contain one matching number."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "In this story, mika has ₱10 and uses ₱1 for a notebook, and the requested action is to subtract the stated amounts; that operation produces 9 pesos, with no unrelated condition."
+          },
+          "learner_facing_clarity": {
+            "verdict": "CONCERN",
+            "reasoning": "The cloze prompt asks for one money amount after the subtraction in mika has ₱10 and uses ₱1 for a notebook; The change hints compare peso10 with peso1 and give peso9 as money left. The bracketed pesoN hint tokens are awkward for a child to read."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "10 − 1 = 9 matches the key 9 and the choice list 42 / 410 / 31 / 9; The change hints compare peso10 with peso1 and give peso9 as money left. No visual is part of this sample. The hint operation agrees with the stem despite its odd pesoN wording."
+          }
+        }
+      },
+      {
+        "sample_id": "f424f6d1218c2cebe458",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Ate Alyssa has ₱1 and spends ₱0 on whistles gives two definite amounts, so the requested subtraction has result 1; the options 1 / 320 / 33 / 22 contain one matching number."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "In this story, ate alyssa has ₱1 and spends ₱0 on whistles, and the requested action is to subtract the stated amounts; that operation produces 1 pesos, with no unrelated condition."
+          },
+          "learner_facing_clarity": {
+            "verdict": "CONCERN",
+            "reasoning": "The mcq prompt asks for one money amount after the subtraction in ate alyssa has ₱1 and spends ₱0 on whistles; The change hints compare peso1 with peso0 and give peso1 as money left. The bracketed pesoN hint tokens are awkward for a child to read."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "1 − 0 = 1 matches the key 1 and the choice list 1 / 320 / 33 / 22; The change hints compare peso1 with peso0 and give peso1 as money left. No visual is part of this sample. The hint operation agrees with the stem despite its odd pesoN wording."
+          }
+        }
+      },
+      {
+        "sample_id": "8783a2b7950811a72d2a",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Pia has ₱40 and uses ₱15 for a notebook gives two definite amounts, so the requested subtraction has result 25; the options 56 / 45 / 550 / 25 contain one matching number."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "In this story, pia has ₱40 and uses ₱15 for a notebook, and the requested action is to subtract the stated amounts; that operation produces 25 pesos, with no unrelated condition."
+          },
+          "learner_facing_clarity": {
+            "verdict": "CONCERN",
+            "reasoning": "The cloze prompt asks for one money amount after the subtraction in pia has ₱40 and uses ₱15 for a notebook; The change hints compare peso40 with peso15 and give peso25 as money left. The bracketed pesoN hint tokens are awkward for a child to read."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "40 − 15 = 25 matches the key 25 and the choice list 56 / 45 / 550 / 25; The change hints compare peso40 with peso15 and give peso25 as money left. No visual is part of this sample. The hint operation agrees with the stem despite its odd pesoN wording."
+          }
+        }
+      },
+      {
+        "sample_id": "73e55bca6ac8b0ef0489",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Tito Bong has ₱20 and receives ₱75 from Nanay gives two definite amounts, so the requested addition has result 95; the options 85 / 950 / 96 / 95 contain one matching number."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "In this story, tito bong has ₱20 and receives ₱75 from nanay, and the requested action is to combine the stated amounts; that operation produces 95 pesos, with no unrelated condition."
+          },
+          "learner_facing_clarity": {
+            "verdict": "CONCERN",
+            "reasoning": "The mcq prompt asks for one money amount after the addition in tito bong has ₱20 and receives ₱75 from nanay; The running-total hints start at peso20, then add peso75, and conclude peso95. The bracketed pesoN hint tokens are awkward for a child to read."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "20 + 75 = 95 matches the key 95 and the choice list 85 / 950 / 96 / 95; The running-total hints start at peso20, then add peso75, and conclude peso95. No visual is part of this sample. The hint operation agrees with the stem despite its odd pesoN wording."
+          }
+        }
+      },
+      {
+        "sample_id": "797d7f284811f1f98a3d",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Tito Bong has ₱2 and uses ₱1 for a notebook gives two definite amounts, so the requested subtraction has result 1; the options 0 / 3 / 2 / 1 contain one matching number."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "In this story, tito bong has ₱2 and uses ₱1 for a notebook, and the requested action is to subtract the stated amounts; that operation produces 1 pesos, with no unrelated condition."
+          },
+          "learner_facing_clarity": {
+            "verdict": "CONCERN",
+            "reasoning": "The read_mcq prompt asks for one money amount after the subtraction in tito bong has ₱2 and uses ₱1 for a notebook; The change hints compare peso2 with peso1 and give peso1 as money left. The bracketed pesoN hint tokens are awkward for a child to read."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "2 − 1 = 1 matches the key 1 and the choice list 0 / 3 / 2 / 1; The change hints compare peso2 with peso1 and give peso1 as money left. The visual description is NumberLine labeled 0, 5, 10, 15, 20. The hint operation agrees with the stem despite its odd pesoN wording."
+          }
+        }
+      },
+      {
+        "sample_id": "d5d61410a996abd62f0c",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Ate Gab has ₱2 in each of two pockets gives two definite amounts, so the requested addition has result 4; the options 5 / 4 / 3 / 6 contain one matching number."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "In this story, ate gab has ₱2 in each of two pockets, and the requested action is to combine the stated amounts; that operation produces 4 pesos, with no unrelated condition."
+          },
+          "learner_facing_clarity": {
+            "verdict": "CONCERN",
+            "reasoning": "The read_mcq prompt asks for one money amount after the addition in ate gab has ₱2 in each of two pockets; The running-total hints start at peso2, then add peso2, and conclude peso4. The bracketed pesoN hint tokens are awkward for a child to read."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "2 + 2 = 4 matches the key 4 and the choice list 5 / 4 / 3 / 6; The running-total hints start at peso2, then add peso2, and conclude peso4. The visual description is NumberLine labeled 0, 5, 10, 15, 20. The hint operation agrees with the stem despite its odd pesoN wording."
+          }
+        }
+      },
+      {
+        "sample_id": "492f62f54b9b5ed44cd7",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Coach Roel has ₱50 and buys a ₱20 snack gives two definite amounts, so the requested subtraction has result 30; the options 49 / 70 / 30 / 55 contain one matching number."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "In this story, coach roel has ₱50 and buys a ₱20 snack, and the requested action is to subtract the stated amounts; that operation produces 30 pesos, with no unrelated condition."
+          },
+          "learner_facing_clarity": {
+            "verdict": "CONCERN",
+            "reasoning": "The read_mcq prompt asks for one money amount after the subtraction in coach roel has ₱50 and buys a ₱20 snack; The change hints compare peso50 with peso20 and give peso30 as money left. The bracketed pesoN hint tokens are awkward for a child to read."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "50 − 20 = 30 matches the key 30 and the choice list 49 / 70 / 30 / 55; The change hints compare peso50 with peso20 and give peso30 as money left. The visual description is PesoMoney label BILLS ₱50. The hint operation agrees with the stem despite its odd pesoN wording."
+          }
+        }
+      },
+      {
+        "sample_id": "218bbf6ff631dd97ba14",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Kuya Chad has ₱30 and spends ₱18 on helmets gives two definite amounts, so the requested subtraction has result 12; the options 12 / 600 / 50 / 61 contain one matching number."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "In this story, kuya chad has ₱30 and spends ₱18 on helmets, and the requested action is to subtract the stated amounts; that operation produces 12 pesos, with no unrelated condition."
+          },
+          "learner_facing_clarity": {
+            "verdict": "CONCERN",
+            "reasoning": "The mcq prompt asks for one money amount after the subtraction in kuya chad has ₱30 and spends ₱18 on helmets; The change hints compare peso30 with peso18 and give peso12 as money left. The bracketed pesoN hint tokens are awkward for a child to read."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "30 − 18 = 12 matches the key 12 and the choice list 12 / 600 / 50 / 61; The change hints compare peso30 with peso18 and give peso12 as money left. No visual is part of this sample. The hint operation agrees with the stem despite its odd pesoN wording."
+          }
+        }
+      },
+      {
+        "sample_id": "8c58b99ad99322b375ca",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Kuya Coy has ₱50 and uses ₱10 for a notebook gives two definite amounts, so the requested subtraction has result 40; the options 750 / 76 / 40 / 65 contain one matching number."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "In this story, kuya coy has ₱50 and uses ₱10 for a notebook, and the requested action is to subtract the stated amounts; that operation produces 40 pesos, with no unrelated condition."
+          },
+          "learner_facing_clarity": {
+            "verdict": "CONCERN",
+            "reasoning": "The mcq prompt asks for one money amount after the subtraction in kuya coy has ₱50 and uses ₱10 for a notebook; The change hints compare peso50 with peso10 and give peso40 as money left. The bracketed pesoN hint tokens are awkward for a child to read."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "50 − 10 = 40 matches the key 40 and the choice list 750 / 76 / 40 / 65; The change hints compare peso50 with peso10 and give peso40 as money left. No visual is part of this sample. The hint operation agrees with the stem despite its odd pesoN wording."
+          }
+        }
+      }
+    ],
+    "clause_evidence": [
+      {
+        "requirement_id": "solve_1_step_problems",
+        "clause": "Solve 1-step problems",
+        "verdict": "PASS",
+        "reasoning": "The cited buying and holding stories each require one addition or subtraction to obtain the requested money amount, with no hidden second step.",
+        "sample_ids": [
+          "d410ababa077fc6dd315",
+          "8e4a76db423c64a9ec76",
+          "9e390c2bbf183239afd6"
+        ]
+      },
+      {
+        "requirement_id": "in_pictures",
+        "clause": "in pictures",
+        "verdict": "PASS",
+        "reasoning": "Several items supply PesoMoney or NumberLine visual support alongside the wording, including a bill-and-coin model and marked number lines.",
+        "sample_ids": [
+          "8e4a76db423c64a9ec76",
+          "3714657f86107c66e14c",
+          "b6304864e5d0c552de77"
+        ]
+      },
+      {
+        "requirement_id": "addition_of_money",
+        "clause": "addition of money",
+        "verdict": "PASS",
+        "reasoning": "Examples add amounts received, held in separate pockets, or spent on two items, with peso sums matching the supplied keys.",
+        "sample_ids": [
+          "8e4a76db423c64a9ec76",
+          "5589ea8157ef2a680572",
+          "4efc57edda6bbf5e6fd6"
+        ]
+      },
+      {
+        "requirement_id": "sum_up_to_100",
+        "clause": "sum is up to ₱100",
+        "verdict": "PASS",
+        "reasoning": "The addition cases include totals such as 12, 30, 70, and 95, all within the ₱100 ceiling specified for money sums.",
+        "sample_ids": [
+          "3714657f86107c66e14c",
+          "b6304864e5d0c552de77",
+          "73e55bca6ac8b0ef0489"
+        ]
+      },
+      {
+        "requirement_id": "subtraction_of_money",
+        "clause": "subtraction of money",
+        "verdict": "PASS",
+        "reasoning": "The spending and purchase stories ask for the amount remaining after subtracting a cost from money on hand, and the hints use that operation.",
+        "sample_ids": [
+          "d410ababa077fc6dd315",
+          "02e60e0d61e1cf23370c",
+          "492f62f54b9b5ed44cd7"
+        ]
+      },
+      {
+        "requirement_id": "amounts_less_than_100",
+        "clause": "amounts are less than ₱100",
+        "verdict": "PASS",
+        "reasoning": "Subtraction stems use starting amounts and costs below ₱100, including 80 minus 2 and 60 minus 40, which obey the stated bound.",
+        "sample_ids": [
+          "77a21857d240499c3e02",
+          "02e60e0d61e1cf23370c",
+          "218bbf6ff631dd97ba14"
+        ]
+      }
+    ],
+    "overall": "CONCERN"
+  }
+}
