@@ -1,0 +1,205 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-haiku45-w29-mat_g2_mg_q2_1-20260925
+
+Write one JSON object to:
+  local_only/scratch/review/s5-haiku-w29/mat_g2_mg_q2_1/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN; never invent a supporting sample.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-haiku45-w29-mat_g2_mg_q2_1-20260925",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g2_mg_q2_1
+PACKET DIGEST: 4df8ad04e74c43d09be72dcec12997fcb0f329a04c0c0a3663095258a22b05dc
+COMPETENCY (Grade 2, Quarter 2, None):
+Identify and use the appropriate unit (m or cm) to measure the length of an object and the distance between two locations.
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  identify: Identify
+  use: use
+  unit: unit
+  m_or_cm: m or cm
+  measure: measure
+  length: length
+  object: object
+  distance: distance
+  between_two_locations: between two locations
+
+SAMPLES (every one of these is real rendered output):
+  sample 7af9e39973449a601021  seed 42  [cloze]
+      stem:    Which unit would you use to measure the length of a spoon: centimeters (cm) or meters (m)?
+      answer:  cm
+      options: m / either works / neither works / cm
+      hints:   ["Count how many units fit along the object from end to end.", "Make sure no gaps or overlaps between the units.", "The length is cm units."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 02a04a11e7724774d2c0  seed 43  [mcq]
+      stem:    Would you measure the length of a book in centimeters (cm) or meters (m)?
+      answer:  cm
+      options: cm / m / neither works / either works
+      hints:   ["Count how many units fit along the object from end to end.", "Make sure no gaps or overlaps between the units.", "The length is cm units."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample d2094d4691618cb70f2c  seed 44  [cloze]
+      stem:    The distance between the gate and the library is about 50 ___. Which unit makes the measurement reasonable: cm or m?
+      answer:  m
+      options: m / cm / neither works / either works
+      hints:   ["Count how many units fit along the object from end to end.", "Make sure no gaps or overlaps between the units.", "The length is m units."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample e6c6bf7aa2fa82f28615  seed 45  [mcq]
+      stem:    A spoon has a length of about 16 ___. Which unit is correct: cm or m?
+      answer:  cm
+      options: m / cm / either works / neither works
+      hints:   ["Count how many units fit along the object from end to end.", "Make sure no gaps or overlaps between the units.", "The length is cm units."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 6abe283acf1d04767687  seed 46  [mcq]
+      stem:    What is the appropriate unit to measure the length of a shoe: cm or m?
+      answer:  cm
+      options: neither works / cm / m / either works
+      hints:   ["Count how many units fit along the object from end to end.", "Make sure no gaps or overlaps between the units.", "The length is cm units."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 57710a8a46732f10f041  seed 500  [mcq]
+      stem:    The distance between the gate and the library is about 50 ___. Which unit makes the measurement reasonable: cm or m?
+      answer:  m
+      options: m / neither works / either works / cm
+      hints:   ["Count how many units fit along the object from end to end.", "Make sure no gaps or overlaps between the units.", "The length is m units."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample aea7ef0df328592007cf  seed 501  [mcq]
+      stem:    A basketball court has a length of about 28 ___. Which unit is correct: cm or m?
+      answer:  m
+      options: neither works / cm / m / either works
+      hints:   ["Count how many units fit along the object from end to end.", "Make sure no gaps or overlaps between the units.", "The length is m units."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample d5b46fce92ba7333743c  seed 502  [cloze]
+      stem:    An eraser has a length of about 5 ___. Which unit is correct: cm or m?
+      answer:  cm
+      options: cm / m / neither works / either works
+      hints:   ["Count how many units fit along the object from end to end.", "Make sure no gaps or overlaps between the units.", "The length is cm units."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample c70947905ce7507bfea1  seed 600  [mcq]
+      stem:    A pencil case has a length of about 20 ___. Which unit is correct: cm or m?
+      answer:  cm
+      options: m / either works / cm / neither works
+      hints:   ["Count how many units fit along the object from end to end.", "Make sure no gaps or overlaps between the units.", "The length is cm units."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 33ffbda9bb4a66ba477a  seed 601  [cloze]
+      stem:    Which unit is best to measure the distance between the bench and the playground: centimeters (cm) or meters (m)?
+      answer:  m
+      options: cm / either works / neither works / m
+      hints:   ["Count how many units fit along the object from end to end.", "Make sure no gaps or overlaps between the units.", "The length is m units."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample e5475b0428abe8d43960  seed 602  [cloze]
+      stem:    The distance between your house and the church is about 150 ___. Which unit makes the measurement reasonable: cm or m?
+      answer:  m
+      options: m / cm / neither works / either works
+      hints:   ["Count how many units fit along the object from end to end.", "Make sure no gaps or overlaps between the units.", "The length is m units."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample c35918c4bc94b45c6f68  seed 603  [mcq]
+      stem:    Which unit is best to measure the distance between the gate and the library: centimeters (cm) or meters (m)?
+      answer:  m
+      options: m / cm / neither works / either works
+      hints:   ["Count how many units fit along the object from end to end.", "Make sure no gaps or overlaps between the units.", "The length is m units."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 599f4808082bc976a2d2  seed 700  [cloze]
+      stem:    Which unit is best to measure the distance between your house and the church: centimeters (cm) or meters (m)?
+      answer:  m
+      options: either works / cm / neither works / m
+      hints:   ["Count how many units fit along the object from end to end.", "Make sure no gaps or overlaps between the units.", "The length is m units."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample a865dfde2ced6e895f47  seed 701  [mcq]
+      stem:    🚴 Ate Sam has a math challenge about running shoes. A crayon has a length of about 8 ___. Which unit is correct: cm or m?
+      answer:  cm
+      options: m / either works / neither works / cm
+      hints:   ["Count how many units fit along the object from end to end.", "Make sure no gaps or overlaps between the units.", "The length is cm units."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 6aba6ab761c2aa050614  seed 702  [cloze]
+      stem:    🏐 Ate Alyssa has a math challenge about shuttlecocks. Which unit would you use to measure the length of a spoon: centimeters (cm) or meters (m)?
+      answer:  cm
+      options: neither works / m / cm / either works
+      hints:   ["Count how many units fit along the object from end to end.", "Make sure no gaps or overlaps between the units.", "The length is cm units."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 944163f7c17d9e22cddb  seed 800  [cloze]
+      stem:    The distance between the gate and the library is about 50 ___. Which unit makes the measurement reasonable: cm or m?
+      answer:  m
+      options: cm / either works / m / neither works
+      hints:   ["Count how many units fit along the object from end to end.", "Make sure no gaps or overlaps between the units.", "The length is m units."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 587e628d34829e163cf6  seed 900  [mcq]
+      stem:    Which unit is best to measure the distance between the classroom and the canteen: centimeters (cm) or meters (m)?
+      answer:  m
+      options: cm / either works / m / neither works
+      hints:   ["Count how many units fit along the object from end to end.", "Make sure no gaps or overlaps between the units.", "The length is m units."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 654c85a369135947d232  seed 901  [mcq]
+      stem:    The distance between the bench and the playground is about 30 ___. Which unit makes the measurement reasonable: cm or m?
+      answer:  m
+      options: cm / either works / m / neither works
+      hints:   ["Count how many units fit along the object from end to end.", "Make sure no gaps or overlaps between the units.", "The length is m units."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 2163e5511d998b0d0a76  seed 1000  [cloze]
+      stem:    The distance between the bench and the playground is about 30 ___. Which unit makes the measurement reasonable: cm or m?
+      answer:  m
+      options: neither works / m / either works / cm
+      hints:   ["Count how many units fit along the object from end to end.", "Make sure no gaps or overlaps between the units.", "The length is m units."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "hint_gated"}
+  sample da9b297a0c04de8c5538  seed 1001  [cloze]
+      stem:    Which unit would you use to measure the length of a basketball court: centimeters (cm) or meters (m)?
+      answer:  m
+      options: neither works / either works / cm / m
+      hints:   ["Count how many units fit along the object from end to end.", "Make sure no gaps or overlaps between the units.", "The length is m units."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "mastery_drill"}
+  sample babb5259d0d110d69437  seed 1002  [cloze]
+      stem:    The distance between your house and the church is about 150 ___. Which unit makes the measurement reasonable: cm or m?
+      answer:  m
+      options: neither works / m / cm / either works
+      hints:   ["Count how many units fit along the object from end to end.", "Make sure no gaps or overlaps between the units.", "The length is m units."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "scaffolded"}
+

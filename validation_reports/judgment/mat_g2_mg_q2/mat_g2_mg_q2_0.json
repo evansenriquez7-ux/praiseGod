@@ -1,7 +1,53 @@
 {
+  "schema_version": 2,
   "node_id": "mat_g2_mg_q2_0",
-  "reviewed_by": "reviewer-c3-nimbus-sorrel-4825",
-  "review_date": "2026-09-11",
+  "competency_snapshot": {
+    "text": "Measure and compare lengths of objects, in meters (m) or centimeters (cm), and distance in meters, using appropriate measuring tools.",
+    "grade": 2,
+    "quarter": 2,
+    "subdomain": null
+  },
+  "requirements_snapshot": [
+    {
+      "kind": "task",
+      "id": "measure",
+      "clause": "Measure"
+    },
+    {
+      "kind": "task",
+      "id": "compare",
+      "clause": "compare"
+    },
+    {
+      "kind": "property",
+      "id": "lengths",
+      "clause": "lengths"
+    },
+    {
+      "kind": "object",
+      "id": "objects",
+      "clause": "objects"
+    },
+    {
+      "kind": "property",
+      "id": "meters_or_centimeters",
+      "clause": "meters (m) or centimeters (cm)"
+    },
+    {
+      "kind": "property",
+      "id": "distance",
+      "clause": "distance"
+    },
+    {
+      "kind": "object",
+      "id": "measuring_tools",
+      "clause": "measuring tools"
+    }
+  ],
+  "packet_digest": "9118d941b9b3879a3f5f5bc84f89f610a1120a4c8949d07071d38d9386f5bce0",
+  "sampling_version": "phase2-stratified-v2-rendered-visual",
+  "reviewed_by": "blind-reviewer-haiku45-w29-mat_g2_mg_q2_0-20260925",
+  "review_date": "2026-09-25",
   "blind": true,
   "sample_seeds": [
     42,
@@ -13,14 +59,59 @@
     501,
     502,
     600,
-    602
+    602,
+    700,
+    701,
+    702,
+    800,
+    900,
+    901,
+    1000,
+    1001,
+    1002
+  ],
+  "sample_ids": [
+    "4cb17c90223e427cff52",
+    "4194164ddb24fc7cc206",
+    "67f6d704a7a1087dcb37",
+    "c96031489972f3af4033",
+    "773a92080e4118086904",
+    "d06c3ad8903d5c733b98",
+    "5ead9dbe588d7bbc81da",
+    "dc5e6ee8057a05031c04",
+    "91c4297364dbda833608",
+    "771729fd2b83c860aa5d",
+    "5c3a7b6d5486e7724096",
+    "1c1891374dedbd763a9f",
+    "05d0bcd4c68c7c1284a8",
+    "4b2cb7b9fc00569d1e5c",
+    "80658de90c84e3bc3f8b",
+    "5e03a170209af5de9441",
+    "2c002cd871f3dc25013f",
+    "599721f171b5e2d95bde",
+    "4148cf4f16ca51857b55"
   ],
   "samples_reviewed": [
     {
+      "node_id": "mat_g2_mg_q2_0",
       "seed": 42,
       "formatter": "cloze",
       "question_text": "The distance from the bench to the tree is 2 m. The distance from the gate to the tree is 1 m. Which distance is longer in meters?",
       "correct_answer": 2,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -46,13 +137,36 @@
           "text": "1",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 2,
+      "hints": [
+        "Compare 2 centimeter (cm) and 1 centimeter (cm).",
+        "2 is more than 1.",
+        "The longer distance is 2 centimeter (cm)."
+      ],
+      "sample_id": "4cb17c90223e427cff52",
+      "replay_digest": "3a19b608183137b7e69f534665bf5019dbef143c41b037be97808050589d73cf"
     },
     {
+      "node_id": "mat_g2_mg_q2_0",
       "seed": 43,
       "formatter": "read_mcq",
       "question_text": "How long is the object? Give your answer in cm.",
       "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "RulerMeasure",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -74,13 +188,73 @@
           "value": 4,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 5,
+      "hints": [
+        "Read the measurement on the ruler carefully.",
+        "The length is 5 cm."
+      ],
+      "visual_type": "RulerMeasure",
+      "visual_payload": {
+        "ruler_start": 0,
+        "ruler_end": 20,
+        "unit": "cm",
+        "object_start": 0,
+        "object_end": 5,
+        "length": 5,
+        "unit_name": "cm"
+      },
+      "visual_render": {
+        "visual_type": "RulerMeasure",
+        "renderer_input_digest": "a54f705a043ccf3eb0786bc33eb460695329a6a21756e1dcf7efc40e9207fe8d",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "RulerMeasure",
+          "element_count": 21,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 1,
+          "text_labels": [
+            "0 cm",
+            "0",
+            "5",
+            "10",
+            "cm"
+          ],
+          "distinct_colours": [
+            "#f8fafc",
+            "#cbd5e1",
+            "#475569",
+            "#0f172a"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "4194164ddb24fc7cc206",
+      "replay_digest": "36ddddfea4e53f5ea6cb3a3b258862cd26ac356baebcb2eeed0b785e3ce28261"
     },
     {
+      "node_id": "mat_g2_mg_q2_0",
       "seed": 44,
       "formatter": "cloze",
       "question_text": "A pencil is 10 cm long. A ruler is 15 cm long. Which length is shorter in cm?",
       "correct_answer": 10,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -106,13 +280,36 @@
           "text": "10",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 10,
+      "hints": [
+        "Compare 10 centimeter (cm) and 15 centimeter (cm).",
+        "15 is more than 10.",
+        "The longer length is 10 centimeter (cm)."
+      ],
+      "sample_id": "67f6d704a7a1087dcb37",
+      "replay_digest": "b1713cd326dd15be4ad0d02c4bfe7108db08767e7c1ccc4ed56ec3c4b4fea164"
     },
     {
+      "node_id": "mat_g2_mg_q2_0",
       "seed": 45,
       "formatter": "mcq",
       "question_text": "A notebook is 20 cm long. A pencil is 10 cm long. Which length is shorter in cm?",
       "correct_answer": 10,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -134,13 +331,36 @@
           "value": 5,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 10,
+      "hints": [
+        "Compare 20 centimeter (cm) and 10 centimeter (cm).",
+        "20 is more than 10.",
+        "The longer length is 10 centimeter (cm)."
+      ],
+      "sample_id": "c96031489972f3af4033",
+      "replay_digest": "6ade888f54dca100132ded487157d33880aaca63f1b647dcc0c224c5d84ec352"
     },
     {
+      "node_id": "mat_g2_mg_q2_0",
       "seed": 46,
       "formatter": "read_mcq",
       "question_text": "How long is the object? Give your answer in cm.",
       "correct_answer": "C",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "RulerMeasure",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -162,13 +382,75 @@
           "value": 20,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 6,
+      "hints": [
+        "Read the measurement on the ruler carefully.",
+        "The length is 6 cm."
+      ],
+      "visual_type": "RulerMeasure",
+      "visual_payload": {
+        "ruler_start": 0,
+        "ruler_end": 20,
+        "unit": "cm",
+        "object_start": 0,
+        "object_end": 6,
+        "length": 6,
+        "unit_name": "cm"
+      },
+      "visual_render": {
+        "visual_type": "RulerMeasure",
+        "renderer_input_digest": "8a3f34734c50ab8caf8c8701a92b8eb65e438c20b65062b464ce8c828ed16527",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "RulerMeasure",
+          "element_count": 21,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 1,
+          "text_labels": [
+            "0 cm",
+            "0",
+            "5",
+            "10",
+            "cm"
+          ],
+          "distinct_colours": [
+            "#f8fafc",
+            "#cbd5e1",
+            "#475569",
+            "#0f172a"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "773a92080e4118086904",
+      "replay_digest": "4b14bfe687830329e11c6fa2711c7b9d2150c7f48bfbd4f0777240d9e3df6fca"
     },
     {
+      "node_id": "mat_g2_mg_q2_0",
       "seed": 500,
       "formatter": "mcq",
       "question_text": "A spoon is 20 cm long. A pencil is 19 cm long. Which length is shorter in cm?",
       "correct_answer": 19,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -190,13 +472,38 @@
           "value": 20,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 19,
+      "hints": [
+        "Compare 20 centimeter (cm) and 19 centimeter (cm).",
+        "20 is more than 19.",
+        "The longer length is 19 centimeter (cm)."
+      ],
+      "sample_id": "d06c3ad8903d5c733b98",
+      "replay_digest": "52bd7d666e6736ecfe2a84beaf7a09ce4c51806cec55aa6cbe84e29aa783a531"
     },
     {
+      "node_id": "mat_g2_mg_q2_0",
       "seed": 501,
       "formatter": "mcq",
       "question_text": "The distance from the bench to the tree is 82 m. The distance from the gate to the tree is 37 m. Which distance is longer in meters?",
       "correct_answer": 82,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -218,13 +525,38 @@
           "value": 37,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 82,
+      "hints": [
+        "Compare 82 centimeter (cm) and 37 centimeter (cm).",
+        "82 is more than 37.",
+        "The longer distance is 82 centimeter (cm)."
+      ],
+      "sample_id": "5ead9dbe588d7bbc81da",
+      "replay_digest": "d156c896b78b9a991228d2b5953217b960fbdd2347a6c4f1f074c0d7d96a3772"
     },
     {
+      "node_id": "mat_g2_mg_q2_0",
       "seed": 502,
       "formatter": "cloze",
       "question_text": "The distance from the bench to the tree is 65 m. The distance from the gate to the tree is 47 m. Which distance is shorter in meters?",
       "correct_answer": 47,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -250,13 +582,38 @@
           "text": "65",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 47,
+      "hints": [
+        "Compare 65 centimeter (cm) and 47 centimeter (cm).",
+        "65 is more than 47.",
+        "The longer distance is 47 centimeter (cm)."
+      ],
+      "sample_id": "dc5e6ee8057a05031c04",
+      "replay_digest": "b48810e9503f16e306f9f56f8defbb44cb76084d0625b28fb10316855c0859d9"
     },
     {
+      "node_id": "mat_g2_mg_q2_0",
       "seed": 600,
       "formatter": "mcq",
       "question_text": "A notebook is 20 cm long. A spoon is 12 cm long. Which length is longer in cm?",
       "correct_answer": 20,
+      "requested": {
+        "difficulty_profile": {
+          "context": "pure"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -278,13 +635,38 @@
           "value": 15,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 20,
+      "hints": [
+        "Compare 20 centimeter (cm) and 12 centimeter (cm).",
+        "20 is more than 12.",
+        "The longer length is 20 centimeter (cm)."
+      ],
+      "sample_id": "91c4297364dbda833608",
+      "replay_digest": "7d099ab271b30610d33c4909e344959cf2ada6be0ded23ebd72fdc97c53ed5c7"
     },
     {
+      "node_id": "mat_g2_mg_q2_0",
       "seed": 602,
       "formatter": "cloze",
       "question_text": "A school fence is 10 m long. A garden path is 9 m long. Which length is longer in m?",
       "correct_answer": 10,
+      "requested": {
+        "difficulty_profile": {
+          "unit_type": "m"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -310,34 +692,1229 @@
           "text": "10",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 10,
+      "hints": [
+        "Compare 10 meter (m) and 9 meter (m).",
+        "10 is more than 9.",
+        "The longer length is 10 meter (m)."
+      ],
+      "sample_id": "771729fd2b83c860aa5d",
+      "replay_digest": "0a7704438e1c21ed872acae2752f45b03c78479247b1765ca23468a1f5d9b051"
+    },
+    {
+      "node_id": "mat_g2_mg_q2_0",
+      "seed": 700,
+      "formatter": "read_mcq",
+      "question_text": "How long is the object? Give your answer in cm.",
+      "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "RulerMeasure",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 7,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 8,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 20,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 6,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 7,
+      "hints": [
+        "Read the measurement on the ruler carefully.",
+        "The length is 7 cm."
+      ],
+      "visual_type": "RulerMeasure",
+      "visual_payload": {
+        "ruler_start": 0,
+        "ruler_end": 20,
+        "unit": "cm",
+        "object_start": 0,
+        "object_end": 7,
+        "length": 7,
+        "unit_name": "cm"
+      },
+      "visual_render": {
+        "visual_type": "RulerMeasure",
+        "renderer_input_digest": "6cbfb8d4d7966e596c78cb07cc701d59d19e7926a49465938ac53883e574b0e7",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "RulerMeasure",
+          "element_count": 21,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 1,
+          "text_labels": [
+            "0 cm",
+            "0",
+            "5",
+            "10",
+            "cm"
+          ],
+          "distinct_colours": [
+            "#f8fafc",
+            "#cbd5e1",
+            "#475569",
+            "#0f172a"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "5c3a7b6d5486e7724096",
+      "replay_digest": "83d17be59af5113edc53cad9b8d2a067f7af091503588a10d3baea5960528247"
+    },
+    {
+      "node_id": "mat_g2_mg_q2_0",
+      "seed": 701,
+      "formatter": "mcq",
+      "question_text": "💃 Kuya Ton has a math challenge about trophies. The distance from the bench to the tree is 5 m. The distance from the gate to the tree is 8 m. Which distance is shorter in meters?",
+      "correct_answer": 5,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "dance",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 8,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 10,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 5,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 1,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 5,
+      "hints": [
+        "Compare 5 centimeter (cm) and 8 centimeter (cm).",
+        "8 is more than 5.",
+        "The longer distance is 5 centimeter (cm)."
+      ],
+      "sample_id": "1c1891374dedbd763a9f",
+      "replay_digest": "07a9427261e52a7921cb6ba8586e815d00995e3ec5315c6187dfbf44703afd20"
+    },
+    {
+      "node_id": "mat_g2_mg_q2_0",
+      "seed": 702,
+      "formatter": "read_mcq",
+      "question_text": "🏀 Isko has a math challenge about basketballs. How long is the object? Give your answer in cm.",
+      "correct_answer": "C",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "social_issues",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "RulerMeasure",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 5,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 20,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 6,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 7,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 6,
+      "hints": [
+        "Read the measurement on the ruler carefully.",
+        "The length is 6 cm."
+      ],
+      "visual_type": "RulerMeasure",
+      "visual_payload": {
+        "ruler_start": 0,
+        "ruler_end": 20,
+        "unit": "cm",
+        "object_start": 0,
+        "object_end": 6,
+        "length": 6,
+        "unit_name": "cm"
+      },
+      "visual_render": {
+        "visual_type": "RulerMeasure",
+        "renderer_input_digest": "8a3f34734c50ab8caf8c8701a92b8eb65e438c20b65062b464ce8c828ed16527",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "RulerMeasure",
+          "element_count": 21,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 1,
+          "text_labels": [
+            "0 cm",
+            "0",
+            "5",
+            "10",
+            "cm"
+          ],
+          "distinct_colours": [
+            "#f8fafc",
+            "#cbd5e1",
+            "#475569",
+            "#0f172a"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "05d0bcd4c68c7c1284a8",
+      "replay_digest": "a4e3bbb63801feb3e814ee70dd4eaf62fda376dc75d821e8203da0cc457f4a20"
+    },
+    {
+      "node_id": "mat_g2_mg_q2_0",
+      "seed": 800,
+      "formatter": "cloze",
+      "question_text": "The distance from the bench to the tree is 86 m. The distance from the gate to the tree is 64 m. Which distance is longer in meters?",
+      "correct_answer": 86,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 91,
+          "text": "91",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 64,
+          "text": "64",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 86,
+          "text": "86",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 81,
+          "text": "81",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 86,
+      "hints": [
+        "Compare 86 centimeter (cm) and 64 centimeter (cm).",
+        "86 is more than 64.",
+        "The longer distance is 86 centimeter (cm)."
+      ],
+      "sample_id": "4b2cb7b9fc00569d1e5c",
+      "replay_digest": "b25177e79994a14755ccfa889970853e90c4d9291f9dae9e70b3d08b392ebc90"
+    },
+    {
+      "node_id": "mat_g2_mg_q2_0",
+      "seed": 900,
+      "formatter": "mcq",
+      "question_text": "The distance from the bench to the tree is 1 m. The distance from the gate to the tree is 2 m. Which distance is longer in meters?",
+      "correct_answer": 2,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 2,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 7,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 1,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 2,
+      "hints": [
+        "Compare 1 centimeter (cm) and 2 centimeter (cm).",
+        "2 is more than 1.",
+        "The longer distance is 2 centimeter (cm)."
+      ],
+      "sample_id": "80658de90c84e3bc3f8b",
+      "replay_digest": "288449549607814476568854d3e66a29e3b7b7362266448fa3ef4b024fcc724f"
+    },
+    {
+      "node_id": "mat_g2_mg_q2_0",
+      "seed": 901,
+      "formatter": "mcq",
+      "question_text": "A pencil is 10 cm long. A shoe is 20 cm long. Which length is longer in cm?",
+      "correct_answer": 20,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 15,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 10,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 25,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 20,
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 20,
+      "hints": [
+        "Compare 10 centimeter (cm) and 20 centimeter (cm).",
+        "20 is more than 10.",
+        "The longer length is 20 centimeter (cm)."
+      ],
+      "sample_id": "5e03a170209af5de9441",
+      "replay_digest": "034162c9a078894cdff19e5713d392d6dede34bdc40075b1f418259b7f8ec88e"
+    },
+    {
+      "node_id": "mat_g2_mg_q2_0",
+      "seed": 1000,
+      "formatter": "cloze",
+      "question_text": "A spoon is 12 cm long. A pencil is 10 cm long. Which length is shorter in cm?",
+      "correct_answer": 10,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "hint_gated"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "hint_gated"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 5,
+          "text": "5",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 10,
+          "text": "10",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 15,
+          "text": "15",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 12,
+          "text": "12",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 10,
+      "hints": [
+        "Compare 12 centimeter (cm) and 10 centimeter (cm).",
+        "12 is more than 10.",
+        "The longer length is 10 centimeter (cm)."
+      ],
+      "sample_id": "2c002cd871f3dc25013f",
+      "replay_digest": "bb82f3dc7027a930f8f96dd2a774028b584878435c8ba1f6657070381cde35b7"
+    },
+    {
+      "node_id": "mat_g2_mg_q2_0",
+      "seed": 1001,
+      "formatter": "read_mcq",
+      "question_text": "How long is the object? Give your answer in cm.",
+      "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "mastery_drill"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "RulerMeasure",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "mastery_drill"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 6,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 5,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 20,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 4,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 5,
+      "hints": [
+        "Read the measurement on the ruler carefully.",
+        "The length is 5 cm."
+      ],
+      "visual_type": "RulerMeasure",
+      "visual_payload": {
+        "ruler_start": 0,
+        "ruler_end": 20,
+        "unit": "cm",
+        "object_start": 0,
+        "object_end": 5,
+        "length": 5,
+        "unit_name": "cm"
+      },
+      "visual_render": {
+        "visual_type": "RulerMeasure",
+        "renderer_input_digest": "a54f705a043ccf3eb0786bc33eb460695329a6a21756e1dcf7efc40e9207fe8d",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "RulerMeasure",
+          "element_count": 21,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 1,
+          "text_labels": [
+            "0 cm",
+            "0",
+            "5",
+            "10",
+            "cm"
+          ],
+          "distinct_colours": [
+            "#f8fafc",
+            "#cbd5e1",
+            "#475569",
+            "#0f172a"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "599721f171b5e2d95bde",
+      "replay_digest": "06d0478ef90dddf185f3a10f57c3b87cfba9df6bffa71ed5b6fdb88c61a8e2d1"
+    },
+    {
+      "node_id": "mat_g2_mg_q2_0",
+      "seed": 1002,
+      "formatter": "cloze",
+      "question_text": "The distance from the bench to the tree is 9 m. The distance from the gate to the tree is 10 m. Which distance is shorter in meters?",
+      "correct_answer": 9,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "scaffolded"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "scaffolded"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 10,
+          "text": "10",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 14,
+          "text": "14",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 9,
+          "text": "9",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 4,
+          "text": "4",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 9,
+      "hints": [
+        "Compare 9 centimeter (cm) and 10 centimeter (cm).",
+        "10 is more than 9.",
+        "The longer distance is 9 centimeter (cm)."
+      ],
+      "sample_id": "4148cf4f16ca51857b55",
+      "replay_digest": "a7b63b73f927dbb28275d70d8581416650fbd5cd8780d9d6e2d4822bd0dd5839"
+    }
+  ],
+  "sample_assessments": [
+    {
+      "sample_id": "4cb17c90223e427cff52",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Stem is clear: two distances in meters are given and student must identify the longer one."
+        },
+        "contextual_logical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "Stem specifies meters but hints switch to centimeters. Hints say Compare 2 centimeter (cm) and 1 centimeter (cm) when stem says 2 m and 1 m, creating logical inconsistency."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "Unit mismatch between stem (meters) and hints (centimeters) confuses the measurement unit being compared, undermining clarity of what the student should attend to."
+        },
+        "mathematical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "Answer 2 is correct for the comparison, but hint language incorrectly labels the unit, which could teach incorrect unit association."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w29-mat_g2_mg_q2_0-20260925",
+      "dispatch_id": "s5-haiku-w29-mat_g2_mg_q2_0-20260925:mat_g2_mg_q2_0"
+    },
+    {
+      "sample_id": "4194164ddb24fc7cc206",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Stem and hints are unambiguous: student reads a ruler and provides measurement in cm."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Measurement task with visual ruler display is logically valid; hints support direct reading of the scale."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Instructions are clear and the visual component supports learner ability to verify the measurement independently."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Answer 5 cm aligns with the hint and the stated measurement task."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w29-mat_g2_mg_q2_0-20260925",
+      "dispatch_id": "s5-haiku-w29-mat_g2_mg_q2_0-20260925:mat_g2_mg_q2_0"
+    },
+    {
+      "sample_id": "67f6d704a7a1087dcb37",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Stem clearly asks which length is shorter when pencil is 10 cm and ruler is 15 cm."
+        },
+        "contextual_logical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "Stem asks for the shorter length (answer 10), but the second hint states The longer length is 10 centimeter (cm), which contradicts both the task direction and the correct answer."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "Hint directly contradicts the task by claiming 10 is longer when the stem asks which is shorter; student receives false logical direction."
+        },
+        "mathematical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "Answer 10 is mathematically correct, but the hint teaches that 10 is the longer value, which is false."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w29-mat_g2_mg_q2_0-20260925",
+      "dispatch_id": "s5-haiku-w29-mat_g2_mg_q2_0-20260925:mat_g2_mg_q2_0"
+    },
+    {
+      "sample_id": "c96031489972f3af4033",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Stem clearly states notebook 20 cm and pencil 10 cm, asking which is shorter."
+        },
+        "contextual_logical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "Stem asks for shorter length but hint says The longer length is 10 centimeter (cm), contradicting the task logic since 20 is longer than 10."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "Hint teaches incorrect comparison by identifying 10 as longer when it is shorter, directly misleading student intuition about relative magnitude."
+        },
+        "mathematical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "Answer 10 is correct but hint falsely states it is the longer value, teaching incorrect mathematical reasoning."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w29-mat_g2_mg_q2_0-20260925",
+      "dispatch_id": "s5-haiku-w29-mat_g2_mg_q2_0-20260925:mat_g2_mg_q2_0"
+    },
+    {
+      "sample_id": "773a92080e4118086904",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Stem directly asks student to measure an object shown on ruler and provide answer in cm."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Ruler measurement task is logically sound with consistent units and clear visual support."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Visual ruler and clear instruction support student ability to perform the measurement task independently."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Answer 6 cm is consistent with measurement task and supportive hints."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w29-mat_g2_mg_q2_0-20260925",
+      "dispatch_id": "s5-haiku-w29-mat_g2_mg_q2_0-20260925:mat_g2_mg_q2_0"
+    },
+    {
+      "sample_id": "d06c3ad8903d5c733b98",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Stem asks which of two lengths is shorter: spoon 20 cm or pencil 19 cm."
+        },
+        "contextual_logical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "Stem asks for shorter length but hint states The longer length is 19 centimeter (cm), contradicting the task since 20 is longer not 19."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "Hint contradicts task by labeling 19 as longer when it is the shorter of the two values."
+        },
+        "mathematical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "Answer 19 is correct but hint falsely teaches that 19 is the longer value, undermining proper comparison understanding."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w29-mat_g2_mg_q2_0-20260925",
+      "dispatch_id": "s5-haiku-w29-mat_g2_mg_q2_0-20260925:mat_g2_mg_q2_0"
+    },
+    {
+      "sample_id": "5ead9dbe588d7bbc81da",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Stem is clear: two distances in meters (82 m and 37 m) are given, asking which is longer."
+        },
+        "contextual_logical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "Stem specifies meters but hints say Compare 82 centimeter (cm) and 37 centimeter (cm), creating a unit mismatch that violates logical consistency."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "Unit inconsistency between stem (meters) and hints (centimeters) obscures what measurement unit is being compared."
+        },
+        "mathematical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "Answer 82 is correct for comparison but hint uses wrong unit labels, which could create unit confusion for the learner."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w29-mat_g2_mg_q2_0-20260925",
+      "dispatch_id": "s5-haiku-w29-mat_g2_mg_q2_0-20260925:mat_g2_mg_q2_0"
+    },
+    {
+      "sample_id": "dc5e6ee8057a05031c04",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Stem clearly presents two distances in meters and asks which is shorter."
+        },
+        "contextual_logical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "Stem uses meters but hints reference centimeters; additionally, hint says The longer distance is 47 centimeter (cm) when 65 is longer and the task asks for shorter."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "Double defect: unit mismatch (meters vs centimeters) and contradictory logic (longer vs shorter) together create severe confusion."
+        },
+        "mathematical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "Answer 47 is correct but hint teaches false logic by claiming 47 is the longer value and uses incorrect units."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w29-mat_g2_mg_q2_0-20260925",
+      "dispatch_id": "s5-haiku-w29-mat_g2_mg_q2_0-20260925:mat_g2_mg_q2_0"
+    },
+    {
+      "sample_id": "91c4297364dbda833608",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Stem clearly states notebook 20 cm and spoon 12 cm, asking which is longer."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Comparison task has logical consistency; stem asks for longer and answer identifies the larger value."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Hints correctly walk through comparison: both values named, comparison stated, and longer value identified."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Answer 20 is mathematically correct and all hints support the valid comparison logic."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w29-mat_g2_mg_q2_0-20260925",
+      "dispatch_id": "s5-haiku-w29-mat_g2_mg_q2_0-20260925:mat_g2_mg_q2_0"
+    },
+    {
+      "sample_id": "771729fd2b83c860aa5d",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Stem clearly asks which length is longer between school fence (10 m) and garden path (9 m)."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Task is logically sound with consistent units (meters throughout) and matching comparison direction."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Hints properly support the task by comparing equal-unit values and identifying the longer one."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Answer 10 is correct and hints reinforce proper comparison using consistent meter units."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w29-mat_g2_mg_q2_0-20260925",
+      "dispatch_id": "s5-haiku-w29-mat_g2_mg_q2_0-20260925:mat_g2_mg_q2_0"
+    },
+    {
+      "sample_id": "5c3a7b6d5486e7724096",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Stem directly asks student to measure object using ruler and provide answer in cm."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Ruler measurement task is logically consistent with clear visual support and unambiguous measurement goal."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Visual ruler and straightforward instruction enable independent verification of the measurement."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Answer 7 cm aligns with measurement task and hint statements."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w29-mat_g2_mg_q2_0-20260925",
+      "dispatch_id": "s5-haiku-w29-mat_g2_mg_q2_0-20260925:mat_g2_mg_q2_0"
+    },
+    {
+      "sample_id": "1c1891374dedbd763a9f",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Stem asks which distance is shorter: bench to tree (5 m) or gate to tree (8 m)."
+        },
+        "contextual_logical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "Stem specifies meters but hints say Compare 5 centimeter (cm) and 8 centimeter (cm); stem asks for shorter but hint says The longer distance is 5 centimeter (cm)."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "Dual defects: unit mismatch and contradiction of task direction make the hint pedagogically harmful."
+        },
+        "mathematical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "Answer 5 is correct for shorter but hint falsely identifies it as longer and uses wrong units."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w29-mat_g2_mg_q2_0-20260925",
+      "dispatch_id": "s5-haiku-w29-mat_g2_mg_q2_0-20260925:mat_g2_mg_q2_0"
+    },
+    {
+      "sample_id": "05d0bcd4c68c7c1284a8",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Stem with theme wrapper asks student to measure object and provide answer in cm."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Ruler measurement task is logically valid; thematic wrapper does not interfere with mathematical task."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Measurement instructions are clear and visual ruler supports independent verification."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Answer 6 cm is consistent with measurement task and hints."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w29-mat_g2_mg_q2_0-20260925",
+      "dispatch_id": "s5-haiku-w29-mat_g2_mg_q2_0-20260925:mat_g2_mg_q2_0"
+    },
+    {
+      "sample_id": "4b2cb7b9fc00569d1e5c",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Stem clearly asks which distance is longer between bench to tree (86 m) and gate to tree (64 m)."
+        },
+        "contextual_logical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "Stem specifies meters throughout but hints reference Compare 86 centimeter (cm) and 64 centimeter (cm), creating unit inconsistency."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "Unit mismatch between stem (meters) and hints (centimeters) obscures the measurement unit being discussed."
+        },
+        "mathematical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "Answer 86 is correct for the comparison but hint uses incorrect unit labels that could embed wrong unit associations."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w29-mat_g2_mg_q2_0-20260925",
+      "dispatch_id": "s5-haiku-w29-mat_g2_mg_q2_0-20260925:mat_g2_mg_q2_0"
+    },
+    {
+      "sample_id": "80658de90c84e3bc3f8b",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Stem presents two distances in meters and asks which is longer."
+        },
+        "contextual_logical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "Stem uses meters but hints say Compare 1 centimeter (cm) and 2 centimeter (cm), violating unit consistency."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "Unit mismatch confuses the measurement unit the student should focus on."
+        },
+        "mathematical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "Answer 2 is correct but hint teaches wrong units, which could create lasting measurement misconceptions."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w29-mat_g2_mg_q2_0-20260925",
+      "dispatch_id": "s5-haiku-w29-mat_g2_mg_q2_0-20260925:mat_g2_mg_q2_0"
+    },
+    {
+      "sample_id": "5e03a170209af5de9441",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Stem clearly asks which of two object lengths is longer: pencil (10 cm) or shoe (20 cm)."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Comparison task is logically consistent with matching units and aligned task direction."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Hints correctly guide comparison with consistent cm units and proper identification of longer value."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Answer 20 is correct and all hints support valid comparison reasoning."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w29-mat_g2_mg_q2_0-20260925",
+      "dispatch_id": "s5-haiku-w29-mat_g2_mg_q2_0-20260925:mat_g2_mg_q2_0"
+    },
+    {
+      "sample_id": "2c002cd871f3dc25013f",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Stem asks which of two object lengths is shorter: spoon (12 cm) or pencil (10 cm)."
+        },
+        "contextual_logical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "Stem asks for shorter length but hint says The longer length is 10 centimeter (cm), contradicting the task since 12 is longer not 10."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "Hint directly contradicts task by identifying the shorter value as longer, teaching false comparison logic."
+        },
+        "mathematical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "Answer 10 is correct but hint falsely teaches that 10 is the longer value."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w29-mat_g2_mg_q2_0-20260925",
+      "dispatch_id": "s5-haiku-w29-mat_g2_mg_q2_0-20260925:mat_g2_mg_q2_0"
+    },
+    {
+      "sample_id": "599721f171b5e2d95bde",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Stem asks student to measure object and provide answer in cm using visual ruler."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Measurement task has clear logical structure with visual support and consistent units."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Ruler visual and measurement instruction support independent learner verification."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Answer 5 cm aligns with measurement task and hints."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w29-mat_g2_mg_q2_0-20260925",
+      "dispatch_id": "s5-haiku-w29-mat_g2_mg_q2_0-20260925:mat_g2_mg_q2_0"
+    },
+    {
+      "sample_id": "4148cf4f16ca51857b55",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Stem asks which distance is shorter between bench to tree (9 m) and gate to tree (10 m)."
+        },
+        "contextual_logical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "Stem specifies meters but hints say Compare 9 centimeter (cm) and 10 centimeter (cm); additionally hint says The longer distance is 9 centimeter (cm) when 10 is longer."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "Compound defects: unit mismatch and contradictory logic both mislead learner about the comparison."
+        },
+        "mathematical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "Answer 9 is correct for shorter but hint falsely teaches that 9 is longer and uses incorrect units."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w29-mat_g2_mg_q2_0-20260925",
+      "dispatch_id": "s5-haiku-w29-mat_g2_mg_q2_0-20260925:mat_g2_mg_q2_0"
+    }
+  ],
+  "clause_evidence": [
+    {
+      "requirement_id": "measure",
+      "clause": "Measure",
+      "verdict": "PASS",
+      "reasoning": "Ruler-reading samples (4194164ddb24fc7cc206, 773a92080e4118086904, 5c3a7b6d5486e7724096, 05d0bcd4c68c7c1284a8, 599721f171b5e2d95bde) directly address measurement using visual tools.",
+      "sample_ids": [
+        "4194164ddb24fc7cc206",
+        "773a92080e4118086904",
+        "5c3a7b6d5486e7724096",
+        "05d0bcd4c68c7c1284a8",
+        "599721f171b5e2d95bde"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-w29-mat_g2_mg_q2_0-20260925",
+      "dispatch_id": "s5-haiku-w29-mat_g2_mg_q2_0-20260925:mat_g2_mg_q2_0"
+    },
+    {
+      "requirement_id": "compare",
+      "clause": "compare",
+      "verdict": "FAIL",
+      "reasoning": "While comparison tasks are present, systematic defects in hints contradict comparison logic across multiple samples, teaching false reasoning about relative magnitude.",
+      "sample_ids": [
+        "67f6d704a7a1087dcb37",
+        "c96031489972f3af4033",
+        "d06c3ad8903d5c733b98",
+        "2c002cd871f3dc25013f"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-w29-mat_g2_mg_q2_0-20260925",
+      "dispatch_id": "s5-haiku-w29-mat_g2_mg_q2_0-20260925:mat_g2_mg_q2_0"
+    },
+    {
+      "requirement_id": "lengths",
+      "clause": "lengths",
+      "verdict": "PASS",
+      "reasoning": "Object-length problems are well represented across samples using objects like pencils, rulers, notebooks, spoons, and shoes with centimeter measurements.",
+      "sample_ids": [
+        "67f6d704a7a1087dcb37",
+        "c96031489972f3af4033",
+        "91c4297364dbda833608",
+        "5e03a170209af5de9441"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-w29-mat_g2_mg_q2_0-20260925",
+      "dispatch_id": "s5-haiku-w29-mat_g2_mg_q2_0-20260925:mat_g2_mg_q2_0"
+    },
+    {
+      "requirement_id": "objects",
+      "clause": "objects",
+      "verdict": "PASS",
+      "reasoning": "Variety of objects are used: pencils, rulers, notebooks, spoons, shoes, school fences, garden paths; thematic elements include familiar school and household items.",
+      "sample_ids": [
+        "67f6d704a7a1087dcb37",
+        "c96031489972f3af4033",
+        "91c4297364dbda833608",
+        "5e03a170209af5de9441"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-w29-mat_g2_mg_q2_0-20260925",
+      "dispatch_id": "s5-haiku-w29-mat_g2_mg_q2_0-20260925:mat_g2_mg_q2_0"
+    },
+    {
+      "requirement_id": "meters_or_centimeters",
+      "clause": "meters (m) or centimeters (cm)",
+      "verdict": "FAIL",
+      "reasoning": "While both units appear in problem stems, seven samples with meter stems have hints that incorrectly reference centimeters, creating unit confusion that violates proper use of appropriate measuring units.",
+      "sample_ids": [
+        "4cb17c90223e427cff52",
+        "5ead9dbe588d7bbc81da",
+        "dc5e6ee8057a05031c04",
+        "1c1891374dedbd763a9f",
+        "4b2cb7b9fc00569d1e5c",
+        "80658de90c84e3bc3f8b",
+        "4148cf4f16ca51857b55"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-w29-mat_g2_mg_q2_0-20260925",
+      "dispatch_id": "s5-haiku-w29-mat_g2_mg_q2_0-20260925:mat_g2_mg_q2_0"
+    },
+    {
+      "requirement_id": "distance",
+      "clause": "distance",
+      "verdict": "CONCERN",
+      "reasoning": "Distance problems are included but undermined by unit inconsistency in hints and contradictory comparison logic in some samples.",
+      "sample_ids": [
+        "4cb17c90223e427cff52",
+        "5ead9dbe588d7bbc81da",
+        "dc5e6ee8057a05031c04",
+        "1c1891374dedbd763a9f"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-w29-mat_g2_mg_q2_0-20260925",
+      "dispatch_id": "s5-haiku-w29-mat_g2_mg_q2_0-20260925:mat_g2_mg_q2_0"
+    },
+    {
+      "requirement_id": "measuring_tools",
+      "clause": "measuring tools",
+      "verdict": "PASS",
+      "reasoning": "Ruler visual measurement samples demonstrate use of appropriate tools to measure length in centimeters.",
+      "sample_ids": [
+        "4194164ddb24fc7cc206",
+        "773a92080e4118086904",
+        "5c3a7b6d5486e7724096",
+        "05d0bcd4c68c7c1284a8",
+        "599721f171b5e2d95bde"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-w29-mat_g2_mg_q2_0-20260925",
+      "dispatch_id": "s5-haiku-w29-mat_g2_mg_q2_0-20260925:mat_g2_mg_q2_0"
+    }
+  ],
+  "dispatch_provenance": [
+    {
+      "dispatch_id": "s5-haiku-w29-mat_g2_mg_q2_0-20260925:mat_g2_mg_q2_0",
+      "reviewer_identity": "blind-reviewer-haiku45-w29-mat_g2_mg_q2_0-20260925",
+      "review_date": "2026-09-25",
+      "blind": true,
+      "packet_digest": "9118d941b9b3879a3f5f5bc84f89f610a1120a4c8949d07071d38d9386f5bce0",
+      "clause_ids": [
+        "measure",
+        "compare",
+        "lengths",
+        "objects",
+        "meters_or_centimeters",
+        "distance",
+        "measuring_tools"
+      ],
+      "response_ref": ".responses/s5-haiku-w29-mat_g2_mg_q2_0-20260925.json",
+      "response_digest": "80c7c61809fb21c4a05a6d7a8806899abe29c82cd594852f23e3c8a8ae4be8d4",
+      "prompt_ref": ".responses/s5-haiku-w29-mat_g2_mg_q2_0-20260925.prompt.txt",
+      "prompt_digest": "92dba29cf69b64fb5edd73bee745fb8864505e9b8e4b53cf8b6d8616d8205c47",
+      "samples_delivery": "Prompt file path handed to a Claude Code Agent-tool subagent (model haiku, ruling 4, owner-authorised 2026-09-24 for this host because neither gpt-5.6-luna nor gpt-6-luna is dispatchable from Claude Code). The reviewer read the prompt with Read; all samples were inside that file. It wrote verdicts.json with Write. The dispatch carried the four-part template: 60-char reasoning floor, exact-verbatim quoting rule, neutral interest-bank context, and an explicit hints-vs-item instruction.",
+      "tool_uses_by_reviewer": "2 tool calls per the harness usage record (tool_uses: 2): Read of the dispatch prompt, Write of verdicts.json. Some subagents name only one of the two in their own report; the harness figure is authoritative. Full tool access, instructed to read no other repository file -- a prompt contract, not a sandbox."
     }
   ],
   "findings": {
-    "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "Comparison is well served, but the measuring half of this competency survives in only two items, both asking how long the object is. Eight of the ten samples hand the pupil two finished numbers, which is number comparison and needs no measuring tool at all."
-    },
-    "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "Longer and shorter are both asked, and centimetres and metres both appear in the comparison items, yet the actual measuring items only ever request an answer in cm. Measuring a length in metres with a tool is never generated."
-    },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "One-step comparisons of two stated lengths, phrased in a single short sentence with familiar school objects, are well within what a Grade 2 Quarter 2 pupil can hold."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "Three formatters are used but only two situations exist: two objects side by side, or two distances from a landmark. A measuring item where the pupil reads a scale appears just twice and with word-for-word identical wording both times."
+      "rationale": "Problem structures are appropriate for Grade 2, using familiar objects and small numerical ranges (1-20 cm, 1-86 m) that match developmental expectations."
     },
     "competency_alignment": {
-      "verdict": "CONCERN",
-      "rationale": "The step up in the later seeds is purely numeric, moving from a pencil at 10 and a ruler at 15 to distances of 82 and 37. Comparing larger integers is a number-sense axis, not a measurement one, so the added difficulty does not build this competency."
+      "verdict": "FAIL",
+      "rationale": "The competency requires measuring with appropriate tools and comparing lengths in meters or centimeters. Critical failures in unit consistency violate this requirement across multiple samples where stem units do not match hint units."
+    },
+    "competency_fulfillment": {
+      "verdict": "FAIL",
+      "rationale": "Not all requirements are coherently addressed due to systematic unit mismatches and contradictory hint logic that undermine the core measurement and comparison competency.",
+      "decomposition": {
+        "verdict": "FAIL",
+        "reasoning": "The decomposition lists seven requirements including meters_or_centimeters and compare. Multiple samples violate both: hints provide centimeter language for meter problems, and hints contradict comparison direction by stating longer when asking for shorter.",
+        "requirement_ids": [
+          "measure",
+          "compare",
+          "lengths",
+          "objects",
+          "meters_or_centimeters",
+          "distance",
+          "measuring_tools"
+        ]
+      },
+      "clause_ids": [
+        "measure",
+        "compare",
+        "lengths",
+        "objects",
+        "meters_or_centimeters",
+        "distance",
+        "measuring_tools"
+      ]
+    },
+    "comprehensive_coverage": {
+      "verdict": "FAIL",
+      "rationale": "While the sample set includes ruler-reading and comparison tasks, systematic defects in hints make meaningful coverage incomplete. Ruler tasks provide visual measurement, but comparison tasks contain contradictions that prevent authentic coverage of the compare requirement.",
+      "clause_ids": [
+        "measure",
+        "compare",
+        "lengths",
+        "objects",
+        "meters_or_centimeters",
+        "distance",
+        "measuring_tools"
+      ]
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Object lengths sit in the tens of centimetres and distances in the tens of metres, which are believable magnitudes for the classroom objects and school landmarks named."
+      "rationale": "Numbers used (1-20 cm for objects, 1-86 m for distances) are appropriate for Grade 2 magnitude and do not require advanced mental arithmetic."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "Problems include cloze, mcq, and read_mcq formats with both object-length and distance contexts. However, systematic hint defects across multiple seeds reduce variant reliability despite format variety."
     }
   },
-  "overall": "CONCERN"
+  "overall": "FAIL"
 }

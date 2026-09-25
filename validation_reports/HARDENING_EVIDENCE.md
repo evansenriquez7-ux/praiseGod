@@ -16817,3 +16817,118 @@ the cross itself and were all wrong.
   `generate_hints`-ignores-the-variant root cause.
 * **`concrete` / `concrete_pictorial` clauses keep failing** across Grade 1 nodes — the same family as
   `mat_g1_na_q1_7`. One concrete-model artifact may clear several nodes (Content Rule 4).
+
+### Haiku §5 wave 29 (same session) — 4 nodes, and TWO new harness gaps
+
+Dispatched on Haiku (ruling 4, owner-authorised 2026-09-24 for this host: neither `gpt-5.6-luna` nor
+`gpt-6-luna` is dispatchable from Claude Code). Haiku adds no fourth rater family.
+
+```
+legacy queue : 99 -> 95        §5 (module) : 1829 -> 1870 findings, 144 nodes
+quote-provenance findings : 14 -- UNCHANGED across both waves this session
+v2 corpus : 56 reviews -- 25 gpt-5.6-luna, 19 gpt-6-luna, 12 haiku45
+verdicts  : 27 FAIL / 21 CONCERN / 8 PASS
+```
+
+| node | verdict | §5 findings |
+|---|---|---|
+| `mat_g2_mg_q1_2` | FAIL (2nd dispatch) | — |
+| `mat_g2_mg_q2_0` | FAIL | 42 |
+| `mat_g2_mg_q2_1` | CONCERN | 11 |
+| `mat_g2_mg_q2_2` | PASS *(inconsistent — see gap 2)* | 1 |
+
+### GAP 1 — the dispatch prompt and the filer disagree about an ABSENCE clause
+
+`mat_g2_mg_q1_2`'s first reply was **REFUSED**:
+`ValueError: mat_g2_mg_q1_2.draw_effect: sample_ids must cite dispatched samples.`
+
+It had marked `draw_effect` FAIL — correctly, the packet never demonstrates drawing — and cited an
+**empty** `sample_ids` list. The generated prompt says *"one or more cited `sample_ids` from this node.
+A missing capability may be FAIL or CONCERN; never invent a supporting sample."* `file_reviews.py:175`
+requires a NON-EMPTY list. A reviewer reading those two sentences together reasonably concludes it must
+cite nothing for an absence — and produces an unfileable review.
+
+**This will recur on every clause FAILed for absence**, which given how often `draw` and `concrete`
+clauses fail is common. The generator-side fix is in `tests/` and costs the ~4h chain, so it is NAMED
+here rather than made mid-campaign. Worked around in the dispatch text: *for an absence, cite the
+sample ids you EXAMINED — the ones that should have shown the capability and did not; citing what you
+inspected is evidence of absence, not invention.* The re-dispatch then filed with every clause citing
+real samples, 0 unmatched quotes, and an overall consistent with its findings.
+
+### GAP 2 — `file_reviews` accepts an `overall` that contradicts the review's own findings
+
+`mat_g2_mg_q2_2` was filed with `overall: PASS` while `variant_comprehensiveness` is `CONCERN`. The
+dispatch prompt states the rule plainly (*"`overall`: FAIL if any … is FAIL; otherwise CONCERN if any
+is CONCERN; otherwise PASS"*), but **nothing enforces it**: the filer accepted the record.
+
+Executed consequence, both directions measured:
+* `validate_judgment` DOES still flag the node (`findings['variant_comprehensiveness'].verdict is
+  'CONCERN' (must be 'PASS')`), so the node stays red and no defect is hidden.
+* But the stored `overall` is wrong, and `legacy_review_queue.json`'s `by_overall_verdict` census reads
+  that field — so **the corpus statistics overstate PASSes by one**. The `8 PASS` figure above is
+  therefore itself suspect by one.
+
+The verdict was NOT edited: changing a reviewer's `overall` would be authoring one. **Named, not
+fixed** — the enforcement belongs in `file_reviews` (or as a §5 finding) and owes a mutation.
+
+### CONTENT: `generate_hints` ignores the item's UNIT and its DIRECTION — instances 3 and 4
+
+`mat_g2_mg_q2_0`, competency *"Measure and compare lengths of objects, in meters (m) or centimeters
+(cm), and distance in meters, using appropriate measuring tools."* Verified by executing against the
+dispatched packet — **19 samples, 7 unit mismatches, 7 direction errors**:
+
+```
+UNIT (hints hardcode centimetres whatever the stem says):
+  stem:  The distance from the bench to the tree is 82 m. ...
+  hints: "Compare 82 centimeter (cm) and 37 centimeter (cm)." ...
+
+DIRECTION (the final hint labels the answer 'longer' on a 'shorter' question,
+           contradicting the hint immediately before it):
+  stem:   A pencil is 10 cm long. A ruler is 15 cm long. Which length is shorter?
+  answer: 10
+  hints:  "Compare 10 centimeter (cm) and 15 centimeter (cm)."
+          "15 is more than 10."
+          "The longer length is 10 centimeter (cm)."
+```
+
+This **independently confirms** the Luna campaign's earlier "shorter-distance hints saying the correct
+shorter value is longer" finding, now from a second rater family. With the three already recorded, the
+root cause now has **four** distinct manifestations:
+
+| node | the hints ignore | evidence |
+|---|---|---|
+| `mat_g3_na_q4_7` (fixed `ab70698a`) | the operation | add hints on a subtract item |
+| `mat_g1_na_q2_0` | the sort direction | 17/17 descending items get ascending hints |
+| `mat_g1_na_q2_3` | the response variant | blocks-setting item told to write the decomposed form |
+| `mat_g2_mg_q2_0` | the UNIT and the DIRECTION | 7 + 7 of 19 samples |
+
+**`generate_params` knows the parameter and `generate_hints` does not.** One shared contract — a hint
+chain that must declare the parameters it explains — not four patches. This is the single
+highest-value source fix available, and `fraction_hint_self_consistency` gates only the first row.
+
+### CONTENT: the interest wrapper names a different object than the task, at seeds 701/702
+
+`mat_g2_mg_q2_1`, verified in the packet:
+
+```
+seed 701: 🚴 Ate Sam has a math challenge about running shoes. A crayon has a length of about 8 ___.
+seed 702: 🏐 Ate Alyssa has a math challenge about shuttlecocks. Which unit would you use to measure
+          the length of a spoon: centimeters (cm) or meters (m)?
+```
+
+The wrapper's object (running shoes, shuttlecocks) is drawn from the interest bank independently of the
+task's object (crayon, spoon). **Now confirmed on four nodes across three rater families, always at
+seeds 701/702**: `mat_g1_dp_q3_0` (dance shoes on a fruit interview), `mat_g1_na_q3_0` (stones wrapper,
+sticker task), and this node twice. That localisation — one seed pair, many nodes — points at the
+wrapper composition step, not at the interest bank. **This is the genuine theming defect class**, as
+distinct from the theme merely being present, which three reviewers were wrong about.
+
+### CONTENT: a `draw` competency served entirely by multiple choice (ruling 3)
+
+`mat_g2_mg_q1_2`, competency *"Describe and draw the effect of one-direction multi-step slide (or
+translation) in basic shapes and figures."* Executed against the packet: **all 18 samples are `mcq`,
+`is_visual: false`; zero let a pupil draw.** Ruling 3 is explicit that a multiple-choice question
+*about* drawing does not satisfy a competency that says draw, so Content Rule 4 makes building a real
+visual/drawing formatter the fix, citing the clause `draw the effect of one-direction multi-step slide
+(or translation)`. The reviewer also found 11 of 18 samples are duplicates or near-duplicates in four
+groups, and one stem that says "to draw" twice while asking for a distance.

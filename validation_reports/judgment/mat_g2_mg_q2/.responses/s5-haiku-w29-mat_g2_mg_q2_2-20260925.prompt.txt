@@ -1,0 +1,200 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-haiku45-w29-mat_g2_mg_q2_2-20260925
+
+Write one JSON object to:
+  local_only/scratch/review/s5-haiku-w29/mat_g2_mg_q2_2/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN; never invent a supporting sample.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-haiku45-w29-mat_g2_mg_q2_2-20260925",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g2_mg_q2_2
+PACKET DIGEST: 4891ff40d0a8cb62486b729cc82d1967adaa16fae69429ae98787a2b8dffbec5
+COMPETENCY (Grade 2, Quarter 2, None):
+Estimate length using meters or centimeters, and distance using meters.
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  estimate: Estimate
+  length: length
+  meters_or_centimeters: meters or centimeters
+  distance: distance
+
+SAMPLES (every one of these is real rendered output):
+  sample 885ebee0afb4a556ae70  seed 42  [cloze]
+      stem:    A wooden ruler measures 22 cm. About how many centimeters is that, rounded to the nearest 10 cm?
+      answer:  20
+      options: 30 / 40 / 10 / 20
+      hints:   ["Read the measurement on the ruler carefully.", "The length is 20 cm."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample b6f26e051b22faa7e325  seed 43  [mcq]
+      stem:    The distance from the classroom to the canteen is 17 m. About how many meters is that, rounded to the nearest 5 m?
+      answer:  15
+      options: 25 / 10 / 15 / 20
+      hints:   ["Read the measurement on the ruler carefully.", "The length is 15 m."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 5e546c03609b813f31bc  seed 44  [cloze]
+      stem:    The distance from the library to the garden is 21 m. About how many meters is that, rounded to the nearest 10 m?
+      answer:  20
+      options: 40 / 20 / 30 / 10
+      hints:   ["Read the measurement on the ruler carefully.", "The length is 20 m."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample d441ca96e2b66b987099  seed 45  [mcq]
+      stem:    The distance from the front door to the school fence is 14 m. About how many meters is that, rounded to the nearest 5 m?
+      answer:  15
+      options: 10 / 20 / 25 / 15
+      hints:   ["Read the measurement on the ruler carefully.", "The length is 15 m."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 2cc50ce41da18bd142d0  seed 46  [mcq]
+      stem:    A storybook measures 23 cm. About how many centimeters is that, rounded to the nearest 10 cm?
+      answer:  20
+      options: 30 / 20 / 10 / 40
+      hints:   ["Read the measurement on the ruler carefully.", "The length is 20 cm."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 23785d0192b32d455314  seed 500  [mcq]
+      stem:    A classroom hallway measures 21 m. About how many meters is that, rounded to the nearest 10 m?
+      answer:  20
+      options: 40 / 30 / 10 / 20
+      hints:   ["Read the measurement on the ruler carefully.", "The length is 20 m."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 714045bb479618a5d4b0  seed 501  [mcq]
+      stem:    A school fence measures 35 m. About how many meters is that, rounded to the nearest 10 m?
+      answer:  40
+      options: 30 / 40 / 50 / 60
+      hints:   ["Read the measurement on the ruler carefully.", "The length is 40 m."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 003e60565c5be9a9f068  seed 502  [cloze]
+      stem:    A wooden ruler measures 21 cm. About how many centimeters is that, rounded to the nearest 10 cm?
+      answer:  20
+      options: 40 / 30 / 10 / 20
+      hints:   ["Read the measurement on the ruler carefully.", "The length is 20 cm."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 9bc647becc8f6d9a72ca  seed 600  [mcq]
+      stem:    A pencil case measures 17 cm. About how many centimeters is that, rounded to the nearest 5 cm?
+      answer:  15
+      options: 15 / 25 / 20 / 10
+      hints:   ["Read the measurement on the ruler carefully.", "The length is 15 cm."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 402c7958f00aea52c9ef  seed 601  [cloze]
+      stem:    The distance from the library to the garden is 18 m. About how many meters is that, rounded to the nearest 5 m?
+      answer:  20
+      options: 20 / 25 / 15 / 30
+      hints:   ["Read the measurement on the ruler carefully.", "The length is 20 m."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 972528be0c4a3b1b45f9  seed 602  [cloze]
+      stem:    The distance from the bench to the mango tree is 18 m. About how many meters is that, rounded to the nearest 5 m?
+      answer:  20
+      options: 20 / 25 / 30 / 15
+      hints:   ["Read the measurement on the ruler carefully.", "The length is 20 m."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample d0fe93083d8aa4f1901c  seed 603  [mcq]
+      stem:    The distance from the library to the garden is 16 m. About how many meters is that, rounded to the nearest 5 m?
+      answer:  15
+      options: 20 / 15 / 10 / 25
+      hints:   ["Read the measurement on the ruler carefully.", "The length is 15 m."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample a407aaad5f79c92670cb  seed 700  [cloze]
+      stem:    The distance from the classroom to the canteen is 17 m. About how many meters is that, rounded to the nearest 5 m?
+      answer:  15
+      options: 20 / 15 / 10 / 25
+      hints:   ["Read the measurement on the ruler carefully.", "The length is 15 m."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample dd8ca133e6d463700f6d  seed 701  [mcq]
+      stem:    💃 Sir Rez has a math challenge about dance shoes. A piece of ribbon measures 22 cm. About how many centimeters is that, rounded to the nearest 10 cm?
+      answer:  20
+      options: 40 / 30 / 10 / 20
+      hints:   ["Read the measurement on the ruler carefully.", "The length is 20 cm."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 2a61341bb2834b827b72  seed 702  [cloze]
+      stem:    🧁 Ate Nena has a math challenge about loaves of bread. A school fence measures 16 m. About how many meters is that, rounded to the nearest 5 m?
+      answer:  15
+      options: 25 / 15 / 20 / 10
+      hints:   ["Read the measurement on the ruler carefully.", "The length is 15 m."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample b02d23cf903e6f1eb09a  seed 800  [cloze]
+      stem:    A garden hose measures 25 m. About how many meters is that, rounded to the nearest 10 m?
+      answer:  30
+      options: 30 / 40 / 50 / 20
+      hints:   ["Read the measurement on the ruler carefully.", "The length is 30 m."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample fc0c677c536fdb39d845  seed 900  [mcq]
+      stem:    A piece of ribbon measures 17 cm. About how many centimeters is that, rounded to the nearest 5 cm?
+      answer:  15
+      options: 25 / 20 / 10 / 15
+      hints:   ["Read the measurement on the ruler carefully.", "The length is 15 cm."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 70c7cc2921ca6db8a5c1  seed 901  [mcq]
+      stem:    The distance from the bench to the mango tree is 11 m. About how many meters is that, rounded to the nearest 5 m?
+      answer:  10
+      options: 20 / 5 / 15 / 10
+      hints:   ["Read the measurement on the ruler carefully.", "The length is 10 m."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample cc900eeb024d5d529ac3  seed 1000  [cloze]
+      stem:    A garden hose measures 22 m. About how many meters is that, rounded to the nearest 10 m?
+      answer:  20
+      options: 10 / 20 / 40 / 30
+      hints:   ["Read the measurement on the ruler carefully.", "The length is 20 m."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "hint_gated"}
+  sample 4fb69e3bdc57245fbf86  seed 1001  [cloze]
+      stem:    A notebook measures 19 cm. About how many centimeters is that, rounded to the nearest 5 cm?
+      answer:  20
+      options: 30 / 25 / 15 / 20
+      hints:   ["Read the measurement on the ruler carefully.", "The length is 20 cm."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "mastery_drill"}
+  sample f5610dbb1fb881758047  seed 1002  [cloze]
+      stem:    A notebook measures 21 cm. About how many centimeters is that, rounded to the nearest 10 cm?
+      answer:  20
+      options: 20 / 10 / 30 / 40
+      hints:   ["Read the measurement on the ruler carefully.", "The length is 20 cm."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "scaffolded"}
+

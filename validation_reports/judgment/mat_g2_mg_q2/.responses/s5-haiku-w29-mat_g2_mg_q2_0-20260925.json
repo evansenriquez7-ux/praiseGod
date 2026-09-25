@@ -1,0 +1,488 @@
+{
+  "reviewer": "blind-reviewer-haiku45-w29-mat_g2_mg_q2_0-20260925",
+  "mat_g2_mg_q2_0": {
+    "findings": {
+      "cognitive_capacity": {
+        "verdict": "PASS",
+        "rationale": "Problem structures are appropriate for Grade 2, using familiar objects and small numerical ranges (1-20 cm, 1-86 m) that match developmental expectations."
+      },
+      "competency_alignment": {
+        "verdict": "FAIL",
+        "rationale": "The competency requires measuring with appropriate tools and comparing lengths in meters or centimeters. Critical failures in unit consistency violate this requirement across multiple samples where stem units do not match hint units."
+      },
+      "competency_fulfillment": {
+        "verdict": "FAIL",
+        "rationale": "Not all requirements are coherently addressed due to systematic unit mismatches and contradictory hint logic that undermine the core measurement and comparison competency.",
+        "decomposition": {
+          "verdict": "FAIL",
+          "reasoning": "The decomposition lists seven requirements including meters_or_centimeters and compare. Multiple samples violate both: hints provide centimeter language for meter problems, and hints contradict comparison direction by stating longer when asking for shorter."
+        }
+      },
+      "comprehensive_coverage": {
+        "verdict": "FAIL",
+        "rationale": "While the sample set includes ruler-reading and comparison tasks, systematic defects in hints make meaningful coverage incomplete. Ruler tasks provide visual measurement, but comparison tasks contain contradictions that prevent authentic coverage of the compare requirement."
+      },
+      "scale_appropriateness": {
+        "verdict": "PASS",
+        "rationale": "Numbers used (1-20 cm for objects, 1-86 m for distances) are appropriate for Grade 2 magnitude and do not require advanced mental arithmetic."
+      },
+      "variant_comprehensiveness": {
+        "verdict": "CONCERN",
+        "rationale": "Problems include cloze, mcq, and read_mcq formats with both object-length and distance contexts. However, systematic hint defects across multiple seeds reduce variant reliability despite format variety."
+      }
+    },
+    "sample_assessments": [
+      {
+        "sample_id": "4cb17c90223e427cff52",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Stem is clear: two distances in meters are given and student must identify the longer one."
+          },
+          "contextual_logical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "Stem specifies meters but hints switch to centimeters. Hints say Compare 2 centimeter (cm) and 1 centimeter (cm) when stem says 2 m and 1 m, creating logical inconsistency."
+          },
+          "learner_facing_clarity": {
+            "verdict": "FAIL",
+            "reasoning": "Unit mismatch between stem (meters) and hints (centimeters) confuses the measurement unit being compared, undermining clarity of what the student should attend to."
+          },
+          "mathematical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "Answer 2 is correct for the comparison, but hint language incorrectly labels the unit, which could teach incorrect unit association."
+          }
+        }
+      },
+      {
+        "sample_id": "4194164ddb24fc7cc206",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Stem and hints are unambiguous: student reads a ruler and provides measurement in cm."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Measurement task with visual ruler display is logically valid; hints support direct reading of the scale."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Instructions are clear and the visual component supports learner ability to verify the measurement independently."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Answer 5 cm aligns with the hint and the stated measurement task."
+          }
+        }
+      },
+      {
+        "sample_id": "67f6d704a7a1087dcb37",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Stem clearly asks which length is shorter when pencil is 10 cm and ruler is 15 cm."
+          },
+          "contextual_logical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "Stem asks for the shorter length (answer 10), but the second hint states The longer length is 10 centimeter (cm), which contradicts both the task direction and the correct answer."
+          },
+          "learner_facing_clarity": {
+            "verdict": "FAIL",
+            "reasoning": "Hint directly contradicts the task by claiming 10 is longer when the stem asks which is shorter; student receives false logical direction."
+          },
+          "mathematical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "Answer 10 is mathematically correct, but the hint teaches that 10 is the longer value, which is false."
+          }
+        }
+      },
+      {
+        "sample_id": "c96031489972f3af4033",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Stem clearly states notebook 20 cm and pencil 10 cm, asking which is shorter."
+          },
+          "contextual_logical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "Stem asks for shorter length but hint says The longer length is 10 centimeter (cm), contradicting the task logic since 20 is longer than 10."
+          },
+          "learner_facing_clarity": {
+            "verdict": "FAIL",
+            "reasoning": "Hint teaches incorrect comparison by identifying 10 as longer when it is shorter, directly misleading student intuition about relative magnitude."
+          },
+          "mathematical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "Answer 10 is correct but hint falsely states it is the longer value, teaching incorrect mathematical reasoning."
+          }
+        }
+      },
+      {
+        "sample_id": "773a92080e4118086904",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Stem directly asks student to measure an object shown on ruler and provide answer in cm."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Ruler measurement task is logically sound with consistent units and clear visual support."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Visual ruler and clear instruction support student ability to perform the measurement task independently."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Answer 6 cm is consistent with measurement task and supportive hints."
+          }
+        }
+      },
+      {
+        "sample_id": "d06c3ad8903d5c733b98",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Stem asks which of two lengths is shorter: spoon 20 cm or pencil 19 cm."
+          },
+          "contextual_logical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "Stem asks for shorter length but hint states The longer length is 19 centimeter (cm), contradicting the task since 20 is longer not 19."
+          },
+          "learner_facing_clarity": {
+            "verdict": "FAIL",
+            "reasoning": "Hint contradicts task by labeling 19 as longer when it is the shorter of the two values."
+          },
+          "mathematical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "Answer 19 is correct but hint falsely teaches that 19 is the longer value, undermining proper comparison understanding."
+          }
+        }
+      },
+      {
+        "sample_id": "5ead9dbe588d7bbc81da",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Stem is clear: two distances in meters (82 m and 37 m) are given, asking which is longer."
+          },
+          "contextual_logical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "Stem specifies meters but hints say Compare 82 centimeter (cm) and 37 centimeter (cm), creating a unit mismatch that violates logical consistency."
+          },
+          "learner_facing_clarity": {
+            "verdict": "FAIL",
+            "reasoning": "Unit inconsistency between stem (meters) and hints (centimeters) obscures what measurement unit is being compared."
+          },
+          "mathematical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "Answer 82 is correct for comparison but hint uses wrong unit labels, which could create unit confusion for the learner."
+          }
+        }
+      },
+      {
+        "sample_id": "dc5e6ee8057a05031c04",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Stem clearly presents two distances in meters and asks which is shorter."
+          },
+          "contextual_logical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "Stem uses meters but hints reference centimeters; additionally, hint says The longer distance is 47 centimeter (cm) when 65 is longer and the task asks for shorter."
+          },
+          "learner_facing_clarity": {
+            "verdict": "FAIL",
+            "reasoning": "Double defect: unit mismatch (meters vs centimeters) and contradictory logic (longer vs shorter) together create severe confusion."
+          },
+          "mathematical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "Answer 47 is correct but hint teaches false logic by claiming 47 is the longer value and uses incorrect units."
+          }
+        }
+      },
+      {
+        "sample_id": "91c4297364dbda833608",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Stem clearly states notebook 20 cm and spoon 12 cm, asking which is longer."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Comparison task has logical consistency; stem asks for longer and answer identifies the larger value."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Hints correctly walk through comparison: both values named, comparison stated, and longer value identified."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Answer 20 is mathematically correct and all hints support the valid comparison logic."
+          }
+        }
+      },
+      {
+        "sample_id": "771729fd2b83c860aa5d",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Stem clearly asks which length is longer between school fence (10 m) and garden path (9 m)."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Task is logically sound with consistent units (meters throughout) and matching comparison direction."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Hints properly support the task by comparing equal-unit values and identifying the longer one."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Answer 10 is correct and hints reinforce proper comparison using consistent meter units."
+          }
+        }
+      },
+      {
+        "sample_id": "5c3a7b6d5486e7724096",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Stem directly asks student to measure object using ruler and provide answer in cm."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Ruler measurement task is logically consistent with clear visual support and unambiguous measurement goal."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Visual ruler and straightforward instruction enable independent verification of the measurement."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Answer 7 cm aligns with measurement task and hint statements."
+          }
+        }
+      },
+      {
+        "sample_id": "1c1891374dedbd763a9f",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Stem asks which distance is shorter: bench to tree (5 m) or gate to tree (8 m)."
+          },
+          "contextual_logical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "Stem specifies meters but hints say Compare 5 centimeter (cm) and 8 centimeter (cm); stem asks for shorter but hint says The longer distance is 5 centimeter (cm)."
+          },
+          "learner_facing_clarity": {
+            "verdict": "FAIL",
+            "reasoning": "Dual defects: unit mismatch and contradiction of task direction make the hint pedagogically harmful."
+          },
+          "mathematical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "Answer 5 is correct for shorter but hint falsely identifies it as longer and uses wrong units."
+          }
+        }
+      },
+      {
+        "sample_id": "05d0bcd4c68c7c1284a8",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Stem with theme wrapper asks student to measure object and provide answer in cm."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Ruler measurement task is logically valid; thematic wrapper does not interfere with mathematical task."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Measurement instructions are clear and visual ruler supports independent verification."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Answer 6 cm is consistent with measurement task and hints."
+          }
+        }
+      },
+      {
+        "sample_id": "4b2cb7b9fc00569d1e5c",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Stem clearly asks which distance is longer between bench to tree (86 m) and gate to tree (64 m)."
+          },
+          "contextual_logical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "Stem specifies meters throughout but hints reference Compare 86 centimeter (cm) and 64 centimeter (cm), creating unit inconsistency."
+          },
+          "learner_facing_clarity": {
+            "verdict": "FAIL",
+            "reasoning": "Unit mismatch between stem (meters) and hints (centimeters) obscures the measurement unit being discussed."
+          },
+          "mathematical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "Answer 86 is correct for the comparison but hint uses incorrect unit labels that could embed wrong unit associations."
+          }
+        }
+      },
+      {
+        "sample_id": "80658de90c84e3bc3f8b",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Stem presents two distances in meters and asks which is longer."
+          },
+          "contextual_logical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "Stem uses meters but hints say Compare 1 centimeter (cm) and 2 centimeter (cm), violating unit consistency."
+          },
+          "learner_facing_clarity": {
+            "verdict": "FAIL",
+            "reasoning": "Unit mismatch confuses the measurement unit the student should focus on."
+          },
+          "mathematical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "Answer 2 is correct but hint teaches wrong units, which could create lasting measurement misconceptions."
+          }
+        }
+      },
+      {
+        "sample_id": "5e03a170209af5de9441",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Stem clearly asks which of two object lengths is longer: pencil (10 cm) or shoe (20 cm)."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Comparison task is logically consistent with matching units and aligned task direction."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Hints correctly guide comparison with consistent cm units and proper identification of longer value."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Answer 20 is correct and all hints support valid comparison reasoning."
+          }
+        }
+      },
+      {
+        "sample_id": "2c002cd871f3dc25013f",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Stem asks which of two object lengths is shorter: spoon (12 cm) or pencil (10 cm)."
+          },
+          "contextual_logical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "Stem asks for shorter length but hint says The longer length is 10 centimeter (cm), contradicting the task since 12 is longer not 10."
+          },
+          "learner_facing_clarity": {
+            "verdict": "FAIL",
+            "reasoning": "Hint directly contradicts task by identifying the shorter value as longer, teaching false comparison logic."
+          },
+          "mathematical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "Answer 10 is correct but hint falsely teaches that 10 is the longer value."
+          }
+        }
+      },
+      {
+        "sample_id": "599721f171b5e2d95bde",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Stem asks student to measure object and provide answer in cm using visual ruler."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Measurement task has clear logical structure with visual support and consistent units."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Ruler visual and measurement instruction support independent learner verification."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Answer 5 cm aligns with measurement task and hints."
+          }
+        }
+      },
+      {
+        "sample_id": "4148cf4f16ca51857b55",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Stem asks which distance is shorter between bench to tree (9 m) and gate to tree (10 m)."
+          },
+          "contextual_logical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "Stem specifies meters but hints say Compare 9 centimeter (cm) and 10 centimeter (cm); additionally hint says The longer distance is 9 centimeter (cm) when 10 is longer."
+          },
+          "learner_facing_clarity": {
+            "verdict": "FAIL",
+            "reasoning": "Compound defects: unit mismatch and contradictory logic both mislead learner about the comparison."
+          },
+          "mathematical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "Answer 9 is correct for shorter but hint falsely teaches that 9 is longer and uses incorrect units."
+          }
+        }
+      }
+    ],
+    "clause_evidence": [
+      {
+        "requirement_id": "measure",
+        "clause": "Measure",
+        "verdict": "PASS",
+        "reasoning": "Ruler-reading samples (4194164ddb24fc7cc206, 773a92080e4118086904, 5c3a7b6d5486e7724096, 05d0bcd4c68c7c1284a8, 599721f171b5e2d95bde) directly address measurement using visual tools.",
+        "sample_ids": ["4194164ddb24fc7cc206", "773a92080e4118086904", "5c3a7b6d5486e7724096", "05d0bcd4c68c7c1284a8", "599721f171b5e2d95bde"]
+      },
+      {
+        "requirement_id": "compare",
+        "clause": "compare",
+        "verdict": "FAIL",
+        "reasoning": "While comparison tasks are present, systematic defects in hints contradict comparison logic across multiple samples, teaching false reasoning about relative magnitude.",
+        "sample_ids": ["67f6d704a7a1087dcb37", "c96031489972f3af4033", "d06c3ad8903d5c733b98", "2c002cd871f3dc25013f"]
+      },
+      {
+        "requirement_id": "lengths",
+        "clause": "lengths",
+        "verdict": "PASS",
+        "reasoning": "Object-length problems are well represented across samples using objects like pencils, rulers, notebooks, spoons, and shoes with centimeter measurements.",
+        "sample_ids": ["67f6d704a7a1087dcb37", "c96031489972f3af4033", "91c4297364dbda833608", "5e03a170209af5de9441"]
+      },
+      {
+        "requirement_id": "objects",
+        "clause": "objects",
+        "verdict": "PASS",
+        "reasoning": "Variety of objects are used: pencils, rulers, notebooks, spoons, shoes, school fences, garden paths; thematic elements include familiar school and household items.",
+        "sample_ids": ["67f6d704a7a1087dcb37", "c96031489972f3af4033", "91c4297364dbda833608", "5e03a170209af5de9441"]
+      },
+      {
+        "requirement_id": "meters_or_centimeters",
+        "clause": "meters (m) or centimeters (cm)",
+        "verdict": "FAIL",
+        "reasoning": "While both units appear in problem stems, seven samples with meter stems have hints that incorrectly reference centimeters, creating unit confusion that violates proper use of appropriate measuring units.",
+        "sample_ids": ["4cb17c90223e427cff52", "5ead9dbe588d7bbc81da", "dc5e6ee8057a05031c04", "1c1891374dedbd763a9f", "4b2cb7b9fc00569d1e5c", "80658de90c84e3bc3f8b", "4148cf4f16ca51857b55"]
+      },
+      {
+        "requirement_id": "distance",
+        "clause": "distance",
+        "verdict": "CONCERN",
+        "reasoning": "Distance problems are included but undermined by unit inconsistency in hints and contradictory comparison logic in some samples.",
+        "sample_ids": ["4cb17c90223e427cff52", "5ead9dbe588d7bbc81da", "dc5e6ee8057a05031c04", "1c1891374dedbd763a9f"]
+      },
+      {
+        "requirement_id": "measuring_tools",
+        "clause": "measuring tools",
+        "verdict": "PASS",
+        "reasoning": "Ruler visual measurement samples demonstrate use of appropriate tools to measure length in centimeters.",
+        "sample_ids": ["4194164ddb24fc7cc206", "773a92080e4118086904", "5c3a7b6d5486e7724096", "05d0bcd4c68c7c1284a8", "599721f171b5e2d95bde"]
+      }
+    ],
+    "overall": "FAIL"
+  }
+}

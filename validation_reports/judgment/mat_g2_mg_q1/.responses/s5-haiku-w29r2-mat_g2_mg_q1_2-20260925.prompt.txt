@@ -1,0 +1,186 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-haiku45-w29r2-mat_g2_mg_q1_2-20260925
+
+Write one JSON object to:
+  local_only/scratch/review/s5-haiku-w29/mat_g2_mg_q1_2/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN; never invent a supporting sample.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-haiku45-w29r2-mat_g2_mg_q1_2-20260925",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g2_mg_q1_2
+PACKET DIGEST: cb0045c7f719c5e4e4d5d445a344b916377e1324c4618125f92b797fdb48999b
+COMPETENCY (Grade 2, Quarter 1, None):
+Describe and draw the effect of one-direction multi-step slide (or translation) in basic shapes and figures.
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  describe_effect: Describe
+  draw_effect: draw the effect
+  one_direction: one-direction
+  multi_step: multi-step
+  slide: slide
+  translation: translation
+  basic_shapes: basic shapes
+  basic_figures: figures
+
+SAMPLES (every one of these is real rendered output):
+  sample 9851599582ddd4298a4c  seed 42  [mcq]
+      stem:    A rectangle at mark 8 slides 3 spaces left, then slides 2 more spaces left in the same direction. At what mark should the rectangle be drawn?
+      answer:  mark 3
+      options: mark 2 / mark 6 / mark 3 / mark 5
+      hints:   ["A slide (translation) moves a shape without turning or flipping it.", "The shape looks the same — only its position changes.", "Count how many spaces it moved in each direction."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 9bbcabf4ecab7a81a268  seed 43  [mcq]
+      stem:    A shape slides 2 spaces right, then slides 1 more space right in the same direction without turning. What is this multi-step movement called?
+      answer:  one-direction multi-step slide (translation)
+      options: two-direction slide / flip (reflection) / one-direction multi-step slide (translation) / turn (rotation)
+      hints:   ["A slide (translation) moves a shape without turning or flipping it.", "The shape looks the same — only its position changes.", "Count how many spaces it moved in each direction."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample e7e2855ddfed2442b3a2  seed 44  [mcq]
+      stem:    A figure undergoes a multi-step slide: 2 spaces up, then 3 more spaces up. What is another mathematical name for a slide?
+      answer:  translation
+      options: dilation / rotation / translation / reflection
+      hints:   ["A slide (translation) moves a shape without turning or flipping it.", "The shape looks the same — only its position changes.", "Count how many spaces it moved in each direction."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 74c37d6b119b868bf899  seed 45  [mcq]
+      stem:    A shape slides 4 spaces down, then slides 1 more space down. Is this still a one-direction slide?
+      answer:  Yes, both steps moved the same direction.
+      options: No, this is a flip (reflection). / No, two steps means two directions. / No, this is a turn (rotation). / Yes, both steps moved the same direction.
+      hints:   ["A slide (translation) moves a shape without turning or flipping it.", "The shape looks the same — only its position changes.", "Count how many spaces it moved in each direction."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 8b2d0ab79b586dca95a5  seed 46  [mcq]
+      stem:    After a shape undergoes a multi-step slide in one direction, does its size or shape change?
+      answer:  No, the size and shape stay the same.
+      options: Yes, it gets bigger. / Yes, it changes shape. / Yes, it gets smaller. / No, the size and shape stay the same.
+      hints:   ["A slide (translation) moves a shape without turning or flipping it.", "The shape looks the same — only its position changes.", "Count how many spaces it moved in each direction."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample cfd1d7518f0d581f9e18  seed 500  [mcq]
+      stem:    A shape starts at position 3. It slides 1 space right, then 4 spaces right. Describe the total slide in one direction.
+      answer:  5 spaces to the right
+      options: 5 spaces to the right / 1 space to the right / 3 spaces to the right / 4 spaces to the right
+      hints:   ["A slide (translation) moves a shape without turning or flipping it.", "The shape looks the same — only its position changes.", "Count how many spaces it moved in each direction."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample a6c828f04fe1220389cf  seed 501  [mcq]
+      stem:    A rectangle at mark 8 slides 3 spaces left, then slides 2 more spaces left in the same direction. At what mark should the rectangle be drawn?
+      answer:  mark 3
+      options: mark 2 / mark 5 / mark 3 / mark 6
+      hints:   ["A slide (translation) moves a shape without turning or flipping it.", "The shape looks the same — only its position changes.", "Count how many spaces it moved in each direction."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 5e69f2c6a00755f69a27  seed 502  [mcq]
+      stem:    A triangle is drawn at space 2. It undergoes a multi-step slide: 3 spaces right, then 2 more spaces right. At which space should you draw the final triangle?
+      answer:  space 7
+      options: space 5 / space 6 / space 4 / space 7
+      hints:   ["A slide (translation) moves a shape without turning or flipping it.", "The shape looks the same — only its position changes.", "Count how many spaces it moved in each direction."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 2849fab126bb6572a69e  seed 601  [mcq]
+      stem:    A shape slides 2 spaces right, then slides 3 more spaces right. How far did it move in all?
+      answer:  5 spaces to the right
+      options: 6 spaces to the right / 3 spaces to the right / 5 spaces to the right / 2 spaces to the right
+      hints:   ["A slide (translation) moves a shape without turning or flipping it.", "The shape looks the same — only its position changes.", "Count how many spaces it moved in each direction."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample a693d7f419757ab25adf  seed 700  [mcq]
+      stem:    A triangle slides 2 spaces down, then slides 2 more spaces down. In which single direction did the multi-step slide move?
+      answer:  downward
+      options: upward / to the left / downward / to the right
+      hints:   ["A slide (translation) moves a shape without turning or flipping it.", "The shape looks the same — only its position changes.", "Count how many spaces it moved in each direction."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 4f072409a103db612f5c  seed 701  [mcq]
+      stem:    💃 Sir Rez has a math challenge about dance shoes. To draw a multi-step slide of 2 units down followed by 3 units down in one direction, what is the total distance to draw the shift?
+      answer:  5 units down
+      options: 5 units down / 3 units down / 1 unit down / 6 units down
+      hints:   ["A slide (translation) moves a shape without turning or flipping it.", "The shape looks the same — only its position changes.", "Count how many spaces it moved in each direction."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 34a030097e2bbd913f72  seed 702  [mcq]
+      stem:    ✝️ Moses has a math challenge about olives. A shape starts at position 3. It slides 1 space right, then 4 spaces right. Describe the total slide in one direction.
+      answer:  5 spaces to the right
+      options: 4 spaces to the right / 5 spaces to the right / 3 spaces to the right / 1 space to the right
+      hints:   ["A slide (translation) moves a shape without turning or flipping it.", "The shape looks the same — only its position changes.", "Count how many spaces it moved in each direction."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample c12fd71ed39ddfc3b564  seed 800  [mcq]
+      stem:    A rectangle at mark 8 slides 3 spaces left, then slides 2 more spaces left in the same direction. At what mark should the rectangle be drawn?
+      answer:  mark 3
+      options: mark 5 / mark 2 / mark 6 / mark 3
+      hints:   ["A slide (translation) moves a shape without turning or flipping it.", "The shape looks the same — only its position changes.", "Count how many spaces it moved in each direction."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 4839abf6ffaf849d2959  seed 900  [mcq]
+      stem:    A circle is at grid mark 1. It is slid 2 marks right, then another 4 marks right in the same direction. At what grid mark will the circle be drawn?
+      answer:  mark 7
+      options: mark 6 / mark 5 / mark 7 / mark 8
+      hints:   ["A slide (translation) moves a shape without turning or flipping it.", "The shape looks the same — only its position changes.", "Count how many spaces it moved in each direction."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 353a33f632f0d2ea46f0  seed 901  [mcq]
+      stem:    A figure undergoes a multi-step slide: 2 spaces up, then 3 more spaces up. What is another mathematical name for a slide?
+      answer:  translation
+      options: reflection / rotation / dilation / translation
+      hints:   ["A slide (translation) moves a shape without turning or flipping it.", "The shape looks the same — only its position changes.", "Count how many spaces it moved in each direction."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 662743459118a964264e  seed 1000  [mcq]
+      stem:    A shape starts at position 3. It slides 1 space right, then 4 spaces right. Describe the total slide in one direction.
+      answer:  5 spaces to the right
+      options: 3 spaces to the right / 4 spaces to the right / 1 space to the right / 5 spaces to the right
+      hints:   ["A slide (translation) moves a shape without turning or flipping it.", "The shape looks the same — only its position changes.", "Count how many spaces it moved in each direction."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "hint_gated"}
+  sample b10d8b89e365144855ea  seed 1001  [mcq]
+      stem:    A shape starts at position 3. It slides 1 space right, then 4 spaces right. Describe the total slide in one direction.
+      answer:  5 spaces to the right
+      options: 1 space to the right / 3 spaces to the right / 4 spaces to the right / 5 spaces to the right
+      hints:   ["A slide (translation) moves a shape without turning or flipping it.", "The shape looks the same — only its position changes.", "Count how many spaces it moved in each direction."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "mastery_drill"}
+  sample 1a82d1487f3bb43170b8  seed 1002  [mcq]
+      stem:    A triangle is drawn at space 2. It undergoes a multi-step slide: 3 spaces right, then 2 more spaces right. At which space should you draw the final triangle?
+      answer:  space 7
+      options: space 6 / space 7 / space 4 / space 5
+      hints:   ["A slide (translation) moves a shape without turning or flipping it.", "The shape looks the same — only its position changes.", "Count how many spaces it moved in each direction."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "scaffolded"}
+
