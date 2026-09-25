@@ -16648,3 +16648,67 @@ reviews. Individual pre-filing counts for these nodes were not measured, so no
 per-node delta is claimed. The post-wave `run_all` stage was not measured. Review
 corpus count by execution: 43 schema-v2 records (25 GPT-5.6 Luna medium, 10 GPT-6
 Luna medium, 8 Haiku), with 18 FAIL / 18 CONCERN / 7 PASS.
+
+## 2026-09-25 — GPT-6 Luna §5 wave 20–22 (`codex-h06-s5-full-campaign-20260925`)
+
+Three separate blind `gpt-6-luna` medium reviewers judged dispatch-time packets and
+returned JSON for `mat_g1_na_q4_2`, `mat_g1_na_q4_3`, and `mat_g1_na_q4_4`.
+Identities are `blind-reviewer-gpt-6-luna-medium-w20-mat_g1_na_q4_2-20260925`,
+`...-w21-mat_g1_na_q4_3-20260925`, and `...-w22-mat_g1_na_q4_4-20260925`;
+dispatch IDs are `gpt6luna-s5-w20-20260925` through `...-w22-20260925`.
+Each exact prompt and raw reply is retained under the node's `.responses/` directory.
+The reviewers reported using `cat` to read their assigned prompt, a command to write
+their JSON, and local Python audits. These are reviewer-provided tool-use reports.
+
+| node | samples / clauses | reasoning audit | overall | §5 module findings after |
+|---|---:|---|---|---:|
+| `mat_g1_na_q4_2` | 19 / 3 | 86/86 distinct, min 71 chars | FAIL | 42 |
+| `mat_g1_na_q4_3` | 23 / 6 | 102/105 distinct, min 133 chars | FAIL | 19 |
+| `mat_g1_na_q4_4` | 22 / 5 | 92/100 distinct, min 105 chars | FAIL | 26 |
+
+All three local audits found exact sample and requirement ID order, complete check
+keys, no quoted span absent from the packet, and no text repeated across more than
+three fields. The repeated q4_3/q4_4 text describes equivalent checks or closely
+related rendered examples; the seed-specific defects below were checked in the
+packets before filing.
+
+**Named defects:**
+
+* `mat_g1_na_q4_2`, seed **42**: a half-counting stem advances from `1/2` to `2/2`,
+  but the hint uses `2 + 0`; the same disconnected numerator-plus-zero pattern
+  appears throughout this packet. The answer is correct, while the explanation
+  does not derive it from the sequence.
+* `mat_g1_na_q4_3`, seed **42**: stem says a bill marked 20, answer `₱20 bill`,
+  but rendered visual labels are `BILLS`, `₱100`. Seed **600** asks for a coin
+  marked 10 and shows `₱5`; seed **800** asks for a coin marked 20 and shows
+  `₱10`. These are actual visual-label contradictions, not layout inference.
+* `mat_g1_na_q4_4`, seed **42**: number-line stem starts at `₱10`, moves forward
+  `₱1`, and asks where the dot lands, while key and hints total four currency
+  pieces to `71`; a single move lands at 11. Seed **501** repeats this: `₱5`
+  forward `₱10` should land at 15, while key and hints say 85. Seed **43**
+  asks for `₱60` with the fewest pieces, while hints present eight pieces
+  (`₱10` and `₱5` coins) and the keyed response collects only the total.
+
+**Executed evidence:**
+
+```text
+$ PYTHONPATH=. .venv/bin/python tests/legacy_review_queue.py --write
+legacy_review_queue: 105 legacy review(s), NOT adjudicable evidence
+  re-reviews owed         : 105
+  wrote validation_reports/phase2_hardening/legacy_review_queue.json
+
+$ PYTHONPATH=. .venv/bin/python -c '...validate_judgment_reviews()...'
+judgment_reviews module: 1727 problems
+mat_g1_na_q4_2 42
+mat_g1_na_q4_3 19
+mat_g1_na_q4_4 26
+
+$ PYTHONPATH=. .venv/bin/python -c '...input_digest()[:16]...'
+208a52406226e6d0
+```
+
+The module count rose 1672 → 1727 (+55) after these three filings. No per-node
+pre-filing count was measured. Executed corpus count: 46 schema-v2 records,
+21 FAIL / 18 CONCERN / 7 PASS; 25 GPT-5.6 Luna medium, 13 GPT-6 Luna medium,
+8 Haiku. The post-wave `run_all` stage has not been measured. No source or
+digest-bound validation input changed.

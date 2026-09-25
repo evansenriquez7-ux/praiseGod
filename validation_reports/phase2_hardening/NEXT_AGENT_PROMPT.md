@@ -32,7 +32,7 @@ owner's instruction of 2026-09-24 and it supersedes ruling 10's `GPT-5.6-Terra` 
    changing the standard changes the answer; changing the reasoning budget plausibly does too.
 
 **The v2 corpus is already mixed-family and that is recorded, not hidden:** 25 `gpt-5.6-luna` medium,
-8 `haiku45`, and 10 `gpt-6-luna` medium, truthfully labelled because this host could not dispatch
+8 `haiku45`, and 13 `gpt-6-luna` medium, truthfully labelled because this host could not dispatch
 `gpt-5.6-luna`. Measured agreement on 18 clauses with the standard fixed — cross-family (Haiku vs
 GPT-5.6-Terra) **11/18 = 61.1%**, within-family (Haiku vs Haiku) **37/42 = 88.1%**. Luna-vs-Haiku
 agreement is **still unmeasured**; if you can cheaply measure it on a node both families have judged,
@@ -74,14 +74,14 @@ The live input digest before this review-only campaign was `208a52406226e6d0` an
 artifacts, not generator or harness source. The campaign intent is complete. After commit `3298d810`, `tests/tree_state.py` reported
 `CERTIFIED`, the same digest, and a clean worktree. A new H-06 campaign is now
 claimed by `codex-h06-s5-full-campaign-20260925`, with an open `campaign` intent.
-The last full `run_all` below predates the nine newly filed reviews.
+The last full `run_all` below predates the twelve newly filed reviews.
 Disk at campaign start: **17 GiB free** of 112 GiB. If a command disagrees with this file,
 believe the command.
 
 ```
 $ PYTHONPATH=. .venv/bin/python tests/legacy_review_queue.py
-legacy_review_queue: 108 legacy review(s), NOT adjudicable evidence
-  re-reviews owed         : 108
+legacy_review_queue: 105 legacy review(s), NOT adjudicable evidence
+  re-reviews owed         : 105
 
 $ PYTHONPATH=. .venv/bin/python tests/hardening_status.py
 PASS hardening_status: 10 H-row(s) valid — 3 closed, 6 open, 1 out_of_scope
@@ -97,7 +97,7 @@ RUN_ALL EXIT CODE: 1
 
 | stage | count | nature |
 |---|---|---|
-| `judgment_reviews_5` | **1554** at the last `run_all` (before waves 11–19) / **1672** at the module now | **108 nodes** still schema v1 |
+| `judgment_reviews_5` | **1554** at the last `run_all` (before waves 11–19) / **1727** at the module now | **105 nodes** still schema v1 |
 | `capability_phase2` | **173** CONTRADICTED across 82 of 151 nodes | content debt; source work costs the re-proof chain |
 | `assertion_coverage_8` | 3 in 1 family (+ `mutation_proof_integrity_8` 9 in 3 families — the SAME three records) | §6F cluster; baseline `capability_phase2` is red |
 
@@ -105,11 +105,11 @@ Mutation corpus **160/163**. Six release shards `failures=0`, worst 1,592s of th
 Benchmark `failures=0`. Frontend 41/41. These are digest-bound artifacts at
 `208a52406226e6d0`, carried forward because no input source changed.
 
-Review corpus: **43 schema-v2 reviews**: 25 `gpt-5.6-luna` medium, 8 `haiku45`,
-10 `gpt-6-luna` medium. Verdicts **18 FAIL / 18 CONCERN / 7 PASS**.
-`legacy_review_queue.json` agrees independently: **108 owed + 43 excluded = 151**.
-Waves 11–19 filed nine fresh reviews. The §5 **module** rose **1553 → 1672**;
-the last six reviews account for 1570 → 1672, or 102 new findings. The post-wave
+Review corpus: **46 schema-v2 reviews**: 25 `gpt-5.6-luna` medium, 8 `haiku45`,
+13 `gpt-6-luna` medium. Verdicts **21 FAIL / 18 CONCERN / 7 PASS**.
+`legacy_review_queue.json` agrees independently: **105 owed + 46 excluded = 151**.
+Waves 11–22 filed twelve fresh reviews. The §5 **module** rose **1553 → 1727**;
+the last three reviews account for 1672 → 1727, or 55 new findings. The post-wave
 `run_all` stage count is **not measured**. Seed-specific defects and reviewer
 identities are queued in `HARDENING_EVIDENCE.md`.
 
@@ -222,7 +222,7 @@ print(len(owed), owed[:10])"
 **`tests.judgment_batches --plan` is a STATIC partition of all 151 registered nodes** — sorted,
 fixed-size, NOT a live owed-list. Its batch 7 is `mat_g3_na_q4_7`, which is already filed and fresh;
 dispatching it would overwrite a genuine verified review. Derive your work list from the command above.
-Next owed nodes in order as of 2026-09-25: `mat_g1_na_q4_2` onward. Derive the actual list by command, never a static batch plan.
+Next owed nodes in order as of 2026-09-25: `mat_g1_na_q4_5` onward. Derive the actual list by command, never a static batch plan.
 
 ### The tooling
 

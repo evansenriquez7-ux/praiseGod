@@ -1,208 +1,33 @@
 {
   "schema_version": 1,
   "kind": "legacy_review_queue",
-  "generated_at": "2026-09-25T04:54:18.189912+00:00",
+  "generated_at": "2026-09-25T05:05:35.646921+00:00",
   "adjudicable": false,
   "why_not_adjudicable": "These are v1 reviews. The current schema (v2) requires per-sample contextual-validity verdicts, exact clause coverage and dispatch-bound provenance, which a v1 reviewer was never asked for and which therefore cannot be recovered from a v1 record without inventing them. Every node listed here still owes a fresh blind re-review. This file exists so that the previous programme's findings remain visible as a QUEUE while none of them counts as evidence.",
-  "required_work": "108 node(s) need a fresh blind review filed at schema_version 2. Rebuild a packet with: python -m backend.app.practice_gen.validation.judgment_packets --node <node_id>",
+  "required_work": "105 node(s) need a fresh blind review filed at schema_version 2. Rebuild a packet with: python -m backend.app.practice_gen.validation.judgment_packets --node <node_id>",
   "source_review_dir": "validation_reports/judgment",
-  "source_corpus_sha256": "8d0ad7c716e92b5aa5103e067117d974aafba57f41f1847f2a8f33bda5a9bb84",
+  "source_corpus_sha256": "2d5545d2d3140cb1767bd6d1d44a2e9a63c3b33ed9cf9732616f4a2aac2747bb",
   "counts": {
-    "legacy_nodes": 108,
-    "already_current_and_excluded": 43,
+    "legacy_nodes": 105,
+    "already_current_and_excluded": 46,
     "by_overall_verdict": {
-      "CONCERN": 64,
-      "FAIL": 34,
+      "CONCERN": 62,
+      "FAIL": 33,
       "PASS": 10
     },
-    "nodes_with_a_non_pass_facet": 98,
+    "nodes_with_a_non_pass_facet": 95,
     "non_pass_by_facet": {
-      "cognitive_capacity": 26,
-      "competency_alignment": 53,
-      "competency_fulfillment": 56,
-      "comprehensive_coverage": 44,
-      "scale_appropriateness": 17,
-      "variant_comprehensiveness": 65
+      "cognitive_capacity": 24,
+      "competency_alignment": 52,
+      "competency_fulfillment": 54,
+      "comprehensive_coverage": 42,
+      "scale_appropriateness": 15,
+      "variant_comprehensiveness": 63
     },
     "records_missing_a_v1_facet": 0,
     "orphan_reviews_for_undeclared_nodes": 0
   },
   "nodes": [
-    {
-      "node_id": "mat_g1_na_q4_2",
-      "source_path": "validation_reports/judgment/mat_g1_na_q4/mat_g1_na_q4_2.json",
-      "source_sha256": "87ecc7607c14f383381a7a4cb40b66fd3ccd389a6e6d28d10c9ef9bbe4d3ead7",
-      "declared_schema_version": null,
-      "reviewed_by": "reviewer-c2-basalt-yarrow-7194",
-      "review_date": "2026-09-11",
-      "blind": true,
-      "sample_seeds": [
-        42,
-        43,
-        44,
-        45,
-        46,
-        500,
-        501,
-        502,
-        601,
-        602
-      ],
-      "overall_verdict": "CONCERN",
-      "node_still_declared": true,
-      "facets": {
-        "competency_fulfillment": {
-          "verdict": "PASS",
-          "rationale": "Items run a sequence of like fractions and ask for the term that continues or completes it, which is what counting halves and counting quarters means, and the keys follow the sequence correctly."
-        },
-        "comprehensive_coverage": {
-          "verdict": "CONCERN",
-          "rationale": "The quarters strand is worked properly, with the blank falling at the second, third and final positions, but every halves item is the same single step: 'Count by halves: 1/2, ___. What fraction comes next?' recurs across several seeds with the identical key. Counting halves is effectively one item repeated."
-        },
-        "cognitive_capacity": {
-          "verdict": "CONCERN",
-          "rationale": "Sequence length is fine for Grade 1, but choices such as 3/2, 5/4 and 4/2 place fractions beyond one whole and non-unit forms in front of pupils whose fraction vocabulary at this point is a half and a quarter of a single whole."
-        },
-        "variant_comprehensiveness": {
-          "verdict": "CONCERN",
-          "rationale": "Next-term and missing-middle forms both appear, but every item is a symbolic string; nothing counts halves or quarters against a shaded model or a partitioned object, even though this quarter's other fraction work is model-based."
-        },
-        "competency_alignment": {
-          "verdict": "PASS",
-          "rationale": "Within the quarters strand the position of the blank shifts in a way that genuinely tests whether the pupil is tracking the count rather than recalling one answer, which serves the competency directly."
-        },
-        "scale_appropriateness": {
-          "verdict": "PASS",
-          "rationale": "Counts stop at the whole - four fourths and two halves - so the sequences do not run past one, which is the correct limit for this stage."
-        }
-      },
-      "facets_missing_from_the_v1_record": [],
-      "non_pass_facets": [
-        "comprehensive_coverage",
-        "cognitive_capacity",
-        "variant_comprehensiveness"
-      ],
-      "adjudicable": false
-    },
-    {
-      "node_id": "mat_g1_na_q4_3",
-      "source_path": "validation_reports/judgment/mat_g1_na_q4/mat_g1_na_q4_3.json",
-      "source_sha256": "0dfb450c14cef708cccd0a49d4ed11ac27869cc70f221a20fb6dc60ec856c145",
-      "declared_schema_version": null,
-      "reviewed_by": "reviewer-c2-basalt-yarrow-7194",
-      "review_date": "2026-09-11",
-      "blind": true,
-      "sample_seeds": [
-        42,
-        43,
-        44,
-        45,
-        46,
-        500,
-        501,
-        502,
-        600,
-        601,
-        605,
-        606,
-        607
-      ],
-      "overall_verdict": "CONCERN",
-      "node_still_declared": true,
-      "facets": {
-        "competency_fulfillment": {
-          "verdict": "CONCERN",
-          "rationale": "Recognition of denominations and their notations is well served, but the competency excludes centavo coins and the option lists reintroduce them through a cent symbol, offering forms like 20 with a cent mark and 100 with a cent mark. That is both outside the stated scope and not the notation Philippine centavos use."
-        },
-        "comprehensive_coverage": {
-          "verdict": "PASS",
-          "rationale": "Coins at one, five, ten and twenty and bills at twenty, fifty and one hundred all appear, and all three notation forms named or implied - peso symbol, words, and the code form asked by 'How is ₱100 written using the currency code PhP?' - are generated."
-        },
-        "cognitive_capacity": {
-          "verdict": "PASS",
-          "rationale": "Each item asks for a single identification or a single translation between two ways of writing an amount, with no arithmetic, which is the right load for Grade 1 money work."
-        },
-        "variant_comprehensiveness": {
-          "verdict": "PASS",
-          "rationale": "Direction of translation is varied properly: some items go from symbol to words, others from words to symbol, and others identify a piece from the number printed on it, covering both a coin and a bill."
-        },
-        "competency_alignment": {
-          "verdict": "PASS",
-          "rationale": "What changes between seeds is the denomination and which notation is being asked for, both of which are the substance of this competency rather than an incidental axis."
-        },
-        "scale_appropriateness": {
-          "verdict": "CONCERN",
-          "rationale": "Stems stay at or below one hundred pesos as required, but distractors introduce ₱1000, ₱500 and ₱200 - real denominations above the stated ceiling, so a recognition task deliberately shows pupils money they are not meant to be learning yet."
-        }
-      },
-      "facets_missing_from_the_v1_record": [],
-      "non_pass_facets": [
-        "competency_fulfillment",
-        "scale_appropriateness"
-      ],
-      "adjudicable": false
-    },
-    {
-      "node_id": "mat_g1_na_q4_4",
-      "source_path": "validation_reports/judgment/mat_g1_na_q4/mat_g1_na_q4_4.json",
-      "source_sha256": "d4a8edbc165f1034570477dba9daa9e74e8efbf7a2729d8cd4264f103b789486",
-      "declared_schema_version": null,
-      "reviewed_by": "reviewer-c2-basalt-yarrow-7194",
-      "review_date": "2026-09-11",
-      "blind": true,
-      "sample_seeds": [
-        42,
-        43,
-        44,
-        45,
-        46,
-        500,
-        501,
-        502,
-        600,
-        601,
-        602,
-        603
-      ],
-      "overall_verdict": "FAIL",
-      "node_still_declared": true,
-      "facets": {
-        "competency_fulfillment": {
-          "verdict": "FAIL",
-          "rationale": "Two of the sampled money number-line items are internally inconsistent. 'The dot is at ₱10 and it moves forward ₱1.' is keyed to the second option in a list reading 70 / 71 / 76 / 66, a set which does not contain eleven at all; another item starting at five pesos and moving forward ten pesos is keyed to eighty-five. The stem asks for one amount and the key answers a different one, with no correct choice available."
-        },
-        "comprehensive_coverage": {
-          "verdict": "CONCERN",
-          "rationale": "The competency covers bills and-slash-or coins, but the sampled totals are either all coins or all bills; no item totals a mixed handful of bills together with coins, which is the case the and-or phrasing exists to capture."
-        },
-        "cognitive_capacity": {
-          "verdict": "CONCERN",
-          "rationale": "The composing tasks defeat themselves: 'Use coins and bills to make exactly ₱60. Use the fewest pieces possible.' is keyed to sixty, the number already printed in the stem, so nothing about choosing pieces or minimising their number is actually required or recorded."
-        },
-        "variant_comprehensiveness": {
-          "verdict": "CONCERN",
-          "rationale": "Once the broken number-line items and the self-answering composing items are set aside, what remains is a small set of straightforward totalling questions, so the apparent breadth of presentation is not doing real work."
-        },
-        "competency_alignment": {
-          "verdict": "CONCERN",
-          "rationale": "Determining the value of a group of pieces is the target skill, but a large share of seeds instead exercise movement along a marked line, an axis that belongs to counting on rather than to valuing a collection of money."
-        },
-        "scale_appropriateness": {
-          "verdict": "CONCERN",
-          "rationale": "Totals in the valid items reach one hundred pesos appropriately, but one option list offers 110 and 120 against a target of exactly one hundred, and the mismatched number-line items present amounts in the seventies and eighties that no part of their stem can produce."
-        }
-      },
-      "facets_missing_from_the_v1_record": [],
-      "non_pass_facets": [
-        "competency_fulfillment",
-        "comprehensive_coverage",
-        "cognitive_capacity",
-        "variant_comprehensiveness",
-        "competency_alignment",
-        "scale_appropriateness"
-      ],
-      "adjudicable": false
-    },
     {
       "node_id": "mat_g1_na_q4_5",
       "source_path": "validation_reports/judgment/mat_g1_na_q4/mat_g1_na_q4_5.json",

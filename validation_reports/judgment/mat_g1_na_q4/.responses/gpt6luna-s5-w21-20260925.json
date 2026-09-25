@@ -1,0 +1,589 @@
+{
+  "reviewer": "blind-reviewer-gpt-6-luna-medium-w21-mat_g1_na_q4_3-20260925",
+  "mat_g1_na_q4_3": {
+    "findings": {
+      "cognitive_capacity": {
+        "verdict": "PASS",
+        "rationale": "The samples ask learners to identify common peso coins and bills or translate familiar amounts among symbols, words, and PhP notation, a direct recognition task."
+      },
+      "competency_alignment": {
+        "verdict": "CONCERN",
+        "rationale": "The packet addresses coin and bill recognition and notation through amounts up to ₱100, but several money pictures contradict the requested denomination and undermine demonstrated alignment."
+      },
+      "competency_fulfillment": {
+        "verdict": "CONCERN",
+        "rationale": "The printed clauses cover recognition, coins without centavos, bills, the ₱100 ceiling, and notation, yet rendered coin and bill labels conflict with some stems.",
+        "decomposition": {
+          "verdict": "PASS",
+          "reasoning": "The six clauses represent the recognition action, included coin and bill categories, centavo exclusion, ₱100 range, and notations; together they retain the entire stated competency."
+        }
+      },
+      "comprehensive_coverage": {
+        "verdict": "CONCERN",
+        "rationale": "There are multiple coin and bill denominations plus symbol, word, and PhP conversions, although contradictory rendered denominations weaken the visual recognition coverage."
+      },
+      "scale_appropriateness": {
+        "verdict": "PASS",
+        "rationale": "Every target amount is a peso denomination no greater than ₱100 and the prompts use direct identification or notation conversion without multi-step arithmetic."
+      },
+      "variant_comprehensiveness": {
+        "verdict": "PASS",
+        "rationale": "The items vary between reading money visuals, identifying a coin or bill, and converting amounts to words, peso symbols, or PhP notation."
+      }
+    },
+    "sample_assessments": [
+      {
+        "sample_id": "29e23ff6fcd5e6118573",
+        "checks": {
+          "ambiguity": {
+            "verdict": "FAIL",
+            "reasoning": "The stem identifies bill numbered 20, while the associated BILLS and ₱100 labels; despite ₱20 bill appearing among ₱100 bill / ₱20 bill / ₱50 bill / ₱10 coin, these competing cues leave the intended identification contradictory."
+          },
+          "contextual_logical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "The question asks for bill numbered 20, but the BILLS and ₱100 labels; that picture contradicts rather than supports the requested money identification, making the prompt context internally inconsistent."
+          },
+          "learner_facing_clarity": {
+            "verdict": "FAIL",
+            "reasoning": "The visual reading choice for bill numbered 20 expects ₱20 bill; Its hint chain advises reading the number or number words, attending to symbol placement, and distinguishing peso notation from centavo decimals. The listed choices ₱100 bill / ₱20 bill / ₱50 bill / ₱10 coin make the expected response format visible to the learner. The image label BILLS and ₱100 labels undermines an otherwise direct choice."
+          },
+          "mathematical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "The hints recommend reading amount and symbol, and peso-versus-centavo notation, which fits the stem; however, answer ₱20 bill and options ₱100 bill / ₱20 bill / ₱50 bill / ₱10 coin conflict with BILLS and ₱100 labels, so the full item cannot be mathematically trusted."
+          }
+        }
+      },
+      {
+        "sample_id": "d1f22f3ef5974684e97a",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "For write ₱100 using PhP, the available responses are ₱100 / PhP 100 / PhP100c / 100 PhP; only PhP 100 matches the requested currency amount and notation, with no visual shown, so no picture adds another interpretation."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Nothing in the wording of write ₱100 using PhP adds a story condition; no visual and the currency choices leave the notation request self-contained."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The multiple-choice notation task for write ₱100 using PhP expects PhP 100; Its hint chain advises reading the number or number words, attending to symbol placement, and distinguishing peso notation from centavo decimals. The listed choices ₱100 / PhP 100 / PhP100c / 100 PhP make the expected response format visible to the learner. No visual label or wrapper overrides the requested notation."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "For write ₱100 using PhP, the hint advice about number words, peso symbols or PhP, and centavo decimals supports answer PhP 100; options are ₱100 / PhP 100 / PhP100c / 100 PhP, and no visual leaves no image to conflict."
+          }
+        }
+      },
+      {
+        "sample_id": "d25c379410ab06c1a0f9",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "For write ₱5 in words, the available responses are five centavos / fifty-five pesos / twenty-five pesos / five pesos; only five pesos matches the requested currency amount and notation, with no visual shown, so no picture adds another interpretation."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Nothing in the wording of write ₱5 in words adds a story condition; no visual and the currency choices leave the notation request self-contained."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The fill-in notation response for write ₱5 in words expects five pesos; Its hint chain advises reading the number or number words, attending to symbol placement, and distinguishing peso notation from centavo decimals. The listed choices five centavos / fifty-five pesos / twenty-five pesos / five pesos make the expected response format visible to the learner. No visual label or wrapper overrides the requested notation."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "For write ₱5 in words, the hint advice about number words, peso symbols or PhP, and centavo decimals supports answer five pesos; options are five centavos / fifty-five pesos / twenty-five pesos / five pesos, and no visual leaves no image to conflict."
+          }
+        }
+      },
+      {
+        "sample_id": "053467ffab49042a9862",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "For write ₱100 in words, the available responses are one hundred centavos / ninety-five pesos / one hundred twenty pesos / one hundred pesos; only one hundred pesos matches the requested currency amount and notation, with no visual shown, so no picture adds another interpretation."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Nothing in the wording of write ₱100 in words adds a story condition; no visual and the currency choices leave the notation request self-contained."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The multiple-choice notation task for write ₱100 in words expects one hundred pesos; Its hint chain advises reading the number or number words, attending to symbol placement, and distinguishing peso notation from centavo decimals. The listed choices one hundred centavos / ninety-five pesos / one hundred twenty pesos / one hundred pesos make the expected response format visible to the learner. No visual label or wrapper overrides the requested notation."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "For write ₱100 in words, the hint advice about number words, peso symbols or PhP, and centavo decimals supports answer one hundred pesos; options are one hundred centavos / ninety-five pesos / one hundred twenty pesos / one hundred pesos, and no visual leaves no image to conflict."
+          }
+        }
+      },
+      {
+        "sample_id": "01e5cfa9c250afa9ff81",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "For coin numbered 20, the available responses are ₱1 coin / ₱10 coin / ₱5 coin / ₱20 coin; only ₱20 coin matches the requested currency amount and notation, with no visual shown, so no picture adds another interpretation."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Nothing in the wording of coin numbered 20 adds a story condition; no visual and the currency choices leave the notation request self-contained."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The fill-in notation response for coin numbered 20 expects ₱20 coin; Its hint chain advises reading the number or number words, attending to symbol placement, and distinguishing peso notation from centavo decimals. The listed choices ₱1 coin / ₱10 coin / ₱5 coin / ₱20 coin make the expected response format visible to the learner. No visual label or wrapper overrides the requested notation."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "For coin numbered 20, the hint advice about number words, peso symbols or PhP, and centavo decimals supports answer ₱20 coin; options are ₱1 coin / ₱10 coin / ₱5 coin / ₱20 coin, and no visual leaves no image to conflict."
+          }
+        }
+      },
+      {
+        "sample_id": "740d449fa4a65488ed54",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "For write ₱10 in words, the available responses are ten centavos / ten pesos / eight pesos / thirty pesos; only ten pesos matches the requested currency amount and notation, with coins and ₱10 labels consistent with the amount."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Nothing in the wording of write ₱10 in words adds a story condition; coins and ₱10 labels and it agrees with the requested denomination."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The visual reading choice for write ₱10 in words expects ten pesos; Its hint chain advises reading the number or number words, attending to symbol placement, and distinguishing peso notation from centavo decimals. The listed choices ten centavos / ten pesos / eight pesos / thirty pesos make the expected response format visible to the learner. No visual label or wrapper overrides the requested notation."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "For write ₱10 in words, the hint advice about number words, peso symbols or PhP, and centavo decimals supports answer ten pesos; options are ten centavos / ten pesos / eight pesos / thirty pesos, and coins and ₱10 labels corroborates the relevant coin or bill denomination."
+          }
+        }
+      },
+      {
+        "sample_id": "74bcc2c51e497b94b408",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "For write five pesos with peso symbol, the available responses are ₱50 / 5¢ / ₱5 / ₱10; only ₱5 matches the requested currency amount and notation, with coins and ₱5 labels consistent with the amount."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Nothing in the wording of write five pesos with peso symbol adds a story condition; coins and ₱5 labels and it agrees with the requested denomination."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The visual reading choice for write five pesos with peso symbol expects ₱5; Its hint chain advises reading the number or number words, attending to symbol placement, and distinguishing peso notation from centavo decimals. The listed choices ₱50 / 5¢ / ₱5 / ₱10 make the expected response format visible to the learner. No visual label or wrapper overrides the requested notation."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "For write five pesos with peso symbol, the hint advice about number words, peso symbols or PhP, and centavo decimals supports answer ₱5; options are ₱50 / 5¢ / ₱5 / ₱10, and coins and ₱5 labels corroborates the relevant coin or bill denomination."
+          }
+        }
+      },
+      {
+        "sample_id": "fff962c794965f80f09a",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "For write twenty pesos with peso symbol, the available responses are ₱15 / ₱20 / ₱200 / 20¢; only ₱20 matches the requested currency amount and notation, with no visual shown, so no picture adds another interpretation."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Nothing in the wording of write twenty pesos with peso symbol adds a story condition; no visual and the currency choices leave the notation request self-contained."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The fill-in notation response for write twenty pesos with peso symbol expects ₱20; Its hint chain advises reading the number or number words, attending to symbol placement, and distinguishing peso notation from centavo decimals. The listed choices ₱15 / ₱20 / ₱200 / 20¢ make the expected response format visible to the learner. No visual label or wrapper overrides the requested notation."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "For write twenty pesos with peso symbol, the hint advice about number words, peso symbols or PhP, and centavo decimals supports answer ₱20; options are ₱15 / ₱20 / ₱200 / 20¢, and no visual leaves no image to conflict."
+          }
+        }
+      },
+      {
+        "sample_id": "26ef2ba626c0673ead65",
+        "checks": {
+          "ambiguity": {
+            "verdict": "FAIL",
+            "reasoning": "The stem identifies coin numbered 10, while the associated COINS and ₱5 labels (conflicts with requested 10); despite ₱10 coin appearing among ₱1 coin / ₱10 coin / ₱5 coin / ₱20 coin, these competing cues leave the intended identification contradictory."
+          },
+          "contextual_logical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "The question asks for coin numbered 10, but the COINS and ₱5 labels (conflicts with requested 10); that picture contradicts rather than supports the requested money identification, making the prompt context internally inconsistent."
+          },
+          "learner_facing_clarity": {
+            "verdict": "FAIL",
+            "reasoning": "The visual reading choice for coin numbered 10 expects ₱10 coin; Its hint chain advises reading the number or number words, attending to symbol placement, and distinguishing peso notation from centavo decimals. The listed choices ₱1 coin / ₱10 coin / ₱5 coin / ₱20 coin make the expected response format visible to the learner. The image label COINS and ₱5 labels (conflicts with requested 10) undermines an otherwise direct choice."
+          },
+          "mathematical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "The hints recommend reading amount and symbol, and peso-versus-centavo notation, which fits the stem; however, answer ₱10 coin and options ₱1 coin / ₱10 coin / ₱5 coin / ₱20 coin conflict with COINS and ₱5 labels (conflicts with requested 10), so the full item cannot be mathematically trusted."
+          }
+        }
+      },
+      {
+        "sample_id": "854a370b45188001a0a7",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "For bill numbered 50, the available responses are ₱20 bill / ₱50 bill / ₱100 bill / ₱10 coin; only ₱50 bill matches the requested currency amount and notation, with no visual shown, so no picture adds another interpretation."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Nothing in the wording of bill numbered 50 adds a story condition; no visual and the currency choices leave the notation request self-contained."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The fill-in notation response for bill numbered 50 expects ₱50 bill; Its hint chain advises reading the number or number words, attending to symbol placement, and distinguishing peso notation from centavo decimals. The listed choices ₱20 bill / ₱50 bill / ₱100 bill / ₱10 coin make the expected response format visible to the learner. No visual label or wrapper overrides the requested notation."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "For bill numbered 50, the hint advice about number words, peso symbols or PhP, and centavo decimals supports answer ₱50 bill; options are ₱20 bill / ₱50 bill / ₱100 bill / ₱10 coin, and no visual leaves no image to conflict."
+          }
+        }
+      },
+      {
+        "sample_id": "144e7731216bfc7a3921",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "For write ten pesos with peso symbol, the available responses are 10¢ / ₱10 / ₱100 / ₱5; only ₱10 matches the requested currency amount and notation, with coins and ₱10 labels consistent with the amount."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Nothing in the wording of write ten pesos with peso symbol adds a story condition; coins and ₱10 labels and it agrees with the requested denomination."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The visual reading choice for write ten pesos with peso symbol expects ₱10; Its hint chain advises reading the number or number words, attending to symbol placement, and distinguishing peso notation from centavo decimals. The listed choices 10¢ / ₱10 / ₱100 / ₱5 make the expected response format visible to the learner. No visual label or wrapper overrides the requested notation."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "For write ten pesos with peso symbol, the hint advice about number words, peso symbols or PhP, and centavo decimals supports answer ₱10; options are 10¢ / ₱10 / ₱100 / ₱5, and coins and ₱10 labels corroborates the relevant coin or bill denomination."
+          }
+        }
+      },
+      {
+        "sample_id": "19284953b4ffa489e3f8",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "For write one hundred pesos with peso symbol, the available responses are ₱95 / ₱100 / ₱1000 / 100¢; only ₱100 matches the requested currency amount and notation, with no visual shown, so no picture adds another interpretation."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Nothing in the wording of write one hundred pesos with peso symbol adds a story condition; no visual and the currency choices leave the notation request self-contained."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The multiple-choice notation task for write one hundred pesos with peso symbol expects ₱100; Its hint chain advises reading the number or number words, attending to symbol placement, and distinguishing peso notation from centavo decimals. The listed choices ₱95 / ₱100 / ₱1000 / 100¢ make the expected response format visible to the learner. No visual label or wrapper overrides the requested notation."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "For write one hundred pesos with peso symbol, the hint advice about number words, peso symbols or PhP, and centavo decimals supports answer ₱100; options are ₱95 / ₱100 / ₱1000 / 100¢, and no visual leaves no image to conflict."
+          }
+        }
+      },
+      {
+        "sample_id": "44ed010346f934ac2739",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "For write fifty pesos with peso symbol, the available responses are ₱500 / 50¢ / ₱45 / ₱50; only ₱50 matches the requested currency amount and notation, with no visual shown, so no picture adds another interpretation."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Nothing in the wording of write fifty pesos with peso symbol adds a story condition; no visual and the currency choices leave the notation request self-contained."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The fill-in notation response for write fifty pesos with peso symbol expects ₱50; Its hint chain advises reading the number or number words, attending to symbol placement, and distinguishing peso notation from centavo decimals. The listed choices ₱500 / 50¢ / ₱45 / ₱50 make the expected response format visible to the learner. No visual label or wrapper overrides the requested notation."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "For write fifty pesos with peso symbol, the hint advice about number words, peso symbols or PhP, and centavo decimals supports answer ₱50; options are ₱500 / 50¢ / ₱45 / ₱50, and no visual leaves no image to conflict."
+          }
+        }
+      },
+      {
+        "sample_id": "afb1eac6b9153a98a156",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "For coin numbered 1, the available responses are ₱20 coin / ₱10 coin / ₱1 coin / ₱5 coin; only ₱1 coin matches the requested currency amount and notation, with no visual shown, so no picture adds another interpretation."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Nothing in the wording of coin numbered 1 adds a story condition; no visual and the currency choices leave the notation request self-contained."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The multiple-choice notation task for coin numbered 1 expects ₱1 coin; Its hint chain advises reading the number or number words, attending to symbol placement, and distinguishing peso notation from centavo decimals. The listed choices ₱20 coin / ₱10 coin / ₱1 coin / ₱5 coin make the expected response format visible to the learner. No visual label or wrapper overrides the requested notation."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "For coin numbered 1, the hint advice about number words, peso symbols or PhP, and centavo decimals supports answer ₱1 coin; options are ₱20 coin / ₱10 coin / ₱1 coin / ₱5 coin, and no visual leaves no image to conflict."
+          }
+        }
+      },
+      {
+        "sample_id": "83534a3ddc9059707910",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "For dance shoes wrapper; write fifty pesos with peso symbol, the available responses are ₱50 / ₱500 / ₱45 / 50¢; only ₱50 matches the requested currency amount and notation, with no visual shown, so no picture adds another interpretation."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The dance-shoes challenge wraps a notation question about fifty pesos; it does not imply shoes cost or represent that amount, and all choices remain currency notations."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The fill-in notation response for dance shoes wrapper; write fifty pesos with peso symbol expects ₱50; Its hint chain advises reading the number or number words, attending to symbol placement, and distinguishing peso notation from centavo decimals. The listed choices ₱50 / ₱500 / ₱45 / 50¢ make the expected response format visible to the learner. No visual label or wrapper overrides the requested notation."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "For dance shoes wrapper; write fifty pesos with peso symbol, the hint advice about number words, peso symbols or PhP, and centavo decimals supports answer ₱50; options are ₱50 / ₱500 / ₱45 / 50¢, and no visual leaves no image to conflict."
+          }
+        }
+      },
+      {
+        "sample_id": "9659a929f0ee3500a47d",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "For basketballs wrapper; write ₱50 using PhP, the available responses are PhP50c / PhP 50 / ₱50 / 50 PhP; only PhP 50 matches the requested currency amount and notation, with no visual shown, so no picture adds another interpretation."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The basketball challenge is only a wrapper around writing fifty pesos as PhP 50; no basketball count enters the conversion and the code-format question stays coherent."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The fill-in notation response for basketballs wrapper; write ₱50 using PhP expects PhP 50; Its hint chain advises reading the number or number words, attending to symbol placement, and distinguishing peso notation from centavo decimals. The listed choices PhP50c / PhP 50 / ₱50 / 50 PhP make the expected response format visible to the learner. No visual label or wrapper overrides the requested notation."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "For basketballs wrapper; write ₱50 using PhP, the hint advice about number words, peso symbols or PhP, and centavo decimals supports answer PhP 50; options are PhP50c / PhP 50 / ₱50 / 50 PhP, and no visual leaves no image to conflict."
+          }
+        }
+      },
+      {
+        "sample_id": "46dfbdacafce7a9522d0",
+        "checks": {
+          "ambiguity": {
+            "verdict": "FAIL",
+            "reasoning": "The stem identifies coin numbered 20, while the associated COINS and ₱10 labels (conflicts with requested 20); despite ₱20 coin appearing among ₱20 coin / ₱1 coin / ₱10 coin / ₱5 coin, these competing cues leave the intended identification contradictory."
+          },
+          "contextual_logical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "The question asks for coin numbered 20, but the COINS and ₱10 labels (conflicts with requested 20); that picture contradicts rather than supports the requested money identification, making the prompt context internally inconsistent."
+          },
+          "learner_facing_clarity": {
+            "verdict": "FAIL",
+            "reasoning": "The visual reading choice for coin numbered 20 expects ₱20 coin; Its hint chain advises reading the number or number words, attending to symbol placement, and distinguishing peso notation from centavo decimals. The listed choices ₱20 coin / ₱1 coin / ₱10 coin / ₱5 coin make the expected response format visible to the learner. The image label COINS and ₱10 labels (conflicts with requested 20) undermines an otherwise direct choice."
+          },
+          "mathematical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "The hints recommend reading amount and symbol, and peso-versus-centavo notation, which fits the stem; however, answer ₱20 coin and options ₱20 coin / ₱1 coin / ₱10 coin / ₱5 coin conflict with COINS and ₱10 labels (conflicts with requested 20), so the full item cannot be mathematically trusted."
+          }
+        }
+      },
+      {
+        "sample_id": "62dba9152475e8e2aa59",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "For write ₱20 using PhP, the available responses are PhP20c / ₱20 / 20 PhP / PhP 20; only PhP 20 matches the requested currency amount and notation, with no visual shown, so no picture adds another interpretation."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Nothing in the wording of write ₱20 using PhP adds a story condition; no visual and the currency choices leave the notation request self-contained."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The fill-in notation response for write ₱20 using PhP expects PhP 20; Its hint chain advises reading the number or number words, attending to symbol placement, and distinguishing peso notation from centavo decimals. The listed choices PhP20c / ₱20 / 20 PhP / PhP 20 make the expected response format visible to the learner. No visual label or wrapper overrides the requested notation."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "For write ₱20 using PhP, the hint advice about number words, peso symbols or PhP, and centavo decimals supports answer PhP 20; options are PhP20c / ₱20 / 20 PhP / PhP 20, and no visual leaves no image to conflict."
+          }
+        }
+      },
+      {
+        "sample_id": "1a9c534cd50c9b061657",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "For write ₱50 using PhP, the available responses are 50 PhP / PhP50c / PhP 50 / ₱50; only PhP 50 matches the requested currency amount and notation, with no visual shown, so no picture adds another interpretation."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Nothing in the wording of write ₱50 using PhP adds a story condition; no visual and the currency choices leave the notation request self-contained."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The multiple-choice notation task for write ₱50 using PhP expects PhP 50; Its hint chain advises reading the number or number words, attending to symbol placement, and distinguishing peso notation from centavo decimals. The listed choices 50 PhP / PhP50c / PhP 50 / ₱50 make the expected response format visible to the learner. No visual label or wrapper overrides the requested notation."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "For write ₱50 using PhP, the hint advice about number words, peso symbols or PhP, and centavo decimals supports answer PhP 50; options are 50 PhP / PhP50c / PhP 50 / ₱50, and no visual leaves no image to conflict."
+          }
+        }
+      },
+      {
+        "sample_id": "303fe698c0469dc4a9e4",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "For write ₱100 using PhP, the available responses are PhP 100 / ₱100 / 100 PhP / PhP100c; only PhP 100 matches the requested currency amount and notation, with bills, ₱100 and republika ng pilipinas labels consistent with the amount."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Nothing in the wording of write ₱100 using PhP adds a story condition; bills, ₱100 and republika ng pilipinas labels and it agrees with the requested denomination."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The visual reading choice for write ₱100 using PhP expects PhP 100; Its hint chain advises reading the number or number words, attending to symbol placement, and distinguishing peso notation from centavo decimals. The listed choices PhP 100 / ₱100 / 100 PhP / PhP100c make the expected response format visible to the learner. No visual label or wrapper overrides the requested notation."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "For write ₱100 using PhP, the hint advice about number words, peso symbols or PhP, and centavo decimals supports answer PhP 100; options are PhP 100 / ₱100 / 100 PhP / PhP100c, and bills, ₱100 and republika ng pilipinas labels corroborates the relevant coin or bill denomination."
+          }
+        }
+      },
+      {
+        "sample_id": "82668fd9a09dc283898e",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "For write twenty pesos with peso symbol, the available responses are ₱200 / 20¢ / ₱15 / ₱20; only ₱20 matches the requested currency amount and notation, with no visual shown, so no picture adds another interpretation."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Nothing in the wording of write twenty pesos with peso symbol adds a story condition; no visual and the currency choices leave the notation request self-contained."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The multiple-choice notation task for write twenty pesos with peso symbol expects ₱20; Its hint chain advises reading the number or number words, attending to symbol placement, and distinguishing peso notation from centavo decimals. The listed choices ₱200 / 20¢ / ₱15 / ₱20 make the expected response format visible to the learner. No visual label or wrapper overrides the requested notation."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "For write twenty pesos with peso symbol, the hint advice about number words, peso symbols or PhP, and centavo decimals supports answer ₱20; options are ₱200 / 20¢ / ₱15 / ₱20, and no visual leaves no image to conflict."
+          }
+        }
+      },
+      {
+        "sample_id": "1d200eb656d718f9353e",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "For write ₱100 in words, the available responses are one hundred pesos / one hundred centavos / ninety-eight pesos / two hundred pesos; only one hundred pesos matches the requested currency amount and notation, with no visual shown, so no picture adds another interpretation."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Nothing in the wording of write ₱100 in words adds a story condition; no visual and the currency choices leave the notation request self-contained."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The fill-in notation response for write ₱100 in words expects one hundred pesos; Its hint chain advises reading the number or number words, attending to symbol placement, and distinguishing peso notation from centavo decimals. The listed choices one hundred pesos / one hundred centavos / ninety-eight pesos / two hundred pesos make the expected response format visible to the learner. No visual label or wrapper overrides the requested notation."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "For write ₱100 in words, the hint advice about number words, peso symbols or PhP, and centavo decimals supports answer one hundred pesos; options are one hundred pesos / one hundred centavos / ninety-eight pesos / two hundred pesos, and no visual leaves no image to conflict."
+          }
+        }
+      },
+      {
+        "sample_id": "baa98167b00e6367653f",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "For write twenty pesos with peso symbol, the available responses are 20¢ / ₱15 / ₱20 / ₱200; only ₱20 matches the requested currency amount and notation, with no visual shown, so no picture adds another interpretation."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Nothing in the wording of write twenty pesos with peso symbol adds a story condition; no visual and the currency choices leave the notation request self-contained."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The fill-in notation response for write twenty pesos with peso symbol expects ₱20; Its hint chain advises reading the number or number words, attending to symbol placement, and distinguishing peso notation from centavo decimals. The listed choices 20¢ / ₱15 / ₱20 / ₱200 make the expected response format visible to the learner. No visual label or wrapper overrides the requested notation."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "For write twenty pesos with peso symbol, the hint advice about number words, peso symbols or PhP, and centavo decimals supports answer ₱20; options are 20¢ / ₱15 / ₱20 / ₱200, and no visual leaves no image to conflict."
+          }
+        }
+      }
+    ],
+    "clause_evidence": [
+      {
+        "requirement_id": "recognize",
+        "clause": "Recognize",
+        "verdict": "CONCERN",
+        "reasoning": "Identification stems ask learners to recognize coin and bill denominations, but some displayed visual labels disagree with the denominations named in the same questions.",
+        "sample_ids": [
+          "29e23ff6fcd5e6118573",
+          "26ef2ba626c0673ead65",
+          "46dfbdacafce7a9522d0"
+        ]
+      },
+      {
+        "requirement_id": "coins",
+        "clause": "coins",
+        "verdict": "CONCERN",
+        "reasoning": "Coin questions include ₱1, ₱10, and ₱20 denominations, though the rendered ₱10 and ₱20 coin examples carry conflicting visual labels of ₱5 and ₱10.",
+        "sample_ids": [
+          "26ef2ba626c0673ead65",
+          "afb1eac6b9153a98a156",
+          "46dfbdacafce7a9522d0"
+        ]
+      },
+      {
+        "requirement_id": "excluding_centavo_coins",
+        "clause": "excluding centavo coins",
+        "verdict": "PASS",
+        "reasoning": "The coin-identification targets are peso coins such as ₱1, ₱10, and ₱20; centavo formats appear only as distractors in notation questions, not target coins.",
+        "sample_ids": [
+          "01e5cfa9c250afa9ff81",
+          "26ef2ba626c0673ead65",
+          "afb1eac6b9153a98a156"
+        ]
+      },
+      {
+        "requirement_id": "bills",
+        "clause": "bills",
+        "verdict": "CONCERN",
+        "reasoning": "Bill recognition includes denominations ₱20, ₱50, and ₱100, but the ₱20 bill visual prints a ₱100 label, making that example unreliable.",
+        "sample_ids": [
+          "29e23ff6fcd5e6118573",
+          "854a370b45188001a0a7",
+          "303fe698c0469dc4a9e4"
+        ]
+      },
+      {
+        "requirement_id": "up_to_100",
+        "clause": "up to ₱100",
+        "verdict": "PASS",
+        "reasoning": "The listed target amounts run from peso coins through ₱100 bills and notation, with no keyed target exceeding the stated upper bound.",
+        "sample_ids": [
+          "d1f22f3ef5974684e97a",
+          "053467ffab49042a9862",
+          "303fe698c0469dc4a9e4"
+        ]
+      },
+      {
+        "requirement_id": "notations",
+        "clause": "notations",
+        "verdict": "PASS",
+        "reasoning": "Samples ask learners to express peso values with ₱, PhP, and written number words; the expected forms appear among the supplied choices or answer keys.",
+        "sample_ids": [
+          "d1f22f3ef5974684e97a",
+          "d25c379410ab06c1a0f9",
+          "62dba9152475e8e2aa59"
+        ]
+      }
+    ],
+    "overall": "FAIL"
+  }
+}

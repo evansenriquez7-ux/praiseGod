@@ -1,7 +1,43 @@
 {
+  "schema_version": 2,
   "node_id": "mat_g1_na_q4_4",
-  "reviewed_by": "reviewer-c2-basalt-yarrow-7194",
-  "review_date": "2026-09-11",
+  "competency_snapshot": {
+    "text": "Determine the value of a number of bills and/or a number of coins (excluding centavo coins) up to ₱100.",
+    "grade": 1,
+    "quarter": 4,
+    "subdomain": null
+  },
+  "requirements_snapshot": [
+    {
+      "kind": "task",
+      "id": "determine_value",
+      "clause": "Determine the value"
+    },
+    {
+      "kind": "object",
+      "id": "number_of_bills",
+      "clause": "number of bills"
+    },
+    {
+      "kind": "object",
+      "id": "number_of_coins",
+      "clause": "number of coins"
+    },
+    {
+      "kind": "property",
+      "id": "excluding_centavo_coins",
+      "clause": "excluding centavo coins"
+    },
+    {
+      "kind": "range",
+      "id": "up_to_100",
+      "clause": "up to ₱100"
+    }
+  ],
+  "packet_digest": "bd02bb4cd35edac7e5b03c7c80df9cd2532a9632919717b53c524f76d25528e2",
+  "sampling_version": "phase2-stratified-v2-rendered-visual",
+  "reviewed_by": "blind-reviewer-gpt-6-luna-medium-w22-mat_g1_na_q4_4-20260925",
+  "review_date": "2026-09-25",
   "blind": true,
   "sample_seeds": [
     42,
@@ -15,14 +51,63 @@
     600,
     601,
     602,
-    603
+    603,
+    700,
+    701,
+    702,
+    800,
+    801,
+    900,
+    901,
+    1000,
+    1001,
+    1002
+  ],
+  "sample_ids": [
+    "aae2bee699253491cd16",
+    "8eb568d8940ced0a4810",
+    "e1ce9dd78e4d44839196",
+    "50789ca296c62aa837a2",
+    "cac63138a0d3a6ede2aa",
+    "5f5f566d7cfc1cd7223c",
+    "649d4f59962c374ea942",
+    "c005f10900cf39ed462b",
+    "688fe14c683843bc5a5e",
+    "785860d330875a38fcfc",
+    "b1805828055816b1ed5a",
+    "8e5f2bfa3cfa563f960c",
+    "dae10b3ca3d1e9001a0a",
+    "8296808b209cbf622ea1",
+    "53464c29c9d42bc50dcd",
+    "065319301c73cbd2c862",
+    "18122ec44f412a306890",
+    "e5735db45f840810667a",
+    "578647b036a048dc077e",
+    "4b7ea6da5a987ccd785a",
+    "42818a359fd92cc2eebc",
+    "0006554c992c4df20d7f"
   ],
   "samples_reviewed": [
     {
+      "node_id": "mat_g1_na_q4_4",
       "seed": 42,
       "formatter": "read_mcq",
       "question_text": "The dot is at ₱10 and it moves forward ₱1. Which amount will the dot land on?",
       "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -44,19 +129,195 @@
           "value": 66,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 71,
+      "hints": [
+        "You have these amounts: ['peso10', 'peso1', 'peso10', 'peso50'].",
+        "Step 1: Add peso10 → running total = peso10.",
+        "Step 2: Add peso1 → running total = peso11.",
+        "Step 3: Add peso10 → running total = peso21.",
+        "Step 4: Add peso50 → running total = peso71.",
+        "The total is peso71."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "start": 0,
+        "end": 80,
+        "major_interval": 10,
+        "minor_interval": 5,
+        "interval": 5,
+        "dot_value": 10,
+        "move_by": 1,
+        "content_type": "whole_number",
+        "value": 71,
+        "correct_position": 71,
+        "divisions": 16,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 71.0,
+        "target": 71.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "faa76e0c0c3dd87e3267d66cc78f6a5a82b7f28ceb6a4e96c1efa8427216ceaf",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 31,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "10",
+            "20",
+            "30",
+            "40",
+            "50",
+            "60",
+            "70",
+            "80"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "aae2bee699253491cd16",
+      "replay_digest": "711d17ec0e3c75d606dcd6ea8b8fb265e1e48fe56b75c6b428d9e1a5d3814209"
     },
     {
+      "node_id": "mat_g1_na_q4_4",
       "seed": 43,
       "formatter": "set_fill_in_blank",
       "question_text": "Use coins and bills to make exactly ₱60. Use the fewest pieces possible.",
-      "correct_answer": 60
+      "correct_answer": 60,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "PesoMoney",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "resolved_answer": 60,
+      "hints": [
+        "You have these amounts: ['peso10', 'peso5', 'peso10', 'peso10', 'peso5', 'peso5', 'peso10', 'peso5'].",
+        "Step 1: Add peso10 → running total = peso10.",
+        "Step 2: Add peso5 → running total = peso15.",
+        "Step 3: Add peso10 → running total = peso25.",
+        "Step 4: Add peso10 → running total = peso35.",
+        "Step 5: Add peso5 → running total = peso40.",
+        "Step 6: Add peso5 → running total = peso45.",
+        "Step 7: Add peso10 → running total = peso55.",
+        "Step 8: Add peso5 → running total = peso60.",
+        "The total is peso60."
+      ],
+      "visual_type": "PesoMoney",
+      "visual_payload": {
+        "coins": [
+          {
+            "denomination": 5,
+            "count": 4
+          },
+          {
+            "denomination": 10,
+            "count": 4
+          }
+        ],
+        "bills": [],
+        "total": 60,
+        "target_amount": 60,
+        "exclude_centavos": true,
+        "coin_faces": [
+          1,
+          5,
+          10
+        ],
+        "bill_faces": [
+          20,
+          50,
+          100
+        ],
+        "require_fewest": true,
+        "is_interactive": true
+      },
+      "visual_render": {
+        "visual_type": "PesoMoney",
+        "renderer_input_digest": "c3952021507ad7ed60f490bdf5964d66aec3b5b9a71dcb0192ce979259b7b2e1",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "PesoMoney",
+          "element_count": 19,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 9,
+          "input_count": 0,
+          "text_labels": [
+            "Make exactly:",
+            "₱60",
+            "BILLS",
+            "₱1000",
+            "₱500",
+            "₱200",
+            "₱100",
+            "₱50",
+            "₱20",
+            "COINS",
+            "₱10",
+            "₱5",
+            "₱1"
+          ],
+          "distinct_colours": [
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--text-muted)",
+            "#10b981,",
+            "#059669)",
+            "#fff",
+            "#f59e0b,",
+            "#d97706)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "8eb568d8940ced0a4810",
+      "replay_digest": "d3bf36f857e1ed1b3a8d98884759e572e43c31f7032248344216cbe288f8fa16"
     },
     {
+      "node_id": "mat_g1_na_q4_4",
       "seed": 44,
       "formatter": "mcq",
       "question_text": "How much is 1 ₱50 bill and 1 ₱20 bill altogether?",
       "correct_answer": 70,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -78,13 +339,37 @@
           "value": 700,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 70,
+      "hints": [
+        "You have these amounts: ['peso50', 'peso20'].",
+        "Step 1: Add peso50 → running total = peso50.",
+        "Step 2: Add peso20 → running total = peso70.",
+        "The total is peso70."
+      ],
+      "sample_id": "e1ce9dd78e4d44839196",
+      "replay_digest": "c8ec03a706929ac8217274a4b1331f02f74d3e8878b6b6fe50726fc162ef957e"
     },
     {
+      "node_id": "mat_g1_na_q4_4",
       "seed": 45,
       "formatter": "read_mcq",
       "question_text": "The dot is at ₱20 and it moves forward ₱20. Which amount will the dot land on?",
       "correct_answer": "C",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -106,13 +391,86 @@
           "value": 35,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 40,
+      "hints": [
+        "You have these amounts: ['peso20', 'peso20'].",
+        "Step 1: Add peso20 → running total = peso20.",
+        "Step 2: Add peso20 → running total = peso40.",
+        "The total is peso40."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "start": 0,
+        "end": 60,
+        "major_interval": 10,
+        "minor_interval": 5,
+        "interval": 5,
+        "dot_value": 20,
+        "move_by": 20,
+        "content_type": "whole_number",
+        "value": 40,
+        "correct_position": 40,
+        "divisions": 12,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 40.0,
+        "target": 40.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "5170d3aa2bd2b9c7b87b9e8b2dbc47344da33673815c1923204881da4a5810cc",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 25,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "10",
+            "20",
+            "30",
+            "40",
+            "50",
+            "60"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "50789ca296c62aa837a2",
+      "replay_digest": "b2bfc8165b673936ed255037634def6c92a7c92b7428dd99a4c7702d55882fe3"
     },
     {
+      "node_id": "mat_g1_na_q4_4",
       "seed": 46,
       "formatter": "cloze",
       "question_text": "What is the total value of 2 ₱10 coins?",
       "correct_answer": 20,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -138,13 +496,40 @@
           "text": "20",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 20,
+      "hints": [
+        "You have these amounts: ['peso10', 'peso10'].",
+        "Step 1: Add peso10 → running total = peso10.",
+        "Step 2: Add peso10 → running total = peso20.",
+        "The total is peso20."
+      ],
+      "sample_id": "cac63138a0d3a6ede2aa",
+      "replay_digest": "7288c142437b6f530dcadb32ea6c71630ec55d3a6e48fc0d0f7120ab07d67a12"
     },
     {
+      "node_id": "mat_g1_na_q4_4",
       "seed": 500,
       "formatter": "read_mcq",
       "question_text": "Use coins and bills to make exactly ₱100. Use the fewest pieces possible.",
       "correct_answer": "C",
+      "requested": {
+        "difficulty_profile": {
+          "max_total": 1.0,
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "PesoMoney",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -166,13 +551,91 @@
           "value": 95,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 100,
+      "hints": [
+        "You have these amounts: ['peso50', 'peso50'].",
+        "Step 1: Add peso50 → running total = peso50.",
+        "Step 2: Add peso50 → running total = peso100.",
+        "The total is peso100."
+      ],
+      "visual_type": "PesoMoney",
+      "visual_payload": {
+        "coins": [],
+        "bills": [
+          {
+            "denomination": 50,
+            "count": 2
+          }
+        ],
+        "total": 100,
+        "target_amount": 100,
+        "exclude_centavos": true,
+        "coin_faces": [
+          1,
+          5,
+          10
+        ],
+        "bill_faces": [
+          20,
+          50,
+          100
+        ],
+        "require_fewest": true,
+        "is_interactive": false
+      },
+      "visual_render": {
+        "visual_type": "PesoMoney",
+        "renderer_input_digest": "37f0544febb9a54936b1c03469337ea69b251416c00dfeebe59f4a7719cbeb4a",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "PesoMoney",
+          "element_count": 17,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "BILLS",
+            "₱50",
+            "REPUBLIKA NG PILIPINAS"
+          ],
+          "distinct_colours": [
+            "hsl(var(--text-muted)",
+            "#fda4af,",
+            "#dc2626)",
+            "#fff"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "5f5f566d7cfc1cd7223c",
+      "replay_digest": "60d068e855c867256cd6b8c0b6d80d33637fb328e9b9e5c3fbf97b39bc3137eb"
     },
     {
+      "node_id": "mat_g1_na_q4_4",
       "seed": 501,
       "formatter": "read_mcq",
       "question_text": "The dot is at ₱5 and it moves forward ₱10. Which amount will the dot land on?",
       "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": {
+          "max_total": 1.0,
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -194,13 +657,94 @@
           "value": 80,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 85,
+      "hints": [
+        "You have these amounts: ['peso5', 'peso10', 'peso50', 'peso20'].",
+        "Step 1: Add peso5 → running total = peso5.",
+        "Step 2: Add peso10 → running total = peso15.",
+        "Step 3: Add peso50 → running total = peso65.",
+        "Step 4: Add peso20 → running total = peso85.",
+        "The total is peso85."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "start": 0,
+        "end": 90,
+        "major_interval": 10,
+        "minor_interval": 5,
+        "interval": 5,
+        "dot_value": 5,
+        "move_by": 10,
+        "content_type": "whole_number",
+        "value": 85,
+        "correct_position": 85,
+        "divisions": 18,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 85.0,
+        "target": 85.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "af4f3ef9f06b5cc16523d458f5d3a42ea1bcf04d7fbfef1590021ed292850780",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 34,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "10",
+            "20",
+            "30",
+            "40",
+            "50",
+            "60",
+            "70",
+            "80",
+            "90"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "649d4f59962c374ea942",
+      "replay_digest": "261e14919fe65d1376625a03787229cb4fb3e9a5da38ea1bc144f9014f099e0b"
     },
     {
+      "node_id": "mat_g1_na_q4_4",
       "seed": 502,
       "formatter": "mcq",
       "question_text": "Find the total amount of 2 ₱50 bills:",
       "correct_answer": 100,
+      "requested": {
+        "difficulty_profile": {
+          "max_total": 1.0,
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -222,19 +766,141 @@
           "value": 1000,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 100,
+      "hints": [
+        "You have these amounts: ['peso50', 'peso50'].",
+        "Step 1: Add peso50 → running total = peso50.",
+        "Step 2: Add peso50 → running total = peso100.",
+        "The total is peso100."
+      ],
+      "sample_id": "c005f10900cf39ed462b",
+      "replay_digest": "636f0027e758679f5ecea6e68d218ca1781fe9c44891dc1ccad3dcf8c1ecd4fc"
     },
     {
+      "node_id": "mat_g1_na_q4_4",
       "seed": 600,
       "formatter": "set_fill_in_blank",
       "question_text": "Use coins and bills to make exactly ₱90. Use the fewest pieces possible.",
-      "correct_answer": 90
+      "correct_answer": 90,
+      "requested": {
+        "difficulty_profile": {
+          "context": "pure"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "PesoMoney",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "resolved_answer": 90,
+      "hints": [
+        "You have these amounts: ['peso20', 'peso20', 'peso50'].",
+        "Step 1: Add peso20 → running total = peso20.",
+        "Step 2: Add peso20 → running total = peso40.",
+        "Step 3: Add peso50 → running total = peso90.",
+        "The total is peso90."
+      ],
+      "visual_type": "PesoMoney",
+      "visual_payload": {
+        "coins": [],
+        "bills": [
+          {
+            "denomination": 20,
+            "count": 2
+          },
+          {
+            "denomination": 50,
+            "count": 1
+          }
+        ],
+        "total": 90,
+        "target_amount": 90,
+        "exclude_centavos": true,
+        "coin_faces": [
+          1,
+          5,
+          10
+        ],
+        "bill_faces": [
+          20,
+          50,
+          100
+        ],
+        "require_fewest": true,
+        "is_interactive": true
+      },
+      "visual_render": {
+        "visual_type": "PesoMoney",
+        "renderer_input_digest": "a67434e19d96b7b11e85481e4a6f1eb7b8189b284a87a15741b12ae08d478e74",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "PesoMoney",
+          "element_count": 19,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 9,
+          "input_count": 0,
+          "text_labels": [
+            "Make exactly:",
+            "₱90",
+            "BILLS",
+            "₱1000",
+            "₱500",
+            "₱200",
+            "₱100",
+            "₱50",
+            "₱20",
+            "COINS",
+            "₱10",
+            "₱5",
+            "₱1"
+          ],
+          "distinct_colours": [
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--text-muted)",
+            "#10b981,",
+            "#059669)",
+            "#fff",
+            "#f59e0b,",
+            "#d97706)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "688fe14c683843bc5a5e",
+      "replay_digest": "e243bd0d039846a7e025c52c94ee4abf06f767a67baa9d91d13edefc706fad9e"
     },
     {
+      "node_id": "mat_g1_na_q4_4",
       "seed": 601,
       "formatter": "cloze",
       "question_text": "What is the total value of 1 ₱10 coin and 2 ₱5 coins?",
       "correct_answer": 20,
+      "requested": {
+        "difficulty_profile": {
+          "task_type": "count_total"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -260,13 +926,40 @@
           "text": "20",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 20,
+      "hints": [
+        "You have these amounts: ['peso5', 'peso5', 'peso10'].",
+        "Step 1: Add peso5 → running total = peso5.",
+        "Step 2: Add peso5 → running total = peso10.",
+        "Step 3: Add peso10 → running total = peso20.",
+        "The total is peso20."
+      ],
+      "sample_id": "785860d330875a38fcfc",
+      "replay_digest": "d56bf62d89e55c506269ae0e093fe9b452fbd0d079a9fa7af37f43572a69e605"
     },
     {
+      "node_id": "mat_g1_na_q4_4",
       "seed": 602,
       "formatter": "read_mcq",
       "question_text": "The dot is at ₱20 and it moves forward ₱50. Which amount will the dot land on?",
       "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": {
+          "task_type": "give_money"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -288,39 +981,1627 @@
           "value": 69,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 70,
+      "hints": [
+        "You have these amounts: ['peso20', 'peso50'].",
+        "Step 1: Add peso20 → running total = peso20.",
+        "Step 2: Add peso50 → running total = peso70.",
+        "The total is peso70."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "start": 10,
+        "end": 80,
+        "major_interval": 10,
+        "minor_interval": 5,
+        "interval": 5,
+        "dot_value": 20,
+        "move_by": 50,
+        "content_type": "whole_number",
+        "value": 70,
+        "correct_position": 70,
+        "divisions": 14,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 70.0,
+        "target": 70.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "59989f83a1bb0a09c10dd97cd79ae83f520b6a0d7a12dc0dd7d578bf8004c549",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 28,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "10",
+            "20",
+            "30",
+            "40",
+            "50",
+            "60",
+            "70",
+            "80"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "b1805828055816b1ed5a",
+      "replay_digest": "d788238b60310d729ef2d0b5c4025e6d457cfcbad76023dfb5529725823b96f9"
     },
     {
+      "node_id": "mat_g1_na_q4_4",
       "seed": 603,
       "formatter": "set_fill_in_blank",
       "question_text": "Use coins and bills to make exactly ₱30. Use the fewest pieces possible.",
-      "correct_answer": 30
+      "correct_answer": 30,
+      "requested": {
+        "difficulty_profile": {
+          "task_type": "make_change"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "PesoMoney",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "resolved_answer": 30,
+      "hints": [
+        "You have these amounts: ['peso10', 'peso10', 'peso10'].",
+        "Step 1: Add peso10 → running total = peso10.",
+        "Step 2: Add peso10 → running total = peso20.",
+        "Step 3: Add peso10 → running total = peso30.",
+        "The total is peso30."
+      ],
+      "visual_type": "PesoMoney",
+      "visual_payload": {
+        "coins": [
+          {
+            "denomination": 10,
+            "count": 3
+          }
+        ],
+        "bills": [],
+        "total": 30,
+        "target_amount": 30,
+        "exclude_centavos": true,
+        "coin_faces": [
+          1,
+          5,
+          10
+        ],
+        "bill_faces": [
+          20,
+          50,
+          100
+        ],
+        "require_fewest": true,
+        "is_interactive": true
+      },
+      "visual_render": {
+        "visual_type": "PesoMoney",
+        "renderer_input_digest": "8367def2beb52b89d7b6d4ad8c21ed84d1450bb1436a937a891b09aa94ba24d4",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "PesoMoney",
+          "element_count": 19,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 9,
+          "input_count": 0,
+          "text_labels": [
+            "Make exactly:",
+            "₱30",
+            "BILLS",
+            "₱1000",
+            "₱500",
+            "₱200",
+            "₱100",
+            "₱50",
+            "₱20",
+            "COINS",
+            "₱10",
+            "₱5",
+            "₱1"
+          ],
+          "distinct_colours": [
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--text-muted)",
+            "#10b981,",
+            "#059669)",
+            "#fff",
+            "#f59e0b,",
+            "#d97706)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "8e5f2bfa3cfa563f960c",
+      "replay_digest": "c0d065d3ad77955e73186e742f23aeb32c7bc95a35b3a45a11183d33047c671e"
+    },
+    {
+      "node_id": "mat_g1_na_q4_4",
+      "seed": 700,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Use coins and bills to make exactly ₱30. Use the fewest pieces possible.",
+      "correct_answer": 30,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "PesoMoney",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "resolved_answer": 30,
+      "hints": [
+        "You have these amounts: ['peso1', 'peso1', 'peso1', 'peso5', 'peso1', 'peso10', 'peso10', 'peso1'].",
+        "Step 1: Add peso1 → running total = peso1.",
+        "Step 2: Add peso1 → running total = peso2.",
+        "Step 3: Add peso1 → running total = peso3.",
+        "Step 4: Add peso5 → running total = peso8.",
+        "Step 5: Add peso1 → running total = peso9.",
+        "Step 6: Add peso10 → running total = peso19.",
+        "Step 7: Add peso10 → running total = peso29.",
+        "Step 8: Add peso1 → running total = peso30.",
+        "The total is peso30."
+      ],
+      "visual_type": "PesoMoney",
+      "visual_payload": {
+        "coins": [
+          {
+            "denomination": 1,
+            "count": 5
+          },
+          {
+            "denomination": 5,
+            "count": 1
+          },
+          {
+            "denomination": 10,
+            "count": 2
+          }
+        ],
+        "bills": [],
+        "total": 30,
+        "target_amount": 30,
+        "exclude_centavos": true,
+        "coin_faces": [
+          1,
+          5,
+          10
+        ],
+        "bill_faces": [
+          20,
+          50,
+          100
+        ],
+        "require_fewest": true,
+        "is_interactive": true
+      },
+      "visual_render": {
+        "visual_type": "PesoMoney",
+        "renderer_input_digest": "cc4a3193c964cff7864796e37393bc63cb74cfc81519175754a9c3cdf940123d",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "PesoMoney",
+          "element_count": 19,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 9,
+          "input_count": 0,
+          "text_labels": [
+            "Make exactly:",
+            "₱30",
+            "BILLS",
+            "₱1000",
+            "₱500",
+            "₱200",
+            "₱100",
+            "₱50",
+            "₱20",
+            "COINS",
+            "₱10",
+            "₱5",
+            "₱1"
+          ],
+          "distinct_colours": [
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--text-muted)",
+            "#10b981,",
+            "#059669)",
+            "#fff",
+            "#f59e0b,",
+            "#d97706)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "dae10b3ca3d1e9001a0a",
+      "replay_digest": "ab2f6e2e8bf292b716a6dfc5f0c9bb5d22d21b88e119da6067ab72a102148660"
+    },
+    {
+      "node_id": "mat_g1_na_q4_4",
+      "seed": 701,
+      "formatter": "cloze",
+      "question_text": "💃 Kuya Ton has a math challenge about trophies. Determine the total value of 1 ₱50 bill and 1 ₱1 coin:",
+      "correct_answer": 51,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "dance",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 51,
+          "text": "51",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 41,
+          "text": "41",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 52,
+          "text": "52",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 510,
+          "text": "510",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 51,
+      "hints": [
+        "You have these amounts: ['peso50', 'peso1'].",
+        "Step 1: Add peso50 → running total = peso50.",
+        "Step 2: Add peso1 → running total = peso51.",
+        "The total is peso51."
+      ],
+      "sample_id": "8296808b209cbf622ea1",
+      "replay_digest": "ee5681d960489748117dc946423fc07f6bf4e978624a34594b81e9711f77b8f8"
+    },
+    {
+      "node_id": "mat_g1_na_q4_4",
+      "seed": 702,
+      "formatter": "mcq",
+      "question_text": "🏀 Isko has a math challenge about basketballs. How much is 5 ₱10 coins, 1 ₱5 coin, and 4 ₱1 coins altogether?",
+      "correct_answer": 59,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "social_issues",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 49,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 590,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 59,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 60,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 59,
+      "hints": [
+        "You have these amounts: ['peso10', 'peso1', 'peso10', 'peso1', 'peso1', 'peso10', 'peso10', 'peso10', 'peso5', 'peso1'].",
+        "Step 1: Add peso10 → running total = peso10.",
+        "Step 2: Add peso1 → running total = peso11.",
+        "Step 3: Add peso10 → running total = peso21.",
+        "Step 4: Add peso1 → running total = peso22.",
+        "Step 5: Add peso1 → running total = peso23.",
+        "Step 6: Add peso10 → running total = peso33.",
+        "Step 7: Add peso10 → running total = peso43.",
+        "Step 8: Add peso10 → running total = peso53.",
+        "Step 9: Add peso5 → running total = peso58.",
+        "Step 10: Add peso1 → running total = peso59.",
+        "The total is peso59."
+      ],
+      "sample_id": "53464c29c9d42bc50dcd",
+      "replay_digest": "864640f00421bd17f9877ada16a4b189ee586728eb002f341b28712f55ed965e"
+    },
+    {
+      "node_id": "mat_g1_na_q4_4",
+      "seed": 800,
+      "formatter": "read_mcq",
+      "question_text": "Use coins and bills to make exactly ₱6. Use the fewest pieces possible.",
+      "correct_answer": "C",
+      "requested": {
+        "difficulty_profile": {
+          "max_total": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "PesoMoney",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 5,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 7,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 6,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 1,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 6,
+      "hints": [
+        "You have these amounts: ['peso1', 'peso5'].",
+        "Step 1: Add peso1 → running total = peso1.",
+        "Step 2: Add peso5 → running total = peso6.",
+        "The total is peso6."
+      ],
+      "visual_type": "PesoMoney",
+      "visual_payload": {
+        "coins": [
+          {
+            "denomination": 1,
+            "count": 1
+          },
+          {
+            "denomination": 5,
+            "count": 1
+          }
+        ],
+        "bills": [],
+        "total": 6,
+        "target_amount": 6,
+        "exclude_centavos": true,
+        "coin_faces": [
+          1,
+          5,
+          10
+        ],
+        "bill_faces": [
+          20,
+          50,
+          100
+        ],
+        "require_fewest": true,
+        "is_interactive": false
+      },
+      "visual_render": {
+        "visual_type": "PesoMoney",
+        "renderer_input_digest": "099b60ab501421f591a1f0d3ac3b60c0ef87b1d9e74c941f5a922a9283b016c9",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "PesoMoney",
+          "element_count": 7,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "COINS",
+            "₱1",
+            "₱5"
+          ],
+          "distinct_colours": [
+            "hsl(var(--text-muted)",
+            "#cbd5e1,",
+            "#94a3b8)",
+            "#1e293b",
+            "#64748b",
+            "#e2e8f0,",
+            "#cbd5e1)",
+            "#94a3b8"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "065319301c73cbd2c862",
+      "replay_digest": "d88816e9bb0c9f4d336ae0b6115fbc93c319d7f17f1f2044d269a3b1b6bb927a"
+    },
+    {
+      "node_id": "mat_g1_na_q4_4",
+      "seed": 801,
+      "formatter": "mcq",
+      "question_text": "How much is 10 ₱10 coins altogether?",
+      "correct_answer": 100,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 101,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 100,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 1000,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 90,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 100,
+      "hints": [
+        "You have these amounts: ['peso10', 'peso10', 'peso10', 'peso10', 'peso10', 'peso10', 'peso10', 'peso10', 'peso10', 'peso10'].",
+        "Step 1: Add peso10 → running total = peso10.",
+        "Step 2: Add peso10 → running total = peso20.",
+        "Step 3: Add peso10 → running total = peso30.",
+        "Step 4: Add peso10 → running total = peso40.",
+        "Step 5: Add peso10 → running total = peso50.",
+        "Step 6: Add peso10 → running total = peso60.",
+        "Step 7: Add peso10 → running total = peso70.",
+        "Step 8: Add peso10 → running total = peso80.",
+        "Step 9: Add peso10 → running total = peso90.",
+        "Step 10: Add peso10 → running total = peso100.",
+        "The total is peso100."
+      ],
+      "sample_id": "18122ec44f412a306890",
+      "replay_digest": "59c300ef23c531673e91a9efd85f63a607ed0f3c467c070e8e8e86ce45536261"
+    },
+    {
+      "node_id": "mat_g1_na_q4_4",
+      "seed": 900,
+      "formatter": "read_mcq",
+      "question_text": "The dot is at ₱1 and it moves forward ₱1. Which amount will the dot land on?",
+      "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": {
+          "max_total": 0.0,
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 2,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 1,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 4,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 2,
+      "hints": [
+        "You have these amounts: ['peso1', 'peso1'].",
+        "Step 1: Add peso1 → running total = peso1.",
+        "Step 2: Add peso1 → running total = peso2.",
+        "The total is peso2."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "start": 0,
+        "end": 20,
+        "major_interval": 5,
+        "minor_interval": 1,
+        "interval": 1,
+        "dot_value": 1,
+        "move_by": 1,
+        "content_type": "whole_number",
+        "value": 2,
+        "correct_position": 2,
+        "divisions": 20,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 2.0,
+        "target": 2.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "17460464d42d1f314b78b32e2ad698a03f10b814f66f71c847cf917742957e35",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 31,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "5",
+            "10",
+            "15",
+            "20"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "e5735db45f840810667a",
+      "replay_digest": "d0307055aea9fc5459083fabff8905470589b1d6c1b76befcc8ddbabcc2fda4e"
+    },
+    {
+      "node_id": "mat_g1_na_q4_4",
+      "seed": 901,
+      "formatter": "read_mcq",
+      "question_text": "The dot is at ₱20 and it moves forward ₱20. Which amount will the dot land on?",
+      "correct_answer": "C",
+      "requested": {
+        "difficulty_profile": {
+          "max_total": 0.0,
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 35,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 45,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 40,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 39,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 40,
+      "hints": [
+        "You have these amounts: ['peso20', 'peso20'].",
+        "Step 1: Add peso20 → running total = peso20.",
+        "Step 2: Add peso20 → running total = peso40.",
+        "The total is peso40."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "start": 0,
+        "end": 60,
+        "major_interval": 10,
+        "minor_interval": 5,
+        "interval": 5,
+        "dot_value": 20,
+        "move_by": 20,
+        "content_type": "whole_number",
+        "value": 40,
+        "correct_position": 40,
+        "divisions": 12,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 40.0,
+        "target": 40.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "5170d3aa2bd2b9c7b87b9e8b2dbc47344da33673815c1923204881da4a5810cc",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 25,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "10",
+            "20",
+            "30",
+            "40",
+            "50",
+            "60"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "578647b036a048dc077e",
+      "replay_digest": "3056fb027f4c7da50f4258781be0b92d83686d0f55728ee7db690d3e3372b2df"
+    },
+    {
+      "node_id": "mat_g1_na_q4_4",
+      "seed": 1000,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Use coins and bills to make exactly ₱60. Use the fewest pieces possible.",
+      "correct_answer": 60,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "hint_gated"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "PesoMoney",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
+        "experience": "hint_gated"
+      },
+      "resolved_answer": 60,
+      "hints": [
+        "You have these amounts: ['peso20', 'peso20', 'peso20'].",
+        "Step 1: Add peso20 → running total = peso20.",
+        "Step 2: Add peso20 → running total = peso40.",
+        "Step 3: Add peso20 → running total = peso60.",
+        "The total is peso60."
+      ],
+      "visual_type": "PesoMoney",
+      "visual_payload": {
+        "coins": [],
+        "bills": [
+          {
+            "denomination": 20,
+            "count": 3
+          }
+        ],
+        "total": 60,
+        "target_amount": 60,
+        "exclude_centavos": true,
+        "coin_faces": [
+          1,
+          5,
+          10
+        ],
+        "bill_faces": [
+          20,
+          50,
+          100
+        ],
+        "require_fewest": true,
+        "is_interactive": true
+      },
+      "visual_render": {
+        "visual_type": "PesoMoney",
+        "renderer_input_digest": "068881d02beee120633ad85aa7040cd875e15f929adb150e4e4d8b575056e5c6",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "PesoMoney",
+          "element_count": 19,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 9,
+          "input_count": 0,
+          "text_labels": [
+            "Make exactly:",
+            "₱60",
+            "BILLS",
+            "₱1000",
+            "₱500",
+            "₱200",
+            "₱100",
+            "₱50",
+            "₱20",
+            "COINS",
+            "₱10",
+            "₱5",
+            "₱1"
+          ],
+          "distinct_colours": [
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--text-muted)",
+            "#10b981,",
+            "#059669)",
+            "#fff",
+            "#f59e0b,",
+            "#d97706)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "4b7ea6da5a987ccd785a",
+      "replay_digest": "63e1b3fb3a852f7e6337bb296465cdff680fa22bd8059e24bc9ecbf7dabc854e"
+    },
+    {
+      "node_id": "mat_g1_na_q4_4",
+      "seed": 1001,
+      "formatter": "mcq",
+      "question_text": "What is the total value of 4 ₱10 coins, 4 ₱5 coins, and 2 ₱1 coins?",
+      "correct_answer": 62,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "mastery_drill"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "mastery_drill"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 620,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 52,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 63,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 62,
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 62,
+      "hints": [
+        "You have these amounts: ['peso1', 'peso5', 'peso1', 'peso10', 'peso5', 'peso10', 'peso10', 'peso10', 'peso5', 'peso5'].",
+        "Step 1: Add peso1 → running total = peso1.",
+        "Step 2: Add peso5 → running total = peso6.",
+        "Step 3: Add peso1 → running total = peso7.",
+        "Step 4: Add peso10 → running total = peso17.",
+        "Step 5: Add peso5 → running total = peso22.",
+        "Step 6: Add peso10 → running total = peso32.",
+        "Step 7: Add peso10 → running total = peso42.",
+        "Step 8: Add peso10 → running total = peso52.",
+        "Step 9: Add peso5 → running total = peso57.",
+        "Step 10: Add peso5 → running total = peso62.",
+        "The total is peso62."
+      ],
+      "sample_id": "42818a359fd92cc2eebc",
+      "replay_digest": "5c4c6bda6b4ba10b1e2ad4cb4e3c10a99a2c1e2929fda1de62326ce7e3774103"
+    },
+    {
+      "node_id": "mat_g1_na_q4_4",
+      "seed": 1002,
+      "formatter": "mcq",
+      "question_text": "Determine the total value of 1 ₱20 bill and 2 ₱1 coins:",
+      "correct_answer": 22,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "scaffolded"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "scaffolded"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 22,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 12,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 23,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 220,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 22,
+      "hints": [
+        "You have these amounts: ['peso1', 'peso20', 'peso1'].",
+        "Step 1: Add peso1 → running total = peso1.",
+        "Step 2: Add peso20 → running total = peso21.",
+        "Step 3: Add peso1 → running total = peso22.",
+        "The total is peso22."
+      ],
+      "sample_id": "0006554c992c4df20d7f",
+      "replay_digest": "fddf8473cfd244417e5d7931ef5912e4a875e8a9e69fe6be314665e521df874a"
+    }
+  ],
+  "sample_assessments": [
+    {
+      "sample_id": "aae2bee699253491cd16",
+      "checks": {
+        "ambiguity": {
+          "verdict": "FAIL",
+          "reasoning": "The dot is at ₱10 and it moves forward ₱1. Which amount will the dot land on? admits the direct landing amount 11, but the printed answer 71 conflicts with the question and the extra hinted amounts, making the task contradictory."
+        },
+        "contextual_logical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The dot is at ₱10 and it moves forward ₱1. Which amount will the dot land on? describes one move along a number line, yet the hints introduce additional denominations totaling 71; those added amounts have no role in the stated movement."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "The stem starts at the stated amount and moves forward once, so the landing total should be 11; the answer 71 and hint list ['peso10', 'peso1', 'peso10', 'peso50'] instead add extra pieces. The choices 70 / 71 / 76 / 66 include the keyed total but fail to resolve the contradiction, and The rendered visual is NumberLine. does not justify adding those extra jumps."
+        },
+        "mathematical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The stem starts at the stated amount and moves forward once, so the landing total should be 11; the answer 71 and hint list ['peso10', 'peso1', 'peso10', 'peso50'] instead add extra pieces. Direct addition gives 11, not 71; the running total sequence in the hint chain is internally consistent only for a different problem."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w22-mat_g1_na_q4_4-20260925",
+      "dispatch_id": "gpt6luna-s5-w22-20260925:mat_g1_na_q4_4"
+    },
+    {
+      "sample_id": "8eb568d8940ced0a4810",
+      "checks": {
+        "ambiguity": {
+          "verdict": "CONCERN",
+          "reasoning": "Use coins and bills to make exactly ₱60. Use the fewest pieces possible. requests the fewest pieces but the hint gives a valid total using 8 coins or bills; without an optimality explanation, learners may not know whether to copy it or search for fewer."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The target amount ₱60 is attainable with the money denominations described, and the hints do add to the target despite not minimizing the piece count."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "The listed hint pieces ['peso10', 'peso5', 'peso10', 'peso10', 'peso5', 'peso5', 'peso10', 'peso5'] sum to ₱60 using 8 pieces, while displayed denominations allow a shorter combination for that target. The answer gives only ₱60 and does not show a minimum count; the money visual lists larger denominations that make the hint strategy needlessly long."
+        },
+        "mathematical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "The target total ₱60 is arithmetically correct, but the hint sequence fails the stem’s fewest-pieces condition when larger available denominations can make the same amount with fewer pieces."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w22-mat_g1_na_q4_4-20260925",
+      "dispatch_id": "gpt6luna-s5-w22-20260925:mat_g1_na_q4_4"
+    },
+    {
+      "sample_id": "e1ce9dd78e4d44839196",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "How much is 1 ₱50 bill and 1 ₱20 bill altogether? specifies the denominations or destination clearly, and the listed options 71 / 60 / 70 / 700 contain one value matching the hint total ₱70."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The money collection or number-line movement in this sample is coherent: its hinted pieces ['peso50', 'peso20'] add to ₱70, matching the target described in the stem."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The hint chain accumulates the stated denominations ['peso50', 'peso20'] to ₱70; the answer and choices 71 / 60 / 70 / 700 align with that total and the displayed money or line model."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Adding the individual values ['peso50', 'peso20'] produces ₱70, the same answer printed in the key and included among the options when options are shown."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w22-mat_g1_na_q4_4-20260925",
+      "dispatch_id": "gpt6luna-s5-w22-20260925:mat_g1_na_q4_4"
+    },
+    {
+      "sample_id": "50789ca296c62aa837a2",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The dot is at ₱20 and it moves forward ₱20. Which amount will the dot land on? specifies the denominations or destination clearly, and the listed options 39 / 45 / 40 / 35 contain one value matching the hint total ₱40."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The money collection or number-line movement in this sample is coherent: its hinted pieces ['peso20', 'peso20'] add to ₱40, matching the target described in the stem."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The hint chain accumulates the stated denominations ['peso20', 'peso20'] to ₱40; the answer and choices 39 / 45 / 40 / 35 align with that total and the displayed money or line model."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Adding the individual values ['peso20', 'peso20'] produces ₱40, the same answer printed in the key and included among the options when options are shown."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w22-mat_g1_na_q4_4-20260925",
+      "dispatch_id": "gpt6luna-s5-w22-20260925:mat_g1_na_q4_4"
+    },
+    {
+      "sample_id": "cac63138a0d3a6ede2aa",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "What is the total value of 2 ₱10 coins? specifies the denominations or destination clearly, and the listed options 21 / 200 / 10 / 20 contain one value matching the hint total ₱20."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The money collection or number-line movement in this sample is coherent: its hinted pieces ['peso10', 'peso10'] add to ₱20, matching the target described in the stem."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The hint chain accumulates the stated denominations ['peso10', 'peso10'] to ₱20; the answer and choices 21 / 200 / 10 / 20 align with that total and the displayed money or line model."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Adding the individual values ['peso10', 'peso10'] produces ₱20, the same answer printed in the key and included among the options when options are shown."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w22-mat_g1_na_q4_4-20260925",
+      "dispatch_id": "gpt6luna-s5-w22-20260925:mat_g1_na_q4_4"
+    },
+    {
+      "sample_id": "5f5f566d7cfc1cd7223c",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Use coins and bills to make exactly ₱100. Use the fewest pieces possible. specifies the denominations or destination clearly, and the listed options 110 / 120 / 100 / 95 contain one value matching the hint total ₱100."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The money collection or number-line movement in this sample is coherent: its hinted pieces ['peso50', 'peso50'] add to ₱100, matching the target described in the stem."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The hint chain accumulates the stated denominations ['peso50', 'peso50'] to ₱100; the answer and choices 110 / 120 / 100 / 95 align with that total and the displayed money or line model."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Adding the individual values ['peso50', 'peso50'] produces ₱100, the same answer printed in the key and included among the options when options are shown."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w22-mat_g1_na_q4_4-20260925",
+      "dispatch_id": "gpt6luna-s5-w22-20260925:mat_g1_na_q4_4"
+    },
+    {
+      "sample_id": "649d4f59962c374ea942",
+      "checks": {
+        "ambiguity": {
+          "verdict": "FAIL",
+          "reasoning": "The dot is at ₱5 and it moves forward ₱10. Which amount will the dot land on? admits the direct landing amount 15, but the printed answer 85 conflicts with the question and the extra hinted amounts, making the task contradictory."
+        },
+        "contextual_logical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The dot is at ₱5 and it moves forward ₱10. Which amount will the dot land on? describes one move along a number line, yet the hints introduce additional denominations totaling 85; those added amounts have no role in the stated movement."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "The stem starts at the stated amount and moves forward once, so the landing total should be 15; the answer 85 and hint list ['peso5', 'peso10', 'peso50', 'peso20'] instead add extra pieces. The choices 85 / 90 / 84 / 80 include the keyed total but fail to resolve the contradiction, and The rendered visual is NumberLine. does not justify adding those extra jumps."
+        },
+        "mathematical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The stem starts at the stated amount and moves forward once, so the landing total should be 15; the answer 85 and hint list ['peso5', 'peso10', 'peso50', 'peso20'] instead add extra pieces. Direct addition gives 15, not 85; the running total sequence in the hint chain is internally consistent only for a different problem."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w22-mat_g1_na_q4_4-20260925",
+      "dispatch_id": "gpt6luna-s5-w22-20260925:mat_g1_na_q4_4"
+    },
+    {
+      "sample_id": "c005f10900cf39ed462b",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Find the total amount of 2 ₱50 bills: specifies the denominations or destination clearly, and the listed options 100 / 101 / 90 / 1000 contain one value matching the hint total ₱100."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The money collection or number-line movement in this sample is coherent: its hinted pieces ['peso50', 'peso50'] add to ₱100, matching the target described in the stem."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The hint chain accumulates the stated denominations ['peso50', 'peso50'] to ₱100; the answer and choices 100 / 101 / 90 / 1000 align with that total and the displayed money or line model."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Adding the individual values ['peso50', 'peso50'] produces ₱100, the same answer printed in the key and included among the options when options are shown."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w22-mat_g1_na_q4_4-20260925",
+      "dispatch_id": "gpt6luna-s5-w22-20260925:mat_g1_na_q4_4"
+    },
+    {
+      "sample_id": "688fe14c683843bc5a5e",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Use coins and bills to make exactly ₱90. Use the fewest pieces possible. specifies the denominations or destination clearly, and the listed options fill-in response contain one value matching the hint total ₱90."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The money collection or number-line movement in this sample is coherent: its hinted pieces ['peso20', 'peso20', 'peso50'] add to ₱90, matching the target described in the stem."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The hint chain accumulates the stated denominations ['peso20', 'peso20', 'peso50'] to ₱90; the answer and choices fill-in response align with that total and the displayed money or line model."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Adding the individual values ['peso20', 'peso20', 'peso50'] produces ₱90, the same answer printed in the key and included among the options when options are shown."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w22-mat_g1_na_q4_4-20260925",
+      "dispatch_id": "gpt6luna-s5-w22-20260925:mat_g1_na_q4_4"
+    },
+    {
+      "sample_id": "785860d330875a38fcfc",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "What is the total value of 1 ₱10 coin and 2 ₱5 coins? specifies the denominations or destination clearly, and the listed options 200 / 10 / 21 / 20 contain one value matching the hint total ₱20."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The money collection or number-line movement in this sample is coherent: its hinted pieces ['peso5', 'peso5', 'peso10'] add to ₱20, matching the target described in the stem."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The hint chain accumulates the stated denominations ['peso5', 'peso5', 'peso10'] to ₱20; the answer and choices 200 / 10 / 21 / 20 align with that total and the displayed money or line model."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Adding the individual values ['peso5', 'peso5', 'peso10'] produces ₱20, the same answer printed in the key and included among the options when options are shown."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w22-mat_g1_na_q4_4-20260925",
+      "dispatch_id": "gpt6luna-s5-w22-20260925:mat_g1_na_q4_4"
+    },
+    {
+      "sample_id": "b1805828055816b1ed5a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The dot is at ₱20 and it moves forward ₱50. Which amount will the dot land on? specifies the denominations or destination clearly, and the listed options 70 / 65 / 75 / 69 contain one value matching the hint total ₱70."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The money collection or number-line movement in this sample is coherent: its hinted pieces ['peso20', 'peso50'] add to ₱70, matching the target described in the stem."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The hint chain accumulates the stated denominations ['peso20', 'peso50'] to ₱70; the answer and choices 70 / 65 / 75 / 69 align with that total and the displayed money or line model."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Adding the individual values ['peso20', 'peso50'] produces ₱70, the same answer printed in the key and included among the options when options are shown."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w22-mat_g1_na_q4_4-20260925",
+      "dispatch_id": "gpt6luna-s5-w22-20260925:mat_g1_na_q4_4"
+    },
+    {
+      "sample_id": "8e5f2bfa3cfa563f960c",
+      "checks": {
+        "ambiguity": {
+          "verdict": "CONCERN",
+          "reasoning": "Use coins and bills to make exactly ₱30. Use the fewest pieces possible. requests the fewest pieces but the hint gives a valid total using 3 coins or bills; without an optimality explanation, learners may not know whether to copy it or search for fewer."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The target amount ₱30 is attainable with the money denominations described, and the hints do add to the target despite not minimizing the piece count."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "The listed hint pieces ['peso10', 'peso10', 'peso10'] sum to ₱30 using 3 pieces, while displayed denominations allow a shorter combination for that target. The answer gives only ₱30 and does not show a minimum count; the money visual lists larger denominations that make the hint strategy needlessly long."
+        },
+        "mathematical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "The target total ₱30 is arithmetically correct, but the hint sequence fails the stem’s fewest-pieces condition when larger available denominations can make the same amount with fewer pieces."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w22-mat_g1_na_q4_4-20260925",
+      "dispatch_id": "gpt6luna-s5-w22-20260925:mat_g1_na_q4_4"
+    },
+    {
+      "sample_id": "dae10b3ca3d1e9001a0a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "CONCERN",
+          "reasoning": "Use coins and bills to make exactly ₱30. Use the fewest pieces possible. requests the fewest pieces but the hint gives a valid total using 8 coins or bills; without an optimality explanation, learners may not know whether to copy it or search for fewer."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The target amount ₱30 is attainable with the money denominations described, and the hints do add to the target despite not minimizing the piece count."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "The listed hint pieces ['peso1', 'peso1', 'peso1', 'peso5', 'peso1', 'peso10', 'peso10', 'peso1'] sum to ₱30 using 8 pieces, while displayed denominations allow a shorter combination for that target. The answer gives only ₱30 and does not show a minimum count; the money visual lists larger denominations that make the hint strategy needlessly long."
+        },
+        "mathematical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "The target total ₱30 is arithmetically correct, but the hint sequence fails the stem’s fewest-pieces condition when larger available denominations can make the same amount with fewer pieces."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w22-mat_g1_na_q4_4-20260925",
+      "dispatch_id": "gpt6luna-s5-w22-20260925:mat_g1_na_q4_4"
+    },
+    {
+      "sample_id": "8296808b209cbf622ea1",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "💃 Kuya Ton has a math challenge about trophies. Determine the total value of 1 ₱50 bill and 1 ₱1 coin: specifies the denominations or destination clearly, and the listed options 51 / 41 / 52 / 510 contain one value matching the hint total ₱51."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The money collection or number-line movement in this sample is coherent: its hinted pieces ['peso50', 'peso1'] add to ₱51, matching the target described in the stem."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The hint chain accumulates the stated denominations ['peso50', 'peso1'] to ₱51; the answer and choices 51 / 41 / 52 / 510 align with that total and the displayed money or line model."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Adding the individual values ['peso50', 'peso1'] produces ₱51, the same answer printed in the key and included among the options when options are shown."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w22-mat_g1_na_q4_4-20260925",
+      "dispatch_id": "gpt6luna-s5-w22-20260925:mat_g1_na_q4_4"
+    },
+    {
+      "sample_id": "53464c29c9d42bc50dcd",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "🏀 Isko has a math challenge about basketballs. How much is 5 ₱10 coins, 1 ₱5 coin, and 4 ₱1 coins altogether? specifies the denominations or destination clearly, and the listed options 49 / 590 / 59 / 60 contain one value matching the hint total ₱59."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The money collection or number-line movement in this sample is coherent: its hinted pieces ['peso10', 'peso1', 'peso10', 'peso1', 'peso1', 'peso10', 'peso10', 'peso10', 'peso5', 'peso1'] add to ₱59, matching the target described in the stem."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The hint chain accumulates the stated denominations ['peso10', 'peso1', 'peso10', 'peso1', 'peso1', 'peso10', 'peso10', 'peso10', 'peso5', 'peso1'] to ₱59; the answer and choices 49 / 590 / 59 / 60 align with that total and the displayed money or line model."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Adding the individual values ['peso10', 'peso1', 'peso10', 'peso1', 'peso1', 'peso10', 'peso10', 'peso10', 'peso5', 'peso1'] produces ₱59, the same answer printed in the key and included among the options when options are shown."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w22-mat_g1_na_q4_4-20260925",
+      "dispatch_id": "gpt6luna-s5-w22-20260925:mat_g1_na_q4_4"
+    },
+    {
+      "sample_id": "065319301c73cbd2c862",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Use coins and bills to make exactly ₱6. Use the fewest pieces possible. specifies the denominations or destination clearly, and the listed options 5 / 7 / 6 / 1 contain one value matching the hint total ₱6."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The money collection or number-line movement in this sample is coherent: its hinted pieces ['peso1', 'peso5'] add to ₱6, matching the target described in the stem."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The hint chain accumulates the stated denominations ['peso1', 'peso5'] to ₱6; the answer and choices 5 / 7 / 6 / 1 align with that total and the displayed money or line model."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Adding the individual values ['peso1', 'peso5'] produces ₱6, the same answer printed in the key and included among the options when options are shown."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w22-mat_g1_na_q4_4-20260925",
+      "dispatch_id": "gpt6luna-s5-w22-20260925:mat_g1_na_q4_4"
+    },
+    {
+      "sample_id": "18122ec44f412a306890",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "How much is 10 ₱10 coins altogether? specifies the denominations or destination clearly, and the listed options 101 / 100 / 1000 / 90 contain one value matching the hint total ₱100."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The money collection or number-line movement in this sample is coherent: its hinted pieces ['peso10', 'peso10', 'peso10', 'peso10', 'peso10', 'peso10', 'peso10', 'peso10', 'peso10', 'peso10'] add to ₱100, matching the target described in the stem."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The hint chain accumulates the stated denominations ['peso10', 'peso10', 'peso10', 'peso10', 'peso10', 'peso10', 'peso10', 'peso10', 'peso10', 'peso10'] to ₱100; the answer and choices 101 / 100 / 1000 / 90 align with that total and the displayed money or line model."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Adding the individual values ['peso10', 'peso10', 'peso10', 'peso10', 'peso10', 'peso10', 'peso10', 'peso10', 'peso10', 'peso10'] produces ₱100, the same answer printed in the key and included among the options when options are shown."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w22-mat_g1_na_q4_4-20260925",
+      "dispatch_id": "gpt6luna-s5-w22-20260925:mat_g1_na_q4_4"
+    },
+    {
+      "sample_id": "e5735db45f840810667a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The dot is at ₱1 and it moves forward ₱1. Which amount will the dot land on? specifies the denominations or destination clearly, and the listed options 3 / 2 / 1 / 4 contain one value matching the hint total ₱2."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The money collection or number-line movement in this sample is coherent: its hinted pieces ['peso1', 'peso1'] add to ₱2, matching the target described in the stem."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The hint chain accumulates the stated denominations ['peso1', 'peso1'] to ₱2; the answer and choices 3 / 2 / 1 / 4 align with that total and the displayed money or line model."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Adding the individual values ['peso1', 'peso1'] produces ₱2, the same answer printed in the key and included among the options when options are shown."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w22-mat_g1_na_q4_4-20260925",
+      "dispatch_id": "gpt6luna-s5-w22-20260925:mat_g1_na_q4_4"
+    },
+    {
+      "sample_id": "578647b036a048dc077e",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The dot is at ₱20 and it moves forward ₱20. Which amount will the dot land on? specifies the denominations or destination clearly, and the listed options 35 / 45 / 40 / 39 contain one value matching the hint total ₱40."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The money collection or number-line movement in this sample is coherent: its hinted pieces ['peso20', 'peso20'] add to ₱40, matching the target described in the stem."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The hint chain accumulates the stated denominations ['peso20', 'peso20'] to ₱40; the answer and choices 35 / 45 / 40 / 39 align with that total and the displayed money or line model."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Adding the individual values ['peso20', 'peso20'] produces ₱40, the same answer printed in the key and included among the options when options are shown."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w22-mat_g1_na_q4_4-20260925",
+      "dispatch_id": "gpt6luna-s5-w22-20260925:mat_g1_na_q4_4"
+    },
+    {
+      "sample_id": "4b7ea6da5a987ccd785a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "CONCERN",
+          "reasoning": "Use coins and bills to make exactly ₱60. Use the fewest pieces possible. requests the fewest pieces but the hint gives a valid total using 3 coins or bills; without an optimality explanation, learners may not know whether to copy it or search for fewer."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The target amount ₱60 is attainable with the money denominations described, and the hints do add to the target despite not minimizing the piece count."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "The listed hint pieces ['peso20', 'peso20', 'peso20'] sum to ₱60 using 3 pieces, while displayed denominations allow a shorter combination for that target. The answer gives only ₱60 and does not show a minimum count; the money visual lists larger denominations that make the hint strategy needlessly long."
+        },
+        "mathematical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "The target total ₱60 is arithmetically correct, but the hint sequence fails the stem’s fewest-pieces condition when larger available denominations can make the same amount with fewer pieces."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w22-mat_g1_na_q4_4-20260925",
+      "dispatch_id": "gpt6luna-s5-w22-20260925:mat_g1_na_q4_4"
+    },
+    {
+      "sample_id": "42818a359fd92cc2eebc",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "What is the total value of 4 ₱10 coins, 4 ₱5 coins, and 2 ₱1 coins? specifies the denominations or destination clearly, and the listed options 620 / 52 / 63 / 62 contain one value matching the hint total ₱62."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The money collection or number-line movement in this sample is coherent: its hinted pieces ['peso1', 'peso5', 'peso1', 'peso10', 'peso5', 'peso10', 'peso10', 'peso10', 'peso5', 'peso5'] add to ₱62, matching the target described in the stem."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The hint chain accumulates the stated denominations ['peso1', 'peso5', 'peso1', 'peso10', 'peso5', 'peso10', 'peso10', 'peso10', 'peso5', 'peso5'] to ₱62; the answer and choices 620 / 52 / 63 / 62 align with that total and the displayed money or line model."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Adding the individual values ['peso1', 'peso5', 'peso1', 'peso10', 'peso5', 'peso10', 'peso10', 'peso10', 'peso5', 'peso5'] produces ₱62, the same answer printed in the key and included among the options when options are shown."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w22-mat_g1_na_q4_4-20260925",
+      "dispatch_id": "gpt6luna-s5-w22-20260925:mat_g1_na_q4_4"
+    },
+    {
+      "sample_id": "0006554c992c4df20d7f",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Determine the total value of 1 ₱20 bill and 2 ₱1 coins: specifies the denominations or destination clearly, and the listed options 22 / 12 / 23 / 220 contain one value matching the hint total ₱22."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The money collection or number-line movement in this sample is coherent: its hinted pieces ['peso1', 'peso20', 'peso1'] add to ₱22, matching the target described in the stem."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The hint chain accumulates the stated denominations ['peso1', 'peso20', 'peso1'] to ₱22; the answer and choices 22 / 12 / 23 / 220 align with that total and the displayed money or line model."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Adding the individual values ['peso1', 'peso20', 'peso1'] produces ₱22, the same answer printed in the key and included among the options when options are shown."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w22-mat_g1_na_q4_4-20260925",
+      "dispatch_id": "gpt6luna-s5-w22-20260925:mat_g1_na_q4_4"
+    }
+  ],
+  "clause_evidence": [
+    {
+      "requirement_id": "determine_value",
+      "clause": "Determine the value",
+      "verdict": "CONCERN",
+      "reasoning": "Most sample totals can be determined from the listed currency pieces, but the two one-move number-line stems conflict with answers formed by summing extra denominations.",
+      "sample_ids": [
+        "aae2bee699253491cd16",
+        "e1ce9dd78e4d44839196",
+        "649d4f59962c374ea942"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w22-mat_g1_na_q4_4-20260925",
+      "dispatch_id": "gpt6luna-s5-w22-20260925:mat_g1_na_q4_4"
+    },
+    {
+      "requirement_id": "number_of_bills",
+      "clause": "number of bills",
+      "verdict": "PASS",
+      "reasoning": "Bill examples ask for values of one or more peso bills, including ₱50 and ₱20 together and two ₱50 bills.",
+      "sample_ids": [
+        "e1ce9dd78e4d44839196",
+        "5f5f566d7cfc1cd7223c",
+        "c005f10900cf39ed462b"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w22-mat_g1_na_q4_4-20260925",
+      "dispatch_id": "gpt6luna-s5-w22-20260925:mat_g1_na_q4_4"
+    },
+    {
+      "requirement_id": "number_of_coins",
+      "clause": "number of coins",
+      "verdict": "PASS",
+      "reasoning": "Several stems require totals from multiple coins, including two ₱10 coins and mixed ₱10, ₱5, and ₱1 coins.",
+      "sample_ids": [
+        "cac63138a0d3a6ede2aa",
+        "785860d330875a38fcfc",
+        "53464c29c9d42bc50dcd"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w22-mat_g1_na_q4_4-20260925",
+      "dispatch_id": "gpt6luna-s5-w22-20260925:mat_g1_na_q4_4"
+    },
+    {
+      "requirement_id": "excluding_centavo_coins",
+      "clause": "excluding centavo coins",
+      "verdict": "PASS",
+      "reasoning": "The printed samples use only whole-peso coins and bills such as ₱1, ₱5, ₱10, ₱20, and ₱50, with no centavo values.",
+      "sample_ids": [
+        "cac63138a0d3a6ede2aa",
+        "785860d330875a38fcfc",
+        "e5735db45f840810667a"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w22-mat_g1_na_q4_4-20260925",
+      "dispatch_id": "gpt6luna-s5-w22-20260925:mat_g1_na_q4_4"
+    },
+    {
+      "requirement_id": "up_to_100",
+      "clause": "up to ₱100",
+      "verdict": "PASS",
+      "reasoning": "All cited keyed totals stay at or below the stated ₱100 cap, including exact-boundary examples that total ₱100.",
+      "sample_ids": [
+        "5f5f566d7cfc1cd7223c",
+        "c005f10900cf39ed462b",
+        "18122ec44f412a306890"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w22-mat_g1_na_q4_4-20260925",
+      "dispatch_id": "gpt6luna-s5-w22-20260925:mat_g1_na_q4_4"
+    }
+  ],
+  "dispatch_provenance": [
+    {
+      "dispatch_id": "gpt6luna-s5-w22-20260925:mat_g1_na_q4_4",
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w22-mat_g1_na_q4_4-20260925",
+      "review_date": "2026-09-25",
+      "blind": true,
+      "packet_digest": "bd02bb4cd35edac7e5b03c7c80df9cd2532a9632919717b53c524f76d25528e2",
+      "clause_ids": [
+        "determine_value",
+        "number_of_bills",
+        "number_of_coins",
+        "excluding_centavo_coins",
+        "up_to_100"
+      ],
+      "response_ref": ".responses/gpt6luna-s5-w22-20260925.json",
+      "response_digest": "1907956f010ae6b09bb898264367cbaed9009c16e3cd2e0c450524e5bb6d25c2",
+      "prompt_ref": ".responses/gpt6luna-s5-w22-20260925.prompt.txt",
+      "prompt_digest": "5f3718e636eca39712b887c9922614ea3db60031f9f308f320ed31a806b32706",
+      "samples_delivery": "Dispatch-time local prompt file read by separate gpt-6-luna medium reviewer; no source or prior reviews supplied",
+      "tool_uses_by_reviewer": "Reviewer reported: cat to read the assigned prompt; python3 to write the requested JSON. This is reviewer-provided tool-use reporting."
     }
   ],
   "findings": {
-    "competency_fulfillment": {
-      "verdict": "FAIL",
-      "rationale": "Two of the sampled money number-line items are internally inconsistent. 'The dot is at ₱10 and it moves forward ₱1.' is keyed to the second option in a list reading 70 / 71 / 76 / 66, a set which does not contain eleven at all; another item starting at five pesos and moving forward ten pesos is keyed to eighty-five. The stem asks for one amount and the key answers a different one, with no correct choice available."
-    },
-    "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "The competency covers bills and-slash-or coins, but the sampled totals are either all coins or all bills; no item totals a mixed handful of bills together with coins, which is the case the and-or phrasing exists to capture."
-    },
     "cognitive_capacity": {
       "verdict": "CONCERN",
-      "rationale": "The composing tasks defeat themselves: 'Use coins and bills to make exactly ₱60. Use the fewest pieces possible.' is keyed to sixty, the number already printed in the stem, so nothing about choosing pieces or minimising their number is actually required or recorded."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "Once the broken number-line items and the self-answering composing items are set aside, what remains is a small set of straightforward totalling questions, so the apparent breadth of presentation is not doing real work."
+      "rationale": "Most money totals use whole-peso denominations, but several hints add irrelevant extra pieces or fail the fewest-pieces challenge, obscuring the intended Grade 1 reasoning."
     },
     "competency_alignment": {
       "verdict": "CONCERN",
-      "rationale": "Determining the value of a group of pieces is the target skill, but a large share of seeds instead exercise movement along a marked line, an axis that belongs to counting on rather than to valuing a collection of money."
+      "rationale": "Many items total bills and coins within ₱100, while two number-line stems describe a single move that their hints replace with unrelated denomination sums."
+    },
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The listed requirements name determining value, bills, coins, excluded centavos, and the ₱100 ceiling, matching the competency’s stated components.",
+      "decomposition": {
+        "verdict": "PASS",
+        "reasoning": "The competency’s requested action, money forms, exclusion of centavo coins, and upper limit are each represented by a separate requirement; together they cover the printed scope.",
+        "requirement_ids": [
+          "determine_value",
+          "number_of_bills",
+          "number_of_coins",
+          "excluding_centavo_coins",
+          "up_to_100"
+        ]
+      },
+      "clause_ids": [
+        "determine_value",
+        "number_of_bills",
+        "number_of_coins",
+        "excluding_centavo_coins",
+        "up_to_100"
+      ]
+    },
+    "comprehensive_coverage": {
+      "verdict": "CONCERN",
+      "rationale": "Samples exercise multiple bill and coin totals and include a fewest-pieces prompt, but the optimized construction is not consistently honored and number-line variants drift from their stems.",
+      "clause_ids": [
+        "determine_value",
+        "number_of_bills",
+        "number_of_coins",
+        "excluding_centavo_coins",
+        "up_to_100"
+      ]
     },
     "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "The keyed monetary values range from ₱2 to ₱100, use whole-peso bills or coins, and do not exceed the competency’s specified ceiling."
+    },
+    "variant_comprehensiveness": {
       "verdict": "CONCERN",
-      "rationale": "Totals in the valid items reach one hundred pesos appropriately, but one option list offers 110 and 120 against a target of exactly one hundred, and the mismatched number-line items present amounts in the seventies and eighties that no part of their stem can produce."
+      "rationale": "The packet varies single denomination sums, mixed coins, bill totals, fewest-piece builds, and number-line displays, though these presentations are not always consistent."
     }
   },
   "overall": "FAIL"
