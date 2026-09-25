@@ -17032,3 +17032,69 @@ APPROXIMATION of `_validate_quote_provenance`, not that function.** A future ses
 `_validate_quote_provenance` (and `_provenance_corpus`) directly instead of re-implementing the regex —
 the same "rule in two places" shape this repo keeps paying for, committed here by the dispatcher's own
 audit script. Named rather than fixed, since the audit script is scratch tooling.
+
+## 2026-09-25 — OWNER DECISIONS: spend on the hint contract, and one reviewer family from now on
+
+Recorded by `claude-h06-s5-recover-2026-09-25` at the owner's instruction. Both decisions are binding on
+subsequent sessions and are reflected in `CLAUDE_AGENT_PROMPT.md` §0 and `NEXT_AGENT_PROMPT.md` §0.
+
+### Decision 1 — the `generate_hints` contract fix is AUTHORISED
+
+The owner approved the engineering and the ~4h re-proof chain for Phase A: one shared contract making a
+hint chain declare the parameters it explains, plus a gate generalising `fraction_hint_self_consistency`
+beyond fractions. **The §5 review queue waits**; the 91 remaining nodes are NOT to be reviewed first.
+
+The reasoning put to the owner, and the measurement behind it:
+
+```
+All 2,016 §5 findings, classified by what actually clears them:
+  1002  49.7%  sample-level check failure  -> FIXING CONTENT
+   523  25.9%  node-level finding          -> FIXING CONTENT
+    62   3.1%  clause FAIL                 -> FIXING CONTENT      = 78.7% content
+   277  13.7%  v1 unadjudicable            -> REVIEWING
+   129   6.4%  STALE v1                    -> reviewing           = 20.1% reviewing
+    19   0.9%  quote provenance            -> reviewer quality
+```
+
+Reviewing a node does not reduce §5; it CONVERTS one unadjudicable finding into several real content
+findings, measured at roughly 4:1 (§5 rose 1236 → 2016 across the campaign). §5 reaches 0 only when
+content is fixed so reviewers return PASS.
+
+**And reviewing before the hint fix pays for the same work twice.** Hints are bound into the canonical
+learner-visible packet digest — `validate_judgment`'s own STALE message names *"Stem, resolved answer,
+ordered options, hints, cloze, visual payload/rendered structure, response configuration, replay inputs,
+and effective choices"*. So the moment `generate_hints` changes, every filed review whose hints change
+goes STALE and owes a re-review. Sixty reviews are filed; each further review filed before Phase A is
+work Phase A destroys.
+
+### Decision 2 — reviewer families must be CONSISTENT, and the family is HAIKU
+
+Every blind reviewer dispatched from any host, from now on, is **Haiku**. This supersedes the 2026-09-24
+`gpt-5.6-luna` instruction and ruling 10's `GPT-5.6-Terra` for the §5 campaign.
+
+**Why Haiku specifically:** it is the only family in the corpus with a measured within-family agreement
+figure (**37/42 = 88.1%**). Cross-family Haiku-vs-GPT-5.6-Terra is **11/18 = 61.1%**. Neither
+`gpt-5.6-luna` nor `gpt-6-luna` has ever been measured against anything.
+
+**How the corpus reached three families, recorded because the conduct was correct and should be
+repeated, not the outcome:** two GPT-hosted sessions found the then-mandated model unavailable on their
+host and **changed the MODEL rather than the label**, naming `gpt-6-luna` truthfully in 19 records. That
+is exactly what §0 rule 2 prescribes. The failure was not theirs — it was that no rule told them to stop
+and ask before introducing a family. **That rule now exists:** if a host cannot dispatch Haiku, stop and
+ask the owner rather than substituting.
+
+Current composition, which is now frozen as history:
+
+```
+60 schema-v2 reviews — 25 gpt-5.6-luna medium, 19 gpt-6-luna medium, 16 haiku45
+verdicts 30 FAIL / 22 CONCERN / 8 PASS   (only 8 of 60 PASS)
+```
+
+**None of the 44 non-Haiku identities may be renamed.** They are truthful records of which model judged,
+and `reviewed_by` is the only thing that makes §5 reviewer plurality checkable; rewriting one would be a
+false evidentiary claim.
+
+**The debt this leaves, and when to retire it:** the corpus cannot state its own inter-family agreement.
+Phase B re-reviews the nodes Phase A stales, and many of those carry Luna verdicts — that is the natural,
+nearly free moment to measure Luna-vs-Haiku agreement on the same clauses and record the number. The
+next session is instructed to take it.

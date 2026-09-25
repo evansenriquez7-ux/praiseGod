@@ -41,8 +41,19 @@ an executed command beats both.
 
 ## 0. THE MODEL YOUR REVIEWERS MUST USE
 
-**Every blind reviewer subagent you dispatch must be `gpt-5.6-luna` at MEDIUM thinking.** This is the
-owner's instruction of 2026-09-24 and it supersedes ruling 10's `GPT-5.6-Terra` for this campaign.
+**SUPERSEDED 2026-09-25 by an owner ruling: reviewer families must be CONSISTENT from now on, and the
+designated family is HAIKU.** Every blind reviewer dispatched from any host is Haiku
+(`haiku45` in the identity). The earlier instruction on this line — `gpt-5.6-luna` at medium — applied
+2026-09-24 only and no longer governs.
+
+Haiku is designated because it is the **only** family with a measured within-family agreement figure
+(**37/42 = 88.1%**). Neither Luna variant has ever been measured against anything, which is precisely
+the debt this ruling exists to stop growing.
+
+**If you cannot dispatch Haiku from this host, STOP and ask the owner.** Do not substitute another model
+on your own initiative: that is how the corpus reached three families. The one thing you must never do
+is write `haiku45` onto a verdict some other model produced — if you are ever forced to substitute,
+change the MODEL and name it truthfully, exactly as the 2026-09-24/25 sessions did, and say so loudly.
 
 1. **The reviewer identity must name the model that ACTUALLY judged**, e.g.
    `blind-reviewer-gpt-5.6-luna-medium-<batch>-<node>-20260925`. `reviewed_by` is the only thing that
