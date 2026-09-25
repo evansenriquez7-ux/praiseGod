@@ -1,5 +1,29 @@
 # Handoff — continue the Phase 2 hardening plan
 
+**Refreshed 2026-09-25 (`claude-h06-s5-recover-2026-09-25`).** Recovered a rate-limited GPT session's
+uncommitted waves 23-28, then filed waves 29-30 on Haiku (ruling 4; neither Luna variant is
+dispatchable from Claude Code — the MODEL was changed, never the label). **Legacy queue 118 → 91;
+91 v1 nodes still owed.** §5 is **2016** at the module across 144 nodes, up from 1538, because only
+**8 of 60** filed reviews PASS — a falling count would mean the reviewers found nothing. Tree stays
+CERTIFIED at digest `208a52406226e6d0`; no source was touched.
+
+⚠ **THREE rater families now, and it needs an owner ruling.** 25 `gpt-5.6-luna`, 19 `gpt-6-luna`,
+16 `haiku45`. The GPT session recorded `gpt-5.6-luna` as unavailable on its host and truthfully named
+`gpt-6-luna` — correct per §0 rule 2 — but measured agreement exists only for Haiku-vs-Terra (61.1%)
+and Haiku-vs-Haiku (88.1%). **Both Luna variants are unmeasured against anything.** Do not normalise
+any existing identity.
+
+⚠ **The `generate_hints` root cause now has SIX manifestations and is the highest-value source fix.**
+All five `mat_g2_mg_*` nodes reviewed serve hints that ignore the item: its unit, its comparison
+direction, a ruler that is absent, a clock that is absent — and in `mat_g2_mg_q4_0` **every one of 23
+hints asserts a false equation** (`27 - 24 = 4`). The answers are right, so every automated gate passes
+those items. See §6.
+
+⚠ **Two new harness gaps, named not fixed** (both in `tests/`, so both cost the chain): the dispatch
+prompt and `file_reviews` contradict each other about an absence clause's `sample_ids`, and
+`file_reviews` accepts an `overall` that contradicts the review's own findings — which inflates
+`legacy_review_queue`'s `by_overall_verdict` census.
+
 **Refreshed 2026-09-25 (claude-h06-s5-haiku-campaign-2026-09-24).** Recovered the rate-limited Luna
 session's uncommitted wave 7, then filed waves 8-9 on Haiku (owner-authorised under ruling 4, because
 §0's gpt-5.6-luna cannot be dispatched from a Claude host — the model was changed, never the label).
