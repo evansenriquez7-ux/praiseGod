@@ -1,0 +1,694 @@
+{
+  "reviewer": "blind-reviewer-gpt-6-luna-medium-w15-mat_g1_na_q3_5-20260925",
+  "mat_g1_na_q3_5": {
+    "findings": {
+      "cognitive_capacity": {
+        "verdict": "PASS",
+        "rationale": "The work centers on two-digit subtraction with place names and one-step differences, a focused Grade 1 task; hints break each computation into ones and tens."
+      },
+      "competency_alignment": {
+        "verdict": "PASS",
+        "rationale": "Every stem frames subtraction through tens and ones and requests a difference, matching the stated expanded-form, no-regrouping competency."
+      },
+      "competency_fulfillment": {
+        "verdict": "CONCERN",
+        "rationale": "The set makes the place-value method visible and keeps ones subtraction nonnegative, though zero subtrahends are sometimes described only as zero ones rather than both places.",
+        "decomposition": {
+          "verdict": "PASS",
+          "reasoning": "The four requirements jointly retain subtraction, expressing both minuend and subtrahend as tens and ones, expanded form, and the no-regrouping condition; this covers the competency wording."
+        }
+      },
+      "comprehensive_coverage": {
+        "verdict": "CONCERN",
+        "rationale": "Samples span varied minuends, subtrahends, and response types, but several zero-subtrahend items omit the explicit zero-tens component required by the full place-value representation."
+      },
+      "scale_appropriateness": {
+        "verdict": "PASS",
+        "rationale": "The packet uses two-digit quantities below one hundred and avoids regrouping in each displayed subtraction; this fits the specified elementary place-value strategy."
+      },
+      "variant_comprehensiveness": {
+        "verdict": "PASS",
+        "rationale": "Cloze, multiple choice, true-or-false, and error-detection formats all appear, with ordinary subtraction and checking another learner's proposed result represented."
+      }
+    },
+    "sample_assessments": [
+      {
+        "sample_id": "ecf97ae5f3ff5813cf8f",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The cloze item asks for the unique difference of 75 and 12, which is 63; its listed options do not create a second mathematically valid completion."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Subtracting 12 from 75 is precisely the action requested and yields 63; the stem gives no story detail that would change that operation."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The prompt identifies 75 − 12 as the target and offers a blank or choices; the hints separately compute 5 − 2 and 7 − 1."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The keyed difference 63 equals 75 − 12; the ones and tens hint results combine to that value without requiring regrouping or an alternate visual."
+          }
+        }
+      },
+      {
+        "sample_id": "ec361f1ec6f195c04c1d",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The mcq item asks for the unique difference of 13 and 10, which is 3; its listed options do not create a second mathematically valid completion."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Subtracting 10 from 13 is precisely the action requested and yields 3; the stem gives no story detail that would change that operation."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The prompt identifies 13 − 10 as the target and offers a blank or choices; the hints separately compute 3 − 0 and 1 − 1."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The keyed difference 3 equals 13 − 10; the ones and tens hint results combine to that value without requiring regrouping or an alternate visual."
+          }
+        }
+      },
+      {
+        "sample_id": "a6fa0070adb745b91078",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The cloze item asks for the unique difference of 45 and 40, which is 5; its listed options do not create a second mathematically valid completion."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Subtracting 40 from 45 is precisely the action requested and yields 5; the stem gives no story detail that would change that operation."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The prompt identifies 45 − 40 as the target and offers a blank or choices; the hints separately compute 5 − 0 and 4 − 4."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The keyed difference 5 equals 45 − 40; the ones and tens hint results combine to that value without requiring regrouping or an alternate visual."
+          }
+        }
+      },
+      {
+        "sample_id": "5bbea7a896bb062b1c40",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "In the 35 − 30 truth item, only the displayed claim 4 is being judged, so the learner has a single true-or-false decision."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The 35 and 30 place descriptions lead to a subtraction check; judging the displayed result 4 fits the prompt's stated action."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem explicitly presents 35 − 30 = 4 and asks True or False, while the hints calculate 5 − 0 and 3 − 3."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The answer False matches 35 − 30 = 5; the hints subtract 0 ones and 3 tens, agreeing with the stem and no visual."
+          }
+        }
+      },
+      {
+        "sample_id": "427d86603c2a2366d63e",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "In the 15 − 11 truth item, only the displayed claim 4 is being judged, so the learner has a single true-or-false decision."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The 15 and 11 place descriptions lead to a subtraction check; judging the displayed result 4 fits the prompt's stated action."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem explicitly presents 15 − 11 = 4 and asks True or False, while the hints calculate 5 − 1 and 1 − 1."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The answer True matches 15 − 11 = 4; the hints subtract 1 ones and 1 tens, agreeing with the stem and no visual."
+          }
+        }
+      },
+      {
+        "sample_id": "bf6d3fbdeef0b069f577",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The error-detection task identifies a proposed result for 64 − 30; the learner can determine correctness by checking it against the computed difference 34."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The named solver's proposed answer for 64 − 30 is evaluated as a number statement; the surrounding name or theme does not alter the place-value calculation."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The prompt asks whether the student's proposed value for 64 − 30 is correct, and the hint sequence computes 4 − 0 ones then 6 − 3 tens."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The rendered key records no error and gives 34; direct subtraction of 30 from 64 confirms that result, consistent with the hints."
+          }
+        }
+      },
+      {
+        "sample_id": "f0a2b37b625df24e7da8",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "In the 98 − 54 truth item, only the displayed claim 45 is being judged, so the learner has a single true-or-false decision."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The 98 and 54 place descriptions lead to a subtraction check; judging the displayed result 45 fits the prompt's stated action."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem explicitly presents 98 − 54 = 45 and asks True or False, while the hints calculate 8 − 4 and 9 − 5."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The answer False matches 98 − 54 = 44; the hints subtract 4 ones and 5 tens, agreeing with the stem and no visual."
+          }
+        }
+      },
+      {
+        "sample_id": "3fd836bf21b798774fdb",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The mcq item asks for the unique difference of 94 and 72, which is 22; its listed options do not create a second mathematically valid completion."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Subtracting 72 from 94 is precisely the action requested and yields 22; the stem gives no story detail that would change that operation."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The prompt identifies 94 − 72 as the target and offers a blank or choices; the hints separately compute 4 − 2 and 9 − 7."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The keyed difference 22 equals 94 − 72; the ones and tens hint results combine to that value without requiring regrouping or an alternate visual."
+          }
+        }
+      },
+      {
+        "sample_id": "f8a50f79d7b681f772d1",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The error-detection task identifies a proposed result for 88 − 58; the learner can determine correctness by checking it against the computed difference 30."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The named solver's proposed answer for 88 − 58 is evaluated as a number statement; the surrounding name or theme does not alter the place-value calculation."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The prompt asks whether the student's proposed value for 88 − 58 is correct, and the hint sequence computes 8 − 8 ones then 8 − 5 tens."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The rendered key records no error and gives 30; direct subtraction of 58 from 88 confirms that result, consistent with the hints."
+          }
+        }
+      },
+      {
+        "sample_id": "1a88c5194e5c1892f890",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The mcq item asks for the unique difference of 35 and 10, which is 25; its listed options do not create a second mathematically valid completion."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Subtracting 10 from 35 is precisely the action requested and yields 25; the stem gives no story detail that would change that operation."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The prompt identifies 35 − 10 as the target and offers a blank or choices; the hints separately compute 5 − 0 and 3 − 1."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The keyed difference 25 equals 35 − 10; the ones and tens hint results combine to that value without requiring regrouping or an alternate visual."
+          }
+        }
+      },
+      {
+        "sample_id": "29fa49303c547f286943",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The cloze item asks for the unique difference of 25 and 15, which is 10; its listed options do not create a second mathematically valid completion."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Subtracting 15 from 25 is precisely the action requested and yields 10; the stem gives no story detail that would change that operation."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The prompt identifies 25 − 15 as the target and offers a blank or choices; the hints separately compute 5 − 5 and 2 − 1."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The keyed difference 10 equals 25 − 15; the ones and tens hint results combine to that value without requiring regrouping or an alternate visual."
+          }
+        }
+      },
+      {
+        "sample_id": "78525874e445dbf9018c",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The error-detection task identifies a proposed result for 45 − 20; the learner can determine correctness by checking it against the computed difference 25."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The named solver's proposed answer for 45 − 20 is evaluated as a number statement; the surrounding name or theme does not alter the place-value calculation."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The prompt asks whether the student's proposed value for 45 − 20 is correct, and the hint sequence computes 5 − 0 ones then 4 − 2 tens."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The rendered key records no error and gives 25; direct subtraction of 20 from 45 confirms that result, consistent with the hints."
+          }
+        }
+      },
+      {
+        "sample_id": "b60ea109f25efa0267b3",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The mcq item asks for the unique difference of 24 and 0, which is 24; its listed options do not create a second mathematically valid completion."
+          },
+          "contextual_logical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "For 24 − 0 = 24, the operation and answer are clear, although the stem calls zero only 0 ones and omits explicit zero tens."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The prompt identifies 24 − 0 as the target and offers a blank or choices; the hints separately compute 4 − 0 and 2 − 0."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The keyed difference 24 equals 24 − 0; the ones and tens hint results combine to that value without requiring regrouping or an alternate visual."
+          }
+        }
+      },
+      {
+        "sample_id": "e04bdf1278d2aac09351",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The error-detection task identifies a proposed result for 15 − 4; the learner can determine correctness by checking it against the computed difference 11."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The named solver's proposed answer for 15 − 4 is evaluated as a number statement; the surrounding name or theme does not alter the place-value calculation."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The prompt asks whether the student's proposed value for 15 − 4 is correct, and the hint sequence computes 5 − 4 ones then 1 − 0 tens."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The rendered key records no error and gives 11; direct subtraction of 4 from 15 confirms that result, consistent with the hints."
+          }
+        }
+      },
+      {
+        "sample_id": "092391a0c6a84044fe81",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "In the 24 − 10 truth item, only the displayed claim 34 is being judged, so the learner has a single true-or-false decision."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The 24 and 10 place descriptions lead to a subtraction check; judging the displayed result 34 fits the prompt's stated action."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem explicitly presents 24 − 10 = 34 and asks True or False, while the hints calculate 4 − 0 and 2 − 1."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The answer False matches 24 − 10 = 14; the hints subtract 0 ones and 1 tens, agreeing with the stem and no visual."
+          }
+        }
+      },
+      {
+        "sample_id": "64dc85de4f935983ce32",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The mcq item asks for the unique difference of 91 and 0, which is 91; its listed options do not create a second mathematically valid completion."
+          },
+          "contextual_logical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "For 91 − 0 = 91, the operation and answer are clear, although the stem calls zero only 0 ones and omits explicit zero tens."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The prompt identifies 91 − 0 as the target and offers a blank or choices; the hints separately compute 1 − 0 and 9 − 0."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The keyed difference 91 equals 91 − 0; the ones and tens hint results combine to that value without requiring regrouping or an alternate visual."
+          }
+        }
+      },
+      {
+        "sample_id": "4528955f469d5ddc5865",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The cloze item asks for the unique difference of 84 and 0, which is 84; its listed options do not create a second mathematically valid completion."
+          },
+          "contextual_logical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "For 84 − 0 = 84, the operation and answer are clear, although the stem calls zero only 0 ones and omits explicit zero tens."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The prompt identifies 84 − 0 as the target and offers a blank or choices; the hints separately compute 4 − 0 and 8 − 0."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The keyed difference 84 equals 84 − 0; the ones and tens hint results combine to that value without requiring regrouping or an alternate visual."
+          }
+        }
+      },
+      {
+        "sample_id": "9c8bf65581d092317135",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The error-detection task identifies a proposed result for 21 − 1; the learner can determine correctness by checking it against the computed difference 20."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The named solver's proposed answer for 21 − 1 is evaluated as a number statement; the surrounding name or theme does not alter the place-value calculation."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The prompt asks whether the student's proposed value for 21 − 1 is correct, and the hint sequence computes 1 − 1 ones then 2 − 0 tens."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The rendered key records no error and gives 20; direct subtraction of 1 from 21 confirms that result, consistent with the hints."
+          }
+        }
+      },
+      {
+        "sample_id": "9931f1374f9d36209865",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The cloze item asks for the unique difference of 75 and 1, which is 74; its listed options do not create a second mathematically valid completion."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Subtracting 1 from 75 is precisely the action requested and yields 74; the stem gives no story detail that would change that operation."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The prompt identifies 75 − 1 as the target and offers a blank or choices; the hints separately compute 5 − 1 and 7 − 0."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The keyed difference 74 equals 75 − 1; the ones and tens hint results combine to that value without requiring regrouping or an alternate visual."
+          }
+        }
+      },
+      {
+        "sample_id": "61720ccd8b38ed98c88f",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "In the 50 − 30 truth item, only the displayed claim 19 is being judged, so the learner has a single true-or-false decision."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The 50 and 30 place descriptions lead to a subtraction check; judging the displayed result 19 fits the prompt's stated action."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem explicitly presents 50 − 30 = 19 and asks True or False, while the hints calculate 0 − 0 and 5 − 3."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The answer False matches 50 − 30 = 20; the hints subtract 0 ones and 3 tens, agreeing with the stem and no visual."
+          }
+        }
+      },
+      {
+        "sample_id": "b7fcf007390b86c85551",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The error-detection task identifies a proposed result for 24 − 0; the learner can determine correctness by checking it against the computed difference 24."
+          },
+          "contextual_logical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "For 24 − 0 = 24, the operation and answer are clear, although the stem calls zero only 0 ones and omits explicit zero tens."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The prompt asks whether the student's proposed value for 24 − 0 is correct, and the hint sequence computes 4 − 0 ones then 2 − 0 tens."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The rendered key records no error and gives 24; direct subtraction of 0 from 24 confirms that result, consistent with the hints."
+          }
+        }
+      },
+      {
+        "sample_id": "10ef485880acfdda723e",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "In the 36 − 10 truth item, only the displayed claim 26 is being judged, so the learner has a single true-or-false decision."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The dance-shoe challenge wrapper does not affect 36 − 10; the displayed claim 26 follows from 6 − 0 ones and 3 − 1 tens."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem explicitly presents 36 − 10 = 26 and asks True or False, while the hints calculate 6 − 0 and 3 − 1."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The answer True matches 36 − 10 = 26; the hints subtract 0 ones and 1 tens, agreeing with the stem and no visual."
+          }
+        }
+      },
+      {
+        "sample_id": "e6c3479b275b4dcf1725",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The error-detection task identifies a proposed result for 18 − 0; the learner can determine correctness by checking it against the computed difference 18."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The olives theme is incidental to 18 − 0; the proposed 19 is clearly testable against the unchanged quantity 18."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The prompt asks whether the student's proposed value for 18 − 0 is correct, and the hint sequence computes 8 − 0 ones then 1 − 0 tens."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The rendered key records an error and gives 18; direct subtraction of 0 from 18 confirms that result, consistent with the hints."
+          }
+        }
+      },
+      {
+        "sample_id": "d08b84fc97a200878f5e",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The cloze item asks for the unique difference of 96 and 44, which is 52; its listed options do not create a second mathematically valid completion."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Subtracting 44 from 96 is precisely the action requested and yields 52; the stem gives no story detail that would change that operation."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The prompt identifies 96 − 44 as the target and offers a blank or choices; the hints separately compute 6 − 4 and 9 − 4."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The keyed difference 52 equals 96 − 44; the ones and tens hint results combine to that value without requiring regrouping or an alternate visual."
+          }
+        }
+      },
+      {
+        "sample_id": "3a4161b00c8ec40de0c2",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The mcq item asks for the unique difference of 47 and 0, which is 47; its listed options do not create a second mathematically valid completion."
+          },
+          "contextual_logical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "For 47 − 0 = 47, the operation and answer are clear, although the stem calls zero only 0 ones and omits explicit zero tens."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The prompt identifies 47 − 0 as the target and offers a blank or choices; the hints separately compute 7 − 0 and 4 − 0."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The keyed difference 47 equals 47 − 0; the ones and tens hint results combine to that value without requiring regrouping or an alternate visual."
+          }
+        }
+      },
+      {
+        "sample_id": "3c3805421fb06cf3552d",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The mcq item asks for the unique difference of 29 and 12, which is 17; its listed options do not create a second mathematically valid completion."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Subtracting 12 from 29 is precisely the action requested and yields 17; the stem gives no story detail that would change that operation."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The prompt identifies 29 − 12 as the target and offers a blank or choices; the hints separately compute 9 − 2 and 2 − 1."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The keyed difference 17 equals 29 − 12; the ones and tens hint results combine to that value without requiring regrouping or an alternate visual."
+          }
+        }
+      },
+      {
+        "sample_id": "9657bf27803a6bae4e9b",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The cloze item asks for the unique difference of 48 and 30, which is 18; its listed options do not create a second mathematically valid completion."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Subtracting 30 from 48 is precisely the action requested and yields 18; the stem gives no story detail that would change that operation."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The prompt identifies 48 − 30 as the target and offers a blank or choices; the hints separately compute 8 − 0 and 4 − 3."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The keyed difference 18 equals 48 − 30; the ones and tens hint results combine to that value without requiring regrouping or an alternate visual."
+          }
+        }
+      },
+      {
+        "sample_id": "64cb80732b7bb87445ee",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The error-detection task identifies a proposed result for 15 − 3; the learner can determine correctness by checking it against the computed difference 12."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The named solver's proposed answer for 15 − 3 is evaluated as a number statement; the surrounding name or theme does not alter the place-value calculation."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The prompt asks whether the student's proposed value for 15 − 3 is correct, and the hint sequence computes 5 − 3 ones then 1 − 0 tens."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The rendered key records an error and gives 12; direct subtraction of 3 from 15 confirms that result, consistent with the hints."
+          }
+        }
+      },
+      {
+        "sample_id": "d41a5169b1ac39719dab",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The error-detection task identifies a proposed result for 62 − 0; the learner can determine correctness by checking it against the computed difference 62."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The named solver's proposed answer for 62 − 0 is evaluated as a number statement; the surrounding name or theme does not alter the place-value calculation."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The prompt asks whether the student's proposed value for 62 − 0 is correct, and the hint sequence computes 2 − 0 ones then 6 − 0 tens."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The rendered key records an error and gives 62; direct subtraction of 0 from 62 confirms that result, consistent with the hints."
+          }
+        }
+      }
+    ],
+    "clause_evidence": [
+      {
+        "requirement_id": "subtract_numbers",
+        "clause": "Subtract numbers",
+        "verdict": "PASS",
+        "reasoning": "All cited examples ask learners to find or judge a subtraction difference, including ordinary equations and checks of a solver's proposed result.",
+        "sample_ids": [
+          "ecf97ae5f3ff5813cf8f",
+          "5bbea7a896bb062b1c40",
+          "bf6d3fbdeef0b069f577"
+        ]
+      },
+      {
+        "requirement_id": "expressing_tens_ones",
+        "clause": "expressing minuends and subtrahends as tens and ones",
+        "verdict": "CONCERN",
+        "reasoning": "Most stems name tens and ones for both numbers, but zero subtrahends in these cited cases are written as 0 ones only, leaving tens unstated.",
+        "sample_ids": [
+          "ecf97ae5f3ff5813cf8f",
+          "b60ea109f25efa0267b3",
+          "64dc85de4f935983ce32",
+          "4528955f469d5ddc5865"
+        ]
+      },
+      {
+        "requirement_id": "expanded_form",
+        "clause": "expanded form",
+        "verdict": "PASS",
+        "reasoning": "The cited stems decompose the operands into tens and ones before subtraction, while matching hints subtract corresponding place values and combine the difference.",
+        "sample_ids": [
+          "ecf97ae5f3ff5813cf8f",
+          "3fd836bf21b798774fdb",
+          "9931f1374f9d36209865"
+        ]
+      },
+      {
+        "requirement_id": "without_regrouping",
+        "clause": "without regrouping",
+        "verdict": "PASS",
+        "reasoning": "The selected examples all subtract ones without borrowing: each minuend's ones digit is at least the subtrahend's, and the tens digits also subtract directly.",
+        "sample_ids": [
+          "ecf97ae5f3ff5813cf8f",
+          "f0a2b37b625df24e7da8",
+          "3c3805421fb06cf3552d"
+        ]
+      }
+    ],
+    "overall": "CONCERN"
+  }
+}

@@ -1,0 +1,724 @@
+{
+  "reviewer": "blind-reviewer-gpt-6-luna-medium-w14-mat_g1_na_q3_4-20260925",
+  "mat_g1_na_q3_4": {
+    "findings": {
+      "cognitive_capacity": {
+        "verdict": "CONCERN",
+        "rationale": "The repeated place-value subtraction is accessible, but the competency is Grade 1 and the packet's consistent two-digit notation and many prose formats merit review for learners still building concrete quantity understanding."
+      },
+      "competency_alignment": {
+        "verdict": "CONCERN",
+        "rationale": "Every problem subtracts within 100 without regrouping, yet most provide symbolic arithmetic or a verbal story; concrete modeling required by the competency is not demonstrated in the output."
+      },
+      "competency_fulfillment": {
+        "verdict": "FAIL",
+        "rationale": "The requirements name concrete and pictorial models, but samples offer only EmojiPictorial or NumberLine visuals and mostly bare verbal equations; there is no evident concrete model.",
+        "decomposition": {
+          "verdict": "PASS",
+          "reasoning": "The listed clauses preserve subtraction, the below-100 bound, both model types, no regrouping, and both digit-combination cases, so together they account for the competency wording."
+        }
+      },
+      "comprehensive_coverage": {
+        "verdict": "CONCERN",
+        "rationale": "Both 2-digit minus 1-digit and 2-digit minus 2-digit examples appear, with varied remainders and contexts; evidence for concrete models is absent and visual representations are limited."
+      },
+      "scale_appropriateness": {
+        "verdict": "PASS",
+        "rationale": "The operands stay below 100 and all computations avoid borrowing or regrouping; answers and intermediate place-value facts remain suitable for the stated task."
+      },
+      "variant_comprehensiveness": {
+        "verdict": "CONCERN",
+        "rationale": "The packet uses cloze, true-false, error detection, multiple choice, pictorial groups, and number lines, but concrete manipulatives are missing and most reasoning follows one place-value hint pattern."
+      }
+    },
+    "sample_assessments": [
+      {
+        "sample_id": "0609e7bc944f66d7cc62",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "12 − 11 = 1; result blank; choices include 1. The four choices include a single 1, and the tens-and-ones hints confirm the difference."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The counting-back wording describes the same subtraction fact, with no conflicting context."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The hints split 12 − 11 into ones and tens and arrive at the result blank shown in the stem."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "12 minus 11 is 1; the answer and listed choice 1 agree, and the place-value steps yield zero tens and one."
+          }
+        }
+      },
+      {
+        "sample_id": "e7bbf42e2766eaa2293c",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "45 − 10 = 35, while Grace's claimed result is 34, so the error-detection response is determinate."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Grace's count-back sentence and her proposed answer are directly tested by the displayed subtraction."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Hints subtract 10 from 45 and conclude 35, matching the correct value despite Grace's incorrect 34."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "45 minus 10 equals 35, making has_error true and correct_value 35 consistent with the stem."
+          }
+        }
+      },
+      {
+        "sample_id": "a400a55b88948ac80462",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "90 − 20 leaves 70, so the true-or-false claim has a single clear truth value."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The stars are simply counted and removed; taking away 20 from 90 supports the stated remainder."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The ones and tens hints calculate 90 − 20 and agree with the claim and keyed True response."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "90 minus 20 is 70, confirming the printed remainder and True answer."
+          }
+        }
+      },
+      {
+        "sample_id": "548b1b64698469aab4a0",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "66 erasers minus 30 gives 36, the only matching value among 35, 96, 36, and 37."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Taking away 30 erasers is a straightforward quantity context consistent with the subtraction asked."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The hints subtract zero ones and three tens from 66, correctly arriving at the stem's requested count."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "66 − 30 = 36; the answer matches the option 36 and both place-value subtractions."
+          }
+        }
+      },
+      {
+        "sample_id": "ce6c6dc3698cf6684253",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "63 counting back 60 lands on 3; only option 3 matches that result."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The count-back action accurately models subtracting 60 from 63 without a competing interpretation."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Hints calculate the same 63 − 60 operation stated in the stem, including the zero ones result."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "63 minus 60 is 3, consistent with the key and the choices 3, 4, 2, and 123."
+          }
+        }
+      },
+      {
+        "sample_id": "b82865a87af9636a9af4",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "22 paints less 10 gives 12, uniquely selected from 10, 32, 12, and 13."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Taking away ten paints matches the word problem; the EmojiPictorial labels indicate paints and tens."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The hints calculate 22 − 10 as 12, consistent with both the question and the visual's paint theme."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "22 minus 10 equals 12, matching the answer and the only correct option."
+          }
+        }
+      },
+      {
+        "sample_id": "c2d95b8c3a5d259f411d",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "81 − 80 leaves 1, so the claim that zero stars remain is clearly false."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The stars narrative consistently describes removing 80 from 81, matching the arithmetic claim being judged."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The hints derive one remaining star and contradict the stem's proposed zero, supporting False."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "81 minus 80 equals 1; the keyed False response correctly rejects the claimed remainder of 0."
+          }
+        }
+      },
+      {
+        "sample_id": "66459ffc8104a03689e4",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "91 − 71 is 20, so Pia's proposed 21 is incorrect and the error-detection answer is clear."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Pia's candy subtraction story aligns with the stated 91 and 71 quantities and the queried result."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The hint chain subtracts ones and tens from 91 and verifies the correct value of 20, not Pia's 21."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "91 minus 71 equals 20, consistent with has_error true and correct_value 20."
+          }
+        }
+      },
+      {
+        "sample_id": "0f13ab9a2895344f2380",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "69 − 7 leaves 62, and the options contain only one matching answer."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The paint story asks how many remain after taking seven; the pictorial labels show paint groups coherently."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Hints subtract 7 ones and preserve the 6 tens, matching the question and picture grouping."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "69 minus 7 equals 62, which matches the key, one option, and the tens-and-ones steps."
+          }
+        }
+      },
+      {
+        "sample_id": "6aea8d7e39b171eedbeb",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "50 − 50 equals 0, making Noel's statement correct without any ambiguity."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The eraser wrapper describes removing all 50 erasers, consistent with a zero remainder."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The hints subtract matching ones and tens, reaching the same zero stated by Noel."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The answer marks no error and correct_value 0; both are justified by 50 − 50 = 0."
+          }
+        }
+      },
+      {
+        "sample_id": "1b416e823866922a9afc",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "13 counting back 10 lands on 3, so the true-or-false statement is clear."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The count-back phrasing is an equivalent verbal form of subtracting 10 from 13."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The hints subtract one ten and zero ones to obtain 3, agreeing with the stem's claim."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "13 − 10 equals 3, so the printed True answer is mathematically correct."
+          }
+        }
+      },
+      {
+        "sample_id": "92b2e98f6c8e8b987d13",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "33 cupcakes less 10 is 23, uniquely identified by the options."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The cupcake story and emoji pictorial depict the same quantity and removal action as the equation."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Subtracting 10 from 33 in the hints gives 23, consistent with the stem and pictured cupcakes."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "33 minus 10 equals 23, matching the answer and its sole matching option."
+          }
+        }
+      },
+      {
+        "sample_id": "98597d047a82582dbcbb",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Starting at 48 and moving back 30 reaches 18; the options distinguish it clearly."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The number-line movement backward represents the stated subtraction, and its labeled span includes the relevant tens."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Hints compute 48 − 30 as 18, agreeing with the starting point and backward movement."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "48 minus 30 equals 18, as keyed; the line labels from 0 through 60 provide a relevant scale."
+          }
+        }
+      },
+      {
+        "sample_id": "695e11625d20d8a84207",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "35 items less 15 leaves 20, the unique correct choice. Its hints subtract five ones and one ten, which independently verifies the listed result."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The generic items and basketball pictorial do not introduce a contradictory count or action."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Hints correctly subtract five ones and one ten from 35, supporting the 20 items left."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "35 − 15 = 20, consistent with the keyed answer and options. The ones subtraction and tens subtraction in the hints produce that difference exactly."
+          }
+        }
+      },
+      {
+        "sample_id": "f02d93554e9322a259e8",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "70 moving back 40 reaches 30, and only the first listed choice works."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The number-line movement and wording both express subtracting 40 from 70."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The place-value hints yield 30 and follow the same backward movement stated in the stem."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "70 minus 40 equals 30, matching the key; the shown labels include 30 and 70."
+          }
+        }
+      },
+      {
+        "sample_id": "0f3347450a75eda5c16c",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "54 − 30 gives 24, so Manny's answer is correct and the response is unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Manny's count-back wording and the missing-number prompt both describe the same subtraction."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The hints subtract 30 from 54 and verify 24, agreeing with Manny's claim."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The key correctly reports no error because 54 minus 30 is 24."
+          }
+        }
+      },
+      {
+        "sample_id": "8c2334b5162f6c38e876",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "20 counting back 20 reaches 0; no other choice fits. The displayed choices include 0 once, and both place-value hints support that landing point."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The start-and-count-back instruction clearly describes removing the entire starting amount."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Hints subtract zero ones and two tens, producing the same zero as the stem asks for."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "20 − 20 equals 0, which matches the printed answer and option 0."
+          }
+        }
+      },
+      {
+        "sample_id": "1b9947c6b65db916e2b2",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "35 counting back 30 lands on 5, so the truth claim is determinate."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The short number-line-like language accurately conveys subtracting 30 from 35."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Hints confirm the five remaining ones and zero tens, matching the claimed landing number."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "35 minus 30 is 5, making the keyed True response correct. Its ones stay 5 while subtracting three tens, as both the claim and hints indicate."
+          }
+        }
+      },
+      {
+        "sample_id": "114f53800c100ca8f3d3",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "14 marbles minus 1 gives 13, with one matching option among the choices."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The marble context is a simple count-and-remove situation consistent with subtraction."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Hints subtract one from the ones digit and leave one ten, deriving the stated remainder."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "14 − 1 equals 13, as keyed and as one of the listed choices."
+          }
+        }
+      },
+      {
+        "sample_id": "510bed76cb0a15ae05aa",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "65 blocks less 30 gives 35, the only correct listed choice. The one-digit remainder agrees with subtracting three tens while keeping all five ones."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Removing 30 blocks from 65 is a coherent quantity problem with no conflicting wrapper."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The hints remove three tens and no ones, reaching the number of blocks requested."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "65 minus 30 equals 35, matching the answer and choices. The hint chain explicitly leaves five ones after removing three tens from the blocks."
+          }
+        }
+      },
+      {
+        "sample_id": "6c3922d7cc985bbe38c3",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "34 items less 30 leaves 4; only option 4 is correct. The pictorial group and subtraction hints both leave four units after taking away three tens."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The EmojiPictorial shows a large group and ten-item group, aligning with the subtraction story."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Hints subtract three tens and retain four ones, consistent with the question and picture."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "34 − 30 = 4, matching the answer and the displayed option set."
+          }
+        }
+      },
+      {
+        "sample_id": "2fbdd14f419e360e3924",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "81 stickers minus 30 is 51, the one matching option. Subtracting three tens leaves the one sticker unit unchanged, and option 51 occurs only once."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The dance-shoes themed intro does not contradict the separate sticker subtraction that follows."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The hints calculate 81 − 30 by place value and conclude the same 51 requested."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "81 minus 30 equals 51, matching both the key and one option."
+          }
+        }
+      },
+      {
+        "sample_id": "85c01bd0209ccf4cb2fe",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "22 items less 20 leaves 2, uniquely present among the choices."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The costume theme and pictorial dancer are decorative; the item count and removal remain consistent."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Hints subtract two tens from 22 and correctly reach 2, matching the visual prompt."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "22 − 20 equals 2, agreeing with the answer and choice 2. The hints remove two tens from 22 and retain the two units shown by the answer."
+          }
+        }
+      },
+      {
+        "sample_id": "99b72c76b36ac364b342",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "81 − 80 leaves 1 cookie, so the true claim has a clear answer."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The cookie scenario directly represents taking 80 away from 81."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Hints retain one in the ones place and zero tens, confirming the claimed remainder."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "81 minus 80 equals 1, so True is the correct response. The hints preserve the single cookie in the ones place after removing eight tens."
+          }
+        }
+      },
+      {
+        "sample_id": "90361ff4b05d281d176e",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "27 − 22 equals 5, making Noel's claim of 6 incorrect. The hints verify 5, while the stem states a different proposed result of 6."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Noel's count-back statement matches the subtraction task and has a single proposed answer to check."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The hints compute 7 − 2 and 2 − 2 to reach 5, which directly challenges Noel's 6."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The error flag and correct_value 5 are both consistent with 27 minus 22."
+          }
+        }
+      },
+      {
+        "sample_id": "0fb00af1b9fa43762049",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "25 stickers less 14 gives 11, so Maria's 12 is incorrect. The hints yield 11 after subtracting four ones and one ten, distinguishing it from 12."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The sticker context coherently frames the subtraction and the proposed answer check."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Hints produce one in the ones place and one ten, correctly deriving 11."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "25 − 14 equals 11; the key correctly identifies Maria's 12 as an error."
+          }
+        }
+      },
+      {
+        "sample_id": "8b4f5c530b77e91af920",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "18 pencils less 10 leaves 8, uniquely among the four options."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The pencil story asks a direct remainder question and introduces no conflicting information."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The gated hints compute 18 − 10 as 8 and agree with the cloze blank and choices."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "18 minus 10 equals 8, matching the keyed result and listed option."
+          }
+        }
+      },
+      {
+        "sample_id": "18fd51919e53e5edabf6",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "35 items less 10 gives 25, the one correct option. Its ten-group pictorial and subtraction hints support 25, which appears only once in the choices."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The EmojiPictorial shows groups of ten and ones, appropriate to the story's removal of ten."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Hints subtract one ten from 35 and arrive at 25, consistent with all parts of the sample."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "35 − 10 = 25, matching the answer and option 25. The hint chain removes one ten and retains five units, supporting the answer shown."
+          }
+        }
+      },
+      {
+        "sample_id": "c4be93a2df3af479479b",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "37 cupcakes less 30 leaves 7, uniquely selected among options."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The cupcake pictorial uses a ten-group and remaining units, consistent with the subtraction prompt."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Hints remove three tens and retain seven ones, producing the stated answer."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "37 minus 30 is 7, which matches both the printed key and listed choice."
+          }
+        }
+      }
+    ],
+    "clause_evidence": [
+      {
+        "requirement_id": "subtract_numbers",
+        "clause": "Subtract numbers",
+        "verdict": "PASS",
+        "reasoning": "All cited samples ask learners to find a difference or judge another person's subtraction result; the answers and hint chains consistently center on subtraction.",
+        "sample_ids": [
+          "0609e7bc944f66d7cc62",
+          "66459ffc8104a03689e4",
+          "98597d047a82582dbcbb"
+        ]
+      },
+      {
+        "requirement_id": "less_than_100",
+        "clause": "numbers are less than 100",
+        "verdict": "PASS",
+        "reasoning": "The cited operands are two-digit values below 100 and their results stay below 100, with no larger values required by the problems.",
+        "sample_ids": [
+          "a400a55b88948ac80462",
+          "695e11625d20d8a84207",
+          "0fb00af1b9fa43762049"
+        ]
+      },
+      {
+        "requirement_id": "concrete_models",
+        "clause": "concrete",
+        "verdict": "FAIL",
+        "reasoning": "The cited samples have no physical manipulatives, counters, or other concrete model described; an arithmetic story or static picture does not establish concrete use.",
+        "sample_ids": [
+          "b82865a87af9636a9af4",
+          "98597d047a82582dbcbb",
+          "6c3922d7cc985bbe38c3"
+        ]
+      },
+      {
+        "requirement_id": "pictorial_models",
+        "clause": "pictorial models",
+        "verdict": "PASS",
+        "reasoning": "Rendered EmojiPictorial and NumberLine samples visibly identify pictorial representations, including paint groups and a labeled number line used alongside subtraction prompts.",
+        "sample_ids": [
+          "0f13ab9a2895344f2380",
+          "98597d047a82582dbcbb",
+          "6c3922d7cc985bbe38c3"
+        ]
+      },
+      {
+        "requirement_id": "without_regrouping",
+        "clause": "without regrouping",
+        "verdict": "PASS",
+        "reasoning": "The selected facts subtract each place without exchanging a ten: 69 − 7 has sufficient ones, and 35 − 15 has sufficient ones and tens.",
+        "sample_ids": [
+          "0f13ab9a2895344f2380",
+          "695e11625d20d8a84207"
+        ]
+      },
+      {
+        "requirement_id": "sub_2d_1d",
+        "clause": "2-digit minus 1-digit numbers",
+        "verdict": "PASS",
+        "reasoning": "These samples subtract a one-digit number from a two-digit number and do not require regrouping, including 14 − 1 and 69 − 7.",
+        "sample_ids": [
+          "0f13ab9a2895344f2380",
+          "114f53800c100ca8f3d3"
+        ]
+      },
+      {
+        "requirement_id": "sub_2d_2d",
+        "clause": "2-digit minus 2-digit numbers",
+        "verdict": "PASS",
+        "reasoning": "Both cited examples subtract a two-digit number from a two-digit number without borrowing, covering differing values and subtraction contexts.",
+        "sample_ids": [
+          "0609e7bc944f66d7cc62",
+          "695e11625d20d8a84207",
+          "0fb00af1b9fa43762049"
+        ]
+      }
+    ],
+    "overall": "FAIL"
+  }
+}

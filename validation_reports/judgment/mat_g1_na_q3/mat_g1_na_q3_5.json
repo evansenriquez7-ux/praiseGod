@@ -1,7 +1,38 @@
 {
+  "schema_version": 2,
   "node_id": "mat_g1_na_q3_5",
-  "reviewed_by": "reviewer-c2-basalt-yarrow-7194",
-  "review_date": "2026-09-11",
+  "competency_snapshot": {
+    "text": "Subtract numbers by expressing minuends and subtrahends as tens and ones (expanded form), without regrouping.",
+    "grade": 1,
+    "quarter": 3,
+    "subdomain": null
+  },
+  "requirements_snapshot": [
+    {
+      "kind": "task",
+      "id": "subtract_numbers",
+      "clause": "Subtract numbers"
+    },
+    {
+      "kind": "task",
+      "id": "expressing_tens_ones",
+      "clause": "expressing minuends and subtrahends as tens and ones"
+    },
+    {
+      "kind": "representation",
+      "id": "expanded_form",
+      "clause": "expanded form"
+    },
+    {
+      "kind": "property",
+      "id": "without_regrouping",
+      "clause": "without regrouping"
+    }
+  ],
+  "packet_digest": "b8fc36ce094ad3ee89d08afca5c96402bbe30c899d78521ee07a821632a4a65c",
+  "sampling_version": "phase2-stratified-v2-rendered-visual",
+  "reviewed_by": "blind-reviewer-gpt-6-luna-medium-w15-mat_g1_na_q3_5-20260925",
+  "review_date": "2026-09-25",
   "blind": true,
   "sample_seeds": [
     42,
@@ -18,14 +49,74 @@
     602,
     603,
     604,
-    605
+    605,
+    606,
+    607,
+    608,
+    609,
+    610,
+    700,
+    701,
+    702,
+    800,
+    900,
+    901,
+    1000,
+    1001,
+    1002
+  ],
+  "sample_ids": [
+    "ecf97ae5f3ff5813cf8f",
+    "ec361f1ec6f195c04c1d",
+    "a6fa0070adb745b91078",
+    "5bbea7a896bb062b1c40",
+    "427d86603c2a2366d63e",
+    "bf6d3fbdeef0b069f577",
+    "f0a2b37b625df24e7da8",
+    "3fd836bf21b798774fdb",
+    "f8a50f79d7b681f772d1",
+    "1a88c5194e5c1892f890",
+    "29fa49303c547f286943",
+    "78525874e445dbf9018c",
+    "b60ea109f25efa0267b3",
+    "e04bdf1278d2aac09351",
+    "092391a0c6a84044fe81",
+    "64dc85de4f935983ce32",
+    "4528955f469d5ddc5865",
+    "9c8bf65581d092317135",
+    "9931f1374f9d36209865",
+    "61720ccd8b38ed98c88f",
+    "b7fcf007390b86c85551",
+    "10ef485880acfdda723e",
+    "e6c3479b275b4dcf1725",
+    "d08b84fc97a200878f5e",
+    "3a4161b00c8ec40de0c2",
+    "3c3805421fb06cf3552d",
+    "9657bf27803a6bae4e9b",
+    "64cb80732b7bb87445ee",
+    "d41a5169b1ac39719dab"
   ],
   "samples_reviewed": [
     {
+      "node_id": "mat_g1_na_q3_5",
       "seed": 42,
       "formatter": "cloze",
       "question_text": "75 is 7 tens and 5 ones. 12 is 1 ten and 2 ones. Subtract the place values, then find what's left: 75 − 12 = ___",
       "correct_answer": 63,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -51,13 +142,37 @@
           "text": "64",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 63,
+      "hints": [
+        "We are subtracting 12 from 75.",
+        "Subtract the ones: 5 − 2 = 3.",
+        "Subtract the tens: 7 − 1 = 6.",
+        "The difference of 75 − 12 = 63."
+      ],
+      "sample_id": "ecf97ae5f3ff5813cf8f",
+      "replay_digest": "2bd6fffa471e98caa78960587b03260f96f0e575a83107ba7ab79f7b16b4ca80"
     },
     {
+      "node_id": "mat_g1_na_q3_5",
       "seed": 43,
       "formatter": "mcq",
       "question_text": "13 is 1 ten and 3 ones. 10 is 1 ten and 0 ones. Subtract the place values, then find what's left: what is 13 − 10?",
       "correct_answer": 3,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -79,13 +194,37 @@
           "value": 3,
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 3,
+      "hints": [
+        "We are subtracting 10 from 13.",
+        "Subtract the ones: 3 − 0 = 3.",
+        "Subtract the tens: 1 − 1 = 0.",
+        "The difference of 13 − 10 = 3."
+      ],
+      "sample_id": "ec361f1ec6f195c04c1d",
+      "replay_digest": "f2f46392c156835e7dea00923a337e8a294ab626d68554ba08a048189c4fbb93"
     },
     {
+      "node_id": "mat_g1_na_q3_5",
       "seed": 44,
       "formatter": "cloze",
       "question_text": "45 is 4 tens and 5 ones. 40 is 4 tens and 0 ones. Subtract the place values, then find what's left: 45 − 40 = ___",
       "correct_answer": 5,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -111,40 +250,167 @@
           "text": "5",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 5,
+      "hints": [
+        "We are subtracting 40 from 45.",
+        "Subtract the ones: 5 − 0 = 5.",
+        "Subtract the tens: 4 − 4 = 0.",
+        "The difference of 45 − 40 = 5."
+      ],
+      "sample_id": "a6fa0070adb745b91078",
+      "replay_digest": "049a6d7d074f8f4a3f10ee55618cb135dbcf495b4e3ab636452d904706e2cf24"
     },
     {
+      "node_id": "mat_g1_na_q3_5",
       "seed": 45,
       "formatter": "true_false",
       "question_text": "35 is 3 tens and 5 ones. 30 is 3 tens and 0 ones. Subtract the place values, then find what's left: 35 − 30 = 4. True or False?",
-      "correct_answer": false
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "We are subtracting 30 from 35.",
+        "Subtract the ones: 5 − 0 = 5.",
+        "Subtract the tens: 3 − 3 = 0.",
+        "The difference of 35 − 30 = 5."
+      ],
+      "sample_id": "5bbea7a896bb062b1c40",
+      "replay_digest": "1e01a411313c875cd0652579774fca00b0835f54363ef3d6558c63466d93bfa2"
     },
     {
+      "node_id": "mat_g1_na_q3_5",
       "seed": 46,
       "formatter": "true_false",
       "question_text": "15 is 1 ten and 5 ones. 11 is 1 ten and 1 one. Subtract the place values, then find what's left: 15 − 11 = 4. True or False?",
-      "correct_answer": true
+      "correct_answer": true,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": true,
+      "hints": [
+        "We are subtracting 11 from 15.",
+        "Subtract the ones: 5 − 1 = 4.",
+        "Subtract the tens: 1 − 1 = 0.",
+        "The difference of 15 − 11 = 4."
+      ],
+      "sample_id": "427d86603c2a2366d63e",
+      "replay_digest": "597ef500f43fd7a21bab692db55868083bc4aaeef342e457b16bc5cbea6577ae"
     },
     {
+      "node_id": "mat_g1_na_q3_5",
       "seed": 48,
       "formatter": "error_detect",
       "question_text": "Noel solved: \"64 is 6 tens and 4 ones. 30 is 3 tens and 0 ones. Subtract the place values, then find what's left: 64 − 30 = ___\". Noel says the missing number is 34. Is Noel correct?",
       "correct_answer": {
         "has_error": false,
         "correct_value": 34
-      }
+      },
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 34
+      },
+      "hints": [
+        "We are subtracting 30 from 64.",
+        "Subtract the ones: 4 − 0 = 4.",
+        "Subtract the tens: 6 − 3 = 3.",
+        "The difference of 64 − 30 = 34."
+      ],
+      "sample_id": "bf6d3fbdeef0b069f577",
+      "replay_digest": "5728bc7a48f2cbca1f2f9f11c509afda9c32f5bca86eafad1f3909f653993b4d"
     },
     {
+      "node_id": "mat_g1_na_q3_5",
       "seed": 500,
       "formatter": "true_false",
       "question_text": "98 is 9 tens and 8 ones. 54 is 5 tens and 4 ones. Subtract the place values, then find what's left: 98 − 54 = 45. True or False?",
-      "correct_answer": false
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "We are subtracting 54 from 98.",
+        "Subtract the ones: 8 − 4 = 4.",
+        "Subtract the tens: 9 − 5 = 4.",
+        "The difference of 98 − 54 = 44."
+      ],
+      "sample_id": "f0a2b37b625df24e7da8",
+      "replay_digest": "56e4d27de0c390e2ac17344370deb688c20eb03aaae76ad0f9fccab9ee8ba59a"
     },
     {
+      "node_id": "mat_g1_na_q3_5",
       "seed": 501,
       "formatter": "mcq",
       "question_text": "94 is 9 tens and 4 ones. 72 is 7 tens and 2 ones. Subtract the place values, then find what's left: what is 94 − 72?",
       "correct_answer": 22,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -166,22 +432,77 @@
           "value": 23,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 22,
+      "hints": [
+        "We are subtracting 72 from 94.",
+        "Subtract the ones: 4 − 2 = 2.",
+        "Subtract the tens: 9 − 7 = 2.",
+        "The difference of 94 − 72 = 22."
+      ],
+      "sample_id": "3fd836bf21b798774fdb",
+      "replay_digest": "dbad5e8a2ecc1cda736dc5c4064e8a911707b6ead3d65e0dad3483f247eb1fa5"
     },
     {
+      "node_id": "mat_g1_na_q3_5",
       "seed": 502,
       "formatter": "error_detect",
       "question_text": "Dante solved: \"88 is 8 tens and 8 ones. 58 is 5 tens and 8 ones. Subtract the place values, then find what's left: 88 − 58 = ___\". Dante says the missing number is 30. Is Dante correct?",
       "correct_answer": {
         "has_error": false,
         "correct_value": 30
-      }
+      },
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 30
+      },
+      "hints": [
+        "We are subtracting 58 from 88.",
+        "Subtract the ones: 8 − 8 = 0.",
+        "Subtract the tens: 8 − 5 = 3.",
+        "The difference of 88 − 58 = 30."
+      ],
+      "sample_id": "f8a50f79d7b681f772d1",
+      "replay_digest": "d25e732d4bb380d51fda4324bb70a35f61b53ba5daa909051c07299e8acd8c25"
     },
     {
+      "node_id": "mat_g1_na_q3_5",
       "seed": 600,
       "formatter": "mcq",
       "question_text": "35 is 3 tens and 5 ones. 10 is 1 ten and 0 ones. Subtract the place values, then find what's left: what is 35 − 10?",
       "correct_answer": 25,
+      "requested": {
+        "difficulty_profile": {
+          "context": "pure"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -203,13 +524,39 @@
           "value": 45,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 25,
+      "hints": [
+        "We are subtracting 10 from 35.",
+        "Subtract the ones: 5 − 0 = 5.",
+        "Subtract the tens: 3 − 1 = 2.",
+        "The difference of 35 − 10 = 25."
+      ],
+      "sample_id": "1a88c5194e5c1892f890",
+      "replay_digest": "84d3d6febdf4a02c362d8dcd81bad94289be55e3ea309bebd2df1e586770d576"
     },
     {
+      "node_id": "mat_g1_na_q3_5",
       "seed": 601,
       "formatter": "cloze",
       "question_text": "25 is 2 tens and 5 ones. 15 is 1 ten and 5 ones. Subtract the place values, then find what's left: 25 − 15 = ___",
       "correct_answer": 10,
+      "requested": {
+        "difficulty_profile": {
+          "context": "word_problem"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -235,22 +582,77 @@
           "text": "10",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 10,
+      "hints": [
+        "We are subtracting 15 from 25.",
+        "Subtract the ones: 5 − 5 = 0.",
+        "Subtract the tens: 2 − 1 = 1.",
+        "The difference of 25 − 15 = 10."
+      ],
+      "sample_id": "29fa49303c547f286943",
+      "replay_digest": "1b304d479a44ed4c3bad6a2e179228115ce080797e9013973c6453eae2336674"
     },
     {
+      "node_id": "mat_g1_na_q3_5",
       "seed": 602,
       "formatter": "error_detect",
       "question_text": "Jose solved: \"45 is 4 tens and 5 ones. 20 is 2 tens and 0 ones. Subtract the place values, then find what's left: 45 − 20 = ___\". Jose says the missing number is 25. Is Jose correct?",
       "correct_answer": {
         "has_error": false,
         "correct_value": 25
-      }
+      },
+      "requested": {
+        "difficulty_profile": {
+          "number_range": 100
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 25
+      },
+      "hints": [
+        "We are subtracting 20 from 45.",
+        "Subtract the ones: 5 − 0 = 5.",
+        "Subtract the tens: 4 − 2 = 2.",
+        "The difference of 45 − 20 = 25."
+      ],
+      "sample_id": "78525874e445dbf9018c",
+      "replay_digest": "d00b0dbd9bfa7e32810ce7fb5b25ac63caebe2c75766678ec4911c6d4871f7f9"
     },
     {
+      "node_id": "mat_g1_na_q3_5",
       "seed": 603,
       "formatter": "mcq",
       "question_text": "24 is 2 tens and 4 ones. 0 is 0 ones. Subtract the place values, then find what's left: what is 24 − 0?",
       "correct_answer": 24,
+      "requested": {
+        "difficulty_profile": {
+          "number_range": 1000
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -272,48 +674,1515 @@
           "value": 23,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 24,
+      "hints": [
+        "We are subtracting 0 from 24.",
+        "Subtract the ones: 4 − 0 = 4.",
+        "Subtract the tens: 2 − 0 = 2.",
+        "The difference of 24 − 0 = 24."
+      ],
+      "sample_id": "b60ea109f25efa0267b3",
+      "replay_digest": "f2e0a92390be981709f2f6be7212e3ed0be2588cd4d63896f73f5bb855f97adb"
     },
     {
+      "node_id": "mat_g1_na_q3_5",
       "seed": 604,
       "formatter": "error_detect",
       "question_text": "Carlo solved: \"15 is 1 ten and 5 ones. 4 is 4 ones. Subtract the place values, then find what's left: 15 − 4 = ___\". Carlo says the missing number is 11. Is Carlo correct?",
       "correct_answer": {
         "has_error": false,
         "correct_value": 11
-      }
+      },
+      "requested": {
+        "difficulty_profile": {
+          "number_range": 10000
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 11
+      },
+      "hints": [
+        "We are subtracting 4 from 15.",
+        "Subtract the ones: 5 − 4 = 1.",
+        "Subtract the tens: 1 − 0 = 1.",
+        "The difference of 15 − 4 = 11."
+      ],
+      "sample_id": "e04bdf1278d2aac09351",
+      "replay_digest": "a5a5dcd43ae8ca6ce90ff2963e9a2dad44a93b31cc0f1cdd64b4f67af15661a3"
     },
     {
+      "node_id": "mat_g1_na_q3_5",
       "seed": 605,
       "formatter": "true_false",
       "question_text": "24 is 2 tens and 4 ones. 10 is 1 ten and 0 ones. Subtract the place values, then find what's left: 24 − 10 = 34. True or False?",
-      "correct_answer": false
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "number_range": 20
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "We are subtracting 10 from 24.",
+        "Subtract the ones: 4 − 0 = 4.",
+        "Subtract the tens: 2 − 1 = 1.",
+        "The difference of 24 − 10 = 14."
+      ],
+      "sample_id": "092391a0c6a84044fe81",
+      "replay_digest": "7358da4b8391d196371e8545d12f2877de4188b15e877c9a829178ca52cfeb71"
+    },
+    {
+      "node_id": "mat_g1_na_q3_5",
+      "seed": 606,
+      "formatter": "mcq",
+      "question_text": "91 is 9 tens and 1 one. 0 is 0 ones. Subtract the place values, then find what's left: what is 91 − 0?",
+      "correct_answer": 91,
+      "requested": {
+        "difficulty_profile": {
+          "spine": "comparing"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 91,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 92,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 93,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 90,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 91,
+      "hints": [
+        "We are subtracting 0 from 91.",
+        "Subtract the ones: 1 − 0 = 1.",
+        "Subtract the tens: 9 − 0 = 9.",
+        "The difference of 91 − 0 = 91."
+      ],
+      "sample_id": "64dc85de4f935983ce32",
+      "replay_digest": "6beb99672efa0b63ae89b9c799c26d5c05669011baefcb05dad23ae1ca02b101"
+    },
+    {
+      "node_id": "mat_g1_na_q3_5",
+      "seed": 607,
+      "formatter": "cloze",
+      "question_text": "84 is 8 tens and 4 ones. 0 is 0 ones. Subtract the place values, then find what's left: 84 − 0 = ___",
+      "correct_answer": 84,
+      "requested": {
+        "difficulty_profile": {
+          "spine": "taking_away"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 84,
+          "text": "84",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 86,
+          "text": "86",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 83,
+          "text": "83",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 85,
+          "text": "85",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 84,
+      "hints": [
+        "We are subtracting 0 from 84.",
+        "Subtract the ones: 4 − 0 = 4.",
+        "Subtract the tens: 8 − 0 = 8.",
+        "The difference of 84 − 0 = 84."
+      ],
+      "sample_id": "4528955f469d5ddc5865",
+      "replay_digest": "bf424005acd114b969d3a367ca54f400874417e2fc4afef0a3f26046d6a52de9"
+    },
+    {
+      "node_id": "mat_g1_na_q3_5",
+      "seed": 608,
+      "formatter": "error_detect",
+      "question_text": "Rico solved: \"21 is 2 tens and 1 one. 1 is 1 one. Subtract the place values, then find what's left: 21 − 1 = ___\". Rico says the missing number is 20. Is Rico correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 20
+      },
+      "requested": {
+        "difficulty_profile": {
+          "structure": "change_unknown"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 20
+      },
+      "hints": [
+        "We are subtracting 1 from 21.",
+        "Subtract the ones: 1 − 1 = 0.",
+        "Subtract the tens: 2 − 0 = 2.",
+        "The difference of 21 − 1 = 20."
+      ],
+      "sample_id": "9c8bf65581d092317135",
+      "replay_digest": "a4bb5de32837831b276aead229b7210ce36bd272abcb7092d54b38d73561fdba"
+    },
+    {
+      "node_id": "mat_g1_na_q3_5",
+      "seed": 609,
+      "formatter": "cloze",
+      "question_text": "75 is 7 tens and 5 ones. 1 is 1 one. Subtract the place values, then find what's left: 75 − 1 = ___",
+      "correct_answer": 74,
+      "requested": {
+        "difficulty_profile": {
+          "structure": "result_unknown"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 73,
+          "text": "73",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 74,
+          "text": "74",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 76,
+          "text": "76",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 75,
+          "text": "75",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 74,
+      "hints": [
+        "We are subtracting 1 from 75.",
+        "Subtract the ones: 5 − 1 = 4.",
+        "Subtract the tens: 7 − 0 = 7.",
+        "The difference of 75 − 1 = 74."
+      ],
+      "sample_id": "9931f1374f9d36209865",
+      "replay_digest": "7d467c49885bf083193e793c767511a4992745530657f2072b084d240093e7c6"
+    },
+    {
+      "node_id": "mat_g1_na_q3_5",
+      "seed": 610,
+      "formatter": "true_false",
+      "question_text": "50 is 5 tens and 0 ones. 30 is 3 tens and 0 ones. Subtract the place values, then find what's left: 50 − 30 = 19. True or False?",
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "structure": "start_unknown"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "We are subtracting 30 from 50.",
+        "Subtract the ones: 0 − 0 = 0.",
+        "Subtract the tens: 5 − 3 = 2.",
+        "The difference of 50 − 30 = 20."
+      ],
+      "sample_id": "61720ccd8b38ed98c88f",
+      "replay_digest": "718c4c020690e9f8ed4db1a572537b7b4d80d1863efd2d5a02db1212b382264a"
+    },
+    {
+      "node_id": "mat_g1_na_q3_5",
+      "seed": 700,
+      "formatter": "error_detect",
+      "question_text": "Carlo solved: \"24 is 2 tens and 4 ones. 0 is 0 ones. Subtract the place values, then find what's left: 24 − 0 = ___\". Carlo says the missing number is 24. Is Carlo correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 24
+      },
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 24
+      },
+      "hints": [
+        "We are subtracting 0 from 24.",
+        "Subtract the ones: 4 − 0 = 4.",
+        "Subtract the tens: 2 − 0 = 2.",
+        "The difference of 24 − 0 = 24."
+      ],
+      "sample_id": "b7fcf007390b86c85551",
+      "replay_digest": "f3f63b7130988bda988d85b72fd06c2323fcd5565a7930b766879a87954841f6"
+    },
+    {
+      "node_id": "mat_g1_na_q3_5",
+      "seed": 701,
+      "formatter": "true_false",
+      "question_text": "💃 Sir Rez has a math challenge about dance shoes. 36 is 3 tens and 6 ones. 10 is 1 ten and 0 ones. Subtract the place values, then find what's left: 36 − 10 = 26. True or False?",
+      "correct_answer": true,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "meme_streaming",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": true,
+      "hints": [
+        "We are subtracting 10 from 36.",
+        "Subtract the ones: 6 − 0 = 6.",
+        "Subtract the tens: 3 − 1 = 2.",
+        "The difference of 36 − 10 = 26."
+      ],
+      "sample_id": "10ef485880acfdda723e",
+      "replay_digest": "5ce0b701e16e18c165ea2dfcdb19b79344def19e6ad51548283bb9f4ae1c08dd"
+    },
+    {
+      "node_id": "mat_g1_na_q3_5",
+      "seed": 702,
+      "formatter": "error_detect",
+      "question_text": "✝️ Moses has a math challenge about olives. Manny solved: \"18 is 1 ten and 8 ones. 0 is 0 ones. Subtract the place values, then find what's left: 18 − 0 = ___\". Manny says the missing number is 19. Is Manny correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 18
+      },
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "bible",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": true,
+        "correct_value": 18
+      },
+      "hints": [
+        "We are subtracting 0 from 18.",
+        "Subtract the ones: 8 − 0 = 8.",
+        "Subtract the tens: 1 − 0 = 1.",
+        "The difference of 18 − 0 = 18."
+      ],
+      "sample_id": "e6c3479b275b4dcf1725",
+      "replay_digest": "da0b377f55a2f83eebf1b5b2e6aa8a72211f1d14efb867411a80897743e7aeef"
+    },
+    {
+      "node_id": "mat_g1_na_q3_5",
+      "seed": 800,
+      "formatter": "cloze",
+      "question_text": "96 is 9 tens and 6 ones. 44 is 4 tens and 4 ones. Subtract the place values, then find what's left: 96 − 44 = ___",
+      "correct_answer": 52,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 140,
+          "text": "140",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 51,
+          "text": "51",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 52,
+          "text": "52",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 53,
+          "text": "53",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 52,
+      "hints": [
+        "We are subtracting 44 from 96.",
+        "Subtract the ones: 6 − 4 = 2.",
+        "Subtract the tens: 9 − 4 = 5.",
+        "The difference of 96 − 44 = 52."
+      ],
+      "sample_id": "d08b84fc97a200878f5e",
+      "replay_digest": "9d12b7dc63e6c2f3d56ec95fcccc3f03b5b0a976e15baa8064ddad6d24adffde"
+    },
+    {
+      "node_id": "mat_g1_na_q3_5",
+      "seed": 900,
+      "formatter": "mcq",
+      "question_text": "47 is 4 tens and 7 ones. 0 is 0 ones. Subtract the place values, then find what's left: what is 47 − 0?",
+      "correct_answer": 47,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 47,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 48,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 49,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 46,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 47,
+      "hints": [
+        "We are subtracting 0 from 47.",
+        "Subtract the ones: 7 − 0 = 7.",
+        "Subtract the tens: 4 − 0 = 4.",
+        "The difference of 47 − 0 = 47."
+      ],
+      "sample_id": "3a4161b00c8ec40de0c2",
+      "replay_digest": "8294b26bff35897ae9e86fbe4290a9dbda601773a46335dd15ee312daa3300d1"
+    },
+    {
+      "node_id": "mat_g1_na_q3_5",
+      "seed": 901,
+      "formatter": "mcq",
+      "question_text": "29 is 2 tens and 9 ones. 12 is 1 ten and 2 ones. Subtract the place values, then find what's left: what is 29 − 12?",
+      "correct_answer": 17,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 41,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 17,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 16,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 18,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 17,
+      "hints": [
+        "We are subtracting 12 from 29.",
+        "Subtract the ones: 9 − 2 = 7.",
+        "Subtract the tens: 2 − 1 = 1.",
+        "The difference of 29 − 12 = 17."
+      ],
+      "sample_id": "3c3805421fb06cf3552d",
+      "replay_digest": "e1ef8f3bcf23f8cc05de1e5a60b3b88e05e7e0c92316e6b5c94564c76d560666"
+    },
+    {
+      "node_id": "mat_g1_na_q3_5",
+      "seed": 1000,
+      "formatter": "cloze",
+      "question_text": "48 is 4 tens and 8 ones. 30 is 3 tens and 0 ones. Subtract the place values, then find what's left: 48 − 30 = ___",
+      "correct_answer": 18,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "hint_gated"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "hint_gated"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 17,
+          "text": "17",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 78,
+          "text": "78",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 18,
+          "text": "18",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 19,
+          "text": "19",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 18,
+      "hints": [
+        "We are subtracting 30 from 48.",
+        "Subtract the ones: 8 − 0 = 8.",
+        "Subtract the tens: 4 − 3 = 1.",
+        "The difference of 48 − 30 = 18."
+      ],
+      "sample_id": "9657bf27803a6bae4e9b",
+      "replay_digest": "8e7af61ccdb10b3e5c57e282dc7a9bd55ba643df2b6d9b76f6b5a6a615e6060a"
+    },
+    {
+      "node_id": "mat_g1_na_q3_5",
+      "seed": 1001,
+      "formatter": "error_detect",
+      "question_text": "Liza solved: \"15 is 1 ten and 5 ones. 3 is 3 ones. Subtract the place values, then find what's left: 15 − 3 = ___\". Liza says the missing number is 13. Is Liza correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 12
+      },
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "mastery_drill"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "mastery_drill"
+      },
+      "resolved_answer": {
+        "has_error": true,
+        "correct_value": 12
+      },
+      "hints": [
+        "We are subtracting 3 from 15.",
+        "Subtract the ones: 5 − 3 = 2.",
+        "Subtract the tens: 1 − 0 = 1.",
+        "The difference of 15 − 3 = 12."
+      ],
+      "sample_id": "64cb80732b7bb87445ee",
+      "replay_digest": "e965a51fc18f89bac840a0b84c37c5d9aab545c30a4c85a76f83b69831195f6d"
+    },
+    {
+      "node_id": "mat_g1_na_q3_5",
+      "seed": 1002,
+      "formatter": "error_detect",
+      "question_text": "Manny solved: \"62 is 6 tens and 2 ones. 0 is 0 ones. Subtract the place values, then find what's left: 62 − 0 = ___\". Manny says the missing number is 61. Is Manny correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 62
+      },
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "scaffolded"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "scaffolded"
+      },
+      "resolved_answer": {
+        "has_error": true,
+        "correct_value": 62
+      },
+      "hints": [
+        "We are subtracting 0 from 62.",
+        "Subtract the ones: 2 − 0 = 2.",
+        "Subtract the tens: 6 − 0 = 6.",
+        "The difference of 62 − 0 = 62."
+      ],
+      "sample_id": "d41a5169b1ac39719dab",
+      "replay_digest": "2749dee9b1092284909014895f6be1697fdd2fdc19a7cf4bf126b27d588eb7b5"
+    }
+  ],
+  "sample_assessments": [
+    {
+      "sample_id": "ecf97ae5f3ff5813cf8f",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze item asks for the unique difference of 75 and 12, which is 63; its listed options do not create a second mathematically valid completion."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Subtracting 12 from 75 is precisely the action requested and yields 63; the stem gives no story detail that would change that operation."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The prompt identifies 75 − 12 as the target and offers a blank or choices; the hints separately compute 5 − 2 and 7 − 1."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The keyed difference 63 equals 75 − 12; the ones and tens hint results combine to that value without requiring regrouping or an alternate visual."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w15-mat_g1_na_q3_5-20260925",
+      "dispatch_id": "gpt6luna-s5-w15-20260925:mat_g1_na_q3_5"
+    },
+    {
+      "sample_id": "ec361f1ec6f195c04c1d",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The mcq item asks for the unique difference of 13 and 10, which is 3; its listed options do not create a second mathematically valid completion."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Subtracting 10 from 13 is precisely the action requested and yields 3; the stem gives no story detail that would change that operation."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The prompt identifies 13 − 10 as the target and offers a blank or choices; the hints separately compute 3 − 0 and 1 − 1."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The keyed difference 3 equals 13 − 10; the ones and tens hint results combine to that value without requiring regrouping or an alternate visual."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w15-mat_g1_na_q3_5-20260925",
+      "dispatch_id": "gpt6luna-s5-w15-20260925:mat_g1_na_q3_5"
+    },
+    {
+      "sample_id": "a6fa0070adb745b91078",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze item asks for the unique difference of 45 and 40, which is 5; its listed options do not create a second mathematically valid completion."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Subtracting 40 from 45 is precisely the action requested and yields 5; the stem gives no story detail that would change that operation."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The prompt identifies 45 − 40 as the target and offers a blank or choices; the hints separately compute 5 − 0 and 4 − 4."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The keyed difference 5 equals 45 − 40; the ones and tens hint results combine to that value without requiring regrouping or an alternate visual."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w15-mat_g1_na_q3_5-20260925",
+      "dispatch_id": "gpt6luna-s5-w15-20260925:mat_g1_na_q3_5"
+    },
+    {
+      "sample_id": "5bbea7a896bb062b1c40",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "In the 35 − 30 truth item, only the displayed claim 4 is being judged, so the learner has a single true-or-false decision."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The 35 and 30 place descriptions lead to a subtraction check; judging the displayed result 4 fits the prompt's stated action."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem explicitly presents 35 − 30 = 4 and asks True or False, while the hints calculate 5 − 0 and 3 − 3."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer False matches 35 − 30 = 5; the hints subtract 0 ones and 3 tens, agreeing with the stem and no visual."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w15-mat_g1_na_q3_5-20260925",
+      "dispatch_id": "gpt6luna-s5-w15-20260925:mat_g1_na_q3_5"
+    },
+    {
+      "sample_id": "427d86603c2a2366d63e",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "In the 15 − 11 truth item, only the displayed claim 4 is being judged, so the learner has a single true-or-false decision."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The 15 and 11 place descriptions lead to a subtraction check; judging the displayed result 4 fits the prompt's stated action."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem explicitly presents 15 − 11 = 4 and asks True or False, while the hints calculate 5 − 1 and 1 − 1."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer True matches 15 − 11 = 4; the hints subtract 1 ones and 1 tens, agreeing with the stem and no visual."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w15-mat_g1_na_q3_5-20260925",
+      "dispatch_id": "gpt6luna-s5-w15-20260925:mat_g1_na_q3_5"
+    },
+    {
+      "sample_id": "bf6d3fbdeef0b069f577",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error-detection task identifies a proposed result for 64 − 30; the learner can determine correctness by checking it against the computed difference 34."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The named solver's proposed answer for 64 − 30 is evaluated as a number statement; the surrounding name or theme does not alter the place-value calculation."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The prompt asks whether the student's proposed value for 64 − 30 is correct, and the hint sequence computes 4 − 0 ones then 6 − 3 tens."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The rendered key records no error and gives 34; direct subtraction of 30 from 64 confirms that result, consistent with the hints."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w15-mat_g1_na_q3_5-20260925",
+      "dispatch_id": "gpt6luna-s5-w15-20260925:mat_g1_na_q3_5"
+    },
+    {
+      "sample_id": "f0a2b37b625df24e7da8",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "In the 98 − 54 truth item, only the displayed claim 45 is being judged, so the learner has a single true-or-false decision."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The 98 and 54 place descriptions lead to a subtraction check; judging the displayed result 45 fits the prompt's stated action."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem explicitly presents 98 − 54 = 45 and asks True or False, while the hints calculate 8 − 4 and 9 − 5."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer False matches 98 − 54 = 44; the hints subtract 4 ones and 5 tens, agreeing with the stem and no visual."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w15-mat_g1_na_q3_5-20260925",
+      "dispatch_id": "gpt6luna-s5-w15-20260925:mat_g1_na_q3_5"
+    },
+    {
+      "sample_id": "3fd836bf21b798774fdb",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The mcq item asks for the unique difference of 94 and 72, which is 22; its listed options do not create a second mathematically valid completion."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Subtracting 72 from 94 is precisely the action requested and yields 22; the stem gives no story detail that would change that operation."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The prompt identifies 94 − 72 as the target and offers a blank or choices; the hints separately compute 4 − 2 and 9 − 7."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The keyed difference 22 equals 94 − 72; the ones and tens hint results combine to that value without requiring regrouping or an alternate visual."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w15-mat_g1_na_q3_5-20260925",
+      "dispatch_id": "gpt6luna-s5-w15-20260925:mat_g1_na_q3_5"
+    },
+    {
+      "sample_id": "f8a50f79d7b681f772d1",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error-detection task identifies a proposed result for 88 − 58; the learner can determine correctness by checking it against the computed difference 30."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The named solver's proposed answer for 88 − 58 is evaluated as a number statement; the surrounding name or theme does not alter the place-value calculation."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The prompt asks whether the student's proposed value for 88 − 58 is correct, and the hint sequence computes 8 − 8 ones then 8 − 5 tens."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The rendered key records no error and gives 30; direct subtraction of 58 from 88 confirms that result, consistent with the hints."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w15-mat_g1_na_q3_5-20260925",
+      "dispatch_id": "gpt6luna-s5-w15-20260925:mat_g1_na_q3_5"
+    },
+    {
+      "sample_id": "1a88c5194e5c1892f890",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The mcq item asks for the unique difference of 35 and 10, which is 25; its listed options do not create a second mathematically valid completion."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Subtracting 10 from 35 is precisely the action requested and yields 25; the stem gives no story detail that would change that operation."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The prompt identifies 35 − 10 as the target and offers a blank or choices; the hints separately compute 5 − 0 and 3 − 1."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The keyed difference 25 equals 35 − 10; the ones and tens hint results combine to that value without requiring regrouping or an alternate visual."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w15-mat_g1_na_q3_5-20260925",
+      "dispatch_id": "gpt6luna-s5-w15-20260925:mat_g1_na_q3_5"
+    },
+    {
+      "sample_id": "29fa49303c547f286943",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze item asks for the unique difference of 25 and 15, which is 10; its listed options do not create a second mathematically valid completion."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Subtracting 15 from 25 is precisely the action requested and yields 10; the stem gives no story detail that would change that operation."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The prompt identifies 25 − 15 as the target and offers a blank or choices; the hints separately compute 5 − 5 and 2 − 1."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The keyed difference 10 equals 25 − 15; the ones and tens hint results combine to that value without requiring regrouping or an alternate visual."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w15-mat_g1_na_q3_5-20260925",
+      "dispatch_id": "gpt6luna-s5-w15-20260925:mat_g1_na_q3_5"
+    },
+    {
+      "sample_id": "78525874e445dbf9018c",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error-detection task identifies a proposed result for 45 − 20; the learner can determine correctness by checking it against the computed difference 25."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The named solver's proposed answer for 45 − 20 is evaluated as a number statement; the surrounding name or theme does not alter the place-value calculation."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The prompt asks whether the student's proposed value for 45 − 20 is correct, and the hint sequence computes 5 − 0 ones then 4 − 2 tens."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The rendered key records no error and gives 25; direct subtraction of 20 from 45 confirms that result, consistent with the hints."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w15-mat_g1_na_q3_5-20260925",
+      "dispatch_id": "gpt6luna-s5-w15-20260925:mat_g1_na_q3_5"
+    },
+    {
+      "sample_id": "b60ea109f25efa0267b3",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The mcq item asks for the unique difference of 24 and 0, which is 24; its listed options do not create a second mathematically valid completion."
+        },
+        "contextual_logical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "For 24 − 0 = 24, the operation and answer are clear, although the stem calls zero only 0 ones and omits explicit zero tens."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The prompt identifies 24 − 0 as the target and offers a blank or choices; the hints separately compute 4 − 0 and 2 − 0."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The keyed difference 24 equals 24 − 0; the ones and tens hint results combine to that value without requiring regrouping or an alternate visual."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w15-mat_g1_na_q3_5-20260925",
+      "dispatch_id": "gpt6luna-s5-w15-20260925:mat_g1_na_q3_5"
+    },
+    {
+      "sample_id": "e04bdf1278d2aac09351",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error-detection task identifies a proposed result for 15 − 4; the learner can determine correctness by checking it against the computed difference 11."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The named solver's proposed answer for 15 − 4 is evaluated as a number statement; the surrounding name or theme does not alter the place-value calculation."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The prompt asks whether the student's proposed value for 15 − 4 is correct, and the hint sequence computes 5 − 4 ones then 1 − 0 tens."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The rendered key records no error and gives 11; direct subtraction of 4 from 15 confirms that result, consistent with the hints."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w15-mat_g1_na_q3_5-20260925",
+      "dispatch_id": "gpt6luna-s5-w15-20260925:mat_g1_na_q3_5"
+    },
+    {
+      "sample_id": "092391a0c6a84044fe81",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "In the 24 − 10 truth item, only the displayed claim 34 is being judged, so the learner has a single true-or-false decision."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The 24 and 10 place descriptions lead to a subtraction check; judging the displayed result 34 fits the prompt's stated action."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem explicitly presents 24 − 10 = 34 and asks True or False, while the hints calculate 4 − 0 and 2 − 1."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer False matches 24 − 10 = 14; the hints subtract 0 ones and 1 tens, agreeing with the stem and no visual."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w15-mat_g1_na_q3_5-20260925",
+      "dispatch_id": "gpt6luna-s5-w15-20260925:mat_g1_na_q3_5"
+    },
+    {
+      "sample_id": "64dc85de4f935983ce32",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The mcq item asks for the unique difference of 91 and 0, which is 91; its listed options do not create a second mathematically valid completion."
+        },
+        "contextual_logical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "For 91 − 0 = 91, the operation and answer are clear, although the stem calls zero only 0 ones and omits explicit zero tens."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The prompt identifies 91 − 0 as the target and offers a blank or choices; the hints separately compute 1 − 0 and 9 − 0."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The keyed difference 91 equals 91 − 0; the ones and tens hint results combine to that value without requiring regrouping or an alternate visual."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w15-mat_g1_na_q3_5-20260925",
+      "dispatch_id": "gpt6luna-s5-w15-20260925:mat_g1_na_q3_5"
+    },
+    {
+      "sample_id": "4528955f469d5ddc5865",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze item asks for the unique difference of 84 and 0, which is 84; its listed options do not create a second mathematically valid completion."
+        },
+        "contextual_logical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "For 84 − 0 = 84, the operation and answer are clear, although the stem calls zero only 0 ones and omits explicit zero tens."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The prompt identifies 84 − 0 as the target and offers a blank or choices; the hints separately compute 4 − 0 and 8 − 0."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The keyed difference 84 equals 84 − 0; the ones and tens hint results combine to that value without requiring regrouping or an alternate visual."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w15-mat_g1_na_q3_5-20260925",
+      "dispatch_id": "gpt6luna-s5-w15-20260925:mat_g1_na_q3_5"
+    },
+    {
+      "sample_id": "9c8bf65581d092317135",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error-detection task identifies a proposed result for 21 − 1; the learner can determine correctness by checking it against the computed difference 20."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The named solver's proposed answer for 21 − 1 is evaluated as a number statement; the surrounding name or theme does not alter the place-value calculation."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The prompt asks whether the student's proposed value for 21 − 1 is correct, and the hint sequence computes 1 − 1 ones then 2 − 0 tens."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The rendered key records no error and gives 20; direct subtraction of 1 from 21 confirms that result, consistent with the hints."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w15-mat_g1_na_q3_5-20260925",
+      "dispatch_id": "gpt6luna-s5-w15-20260925:mat_g1_na_q3_5"
+    },
+    {
+      "sample_id": "9931f1374f9d36209865",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze item asks for the unique difference of 75 and 1, which is 74; its listed options do not create a second mathematically valid completion."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Subtracting 1 from 75 is precisely the action requested and yields 74; the stem gives no story detail that would change that operation."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The prompt identifies 75 − 1 as the target and offers a blank or choices; the hints separately compute 5 − 1 and 7 − 0."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The keyed difference 74 equals 75 − 1; the ones and tens hint results combine to that value without requiring regrouping or an alternate visual."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w15-mat_g1_na_q3_5-20260925",
+      "dispatch_id": "gpt6luna-s5-w15-20260925:mat_g1_na_q3_5"
+    },
+    {
+      "sample_id": "61720ccd8b38ed98c88f",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "In the 50 − 30 truth item, only the displayed claim 19 is being judged, so the learner has a single true-or-false decision."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The 50 and 30 place descriptions lead to a subtraction check; judging the displayed result 19 fits the prompt's stated action."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem explicitly presents 50 − 30 = 19 and asks True or False, while the hints calculate 0 − 0 and 5 − 3."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer False matches 50 − 30 = 20; the hints subtract 0 ones and 3 tens, agreeing with the stem and no visual."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w15-mat_g1_na_q3_5-20260925",
+      "dispatch_id": "gpt6luna-s5-w15-20260925:mat_g1_na_q3_5"
+    },
+    {
+      "sample_id": "b7fcf007390b86c85551",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error-detection task identifies a proposed result for 24 − 0; the learner can determine correctness by checking it against the computed difference 24."
+        },
+        "contextual_logical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "For 24 − 0 = 24, the operation and answer are clear, although the stem calls zero only 0 ones and omits explicit zero tens."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The prompt asks whether the student's proposed value for 24 − 0 is correct, and the hint sequence computes 4 − 0 ones then 2 − 0 tens."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The rendered key records no error and gives 24; direct subtraction of 0 from 24 confirms that result, consistent with the hints."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w15-mat_g1_na_q3_5-20260925",
+      "dispatch_id": "gpt6luna-s5-w15-20260925:mat_g1_na_q3_5"
+    },
+    {
+      "sample_id": "10ef485880acfdda723e",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "In the 36 − 10 truth item, only the displayed claim 26 is being judged, so the learner has a single true-or-false decision."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The dance-shoe challenge wrapper does not affect 36 − 10; the displayed claim 26 follows from 6 − 0 ones and 3 − 1 tens."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem explicitly presents 36 − 10 = 26 and asks True or False, while the hints calculate 6 − 0 and 3 − 1."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer True matches 36 − 10 = 26; the hints subtract 0 ones and 1 tens, agreeing with the stem and no visual."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w15-mat_g1_na_q3_5-20260925",
+      "dispatch_id": "gpt6luna-s5-w15-20260925:mat_g1_na_q3_5"
+    },
+    {
+      "sample_id": "e6c3479b275b4dcf1725",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error-detection task identifies a proposed result for 18 − 0; the learner can determine correctness by checking it against the computed difference 18."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The olives theme is incidental to 18 − 0; the proposed 19 is clearly testable against the unchanged quantity 18."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The prompt asks whether the student's proposed value for 18 − 0 is correct, and the hint sequence computes 8 − 0 ones then 1 − 0 tens."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The rendered key records an error and gives 18; direct subtraction of 0 from 18 confirms that result, consistent with the hints."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w15-mat_g1_na_q3_5-20260925",
+      "dispatch_id": "gpt6luna-s5-w15-20260925:mat_g1_na_q3_5"
+    },
+    {
+      "sample_id": "d08b84fc97a200878f5e",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze item asks for the unique difference of 96 and 44, which is 52; its listed options do not create a second mathematically valid completion."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Subtracting 44 from 96 is precisely the action requested and yields 52; the stem gives no story detail that would change that operation."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The prompt identifies 96 − 44 as the target and offers a blank or choices; the hints separately compute 6 − 4 and 9 − 4."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The keyed difference 52 equals 96 − 44; the ones and tens hint results combine to that value without requiring regrouping or an alternate visual."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w15-mat_g1_na_q3_5-20260925",
+      "dispatch_id": "gpt6luna-s5-w15-20260925:mat_g1_na_q3_5"
+    },
+    {
+      "sample_id": "3a4161b00c8ec40de0c2",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The mcq item asks for the unique difference of 47 and 0, which is 47; its listed options do not create a second mathematically valid completion."
+        },
+        "contextual_logical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "For 47 − 0 = 47, the operation and answer are clear, although the stem calls zero only 0 ones and omits explicit zero tens."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The prompt identifies 47 − 0 as the target and offers a blank or choices; the hints separately compute 7 − 0 and 4 − 0."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The keyed difference 47 equals 47 − 0; the ones and tens hint results combine to that value without requiring regrouping or an alternate visual."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w15-mat_g1_na_q3_5-20260925",
+      "dispatch_id": "gpt6luna-s5-w15-20260925:mat_g1_na_q3_5"
+    },
+    {
+      "sample_id": "3c3805421fb06cf3552d",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The mcq item asks for the unique difference of 29 and 12, which is 17; its listed options do not create a second mathematically valid completion."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Subtracting 12 from 29 is precisely the action requested and yields 17; the stem gives no story detail that would change that operation."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The prompt identifies 29 − 12 as the target and offers a blank or choices; the hints separately compute 9 − 2 and 2 − 1."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The keyed difference 17 equals 29 − 12; the ones and tens hint results combine to that value without requiring regrouping or an alternate visual."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w15-mat_g1_na_q3_5-20260925",
+      "dispatch_id": "gpt6luna-s5-w15-20260925:mat_g1_na_q3_5"
+    },
+    {
+      "sample_id": "9657bf27803a6bae4e9b",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze item asks for the unique difference of 48 and 30, which is 18; its listed options do not create a second mathematically valid completion."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Subtracting 30 from 48 is precisely the action requested and yields 18; the stem gives no story detail that would change that operation."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The prompt identifies 48 − 30 as the target and offers a blank or choices; the hints separately compute 8 − 0 and 4 − 3."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The keyed difference 18 equals 48 − 30; the ones and tens hint results combine to that value without requiring regrouping or an alternate visual."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w15-mat_g1_na_q3_5-20260925",
+      "dispatch_id": "gpt6luna-s5-w15-20260925:mat_g1_na_q3_5"
+    },
+    {
+      "sample_id": "64cb80732b7bb87445ee",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error-detection task identifies a proposed result for 15 − 3; the learner can determine correctness by checking it against the computed difference 12."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The named solver's proposed answer for 15 − 3 is evaluated as a number statement; the surrounding name or theme does not alter the place-value calculation."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The prompt asks whether the student's proposed value for 15 − 3 is correct, and the hint sequence computes 5 − 3 ones then 1 − 0 tens."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The rendered key records an error and gives 12; direct subtraction of 3 from 15 confirms that result, consistent with the hints."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w15-mat_g1_na_q3_5-20260925",
+      "dispatch_id": "gpt6luna-s5-w15-20260925:mat_g1_na_q3_5"
+    },
+    {
+      "sample_id": "d41a5169b1ac39719dab",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error-detection task identifies a proposed result for 62 − 0; the learner can determine correctness by checking it against the computed difference 62."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The named solver's proposed answer for 62 − 0 is evaluated as a number statement; the surrounding name or theme does not alter the place-value calculation."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The prompt asks whether the student's proposed value for 62 − 0 is correct, and the hint sequence computes 2 − 0 ones then 6 − 0 tens."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The rendered key records an error and gives 62; direct subtraction of 0 from 62 confirms that result, consistent with the hints."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w15-mat_g1_na_q3_5-20260925",
+      "dispatch_id": "gpt6luna-s5-w15-20260925:mat_g1_na_q3_5"
+    }
+  ],
+  "clause_evidence": [
+    {
+      "requirement_id": "subtract_numbers",
+      "clause": "Subtract numbers",
+      "verdict": "PASS",
+      "reasoning": "All cited examples ask learners to find or judge a subtraction difference, including ordinary equations and checks of a solver's proposed result.",
+      "sample_ids": [
+        "ecf97ae5f3ff5813cf8f",
+        "5bbea7a896bb062b1c40",
+        "bf6d3fbdeef0b069f577"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w15-mat_g1_na_q3_5-20260925",
+      "dispatch_id": "gpt6luna-s5-w15-20260925:mat_g1_na_q3_5"
+    },
+    {
+      "requirement_id": "expressing_tens_ones",
+      "clause": "expressing minuends and subtrahends as tens and ones",
+      "verdict": "CONCERN",
+      "reasoning": "Most stems name tens and ones for both numbers, but zero subtrahends in these cited cases are written as 0 ones only, leaving tens unstated.",
+      "sample_ids": [
+        "ecf97ae5f3ff5813cf8f",
+        "b60ea109f25efa0267b3",
+        "64dc85de4f935983ce32",
+        "4528955f469d5ddc5865"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w15-mat_g1_na_q3_5-20260925",
+      "dispatch_id": "gpt6luna-s5-w15-20260925:mat_g1_na_q3_5"
+    },
+    {
+      "requirement_id": "expanded_form",
+      "clause": "expanded form",
+      "verdict": "PASS",
+      "reasoning": "The cited stems decompose the operands into tens and ones before subtraction, while matching hints subtract corresponding place values and combine the difference.",
+      "sample_ids": [
+        "ecf97ae5f3ff5813cf8f",
+        "3fd836bf21b798774fdb",
+        "9931f1374f9d36209865"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w15-mat_g1_na_q3_5-20260925",
+      "dispatch_id": "gpt6luna-s5-w15-20260925:mat_g1_na_q3_5"
+    },
+    {
+      "requirement_id": "without_regrouping",
+      "clause": "without regrouping",
+      "verdict": "PASS",
+      "reasoning": "The selected examples all subtract ones without borrowing: each minuend's ones digit is at least the subtrahend's, and the tens digits also subtract directly.",
+      "sample_ids": [
+        "ecf97ae5f3ff5813cf8f",
+        "f0a2b37b625df24e7da8",
+        "3c3805421fb06cf3552d"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w15-mat_g1_na_q3_5-20260925",
+      "dispatch_id": "gpt6luna-s5-w15-20260925:mat_g1_na_q3_5"
+    }
+  ],
+  "dispatch_provenance": [
+    {
+      "dispatch_id": "gpt6luna-s5-w15-20260925:mat_g1_na_q3_5",
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w15-mat_g1_na_q3_5-20260925",
+      "review_date": "2026-09-25",
+      "blind": true,
+      "packet_digest": "b8fc36ce094ad3ee89d08afca5c96402bbe30c899d78521ee07a821632a4a65c",
+      "clause_ids": [
+        "subtract_numbers",
+        "expressing_tens_ones",
+        "expanded_form",
+        "without_regrouping"
+      ],
+      "response_ref": ".responses/gpt6luna-s5-w15-20260925.json",
+      "response_digest": "68df90b8bbd567b45d84be5c1032f23c684ca5579f323de09b9b89dac4d6d2b7",
+      "prompt_ref": ".responses/gpt6luna-s5-w15-20260925.prompt.txt",
+      "prompt_digest": "b4da56fc18c576ff84b2422a3e3f48cbd63c7cbed19ad491bb9e1e0eff3e5d60",
+      "samples_delivery": "Dispatch-time local prompt file read by separate gpt-6-luna medium reviewer; no source or prior reviews supplied",
+      "tool_uses_by_reviewer": "Reviewer reported two calls: cat read of assigned prompt and cat heredoc verdict write; report is reviewer-provided."
     }
   ],
   "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "Both minuend and subtrahend are decomposed in the stem before the instruction 'Subtract the place values, then find what's left', so the expanded-form procedure named by the competency is the one the item actually walks through."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The sample includes subtracting a pure-ones quantity, subtracting an exact ten, subtracting zero, and subtracting a full two-digit number, so the expansion is exercised where one of its parts collapses as well as where both are active."
-    },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "No sampled pair requires a ten to be broken apart, which keeps the method self-consistent, and the decomposition is read out for the pupil rather than demanded from memory."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "All fifteen sampled stems are the same recitation with different numerals; only the answer mode moves. Nothing pictorial, contextual or narrative accompanies expanded-form subtraction anywhere in the sample, which makes the node read as one template."
+      "rationale": "The work centers on two-digit subtraction with place names and one-step differences, a focused Grade 1 task; hints break each computation into ones and tens."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Difficulty climbs through larger minuends and subtrahends whose ones digit is non-zero, which is the part of expanded subtraction that actually demands attention."
+      "rationale": "Every stem frames subtraction through tens and ones and requests a difference, matching the stated expanded-form, no-regrouping competency."
+    },
+    "competency_fulfillment": {
+      "verdict": "CONCERN",
+      "rationale": "The set makes the place-value method visible and keeps ones subtraction nonnegative, though zero subtrahends are sometimes described only as zero ones rather than both places.",
+      "decomposition": {
+        "verdict": "PASS",
+        "reasoning": "The four requirements jointly retain subtraction, expressing both minuend and subtrahend as tens and ones, expanded form, and the no-regrouping condition; this covers the competency wording.",
+        "requirement_ids": [
+          "subtract_numbers",
+          "expressing_tens_ones",
+          "expanded_form",
+          "without_regrouping"
+        ]
+      },
+      "clause_ids": [
+        "subtract_numbers",
+        "expressing_tens_ones",
+        "expanded_form",
+        "without_regrouping"
+      ]
+    },
+    "comprehensive_coverage": {
+      "verdict": "CONCERN",
+      "rationale": "Samples span varied minuends, subtrahends, and response types, but several zero-subtrahend items omit the explicit zero-tens component required by the full place-value representation.",
+      "clause_ids": [
+        "subtract_numbers",
+        "expressing_tens_ones",
+        "expanded_form",
+        "without_regrouping"
+      ]
     },
     "scale_appropriateness": {
-      "verdict": "CONCERN",
-      "rationale": "Operands are correctly two-digit, but one choice list sets 166 against a subtraction from ninety-four, and others offer results larger than the minuend, such as 87 for a subtraction starting at seventy-five - impossible values that sit outside the arithmetic being taught."
+      "verdict": "PASS",
+      "rationale": "The packet uses two-digit quantities below one hundred and avoids regrouping in each displayed subtraction; this fits the specified elementary place-value strategy."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "Cloze, multiple choice, true-or-false, and error-detection formats all appear, with ordinary subtraction and checking another learner's proposed result represented."
     }
   },
   "overall": "CONCERN"

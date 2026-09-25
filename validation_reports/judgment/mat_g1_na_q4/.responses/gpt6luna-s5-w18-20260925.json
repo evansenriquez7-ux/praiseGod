@@ -1,0 +1,437 @@
+{
+  "reviewer": "blind-reviewer-gpt-6-luna-medium-w18-mat_g1_na_q4_0-20260925",
+  "mat_g1_na_q4_0": {
+    "findings": {
+      "cognitive_capacity": {
+        "verdict": "PASS",
+        "rationale": "The task asks children to recognize or mark one of two equal parts or one of four, with short numerator and denominator hints and no calculation beyond counting."
+      },
+      "competency_alignment": {
+        "verdict": "PASS",
+        "rationale": "Every request engages a visual model to identify or illustrate one half or one quarter as parts within a whole, matching the stated Grade 1 competency."
+      },
+      "competency_fulfillment": {
+        "verdict": "CONCERN",
+        "rationale": "The examples target both unit fractions with read and shade actions, yet the packet's visual descriptions omit shading and geometry needed to verify the claimed illustrations.",
+        "decomposition": {
+          "verdict": "PASS",
+          "reasoning": "The listed clauses capture the action to illustrate, both required fraction values, and their relation as parts of a whole; together these preserve the competency's full wording."
+        }
+      },
+      "comprehensive_coverage": {
+        "verdict": "CONCERN",
+        "rationale": "Both target fractions occur in reading and marking tasks, but all textual visual summaries omit the shaded region and shape geometry, preventing confirmation of valid whole-part models."
+      },
+      "scale_appropriateness": {
+        "verdict": "PASS",
+        "rationale": "The examples stay with halves and quarters, short instructions, and simple part counting; their number concepts and response demands are suitable for the stated grade and quarter."
+      },
+      "variant_comprehensiveness": {
+        "verdict": "PASS",
+        "rationale": "Both reading a fraction model and clicking regions to create a shaded model are represented, providing recognition and illustration formats for each required value."
+      }
+    },
+    "sample_assessments": [
+      {
+        "sample_id": "ffc9e8dafa8d48cbe5b1",
+        "checks": {
+          "ambiguity": {
+            "verdict": "CONCERN",
+            "reasoning": "Sample 1 (ffc9e8dafa8d48cbe5b1) presents 3/2 / 2/2 / 1/2 / 2/1; although 1/2 is the keyed option for one of two parts, its FractionModel metadata never states which part is shaded."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Sample 1 (ffc9e8dafa8d48cbe5b1) asks for a fraction from a shaded two-part picture, which is a coherent read task; the text representation omits the selected region needed to answer it."
+          },
+          "learner_facing_clarity": {
+            "verdict": "CONCERN",
+            "reasoning": "Sample 1 (ffc9e8dafa8d48cbe5b1) uses read_mcq and gives choices 3/2 / 2/2 / 1/2 / 2/1; the hints name two equal parts and one selected part, but the visual has no text labels to show which region is colored."
+          },
+          "mathematical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "Sample 1 (ffc9e8dafa8d48cbe5b1) has hints that set denominator 2 and numerator one, consistent with 1/2 and the listed key; its 5-element model reports 2 parts but no shading state to verify the picture-answer match."
+          }
+        }
+      },
+      {
+        "sample_id": "e8ebc005e41bf4f0e8b1",
+        "checks": {
+          "ambiguity": {
+            "verdict": "CONCERN",
+            "reasoning": "Sample 2 (e8ebc005e41bf4f0e8b1) requests shading 1/2, meaning one of 2 parts; FractionShade reports 2 part roles but no geometry, so equal partition and the selectable target cannot be confirmed."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Sample 2 (e8ebc005e41bf4f0e8b1) has a direct instruction to shade 1/2; that action is logically consistent with 2 parts, while the structure does not expose their shape or click regions."
+          },
+          "learner_facing_clarity": {
+            "verdict": "CONCERN",
+            "reasoning": "Sample 2 (e8ebc005e41bf4f0e8b1) uses a click response for 1/2; the hint sequence explains 2 total pieces then one piece, but zero text labels and no rendered outline leave the learner's target region unspecified here."
+          },
+          "mathematical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "Sample 2 (e8ebc005e41bf4f0e8b1) has denominator hint 2, numerator hint one, and key 1/2, agreeing with the request; the 5-element description lists 2 roles yet cannot confirm equal areas or the resulting selected fraction."
+          }
+        }
+      },
+      {
+        "sample_id": "4e375cb35ed5a32edd78",
+        "checks": {
+          "ambiguity": {
+            "verdict": "CONCERN",
+            "reasoning": "Sample 3 (4e375cb35ed5a32edd78) presents 4/1 / 4/4 / 3/4 / 1/4; although 1/4 is the keyed option for one of four parts, its FractionModel metadata never states which part is shaded."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Sample 3 (4e375cb35ed5a32edd78) asks for a fraction from a shaded four-part picture, which is a coherent read task; the text representation omits the selected region needed to answer it."
+          },
+          "learner_facing_clarity": {
+            "verdict": "CONCERN",
+            "reasoning": "Sample 3 (4e375cb35ed5a32edd78) uses read_mcq and gives choices 4/1 / 4/4 / 3/4 / 1/4; the hints name four equal parts and one selected part, but the visual has no text labels to show which region is colored."
+          },
+          "mathematical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "Sample 3 (4e375cb35ed5a32edd78) has hints that set denominator 4 and numerator one, consistent with 1/4 and the listed key; its 7-element model reports 4 parts but no shading state to verify the picture-answer match."
+          }
+        }
+      },
+      {
+        "sample_id": "200117daea9113c73b25",
+        "checks": {
+          "ambiguity": {
+            "verdict": "CONCERN",
+            "reasoning": "Sample 4 (200117daea9113c73b25) requests shading 1/4, meaning one of 4 parts; FractionShade reports 4 part roles but no geometry, so equal partition and the selectable target cannot be confirmed."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Sample 4 (200117daea9113c73b25) has a direct instruction to shade 1/4; that action is logically consistent with 4 parts, while the structure does not expose their shape or click regions."
+          },
+          "learner_facing_clarity": {
+            "verdict": "CONCERN",
+            "reasoning": "Sample 4 (200117daea9113c73b25) uses a click response for 1/4; the hint sequence explains 4 total pieces then one piece, but zero text labels and no rendered outline leave the learner's target region unspecified here."
+          },
+          "mathematical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "Sample 4 (200117daea9113c73b25) has denominator hint 4, numerator hint one, and key 1/4, agreeing with the request; the 7-element description lists 4 roles yet cannot confirm equal areas or the resulting selected fraction."
+          }
+        }
+      },
+      {
+        "sample_id": "32c128013138d7d8252a",
+        "checks": {
+          "ambiguity": {
+            "verdict": "CONCERN",
+            "reasoning": "Sample 5 (32c128013138d7d8252a) requests shading 1/2, meaning one of 2 parts; FractionShade reports 2 part roles but no geometry, so equal partition and the selectable target cannot be confirmed."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Sample 5 (32c128013138d7d8252a) has a direct instruction to shade 1/2; that action is logically consistent with 2 parts, while the structure does not expose their shape or click regions."
+          },
+          "learner_facing_clarity": {
+            "verdict": "CONCERN",
+            "reasoning": "Sample 5 (32c128013138d7d8252a) uses a click response for 1/2; the hint sequence explains 2 total pieces then one piece, but zero text labels and no rendered outline leave the learner's target region unspecified here."
+          },
+          "mathematical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "Sample 5 (32c128013138d7d8252a) has denominator hint 2, numerator hint one, and key 1/2, agreeing with the request; the 5-element description lists 2 roles yet cannot confirm equal areas or the resulting selected fraction."
+          }
+        }
+      },
+      {
+        "sample_id": "48728014541d6ad73df5",
+        "checks": {
+          "ambiguity": {
+            "verdict": "CONCERN",
+            "reasoning": "Sample 6 (48728014541d6ad73df5) requests shading 1/2, meaning one of 2 parts; FractionShade reports 2 part roles but no geometry, so equal partition and the selectable target cannot be confirmed."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Sample 6 (48728014541d6ad73df5) has a direct instruction to shade 1/2; that action is logically consistent with 2 parts, while the structure does not expose their shape or click regions."
+          },
+          "learner_facing_clarity": {
+            "verdict": "CONCERN",
+            "reasoning": "Sample 6 (48728014541d6ad73df5) uses a click response for 1/2; the hint sequence explains 2 total pieces then one piece, but zero text labels and no rendered outline leave the learner's target region unspecified here."
+          },
+          "mathematical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "Sample 6 (48728014541d6ad73df5) has denominator hint 2, numerator hint one, and key 1/2, agreeing with the request; the 5-element description lists 2 roles yet cannot confirm equal areas or the resulting selected fraction."
+          }
+        }
+      },
+      {
+        "sample_id": "5d31d80a5c5b783bafc9",
+        "checks": {
+          "ambiguity": {
+            "verdict": "CONCERN",
+            "reasoning": "Sample 7 (5d31d80a5c5b783bafc9) requests shading 1/2, meaning one of 2 parts; FractionShade reports 2 part roles but no geometry, so equal partition and the selectable target cannot be confirmed."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Sample 7 (5d31d80a5c5b783bafc9) has a direct instruction to shade 1/2; that action is logically consistent with 2 parts, while the structure does not expose their shape or click regions."
+          },
+          "learner_facing_clarity": {
+            "verdict": "CONCERN",
+            "reasoning": "Sample 7 (5d31d80a5c5b783bafc9) uses a click response for 1/2; the hint sequence explains 2 total pieces then one piece, but zero text labels and no rendered outline leave the learner's target region unspecified here."
+          },
+          "mathematical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "Sample 7 (5d31d80a5c5b783bafc9) has denominator hint 2, numerator hint one, and key 1/2, agreeing with the request; the 5-element description lists 2 roles yet cannot confirm equal areas or the resulting selected fraction."
+          }
+        }
+      },
+      {
+        "sample_id": "18bd1a497164e6c6a068",
+        "checks": {
+          "ambiguity": {
+            "verdict": "CONCERN",
+            "reasoning": "Sample 8 (18bd1a497164e6c6a068) presents 2/2 / 1/2 / 2/1 / 3/2; although 1/2 is the keyed option for one of two parts, its FractionModel metadata never states which part is shaded."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Sample 8 (18bd1a497164e6c6a068) asks for a fraction from a shaded two-part picture, which is a coherent read task; the text representation omits the selected region needed to answer it."
+          },
+          "learner_facing_clarity": {
+            "verdict": "CONCERN",
+            "reasoning": "Sample 8 (18bd1a497164e6c6a068) uses read_mcq and gives choices 2/2 / 1/2 / 2/1 / 3/2; the hints name two equal parts and one selected part, but the visual has no text labels to show which region is colored."
+          },
+          "mathematical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "Sample 8 (18bd1a497164e6c6a068) has hints that set denominator 2 and numerator one, consistent with 1/2 and the listed key; its 5-element model reports 2 parts but no shading state to verify the picture-answer match."
+          }
+        }
+      },
+      {
+        "sample_id": "aff0ae8ce4bb68d5cbe4",
+        "checks": {
+          "ambiguity": {
+            "verdict": "CONCERN",
+            "reasoning": "Sample 9 (aff0ae8ce4bb68d5cbe4) presents 1/2 / 2/2 / 2/1 / 3/2; although 1/2 is the keyed option for one of two parts, its FractionModel metadata never states which part is shaded."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Sample 9 (aff0ae8ce4bb68d5cbe4) asks for a fraction from a shaded two-part picture, which is a coherent read task; the text representation omits the selected region needed to answer it."
+          },
+          "learner_facing_clarity": {
+            "verdict": "CONCERN",
+            "reasoning": "Sample 9 (aff0ae8ce4bb68d5cbe4) uses read_mcq and gives choices 1/2 / 2/2 / 2/1 / 3/2; the hints name two equal parts and one selected part, but the visual has no text labels to show which region is colored."
+          },
+          "mathematical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "Sample 9 (aff0ae8ce4bb68d5cbe4) has hints that set denominator 2 and numerator one, consistent with 1/2 and the listed key; its 5-element model reports 2 parts but no shading state to verify the picture-answer match."
+          }
+        }
+      },
+      {
+        "sample_id": "cebee4a3d313fbeee314",
+        "checks": {
+          "ambiguity": {
+            "verdict": "CONCERN",
+            "reasoning": "Sample 10 (cebee4a3d313fbeee314) requests shading 1/4, meaning one of 4 parts; FractionShade reports 4 part roles but no geometry, so equal partition and the selectable target cannot be confirmed."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Sample 10 (cebee4a3d313fbeee314) Boyong's fish food packets is a light wrapper for shading 1/4; it does not change the one-of-four instruction, though no fish-packet image or shape geometry appears in the visual description."
+          },
+          "learner_facing_clarity": {
+            "verdict": "CONCERN",
+            "reasoning": "Sample 10 (cebee4a3d313fbeee314) uses a click response for 1/4; the hint sequence explains 4 total pieces then one piece, but zero text labels and no rendered outline leave the learner's target region unspecified here."
+          },
+          "mathematical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "Sample 10 (cebee4a3d313fbeee314) has denominator hint 4, numerator hint one, and key 1/4, agreeing with the request; the 7-element description lists 4 roles yet cannot confirm equal areas or the resulting selected fraction."
+          }
+        }
+      },
+      {
+        "sample_id": "3e42647e0863a32629b1",
+        "checks": {
+          "ambiguity": {
+            "verdict": "CONCERN",
+            "reasoning": "Sample 11 (3e42647e0863a32629b1) presents 2/1 / 1/2 / 2/2 / 3/2; although 1/2 is the keyed option for one of two parts, its FractionModel metadata never states which part is shaded."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Sample 11 (3e42647e0863a32629b1) Isko's basketballs wrapper simply introduces the fraction question and adds no conflicting count; the remaining issue is that its two-part picture state is not described."
+          },
+          "learner_facing_clarity": {
+            "verdict": "CONCERN",
+            "reasoning": "Sample 11 (3e42647e0863a32629b1) uses read_mcq and gives choices 2/1 / 1/2 / 2/2 / 3/2; the hints name two equal parts and one selected part, but the visual has no text labels to show which region is colored."
+          },
+          "mathematical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "Sample 11 (3e42647e0863a32629b1) has hints that set denominator 2 and numerator one, consistent with 1/2 and the listed key; its 5-element model reports 2 parts but no shading state to verify the picture-answer match."
+          }
+        }
+      },
+      {
+        "sample_id": "25db00521e701aa44196",
+        "checks": {
+          "ambiguity": {
+            "verdict": "CONCERN",
+            "reasoning": "Sample 12 (25db00521e701aa44196) presents 2/2 / 2/1 / 1/2 / 3/2; although 1/2 is the keyed option for one of two parts, its FractionModel metadata never states which part is shaded."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Sample 12 (25db00521e701aa44196) asks for a fraction from a shaded two-part picture, which is a coherent read task; the text representation omits the selected region needed to answer it."
+          },
+          "learner_facing_clarity": {
+            "verdict": "CONCERN",
+            "reasoning": "Sample 12 (25db00521e701aa44196) uses read_mcq and gives choices 2/2 / 2/1 / 1/2 / 3/2; the hints name two equal parts and one selected part, but the visual has no text labels to show which region is colored."
+          },
+          "mathematical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "Sample 12 (25db00521e701aa44196) has hints that set denominator 2 and numerator one, consistent with 1/2 and the listed key; its 5-element model reports 2 parts but no shading state to verify the picture-answer match."
+          }
+        }
+      },
+      {
+        "sample_id": "7a129f2f26d4e76eca9a",
+        "checks": {
+          "ambiguity": {
+            "verdict": "CONCERN",
+            "reasoning": "Sample 13 (7a129f2f26d4e76eca9a) requests shading 1/4, meaning one of 4 parts; FractionShade reports 4 part roles but no geometry, so equal partition and the selectable target cannot be confirmed."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Sample 13 (7a129f2f26d4e76eca9a) has a direct instruction to shade 1/4; that action is logically consistent with 4 parts, while the structure does not expose their shape or click regions."
+          },
+          "learner_facing_clarity": {
+            "verdict": "CONCERN",
+            "reasoning": "Sample 13 (7a129f2f26d4e76eca9a) uses a click response for 1/4; the hint sequence explains 4 total pieces then one piece, but zero text labels and no rendered outline leave the learner's target region unspecified here."
+          },
+          "mathematical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "Sample 13 (7a129f2f26d4e76eca9a) has denominator hint 4, numerator hint one, and key 1/4, agreeing with the request; the 7-element description lists 4 roles yet cannot confirm equal areas or the resulting selected fraction."
+          }
+        }
+      },
+      {
+        "sample_id": "09681a79030e96ab1ff2",
+        "checks": {
+          "ambiguity": {
+            "verdict": "CONCERN",
+            "reasoning": "Sample 14 (09681a79030e96ab1ff2) requests shading 1/4, meaning one of 4 parts; FractionShade reports 4 part roles but no geometry, so equal partition and the selectable target cannot be confirmed."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Sample 14 (09681a79030e96ab1ff2) has a direct instruction to shade 1/4; that action is logically consistent with 4 parts, while the structure does not expose their shape or click regions."
+          },
+          "learner_facing_clarity": {
+            "verdict": "CONCERN",
+            "reasoning": "Sample 14 (09681a79030e96ab1ff2) uses a click response for 1/4; the hint sequence explains 4 total pieces then one piece, but zero text labels and no rendered outline leave the learner's target region unspecified here."
+          },
+          "mathematical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "Sample 14 (09681a79030e96ab1ff2) has denominator hint 4, numerator hint one, and key 1/4, agreeing with the request; the 7-element description lists 4 roles yet cannot confirm equal areas or the resulting selected fraction."
+          }
+        }
+      },
+      {
+        "sample_id": "e35272e0869c67298357",
+        "checks": {
+          "ambiguity": {
+            "verdict": "CONCERN",
+            "reasoning": "Sample 15 (e35272e0869c67298357) presents 1/4 / 4/4 / 4/1 / 3/4; although 1/4 is the keyed option for one of four parts, its FractionModel metadata never states which part is shaded."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Sample 15 (e35272e0869c67298357) asks for a fraction from a shaded four-part picture, which is a coherent read task; the text representation omits the selected region needed to answer it."
+          },
+          "learner_facing_clarity": {
+            "verdict": "CONCERN",
+            "reasoning": "Sample 15 (e35272e0869c67298357) uses read_mcq and gives choices 1/4 / 4/4 / 4/1 / 3/4; the hints name four equal parts and one selected part, but the visual has no text labels to show which region is colored."
+          },
+          "mathematical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "Sample 15 (e35272e0869c67298357) has hints that set denominator 4 and numerator one, consistent with 1/4 and the listed key; its 7-element model reports 4 parts but no shading state to verify the picture-answer match."
+          }
+        }
+      },
+      {
+        "sample_id": "de89099348791f454fab",
+        "checks": {
+          "ambiguity": {
+            "verdict": "CONCERN",
+            "reasoning": "Sample 16 (de89099348791f454fab) presents 2/2 / 1/2 / 2/1 / 3/2; although 1/2 is the keyed option for one of two parts, its FractionModel metadata never states which part is shaded."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Sample 16 (de89099348791f454fab) asks for a fraction from a shaded two-part picture, which is a coherent read task; the text representation omits the selected region needed to answer it."
+          },
+          "learner_facing_clarity": {
+            "verdict": "CONCERN",
+            "reasoning": "Sample 16 (de89099348791f454fab) uses read_mcq and gives choices 2/2 / 1/2 / 2/1 / 3/2; the hints name two equal parts and one selected part, but the visual has no text labels to show which region is colored."
+          },
+          "mathematical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "Sample 16 (de89099348791f454fab) has hints that set denominator 2 and numerator one, consistent with 1/2 and the listed key; its 5-element model reports 2 parts but no shading state to verify the picture-answer match."
+          }
+        }
+      },
+      {
+        "sample_id": "ef0639506e28ce60c049",
+        "checks": {
+          "ambiguity": {
+            "verdict": "CONCERN",
+            "reasoning": "Sample 17 (ef0639506e28ce60c049) presents 4/1 / 4/4 / 3/4 / 1/4; although 1/4 is the keyed option for one of four parts, its FractionModel metadata never states which part is shaded."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Sample 17 (ef0639506e28ce60c049) asks for a fraction from a shaded four-part picture, which is a coherent read task; the text representation omits the selected region needed to answer it."
+          },
+          "learner_facing_clarity": {
+            "verdict": "CONCERN",
+            "reasoning": "Sample 17 (ef0639506e28ce60c049) uses read_mcq and gives choices 4/1 / 4/4 / 3/4 / 1/4; the hints name four equal parts and one selected part, but the visual has no text labels to show which region is colored."
+          },
+          "mathematical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "Sample 17 (ef0639506e28ce60c049) has hints that set denominator 4 and numerator one, consistent with 1/4 and the listed key; its 7-element model reports 4 parts but no shading state to verify the picture-answer match."
+          }
+        }
+      }
+    ],
+    "clause_evidence": [
+      {
+        "requirement_id": "illustrate",
+        "clause": "Illustrate",
+        "verdict": "CONCERN",
+        "reasoning": "Shade tasks request an illustration and read tasks assess one, but absent geometry in the printed models prevents confirming that the resulting pictures illustrate the fraction correctly.",
+        "sample_ids": [
+          "e8ebc005e41bf4f0e8b1",
+          "ffc9e8dafa8d48cbe5b1"
+        ]
+      },
+      {
+        "requirement_id": "half",
+        "clause": "1/2",
+        "verdict": "CONCERN",
+        "reasoning": "Two-part models and 1/2 answer choices appear repeatedly, yet none of the textual FractionModel summaries reveals whether precisely one equal part is shaded.",
+        "sample_ids": [
+          "ffc9e8dafa8d48cbe5b1",
+          "e8ebc005e41bf4f0e8b1"
+        ]
+      },
+      {
+        "requirement_id": "quarter",
+        "clause": "1/4",
+        "verdict": "CONCERN",
+        "reasoning": "Four-part shade prompts and reading options keyed 1/4 cover the quarter target, though the summaries do not show equal partitions or which quarter is marked.",
+        "sample_ids": [
+          "4e375cb35ed5a32edd78",
+          "200117daea9113c73b25"
+        ]
+      },
+      {
+        "requirement_id": "parts_of_whole",
+        "clause": "parts of a whole",
+        "verdict": "CONCERN",
+        "reasoning": "Hints relate the denominator to the total and the numerator to selected pieces, while omitted shape geometry leaves the whole and its equal partition visually unconfirmed.",
+        "sample_ids": [
+          "ffc9e8dafa8d48cbe5b1",
+          "4e375cb35ed5a32edd78"
+        ]
+      }
+    ],
+    "overall": "CONCERN"
+  }
+}

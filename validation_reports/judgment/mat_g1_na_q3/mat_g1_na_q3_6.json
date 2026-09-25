@@ -1,7 +1,28 @@
 {
+  "schema_version": 2,
   "node_id": "mat_g1_na_q3_6",
-  "reviewed_by": "reviewer-c2-basalt-yarrow-7194",
-  "review_date": "2026-09-11",
+  "competency_snapshot": {
+    "text": "Determine the next term/s in a repeating pattern (patterns could use rhythmic properties, visual elements in the arts, …) (e.g., numbers: 2, 4, 2, 4__, __; letters: a, b, c, a, b, c, a, __, __).",
+    "grade": 1,
+    "quarter": 3,
+    "subdomain": null
+  },
+  "requirements_snapshot": [
+    {
+      "kind": "task",
+      "id": "determine_next_term",
+      "clause": "Determine the next term/s"
+    },
+    {
+      "kind": "object",
+      "id": "repeating_pattern",
+      "clause": "repeating pattern"
+    }
+  ],
+  "packet_digest": "bd54705227a439d07eda859a5b1975eca24d578d113da85d73af6312dd9a3a48",
+  "sampling_version": "phase2-stratified-v2-rendered-visual",
+  "reviewed_by": "blind-reviewer-gpt-6-luna-medium-w16-mat_g1_na_q3_6-20260925",
+  "review_date": "2026-09-25",
   "blind": true,
   "sample_seeds": [
     42,
@@ -11,14 +32,57 @@
     46,
     500,
     501,
-    502
+    502,
+    700,
+    701,
+    702,
+    800,
+    900,
+    901,
+    1000,
+    1001,
+    1002
+  ],
+  "sample_ids": [
+    "285eab62fc25f003edc4",
+    "4ebcbb57000eac340222",
+    "8a20415e590f06ffefe8",
+    "029d3583c0a3a7ce336f",
+    "e2ac1ab7c36f9dfd5f5c",
+    "8d2761ed05f101ac7ecc",
+    "00e73849148cbbd4dc8a",
+    "02a1cdec08e4b07fe27d",
+    "b566ca027fc2b1782edc",
+    "6c47c63f37ba13f6b450",
+    "5d793dc2d3610b757770",
+    "e4e1f4f4618f3de3d6cf",
+    "63fe99c5048eddb94c01",
+    "ba265f908b6eef204db5",
+    "73cd91d6cad2c8da883f",
+    "4db606397b96706b9f69",
+    "eba7befef4fe2cf36c79"
   ],
   "samples_reviewed": [
     {
+      "node_id": "mat_g1_na_q3_6",
       "seed": 42,
       "formatter": "cloze",
       "question_text": "What is the next letter in the pattern: d, p, c, d, p, c?",
       "correct_answer": "d",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -44,13 +108,37 @@
           "text": "d",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": "d",
+      "hints": [
+        "Look at the pattern: ['d', 'p', 'c', 'd', 'p', 'c'].",
+        "This is a same group again pattern. Find the repeating group.",
+        "The next term is at position 7.",
+        "The what it does is: Repeat the group: d, p, c. The answer is d."
+      ],
+      "sample_id": "285eab62fc25f003edc4",
+      "replay_digest": "3108b54d7cee88b086e94020bf811ba8a95f7109727c8c04c2b4edc7c9b32305"
     },
     {
+      "node_id": "mat_g1_na_q3_6",
       "seed": 43,
       "formatter": "mcq",
       "question_text": "What is the next letter in the pattern: i, f, i, f, i, f?",
       "correct_answer": "i",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -72,13 +160,37 @@
           "value": "p",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "i",
+      "hints": [
+        "Look at the pattern: ['i', 'f', 'i', 'f', 'i', 'f'].",
+        "This is a same group again pattern. Find the repeating group.",
+        "The next term is at position 7.",
+        "The what it does is: Repeat the group: i, f. The answer is i."
+      ],
+      "sample_id": "4ebcbb57000eac340222",
+      "replay_digest": "abeb78dab5f569d03363dfc2c8b21c0a44d142bd75d75b8503da7ce87bdfd515"
     },
     {
+      "node_id": "mat_g1_na_q3_6",
       "seed": 44,
       "formatter": "read_mcq",
       "question_text": "What is the missing piece (position 6) in the pattern?",
       "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "PatternSequence",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -100,13 +212,83 @@
           "value": 1,
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 1,
+      "hints": [
+        "Look at the pattern: [10, 1, 10, 1, 10, 1].",
+        "This is a same group again pattern. Find the repeating group.",
+        "The next term is at position 7.",
+        "The what it does is: Repeat the group: 10, 1. The answer is 10."
+      ],
+      "visual_type": "PatternSequence",
+      "visual_payload": {
+        "sequence": [
+          10,
+          1,
+          10,
+          1,
+          10,
+          1
+        ],
+        "missing_indices": [
+          5
+        ],
+        "rule": "Follow the pattern",
+        "element_type": "number",
+        "pattern_kind": "repeating",
+        "base_pattern": [
+          10,
+          1
+        ],
+        "period": 2
+      },
+      "visual_render": {
+        "visual_type": "PatternSequence",
+        "renderer_input_digest": "2265e3e7c281c47169258f964b89b69d322b32cccc6e6a82357e171e95b226a0",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "PatternSequence",
+          "element_count": 9,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 1,
+          "text_labels": [
+            "10",
+            "1"
+          ],
+          "distinct_colours": [
+            "#f1f5f9",
+            "hsl(var(--primary)",
+            "#fff"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "8a20415e590f06ffefe8",
+      "replay_digest": "c14419520e4baeaa86ef392ad5fd3e08544effeba38c80acfa719ee535fb6640"
     },
     {
+      "node_id": "mat_g1_na_q3_6",
       "seed": 45,
       "formatter": "mcq",
       "question_text": "What is the next number in the pattern: 2, 1, 2, 1, 2, 1?",
       "correct_answer": 2,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -128,13 +310,37 @@
           "value": 4,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 2,
+      "hints": [
+        "Look at the pattern: [2, 1, 2, 1, 2, 1].",
+        "This is a same group again pattern. Find the repeating group.",
+        "The next term is at position 7.",
+        "The what it does is: Repeat the group: 2, 1. The answer is 2."
+      ],
+      "sample_id": "029d3583c0a3a7ce336f",
+      "replay_digest": "cc6b3912fd7e67cdf42de4415e658664c3370c6f298ecb1e3374d56005ef2ee5"
     },
     {
+      "node_id": "mat_g1_na_q3_6",
       "seed": 46,
       "formatter": "mcq",
       "question_text": "What is the next number in the pattern: 10, 4, 10, 4, 10, 4?",
       "correct_answer": 10,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -156,13 +362,39 @@
           "value": 10,
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 10,
+      "hints": [
+        "Look at the pattern: [10, 4, 10, 4, 10, 4].",
+        "This is a same group again pattern. Find the repeating group.",
+        "The next term is at position 7.",
+        "The what it does is: Repeat the group: 10, 4. The answer is 10."
+      ],
+      "sample_id": "e2ac1ab7c36f9dfd5f5c",
+      "replay_digest": "789af99dce1750f378a8f227b8a23b81e113df7f0179b1e8988063e8cfd1b8cc"
     },
     {
+      "node_id": "mat_g1_na_q3_6",
       "seed": 500,
       "formatter": "read_mcq",
       "question_text": "What is the missing piece (position 6) in the pattern?",
       "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "PatternSequence",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -184,13 +416,87 @@
           "value": 19,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 9,
+      "hints": [
+        "Look at the pattern: [19, 17, 9, 19, 17, 9].",
+        "This is a same group again pattern. Find the repeating group.",
+        "The next term is at position 7.",
+        "The what it does is: Repeat the group: 19, 17, 9. The answer is 19."
+      ],
+      "visual_type": "PatternSequence",
+      "visual_payload": {
+        "sequence": [
+          19,
+          17,
+          9,
+          19,
+          17,
+          9
+        ],
+        "missing_indices": [
+          5
+        ],
+        "rule": "Follow the pattern",
+        "element_type": "number",
+        "pattern_kind": "repeating",
+        "base_pattern": [
+          19,
+          17,
+          9
+        ],
+        "period": 3
+      },
+      "visual_render": {
+        "visual_type": "PatternSequence",
+        "renderer_input_digest": "59fb3e84f590a61afab00a5d6618f825d1c9bc4ad1fabdb061df477bb7c6f13a",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "PatternSequence",
+          "element_count": 9,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 1,
+          "text_labels": [
+            "19",
+            "17",
+            "9"
+          ],
+          "distinct_colours": [
+            "#f1f5f9",
+            "hsl(var(--primary)",
+            "#fff"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "8d2761ed05f101ac7ecc",
+      "replay_digest": "5150e39759997afb1c8c4af6d8399b0d92acd493041d968688f2ec071a5bf11c"
     },
     {
+      "node_id": "mat_g1_na_q3_6",
       "seed": 501,
       "formatter": "read_mcq",
       "question_text": "What is the missing piece (position 6) in the pattern?",
       "correct_answer": "C",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "PatternSequence",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -212,13 +518,87 @@
           "value": 8,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 20,
+      "hints": [
+        "Look at the pattern: [8, 18, 20, 8, 18, 20].",
+        "This is a same group again pattern. Find the repeating group.",
+        "The next term is at position 7.",
+        "The what it does is: Repeat the group: 8, 18, 20. The answer is 8."
+      ],
+      "visual_type": "PatternSequence",
+      "visual_payload": {
+        "sequence": [
+          8,
+          18,
+          20,
+          8,
+          18,
+          20
+        ],
+        "missing_indices": [
+          5
+        ],
+        "rule": "Follow the pattern",
+        "element_type": "number",
+        "pattern_kind": "repeating",
+        "base_pattern": [
+          8,
+          18,
+          20
+        ],
+        "period": 3
+      },
+      "visual_render": {
+        "visual_type": "PatternSequence",
+        "renderer_input_digest": "6752c28bb3d9669462afb19420a301f1a1c52d269b612b4b20aad06ae578578f",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "PatternSequence",
+          "element_count": 9,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 1,
+          "text_labels": [
+            "8",
+            "18",
+            "20"
+          ],
+          "distinct_colours": [
+            "#f1f5f9",
+            "hsl(var(--primary)",
+            "#fff"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "00e73849148cbbd4dc8a",
+      "replay_digest": "8f03348d0c8f29af8ea0dd1e82730af782b05591c6ecb1c6b2557c0266d8c7da"
     },
     {
+      "node_id": "mat_g1_na_q3_6",
       "seed": 502,
       "formatter": "cloze",
       "question_text": "What is the next letter in the pattern: o, p, c, h, o, p?",
       "correct_answer": "c",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -244,34 +624,1128 @@
           "text": "j",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "c",
+      "hints": [
+        "Look at the pattern: ['o', 'p', 'c', 'h', 'o', 'p'].",
+        "This is a same group again pattern. Find the repeating group.",
+        "The next term is at position 7.",
+        "The what it does is: Repeat the group: o, p, c, h. The answer is c."
+      ],
+      "sample_id": "02a1cdec08e4b07fe27d",
+      "replay_digest": "472ec075b908ac196a5dc875d724ef2f7ec667f2adcc7437b39aa0742b0698f8"
+    },
+    {
+      "node_id": "mat_g1_na_q3_6",
+      "seed": 700,
+      "formatter": "cloze",
+      "question_text": "What is the next number in the pattern: 2, 10, 2, 10, 2, 10?",
+      "correct_answer": 2,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 2,
+          "text": "2",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 3,
+          "text": "3",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 1,
+          "text": "1",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 4,
+          "text": "4",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 2,
+      "hints": [
+        "Look at the pattern: [2, 10, 2, 10, 2, 10].",
+        "This is a same group again pattern. Find the repeating group.",
+        "The next term is at position 7.",
+        "The what it does is: Repeat the group: 2, 10. The answer is 2."
+      ],
+      "sample_id": "b566ca027fc2b1782edc",
+      "replay_digest": "653b943d7ca0a438dc5584dde9380284c7f2b21de9dbd0a81eb61e825ba6c347"
+    },
+    {
+      "node_id": "mat_g1_na_q3_6",
+      "seed": 701,
+      "formatter": "mcq",
+      "question_text": "💃 Sir Rez has a math challenge about dance shoes. What is the next number in the pattern: 1, 10, 1, 10, 1, 10?",
+      "correct_answer": 1,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "business_money",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 0,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 1,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 2,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 1,
+      "hints": [
+        "Look at the pattern: [1, 10, 1, 10, 1, 10].",
+        "This is a same group again pattern. Find the repeating group.",
+        "The next term is at position 7.",
+        "The what it does is: Repeat the group: 1, 10. The answer is 1."
+      ],
+      "sample_id": "6c47c63f37ba13f6b450",
+      "replay_digest": "e68f52871fc129fca06dc3e091d374286435783de13ea5f2fe91e9876bf00487"
+    },
+    {
+      "node_id": "mat_g1_na_q3_6",
+      "seed": 702,
+      "formatter": "cloze",
+      "question_text": "🏀 Isko has a math challenge about basketballs. What is the next letter in the pattern: d, o, e, d, o, e?",
+      "correct_answer": "d",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "music_performance",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "k",
+          "text": "k",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "d",
+          "text": "d",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "b",
+          "text": "b",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "j",
+          "text": "j",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "d",
+      "hints": [
+        "Look at the pattern: ['d', 'o', 'e', 'd', 'o', 'e'].",
+        "This is a same group again pattern. Find the repeating group.",
+        "The next term is at position 7.",
+        "The what it does is: Repeat the group: d, o, e. The answer is d."
+      ],
+      "sample_id": "5d793dc2d3610b757770",
+      "replay_digest": "3be791dafbb89ee8041ad39726bd3f0bd53620669bf6eef44509e54aa39c0246"
+    },
+    {
+      "node_id": "mat_g1_na_q3_6",
+      "seed": 800,
+      "formatter": "read_mcq",
+      "question_text": "What is the missing piece (position 6) in the pattern?",
+      "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "PatternSequence",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 16,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 18,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 7,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 17,
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 17,
+      "hints": [
+        "Look at the pattern: [7, 17, 17, 7, 17, 17].",
+        "This is a same group again pattern. Find the repeating group.",
+        "The next term is at position 7.",
+        "The what it does is: Repeat the group: 7, 17, 17. The answer is 7."
+      ],
+      "visual_type": "PatternSequence",
+      "visual_payload": {
+        "sequence": [
+          7,
+          17,
+          17,
+          7,
+          17,
+          17
+        ],
+        "missing_indices": [
+          5
+        ],
+        "rule": "Follow the pattern",
+        "element_type": "number",
+        "pattern_kind": "repeating",
+        "base_pattern": [
+          7,
+          17,
+          17
+        ],
+        "period": 3
+      },
+      "visual_render": {
+        "visual_type": "PatternSequence",
+        "renderer_input_digest": "2a6a6e7116b6f2f91abad391b20f54bedbb60398572566fcc24e6d627a6ff115",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "PatternSequence",
+          "element_count": 9,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 1,
+          "text_labels": [
+            "7",
+            "17"
+          ],
+          "distinct_colours": [
+            "#f1f5f9",
+            "hsl(var(--primary)",
+            "#fff"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "e4e1f4f4618f3de3d6cf",
+      "replay_digest": "41a2ff11761c23afa13fb115a5a309c532df239879a6d9a44d9e85656c9f2b08"
+    },
+    {
+      "node_id": "mat_g1_na_q3_6",
+      "seed": 900,
+      "formatter": "mcq",
+      "question_text": "What is the next number in the pattern: 1, 2, 1, 2, 1, 2?",
+      "correct_answer": 1,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 2,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 0,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 1,
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 1,
+      "hints": [
+        "Look at the pattern: [1, 2, 1, 2, 1, 2].",
+        "This is a same group again pattern. Find the repeating group.",
+        "The next term is at position 7.",
+        "The what it does is: Repeat the group: 1, 2. The answer is 1."
+      ],
+      "sample_id": "63fe99c5048eddb94c01",
+      "replay_digest": "75038046abfd0d61506584c59d3d0776721f27bdeaae7114f86753bce8ab3e59"
+    },
+    {
+      "node_id": "mat_g1_na_q3_6",
+      "seed": 901,
+      "formatter": "read_mcq",
+      "question_text": "What is the missing piece (position 6) in the pattern?",
+      "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "PatternSequence",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 2,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 3,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 4,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 1,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 3,
+      "hints": [
+        "Look at the pattern: [1, 3, 1, 3, 1, 3].",
+        "This is a same group again pattern. Find the repeating group.",
+        "The next term is at position 7.",
+        "The what it does is: Repeat the group: 1, 3. The answer is 1."
+      ],
+      "visual_type": "PatternSequence",
+      "visual_payload": {
+        "sequence": [
+          1,
+          3,
+          1,
+          3,
+          1,
+          3
+        ],
+        "missing_indices": [
+          5
+        ],
+        "rule": "Follow the pattern",
+        "element_type": "number",
+        "pattern_kind": "repeating",
+        "base_pattern": [
+          1,
+          3
+        ],
+        "period": 2
+      },
+      "visual_render": {
+        "visual_type": "PatternSequence",
+        "renderer_input_digest": "f7ca202233f21e343f37ff077e4f47f38860dbc75bb77415536884a82f6ab48a",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "PatternSequence",
+          "element_count": 9,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 1,
+          "text_labels": [
+            "1",
+            "3"
+          ],
+          "distinct_colours": [
+            "#f1f5f9",
+            "hsl(var(--primary)",
+            "#fff"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "ba265f908b6eef204db5",
+      "replay_digest": "e5f00d238e72aa5038dae776b617209f13451477c8da54b0ed6162c4809bbe49"
+    },
+    {
+      "node_id": "mat_g1_na_q3_6",
+      "seed": 1000,
+      "formatter": "read_mcq",
+      "question_text": "What is the missing piece (position 6) in the pattern?",
+      "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "hint_gated"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "PatternSequence",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "hint_gated"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 1,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 2,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 4,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 3,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 2,
+      "hints": [
+        "Look at the pattern: [1, 2, 1, 2, 1, 2].",
+        "This is a same group again pattern. Find the repeating group.",
+        "The next term is at position 7.",
+        "The what it does is: Repeat the group: 1, 2. The answer is 1."
+      ],
+      "visual_type": "PatternSequence",
+      "visual_payload": {
+        "sequence": [
+          1,
+          2,
+          1,
+          2,
+          1,
+          2
+        ],
+        "missing_indices": [
+          5
+        ],
+        "rule": "Follow the pattern",
+        "element_type": "number",
+        "pattern_kind": "repeating",
+        "base_pattern": [
+          1,
+          2
+        ],
+        "period": 2
+      },
+      "visual_render": {
+        "visual_type": "PatternSequence",
+        "renderer_input_digest": "a291f6661bfed5e34ee2ad8eb10a4bd9f4edff0ddad26e238053199e3c450c12",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "PatternSequence",
+          "element_count": 9,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 1,
+          "text_labels": [
+            "1",
+            "2"
+          ],
+          "distinct_colours": [
+            "#f1f5f9",
+            "hsl(var(--primary)",
+            "#fff"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "73cd91d6cad2c8da883f",
+      "replay_digest": "81323accee89961f2079cd9d6e33b39de71c43ff339915e6dc747b7f3560c97d"
+    },
+    {
+      "node_id": "mat_g1_na_q3_6",
+      "seed": 1001,
+      "formatter": "cloze",
+      "question_text": "What is the next number in the pattern: 1, 10, 1, 10, 1, 10?",
+      "correct_answer": 1,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "mastery_drill"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "mastery_drill"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 2,
+          "text": "2",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 0,
+          "text": "0",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 1,
+          "text": "1",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 3,
+          "text": "3",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 1,
+      "hints": [
+        "Look at the pattern: [1, 10, 1, 10, 1, 10].",
+        "This is a same group again pattern. Find the repeating group.",
+        "The next term is at position 7.",
+        "The what it does is: Repeat the group: 1, 10. The answer is 1."
+      ],
+      "sample_id": "4db606397b96706b9f69",
+      "replay_digest": "60798c4888a7833f96a2628cd7a7b780e25c5fdc35b632dba711d25255db3f3c"
+    },
+    {
+      "node_id": "mat_g1_na_q3_6",
+      "seed": 1002,
+      "formatter": "cloze",
+      "question_text": "What is the next number in the pattern: 1, 6, 1, 6, 1, 6?",
+      "correct_answer": 1,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "scaffolded"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "scaffolded"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 0,
+          "text": "0",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 2,
+          "text": "2",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 3,
+          "text": "3",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 1,
+          "text": "1",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 1,
+      "hints": [
+        "Look at the pattern: [1, 6, 1, 6, 1, 6].",
+        "This is a same group again pattern. Find the repeating group.",
+        "The next term is at position 7.",
+        "The what it does is: Repeat the group: 1, 6. The answer is 1."
+      ],
+      "sample_id": "eba7befef4fe2cf36c79",
+      "replay_digest": "b1ddcff337e0860934b96ce65c93cfcedb1157b84b258eb271bb48cb25aef4de"
+    }
+  ],
+  "sample_assessments": [
+    {
+      "sample_id": "285eab62fc25f003edc4",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem gives a full repeated sequence and asks for its next item; \"Look at the pattern: ['d', 'p', 'c', 'd', 'p', 'c' identifies a consistent cycle and answer d is the expected next term."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The sequence \"Look at the pattern: ['d', 'p', 'c', 'd', 'p', 'c' repeats without a context contradiction, and the requested next item fits the stated pattern rather than relying on outside assumptions."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The answer d and options o / b / n / d fit the next position in \"Look at the pattern: ['d', 'p', 'c', 'd', 'p', 'c'; hints follow that cycle, although the phrase about what the pattern does is awkward for a young learner."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Continuing the repeated cycle \"Look at the pattern: ['d', 'p', 'c', 'd', 'p', 'c' gives d; the final hint agrees with the stem and the options o / b / n / d include that value."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w16-mat_g1_na_q3_6-20260925",
+      "dispatch_id": "gpt6luna-s5-w16-20260925:mat_g1_na_q3_6"
+    },
+    {
+      "sample_id": "4ebcbb57000eac340222",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem gives a full repeated sequence and asks for its next item; \"Look at the pattern: ['i', 'f', 'i', 'f', 'i', 'f' identifies a consistent cycle and answer i is the expected next term."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The sequence \"Look at the pattern: ['i', 'f', 'i', 'f', 'i', 'f' repeats without a context contradiction, and the requested next item fits the stated pattern rather than relying on outside assumptions."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The answer i and options i / b / k / p fit the next position in \"Look at the pattern: ['i', 'f', 'i', 'f', 'i', 'f'; hints follow that cycle, although the phrase about what the pattern does is awkward for a young learner."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Continuing the repeated cycle \"Look at the pattern: ['i', 'f', 'i', 'f', 'i', 'f' gives i; the final hint agrees with the stem and the options i / b / k / p include that value."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w16-mat_g1_na_q3_6-20260925",
+      "dispatch_id": "gpt6luna-s5-w16-20260925:mat_g1_na_q3_6"
+    },
+    {
+      "sample_id": "8a20415e590f06ffefe8",
+      "checks": {
+        "ambiguity": {
+          "verdict": "CONCERN",
+          "reasoning": "The stem requests the missing piece at position 6 while the hint chain instead reasons about position 7; \"Look at the pattern: [10, 1, 10, 1, 10, 1 makes a repeated cycle apparent, but the target index conflicts."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The repeating sequence \"Look at the pattern: [10, 1, 10, 1, 10, 1 is a coherent number pattern and the target position is identifiable; the issue is the hint target, not an implausible scenario."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "The stem asks for position 6 and the printed answer is 1; hints explicitly advance to position 7 and conclude with a different repeated-cycle term, so instruction and target conflict. The rendered PatternSequence labels are [\"10\", \"1\"]."
+        },
+        "mathematical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The displayed answer 1 fits position 6 in the repeated sequence \"Look at the pattern: [10, 1, 10, 1, 10, 1, but the final hint states another term for position 7; the instructional calculation conflicts with the key."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w16-mat_g1_na_q3_6-20260925",
+      "dispatch_id": "gpt6luna-s5-w16-20260925:mat_g1_na_q3_6"
+    },
+    {
+      "sample_id": "029d3583c0a3a7ce336f",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem gives a full repeated sequence and asks for its next item; \"Look at the pattern: [2, 1, 2, 1, 2, 1 identifies a consistent cycle and answer 2 is the expected next term."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The sequence \"Look at the pattern: [2, 1, 2, 1, 2, 1 repeats without a context contradiction, and the requested next item fits the stated pattern rather than relying on outside assumptions."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The answer 2 and options 3 / 2 / 1 / 4 fit the next position in \"Look at the pattern: [2, 1, 2, 1, 2, 1; hints follow that cycle, although the phrase about what the pattern does is awkward for a young learner."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Continuing the repeated cycle \"Look at the pattern: [2, 1, 2, 1, 2, 1 gives 2; the final hint agrees with the stem and the options 3 / 2 / 1 / 4 include that value."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w16-mat_g1_na_q3_6-20260925",
+      "dispatch_id": "gpt6luna-s5-w16-20260925:mat_g1_na_q3_6"
+    },
+    {
+      "sample_id": "e2ac1ab7c36f9dfd5f5c",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem gives a full repeated sequence and asks for its next item; \"Look at the pattern: [10, 4, 10, 4, 10, 4 identifies a consistent cycle and answer 10 is the expected next term."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The sequence \"Look at the pattern: [10, 4, 10, 4, 10, 4 repeats without a context contradiction, and the requested next item fits the stated pattern rather than relying on outside assumptions."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The answer 10 and options 9 / 12 / 11 / 10 fit the next position in \"Look at the pattern: [10, 4, 10, 4, 10, 4; hints follow that cycle, although the phrase about what the pattern does is awkward for a young learner."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Continuing the repeated cycle \"Look at the pattern: [10, 4, 10, 4, 10, 4 gives 10; the final hint agrees with the stem and the options 9 / 12 / 11 / 10 include that value."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w16-mat_g1_na_q3_6-20260925",
+      "dispatch_id": "gpt6luna-s5-w16-20260925:mat_g1_na_q3_6"
+    },
+    {
+      "sample_id": "8d2761ed05f101ac7ecc",
+      "checks": {
+        "ambiguity": {
+          "verdict": "CONCERN",
+          "reasoning": "The stem requests the missing piece at position 6 while the hint chain instead reasons about position 7; \"Look at the pattern: [19, 17, 9, 19, 17, 9 makes a repeated cycle apparent, but the target index conflicts."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The repeating sequence \"Look at the pattern: [19, 17, 9, 19, 17, 9 is a coherent number pattern and the target position is identifiable; the issue is the hint target, not an implausible scenario."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "The stem asks for position 6 and the printed answer is 9; hints explicitly advance to position 7 and conclude with a different repeated-cycle term, so instruction and target conflict. The rendered PatternSequence labels are [\"19\", \"17\", \"9\"]."
+        },
+        "mathematical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The displayed answer 9 fits position 6 in the repeated sequence \"Look at the pattern: [19, 17, 9, 19, 17, 9, but the final hint states another term for position 7; the instructional calculation conflicts with the key."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w16-mat_g1_na_q3_6-20260925",
+      "dispatch_id": "gpt6luna-s5-w16-20260925:mat_g1_na_q3_6"
+    },
+    {
+      "sample_id": "00e73849148cbbd4dc8a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "CONCERN",
+          "reasoning": "The stem requests the missing piece at position 6 while the hint chain instead reasons about position 7; \"Look at the pattern: [8, 18, 20, 8, 18, 20 makes a repeated cycle apparent, but the target index conflicts."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The repeating sequence \"Look at the pattern: [8, 18, 20, 8, 18, 20 is a coherent number pattern and the target position is identifiable; the issue is the hint target, not an implausible scenario."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "The stem asks for position 6 and the printed answer is 20; hints explicitly advance to position 7 and conclude with a different repeated-cycle term, so instruction and target conflict. The rendered PatternSequence labels are [\"8\", \"18\", \"20\"]."
+        },
+        "mathematical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The displayed answer 20 fits position 6 in the repeated sequence \"Look at the pattern: [8, 18, 20, 8, 18, 20, but the final hint states another term for position 7; the instructional calculation conflicts with the key."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w16-mat_g1_na_q3_6-20260925",
+      "dispatch_id": "gpt6luna-s5-w16-20260925:mat_g1_na_q3_6"
+    },
+    {
+      "sample_id": "02a1cdec08e4b07fe27d",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem gives a full repeated sequence and asks for its next item; \"Look at the pattern: ['o', 'p', 'c', 'h', 'o', 'p' identifies a consistent cycle and answer c is the expected next term."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The sequence \"Look at the pattern: ['o', 'p', 'c', 'h', 'o', 'p' repeats without a context contradiction, and the requested next item fits the stated pattern rather than relying on outside assumptions."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The answer c and options f / a / c / j fit the next position in \"Look at the pattern: ['o', 'p', 'c', 'h', 'o', 'p'; hints follow that cycle, although the phrase about what the pattern does is awkward for a young learner."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Continuing the repeated cycle \"Look at the pattern: ['o', 'p', 'c', 'h', 'o', 'p' gives c; the final hint agrees with the stem and the options f / a / c / j include that value."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w16-mat_g1_na_q3_6-20260925",
+      "dispatch_id": "gpt6luna-s5-w16-20260925:mat_g1_na_q3_6"
+    },
+    {
+      "sample_id": "b566ca027fc2b1782edc",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem gives a full repeated sequence and asks for its next item; \"Look at the pattern: [2, 10, 2, 10, 2, 10 identifies a consistent cycle and answer 2 is the expected next term."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The sequence \"Look at the pattern: [2, 10, 2, 10, 2, 10 repeats without a context contradiction, and the requested next item fits the stated pattern rather than relying on outside assumptions."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The answer 2 and options 2 / 3 / 1 / 4 fit the next position in \"Look at the pattern: [2, 10, 2, 10, 2, 10; hints follow that cycle, although the phrase about what the pattern does is awkward for a young learner."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Continuing the repeated cycle \"Look at the pattern: [2, 10, 2, 10, 2, 10 gives 2; the final hint agrees with the stem and the options 2 / 3 / 1 / 4 include that value."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w16-mat_g1_na_q3_6-20260925",
+      "dispatch_id": "gpt6luna-s5-w16-20260925:mat_g1_na_q3_6"
+    },
+    {
+      "sample_id": "6c47c63f37ba13f6b450",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem gives a full repeated sequence and asks for its next item; \"Look at the pattern: [1, 10, 1, 10, 1, 10 identifies a consistent cycle and answer 1 is the expected next term."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The sequence \"Look at the pattern: [1, 10, 1, 10, 1, 10 repeats without a context contradiction, and the requested next item fits the stated pattern rather than relying on outside assumptions."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The answer 1 and options 3 / 0 / 1 / 2 fit the next position in \"Look at the pattern: [1, 10, 1, 10, 1, 10; hints follow that cycle, although the phrase about what the pattern does is awkward for a young learner."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Continuing the repeated cycle \"Look at the pattern: [1, 10, 1, 10, 1, 10 gives 1; the final hint agrees with the stem and the options 3 / 0 / 1 / 2 include that value."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w16-mat_g1_na_q3_6-20260925",
+      "dispatch_id": "gpt6luna-s5-w16-20260925:mat_g1_na_q3_6"
+    },
+    {
+      "sample_id": "5d793dc2d3610b757770",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem gives a full repeated sequence and asks for its next item; \"Look at the pattern: ['d', 'o', 'e', 'd', 'o', 'e' identifies a consistent cycle and answer d is the expected next term."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The sequence \"Look at the pattern: ['d', 'o', 'e', 'd', 'o', 'e' repeats without a context contradiction, and the requested next item fits the stated pattern rather than relying on outside assumptions."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The answer d and options k / d / b / j fit the next position in \"Look at the pattern: ['d', 'o', 'e', 'd', 'o', 'e'; hints follow that cycle, although the phrase about what the pattern does is awkward for a young learner."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Continuing the repeated cycle \"Look at the pattern: ['d', 'o', 'e', 'd', 'o', 'e' gives d; the final hint agrees with the stem and the options k / d / b / j include that value."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w16-mat_g1_na_q3_6-20260925",
+      "dispatch_id": "gpt6luna-s5-w16-20260925:mat_g1_na_q3_6"
+    },
+    {
+      "sample_id": "e4e1f4f4618f3de3d6cf",
+      "checks": {
+        "ambiguity": {
+          "verdict": "CONCERN",
+          "reasoning": "The stem requests the missing piece at position 6 while the hint chain instead reasons about position 7; \"Look at the pattern: [7, 17, 17, 7, 17, 17 makes a repeated cycle apparent, but the target index conflicts."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The repeating sequence \"Look at the pattern: [7, 17, 17, 7, 17, 17 is a coherent number pattern and the target position is identifiable; the issue is the hint target, not an implausible scenario."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "The stem asks for position 6 and the printed answer is 17; hints explicitly advance to position 7 and conclude with a different repeated-cycle term, so instruction and target conflict. The rendered PatternSequence labels are [\"7\", \"17\"]."
+        },
+        "mathematical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The displayed answer 17 fits position 6 in the repeated sequence \"Look at the pattern: [7, 17, 17, 7, 17, 17, but the final hint states another term for position 7; the instructional calculation conflicts with the key."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w16-mat_g1_na_q3_6-20260925",
+      "dispatch_id": "gpt6luna-s5-w16-20260925:mat_g1_na_q3_6"
+    },
+    {
+      "sample_id": "63fe99c5048eddb94c01",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem gives a full repeated sequence and asks for its next item; \"Look at the pattern: [1, 2, 1, 2, 1, 2 identifies a consistent cycle and answer 1 is the expected next term."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The sequence \"Look at the pattern: [1, 2, 1, 2, 1, 2 repeats without a context contradiction, and the requested next item fits the stated pattern rather than relying on outside assumptions."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The answer 1 and options 2 / 3 / 0 / 1 fit the next position in \"Look at the pattern: [1, 2, 1, 2, 1, 2; hints follow that cycle, although the phrase about what the pattern does is awkward for a young learner."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Continuing the repeated cycle \"Look at the pattern: [1, 2, 1, 2, 1, 2 gives 1; the final hint agrees with the stem and the options 2 / 3 / 0 / 1 include that value."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w16-mat_g1_na_q3_6-20260925",
+      "dispatch_id": "gpt6luna-s5-w16-20260925:mat_g1_na_q3_6"
+    },
+    {
+      "sample_id": "ba265f908b6eef204db5",
+      "checks": {
+        "ambiguity": {
+          "verdict": "CONCERN",
+          "reasoning": "The stem requests the missing piece at position 6 while the hint chain instead reasons about position 7; \"Look at the pattern: [1, 3, 1, 3, 1, 3 makes a repeated cycle apparent, but the target index conflicts."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The repeating sequence \"Look at the pattern: [1, 3, 1, 3, 1, 3 is a coherent number pattern and the target position is identifiable; the issue is the hint target, not an implausible scenario."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "The stem asks for position 6 and the printed answer is 3; hints explicitly advance to position 7 and conclude with a different repeated-cycle term, so instruction and target conflict. The rendered PatternSequence labels are [\"1\", \"3\"]."
+        },
+        "mathematical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The displayed answer 3 fits position 6 in the repeated sequence \"Look at the pattern: [1, 3, 1, 3, 1, 3, but the final hint states another term for position 7; the instructional calculation conflicts with the key."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w16-mat_g1_na_q3_6-20260925",
+      "dispatch_id": "gpt6luna-s5-w16-20260925:mat_g1_na_q3_6"
+    },
+    {
+      "sample_id": "73cd91d6cad2c8da883f",
+      "checks": {
+        "ambiguity": {
+          "verdict": "CONCERN",
+          "reasoning": "The stem requests the missing piece at position 6 while the hint chain instead reasons about position 7; \"Look at the pattern: [1, 2, 1, 2, 1, 2 makes a repeated cycle apparent, but the target index conflicts."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The repeating sequence \"Look at the pattern: [1, 2, 1, 2, 1, 2 is a coherent number pattern and the target position is identifiable; the issue is the hint target, not an implausible scenario."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "The stem asks for position 6 and the printed answer is 2; hints explicitly advance to position 7 and conclude with a different repeated-cycle term, so instruction and target conflict. The rendered PatternSequence labels are [\"1\", \"2\"]."
+        },
+        "mathematical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The displayed answer 2 fits position 6 in the repeated sequence \"Look at the pattern: [1, 2, 1, 2, 1, 2, but the final hint states another term for position 7; the instructional calculation conflicts with the key."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w16-mat_g1_na_q3_6-20260925",
+      "dispatch_id": "gpt6luna-s5-w16-20260925:mat_g1_na_q3_6"
+    },
+    {
+      "sample_id": "4db606397b96706b9f69",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem gives a full repeated sequence and asks for its next item; \"Look at the pattern: [1, 10, 1, 10, 1, 10 identifies a consistent cycle and answer 1 is the expected next term."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The sequence \"Look at the pattern: [1, 10, 1, 10, 1, 10 repeats without a context contradiction, and the requested next item fits the stated pattern rather than relying on outside assumptions."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The answer 1 and options 2 / 0 / 1 / 3 fit the next position in \"Look at the pattern: [1, 10, 1, 10, 1, 10; hints follow that cycle, although the phrase about what the pattern does is awkward for a young learner."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Continuing the repeated cycle \"Look at the pattern: [1, 10, 1, 10, 1, 10 gives 1; the final hint agrees with the stem and the options 2 / 0 / 1 / 3 include that value."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w16-mat_g1_na_q3_6-20260925",
+      "dispatch_id": "gpt6luna-s5-w16-20260925:mat_g1_na_q3_6"
+    },
+    {
+      "sample_id": "eba7befef4fe2cf36c79",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem gives a full repeated sequence and asks for its next item; \"Look at the pattern: [1, 6, 1, 6, 1, 6 identifies a consistent cycle and answer 1 is the expected next term."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The sequence \"Look at the pattern: [1, 6, 1, 6, 1, 6 repeats without a context contradiction, and the requested next item fits the stated pattern rather than relying on outside assumptions."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The answer 1 and options 0 / 2 / 3 / 1 fit the next position in \"Look at the pattern: [1, 6, 1, 6, 1, 6; hints follow that cycle, although the phrase about what the pattern does is awkward for a young learner."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Continuing the repeated cycle \"Look at the pattern: [1, 6, 1, 6, 1, 6 gives 1; the final hint agrees with the stem and the options 0 / 2 / 3 / 1 include that value."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w16-mat_g1_na_q3_6-20260925",
+      "dispatch_id": "gpt6luna-s5-w16-20260925:mat_g1_na_q3_6"
+    }
+  ],
+  "clause_evidence": [
+    {
+      "requirement_id": "determine_next_term",
+      "clause": "Determine the next term/s",
+      "verdict": "PASS",
+      "reasoning": "The full-sequence items explicitly ask for the next letter or number, and the graphic items ask learners to supply a term in the repeating sequence.",
+      "sample_ids": [
+        "285eab62fc25f003edc4",
+        "4ebcbb57000eac340222",
+        "029d3583c0a3a7ce336f"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w16-mat_g1_na_q3_6-20260925",
+      "dispatch_id": "gpt6luna-s5-w16-20260925:mat_g1_na_q3_6"
+    },
+    {
+      "requirement_id": "repeating_pattern",
+      "clause": "repeating pattern",
+      "verdict": "PASS",
+      "reasoning": "Every cited item presents a cycle that repeats, including alternating pairs and three-term cycles, so the structural pattern requirement is observable.",
+      "sample_ids": [
+        "285eab62fc25f003edc4",
+        "8d2761ed05f101ac7ecc",
+        "02a1cdec08e4b07fe27d"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w16-mat_g1_na_q3_6-20260925",
+      "dispatch_id": "gpt6luna-s5-w16-20260925:mat_g1_na_q3_6"
+    }
+  ],
+  "dispatch_provenance": [
+    {
+      "dispatch_id": "gpt6luna-s5-w16-20260925:mat_g1_na_q3_6",
+      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w16-mat_g1_na_q3_6-20260925",
+      "review_date": "2026-09-25",
+      "blind": true,
+      "packet_digest": "bd54705227a439d07eda859a5b1975eca24d578d113da85d73af6312dd9a3a48",
+      "clause_ids": [
+        "determine_next_term",
+        "repeating_pattern"
+      ],
+      "response_ref": ".responses/gpt6luna-s5-w16-20260925.json",
+      "response_digest": "ace0cf5402df3319103f6fb04ee95f444861b00fc66afee7bea6278c0e5e8cb9",
+      "prompt_ref": ".responses/gpt6luna-s5-w16-20260925.prompt.txt",
+      "prompt_digest": "944171b11834d79c1b910d66360cfb2a0aa1b5a4e61b4e45dddf06bc3484c6c0",
+      "samples_delivery": "Dispatch-time local prompt file read by separate gpt-6-luna medium reviewer; no source or prior reviews supplied",
+      "tool_uses_by_reviewer": "Reviewer reported a python3 call that read the assigned prompt and wrote the verdict JSON; tool-use description is reviewer-provided."
     }
   ],
   "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "Repeating units are presented intact and the pupil must continue them; the four-element letter run 'o, p, c, h, o, p' is correctly keyed to the third element of the unit, so the generator is genuinely tracking unit position rather than guessing."
-    },
-    "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "The wording says next term slash terms, but every sampled item asks for exactly one element - no seed requires two or more continuing terms, which is the harder half of the competency and the half the given example with two trailing blanks illustrates."
-    },
     "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Six visible elements before the blank is enough for a Grade 1 pupil to detect the cycle by eye, and the letter and numeral alphabets used stay small and concrete."
-    },
-    "variant_comprehensiveness": {
       "verdict": "CONCERN",
-      "rationale": "Letters, numerals and a visual position-6 item are present, but the rhythmic properties and arts-based visual elements the competency parenthetically names never surface, and the visual item's options are numeric, so shape or colour patterning is absent from this node."
+      "rationale": "The repeated cycles are short and the values are familiar, but several picture items label a missing sixth term while hints unexpectedly advance learners to position seven."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Unit length varies from two elements up to four across the sample, which is the dimension that makes a repeating pattern harder to read, and the interior-blank item shifts where the reasoning must be applied."
+      "rationale": "Each item asks learners to continue or complete a repeating sequence, directly practicing identification of the next term in a repeating pattern."
+    },
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The requirements identify determining next terms and the repeating structure, which together retain the core competency stated for this node.",
+      "decomposition": {
+        "verdict": "PASS",
+        "reasoning": "The full competency requires determining next terms in repeating patterns. The two requirements preserve both the action of finding terms and the repeating-pattern condition; the rhythmic and arts examples are optional forms rather than mandatory subskills.",
+        "requirement_ids": [
+          "determine_next_term",
+          "repeating_pattern"
+        ]
+      },
+      "clause_ids": [
+        "determine_next_term",
+        "repeating_pattern"
+      ]
+    },
+    "comprehensive_coverage": {
+      "verdict": "CONCERN",
+      "rationale": "Samples vary letters and numbers, plus sequence graphics, but do not demonstrate rhythmic or arts-based patterns mentioned as possible forms in the competency.",
+      "clause_ids": [
+        "determine_next_term",
+        "repeating_pattern"
+      ]
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Numeric pattern elements stay in the small range a Grade 1 pupil recognises on sight, and nothing in the pattern terms exceeds the number knowledge available by Quarter 3."
+      "rationale": "All examples use short cycles of two, three, or four letters or small numbers, keeping the task accessible to Grade 1 learners."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "Cloze, multiple choice, and graphic sequence formats are represented, though content is concentrated in abstract letters and numbers rather than varied pattern modalities."
     }
   },
-  "overall": "CONCERN"
+  "overall": "FAIL"
 }

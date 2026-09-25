@@ -16564,3 +16564,87 @@ The **module entry point** rose by 17, exactly the sum of these nodes' 7 + 1 + 9
 newly visible findings. `run_all` was not remeasured after this wave. No source or
 digest-bound validation input changed; the H-06 campaign intent remains open for the
 next review wave.
+
+## 2026-09-25 — GPT-6 Luna §5 wave 14–19 (`codex-h06-s5-full-campaign-20260925`)
+
+Six more nodes were reviewed by separate blind `gpt-6-luna` medium identities, filed
+through `tests.file_reviews` from their dispatch-time skeletons. Each exact prompt and
+raw response is under its node's `.responses/` directory. The reviewer identities are
+`blind-reviewer-gpt-6-luna-medium-w14-mat_g1_na_q3_4-20260925` through
+`...-w19-mat_g1_na_q4_1-20260925`, with the wave number and node changed for each
+corresponding dispatch. Dispatch IDs are `gpt6luna-s5-w14-20260925` through
+`gpt6luna-s5-w19-20260925` in the same order.
+
+| node | samples / clauses | reasoning audit | overall | §5 module findings after |
+|---|---:|---|---|---:|
+| `mat_g1_na_q3_4` | 29 / 7 | 130/130 distinct, min 60 chars | FAIL | 7 |
+| `mat_g1_na_q3_5` | 29 / 4 | 126/127 distinct, min 107 chars | CONCERN | 9 |
+| `mat_g1_na_q3_6` | 17 / 2 | 75/77 distinct, min 127 chars | FAIL | 33 |
+| `mat_g1_na_q3_7` | 17 / 3 | 78/78 distinct, min 72 chars | FAIL | 7 |
+| `mat_g1_na_q4_0` | 17 / 4 | 79/79 distinct, min 151 chars | CONCERN | 58 |
+| `mat_g1_na_q4_1` | 18 / 4 | 72/83 distinct, min 115 chars; repeats were identical comparison items | FAIL | 42 |
+
+Every audit also found zero unmatched quoted spans and exact sample/clause ID order.
+The first q3_4 reply had 15 reasoning fields below the requested 60-character floor;
+the reviewer expanded them to sample-specific explanations before filing. The first
+q4_0 reply repeated generic rationales across four or five different samples; its
+reviewer revised it to 79/79 distinct reasonings before filing.
+
+**Named content defects and judgment findings:**
+
+* `mat_g1_na_q3_4`: the competency explicitly says **“using concrete and pictorial
+  models”** for subtraction below 100. The reviewer ruled `concrete_models=FAIL`;
+  pictorial and symbolic routes were present, but no rendered concrete model. This
+  joins the q3_0 concrete-model defect; source work needs a shared capability.
+* `mat_g1_na_q3_6`, seed **44**: the stem asks for missing **position 6** in a
+  rendered `[10, 1, 10, 1, 10, 1]` PatternSequence, with answer `1`. The hints say
+  “The next term is at position 7” and conclude `10`, solving a different target.
+  Seed **500** reproduces the same error on `[19, 17, 9, 19, 17, 9]`: keyed `9`,
+  hints conclude `19`. Six sampled visual tasks have this position-6/position-7
+  mismatch; the reviewer ruled learner-facing clarity and mathematical validity FAIL.
+* `mat_g1_na_q3_7`: the competency says **“Create repeating patterns using objects,
+  images, or numbers.”** The reviewer ruled `create=FAIL`: sampled prompts ask what
+  comes next rather than collecting a pattern the pupil constructs. The `or` medium
+  alternatives require the owner-approved disjunction treatment, but the verb
+  `Create` still demands a construction route.
+* `mat_g1_na_q4_0`: the reviewer could not confirm equal-sized half and quarter
+  regions from the packet's static rendered markup description, and ruled all 17
+  samples CONCERN on visual clarity/evidence. This is a known render-evidence limit;
+  the review is preserved as judgment, not treated as proof that the actual shapes
+  are unequal. A renderer/layout proof or richer learner-view evidence is needed.
+* `mat_g1_na_q4_1`, seed **42**: the stem compares `1/2` and `1/4`, keyed `>`.
+  Hints say to check whether bottom numbers are equal, then claim the bigger top
+  number determines the larger fraction; both tops are `1` and the bottoms differ.
+  The hint chain cannot justify the answer. The reviewer ruled learner-facing
+  clarity FAIL across all 18 sampled comparison tasks. Seed **701** also wraps
+  water-bottle content in an unrelated basketball theme; the theme itself is
+  authorised, while the wrapper/content mismatch is the reported concern.
+* `mat_g1_na_q3_5`: the reviewer raised coverage concerns about five subtraction
+  by-zero prompts (including seed **603**, `24 − 0`) in a competency focused on
+  expressing minuends and subtrahends as tens and ones without regrouping. The
+  arithmetic is valid; treat this as a prevalence/coverage judgment pending the
+  source batch, not an invalid-operation claim.
+
+**Executed evidence:**
+
+```text
+$ PYTHONPATH=. .venv/bin/python tests/legacy_review_queue.py --write
+legacy_review_queue: 108 legacy review(s), NOT adjudicable evidence
+  re-reviews owed         : 108
+  wrote validation_reports/phase2_hardening/legacy_review_queue.json
+
+$ PYTHONPATH=. .venv/bin/python -c '...validate_judgment_reviews()...'
+judgment_reviews module: 1672 problems
+mat_g1_na_q3_4 : 7 problems
+mat_g1_na_q3_5 : 9 problems
+mat_g1_na_q3_6 : 33 problems
+mat_g1_na_q3_7 : 7 problems
+mat_g1_na_q4_0 : 58 problems
+mat_g1_na_q4_1 : 42 problems
+```
+
+The **module entry point** rose 1570 → 1672, or 102, across these six newly filed
+reviews. Individual pre-filing counts for these nodes were not measured, so no
+per-node delta is claimed. The post-wave `run_all` stage was not measured. Review
+corpus count by execution: 43 schema-v2 records (25 GPT-5.6 Luna medium, 10 GPT-6
+Luna medium, 8 Haiku), with 18 FAIL / 18 CONCERN / 7 PASS.
