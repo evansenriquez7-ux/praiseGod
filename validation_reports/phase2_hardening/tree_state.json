@@ -1,7 +1,13 @@
 {
   "schema_version": 1,
   "note": "Intent record for interruption safety. Written when a batch, chain or campaign STARTS and cleared when it completes; an intent left open means a session did not reach its finish line. Deliberately digest-free -- see tests/tree_state.py. Read with `PYTHONPATH=. .venv/bin/python tests/tree_state.py`.",
-  "open_intent": null,
+  "open_intent": {
+    "kind": "campaign",
+    "began_at": "2026-09-25T22:58:30+08:00",
+    "session": "claude-h06-phaseC-queue-2026-09-25",
+    "note": "Phase C: blind Haiku review of the 91 nodes with no schema-v2 review",
+    "next_step": "Resume the campaign; it touches no source, so no re-proof is owed."
+  },
   "last_completed": {
     "kind": "campaign",
     "began_at": "2026-09-25T22:30:13+08:00",
