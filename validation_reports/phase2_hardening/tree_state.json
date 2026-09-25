@@ -1,20 +1,14 @@
 {
   "schema_version": 1,
   "note": "Intent record for interruption safety. Written when a batch, chain or campaign STARTS and cleared when it completes; an intent left open means a session did not reach its finish line. Deliberately digest-free -- see tests/tree_state.py. Read with `PYTHONPATH=. .venv/bin/python tests/tree_state.py`.",
-  "open_intent": {
+  "open_intent": null,
+  "last_completed": {
     "kind": "campaign",
     "began_at": "2026-09-25T12:28:30+08:00",
     "session": "codex-h06-s5-full-campaign-20260925",
     "note": "Review remaining schema-v1 nodes, then approved supersession/content fixes and re-proof chain",
-    "next_step": "Resume the campaign; it touches no source, so no re-proof is owed."
-  },
-  "last_completed": {
-    "kind": "campaign",
-    "began_at": "2026-09-25T11:13:34+08:00",
-    "session": "codex-h06-s5-gpt6luna-20260925",
-    "note": "One schema-v2 blind review on the next owed node; no source edits",
     "next_step": "Resume the campaign; it touches no source, so no re-proof is owed.",
-    "completed_at": "2026-09-25T11:51:11+08:00",
-    "completion_note": "Filed one blind GPT-6 Luna medium schema-v2 review for mat_g1_na_q3_0; 117 owed; run_all exit 1 with known red stages and 1554 judgment findings; no source edits"
+    "completed_at": "2026-09-25T14:06:57+08:00",
+    "completion_note": "Waves 23-28 recovered, verified and committed at 9db405cb by claude-h06-s5-recover-w23-28-2026-09-25. Intent closed on behalf of codex-h06-s5-full-campaign-20260925, which was rate-limited and is not running (ps confirmed). Legacy queue 99; §5 1829/144."
   }
 }
